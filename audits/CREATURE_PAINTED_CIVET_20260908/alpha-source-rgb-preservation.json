@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "source": "civet-first-opaque.png",
+  "matteMaster": "alpha-v3/civet-painted-v1.png",
+  "channelsCompared": "all original RGB bytes, including hidden pixels",
+  "sampleBytes": 4718592,
+  "changedChannelBytes": 0,
+  "method": "ImageMagick8-bit RGB exports compared bytewise; no color repaint",
+  "limits": "Does not prove correct alpha at fur edges; see retained dark/light reviews."
+}

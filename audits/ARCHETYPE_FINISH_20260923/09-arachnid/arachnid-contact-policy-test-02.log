@@ -1,0 +1,11 @@
+Changed test fixtures/controls after retained first-run geometry refusals; production bytes unchanged.
+COMMAND: npx vitest run apps/game/src/creature-rig-contact-arachnid.test.ts
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  1 passed (1)
+      Tests  20 passed (20)
+   Start at  09:21:57
+   Duration  264ms (transform 104ms, setup 0ms, import 139ms, tests 17ms, environment 0ms)
+

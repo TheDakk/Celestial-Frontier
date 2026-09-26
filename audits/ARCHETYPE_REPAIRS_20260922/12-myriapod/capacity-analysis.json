@@ -1,0 +1,2284 @@
+{
+  "schema": "cf.myriapod-proposed-capacity-analysis/v1",
+  "status": "REFUSED_WITH_UNCHANGED_GATES",
+  "scope": "Fresh proposed 15-pair graph capacity probes only. No call to appendageCounts, no repeat of original unsupported-topology attempt, no painted record/landmarks/parts admission, static battery, native film, or art judgement.",
+  "pairCountPremise": {
+    "requestedMinimumCapacity": 15,
+    "exactPaintedCountCertified": false,
+    "explanation": "Parent-requested lower-bound capacity case, not a new full image census. More pairs cannot reduce required graph or part counts."
+  },
+  "current": {
+    "jointCount": 29,
+    "legCount": 8,
+    "legPairs": 4,
+    "coreJointCount": 13,
+    "coreJoints": [
+      "root",
+      "head",
+      "mandible",
+      "seg0",
+      "seg1",
+      "seg2",
+      "seg3",
+      "seg4",
+      "seg5",
+      "seg6",
+      "seg7",
+      "antennaFar",
+      "antennaNear"
+    ]
+  },
+  "unchangedLimits": {
+    "jointBudget": 64,
+    "partBudget": 32,
+    "compressionFraction": 0.08,
+    "existingTwoBoneContact": true
+  },
+  "twoJoint": {
+    "candidate": {
+      "id": "myriapod",
+      "version": 1,
+      "clipSetId": "myriapod-v1",
+      "graph": [
+        [
+          "head",
+          "root"
+        ],
+        [
+          "mandible",
+          "head"
+        ],
+        [
+          "seg0",
+          "root"
+        ],
+        [
+          "seg1",
+          "seg0"
+        ],
+        [
+          "seg2",
+          "seg1"
+        ],
+        [
+          "seg3",
+          "seg2"
+        ],
+        [
+          "seg4",
+          "seg3"
+        ],
+        [
+          "seg5",
+          "seg4"
+        ],
+        [
+          "seg6",
+          "seg5"
+        ],
+        [
+          "seg7",
+          "seg6"
+        ],
+        [
+          "antennaFar",
+          "head"
+        ],
+        [
+          "antennaNear",
+          "head"
+        ],
+        [
+          "leg0FarKnee",
+          "seg0"
+        ],
+        [
+          "leg0FarFoot",
+          "leg0FarKnee"
+        ],
+        [
+          "leg0NearKnee",
+          "seg0"
+        ],
+        [
+          "leg0NearFoot",
+          "leg0NearKnee"
+        ],
+        [
+          "leg1FarKnee",
+          "seg0"
+        ],
+        [
+          "leg1FarFoot",
+          "leg1FarKnee"
+        ],
+        [
+          "leg1NearKnee",
+          "seg0"
+        ],
+        [
+          "leg1NearFoot",
+          "leg1NearKnee"
+        ],
+        [
+          "leg2FarKnee",
+          "seg1"
+        ],
+        [
+          "leg2FarFoot",
+          "leg2FarKnee"
+        ],
+        [
+          "leg2NearKnee",
+          "seg1"
+        ],
+        [
+          "leg2NearFoot",
+          "leg2NearKnee"
+        ],
+        [
+          "leg3FarKnee",
+          "seg1"
+        ],
+        [
+          "leg3FarFoot",
+          "leg3FarKnee"
+        ],
+        [
+          "leg3NearKnee",
+          "seg1"
+        ],
+        [
+          "leg3NearFoot",
+          "leg3NearKnee"
+        ],
+        [
+          "leg4FarKnee",
+          "seg2"
+        ],
+        [
+          "leg4FarFoot",
+          "leg4FarKnee"
+        ],
+        [
+          "leg4NearKnee",
+          "seg2"
+        ],
+        [
+          "leg4NearFoot",
+          "leg4NearKnee"
+        ],
+        [
+          "leg5FarKnee",
+          "seg2"
+        ],
+        [
+          "leg5FarFoot",
+          "leg5FarKnee"
+        ],
+        [
+          "leg5NearKnee",
+          "seg2"
+        ],
+        [
+          "leg5NearFoot",
+          "leg5NearKnee"
+        ],
+        [
+          "leg6FarKnee",
+          "seg3"
+        ],
+        [
+          "leg6FarFoot",
+          "leg6FarKnee"
+        ],
+        [
+          "leg6NearKnee",
+          "seg3"
+        ],
+        [
+          "leg6NearFoot",
+          "leg6NearKnee"
+        ],
+        [
+          "leg7FarKnee",
+          "seg3"
+        ],
+        [
+          "leg7FarFoot",
+          "leg7FarKnee"
+        ],
+        [
+          "leg7NearKnee",
+          "seg3"
+        ],
+        [
+          "leg7NearFoot",
+          "leg7NearKnee"
+        ],
+        [
+          "leg8FarKnee",
+          "seg4"
+        ],
+        [
+          "leg8FarFoot",
+          "leg8FarKnee"
+        ],
+        [
+          "leg8NearKnee",
+          "seg4"
+        ],
+        [
+          "leg8NearFoot",
+          "leg8NearKnee"
+        ],
+        [
+          "leg9FarKnee",
+          "seg4"
+        ],
+        [
+          "leg9FarFoot",
+          "leg9FarKnee"
+        ],
+        [
+          "leg9NearKnee",
+          "seg4"
+        ],
+        [
+          "leg9NearFoot",
+          "leg9NearKnee"
+        ],
+        [
+          "leg10FarKnee",
+          "seg5"
+        ],
+        [
+          "leg10FarFoot",
+          "leg10FarKnee"
+        ],
+        [
+          "leg10NearKnee",
+          "seg5"
+        ],
+        [
+          "leg10NearFoot",
+          "leg10NearKnee"
+        ],
+        [
+          "leg11FarKnee",
+          "seg5"
+        ],
+        [
+          "leg11FarFoot",
+          "leg11FarKnee"
+        ],
+        [
+          "leg11NearKnee",
+          "seg5"
+        ],
+        [
+          "leg11NearFoot",
+          "leg11NearKnee"
+        ],
+        [
+          "leg12FarKnee",
+          "seg6"
+        ],
+        [
+          "leg12FarFoot",
+          "leg12FarKnee"
+        ],
+        [
+          "leg12NearKnee",
+          "seg6"
+        ],
+        [
+          "leg12NearFoot",
+          "leg12NearKnee"
+        ],
+        [
+          "leg13FarKnee",
+          "seg6"
+        ],
+        [
+          "leg13FarFoot",
+          "leg13FarKnee"
+        ],
+        [
+          "leg13NearKnee",
+          "seg6"
+        ],
+        [
+          "leg13NearFoot",
+          "leg13NearKnee"
+        ],
+        [
+          "leg14FarKnee",
+          "seg7"
+        ],
+        [
+          "leg14FarFoot",
+          "leg14FarKnee"
+        ],
+        [
+          "leg14NearKnee",
+          "seg7"
+        ],
+        [
+          "leg14NearFoot",
+          "leg14NearKnee"
+        ]
+      ],
+      "bodyAxis": [
+        "seg7",
+        "head"
+      ],
+      "joints": [
+        "root",
+        "head",
+        "mandible",
+        "seg0",
+        "seg1",
+        "seg2",
+        "seg3",
+        "seg4",
+        "seg5",
+        "seg6",
+        "seg7",
+        "antennaFar",
+        "antennaNear",
+        "leg0FarKnee",
+        "leg0FarFoot",
+        "leg0NearKnee",
+        "leg0NearFoot",
+        "leg1FarKnee",
+        "leg1FarFoot",
+        "leg1NearKnee",
+        "leg1NearFoot",
+        "leg2FarKnee",
+        "leg2FarFoot",
+        "leg2NearKnee",
+        "leg2NearFoot",
+        "leg3FarKnee",
+        "leg3FarFoot",
+        "leg3NearKnee",
+        "leg3NearFoot",
+        "leg4FarKnee",
+        "leg4FarFoot",
+        "leg4NearKnee",
+        "leg4NearFoot",
+        "leg5FarKnee",
+        "leg5FarFoot",
+        "leg5NearKnee",
+        "leg5NearFoot",
+        "leg6FarKnee",
+        "leg6FarFoot",
+        "leg6NearKnee",
+        "leg6NearFoot",
+        "leg7FarKnee",
+        "leg7FarFoot",
+        "leg7NearKnee",
+        "leg7NearFoot",
+        "leg8FarKnee",
+        "leg8FarFoot",
+        "leg8NearKnee",
+        "leg8NearFoot",
+        "leg9FarKnee",
+        "leg9FarFoot",
+        "leg9NearKnee",
+        "leg9NearFoot",
+        "leg10FarKnee",
+        "leg10FarFoot",
+        "leg10NearKnee",
+        "leg10NearFoot",
+        "leg11FarKnee",
+        "leg11FarFoot",
+        "leg11NearKnee",
+        "leg11NearFoot",
+        "leg12FarKnee",
+        "leg12FarFoot",
+        "leg12NearKnee",
+        "leg12NearFoot",
+        "leg13FarKnee",
+        "leg13FarFoot",
+        "leg13NearKnee",
+        "leg13NearFoot",
+        "leg14FarKnee",
+        "leg14FarFoot",
+        "leg14NearKnee",
+        "leg14NearFoot"
+      ],
+      "legs": [
+        "leg0Far",
+        "leg0Near",
+        "leg1Far",
+        "leg1Near",
+        "leg2Far",
+        "leg2Near",
+        "leg3Far",
+        "leg3Near",
+        "leg4Far",
+        "leg4Near",
+        "leg5Far",
+        "leg5Near",
+        "leg6Far",
+        "leg6Near",
+        "leg7Far",
+        "leg7Near",
+        "leg8Far",
+        "leg8Near",
+        "leg9Far",
+        "leg9Near",
+        "leg10Far",
+        "leg10Near",
+        "leg11Far",
+        "leg11Near",
+        "leg12Far",
+        "leg12Near",
+        "leg13Far",
+        "leg13Near",
+        "leg14Far",
+        "leg14Near"
+      ],
+      "limitsDeg": {
+        "root": {
+          "min": -20,
+          "max": 20
+        },
+        "head": {
+          "min": -35,
+          "max": 35
+        },
+        "mandible": {
+          "min": -40,
+          "max": 5
+        },
+        "seg0": {
+          "min": -35,
+          "max": 35
+        },
+        "seg1": {
+          "min": -35,
+          "max": 35
+        },
+        "seg2": {
+          "min": -35,
+          "max": 35
+        },
+        "seg3": {
+          "min": -35,
+          "max": 35
+        },
+        "seg4": {
+          "min": -60,
+          "max": 60
+        },
+        "seg5": {
+          "min": -60,
+          "max": 60
+        },
+        "seg6": {
+          "min": -60,
+          "max": 60
+        },
+        "seg7": {
+          "min": -60,
+          "max": 60
+        },
+        "antennaFar": {
+          "min": -50,
+          "max": 50
+        },
+        "antennaNear": {
+          "min": -50,
+          "max": 50
+        },
+        "leg0FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg0FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg0NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg0NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg1FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg1FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg1NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg1NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg2FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg2FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg2NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg2NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg3FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg3FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg3NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg3NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg4FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg4FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg4NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg4NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg5FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg5FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg5NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg5NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg6FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg6FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg6NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg6NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg7FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg7FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg7NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg7NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg8FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg8FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg8NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg8NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg9FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg9FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg9NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg9NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg10FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg10FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg10NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg10NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg11FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg11FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg11NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg11NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg12FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg12FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg12NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg12NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg13FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg13FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg13NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg13NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg14FarKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg14FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg14NearKnee": {
+          "min": -60,
+          "max": 60
+        },
+        "leg14NearFoot": {
+          "min": -70,
+          "max": 70
+        }
+      },
+      "bounds": [
+        {
+          "id": "body",
+          "min": 0.1,
+          "max": 0.95,
+          "kind": "distance",
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "bone-min",
+          "min": 0.001,
+          "max": 0.75,
+          "kind": "bone-min"
+        },
+        {
+          "id": "bone-max",
+          "min": 0.001,
+          "max": 0.75,
+          "kind": "bone-max"
+        },
+        {
+          "id": "leg/body:leg0Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg0FarKnee",
+            "leg0FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg0Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg0NearKnee",
+            "leg0NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg1Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg1FarKnee",
+            "leg1FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg1Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg1NearKnee",
+            "leg1NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg2Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg2FarKnee",
+            "leg2FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg2Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg2NearKnee",
+            "leg2NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg3Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg3FarKnee",
+            "leg3FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg3Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg3NearKnee",
+            "leg3NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg4Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg4FarKnee",
+            "leg4FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg4Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg4NearKnee",
+            "leg4NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg5Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg5FarKnee",
+            "leg5FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg5Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg5NearKnee",
+            "leg5NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg6Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg6FarKnee",
+            "leg6FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg6Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg6NearKnee",
+            "leg6NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg7Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg7FarKnee",
+            "leg7FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg7Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg7NearKnee",
+            "leg7NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg8Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg8FarKnee",
+            "leg8FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg8Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg8NearKnee",
+            "leg8NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg9Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg9FarKnee",
+            "leg9FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg9Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg9NearKnee",
+            "leg9NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg10Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg10FarKnee",
+            "leg10FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg10Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg10NearKnee",
+            "leg10NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg11Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg11FarKnee",
+            "leg11FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg11Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg11NearKnee",
+            "leg11NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg12Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg12FarKnee",
+            "leg12FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg12Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg12NearKnee",
+            "leg12NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg13Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg13FarKnee",
+            "leg13FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg13Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg13NearKnee",
+            "leg13NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg14Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg14FarKnee",
+            "leg14FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg14Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg14NearKnee",
+            "leg14NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        }
+      ]
+    },
+    "joints": 73,
+    "contactChains": 30,
+    "maximumPairsWithinJointBudget": 12,
+    "refusal": "Error: Skeleton pose: joint budget",
+    "owner": "createSkeletonPoseProgram"
+  },
+  "compact": {
+    "candidate": {
+      "id": "myriapod",
+      "version": 1,
+      "clipSetId": "myriapod-v1",
+      "graph": [
+        [
+          "head",
+          "root"
+        ],
+        [
+          "mandible",
+          "head"
+        ],
+        [
+          "seg0",
+          "root"
+        ],
+        [
+          "seg1",
+          "seg0"
+        ],
+        [
+          "seg2",
+          "seg1"
+        ],
+        [
+          "seg3",
+          "seg2"
+        ],
+        [
+          "seg4",
+          "seg3"
+        ],
+        [
+          "seg5",
+          "seg4"
+        ],
+        [
+          "seg6",
+          "seg5"
+        ],
+        [
+          "seg7",
+          "seg6"
+        ],
+        [
+          "antennaFar",
+          "head"
+        ],
+        [
+          "antennaNear",
+          "head"
+        ],
+        [
+          "leg0FarFoot",
+          "seg0"
+        ],
+        [
+          "leg0NearFoot",
+          "seg0"
+        ],
+        [
+          "leg1FarFoot",
+          "seg0"
+        ],
+        [
+          "leg1NearFoot",
+          "seg0"
+        ],
+        [
+          "leg2FarFoot",
+          "seg1"
+        ],
+        [
+          "leg2NearFoot",
+          "seg1"
+        ],
+        [
+          "leg3FarFoot",
+          "seg1"
+        ],
+        [
+          "leg3NearFoot",
+          "seg1"
+        ],
+        [
+          "leg4FarFoot",
+          "seg2"
+        ],
+        [
+          "leg4NearFoot",
+          "seg2"
+        ],
+        [
+          "leg5FarFoot",
+          "seg2"
+        ],
+        [
+          "leg5NearFoot",
+          "seg2"
+        ],
+        [
+          "leg6FarFoot",
+          "seg3"
+        ],
+        [
+          "leg6NearFoot",
+          "seg3"
+        ],
+        [
+          "leg7FarFoot",
+          "seg3"
+        ],
+        [
+          "leg7NearFoot",
+          "seg3"
+        ],
+        [
+          "leg8FarFoot",
+          "seg4"
+        ],
+        [
+          "leg8NearFoot",
+          "seg4"
+        ],
+        [
+          "leg9FarFoot",
+          "seg4"
+        ],
+        [
+          "leg9NearFoot",
+          "seg4"
+        ],
+        [
+          "leg10FarFoot",
+          "seg5"
+        ],
+        [
+          "leg10NearFoot",
+          "seg5"
+        ],
+        [
+          "leg11FarFoot",
+          "seg5"
+        ],
+        [
+          "leg11NearFoot",
+          "seg5"
+        ],
+        [
+          "leg12FarFoot",
+          "seg6"
+        ],
+        [
+          "leg12NearFoot",
+          "seg6"
+        ],
+        [
+          "leg13FarFoot",
+          "seg6"
+        ],
+        [
+          "leg13NearFoot",
+          "seg6"
+        ],
+        [
+          "leg14FarFoot",
+          "seg7"
+        ],
+        [
+          "leg14NearFoot",
+          "seg7"
+        ]
+      ],
+      "bodyAxis": [
+        "seg7",
+        "head"
+      ],
+      "joints": [
+        "root",
+        "head",
+        "mandible",
+        "seg0",
+        "seg1",
+        "seg2",
+        "seg3",
+        "seg4",
+        "seg5",
+        "seg6",
+        "seg7",
+        "antennaFar",
+        "antennaNear",
+        "leg0FarFoot",
+        "leg0NearFoot",
+        "leg1FarFoot",
+        "leg1NearFoot",
+        "leg2FarFoot",
+        "leg2NearFoot",
+        "leg3FarFoot",
+        "leg3NearFoot",
+        "leg4FarFoot",
+        "leg4NearFoot",
+        "leg5FarFoot",
+        "leg5NearFoot",
+        "leg6FarFoot",
+        "leg6NearFoot",
+        "leg7FarFoot",
+        "leg7NearFoot",
+        "leg8FarFoot",
+        "leg8NearFoot",
+        "leg9FarFoot",
+        "leg9NearFoot",
+        "leg10FarFoot",
+        "leg10NearFoot",
+        "leg11FarFoot",
+        "leg11NearFoot",
+        "leg12FarFoot",
+        "leg12NearFoot",
+        "leg13FarFoot",
+        "leg13NearFoot",
+        "leg14FarFoot",
+        "leg14NearFoot"
+      ],
+      "legs": [
+        "leg0Far",
+        "leg0Near",
+        "leg1Far",
+        "leg1Near",
+        "leg2Far",
+        "leg2Near",
+        "leg3Far",
+        "leg3Near",
+        "leg4Far",
+        "leg4Near",
+        "leg5Far",
+        "leg5Near",
+        "leg6Far",
+        "leg6Near",
+        "leg7Far",
+        "leg7Near",
+        "leg8Far",
+        "leg8Near",
+        "leg9Far",
+        "leg9Near",
+        "leg10Far",
+        "leg10Near",
+        "leg11Far",
+        "leg11Near",
+        "leg12Far",
+        "leg12Near",
+        "leg13Far",
+        "leg13Near",
+        "leg14Far",
+        "leg14Near"
+      ],
+      "limitsDeg": {
+        "root": {
+          "min": -20,
+          "max": 20
+        },
+        "head": {
+          "min": -35,
+          "max": 35
+        },
+        "mandible": {
+          "min": -40,
+          "max": 5
+        },
+        "seg0": {
+          "min": -35,
+          "max": 35
+        },
+        "seg1": {
+          "min": -35,
+          "max": 35
+        },
+        "seg2": {
+          "min": -35,
+          "max": 35
+        },
+        "seg3": {
+          "min": -35,
+          "max": 35
+        },
+        "seg4": {
+          "min": -60,
+          "max": 60
+        },
+        "seg5": {
+          "min": -60,
+          "max": 60
+        },
+        "seg6": {
+          "min": -60,
+          "max": 60
+        },
+        "seg7": {
+          "min": -60,
+          "max": 60
+        },
+        "antennaFar": {
+          "min": -50,
+          "max": 50
+        },
+        "antennaNear": {
+          "min": -50,
+          "max": 50
+        },
+        "leg0FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg0NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg1FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg1NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg2FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg2NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg3FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg3NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg4FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg4NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg5FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg5NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg6FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg6NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg7FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg7NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg8FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg8NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg9FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg9NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg10FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg10NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg11FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg11NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg12FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg12NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg13FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg13NearFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg14FarFoot": {
+          "min": -70,
+          "max": 70
+        },
+        "leg14NearFoot": {
+          "min": -70,
+          "max": 70
+        }
+      },
+      "bounds": [
+        {
+          "id": "body",
+          "min": 0.1,
+          "max": 0.95,
+          "kind": "distance",
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "bone-min",
+          "min": 0.001,
+          "max": 0.75,
+          "kind": "bone-min"
+        },
+        {
+          "id": "bone-max",
+          "min": 0.001,
+          "max": 0.75,
+          "kind": "bone-max"
+        },
+        {
+          "id": "leg/body:leg0Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg0FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg0Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg0NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg1Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg1FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg1Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg1NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg2Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg2FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg2Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg2NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg3Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg3FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg3Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg3NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg4Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg4FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg4Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg4NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg5Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg5FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg5Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg5NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg6Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg6FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg6Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg6NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg7Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg7FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg7Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg7NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg8Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg8FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg8Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg8NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg9Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg9FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg9Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg9NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg10Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg10FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg10Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg10NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg11Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg11FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg11Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg11NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg12Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg12FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg12Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg12NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg13Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg13FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg13Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg13NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg14Far",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg14FarFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        },
+        {
+          "id": "leg/body:leg14Near",
+          "min": 0.05,
+          "max": 1.5,
+          "kind": "ratio",
+          "bones": [
+            "leg14NearFoot"
+          ],
+          "axis": [
+            "seg7",
+            "head"
+          ]
+        }
+      ]
+    },
+    "joints": 43,
+    "proposedParts": 32,
+    "numericJointBudgetFits": true,
+    "numericPartBudgetFits": true,
+    "refusal": "Error: Contact contract: unsupported leg leg0Far",
+    "owner": "familyContactChains"
+  },
+  "finding": "Keeping the existing 13 core joints and independent two-joint planted contacts requires 73 joints at 15 pairs, exceeding64. A 43-joint,32-part compact proposal passes only arithmetic budgets and is rejected by the unchanged two-bone contact descriptor. A one-link contact model would be new behavior beyond count-only representation; dropping stance, sharing trunk joints as fictitious knees, or hiding extra joints outside the count is not demonstrated as a legal admission.",
+  "owners": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "anchors": [
+        {
+          "text": "export function appendageCounts",
+          "line": 7
+        },
+        {
+          "text": "unsupported repeated topology",
+          "line": 11
+        },
+        {
+          "text": "export function expandRepeatedAnatomy",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "anchors": [
+        {
+          "text": "export function resolveAnatomyInventory",
+          "line": 21
+        },
+        {
+          "text": "const folded=",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-contracts.mjs",
+      "anchors": [
+        {
+          "text": "export function familyContactChains",
+          "line": 4270
+        },
+        {
+          "text": "Contact contract: unsupported leg",
+          "line": 4276
+        }
+      ]
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "anchors": [
+        {
+          "text": "export const MAX_SKELETON_JOINTS",
+          "line": 5
+        },
+        {
+          "text": "export function createSkeletonPoseProgram",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs",
+      "anchors": [
+        {
+          "text": "'part budget'",
+          "line": 21
+        },
+        {
+          "text": "'painter part budget'",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/kinematics.ts",
+      "anchors": [
+        {
+          "text": "export function createTwoBoneChain",
+          "line": 57
+        },
+        {
+          "text": "target outside two-bone reach",
+          "line": 71
+        }
+      ]
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+      "anchors": [
+        {
+          "text": "export function observedContactSupports",
+          "line": 71
+        },
+        {
+          "text": "export function createFamilyContactSolver",
+          "line": 86
+        },
+        {
+          "text": "chain:createTwoBoneChain",
+          "line": 98
+        },
+        {
+          "text": "compression+shift>scaleLength*.08",
+          "line": 157
+        }
+      ]
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-templates.ts",
+      "anchors": [
+        {
+          "text": "const myriaPairs",
+          "line": 145
+        },
+        {
+          "text": "const MYRIAPOD = build",
+          "line": 147
+        }
+      ]
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "anchors": [
+        {
+          "text": "const myA =",
+          "line": 192
+        },
+        {
+          "text": "const MYRIAPOD = fauna",
+          "line": 197
+        },
+        {
+          "text": "const counts=appendageCounts",
+          "line": 309
+        }
+      ]
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+      "anchors": [
+        {
+          "text": "function observedContactPins",
+          "line": 6
+        },
+        {
+          "text": "contactEndpoints",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/parts-rig.ts",
+      "anchors": [
+        {
+          "text": "const contactMode: PartsContactMode",
+          "line": 98
+        },
+        {
+          "text": "const family = contactMode",
+          "line": 102
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "1f94900f6038d0407fa6e865d294de6e11e52b22bbcbbfaa17567311a866d6e6",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "e2dca64d0077c7a3f91b1c00bc383392c6a7d245f9c1b19a9254384c8acb8596",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/pose-projection.mjs",
+      "sha256": "9a6d31c80812def61beec124a1dad039d16b9afb556ee5ddf47c0f528891d486",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "ef5cdebde69b377d3aa0416bf04a6a7c6d13ba2e3319146d66ce7cfc2196f0f0",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/hidden-anatomy.mjs",
+      "sha256": "a3cef7edff31f86a70f727f1433eeaabcabe2a1626929e65fbcbc0715b80a328",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/plant-anatomy.mjs",
+      "sha256": "7e900b8355f6193b941f62a573d6c58124d127faa3348524170593ef2084e218",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "d226a95458fe5330cea64b78ebbcc4b37750044fa85139466d426ef03a960d83",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "3d7ba73ec369a07fc1678610b32e77fb5beadedbdee1885ca544424588e1f587",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs",
+      "sha256": "52250c55eedb50ae0ad757c4d5764ed357d2799ba275f2ffe4db24a633cebc3e",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "37ce18684c45eb771cbc927341c4bd6c2179145cd033b02e5db4588eddaba3e4",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "01fb429e30a2ce63d3fd7fc0071db172e99346a2e965e0646f349f70a8cf4690",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "19a4f6a8e597ab5ca801a685908dcc65ceae316ca989038cddf541ee866acaed",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+      "sha256": "b747e26e58700dba92de54a33ad22b7acfeb6a01772c19cacb6aab0ee1af63a4",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/parts-rig.ts",
+      "sha256": "558cd5a48feb6cb2410611cad6303690bc8f9c810226a5e92fea4081b0892c34",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/capacity-analysis.mjs",
+      "sha256": "22d70ff723cae1164bc5e342df0f7da936f0747fe49d149751b6b73022b31cfa",
+      "unchanged": true
+    }
+  ]
+}

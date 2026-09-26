@@ -1,0 +1,43 @@
+{
+  "schema": "cf-ui-unapplied-preparation/v1",
+  "state": "PREPARED_NOT_APPLIED_NOT_TESTED",
+  "purpose": "Corrected U4 checker/fixtures only; collection, exact terminal verification and28-pair report remain required. Owned guidance is incomplete pending independent tight-capacity and restoration proof. No U4 gate PASS.",
+  "sourceAtRetention": "f61aeb39cf649eebbe2edb30fe4f7b22bd2fcd29",
+  "archive": {
+    "file": "u4-corrected-unapplied.tar.gz",
+    "bytes": 22929,
+    "sha256": "6b29a52b173cd62f024e4bbc5e51805057fcdd3d71c90095b4425e380a217bcd"
+  },
+  "files": [
+    {
+      "path": "cf-u4-layout-ready-20260906/INTEGRATION.md",
+      "bytes": 6034,
+      "sha256": "b901305a3807aa384a5dd6b33e8fcbfea692dc05ab4b2353e4ed9fa7ad99e9bc"
+    },
+    {
+      "path": "cf-u4-layout-ready-20260906/PREPARATION.json",
+      "bytes": 2359,
+      "sha256": "933879925a708c80b6f5ead97f876910a3ea7cf4bb8c7b9bfdd9ed531d190175"
+    },
+    {
+      "path": "cf-u4-layout-ready-20260906/README.md",
+      "bytes": 4496,
+      "sha256": "b70b596eaa635a188fa51646c1c5d007dfc3969552049d3c9b4847f3d225b901"
+    },
+    {
+      "path": "cf-u4-layout-ready-20260906/apply-at-u4.py",
+      "bytes": 2323,
+      "sha256": "c7735cdf4639d5de0ba118333edc3771a23294e0595fa9edef8c44627e1fb508"
+    },
+    {
+      "path": "cf-u4-layout-ready-20260906/ui-layout-contract.mjs",
+      "bytes": 33623,
+      "sha256": "9c1fcea485921794590c2c377c8edf716957c945b10961362ea255502774d2a4"
+    },
+    {
+      "path": "cf-u4-layout-ready-20260906/ui-layout-contract.test.ts",
+      "bytes": 24157,
+      "sha256": "dfd0469bc0a9a77ad62f09955ee02d2f910c2bede09cc1042781240bebd84acb"
+    }
+  ]
+}

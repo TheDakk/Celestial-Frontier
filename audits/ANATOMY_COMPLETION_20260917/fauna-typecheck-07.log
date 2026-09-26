@@ -1,0 +1,8 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/motion/source-pincer.test.ts(12,147): error TS2345: Argument of type 'Readonly<Record<string, readonly number[]>>' is not assignable to parameter of type 'Readonly<Record<string, readonly [number, number]>>'.
+  'string' index signatures are incompatible.
+    Type 'readonly number[]' is not assignable to type 'readonly [number, number]'.
+      Target requires 2 element(s) but source may have fewer.

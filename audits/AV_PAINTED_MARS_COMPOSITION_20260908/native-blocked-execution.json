@@ -1,0 +1,13 @@
+{
+  "command": [
+    "node",
+    "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-composition-receipt-runner.mjs",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/painted-mars-composition-evidence-dist-20260908",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-blocked",
+    "blocked"
+  ],
+  "startedAt": "2026-09-08T15:31:34.404663+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 5.824
+}

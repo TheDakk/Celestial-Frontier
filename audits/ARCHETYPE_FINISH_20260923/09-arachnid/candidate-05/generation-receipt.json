@@ -1,0 +1,9 @@
+{
+  "runId": "20260923-tarantula-paint-05",
+  "toolOutput": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-344c58c7-f715-42bd-a9b8-a10f0497437e.png",
+  "masterSha256": "605e74c5c5ec210ff68dfd36afd046acdec65c76e6c0af6266465eba9d770d85",
+  "promptSha256": "88d86ef22735a74227394ee07f1cad1ee7c111e7931a5c1b60318c7b965f8223",
+  "pixelsEdited": false,
+  "status": "REJECTED",
+  "reason": "Missing upper fararch completed by merging/replacing the neighboring far-front leg; eight independent tips/chains still not established."
+}

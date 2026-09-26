@@ -1,0 +1,74 @@
+{
+  "scope": "Explicitly required unpinned candidate-10 negative control; expected paint failure is not S2",
+  "status": "PASS_EXPECTED_FAILURE",
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121
+    },
+    {
+      "id": "approach",
+      "samples": 121
+    },
+    {
+      "id": "melee:bite",
+      "samples": 16
+    }
+  ],
+  "failure": {
+    "id": "melee:bite",
+    "ms": 117.83333333333333,
+    "joint": "hindFarAnkle",
+    "part": "hind-far-lower",
+    "index": 71,
+    "driftPx": 0.25526216872975177,
+    "supports": [
+      {
+        "i": 1318,
+        "barycentric": 1,
+        "pinned": false,
+        "weights": [
+          [
+            "hindFarPaw",
+            0.9660315671237344
+          ],
+          [
+            "hindFarKnee",
+            0.016147305056765694
+          ],
+          [
+            "hindFarAnkle",
+            0.011343293362894783
+          ],
+          [
+            "spine",
+            0.006042847923697273
+          ],
+          [
+            "chest",
+            0.00035122546433763295
+          ],
+          [
+            "hindNearKnee",
+            0.00008098079517953867
+          ],
+          [
+            "foreNearKnee",
+            0.0000027802733906370947
+          ]
+        ]
+      }
+    ]
+  },
+  "maxCovariancePx": 0,
+  "inputs": [
+    [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/record.json",
+      "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    ],
+    [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json",
+      "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178"
+    ]
+  ]
+}

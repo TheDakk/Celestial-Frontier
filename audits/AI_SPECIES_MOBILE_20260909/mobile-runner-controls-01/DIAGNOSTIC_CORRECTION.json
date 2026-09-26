@@ -1,0 +1,5 @@
+{
+  "firstResult": "7 PASS / 1 FAIL before browser or model byte access",
+  "finding": "Installed TypeScript 7 does not expose the legacy compiler API used by planned read-only owner transpilation.",
+  "correction": "Use Node stripTypeScriptTypes in strip mode, preserving runtime logic and exact relative SHA import. This changes only diagnostic loading, not game/product/pack inputs."
+}

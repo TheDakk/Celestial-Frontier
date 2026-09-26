@@ -1,0 +1,22 @@
+{
+  "schema": "cf.local-signed-checkpoint/v1",
+  "head": "5dcd6e64801cf44c0c55da47c41fbcc9d8408e99",
+  "parent": "ceb107fdcf6f33f8d60cfd071fbea907a4bb68df",
+  "commitAttempt": 1,
+  "signing": "Existing1Password IdentityAgent; command-scoped /usr/bin/ssh-keygen",
+  "commitSucceeded": true,
+  "unsignedFallback": false,
+  "persistentConfigChanged": false,
+  "initialVerificationHarness": {
+    "status": "FAIL",
+    "error": "AssertionError after successful commit: verification wrapper incorrectly required non-key:: signingkey to end in.pub; actual config is inline ssh-ed25519 public key. No vault/agent failure.",
+    "commitRetried": false,
+    "verificationRan": false
+  },
+  "correctedVerification": {
+    "scope": "Read configured inline public key, temporary allowedSigners; remove file after read-only verification.",
+    "exitCode": 0
+  },
+  "finishedAt": "2026-09-09T06:51:27.650262+00:00",
+  "pushPerformed": false
+}

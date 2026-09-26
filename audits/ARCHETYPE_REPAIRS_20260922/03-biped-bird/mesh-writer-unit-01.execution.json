@@ -1,0 +1,30 @@
+{
+  "schema": "cf.reconstructed-test-execution-receipt/v1",
+  "evidenceKind": "Reconstructed from the assistant-visible exec_command tool observation; this is not a retained raw process log.",
+  "noRerun": true,
+  "workingDirectory": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "command": "node --test port/v2/tools/creature-animation/build-paint-skin.test.mjs",
+  "observedToolChunkId": "4744c2",
+  "observedExitCode": 0,
+  "observedSummary": {
+    "tests": 5,
+    "suites": 0,
+    "pass": 5,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "durationMs": 185.936458
+  },
+  "observedPassingTestNames": [
+    "mesh profile refuses nonpositive, fractional and excessive steps before reading sources",
+    "absent and empty refinements are byte-identical to the retained writer including receipt and hashes",
+    "local rectangles refine intersecting ink while preserving distant geometry, source ownership and packed bytes",
+    "refinement confined to an empty quadtree region retains binding bytes and records only the authored receipt",
+    "malformed, out-of-image and coarsening refinement rectangles refuse before source reads"
+  ],
+  "associatedSourceAuthority": {
+    "writerSha256": "55509deba10b18a005d4ae34e296a509036ab09fdad9ae623f3c640227429951"
+  },
+  "authorityNote": "Active source/module hashes were observed in the build output immediately preceding that test command; mesh writer hash was captured in the subsequent exact fit09 default parity receipt with no intervening writer edit. No execution time was reconstructed."
+}

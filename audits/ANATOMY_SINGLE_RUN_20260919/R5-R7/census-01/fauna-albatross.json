@@ -1,0 +1,119 @@
+{
+  "genome": {
+    "seed": 3765859856,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 5,
+    "body": 6,
+    "loco": 6,
+    "trait": 11,
+    "size": 4,
+    "diet": 0,
+    "head": 7,
+    "limbs": 1,
+    "skin": 2,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 0,
+    "behavior": 11,
+    "habitat": 0,
+    "detail": 6,
+    "accent": 6,
+    "temper": 7,
+    "sense": 4,
+    "repro": 3,
+    "life": 5,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Albatross"
+  },
+  "observation": {
+    "schema": "cf.painter-topology/v1",
+    "ownerId": "faunaBird",
+    "family": "biped-bird",
+    "coordinateSize": 440,
+    "materials": {
+      "surface": "feather",
+      "paletteSource": "named"
+    },
+    "features": [
+      {
+        "id": "body",
+        "kind": "body",
+        "points": [
+          [
+            220,
+            285.12449671639405
+          ]
+        ],
+        "widths": [
+          156.18875820901488,
+          124.9510065672119
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "head",
+        "kind": "head",
+        "points": [
+          [
+            163.77204704475463,
+            225.7727685969684
+          ]
+        ],
+        "widths": [
+          47.329926730004516
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "wingFar",
+        "kind": "wing",
+        "points": [
+          [
+            232.49510065672118,
+            260.1342954029517
+          ],
+          [
+            45.33623515979331,
+            321.03754826043786
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "wingNear",
+        "kind": "wing",
+        "points": [
+          [
+            237.18076340299163,
+            275.1284161910171
+          ],
+          [
+            508.23785452610116,
+            310.42402616334306
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "near"
+      }
+    ],
+    "unresolved": [
+      "tail, beak, neck and source part masks not captured"
+    ],
+    "rasterFrame": {
+      "width": 880,
+      "height": 880,
+      "origin": [
+        220,
+        220
+      ],
+      "scale": 1
+    }
+  }
+}

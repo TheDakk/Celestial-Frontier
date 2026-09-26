@@ -1,0 +1,53 @@
+{
+  "schema": "cf-u1-uat-restoration-evidence/v1",
+  "source": "381ddf59858bd863640703e83d2d98beeedf59fa",
+  "productSource": "053ef439774520577071f0ca50887337dd938755",
+  "scope": "phone-restoration",
+  "status": "PASS",
+  "certification": false,
+  "limitations": "One current phone path completed; both historical failures retain unknown causes. No full U1, device UAT, Slice/Glass or hosted claim.",
+  "files": [
+    {
+      "path": "review.json.gz",
+      "bytes": 120505,
+      "sha256": "a22a0781ab92ed96236433ee688c473d580d7c8cde36ba21d52f85152544bff7",
+      "rawBytes": 3671205,
+      "rawSha256": "495d47b20a4f4aa524b1d6eca78f33d2494d139160b2aa4f64adcb30b18a022b"
+    },
+    {
+      "path": "independent-verification.json",
+      "bytes": 373,
+      "sha256": "3023056825c8760e26f7c612ab72057b2e6dff520b85b3461f06dc04d9352201",
+      "rawBytes": 373,
+      "rawSha256": "3023056825c8760e26f7c612ab72057b2e6dff520b85b3461f06dc04d9352201"
+    },
+    {
+      "path": "u1-main-phone.png",
+      "bytes": 185924,
+      "sha256": "0dae34381aa9e7ae9c625952e53ee334033c7c965808ed01d0d64afa94dcd5b4",
+      "rawBytes": 185924,
+      "rawSha256": "0dae34381aa9e7ae9c625952e53ee334033c7c965808ed01d0d64afa94dcd5b4"
+    },
+    {
+      "path": "u1-notifications-phone.png",
+      "bytes": 180558,
+      "sha256": "af7010ca50351693ef1263e4db5801c18a1b28c61a1c0eba2ed901a3e6c16d5a",
+      "rawBytes": 180558,
+      "rawSha256": "af7010ca50351693ef1263e4db5801c18a1b28c61a1c0eba2ed901a3e6c16d5a"
+    },
+    {
+      "path": "cf-u1-uat-restoration-build-381ddf5-20260906.log.gz",
+      "bytes": 1875,
+      "sha256": "dd8c0f0d3155cfaa17f5e5f6d45505ba9653c6b1a007cf1bb50baa9bb8c94dac",
+      "rawBytes": 5281,
+      "rawSha256": "f2b5c025c37333b8f50b98f849542f9b4000162a7734bf1d78311d66487b38a7"
+    },
+    {
+      "path": "cf-u1-uat-restoration-browser-381ddf5-20260906.log.gz",
+      "bytes": 112,
+      "sha256": "c746b3e30d1919aa501b83bb9cee5383488ff334c5c0e19114de9be131ac5712",
+      "rawBytes": 96,
+      "rawSha256": "d4a63764120afd4ef78e47ea74acfa114009b3321afbcc65b287865d444a84a1"
+    }
+  ]
+}

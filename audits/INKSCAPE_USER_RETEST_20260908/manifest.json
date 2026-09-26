@@ -1,0 +1,79 @@
+{
+  "schema": "cf-inkscape-user-retest/v1",
+  "startedAt": "2026-09-08T07:38:54.257908+00:00",
+  "execution": "outside Codex sandbox; shared foreground toolchain lock",
+  "startupReceipt": "audits/TOOLCHAIN_STARTUP_20260907/manifest.json",
+  "status": "PASS",
+  "steps": [
+    {
+      "name": "version",
+      "argv": [
+        "/opt/homebrew/bin/inkscape",
+        "--version"
+      ],
+      "exitCode": 0,
+      "log": "version.log"
+    },
+    {
+      "name": "export",
+      "argv": [
+        "/opt/homebrew/bin/inkscape",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/INKSCAPE_USER_RETEST_20260908/probe.svg",
+        "--export-type=png",
+        "--export-width=128",
+        "--export-filename=/Users/nick/Projects/celestial-frontier-openai-mac/audits/INKSCAPE_USER_RETEST_20260908/probe.png"
+      ],
+      "exitCode": 0,
+      "log": "export.log"
+    },
+    {
+      "name": "inspection",
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/INKSCAPE_USER_RETEST_20260908/probe.png",
+        "-format",
+        "%w %h %[channels] %[pixel:p{0,0}] %[pixel:p{64,64}]",
+        "info:"
+      ],
+      "exitCode": 0,
+      "log": "inspection.log"
+    }
+  ],
+  "resolvedExecutable": "/opt/homebrew/Caskroom/inkscape/1.4.4/.homebrew-command-wrappers/inkscape",
+  "versionOutput": "(<unknown>:20454): Gdk-WARNING **: 03:38:54.850: Failed to initialize CVDisplayLink!\nInkscape 1.4.4 (dcaf3e7, 2026-05-05)",
+  "exactPriorPngBytes": true,
+  "pngSha256": "d92fb5e826d2faca239fe5dc946caa48de27a88adfd1a15b073c48f7ad81b3a3",
+  "endedAt": "2026-09-08T07:38:55.246451+00:00",
+  "files": [
+    {
+      "path": "controller.py",
+      "bytes": 2339,
+      "sha256": "e0f2622cc56255b0079c415e32ff8f850e11bad56aa8e2ad5cea438452e8a550"
+    },
+    {
+      "path": "export.log",
+      "bytes": 86,
+      "sha256": "27bfc6f1a775836e3eb8d229b43113f37eb52147f2104a4f51cd95674fc09f17"
+    },
+    {
+      "path": "inspection.log",
+      "bytes": 56,
+      "sha256": "88fe75f776fc7c55fe4f99e7a4957d24210575339784bf2d38dfd1ff2cab0b7c"
+    },
+    {
+      "path": "probe.png",
+      "bytes": 2904,
+      "sha256": "d92fb5e826d2faca239fe5dc946caa48de27a88adfd1a15b073c48f7ad81b3a3"
+    },
+    {
+      "path": "probe.svg",
+      "bytes": 292,
+      "sha256": "5e294a5d9c9e9eef69c7b720a717aade290984e56ce1e283889d318a2942608f"
+    },
+    {
+      "path": "version.log",
+      "bytes": 123,
+      "sha256": "c429ef094bac29afed8ee46c166afad1ccd2b37cbe7d91a0cd6cfc37c99c65ad"
+    }
+  ]
+}

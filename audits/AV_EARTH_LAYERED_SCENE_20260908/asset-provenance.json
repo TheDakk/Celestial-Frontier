@@ -1,0 +1,25 @@
+{
+  "tool": "built-in image_gen",
+  "intent": "original reference-directed Earth background, no runtime organism generation",
+  "attempts": 1,
+  "source": {
+    "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/earth-riverbank-source.png",
+    "originalPath": "/Users/nick/.codex/generated_images/01a0778a-a9bf-7732-ac2b-a44cb106d4ad/exec-93d3c278-12e2-4542-86f4-2b2505245c4f.png",
+    "bytes": 2668880,
+    "sha256": "8d9825f6fbdc3a6e44fd87d927ae422187bf02aaa8b87856a6f776e191c16b2d"
+  },
+  "prompt": {
+    "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/IMAGE_PROMPT.txt",
+    "sha256": "b19d4a4de2349b736e50a5d1f02578c045c5e7730868a12219976bdf811edb70"
+  },
+  "runtime": {
+    "path": "port/v2/apps/game/src/assets/painted/earth-riverbank-v1.webp",
+    "bytes": 130306,
+    "sha256": "2993cd8054a2424f20ba24040717acdb17aa9c7157500cd5b945170cd1f625d8",
+    "width": 960,
+    "height": 430
+  },
+  "conversion": "ImageMagick resize960x430^ centerextent960x430 strip sRGB quality90; under shared lock",
+  "visualReview": "Generated original shows wet riverbank, cloud/mist, open foreground, no fauna, no foreground named plants. Distant generic trees are atmospheric scenery, not roster specimens. Source framing is already approximately2.23:1. Actual combined residents remain to be inspected.",
+  "humanArtAcceptance": false
+}

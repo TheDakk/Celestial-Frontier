@@ -1,0 +1,24 @@
+✖ bin-edge rounding keeps present source coverage; true missing coverage and displaced publication still fail (1.288417ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 117.201583
+
+✖ failing tests:
+
+test at port/v2/tools/quadruped-proof/source-join-continuity.test.mjs:75:1
+✖ bin-edge rounding keeps present source coverage; true missing coverage and displaced publication still fail (1.288417ms)
+  Error: Source join continuity: source attachment absent from mesh part0--part1 at 32,0
+      at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:7:40)
+      at sampleEdge (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:60:88)
+      at visit (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:69:3)
+      at createSourceJoinProbe (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:71:83)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.test.mjs:82:14)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)

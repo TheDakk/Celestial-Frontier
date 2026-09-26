@@ -1,0 +1,21 @@
+{
+  "schema": "cf.native-attempt-refusal/v1",
+  "startTool": "b26fe8",
+  "completionTool": "8c7dd5",
+  "exitCode": 1,
+  "runId": "20260923-centipede-native-01",
+  "report": "native-01/report.json",
+  "status": "FAIL",
+  "error": "Error: Error: Painted containment refused {\"side\":\"left\",\"ms\":0,\"status\":\"REFUSED\",\"findings\":[\"viewport\"],\"medium\":\"ground\",\"band\":{\"minY\":0.08,\"maxY\":0.86},\"arena\":{\"minX\":48.67246349600782,\"minY\":33.96452150693153,\"maxX\":627.6637667807979,\"maxY\":592.99060022039,\"width\":578.9913032847901,\"height\":559.0260787134584},\"viewport\":{\"minX\":48.67246349600782,\"minY\":33.96452150693153,\"maxX\":627.6637667807979,\"maxY\":592.99060022039,\"width\":578.9913032847901,\"height\":559.0260787134584}}\n    at http://127.0.0.1:51624/bundle.js:33929:37\n    at Array.map (<anonymous>)\n    at containment (http://127.0.0.1:51624/bundle.js:33911:16)\n    at http://127.0.0.1:51624/bundle.js:33944:21\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.48",
+    "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.7",
+    "protocol_version": "1.3"
+  },
+  "filmCaptured": false,
+  "cpuMeasured": null,
+  "diagnosis": "Native rest-size alphaBox usedalpha>8whilefullpublishedmeshretainspositivealpha. Truepositivealphabounds1148pxhigh;oldsizebounds460pxhigh. Correctrestsizingsupport,donotcroporchangeviewportgate."
+}

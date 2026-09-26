@@ -6,6 +6,7 @@
    background writer. The next receipt-bearing companion action may replace
    the historical assignment as part of its ordinary successor. */
 import { MAX_ACTIVE_PLAY_MS } from '@cf/domain-progression';
+import { companionRestReadyAtV1 } from './companion-care.js';
 import type {
   CreatureAssignmentV1,
   CreatureInstanceV1,
@@ -23,11 +24,16 @@ export interface CompanionAvailabilityV1 {
   readonly schema: 'cf-v2-companion-availability/v1';
   readonly activePlayMs: number;
   /** Null means available now, including a Recovery whose exact boundary has
-      been reached. Mission assignments never expire through this projector. */
+      been reached. Mission assignments never expire through this projector, except a
+      D13 Rest (`rest:<readyAt>`), which completes at its boundary like Recovery. */
   readonly assignment: CreatureAssignmentV1 | null;
   readonly recovered: boolean;
   readonly recoveryReadyAtActivePlayMs: number | null;
   readonly recoveryRemainingActivePlayMs: number;
+  /** D13 Rest: a `rest:<readyAt>` mission completes at its active-play boundary exactly like Recovery. */
+  readonly rested: boolean;
+  readonly restReadyAtActivePlayMs: number | null;
+  readonly restRemainingActivePlayMs: number;
   readonly blocks: Readonly<Record<CompanionLockedCommandV1, boolean>>;
 }
 
@@ -105,7 +111,9 @@ export function projectCompanionAvailabilityV1(
   );
   const recovered = stored?.kind === 'recovery'
     && now >= stored.readyAtActivePlayMs;
-  const assignment = recovered ? null : stored;
+  const restReadyAt = stored?.kind === 'mission' ? companionRestReadyAtV1(stored.missionId) : null;
+  const rested = restReadyAt !== null && now >= restReadyAt;
+  const assignment = recovered || rested ? null : stored;
   const blocked = assignment !== null;
   const blocks = Object.freeze({
     breed: blocked,
@@ -121,6 +129,9 @@ export function projectCompanionAvailabilityV1(
       ? stored.readyAtActivePlayMs : null,
     recoveryRemainingActivePlayMs: stored?.kind === 'recovery'
       ? Math.max(0, stored.readyAtActivePlayMs - now) : 0,
+    rested,
+    restReadyAtActivePlayMs: restReadyAt,
+    restRemainingActivePlayMs: restReadyAt === null ? 0 : Math.max(0, restReadyAt - now),
     blocks,
   });
 }

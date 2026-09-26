@@ -1,0 +1,1041 @@
+{
+  "output": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01.json",
+  "findings": [
+    {
+      "row": "approach:pulse",
+      "recordedMs": 147.5,
+      "recordedAction": "approach:pulse",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 30",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 30",
+      "recordedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": -0.081271
+        },
+        "centre": {
+          "rotation": -0.013114,
+          "dx": 0,
+          "dy": 0
+        },
+        "bell": {
+          "rotation": -0.2568333267446,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg0": {
+          "rotation": -0.3786645202003718,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg1": {
+          "rotation": -0.2476143381165333,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg2": {
+          "rotation": -0.17924243064746595,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg0": {
+          "rotation": 0.3786645202003718,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg1": {
+          "rotation": 0.2476143381165333,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg2": {
+          "rotation": 0.17924243064746595,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg0": {
+          "rotation": -0.3786645202003718,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg1": {
+          "rotation": -0.2476143381165333,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg2": {
+          "rotation": -0.17924243064746595,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg0": {
+          "rotation": 0.3786645202003718,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg1": {
+          "rotation": 0.2476143381165333,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg2": {
+          "rotation": 0.17924243064746595,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg0": {
+          "rotation": -0.3786645202003718,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg1": {
+          "rotation": -0.2476143381165333,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg2": {
+          "rotation": -0.17924243064746595,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 126.94076457763045,
+        "rmsTargetErrorPx": 14.008646746808976,
+        "maximumProjectionPx": 107.52583929269234,
+        "flippedTriangles": 30,
+        "minimumAreaRatio": -0.06390884589899627,
+        "orientationPasses": 128
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "arm1-middle": 5,
+        "arm2-middle": 2,
+        "arm2-base": 1,
+        "arm3-middle": 3,
+        "arm3-base": 22,
+        "arm4-middle": 1
+      },
+      "sourceBBox": [
+        313,
+        470,
+        1018,
+        841
+      ],
+      "partBBoxes": {
+        "arm1-middle": [
+          940,
+          470,
+          1018,
+          607
+        ],
+        "arm2-middle": [
+          851,
+          744,
+          880,
+          783
+        ],
+        "arm2-base": [
+          851,
+          744,
+          861,
+          763
+        ],
+        "arm3-middle": [
+          410,
+          802,
+          450,
+          841
+        ],
+        "arm3-base": [
+          410,
+          705,
+          587,
+          841
+        ],
+        "arm4-middle": [
+          313,
+          587,
+          322.5,
+          607
+        ]
+      },
+      "foldedCount": 30
+    },
+    {
+      "row": "melee:sting-arms",
+      "recordedMs": 185.4222222222222,
+      "recordedAction": "melee:sting-arms",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 9",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 9",
+      "recordedPose": {
+        "root": {
+          "rotation": 0.131715,
+          "dx": 0,
+          "dy": -0.01264
+        },
+        "centre": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "bell": {
+          "rotation": -0.19502230802082865,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg0": {
+          "rotation": -0.34503946803685065,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg1": {
+          "rotation": -0.30025623890780734,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg2": {
+          "rotation": -0.22663725248514263,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg0": {
+          "rotation": 0.34503946803685065,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg1": {
+          "rotation": 0.30025623890780734,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg2": {
+          "rotation": 0.22663725248514263,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg0": {
+          "rotation": -0.34503946803685065,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg1": {
+          "rotation": -0.30025623890780734,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg2": {
+          "rotation": -0.22663725248514263,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg0": {
+          "rotation": 0.34503946803685065,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg1": {
+          "rotation": 0.30025623890780734,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg2": {
+          "rotation": 0.22663725248514263,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg0": {
+          "rotation": -0.34503946803685065,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg1": {
+          "rotation": -0.30025623890780734,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg2": {
+          "rotation": -0.22663725248514263,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 122.6624432645686,
+        "rmsTargetErrorPx": 12.731605655104845,
+        "maximumProjectionPx": 102.45183786935863,
+        "flippedTriangles": 9,
+        "minimumAreaRatio": -0.03777597498113754,
+        "orientationPasses": 128
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "arm3-base": 9
+      },
+      "sourceBBox": [
+        470,
+        685,
+        548,
+        783
+      ],
+      "partBBoxes": {
+        "arm3-base": [
+          470,
+          685,
+          548,
+          783
+        ]
+      },
+      "foldedCount": 9
+    },
+    {
+      "row": "cast",
+      "recordedMs": 187.08333333333334,
+      "recordedAction": "cast",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 27",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 27",
+      "recordedPose": {
+        "root": {
+          "rotation": -0.261799,
+          "dx": -0.02,
+          "dy": -0.080034
+        },
+        "centre": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "bell": {
+          "rotation": -0.27573914887797885,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg0": {
+          "rotation": -0.36588463985731806,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg1": {
+          "rotation": -0.30611287666207615,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg2": {
+          "rotation": -0.23437827654628196,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg0": {
+          "rotation": 0.36588463985731806,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg1": {
+          "rotation": 0.30611287666207615,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg2": {
+          "rotation": 0.23437827654628196,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg0": {
+          "rotation": -0.36588463985731806,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg1": {
+          "rotation": -0.30611287666207615,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg2": {
+          "rotation": -0.23437827654628196,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg0": {
+          "rotation": 0.36588463985731806,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg1": {
+          "rotation": 0.30611287666207615,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg2": {
+          "rotation": 0.23437827654628196,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg0": {
+          "rotation": -0.36588463985731806,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg1": {
+          "rotation": -0.30611287666207615,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg2": {
+          "rotation": -0.23437827654628196,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 118.55949211093844,
+        "rmsTargetErrorPx": 13.944094394078164,
+        "maximumProjectionPx": 105.92320058338262,
+        "flippedTriangles": 27,
+        "minimumAreaRatio": -0.01013623614694369,
+        "orientationPasses": 128
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "arm1-middle": 5,
+        "arm1-base": 1,
+        "arm2-middle": 3,
+        "arm2-base": 3,
+        "arm3-base": 16,
+        "arm4-middle": 3
+      },
+      "sourceBBox": [
+        293,
+        440,
+        959.5,
+        841
+      ],
+      "partBBoxes": {
+        "arm1-middle": [
+          920,
+          440,
+          959.5,
+          607
+        ],
+        "arm1-base": [
+          920,
+          587,
+          930,
+          607
+        ],
+        "arm2-middle": [
+          831.5,
+          744,
+          861,
+          783
+        ],
+        "arm2-base": [
+          831.5,
+          744,
+          861,
+          783
+        ],
+        "arm3-base": [
+          410,
+          695,
+          567.5,
+          841
+        ],
+        "arm4-middle": [
+          293,
+          548,
+          332.5,
+          627
+        ]
+      },
+      "foldedCount": 27
+    },
+    {
+      "row": "dodge",
+      "recordedMs": 80.46666666666667,
+      "recordedAction": "dodge",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 19",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 19",
+      "recordedPose": {
+        "root": {
+          "rotation": -0.311181,
+          "dx": -0.178293,
+          "dy": -0.053488
+        },
+        "centre": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "bell": {
+          "rotation": -0.2362743532957395,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg0": {
+          "rotation": -0.34835321319243645,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg1": {
+          "rotation": -0.3844222433331893,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg2": {
+          "rotation": -0.35833279388282796,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg0": {
+          "rotation": 0.34835321319243645,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg1": {
+          "rotation": 0.3844222433331893,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg2": {
+          "rotation": 0.35833279388282796,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg0": {
+          "rotation": -0.34835321319243645,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg1": {
+          "rotation": -0.3844222433331893,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg2": {
+          "rotation": -0.35833279388282796,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg0": {
+          "rotation": 0.34835321319243645,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg1": {
+          "rotation": 0.3844222433331893,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg2": {
+          "rotation": 0.35833279388282796,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg0": {
+          "rotation": -0.34835321319243645,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg1": {
+          "rotation": -0.3844222433331893,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg2": {
+          "rotation": -0.35833279388282796,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 126.84633587664945,
+        "rmsTargetErrorPx": 13.795712053487511,
+        "maximumProjectionPx": 110.39772521570595,
+        "flippedTriangles": 19,
+        "minimumAreaRatio": -0.04441556837769834,
+        "orientationPasses": 128
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "arm3-base": 19
+      },
+      "sourceBBox": [
+        450,
+        666,
+        567.5,
+        802.5
+      ],
+      "partBBoxes": {
+        "arm3-base": [
+          450,
+          666,
+          567.5,
+          802.5
+        ]
+      },
+      "foldedCount": 19
+    },
+    {
+      "row": "faint",
+      "recordedMs": 255.86666666666667,
+      "recordedAction": "faint",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2",
+      "recordedPose": {
+        "root": {
+          "rotation": 0.077005,
+          "dx": -0.002941,
+          "dy": 0.077648
+        },
+        "centre": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "bell": {
+          "rotation": 0.17185156115444777,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg0": {
+          "rotation": 0.22803380230109413,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg1": {
+          "rotation": 0.20561027428861609,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg2": {
+          "rotation": 0.18416470204896798,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg0": {
+          "rotation": -0.22803380230109413,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg1": {
+          "rotation": -0.20561027428861609,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg2": {
+          "rotation": -0.18416470204896798,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg0": {
+          "rotation": 0.22803380230109413,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg1": {
+          "rotation": 0.20561027428861609,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg2": {
+          "rotation": 0.18416470204896798,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg0": {
+          "rotation": -0.22803380230109413,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg1": {
+          "rotation": -0.20561027428861609,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg2": {
+          "rotation": -0.18416470204896798,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg0": {
+          "rotation": 0.22803380230109413,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg1": {
+          "rotation": 0.20561027428861609,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg2": {
+          "rotation": 0.18416470204896798,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 111.44321652029622,
+        "rmsTargetErrorPx": 8.978284421648942,
+        "maximumProjectionPx": 90.7471096138652,
+        "flippedTriangles": 2,
+        "minimumAreaRatio": -0.020453196044737484,
+        "orientationPasses": 128
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "arm3-middle": 2
+      },
+      "sourceBBox": [
+        430,
+        880,
+        450,
+        900
+      ],
+      "partBBoxes": {
+        "arm3-middle": [
+          430,
+          880,
+          450,
+          900
+        ]
+      },
+      "foldedCount": 2
+    },
+    {
+      "row": "victory",
+      "recordedMs": 81.4,
+      "recordedAction": "victory",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 27",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 27",
+      "recordedPose": {
+        "root": {
+          "rotation": -0.272703,
+          "dx": 0,
+          "dy": -0.062499
+        },
+        "centre": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "bell": {
+          "rotation": -0.23237084781112186,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg0": {
+          "rotation": -0.35972794709221745,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg1": {
+          "rotation": -0.3829846663485863,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg2": {
+          "rotation": -0.3605233700791353,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg0": {
+          "rotation": 0.35972794709221745,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg1": {
+          "rotation": 0.3829846663485863,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg2": {
+          "rotation": 0.3605233700791353,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg0": {
+          "rotation": -0.35972794709221745,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg1": {
+          "rotation": -0.3829846663485863,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg2": {
+          "rotation": -0.3605233700791353,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg0": {
+          "rotation": 0.35972794709221745,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg1": {
+          "rotation": 0.3829846663485863,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg2": {
+          "rotation": 0.3605233700791353,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg0": {
+          "rotation": -0.35972794709221745,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg1": {
+          "rotation": -0.3829846663485863,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg2": {
+          "rotation": -0.3605233700791353,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 132.19772544651107,
+        "rmsTargetErrorPx": 14.408824836353666,
+        "maximumProjectionPx": 110.97413092878158,
+        "flippedTriangles": 27,
+        "minimumAreaRatio": -0.07069626636580496,
+        "orientationPasses": 128
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "arm1-middle": 3,
+        "arm3-base": 20,
+        "arm4-middle": 4,
+        "arm4-base": 1
+      },
+      "sourceBBox": [
+        332,
+        450,
+        959.5,
+        822
+      ],
+      "partBBoxes": {
+        "arm1-middle": [
+          920,
+          470,
+          959.5,
+          607
+        ],
+        "arm3-base": [
+          430,
+          685,
+          567.5,
+          822
+        ],
+        "arm4-middle": [
+          332,
+          450,
+          361.5,
+          627
+        ],
+        "arm4-base": [
+          332,
+          607,
+          342,
+          627
+        ]
+      },
+      "foldedCount": 27
+    },
+    {
+      "row": "presentation",
+      "recordedMs": 5983.333333333333,
+      "recordedAction": "approach:pulse",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 95",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 95",
+      "recordedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": -0.075061
+        },
+        "centre": {
+          "rotation": -0.005888,
+          "dx": 0,
+          "dy": 0
+        },
+        "bell": {
+          "rotation": -0.28611991012195626,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg0": {
+          "rotation": -0.4218434572310893,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg1": {
+          "rotation": -0.27584968455928693,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm0Seg2": {
+          "rotation": -0.19968136065882347,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg0": {
+          "rotation": 0.4218434572310893,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg1": {
+          "rotation": 0.27584968455928693,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm1Seg2": {
+          "rotation": 0.19968136065882347,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg0": {
+          "rotation": -0.4218434572310893,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg1": {
+          "rotation": -0.27584968455928693,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm2Seg2": {
+          "rotation": -0.19968136065882347,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg0": {
+          "rotation": 0.4218434572310893,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg1": {
+          "rotation": 0.27584968455928693,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm3Seg2": {
+          "rotation": 0.19968136065882347,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg0": {
+          "rotation": -0.4218434572310893,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg1": {
+          "rotation": -0.27584968455928693,
+          "dx": 0,
+          "dy": 0
+        },
+        "arm4Seg2": {
+          "rotation": -0.19968136065882347,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 135.70063328674448,
+        "rmsTargetErrorPx": 16.400197796794878,
+        "maximumProjectionPx": 117.14571536979402,
+        "flippedTriangles": 95,
+        "minimumAreaRatio": -0.31826822540979643,
+        "orientationPasses": 128
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "arm1-middle": 11,
+        "arm1-base": 6,
+        "arm2-middle": 6,
+        "arm2-base": 2,
+        "arm3-middle": 12,
+        "arm3-base": 60,
+        "arm4-middle": 7,
+        "arm4-base": 2
+      },
+      "sourceBBox": [
+        293,
+        430,
+        1018,
+        900
+      ],
+      "partBBoxes": {
+        "arm1-middle": [
+          920,
+          430,
+          1018,
+          627
+        ],
+        "arm1-base": [
+          880,
+          587,
+          940,
+          666
+        ],
+        "arm2-middle": [
+          763,
+          763,
+          880,
+          822
+        ],
+        "arm2-base": [
+          841,
+          763,
+          861,
+          783
+        ],
+        "arm3-middle": [
+          391,
+          802,
+          499,
+          900
+        ],
+        "arm3-base": [
+          410,
+          666,
+          587,
+          900
+        ],
+        "arm4-middle": [
+          293,
+          509,
+          410,
+          627
+        ],
+        "arm4-base": [
+          332,
+          607,
+          391,
+          646.5
+        ]
+      },
+      "foldedCount": 95
+    }
+  ]
+}

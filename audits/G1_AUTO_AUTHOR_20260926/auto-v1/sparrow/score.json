@@ -1,0 +1,22 @@
+{
+ "id": "sparrow",
+ "family": "biped-bird",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 911.2,
+ "landmarkMedian": 0.0707,
+ "landmarkMax": 0.2306,
+ "worst": [
+  "wingNearTip 0.231",
+  "tailFan 0.178",
+  "neck0 0.143"
+ ],
+ "labelAgreement": 0.4099,
+ "missingJoints": [],
+ "static": "RED",
+ "staticFails": [
+  "cast",
+  "dodge",
+  "faint"
+ ]
+}

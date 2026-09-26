@@ -1,0 +1,13 @@
+cwd: /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+command: npx vitest run apps/game/src/creature-rig-contact-insect.test.ts apps/game/src/creature-rig-contact-rigid-refusal.test.ts
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  2 passed (2)
+      Tests  12 passed (12)
+   Start at  01:58:15
+   Duration  250ms (transform 187ms, setup 0ms, import 256ms, tests 20ms, environment 0ms)
+
+
+exitCode: 0

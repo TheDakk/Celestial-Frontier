@@ -1,0 +1,45 @@
+{
+  "removed": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/G1_FIT_REPAIR_20260926/08-mongoose-fit",
+      "bytes": 11526168,
+      "reason": "ignored rejected fit copies; complete reports, hashes and regeneration recipe retained"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/G1_FIT_REPAIR_20260926/18-tapir-fit",
+      "bytes": 15757568,
+      "reason": "ignored rejected fit copies; complete reports, hashes and regeneration recipe retained"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/G1_FIT_REPAIR_20260926/eagle-fit",
+      "bytes": 12055435,
+      "reason": "ignored rejected fit copies; complete reports, hashes and regeneration recipe retained"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/G1_FIT_REPAIR_20260926/grouse-fit",
+      "bytes": 10497357,
+      "reason": "ignored rejected fit copies; complete reports, hashes and regeneration recipe retained"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/G1_FIT_REPAIR_20260926/sandpiper-fit",
+      "bytes": 6698477,
+      "reason": "ignored rejected fit copies; complete reports, hashes and regeneration recipe retained"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/G1_FIT_REPAIR_20260926/sparrow-fit",
+      "bytes": 8915622,
+      "reason": "ignored rejected fit copies; complete reports, hashes and regeneration recipe retained"
+    },
+    {
+      "path": "/private/tmp/cf-g5-native1254-20260926-01/prepared",
+      "bytes": 16748469,
+      "reason": "finished refused-run prepared inputs, originals and result retained"
+    }
+  ],
+  "removedBytes": 82199096,
+  "finderMetadataBackup": "/private/tmp/cf-g5-finder-metadata-backup",
+  "temporaryWorktreesCreated": 0,
+  "permanentWorktrees": 3,
+  "previewPackagesKept": 2,
+  "freeSpace": "Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on\n/dev/disk3s5   460Gi   204Gi   227Gi    48%    1.1M  2.4G    0%   /System/Volumes/Data\n"
+}

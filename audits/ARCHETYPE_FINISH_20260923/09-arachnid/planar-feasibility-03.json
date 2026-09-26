@@ -1,0 +1,414 @@
+{
+  "schema": "cf.planar-contact-first-feasibility/v1",
+  "status": "FEASIBLE_CONTACT_ONLY",
+  "scope": "One unchanged fit02 victory first refusal, actual canonical GSAP and existing contact refusal, followed by finite planar candidates and actual unchanged two-bone/angle/endpoint/paint admission. No production integration, ARAP, published mesh, static battery or film.",
+  "recordRecipeHash": "3ba58d18d37ebbeff9a2f2bb214431f60edfa646ed521b8ac808c68348e3b77c",
+  "bindingHash": "525a165cb9ce7ddf0b9490fe35e75add9341a517de3deca60be8e985eddef3e6",
+  "phase": {
+    "actionId": "victory",
+    "elapsedMs": 120,
+    "durationMs": 600,
+    "realm": "land"
+  },
+  "input": {
+    "root": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": -0.040816
+    },
+    "cephalothorax": {
+      "rotation": -0.199466,
+      "dx": 0,
+      "dy": 0
+    },
+    "abdomen": {
+      "rotation": 0.498666,
+      "dx": 0,
+      "dy": 0
+    },
+    "cheliceraFar": {
+      "rotation": -0.427428,
+      "dx": 0,
+      "dy": 0
+    },
+    "cheliceraNear": {
+      "rotation": -0.427428,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg1FarKnee": {
+      "rotation": -0.41015,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg1FarFoot": {
+      "rotation": 0.059137,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg1NearKnee": {
+      "rotation": -0.327295,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg1NearFoot": {
+      "rotation": 0.071282,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg2FarKnee": {
+      "rotation": -0.256198,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg2FarFoot": {
+      "rotation": 0.083739,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg2NearKnee": {
+      "rotation": -0.247413,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg2NearFoot": {
+      "rotation": 0.074878,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg3FarKnee": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg3FarFoot": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg3NearKnee": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg3NearFoot": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg4FarKnee": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg4FarFoot": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg4NearKnee": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+    },
+    "leg4NearFoot": {
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+    }
+  },
+  "oldRefusal": {
+    "error": "Error: Contact: victory@120 exceeds scale compression bound",
+    "cause": "Error: Contact: victory@120 rigid support exceeds scale compression bound"
+  },
+  "bound": 0.018589240285685097,
+  "boundPx": 23.31090731824911,
+  "reach": [
+    {
+      "center": {
+        "x": -0.25562679991135706,
+        "y": -0.1413018037396081
+      },
+      "min": 0.16616358759441194,
+      "max": 0.4346870143747623
+    },
+    {
+      "center": {
+        "x": -0.17707815557323903,
+        "y": 0.46834731906740945
+      },
+      "min": 0.16169181035699579,
+      "max": 0.4831376168712407
+    },
+    {
+      "center": {
+        "x": -0.4741275973595229,
+        "y": 0.07759771779149238
+      },
+      "min": 0.10852414242988934,
+      "max": 0.5895414123525651
+    },
+    {
+      "center": {
+        "x": -0.4896778365939727,
+        "y": 0.37424843549484166
+      },
+      "min": 0.08638685735890517,
+      "max": 0.6130529241641545
+    }
+  ],
+  "candidates": [
+    {
+      "x": -0.006212971526968143,
+      "y": 0.016432453504374694
+    },
+    {
+      "x": -0.006393596776763386,
+      "y": 0.01691018239884861
+    }
+  ],
+  "attempts": [
+    {
+      "delta": {
+        "x": -0.006212971526968143,
+        "y": 0.016432453504374694
+      },
+      "error": "RangeError: target outside two-bone reach",
+      "checks": []
+    },
+    {
+      "delta": {
+        "x": -0.006393596776763386,
+        "y": 0.01691018239884861
+      },
+      "error": null,
+      "checks": [
+        {
+          "joint": "leg3FarFoot",
+          "angles": {
+            "leg3FarKnee": 12.295212416542936,
+            "leg3FarFoot": -4.296135739093961
+          },
+          "error": 7.850462293418876e-17,
+          "paintErrorPx": 2.0883295093199195e-13,
+          "lengthErrors": {
+            "upper": 0,
+            "lower": 0
+          }
+        },
+        {
+          "joint": "leg3NearFoot",
+          "angles": {
+            "leg3NearKnee": 8.084076312748289,
+            "leg3NearFoot": 3.2191584263390878
+          },
+          "error": 1.1102230246251565e-16,
+          "paintErrorPx": 2.870134382673443e-13,
+          "lengthErrors": {
+            "upper": 8.326672684688674e-17,
+            "lower": 0
+          }
+        },
+        {
+          "joint": "leg4FarFoot",
+          "angles": {
+            "leg4FarKnee": 11.996811910617657,
+            "leg4FarFoot": -3.0680649562034
+          },
+          "error": 5.551115123125783e-17,
+          "paintErrorPx": 8.701372955499664e-14,
+          "lengthErrors": {
+            "upper": 5.551115123125783e-17,
+            "lower": 1.1102230246251565e-16
+          }
+        },
+        {
+          "joint": "leg4NearFoot",
+          "angles": {
+            "leg4NearKnee": 13.396627528401904,
+            "leg4NearFoot": -6.43815499639843
+          },
+          "error": 1.5700924586837752e-16,
+          "paintErrorPx": 1.740274591099933e-14,
+          "lengthErrors": {
+            "upper": 0,
+            "lower": 5.551115123125783e-17
+          }
+        }
+      ]
+    }
+  ],
+  "admitted": {
+    "delta": {
+      "x": -0.006393596776763386,
+      "y": 0.01691018239884861
+    },
+    "deltaPx": {
+      "x": -8.017570358061286,
+      "y": 21.205368728156156,
+      "norm": 22.670445459750585
+    },
+    "pose": {
+      "root": {
+        "rotation": 0,
+        "dx": -0.02751525798151897,
+        "dy": 0.03195806559479692
+      },
+      "cephalothorax": {
+        "rotation": -0.199466,
+        "dx": 0,
+        "dy": 0
+      },
+      "abdomen": {
+        "rotation": 0.498666,
+        "dx": 0,
+        "dy": 0
+      },
+      "cheliceraFar": {
+        "rotation": -0.427428,
+        "dx": 0,
+        "dy": 0
+      },
+      "cheliceraNear": {
+        "rotation": -0.427428,
+        "dx": 0,
+        "dy": 0
+      },
+      "leg1FarKnee": {
+        "rotation": -0.41015,
+        "dx": 0,
+        "dy": 0
+      },
+      "leg1FarFoot": {
+        "rotation": 0.059137,
+        "dx": 0,
+        "dy": 0
+      },
+      "leg1NearKnee": {
+        "rotation": -0.327295,
+        "dx": 0,
+        "dy": 0
+      },
+      "leg1NearFoot": {
+        "rotation": 0.071282,
+        "dx": 0,
+        "dy": 0
+      },
+      "leg2FarKnee": {
+        "rotation": -0.256198,
+        "dx": 0,
+        "dy": 0
+      },
+      "leg2FarFoot": {
+        "rotation": 0.083739,
+        "dx": 0,
+        "dy": 0
+      },
+      "leg2NearKnee": {
+        "rotation": -0.247413,
+        "dx": 0,
+        "dy": 0
+      },
+      "leg2NearFoot": {
+        "rotation": 0.074878,
+        "dx": 0,
+        "dy": 0
+      },
+      "leg3FarKnee": {
+        "rotation": 0.21459193890076275
+      },
+      "leg3FarFoot": {
+        "rotation": -0.07498171375978968
+      },
+      "leg3NearKnee": {
+        "rotation": 0.14109374863994048
+      },
+      "leg3NearFoot": {
+        "rotation": 0.05618491368293643
+      },
+      "leg4FarKnee": {
+        "rotation": 0.2093838675827498
+      },
+      "leg4FarFoot": {
+        "rotation": -0.05354783515080496
+      },
+      "leg4NearKnee": {
+        "rotation": 0.2338152590339234
+      },
+      "leg4NearFoot": {
+        "rotation": -0.11236700244087627
+      }
+    },
+    "checks": [
+      {
+        "joint": "leg3FarFoot",
+        "angles": {
+          "leg3FarKnee": 12.295212416542936,
+          "leg3FarFoot": -4.296135739093961
+        },
+        "error": 7.850462293418876e-17,
+        "paintErrorPx": 2.0883295093199195e-13,
+        "lengthErrors": {
+          "upper": 0,
+          "lower": 0
+        }
+      },
+      {
+        "joint": "leg3NearFoot",
+        "angles": {
+          "leg3NearKnee": 8.084076312748289,
+          "leg3NearFoot": 3.2191584263390878
+        },
+        "error": 1.1102230246251565e-16,
+        "paintErrorPx": 2.870134382673443e-13,
+        "lengthErrors": {
+          "upper": 8.326672684688674e-17,
+          "lower": 0
+        }
+      },
+      {
+        "joint": "leg4FarFoot",
+        "angles": {
+          "leg4FarKnee": 11.996811910617657,
+          "leg4FarFoot": -3.0680649562034
+        },
+        "error": 5.551115123125783e-17,
+        "paintErrorPx": 8.701372955499664e-14,
+        "lengthErrors": {
+          "upper": 5.551115123125783e-17,
+          "lower": 1.1102230246251565e-16
+        }
+      },
+      {
+        "joint": "leg4NearFoot",
+        "angles": {
+          "leg4NearKnee": 13.396627528401904,
+          "leg4NearFoot": -6.43815499639843
+        },
+        "error": 1.5700924586837752e-16,
+        "paintErrorPx": 1.740274591099933e-14,
+        "lengthErrors": {
+          "upper": 0,
+          "lower": 5.551115123125783e-17
+        }
+      }
+    ]
+  },
+  "inputs": [
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/record.json",
+      "sha256": "24ccad753e5f42192b7822c6c9449446cc388ce7a11439ce95a37bd514de19b8",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/binding.json",
+      "sha256": "e35bd83c98d22bb72fee5ea78d5ba0046227855dd90d0151a04e507f05fec12d",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/static-02.json",
+      "sha256": "191a388fe4a5beedf8607c8cdee5389a6ce6612c93e208f3ee0b4afdfa136072",
+      "unchanged": true
+    }
+  ]
+}

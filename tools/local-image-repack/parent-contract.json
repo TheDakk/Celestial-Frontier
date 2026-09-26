@@ -1,0 +1,44 @@
+{
+  "schema": "cf.q8-repack-parent/v1",
+  "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+  "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+  "graph": "transformer_q8.onnx",
+  "nodeCount": 103,
+  "originalBlockSize": 128,
+  "newBlockSize": 32,
+  "newParameterBytes": 347332608,
+  "files": [
+    {
+      "path": "transformer_q8-00000.data",
+      "bytes": 1585446912,
+      "sha256": "80aa4b75cdab0395f4374c51eecb59e005a6f81b3e573dddd9826a865bcd11be",
+      "gitBlobOid": "8ac8ad4fb554e9169f02b5ba50b6cf98ba2616f1",
+      "hashEvidence": "pinned-tree-lfs-sha256",
+      "role": "weights"
+    },
+    {
+      "path": "transformer_q8-00001.data",
+      "bytes": 1566572544,
+      "sha256": "32576185e1f0ab3937141b0c57acad1f37f298c5e7951b3367096c129e5eca28",
+      "gitBlobOid": "7bd3459205c2f2c97723b655bb4291ed16ae0aad",
+      "hashEvidence": "pinned-tree-lfs-sha256",
+      "role": "weights"
+    },
+    {
+      "path": "transformer_q8-00002.data",
+      "bytes": 981258240,
+      "sha256": "5062b615c62206a2dad22ce01fec6f674b0421336179cadec93fec77d1b2b455",
+      "gitBlobOid": "df117427d6d64e6267003c91f346d3afba15db7e",
+      "hashEvidence": "pinned-tree-lfs-sha256",
+      "role": "weights"
+    },
+    {
+      "path": "transformer_q8.onnx",
+      "bytes": 4991601,
+      "sha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102",
+      "gitBlobOid": "0ffd4cc250c0b4bbab54fd5e74e1478d74efaf90",
+      "hashEvidence": "pinned-tree-lfs-sha256",
+      "role": "graph"
+    }
+  ]
+}

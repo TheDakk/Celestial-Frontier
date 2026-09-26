@@ -1,0 +1,120 @@
+{
+  "status": "PASS",
+  "scope": "Material proof focused verification; historical full-profile stop remains open",
+  "steps": [
+    {
+      "name": "draft-pin",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_SURFACE_MATERIAL_20260908/draft-pin.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_SURFACE_MATERIAL_20260908/draft-pin.json"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.468
+    },
+    {
+      "name": "producer-final",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_SURFACE_MATERIAL_20260908/producer.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 3.079
+    },
+    {
+      "name": "producer-refresh-final",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_SURFACE_MATERIAL_20260908/refresh-producer.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.037
+    },
+    {
+      "name": "final-focused",
+      "cmd": "npm",
+      "args": [
+        "test",
+        "--",
+        "apps/game/src/planet-surface-turn-view.test.ts",
+        "tests/planet-surface-atlas.test.ts",
+        "tests/planet-surface-turn-math.test.ts",
+        "tests/current-producer-authorities.test.ts",
+        "tests/compendium-budget.test.ts",
+        "tests/guide-release.test.ts",
+        "tests/slicesmoke-guide-release-scroll-contract.test.ts",
+        "tests/slicesmoke-dtrain-release-convergence.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 5.476
+    },
+    {
+      "name": "typescript-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 2.682
+    },
+    {
+      "name": "art-unused-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 1.496
+    },
+    {
+      "name": "art-audit-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artaudit"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.68
+    },
+    {
+      "name": "override-check-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "overridecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.662
+    },
+    {
+      "name": "spec-check",
+      "cmd": "node",
+      "args": [
+        "tools/speccheck.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.282
+    },
+    {
+      "name": "root-validation",
+      "cmd": "node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 12.606
+    }
+  ]
+}

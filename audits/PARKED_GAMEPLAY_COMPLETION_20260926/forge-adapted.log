@@ -1,0 +1,28 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/training.test.ts (17 tests | 1 failed) 476ms
+     × keeps the six hands-on lessons, bounded read-only tour, and honest graduation in order 66ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/training.test.ts > Field Training completion transaction UI > keeps the six hands-on lessons, bounded read-only tour, and honest graduation in order
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/training.test.ts:319:50
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 22 passed (23)
+   Start at  01:13:59
+   Duration  976ms (transform 450ms, setup 0ms, import 870ms, tests 490ms, environment 0ms)
+

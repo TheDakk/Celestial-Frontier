@@ -1,0 +1,163 @@
+{
+  "state": "complete",
+  "events": [
+    {
+      "stage": "text",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "text_encoder_q4.onnx",
+      "atMs": 84.43999981880188
+    },
+    {
+      "stage": "text",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "text_encoder_q4.onnx",
+      "inputNames": [
+        "input_ids",
+        "attention_mask"
+      ],
+      "outputNames": [
+        "prompt_embeds"
+      ],
+      "elapsedMs": 3927.3799998760223,
+      "atMs": 4010.2799999713898
+    },
+    {
+      "stage": "text",
+      "type": "complete",
+      "dims": [
+        1,
+        512,
+        7680
+      ],
+      "tokenCount": 365,
+      "elapsedMs": 11391.144999980927,
+      "atMs": 11473.644999980927
+    },
+    {
+      "stage": "text",
+      "phase": "terminated",
+      "atMs": 11473.730000019073
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "transformer-q8-block32.onnx",
+      "atMs": 11572.694999933243
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "transformer-q8-block32.onnx",
+      "inputNames": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "timestep",
+        "img_ids",
+        "txt_ids"
+      ],
+      "outputNames": [
+        "noise_pred"
+      ],
+      "elapsedMs": 8667.18499994278,
+      "atMs": 20158.230000019073
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 1,
+      "steps": 4,
+      "elapsedMs": 17549.814999818802,
+      "atMs": 29040.234999895096
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 2,
+      "steps": 4,
+      "elapsedMs": 25650.55999994278,
+      "atMs": 37139.47000002861
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 3,
+      "steps": 4,
+      "elapsedMs": 34693.65499997139,
+      "atMs": 46182.58999991417
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 4,
+      "steps": 4,
+      "elapsedMs": 42740.09999990463,
+      "atMs": 54229.0649998188
+    },
+    {
+      "stage": "denoise",
+      "type": "complete",
+      "sigmas": [
+        1,
+        0.9622336779129861,
+        0.89465780804073,
+        0.7389686527095128,
+        0
+      ],
+      "elapsedMs": 42783.23000001907,
+      "atMs": 54272.40499997139
+    },
+    {
+      "stage": "denoise",
+      "phase": "terminated",
+      "atMs": 54274.22000002861
+    },
+    {
+      "stage": "decode",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "vae_decoder.onnx",
+      "atMs": 54525.139999866486
+    },
+    {
+      "stage": "decode",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "vae_decoder.onnx",
+      "inputNames": [
+        "packed_latent"
+      ],
+      "outputNames": [
+        "sample"
+      ],
+      "elapsedMs": 691.9949998855591,
+      "atMs": 55111.97000002861
+    },
+    {
+      "stage": "decode",
+      "type": "complete",
+      "dims": [
+        1,
+        3,
+        576,
+        1024
+      ],
+      "elapsedMs": 4276.039999961853,
+      "atMs": 58696.22000002861
+    },
+    {
+      "stage": "decode",
+      "phase": "terminated",
+      "atMs": 58696.30499982834
+    }
+  ],
+  "started": 68.9599997997284,
+  "elapsedMs": 58751.045000076294
+}

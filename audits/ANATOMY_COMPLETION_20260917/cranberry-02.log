@@ -1,0 +1,13 @@
+file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:3
+const requireValue=(ok,message)=>{if(!ok)throw Error('Part masks: '+message);};
+                                               ^
+
+Error: Part masks: empty authored part: branch-3-wood
+    at requireValue (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:3:48)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:35:20
+    at Array.map (<anonymous>)
+    at cutAuthoredParts (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:34:32)
+    at async buildAuthoredParts (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-authored-parts.mjs:20:15)
+    at async file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/family-review/prepare-flora.mjs:22:14
+
+Node.js v26.8.2

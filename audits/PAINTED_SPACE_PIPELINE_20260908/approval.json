@@ -1,0 +1,35 @@
+{
+  "recordedAt": "2026-09-08T11:50:32.101578+00:00",
+  "decision": "APPROVED_VISUAL_DIRECTION",
+  "authority": "Nick: That\u2019s the exact art direction I want to bring into the game.",
+  "references": [
+    {
+      "scope": "space objects",
+      "source": "/Users/nick/Library/Mobile Documents/com~apple~CloudDocs/Downloads/Codex Image Sep 8, 2026, 07_41_41 AM.png",
+      "path": "approved-space-reference.png",
+      "sha256": "749f6de6debc31486e37b733bb5b8d5b5e038dd7f4ff97038e108c61b05f0d3a",
+      "bytes": 2457859,
+      "width": 1254,
+      "height": 1254,
+      "uncompressedRGBA8MiB": 5.999
+    },
+    {
+      "scope": "creatures",
+      "source": "/Users/nick/Library/Mobile Documents/com~apple~CloudDocs/Downloads/Codex Image Sep 8, 2026, 07_46_25 AM.png",
+      "path": "approved-creature-reference.png",
+      "sha256": "029fa87c560c3ebc6d065baec15ecd4e84a25f5d567cd8e4ff8dc23612ba88a3",
+      "bytes": 2358697,
+      "width": 1254,
+      "height": 1254,
+      "uncompressedRGBA8MiB": 5.999
+    }
+  ],
+  "approvedScope": "Painted visual direction for space objects and creatures. Not production asset admission, phenotype substitutions, runtime performance, all animation coverage, or hosted authority.",
+  "pending": "Nick is generating additional biome and UI references. Existing biome concept is not approved by inference.",
+  "requestedAnimation": [
+    "slow galaxy spin",
+    "planet surface rotation",
+    "articulated creature battle movements"
+  ],
+  "supersedes": "Earlier initial style question is resolved for space objects and creatures by this explicit decision; do not ask again."
+}

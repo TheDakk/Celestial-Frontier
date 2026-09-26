@@ -1,0 +1,23 @@
+Command: node audits/ARCHETYPE_FINISH_20260923/04-insect/contact-current-03.mjs
+Scope: current-source contact only; no transforms, bypasses, browser, ARAP or film.
+{"id":"idle","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"alert","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"approach:crawl","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"approach:flight","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"melee:mandible","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"cast","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"hit","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"dodge","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"faint","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"victory","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"tame","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"feed","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"melee:body","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"presentation","variant":"original-static-context","status":"PASS_CONTACT_ONLY","attempted":869,"passed":869,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"cast","variant":"stage-travel","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"hit","variant":"stage-travel","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"dodge","variant":"stage-travel","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"victory","variant":"stage-travel","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+{"id":"tame","variant":"stage-travel","status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"failureClasses":{},"firstFailure":null}
+
+Exit: 0

@@ -1,0 +1,77 @@
+{
+  "markers": [
+    {
+      "name": "active-640a9635fe4137f415f6179185b3a9c7c12e52bac1588e78e026b15f1226cb2b.json",
+      "bytes": 173,
+      "value": {
+        "schema": "cf.local-model-attempt.v1",
+        "manifestSha256": "640a9635fe4137f415f6179185b3a9c7c12e52bac1588e78e026b15f1226cb2b",
+        "attemptId": "056eb673-7dc6-46c2-a2a7-3a3fba43b9c5"
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "name": "056eb673-7dc6-46c2-a2a7-3a3fba43b9c5",
+      "bytes": 11534336,
+      "chunks": 11,
+      "files": [
+        {
+          "name": "f0-c9",
+          "bytes": 1048576
+        },
+        {
+          "name": "f0-c8",
+          "bytes": 1048576
+        },
+        {
+          "name": "f0-c7",
+          "bytes": 1048576
+        },
+        {
+          "name": "f0-c6",
+          "bytes": 1048576
+        },
+        {
+          "name": "f0-c5",
+          "bytes": 1048576
+        },
+        {
+          "name": "f0-c4",
+          "bytes": 1048576
+        },
+        {
+          "name": "f0-c3",
+          "bytes": 1048576
+        },
+        {
+          "name": "f0-c2",
+          "bytes": 1048576
+        },
+        {
+          "name": "f0-c10",
+          "bytes": 1048576
+        },
+        {
+          "name": "f0-c1",
+          "bytes": 1048576
+        },
+        {
+          "name": "f0-c0",
+          "bytes": 1048576
+        }
+      ]
+    }
+  ],
+  "totalBytes": 11534336,
+  "estimate": {
+    "quota": 10811063978,
+    "usage": 73645738,
+    "usageDetails": {
+      "caches": 62016512,
+      "fileSystem": 11536941,
+      "indexedDB": 59386,
+      "serviceWorkerRegistrations": 32899
+    }
+  }
+}

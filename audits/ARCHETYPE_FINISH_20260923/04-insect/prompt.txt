@@ -1,0 +1,61 @@
+Use case: stylized-concept. Paint a NEW composition of a single Earth ground beetle for a riggable game cutout. The attached Discovery Atlas is STYLE ONLY. Do not copy its layouts or creatures.
+
+TOP PRIORITY ANATOMY: exactly SIX fully visible walking legs, each connected to the thorax with a visible two-segment chain and its own separate hooked foot. Show a shallow elevated side view facing RIGHT. Fan three legs on the near side downward; fan three far legs into the visible gaps. The far FRONT leg must visibly project FORWARD below the chin, with a clear bent knee and a hooked foot ending well above the near-front foot. Give it its own open-background lane, not hidden behind the near foreleg or mouthparts. Far MID leg occupies the gap between near front and near middle; far HIND leg occupies the gap between near middle and near hind. Count six walking feet, separately from two antennae and mandibles. Do not merge, duplicate, or hide any walking leg.
+
+Use a compact body in the middle of a spacious square canvas: all painted anatomy must remain between pixel100 and pixel1154 in both directions. Two raised hard brown elytra and TWO distinct translucent membranous wings extend backward to the LEFT above the abdomen, with visible independent tips. Keep wings compact enough that legs and antennae fit with the required margin. Relaxed, moderately bent walking chains; no straight rigid legs or tight Z folds. One connected natural animal, not separated diagram parts. One wing is slightly higher than the other, with negative space between outer silhouettes.
+
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,
+emblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes (universe, stars, planet biomes, Arena FAR), and Arena
+MID/NEAR key-painted terrain so all arena layers match the same biome hand:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SUBJECT AND SOURCE
+One Earth Beetle: real generic ground/scarab beetle, a small head, compact thorax, broad rounded abdomen, hard brown chitin, natural small dark eyes. Quiet preflight stance with exposed wings. No scenery, floor or shadow.
+Genomic identity and traits (Earth anatomy takes priority): {"seed":881335556,"kingdom":"fauna","color":9,"form":13,"body":2,"loco":15,"trait":24,"size":5,"diet":4,"head":5,"limbs":4,"skin":7,"tail":2,"pattern":4,"eyes":4,"behavior":0,"habitat":14,"detail":8,"accent":9,"temper":6,"sense":0,"repro":2,"life":0,"metab":2,"lumin":true,"gen":0,"heat":1,"_earthName":"Beetle"}
+Family contract insect, clip set insect-v1. Required rig joint/part inventory: root, thorax, head, mandible, abdomen, legFrontFarKnee, legFrontFarFoot, legFrontNearKnee, legFrontNearFoot, legMidFarKnee, legMidFarFoot, legMidNearKnee, legMidNearFoot, legHindFarKnee, legHindFarFoot, legHindNearKnee, legHindNearFoot, antennaFar, antennaNear, wingFar, wingNear. Connected organic painted subject, no equipment, no fantasy added limbs.
+
+TECHNICAL OUTPUT
+One whole centered creature, exact1254×1254 PNG, genuinely transparent background. Preserve actual alpha; no checkerboard or painted transparency pattern. Keep every antenna, wing tip, claw and foot inside the generous100-pixel safe margin. Rich painterly natural-history hand matching the atlas, not CGI, not a diagram, no text or labels.
+
+FINAL COUNT: six continuously traceable legs, six distinct walking feet; two antennae; two raised hard wing covers; two membranous wings. The far-front walking leg is REQUIRED, visible beneath the head in its own clear lane. A five-legged beetle is not an acceptable output.

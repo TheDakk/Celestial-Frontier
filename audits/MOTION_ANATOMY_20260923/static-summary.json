@@ -1,0 +1,58 @@
+[
+  {
+    "path": "audits/MOTION_ANATOMY_20260923/python-wave-static-02.json",
+    "sha256": "d6c207bb9e3ddf7dba013365bde200bb048a82681dc206039a1dd1f13adb021f",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "changedVisibleRgbaChannels": 0
+  },
+  {
+    "path": "audits/MOTION_ANATOMY_20260923/salmon-wave-static-02.json",
+    "sha256": "bc50e3ea33f17c2351b1bd1e4a88b23d2b7e8e5d2648b50ac1bf4a9556e8c8fb",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "changedVisibleRgbaChannels": 0
+  },
+  {
+    "path": "audits/MOTION_ANATOMY_20260923/eagle-gait-static-01.json",
+    "sha256": "4b67ae9cefc161f94d0d5cfb9d7ebdfe975d0632b7a79a8580f70568d3569a88",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "changedVisibleRgbaChannels": 0
+  },
+  {
+    "path": "audits/MOTION_ANATOMY_20260923/beetle-gait-static-01.json",
+    "sha256": "853c65455a0691359b142f3792e123180ae3445f94ecfed1a21664cc8001a9ab",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "changedVisibleRgbaChannels": 0
+  },
+  {
+    "path": "audits/MOTION_ANATOMY_20260923/chimpanzee-gait-static-01.json",
+    "sha256": "eef0628d1df4c067e197107e3c0ca348eceac8d320de12f9252a246b420db45d",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "changedVisibleRgbaChannels": 0
+  },
+  {
+    "path": "audits/MOTION_ANATOMY_20260923/tarantula-gait-static-01.json",
+    "sha256": "83a77cfbb8be1fc46bdecd9aa208590269a79ea7dd9817399a8b3aaa4f7590cd",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "changedVisibleRgbaChannels": 0
+  },
+  {
+    "path": "audits/MOTION_ANATOMY_20260923/fruit-bat-gait-static-01.json",
+    "sha256": "4f0ea74d7c895a2e2dd7feaccc1ee325214099a21d76abe3425d6bdd06e00fc9",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "changedVisibleRgbaChannels": 0
+  },
+  {
+    "path": "audits/MOTION_ANATOMY_20260923/centipede-gait-static-01.json",
+    "sha256": "34280ce42d5b741a20503fe84070ea696748ece58c998543a11dd588e5f7188f",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "changedVisibleRgbaChannels": 0
+  }
+]

@@ -1,0 +1,184 @@
+{
+  "scope": "Supplemental explicit browser-event assessment and installed runtime post-readback; no rerun, raw result unchanged",
+  "browserEvents": [],
+  "browserEventsEmpty": true,
+  "runtimeChecks": [
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "bytes": 51407,
+      "sha256": "5d25483158d53d8f34d0e9c06a654d56c8dca4ebdf370ea0982ef11315a00e0e",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "bytes": 25749873,
+      "sha256": "503d17cb7411b79781b9fad1cf0978f03cf06b050c7d399c730e914f473bf549",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.mjs",
+      "bytes": 46676,
+      "sha256": "3d68fa7af88c48894d4b0c8629de12018ab73b77519bc0b05dc8d908ad82749f",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.wasm",
+      "bytes": 27797172,
+      "sha256": "db816fadbab47a755170c08f933961e231412ac17f5981f9a62e519708a44dea",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.mjs",
+      "bytes": 49268,
+      "sha256": "f4a22e988ac3c2345e58c823a9254ac15f39271f86241bb2bbda0bc7e6b4dde6",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.wasm",
+      "bytes": 16025636,
+      "sha256": "8ef22fea2fec3d90dc2858e0392382cf6800b0855acfd6722ca1390e2fe15c56",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.mjs",
+      "bytes": 24218,
+      "sha256": "5a15f1fd086b3f6c2baf1f35105b8f502653b567e165cef80028870b39748747",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm",
+      "bytes": 13961845,
+      "sha256": "ec8580a9d7b9476ceee52e10a7f94124e4dc71a019d666ed6d4726697c109a4d",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs",
+      "bytes": 865147,
+      "sha256": "c600de656f52722365438926fbce6e926cd8594b1b4cd2f5cd4499c42f110c58",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.min.mjs",
+      "bytes": 819520,
+      "sha256": "e7a1ea699f25bdeeb3d9b9ff7ea26edb660fd15cab380e2fe479809d422f5e8b",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.mjs",
+      "bytes": 5929648,
+      "sha256": "93c437880b40d8ffe65c971cff28fa554e10b490f30f45382e2ebd78c457cb7b",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.bundle.min.mjs",
+      "bytes": 413328,
+      "sha256": "a32b8c695bfc78c1e6e5b72746364c1a7733b7b17c5759e3cffd8bc8e8158a91",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.bundle.min.mjs",
+      "bytes": 114239,
+      "sha256": "9afb4911acc005f370e838cf5cfce493728b2634c41afb15a0c716a8053dedee",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.min.mjs",
+      "bytes": 66510,
+      "sha256": "8d930290d7150c5d1bbd88d4e2988bddaf7e19b916c3b0e0e5e581e090b470f4",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.mjs",
+      "bytes": 676607,
+      "sha256": "4df3efe5189e41e2eea36f16815bce1ff11979cd8ab5e3e27dfb731f95f9c135",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.min.mjs",
+      "bytes": 367933,
+      "sha256": "d0f6cf735704c25e713101804e24532be1ee754292fe05fa7dda708a3be1e6b4",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.mjs",
+      "bytes": 2639881,
+      "sha256": "a4d8dde2bc3638eecf29d772ae48035c534d2160bfedf313f0365cb54e701f1f",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.node.min.mjs",
+      "bytes": 27061,
+      "sha256": "d03374770621e06e4750482236ec6dbd6299d0205b9de44b9eebe52a0721ef71",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.bundle.min.mjs",
+      "bytes": 72894,
+      "sha256": "7a3913dc5c7a9c3ad1144f5fbfecd402bc5013bcc886bc67664b18d8a15ab298",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.min.mjs",
+      "bytes": 50126,
+      "sha256": "14a0a63ad1a0fe8127722929fd16fb26c2e5352ea221bc9034d12daf314d0b92",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.mjs",
+      "bytes": 577671,
+      "sha256": "956c4b3b8d7dd15229c98bcc58869773e1d582737aec04b2e5c634bd932085a4",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgl.min.mjs",
+      "bytes": 472167,
+      "sha256": "ce98866698d20fa9521a5d27520a3273a6860b85ff32a5c9f3fc22ee10b9786a",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgl.mjs",
+      "bytes": 3534309,
+      "sha256": "415c7a241d1c1c22a47cee581d76dd2aeb63ed90521cf562adf06ca2a5461c23",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.bundle.min.mjs",
+      "bytes": 116102,
+      "sha256": "2b943893e8b444fd3983c205f3574cddd70b1f8a6170c114b03cc3d6060c4cbb",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "bytes": 66348,
+      "sha256": "08272eb8dadd249a0eaa53e19f4e5b5d01bc8a121240719db29093cfb776bc27",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.mjs",
+      "bytes": 676586,
+      "sha256": "1aaf3cde11544e48f111a0911c4d08c6f1401043ec3822601d51dad39353bb9a",
+      "matches": true
+    },
+    {
+      "url": "/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "bytes": 98937,
+      "sha256": "1c4a848f86156201c033d6cd08c4cf81ae1088552acec3367f31ef086edf5af0",
+      "matches": true
+    }
+  ],
+  "runtimeUnchanged": true,
+  "sourcesUnchanged": true,
+  "browserClosed": true,
+  "serverClosed": true,
+  "workspaceReleased": true,
+  "elapsedMs": 71126.06999993324,
+  "rawOutput": {
+    "path": "raw-output.png",
+    "bytes": 1484925,
+    "sha256": "1edbbfec9f61946a707b1d4be1d0dcbaef1be4b1ce49312c20dbc7bc54dd12db",
+    "width": 1024,
+    "height": 576
+  },
+  "qualityAccepted": false,
+  "status": "PASS"
+}

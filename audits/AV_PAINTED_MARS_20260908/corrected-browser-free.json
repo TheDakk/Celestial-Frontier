@@ -1,0 +1,113 @@
+{
+  "status": "PASS",
+  "scope": "Painted Mars focused verification; historical full-profile and navigation failures remain open",
+  "steps": [
+    {
+      "name": "producer-final",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_20260908/producer-corrected.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 3.121
+    },
+    {
+      "name": "producer-refresh-final",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_20260908/refresh-producer-corrected.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.037
+    },
+    {
+      "name": "final-focused",
+      "cmd": "npm",
+      "args": [
+        "test",
+        "--",
+        "apps/game/src/painted-vista-load.test.ts",
+        "tests/painted-mars-binding.test.ts",
+        "tests/biome-vista-surface.test.ts",
+        "tests/biome-vista-cache.test.ts",
+        "tests/biome-vista-protocol.test.ts",
+        "tests/biome-vista-worker-error.test.ts",
+        "tests/pwa-offline.test.ts",
+        "tests/current-producer-authorities.test.ts",
+        "tests/compendium-budget.test.ts",
+        "tests/guide-release.test.ts",
+        "tests/slicesmoke-guide-release-scroll-contract.test.ts",
+        "tests/slicesmoke-dtrain-release-convergence.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 4.316
+    },
+    {
+      "name": "typescript-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 2.446
+    },
+    {
+      "name": "art-unused-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 1.382
+    },
+    {
+      "name": "art-audit-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artaudit"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.656
+    },
+    {
+      "name": "override-check-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "overridecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.64
+    },
+    {
+      "name": "spec-check",
+      "cmd": "node",
+      "args": [
+        "tools/speccheck.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.299
+    },
+    {
+      "name": "root-validation",
+      "cmd": "node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 11.883
+    }
+  ]
+}

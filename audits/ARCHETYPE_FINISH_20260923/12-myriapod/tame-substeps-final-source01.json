@@ -1,0 +1,67 @@
+{
+  "schema": "cf.compact-tame-substeps-freeze/v1",
+  "status": "FOCUSED_PASS_PRODUCTION_FROZEN",
+  "scope": "Explicit compact tame:2 only; original arithmetic, amplitudes, limits and default paths retained. Full static/native acceptance remains pending.",
+  "files": [
+    {
+      "file": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "beforeSha256": "4031bd79f82af72c90de74552540e68a4ee71a14039a86483e6f8a6c79184673",
+      "sha256": "911a2619de2d78933f357af2edd50ed53a55ceac2b6edcafe0b7668c9c78ebae"
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "beforeSha256": "16d66bf1bb75954f202745f33afeed985ce290320e7fdf375a399ba823598343",
+      "sha256": "5e7b34989379940755376e8fdf8710fcfb8123bd764763a27faa7d2ed954c9f1"
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "beforeSha256": "a8dc92d1ced5978a6bea52f4a8f0ef88bab441b3f28248823f26b4bcba4ddca7",
+      "sha256": "0c5b0eb26fd8f558ebb321ee8d95303587a140cf4b1308fcefcdbea985a7b514"
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-travel-substeps.test.ts",
+      "beforeSha256": "391c19c84a4c5fa453299943c149066e4f6b57900a3db4eb0331c221116b7a88",
+      "sha256": "29e6faf6277b7e69279200b03afb08263ff9bf42f9589fa8c8a3352f2b4cfb12"
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-swing-lift.test.ts",
+      "beforeSha256": "c113e516fbb7bfbd9193c7bcc60b4dbd5a744d112aa09c898b6bbf95854e0f63",
+      "sha256": "53783ccf5b1e955e7528f35184895146edde9b074813fd23c4d4f7421c10adb2"
+    },
+    {
+      "file": "CREATURE_ANIMATION.md",
+      "beforeSha256": "c1f1bd3aedbc3ba3a0bbc3f2f1b6c536039fca667225f0b4d0e396751466cbf3",
+      "sha256": "c62ab93d59dc4970748ad03c16db9810698c30c1dde477be74443270b0459f06"
+    },
+    {
+      "file": "celestial-frontier-codebase-reference.md",
+      "beforeSha256": "ef824ce8d3cef73cb43e9bd19d884fa953876a32be8126fc4aab98ea8bb38530",
+      "sha256": "1095448a41b2a9043955241d8a821d96ee64126215ddc0b1583a7eae50c28bb8"
+    }
+  ],
+  "tests": {
+    "receipt": "tame-substeps-checks01.json",
+    "cadence": {
+      "passed": 19,
+      "total": 19
+    },
+    "affectedSwingControl": {
+      "passed": 1,
+      "skipped": 11
+    },
+    "actualPhase": {
+      "evidence": "tame-substeps-return-01.json",
+      "contacts": 28,
+      "maxEndpointError": 2.482534153247273e-16,
+      "maxPaintTargetErrorPx": 0.00031604918256235444,
+      "compression": 0,
+      "rootArithmeticExact": true,
+      "priorPolicyExactRefusal": true
+    }
+  },
+  "refs": {
+    "description": "Same exact paragraph replacement in both current references; final Centipede qualification remains pending",
+    "before": "The compact model explicitly declares `contactStance.travelSubsteps: {hit:2,dodge:2}`. Only these declared source-step reactions and value 2 are accepted. Each nonzero compiled interval receives two equal signed foot substeps. The original body expression `base + stride * progress` is cached before subdivision, preserving root travel arithmetic, source waypoint times and total displacement. Lift/retraction amplitudes, blend weights, easing residuals and numerical gates remain unchanged; other actions, zero-travel holds and stage-owned travel retain their prior cadence. This is an explicit reaction model, not a reach threshold inferred from a failed pose.",
+    "after": "The compact model explicitly declares `contactStance.travelSubsteps: {hit:2,dodge:2,tame:2}`. Only these declared source-step actions and value 2 are accepted. Each nonzero compiled interval receives two equal signed foot substeps; a completed translated clip\u2019s existing presentation return step is also subdivided. The original body expression `base + stride * progress` is cached before subdivision, preserving root travel arithmetic, source waypoint times and total displacement. Lift/retraction amplitudes, blend weights, easing residuals and numerical gates remain unchanged; other actions, zero-travel holds and stage-owned travel retain their prior cadence. This is an explicit action cadence model; it does not choose step counts from measured reach."
+  }
+}

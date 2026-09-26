@@ -1,0 +1,199 @@
+{
+  "scope": "Same retained budget, fresh changed-cache native measurements.25ms only bins long interval diagnostics, never an allowance.",
+  "rows": [
+    {
+      "name": "cattle",
+      "runId": "native-cattle-05",
+      "status": "DIAGNOSTIC_PASS",
+      "cpuP95Ms": 15,
+      "maxCpuMs": 41.89999997615814,
+      "cpuFramesOver16_6667Ms": 34,
+      "overBudgetByPhase": {
+        "action": 4,
+        "hitstop": 6,
+        "idle": 13,
+        "impact": 11
+      },
+      "longFrameIntervalsAtLeast25Ms": 20,
+      "longIntervals": [
+        {
+          "ms": 2166.6,
+          "delta": 33.399999999999636,
+          "priorCpuMs": 18.299999952316284,
+          "phase": "hitstop"
+        },
+        {
+          "ms": 2299.9,
+          "delta": 33.399999999999636,
+          "priorCpuMs": 30,
+          "phase": "impact"
+        },
+        {
+          "ms": 5983.1,
+          "delta": 33.400000000001455,
+          "priorCpuMs": 30.300000071525574,
+          "phase": "action"
+        },
+        {
+          "ms": 6016.4,
+          "delta": 33.29999999999927,
+          "priorCpuMs": 31.799999952316284,
+          "phase": "hitstop"
+        },
+        {
+          "ms": 6049.699999999999,
+          "delta": 33.29999999999927,
+          "priorCpuMs": 32.39999997615814,
+          "phase": "hitstop"
+        },
+        {
+          "ms": 6083,
+          "delta": 33.30000000000109,
+          "priorCpuMs": 27.100000023841858,
+          "phase": "impact"
+        },
+        {
+          "ms": 6149.699999999999,
+          "delta": 50.0,
+          "priorCpuMs": 32.200000047683716,
+          "phase": "impact"
+        },
+        {
+          "ms": 6199.699999999999,
+          "delta": 33.29999999999927,
+          "priorCpuMs": 35.10000002384186,
+          "phase": "impact"
+        },
+        {
+          "ms": 6233.1,
+          "delta": 33.400000000001455,
+          "priorCpuMs": 11.200000047683716,
+          "phase": "impact"
+        },
+        {
+          "ms": 15099.300000000001,
+          "delta": 33.30000000000291,
+          "priorCpuMs": 26.40000009536743,
+          "phase": "idle"
+        },
+        {
+          "ms": 15149.4,
+          "delta": 33.400000000001455,
+          "priorCpuMs": 32.09999990463257,
+          "phase": "idle"
+        },
+        {
+          "ms": 15199.300000000001,
+          "delta": 49.900000000001455,
+          "priorCpuMs": 41.89999997615814,
+          "phase": "idle"
+        },
+        {
+          "ms": 15232.699999999999,
+          "delta": 33.39999999999782,
+          "priorCpuMs": 40.799999952316284,
+          "phase": "idle"
+        },
+        {
+          "ms": 15282.699999999999,
+          "delta": 50.0,
+          "priorCpuMs": 40.5,
+          "phase": "idle"
+        },
+        {
+          "ms": 15315.999999999998,
+          "delta": 33.29999999999927,
+          "priorCpuMs": 37,
+          "phase": "idle"
+        },
+        {
+          "ms": 15349.300000000001,
+          "delta": 33.30000000000291,
+          "priorCpuMs": 30.5,
+          "phase": "idle"
+        },
+        {
+          "ms": 15382.699999999999,
+          "delta": 33.39999999999782,
+          "priorCpuMs": 32.5,
+          "phase": "idle"
+        },
+        {
+          "ms": 15415.999999999998,
+          "delta": 33.29999999999927,
+          "priorCpuMs": 34.39999997615814,
+          "phase": "idle"
+        },
+        {
+          "ms": 15449.300000000001,
+          "delta": 33.30000000000291,
+          "priorCpuMs": 41.5,
+          "phase": "idle"
+        },
+        {
+          "ms": 15482.6,
+          "delta": 33.29999999999927,
+          "priorCpuMs": 19.399999976158142,
+          "phase": "idle"
+        }
+      ],
+      "maxFrameDeltaMs": 50.0,
+      "liveFrames": 911,
+      "encoded": {
+        "frames": 913,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 15.607683,
+        "minimumFrames": 886
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "timeline": {
+        "schema": "cf.battle-capture-timeline/v1",
+        "plannedDurationMs": 15532.666666666666,
+        "totalScriptMs": 15532.666666666666,
+        "firstMs": 0,
+        "lastMs": 15549.4,
+        "frames": 911
+      },
+      "reportSha256": "6a6233a18a0e2b47550f73dc5c49b6f5862cf8f04bd321904aff11e9907d4e26",
+      "filmSha256": "e1134e74cd9cba260b9301311ddae494ebbc637f80b1c03c632c5e121bff6aee"
+    },
+    {
+      "name": "lizard",
+      "runId": "native-lizard-05",
+      "status": "DIAGNOSTIC_PASS",
+      "cpuP95Ms": 3.799999952316284,
+      "maxCpuMs": 9.700000047683716,
+      "cpuFramesOver16_6667Ms": 0,
+      "overBudgetByPhase": {},
+      "longFrameIntervalsAtLeast25Ms": 0,
+      "longIntervals": [],
+      "maxFrameDeltaMs": 16.80000000000291,
+      "liveFrames": 841,
+      "encoded": {
+        "frames": 845,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 14.079648,
+        "minimumFrames": 798
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "timeline": {
+        "schema": "cf.battle-capture-timeline/v1",
+        "plannedDurationMs": 13996.666666666666,
+        "totalScriptMs": 13996.666666666666,
+        "firstMs": 0,
+        "lastMs": 13999.399999999998,
+        "frames": 841
+      },
+      "reportSha256": "3dc8b570f30ef98a3d6169fae0ba85bb756a9d587ac7ade579bb56fbd86cc0e8",
+      "filmSha256": "7c923778b34e56bec6fdf2d5f553aed72986bc5db04d8408735de21affcf87e8"
+    }
+  ]
+}

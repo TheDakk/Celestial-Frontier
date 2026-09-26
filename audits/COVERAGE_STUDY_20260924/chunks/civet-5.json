@@ -1,0 +1,382 @@
+{
+ "id": "civet-5",
+ "standIn": "Civet",
+ "template": "quadruped",
+ "accentGroups": [
+  "ears",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/civet-sentinel-input-01/card/master-512.png",
+  "joints": [
+   "earFarTip",
+   "earNearTip",
+   "jaw",
+   "head",
+   "foreNearPaw",
+   "foreNearAnkle",
+   "foreNearKnee",
+   "foreFarPaw",
+   "foreFarAnkle",
+   "foreFarKnee",
+   "hindNearPaw",
+   "hindNearAnkle",
+   "hindNearKnee",
+   "hindFarPaw",
+   "hindFarAnkle",
+   "hindFarKnee",
+   "tail3",
+   "tail2",
+   "tail1",
+   "neck",
+   "chest",
+   "spine"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Capybara",
+   "group": "aquatic-pawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "blunt squared-off brick-shaped head",
+    "no visible tail",
+    "barrel body on short partly webbed legs"
+   ],
+   "note": "Eyes, ears and nostrils sit high on the head; the rump is higher than the shoulders."
+  },
+  {
+   "name": "Fishing Cat",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.23,
+   "eyes": "normal",
+   "mustRead": [
+    "stocky heavy-boned cat body",
+    "olive coat with rows of solid dark spots and neck stripes",
+    "short thick tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Alligator",
+   "group": "crocodilian",
+   "posture": "sprawling",
+   "aspect": 5,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "broad rounded U-shaped snout with teeth hidden when the mouth shuts",
+    "armoured ridged scute rows down the back",
+    "thick tail longer than the body"
+   ],
+   "note": "Snout is wide and blunt; a crocodile's is narrow and V-shaped with the fourth tooth exposed."
+  },
+  {
+   "name": "Snapping Turtle",
+   "group": "freshwater-turtle",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "massive hooked beak on an oversized head",
+    "long saw-toothed crested tail",
+    "rough ridged shell too small to withdraw into"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Softshell Turtle",
+   "group": "freshwater-turtle",
+   "posture": "quadruped",
+   "aspect": 1.8,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "flat leathery pancake shell with no scutes",
+    "tubular snorkel snout",
+    "broad fully webbed paddle feet"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cheetah",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "black tear stripes running from eye to mouth",
+    "solid round spots (not rosettes)",
+    "small head on a deep narrow chest with a long thin tail"
+   ],
+   "note": "Body is greyhound-like: tall, whippet-thin waist, long legs; head is unusually small for a big cat."
+  },
+  {
+   "name": "Spotted Hyena",
+   "group": "hyena",
+   "posture": "quadruped",
+   "aspect": 1.8,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "back sloping sharply down from high shoulders to low hips",
+    "massive thick neck and heavy jaws",
+    "rounded ears and blotchy spots"
+   ],
+   "note": ""
+  },
+  {
+   "name": "African Wild Dog",
+   "group": "canid",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "huge rounded bat-like ears",
+    "irregular patchwork blotches of black, tan and white",
+    "white brush tail tip on a lean long-legged frame"
+   ],
+   "note": ""
+  },
+  {
+   "name": "African Elephant",
+   "group": "elephant",
+   "posture": "quadruped",
+   "aspect": 1.4,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "long muscular trunk reaching the ground",
+    "enormous fan-shaped ears",
+    "curved tusks and pillar legs"
+   ],
+   "note": "Back dips in a saddle-shaped concave curve; the head is the highest point in Asian elephants but not here."
+  },
+  {
+   "name": "Wildebeest",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "heavy boxy cow-like head with sideways-curving horns",
+    "shaggy chin beard and neck mane",
+    "high shoulders sloping to a slight rump"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Hippopotamus",
+   "group": "hippo",
+   "posture": "quadruped",
+   "aspect": 2.2,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "enormous barrel body on stumpy pillar legs",
+    "huge squared muzzle wider than the skull",
+    "tiny ears, eyes and nostrils in a line on top of the head"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Eland",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "massive ox-like antelope body with a shoulder hump",
+    "straight tightly spiralled horns",
+    "dewlap of loose skin under the throat"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Gazelle",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.26,
+   "eyes": "prominent",
+   "mustRead": [
+    "slender ringed lyre-curved horns",
+    "dark band along the flank between tan and white",
+    "fine delicate legs and long neck"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Hartebeest",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.32,
+   "eyes": "normal",
+   "mustRead": [
+    "extremely long narrow elongated face",
+    "back sloping steeply down to the hindquarters",
+    "bracket-shaped horns rising from a bony pedestal"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Oryx",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "very long straight rapier horns swept back",
+    "bold black facial mask and leg markings",
+    "blocky muscular horse-like body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Serval",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 1.8,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "extraordinarily long legs for its body",
+    "very large upright oval ears on a small head",
+    "short tail and boldly spotted and barred coat"
+   ],
+   "note": "Legs are the longest of any cat relative to size; the body looks small slung between them."
+  },
+  {
+   "name": "Aardvark",
+   "group": "aardvark",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "long tubular pig-like snout",
+    "tall rabbit-like ears",
+    "arched back and thick tapering kangaroo tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Turtle",
+   "group": "freshwater-turtle",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "domed shell covering the whole trunk",
+    "head and neck poking out the front",
+    "stumpy scaly legs"
+   ],
+   "note": "Generic name interpreted as a representative freshwater pond turtle. Commonly drawn with the shell as a separate hat sitting on the back; the shell IS the body wall, legs and neck emerge from under its rim."
+  },
+  {
+   "name": "Bison",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.27,
+   "eyes": "small",
+   "mustRead": [
+    "huge muscular shoulder hump",
+    "massive low-slung shaggy head with beard",
+    "narrow tapering hindquarters"
+   ],
+   "note": "The silhouette is front-heavy: the topline peaks at the shoulder hump and slopes steeply down to small hips. Often drawn as a uniform barrel like a cow."
+  },
+  {
+   "name": "Prairie Dog",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.1,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "plump cylindrical body",
+    "very short stubby tail",
+    "small rounded ears flat to the head"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Ground Squirrel",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.4,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "long low tubular body",
+    "thin sparsely furred tail, not a bushy plume",
+    "tiny ears"
+   ],
+   "note": "Generic name read as a representative ground squirrel. Unlike a tree squirrel the tail is short and flat, not a big feathery arch."
+  },
+  {
+   "name": "Gopher",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.6,
+   "headFrac": 0.27,
+   "eyes": "small",
+   "mustRead": [
+    "cylindrical neckless body",
+    "huge protruding orange incisors outside the lips",
+    "oversized digging claws on the forefeet"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Horned Lizard",
+   "group": "special-lizard",
+   "posture": "sprawling",
+   "aspect": 1.6,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "crown of backward-pointing horns on the rear of the skull",
+    "flat wide pancake-round body",
+    "fringe of pointed scales along the flanks"
+   ],
+   "note": "Body is a squat disc with a very short tail, not a normal long-tailed lizard shape."
+  },
+  {
+   "name": "Saiga",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.29,
+   "eyes": "prominent",
+   "mustRead": [
+    "bulbous drooping trunk-like nose",
+    "translucent ringed horns rising straight up",
+    "slim antelope legs"
+   ],
+   "note": ""
+  }
+ ]
+}

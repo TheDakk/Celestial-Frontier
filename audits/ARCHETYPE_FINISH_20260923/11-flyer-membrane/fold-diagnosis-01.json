@@ -1,0 +1,3856 @@
+{
+  "schema": "cf.failed-pose-fold-diagnosis/v1",
+  "scope": "Exactly six Fruit Bat canonical first-fold poses, replayed once each through current source with exact retained refusal/statistics parity; private rejected ARAP scratch only, no battery, native film or published fit/acceptance claim",
+  "recordRecipeHash": "584ae12f33cafd725010536c82a974b59c9dee35879c9826d03409206cadd45e",
+  "bindingHash": "598a5ef0bfa6157c4fc2a0132943e720eadbd82d140a76c2eb0e3bd456ec7264",
+  "findings": [
+    {
+      "row": "approach:flight",
+      "recordedMs": 45.06666666666667,
+      "recordedAction": "approach:flight",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "attemptedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": -0.046766
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": -0.040811,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0.027207,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": 0.2822255398169507,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarElbow": {
+          "rotation": -0.07609929476012468,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarWrist": {
+          "rotation": -0.03459837012082394,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": -0.012495765858446577,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": 0.2822255398169507,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearElbow": {
+          "rotation": -0.07609929476012468,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearWrist": {
+          "rotation": -0.03459837012082394,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": -0.012495765858446577,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.114391,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": -0.204053,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.197044,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": -0.204053,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "phase": {
+        "actionId": "approach:flight",
+        "elapsedMs": 45.06666666666667,
+        "durationMs": 676,
+        "realm": "aerial"
+      },
+      "resolvedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": -0.046766
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": -0.040811,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0.027207,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": 0.2822255398169507,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarElbow": {
+          "rotation": -0.07609929476012468,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarWrist": {
+          "rotation": -0.03459837012082394,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": -0.012495765858446577,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": 0.2822255398169507,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearElbow": {
+          "rotation": -0.07609929476012468,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearWrist": {
+          "rotation": -0.03459837012082394,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": -0.012495765858446577,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.114391,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": -0.204053,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.197044,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": -0.204053,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "exactRetainedPose": true,
+      "influenceAnchors": {
+        "legFarFoot": {
+          "landmarkPx": [
+            559,
+            921
+          ],
+          "pivotJoint": "legFarKnee",
+          "pivotPx": [
+            571,
+            880
+          ],
+          "rotation": -0.204053
+        },
+        "root": {
+          "landmarkPx": [
+            877,
+            653.9999999999999
+          ],
+          "pivotJoint": "root",
+          "pivotPx": [
+            877,
+            653.9999999999999
+          ],
+          "rotation": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 19.27057906420983,
+        "rmsTargetErrorPx": 2.5735160477345924,
+        "maximumProjectionPx": 15.222742672174657,
+        "flippedTriangles": 1,
+        "minimumAreaRatio": -0.1368155802523082,
+        "orientationPasses": 2
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "leg-far-foot": 1
+      },
+      "sourceBBox": [
+        548,
+        900,
+        587,
+        920
+      ],
+      "partBBoxes": {
+        "leg-far-foot": [
+          548,
+          900,
+          587,
+          920
+        ]
+      },
+      "folded": [
+        {
+          "triangle": 711,
+          "indices": [
+            439,
+            431,
+            438
+          ],
+          "parts": [
+            "leg-far-foot"
+          ],
+          "ratio": -0.1368155802523082,
+          "restSignedDoubleAreaPx2": 780,
+          "targetSignedDoubleAreaPx2": -106.71615259680038,
+          "failedSignedDoubleAreaPx2": -106.71615259680038,
+          "vertices": [
+            {
+              "index": 439,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "targetPx": [
+                555.3434593677521,
+                884.5206867456436
+              ],
+              "privateFailedPx": [
+                555.3434593677521,
+                884.5206867456436
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "legFarFoot",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot"
+              ]
+            },
+            {
+              "index": 431,
+              "restPx": [
+                548,
+                900
+              ],
+              "targetPx": [
+                547.9999887943268,
+                887.2569980621338
+              ],
+              "privateFailedPx": [
+                547.9999887943268,
+                887.2569980621338
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 438,
+              "restPx": [
+                587,
+                900
+              ],
+              "targetPx": [
+                586.9999929070473,
+                887.2569980621338
+              ],
+              "privateFailedPx": [
+                586.9999929070473,
+                887.2569980621338
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 430,
+              "restPx": [
+                548,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 431,
+              "restPx": [
+                548,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 436,
+              "restPx": [
+                567.5,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 437,
+              "restPx": [
+                587,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 438,
+              "restPx": [
+                587,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 439,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "weights": [
+                [
+                  "legFarFoot",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot"
+              ]
+            },
+            {
+              "index": 444,
+              "restPx": [
+                587,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 445,
+              "restPx": [
+                548,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 451,
+              "restPx": [
+                627,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 452,
+              "restPx": [
+                607,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 924,
+              "restPx": [
+                627,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 925,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 926,
+              "restPx": [
+                587,
+                940
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 927,
+              "restPx": [
+                548,
+                940
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": "approach:crawl",
+      "recordedMs": 264.76666666666665,
+      "recordedAction": "approach:crawl",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "attemptedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": -0.001339
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.037272,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": -0.44337590512144165,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarElbow": {
+          "rotation": 0.48308443633876985,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarWrist": {
+          "rotation": 0.3541750482202416,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": 0.17933223758998895,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": -0.44337590512144165,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearElbow": {
+          "rotation": 0.48308443633876985,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearWrist": {
+          "rotation": 0.3541750482202416,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": 0.17933223758998895,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.104472,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": -0.058418,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.179959,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": -0.058418,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "phase": {
+        "actionId": "approach:crawl",
+        "elapsedMs": 264.76666666666665,
+        "durationMs": 676,
+        "realm": "aerial"
+      },
+      "resolvedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": -0.001339
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.037272,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": -0.44337590512144165,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarElbow": {
+          "rotation": 0.48308443633876985,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarWrist": {
+          "rotation": 0.3541750482202416,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": 0.17933223758998895,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": -0.44337590512144165,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearElbow": {
+          "rotation": 0.48308443633876985,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearWrist": {
+          "rotation": 0.3541750482202416,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": 0.17933223758998895,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.104472,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": -0.058418,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.179959,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": -0.058418,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "exactRetainedPose": true,
+      "influenceAnchors": {
+        "legFarFoot": {
+          "landmarkPx": [
+            559,
+            921
+          ],
+          "pivotJoint": "legFarKnee",
+          "pivotPx": [
+            571,
+            880
+          ],
+          "rotation": -0.058418
+        },
+        "root": {
+          "landmarkPx": [
+            877,
+            653.9999999999999
+          ],
+          "pivotJoint": "root",
+          "pivotPx": [
+            877,
+            653.9999999999999
+          ],
+          "rotation": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 21.354415276186185,
+        "rmsTargetErrorPx": 3.1186427773549013,
+        "maximumProjectionPx": 18.989021889323592,
+        "flippedTriangles": 1,
+        "minimumAreaRatio": -0.05190613221132258,
+        "orientationPasses": 2
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "leg-far-foot": 1
+      },
+      "sourceBBox": [
+        548,
+        900,
+        587,
+        920
+      ],
+      "partBBoxes": {
+        "leg-far-foot": [
+          548,
+          900,
+          587,
+          920
+        ]
+      },
+      "folded": [
+        {
+          "triangle": 711,
+          "indices": [
+            439,
+            431,
+            438
+          ],
+          "parts": [
+            "leg-far-foot"
+          ],
+          "ratio": -0.05190613221132258,
+          "restSignedDoubleAreaPx2": 780,
+          "targetSignedDoubleAreaPx2": -40.48678312483161,
+          "failedSignedDoubleAreaPx2": -40.48678312483161,
+          "vertices": [
+            {
+              "index": 439,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "targetPx": [
+                551.1710125207901,
+                898.5970423221588
+              ],
+              "privateFailedPx": [
+                551.1710125207901,
+                898.5970423221588
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "legFarFoot",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot"
+              ]
+            },
+            {
+              "index": 431,
+              "restPx": [
+                548,
+                900
+              ],
+              "targetPx": [
+                547.9999887943268,
+                899.6351648569107
+              ],
+              "privateFailedPx": [
+                547.9999887943268,
+                899.6351648569107
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 438,
+              "restPx": [
+                587,
+                900
+              ],
+              "targetPx": [
+                586.9999929070473,
+                899.6351648569107
+              ],
+              "privateFailedPx": [
+                586.9999929070473,
+                899.6351648569107
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 430,
+              "restPx": [
+                548,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 431,
+              "restPx": [
+                548,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 436,
+              "restPx": [
+                567.5,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 437,
+              "restPx": [
+                587,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 438,
+              "restPx": [
+                587,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 439,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "weights": [
+                [
+                  "legFarFoot",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot"
+              ]
+            },
+            {
+              "index": 444,
+              "restPx": [
+                587,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 445,
+              "restPx": [
+                548,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 451,
+              "restPx": [
+                627,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 452,
+              "restPx": [
+                607,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 924,
+              "restPx": [
+                627,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 925,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 926,
+              "restPx": [
+                587,
+                940
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 927,
+              "restPx": [
+                548,
+                940
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": "melee:claw",
+      "recordedMs": 184.3111111111111,
+      "recordedAction": "melee:claw",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "attemptedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0.197532,
+          "dy": -0.039383
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": -0.130631,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": 0.6390406461991451,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarElbow": {
+          "rotation": -0.19155891263711985,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarWrist": {
+          "rotation": -0.08169896700560966,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": 0.6390406461991451,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearElbow": {
+          "rotation": -0.19155891263711985,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearWrist": {
+          "rotation": -0.08169896700560966,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.075645,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": 0.089959,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.880925,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": 0.543396,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "phase": {
+        "actionId": "melee:claw",
+        "elapsedMs": 184.3111111111111,
+        "durationMs": 762.6666666666666,
+        "realm": "aerial",
+        "travel": "stage"
+      },
+      "resolvedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": -0.039383
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": -0.130631,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": 0.6390406461991451,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarElbow": {
+          "rotation": -0.19155891263711985,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarWrist": {
+          "rotation": -0.08169896700560966,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": 0.6390406461991451,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearElbow": {
+          "rotation": -0.19155891263711985,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearWrist": {
+          "rotation": -0.08169896700560966,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.075645,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": 0.089959,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.880925,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": 0.543396,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "exactRetainedPose": true,
+      "influenceAnchors": {
+        "legNearFoot": {
+          "landmarkPx": [
+            717,
+            921
+          ],
+          "pivotJoint": "legNearKnee",
+          "pivotPx": [
+            722,
+            866
+          ],
+          "rotation": 0.543396
+        },
+        "root": {
+          "landmarkPx": [
+            877,
+            653.9999999999999
+          ],
+          "pivotJoint": "root",
+          "pivotPx": [
+            877,
+            653.9999999999999
+          ],
+          "rotation": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 83.77996322684598,
+        "rmsTargetErrorPx": 6.928869271894258,
+        "maximumProjectionPx": 77.98499185005193,
+        "flippedTriangles": 1,
+        "minimumAreaRatio": -0.06656341240587019,
+        "orientationPasses": 68
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "leg-near-foot": 1
+      },
+      "sourceBBox": [
+        705,
+        900,
+        744,
+        920
+      ],
+      "partBBoxes": {
+        "leg-near-foot": [
+          705,
+          900,
+          744,
+          920
+        ]
+      },
+      "folded": [
+        {
+          "triangle": 654,
+          "indices": [
+            404,
+            394,
+            400
+          ],
+          "parts": [
+            "leg-near-foot"
+          ],
+          "ratio": -0.06656341240587019,
+          "restSignedDoubleAreaPx2": 780,
+          "targetSignedDoubleAreaPx2": -51.91946167657876,
+          "failedSignedDoubleAreaPx2": -51.91946167657875,
+          "vertices": [
+            {
+              "index": 404,
+              "restPx": [
+                724.5,
+                920
+              ],
+              "targetPx": [
+                861.2767277956009,
+                887.9374694824219
+              ],
+              "privateFailedPx": [
+                861.2767277956009,
+                887.9374694824219
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "legNearFoot",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot"
+              ]
+            },
+            {
+              "index": 394,
+              "restPx": [
+                705,
+                900
+              ],
+              "targetPx": [
+                705.000008225441,
+                889.2687388658524
+              ],
+              "privateFailedPx": [
+                705.000008225441,
+                889.2687388658524
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 400,
+              "restPx": [
+                744,
+                900
+              ],
+              "targetPx": [
+                743.9999749660492,
+                889.2687388658524
+              ],
+              "privateFailedPx": [
+                743.9999749660492,
+                889.2687388658524
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 386,
+              "restPx": [
+                685.5,
+                841.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 387,
+              "restPx": [
+                705,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 388,
+              "restPx": [
+                705,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 389,
+              "restPx": [
+                666,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 390,
+              "restPx": [
+                724.5,
+                841.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 391,
+              "restPx": [
+                744,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 392,
+              "restPx": [
+                744,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 393,
+              "restPx": [
+                685.5,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 394,
+              "restPx": [
+                705,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 399,
+              "restPx": [
+                724.5,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 400,
+              "restPx": [
+                744,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 401,
+              "restPx": [
+                763.5,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 402,
+              "restPx": [
+                783,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot",
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 404,
+              "restPx": [
+                724.5,
+                920
+              ],
+              "weights": [
+                [
+                  "legNearFoot",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-foot"
+              ]
+            },
+            {
+              "index": 422,
+              "restPx": [
+                763.5,
+                841.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-near-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 981,
+              "restPx": [
+                666,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 982,
+              "restPx": [
+                783,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 983,
+              "restPx": [
+                724.5,
+                920
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 984,
+              "restPx": [
+                744,
+                940
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 985,
+              "restPx": [
+                705,
+                940
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": "dodge",
+      "recordedMs": 40.2,
+      "recordedAction": "dodge",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "attemptedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": -0.139444,
+          "dy": -0.033466
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": -0.03894,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": 0.32207755146758194,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarElbow": {
+          "rotation": -0.098689718694008,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarWrist": {
+          "rotation": -0.049902122905879365,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": 0.023898765508933207,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": 0.32207755146758194,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearElbow": {
+          "rotation": -0.098689718694008,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearWrist": {
+          "rotation": -0.049902122905879365,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": 0.023898765508933207,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.109147,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": -0.29205,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.188013,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": -0.29205,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "phase": {
+        "actionId": "dodge",
+        "elapsedMs": 40.2,
+        "durationMs": 536,
+        "realm": "aerial"
+      },
+      "resolvedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": -0.139444,
+          "dy": -0.033466
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": -0.03894,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": 0.32207755146758194,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarElbow": {
+          "rotation": -0.098689718694008,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarWrist": {
+          "rotation": -0.049902122905879365,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": 0.023898765508933207,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": 0.32207755146758194,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearElbow": {
+          "rotation": -0.098689718694008,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearWrist": {
+          "rotation": -0.049902122905879365,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": 0.023898765508933207,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.109147,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": -0.29205,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.188013,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": -0.29205,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "exactRetainedPose": true,
+      "influenceAnchors": {
+        "legFarFoot": {
+          "landmarkPx": [
+            559,
+            921
+          ],
+          "pivotJoint": "legFarKnee",
+          "pivotPx": [
+            571,
+            880
+          ],
+          "rotation": -0.29205
+        },
+        "root": {
+          "landmarkPx": [
+            877,
+            653.9999999999999
+          ],
+          "pivotJoint": "root",
+          "pivotPx": [
+            877,
+            653.9999999999999
+          ],
+          "rotation": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 21.50684563656108,
+        "rmsTargetErrorPx": 2.8566705408149087,
+        "maximumProjectionPx": 6.472241122468072,
+        "flippedTriangles": 1,
+        "minimumAreaRatio": -0.09159531963188892,
+        "orientationPasses": 3
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "leg-far-foot": 1
+      },
+      "sourceBBox": [
+        548,
+        900,
+        587,
+        920
+      ],
+      "partBBoxes": {
+        "leg-far-foot": [
+          548,
+          900,
+          587,
+          920
+        ]
+      },
+      "folded": [
+        {
+          "triangle": 711,
+          "indices": [
+            439,
+            431,
+            438
+          ],
+          "parts": [
+            "leg-far-foot"
+          ],
+          "ratio": -0.09159531963188892,
+          "restSignedDoubleAreaPx2": 780,
+          "targetSignedDoubleAreaPx2": -71.44434931287336,
+          "failedSignedDoubleAreaPx2": -71.44434931287336,
+          "vertices": [
+            {
+              "index": 439,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "targetPx": [
+                521.749293923378,
+                889.0491403341293
+              ],
+              "privateFailedPx": [
+                521.749293923378,
+                889.0491403341293
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "legFarFoot",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot"
+              ]
+            },
+            {
+              "index": 431,
+              "restPx": [
+                548,
+                900
+              ],
+              "targetPx": [
+                510.0036127567291,
+                890.8810465335846
+              ],
+              "privateFailedPx": [
+                510.0036127567291,
+                890.8810465335846
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 438,
+              "restPx": [
+                587,
+                900
+              ],
+              "targetPx": [
+                549.0036168694496,
+                890.8810465335846
+              ],
+              "privateFailedPx": [
+                549.0036168694496,
+                890.8810465335846
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 430,
+              "restPx": [
+                548,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 431,
+              "restPx": [
+                548,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 436,
+              "restPx": [
+                567.5,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 437,
+              "restPx": [
+                587,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 438,
+              "restPx": [
+                587,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 439,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "weights": [
+                [
+                  "legFarFoot",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot"
+              ]
+            },
+            {
+              "index": 444,
+              "restPx": [
+                587,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 445,
+              "restPx": [
+                548,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 451,
+              "restPx": [
+                627,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 452,
+              "restPx": [
+                607,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 924,
+              "restPx": [
+                627,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 925,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 926,
+              "restPx": [
+                587,
+                940
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 927,
+              "restPx": [
+                548,
+                940
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": "faint",
+      "recordedMs": 122.86666666666666,
+      "recordedAction": "faint",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "attemptedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.022056
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.038495,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0.028871,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0.028871,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarElbow": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarWrist": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearElbow": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearWrist": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.1079,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": -0.240594,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.185864,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": -0.240594,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "phase": {
+        "actionId": "faint",
+        "elapsedMs": 122.86666666666666,
+        "durationMs": 776,
+        "realm": "aerial"
+      },
+      "resolvedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0.022056
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.038495,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0.028871,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0.028871,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarElbow": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarWrist": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearElbow": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearWrist": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.1079,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": -0.240594,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.185864,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": -0.240594,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "exactRetainedPose": true,
+      "influenceAnchors": {
+        "legFarFoot": {
+          "landmarkPx": [
+            559,
+            921
+          ],
+          "pivotJoint": "legFarKnee",
+          "pivotPx": [
+            571,
+            880
+          ],
+          "rotation": -0.240594
+        },
+        "root": {
+          "landmarkPx": [
+            877,
+            653.9999999999999
+          ],
+          "pivotJoint": "root",
+          "pivotPx": [
+            877,
+            653.9999999999999
+          ],
+          "rotation": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 7.645915905786204,
+        "rmsTargetErrorPx": 1.0715823688317865,
+        "maximumProjectionPx": 4.900367432286092,
+        "flippedTriangles": 1,
+        "minimumAreaRatio": -0.07158628861025876,
+        "orientationPasses": 2
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "leg-far-foot": 1
+      },
+      "sourceBBox": [
+        548,
+        900,
+        587,
+        920
+      ],
+      "partBBoxes": {
+        "leg-far-foot": [
+          548,
+          900,
+          587,
+          920
+        ]
+      },
+      "folded": [
+        {
+          "triangle": 711,
+          "indices": [
+            439,
+            431,
+            438
+          ],
+          "parts": [
+            "leg-far-foot"
+          ],
+          "ratio": -0.07158628861025876,
+          "restSignedDoubleAreaPx2": 780,
+          "targetSignedDoubleAreaPx2": -55.837305116001836,
+          "failedSignedDoubleAreaPx2": -55.837305116001836,
+          "vertices": [
+            {
+              "index": 439,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "targetPx": [
+                557.8936201930046,
+                904.5782246589661
+              ],
+              "privateFailedPx": [
+                557.8936201930046,
+                904.5782246589661
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "legFarFoot",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot"
+              ]
+            },
+            {
+              "index": 431,
+              "restPx": [
+                548,
+                900
+              ],
+              "targetPx": [
+                547.9999887943268,
+                906.0099502801895
+              ],
+              "privateFailedPx": [
+                547.9999887943268,
+                906.0099502801895
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 438,
+              "restPx": [
+                587,
+                900
+              ],
+              "targetPx": [
+                586.9999929070473,
+                906.0099502801895
+              ],
+              "privateFailedPx": [
+                586.9999929070473,
+                906.0099502801895
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 430,
+              "restPx": [
+                548,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 431,
+              "restPx": [
+                548,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 436,
+              "restPx": [
+                567.5,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 437,
+              "restPx": [
+                587,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 438,
+              "restPx": [
+                587,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 439,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "weights": [
+                [
+                  "legFarFoot",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot"
+              ]
+            },
+            {
+              "index": 444,
+              "restPx": [
+                587,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 445,
+              "restPx": [
+                548,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 451,
+              "restPx": [
+                627,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 452,
+              "restPx": [
+                607,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 924,
+              "restPx": [
+                627,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 925,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 926,
+              "restPx": [
+                587,
+                940
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 927,
+              "restPx": [
+                548,
+                940
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": "presentation",
+      "recordedMs": 5333.333333333333,
+      "recordedAction": "approach:flight",
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "attemptedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": -0.063763
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": -0.055644,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0.037096,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": 0.39881154224337795,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarElbow": {
+          "rotation": -0.10913903669263607,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarWrist": {
+          "rotation": -0.049995730738040076,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": -0.01813582589775923,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": 0.39881154224337795,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearElbow": {
+          "rotation": -0.10913903669263607,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearWrist": {
+          "rotation": -0.049995730738040076,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": -0.01813582589775923,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.155967,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": -0.278218,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.268662,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": -0.278218,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "phase": {
+        "actionId": "approach:flight",
+        "elapsedMs": 54.597494182487026,
+        "durationMs": 676,
+        "weight": 1,
+        "realm": "aerial"
+      },
+      "resolvedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": -0.063763
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": -0.055644,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0.037096,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarRoot": {
+          "rotation": 0.39881154224337795,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarElbow": {
+          "rotation": -0.10913903669263607,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarWrist": {
+          "rotation": -0.049995730738040076,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": -0.01813582589775923,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": 0.39881154224337795,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearElbow": {
+          "rotation": -0.10913903669263607,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearWrist": {
+          "rotation": -0.049995730738040076,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": -0.01813582589775923,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": 0.155967,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": -0.278218,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": 0.268662,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": -0.278218,
+          "dx": 0,
+          "dy": 0
+        },
+        "earFarTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "earNearTip": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "exactRetainedPose": true,
+      "influenceAnchors": {
+        "legFarFoot": {
+          "landmarkPx": [
+            559,
+            921
+          ],
+          "pivotJoint": "legFarKnee",
+          "pivotPx": [
+            571,
+            880
+          ],
+          "rotation": -0.278218
+        },
+        "root": {
+          "landmarkPx": [
+            877,
+            653.9999999999999
+          ],
+          "pivotJoint": "root",
+          "pivotPx": [
+            877,
+            653.9999999999999
+          ],
+          "rotation": 0
+        }
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 32.49412013619928,
+        "rmsTargetErrorPx": 3.778048461675305,
+        "maximumProjectionPx": 31.717644285745827,
+        "flippedTriangles": 1,
+        "minimumAreaRatio": -0.5752353499963268,
+        "orientationPasses": 53
+      },
+      "exactRetainedStats": true,
+      "outputUnpublished": true,
+      "partCounts": {
+        "leg-far-foot": 1
+      },
+      "sourceBBox": [
+        548,
+        900,
+        587,
+        920
+      ],
+      "partBBoxes": {
+        "leg-far-foot": [
+          548,
+          900,
+          587,
+          920
+        ]
+      },
+      "folded": [
+        {
+          "triangle": 711,
+          "indices": [
+            439,
+            431,
+            438
+          ],
+          "parts": [
+            "leg-far-foot"
+          ],
+          "ratio": -0.5752353499963268,
+          "restSignedDoubleAreaPx2": 780,
+          "targetSignedDoubleAreaPx2": -448.6835729971349,
+          "failedSignedDoubleAreaPx2": -448.6835729971349,
+          "vertices": [
+            {
+              "index": 439,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "targetPx": [
+                551.5895428061485,
+                871.1208411455154
+              ],
+              "privateFailedPx": [
+                551.5895428061485,
+                871.1208411455154
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "legFarFoot",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot"
+              ]
+            },
+            {
+              "index": 431,
+              "restPx": [
+                548,
+                900
+              ],
+              "targetPx": [
+                547.9999887943268,
+                882.6255469322205
+              ],
+              "privateFailedPx": [
+                547.9999887943268,
+                882.6255469322205
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 438,
+              "restPx": [
+                587,
+                900
+              ],
+              "targetPx": [
+                586.9999929070473,
+                882.6255469322205
+              ],
+              "privateFailedPx": [
+                586.9999929070473,
+                882.6255469322205
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 430,
+              "restPx": [
+                548,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 431,
+              "restPx": [
+                548,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 436,
+              "restPx": [
+                567.5,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 437,
+              "restPx": [
+                587,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 438,
+              "restPx": [
+                587,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot",
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 439,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "weights": [
+                [
+                  "legFarFoot",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-foot"
+              ]
+            },
+            {
+              "index": 444,
+              "restPx": [
+                587,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 445,
+              "restPx": [
+                548,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 451,
+              "restPx": [
+                627,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 452,
+              "restPx": [
+                607,
+                880.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "leg-far-upper",
+                "body"
+              ]
+            },
+            {
+              "index": 924,
+              "restPx": [
+                627,
+                900
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 925,
+              "restPx": [
+                567.5,
+                920
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 926,
+              "restPx": [
+                587,
+                940
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            },
+            {
+              "index": 927,
+              "restPx": [
+                548,
+                940
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "body"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-01/record.json",
+      "sha256": "8cf9f71ee75a5911ca3775338581da8b856dd05654b1db31251532407cf5ec19",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-01/binding.json",
+      "sha256": "07a02cf762f2eefa58e10d501fdb33f53a9f06ab2d5d6c7e77bee10b54806f77",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/static-01.json",
+      "sha256": "59104a64bbf90148822dd1a4c9e287af8d0718fb8b4ca98a4a25aec1c044909e",
+      "unchanged": true
+    }
+  ]
+}

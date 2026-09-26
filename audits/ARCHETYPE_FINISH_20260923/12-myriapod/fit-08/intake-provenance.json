@@ -1,0 +1,226 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
+  "helperSha256": "31d8554a0d5550faf20707297cb4696cbed00ae1dc15e502b7017a284d2b42cf",
+  "regionalHelperSha256": "25a65459ce82a31c810bb2500778dcd975c67981b66e3f58b83c0fe72179501e",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/authoring.json",
+      "sha256": "a0477b00a8dbd7c0ed77f5d9e6f696af5f94fc913c002589caf40f13242a2184"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/subject-source.json",
+      "sha256": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/presence.json",
+      "sha256": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 40,
+    "interiorStep": 80,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [],
+    "regionalDiffusionIterations": 32,
+    "refinements": [
+      {
+        "x": 205,
+        "y": 570,
+        "width": 885,
+        "height": 90,
+        "boundaryStep": 24,
+        "interiorStep": 56
+      },
+      {
+        "x": 200,
+        "y": 680,
+        "width": 895,
+        "height": 120,
+        "boundaryStep": 24,
+        "interiorStep": 56
+      },
+      {
+        "x": 933,
+        "y": 582,
+        "width": 61,
+        "height": 71,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 872,
+        "y": 574,
+        "width": 65,
+        "height": 74,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 266,
+        "y": 572,
+        "width": 64,
+        "height": 77,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 445,
+        "y": 584,
+        "width": 66,
+        "height": 75,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 208,
+        "y": 570,
+        "width": 60,
+        "height": 74,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 991,
+        "y": 586,
+        "width": 56,
+        "height": 69,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 812,
+        "y": 570,
+        "width": 62,
+        "height": 74,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 752,
+        "y": 566,
+        "width": 62,
+        "height": 72,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 690,
+        "y": 563,
+        "width": 64,
+        "height": 73,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 630,
+        "y": 565,
+        "width": 64,
+        "height": 73,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 568,
+        "y": 570,
+        "width": 65,
+        "height": 74,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 507,
+        "y": 578,
+        "width": 65,
+        "height": 75,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 386,
+        "y": 585,
+        "width": 63,
+        "height": 75,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 327,
+        "y": 581,
+        "width": 63,
+        "height": 76,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      }
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "3c9d84cf0243a347e3ab0acc82834624daab4b3ffcbc8f427000222ad97ae304",
+  "bindingHash": "2542d6063cb8f50575e64920cd52fa745ed6a9ae3ef4046f24f5ae8181ed18ed",
+  "contactEndpoints": [
+    "leg0FarFoot",
+    "leg0NearFoot",
+    "leg1FarFoot",
+    "leg1NearFoot",
+    "leg2FarFoot",
+    "leg2NearFoot",
+    "leg3FarFoot",
+    "leg3NearFoot",
+    "leg4FarFoot",
+    "leg4NearFoot",
+    "leg5FarFoot",
+    "leg5NearFoot",
+    "leg6FarFoot",
+    "leg6NearFoot",
+    "leg7FarFoot",
+    "leg7NearFoot",
+    "leg8FarFoot",
+    "leg8NearFoot",
+    "leg9FarFoot",
+    "leg9NearFoot",
+    "leg10FarFoot",
+    "leg10NearFoot",
+    "leg11FarFoot",
+    "leg11NearFoot",
+    "leg12FarFoot",
+    "leg12NearFoot",
+    "leg13FarFoot",
+    "leg13NearFoot"
+  ],
+  "shapeJoints": [],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/authoring.json",
+      "sha256": "a0477b00a8dbd7c0ed77f5d9e6f696af5f94fc913c002589caf40f13242a2184",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/subject-source.json",
+      "sha256": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/presence.json",
+      "sha256": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c",
+      "unchanged": true
+    }
+  ]
+}

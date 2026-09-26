@@ -1,0 +1,79 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "fish",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "3d38e30dabb24455176c1b0352e931c95e4847f96ffbc01fae41f37fa5a717d2",
+    "pngSha256": "4e31bd471bd1e242e4eb492a5beb6d666426711c5c27473ed1458fb368c06227"
+  },
+  "parts": [
+    {
+      "name": "body-front.png",
+      "sha256": "1892f29eb63e1e2fd4e79a8ca817e6369be6682512fcdcc8c249f67a2adfa42a"
+    },
+    {
+      "name": "body-mid-rear.png",
+      "sha256": "ee232b57893eb6bc7e6d950e533831d4de9ec7603e0d1fb987118cd9c706bad3"
+    },
+    {
+      "name": "body-rear.png",
+      "sha256": "5971026b30d1aaea4be4bdf62db01ca3ab2136c903f9e95f55ad90c4e93e1e5b"
+    },
+    {
+      "name": "body.png",
+      "sha256": "1a336f4d835cc00f78bf983f0a3c6cd3afe97feea40654c2389ec4b834da6494"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "f553f2f3ea4a52bb112702b51c0721a010415915c924dbc88af1016a9dea8539"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "39b807a425627967d7f54b85a1c6316f246535e222d09df426c08d88be03a129"
+    },
+    {
+      "name": "head.png",
+      "sha256": "ba192323a1cad151c56f93ed13073110e38de11c8ac9276d52a06d105076c299"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "45bd5a5744542a644461490496b6b832e8866b0c8674923daf47d9386cb30159"
+    },
+    {
+      "name": "pectoral-far.png",
+      "sha256": "57684f2652387b77d811f06cff58bfd74008706182db5a80433dcb528a1b41f2"
+    },
+    {
+      "name": "pectoral-near.png",
+      "sha256": "8d0ecac333aaab435db46ed0f9ea4ac87a871e637f0f938cbd741acc76723e24"
+    },
+    {
+      "name": "shoulder.png",
+      "sha256": "4cfee4b74313e3cd1d3cb3af1a47331ea4fab3c11c79910a112a9466b5e88b68"
+    },
+    {
+      "name": "tail-peduncle.png",
+      "sha256": "8b571ef49fc4513507f0b676b46567258f7512de220e60024fede783d4a469bc"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

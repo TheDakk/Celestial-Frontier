@@ -1,0 +1,21 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 4,
+  "runId": "20260923-tree-frog-paint-04",
+  "sourceHead": "1dfeec2a88ac6e7be01b525e12421c3b1b181a7c",
+  "promptSha256": "5f5b4e09f63b19ceb730dc866d79a0c7e2f6782dfebf19f5cf666480fc432659",
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "originalPrompt": {
+    "path": "audits/ARCHETYPE_SPRINT_20260922/06-hopper/prompt.txt",
+    "sha256": "58a48cc4c4933cc7ac1922f09aae78be0a42d42128ccf2cd578c69392af8eed2"
+  },
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "authority": "../AUTHORITY.md",
+  "reason": "Generation3 repeated high folded hocks and occluded upper far chain. Fresh half-extended hop launch exposes real hind segments under reopened authority."
+}

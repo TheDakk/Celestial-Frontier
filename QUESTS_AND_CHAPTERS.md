@@ -1,5 +1,7 @@
 # Celestial Frontier — Quests & Chapters
 
+**Weekly Charter lifecycle — matches code 2026-09-25.** `packages/persistence/src/weekly-charters.ts` owns the shared pure lifecycle; `apps/game/src/weekly-charters.ts` re-exports it and renders the board. After all five trades, three deterministic rows appear per four hours of persisted active play. Device-clock changes cannot roll the board. Landfall, Mine, Discover Life, Fabricate and Conquest have event owners. Acceptance and post-acceptance deeds share the existing F4 transaction and three-slot cap; a completed row cannot be accepted again in the same cycle. Conquest's `wk-conq` pays 30 current Stardust and one honored Charter in Arc 6's CAS, with no extra RNG or writer. Expired, duplicate, completed-and-accepted, counter-overflow, stale and failed-write cases pay no new Charter reward. The combat verifier checks the exact saved cycle/acceptance/progress/reward projection. Historical wall-week descriptions below apply only to legacy v1. Evidence: audits/WEEKLY_CONQUEST_20260925/README.md.
+
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
@@ -34,7 +36,7 @@ and one-level eight-second Undo. Remove/Undo use one exact receipt/CAS and prese
 ownership, original row order and originally absent routes; stale sidecars refuse. Bounded
 44px chart clusters open the exact existing List actions and return focus to the owning chart
 control. Travel durability, reach, speed/motion and Favorite behavior remain with existing owners.
-Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
+Weekly Charters now use the active-play lifecycle below (2026-09-25); the older Arc 4 state in this paragraph predates that owner. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
 reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
@@ -111,9 +113,8 @@ reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended de
 > only the first incomplete link in each chain, so accepting a link activates it but never reveals
 > the following link until completion. At most three Charters may be active. Completed ids are
 > permanent; malformed, duplicate, completed-and-accepted, over-cap or unrevealed input is
-> protected rather than normalized into a new outcome. `st-scan` stays visible/unavailable because
-> its accepted bioscan owner does not exist, and weekly rows are neither rolled, accepted nor paid
-> until v2 owns wall-week, deterministic-slate and monotonic-rollover authority. `st-conq` remains
+> protected rather than normalized into a new outcome. The later Bioscan owner admits `st-scan`;
+> the 2026-09-25 active-play lifecycle below now owns weekly rows. `st-conq` remains
 > the existing verified combat owner's event, including its stage-0 Jump Drive reveal lock.
 >
 > Acceptance is one deterministic F4 product action: one immutable receipt, one lease/revision CAS,
@@ -174,9 +175,10 @@ reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended de
 > durable. If the exact one-time starter conquest Charter `st-conq` is accepted, that same combat
 > CAS completes and removes it, awards **25 Stardust** to current and lifetime totals, and raises
 > the honored-Charter count once. Capacity, malformed/stale acceptance, loss, refusal and failed
-> write pay nothing. The weekly `wk-conq` stays fail-closed until v2 owns its wall-week rollover,
-> deterministic slate membership, acceptance and monotonic rollover sidecar; other accepted chains
-> and mature reward ceremonies remain open systems. The current v2 Field
+> write pay nothing. Weekly `wk-conq` now joins that transaction using the shared active-play
+> lifecycle: one post-acceptance conquest pays 30 current Stardust and one honored Charter once
+> per cycle. The verifier binds the final Charter projection and reward delta to the saved receipt.
+> Other unimplemented chains and mature reward ceremonies remain open systems. The current v2 Field
 > Training graduation names live Feed, Breed/Recovery and Rename without claiming its six-step
 > navigation drill performs them. Older dated landfall-only/pre-Arc overlays below remain history.
 

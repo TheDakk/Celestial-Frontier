@@ -1,0 +1,138 @@
+{
+  "schema": "cf.native-profile-first-red-diagnosis/v1",
+  "originalRunStatus": "FAIL",
+  "originalError": "Native profile group limit",
+  "method": "Independent read-only Python aggregation of retained native JSON. Does not execute the corrected collector or rerun tests/inference. Original evidence remains unchanged.",
+  "rawFile": "native-profile-1-text.json",
+  "rawSha256": "47c52a0f0baea4310a1e0e61e140e1475fdf9dc9213750341c56c86f1c6f0c81",
+  "rawBytes": 2088745,
+  "events": 4639,
+  "unit": "microseconds",
+  "source": {
+    "url": "https://github.com/microsoft/onnxruntime/blob/2e2543fbe9fae542f921d47a72d21d5a4ef0b710/onnxruntime/core/providers/webgpu/webgpu_context.h#L34-L42",
+    "sha256": "ba00159f04840eaf2b187d8b086fe23a0b516237fdfc0f8d14aa541759583f31",
+    "nameSerialization": "nodeName & opType & programName",
+    "all2040GpuEventsHaveThreeNameFields": true
+  },
+  "nodeHostSpans": {
+    "CPUExecutionProvider": {
+      "count": 194,
+      "durationUs": 28074
+    },
+    "WebGpuExecutionProvider": {
+      "count": 2401,
+      "durationUs": 6967601
+    }
+  },
+  "gpuDispatches": {
+    "count": 2040,
+    "durationUs": 6884136,
+    "zeroDurationCount": 819,
+    "zeroDurationMeaning": "Reported timer resolution/results, not proof of zero work.",
+    "topOpPrograms": [
+      {
+        "opType": "MatMulNBits",
+        "programName": "MatMulNBits",
+        "count": 189,
+        "durationUs": 6628303
+      },
+      {
+        "opType": "Where",
+        "programName": "Where",
+        "count": 28,
+        "durationUs": 57603
+      },
+      {
+        "opType": "Transpose",
+        "programName": "Transpose",
+        "count": 138,
+        "durationUs": 43498
+      },
+      {
+        "opType": "MatMul",
+        "programName": "MatMul",
+        "count": 55,
+        "durationUs": 31198
+      },
+      {
+        "opType": "Mul",
+        "programName": "Mul",
+        "count": 405,
+        "durationUs": 28210
+      }
+    ],
+    "matMulNBitsGpuSharePercent": 96.2837,
+    "largestMatMulNBitsShapes": [
+      {
+        "input": [
+          1,
+          512,
+          640
+        ],
+        "output": [
+          1,
+          512,
+          9728
+        ],
+        "count": 54,
+        "durationUs": 3410689
+      },
+      {
+        "input": [
+          1,
+          512,
+          2432
+        ],
+        "output": [
+          1,
+          512,
+          2560
+        ],
+        "count": 27,
+        "durationUs": 1472790
+      }
+    ]
+  },
+  "cpuNodeLeaders": [
+    {
+      "opName": "IsNaN",
+      "durationUs": 20372
+    },
+    {
+      "opName": "Slice",
+      "durationUs": 2238
+    },
+    {
+      "opName": "Concat",
+      "durationUs": 1420
+    },
+    {
+      "opName": "Cast",
+      "durationUs": 1189
+    }
+  ],
+  "readbackBoundary": {
+    "hostOp": "MemcpyToHost",
+    "count": 27,
+    "durationUs": 6745424,
+    "nextCpuOp": "IsNaN",
+    "tensorType": "float16",
+    "shape": [
+      1,
+      32,
+      512,
+      512
+    ],
+    "logicalReadbackBytes": 452984832,
+    "logicalBoolCopybackBytes": 226492416,
+    "meaning": "Host spans include synchronization/transfer and overlap GPU execution; not CPU computation or additive GPU cost. Logical tensor bytes do not measure physical bus traffic."
+  },
+  "session": {
+    "model_run_us": 7242234,
+    "SequentialExecutor_Execute_us": 7011010,
+    "initialization_us": 2067170,
+    "meaning": "Overlapping intervals; not additive."
+  },
+  "conclusion": "Text-stage GPU MatMulNBits dominates observed GPU time. Repeated CPU IsNaN boundaries merit bounded follow-up, but this trace cannot establish denoiser bottlenecks or removable transfer cost.",
+  "qualityAccepted": false
+}

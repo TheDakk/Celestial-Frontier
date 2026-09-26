@@ -1,5 +1,120 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
+Execution priority2026-09-07: Nick requested playable graphics/audio progress before exhaustive
+U3/U4 polish; see ROADMAP.md and audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md.
+The U2 preparation below remains verified/staged but unsigned; no native or audiovisual PASS is implied.
+
+## UI parity program — U1 shell / U2 sheet checkpoint, matches code as of 2026-09-06
+
+Nick authorized U2–U4 and compact notifications when space is tight. Measured generic sheet and
+biosphere allocation and accessibility-preserving hint/context yield retain the accepted U1 layout and emoji.
+Signed3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d passed complete develop static (322files,
+3479tests,1skip). Small-phone passed all3 Capture outcomes, caption preferences/restoration and
+the exact Charters Close/frame receipt with an empty atomic Objective audit. It later stopped
+INSTRUMENT RED/zero product findings: the top-clearance setup toggled an already-closed Survey
+open and then waited5000ms for it to close. Large-phone and Slice were NOT RUN. The nine-carrier
+checkpoint and named terminal/browser read[]/[] retain this failure; no full U2 PASS is claimed.
+
+Nick resumed on2026-09-07. The re-derived tool correction observes strict Survey state, closes
+only when open with one trusted activation and the existing5000ms strict-false wait, then binds
+one named fonts/two-frame receipt. Painted controls define clearance while AppChrome retains its
+distinct full-wrapper measurement. Only band-fixture fixed rows omit the separately measured
+injected trail. Seven named fixture/restoration/cleanup boundaries preserve the first error;
+failed cleanup cannot authorize dependent geometry. Thresholds and product bytes are unchanged.
+Claude's full response and original unapplied draft remain immutable. Independent source review
+CLEAR;99 focused tests, all3 TypeScript programs and root validate/50 fingerprints PASS after two
+retained test-preparation corrections. Fresh canonical native attempt is pending on committed
+source. Read ROADMAP.md and audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md for current status;
+audits/UI_U2_NEXT_SESSION_20260906.md preserves the unapplied U3/U4 preparation map.
+
+The current bounded correction measures every visible portrait sheet's header/insets plus44px
+body, the stacked Survey/biosphere allocation, and standalone Planetside72px below actual painted
+upper chrome. Compact notices use4px vertical and8px horizontal padding. When capacity remains
+tight, passive hint and context paint may yield while preserving their text. Every decision starts
+with natural guidance; the dependent caption is measured with a temporary native hint-height
+projection, restored exactly afterward. Glass independently measures both captions and available
+space, tests their actual text preferences, and requires exact restoration. After native Close,
+remaining clipping is valid only when independent geometry still proves pressure. Earlier generic
+preference and native target-size/clipping checks remain strict. Focused84 checks, all3 TypeScript
+programs, root validate, one evidence build and101 release/budget/evidence checks PASS. Producer
+is aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe; measurement/ceilings are unchanged.
+The existing81-bullet draft has orderedSHA3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
+The3a61352 native result above owns current status; these checks are not a fresh Compendium certificate.
+
+All prior failures and both older unknown causes remain OPEN; no U2–U4 completion, physical UAT,
+Phase2, pilot or hosted closure is claimed.
+The [U2 audit](../audits/UI_U2_SHEETS_20260906.md) owns retained evidence. Ordered U3 panel
+checkpoints and U4 follow under the [accepted program](UI_PARITY_PROGRAM_U1_U4.md).
+
+U1 implements normal-game shared tokens, production-based phone/wide layout and Nick's saved
+notification history amendment. Nick replaces Charters with Survey on all platforms: compact
+upper boards are Survey, Compendium, Prime, Shipyard and Atlas; lower utilities remain Records,
+Notifications, Guide and Settings. Wide Survey replaces Charters above Compendium at upper-left,
+with Charts below. Duplicate Charters shortcuts are removed; Objective becomes the sole native
+Charters opener with keyboard activation, existing panel/focus ownership, landed availability and
+a Charters fallback when no objective is active. Objective progress and Charter gameplay are unchanged.
+Ten half-columns fit a dock capped at 320px and safe viewport width minus 20px; pitch is width / 5,
+board width is pitch minus 4px with a 44px minimum, and centered lower targets/faces stay 44px/36px.
+The existing panel-open short-landscape half-column cap and 92px default height remain;
+UI_PRESENTATION.md owns geometry. Search, fitted wide pills, Health and compact Charts via Settings
+are unchanged. Scoped verification passed in six fresh phone/tablet/desktop contexts, including
+native Objective opening, Close/Escape and focus return. Nick accepted the U1 layout for UAT on
+2026-09-06 at product `053ef439774520577071f0ca50887337dd938755`, recorded in
+`b08c9521c90f806e42496361127c542d206628f5`. Device UAT and technical gates are not closed;
+`../audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns current evidence and the preserved first
+keyboard-instrument red. The portable-key correction changes only the probe, with product unchanged.
+The previous six-board scoped
+PASS and instrument red remain in `../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` as predecessor evidence.
+The prior portrait-restoration instrument stop remains OPEN beside the unattributed navigation
+blocker; at that earlier checkpoint, full normal review, Slice, phone Glass and the full chain were NOT RUN.
+See `UI_PARITY_PROGRAM_U1_U4.md` for the accepted program, explicit geometry differences and review
+boundaries. U2 is implemented; U3 per-panel work and the U4 ten-viewport/28-screen gate remain
+subsequent authorized checkpoints. Phase4 presentation parity is not closed;
+the U1 layout is accepted for UAT, while integrated audiovisual-pilot approval remains OPEN.
+The phone-only restoration diagnostic passed at signed source
+`381ddf59858bd863640703e83d2d98beeedf59fa` with product unchanged, preserving original native
+predecessors, 15000ms transport, fonts → two animation frames and debugger timing. Named
+font/frame evaluation 283, geometry evaluation 284 and ordered receipt 33 establish current
+390×844 completion; `../audits/UI_U1_UAT_RESTORATION_20260906.md` owns evidence. Both older
+blockers stay historical OPEN: the old cause is unknown and nonrecurrence is not repair.
+Clean signed source `1609cf3991e20da45d5e4628fd2163278ece5ec8` passed the isolated develop
+profile (312 files, 3333 passed/one skipped), then Slice in 370012ms with zero findings, ten PNGs
+and exact named verification. Rail-only protection, native unprotected dismissal and exact
+restoration passed; the strict four-copy right-rail oracle remains. Small-phone Glass then
+stopped PRODUCT RED on one `#hintpill` contrast finding (1 below 4.5); large phone was NOT RUN.
+The [retained manifest](../audits/UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json) preserves
+that stop and clean-source evidence. The ce89128 normal three-view PASS remains prior geometry
+evidence and does not verify the new outlined text.
+
+The next bounded [hint contrast correction](../audits/UI_U1_HINT_CONTRAST_20260906.md) adds a
+2px opaque black glyph stroke behind the fill, with at least 1px outside each glyph, changing no
+pill or layout geometry. Glass recognizes proven stroke while preserving its 4.5 threshold and
+effective-opacity checks. Preparation passed 25 stroke tests, 72 release/budget/evidence tests, root TypeScript, evidence
+build and root validate. The first committed candidate a528791 passed static (313 files, 3358 passed, one skipped) and
+the native outline controls. Small-phone then stopped on a stale dock-fault description with zero
+product findings; large-phone and Slice did not run. The responsive-slot assertion is corrected
+without changing the product. Its successor bb9ebe4 passed static (314 files, 3364 passed, one
+skipped) and the dock/outline controls, then stopped because Charts is intentionally hidden on
+phones. The current instrument correction audits Settings → Star charts on compact layouts
+and retains the visible wide-screen Charts route. Twelve source-executing route tests, root
+TypeScript and validate passed.
+
+Retained U1 validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
+PASS (315 files, 3376 passed, one skipped). Small-phone stopped PRODUCT RED with a real 22.5px
+Planetside/hint overlap at 320×568, zero instrument failures. Its later native Charts Settings
+phase, large-phone and Slice were NOT RUN. [The final U1 audit](../audits/UI_U1_HINT_CONTRAST_20260906.md)
+retains the nine-carrier checkpoint. U1 visual acceptance stands; the technical gate remains OPEN.
+The retained overlap is U2's first failing case. Its new measured lower lane reserves hint,
+context, dock and the painted toast; sheets consume that floor. Existing title/Close nodes
+stay direct and sticky, with the same Close retained through refill and the panel remaining
+the scroller. Settings is admitted during lessons, closes through its real owner on Escape,
+and yields only while completion is pending; current lesson marks govern the remaining stack.
+Native geometry, the previously unreached Charts Settings route and the checkpoint battery
+must pass before closure. Exact candidate/release/producer authority and results belong to
+[ROADMAP](../ROADMAP.md). Physical UAT and the unknown 08cd97d navigation/c57aaaeb restoration
+causes remain OPEN. No Phase2, integrated-pilot activation or hosted authority is implied.
+
+
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core

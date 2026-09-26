@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Celestial Frontier — Desert in motion</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#171219;color:#eee5dd}*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:16px}main{width:min(1100px,100%)}canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#241b25;border-radius:8px}.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}p{margin:0;color:#c1b0a8;font-size:14px;line-height:1.5}strong{display:block;color:#f1e4d7;font-family:Georgia,serif;font-weight:400;font-size:22px;letter-spacing:.035em}button{min-height:44px;min-width:110px;border:1px solid #887064;border-radius:5px;background:#2a2026;color:#f1e4d7;font:inherit;padding:8px 18px;cursor:pointer}button:focus-visible{outline:2px solid #e3ac7d;outline-offset:4px}@media(max-width:420px){body{padding:8px}.bar{gap:8px}strong{font-size:18px}p{font-size:12px}}
+</style></head><body><main><canvas id="scene" width="1024" height="576" aria-label="An alien desert painting with drifting dust, distant heat haze and a gentle camera move"></canvas><div class="bar"><p><strong>Celestial Frontier</strong>Alien desert · living painting study</p><button id="toggle" disabled>Loading…</button></div></main>
+<script type="module">
+const canvas=document.getElementById('scene'),button=document.getElementById('toggle');
+const source=new Image();source.src='../LOCAL_AI_DESERT_TEST_20260909/raw-output.png';await source.decode();
+const glCanvas=document.createElement('canvas');glCanvas.width=1024;glCanvas.height=576;
+const gl=glCanvas.getContext('webgl',{alpha:false,antialias:false,preserveDrawingBuffer:true});if(!gl)throw Error('WebGL unavailable');
+function shader(type,text){const shader=gl.createShader(type);gl.shaderSource(shader,text);gl.compileShader(shader);if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(shader));return shader;}
+const vertex=shader(gl.VERTEX_SHADER,`attribute vec2 position;varying vec2 uv;void main(){uv=(position+1.0)*0.5;gl_Position=vec4(position,0.,1.);}`);
+const fragment=shader(gl.FRAGMENT_SHADER,`precision highp float;
+varying vec2 uv;uniform sampler2D artwork;uniform float phase;
+float ellipse(vec2 p,vec2 center,vec2 radius){return 1.0-smoothstep(.78,1.18,length((p-center)/radius));}
+void main(){
+ vec2 p=vec2(uv.x,1.-uv.y);
+ // Periodic camera framing; overscan prevents exposed edges throughout the loop.
+ float zoom=1.024+.008*(1.-cos(phase));
+ p=(p-.5)/zoom+.5+vec2(.005*sin(phase),.002*sin(phase));
+ // Restrict subpixel heat distortion to the distant dry basin, behind the subjects.
+ float haze=smoothstep(.39,.45,p.y)*(1.-smoothstep(.57,.65,p.y));
+ float bodies=max(ellipse(p,vec2(.31,.66),vec2(.22,.28)),ellipse(p,vec2(.80,.84),vec2(.17,.10)));
+ haze*=1.-bodies;
+ p.x+=.00115*haze*sin(p.y*220.+phase*3.)*sin(p.x*31.-phase*2.);
+ p.y+=.00055*haze*sin(p.x*89.+phase*2.);
+ vec3 base=texture2D(artwork,p).rgb;
+ // Moving translucent dust is concentrated over open sand; it never moves anatomy.
+ float ground=smoothstep(.50,.72,p.y)*(1.-.78*bodies);
+ float ribbons=pow(.5+.5*sin(p.x*10.-p.y*27.-phase*2.),5.);
+ float detail=.55+.45*sin(p.x*29.+p.y*12.+phase*3.);
+ float veil=.060*ground*ribbons*detail;
+ base=mix(base,vec3(.76,.48,.34),veil);
+ gl_FragColor=vec4(base,1.);
+}`);
+const program=gl.createProgram();gl.attachShader(program,vertex);gl.attachShader(program,fragment);gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));gl.useProgram(program);
+const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
+const position=gl.getAttribLocation(program,'position');gl.enableVertexAttribArray(position);gl.vertexAttribPointer(position,2,gl.FLOAT,false,0,0);
+const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,source);
+const phaseUniform=gl.getUniformLocation(program,'phase'),context=canvas.getContext('2d',{alpha:false});
+let state=0xD35E47;const random=()=>{state=(Math.imul(state,1664525)+1013904223)>>>0;return state/4294967296;};
+const dust=Array.from({length:45},()=>({x:random(),y:.57+random()*.4,speed:1+Math.floor(random()*2),size:.5+random()*1.1,phase:random()*Math.PI*2,alpha:.035+random()*.065}));
+function draw(seconds){const t=((seconds%12)+12)%12/12,phase=t*Math.PI*2;gl.uniform1f(phaseUniform,phase);gl.drawArrays(gl.TRIANGLES,0,6);context.drawImage(glCanvas,0,0);
+ for(const d of dust){const x=(d.x+t*d.speed)%1,y=d.y+.004*Math.sin(phase*2+d.phase),fade=Math.min(1,x*15,(1-x)*15);context.fillStyle=`rgba(241,201,159,${d.alpha*fade})`;context.beginPath();context.ellipse(x*1024,y*576,d.size*2.8,d.size*.45,-.08,0,Math.PI*2);context.fill();}
+ return {seconds,phase,width:canvas.width,height:canvas.height};}
+const reduced=matchMedia('(prefers-reduced-motion: reduce)');let playing=!reduced.matches,frame=0,time=0,last=null;
+function updateButton(){button.textContent=playing?'Pause':'Play';button.setAttribute('aria-pressed',String(playing));}
+function tick(now){if(last!==null)time+=(now-last)/1000;last=now;draw(time);if(playing)frame=requestAnimationFrame(tick);}
+function setPlaying(next){cancelAnimationFrame(frame);playing=next;last=null;updateButton();if(playing)frame=requestAnimationFrame(tick);}
+button.disabled=false;button.addEventListener('click',()=>setPlaying(!playing));reduced.addEventListener('change',()=>{if(reduced.matches)setPlaying(false);});
+window.desertMotion={ready:true,draw(seconds){if(!Number.isFinite(seconds)||seconds<0)throw Error('Invalid animation time');setPlaying(false);time=seconds;return draw(time);},get playing(){return playing;},get seconds(){return time;},setPlaying};
+draw(0);updateButton();if(playing)frame=requestAnimationFrame(tick);
+addEventListener('pagehide',event=>{setPlaying(false);if(event.persisted)return;gl.deleteTexture(texture);gl.deleteBuffer(buffer);gl.deleteProgram(program);gl.deleteShader(vertex);gl.deleteShader(fragment);});
+</script></body></html>

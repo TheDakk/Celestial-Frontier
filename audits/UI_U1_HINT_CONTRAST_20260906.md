@@ -1,0 +1,138 @@
+# U1 final local gate — guidance contrast, 2026-09-06
+
+Nick authorized completing the remaining bounded U1 local checks and asked when U2 can begin.
+The accepted layout is final for this batch. U2 is the next development batch after these checks;
+U2–U4, Phase 2, the integrated audiovisual pilot and hosted actions remain unstarted.
+
+## Retained clean checkpoint
+
+Signed source `1609cf3991e20da45d5e4628fd2163278ece5ec8` (16 local commits ahead) passed the
+browser-free develop profile: 312 files, 3333 passed, 1 skipped, plus its TypeScript/art gates.
+Slice `local-u1-1609cf3-20260906-slice` passed in 370012ms with zero findings and ten screenshots;
+its named verifier passed. Both repaired rail controls preserve all three native phases and
+exact attribute restoration. No rail defect remains in that run.
+
+Small-phone `local-u1-1609cf3-20260906-small-phone` then stopped with one product finding:
+`TEXT_CONTRAST_LOW` for `#hintpill`, modeled ratio 1 against threshold 4.5. There were zero
+instrument failures; large-phone did not run. The report remains RED. All eight stage logs,
+execution receipt, Slice report/log/ten PNGs, immutable Glass report and labelled diagnostic
+pointer are retained in `UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json` (23 carriers),
+SHA-256 `1ad81a5a4d7e94d362d095c6f73d7624aef309cf6a0fb248cc61a854d0a8265b`.
+The test artifact's full Git status was empty and the owned workspace's ambient `.DS_Store`
+was preserved. This does not relabel the earlier dirty-diagnostic ce89128 run.
+
+## Bounded correction
+
+Glass models bright artwork as white beneath transparent chrome. Its previous calculation
+ignored glyph shadows/strokes, while the accepted plain guidance had only blurred shadows.
+The RED therefore does not establish a measured painted 1:1 result, but the blur also does not
+prove an adequate halo. The correction retains plain text, zero padding/border/background and
+all accepted positions; it adds a 2px opaque black glyph stroke painted before the fill, leaving
+at least 1px outside the glyph. The development release's existing bullet describes the outline;
+there are still 81 bullets, no version bump or shipped update popup.
+
+The assessor recognizes only an opaque stroke at least 2px wide with stroke-first paint order.
+It computes fill and halo with cumulative opacity and retains the 4.5:1 normal-text threshold.
+Arbitrary shadows are not accepted. Focused and native controls must reject missing/thin/light/
+translucent or incorrectly painted outlines and faded ancestor opacity, then restore exact
+styles and geometry. [W3C G18](https://www.w3.org/WAI/WCAG22/Techniques/general/G18) permits a
+sufficiently contrasting outline or halo; the implementation does not infer compliance from a
+nonempty text-shadow declaration.
+
+The exact built producer is refreshed to
+`6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90`; the owner and worker/painter
+bytes, numeric ceilings and measurement
+`4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` remain unchanged. Prior
+calibration/certification samples keep their historical identities; no fresh Compendium claim.
+
+## Validation and stop boundary
+
+Preparation passed: 25 glyph-stroke tests, 72 release/budget/evidence tests across three files,
+root no-unused TypeScript, evidence build and root validate/fingerprint. All six preparation
+carriers are retained in UI_U1_HINT_PREPARATION_20260906/manifest.json. Fresh committed browser
+validation remains pending; native fault controls have not yet run. The final local attempt uses one clean
+local test artifact: develop static once, the two independent noncertifying phone diagnostics
+(small then large), then Slice develop and exact named verification, all on unchanged source.
+Checking the directly affected phone first avoids paying for another six-minute Slice run before
+exercising the corrected contrast. No dependency is bypassed: these targeted phone reports have
+no Slice predecessor, and this is not the full Compendium → Slice → Glass admission chain.
+Stop after the first nonzero/RED; preserve evidence, never retry unchanged source.
+
+The ce89128 normal three-view PASS remains prior layout evidence; it did not inspect this new
+outline. Both older unknown causes remain OPEN: 08cd97d native Skip/Escape followed by unsolicited
+travel, and c57aaaeb portrait Runtime.evaluate timeout with the old expression unknown.
+Nonrecurrence and responsive cleanup do not establish causal repair. Physical iPhone/Safari/PWA
+UAT remains open. U2 must reconcile Settings-above-Training before sheet/stack implementation.
+
+OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`,
+upstream `origin/openai/mac`. Same-session TheDakk SSH/read receipt and develop ancestor reused.
+Startup receipt 2026-09-06T16:28:25.659Z/Node26.7.0 reused; 26.8.1 deferred for busy tools.
+Whole-job shared locks and first-attempt isolated-browser escalation apply. Budget UNFROZEN,
+PUBLIC per last verification, private fallback3000; zero exact hosted authority or hosted actions.
+Codex owns local completion; Claude need not be opened, copied into or rerun now. No PR needed
+for this local batch. Future openai/mac → develop integration needs separate exact hosted authority.
+
+## First committed contrast result — a528791
+
+Signed a52879197e5d061671e5835e41a7afe4ba39b5d2 passed the clean develop profile: 313 files,
+3358 tests, one skip. Small-phone executed the new native outline positives, deliberate faults,
+live hint removal and exact restoration without error; its HUD contrast result was clean.
+It then stopped INSTRUMENT RED with zero product findings. The compressed-dock fault correctly
+returned broken.ok=false, nine responsive-slot errors, restored.ok=true and exact prior style
+presence/bytes, but its verdict still searched for the retired literal “dock pitch is not 64px”.
+The accepted 320px phone uses a 300px dock, 60px pitch and 56px board targets. Large-phone and
+Slice did not run on this source. Retention: UI_U1_LOCAL_CHECKPOINT_a528791_20260906/manifest.json.
+
+The bounded successor changes that predicate to the actual “dock responsive slot drifted”
+category and updates its outcome description. The existing broken/restored geometry and exact
+style requirements are retained. A portable replay of this immutable failed receipt must accept
+the correctly detected fault while rejecting a green mutation, unrelated finding, red restoration
+or changed styles. All six focused replay tests and root TypeScript/validate/fingerprint passed;
+the three logs are retained in UI_U1_DOCK_VERDICT_PREPARATION_20260906/manifest.json.
+This is an instrument-only successor: the outlined product and producer remain
+byte-identical to a528791. No layout refinement or unchanged-source retry.
+
+## Accepted compact Charts route — bb9ebe4 follow-up
+
+Clean signed bb9ebe461a716de04806430693c9dba4694059ec passed the develop profile: 314 files,
+3364 tests, one skip. Small-phone passed the outline and responsive-dock controls, then stopped
+PRODUCT RED with one SURFACE_NOT_VISIBLE for #dockcharts/dockcharts-on and zero instrument
+failures. Large-phone and Slice did not run. Nine carriers are retained in
+UI_U1_LOCAL_CHECKPOINT_bb9ebe4_20260906/manifest.json, SHA-256
+`a20c9ab899ed2296f5b2f796b71dd0e277bb20627d1cf89c651d10b7f3540b33`.
+
+That shortcut is intentionally hidden by the accepted U1 layout; compact players use Settings
+→ Star charts. The correction retargets existing on/off contrast and activation checks to the
+visible Settings control on compact layouts, including the <=900px short-landscape exception.
+Wide layouts retain the visible Charts shortcut. The compact flow runs in the existing Settings
+phase, uses its native activation/scroll machinery, keeps exact on/off/restored pressed state,
+44px targets and 4.5 contrast, and records the existing control only when executed. It changes no
+product, release bullet, producer pin, viewport, threshold or planned-control count. The bounded
+related-anchor review found Charters already uses the accepted sole objective opener.
+Preparation passed 12 source-executing route tests, root TypeScript and root validate/fingerprint.
+The three logs are retained in UI_U1_CHARTS_ROUTE_PREPARATION_20260906/manifest.json. Native
+Charts receipts and fresh committed completion remain pending; no unchanged-source retry.
+
+## Terminal batch boundary — sheet spacing belongs to U2
+
+Signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322` passed develop static: 315 files, 3376 tests,
+one skip. Small-phone `local-u1-b457a7a-20260906-small-phone` stopped PRODUCT RED after 5497ms
+with one SURFACE_OVERLAP, zero instrument failures. Planetside spans y210–390; the hint spans
+y367.5–444, giving a 22.5px overlap at 320×568@2. This is a real rendered geometry failure.
+It precedes the newly retargeted native Charts Settings phase; that path, large-phone and Slice
+did not run on this source. The outline and responsive-dock controls passed in this run.
+
+Nine exact carriers, including all six execution-stage logs, are retained in
+`UI_U1_LOCAL_CHECKPOINT_b457a7a_20260906/manifest.json`, SHA-256
+`e59a612c1bf505e94a4dfad541584e71c2f21a7ac7f01bbc4da71de0afd90013`. The immutable Glass report
+passed generic terminal/Edge authority verification as a RED report. The source stayed clean,
+committed and unchanged; the owned workspace's ambient file stayed byte-identical. No retry,
+large-phone run, Slice run, hosted action or U2 implementation followed the failure.
+
+This ends the authorized local U1 work batch, NOT its technical gate. Nick already accepted the
+U1 design for UAT. The remaining real sheet/caption overlap belongs to the accepted U2 sheet and
+lane scope. `UI_U2_PROPOSED_SCOPE_20260906.md` is a concrete proposed checkpoint and asks for an
+explicit change to the original no-U2 boundary and checkpoint ordering. Do not infer approval or
+mark the failed phone gate green. The two older unknown causes and physical-device UAT stay OPEN.
+Codex's next implementation should be U2 after that scope decision; Claude need not open or run
+anything now. No PR is needed for this local handoff; all integration/hosted authority stays separate.

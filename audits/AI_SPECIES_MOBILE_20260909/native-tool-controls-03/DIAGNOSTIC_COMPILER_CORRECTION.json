@@ -1,0 +1,17 @@
+{
+  "firstResult": "Root combined controls:13PASS/1FAIL; Node26 removed transform mode.",
+  "measuredSources": [
+    {
+      "path": "tools/local-image-generation/run-mobile-model-delivery.mjs",
+      "sha256": "919cb8f8665e057811c884c8f8a0eadc53cc462d605e307425243c3e93cbbb6e",
+      "bytes": 32371
+    },
+    {
+      "path": "tools/local-image-generation/run-mobile-model-delivery.test.mjs",
+      "sha256": "2ff7263bc698bef423d2d7703727f0a507825d50252aec7235272098de7104c0",
+      "bytes": 3878
+    }
+  ],
+  "supportedCapability": "Inspected installed TypeScript7.0.2 package exports, CLI launcher/native resolver and tsc --help --all. CLI supports project/outDir/ES2022/noEmitOnError; use that existing supported compiler, no API guess.",
+  "correction": "Shared helper compiles only the two production delivery/SHA source files to owned temporary output via a generated explicit config. Both tests and runner consume it. Compile occurs before browser launch or model byte copying."
+}

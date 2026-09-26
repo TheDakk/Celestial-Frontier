@@ -1,0 +1,238 @@
+{
+  "status": "PASS",
+  "createdAt": "2026-09-08T11:45:13.669320+00:00",
+  "destination": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908",
+  "cloudWrite": false,
+  "originalsUntouched": true,
+  "independentBackup": false,
+  "files": [
+    {
+      "source": "/Users/nick/Library/Mobile Documents/com~apple~CloudDocs/Downloads/space-art-pipeline-2026-09-08.zip",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/space-art-pipeline-2026-09-08.zip",
+      "bytes": 3509022,
+      "sha256": "61ad0c820e248e141776b60e7dc8976ef0b45bd5ea73ab6004c752813c609b14"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/MANIFEST.json",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/MANIFEST.json",
+      "bytes": 7407,
+      "sha256": "3102cf8881691baed79bce59b2c8f7ba232fcd315a815a4ed5fa65a80cf3a02d"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/PIPELINE-REVIEW.md",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/PIPELINE-REVIEW.md",
+      "bytes": 6808,
+      "sha256": "371df68dc1d9f2caa68802930ebd8eba375db10f52b52533689b81d1c980bbb2"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/SPACE-GAME-PROMPT.md",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/SPACE-GAME-PROMPT.md",
+      "bytes": 10271,
+      "sha256": "4d4000d13a2f17f80a2b600d73840c42b4cc06fc417d8dcfdb5cbe17d5d9d891"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/START-HERE.md",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/START-HERE.md",
+      "bytes": 2359,
+      "sha256": "941a7bd754b2c0fe1b5b2d0521f874f1820f90ac7a363a303b804c061bccbd22"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/demo/SPACE-ANCHOR.txt",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/demo/SPACE-ANCHOR.txt",
+      "bytes": 755,
+      "sha256": "6cf19739882ae4f232bc33d9b6ae2ba9dd42fa09758a26f77fdb87694b9f3428"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/demo/example.json",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/demo/example.json",
+      "bytes": 11802,
+      "sha256": "ef0629073d28c5a259e815be102a67546da08583b47ee54064970464af8fe1a5"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/demo/procedural_plan.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/demo/procedural_plan.py",
+      "bytes": 4425,
+      "sha256": "1587ded528cee8c9fb07671e7b2d55391c27ca10d5eb2dce4743d90bcf90a7b0"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/reference/GENERIC-CONTRACT.md",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/reference/GENERIC-CONTRACT.md",
+      "bytes": 30861,
+      "sha256": "aba7385cde34c9daa7eb3eeaac0de65f76a00c6c1af7cbaa8daedf5e37d440da"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/reference/LICENSE.md",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/reference/LICENSE.md",
+      "bytes": 2103,
+      "sha256": "4ea0a4c0319611aa84b8c159cd3466bb0c57ed4a40ed0d8969123d664c64753d"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/reference/generic-sheet-01.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/reference/generic-sheet-01.png",
+      "bytes": 3316907,
+      "sha256": "2b0c44d077d651709fcacc8845c25417815d2df882af4aeeb2fda092cf3554b9"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/POLISH-PREAMBLE.txt",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/POLISH-PREAMBLE.txt",
+      "bytes": 553,
+      "sha256": "46b18afd0760d0e286b1cf506bfa1fc7bb0801409986a664d3efb6ea07c514cf"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/chroma_key.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/chroma_key.py",
+      "bytes": 14895,
+      "sha256": "7d5c6ca8536564ed83fd6ab9b012dfbd3f1e9e5fc5b2ae5aac9a26147d54cdcf"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/generate_tokens.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/generate_tokens.py",
+      "bytes": 46709,
+      "sha256": "dbc1e1c088df02a687b1fe3da5f9814655950923c86c21346f45551d4e34d74d"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/import_builtin_image.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/import_builtin_image.py",
+      "bytes": 47165,
+      "sha256": "45661706bea25bd2550ee2fc96080f0e5a0fafaa8968eb1262a2b601e6ea2df9"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/package.json",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/package.json",
+      "bytes": 933,
+      "sha256": "138a48cabf2ea4243d2801cf10173f678440d761b02d13777fb9da86f27870da"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/requirements.txt",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/requirements.txt",
+      "bytes": 45,
+      "sha256": "2cde49c8d6ed37fdfaa02e1e5c9159189cd599d57d5f21f3a0f5bafd2cc35114"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/review_sheets.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/review_sheets.py",
+      "bytes": 3014,
+      "sha256": "8c38eec7fc2a31c786fa80ec981cd094ef81287cbd04bcf5d98858f888753986"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/tests/test_builtin_importer.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/tests/test_builtin_importer.py",
+      "bytes": 2165,
+      "sha256": "16c1ca142049cbbc5b94e18f08e73db6ac6bf510341c164b4822f2b368c4106a"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/tests/test_chroma_key.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/tests/test_chroma_key.py",
+      "bytes": 4160,
+      "sha256": "59ba25b0d6faf80a57774271e365811aaffb195e1d10e0c766bfa41eb48b2073"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/tests/test_import_routes.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/tests/test_import_routes.py",
+      "bytes": 9306,
+      "sha256": "51644a54ec346870278b2261640d7257ee59f688d0a8d3fbe0d18f455bcde0a1"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/tests/test_polish_import.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/tests/test_polish_import.py",
+      "bytes": 7875,
+      "sha256": "7cd67608f78a8d17a5996e7364b1098f82589187d8192a8c527572a653372b18"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/tests/test_standalone_generator.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/tests/test_standalone_generator.py",
+      "bytes": 19296,
+      "sha256": "8195329d184ca5168a48e0f18d151e6fceee3d894f74ac15005ca17975a3f88b"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/tools/check-art.mjs",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/tools/check-art.mjs",
+      "bytes": 10973,
+      "sha256": "54360ed74c3eb8ce6446aae11b025af37cc23babbfc92a5c103809ed495dcbfc"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/tools/gen-art-worklist.mjs",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/tools/gen-art-worklist.mjs",
+      "bytes": 128787,
+      "sha256": "a125e275ce2ab95ab46b3e3bdf68b2ca745a7fd631a221e54d3b22b8c7ee9014"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/tools/gen-batch.mjs",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/tools/gen-batch.mjs",
+      "bytes": 8785,
+      "sha256": "847b3103782aba84e81608cbcf05242d7505f44b41b509b0b585d9b93e5764da"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/tools/lib/art.mjs",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/tools/lib/art.mjs",
+      "bytes": 13837,
+      "sha256": "a1fc47177a2c80b2bbefd084367b64d9ce00efe0d7a93d13468858de2957711a"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/tools/lib/asset-queue.mjs",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/tools/lib/asset-queue.mjs",
+      "bytes": 20165,
+      "sha256": "afbcedf1e25ff59bc247318e387c6c552b05da970ebe87b88cc6df9a03a0e19f"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/tools/lib/emblem-looks.mjs",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/tools/lib/emblem-looks.mjs",
+      "bytes": 82888,
+      "sha256": "b949636c0178a1d411dc64472badec4c66e093d4fb21e3b90eed8a52a9eed158"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/tools/lib/statblock-derive.mjs",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/tools/lib/statblock-derive.mjs",
+      "bytes": 51045,
+      "sha256": "23b3272c7bc798bd0182b00156cc9469ad26c36b024f44ef1073ae311e2bf6da"
+    },
+    {
+      "source": "/private/tmp/cf-painted-space-review-20260908/source/verify_gate.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/supplied-snapshot/source/verify_gate.py",
+      "bytes": 10750,
+      "sha256": "a4056156070f650ff3ec71744ccfcb01cba67fbc0f20235df71c1ba86798619b"
+    },
+    {
+      "source": "/Users/nick/.codex/generated_images/01a0778a-a9bf-7732-ac2b-a44cb106d4ad/exec-9f814ee2-6d58-49d2-88c4-67767e2d4d79.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/generated-captures/space-reference-candidate.png",
+      "bytes": 3219190,
+      "sha256": "7bd83d0b8d3fe9a2072b24f1d3017bc5a3da38db04fd0cee4938f2385712550d"
+    },
+    {
+      "source": "/Users/nick/.codex/generated_images/01a0778a-a9bf-7732-ac2b-a44cb106d4ad/exec-8807a87e-bbe3-410b-831d-df836ba0f13c.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/generated-captures/biome-comparison.png",
+      "bytes": 3534214,
+      "sha256": "582d5d7e286e203c7ed1ce14483a50923bd4192c2f201bea2035c310649a6c1b"
+    },
+    {
+      "source": "/Users/nick/.codex/generated_images/01a0778a-a9bf-7732-ac2b-a44cb106d4ad/exec-8778ad2b-eca0-4ec2-921d-c6d436134b7f.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/generated-captures/universe-reference.png",
+      "bytes": 2608066,
+      "sha256": "f3e0cc02e0b1afa3ac20e12635049298c02f42943662318f4d1551807646e98f"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PAINTED_SPACE_PIPELINE_20260908/biome-comparison-prompt.txt",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/sent-prompts/biome-comparison-prompt.txt",
+      "bytes": 3998,
+      "sha256": "2c324173c6a980b5216977d62eb8e39796d8d7d041139f8bab3862bfdb75f745"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PAINTED_SPACE_PIPELINE_20260908/space-reference-candidate-prompt.txt",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/sent-prompts/space-reference-candidate-prompt.txt",
+      "bytes": 3909,
+      "sha256": "646e1d39b37580a7fab182db55d7cf0f2c25fad1cdac8458f5c489ccd663d0fa"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PAINTED_SPACE_PIPELINE_20260908/universe-reference-prompt.txt",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/sent-prompts/universe-reference-prompt.txt",
+      "bytes": 3582,
+      "sha256": "894cbeb9659ff2b262a0bb58f66deeb2544a4330d32ddb155f70c1e8bb14f589"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PAINTED_SPACE_PIPELINE_20260908/USER_PROMPT.md",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/painted-space-pipeline-20260908/USER_PROMPT.md",
+      "bytes": 10438,
+      "sha256": "bd9e507753bc7f6f21744349661ffc1b7569e9a24e59963090580e2b3ada98fd"
+    }
+  ]
+}

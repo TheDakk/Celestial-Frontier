@@ -1,0 +1,342 @@
+{
+  "schema": "cf-s4-d17-candidate/v1",
+  "tuning": {
+    "press": {
+      "dealt": 1.4,
+      "taken": 1.7
+    },
+    "guard": {
+      "dealt": 0.65,
+      "taken": 0.585,
+      "openerBlunt": 0.25
+    },
+    "evade": {
+      "dealt": 0.6,
+      "dodge": 0.32
+    }
+  },
+  "phase": {
+    "atFraction": 0.5,
+    "dealt": 1.02,
+    "taken": 0.98
+  },
+  "recoveryActiveMs": 600000,
+  "recoveryRationale": "Keep existing10active minutes; equalfallen/swapped, no addedwound. Win-rate simulations supply no evidence to change the economy duration.",
+  "commandPolicies": {
+    "guardian": {
+      "lowRatio": 1000,
+      "phaseHp": 0.5,
+      "nextFerRatio": 1.2
+    },
+    "titan": {
+      "lowRatio": 1000,
+      "phaseHp": 0,
+      "nextFerRatio": 0
+    }
+  },
+  "threats": [
+    {
+      "id": "smite",
+      "ab": {
+        "dmg": 1.255
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 50,
+        "press": 26,
+        "guard": 101,
+        "evade": 55
+      },
+      "pass": true
+    },
+    {
+      "id": "aegis",
+      "ab": {
+        "taken": 0.842
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 56,
+        "press": 16,
+        "guard": 129,
+        "evade": 89
+      },
+      "pass": true
+    },
+    {
+      "id": "dot",
+      "ab": {
+        "burn": 0.037
+      },
+      "right": "evade",
+      "wrong": "guard",
+      "wins": {
+        "balanced": 43,
+        "press": 33,
+        "guard": 2,
+        "evade": 49
+      },
+      "pass": true
+    },
+    {
+      "id": "fury",
+      "ab": {
+        "ramp": 0.0506
+      },
+      "right": "evade",
+      "wrong": "guard",
+      "wins": {
+        "balanced": 63,
+        "press": 45,
+        "guard": 40,
+        "evade": 54
+      },
+      "pass": false
+    },
+    {
+      "id": "ambush",
+      "ab": {
+        "first": 2.05
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 79,
+        "press": 24,
+        "guard": 395,
+        "evade": 102
+      },
+      "pass": true
+    },
+    {
+      "id": "eye",
+      "ab": {
+        "critB": 0.304
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 77,
+        "press": 32,
+        "guard": 160,
+        "evade": 86
+      },
+      "pass": true
+    },
+    {
+      "id": "veil",
+      "ab": {
+        "dodge": 0.166
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 86,
+        "press": 20,
+        "guard": 203,
+        "evade": 140
+      },
+      "pass": true
+    },
+    {
+      "id": "mend",
+      "ab": {
+        "regen": 0.048
+      },
+      "right": "press",
+      "wrong": "evade",
+      "wins": {
+        "balanced": 18,
+        "press": 23,
+        "guard": 0,
+        "evade": 0
+      },
+      "pass": true
+    },
+    {
+      "id": "echo",
+      "ab": {
+        "dbl": 0.188
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 110,
+        "press": 65,
+        "guard": 225,
+        "evade": 116
+      },
+      "pass": true
+    },
+    {
+      "id": "thirst",
+      "ab": {
+        "drink": true,
+        "critB": 0.124
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 138,
+        "press": 91,
+        "guard": 205,
+        "evade": 102
+      },
+      "pass": true
+    },
+    {
+      "id": "thorns",
+      "ab": {
+        "thorns": 0.155
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 74,
+        "press": 33,
+        "guard": 175,
+        "evade": 77
+      },
+      "pass": true
+    },
+    {
+      "id": "rend",
+      "ab": {
+        "shred": 0.102
+      },
+      "right": "evade",
+      "wrong": "guard",
+      "wins": {
+        "balanced": 47,
+        "press": 42,
+        "guard": 22,
+        "evade": 70
+      },
+      "pass": true
+    },
+    {
+      "id": "reck",
+      "ab": {
+        "execB": 0.55
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 80,
+        "press": 39,
+        "guard": 185,
+        "evade": 97
+      },
+      "pass": true
+    },
+    {
+      "id": "bulwark",
+      "ab": {
+        "cap": 0.235
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 237,
+        "press": 59,
+        "guard": 464,
+        "evade": 174
+      },
+      "pass": true
+    },
+    {
+      "id": "shock",
+      "ab": {
+        "stun": 0.167
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 113,
+        "press": 64,
+        "guard": 218,
+        "evade": 146
+      },
+      "pass": true
+    },
+    {
+      "id": "roulette",
+      "ab": {
+        "gambit": 0.55
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 103,
+        "press": 21,
+        "guard": 231,
+        "evade": 151
+      },
+      "pass": true
+    },
+    {
+      "id": "enrage",
+      "ab": {
+        "enrage": 0.31
+      },
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 107,
+        "press": 40,
+        "guard": 217,
+        "evade": 105
+      },
+      "pass": true
+    }
+  ],
+  "targets": {
+    "easyPlanning": [
+      0,
+      5
+    ],
+    "otherPlanning": [
+      10,
+      20
+    ],
+    "commandMinimum": 5,
+    "soloV1AbsoluteDelta": 5,
+    "partyAutoMinimumWinPercent": 20
+  },
+  "policyCorrection": "Nick specifies >=5pp Command edge; old <=5 and provisional <=10 maximum are not the new minimum-only contract. Originaltraining reports remain intact. No historical gate is rebound.",
+  "heldOut": {
+    "seedBase": 70000000,
+    "count": 512,
+    "hookSeedBase": 80000000,
+    "forecastSeedBase": 60000000,
+    "forecastSeeds": 16,
+    "careFed": [
+      0,
+      10,
+      20,
+      40,
+      60
+    ],
+    "partyBands": [
+      [
+        0.6,
+        0.8
+      ],
+      [
+        0.7,
+        0.9
+      ],
+      [
+        0.8,
+        1
+      ]
+    ],
+    "soloBand": [
+      0.9,
+      1.1
+    ]
+  },
+  "scope": "Fixed benchmark; held-out outcomes not yet read. Solo Titan baseline weakness must be reported separately. No campaign/dossier UI certification."
+}

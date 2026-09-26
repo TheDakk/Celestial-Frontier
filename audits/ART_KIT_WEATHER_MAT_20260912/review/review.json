@@ -1,0 +1,194 @@
+{
+  "schema": "cf.kit-contact-review.v1",
+  "nativeHead": "9f51f2c9f32bc68b9228e543f6cfe6a5b6537121",
+  "paintingSha256": "27101ff3af6e91b3e59087e7b1c2c4564d7c3cd1fa9ca6aec11c31250508fc16",
+  "nativeCompositeMatchesStatic": true,
+  "warmEngineMs": 23561.939999997616,
+  "sessionPreparationMs": 6455.069999992847,
+  "totalEngineMs": 30017.014999985695,
+  "warmUnder240s": true,
+  "sessionCreates": {
+    "text": 1,
+    "encode": 1,
+    "denoise": 1,
+    "decode": 1
+  },
+  "organismInferencePasses": 0,
+  "measurements": [
+    {
+      "name": "finisher",
+      "elapsedMs": 20891.65000000596,
+      "sequence": 416,
+      "tokenCount": 402,
+      "promptSha256": "741e3078a4a12a669a0fc9846f68789e1717bfc31cd584910568067ff541194c",
+      "chatPromptSha256": "18ec22841a2ed28356a8092fdd9fd59c5ebd86641b9c536b4f4e89f0bffe1dde",
+      "sigmas": [
+        0.3499999940395355,
+        0
+      ]
+    }
+  ],
+  "civetRegisteredHeightFraction": 0.29999999999999993,
+  "civetHeightAtLeast28Percent": true,
+  "allRegisteredBoxIoUAtLeast90Percent": false,
+  "organisms": [
+    {
+      "name": "Civet",
+      "compositeBox": {
+        "x": 616.9814354066986,
+        "y": 270.72,
+        "width": 240.59712918660284,
+        "height": 172.79999999999995
+      },
+      "score": 0.9565066992337194,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 1181,
+      "postBox": {
+        "x": 616.9814354066986,
+        "y": 270.72,
+        "width": 240.59712918660284,
+        "height": 172.79999999999995
+      },
+      "iou": 1,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 0,
+      "fringeVisualReview": "pending",
+      "speciesVisualReview": "pending"
+    },
+    {
+      "name": "Persimmon",
+      "compositeBox": {
+        "x": 17.097142857142856,
+        "y": 207.36000000000004,
+        "width": 232.04571428571433,
+        "height": 241.92
+      },
+      "score": 0.7965605872900425,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 1280,
+      "postBox": {
+        "x": 17.097142857142842,
+        "y": 207.36000000000007,
+        "width": 232.04571428571433,
+        "height": 241.92
+      },
+      "iou": 0.9999999999999998,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 2,
+      "fringeVisualReview": "pending",
+      "speciesVisualReview": "pending"
+    },
+    {
+      "name": "Platypus",
+      "compositeBox": {
+        "x": 354.2179310344828,
+        "y": 391.68,
+        "width": 172.2041379310345,
+        "height": 103.68
+      },
+      "score": 0.8808069596384689,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 493,
+      "postBox": {
+        "x": 354.21793103448283,
+        "y": 391.67999999999995,
+        "width": 172.2041379310345,
+        "height": 103.68
+      },
+      "iou": 0.999999999999998,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 0,
+      "fringeVisualReview": "pending",
+      "speciesVisualReview": "pending"
+    },
+    {
+      "name": "Frog",
+      "compositeBox": {
+        "x": 174.08,
+        "y": 406.78299212598426,
+        "width": 122.88000000000002,
+        "height": 94.33700787401574
+      },
+      "score": 0.82999379235561,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 331,
+      "postBox": {
+        "x": 174.08000000000004,
+        "y": 406.78299212598426,
+        "width": 122.88000000000002,
+        "height": 94.33700787401574
+      },
+      "iou": 0.9999999999999993,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 4,
+      "fringeVisualReview": "pending",
+      "speciesVisualReview": "pending"
+    },
+    {
+      "name": "Devil's Club",
+      "compositeBox": {
+        "x": 808.96,
+        "y": 337.8295406360424,
+        "width": 163.84000000000003,
+        "height": 169.0504593639576
+      },
+      "score": 0.7280332075164502,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 724,
+      "postBox": {
+        "x": 808.96,
+        "y": 337.82954063604245,
+        "width": 163.84000000000003,
+        "height": 169.0504593639576
+      },
+      "iou": 0.9999999999999992,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 26,
+      "fringeVisualReview": "pending",
+      "speciesVisualReview": "pending"
+    },
+    {
+      "name": "Cranberry",
+      "compositeBox": {
+        "x": 266.24,
+        "y": 450.9926132404181,
+        "width": 163.83999999999997,
+        "height": 67.40738675958187
+      },
+      "error": "Error: No reliable organism registration",
+      "speciesAccepted": false,
+      "boxCriterion": false,
+      "pinkEdgeCandidates": 16,
+      "fringeVisualReview": "pending",
+      "speciesVisualReview": "pending"
+    }
+  ],
+  "limits": "Post boxes are masked texture registration estimates, not segmentation. Species, shadows and pink-fringe decisions require visual review. Pink candidate counts are not a semantic fringe verdict.",
+  "qualityAccepted": true,
+  "acceptance": {
+    "by": "Nick",
+    "scope": "weather/mat painting and Cranberry mat as is",
+    "sourceHead": "9f51f2c9",
+    "date": "2026-09-12"
+  }
+}

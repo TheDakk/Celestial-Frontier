@@ -1,0 +1,1 @@
+apps/game/src/creature-rig-contact-travel.test.ts(12,37): error TS7016: Could not find a declaration file for module '../../../tools/animation-completion/review-schedule.mjs'. '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/review-schedule.mjs' implicitly has an 'any' type.

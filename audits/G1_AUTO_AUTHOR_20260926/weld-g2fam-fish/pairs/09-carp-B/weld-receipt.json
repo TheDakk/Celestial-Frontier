@@ -1,0 +1,44 @@
+{
+ "schema": "cf.selective-weld/v1",
+ "fit": "09-carp",
+ "variant": "B",
+ "pairs": [
+  [
+   "body",
+   "body-1"
+  ],
+  [
+   "body",
+   "body-2"
+  ]
+ ],
+ "helperSha256": "f13467912a1537adcc4624e5b5b3efdfb738aaaf5c073e37ab2f88862696de3c",
+ "bindingHash": "7ec40a0424a6854a07cf62ba33d939de2a0f5f7e1b08e196a2c8343dfa862c64",
+ "receipt": {
+  "schema": "cf.observed-surface-split/v1",
+  "contactPins": [],
+  "sourceBindingHash": "0e9e3ed56cf0471353e7913a92b8496682590ff76697d86f9c7f224a24638927",
+  "sourceVertices": 2254,
+  "vertices": 2506,
+  "sharedSupports": 699,
+  "pins": 1383,
+  "independentSurfaceParts": 13,
+  "sourceJoins": 12,
+  "excludedOverlaps": 13,
+  "observedExcludedBoundaries": 13,
+  "weldedExcludedBoundaries": 2,
+  "independentExcludedBoundaries": 11,
+  "preservePaintBoundaries": false,
+  "paintBoundaryPairs": [
+   [
+    "body",
+    "body-1"
+   ],
+   [
+    "body",
+    "body-2"
+   ]
+  ],
+  "sourceCoordinateChanges": 0
+ }
+}

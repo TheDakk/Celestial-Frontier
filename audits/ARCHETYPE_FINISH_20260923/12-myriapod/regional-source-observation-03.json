@@ -1,0 +1,77 @@
+{
+  "schema": "cf.source-mask-observation/v1",
+  "inputs": [
+    {
+      "path": "candidate-05/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e"
+    },
+    {
+      "path": "fit-03/labels.png",
+      "sha256": "401e153293f91bd04484f4203c14bbd4f894ed11bfea50b203141db7f457d0cf"
+    },
+    {
+      "path": "fit-03/pre-regional-binding.json",
+      "sha256": "f70a474b3c3bfc5e9c33cc28e0165f3158692eb0f695b3cbe1f641e576c5f3d9"
+    }
+  ],
+  "tools": [
+    "624de2",
+    "de8cff"
+  ],
+  "vertex": {
+    "index": 69,
+    "x": 959,
+    "y": 744,
+    "rgba": [
+      170,
+      79,
+      15,
+      135
+    ],
+    "label": 3,
+    "region": "leg2-near-knee-bend-observed-paint"
+  },
+  "nearbyRootPixels": {
+    "window": {
+      "x0": 939,
+      "x1": 979,
+      "y0": 723,
+      "y1": 764
+    },
+    "count": 129,
+    "bounds": {
+      "x0": 944,
+      "y0": 723,
+      "x1": 964,
+      "y1": 742
+    },
+    "examples": [
+      {
+        "x": 949,
+        "y": 723,
+        "alpha": 255
+      },
+      {
+        "x": 950,
+        "y": 725,
+        "alpha": 255
+      },
+      {
+        "x": 951,
+        "y": 727,
+        "alpha": 255
+      },
+      {
+        "x": 952,
+        "y": 729,
+        "alpha": 255
+      },
+      {
+        "x": 953,
+        "y": 731,
+        "alpha": 253
+      }
+    ]
+  },
+  "finding": "The pinned support lies on actual leg paint; nearby opaque upper-shaft pixels remain mislabeled body. Do not merely exclude this support from the Knee patch. Correct source ownership, retaining pixels and pins."
+}

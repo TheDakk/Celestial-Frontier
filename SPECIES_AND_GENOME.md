@@ -1,13 +1,325 @@
 # Celestial Frontier — Species & Genome System
 
+**Candidate body routing — matches code 2026-09-24.** All 53 previously empty Earth-fauna presentation profiles now reference existing specialized templates. Sea Squirt uses sessile-filter, Salp/Pyrosome colonial-filter and Fiddler Crab brachyuran; all other routes follow the existing target register. Explicit `needsObservedFit` retains all 53 in the coverage ledger: zero new painted admissions. Habitat, weapons, accepted bindings, anatomical counts and solver limits are unchanged. Packet: `audits/MOTION_FOLLOWUP_20260924/ITEM7.md`. No new art was commissioned.
+
+
+> Current roster intake, 2026-09-19: the historical58 inventory is explicit in `tools/fauna-coverage/roster-inventory.json`. Five admitted crabs retain existing fit/bind/film evidence; the remaining53 are attempted in source-family order and incomplete source fits refuse. That 2026-09-19 census recorded53/8observed versus the earlier58/13; candidate routing is now present for those53, with painted qualification still pending. Partial source features do not grant animation qualification. Evidence: `audits/ANATOMY_SINGLE_RUN_20260919/roster/README.md`.
+
+Current anatomy implementation — matches code as of September 19, 2026. The canonical
+contract and live limits are in [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md); the current
+[accumulated review packet](audits/ANATOMY_SINGLE_RUN_20260919/README.md) separates source
+observation, binding admission, contact geometry, native timing and visual qualification.
+Five crab families have admitted pinch attacks and contactJoint. Quadruped action stances
+and stage-owned melee travel preserve source clip keys; exact rest and 0.25 px planted
+contact pass on the regenerated Civet. Its T1 root continuity and film CPU remain leaf reds.
+Flora retain their recorded shape/CPU and Persimmon parent-attachment intake refusals.
+
+The historical 58-name missing-body roster is the work inventory, not a claim that all 58
+remain unsupported by today’s selector. Five have admitted crab bindings and conserved
+finished textures; no numeric result grants visual acceptance. The current source census
+and source-family fit/refusal sheets are recorded in the accumulated packet. Historical
+counts and failed inputs remain in their dated audit folders.
+
+Source capture compares complete RGBA across ordinary and observed renders. Replay admits
+known fresh path/clip/stack state and copies supported initial context properties. Unknown
+inherited gradients/patterns refuse. Structural counts exclude marks: Pyrosome is one tube
+with 190 zooid marks and a separate aperture. Fiddler emits six visible quadratic legs and
+asymmetric pincer masks; missing arm chains and the fourth walking pair are explicit.
+Count-expanders and the 169-action raw-clip battery retain their existing limits; a synthetic
+contract pass does not establish a painted fit or a phone animation tier.
+
+**Local landfall conditioning — matches code as of 2026-09-09:**
+`buildLandfallConditioningV2` / `buildCanonicalLandfallConditioningV2` preserve the existing
+canonical Earth epoch-0 snapshot, all 19 roster genomes and six complete displayed individuals.
+Their ordered reference requirements are Civet, Persimmon, Platypus, Frog, Devil's Club and
+Cranberry. Each carries the full `speciesVisualKey`, full genome and source-backed named anatomy;
+name/seed aliases or changed genome fields cannot substitute for that identity. Unknown
+worlds/families remain unsupported. Raw procedural limb, color or body loci never override
+named Earth rules. This changes model conditioning only, not genomes, lineage, gameplay counts,
+biome mapping, Compendium categories or flora effects.
+
+The [exact reference set](audits/AI_SPECIES_MOBILE_20260909/references/reference-set-v1.json)
+assigns four new authoring images for Frog/Persimmon/Devil's Club/Cranberry and preserves the
+selected Civet and diagnostic Platypus. Encoded image hashes, source dimensions, preparation
+geometry and canonical order are verified before use. The [visual review](audits/AI_SPECIES_MOBILE_20260909/references/VISUAL_REVIEW.md)
+records visible diagnostic features and occlusions; the image assignment does not prove hidden
+genomic traits are visible. Whole-image references are soft guidance, not hard species/count or
+spatial constraints. The first actual V2 output has a [manual review bound to the exact PNG and
+six full identities](audits/AI_SPECIES_MOBILE_20260909/native-generation-01/INDEPENDENT_VISUAL_REVIEW.md);
+the detached fidelity API admitted V1 only when that historical run occurred. Its additive V2
+contract now binds the exact PNG, canonical recipe, all nineteen genomes, six full identities
+and ordered reference hashes/geometry, including reference identity on each reported resident.
+V1 and V2 contracts remain distinct. An explicit flora-count outcome prevents unresolved
+interwoven motifs from silently becoming three confirmed plant individuals. Actual bytes and
+visual observations still require an external reviewer; the code recognizes no pixels and
+authenticates no observer. All assessments leave semantic verification and full quality false.
+
+The retained painting is now [formally species-rejected](audits/AI_OFFLINE_INTEGRATION_20260909/species-review/README.md).
+Three distinct animal bodies are visible, but the Platypus body plan, Devil's Club cane spines,
+Persimmon calyx detail, Cranberry runner habit, flora count and several placements remain
+unaccepted. The source genomes/anchors are preserved; image conditioning did not enforce them.
+The original native aggregate FAIL is unchanged. No phone, universal species or whole-scene
+art acceptance follows. The new optional offline Land proof also uses only canonical epoch-0
+Earth; it does not widen this taxonomy boundary or change flora effects or Compendium ownership.
+Its actual native02 run completed installed-model/offline checks and all six reference encodings,
+then reached Drawing at 31.706 seconds and timed out under the unchanged 600-second stage limit
+before any completed denoise step or new PNG. It remains aggregate FAIL and adds no species-quality
+approval. The successful storage/module/Land scopes are separate from unfinished image production
+and retained-original/reload verification.
+[Current AI ownership and quality boundary](LOCAL_AI_GENERATION.md).
+
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
 ownership, four bounded companion writers, Guardian/Titan acquisition, rarity presentation and six
-explicit audio-surface overlays match the local `port/v2` candidate as of 2026-08-29. ⚠ v1.8.9: every reader of the
+explicit audio-surface overlays match the local `port/v2` candidate as of 2026-08-29. The offline
+Wolf export contract below matches code as of 2026-09-08. The §2.9 genome → painted-individual
+section (morph card + battle2 library), the §3 morph colour table and the §6 morph anchors match
+the local `port/v2` candidate on `anthropic/mac` as of September 24, 2026 (working tree, including
+that day's uncommitted morph review fixes). ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract.
+
+## On-demand landfall requirement — clarified 2026-09-08
+
+Nick's vision is to produce the finished, cohesive landfall painting **when a world is visited
+as play proceeds**. Millions of possible worlds do not mean millions of images prepared and
+installed in advance. A static landing presentation describes the displayed scene; it does not
+require a prepainted planet catalogue. The current one-world still demonstrates quality and
+placement, not the production generation mechanism.
+
+Nick's current direction is the browser game as a local-AI proof of concept for a later engine
+game, with no separate AI software installation for players. The optional in-game preview now
+uses the pinned local browser model and explicit resumable OPFS delivery; no mandatory shipping
+model or hosted generation service is selected. The built-in Codex tool creates direction and
+individual-reference assets during authoring. Actual browser-model landfall outputs are separate
+evidence. Hardware, download size, quality, latency and exact shared-image retention still need
+qualification. A seed alone is not an exact-pixel contract; reference assets do not prove the
+embedded model matches the approved quality. Git integration authority stays in ROADMAP.
+[Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+Local direction is conditional on feasibility, modest storage and no separate player AI setup.
+Nick now prefers adaptive scene-cache allowances: smaller on limited devices and several GB on
+capable desktops. Proposed tiers remain provisional; disk storage and RAM/GPU budgets are separate.
+All build/model/save/update bytes still count toward the total footprint. No cache manager, model
+budget or runtime gate changed. [Current adaptive limits and retention proposal](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md).
+The next bounded art-generation scope is **one on-demand scene proof**, using an existing canonical
+world/roster and the approved quality target, before expanding a prepainted planet catalogue.
+Preserve full genomes, named Earth anatomy, biome authority, current clocks, saves and share codes.
+
+## Selected landing presentation — Nick, 2026-09-08
+
+Nick explicitly selected the [Living Worlds painting](audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png)
+for the landing-screen direction: one large cohesive **static** environment painting, with multiple
+canonical flora/fauna where the composition supports them. Live resident motion on landing is no
+longer required now. This supersedes that earlier presentation priority while preserving its studies.
+[Exact decision and supplied image](audits/STATIC_LANDING_PORTRAIT_20260908/DIRECTION_DECISION.md).
+
+Landing art, Compendium portraits and later articulated 2D battle sprites must share the same full
+organism identity, anatomy, markings and versioned art recipe. Author/retain complete organisms and
+background separately, with matched scene lighting and contact, then flatten the landing view if
+appropriate. A crop of a flattened or occluded animal does not supply hidden anatomy or a rig.
+Battle depth may use posing, overlap, scale and authored perspective; no copied Pokémon assets or
+3D simulation is implied. Existing flora effects/healing, classifications, discovery/capture rules,
+complete genomes/lineage, biome mapping and saves stay owned by current gameplay data.
+
+The new [four-image direction packet](audits/MIDGAME_ART_DIRECTION_20260908/README.md) includes the
+atlas, selected triptych, full six-organism Earth landfall and fungal-family concept. The last two
+are review compositions, not yet accepted runtime assets or exact geometric/genome parity proof.
+The alien image uses documented fungal families; one retained real-system derivation exposes
+existing habitat/painter conflicts in all three worlds. It is explicitly not an exact encounter,
+and does not close D-9e. The multi-organism Earth's Civet has face/coat drift from the selected
+canonical master; preserve this visual limit rather than silently replacing that identity.
+
+The optional `paintedlanding=1` Earth Civet still pilot is now applied and bound to its real asset;
+bounded integration verification passed. [STATIC_LANDING_PORTRAIT_20260908](audits/STATIC_LANDING_PORTRAIT_20260908/README.md)
+owns the source, export, exact results and retained first failures. The same full-request/all19-genome admission
+and accepted UI band select one leased opaque still, with no overlaid unfinished resident sprites.
+Native roster rows remain intact. Nick explicitly authorized ImageMagick resize/encoding while
+preserving quality. The unchanged 1875×839 original remains retained; the 960×430 lossless WebP
+is 600,756 bytes, SHA `cd2c616abb35610f6ec63382f6476436f27a8c1a2c698757c8a66d34a5b2e0ec`.
+Its decoded RGB exactly matches the resized reference; resampling still reduces detail at zoom.
+The loader checks that exact declared byte count under a 640 KiB hard ceiling; existing loads
+without a declared size retain their 512 KiB limit. The original preparation failure and unapplied
+patch receipts remain historical evidence, not current installation state. This is not all-world
+art coverage, Compendium replacement, completed battle animation or full admission.
+
+Matches code as of September 8: 146 focused tests passed; the new deep-clone fixture then
+failed TypeScript TS2352. Its explicit mutable-clone cast was corrected, its five tests rerun,
+and all three V2 TypeScript programs plus root validation passed. The unchanged evidence build
+passed native desktop and phone review. A wrong-asset observer inventory error stopped its first
+chain; a separately recorded correction passed only the remaining wrong-SHA/default modes,
+with ten negative controls. Prior passes and the first failure were retained, with no rebuild.
+[Visual review](audits/STATIC_LANDING_PORTRAIT_20260908/VISUAL_REVIEW.md) and
+[verification](audits/STATIC_LANDING_PORTRAIT_20260908/integration-native-corrected-results.json)
+remain scoped; physical devices, native heap and all-world procedural quality stay unqualified.
+
+## Shared animation requirement — current architecture, 2026-09-08
+
+Nick requires one programmatic anatomy/motion system covering procedural land, flying and aquatic
+creatures and their variations, with arms, legs, heads, torsos, wings, fins, tails and flexible
+appendages. [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md) owns the shared contract and coverage
+sequence. Reusable joint/chain mathematics is the first isolated tooling foundation; the game’s
+painters do not yet emit common rig geometry or a universal animation-ready skin.
+
+The actual winning named/lineage/procedural painter must emit the same resolved anatomy used for
+both rich painting and motion. Raw descriptor genes alone are insufficient: modern procedural
+leg counts derive from body/locomotion; swimmers and special named owners can override body plans.
+Use variable semantic appendage arrays and family-appropriate land/air/water capabilities. Do not
+impose a quadruped skeleton on wings, fish, jelly or plants, or infer anatomy from an image alone.
+Preserve full genome/lineage identity, named Earth anatomy/colors, alien palettes and biome mapping.
+The [source inventory](audits/CIVET_PAINTED_PARTS_20260908/SOURCE_TAXONOMY.md) records existing
+mismatches, including raw-limb/eye omissions, extremophile locomotion semantics and four-wing
+routing; these are documented conflicts, not silently corrected by animation work.
+
+The latest Civet atlas is unaccepted authoring evidence after a first checkerboard/parts failure
+and one magenta-matte correction. Five alpha-extracted components remain unqualified as an assembled
+skin; no new painted asset or motion was wired into the native game or earlier preview. Nick’s
+universal-system clarification redirected the next step to the shared foundation. Fine-art blending,
+all-family locomotion, physical/human review and prior admission/ownership blockers remain open.
+
+## Earth organisms and alien flora — direction updated 2026-09-08
+
+Nick’s [two additional reference sheets](audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/README.md)
+separate Earth flora/fauna from alien flora while continuing the approved painted style.
+Earth animals keep recognizable named anatomy, proportions, markings and natural colors;
+richness comes from coherent volume, directional fur/feathers/scales, expressive natural faces
+and material detail. Earth plants retain their actual whole growth habit, branching/crown,
+leaf shapes, flowers and fruit. A reference berry shrub is not a replacement for the named
+Cranberry, Persimmon or Devil’s Club. Examples do not add species or modify the Earth roster.
+
+Alien flora can express unusual complete architectures—fans, fronds, branching clusters,
+pods, fibrous bases and porous tissues—with coherent attached roots/stems/leaves, tactile
+surfaces and layered light. Existing seeded final forms, color atlas and biome profile remain
+authoritative. The sheet’s copper/blue accents are examples, not a universal recolor; exposed
+reference roots do not require uprooted plants in a landscape. Neither sheet rewrites genes,
+lineage, encounter selection, biome mapping or the documented global D-9e gap.
+
+The current painted animal study remains Civet. Its natural anatomy and calmer painted fur
+support the Earth sheet’s direction; face hierarchy, clean edges and scene contact determine
+final fit. Native Chronicle/Compendium/Planetside integration and human acceptance remain open.
+This updates authoring requirements; the sheets are opaque references, not runtime sprite packs.
+
+## Painted Civet water and articulated motion — matches study code as of 2026-09-08
+
+The [current local study](audits/CIVET_WATER_AND_MOTION_20260908/README.md) follows Nick’s
+shallow-water reading of the accepted Earth anchor, superseding the earlier mud/pebble
+interpretation. Four measured paw contacts receive a narrow foreground waterline sampled from
+the existing background, faint broken ripples and submerged contact shadows. Modest resident-only
+overcast light preserves the painted source and all unowned background pixels. No reflection or
+new scenery was invented. The five unfinished residents are absent from this review; the game’s
+six-resident roster, exact genomes, biome mapping and accepted anchors remain unchanged.
+
+The calmer original Civet still supplies all RGB; its repaired-alpha 768×512 WebP is 179,816 bytes,
+SHA `186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365`. Earth reference anatomy,
+natural colors and botanical growth forms remain binding, as do seeded alien forms/palettes.
+The painted direction fits the supplied references, but the creature remains warmer/sharper than
+the rainy landscape; fine fur/whisker edges, fluid legs and human art acceptance remain open.
+
+`port/v2/tools/painted-creature/civet-articulated-rig.ts` adds twelve local aspect-correct bone
+transforms to the connected 49×33 mesh: neck, four upper/knee chains and three tail segments.
+Breathe now shows two chest cycles over 6 s; brace/thrust lasts 1.6 s and reaction 1.1 s.
+Four whole paw regions stay fixed while the lower-left tail is free. Stop/reset pose is disabled
+at rest. Creature/Environment tabs keep the subject near controls; width changes preserve the
+active clip. Every clip settles exactly with no idle animation loop. This remains one painted
+projection with planted legs; fluid stepping/turning needs separately painted overlapping parts
+or a proper 3D rig. It is not yet native game integration or a finished animation set.
+
+44 focused rig tests, the study and all three V2 typechecks, and root validation PASS. Final native
+Edge desktop/phone PASS has 34 frame observations, 18 control groups and three actual-canvas WebM
+recordings per mode. Positive controls use real native clicks; frozen/subpixel/rigid/dead-tail/
+held-breath and eight water faults reject. Four paw contacts, unchanged unowned background,
+finite completion/cancellation, width-resize continuity and resource retirement have outcome
+proof. The first TypeScript red and first native off→on filter-state failure remain immutable;
+empty undefined/null filter chains are now treated equivalently without accepting foreign filters.
+These scoped results do not close full admission, physical-device, native-heap or human review.
+No native Guide/Training/release-note, version, save, roster, RNG or UI placement changed.
+The earlier [cohesion study](audits/CREATURE_SCENE_COHESION_20260908/README.md) and original
+[Civet study](audits/CREATURE_PAINTED_CIVET_20260908/README.md) retain their failures and evidence.
+
+## Painted Civet authoring study — matches study code as of 2026-09-08
+
+The local [Civet review packet](audits/CREATURE_PAINTED_CIVET_20260908/README.md) binds one
+rich painted rest asset to the exact original 29-field Earth 133 epoch 0 Civet genome. The current
+named painter supplied actual transparent ink and 132/300/440 baseline images. Its long pointed
+muzzle, mask, tan spotted coat, ringed tail, rounded ears, four planted feet and whole-body
+proportions are the authoring constraints; no genome or named/lineage route is rewritten.
+
+`port/v2/tools/painted-creature/civet-rig.ts` owns a finite, single-view connected mesh study:
+4.2 s breathing, 1 s brace/neck thrust/recoil and 0.7 s reaction, each returning exactly to rest.
+The study uses one 768×512 texture (179,856 compressed bytes; 1,572,864 RGBA bytes) across
+close views and the unchanged Earth relative anchor. This is texture deformation, not a
+3D skeleton, jaw opening, walking or actual Chronicle/Compendium/Planetside integration.
+The current game still uses its existing painters and whole-portrait battle motion.
+
+The image generator twice returned opaque checkerboards. Nick then explicitly authorized
+ImageMagick alpha extraction. Both generator failures and the first two matte edge failures
+remain intact. The study matte attenuates fine whiskers and retains a light fur fringe under
+magnification; production clean-edge and human art acceptance remain open. The painted source,
+matte recipes, derivative, exact identity, source bindings and all verification results are
+retained in the packet. No full admission, physical-device qualification or art-lock CI follows.
+
+## Layered Earth scene — matches local code as of 2026-09-08
+
+The exact `livingvista=1` riverbank uses six unchanged full Earth genomes and their current
+Compendium body owners on transparent ink: Civet, Platypus, Frog, Persimmon, Devil’s Club and
+Cranberry. It excludes portrait vignette/framing/polish and preserves named anatomy, markings
+and colors. The existing shared input palette receives an export alias; no palette algorithm
+changes. Alpha bounds and the lowest solid row provide static relative fit/contact, with
+empty/clipped bodies rejecting the complete layer. This is not locomotion or metre-scale ecology.
+
+The explicit mammal/amphibian/tree/shrub annotations are checked against the actual temperate
+profile. The global generated roster remains unchanged, including the documented D-9e gap.
+Older bare art and request-side phenotype helpers do not include every later named correction;
+the new scene deliberately reuses current named owners. [Mapping and source findings](audits/AV_EARTH_LAYERED_SCENE_20260908/BIOME_MAPPING.md)
+record the actual authority and test limitations for Claude.
+
+## Earth appearance and movement authority — Nick, 2026-09-08
+
+Earth creatures retain their existing explicit appearance instructions and recognizable
+Earth-like features. Richer materials, light, detail and expression must preserve their exact
+named catalogue identity, canonical colors and final morphology; the new visual direction does
+not authorize fantasy redesign of Earth species. `speciesoverrides.ts` and the existing named
+and lineage routes remain the presentation authority over generic raw trait interpretations.
+Species-appropriate movement is a binding authoring requirement, not an implemented locomotion
+claim. Authoring evidence includes the offline Wolf study and the finite one-view painted Civet mesh
+study above. Native battles retain whole-portrait translations; complete animal-specific
+locomotion and articulated combat remain open.
+
+Alien planets, biomes and creatures remain procedural under existing seeded owners. Earth-named
+organisms and their bred descendants retain the same identity/lineage rules wherever encountered;
+`_earthName`, `_earthBlend`, `_earthBlendKingdom`, `_anchorVal` and the complete immutable genome
+are not replaced by a style prompt or a world-location shortcut. This clarification changes no
+biological generation, trait inheritance, breeding, normalization, taxonomy or save behavior.
+See [current art direction](ART_DIRECTION.md) for the shared richness and movement target.
+
+## Offline complete-genome morphology export — 2026-09-08
+
+`port/v2/tools/creature-blender-export.mjs` is a read-only authoring bridge over fixed owned
+source declarations. It preserves every plain genome field in a detached snapshot and retains
+the exact `speciesVisualKey`; seed/name alone are insufficient. Lossy JSON values reject before
+export. Each record binds source byte hashes, the final painter owner, source-derived proportions
+and an explicit supported/static-fallback decision. Known specimen provenance is rederived and
+checked; unknown derivation claims are not accepted.
+
+The pure existing Wolf pilot uses its exact catalogue genome and named `QUAD_SPEC.Wolf` →
+`faunaResetCanidC` route, regardless of raw body/locomotion genes. Proportions use normalized
+pre-fit 440px painter coordinates. The Blender recipe adds authored depth and anatomy only after
+this boundary. Two actual ordered crosses retain their complete child genomes, qualified Wolf
+owner and anchor-derived ridge/coat paths; a mixed-kingdom child does not discard its inherited
+fauna owner. Named metadata that still activates lineage drift also requires fallback. An actual
+procedural audit specimen retains its final plan. The first recipe admits only pure named Wolf;
+reviewed descendants, procedural and unsupported owners keep their existing static presentation.
+No taxonomy, RNG, breeding, genome normalization, save or runtime painter changes are introduced.
+
+Nineteen focused exporter tests, three TypeScript programs and root validation passed. The
+second private Wolf model and five 440px Metal poses passed scoped connected-skin, weight,
+planted-paw, finite-motion and settlement checks, with four rejected negative controls. This
+is one unaccepted authoring candidate, not runtime rig integration or completion of any of the
+eight family-level animation goals. The
+[Wolf candidate audit](audits/CREATURE_BLENDER_CANID_20260908/README.md) records exact model/render
+results, retained failures and private backup status. Human art/device acceptance and full
+admission remain open.
 
 > **2026-08-29 current local species/companion boundary:** Arc 5 exposes four exact-instance writers
 > from verified real-fauna Compendium detail without changing the established creature structure.
@@ -266,6 +578,68 @@ The comment at ~1524 is a hard invariant: the original `FLORA_FORM`/`FUNGI_FORM`
 
 `_earthArt(name)` (~4378) and `_earthFlora(name)` (~5740) are keyword classifiers that map an Earth name to art dials (body plan, rig, botanical growth form) so a snake slithers and a fern isn't drawn as an oak — see **ART_DIRECTION.md**. Earth beasts also get `_cradle=1` (main.js ~2228), which clamps their rarity grade at Uncommon wherever they travel (see RARITY_AND_GRADES.md §2.4).
 
+### 2.9 Genome → painted individual (v2 morph system) — matches the local `port/v2` candidate as of September 24, 2026
+When a genome's `_earthName` names an accepted painted archetype, v2 draws that painting recoloured and reproportioned by the genome's own genes. The result is the **individual**. This section covers only the gene → appearance mapping. The archetypes' fits, rigs, motion and paintings are Codex-owned; see [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md). Design: `audits/VISION_PROGRAM_20260920/MORPH_SYSTEM_DESIGN.md`; library decisions: `audits/MORPH_20260923/README.md`. Paths below are under `port/v2/apps/game/src/` unless stated.
+
+- **Library (17 archetypes).** Crab, Coconut Crab, Freshwater Crab, Mud Crab, Vent Crab, Civet, Salmon, Eagle, Beetle, Python, Tree Frog, Chimpanzee, Starfish, Tarantula, Octopus, Fruit Bat, Centipede. `CARD_ARCHETYPES` in `port/v2/tools/morph/build-card-masters.mjs` is the only list. It generates `morph/card-archetypes.ts`, `painted-cards.assets.ts` and `battle2-archetypes.ts`, and `battle2-archetypes.test.ts` pins the generated files against the list.
+- **Params.** `morphParamsV1(genome, archetypeRecipeHash, archetypeGenome)` (`morph/morph-params.ts`) returns a frozen `MorphParamsV1` (`schema: 'cf.morph-params/v1'`) with these fields: `identity`, `archetype` (the recipe hash), the `base`/`accent` palettes `{hue, chroma}`, `lumin`, `proportion {head, tail, ears, antennae}`, `clamped` and `pattern`. It reads only `seed`, `color`, `accent`, `pattern`, `head`, `tail` and `lumin`. It uses no clock and no `Math.random`, and it throws without a recipe hash. A null, missing or empty genome, or one without these genes, is the identity.
+- **Identity rule: the painting is its own genome.** For each channel, a gene equal to the archetype's own gene counts as absent, so that channel stays as painted. `archetypeGenomeV1(record)` reads the archetype's own genes from `identity.speciesVisualKey` (decoded by `genomeFromVisualKey`) and overlays the record's `genome` block. The five crab records and the Civet record have no `genome` block at all, which is why the key is needed. `identity` is true when both palettes are identity, `lumin` is false, `pattern` is null and every proportion is 1.
+- **Colour and accent → palette.** `COLOR_TABLE` follows `SP_COLOR` order (gene `% 17`): each colour name has a hue and a chroma multiplier. The table is in §3, "Morph colour table (v2)". Obsidian-black, bone-white and glass-clear have no hue: they keep the painting's hue and only desaturate. Otherwise the target hue is the table hue plus a jitter of up to ±12° (`HUE_JITTER_DEG`). The jitter comes from `hashInt(seed, lane, index)`, where seed is the FNV-1a hash of the recipe-hash string XORed with the genome `seed`, lane 1 is base, lane 2 is accent and index is the raw colour gene. So the same genome gets a different jitter on another archetype, as does another seed.
+- **Remap** (`remapAtlasPaletteV1`, `morph/morph-palette.ts`). Alpha and HSL lightness are kept (to within RGB rounding); only hue and saturation move. There are two modes:
+  - *Rotate mode*: each pixel in the role with saturation ≥ 0.08 (`GREY_SATURATION`) rotates by the target hue minus the role's dominant hue (a circular mean weighted by alpha and saturation). Its saturation is multiplied by chroma, capped at 1. Greyer pixels are left alone.
+  - *Tint mode*: applies when a role's alpha-weighted mean saturation is below 0.18 (`LOW_CHROMA_ROLE`) and the colour has a hue. Every pixel in the role takes the target hue at saturation `max(s, 0.3)·chroma` (`TINT_SATURATION`), capped at 1. The code comment names the Salmon's silver, the Vent Crab's white and the Chimpanzee's black. `morph-library.test.ts` checks that the Salmon tint raises mean saturation by more than 0.1 while lightness moves by at most 2/255.
+- **Palette roles.** Each part is `base`, `accent` or `keep`. `ACCENT_GROUPS` lists the accent groups by body-plan template id, never by species:
+
+  | Body plan (template id) | Accent groups |
+  |---|---|
+  | brachyuran | arms (the claws) |
+  | quadruped | ears, tail |
+  | fish | fins |
+  | biped-bird | head, tail |
+  | insect | wings, antennae |
+  | serpent, hopper, cephalopod, myriapod | head |
+  | radial | body (the centre disc) |
+  | arachnid | tail (the abdomen) |
+  | flyer-membrane | ears, head |
+  | primate | none (one coat) |
+
+  Every other labelled group is base. `paletteRoleOfPart` handles parts with no group on joint `root`: a part whose id names a shadow is `keep`; any other gets group `body`'s role for its plan. A part with no group on any other joint is `keep` on every plan. Plans missing from the table use the older default: body and legs are base, every other group accent. `morph-library.test.ts` checks two things on every archetype: the accent is at most 33 % of labelled pixels, and every non-shadow root part recolours (> 50 % of its pixels) while a crab's painted shadow does not change.
+- **Head and tail → proportion.** Each scale is `lo + (hi − lo)·min(1, gene/(L − 1))`:
+  - head: [0.85, 1.2], L = 8;
+  - tail: [0.7, 1.35], L = 7 (`PROPORTION_ENVELOPE`, `V1_TABLE_LENGTHS`);
+  - ears and antennae follow the head gene at 0.6 of its slope within [0.8, 1.3], so they range from 0.88 to 1.18.
+
+  `jointScalesV1` (`morph/morph-skeleton.ts`) scales only the roots of non-contact sub-trees: groups head, tail, ears and antennae. Legs and contact chains keep scale 1, so the family contact solver's plants stay exact. Known limit: `FA_HEAD` has 10 entries but the head scale uses L = 8. Head genes 7, 8 and 9 therefore all give 1.2, and `clamped` stays empty for any integer gene (`morph-params.test.ts`, the `head: 40` case).
+- **Pattern → painted marking masks** (`morph/morph-markings.ts`). The pattern is `pattern % 8` in `FA_PATTERN` order.
+  - Masked patterns (`MASKED_PATTERNS`): striped, spotted, banded, mottled, marbled and eye-spotted. Each uses the archetype's hand-painted master-space alpha mask when `markings.json` names one. Plain, iridescent and any pattern without a painted mask draw no marking.
+  - Masks ship only for Crab, Civet and Salmon, all six patterns each (`port/v2/apps/game/assets/painted-cards/{crab,civet-sentinel-input-01,salmon}/markings.json`). The Salmon's masks come from their own packet, `audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/`.
+  - `applyMarkingV1` moves masked pixels toward the accent hue, with saturation `max(s, 0.35)·chroma`, by mask × 0.85 (`MARKING_STRENGTH`). With a hue-less or identity accent it instead shifts lightness by 0.3 toward the opposite end. Masks never change alpha.
+- **Lumin and iridescent → emissive.** An individual is emissive when `lumin` is true or its pattern is iridescent (`emissiveV1`).
+  - On a marking: +0.28 lightness (`EMISSIVE_LIFT`) and ×1.2 saturation.
+  - Without a marking: +0.14 lightness (`EMISSIVE_ACCENT_LIFT`) over the accent set. A plan with no accent role (the Chimpanzee) glows on its base coat instead (`emissiveRoleV1`).
+  - Lumin identity: the `lumin` param is `genome.lumin === true && archetype.lumin !== true`. Five archetypes are lumin-painted by their visual keys: Crab, Civet, Beetle, Python and Tarantula. On them the lumin gene adds nothing, and a false gene does not darken the painting. The iridescent pattern still glows, except that a pattern gene equal to the archetype's own is the identity: the Eagle, the Coconut Crab and the Vent Crab are iridescent (pattern 5) by their visual keys.
+- **Card.** `PaintedCardSource.card(genome, 'thumb' | 'portrait')` (`morph/painted-card-source.ts`) answers only when `_earthName` names an archetype. `species-art-loader.ts` asks it first for every thumb and portrait; otherwise the painter tier answers. It renders `renderCardIndividualV1` (`morph/morph-card.ts`) from the archetype's sealed ≤512² `card/master-512.png` and `card/labels-512.png`. The receipt `card/card.json` must bind the record's `recipeHash`, and the master and labels must match its size. The steps are:
+  1. palette per label role (unlabelled fringe pixels, label 0, and `keep` parts such as a crab's shadow stay as painted);
+  2. marking or emissive;
+  3. proportion;
+  4. long-body diagonal;
+  5. square crop of the alpha box with a 6 % margin (`CARD_MARGIN`);
+  6. alpha-weighted box downscale to 132 or 440 px, encoded as a PNG data URL.
+
+  Cards are cached by `speciesVisualKey(genome)`, 64 thumbs and 8 portraits by default. There is one render per host task (`yieldToHost`, a macrotask by default). The assets ship with the app (`painted-cards.ts`), so the card works on every device.
+- **Long bodies on the card.** A body is turned when its alpha box is wider than tall and short/long < 0.42 (`LONG_BODY_ASPECT`). It turns 45° about the alpha-box centre using the exact constant `Math.SQRT1_2`, with the head end raised. `morph-library.test.ts` checks that exactly the Python, Centipede and Salmon turn and that every other card is byte-identical with rotation off.
+- **Card = stage.** The battle2 stage builds the same individual through `individualFromGenomeV1` (`morph/morph-individual.ts`, called from `battle2-wiring.ts`):
+  - the same params and `paletteRoleOfPart` over the fit atlas's part frames;
+  - the same emissive role;
+  - the marking mask mapped into the atlas by `masterMaskToAtlasV1`, only where the part has its own pixels;
+  - joint scales handed to the rig.
+
+  An identity genome yields no atlas transform and no joint scales, so it takes the archetype's own load path. On the card, `cardProportionV1` pivots each scaled sub-tree at its receipt `fixedPivots` socket (baked from the family contract; only the Centipede's receipt carries them) or else at its parent's landmark. Nested scaled sub-trees compose, and each pixel is drawn once, by its innermost owner. `morph-library.test.ts` pins that card and stage agree on:
+  - the grey/tint decision for every role (at least two roles tinted);
+  - every scaled landmark, within 1e-9 of the stage skeleton program;
+  - a visible emissive change on every archetype where lumin or iridescent is not its own gene.
+- **Determinism.** Output is a pure function of the genome and the archetype recipe. `morph-params.test.ts` holds 64 seeds × 2 archetype recipe hashes (no archetype genome passed) byte-for-byte against `morph/morph-params.golden.json`. The matchup picker's genomes come from `matchupGenome` (`battle2-matchup.ts`): without a seed it passes the archetype's own genome (identity); with a seed it sets `seed`, `color`, `accent` and `pattern` per side. Stage sizing and arenas belong to the battle2 code, not to this doc.
+
 ## 3. Key tables & numbers (REAL values from code)
 
 ### Genome field draw order (makeGenome, ~1617) — order is load-bearing
@@ -285,7 +659,7 @@ The comment at ~1524 is a hard invariant: the original `FLORA_FORM`/`FUNGI_FORM`
 | `FA_SIZE_M` | 6 | portrait scale per size: `[0.28,0.45,0.62,0.82,1.0,1.25]` |
 | `FA_DIET` | 6 | herbivore→omnivore |
 | `FA_HEAD` | 10 | head shape |
-| `FA_LIMBS` | 6 | leg/limb pairs drawn: `[2,4,6,8,3,0]` |
+| `FA_LIMBS` | 6 | legacy total walking-limb values: `[2,4,6,8,3,0]`; current V2 resolved painter owns drawn count, not this table alone |
 | `FA_SKIN` | 9 | scaled→crystalline |
 | `FA_TAIL` | 7 | none→stinger-tipped |
 | `FA_PATTERN` | 8 | plain→eye-spotted |
@@ -298,6 +672,21 @@ The comment at ~1524 is a hard invariant: the original `FLORA_FORM`/`FUNGI_FORM`
 | `FA_LIFE` | 6 | lifespan |
 | `FA_METAB` | 6 | metabolism |
 | `FLORA_DETAIL` | 10 | flora paragraph flavor |
+
+### Morph colour table (v2)
+`COLOR_TABLE` in `port/v2/apps/game/src/morph/morph-params.ts` is used by §2.9. The table below is its full contents.
+
+| Colour | Hue (°) | Chroma | | Colour | Hue (°) | Chroma |
+|---|---|---|---|---|---|---|
+| emerald | 145 | 1.05 | | obsidian-black | none | 0.3 |
+| crimson | 350 | 1.1 | | bone-white | none | 0.25 |
+| violet | 275 | 1.0 | | magenta | 315 | 1.1 |
+| golden | 45 | 1.1 | | teal | 185 | 0.9 |
+| turquoise | 175 | 1.0 | | ochre | 35 | 0.8 |
+| indigo | 245 | 0.95 | | jade | 150 | 0.85 |
+| amber | 38 | 1.05 | | bruise-purple | 290 | 0.7 |
+| rust-red | 15 | 0.95 | | glass-clear | none | 0.35 |
+| silver-blue | 210 | 0.45 | | | | |
 
 ### Plant / fungi / microbe form pools (read with `% length`)
 - **`FLORA_FORM`** (18): fern-analogues, fungal forests, lichen mats, reed thickets, bioluminescent groves, crystalline growths, moss carpets, canopy vines, bladder-leafed shrubs, spore-towers, sail-leafed trees, mirror-bark giants, tube-stalk gardens, balloon-pods, razor-grass plains, cushion-scrub, umbrella-canopy titans, glass-needle thickets.
@@ -341,6 +730,15 @@ it explicitly. It is render ownership metadata, not a new RNG draw.
 - `@module Genome [domain]` — main.js ~1610–1838. `makeGenome` ~1617; `REALM_ORDER`/`REALM_ICON` ~1654; `sapienceTier` ~1665; `realmBiome` ~1683; `classifyRealm` ~1689; `ecologyRole` ~1719; `realmModifiers` ~1731; `describeSpecies` ~1751; `faunaDesc` ~1790; `speciesGrade` ~1772 (see RARITY doc).
 - `@module Genetics [domain]` — `evolveGenome` ~1917, `crossGenome` ~1933.
 - Named-Earth overlay (app): `_earthArt` ~4378, `_earthFlora` ~5740, `_EARTH_NAMES` ~8625, `_earthNamePass` ~8631, `_storeSpecies` ~8640, `_cradle` flagging ~2222–2228.
+- v2 morph, genome → painted individual (§2.9), under `port/v2/apps/game/src/morph/`:
+  - `morph-params.ts`: `morphParamsV1`, `COLOR_TABLE`, `PROPORTION_ENVELOPE`, `V1_TABLE_LENGTHS`, `archetypeGenomeV1`;
+  - `morph-palette.ts`: `remapAtlasPaletteV1`, `ACCENT_GROUPS`, `paletteRoleOfPart`, `emissiveRoleV1`;
+  - `morph-markings.ts`: `MASKED_PATTERNS`, `applyMarkingV1`, `applyEmissiveAccentV1`;
+  - `morph-skeleton.ts`: `jointScalesV1`;
+  - `morph-individual.ts`: `individualFromGenomeV1` (the stage);
+  - `morph-card.ts` and `painted-card-source.ts`: the card.
+
+  The archetype list is in `port/v2/tools/morph/build-card-masters.mjs`. Tests: `morph-params.test.ts`, `morph-library.test.ts`, `morph-markings.test.ts`, `painted-card-source.test.ts`.
 
 ## 7. Open questions / pending
 - `FA_LIMBS` and `FA_EYES` are both length-6 arrays that intentionally alias `FA_SIZE`'s length, so a size roll and a limbs/eyes roll share the same modulus — deliberate, but worth remembering if `FA_SIZE` ever changes.

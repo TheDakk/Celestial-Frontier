@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-69061951-2ce4-46e5-b61e-4e107b4da73c.png",
+  "masterSha256": "c5e7c5230b6864ea759c5fedeab17c2a2dfb9f3a68a33a46f93477bed2bdacfb",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "model": null,
+  "seed": null,
+  "status": "REJECTED",
+  "reason": "Only three independent long marginal tentacles are traceable on the left; the requested four on each side are not delivered. Right tentacles still cross. Top/bottom safe margins are not delivered. No hidden/absent declaration invented to cover missing anatomy."
+}

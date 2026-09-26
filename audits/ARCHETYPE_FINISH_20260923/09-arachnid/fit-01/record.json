@@ -1,0 +1,215 @@
+{
+  "kind": "arachnid",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tarantula\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3680049014\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"17\"]]]]",
+    "seed": 3680049014,
+    "ownerId": "authored:archetype-sprint/tarantula",
+    "earthName": "Tarantula"
+  },
+  "template": {
+    "id": "arachnid",
+    "version": 1
+  },
+  "clipSetId": "arachnid-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "sting"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3680049014,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 13,
+    "body": 9,
+    "loco": 0,
+    "trait": 17,
+    "size": 5,
+    "diet": 5,
+    "head": 8,
+    "limbs": 1,
+    "skin": 8,
+    "tail": 1,
+    "pattern": 0,
+    "eyes": 3,
+    "behavior": 7,
+    "habitat": 3,
+    "detail": 0,
+    "accent": 15,
+    "temper": 4,
+    "sense": 9,
+    "repro": 7,
+    "life": 2,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Tarantula"
+  },
+  "geometry": {
+    "cutoutAssetHash": "a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.9,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5311004784688995,
+      0.4370015948963317
+    ],
+    "cephalothorax": [
+      0.5861244019138756,
+      0.4266347687400319
+    ],
+    "abdomen": [
+      0.35406698564593303,
+      0.41467304625199364
+    ],
+    "cheliceraFar": [
+      0.7073365231259968,
+      0.5303030303030303
+    ],
+    "cheliceraNear": [
+      0.6850079744816587,
+      0.5303030303030303
+    ],
+    "leg1FarKnee": [
+      0.8022328548644339,
+      0.31738437001594894
+    ],
+    "leg1FarFoot": [
+      0.9720893141945773,
+      0.539872408293461
+    ],
+    "leg1NearKnee": [
+      0.8397129186602871,
+      0.5933014354066986
+    ],
+    "leg1NearFoot": [
+      0.9800637958532695,
+      0.7783094098883573
+    ],
+    "leg2FarKnee": [
+      0.6778309409888357,
+      0.1850079744816587
+    ],
+    "leg2FarFoot": [
+      0.8516746411483254,
+      0.27910685805422647
+    ],
+    "leg2NearKnee": [
+      0.7137161084529505,
+      0.6618819776714514
+    ],
+    "leg2NearFoot": [
+      0.7344497607655502,
+      0.8819776714513556
+    ],
+    "leg3FarKnee": [
+      0.42503987240829344,
+      0.17304625199362042
+    ],
+    "leg3FarFoot": [
+      0.32057416267942584,
+      0.2607655502392344
+    ],
+    "leg3NearKnee": [
+      0.49681020733652315,
+      0.631578947368421
+    ],
+    "leg3NearFoot": [
+      0.40749601275917063,
+      0.8708133971291866
+    ],
+    "leg4FarKnee": [
+      0.26156299840510366,
+      0.2982456140350877
+    ],
+    "leg4FarFoot": [
+      0.10925039872408293,
+      0.48883572567783096
+    ],
+    "leg4NearKnee": [
+      0.27910685805422647,
+      0.6283891547049442
+    ],
+    "leg4NearFoot": [
+      0.08373205741626795,
+      0.784688995215311
+    ]
+  },
+  "materials": {
+    "surface": "chitin"
+  },
+  "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Parent-owned presence.json explicitly declares sting absent, hidden [], folded []. Eight distinct walking tips are visible. Some proximal roots, especially far4, are naturally occluded by abdomen/carapace; no entire chain is classified as hidden and no occluded paint is invented.",
+    "visualAcceptance": "Bounded initial authored prototype for qualification and Nick review. Visible terminal tips appear intact. Required 8% margin is not met; all alpha/fringe remains retained.",
+    "landmarkMethod": "Manual observation of actual candidate-06/master.png only. No pose-guide coordinates or old source landmarks were copied. Knees are approximate visible major bends within the existing two-span contract; near1 and near3 have additional natural segment creases. Common cephalothorax anchor is an estimated internal shared pivot, not eight observed separate hips. Fang near/far correspondence and exact hook endpoints remain visually approximate.",
+    "ownershipMethod": "Priority polygons drawn manually around observed painted spans. Lower spans precede uppers at joint overlaps; near limbs precede abdomen; abdomen precedes far limbs at natural occlusions. Short hairy pedipalps and head/eye structures remain in body remainder because this graph has no independent joints for them. Two small dark curved fang hooks receive chelicera parts; their hairy surroundings remain body. No alpha erosion, depixeling, hidden-pixel fill or automated presence inference.",
+    "materialAuthority": "chitin is the established chitinous material key; no descriptive mixed-material prose is used.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "66580e52033f75b0b2ad072ff9d7e1ebd3e77c9d15b1adad6bae1e7826ba750a",
+    "subjectSourceSha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231",
+    "presenceSha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "cephalothorax": 0.055991992604599555,
+      "abdomen": 0.23236550357106373,
+      "cheliceraFar": 0.1594976074561503,
+      "cheliceraNear": 0.14326572995403428,
+      "leg1FarKnee": 0.24215390366057446,
+      "leg1FarFoot": 0.27991452972782305,
+      "leg1NearKnee": 0.30345496140848116,
+      "leg1NearFoot": 0.23222041114132438,
+      "leg2FarKnee": 0.25844457241870145,
+      "leg2FarFoot": 0.19767709016157187,
+      "leg2NearKnee": 0.26762080055103404,
+      "leg2NearFoot": 0.22107012181359367,
+      "leg3FarKnee": 0.30042530098458714,
+      "leg3FarFoot": 0.1364102627878819,
+      "leg3NearKnee": 0.2235601523229626,
+      "leg3NearFoot": 0.25536277588038836,
+      "leg4FarKnee": 0.34903277739122723,
+      "leg4FarFoot": 0.24397483205770265,
+      "leg4NearKnee": 0.3673752910767004,
+      "leg4NearFoot": 0.2502018242697046
+    },
+    "measures": {
+      "body": 0.23236550357106373,
+      "bone-min": 0.055991992604599555,
+      "bone-max": 0.3673752910767004,
+      "leg/body:leg1Far": 2.2467553288465414,
+      "leg/body:leg1Near": 2.3053136731458994,
+      "leg/body:leg2Far": 1.96294912786303,
+      "leg/body:leg2Near": 2.103113047566343,
+      "leg/body:leg3Far": 1.8799501520623638,
+      "leg/body:leg3Near": 2.0610758518072507,
+      "leg/body:leg4Far": 2.552046669300772,
+      "leg/body:leg4Near": 2.6577831298333536
+    }
+  },
+  "recipeHash": "4ccacb0f6629c177bb87ad3da912fbcee0b0e50fea2ca4bb0f26ea446839b49a"
+}

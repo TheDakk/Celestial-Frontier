@@ -1,0 +1,344 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/fit-04",
+  "sourceRecordSha256": "4ffa56659c98bc1cfc39edb170e6035369fd624f64c7f5b6d76b7cd78fe66df1",
+  "sourceBindingSha256": "81dbe587a077ce0c6719d11470b904f6321222a7c67dcac7047b07ab2480d044",
+  "sourceAtlasSha256": "cf382d7b5880e0a5ee85c369b94f7fd3bfd17e4bf80250ff6c14033ec4783d71",
+  "helperSha256": "722d032b2befa4d6a214723aca94a5b9cbb633190036f5067a21b00d87a8584c",
+  "author": {
+    "pairs": [
+      [
+        "ear-far-tip",
+        "head"
+      ],
+      [
+        "ear-near-tip",
+        "head"
+      ],
+      [
+        "ear-near-tip",
+        "neck"
+      ],
+      [
+        "fore-far-ankle",
+        "spine"
+      ],
+      [
+        "fore-far-knee",
+        "fore-far-paw"
+      ],
+      [
+        "fore-far-paw",
+        "spine"
+      ],
+      [
+        "fore-near-ankle",
+        "spine"
+      ],
+      [
+        "fore-near-knee",
+        "fore-near-paw"
+      ],
+      [
+        "fore-near-paw",
+        "spine"
+      ],
+      [
+        "hind-far-ankle",
+        "spine"
+      ],
+      [
+        "hind-far-knee",
+        "hind-far-paw"
+      ],
+      [
+        "hind-far-paw",
+        "spine"
+      ],
+      [
+        "hind-near-ankle",
+        "spine"
+      ],
+      [
+        "hind-near-knee",
+        "hind-near-paw"
+      ],
+      [
+        "jaw",
+        "neck"
+      ],
+      [
+        "jaw",
+        "spine"
+      ],
+      [
+        "neck",
+        "spine"
+      ],
+      [
+        "pelvis",
+        "tail1"
+      ],
+      [
+        "root",
+        "spine"
+      ]
+    ],
+    "reason": "Keep the observed connected within-limb and axial paint boundaries. Release only opposite-limb and independent tail/leg silhouette adjacency previously joined by blanket all-boundary welding; no pixel removal, no source coordinate or solver change."
+  },
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "tail3",
+      "tail2",
+      "tail1",
+      "tail0",
+      "hindNearAnkle",
+      "hindNearPaw",
+      "hindFarAnkle",
+      "hindFarPaw",
+      "foreNearAnkle",
+      "foreNearPaw",
+      "foreFarAnkle",
+      "foreFarPaw",
+      "hindNearKnee",
+      "hindNearRoot",
+      "foreNearKnee",
+      "foreNearRoot",
+      "hindFarKnee",
+      "hindFarRoot",
+      "foreFarKnee",
+      "foreFarRoot",
+      "earNearTip",
+      "earNearRoot",
+      "earFarTip",
+      "earFarRoot",
+      "jaw",
+      "head",
+      "neck",
+      "chest",
+      "pelvis",
+      "spine"
+    ],
+    "contactEndpoints": [
+      "hindFarAnkle",
+      "foreFarAnkle",
+      "hindNearAnkle",
+      "foreNearAnkle"
+    ],
+    "paintBoundaryPairs": [
+      [
+        "ear-far-tip",
+        "head"
+      ],
+      [
+        "ear-near-tip",
+        "head"
+      ],
+      [
+        "ear-near-tip",
+        "neck"
+      ],
+      [
+        "fore-far-ankle",
+        "spine"
+      ],
+      [
+        "fore-far-knee",
+        "fore-far-paw"
+      ],
+      [
+        "fore-far-paw",
+        "spine"
+      ],
+      [
+        "fore-near-ankle",
+        "spine"
+      ],
+      [
+        "fore-near-knee",
+        "fore-near-paw"
+      ],
+      [
+        "fore-near-paw",
+        "spine"
+      ],
+      [
+        "hind-far-ankle",
+        "spine"
+      ],
+      [
+        "hind-far-knee",
+        "hind-far-paw"
+      ],
+      [
+        "hind-far-paw",
+        "spine"
+      ],
+      [
+        "hind-near-ankle",
+        "spine"
+      ],
+      [
+        "hind-near-knee",
+        "hind-near-paw"
+      ],
+      [
+        "jaw",
+        "neck"
+      ],
+      [
+        "jaw",
+        "spine"
+      ],
+      [
+        "neck",
+        "spine"
+      ],
+      [
+        "pelvis",
+        "tail1"
+      ],
+      [
+        "root",
+        "spine"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 25,
+        "distancePx": 1.0000000000000284,
+        "supports": [
+          407
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 14,
+        "distancePx": 6.708203932499374,
+        "supports": [
+          532
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 25,
+        "distancePx": 5.59016994374948,
+        "supports": [
+          347
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 30,
+        "distancePx": 6.403124237432834,
+        "supports": [
+          469
+        ]
+      }
+    ],
+    "sourceBindingHash": "e5bb875603969f66973320ee581b1f2b2656e5724a2bc0d8644d8cf63eb7c851",
+    "sourceVertices": 2866,
+    "vertices": 3074,
+    "sharedSupports": 840,
+    "pins": 645,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 38,
+    "excludedOverlaps": 30,
+    "observedExcludedBoundaries": 30,
+    "weldedExcludedBoundaries": 19,
+    "independentExcludedBoundaries": 11,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "ear-far-tip",
+        "head"
+      ],
+      [
+        "ear-near-tip",
+        "head"
+      ],
+      [
+        "ear-near-tip",
+        "neck"
+      ],
+      [
+        "fore-far-ankle",
+        "spine"
+      ],
+      [
+        "fore-far-knee",
+        "fore-far-paw"
+      ],
+      [
+        "fore-far-paw",
+        "spine"
+      ],
+      [
+        "fore-near-ankle",
+        "spine"
+      ],
+      [
+        "fore-near-knee",
+        "fore-near-paw"
+      ],
+      [
+        "fore-near-paw",
+        "spine"
+      ],
+      [
+        "hind-far-ankle",
+        "spine"
+      ],
+      [
+        "hind-far-knee",
+        "hind-far-paw"
+      ],
+      [
+        "hind-far-paw",
+        "spine"
+      ],
+      [
+        "hind-near-ankle",
+        "spine"
+      ],
+      [
+        "hind-near-knee",
+        "hind-near-paw"
+      ],
+      [
+        "jaw",
+        "neck"
+      ],
+      [
+        "jaw",
+        "spine"
+      ],
+      [
+        "neck",
+        "spine"
+      ],
+      [
+        "pelvis",
+        "tail1"
+      ],
+      [
+        "root",
+        "spine"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "3271762031e3aa825630d82a1e50cd1c3c20847c2664fbb137d85cc38d3ebe1d",
+  "scope": "New unadmitted fit, explicit source paint continuity; source pixels and solver unchanged. Inherited receipts remain historical; this receipt owns the new split."
+}

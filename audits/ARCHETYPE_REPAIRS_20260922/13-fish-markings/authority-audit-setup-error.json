@@ -1,0 +1,8 @@
+{
+  "toolReceipt": "473458",
+  "exitCode": 1,
+  "error": "file:///Users/nick/Projects/celestial-frontier-openai-mac/[eval1]:22\nSyntaxError: Unexpected identifier 'authority'",
+  "cause": "Unescaped backticks around authority-check.json terminated the JavaScript template string.",
+  "phase": "Parsing failed before any hash audit or file write.",
+  "resolution": "Helper quoting corrected, then hash audit executed successfully; no pixel-conservation or native run repeated."
+}

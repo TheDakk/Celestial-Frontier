@@ -1,0 +1,394 @@
+{
+  "native": {
+    "runId": "20260923-python-current-diagnostic-01",
+    "status": "DIAGNOSTIC_PASS",
+    "source": "fe8f6ca1a8c5a934897fbf0711319e17cc5cf388",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "perRigP95Ms": {
+      "left": 1.100000023841858,
+      "right": 1.1999999284744263
+    },
+    "wholeStageP95Ms": 2.200000047683716,
+    "frames": 602,
+    "encodedFrames": 606,
+    "containmentSamples": 1268,
+    "visual": "ART-PY-01 reproduced; ART-PY-02 does not recur on current published-mesh framing"
+  },
+  "synthetic": {
+    "original": [
+      {
+        "id": "rest",
+        "error": null,
+        "requiredStatus": "PASS",
+        "requiredMaxGapPx": 0.00006040245479111291,
+        "excludedMaxGapPx": 0.000043272972106933594,
+        "excludedViolations": 0
+      },
+      {
+        "id": "rigid-root-control",
+        "error": null,
+        "requiredStatus": "PASS",
+        "requiredMaxGapPx": 0.000043994388072319186,
+        "excludedMaxGapPx": 0.00004228171845828439,
+        "excludedViolations": 0
+      },
+      {
+        "id": "seg5-differential-control",
+        "error": null,
+        "requiredStatus": "PASS",
+        "requiredMaxGapPx": 0.00006040245495189037,
+        "excludedMaxGapPx": 81.05295295316809,
+        "excludedViolations": 2206
+      }
+    ],
+    "candidate": [
+      {
+        "id": "rest",
+        "error": null,
+        "requiredStatus": "PASS",
+        "requiredMaxGapPx": 0.00006040245479111291,
+        "excludedMaxGapPx": 0.000043272972106933594,
+        "excludedViolations": 0
+      },
+      {
+        "id": "rigid-root-control",
+        "error": null,
+        "requiredStatus": "PASS",
+        "requiredMaxGapPx": 0.000043994388072319186,
+        "excludedMaxGapPx": 0.00004228171845828439,
+        "excludedViolations": 0
+      },
+      {
+        "id": "seg5-differential-control",
+        "error": null,
+        "requiredStatus": "PASS",
+        "requiredMaxGapPx": 0.00003589352906858668,
+        "excludedMaxGapPx": 0.000043272972106933594,
+        "excludedViolations": 0
+      }
+    ]
+  },
+  "candidate": {
+    "status": "RED",
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "rows": [
+      {
+        "id": "idle",
+        "status": "PASS",
+        "samples": 121,
+        "firstRefusal": null
+      },
+      {
+        "id": "alert",
+        "status": "RED",
+        "samples": 11,
+        "firstRefusal": {
+          "ms": 42.166666666666664,
+          "sampleNumber": 12,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 48"
+        }
+      },
+      {
+        "id": "approach:slither",
+        "status": "RED",
+        "samples": 10,
+        "firstRefusal": {
+          "ms": 55,
+          "sampleNumber": 11,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 168"
+        }
+      },
+      {
+        "id": "melee:strike",
+        "status": "RED",
+        "samples": 19,
+        "firstRefusal": {
+          "ms": 118.22222222222221,
+          "sampleNumber": 20,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 35"
+        }
+      },
+      {
+        "id": "melee:constrict",
+        "status": "RED",
+        "samples": 16,
+        "firstRefusal": {
+          "ms": 99.55555555555556,
+          "sampleNumber": 17,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 13"
+        }
+      },
+      {
+        "id": "cast",
+        "status": "RED",
+        "samples": 13,
+        "firstRefusal": {
+          "ms": 92.08333333333333,
+          "sampleNumber": 14,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 51"
+        }
+      },
+      {
+        "id": "hit",
+        "status": "PASS",
+        "samples": 121,
+        "firstRefusal": null
+      },
+      {
+        "id": "dodge",
+        "status": "RED",
+        "samples": 14,
+        "firstRefusal": {
+          "ms": 60.666666666666664,
+          "sampleNumber": 15,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 42"
+        }
+      },
+      {
+        "id": "faint",
+        "status": "PASS",
+        "samples": 121,
+        "firstRefusal": null
+      },
+      {
+        "id": "victory",
+        "status": "RED",
+        "samples": 5,
+        "firstRefusal": {
+          "ms": 35,
+          "sampleNumber": 6,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 111"
+        }
+      },
+      {
+        "id": "tame",
+        "status": "RED",
+        "samples": 33,
+        "firstRefusal": {
+          "ms": 242,
+          "sampleNumber": 34,
+          "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 15"
+        }
+      },
+      {
+        "id": "feed",
+        "status": "PASS",
+        "samples": 121,
+        "firstRefusal": null
+      }
+    ],
+    "presentation": {
+      "id": "presentation",
+      "samples": 254,
+      "attemptedSamples": 255,
+      "status": "RED",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006821442139131008,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "firstRefusal": {
+        "sampleIndex": 254,
+        "sampleNumber": 255,
+        "ms": 4233.333333333333,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 55\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Mxz0RT/run.mjs:25375:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Mxz0RT/run.mjs:25851:5)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Mxz0RT/run.mjs:15651:9)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Mxz0RT/run.mjs:26074:23\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Mxz0RT/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Mxz0RT/run.mjs:26115:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+        "contact": {
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": -0.02375
+            },
+            "head": {
+              "rotation": -0.345423,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "seg0": {
+              "rotation": -0.207254,
+              "dx": 0,
+              "dy": 0
+            },
+            "seg1": {
+              "rotation": -0.138169,
+              "dx": 0,
+              "dy": 0
+            },
+            "seg2": {
+              "rotation": -0.055268,
+              "dx": 0,
+              "dy": 0
+            },
+            "seg3": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "seg4": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "seg5": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "seg6": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "seg7": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "seg8": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "seg9": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            }
+          },
+          "contacts": [],
+          "maxError": 0
+        },
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": -0.02375
+          },
+          "head": {
+            "rotation": -0.345423,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg0": {
+            "rotation": -0.207254,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg1": {
+            "rotation": -0.138169,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg2": {
+            "rotation": -0.055268,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg3": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg4": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg5": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg6": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg7": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg8": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "seg9": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        },
+        "arapStats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 360.599256432992,
+          "rmsTargetErrorPx": 46.48590918678872,
+          "maximumProjectionPx": 281.9100301001863,
+          "flippedTriangles": 55,
+          "minimumAreaRatio": -0.03659777965114919,
+          "orientationPasses": 128
+        },
+        "action": "alert"
+      }
+    },
+    "film": "Not run after static failure",
+    "accepted": false
+  },
+  "scope": "Topology diagnosis and one candidate only; source-level causal mechanism established, not proof that repaint is the only possible repair.",
+  "unchangedSources": [
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "9b23b08d8800ac634ec9dd3fff7b8939ada5747f7052e1f2be08818991056215"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "sha256": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/paint-skin.mjs",
+      "sha256": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+      "sha256": "4d0280d20b8a1b3032595d89e28ace3c56f2c2c570458e12efc6a79423daa084"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/smooth-skin-weights.mjs",
+      "sha256": "6a589f1347bff0643e2b0d38e8249da25739ce0d61562c7a148c3eaab02d070f"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5"
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "sha256": "1001719307a03717ec39b080858e8f5b5c334c0cb75e73a02ea1ccd7e0832732"
+    }
+  ]
+}

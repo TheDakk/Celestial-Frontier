@@ -1,0 +1,40 @@
+{
+  "schema": "cf.final-static-regression-executions/v1",
+  "static": {
+    "startTool": "23d296",
+    "completionTool": "48c4d9",
+    "exitCode": 0,
+    "report": "static-08.json",
+    "status": "PASS_STATIC",
+    "actionRows": 12,
+    "samplesPerAction": 121,
+    "presentationSamples": 822,
+    "exactRest": true,
+    "sourcePixelChangedChannels": 0
+  },
+  "typecheck": {
+    "startTool": "15d5d5",
+    "completionTool": "f43bb3",
+    "exitCode": 0,
+    "command": "npm run typecheck",
+    "cwd": "port/v2",
+    "programs": [
+      "root",
+      "apps/game",
+      "apps/game worker"
+    ],
+    "log": "typescript-08.log"
+  },
+  "s2": {
+    "startTool": "478f0b",
+    "completionTool": "5ddc98",
+    "exitCode": 0,
+    "report": "contact-regression-final/s2-execution.json",
+    "status": "PASS_STATIC_IDENTICAL",
+    "subjects": 6,
+    "samples": 13286,
+    "protectedInputs": 12,
+    "sources": 87
+  },
+  "scope": "Finaltamecadencesource. Subsequentnativealpha-rest-sizingonlyfix isoutsideconsumedstatic/S2/runtimeinputs; finalsourceclosurewillcheckhashes."
+}

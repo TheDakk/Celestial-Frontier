@@ -1,0 +1,42 @@
+{
+  "startedAt": "2026-09-09T17:02:01.376201+00:00",
+  "sources": [
+    {
+      "path": "tools/local-image-generation/run-mobile-model-delivery.mjs",
+      "sha256": "e2a104223335a8b1f093e49e171dac490a6b3b1c6ce5e15b7f35f09bc059c339",
+      "bytes": 32174
+    },
+    {
+      "path": "tools/local-image-generation/run-mobile-model-delivery.test.mjs",
+      "sha256": "701a3b58adc9b784315f8e86d24e6ac6e40a5a398d51d4c604f7db5ee22a5c3e",
+      "bytes": 3750
+    },
+    {
+      "path": "tools/local-image-generation/compile-delivery-diagnostic.mjs",
+      "sha256": "0deddbff3266d0897880ae24cb34c533378e4849ecbe1f21159cc5364cb6bb7f",
+      "bytes": 5149
+    }
+  ],
+  "commands": [
+    [
+      "node",
+      "tools/with-toolchain-lock.mjs",
+      "--label",
+      "delivery-cli-controls-01",
+      "--",
+      "node",
+      "--test",
+      "tools/local-image-generation/run-mobile-model-delivery.test.mjs"
+    ],
+    [
+      "node",
+      "--check",
+      "tools/local-image-generation/run-mobile-model-delivery.mjs"
+    ],
+    [
+      "node",
+      "--check",
+      "tools/local-image-generation/compile-delivery-diagnostic.mjs"
+    ]
+  ]
+}

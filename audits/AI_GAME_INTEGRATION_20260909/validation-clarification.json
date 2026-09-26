@@ -1,0 +1,51 @@
+{
+  "startedAt": "2026-09-09T14:33:17.892990+00:00",
+  "checks": [
+    {
+      "label": "conditioning-clarification-tests",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-clarification-tests",
+        "--",
+        "port/v2/node_modules/.bin/vitest",
+        "run",
+        "--root",
+        "port/v2",
+        "port/v2/tests/landfall-conditioning.test.ts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "typescript-clarification",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-clarification-types",
+        "--",
+        "npm",
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "root-validation-clarification",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-clarification-root",
+        "--",
+        "node",
+        "tools/validate.js"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "finishedAt": "2026-09-09T14:33:33.382119+00:00"
+}

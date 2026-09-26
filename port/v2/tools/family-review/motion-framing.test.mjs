@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{motionBounds,fitMotionBounds,containsMotion}from'./motion-framing.mjs';
+test('full motion stays inside the frame; the rest-only fit clips a lunge',()=>{const rest=motionBounds([{body:[0,0,1,1]}]),full=motionBounds([{body:[0,0,1,1]},{body:[.4,-.2,1.4,1]}]),v={x:740,y:90,width:600,height:540};assert.equal(containsMotion(full,fitMotionBounds(full,v),v),true);assert.equal(containsMotion(full,fitMotionBounds(rest,v),v),false);});
+test('empty and nonfinite motion cannot receive an apparently valid fit',()=>{assert.throws(()=>motionBounds([]));assert.throws(()=>motionBounds([{body:[NaN,0]}]));});

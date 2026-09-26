@@ -1,0 +1,49 @@
+{
+  "name": "Cattle",
+  "family": "quadruped",
+  "species": {
+    "name": "Cattle",
+    "aspect": 1.5,
+    "headFrac": 0.26,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "deep barrel body with a straight level back",
+      "broad blunt muzzle and sideways-set horns",
+      "tufted rope tail hanging to the hocks"
+    ],
+    "note": "Generic name read as a representative domestic cow."
+  },
+  "genome": {
+    "seed": 1951619619,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 4,
+    "body": 2,
+    "loco": 15,
+    "trait": 10,
+    "size": 5,
+    "diet": 2,
+    "head": 0,
+    "limbs": 5,
+    "skin": 0,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 1,
+    "behavior": 6,
+    "habitat": 7,
+    "detail": 4,
+    "accent": 10,
+    "temper": 5,
+    "sense": 1,
+    "repro": 3,
+    "life": 1,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cattle"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cattle\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1951619619\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "index": 248
+}

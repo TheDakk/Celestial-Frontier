@@ -1,0 +1,189 @@
+{
+  "source": "782e827acb0bd81d671931e540c9652a067d6fdc",
+  "status": "PASS",
+  "errors": [],
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.32",
+    "revision": "@9aab8632678bdbd60c393455e1394ee523ba682d",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.4",
+    "protocol_version": "1.3"
+  },
+  "observation": {
+    "status": "PASS",
+    "scope": "native painter mask emission and unchanged ordinary painter; no motion acceptance",
+    "normalPainterChangedChannels": 0,
+    "material": "translucent",
+    "paintedPixels": 34714,
+    "parts": 21,
+    "joints": [
+      "hindFarRoot",
+      "hindFarKnee",
+      "hindFarAnkle",
+      "hindFarPaw",
+      "foreFarRoot",
+      "foreFarKnee",
+      "foreFarAnkle",
+      "foreFarPaw",
+      "hindNearRoot",
+      "hindNearKnee",
+      "hindNearAnkle",
+      "hindNearPaw",
+      "foreNearRoot",
+      "foreNearKnee",
+      "foreNearAnkle",
+      "foreNearPaw",
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip",
+      "tail0",
+      "tail1",
+      "tail2",
+      "tail3",
+      "root",
+      "pelvis",
+      "spine",
+      "chest",
+      "neck",
+      "head",
+      "jaw"
+    ],
+    "recordRecipeHash": "2b824f9cad9383d8fcbb3fd5d41ebdec2d5ecbc9128e33a5388bc21d7cb0a859"
+  },
+  "sources": [
+    {
+      "path": "port/v2/tools/quadruped-proof/painter-parts-entry.mjs",
+      "sha256": "357ac8da7c6c735c3afe845ce517ad942d444d8f29b146e023bbeaca63095042"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciescanvas.ts",
+      "sha256": "17594498f0d4ed8140a3708ef4b0150b0d08a538a0777ae5fee822782ae095d4"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesidentity.ts",
+      "sha256": "f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesoverrides.ts",
+      "sha256": "c841ae8b62ce9dd0841cdfe94f9da284ad6f7c03ef61c6e39e9be9497150f6e9"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5"
+    },
+    {
+      "path": "port/v2/packages/art/src/floraoverrides.ts",
+      "sha256": "6323d1c46e998568bf57cbbfc9355557e22b9b70de227f68bfda932231b2ed6c"
+    },
+    {
+      "path": "port/v2/packages/art/src/florarost.ts",
+      "sha256": "e3b89406d88af811e5810a2b72508ff68a20280fe71bfb3d7f6f5c8a9e53c8b2"
+    },
+    {
+      "path": "port/v2/packages/art/src/proceduraloverrides.ts",
+      "sha256": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/index.ts",
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f"
+    },
+    {
+      "path": "port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides4.ts",
+      "sha256": "b946a59a53fda4a8bf81a1fef9f49fbdd438dd993a7fbe27d03776dc27ddac17"
+    },
+    {
+      "path": "port/v2/packages/art/src/floraoverrides3.ts",
+      "sha256": "515a528673df782ea0143d9f7050e813706d085ff1e4c2a22cc99a69a522c45e"
+    },
+    {
+      "path": "port/v2/packages/art/src/proceduralfamilies.ts",
+      "sha256": "140bc992c7553ab7afbf4bf8bbe1afc038db972f26da0152324d5f4a468988f6"
+    },
+    {
+      "path": "port/v2/packages/art/src/floraoverrides2.ts",
+      "sha256": "42800cea6e658b6323a87d6a0c75683980afc10faf1ea188d1b6649b9750d73d"
+    },
+    {
+      "path": "port/v2/packages/art/src/fungioverrides2.ts",
+      "sha256": "59741da0b0b7d6659e6ca225b78caf9ff7a9cb918af372e17a1f357e66dd4463"
+    },
+    {
+      "path": "port/v2/packages/art/src/surface.ts",
+      "sha256": "a896ff25c61fdc11beb09a2015bd80dd4546b595d63aad927202de72d8217c3f"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides5.ts",
+      "sha256": "2e71508a633e111c396378bee19164149e4b61653001c88476d0d95d9fe63382"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides3.ts",
+      "sha256": "f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec"
+    },
+    {
+      "path": "port/v2/packages/art/src/birdoverrides.ts",
+      "sha256": "48ffa589f2273f0f29fd85df1f05fd070477ade70f1cdeb7698f5321e5702dc7"
+    },
+    {
+      "path": "port/v2/packages/art/src/mammaloverrides.ts",
+      "sha256": "6f295a3dc951a10e6e4ba464d3467ce755c3d3fff0a6a95eb0a54c35f8d52822"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides.ts",
+      "sha256": "9e109fea1bda4d312eb733f8aa56aacba67ab0ceb79a6a8d9228bec6bc118694"
+    },
+    {
+      "path": "port/v2/packages/art/src/invertoverrides.ts",
+      "sha256": "c0a76508b48d6f97793f37d9962e6140242ef9229a168ef6f538508d4ecaf746"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides2.ts",
+      "sha256": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02"
+    },
+    {
+      "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
+      "sha256": "a01109c0944e4f49b73d7d4784db5b4a30ba406d817978ca71054cb44a2ad52b"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "path": "port/v2/packages/art/src/skin.ts",
+      "sha256": "d62f443ebf548fddece065d33f32d123a2a02200bc01dac26d17a9d3c66dc8aa"
+    },
+    {
+      "path": "port/v2/packages/art/src/torso.ts",
+      "sha256": "7270db2c642b9dde13ff9e4a31c79305ef8d45a011d190bd971a005232d70758"
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-part-capture.ts",
+      "sha256": "94611cc4165bb0460a06871a114fca571eb2fcbd0a275a4a1bf7045c600b5468"
+    },
+    {
+      "path": "port/v2/packages/art/src/alientraits.ts",
+      "sha256": "9c54b1abb2e94854750d7c62c282dbccce4ae37cb21f6961e52edbdd114ca3f7"
+    },
+    {
+      "path": "audits/CIVET_2D_PROOF_20260912/procedural-genome.json",
+      "sha256": "910816b54655967bf4c5522f9630a8a5f658599501fd2d61d4fc781abe0c7681"
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/parts-rest-runner.mjs",
+      "sha256": "0c049b90b4a9f736a316135120e44567085bcfa01acfa9787a3b01a7a244af55"
+    }
+  ]
+}

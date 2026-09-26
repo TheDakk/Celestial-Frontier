@@ -1,0 +1,107 @@
+{
+  "status": "ENCODING_EXACT_BUT_OVER_RUNTIME_BUDGET",
+  "source": {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/civet-landing-original.png",
+    "sha256": "e7ef04af6c5d75bad9e41a26082f814a95893928e814309dd8a720e4fa2a2740"
+  },
+  "commands": [
+    {
+      "args": [
+        "-version"
+      ],
+      "status": 0,
+      "stdout": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org\nCopyright: (C) 1999 ImageMagick Studio LLC\nLicense: https://imagemagick.org/license/\nFeatures: Cipher DPC HDRI Modules \nDelegates (built-in): bzlib freetype heic jng jpeg lcms ltdl lzma png tiff webp xml zlib zstd\nCompiler: clang (21.0.0)\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/civet-landing-original.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "960x430",
+        "-virtual-pixel",
+        "edge",
+        "-gravity",
+        "center",
+        "-background",
+        "black",
+        "-extent",
+        "960x430",
+        "-strip",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/display-reference.png"
+      ],
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/display-reference.png",
+        "-define",
+        "webp:lossless=true",
+        "-define",
+        "webp:method=6",
+        "-quality",
+        "100",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/earth-civet-landing-v1.webp"
+      ],
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "identify",
+        "-format",
+        "%w %h %[channels]",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/earth-civet-landing-v1.webp"
+      ],
+      "status": 0,
+      "stdout": "960 430 srgb  3.0",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/earth-civet-landing-v1.webp",
+        "-depth",
+        "8",
+        "RGB:/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/decoded.rgb"
+      ],
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/display-reference.png",
+        "-depth",
+        "8",
+        "RGB:/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/reference.rgb"
+      ],
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "authority": "Nick explicitly approved ImageMagick resize/encode and asked to preserve visual quality; fullresolution original retained.",
+  "qualification": "Lossless compression preserves the resized reference pixels; resampling reduces spatial detail relative to fullresolution original.",
+  "version": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org\nCopyright: (C) 1999 ImageMagick Studio LLC\nLicense: https://imagemagick.org/license/\nFeatures: Cipher DPC HDRI Modules \nDelegates (built-in): bzlib freetype heic jng jpeg lcms ltdl lzma png tiff webp xml zlib zstd\nCompiler: clang (21.0.0)\n",
+  "reference": {
+    "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/display-reference.png",
+    "bytes": 848781,
+    "sha256": "e6b9460eeb333e202a25fe620cb2afb3baa618fb008b34a05a32d0a59323f86e"
+  },
+  "export": {
+    "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/earth-civet-landing-v1.webp",
+    "bytes": 600756,
+    "sha256": "cd2c616abb35610f6ec63382f6476436f27a8c1a2c698757c8a66d34a5b2e0ec"
+  },
+  "dimensions": "960 430 srgb  3.0",
+  "pixelEquality": true,
+  "rawBytes": 1238400,
+  "budget": {
+    "maxBytes": 524288,
+    "within": false
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "565e7fff2a9c431971d8a0ef57edbfd3bc1beea8c539c05259f4d0c86e97f65f",
+  "cutoutSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8",
+  "labelsFile": "labels.png",
+  "labelsSha256": "4e7f03b0dbb2b7f232e9816f119f0bc93b98779f9d9330bfb367743613a49a6e",
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near"
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "layer": "near"
+    },
+    {
+      "id": "pelvic-near",
+      "joint": "spine0",
+      "layer": "near"
+    },
+    {
+      "id": "pelvic-far",
+      "joint": "spine0",
+      "layer": "far"
+    },
+    {
+      "id": "anal",
+      "joint": "spine3",
+      "layer": "near"
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "layer": "near"
+    },
+    {
+      "id": "body-0",
+      "joint": "spine0",
+      "layer": "near"
+    },
+    {
+      "id": "body-1",
+      "joint": "spine1",
+      "layer": "near"
+    },
+    {
+      "id": "body-2",
+      "joint": "spine2",
+      "layer": "near"
+    },
+    {
+      "id": "body-3",
+      "joint": "spine3",
+      "layer": "near"
+    },
+    {
+      "id": "body-4",
+      "joint": "spine4",
+      "layer": "near"
+    },
+    {
+      "id": "body-5",
+      "joint": "spine5",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "58f7f51d940b57d0d9a9d0ee4ec3b87b1fa842102545bab4319ea1ce4b486664"
+}

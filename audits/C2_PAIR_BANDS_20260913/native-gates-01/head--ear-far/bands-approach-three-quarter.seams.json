@@ -1,0 +1,28 @@
+{
+  "schema": "cf.seam-oracle/v1",
+  "render": "bands-approach-three-quarter.png",
+  "record": "civet.landmarks.json",
+  "size": {
+    "width": 1254,
+    "height": 1254
+  },
+  "opaquePixels": 69398,
+  "closeRadiusPx": 25.08,
+  "discRadiusPx": 75.24,
+  "gapPixelsInsideEnvelope": 10194,
+  "perJoint": {
+    "earFarTip": {
+      "pivot": [
+        974,
+        296
+      ],
+      "seamPixels": 1123,
+      "bounds": {
+        "x": 908,
+        "y": 246,
+        "width": 23,
+        "height": 93
+      }
+    }
+  }
+}

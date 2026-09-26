@@ -1,0 +1,16 @@
+✔ resolves pelvis-rooted upper limb to torso and detects broken rendered attachment with unchanged rest (1.551166ms)
+✔ independent legs and non-nearest ancestral silhouette contacts remain explicitly excluded (0.757166ms)
+✔ samples both piecewise-affine breakpoint inventories so a narrow gap cannot hide between pixel endpoints (0.312208ms)
+✔ refuses missing source coverage, overlapping ownership and nonfinite publication (0.391834ms)
+✔ proximal body skin joins across bone siblings while distinct limbs stay independent (4.833625ms)
+✔ retained actual Civet strike: continuous C03 passes; branch-split C06 and incomplete-socket C07 fail (595.571792ms)
+✔ fish spine and fin attachments use the declared graph; foreign joints and absent remainder refuse (0.362125ms)
+✔ bin-edge rounding keeps present source coverage; true missing coverage and displaced publication still fail (1.532083ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 724.7115

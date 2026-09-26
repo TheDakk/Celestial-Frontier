@@ -1,0 +1,37 @@
+{
+  "schema": "cf.painted-master-result/v1",
+  "tool": "image_gen.imagegen",
+  "sourcePath": "/Users/nick/.codex/generated_images/01a0bab7-303d-74b2-9084-ec26ea52e7e8/exec-dc2ad79f-50ac-4661-99b3-5e3ff13bc5fc.png",
+  "master": "brown-bear-master.png",
+  "pngSha256": "1fdbef97b7c612d85ebe4a3ed7b580c31d7671a379c92e46ba3f200f655d035d",
+  "sourceSha256": "1fdbef97b7c612d85ebe4a3ed7b580c31d7671a379c92e46ba3f200f655d035d",
+  "bytes": 1953819,
+  "actualSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "requestedSize": [
+    1536,
+    1536
+  ],
+  "sizePass": false,
+  "hasAlpha": true,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "alphaBounds": [
+    0,
+    17,
+    1251,
+    1254
+  ],
+  "pixelEdits": 0,
+  "resized": false,
+  "generationCount": 1,
+  "seed": null,
+  "seedReason": "Not exposed by the built-in tool",
+  "sentPromptSha256": "feb0070c0e645be54932c1f48abc8a6c236c0099df639a07ae1a45b64aafd02d",
+  "artAcceptance": "Pending Nick review; not inferred from tool completion"
+}

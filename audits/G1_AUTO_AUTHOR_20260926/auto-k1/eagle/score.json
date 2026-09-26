@@ -1,0 +1,22 @@
+{
+ "id": "eagle",
+ "family": "biped-bird",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 1131.6,
+ "landmarkMedian": 0.039,
+ "landmarkMax": 0.0823,
+ "worst": [
+  "root 0.082",
+  "legNearKnee 0.072",
+  "chest 0.064"
+ ],
+ "labelAgreement": 0.7082,
+ "missingJoints": [],
+ "static": "RED",
+ "staticFails": [
+  "alert",
+  "faint",
+  "victory"
+ ]
+}

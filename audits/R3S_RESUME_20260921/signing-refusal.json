@@ -1,0 +1,8 @@
+{
+  "stage": "pending canonical native evidence",
+  "status": "SIGNING_REFUSED",
+  "error": "1Password: agent returned an error; fatal: failed to write commit object",
+  "head": "73398486ac886aeddeaa1580389a8d92ad5efa9c",
+  "newCommitCreated": false,
+  "retryCondition": "Nick confirms signing authentication ready; no repeated capture or battery."
+}

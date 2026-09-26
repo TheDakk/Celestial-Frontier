@@ -1,0 +1,200 @@
+{
+  "schema": "cf-creature-kinematics-static/v1",
+  "status": "PASS",
+  "certification": false,
+  "startedAt": "2026-09-09T02:05:10.818Z",
+  "finishedAt": "2026-09-09T02:05:26.983Z",
+  "sourceCommit": "afee1924aac880bed4360deae2a26d081ca18d45",
+  "node": {
+    "executable": "/opt/homebrew/Cellar/node/26.8.1/bin/node",
+    "version": "v26.8.1"
+  },
+  "scope": "One fail-stop static chain; no focused-test rerun, browser, profile, or universal-animation admission.",
+  "startupReceipt": "audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json",
+  "sources": [
+    {
+      "path": "port/v2/tools/creature-animation/kinematics.ts",
+      "bytes": 8239,
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5"
+    },
+    {
+      "path": "port/v2/tests/creature-animation-kinematics.test.ts",
+      "bytes": 9853,
+      "sha256": "542ed7088ff378bd7874bb7832a9906b25e704fcff6ec142527c14caa602c295"
+    },
+    {
+      "path": "audits/CIVET_PAINTED_PARTS_20260908/kinematics-tests.json",
+      "bytes": 3405,
+      "sha256": "9da2cd859984002322118cb3988e5902640bb91e8d40fa8298d22564cb186c22"
+    },
+    {
+      "path": "port/v2/tsconfig.json",
+      "bytes": 329,
+      "sha256": "d345415ed7ce8ee346b346161c75a2f34db48ccd604ddb77b9cc949f1e56d291"
+    },
+    {
+      "path": "port/v2/apps/game/tsconfig.json",
+      "bytes": 509,
+      "sha256": "f67ed5604d17ef604f4460c2195a88da847a50bc6020d53f5c70de4da0e6fc65"
+    },
+    {
+      "path": "port/v2/apps/game/tsconfig.worker.json",
+      "bytes": 389,
+      "sha256": "a4acd79177e942e92308af77790e59517d7ea31e258c36c1ba1c588ce0c47a1e"
+    },
+    {
+      "path": "port/v2/package.json",
+      "bytes": 3088,
+      "sha256": "cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7"
+    },
+    {
+      "path": "port/v2/package-lock.json",
+      "bytes": 90228,
+      "sha256": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1757,
+      "sha256": "1aff75844db6816f6a40849f745eafeb2842cfecfa0733db0ae6cd31760c94e2"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 19884,
+      "sha256": "8427627abba8f6bd1dd37212870f4f4ff8741029aa3efcf16850f2e3b6a276e5"
+    },
+    {
+      "path": "tools/validate.js",
+      "bytes": 2784,
+      "sha256": "d220a48bf720ba07965888ee409229930359c3ede3ec76f6842183b3ca64a460"
+    },
+    {
+      "path": "tools/build.js",
+      "bytes": 1126,
+      "sha256": "9d9837deea2889f6a8b9a0e4a58ed43ef002bd346aea06f5c6476913c85e3ebf"
+    },
+    {
+      "path": "tools/baseline.json",
+      "bytes": 82916,
+      "sha256": "6f9a42a29c7a3276a72417267254b59be4ebf9999dfa5656073988c1fbf8081c"
+    },
+    {
+      "path": "tools/with-toolchain-lock.mjs",
+      "bytes": 5052,
+      "sha256": "f0a3ecd12e0f83b0f99482aa2c298cf84cd30b3b4290516c999a70ef5aed8f0a"
+    },
+    {
+      "path": "port/v2/tools/workspacelock.mjs",
+      "bytes": 6863,
+      "sha256": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606"
+    },
+    {
+      "path": "audits/CIVET_PAINTED_PARTS_20260908/static-corrected-runner.mjs",
+      "bytes": 8650,
+      "sha256": "c1b131f1e85c527be77c3da5b088add78170fd7ea2d62cd76215dd935464f1d6"
+    }
+  ],
+  "steps": [
+    {
+      "id": "typecheck",
+      "command": "/opt/homebrew/bin/npm",
+      "args": [
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "startedAt": "2026-09-09T02:05:10.939Z",
+      "finishedAt": "2026-09-09T02:05:14.064Z",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "log": {
+        "path": "audits/CIVET_PAINTED_PARTS_20260908/static-corrected-typecheck.log",
+        "bytes": 134,
+        "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+      }
+    },
+    {
+      "id": "validate",
+      "command": "/opt/homebrew/Cellar/node/26.8.1/bin/node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "startedAt": "2026-09-09T02:05:14.070Z",
+      "finishedAt": "2026-09-09T02:05:26.975Z",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "log": {
+        "path": "audits/CIVET_PAINTED_PARTS_20260908/static-corrected-validate.log",
+        "bytes": 1093,
+        "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "path": "celestial-frontier.html",
+      "bytes": 1964530,
+      "sha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746"
+    },
+    {
+      "path": "tools/probe-build.html",
+      "bytes": 1976858,
+      "sha256": "6c3cd4034ebf978bbde199b1b64fca4774b970207f11eac3f203e897af77941d"
+    },
+    {
+      "path": "tools/current.json",
+      "bytes": 78944,
+      "sha256": "68fe34328c6c11eea65cf2d39b2e74c6e0e442e0453229a685315adc25996690"
+    }
+  ],
+  "cleanupErrors": [],
+  "pending": null,
+  "locks": {
+    "foreground": "/private/tmp/celestial-frontier-toolchain-501.lock",
+    "checkout": "/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/celestial-frontier-workspace-e5c3a01ec0513024d9ea.lock.json",
+    "released": true
+  },
+  "optionalMainJs": {
+    "present": false,
+    "policy": "Optional exactly as tools/validate.js; if absent, existing HTML remains the validation input. Presence must remain unchanged through the chain."
+  },
+  "priorInstrumentFailure": {
+    "runner": "audits/CIVET_PAINTED_PARTS_20260908/static-runner.mjs",
+    "report": "audits/CIVET_PAINTED_PARTS_20260908/static-results.json",
+    "diagnosis": "Unconditional main.js source hashing threw ENOENT before any check ran; current validate.js deliberately treats this file as optional."
+  },
+  "priorFocusedTestReceipt": {
+    "path": "audits/CIVET_PAINTED_PARTS_20260908/kinematics-tests.json",
+    "bytes": 3405,
+    "sha256": "9da2cd859984002322118cb3988e5902640bb91e8d40fa8298d22564cb186c22",
+    "receiptKind": "transcribed-from-existing-tool-output",
+    "testsPassed": 15,
+    "rerun": false,
+    "qualification": "Transcribed from original tool output; raw log absent, source hashes recorded afterward on frozen files."
+  },
+  "kinematicsCoverage": {
+    "explicitExtraRun": false,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "includedTestGlob": "tests/**/*.ts",
+    "importer": "port/v2/tests/creature-animation-kinematics.test.ts",
+    "importSpecifier": "../tools/creature-animation/kinematics.js",
+    "resolution": "Bundler module resolution resolves the local .js import to existing kinematics.ts, so the included focused test brings the core into the root strict program."
+  },
+  "legacyHtmlBefore": {
+    "path": "celestial-frontier.html",
+    "bytes": 1964530,
+    "sha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746"
+  },
+  "legacyHtmlAfter": {
+    "path": "celestial-frontier.html",
+    "bytes": 1964530,
+    "sha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746"
+  },
+  "legacyHtmlByteIdentical": true
+}

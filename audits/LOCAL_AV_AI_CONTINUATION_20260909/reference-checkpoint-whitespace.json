@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "command": [
+    "git",
+    "diff",
+    "--cached",
+    "--check"
+  ],
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "",
+  "scope": "Raw execution logs retained exactly; no source whitespace findings accepted."
+}

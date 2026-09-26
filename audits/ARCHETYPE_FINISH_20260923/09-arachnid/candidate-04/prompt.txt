@@ -1,0 +1,69 @@
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,
+emblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes (universe, stars, planet biomes, Arena FAR), and Arena
+MID/NEAR key-painted terrain so all arena layers match the same biome hand:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: Earth Tarantula; real named anatomy and natural materials take priority over raw procedural genes. eight thick densely hairy legs; two-part body: fused cephalothorax plus a bulbous abdomen; downward-stabbing fangs flanked by leg-like pedipalps. Isolated library archetype, not a landing resident claim.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Tarantula. eight thick densely hairy legs; two-part body: fused cephalothorax plus a bulbous abdomen; downward-stabbing fangs flanked by leg-like pedipalps. no antennae and no separate head; the front section carries all eight legs plus the pedipalps
+Genomic identity and traits (Earth anatomy takes priority): {"seed":3680049014,"kingdom":"fauna","color":15,"form":13,"body":9,"loco":0,"trait":17,"size":5,"diet":5,"head":8,"limbs":1,"skin":8,"tail":1,"pattern":0,"eyes":3,"behavior":7,"habitat":3,"detail":0,"accent":15,"temper":4,"sense":9,"repro":7,"life":2,"metab":2,"lumin":true,"gen":0,"heat":1,"_earthName":"Tarantula"}
+Family contract arachnid, clip set arachnid-v1. Required rig joint/part inventory: root, cephalothorax, abdomen, cheliceraFar, cheliceraNear, leg1FarKnee, leg1FarFoot, leg1NearKnee, leg1NearFoot, leg2FarKnee, leg2FarFoot, leg2NearKnee, leg2NearFoot, leg3FarKnee, leg3FarFoot, leg3NearKnee, leg3NearFoot, leg4FarKnee, leg4FarFoot, leg4NearKnee, leg4NearFoot. Connected organic painted subject, no equipment, no fantasy added limbs.
+
+COMPOSITION AND ANATOMY — NEW STANDING POSE
+Create a complete right-facing tarantula in lateral view with camera elevation35degrees, enough above its back to separate the far legs. The longitudinal body axis runs horizontally from abdomen at left to face at right, not toward the viewer. A moderate abdomen occupies only about one-fifth of the canvas width, joined to a low cephalothorax. Raised relaxed standing stance with the body above the feet. Exactly eight long, bent, hairy walking legs, four near and four far. All eight chains must visibly emerge from the cephalothorax and each have a separate bend and separate foot tip. Four far legs form the rear fan, four near legs form the lower foreground fan. Offset all four far feet into distinct clear gaps above/between the near feet: no far foot or distal shank is buried behind the abdomen. Do not render two attractive far arches that simply end at the body. Paint all eight legs to completion. The body must be small enough that the far posterior legs are traceable. Legs1/2 extend toward the face, legs3/4 toward the abdomen. All legs have relaxed moderate bends, not straight sticks or coils. The two short pedipalps and two small downward fangs stay by the mouth and do not count as walking legs. No antennae, sting, tail or separate head.
+
+FOOTPRINT READABILITY
+A broad horizontally spread stance with eight different visible foot positions. Approximately four near feet spread left to right along the lower fan, and four far feet spread left to right along a higher fan; stagger them so no far foot is superimposed on a near leg. This is one connected naturally posed tarantula, not an exploded diagram or disconnected limbs. A viewer must be able to trace each of the eight walking legs from its exposed proximal portion through the bend to its own tip.
+
+OUTPUT
+Square1254 x1254PNG, genuine transparent alpha. The entire eight-leg silhouette lies between x110 and1144, and y110 and1144: leave at least8percent margin. No backdrop, ground, web, cast shadow, base, labels, numbers, text, decorations, added appendages or extra creatures. Match the attached Discovery Atlas painted hand exactly; do not paint a photograph, plasticCGI or cartoon. Preserve fine grouped hairs within the subject and transparent exterior.

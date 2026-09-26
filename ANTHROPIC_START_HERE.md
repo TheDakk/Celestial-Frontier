@@ -1,3 +1,5 @@
+> **RETIRED (Nick, 2026-09-26): development is Mac-only.** The `anthropic/windows` branch and the `C:\Projects\celestial-frontier-anthropic-windows` folder are no longer used; the branch is deleted on GitHub. Work only in `/Users/nick/Projects/celestial-frontier-anthropic-mac` on branch `anthropic/mac`, and follow `PARALLEL_GIT_PROTOCOL.md` (including its Disk-space law). The Windows instructions below are kept only as history.
+
 # Anthropic / Claude Code — Start Here
 
 This is the **only folder Anthropic/Claude Code should edit on this Windows PC**:

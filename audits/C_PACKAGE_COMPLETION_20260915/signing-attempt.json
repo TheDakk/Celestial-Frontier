@@ -1,0 +1,21 @@
+{
+  "observedAtUtc": "2026-09-15T04:54:03.362783+00:00",
+  "lastSignedHead": "b95c4dc0",
+  "lastSignedAhead": {
+    "upstream": 115,
+    "cachedOriginDevelop": 226,
+    "behindBoth": 0
+  },
+  "attempt": "signed local commit using configured op-ssh-sign and existing 1Password SSH socket",
+  "result": "FAIL: 1Password: agent returned an error; fatal: failed to write commit object",
+  "diagnostic": {
+    "recentSystemLogQueryExit": 0,
+    "knownAuthenticationErrorCategoriesMatched": [],
+    "rootCause": "not established"
+  },
+  "rawApplicationLogsCopied": false,
+  "credentialsRead": false,
+  "signerOrSecuritySettingsChanged": false,
+  "workingChanges": "staged; code checks pass",
+  "githubWrites": false
+}

@@ -1,0 +1,30 @@
+{
+  "source": "/Users/nick/Downloads/codex-pack-2-20260913.zip",
+  "note": "Original mentioned zip was Pack1; found Pack2 by filename in Downloads. Imported documents only, no Claude code. Incoming LOG preserved separately.",
+  "files": [
+    {
+      "archivePath": "audits/LONG_SESSION_20260913/LOG-A2.md",
+      "path": "audits/LONG_SESSION_20260913/LOG-A2.md",
+      "sha256": "0c9024f60d66539d9e7e5c0640123d28cc4f5301ce09ca671eff686cd6ea5c4e",
+      "bytes": 7407
+    },
+    {
+      "archivePath": "audits/LONG_SESSION_20260913/CONTRACTS.md",
+      "path": "audits/LONG_SESSION_20260913/CONTRACTS.md",
+      "sha256": "b705bc5d452196150ad7ff2172497732ad0f342dd7d5805c3a1a991739286044",
+      "bytes": 4905
+    },
+    {
+      "archivePath": "audits/LONG_SESSION_20260913/LOG.md",
+      "path": "audits/LONG_SESSION_20260913/LOG-CLAUDE-PACK2.md",
+      "sha256": "3cd0acf28d5e5c84c1e18d6241160ac5773f3d765e1ee22e5fc83d4888a62163",
+      "bytes": 1289
+    },
+    {
+      "archivePath": "audits/LONG_SESSION_20260913/LOG-A1.md",
+      "path": "audits/LONG_SESSION_20260913/LOG-A1.md",
+      "sha256": "fb5c3a316b82c6d2a95a84ca2ead482c1fd50c2025d04e10d94cfdbb3c480c88",
+      "bytes": 7533
+    }
+  ]
+}

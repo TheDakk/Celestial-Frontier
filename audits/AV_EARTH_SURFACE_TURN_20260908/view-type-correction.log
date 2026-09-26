@@ -1,0 +1,13 @@
+
+> cf-v2@0.0.0 test
+> vitest run apps/game/src/planet-surface-turn-view.test.ts
+
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  08:31:20
+   Duration  182ms (transform 54ms, setup 0ms, import 72ms, tests 10ms, environment 0ms)
+

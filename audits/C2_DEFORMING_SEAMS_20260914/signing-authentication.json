@@ -1,0 +1,18 @@
+{
+  "scope": "Only the two C2 signing attempts; no keys, vault content or full application logs copied",
+  "attemptsUtc": [
+    "2026-09-14T16:32:08.640Z",
+    "2026-09-14T16:32:21.368Z"
+  ],
+  "gitResult": "1Password: agent returned an error; commit not created",
+  "applicationEvents": [
+    "Secure enclave challenge failed: could not create the private key",
+    "System unlock failed: SystemAuthError(FailedSystemAuthenticationChallenge)",
+    "Failed to authorize using system biometry",
+    "failed to get private key from session"
+  ],
+  "interpretation": "The failure occurs in 1Password/macOS system authentication before signing; this does not prove Nick left the vault locked or that the SSH key is lost",
+  "requestedRecovery": "Nick to unlock using account password in the 1Password app, then retry the configured signed commit",
+  "securitySettingsChanged": false,
+  "lastSignedHead": "e852a1c0"
+}

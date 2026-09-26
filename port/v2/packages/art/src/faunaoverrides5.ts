@@ -8,6 +8,7 @@ import { mulberry32, TAU } from '@cf/domain-rand';
 import { Tube, pathThrough } from './torso.js';
 import { countershade } from './skin.js';
 import type { ArtContext2D } from './speciescanvas.js';
+import {isObservingPainterTopology,emitPainterTopology,type DrawnFeature} from './painter-topology.js';
 
 type Ctx = ArtContext2D;
 type G = Record<string, unknown>;
@@ -549,7 +550,9 @@ export function faunaCuttlefish(c: Ctx, g: G, p: Pal): void {
 export function faunaHorseshoeCrab(c: Ctx, g: G, pIn: Pal): void {
   const p = anchor(pIn, 118, 86, 56, 0.50);
   const r = nrng(g, 'Horseshoe Crab', 0x405E);
+  const observed:DrawnFeature[]|null=isObservingPainterTopology(c)?[]:null;
   const cx = S * 0.50, cy = S * 0.44, w = S * 0.200;
+  observed?.push({id:'telson',kind:'body',points:[[cx-w*.075,cy+w*.50],[cx+w*.075,cy+w*.50],[cx+w*.012,cy+w*1.86],[cx-w*.012,cy+w*1.86]],curve:'polyline',layer:'far'},{id:'opisthosoma',kind:'body',points:[[cx-w*.40,cy+w*.02],[cx+w*.40,cy+w*.02],[cx+w*.30,cy+w*.46],[cx+w*.10,cy+w*.56],[cx-w*.10,cy+w*.56],[cx-w*.30,cy+w*.46]],curve:'polyline',layer:'near'});
   shadow(c, cx, S * 0.88, w * 0.9, 0.30);
   /* THE TELSON — a long rigid spike, a third of the animal, drawn first */
   const tg = c.createLinearGradient(cx - 6, cy, cx + 6, cy);
@@ -566,6 +569,7 @@ export function faunaHorseshoeCrab(c: Ctx, g: G, pIn: Pal): void {
   for (const s of [-1, 1] as const) {
     for (let i = 0; i < 6; i++) {
       const u = i / 5;
+      observed?.push({id:'spine'+i+(s<0?'Far':'Near'),kind:'body',points:[[cx+s*w*(.34-u*.10),cy+w*(.10+u*.30)],[cx+s*w*(.62-u*.22),cy+w*(.24+u*.34)],[cx+s*w*(.32-u*.10),cy+w*(.20+u*.30)]],curve:'polyline',layer:'far'});
       c.beginPath();
       c.moveTo(cx + s * w * (0.34 - u * 0.10), cy + w * (0.10 + u * 0.30));
       c.lineTo(cx + s * w * (0.62 - u * 0.22), cy + w * (0.24 + u * 0.34));
@@ -615,6 +619,7 @@ export function faunaHorseshoeCrab(c: Ctx, g: G, pIn: Pal): void {
   c.bezierCurveTo(cx + w * 1.06, cy - w * 0.68, cx + w * 1.04, cy + w * 0.20, cx + w * 0.44, cy + w * 0.34);
   c.quadraticCurveTo(cx, cy + w * 0.16, cx - w * 0.44, cy + w * 0.34);
   c.closePath(); c.fill();
+  observed?.push({id:'prosoma-left',kind:'body',points:[[cx-w*.44,cy+w*.34],[cx-w*1.04,cy+w*.20],[cx-w*1.06,cy-w*.68],[cx,cy-w*.74]],curve:'cubic',layer:'near'},{id:'prosoma-right',kind:'body',points:[[cx,cy-w*.74],[cx+w*1.06,cy-w*.68],[cx+w*1.04,cy+w*.20],[cx+w*.44,cy+w*.34]],curve:'cubic',layer:'near'});
   /* the cardiac ridge and the two flanking ridges that vault the shield */
   c.strokeStyle = `rgba(${p.cr * 0.44 | 0},${p.cg * 0.44 | 0},${p.cb * 0.44 | 0},0.42)`;
   c.lineWidth = 3;
@@ -632,6 +637,7 @@ export function faunaHorseshoeCrab(c: Ctx, g: G, pIn: Pal): void {
   /* the two compound eyes, set wide on the ridges */
   for (const s of [-1, 1] as const) {
     const ex = cx + s * w * 0.50, ey = cy - w * 0.30;
+    observed?.push({id:'eye'+(s<0?'Far':'Near'),kind:'body',points:[[ex,ey]],widths:[w*.15,w*.09],curve:'ellipse',layer:'near'});
     c.fillStyle = 'rgba(26,20,14,0.8)';
     c.beginPath(); c.ellipse(ex, ey, w * 0.075, w * 0.045, s * 0.5, 0, TAU); c.fill();
     c.fillStyle = 'rgba(255,244,220,0.45)';
@@ -644,12 +650,14 @@ export function faunaHorseshoeCrab(c: Ctx, g: G, pIn: Pal): void {
     c.fillStyle = `rgba(${p.cr * 0.5 | 0},${p.cg * 0.5 | 0},${p.cb * 0.5 | 0},0.22)`;
     c.beginPath(); c.arc(x, y, 1.6 + r() * 1.6, 0, TAU); c.fill();
   }
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'faunaHorseshoeCrab',family:'xiphosuran',coordinateSize:S,materials:{surface:'chitinous',paletteSource:'named anchor with genome tint'},features:observed,unresolved:['Top view has no painted walking legs or ventral mouth; a five-pair candidate is not a visible rig','Rigid telson, articulated opisthosoma and twelve lateral spines need source masks','Prosoma rim and dome share one rigid plate; no fabrication of hidden surfaces']});
 }
 
 /* ── SEA SQUIRT: an attached SAC with two siphons. The old fan form told the
    viewer nothing about what a tunicate is. ── */
 export function faunaSeaSquirt(c: Ctx, g: G, p: Pal): void {
   const r = nrng(g, 'Sea Squirt', 0x5E45);
+  const observed:DrawnFeature[]|null=isObservingPainterTopology(c)?[]:null;let bodies=0;
   /* the rock it is cemented to */
   c.fillStyle = 'rgba(38,44,52,0.9)';
   c.beginPath();
@@ -658,6 +666,8 @@ export function faunaSeaSquirt(c: Ctx, g: G, p: Pal): void {
   c.quadraticCurveTo(S * 0.78, S * 0.84, S * 0.92, S * 0.96);
   c.closePath(); c.fill();
   const body = (bx: number, by: number, bw: number, bh: number, dim: number): void => {
+    const bodyId='tunic'+bodies++,layer=dim<1?'far' as const:'near' as const;let ports=0;
+    observed?.push({id:bodyId+'Left',kind:'body',structureId:bodyId,points:[[bx-bw*1.05,by+bh],[bx-bw*.92,by-bh*.55],[bx-bw*.62,by-bh*1.02],[bx-bw*.30,by-bh]],curve:'cubic',layer},{id:bodyId+'Right',kind:'body',structureId:bodyId,points:[[bx+bw*.42,by-bh*.92],[bx+bw*.86,by-bh*.50],[bx+bw*.98,by-bh*.10],[bx+bw*1.05,by+bh]],curve:'cubic',layer});
     c.globalAlpha = dim;
     /* THE TUNIC — a translucent leathery sac, wider at the base where it grips */
     const bgr = c.createLinearGradient(bx - bw, 0, bx + bw, 0);
@@ -673,6 +683,7 @@ export function faunaSeaSquirt(c: Ctx, g: G, p: Pal): void {
        Each is a raised rim around a dark opening, which is what makes it a
        PORT rather than a spot. */
     const siph = (sx: number, sy: number, sr: number, ang: number): void => {
+      observed?.push({id:bodyId+'Siphon'+ports++,kind:'opening',points:[[sx-Math.sin(ang)*sr*1.5,sy+Math.cos(ang)*sr*1.5],[sx+Math.sin(ang)*sr*.5,sy-Math.cos(ang)*sr*.5]],widths:[sr*2,sr*.84],curve:'ellipse',layer});
       c.save(); c.translate(sx, sy); c.rotate(ang);
       c.fillStyle = `rgb(${Math.min(255, p.cr * 1.25 | 0)},${Math.min(255, p.cg * 1.25 | 0)},${Math.min(255, p.cb * 1.25 | 0)})`;
       c.beginPath();
@@ -719,6 +730,7 @@ export function faunaSeaSquirt(c: Ctx, g: G, p: Pal): void {
   };
   body(S * 0.66, S * 0.66, S * 0.085, S * 0.135, 0.72);   /* a smaller one behind */
   body(S * 0.44, S * 0.60, S * 0.125, S * 0.195, 1);
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'faunaSeaSquirt',family:'sessile-filter',coordinateSize:S,materials:{surface:'translucent',paletteSource:'genome'},features:observed,unresolved:['Two actual attached bodies, each with inhalant and exhalant siphons','The painted rock is scenery, not an organism joint','Separate tunic and rim masks, rooted motion and aperture closure unqualified']});
 }
 
 /* ── LAMPREY: the audit wants the oral disc and the gill pores. A lamprey with

@@ -1,0 +1,35 @@
+{
+  "createdAt": "2026-09-09T01:37:23.697743+00:00",
+  "request": "Nick requests additional high-level midgame fauna, flora and cosmic discovery reference generations with identifiable cohesive art direction.",
+  "mode": "built-in image_gen",
+  "intent": "two original reference-guided conceptual boards; inspected reference sheets are visible in context; not an edit of assets",
+  "startingHead": "afee1924aac880bed4360deae2a26d081ca18d45",
+  "approval": "requested concepts; not human-accepted production assets or exact seeded encounters",
+  "references": [
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/approved-creature-reference.png",
+      "sha256": "029fa87c560c3ebc6d065baec15ecd4e84a25f5d567cd8e4ff8dc23612ba88a3",
+      "bytes": 2358697
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/approved-space-reference.png",
+      "sha256": "749f6de6debc31486e37b733bb5b8d5b5e038dd7f4ff97038e108c61b05f0d3a",
+      "bytes": 2457859
+    },
+    {
+      "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/biome-reference.png",
+      "sha256": "86b6629d53a3fda1e07f725913b5c0b69a9918e91af3df222e44ee2dc6647248",
+      "bytes": 3484074
+    },
+    {
+      "path": "audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/alien-flora-reference.png",
+      "sha256": "611a19a1a10ed4e5ba3225ec686d1f025c3bf2c83442ec2d830b3b7943ff4d5c",
+      "bytes": 2787923
+    },
+    {
+      "path": "audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/earth-flora-fauna-reference.png",
+      "sha256": "96cfb499f8e2d8fdd15cc1a09dcfa6238195152ee619290c294e71707544987a",
+      "bytes": 2570683
+    }
+  ]
+}

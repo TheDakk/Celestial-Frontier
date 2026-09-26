@@ -1,0 +1,66 @@
+{
+  "scope": "Whole-stage costs at4x exactEdge;25ms diagnostic bin never raised allowance",
+  "rows": [
+    {
+      "name": "cattle",
+      "runId": "native-cattle-01",
+      "status": "DIAGNOSTIC_PASS",
+      "scope": "proposed stage bundle",
+      "p95CpuMs": 14,
+      "maxCpuMs": 44.800000071525574,
+      "overBudgetFrames": 33,
+      "overBudgetPhases": {
+        "action": 4,
+        "hitstop": 6,
+        "impact": 11,
+        "idle": 12
+      },
+      "longIntervalsAtLeast25ms": 19,
+      "maxIntervalMs": 50.0,
+      "frames": 911,
+      "durationMs": 15532.7,
+      "encoded": {
+        "frames": 913,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 15.596465,
+        "minimumFrames": 886
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "reportSha256": "5ea8f7166a9819175d62e45bc54fd6c97a8d55bc30166b3df439c562498e9789",
+      "filmSha256": "eeb07923075b582724e8e00ae9b4ef2e63708b294193371f7ee2597ff84bdc71"
+    },
+    {
+      "name": "centipede",
+      "runId": "native-centipede-01",
+      "status": "DIAGNOSTIC_PASS",
+      "scope": "ordinary current source; no stage transforms",
+      "p95CpuMs": 8.600000023841858,
+      "maxCpuMs": 56.299999952316284,
+      "overBudgetFrames": 5,
+      "overBudgetPhases": {
+        "approach": 5
+      },
+      "longIntervalsAtLeast25ms": 1,
+      "maxIntervalMs": 49.899999999999636,
+      "frames": 787,
+      "durationMs": 13132.8,
+      "encoded": {
+        "frames": 790,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 13.203418,
+        "minimumFrames": 748
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "reportSha256": "5e6a646fb801e668deaec560a591b92986b3c452b5d93e9c40dfb5a67e90d455",
+      "filmSha256": "b0af57e51f36d823e8800695e7631cc0c324ebf28f61fbe5020118f4161ad53e"
+    }
+  ]
+}

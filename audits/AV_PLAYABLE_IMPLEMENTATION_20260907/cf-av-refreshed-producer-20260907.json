@@ -1,0 +1,33 @@
+{
+  "previous": "aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe",
+  "current": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "3c8cda1771d6230fb86e773fc0cde86cb3c51686b6cc8fce3141b38a7516e28b",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "334ab4dce1cbfd8bfa87fe8095c5c4583c14cd50ca6b0be58ad93a8c63bad313"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-y7sHFOul.js",
+        "sha256": "1dd2d2fcf64a4a5d6c338c6ca3f40f9c25339727ac9aca09baf2e71278c12c7b"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "583800bf508ffa54a64be1644159db60139d992d460c76493498d4083dcf99bd"
+      }
+    }
+  },
+  "measurementUnchanged": true,
+  "rulerUnchanged": true,
+  "ceilingsUnchanged": true,
+  "sceneMemoryQuarantined": true
+}

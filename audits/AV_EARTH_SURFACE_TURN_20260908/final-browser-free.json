@@ -1,0 +1,106 @@
+{
+  "status": "PASS",
+  "continuationOf": "type-corrected-verification.json",
+  "steps": [
+    {
+      "name": "producer-final",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_SURFACE_TURN_20260908/producer-final.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 3.198
+    },
+    {
+      "name": "producer-refresh-final",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_SURFACE_TURN_20260908/refresh-producer-final.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.043
+    },
+    {
+      "name": "final-focused",
+      "cmd": "npm",
+      "args": [
+        "test",
+        "--",
+        "apps/game/src/planet-surface-turn-view.test.ts",
+        "tests/planet-surface-atlas.test.ts",
+        "tests/planet-surface-turn-math.test.ts",
+        "tests/current-producer-authorities.test.ts",
+        "tests/compendium-budget.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 3.706
+    },
+    {
+      "name": "typescript-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 2.743
+    },
+    {
+      "name": "art-unused-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 1.447
+    },
+    {
+      "name": "art-audit-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artaudit"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.658
+    },
+    {
+      "name": "override-check-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "overridecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.66
+    },
+    {
+      "name": "spec-check",
+      "cmd": "node",
+      "args": [
+        "tools/speccheck.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.332
+    },
+    {
+      "name": "root-validation",
+      "cmd": "node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 12.394
+    }
+  ]
+}

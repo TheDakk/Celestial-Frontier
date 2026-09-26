@@ -1,0 +1,16 @@
+✔ single byte ranges cover bounded/open/suffix forms and reject malformed or impossible ranges (0.946375ms)
+✔ serves exact config, locked relative worker imports, range bytes, HEAD and same-origin Vite (53.927084ms)
+✔ rejects raw/encoded traversal, external origins, unknown AI files and write methods (15.601708ms)
+✔ hash/size corruption blocks readiness before Vite or HTTP start and exact restoration passes (13.695666ms)
+✔ refuses locked runtime version changes before opening the game (8.868208ms)
+✔ refuses a verified file replaced after startup instead of serving stale declared hashes (13.460208ms)
+✔ startup failure closes Vite and preserves a cleanup failure beside the bind error (19.799792ms)
+✔ close is idempotent and closes both the HTTP owner and Vite (10.303458ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 241.911084

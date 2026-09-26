@@ -1,0 +1,111 @@
+{
+  "schema": "cf-v2-current-producer-authorities/v1",
+  "build": {
+    "schema": "cf-v2-scene-memory-build/v1",
+    "sha256": "9c047a476f911d5a39ddab8b6889bd52b3bfd2a9f9a1beaa75140320290dee6c",
+    "fileCount": 82
+  },
+  "sceneMemory": {
+    "producer": {
+      "collector": "04291ab5e980ce4cacf1a76caf6d55a015a19575ce8e23e88d01c3d6caff6da3",
+      "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+      "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+      "workspaceLock": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606",
+      "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
+      "verdictContract": "e973f8c8f3eeae05c1c9c1328926f2ccf6f4aba7b3602f6bf5ab623a6163d599",
+      "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
+      "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+      "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+      "package": "cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7",
+      "packageLock": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d",
+      "appPackage": "11dde72861c2a687f5d238a412946956f1ecb4a4bec7adafa6096c9dcc04329d",
+      "buildDist": "9c047a476f911d5a39ddab8b6889bd52b3bfd2a9f9a1beaa75140320290dee6c",
+      "gameHtml": "3f23abf33bc3b8ccb5f908204bd9ff5d87edd1d62296e34a31669cf365c37a94",
+      "gameMain": "faf3a4ece2ac9f567d66cfada94d1f6057e6633f2f205749d1302e592455614f",
+      "shipVisualState": "9bfd27d3d6a75779d3372dfb6386e8e98ef22d92a33b0346819225024c70d762",
+      "shipyardPreview": "83f8ad7b7c8863e41676e97b58db603cd081a99f96d32d3c87ca8ed2d42aa109",
+      "planetTextureAttachment": "751cb34df8ead64fc5ad274a0fd55dfe1af7bb183949ffebcea2ada5de5903e0",
+      "planetTextureDemand": "a537aacde361e88b692887e6d2fa67674296d828aa0d297673dc34b147322055",
+      "sceneTextureOwner": "db7af3f23c3b7d652df37cb54f1082eea177380aefd4f86bc16365a6adbed709",
+      "pixiManagedResourceOwner": "2d9eaeb667f5a4a763e25bd8e168b721494dda49c252e2411031a258d2653708",
+      "pixiBatchTextureArray": "95ea401f9f05a933f17c9a327b94109bfcc46b0a21cc59789a66537a5b62deb3",
+      "sceneText": "7ea78c599fed72ab1ba65991270b72d642f6ec2f9768f63ad64d280ce9147731"
+    },
+    "budgetMatches": false,
+    "budgetMismatches": [
+      "browserCdp",
+      "buildDist",
+      "collector",
+      "gameHtml",
+      "gameMain",
+      "packageLock",
+      "shipyardPreview"
+    ]
+  },
+  "compendium": {
+    "measurement": {
+      "schema": "cf-v2-compendium-measurement-authority/v1",
+      "sha256": "4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12",
+      "inputs": {
+        "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
+        "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+        "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
+        "budgetSchema": "9601a25a6193bc19b2b7ab09ff68a819bdc0e87241c041d90f0bfb1d9d02620f",
+        "outcomeContract": "1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692",
+        "collector": "3ce7ed13c57f7feabc2653b9f7ce5eb323bc3305a19646f2cd93af5032d2dc5e",
+        "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+        "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+        "workspaceLock": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606",
+        "package": "cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7",
+        "packageLock": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d",
+        "appPackage": "11dde72861c2a687f5d238a412946956f1ecb4a4bec7adafa6096c9dcc04329d",
+        "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+        "speciesArtBuildGraph": "e591551391f3ed31a494c94d7e1f659633daa460f0571b973bc81cd6888a9c66",
+        "outcomeInventory": "bd4f8a9ef37538b09582c316837dae05b1bc682cf6cb5f6df0fee4a2621929b0"
+      }
+    },
+    "producer": {
+      "schema": "cf-v2-compendium-producer-authority/v2",
+      "sha256": "0df5435f66dbd057b15690404aeb38a4dcfb2d09c2bb344a53288acac237535e",
+      "inputs": {
+        "index": {
+          "relativePath": "index.html",
+          "sha256": "69499b34db5aa83e1c21e0d7cab965bcc5847ddaba3564a9424a181c77f1da8e"
+        },
+        "owner": {
+          "relativePath": "assets/tame-greeting-audio-CXTlH-t_.js",
+          "sha256": "d9344cdb8bf52a904f4bbd6461771e22116a8c2d6ae06b88395b6825aff60fdd"
+        },
+        "worker": {
+          "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+          "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+        },
+        "painter": {
+          "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+          "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+        },
+        "serviceWorker": {
+          "relativePath": "service-worker.js",
+          "sha256": "72f3e0565adf73a119ac30019ea5a2755748f4c9ef275e8293edf24c19a88448"
+        }
+      }
+    },
+    "measurementBudgetMatches": true,
+    "measurementBudgetMismatches": [],
+    "producerBudgetMatches": false,
+    "producerBudgetMismatches": [
+      "inputs.index.sha256",
+      "inputs.serviceWorker.sha256",
+      "sha256"
+    ],
+    "fixedRulerAuthority": {
+      "schema": "cf-v2-compendium-fixed-ruler-authority/v1",
+      "calibrationStatus": "sealed-exact-input",
+      "ceilingScope": "numeric-ceilings-only",
+      "measurementAuthoritySha256": "cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78",
+      "producerAuthoritySha256": "d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271",
+      "currentCertification": "fresh-exact-producer-required"
+    },
+    "numericCeilingsSha256": "a5f05be521eb127f3e74306bd69538bdb6d3b564875ed921f2c7f3c0904def83"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2028254129,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 16,
+    "body": 13,
+    "loco": 5,
+    "trait": 8,
+    "size": 5,
+    "diet": 0,
+    "head": 9,
+    "limbs": 5,
+    "skin": 8,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 6,
+    "habitat": 2,
+    "detail": 2,
+    "accent": 2,
+    "temper": 0,
+    "sense": 8,
+    "repro": 2,
+    "life": 5,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Chiton"
+  },
+  "observation": null
+}

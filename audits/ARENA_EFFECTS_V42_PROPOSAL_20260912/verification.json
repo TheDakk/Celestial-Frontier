@@ -1,0 +1,11 @@
+{
+  "status": "PROPOSED_NOT_APPLIED",
+  "kitSha256": "7abf7834fab0056cadc673d1df4f3f614538cb279089236c5ed1951344d7a457",
+  "proposedPatchSha256": "3356ee3091589bd9d7d537f2a43f9ebaf0136d72e36fba73e59b8f4859cad48d",
+  "existingFencedBlocksUnchanged": 19,
+  "insertions": 2,
+  "reviewSha256": "d837b16c06d28d567db003d54114fcc812eb449e6fe585a5bed6952706570ae2",
+  "reviewBytes": 21402,
+  "painting": false,
+  "implementation": false
+}

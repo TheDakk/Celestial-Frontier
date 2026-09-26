@@ -1,0 +1,75 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "8c3dd500768f444c6d64df3f47b891ab903148becbf543ce8d4fccb5760ee49f",
+  "cutoutSha256": "1c44d54e241b2444ce37950f0b3ce7ebfe9d9f4cd550a77cdaf0c20924849e43",
+  "labelsFile": "labels.png",
+  "labelsSha256": "409cf98278de302eaa3fcca28cd88f85e92e7d4051cfdf44898547e953b4fa9a",
+  "parts": [
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "tail-tip",
+      "joint": "seg9",
+      "layer": "near"
+    },
+    {
+      "id": "coil-right-turn",
+      "joint": "seg5",
+      "layer": "near"
+    },
+    {
+      "id": "coil-front",
+      "joint": "seg6",
+      "layer": "near"
+    },
+    {
+      "id": "coil-left-turn",
+      "joint": "seg7",
+      "layer": "near"
+    },
+    {
+      "id": "coil-middle-crossing",
+      "joint": "seg4",
+      "layer": "near"
+    },
+    {
+      "id": "coil-crest",
+      "joint": "seg3",
+      "layer": "near"
+    },
+    {
+      "id": "neck-upper-curve",
+      "joint": "seg0",
+      "layer": "near"
+    },
+    {
+      "id": "neck-lower-curve",
+      "joint": "seg1",
+      "layer": "far"
+    },
+    {
+      "id": "coil-rear-neck-link",
+      "joint": "seg2",
+      "layer": "far"
+    },
+    {
+      "id": "coil-rear-left",
+      "joint": "seg8",
+      "layer": "far"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "afa5cbc2224af1e032669a57e5b0550bb274212dc8443cd1776f30a067aac3ea"
+}

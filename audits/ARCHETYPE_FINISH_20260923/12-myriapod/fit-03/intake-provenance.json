@@ -1,0 +1,85 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "REFUSED",
+  "sourceHead": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
+  "helperSha256": "31d8554a0d5550faf20707297cb4696cbed00ae1dc15e502b7017a284d2b42cf",
+  "regionalHelperSha256": "25a65459ce82a31c810bb2500778dcd975c67981b66e3f58b83c0fe72179501e",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-05/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-05/authoring.json",
+      "sha256": "e10be4630709bd13f175ea0089804352f2d9a7a5c29cbba5854c3263c6df35ea"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-05/subject-source.json",
+      "sha256": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-05/presence.json",
+      "sha256": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 40,
+    "interiorStep": 80,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [],
+    "regionalDiffusionIterations": 32,
+    "refinements": [
+      {
+        "x": 205,
+        "y": 570,
+        "width": 885,
+        "height": 90,
+        "boundaryStep": 24,
+        "interiorStep": 56
+      },
+      {
+        "x": 200,
+        "y": 680,
+        "width": 895,
+        "height": 120,
+        "boundaryStep": 24,
+        "interiorStep": 56
+      }
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-05/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-05/authoring.json",
+      "sha256": "e10be4630709bd13f175ea0089804352f2d9a7a5c29cbba5854c3263c6df35ea",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-05/subject-source.json",
+      "sha256": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-05/presence.json",
+      "sha256": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c",
+      "unchanged": true
+    }
+  ],
+  "refusal": {
+    "stage": "regional-influences",
+    "error": "Error: Regional authoring: region conflicts with preserved pin at vertex 69 (leg2-near-knee-bend-observed-paint)\n    at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-influences.mjs:7:40)\n    at compileRegionalInfluences (file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-influences.mjs:74:7)\n    at async file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/intake-refined-03.mjs:136:18"
+  }
+}

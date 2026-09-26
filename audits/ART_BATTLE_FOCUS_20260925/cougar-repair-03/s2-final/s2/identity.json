@@ -1,0 +1,62 @@
+[
+  {
+    "subject": "crab",
+    "receiptIdentical": true,
+    "samplesIdentical": true,
+    "receiptSha256": "ee3f133ed6137a12ea21fa5c2f318c3c74d9e8117544bacd58b2dc8fb72dc565",
+    "baselineReceiptSha256": "ee3f133ed6137a12ea21fa5c2f318c3c74d9e8117544bacd58b2dc8fb72dc565",
+    "samplesSha256": "e1e05a0410f90bd1dd9eacac0511bf7f59d9dca072c3f92b15ba8ca837806da4",
+    "baselineSamplesSha256": "e1e05a0410f90bd1dd9eacac0511bf7f59d9dca072c3f92b15ba8ca837806da4",
+    "sampleCount": 2053
+  },
+  {
+    "subject": "coconut-crab",
+    "receiptIdentical": true,
+    "samplesIdentical": true,
+    "receiptSha256": "2ce886550c98d4586e3a446dd1576f6552e6f58ca1b7b37d0b5656ea1c06debc",
+    "baselineReceiptSha256": "2ce886550c98d4586e3a446dd1576f6552e6f58ca1b7b37d0b5656ea1c06debc",
+    "samplesSha256": "baf6d1b6915b03f62e9ad187674ba85fd4499d8ddab9a9bb7b0b60016a32c2c4",
+    "baselineSamplesSha256": "baf6d1b6915b03f62e9ad187674ba85fd4499d8ddab9a9bb7b0b60016a32c2c4",
+    "sampleCount": 2053
+  },
+  {
+    "subject": "freshwater-crab",
+    "receiptIdentical": true,
+    "samplesIdentical": true,
+    "receiptSha256": "9da3890b44693cfc1a3977415c408c4b3e5fba8287af206d3fb8492c0c5376a9",
+    "baselineReceiptSha256": "9da3890b44693cfc1a3977415c408c4b3e5fba8287af206d3fb8492c0c5376a9",
+    "samplesSha256": "5c13f4a28830a13ac1e6d201d9cd5edf4319ba67201be1406983fe12605620f0",
+    "baselineSamplesSha256": "5c13f4a28830a13ac1e6d201d9cd5edf4319ba67201be1406983fe12605620f0",
+    "sampleCount": 2053
+  },
+  {
+    "subject": "mud-crab",
+    "receiptIdentical": true,
+    "samplesIdentical": true,
+    "receiptSha256": "6e1b2ec0792f524e730e7624e0a4112b1741f747645625629175c50c6e5cb9aa",
+    "baselineReceiptSha256": "6e1b2ec0792f524e730e7624e0a4112b1741f747645625629175c50c6e5cb9aa",
+    "samplesSha256": "a0ab10fcd076a75d2a718032213a2fb7e326eccbf6a2ce96760f923fe57a334e",
+    "baselineSamplesSha256": "a0ab10fcd076a75d2a718032213a2fb7e326eccbf6a2ce96760f923fe57a334e",
+    "sampleCount": 2053
+  },
+  {
+    "subject": "vent-crab",
+    "receiptIdentical": true,
+    "samplesIdentical": true,
+    "receiptSha256": "9b8278daf85ce4902c6e74c544a61665f0550a09d3ca6bd8cbcd609afc051a4e",
+    "baselineReceiptSha256": "9b8278daf85ce4902c6e74c544a61665f0550a09d3ca6bd8cbcd609afc051a4e",
+    "samplesSha256": "bf7cc7e3a0e8e685f5af9ec1b82fab2cbfb7ea3c9c1a044ec833d45a97be60df",
+    "baselineSamplesSha256": "bf7cc7e3a0e8e685f5af9ec1b82fab2cbfb7ea3c9c1a044ec833d45a97be60df",
+    "sampleCount": 2053
+  },
+  {
+    "subject": "civet",
+    "receiptIdentical": true,
+    "samplesIdentical": true,
+    "receiptSha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396",
+    "baselineReceiptSha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396",
+    "samplesSha256": "9158aaa04645069cc3a7cfde3a3b0afc32a162ea708985e75d46a5d9f9775e1e",
+    "baselineSamplesSha256": "9158aaa04645069cc3a7cfde3a3b0afc32a162ea708985e75d46a5d9f9775e1e",
+    "sampleCount": 3021
+  }
+]

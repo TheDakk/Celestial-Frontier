@@ -1,0 +1,12 @@
+{
+  "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/18-tapir/packet",
+  "candidate": "audits/G1_TAIL_REPAIR_20260926/18-tapir-packet",
+  "masterIdentical": true,
+  "landmarksIdentical": true,
+  "changes": {
+    "tail3 -> tail2": 294,
+    "tail3 -> pelvis": 165,
+    "tail3 -> spine": 226,
+    "spine -> tail3": 1841
+  }
+}

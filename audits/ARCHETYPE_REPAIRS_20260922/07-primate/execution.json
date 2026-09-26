@@ -1,0 +1,39 @@
+{
+  "schema": "cf.archetype-execution/v1",
+  "runId": "20260922-chimpanzee-repair-02",
+  "sourceHead": "2283e5388793a31b7fbc0d68897492adb6beadd1",
+  "scope": "Diagnostic authored archetype repair; not clean-source production certification",
+  "commands": [
+    {
+      "command": "node audits/ARCHETYPE_SPRINT_20260922/intake.mjs audits/ARCHETYPE_REPAIRS_20260922/07-primate audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02",
+      "exitCode": 0,
+      "log": "intake-02.log"
+    },
+    {
+      "command": "node audits/ARCHETYPE_SPRINT_20260922/static-runner.mjs audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02 audits/ARCHETYPE_REPAIRS_20260922/07-primate/static-02.json",
+      "exitCode": 1,
+      "log": "static-02.log",
+      "toolCompletionReceipt": "d45f2a"
+    },
+    {
+      "command": "node audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01.mjs",
+      "scope": "Original three contact failures only; no complete battery"
+    },
+    {
+      "command": "node audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02.mjs",
+      "scope": "Changed fit three first failures only; no complete battery"
+    }
+  ],
+  "generationReceipt": "candidate-03/generation-receipt.json",
+  "native": {
+    "executed": false,
+    "reason": "Changed fit refused static admission; second painting has extra hind leg."
+  },
+  "sheets": [
+    "review-sheet-02.png",
+    "candidate-03/review-sheet.png"
+  ],
+  "sheetInspection": "Both inspected by parent after rendering; original fit and rejected repaint authorities separated.",
+  "sourceVerification": "source-check-02.json",
+  "protectedChanges": false
+}

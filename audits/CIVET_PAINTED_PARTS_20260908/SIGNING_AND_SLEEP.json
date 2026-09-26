@@ -1,0 +1,58 @@
+{
+  "schema": "cf-signing-and-sleep-diagnostic/v1",
+  "checkedAt": "2026-09-09T01:11:50.005295+00:00",
+  "priorCaffeinate": {
+    "pid": 93550,
+    "args": [
+      "-i"
+    ],
+    "preventIdleSystemSleep": true,
+    "preventIdleDisplaySleep": false
+  },
+  "newCaffeinate": {
+    "pid": 16793,
+    "execSession": 16947,
+    "args": [
+      "-d",
+      "-t",
+      "7346"
+    ],
+    "expiresNoLaterThan": "2026-09-09T03:11:15Z",
+    "preventIdleDisplaySleepVerified": true
+  },
+  "powerSettings": {
+    "ACDisplayIdleMinutes": 10,
+    "batteryDisplayIdleMinutes": 5,
+    "changed": false
+  },
+  "recentPowerEvidence": {
+    "window": "2026-09-08 20:00 to 21:08 Eastern",
+    "matchingSleepWakeEvents": 0,
+    "displayOnEvent": "2026-09-08 21:04:38 -0400",
+    "limitation": "Filtered power log does not establish screen-lock state or the cause of earlier signer failures."
+  },
+  "userReport": "1Password is not locked",
+  "signer": "/Applications/1Password.app/Contents/MacOS/op-ssh-sign",
+  "gitFormat": "ssh",
+  "signingEnabled": true,
+  "retry": {
+    "command": "git commit -q -S -m Improve painted Civet water contact and articulated motion study",
+    "terminalPTY": true,
+    "exit": 0,
+    "commit": "afee1924aac880bed4360deae2a26d081ca18d45",
+    "files": 185
+  },
+  "verification": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": "Good \"git\" signature for local-review with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n",
+    "trust": "One-command temporary allowed-signers file from existing configured public key; removed afterward. No persistent configuration change."
+  },
+  "causality": "Successful retry after user-unlocked confirmation, display assertion and PTY; does not isolate which change mattered. Earlier buffer failures remain preserved.",
+  "sources": [
+    "https://www.1password.dev/ssh/agent/security",
+    "https://www.1password.dev/ssh/git-commit-signing"
+  ],
+  "hostedActions": 0,
+  "scheduledPromptsCreated": 0
+}

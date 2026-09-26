@@ -1,0 +1,383 @@
+{
+  "name": "Dragonfly",
+  "family": "insect",
+  "species": {
+    "name": "Dragonfly",
+    "aspect": 3.2,
+    "headFrac": 0.16,
+    "eyes": "prominent",
+    "posture": "flying",
+    "mustRead": [
+      "two pairs of long transparent net-veined wings held out flat",
+      "huge globe compound eyes filling the head",
+      "long slender rod abdomen"
+    ],
+    "note": "Wings stay spread at rest, never folded back over the body like a damselfly's."
+  },
+  "genome": {
+    "seed": 862555894,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 11,
+    "body": 1,
+    "loco": 7,
+    "trait": 15,
+    "size": 1,
+    "diet": 0,
+    "head": 2,
+    "limbs": 1,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 3,
+    "behavior": 5,
+    "habitat": 7,
+    "detail": 5,
+    "accent": 14,
+    "temper": 9,
+    "sense": 3,
+    "repro": 4,
+    "life": 0,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Dragonfly"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Dragonfly\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"862555894\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "index": 192,
+  "contract": {
+    "id": "insect",
+    "version": 1,
+    "clipSetId": "insect-v1",
+    "graph": [
+      [
+        "thorax",
+        "root"
+      ],
+      [
+        "head",
+        "thorax"
+      ],
+      [
+        "mandible",
+        "head"
+      ],
+      [
+        "abdomen",
+        "thorax"
+      ],
+      [
+        "legFrontFarKnee",
+        "thorax"
+      ],
+      [
+        "legFrontFarFoot",
+        "legFrontFarKnee"
+      ],
+      [
+        "legFrontNearKnee",
+        "thorax"
+      ],
+      [
+        "legFrontNearFoot",
+        "legFrontNearKnee"
+      ],
+      [
+        "legMidFarKnee",
+        "thorax"
+      ],
+      [
+        "legMidFarFoot",
+        "legMidFarKnee"
+      ],
+      [
+        "legMidNearKnee",
+        "thorax"
+      ],
+      [
+        "legMidNearFoot",
+        "legMidNearKnee"
+      ],
+      [
+        "legHindFarKnee",
+        "thorax"
+      ],
+      [
+        "legHindFarFoot",
+        "legHindFarKnee"
+      ],
+      [
+        "legHindNearKnee",
+        "thorax"
+      ],
+      [
+        "legHindNearFoot",
+        "legHindNearKnee"
+      ],
+      [
+        "antennaFar",
+        "head"
+      ],
+      [
+        "antennaNear",
+        "head"
+      ],
+      [
+        "wingFar",
+        "thorax"
+      ],
+      [
+        "wingNear",
+        "thorax"
+      ]
+    ],
+    "bodyAxis": [
+      "abdomen",
+      "head"
+    ],
+    "joints": [
+      "root",
+      "thorax",
+      "head",
+      "mandible",
+      "abdomen",
+      "legFrontFarKnee",
+      "legFrontFarFoot",
+      "legFrontNearKnee",
+      "legFrontNearFoot",
+      "legMidFarKnee",
+      "legMidFarFoot",
+      "legMidNearKnee",
+      "legMidNearFoot",
+      "legHindFarKnee",
+      "legHindFarFoot",
+      "legHindNearKnee",
+      "legHindNearFoot",
+      "antennaFar",
+      "antennaNear",
+      "wingFar",
+      "wingNear"
+    ],
+    "legs": [
+      "legFrontFar",
+      "legFrontNear",
+      "legMidFar",
+      "legMidNear",
+      "legHindFar",
+      "legHindNear"
+    ],
+    "limitsDeg": {
+      "root": {
+        "min": -25,
+        "max": 25
+      },
+      "thorax": {
+        "min": -15,
+        "max": 15
+      },
+      "head": {
+        "min": -35,
+        "max": 35
+      },
+      "mandible": {
+        "min": -40,
+        "max": 5
+      },
+      "abdomen": {
+        "min": -35,
+        "max": 50
+      },
+      "legFrontFarKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "legFrontFarFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "legFrontNearKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "legFrontNearFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "legMidFarKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "legMidFarFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "legMidNearKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "legMidNearFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "legHindFarKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "legHindFarFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "legHindNearKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "legHindNearFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "antennaFar": {
+        "min": -50,
+        "max": 50
+      },
+      "antennaNear": {
+        "min": -50,
+        "max": 50
+      },
+      "wingFar": {
+        "min": -85,
+        "max": 85
+      },
+      "wingNear": {
+        "min": -85,
+        "max": 85
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.08,
+        "max": 0.85,
+        "kind": "distance",
+        "axis": [
+          "abdomen",
+          "head"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "leg/body:legFrontFar",
+        "min": 0.1,
+        "max": 2.5,
+        "kind": "ratio",
+        "bones": [
+          "legFrontFarKnee",
+          "legFrontFarFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:legFrontNear",
+        "min": 0.1,
+        "max": 2.5,
+        "kind": "ratio",
+        "bones": [
+          "legFrontNearKnee",
+          "legFrontNearFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:legMidFar",
+        "min": 0.1,
+        "max": 2.5,
+        "kind": "ratio",
+        "bones": [
+          "legMidFarKnee",
+          "legMidFarFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:legMidNear",
+        "min": 0.1,
+        "max": 2.5,
+        "kind": "ratio",
+        "bones": [
+          "legMidNearKnee",
+          "legMidNearFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:legHindFar",
+        "min": 0.1,
+        "max": 2.5,
+        "kind": "ratio",
+        "bones": [
+          "legHindFarKnee",
+          "legHindFarFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:legHindNear",
+        "min": 0.1,
+        "max": 2.5,
+        "kind": "ratio",
+        "bones": [
+          "legHindNearKnee",
+          "legHindNearFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "head"
+        ]
+      }
+    ],
+    "contactStance": {
+      "default": "all",
+      "actions": {
+        "cast": "hind",
+        "victory": "hind",
+        "dodge": "none"
+      },
+      "travel": {
+        "hit": "source-steps",
+        "tame": "source-steps"
+      }
+    }
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  }
+}

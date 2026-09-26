@@ -1,0 +1,225 @@
+{
+  "schema": "cf.local-ai-runtime-pack-inventory.v1",
+  "sourcePinsSha256": "e8e46745d13041b01b80fbffc8e16d489f9a0962914957b0783b35a559a90514",
+  "files": [
+    {
+      "path": "__local_ai/RUNTIME_NOTICES.md",
+      "bytes": 1391,
+      "sha256": "16143f95cb4cbdff11a691ee9e4a59622ef3ce098b2712d9519051343116dff5",
+      "kind": "generated"
+    },
+    {
+      "path": "__local_ai/denoiser-shapes.mjs",
+      "bytes": 2370,
+      "sha256": "c66850a4d3564e6336a2d5891152c2120d2847dcef87782d5197aae102e8f6d6",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/deployment.json",
+      "bytes": 1593,
+      "sha256": "cf6d60fb1e4a902367a2214bf2ab663272fe3b6bb4b579948e3f786c701067d3",
+      "kind": "generated"
+    },
+    {
+      "path": "__local_ai/gpu-profile.mjs",
+      "bytes": 9725,
+      "sha256": "4a02596d6a885a88b894c4a285bd93be07437e856107c34489231c7191d2dbf1",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/license-source-provenance.json",
+      "bytes": 2977,
+      "sha256": "4391607aa2dbb1b2759d6459e43e7611b2de925a61e5a322b8ee4c92afe8f2a6",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "bytes": 98937,
+      "sha256": "1c4a848f86156201c033d6cd08c4cf81ae1088552acec3367f31ef086edf5af0",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "bytes": 51407,
+      "sha256": "5d25483158d53d8f34d0e9c06a654d56c8dca4ebdf370ea0982ef11315a00e0e",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "bytes": 25749873,
+      "sha256": "503d17cb7411b79781b9fad1cf0978f03cf06b050c7d399c730e914f473bf549",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "bytes": 66348,
+      "sha256": "08272eb8dadd249a0eaa53e19f4e5b5d01bc8a121240719db29093cfb776bc27",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/notices/THIRD_PARTY_NOTICES.md",
+      "bytes": 4151,
+      "sha256": "2feae1e66d3a1ce59cb2473e79e230c5dc4535f311adb6e23a45c87db9ee19ce",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/notices/diffusers-040c7cd-LICENSE",
+      "bytes": 11357,
+      "sha256": "f9e2070c247517b1ddf65f7b11b393484a18da91a958fd18a97bd0f241c3125c",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/notices/licenses/flux2-klein-4b-LICENSE.md",
+      "bytes": 9584,
+      "sha256": "ca02bc51900ab07789d1b70283329e7137f5af98f5161c23a1c81fc38a4af1fe",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/notices/licenses/onnxruntime-1.29.0-LICENSE",
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/notices/licenses/onnxruntime-web-1.29.0-installed-banner.txt",
+      "bytes": 132,
+      "sha256": "188cf2eb1cabf1a851856f9bf347885455ce47a130d42a25b675475351c0cbc0",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/notices/licenses/provenance.json",
+      "bytes": 4012,
+      "sha256": "c971bc7d7f484f21a9aad2563389a098cca780f3ba72bf3c024c0025213fe35c",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/notices/licenses/qwen3-4b-LICENSE",
+      "bytes": 11343,
+      "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/notices/licenses/tokenizers-0.2.0-LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/notices/onnxruntime-2e2543f-ThirdPartyNotices.txt",
+      "bytes": 336906,
+      "sha256": "53d3fa5821ac016ac24dd35775c996efec86e2ae0841e9a3a5e146c0ae916845",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/pipeline-math.mjs",
+      "bytes": 10225,
+      "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/reference.png",
+      "bytes": 1969238,
+      "sha256": "0b4584f76ce18f42e38e0c28e9a42758280d0c0de390d45371422a7e4c91fe57",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/runtime.json",
+      "bytes": 1583,
+      "sha256": "54839aad15911440a5d245a1264be925d8788ff5569136e5334b57fcba227c4d",
+      "kind": "generated"
+    },
+    {
+      "path": "__local_ai/source-contract.md",
+      "bytes": 18988,
+      "sha256": "d0da10bfacd809fc09191b495224a20de29f8d3a5efecb2f502b7ebf4ca540cf",
+      "kind": "copied"
+    },
+    {
+      "path": "__local_ai/stage-worker.mjs",
+      "bytes": 11212,
+      "sha256": "337aaea3f7f9804a4409887367b922ed68e02a8ee3dc7f0c859c913dfa52d8ac",
+      "kind": "copied"
+    }
+  ],
+  "fileCount": 23,
+  "payloadBytes": 28385782,
+  "modelWeightsIncluded": false,
+  "modelSource": "verified-opfs-only",
+  "closure": [
+    {
+      "from": "__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "to": "__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "kind": "reviewed-lazy-wasm"
+    },
+    {
+      "from": "__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "to": "module",
+      "kind": "pinned-node-only-branch-not-browser-runtime"
+    },
+    {
+      "from": "__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "to": "worker_threads",
+      "kind": "pinned-node-only-branch-not-browser-runtime"
+    },
+    {
+      "from": "__local_ai/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "to": "__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "kind": "reviewed-computed-browser-import"
+    },
+    {
+      "from": "__local_ai/stage-worker.mjs",
+      "to": "__local_ai/denoiser-shapes.mjs",
+      "kind": "static"
+    },
+    {
+      "from": "__local_ai/stage-worker.mjs",
+      "to": "__local_ai/gpu-profile.mjs",
+      "kind": "static"
+    },
+    {
+      "from": "__local_ai/stage-worker.mjs",
+      "to": "__local_ai/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "kind": "static"
+    },
+    {
+      "from": "__local_ai/stage-worker.mjs",
+      "to": "__local_ai/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "kind": "static"
+    },
+    {
+      "from": "__local_ai/stage-worker.mjs",
+      "to": "__local_ai/pipeline-math.mjs",
+      "kind": "static"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "onnxruntime-web",
+      "version": "1.29.0",
+      "integrity": "sha512-LuQlpX6MFLJZu756erwUeb1mNfoJGbs1kzDwJGNlf5RvfYMdqhcY3vNpDPK40CUV2HoWTkIj+uS0o36GFHjeYw==",
+      "packageJson": "tools/local-image-generation/node_modules/onnxruntime-web/package.json"
+    },
+    {
+      "name": "onnxruntime-common",
+      "version": "1.29.0",
+      "integrity": "sha512-/F63/e2VJoaVXGGNu6S5QH7jivBThGO95OzAVXXQ8hTta/b1QxI8udHa6cI3+3mAb5WWIIaMMwfZw01oivjJ1g==",
+      "packageJson": "tools/local-image-generation/node_modules/onnxruntime-common/package.json"
+    },
+    {
+      "name": "@huggingface/tokenizers",
+      "version": "0.2.0",
+      "integrity": "sha512-LidMHe1FpcSYH4vcSjXooda34pC0M8m1gmDOv7SQi6Iv+ib1zX7J3sHBCC9/3FPCkn2k1b55FneVqMRxrr99pg==",
+      "packageJson": "tools/local-image-generation/node_modules/@huggingface/tokenizers/package.json"
+    }
+  ],
+  "distributionQualified": false,
+  "qualityAccepted": false,
+  "deviceQualified": false,
+  "budget": {
+    "shippedPackLimitBytes": 134217728,
+    "retainedUpdateLimitBytes": 268435456,
+    "manifestBytesExcludedFromPayload": true,
+    "combinedAppAdmissionQualified": false,
+    "retainedUpdateQualified": false
+  }
+}

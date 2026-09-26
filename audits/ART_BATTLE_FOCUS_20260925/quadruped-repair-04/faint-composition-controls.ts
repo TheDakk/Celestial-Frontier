@@ -1,0 +1,13 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';
+import {compileBodyCard} from '../../../port/v2/apps/game/src/motion/body-card.js';
+import {buildTurnPlan,sampleTurn,sampleClip} from '../../../port/v2/apps/game/src/battle2/choreography.js';
+const r=JSON.parse(fs.readFileSync('/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/record.json','utf8')),card=compileBodyCard(r,r.genome);
+const combatant=(side:'left'|'right')=>({side,mass:card.massClass.multiplier,card,seed:r.identity.seed,label:'Wall Lizard'});
+const input={seed:5,attacker:combatant('left'),target:combatant('right'),delivery:'melee' as const,theme:'wild',outcome:'hit' as const,damage:9,effect:null,arena:{groundLineY:.8,stands:{left:{x:.25,y:.8},right:{x:.75,y:.8}}},readyMs:600,commandMs:300};
+const plan=buildTurnPlan({...input,targetFaints:true}),reaction=plan.clips.target.reaction!,duration=reaction.source==='timeline'?reaction.timeline.durationMs:reaction.clip.durationMs;
+const difference=(a:any,b:any)=>Math.max(0,...[...new Set([...Object.keys(a),...Object.keys(b)])].flatMap(j=>['rotation','dx','dy'].map(k=>Math.abs((a[j]?.[k]??0)-(b[j]?.[k]??0)))));
+const hold=sampleClip(reaction,duration),terminal=[0,75,150,350,650,950].map(extra=>({extra,error:difference(sampleTurn(plan,plan.beats.reactionStart+duration+extra).target.pose,hold)}));
+const at=plan.beats.reactionStart,startJump=difference(sampleTurn(plan,at-.001).target.pose,sampleTurn(plan,at+.001).target.pose),endJump=difference(sampleTurn(plan,at+duration-.001).target.pose,sampleTurn(plan,at+duration+.001).target.pose);
+const ordinary=buildTurnPlan({...input,targetFaints:false}),ordinarySamples=Array.from({length:121},(_,i)=>sampleTurn(ordinary,ordinary.beats.end*i/120));
+const expected=process.argv[3];if(expected==='proposal'){assert(terminal.every(x=>x.error===0),'faint must hold exact final pose across idle clocks');assert(startJump<1e-4&&endJump<1e-4,'no discontinuous idle cut');}else assert(terminal.some(x=>x.error>0),'old behavior must reproduce the moving faint hold');
+fs.writeFileSync(process.argv[2],JSON.stringify({scope:'Actual choreography proposal control; original must retain moving-hold defect, proposed must stop it continuously',expected,terminal,startJump,endJump,ordinarySamples},null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({expected,terminal,startJump,endJump}));

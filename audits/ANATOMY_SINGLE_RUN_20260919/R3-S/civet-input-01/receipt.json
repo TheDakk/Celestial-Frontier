@@ -1,0 +1,203 @@
+{
+  "status": "PREPARED_NATIVE_REST_PENDING",
+  "schema": "cf.observed-surface-split/v1",
+  "mode": "preserve-existing-field-contact-locks",
+  "releasedContactPins": [
+    {
+      "vertex": 446,
+      "contactOwners": [
+        "foreNearAnkle"
+      ],
+      "weights": [
+        [
+          "foreNearPaw",
+          1
+        ]
+      ]
+    },
+    {
+      "vertex": 443,
+      "contactOwners": [
+        "foreNearAnkle"
+      ],
+      "weights": [
+        [
+          "foreNearPaw",
+          1
+        ]
+      ]
+    },
+    {
+      "vertex": 775,
+      "contactOwners": [
+        "foreFarAnkle"
+      ],
+      "weights": [
+        [
+          "foreFarPaw",
+          1
+        ]
+      ]
+    },
+    {
+      "vertex": 780,
+      "contactOwners": [
+        "foreFarAnkle"
+      ],
+      "weights": [
+        [
+          "foreFarPaw",
+          1
+        ]
+      ]
+    },
+    {
+      "vertex": 997,
+      "contactOwners": [
+        "hindNearAnkle"
+      ],
+      "weights": [
+        [
+          "hindNearPaw",
+          1
+        ]
+      ]
+    },
+    {
+      "vertex": 975,
+      "contactOwners": [
+        "hindNearAnkle"
+      ],
+      "weights": [
+        [
+          "hindNearPaw",
+          1
+        ]
+      ]
+    },
+    {
+      "vertex": 1313,
+      "contactOwners": [
+        "hindFarAnkle"
+      ],
+      "weights": [
+        [
+          "hindFarPaw",
+          1
+        ]
+      ]
+    },
+    {
+      "vertex": 1319,
+      "contactOwners": [
+        "hindFarAnkle"
+      ],
+      "weights": [
+        [
+          "hindFarPaw",
+          1
+        ]
+      ]
+    },
+    {
+      "vertex": 1316,
+      "contactOwners": [
+        "hindFarAnkle"
+      ],
+      "weights": [
+        [
+          "hindFarPaw",
+          1
+        ]
+      ]
+    }
+  ],
+  "contactPins": [
+    {
+      "joint": "hindFarAnkle",
+      "part": "hind-far-lower",
+      "vertex": 71,
+      "distancePx": 6.680793366060668,
+      "supports": [
+        1318
+      ]
+    },
+    {
+      "joint": "foreFarAnkle",
+      "part": "fore-far-lower",
+      "vertex": 63,
+      "distancePx": 4.881575155623435,
+      "supports": [
+        764,
+        765
+      ]
+    },
+    {
+      "joint": "hindNearAnkle",
+      "part": "hind-near-lower",
+      "vertex": 101,
+      "distancePx": 6.542441134622462,
+      "supports": [
+        972,
+        973
+      ]
+    },
+    {
+      "joint": "foreNearAnkle",
+      "part": "fore-near-lower",
+      "vertex": 112,
+      "distancePx": 13.477843587022202,
+      "supports": [
+        444,
+        445
+      ]
+    }
+  ],
+  "sourceBindingHash": "4f48bae7dfc6fb4da33133c06548ce9311d9ef4ed9241f1e3c95f80ae7c337f0",
+  "sourceVertices": 2532,
+  "vertices": 2532,
+  "pins": 246,
+  "sourceCoordinateChanges": 0,
+  "topologyChanges": 0,
+  "nonContactWeightChanges": 0,
+  "changedWeights": [],
+  "newPins": [],
+  "atlasSha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79",
+  "atlasHashUnchanged": true,
+  "restChanged": null,
+  "restProof": "Pending signed native rest-only gate; source geometry/interpolation unchanged is not a pixel claim",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/record.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/binding.json",
+      "sha256": "9cacbaca6cab18e3fde0d1ecb42ea899e6c352df19a551324808ede34dbf11f1"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/parts/manifest.json",
+      "sha256": "df34c15b5f86540a00d3aef900a44338f2b1ed94ac1d61cc0624dfd72833053a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/parts/atlas/civet.png",
+      "sha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/record.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/parts/manifest.json",
+      "sha256": "df34c15b5f86540a00d3aef900a44338f2b1ed94ac1d61cc0624dfd72833053a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/parts/keyed.png",
+      "sha256": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/parts/atlas/civet.png",
+      "sha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79"
+    }
+  ]
+}

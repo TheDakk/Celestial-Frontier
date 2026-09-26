@@ -1,0 +1,14 @@
+{
+ "id": "03-king-snake",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a front appendage of 12.4% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a rear appendage of 11.4% paint that no reference appendage lands on",
+  "missing-anatomy: part head (head) covers 7% paint (reference 4%)",
+  "missing-anatomy: part body-segment-7 (seg7) covers 7% paint (reference 7%)",
+  "missing-anatomy: part body-segment-8 (seg8) covers 4% paint (reference 5%)",
+  "missing-anatomy: part body-segment-9 (seg9) covers 2% paint (reference 2%)"
+ ],
+ "semanticPresence": null
+}

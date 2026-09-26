@@ -1,0 +1,319 @@
+{
+  "output": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/node-cost-breakdown-01.json",
+  "status": "PASS",
+  "sourceFiles": 75,
+  "findings": [
+    {
+      "ms": 0,
+      "side": "left",
+      "timing": {
+        "poseMs": 0.2325840000000028,
+        "fieldMs": 0.5751250000000141,
+        "arapMs": 2.6507080000000087,
+        "forwardMs": 0.014707999999984622,
+        "forwardCalls": 1,
+        "activeMs": 0,
+        "activeCalls": 0,
+        "arapOtherMs": 2.636000000000024,
+        "paintPartsMs": 0.32058399999999665,
+        "rigidParentMs": 0.011666999999988548,
+        "shapeAssertionsMs": 0.4310000000000116,
+        "publicationMs": 0.01229200000000219,
+        "paintTotalMs": 0.775542999999999,
+        "completePoseMs": 4.274624999999986
+      },
+      "queue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "size": 0
+      }
+    },
+    {
+      "ms": 0,
+      "side": "right",
+      "timing": {
+        "poseMs": 0.04154199999999264,
+        "fieldMs": 0.06333300000000008,
+        "arapMs": 2.141208000000006,
+        "forwardMs": 0.011332999999979165,
+        "forwardCalls": 1,
+        "activeMs": 0,
+        "activeCalls": 0,
+        "arapOtherMs": 2.129875000000027,
+        "paintPartsMs": 0.06295800000000895,
+        "rigidParentMs": 0.0005840000000034706,
+        "shapeAssertionsMs": 0.08341599999999971,
+        "publicationMs": 0.00637499999999136,
+        "paintTotalMs": 0.1533330000000035,
+        "completePoseMs": 2.4071250000000077
+      },
+      "queue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "size": 0
+      }
+    },
+    {
+      "ms": 1206,
+      "side": "left",
+      "timing": {
+        "poseMs": 0.03570799999999963,
+        "fieldMs": 0.055542000000002645,
+        "arapMs": 6.3974999999999795,
+        "forwardMs": 0.5703749999999843,
+        "forwardCalls": 1,
+        "activeMs": 4.5418750000000045,
+        "activeCalls": 1,
+        "arapOtherMs": 1.2852499999999907,
+        "paintPartsMs": 0.07945900000001416,
+        "rigidParentMs": 0.0008339999999975589,
+        "shapeAssertionsMs": 0.08137500000000841,
+        "publicationMs": 0.0059169999999824086,
+        "paintTotalMs": 0.16758500000000254,
+        "completePoseMs": 6.661124999999998
+      },
+      "queue": {
+        "visits": 14899,
+        "projections": 14899,
+        "stalled": false,
+        "size": 81
+      }
+    },
+    {
+      "ms": 1206,
+      "side": "right",
+      "timing": {
+        "poseMs": 0.03895800000000804,
+        "fieldMs": 0.057125000000013415,
+        "arapMs": 0.542207999999988,
+        "forwardMs": 0.013083000000023048,
+        "forwardCalls": 1,
+        "activeMs": 0,
+        "activeCalls": 0,
+        "arapOtherMs": 0.529124999999965,
+        "paintPartsMs": 0.03170800000000895,
+        "rigidParentMs": 0.00016700000000469117,
+        "shapeAssertionsMs": 0.08558400000001143,
+        "publicationMs": 0.002583000000015545,
+        "paintTotalMs": 0.12004200000004062,
+        "completePoseMs": 0.7604579999999999
+      },
+      "queue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "size": 0
+      }
+    },
+    {
+      "ms": 2333.2,
+      "side": "left",
+      "timing": {
+        "poseMs": 0.019958000000002585,
+        "fieldMs": 0.05145899999999415,
+        "arapMs": 1.6292919999999924,
+        "forwardMs": 0.5256249999999909,
+        "forwardCalls": 1,
+        "activeMs": 0.6010829999999885,
+        "activeCalls": 1,
+        "arapOtherMs": 0.502584000000013,
+        "paintPartsMs": 0.029250000000018872,
+        "rigidParentMs": 0.00016700000000469117,
+        "shapeAssertionsMs": 0.029458000000005313,
+        "publicationMs": 0.0015420000000005984,
+        "paintTotalMs": 0.060417000000029475,
+        "completePoseMs": 1.7626669999999933
+      },
+      "queue": {
+        "visits": 1284,
+        "projections": 1284,
+        "stalled": false,
+        "size": 62
+      }
+    },
+    {
+      "ms": 2333.2,
+      "side": "right",
+      "timing": {
+        "poseMs": 0.02845800000000054,
+        "fieldMs": 0.05449999999999022,
+        "arapMs": 0.4991250000000207,
+        "forwardMs": 0.01304099999998698,
+        "forwardCalls": 1,
+        "activeMs": 0,
+        "activeCalls": 0,
+        "arapOtherMs": 0.4860840000000337,
+        "paintPartsMs": 0.037749999999988404,
+        "rigidParentMs": 0.00016700000000469117,
+        "shapeAssertionsMs": 0.030957999999998265,
+        "publicationMs": 0.0017500000000154614,
+        "paintTotalMs": 0.07062500000000682,
+        "completePoseMs": 0.6543749999999875
+      },
+      "queue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "size": 0
+      }
+    },
+    {
+      "ms": 4466.666666666666,
+      "side": "left",
+      "timing": {
+        "poseMs": 0.01720800000001077,
+        "fieldMs": 0.0539579999999944,
+        "arapMs": 5.450874999999996,
+        "forwardMs": 0.5126669999999933,
+        "forwardCalls": 1,
+        "activeMs": 4.476124999999996,
+        "activeCalls": 1,
+        "arapOtherMs": 0.4620830000000069,
+        "paintPartsMs": 0.02954099999999471,
+        "rigidParentMs": 0.00012500000002546585,
+        "shapeAssertionsMs": 0.03162499999999113,
+        "publicationMs": 0.0016669999999976426,
+        "paintTotalMs": 0.06295800000000895,
+        "completePoseMs": 5.58616600000002
+      },
+      "queue": {
+        "visits": 14899,
+        "projections": 14899,
+        "stalled": false,
+        "size": 81
+      }
+    },
+    {
+      "ms": 4466.666666666666,
+      "side": "right",
+      "timing": {
+        "poseMs": 0.016166999999995824,
+        "fieldMs": 0.08483299999997485,
+        "arapMs": 0.5240420000000086,
+        "forwardMs": 0.009417000000013331,
+        "forwardCalls": 1,
+        "activeMs": 0,
+        "activeCalls": 0,
+        "arapOtherMs": 0.5146249999999952,
+        "paintPartsMs": 0.023957999999993262,
+        "rigidParentMs": 0.00012499999999704414,
+        "shapeAssertionsMs": 0.03012499999999818,
+        "publicationMs": 0.001416000000006079,
+        "paintTotalMs": 0.05562399999999457,
+        "completePoseMs": 0.6816249999999968
+      },
+      "queue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "size": 0
+      }
+    },
+    {
+      "ms": 8583,
+      "side": "left",
+      "timing": {
+        "poseMs": 0.01583299999998644,
+        "fieldMs": 0.09020899999998733,
+        "arapMs": 0.6765830000000221,
+        "forwardMs": 0.009457999999995081,
+        "forwardCalls": 1,
+        "activeMs": 0,
+        "activeCalls": 0,
+        "arapOtherMs": 0.6671250000000271,
+        "paintPartsMs": 0.03058299999997871,
+        "rigidParentMs": 0.0002920000000017353,
+        "shapeAssertionsMs": 0.0277499999999975,
+        "publicationMs": 0.001333000000016682,
+        "paintTotalMs": 0.05995799999999463,
+        "completePoseMs": 0.8435419999999851
+      },
+      "queue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "size": 0
+      }
+    },
+    {
+      "ms": 8583,
+      "side": "right",
+      "timing": {
+        "poseMs": 0.02137500000000614,
+        "fieldMs": 0.086749999999995,
+        "arapMs": 1.3017499999999984,
+        "forwardMs": 0.5843329999999867,
+        "forwardCalls": 1,
+        "activeMs": 0.18641600000000835,
+        "activeCalls": 1,
+        "arapOtherMs": 0.5310010000000034,
+        "paintPartsMs": 0.04479100000000358,
+        "rigidParentMs": 0.004666999999983545,
+        "shapeAssertionsMs": 0.03383299999998712,
+        "publicationMs": 0.0027919999999994616,
+        "paintTotalMs": 0.08608299999997371,
+        "completePoseMs": 1.499541999999991
+      },
+      "queue": {
+        "visits": 350,
+        "projections": 350,
+        "stalled": false,
+        "size": 71
+      }
+    },
+    {
+      "ms": 8783,
+      "side": "left",
+      "timing": {
+        "poseMs": 0.027625000000000455,
+        "fieldMs": 0.08424999999999727,
+        "arapMs": 1.3211670000000026,
+        "forwardMs": 0.5335000000000036,
+        "forwardCalls": 1,
+        "activeMs": 0.2627499999999827,
+        "activeCalls": 1,
+        "arapOtherMs": 0.5249170000000163,
+        "paintPartsMs": 0.027958999999981415,
+        "rigidParentMs": 0.00020800000001486296,
+        "shapeAssertionsMs": 0.03208399999999756,
+        "publicationMs": 0.002083999999996422,
+        "paintTotalMs": 0.06233499999999026,
+        "completePoseMs": 1.4967919999999992
+      },
+      "queue": {
+        "visits": 604,
+        "projections": 604,
+        "stalled": false,
+        "size": 61
+      }
+    },
+    {
+      "ms": 8783,
+      "side": "right",
+      "timing": {
+        "poseMs": 0.019500000000022055,
+        "fieldMs": 0.08291599999998311,
+        "arapMs": 6.635582999999997,
+        "forwardMs": 0.5920839999999998,
+        "forwardCalls": 1,
+        "activeMs": 5.532332999999994,
+        "activeCalls": 1,
+        "arapOtherMs": 0.5111660000000029,
+        "paintPartsMs": 0.05008399999999824,
+        "rigidParentMs": 0.0002089999999839165,
+        "shapeAssertionsMs": 0.029791999999986274,
+        "publicationMs": 0.002082999999998947,
+        "paintTotalMs": 0.08216799999996738,
+        "completePoseMs": 6.822000000000003
+      },
+      "queue": {
+        "visits": 14843,
+        "projections": 14843,
+        "stalled": false,
+        "size": 98
+      }
+    }
+  ]
+}

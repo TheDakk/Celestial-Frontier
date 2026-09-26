@@ -1,0 +1,17 @@
+{
+  "schema": "cf.q8-block32-repack-run/v1",
+  "startedAt": "2026-09-09T06:43:18.822Z",
+  "status": "FAIL",
+  "scope": "Exact quantized-weight representation repack; new GPU accumulation order and image quality remain unverified.",
+  "sources": {
+    "repack.mjs": "b4541d8d9f4f104652fbca07ae5cb7289ef955bc5b377029bddb4540ed936eae",
+    "model.mjs": "16d84698940e374306105c9494726b151d2210fd7f68cc6c4f96b72bb625e415",
+    "protobuf.mjs": "098fbe1d2634525798f409296b38e40f8c927a121dda1c1067b55b14eb6f3d9d",
+    "parent-contract.json": "8dfaeb15eed707fb71672075da8be8f95e9e17f7a9786a25f88e860313f74ffe"
+  },
+  "sourceFiles": [],
+  "tensors": [],
+  "attemptDirectory": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/local-image-generation/repack-attempts/dd1779cd-f656-46aa-a97a-4e54889b6f17",
+  "sourceDirectory": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/local-image-generation/cgb--flux2-klein-4b-onnx-webgpu/3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+  "outputDirectory": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/local-image-generation/derivatives/flux2-klein-4b-block32-v1"
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "cf-canid-final-root-validation/v1",
+  "command": "node tools/with-toolchain-lock.mjs --label canid-final-root-validation-20260908 -- node tools/validate.js",
+  "sessionId": 47315,
+  "terminal": {
+    "chunk_id": "4040d3",
+    "wall_time_seconds": 8.75e-07,
+    "exit_code": 0,
+    "original_token_count": 57,
+    "output": "boot errors: 0\nrendered: 1010  render fails: 0\nPASS  render audit  \u2014 1010 Earth species rendered clean (incl. new rigs)\nboot errors: 0\nprobe entries: 50  probe ERRs: 0\nFINGERPRINT MATCH (50 probes identical to v1.0 baseline)\n"
+  },
+  "initialOutputNote": "Initial yielded chunk passed Actions policy, syntax/CSS/IDs/determinism-source/version/rig-binding/color-atlas/biome-profile checks and began probe build. Complete terminal chunk retained below; no rerun."
+}

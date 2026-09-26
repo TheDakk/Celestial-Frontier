@@ -1,0 +1,1 @@
+Second source-fit attempt refused: Empty joint underlap. The patch builder incorrectly used only near-layer coverage for far-leg patches. Corrected the builder to use the painted part own far/near layer; no source record or pose changed.

@@ -1,0 +1,27 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-contact-family.test.ts (19 tests | 1 failed) 452ms
+   × holds actual declared insect stance endpoints under root travel and frees aerial motion 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-contact-family.test.ts > holds actual declared insect stance endpoints under root travel and frees aerial motion
+Error: Contact: hit@200 exceeds scale compression bound
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:186:47
+    184|     shift=Math.max(shift,target.y-Math.sqrt(max*max-dx*dx)+1e-10-root.…
+    185|    }
+    186|    if(compression+shift>scaleLength*.08)throw Error('Contact: '+phase.…
+       |                                               ^
+    187|    if(shift>0){compression+=shift;pose.root={rotation:0,...pose.root,d…
+    188|    for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,tar…
+ ❯ apps/game/src/creature-rig-contact-family.test.ts:15:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 18 passed (19)
+   Start at  02:01:32
+   Duration  691ms (transform 98ms, setup 0ms, import 129ms, tests 452ms, environment 0ms)
+

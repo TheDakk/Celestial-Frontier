@@ -1,0 +1,271 @@
+{
+ "id": "tree-frog-1",
+ "standIn": "Tree Frog",
+ "template": "hopper",
+ "accentGroups": [
+  "head"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/tree-frog/card/master-512.png",
+  "joints": [
+   "foreNearPaw",
+   "foreFarPaw",
+   "hindNearPaw",
+   "hindFarPaw",
+   "foreNearAnkle",
+   "foreNearKnee",
+   "hindNearAnkle",
+   "hindNearKnee",
+   "hindFarAnkle",
+   "hindFarKnee",
+   "foreFarAnkle",
+   "foreFarKnee",
+   "jaw",
+   "head",
+   "neck",
+   "chest",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Poison Dart Frog",
+   "group": "frog",
+   "posture": "sprawling",
+   "aspect": 1.5,
+   "headFrac": 0.35,
+   "eyes": "prominent",
+   "mustRead": [
+    "tiny smooth body in vivid warning colours",
+    "bold contrasting blotches or stripes",
+    "rounded blunt snout with jet-black eyes"
+   ],
+   "note": "very small and smooth-skinned - no warts, no webbing, no toe discs of any size"
+  },
+  {
+   "name": "Bullfrog",
+   "group": "frog",
+   "posture": "sprawling",
+   "aspect": 1.6,
+   "headFrac": 0.35,
+   "eyes": "prominent",
+   "mustRead": [
+    "large circular eardrum disc behind the eye",
+    "very wide flat mouth line",
+    "powerful folded hind legs with webbed feet"
+   ],
+   "note": "smooth-skinned with no dorsal ridges; the tympanum is bigger than the eye in males"
+  },
+  {
+   "name": "Glass Frog",
+   "group": "frog",
+   "posture": "sprawling",
+   "aspect": 1.5,
+   "headFrac": 0.35,
+   "eyes": "prominent",
+   "mustRead": [
+    "translucent belly showing heart and gut",
+    "lime-green translucent upperside",
+    "forward-facing pale gold eyes"
+   ],
+   "note": "the eyes point forward, not sideways, and the underside must read as see-through"
+  },
+  {
+   "name": "Pika",
+   "group": "rabbit-hopper",
+   "posture": "quadruped",
+   "aspect": 1.4,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "round egg-shaped body with no visible tail",
+    "large round pale-rimmed ears",
+    "very short legs holding the belly close to the rock"
+   ],
+   "note": "a lagomorph, but the ears are short and round - not long like a rabbit's - and there is no visible tail"
+  },
+  {
+   "name": "Rabbit",
+   "group": "rabbit-hopper",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "long upright ears",
+    "short round powder-puff tail",
+    "heavy crouched hind legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Hare",
+   "group": "rabbit-hopper",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "very long black-tipped ears",
+    "long rangy hind legs",
+    "lean angular body"
+   ],
+   "note": "Leggier and rangier than a rabbit, with proportionally much longer ears."
+  },
+  {
+   "name": "Frog",
+   "group": "frog",
+   "posture": "sprawling",
+   "aspect": 1.5,
+   "headFrac": 0.32,
+   "eyes": "prominent",
+   "mustRead": [
+    "bulging eyes set on top of the head",
+    "folded haunches with long hind legs",
+    "wide flat mouth line and no tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Snowshoe Hare",
+   "group": "rabbit-hopper",
+   "posture": "quadruped",
+   "aspect": 1.8,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "oversized furry hind feet",
+    "black-tipped ears shorter than a jackrabbit's",
+    "white winter coat"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Wood Frog",
+   "group": "frog",
+   "posture": "sprawling",
+   "aspect": 1.5,
+   "headFrac": 0.32,
+   "eyes": "prominent",
+   "mustRead": [
+    "black robber's mask through the eye",
+    "pale dorsolateral ridges down the back",
+    "long folded jumping legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Jackrabbit",
+   "group": "rabbit-hopper",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "enormous ears longer than the head",
+    "very long powerful hind legs",
+    "large eye set high and far back on the skull"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Jerboa",
+   "group": "rabbit-hopper",
+   "posture": "biped",
+   "aspect": 1.7,
+   "headFrac": 0.33,
+   "eyes": "prominent",
+   "mustRead": [
+    "stilt-like hind legs several times the front legs",
+    "tail far longer than the body with a black-and-white tuft",
+    "huge round eyes and large ears"
+   ],
+   "note": "Stands and moves on the hind legs only; the tiny forelimbs are held tucked at the chest."
+  },
+  {
+   "name": "Mara",
+   "group": "rabbit-hopper",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.27,
+   "eyes": "prominent",
+   "mustRead": [
+    "long slim deer-like legs on a rodent body",
+    "tall rabbit-like ears",
+    "almost no tail"
+   ],
+   "note": "Reads as a hare crossed with a small antelope; do not draw it as a squat guinea-pig shape."
+  },
+  {
+   "name": "Toad",
+   "group": "frog",
+   "posture": "sprawling",
+   "aspect": 1.6,
+   "headFrac": 0.36,
+   "eyes": "prominent",
+   "mustRead": [
+    "squat warty wide-bodied hunch",
+    "bulging eyes with a swollen gland behind each",
+    "short hind legs folded, no visible neck or tail"
+   ],
+   "note": "Squatter and shorter-legged than a frog, with dry bumpy skin and a broader flatter head."
+  },
+  {
+   "name": "Arctic Hare",
+   "group": "rabbit-hopper",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "thick white coat with black ear tips",
+    "short ears for a hare",
+    "very large hind feet"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cave Frog",
+   "group": "frog",
+   "posture": "sprawling",
+   "aspect": 1.5,
+   "headFrac": 0.35,
+   "eyes": "prominent",
+   "mustRead": [
+    "squat crouched body with folded hind legs",
+    "wide flat head as broad as the body",
+    "pale translucent depigmented skin"
+   ],
+   "note": "Generic - interpreted as a representative pale cave-dwelling frog; eyes reduced but still present and bulging."
+  },
+  {
+   "name": "Kangaroo",
+   "group": "marsupial-hopper",
+   "posture": "biped",
+   "aspect": 1.3,
+   "headFrac": 0.18,
+   "eyes": "normal",
+   "mustRead": [
+    "massive muscular hind legs and long feet",
+    "thick tapering tail used as a third leg",
+    "tiny forearms held against the chest"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Wallaby",
+   "group": "marsupial-hopper",
+   "posture": "biped",
+   "aspect": 1.3,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "crouched hopping stance with deep folded hind legs",
+    "long flat hind feet",
+    "thick tail trailing along the ground"
+   ],
+   "note": "Shorter-faced, smaller and more compact than a kangaroo; the body is more hunched and rabbit-like."
+  }
+ ]
+}

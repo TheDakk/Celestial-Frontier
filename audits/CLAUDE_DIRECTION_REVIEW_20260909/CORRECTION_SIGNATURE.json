@@ -1,0 +1,140 @@
+{
+  "schema": "cf.signed-local-checkpoint/v1",
+  "status": "PASS",
+  "scope": "Actual Claude review and bounded controller corrections",
+  "startedAt": "2026-09-09T13:08:38.483411+00:00",
+  "steps": [
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exitCode": 0,
+      "stdout": "/Users/nick/Projects/celestial-frontier-openai-mac\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exitCode": 0,
+      "stdout": "openai/mac\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "--abbrev-ref",
+        "@{upstream}"
+      ],
+      "exitCode": 0,
+      "stdout": "origin/openai/mac\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exitCode": 0,
+      "stdout": "8bdbea9a65b1f64c09906fd99589d75e5d8bc50a\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "add",
+        "--",
+        "ART_DIRECTION.md",
+        "ROADMAP.md",
+        "ROADMAP_ARCHIVE.md",
+        "UI_PRESENTATION.md",
+        "celestial-frontier-codebase-reference.md",
+        "tools/local-image-generation/README.md",
+        "tools/local-image-generation/browser-proof.mjs",
+        "tools/local-image-generation/browser-proof.html",
+        "tools/local-image-generation/browser-lifecycle.test.mjs",
+        "audits/CLAUDE_DIRECTION_REVIEW_20260909"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "gpg.ssh.program=/usr/bin/ssh-keygen",
+        "commit",
+        "-S",
+        "-m",
+        "Record Claude direction review and harden landing completion"
+      ],
+      "exitCode": 0,
+      "stdout": "[openai/mac af400278] Record Claude direction review and harden landing completion\n 47 files changed, 19520 insertions(+), 398 deletions(-)\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/CLAUDE_RECEIPT.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/CLAUDE_REQUEST.md\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/CLAUDE_RESPONSE.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/CLAUDE_RESPONSE.md\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/CLAUDE_START.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/CLAUDE_STDERR.log\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/IMPLEMENTATION_SIGNATURE.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/NATIVE_VISUAL_RECHECK.md\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/REVIEW_ARTIFACTS.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/REVIEW_DISPOSITION.md\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-01.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-01.log\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01.log\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/01-friendly-HTTP503-friendly-Earth.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/01-friendly-HTTP503-friendly-hidden-control.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/01-friendly-HTTP503-friendly-journal.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/01-friendly-HTTP503.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/02-friendly-cancel-friendly-Earth.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/02-friendly-cancel-friendly-hidden-control.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/02-friendly-cancel-friendly-journal.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/02-friendly-cancel.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/03-identity-bound-return-all-identities-restored.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/03-identity-bound-return-complete-in-journal.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/03-identity-bound-return-restored-return-Earth.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/03-identity-bound-return.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/result.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/run.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/served-source/browser-proof-current.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/served-source/browser-proof.html\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/served-source/landing-progress.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/served-source/synthetic-stage-worker.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/start.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/synthetic-recipe.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/root-validation-review-01.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/root-validation-review-01.log\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/run-claude-review.py\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exitCode": 0,
+      "stdout": "af4002783860422b6ffb5ca6b3a47b03099c8514\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "gpg.ssh.allowedSignersFile=/private/tmp/cf-review-allowed-signers-d64g4thd",
+        "verify-commit",
+        "af4002783860422b6ffb5ca6b3a47b03099c8514"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "Good \"git\" signature for 79046704+TheDakk@users.noreply.github.com with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "command": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "exitCode": 0,
+      "stdout": "?? .DS_Store\n",
+      "stderr": ""
+    }
+  ],
+  "commit": "af4002783860422b6ffb5ca6b3a47b03099c8514",
+  "remainingStatus": "?? .DS_Store",
+  "finishedAt": "2026-09-09T13:08:38.890102+00:00"
+}

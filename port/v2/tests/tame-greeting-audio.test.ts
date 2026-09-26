@@ -7,10 +7,12 @@ import type {
   AudioNodeLike,
   AudioParamLike,
   AudioScheduledSourceLike,
+  AudioVoiceRequest,
   CombatCuePlanV1,
   CombatCueV1,
 } from '@cf/audio';
 import {
+  AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
   combatCuePlan,
   projectCombatCueParticipantsV1,
 } from '@cf/audio';
@@ -51,6 +53,7 @@ import {
   type TameGreetingAudioPolicy,
   type TameGreetingCaptureOutcome,
 } from '../apps/game/src/tame-greeting-audio.js';
+import { planCues } from '../apps/game/src/soundkit/mix.js';
 import { canonicalWorldRoster } from '../apps/game/src/world-roster.js';
 import {
   createCurrentWorldApproachDistantEcologyPlaybackV1,
@@ -669,6 +672,39 @@ describe('Arc 7/8 player-live Tame greeting owner', () => {
       expect(h.contexts[0]!.oscillators[0]!.stops).toBeGreaterThan(0);
       expect(h.pendingDeadlines()).toBe(0);
     }
+  });
+});
+
+describe('audio accessibility modes reach the shared runtime (Mono audio / Reduced intensity, 2026-09-25)', () => {
+  it('a policy with the modes on activates the runtime with them, and syncSettings follows a live change', async () => {
+    const h = harness({ mono: true, reducedIntensity: true });
+    expect(h.owner.armNativeTameGesture()).toBe(true);
+    await Promise.resolve();
+    h.owner.syncSettings();
+    expect(h.owner.diagnostics().runtime.accessibility).toEqual({ mono: true, reducedIntensity: true });
+    expect(h.owner.diagnostics().runtime.gains.effectiveMaster).toBeCloseTo(0.64 * 0.55, 12);
+    h.policy.mono = false;
+    h.policy.reducedIntensity = false;
+    h.owner.syncSettings();
+    expect(h.owner.diagnostics().runtime.accessibility).toEqual({ mono: false, reducedIntensity: false });
+    expect(h.owner.diagnostics().runtime.gains.effectiveMaster).toBeCloseTo(0.64, 12);
+  });
+
+  it('Battle sounds (save cbx) gates only the combat-gameplay category; creature voices keep their own switch', () => {
+    const h = harness({ combatSoundsOn: false });
+    h.owner.syncSettings();
+    expect(h.owner.diagnostics().runtime.gains.categories['combat-gameplay']).toBe(0);
+    expect(h.owner.diagnostics().runtime.gains.categories.creature).toBe(1);
+    h.policy.combatSoundsOn = true;
+    h.owner.syncSettings();
+    expect(h.owner.diagnostics().runtime.gains.categories['combat-gameplay']).toBe(1);
+  });
+
+  it('a policy without the fields (older callers) plays the unchanged mix', () => {
+    const h = harness();
+    h.owner.syncSettings();
+    expect(h.owner.diagnostics().runtime.accessibility).toEqual({ mono: false, reducedIntensity: false });
+    expect(h.owner.diagnostics().runtime.gains.categories['combat-gameplay']).toBe(1); // absent = on (older callers)
   });
 });
 
@@ -1383,5 +1419,659 @@ describe('Arc 8 committed conquest-combat playback on the shared audio owner', (
       activeCombatVoiceIds: [],
       runtime: { state: 'disposed', voices: { active: 0 } },
     });
+  });
+});
+
+
+describe('explicit decorative audiovisual pilot', () => {
+  function request(key = 'cf-pilot-music', patch: Partial<AudioVoiceRequest> = {}): AudioVoiceRequest {
+    const base: AudioVoiceRequest = {
+      key, category: 'music', priority: -100, cooldownGroup: key, cooldownMs: 0,
+      concurrencyGroup: key, maxConcurrent: 1, nodeCount: 1, maxDurationMs: 1_000,
+      mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1, meaning: Object.freeze({ kind: 'decorative' }),
+      create: (context, reservation) => {
+        const source = (context as FakeContext).createBufferSource();
+        return Object.freeze({ source, sources: [source], output: source, nodes: [source], reservation });
+      },
+    };
+    return Object.freeze({ ...base, ...patch });
+  }
+
+  it('shares one context, bounds four categories, and releases completed or cancelled voices', async () => {
+    const h = harness({ creatureVoicesOn: false });
+    await expect(h.owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+    h.owner.syncSettings();
+    expect(h.contexts).toHaveLength(0);
+    expect(h.owner.armNativePilotGesture()).toBe(true);
+    for (const category of ['music', 'ambience', 'ui', 'combat-gameplay'] as const) {
+      await expect(h.owner.playPilotVoice(request(`cf-pilot-${category}`, { category })))
+        .resolves.toMatchObject({ kind: 'started' });
+    }
+    expect(h.contexts).toHaveLength(1);
+    expect(h.owner.diagnostics()).toMatchObject({ armed: 0, claimedEvents: 0, lastEventKey: null,
+      counterpart: { status: 'none' }, runtime: { voices: { active: 4, started: 4 } } });
+    expect(h.contexts[0]!.bufferSources.every((source) => routesTo(source, h.contexts[0]!.destination))).toBe(true);
+    await expect(h.owner.playPilotVoice(request('cf-pilot-fifth'))).resolves.toEqual({ kind: 'silent', reason: 'pilot-voice-limit' });
+    h.contexts[0]!.bufferSources[0]!.onended!();
+    await expect(h.owner.playPilotVoice(request('cf-pilot-after-completion'))).resolves.toMatchObject({ kind: 'started' });
+    h.owner.cancelPilotPlayback();
+    expect(h.owner.diagnostics().runtime.voices.active).toBe(0);
+    expect(h.pendingDeadlines()).toBe(0);
+    expect(h.contexts[0]!.bufferSources.every((source) => source.disconnects > 0)).toBe(true);
+    await h.owner.dispose();
+  });
+
+  it.each([
+    ['game key', { key: 'arc7:game-cue' }], ['game cooldown', { cooldownGroup: 'arc7:cooldown' }],
+    ['game concurrency', { concurrencyGroup: 'arc7:group' }], ['creature bus', { category: 'creature' }],
+    ['meaningful event', { meaning: { kind: 'meaningful', counterpart: counterpart('fake-reward') } }],
+    ['unbounded lifetime', { maxDurationMs: undefined }], ['nonfinite lifetime', { maxDurationMs: Infinity }],
+    ['fractional lifetime', { maxDurationMs: 1.5 }], ['zero lifetime', { maxDurationMs: 0 }],
+    ['overlong preview', { maxDurationMs: 120_001 }],
+  ] as const)('rejects %s before creating any voice', async (_label, patch) => {
+    const h = harness();
+    expect(h.owner.armNativePilotGesture()).toBe(true);
+    await expect(h.owner.playPilotVoice(request('cf-pilot-invalid', patch as Partial<AudioVoiceRequest>)))
+      .resolves.toEqual({ kind: 'silent', reason: 'pilot-request-invalid' });
+    expect(h.contexts[0]!.bufferSources).toHaveLength(0);
+    expect(h.owner.diagnostics().runtime.voices.started).toBe(0);
+    await expect(h.owner.playPilotVoice(request())).resolves.toMatchObject({ kind: 'started' });
+    await h.owner.dispose();
+  });
+
+  it.each([
+    ['Sound Off', { soundOn: false }], ['hidden policy', { visible: false }],
+    ['unanswerable policy', { answerable: false }], ['absent route', { routeKey: null }],
+  ] as const)('does not create a context under %s', async (_label, policy) => {
+    const h = harness(policy);
+    expect(h.owner.armNativePilotGesture()).toBe(false);
+    await expect(h.owner.playPilotVoice(request())).resolves.toMatchObject({ kind: 'silent' });
+    expect(h.contexts).toHaveLength(0);
+  });
+
+  it.each(['cancel', 'hide', 'answerability', 'mute', 'route', 'dispose', 'gameplay gesture'] as const)(
+    'cancels voices and authorization on %s without automatic replay', async (stop) => {
+      const h = harness(); h.owner.armNativePilotGesture();
+      await h.owner.playPilotVoice(request());
+      await h.owner.playPilotVoice(request('cf-pilot-ambience', { category: 'ambience' }));
+      if (stop === 'cancel') h.owner.cancelPilotPlayback();
+      if (stop === 'hide') { h.owner.setHidden(true); h.owner.setHidden(false); }
+      if (stop === 'answerability') { h.owner.setAnswerable(false); h.owner.setAnswerable(true); }
+      if (stop === 'mute') { h.policy.soundOn = false; h.owner.syncSettings(); h.policy.soundOn = true; h.owner.syncSettings(); }
+      if (stop === 'route') { h.owner.syncRoute('cf-pilot-other-route'); h.owner.syncRoute(h.worldKey); }
+      if (stop === 'dispose') await h.owner.dispose();
+      if (stop === 'gameplay gesture') h.owner.armNativeTameGesture();
+      expect(h.owner.diagnostics().runtime.voices).toMatchObject({ active: 0, started: 2 });
+      expect(h.contexts[0]!.bufferSources.every((source) => source.stops > 0 && source.disconnects > 0)).toBe(true);
+      expect(h.pendingDeadlines()).toBe(0);
+      await expect(h.owner.playPilotVoice(request('cf-pilot-no-replay'))).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+      await h.owner.dispose();
+    });
+
+  it('cancels on changed policy even without a separate synchronization call', async () => {
+    const h = harness(); h.owner.armNativePilotGesture();
+    await h.owner.playPilotVoice(request());
+    h.policy.routeKey = 'cf-pilot-another-route';
+    await expect(h.owner.playPilotVoice(request('cf-pilot-stale-route'))).resolves.toEqual({ kind: 'silent', reason: 'pilot-policy-changed' });
+    expect(h.owner.diagnostics().runtime.voices.active).toBe(0);
+    h.policy.routeKey = h.worldKey;
+    await expect(h.owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+    await h.owner.dispose();
+  });
+
+  it('preserves the live durable Tame voice and receipt when only pilot playback is cancelled', async () => {
+    const h = harness(); h.owner.armNativeTameGesture();
+    const claim = h.owner.claimCommittedTameGreeting(h.outcome, h.state)!;
+    await h.owner.playClaimedTameGreeting(claim, counterpart(claim.eventKey));
+    const before = h.owner.diagnostics();
+    const scheduledStops = h.contexts[0]!.oscillators.map((source) => source.stops);
+    h.owner.armNativePilotGesture(); await h.owner.playPilotVoice(request());
+    expect(h.contexts).toHaveLength(1);
+    h.owner.cancelPilotPlayback(); const after = h.owner.diagnostics();
+    expect(Object.keys(after)).toEqual(Object.keys(before));
+    expect(after.activeVoiceId).toBe(before.activeVoiceId);
+    expect(after.claimedEvents).toBe(before.claimedEvents);
+    expect(after.counterpart).toEqual(before.counterpart);
+    expect(after.lastEventKey).toBe(before.lastEventKey);
+    expect(after.runtime.voices).toMatchObject({ active: 1, started: 2 });
+    expect(h.contexts[0]!.oscillators.map((source) => source.stops)).toEqual(scheduledStops);
+    await expect(h.owner.playClaimedTameGreeting(claim, counterpart(claim.eventKey)))
+      .resolves.toEqual({ kind: 'silent', reason: 'claim-invalid' });
+    await h.owner.dispose();
+  });
+
+  it('retains an exact committed combat session and its cue admission across pilot cancellation', async () => {
+    const combat = combatSessionFixture();
+    const h = harness({ routeKey: combat.routeKey });
+    h.owner.armNativeCombatGesture();
+    const claim = h.owner.claimCommittedCombatSession(combat.outcome, combat.cuePlan)!;
+    const first = combat.damageCues[0]!;
+    await expect(h.owner.playClaimedCombatCue(claim, first, combatCounterpart(first)))
+      .resolves.toMatchObject({ kind: 'started' });
+    const before = h.owner.diagnostics();
+    h.owner.armNativePilotGesture();
+    await h.owner.playPilotVoice(request());
+    h.owner.cancelPilotPlayback();
+    const after = h.owner.diagnostics();
+    expect(h.contexts).toHaveLength(1);
+    expect(after.activeCombatVoiceIds).toEqual(before.activeCombatVoiceIds);
+    expect(after.claimedEvents).toBe(before.claimedEvents);
+    expect(after.counterpart).toEqual(before.counterpart);
+    expect(after.runtime.voices.active).toBe(1);
+    const next = combat.damageCues[1]!;
+    h.advance(1_000);
+    await expect(h.owner.playClaimedCombatCue(claim, next, combatCounterpart(next)))
+      .resolves.toMatchObject({ kind: 'started' });
+    await expect(h.owner.playClaimedCombatCue(claim, first, combatCounterpart(first)))
+      .resolves.toMatchObject({ kind: 'silent' });
+    await h.owner.dispose();
+  });
+
+  it.each(['cancel', 'route', 'hide', 'mute', 'answerability', 'replacement', 'dispose'] as const)(
+    'rejects a late resume after %s', async (change) => {
+      let release!: () => void;
+      const resume = new Promise<void>((resolve) => { release = resolve; });
+      const context = new FakeContext(); context.state = 'suspended';
+      context.resume = async () => { await resume; context.state = 'running'; };
+      const policy: MutablePolicy = { soundOn: true, creatureVoicesOn: false, visible: true,
+        answerable: true, masterGain: 0.5, routeKey: 'cf-pilot-fixture-route' };
+      let creates = 0;
+      const owner = createTameGreetingAudioOwner({
+        createContext: () => { creates++; return context; }, readPolicy: () => policy,
+        nowMs: () => 100, scheduleVoiceDeadline: () => () => {}, verifyCounterpart: () => false,
+      });
+      expect(owner.armNativePilotGesture()).toBe(true);
+      const pending = owner.playPilotVoice(request());
+      if (change === 'cancel') owner.cancelPilotPlayback();
+      if (change === 'route') owner.syncRoute('cf-pilot-changed-route');
+      if (change === 'hide') owner.setHidden(true);
+      if (change === 'mute') { policy.soundOn = false; owner.syncSettings(); }
+      if (change === 'answerability') owner.setAnswerable(false);
+      if (change === 'replacement') expect(owner.armNativePilotGesture()).toBe(true);
+      const disposing = change === 'dispose' ? owner.dispose() : null;
+      release();
+      await expect(pending).resolves.toEqual({ kind: 'silent', reason: 'pilot-policy-changed' });
+      if (disposing) await disposing;
+      expect(context.bufferSources).toHaveLength(0);
+      expect(creates).toBe(1);
+      expect(owner.diagnostics().runtime.voices.started).toBe(0);
+      if (change === 'replacement') {
+        await expect(owner.playPilotVoice(request('cf-pilot-new-generation'))).resolves.toMatchObject({ kind: 'started' });
+      }
+      await owner.dispose();
+    });
+
+  it('carries one native landing activation to only its observed destination and consumes acceptance once', async () => {
+    const h = harness({ creatureVoicesOn: false });
+    const destination = 'cf-pilot-landed-world';
+    const handoff = h.owner.armNativePilotLandingGesture(destination)!;
+    expect(handoff).not.toBeNull(); expect(Object.isFrozen(handoff)).toBe(true);
+    await expect(h.owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+    h.owner.syncRoute(h.worldKey); // Repeated origin publication does not spend the handoff.
+    h.policy.routeKey = destination; h.owner.syncRoute(destination); h.owner.syncRoute(destination);
+    expect(handoff.accept()).toBe(true); expect(handoff.accept()).toBe(false);
+    await expect(h.owner.playPilotVoice(request('cf-pilot-landing', { category: 'combat-gameplay' })))
+      .resolves.toMatchObject({ kind: 'started' });
+    expect(h.contexts).toHaveLength(1); expect(h.owner.diagnostics().runtime.voices).toMatchObject({ started: 1, active: 1 });
+    handoff.cancel(); handoff.cancel();
+    expect(h.owner.diagnostics().runtime.voices.active).toBe(0);
+    await expect(h.owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+    await h.owner.dispose();
+  });
+
+  it.each(['origin', 'policy-only destination', 'foreign route', 'destination then origin'] as const)(
+    'refuses %s and cannot revive a consumed or invalidated landing ticket', async (change) => {
+      const h = harness(), destination = 'cf-pilot-landed-world';
+      const handoff = h.owner.armNativePilotLandingGesture(destination)!;
+      if (change === 'policy-only destination') h.policy.routeKey = destination;
+      if (change === 'foreign route') { h.policy.routeKey = 'cf-foreign'; h.owner.syncRoute('cf-foreign'); }
+      if (change === 'destination then origin') {
+        h.policy.routeKey = destination; h.owner.syncRoute(destination);
+        h.policy.routeKey = h.worldKey; h.owner.syncRoute(h.worldKey);
+      }
+      expect(handoff.accept()).toBe(false);
+      h.policy.routeKey = destination; h.owner.syncRoute(destination); expect(handoff.accept()).toBe(false);
+      await expect(h.owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+      expect(h.contexts[0]!.bufferSources).toHaveLength(0); await h.owner.dispose();
+    });
+
+  it('rejects malformed and unchanged landing destinations before creating a context', async () => {
+    for (const destination of [null, undefined, '', '   ', 'x'.repeat(513)]) {
+      const h = harness();
+      expect(h.owner.armNativePilotLandingGesture(destination as unknown as string)).toBeNull();
+      expect(h.contexts).toHaveLength(0); await h.owner.dispose();
+    }
+    const h = harness(); expect(h.owner.armNativePilotLandingGesture(h.worldKey)).toBeNull();
+    expect(h.contexts).toHaveLength(0); await h.owner.dispose();
+  });
+
+  it.each([
+    ['Sound Off', { soundOn: false }], ['hidden policy', { visible: false }],
+    ['unanswerable policy', { answerable: false }], ['absent route', { routeKey: null }],
+  ] as const)('rejects a landing arm under %s', async (_label, patch) => {
+    const h = harness(patch);
+    expect(h.owner.armNativePilotLandingGesture('cf-pilot-landed-world')).toBeNull();
+    expect(h.contexts).toHaveLength(0); await h.owner.dispose();
+  });
+
+  it.each(['cancel', 'ticket cancel', 'hide', 'answerability', 'mute', 'dispose', 'gameplay gesture', 'ordinary pilot gesture'] as const)(
+    'invalidates pending landing authority on %s, even after the original policy returns', async (change) => {
+      const h = harness(), destination = 'cf-pilot-landed-world';
+      const handoff = h.owner.armNativePilotLandingGesture(destination)!;
+      if (change === 'cancel') h.owner.cancelPilotPlayback();
+      if (change === 'ticket cancel') handoff.cancel();
+      if (change === 'hide') { h.owner.setHidden(true); h.owner.setHidden(false); }
+      if (change === 'answerability') { h.owner.setAnswerable(false); h.owner.setAnswerable(true); }
+      if (change === 'mute') { h.policy.soundOn = false; h.owner.syncSettings(); h.policy.soundOn = true; h.owner.syncSettings(); }
+      if (change === 'dispose') await h.owner.dispose();
+      if (change === 'gameplay gesture') h.owner.armNativeTameGesture();
+      if (change === 'ordinary pilot gesture') h.owner.armNativePilotGesture();
+      h.policy.routeKey = destination; h.owner.syncRoute(destination);
+      expect(handoff.accept()).toBe(false);
+      await expect(h.owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+      expect(h.owner.diagnostics().runtime.voices.started).toBe(0); await h.owner.dispose();
+    });
+
+  it('keeps a replacement landing ticket and accepted voice safe from the previous ticket', async () => {
+    const h = harness(), destination = 'cf-pilot-landed-world';
+    const old = h.owner.armNativePilotLandingGesture(destination)!;
+    const current = h.owner.armNativePilotLandingGesture(destination)!;
+    old.cancel(); expect(old.accept()).toBe(false);
+    h.policy.routeKey = destination; h.owner.syncRoute(destination); expect(current.accept()).toBe(true);
+    await expect(h.owner.playPilotVoice(request())).resolves.toMatchObject({ kind: 'started' });
+    old.cancel(); expect(old.accept()).toBe(false);
+    expect(h.owner.diagnostics().runtime.voices.active).toBe(1); current.cancel();
+    expect(h.owner.diagnostics().runtime.voices.active).toBe(0); await h.owner.dispose();
+  });
+
+  it('retires a prior creature voice inside native Land without closing its shared context', async () => {
+    const h = harness(); h.owner.armNativeTameGesture();
+    const claim = h.owner.claimCommittedTameGreeting(h.outcome, h.state)!;
+    await h.owner.playClaimedTameGreeting(claim, counterpart(claim.eventKey));
+    expect(h.owner.diagnostics().runtime.voices.active).toBe(1);
+    const destination = 'cf-pilot-landed-world', handoff = h.owner.armNativePilotLandingGesture(destination)!;
+    expect(h.owner.diagnostics().runtime.voices.active).toBe(0);
+    h.policy.routeKey = destination; h.owner.syncRoute(destination);
+    expect(h.contexts[0]!.closeCalls).toBe(0);
+    expect(h.contexts[0]!.oscillators.every(source => source.disconnects > 0)).toBe(true);
+    expect(handoff.accept()).toBe(true);
+    await expect(h.owner.playPilotVoice(request())).resolves.toMatchObject({ kind: 'started' });
+    expect(h.contexts).toHaveLength(1); expect(h.owner.diagnostics().runtime.voices).toMatchObject({ active: 1, started: 2 });
+    await h.owner.dispose();
+  });
+
+  it.each(['arm', 'claim', 'voice'] as const)(
+    'retires an existing approach ecology %s before post-await scene cleanup can close landing audio', async (phase) => {
+      const systemRoute = 'cf-route:system:galaxy-home:star-sol';
+      const h = harness({ routeKey: systemRoute, creatureVoicesOn: false });
+      const roster = canonicalWorldRoster(h.address, 0);
+      if (!roster.ok) throw new Error('expected canonical approach roster');
+      const playback = createCurrentWorldApproachDistantEcologyPlaybackV1(roster.roster, Object.freeze({
+        generation: 17, worldKey: roster.roster.worldKey, environmentFingerprint: roster.roster.environmentFingerprint,
+        biosphereKey: roster.roster.biosphereKey, granularity: 'biosphere', surface: 'approach', visible: true,
+      }));
+      expect(h.owner.armNativeDistantEcologyGesture()).toBe(true);
+      const claim = phase === 'arm' ? null : h.owner.claimCurrentWorldDistantEcology(playback);
+      if (phase !== 'arm') expect(claim).not.toBeNull();
+      if (phase === 'voice') await expect(h.owner.playClaimedDistantEcology(claim!, playback.counterpart))
+        .resolves.toMatchObject({ kind: 'started' });
+      const beforeStarted = h.owner.diagnostics().runtime.voices.started;
+      const handoff = h.owner.armNativePilotLandingGesture(h.worldKey)!;
+      expect(handoff).not.toBeNull(); expect(h.owner.diagnostics()).toMatchObject({ armed: 0, runtime: { voices: { active: 0 } } });
+      await Promise.resolve(); // Real Land awaits its durable outcome before rendering.
+      h.policy.routeKey = h.worldKey;
+      // doLand's buildCurrentSceneTransaction releases approach and roster
+      // owners before the caller verifies the rendered destination and syncs.
+      h.owner.cancelDistantEcology('approach-replaced');
+      h.owner.cancelDistantEcology('roster-replaced');
+      expect(h.contexts).toHaveLength(1); expect(h.contexts[0]!.closeCalls).toBe(0);
+      h.owner.syncRoute(h.worldKey); expect(handoff.accept()).toBe(true);
+      await expect(h.owner.playPilotVoice(request('cf-pilot-scout-landing', { category: 'combat-gameplay' })))
+        .resolves.toMatchObject({ kind: 'started' });
+      expect(h.contexts).toHaveLength(1); expect(h.contexts[0]!.closeCalls).toBe(0);
+      expect(h.owner.diagnostics().runtime.voices).toMatchObject({ active: 1, started: beforeStarted + 1 });
+      await h.owner.dispose();
+    });
+
+  it.each(['visible', 'answerable', 'soundOn', 'routeKey'] as const)(
+    'rechecks changed %s at landing acceptance without relying on a synchronization notification', async (field) => {
+      const h = harness(), destination = 'cf-pilot-landed-world';
+      const handoff = h.owner.armNativePilotLandingGesture(destination)!;
+      h.policy.routeKey = destination; h.owner.syncRoute(destination);
+      if (field === 'routeKey') h.policy.routeKey = 'cf-foreign'; else h.policy[field] = false;
+      expect(handoff.accept()).toBe(false);
+      h.policy.routeKey = destination; h.policy.visible = true; h.policy.answerable = true; h.policy.soundOn = true;
+      expect(handoff.accept()).toBe(false);
+      await expect(h.owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+      await h.owner.dispose();
+    });
+
+  it.each(['none', 'hide', 'mute', 'dispose', 'answerability', 'foreign route', 'replacement'] as const)(
+    'reuses the captured delayed native activation after acceptance and rejects later %s invalidation', async (change) => {
+      let release!: () => void, resumes = 0, creates = 0;
+      const resume = new Promise<void>(resolve => { release = resolve; });
+      const context = new FakeContext(); context.state = 'suspended';
+      context.resume = async () => { resumes++; await resume; context.state = 'running'; };
+      const policy: MutablePolicy = { soundOn: true, creatureVoicesOn: false, visible: true,
+        answerable: true, masterGain: 0.5, routeKey: 'cf-pilot-origin' };
+      const owner = createTameGreetingAudioOwner({
+        createContext: () => { creates++; return context; }, readPolicy: () => policy,
+        nowMs: () => 100, scheduleVoiceDeadline: () => () => {}, verifyCounterpart: () => false,
+      });
+      const destination = 'cf-pilot-landed-world', handoff = owner.armNativePilotLandingGesture(destination)!;
+      expect(resumes).toBe(1); expect(creates).toBe(1);
+      await expect(owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+      policy.routeKey = destination; owner.syncRoute(destination);
+      expect(handoff.accept()).toBe(true); expect(handoff.accept()).toBe(false); expect(resumes).toBe(1);
+      const pending = owner.playPilotVoice(request()); expect(context.bufferSources).toHaveLength(0);
+      if (change === 'hide') owner.setHidden(true);
+      if (change === 'mute') { policy.soundOn = false; owner.syncSettings(); }
+      if (change === 'answerability') owner.setAnswerable(false);
+      if (change === 'foreign route') { policy.routeKey = 'cf-foreign'; owner.syncRoute('cf-foreign'); }
+      if (change === 'replacement') owner.armNativePilotGesture();
+      const disposing = change === 'dispose' ? owner.dispose() : null;
+      release();
+      if (change === 'none') await expect(pending).resolves.toMatchObject({ kind: 'started' });
+      else await expect(pending).resolves.toEqual({ kind: 'silent', reason: 'pilot-policy-changed' });
+      if (disposing) await disposing;
+      expect(creates).toBe(1); expect(resumes).toBe(1);
+      expect(context.bufferSources).toHaveLength(change === 'none' ? 1 : 0);
+      await owner.dispose();
+    });
+
+  function consumedGamePlayback(kind: 'ecology' | 'expression') {
+    const data = fixture(), context = new FakeContext(); context.state = 'suspended';
+    let release!: () => void, reject!: (error: Error) => void, creates = 0, resumes = 0;
+    const resumed = new Promise<void>((resolve, fail) => { release = resolve; reject = fail; });
+    context.resume = async () => { resumes++; await resumed; context.state = 'running'; };
+    const policy: MutablePolicy = { soundOn: true, creatureVoicesOn: true, visible: true,
+      answerable: true, masterGain: 0.5,
+      routeKey: kind === 'ecology' ? 'cf-route:system:galaxy-home:star-sol' : data.worldKey };
+    const owner = createTameGreetingAudioOwner({ createContext: () => { creates++; return context; },
+      readPolicy: () => policy, nowMs: () => 100, scheduleVoiceDeadline: () => () => {}, verifyCounterpart: () => true });
+    let playing: ReturnType<typeof owner.playClaimedDistantEcology>;
+    if (kind === 'ecology') {
+      const roster = canonicalWorldRoster(data.address, 0);
+      if (!roster.ok) throw new Error('expected canonical approach roster');
+      const playback = createCurrentWorldApproachDistantEcologyPlaybackV1(roster.roster, Object.freeze({
+        generation: 23, worldKey: roster.roster.worldKey, environmentFingerprint: roster.roster.environmentFingerprint,
+        biosphereKey: roster.roster.biosphereKey, granularity: 'biosphere', surface: 'approach', visible: true,
+      }));
+      expect(owner.armNativeDistantEcologyGesture()).toBe(true);
+      const claim = owner.claimCurrentWorldDistantEcology(playback)!; expect(claim).not.toBeNull();
+      playing = owner.playClaimedDistantEcology(claim, playback.counterpart);
+    } else {
+      expect(owner.armNativeTameGesture()).toBe(true);
+      const claim = owner.claimCommittedTameGreeting(data.outcome, data.state)!; expect(claim).not.toBeNull();
+      playing = owner.playClaimedTameGreeting(claim, counterpart(claim.eventKey));
+    }
+    expect(owner.diagnostics()).toMatchObject({ armed: 0, runtime: { voices: { started: 0 } } });
+    expect(resumes).toBe(1); expect(context.closeCalls).toBe(0);
+    return { owner, context, policy, playing, release, reject, creates: () => creates, resumes: () => resumes,
+      destination: kind === 'ecology' ? data.worldKey : 'cf-route:landed:another-world' };
+  }
+
+  it.each([
+    ['ecology', 'resolve'], ['ecology', 'reject'], ['expression', 'resolve'], ['expression', 'reject'],
+  ] as const)('keeps a consumed %s continuation from muting or creating voices after landing when activation will %s', async (kind, completion) => {
+    const h = consumedGamePlayback(kind);
+    const handoff = h.owner.armNativePilotLandingGesture(h.destination)!;
+    expect(handoff).not.toBeNull(); h.policy.routeKey = h.destination;
+    h.owner.cancelDistantEcology('approach-replaced');
+    h.owner.syncRoute(h.destination); expect(handoff.accept()).toBe(true);
+    const landing = h.owner.playPilotVoice(request('cf-pilot-scout-landing', { category: 'combat-gameplay' }));
+    const replacementDisposition = h.owner.diagnostics().lastDisposition;
+    if (completion === 'resolve') h.release(); else h.reject(new Error('old native resume rejected'));
+    await expect(h.playing).resolves.toEqual({ kind: 'silent', reason: 'policy-changed' });
+    if (completion === 'resolve') await expect(landing).resolves.toMatchObject({ kind: 'started' });
+    else await expect(landing).resolves.toEqual({ kind: 'silent', reason: 'pilot-activation-blocked' });
+    expect(h.owner.diagnostics().lastDisposition).toBe(replacementDisposition);
+    expect(h.context.oscillators).toHaveLength(0);
+    expect(h.context.bufferSources).toHaveLength(completion === 'resolve' ? 1 : 0);
+    expect(h.owner.diagnostics().runtime.voices).toMatchObject({ started: completion === 'resolve' ? 1 : 0,
+      active: completion === 'resolve' ? 1 : 0 });
+    expect(h.context.closeCalls).toBe(0); expect(h.creates()).toBe(1); expect(h.resumes()).toBe(1);
+    await h.owner.dispose();
+  });
+
+  it.each([
+    ['ecology', 'resolve'], ['ecology', 'reject'], ['expression', 'resolve'], ['expression', 'reject'],
+  ] as const)('preserves current-generation %s success or fault cleanup when activation will %s', async (kind, completion) => {
+    const h = consumedGamePlayback(kind);
+    if (completion === 'resolve') h.release(); else h.reject(new Error('current native resume rejected'));
+    if (completion === 'resolve') {
+      await expect(h.playing).resolves.toMatchObject({ kind: 'started' });
+      expect(h.owner.diagnostics().runtime.voices).toMatchObject({ active: 1, started: 1 });
+      expect(h.context.closeCalls).toBe(0);
+    } else {
+      await expect(h.playing).resolves.toEqual({ kind: 'silent', reason: 'activation-blocked' });
+      expect(h.owner.diagnostics().runtime.voices).toMatchObject({ active: 0, started: 0 });
+      expect(h.context.closeCalls).toBe(1);
+    }
+    await h.owner.dispose();
+  });
+
+  it('consumes a same-route settlement handoff once and releases its finite UI voice', async () => {
+    const h = harness({ creatureVoicesOn: false });
+    const handoff = h.owner.armNativePilotSettlementGesture()!;
+    expect(handoff).not.toBeNull(); expect(Object.isFrozen(handoff)).toBe(true);
+    await expect(h.owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+    h.owner.syncRoute(h.worldKey); h.owner.syncRoute(h.worldKey);
+    expect(handoff.accept()).toBe(true); expect(handoff.accept()).toBe(false);
+    await expect(h.owner.playPilotVoice(request('cf-pilot-ui-settlement', { category: 'ui', maxDurationMs: 700 })))
+      .resolves.toMatchObject({ kind: 'started' });
+    expect(h.contexts).toHaveLength(1); expect(h.pendingDeadlines()).toBe(1);
+    expect(h.owner.diagnostics().runtime.voices).toMatchObject({ started: 1, active: 1 });
+    handoff.cancel(); handoff.cancel();
+    expect(h.owner.diagnostics().runtime.voices.active).toBe(0); expect(h.pendingDeadlines()).toBe(0);
+    expect(h.contexts[0]!.bufferSources[0]!.disconnects).toBeGreaterThan(0);
+    await h.owner.dispose();
+  });
+
+  it.each([
+    ['Sound Off', { soundOn: false }], ['hidden', { visible: false }],
+    ['unanswerable', { answerable: false }], ['absent route', { routeKey: null }],
+    ['blank route', { routeKey: '   ' }], ['oversized route', { routeKey: 'x'.repeat(513) }],
+  ] as const)('refuses a settlement arm under %s before creating a context', async (_label, patch) => {
+    const h = harness(patch);
+    expect(h.owner.armNativePilotSettlementGesture()).toBeNull(); expect(h.contexts).toHaveLength(0);
+    await h.owner.dispose();
+  });
+
+  it.each(['cancel', 'ticket cancel', 'route', 'hide', 'answerability', 'mute', 'dispose'] as const)(
+    'permanently invalidates a pending settlement on %s even when original policy returns', async (change) => {
+      const h = harness(), ticket = h.owner.armNativePilotSettlementGesture()!;
+      if (change === 'cancel') h.owner.cancelPilotPlayback();
+      if (change === 'ticket cancel') ticket.cancel();
+      if (change === 'route') { h.owner.syncRoute('cf-foreign'); h.owner.syncRoute(h.worldKey); }
+      if (change === 'hide') { h.owner.setHidden(true); h.owner.setHidden(false); }
+      if (change === 'answerability') { h.owner.setAnswerable(false); h.owner.setAnswerable(true); }
+      if (change === 'mute') { h.policy.soundOn = false; h.owner.syncSettings(); h.policy.soundOn = true; h.owner.syncSettings(); }
+      if (change === 'dispose') await h.owner.dispose();
+      expect(ticket.accept()).toBe(false); ticket.cancel();
+      await expect(h.owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+      expect(h.owner.diagnostics().runtime.voices.started).toBe(0); expect(h.pendingDeadlines()).toBe(0);
+      await h.owner.dispose();
+    });
+
+  it.each(['visible', 'answerable', 'soundOn', 'routeKey'] as const)(
+    'rechecks changed %s at settlement acceptance without synchronization', async (field) => {
+      const h = harness(), ticket = h.owner.armNativePilotSettlementGesture()!;
+      if (field === 'routeKey') h.policy.routeKey = 'cf-foreign'; else h.policy[field] = false;
+      expect(ticket.accept()).toBe(false);
+      h.policy.routeKey = h.worldKey; h.policy.visible = true; h.policy.answerable = true; h.policy.soundOn = true;
+      expect(ticket.accept()).toBe(false);
+      await expect(h.owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+      await h.owner.dispose();
+    });
+
+  it.each(['game', 'pilot', 'settlement', 'landing'] as const)(
+    'leaves a newer %s voice alive when an old accepted settlement is cancelled', async (replacement) => {
+      const h = harness(), old = h.owner.armNativePilotSettlementGesture()!;
+      expect(old.accept()).toBe(true);
+      await h.owner.playPilotVoice(request('cf-pilot-ui-settlement', { category: 'ui', maxDurationMs: 700 }));
+      if (replacement === 'game') {
+        expect(h.owner.armNativeTameGesture()).toBe(true);
+        const claim = h.owner.claimCommittedTameGreeting(h.outcome, h.state)!;
+        await expect(h.owner.playClaimedTameGreeting(claim, counterpart(claim.eventKey))).resolves.toMatchObject({ kind: 'started' });
+      } else {
+        if (replacement === 'pilot') expect(h.owner.armNativePilotGesture()).toBe(true);
+        if (replacement === 'settlement') expect(h.owner.armNativePilotSettlementGesture()!.accept()).toBe(true);
+        if (replacement === 'landing') {
+          const next = h.owner.armNativePilotLandingGesture('cf-landed')!;
+          h.policy.routeKey = 'cf-landed'; h.owner.syncRoute('cf-landed'); expect(next.accept()).toBe(true);
+        }
+        await expect(h.owner.playPilotVoice(request('cf-pilot-new-owner'))).resolves.toMatchObject({ kind: 'started' });
+      }
+      old.cancel(); old.cancel(); expect(old.accept()).toBe(false);
+      expect(h.owner.diagnostics().runtime.voices).toMatchObject({ active: 1, started: 2 });
+      expect(h.contexts[0]!.closeCalls).toBe(0); await h.owner.dispose(); expect(h.pendingDeadlines()).toBe(0);
+    });
+
+  it('cannot promote a pending settlement after a superseding native gesture', async () => {
+    for (const replacement of ['game', 'pilot', 'settlement', 'landing'] as const) {
+      const h = harness(), old = h.owner.armNativePilotSettlementGesture()!;
+      if (replacement === 'game') h.owner.armNativeTameGesture();
+      if (replacement === 'pilot') h.owner.armNativePilotGesture();
+      if (replacement === 'settlement') h.owner.armNativePilotSettlementGesture();
+      if (replacement === 'landing') h.owner.armNativePilotLandingGesture('cf-landed');
+      old.cancel(); expect(old.accept()).toBe(false);
+      if (replacement === 'pilot') await expect(h.owner.playPilotVoice(request())).resolves.toMatchObject({ kind: 'started' });
+      else expect(h.owner.diagnostics().runtime.voices.started).toBe(0);
+      await h.owner.dispose();
+    }
+  });
+
+  it('captures delayed settlement activation once before success and never resumes after acceptance', async () => {
+    const context = new FakeContext(); context.state = 'suspended';
+    let release!: () => void, resumes = 0, creates = 0;
+    const resumed = new Promise<void>(resolve => { release = resolve; });
+    context.resume = async () => { resumes++; await resumed; context.state = 'running'; };
+    const owner = createTameGreetingAudioOwner({ createContext: () => { creates++; return context; },
+      readPolicy: () => ({ soundOn: true, creatureVoicesOn: false, visible: true, answerable: true, masterGain: .5, routeKey: 'cf-same' }),
+      nowMs: () => 100, scheduleVoiceDeadline: () => () => {}, verifyCounterpart: () => false });
+    const ticket = owner.armNativePilotSettlementGesture()!;
+    expect(resumes).toBe(1); expect(creates).toBe(1); await Promise.resolve();
+    expect(ticket.accept()).toBe(true); expect(ticket.accept()).toBe(false); expect(resumes).toBe(1);
+    const playing = owner.playPilotVoice(request('cf-pilot-ui-settlement', { category: 'ui', maxDurationMs: 700 }));
+    expect(context.bufferSources).toHaveLength(0); release();
+    await expect(playing).resolves.toMatchObject({ kind: 'started' });
+    expect(context.bufferSources).toHaveLength(1); expect(resumes).toBe(1); expect(creates).toBe(1);
+    await owner.dispose();
+  });
+
+  it.each(['resolve', 'reject'] as const)(
+    'does not close a replacement context when the old settlement activation later %s completes', async (completion) => {
+      const contexts: FakeContext[] = [];
+      let release!: () => void, reject!: (error: Error) => void;
+      const resumed = new Promise<void>((resolve, fail) => { release = resolve; reject = fail; });
+      const owner = createTameGreetingAudioOwner({ createContext: () => {
+        const context = new FakeContext();
+        if (contexts.length === 0) {
+          context.state = 'suspended'; context.resume = async () => { await resumed; context.state = 'running'; };
+        }
+        contexts.push(context); return context;
+      }, readPolicy: () => ({ soundOn: true, creatureVoicesOn: false, visible: true, answerable: true, masterGain: .5, routeKey: 'cf-same' }),
+      nowMs: () => 100, scheduleVoiceDeadline: () => () => {}, verifyCounterpart: () => false });
+      const old = owner.armNativePilotSettlementGesture()!; expect(old.accept()).toBe(true);
+      const pending = owner.playPilotVoice(request('cf-pilot-old-settlement'));
+      owner.setHidden(true); owner.setHidden(false);
+      // Hidden cancellation settles the detached context; its original browser
+      // resume is still pending and will complete only after the replacement.
+      await expect(pending).resolves.toEqual({ kind: 'silent', reason: 'pilot-policy-changed' });
+      expect(owner.armNativePilotSettlementGesture()!.accept()).toBe(true);
+      await expect(owner.playPilotVoice(request('cf-pilot-new-settlement'))).resolves.toMatchObject({ kind: 'started' });
+      expect(contexts).toHaveLength(2);
+      if (completion === 'resolve') release(); else reject(new Error('retired activation failed'));
+      await expect(pending).resolves.toEqual({ kind: 'silent', reason: 'pilot-policy-changed' });
+      old.cancel();
+      expect(contexts[0]!.bufferSources).toHaveLength(0); expect(contexts[1]!.closeCalls).toBe(0);
+      expect(owner.diagnostics().runtime.voices.active).toBe(1); await owner.dispose();
+    });
+
+  it('retires prior game ownership before same-route settlement without closing its context', async () => {
+    for (const phase of ['arm', 'claim', 'voice'] as const) {
+      const h = harness(); h.owner.armNativeTameGesture();
+      const claim = phase === 'arm' ? null : h.owner.claimCommittedTameGreeting(h.outcome, h.state)!;
+      if (phase === 'voice') await h.owner.playClaimedTameGreeting(claim!, counterpart(claim!.eventKey));
+      const started = h.owner.diagnostics().runtime.voices.started;
+      const ticket = h.owner.armNativePilotSettlementGesture()!;
+      expect(h.owner.diagnostics()).toMatchObject({ armed: 0, runtime: { voices: { active: 0 } } });
+      expect(ticket.accept()).toBe(true);
+      await expect(h.owner.playPilotVoice(request('cf-pilot-ui-settlement'))).resolves.toMatchObject({ kind: 'started' });
+      expect(h.owner.diagnostics().runtime.voices.started).toBe(started + 1);
+      expect(h.contexts).toHaveLength(1); expect(h.contexts[0]!.closeCalls).toBe(0); await h.owner.dispose();
+    }
+  });
+
+  it.each([
+    ['ecology', 'resolve'], ['ecology', 'reject'], ['expression', 'resolve'], ['expression', 'reject'],
+  ] as const)('retires a consumed %s continuation before settlement when activation will %s', async (kind, completion) => {
+    const h = consumedGamePlayback(kind), ticket = h.owner.armNativePilotSettlementGesture()!;
+    expect(ticket.accept()).toBe(true);
+    const playing = h.owner.playPilotVoice(request('cf-pilot-ui-settlement', { category: 'ui', maxDurationMs: 700 }));
+    const disposition = h.owner.diagnostics().lastDisposition;
+    if (completion === 'resolve') h.release(); else h.reject(new Error('old native resume rejected'));
+    await expect(h.playing).resolves.toEqual({ kind: 'silent', reason: 'policy-changed' });
+    if (completion === 'resolve') await expect(playing).resolves.toMatchObject({ kind: 'started' });
+    else await expect(playing).resolves.toEqual({ kind: 'silent', reason: 'pilot-activation-blocked' });
+    expect(h.owner.diagnostics().lastDisposition).toBe(disposition); expect(h.context.oscillators).toHaveLength(0);
+    expect(h.context.closeCalls).toBe(0); expect(h.creates()).toBe(1); expect(h.resumes()).toBe(1);
+    await h.owner.dispose();
+  });
+
+  it('snapshots request authority before resume and stops factory-time cancellation', async () => {
+    const h = harness(); h.owner.armNativePilotGesture();
+    const mutable = { ...request() };
+    const pending = h.owner.playPilotVoice(mutable);
+    mutable.key = 'game-event-after-await'; mutable.category = 'creature';
+    mutable.meaning = { kind: 'meaningful', counterpart: counterpart('fake-reward') };
+    await expect(pending).resolves.toMatchObject({ kind: 'started' });
+    expect(h.owner.diagnostics().runtime.creatureEmitters.active).toBe(0);
+    h.owner.cancelPilotPlayback(); h.owner.armNativePilotGesture();
+    const validFactory = request().create;
+    await expect(h.owner.playPilotVoice(request('cf-pilot-reentrant-close', {
+      create: (context, reservation) => { h.owner.cancelPilotPlayback(); return validFactory(context, reservation); },
+    }))).resolves.toEqual({ kind: 'silent', reason: 'pilot-policy-changed' });
+    expect(h.owner.diagnostics().runtime.voices.active).toBe(0);
+    expect(h.pendingDeadlines()).toBe(0);
+    await h.owner.dispose();
+  });
+});
+
+describe('decorative voice port (batch 2: the battle2 study through the accessible owner)', () => {
+  /** The kit intent for a battle cue (category, priority, concurrency) with the buffer-only graph the pilot test uses on the fake context. */
+  const decorativeRequest = (): AudioVoiceRequest => {
+    const { cueId: _cueId, ...intent } = planCues(['battle:cursor']).admitted[0]!;
+    const base: AudioVoiceRequest = { ...intent, nodeCount: 1, maxDurationMs: 300, meaning: Object.freeze({ kind: 'decorative' }), create: (context, reservation) => {
+      const source = (context as FakeContext).createBufferSource(); return Object.freeze({ source, sources: [source], output: source, nodes: [source], reservation });
+    } };
+    return Object.freeze(base);
+  };
+  it('passes a decorative request to the runtime only while the owner is live, visible, answerable and the policy is on; refuses everything else without touching the runtime', async () => {
+    const h = harness();
+    const port = h.owner.decorativeVoicePort();
+    const cold = port.playVoice(decorativeRequest()); expect(cold.kind).toBe('rejected'); expect(['not-running', 'muted']).toContain((cold as { reason: string }).reason); // no gesture yet: the runtime itself refuses (it starts muted and not running)
+    expect(h.owner.armNativeCombatGesture()).toBe(true); await Promise.resolve(); await Promise.resolve();
+    const started = port.playVoice(decorativeRequest()); expect(started).toMatchObject({ kind: 'started' });
+    expect(h.owner.diagnostics().runtime.voices.ids).toContain((started as { voiceId: string }).voiceId);
+    expect(port.playVoice({ ...decorativeRequest(), meaning: { kind: 'meaningful', counterpart: counterpart('x') } } as never)).toMatchObject({ kind: 'rejected', reason: 'invalid-request' });
+    expect(port.playVoice(null as never)).toMatchObject({ kind: 'rejected', reason: 'invalid-request' });
+    h.owner.setHidden(true); expect(port.playVoice(decorativeRequest())).toMatchObject({ kind: 'rejected', reason: 'not-running' }); h.owner.setHidden(false);
+    h.owner.setAnswerable(false); expect(port.playVoice(decorativeRequest())).toMatchObject({ kind: 'rejected', reason: 'not-running' }); h.owner.setAnswerable(true);
+    const muted = harness({ soundOn: false }); expect(muted.owner.armNativeCombatGesture()).toBe(false);
+    expect(muted.owner.decorativeVoicePort().playVoice(decorativeRequest())).toMatchObject({ kind: 'rejected', reason: 'muted' });
+    await h.owner.dispose(); expect(port.playVoice(decorativeRequest())).toMatchObject({ kind: 'rejected', reason: 'not-running' });
+  });
+  it('D15 Stage 3: the port stops a voice IT started (the soundscape\'s looping bed); control: an id it did not start — another port\'s, or unknown — is refused and the voice keeps playing', async () => {
+    const h = harness(); expect(h.owner.armNativeCombatGesture()).toBe(true); await Promise.resolve(); await Promise.resolve();
+    const port = h.owner.decorativeVoicePort(), other = h.owner.decorativeVoicePort();
+    const mine = port.playVoice(decorativeRequest()) as { voiceId: string }, theirs = other.playVoice({ ...decorativeRequest(), key: 'other', cooldownGroup: 'other', concurrencyGroup: 'other' }) as { voiceId: string };
+    expect(mine.voiceId).toBeTruthy(); expect(theirs.voiceId).toBeTruthy();
+    expect(port.stopVoice(theirs.voiceId)).toBe(false); expect(port.stopVoice('no-such-voice')).toBe(false);
+    expect(h.owner.diagnostics().runtime.voices.ids).toContain(theirs.voiceId);
+    expect(port.stopVoice(mine.voiceId)).toBe(true);
+    expect(h.owner.diagnostics().runtime.voices.ids).not.toContain(mine.voiceId);
+    expect(port.stopVoice(mine.voiceId), 'a stopped voice is no longer this port\'s').toBe(false);
   });
 });

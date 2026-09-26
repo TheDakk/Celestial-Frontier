@@ -1,0 +1,366 @@
+{
+  "name": "Tree Frog",
+  "family": "hopper",
+  "species": {
+    "name": "Tree Frog",
+    "aspect": 1.4,
+    "headFrac": 0.33,
+    "eyes": "prominent",
+    "posture": "sprawling",
+    "mustRead": [
+      "large round adhesive toe pads",
+      "bulging eyes set high on the head",
+      "long hind legs folded into tight Z-shapes"
+    ],
+    "note": "generic representative: a red-eyed / hylid tree frog. The toe discs are the diagnostic feature"
+  },
+  "genome": {
+    "seed": 3965697315,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 1,
+    "body": 6,
+    "loco": 2,
+    "trait": 8,
+    "size": 1,
+    "diet": 3,
+    "head": 7,
+    "limbs": 3,
+    "skin": 8,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 0,
+    "behavior": 2,
+    "habitat": 17,
+    "detail": 5,
+    "accent": 15,
+    "temper": 2,
+    "sense": 1,
+    "repro": 5,
+    "life": 4,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Tree Frog"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tree Frog\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3965697315\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "index": 37,
+  "contract": {
+    "id": "hopper",
+    "version": 1,
+    "clipSetId": "hopper-land-v1",
+    "graph": [
+      [
+        "pelvis",
+        "root"
+      ],
+      [
+        "spine",
+        "pelvis"
+      ],
+      [
+        "chest",
+        "spine"
+      ],
+      [
+        "neck",
+        "chest"
+      ],
+      [
+        "head",
+        "neck"
+      ],
+      [
+        "jaw",
+        "head"
+      ],
+      [
+        "hindFarRoot",
+        "pelvis"
+      ],
+      [
+        "hindFarKnee",
+        "hindFarRoot"
+      ],
+      [
+        "hindFarAnkle",
+        "hindFarKnee"
+      ],
+      [
+        "hindFarPaw",
+        "hindFarAnkle"
+      ],
+      [
+        "foreFarRoot",
+        "chest"
+      ],
+      [
+        "foreFarKnee",
+        "foreFarRoot"
+      ],
+      [
+        "foreFarAnkle",
+        "foreFarKnee"
+      ],
+      [
+        "foreFarPaw",
+        "foreFarAnkle"
+      ],
+      [
+        "hindNearRoot",
+        "pelvis"
+      ],
+      [
+        "hindNearKnee",
+        "hindNearRoot"
+      ],
+      [
+        "hindNearAnkle",
+        "hindNearKnee"
+      ],
+      [
+        "hindNearPaw",
+        "hindNearAnkle"
+      ],
+      [
+        "foreNearRoot",
+        "chest"
+      ],
+      [
+        "foreNearKnee",
+        "foreNearRoot"
+      ],
+      [
+        "foreNearAnkle",
+        "foreNearKnee"
+      ],
+      [
+        "foreNearPaw",
+        "foreNearAnkle"
+      ]
+    ],
+    "bodyAxis": [
+      "pelvis",
+      "chest"
+    ],
+    "joints": [
+      "root",
+      "pelvis",
+      "spine",
+      "chest",
+      "neck",
+      "head",
+      "jaw",
+      "hindFarRoot",
+      "hindFarKnee",
+      "hindFarAnkle",
+      "hindFarPaw",
+      "foreFarRoot",
+      "foreFarKnee",
+      "foreFarAnkle",
+      "foreFarPaw",
+      "hindNearRoot",
+      "hindNearKnee",
+      "hindNearAnkle",
+      "hindNearPaw",
+      "foreNearRoot",
+      "foreNearKnee",
+      "foreNearAnkle",
+      "foreNearPaw"
+    ],
+    "legs": [
+      "hindFar",
+      "foreFar",
+      "hindNear",
+      "foreNear"
+    ],
+    "limitsDeg": {
+      "root": {
+        "min": -30,
+        "max": 30
+      },
+      "pelvis": {
+        "min": -25,
+        "max": 25
+      },
+      "spine": {
+        "min": -30,
+        "max": 30
+      },
+      "chest": {
+        "min": -20,
+        "max": 20
+      },
+      "neck": {
+        "min": -35,
+        "max": 35
+      },
+      "head": {
+        "min": -35,
+        "max": 35
+      },
+      "jaw": {
+        "min": -30,
+        "max": 5
+      },
+      "hindFarRoot": {
+        "min": -70,
+        "max": 70
+      },
+      "hindFarKnee": {
+        "min": -110,
+        "max": 110
+      },
+      "hindFarAnkle": {
+        "min": -110,
+        "max": 110
+      },
+      "hindFarPaw": {
+        "min": -45,
+        "max": 45
+      },
+      "foreFarRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "foreFarKnee": {
+        "min": -75,
+        "max": 75
+      },
+      "foreFarAnkle": {
+        "min": -60,
+        "max": 60
+      },
+      "foreFarPaw": {
+        "min": -45,
+        "max": 45
+      },
+      "hindNearRoot": {
+        "min": -70,
+        "max": 70
+      },
+      "hindNearKnee": {
+        "min": -110,
+        "max": 110
+      },
+      "hindNearAnkle": {
+        "min": -110,
+        "max": 110
+      },
+      "hindNearPaw": {
+        "min": -45,
+        "max": 45
+      },
+      "foreNearRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "foreNearKnee": {
+        "min": -75,
+        "max": 75
+      },
+      "foreNearAnkle": {
+        "min": -60,
+        "max": 60
+      },
+      "foreNearPaw": {
+        "min": -45,
+        "max": 45
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.08,
+        "max": 0.65,
+        "kind": "distance",
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "leg/torso:hindFar",
+        "min": 0.25,
+        "max": 3.2,
+        "kind": "ratio",
+        "bones": [
+          "hindFarKnee",
+          "hindFarAnkle",
+          "hindFarPaw"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:foreFar",
+        "min": 0.25,
+        "max": 3.2,
+        "kind": "ratio",
+        "bones": [
+          "foreFarKnee",
+          "foreFarAnkle",
+          "foreFarPaw"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:hindNear",
+        "min": 0.25,
+        "max": 3.2,
+        "kind": "ratio",
+        "bones": [
+          "hindNearKnee",
+          "hindNearAnkle",
+          "hindNearPaw"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:foreNear",
+        "min": 0.25,
+        "max": 3.2,
+        "kind": "ratio",
+        "bones": [
+          "foreNearKnee",
+          "foreNearAnkle",
+          "foreNearPaw"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      }
+    ]
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "tail",
+      "external-ears"
+    ],
+    "hidden": [],
+    "folded": []
+  }
+}

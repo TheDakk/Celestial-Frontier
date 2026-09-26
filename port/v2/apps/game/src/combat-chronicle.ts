@@ -7,6 +7,8 @@
    exclusively so combatant/ability names are never interpreted as markup. */
 import {
   isCombatSettlementPlanV1,
+  runEncounterV1,
+  encounterHasGuardianPhaseV1,
   type CombatSettlementPlanV1,
 } from '@cf/domain-combatcore';
 import { hashInt, mulberry32 } from '@cf/domain-rand';
@@ -21,6 +23,30 @@ import {
 export const COMBAT_CHRONICLE_SCHEMA_V1 = 'cf-v2-combat-chronicle/v1' as const;
 export const COMBAT_CHRONICLE_START_DELAY_MS = 420 as const;
 export const COMBAT_CHRONICLE_ROW_DELAY_MS = 240 as const;
+/** With a pacer (the flagged battle2 stage), a row never waits longer than this for its release: a stalled or failed stage
+ * cannot hold the accessible log. */
+export const COMBAT_CHRONICLE_PACER_MAX_WAIT_MS = 12000 as const;
+
+/** An optional presentation that paces the log (Nick 2026-09-24: each row appears at its turn's impact on the painted
+ * stage). `waitFor` resolves when transcript row `transcriptIndex` may appear. Skip, hide, close and reduced motion are
+ * unchanged; without a pacer the fixed cadence is byte-for-byte the same. */
+export interface CombatChroniclePacerV1 { waitFor(transcriptIndex: number): Promise<void>; }
+export interface CombatChroniclePacerGateV1 {
+  readonly pacer: CombatChroniclePacerV1;
+  /** Release every row up to and including this transcript index. */
+  release(throughTranscriptIndex: number): void;
+  /** Release everything (the stage finished, failed or went away). */
+  releaseAll(): void;
+}
+export function createCombatChroniclePacerGateV1(): CombatChroniclePacerGateV1 {
+  let through = -1, all = false; const waiters = new Set<{ readonly index: number; readonly resolve: () => void }>();
+  const flush = (): void => { for (const w of [...waiters]) if (all || w.index <= through) { waiters.delete(w); w.resolve(); } };
+  return Object.freeze({
+    pacer: Object.freeze({ waitFor: (index: number): Promise<void> => (all || index <= through ? Promise.resolve() : new Promise<void>((resolve) => { waiters.add({ index, resolve }); })) }),
+    release: (index: number): void => { if (index > through) { through = index; flush(); } },
+    releaseAll: (): void => { all = true; flush(); },
+  });
+}
 
 export type CombatChronicleRowKindV1 =
   | 'intro'
@@ -200,6 +226,32 @@ function statisticsLine(name: string, stats: ChronicleTally): string {
 }
 
 /** Exact v1.8.9 Chronicle projection over one already-settled duel. */
+/* §20 Guardian party: one line for every fighter before the decisive one (how it left the stage and where it left the Guardian's
+   health), re-derived from the plan's own party + decisions by the pure encounter engine. The decisive leg then plays row by row as
+   before, so the transcript rows, cues and the painted stage stay aligned. */
+function partyPreludeRows(settlement: CombatSettlementPlanV1): CombatChronicleRowV1[] {
+  const party = settlement.party;
+  if (party === undefined || party.members.length < 2) return [];
+  const defender = settlement.encounter.defender;
+  const result = runEncounterV1({
+    mode: party.mode,
+    defender: { name: defender.name, genome: defender.battleGenome as never, phase: encounterHasGuardianPhaseV1(defender.kind) },
+    party: party.members.map((member) => (member.champion.kind === 'player'
+      ? { name: member.champion.name, genome: { seed: member.champion.genomeSeed }, stats: member.champion.stats as never, stance: member.stance }
+      : { name: member.champion.name, genome: member.champion.genome as never, stance: member.stance })),
+  }, party.decisions);
+  if (result.status !== 'finished') throw new TypeError('registered party settlement does not resolve');
+  return result.legs.filter((leg) => leg.fighterIndex !== party.decisiveIndex).map((leg, order) => {
+    const name = party.members[leg.fighterIndex]!.champion.name;
+    const left = Math.max(0, Math.round((leg.hpB / Math.max(1, leg.maxB)) * 100));
+    const how = leg.end === 'swapped' ? 'steps back to let the next fighter in'
+      : leg.end === 'fighter-fell' ? 'falls' : 'is worn out';
+    const text = `${order === 0 ? '⚔' : '↻'} ${name} ${how} — ${defender.name} is down to ${left}%.`;
+    return row({ kind: 'intro', tone: 'faint', displayText: text, shareText: text, transcriptIndex: null,
+      actorSide: null, targetSide: null, damageCue: null });
+  });
+}
+
 export function projectCombatChronicleV1(
   settlement: CombatSettlementPlanV1,
   cuePlan: CombatCuePlanV1,
@@ -231,6 +283,7 @@ export function projectCombatChronicleV1(
       shareText: 'The duel begins.', transcriptIndex: null,
       actorSide: null, targetSide: null, damageCue: null,
     }),
+    ...partyPreludeRows(settlement),
     row({
       kind: 'initiative', tone: 'faint',
       displayText: `Initiative: ${settlement.transcript.turnA0 ? championName : defenderName} moves first (AGI ${
@@ -365,9 +418,7 @@ export function projectCombatChronicleV1(
     ? `🏴 World settled! ${championName} triumphs — bioscans here are safe and ☄ Stardust awaits.`
     : settlement.champion.kind === 'player'
       ? '💀 You were overpowered. The world holds.'
-      : settlement.injury.status === 'set-hurt' && settlement.injury.reason === 'bred-crawl-home'
-        ? `🩸 ${championName} was broken — it crawls home Critical. The world holds.`
-        : `💀 ${championName} fell — lost forever. The world holds.`;
+      : `🩸 ${championName} fell and limps home to recover. The world holds.`;   /* §20: defeat is Recovery, never loss */
   const classLine = (name: string, statsBlock: CombatSettlementPlanV1['transcript']['A']): string => {
     const cls = statsBlock.cls;
     return name + (cls ? ` (${cls} Lv${statsBlock.lvl})` : '');
@@ -424,6 +475,9 @@ export class CombatChronicleController {
   #timer: ReturnType<typeof setTimeout> | null = null;
   #nextStep = 0;
   #generation = 0;
+  #pacer: CombatChroniclePacerV1 | null = null;
+  #pacerToken = 0;
+  #released = new Set<number>();
   #captionOwners = new Map<string, HTMLElement>();
   #playedCueIds = new Set<string>();
   #preludePending = false;
@@ -442,6 +496,12 @@ export class CombatChronicleController {
   }
 
   get presentationGeneration(): number { return this.#generation; }
+
+  /** Set BEFORE `start`: rows then wait for the pacer (max COMBAT_CHRONICLE_PACER_MAX_WAIT_MS each). null restores the cadence. */
+  setPacer(pacer: CombatChroniclePacerV1 | null): void {
+    this.#assertLive();
+    this.#pacer = pacer;
+  }
 
   attach(mount: HTMLElement): void {
     this.#assertLive();
@@ -467,6 +527,7 @@ export class CombatChronicleController {
     this.#captionOwners.clear();
     this.#playedCueIds.clear();
     this.#preludePending = true;
+    this.#released.clear();
     this.#mount.replaceChildren();
     this.#mount.dataset.combatChronicleGeneration = String(this.#generation);
     const log = this.#document.createElement('div');
@@ -640,9 +701,28 @@ export class CombatChronicleController {
       this.#finish(audible);
       return;
     }
+    const pending = chronicle.steps[this.#nextStep]!;
+    if (this.#pacer !== null && audible && !this.#released.has(pending.transcriptIndex)) {
+      this.#awaitPacer(this.#pacer, pending.transcriptIndex);
+      return;
+    }
     const step = chronicle.steps[this.#nextStep++]!;
     this.#renderStep(step, audible);
-    this.#schedule(COMBAT_CHRONICLE_ROW_DELAY_MS);
+    this.#schedule(this.#pacer !== null ? 0 : COMBAT_CHRONICLE_ROW_DELAY_MS);
+  }
+
+  #awaitPacer(pacer: CombatChroniclePacerV1, transcriptIndex: number): void {
+    const token = ++this.#pacerToken, generation = this.#generation;
+    const go = (): void => {
+      if (token !== this.#pacerToken || generation !== this.#generation || this.#chronicle === null) return;
+      this.#clearTimer();
+      this.#released.add(transcriptIndex);
+      this.#advance(true);
+    };
+    this.#timer = setTimeout(go, COMBAT_CHRONICLE_PACER_MAX_WAIT_MS);
+    let waited: Promise<void>;
+    try { waited = pacer.waitFor(transcriptIndex); } catch { waited = Promise.resolve(); }
+    waited.then(go, go);
   }
 
   #renderRemainderSynchronously(): void {
@@ -743,6 +823,7 @@ export class CombatChronicleController {
   #clearTimer(): void {
     if (this.#timer !== null) clearTimeout(this.#timer);
     this.#timer = null;
+    this.#pacerToken++;
   }
 
   #cancel(reason: CombatChronicleStopReasonV1, clearDom: boolean): void {
@@ -755,6 +836,7 @@ export class CombatChronicleController {
     this.#chronicle = null;
     this.#cuePlan = null;
     this.#nextStep = 0;
+    this.#released.clear();
     if (clearDom) this.#mount?.replaceChildren();
     if (hadPresentation) this.#onStopVoices?.(reason, generation);
   }

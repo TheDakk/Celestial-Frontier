@@ -1,0 +1,17 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "0c5a2950c50e1bb056ed93a34f7c7155b2f9b9fefb7beed4697a1dde425c2177",
+  "bindingHash": "3fea743ca89e118d2bcaa825b21046ee6afeaf0ab3385c2ef19dc62c7bef5294",
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ],
+    [
+      "neck",
+      "spine"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "Explicit contiguous paint at tiny torso root patch and long neck/spine coat edge; independently observed on this new Salamander. Legs/tail remain independently split."
+}

@@ -1,0 +1,7 @@
+# C3 status: blocked on isolated skin cost and phone qualification
+
+Claude's retained phone4x study measures **10.70 ms stage CPU p95 for the Chimpanzee/Centipede pair**, versus4.30ms unthrottled, with frame p95 16.8ms and zero rig refusals. Other 4× pairs are3.50–6.50ms. These are existing measurements from `audits/BATTLE2_LIBRARY_20260924/README.md`; this batch did not rerun films or measure a new CPU number.
+
+Budget decision for this batch: do not turn that pair measurement into a larger per-skin allowance or a phone acceptance claim. Keep the existing gates and the physical-iPhone prerequisite for default battle2. The claim that the skin is the principal cost is a useful diagnosis, but this table does not isolate skin solve/update time from Chimpanzee, stage, atlas updates and render submission. No cheaper skin is claimed.
+
+Claude request: retain one frame trace (or stage-owned counters) on the same Chimpanzee/Centipede case separating Centipede skin solve/update, the other rig and stage overhead, with the exact source, presentation scale and throttle. This replaces another unchanged seven-pair sweep. Codex then targets the observed hot path, preserving exact rest, all accepted bindings, fixed solver iterations/limits, contact gates and the resolved0.85× fold. Fresh timing and refusal evidence are needed before closing C3. A real phone probe remains a separate device qualification.

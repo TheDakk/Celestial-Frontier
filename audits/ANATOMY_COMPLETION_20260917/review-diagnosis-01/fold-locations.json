@@ -1,0 +1,28 @@
+[
+  {
+    "action": "disturb",
+    "ms": 67.16666666666667,
+    "fieldFolds": 84,
+    "exactSourceTriangleOwners": {
+      "branch-4-foliage": 52,
+      "branch-3-foliage": 46,
+      "trunk": 2
+    },
+    "unmappedTriangles": [],
+    "note": "A welded field triangle may support more than one painted part; counts are not additive."
+  },
+  {
+    "action": "presentation",
+    "ms": 1200,
+    "fieldFolds": 209,
+    "exactSourceTriangleOwners": {
+      "branch-4-foliage": 99,
+      "branch-3-foliage": 92,
+      "trunk": 12,
+      "branch-6-foliage": 17,
+      "branch-5-foliage": 30
+    },
+    "unmappedTriangles": [],
+    "note": "A welded field triangle may support more than one painted part; counts are not additive."
+  }
+]

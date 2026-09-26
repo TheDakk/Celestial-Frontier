@@ -1,0 +1,25 @@
+✔ Pinned-parent admission refuses a changed graph before accepting its metadata (2.327125ms)
+✔ Exact rewrite retains B ranges and unknown bytes while changing block/dims/scale/zero ranges (2.805041ms)
+✔ Absence of explicit zero, dtype changes, shared params, annotations and duplicate attrs are refused (2.288375ms)
+✔ Offset and tensor shape mutations fail the same serialized-result validator (1.150167ms)
+✔ Quarter mapping preserves represented weights for all256 Q8 values with asymmetric zeros and changing scales (0.656916ms)
+✔ Streaming writer/independent disk validator cover the middle, and reject corrupted source/data or wrong offsets (14.614125ms)
+✔ Output ownership rejects partial reuse without touching its existing evidence (1.264083ms)
+✔ known wire bytes decode varint, fixed64, length-delimited, and fixed32 fields (1.216959ms)
+✔ encoders match independent known unsigned uint64 wire fixtures (0.273166ms)
+✔ unknown and noncanonical valid tags, values, and lengths retain exact original bytes (0.173708ms)
+✔ nested rewrite preserves untouched unknown fields and existing field order (0.099334ms)
+✔ empty messages and empty length-delimited values preserve exact boundaries (0.086375ms)
+✔ malformed tags, invalid wire types, truncated varints and uint64 overflow are refused (0.237459ms)
+✔ fixed-width and length-delimited overruns fail before allocating payloads (0.122417ms)
+✔ input types and tightened limits reject invalid settings (0.145166ms)
+✔ encoder range and type failures cannot silently truncate values or field numbers (0.223084ms)
+✔ concatenation accepts mixed raw fields and Buffers but refuses invalid carriers and oversize output (0.17675ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 66.529083

@@ -1,0 +1,79 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/app-chrome-main-wiring.test.ts (6 tests | 3 failed) 371ms
+     × leaves Main as a projection/viewport adapter over one DOM lifecycle owner 12ms
+     × rejects literal and dynamic chrome lookups in the Earth scene geometry adapter 38ms
+     × negative-controls every status projection and the owner render contract 90ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/app-chrome-main-wiring.test.ts > MAIN-1 / CHROME-1 application chrome extraction wiring > leaves Main as a projection/viewport adapter over one DOM lifecycle owner
+AssertionError: expected [ 'surface-thin-adapter' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "surface-thin-adapter",
++ ]
+
+ ❯ tests/app-chrome-main-wiring.test.ts:252:51
+    250| describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () …
+    251|   it('leaves Main as a projection/viewport adapter over one DOM lifecy…
+    252|     expect(wiringErrors(mainSource, ownerSource)).toEqual([]);
+       |                                                   ^
+    253|   });
+    254|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/app-chrome-main-wiring.test.ts > MAIN-1 / CHROME-1 application chrome extraction wiring > rejects literal and dynamic chrome lookups in the Earth scene geometry adapter
+AssertionError: expected [ 'surface-thin-adapter' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "surface-thin-adapter",
++ ]
+
+ ❯ tests/app-chrome-main-wiring.test.ts:324:51
+    322|       replaceOnce(layout, 'appChrome.surfaceLayoutRects()', 'null'));
+    323|     expect(wiringErrors(withoutPort, ownerSource)).toContain('surface-…
+    324|     expect(wiringErrors(mainSource, ownerSource)).toEqual([]);
+       |                                                   ^
+    325|   });
+    326|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/app-chrome-main-wiring.test.ts > MAIN-1 / CHROME-1 application chrome extraction wiring > negative-controls every status projection and the owner render contract
+AssertionError: expected [ 'surface-thin-adapter' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "surface-thin-adapter",
++ ]
+
+ ❯ tests/app-chrome-main-wiring.test.ts:360:51
+    358|     const guessedRowOne = replaceOnce(ownerSource, "Math.max(40, searc…
+    359|     expect(wiringErrors(mainSource, guessedRowOne)).toContain('row-one…
+    360|     expect(wiringErrors(mainSource, ownerSource)).toEqual([]);
+       |                                                   ^
+    361|     const unescapedTrail = replaceOnce(ownerSource, '${escapeHtml(segm…
+    362|     expect(wiringErrors(mainSource, unescapedTrail)).toContain('trail-…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed | 5 passed (6)
+      Tests  3 failed | 85 passed (88)
+   Start at  16:10:22
+   Duration  1.07s (transform 213ms, setup 0ms, import 1.03s, tests 1.55s, environment 0ms)
+

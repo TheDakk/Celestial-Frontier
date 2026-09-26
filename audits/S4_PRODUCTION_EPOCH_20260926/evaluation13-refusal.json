@@ -1,0 +1,101 @@
+{
+  "status": "INCOMPLETE_INSTRUMENT_FAILURE_WITH_OBSERVED_PRODUCT_REDS",
+  "sourceHead": "59b0988174fafa4b3f7c3019a20ca99c5f840fb0",
+  "sourceSignature": "G",
+  "candidate": "candidate13-frozen.json",
+  "candidateStatus": "REJECTED_NOT_ADMITTED",
+  "attempts": 1,
+  "retry": false,
+  "epochConsumed": true,
+  "exit": 1,
+  "failure": "ENOSPC while opening titan-solo.json; no final report/source-stability closure or threat evaluation. Preserve partial prefix; no completed certificate.",
+  "observedFindings": [
+    {
+      "target": "normal planning 10\u201320pp",
+      "actualPp": 8.69140625
+    },
+    {
+      "target": "solo Guardian within \u00b15pp of v1",
+      "actualPp": -5.56640625
+    }
+  ],
+  "partialProductionCases": 8192,
+  "partialProductionMismatches": 0,
+  "partialRecoveryOutcomes": {
+    "cases": 9639,
+    "mismatches": 0,
+    "fallen": 7318,
+    "swapped": 2284
+  },
+  "restoration": {
+    "baseline": "c17906b2b12e43a140e3893af93bdaee4d85a679",
+    "file": "port/v2/packages/domain/combatcore/src/encounter.ts",
+    "sha256": "f9c0714f7db68eca952f6c1ff76eee18c6c06ea10844f60e0f96e62358dd9cd2",
+    "byteIdentical": true
+  },
+  "files": {
+    "evaluation13-once/candidate.json": {
+      "bytes": 3831,
+      "sha256": "6e245319d402d84708d9d2ffbf6b017abff83b1fa916faeb3945822ab2803cbf"
+    },
+    "evaluation13-once/easy-evaluation.json": {
+      "bytes": 6219377,
+      "sha256": "806681ec94a7927488058c27b482dbbb3214b0cbe0bf5786d7a4c7473454efb9"
+    },
+    "evaluation13-once/engine.mjs": {
+      "bytes": 160405,
+      "sha256": "d9bcdf8156779c07eba89d657b3afd1fc9717f58f2008dc23d2b19e9b792bbb0"
+    },
+    "evaluation13-once/engine.mjs.map": {
+      "bytes": 432160,
+      "sha256": "f5147ad5fe214b3ed03b88018809636e86d3f6db5c23e57dd794f540915bc13e"
+    },
+    "evaluation13-once/entry-source.txt": {
+      "bytes": 1190,
+      "sha256": "40eaf4bb17bdabd1395fc9eb2a4cc8aa54975c7e1e6a2956de67e3532c7bdb83"
+    },
+    "evaluation13-once/guardian-evaluation.json": {
+      "bytes": 9815029,
+      "sha256": "39953ab622a28b551fa18160e14299540d2c1734b766f1b8682e88a9dcb77f71"
+    },
+    "evaluation13-once/guardian-solo.json": {
+      "bytes": 6712007,
+      "sha256": "a3b26cd86510d34fe696192c3299359539159105f47d21f7885a0b33f31e7ef5"
+    },
+    "evaluation13-once/normal-evaluation.json": {
+      "bytes": 6220743,
+      "sha256": "e468630830c36656c941c2ffce9be12d6b09493d597a63ef839516c9b47ddfc4"
+    },
+    "evaluation13-once/registered-encounters.json": {
+      "bytes": 8652,
+      "sha256": "f017e00ab4288ab817a6a4e8acd9d9c00f3796417a755450067288bfa767827b"
+    },
+    "evaluation13-once/report-partial.json": {
+      "bytes": 2118,
+      "sha256": "2111aa6fe2534f4875d00deddae2e22ec3e4ee7cf1b7f3f3fcbe458806e0b1fe"
+    },
+    "evaluation13-once.log": {
+      "bytes": 1307,
+      "sha256": "f3a9f4a553432c57d674ba090a625300c8414989d1ac71e78923d0c7511acc40"
+    }
+  },
+  "restorationChecks": {
+    "combatTests": {
+      "passed": 67,
+      "files": 7,
+      "exit": 0
+    },
+    "rootValidate": {
+      "exit": 0,
+      "rendered": 1010,
+      "determinismProbes": 50,
+      "fingerprint": "unchanged"
+    }
+  },
+  "diskObservations": [
+    "After refusal:307MiB free,100% capacity",
+    "Later5.7GiB free without lane cleanup, then ENOSPC blocked Git index.lock and temporary signature verification",
+    "Removed ONLY this run ignored reproducible app dist (174MiB); source and all evidence retained;292MiB then available"
+  ],
+  "commitPreparationFailure": "git add/commit failed before signing because index.lock could not be created; no unsigned commit"
+}

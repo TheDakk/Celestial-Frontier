@@ -1,0 +1,60 @@
+{
+  "scope": "New arachnid policy tests only; synthetic canonical fixture, no paint/static/native claims. Explicit source/input snapshots, not a complete test-runner dependency inventory.",
+  "command": [
+    "npx",
+    "vitest",
+    "run",
+    "apps/game/src/creature-rig-contact-arachnid.test.ts"
+  ],
+  "exitCode": 1,
+  "files": [
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-arachnid.test.ts",
+      "sha256": "9a03023da851c4173c70a47509f579e10a7f8ea9256fc784f632cdbb8ed3d48d",
+      "afterSha256": "9a03023da851c4173c70a47509f579e10a7f8ea9256fc784f632cdbb8ed3d48d",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "7d7f32565ceb746e90d06eb213fd622fc12360e1c425d48849a4fa6bb65b96b5",
+      "afterSha256": "7d7f32565ceb746e90d06eb213fd622fc12360e1c425d48849a4fa6bb65b96b5",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "sha256": "963b450e281494d014d975c2114904194991f683775dec6e76bc5b4ae0f1343e",
+      "afterSha256": "963b450e281494d014d975c2114904194991f683775dec6e76bc5b4ae0f1343e",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "69f27faea2f2c1e50cbb49ed8b870c52c5c9f1ce07bba3395f823e615ed83303",
+      "afterSha256": "69f27faea2f2c1e50cbb49ed8b870c52c5c9f1ce07bba3395f823e615ed83303",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-contact-travel.ts",
+      "sha256": "4313b7f67d49c55084c5c344329ab1248cb4cdf830884fd32ff5f8078679c203",
+      "afterSha256": "4313b7f67d49c55084c5c344329ab1248cb4cdf830884fd32ff5f8078679c203",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "19a4f6a8e597ab5ca801a685908dcc65ceae316ca989038cddf541ee866acaed",
+      "afterSha256": "19a4f6a8e597ab5ca801a685908dcc65ceae316ca989038cddf541ee866acaed",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "082f95111f3cffa61a97fddb1e4500dfca0241c3398403b8fa19c0e1c25cf12e",
+      "afterSha256": "082f95111f3cffa61a97fddb1e4500dfca0241c3398403b8fa19c0e1c25cf12e",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/test-fixtures/family-records.json",
+      "sha256": "80bc11fc5f2045d783ef2c82e39898cffac2b680e7895f6e679da4157b586b84",
+      "afterSha256": "80bc11fc5f2045d783ef2c82e39898cffac2b680e7895f6e679da4157b586b84",
+      "unchanged": true
+    }
+  ]
+}

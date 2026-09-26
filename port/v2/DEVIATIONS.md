@@ -1,5 +1,339 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## Native landing and battle presentation — 2026-09-08
+
+Nick's24-hour local graphics/audio campaign supersedes UI-first sequencing. Optional Earth/Scout
+landing now binds its finite arrival and existing1.4s cue to exact native durable/rendered success;
+phone placement uses the existing Survey header. Native Chronicle adds bounded canonical portrait
+attacks/reactions, with no new combat simulation, rewards, genome or save fields. A fresh Explorer
+challenge exposed a pre-existing Frontier Resolve metadata exception; its player-only projection
+repair now permits the actual Chronicle and preserves strict malformed-creature rejection.
+
+Scoped native phone/desktop landing and battle checks PASS, including loaded art, real movement,
+finite cleanup, correct battle result and the running landing PCM source. All prior failed tests,
+covered/overflowed ship frames, lost battle diagnostic, durable-but-hidden Chronicle, and caught
+exception are retained in `../../audits/AV_PLAYABLE_IMPLEMENTATION_20260907/`. Current release
+inventory is83 fixed ordered bullets (missing-one control82), SHA
+354381f4679bfed6a4d269a0971ba8c3a28f2a43b59d4503403fb11499961ec9. Live Compendium producer is
+3c8cda1771d6230fb86e773fc0cde86cb3c51686b6cc8fce3141b38a7516e28b; measurement/ruler/ceilings
+unchanged. Full static results belong to that manifest; no current browser admission certificate.
+
+Signed837db4a's U2 attempt stopped on an unused test binding after3494 tests passed/1skip; no
+native U2 stage ran. The binding is corrected; prior unknown causes and U2–U4/HUMAN acceptance
+remain open. Inkscape export is requalified outside the sandbox. All eight anatomical families
+remain incomplete; next work preserves complete genomes and final morphology into Blender.
+No hosted action, main/develop promotion, release or deployment occurred.
+
+## U2 post-close clearance predecessor — 2026-09-06
+
+Signed3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d passed complete develop static (322files,
+3479tests,1skip). Small-phone passed all3 Capture outcomes, caption preferences/restoration and
+the exact Charters Close/frame receipt with an empty atomic Objective audit. It later stopped
+INSTRUMENT RED/zero product findings: the top-clearance setup toggled an already-closed Survey
+open and then waited5000ms for it to close. Large-phone and Slice were NOT RUN. The nine-carrier
+checkpoint and named terminal/browser read[]/[] retain this failure; no full U2 PASS is claimed.
+
+The bounded tool-only correction establishes the closed predecessor from observed state and
+uses a real native Close only when needed. Adjacent clearance checks must measure painted upper
+controls rather than pointer-transparent wrapper padding; the separate AppChrome variable still
+has its own complete-wrapper meaning. Existing floating-trail/fallback mutations and exact
+cleanup need named fonts/two-frame settlement before dependent geometry now that sheet layout
+is frame-scheduled. Native thresholds, negative controls, first-error retention and product bytes
+remain unchanged. Nick paused development with6% usage remaining. The unfinished patch is
+archived in audits/UI_U2_POST_CLOSE_PAUSED_20260906 and is UNAPPLIED; the working tool was
+restored exactly to signed3a61352. No patch tests, syntax check, native run or final review occurred.
+Read ROADMAP.md and audits/UI_U2_NEXT_SESSION_20260906.md before resuming.
+
+Prior entries/unknown causes remain. No U2 completion, Phase2 or hosted action.
+
+## U2 context hierarchy scope — 2026-09-06
+
+Signed3f1578e2e416cf5e566e1f799c16ea0a081ae037 passed complete develop static (322files,
+3475tests,1skip). Small-phone passed native Survey Close and the new allocation's exact guidance
+restoration. It then stopped PRODUCT RED/zero instrument failures at survey-close-guidance:
+context text was17px (baseline12.5px), with correct Mono/font/tone, but its new body-wide hierarchy
+sample compared unrelated hint keywords11px→17px and reported their lost1.5px difference.
+The retained report is unchanged. Large-phone, later Capture/Charters and Slice were NOT RUN.
+
+The bounded tool correction scopes the context hierarchy to its own #ctxbar subtree while
+retaining the same actual generic preference check, size/tone/font limits and nested hierarchy
+protection. The existing hint and other generic preference call sites stay unchanged. Product,
+release and producer bytes remain exactly3f1578e. All58 focused checks, all3 TypeScript programs
+and root validate PASS. Exact-source native verification of the tool-only correction is pending. No stale report or earlier finding is promoted to PASS.
+
+Earlier entries and both older unknown causes remain unchanged. No U2 completion, Phase2 or hosted action.
+
+## U2 generic sheet and biosphere capacity — 2026-09-06
+
+Signed8015ee4ff257b9c12db4eec2ff37808ec38d06ad passed complete develop static (322files,
+3459tests,1skip). Small-phone stopped PRODUCT RED with zero instrument failures while Charters
+was open: panel height107.5px and heading height84.56px left only7.94px of audited body room for
+a44px Accept target. Native scroll reached741 and exact restoration passed. The new Charters
+Close settlement wrapper was not reached. Large-phone and Slice were NOT RUN. The nine-carrier
+8015ee4 checkpoint retains this result; the older437a3aa Objective/Planetside cause remains open.
+
+The current bounded correction measures every visible portrait sheet's header/insets plus44px
+body, the stacked Survey/biosphere allocation, and standalone Planetside72px below actual painted
+upper chrome. Compact notices use4px vertical and8px horizontal padding. When capacity remains
+tight, passive hint and context paint may yield while preserving their text. Every decision starts
+with natural guidance; the dependent caption is measured with a temporary native hint-height
+projection, restored exactly afterward. Glass independently measures both captions and available
+space, tests their actual text preferences, and requires exact restoration. After native Close,
+remaining clipping is valid only when independent geometry still proves pressure. Earlier generic
+preference and native target-size/clipping checks remain strict. Focused84 checks, all3 TypeScript
+programs, root validate, one evidence build and101 release/budget/evidence checks PASS. Producer
+is aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe; measurement/ceilings are unchanged.
+The existing81-bullet draft has orderedSHA3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
+Exact-source native verification is pending; these checks are not a fresh Compendium certificate.
+
+All prior failures and both older unknown causes remain OPEN; no U2–U4 completion, physical UAT,
+Phase2, pilot or hosted closure is claimed.
+Earlier entries remain verbatim. The accepted U1 shell, emoji, gameplay and hosted boundary are unchanged.
+
+## U2 Objective/Planetside finding and timing evidence — 2026-09-06
+
+Signed source `437a3aa08f1e5cb3c1b0b134e02f8cbe92c56204` passed complete develop static
+(321 files, 3456 tests, 1 skipped). Small-phone stopped PRODUCT RED with zero instrument failures:
+`charters-opener-off` measured Objective bounds [148,60,310,322.88]; its centre [229,191.44] hit
+the Planetside heading. Large-phone and Slice were NOT RUN. The restoration strategy passed this
+real path, but the report omitted the actual Planetside/toast/lane geometry needed to attribute
+the new overlap.
+
+The qualified 13-carrier [Objective diagnostic](../../audits/UI_U2_OBJECTIVE_DIAGNOSTIC_20260906/)
+shows a settled 22.5px overlap, not the original centre hit. Its omitted charset/static-emoji
+and click-timing differences prevent causal closure. The bounded tool-only work binds existing
+Charters Close and immediate geometry in one call, retains immediate/microtask/named font-ready
+plus two-frame receipts, and audits the settled geometry atomically. Focused45 checks (three
+new cases/27 corrupt-receipt controls plus42 existing), all3 TypeScript programs and root validate
+PASS. Exact-source native verification is pending; product and release/producer pins are unchanged. The U3 readiness, collector and
+retainer preparations are archived under `audits/UI_U3_U4_PREPARATION_20260906` and remain unapplied.
+All prior failures and both older unknown causes remain OPEN; no U2–U4 completion, physical UAT,
+Phase2, pilot or hosted closure is claimed.
+Earlier amendments remain verbatim; the retained finding has no claimed repair.
+
+## U2 repeated absent-style failure and native diagnosis — 2026-09-06
+
+Signed source `2dba37946ef73d8d67e3aa9cdd8771ca5d541132` passed complete develop static
+(321 files, 3456 tests, 1 skipped). Small-phone stopped with zero product findings and one
+INSTRUMENT RED: the originally absent style on `#inventorysheet > section.inventory-sheet-card`
+restored as empty even after CSSOM clearing and two removals. Declarations and computed values
+matched; exact carrier identity failed. Large-phone and Slice were NOT RUN; nine evidence
+carriers retain the terminal result.
+
+Product sheet/header behavior and release/producer pins remain unchanged from c84aecd. A six-case
+isolated synthetic native diagnostic reproduced absent→empty RED with current CSSOM clearing.
+Explicit `setAttribute('style','')` before removal passed absent, present-empty and nonempty
+`smooth!important` cases, preserving raw scroll 77 and exact declarations/computed values/styles.
+The current strategy also passed both present-attribute cases. This establishes the bounded
+restoration strategy on synthetic native DOM; focused checks and a fresh canonical run remain
+pending. All earlier failures and both older unknown causes remain OPEN; U2–U4 completion,
+physical UAT, Phase2, pilot and hosted closure are not claimed.
+[The U2 audit](../../audits/UI_U2_SHEETS_20260906.md) owns the retained failure and diagnostic result.
+Earlier amendments remain verbatim; accepted U1 choices and ordered U3/U4 scope are unchanged.
+
+## U2 absent-style restoration instrument boundary — 2026-09-06
+
+Signed source `c84aecde00814460eec7027b067cd7f871b46441` passed complete develop static
+(321 files, 3453 tests, 1 skipped). Small-phone passed all three Capture outcomes, then stopped
+INSTRUMENT RED with zero product findings: an originally absent scroll-owner style attribute
+restored as empty despite two removals. The declaration/computed evidence matched; exact carrier
+identity did not. Large-phone and Slice were NOT RUN.
+
+Shared sheets retain measured header/inset clearance and 14px bottom scroll padding; Glass
+independently excludes painted headers and preserves tighter inner scrollports. The pending
+tool-only correction clears the live CSSOM before removing an originally absent style carrier,
+retains declaration/computed evidence and the second removal, and names the owner in restoration
+diagnostics. Originally present-empty styles remain present-empty. Product and release/producer
+pins are unchanged from c84aecd. Focused 42 checks, all three TypeScript programs and root
+validate PASS. The initial 40 PASS / 2 fixture failures are retained; only the test's prototype-chain
+lookup needed correction. Exact-source native verification remains pending. Prior failed reports
+and both older unknown causes remain OPEN; no U2/U3/U4, physical UAT, Phase2, pilot or hosted
+closure is claimed.
+[The U2 audit](../../audits/UI_U2_SHEETS_20260906.md) retains this failed result.
+Earlier amendments remain verbatim; accepted U1 choices and ordered U3/U4 scope are unchanged.
+
+## U2 shared sheet scroll clearance — 2026-09-06
+
+Signed source `f61aeb39cf649eebbe2edb30fe4f7b22bd2fcd29` passed complete develop static
+(320 files, 3435 tests, 1 skipped). Small-phone guidance preferences, post-Close restoration and
+all three Capture outcomes passed. Later Charters stopped PRODUCT RED/zero instrument when a
+starter action centre at[138,185.56] hit its sticky heading. Large-phone and Slice were NOT RUN.
+The generic audit had centred in the whole scrollport without accounting for sticky headings;
+the retained point/hit does not prove that native scrolling cannot reach the action.
+
+The bounded shared correction publishes each panel's measured `--cf-sheet-scroll-top` from its
+header/insets, with14px bottom scroll padding. Exact owned-style filtering avoids an observer
+loop while preserving reactions to external style changes and header refills; Survey keeps its
+existing owner. The audit independently measures header exclusions for body controls and retains
+full target bounds, scroll attempts and exact restoration. Product evidence build and159 focused checks PASS. A test-only TS2345 index typing error
+was corrected without changing runtime behavior; all three TypeScript programs and root validate
+then PASS. Fresh exact-source native verification remains pending. Prior reports and older unknown causes
+remain open; no U2/U3/U4, physical UAT, Phase2, pilot or hosted closure is claimed.
+Earlier amendments remain verbatim; ordered U3/U4 scope and accepted U1 choices are unchanged.
+
+## U2 yielded-guidance preference contract — 2026-09-06
+
+Signed U2 source `781b79cf75538b711bb770a42c189c6dc70eeb16` passed complete develop static
+(319 files, 3415 tests, 1 skipped), then stopped at one small-phone `PREFERENCE_SURFACE_INERT`
+result: the scene hint's deliberately clipped 1px text failed the older visible-sample requirement.
+The early live-toast Close remained PASS. Native Capture completion, large-phone and Slice were
+NOT RUN; the unchanged product has not yet proved the landed-action correction. The bounded tool correction preserves generic visible preference checks and verifies accessible
+hint yield, actual revealed preferences, exact restoration and guidance after native Survey Close.
+Its capacity decision independently measures native chrome/header/toast geometry; stale product
+variables cannot authorize clipping. Focused23 tests, all three TypeScript programs and root
+validate PASS. Fresh exact-source native verification remains pending.
+Prior RED reports and both older unknown causes stay open; U2 completion remains pending.
+Earlier entries remain verbatim. No scope, gameplay, Phase2, pilot or hosted authority changes.
+
+## U2 landed allocation and sticky-header clearance — 2026-09-06
+
+`56648b2` passed the 20-row normal review and static checks. Early live-toast Survey Close passed:
+the card was 167px high with a 52.5px compact notice. Later native Capture stopped RED with
+Planetside y204–299 (95px) and Survey y132–196 (64px): the settled, contained 44px Tame, Scavenge
+and Sample centers hit the sticky H2. Large-phone and Slice were NOT RUN. This is distinct from
+the corrected early Close case and the retained `489d780` live-toast space shortage.
+
+The bounded correction in progress reserves measured Survey header/edges plus 44px body room
+before Planetside's cap and pads native scroll/focus targets below the sticky header. If compact
+portrait Surface + Survey + the 72px biosphere band still cannot fit, scene-hint paint temporarily
+yields; original text is retained and returns with room or Survey closure. Accepted U1 geometry,
+compact-notification preference and full-message/AT/history/timer owners remain. New checks and
+native verification are pending. [The U2 audit](../../audits/UI_U2_SHEETS_20260906.md) owns evidence;
+earlier failed receipts and both older 08cd97d/c57aaaeb unknown causes remain OPEN. No gate or
+physical UAT closure is claimed. Earlier entries remain verbatim.
+
+## U2 compact notifications by measured space — 2026-09-06
+
+Nick explicitly chose “Use compact notifications when space is tight.” Portrait layouts compare
+the full toast with the sheet's measured header/edges plus 44px body room; Planetside preserves
+72px total from `--surface-chrome-bottom + 8px`. Compact mode retains the full-size headline and
+reserves its actual height. The full message remains in a visually hidden span, preserving DOM/AT,
+history, timer and Tame/Feed announcement roles. Survey's unchanged subtitle/badge now scroll below
+the sticky title and native Close. Guidance, text preferences and touch floors are unchanged.
+
+Signed `489d780` passed develop static (318 files, 3402 passed, 1 skipped), then small-phone
+retained one product RED and zero instrument failures: the same 180px live toast and identical
+before/after settlement left Survey 44px high with Close protruding 15px. This resolves the stale
+geometry hypothesis for that case; large-phone and Slice were NOT RUN. The compact correction's
+tests and native verification are pending. [The U2 audit](../../audits/UI_U2_SHEETS_20260906.md)
+retains all failed receipts. The older 08cd97d navigation and c57aaaeb restoration causes remain
+OPEN/unattributed; physical UAT and technical gates are not closed. Earlier entries remain verbatim.
+
+## U2 short-landscape spacing correction — 2026-09-06
+
+Nick flagged the cramped Settings/Training screenshot. The common ID sheet rule overrode a
+later class-only landscape rule, reducing Settings to155px instead of its safe-height workspace.
+The landscape owner now carries ID specificity; its native diagnostic checks independent
+left/top/width/max-height measurements and injects/restores the retained bad anchor. Planetside
+reserves painted toast height only across intersecting horizontal columns. A separate failed
+fixture had mixed Surface biosphere with Sol captions; source-derived Surface copy/markup now
+replaces and exactly restores the native caption nodes. This is presentation evidence only.
+All failed reports remain immutable; no native verification or technical-gate closure claimed.
+
+
+## U2–U4 authorized; U2 sheet/stack implementation — 2026-09-06
+
+Nick explicitly authorized proceeding through U2–U4, including Settings above Training.
+U2 now measures visible lower chrome and painted toast height to bound sheets, retains sticky
+direct title/Close siblings and the same Close node through refill, and keeps internal panel
+scrolling plus Compendium's virtual scroll owner. Settings remains reachable during lessons,
+uses its native Close on Escape and survives queued lesson focus/Atlas cleanup; completion
+still locks it. Current lesson targets alone receive stack marks. Emoji remain in product.
+
+Native and checkpoint verification are pending. The accepted U1 layout stays accepted for UAT;
+its technical gate remains OPEN. The b457a7a 22.5px Planetside/hint RED, all prior failed runs and
+the unknown 08cd97d/c57aaaeb causes remain unchanged. [Program authority](../UI_PARITY_PROGRAM_U1_U4.md)
+and [ROADMAP](../../ROADMAP.md) own the ordered next checkpoints; no Phase2 or hosted authority
+is added. Earlier ledger entries below remain verbatim.
+
+## U1 visual acceptance retained; proposed U2 boundary — 2026-09-06
+
+Clean b457a7a passed static315/3376/1skip, then small-phone retained a real22.5px
+Planetside/hint overlap (one product finding, zero instrument failures). Large-phone, Slice and
+later native Charts Settings execution did not run. The U1 technical gate remains OPEN.
+Sheet/lane spacing is U2 scope. [The proposed next checkpoint](../../audits/UI_U2_PROPOSED_SCOPE_20260906.md)
+requires Nick's scope decision before U2 begins; it preserves Settings-above-Training and carries
+the failed gate honestly. No further U1 rework, U2–U4 execution or hosted action started.
+[Current evidence](../../audits/UI_U1_HINT_CONTRAST_20260906.md) preserves every prior stop.
+Earlier entries/amendments below remain verbatim.
+
+
+## U1 guidance contrast correction — 2026-09-06
+
+Clean1609cf3 passed develop static (312 files/3333 passed/1 skipped), Slice and exact named
+verification. Small-phone then retained one hint contrast RED; large-phone did not run.
+The accepted layout remains fixed. Its plain guidance gains an opaque dark glyph outline and
+a conservative stroke-aware contrast check; the threshold remains4.5. Sourcea528791 passed
+static3358/1skip and native outline controls, then stopped on a stale dock-fault wording check
+with zero product findings. The instrument-only successor uses responsive-slot errors and
+passes6/6 retained-receipt controls plus rootTypeScript/validate. Its bb9ebe4 successor passed
+static3364/1skip and dock/outline controls, then found the intentionally hidden phone Charts
+shortcut. Existing on/off checks now target compact Settings→Star charts and retain the wide
+shortcut. Twelve source-executing route tests, root TypeScript and validate passed; fresh local
+browser completion is pending, with product unchanged. [The audit](../../audits/UI_U1_HINT_CONTRAST_20260906.md) owns current
+status and the23-carrier prior checkpoint. U2 is the next development batch after these checks;
+physical UAT and the two historical unknown causes remain open. No U2–U4, Phase2 or hosted work.
+Earlier ledger entries below are retained verbatim.
+
+
+## Bounded U1 rail-instrument correction — 2026-09-06
+
+Nick authorized finishing the remaining U1 checks. Slice now tests complete boundary ancestry
+and exact restoration; `ui-rail-copy-check.mjs` retains all four hidden right copies. Thirty
+focused tests passed; static validation, clean-candidate Slice and both phone canaries are pending.
+[The correction audit](../../audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md) owns this batch.
+Product and prior RED evidence remain unchanged; physical UAT and both older causes remain open.
+No U2–U4, Phase2 or hosted work. Previous ledger entries remain verbatim.
+
+## Local U1 validation stopped at Slice — 2026-09-06
+
+On unchanged `ce8912864fabbe5624651e76c06b94f95b734f39`, the tracked-input develop profile and
+normal three-view review passed. Slice retained two instrument findings: the left-gap mutant
+left its ancestor dock boundary active, and the right-rail hidden-copy inventory expected two
+controls instead of four. Both phone canaries were not run. Its ambient .DS_Store was preserved,
+so Slice correctly labelled the source dirty-diagnostic and noncertifying despite clean tracked
+bytes. [The checkpoint audit](../../audits/UI_U1_LOCAL_CHECKPOINT_20260906.md) owns evidence and
+the next bounded correction. No product changes, retry, U2–U4, Phase2 or hosted work. Physical UAT
+and the two older unknown failure causes remain open. Prior ledger entries remain verbatim.
+
+## U1 accepted for UAT; verification diagnosis — 2026-09-06
+
+Nick accepted the Survey/Charters layout for UAT at product053ef439774520577071f0ca50887337dd938755,
+records b08c9521c90f806e42496361127c542d206628f5. This supersedes the review stop and older
+geometry wording below: Survey replaces Charters on all responsive layouts; the objective is
+its sole native opener. Five compact scene buttons sit above four smaller utilities, with a
+320px responsive cap and the existing short-landscape safe-column cap. Current detailed metrics
+remain in UI_PRESENTATION.md. Acceptance for UAT does not certify physical-device UAT or close
+the two retained technical blockers.
+
+The next bounded step instruments the existing phone restoration review: exact evaluation
+identity and font/two-frame phase receipts, with portable Escape inputs. Product, transport
+rulers and the original action sequence stay unchanged. One phone-only observation passed on
+381ddf59858bd863640703e83d2d98beeedf59fa, retaining the original23 native actions and complete
+390×844 restoration phases. The older failure causes remain unknown. The next bounded work is
+remaining local U1 checkpoint validation; audits/UI_U1_UAT_RESTORATION_20260906.md owns current
+evidence. U2–U4, Phase2 and hosted actions have
+not started. The earlier production-layout amendment is retained below as historical context.
+
+## U1 production-layout amendment — 2026-09-06
+
+Nick's latest screenshot instructions supersede the earlier unified wide launcher and visible
+Current view. Verified live production CSS is the reference; only adapted v2 shell owners are
+edited. Phone uses icon-only 60px boards/64px centers with visible Prime N/9. Wide controls use
+actual native rails, top-center Prime, right Search/Objective/Atlas/Shipyard and corner utilities.
+Name-only Inventory wraps fully; Health keeps its caption/red heart/ratio. Hint is plain text.
+Canonical trail remains populated but hidden, as in production; historical visible-trail faults
+are injected and restored explicitly. No test may call that injected state the native baseline.
+
+Safety adaptations remain 44px targets,8px owned gaps/52px wide utility pitch, measured header
+height, >=701 tablet layout and the <=900 short-landscape safe-column exception. The old bell
+misalignment and 44px coarse targets at 42px anchors are not copied. The caption's flat contrast
+backing and72px roster band remain. U1 stops for Nick's review before U2; no Phase2 approval.
+Saved notification history retains its narrow existing-schema/persistence authorization.
+Current metrics live in UI_PRESENTATION.md and the new production-layout audit. Prior accepted
+amendments and implementation/red history remain in UI_PARITY_PROGRAM_U1_U4.md, existing audits
+and ROADMAP_ARCHIVE.md. The pasted U2 Training/Settings order still needs reconciliation.
+
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core

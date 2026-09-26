@@ -1,0 +1,47 @@
+{
+  "sourceLabelsReused": false,
+  "owner": "independent polygons observed on this generation01 painting",
+  "counts": [
+    170962,
+    1929,
+    2805,
+    11705,
+    10714,
+    15164,
+    15690,
+    1274,
+    1631,
+    9814,
+    9915,
+    11868,
+    14766,
+    13743,
+    18317,
+    25770,
+    42474,
+    9900,
+    26432,
+    40458,
+    11438,
+    2787,
+    3210
+  ],
+  "hiddenParts": [],
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "rgbaChangedChannels": 0,
+  "parts": {
+    "id": "p1-crab",
+    "parts": 23,
+    "atlasSize": {
+      "width": 2032,
+      "height": 1300
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  }
+}

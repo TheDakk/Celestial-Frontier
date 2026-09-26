@@ -1,0 +1,11 @@
+{
+  "createdAt": "2026-09-08T04:23:08.155Z",
+  "pid": 7566,
+  "root": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-av-playable-local-20260908",
+  "url": "http://127.0.0.1:50689/?avpilot=1",
+  "sourceCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "sourceState": "dirty-local-only",
+  "publishable": false,
+  "contentSha256": "5d1da7777da722ccb04b4dfc7b258c1b85f98fb1c3e0ae47fa5286217ac292d2",
+  "manifestSha256": "4568e3aa013dc712094c5624a72b7ff1654efdf8b36205f76796385d0903f24a"
+}

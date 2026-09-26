@@ -1,0 +1,403 @@
+{
+  "name": "Tarantula",
+  "family": "arachnid",
+  "species": {
+    "name": "Tarantula",
+    "aspect": 1.8,
+    "headFrac": 0.3,
+    "eyes": "small",
+    "posture": "sprawling",
+    "mustRead": [
+      "eight thick densely hairy legs",
+      "two-part body: fused cephalothorax plus a bulbous abdomen",
+      "downward-stabbing fangs flanked by leg-like pedipalps"
+    ],
+    "note": "no antennae and no separate head; the front section carries all eight legs plus the pedipalps"
+  },
+  "genome": {
+    "seed": 3680049014,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 13,
+    "body": 9,
+    "loco": 0,
+    "trait": 17,
+    "size": 5,
+    "diet": 5,
+    "head": 8,
+    "limbs": 1,
+    "skin": 8,
+    "tail": 1,
+    "pattern": 0,
+    "eyes": 3,
+    "behavior": 7,
+    "habitat": 3,
+    "detail": 0,
+    "accent": 15,
+    "temper": 4,
+    "sense": 9,
+    "repro": 7,
+    "life": 2,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Tarantula"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tarantula\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3680049014\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"17\"]]]]",
+  "index": 41,
+  "contract": {
+    "id": "arachnid",
+    "version": 1,
+    "clipSetId": "arachnid-v1",
+    "graph": [
+      [
+        "cephalothorax",
+        "root"
+      ],
+      [
+        "abdomen",
+        "cephalothorax"
+      ],
+      [
+        "cheliceraFar",
+        "cephalothorax"
+      ],
+      [
+        "cheliceraNear",
+        "cephalothorax"
+      ],
+      [
+        "leg1FarKnee",
+        "cephalothorax"
+      ],
+      [
+        "leg1FarFoot",
+        "leg1FarKnee"
+      ],
+      [
+        "leg1NearKnee",
+        "cephalothorax"
+      ],
+      [
+        "leg1NearFoot",
+        "leg1NearKnee"
+      ],
+      [
+        "leg2FarKnee",
+        "cephalothorax"
+      ],
+      [
+        "leg2FarFoot",
+        "leg2FarKnee"
+      ],
+      [
+        "leg2NearKnee",
+        "cephalothorax"
+      ],
+      [
+        "leg2NearFoot",
+        "leg2NearKnee"
+      ],
+      [
+        "leg3FarKnee",
+        "cephalothorax"
+      ],
+      [
+        "leg3FarFoot",
+        "leg3FarKnee"
+      ],
+      [
+        "leg3NearKnee",
+        "cephalothorax"
+      ],
+      [
+        "leg3NearFoot",
+        "leg3NearKnee"
+      ],
+      [
+        "leg4FarKnee",
+        "cephalothorax"
+      ],
+      [
+        "leg4FarFoot",
+        "leg4FarKnee"
+      ],
+      [
+        "leg4NearKnee",
+        "cephalothorax"
+      ],
+      [
+        "leg4NearFoot",
+        "leg4NearKnee"
+      ]
+    ],
+    "bodyAxis": [
+      "abdomen",
+      "cephalothorax"
+    ],
+    "joints": [
+      "root",
+      "cephalothorax",
+      "abdomen",
+      "cheliceraFar",
+      "cheliceraNear",
+      "leg1FarKnee",
+      "leg1FarFoot",
+      "leg1NearKnee",
+      "leg1NearFoot",
+      "leg2FarKnee",
+      "leg2FarFoot",
+      "leg2NearKnee",
+      "leg2NearFoot",
+      "leg3FarKnee",
+      "leg3FarFoot",
+      "leg3NearKnee",
+      "leg3NearFoot",
+      "leg4FarKnee",
+      "leg4FarFoot",
+      "leg4NearKnee",
+      "leg4NearFoot"
+    ],
+    "legs": [
+      "leg1Far",
+      "leg1Near",
+      "leg2Far",
+      "leg2Near",
+      "leg3Far",
+      "leg3Near",
+      "leg4Far",
+      "leg4Near"
+    ],
+    "limitsDeg": {
+      "root": {
+        "min": -25,
+        "max": 25
+      },
+      "cephalothorax": {
+        "min": -15,
+        "max": 15
+      },
+      "abdomen": {
+        "min": -35,
+        "max": 65
+      },
+      "cheliceraFar": {
+        "min": -45,
+        "max": 45
+      },
+      "cheliceraNear": {
+        "min": -45,
+        "max": 45
+      },
+      "leg1FarKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "leg1FarFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "leg1NearKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "leg1NearFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "leg2FarKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "leg2FarFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "leg2NearKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "leg2NearFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "leg3FarKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "leg3FarFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "leg3NearKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "leg3NearFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "leg4FarKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "leg4FarFoot": {
+        "min": -75,
+        "max": 75
+      },
+      "leg4NearKnee": {
+        "min": -65,
+        "max": 65
+      },
+      "leg4NearFoot": {
+        "min": -75,
+        "max": 75
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.05,
+        "max": 0.7,
+        "kind": "distance",
+        "axis": [
+          "abdomen",
+          "cephalothorax"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "leg/body:leg1Far",
+        "min": 0.15,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "leg1FarKnee",
+          "leg1FarFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "cephalothorax"
+        ]
+      },
+      {
+        "id": "leg/body:leg1Near",
+        "min": 0.15,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "leg1NearKnee",
+          "leg1NearFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "cephalothorax"
+        ]
+      },
+      {
+        "id": "leg/body:leg2Far",
+        "min": 0.15,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "leg2FarKnee",
+          "leg2FarFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "cephalothorax"
+        ]
+      },
+      {
+        "id": "leg/body:leg2Near",
+        "min": 0.15,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "leg2NearKnee",
+          "leg2NearFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "cephalothorax"
+        ]
+      },
+      {
+        "id": "leg/body:leg3Far",
+        "min": 0.15,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "leg3FarKnee",
+          "leg3FarFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "cephalothorax"
+        ]
+      },
+      {
+        "id": "leg/body:leg3Near",
+        "min": 0.15,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "leg3NearKnee",
+          "leg3NearFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "cephalothorax"
+        ]
+      },
+      {
+        "id": "leg/body:leg4Far",
+        "min": 0.15,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "leg4FarKnee",
+          "leg4FarFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "cephalothorax"
+        ]
+      },
+      {
+        "id": "leg/body:leg4Near",
+        "min": 0.15,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "leg4NearKnee",
+          "leg4NearFoot"
+        ],
+        "axis": [
+          "abdomen",
+          "cephalothorax"
+        ]
+      }
+    ]
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "sting"
+    ],
+    "hidden": [],
+    "folded": []
+  }
+}

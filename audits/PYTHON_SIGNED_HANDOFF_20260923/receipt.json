@@ -1,0 +1,44 @@
+{
+  "implementationCommit": "469982364ee6d365806280bedcba7f52bc694f0c",
+  "signatureStatus": "G",
+  "verificationReceipt": "e66e8d",
+  "successfulCommitReceipt": "1adc05",
+  "priorRefusals": [
+    "6f97f5",
+    "14dd00"
+  ],
+  "workspace": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "branch": "openai/mac",
+  "trackedWorktreeCleanBeforeDocClosure": true,
+  "untrackedPreserved": [
+    ".DS_Store"
+  ],
+  "localTrackingComparison": {
+    "behind": 0,
+    "ahead": 2,
+    "remoteQueried": false
+  },
+  "pushPerformed": false,
+  "evidence": [
+    {
+      "path": "audits/PYTHON_OPEN_POSE_20260923/README.md",
+      "sha256": "27b86c941d47e005b9c9a9defeb79f74e70a87be335985215cde597d99bea7bf"
+    },
+    {
+      "path": "audits/PYTHON_OPEN_POSE_20260923/result.json",
+      "sha256": "ad7d719ea963dabc12f496d97b43d26b0f42e803fa82101ba07c625e926ceb87"
+    },
+    {
+      "path": "audits/PYTHON_OPEN_POSE_20260923/manifest.json",
+      "sha256": "7778f7ff92b7b266bea9b0965eb55c1768600438a17049781e7c3f1c386c84eb"
+    },
+    {
+      "path": "audits/PYTHON_OPEN_POSE_20260923/review-sheet.png",
+      "sha256": "8e30985c8bb01a20be13ca9014568ed2129c87f10bf0c83c48f4b4de30bdd2fa"
+    },
+    {
+      "path": "audits/PYTHON_OPEN_POSE_20260923/signing-refusal.json",
+      "sha256": "f668f5418b19b193aa97e1865aed1d90d0e1b0f8e1d5829d52a7560d9eb64105"
+    }
+  ]
+}

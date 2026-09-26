@@ -1,0 +1,19 @@
+{
+  "schema": "cf-charm-visual-review/v1",
+  "status": "NEEDS_ART_REVISION",
+  "humanAcceptance": false,
+  "inspected": [
+    "first/natural/pose-001.png",
+    "first/storybook/pose-001.png",
+    "first/storybook/pose-021.png",
+    "samples-final/comparison.png"
+  ],
+  "findings": [
+    "Fine coat adds detail but does not resolve construction-model form",
+    "Broad coat reads as noisy stippling",
+    "Limited snout/face character and abrupt shoulder/limb junctions remain",
+    "Treatments insufficiently distinct to establish a production direction"
+  ],
+  "next": "Incorporate incoming user review before further style changes",
+  "structuralAndMotionPassIsNotArtAcceptance": true
+}

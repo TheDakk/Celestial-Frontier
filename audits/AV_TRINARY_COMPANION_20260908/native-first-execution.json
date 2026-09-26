@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "audits/AV_TRINARY_COMPANION_20260908/native-runner.mjs",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/dist",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_TRINARY_COMPANION_20260908/native-first"
+  ],
+  "startedAt": "2026-09-08T10:43:18.302472+00:00",
+  "status": "FAIL",
+  "exitCode": 1,
+  "seconds": 23.212
+}

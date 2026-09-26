@@ -1,0 +1,62 @@
+{
+  "schema": "cf.signed-local-checkpoint/v1",
+  "startedAt": "2026-09-09T12:35:45.604668+00:00",
+  "status": "PASS",
+  "scope": "Queued landing proof and Claude direction handoff",
+  "steps": [
+    {
+      "command": [
+        "git",
+        "add",
+        "--",
+        "ART_DIRECTION.md",
+        "ROADMAP.md",
+        "UI_PRESENTATION.md",
+        "celestial-frontier-codebase-reference.md",
+        "tools/local-image-generation",
+        "audits/CLAUDE_DIRECTION_REVIEW_20260909"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "gpg.ssh.program=/usr/bin/ssh-keygen",
+        "commit",
+        "-S",
+        "-m",
+        "Prototype queued landfall progress and verify fixed-shape inference"
+      ],
+      "exitCode": 0,
+      "stdout": "[openai/mac 8bdbea9a] Prototype queued landfall progress and verify fixed-shape inference\n 82 files changed, 52238 insertions(+), 33 deletions(-)\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/BATCH_RESULT.md\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/COMPARISON.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/HANDOFF.md\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/REMOTE_READ_FAILURE.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/SSH_READ_RECOVERY.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/controls-01.log\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01/canonical-input/canonical-producer.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01/canonical-input/canonical-snapshot.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01/canonical-input/manifest.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01/progress.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01/raw-output.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01/recipe.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01/result.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01/start.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01/ui-complete-phone-layout.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01/ui-complete-returned-planet.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01/ui-running-journal.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-1024-01/ui-running-progress.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/fixed-shapes-native-01.log\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-cancel-controls-01.log\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01.log\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/01-cancel-current-cancel-outcome.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/01-cancel-current.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/02-cancel-without-signal-cancel-outcome.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/result.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/run.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/served-source/browser-proof-current.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/served-source/browser-proof-omit-fetch-signal.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/served-source/browser-proof-omit-preparation-overlay.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/served-source/browser-proof.html\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/served-source/landing-progress.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/served-source/synthetic-stage-worker.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/start.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-01/synthetic-recipe.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02.log\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/01-cancel-current-cancel-outcome.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/01-cancel-current.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/02-cancel-without-signal-cancel-outcome.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/02-cancel-without-signal.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/03-cancel-restored-cancel-outcome.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/03-cancel-restored.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/04-success-failure-retry-current-failure-outcome.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/04-success-failure-retry-current-retry-success.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/04-success-failure-retry-current.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/05-stale-view-without-overlay-failure-outcome.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/05-stale-view-without-overlay.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/06-success-failure-retry-restored-failure-outcome.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/06-success-failure-retry-restored-retry-success.png\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/06-success-failure-retry-restored.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/result.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/run.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/served-source/browser-proof-current.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/served-source/browser-proof-omit-fetch-signal.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/served-source/browser-proof-omit-preparation-overlay.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/served-source/browser-proof.html\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/served-source/landing-progress.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/served-source/synthetic-stage-worker.mjs\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/start.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/recipe-preparation-native-02/synthetic-recipe.json\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/root-validation-01.log\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/root-validation-preparation-01.log\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/server-controls-outside-sandbox-01.log\n create mode 100644 audits/CLAUDE_DIRECTION_REVIEW_20260909/ui-observer-controls-01.log\n create mode 100644 tools/local-image-generation/denoiser-shapes.mjs\n create mode 100644 tools/local-image-generation/denoiser-shapes.test.mjs\n create mode 100644 tools/local-image-generation/landing-progress.mjs\n create mode 100644 tools/local-image-generation/landing-progress.test.mjs\n create mode 100644 tools/local-image-generation/landing-ui-evidence.mjs\n create mode 100644 tools/local-image-generation/landing-ui-evidence.test.mjs\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "gpg.ssh.allowedSignersFile=/private/tmp/cf-queued-allowed-signers-qbhx90a9"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "Good \"git\" signature for 79046704+TheDakk@users.noreply.github.com with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    }
+  ],
+  "commit": "8bdbea9a65b1f64c09906fd99589d75e5d8bc50a",
+  "remainingStatus": "?? .DS_Store\n",
+  "finishedAt": "2026-09-09T12:35:46.076143+00:00"
+}

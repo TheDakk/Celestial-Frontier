@@ -1,0 +1,40 @@
+{
+  "status": "CONTACT_PASS",
+  "sampleCount": 122,
+  "rootAccommodationSamples": 0,
+  "maxRootAccommodationNorm": 0,
+  "maxRootAccommodationNormPx": 0,
+  "presentationMs": 10716.666666666666,
+  "presentationAgeMs": 133.28397506226975,
+  "passed": 122,
+  "refused": 0,
+  "provenOverCapSamples": 0,
+  "boundPx": 23.31090731824911,
+  "firstRefusal": null,
+  "firstProvenOverCap": null,
+  "worst": {
+    "id": "victory",
+    "ms": 295,
+    "maximumLowerBoundPx": 6.623257289075755,
+    "chains": [
+      {
+        "id": "leg4Near",
+        "hip": {
+          "x": 0.5828413891365901,
+          "y": 0.4029606438941672
+        },
+        "target": {
+          "x": 0.09330143540669857,
+          "y": 0.7807017543859649
+        },
+        "distance": 0.6183346285414079,
+        "minimum": 0.08638685735890517,
+        "maximum": 0.6130529241641545,
+        "translationLowerBound": 0.005281704377253393,
+        "translationLowerBoundPx": 6.623257289075755,
+        "innerTranslationLowerBound": 0,
+        "exceedsCap": false
+      }
+    ]
+  }
+}

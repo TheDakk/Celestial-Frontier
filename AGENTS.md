@@ -1,5 +1,24 @@
 # AGENTS.md — Celestial Frontier
 
+
+## Current operating model — adopted 2026-09-25
+
+`PARALLEL_GIT_PROTOCOL.md`'s September25 override is current: repo-level
+`git-ssh-sign-cf` / `cf_agents_signing.pub` uses the macOS keychain; origin is
+HTTPS via gh. Never commit unsigned; the completed one-time Codex proof is G.
+Read the other lane's absolute read-only mailbox at run start AND batch end;
+write replies/status/evidence only to this lane's mailbox. No Nick relay or
+waiting for remote pushes: signed commits are visible in the shared Git store.
+Standing authority permits hand-reconciled --no-ff lane merges and own-branch
+pushes when the required local battery is green. PR/label/hosted/develop/main/
+release/deploy gates remain explicit. Batch questions and use the mailbox for
+cross-lane requests. The later signed D1/D5/D6 decisions are recorded in Claude's
+DECISIONS.md; no label while any required gate is red. D21 (September26) lifts
+the battle2 probe wait for development only; production still requires I5. D22/D23
+puts the generated creature pipeline first. Development is Mac-only: never push to,
+merge from, or recreate either retired Windows branch. This override supersedes older
+1Password/SSH-transport, push-wait and Nick-as-relay wording below.
+
 **GitHub Actions budget gate:** read `GITHUB_ACTIONS_BUDGET.md` before any
 GitHub write. Its `FROZEN` mode overrides generic push/merge/dispatch/publish
 instructions in this file: work and commit locally, but do not push, label,
@@ -8,6 +27,21 @@ hosted attempt. The repository is public as of 2026-08-20, so standard hosted
 runners are free while it stays public; `FROZEN` remains an efficiency/intent
 gate, and the 3,000 cap applies fail-closed if visibility changes. Never infer a
 monthly reset or visibility change.
+
+**Sprint mode — no per-step stops (Nick, 2026-09-23: "stop, generate something, stop… fix it completely").**
+Both agents work in LARGE batches: carry a multi-part request or program to completion in one run; decide routine calls
+(tuning, order, tooling shape, look options Nick asked for suggestions on) by building the recommended option, stating it
+in one line and keeping it reversible; batch every question into the end-of-run report; a blocked item is written down
+and the run continues with everything else. Stop only at a real gate: push / PR / label / hosted attempt / merge /
+release / deploy (Nick's word, `GITHUB_ACTIONS_BUDGET.md`), a sealed gate or measurement that would have to be weakened
+or re-bound, a signing refusal one retry does not clear, or the work being done. This overrides the older "ask Nick
+before a materially larger loop" line for work inside an authorized program.
+
+**Lane mailboxes — no relay through Nick (2026-09-25, `audits/OPERATING_MODEL_20260925/README.md`).** Each lane writes asks for the other only
+in its own worktree (`audits/MAILBOX/TO_CODEX.md` in `anthropic/mac`, `audits/MAILBOX/TO_CLAUDE.md` in `openai/mac`) and READS the other
+lane's mailbox by absolute path at the start of every run and at every batch end. The worktrees share one object store, so each lane
+merges the other's SIGNED commits straight from `HEAD..openai/mac` / `HEAD..anthropic/mac` without waiting for a push. Nick's open
+questions live in `anthropic/mac` `audits/MAILBOX/DECISIONS.md`, each with a recommended default.
 
 **Agent token conservation:** OpenAI/Codex and Anthropic/Claude Code both use
 concise updates, relevant-only reads, batched checks, and only bounded delegation.
@@ -30,6 +64,15 @@ combat math §6, save format §10, audio §9 → AUDIO.md), and the per-system d
 for current system behavior. If the source and the reference disagree, the source wins — then
 update the reference. (`HANDOFF.md` and `celestial-frontier-feedback.md` are FROZEN v1.0
 artifacts kept for history — not current state; don't read them for live truth.)
+
+**Coding-session startup:** before the first coding/build/render batch of each new game
+development session, read the startup runbook in `UI_TOOLCHAIN.md`. Check official stable
+updates and automatically install eligible updates to approved idle authoring tools, then
+verify changed capabilities before work. This applies in any task; it is not tied to a chat
+or timer. Reuse the startup receipt within the uninterrupted session, not on every message.
+Follow the shared lock and active-process checks; never update through a running asset job
+or certificate chain. A check-only command does not install updates: the agent completes the
+runbook's scoped update steps. Runtime/test dependencies and sealed inputs retain their locks.
 
 ## Doc hygiene — "logs archive, references refresh" (standing principle)
 Two kinds of markdown, two disciplines. **Logs** are chronological/append-only (ROADMAP, any

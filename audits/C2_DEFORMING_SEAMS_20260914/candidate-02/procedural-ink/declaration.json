@@ -1,0 +1,811 @@
+{
+  "kind": "band",
+  "recordRecipeHash": "2b824f9cad9383d8fcbb3fd5d41ebdec2d5ecbc9128e33a5388bc21d7cb0a859",
+  "cardHash": "daa4b4b4799aa1a74fdb28baeedf1679ebc418743f4750c1fa911060c07e6628",
+  "floorFraction": 0.02,
+  "capFraction": 0.125,
+  "descendantMinDimensionCapFraction": 0.5,
+  "remainderPart": "torso",
+  "jointOwners": {
+    "root": "torso",
+    "pelvis": "torso",
+    "spine": "torso",
+    "chest": "torso",
+    "neck": "neck",
+    "head": "head",
+    "jaw": "jaw",
+    "hindFarRoot": "torso",
+    "hindFarKnee": "hind-far-upper",
+    "hindFarAnkle": "hind-far-lower",
+    "hindFarPaw": "hind-far-paw",
+    "foreFarRoot": "torso",
+    "foreFarKnee": "fore-far-upper",
+    "foreFarAnkle": "fore-far-lower",
+    "foreFarPaw": "fore-far-paw",
+    "hindNearRoot": "torso",
+    "hindNearKnee": "hind-near-upper",
+    "hindNearAnkle": "hind-near-lower",
+    "hindNearPaw": "hind-near-paw",
+    "foreNearRoot": "torso",
+    "foreNearKnee": "fore-near-upper",
+    "foreNearAnkle": "fore-near-lower",
+    "foreNearPaw": "fore-near-paw",
+    "tail0": "torso",
+    "tail1": "tail-root",
+    "tail2": "tail-middle",
+    "tail3": "tail-tip",
+    "earFarRoot": "head",
+    "earFarTip": "ear-far",
+    "earNearRoot": "head",
+    "earNearTip": "ear-near"
+  },
+  "margin": 1.1,
+  "cumulativeAngleCapDegrees": 90,
+  "ink": "opaque descendant pixels only",
+  "cuts": [
+    {
+      "ancestor": "head",
+      "ancestorJoint": "head",
+      "descendant": "ear-near",
+      "descendantJoint": "earNearTip",
+      "layer": "near",
+      "chain": [
+        "earNearTip",
+        "earNearRoot"
+      ],
+      "pivot": [
+        0.668233232066312,
+        0.40268548300532014
+      ],
+      "seeds": 21,
+      "minDepthPx": 3.5,
+      "maxDepthPx": 3.5,
+      "pixels": 25,
+      "pairBand": {
+        "file": "pair-bands/head--ear-near.png",
+        "cutout": {
+          "x": 581,
+          "y": 346,
+          "width": 10,
+          "height": 7
+        },
+        "sha256": "bda2a369bb30532189a1bb2740122f28052749c959a93feb8cf806281896385b"
+      }
+    },
+    {
+      "ancestor": "head",
+      "ancestorJoint": "head",
+      "descendant": "ear-far",
+      "descendantJoint": "earFarTip",
+      "layer": "near",
+      "chain": [
+        "earFarTip",
+        "earFarRoot"
+      ],
+      "pivot": [
+        0.655385232066312,
+        0.40268548300532014
+      ],
+      "seeds": 34,
+      "minDepthPx": 5,
+      "maxDepthPx": 5,
+      "pixels": 114,
+      "pairBand": {
+        "file": "pair-bands/head--ear-far.png",
+        "cutout": {
+          "x": 571,
+          "y": 347,
+          "width": 10,
+          "height": 14
+        },
+        "sha256": "eab79b499a664946725ff8dddf3a4a879b02e0eaa36e22827a674e51001dd21d"
+      }
+    },
+    {
+      "ancestor": "neck",
+      "ancestorJoint": "neck",
+      "descendant": "head",
+      "descendantJoint": "head",
+      "layer": "near",
+      "chain": [
+        "head"
+      ],
+      "pivot": [
+        0.5975330111640443,
+        0.5226566917168991
+      ],
+      "seeds": 66,
+      "minDepthPx": 23,
+      "maxDepthPx": 23,
+      "pixels": 1564,
+      "pairBand": {
+        "file": "pair-bands/neck--head.png",
+        "cutout": {
+          "x": 556,
+          "y": 338,
+          "width": 71,
+          "height": 44
+        },
+        "sha256": "97b9149b5cec2733a0c81fab1d2c2e897127f0ee19e23bc5c6b3e1e32ac10afa"
+      }
+    },
+    {
+      "ancestor": "neck",
+      "ancestorJoint": "neck",
+      "descendant": "ear-far",
+      "descendantJoint": "earFarTip",
+      "layer": "near",
+      "chain": [
+        "earFarTip",
+        "earFarRoot",
+        "head"
+      ],
+      "pivot": [
+        0.655385232066312,
+        0.40268548300532014
+      ],
+      "seeds": 1,
+      "minDepthPx": 5,
+      "maxDepthPx": 5,
+      "pixels": 23,
+      "pairBand": {
+        "file": "pair-bands/neck--ear-far.png",
+        "cutout": {
+          "x": 574,
+          "y": 356,
+          "width": 6,
+          "height": 5
+        },
+        "sha256": "922441968c1bfb12b4a3e13663574f548cb78fd9567f7b80098c80a0ad5165ae"
+      }
+    },
+    {
+      "ancestor": "head",
+      "ancestorJoint": "head",
+      "descendant": "jaw",
+      "descendantJoint": "jaw",
+      "layer": "near",
+      "chain": [
+        "jaw"
+      ],
+      "pivot": [
+        0.673664432066312,
+        0.4144238830053201
+      ],
+      "seeds": 28,
+      "minDepthPx": 2.5,
+      "maxDepthPx": 2.5,
+      "pixels": 45,
+      "pairBand": {
+        "file": "pair-bands/head--jaw.png",
+        "cutout": {
+          "x": 598,
+          "y": 372,
+          "width": 25,
+          "height": 5
+        },
+        "sha256": "ac08a4b060f42cf7b9a166c0aa7a44888989c5a592b2d62ef2779f37b24dcc71"
+      }
+    },
+    {
+      "ancestor": "neck",
+      "ancestorJoint": "neck",
+      "descendant": "jaw",
+      "descendantJoint": "jaw",
+      "layer": "near",
+      "chain": [
+        "jaw",
+        "head"
+      ],
+      "pivot": [
+        0.673664432066312,
+        0.4144238830053201
+      ],
+      "seeds": 6,
+      "minDepthPx": 2.5,
+      "maxDepthPx": 2.5,
+      "pixels": 11,
+      "pairBand": {
+        "file": "pair-bands/neck--jaw.png",
+        "cutout": {
+          "x": 598,
+          "y": 375,
+          "width": 6,
+          "height": 2
+        },
+        "sha256": "82b1406296acfa8ad2f2afbd105330d1a3de383365019369dd1a6746d13b421b"
+      }
+    },
+    {
+      "ancestor": "torso",
+      "ancestorJoint": "spine",
+      "descendant": "neck",
+      "descendantJoint": "neck",
+      "layer": "near",
+      "chain": [
+        "neck",
+        "chest"
+      ],
+      "pivot": [
+        0.5923372412922437,
+        0.5234534615871355
+      ],
+      "seeds": 500,
+      "minDepthPx": 17.6,
+      "maxDepthPx": 51.8300181735923,
+      "pixels": 5057,
+      "pairBand": {
+        "file": "pair-bands/torso--neck.png",
+        "cutout": {
+          "x": 487,
+          "y": 390,
+          "width": 110,
+          "height": 101
+        },
+        "sha256": "ea31aa4b313cb246a0a09a21eb138869e907c708a0ebde072afad6d03d84414c"
+      }
+    },
+    {
+      "ancestor": "torso",
+      "ancestorJoint": "spine",
+      "descendant": "fore-near-upper",
+      "descendantJoint": "foreNearKnee",
+      "layer": "near",
+      "chain": [
+        "foreNearKnee",
+        "foreNearRoot"
+      ],
+      "pivot": [
+        0.5980458412922437,
+        0.5141326368304369
+      ],
+      "seeds": 120,
+      "minDepthPx": 17.6,
+      "maxDepthPx": 25.5,
+      "pixels": 1394,
+      "pairBand": {
+        "file": "pair-bands/torso--fore-near-upper.png",
+        "cutout": {
+          "x": 503,
+          "y": 429,
+          "width": 50,
+          "height": 97
+        },
+        "sha256": "4b74b137a97c1e57e48e6e5983377a9c7c65e011fb24ef3d2cc5bb9a0ea92635"
+      }
+    },
+    {
+      "ancestor": "torso",
+      "ancestorJoint": "spine",
+      "descendant": "hind-far-upper",
+      "descendantJoint": "hindFarKnee",
+      "layer": "far",
+      "chain": [
+        "hindFarKnee",
+        "hindFarRoot"
+      ],
+      "pivot": [
+        0.40849649305487673,
+        0.5248729932879485
+      ],
+      "seeds": 43,
+      "minDepthPx": 19.59271212380999,
+      "maxDepthPx": 20.5,
+      "pixels": 383,
+      "pairBand": {
+        "file": "pair-bands/torso--hind-far-upper.png",
+        "cutout": {
+          "x": 327,
+          "y": 439,
+          "width": 38,
+          "height": 72
+        },
+        "sha256": "a6a6f8e8ad64350eed7732a279955821c92f31b719b29cc306496587619c3467"
+      }
+    },
+    {
+      "ancestor": "torso",
+      "ancestorJoint": "spine",
+      "descendant": "hind-near-upper",
+      "descendantJoint": "hindNearKnee",
+      "layer": "near",
+      "chain": [
+        "hindNearKnee",
+        "hindNearRoot"
+      ],
+      "pivot": [
+        0.42528649305487676,
+        0.5248729932879485
+      ],
+      "seeds": 209,
+      "minDepthPx": 17.6,
+      "maxDepthPx": 26.5,
+      "pixels": 1310,
+      "pairBand": {
+        "file": "pair-bands/torso--hind-near-upper.png",
+        "cutout": {
+          "x": 339,
+          "y": 440,
+          "width": 53,
+          "height": 86
+        },
+        "sha256": "bd24c33dcc16ebd59e96bf0619988f37a665319635afa190f93e6b01c814ac1d"
+      }
+    },
+    {
+      "ancestor": "torso",
+      "ancestorJoint": "spine",
+      "descendant": "tail-root",
+      "descendantJoint": "tail1",
+      "layer": "near",
+      "chain": [
+        "tail1",
+        "tail0"
+      ],
+      "pivot": [
+        0.3780700177146676,
+        0.531819884980403
+      ],
+      "seeds": 52,
+      "minDepthPx": 14,
+      "maxDepthPx": 14,
+      "pixels": 446,
+      "pairBand": {
+        "file": "pair-bands/torso--tail-root.png",
+        "cutout": {
+          "x": 307,
+          "y": 457,
+          "width": 34,
+          "height": 25
+        },
+        "sha256": "82e4515b5112db1306b65ae36488d359f5aea3665a15cf34aeae9684bfc74459"
+      }
+    },
+    {
+      "ancestor": "tail-root",
+      "ancestorJoint": "tail1",
+      "descendant": "tail-middle",
+      "descendantJoint": "tail2",
+      "layer": "near",
+      "chain": [
+        "tail2"
+      ],
+      "pivot": [
+        0.3399477954924454,
+        0.5401532183137363
+      ],
+      "seeds": 19,
+      "minDepthPx": 15,
+      "maxDepthPx": 15,
+      "pixels": 277,
+      "pairBand": {
+        "file": "pair-bands/tail-root--tail-middle.png",
+        "cutout": {
+          "x": 282,
+          "y": 467,
+          "width": 20,
+          "height": 23
+        },
+        "sha256": "7120413072ec024da1140c1341989ad218c0cb646139c3b098a5f03124c3b9bb"
+      }
+    },
+    {
+      "ancestor": "tail-middle",
+      "ancestorJoint": "tail2",
+      "descendant": "tail-tip",
+      "descendantJoint": "tail3",
+      "layer": "near",
+      "chain": [
+        "tail3"
+      ],
+      "pivot": [
+        0.3131811288257787,
+        0.556819884980403
+      ],
+      "seeds": 13,
+      "minDepthPx": 14,
+      "maxDepthPx": 14,
+      "pixels": 222,
+      "pairBand": {
+        "file": "pair-bands/tail-middle--tail-tip.png",
+        "cutout": {
+          "x": 262,
+          "y": 484,
+          "width": 19,
+          "height": 22
+        },
+        "sha256": "024dec0355cf5c6d1bb751bdd31405594e1f6bc5a7662e05dc86909ad1f2fd0e"
+      }
+    },
+    {
+      "ancestor": "torso",
+      "ancestorJoint": "spine",
+      "descendant": "fore-far-upper",
+      "descendantJoint": "foreFarKnee",
+      "layer": "far",
+      "chain": [
+        "foreFarKnee",
+        "foreFarRoot"
+      ],
+      "pivot": [
+        0.5812558412922438,
+        0.5141326368304369
+      ],
+      "seeds": 15,
+      "minDepthPx": 9.5,
+      "maxDepthPx": 9.5,
+      "pixels": 127,
+      "pairBand": {
+        "file": "pair-bands/torso--fore-far-upper.png",
+        "cutout": {
+          "x": 504,
+          "y": 504,
+          "width": 16,
+          "height": 10
+        },
+        "sha256": "566f618f3beee933b6abebd44446146c43215ab5d9bf37169809cfbac2ca12ee"
+      }
+    },
+    {
+      "ancestor": "hind-near-upper",
+      "ancestorJoint": "hindNearKnee",
+      "descendant": "hind-near-lower",
+      "descendantJoint": "hindNearAnkle",
+      "layer": "near",
+      "chain": [
+        "hindNearAnkle"
+      ],
+      "pivot": [
+        0.40536436840018925,
+        0.6022804835447496
+      ],
+      "seeds": 30,
+      "minDepthPx": 16.5,
+      "maxDepthPx": 16.5,
+      "pixels": 474,
+      "pairBand": {
+        "file": "pair-bands/hind-near-upper--hind-near-lower.png",
+        "cutout": {
+          "x": 341,
+          "y": 525,
+          "width": 34,
+          "height": 24
+        },
+        "sha256": "654059c970454cb5099645bac1354a64569668a5e14c1c7f488a1f77558ee1dd"
+      }
+    },
+    {
+      "ancestor": "fore-far-upper",
+      "ancestorJoint": "foreFarKnee",
+      "descendant": "fore-far-lower",
+      "descendantJoint": "foreFarAnkle",
+      "layer": "far",
+      "chain": [
+        "foreFarAnkle"
+      ],
+      "pivot": [
+        0.5942815495266188,
+        0.5981844484027203
+      ],
+      "seeds": 15,
+      "minDepthPx": 8.5,
+      "maxDepthPx": 8.5,
+      "pixels": 112,
+      "pairBand": {
+        "file": "pair-bands/fore-far-upper--fore-far-lower.png",
+        "cutout": {
+          "x": 508,
+          "y": 525,
+          "width": 14,
+          "height": 8
+        },
+        "sha256": "27970a337ea95164f90eef9002e5400a836cfaab2b26e045145c8b90f93bd559"
+      }
+    },
+    {
+      "ancestor": "fore-near-upper",
+      "ancestorJoint": "foreNearKnee",
+      "descendant": "fore-near-lower",
+      "descendantJoint": "foreNearAnkle",
+      "layer": "near",
+      "chain": [
+        "foreNearAnkle"
+      ],
+      "pivot": [
+        0.6110715495266189,
+        0.5981844484027203
+      ],
+      "seeds": 31,
+      "minDepthPx": 16.5,
+      "maxDepthPx": 16.5,
+      "pixels": 462,
+      "pairBand": {
+        "file": "pair-bands/fore-near-upper--fore-near-lower.png",
+        "cutout": {
+          "x": 522,
+          "y": 525,
+          "width": 30,
+          "height": 17
+        },
+        "sha256": "ce4b71152506bc4d7d170e55417ec9fe6689331eae78f50df1c762ed5a9b683f"
+      }
+    },
+    {
+      "ancestor": "hind-far-upper",
+      "ancestorJoint": "hindFarKnee",
+      "descendant": "hind-far-lower",
+      "descendantJoint": "hindFarAnkle",
+      "layer": "far",
+      "chain": [
+        "hindFarAnkle"
+      ],
+      "pivot": [
+        0.3885743684001892,
+        0.6022804835447496
+      ],
+      "seeds": 13,
+      "minDepthPx": 13,
+      "maxDepthPx": 13,
+      "pixels": 164,
+      "pairBand": {
+        "file": "pair-bands/hind-far-upper--hind-far-lower.png",
+        "cutout": {
+          "x": 327,
+          "y": 530,
+          "width": 18,
+          "height": 15
+        },
+        "sha256": "bd0a9d08a52bcdba3189d342e7ba562a8e93c3a134990f27ef50978e0667d60a"
+      }
+    },
+    {
+      "ancestor": "hind-near-lower",
+      "ancestorJoint": "hindNearAnkle",
+      "descendant": "hind-near-paw",
+      "descendantJoint": "hindNearPaw",
+      "layer": "near",
+      "chain": [
+        "hindNearPaw"
+      ],
+      "pivot": [
+        0.4200596083967767,
+        0.6272016619202285
+      ],
+      "seeds": 18,
+      "minDepthPx": 15.5,
+      "maxDepthPx": 15.5,
+      "pixels": 300,
+      "pairBand": {
+        "file": "pair-bands/hind-near-lower--hind-near-paw.png",
+        "cutout": {
+          "x": 362,
+          "y": 546,
+          "width": 22,
+          "height": 27
+        },
+        "sha256": "336044057f31889e9f6240f75ee4c93c4e5e0e256bade13d204e9ddb99e10994"
+      }
+    },
+    {
+      "ancestor": "fore-far-lower",
+      "ancestorJoint": "foreFarAnkle",
+      "descendant": "fore-far-paw",
+      "descendantJoint": "foreFarPaw",
+      "layer": "far",
+      "chain": [
+        "foreFarPaw"
+      ],
+      "pivot": [
+        0.5852290277317438,
+        0.6252668885552081
+      ],
+      "seeds": 13,
+      "minDepthPx": 12,
+      "maxDepthPx": 12,
+      "pixels": 168,
+      "pairBand": {
+        "file": "pair-bands/fore-far-lower--fore-far-paw.png",
+        "cutout": {
+          "x": 504,
+          "y": 547,
+          "width": 14,
+          "height": 16
+        },
+        "sha256": "025a31f71795b06a7d90da18d2b9b5b49a8da703bdfe81f29085e3a76684c3c7"
+      }
+    },
+    {
+      "ancestor": "fore-near-lower",
+      "ancestorJoint": "foreNearAnkle",
+      "descendant": "fore-near-paw",
+      "descendantJoint": "foreNearPaw",
+      "layer": "near",
+      "chain": [
+        "foreNearPaw"
+      ],
+      "pivot": [
+        0.6020190277317439,
+        0.6252668885552081
+      ],
+      "seeds": 20,
+      "minDepthPx": 15,
+      "maxDepthPx": 15,
+      "pixels": 346,
+      "pairBand": {
+        "file": "pair-bands/fore-near-lower--fore-near-paw.png",
+        "cutout": {
+          "x": 517,
+          "y": 547,
+          "width": 23,
+          "height": 26
+        },
+        "sha256": "0bea4c55050cca17fd99d7bf7c8cc13ecb0300b411595b08944469571a37d6c0"
+      }
+    },
+    {
+      "ancestor": "hind-far-lower",
+      "ancestorJoint": "hindFarAnkle",
+      "descendant": "hind-far-paw",
+      "descendantJoint": "hindFarPaw",
+      "layer": "far",
+      "chain": [
+        "hindFarPaw"
+      ],
+      "pivot": [
+        0.4032696083967768,
+        0.6272016619202285
+      ],
+      "seeds": 3,
+      "minDepthPx": 11,
+      "maxDepthPx": 11,
+      "pixels": 74,
+      "pairBand": {
+        "file": "pair-bands/hind-far-lower--hind-far-paw.png",
+        "cutout": {
+          "x": 350,
+          "y": 554,
+          "width": 13,
+          "height": 14
+        },
+        "sha256": "5bc51b4d2a1bd341fd37d9a2db6aea0d9e97cdba814ff9d0196e7a154b2b86f1"
+      }
+    },
+    {
+      "ancestor": "torso",
+      "ancestorJoint": "spine",
+      "descendant": "hind-near-paw",
+      "descendantJoint": "hindNearPaw",
+      "layer": "near",
+      "chain": [
+        "hindNearPaw",
+        "hindNearAnkle",
+        "hindNearKnee",
+        "hindNearRoot"
+      ],
+      "pivot": [
+        0.4200596083967767,
+        0.6272016619202285
+      ],
+      "seeds": 31,
+      "minDepthPx": 15.5,
+      "maxDepthPx": 15.5,
+      "pixels": 391,
+      "pairBand": {
+        "file": "pair-bands/torso--hind-near-paw.png",
+        "cutout": {
+          "x": 362,
+          "y": 556,
+          "width": 32,
+          "height": 21
+        },
+        "sha256": "0fe97a4df8aeff94ff9e891d4b6e79efdb8881d110d227aa54315510f12eb685"
+      }
+    },
+    {
+      "ancestor": "torso",
+      "ancestorJoint": "spine",
+      "descendant": "fore-far-paw",
+      "descendantJoint": "foreFarPaw",
+      "layer": "far",
+      "chain": [
+        "foreFarPaw",
+        "foreFarAnkle",
+        "foreFarKnee",
+        "foreFarRoot"
+      ],
+      "pivot": [
+        0.5852290277317438,
+        0.6252668885552081
+      ],
+      "seeds": 27,
+      "minDepthPx": 12,
+      "maxDepthPx": 12,
+      "pixels": 176,
+      "pairBand": {
+        "file": "pair-bands/torso--fore-far-paw.png",
+        "cutout": {
+          "x": 495,
+          "y": 558,
+          "width": 21,
+          "height": 19
+        },
+        "sha256": "feb536a8f5fc6f3d913dd914c068ccb7db6e8aa4e4abe3cc34aad46f8dbbcf2e"
+      }
+    },
+    {
+      "ancestor": "torso",
+      "ancestorJoint": "spine",
+      "descendant": "fore-near-paw",
+      "descendantJoint": "foreNearPaw",
+      "layer": "near",
+      "chain": [
+        "foreNearPaw",
+        "foreNearAnkle",
+        "foreNearKnee",
+        "foreNearRoot"
+      ],
+      "pivot": [
+        0.6020190277317439,
+        0.6252668885552081
+      ],
+      "seeds": 27,
+      "minDepthPx": 15,
+      "maxDepthPx": 15,
+      "pixels": 384,
+      "pairBand": {
+        "file": "pair-bands/torso--fore-near-paw.png",
+        "cutout": {
+          "x": 509,
+          "y": 556,
+          "width": 31,
+          "height": 21
+        },
+        "sha256": "f064420fe8824611ca75203942bd7499c30df0ab347529d2f2fb9ac5a9a07b55"
+      }
+    },
+    {
+      "ancestor": "torso",
+      "ancestorJoint": "spine",
+      "descendant": "hind-far-paw",
+      "descendantJoint": "hindFarPaw",
+      "layer": "far",
+      "chain": [
+        "hindFarPaw",
+        "hindFarAnkle",
+        "hindFarKnee",
+        "hindFarRoot"
+      ],
+      "pivot": [
+        0.4032696083967768,
+        0.6272016619202285
+      ],
+      "seeds": 24,
+      "minDepthPx": 11,
+      "maxDepthPx": 11,
+      "pixels": 159,
+      "pairBand": {
+        "file": "pair-bands/torso--hind-far-paw.png",
+        "cutout": {
+          "x": 348,
+          "y": 561,
+          "width": 21,
+          "height": 16
+        },
+        "sha256": "953e9380d9e7d9ff3060a6b4b8a24705e0914fa9ab81145b6afb002266d45648"
+      }
+    }
+  ],
+  "nonAncestorAdjacencies": [
+    "ear-far|ear-near",
+    "fore-far-lower|fore-near-lower",
+    "fore-far-lower|fore-near-paw",
+    "fore-far-paw|fore-near-paw",
+    "fore-far-upper|fore-near-upper",
+    "fore-near-upper|neck",
+    "hind-far-lower|hind-near-lower",
+    "hind-far-lower|hind-near-upper",
+    "hind-far-paw|hind-near-lower",
+    "hind-far-paw|hind-near-paw",
+    "hind-far-upper|hind-near-upper"
+  ]
+}

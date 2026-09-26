@@ -1,0 +1,25 @@
+{
+ "id": "rat",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 30%)",
+  "missing-anatomy: part tail1 (tail1) covers 21% paint (reference 79%)",
+  "unexplained-anatomy: 24.8% of the paint lies away from the body and in no part (reference 11.4%)"
+ ],
+ "bodyLengthPx": 827.1,
+ "landmarkMedian": 0.0545,
+ "landmarkMax": 0.1733,
+ "worst": [
+  "hindNearKnee 0.173",
+  "hindFarPaw 0.166",
+  "hindNearPaw 0.162"
+ ],
+ "labelAgreement": 0.4574,
+ "missingJoints": [
+  "earNearRoot",
+  "earNearTip",
+  "earFarRoot",
+  "earFarTip"
+ ]
+}

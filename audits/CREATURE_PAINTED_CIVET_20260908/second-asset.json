@@ -1,0 +1,12 @@
+{
+  "path": "civet-alpha-edit-opaque.png",
+  "sha256": "680b05fd802de02e7f578ace24cc0d813fbc95bb4455eb4b22e44021a7f17f31",
+  "bytes": 2054749,
+  "width": 1536,
+  "height": 1024,
+  "channels": "RGB",
+  "opaque": true,
+  "status": "FAIL_ALPHA",
+  "tool": "built-in image_gen",
+  "source": "/Users/nick/.codex/generated_images/01a08300-a4ef-7a60-a9df-aabf7a21aaab/exec-b6e5b807-16f6-4629-b748-f54a50b38eae.png"
+}

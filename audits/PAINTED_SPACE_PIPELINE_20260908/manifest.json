@@ -1,0 +1,162 @@
+{
+  "schema": "cf-offline-art-evidence/v1",
+  "recordedAt": "2026-09-08T11:53:37.279481+00:00",
+  "status": "CHECKPOINT",
+  "humanDirectionApproval": "Space/creature references approved in painted audit approval.json; individual art/runtime/device acceptance separate.",
+  "sourceCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "worktree": "openai/mac dirty staged local only; signing blocker retained",
+  "evidence": [
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/BROWSER_ARCHITECTURE.md",
+      "bytes": 13760,
+      "sha256": "94392b2a0606c1a682c8f92d62fbb9165f044c0841f25c25df36f72db13bf88b"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/DEMO_VERIFICATION.md",
+      "bytes": 2742,
+      "sha256": "9d3300985678df830abf2fd04cb154c92af4fea90d6b07335aee0d754e00b56f"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/PERFORMANCE_AND_ANIMATION.md",
+      "bytes": 5592,
+      "sha256": "6d4e314caad3a5e6f0e3826acbf7ad09fe09ad4e2a779be23b6579257f5b1f61"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/PIPELINE_REVIEW.md",
+      "bytes": 6808,
+      "sha256": "371df68dc1d9f2caa68802930ebd8eba375db10f52b52533689b81d1c980bbb2"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/README.md",
+      "bytes": 9908,
+      "sha256": "38169786be65b4538f2796cf3d188af96a7d8676182a9b94e127e0ec29f9d276"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/SOURCE_ASSESSMENT.md",
+      "bytes": 9849,
+      "sha256": "421400e3ac7e664725572aaec49b5eb721885f0a979cafce2d658de4f41a5299"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/USER_PROMPT.md",
+      "bytes": 10438,
+      "sha256": "bd9e507753bc7f6f21744349661ffc1b7569e9a24e59963090580e2b3ada98fd"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/approval.json",
+      "bytes": 1616,
+      "sha256": "672db33517b2ab6872068f2c4d88133f47008f0c6b3360d81da92d3e95d63246"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/approved-creature-reference.png",
+      "bytes": 2358697,
+      "sha256": "029fa87c560c3ebc6d065baec15ecd4e84a25f5d567cd8e4ff8dc23612ba88a3"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/approved-space-reference.png",
+      "bytes": 2457859,
+      "sha256": "749f6de6debc31486e37b733bb5b8d5b5e038dd7f4ff97038e108c61b05f0d3a"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/biome-comparison-prompt.txt",
+      "bytes": 3998,
+      "sha256": "2c324173c6a980b5216977d62eb8e39796d8d7d041139f8bab3862bfdb75f745"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/biome-comparison.png",
+      "bytes": 3534214,
+      "sha256": "582d5d7e286e203c7ed1ce14483a50923bd4192c2f201bea2035c310649a6c1b"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/checkpoint_docs.py",
+      "bytes": 11028,
+      "sha256": "1abe83012255784978ca22739d11cc6ba69eb95d4ad6c84b3246de46dc914b42"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/demo-verification.json",
+      "bytes": 21108,
+      "sha256": "caba1039fb85551557487632d2eaa2c95e28d8f0ce83afbab3aa850decedce54"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/generated-candidates.json",
+      "bytes": 2014,
+      "sha256": "7bff028f392b1edb41c493f112a50947a4c6aed6f7ffb5caaaac41070acb1dad"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/generation-calls.json",
+      "bytes": 11869,
+      "sha256": "2e996496e854bb79fe47f7ad818f70de222b4809bd6487b9c02878b0883b646f"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/intake.json",
+      "bytes": 5379,
+      "sha256": "64565e1aaed60e15e3c68914e4d3259be5dc305b225d497165f8889b705aebec"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/pixel-intake.json",
+      "bytes": 572,
+      "sha256": "109073fc7637c3df44df958a2cfc2d128b0f795f2aef255f0b82ccf189133062"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/preserve_sources.py",
+      "bytes": 3737,
+      "sha256": "f59407b9cf3aabf8b7b4f167fbe75e70c25e1a3cdf2d3327fb91738551306c75"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/private-source-preservation.json",
+      "bytes": 14168,
+      "sha256": "8e190dbbd00c1846064d6dca35fd6899ff49d5dded1406b6c93d9a49339ad68c"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/reference-candidate.json",
+      "bytes": 650,
+      "sha256": "214c3699df6e16ab12b3ad07bae70bb40fcd27f267adfd75dd8e4b1d80b961c8"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/space-reference-candidate-prompt.txt",
+      "bytes": 3909,
+      "sha256": "646e1d39b37580a7fab182db55d7cf0f2c25fad1cdac8458f5c489ccd663d0fa"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/space-reference-candidate.png",
+      "bytes": 3219190,
+      "sha256": "7bd83d0b8d3fe9a2072b24f1d3017bc5a3da38db04fd0cee4938f2385712550d"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/universe-reference-prompt.txt",
+      "bytes": 3582,
+      "sha256": "894cbeb9659ff2b262a0bb58f66deeb2544a4330d32ddb155f70c1e8bb14f589"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/universe-reference.png",
+      "bytes": 2608066,
+      "sha256": "f3e0cc02e0b1afa3ac20e12635049298c02f42943662318f4d1551807646e98f"
+    }
+  ],
+  "references": [
+    {
+      "path": "ART_DIRECTION.md",
+      "sha256": "56ffb19790b111187d70795a037ae078d1398388c2b9a04345dcc9e5b2d7d7e7"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "sha256": "84e22fd573902878908f2b17c7e92ff60aa96186b6b2f2c5c31c33b8b5a63757"
+    },
+    {
+      "path": "BIOME_ATLAS.md",
+      "sha256": "ac01ca27bd71e612ddb3a70472fb0e2d1c79aa447875aa47f2b0181e52d37d2f"
+    },
+    {
+      "path": "port/v2/tools/blender/creature_charm_study.py",
+      "sha256": "12a69f4060ea45d4ba324ced52b0672a9f7345016152374eac98433c07aa6221"
+    },
+    {
+      "path": "port/v2/apps/game/src/combat-battle-scene.ts",
+      "sha256": "c7ed59e4b4559fe0356bf78cdaa5a45fe506c301e28894d662ae0b58665fc3a5"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesidentity.ts",
+      "sha256": "f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0"
+    }
+  ],
+  "runtimeChangedByThisOfflineBatch": false
+}

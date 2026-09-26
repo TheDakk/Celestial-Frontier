@@ -1,0 +1,9 @@
+{
+ "id": "06-lynx",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail1 (tail1) covers 26% paint (reference 95%)"
+ ],
+ "semanticPresence": null
+}

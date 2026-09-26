@@ -1,0 +1,39 @@
+{
+  "status": "DELIVERED_ONCE_INTAKE_HELD",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed",
+  "seed": null,
+  "seedReason": "not exposed",
+  "sentPromptSha256": "16074fb3c4b368ad21dc51ffb4b4806ca0653cd85e5f3f575d97d6a4797139fc",
+  "masterSha256": "fec1a86715ddf9f79781452a050e17f5522a476184251d53e2b4e99c765ec810",
+  "masterPath": "audits/VISION_P1_FOUR_CRABS_20260920/vent-crab/generation-01/vent-crab-master.png",
+  "originalToolPath": "/Users/nick/.codex/generated_images/01a0bd11-37dd-7b60-8093-cdfa04c8f9d8/exec-46d1de0b-dfda-4957-80dd-d7738751f842.png",
+  "originalBytesIdentical": true,
+  "actualDimensions": [
+    1254,
+    1254
+  ],
+  "requestedDimensions": [
+    1024,
+    1024
+  ],
+  "mode": "RGBA",
+  "alphaHistogram": {
+    "zero": 1070484,
+    "partial": 501410,
+    "opaque": 622
+  },
+  "alpha128BoundingBox": [
+    21,
+    310,
+    1235,
+    960
+  ],
+  "magentaOpaquePixels": 0,
+  "retries": 0,
+  "promptModified": false,
+  "resize": false,
+  "channelChanges": 0,
+  "intakePerformed": false,
+  "rigPerformed": false
+}

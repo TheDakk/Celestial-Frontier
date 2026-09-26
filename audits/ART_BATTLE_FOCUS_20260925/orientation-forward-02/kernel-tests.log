@@ -1,0 +1,23 @@
+✔ integrated admitted forward kernel preserves targets, pins, all output bytes and diagnostics (4.552333ms)
+✔ unavailable Wasm retains the original JS path without changing admitted outcomes (0.662916ms)
+✔ a real leaf trap after private-memory work falls back from untouched input and disables the leaf (0.854584ms)
+✔ floor underflow retains original source admission and the JS solver (0.288958ms)
+✔ floor overflow retains original source admission and identical refusal without publication (0.32475ms)
+✔ contradictory hard pins retain exact recoverable refusal and atomic output on admitted and fallback paths (0.391542ms)
+✔ every pin mask and orientation sign preserves exact coordinates, counts and stalled state (2.780291ms)
+✔ deterministic shared-vertex fixtures preserve scalar ordering over repeated seeks (3.467833ms)
+✔ signed-zero-only progress consumes the second pass before stalling (0.106958ms)
+✔ stationary pinned and degenerate constraints stall; contradictory constraints retain the full 64 sweeps (0.155792ms)
+✔ extreme finite inputs preserve Object.is behavior when arithmetic overflows or underflows (0.137208ms)
+✔ fixed private topology survives caller mutation and runtime absence uses an explicit null fallback (0.144458ms)
+✔ valid arithmetic mutant and a no-op forward export are rejected before caller mutation (0.219625ms)
+✔ malformed constraints and over-budget calls fail closed (0.311125ms)
+✔ memory-only artifact admission rejects relocation, globals, tables, data and function imports (1.064542ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 112.940542

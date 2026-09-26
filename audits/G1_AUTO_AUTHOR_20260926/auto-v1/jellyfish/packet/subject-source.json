@@ -1,0 +1,627 @@
+{
+  "name": "Jellyfish",
+  "family": "radial",
+  "species": {
+    "name": "Jellyfish",
+    "aspect": 0.6,
+    "headFrac": 0.4,
+    "eyes": "hidden",
+    "posture": "swimming",
+    "mustRead": [
+      "translucent domed bell",
+      "long trailing tentacles hanging far below",
+      "frilled oral arms under the centre of the bell"
+    ],
+    "note": "Generic name read as a representative scyphozoan jellyfish. Tentacle length dominates the profile, making it much taller than wide."
+  },
+  "genome": {
+    "seed": 2660681326,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 5,
+    "body": 12,
+    "loco": 2,
+    "trait": 19,
+    "size": 5,
+    "diet": 3,
+    "head": 4,
+    "limbs": 1,
+    "skin": 8,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 13,
+    "detail": 0,
+    "accent": 12,
+    "temper": 3,
+    "sense": 1,
+    "repro": 2,
+    "life": 5,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Jellyfish"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Jellyfish\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2660681326\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 317,
+  "contract": {
+    "id": "radial",
+    "version": 1,
+    "clipSetId": "radial-v1",
+    "graph": [
+      [
+        "centre",
+        "root"
+      ],
+      [
+        "bell",
+        "centre"
+      ],
+      [
+        "arm0Seg0",
+        "centre"
+      ],
+      [
+        "arm0Seg1",
+        "arm0Seg0"
+      ],
+      [
+        "arm0Seg2",
+        "arm0Seg1"
+      ],
+      [
+        "arm1Seg0",
+        "centre"
+      ],
+      [
+        "arm1Seg1",
+        "arm1Seg0"
+      ],
+      [
+        "arm1Seg2",
+        "arm1Seg1"
+      ],
+      [
+        "arm2Seg0",
+        "centre"
+      ],
+      [
+        "arm2Seg1",
+        "arm2Seg0"
+      ],
+      [
+        "arm2Seg2",
+        "arm2Seg1"
+      ],
+      [
+        "arm3Seg0",
+        "centre"
+      ],
+      [
+        "arm3Seg1",
+        "arm3Seg0"
+      ],
+      [
+        "arm3Seg2",
+        "arm3Seg1"
+      ],
+      [
+        "arm4Seg0",
+        "centre"
+      ],
+      [
+        "arm4Seg1",
+        "arm4Seg0"
+      ],
+      [
+        "arm4Seg2",
+        "arm4Seg1"
+      ],
+      [
+        "arm5Seg0",
+        "centre"
+      ],
+      [
+        "arm5Seg1",
+        "arm5Seg0"
+      ],
+      [
+        "arm5Seg2",
+        "arm5Seg1"
+      ],
+      [
+        "arm6Seg0",
+        "centre"
+      ],
+      [
+        "arm6Seg1",
+        "arm6Seg0"
+      ],
+      [
+        "arm6Seg2",
+        "arm6Seg1"
+      ],
+      [
+        "arm7Seg0",
+        "centre"
+      ],
+      [
+        "arm7Seg1",
+        "arm7Seg0"
+      ],
+      [
+        "arm7Seg2",
+        "arm7Seg1"
+      ],
+      [
+        "arm8Seg0",
+        "centre"
+      ],
+      [
+        "arm8Seg1",
+        "arm8Seg0"
+      ],
+      [
+        "arm8Seg2",
+        "arm8Seg1"
+      ],
+      [
+        "arm9Seg0",
+        "centre"
+      ],
+      [
+        "arm9Seg1",
+        "arm9Seg0"
+      ],
+      [
+        "arm9Seg2",
+        "arm9Seg1"
+      ],
+      [
+        "arm10Seg0",
+        "centre"
+      ],
+      [
+        "arm10Seg1",
+        "arm10Seg0"
+      ],
+      [
+        "arm10Seg2",
+        "arm10Seg1"
+      ],
+      [
+        "arm11Seg0",
+        "centre"
+      ],
+      [
+        "arm11Seg1",
+        "arm11Seg0"
+      ],
+      [
+        "arm11Seg2",
+        "arm11Seg1"
+      ]
+    ],
+    "bodyAxis": [
+      "centre",
+      "bell"
+    ],
+    "joints": [
+      "root",
+      "centre",
+      "bell",
+      "arm0Seg0",
+      "arm0Seg1",
+      "arm0Seg2",
+      "arm1Seg0",
+      "arm1Seg1",
+      "arm1Seg2",
+      "arm2Seg0",
+      "arm2Seg1",
+      "arm2Seg2",
+      "arm3Seg0",
+      "arm3Seg1",
+      "arm3Seg2",
+      "arm4Seg0",
+      "arm4Seg1",
+      "arm4Seg2",
+      "arm5Seg0",
+      "arm5Seg1",
+      "arm5Seg2",
+      "arm6Seg0",
+      "arm6Seg1",
+      "arm6Seg2",
+      "arm7Seg0",
+      "arm7Seg1",
+      "arm7Seg2",
+      "arm8Seg0",
+      "arm8Seg1",
+      "arm8Seg2",
+      "arm9Seg0",
+      "arm9Seg1",
+      "arm9Seg2",
+      "arm10Seg0",
+      "arm10Seg1",
+      "arm10Seg2",
+      "arm11Seg0",
+      "arm11Seg1",
+      "arm11Seg2"
+    ],
+    "legs": [],
+    "limitsDeg": {
+      "root": {
+        "min": -35,
+        "max": 35
+      },
+      "centre": {
+        "min": -15,
+        "max": 15
+      },
+      "bell": {
+        "min": -25,
+        "max": 25
+      },
+      "arm0Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm0Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm0Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm1Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm1Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm1Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm2Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm2Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm2Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm3Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm3Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm3Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm4Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm4Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm4Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm5Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm5Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm5Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm6Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm6Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm6Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm7Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm7Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm7Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm8Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm8Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm8Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm9Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm9Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm9Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm10Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm10Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm10Seg2": {
+        "min": -55,
+        "max": 55
+      },
+      "arm11Seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "arm11Seg1": {
+        "min": -55,
+        "max": 55
+      },
+      "arm11Seg2": {
+        "min": -55,
+        "max": 55
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.03,
+        "max": 0.6,
+        "kind": "distance",
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "arm/bell:arm0",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm0Seg0",
+          "arm0Seg1",
+          "arm0Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm1",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm1Seg0",
+          "arm1Seg1",
+          "arm1Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm2",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm2Seg0",
+          "arm2Seg1",
+          "arm2Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm3",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm3Seg0",
+          "arm3Seg1",
+          "arm3Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm4",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm4Seg0",
+          "arm4Seg1",
+          "arm4Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm5",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm5Seg0",
+          "arm5Seg1",
+          "arm5Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm6",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm6Seg0",
+          "arm6Seg1",
+          "arm6Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm7",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm7Seg0",
+          "arm7Seg1",
+          "arm7Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm8",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm8Seg0",
+          "arm8Seg1",
+          "arm8Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm9",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm9Seg0",
+          "arm9Seg1",
+          "arm9Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm10",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm10Seg0",
+          "arm10Seg1",
+          "arm10Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      },
+      {
+        "id": "arm/bell:arm11",
+        "min": 0.3,
+        "max": 8,
+        "kind": "ratio",
+        "bones": [
+          "arm11Seg0",
+          "arm11Seg1",
+          "arm11Seg2"
+        ],
+        "axis": [
+          "centre",
+          "bell"
+        ]
+      }
+    ]
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "appendages": {
+      "arms": 12
+    }
+  },
+  "generatedFamilyTarget": "jelly",
+  "role": "Painted Jellyfish exemplar for the generated jelly family and matching Earth scyphozoans; no blanket Earth coverage claim"
+}

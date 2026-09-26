@@ -1,0 +1,21 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Robin",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "f2364a20bad0c4b90f53291e88533b9a8e22f05ee01aaac3d08f5de0565c14ea",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "a4b9e356e82cb3a7cd86f82b4993d6ae85538996854a2ab9afccae3fe57aafdf",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "bird",
+  "authoringCreated": false,
+  "sourceHead": "e12a378656466b2905c5b9438860986d59df3027"
+}

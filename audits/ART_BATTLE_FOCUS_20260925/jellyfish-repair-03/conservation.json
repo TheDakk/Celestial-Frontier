@@ -1,0 +1,136 @@
+{
+  "schema": "cf.marking-conservation/v1",
+  "status": "PASS",
+  "createdAt": "2026-09-25T06:23:13.127Z",
+  "sourceHashes": {
+    "master.png": "5c878a70e83b232ef7aa1d716f6deab99626a8292e2a9714d87d945b1187e2ee",
+    "fit-05/record.json": "7731a1b9050637d4552062b925e00a02ebf74bdce875097429d399629a193046",
+    "fit-05/binding.json": "8dfcb1dcd459ddbb8a83091967adc72f9479b232fa23178d27303387e6166470",
+    "fit-05/parts/keyed.png": "ecfb60dd5bbe4efe07fc91db638b341e486d29db0989927077d2d44491f61d32",
+    "fit-05/parts/atlas/jellyfish.png": "7e21aa49d9b42a8580d792455806a8ae6b2969f267318826aadf745fb52b87cb",
+    "fit-05/parts/manifest.json": "e9482dfc8fb75f8bfde25f97fda6045bfe1e73b2b94dcd795e63a3745027ab25",
+    "prompt-correction-04.txt": "19ab686aaaadc91cc4b2c19c944455d48c8a9af98fbe13c802028a4bfc88fadc",
+    "raw/striped.png": "22d625bf27f15f6b600dac93e990c3d8ae98855052f2f21599450b424ce814ba",
+    "prompts/striped.txt": "824edcba35877c725a9bbb18404c19fa18be0585ff68351c12632c93227bb742",
+    "raw/spotted.png": "aa93cb62bae36f468238eefafccd8bde9364219627c3d47866f088d536e39f95",
+    "prompts/spotted.txt": "8b06f4777ef07f5a98d1b2918b9e680cb3313bc5b62ab43d4fc3951af54ae435",
+    "raw/banded.png": "f2724cb06e5bd2aea453d7e05a91bbea3869934656642f13d0b149671605cf2a",
+    "prompts/banded.txt": "d1b4114810794111518eb88ebe0fb0983075da96006ff5cdfa234a4262787129",
+    "raw/mottled.png": "940fc5547ee5fdfcebee3104961408c870df9bd11f92462fca66f7309cdc8128",
+    "prompts/mottled.txt": "20d0e0c698bb110f1c3a16421886b06bcbdef8a18ac50d0273e25c5552014ac1",
+    "raw/marbled.png": "83f9fd1dd42a382f2f3f91c971b0edd423ab83dc62ba63943120cfb7a8bfa9ca",
+    "prompts/marbled.txt": "bcf12ccf646d7ad20fb7fec4e1fa0f492827cbb82d1dd45f40eb76ae9171ea38",
+    "raw/eye-spotted.png": "d36295841dbd0b8d3b838705a2b3a5500212b5b14e571bbb8ab9c486c94806c4",
+    "prompts/eye-spotted.txt": "7bd6a77ba091e0020581e0a55e8f72f8c5d0b41c54653fc1156dcb7debde5c9d"
+  },
+  "helperSha256": "f839b8853d68aaf8898953605f5af40f6b42877b4d9c513766bfd85b1a865a7a",
+  "exclusion": {
+    "method": "none; every keyed-alpha pixel is eligible",
+    "excludedParts": []
+  },
+  "rows": [
+    {
+      "pattern": "striped",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 24069,
+      "opaqueEquivalentPixels": 11031.325490196079,
+      "rawOutsideAlphaPixels": 1686,
+      "sha256": "5595f76e112592875bb87eee446427181ba5c070f309ec9688967f5a8e2089ef",
+      "compositeFile": "composites/striped.png",
+      "compositeSha256": "59f716e631a32ee99a850ca77e92a74065a6ad560331a2b7a0aedca47c158651"
+    },
+    {
+      "pattern": "spotted",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 6694,
+      "opaqueEquivalentPixels": 3381.337254901961,
+      "rawOutsideAlphaPixels": 1827,
+      "sha256": "188a54b6cedd1b7603d2af93459b881629c8914f39a535f33a710cb079550d01",
+      "compositeFile": "composites/spotted.png",
+      "compositeSha256": "fab97c71df5a22a5728e9a0e05d716002543d3fdca97e35bc346342cbe960821"
+    },
+    {
+      "pattern": "banded",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 67778,
+      "opaqueEquivalentPixels": 39013.56470588235,
+      "rawOutsideAlphaPixels": 6271,
+      "sha256": "9e7e831af755c862cb40029df91789c45c729436aa26690e30af08dcc1c2a5fc",
+      "compositeFile": "composites/banded.png",
+      "compositeSha256": "8ad777ed9d8a6e981794354b1afc60dfe9a7d8af407a1fdc5691703aa2cd2929"
+    },
+    {
+      "pattern": "mottled",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 73297,
+      "opaqueEquivalentPixels": 18024.772549019606,
+      "rawOutsideAlphaPixels": 17265,
+      "sha256": "4afcc83639ca1ed54f7fd96f9998e395d23f7c5198adc75def84713cd746fe58",
+      "compositeFile": "composites/mottled.png",
+      "compositeSha256": "c2dd11852fb6d086d70fa5886bbfa6531ecfa2cecbc6d37a5536eef8b1f0f5f2"
+    },
+    {
+      "pattern": "marbled",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 35260,
+      "opaqueEquivalentPixels": 6257.603921568628,
+      "rawOutsideAlphaPixels": 7175,
+      "sha256": "7478113b72dff30b9b2437a4bc03ea6172fdea37b5575e890c007efa7bb08313",
+      "compositeFile": "composites/marbled.png",
+      "compositeSha256": "9abc083875572cf7cb53f1f8c7b69a7497f362c9231b316c6d96c35be1cfe157"
+    },
+    {
+      "pattern": "eye-spotted",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 13187,
+      "opaqueEquivalentPixels": 6305.505882352942,
+      "rawOutsideAlphaPixels": 633,
+      "sha256": "79d998d1244bd916ef536149f261e2094e546b3eaee4fee30a8109d117343cc8",
+      "compositeFile": "composites/eye-spotted.png",
+      "compositeSha256": "f0359cccbd798168dd1c8d487a5ed33671d4b8497d5884ef21426fc70a7915fd"
+    }
+  ],
+  "controls": {
+    "validAccepted": true,
+    "outsidePixelMutantRefused": true,
+    "outsidePixel": [
+      0,
+      0
+    ],
+    "mutantAssessment": {
+      "outsideAlphaPixels": 1,
+      "alphaExceedsKeyedPixels": 1,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 24070
+    }
+  },
+  "node": "v26.9.0",
+  "imageMagick": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org",
+  "sheetFile": "six-mask-sheet.png",
+  "sheetSha256": "f3377c6243df906dfd0f79f143d1a5f7d600de46199b0e6784e2e39dcbf19e8b",
+  "previewOnly": "Sheet cells are thumbnails; masks and composites remain unchanged 1254-square master coordinates."
+}

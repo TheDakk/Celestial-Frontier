@@ -1,0 +1,689 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v2.ability.chem.cast.1",
+      "group": "coverage-chem",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        },
+        {
+          "path": "source-audio/kenney_impacts/03e10f800199c716-impactMetal_medium_004.ogg",
+          "sha256": "03e10f800199c7166208e41c11cf4acfac6cc265467f02357da71972bc967295",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.109433
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-chem",
+          "start": 0,
+          "duration": 0.55,
+          "note": 61,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.chem.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "chem",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 0,
+      "master": "masters/coverage-chem/v2.ability.chem.cast.1.wav",
+      "masterSha256": "5a703ae47bfb372e6a76518646eeb57c8fbfdea57b9251019a0fafda82ccc393",
+      "opus": "masters/coverage-chem/v2.ability.chem.cast.1.opus",
+      "opusSha256": "aebfafd0520577f2dc2d970771a8746abdb08254bfe6476554c605f1e9f44101",
+      "previewSha256": "fd0b8bef94c287abba443d23d9dd68035cbcd5015150dd2323864e89ff504c1c",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.chem.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.ability.chem.cast.2",
+      "group": "coverage-chem",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        },
+        {
+          "path": "source-audio/kenney_impacts/25a96f90a9a1f88a-impactMetal_light_002.ogg",
+          "sha256": "25a96f90a9a1f88a531e824e126f0519504625e5635e65a72e4f31611428db29",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.235782
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-chem",
+          "start": 0,
+          "duration": 0.55,
+          "note": 61,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.chem.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "chem",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 1.65,
+      "master": "masters/coverage-chem/v2.ability.chem.cast.2.wav",
+      "masterSha256": "f2e9b6be969e4cd2cec13b60183bc4c907ec4a55db384698992df78e2e89f180",
+      "opus": "masters/coverage-chem/v2.ability.chem.cast.2.opus",
+      "opusSha256": "d2de93a8ebaae0a114f2cb8c675dc24e8e8bb6f95b1164eb7ef5b2f5d764bbbe",
+      "previewSha256": "ac44037122abd31d586211f4393cd77434ee13db860b98b33adc575a2bf7782a",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.chem.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v2.ability.chem.cast.3",
+      "group": "coverage-chem",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        },
+        {
+          "path": "source-audio/kenney_impacts/2a185e2e57211d02-impactMetal_medium_003.ogg",
+          "sha256": "2a185e2e57211d02c1bdd33b872d6b6a2fe83e6c14f4e56f426a95e717acf08e",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.253968
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-chem",
+          "start": 0,
+          "duration": 0.55,
+          "note": 61,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.chem.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "chem",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 3.3,
+      "master": "masters/coverage-chem/v2.ability.chem.cast.3.wav",
+      "masterSha256": "627c40247d8fa9d0aff4753381979813931d7d8e341528f56fab29be384f8fc7",
+      "opus": "masters/coverage-chem/v2.ability.chem.cast.3.opus",
+      "opusSha256": "c4f76ae7f24ebb9d86cae1159834132eb796265f3ed85b0380f75cb6d1396fcb",
+      "previewSha256": "fcd9ba37aaf8a7f9e1ac1853c1f6859e696b28d541a76edd28843d3c98b6ab22",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.chem.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.1,
+      "opusDbTP": -12.1
+    },
+    {
+      "id": "v2.ability.chem.impact.1",
+      "group": "coverage-chem",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/687cd1feb815f9e2-slime_07.ogg",
+          "sha256": "687cd1feb815f9e214b20f16000ec5fd52174b03ec0b4da18d1abb20c2c4cbe2",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.375854
+        },
+        {
+          "path": "source-audio/kenney_impacts/25a96f90a9a1f88a-impactMetal_light_002.ogg",
+          "sha256": "25a96f90a9a1f88a531e824e126f0519504625e5635e65a72e4f31611428db29",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.235782
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-chem",
+          "start": 0,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.chem.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "chem",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 4.949999999999999,
+      "master": "masters/coverage-chem/v2.ability.chem.impact.1.wav",
+      "masterSha256": "d8b7dc454e8ebd723d56b0f3c2bfafdbe86d883eb4a7a35890f4add947bd3853",
+      "opus": "masters/coverage-chem/v2.ability.chem.impact.1.opus",
+      "opusSha256": "44b7308c80cbbb05c5f4c9ba9e5e084fde46fba2f3caa34899a26e85f4d44a5b",
+      "previewSha256": "54507965a2352c0fca161b92da9ff434e4452546beaafed7757dd683f0e87ab6",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.chem.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.7,
+      "opusDbTP": -14.7
+    },
+    {
+      "id": "v2.ability.chem.impact.2",
+      "group": "coverage-chem",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/7879b8931d025c99-slime_02.ogg",
+          "sha256": "7879b8931d025c991999d075b020349b6a0ab2a441518b08294c542cf20fa71f",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.534354
+        },
+        {
+          "path": "source-audio/kenney_impacts/2a185e2e57211d02-impactMetal_medium_003.ogg",
+          "sha256": "2a185e2e57211d02c1bdd33b872d6b6a2fe83e6c14f4e56f426a95e717acf08e",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.253968
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-chem",
+          "start": 0,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.chem.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "chem",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 7.1499999999999995,
+      "master": "masters/coverage-chem/v2.ability.chem.impact.2.wav",
+      "masterSha256": "297085f34442d6acd59eb794c809b1b6944948dbd808e4619cd52bb851b9313d",
+      "opus": "masters/coverage-chem/v2.ability.chem.impact.2.opus",
+      "opusSha256": "9f1a3992bde818b7ca88cf2dfc118a2625a22cb73477e000b7c0c0d7cb397531",
+      "previewSha256": "6daf91db0a47442575b848e54509f3ad0daa659a91135e4cf1348a74fa8b47f8",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.chem.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.ability.chem.impact.3",
+      "group": "coverage-chem",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/829992d1bd763d79-slime_05.ogg",
+          "sha256": "829992d1bd763d797cbcccec50b5904f1bdf0637ac475a51841df46456f24722",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.603417
+        },
+        {
+          "path": "source-audio/kenney_impacts/33b5e6e37c6e9d54-impactMetal_light_000.ogg",
+          "sha256": "33b5e6e37c6e9d54e07bf5a89b12c76e879f40c1ea83cdd82714df1d6f9fec6d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.351474
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-chem",
+          "start": 0,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.chem.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "chem",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 9.35,
+      "master": "masters/coverage-chem/v2.ability.chem.impact.3.wav",
+      "masterSha256": "5085e8a4279a8ff5b3a8666c3672b3c24de9555fb982a02a05a211e35592b5ed",
+      "opus": "masters/coverage-chem/v2.ability.chem.impact.3.opus",
+      "opusSha256": "969b57035db670af800881c93b4bee945917eca7de2b301af1c03d9d1be8d773",
+      "previewSha256": "ddacf965003cda58808e3a300daf5a8e8482c42cebfea36554286d4873124798",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.chem.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.6,
+      "opusDbTP": -17.7
+    },
+    {
+      "id": "v2.ability.chem.sustain.1",
+      "group": "coverage-chem",
+      "kind": "synthetic_fictional",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        },
+        {
+          "path": "source-audio/kenney_impacts/2a185e2e57211d02-impactMetal_medium_003.ogg",
+          "sha256": "2a185e2e57211d02c1bdd33b872d6b6a2fe83e6c14f4e56f426a95e717acf08e",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.253968
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-chem",
+          "start": 0.0,
+          "duration": 0.55,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-chem",
+          "start": 0.6,
+          "duration": 0.55,
+          "note": 63,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-chem",
+          "start": 1.2,
+          "duration": 0.55,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-chem",
+          "start": 1.7999999999999998,
+          "duration": 0.55,
+          "note": 63,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-chem",
+          "start": 2.4,
+          "duration": 0.55,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-chem",
+          "start": 3.0,
+          "duration": 0.55,
+          "note": 63,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.chem.sustain"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "chem",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 11.55,
+      "master": "masters/coverage-chem/v2.ability.chem.sustain.1.wav",
+      "masterSha256": "580acfd2ce2cfb5b428d0d1aabbf5b3da2af294647bd9b45d1fcdc8b73b5c20a",
+      "opus": "masters/coverage-chem/v2.ability.chem.sustain.1.opus",
+      "opusSha256": "e99c536d5b9c7e85162d8f8b18e7b8a5d1f02f79e751b522ae40d5e5fc5d82b9",
+      "previewSha256": "e21a07fa8e0175c186269b7fac013b817618b67a7c34004cd1be10d08502c465",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/v2.ability.chem.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.ability.chem.release.1",
+      "group": "coverage-chem",
+      "kind": "synthetic_fictional",
+      "duration": 0.9,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        },
+        {
+          "path": "source-audio/kenney_impacts/33b5e6e37c6e9d54-impactMetal_light_000.ogg",
+          "sha256": "33b5e6e37c6e9d54e07bf5a89b12c76e879f40c1ea83cdd82714df1d6f9fec6d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.351474
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-chem",
+          "start": 0,
+          "duration": 0.55,
+          "note": 56,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.chem.release"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "chem",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 16.55,
+      "master": "masters/coverage-chem/v2.ability.chem.release.1.wav",
+      "masterSha256": "29ad66140f6bf3055e71ae45d5528178a255793b254ffc681627cf2188a8c341",
+      "opus": "masters/coverage-chem/v2.ability.chem.release.1.opus",
+      "opusSha256": "547282240669da5a8bcc464dc5c65d5affd5da3bff00b81aa695a2d395d82263",
+      "previewSha256": "8ba4f4657bae434069c8c7298b94e9a9276876cf41811bb7b091f31e02bd3c32",
+      "previewBytes": 86514,
+      "previewUrl": "/__cf-audio-review/v2.ability.chem.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.ability.chem.shield.1",
+      "group": "coverage-chem",
+      "kind": "synthetic_fictional",
+      "duration": 1.4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        },
+        {
+          "path": "source-audio/kenney_impacts/6d65b463c0555dd5-impactMetal_heavy_004.ogg",
+          "sha256": "6d65b463c0555dd5be16b8db6d2cbe23a94e07a4637779b8ad17d0db3e500a87",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.13381
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-chem",
+          "start": 0,
+          "duration": 0.55,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-chem",
+          "start": 0.3,
+          "duration": 0.55,
+          "note": 68,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.chem.shield"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "chem",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 18.45,
+      "master": "masters/coverage-chem/v2.ability.chem.shield.1.wav",
+      "masterSha256": "343f34307760422f90084828ee2ff601a68e8ea3ed7c8d2199fca9db15a55e53",
+      "opus": "masters/coverage-chem/v2.ability.chem.shield.1.opus",
+      "opusSha256": "bb2af56bf256dbffa46a763b421ba637881c2272ccf967e63f7cd9d64450a159",
+      "previewSha256": "e634264484f16ae2d487ffc25f25cbbea204bd28cebbf1a08f7316643894e51c",
+      "previewBytes": 134514,
+      "previewUrl": "/__cf-audio-review/v2.ability.chem.shield.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.1,
+      "opusDbTP": -12.2
+    },
+    {
+      "id": "v2.ability.chem.heal.1",
+      "group": "coverage-chem",
+      "kind": "synthetic_fictional",
+      "duration": 1.8,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        },
+        {
+          "path": "source-audio/kenney_impacts/7e89ce2ca0dbda95-impactMetal_medium_002.ogg",
+          "sha256": "7e89ce2ca0dbda95ea2b78d4b50791cab35c10d20e9f5ccd45dd0b00e99ff548",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.119138
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-chem",
+          "start": 0,
+          "duration": 0.55,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-chem",
+          "start": 0.35,
+          "duration": 0.55,
+          "note": 65,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-chem",
+          "start": 0.7,
+          "duration": 0.55,
+          "note": 68,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.chem.heal"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "chem",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 20.849999999999998,
+      "master": "masters/coverage-chem/v2.ability.chem.heal.1.wav",
+      "masterSha256": "3ccd7ade9dd09fe66b2c2a7c8e2b1433d2251c883e20a2f79e87da4a43bd4196",
+      "opus": "masters/coverage-chem/v2.ability.chem.heal.1.opus",
+      "opusSha256": "326834b018ac24c3be78ba5cf7e55167a86fa7259c4242446d3aecd29c2bd1f6",
+      "previewSha256": "8a2656d83d2909ef81ab3857838d5c8b873fc0447be1782e86246d47da328fee",
+      "previewBytes": 172914,
+      "previewUrl": "/__cf-audio-review/v2.ability.chem.heal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.8,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.ability.chem.tick.1",
+      "group": "coverage-chem",
+      "kind": "synthetic_fictional",
+      "duration": 0.45,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        },
+        {
+          "path": "source-audio/kenney_impacts/83554049f81f4db9-impactMetal_heavy_001.ogg",
+          "sha256": "83554049f81f4db9209379e103c30bfa63f65c42189a03f300b045c2c82e23ae",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.359274
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-chem",
+          "start": 0,
+          "duration": 0.45,
+          "note": 73,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.chem.tick"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "chem",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 23.65,
+      "master": "masters/coverage-chem/v2.ability.chem.tick.1.wav",
+      "masterSha256": "3074e490d76bb88e84bb6f2460c6b8039e8bba68713edd505ea5bf301ae62f5c",
+      "opus": "masters/coverage-chem/v2.ability.chem.tick.1.opus",
+      "opusSha256": "e3a5feed3ad7400dc812e7609c8c36d4cf224cd44d71475faee1ae987fd9cc23",
+      "previewSha256": "c82c594c93cfa2719a26175ecfbd5b8ce288f1c65b67d00c2cdabc694fbc25a4",
+      "previewBytes": 43314,
+      "previewUrl": "/__cf-audio-review/v2.ability.chem.tick.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    }
+  ],
+  "listeningAccepted": false
+}

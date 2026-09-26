@@ -1,0 +1,48 @@
+{
+  "name": "Lynx",
+  "family": "quadruped",
+  "species": {
+    "name": "Lynx",
+    "aspect": 1.85,
+    "headFrac": 0.22,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "long black ear tufts",
+      "flared facial ruff",
+      "oversized snowshoe paws and long hind legs"
+    ]
+  },
+  "genome": {
+    "seed": 3915197780,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 8,
+    "body": 12,
+    "loco": 16,
+    "trait": 15,
+    "size": 1,
+    "diet": 2,
+    "head": 4,
+    "limbs": 1,
+    "skin": 6,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 0,
+    "behavior": 10,
+    "habitat": 9,
+    "detail": 0,
+    "accent": 7,
+    "temper": 3,
+    "sense": 8,
+    "repro": 1,
+    "life": 3,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Lynx"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Lynx\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3915197780\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "index": 108
+}

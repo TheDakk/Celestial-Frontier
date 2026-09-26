@@ -1,0 +1,18 @@
+{
+  "presence": "PASS",
+  "visibleWalkingChains": 4,
+  "exactSentPromptHash": "PASS",
+  "originalPngBytes": "PASS",
+  "size": "RED",
+  "actualSize": [
+    1254,
+    1254
+  ],
+  "requiredSize": [
+    1536,
+    1536
+  ],
+  "g1": "FORMAT_RED",
+  "g2": "PASS",
+  "batteryRun": false
+}

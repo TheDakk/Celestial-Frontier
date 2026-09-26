@@ -1,0 +1,123 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "p1-freshwater-crab",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "5fcd82e3236619bf7683298b92bd8617a68e5dab6d766a8a36c849d5dcf3dbb1",
+    "pngSha256": "5e63b2746e68b493090d81cff516ccc459d105ed6b1b6251f7d1ef53bc69fc6e"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "e8c54bc2b9aee8fe11cba2bdba6b9dacdc4dc115396c611dcca7f3393b2c1527"
+    },
+    {
+      "name": "claw-far-arm.png",
+      "sha256": "270298a8b53aac57e20fff9482d6494841c02433a91edf183b75060e62b5e170"
+    },
+    {
+      "name": "claw-far-finger.png",
+      "sha256": "80e91c144a56d9476d1366b903ff58ab23243f58719a45caac03958d8e1f4d29"
+    },
+    {
+      "name": "claw-far-palm.png",
+      "sha256": "d042958ea55994e68e0bd2501e018cdd136b930450d6553f34d21ccb50ca3c96"
+    },
+    {
+      "name": "claw-near-arm.png",
+      "sha256": "14e5738fc2ab63b4bec4e1e17802e9dce6b32fd520926edf4a4cf16b520ec974"
+    },
+    {
+      "name": "claw-near-finger.png",
+      "sha256": "7ab660ec308c70731065db347cb3086e9087ecd686b8cfd1cd4bd3ef2db3ae14"
+    },
+    {
+      "name": "claw-near-palm.png",
+      "sha256": "14a64a8c368d705aed90085ab7bd36ecb6c5ba2ac3bf1d601e4cd0a2e99edc54"
+    },
+    {
+      "name": "eye-far.png",
+      "sha256": "180255b28379ef75e4a8e46f413662e8de21047d5e1ecfb83711053345b2c495"
+    },
+    {
+      "name": "eye-near.png",
+      "sha256": "1c401621464ac38530afb26da678b312ade72968fd14c196d021acb1057e7e66"
+    },
+    {
+      "name": "leg0far-lower.png",
+      "sha256": "fd3bdac506b1f6cd54dcd358894e1a890afdf215b11eafc350f72d8b09f4d041"
+    },
+    {
+      "name": "leg0far-upper.png",
+      "sha256": "701f3fe6c024f2035cfc8ab8b20372102e4a71b49aba9f378d7a112e2c4a10f9"
+    },
+    {
+      "name": "leg0near-lower.png",
+      "sha256": "5ee9fd566793f8516e925025ae6d3e468555eb77db3e47717a5e16f75c3eab08"
+    },
+    {
+      "name": "leg0near-upper.png",
+      "sha256": "3edae1cef94476b9c3698d90a55a86a8e46174f5d188fdd4f52c3e6f2ffc080d"
+    },
+    {
+      "name": "leg1far-lower.png",
+      "sha256": "f6a8ee808150edb6deb582b2648c605471144ebd912426752f6ea87754ed1621"
+    },
+    {
+      "name": "leg1far-upper.png",
+      "sha256": "d47c9ac288f562d1eda4973658379b71a9a63d44776d64f7271ad19e0c032cce"
+    },
+    {
+      "name": "leg1near-lower.png",
+      "sha256": "1abf9a8f1c62820a1bb2e795b23e4876456a4fad7ee233b00f7256306cb7e396"
+    },
+    {
+      "name": "leg1near-upper.png",
+      "sha256": "677a58fc7961d5da5a199b7afe6e17bccc0a10db2a7cbb456b21660a00cb58c7"
+    },
+    {
+      "name": "leg2far-lower.png",
+      "sha256": "0e7096ca9ae9bf5255e83112aa3289f016c0373f6a4c1e8aa8c0bc367e2f3705"
+    },
+    {
+      "name": "leg2far-upper.png",
+      "sha256": "98747e148fb4a3b4a1b339003414455221a2782b447697f6a4e505b3448f7c9e"
+    },
+    {
+      "name": "leg2near-lower.png",
+      "sha256": "f77919f5918b63f4c272523e32ccbb83155e3eab51a54b60a6deef2ee79242c0"
+    },
+    {
+      "name": "leg2near-upper.png",
+      "sha256": "9623032e11d5aaaca91ed2ddeea0d37e93cfe38d5c844e041f6d87e91d053846"
+    },
+    {
+      "name": "leg3near-lower.png",
+      "sha256": "1c942f6a4419713b5354c3aa51ad69369c8d5dc275bdae17bb48d77f0b21b88d"
+    },
+    {
+      "name": "leg3near-upper.png",
+      "sha256": "a40c5d839b2fbfaea27cc5e2409f773812b0840a7bab92dad50c01c84b9dcd86"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

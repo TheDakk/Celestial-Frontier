@@ -1,0 +1,21 @@
+# Archetype sprint — 2026-09-22
+
+Source: OpenAI/Codex · macOS · /Users/nick/Projects/celestial-frontier-openai-mac · openai/mac (tracks origin/openai/mac). Nick’s continuation authorizes one normal final push to origin/openai/mac after all items are signed; no fetch/sync or other GitHub write. See CONTINUATION_AUTHORITY.md. Claude lane is read-only. Node 26.9.0 continuing-run receipt. S2 regression alone halts all battery work. No numeric acceptance claims before measurement.
+
+| Item | Plan | Exemplar | Signed commit | Static rows | Film refusals | CPU p95 | Sheet | State |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | I5 | Compendium | A 36402564d08d; B 647ad713077fdd61c1cda337b918706936684acd | 0 outcomes | n/a | n/a | n/a | RED instrument: phone review focus/ring; 7,385 ms; sealed budget restored |
+| 2 | fish | Salmon | 45a344dcdcd7677cd0c2ff0392649ebbfd458c47 | 14 rows / 0 red | not measured | not measured | 02-fish/review-sheet.png | RED: Error: Error: habitat: Selected home arena cannot support both organisms; no habitat or biome substitution · left Salmon: aquatic (water) · right Salmon: aquatic (water) |
+| 3 | biped-bird | Eagle | d522797a30550680e9747a3d5e668f0967897e78 | not run | not measured | not measured | 03-biped-bird/review-sheet.png | RED: Error: MotionCompileError: motion refused (unsupported-template): family "biped-bird" routes to no motion template |
+| 4 | insect | Beetle | 0c8b6e56f705af15564571b311d77ea09a5f0c48 | not run | not measured | not measured | 04-insect/review-sheet.png | RED: Error: Hidden anatomy: unsupported hidden chain |
+| 5 | serpent | Python | 879844704150ae0e3fd505cd2b276156106daf27 | 13 rows / 0 red | {"left":0,"right":0} | 2.899999976158142 ms stage | 05-serpent/review-sheet.png | PASS:  |
+| 6 | hopper | Tree Frog | f598f58914056d8eb10ca53dbfc67f933ec1d132 | REFUSED before rows | not measured | not measured | 06-hopper/review-sheet.png | RED: Error: MotionCompileError: motion refused (unsupported-materials): surface "moist granular green frog skin, cream underside and orange adhesive toe discs" maps to no kit material |
+| 7 | primate | Chimpanzee | 6496aee59332b62566574fa0e9707837100623dc | 14 rows / 3 red | {"left":0,"right":53} | 4.600000023841858 ms stage | 07-primate/review-sheet.png | RED: Error: Motion capture: encoded video lost frames |
+| 8 | radial | Starfish | b13c1b87507ed2223c13f739573d944283fa7ea9 | 14 rows / 7 red | not measured | not measured | 08-radial/review-sheet.png | RED: Error: Error: habitat: Selected home arena cannot support both organisms; no habitat or biome substitution · left Starfish: aquatic (water) · right Starfish: aquatic (water) |
+| 9 | arachnid | Tarantula | 5a58994496f0ec0ac05ccc786d57094d98173942 | not run after intake refusal | not measured | not measured | 09-arachnid/review-sheet.png | RED: Error: Hidden anatomy: unsupported hidden chain |
+| 10 | cephalopod | Octopus | 10266ed7cac0771dd8485b0bb6647655c3eaded5 | 14 rows / 0 red | not measured | not measured | 10-cephalopod/review-sheet.png | RED: Error: Error: habitat: Selected home arena cannot support both organisms; no habitat or biome substitution · left Octopus: aquatic (water) · right Octopus: aquatic (water) |
+| 11 | flyer-membrane | Fruit Bat | 9089d3009fc5929a3ed35590c6ad7530f3eb14fa | 14 rows / 4 red | not measured | not measured | 11-flyer-membrane/review-sheet.png | RED: Error: Error: Habitat: organism cannot fit its medium |
+| 12 | myriapod | Centipede | 64e792e06ca1e305336868a5d3a207e1caa12668 | not run after intake refusal | not measured | not measured | 12-myriapod/review-sheet.png | RED: Error: Anatomy inventory: unsupported repeated topology myriapod |
+| 13 | fish markings | Salmon | packet history (13-fish-markings) | 6 masks / 0 outside-alpha pixels | n/a | n/a | 13-fish-markings/six-mask-sheet.png | PASS conservation; 0/1-alpha interior residues retained for art review |
+
+Commit references use the next item’s recorded parent or `git log -- audits/ARCHETYPE_SPRINT_20260922/<packet>` so a commit never claims its own unknowable hash.

@@ -1,0 +1,10 @@
+{
+  "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/MOTION_ANATOMY_20260923/CODEX_PROMPT.md",
+  "sha256": "17c682197d1b7a093a98911e3c6b8142fe16cfe5e2589863e502f3cc08e55256",
+  "warning": "Items4\u20137 explicitly reported uncommitted by Nick; read-only working-file request snapshot, not a committed-source claim.",
+  "localHead": "4c23bffcb6df6f2e79a6b70301a39538183235b3",
+  "pr43Head": "202191a1efe47ca173ce0bbd32809def910b7a45",
+  "pr43Branch": "anthropic/mac",
+  "pr43Base": "develop",
+  "startup": "Same uninterrupted session: reuse audits/MOTION_ANATOMY_20260923/toolchain-check.json and reaper-outdated.json; Node identity rechecked26.9.0."
+}

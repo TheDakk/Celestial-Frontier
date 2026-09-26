@@ -1,0 +1,5 @@
+Codex manual presence declaration for the delivered open-pose Python.
+
+One visible head and closed lower jaw, one continuous heavy limbless body, one visible pointed tail. Root and all ten segment owners have visible body surfaces along the open lateral wave. No required group is declared hidden, absent or folded. Python has no leg inventory; body curvature is not a folded leg. No hidden reverse surface is invented.
+
+Manual pixel landmarks locate approximate body centers. Vertical part cuts follow the monotonic left-to-right open profile, with an explicit jaw contour in front of the head region and neck-root as the remainder. These are fresh authoring choices from this master, not transferred labels or skeleton coordinates. Faint generated alpha specks and colored fringe remain unchanged with the corresponding part owner. Source-safe margins miss the prompt and are disclosed, not corrected by trimming.

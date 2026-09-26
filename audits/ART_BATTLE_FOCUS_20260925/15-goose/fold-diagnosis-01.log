@@ -1,0 +1,419 @@
+[
+  {
+    "id": "approach:flight",
+    "error": "ARAP skin: unresolved folded triangles: 2",
+    "folded": [
+      {
+        "triangle": 104,
+        "vertices": [
+          {
+            "i": 66,
+            "xy": [
+              695,
+              949.5
+            ],
+            "weights": [
+              [
+                "legFarAnkle",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 69,
+            "xy": [
+              685,
+              959
+            ],
+            "weights": [
+              [
+                "legFarAnkle",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 70,
+            "xy": [
+              685,
+              940
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          }
+        ]
+      },
+      {
+        "triangle": 191,
+        "vertices": [
+          {
+            "i": 128,
+            "xy": [
+              597,
+              949.5
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 2,
+            "xy": [
+              587,
+              959
+            ],
+            "weights": [
+              [
+                "legNearAnkle",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 1,
+            "xy": [
+              587,
+              940
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "melee:claw",
+    "error": "ARAP skin: unresolved folded triangles: 1",
+    "folded": [
+      {
+        "triangle": 200,
+        "vertices": [
+          {
+            "i": 66,
+            "xy": [
+              695,
+              949.5
+            ],
+            "weights": [
+              [
+                "legFarAnkle",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 70,
+            "xy": [
+              685,
+              940
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 67,
+            "xy": [
+              705,
+              940
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hit",
+    "error": "ARAP skin: unresolved folded triangles: 1",
+    "folded": [
+      {
+        "triangle": 200,
+        "vertices": [
+          {
+            "i": 66,
+            "xy": [
+              695,
+              949.5
+            ],
+            "weights": [
+              [
+                "legFarAnkle",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 70,
+            "xy": [
+              685,
+              940
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 67,
+            "xy": [
+              705,
+              940
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dodge",
+    "error": "ARAP skin: unresolved folded triangles: 2",
+    "folded": [
+      {
+        "triangle": 191,
+        "vertices": [
+          {
+            "i": 128,
+            "xy": [
+              597,
+              949.5
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 2,
+            "xy": [
+              587,
+              959
+            ],
+            "weights": [
+              [
+                "legNearAnkle",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 1,
+            "xy": [
+              587,
+              940
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          }
+        ]
+      },
+      {
+        "triangle": 200,
+        "vertices": [
+          {
+            "i": 66,
+            "xy": [
+              695,
+              949.5
+            ],
+            "weights": [
+              [
+                "legFarAnkle",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 70,
+            "xy": [
+              685,
+              940
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 67,
+            "xy": [
+              705,
+              940
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "faint",
+    "error": "ARAP skin: unresolved folded triangles: 1",
+    "folded": [
+      {
+        "triangle": 200,
+        "vertices": [
+          {
+            "i": 66,
+            "xy": [
+              695,
+              949.5
+            ],
+            "weights": [
+              [
+                "legFarAnkle",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 70,
+            "xy": [
+              685,
+              940
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 67,
+            "xy": [
+              705,
+              940
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tame",
+    "error": null,
+    "folded": []
+  },
+  {
+    "id": "melee:kick",
+    "error": "ARAP skin: unresolved folded triangles: 1",
+    "folded": [
+      {
+        "triangle": 191,
+        "vertices": [
+          {
+            "i": 128,
+            "xy": [
+              597,
+              949.5
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 2,
+            "xy": [
+              587,
+              959
+            ],
+            "weights": [
+              [
+                "legNearAnkle",
+                1
+              ]
+            ],
+            "pinned": true
+          },
+          {
+            "i": 1,
+            "xy": [
+              587,
+              940
+            ],
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ],
+            "pinned": true
+          }
+        ]
+      }
+    ]
+  }
+]

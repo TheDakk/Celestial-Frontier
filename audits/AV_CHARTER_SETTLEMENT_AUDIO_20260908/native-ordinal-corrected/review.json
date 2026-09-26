@@ -1,0 +1,3035 @@
+{
+  "schema": "cf-native-charter-settlement-audio/v1",
+  "status": "FAIL",
+  "certification": false,
+  "startedAt": "2026-09-08T08:55:14.778Z",
+  "dist": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/dist",
+  "sources": {
+    "port/v2/apps/game/src/main.ts": "da4f8b5d800794c752c1ac9cbd4f32c4a8fb1be261a94e9f5fc09b3dd148b9e2",
+    "port/v2/apps/game/src/audiovisual-pilot.ts": "4c98a67a7ca74d1bcf67f88004f1dcf0a2d8ddc5977b5ef3ec58b0d75178cc5a",
+    "port/v2/apps/game/src/tame-greeting-audio.ts": "c43d98e0c4f0b0ec2667d609c2a1beac0220b28370515bc01ec611d2fbe01a7b",
+    "port/v2/apps/game/src/pilot-sound-player.ts": "9a0c09dfa7e55f91bcd99e305bb59ec0b2e0c8f2f13adf8d3b60263f30f6fce8",
+    "port/v2/apps/game/src/pilot-pcm.ts": "681b29cb93528e88c67eff2effed2b8ff5659826e4529ccc3c3906b8ea8d6cc8",
+    "port/v2/apps/game/src/pilot-assets.ts": "e17dbffb5baa6f935bfe745393e05a09022b53554a9f5ca202b88ed79ca40fbb",
+    "port/v2/apps/game/src/starter-charters.ts": "3a8362c21689d7e9a2629d76987a0b9b9dbe538f4f637abf0e7179c1ab656eb4",
+    "port/v2/packages/audio/src/runtime.ts": "329480375409e5b8cab3683473d9320a35d21f9301ffedc62f2eb61ca07094c0",
+    "port/v2/packages/persistence/src/migration-v5.ts": "94f179e4af7ac19e06bf2ae25d9dfbce32b14960c59a0c04fb5d5b95bc168159",
+    "port/v2/packages/persistence/src/export-v2.ts": "392b36409b08593f3fb35a4a55cc9c0a9199f7cb67aaea3c9b60347118140bff",
+    "port/v2/packages/persistence/src/outcome-transaction.ts": "bb765b96e2f9ea575103150e1eb0cb407f32cfafb955751bda79905680d4a85f",
+    "port/v2/apps/game/src/f4-runtime-authority.ts": "d450f50c17adf9aa3925a22573cb43211331a1d1b0cbfeb6d29f47be96e8b231",
+    "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-settlement.wav": "40b012b8a0fe9b91de06ec83b70d575f7f90fd1534710e8b4052979f813617d3",
+    "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-runner.mjs": "382f113ca92f45440ac57618b3c534f6ef6004c8148ae191c0a7aefe6c056278"
+  },
+  "served": {
+    "index.html": "df316704f80d163c1085bcfb62599ec0166b4af9b343f9f975582c8cff120e0e",
+    "assets/main-C8YSeqfe.js": "3f436ec660c2b87cc8c23fc7a58d36b527355a99084223c76f124bf666091ef0",
+    "assets/Geometry-C5FtorEc.js": "9bbbacd5502e42fb7c51a5306bda3b59b718a2bacd20badde40fe7e8ab1afbb6",
+    "assets/getTextureBatchBindGroup-DkbnCTGz.js": "3ce2d33bde60e5f2cc123fab89998b4c1580eecab18b1294321b14d255b83be5",
+    "assets/CanvasRenderer-DXKJLlc8.js": "1e4c6c1578a4d34a9274e2c4a68b4dc37c541e225d963bf661f682486d930051",
+    "assets/speciesidentity-DkdaK0o4.js": "bbcbd03c4f82bb640db2cda363b4579b60631a4182d759861009771f4f39d772",
+    "assets/CanvasPool-BewL5izq.js": "8b4af0914a4436094e428b6747bef851805c1c84f361ba8819c1fbdcab6b806a",
+    "assets/src-D1xb2OX1.js": "b65c8f4cc2ee2064ff67d0c795945d41119030489bf45185ba96a5e756fcedef",
+    "assets/canvasUtils-CWV5icuA.js": "faaff76b40957b52f7817add636bb204e563dfab14ed3a0b6f563c96c259938b",
+    "assets/visual-effect-policy-Bvngx8nL.js": "4c150d4f5af91b69dc3b7f069059a5e9bc6daec8fe31ba0eaab4bb4ac61fdef4",
+    "assets/tame-greeting-audio-Cu-PsMZu.js": "7b35cb3164e3a843532ff4744485a9f7ba7377aa73872cb740cf47ee8b6f5122",
+    "assets/release-identity-CIuedefi.js": "849faf8ee532d75c477524be0847f7db9f6ae443b86c328434bd8101a6c0a82d",
+    "assets/surface-polish-CBmmi-Kj.js": "9d74988f7575b155e811c18ff7bcc594d7158fbee211bfbacabdeafcfdfe0552",
+    "assets/getPo2TextureFromSource-0axNaDip.js": "b30689d034d24afffd35fc3a31fbc217dd73090d008e0ec963372dfdc5fcae68",
+    "assets/RenderTargetSystem-DKTlyS8X.js": "fa6f7819177a12bf7438d3f56905fed48dfc79e1d45c76df828e20ce7fccee22",
+    "manifest.webmanifest": "827ec2c2a4bb946c558321624cc241bcf71c0008aac15dbc2c852f76e2c06f40",
+    "assets/WebGLRenderer-6mXMZ2W0.js": "0564e0461c5adbde63f59574d08acae1c0fe047a3fc02946ad0436f2acf8381d",
+    "assets/BufferResource-e5xCyZ5_.js": "6ee514005f66ab3071ec8b93506a1cd968593d7ac051716399272ac7a384f4d4",
+    "assets/InterVariable-DiVDrmQJ.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+    "assets/browserAll-CAHNI2rF.js": "e4e09a2f845f764445a9672423c95a8f4142f3b314aee86ace1cc59e1cf68b03",
+    "assets/init-S6n54E3j.js": "d9d1196b839d592b9b80843129c776109e53dbb6b96b905b6405bb65f0c42cfb",
+    "icons/celestial-frontier.svg": "97b8d42d779cebcddca5980c60635a8c767c2b7ea43a23871ccd386a7d716c04",
+    "service-worker.js": "bbbf8c032d182fdd60d7bcae4b62d6d96e0f0a28510d5f6c85028cc05dc7e8cc",
+    "assets/Inter-LICENSE-CkXC2-KD.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "assets/WebGPURenderer-Btvgrbn5.js": "e638b9294f9884f469f9bb2b3bee08ac684a6fb1021511eb29cf68baa355aa5f",
+    "assets/audiovisual-pilot-xkKqITae.js": "c3b06772475ab3edc63e467062b1f8627c55307978e8aa9daeacf9c8d6d4bd5a",
+    "assets/audiovisualPilot-YSvrk05a.js": "c3d756c388a8235fd50c726ad9f0ab48e842472e4793c34316538d6a843526f4",
+    "assets/audit-BESfJQH9.js": "3e11872550aabc8e75fc69a64fbf6b819ba259ae7c8c3eb9c828aaadff861090",
+    "assets/biome-vista.worker-D3XRSJZJ.js": "f30f76537077952e792da01712b59650172dc2e7b78698040abc780843c6f7e2",
+    "assets/cf-pilot-combat-contact-DHZD2lYd.wav": "fc3bcb5da5ee2a81a45d32de933cea234eb42850b151ba46565d1ad300eb6a20",
+    "assets/cf-pilot-exploration-music-CMF8UCKw.wav": "fa144fe615faef75fc426f86a44f299dcf48a1637893ccef9cf95fa2ab40a111",
+    "assets/cf-pilot-scout-approach-Be38_iqZ.wav": "ad4020be2cda99df2ba91290965b1d125bf909c4b7279833da51b5b55ad5f373",
+    "assets/cf-pilot-scout-landing-D1k5tYuE.wav": "6e8e3edf1dca6f232ebb13233e6921a64c33bd33830a5c1358165a764779852a",
+    "assets/cf-pilot-temperate-bed-C_jKRyj6.wav": "36caaa89651e44e92f9faddc53d74104cb9e1f5e11eb5a5757efbbdb978be69c",
+    "assets/cf-pilot-ui-nav-bMnbTxA8.wav": "14cecfcf6525c0c3637455ae7c711972021814ae5b5caf711baf7c6bb796a4c8",
+    "assets/cf-pilot-ui-refusal-CMon7hko.wav": "3e4fcbd34d6b65583883e31347ef99c4dd538aa07a311fe7612083e3f37b9b20",
+    "assets/cf-pilot-ui-settlement-uF_X4Ois.wav": "40b012b8a0fe9b91de06ec83b70d575f7f90fd1534710e8b4052979f813617d3",
+    "assets/earth-rainy-landscape-DPgApIAi.webp": "478fd649a1aed198e64a9a053c464f9f98630943ac8e11bf1b184b253f47060b",
+    "assets/earth-rainy-phone-DFt5murF.webp": "3689d1273b7bc75806f87eea9718304109a06d31f98682c6161e05b1a06b83ef",
+    "assets/guide-content-Cy7MxzST.js": "5c16f71f1959f41eb1a5b9262873077f41de3df4551dbadc8d23d3f7a5a0b908",
+    "assets/hybridMatrix-DiGQ5L5t.js": "43f3c1833e62a26ecb5c72b33316aab6b79a8732f7e6020bec8e8a294856c5b1",
+    "assets/pilot-sound-player-Dg8Fl5YX.js": "bc9c81864c841e561046c5bcd0cd802b8b0d59a6ee52c9ff23f7d031697bb458",
+    "assets/release-content-B8TBEtPm.js": "76ac367a33a363bb07e56974c5a1d066d7115b5714535be2e4a207fa917a6dd3",
+    "assets/scout-chemical-132-Dt4gyYnA.webp": "e961336688e8a0687eb6f09dd3f1a22306077694390002ffcda6763b7ba37fc4",
+    "assets/scout-chemical-300-CxcU_kic.webp": "ec2ac6134e4dfc3e74e932c8277e558cdac22f18274f4c806278adc19c510752",
+    "assets/scout-chemical-512-DcNawgH5.webp": "7d58149bed26e0e6aad629d8a7ff50911c9d8540e2cc8c1f8ad60f081299f343",
+    "assets/species-art.worker-DnnSDKMy.js": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172",
+    "assets/speciesart-CGOfbRs-.js": "6865ce59f9d21f2efdd9c9eb6ae64fcb1d2b377c1d63a790cd7c34c6c9130e51",
+    "assets/webworkerAll-Dl-gkjA6.js": "791e45d86752eb73039eb295ef453ce3e7b70d0a15fc8d297812370d688f7e30",
+    "audiovisual-pilot.html": "2699e51c402154544224dbbf82d074dbb5cb1d93494dc1e0ae89ef0e72a9e6b1",
+    "audit.html": "603ee30fe1dbcd93615b93808faa7d8f195a7f34037b3440d6a7ffc7eb1bb41c",
+    "hybrid-matrix.html": "3c167ab230c9e1cc9d91a750b5f6789e483067b2daa589399c909ac291395336",
+    "icons/celestial-frontier-maskable.svg": "ff05489ed56a7193bbaf8fe5e3f6b43e8ba46667be2f8e1e9bdd7ff46da2488c"
+  },
+  "steps": [
+    {
+      "name": "fresh answerable pilot",
+      "condition": "window.__CF_SLICE__?.api&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()&&document.querySelector('[data-cf-audiovisual-pilot]')",
+      "status": "PASS"
+    },
+    {
+      "name": "native click",
+      "selector": "[data-sel=tutskip]",
+      "point": {
+        "x": 247.1328125,
+        "y": 666.859375
+      },
+      "input": {
+        "at": 806.8999999761581,
+        "trusted": true,
+        "charterId": null,
+        "text": "Skip training — you lose nothing, and Settings can restart it"
+      }
+    },
+    {
+      "name": "Training closed",
+      "condition": "!window.__CF_SLICE__.api.state().tutActive&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "native click",
+      "selector": "[data-cf-pilot-controls] summary",
+      "point": {
+        "x": 313.9921875,
+        "y": 717
+      },
+      "input": {
+        "at": 906.5,
+        "trusted": true,
+        "charterId": null,
+        "text": null
+      }
+    },
+    {
+      "name": "native click",
+      "selector": "[data-cf-pilot-controls] button:nth-of-type(2)",
+      "point": {
+        "x": 228,
+        "y": 531.609375
+      },
+      "input": {
+        "at": 991.8999999761581,
+        "trusted": true,
+        "charterId": null,
+        "text": "Play pilot sound"
+      }
+    },
+    {
+      "name": "native pilot opt-in starts shared music",
+      "condition": "document.querySelector('[data-cf-pilot-controls] [role=status]')?.textContent.includes('Exploration phrase playing')&&window.__cfCharterAudio.sources.some(s=>s.startSucceeded&&Math.abs(s.duration-24)<1e-6)",
+      "status": "PASS"
+    },
+    {
+      "name": "native click",
+      "selector": "[data-cf-pilot-controls] summary",
+      "point": {
+        "x": 228,
+        "y": 346.046875
+      },
+      "input": {
+        "at": 1206.7999999523163,
+        "trusted": true,
+        "charterId": null,
+        "text": null
+      }
+    },
+    {
+      "name": "native click",
+      "selector": "#objchip",
+      "point": {
+        "x": 270.1953125,
+        "y": 90.71875
+      },
+      "input": {
+        "at": 1288.8999999761581,
+        "trusted": true,
+        "charterId": null,
+        "text": "⬆ Make planetfall on 2 worlds of Sol · 0 / 2"
+      }
+    },
+    {
+      "name": "native Make planetfall acceptance available",
+      "condition": "document.querySelector(\"#chpanel [data-starter-charter-accept=\\\"st-land\\\"]\")?.disabled===false&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "native click",
+      "selector": "#chpanel [data-starter-charter-accept=\"st-land\"]",
+      "point": {
+        "x": 166,
+        "y": 419.78125
+      },
+      "input": {
+        "at": 1556.1999999284744,
+        "trusted": true,
+        "charterId": "st-land",
+        "text": "Accept"
+      }
+    },
+    {
+      "name": "trusted acceptance refused by write guard",
+      "condition": "window.__CF_SLICE__.api.state().persistence.mutationBlockCount===1",
+      "status": "PASS"
+    },
+    {
+      "name": "writable after refusal cleanup",
+      "condition": "(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "native click",
+      "selector": "#chpanel [data-starter-charter-accept=\"st-land\"]",
+      "point": {
+        "x": 166,
+        "y": 373.78125
+      },
+      "input": {
+        "at": 2639.7999999523163,
+        "trusted": true,
+        "charterId": "st-land",
+        "text": "Accept"
+      }
+    },
+    {
+      "name": "real acceptance pending",
+      "condition": "document.querySelector('#chpanel')?.getAttribute('aria-busy')==='true'&&window.__CF_SLICE__.api.state().sceneResources.pendingPersistenceWrites===1",
+      "status": "PASS"
+    },
+    {
+      "name": "committed Charter and exactly one finite settlement source",
+      "condition": "(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()&&(window.__CF_SLICE__.api.state().save.chacc.includes('st-land')||window.__CF_SLICE__.api.state().save.chDone.includes('st-land'))&&window.__cfCharterAudio.sources.filter(s=>s.startSucceeded&&Math.abs(s.duration-.7)<1e-6).length===1&&window.__cfCharterAudio.sources.filter(s=>s.startSucceeded&&Math.abs(s.duration-.7)<1e-6)[0].endedAt!==undefined",
+      "status": "PASS"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "charter-available-phone.png",
+      "sha256": "eaabad85405a4593765b8d8012e64ae4da944d16caa031fb43221887ee3b6063"
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "One native Starter Charter acceptance on a fresh expedition; existing read-only and pending-action hooks supply negative controls only.",
+    "Actual shared AudioBuffer source start/end observation is not human listening, speaker output or physical iPhone/Safari acceptance.",
+    "Scoped diagnostic, not Slice/Glass certification or a broad audio battery."
+  ],
+  "origin": "http://127.0.0.1:52787",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/152.0.4191.66",
+    "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "js_version": "15.2.23.10",
+    "protocol_version": "1.3"
+  },
+  "pendingEvaluation": null,
+  "initial": {
+    "at": 852.1999999284744,
+    "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+    "mode": "system",
+    "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+    "navWorldKey": null,
+    "renderedScene": {
+      "serial": 2,
+      "mode": "system",
+      "ecologyEpoch": 0,
+      "galaxyKey": "CF1|g:999@90,-60",
+      "starKey": "CF1|g:999@90,-60|s:424242@560,170",
+      "worldKey": null
+    },
+    "save": {
+      "name": "",
+      "essence": 0,
+      "landed": [],
+      "customNames": [],
+      "ascCh": 0,
+      "ascProg": {},
+      "items": [],
+      "cargo": [],
+      "cgx": [],
+      "mineX": [],
+      "mined": [],
+      "skimX": [],
+      "stats": {
+        "hybrids": 0,
+        "best": 0,
+        "maxGen": 0,
+        "shares": 0,
+        "jumps": 0,
+        "anomalies": 0,
+        "events": 0,
+        "duels": 0,
+        "duelwins": 0,
+        "breeds": 0,
+        "breedwins": 0,
+        "feeds": 0,
+        "feedfails": 0,
+        "harvests": 0,
+        "essenceEarned": 0,
+        "guardians": 0,
+        "paragons": 0,
+        "mines": 0,
+        "crafts": 0,
+        "minedout": 0,
+        "skims": 0,
+        "cosmics": 0,
+        "landings": 0,
+        "charters": 0,
+        "surveys": 0,
+        "bestRank": 0
+      },
+      "journal": [],
+      "claimedSets": [],
+      "techOwned": [],
+      "unlocked": [],
+      "primeFill": {},
+      "frontierUnlocked": false,
+      "frontierEnding": null,
+      "chWeek": -1,
+      "chProg": {},
+      "chacc": [],
+      "chDone": [],
+      "viewType": "star",
+      "savedView": {
+        "type": "star",
+        "gal": {
+          "x": 90,
+          "y": -60,
+          "size": 78,
+          "sp": 0,
+          "tilt": 0.62,
+          "rot": 0.5,
+          "seed": 999,
+          "home": true,
+          "quasar": false,
+          "dwarf": false
+        },
+        "star": {
+          "x": 560,
+          "y": 170,
+          "seed": 424242
+        }
+      }
+    },
+    "persistence": {
+      "schema": "cf-v2-app-persistence/v1",
+      "ready": true,
+      "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+      "bootKind": "fresh-v5",
+      "hold": null,
+      "protectedDetail": null,
+      "authorityBootKind": "absent",
+      "seedBootstrapPending": false,
+      "bootRouteRepairPending": false,
+      "productBootstrapPending": false,
+      "engineeringBootstrapPending": false,
+      "ownershipBootstrapPending": false,
+      "ownershipV2BootstrapPending": false,
+      "visibilityOverrideHidden": false,
+      "lastOutcome": "training-committed:3",
+      "hideWitness": null,
+      "heartbeatStorageFault": null,
+      "revisionVerificationFault": null,
+      "heartbeatRunning": true,
+      "convergenceReloadScheduled": false,
+      "convergenceReloadHold": {
+        "schema": "cf-v2-product-action-hold-diagnostics/v1",
+        "phase": "idle",
+        "operation": null,
+        "sequence": 0
+      },
+      "leaseReadCount": 3,
+      "revisionReadCount": 1,
+      "mutationBlocked": false,
+      "mutationBlockCount": 0,
+      "mutationBlockWitness": null,
+      "importPhase": null,
+      "importRace": null,
+      "runtime": {
+        "schema": "cf-v2-f4-runtime/v1",
+        "revision": 3,
+        "visible": true,
+        "answerable": true,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "leaseHeartbeat": 0,
+        "activePlayMs": 152,
+        "accruing": true,
+        "sessionSeed": 1454006279,
+        "sessionOrdinal": 0,
+        "sessionDraws": {},
+        "commits": 2,
+        "staleWrites": 0,
+        "leaseLosses": 0
+      },
+      "ecology": {
+        "schema": "cf-v2-ecology-epoch-edge/v1",
+        "publishedEpoch": 0,
+        "candidateEpoch": 0,
+        "activePlayOriginMs": 0,
+        "observedActivePlayMs": 152,
+        "edgeDue": false,
+        "autoCheckpointDue": false,
+        "inFlight": false,
+        "stagedIntent": null,
+        "stagedEpoch": null,
+        "retrySuppressedEpoch": null,
+        "lastCommittedRevision": null,
+        "stages": 0,
+        "commits": 0,
+        "publications": 0,
+        "rejections": 0,
+        "invalidStageCompletions": 0,
+        "projection": {
+          "state": "current",
+          "publishedEpoch": 0,
+          "projectedEpoch": 0,
+          "refreshEpoch": null,
+          "refreshSerial": null
+        },
+        "projectionRefreshesStarted": 0,
+        "projectionRefreshesCompleted": 0,
+        "projectionRefreshesFailed": 0,
+        "projectionSuppressions": 0,
+        "invalidProjectionCompletions": 0,
+        "projectionDirty": false,
+        "projectionSuppressed": false,
+        "checkpointInFlight": false,
+        "lastOutcome": "boot:0"
+      }
+    },
+    "pending": 0,
+    "panel": null,
+    "panelBusy": null,
+    "viewport": [
+      390,
+      844,
+      2
+    ],
+    "audio": {
+      "schema": "cf-v2-tame-greeting-audio/v1",
+      "disposed": false,
+      "armed": 0,
+      "claimedEvents": 0,
+      "activeVoiceId": null,
+      "activeCombatVoiceIds": [],
+      "lastEventKey": null,
+      "lastEventKind": null,
+      "lastDisposition": "unanswerable",
+      "counterpart": {
+        "key": null,
+        "generation": null,
+        "status": "none"
+      },
+      "runtime": {
+        "state": "blocked",
+        "contextState": null,
+        "contextGeneration": 0,
+        "muted": false,
+        "hidden": false,
+        "gains": {
+          "master": 1,
+          "effectiveMaster": 1,
+          "categories": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "voiceMix": {
+          "schema": "cf.audio.voice-mix-intent/v1",
+          "activeOwners": 0,
+          "owners": [],
+          "factors": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          },
+          "effectiveCategoryGains": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "nodes": {
+          "active": 0,
+          "peak": 0,
+          "budget": 96
+        },
+        "cache": {
+          "active": 0,
+          "peak": 0,
+          "budget": 32,
+          "evictions": 0
+        },
+        "voices": {
+          "active": 0,
+          "peak": 0,
+          "budget": 24,
+          "ids": [],
+          "started": 0,
+          "completed": 0,
+          "stopped": 0,
+          "stolen": 0,
+          "cooldownRejects": 0,
+          "concurrencyRejects": 0
+        },
+        "creatureEmitters": {
+          "active": 0,
+          "peak": 0,
+          "budget": 8
+        },
+        "cooldowns": {
+          "active": 0,
+          "budget": 128
+        },
+        "reservations": {
+          "voices": {
+            "active": 0,
+            "peak": 0,
+            "activePlusReservedPeak": 0
+          },
+          "nodes": {
+            "active": 0,
+            "peak": 0,
+            "activePlusReservedPeak": 0
+          }
+        },
+        "cleanup": {
+          "sourceStopFailures": 0,
+          "nodeDisconnectFailures": 0,
+          "cacheReleaseFailures": 0
+        },
+        "peaks": {
+          "master": 0,
+          "music": 0,
+          "ambience": 0,
+          "creature": 0,
+          "combat-gameplay": 0,
+          "ui": 0
+        },
+        "faults": {
+          "total": 0,
+          "retained": [],
+          "budget": 20
+        }
+      }
+    },
+    "trace": {
+      "inputs": [
+        {
+          "at": 806.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Skip training — you lose nothing, and Settings can restart it"
+        }
+      ],
+      "sources": [],
+      "faults": []
+    }
+  },
+  "before": {
+    "at": 1341.2999999523163,
+    "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+    "mode": "system",
+    "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+    "navWorldKey": null,
+    "renderedScene": {
+      "serial": 2,
+      "mode": "system",
+      "ecologyEpoch": 0,
+      "galaxyKey": "CF1|g:999@90,-60",
+      "starKey": "CF1|g:999@90,-60|s:424242@560,170",
+      "worldKey": null
+    },
+    "save": {
+      "name": "",
+      "essence": 0,
+      "landed": [],
+      "customNames": [],
+      "ascCh": 0,
+      "ascProg": {},
+      "items": [],
+      "cargo": [],
+      "cgx": [],
+      "mineX": [],
+      "mined": [],
+      "skimX": [],
+      "stats": {
+        "hybrids": 0,
+        "best": 0,
+        "maxGen": 0,
+        "shares": 0,
+        "jumps": 0,
+        "anomalies": 0,
+        "events": 0,
+        "duels": 0,
+        "duelwins": 0,
+        "breeds": 0,
+        "breedwins": 0,
+        "feeds": 0,
+        "feedfails": 0,
+        "harvests": 0,
+        "essenceEarned": 0,
+        "guardians": 0,
+        "paragons": 0,
+        "mines": 0,
+        "crafts": 0,
+        "minedout": 0,
+        "skims": 0,
+        "cosmics": 0,
+        "landings": 0,
+        "charters": 0,
+        "surveys": 0,
+        "bestRank": 0
+      },
+      "journal": [],
+      "claimedSets": [],
+      "techOwned": [],
+      "unlocked": [],
+      "primeFill": {},
+      "frontierUnlocked": false,
+      "frontierEnding": null,
+      "chWeek": -1,
+      "chProg": {},
+      "chacc": [],
+      "chDone": [],
+      "viewType": "star",
+      "savedView": {
+        "type": "star",
+        "gal": {
+          "x": 90,
+          "y": -60,
+          "size": 78,
+          "sp": 0,
+          "tilt": 0.62,
+          "rot": 0.5,
+          "seed": 999,
+          "home": true,
+          "quasar": false,
+          "dwarf": false
+        },
+        "star": {
+          "x": 560,
+          "y": 170,
+          "seed": 424242
+        }
+      }
+    },
+    "persistence": {
+      "schema": "cf-v2-app-persistence/v1",
+      "ready": true,
+      "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+      "bootKind": "fresh-v5",
+      "hold": null,
+      "protectedDetail": null,
+      "authorityBootKind": "absent",
+      "seedBootstrapPending": false,
+      "bootRouteRepairPending": false,
+      "productBootstrapPending": false,
+      "engineeringBootstrapPending": false,
+      "ownershipBootstrapPending": false,
+      "ownershipV2BootstrapPending": false,
+      "visibilityOverrideHidden": false,
+      "lastOutcome": "training-committed:3",
+      "hideWitness": null,
+      "heartbeatStorageFault": null,
+      "revisionVerificationFault": null,
+      "heartbeatRunning": true,
+      "convergenceReloadScheduled": false,
+      "convergenceReloadHold": {
+        "schema": "cf-v2-product-action-hold-diagnostics/v1",
+        "phase": "idle",
+        "operation": null,
+        "sequence": 0
+      },
+      "leaseReadCount": 3,
+      "revisionReadCount": 1,
+      "mutationBlocked": false,
+      "mutationBlockCount": 0,
+      "mutationBlockWitness": null,
+      "importPhase": null,
+      "importRace": null,
+      "runtime": {
+        "schema": "cf-v2-f4-runtime/v1",
+        "revision": 3,
+        "visible": true,
+        "answerable": true,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "leaseHeartbeat": 0,
+        "activePlayMs": 641,
+        "accruing": true,
+        "sessionSeed": 1454006279,
+        "sessionOrdinal": 0,
+        "sessionDraws": {},
+        "commits": 2,
+        "staleWrites": 0,
+        "leaseLosses": 0
+      },
+      "ecology": {
+        "schema": "cf-v2-ecology-epoch-edge/v1",
+        "publishedEpoch": 0,
+        "candidateEpoch": 0,
+        "activePlayOriginMs": 0,
+        "observedActivePlayMs": 641,
+        "edgeDue": false,
+        "autoCheckpointDue": false,
+        "inFlight": false,
+        "stagedIntent": null,
+        "stagedEpoch": null,
+        "retrySuppressedEpoch": null,
+        "lastCommittedRevision": null,
+        "stages": 0,
+        "commits": 0,
+        "publications": 0,
+        "rejections": 0,
+        "invalidStageCompletions": 0,
+        "projection": {
+          "state": "current",
+          "publishedEpoch": 0,
+          "projectedEpoch": 0,
+          "refreshEpoch": null,
+          "refreshSerial": null
+        },
+        "projectionRefreshesStarted": 0,
+        "projectionRefreshesCompleted": 0,
+        "projectionRefreshesFailed": 0,
+        "projectionSuppressions": 0,
+        "invalidProjectionCompletions": 0,
+        "projectionDirty": false,
+        "projectionSuppressed": false,
+        "checkpointInFlight": false,
+        "lastOutcome": "boot:0"
+      }
+    },
+    "pending": 0,
+    "panel": "ch",
+    "panelBusy": "false",
+    "charters": "Starter Charters 0 / 3 activeMake planetfallLand on any world. A first field contract starts with boots on the ground.0 / 1 · +10 ✦AcceptFirst footfall: MercuryStand on Sol’s innermost world.0 / 1 · +10 ✦ · headlampAcceptWeekly Charters remain protected until wall-week, slate and rollover authority are ported.",
+    "viewport": [
+      390,
+      844,
+      2
+    ],
+    "audio": {
+      "schema": "cf-v2-tame-greeting-audio/v1",
+      "disposed": false,
+      "armed": 0,
+      "claimedEvents": 0,
+      "activeVoiceId": null,
+      "activeCombatVoiceIds": [],
+      "lastEventKey": null,
+      "lastEventKind": null,
+      "lastDisposition": "unanswerable",
+      "counterpart": {
+        "key": null,
+        "generation": null,
+        "status": "none"
+      },
+      "runtime": {
+        "state": "running",
+        "contextState": "running",
+        "contextGeneration": 1,
+        "muted": false,
+        "hidden": false,
+        "gains": {
+          "master": 1,
+          "effectiveMaster": 1,
+          "categories": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "voiceMix": {
+          "schema": "cf.audio.voice-mix-intent/v1",
+          "activeOwners": 1,
+          "owners": [
+            {
+              "voiceId": "voice-000001",
+              "factors": {
+                "music": 1,
+                "ambience": 1,
+                "creature": 1,
+                "combat-gameplay": 1,
+                "ui": 1
+              }
+            }
+          ],
+          "factors": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          },
+          "effectiveCategoryGains": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "nodes": {
+          "active": 16,
+          "peak": 16,
+          "budget": 96
+        },
+        "cache": {
+          "active": 0,
+          "peak": 0,
+          "budget": 32,
+          "evictions": 0
+        },
+        "voices": {
+          "active": 1,
+          "peak": 1,
+          "budget": 24,
+          "ids": [
+            "voice-000001"
+          ],
+          "started": 1,
+          "completed": 0,
+          "stopped": 0,
+          "stolen": 0,
+          "cooldownRejects": 0,
+          "concurrencyRejects": 0
+        },
+        "creatureEmitters": {
+          "active": 0,
+          "peak": 0,
+          "budget": 8
+        },
+        "cooldowns": {
+          "active": 1,
+          "budget": 128
+        },
+        "reservations": {
+          "voices": {
+            "active": 0,
+            "peak": 1,
+            "activePlusReservedPeak": 1
+          },
+          "nodes": {
+            "active": 0,
+            "peak": 3,
+            "activePlusReservedPeak": 16
+          }
+        },
+        "cleanup": {
+          "sourceStopFailures": 0,
+          "nodeDisconnectFailures": 0,
+          "cacheReleaseFailures": 0
+        },
+        "peaks": {
+          "master": 0.013899383135139942,
+          "music": 0.013899383135139942,
+          "ambience": 0,
+          "creature": 0,
+          "combat-gameplay": 0,
+          "ui": 0
+        },
+        "faults": {
+          "total": 0,
+          "retained": [],
+          "budget": 20
+        }
+      }
+    },
+    "trace": {
+      "inputs": [
+        {
+          "at": 806.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Skip training — you lose nothing, and Settings can restart it"
+        },
+        {
+          "at": 906.5,
+          "trusted": true,
+          "charterId": null,
+          "text": null
+        },
+        {
+          "at": 991.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Play pilot sound"
+        },
+        {
+          "at": 1206.7999999523163,
+          "trusted": true,
+          "charterId": null,
+          "text": null
+        },
+        {
+          "at": 1288.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "⬆ Make planetfall on 2 worlds of Sol · 0 / 2"
+        }
+      ],
+      "sources": [
+        {
+          "createdContext": 1,
+          "at": 1140.8999999761581,
+          "contextTime": 0,
+          "contextState": "running",
+          "duration": 24,
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2,
+          "loop": false,
+          "startArgs": [],
+          "startSucceeded": true
+        }
+      ],
+      "faults": []
+    }
+  },
+  "durableBefore": {
+    "revision": 3,
+    "legacy": {
+      "chacc": [],
+      "chs": [],
+      "chp": {}
+    },
+    "player": {
+      "chacc": [],
+      "chs": [],
+      "chp": {}
+    },
+    "receipts": [],
+    "legacySha256": "4899415888bd8485706efb2d18f9fc9120805ef2fd0c9e26b243b86ff806ec99"
+  },
+  "refusalInput": {
+    "at": 1556.1999999284744,
+    "trusted": true,
+    "charterId": "st-land",
+    "text": "Accept"
+  },
+  "refusal": {
+    "at": 2593.2999999523163,
+    "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+    "mode": "system",
+    "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+    "navWorldKey": null,
+    "renderedScene": {
+      "serial": 2,
+      "mode": "system",
+      "ecologyEpoch": 0,
+      "galaxyKey": "CF1|g:999@90,-60",
+      "starKey": "CF1|g:999@90,-60|s:424242@560,170",
+      "worldKey": null
+    },
+    "save": {
+      "name": "",
+      "essence": 0,
+      "landed": [],
+      "customNames": [],
+      "ascCh": 0,
+      "ascProg": {},
+      "items": [],
+      "cargo": [],
+      "cgx": [],
+      "mineX": [],
+      "mined": [],
+      "skimX": [],
+      "stats": {
+        "hybrids": 0,
+        "best": 0,
+        "maxGen": 0,
+        "shares": 0,
+        "jumps": 0,
+        "anomalies": 0,
+        "events": 0,
+        "duels": 0,
+        "duelwins": 0,
+        "breeds": 0,
+        "breedwins": 0,
+        "feeds": 0,
+        "feedfails": 0,
+        "harvests": 0,
+        "essenceEarned": 0,
+        "guardians": 0,
+        "paragons": 0,
+        "mines": 0,
+        "crafts": 0,
+        "minedout": 0,
+        "skims": 0,
+        "cosmics": 0,
+        "landings": 0,
+        "charters": 0,
+        "surveys": 0,
+        "bestRank": 0
+      },
+      "journal": [],
+      "claimedSets": [],
+      "techOwned": [],
+      "unlocked": [],
+      "primeFill": {},
+      "frontierUnlocked": false,
+      "frontierEnding": null,
+      "chWeek": -1,
+      "chProg": {},
+      "chacc": [],
+      "chDone": [],
+      "viewType": "star",
+      "savedView": {
+        "type": "star",
+        "gal": {
+          "x": 90,
+          "y": -60,
+          "size": 78,
+          "sp": 0,
+          "tilt": 0.62,
+          "rot": 0.5,
+          "seed": 999,
+          "home": true,
+          "quasar": false,
+          "dwarf": false
+        },
+        "star": {
+          "x": 560,
+          "y": 170,
+          "seed": 424242
+        }
+      }
+    },
+    "persistence": {
+      "schema": "cf-v2-app-persistence/v1",
+      "ready": true,
+      "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+      "bootKind": "fresh-v5",
+      "hold": null,
+      "protectedDetail": null,
+      "authorityBootKind": "absent",
+      "seedBootstrapPending": false,
+      "bootRouteRepairPending": false,
+      "productBootstrapPending": false,
+      "engineeringBootstrapPending": false,
+      "ownershipBootstrapPending": false,
+      "ownershipV2BootstrapPending": false,
+      "visibilityOverrideHidden": false,
+      "lastOutcome": "training-committed:3",
+      "hideWitness": null,
+      "heartbeatStorageFault": null,
+      "revisionVerificationFault": null,
+      "heartbeatRunning": true,
+      "convergenceReloadScheduled": false,
+      "convergenceReloadHold": {
+        "schema": "cf-v2-product-action-hold-diagnostics/v1",
+        "phase": "idle",
+        "operation": null,
+        "sequence": 0
+      },
+      "leaseReadCount": 3,
+      "revisionReadCount": 1,
+      "mutationBlocked": true,
+      "mutationBlockCount": 1,
+      "mutationBlockWitness": {
+        "schema": "cf-v2-read-only-boundary/v1",
+        "action": "click:BUTTON",
+        "count": 1,
+        "hold": false,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "seedBootstrapPending": false,
+        "bootRouteRepairPending": false,
+        "ownershipV2BootstrapPending": false
+      },
+      "importPhase": null,
+      "importRace": null,
+      "runtime": {
+        "schema": "cf-v2-f4-runtime/v1",
+        "revision": 3,
+        "visible": true,
+        "answerable": true,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "leaseHeartbeat": 0,
+        "activePlayMs": 1893,
+        "accruing": true,
+        "sessionSeed": 1454006279,
+        "sessionOrdinal": 0,
+        "sessionDraws": {},
+        "commits": 2,
+        "staleWrites": 0,
+        "leaseLosses": 0
+      },
+      "ecology": {
+        "schema": "cf-v2-ecology-epoch-edge/v1",
+        "publishedEpoch": 0,
+        "candidateEpoch": 0,
+        "activePlayOriginMs": 0,
+        "observedActivePlayMs": 1893,
+        "edgeDue": false,
+        "autoCheckpointDue": false,
+        "inFlight": false,
+        "stagedIntent": null,
+        "stagedEpoch": null,
+        "retrySuppressedEpoch": null,
+        "lastCommittedRevision": null,
+        "stages": 0,
+        "commits": 0,
+        "publications": 0,
+        "rejections": 0,
+        "invalidStageCompletions": 0,
+        "projection": {
+          "state": "current",
+          "publishedEpoch": 0,
+          "projectedEpoch": 0,
+          "refreshEpoch": null,
+          "refreshSerial": null
+        },
+        "projectionRefreshesStarted": 0,
+        "projectionRefreshesCompleted": 0,
+        "projectionRefreshesFailed": 0,
+        "projectionSuppressions": 0,
+        "invalidProjectionCompletions": 0,
+        "projectionDirty": false,
+        "projectionSuppressed": false,
+        "checkpointInFlight": false,
+        "lastOutcome": "boot:0"
+      }
+    },
+    "pending": 0,
+    "panel": "ch",
+    "panelBusy": "false",
+    "charters": "Starter Charters 0 / 3 activeMake planetfallLand on any world. A first field contract starts with boots on the ground.0 / 1 · +10 ✦AcceptFirst footfall: MercuryStand on Sol’s innermost world.0 / 1 · +10 ✦ · headlampAcceptWeekly Charters remain protected until wall-week, slate and rollover authority are ported.",
+    "viewport": [
+      390,
+      844,
+      2
+    ],
+    "audio": {
+      "schema": "cf-v2-tame-greeting-audio/v1",
+      "disposed": false,
+      "armed": 0,
+      "claimedEvents": 0,
+      "activeVoiceId": null,
+      "activeCombatVoiceIds": [],
+      "lastEventKey": null,
+      "lastEventKind": null,
+      "lastDisposition": "unanswerable",
+      "counterpart": {
+        "key": null,
+        "generation": null,
+        "status": "none"
+      },
+      "runtime": {
+        "state": "running",
+        "contextState": "running",
+        "contextGeneration": 1,
+        "muted": false,
+        "hidden": false,
+        "gains": {
+          "master": 1,
+          "effectiveMaster": 1,
+          "categories": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "voiceMix": {
+          "schema": "cf.audio.voice-mix-intent/v1",
+          "activeOwners": 1,
+          "owners": [
+            {
+              "voiceId": "voice-000001",
+              "factors": {
+                "music": 1,
+                "ambience": 1,
+                "creature": 1,
+                "combat-gameplay": 1,
+                "ui": 1
+              }
+            }
+          ],
+          "factors": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          },
+          "effectiveCategoryGains": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "nodes": {
+          "active": 16,
+          "peak": 16,
+          "budget": 96
+        },
+        "cache": {
+          "active": 0,
+          "peak": 0,
+          "budget": 32,
+          "evictions": 0
+        },
+        "voices": {
+          "active": 1,
+          "peak": 1,
+          "budget": 24,
+          "ids": [
+            "voice-000001"
+          ],
+          "started": 1,
+          "completed": 0,
+          "stopped": 0,
+          "stolen": 0,
+          "cooldownRejects": 0,
+          "concurrencyRejects": 0
+        },
+        "creatureEmitters": {
+          "active": 0,
+          "peak": 0,
+          "budget": 8
+        },
+        "cooldowns": {
+          "active": 1,
+          "budget": 128
+        },
+        "reservations": {
+          "voices": {
+            "active": 0,
+            "peak": 1,
+            "activePlusReservedPeak": 1
+          },
+          "nodes": {
+            "active": 0,
+            "peak": 3,
+            "activePlusReservedPeak": 16
+          }
+        },
+        "cleanup": {
+          "sourceStopFailures": 0,
+          "nodeDisconnectFailures": 0,
+          "cacheReleaseFailures": 0
+        },
+        "peaks": {
+          "master": 0.02686050347983837,
+          "music": 0.02686050347983837,
+          "ambience": 0,
+          "creature": 0,
+          "combat-gameplay": 0,
+          "ui": 0
+        },
+        "faults": {
+          "total": 0,
+          "retained": [],
+          "budget": 20
+        }
+      }
+    },
+    "trace": {
+      "inputs": [
+        {
+          "at": 806.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Skip training — you lose nothing, and Settings can restart it"
+        },
+        {
+          "at": 906.5,
+          "trusted": true,
+          "charterId": null,
+          "text": null
+        },
+        {
+          "at": 991.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Play pilot sound"
+        },
+        {
+          "at": 1206.7999999523163,
+          "trusted": true,
+          "charterId": null,
+          "text": null
+        },
+        {
+          "at": 1288.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "⬆ Make planetfall on 2 worlds of Sol · 0 / 2"
+        },
+        {
+          "at": 1556.1999999284744,
+          "trusted": true,
+          "charterId": "st-land",
+          "text": "Accept"
+        }
+      ],
+      "sources": [
+        {
+          "createdContext": 1,
+          "at": 1140.8999999761581,
+          "contextTime": 0,
+          "contextState": "running",
+          "duration": 24,
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2,
+          "loop": false,
+          "startArgs": [],
+          "startSucceeded": true
+        }
+      ],
+      "faults": []
+    }
+  },
+  "refusalDurable": {
+    "revision": 3,
+    "legacy": {
+      "chacc": [],
+      "chs": [],
+      "chp": {}
+    },
+    "player": {
+      "chacc": [],
+      "chs": [],
+      "chp": {}
+    },
+    "receipts": [],
+    "legacySha256": "4899415888bd8485706efb2d18f9fc9120805ef2fd0c9e26b243b86ff806ec99"
+  },
+  "acceptInput": {
+    "at": 2639.7999999523163,
+    "trusted": true,
+    "charterId": "st-land",
+    "text": "Accept"
+  },
+  "pending": {
+    "at": 2877.899999976158,
+    "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+    "mode": "system",
+    "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+    "navWorldKey": null,
+    "renderedScene": {
+      "serial": 2,
+      "mode": "system",
+      "ecologyEpoch": 0,
+      "galaxyKey": "CF1|g:999@90,-60",
+      "starKey": "CF1|g:999@90,-60|s:424242@560,170",
+      "worldKey": null
+    },
+    "save": {
+      "name": "",
+      "essence": 0,
+      "landed": [],
+      "customNames": [],
+      "ascCh": 0,
+      "ascProg": {},
+      "items": [],
+      "cargo": [],
+      "cgx": [],
+      "mineX": [],
+      "mined": [],
+      "skimX": [],
+      "stats": {
+        "hybrids": 0,
+        "best": 0,
+        "maxGen": 0,
+        "shares": 0,
+        "jumps": 0,
+        "anomalies": 0,
+        "events": 0,
+        "duels": 0,
+        "duelwins": 0,
+        "breeds": 0,
+        "breedwins": 0,
+        "feeds": 0,
+        "feedfails": 0,
+        "harvests": 0,
+        "essenceEarned": 0,
+        "guardians": 0,
+        "paragons": 0,
+        "mines": 0,
+        "crafts": 0,
+        "minedout": 0,
+        "skims": 0,
+        "cosmics": 0,
+        "landings": 0,
+        "charters": 0,
+        "surveys": 0,
+        "bestRank": 0
+      },
+      "journal": [],
+      "claimedSets": [],
+      "techOwned": [],
+      "unlocked": [],
+      "primeFill": {},
+      "frontierUnlocked": false,
+      "frontierEnding": null,
+      "chWeek": -1,
+      "chProg": {},
+      "chacc": [],
+      "chDone": [],
+      "viewType": "star",
+      "savedView": {
+        "type": "star",
+        "gal": {
+          "x": 90,
+          "y": -60,
+          "size": 78,
+          "sp": 0,
+          "tilt": 0.62,
+          "rot": 0.5,
+          "seed": 999,
+          "home": true,
+          "quasar": false,
+          "dwarf": false
+        },
+        "star": {
+          "x": 560,
+          "y": 170,
+          "seed": 424242
+        }
+      }
+    },
+    "persistence": {
+      "schema": "cf-v2-app-persistence/v1",
+      "ready": true,
+      "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+      "bootKind": "fresh-v5",
+      "hold": null,
+      "protectedDetail": null,
+      "authorityBootKind": "absent",
+      "seedBootstrapPending": false,
+      "bootRouteRepairPending": false,
+      "productBootstrapPending": false,
+      "engineeringBootstrapPending": false,
+      "ownershipBootstrapPending": false,
+      "ownershipV2BootstrapPending": false,
+      "visibilityOverrideHidden": false,
+      "lastOutcome": "training-committed:3",
+      "hideWitness": null,
+      "heartbeatStorageFault": null,
+      "revisionVerificationFault": null,
+      "heartbeatRunning": true,
+      "convergenceReloadScheduled": false,
+      "convergenceReloadHold": {
+        "schema": "cf-v2-product-action-hold-diagnostics/v1",
+        "phase": "idle",
+        "operation": null,
+        "sequence": 0
+      },
+      "leaseReadCount": 3,
+      "revisionReadCount": 1,
+      "mutationBlocked": true,
+      "mutationBlockCount": 1,
+      "mutationBlockWitness": {
+        "schema": "cf-v2-read-only-boundary/v1",
+        "action": "click:BUTTON",
+        "count": 1,
+        "hold": false,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "seedBootstrapPending": false,
+        "bootRouteRepairPending": false,
+        "ownershipV2BootstrapPending": false
+      },
+      "importPhase": null,
+      "importRace": null,
+      "runtime": {
+        "schema": "cf-v2-f4-runtime/v1",
+        "revision": 3,
+        "visible": true,
+        "answerable": true,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "leaseHeartbeat": 0,
+        "activePlayMs": 2178,
+        "accruing": true,
+        "sessionSeed": 1454006279,
+        "sessionOrdinal": 0,
+        "sessionDraws": {},
+        "commits": 2,
+        "staleWrites": 0,
+        "leaseLosses": 0
+      },
+      "ecology": {
+        "schema": "cf-v2-ecology-epoch-edge/v1",
+        "publishedEpoch": 0,
+        "candidateEpoch": 0,
+        "activePlayOriginMs": 0,
+        "observedActivePlayMs": 2178,
+        "edgeDue": false,
+        "autoCheckpointDue": false,
+        "inFlight": false,
+        "stagedIntent": null,
+        "stagedEpoch": null,
+        "retrySuppressedEpoch": null,
+        "lastCommittedRevision": null,
+        "stages": 0,
+        "commits": 0,
+        "publications": 0,
+        "rejections": 0,
+        "invalidStageCompletions": 0,
+        "projection": {
+          "state": "current",
+          "publishedEpoch": 0,
+          "projectedEpoch": 0,
+          "refreshEpoch": null,
+          "refreshSerial": null
+        },
+        "projectionRefreshesStarted": 0,
+        "projectionRefreshesCompleted": 0,
+        "projectionRefreshesFailed": 0,
+        "projectionSuppressions": 0,
+        "invalidProjectionCompletions": 0,
+        "projectionDirty": false,
+        "projectionSuppressed": false,
+        "checkpointInFlight": false,
+        "lastOutcome": "boot:0"
+      }
+    },
+    "pending": 1,
+    "panel": "ch",
+    "panelBusy": "true",
+    "charters": "Starter Charters 0 / 3 activeMake planetfallLand on any world. A first field contract starts with boots on the ground.0 / 1 · +10 ✦AcceptFirst footfall: MercuryStand on Sol’s innermost world.0 / 1 · +10 ✦ · headlampAcceptWeekly Charters remain protected until wall-week, slate and rollover authority are ported.",
+    "viewport": [
+      390,
+      844,
+      2
+    ],
+    "audio": {
+      "schema": "cf-v2-tame-greeting-audio/v1",
+      "disposed": false,
+      "armed": 0,
+      "claimedEvents": 0,
+      "activeVoiceId": null,
+      "activeCombatVoiceIds": [],
+      "lastEventKey": null,
+      "lastEventKind": null,
+      "lastDisposition": "cancelled:pilot-settlement",
+      "counterpart": {
+        "key": null,
+        "generation": null,
+        "status": "none"
+      },
+      "runtime": {
+        "state": "running",
+        "contextState": "running",
+        "contextGeneration": 1,
+        "muted": false,
+        "hidden": false,
+        "gains": {
+          "master": 1,
+          "effectiveMaster": 1,
+          "categories": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "voiceMix": {
+          "schema": "cf.audio.voice-mix-intent/v1",
+          "activeOwners": 0,
+          "owners": [],
+          "factors": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          },
+          "effectiveCategoryGains": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "nodes": {
+          "active": 13,
+          "peak": 16,
+          "budget": 96
+        },
+        "cache": {
+          "active": 0,
+          "peak": 0,
+          "budget": 32,
+          "evictions": 0
+        },
+        "voices": {
+          "active": 0,
+          "peak": 1,
+          "budget": 24,
+          "ids": [],
+          "started": 1,
+          "completed": 0,
+          "stopped": 1,
+          "stolen": 0,
+          "cooldownRejects": 0,
+          "concurrencyRejects": 0
+        },
+        "creatureEmitters": {
+          "active": 0,
+          "peak": 0,
+          "budget": 8
+        },
+        "cooldowns": {
+          "active": 1,
+          "budget": 128
+        },
+        "reservations": {
+          "voices": {
+            "active": 0,
+            "peak": 1,
+            "activePlusReservedPeak": 1
+          },
+          "nodes": {
+            "active": 0,
+            "peak": 3,
+            "activePlusReservedPeak": 16
+          }
+        },
+        "cleanup": {
+          "sourceStopFailures": 0,
+          "nodeDisconnectFailures": 0,
+          "cacheReleaseFailures": 0
+        },
+        "peaks": {
+          "master": 0.02785331755876541,
+          "music": 0.02785331755876541,
+          "ambience": 0,
+          "creature": 0,
+          "combat-gameplay": 0,
+          "ui": 0
+        },
+        "faults": {
+          "total": 0,
+          "retained": [],
+          "budget": 20
+        }
+      }
+    },
+    "trace": {
+      "inputs": [
+        {
+          "at": 806.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Skip training — you lose nothing, and Settings can restart it"
+        },
+        {
+          "at": 906.5,
+          "trusted": true,
+          "charterId": null,
+          "text": null
+        },
+        {
+          "at": 991.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Play pilot sound"
+        },
+        {
+          "at": 1206.7999999523163,
+          "trusted": true,
+          "charterId": null,
+          "text": null
+        },
+        {
+          "at": 1288.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "⬆ Make planetfall on 2 worlds of Sol · 0 / 2"
+        },
+        {
+          "at": 1556.1999999284744,
+          "trusted": true,
+          "charterId": "st-land",
+          "text": "Accept"
+        },
+        {
+          "at": 2639.7999999523163,
+          "trusted": true,
+          "charterId": "st-land",
+          "text": "Accept"
+        }
+      ],
+      "sources": [
+        {
+          "createdContext": 1,
+          "at": 1140.8999999761581,
+          "contextTime": 0,
+          "contextState": "running",
+          "duration": 24,
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2,
+          "loop": false,
+          "startArgs": [],
+          "startSucceeded": true,
+          "stopRequestedAt": 2640.0999999046326,
+          "stopArgs": [],
+          "endedAt": 2654.5,
+          "endedContextTime": 1.488
+        }
+      ],
+      "faults": []
+    }
+  },
+  "releasedAt": 2879.899999976158,
+  "after": {
+    "at": 3614.2999999523163,
+    "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+    "mode": "system",
+    "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+    "navWorldKey": null,
+    "renderedScene": {
+      "serial": 2,
+      "mode": "system",
+      "ecologyEpoch": 0,
+      "galaxyKey": "CF1|g:999@90,-60",
+      "starKey": "CF1|g:999@90,-60|s:424242@560,170",
+      "worldKey": null
+    },
+    "save": {
+      "name": "",
+      "essence": 0,
+      "landed": [],
+      "customNames": [],
+      "ascCh": 0,
+      "ascProg": {},
+      "items": [],
+      "cargo": [],
+      "cgx": [],
+      "mineX": [],
+      "mined": [],
+      "skimX": [],
+      "stats": {
+        "hybrids": 0,
+        "best": 0,
+        "maxGen": 0,
+        "shares": 0,
+        "jumps": 0,
+        "anomalies": 0,
+        "events": 0,
+        "duels": 0,
+        "duelwins": 0,
+        "breeds": 0,
+        "breedwins": 0,
+        "feeds": 0,
+        "feedfails": 0,
+        "harvests": 0,
+        "essenceEarned": 0,
+        "guardians": 0,
+        "paragons": 0,
+        "mines": 0,
+        "crafts": 0,
+        "minedout": 0,
+        "skims": 0,
+        "cosmics": 0,
+        "landings": 0,
+        "charters": 0,
+        "surveys": 0,
+        "bestRank": 0
+      },
+      "journal": [],
+      "claimedSets": [],
+      "techOwned": [],
+      "unlocked": [],
+      "primeFill": {},
+      "frontierUnlocked": false,
+      "frontierEnding": null,
+      "chWeek": -1,
+      "chProg": {},
+      "chacc": [
+        "st-land"
+      ],
+      "chDone": [],
+      "viewType": "star",
+      "savedView": {
+        "type": "star",
+        "gal": {
+          "x": 90,
+          "y": -60,
+          "size": 78,
+          "sp": 0,
+          "tilt": 0.62,
+          "rot": 0.5,
+          "seed": 999,
+          "home": true,
+          "quasar": false,
+          "dwarf": false
+        },
+        "star": {
+          "x": 560,
+          "y": 170,
+          "seed": 424242
+        }
+      }
+    },
+    "persistence": {
+      "schema": "cf-v2-app-persistence/v1",
+      "ready": true,
+      "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+      "bootKind": "fresh-v5",
+      "hold": null,
+      "protectedDetail": null,
+      "authorityBootKind": "absent",
+      "seedBootstrapPending": false,
+      "bootRouteRepairPending": false,
+      "productBootstrapPending": false,
+      "engineeringBootstrapPending": false,
+      "ownershipBootstrapPending": false,
+      "ownershipV2BootstrapPending": false,
+      "visibilityOverrideHidden": false,
+      "lastOutcome": "starter-charter-accept-committed:4",
+      "hideWitness": null,
+      "heartbeatStorageFault": null,
+      "revisionVerificationFault": null,
+      "heartbeatRunning": true,
+      "convergenceReloadScheduled": false,
+      "convergenceReloadHold": {
+        "schema": "cf-v2-product-action-hold-diagnostics/v1",
+        "phase": "idle",
+        "operation": null,
+        "sequence": 0
+      },
+      "leaseReadCount": 4,
+      "revisionReadCount": 1,
+      "mutationBlocked": false,
+      "mutationBlockCount": 1,
+      "mutationBlockWitness": {
+        "schema": "cf-v2-read-only-boundary/v1",
+        "action": "click:BUTTON",
+        "count": 1,
+        "hold": false,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "seedBootstrapPending": false,
+        "bootRouteRepairPending": false,
+        "ownershipV2BootstrapPending": false
+      },
+      "importPhase": null,
+      "importRace": null,
+      "runtime": {
+        "schema": "cf-v2-f4-runtime/v1",
+        "revision": 4,
+        "visible": true,
+        "answerable": true,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "leaseHeartbeat": 0,
+        "activePlayMs": 2914,
+        "accruing": true,
+        "sessionSeed": 1454006279,
+        "sessionOrdinal": 1,
+        "sessionDraws": {},
+        "commits": 3,
+        "staleWrites": 0,
+        "leaseLosses": 0
+      },
+      "ecology": {
+        "schema": "cf-v2-ecology-epoch-edge/v1",
+        "publishedEpoch": 0,
+        "candidateEpoch": 0,
+        "activePlayOriginMs": 0,
+        "observedActivePlayMs": 2914,
+        "edgeDue": false,
+        "autoCheckpointDue": false,
+        "inFlight": false,
+        "stagedIntent": null,
+        "stagedEpoch": null,
+        "retrySuppressedEpoch": null,
+        "lastCommittedRevision": null,
+        "stages": 0,
+        "commits": 0,
+        "publications": 0,
+        "rejections": 0,
+        "invalidStageCompletions": 0,
+        "projection": {
+          "state": "current",
+          "publishedEpoch": 0,
+          "projectedEpoch": 0,
+          "refreshEpoch": null,
+          "refreshSerial": null
+        },
+        "projectionRefreshesStarted": 0,
+        "projectionRefreshesCompleted": 0,
+        "projectionRefreshesFailed": 0,
+        "projectionSuppressions": 0,
+        "invalidProjectionCompletions": 0,
+        "projectionDirty": false,
+        "projectionSuppressed": false,
+        "checkpointInFlight": false,
+        "lastOutcome": "boot:0"
+      }
+    },
+    "pending": 0,
+    "panel": "ch",
+    "panelBusy": "false",
+    "charters": "Starter Charters 1 / 3 activeMake planetfallLand on any world. A first field contract starts with boots on the ground.0 / 1 · +10 ✦activeFirst footfall: MercuryStand on Sol’s innermost world.0 / 1 · +10 ✦ · headlampAcceptWeekly Charters remain protected until wall-week, slate and rollover authority are ported.",
+    "viewport": [
+      390,
+      844,
+      2
+    ],
+    "audio": {
+      "schema": "cf-v2-tame-greeting-audio/v1",
+      "disposed": false,
+      "armed": 0,
+      "claimedEvents": 0,
+      "activeVoiceId": null,
+      "activeCombatVoiceIds": [],
+      "lastEventKey": null,
+      "lastEventKind": null,
+      "lastDisposition": "cancelled:pilot-settlement",
+      "counterpart": {
+        "key": null,
+        "generation": null,
+        "status": "none"
+      },
+      "runtime": {
+        "state": "running",
+        "contextState": "running",
+        "contextGeneration": 1,
+        "muted": false,
+        "hidden": false,
+        "gains": {
+          "master": 1,
+          "effectiveMaster": 1,
+          "categories": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "voiceMix": {
+          "schema": "cf.audio.voice-mix-intent/v1",
+          "activeOwners": 0,
+          "owners": [],
+          "factors": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          },
+          "effectiveCategoryGains": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "nodes": {
+          "active": 13,
+          "peak": 16,
+          "budget": 96
+        },
+        "cache": {
+          "active": 0,
+          "peak": 0,
+          "budget": 32,
+          "evictions": 0
+        },
+        "voices": {
+          "active": 0,
+          "peak": 1,
+          "budget": 24,
+          "ids": [],
+          "started": 2,
+          "completed": 0,
+          "stopped": 2,
+          "stolen": 0,
+          "cooldownRejects": 0,
+          "concurrencyRejects": 0
+        },
+        "creatureEmitters": {
+          "active": 0,
+          "peak": 0,
+          "budget": 8
+        },
+        "cooldowns": {
+          "active": 1,
+          "budget": 128
+        },
+        "reservations": {
+          "voices": {
+            "active": 0,
+            "peak": 1,
+            "activePlusReservedPeak": 1
+          },
+          "nodes": {
+            "active": 0,
+            "peak": 3,
+            "activePlusReservedPeak": 16
+          }
+        },
+        "cleanup": {
+          "sourceStopFailures": 0,
+          "nodeDisconnectFailures": 0,
+          "cacheReleaseFailures": 0
+        },
+        "peaks": {
+          "master": 0.057157665491104126,
+          "music": 0.02785331755876541,
+          "ambience": 0,
+          "creature": 0,
+          "combat-gameplay": 0,
+          "ui": 0.057157665491104126
+        },
+        "faults": {
+          "total": 0,
+          "retained": [],
+          "budget": 20
+        }
+      }
+    },
+    "trace": {
+      "inputs": [
+        {
+          "at": 806.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Skip training — you lose nothing, and Settings can restart it"
+        },
+        {
+          "at": 906.5,
+          "trusted": true,
+          "charterId": null,
+          "text": null
+        },
+        {
+          "at": 991.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Play pilot sound"
+        },
+        {
+          "at": 1206.7999999523163,
+          "trusted": true,
+          "charterId": null,
+          "text": null
+        },
+        {
+          "at": 1288.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "⬆ Make planetfall on 2 worlds of Sol · 0 / 2"
+        },
+        {
+          "at": 1556.1999999284744,
+          "trusted": true,
+          "charterId": "st-land",
+          "text": "Accept"
+        },
+        {
+          "at": 2639.7999999523163,
+          "trusted": true,
+          "charterId": "st-land",
+          "text": "Accept"
+        }
+      ],
+      "sources": [
+        {
+          "createdContext": 1,
+          "at": 1140.8999999761581,
+          "contextTime": 0,
+          "contextState": "running",
+          "duration": 24,
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2,
+          "loop": false,
+          "startArgs": [],
+          "startSucceeded": true,
+          "stopRequestedAt": 2640.0999999046326,
+          "stopArgs": [],
+          "endedAt": 2654.5,
+          "endedContextTime": 1.488
+        },
+        {
+          "createdContext": 1,
+          "at": 2890.7999999523163,
+          "contextTime": 1.728,
+          "contextState": "running",
+          "duration": 0.7,
+          "frames": 33600,
+          "sampleRate": 48000,
+          "channels": 1,
+          "loop": false,
+          "startArgs": [],
+          "publication": {
+            "at": 2891.0999999046326,
+            "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+            "mode": "system",
+            "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+            "navWorldKey": null,
+            "chacc": [
+              "st-land"
+            ],
+            "chDone": [],
+            "revision": 4,
+            "ordinal": 1,
+            "lastOutcome": "starter-charter-accept-committed:4",
+            "mutationBlocked": false,
+            "answerable": true,
+            "leaseOwned": true,
+            "pending": 0,
+            "panelBusy": "false"
+          },
+          "startSucceeded": true,
+          "stopRequestedAt": 3592.5,
+          "stopArgs": [],
+          "endedAt": 3594.1999999284744,
+          "endedContextTime": 2.429333333333333
+        }
+      ],
+      "faults": []
+    }
+  },
+  "durableAfter": {
+    "revision": 4,
+    "legacy": {
+      "chacc": [
+        "st-land"
+      ],
+      "chs": [],
+      "chp": {}
+    },
+    "player": {
+      "chacc": [
+        "st-land"
+      ],
+      "chs": [],
+      "chp": {}
+    },
+    "receipts": [
+      {
+        "ordinal": 0,
+        "kind": "arc8-starter-charter-accept-v1",
+        "witness": "cf-v2-starter-charter-accept-witness/v1:cc33d4a05f95b0c941954607ae65ac9b52bdfb6199e68b2a89081a7a631fbee0"
+      }
+    ],
+    "legacySha256": "5d5597dfb2dd0fccd9e6a1ee7137dc55abae7b4020dc6787a6162a9a18c00b85"
+  },
+  "settlement": {
+    "createdContext": 1,
+    "at": 2890.7999999523163,
+    "contextTime": 1.728,
+    "contextState": "running",
+    "duration": 0.7,
+    "frames": 33600,
+    "sampleRate": 48000,
+    "channels": 1,
+    "loop": false,
+    "startArgs": [],
+    "publication": {
+      "at": 2891.0999999046326,
+      "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+      "mode": "system",
+      "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+      "navWorldKey": null,
+      "chacc": [
+        "st-land"
+      ],
+      "chDone": [],
+      "revision": 4,
+      "ordinal": 1,
+      "lastOutcome": "starter-charter-accept-committed:4",
+      "mutationBlocked": false,
+      "answerable": true,
+      "leaseOwned": true,
+      "pending": 0,
+      "panelBusy": "false"
+    },
+    "startSucceeded": true,
+    "stopRequestedAt": 3592.5,
+    "stopArgs": [],
+    "endedAt": 3594.1999999284744,
+    "endedContextTime": 2.429333333333333
+  },
+  "ordinalProof": {
+    "before": 0,
+    "pending": 0,
+    "receipt": 0,
+    "atSource": 1,
+    "after": 1,
+    "controls": [
+      {
+        "name": "receipt incorrectly compared with next cursor",
+        "accepted": false
+      },
+      {
+        "name": "next cursor did not advance",
+        "accepted": false
+      }
+    ]
+  },
+  "final": {
+    "at": 4522.199999928474,
+    "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+    "mode": "system",
+    "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+    "navWorldKey": null,
+    "renderedScene": {
+      "serial": 2,
+      "mode": "system",
+      "ecologyEpoch": 0,
+      "galaxyKey": "CF1|g:999@90,-60",
+      "starKey": "CF1|g:999@90,-60|s:424242@560,170",
+      "worldKey": null
+    },
+    "save": {
+      "name": "",
+      "essence": 0,
+      "landed": [],
+      "customNames": [],
+      "ascCh": 0,
+      "ascProg": {},
+      "items": [],
+      "cargo": [],
+      "cgx": [],
+      "mineX": [],
+      "mined": [],
+      "skimX": [],
+      "stats": {
+        "hybrids": 0,
+        "best": 0,
+        "maxGen": 0,
+        "shares": 0,
+        "jumps": 0,
+        "anomalies": 0,
+        "events": 0,
+        "duels": 0,
+        "duelwins": 0,
+        "breeds": 0,
+        "breedwins": 0,
+        "feeds": 0,
+        "feedfails": 0,
+        "harvests": 0,
+        "essenceEarned": 0,
+        "guardians": 0,
+        "paragons": 0,
+        "mines": 0,
+        "crafts": 0,
+        "minedout": 0,
+        "skims": 0,
+        "cosmics": 0,
+        "landings": 0,
+        "charters": 0,
+        "surveys": 0,
+        "bestRank": 0
+      },
+      "journal": [],
+      "claimedSets": [],
+      "techOwned": [],
+      "unlocked": [],
+      "primeFill": {},
+      "frontierUnlocked": false,
+      "frontierEnding": null,
+      "chWeek": -1,
+      "chProg": {},
+      "chacc": [
+        "st-land"
+      ],
+      "chDone": [],
+      "viewType": "star",
+      "savedView": {
+        "type": "star",
+        "gal": {
+          "x": 90,
+          "y": -60,
+          "size": 78,
+          "sp": 0,
+          "tilt": 0.62,
+          "rot": 0.5,
+          "seed": 999,
+          "home": true,
+          "quasar": false,
+          "dwarf": false
+        },
+        "star": {
+          "x": 560,
+          "y": 170,
+          "seed": 424242
+        }
+      }
+    },
+    "persistence": {
+      "schema": "cf-v2-app-persistence/v1",
+      "ready": true,
+      "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+      "bootKind": "fresh-v5",
+      "hold": null,
+      "protectedDetail": null,
+      "authorityBootKind": "absent",
+      "seedBootstrapPending": false,
+      "bootRouteRepairPending": false,
+      "productBootstrapPending": false,
+      "engineeringBootstrapPending": false,
+      "ownershipBootstrapPending": false,
+      "ownershipV2BootstrapPending": false,
+      "visibilityOverrideHidden": false,
+      "lastOutcome": "starter-charter-accept-committed:4",
+      "hideWitness": null,
+      "heartbeatStorageFault": null,
+      "revisionVerificationFault": null,
+      "heartbeatRunning": true,
+      "convergenceReloadScheduled": false,
+      "convergenceReloadHold": {
+        "schema": "cf-v2-product-action-hold-diagnostics/v1",
+        "phase": "idle",
+        "operation": null,
+        "sequence": 0
+      },
+      "leaseReadCount": 4,
+      "revisionReadCount": 1,
+      "mutationBlocked": false,
+      "mutationBlockCount": 1,
+      "mutationBlockWitness": {
+        "schema": "cf-v2-read-only-boundary/v1",
+        "action": "click:BUTTON",
+        "count": 1,
+        "hold": false,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "seedBootstrapPending": false,
+        "bootRouteRepairPending": false,
+        "ownershipV2BootstrapPending": false
+      },
+      "importPhase": null,
+      "importRace": null,
+      "runtime": {
+        "schema": "cf-v2-f4-runtime/v1",
+        "revision": 4,
+        "visible": true,
+        "answerable": true,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "leaseHeartbeat": 0,
+        "activePlayMs": 3822,
+        "accruing": true,
+        "sessionSeed": 1454006279,
+        "sessionOrdinal": 1,
+        "sessionDraws": {},
+        "commits": 3,
+        "staleWrites": 0,
+        "leaseLosses": 0
+      },
+      "ecology": {
+        "schema": "cf-v2-ecology-epoch-edge/v1",
+        "publishedEpoch": 0,
+        "candidateEpoch": 0,
+        "activePlayOriginMs": 0,
+        "observedActivePlayMs": 3822,
+        "edgeDue": false,
+        "autoCheckpointDue": false,
+        "inFlight": false,
+        "stagedIntent": null,
+        "stagedEpoch": null,
+        "retrySuppressedEpoch": null,
+        "lastCommittedRevision": null,
+        "stages": 0,
+        "commits": 0,
+        "publications": 0,
+        "rejections": 0,
+        "invalidStageCompletions": 0,
+        "projection": {
+          "state": "current",
+          "publishedEpoch": 0,
+          "projectedEpoch": 0,
+          "refreshEpoch": null,
+          "refreshSerial": null
+        },
+        "projectionRefreshesStarted": 0,
+        "projectionRefreshesCompleted": 0,
+        "projectionRefreshesFailed": 0,
+        "projectionSuppressions": 0,
+        "invalidProjectionCompletions": 0,
+        "projectionDirty": false,
+        "projectionSuppressed": false,
+        "checkpointInFlight": false,
+        "lastOutcome": "boot:0"
+      }
+    },
+    "pending": 0,
+    "panel": "ch",
+    "panelBusy": "false",
+    "charters": "Starter Charters 1 / 3 activeMake planetfallLand on any world. A first field contract starts with boots on the ground.0 / 1 · +10 ✦activeFirst footfall: MercuryStand on Sol’s innermost world.0 / 1 · +10 ✦ · headlampAcceptWeekly Charters remain protected until wall-week, slate and rollover authority are ported.",
+    "viewport": [
+      390,
+      844,
+      2
+    ],
+    "audio": {
+      "schema": "cf-v2-tame-greeting-audio/v1",
+      "disposed": false,
+      "armed": 0,
+      "claimedEvents": 0,
+      "activeVoiceId": null,
+      "activeCombatVoiceIds": [],
+      "lastEventKey": null,
+      "lastEventKind": null,
+      "lastDisposition": "cancelled:pilot-settlement",
+      "counterpart": {
+        "key": null,
+        "generation": null,
+        "status": "none"
+      },
+      "runtime": {
+        "state": "running",
+        "contextState": "running",
+        "contextGeneration": 1,
+        "muted": false,
+        "hidden": false,
+        "gains": {
+          "master": 1,
+          "effectiveMaster": 1,
+          "categories": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "voiceMix": {
+          "schema": "cf.audio.voice-mix-intent/v1",
+          "activeOwners": 0,
+          "owners": [],
+          "factors": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          },
+          "effectiveCategoryGains": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "nodes": {
+          "active": 13,
+          "peak": 16,
+          "budget": 96
+        },
+        "cache": {
+          "active": 0,
+          "peak": 0,
+          "budget": 32,
+          "evictions": 0
+        },
+        "voices": {
+          "active": 0,
+          "peak": 1,
+          "budget": 24,
+          "ids": [],
+          "started": 2,
+          "completed": 0,
+          "stopped": 2,
+          "stolen": 0,
+          "cooldownRejects": 0,
+          "concurrencyRejects": 0
+        },
+        "creatureEmitters": {
+          "active": 0,
+          "peak": 0,
+          "budget": 8
+        },
+        "cooldowns": {
+          "active": 1,
+          "budget": 128
+        },
+        "reservations": {
+          "voices": {
+            "active": 0,
+            "peak": 1,
+            "activePlusReservedPeak": 1
+          },
+          "nodes": {
+            "active": 0,
+            "peak": 3,
+            "activePlusReservedPeak": 16
+          }
+        },
+        "cleanup": {
+          "sourceStopFailures": 0,
+          "nodeDisconnectFailures": 0,
+          "cacheReleaseFailures": 0
+        },
+        "peaks": {
+          "master": 0.057157665491104126,
+          "music": 0.02785331755876541,
+          "ambience": 0,
+          "creature": 0,
+          "combat-gameplay": 0,
+          "ui": 0.057157665491104126
+        },
+        "faults": {
+          "total": 0,
+          "retained": [],
+          "budget": 20
+        }
+      }
+    },
+    "trace": {
+      "inputs": [
+        {
+          "at": 806.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Skip training — you lose nothing, and Settings can restart it"
+        },
+        {
+          "at": 906.5,
+          "trusted": true,
+          "charterId": null,
+          "text": null
+        },
+        {
+          "at": 991.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Play pilot sound"
+        },
+        {
+          "at": 1206.7999999523163,
+          "trusted": true,
+          "charterId": null,
+          "text": null
+        },
+        {
+          "at": 1288.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "⬆ Make planetfall on 2 worlds of Sol · 0 / 2"
+        },
+        {
+          "at": 1556.1999999284744,
+          "trusted": true,
+          "charterId": "st-land",
+          "text": "Accept"
+        },
+        {
+          "at": 2639.7999999523163,
+          "trusted": true,
+          "charterId": "st-land",
+          "text": "Accept"
+        }
+      ],
+      "sources": [
+        {
+          "createdContext": 1,
+          "at": 1140.8999999761581,
+          "contextTime": 0,
+          "contextState": "running",
+          "duration": 24,
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2,
+          "loop": false,
+          "startArgs": [],
+          "startSucceeded": true,
+          "stopRequestedAt": 2640.0999999046326,
+          "stopArgs": [],
+          "endedAt": 2654.5,
+          "endedContextTime": 1.488
+        },
+        {
+          "createdContext": 1,
+          "at": 2890.7999999523163,
+          "contextTime": 1.728,
+          "contextState": "running",
+          "duration": 0.7,
+          "frames": 33600,
+          "sampleRate": 48000,
+          "channels": 1,
+          "loop": false,
+          "startArgs": [],
+          "publication": {
+            "at": 2891.0999999046326,
+            "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+            "mode": "system",
+            "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+            "navWorldKey": null,
+            "chacc": [
+              "st-land"
+            ],
+            "chDone": [],
+            "revision": 4,
+            "ordinal": 1,
+            "lastOutcome": "starter-charter-accept-committed:4",
+            "mutationBlocked": false,
+            "answerable": true,
+            "leaseOwned": true,
+            "pending": 0,
+            "panelBusy": "false"
+          },
+          "startSucceeded": true,
+          "stopRequestedAt": 3592.5,
+          "stopArgs": [],
+          "endedAt": 3594.1999999284744,
+          "endedContextTime": 2.429333333333333
+        }
+      ],
+      "faults": []
+    }
+  },
+  "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(report.final.audio.runtime.voices.completed>=report.before.audio.runtime.voices.completed+1)\n\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-runner.mjs:100:247",
+  "failureState": {
+    "at": 4530.299999952316,
+    "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+    "mode": "system",
+    "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+    "navWorldKey": null,
+    "renderedScene": {
+      "serial": 2,
+      "mode": "system",
+      "ecologyEpoch": 0,
+      "galaxyKey": "CF1|g:999@90,-60",
+      "starKey": "CF1|g:999@90,-60|s:424242@560,170",
+      "worldKey": null
+    },
+    "save": {
+      "name": "",
+      "essence": 0,
+      "landed": [],
+      "customNames": [],
+      "ascCh": 0,
+      "ascProg": {},
+      "items": [],
+      "cargo": [],
+      "cgx": [],
+      "mineX": [],
+      "mined": [],
+      "skimX": [],
+      "stats": {
+        "hybrids": 0,
+        "best": 0,
+        "maxGen": 0,
+        "shares": 0,
+        "jumps": 0,
+        "anomalies": 0,
+        "events": 0,
+        "duels": 0,
+        "duelwins": 0,
+        "breeds": 0,
+        "breedwins": 0,
+        "feeds": 0,
+        "feedfails": 0,
+        "harvests": 0,
+        "essenceEarned": 0,
+        "guardians": 0,
+        "paragons": 0,
+        "mines": 0,
+        "crafts": 0,
+        "minedout": 0,
+        "skims": 0,
+        "cosmics": 0,
+        "landings": 0,
+        "charters": 0,
+        "surveys": 0,
+        "bestRank": 0
+      },
+      "journal": [],
+      "claimedSets": [],
+      "techOwned": [],
+      "unlocked": [],
+      "primeFill": {},
+      "frontierUnlocked": false,
+      "frontierEnding": null,
+      "chWeek": -1,
+      "chProg": {},
+      "chacc": [
+        "st-land"
+      ],
+      "chDone": [],
+      "viewType": "star",
+      "savedView": {
+        "type": "star",
+        "gal": {
+          "x": 90,
+          "y": -60,
+          "size": 78,
+          "sp": 0,
+          "tilt": 0.62,
+          "rot": 0.5,
+          "seed": 999,
+          "home": true,
+          "quasar": false,
+          "dwarf": false
+        },
+        "star": {
+          "x": 560,
+          "y": 170,
+          "seed": 424242
+        }
+      }
+    },
+    "persistence": {
+      "schema": "cf-v2-app-persistence/v1",
+      "ready": true,
+      "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+      "bootKind": "fresh-v5",
+      "hold": null,
+      "protectedDetail": null,
+      "authorityBootKind": "absent",
+      "seedBootstrapPending": false,
+      "bootRouteRepairPending": false,
+      "productBootstrapPending": false,
+      "engineeringBootstrapPending": false,
+      "ownershipBootstrapPending": false,
+      "ownershipV2BootstrapPending": false,
+      "visibilityOverrideHidden": false,
+      "lastOutcome": "starter-charter-accept-committed:4",
+      "hideWitness": null,
+      "heartbeatStorageFault": null,
+      "revisionVerificationFault": null,
+      "heartbeatRunning": true,
+      "convergenceReloadScheduled": false,
+      "convergenceReloadHold": {
+        "schema": "cf-v2-product-action-hold-diagnostics/v1",
+        "phase": "idle",
+        "operation": null,
+        "sequence": 0
+      },
+      "leaseReadCount": 4,
+      "revisionReadCount": 1,
+      "mutationBlocked": false,
+      "mutationBlockCount": 1,
+      "mutationBlockWitness": {
+        "schema": "cf-v2-read-only-boundary/v1",
+        "action": "click:BUTTON",
+        "count": 1,
+        "hold": false,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "seedBootstrapPending": false,
+        "bootRouteRepairPending": false,
+        "ownershipV2BootstrapPending": false
+      },
+      "importPhase": null,
+      "importRace": null,
+      "runtime": {
+        "schema": "cf-v2-f4-runtime/v1",
+        "revision": 4,
+        "visible": true,
+        "answerable": true,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "leaseHeartbeat": 0,
+        "activePlayMs": 3830,
+        "accruing": true,
+        "sessionSeed": 1454006279,
+        "sessionOrdinal": 1,
+        "sessionDraws": {},
+        "commits": 3,
+        "staleWrites": 0,
+        "leaseLosses": 0
+      },
+      "ecology": {
+        "schema": "cf-v2-ecology-epoch-edge/v1",
+        "publishedEpoch": 0,
+        "candidateEpoch": 0,
+        "activePlayOriginMs": 0,
+        "observedActivePlayMs": 3830,
+        "edgeDue": false,
+        "autoCheckpointDue": false,
+        "inFlight": false,
+        "stagedIntent": null,
+        "stagedEpoch": null,
+        "retrySuppressedEpoch": null,
+        "lastCommittedRevision": null,
+        "stages": 0,
+        "commits": 0,
+        "publications": 0,
+        "rejections": 0,
+        "invalidStageCompletions": 0,
+        "projection": {
+          "state": "current",
+          "publishedEpoch": 0,
+          "projectedEpoch": 0,
+          "refreshEpoch": null,
+          "refreshSerial": null
+        },
+        "projectionRefreshesStarted": 0,
+        "projectionRefreshesCompleted": 0,
+        "projectionRefreshesFailed": 0,
+        "projectionSuppressions": 0,
+        "invalidProjectionCompletions": 0,
+        "projectionDirty": false,
+        "projectionSuppressed": false,
+        "checkpointInFlight": false,
+        "lastOutcome": "boot:0"
+      }
+    },
+    "pending": 0,
+    "panel": "ch",
+    "panelBusy": "false",
+    "charters": "Starter Charters 1 / 3 activeMake planetfallLand on any world. A first field contract starts with boots on the ground.0 / 1 · +10 ✦activeFirst footfall: MercuryStand on Sol’s innermost world.0 / 1 · +10 ✦ · headlampAcceptWeekly Charters remain protected until wall-week, slate and rollover authority are ported.",
+    "viewport": [
+      390,
+      844,
+      2
+    ],
+    "audio": {
+      "schema": "cf-v2-tame-greeting-audio/v1",
+      "disposed": false,
+      "armed": 0,
+      "claimedEvents": 0,
+      "activeVoiceId": null,
+      "activeCombatVoiceIds": [],
+      "lastEventKey": null,
+      "lastEventKind": null,
+      "lastDisposition": "cancelled:pilot-settlement",
+      "counterpart": {
+        "key": null,
+        "generation": null,
+        "status": "none"
+      },
+      "runtime": {
+        "state": "running",
+        "contextState": "running",
+        "contextGeneration": 1,
+        "muted": false,
+        "hidden": false,
+        "gains": {
+          "master": 1,
+          "effectiveMaster": 1,
+          "categories": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "voiceMix": {
+          "schema": "cf.audio.voice-mix-intent/v1",
+          "activeOwners": 0,
+          "owners": [],
+          "factors": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          },
+          "effectiveCategoryGains": {
+            "music": 1,
+            "ambience": 1,
+            "creature": 1,
+            "combat-gameplay": 1,
+            "ui": 1
+          }
+        },
+        "nodes": {
+          "active": 13,
+          "peak": 16,
+          "budget": 96
+        },
+        "cache": {
+          "active": 0,
+          "peak": 0,
+          "budget": 32,
+          "evictions": 0
+        },
+        "voices": {
+          "active": 0,
+          "peak": 1,
+          "budget": 24,
+          "ids": [],
+          "started": 2,
+          "completed": 0,
+          "stopped": 2,
+          "stolen": 0,
+          "cooldownRejects": 0,
+          "concurrencyRejects": 0
+        },
+        "creatureEmitters": {
+          "active": 0,
+          "peak": 0,
+          "budget": 8
+        },
+        "cooldowns": {
+          "active": 1,
+          "budget": 128
+        },
+        "reservations": {
+          "voices": {
+            "active": 0,
+            "peak": 1,
+            "activePlusReservedPeak": 1
+          },
+          "nodes": {
+            "active": 0,
+            "peak": 3,
+            "activePlusReservedPeak": 16
+          }
+        },
+        "cleanup": {
+          "sourceStopFailures": 0,
+          "nodeDisconnectFailures": 0,
+          "cacheReleaseFailures": 0
+        },
+        "peaks": {
+          "master": 0.057157665491104126,
+          "music": 0.02785331755876541,
+          "ambience": 0,
+          "creature": 0,
+          "combat-gameplay": 0,
+          "ui": 0.057157665491104126
+        },
+        "faults": {
+          "total": 0,
+          "retained": [],
+          "budget": 20
+        }
+      }
+    },
+    "trace": {
+      "inputs": [
+        {
+          "at": 806.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Skip training — you lose nothing, and Settings can restart it"
+        },
+        {
+          "at": 906.5,
+          "trusted": true,
+          "charterId": null,
+          "text": null
+        },
+        {
+          "at": 991.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "Play pilot sound"
+        },
+        {
+          "at": 1206.7999999523163,
+          "trusted": true,
+          "charterId": null,
+          "text": null
+        },
+        {
+          "at": 1288.8999999761581,
+          "trusted": true,
+          "charterId": null,
+          "text": "⬆ Make planetfall on 2 worlds of Sol · 0 / 2"
+        },
+        {
+          "at": 1556.1999999284744,
+          "trusted": true,
+          "charterId": "st-land",
+          "text": "Accept"
+        },
+        {
+          "at": 2639.7999999523163,
+          "trusted": true,
+          "charterId": "st-land",
+          "text": "Accept"
+        }
+      ],
+      "sources": [
+        {
+          "createdContext": 1,
+          "at": 1140.8999999761581,
+          "contextTime": 0,
+          "contextState": "running",
+          "duration": 24,
+          "frames": 1152000,
+          "sampleRate": 48000,
+          "channels": 2,
+          "loop": false,
+          "startArgs": [],
+          "startSucceeded": true,
+          "stopRequestedAt": 2640.0999999046326,
+          "stopArgs": [],
+          "endedAt": 2654.5,
+          "endedContextTime": 1.488
+        },
+        {
+          "createdContext": 1,
+          "at": 2890.7999999523163,
+          "contextTime": 1.728,
+          "contextState": "running",
+          "duration": 0.7,
+          "frames": 33600,
+          "sampleRate": 48000,
+          "channels": 1,
+          "loop": false,
+          "startArgs": [],
+          "publication": {
+            "at": 2891.0999999046326,
+            "documentToken": "345517e4-a77e-40d1-9911-80d93a9acd62",
+            "mode": "system",
+            "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+            "navWorldKey": null,
+            "chacc": [
+              "st-land"
+            ],
+            "chDone": [],
+            "revision": 4,
+            "ordinal": 1,
+            "lastOutcome": "starter-charter-accept-committed:4",
+            "mutationBlocked": false,
+            "answerable": true,
+            "leaseOwned": true,
+            "pending": 0,
+            "panelBusy": "false"
+          },
+          "startSucceeded": true,
+          "stopRequestedAt": 3592.5,
+          "stopArgs": [],
+          "endedAt": 3594.1999999284744,
+          "endedContextTime": 2.429333333333333
+        }
+      ],
+      "faults": []
+    }
+  },
+  "failedEvaluation": null,
+  "endedAt": "2026-09-08T08:55:20.594Z"
+}

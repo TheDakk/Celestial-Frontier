@@ -12,7 +12,7 @@ import {
   type CombatCuePlanV1,
   type CombatCueV1,
 } from './combat-cues.js';
-import { AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1 } from './runtime.js';
+import { createAudioVoiceMixIntentV1 } from './runtime.js';
 import { finiteVoiceMaxDurationMs } from './finite-voice-lifetime.js';
 import type {
   AudioContextLike,
@@ -69,6 +69,11 @@ interface SynthesisContextLike extends AudioContextLike {
   createBiquadFilter(): SynthesisBiquadLike;
 }
 
+/* A restrained foreground lift without boosting the impact or overwriting
+   saved volume. The shared mixer owns overlap, transitions and restoration. */
+const COMBAT_FOREGROUND_MIX = createAudioVoiceMixIntentV1(Object.freeze({
+  music: 0.75, ambience: 0.75, creature: 1, 'combat-gameplay': 1, ui: 1,
+}));
 const VOICE_PRIORITY = 80;
 const CONCURRENCY_GROUP = 'combat-gameplay-impact';
 const MAX_CONCURRENT = 2;
@@ -608,7 +613,7 @@ export function createCombatGameplayVoiceRequest(
     maxConcurrent: MAX_CONCURRENT,
     nodeCount: nodeCount(cue),
     maxDurationMs: finiteVoiceMaxDurationMs(voiceDurationSeconds(cue)),
-    mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
+    mixIntent: COMBAT_FOREGROUND_MIX,
     meaning: Object.freeze({ kind: 'meaningful', counterpart }),
     create: (context: AudioContextLike, reservation: AudioVoiceReservation) => (
       cue.impact === null

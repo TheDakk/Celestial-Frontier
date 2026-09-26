@@ -42,23 +42,36 @@ export function registerPanel(def: PanelDef): void {
      the slice's panels refill through fillPanel, which re-seats) */
   seatPnx(def);
 }
-function seatPnx(def: PanelDef): void {
+function seatPnx(def: PanelDef, retained?: HTMLElement): void {
   const existing = [...def.el.querySelectorAll<HTMLElement>('[data-pnx]')];
-  for (const duplicate of existing.slice(1)) duplicate.remove();
-  if (existing[0]) return;
-  const x = document.createElement('button');
+  const x = retained || existing[0] || document.createElement('button');
+  for (const duplicate of existing) if (duplicate !== x) duplicate.remove();
   x.setAttribute('data-pnx', def.id);
   x.setAttribute('aria-label', 'Close ' + (def.el.getAttribute('aria-label') || def.id));
   x.textContent = '✕';
-  x.className = 'surface-close panel-close';
+  x.classList.add('surface-close', 'panel-close', 'sheet-close');
   def.el.prepend(x);
+  /* Keep both siblings direct: Close geometry and Compendium's virtual list
+     depend on that ownership. Style the existing title without copying it. */
+  const title = [...def.el.children].find((child) => child.matches('h2,h3'));
+  title?.classList.add('sheet-header');
+  title?.setAttribute('data-sheet-kind', def.id);
 }
+/** A6 localization (i18n.ts): a panel's post-render localizer, registered ONLY when a non-English locale is active — so with none
+ * registered (the default) `fillPanel` writes exactly the markup it was given. */
+const PANEL_LOCALIZERS = new Map<string, (el: HTMLElement) => void>();
+export function setPanelLocalizerV1(id: string, localize: ((el: HTMLElement) => void) | null): void { if (localize) PANEL_LOCALIZERS.set(id, localize); else PANEL_LOCALIZERS.delete(id); }
 /** refill a panel's content WITHOUT losing the sticky ✕ */
 export function fillPanel(id: string, html: string): void {
   const def = PANELS.find((p) => p.id === id);
   if (!def) return;
+  const close = def.el.querySelector<HTMLElement>(':scope > [data-pnx]') || undefined;
+  const closeOwnedFocus = close !== undefined && document.activeElement === close;
+  close?.remove();
   def.el.innerHTML = html;
-  seatPnx(def);
+  PANEL_LOCALIZERS.get(id)?.(def.el);
+  seatPnx(def, close);
+  if (closeOwnedFocus) close?.focus({ preventScroll: true });
 }
 
 let _opener: HTMLElement | null = null;   /* FOCUS RESTORATION: closing returns focus to what opened */
@@ -108,9 +121,11 @@ export function openPanel(id: string, opener?: HTMLElement | null): boolean {
   document.body.classList.add('panel-open');
   def.el.setAttribute('aria-hidden', 'false');
   for (const b of def.btns || []) {
-    b?.classList.add('on');
+    b?.classList.add('on', 'sel');
     b?.setAttribute('aria-expanded', 'true');
   }
+  // Settle measured chrome before focus/scroll reads the new panel geometry.
+  document.dispatchEvent(new document.defaultView!.Event('cf-panel-layout'));
   /* Panels are non-modal regions, but keyboard users still need a reliable
      entry point. Focus the sticky close control; closing restores the exact
      opener captured above. */
@@ -160,12 +175,13 @@ export function closePanels(except?: string): void {
     p.el.style.display = 'none';
     p.el.setAttribute('aria-hidden', 'true');
     for (const b of p.btns || []) {
-      b?.classList.remove('on');
+      b?.classList.remove('on', 'sel');
       b?.setAttribute('aria-expanded', 'false');
     }
     if (wasVisible) p.onClose?.();
   }
   document.body.classList.toggle('panel-open', PANELS.some((p) => p.el.style.display !== 'none'));
+  document.dispatchEvent(new document.defaultView!.Event('cf-panel-layout'));
   if (!except && _opener) { restorePanelFocus(); _opener = null; }
 }
 export function togglePanel(id: string): void {

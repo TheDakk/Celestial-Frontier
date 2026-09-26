@@ -1,0 +1,7 @@
+{
+  "tool": "image_gen.imagegen",
+  "referencedImage": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/02-dragonfly/master.png",
+  "referencedImageSha256": "d261b6375b7d4c133b00c4a3bbd06d5500ee56c578f81ed93f20bb734ea2e7c8",
+  "promptSha256": "0d80f9be74412f090be58e69d342ed1ef653d80541b5e04cd55cc76d316746ce",
+  "purpose": "Correct missing sixth leg and orient inward for current stage; original two masters retained."
+}

@@ -1,0 +1,141 @@
+{
+  "status": "PASS",
+  "output": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_KIT_WEATHER_MAT_20260912/prepared",
+  "tokenReceipt": {
+    "ceiling": 512,
+    "tokens": 402,
+    "positions": 416,
+    "promptSha256": "741e3078a4a12a669a0fc9846f68789e1717bfc31cd584910568067ff541194c",
+    "chatPromptSha256": "18ec22841a2ed28356a8092fdd9fd59c5ebd86641b9c536b4f4e89f0bffe1dde"
+  },
+  "acceptedMasters": 12,
+  "foregroundPixels": 1909,
+  "boxes": [
+    {
+      "name": "Civet",
+      "x": 616.9814354066986,
+      "y": 270.72,
+      "width": 240.59712918660284,
+      "height": 172.79999999999995,
+      "instances": [
+        {
+          "x": 616.9814354066986,
+          "y": 270.72,
+          "width": 240.59712918660284,
+          "height": 172.79999999999998
+        }
+      ],
+      "keying": {
+        "erodedPixels": 1863,
+        "despilledPixels": 85,
+        "unresolvedEdgePixels": 0
+      }
+    },
+    {
+      "name": "Persimmon",
+      "x": 17.097142857142856,
+      "y": 207.36000000000004,
+      "width": 232.04571428571433,
+      "height": 241.92,
+      "instances": [
+        {
+          "x": 17.097142857142856,
+          "y": 207.36000000000004,
+          "width": 232.0457142857143,
+          "height": 241.92
+        }
+      ],
+      "keying": {
+        "erodedPixels": 6287,
+        "despilledPixels": 360,
+        "unresolvedEdgePixels": 25
+      }
+    },
+    {
+      "name": "Platypus",
+      "x": 354.2179310344828,
+      "y": 391.68,
+      "width": 172.2041379310345,
+      "height": 103.68,
+      "instances": [
+        {
+          "x": 354.2179310344828,
+          "y": 391.68,
+          "width": 172.20413793103447,
+          "height": 103.67999999999999
+        }
+      ],
+      "keying": {
+        "erodedPixels": 1425,
+        "despilledPixels": 1,
+        "unresolvedEdgePixels": 0
+      }
+    },
+    {
+      "name": "Frog",
+      "x": 174.08,
+      "y": 406.78299212598426,
+      "width": 122.88000000000002,
+      "height": 94.33700787401574,
+      "instances": [
+        {
+          "x": 174.08,
+          "y": 406.78299212598426,
+          "width": 122.88,
+          "height": 94.33700787401574
+        }
+      ],
+      "keying": {
+        "erodedPixels": 1993,
+        "despilledPixels": 0,
+        "unresolvedEdgePixels": 0
+      }
+    },
+    {
+      "name": "Devil's Club",
+      "x": 808.96,
+      "y": 337.8295406360424,
+      "width": 163.84000000000003,
+      "height": 169.0504593639576,
+      "instances": [
+        {
+          "x": 808.96,
+          "y": 337.8295406360424,
+          "width": 163.84,
+          "height": 169.0504593639576
+        }
+      ],
+      "keying": {
+        "erodedPixels": 5605,
+        "despilledPixels": 502,
+        "unresolvedEdgePixels": 2
+      }
+    },
+    {
+      "name": "Cranberry",
+      "x": 266.24,
+      "y": 450.9926132404181,
+      "width": 163.83999999999997,
+      "height": 67.40738675958187,
+      "instances": [
+        {
+          "x": 266.24,
+          "y": 450.9926132404181,
+          "width": 112.64,
+          "height": 67.4073867595819
+        },
+        {
+          "x": 317.44,
+          "y": 450.9926132404181,
+          "width": 112.64,
+          "height": 67.4073867595819
+        }
+      ],
+      "keying": {
+        "erodedPixels": 5944,
+        "despilledPixels": 941,
+        "unresolvedEdgePixels": 76
+      }
+    }
+  ]
+}

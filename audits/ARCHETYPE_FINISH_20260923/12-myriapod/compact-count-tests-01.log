@@ -1,0 +1,27 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/compact-myriapod.test.ts (8 tests | 1 failed) 60ms
+   × compiled compact timelines retain the full graph and attacks use actual head/mandible instead of absent trunk waves 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/compact-myriapod.test.ts > compiled compact timelines retain the full graph and attacks use actual head/mandible instead of absent trunk waves
+Error: Attack anatomy: no admitted move body
+ ❯ compileAnatomyAttack apps/game/src/anatomy-attacks.ts:80:19
+     78|  const index=(parseInt(fnv1a(card.identity.speciesVisualKey),16)+ordin…
+     79|  const attack=requestedVerb?repertoire.attacks.find(a=>a.verb===reques…
+     80|  if(!attack)throw Error('Attack anatomy: no admitted move'+(requestedV…
+       |                   ^
+     81|  const timeline=buildTimeline(card,'melee:'+attack.verb,card.identity.…
+     82|  const contactPhase=attack.contactPhase??(attack.verb==='claw'?'strike…
+ ❯ apps/game/src/motion/compact-myriapod.test.ts:76:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 7 passed (8)
+   Start at  15:02:40
+   Duration  309ms (transform 106ms, setup 0ms, import 137ms, tests 60ms, environment 0ms)
+

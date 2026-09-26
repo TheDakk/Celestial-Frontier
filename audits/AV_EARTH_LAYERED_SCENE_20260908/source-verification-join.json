@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "unchangedProductAndTestsFrom308Pass": true,
+  "changedGuardFilesOnly": [
+    "port/v2/tools/overridecheck.control.mjs",
+    "port/v2/tools/overridecheck.mjs"
+  ],
+  "finalControlPasses": 134,
+  "currentFrozenSourceCount": 786,
+  "allCurrentHashesMatch": true,
+  "note": "This joins scoped successes, not a fresh full admission certificate. The prior aggregate failures remain unchanged."
+}

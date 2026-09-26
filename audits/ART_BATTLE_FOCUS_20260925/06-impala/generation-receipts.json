@@ -1,0 +1,11 @@
+[
+  {
+    "tool": "image_gen.imagegen",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-e1073de2-1f01-4cb1-affa-52c3ddbec8bd.png",
+    "output": "master.png",
+    "sha256": "abad16f380bf27e2a17123882dd1ba027e196f10a180f299dbb470663e2b031a",
+    "prompt": "prompt.txt",
+    "promptSha256": "06702180cd5d2f2cfdd1570df6309c6fe62bcccb73e9cf4e3b1fa08763601ff4",
+    "finding": "Complete four-hoof right-facing plain antelope, both horn tips in canvas. Nick art acceptance pending"
+  }
+]

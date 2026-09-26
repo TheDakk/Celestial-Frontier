@@ -1,0 +1,27 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-contact-rigid.test.ts (3 tests | 1 failed) 9ms
+   × analytically plants the real rigid-support refusal samples without changing anatomical lengths or terminal orientation 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-contact-rigid.test.ts > analytically plants the real rigid-support refusal samples without changing anatomical lengths or terminal orientation
+Error: Contact: painted support iteration residual 0.26350408495550587
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:174:38
+    172|   }
+    173|   if(maxError>1e-8)throw Error('Contact: unresolved endpoint');
+    174|   if(maxPaintTargetErrorPx>.25)throw Error('Contact: painted support i…
+       |                                      ^
+    175|   return {pose,contacts,maxError,compression,maxPaintTargetErrorPx};
+    176|  }};
+ ❯ apps/game/src/creature-rig-contact-rigid.test.ts:11:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  01:01:37
+   Duration  196ms (transform 46ms, setup 0ms, import 71ms, tests 9ms, environment 0ms)
+

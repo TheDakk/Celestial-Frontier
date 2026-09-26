@@ -1,0 +1,86 @@
+{
+  "scope": "Exact retained first-refusal poses, diagnosis only; no gate/solver mutation",
+  "rows": [
+    {
+      "id": "alert",
+      "error": "ARAP skin: unresolved folded triangles: 1",
+      "folded": [
+        {
+          "triangle": 300,
+          "vertices": [
+            {
+              "i": 209,
+              "xy": [
+                910,
+                792.5
+              ],
+              "weights": [
+                [
+                  "pectoralFar",
+                  0.6371530062883128
+                ],
+                [
+                  "root",
+                  0.3616008749651598
+                ],
+                [
+                  "spine0",
+                  0.0005238833787304708
+                ],
+                [
+                  "head",
+                  0.0005058376070321428
+                ],
+                [
+                  "jaw",
+                  0.0002158542568161137
+                ],
+                [
+                  "spine1",
+                  5.434746580273973e-7
+                ],
+                [
+                  "spine2",
+                  2.929038938315569e-11
+                ],
+                [
+                  "dorsal",
+                  2.8769999315672737e-16
+                ]
+              ],
+              "pinned": false
+            },
+            {
+              "i": 196,
+              "xy": [
+                920,
+                783
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "pinned": true
+            },
+            {
+              "i": 210,
+              "xy": [
+                920,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "pinned": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

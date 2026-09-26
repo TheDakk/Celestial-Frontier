@@ -1,0 +1,103 @@
+{
+  "status": "READBACK_HASHED",
+  "scope": "Workspace artifacts; excludes this inventory and later format receipt. Does not imply runtime/art/native acceptance.",
+  "files": 19,
+  "totalBytes": 6984387,
+  "artifacts": [
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/DIRECTION_DECISION.md",
+      "bytes": 2917,
+      "sha256": "fd46b6d12d1e7a53a62872b7283bed1ecef19cb1715f23ebccf207480f7692d7"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/README.md",
+      "bytes": 4672,
+      "sha256": "ebf3566e8fb79fb4c172993b3a35dda5397ab2ab3a6847a7caf8ca2a642d3700"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/civet-landing-original.png",
+      "bytes": 2885444,
+      "sha256": "e7ef04af6c5d75bad9e41a26082f814a95893928e814309dd8a720e4fa2a2740"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/generation-result.json",
+      "bytes": 717,
+      "sha256": "ccda395d2770eb91bcad9ba9b0340578c7e13717a2c9551d64a6e43c8a4247dc"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/landing-prompt.txt",
+      "bytes": 3039,
+      "sha256": "2f2c1ee8f28cd02e29fb1d579cde38a4df32a98ed6b88195666e3a568e93e6c2"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-chain.mjs",
+      "bytes": 5563,
+      "sha256": "44e36724a74d873904d976204cae517d25a84a9540ec0daebe7cae0c32597c4b"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-runner.mjs",
+      "bytes": 61703,
+      "sha256": "714d2dfba790e6b00cbab57b98dee70af748787b5ee48f901bc655aea6e5ab38"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime-check.json",
+      "bytes": 999,
+      "sha256": "0cdcb66878d37d2c9bfda56afad1b83f333ff79a3033864afe8390610d676040"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.json",
+      "bytes": 2981,
+      "sha256": "70a8a3a37fcf1cecfd7e34cedd676579c997dc0badfb0a023504c466b9a659f4"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.patch",
+      "bytes": 25319,
+      "sha256": "2469e2e49a2b4bc6b766c2fbbc9318a616a7d88cd3cc1434e15bfccf6f6318b7"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/main.ts",
+      "bytes": 854682,
+      "sha256": "c827f91e803c3ef7c234babd87b4eeedadb4e6ed3308d309a1e9fe4bfbb72970"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/painted-earth-landing-recipe.ts",
+      "bytes": 976,
+      "sha256": "638abba375542e6b56da39a30e0aab8ce8b4dd82290529368d5f1763934fa489"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/painted-vista-load.test.ts",
+      "bytes": 12195,
+      "sha256": "dbd4fc0f39493f7018d38ac9f507151ee9d0c143dd860b511504138167e527cc"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/painted-vista-load.ts",
+      "bytes": 6643,
+      "sha256": "bb2a76fd6e626dc7e10bd2fe58be174a18aee7c4a0bc34740b24c09cb46e6632"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/tests/earth-layered-shake-settlement.test.ts",
+      "bytes": 8130,
+      "sha256": "77e14d79af8ad56d78b84e99a7ea562f7b89d4f2110648f6f5a0c37ebbae7ad5"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/tests/painted-earth-landing-binding.test.ts",
+      "bytes": 4649,
+      "sha256": "5decb8b2519f1388945d27a1e81d28c4b35e0a9d60329cdd905ebf76c9137d95"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preserve-candidate-first.py",
+      "bytes": 2610,
+      "sha256": "2da6087529a255cfd2bdf85735a766582e7b19c39a0e3757653824041d84b704"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/reference-intake.json",
+      "bytes": 488,
+      "sha256": "1a85974f48b38944d2bc92f2c73f634abf10cb4f086fb5c7e449213164dffe82"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/user-approved-living-worlds.png",
+      "bytes": 3100660,
+      "sha256": "5ba8a19f3a9da76c0fa732c11414e4a3629f9376556321ece14c447f5a04f012"
+    }
+  ]
+}

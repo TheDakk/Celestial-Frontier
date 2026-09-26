@@ -1,0 +1,85 @@
+{
+  "schema": "cf.derived-marking-masks/v1",
+  "status": "PASS",
+  "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/G2_QUADRUPED_PILOT_20260926/02-red-fox/master.png",
+  "sourceSha256": "f45478fccdfb399188fe3eb17dece1cbb50eb90f3519dc436697dc6788636ec4",
+  "width": 1254,
+  "height": 1254,
+  "seed": 880284868,
+  "algorithmSha256": "f178bd4ddad3de3a3e9b89960192637f36b72d59e85d1b53c5b8df46983522ca",
+  "space": "master",
+  "plain": null,
+  "iridescent": {
+    "mode": "emissive",
+    "mask": null
+  },
+  "scope": "candidate masks bound to source alpha; no rig or anatomical-material exclusion claim; not wired until admitted",
+  "rows": [
+    {
+      "pattern": "striped",
+      "file": "striped.png",
+      "sha256": "3ceca725eb3549a753060625b0d272a1b59cd4cae17c2153690d8e2791476806",
+      "bytes": 79433,
+      "status": "PASS",
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 186392
+    },
+    {
+      "pattern": "spotted",
+      "file": "spotted.png",
+      "sha256": "fcbd10b3f7534094e4cdce3105beb0523048ce289bcb1a9103ca8272c329a628",
+      "bytes": 45996,
+      "status": "PASS",
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 70750
+    },
+    {
+      "pattern": "banded",
+      "file": "banded.png",
+      "sha256": "e1a769af21012948a821d16eece7a091fbf65bb6d32f3e0fef8d40739c10a1e3",
+      "bytes": 83232,
+      "status": "PASS",
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 174087
+    },
+    {
+      "pattern": "mottled",
+      "file": "mottled.png",
+      "sha256": "451c465a0b9581bf9f1b6b27a07c004a29d8df938912dae138f1b553b7bc1c0c",
+      "bytes": 97718,
+      "status": "PASS",
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 195945
+    },
+    {
+      "pattern": "marbled",
+      "file": "marbled.png",
+      "sha256": "1e7056a02dad51f08e5b9ce78a9b80f1d7a508415fd1a6e59c160f10781bc35d",
+      "bytes": 88910,
+      "status": "PASS",
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 199749
+    },
+    {
+      "pattern": "eye-spotted",
+      "file": "eye-spotted.png",
+      "sha256": "9571a71778bbba5acb6065a64ce73e351fa002219fee60320ef76fd99fc0df74",
+      "bytes": 59717,
+      "status": "PASS",
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 91092
+    }
+  ]
+}

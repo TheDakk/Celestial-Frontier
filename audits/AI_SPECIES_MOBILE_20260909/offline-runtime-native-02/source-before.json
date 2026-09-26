@@ -1,0 +1,74 @@
+[
+  {
+    "path": "tools/local-image-generation/run-offline-runtime.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/run-offline-runtime.mjs",
+    "bytes": 15888,
+    "sha256": "9daefd668742d0fe8a7390e81ae170fa19e153926de4ad6069e2a7ffc17093d1"
+  },
+  {
+    "path": "tools/local-image-generation/mobile-pack.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/mobile-pack.mjs",
+    "bytes": 17237,
+    "sha256": "bfdce41726d32bbd2989690fa5fb419626f3d9ff10d0958326523612d8f4d7b5"
+  },
+  {
+    "path": "tools/local-image-generation/runtime-pack.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.mjs",
+    "bytes": 21294,
+    "sha256": "a25e2b6f894a3c4c111949fa0a2c7dcfede13c25fb47082c13d423709425ad08"
+  },
+  {
+    "path": "tools/local-image-generation/stage-worker.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/stage-worker.mjs",
+    "bytes": 11212,
+    "sha256": "337aaea3f7f9804a4409887367b922ed68e02a8ee3dc7f0c859c913dfa52d8ac"
+  },
+  {
+    "path": "tools/local-image-generation/source-integrity.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/source-integrity.mjs",
+    "bytes": 713,
+    "sha256": "5d6e389fc7dac0bd1ae7dc388ce0380ba4b6ebb0e8c934af8e841b5eea36bae9"
+  },
+  {
+    "path": "port/v2/tools/browsercdp.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/browsercdp.mjs",
+    "bytes": 159934,
+    "sha256": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca"
+  },
+  {
+    "path": "port/v2/tools/workspacelock.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs",
+    "bytes": 6863,
+    "sha256": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606"
+  },
+  {
+    "path": "port/v2/apps/game/pwa-build.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/pwa-build.ts",
+    "bytes": 33950,
+    "sha256": "e4af98745e374d0e684eedfb66442502bbef42cef0fc08720da27b7dcff3a41c"
+  },
+  {
+    "path": "port/v2/apps/game/src/local-ai-game.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-ai-game.ts",
+    "bytes": 18095,
+    "sha256": "40ec5629a2dce7a358a36a09279488f2562c2665eee919807d049d3788025e4b"
+  },
+  {
+    "path": "port/v2/apps/game/src/local-ai-runtime.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-ai-runtime.ts",
+    "bytes": 14218,
+    "sha256": "cd91455a260e80b0475559cf85e02db0d068d9e75f7365d1ca13fa7946cbc410"
+  },
+  {
+    "path": "port/v2/apps/game/src/main.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/main.ts",
+    "bytes": 866665,
+    "sha256": "fbd9bd7816c8adb944510f9388805480e45188cd686440253e7d98ee97377393"
+  },
+  {
+    "path": "port/v2/apps/game/src/local-model-delivery.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-model-delivery.ts",
+    "bytes": 23791,
+    "sha256": "1754f0f127cdf550ffc5956e5daac4cc3c4bde829175b3e73ca04abbb7d16ea8"
+  }
+]

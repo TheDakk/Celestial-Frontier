@@ -1,0 +1,136 @@
+{
+  "schema": "cf.marking-conservation/v1",
+  "status": "PASS",
+  "createdAt": "2026-09-25T04:56:50.462Z",
+  "sourceHashes": {
+    "master.png": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff",
+    "fit-06/record.json": "b2dffcc709116ef6cad2cf0a7dff86673b3fbf9121f232ef25cd97b8dc6fdf55",
+    "fit-06/binding.json": "1a25d1bdfa27517c0678d873fc8309b5f3ca2f8296c45783a98a1e801a22d9a8",
+    "fit-06/parts/keyed.png": "2ef51fc8475f4a4e5767188fac9afbe000e56e1c68b5d9f9ac8246e08ea7f2dc",
+    "fit-06/parts/atlas/wall-lizard.png": "307bb30ea9ed7040370b0f0719e10426ce8afbf390888072f269d04af6bda3ad",
+    "fit-06/parts/manifest.json": "d11e6cb799dc23b8c360c1a9096f302e830faf803dcc627d5d2236f73c903b2d",
+    "prompt.txt": "c6ac4fd0577baec63ac5099c3aa8d2ef661d719137b4ee8fc610e39009c7a404",
+    "raw/striped.png": "778dc69bf7fb8155b009f3c5096a0efeb759a005fb973af9e843e29fa1cff7cd",
+    "prompts/striped.txt": "2d088c0e1233300d6fb13eb21b22848c3a47a1a7934fddd6a8564e724a3bcb42",
+    "raw/spotted.png": "5fc8fd40970731448d3f8abafa99cfd38f0621ab437a59a0409dc05eb040f298",
+    "prompts/spotted.txt": "c6c8c56e3f82ac994a1f57b28056cbf25cb70d1ecee0460208e8a87877db8552",
+    "raw/banded.png": "f8017e7209c46abbb48780b269dfa6a2a60a052df54aa1a8e23ef073893414b7",
+    "prompts/banded.txt": "179bd508612af85806a6358fad29f22582f39e03936af7efb20cf32c39db0762",
+    "raw/mottled.png": "0c654fef4f21c674874fddbbf531aeb063c3b8aeb79ca3cbe3611783311f3b51",
+    "prompts/mottled.txt": "59d98a268dbf43b3c64c1f844b0940ea7fdebc0a82ad862c9d625f6897ff2e59",
+    "raw/marbled.png": "c43329133997338f064ea6b85910e18bd368b10e3576c06d63de3f35886ff1d9",
+    "prompts/marbled.txt": "a4a7427cba886e1f7da3c12a44b42561fcd3826edf746b587c75b5b4c190a1eb",
+    "raw/eye-spotted.png": "ccd3184e99e73b857bc9f71b8fddd1e817e2f66588e60b5aa2a4d36de5417b2e",
+    "prompts/eye-spotted.txt": "fc782a39068e0a7bc31f56eccd196738743d176bd2b612533bb27cde78a72523"
+  },
+  "helperSha256": "4f53aa3033b89183d4c9fbb7d8d195588bb250094395c9b80d20821bb334dea2",
+  "exclusion": {
+    "method": "none; every keyed-alpha pixel is eligible",
+    "excludedParts": []
+  },
+  "rows": [
+    {
+      "pattern": "striped",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 26962,
+      "opaqueEquivalentPixels": 4973.4,
+      "rawOutsideAlphaPixels": 23005,
+      "sha256": "e3fbf1bc3a39100103dbf3ff7b93d776176203c231770fb3eeda1f47af5a6649",
+      "compositeFile": "composites/striped.png",
+      "compositeSha256": "2bb25113e40d023aece4fb5b693c237cb27e7886e0a689250042927f91befdfb"
+    },
+    {
+      "pattern": "spotted",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 11060,
+      "opaqueEquivalentPixels": 5137.952941176471,
+      "rawOutsideAlphaPixels": 16634,
+      "sha256": "42fddc14365a345985c0dd3582a4ef04cbc6d29cda0d4ee2c8c94b0da34c7a6c",
+      "compositeFile": "composites/spotted.png",
+      "compositeSha256": "e3deba99eb4f70c2cab47fbfc83ab735e0a76e21644c85d8058a4c7204e0d3b0"
+    },
+    {
+      "pattern": "banded",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 35276,
+      "opaqueEquivalentPixels": 19107.8,
+      "rawOutsideAlphaPixels": 52853,
+      "sha256": "3197308fbd767ef2c21c2186c8446f3979ab38346f9da9ed814fe479eeb17111",
+      "compositeFile": "composites/banded.png",
+      "compositeSha256": "0740e7da8957329fdddbe41a9483dbbee13a20322c633e3d6b926b64d7f99326"
+    },
+    {
+      "pattern": "mottled",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 32130,
+      "opaqueEquivalentPixels": 12853.772549019608,
+      "rawOutsideAlphaPixels": 39064,
+      "sha256": "8c80c72f2ea2646eed16afcc00c61ef5f2b96d3746f4b36e9ed078cada17c9df",
+      "compositeFile": "composites/mottled.png",
+      "compositeSha256": "c21ba4f2ce06bf224e6631115492e90725eba4654404a801aa7543529b1d31ff"
+    },
+    {
+      "pattern": "marbled",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 27544,
+      "opaqueEquivalentPixels": 5051.878431372549,
+      "rawOutsideAlphaPixels": 39463,
+      "sha256": "ed2f865f75573ede195aa6ef9cb2f40fe5b528589a1e55a55f73ef9d9c3335f2",
+      "compositeFile": "composites/marbled.png",
+      "compositeSha256": "f457655b218e6646413929c81ff2d1a7b2734524719662c80f0a2947acb51b2e"
+    },
+    {
+      "pattern": "eye-spotted",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 9061,
+      "opaqueEquivalentPixels": 6036.713725490196,
+      "rawOutsideAlphaPixels": 1552,
+      "sha256": "4fd7f34652faa49bd919eb462d674416f7350e34f2aa8420863bc4d182a6a23c",
+      "compositeFile": "composites/eye-spotted.png",
+      "compositeSha256": "86fcceff43321133be0a618123b8771a4618fa9897f69ad69dfc0322bd8cea49"
+    }
+  ],
+  "controls": {
+    "validAccepted": true,
+    "outsidePixelMutantRefused": true,
+    "outsidePixel": [
+      0,
+      0
+    ],
+    "mutantAssessment": {
+      "outsideAlphaPixels": 1,
+      "alphaExceedsKeyedPixels": 1,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 26963
+    }
+  },
+  "node": "v26.9.0",
+  "imageMagick": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org",
+  "sheetFile": "six-mask-sheet.png",
+  "sheetSha256": "acb3e4e48003040f0e30a1b8804a8fd7b84cdb4b505ebc73f370149b03dbbbb2",
+  "previewOnly": "Sheet cells are thumbnails; masks and composites remain unchanged 1254-square master coordinates."
+}

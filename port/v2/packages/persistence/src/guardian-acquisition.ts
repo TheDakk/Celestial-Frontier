@@ -138,9 +138,11 @@ export function projectLegacyGuardianWorldWhereV1(
     tilt: address.galaxy.tilt,
     rot: address.galaxy.rot,
   };
-  for (const flag of ['home', 'quasar', 'dwarf'] as const) {
-    if (address.galaxy[flag]) gal[flag] = true;
-  }
+  /* The flags are explicit booleans, exactly as the Arc 4/5 legacy mirror writes a world's `where` (arc4-ownership `legacyWorldWhere`).
+     A Guardian/Titan page is written by BOTH owners; with flags only-when-true here the durable page (the mirror's shape) never matched
+     this projection, so every Guardian/Titan WIN failed Main's composite Compendium check and fell back to a publication reload
+     (found 2026-09-26 by the A5 #57 Titan outcome test). */
+  for (const flag of ['home', 'quasar', 'dwarf'] as const) gal[flag] = address.galaxy[flag] === true;
   return Object.freeze({
     gal: Object.freeze(gal),
     pseed: address.planet.seed,

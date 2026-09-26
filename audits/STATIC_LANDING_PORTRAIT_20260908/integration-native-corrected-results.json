@@ -1,0 +1,68 @@
+{
+  "schema": "cf-static-earth-landing-native-correction/v1",
+  "certification": false,
+  "status": "PASS",
+  "startedAt": "2026-09-09T02:37:09.818Z",
+  "steps": [
+    {
+      "id": "syntax-native-landing-still-v3-runner.mjs",
+      "args": [
+        "--check",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v3-runner.mjs"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "startedAt": "2026-09-09T02:37:09.834Z",
+      "endedAt": "2026-09-09T02:37:09.869Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": {
+        "path": "audits/STATIC_LANDING_PORTRAIT_20260908/syntax-native-landing-still-v3-runner.mjs.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "syntax-native-landing-still-v3-remaining-chain.mjs",
+      "args": [
+        "--check",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v3-remaining-chain.mjs"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "startedAt": "2026-09-09T02:37:09.870Z",
+      "endedAt": "2026-09-09T02:37:09.915Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": {
+        "path": "audits/STATIC_LANDING_PORTRAIT_20260908/syntax-native-landing-still-v3-remaining-chain.mjs.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "native-v3-remaining-chain",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v3-remaining-chain.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/earth-civet-landing-evidence-dist-20260908",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "startedAt": "2026-09-09T02:37:09.915Z",
+      "endedAt": "2026-09-09T02:37:22.682Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": {
+        "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining-chain.log",
+        "bytes": 155,
+        "sha256": "c4e8786dcd03dddf2e7aa582109ff503a3f92cc07d671e26320d1724f9f4b98f"
+      }
+    }
+  ],
+  "cleanupErrors": [],
+  "locksReleased": true,
+  "staticReceiptSha256": "ef3f2f2912dd391ae76fd7cf682a3dbef02817aa084247a1a2e74cfa2033c757",
+  "chainReportSha256": "049944d96d580065f3de1e0a58c85d50d55fa79c7f1f832d53ce0f71b08af020",
+  "endedAt": "2026-09-09T02:37:22.686Z"
+}

@@ -1,5 +1,171 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **EXACT REST AND CONTINUOUS JOINS CAN MISS WRONG-LIMB PAINT** (painted variations, 2026-09-16).
+> A detached painted island assigned to another limb reconstructs perfectly at rest and can
+> evade source-join tests because it has no joined edge. Inspect authored limb components,
+> actual depth ownership and full moving silhouettes. Retain the2792-pixel floating fragment
+> as the failing control; correct masks without deleting paint or weakening deformation gates.
+> Fit review framing to the full motion, not just rest, so lunges remain visible.
+
+> **PRESERVED BODY PIXELS DO NOT PROVE A REPLACEMENT VIEW IS ATTACHED** (Civet, 2026-09-16).
+> Surviving neck paint and a valid head mesh can leave an exposed notch between them. Bind
+> anatomical interior attachments to actual published triangles and inspect native rendered
+> coverage through the full motion, preserving the reported gap as a negative control. Pad
+> the measurement surface for lunges rather than skipping off-canvas samples. Original source
+> joins, replacement-view fits and intentional anatomical openings have distinct ownership.
+>
+> **CAPTURE CLEANUP MUST NOT EMPTY THE PLAYER BEFORE NAMED-POSE STILLS** (C2, 2026-09-16).
+> Recording cleanup resets performance players. Re-select/replay the explicit action sequence
+> before subsequent time-based stills; compare fresh still-only and post-recording outcomes.
+> A correctly recorded video does not establish correctness of the stills captured after it.
+
+> **BONE CONTACT AND POSITIVE TRIANGLES DO NOT PROVE CONTINUOUS PAINT** (C2, 2026-09-16).
+> A planted joint can coexist with sliding paw pixels; a skin can contain no reflected triangles
+> and still open an anatomical attachment or collapse into a thin strip. Measure the actual
+> published mesh against source-supported paw contours and source-alpha attachment boundaries.
+> Bone hierarchy does not define surface topology: proximal body/limb skin may join across
+> sibling bones, while overlapping independent limbs must stay separate. Retain actual face
+> provenance, scan the complete current motion between named poses, and inspect full moving
+> painted shape. A numeric PASS cannot replace visual acceptance; keep observed false-green
+> candidates as controls. Include motion sampling and contact solving in creature CPU timing.
+
+> **CANVAS PIXELS DO NOT PROVE VISIBILITY THROUGH DOM OVERLAYS** (Earth layers, 2026-09-08).
+> Full-stage Pixi extraction can prove resident paint while the native Biosphere strip hides it
+> from the player. Preserve that failed browser image. Measure the actual DOM boundaries and
+> native hit samples across the artwork, reject a real overlapping placement with the same
+> acceptor, restore exact transforms/pixels/controls, and inspect the final browser screenshot.
+> Do not clear or move UI merely to make an art probe green. A world-center coordinate also
+> does not imply an exposed canvas exit target; use an observed native control or hit receipt.
+
+> **STICKY HEADERS REQUIRE CAPACITY AND SCROLL CLEARANCE** (U2,2026-09-06).
+> A44px action can be contained, settled and keyboard-focused while its centre hits a sticky
+> title. Reserve measured header/insets plus a usable action row before a secondary strip;
+> native scroll padding must clear the same header. Retain the occluded native target result.
+> Do not derive joint capacity from a strip's own floor-dependent top or assume translating
+> an unchanged-size strip triggers ResizeObserver. Read final floor/height and preserve a
+> stale-position negative control. Yielded guidance must be measured in its native state so
+> it returns with room, not keep itself hidden from its own zero-height measurement.
+> A preference check must distinguish owned clipped accessibility text from arbitrary hiding.
+> Exercise the actual revealed preference owner synchronously and restore exact attributes,
+> geometry and text. Justify the exception with independently measured native capacity, never
+> the product variables under test; stale cramped and roomy variables need opposite controls.
+> Generic control audits must use the body below independently measured shared sticky headers,
+> including nested scroll owners, before declaring containment or choosing a scroll centre.
+> Header-owned/Close controls retain their own geometry; a full44px action cannot fit a43px lane.
+> Retain target/header/clipping rectangles and scroll attempts in an occlusion finding.
+> A generic sheet needs the same capacity guarantee as a stacked Survey. Measure every visible
+> sheet's header/insets plus44px content; scrolling cannot repair a smaller content band.
+> If caption position depends on hint height, restoring only the hint class is insufficient:
+> temporarily project its actual native height while measuring the caption and restore the
+> other owner's exact property value/priority afterward. Observe child/text changes while
+> guidance is clipped because its1px box may not resize. Prove short-to-long and long-to-short
+> content, stale small/large height receipts, Close and refill without a self-sustaining loop.
+> Bare Planetside measures actual painted upper controls, not an older observer publication.
+> After Close, guidance returns when room exists; any remaining yield needs independent native
+> capacity evidence. Reveal or cleanup errors stay instrument failures on both open/closed paths.
+> A new preference sample uses its own semantic hierarchy root. Comparing a caption against
+> bold keywords in an unrelated hint creates a cross-surface false-red when independent font
+> scales converge. Keep the generic checker strict; scope the new caller to the caption and
+> prove both the unrelated-text control and real nested-caption shrink/flattening failures.
+> Test setup observes the current disclosure state before toggling. A preceding panel may
+> intentionally leave Survey closed; an unconditional “close” toggle reopens it. Preserve
+> strict boolean-state and trusted-input receipts, close only when open, and prove the requested
+> final state without retries. A already-satisfied setup is not evidence that an action ran.
+> Keep measurement owners distinct: AppChrome's full-wrapper receipt may include transparent
+> padding, while collision clearance measures actual painted controls. Frame-scheduled layout
+> needs a named native settlement after fixture mutation and cleanup before dependent reads;
+> synchronous resize dispatch alone is not a completed measurement.
+
+> **A BOUNDARY FAULT MUST REMOVE EFFECTIVE ANCESTOR PROTECTION** (U1, 2026-09-06).
+> A rail nested inside a protected dock still retains dismissal protection after its own marker
+> is removed. Prove the rail's own protection with its ancestor marker removed, then remove both
+> and prove native dismissal at the same measured gap. Read the effective ancestor chain before
+> each press; restore exact attribute presence/bytes and re-prove protection. Preserve the first
+> failure through restoration and causal-stop on either failure. Hidden-copy inventories include
+> intentionally retained hidden controls; assert their actual identities and invisibility.
+
+> **NAME THE PENDING EXPRESSION BEFORE DISPATCH; CLEANUP DOES NOT REPLACE A FAILURE**
+> (U1, 2026-09-06). A Runtime.evaluate timeout names a protocol method, not the awaited
+> expression. Persist its invocation ID, exact expression/hash, debugger-ready and dispatch
+> phases before awaiting. Retain browser-side font-ready/first-frame/second-frame timestamps
+> inside the original single promise, without another wait or deadline. An answered cleanup
+> read cannot erase the failed invocation or authorize resuming the chain. Require the named
+> completed frame receipt independently of the resolved promise; a nonrecurrence is not repair.
+>
+> **CDP NATIVE KEY CODES ARE PLATFORM-SPECIFIC** (U1, 2026-09-06). Do not pass Windows key
+> numbers as nativeVirtualKeyCode on macOS. Follow the existing Slice renderer-key helper:
+> semantic key/code, Windows VK and renderer text when required. Retain exact trusted down/up
+> edges and reject extra, unowned or repeating keys. A correct panel outcome can coexist with
+> an invalid instrument trace; keep that red and correct the helper on new committed source.
+
+> **AUTO-RESUME A DIAGNOSTIC PAUSE FROM THE SESSION EVENT HANDLER** (U1,2026-09-06).
+> A DOM breakpoint suspends the document; Runtime.evaluate cannot recover it. Dispatch resume
+> immediately from the exact-session paused event, retain raw sync/async frames, and drain
+> resume errors before another evaluation or intentional input. Remove the breakpoint before
+> controls/navigation and preserve cleanup failures separately. Calibrate a named async initiator,
+> not merely a non-null stack: an async function after await can still be a synchronous frame.
+> Debugger timing perturbation means a nonrecurrence never repairs a retained product red.
+
+> **MEASURE THE FINAL STATE OF A COALESCED OVERLAY TRANSITION** (U1, 2026-09-06).
+> A same-task open → preference change → close can publish an intermediate header height,
+> then restore the last observed size without another ResizeObserver delivery. Waiting for
+> frames does not repair that stale measurement. The body-class owner must also republish
+> final header geometry. Reproduce the actual transition with no resize delivery, preserve
+> the failed rendered-boundary receipt, and prove observer disposal still stops callbacks.
+
+> **DISTINGUISH NATIVE HIDDEN CHROME FROM AN INJECTED VISIBLE FAULT** (U1, 2026-09-06).
+> Nick restored production's hidden breadcrumb. Preserve the canonical location text for
+> diagnostics, but never call its zero-sized native state a visible-trail PASS. Historical
+> portrait-band/fallback controls must label their injected visible floating state, verify
+> the intended collision, restore exact style presence/bytes, and re-prove the native hidden
+> baseline plus usable roster clearance. Keep the existing72px band and negative-control
+> ledgers; a layout change cannot justify an omitted control or fake visible geometry.
+
+> **REPRODUCE THE PAINTED COLLISION, INCLUDING ITS CONTAINING BLOCK** (U1, 2026-09-06).
+> A transformed dock changes fixed-position child coordinates. A negative control that assigns
+> viewport offsets can miss the panel it claims to obstruct. Translate from measured live
+> rectangles, require the intended overlap, reject it, then restore exact styles and prove the
+> original native hit target again. A coordinate assignment alone is not the collision outcome.
+> Preserve style-attribute presence as well as bytes. U1 found native Edge CSSOM removal
+> returning an empty attribute where none existed, despite jsdom passing. Reproduce such
+> restoration in the actual browser, retain before/after carriers and the failing strategy;
+> do not treat absent and empty as equivalent to turn a control green. U2's native six-case
+> diagnostic showed CSSOM clearing plus repeated removal still retains an empty carrier.
+> Explicitly set the DOM style attribute to empty before removing an originally absent carrier;
+> preserve declared/computed checks and present-empty identity. The failed strategy stays retained.
+> Changing a grid's explicit track count can leave every rectangle unchanged when placed
+> children create implicit tracks. A spacing mutant must alter observed centres or dimensions;
+> a changed CSS declaration alone is not evidence of a broken layout.
+> A transparent native click target may surround a smaller painted icon face. Contrast samples
+> must follow the visible glyph, badge or direct text and their real ancestor backgrounds,
+> while findings and input checks retain the exact native button owner.
+
+> **TOOL UPDATES MUST NOT SPLIT AN EVIDENCE CHAIN** (tool maintenance, 2026-09-06).
+> Hold the shared development-tool lock for the whole foreground render/check chain and for
+> maintenance. Also inspect active tools because older jobs may not use the lock. Version
+> metadata proves inventory only; exercise changed CLI capabilities before use. Preserve failed
+> checks, and parse actual metric formats strictly rather than treating a new suffix as zero.
+> Maintenance runs in the first coding-session preflight, independently of a chat or timer.
+> Complete eligible updates and verification before starting the session's development jobs;
+> reuse its receipt during the session and record busy-tool deferrals without interrupting work.
+
+> **PASSIVE UI HISTORY MUST NOT JOIN AN IN-FLIGHT PRODUCT SNAPSHOT** (U1 review, 2026-09-06).
+> Bioscan and Scout compare their exact pre-await live source; a toast that appends notification
+> history during that await can invalidate a legitimate action. Keep pending notices in a
+> presentation buffer until product settlement. Promote them only through an admitted existing
+> checkpoint; do not introduce a notification debounce that can replace an action's activePersist
+> barrier. Mark read must own an idle writable save path and retain unread state on refusal.
+> A panel refill preserves its exact semantic focus without scrolling or stealing outside focus.
+
+> **A CLOUD-SYNC COPY IS A BACKUP ONLY AFTER FORCED READ-BACK** (Nick, 2026-09-05).
+> Upload/sync indicators and same-disk copies do not establish recoverability. Wait for every
+> selected backup item to report uploaded, evict only the uploaded destination copy, request
+> download, and hash the re-materialized bytes against the immutable source inventory. Preserve
+> the archive/checksum identities, timestamps, actual status results and a scratch-only truncated
+> file rejection. Never evict originals or label a responsive-but-unverified secondary complete.
+> A cloud placeholder cannot count as restored content. Record unavailable status commands and
+> the exact substitute per-file state evidence; do not turn a tool timeout into a success claim.
+
 > **EVIDENCE CODE IS AN EXPLICIT BUILD CONTRACT** (matches code as of 2026-09-04).
 > Default builds and human previews omit diagnostic bindings and destructive fault implementations;
 > only `--mode evidence` opts in. Hiding the public API alone does not prove dead-code elimination.
@@ -2179,6 +2345,16 @@ passed inputs a clean checkout could never receive. A port test needing legacy b
 the unique inline script in tracked `celestial-frontier.html` through one byte-exact helper. Never
 fall back to local `main.js`, trim it, normalize line endings or let two extractors disagree.
 
+**Reaffirmed by Nick, 2026-09-05 after PR #41:** v2 tests read tracked legacy source through
+`port/v2/test-support/tracked-v1-source.ts` (`readTrackedV1Source().script`, imported with the
+existing `.js` module specifier). Never read the gitignored root `main.js` in a v2 test.
+The Batch 4 travel-presentation test passed locally with that bootstrap present but failed
+in Claude's fresh checkout; the helper correction restored portability. Before any hosted
+attempt, verify the candidate suites with root `main.js` absent: preserve/move an existing
+bootstrap aside, or use a clean tracked checkout, and record the exact committed source.
+A local bootstrap must not silently become a test dependency again. This requirement also
+applies when using the existing tracked-input preflight described below.
+
 Before authorizing hosted work, commit the candidate and run `node
 tools/tracked-input-preflight.mjs --profile=develop` from `port/v2` (or the explicit `production`
 profile for `develop` → `main`). It exports only the exact index into an owned
@@ -2508,6 +2684,15 @@ point prevents dismissal, and restoring genuine unmarked sky closes. Deliberatel
 such as Search remain outside until their coexistence policy changes. Delegated document handlers
 must also reject non-`Element` targets before calling `closest`; a type assertion is not a runtime
 guard. True modals remain a separate lifecycle and are not claimed by this boundary law.
+
+A transparent layout wrapper is distinct from a painted interactive tray. U1 source0067512
+moved a passive Objective under the auto-hit #sceneactions wrapper; despite the child's
+pointer-events:none, its parent caught the original phone pinch contact150,400 at A++/mono.
+Keep transparent wrappers pointer-events:none and opt their actual buttons into auto; retain
+the boundary marker in button ancestry. The bottom launcher's painted gaps still own input.
+Prove the passive objective area hits the real canvas, deliberately restore the faulty parent
+hit ownership and observe rejection, restore exactly, then drive the original two-finger
+coordinates and zoom outcome. Moving the gesture away would hide the product regression.
 
 ⚠⚠ **IMMUTABLE AUTHORITY MUST NOT DOUBLE AS A MUTABLE PRESENTATION CACHE.** F2's first
 real-browser ingress attempt reached an accepted galaxy, then failed because the deeply frozen

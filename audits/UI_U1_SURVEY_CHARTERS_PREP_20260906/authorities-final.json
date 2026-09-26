@@ -1,0 +1,86 @@
+{
+  "producerBefore": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "35f8b4d4a386936ede775daba42f6986be1994d72ab5c2c68029a0fcefecba70",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "21fc0f9ec8633b6797b72506efb9da68828f4e372dda1f063b10c963c8ff59c0"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-CXTlH-t_.js",
+        "sha256": "d9344cdb8bf52a904f4bbd6461771e22116a8c2d6ae06b88395b6825aff60fdd"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "8b2d923273c1034d256fe3e44da95a54f58526f0998168a4ba52365d77752b9b"
+      }
+    }
+  },
+  "producerAfter": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "7a67c0db4dc3ad4f3f3caf3a48ad15e61ad2e2d77facc3339975420900b77a51",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "f05093a244281a0f5063c60281a3007d2d52c3aaa6549d92af246b87d445b5ef"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-CXTlH-t_.js",
+        "sha256": "d9344cdb8bf52a904f4bbd6461771e22116a8c2d6ae06b88395b6825aff60fdd"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "3753aed8caa99e84ec2c889354241d50609522d45d257f5607e5acbf8bea1b5b"
+      }
+    }
+  },
+  "measurement": {
+    "schema": "cf-v2-compendium-measurement-authority/v1",
+    "sha256": "4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12",
+    "inputs": {
+      "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
+      "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+      "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
+      "budgetSchema": "9601a25a6193bc19b2b7ab09ff68a819bdc0e87241c041d90f0bfb1d9d02620f",
+      "outcomeContract": "1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692",
+      "collector": "3ce7ed13c57f7feabc2653b9f7ce5eb323bc3305a19646f2cd93af5032d2dc5e",
+      "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+      "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+      "workspaceLock": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606",
+      "package": "cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7",
+      "packageLock": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d",
+      "appPackage": "11dde72861c2a687f5d238a412946956f1ecb4a4bec7adafa6096c9dcc04329d",
+      "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+      "speciesArtBuildGraph": "e591551391f3ed31a494c94d7e1f659633daa460f0571b973bc81cd6888a9c66",
+      "outcomeInventory": "bd4f8a9ef37538b09582c316837dae05b1bc682cf6cb5f6df0fee4a2621929b0"
+    }
+  },
+  "numericCeilingsSha256": "a5f05be521eb127f3e74306bd69538bdb6d3b564875ed921f2c7f3c0904def83",
+  "release": {
+    "old": {
+      "count": 81,
+      "sha256": "44fb08ca154a61074d3b7c7269cb7ca8ccf365450b019a20b3e77569469a2e70"
+    },
+    "next": {
+      "count": 81,
+      "sha256": "bb995e649d578556b6e581af65e672e095337da808961accf59418c1acb944da"
+    }
+  }
+}

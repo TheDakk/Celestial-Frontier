@@ -1,0 +1,77 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "4ff2fad720e1d5734ce95a77c8a401cd8884e24e",
+  "helperSha256": "ae9cafe006642a2aea96206581abb3c4df2bb94ad9b2ae4259092979ceb992ae",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/master.png",
+      "sha256": "d0a777d5186a6787461d795b41b34b8ce4569af1efd10b14f98524fc92ef8cae"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/authoring.json",
+      "sha256": "c761f0e6ba839842da64658080ef0d8743d70a0e3602849a78882bd1cc0b0387"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/subject-source.json",
+      "sha256": "7045ce9b8ff117638dd975e66b2b3f1888750da731412e8f43b0b07a6050d72f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "7263c539c82ea8ac23412f26e35918b11200f5f2b298934b5582d38d1c073f61",
+  "bindingHash": "ff3027d3481efbb17b79c94230a6809ada43ded4378e4153011de78b584fcf4e",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "jaw",
+    "head",
+    "seg0",
+    "seg1",
+    "seg2",
+    "seg3",
+    "seg4",
+    "seg5",
+    "seg6",
+    "seg7",
+    "seg8",
+    "seg9"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/master.png",
+      "sha256": "d0a777d5186a6787461d795b41b34b8ce4569af1efd10b14f98524fc92ef8cae",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/authoring.json",
+      "sha256": "c761f0e6ba839842da64658080ef0d8743d70a0e3602849a78882bd1cc0b0387",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/subject-source.json",
+      "sha256": "7045ce9b8ff117638dd975e66b2b3f1888750da731412e8f43b0b07a6050d72f",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

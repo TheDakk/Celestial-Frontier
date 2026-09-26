@@ -1,0 +1,1 @@
+fit02 four body/wing boundary joins close flat-master cuts but static adds flight12folds and peck1fold; rejected, no native film consumed. Changed fit03 keeps only two shoulder-root continuity joins, permitting flight surfaces independent motion. No solver, gate or limit changes.

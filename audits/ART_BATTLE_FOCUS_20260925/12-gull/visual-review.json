@@ -1,0 +1,22 @@
+{
+  "author": "Codex",
+  "status": "BLOCKED_STATIC_DODGE",
+  "masterSha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9",
+  "reviewed": [
+    "master.png",
+    "six-mask-sheet.png",
+    "native-phone4x-01/turn0-hit-return-end.png",
+    "native-phone4x-01/turn3-hit-idle-90.png",
+    "native-phone4x-02/turn3-hit-idle-90.png"
+  ],
+  "observations": [
+    "Right-facing gull, both webbed feet, two visibly folded narrow wings crossing beyond tail, plain white and shaded grey plumage.",
+    "Generation01 excessive bill hook/padding rejected; corrected master retained.",
+    "Native01 has angular holes at wing shoulder/neck boundaries despite 0/0 runtime refusals.",
+    "Native02 after three named seam joins closes those holes; no numeric rig refusal.",
+    "Static13/14; dodge compression still refuses. Native uses rest contact supports while static uses observed painted supports, so film PASS does not supersede static red.",
+    "Folded wings do not provide an unfolded flight underside. No flight visual acceptance.",
+    "Full stage travel not met: run-up 0.04085631349782292 of stage width.",
+    "No integrated coverage or picker claim; Nick art acceptance pending."
+  ]
+}

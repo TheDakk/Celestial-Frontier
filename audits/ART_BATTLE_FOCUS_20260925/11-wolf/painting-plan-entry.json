@@ -1,0 +1,27 @@
+{
+  "name": "Wolf (canid)",
+  "exemplar": "Wolf",
+  "covers": [
+    "Wolf",
+    "Coyote",
+    "Jackal",
+    "Dingo",
+    "African Wild Dog",
+    "Fox",
+    "Red Fox",
+    "Arctic Fox",
+    "Pampas Fox",
+    "Fennec Fox",
+    "Maned Wolf",
+    "Dog"
+  ],
+  "bodyPlan": "quadruped",
+  "mustPaint": [
+    "erect triangular ears; narrow pointed muzzle",
+    "long legs under a narrow deep chest",
+    "bushy tail carried low (tail 1.35 gives the fox brush, 0.7 the dingo)",
+    "plain unmarked grizzled grey-tan coat",
+    "masks: mottled = African wild dog patchwork"
+  ],
+  "why": "11 misleading and 1 caveat. Foxes and the Maned Wolf stay caveat (lower body or stilt legs). If foxes matter, a Red Fox painting later lifts five of them to good."
+}

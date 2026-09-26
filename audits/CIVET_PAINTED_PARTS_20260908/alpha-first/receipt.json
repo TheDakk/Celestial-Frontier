@@ -1,0 +1,186 @@
+{
+  "schema": "cf-civet-alpha-extraction/v1",
+  "authority": "Nick explicitly authorized ImageMagick alpha extraction",
+  "status": "AWAITING_VISUAL_REVIEW",
+  "method": "Saturated-magenta difference matte with smooth transition; suppress only magenta excess at extracted edges, then extract five nonoverlapping regions. RGB treatment is key-color removal within alpha extraction, not a source recolor.",
+  "regions": [
+    {
+      "name": "body",
+      "rect": "1125x570+0+170"
+    },
+    {
+      "name": "hind-upper",
+      "rect": "205x320+1123+160"
+    },
+    {
+      "name": "fore-upper",
+      "rect": "195x320+1328+160"
+    },
+    {
+      "name": "hind-lower",
+      "rect": "205x330+1100+490"
+    },
+    {
+      "name": "fore-lower",
+      "rect": "210x330+1315+490"
+    }
+  ],
+  "commands": [
+    {
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/atlas-corrected-original.png",
+        "-alpha",
+        "off",
+        "-colorspace",
+        "sRGB",
+        "-fx",
+        "1-(max(0,min(1,(min(r,b)-g-0.15)/0.70)))*(max(0,min(1,(min(r,b)-g-0.15)/0.70)))*(3-2*(max(0,min(1,(min(r,b)-g-0.15)/0.70))))",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/matte.png"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/atlas-corrected-original.png",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/matte.png",
+        "-alpha",
+        "off",
+        "-compose",
+        "CopyOpacity",
+        "-composite",
+        "-channel",
+        "R",
+        "-fx",
+        "(min(r,b)-g)>0.05 ? min(r,g+0.26) : r",
+        "-channel",
+        "B",
+        "-fx",
+        "(min(r,b)-g)>0.05 ? min(b,g) : b",
+        "+channel",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/atlas-alpha.png"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/atlas-alpha.png",
+        "-crop",
+        "1125x570+0+170",
+        "+repage",
+        "-trim",
+        "+repage",
+        "-define",
+        "webp:lossless=true",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/body.webp"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/atlas-alpha.png",
+        "-crop",
+        "205x320+1123+160",
+        "+repage",
+        "-trim",
+        "+repage",
+        "-define",
+        "webp:lossless=true",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/hind-upper.webp"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/atlas-alpha.png",
+        "-crop",
+        "195x320+1328+160",
+        "+repage",
+        "-trim",
+        "+repage",
+        "-define",
+        "webp:lossless=true",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/fore-upper.webp"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/atlas-alpha.png",
+        "-crop",
+        "205x330+1100+490",
+        "+repage",
+        "-trim",
+        "+repage",
+        "-define",
+        "webp:lossless=true",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/hind-lower.webp"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/atlas-alpha.png",
+        "-crop",
+        "210x330+1315+490",
+        "+repage",
+        "-trim",
+        "+repage",
+        "-define",
+        "webp:lossless=true",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/alpha-first/fore-lower.webp"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "files": [
+    {
+      "path": "atlas-alpha.png",
+      "bytes": 1248756,
+      "sha256": "3b7ecd2c3e0f73e9a29d9559d32f0dd653d0afc4de591d49e8ecaf1d4109d944"
+    },
+    {
+      "path": "body.webp",
+      "bytes": 371550,
+      "sha256": "12dcac1d2e73938b6d718765a362b9d413bc4ca173366cec083ec752fc900101"
+    },
+    {
+      "path": "fore-lower.webp",
+      "bytes": 30724,
+      "sha256": "7bf57d0da6cdb82af7d8dfc84f63cf745682bb7db856b17fa8fb6adb443375dc"
+    },
+    {
+      "path": "fore-upper.webp",
+      "bytes": 50180,
+      "sha256": "dc20db2394012aba0a12562cc0633467094e45dbe7bf102a7e6342e390bd91c9"
+    },
+    {
+      "path": "hind-lower.webp",
+      "bytes": 36724,
+      "sha256": "e537c08bae66ed4a2d246ba3137b3af8760b1a70f4db373a90fcfa4571f3c4c1"
+    },
+    {
+      "path": "hind-upper.webp",
+      "bytes": 53452,
+      "sha256": "eb6ce063ae68086c26fc9004330f94b85a188f0f2d07b56823515e264418101c"
+    },
+    {
+      "path": "matte.png",
+      "bytes": 31739,
+      "sha256": "2b4e4b7d2f4c2966f0c71bca6e353eededacf28a242dacdb2fb85733f92b0f7b"
+    }
+  ]
+}

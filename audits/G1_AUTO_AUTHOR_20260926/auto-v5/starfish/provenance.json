@@ -1,0 +1,113 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "starfish",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687",
+ "subjectSourceSha256": "a6ad4b171fe23f5a8892c303d35bdac2c9f11019fcf4a5ccaacb5bc05daf6d3b",
+ "identity": {
+  "name": "Starfish",
+  "family": "radial",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Starfish\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3930800215\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "seed": 3930800215,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "jellyfish",
+  "authoringSha256": "0e07ab71a32223646ed685477a13fce6da9c58339f8c114ae46d4565706bfeb6",
+  "masterSha256": "5c878a70e83b232ef7aa1d716f6deab99626a8292e2a9714d87d945b1187e2ee"
+ },
+ "habitat": {
+  "profileId": "echinoderm",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "a5324249dd55469a76daa1840879a2ac60361cc28733c0e1650a5b8f6874d4f1",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "warty",
+  "source": "species group echinoderm (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0496,
+     "class": "top",
+     "attach": {
+      "x": 217.3,
+      "y": 70.1,
+      "relX": 0.52,
+      "relY": 0.15
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0934,
+     "class": "rear",
+     "attach": {
+      "x": 97.3,
+      "y": 163.1,
+      "relX": 0.22,
+      "relY": 0.39
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0854,
+     "class": "front",
+     "attach": {
+      "x": 332.2,
+      "y": 171.1,
+      "relX": 0.81,
+      "relY": 0.41
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1353,
+     "class": "limb-down",
+     "attach": {
+      "x": 143,
+      "y": 294.4,
+      "relX": 0.33,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.1362,
+     "class": "limb-down",
+     "attach": {
+      "x": 289.1,
+      "y": 304.6,
+      "relX": 0.7,
+      "relY": 0.75
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "jellyfish",
+   "byClass": {
+    "other": 4,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": "not asserted (refused)"
+}

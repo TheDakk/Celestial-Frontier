@@ -1,0 +1,13 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.00012381995229653812,"gap":0.00007162850028754183,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.0005409305413436,"gap":0.00007280469268104763,"exactRest":true,"firstRefusal":null}
+{"id":"approach:hop","status":"PASS","samples":121,"drift":0,"gap":0.00013346128314145551,"exactRest":true,"firstRefusal":null}
+{"id":"melee:kick","status":"PASS","samples":121,"drift":0,"gap":0.0000769983241250323,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0.000011102515099038294,"gap":0.00007699832403043914,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.00008758216531566775,"gap":0.00006893558349226051,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"RED","samples":95,"drift":0.0003944283492490028,"gap":0.00007162850008417265,"exactRest":true,"firstRefusal":{"ms":356.25,"sampleNumber":96,"error":"Error: Contact: hit@356.25 hindFar outside accommodatable reach"}}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.00006940535140879198,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"RED","samples":62,"drift":0.0031209288415018385,"gap":0.00007428140746927641,"exactRest":true,"firstRefusal":{"ms":268.6666666666667,"sampleNumber":63,"error":"Error: Contact: joint limit foreNearAnkle faint@268.6666666666667: -60.08767590440094"}}
+{"id":"victory","status":"PASS","samples":121,"drift":0.000011102515099038294,"gap":0.00007493465577031947,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.000613556318325332,"gap":0.00007435423231393099,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.00016931547870398307,"gap":0.00007280469256766686,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":12,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

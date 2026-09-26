@@ -1,0 +1,181 @@
+{
+ "id": "starfish-1",
+ "standIn": "Starfish",
+ "template": "radial",
+ "accentGroups": [
+  "body"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/starfish/card/master-512.png",
+  "joints": [
+   "bell",
+   "arm0Seg0",
+   "arm0Seg1",
+   "arm0Seg2",
+   "arm4Seg0",
+   "arm4Seg1",
+   "arm4Seg2",
+   "arm2Seg0",
+   "arm2Seg1",
+   "arm2Seg2",
+   "arm3Seg0",
+   "arm3Seg1",
+   "arm3Seg2",
+   "arm1Seg0",
+   "arm1Seg1",
+   "arm1Seg2",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Jellyfish",
+   "group": "cnidarian",
+   "posture": "swimming",
+   "aspect": 0.6,
+   "headFrac": 0.4,
+   "eyes": "hidden",
+   "mustRead": [
+    "translucent domed bell",
+    "long trailing tentacles hanging far below",
+    "frilled oral arms under the centre of the bell"
+   ],
+   "note": "Generic name read as a representative scyphozoan jellyfish. Tentacle length dominates the profile, making it much taller than wide."
+  },
+  {
+   "name": "Sea Urchin",
+   "group": "echinoderm",
+   "posture": "sessile",
+   "aspect": 1,
+   "headFrac": 0,
+   "eyes": "hidden",
+   "mustRead": [
+    "spherical test bristling with long straight spines",
+    "five-part radial pattern under the spines"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sea Cucumber",
+   "group": "echinoderm",
+   "posture": "crawling",
+   "aspect": 4,
+   "headFrac": 0.1,
+   "eyes": "hidden",
+   "mustRead": [
+    "soft sagging sausage body",
+    "ring of branched feeding tentacles at the mouth end",
+    "rows of stubby tube feet along the underside"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sand Dollar",
+   "group": "echinoderm",
+   "posture": "sessile",
+   "aspect": 1,
+   "headFrac": 0,
+   "eyes": "hidden",
+   "mustRead": [
+    "flat circular disc like a coin",
+    "five-petal flower pattern on the upper face",
+    "fine velvety spine fuzz on a living one"
+   ],
+   "note": "Radial and wafer-thin - only reads face-on; a true side profile is a featureless sliver."
+  },
+  {
+   "name": "Sea Anemone",
+   "group": "cnidarian",
+   "posture": "sessile",
+   "aspect": 0.9,
+   "headFrac": 0,
+   "eyes": "hidden",
+   "mustRead": [
+    "squat column trunk fixed to rock by a basal disc",
+    "dense crown of soft waving tentacles",
+    "central mouth in the middle of the tentacle ring"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cold-Water Coral",
+   "group": "cnidarian",
+   "posture": "sessile",
+   "aspect": 1,
+   "headFrac": 0,
+   "eyes": "hidden",
+   "mustRead": [
+    "branching bone-white tree-like colony",
+    "cup-shaped polyps at the branch tips"
+   ],
+   "note": "no algae symbionts, so it is white/pale pink - never the tropical rainbow colours"
+  },
+  {
+   "name": "Brittle Star",
+   "group": "echinoderm",
+   "posture": "sprawling",
+   "aspect": 1,
+   "headFrac": 0.15,
+   "eyes": "hidden",
+   "mustRead": [
+    "tiny central disc",
+    "five snaky whip arms many times longer than the disc is wide"
+   ],
+   "note": "arms are thin and flexible and clearly set off from the disc - not the thick tapering arms of a starfish"
+  },
+  {
+   "name": "Coral",
+   "group": "cnidarian",
+   "posture": "sessile",
+   "aspect": 1.2,
+   "headFrac": 0,
+   "eyes": "hidden",
+   "mustRead": [
+    "branching stony colony",
+    "surface covered in tiny cup-shaped polyps",
+    "rough calcified texture"
+   ],
+   "note": "generic name - drawn as a representative branching stony coral colony"
+  },
+  {
+   "name": "Portuguese Man-of-War",
+   "group": "cnidarian",
+   "posture": "swimming",
+   "aspect": 0.3,
+   "headFrac": 0.3,
+   "eyes": "hidden",
+   "mustRead": [
+    "gas-filled blue-violet float with a crimped sail crest on top",
+    "curtain of extremely long trailing stinging tentacles"
+   ],
+   "note": "not a jellyfish and has no bell - it is a float on the surface with everything hanging beneath, so it is far taller than wide"
+  },
+  {
+   "name": "Comb Jelly",
+   "group": "comb-jelly",
+   "posture": "swimming",
+   "aspect": 0.7,
+   "headFrac": 0,
+   "eyes": "hidden",
+   "mustRead": [
+    "eight vertical rows of beating comb plates shimmering in rainbow light",
+    "transparent oval jelly body with no stinging tentacles"
+   ],
+   "note": "not a jellyfish - no bell and no stinging trailing tentacles, just the eight comb rows"
+  },
+  {
+   "name": "Deep-Water Coral",
+   "group": "cnidarian",
+   "posture": "sessile",
+   "aspect": 1,
+   "headFrac": 0,
+   "eyes": "hidden",
+   "mustRead": [
+    "pale branching thicket with no algal colour",
+    "cup polyps opening at the branch tips"
+   ],
+   "note": "generic name - drawn as a Lophelia-type white branching colony, not a tropical reef head"
+  }
+ ]
+}

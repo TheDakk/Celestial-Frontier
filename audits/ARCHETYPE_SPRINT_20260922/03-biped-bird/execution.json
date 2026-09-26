@@ -1,0 +1,76 @@
+{
+  "id": "archetype-sprint-03-biped-bird-01",
+  "stages": [
+    {
+      "name": "intake",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/intake.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/03-biped-bird",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/fit-01"
+      ],
+      "startedAt": "2026-09-22T04:22:29.675Z",
+      "endedAt": "2026-09-22T04:22:31.496Z",
+      "durationMs": 1819.793709,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "static",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/static-runner.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/fit-01",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/static.json"
+      ],
+      "startedAt": "2026-09-22T04:22:31.497Z",
+      "endedAt": "2026-09-22T04:22:31.944Z",
+      "durationMs": 446.689083,
+      "exitCode": 1,
+      "signal": null
+    },
+    {
+      "name": "native",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/fit-01",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/fit-01",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/native-01"
+      ],
+      "startedAt": "2026-09-22T04:22:31.944Z",
+      "endedAt": "2026-09-22T04:22:33.503Z",
+      "durationMs": 1559.1009159999999,
+      "exitCode": 1,
+      "signal": null
+    },
+    {
+      "name": "sheet",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/review-sheet.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/03-biped-bird"
+      ],
+      "startedAt": "2026-09-22T04:22:33.503Z",
+      "endedAt": "2026-09-22T04:22:33.878Z",
+      "durationMs": 375.4119999999998,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "finish",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/finish-item.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/03-biped-bird",
+        "3"
+      ],
+      "startedAt": "2026-09-22T04:22:33.879Z",
+      "endedAt": "2026-09-22T04:22:33.981Z",
+      "durationMs": 102.91991699999926,
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "noRetry": true
+}

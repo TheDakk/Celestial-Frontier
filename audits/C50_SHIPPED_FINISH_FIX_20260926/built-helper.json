@@ -1,0 +1,7 @@
+{
+  "source": "tools/local-image-generation/creature-finish-math.mjs",
+  "built": "port/v2/apps/game/dist/__local_ai/creature-finish-math.mjs",
+  "bytes": 6231,
+  "sha256": "23a8d08e0ecde69c47fd1da0f0ad72caca68546655008f0efa14ec6189aa6c34",
+  "byteIdentical": true
+}

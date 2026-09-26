@@ -1,0 +1,1 @@
+{"command":"npx tsc --noEmit -p port/v2/apps/game/tsconfig.json","status":"INTERRUPTED_WITHOUT_OUTPUT","exit":130,"reason":"Root npx did not return a compiler result; stopped to use installed locked port/v2 compiler directly. No PASS claimed."}

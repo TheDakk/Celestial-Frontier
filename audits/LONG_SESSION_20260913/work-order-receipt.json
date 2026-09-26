@@ -1,0 +1,8 @@
+{
+  "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/LONG_SESSION_20260913/WORK_ORDER.md",
+  "destination": "audits/LONG_SESSION_20260913/WORK_ORDER.md",
+  "bytes": 6361,
+  "sha256": "48adedb57539b242e7f76b003b14a9021b0bcd422699afb2d601224b46825151",
+  "authority": "User explicitly supplied this document from the sibling worktree; only the attached file was read and copied. No sibling edits or Git operations.",
+  "status": "Retained verbatim; C1 v4.3 wording approval remains pending."
+}

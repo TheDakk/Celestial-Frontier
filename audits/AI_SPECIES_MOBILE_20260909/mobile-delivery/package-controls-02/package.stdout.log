@@ -1,0 +1,18 @@
+Externally bound source package: /private/tmp/cf-mobile-pack-20260909-species-01 SHA 4ed80ae51e216306a548d55e1f980735c08ff25bec6b563e2887cc9e992b7e53
+Control-only package copy retained: /private/tmp/cf-mobile-package-controls-SCUhG2/package
+✔ complete app plus six-reference runtime passes exact manifest, PWA table and both static payload limits (195.361ms)
+✔ same-length runtime change fails, restoring exact bytes passes (108.901292ms)
+✔ runtime/file omission and symlink substitution fail without treating unrelated application files as trusted runtime (121.694083ms)
+✔ unlisted app files, model weights and source maps refuse readiness (277.898125ms)
+✔ unlisted empty directories are rejected and removal restores the same verified package (103.16925ms)
+✔ substituted manifest or promoted physical-device/distribution flags refuse even with fixture digest updated (64.781875ms)
+✔ local static server has exact headers, MIME, initial query route and genuine missing-asset refusal (100.929625ms)
+✔ static server refuses modified bytes after startup and succeeds only after exact restoration (113.24825ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1183.282

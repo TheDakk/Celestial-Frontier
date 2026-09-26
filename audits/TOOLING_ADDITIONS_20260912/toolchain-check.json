@@ -1,0 +1,243 @@
+{
+  "schema": "cf-development-toolchain/v1",
+  "mode": "check",
+  "at": "2026-09-13T03:14:13.010Z",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "status": "PASS",
+  "inventory": [
+    {
+      "kind": "formula",
+      "name": "imagemagick",
+      "installed": true,
+      "version": "7.1.2-31",
+      "prefix": "/opt/homebrew/opt/imagemagick",
+      "realPath": "/opt/homebrew/Cellar/imagemagick/7.1.2-31"
+    },
+    {
+      "kind": "formula",
+      "name": "ffmpeg",
+      "installed": true,
+      "version": "9.0.1_1",
+      "prefix": "/opt/homebrew/opt/ffmpeg",
+      "realPath": "/opt/homebrew/Cellar/ffmpeg/9.0.1_1"
+    },
+    {
+      "kind": "formula",
+      "name": "python@3.12",
+      "installed": true,
+      "version": "3.12.14",
+      "prefix": "/opt/homebrew/opt/python@3.12",
+      "realPath": "/opt/homebrew/Cellar/python@3.12/3.12.14"
+    },
+    {
+      "kind": "formula",
+      "name": "node",
+      "installed": true,
+      "version": "26.8.2",
+      "prefix": "/opt/homebrew/opt/node",
+      "realPath": "/opt/homebrew/Cellar/node/26.8.2"
+    },
+    {
+      "kind": "formula",
+      "name": "gh",
+      "installed": true,
+      "version": "2.100.0",
+      "prefix": "/opt/homebrew/opt/gh",
+      "realPath": "/opt/homebrew/Cellar/gh/2.100.0"
+    },
+    {
+      "kind": "formula",
+      "name": "pngquant",
+      "optional": true,
+      "installed": true,
+      "version": "3.0.3",
+      "executable": "/opt/homebrew/Cellar/pngquant/3.0.3/bin/pngquant",
+      "verification": "--version only; no master optimized"
+    },
+    {
+      "kind": "formula",
+      "name": "oxipng",
+      "optional": true,
+      "installed": true,
+      "version": "10.2.1",
+      "executable": "/opt/homebrew/Cellar/oxipng/10.2.1/bin/oxipng",
+      "verification": "--version only; no master optimized"
+    },
+    {
+      "kind": "cask",
+      "name": "blender",
+      "bundle": "Blender.app",
+      "installed": true,
+      "version": "5.2.1",
+      "bundlePath": "/Applications/Blender.app",
+      "verification": "bundle metadata only; not launched or license-validated"
+    },
+    {
+      "kind": "cask",
+      "name": "inkscape",
+      "bundle": "Inkscape.app",
+      "installed": true,
+      "version": "1.4.4",
+      "bundlePath": "/Applications/Inkscape.app",
+      "verification": "bundle metadata only; not launched or license-validated"
+    },
+    {
+      "kind": "cask",
+      "name": "reaper",
+      "bundle": "REAPER.app",
+      "installed": true,
+      "version": "7.79.0_06dd787u",
+      "bundlePath": "/Applications/REAPER.app",
+      "verification": "bundle metadata only; not launched or license-validated"
+    },
+    {
+      "kind": "cask",
+      "name": "surge-xt",
+      "bundle": "Surge XT.app",
+      "installed": true,
+      "version": "1.3.4",
+      "bundlePath": "/Applications/Surge XT.app",
+      "verification": "bundle metadata only; not launched or license-validated"
+    },
+    {
+      "kind": "npm",
+      "name": "gsap",
+      "workspace": "tools/ui-motion",
+      "installed": true,
+      "version": "3.15.0",
+      "declaredVersion": "3.15.0",
+      "packagePath": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/ui-motion/node_modules/gsap/package.json"
+    }
+  ],
+  "capabilities": [],
+  "scope": "development tools only; no installation, upgrades, GUI launches, license reads, or runtime/workspace pin changes",
+  "homebrew": {
+    "executable": "/opt/homebrew/bin/brew",
+    "prefix": "/opt/homebrew",
+    "version": "Homebrew 6.0.22"
+  },
+  "available": [
+    {
+      "name": "imagemagick",
+      "kind": "formula",
+      "url": "https://formulae.brew.sh/api/formula/imagemagick.json",
+      "latest": "7.1.2-31",
+      "installationVersion": "7.1.2-31",
+      "license": "ImageMagick",
+      "state": "current",
+      "formulaRevision": 0
+    },
+    {
+      "name": "ffmpeg",
+      "kind": "formula",
+      "url": "https://formulae.brew.sh/api/formula/ffmpeg.json",
+      "latest": "9.0.1",
+      "installationVersion": "9.0.1_1",
+      "license": "GPL-3.0-or-later",
+      "state": "current",
+      "formulaRevision": 1
+    },
+    {
+      "name": "python@3.12",
+      "kind": "formula",
+      "url": "https://formulae.brew.sh/api/formula/python%403.12.json",
+      "latest": "3.12.14",
+      "installationVersion": "3.12.14",
+      "license": "Python-2.0",
+      "state": "current",
+      "formulaRevision": 0
+    },
+    {
+      "name": "node",
+      "kind": "formula",
+      "url": "https://formulae.brew.sh/api/formula/node.json",
+      "latest": "26.8.2",
+      "installationVersion": "26.8.2",
+      "license": "MIT",
+      "state": "current",
+      "formulaRevision": 0
+    },
+    {
+      "name": "gh",
+      "kind": "formula",
+      "url": "https://formulae.brew.sh/api/formula/gh.json",
+      "latest": "2.100.0",
+      "installationVersion": "2.100.0",
+      "license": "MIT",
+      "state": "current",
+      "formulaRevision": 0
+    },
+    {
+      "name": "pngquant",
+      "kind": "formula",
+      "url": "https://formulae.brew.sh/api/formula/pngquant.json",
+      "latest": "3.0.3",
+      "installationVersion": "3.0.3",
+      "license": "GPL-3.0-or-later AND HPND AND BSD-2-Clause",
+      "state": "current",
+      "formulaRevision": 0
+    },
+    {
+      "name": "oxipng",
+      "kind": "formula",
+      "url": "https://formulae.brew.sh/api/formula/oxipng.json",
+      "latest": "10.2.1",
+      "installationVersion": "10.2.1",
+      "license": "MIT",
+      "state": "current",
+      "formulaRevision": 0
+    },
+    {
+      "name": "blender",
+      "kind": "cask",
+      "url": "https://formulae.brew.sh/api/cask/blender.json",
+      "latest": "5.2.1",
+      "installationVersion": "5.2.1",
+      "license": null,
+      "state": "current",
+      "formulaRevision": null
+    },
+    {
+      "name": "inkscape",
+      "kind": "cask",
+      "url": "https://formulae.brew.sh/api/cask/inkscape.json",
+      "latest": "1.4.4",
+      "installationVersion": "1.4.4",
+      "license": null,
+      "state": "current",
+      "formulaRevision": null
+    },
+    {
+      "name": "reaper",
+      "kind": "cask",
+      "url": "https://formulae.brew.sh/api/cask/reaper.json",
+      "latest": "7.79",
+      "installationVersion": "7.79",
+      "license": null,
+      "state": "metadata-differs",
+      "formulaRevision": null
+    },
+    {
+      "name": "surge-xt",
+      "kind": "cask",
+      "url": "https://formulae.brew.sh/api/cask/surge-xt.json",
+      "latest": "1.3.4",
+      "installationVersion": "1.3.4",
+      "license": null,
+      "state": "current",
+      "formulaRevision": null
+    },
+    {
+      "name": "gsap",
+      "kind": "npm",
+      "url": "https://registry.npmjs.org/gsap/latest",
+      "latest": "3.15.0",
+      "installationVersion": "3.15.0",
+      "license": "Standard 'no charge' license: https://gsap.com/standard-license.",
+      "state": "current",
+      "formulaRevision": null
+    }
+  ],
+  "warnings": []
+}

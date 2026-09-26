@@ -1,0 +1,9 @@
+{
+  "inheritedFive": "../mask-set-02/tool-receipts.json",
+  "mottled": "../mottled-04/receipt.json",
+  "rejected": [
+    "original set: too broad/filled",
+    "set02 mottled: oval spots",
+    "mottled03: filled continuous patch"
+  ]
+}

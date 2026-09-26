@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/seam-oracle.mjs",
+    "sha256": "8abc80e8ee945004953d68439a5eb7607b956e7d57664375ad89c9543c7bb4ab",
+    "readOnly": true
+  },
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/rig-pose-render.mjs",
+    "sha256": "03e33a18e61ce022b926b020a0c2fb4691df7e54a4c661902b3fb8bd6d19a1db",
+    "readOnly": true
+  },
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/battle2/fixture-rig.ts",
+    "sha256": "1b7ab5afa6fa56ad881e38886778b1ea5ba4ed8377000ddaecc3f25d4f2d8e7c",
+    "readOnly": true
+  },
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/battle2/rig-render.ts",
+    "sha256": "688cb2d33734f0d34bb5914e25464b2236be1f9c7b21fad28ec37145133052a9",
+    "readOnly": true
+  }
+]

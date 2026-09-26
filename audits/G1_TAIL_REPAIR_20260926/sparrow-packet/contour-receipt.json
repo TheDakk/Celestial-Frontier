@@ -1,0 +1,26 @@
+{
+  "partId": "tail",
+  "proximalCut": [
+    [
+      446.4,
+      699.5
+    ],
+    [
+      423.5,
+      768.7
+    ]
+  ],
+  "joint": [
+    158.8,
+    739.8
+  ],
+  "parent": [
+    559.9,
+    887
+  ],
+  "originalPixels": 26156,
+  "candidateAddedPixels": 7610,
+  "rule": "original source alpha behind existing most-proximal transferred edge; original owner pixels seed contour; tracing can reassign boundary pixels; only remainder/unclaimed eligible for growth",
+  "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-v10/sparrow/packet",
+  "masterSha256": "29dd709f2aef49d3675a482f2e9b2c0ea6433bb120353686d4529f4379288c91"
+}

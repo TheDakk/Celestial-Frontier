@@ -1,0 +1,25 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac
+
+ ❯ port/v2/apps/game/src/creature-rig-aim.test.ts (3 tests | 1 failed) 6ms
+   × looks above and below using actual chain pivots, without changing body/appendage action or input 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  port/v2/apps/game/src/creature-rig-aim.test.ts > looks above and below using actual chain pivots, without changing body/appendage action or input
+AssertionError: expected 'needs-body-turn' to be 'aimed' // Object.is equality
+
+Expected: "aimed"
+Received: "needs-body-turn"
+
+ ❯ port/v2/apps/game/src/creature-rig-aim.test.ts:10:20
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 5 passed (6)
+   Start at  00:35:21
+   Duration  237ms (transform 50ms, setup 0ms, import 198ms, tests 10ms, environment 0ms)
+

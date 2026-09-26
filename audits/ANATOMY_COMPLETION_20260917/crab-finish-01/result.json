@@ -1,0 +1,2500 @@
+{
+  "schema": "cf.creature-finish-run.v1",
+  "status": "PASS",
+  "startedAt": "2026-09-20T02:08:31.797Z",
+  "head": "8b901e6c8a94ed5b45b62f341e08200fefeb37f7",
+  "dirtyDiagnostic": false,
+  "subjects": [
+    {
+      "id": "crab",
+      "fit": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab",
+      "master": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/crab-master.png",
+      "masterSha256": "dd419ae94d47663e22cc7ca598247d5c2d539b78dff24bb2b881bf16ecae5655",
+      "width": 880,
+      "height": 880,
+      "padded": {
+        "width": 880,
+        "height": 880
+      },
+      "recordRecipeHash": "0d2a7af8811a91ab1524cd22f42b5046eec86aba797493a19f7a7f766f51cf60",
+      "seed": 1484491178,
+      "promptSha256": "e48ddb8b672154ebdd933873b77a6b06bae6ec5c38c147dc9effca74da1aebe1",
+      "promptTokens": 388,
+      "status": "PASS",
+      "finishedSha256": "9b84fdeefb667f3b75226a59f6566ed213f9b4690086e708051f3e22e0ec1c8d",
+      "alpha": {
+        "status": "PASS",
+        "differingAlphaBytes": 0,
+        "changedTransparentPixels": 0,
+        "changedOpaquePixels": 7093
+      },
+      "masking": {
+        "editableTokens": 242,
+        "protectedTokens": 2278,
+        "totalTokens": 2520,
+        "erosionPixels": 4,
+        "threshold": 0.55,
+        "backgroundGrey": 128,
+        "solidAlpha": 250,
+        "crop": {
+          "x": 281,
+          "y": 340,
+          "width": 318,
+          "height": 219
+        },
+        "scale": 3,
+        "workCanvas": {
+          "width": 960,
+          "height": 672
+        },
+        "repaintedPixels": 7115,
+        "masterPixels": 774400
+      },
+      "measurements": [
+        {
+          "name": "finisher",
+          "elapsedMs": 19724.290000021458,
+          "sequence": 400,
+          "tokenCount": 388,
+          "promptSha256": "e48ddb8b672154ebdd933873b77a6b06bae6ec5c38c147dc9effca74da1aebe1",
+          "chatPromptSha256": "8b73de4f867f77717a57c68eedb3786836e19eb835fa7736d51cc2d3b52f7977",
+          "sigmas": [
+            0.3499999940395355,
+            0
+          ]
+        }
+      ],
+      "elapsedMs": 22051.20499998331,
+      "gates": {
+        "alpha": "PASS",
+        "counts": "PASS",
+        "gradient": "PASS",
+        "gradientRatio": 0.9281803070399153
+      },
+      "ssim": 0.9943858811999287
+    },
+    {
+      "id": "coconut-crab",
+      "fit": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab",
+      "master": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/coconut-crab-master.png",
+      "masterSha256": "a0f681a8e44f374407424e5e60b2e5deffb8a23162cfefe3ace96b8cfb4d4832",
+      "width": 880,
+      "height": 880,
+      "padded": {
+        "width": 880,
+        "height": 880
+      },
+      "recordRecipeHash": "e73140997301d696a49373f0f5b2525468bb5d0abe337be566fb04e2e84a7e04",
+      "seed": 4281151498,
+      "promptSha256": "c3faac131a8e2fb8f25cffa860731621fac4f1d035b66ccb98fbbbb8198f1a86",
+      "promptTokens": 391,
+      "status": "PASS",
+      "finishedSha256": "d3349849392af009de26ebd7c549ecb54286b13c1ddc258a2c33138ffd01c06b",
+      "alpha": {
+        "status": "PASS",
+        "differingAlphaBytes": 0,
+        "changedTransparentPixels": 0,
+        "changedOpaquePixels": 16725
+      },
+      "masking": {
+        "editableTokens": 60,
+        "protectedTokens": 552,
+        "totalTokens": 612,
+        "erosionPixels": 4,
+        "threshold": 0.55,
+        "backgroundGrey": 128,
+        "solidAlpha": 250,
+        "crop": {
+          "x": 172,
+          "y": 317,
+          "width": 536,
+          "height": 278
+        },
+        "scale": 1,
+        "workCanvas": {
+          "width": 544,
+          "height": 288
+        },
+        "repaintedPixels": 16735,
+        "masterPixels": 774400
+      },
+      "measurements": [
+        {
+          "name": "finisher",
+          "elapsedMs": 10332.830000042915,
+          "sequence": 400,
+          "tokenCount": 391,
+          "promptSha256": "c3faac131a8e2fb8f25cffa860731621fac4f1d035b66ccb98fbbbb8198f1a86",
+          "chatPromptSha256": "587c9e754845d5488a0c04aa64e9c8403849aa8c1c0398c76bfa3b6f50bb9d46",
+          "sigmas": [
+            0.3499999940395355,
+            0
+          ]
+        }
+      ],
+      "elapsedMs": 10981.580000042915,
+      "gates": {
+        "alpha": "PASS",
+        "counts": "PASS",
+        "gradient": "PASS",
+        "gradientRatio": 0.958773740703484
+      },
+      "ssim": 0.9840675246113645
+    },
+    {
+      "id": "freshwater-crab",
+      "fit": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab",
+      "master": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/freshwater-crab-master.png",
+      "masterSha256": "65cd0220488bbdda7cd220c67a33817c8155e7fec87087692d02279f6df11a57",
+      "width": 880,
+      "height": 880,
+      "padded": {
+        "width": 880,
+        "height": 880
+      },
+      "recordRecipeHash": "ffb9a6786ed27e1cf9fd98d9a653111e2f69f0856bbd5b70ccad71dffca5419f",
+      "seed": 2141152818,
+      "promptSha256": "f1096f47b5754896f9ccb73472ed0a5d475e388a36616c3fac18bf4324a3b6dd",
+      "promptTokens": 394,
+      "status": "PASS",
+      "finishedSha256": "9df9fbc60d685ff291d335f6bc9403f1d12a1007bc2cf63fa3639039b0ab590a",
+      "alpha": {
+        "status": "PASS",
+        "differingAlphaBytes": 0,
+        "changedTransparentPixels": 0,
+        "changedOpaquePixels": 12009
+      },
+      "masking": {
+        "editableTokens": 184,
+        "protectedTokens": 1652,
+        "totalTokens": 1836,
+        "erosionPixels": 4,
+        "threshold": 0.55,
+        "backgroundGrey": 128,
+        "solidAlpha": 250,
+        "crop": {
+          "x": 238,
+          "y": 329,
+          "width": 404,
+          "height": 282
+        },
+        "scale": 2,
+        "workCanvas": {
+          "width": 816,
+          "height": 576
+        },
+        "repaintedPixels": 12012,
+        "masterPixels": 774400
+      },
+      "measurements": [
+        {
+          "name": "finisher",
+          "elapsedMs": 12756.535000026226,
+          "sequence": 400,
+          "tokenCount": 394,
+          "promptSha256": "f1096f47b5754896f9ccb73472ed0a5d475e388a36616c3fac18bf4324a3b6dd",
+          "chatPromptSha256": "1764f8430394ad183d48e992aae5eec097c270181592b3aeb94b3b9a6d40f044",
+          "sigmas": [
+            0.3499999940395355,
+            0
+          ]
+        }
+      ],
+      "elapsedMs": 13999.410000026226,
+      "gates": {
+        "alpha": "PASS",
+        "counts": "PASS",
+        "gradient": "PASS",
+        "gradientRatio": 0.9547836256294921
+      },
+      "ssim": 0.9956144902287372
+    },
+    {
+      "id": "mud-crab",
+      "fit": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab",
+      "master": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/mud-crab-master.png",
+      "masterSha256": "c08d616382e86c4dfa21fd895a25f4eda1dd3ee9efa8ed9751ea978bc9ae3379",
+      "width": 880,
+      "height": 880,
+      "padded": {
+        "width": 880,
+        "height": 880
+      },
+      "recordRecipeHash": "cc71ff2d73f5482f16278a77a2bbff2d7e4d0888fb88883b57b21a5822f0cd35",
+      "seed": 3880536292,
+      "promptSha256": "66369ae13a8a7ebe861a1cabdb356656822830100bfb6ac691ecece2e993804b",
+      "promptTokens": 393,
+      "status": "PASS",
+      "finishedSha256": "e49bbdac83e142578e68cc9a2b0cafc8b54e132435647926c0570578e27716cb",
+      "alpha": {
+        "status": "PASS",
+        "differingAlphaBytes": 0,
+        "changedTransparentPixels": 0,
+        "changedOpaquePixels": 11961
+      },
+      "masking": {
+        "editableTokens": 183,
+        "protectedTokens": 1812,
+        "totalTokens": 1995,
+        "erosionPixels": 4,
+        "threshold": 0.55,
+        "backgroundGrey": 128,
+        "solidAlpha": 250,
+        "crop": {
+          "x": 213,
+          "y": 332,
+          "width": 454,
+          "height": 279
+        },
+        "scale": 2,
+        "workCanvas": {
+          "width": 912,
+          "height": 560
+        },
+        "repaintedPixels": 12037,
+        "masterPixels": 774400
+      },
+      "measurements": [
+        {
+          "name": "finisher",
+          "elapsedMs": 13887.025000035763,
+          "sequence": 400,
+          "tokenCount": 393,
+          "promptSha256": "66369ae13a8a7ebe861a1cabdb356656822830100bfb6ac691ecece2e993804b",
+          "chatPromptSha256": "4273a1a48c8f1b87eb7cbb7c90abadf80b921c0265c56ac71ecafa84f9742558",
+          "sigmas": [
+            0.3499999940395355,
+            0
+          ]
+        }
+      ],
+      "elapsedMs": 15272.615000009537,
+      "gates": {
+        "alpha": "PASS",
+        "counts": "PASS",
+        "gradient": "PASS",
+        "gradientRatio": 0.9380256320896377
+      },
+      "ssim": 0.9963775722547997
+    },
+    {
+      "id": "vent-crab",
+      "fit": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab",
+      "master": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/vent-crab-master.png",
+      "masterSha256": "148bb4b6e0c937a43c5f822f561f1e76c44acdf55235ffe427867a3f831a363c",
+      "width": 880,
+      "height": 880,
+      "padded": {
+        "width": 880,
+        "height": 880
+      },
+      "recordRecipeHash": "adf835a7d5bc793f550dc953397084cf0b3ee9dba80325d8180856502e099089",
+      "seed": 1684449889,
+      "promptSha256": "28e26ffb51b06b6bfddf40ff3cd448d77b8a2919d6987ad61d358029e3076b15",
+      "promptTokens": 392,
+      "status": "PASS",
+      "finishedSha256": "d6b076b06184f1436cecd49d74a681cbf797ad9b754e72a03c67383faf82d2f7",
+      "alpha": {
+        "status": "PASS",
+        "differingAlphaBytes": 0,
+        "changedTransparentPixels": 0,
+        "changedOpaquePixels": 6272
+      },
+      "masking": {
+        "editableTokens": 99,
+        "protectedTokens": 1881,
+        "totalTokens": 1980,
+        "erosionPixels": 4,
+        "threshold": 0.55,
+        "backgroundGrey": 128,
+        "solidAlpha": 250,
+        "crop": {
+          "x": 200,
+          "y": 348,
+          "width": 480,
+          "height": 263
+        },
+        "scale": 2,
+        "workCanvas": {
+          "width": 960,
+          "height": 528
+        },
+        "repaintedPixels": 6416,
+        "masterPixels": 774400
+      },
+      "measurements": [
+        {
+          "name": "finisher",
+          "elapsedMs": 13677.024999976158,
+          "sequence": 400,
+          "tokenCount": 392,
+          "promptSha256": "28e26ffb51b06b6bfddf40ff3cd448d77b8a2919d6987ad61d358029e3076b15",
+          "chatPromptSha256": "166f8ccbc05cc418593c4b8ae86e4f3b990ebe3ff8da4644286edde83bfcd7d1",
+          "sigmas": [
+            0.3499999940395355,
+            0
+          ]
+        }
+      ],
+      "elapsedMs": 15027.094999969006,
+      "gates": {
+        "alpha": "PASS",
+        "counts": "PASS",
+        "gradient": "PASS",
+        "gradientRatio": 0.9969708548151238
+      },
+      "ssim": 0.9972871167802645
+    }
+  ],
+  "sources": [
+    {
+      "url": "/recipes.json",
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/recipes.json",
+      "bytes": 13126,
+      "sha256": "2799d8b853038bb26d9f21eab0b39f02d5177929ee62b0ab0d01d810bed5466b"
+    },
+    {
+      "url": "/creature-finish-client.mjs",
+      "file": "tools/local-image-generation/creature-finish-client.mjs",
+      "bytes": 2187,
+      "sha256": "f879429f4ab0bc29c71e420ac2bfb034f54e2031102c704cd17abe11d35644bc"
+    },
+    {
+      "url": "/stage-worker.mjs",
+      "file": "tools/local-image-generation/creature-stage-worker.mjs",
+      "bytes": 1165,
+      "sha256": "009f4e49a9f30e7b564304a9f591721fe1bb6519e0578f3ef585709adf86653e"
+    },
+    {
+      "url": "/kit-worker-engine.mjs",
+      "file": "tools/local-image-generation/kit-worker-engine.mjs",
+      "bytes": 20834,
+      "sha256": "42c30ab4de278644287198e0af452da1f6f1a7f2ff304ff4d65ca690650f7942"
+    },
+    {
+      "url": "/kit-worker-expansion.mjs",
+      "file": "tools/local-image-generation/kit-worker-expansion.mjs",
+      "bytes": 3925,
+      "sha256": "35adfcf3a4bbcd81229e0ec56a14f21e003b20ead43c18eb698da94987caef32"
+    },
+    {
+      "url": "/kit-engine-math.mjs",
+      "file": "tools/local-image-generation/kit-engine-math.mjs",
+      "bytes": 8998,
+      "sha256": "48ea6f787bb4eac6a6d018fd84eeba9e1595077b0c612a2c4fbe303f19f63d8f"
+    },
+    {
+      "url": "/kit-contact-math.mjs",
+      "file": "tools/local-image-generation/kit-contact-math.mjs",
+      "bytes": 10264,
+      "sha256": "d0b1f6806fcfaf40cb89ff19ea8cd044e70774d70cc066cba432c7a902df5db7"
+    },
+    {
+      "url": "/kit-weather-math.mjs",
+      "file": "tools/local-image-generation/kit-weather-math.mjs",
+      "bytes": 4434,
+      "sha256": "abd3202a2da4cf242f8f031b9a7dd1038e192aed0c28969b3c470780e11f8fbd"
+    },
+    {
+      "url": "/pipeline-math.mjs",
+      "file": "tools/local-image-generation/pipeline-math.mjs",
+      "bytes": 10225,
+      "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5"
+    },
+    {
+      "url": "/gpu-profile.mjs",
+      "file": "tools/local-image-generation/gpu-profile.mjs",
+      "bytes": 9725,
+      "sha256": "4a02596d6a885a88b894c4a285bd93be07437e856107c34489231c7191d2dbf1"
+    },
+    {
+      "url": "/denoiser-shapes.mjs",
+      "file": "tools/local-image-generation/denoiser-shapes.mjs",
+      "bytes": 2370,
+      "sha256": "c66850a4d3564e6336a2d5891152c2120d2847dcef87782d5197aae102e8f6d6"
+    },
+    {
+      "url": "/browser-variant-plan.json",
+      "file": "tools/local-image-generation/browser-variant-plan.json",
+      "bytes": 142918,
+      "sha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81"
+    },
+    {
+      "url": "/inputs/coconut-crab.rgba",
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/inputs/coconut-crab.rgba",
+      "bytes": 3097600,
+      "sha256": "ad8b213e556db676fc9038127739ce0390b6f246f79dc3fe31d11411c8a0df70"
+    },
+    {
+      "url": "/inputs/crab.rgba",
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/inputs/crab.rgba",
+      "bytes": 3097600,
+      "sha256": "2783e2114a5cc0ed6a9e61064becd542bd82c6966a7c32904397cb34a8a5c015"
+    },
+    {
+      "url": "/inputs/freshwater-crab.rgba",
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/inputs/freshwater-crab.rgba",
+      "bytes": 3097600,
+      "sha256": "3e8f2219f77d32651815913b97c42a1eddb2c7c3a60626628c0436b308cb810b"
+    },
+    {
+      "url": "/inputs/mud-crab.rgba",
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/inputs/mud-crab.rgba",
+      "bytes": 3097600,
+      "sha256": "9b522d27202eab2b88afa80b551db02d1779d2a5b84ad5e6bb42d6e8106e9c0f"
+    },
+    {
+      "url": "/inputs/vent-crab.rgba",
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/inputs/vent-crab.rgba",
+      "bytes": 3097600,
+      "sha256": "2b93bf65dac9bcde91036b018f9b1f074eeaa787887b2c925badc2705eaa4f36"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/creature-finish-client.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/stage-worker.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/favicon.ico",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-engine-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-worker-engine.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/recipes.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/pipeline-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-worker-expansion.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-weather-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-contact-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_encoder.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_encoder.onnx.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4-00000.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4-00001.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/browser-variant-plan.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981239808-981245951"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981252096-981255167"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=963477504-963846143"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971956224-972140543"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972140544-972287999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978038784-978112511"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972288000-972435455"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978112512-978186239"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972435456-972582911"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978186240-978259967"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972582912-972730367"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978259968-978333695"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972730368-972877823"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978333696-978407423"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972877824-973025279"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978407424-978481151"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973025280-973172735"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978481152-978554879"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973172736-973320191"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978554880-978628607"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=919928832-920813567"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=953843712-954286079"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=954286080-954728447"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969744384-969965567"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=920813568-921698303"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=954728448-955170815"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=955170816-955613183"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969965568-970186751"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973320192-973467647"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978628608-978702335"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973467648-973615103"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978702336-978776063"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973615104-973762559"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978776064-978849791"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973762560-973910015"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978849792-978923519"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973910016-974057471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978923520-978997247"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974057472-974204927"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978997248-979070975"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974204928-974352383"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979070976-979144703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974352384-974499839"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979144704-979218431"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=921698304-922583039"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=955613184-956055551"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=956055552-956497919"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970186752-970407935"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=922583040-923467775"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=956497920-956940287"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=956940288-957382655"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970407936-970629119"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974499840-974647295"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979218432-979292159"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974647296-974794751"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979292160-979365887"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974794752-974942207"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979365888-979439615"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974942208-975089663"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979439616-979513343"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975089664-975237119"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979513344-979587071"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975237120-975384575"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979587072-979660799"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975384576-975532031"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979660800-979734527"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975532032-975679487"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979734528-979808255"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=923467776-924352511"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=957382656-957825023"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=957825024-958267391"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970629120-970850303"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=924352512-925237247"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=958267392-958709759"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=958709760-959152127"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970850304-971071487"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975679488-975826943"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979808256-979881983"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975826944-975974399"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979881984-979955711"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975974400-976121855"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979955712-980029439"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976121856-976269311"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980029440-980103167"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976269312-976416767"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980103168-980176895"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976416768-976564223"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980176896-980250623"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976564224-976711679"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980250624-980324351"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976711680-976859135"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980324352-980398079"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=925237248-926121983"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=959152128-959594495"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=959594496-960036863"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971071488-971292671"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=926121984-927006719"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=960036864-960479231"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=960479232-960921599"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971292672-971513855"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976859136-977006591"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980398080-980471807"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977006592-977154047"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980471808-980545535"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977154048-977301503"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980545536-980619263"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977301504-977448959"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980619264-980692991"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977448960-977596415"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980692992-980766719"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977596416-977743871"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980766720-980840447"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977743872-977891327"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980840448-980914175"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977891328-978038783"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980914176-980987903"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=927006720-927891455"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=960921600-961363967"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=961363968-961806335"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971513856-971735039"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=927891456-928776191"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=961806336-962248703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=962248704-962691071"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971735040-971956223"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=893386752-894713855"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=928776192-929439743"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=942047232-942637055"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=963846144-964141055"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=894713856-896040959"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=929439744-930103295"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=942637056-943226879"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=964141056-964435967"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=896040960-897368063"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=930103296-930766847"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=943226880-943816703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=964435968-964730879"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=897368064-898695167"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=930766848-931430399"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=943816704-944406527"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=964730880-965025791"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=898695168-900022271"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=931430400-932093951"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=944406528-944996351"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965025792-965320703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=900022272-901349375"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=932093952-932757503"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=944996352-945586175"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965320704-965615615"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=901349376-902676479"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=932757504-933421055"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=945586176-946175999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965615616-965910527"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=902676480-904003583"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=933421056-934084607"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=946176000-946765823"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965910528-966205439"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=904003584-905330687"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=934084608-934748159"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=946765824-947355647"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=966205440-966500351"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=905330688-906657791"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=934748160-935411711"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=947355648-947945471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=966500352-966795263"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=906657792-907984895"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=935411712-936075263"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=947945472-948535295"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=966795264-967090175"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=907984896-909311999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=936075264-936738815"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=948535296-949125119"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967090176-967385087"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=909312000-910639103"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=936738816-937402367"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=949125120-949714943"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967385088-967679999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=910639104-911966207"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=937402368-938065919"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=949714944-950304767"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967680000-967974911"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=911966208-913293311"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=938065920-938729471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=950304768-950894591"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967974912-968269823"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=913293312-914620415"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=938729472-939393023"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=950894592-951484415"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=968269824-968564735"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=914620416-915947519"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=939393024-940056575"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=951484416-952074239"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=968564736-968859647"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=915947520-917274623"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=940056576-940720127"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=952074240-952664063"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=968859648-969154559"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=917274624-918601727"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=940720128-941383679"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=952664064-953253887"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969154560-969449471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=918601728-919928831"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=941383680-942047231"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=953253888-953843711"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969449472-969744383"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981245952-981252095"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981255168-981258239"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00000.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00001.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_decoder.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_decoder.onnx.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/crab.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/tokenizer/tokenizer.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/tokenizer/tokenizer_config.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/coconut-crab.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/freshwater-crab.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/mud-crab.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/vent-crab.rgba",
+      "range": null
+    }
+  ],
+  "events": [],
+  "qualityAccepted": false,
+  "model": {
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef"
+  },
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "modelVerification": {
+    "schema": "cf.local-image-download-receipt.v1",
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "8b79b92782d198497cd02149eda5df17f278a34d60795084755b8d66bd8dd74e",
+    "startedAt": "2026-09-20T02:08:32.207Z",
+    "finishedAt": "2026-09-20T02:08:35.409Z",
+    "status": "complete",
+    "fileCount": 21,
+    "totalBytes": 6691028208,
+    "timeoutMs": 600000,
+    "verifyOnly": true,
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 7792,
+        "sha256": "4cfe7c534c2f259155b0ec282168bdffeb11241899fa48b4d22f7bda1483f26f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00000.data",
+        "bytes": 1599733760,
+        "sha256": "ed37b81331f4eda3bc150448f2d360b4e42951c57dcb9874ec8d0c7c78fa6f6d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00001.data",
+        "bytes": 594170880,
+        "sha256": "89040c34be052e09698afad17bfea3e1158306369612ae347655dfbd4cfa0f3f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.manifest.json",
+        "bytes": 285,
+        "sha256": "fd22d7819467151ead49d2f25b0d576bcb65134111e5219c264cc605cb62e5b7",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.onnx",
+        "bytes": 5341471,
+        "sha256": "e1670f1d203cf2e5cadecce4b2c13d436eefa228a66b7bc6bc629074e9dc0a1b",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/added_tokens.json",
+        "bytes": 707,
+        "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/chat_template.jinja",
+        "bytes": 4168,
+        "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/merges.txt",
+        "bytes": 1671853,
+        "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/special_tokens_map.json",
+        "bytes": 613,
+        "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer.json",
+        "bytes": 11422654,
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer_config.json",
+        "bytes": 5404,
+        "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/vocab.json",
+        "bytes": 2776833,
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00000.data",
+        "bytes": 1585446912,
+        "sha256": "80aa4b75cdab0395f4374c51eecb59e005a6f81b3e573dddd9826a865bcd11be",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00001.data",
+        "bytes": 1566572544,
+        "sha256": "32576185e1f0ab3937141b0c57acad1f37f298c5e7951b3367096c129e5eca28",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00002.data",
+        "bytes": 981258240,
+        "sha256": "5062b615c62206a2dad22ce01fec6f674b0421336179cadec93fec77d1b2b455",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.manifest.json",
+        "bytes": 368,
+        "sha256": "9cf98a614ffe690a297a286b11642b0611f67f64e80edaaf592645f32e727f29",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.onnx",
+        "bytes": 4991601,
+        "sha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx",
+        "bytes": 760826,
+        "sha256": "05f3f6de75b760d5f3b6cbd6efa40ddc8bb7bc4dad58c1dabc85e96383871a7d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx.data",
+        "bytes": 198508544,
+        "sha256": "357f7da253bfb9e3d5762a4f64fd126eae53b8b79466b7da2da2784d5fce89ae",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx",
+        "bytes": 596081,
+        "sha256": "f7cc93e70cc3a9555cb7bf1b02d2eaab83d706cf0a4ddf6da86dffb56daf05f9",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx.data",
+        "bytes": 137756672,
+        "sha256": "9ac7e0847f5b1a6a077ad38688042a53bc004e986d15dc8c0e37a962aad68671",
+        "disposition": "verified-reused"
+      }
+    ],
+    "failure": null
+  },
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.48",
+    "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.7",
+    "protocol_version": "1.3"
+  },
+  "browserPid": 85434,
+  "page": {
+    "status": "complete",
+    "error": null,
+    "events": [
+      {
+        "type": "progress",
+        "phase": "finisher-start",
+        "editableTokens": 183,
+        "atMs": 54630.810000002384,
+        "sequence": 296
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "text",
+        "atMs": 54633.375,
+        "sequence": 297
+      },
+      {
+        "type": "progress",
+        "phase": "inference-start",
+        "stage": "text",
+        "outputShape": [
+          1,
+          400,
+          7680
+        ],
+        "atMs": 54633.38500005007,
+        "sequence": 298
+      },
+      {
+        "type": "progress",
+        "phase": "inference-complete",
+        "stage": "text",
+        "elapsedMs": 4701.405000030994,
+        "atMs": 59334.825000047684,
+        "sequence": 299
+      },
+      {
+        "type": "progress",
+        "phase": "readback-complete",
+        "stage": "text",
+        "atMs": 59334.875,
+        "sequence": 300
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "denoise",
+        "atMs": 59374.25499999523,
+        "sequence": 301
+      },
+      {
+        "type": "progress",
+        "phase": "inference-start",
+        "stage": "denoise",
+        "outputShape": [
+          1,
+          1995,
+          128
+        ],
+        "atMs": 59374.29500001669,
+        "sequence": 302
+      },
+      {
+        "type": "progress",
+        "phase": "inference-complete",
+        "stage": "denoise",
+        "elapsedMs": 6344.469999969006,
+        "atMs": 65718.84000003338,
+        "sequence": 303
+      },
+      {
+        "type": "progress",
+        "phase": "readback-complete",
+        "stage": "denoise",
+        "atMs": 65718.88500005007,
+        "sequence": 304
+      },
+      {
+        "type": "progress",
+        "phase": "step",
+        "step": 1,
+        "steps": 1,
+        "imageTokens": 1995,
+        "textTokens": 400,
+        "atMs": 65731.94500005245,
+        "sequence": 305
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "decode",
+        "atMs": 65732.72500002384,
+        "sequence": 306
+      },
+      {
+        "type": "progress",
+        "phase": "inference-start",
+        "stage": "decode",
+        "outputShape": [
+          1,
+          3,
+          560,
+          912
+        ],
+        "atMs": 65732.7350000143,
+        "sequence": 307
+      },
+      {
+        "type": "progress",
+        "phase": "inference-complete",
+        "stage": "decode",
+        "elapsedMs": 2738.789999961853,
+        "atMs": 68471.655000031,
+        "sequence": 308
+      },
+      {
+        "type": "progress",
+        "phase": "readback-complete",
+        "stage": "decode",
+        "atMs": 68471.75499999523,
+        "sequence": 309
+      },
+      {
+        "type": "complete",
+        "creatureId": "mud-crab",
+        "elapsedMs": 15272.615000009537,
+        "atMs": 68518.21000003815,
+        "sequence": 310
+      },
+      {
+        "phase": "creature-start",
+        "creatureId": "vent-crab",
+        "atMs": 68518.24500000477,
+        "sequence": 311
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "encode",
+        "atMs": 68519.5150000453,
+        "sequence": 312
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "text",
+        "atMs": 68519.530000031,
+        "sequence": 313
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "denoise",
+        "atMs": 68519.53500002623,
+        "sequence": 314
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "decode",
+        "atMs": 68519.54000002146,
+        "sequence": 315
+      },
+      {
+        "type": "progress",
+        "phase": "creature-mask",
+        "editableTokens": 99,
+        "protectedTokens": 1881,
+        "scale": 2,
+        "workCanvas": {
+          "width": 960,
+          "height": 528
+        },
+        "crop": {
+          "x": 200,
+          "y": 348,
+          "width": 480,
+          "height": 263
+        },
+        "atMs": 68592.81000000238,
+        "sequence": 316
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "encode",
+        "atMs": 68605.38500005007,
+        "sequence": 317
+      },
+      {
+        "type": "progress",
+        "phase": "inference-start",
+        "stage": "encode",
+        "outputShape": [
+          1,
+          128,
+          33,
+          60
+        ],
+        "atMs": 68605.42000001669,
+        "sequence": 318
+      },
+      {
+        "type": "progress",
+        "phase": "inference-complete",
+        "stage": "encode",
+        "elapsedMs": 1260.285000026226,
+        "atMs": 69865.71000003815,
+        "sequence": 319
+      },
+      {
+        "type": "progress",
+        "phase": "readback-complete",
+        "stage": "encode",
+        "atMs": 69865.75,
+        "sequence": 320
+      },
+      {
+        "type": "progress",
+        "phase": "finisher-start",
+        "editableTokens": 99,
+        "atMs": 69868.4850000143,
+        "sequence": 321
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "text",
+        "atMs": 69870.18500000238,
+        "sequence": 322
+      },
+      {
+        "type": "progress",
+        "phase": "inference-start",
+        "stage": "text",
+        "outputShape": [
+          1,
+          400,
+          7680
+        ],
+        "atMs": 69870.19500005245,
+        "sequence": 323
+      },
+      {
+        "type": "progress",
+        "phase": "inference-complete",
+        "stage": "text",
+        "elapsedMs": 4882.400000035763,
+        "atMs": 74752.62999999523,
+        "sequence": 324
+      },
+      {
+        "type": "progress",
+        "phase": "readback-complete",
+        "stage": "text",
+        "atMs": 74752.67500001192,
+        "sequence": 325
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "denoise",
+        "atMs": 74811.80000001192,
+        "sequence": 326
+      },
+      {
+        "type": "progress",
+        "phase": "inference-start",
+        "stage": "denoise",
+        "outputShape": [
+          1,
+          1980,
+          128
+        ],
+        "atMs": 74811.83500003815,
+        "sequence": 327
+      },
+      {
+        "type": "progress",
+        "phase": "inference-complete",
+        "stage": "denoise",
+        "elapsedMs": 5999.424999952316,
+        "atMs": 80811.25499999523,
+        "sequence": 328
+      },
+      {
+        "type": "progress",
+        "phase": "readback-complete",
+        "stage": "denoise",
+        "atMs": 80811.29500001669,
+        "sequence": 329
+      },
+      {
+        "type": "progress",
+        "phase": "step",
+        "step": 1,
+        "steps": 1,
+        "imageTokens": 1980,
+        "textTokens": 400,
+        "atMs": 80822.62000000477,
+        "sequence": 330
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "decode",
+        "atMs": 80823.31000000238,
+        "sequence": 331
+      },
+      {
+        "type": "progress",
+        "phase": "inference-start",
+        "stage": "decode",
+        "outputShape": [
+          1,
+          3,
+          528,
+          960
+        ],
+        "atMs": 80823.31499999762,
+        "sequence": 332
+      },
+      {
+        "type": "progress",
+        "phase": "inference-complete",
+        "stage": "decode",
+        "elapsedMs": 2687.6700000166893,
+        "atMs": 83511.05000001192,
+        "sequence": 333
+      },
+      {
+        "type": "progress",
+        "phase": "readback-complete",
+        "stage": "decode",
+        "atMs": 83511.09000003338,
+        "sequence": 334
+      },
+      {
+        "type": "complete",
+        "creatureId": "vent-crab",
+        "elapsedMs": 15027.094999969006,
+        "atMs": 83545.58000004292,
+        "sequence": 335
+      }
+    ],
+    "results": [
+      {
+        "type": "complete",
+        "requestId": "r0",
+        "schema": "cf.creature-finish-result.v1",
+        "creatureId": "crab",
+        "masking": {
+          "editableTokens": 242,
+          "protectedTokens": 2278,
+          "totalTokens": 2520,
+          "erosionPixels": 4,
+          "threshold": 0.55,
+          "backgroundGrey": 128,
+          "solidAlpha": 250,
+          "crop": {
+            "x": 281,
+            "y": 340,
+            "width": 318,
+            "height": 219
+          },
+          "scale": 3,
+          "workCanvas": {
+            "width": 960,
+            "height": 672
+          },
+          "repaintedPixels": 7115,
+          "masterPixels": 774400
+        },
+        "measurements": [
+          {
+            "name": "finisher",
+            "elapsedMs": 19724.290000021458,
+            "sequence": 400,
+            "tokenCount": 388,
+            "promptSha256": "e48ddb8b672154ebdd933873b77a6b06bae6ec5c38c147dc9effca74da1aebe1",
+            "chatPromptSha256": "8b73de4f867f77717a57c68eedb3786836e19eb835fa7736d51cc2d3b52f7977",
+            "sigmas": [
+              0.3499999940395355,
+              0
+            ]
+          }
+        ],
+        "elapsedMs": 22051.20499998331,
+        "coldPreparationMs": 6137.100000023842,
+        "totalMs": 28188.310000002384,
+        "width": 880,
+        "height": 880,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        },
+        "expansion": {
+          "planSha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81",
+          "sourceBytes": 86833152,
+          "expandedBytes": 347332608,
+          "graphSha256": "cda0a0e0d2778f83236557bcde8d474fed89a2fcbc817ea04f4758d2a064aed8",
+          "operandsSha256": "5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82",
+          "storageWrites": 0
+        },
+        "qualityAccepted": false,
+        "capabilities": {
+          "maxBufferSize": 4294967292,
+          "shaderF16": true,
+          "adapterInfo": {}
+        }
+      },
+      {
+        "type": "complete",
+        "requestId": "r1",
+        "schema": "cf.creature-finish-result.v1",
+        "creatureId": "coconut-crab",
+        "masking": {
+          "editableTokens": 60,
+          "protectedTokens": 552,
+          "totalTokens": 612,
+          "erosionPixels": 4,
+          "threshold": 0.55,
+          "backgroundGrey": 128,
+          "solidAlpha": 250,
+          "crop": {
+            "x": 172,
+            "y": 317,
+            "width": 536,
+            "height": 278
+          },
+          "scale": 1,
+          "workCanvas": {
+            "width": 544,
+            "height": 288
+          },
+          "repaintedPixels": 16735,
+          "masterPixels": 774400
+        },
+        "measurements": [
+          {
+            "name": "finisher",
+            "elapsedMs": 10332.830000042915,
+            "sequence": 400,
+            "tokenCount": 391,
+            "promptSha256": "c3faac131a8e2fb8f25cffa860731621fac4f1d035b66ccb98fbbbb8198f1a86",
+            "chatPromptSha256": "587c9e754845d5488a0c04aa64e9c8403849aa8c1c0398c76bfa3b6f50bb9d46",
+            "sigmas": [
+              0.3499999940395355,
+              0
+            ]
+          }
+        ],
+        "elapsedMs": 10981.580000042915,
+        "coldPreparationMs": 0.02499997615814209,
+        "totalMs": 10981.605000019073,
+        "width": 880,
+        "height": 880,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        },
+        "expansion": {
+          "planSha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81",
+          "sourceBytes": 86833152,
+          "expandedBytes": 347332608,
+          "graphSha256": "cda0a0e0d2778f83236557bcde8d474fed89a2fcbc817ea04f4758d2a064aed8",
+          "operandsSha256": "5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82",
+          "storageWrites": 0
+        },
+        "qualityAccepted": false,
+        "capabilities": {
+          "maxBufferSize": 4294967292,
+          "shaderF16": true,
+          "adapterInfo": {}
+        }
+      },
+      {
+        "type": "complete",
+        "requestId": "r2",
+        "schema": "cf.creature-finish-result.v1",
+        "creatureId": "freshwater-crab",
+        "masking": {
+          "editableTokens": 184,
+          "protectedTokens": 1652,
+          "totalTokens": 1836,
+          "erosionPixels": 4,
+          "threshold": 0.55,
+          "backgroundGrey": 128,
+          "solidAlpha": 250,
+          "crop": {
+            "x": 238,
+            "y": 329,
+            "width": 404,
+            "height": 282
+          },
+          "scale": 2,
+          "workCanvas": {
+            "width": 816,
+            "height": 576
+          },
+          "repaintedPixels": 12012,
+          "masterPixels": 774400
+        },
+        "measurements": [
+          {
+            "name": "finisher",
+            "elapsedMs": 12756.535000026226,
+            "sequence": 400,
+            "tokenCount": 394,
+            "promptSha256": "f1096f47b5754896f9ccb73472ed0a5d475e388a36616c3fac18bf4324a3b6dd",
+            "chatPromptSha256": "1764f8430394ad183d48e992aae5eec097c270181592b3aeb94b3b9a6d40f044",
+            "sigmas": [
+              0.3499999940395355,
+              0
+            ]
+          }
+        ],
+        "elapsedMs": 13999.410000026226,
+        "coldPreparationMs": 0.009999990463256836,
+        "totalMs": 13999.42000001669,
+        "width": 880,
+        "height": 880,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        },
+        "expansion": {
+          "planSha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81",
+          "sourceBytes": 86833152,
+          "expandedBytes": 347332608,
+          "graphSha256": "cda0a0e0d2778f83236557bcde8d474fed89a2fcbc817ea04f4758d2a064aed8",
+          "operandsSha256": "5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82",
+          "storageWrites": 0
+        },
+        "qualityAccepted": false,
+        "capabilities": {
+          "maxBufferSize": 4294967292,
+          "shaderF16": true,
+          "adapterInfo": {}
+        }
+      },
+      {
+        "type": "complete",
+        "requestId": "r3",
+        "schema": "cf.creature-finish-result.v1",
+        "creatureId": "mud-crab",
+        "masking": {
+          "editableTokens": 183,
+          "protectedTokens": 1812,
+          "totalTokens": 1995,
+          "erosionPixels": 4,
+          "threshold": 0.55,
+          "backgroundGrey": 128,
+          "solidAlpha": 250,
+          "crop": {
+            "x": 213,
+            "y": 332,
+            "width": 454,
+            "height": 279
+          },
+          "scale": 2,
+          "workCanvas": {
+            "width": 912,
+            "height": 560
+          },
+          "repaintedPixels": 12037,
+          "masterPixels": 774400
+        },
+        "measurements": [
+          {
+            "name": "finisher",
+            "elapsedMs": 13887.025000035763,
+            "sequence": 400,
+            "tokenCount": 393,
+            "promptSha256": "66369ae13a8a7ebe861a1cabdb356656822830100bfb6ac691ecece2e993804b",
+            "chatPromptSha256": "4273a1a48c8f1b87eb7cbb7c90abadf80b921c0265c56ac71ecafa84f9742558",
+            "sigmas": [
+              0.3499999940395355,
+              0
+            ]
+          }
+        ],
+        "elapsedMs": 15272.615000009537,
+        "coldPreparationMs": 0.019999980926513672,
+        "totalMs": 15272.634999990463,
+        "width": 880,
+        "height": 880,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        },
+        "expansion": {
+          "planSha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81",
+          "sourceBytes": 86833152,
+          "expandedBytes": 347332608,
+          "graphSha256": "cda0a0e0d2778f83236557bcde8d474fed89a2fcbc817ea04f4758d2a064aed8",
+          "operandsSha256": "5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82",
+          "storageWrites": 0
+        },
+        "qualityAccepted": false,
+        "capabilities": {
+          "maxBufferSize": 4294967292,
+          "shaderF16": true,
+          "adapterInfo": {}
+        }
+      },
+      {
+        "type": "complete",
+        "requestId": "r4",
+        "schema": "cf.creature-finish-result.v1",
+        "creatureId": "vent-crab",
+        "masking": {
+          "editableTokens": 99,
+          "protectedTokens": 1881,
+          "totalTokens": 1980,
+          "erosionPixels": 4,
+          "threshold": 0.55,
+          "backgroundGrey": 128,
+          "solidAlpha": 250,
+          "crop": {
+            "x": 200,
+            "y": 348,
+            "width": 480,
+            "height": 263
+          },
+          "scale": 2,
+          "workCanvas": {
+            "width": 960,
+            "height": 528
+          },
+          "repaintedPixels": 6416,
+          "masterPixels": 774400
+        },
+        "measurements": [
+          {
+            "name": "finisher",
+            "elapsedMs": 13677.024999976158,
+            "sequence": 400,
+            "tokenCount": 392,
+            "promptSha256": "28e26ffb51b06b6bfddf40ff3cd448d77b8a2919d6987ad61d358029e3076b15",
+            "chatPromptSha256": "166f8ccbc05cc418593c4b8ae86e4f3b990ebe3ff8da4644286edde83bfcd7d1",
+            "sigmas": [
+              0.3499999940395355,
+              0
+            ]
+          }
+        ],
+        "elapsedMs": 15027.094999969006,
+        "coldPreparationMs": 0.014999985694885254,
+        "totalMs": 15027.1099999547,
+        "width": 880,
+        "height": 880,
+        "sessionCreates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        },
+        "expansion": {
+          "planSha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81",
+          "sourceBytes": 86833152,
+          "expandedBytes": 347332608,
+          "graphSha256": "cda0a0e0d2778f83236557bcde8d474fed89a2fcbc817ea04f4758d2a064aed8",
+          "operandsSha256": "5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82",
+          "storageWrites": 0
+        },
+        "qualityAccepted": false,
+        "capabilities": {
+          "maxBufferSize": 4294967292,
+          "shaderF16": true,
+          "adapterInfo": {}
+        }
+      }
+    ]
+  },
+  "finishedAt": "2026-09-20T02:10:02.037Z"
+}

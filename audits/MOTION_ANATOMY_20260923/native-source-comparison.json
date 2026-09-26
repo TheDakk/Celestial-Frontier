@@ -1,0 +1,290 @@
+[
+  {
+    "rig": "python",
+    "runId": "20260924-motion-after-compact-films-python",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 852,
+    "differences": []
+  },
+  {
+    "rig": "salmon",
+    "runId": "20260924-motion-after-wave-films-salmon",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 851,
+    "differences": [
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+        "measured": "74eaf15c28d322435a5927fa764e2ab3387f6bd06e562e41a5da2bef6beb518a",
+        "current": "ae3566bfea393997f0098cf234c728a6778232ec8a59f51a50c30fe653447e4d"
+      }
+    ]
+  },
+  {
+    "rig": "eagle",
+    "runId": "20260924-motion-after-compact-films-eagle",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 852,
+    "differences": []
+  },
+  {
+    "rig": "beetle",
+    "runId": "20260924-motion-after-compact-films-beetle",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 852,
+    "differences": []
+  },
+  {
+    "rig": "tree-frog",
+    "runId": "20260924-motion-observed-compact-films-tree-frog",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 852,
+    "differences": []
+  },
+  {
+    "rig": "chimpanzee",
+    "runId": "20260924-motion-after-compact-films-chimpanzee",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 852,
+    "differences": []
+  },
+  {
+    "rig": "starfish",
+    "runId": "20260924-motion-after-compact-films-starfish",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 852,
+    "differences": []
+  },
+  {
+    "rig": "tarantula",
+    "runId": "20260924-motion-after-compact-films-tarantula",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 852,
+    "differences": []
+  },
+  {
+    "rig": "octopus",
+    "runId": "20260924-motion-after-compact-films-octopus",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 852,
+    "differences": []
+  },
+  {
+    "rig": "fruit-bat",
+    "runId": "20260924-motion-after-compact-films-fruit-bat",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 852,
+    "differences": []
+  },
+  {
+    "rig": "centipede",
+    "runId": "20260924-motion-after-compact-films-centipede",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 852,
+    "differences": []
+  },
+  {
+    "rig": "civet",
+    "runId": "20260924-motion-after-compact-films-civet",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 859,
+    "differences": []
+  },
+  {
+    "rig": "bear",
+    "runId": "20260924-motion-before-films-bear",
+    "status": "FAIL",
+    "sourceFiles": 850,
+    "differences": [
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-actions.ts",
+        "measured": "375b9e2cd331676ed6b17f5435a55fce9f59693118354ece9a99cabcfb0cd390",
+        "current": "7a94d899910d7b28d1d815923c28e0e36e71d3f7609be8e8d24538780a7c06b7"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timeline.ts",
+        "measured": "082f95111f3cffa61a97fddb1e4500dfca0241c3398403b8fa19c0e1c25cf12e",
+        "current": "01a121371c1c1b5cb032be51a62d0357b98163aad6af4e6ccbc819221b03d352"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+        "measured": "0c5b0eb26fd8f558ebb321ee8d95303587a140cf4b1308fcefcdbea985a7b514",
+        "current": "ae3566bfea393997f0098cf234c728a6778232ec8a59f51a50c30fe653447e4d"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/fixed-attachments.mjs",
+        "measured": "1fe0cdfcc270cb08cd231927668a087c9473d3b2590f13bd1a581eb444f49534",
+        "current": "3be40be2cc13edf7ff73652ec27535da1ba609fda32fed4e17249af9fb1b3bbf"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
+        "measured": "539e95f74d3b7d14adc53358f2420d7be9ef6e7bc76282dec78289ad8e733bec",
+        "current": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+      }
+    ]
+  },
+  {
+    "rig": "crab",
+    "runId": "20260924-motion-before-films-crab",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 857,
+    "differences": [
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timeline.ts",
+        "measured": "082f95111f3cffa61a97fddb1e4500dfca0241c3398403b8fa19c0e1c25cf12e",
+        "current": "01a121371c1c1b5cb032be51a62d0357b98163aad6af4e6ccbc819221b03d352"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-actions.ts",
+        "measured": "375b9e2cd331676ed6b17f5435a55fce9f59693118354ece9a99cabcfb0cd390",
+        "current": "7a94d899910d7b28d1d815923c28e0e36e71d3f7609be8e8d24538780a7c06b7"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+        "measured": "0c5b0eb26fd8f558ebb321ee8d95303587a140cf4b1308fcefcdbea985a7b514",
+        "current": "ae3566bfea393997f0098cf234c728a6778232ec8a59f51a50c30fe653447e4d"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/fixed-attachments.mjs",
+        "measured": "1fe0cdfcc270cb08cd231927668a087c9473d3b2590f13bd1a581eb444f49534",
+        "current": "3be40be2cc13edf7ff73652ec27535da1ba609fda32fed4e17249af9fb1b3bbf"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
+        "measured": "539e95f74d3b7d14adc53358f2420d7be9ef6e7bc76282dec78289ad8e733bec",
+        "current": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+      }
+    ]
+  },
+  {
+    "rig": "freshwater-crab",
+    "runId": "20260924-motion-before-films-freshwater-crab",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 850,
+    "differences": [
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timeline.ts",
+        "measured": "082f95111f3cffa61a97fddb1e4500dfca0241c3398403b8fa19c0e1c25cf12e",
+        "current": "01a121371c1c1b5cb032be51a62d0357b98163aad6af4e6ccbc819221b03d352"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-actions.ts",
+        "measured": "375b9e2cd331676ed6b17f5435a55fce9f59693118354ece9a99cabcfb0cd390",
+        "current": "7a94d899910d7b28d1d815923c28e0e36e71d3f7609be8e8d24538780a7c06b7"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+        "measured": "0c5b0eb26fd8f558ebb321ee8d95303587a140cf4b1308fcefcdbea985a7b514",
+        "current": "ae3566bfea393997f0098cf234c728a6778232ec8a59f51a50c30fe653447e4d"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/fixed-attachments.mjs",
+        "measured": "1fe0cdfcc270cb08cd231927668a087c9473d3b2590f13bd1a581eb444f49534",
+        "current": "3be40be2cc13edf7ff73652ec27535da1ba609fda32fed4e17249af9fb1b3bbf"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
+        "measured": "539e95f74d3b7d14adc53358f2420d7be9ef6e7bc76282dec78289ad8e733bec",
+        "current": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+      }
+    ]
+  },
+  {
+    "rig": "coconut-crab",
+    "runId": "20260924-motion-before-films-coconut-crab",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 850,
+    "differences": [
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timeline.ts",
+        "measured": "082f95111f3cffa61a97fddb1e4500dfca0241c3398403b8fa19c0e1c25cf12e",
+        "current": "01a121371c1c1b5cb032be51a62d0357b98163aad6af4e6ccbc819221b03d352"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-actions.ts",
+        "measured": "375b9e2cd331676ed6b17f5435a55fce9f59693118354ece9a99cabcfb0cd390",
+        "current": "7a94d899910d7b28d1d815923c28e0e36e71d3f7609be8e8d24538780a7c06b7"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+        "measured": "0c5b0eb26fd8f558ebb321ee8d95303587a140cf4b1308fcefcdbea985a7b514",
+        "current": "ae3566bfea393997f0098cf234c728a6778232ec8a59f51a50c30fe653447e4d"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/fixed-attachments.mjs",
+        "measured": "1fe0cdfcc270cb08cd231927668a087c9473d3b2590f13bd1a581eb444f49534",
+        "current": "3be40be2cc13edf7ff73652ec27535da1ba609fda32fed4e17249af9fb1b3bbf"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
+        "measured": "539e95f74d3b7d14adc53358f2420d7be9ef6e7bc76282dec78289ad8e733bec",
+        "current": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+      }
+    ]
+  },
+  {
+    "rig": "vent-crab",
+    "runId": "20260924-motion-before-films-vent-crab",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 850,
+    "differences": [
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timeline.ts",
+        "measured": "082f95111f3cffa61a97fddb1e4500dfca0241c3398403b8fa19c0e1c25cf12e",
+        "current": "01a121371c1c1b5cb032be51a62d0357b98163aad6af4e6ccbc819221b03d352"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-actions.ts",
+        "measured": "375b9e2cd331676ed6b17f5435a55fce9f59693118354ece9a99cabcfb0cd390",
+        "current": "7a94d899910d7b28d1d815923c28e0e36e71d3f7609be8e8d24538780a7c06b7"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/fixed-attachments.mjs",
+        "measured": "1fe0cdfcc270cb08cd231927668a087c9473d3b2590f13bd1a581eb444f49534",
+        "current": "3be40be2cc13edf7ff73652ec27535da1ba609fda32fed4e17249af9fb1b3bbf"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+        "measured": "0c5b0eb26fd8f558ebb321ee8d95303587a140cf4b1308fcefcdbea985a7b514",
+        "current": "ae3566bfea393997f0098cf234c728a6778232ec8a59f51a50c30fe653447e4d"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
+        "measured": "539e95f74d3b7d14adc53358f2420d7be9ef6e7bc76282dec78289ad8e733bec",
+        "current": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+      }
+    ]
+  },
+  {
+    "rig": "mud-crab",
+    "runId": "20260924-motion-before-films-mud-crab",
+    "status": "DIAGNOSTIC_PASS",
+    "sourceFiles": 850,
+    "differences": [
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-actions.ts",
+        "measured": "375b9e2cd331676ed6b17f5435a55fce9f59693118354ece9a99cabcfb0cd390",
+        "current": "7a94d899910d7b28d1d815923c28e0e36e71d3f7609be8e8d24538780a7c06b7"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timeline.ts",
+        "measured": "082f95111f3cffa61a97fddb1e4500dfca0241c3398403b8fa19c0e1c25cf12e",
+        "current": "01a121371c1c1b5cb032be51a62d0357b98163aad6af4e6ccbc819221b03d352"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+        "measured": "0c5b0eb26fd8f558ebb321ee8d95303587a140cf4b1308fcefcdbea985a7b514",
+        "current": "ae3566bfea393997f0098cf234c728a6778232ec8a59f51a50c30fe653447e4d"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/fixed-attachments.mjs",
+        "measured": "1fe0cdfcc270cb08cd231927668a087c9473d3b2590f13bd1a581eb444f49534",
+        "current": "3be40be2cc13edf7ff73652ec27535da1ba609fda32fed4e17249af9fb1b3bbf"
+      },
+      {
+        "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
+        "measured": "539e95f74d3b7d14adc53358f2420d7be9ef6e7bc76282dec78289ad8e733bec",
+        "current": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+      }
+    ]
+  }
+]

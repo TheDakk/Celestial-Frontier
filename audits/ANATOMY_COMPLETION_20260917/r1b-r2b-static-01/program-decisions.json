@@ -1,0 +1,7 @@
+{
+  "readOnlySource": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/MASTER_PROGRAM_20260917.md",
+  "sha256": "abbff984db84057e56553c32c59ffef5e31221e3044822b1a554a5dac348a3d8",
+  "authority": "Nick latest message explicitly approves D1-D4; N1 independent bound 0.08-0.9, N11 travel not blend-weighted, N12 builder-owned loading; R3 additions queued; R4 precedes R9",
+  "sourceState": "Final static-checked correction; native pending signing",
+  "noSync": true
+}

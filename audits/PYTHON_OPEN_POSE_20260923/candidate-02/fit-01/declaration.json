@@ -1,0 +1,75 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "b287ddc58c565fb9cfaae5f8c474177e38ad9dd07b4bf9ad959dbeb9aecf9b41",
+  "cutoutSha256": "d0a777d5186a6787461d795b41b34b8ce4569af1efd10b14f98524fc92ef8cae",
+  "labelsFile": "labels.png",
+  "labelsSha256": "be1fa59cf243258db7107f96991e0cec04085c6547c03fb84c970e89dcf0130c",
+  "parts": [
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "body-segment-0",
+      "joint": "seg0",
+      "layer": "near"
+    },
+    {
+      "id": "body-segment-1",
+      "joint": "seg1",
+      "layer": "near"
+    },
+    {
+      "id": "body-segment-2",
+      "joint": "seg2",
+      "layer": "near"
+    },
+    {
+      "id": "body-segment-3",
+      "joint": "seg3",
+      "layer": "near"
+    },
+    {
+      "id": "body-segment-4",
+      "joint": "seg4",
+      "layer": "near"
+    },
+    {
+      "id": "body-segment-5",
+      "joint": "seg5",
+      "layer": "near"
+    },
+    {
+      "id": "body-segment-6",
+      "joint": "seg6",
+      "layer": "near"
+    },
+    {
+      "id": "body-segment-7",
+      "joint": "seg7",
+      "layer": "near"
+    },
+    {
+      "id": "body-segment-8",
+      "joint": "seg8",
+      "layer": "near"
+    },
+    {
+      "id": "body-segment-9",
+      "joint": "seg9",
+      "layer": "near"
+    },
+    {
+      "id": "neck-root",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "7ffe7544e5d82f2a0903d9157a0a0d8d77742b789c0c2fd45f763a906fbc8404"
+}

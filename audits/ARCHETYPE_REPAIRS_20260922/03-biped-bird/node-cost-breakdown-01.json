@@ -1,0 +1,1731 @@
+{
+  "schema": "cf.node-single-pose-cost-diagnosis/v1",
+  "scope": "Node cold single-pose diagnostic: each of the twelve retained resolved poses executes once, in retained order, using two persistent actual rigs. No warmup loop, repeated pose loop, native film, or CPU certificate. Actual kernel construction retains its existing admission probes. Wrapper clocks contribute small instrumentation overhead. Field hashes and full ARAP stats must equal the saved fit-08 results.",
+  "status": "PASS",
+  "recordRecipeHash": "4e806fc94a2cd6fef82e53e4482531d4795453c68a3e23eea931102ccca07422",
+  "bindingHash": "85cfa087a72df27c32f70ce4e7c7f13b65e8b23c5af7e3eed3fa9fcaf20bea6b",
+  "setup": [
+    {
+      "side": "left",
+      "milliseconds": 50.138125
+    },
+    {
+      "side": "right",
+      "milliseconds": 25.83745900000001
+    }
+  ],
+  "findings": [
+    {
+      "ms": 0,
+      "side": "left",
+      "phase": "ready",
+      "status": "EXACT",
+      "resolvedPoseSha256": "e368308cc3ff08da1156d46c290887a59561d69e9806492ed8b51b313bf167d5",
+      "fieldSha256": "47c7637977e3765ca5fb66b01882b1c86261ff4887c5f4c21243abebb8abc848",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 0.1524370850510826,
+        "rmsTargetErrorPx": 0.008453626232013805,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.9993665148919921,
+        "orientationPasses": 1
+      },
+      "queue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "size": 0
+      },
+      "timing": {
+        "poseMs": 0.2325840000000028,
+        "fieldMs": 0.5751250000000141,
+        "arapMs": 2.6507080000000087,
+        "forwardMs": 0.014707999999984622,
+        "forwardCalls": 1,
+        "activeMs": 0,
+        "activeCalls": 0,
+        "arapOtherMs": 2.636000000000024,
+        "paintPartsMs": 0.32058399999999665,
+        "rigidParentMs": 0.011666999999988548,
+        "shapeAssertionsMs": 0.4310000000000116,
+        "publicationMs": 0.01229200000000219,
+        "paintTotalMs": 0.775542999999999,
+        "completePoseMs": 4.274624999999986
+      },
+      "publishedParts": [
+        {
+          "id": "near-foot",
+          "sha256": "6e4f366cc240dd6612e580573c88fdb535864266d3e760d50c9709355311593c"
+        },
+        {
+          "id": "far-foot",
+          "sha256": "95bab341d5b7b4f09e44b0609f1e230646ba0162308153257bf15a71256e6e95"
+        },
+        {
+          "id": "near-shin",
+          "sha256": "9e2672c5ab2265eb43747d54fb64390b8e4efb8b61dc00073f1bb87b2894d4c9"
+        },
+        {
+          "id": "far-shin",
+          "sha256": "0f370b6566142977fce33150c39d787bf0086b3bbc1b2faaf6cef92ccc700a3b"
+        },
+        {
+          "id": "near-thigh",
+          "sha256": "74f9a4f455627327d0dc2e07468e08b6309e6efed32e66c9855f66c3e91df0d7"
+        },
+        {
+          "id": "far-thigh",
+          "sha256": "68fbbe364fb370ff0cdf60d0a3b9bc389791f5b1241f25581066a4da05d4c262"
+        },
+        {
+          "id": "beak",
+          "sha256": "72884dc91fc0826a84b5751f34e4536a093c986e29fe500396713fde902b3522"
+        },
+        {
+          "id": "head",
+          "sha256": "91eed919886c1038c37896d6d9275016340e7c74c3163aee52da841c8447bacd"
+        },
+        {
+          "id": "neck-upper",
+          "sha256": "7157ebea93ccdb6183133181c2635293cfcac733a2eed0047cf6c8845c98c316"
+        },
+        {
+          "id": "neck-lower",
+          "sha256": "8915d9b318b60f8bc4765ca23b2ee84eefe0b08585454ab714dca75c26e667f5"
+        },
+        {
+          "id": "near-wing-shoulder",
+          "sha256": "a2eea9fcfd1b5dcc175ce5bb356471c8bc02a9af197bf94ff604b74fa50945a8"
+        },
+        {
+          "id": "near-wing-flight",
+          "sha256": "9cae1e161c162f2d0fdcbc9ffebe36df363a4a93a4b39f0cd2ce96d672cb12e7"
+        },
+        {
+          "id": "far-wing-shoulder",
+          "sha256": "aad7c223d9a7baea5b597ad601255d4a6b84c45bdfb7eb8ed28db1be9907411b"
+        },
+        {
+          "id": "far-wing-flight",
+          "sha256": "3c4853745361aeffd297d1851cdadafcf0f3e0c85a781be4855515c98f4bc709"
+        },
+        {
+          "id": "tail",
+          "sha256": "47bf3cb75b5bcb7730e36f7a0b13df8501a84129e9111901bb09ffe595f0f04c"
+        },
+        {
+          "id": "chest",
+          "sha256": "454f12637dfba580338e1e25ebc3ef116830cb644261f02efd37e23e22c80c94"
+        },
+        {
+          "id": "body",
+          "sha256": "ea8eb6f4751c265cd6539a9109f4227cca105e169c0b124b1d39a62b62fe0514"
+        }
+      ]
+    },
+    {
+      "ms": 0,
+      "side": "right",
+      "phase": "ready",
+      "status": "EXACT",
+      "resolvedPoseSha256": "32ae7a692e843d91d8fe2b955295a5f1a23ff02e7dd68e6e99a6cfee180d7f7b",
+      "fieldSha256": "46372a42bb432112d56950c369875836e547d16fa87afdeb46453750a580fe43",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 0.20793670986804572,
+        "rmsTargetErrorPx": 0.011531562958494645,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.9991314586079684,
+        "orientationPasses": 1
+      },
+      "queue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "size": 0
+      },
+      "timing": {
+        "poseMs": 0.04154199999999264,
+        "fieldMs": 0.06333300000000008,
+        "arapMs": 2.141208000000006,
+        "forwardMs": 0.011332999999979165,
+        "forwardCalls": 1,
+        "activeMs": 0,
+        "activeCalls": 0,
+        "arapOtherMs": 2.129875000000027,
+        "paintPartsMs": 0.06295800000000895,
+        "rigidParentMs": 0.0005840000000034706,
+        "shapeAssertionsMs": 0.08341599999999971,
+        "publicationMs": 0.00637499999999136,
+        "paintTotalMs": 0.1533330000000035,
+        "completePoseMs": 2.4071250000000077
+      },
+      "publishedParts": [
+        {
+          "id": "near-foot",
+          "sha256": "6e4f366cc240dd6612e580573c88fdb535864266d3e760d50c9709355311593c"
+        },
+        {
+          "id": "far-foot",
+          "sha256": "95bab341d5b7b4f09e44b0609f1e230646ba0162308153257bf15a71256e6e95"
+        },
+        {
+          "id": "near-shin",
+          "sha256": "d7371c0ae44c8466887f214defaccbbd96693ec5949cc216d3cea3f9c7766ed7"
+        },
+        {
+          "id": "far-shin",
+          "sha256": "0f370b6566142977fce33150c39d787bf0086b3bbc1b2faaf6cef92ccc700a3b"
+        },
+        {
+          "id": "near-thigh",
+          "sha256": "1b922a422762f88d9398853cb357a0852709cfc264ab86e233bae08fd51e0a04"
+        },
+        {
+          "id": "far-thigh",
+          "sha256": "68fbbe364fb370ff0cdf60d0a3b9bc389791f5b1241f25581066a4da05d4c262"
+        },
+        {
+          "id": "beak",
+          "sha256": "72884dc91fc0826a84b5751f34e4536a093c986e29fe500396713fde902b3522"
+        },
+        {
+          "id": "head",
+          "sha256": "91eed919886c1038c37896d6d9275016340e7c74c3163aee52da841c8447bacd"
+        },
+        {
+          "id": "neck-upper",
+          "sha256": "7157ebea93ccdb6183133181c2635293cfcac733a2eed0047cf6c8845c98c316"
+        },
+        {
+          "id": "neck-lower",
+          "sha256": "8915d9b318b60f8bc4765ca23b2ee84eefe0b08585454ab714dca75c26e667f5"
+        },
+        {
+          "id": "near-wing-shoulder",
+          "sha256": "a2eea9fcfd1b5dcc175ce5bb356471c8bc02a9af197bf94ff604b74fa50945a8"
+        },
+        {
+          "id": "near-wing-flight",
+          "sha256": "9cae1e161c162f2d0fdcbc9ffebe36df363a4a93a4b39f0cd2ce96d672cb12e7"
+        },
+        {
+          "id": "far-wing-shoulder",
+          "sha256": "aad7c223d9a7baea5b597ad601255d4a6b84c45bdfb7eb8ed28db1be9907411b"
+        },
+        {
+          "id": "far-wing-flight",
+          "sha256": "3c4853745361aeffd297d1851cdadafcf0f3e0c85a781be4855515c98f4bc709"
+        },
+        {
+          "id": "tail",
+          "sha256": "3216faed3f10110022b88715576bcf943e9437e6e4cc0df817f91af60a4ca970"
+        },
+        {
+          "id": "chest",
+          "sha256": "454f12637dfba580338e1e25ebc3ef116830cb644261f02efd37e23e22c80c94"
+        },
+        {
+          "id": "body",
+          "sha256": "ea8eb6f4751c265cd6539a9109f4227cca105e169c0b124b1d39a62b62fe0514"
+        }
+      ]
+    },
+    {
+      "ms": 1206,
+      "side": "left",
+      "phase": "approach",
+      "status": "EXACT",
+      "resolvedPoseSha256": "3eddc5fd2e2bf5b5e9eea2f1fd69df22680d1a1664948d44472acb4e64047ff7",
+      "fieldSha256": "5b8e28c56c2458e90156f54dfe9ca6d4bd1046a7b044d2904836a0b8fb24a4d6",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 107.69988080796035,
+        "rmsTargetErrorPx": 6.619870077857922,
+        "maximumProjectionPx": 69.23056205762556,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.060275161008011384,
+        "orientationPasses": 67
+      },
+      "queue": {
+        "visits": 14899,
+        "projections": 14899,
+        "stalled": false,
+        "size": 81
+      },
+      "timing": {
+        "poseMs": 0.03570799999999963,
+        "fieldMs": 0.055542000000002645,
+        "arapMs": 6.3974999999999795,
+        "forwardMs": 0.5703749999999843,
+        "forwardCalls": 1,
+        "activeMs": 4.5418750000000045,
+        "activeCalls": 1,
+        "arapOtherMs": 1.2852499999999907,
+        "paintPartsMs": 0.07945900000001416,
+        "rigidParentMs": 0.0008339999999975589,
+        "shapeAssertionsMs": 0.08137500000000841,
+        "publicationMs": 0.0059169999999824086,
+        "paintTotalMs": 0.16758500000000254,
+        "completePoseMs": 6.661124999999998
+      },
+      "publishedParts": [
+        {
+          "id": "near-foot",
+          "sha256": "bd97fff63b9d38ab36dc5e496afe07f3b073af404b68cfaf3a05598c06e5d838"
+        },
+        {
+          "id": "far-foot",
+          "sha256": "352cc2a8ca819c7b3d5290927228d9012c57af168834d78c63ad05939f0ad6d9"
+        },
+        {
+          "id": "near-shin",
+          "sha256": "80e1ebeaad1a01fa784ea9c52c10b50f7b95375af94cea11ee58ecc38d712c8d"
+        },
+        {
+          "id": "far-shin",
+          "sha256": "3d4b41b4e8887ea55792cb0ec7dff99c937aacc4f932948c3368839175a8d733"
+        },
+        {
+          "id": "near-thigh",
+          "sha256": "779083225fcc3d80ef233f41e55e841d1a3dd5075b3e2dff90a62ab966ae73b0"
+        },
+        {
+          "id": "far-thigh",
+          "sha256": "c22885cc8b7b43b2cb0e08ab9607b6d6565c042de2d06ef57bdfc6f80f753d1a"
+        },
+        {
+          "id": "beak",
+          "sha256": "a0acf971da60f9bdf65487f94a089379a5239b77f1c43451f96335ff1788a660"
+        },
+        {
+          "id": "head",
+          "sha256": "db87c256772fbe70dc8bce717bc59e2bdbbca6d1de2deb2c30329003f094e0a3"
+        },
+        {
+          "id": "neck-upper",
+          "sha256": "5a06c4857fdf7fbaf5567904f497f25eb8e72ca3d9f74e1db3a05db4f4c773de"
+        },
+        {
+          "id": "neck-lower",
+          "sha256": "2a9a9ed1ff07c8935d7ac954639d7624f73269ca29ce0f98f514e09fa7f52b3a"
+        },
+        {
+          "id": "near-wing-shoulder",
+          "sha256": "2bb7ff34a81d9b563b99b04044b896bdd22e121b7a3d4090182c4792ee3a7ea3"
+        },
+        {
+          "id": "near-wing-flight",
+          "sha256": "650809a464da527a9cb3e71249cf6b93e34d98662872ffc0bf034ec31bdfd5a5"
+        },
+        {
+          "id": "far-wing-shoulder",
+          "sha256": "906e9c2ff3f08a4d739df2061236a3155d7c28fcaa8962388c44ff2eb0c89fc0"
+        },
+        {
+          "id": "far-wing-flight",
+          "sha256": "ed7a8a26e565e3cfb2678c356b6007f03d4c86797a5b1b44147a64a0c07080d7"
+        },
+        {
+          "id": "tail",
+          "sha256": "28b550bfb82d4028cbc865aeb57cfdf0f00717d2b56a60c19e36567ab354beca"
+        },
+        {
+          "id": "chest",
+          "sha256": "e5372e1160a8a351d719a6b946764dcff68db7974f41756eec315e73e2155caa"
+        },
+        {
+          "id": "body",
+          "sha256": "f9c82fc562095b7a8d677fe69ba7f7494fc07abc2b5d64883e6f725b98640e32"
+        }
+      ]
+    },
+    {
+      "ms": 1206,
+      "side": "right",
+      "phase": "approach",
+      "status": "EXACT",
+      "resolvedPoseSha256": "496787b0b448b537b1454ec1a8f3becb931125420f248d12cf09dbd96198a9d8",
+      "fieldSha256": "cab520b1685ea91f1ed524a874b8511e1f35b93438a3ee79de6f36cbe2f28e1e",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 2.214094083485047,
+        "rmsTargetErrorPx": 0.14843851366875227,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.7153853349539111,
+        "orientationPasses": 1
+      },
+      "queue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "size": 0
+      },
+      "timing": {
+        "poseMs": 0.03895800000000804,
+        "fieldMs": 0.057125000000013415,
+        "arapMs": 0.542207999999988,
+        "forwardMs": 0.013083000000023048,
+        "forwardCalls": 1,
+        "activeMs": 0,
+        "activeCalls": 0,
+        "arapOtherMs": 0.529124999999965,
+        "paintPartsMs": 0.03170800000000895,
+        "rigidParentMs": 0.00016700000000469117,
+        "shapeAssertionsMs": 0.08558400000001143,
+        "publicationMs": 0.002583000000015545,
+        "paintTotalMs": 0.12004200000004062,
+        "completePoseMs": 0.7604579999999999
+      },
+      "publishedParts": [
+        {
+          "id": "near-foot",
+          "sha256": "c690d68f195128d7335fb25f178844b59d9e1fdbc4ccd18d23bf082b0d69717d"
+        },
+        {
+          "id": "far-foot",
+          "sha256": "7e1fabf3a6db19f22d72af321269278fb3cbe7162a80b72b26fb5237a73f424a"
+        },
+        {
+          "id": "near-shin",
+          "sha256": "02e42f3129c100a5629116609217b6d9bfbe60c7d87ea1e98abcee046de3ed36"
+        },
+        {
+          "id": "far-shin",
+          "sha256": "e333d9512539bc411738e007bd2ad3e6ffad9dae9e802d9a7eb29f02f9595373"
+        },
+        {
+          "id": "near-thigh",
+          "sha256": "4ee7e7b024962049788587d00d2b352c9c3546f15663f9c032e06ed499caade8"
+        },
+        {
+          "id": "far-thigh",
+          "sha256": "f07684b30423d0c00eaadd27323ed6d04dcb6844b338ce5831e023a573851066"
+        },
+        {
+          "id": "beak",
+          "sha256": "57aa47aca30e0c3a4fdccffc22bbed1374ce2f94a90af0b139f9f59197bc7dc1"
+        },
+        {
+          "id": "head",
+          "sha256": "56b775580c4eec963d81606a15cfc8ff7c4b49ff15b6ad9744ba187c73509d92"
+        },
+        {
+          "id": "neck-upper",
+          "sha256": "2bcf1b94dfa1da1032c24625bad58995ba39fc8abc5a1374b3ecfe6e180e5dcb"
+        },
+        {
+          "id": "neck-lower",
+          "sha256": "218439cfb37f3e07b1905375b45cf66dd9ec5cf03bff6373aabfc1649957008d"
+        },
+        {
+          "id": "near-wing-shoulder",
+          "sha256": "53e67485a3330b33b4e128bf5f724923adb62e0e68cad6b0da8a0484a774ead2"
+        },
+        {
+          "id": "near-wing-flight",
+          "sha256": "fcbeea2bb63ac07bccf43d84c944700d6ab3259a47202eb91dc3240b32423076"
+        },
+        {
+          "id": "far-wing-shoulder",
+          "sha256": "bbe2481bfc35482c582da6e8b0ce79687132fa3a53e402dca966637702d9e57e"
+        },
+        {
+          "id": "far-wing-flight",
+          "sha256": "cc74389e10446adb953c38c4e11fa92abb6880f069b89f218e94ee2d16ca5f7f"
+        },
+        {
+          "id": "tail",
+          "sha256": "ebce1e5bbba753e843f15f237f75ff93e281c655c8101f8f5b84e6fa7f8fc5e5"
+        },
+        {
+          "id": "chest",
+          "sha256": "ccd0c6b5fb46a42e1c46486e37feccde4ef29af36d7618e97001be5e0a5b9300"
+        },
+        {
+          "id": "body",
+          "sha256": "5462d86017384961a391ad7b72095f7f109ab26657b4759308ed6d556d830d19"
+        }
+      ]
+    },
+    {
+      "ms": 2333.2,
+      "side": "left",
+      "phase": "return",
+      "status": "EXACT",
+      "resolvedPoseSha256": "adba91fe03f661899b3a51288fdf019aecc91255ad5c772498d943c3e8af098b",
+      "fieldSha256": "ca60cccce26b3183cce8d0e92c4067ab972013d04b856622491ddb78814382aa",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 101.4523085591252,
+        "rmsTargetErrorPx": 5.519845540206567,
+        "maximumProjectionPx": 66.2398306700684,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.06056660023660414,
+        "orientationPasses": 65
+      },
+      "queue": {
+        "visits": 1284,
+        "projections": 1284,
+        "stalled": false,
+        "size": 62
+      },
+      "timing": {
+        "poseMs": 0.019958000000002585,
+        "fieldMs": 0.05145899999999415,
+        "arapMs": 1.6292919999999924,
+        "forwardMs": 0.5256249999999909,
+        "forwardCalls": 1,
+        "activeMs": 0.6010829999999885,
+        "activeCalls": 1,
+        "arapOtherMs": 0.502584000000013,
+        "paintPartsMs": 0.029250000000018872,
+        "rigidParentMs": 0.00016700000000469117,
+        "shapeAssertionsMs": 0.029458000000005313,
+        "publicationMs": 0.0015420000000005984,
+        "paintTotalMs": 0.060417000000029475,
+        "completePoseMs": 1.7626669999999933
+      },
+      "publishedParts": [
+        {
+          "id": "near-foot",
+          "sha256": "c98f623edff4425effeeee41fcb3db3f0beef70aef279144c4771df3e8a0db65"
+        },
+        {
+          "id": "far-foot",
+          "sha256": "d81495bc8e0a5dd351d6fab46fda9256a84d7bb5127cc5250f3de259cb362c4e"
+        },
+        {
+          "id": "near-shin",
+          "sha256": "c2698c3fd0be695f6d7e05d5770fa83fa6844271ab2dcec8478b3bd035434ea8"
+        },
+        {
+          "id": "far-shin",
+          "sha256": "dd23ccd793c7095d824469cd294f6a23656b47b6e03183cdbf6695a608574ed7"
+        },
+        {
+          "id": "near-thigh",
+          "sha256": "bbdb149bb9e7c032cd18134cffa8ea7ecc7640e6fe36b2489e0d44740ca94b8d"
+        },
+        {
+          "id": "far-thigh",
+          "sha256": "7e963f1d95d03fe047eac577c19b05054eb2cf2985933b6cd757e7bc5ae8636c"
+        },
+        {
+          "id": "beak",
+          "sha256": "b7514ce7f1df03a32460678d35481f6421e0f6df202ac3476d1458b1d624a9d4"
+        },
+        {
+          "id": "head",
+          "sha256": "fb703ce69be14cca77c3b7e1ae12a3e9241b3fefa32541a4265844e2a90cb4a1"
+        },
+        {
+          "id": "neck-upper",
+          "sha256": "168a5bf54123f735f474b8e28765301982fbb920d45f11bcd255bd1ca359310a"
+        },
+        {
+          "id": "neck-lower",
+          "sha256": "6a5bceceb7380a248ed8d14344a335297d899911a8f9adf0a6456f86e80806e8"
+        },
+        {
+          "id": "near-wing-shoulder",
+          "sha256": "0f033eb4465d36354af48a4e67a4a6146bcc54ee751f7ddd01b504a44a290aed"
+        },
+        {
+          "id": "near-wing-flight",
+          "sha256": "dae3efae27f7225cfcadefee1a204adb51ccaf71e046114ef1ab0040aa7a3174"
+        },
+        {
+          "id": "far-wing-shoulder",
+          "sha256": "c20df95f1b5ccc92e0f9a83e1217f5c33a388ac758545df7cfcafb31380aa810"
+        },
+        {
+          "id": "far-wing-flight",
+          "sha256": "7c28eb7b44df6cc20a66b92623e5961ee797dbc5315890ec4c231a763aa92503"
+        },
+        {
+          "id": "tail",
+          "sha256": "233eab5194464c2153781d5d1c618dae7f1769ea6e52b0da64d5bc748720d3a1"
+        },
+        {
+          "id": "chest",
+          "sha256": "670ad071d0aea33413e57c94a9049314b4581bc5ccda9fded840571a35987e49"
+        },
+        {
+          "id": "body",
+          "sha256": "c44230ccff661d0a9953979a794b92805971d72c1804d2a0ba5fab277f0981af"
+        }
+      ]
+    },
+    {
+      "ms": 2333.2,
+      "side": "right",
+      "phase": "return",
+      "status": "EXACT",
+      "resolvedPoseSha256": "d815f626c98f2514eb9fcdd20e55b302d398600c62651346f0453481298158db",
+      "fieldSha256": "8893a9b67828d4c0a1773385195b461ef97a1ede4c422d69dcbb267c2883a1e8",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 8.494689393871749,
+        "rmsTargetErrorPx": 0.472321354028552,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.9582245087713843,
+        "orientationPasses": 1
+      },
+      "queue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "size": 0
+      },
+      "timing": {
+        "poseMs": 0.02845800000000054,
+        "fieldMs": 0.05449999999999022,
+        "arapMs": 0.4991250000000207,
+        "forwardMs": 0.01304099999998698,
+        "forwardCalls": 1,
+        "activeMs": 0,
+        "activeCalls": 0,
+        "arapOtherMs": 0.4860840000000337,
+        "paintPartsMs": 0.037749999999988404,
+        "rigidParentMs": 0.00016700000000469117,
+        "shapeAssertionsMs": 0.030957999999998265,
+        "publicationMs": 0.0017500000000154614,
+        "paintTotalMs": 0.07062500000000682,
+        "completePoseMs": 0.6543749999999875
+      },
+      "publishedParts": [
+        {
+          "id": "near-foot",
+          "sha256": "a7a57f06c201b155a6ad78c834d8f74d82579dc3a55339a4bf7e4abbae8326cb"
+        },
+        {
+          "id": "far-foot",
+          "sha256": "eb1a40a26e4a61306e0c031c8c835b1dc395a171252793e23396ccc00b7ebea2"
+        },
+        {
+          "id": "near-shin",
+          "sha256": "dc2754bfee7bb8f0ca8f00e61eca33bed6660c17e82b9ee6d452a5b01858c83b"
+        },
+        {
+          "id": "far-shin",
+          "sha256": "c05e34d5aace89e1b21eb2d433f439c9f6366476be3f4a8815875113a7400713"
+        },
+        {
+          "id": "near-thigh",
+          "sha256": "89d719c80aba89fd372e513dd0bfd113401bf5e76ed59e632b15c55ffef611ef"
+        },
+        {
+          "id": "far-thigh",
+          "sha256": "403b75859a5f7a36f44cd528a8dc6ab2db6d9fd7a3d95a4e2e250c1cd4b5950c"
+        },
+        {
+          "id": "beak",
+          "sha256": "f30cf8a9d4c10bdfbcb47f0f1bdcb00d33e77d9779c729dcc5c86e2324078cc9"
+        },
+        {
+          "id": "head",
+          "sha256": "9e12f0bc8055416b9be17a78063fc4f39cc87017a3b138cb3abaf48a431eae71"
+        },
+        {
+          "id": "neck-upper",
+          "sha256": "bc1da49bae11e44a260f26fbcf9169844bf4834c6b7a0d1b06d3769fd112e7b1"
+        },
+        {
+          "id": "neck-lower",
+          "sha256": "65d6280035021b5f9321b1e442ce5cfdcbf145dcc9677a409f697e855994e022"
+        },
+        {
+          "id": "near-wing-shoulder",
+          "sha256": "4ebe11ced0def1440a21392035c048e92164e2d5ff8d0cd5271812ba755106c0"
+        },
+        {
+          "id": "near-wing-flight",
+          "sha256": "784e028e584374b933ec8fb739850a6187b8884d0d6e90c49e6d8a2d0003ff47"
+        },
+        {
+          "id": "far-wing-shoulder",
+          "sha256": "d62d030f265ec2f1d2c278548aaff7c00789e157be555cd0e37029d77b4a668a"
+        },
+        {
+          "id": "far-wing-flight",
+          "sha256": "39847472f53982619c26a5e1a8c18e5f5546c07b2e1aa1e0b6a6c6db3e4a4024"
+        },
+        {
+          "id": "tail",
+          "sha256": "54d71ae62d825082988ae2934036e3673e4cfec423de46a8363f8378ec38a306"
+        },
+        {
+          "id": "chest",
+          "sha256": "a5572b3fd116be11c218fb0a67e5be1d5630180be2642dc51c5d4a78cfdd168a"
+        },
+        {
+          "id": "body",
+          "sha256": "51a451ec8ad7a6c04086a3999ed6520e1b3cad8cf23f19cbc9606aea1f05d16f"
+        }
+      ]
+    },
+    {
+      "ms": 4466.666666666666,
+      "side": "left",
+      "phase": "approach",
+      "status": "EXACT",
+      "resolvedPoseSha256": "32614e6b5d617fc21c29103ca97ff8afed6ed411b66bd490e8d8ed6e83186e12",
+      "fieldSha256": "5b8e28c56c2458e90156f54dfe9ca6d4bd1046a7b044d2904836a0b8fb24a4d6",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 107.69988080796035,
+        "rmsTargetErrorPx": 6.619870077857922,
+        "maximumProjectionPx": 69.23056205762556,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.060275161008011384,
+        "orientationPasses": 67
+      },
+      "queue": {
+        "visits": 14899,
+        "projections": 14899,
+        "stalled": false,
+        "size": 81
+      },
+      "timing": {
+        "poseMs": 0.01720800000001077,
+        "fieldMs": 0.0539579999999944,
+        "arapMs": 5.450874999999996,
+        "forwardMs": 0.5126669999999933,
+        "forwardCalls": 1,
+        "activeMs": 4.476124999999996,
+        "activeCalls": 1,
+        "arapOtherMs": 0.4620830000000069,
+        "paintPartsMs": 0.02954099999999471,
+        "rigidParentMs": 0.00012500000002546585,
+        "shapeAssertionsMs": 0.03162499999999113,
+        "publicationMs": 0.0016669999999976426,
+        "paintTotalMs": 0.06295800000000895,
+        "completePoseMs": 5.58616600000002
+      },
+      "publishedParts": [
+        {
+          "id": "near-foot",
+          "sha256": "bd97fff63b9d38ab36dc5e496afe07f3b073af404b68cfaf3a05598c06e5d838"
+        },
+        {
+          "id": "far-foot",
+          "sha256": "352cc2a8ca819c7b3d5290927228d9012c57af168834d78c63ad05939f0ad6d9"
+        },
+        {
+          "id": "near-shin",
+          "sha256": "80e1ebeaad1a01fa784ea9c52c10b50f7b95375af94cea11ee58ecc38d712c8d"
+        },
+        {
+          "id": "far-shin",
+          "sha256": "3d4b41b4e8887ea55792cb0ec7dff99c937aacc4f932948c3368839175a8d733"
+        },
+        {
+          "id": "near-thigh",
+          "sha256": "779083225fcc3d80ef233f41e55e841d1a3dd5075b3e2dff90a62ab966ae73b0"
+        },
+        {
+          "id": "far-thigh",
+          "sha256": "c22885cc8b7b43b2cb0e08ab9607b6d6565c042de2d06ef57bdfc6f80f753d1a"
+        },
+        {
+          "id": "beak",
+          "sha256": "a0acf971da60f9bdf65487f94a089379a5239b77f1c43451f96335ff1788a660"
+        },
+        {
+          "id": "head",
+          "sha256": "db87c256772fbe70dc8bce717bc59e2bdbbca6d1de2deb2c30329003f094e0a3"
+        },
+        {
+          "id": "neck-upper",
+          "sha256": "5a06c4857fdf7fbaf5567904f497f25eb8e72ca3d9f74e1db3a05db4f4c773de"
+        },
+        {
+          "id": "neck-lower",
+          "sha256": "2a9a9ed1ff07c8935d7ac954639d7624f73269ca29ce0f98f514e09fa7f52b3a"
+        },
+        {
+          "id": "near-wing-shoulder",
+          "sha256": "2bb7ff34a81d9b563b99b04044b896bdd22e121b7a3d4090182c4792ee3a7ea3"
+        },
+        {
+          "id": "near-wing-flight",
+          "sha256": "650809a464da527a9cb3e71249cf6b93e34d98662872ffc0bf034ec31bdfd5a5"
+        },
+        {
+          "id": "far-wing-shoulder",
+          "sha256": "906e9c2ff3f08a4d739df2061236a3155d7c28fcaa8962388c44ff2eb0c89fc0"
+        },
+        {
+          "id": "far-wing-flight",
+          "sha256": "ed7a8a26e565e3cfb2678c356b6007f03d4c86797a5b1b44147a64a0c07080d7"
+        },
+        {
+          "id": "tail",
+          "sha256": "28b550bfb82d4028cbc865aeb57cfdf0f00717d2b56a60c19e36567ab354beca"
+        },
+        {
+          "id": "chest",
+          "sha256": "e5372e1160a8a351d719a6b946764dcff68db7974f41756eec315e73e2155caa"
+        },
+        {
+          "id": "body",
+          "sha256": "f9c82fc562095b7a8d677fe69ba7f7494fc07abc2b5d64883e6f725b98640e32"
+        }
+      ]
+    },
+    {
+      "ms": 4466.666666666666,
+      "side": "right",
+      "phase": "approach",
+      "status": "EXACT",
+      "resolvedPoseSha256": "538e6ad2639d607646d73830cbfc563861019b0d411c7660c1bb9ecbf687d226",
+      "fieldSha256": "cab520b1685ea91f1ed524a874b8511e1f35b93438a3ee79de6f36cbe2f28e1e",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 2.214094083485047,
+        "rmsTargetErrorPx": 0.14843851366875227,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.7153853349539111,
+        "orientationPasses": 1
+      },
+      "queue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "size": 0
+      },
+      "timing": {
+        "poseMs": 0.016166999999995824,
+        "fieldMs": 0.08483299999997485,
+        "arapMs": 0.5240420000000086,
+        "forwardMs": 0.009417000000013331,
+        "forwardCalls": 1,
+        "activeMs": 0,
+        "activeCalls": 0,
+        "arapOtherMs": 0.5146249999999952,
+        "paintPartsMs": 0.023957999999993262,
+        "rigidParentMs": 0.00012499999999704414,
+        "shapeAssertionsMs": 0.03012499999999818,
+        "publicationMs": 0.001416000000006079,
+        "paintTotalMs": 0.05562399999999457,
+        "completePoseMs": 0.6816249999999968
+      },
+      "publishedParts": [
+        {
+          "id": "near-foot",
+          "sha256": "c690d68f195128d7335fb25f178844b59d9e1fdbc4ccd18d23bf082b0d69717d"
+        },
+        {
+          "id": "far-foot",
+          "sha256": "7e1fabf3a6db19f22d72af321269278fb3cbe7162a80b72b26fb5237a73f424a"
+        },
+        {
+          "id": "near-shin",
+          "sha256": "02e42f3129c100a5629116609217b6d9bfbe60c7d87ea1e98abcee046de3ed36"
+        },
+        {
+          "id": "far-shin",
+          "sha256": "e333d9512539bc411738e007bd2ad3e6ffad9dae9e802d9a7eb29f02f9595373"
+        },
+        {
+          "id": "near-thigh",
+          "sha256": "4ee7e7b024962049788587d00d2b352c9c3546f15663f9c032e06ed499caade8"
+        },
+        {
+          "id": "far-thigh",
+          "sha256": "f07684b30423d0c00eaadd27323ed6d04dcb6844b338ce5831e023a573851066"
+        },
+        {
+          "id": "beak",
+          "sha256": "57aa47aca30e0c3a4fdccffc22bbed1374ce2f94a90af0b139f9f59197bc7dc1"
+        },
+        {
+          "id": "head",
+          "sha256": "56b775580c4eec963d81606a15cfc8ff7c4b49ff15b6ad9744ba187c73509d92"
+        },
+        {
+          "id": "neck-upper",
+          "sha256": "2bcf1b94dfa1da1032c24625bad58995ba39fc8abc5a1374b3ecfe6e180e5dcb"
+        },
+        {
+          "id": "neck-lower",
+          "sha256": "218439cfb37f3e07b1905375b45cf66dd9ec5cf03bff6373aabfc1649957008d"
+        },
+        {
+          "id": "near-wing-shoulder",
+          "sha256": "53e67485a3330b33b4e128bf5f724923adb62e0e68cad6b0da8a0484a774ead2"
+        },
+        {
+          "id": "near-wing-flight",
+          "sha256": "fcbeea2bb63ac07bccf43d84c944700d6ab3259a47202eb91dc3240b32423076"
+        },
+        {
+          "id": "far-wing-shoulder",
+          "sha256": "bbe2481bfc35482c582da6e8b0ce79687132fa3a53e402dca966637702d9e57e"
+        },
+        {
+          "id": "far-wing-flight",
+          "sha256": "cc74389e10446adb953c38c4e11fa92abb6880f069b89f218e94ee2d16ca5f7f"
+        },
+        {
+          "id": "tail",
+          "sha256": "ebce1e5bbba753e843f15f237f75ff93e281c655c8101f8f5b84e6fa7f8fc5e5"
+        },
+        {
+          "id": "chest",
+          "sha256": "ccd0c6b5fb46a42e1c46486e37feccde4ef29af36d7618e97001be5e0a5b9300"
+        },
+        {
+          "id": "body",
+          "sha256": "5462d86017384961a391ad7b72095f7f109ab26657b4759308ed6d556d830d19"
+        }
+      ]
+    },
+    {
+      "ms": 8583,
+      "side": "left",
+      "phase": "impact",
+      "status": "EXACT",
+      "resolvedPoseSha256": "e4db11f2ffba7aef16167fae8fa7478df39ca1c321cedaac66ae2132e4da0b91",
+      "fieldSha256": "d0d49425d76fbcaa2fe6b93accb6559edb64c87a35bd61396b944bb5c71e806e",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 7.111133608650502,
+        "rmsTargetErrorPx": 0.39744770755286213,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.95330302422025,
+        "orientationPasses": 1
+      },
+      "queue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "size": 0
+      },
+      "timing": {
+        "poseMs": 0.01583299999998644,
+        "fieldMs": 0.09020899999998733,
+        "arapMs": 0.6765830000000221,
+        "forwardMs": 0.009457999999995081,
+        "forwardCalls": 1,
+        "activeMs": 0,
+        "activeCalls": 0,
+        "arapOtherMs": 0.6671250000000271,
+        "paintPartsMs": 0.03058299999997871,
+        "rigidParentMs": 0.0002920000000017353,
+        "shapeAssertionsMs": 0.0277499999999975,
+        "publicationMs": 0.001333000000016682,
+        "paintTotalMs": 0.05995799999999463,
+        "completePoseMs": 0.8435419999999851
+      },
+      "publishedParts": [
+        {
+          "id": "near-foot",
+          "sha256": "c97d17dc6880965c4c1577aca1170a4867954a6544bcd85a6b964f21f6d04991"
+        },
+        {
+          "id": "far-foot",
+          "sha256": "56f5703b5742a32a29fd5ed3a1a4ce13c8b5798d6563125a00905db2a5cf5114"
+        },
+        {
+          "id": "near-shin",
+          "sha256": "968918eaefa1e85e9f3ff68259ced482469675d30fcb52ef78a55b5373a1d795"
+        },
+        {
+          "id": "far-shin",
+          "sha256": "d021122e3d0634ccdf0a78fe9bf1430865b7f973e2da5eaa9feb72bf0a2f8a1e"
+        },
+        {
+          "id": "near-thigh",
+          "sha256": "7f0cb0b59e959f516fd765759c65340ec3788ef420367de4a4459ab2a2399532"
+        },
+        {
+          "id": "far-thigh",
+          "sha256": "e6abef6e846ffb7c119be647a6731899a1c1df18ff7cfd13060e5fdf70f5341f"
+        },
+        {
+          "id": "beak",
+          "sha256": "ab056dcd90cfbb55b6f8d27398813a84caaa48a5be1aef530e45dd3271e623e3"
+        },
+        {
+          "id": "head",
+          "sha256": "d67ebcb87aab697fbe562a1ee1ec6fc39d016237db91dcb85066dc1aac194839"
+        },
+        {
+          "id": "neck-upper",
+          "sha256": "b8fa7d2bf6b0019edaf529e4753bd7584986ebafb89f7dd18afd2e9d87d2e766"
+        },
+        {
+          "id": "neck-lower",
+          "sha256": "cbfc20eeb39aac35bfecce7716b993c2d59e76c8f540329b10f22b5fb42bf2b6"
+        },
+        {
+          "id": "near-wing-shoulder",
+          "sha256": "fe9f597977950157eb29aae63237c423961a2c5438ad78224c54d0c54f686f12"
+        },
+        {
+          "id": "near-wing-flight",
+          "sha256": "96ca9f321a671cfffe748c3f3331148169c7b2243e9bf07052df430462760a11"
+        },
+        {
+          "id": "far-wing-shoulder",
+          "sha256": "7a4b4c2a70f31c8547c419252b2f73f5b1f3adf3e1331fa0ebfec984b42e2e79"
+        },
+        {
+          "id": "far-wing-flight",
+          "sha256": "636262e9a3a7fc4041c0b99a358cb1af3bd02e886c9aa8ad2eb647819c38ac93"
+        },
+        {
+          "id": "tail",
+          "sha256": "2a0fd74696044be8b7f746c88e29fbc5f6bff07f057a139fb103f88f7bd81c91"
+        },
+        {
+          "id": "chest",
+          "sha256": "49eac905695b5f43bba3166d6bfdb225ad9e2b569231e59e1270abd88c01606c"
+        },
+        {
+          "id": "body",
+          "sha256": "a56bafa936559c2d5190d2ff3096de10db4dc3e887158e108faa8870d64c3f71"
+        }
+      ]
+    },
+    {
+      "ms": 8583,
+      "side": "right",
+      "phase": "impact",
+      "status": "EXACT",
+      "resolvedPoseSha256": "2bfe1b88d04d4ecd921a0e5ed903815bf4bd623049883c48ef50811359f90741",
+      "fieldSha256": "4e7e1e7e5278f36c4edf1d8540b4b934e86c2455a4b8d3ee9a7a3ef0a7a1ec07",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 96.73534544883962,
+        "rmsTargetErrorPx": 5.254711512436611,
+        "maximumProjectionPx": 62.91580195711093,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.060954305654694486,
+        "orientationPasses": 65
+      },
+      "queue": {
+        "visits": 350,
+        "projections": 350,
+        "stalled": false,
+        "size": 71
+      },
+      "timing": {
+        "poseMs": 0.02137500000000614,
+        "fieldMs": 0.086749999999995,
+        "arapMs": 1.3017499999999984,
+        "forwardMs": 0.5843329999999867,
+        "forwardCalls": 1,
+        "activeMs": 0.18641600000000835,
+        "activeCalls": 1,
+        "arapOtherMs": 0.5310010000000034,
+        "paintPartsMs": 0.04479100000000358,
+        "rigidParentMs": 0.004666999999983545,
+        "shapeAssertionsMs": 0.03383299999998712,
+        "publicationMs": 0.0027919999999994616,
+        "paintTotalMs": 0.08608299999997371,
+        "completePoseMs": 1.499541999999991
+      },
+      "publishedParts": [
+        {
+          "id": "near-foot",
+          "sha256": "999cf8d4646659d7b20a3a2a688cca80ac31df7b345d400e1eb13a618ce3dc4b"
+        },
+        {
+          "id": "far-foot",
+          "sha256": "d0ed71e4a9da6f370ac46cfe76ebaa7aea8b706e34a2936d6b47b371821f129c"
+        },
+        {
+          "id": "near-shin",
+          "sha256": "271d7819542b25d73d4d42ae595c0eeb12288ba09b1ab32581cedaa14b92b9c2"
+        },
+        {
+          "id": "far-shin",
+          "sha256": "05e508a6246605f2c8f1a6fc754ed12422520871177ce1837647a534b7fdd4bc"
+        },
+        {
+          "id": "near-thigh",
+          "sha256": "864791daef858a76c48861e6757dd39ee80e2964a574cd00d35373f9d41bbe50"
+        },
+        {
+          "id": "far-thigh",
+          "sha256": "ae673fc9ef0bf2a00a9fe6a906c22c489474eb5a2850b7fe558ca42eeb215276"
+        },
+        {
+          "id": "beak",
+          "sha256": "e8c99bed7237fe8e51acc678c37fe9f92908fa3e4c7c17801711dfbda989ed5a"
+        },
+        {
+          "id": "head",
+          "sha256": "888bad49c4a887efcb2223ebff56d5aebf5a891ada60a64dd391aa4cc371ea54"
+        },
+        {
+          "id": "neck-upper",
+          "sha256": "a8e084aadb11413074170de02918dab9ae8a01a690cd608c7582d73e57da92f1"
+        },
+        {
+          "id": "neck-lower",
+          "sha256": "8735d173c7c5ba5aad401f4ff1567a0b9587b87c552b7c323733d4668c97db6e"
+        },
+        {
+          "id": "near-wing-shoulder",
+          "sha256": "db06412a768a5e452f1852cc867ee3b48334028c28defc2b5b23626eefb1a57e"
+        },
+        {
+          "id": "near-wing-flight",
+          "sha256": "2ad4d379a2545f374b8757f31fc5c8e3359635558d2de9aff2d17179e1d237f5"
+        },
+        {
+          "id": "far-wing-shoulder",
+          "sha256": "f408c605170aa9db95d763e37cd208552b188062647c6abdfc0f77d64027e5e9"
+        },
+        {
+          "id": "far-wing-flight",
+          "sha256": "e7e1eb394b1ae11cf3349a272345baeb10a171e3a25a23562098b31635e13974"
+        },
+        {
+          "id": "tail",
+          "sha256": "ccdf35a15c6af812b9fd996a55028abf72bd93fe869b86c94ab1548529f97799"
+        },
+        {
+          "id": "chest",
+          "sha256": "52c3a91f0aa8186d9cdea4707a2ec87a9ff39c20b1913a511902ad64dfde7899"
+        },
+        {
+          "id": "body",
+          "sha256": "857a3da296f32af9f098daaf9a250a44ffda8ff7fc9d26d23ad4e22ee1948e79"
+        }
+      ]
+    },
+    {
+      "ms": 8783,
+      "side": "left",
+      "phase": "return",
+      "status": "EXACT",
+      "resolvedPoseSha256": "769882216010506018d65a0df15fba2e00e90c7a82ef1edb4b558f9cdc17afee",
+      "fieldSha256": "51baa3a6f452e337db5f2ef8c27c3491c615d290ceb5ae9184f0a8f795443c94",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 99.85714321159065,
+        "rmsTargetErrorPx": 5.352379506421368,
+        "maximumProjectionPx": 65.43501679455822,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.06227287353712107,
+        "orientationPasses": 65
+      },
+      "queue": {
+        "visits": 604,
+        "projections": 604,
+        "stalled": false,
+        "size": 61
+      },
+      "timing": {
+        "poseMs": 0.027625000000000455,
+        "fieldMs": 0.08424999999999727,
+        "arapMs": 1.3211670000000026,
+        "forwardMs": 0.5335000000000036,
+        "forwardCalls": 1,
+        "activeMs": 0.2627499999999827,
+        "activeCalls": 1,
+        "arapOtherMs": 0.5249170000000163,
+        "paintPartsMs": 0.027958999999981415,
+        "rigidParentMs": 0.00020800000001486296,
+        "shapeAssertionsMs": 0.03208399999999756,
+        "publicationMs": 0.002083999999996422,
+        "paintTotalMs": 0.06233499999999026,
+        "completePoseMs": 1.4967919999999992
+      },
+      "publishedParts": [
+        {
+          "id": "near-foot",
+          "sha256": "f732249247530f9c9900f9f1b4941d259852aec8d829da96165ca0bd7ff6fd3c"
+        },
+        {
+          "id": "far-foot",
+          "sha256": "c208a61ae3702f5fae5f58e56e8b27b75fd0dc40a2919bdd55e28972c7680bbc"
+        },
+        {
+          "id": "near-shin",
+          "sha256": "082127cbc437bc6947d224caa0510c43deb25044303d5866c04c7100485ca767"
+        },
+        {
+          "id": "far-shin",
+          "sha256": "05ba5dfea96dac921bbdb2b6879ec0464b1367b11253fba3144c44eb64439cd7"
+        },
+        {
+          "id": "near-thigh",
+          "sha256": "a75888a248084b9e07fb69cd8a9f7d470becd3c4decef56c4ae129feb326d45c"
+        },
+        {
+          "id": "far-thigh",
+          "sha256": "06166e38f7f9bec4ca1db4cfc435b4a302bc6a4f05e20eb56db65add13ab60db"
+        },
+        {
+          "id": "beak",
+          "sha256": "261856898f275428e88a4f0269630b3985bff32703753ddf1f4fd3b86a93a4a4"
+        },
+        {
+          "id": "head",
+          "sha256": "17c04ebc77054346313b0766aef1854a9408ab820e9f74e083e95cbdff11cb81"
+        },
+        {
+          "id": "neck-upper",
+          "sha256": "6d770f3fdfe1af16729021d117e8d93a42fc3762064c27403efdeb14953cc6c0"
+        },
+        {
+          "id": "neck-lower",
+          "sha256": "52f3f01b5641c8f9a70200f6b4df8456407ba5f3261a0b2009c34b7a297c8f92"
+        },
+        {
+          "id": "near-wing-shoulder",
+          "sha256": "791c032ce49f37bcf3564e0db277856f1157ac92e6419aa80d8826f72c617c96"
+        },
+        {
+          "id": "near-wing-flight",
+          "sha256": "548a0deb7da1840678274fc063c30c7e82992eb3e152023c95fcc765537dc7cc"
+        },
+        {
+          "id": "far-wing-shoulder",
+          "sha256": "2b9a5352fbf780b0ceeb0ac454c86082c3011a865d6bea597b5a2580d3aeeb59"
+        },
+        {
+          "id": "far-wing-flight",
+          "sha256": "a54f0cf348ba4a8e3828bd4043a513f285d1d38d9dfaf5c72d3e731636c442f8"
+        },
+        {
+          "id": "tail",
+          "sha256": "429f8dbd30f57fdc6f26342f143a57736ebc25a6fb52b7c25f072a1c4670cea9"
+        },
+        {
+          "id": "chest",
+          "sha256": "51bcf23be4654b715a42974ab668e7eaff8a5c9f34bfb29bd9577accbd4872a1"
+        },
+        {
+          "id": "body",
+          "sha256": "2cba7305878059883bb2c0e267aa60454ee7f5cf3f61860bd1459cef32b02233"
+        }
+      ]
+    },
+    {
+      "ms": 8783,
+      "side": "right",
+      "phase": "return",
+      "status": "EXACT",
+      "resolvedPoseSha256": "f7e937710a0a3564df5ffa9deb405720c82adbf6597d5467732707a61c60ba2b",
+      "fieldSha256": "d6fa6d60f87eb98fd5bc1b59d02cffae0673f6949ff79ad4f8e202cffda63e7e",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 193.63428833975055,
+        "rmsTargetErrorPx": 14.339884657732659,
+        "maximumProjectionPx": 176.67976098287457,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.060267424814925884,
+        "orientationPasses": 67
+      },
+      "queue": {
+        "visits": 14843,
+        "projections": 14843,
+        "stalled": false,
+        "size": 98
+      },
+      "timing": {
+        "poseMs": 0.019500000000022055,
+        "fieldMs": 0.08291599999998311,
+        "arapMs": 6.635582999999997,
+        "forwardMs": 0.5920839999999998,
+        "forwardCalls": 1,
+        "activeMs": 5.532332999999994,
+        "activeCalls": 1,
+        "arapOtherMs": 0.5111660000000029,
+        "paintPartsMs": 0.05008399999999824,
+        "rigidParentMs": 0.0002089999999839165,
+        "shapeAssertionsMs": 0.029791999999986274,
+        "publicationMs": 0.002082999999998947,
+        "paintTotalMs": 0.08216799999996738,
+        "completePoseMs": 6.822000000000003
+      },
+      "publishedParts": [
+        {
+          "id": "near-foot",
+          "sha256": "84e27675d040fe19306d644ea463bfb04d7c891fc32d224bc899ec4d11eb56bd"
+        },
+        {
+          "id": "far-foot",
+          "sha256": "7c32027de668eb20f7d49558cf796696789ba42cac5f851940bee17201a03e74"
+        },
+        {
+          "id": "near-shin",
+          "sha256": "e5850ce5c3e7e6dfe1f54aa4ca1f4282f8fc12875dfb0e150e8693ae87df7545"
+        },
+        {
+          "id": "far-shin",
+          "sha256": "3e8481428090fa1df22c1a7864edf2e945d8c2a4017a1343c028a4689ac4c8f7"
+        },
+        {
+          "id": "near-thigh",
+          "sha256": "fc1e0d2559afa3f1e520ea943890cbbcf130b9ac39d644f73c37238177097b11"
+        },
+        {
+          "id": "far-thigh",
+          "sha256": "a84e073564a0b72987c98abd8e4d249293f52eaac94876e9e0982ede914b7d1e"
+        },
+        {
+          "id": "beak",
+          "sha256": "aaff132505545732c4a5c73e40de1ef6f8d06c9583b4528feb805cd3f7afaad6"
+        },
+        {
+          "id": "head",
+          "sha256": "cb939713246099a64bbfc2f9d33283ad4fc172fbeede0fd32e171752599f8578"
+        },
+        {
+          "id": "neck-upper",
+          "sha256": "12b673d5c5597fb1e534774e9c41c2a90aa0e6308e5e2dab87ac9af613e2cbb1"
+        },
+        {
+          "id": "neck-lower",
+          "sha256": "f1a76da15711c83740dc25077cc797e7323351838fcbaa7e2677b3aeca19db04"
+        },
+        {
+          "id": "near-wing-shoulder",
+          "sha256": "6a36c96270ed6c95beaf9af587f82a2a794bf33ef3f24aa09d64ecd7930b8e97"
+        },
+        {
+          "id": "near-wing-flight",
+          "sha256": "d8b702f4d39096353df14e526fdf6c529e2807437214edd462ee1156729c9dda"
+        },
+        {
+          "id": "far-wing-shoulder",
+          "sha256": "50d5bc1c0cc7af39e00e8d8404c4dd8265165c6807e4b2fcdc047781ea707648"
+        },
+        {
+          "id": "far-wing-flight",
+          "sha256": "5f948057c905dc25630d688a2e9abcfc8017220d03e04fe8c66cd151a224b170"
+        },
+        {
+          "id": "tail",
+          "sha256": "6922255f400dd7b2da30fe69c5e2e5a46ad3587396f694680d679b2d21737a40"
+        },
+        {
+          "id": "chest",
+          "sha256": "db56c4c110e077799babacd466e4fc5c52b759b16a2a1c189349b4add3d06bcd"
+        },
+        {
+          "id": "body",
+          "sha256": "27523815e42a93a281869cab08554be667e5b6e2b8475ce60755334c592b2e59"
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/node-cost-breakdown-01.mjs",
+      "sha256": "3fa02d7a5aa805487407f42514ec0a680f2a2f5c7e2d713b103ca36859a94153",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/cpu-diagnosis-02.json",
+      "sha256": "f8a8910736643a49aa83b33e114665f421221efd98dd058cd1a9b2817ea6d9d3",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/sparse-fit-comparison-08.json",
+      "sha256": "7793bcdab98224fb6609d854bd71c77001384aa2d78e9205e3e69eea9d56dae2",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-08/record.json",
+      "sha256": "8ba1ca327f6c7f3aa0b54ee4b7bfed6de62168b4fec7d722eeca3806ac4eef91",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-08/binding.json",
+      "sha256": "50011172805af4288eefa1cbcc225d4bad107d4f0c2f4718de6e2046e7ecf7b2",
+      "unchanged": true
+    }
+  ],
+  "sources": [
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "ef5cdebde69b377d3aa0416bf04a6a7c6d13ba2e3319146d66ce7cfc2196f0f0",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-sweep-build.json",
+      "sha256": "7c021213e22153135121739be5b85adb07e99ed9d01bb41a565f980f175e67ce",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "sha256": "aa430e622b613af414da991a1b464e434be5b26a5efe96f5d07e63756f8b72db",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-sweep.c",
+      "sha256": "df3eae55747455894b92ce81d30a3f105fb632519e57db8aaa2b7d563f2f62f6",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-sweep.wasm",
+      "sha256": "cd438afc7be683430cf468d51e1195a4f85a5c3cd0b71d64a1f6788c4b1b8c0e",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/attachment-coverage.mjs",
+      "sha256": "e8312eef0fb5b0e27b4cfec14140daa6340c599f7c7eaeccc0c2d66e23c31570",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/audit-cut-seams.mjs",
+      "sha256": "affba75fb433f188b61462e827d6e0041565f3bd3e9b0f95e3d6ea9899bd0764",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/audit-ear-support.mjs",
+      "sha256": "276d4559cacf893364b032951d76ca5095076b6994c4590ca8e90cacd9febc62",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/authored-intake.mjs",
+      "sha256": "0ac7085e295bc7110496f44778113c3981f6d8805de8ab998e38650c11ece9a7",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/band-patches.mjs",
+      "sha256": "22e8754f586bd7be3626c8d6e130e53ac7fc2234c1b187838a3fb94eb28afd16",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/body-card-probe.mjs",
+      "sha256": "fbc4b010ef0966f32436e8c749a829ef4fa547d3f808f1d656acec6172be3b86",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-arap-sweep.mjs",
+      "sha256": "75e19fd17d9127979b665f245d0620855b7a73da72c546bbfcb74933eb451c80",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-authored-parts.mjs",
+      "sha256": "f1f9cd36b5459fc77107e1f73d55c8798e909b3822512a05f50cee03bc6021f0",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-orientation-active.mjs",
+      "sha256": "ff11d59efb88e7520550bd6705bc5122bb2a77b5aa30516af844a3d116b83e85",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-orientation-forward.mjs",
+      "sha256": "54ca2a439b8e701c7f94f5f32e7ecd0528e5aeaecb2b29521767baf375a4bba1",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-paint-skin.mjs",
+      "sha256": "190133cbe97d99ea1bf61a644d19f6e64a3dad7fe07485a86ce4b53ad04c56b6",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-seam-bridges.mjs",
+      "sha256": "78d9605415cfc76d692259d0eefa27bca9428eb63d1c399cb58676d162cd2c79",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/c2-review-repair.mjs",
+      "sha256": "d810ead151a91b519ea4d73d7f4eaa070f8399d4d9d191c50340e63e8a0f95c8",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "sha256": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/coverage-ledger.mjs",
+      "sha256": "a95e2027af4da5c56462178ca64f7360b2af978dc5f0159ce88c97ec21e0847a",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/crab-observation-record.mjs",
+      "sha256": "415caf32a29cf40cdf4326788d9a04d439fdb18fda0ee40d9c894bc0fa96b2b9",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/cut-seam.mjs",
+      "sha256": "0f65a0bb48939e815f57a2a89dd7dd0a3f1a1b2b17cf0ce2a1bfc359879ff565",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/deformation-quality.mjs",
+      "sha256": "414f0b84f2b731508676d14b59b99c6ee210d57342e05c11d11db012805b80d0",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-atlas-probe.mjs",
+      "sha256": "e767d6b9b8bbe52b8382b5538ba155daae40138539d7b31072d8a7d06471de15",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-contract-probe.mjs",
+      "sha256": "0bc30fb84493b641ce55e3563594fe604c2a759f0e521b88ab7ec3f5c296f73b",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "1f94900f6038d0407fa6e865d294de6e11e52b22bbcbbfaa17567311a866d6e6",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-pose-probe.mjs",
+      "sha256": "cb22ac288e1c7c070e72cb1907ae6c7de42279ac0ab373b6b269e84f04f867d0",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs",
+      "sha256": "6a4b825d7f4073033229438bf2a2d2f11a7432989947e4f26d4c14fae7de1069",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/hidden-anatomy.mjs",
+      "sha256": "a3cef7edff31f86a70f727f1433eeaabcabe2a1626929e65fbcbc0715b80a328",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/joint-patches.mjs",
+      "sha256": "fb1dbe82449554cc8134d4358f06ece33fd864ccb35ea7a9566dac73d824336c",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/limb-islands.mjs",
+      "sha256": "9380588337d7cb622ee934d42baea39585557172039ec9df54b40915f6ef41da",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/motion-interop-probe.mjs",
+      "sha256": "0a1b61501cf67615c5f690af0a4e7c73777339457a6032fccbb3e6bf29b41957",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/motion-scale.mjs",
+      "sha256": "a38a55fbce7272597f5cd70af73bc850d73580795afcb2cc3e7db44c11653096",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-active-build.json",
+      "sha256": "6dda81a49ca15cb6bed4dc63fcc370ec5bc1f090ea27f934dd188057eb6f90aa",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-active-bytes.mjs",
+      "sha256": "7c49f7cb965853d672e0bb33219a7715d2c49d5de7393b510fc250cfb70c1c23",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-active-reference.mjs",
+      "sha256": "534a5d4b555a1caa7b34dafdaf46086443303faa7bc5f8b6e384ee114f412206",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-active.c",
+      "sha256": "3cf52a78928180d13359984ef22a7fe7eb23055573ae116d45cd6a22f6bced35",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-active.wasm",
+      "sha256": "307c11eb0fc75709ddbf8dc1bd88cfb7ab5ad586ac5037db65a42a1ad173eee8",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-forward-build.json",
+      "sha256": "b558984c0955ed075463831ab95f22baddd80a61cb49fb5833318475af1ff705",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-forward-bytes.mjs",
+      "sha256": "435ed949f6347e6169dfd929e5b57f059c533aa3741229efdbaf8e89dfb608ab",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-forward.c",
+      "sha256": "8ddd29120496c9e1135131d88c9eed4da7b3692752df0ead7b657cd76964eb4f",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-forward.wasm",
+      "sha256": "fb02bc17b6b18e6bc412faa24b80e4677e0bc0a9d5ee80b03138fdb11c6bfadf",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-projector.mjs",
+      "sha256": "ddb2b35c467bd4332460da853cdfbc6f33693d3417e2e04fe0d797defb45ba31",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/ownership-junctions.mjs",
+      "sha256": "0e3a7764e7d36e03c3cdd3834ed970554312e1bb77cad3e1ef6f03ea84897c4a",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/pack-staged-review.mjs",
+      "sha256": "c2fbeea33d395d5e3ef10418b1717d64ee09cb38009a9dd49f19a5f79aafc1fd",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/paint-skin.mjs",
+      "sha256": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs",
+      "sha256": "52250c55eedb50ae0ad757c4d5764ed357d2799ba275f2ffe4db24a633cebc3e",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/paw-contact-pins.mjs",
+      "sha256": "8d7e5f866f043d94e22221c3a4e15acab62aff20567003cb3c898600db7c1995",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/performance-probe.mjs",
+      "sha256": "5ab0aa7527a7a8aee4761649ba52c526cad9e12a371dfdff53d0718892d9d50c",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/plant-anatomy.mjs",
+      "sha256": "7e900b8355f6193b941f62a573d6c58124d127faa3348524170593ef2084e218",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/pose-projection.mjs",
+      "sha256": "9a6d31c80812def61beec124a1dad039d16b9afb556ee5ddf47c0f528891d486",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/pose-refusal.mjs",
+      "sha256": "f91e6977ec0e2cdb0b7e4cf90980eeebab90c59aabfb1e2e48b47cb4bf12e80c",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/prepare-continuous-skin.mjs",
+      "sha256": "a25a51e5620ed55080b36612f98c6138ac77989f873898577cd089670e11f1dd",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/prepare-seam-proof.mjs",
+      "sha256": "63a77430083c8cab2457019bb1d9cf44fb98225fcd1977273fddc44359ace460",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/qualify-continuous-skin.mjs",
+      "sha256": "c36ac47fb32dcacc5e63e865e15590715ac8892060bededa55016cb1a614f1d6",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "d226a95458fe5330cea64b78ebbcc4b37750044fa85139466d426ef03a960d83",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/rig-atlas.mjs",
+      "sha256": "69d0a609471000088fa2439e294c1016325a907ac33998c56d927c12baf65057",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/rigid-parent-frame.mjs",
+      "sha256": "a2b4d700e8ee7cf76af602814e5820b50acb67355e735dce921f7a16030ff56c",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/seam-bridge.mjs",
+      "sha256": "a9e6dea282af27f223dd58900bae9242812a9320c59cff600a3eb7d443dccb28",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/seam-oracle-audit.mjs",
+      "sha256": "b407448c786e54c97666d84a85c773913b7b358fe764f64cdbf5d7b97217dfd5",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/seam-sampling-guard.mjs",
+      "sha256": "bcc199f9cabb5835b9b76ba65499608c0b62dbee7e88c93374cb31f572270f74",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "3d7ba73ec369a07fc1678610b32e77fb5beadedbdee1885ca544424588e1f587",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/smooth-skin-weights.mjs",
+      "sha256": "6a589f1347bff0643e2b0d38e8249da25739ce0d61562c7a148c3eaab02d070f",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "e2dca64d0077c7a3f91b1c00bc383392c6a7d245f9c1b19a9254384c8acb8596",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+      "sha256": "b747e26e58700dba92de54a33ad22b7acfeb6a01772c19cacb6aab0ee1af63a4",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-skin-branches.mjs",
+      "sha256": "30e0e12a22e990b877ece27676f319331eb895a075487d692d6a1e6cd06c7e8a",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/texture-hinges.mjs",
+      "sha256": "7a7694e815fd50f8337a465afb4cfa6eebbeece836e31c9ca5fa30536f3c24a8",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/underlap-support.mjs",
+      "sha256": "e57fc2f3956a62342e69f3ad53f38be42c1e5994603e3f4f04150fa78380d99d",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/verify-parts.mjs",
+      "sha256": "f5278c15111466e447bb9c3dbffabc56fcf3ff6f7fcdee9a01c6e82cb936fd71",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-arap-sweep.mjs",
+      "sha256": "08c41cca60a7ec46ca07103d27ecbdff1d97f2bbf62507fb310c560d05487ccd",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-orientation-active.mjs",
+      "sha256": "1db0f39f9d8596ff3a42139cd5278b56fa0b0936a9914bdd1b45c20992107590",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-orientation-forward.mjs",
+      "sha256": "ba4760f6817de9c63b0508167ad0623f784b1983b71006c2e024356fe8d65da3",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,704 @@
+{
+  "scope": "actual source, pure producer sampling; not native visual acceptance",
+  "status": "FAIL",
+  "card": {
+    "kind": "body-card",
+    "projectionSigns": {},
+    "identity": {
+      "speciesVisualKey": "{\"seed\":1193089256,\"kingdom\":\"fauna\",\"color\":0,\"form\":12,\"body\":10,\"loco\":11,\"trait\":19,\"size\":0,\"diet\":5,\"head\":9,\"limbs\":4,\"skin\":3,\"tail\":1,\"pattern\":4,\"eyes\":1,\"behavior\":0,\"habitat\":17,\"detail\":7,\"accent\":4,\"temper\":8,\"sense\":5,\"repro\":5,\"life\":0,\"metab\":2,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Frog\",\"_cradle\":1}",
+      "seed": 1193089256,
+      "ownerId": "authored:Frog/accepted-master",
+      "earthName": "Frog"
+    },
+    "recipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+    "template": {
+      "id": "hopper",
+      "version": 1,
+      "clipSetId": "hopper-land-v1"
+    },
+    "massClass": {
+      "name": "small",
+      "multiplier": 0.85
+    },
+    "locomotion": {
+      "loco": "leapers",
+      "gait": "hop",
+      "templateGait": "hop"
+    },
+    "realm": "amphibious",
+    "materials": {
+      "body": "slick",
+      "head": "slick",
+      "legs": "slick",
+      "tail": "slick",
+      "ears": "slick",
+      "wings": "slick",
+      "fins": "slick",
+      "antennae": "slick",
+      "fronds": "slick",
+      "arms": "slick"
+    },
+    "parts": [
+      {
+        "joint": "pelvis",
+        "parent": "root",
+        "group": "body",
+        "pivot": [
+          0.48,
+          0.46
+        ],
+        "tip": [
+          0.33,
+          0.45
+        ],
+        "boneLength": 0.15033296378372907
+      },
+      {
+        "joint": "spine",
+        "parent": "pelvis",
+        "group": "body",
+        "pivot": [
+          0.33,
+          0.45
+        ],
+        "tip": [
+          0.46,
+          0.41
+        ],
+        "boneLength": 0.13601470508735444
+      },
+      {
+        "joint": "chest",
+        "parent": "spine",
+        "group": "body",
+        "pivot": [
+          0.46,
+          0.41
+        ],
+        "tip": [
+          0.62,
+          0.43
+        ],
+        "boneLength": 0.16124515496597097
+      },
+      {
+        "joint": "neck",
+        "parent": "chest",
+        "group": "head",
+        "pivot": [
+          0.62,
+          0.43
+        ],
+        "tip": [
+          0.68,
+          0.4
+        ],
+        "boneLength": 0.06708203932499372
+      },
+      {
+        "joint": "head",
+        "parent": "neck",
+        "group": "head",
+        "pivot": [
+          0.68,
+          0.4
+        ],
+        "tip": [
+          0.74,
+          0.3
+        ],
+        "boneLength": 0.11661903789690602
+      },
+      {
+        "joint": "jaw",
+        "parent": "head",
+        "group": "head",
+        "pivot": [
+          0.74,
+          0.3
+        ],
+        "tip": [
+          0.77,
+          0.35
+        ],
+        "boneLength": 0.05830951894845301
+      },
+      {
+        "joint": "hindFarRoot",
+        "parent": "pelvis",
+        "group": "legs",
+        "pivot": [
+          0.33,
+          0.45
+        ],
+        "tip": [
+          0.42,
+          0.46
+        ],
+        "boneLength": 0.09055385138137413
+      },
+      {
+        "joint": "hindFarKnee",
+        "parent": "hindFarRoot",
+        "group": "legs",
+        "pivot": [
+          0.42,
+          0.46
+        ],
+        "tip": [
+          0.5,
+          0.54
+        ],
+        "boneLength": 0.11313708498984763
+      },
+      {
+        "joint": "hindFarAnkle",
+        "parent": "hindFarKnee",
+        "group": "legs",
+        "pivot": [
+          0.5,
+          0.54
+        ],
+        "tip": [
+          0.62,
+          0.63
+        ],
+        "boneLength": 0.14999999999999997
+      },
+      {
+        "joint": "hindFarPaw",
+        "parent": "hindFarAnkle",
+        "group": "legs",
+        "pivot": [
+          0.62,
+          0.63
+        ],
+        "tip": [
+          0.69,
+          0.665
+        ],
+        "boneLength": 0.07826237921249261
+      },
+      {
+        "joint": "foreFarRoot",
+        "parent": "chest",
+        "group": "legs",
+        "pivot": [
+          0.62,
+          0.43
+        ],
+        "tip": [
+          0.725,
+          0.45
+        ],
+        "boneLength": 0.10688779163215974
+      },
+      {
+        "joint": "foreFarKnee",
+        "parent": "foreFarRoot",
+        "group": "legs",
+        "pivot": [
+          0.725,
+          0.45
+        ],
+        "tip": [
+          0.79,
+          0.57
+        ],
+        "boneLength": 0.1364734406395618
+      },
+      {
+        "joint": "foreFarAnkle",
+        "parent": "foreFarKnee",
+        "group": "legs",
+        "pivot": [
+          0.79,
+          0.57
+        ],
+        "tip": [
+          0.825,
+          0.68
+        ],
+        "boneLength": 0.11543396380615203
+      },
+      {
+        "joint": "foreFarPaw",
+        "parent": "foreFarAnkle",
+        "group": "legs",
+        "pivot": [
+          0.825,
+          0.68
+        ],
+        "tip": [
+          0.88,
+          0.73
+        ],
+        "boneLength": 0.07433034373659252
+      },
+      {
+        "joint": "hindNearRoot",
+        "parent": "pelvis",
+        "group": "legs",
+        "pivot": [
+          0.33,
+          0.45
+        ],
+        "tip": [
+          0.32,
+          0.49
+        ],
+        "boneLength": 0.04123105625617658
+      },
+      {
+        "joint": "hindNearKnee",
+        "parent": "hindNearRoot",
+        "group": "legs",
+        "pivot": [
+          0.32,
+          0.49
+        ],
+        "tip": [
+          0.17,
+          0.48
+        ],
+        "boneLength": 0.1503329637837291
+      },
+      {
+        "joint": "hindNearAnkle",
+        "parent": "hindNearKnee",
+        "group": "legs",
+        "pivot": [
+          0.17,
+          0.48
+        ],
+        "tip": [
+          0.15,
+          0.68
+        ],
+        "boneLength": 0.20099751242241787
+      },
+      {
+        "joint": "hindNearPaw",
+        "parent": "hindNearAnkle",
+        "group": "legs",
+        "pivot": [
+          0.15,
+          0.68
+        ],
+        "tip": [
+          0.25,
+          0.74
+        ],
+        "boneLength": 0.11661903789690597
+      },
+      {
+        "joint": "foreNearRoot",
+        "parent": "chest",
+        "group": "legs",
+        "pivot": [
+          0.62,
+          0.43
+        ],
+        "tip": [
+          0.55,
+          0.445
+        ],
+        "boneLength": 0.07158910531638173
+      },
+      {
+        "joint": "foreNearKnee",
+        "parent": "foreNearRoot",
+        "group": "legs",
+        "pivot": [
+          0.55,
+          0.445
+        ],
+        "tip": [
+          0.44,
+          0.59
+        ],
+        "boneLength": 0.18200274723201296
+      },
+      {
+        "joint": "foreNearAnkle",
+        "parent": "foreNearKnee",
+        "group": "legs",
+        "pivot": [
+          0.44,
+          0.59
+        ],
+        "tip": [
+          0.5,
+          0.73
+        ],
+        "boneLength": 0.15231546211727817
+      },
+      {
+        "joint": "foreNearPaw",
+        "parent": "foreNearAnkle",
+        "group": "legs",
+        "pivot": [
+          0.5,
+          0.73
+        ],
+        "tip": [
+          0.595,
+          0.785
+        ],
+        "boneLength": 0.10977249200050074
+      }
+    ],
+    "secondaryParts": [],
+    "weapons": [
+      "bite",
+      "claw"
+    ],
+    "luminous": false,
+    "bodyLength": 0.2906888370749726,
+    "groundLineY": 0.84,
+    "landmarks": {
+      "root": [
+        0.48,
+        0.46
+      ],
+      "pelvis": [
+        0.33,
+        0.45
+      ],
+      "spine": [
+        0.46,
+        0.41
+      ],
+      "chest": [
+        0.62,
+        0.43
+      ],
+      "neck": [
+        0.68,
+        0.4
+      ],
+      "head": [
+        0.74,
+        0.3
+      ],
+      "jaw": [
+        0.77,
+        0.35
+      ],
+      "hindFarRoot": [
+        0.42,
+        0.46
+      ],
+      "hindFarKnee": [
+        0.5,
+        0.54
+      ],
+      "hindFarAnkle": [
+        0.62,
+        0.63
+      ],
+      "hindFarPaw": [
+        0.69,
+        0.665
+      ],
+      "foreFarRoot": [
+        0.725,
+        0.45
+      ],
+      "foreFarKnee": [
+        0.79,
+        0.57
+      ],
+      "foreFarAnkle": [
+        0.825,
+        0.68
+      ],
+      "foreFarPaw": [
+        0.88,
+        0.73
+      ],
+      "hindNearRoot": [
+        0.32,
+        0.49
+      ],
+      "hindNearKnee": [
+        0.17,
+        0.48
+      ],
+      "hindNearAnkle": [
+        0.15,
+        0.68
+      ],
+      "hindNearPaw": [
+        0.25,
+        0.74
+      ],
+      "foreNearRoot": [
+        0.55,
+        0.445
+      ],
+      "foreNearKnee": [
+        0.44,
+        0.59
+      ],
+      "foreNearAnkle": [
+        0.5,
+        0.73
+      ],
+      "foreNearPaw": [
+        0.595,
+        0.785
+      ]
+    },
+    "bounds": {
+      "inside": true,
+      "clamped": [],
+      "limitsDeg": {
+        "root": {
+          "min": -30,
+          "max": 30
+        },
+        "pelvis": {
+          "min": -25,
+          "max": 25
+        },
+        "spine": {
+          "min": -30,
+          "max": 30
+        },
+        "chest": {
+          "min": -20,
+          "max": 20
+        },
+        "neck": {
+          "min": -35,
+          "max": 35
+        },
+        "head": {
+          "min": -35,
+          "max": 35
+        },
+        "jaw": {
+          "min": -30,
+          "max": 5
+        },
+        "hindFarRoot": {
+          "min": -70,
+          "max": 70
+        },
+        "hindFarKnee": {
+          "min": -110,
+          "max": 110
+        },
+        "hindFarAnkle": {
+          "min": -110,
+          "max": 110
+        },
+        "hindFarPaw": {
+          "min": -45,
+          "max": 45
+        },
+        "foreFarRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "foreFarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "foreFarAnkle": {
+          "min": -60,
+          "max": 60
+        },
+        "foreFarPaw": {
+          "min": -45,
+          "max": 45
+        },
+        "hindNearRoot": {
+          "min": -70,
+          "max": 70
+        },
+        "hindNearKnee": {
+          "min": -110,
+          "max": 110
+        },
+        "hindNearAnkle": {
+          "min": -110,
+          "max": 110
+        },
+        "hindNearPaw": {
+          "min": -45,
+          "max": 45
+        },
+        "foreNearRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "foreNearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "foreNearAnkle": {
+          "min": -60,
+          "max": 60
+        },
+        "foreNearPaw": {
+          "min": -45,
+          "max": 45
+        }
+      },
+      "legSlack": {
+        "hindFar": 0.003441366926336367,
+        "foreFar": 0.004157142774800136,
+        "hindNear": 0.4040828065890262,
+        "foreNear": 0.15672466818757852
+      }
+    },
+    "notes": [
+      "physical realm: named Earth adult Frog anatomy",
+      "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): hindFar 0.3%, foreFar 0.4%"
+    ]
+  },
+  "guard": {
+    "schema": "cf.opaque-seam-sampling-guard/v1",
+    "sourceAtlasSha256": "1e8223be09bba448beaa0f0efa08d873300954d096e64349d86af7cf7da9ad0a",
+    "bindingHash": "b802c8a2a421f9bd7637018eb5ebcac37c18d5d54b7b2108e8292fcc42d9edd5",
+    "guardTexels": 6224,
+    "opaqueEdges": 3097,
+    "joins": [
+      {
+        "name": "far-fore-lower--far-fore-foot",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 114,
+        "maxBasisDifference": 9.2148511043888e-15
+      },
+      {
+        "name": "far-fore-upper--far-fore-lower",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 147,
+        "maxBasisDifference": 3.3861802251067274e-15
+      },
+      {
+        "name": "far-hind-lower--far-hind-foot",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 135,
+        "maxBasisDifference": 3.989011849881268e-15
+      },
+      {
+        "name": "far-hind-upper--far-hind-lower",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 107,
+        "maxBasisDifference": 2.8033131371785203e-15
+      },
+      {
+        "name": "head--jaw",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 195,
+        "maxBasisDifference": 4.551914400963142e-15
+      },
+      {
+        "name": "near-fore-lower--near-fore-foot",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 162,
+        "maxBasisDifference": 6.467049118441537e-15
+      },
+      {
+        "name": "near-fore-upper--near-fore-lower",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 227,
+        "maxBasisDifference": 1.1352030426792226e-14
+      },
+      {
+        "name": "near-hind-lower--near-hind-foot",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 163,
+        "maxBasisDifference": 6.315935428978678e-16
+      },
+      {
+        "name": "near-hind-upper--near-hind-lower",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 224,
+        "maxBasisDifference": 5.773159728050814e-15
+      },
+      {
+        "name": "neck--head",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 194,
+        "maxBasisDifference": 1.1393663790215669e-14
+      },
+      {
+        "name": "torso--far-fore-upper",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 93,
+        "maxBasisDifference": 1.1102230246251565e-16
+      },
+      {
+        "name": "torso--far-hind-upper",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 358,
+        "maxBasisDifference": 2.8171909249863347e-15
+      },
+      {
+        "name": "torso--near-fore-upper",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 308,
+        "maxBasisDifference": 1.1407541578023483e-14
+      },
+      {
+        "name": "torso--near-hind-upper",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 417,
+        "maxBasisDifference": 1.3211653993039363e-14
+      },
+      {
+        "name": "torso--neck",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 253,
+        "maxBasisDifference": 7.605027718682322e-15
+      }
+    ],
+    "policy": "Decode-time copies of exact opaque adjacent-owner RGBA in a one-texel ring at independently enumerated shared-field skin joins; original bytes, geometry, silhouettes, nonopaque pixels and distinct-limb/depth boundaries remain unchanged."
+  },
+  "rows": [
+    {
+      "action": "idle",
+      "resolved": "idle",
+      "durationMs": 2717.323751039803,
+      "samples": 121,
+      "status": "PASS",
+      "maximumGap": 0.00008109956124149728
+    },
+    {
+      "action": "approach",
+      "resolved": "approach:hop",
+      "durationMs": 357,
+      "samples": 32,
+      "status": "FAIL",
+      "maximumGap": 0.00008363600051551914,
+      "firstFailure": {
+        "ms": 95.2,
+        "error": "Error: ARAP skin: unresolved folded triangles: 6"
+      }
+    },
+    {
+      "action": "melee",
+      "resolved": "melee:bite",
+      "durationMs": 430.66666666666663,
+      "samples": 30,
+      "status": "FAIL",
+      "maximumGap": 0.0000841490566516952,
+      "firstFailure": {
+        "ms": 107.66666666666666,
+        "error": "Error: ARAP skin: unresolved folded triangles: 2"
+      }
+    },
+    {
+      "action": "hit",
+      "resolved": "hit",
+      "durationMs": 382.5,
+      "samples": 121,
+      "status": "PASS",
+      "maximumGap": 0.0000862773063876895
+    }
+  ]
+}

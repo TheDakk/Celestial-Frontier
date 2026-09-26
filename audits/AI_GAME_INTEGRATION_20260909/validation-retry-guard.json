@@ -1,0 +1,50 @@
+{
+  "startedAt": "2026-09-09T14:49:52.655343+00:00",
+  "sourceBefore": {
+    "port/v2/apps/game/src/local-ai-game.ts": "3f53dc5bd3fa443da7ba18b5429cf64b90190f93344ffe99d52d68aaefb36262",
+    "port/v2/tests/local-ai-game.test.ts": "86fc36aab5bae099933352793628bb4f841cedc8b7c7ed4b0cc74e0200c40425",
+    "port/v2/apps/game/src/main.ts": "8c3267940296d8c78e43d7cf548ebc5f0369d6a1e2c8b08158221b328e135d0a",
+    "port/v2/apps/game/src/local-ai-runtime.ts": "827cb9fa48d0e1a4e7367c484a7ef9cbe9f62f4b1585dd4c0df528c003dcbdef"
+  },
+  "checks": [
+    {
+      "label": "typescript-retry-guard",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-retry-types",
+        "--",
+        "npm",
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "root-validation-retry-guard",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-retry-root",
+        "--",
+        "node",
+        "tools/validate.js"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "scope": "Final changed retry guard; no native/model/full-profile rerun",
+  "finishedAt": "2026-09-09T14:50:07.496326+00:00",
+  "sourceAfter": {
+    "port/v2/apps/game/src/local-ai-game.ts": "3f53dc5bd3fa443da7ba18b5429cf64b90190f93344ffe99d52d68aaefb36262",
+    "port/v2/tests/local-ai-game.test.ts": "86fc36aab5bae099933352793628bb4f841cedc8b7c7ed4b0cc74e0200c40425",
+    "port/v2/apps/game/src/main.ts": "8c3267940296d8c78e43d7cf548ebc5f0369d6a1e2c8b08158221b328e135d0a",
+    "port/v2/apps/game/src/local-ai-runtime.ts": "827cb9fa48d0e1a4e7367c484a7ef9cbe9f62f4b1585dd4c0df528c003dcbdef"
+  },
+  "sourceUnchanged": true,
+  "status": "PASS"
+}

@@ -1,0 +1,100 @@
+[
+  {
+    "name": "racer",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/racer-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/21-racer/observed-script.json",
+    "scriptSourceSha256": "41ae7b8a8eb2ecd921befb0469bc0289332fb69c49aabdb020fa2eba193a32ed"
+  },
+  {
+    "name": "herring",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/24-herring/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/herring-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/24-herring/observed-script.json",
+    "scriptSourceSha256": "6227a058442fd17becd58477903eb693192a8d9d8f69ee0cd7a1af7e56954797"
+  },
+  {
+    "name": "eel",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/27-eel/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/eel-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/27-eel/observed-script.json",
+    "scriptSourceSha256": "add3c2d32b47719b35199f36fde14a403faa6d0fdf3012ff6297f05ad77dc706"
+  },
+  {
+    "name": "sparrow",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/sparrow-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/observed-script.json",
+    "scriptSourceSha256": "9f5085fb62ec8baf3f2fab97725b00f715d6d0bf37dbc67dd15abfeadac2ade3"
+  },
+  {
+    "name": "sturgeon",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/sturgeon-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/battle-script.json",
+    "scriptSourceSha256": "6310525625f1464892df2320b075f7bc58eaea86f2e3744a7b72af5b3a47f53b"
+  },
+  {
+    "name": "otter",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/otter-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/battle-script.json",
+    "scriptSourceSha256": "296ab8e076af0e2df49a8a00db94f725b494b763cda9564a171d786dbaaba3a4"
+  },
+  {
+    "name": "cougar",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/cougar-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/full-battle-capture-01/cougar-script.json",
+    "scriptSourceSha256": "affd02e44bb42a877c56bf34b18122ad77478e40192def1f38f8fe45dfc15885"
+  },
+  {
+    "name": "marmot",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/marmot-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-script.json",
+    "scriptSourceSha256": "82e5104fad937e0b84e9dd4fa24953a948abf04e5d683fe2bd526cd9e2323f7e"
+  },
+  {
+    "name": "bear",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/bear-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/bear-script.json",
+    "scriptSourceSha256": "bdec59ebeb3947894a5039a01a27693178c26ad3daf24b1701e430f6c1ddb1da"
+  },
+  {
+    "name": "salamander",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/26-salamander/fit-05",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/salamander-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/salamander-motion-01/observed-script.json",
+    "scriptSourceSha256": "b53216429557992daf71861c799543d57d92e631e81872ed96b4e450bf811bb2"
+  },
+  {
+    "name": "rat",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/29-rat/fit-03",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/rat-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/29-rat/observed-script.json",
+    "scriptSourceSha256": "60053ac734302acf361ea1f1b60326fb2e50523530974440273ec52ee4b06143"
+  },
+  {
+    "name": "shark",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/shark-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/battle-script.json",
+    "scriptSourceSha256": "b8c8183c4e15990debea82f42c96852a234c2b49a736bc7067b591d4281d0fed"
+  },
+  {
+    "name": "lizard",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/lizard-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-script.json",
+    "scriptSourceSha256": "8a3c22fab1e62611058176c600491568ddb84b951bdcf5f0c594d4d04c78c8a3"
+  },
+  {
+    "name": "ibex",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/18-ibex/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/ibex-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/18-ibex/battle-script.json",
+    "scriptSourceSha256": "7229491ccf534683399674a4ad4bee04859f4dd2c4f1abf62c4cce3e65463fbb"
+  }
+]

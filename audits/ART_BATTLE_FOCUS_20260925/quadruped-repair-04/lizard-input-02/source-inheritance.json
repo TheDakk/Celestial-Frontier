@@ -1,0 +1,19 @@
+{
+  "sourcePacket": "audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard",
+  "unchanged": [
+    {
+      "file": "master.png",
+      "sha256": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff"
+    },
+    {
+      "file": "subject-source.json",
+      "sha256": "ccd978ba613eca27cd02eaa0666e91ca9ea11b9b339c63d65eecfef1e8ddebed"
+    },
+    {
+      "file": "presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    }
+  ],
+  "authoringSourceSha256": "9ac35bc5a7872dff2252c3f821c4d165a615e158c4cb5ad5a517e8ccad20582f",
+  "scope": "Candidate ownership repair, no new painting/no transferred or inferred anatomy; old record/binding remain immutable."
+}

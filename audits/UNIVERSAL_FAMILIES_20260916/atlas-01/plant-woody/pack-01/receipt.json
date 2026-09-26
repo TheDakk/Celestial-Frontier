@@ -1,0 +1,161 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "winning painter draw-stage RGBA changes",
+  "recordRecipeHash": "0fbccc3242aec7d31753e58c8c856c7ae419b8035908aab3737863432a0ee8e4",
+  "declarationHash": "604494b9f305ea22d88f6a7794bc4f50c08d0a664309e32ef28976642ba65df9",
+  "paintedPixels": 16384,
+  "parts": [
+    {
+      "id": "part-00",
+      "joint": "root",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      },
+      "pixels": 1536
+    },
+    {
+      "id": "part-01",
+      "joint": "trunk",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 12,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      },
+      "pixels": 1536
+    },
+    {
+      "id": "part-02",
+      "joint": "branch0Base",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 24,
+        "y": 0,
+        "width": 11,
+        "height": 128
+      },
+      "pixels": 1408
+    },
+    {
+      "id": "part-03",
+      "joint": "branch0Tip",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 35,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      },
+      "pixels": 1536
+    },
+    {
+      "id": "part-04",
+      "joint": "leaf0",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 47,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      },
+      "pixels": 1536
+    },
+    {
+      "id": "part-05",
+      "joint": "branch1Base",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 59,
+        "y": 0,
+        "width": 11,
+        "height": 128
+      },
+      "pixels": 1408
+    },
+    {
+      "id": "part-06",
+      "joint": "branch1Tip",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 70,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      },
+      "pixels": 1536
+    },
+    {
+      "id": "part-07",
+      "joint": "leaf1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 82,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      },
+      "pixels": 1536
+    },
+    {
+      "id": "part-08",
+      "joint": "branch2Base",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 94,
+        "y": 0,
+        "width": 11,
+        "height": 128
+      },
+      "pixels": 1408
+    },
+    {
+      "id": "part-09",
+      "joint": "branch2Tip",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 105,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      },
+      "pixels": 1536
+    },
+    {
+      "id": "part-10",
+      "joint": "leaf2",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 117,
+        "y": 0,
+        "width": 11,
+        "height": 128
+      },
+      "pixels": 1408
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "mode": "native painter alpha; no keyer"
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "e272fa9ef9198f530e4d007166a20d1f7c94e94116103ab10fd2960bc921111e",
+  "masterUnchanged": true,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

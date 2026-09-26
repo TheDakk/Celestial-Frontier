@@ -1,0 +1,23 @@
+REFERENCE LOCK
+Use the attached original Celestial Frontier landscape ONLY as a reference for painterly surface treatment, believable material mass, selective detail and warm/cool light. Do not repeat its Wolf, person, ship, mesas, orange planet, composition or desert palette. This is a new provisional art-direction comparison requested by Nick, not approved production art.
+
+STYLE
+Original mature painted science-fiction exploration art. Visible confident oil brushwork, atmospheric depth, controlled mineral colours, compelling alien biology, selectively sharp focal shapes, soft painted distant forms. Rich and mysterious, approachable through wonder rather than comedy. Each panel needs a genuinely different palette and ecology while still feeling like the same game. Avoid photographic composites, glossy 3D-render plastic, identical orange sunsets, copied fantasy architecture and generic neon.
+
+SUBJECT AND LAYOUT
+One polished landscape contact sheet with FOUR equally sized LANDSCAPE paintings in a precise 2 by 2 grid with thin charcoal gutters. No text anywhere, no labels, no inset diagrams. Fill the panels; no outer white margins. Each scene has a convincing navigable ground or shoreline foreground suitable for a future shallow three-quarter turn-based encounter, an atmospheric midground and a distant horizon. Environment studies, not game screenshots. No UI, no heroes, no ships, no foreground featured animals. Distinct rooted botanical life is allowed only where specified. Suggested overall 1536 by 1024 or larger.
+
+TOP LEFT — TERRAN RAINFOREST STUDY
+An immense rain-soaked alien rainforest. Dark jade and moss-green canopy; giant buttressed trunks with coherent branching, pale ivory fronds and copper-orange seed pods. A shallow clear stream curves beside a broad dark stone shelf in the foreground. Fine mist and cool silver daylight pierce the canopy. Sparse bioluminescent spores remain subtle. Dense, old, lush and alive, with readable silhouettes rather than visual noise.
+
+TOP RIGHT — ICE CRYOGEYSER STUDY
+A vast ice world under blue-grey daylight. Glacial turquoise fractures, enormous sculpted blue-ice ridges, weathered dark rock islands and exactly two distant white cryogeyser plumes. An indigo mountain horizon and a pale crescent moon. A stable snow-dusted slate shelf crosses the foreground. No forest, no flowers, no fantasy crystal cluster or lava. Hostile but breathtaking; broad quiet shapes contrast the rainforest density.
+
+BOTTOM LEFT — OCEAN CORAL/ARCHIPELAGO STUDY
+A temperate alien ocean shoreline at pearlescent early morning. Deep teal water, pale limestone terraces, tide pools and tall rust-red porous reef forms visibly rooted below the shallows. A broad gently sloping rock shelf in front, scattered rounded shell-like mineral deposits, offshore limestone islands emerging from lavender sea haze. Organic branching coral must read as marine habitat, not decorative crystals. Reflected soft rose and silver light; no tropical Earth palm trees.
+
+BOTTOM RIGHT — LAVA BASALT STUDY
+An airless-looking volcanic basin with no living plants: weathered black basalt columns, cooled wrinkled flows, a few narrow molten amber fissures, mineral-red slopes and distant volcanic haze. Preserve a large solid dark foreground shelf; no lava lake swallowing the playable ground. Ash-grey sky with an enormous distant cratered moon, rusty reflected glow kept local. Dramatic, dangerous and monumental, with cool deep shadows and selective ember accents rather than uniform orange.
+
+TECHNICAL AND NEGATIVES
+Opaque finished painted reference PNG, not transparent, no chroma key, no checkerboard. Four and only four separated scenes. No text, typography, logos, watermarks, arrows, panels inside panels, creatures, people, spacecraft, castles, magic runes, oversized mushrooms in every scene, lens flare or uniform colour filter. Do not imply these are pixel-exact generated game seeds; these are art-direction studies drawn from existing biome families.

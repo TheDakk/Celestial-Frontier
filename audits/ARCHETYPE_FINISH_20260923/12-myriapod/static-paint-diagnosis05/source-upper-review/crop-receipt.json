@@ -1,0 +1,12 @@
+{
+  "source": "../../audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/master.png",
+  "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+  "crop": {
+    "x": 805,
+    "y": 565,
+    "width": 85,
+    "height": 94
+  },
+  "outputSha256": "ae50390247a6386cbbfecd8150bfcc5fe6c1c41bd0bb3e2380f97b529e86ea10",
+  "transformation": "Direct RGBA crop; no editing, alpha threshold, recoloring or overlay"
+}

@@ -1,0 +1,29 @@
+{
+  "applicable": true,
+  "forward": 0.070494,
+  "backward": 0.070494,
+  "samples": 121,
+  "bodyPlanted": [],
+  "limits": [
+    {
+      "direction": 1,
+      "admitted": 0.070494,
+      "refusedAt": 0.07049515830810887,
+      "refusal": {
+        "ms": 0,
+        "displacement": 0.07049515830810887,
+        "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+      }
+    },
+    {
+      "direction": -1,
+      "admitted": 0.070494,
+      "refusedAt": 0.07049515830810887,
+      "refusal": {
+        "ms": 210,
+        "displacement": -0.07049515830810887,
+        "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+      }
+    }
+  ]
+}

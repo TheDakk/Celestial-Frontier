@@ -1,0 +1,14 @@
+{
+  "schema": "cf.sprint-manual-presence-observation/v1",
+  "admittedPresence": false,
+  "declarationOwner": "Codex parent manual observation of retained master",
+  "absent": "No antenna, mandible or walking-leg group is declared absent.",
+  "hidden": "Far-side leg distal chains are occluded by the body; exact whole-chain census is unresolved.",
+  "folded": "No folded walking chain is declared.",
+  "observedNearWalkingLegsAtLeast": 15,
+  "fullLegCount": null,
+  "fullPairCount": null,
+  "terminalAppendagesObserved": 2,
+  "antennaeObserved": 2,
+  "reason": "At least15near walking legs require more than the current four pair slots. A complete counted presence must not be invented; candidate contact capacity is inspected before any record or repaint."
+}

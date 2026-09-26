@@ -1,0 +1,36 @@
+✔ resolves pelvis-rooted upper limb to torso and detects broken rendered attachment with unchanged rest (1.561ms)
+✔ independent legs and non-nearest ancestral silhouette contacts remain explicitly excluded (0.765875ms)
+✔ samples both piecewise-affine breakpoint inventories so a narrow gap cannot hide between pixel endpoints (0.287959ms)
+✔ refuses missing source coverage, overlapping ownership and nonfinite publication (0.382ms)
+✔ proximal body skin joins across bone siblings while distinct limbs stay independent (5.144542ms)
+✔ retained actual Civet strike: continuous C03 passes; branch-split C06 and incomplete-socket C07 fail (604.02575ms)
+✔ fish spine and fin attachments use the declared graph; foreign joints and absent remainder refuse (0.381167ms)
+✖ bin-edge rounding keeps present source coverage; true missing coverage and displaced publication still fail (2.7595ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 738.117833
+
+✖ failing tests:
+
+test at port/v2/tools/quadruped-proof/source-join-continuity.test.mjs:75:1
+✖ bin-edge rounding keeps present source coverage; true missing coverage and displaced publication still fail (2.7595ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.test.mjs:83:93)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /source attachment absent/,
+    operator: 'throws',
+    diff: 'simple'
+  }

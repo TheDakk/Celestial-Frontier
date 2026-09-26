@@ -1,0 +1,7 @@
+{
+  "command": "node tools/validate.js",
+  "exitCode": 0,
+  "scope": "After reference refresh and packaging; original code-check receipt is retained",
+  "log": "checks/validate-after-docs.log.gz",
+  "uncompressedSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+}

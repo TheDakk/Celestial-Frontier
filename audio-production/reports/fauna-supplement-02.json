@@ -1,0 +1,1042 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v5.reference.alligatorhiss-ogg.b019246ade92",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 11.328,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/fws_commons/b019246ade92f25e-Alligatorhiss.ogg",
+          "sha256": "b019246ade92f25ea00c2185e1b5f2e023770513691ba9ef71e47e6b3d0ca4b1",
+          "sourceId": "fws_commons",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 11.328
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.alligator.recording"
+      ],
+      "notes": "Reference only: Alligator. American alligator hiss; defensive context, not a game hurt cue Source: American alligator hiss; defensive context, not a game hurt cue. Credit: U.S. Fish and Wildlife Service; Commons contributor/conversion credit in item metadata; Public-Domain; https://commons.wikimedia.org/wiki/File:Alligatorhiss.ogg. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "b019246ade92f25ea00c2185e1b5f2e023770513691ba9ef71e47e6b3d0ca4b1",
+        "sourceDbTP": -16.1,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 11.328
+      },
+      "start": 0,
+      "master": "masters/fauna-supplement-02/v5.reference.alligatorhiss-ogg.b019246ade92.wav",
+      "masterSha256": "d8c48f815ecd83b6760f634354cc6dde9cca0933400e26f42daa1c1f86b9f7dc",
+      "opus": "masters/fauna-supplement-02/v5.reference.alligatorhiss-ogg.b019246ade92.opus",
+      "opusSha256": "1eeede1457c36dd1bff4711d4f80950bc4c3effe3d861c0c8b3ae41e3c5ecf1c",
+      "previewSha256": "a36ecee94b9e62faabfd3a5cef0fd228464e1d993a286d16696dea4dd39cd014",
+      "previewBytes": 2175090,
+      "previewUrl": "/__cf-audio-review/v5.reference.alligatorhiss-ogg.b019246ade92.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -21.8,
+      "opusDbTP": -21.8
+    },
+    {
+      "id": "v5.reference.central-american-spider-monkey.b139a4e7b5da",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 9.543,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/b139a4e7b5da1576-400671.m4a",
+          "sha256": "b139a4e7b5da15766f943b757930c5ad67815110ebd7ddda1ce37cd38e68333d",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 9.542993
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.spider-monkey.recording"
+      ],
+      "notes": "Reference only: Spider Monkey. Research-grade observation identity; audio behavior and field companions still require review. Source: Ateles geoffroyi azuerensis. Credit: (c) keesgroenendijk, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/112336553. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "b139a4e7b5da15766f943b757930c5ad67815110ebd7ddda1ce37cd38e68333d",
+        "sourceDbTP": -27.2,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 9.543
+      },
+      "start": 12.328,
+      "master": "masters/fauna-supplement-02/v5.reference.central-american-spider-monkey.b139a4e7b5da.wav",
+      "masterSha256": "3896118fd7b5107bdd09245f22516e26404b1324388fe1233983544de97b4382",
+      "opus": "masters/fauna-supplement-02/v5.reference.central-american-spider-monkey.b139a4e7b5da.opus",
+      "opusSha256": "9be65f0ba38461a3a48307527bfbec77eb7e3e90accaa6face15e29bc8b2438c",
+      "previewSha256": "0220aab326346912d633c7acf30969834d47cf4c5e8dedd256c04fcdb5e8734b",
+      "previewBytes": 916242,
+      "previewUrl": "/__cf-audio-review/v5.reference.central-american-spider-monkey.b139a4e7b5da.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.9,
+      "opusDbTP": -33.0
+    },
+    {
+      "id": "v5.reference.sheep-baa.b2687077a29c",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 0.8724,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-archives/oga_animal_sheep_baa/b2687077a29c044e-sheep_baa.flac",
+          "sha256": "b2687077a29c044e57220b660c616f9336a0b454519f67bbc59954e0574acc70",
+          "sourceId": "oga_animal_sheep_baa",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 0.872404
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.sheep.recording"
+      ],
+      "notes": "Reference only: Sheep. Recorded sheep baa as attributed by contributor Source: Sheep Baa. Credit: mikewest; edited by AntumDeluge; CC0-1.0; https://opengameart.org/content/sheep-baa. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "b2687077a29c044e57220b660c616f9336a0b454519f67bbc59954e0574acc70",
+        "sourceDbTP": -6.0,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 0.8724
+      },
+      "start": 22.871,
+      "master": "masters/fauna-supplement-02/v5.reference.sheep-baa.b2687077a29c.wav",
+      "masterSha256": "32aea531ecdf7956a9347a0212cc685459fbd46aeef7ebd80170d603d78447a7",
+      "opus": "masters/fauna-supplement-02/v5.reference.sheep-baa.b2687077a29c.opus",
+      "opusSha256": "2e33731448cda513cd9fb0941b4d0e22801ed8bdae8b4b0fa51b932cf356eabb",
+      "previewSha256": "ae591d996f8fd6c52da7fb67fbc8bbce19c241aedf9fe670297230a91d1449c2",
+      "previewBytes": 83864,
+      "previewUrl": "/__cf-audio-review/v5.reference.sheep-baa.b2687077a29c.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.7,
+      "opusDbTP": -11.7
+    },
+    {
+      "id": "v5.reference.taiwan-serow.b38e32a5bf6f",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/b38e32a5bf6f1272-858791.m4a",
+          "sha256": "b38e32a5bf6f12721c305d36553e289d38335e85b4d3564cda979b68735eaaa2",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 33.344
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.serow.recording"
+      ],
+      "notes": "Reference only: Serow. Research-grade observation identity; audio behavior and field companions still require review. Source: Capricornis swinhoei. Credit: (c) 呂一起(Lu i-chi), some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/193679309. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "b38e32a5bf6f12721c305d36553e289d38335e85b4d3564cda979b68735eaaa2",
+        "sourceDbTP": -17.5,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 24.743399999999998,
+      "master": "masters/fauna-supplement-02/v5.reference.taiwan-serow.b38e32a5bf6f.wav",
+      "masterSha256": "7ae16b699e1da8d2a1024dc7c7c73c8ad1009006b918f62b7ac295ca4e72e648",
+      "opus": "masters/fauna-supplement-02/v5.reference.taiwan-serow.b38e32a5bf6f.opus",
+      "opusSha256": "0745b09ef55b133dbd7b200d01d56047b85155faff8098f14181e833183e8c8e",
+      "previewSha256": "b53f438a14bbd4624869c6266f8794ebae52b2d4b1bbfa55d668c649bd7fc29a",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v5.reference.taiwan-serow.b38e32a5bf6f.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.2,
+      "opusDbTP": -22.9
+    },
+    {
+      "id": "v5.reference.crow-caw.bba22883209b",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 0.5458,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-archives/oga_animal_crow_caw/bba22883209b4359-crow_caw.wav",
+          "sha256": "bba22883209b435905471d057160f1badae59b89a62e9a8b3199d7e327b17339",
+          "sourceId": "oga_animal_crow_caw",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 0.545823
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.crow.recording"
+      ],
+      "notes": "Reference only: Crow. Crow recorded in Cairo; source-described identity Source: Crow caw. Credit: zeroisnotnull; CC0-1.0; https://opengameart.org/content/crow-caw. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "bba22883209b435905471d057160f1badae59b89a62e9a8b3199d7e327b17339",
+        "sourceDbTP": -14.1,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 0.5458
+      },
+      "start": 37.743399999999994,
+      "master": "masters/fauna-supplement-02/v5.reference.crow-caw.bba22883209b.wav",
+      "masterSha256": "96ebdd8a48a435b4c09fd0b1a7d6389274ea03bab70ab64625b34ce7f94eda1c",
+      "opus": "masters/fauna-supplement-02/v5.reference.crow-caw.bba22883209b.opus",
+      "opusSha256": "e08ca41c441a6a64c33e3fe1c9364e87a82bd385dc5052d9d63e15eec16bb91d",
+      "previewSha256": "8ba82405a283abc6e2e91e335ccb9f1a4e23ce569edeea3bd616ae25418ce6d6",
+      "previewBytes": 104906,
+      "previewUrl": "/__cf-audio-review/v5.reference.crow-caw.bba22883209b.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.8,
+      "opusDbTP": -19.9
+    },
+    {
+      "id": "v5.reference.dog-barking-mono.bbd0f908b351",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 2.0386,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-archives/oga_animal_dog_barking_mono/bbd0f908b3514dd3-dog_barking_mono.wav",
+          "sha256": "bbd0f908b3514dd3bd7d2bc04dcf64f8d360a161e7f43cac5d6761e7add79451",
+          "sourceId": "oga_animal_dog_barking_mono",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 2.038594
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.dog.recording"
+      ],
+      "notes": "Reference only: Dog. Recorded dog bark with noise reduction; incidental insect noise possible Source: Dog barking mono. Credit: Brandon Morris / HaelDB; CC0-1.0; https://opengameart.org/content/dog-barking-mono. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "bbd0f908b3514dd3bd7d2bc04dcf64f8d360a161e7f43cac5d6761e7add79451",
+        "sourceDbTP": -7.0,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 2.0386
+      },
+      "start": 39.289199999999994,
+      "master": "masters/fauna-supplement-02/v5.reference.dog-barking-mono.bbd0f908b351.wav",
+      "masterSha256": "a6926213869689be12168bb7b362a6b07aaa7b380e0d03ec486595473c73a275",
+      "opus": "masters/fauna-supplement-02/v5.reference.dog-barking-mono.bbd0f908b351.opus",
+      "opusSha256": "4cc68cd8c02c86bb4e06aa908e01c3cb04e37fa9d86befb9837099ed7c396d5e",
+      "previewSha256": "53c4c01870db7dd8be5bbdadacaae9220eef168c5151f666729a177fd7a0b679",
+      "previewBytes": 195820,
+      "previewUrl": "/__cf-audio-review/v5.reference.dog-barking-mono.bbd0f908b351.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.7,
+      "opusDbTP": -12.9
+    },
+    {
+      "id": "v5.reference.bat-screeches.bc7f1ac5f52f",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 1.3613,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_animal_bat_screeches/bc7f1ac5f52fa87f-bat_03.flac",
+          "sha256": "bc7f1ac5f52fa87f33eff62e4ecb9b7e0fe42164b5830f24a4ce6471ae4d2a01",
+          "sourceId": "oga_animal_bat_screeches",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 1.36127
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.fruit-bat.recording"
+      ],
+      "notes": "Reference only: Fruit Bat. Fruit bats, Sydney field recording; water fountain and source noise reduction Source: Bat Screeches. Credit: polymorpheva; edited by AntumDeluge; CC0-1.0; https://opengameart.org/content/bat-screeches. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "bc7f1ac5f52fa87f33eff62e4ecb9b7e0fe42164b5830f24a4ce6471ae4d2a01",
+        "sourceDbTP": -5.7,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 1.3613
+      },
+      "start": 42.327799999999996,
+      "master": "masters/fauna-supplement-02/v5.reference.bat-screeches.bc7f1ac5f52f.wav",
+      "masterSha256": "9f6f61224e519dce0514d0bdd01c4fff8b4e3a0c6a35726fd34b47a5877b06ac",
+      "opus": "masters/fauna-supplement-02/v5.reference.bat-screeches.bc7f1ac5f52f.opus",
+      "opusSha256": "830b8fdc91b484591d5c946e8f3c3b5f999cfaad8de0c9e978580d00e6da6e4c",
+      "previewSha256": "540416fb898bcd01082b6f1c383c4f0cbd8b97c3620822d1b29a8838da4640da",
+      "previewBytes": 130798,
+      "previewUrl": "/__cf-audio-review/v5.reference.bat-screeches.bc7f1ac5f52f.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.3,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v5.reference.asian-house-shrew.c0b5cefea242",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 1.5243,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/c0b5cefea242c9b9-317857.wav",
+          "sha256": "c0b5cefea242c9b9a8ca647bcc14b0738b92964284d8159b2bd029c44debdeb4",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.3630780547701013,
+          "delay": 0,
+          "duration": 1.52425
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.shrew.recording"
+      ],
+      "notes": "Reference only: Shrew. Research-grade observation identity; audio behavior and field companions still require review. Source: Suncus murinus. Credit: (c) Karthik Thrikkadeeri, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/98599870. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "c0b5cefea242c9b9a8ca647bcc14b0738b92964284d8159b2bd029c44debdeb4",
+        "sourceDbTP": -0.2,
+        "priorGain": 0.65,
+        "gain": 0.3630780547701013,
+        "duration": 1.5243
+      },
+      "start": 44.689099999999996,
+      "master": "masters/fauna-supplement-02/v5.reference.asian-house-shrew.c0b5cefea242.wav",
+      "masterSha256": "d8b6839171f4a25bf7168e3376ec29e0edb77a1d907ab4bf32cc8b4f85bfd782",
+      "opus": "masters/fauna-supplement-02/v5.reference.asian-house-shrew.c0b5cefea242.opus",
+      "opusSha256": "0c285889eeb6b45579dfc1dca93956ca4ac982927f5d98a3ef34032bb4b52e03",
+      "previewSha256": "0dece54ca1563459de08882290aa4e30dbe651f426250475c59ba3662532ad9d",
+      "previewBytes": 146446,
+      "previewUrl": "/__cf-audio-review/v5.reference.asian-house-shrew.c0b5cefea242.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -11.2
+    },
+    {
+      "id": "v5.reference.penguin-sounds.c67a60231434",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 0.4644,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_animal_penguin_sounds/c67a602314342f0a-penguin_01.flac",
+          "sha256": "c67a602314342f0ae995ffd780adaca16ef8709e854da934f41093868f00dd1d",
+          "sourceId": "oga_animal_penguin_sounds",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 0.464422
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.penguin.recording"
+      ],
+      "notes": "Reference only: Penguin. Leipzig zoo penguins with other birds/water; source noise reduction Source: Penguin Sounds. Credit: Bidone; edited by AntumDeluge; CC0-1.0; https://opengameart.org/content/penguin-sounds. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "c67a602314342f0ae995ffd780adaca16ef8709e854da934f41093868f00dd1d",
+        "sourceDbTP": -6.0,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 0.4644
+      },
+      "start": 47.21339999999999,
+      "master": "masters/fauna-supplement-02/v5.reference.penguin-sounds.c67a60231434.wav",
+      "masterSha256": "0244022eaaa4978593939d2e68640ee975417311227ecee19819659df42d78fd",
+      "opus": "masters/fauna-supplement-02/v5.reference.penguin-sounds.c67a60231434.opus",
+      "opusSha256": "a16d15e094a1efa8f00339d52a557c7f7cc54879411f0edc11be042b8b6f3d25",
+      "previewSha256": "5155cca30044aa6196d5c8b049060f3cbca10e5321c0c15c5d722ef8fdcd3999",
+      "previewBytes": 44696,
+      "previewUrl": "/__cf-audio-review/v5.reference.penguin-sounds.c67a60231434.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.7,
+      "opusDbTP": -11.7
+    },
+    {
+      "id": "v5.reference.australian-scrub-python.cb7e180161eb",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/cb7e180161eb3ce8-2056736.m4a",
+          "sha256": "cb7e180161eb3ce8b1219af390e559449011888a29bc4168d5092b8d1319156b",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.5432503314924332,
+          "delay": 0,
+          "duration": 20.270998
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.python.recording"
+      ],
+      "notes": "Reference only: Python. Research-grade observation identity; audio behavior and field companions still require review. Source: Simalia kinghorni. Credit: (c) Suzanne Muzic, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/378147210. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "cb7e180161eb3ce8b1219af390e559449011888a29bc4168d5092b8d1319156b",
+        "sourceDbTP": -3.7,
+        "priorGain": 0.65,
+        "gain": 0.5432503314924332,
+        "duration": 12
+      },
+      "start": 48.67779999999999,
+      "master": "masters/fauna-supplement-02/v5.reference.australian-scrub-python.cb7e180161eb.wav",
+      "masterSha256": "f4ee064e6c33ded839caee7bb5c152c6ae37ad9a79f28a10f71ec769d1391883",
+      "opus": "masters/fauna-supplement-02/v5.reference.australian-scrub-python.cb7e180161eb.opus",
+      "opusSha256": "7791d981e5bbb15228c1836c7b536a1c5c19e45761fae3894c7d6111818ad9ac",
+      "previewSha256": "35d36279bfaf4d5b05a9ddbf9cee6d9f279308a1d7c6c1ec4ffbc862590131e7",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v5.reference.australian-scrub-python.cb7e180161eb.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -10.9
+    },
+    {
+      "id": "v5.reference.giant-otter.d0a55ad40d6b",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/d0a55ad40d6b2232-1869225.m4a",
+          "sha256": "d0a55ad40d6b22327ccbcb2435a5a18cdb062cfcad041a1cca44efdda3d224b3",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 17.599729
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.giant-otter.recording"
+      ],
+      "notes": "Reference only: Giant Otter. Research-grade observation identity; audio behavior and field companions still require review. Source: Pteronura brasiliensis. Credit: (c) Valentin Moser, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/351117487. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "d0a55ad40d6b22327ccbcb2435a5a18cdb062cfcad041a1cca44efdda3d224b3",
+        "sourceDbTP": -8.9,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 61.67779999999999,
+      "master": "masters/fauna-supplement-02/v5.reference.giant-otter.d0a55ad40d6b.wav",
+      "masterSha256": "837bded4474b3df0e35aaa0eb70935ce2e81c1fc16991690f4835a9265e2e382",
+      "opus": "masters/fauna-supplement-02/v5.reference.giant-otter.d0a55ad40d6b.opus",
+      "opusSha256": "3239a95c2841c4ac29411464b6728a9035e59da085cb83e892603ab8434ff773",
+      "previewSha256": "1fad29d9de1371b516e015091d0bbecd12df2f7415b0e8620069a10cfc147cb7",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v5.reference.giant-otter.d0a55ad40d6b.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.6,
+      "opusDbTP": -15.1
+    },
+    {
+      "id": "v5.reference.desert-owl.d90ec2f25217",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 2.8767,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/d90ec2f25217a64f-619339.mp3",
+          "sha256": "d90ec2f25217a64f5b2da89dc7e189c9b66b6b206a6c82bf291497f25e21fb71",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.40738027780411273,
+          "delay": 0,
+          "duration": 2.876675
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.desert-owl.recording"
+      ],
+      "notes": "Reference only: Desert Owl. Research-grade observation identity; audio behavior and field companions still require review. Source: Strix hadorami. Credit: (c) Jan Ebr, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/151754802. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "d90ec2f25217a64f5b2da89dc7e189c9b66b6b206a6c82bf291497f25e21fb71",
+        "sourceDbTP": -1.2,
+        "priorGain": 0.65,
+        "gain": 0.40738027780411273,
+        "duration": 2.8767
+      },
+      "start": 74.67779999999999,
+      "master": "masters/fauna-supplement-02/v5.reference.desert-owl.d90ec2f25217.wav",
+      "masterSha256": "f8cefd53bed47196d3e0126b03d158cb94e44784d647cee6c04cc10cef17c142",
+      "opus": "masters/fauna-supplement-02/v5.reference.desert-owl.d90ec2f25217.opus",
+      "opusSha256": "b917feef8d9fba949fa47ba817abbe35a98005f89e80493e063f625238f41450",
+      "previewSha256": "c0ee5ebf55951f4e1a1d3f2189e25bf007a25f133ee478ba8af6bae3c1f3fc70",
+      "previewBytes": 552442,
+      "previewUrl": "/__cf-audio-review/v5.reference.desert-owl.d90ec2f25217.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -11.2
+    },
+    {
+      "id": "v5.reference.common-wildebeest.daf78b63fec9",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 7.1571,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/daf78b63fec991c4-2118158.wav",
+          "sha256": "daf78b63fec991c45f93d7f7044fb41f98dc0de9a6f9c73136bec674c9ac76ea",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.3890451449942806,
+          "delay": 0,
+          "duration": 7.157063
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.wildebeest.recording"
+      ],
+      "notes": "Reference only: Wildebeest. Research-grade observation identity; audio behavior and field companions still require review. Source: Connochaetes taurinus mearnsi. Credit: (c) Jono, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/391056098. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "daf78b63fec991c45f93d7f7044fb41f98dc0de9a6f9c73136bec674c9ac76ea",
+        "sourceDbTP": -0.8,
+        "priorGain": 0.65,
+        "gain": 0.3890451449942806,
+        "duration": 7.1571
+      },
+      "start": 78.55449999999999,
+      "master": "masters/fauna-supplement-02/v5.reference.common-wildebeest.daf78b63fec9.wav",
+      "masterSha256": "1543e7a1fc6cbacb2ab1457ba90659be6b024e6765cff0400fb8e5812ed880ea",
+      "opus": "masters/fauna-supplement-02/v5.reference.common-wildebeest.daf78b63fec9.opus",
+      "opusSha256": "c6f5fc9317c62ec19ab1cabc34c16967834586c1777ead3d4e70c0b66f5bc9dd",
+      "previewSha256": "f6277cbb79ba1e12b38209d2accb345315219af381ca91736ff81341d99b1cad",
+      "previewBytes": 687196,
+      "previewUrl": "/__cf-audio-review/v5.reference.common-wildebeest.daf78b63fec9.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -11.0
+    },
+    {
+      "id": "v5.reference.brown-banded-cobra.dd1ae4bd3bc4",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/dd1ae4bd3bc4eb92-1943042.wav",
+          "sha256": "dd1ae4bd3bc4eb92eae5a40beee96ec23738c0d71813923c76d268fc9d5fd9b3",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.5559042572704036,
+          "delay": 0,
+          "duration": 16.743708
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.cobra.recording"
+      ],
+      "notes": "Reference only: Cobra. Research-grade observation identity; audio behavior and field companions still require review. Source: Naja fuxi. Credit: (c) Wich’yanan (Jay) Limparungpatthanakij, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/360118939. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "dd1ae4bd3bc4eb92eae5a40beee96ec23738c0d71813923c76d268fc9d5fd9b3",
+        "sourceDbTP": -3.9,
+        "priorGain": 0.65,
+        "gain": 0.5559042572704036,
+        "duration": 12
+      },
+      "start": 86.71159999999999,
+      "master": "masters/fauna-supplement-02/v5.reference.brown-banded-cobra.dd1ae4bd3bc4.wav",
+      "masterSha256": "1e5c437149aef1dbeee3d7e9c3dc23f7861b7bc4dc282a119f85906b85966b3f",
+      "opus": "masters/fauna-supplement-02/v5.reference.brown-banded-cobra.dd1ae4bd3bc4.opus",
+      "opusSha256": "93057d4dfbd875bec53d414f7f3cd9ed4004b9f0de7b236c3b9004c8c5e4868c",
+      "previewSha256": "e873146ea38602719e6f3cc55409b4e4405764810705a61e806db019493e7811",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v5.reference.brown-banded-cobra.dd1ae4bd3bc4.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -11.5
+    },
+    {
+      "id": "v5.reference.northern-chamois.e4d8e2c1d808",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 3.7938,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/e4d8e2c1d808b2d3-25134.mp3",
+          "sha256": "e4d8e2c1d808b2d3c3134a7cc597290d8cc049b6f017e91c4300ced99a8e6851",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 3.793787
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.chamois.recording"
+      ],
+      "notes": "Reference only: Chamois. Research-grade observation identity; audio behavior and field companions still require review. Source: Rupicapra rupicapra. Credit: (c) Philipp Pavelka, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/15486090. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "e4d8e2c1d808b2d3c3134a7cc597290d8cc049b6f017e91c4300ced99a8e6851",
+        "sourceDbTP": -12.5,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 3.7938
+      },
+      "start": 99.71159999999999,
+      "master": "masters/fauna-supplement-02/v5.reference.northern-chamois.e4d8e2c1d808.wav",
+      "masterSha256": "967ea529ea1a3338562083a227af452aeedf96586b63203b35e286dc19472f72",
+      "opus": "masters/fauna-supplement-02/v5.reference.northern-chamois.e4d8e2c1d808.opus",
+      "opusSha256": "1ccd29ec2dcfcad1905af69a496d0d8b0703636f3ed760e22e90e07572db2d8e",
+      "previewSha256": "52da9878c7c3ab162220419023bb22bfff8e5e4e057c2baef3cc7ffa50a1ceeb",
+      "previewBytes": 728522,
+      "previewUrl": "/__cf-audio-review/v5.reference.northern-chamois.e4d8e2c1d808.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -18.2,
+      "opusDbTP": -18.1
+    },
+    {
+      "id": "v5.reference.turkey-vulture.eb9065f25697",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/eb9065f256974f8f-292918.wav",
+          "sha256": "eb9065f256974f8f4f4f575d3fdcd488c79bc73a7c9754e91f1dbf9989542712",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.5188000389289611,
+          "delay": 0,
+          "duration": 19.911111
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.vulture.recording"
+      ],
+      "notes": "Reference only: Vulture. Research-grade observation identity; audio behavior and field companions still require review. Source: Cathartes aura. Credit: (c) Eric Schmidt, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/90930960. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "eb9065f256974f8f4f4f575d3fdcd488c79bc73a7c9754e91f1dbf9989542712",
+        "sourceDbTP": -3.3,
+        "priorGain": 0.65,
+        "gain": 0.5188000389289611,
+        "duration": 12
+      },
+      "start": 104.5054,
+      "master": "masters/fauna-supplement-02/v5.reference.turkey-vulture.eb9065f25697.wav",
+      "masterSha256": "04c7a29e751450cab19de4c8716396455872262d9ad61adf22470d7c24aacf2e",
+      "opus": "masters/fauna-supplement-02/v5.reference.turkey-vulture.eb9065f25697.opus",
+      "opusSha256": "f9499e716c0b2ad28f73b7185adfe0eaa91f1b8964f78adec4f7e0eac91aaba6",
+      "previewSha256": "2a19fb3bd1c46ffa3fcc59c1685fbb4c8778e3698d3a9dbf78a52b3a0ebfd53c",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v5.reference.turkey-vulture.eb9065f25697.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -11.1
+    },
+    {
+      "id": "v5.reference.gopher-snake.ed1550bb8a57",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 8.2347,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/ed1550bb8a57bc90-1945073.mp3",
+          "sha256": "ed1550bb8a57bc906a01434e51bd5ef233923963d305cb64d8dc73a55add22e0",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.4623810213992603,
+          "delay": 0,
+          "duration": 8.234667
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.snake.recording"
+      ],
+      "notes": "Reference only: Snake. Research-grade observation identity; audio behavior and field companions still require review. Source: Pituophis catenifer sayi. Credit: (c) ayden, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/360761247. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "ed1550bb8a57bc906a01434e51bd5ef233923963d305cb64d8dc73a55add22e0",
+        "sourceDbTP": -2.3,
+        "priorGain": 0.65,
+        "gain": 0.4623810213992603,
+        "duration": 8.2347
+      },
+      "start": 117.5054,
+      "master": "masters/fauna-supplement-02/v5.reference.gopher-snake.ed1550bb8a57.wav",
+      "masterSha256": "3833ddf687539792f121810a5dff26c7586f3790224f3df5ecee51b173ca1658",
+      "opus": "masters/fauna-supplement-02/v5.reference.gopher-snake.ed1550bb8a57.opus",
+      "opusSha256": "f06f71ad668a4d89c0fcc478cbb445294363b49b390df36c12e78efba9ff5027",
+      "previewSha256": "15e08862af274220e471055221361b178ec698e3adaa0678e6b2a5b61243c87d",
+      "previewBytes": 1581178,
+      "previewUrl": "/__cf-audio-review/v5.reference.gopher-snake.ed1550bb8a57.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -10.9
+    },
+    {
+      "id": "v5.reference.banded-mongoose.ed5b8f94701f",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 7.1175,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/ed5b8f94701f226e-2118119.wav",
+          "sha256": "ed5b8f94701f226e309a9d31aced923cef99404d93569ceeb32b39394d8cd8e2",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.35481338923357547,
+          "delay": 0,
+          "duration": 7.117531
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.mongoose.recording"
+      ],
+      "notes": "Reference only: Mongoose. Research-grade observation identity; audio behavior and field companions still require review. Source: Mungos mungo. Credit: (c) Jono, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/391051202. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "ed5b8f94701f226e309a9d31aced923cef99404d93569ceeb32b39394d8cd8e2",
+        "sourceDbTP": 0.0,
+        "priorGain": 0.65,
+        "gain": 0.35481338923357547,
+        "duration": 7.1175
+      },
+      "start": 126.7401,
+      "master": "masters/fauna-supplement-02/v5.reference.banded-mongoose.ed5b8f94701f.wav",
+      "masterSha256": "d48d87f8d031889b91d2d10c4d41deca466de0771cab75c4939783a25c6e0347",
+      "opus": "masters/fauna-supplement-02/v5.reference.banded-mongoose.ed5b8f94701f.opus",
+      "opusSha256": "0c9aadadfd8ad034dcb4543900e3597b91827b9be781b4c17c0fb0942ddb496b",
+      "previewSha256": "cc71d092da2f2ba119d041872cdc0f7a7ef531cde2927d92dc8583066015631b",
+      "previewBytes": 683394,
+      "previewUrl": "/__cf-audio-review/v5.reference.banded-mongoose.ed5b8f94701f.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -10.9
+    },
+    {
+      "id": "v5.reference.african-savanna-elephant.eeb14990a099",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/eeb14990a099676a-103908.mp3",
+          "sha256": "eeb14990a099676aeba5f9ba98e25afb4f9eb7de6510dbb0d01e3bebea397567",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.5011872336272722,
+          "delay": 0,
+          "duration": 34.759896
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.elephant.recording"
+      ],
+      "notes": "Reference only: Elephant. Research-grade observation identity; audio behavior and field companions still require review. Source: Loxodonta africana. Credit: (c) Tuoichen, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/48825579. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "eeb14990a099676aeba5f9ba98e25afb4f9eb7de6510dbb0d01e3bebea397567",
+        "sourceDbTP": -3.0,
+        "priorGain": 0.65,
+        "gain": 0.5011872336272722,
+        "duration": 12
+      },
+      "start": 134.8576,
+      "master": "masters/fauna-supplement-02/v5.reference.african-savanna-elephant.eeb14990a099.wav",
+      "masterSha256": "751838b4e9db610fb5b25ce84114566a4d72f907bdda286de2aee18456590e60",
+      "opus": "masters/fauna-supplement-02/v5.reference.african-savanna-elephant.eeb14990a099.opus",
+      "opusSha256": "01d743ee9ba042632b35266265659a36383e610cf2ed08b53241e392d49c18ed",
+      "previewSha256": "7aca7b72ddbbd1e9eec5c5d5d516fe58c9c8ddec53e8dc416ff1dfcab10d59ca",
+      "previewBytes": 2304114,
+      "previewUrl": "/__cf-audio-review/v5.reference.african-savanna-elephant.eeb14990a099.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -10.6
+    },
+    {
+      "id": "v5.reference.spotted-hyena.f41407f49b04",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 8.625,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/f41407f49b04d426-849632.wav",
+          "sha256": "f41407f49b04d426bbc03b3fe730275a58fdb653592adfc520c50b0818d17f0c",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 8.625
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.hyena.recording",
+        "earth.fauna.spotted-hyena.recording"
+      ],
+      "notes": "Reference only: Hyena, Spotted Hyena. Research-grade observation identity; audio behavior and field companions still require review.; Research-grade observation identity; audio behavior and field companions still require review. Source: Crocuta crocuta. Credit: (c) Michael Bakker Paiva, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/191858201. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "f41407f49b04d426bbc03b3fe730275a58fdb653592adfc520c50b0818d17f0c",
+        "sourceDbTP": -8.7,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 8.625
+      },
+      "start": 147.8576,
+      "master": "masters/fauna-supplement-02/v5.reference.spotted-hyena.f41407f49b04.wav",
+      "masterSha256": "267a590678d2861abd7b931a4cac8638aa6682a11efa605d2244d92b7735ed58",
+      "opus": "masters/fauna-supplement-02/v5.reference.spotted-hyena.f41407f49b04.opus",
+      "opusSha256": "017d6327dba1583349ac79d5c7e644b64139008a6baba3f30a153956eaa36086",
+      "previewSha256": "99cfff4e6c349969f55dabdc6f43d8cd52d22e58df359d698322dd67b6418229",
+      "previewBytes": 828114,
+      "previewUrl": "/__cf-audio-review/v5.reference.spotted-hyena.f41407f49b04.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.4,
+      "opusDbTP": -24.3
+    },
+    {
+      "id": "v5.reference.rabbit-eating.f6ccbfdde988",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-archives/oga_animal_rabbit_eating/f6ccbfdde9880fb3-RabbitEating.wav",
+          "sha256": "f6ccbfdde9880fb33df0ba28356f34f5e45e380ad15d98661b42be4213d3b49a",
+          "sourceId": "oga_animal_rabbit_eating",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 13.330771
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.rabbit.recording"
+      ],
+      "notes": "Reference only: Rabbit. Rabbit eating salad; chewing, not vocal behavior Source: Rabbit Eating. Credit: Voltiment555; CC0-1.0; https://opengameart.org/content/rabbit-eating. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "f6ccbfdde9880fb33df0ba28356f34f5e45e380ad15d98661b42be4213d3b49a",
+        "sourceDbTP": -9.0,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 157.4826,
+      "master": "masters/fauna-supplement-02/v5.reference.rabbit-eating.f6ccbfdde988.wav",
+      "masterSha256": "72ae416e81091f04ec3f7bb4094a4f0aba465c7b14c743379360067ace79eb5f",
+      "opus": "masters/fauna-supplement-02/v5.reference.rabbit-eating.f6ccbfdde988.opus",
+      "opusSha256": "da2304400b841e94ac980f04bb93fab89e47d87241a73b901fa49f51a6ee83af",
+      "previewSha256": "2e6ee6b30244490810c6763811b562aca27caaaec3ee4ac9e82bc0fc7b6081c1",
+      "previewBytes": 2304114,
+      "previewUrl": "/__cf-audio-review/v5.reference.rabbit-eating.f6ccbfdde988.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.7,
+      "opusDbTP": -14.6
+    },
+    {
+      "id": "v5.reference.brown-rat.f80dc6127853",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/f80dc6127853ff03-779677.mp3",
+          "sha256": "f80dc6127853ff037c049875bc5aa8a317d01ea4d44d223d5152e18de19314fa",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 72.723813
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.rat.recording"
+      ],
+      "notes": "Reference only: Rat. Research-grade observation identity; audio behavior and field companions still require review. Source: Rattus norvegicus. Credit: (c) lucky, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/175302402. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "f80dc6127853ff037c049875bc5aa8a317d01ea4d44d223d5152e18de19314fa",
+        "sourceDbTP": -27.4,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 170.4826,
+      "master": "masters/fauna-supplement-02/v5.reference.brown-rat.f80dc6127853.wav",
+      "masterSha256": "3222725df072f20cd3bb549bc8eb8f5cc1d0da1485f58abe204fc44aab4ce449",
+      "opus": "masters/fauna-supplement-02/v5.reference.brown-rat.f80dc6127853.opus",
+      "opusSha256": "7b3886d8c60901a80cedcc57d21663bab6904cb8e503b3cc10cf11aba3a2e323",
+      "previewSha256": "e7b233194829011ade2994f235b1ca133ea9ba57db92037f74903c8ddabde6aa",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v5.reference.brown-rat.f80dc6127853.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.1,
+      "opusDbTP": -33.2
+    },
+    {
+      "id": "v5.reference.eurasian-lynx.f919f38f16db",
+      "group": "fauna-supplement-02",
+      "kind": "recording",
+      "duration": 7.9667,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_ccby/f919f38f16dbb122-162970.wav",
+          "sha256": "f919f38f16dbb1227cd482116e3ea3eaaf446708be509a8e6182a19338d21010",
+          "sourceId": "inat_ccby",
+          "rate": 1,
+          "gain": 0.40738027780411273,
+          "delay": 0,
+          "duration": 7.966735
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.lynx.recording"
+      ],
+      "notes": "Reference only: Lynx. Research-grade observation identity; audio behavior and field companions still require review. Source: Lynx lynx. Credit: (c) Julia Moning, some rights reserved (CC BY); CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/); https://www.inaturalist.org/observations/69259154. Modifications: opening excerpt, measured attenuation, 48 kHz float input copy, stock REAPER track/render, edge fades, 24-bit WAV and Opus encoding. No pitch/time change; no verified call/attack/hurt/faint coverage or listening acceptance.",
+      "recipeVersion": 4,
+      "approved": false,
+      "listeningStatus": "not_reviewed",
+      "inputHeadroom": {
+        "sourceSha256": "f919f38f16dbb1227cd482116e3ea3eaaf446708be509a8e6182a19338d21010",
+        "sourceDbTP": -1.2,
+        "priorGain": 0.65,
+        "gain": 0.40738027780411273,
+        "duration": 7.9667
+      },
+      "start": 183.4826,
+      "master": "masters/fauna-supplement-02/v5.reference.eurasian-lynx.f919f38f16db.wav",
+      "masterSha256": "b881726ab0ac855e66e71aa31c380f31ed6919eedd864d9d952e3caccd22f272",
+      "opus": "masters/fauna-supplement-02/v5.reference.eurasian-lynx.f919f38f16db.opus",
+      "opusSha256": "1a22bb7102e571caf3c7c9dd4b76a55c251a013c6007ef58d9c48530ca4267f9",
+      "previewSha256": "63118c560b926ba4ab1703dd8de8e972b6c0ec11b47f9aa814b3555b7b80dafb",
+      "previewBytes": 1529718,
+      "previewUrl": "/__cf-audio-review/v5.reference.eurasian-lynx.f919f38f16db.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -11.3
+    }
+  ],
+  "listeningAccepted": false
+}

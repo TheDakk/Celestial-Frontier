@@ -1,0 +1,71 @@
+{
+  "schema": "cf.native-delivery-diagnostic-compile.v1",
+  "compiler": {
+    "version": "7.0.2",
+    "executable": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@typescript/typescript-darwin-arm64/lib/tsc",
+    "executableSha256": "a82f731365ad69d5c4c15f5e18fba4584bf3b7b839960172a76c3462b5114bf2",
+    "entrySha256": "2219f428a7e55aaf1f7ad85b9b0f0cf5078aeb76ccc9a7c6036c92d48f492ffd"
+  },
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/local-model-delivery.ts",
+      "bytes": 23791,
+      "sha256": "1754f0f127cdf550ffc5956e5daac4cc3c4bde829175b3e73ca04abbb7d16ea8"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-model-sha256.ts",
+      "bytes": 5162,
+      "sha256": "783905b7f23d1d6355d61e196eb2ebc332e7cebfe37236aa271cfed1318db677"
+    }
+  ],
+  "command": [
+    "/opt/homebrew/Cellar/node/26.8.1/bin/node",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/typescript/bin/tsc",
+    "--project",
+    "/private/tmp/cf-delivery-owner-tsc-jhHZHW/tsconfig.json",
+    "--pretty",
+    "false"
+  ],
+  "config": {
+    "compilerOptions": {
+      "target": "ES2022",
+      "module": "ES2022",
+      "moduleResolution": "Bundler",
+      "strict": true,
+      "lib": [
+        "ES2022",
+        "DOM",
+        "DOM.Iterable"
+      ],
+      "types": [],
+      "skipLibCheck": true,
+      "noEmitOnError": true,
+      "rootDir": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src",
+      "outDir": "/private/tmp/cf-delivery-owner-tsc-jhHZHW/compiled",
+      "sourceMap": false,
+      "declaration": false,
+      "incremental": false
+    },
+    "files": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-model-delivery.ts",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-model-sha256.ts"
+    ]
+  },
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "",
+  "outputs": [
+    {
+      "name": "local-model-delivery.js",
+      "bytes": 21532,
+      "sha256": "22deec4d4b3f14a07c7b1ce73cdc84db91725ec22c753606d4b4d8cea59516bb"
+    },
+    {
+      "name": "local-model-sha256.js",
+      "bytes": 5472,
+      "sha256": "021b496d3caeefc3d86aa02a74640a2699b129931b3f18abd3a6ef9cf8b9c5f1"
+    }
+  ],
+  "sourcesUnchanged": true,
+  "temporaryRemoved": true
+}

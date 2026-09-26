@@ -1,0 +1,89 @@
+{
+  "schema": "cf-painted-mars-composition-results/v1",
+  "createdAt": "2026-09-08T15:45:03.895203+00:00",
+  "status": "SCOPED_IMPLEMENTATION_NATIVE_AND_PREVIEW_PASS",
+  "certification": false,
+  "sourceParent": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "sourceState": "dirty-local-only-signing-pending",
+  "change": "Hide only the successfully painted exact Mars globe and center the full contained panorama; restore owned visibility on release, preserve default/failed/Earth behavior.",
+  "focusedTests": 216,
+  "focusedFiles": 13,
+  "typescriptPrograms": 3,
+  "browserFreeChain": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/browser-free.json",
+  "rootValidation": {
+    "status": "PASS",
+    "speciesRenders": 1010,
+    "bootErrors": 0,
+    "originalFingerprints": 50
+  },
+  "native": [
+    {
+      "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-receipt/review.json",
+      "status": "PASS",
+      "sourcePinsVerified": 16,
+      "servedPinsVerified": 59,
+      "runtimeErrors": 0,
+      "interceptionErrors": 0
+    },
+    {
+      "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-desktop/review.json",
+      "status": "PASS",
+      "sourcePinsVerified": 16,
+      "servedPinsVerified": 59,
+      "runtimeErrors": 0,
+      "interceptionErrors": 0
+    },
+    {
+      "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-blocked/review.json",
+      "status": "PASS",
+      "sourcePinsVerified": 16,
+      "servedPinsVerified": 59,
+      "runtimeErrors": 0,
+      "interceptionErrors": 0
+    },
+    {
+      "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-default/review.json",
+      "status": "PASS",
+      "sourcePinsVerified": 16,
+      "servedPinsVerified": 59,
+      "runtimeErrors": 0,
+      "interceptionErrors": 0
+    }
+  ],
+  "retainedFailures": [
+    {
+      "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone/review.json",
+      "status": "FAIL",
+      "preserved": true
+    },
+    {
+      "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-outcome/review.json",
+      "status": "FAIL",
+      "preserved": true
+    }
+  ],
+  "frozenEvidenceFilesVerified": 93,
+  "finalRunnerSha256": "050370b927fc3955a543bc3da857a37015d4e749e0051329bdd73f249ddd56a1",
+  "independentReview": "Read-only checkpoint review confirmed exact frozen file set/sizes/hashes, all source and served pins, passing receipts and both preserved failures; no edits or reruns.",
+  "preview": {
+    "createdAt": "2026-09-08T15:35:18.667Z",
+    "pid": 63914,
+    "root": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-painted-mars-composition-local-20260908",
+    "url": "http://127.0.0.1:56749/?paintedvista=1",
+    "sourceCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+    "sourceState": "dirty-local-only",
+    "publishable": false,
+    "contentSha256": "a740b005c7c054b22e5d3ab30ead610cbdb39e9f6336443ec3f771d7fa1024c7",
+    "manifestSha256": "8b3c459bcab86afd9d4a352abd70898bdbeb2c81b7d93b9f420b89d6e9e15a40"
+  },
+  "limits": [
+    "Static panorama with substantial phone starfield gaps",
+    "No full develop admission certificate",
+    "No physical iPhone/Safari/PWA, resize/re-entry, GPU heap or human art qualification",
+    "No new creature articulation, audio, or full-universe completion"
+  ],
+  "next": "One complete canonical creature or inhabited scene with separately owned background/resident layers; preserve approved painted references, Earth species rules and current UI placement.",
+  "hostedAttempts": 0,
+  "humanArtAcceptance": false,
+  "deadline": "2026-09-09T03:11:15Z"
+}

@@ -1,0 +1,143 @@
+[
+  {
+    "id": "01-grass-snake",
+    "name": "Grass Snake",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "fcfa2b1e4f39b30df2114b6dbe3355f0cba22dac413bee3f1a38f468bf775328",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "02-rat-snake",
+    "name": "Rat Snake",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "822bc97bef7184339eb3634727777933d302c38dec8b7d020ce6aa17ab7150b4",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "03-king-snake",
+    "name": "King Snake",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "f1906d11c4c16fadc0e38bd5dd7a8acafd01e541a9aed64803927396e0a62dc4",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "04-heron",
+    "name": "Heron",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "62b53f1fda275a8db6f3eb497300dfc5821c216406c9ebb13715b4ef8772abda",
+    "keyed": false,
+    "byClass": {
+      "top": 2,
+      "rear": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "05-pheasant",
+    "name": "Pheasant",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "a184d171c38c4fd7a9929201b1774ada2e9612f37f97dadd1992ed4e139749b6",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "06-robin",
+    "name": "Robin",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "bd82e36c11022fa707c14f443864bcfd45537dacddd7ab57edf516bc87ba0a6d",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "07-ant",
+    "name": "Ant",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "527e8a41ee432dbaabf7a0c4f0629309b7fa45bfa2607123bdd1e350031fb470",
+    "keyed": false,
+    "byClass": {
+      "limb-down": 3,
+      "top": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "08-cricket",
+    "name": "Cricket",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "19063b50b6d6b67c08b6e0e10534f92e557e110b5721080b843e03434bf7d1f9",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "09-mantis",
+    "name": "Mantis",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "1f9719843af3db14aeef8b7fb1831e84f4ec56c241f3d6e205b582d66e3c6f72",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "limb-down": 4,
+      "rear": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  }
+]

@@ -1,0 +1,80 @@
+{
+  "schema": "cf-s4-d17-training/v1",
+  "trainingSeed": 40000000,
+  "poolSize": 50000,
+  "count": 128,
+  "guardianSlots": [
+    [
+      0.6,
+      0.8
+    ],
+    [
+      0.7,
+      0.9
+    ],
+    [
+      0.8,
+      1
+    ]
+  ],
+  "wildPower": {
+    "easy": [
+      180,
+      220
+    ],
+    "normal": [
+      250,
+      350
+    ]
+  },
+  "wildRatio": {
+    "easy": [
+      1.8,
+      2.2
+    ],
+    "normal": [
+      0.9,
+      1.1
+    ]
+  },
+  "soloRatio": [
+    0.8,
+    1
+  ],
+  "phases": [
+    {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    }
+  ],
+  "targets": {
+    "planning": [
+      10,
+      20
+    ],
+    "command": [
+      5,
+      10
+    ],
+    "soloV1Delta": [
+      -5,
+      5
+    ],
+    "readiness": [
+      20,
+      80
+    ]
+  },
+  "scope": "Training only; captured Guardians are natural guardianFor genomes, no forged stats or outcome-selected corpus. Raw resolver phase always enabled for bosses."
+}

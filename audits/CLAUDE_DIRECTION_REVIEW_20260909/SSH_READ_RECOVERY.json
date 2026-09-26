@@ -1,0 +1,80 @@
+{
+  "schema": "cf.ssh-read-recovery/v1",
+  "startedAt": "2026-09-09T12:11:08.491305+00:00",
+  "reason": "Nick reports 1Password unlocked; explicit external-state change after retained agent communication failure",
+  "remote": "git@github.com:TheDakk/Celestial-Frontier.git",
+  "status": "PASS",
+  "steps": [
+    {
+      "command": [
+        "ssh",
+        "-T",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=15",
+        "git@github.com"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Hi TheDakk! You've successfully authenticated, but GitHub does not provide shell access.\n"
+    },
+    {
+      "command": [
+        "git",
+        "ls-remote",
+        "origin",
+        "HEAD"
+      ],
+      "exitCode": 0,
+      "stdout": "c1791e210158de864fdd475323c3091d9ecbae58\tHEAD\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "fetch",
+        "origin"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "rev-list",
+        "--left-right",
+        "--count",
+        "origin/openai/mac...HEAD"
+      ],
+      "exitCode": 0,
+      "stdout": "0\t6\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "origin/develop"
+      ],
+      "exitCode": 0,
+      "stdout": "c1791e210158de864fdd475323c3091d9ecbae58\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "gh",
+        "pr",
+        "view",
+        "42",
+        "--json",
+        "number,title,baseRefName,baseRefOid,headRefName,headRefOid,isDraft,labels,url"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"baseRefName\":\"develop\",\"baseRefOid\":\"c1791e210158de864fdd475323c3091d9ecbae58\",\"headRefName\":\"openai/mac\",\"headRefOid\":\"9bfec7dc4a06d97dfd29f8f5424553336776c9fb\",\"isDraft\":true,\"labels\":[],\"number\":42,\"title\":\"Refine responsive UI and add bounded audiovisual and painted-world prototypes\",\"url\":\"https://github.com/TheDakk/Celestial-Frontier/pull/42\"}\n",
+      "stderr": ""
+    }
+  ],
+  "finishedAt": "2026-09-09T12:11:13.354509+00:00"
+}

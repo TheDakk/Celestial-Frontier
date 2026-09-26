@@ -1,0 +1,8 @@
+{
+  "schema": "cf.audio-review-delivery/v1",
+  "archives": 23,
+  "entriesVerified": 2227,
+  "largestBytes": 27938901,
+  "pass": true,
+  "receipt": "audio-production/reports/review-packs-fauna-attributed-final-20260915.json"
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "cf.local-ai-retry-guard-controls.v1",
+  "startedAt": "2026-09-09T14:48:35.117380+00:00",
+  "command": [
+    "node",
+    "port/v2/node_modules/vitest/vitest.mjs",
+    "run",
+    "--root",
+    "port/v2",
+    "tests/local-ai-game.test.ts"
+  ],
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/local-ai-game.ts",
+      "bytes": 11515,
+      "sha256": "3f53dc5bd3fa443da7ba18b5429cf64b90190f93344ffe99d52d68aaefb36262"
+    },
+    {
+      "path": "port/v2/tests/local-ai-game.test.ts",
+      "bytes": 17374,
+      "sha256": "86fc36aab5bae099933352793628bb4f841cedc8b7c7ed4b0cc74e0200c40425"
+    }
+  ],
+  "scope": "Actual controller/queue with explicit unit inference, model-delivery and original-store fakes; no model/native run",
+  "qualityAccepted": false,
+  "deviceQualified": false
+}

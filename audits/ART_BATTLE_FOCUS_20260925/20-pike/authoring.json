@@ -1,0 +1,433 @@
+{
+  "id": "pike",
+  "family": "fish",
+  "landmarksPx": {
+    "root": [
+      800.405,
+      613.284
+    ],
+    "head": [
+      943.439,
+      617.203
+    ],
+    "jaw": [
+      1029.652,
+      639.736
+    ],
+    "spine0": [
+      733.786,
+      616.223
+    ],
+    "spine1": [
+      656.391,
+      617.203
+    ],
+    "spine2": [
+      577.036,
+      617.203
+    ],
+    "spine3": [
+      497.681,
+      617.203
+    ],
+    "spine4": [
+      415.388,
+      616.223
+    ],
+    "spine5": [
+      328.195,
+      615.244
+    ],
+    "caudal": [
+      242.963,
+      615.244
+    ],
+    "dorsal": [
+      370.322,
+      537.848
+    ],
+    "pectoralNear": [
+      758.278,
+      701.456
+    ],
+    "pectoralFar": [
+      790.608,
+      715.172
+    ]
+  },
+  "groundLineY": 0.85,
+  "habitat": {
+    "realm": "aquatic",
+    "source": "Manually declared Earth Pike swimming fish; source has both pectorals/pelvics, anal and rear-set dorsal. No terrestrial support inferred."
+  },
+  "materials": {
+    "surface": "plain olive painted fish scales, low-contrast fine scale structure, soft pale belly shading and plain fin rays"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "polygonPx": [
+        [
+          727.908,
+          675.984
+        ],
+        [
+          774.933,
+          661.289
+        ],
+        [
+          810.202,
+          654.431
+        ],
+        [
+          824.897,
+          667.167
+        ],
+        [
+          808.242,
+          692.639
+        ],
+        [
+          763.177,
+          734.766
+        ],
+        [
+          720.07,
+          753.38
+        ],
+        [
+          711.253,
+          727.908
+        ],
+        [
+          714.192,
+          692.639
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "polygonPx": [
+        [
+          788.648,
+          693.619
+        ],
+        [
+          819.998,
+          669.127
+        ],
+        [
+          831.755,
+          682.842
+        ],
+        [
+          819.998,
+          714.192
+        ],
+        [
+          782.77,
+          750.441
+        ],
+        [
+          761.217,
+          759.258
+        ],
+        [
+          745.542,
+          732.806
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "polygonPx": [
+        [
+          313.5,
+          556.462
+        ],
+        [
+          313.5,
+          525.113
+        ],
+        [
+          335.053,
+          489.844
+        ],
+        [
+          366.403,
+          493.763
+        ],
+        [
+          417.347,
+          517.275
+        ],
+        [
+          455.555,
+          548.625
+        ],
+        [
+          402.652,
+          565.28
+        ],
+        [
+          346.809,
+          581.934
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "polygonPx": [
+        [
+          924.825,
+          641.695
+        ],
+        [
+          989.484,
+          627.98
+        ],
+        [
+          1077.656,
+          623.081
+        ],
+        [
+          1099.209,
+          630.919
+        ],
+        [
+          1099.209,
+          655.411
+        ],
+        [
+          1020.834,
+          672.066
+        ],
+        [
+          937.561,
+          675.984
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "polygonPx": [
+        [
+          836.653,
+          522.173
+        ],
+        [
+          1105.088,
+          522.173
+        ],
+        [
+          1105.088,
+          696.558
+        ],
+        [
+          836.653,
+          696.558
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "polygonPx": [
+        [
+          127.359,
+          494.742
+        ],
+        [
+          282.15,
+          494.742
+        ],
+        [
+          282.15,
+          740.644
+        ],
+        [
+          127.359,
+          740.644
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "polygonPx": [
+        [
+          794.527,
+          607.406
+        ],
+        [
+          806.283,
+          607.406
+        ],
+        [
+          806.283,
+          619.163
+        ],
+        [
+          794.527,
+          619.163
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "tail-peduncle",
+      "joint": "spine5",
+      "polygonPx": [
+        [
+          282.15,
+          571.158
+        ],
+        [
+          371.302,
+          571.158
+        ],
+        [
+          371.302,
+          765.136
+        ],
+        [
+          282.15,
+          765.136
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "rear-body",
+      "joint": "spine4",
+      "polygonPx": [
+        [
+          371.302,
+          547.645
+        ],
+        [
+          456.534,
+          547.645
+        ],
+        [
+          456.534,
+          770.034
+        ],
+        [
+          371.302,
+          770.034
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "pelvic-body",
+      "joint": "spine3",
+      "polygonPx": [
+        [
+          456.534,
+          530.011
+        ],
+        [
+          537.848,
+          530.011
+        ],
+        [
+          537.848,
+          771.014
+        ],
+        [
+          456.534,
+          771.014
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "mid-body",
+      "joint": "spine2",
+      "polygonPx": [
+        [
+          537.848,
+          530.011
+        ],
+        [
+          615.244,
+          530.011
+        ],
+        [
+          615.244,
+          771.014
+        ],
+        [
+          537.848,
+          771.014
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "front-body",
+      "joint": "spine1",
+      "polygonPx": [
+        [
+          615.244,
+          527.072
+        ],
+        [
+          695.578,
+          527.072
+        ],
+        [
+          695.578,
+          771.014
+        ],
+        [
+          615.244,
+          771.014
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "spine0",
+      "polygonPx": [
+        [
+          695.578,
+          525.113
+        ],
+        [
+          840.572,
+          525.113
+        ],
+        [
+          840.572,
+          771.014
+        ],
+        [
+          695.578,
+          771.014
+        ]
+      ],
+      "layer": "near"
+    }
+  ],
+  "coverage": {
+    "declarations": "Thirteen existing fish joints manually located. Both pectorals separately visible; pelvic pair and anal fin follow observed axial body regions. Complete forked caudal, rear-set dorsal and long flattened toothy snout. No absent, hidden or folded contracted anatomy. No source labels/landmarks reused and no new joint invented.",
+    "sourceFacing": "right",
+    "visualAcceptance": "Nick pending; no family-wide acceptance"
+  }
+}

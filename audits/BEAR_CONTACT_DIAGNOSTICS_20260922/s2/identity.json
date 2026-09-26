@@ -1,0 +1,38 @@
+[
+  {
+    "subject": "crab",
+    "receiptIdentical": true,
+    "samplesIdentical": true,
+    "samplesSha256": "e1e05a0410f90bd1dd9eacac0511bf7f59d9dca072c3f92b15ba8ca837806da4"
+  },
+  {
+    "subject": "coconut-crab",
+    "receiptIdentical": true,
+    "samplesIdentical": true,
+    "samplesSha256": "baf6d1b6915b03f62e9ad187674ba85fd4499d8ddab9a9bb7b0b60016a32c2c4"
+  },
+  {
+    "subject": "freshwater-crab",
+    "receiptIdentical": true,
+    "samplesIdentical": true,
+    "samplesSha256": "5c13f4a28830a13ac1e6d201d9cd5edf4319ba67201be1406983fe12605620f0"
+  },
+  {
+    "subject": "mud-crab",
+    "receiptIdentical": true,
+    "samplesIdentical": true,
+    "samplesSha256": "a0ab10fcd076a75d2a718032213a2fb7e326eccbf6a2ce96760f923fe57a334e"
+  },
+  {
+    "subject": "vent-crab",
+    "receiptIdentical": true,
+    "samplesIdentical": true,
+    "samplesSha256": "bf7cc7e3a0e8e685f5af9ec1b82fab2cbfb7ea3c9c1a044ec833d45a97be60df"
+  },
+  {
+    "subject": "civet",
+    "receiptIdentical": true,
+    "samplesIdentical": true,
+    "samplesSha256": "9158aaa04645069cc3a7cfde3a3b0afc32a162ea708985e75d46a5d9f9775e1e"
+  }
+]

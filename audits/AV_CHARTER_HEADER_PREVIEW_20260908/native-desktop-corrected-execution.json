@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-header.mjs",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/charter-header-evidence-dist-20260908",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected"
+  ],
+  "startedAt": "2026-09-08T09:49:46.974067+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 10.196
+}

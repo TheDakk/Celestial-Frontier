@@ -1,0 +1,63 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "REFUSED",
+  "sourceHead": "b13c1b87507ed2223c13f739573d944283fa7ea9",
+  "helperSha256": "ae9cafe006642a2aea96206581abb3c4df2bb94ad9b2ae4259092979ceb992ae",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/09-arachnid/master.png",
+      "sha256": "4b4655ddeec05f395fa5a282180cdbdec5829a06cb44c98beb5eacccac260a8e"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/09-arachnid/authoring.json",
+      "sha256": "84d7619a4230b750b6b5f2171d830923cf330c77e3b0991e8ab5687efbbec717"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/09-arachnid/subject-source.json",
+      "sha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/09-arachnid/presence.json",
+      "sha256": "b250e590562920ae64a5cdb1bf0c74808f41fddb71f329c5c49fdcce527fbaa4"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/09-arachnid/master.png",
+      "sha256": "4b4655ddeec05f395fa5a282180cdbdec5829a06cb44c98beb5eacccac260a8e",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/09-arachnid/authoring.json",
+      "sha256": "84d7619a4230b750b6b5f2171d830923cf330c77e3b0991e8ab5687efbbec717",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/09-arachnid/subject-source.json",
+      "sha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/09-arachnid/presence.json",
+      "sha256": "b250e590562920ae64a5cdb1bf0c74808f41fddb71f329c5c49fdcce527fbaa4",
+      "unchanged": true
+    }
+  ],
+  "refusal": {
+    "stage": "family-record",
+    "error": "Error: Hidden anatomy: unsupported hidden chain\n    at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/hidden-anatomy.mjs:3:40)\n    at resolveHiddenPresence (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/hidden-anatomy.mjs:9:2)\n    at resolveAnatomyInventory (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anatomy-inventory.mjs:30:11)\n    at familyContractForRecord (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-contracts.mjs:4265:78)\n    at checkFamilyGeometry (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:19:17)\n    at sealFamilyRecord (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:44:36)\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/intake.mjs:79:22"
+  }
+}

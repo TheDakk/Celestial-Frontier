@@ -1,0 +1,161 @@
+{
+  "scope": "One leg5FarFoot source-geometry read; no new motion execution",
+  "endpointPx": [
+    748,
+    530
+  ],
+  "writerReceipt": {
+    "joint": "leg5FarFoot",
+    "part": "leg5-far",
+    "vertex": 3,
+    "distancePx": 5,
+    "supports": [
+      1392,
+      1393
+    ]
+  },
+  "writer": {
+    "index": 3,
+    "pixel": [
+      744,
+      527
+    ],
+    "normalized": [
+      0.5933014354066986,
+      0.4202551834130781
+    ],
+    "pixelDistance": 5,
+    "runtimeDistance": 5.000000000000031,
+    "staticDistance": 0.0039872408293461165,
+    "triangle": [
+      1390,
+      1392,
+      1393
+    ],
+    "barycentric": [
+      0,
+      0.5384615384615384,
+      0.46153846153846156
+    ]
+  },
+  "runtime": {
+    "index": 10,
+    "pixel": [
+      752,
+      527
+    ],
+    "normalized": [
+      0.5996810207336523,
+      0.42025518341307816
+    ],
+    "pixelDistance": 5,
+    "runtimeDistance": 4.999999999999989,
+    "staticDistance": 0.0039872408293460835,
+    "triangle": [
+      1396,
+      1393,
+      1392
+    ],
+    "barycentric": [
+      0.41025641025641024,
+      0.2564102564102564,
+      0.33333333333333337
+    ]
+  },
+  "static": {
+    "index": 10,
+    "pixel": [
+      752,
+      527
+    ],
+    "normalized": [
+      0.5996810207336523,
+      0.42025518341307816
+    ],
+    "pixelDistance": 5,
+    "runtimeDistance": 4.999999999999989,
+    "staticDistance": 0.0039872408293460835,
+    "triangle": [
+      1396,
+      1393,
+      1392
+    ],
+    "barycentric": [
+      0.41025641025641024,
+      0.2564102564102564,
+      0.33333333333333337
+    ]
+  },
+  "equidistantWriterCandidates": [
+    {
+      "index": 3,
+      "pixel": [
+        744,
+        527
+      ],
+      "normalized": [
+        0.5933014354066986,
+        0.4202551834130781
+      ],
+      "pixelDistance": 5,
+      "runtimeDistance": 5.000000000000031,
+      "staticDistance": 0.0039872408293461165,
+      "triangle": [
+        1390,
+        1392,
+        1393
+      ],
+      "barycentric": [
+        0,
+        0.5384615384615384,
+        0.46153846153846156
+      ]
+    },
+    {
+      "index": 10,
+      "pixel": [
+        752,
+        527
+      ],
+      "normalized": [
+        0.5996810207336523,
+        0.42025518341307816
+      ],
+      "pixelDistance": 5,
+      "runtimeDistance": 4.999999999999989,
+      "staticDistance": 0.0039872408293460835,
+      "triangle": [
+        1396,
+        1393,
+        1392
+      ],
+      "barycentric": [
+        0.41025641025641024,
+        0.2564102564102564,
+        0.33333333333333337
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-04/record.json",
+      "sha256": "8d666399db029b6a73dcdc1f23714a0f5a5861d3c98e1e3179b2734f99fe4294",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-04/binding.json",
+      "sha256": "e3d008b1c15beb7dc83d36bffc034e622050bc5941e27f3f26169220d40cbaa4",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-04/observed-split-receipt.json",
+      "sha256": "2932ae80acfab24ee3586538e1d24a508baf99eb9e6ea36457f830f039f923f2",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis01/report.json",
+      "sha256": "3bfa5e9c5f0f1d147f547bfe25f031dd38a2d68a3f0a101ff025a7805634bd02",
+      "unchanged": true
+    }
+  ]
+}

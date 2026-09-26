@@ -1,0 +1,370 @@
+{
+ "id": "eagle-2",
+ "standIn": "Eagle",
+ "template": "biped-bird",
+ "accentGroups": [
+  "head",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/eagle/card/master-512.png",
+  "joints": [
+   "legNearFoot",
+   "legFarFoot",
+   "legNearAnkle",
+   "legFarAnkle",
+   "legNearKnee",
+   "legFarKnee",
+   "beak",
+   "head",
+   "neck1",
+   "neck0",
+   "wingNearRoot",
+   "wingNearTip",
+   "wingFarRoot",
+   "wingFarTip",
+   "tailFan",
+   "chest",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Falcon",
+   "group": "raptor",
+   "posture": "biped",
+   "aspect": 0.8,
+   "headFrac": 0.24,
+   "eyes": "prominent",
+   "mustRead": [
+    "dark malar moustache stripe below the eye",
+    "long pointed swept wingtips reaching the tail",
+    "short hooked notched bill"
+   ],
+   "note": "Wings are narrow and scythe-like, not broad and rounded like a hawk's."
+  },
+  {
+   "name": "Chough",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.7,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "slender curved red bill",
+    "bright red legs",
+    "glossy all-black crow-like plumage"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Egret",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 0.8,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "pure white plumage",
+    "S-curved neck",
+    "thin spear bill and long dark legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Ibis",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 1,
+   "headFrac": 0.32,
+   "eyes": "normal",
+   "mustRead": [
+    "long smoothly downcurved bill",
+    "bare skin on the face",
+    "long neck held out and long legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Stork",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 0.9,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "long heavy straight bill",
+    "neck held straight rather than kinked",
+    "very long red legs"
+   ],
+   "note": "Unlike a heron, the stork flies and stands with its neck extended straight."
+  },
+  {
+   "name": "Ostrich",
+   "group": "flightless-bird",
+   "posture": "biped",
+   "aspect": 0.75,
+   "headFrac": 0.12,
+   "eyes": "prominent",
+   "mustRead": [
+    "extremely long bare neck with a tiny flat head",
+    "fluffy plume wings and tail bustle",
+    "long two-toed powerful legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Secretary Bird",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 0.7,
+   "headFrac": 0.24,
+   "eyes": "prominent",
+   "mustRead": [
+    "crest of long black quill feathers behind the head",
+    "extremely long crane-like legs",
+    "eagle head with a bare orange-red face"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Crane",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 0.8,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "long neck carried straight",
+    "drooping bustle of tail plumes over the rump",
+    "bare red crown patch and stilt legs"
+   ],
+   "note": "Neck is straight, not S-kinked like a heron's, and the bill is shorter."
+  },
+  {
+   "name": "Spoonbill",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 1,
+   "headFrac": 0.34,
+   "eyes": "normal",
+   "mustRead": [
+    "long flat bill flaring into a rounded spatula at the tip",
+    "bare face skin",
+    "long neck and legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Flamingo",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 0.55,
+   "headFrac": 0.16,
+   "eyes": "small",
+   "mustRead": [
+    "neck kinked into a long S",
+    "thick bill bent sharply downward at the middle",
+    "extremely long pink legs with a backward-bending ankle"
+   ],
+   "note": "The 'backward knee' is the ankle. Bill points down when feeding, held upside down in the water."
+  },
+  {
+   "name": "Lark",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.6,
+   "headFrac": 0.27,
+   "eyes": "normal",
+   "mustRead": [
+    "streaky brown ground-bird plumage",
+    "slight peaked crest at the back of the crown",
+    "long straight hind claw"
+   ],
+   "note": "Generic name read as a representative skylark-type lark: a horizontal, long-bodied songbird, not an upright perching finch."
+  },
+  {
+   "name": "Bustard",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 1.3,
+   "headFrac": 0.16,
+   "eyes": "normal",
+   "mustRead": [
+    "heavy horizontal body carried high on long bare legs",
+    "thick upright neck",
+    "flat-crowned head with a short stout bill"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sandgrouse",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 1.8,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "plump pigeon-like body on very short feathered legs",
+    "long pointed pin tail",
+    "small head on a short neck"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Rhea",
+   "group": "flightless-bird",
+   "posture": "biped",
+   "aspect": 0.9,
+   "headFrac": 0.11,
+   "eyes": "normal",
+   "mustRead": [
+    "long bare neck and long bare legs",
+    "shaggy drooping wings with no visible tail",
+    "small flat head with a broad blunt bill"
+   ],
+   "note": "Taller than long: total height is dominated by neck and legs. Three toes, not two like an ostrich."
+  },
+  {
+   "name": "Seriema",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 1.2,
+   "headFrac": 0.15,
+   "eyes": "prominent",
+   "mustRead": [
+    "spray of erect bristly feathers at the base of the bill",
+    "very long red legs",
+    "long trailing tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sparrow",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.6,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "stout conical seed-cracking bill",
+    "round-headed chunky body",
+    "short square-ended tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Finch",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.5,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "thick triangular conical bill",
+    "compact rounded body",
+    "notched short tail"
+   ],
+   "note": "Generic name read as a representative small seed-eating finch."
+  },
+  {
+   "name": "Swallow",
+   "group": "bird",
+   "posture": "flying",
+   "aspect": 2.2,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "deeply forked tail with long outer streamers",
+    "long narrow pointed swept-back wings",
+    "tiny flat bill with a wide gape"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Quail",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 1.6,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "round plump body like a feathered ball",
+    "very short tail and short legs",
+    "small head tucked close to the body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Magpie",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 2.6,
+   "headFrac": 0.18,
+   "eyes": "normal",
+   "mustRead": [
+    "very long graduated wedge tail longer than the body",
+    "black-and-white pied blocks of colour",
+    "heavy straight crow bill"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Jay",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.9,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "stout crow-like bill on a rounded head",
+    "barred blue wing patch",
+    "long broad tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Partridge",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 1.7,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "dumpy rounded gamebird body",
+    "short stubby tail held low",
+    "small head with a short curved bill"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Dove",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.9,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "small round head on a plump breast",
+    "slim tapering tail",
+    "short slender bill with a fleshy cere"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Curlew",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 1.4,
+   "headFrac": 0.34,
+   "eyes": "small",
+   "mustRead": [
+    "very long smoothly downcurved bill",
+    "long bare wading legs",
+    "streaked brown body on a small round head"
+   ],
+   "note": "The bill can be a quarter of the total profile length; drawing it short or straight destroys the identification."
+  }
+ ]
+}

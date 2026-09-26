@@ -1,0 +1,4 @@
+apps/game/src/creature-rig-contact-rigid-refusal.test.ts(14,74): error TS2379: Argument of type '{ graph: ReadonlyArray<readonly [string, string]>; bodyAxis: readonly [string, string]; id: string; version: number; clipSetId: string; joints: readonly string[]; legs: readonly string[]; ... 5 more ...; contactStance: { default: string; actions: {}; }; }' is not assignable to parameter of type 'FamilyContract' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  The types of 'contactStance.default' are incompatible between these types.
+    Type 'string' is not assignable to type '"all" | "hind" | "none"'.
+apps/game/src/creature-rig-contact.ts(111,54): error TS2339: Property 'travel' does not exist on type '{ readonly default: "all" | "hind" | "none"; readonly gaits?: Readonly<Record<string, "alternating" | "bounding">>; readonly actions: Readonly<Record<string, "all" | "hind" | "none">>; }'.

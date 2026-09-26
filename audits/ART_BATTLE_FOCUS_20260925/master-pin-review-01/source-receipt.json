@@ -1,0 +1,26 @@
+{
+  "schema": "cf.c13-contract-review/v1",
+  "codexHead": "7fe3d0203e820d32399c3fd8ac25888d27cdfa76",
+  "claudeHead": "95a3af1692a6c6d6db6ea25ba0c57b4ed06807b0",
+  "sources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/C4_PIN_PROPOSAL_20260925/README.md",
+      "sha256": "d51bd93c6d3c2e789aab4ffa78c6379a434af3bc16873f866e15a92409b434e7"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig.ts",
+      "sha256": "5292dd25fcfe86e79661a3cdab9c3c7eaac19811dcb9ffd325fb4d70b7faba66"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2-wiring.ts",
+      "sha256": "c3213d633818bb2a96314985ee5c312bb5a6a0a49da326d4f0d578b63cf0b597"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/record-source.mjs",
+      "sha256": "f5eab334756348ccf14af16c3bdc788df43c4e779c58844e6187fd908502d3cc"
+    }
+  ],
+  "runtimeChanged": false,
+  "mastersRemoved": false,
+  "measuredSavingsBytes": null
+}

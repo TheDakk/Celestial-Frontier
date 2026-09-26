@@ -1,0 +1,33 @@
+{
+  "tool": "image_gen.imagegen",
+  "executionCell": "1571",
+  "sourceFile": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-8d3c391c-cf1c-4cc9-8c85-3a0dc6a3f24d.png",
+  "masterSha256": "d0a777d5186a6787461d795b41b34b8ce4569af1efd10b14f98524fc92ef8cae",
+  "info": {
+    "format": "raw",
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "depth": "uchar",
+    "premultiplied": false,
+    "hasAlpha": true,
+    "size": 6290064
+  },
+  "positiveAlpha": {
+    "xmin": 16,
+    "ymin": 53,
+    "xmax": 1235,
+    "ymax": 899,
+    "pixels": 130853
+  },
+  "requestedMarginPx": 101,
+  "deliveredMarginsPx": {
+    "left": 16,
+    "top": 53,
+    "right": 18,
+    "bottom": 354
+  },
+  "visualObservation": "Single connected open lateral wave; no overlapping coils; complete tail and head. Delivered alpha retained, no recolor/resize/matte or crop. Requested safe margin missed; remains an art review caveat, not silently repaired.",
+  "model": "not exposed",
+  "seed": "not exposed"
+}

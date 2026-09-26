@@ -1,0 +1,190 @@
+{
+ "id": "salmon-6",
+ "standIn": "Salmon",
+ "template": "fish",
+ "accentGroups": [
+  "fins"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/salmon/card/master-512.png",
+  "joints": [
+   "pectoralNear",
+   "pectoralFar",
+   "dorsal",
+   "jaw",
+   "head",
+   "caudal",
+   "spine5",
+   "spine4",
+   "spine3",
+   "spine2",
+   "spine1",
+   "spine0",
+   "root"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Whale",
+   "group": "baleen-cetacean",
+   "posture": "swimming",
+   "aspect": 5,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "horizontal notched tail flukes",
+    "blowhole on top of the head",
+    "long paddle flippers and a smooth streamlined body"
+   ],
+   "note": "generic name - drawn as a representative baleen whale; flukes are horizontal, never vertical like a fish"
+  },
+  {
+   "name": "Monkfish",
+   "group": "fish",
+   "posture": "sprawling",
+   "aspect": 1.9,
+   "headFrac": 0.5,
+   "eyes": "small",
+   "mustRead": [
+    "enormous flattened head far wider than the tapering body",
+    "huge upturned mouth ringed with inward-slanting teeth",
+    "fleshy lure on the snout and frilly skin flaps along the jaw"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Coelacanth",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.8,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "fleshy lobed fins on muscular stalks",
+    "three-lobed tail with a small central spike",
+    "steel-blue scales flecked with white"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Ocean Sunfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 0.6,
+   "headFrac": 0.42,
+   "eyes": "normal",
+   "mustRead": [
+    "body truncated behind, ending in a frilled rudder instead of a tail",
+    "towering dorsal and anal fins top and bottom",
+    "tiny round puckered beak mouth"
+   ],
+   "note": "Taller than it is long - it looks like a swimming head with fins; there is no tail fin at all."
+  },
+  {
+   "name": "Remora",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 5.5,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "ridged oval sucker plate on top of the head",
+    "slim dark torpedo body",
+    "jutting lower jaw and low fins set far back"
+   ],
+   "note": "The sucker is on the top of the head, not the belly - it is a modified dorsal fin."
+  },
+  {
+   "name": "Archerfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.5,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "flat straight sloping topline to an upturned mouth",
+    "bold black wedge bars on a silver body",
+    "dorsal fin set far back near the tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Knifefish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 6,
+   "headFrac": 0.15,
+   "eyes": "small",
+   "mustRead": [
+    "long ribbon fin rippling along the entire underside",
+    "no dorsal fin on the back",
+    "body tapering to a blade-thin pointed tail"
+   ],
+   "note": "Generic - interpreted as a representative gymnotiform/ghost knifefish. It swims forwards and backwards with the undulating belly fin, body held rigid."
+  },
+  {
+   "name": "Icefish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4.5,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "translucent white bloodless body with visible internal structure",
+    "oversized head with wide pike-like jaws",
+    "large fan pectoral fins on scaleless skin"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Mudminnow",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "small cylindrical body with rounded paddle fins",
+    "dorsal fin set far back close to the tail",
+    "blunt rounded snout with an upturned mouth"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Flying Gurnard",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.6,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "enormous fan-like pectoral wings edged in electric blue",
+    "blunt armoured bony head",
+    "separate finger-like rays used to walk the seabed"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Lancelet",
+   "group": "jawless-fish",
+   "posture": "swimming",
+   "aspect": 7,
+   "headFrac": 0.1,
+   "eyes": "hidden",
+   "mustRead": [
+    "translucent blade-shaped body pointed at both ends",
+    "rows of V-shaped muscle chevrons visible through the skin",
+    "fringe of oral tentacles where a head would be"
+   ],
+   "note": "Has no head, no jaws and no eyes - just a stiffening notochord line running end to end."
+  }
+ ]
+}

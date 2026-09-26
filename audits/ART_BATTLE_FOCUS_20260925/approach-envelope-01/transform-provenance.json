@@ -1,0 +1,7 @@
+{
+  "scope": "Proposal-only bundle transform; reserved battle2 source is unchanged. Not a certificate of HEAD.",
+  "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/parts-rig.ts",
+  "originalSha256": "f2e5b6ff95fb213c219d05d75031421f5947fa75cafd4ecb29f24d8fca213ac4",
+  "proposedSha256": "83e1437cbf35cecab9e377d8dcaa05ee24c276f1df2da1ba355d2967dede9b58",
+  "patchSha256": "dd3b63984325ae2624034e74448cda9dd007c81dfd4c0025978626706cddce4e"
+}

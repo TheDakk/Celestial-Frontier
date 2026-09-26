@@ -1,0 +1,341 @@
+{
+  "schema": "cf-civet-first-contact-independent-analysis/v1",
+  "certification": false,
+  "originalStatus": "FAIL",
+  "originalReportSha256": "59a1c7e1652095a18d6a96df2c2181640f1365df7e159ed99494b6dcbb8a4223",
+  "analysisSourceSha256": "b23dbf481e5eecca2e302f5515abc34cf1febd301853f1d3e9e3eb48921d1081",
+  "asset": {
+    "schema": "cf-painted-civet-study-asset/v1",
+    "path": "civet-painted-v1.webp",
+    "sha256": "7df99d643544f47f0b9cfd22e97e3bcb8af5ccc184a51f29d2e6c42c603815ac",
+    "bytes": 179856,
+    "width": 768,
+    "height": 512,
+    "alphaBounds": {
+      "x0": 14,
+      "y0": 102,
+      "x1": 755,
+      "y1": 415
+    },
+    "contactY": 413,
+    "transparentPixels": 281825,
+    "opaquePixels": 105976,
+    "partialPixels": 5415,
+    "sourceMaster": "alpha-v3/civet-painted-v1.png",
+    "sourceMasterSha256": "55633a07d1d03ef55d9a3493bd5e03b871eb1ef0db57b2cb5b6d39ec48ff2508",
+    "rawRGBASourceBytes": 1572864,
+    "identity": "Exact original Civet Earth133 epoch0 genome; bound by civet-rig.ts full29-field serialization.",
+    "admission": "Local authoring study only; not imported by game.",
+    "alphaAuthority": "Nick explicitly requested ImageMagick alpha extraction.",
+    "edgeLimit": "Approximate recovered matte. Fine whiskers are attenuated; small bright fur fringe remains visible at magnification. Production clean-edge acceptance remains open."
+  },
+  "method": "Independent PNG chunk CRC/decompression/unfiltering and RGBA comparison, projected through native-reported mesh position/scale; original 2-row metrics must reproduce exactly.",
+  "rows": [
+    {
+      "size": 440,
+      "restImage": {
+        "width": 440,
+        "height": 440,
+        "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c",
+        "filters": {
+          "2": 440
+        }
+      },
+      "motionImage": {
+        "width": 440,
+        "height": 440,
+        "sha256": "88584ea4f11ae3e81c102377b551791600e50b4cc869dfe9c653bcbfdb76d06c",
+        "filters": {
+          "2": 440
+        }
+      },
+      "nativeMeshPosition": {
+        "x": 14.528301886792462,
+        "y": 81.77358490566039
+      },
+      "nativeMeshScale": {
+        "x": 409.87601078167114,
+        "y": 273.2506738544474
+      },
+      "originalAlphaCountsReproducedExactly": true,
+      "encodedPNGMatchesRawChannelDeltaCount": false,
+      "originalRawPixelContact": 44,
+      "bands": [
+        {
+          "rowsAboveContact": 2,
+          "sourceYRange": [
+            411,
+            415
+          ],
+          "screenYRange": [
+            302,
+            303
+          ],
+          "solidPixelsWholeBand": 4,
+          "changedPixelsWholeBand": 42,
+          "solidPawPixels": 4,
+          "changedPawPixels": 42,
+          "pawColumnClusters": [
+            {
+              "screenX0": 172,
+              "screenX1": 173,
+              "sourceX0": 295.06060606060606,
+              "sourceX1": 296.9343434343434,
+              "solidPixels": 2,
+              "changedPixelsInSameColumns": 3
+            },
+            {
+              "screenX0": 176,
+              "screenX1": 176,
+              "sourceX0": 302.55555555555554,
+              "sourceX1": 302.55555555555554,
+              "solidPixels": 1,
+              "changedPixelsInSameColumns": 2
+            },
+            {
+              "screenX0": 179,
+              "screenX1": 179,
+              "sourceX0": 308.17676767676767,
+              "sourceX1": 308.17676767676767,
+              "solidPixels": 1,
+              "changedPixelsInSameColumns": 2
+            }
+          ]
+        },
+        {
+          "rowsAboveContact": 20,
+          "sourceYRange": [
+            393,
+            415
+          ],
+          "screenYRange": [
+            292,
+            303
+          ],
+          "solidPixelsWholeBand": 922,
+          "changedPixelsWholeBand": 765,
+          "solidPawPixels": 827,
+          "changedPawPixels": 765,
+          "pawColumnClusters": [
+            {
+              "screenX0": 163,
+              "screenX1": 186,
+              "sourceX0": 278.1969696969697,
+              "sourceX1": 321.29292929292933,
+              "solidPixels": 207,
+              "changedPixelsInSameColumns": 189
+            },
+            {
+              "screenX0": 189,
+              "screenX1": 215,
+              "sourceX0": 326.9141414141414,
+              "sourceX1": 375.63131313131316,
+              "solidPixels": 189,
+              "changedPixelsInSameColumns": 180
+            },
+            {
+              "screenX0": 247,
+              "screenX1": 272,
+              "sourceX0": 435.59090909090907,
+              "sourceX1": 482.4343434343434,
+              "solidPixels": 203,
+              "changedPixelsInSameColumns": 187
+            },
+            {
+              "screenX0": 275,
+              "screenX1": 302,
+              "sourceX0": 488.05555555555554,
+              "sourceX1": 538.6464646464647,
+              "solidPixels": 228,
+              "changedPixelsInSameColumns": 191
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "size": 300,
+      "restImage": {
+        "width": 300,
+        "height": 300,
+        "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be",
+        "filters": {
+          "2": 300
+        }
+      },
+      "motionImage": {
+        "width": 300,
+        "height": 300,
+        "sha256": "7bc99a2eec5ca9b89285b9b13d1600084ab1205dd222199bece847693edbb758",
+        "filters": {
+          "2": 300
+        }
+      },
+      "nativeMeshPosition": {
+        "x": 9.905660377358487,
+        "y": 55.75471698113208
+      },
+      "nativeMeshScale": {
+        "x": 279.46091644204853,
+        "y": 186.30727762803235
+      },
+      "originalAlphaCountsReproducedExactly": true,
+      "encodedPNGMatchesRawChannelDeltaCount": false,
+      "originalRawPixelContact": 23,
+      "bands": [
+        {
+          "rowsAboveContact": 2,
+          "sourceYRange": [
+            411,
+            415
+          ],
+          "screenYRange": [
+            206,
+            206
+          ],
+          "solidPixelsWholeBand": 0,
+          "changedPixelsWholeBand": 22,
+          "solidPawPixels": 0,
+          "changedPawPixels": 22,
+          "pawColumnClusters": []
+        },
+        {
+          "rowsAboveContact": 20,
+          "sourceYRange": [
+            393,
+            415
+          ],
+          "screenYRange": [
+            199,
+            206
+          ],
+          "solidPixelsWholeBand": 432,
+          "changedPixelsWholeBand": 374,
+          "solidPawPixels": 388,
+          "changedPawPixels": 374,
+          "pawColumnClusters": [
+            {
+              "screenX0": 111,
+              "screenX1": 127,
+              "sourceX0": 277.8222222222222,
+              "sourceX1": 321.7925925925926,
+              "solidPixels": 97,
+              "changedPixelsInSameColumns": 99
+            },
+            {
+              "screenX0": 129,
+              "screenX1": 146,
+              "sourceX0": 327.2888888888889,
+              "sourceX1": 374.0074074074074,
+              "solidPixels": 87,
+              "changedPixelsInSameColumns": 84
+            },
+            {
+              "screenX0": 169,
+              "screenX1": 206,
+              "sourceX0": 437.21481481481476,
+              "sourceX1": 538.8962962962962,
+              "solidPixels": 204,
+              "changedPixelsInSameColumns": 186
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "size": 132,
+      "restImage": {
+        "width": 132,
+        "height": 132,
+        "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4",
+        "filters": {
+          "2": 132
+        }
+      },
+      "motionImage": {
+        "width": 132,
+        "height": 132,
+        "sha256": "2dd229231331d640e485299361d8ea95579cd8f137a1a7e92441eb84ba36f633",
+        "filters": {
+          "2": 132
+        }
+      },
+      "nativeMeshPosition": {
+        "x": 4.358490566037737,
+        "y": 24.532075471698114
+      },
+      "nativeMeshScale": {
+        "x": 122.96280323450135,
+        "y": 81.97520215633423
+      },
+      "originalAlphaCountsReproducedExactly": true,
+      "encodedPNGMatchesRawChannelDeltaCount": true,
+      "originalRawPixelContact": 0,
+      "bands": [
+        {
+          "rowsAboveContact": 2,
+          "sourceYRange": [
+            411,
+            415
+          ],
+          "screenYRange": null,
+          "solidPixelsWholeBand": 0,
+          "changedPixelsWholeBand": 0,
+          "solidPawPixels": 0,
+          "changedPawPixels": 0,
+          "pawColumnClusters": []
+        },
+        {
+          "rowsAboveContact": 20,
+          "sourceYRange": [
+            393,
+            415
+          ],
+          "screenYRange": [
+            88,
+            90
+          ],
+          "solidPixelsWholeBand": 70,
+          "changedPixelsWholeBand": 63,
+          "solidPawPixels": 65,
+          "changedPawPixels": 63,
+          "pawColumnClusters": [
+            {
+              "screenX0": 49,
+              "screenX1": 55,
+              "sourceX0": 278.8215488215488,
+              "sourceX1": 316.29629629629625,
+              "solidPixels": 18,
+              "changedPixelsInSameColumns": 15
+            },
+            {
+              "screenX0": 57,
+              "screenX1": 64,
+              "sourceX0": 328.78787878787875,
+              "sourceX1": 372.5084175084175,
+              "solidPixels": 14,
+              "changedPixelsInSameColumns": 16
+            },
+            {
+              "screenX0": 75,
+              "screenX1": 81,
+              "sourceX0": 441.21212121212113,
+              "sourceX1": 478.68686868686865,
+              "solidPixels": 14,
+              "changedPixelsInSameColumns": 14
+            },
+            {
+              "screenX0": 83,
+              "screenX1": 90,
+              "sourceX0": 491.1784511784511,
+              "sourceX1": 534.8989898989898,
+              "solidPixels": 19,
+              "changedPixelsInSameColumns": 17
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": "Read-only diagnosis of retained first-run PNGs. No new build, native execution, rig result or superseding PASS."
+}

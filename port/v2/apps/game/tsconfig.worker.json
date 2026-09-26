@@ -8,7 +8,9 @@
     "src/species-art.worker.ts",
     "src/species-art-protocol.ts",
     "src/species-art-worker-core.ts",
+    "src/planet-surface-turn.worker.ts",
     "src/biome-vista.worker.ts",
+    "src/earth-resident.worker.ts",
     "src/biome-vista-protocol.ts"
   ]
 }

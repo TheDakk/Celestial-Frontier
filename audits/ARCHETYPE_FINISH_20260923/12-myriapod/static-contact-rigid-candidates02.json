@@ -1,0 +1,743 @@
+{
+  "schema": "cf.isolated-rigid-contact-candidate/v1",
+  "scope": "Exactly two previously retained failures; unchanged kinematics/skeleton, no production policy or eligibility change. Not a qualification or proof of an all-contact solution.",
+  "results": [
+    {
+      "action": "hit",
+      "ms": 356.25,
+      "chain": "leg13Far",
+      "endpointOnly": true,
+      "eligibilityUnchanged": true,
+      "scope": "Isolated chain candidate only; actual full LBS support predicted with other joints retaining attempted keys. No all-contact solve or publication.",
+      "hip": {
+        "x": 0.1711679738351135,
+        "y": 0.49996707991546424
+      },
+      "target": {
+        "x": 0.21736937561930594,
+        "y": 0.4235812890056083
+      },
+      "joints": [
+        {
+          "joint": "leg13FarKnee",
+          "deg": 51.4980757000676,
+          "limit": {
+            "min": -60,
+            "max": 60
+          },
+          "pass": true
+        },
+        {
+          "joint": "leg13FarFoot",
+          "deg": -52.72145309608057,
+          "limit": {
+            "min": -70,
+            "max": 70
+          },
+          "pass": true
+        }
+      ],
+      "paintResidualPx": 1.0441647546599597e-13,
+      "rigidResidualPx": 1.0441647546599597e-13,
+      "upperLengthError": 3.469446951953614e-18,
+      "lowerLengthError": -2.0816681711721685e-17,
+      "compression": 0,
+      "candidatePassesOriginalJointAndPaintChecks": true,
+      "pose": {
+        "root": {
+          "rotation": 0,
+          "dx": -0.07291628897207757,
+          "dy": -0.000096
+        },
+        "head": {
+          "rotation": 0.008366,
+          "dx": 0,
+          "dy": 0
+        },
+        "mandible": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "antennaFar": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "antennaNear": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg0FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg0FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg0NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg0NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg1FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg1FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg1NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg1NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg2FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg2FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg2NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg2NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg3FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg3FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg3NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg3NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg4FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg4FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg4NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg4NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg5FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg5FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg5NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg5NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg6FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg6FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg6NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg6NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg7FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg7FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg7NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg7NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg8FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg8FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg8NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg8NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg9FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg9FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg9NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg9NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg10FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg10FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg10NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg10NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg11FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg11FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg11NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg11NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg12FarKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg12FarFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg12NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg12NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg13FarKnee": {
+          "rotation": 0.8988109794074635
+        },
+        "leg13FarFoot": {
+          "rotation": -0.9201629429623643
+        },
+        "leg13NearKnee": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg13NearFoot": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "ultimateFar": {
+          "rotation": 0.004183,
+          "dx": 0,
+          "dy": 0
+        },
+        "ultimateNear": {
+          "rotation": -0.004183,
+          "dx": 0,
+          "dy": 0
+        }
+      }
+    },
+    {
+      "action": "dodge",
+      "ms": 46.666666666666664,
+      "chain": "leg0Far",
+      "endpointOnly": false,
+      "eligibilityUnchanged": true,
+      "scope": "Isolated chain candidate only; actual full LBS support predicted with other joints retaining attempted keys. No all-contact solve or publication.",
+      "hip": {
+        "x": 0.7989892701500283,
+        "y": 0.5095693779904307
+      },
+      "target": {
+        "x": 0.8460925039872407,
+        "y": 0.44912280701754387
+      },
+      "joints": [
+        {
+          "joint": "leg0FarKnee",
+          "deg": 43.74528040385587,
+          "limit": {
+            "min": -60,
+            "max": 60
+          },
+          "pass": true
+        },
+        {
+          "joint": "leg0FarFoot",
+          "deg": -47.26072324087063,
+          "limit": {
+            "min": -70,
+            "max": 70
+          },
+          "pass": true
+        }
+      ],
+      "paintResidualPx": 2.0883295093199195e-13,
+      "rigidResidualPx": 1.9688959431894542e-13,
+      "upperLengthError": 1.5265566588595902e-16,
+      "lowerLengthError": -1.5959455978986625e-16,
+      "compression": 0,
+      "candidatePassesOriginalJointAndPaintChecks": true,
+      "pose": {
+        "root": {
+          "rotation": 0,
+          "dx": -0.04666648148148149,
+          "dy": 0
+        },
+        "head": {
+          "rotation": -0.054676,
+          "dx": 0,
+          "dy": 0
+        },
+        "mandible": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "antennaFar": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "antennaNear": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg0FarKnee": {
+          "rotation": 0.7634991752554396
+        },
+        "leg0FarFoot": {
+          "rotation": -0.8248552274269977
+        },
+        "leg0NearKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg0NearFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg1FarKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg1FarFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg1NearKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg1NearFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg2FarKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg2FarFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg2NearKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg2NearFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg3FarKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg3FarFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg3NearKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg3NearFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg4FarKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg4FarFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg4NearKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg4NearFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg5FarKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg5FarFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg5NearKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg5NearFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg6FarKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg6FarFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg6NearKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg6NearFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg7FarKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg7FarFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg7NearKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg7NearFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg8FarKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg8FarFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg8NearKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg8NearFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg9FarKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg9FarFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg9NearKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg9NearFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg10FarKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg10FarFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg10NearKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg10NearFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg11FarKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg11FarFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg11NearKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg11NearFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg12FarKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg12FarFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg12NearKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg12NearFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg13FarKnee": {
+          "rotation": 0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg13FarFoot": {
+          "rotation": -0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg13NearKnee": {
+          "rotation": -0.174964,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg13NearFoot": {
+          "rotation": 0.196834,
+          "dx": 0,
+          "dy": 0
+        },
+        "ultimateFar": {
+          "rotation": -0.109352,
+          "dx": 0,
+          "dy": 0
+        },
+        "ultimateNear": {
+          "rotation": 0.109352,
+          "dx": 0,
+          "dy": 0
+        }
+      }
+    }
+  ],
+  "sources": [
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-contact-diagnosis02.json",
+      "sha256": "edca860960cf6720503334156a272d89611756a84c165d8b74224ef10e9a8e75",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-06/record.json",
+      "sha256": "07674cb93baf4ad78c47fee2a40b26e98f490c2ed91ac3d9fa085bf0b3c7f802",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "9b23b08d8800ac634ec9dd3fff7b8939ada5747f7052e1f2be08818991056215",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "sha256": "1fe0cdfcc270cb08cd231927668a087c9473d3b2590f13bd1a581eb444f49534",
+      "unchanged": true
+    }
+  ]
+}

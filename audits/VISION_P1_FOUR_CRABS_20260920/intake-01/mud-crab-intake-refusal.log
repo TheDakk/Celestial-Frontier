@@ -1,0 +1,12 @@
+file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:6
+const need = (ok, reason) => { if (!ok) throw Error('Skeleton pose: ' + reason); };
+                                              ^
+
+Error: Skeleton pose: exact landmark inventory
+    at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:6:47)
+    at createSkeletonPoseProgram (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:21:3)
+    at checkFamilyGeometry (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:24:2)
+    at sealFamilyRecord (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:44:36)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/VISION_P1_FOUR_CRABS_20260920/intake-01/prepare.mjs:16:20
+
+Node.js v26.9.0

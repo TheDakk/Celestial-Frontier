@@ -1,0 +1,44 @@
+{
+  "schema": "cf.species-reference-adapter-source.v1",
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/landfall-conditioning.ts",
+      "sha256": "76a6a5fa20fded3ad687c22c9f219beda5349d1bc0d2727af4e50c67987eda54",
+      "bytes": 17600
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-runtime.ts",
+      "sha256": "cd91455a260e80b0475559cf85e02db0d068d9e75f7365d1ca13fa7946cbc410",
+      "bytes": 14218
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-game.ts",
+      "sha256": "40ec5629a2dce7a358a36a09279488f2562c2665eee919807d049d3788025e4b",
+      "bytes": 18095
+    },
+    {
+      "path": "port/v2/tests/landfall-conditioning.test.ts",
+      "sha256": "05ba76172265f91f40436f16595c8b6ffaa037197994cb60d3f0205771f88b96",
+      "bytes": 17576
+    },
+    {
+      "path": "port/v2/tests/local-ai-runtime.test.ts",
+      "sha256": "3e149ab198e976dfc573b271c452948dcd98d605d3e5bdebd099cbd2615706a1",
+      "bytes": 28666
+    },
+    {
+      "path": "port/v2/tests/local-ai-game.test.ts",
+      "sha256": "efd989395f70041aba1f8d63098f82f850227c89cf31685db7b46a807d68d80b",
+      "bytes": 30352
+    }
+  ],
+  "verification": [
+    "controls-01:63PASS/1fixtureFAIL",
+    "controls-02:98PASS,all3TypeScriptPASS",
+    "controls-03:25runtimePASS,distinctslotvalues",
+    "controls-04:46PASS; TS missing jsdom declaration fixture error",
+    "controls-05:46PASS,all3TypeScriptPASS"
+  ],
+  "qualityAccepted": false,
+  "phoneQualified": false
+}

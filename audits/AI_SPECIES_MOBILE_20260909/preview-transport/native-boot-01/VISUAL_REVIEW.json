@@ -1,0 +1,21 @@
+{
+  "scope": "Desktop normal-game preview transport only; visual inspection of actual training and restored Sol screenshots",
+  "result": "PASS",
+  "reviewer": "OpenAI/Codex mobile-delivery agent",
+  "artQualityAccepted": false,
+  "physicalPhoneQualified": false,
+  "screenshots": [
+    {
+      "file": "01-training.png",
+      "sha256": "5872281b3b0680a1f538d4786f071954f38efd041eb30a6cffa386ecd2bdbd15",
+      "bytes": 299171,
+      "finding": "Visible ordinary Sol training card with Skip training"
+    },
+    {
+      "file": "02-reloaded-Sol.png",
+      "sha256": "7bb2cbfdc8ead43419c520b95576eb1ca2291ad3e24a5d2f2b385f36d40ecaf6",
+      "bytes": 263051,
+      "finding": "Unobstructed restored Sol game after trusted Skip and new-document reload"
+    }
+  ]
+}

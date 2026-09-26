@@ -1,0 +1,233 @@
+{
+  "name": "Reef Shark",
+  "family": "fish",
+  "species": {
+    "name": "Reef Shark",
+    "aspect": 4.8,
+    "headFrac": 0.22,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "black or white marked fin tips",
+      "slim grey torpedo body",
+      "rounded short snout"
+    ]
+  },
+  "genome": {
+    "seed": 163690985,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 17,
+    "body": 12,
+    "loco": 12,
+    "trait": 8,
+    "size": 3,
+    "diet": 5,
+    "head": 2,
+    "limbs": 4,
+    "skin": 2,
+    "tail": 6,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 10,
+    "habitat": 1,
+    "detail": 4,
+    "accent": 16,
+    "temper": 9,
+    "sense": 1,
+    "repro": 0,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Reef Shark"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Reef Shark\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"163690985\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "index": 441,
+  "contract": {
+    "id": "fish",
+    "version": 1,
+    "clipSetId": "fish-aquatic-v1",
+    "graph": [
+      [
+        "head",
+        "root"
+      ],
+      [
+        "jaw",
+        "head"
+      ],
+      [
+        "spine0",
+        "root"
+      ],
+      [
+        "spine1",
+        "spine0"
+      ],
+      [
+        "spine2",
+        "spine1"
+      ],
+      [
+        "spine3",
+        "spine2"
+      ],
+      [
+        "spine4",
+        "spine3"
+      ],
+      [
+        "spine5",
+        "spine4"
+      ],
+      [
+        "caudal",
+        "spine5"
+      ],
+      [
+        "dorsal",
+        "spine1"
+      ],
+      [
+        "pectoralFar",
+        "root"
+      ],
+      [
+        "pectoralNear",
+        "root"
+      ]
+    ],
+    "bodyAxis": [
+      "spine0",
+      "spine5"
+    ],
+    "joints": [
+      "root",
+      "head",
+      "jaw",
+      "spine0",
+      "spine1",
+      "spine2",
+      "spine3",
+      "spine4",
+      "spine5",
+      "caudal",
+      "dorsal",
+      "pectoralFar",
+      "pectoralNear"
+    ],
+    "legs": [],
+    "limitsDeg": {
+      "root": {
+        "min": -30,
+        "max": 30
+      },
+      "head": {
+        "min": -30,
+        "max": 30
+      },
+      "jaw": {
+        "min": -35,
+        "max": 5
+      },
+      "spine0": {
+        "min": -35,
+        "max": 35
+      },
+      "spine1": {
+        "min": -35,
+        "max": 35
+      },
+      "spine2": {
+        "min": -35,
+        "max": 35
+      },
+      "spine3": {
+        "min": -35,
+        "max": 35
+      },
+      "spine4": {
+        "min": -35,
+        "max": 35
+      },
+      "spine5": {
+        "min": -35,
+        "max": 35
+      },
+      "caudal": {
+        "min": -50,
+        "max": 50
+      },
+      "dorsal": {
+        "min": -35,
+        "max": 35
+      },
+      "pectoralFar": {
+        "min": -60,
+        "max": 60
+      },
+      "pectoralNear": {
+        "min": -60,
+        "max": 60
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.1,
+        "max": 0.85,
+        "kind": "distance",
+        "axis": [
+          "spine0",
+          "spine5"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "caudal/body",
+        "min": 0.05,
+        "max": 0.9,
+        "kind": "ratio",
+        "bones": [
+          "caudal"
+        ],
+        "axis": [
+          "spine0",
+          "spine5"
+        ]
+      },
+      {
+        "id": "head/body",
+        "min": 0.04,
+        "max": 0.8,
+        "kind": "ratio",
+        "bones": [
+          "head"
+        ],
+        "axis": [
+          "spine0",
+          "spine5"
+        ]
+      }
+    ]
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  }
+}

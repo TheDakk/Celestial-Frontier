@@ -16,8 +16,12 @@
    Field Training currently has 15 lesson IDs; a fuller hands-on curriculum remains
    on the V2 program roadmap. Atlas charting/favorites and rarity stings are live.
    Static deterministic Canvas species portraits and the preserved 43-biome landing vistas are live;
-   retained Pixi actors, meshes, and portrait animation remain later work. */
-import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin } from 'pixi.js';
+   selected Compendium portraits have bounded presentation motion; articulated rigs are a separate owner. */
+import { readSurveyFoldPrefV1, surveyRowsHtmlV1, writeSurveyFoldPrefV1 } from './survey-card-folds.js';
+import { createPaintedCardsForApp } from './painted-cards.js';
+import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin, RendererType, MeshPipe, Particle, ParticleContainer } from 'pixi.js';
+import { createSystemStarField } from './system-star-field.js';
+import { createSystemProtostarCanvas, SYSTEM_PROTOSTAR_WIDTH, SYSTEM_PROTOSTAR_HEIGHT } from './system-protostar.js';
 import {
   galSpriteFor, decoSprite, getPlanetSprite, starSprite,
   _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr,
@@ -30,9 +34,43 @@ import {
   combatCuePlan, initAudio, playRaritySting, playWhoosh, playSurveyPing,
   projectCombatCueParticipantsV1, applySfxGain,
 } from '@cf/audio';
-import type { AudioContextLike, AudioCounterpartReceipt } from '@cf/audio';
+import type { AudioAccessibilityModes, AudioContextLike, AudioCounterpartReceipt } from '@cf/audio';
 import {
-  registerPanel, fillPanel, openPanel, closePanels, openPanelId,
+  commitWorldHarvestV1,
+  operationForWorldHarvestV1,
+  projectWorldHarvestV1,
+  publishWorldHarvestFieldsV1,
+} from './world-harvest.js';
+import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-batch.js';
+import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './recipe-pin.js';
+import { mirrorCompanionCodexXpV1 } from './companion-codex-mirror.js';
+import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
+import { localeFromSearchV1, localizeElementV1, SETTINGS_CATALOG_V1 } from './i18n.js';
+import { battle2On } from './battle2-gate.js';
+import { CompendiumRevealQueueV1 } from './compendium-reveal.js';
+import { VistaPillsControllerV1, composeVistaPostcardV1, deliverVistaPostcardV1, postcardTitleV1, type PostcardCanvasLike, type PostcardDeliveryV1 } from './vista-postcard.js';
+import { DEFAULT_CODEX_LIST_VIEW_V1, codexChipBarHtmlV1, codexChipPressV1, codexChipsFilteringV1, codexEntryMatchesV1, codexShelfLabelV1, shelveCodexRowsV1, type CodexListViewV1, type CodexShelfHeaderV1 } from './compendium-shelves.js';
+import { freshExpeditionPayloadV1 } from './expedition-reset.js';
+import { TooltipOwnerV1 } from './tooltips.js';
+import {
+  FriendlyDuelController,
+  commitFriendlyDuelActionV1,
+  friendlyDuelResultCopyV1,
+  projectFriendlyDuelV1,
+  type FriendlyDuelReadModelV1,
+  type FriendlyDuelRequestV1,
+} from './friendly-duel.js';
+import { CompanionCareController, projectCompanionCareV1, type CompanionCareReadModelV1 } from './companion-care-panel.js';
+import { commitArc5RestActionV1 } from './arc5-rest-action.js';
+import { commitArc5MissionClaimV1, commitArc5MissionDispatchV1, commitArc5MissionRecallV1 } from './arc5-mission-action.js';
+import { MissionBoardController, missionClaimReasonV1, missionReturnTextV1, type MissionBoardRequestV1 } from './mission-board.js';
+import {
+  deviceAudioAccessibilityStorage,
+  readAudioAccessibilityPrefsV1,
+  writeAudioAccessibilityPrefsV1,
+} from './audio-accessibility-prefs.js';
+import {
+  registerPanel, fillPanel, openPanel, closePanels, openPanelId, setPanelLocalizerV1,
   createPanelOpenController,
 } from './panels.js';
 import { capturePanelRefillFocus } from './panel-refill-focus.js';
@@ -108,13 +146,14 @@ import {
   bindSpeciesThumb,
   SpeciesArtLoader,
   SpeciesThumbLeaseGroup,
-  type Portrait440,
   type SpeciesThumbBinding,
 } from './species-art-loader.js';
 import {
   initTraining, gameEvent, trainingActive, trainingStepId, refreshTrainingScope,
   type TrainingEndIntent, type TrainingEndResult,
 } from './training.js';
+import { LivingSpeciesPreviewControllerV1 } from './living-species-preview.js';
+import { createTrainingForgePracticeAdapterV1, TRAINING_FORGE_IRON_PLATE_BASE_ID_V1, type TrainingForgePracticeActionOutcomeV1 } from './training-forge-practice.js';
 import {
   buildLegacyTrainingRestoreCandidate,
   committedTrainingArc4State,
@@ -195,6 +234,17 @@ import {
   resolveCameraShakePolicyV1,
   type CameraShakePolicyV1,
 } from './camera-shake-policy.js';
+import { PAINTED_MARS_VISTA_ID, isPaintedMarsVistaV1 } from './painted-mars-binding.js';
+import { PaintedVistaLoadV1 } from './painted-vista-load.js';
+import { EARTH_LAYERED_SCENE_ID, buildEarthLayeredRecipeV1 } from './earth-layered-recipe.js';
+import { PAINTED_EARTH_LANDING_ID, buildPaintedEarthLandingRecipeV1 } from './painted-earth-landing-recipe.js';
+import type { LocalAiGameV1 } from './local-ai-game.js';
+import { createAiPresentationRefresh, isAiActionTarget } from './ai-presentation.js';
+import type { AiLandfallInputV1, AiLandfallOriginalV1 } from './ai-landfall-originals.js';
+const LOCAL_AI_LANDFALL_ID = 'cf-local-ai-landfall-v1' as const;
+import { EarthLayeredLoadV1 } from './earth-layered-load.js';
+import { retireEarthLayerResourcesV1 } from './earth-layered-resources.js';
+import { earthLayeredMountLayoutV1 } from './earth-layered-layout.js';
 import type { VisualPolicyDeviceTierV1 } from './visual-policy-contract.js';
 import { selectFogParticleCandidatesV1 } from './fog-particle-selection.js';
 import {
@@ -217,6 +267,8 @@ import type {
   GuideCategoryId, GuideCategoryView, GuideTopicId, GuideTopicView,
 } from './guide-content.js';
 import type { ReleaseNoteView, V2ShippedRelease } from './release-content.js';
+import type { AudiovisualPilot, PilotSceneSnapshot } from './audiovisual-pilot.js';
+import { CombatBattleSceneController } from './combat-battle-scene.js';
 import {
   V2_CURRENT_RELEASE_VERSION,
   V2_DEVELOPMENT_VERSION,
@@ -285,7 +337,11 @@ import {
 import { cleanName, encodeWhere, regionAt } from '@cf/domain-strays';
 import { describeSpecies } from '@cf/domain-genome';
 import {
+  COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   PRIME_SIGNATURE_IDS_V1,
+  PRIME_SIGNATURES_V1,
+  type EncounterDecisionV1,
+  type EncounterStanceV1,
   battleStats,
   projectGuardianPrimeEncounterV1,
   STAT_NAMES,
@@ -305,7 +361,7 @@ import {
   ARC5_OWNERSHIP_MIGRATION_VERSION,
   ARC5_OWNERSHIP_EXTENSION_TARGETS,
   committedArc5OwnershipState,
-  prepareArc5OwnershipMigration, readArc5OwnershipMigration,
+  prepareArc5OwnershipMigration, readArc5OwnershipMigration, projectArc5MissionBoardV1,
   arc2LootLegacyMirrorMatches, prepareArc2LootLegacyMigration,
   prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror,
   encodeArc2LootCarrier, readArc2EngineeringLoadout, readArc2Loot, readArc3Engineering,
@@ -323,6 +379,12 @@ import {
   type StorageBackend, type V5Extensions,
   type CanonicalWorldIdentityStateV1,
 } from '@cf/persistence';
+import {
+  finishedRelayStarSeedsV1, finishedShelterPlanetSeedsV1, outpostSaveFactsV1, projectOutpostBoardV1, projectOutpostWorldOfferV1, readOutpostProjectsV1,
+  type OutpostProjectsStateV1, type OutpostRequestV1, type OutpostWorldContextV1,
+} from '@cf/persistence';
+import { commitOutpostActionV1, outpostRefusalCopyV1, outpostResultCopyV1 } from './outposts-action.js';
+import { OutpostsControllerV1, outpostExhibitsV1, outpostPortraitMarksV1, renderOutpostBoardV1, renderOutpostCardSectionV1, type OutpostUiRequestV1 } from './outposts-ui.js';
 import {
   MAX_GEAR_CAPACITY, projectEngineeringCapabilities,
 } from '@cf/domain-loot';
@@ -373,6 +435,7 @@ import {
 import {
   projectEngineeringPanelReadModel,
   projectOrbitalMineralSurveyRow,
+  projectRelayMineralSurveyRowsV1,
 } from './engineering-panel-model.js';
 import {
   deriveArc3FixedFabricationAction,
@@ -448,7 +511,12 @@ import {
 } from './f4-runtime-authority.js';
 import {
   arc6CombatOpenPolicyReasonV1,
+  arc6CommandAnswerFinishesV1,
   commitArc6CombatActionV1,
+  decideArc6CommandEncounterV1,
+  openArc6CommandEncounterV1,
+  projectArc6CommandBreakV1,
+  type Arc6CommandActionOutcomeV1,
   projectArc6CombatChampionAvailabilityV1,
   projectArc6CombatChampionRosterV1,
   type Arc6CombatActionOutcomeV1,
@@ -457,12 +525,15 @@ import {
 import {
   COMBAT_CARD_OUTCOME_SCHEMA,
   CombatCardController,
+  combatCardCommandBreakV1,
   projectCombatCardReadModelV1,
   type CombatCardActionOutcomeV1,
   type CombatCardActionRequestV1,
+  type CombatCardReadModelV1,
 } from './combat-card.js';
 import {
   CombatChronicleController,
+  createCombatChroniclePacerGateV1,
   projectCombatChronicleV1,
   type CombatChronicleCueEmissionV1,
 } from './combat-chronicle.js';
@@ -495,12 +566,16 @@ import {
   STARTER_CHARTER_IDS_V1,
   commitStarterCharterAcceptV1,
   operationForStarterCharterAcceptV1,
+  operationForWeeklyCharterAcceptV1,
+  isWeeklyCharterIdV1,
+  type CharterAcceptIdV1,
   projectStarterCharterBoardV1,
   publishStarterCharterAcceptFieldsV1,
   renderStarterCharterBoardV1,
   type StarterCharterAcceptActionOutcomeV1,
   type StarterCharterIdV1,
 } from './starter-charters.js';
+import { projectWeeklyCharterBoardV1, renderWeeklyCharterBoardV1, weeklyCharterCycleV1 } from './weekly-charters.js';
 import {
   ARC9_BINDER_CLAIMABLE_SET_IDS_V1,
   commitArc9BinderSetClaimV1,
@@ -594,8 +669,17 @@ import {
   f4AuthorityConvergenceWitnessErrors,
   latchF4AuthorityConvergenceReload,
 } from './f4-convergence-latch.js';
+import { UI_PRESENTATION_CSS } from './ui-presentation-tokens.js';
+import { UI_SHELL_CSS } from './ui-shell-style.js';
+import { UI_SHEET_CSS } from './ui-sheet-style.js';
+import { createSheetLayoutController } from './sheet-layout.js';
+import { createNotificationHistory, NOTIFICATION_HISTORY_CSS } from './notification-history.js';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
+const uiPresentationStyle = document.createElement('style');
+uiPresentationStyle.id = 'cf-ui-presentation';
+uiPresentationStyle.textContent = UI_PRESENTATION_CSS + UI_SHELL_CSS + NOTIFICATION_HISTORY_CSS + UI_SHEET_CSS;
+document.head.append(uiPresentationStyle);
 installBatchTextureArrayUidCompaction(BatchTextureArray);
 document.title = `Celestial Frontier v${V2_DEVELOPMENT_VERSION} — Development`;
 installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt fully replaces the hooks */
@@ -607,6 +691,8 @@ const REGISTRY = REGISTRY_JSON as unknown as ContentRegistry;
 const customNames = new Map<string, string>();
 
 extensions.add(CullerPlugin);   /* offscreen sprites skip render — thousands of stars, one flag */
+// Renderer pipes are captured at app.init; the optional view itself loads later.
+if (new URLSearchParams(location.search).get('planetturn') === '1') extensions.add(MeshPipe);
 
 const app = new Application();
 const pixiManagedResourceOwner = new PixiManagedResourceOwner(() => app.renderer, cleanHash);
@@ -636,7 +722,12 @@ const DOCUMENT_TOKEN = crypto.randomUUID();
    may clone sessionStorage into a duplicated/opener tab. BFCache retains this
    same JS realm and therefore correctly retains this token. */
 const F4_TAB_TOKEN = DOCUMENT_TOKEN;
-const speciesArtLoader = new SpeciesArtLoader(DOCUMENT_TOKEN);
+// the painted individual on the card (morph system): asked first for every thumb/portrait; painter tier otherwise
+// G5 (?finish=1, development only until Nick's quality review): an individual's retained finished original draws its card; a desktop
+// with the developer model transport finishes a creature when its Compendium portrait opens (creature-finish-app.ts)
+const finishRoute = new URLSearchParams(location.search).get('finish') === '1' ? import('./creature-finish-app.js').then((m) => m.createAppFinishRouteV1()).catch(() => null) : null;
+const paintedCards = (() => { try { return createPaintedCardsForApp(fetch, finishRoute ? async (g, _a, kind) => { const r = await finishRoute; if (!r) return null; const f = await r.lookup(g); if (!f && kind === 'portrait') void r.enqueue(g).catch(() => undefined); return f; } : undefined); } catch { return null; } })();
+const speciesArtLoader = new SpeciesArtLoader(DOCUMENT_TOKEN, paintedCards ? { paintedCards } : {});
 /* Keep one exact SceneMemory route's 9 Compendium + 8 Planetside thumbs warm.
    Repainting the same bounded set on every navigation grows V8's worker/task
    churn even after every cache, lease and DOM owner has been released. */
@@ -769,6 +860,19 @@ let lastSmokeArc0LandingFaultWitness: Readonly<{
 }> | null = null;
 let currentCapturePresentationFence: string | null = null;
 let tameGreetingAudioOwner: TameGreetingAudioOwner | null = null;
+/* Mono audio / Reduced intensity: this device's listening preferences (never the save); the one shared audio runtime applies them. */
+let audioAccessibility: AudioAccessibilityModes = readAudioAccessibilityPrefsV1(deviceAudioAccessibilityStorage());
+function setAudioAccessibility(next: AudioAccessibilityModes): void {
+  audioAccessibility = Object.freeze({ mono: next.mono === true, reducedIntensity: next.reducedIntensity === true });
+  writeAudioAccessibilityPrefsV1(deviceAudioAccessibilityStorage(), audioAccessibility);
+  tameGreetingAudioOwner?.syncSettings();
+}
+/* D18 folded survey card: a device reading preference (never the save); the folds' open/closed memory is the save's `cardExpand` bits 1/2. */
+let surveyFoldsOn = readSurveyFoldPrefV1(deviceAudioAccessibilityStorage());
+function surveyRowHtml([k, v, cls]: readonly [string, string, string?]): string {
+  return `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" class="survey-row"><span>${esc(k)}</span><br>${esc(v)}</div>`;
+}
+let combatBattleScene: CombatBattleSceneController | null = null;
 let smokeRejectNextArc4ActionStorage = false;
 let smokeStaleNextArc4ActionAuthority = false;
 let smokeRejectNextArc4Publication = false;
@@ -801,6 +905,8 @@ let smokeF4LeaseReadCount = 0;
 let smokeF4RevisionReadCount = 0;
 /* Even an unarmed evidence hold is async. Keep that same await boundary in
    ordinary play without constructing any armable gate or retained latch. */
+/* Declared before any chip refresh can run (updateChips is reachable during boot): the pinned-recipe chip (recipe-pin.ts). */
+let recipePinChip: RecipePinChipV1 | null = null;
 const inactiveEvidenceHold: ReturnType<typeof createProductActionDiagnosticHold> = Object.freeze({
   arm: () => false,
   async holdIfArmed(_operation: string): Promise<void> {},
@@ -1495,8 +1601,14 @@ const showF4 = async (): Promise<void> => {
 };
 addEventListener('pagehide', (event) => {
   travelPresentationOwner.cancel();
+  combatBattleScene?.stop('hidden');
   tameGreetingAudioOwner?.setHidden(true);
-  if (!event.persisted) void tameGreetingAudioOwner?.dispose();
+  if (!event.persisted) {
+    combatBattleScene?.dispose(); combatBattleScene = null;
+    audiovisualPilotClosed = true; audiovisualPilot?.dispose(); audiovisualPilot = null;
+    resetAudiovisualPilotPresentation();
+    void tameGreetingAudioOwner?.dispose();
+  }
   stopF4Heartbeat();
   void checkpointAndHideF4();
   if (event.persisted) {
@@ -1510,11 +1622,13 @@ addEventListener('pageshow', (event) => {
     persistedPageshowCount++;
     speciesArtLoader.resumeFromBfcache();
     tameGreetingAudioOwner?.setHidden(false);
+    (globalThis as { cfSoundscapeV1?: { setHidden(h: boolean): void } }).cfSoundscapeV1?.setHidden(false);
     void showF4();
   }
 });
 addEventListener('visibilitychange', () => {
   tameGreetingAudioOwner?.setHidden(document.visibilityState !== 'visible');
+  (globalThis as { cfSoundscapeV1?: { setHidden(h: boolean): void } }).cfSoundscapeV1?.setHidden(document.visibilityState !== 'visible'); // D15: hidden = silence; visible = RESTART
   if (!f4Runtime) return;
   if (document.visibilityState !== 'visible') {
     stopF4Heartbeat();
@@ -2042,7 +2156,106 @@ function abortRenderBeforeReceiptForSmoke(): boolean {
   smokeAbortNextRenderBeforeReceipt = false;
   return true;
 }
+/* D16 (v1 _vistaExtras / savePostcard / tap-to-zoom, #9/#10; the ledger's A6 share card): a pill row over the stage while a landing
+   vista is on screen — ⛶ Vista (the survey card and HUD step aside; any tap or Escape steps back) and ⇪ Postcard (v1's composition,
+   shared through the Web Share API when the device can share files, else downloaded; offline). Outside the survey card by design. */
+let vistaViewing = false;
+const vistaPills = new VistaPillsControllerV1({
+  document, onView: () => setVistaViewing(true), onBack: () => setVistaViewing(false), onPostcard: () => { void saveVistaPostcard(); },
+});
+function vistaOnScreen(): boolean {
+  return nav.mode === 'surface' && surfaceVistaSprite !== null && surfaceVistaSprite.visible && !trainingActive();
+}
+function syncVistaPills(): void {
+  if (vistaViewing && !vistaOnScreen()) { vistaViewing = false; document.body.classList.remove('vista-view'); }
+  vistaPills.sync(vistaOnScreen(), vistaViewing);
+}
+function setVistaViewing(on: boolean): void {
+  vistaViewing = on && vistaOnScreen();
+  document.body.classList.toggle('vista-view', vistaViewing);
+  vistaPills.sync(vistaOnScreen(), vistaViewing);
+}
+/* v1: while zoomed, a tap ANYWHERE steps back out (it never acts on the world underneath), and Escape does too */
+document.addEventListener('click', (event) => {
+  if (!vistaViewing || (event.target as HTMLElement | null)?.closest?.('.vista-pills')) return;
+  event.stopPropagation(); event.preventDefault(); setVistaViewing(false);
+}, true);
+document.addEventListener('keydown', (event) => { if (vistaViewing && event.key === 'Escape') { event.stopPropagation(); setVistaViewing(false); } }, true);
+/** The on-screen vista's own pixels: the texture resource of the stage sprite (a canvas, or a bitmap for a painted landing). */
+function vistaSourceImage(): (CanvasImageSource & { readonly width: number; readonly height: number }) | null {
+  const resource = (surfaceVistaSprite?.texture?.source as { resource?: unknown } | undefined)?.resource as { width?: unknown; height?: unknown } | undefined;
+  return resource && typeof resource.width === 'number' && typeof resource.height === 'number' && resource.width > 0 && resource.height > 0
+    ? resource as unknown as CanvasImageSource & { readonly width: number; readonly height: number } : null;
+}
+async function saveVistaPostcard(): Promise<PostcardDeliveryV1 | null> {
+  const vista = vistaOnScreen() ? vistaSourceImage() : null;
+  if (!vista) return null;
+  const address = activeCardWorldAddress();
+  const title = postcardTitleV1((address ? worldIdentityName(worldIdentityState, address) : null) ?? cardCtx?.p.name ?? null);
+  let canvas: PostcardCanvasLike;
+  try {
+    canvas = composeVistaPostcardV1({ vista, title, shareCode: cardShareCode(), createCanvas: (width, height) => {
+      const c = document.createElement('canvas'); c.width = width; c.height = height; return c as unknown as PostcardCanvasLike; } });
+  } catch { toast('⇪ Postcard', 'The view could not be composed on this device.'); return 'failed'; }
+  const result = await deliverVistaPostcardV1(canvas, title, {
+    document, navigator, createObjectURL: (blob) => URL.createObjectURL(blob), revokeObjectURL: (url) => URL.revokeObjectURL(url) });
+  if (result === 'shared' || result === 'downloaded') toast('⇪ Postcard Saved', 'The view and its share code are baked into the image — send it to a friend.');
+  else if (result === 'failed') toast('⇪ Postcard', 'The postcard could not be saved on this device.');
+  return result;
+}
+let audiovisualPilot: AudiovisualPilot | null = null;
+let audiovisualPilotClosed = false;
+let audiovisualPilotBiomeKey: string | null = null;
+let audiovisualPilotVistaReady = false;
+let audiovisualPilotVistaBinding: string | null = null;
+let audiovisualPilotSurfaceVisible = false;
+type AudiovisualPilotPresentationState = Readonly<{
+  enhanced: boolean;
+  surfaceVisible: boolean;
+  starterScoutImageUrl: string | null;
+}>;
+function applyAudiovisualPilotSceneVisibility(): void {
+  const hidden = nav.mode === 'surface' && audiovisualPilotSurfaceVisible;
+  world.visible = !hidden;
+  if (surfaceVistaSprite !== null) surfaceVistaSprite.visible = !hidden;
+  syncVistaPills();
+}
+function applyAudiovisualPilotPresentation(state: AudiovisualPilotPresentationState): void {
+  audiovisualPilotSurfaceVisible = state.enhanced && state.surfaceVisible;
+  applyAudiovisualPilotSceneVisibility();
+  if (!engineeringPanelReleased) {
+    engineeringPanelController.setPresentation(state.enhanced
+      ? { mode: 'audiovisual-pilot', ...(state.starterScoutImageUrl === null
+        ? {} : { starterScoutImageUrl: state.starterScoutImageUrl }) }
+      : null);
+  }
+}
+function resetAudiovisualPilotPresentation(): void {
+  applyAudiovisualPilotPresentation({ enhanced: false, surfaceVisible: false, starterScoutImageUrl: null });
+}
+function pilotSceneSnapshot(): PilotSceneSnapshot {
+  return { mode: nav.mode, routeKey: currentTameGreetingRouteKey(),
+    biomeKey: audiovisualPilotBiomeKey, vistaReady: audiovisualPilotVistaReady,
+    vistaBinding: audiovisualPilotVistaBinding, ship: currentShipVisualState(),
+    motion: motionOK(), effects: save.fxOn };
+}
+function syncAudiovisualPilot(): void {
+  audiovisualPilot?.sync(pilotSceneSnapshot());
+  applyAudiovisualPilotSceneVisibility();
+}
+function startAudiovisualPilot(): void {
+  if (new URLSearchParams(location.search).get('avpilot') !== '1' || audiovisualPilotClosed) return;
+  void import('./audiovisual-pilot.js').then(({ mountAudiovisualPilot }) => {
+    if (audiovisualPilotClosed || !tameGreetingAudioOwner) return;
+    audiovisualPilot = mountAudiovisualPilot({ document, initial: pilotSceneSnapshot(), audio: tameGreetingAudioOwner,
+      onPresentationChange: applyAudiovisualPilotPresentation });
+  }).catch(() => {
+    if (!audiovisualPilotClosed) resetAudiovisualPilotPresentation();
+    /* Candidate media failure cannot block ordinary play. */
+  });
+}
 function recordRenderedScene(state: NavState): void {
+  audiovisualPilotBiomeKey = null; audiovisualPilotVistaReady = false; audiovisualPilotVistaBinding = null;
   renderedSceneReceipt = Object.freeze({
     serial: renderedSceneReceipt.serial + 1,
     mode: state.mode,
@@ -2051,6 +2264,7 @@ function recordRenderedScene(state: NavState): void {
     starKey: state.mode === 'system' || state.mode === 'surface' ? getProvenStarKey(state.star) : null,
     worldKey: state.mode === 'surface' ? getProvenPlanetKey(state.planet) : null,
   });
+  syncAudiovisualPilot();
 }
 const cam = { x: 0, y: 0, z: 1 };
 const camT = { x: 0, y: 0, z: 1 };   /* eased target — the goTo feel */
@@ -2064,6 +2278,7 @@ let sz0 = 0.40 * minWH() / SYS_R;
    the dock — the CF1806-02 burial class prevented structurally). esc covers
    quotes: keys/classes land in ATTRIBUTES (2026-08-01 exploit pass). ---- */
 const card = document.createElement('aside');
+if (surveyFoldsOn) card.dataset.surveyFolds = 'on';   /* D18: the device preference rides on the card; the flat card needs nothing else */
 card.id = 'survey';
 card.className = 'glass';
 card.dataset.panelBoundary = '';
@@ -2111,6 +2326,12 @@ interface Arc6CombatSurfaceProjection {
 }
 let currentArc6CombatProjection: Arc6CombatSurfaceProjection | null = null;
 let currentArc6ChampionId: string | null = null;
+/* §20 (Nick 2026-09-25) plan state for the current fight: a stance per slot (lead = 0) and the extra Guardian party slots (1, 2). Main
+   owns it; the card renders from it and the challenge commits it. Reset when the fight's context changes. */
+let currentArc6Plan: { contextKey: string | null; stances: EncounterStanceV1[]; partyIds: (string | null)[]; mode: 'auto' | 'command' } = {
+  contextKey: null, stances: ['balanced', 'balanced', 'balanced'], partyIds: [null, null, null], mode: 'auto',
+};
+let currentArc6CardModel: CombatCardReadModelV1 | null = null;
 let lastArc6CombatOutcome: string | null = null;
 const captureCardController = new CaptureCardController({
   root: card,
@@ -2135,6 +2356,21 @@ const combatCardController = new CombatCardController({
   onAction: (request) => {
     if (request.kind === 'select') {
       currentArc6ChampionId = request.championId;
+      refreshCombatCardState();
+      return;
+    }
+    if (request.kind === 'stance') {
+      currentArc6Plan.stances[request.index] = request.stance;
+      refreshCombatCardState();
+      return;
+    }
+    if (request.kind === 'party-slot') {
+      currentArc6Plan.partyIds[request.index] = request.championId;
+      refreshCombatCardState();
+      return;
+    }
+    if (request.kind === 'mode') {
+      currentArc6Plan.mode = request.mode;
       refreshCombatCardState();
       return;
     }
@@ -2298,13 +2534,15 @@ function showSurvey(
     : '';
   card.innerHTML =
     '<div class="survey-head">' +
-    `<div><h2 data-sel="title">${esc(d.title)}</h2>` +
-    `<div data-sel="sub">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div></div>` +
+    `<h2 data-sel="title">${esc(d.title)}</h2>` +
     '<button type="button" class="surface-close" data-survey-close aria-label="Close Survey card">✕</button></div>' +
+    `<div data-sel="sub">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
     travelHtml +
     (actionsHtml || '') +   /* the card's ACTION ROW (Land · +Atlas · share) — buttons are trusted markup, never save text */
-    approachEcologyHtml + combatHtml + captureHtml + rarity + rows.map(([k, v, cls]) =>
-      `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" class="survey-row"><span>${esc(k)}</span><br>${esc(v)}</div>`).join('');
+    approachEcologyHtml + combatHtml + captureHtml + rarity + (card.dataset.surveyFolds === 'on'   /* D18: the folded card is an option (off = unchanged flat rows) */
+      ? surveyRowsHtmlV1(rows, { folds: true, cardExpand: save.cardExpand }, surveyRowHtml, esc)
+      : rows.map(([k, v, cls]) =>
+      `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" class="survey-row"><span>${esc(k)}</span><br>${esc(v)}</div>`).join(''));
   const captureMount = card.querySelector<HTMLElement>('[data-capture-card-body]');
   if (captureMount === null) captureCardController.detach();
   else {
@@ -2550,6 +2788,7 @@ function visualPolicyDeviceTier(): VisualPolicyDeviceTierV1 {
 function refreshVisualPolicies(): void {
   const deviceTier = visualPolicyDeviceTier();
   const motion = motionOK() ? 'full' as const : 'reduced' as const;
+  combatBattleScene?.setPolicy({ effectsOn: save.fxOn, motion, deviceTier });
   activeVisualEffectPolicy = resolveVisualEffectPolicyV1({
     effectsOn: save.fxOn, motion, deviceTier,
   });
@@ -2649,7 +2888,16 @@ function triggerCameraShake(): void {
     });
   } catch { return; }
   activeCameraShakes.add(animation);
-  const release = (): void => { activeCameraShakes.delete(animation); };
+  const release = (): void => {
+    activeCameraShakes.delete(animation);
+    // Landing translates the canvas without resizing it. Re-measure the Earth
+    // composition once the last impulse ends so a transient offset cannot become rest.
+    if (activeCameraShakes.size === 0 && (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID
+      || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+      || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID)) {
+      syncSurfaceVistaPresentation();
+    }
+  };
   void animation.finished.then(release, release);
 }
 function applyGlass(): void {
@@ -2668,6 +2916,7 @@ function applyDisplayPreferences(): void {
   body.classList.toggle('motion-reduced', !motionOK());
   refreshVisualPolicies();
   applyGlass();
+  signalLivingSpeciesEnvironment();
   syncTopbarH(); syncDockH(); syncCtxH(); syncHintH(); syncSurfaceChromeBottom();
 }
 reducedMotionQuery.addEventListener('change', () => {
@@ -2685,6 +2934,13 @@ function fillSettings(): void {
     `<div class="row"><label>Sound</label><button id="setsnd" aria-label="Sound" aria-pressed="${save.sndOn}" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" aria-label="Sound volume" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
     `<div class="row"><label>Creature voices</label><button id="setvoice" aria-label="Creature voices" aria-pressed="${save.voiceOn}" class="${save.voiceOn ? 'on' : ''}" data-sel="set-voice">${save.voiceOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Pop-up notifications</label><button id="setnotif" aria-label="Pop-up notifications" aria-pressed="${save.notifOn}" class="${save.notifOn ? 'on' : ''}" data-sel="set-notif" title="Off keeps every message in the 🔔 tray without popping it up (creature sounds still show their card).">${save.notifOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Tooltips</label><button id="settips" aria-label="Tooltips" aria-pressed="${save.tipsOn}" class="${save.tipsOn ? 'on' : ''}" data-sel="set-tips" title="Short hints: hover on a computer, press and hold on a phone.">${save.tipsOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Confirm salvage</label><button id="setsalv" aria-label="Confirm before salvaging" aria-pressed="${save.salvageConfirm}" class="${save.salvageConfirm ? 'on' : ''}" data-sel="set-salvage" title="Ask before breaking gear down into parts.">${save.salvageConfirm ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Battle sounds</label><button id="setcombat" aria-label="Battle sounds" aria-pressed="${save.combatSfxOn}" class="${save.combatSfxOn ? 'on' : ''}" data-sel="set-combat" title="Hits, dodges and effects in battles (creature voices have their own switch).">${save.combatSfxOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Folded survey card</label><button id="setfold" aria-label="Folded survey card" aria-pressed="${surveyFoldsOn}" class="${surveyFoldsOn ? 'on' : ''}" data-sel="set-fold" title="Fold the environment and census rows of the survey card behind remembered toggles">${surveyFoldsOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Mono audio</label><button id="setmono" aria-label="Mono audio" aria-pressed="${audioAccessibility.mono}" class="${audioAccessibility.mono ? 'on' : ''}" data-sel="set-mono" title="Both ears hear every sound (one earbud, one speaker). Saved on this device.">${audioAccessibility.mono ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Reduced intensity</label><button id="setsoft" aria-label="Reduced intensity" aria-pressed="${audioAccessibility.reducedIntensity}" class="${audioAccessibility.reducedIntensity ? 'on' : ''}" data-sel="set-soft" title="Quieter, gentler sound with no sudden loud peaks. Saved on this device.">${audioAccessibility.reducedIntensity ? 'On' : 'Off'}</button></div>` +
     renderArc9ExplorerNameSettingV1(
       explorerNameSettings,
       arc9ExplorerNameEditing,
@@ -2711,7 +2967,11 @@ function fillSettings(): void {
       `<button data-motion="${v}" aria-pressed="${save.motionMode === v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
     '</span></div>' +
     `<div class="row"><label>Panel tint</label><input id="setglass" aria-label="Panel tint" type="range" min="82" max="98" value="${Math.round(Math.max(save.glassTint, 0.82) * 100)}"></div>` +
-    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>`);
+    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>` +
+    /* D16 parity (v1 resetbtn/resetconfirm): an armed two-step erase; expedition-reset.ts */
+    `<div class="row"><label>Reset expedition</label><button id="setreset" data-sel="set-reset" aria-expanded="false" aria-controls="setresetconfirm">Reset…</button></div>` +
+    `<div class="row reset-confirm" id="setresetconfirm" role="group" aria-label="Confirm expedition reset" hidden><span class="sub">Erase this whole expedition — discoveries, companions, Charters and Stardust — and start over? This cannot be undone.</span>` +
+    `<button id="setresetyes" data-sel="set-reset-yes" class="danger">Erase and start over</button><button id="setresetno" data-sel="set-reset-no">Cancel</button></div>`);
   const el = document.getElementById('setpanel')!;
   const refillAndFocus = (selector: string): void => {
     fillSettings();
@@ -2810,6 +3070,38 @@ function fillSettings(): void {
     tameGreetingAudioOwner?.syncSettings();
     refillAndFocus('#setvoice'); void persistView();
   });
+  el.querySelector('#setnotif')!.addEventListener('click', () => {
+    save.notifOn = !save.notifOn;   /* v1.8.9 parity: the saved `notif` switch (absent ⇒ on) */
+    refillAndFocus('#setnotif'); void persistView();
+  });
+  el.querySelector('#settips')!.addEventListener('click', () => {
+    save.tipsOn = !save.tipsOn;   /* v1.8.9 parity: the saved `tips` switch (absent ⇒ on) */
+    if (!save.tipsOn) tooltipOwner.hide();
+    refillAndFocus('#settips'); void persistView();
+  });
+  el.querySelector('#setsalv')!.addEventListener('click', () => {
+    save.salvageConfirm = !save.salvageConfirm;   /* v1.8.9 parity: the saved `sv` switch the Inventory reads */
+    refillAndFocus('#setsalv'); void persistView();
+  });
+  el.querySelector('#setcombat')!.addEventListener('click', () => {
+    save.combatSfxOn = !save.combatSfxOn;   /* v1.8.9 parity: the saved `cbx` Battle sounds switch */
+    tameGreetingAudioOwner?.syncSettings();
+    refillAndFocus('#setcombat'); void persistView();
+  });
+  /* Device preferences, not save state: no persistView (audio-accessibility-prefs.ts) */
+  el.querySelector('#setfold')!.addEventListener('click', () => {
+    surveyFoldsOn = !surveyFoldsOn; writeSurveyFoldPrefV1(deviceAudioAccessibilityStorage(), surveyFoldsOn);
+    if (surveyFoldsOn) card.dataset.surveyFolds = 'on'; else delete card.dataset.surveyFolds;   /* the next card follows */
+    refillAndFocus('#setfold');
+  });
+  el.querySelector('#setmono')!.addEventListener('click', () => {
+    setAudioAccessibility({ ...audioAccessibility, mono: !audioAccessibility.mono });
+    refillAndFocus('#setmono');
+  });
+  el.querySelector('#setsoft')!.addEventListener('click', () => {
+    setAudioAccessibility({ ...audioAccessibility, reducedIntensity: !audioAccessibility.reducedIntensity });
+    refillAndFocus('#setsoft');
+  });
   for (const b of el.querySelectorAll<HTMLElement>('[data-pref]')) b.addEventListener('click', () => {
     const value = b.dataset.value || '';
     if (b.dataset.pref === 'size') save.fsMode = value;
@@ -2888,6 +3180,26 @@ function fillSettings(): void {
       savedRouteWriteHeld = priorSavedRouteWriteHeld;
       button.disabled = false;
       toast('Save unavailable', 'Field Training was not restarted; your current expedition is unchanged.');
+    }
+  });
+  el.querySelector('#setreset')!.addEventListener('click', () => {
+    el.querySelector<HTMLElement>('#setresetconfirm')!.hidden = false;
+    el.querySelector<HTMLElement>('#setreset')!.setAttribute('aria-expanded', 'true');
+    el.querySelector<HTMLElement>('#setresetno')?.focus();
+  });
+  el.querySelector('#setresetno')!.addEventListener('click', () => {
+    el.querySelector<HTMLElement>('#setresetconfirm')!.hidden = true;
+    el.querySelector<HTMLElement>('#setreset')!.setAttribute('aria-expanded', 'false');
+    el.querySelector<HTMLElement>('#setreset')?.focus();
+  });
+  el.querySelector('#setresetyes')!.addEventListener('click', async (event) => {
+    const button = event.currentTarget as HTMLButtonElement;
+    button.disabled = true;
+    const sol = searchTravel.trainingSolSystemNav();
+    const error = await importBlob(freshExpeditionPayloadV1({ registry: REGISTRY, now: Date.now(), solView: sol ? navToView(sol) : null }));
+    if (error !== null) {
+      button.disabled = false;
+      toast('Reset unavailable', `${error} Your expedition is unchanged.`, true);
     }
   });
   el.querySelector('#setglass')!.addEventListener('input', (e) => {
@@ -3065,6 +3377,20 @@ function renderGuideTopic(id: GuideTopicId, focusResult = false): void {
     if (focusResult) focusGuide('[data-guide-category]');
   });
 }
+function renderGuideBriefing(index: number): void {
+  requestGuideContent((module) => {
+    const rows = module.V2_ADVANCED_BRIEFINGS;
+    if (!Number.isSafeInteger(index) || index < 0 || index >= rows.length) return;
+    const body = guideBodyEl(), row = rows[index]; if (!body || !row) return;
+    body.innerHTML = '<button class="guide-back" data-guide-home>‹ Guide</button>' +
+      `<article class="guide-topic" data-guide-briefing-page="${row.id}"><h4 tabindex="-1" data-guide-heading>Advanced Briefings · ${index + 1} of ${rows.length}: ${esc(row.title)}</h4>` +
+      interactiveGuideBody(row.body) + '</article><div class="guide-related">' +
+      (index > 0 ? `<button data-guide-briefing="${index - 1}">Previous briefing</button>` : '') +
+      (index + 1 < rows.length ? `<button data-guide-briefing="${index + 1}">Next briefing</button>` : '<button data-guide-home>Finish briefings</button>') + '</div>';
+    body.scrollTop = 0;
+    focusGuide('[data-guide-heading]');
+  });
+}
 function renderGuideSearch(query: string): void {
   if (query.trim().length < 2) { renderGuideMenu(); return; }
   requestGuideContent((module, catalogue) => {
@@ -3175,7 +3501,7 @@ function fillGuide(): void {
     '<h3>Guide to the Universe</h3>' +
     guideBuildIdentity() +
     '<div class="guide-tools"><input id="guidesearch" type="search" autocomplete="off" aria-label="Search the Guide" placeholder="Search 41 Guide topics" disabled>' +
-    '<button data-guide-releases>Release history</button></div>' +
+    '<button data-guide-briefing="0">Advanced Briefings</button><button data-guide-releases>Release history</button></div>' +
     '<div class="sub guide-scope">The mature manual, adapted to what is actually live in this v2 development build. Unported active systems stay visible and honestly marked; intentionally dormant topics remain recorded but hidden.</div>' +
     '<div class="guide-body" data-sel="guide-body"><div class="empty" data-guide-loading>Opening the expedition archive…</div></div>');
   renderGuideMenu();
@@ -3193,7 +3519,9 @@ document.getElementById('guidepanel')!.addEventListener('click', (event) => {
   const topic = (topicEl?.dataset.guideTopic || topicEl?.dataset.gt) as GuideTopicId | undefined;
   const category = target.closest<HTMLElement>('[data-guide-category]')?.dataset.guideCategory as GuideCategoryId | undefined;
   const releaseIndex = target.closest<HTMLElement>('[data-release-index]')?.dataset.releaseIndex;
-  if (topic) renderGuideTopic(topic, true);
+  const briefing = target.closest<HTMLElement>('[data-guide-briefing]')?.dataset.guideBriefing;
+  if (briefing !== undefined && /^\d+$/.test(briefing)) renderGuideBriefing(Number(briefing));
+  else if (topic) renderGuideTopic(topic, true);
   else if (category) renderGuideCategory(category, true);
   else if (releaseIndex !== undefined) renderRelease(+releaseIndex, true);
   else if (target.closest('[data-guide-releases]')) renderReleaseHistory(true);
@@ -3205,6 +3533,8 @@ document.getElementById('guidepanel')!.addEventListener('click', (event) => {
    viewports plus a pinned focused row own DOM and thumbnail leases. ---- */
 type CodexRecord = SaveStateV2['codex'][number][1];
 type CodexVirtualRow = CompendiumVirtualRow<CodexRecord>;
+/** A Compendium list row: a species, or (with ▦ Shelves on) a shelf's fold header. */
+type CodexListValue = CodexRecord | Readonly<{ codexShelf: CodexShelfHeaderV1 }>;
 type CodexReturnState = CompendiumReturnState;
 type CodexMode = 'closed' | 'list' | 'detail';
 const EMPTY_CODEX_WINDOW: CompendiumWindowSnapshot = Object.freeze({
@@ -3213,14 +3543,100 @@ const EMPTY_CODEX_WINDOW: CompendiumWindowSnapshot = Object.freeze({
   focusedLogicalId: null, pinnedLogicalIds: Object.freeze([]),
 });
 let codexFilter = '';
+/* D16 (v1 codexKing / codexRare / _cdxOpen): the chip filters and category shelves — session view state, never saved */
+let codexView: CodexListViewV1 = DEFAULT_CODEX_LIST_VIEW_V1;
+const codexOpenShelves = new Set<string>();
 let codexMode: CodexMode = 'closed';
 let codexGeneration = 0;
-let codexList: CompendiumVirtualList<CodexRecord> | null = null;
+let codexList: CompendiumVirtualList<CodexListValue> | null = null;
 let codexRows: readonly CodexVirtualRow[] = Object.freeze([]);
 let codexWindow: CompendiumWindowSnapshot = EMPTY_CODEX_WINDOW;
 let codexReturnState: CodexReturnState | null = null;
 let codexDetailLogicalId: string | null = null;
-let codexDetailArtCancel: (() => void) | null = null;
+let livingSpeciesPortrait: HTMLImageElement | null = null;
+const livingSpeciesEnvironmentListeners = new Set<() => void>();
+function signalLivingSpeciesEnvironment(): void {
+  for (const listener of livingSpeciesEnvironmentListeners) listener();
+}
+const livingSpeciesPreview = new LivingSpeciesPreviewControllerV1({
+  owner: 'codex-living-detail',
+  requestPortrait: (owner, genome, listener) => (
+    speciesArtLoader.requestPortrait(owner, genome, listener)
+  ),
+  createRenderer: (asset, plan, generation) => {
+    const target = livingSpeciesPortrait;
+    if (target === null) throw new Error('living portrait target is unavailable');
+    const token = String(generation);
+    let attached = false;
+    return {
+      identityKey: plan.identityKey,
+      resourceKind: 'image',
+      attach(): void {
+        if (target !== livingSpeciesPortrait || !target.isConnected) {
+          throw new Error('living portrait target became stale');
+        }
+        target.dataset.livingGeneration = token;
+        target.dataset.livingMotion = plan.primaryMotion;
+        target.dataset.artState = 'ready';
+        target.style.transformOrigin = '50% 68%';
+        target.style.willChange = motionOK() ? 'transform, opacity' : 'auto';
+        target.src = asset.url;
+        attached = true;
+      },
+      draw(frame): void {
+        if (!attached || target !== livingSpeciesPortrait
+          || target.dataset.livingGeneration !== token || !target.isConnected) {
+          throw new Error('living portrait frame target became stale');
+        }
+        target.style.transform = `translate3d(${frame.translateX}px, ${frame.translateY}px, 0) `
+          + `rotate(${frame.rotationDegrees}deg) scale(${frame.scaleX}, ${frame.scaleY})`;
+        target.style.opacity = String(frame.opacity);
+        target.style.willChange = frame.mode === 'animated' ? 'transform, opacity' : 'auto';
+      },
+      destroy(): void {
+        if (target.dataset.livingGeneration !== token) return;
+        target.removeAttribute('src');
+        delete target.dataset.livingGeneration;
+        delete target.dataset.livingMotion;
+        target.style.removeProperty('transform');
+        target.style.removeProperty('transform-origin');
+        target.style.removeProperty('will-change');
+        target.style.removeProperty('opacity');
+      },
+    };
+  },
+  ticker: {
+    subscribe(listener) {
+      const tick = (): void => listener(app.ticker.deltaMS);
+      app.ticker.add(tick);
+      return () => { app.ticker.remove(tick); };
+    },
+  },
+  environment: {
+    snapshot: () => {
+      const connected = livingSpeciesPortrait?.isConnected === true;
+      return Object.freeze({
+        connected,
+        visible: connected && document.visibilityState === 'visible'
+          && codexMode === 'detail' && openPanelId() === 'codex',
+        reducedMotion: save === undefined ? reducedMotionQuery.matches : !motionOK(),
+      });
+    },
+    subscribe(listener) {
+      livingSpeciesEnvironmentListeners.add(listener);
+      document.addEventListener('visibilitychange', listener);
+      return () => {
+        livingSpeciesEnvironmentListeners.delete(listener);
+        document.removeEventListener('visibilitychange', listener);
+      };
+    },
+  },
+  onFault: () => {
+    if (livingSpeciesPortrait?.isConnected) {
+      livingSpeciesPortrait.dataset.artState = 'error';
+    }
+  },
+});
 let codexRenderCommits = 0;
 let codexStaleCompletionDrops = 0;
 let codexClosedCompletionCommits = 0;
@@ -3341,6 +3757,7 @@ function projectCurrentCompendiumFeed(
       ownership: arc5OwnershipState,
       protected: arc5OwnershipProtection !== null || !f4RuntimeMayMutate(),
       fixture: compendiumFixtureRows !== null,
+      ...(f4Runtime !== null ? { activePlayMs: f4Runtime.diagnostics().activePlayMs } : {}),
     });
   } catch {
     return null;
@@ -3493,8 +3910,9 @@ function disposeCodexList(): void {
   codexWindow = EMPTY_CODEX_WINDOW;
 }
 function cancelCodexDetailArt(): void {
-  codexDetailArtCancel?.();
-  codexDetailArtCancel = null;
+  livingSpeciesPreview.close();
+  livingSpeciesPortrait = null;
+  signalLivingSpeciesEnvironment();
 }
 function closeCodexSurface(): void {
   const wasOpen = codexMode !== 'closed';
@@ -3532,20 +3950,28 @@ function activeCodexSource(): Array<[string, CodexRecord]> {
   return compendiumFixtureRows ?? save.codex;
 }
 function filteredCodexRows(): readonly CodexVirtualRow[] {
-  const f = codexFilter.toLowerCase();
+  const view = { ...codexView, query: codexFilter };
   return Object.freeze(activeCodexSource()
     .map(([logicalId, value], sourceIndex) => ({ logicalId: String(logicalId), sourceIndex, value }))
-    .filter(({ value }) => !f
-      || (value.name + ' ' + value.kind + ' ' + value.realm).toLowerCase().includes(f)));
+    .filter(({ value }) => codexEntryMatchesV1(value, view)));
 }
 function filteredCodexCount(): number {
-  const f = codexFilter.toLowerCase();
-  if (!f) return activeCodexSource().length;
+  const view = { ...codexView, query: codexFilter };
+  if (!view.query && !codexChipsFilteringV1(view)) return activeCodexSource().length;
   let count = 0;
-  for (const [, value] of activeCodexSource()) {
-    if ((value.name + ' ' + value.kind + ' ' + value.realm).toLowerCase().includes(f)) count++;
-  }
+  for (const [, value] of activeCodexSource()) if (codexEntryMatchesV1(value, view)) count++;
   return count;
+}
+/** A shelf's fold header row (D16, v1 `.cgh`): a real button; opening a shelf mounts its species rows. */
+function mountCodexShelfRow(header: CodexShelfHeaderV1): { readonly element: HTMLButtonElement; dispose(): void } {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = `codex-shelf kg-${header.kingdom}${header.open ? ' open' : ''}`;
+  button.dataset.sel = 'codex-shelf';
+  button.dataset.cg = header.shelf;
+  button.setAttribute('aria-expanded', String(header.open));
+  button.innerHTML = `<span>${esc(codexShelfLabelV1(header.shelf))}</span><span class="cnt">${header.count}${header.hybrids ? ` · ${header.hybrids} hybrid` : ''}</span>`;
+  return { element: button, dispose: () => {} };
 }
 function mountCodexRow(row: CodexVirtualRow, generation: number): {
   readonly element: HTMLButtonElement;
@@ -3626,12 +4052,17 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
   const generation = ++codexGeneration;
   codexRows = filteredCodexRows();
   const f = codexFilter.toLowerCase();
+  const sourceSize = activeCodexSource().length, chipsFiltering = codexChipsFilteringV1(codexView);
+  const chipEmpty = codexView.rarityFloor > 0
+    ? `No ${codexView.kingdom === 'all' ? 'species' : esc(codexView.kingdom.toLowerCase())} at <b style="color:${esc(projectDisplayRarity(codexView.rarityFloor)?.hex ?? '')}">${esc(projectDisplayRarity(codexView.rarityFloor)?.name ?? '')}</b> or above yet — the rarest finds live farthest out.`
+    : `Nothing on this shelf yet — every ${codexView.kingdom === 'Fauna' ? 'creature you Discover' : esc(codexView.kingdom.toLowerCase()) + ' you catalogue'} will land here.`;
   const panel = document.getElementById('codexpanel')!;
   panel.classList.add('codex-list-mode');
   fillPanel('codex',
-    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${codexRows.length}</span>${f ? ` <span class="sub codex-query">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
+    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${codexRows.length}</span>${chipsFiltering ? ` <span class="sub" data-sel="codex-shown">shown · ${sourceSize} in all</span>` : ''}${f ? ` <span class="sub codex-query">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
+    (sourceSize > 0 ? codexChipBarHtmlV1(codexView) : '') +
     (codexRows.length === 0
-      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — imported discoveries appear here. Live catalogue writing arrives with the discovery path.'}</div>`
+      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : chipsFiltering && sourceSize > 0 ? chipEmpty : 'No species yet — imported discoveries appear here. Live catalogue writing arrives with the discovery path.'}</div>`
       : '<div class="compendium-scroll" data-sel="codex-scroll" role="group" aria-label="Compendium species"></div>'));
   if (!codexRows.length) {
     previousList?.dispose();
@@ -3639,10 +4070,14 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
     return;
   }
   const scroller = panel.querySelector<HTMLElement>('[data-sel="codex-scroll"]')!;
-  const nextList = new CompendiumVirtualList({
+  const listRows: readonly CompendiumVirtualRow<CodexListValue>[] = codexView.shelves
+    ? shelveCodexRowsV1(codexRows, codexOpenShelves, chipsFiltering).map((item) => item.type === 'entry' ? item.row
+      : Object.freeze({ logicalId: `shelf:${item.header.shelf}`, sourceIndex: -1, value: Object.freeze({ codexShelf: item.header }) }))
+    : codexRows;
+  const nextList = new CompendiumVirtualList<CodexListValue>({
     scroller,
-    rows: codexRows,
-    mountRow: (row) => mountCodexRow(row, generation),
+    rows: listRows,
+    mountRow: (row) => ('codexShelf' in row.value ? mountCodexShelfRow(row.value.codexShelf) : mountCodexRow(row as CodexVirtualRow, generation)),
   });
   codexList = nextList;
   if (restore) nextList.restoreState(restore);
@@ -3655,7 +4090,7 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
 /* the Compendium DETAIL CARD: the whole domain stack speaking for one
    creature — describeSpecies (fixture-pinned sentences + fauna enrichments),
    battleStats (the five stats as bars in their own hues), the grade badge.
-   The static Canvas portrait is live. Pixi living actors and animation remain
+   The current portrait receives bounded selected-detail presentation motion. Pixi living actors remain
    a separate Phase 5 pipeline. */
 function fillCodexDetail(idx: number): void {
   if (!save) return;
@@ -3718,6 +4153,8 @@ function fillCodexDetail(idx: number): void {
   const showRename = renameModel !== null
     && renameModel.availability !== 'non-fauna'
     && renameModel.availability !== 'fixture';
+  const duelModel = projectCurrentFriendlyDuel(row);
+  const careModel = projectCurrentCompanionCare(row);
   const showScout = scoutModel !== null
     && scoutModel.surface.speciesId !== null
     && scoutModel.availability !== 'non-fauna'
@@ -3735,6 +4172,9 @@ function fillCodexDetail(idx: number): void {
       `<div style="margin:4px 0 8px"><b style="font-size:16px;color:#f4f8ff">${esc(e.name)}</b>` +
       (rarityView ? ` <span class="rarity-badge" data-sel="detail-grade" style="border:1px solid ${esc(rarityView.hex)};color:${esc(rarityView.hex)};border-radius:999px;padding:1px 9px;font-size:11px">${esc(rarityView.name)}</span>` : '') +
       `<div class="sub">${esc(e.kind)} · ${esc(e.realm)}${e.hybrid ? ' · hybrid' : ''}${e.from ? ' · ' + esc(e.from) : ''}</div></div>` +
+      /* D16 (v1 data-go): a wild catch travels back to the world it was first catalogued on; a hybrid (bred) has no origin world */
+      (!e.hybrid && e.from && compendiumFixtureRows === null && primeClaimWorldAddressV1(e.where) !== null
+        ? `<button type="button" class="codex-origin" data-sel="codex-origin" data-codex-origin="${idx}">Travel to ${esc(e.from)} ↗</button>` : '') +
       `<div style="color:#b7c8e4;margin-bottom:8px" data-sel="detail-desc">${esc(d.desc || '')} ${esc(d.detail || '')}</div>` +
       KEYS.map((k, i) => {
         const v = st[k] || 0;
@@ -3748,7 +4188,7 @@ function fillCodexDetail(idx: number): void {
   } catch {
     body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
   }
-  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}</div>`);
+  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}${duelModel !== null ? '<section class="compendium-feed" data-friendly-duel-body aria-label="Friendly duel"></section>' : ''}${careModel !== null ? '<section class="compendium-feed" data-companion-care-body aria-label="Care and bond"></section><section class="compendium-feed" data-mission-board-body aria-label="Companion missions"></section>' : ''}</div>`);
   compendiumCreatureProgressionSurface.attach(
     document.querySelector<HTMLElement>('#codexpanel [data-sel="codex-detail"]')!,
   );
@@ -3788,30 +4228,23 @@ function fillCodexDetail(idx: number): void {
       document.querySelector<HTMLElement>('#codexpanel [data-arc5-breed-body]')!,
     );
   }
+  if (duelModel !== null) {
+    friendlyDuelController.setState(duelModel);
+    friendlyDuelController.attach(document.querySelector<HTMLElement>('#codexpanel [data-friendly-duel-body]')!);
+  }
+  if (careModel !== null) {
+    companionCareController.setState(careModel);
+    companionCareController.attach(document.querySelector<HTMLElement>('#codexpanel [data-companion-care-body]')!);
+    missionBoardController.setState(projectCurrentMissionBoard());
+    missionBoardController.attach(document.querySelector<HTMLElement>('#codexpanel [data-mission-board-body]')!);
+  }
   const portrait = document.querySelector<HTMLImageElement>('#codexpanel [data-sel="detail-portrait"]');
   if (portrait) {
-    const publishPortrait = (asset: Portrait440 | null, error?: unknown): void => {
-      const current = codexGeneration === generation && codexMode === 'detail'
-        && codexDetailLogicalId === String(row[0]) && openPanelId() === 'codex'
-        && portrait.isConnected;
-      if (!current) { codexStaleCompletionDrops++; return; }
-      if (error !== undefined || !asset || asset.width !== 440 || asset.height !== 440) {
-        portrait.removeAttribute('src');
-        portrait.dataset.artState = 'error';
-        return;
-      }
-      portrait.src = asset.url;
-      portrait.dataset.artState = 'ready';
-    };
+    livingSpeciesPortrait = portrait;
+    signalLivingSpeciesEnvironment();
     try {
-      const request = speciesArtLoader.requestPortrait(
-        'codex-detail', e.g as Record<string, unknown>, publishPortrait,
-      );
-      codexDetailArtCancel = request.cancel;
-      if (request.current) publishPortrait(request.current);
-    } catch {
-      portrait.dataset.artState = 'error';
-    }
+      livingSpeciesPreview.select(e.g as Record<string, unknown>);
+    } catch { portrait.dataset.artState = 'error'; }
   }
   const back = document.getElementById('codexback')!;
   back.addEventListener('click', () => fillCodex(codexFilter, codexReturnState));
@@ -3834,7 +4267,7 @@ function binderClaimPanelStatus(): string | null {
 }
 function syncBoundedCollectionButtons(
   root: HTMLElement,
-  selector: '[data-starter-charter-accept]' | '[data-binder-claim]',
+  selector: '[data-starter-charter-accept]' | '[data-weekly-charter-accept]' | '[data-binder-claim]',
   pending: boolean,
   unavailable = false,
 ): void {
@@ -3869,10 +4302,12 @@ function fillRecords(): void {
   if (f4Runtime !== null && arc5OwnershipState?.mode === 'current') {
     const combat = readCombatSettlementAuthorityV1(f4Runtime.extensions);
     if (combat.kind === 'loaded') {
+      const outposts = currentOutpostProjects();
       const projected = projectExpeditionChronicleV1({
         save,
         ownership: ownershipSourceStateV1(arc5OwnershipState),
         combat: combat.authority,
+        ...(outposts !== null && outposts.sites.some((s) => s.built >= 3) ? { outposts: outpostExhibitsV1(outposts) } : {}),
       });
       if (projected.kind === 'projected') {
         chronicle = renderExpeditionChronicleV1(projected.model);
@@ -3921,10 +4356,13 @@ function fillPrimeCodex(): void {
     && replacementTransaction === null && !replacementReloadPending
     && !trainingCheckpointWriteHeld && !trainingActive()
     && !ecologyEpochBlocksActions();
+  const claimedIds = Object.keys(save.primeFill);
   fillPanel('prime', renderPrimeCodexPanelV1(projectPrimeCodexV1(save), {
     pending: arc9FrontierEndingPending,
     writable,
     status: frontierEndingPanelStatus(),
+    travel: new Set(claimedIds.filter((id) => primeClaimWorldAddressV1(save.primeFill[id]?.where) !== null)),
+    track: trackablePrimeSignaturesV1({ ascentStage: ascStage(), claimedIds }),
   }));
 }
 /* THE STAR ATLAS ('log' in the game): every charted place, tap to TRAVEL
@@ -4146,8 +4584,11 @@ function fillCharters(): void {
     ? renderStarterCharterBoardV1(starterProjection.board)
     : '<section data-starter-charter-board-protected><h3>Starter Charters</h3>'
       + '<div class="empty">Starter Charters are protected because their saved authority could not be verified. Nothing was changed.</div></section>';
+  const weeklyActivePlayMs = liveActivePlayMs();
+  const weeklyBoard = weeklyActivePlayMs === null ? null : projectWeeklyCharterBoardV1(save, weeklyActivePlayMs);
+  const weekly = weeklyBoard === null ? '' : renderWeeklyCharterBoardV1(weeklyBoard);
   const starterStatus = starterCharterPanelStatus();
-  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter + starter
+  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter + starter + weekly + outpostBoardHtml()
     + (starterStatus === null ? ''
       : `<p class="starter-charter-status" role="status" aria-live="polite" aria-atomic="true">${esc(starterStatus)}</p>`));
   syncBoundedCollectionButtons(
@@ -4157,17 +4598,29 @@ function fillCharters(): void {
     starterProjection.kind !== 'projected'
       || starterProjection.board.acceptedCount >= starterProjection.board.cap,
   );
+  syncBoundedCollectionButtons(
+    document.getElementById('chpanel')!,
+    '[data-weekly-charter-accept]',
+    starterCharterAcceptPendingId !== null,
+    weeklyBoard === null || weeklyBoard.acceptedCount >= weeklyBoard.cap,
+  );
   restoreFocus();
 }
-registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: fillCharters });
+registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('objchip')], onOpen: fillCharters });
 document.getElementById('chpanel')!.addEventListener('click', (event) => {
   if (!(event.target instanceof Element)) return;
+  const weeklyButton = event.target.closest<HTMLButtonElement>('[data-weekly-charter-accept]');
+  if (weeklyButton !== null && !weeklyButton.disabled) {
+    const weeklyId = weeklyButton.dataset.weeklyCharterAccept ?? '';
+    if (isWeeklyCharterIdV1(weeklyId)) void acceptStarterCharterWithPilot(weeklyId, event.isTrusted);
+    return;
+  }
   const button = event.target.closest<HTMLButtonElement>('[data-starter-charter-accept]');
   if (button === null || button.disabled) return;
   const id = STARTER_CHARTER_IDS_V1.find(
     (candidate): candidate is StarterCharterIdV1 => candidate === button.dataset.starterCharterAccept,
   );
-  if (id !== undefined) void runStarterCharterAccept(id);
+  if (id !== undefined) void acceptStarterCharterWithPilot(id, event.isTrusted);
 });
 const primeCodexOpener = appChrome.primeCodexOpener();
 registerPanel({
@@ -4178,6 +4631,8 @@ registerPanel({
 });
 document.getElementById('primepanel')!.addEventListener('click', (event) => {
   if (!(event.target instanceof Element)) return;
+  const travel = event.target.closest<HTMLButtonElement>('[data-prime-travel],[data-prime-track]');
+  if (travel !== null) { void runPrimeCodexTravel(travel); return; }
   const button = event.target.closest<HTMLButtonElement>('[data-frontier-ending-id]');
   if (button?.dataset.frontierEndingId === undefined) return;
   void runArc9FrontierEndingChoice(button.dataset.frontierEndingId);
@@ -4193,15 +4648,24 @@ let combatChronicleAudioSession: Readonly<{
 }> | null = null;
 const combatChronicleController = new CombatChronicleController({
   root: combatChroniclePanel,
-  onCue: (emission) => { void playCombatChronicleCue(emission); },
+  onCue: (emission) => {
+    try { combatBattleScene?.presentCue(emission); }
+    catch { /* Decorative battle motion cannot interrupt Chronicle outcomes. */ }
+    void playCombatChronicleCue(emission);
+  },
   onShare: (shareText) => { void copyCombatChronicleLog(shareText); },
   onStopVoices: (reason, generation) => {
+    combatBattleScene?.stop(reason);
     if (combatChronicleAudioSession?.generation !== generation) return;
     combatChronicleAudioSession = null;
     tameGreetingAudioOwner?.cancelCombatPlayback(`chronicle-${reason}`);
   },
 });
 combatChronicleController.attach(combatChronicleMount);
+combatBattleScene = new CombatBattleSceneController({
+  root: combatChroniclePanel, artLoader: speciesArtLoader,
+  counterpartIsCurrent: receipt => combatChronicleController.counterpartIsCurrent(receipt),
+});
 registerPanel({
   id: 'combat',
   el: combatChroniclePanel,
@@ -4209,11 +4673,59 @@ registerPanel({
 });
 registerPanel({ id: 'atlas', el: document.getElementById('atlaspanel')!, btns: [document.getElementById('dockatlas'), document.getElementById('railatlas')], onOpen: () => { fillAtlas(); gameEvent('atlas-open', { open: true }); } });
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
+// A6 localization scaffolding (i18n.ts): Settings is the first extracted surface. Only a non-English `?locale=` registers a localizer; the
+// default game never walks or rewrites the panel (English is the identity).
+{ const uiLocale = localeFromSearchV1(location.search);
+  if (uiLocale !== 'en') setPanelLocalizerV1('set', (el) => { localizeElementV1(el, SETTINGS_CATALOG_V1, uiLocale, import.meta.env.DEV ? (m) => console.warn(m) : undefined); }); }
 registerPanel({ id: 'guide', el: document.getElementById('guidepanel')!, btns: [document.getElementById('dockguide')], onOpen: fillGuide });
+let localAiGame: LocalAiGameV1 | null = null;
+let mountedLocalAiOriginal: AiLandfallOriginalV1 | null = null;
+let localAiStatus = '';
+let cancelAiCrossfade: (() => void) | null = null;
+const notificationPanel = document.getElementById('notificationpanel')!;
+const notificationButtons = ['shelfnotifications', 'docknotifications']
+  .map((id) => document.getElementById(id)!);
+const notificationHistory = createNotificationHistory({
+  panel: notificationPanel,
+  buttons: notificationButtons,
+  history: () => save?.notifications ?? [],
+  replace: (history) => { save.notifications = history; },
+  mayWrite: () => !!save && !playerMutationsBlocked() && !trainingActive()
+    && activePersist === null && !namedSearchPersistenceHeld
+    && !trainingCheckpointWriteHeld && !replacementTransaction && !replacementReloadPending
+    && !importWriteInFlight && !persistHold,
+  mayRecord: () => !!save && !playerMutationsBlocked() && !trainingActive()
+    && activePersist === null && !trainingCheckpointWriteHeld && !replacementTransaction && !replacementReloadPending
+    && !importWriteInFlight && !persistHold,
+  deferRecord: () => !!save && productActionInFlight && f4RuntimeMayMutate() && !smokeForceReadOnly
+    && !trainingActive() && !trainingCheckpointWriteHeld && !replacementTransaction
+    && !replacementReloadPending && !importWriteInFlight && !persistHold,
+  persist: () => persistView(),
+  fill: (html) => fillPanel('notifications', html + (localAiGame?.html() ?? '')),
+});
+registerPanel({ id: 'notifications', el: notificationPanel,
+  btns: notificationButtons, onOpen: () => notificationHistory.render() });
 const codexOpenController = createPanelOpenController({
   id: 'codex',
   defaultRequest: () => '',
   populate: (filter: string) => fillCodex(filter),
+});
+/* D16 (v1 showReveal / pendingReveals / _revealBlocked): a newly catalogued page is revealed as a specimen card, queued while another
+   modal (or Field Training) owns the screen and flushed by the next input pulse. View state only; the portrait lease is cancelled on close. */
+function compendiumRevealBlocked(): boolean {
+  return trainingActive() || document.querySelector('dialog[open], [role="dialog"][aria-modal="true"]:not([hidden]):not(#reveal)') !== null;
+}
+const compendiumReveal = new CompendiumRevealQueueV1({
+  document, blocked: compendiumRevealBlocked, art: speciesArtLoader,
+  onDrained: () => { if (openPanelId() === 'codex' && codexMode === 'list') fillCodex(codexFilter); },
+});
+/** The committed action's NEW Compendium pages (by logical id, in source order) — a first catch, a bred hybrid — join the reveal. */
+const compendiumRevealPages = Object.freeze({
+  snapshot: (): ReadonlySet<string> => new Set(save ? save.codex.map(([id]) => String(id)) : []),
+  revealSince: (before: ReadonlySet<string>): void => {
+    if (!save || compendiumFixtureRows !== null) return;
+    for (const [id, e] of save.codex) if (!before.has(String(id))) compendiumReveal.enqueue({ logicalId: String(id), name: e.name, kind: e.kind, hybrid: e.hybrid, genome: e.g });
+  },
 });
 registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: () => {
   /* An ordinary Compendium open is a fresh catalogue view. Search may apply
@@ -4282,6 +4794,8 @@ const inventoryPanelController = new InventoryPanelController({
   openers: [document.getElementById('dockinventory'), document.getElementById('railinventory')],
   onAction: ({ operation, instanceId }) => commitArc2InventoryAction(operation, instanceId),
   requiresSalvageConfirmation: () => save.salvageConfirm,
+  /* v1 data-salvoff ("don't ask again"): the flag rides the salvage's own commit (its draft is the live save); persistSoon covers a refusal */
+  disableSalvageConfirmation: () => { save.salvageConfirm = false; persistSoon(); },
   deferWhileClosed: true,
 });
 registerPanel(inventoryPanelController.registration());
@@ -4289,10 +4803,13 @@ const engineeringPanelController = new EngineeringPanelController({
   panel: document.getElementById('shipyardpanel')!,
   openers: [document.getElementById('dockshipyard'), document.getElementById('railshipyard')],
   onAction: (request) => {
+    if (runTrainingForgePracticeRequest(request)) return;
     engineeringPanelController.setPending(request);
     void runEngineeringPanelAction(request);
   },
+  recipePin: { pinned: () => save.pinnedRecipe, toggle: toggleRecipePin },
 });
+const trainingForgePractice = createTrainingForgePracticeAdapterV1();
 let engineeringPanelReleased = false;
 const engineeringPanelRegistration = engineeringPanelController.registration();
 registerPanel({
@@ -4301,8 +4818,84 @@ registerPanel({
     refreshEngineeringPanelState();
     engineeringPanelRegistration.onOpen();
     gameEvent('panel-open', { id: 'shipyard', open: true });
+    prepareTrainingForgePracticeSurface();
+  },
+  onClose: () => {
+    trainingForgePractice.exit();
+    engineeringPanelRegistration.onClose();
   },
 });
+function trainingForgeStatus(detail: string): void {
+  const status = document.querySelector<HTMLElement>('#tutcard [data-sel="tutstatus"]');
+  if (status === null) return;
+  status.hidden = false;
+  status.textContent = detail;
+}
+
+function prepareTrainingForgePracticeSurface(): boolean {
+  if (!trainingActive() || trainingStepId() !== 'engineering-forge-practice') return false;
+  const runtime = f4Runtime;
+  if (runtime === null) {
+    trainingForgeStatus('The practice Forge is waiting for expedition read authority.');
+    return false;
+  }
+  const opened = trainingForgePractice.enter({
+    state: save,
+    extensions: runtime.extensions,
+    codecNow: Date.now(),
+  });
+  if (opened.kind !== 'ready') {
+    trainingForgeStatus(`Practice Forge unavailable: ${opened.detail}`);
+    return false;
+  }
+  const row = document.querySelector<HTMLElement>(
+    `#shipyardpanel [data-recipe-id="${TRAINING_FORGE_IRON_PLATE_BASE_ID_V1}"]`,
+  );
+  const button = row?.querySelector<HTMLButtonElement>('[data-engineering-action="fabricate"]');
+  const fabricator = row?.closest<HTMLDetailsElement>('[data-engineering-section="fabricator"]');
+  if (row === null || button == null || fabricator == null) {
+    trainingForgePractice.exit();
+    trainingForgeStatus('The canonical Iron Plate practice control is unavailable.');
+    return false;
+  }
+  fabricator.open = true;
+  button.dataset.trainingForgePractice = 'true';
+  button.dataset.modelEnabled = 'true';
+  button.dataset.disabledReason = 'Training uses loaned materials in an isolated simulator.';
+  button.disabled = false;
+  button.setAttribute('aria-disabled', 'false');
+  button.title = 'Uses loaned materials; changes no expedition fact.';
+  button.textContent = `Practice Forge ${opened.snapshot.plan.name}`;
+  refreshTrainingScope();
+  return true;
+}
+
+function runTrainingForgePracticeRequest(request: EngineeringPanelActionRequest): boolean {
+  if (!trainingActive() || trainingStepId() !== 'engineering-forge-practice'
+    || request.operation !== 'fabricate'
+    || request.id !== TRAINING_FORGE_IRON_PLATE_BASE_ID_V1) return false;
+  engineeringPanelController.setPending(request);
+  let outcome: TrainingForgePracticeActionOutcomeV1;
+  try { outcome = trainingForgePractice.fabricate(); }
+  catch (error) {
+    outcome = Object.freeze({
+      kind: 'refused',
+      reason: 'fixed-point-mismatch',
+      detail: error instanceof Error ? error.message : String(error),
+      snapshot: trainingForgePractice.snapshot(),
+    });
+  }
+  engineeringPanelController.setPending(null);
+  if (outcome.kind !== 'completed') {
+    trainingForgeStatus(`Practice Forge stopped safely: ${outcome.detail}`);
+    return true;
+  }
+  gameEvent(outcome.completion.event.type, { ...outcome.completion.event.detail });
+  trainingForgePractice.exit();
+  refreshEngineeringPanelState();
+  refreshTrainingScope();
+  return true;
+}
 function shipyardDiagnostics(): unknown {
   const diagnostics = engineeringPanelController.diagnostics();
   const panelOpen = openPanelId() === 'shipyard';
@@ -4310,6 +4903,7 @@ function shipyardDiagnostics(): unknown {
     schema: 'cf-v2-shipyard-diagnostics/v1',
     status: panelOpen ? 'open' : 'closed',
     stateKey: panelOpen ? diagnostics.previewStateKey : null,
+    trainingPractice: trainingForgePractice.snapshot(),
     activePreviewCount: diagnostics.activePreviewCount,
     retainedPreviewCount: diagnostics.retainedPreviewCount,
     pendingPreviewWork: diagnostics.pendingWork,
@@ -4318,9 +4912,40 @@ function shipyardDiagnostics(): unknown {
 }
 /* codex list rows open the detail card (delegated — rows refill often) */
 document.getElementById('codexpanel')!.addEventListener('click', (e) => {
+  /* D16 (v1 data-ck / data-cr / .cgh): a chip re-filters the list; a shelf header folds its shelf. Session view state only. */
+  const chip = (e.target as HTMLElement).closest<HTMLElement>('[data-ck],[data-cr],[data-cshelves]');
+  if (chip) {
+    const next = codexChipPressV1(codexView, { ck: chip.dataset.ck, cr: chip.dataset.cr, cshelves: chip.dataset.cshelves });
+    if (next) { codexView = next; fillCodex(codexFilter); }
+    return;
+  }
+  const shelf = (e.target as HTMLElement).closest<HTMLElement>('[data-cg]');
+  if (shelf) {
+    const name = shelf.dataset.cg!;
+    if (codexOpenShelves.has(name)) codexOpenShelves.delete(name); else codexOpenShelves.add(name);
+    fillCodex(codexFilter);
+    document.getElementById('codexpanel')!.querySelector<HTMLElement>(`[data-cg="${CSS.escape(name)}"]`)?.focus();
+    return;
+  }
+  const origin = (e.target as HTMLElement).closest<HTMLElement>('[data-codex-origin]');
+  if (origin) { void runCompendiumOriginTravel(+origin.dataset.codexOrigin!); return; }
   const row = (e.target as HTMLElement).closest('[data-ci]');
   if (row) fillCodexDetail(+(row as HTMLElement).dataset.ci!);
 });
+/** D16 (v1 `data-go` → travelTo(sp.where)): fly back to the world a species was first catalogued on, through the one proven-route owner
+ * (search-travel), so charter gates and the route commit are unchanged. The saved `where` is the legacy world view; it resolves to a
+ * canonical world exactly as a Prime claim's does. */
+async function runCompendiumOriginTravel(index: number): Promise<boolean> {
+  const entry = activeCodexSource()[index]?.[1];
+  if (!entry || entry.hybrid || compendiumFixtureRows !== null) return false;
+  const address = primeClaimWorldAddressV1(entry.where);
+  if (address === null) return false;
+  const moved = await searchTravel.jumpToCanonicalAddress(address);
+  if (!moved) return false;
+  closePanels();
+  toast('Course Plotted', `Returning to ${entry.from} — where you first catalogued ${entry.name}.`);
+  return true;
+}
 
 /* ---- THE SEARCH BAR (the goldens' top-right slot): a marked CF1 string is
    exact route input, never tolerant display data. All three route tiers are
@@ -4866,9 +5491,11 @@ let compendiumFeedStatusCounterpart: Readonly<{
 const TOAST_DEDUP_MS = 1800;
 function toastDetailText(): string | null {
   const title = toastEl.querySelector<HTMLElement>('[data-sel="toast-title"]');
-  const lineBreak = title?.nextSibling;
+  const message = title?.nextSibling;
+  const lineBreak = message?.firstChild;
   const detail = lineBreak?.nextSibling;
-  return title && lineBreak?.nodeName === 'BR' && detail?.nodeType === Node.TEXT_NODE
+  return title && message instanceof HTMLElement && message.matches('span[data-sel="toast-message"]')
+    && lineBreak?.nodeName === 'BR' && detail?.nodeType === Node.TEXT_NODE && detail.nextSibling === null
     ? detail.textContent : null;
 }
 function tameToastCounterpartIsCurrent(receipt: AudioCounterpartReceipt): boolean {
@@ -4975,6 +5602,7 @@ async function runCompendiumAudition(
   compendiumAuditionController.settle(request, result);
 }
 function showToast(title: string, msg: string, assertive: boolean): void {
+  notificationHistory.record(title, msg, Date.now());
   invalidateTameToastCounterpart();
   /* A prior Feed may have used this visible carrier in AT-excluded mode.
      Restore the complete accessible status contract before changing text so
@@ -4982,9 +5610,12 @@ function showToast(title: string, msg: string, assertive: boolean): void {
   toastEl.setAttribute('role', 'status');
   toastEl.setAttribute('aria-live', assertive ? 'assertive' : 'polite');
   toastEl.removeAttribute('aria-hidden');
-  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><br>${esc(msg)}`;   /* every sink escapes (audit #6) */
+  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><span data-sel="toast-message"><br>${esc(msg)}</span>`;   /* every sink escapes (audit #6) */
   _toastSerial++;
-  toastEl.style.opacity = '1';
+  /* D16 parity (v1 `notif`): with pop-ups off the toast stays in the tray and is still ANNOUNCED (the live region keeps its
+     text), but it is not painted. A sound that needs this carrier as its visible counterpart reveals it (bindTameToastCounterpart). */
+  toastEl.style.opacity = save.notifOn ? '1' : '0';
+  toastEl.dataset.quiet = String(!save.notifOn);
   clearTimeout(_toastHide);
   _toastHide = window.setTimeout(() => {
     invalidateTameToastCounterpart();
@@ -4992,6 +5623,7 @@ function showToast(title: string, msg: string, assertive: boolean): void {
   }, 3600);
 }
 function showCompendiumFeedVisualToast(title: string, msg: string): void {
+  notificationHistory.record(title, msg, Date.now());
   invalidateTameToastCounterpart();
   /* Feed's inline polite role=status is its sole accessible result. Configure
      this supplemental visible carrier as presentation-only before mutating
@@ -4999,10 +5631,12 @@ function showCompendiumFeedVisualToast(title: string, msg: string): void {
   toastEl.setAttribute('role', 'presentation');
   toastEl.setAttribute('aria-live', 'off');
   toastEl.setAttribute('aria-hidden', 'true');
-  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><br>${esc(msg)}`;
+  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><span data-sel="toast-message"><br>${esc(msg)}</span>`;
   _toastT = performance.now();
   _toastSerial++;
-  toastEl.style.opacity = '1';
+  /* supplemental visual only (Feed's inline status is the accessible result and the audio counterpart): pop-ups off hides it */
+  toastEl.style.opacity = save.notifOn ? '1' : '0';
+  toastEl.dataset.quiet = String(!save.notifOn);
   clearTimeout(_toastHide);
   _toastHide = window.setTimeout(() => { toastEl.style.opacity = '0'; }, 3600);
 }
@@ -5230,6 +5864,8 @@ function bindTameToastCounterpart(
     generation: _toastSerial,
   });
   tameToastCounterpart = Object.freeze({ receipt, title, detail });
+  /* The creature's voice needs a VISIBLE counterpart: with pop-ups off, this one toast is revealed rather than the sound lost. */
+  if (toastEl.dataset.quiet === 'true' && toastEl.style.opacity === '0') { toastEl.style.opacity = '1'; toastEl.dataset.quiet = 'revealed-for-counterpart'; }
   if (tameToastCounterpartIsCurrent(receipt)) return receipt;
   tameToastCounterpart = null;
   return null;
@@ -5273,10 +5909,67 @@ tameGreetingAudioOwner = createTameGreetingAudioOwner({
       && !replacementTransaction
       && !replacementReloadPending,
     masterGain: save.sfxVol * save.sfxVol,
+    combatSoundsOn: save.combatSfxOn,
+    mono: audioAccessibility.mono,
+    reducedIntensity: audioAccessibility.reducedIntensity,
     routeKey: currentTameGreetingRouteKey(),
   }),
   verifyCounterpart: creatureExpressionCounterpartIsCurrent,
 });
+// D15 Stage 3: the ONE owner of continuous sound — the living bed under a world and the sparse score — on the accessible owner's
+// decorative port (it can never sound where the owner would not). Hooks call it through globalThis, so the main.ts regions tests execute
+// never meet an undeclared name. The presentation seed is a constant stream (never gameplay RNG, never the wall clock).
+// Loaded lazily as its own chunk, off the boot path (the battle2 gate test forbids static soundkit imports here).
+void import('./soundkit/soundscape.js').then(({ createSoundscapeV1 }) => {
+  const owner = tameGreetingAudioOwner; if (!owner) return;
+  const soundscape = createSoundscapeV1({ port: owner.decorativeVoicePort(), schedule: (fn, ms) => { const t = setTimeout(fn, ms); return () => clearTimeout(t); },
+    nowMs: () => performance.now(), presentationSeed: 0x5eed, phone: visualPolicyDeviceTier() === 'low' });
+  (globalThis as { cfSoundscapeV1?: unknown }).cfSoundscapeV1 = soundscape;
+  soundscape.setHidden(document.visibilityState !== 'visible');
+  soundscape.setMusicState('calm');
+}).catch(() => { /* sound is decoration: a failed chunk never blocks play */ });
+// L1 Listening page (D15 / N5) on a BUILT package (the dev URL): flag-gated, dynamic import only, never on the default path. Plays through
+// the audio owner's explicit pilot gesture (decorative only); ratings stay on this device. The dev server keeps Codex's production review.
+if (!import.meta.env.DEV && new URLSearchParams(location.search).get('audioReview') === '1') {
+  void import('./listening-review.js').then(({ mountListeningReviewV1 }) => {
+    const owner = tameGreetingAudioOwner; if (!owner) return;
+    let storage: Storage | null = null; try { storage = window.localStorage; } catch { storage = null; }
+    const page = mountListeningReviewV1({ doc: document, commit: previewIdentity?.sourceCommit ?? 'local build', ua: navigator.userAgent, storage,
+      port: { arm: () => owner.armNativePilotGesture(), play: (request) => owner.playPilotVoice(request), stop: () => owner.cancelPilotPlayback() },
+      readPackDigest: async () => { const r = await fetch('./preview.json', { credentials: 'omit', cache: 'no-store' }); if (!r.ok) throw new Error('no preview.json'); const m = await r.json() as { contentSha256?: unknown }; if (typeof m.contentSha256 !== 'string') throw new Error('no digest'); return m.contentSha256; } });
+    const closeReview = (event: PageTransitionEvent): void => { if (!event.persisted) { page.dispose(); removeEventListener('pagehide', closeReview); } };
+    addEventListener('pagehide', closeReview);
+  }).catch(() => { /* the flagged page never blocks the game */ });
+}
+// Explicit local developer review; reuses the existing audio owner, never gameplay RNG.
+if (import.meta.env.DEV && new URLSearchParams(location.search).get('audioReview') === '1') {
+  void import('./audio-production-review.js').then(({ mountAudioProductionReview }) => {
+    if (!tameGreetingAudioOwner) return;
+    const release = mountAudioProductionReview(tameGreetingAudioOwner);
+    const closeReview = (event: PageTransitionEvent): void => {
+      if (!event.persisted) { release(); removeEventListener('pagehide', closeReview); }
+    };
+    addEventListener('pagehide', closeReview);
+  });
+}
+// H1 iPhone device probe (D15 Stage 0 codec decode check; later: performance/heat/memory): flag-gated, dynamic import only, never on the
+// default path; decodes embedded samples through this device's own audio engine — no network, no telemetry.
+if (new URLSearchParams(location.search).get('deviceProbe') === '1') {
+  void import('./device-probe.js').then(({ mountDeviceProbeV1 }) => {
+    const Ctor = (globalThis as { AudioContext?: new () => AudioContext; webkitAudioContext?: new () => AudioContext }).AudioContext
+      ?? (globalThis as { webkitAudioContext?: new () => AudioContext }).webkitAudioContext;
+    mountDeviceProbeV1({ doc: document, commit: previewIdentity?.sourceCommit ?? 'local development source', ua: navigator.userAgent,
+      createContext: () => { if (!Ctor) throw new TypeError('AudioContext is unavailable'); return new Ctor(); },
+      canPlayType: (mime) => document.createElement('audio').canPlayType(mime),
+      dpr: window.devicePixelRatio || 1, viewport: `${innerWidth}×${innerHeight}`,
+      readPackDigest: async () => { const r = await fetch('./preview.json', { credentials: 'omit', cache: 'no-store' }); if (!r.ok) throw new Error('no preview.json'); const m = await r.json() as { contentSha256?: unknown }; if (typeof m.contentSha256 !== 'string') throw new Error('no digest'); return m.contentSha256; },
+      // H1 performance/heat/memory: built only when a Run is pressed (after boot); the real matchup picker on the app's own ticker
+      performance: () => ({ now: () => performance.now(), raf: (cb) => requestAnimationFrame(cb), cancelRaf: (id) => cancelAnimationFrame(id), ticker: app.ticker,
+        mountMatchup: async (search, ticker) => (await import('./battle2-matchup.js')).mountBattle2Matchup({ doc: document, search, ticker, clock: () => performance.now(), reducedMotion: false, deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } as never }),
+        jsHeap: () => (performance as Performance & { memory?: { usedJSHeapSize: number; totalJSHeapSize: number; jsHeapSizeLimit: number } }).memory ?? null,
+        paintedArt: () => speciesArtLoader.paintedDiagnostics(), morphCache: async () => (await import('./morph/morph-atlas-cache.js')).morphAtlasCache.stats() }) });
+  }).catch(() => { /* the flagged probe never blocks the game */ });
+}
 const primeCount = (): number => Object.keys(save.primeFill || {}).length;
 const SHIP_LIVERY_SEED = 0x5111;   /* legacy ship painter's stable livery authority */
 type ShipVisualViewState = ShipVisualState & { readonly stateKey: string };
@@ -5373,6 +6066,8 @@ function refreshEngineeringPanelState(): void {
 }
 
 function updateChips(): void {
+  notificationHistory.refreshBadge();
+  syncAudiovisualPilot();
   const stage = ascStage();
   const objective = currentV2Objective(save.ascCh, save.ascProg, stage);
   const projection = projectV2Charter(save.ascCh, save.ascProg, stage);
@@ -5395,6 +6090,7 @@ function updateChips(): void {
         ? { kind: 'boundary', name: projection.name }
         : null,
   });
+  refreshRecipePinChip();
 }
 function hudText(): void {
   /* the chrome per mode: trail (setTrail), hint pill, the caption line
@@ -5413,9 +6109,11 @@ function hudText(): void {
     setTrail([galaxyName(nav.gal.seed), starName(nav.star.seed)]);
     setHint('tap a world to survey · press Land on its card · zoom out to rise');
     const sys = systemScene(nav.star.seed);
-    const raw = systemFor(nav.star.seed) as { binary?: unknown };
+    const raw = systemFor(nav.star.seed) as { binary?: unknown; trinary?: unknown };
     const desc = nav.star.seed === 424242 ? 'Sol — humanity’s own yellow star' : 'this star';
-    const extra = raw.binary ? ' · a binary pair — two suns share this sky' : '';
+    const extra = raw.binary
+      ? raw.trinary ? ' · a triple system — three suns share this sky' : ' · a binary pair — two suns share this sky'
+      : '';
     setCtx(sys.planets.length
       ? sys.planets.length + ' worlds orbit ' + desc + extra
       : 'no planets here — zoom out and try another star');
@@ -5464,15 +6162,19 @@ function bhDiscSpr(): HTMLCanvasElement {   /* the supermassive black hole (main
   return (_bhDiscC = cv);
 }
 const _coronaC = new Map<string, HTMLCanvasElement>();
-function coronaSpr(col: string): HTMLCanvasElement {   /* main-sequence glow (main.js ~5121) */
-  const hit = _coronaC.get(col); if (hit) return hit;
+function coronaSpr(col: string, companion = false): HTMLCanvasElement {
+  /* Companions use the canonical three-stop glow, then the shared V2 polish. */
+  const key = companion ? col + ':companion' : col;
+  const hit = _coronaC.get(key); if (hit) return hit;
   const S = 256, cv = document.createElement('canvas'); cv.width = cv.height = S;
   const g = cv.getContext('2d')!, C = S / 2;
   const sg = g.createRadialGradient(C, C, 0, C, C, C);
-  sg.addColorStop(0, '#ffffff'); sg.addColorStop(0.25, col); sg.addColorStop(0.6, col + '66'); sg.addColorStop(1, 'transparent');
+  sg.addColorStop(0, '#ffffff'); sg.addColorStop(0.25, col);
+  if (!companion) sg.addColorStop(0.6, col + '66');
+  sg.addColorStop(1, 'transparent');
   g.fillStyle = sg; g.beginPath(); g.arc(C, C, C, 0, TAU); g.fill();
   const finished = polishSystemCanvasV1(cv);
-  _coronaC.set(col, finished);
+  _coronaC.set(key, finished);
   peakLocalCanvasCacheEntries = Math.max(
     peakLocalCanvasCacheEntries,
     _coronaC.size + _termC.size,
@@ -5617,8 +6319,8 @@ let uniCell: { ux: number; uy: number } | null = null;   /* the streamed window'
 /* SURVEY-FIRST: one tap opens the typed card; its explicit 44px travel
    action performs the dive. The card can cover the body on a phone, so
    navigation must never depend on a second canvas tap or a timing window. */
-function surveyCard(d: unknown, travelAction: CardTravelAction | null = null): void {
-  if (d) { showSurvey(d as Descriptor, undefined, travelAction); playSurveyPing(); }
+function surveyCard(d: unknown, travelAction: CardTravelAction | null = null, supplementalRows: readonly SurveyPresentationRow[] = EMPTY_SURVEY_PRESENTATION_ROWS): void {
+  if (d) { showSurvey(d as Descriptor, undefined, travelAction, supplementalRows); playSurveyPing(); }
 }
 function canonicalStarAddressForSurvey(star: StarNodeRef): CanonicalCF1StarAddress | null {
   if (nav.mode !== 'galaxy') return null;
@@ -5637,7 +6339,7 @@ function surveyStar(star: StarNodeRef): boolean {
   const travelStar = { seed: star.seed, x: star.x, y: star.y };
   surveyCard(descriptor, {
     label: 'Enter system', run: () => descendSystem(travelStar),
-  });
+  }, outpostRelayStarRows(address));
   /* Survey presentation is immediate; its progression record is one separate
      source-rederived F4 settlement and never trusts descriptor metadata. */
   void settleArc9Survey(address);
@@ -5687,6 +6389,9 @@ let surfClouds: { a: Sprite; b: Sprite; w: number } | null = null;
 let surfaceVistaWorker: Worker | null = null;
 let surfaceVistaDeadline: ReturnType<typeof setTimeout> | null = null;
 let surfaceVistaSprite: Sprite | null = null;
+let surfacePlanetSprite: Sprite | null = null;
+let surfacePaintedGlobe: Sprite | null = null;
+let surfaceEarthCloudDeck: { container: Container; visible: boolean } | null = null;
 let surfaceVistaGeneration = 0;
 let surfaceVistaWorldKey: string | null = null;
 let surfaceVistaEnvironmentFingerprint: string | null = null;
@@ -5697,6 +6402,15 @@ let surfaceVistaStaleDrops = 0;
 let surfaceVistaFaults = 0;
 let surfaceVistaLastBiome: string | null = null;
 let surfaceVistaLastError: string | null = null;
+let surfaceVistaArtVariant: 'canonical-v1' | typeof PAINTED_MARS_VISTA_ID
+  | typeof EARTH_LAYERED_SCENE_ID | typeof PAINTED_EARTH_LANDING_ID | typeof LOCAL_AI_LANDFALL_ID | null = null;
+let surfaceEarthLayeredLoad: EarthLayeredLoadV1 | null = null;
+let surfaceEarthLayeredLast: ReturnType<EarthLayeredLoadV1['snapshot']> | null = null;
+let surfaceEarthResidentSprite: Sprite | null = null;
+type SurfaceEarthLayerResource = { canvas: HTMLCanvasElement; lease: SceneTextureLease<Texture> | null; sprite: Sprite | null };
+let surfaceEarthLayeredResources: SurfaceEarthLayerResource[] = [];
+let surfacePaintedVistaLoad: PaintedVistaLoadV1 | null = null;
+let surfacePaintedVistaLast: ReturnType<PaintedVistaLoadV1['snapshot']> | null = null;
 const surfaceVistaCanvasCache = new Map<string, HTMLCanvasElement>();
 const SURFACE_VISTA_DEADLINE_MS = 12_000;
 function noteSurfaceVistaFault(error: unknown, fallback: string): void {
@@ -5716,22 +6430,112 @@ let surfacePlanetTextureGeneration = 0;
 let surfacePlanetTextureOwner:
   SurfacePlanetTextureAttachment<HTMLCanvasElement, Texture> | null = null;
 const SURFACE_PLANET_DIAMETER_CSS_PX = 420;
+let surfacePlanetTurnView: import('./planet-surface-turn-view.js').SurfacePlanetTurnViewV1 | null = null;
+let surfacePlanetTurnPending = false;
+let surfacePlanetTurnLast: unknown = null;
+function startSurfacePlanetTurn(planet: Record<string, unknown>, fallback: Sprite): void {
+  if (new URLSearchParams(location.search).get('planetturn') !== '1'
+    || app.renderer.type !== RendererType.WEBGL || nav.mode !== 'surface'
+    || getProvenPlanetKey(nav.planet) !== 'CF1|g:999@90,-60|s:424242@560,170|p:133#2') return;
+  if (!app.renderer.renderPipes.mesh) {
+    surfacePlanetTurnLast = { status: 'failed', error: 'Earth turn mesh renderer unavailable' };
+    return;
+  }
+  const generation = surfacePlanetTextureGeneration;
+  const isCurrent = (): boolean => generation === surfacePlanetTextureGeneration
+    && nav.mode === 'surface'
+    && getProvenPlanetKey(nav.planet) === 'CF1|g:999@90,-60|s:424242@560,170|p:133#2'
+    && !fallback.destroyed;
+  surfacePlanetTurnPending = true;
+  void import('./planet-surface-turn-view.js').then(({ SurfacePlanetTurnViewV1 }) => {
+    if (!isCurrent()) return;
+    surfacePlanetTurnPending = false;
+    const cards = (globalThis as typeof globalThis & {
+      CARD_FACTS?: Map<number, Record<string, unknown>>;
+    }).CARD_FACTS;
+    surfacePlanetTurnView = new SurfacePlanetTurnViewV1({
+      parent: world, fallback, diameter: SURFACE_PLANET_DIAMETER_CSS_PX,
+      material: new URLSearchParams(location.search).get('planetmaterial') === '1',
+      planet: { ...planet }, facts: cards?.get(133) ? { ...cards.get(133)! } : null,
+      isCurrent, acquireLease: canvas => sceneTextureLease(canvas, 'planet-texture'),
+    });
+  }).catch(error => {
+    if (!isCurrent()) return;
+    surfacePlanetTurnPending = false;
+    surfacePlanetTurnLast = { status: 'failed', error: String(error).slice(0, 256) };
+  });
+}
+
 let systemPlanetTextureRefreshTimer: ReturnType<typeof setTimeout> | null = null;
 const baseR = (): number => Math.max(0.7 / cam.z, 0.55);   /* Renderer star sizing (main.js 4126) */
 
 function releaseSurfacePlanetTextureOwner():
   SurfacePlanetTextureAttachment<HTMLCanvasElement, Texture> | null {
   surfacePlanetTextureGeneration++;
+  surfacePlanetTurnPending = false;
+  if (surfacePlanetTurnView) {
+    surfacePlanetTurnView.dispose();
+    surfacePlanetTurnLast = surfacePlanetTurnView.snapshot();
+    surfacePlanetTurnView = null;
+  }
+  surfacePlanetSprite = null;
   const previous = surfacePlanetTextureOwner;
   previous?.cancelPending();
   surfacePlanetTextureOwner = null;
   return previous;
 }
 
+function retireSurfaceEarthLayers(entries: readonly SurfaceEarthLayerResource[]): {
+  retained: SurfaceEarthLayerResource[]; errors: unknown[];
+} {
+  const retained: SurfaceEarthLayerResource[] = [], errors: unknown[] = [];
+  for (const entry of entries) {
+    const sprite = entry.sprite;
+    if (sprite) {
+      for (const cleanup of [
+        () => { if (sprite.texture != null && sprite.texture !== Texture.EMPTY) sprite.texture = Texture.EMPTY; },
+        () => { if (sprite.parent !== null) sprite.removeFromParent(); },
+        () => { if (!sprite.destroyed) sprite.destroy({ children: true }); },
+      ]) {
+        try { cleanup(); } catch (error) { errors.push(error); }
+      }
+      // Pixi may mark destroyed before detach completes; inspect real ownership.
+      if (sprite.parent !== null || (sprite.texture != null && sprite.texture !== Texture.EMPTY)) {
+        retained.push(entry);
+        errors.push(new Error('Earth layer display still retains its backing texture'));
+        continue;
+      }
+    }
+    const retired = retireEarthLayerResourcesV1([entry]);
+    retained.push(...retired.retained); errors.push(...retired.errors);
+  }
+  return { retained, errors };
+}
+
 function releaseSurfaceVistaOwner(): void {
+  cancelAiCrossfade?.(); cancelAiCrossfade = null;
+  mountedLocalAiOriginal = null;
   surfaceVistaGeneration++;
+  if (surfaceEarthLayeredLoad) {
+    surfaceEarthLayeredLoad.dispose();
+    surfaceEarthLayeredLast = surfaceEarthLayeredLoad.snapshot();
+    surfaceEarthLayeredLoad = null;
+  }
+  // Earth entries retain their own display references across failed cleanup.
+  surfaceEarthResidentSprite = null;
+  if (surfaceEarthLayeredResources.some(entry => entry.sprite === surfaceVistaSprite)) {
+    surfaceVistaSprite = null;
+  }
+  if (surfacePaintedVistaLoad) {
+    surfacePaintedVistaLoad.dispose();
+    surfacePaintedVistaLast = surfacePaintedVistaLoad.snapshot();
+    surfacePaintedVistaLoad = null;
+  }
+  surfaceVistaArtVariant = null;
+  syncSurfaceVistaPresentation();
   surfaceVistaWorldKey = null;
   surfaceVistaEnvironmentFingerprint = null;
+  (globalThis as { cfSoundscapeV1?: { setAmbience(t: null): void } }).cfSoundscapeV1?.setAmbience(null); // D15: the bed never outlives its world
   if (surfaceVistaDeadline !== null) {
     clearTimeout(surfaceVistaDeadline);
     surfaceVistaDeadline = null;
@@ -5746,6 +6550,9 @@ function releaseSurfaceVistaOwner(): void {
     surfaceVistaSprite.destroy({ children: true });
     surfaceVistaSprite = null;
   }
+  const retired = retireSurfaceEarthLayers(surfaceEarthLayeredResources);
+  surfaceEarthLayeredResources = retired.retained;
+  if (retired.errors.length) throw new AggregateError(retired.errors, 'Earth layered resources failed to retire');
 }
 
 function releaseSurfaceVistaCache(): void {
@@ -5754,6 +6561,70 @@ function releaseSurfaceVistaCache(): void {
     canvas.height = 1;
   }
   surfaceVistaCanvasCache.clear();
+}
+
+function currentEarthLayeredLayout(imageWidth = 960, imageHeight = 430): ReturnType<typeof earthLayeredMountLayoutV1> {
+  const canvas = app.canvas.getBoundingClientRect();
+  if (canvas.width <= 0 || canvas.height <= 0) return null;
+  const visibleRect = (element: HTMLElement | null): DOMRect | null => {
+    if (!element) return null;
+    const style = getComputedStyle(element), rect = element.getBoundingClientRect();
+    return style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity) > 0
+      && rect.width > 0 && rect.height > 0 ? rect : null;
+  };
+  const chrome = appChrome.surfaceLayoutRects();
+  if (chrome === null) return null;
+  const upper = chrome.upper;
+  const lower = visibleRect(document.getElementById('planetside')) ?? chrome.dock;
+  const scaleY = app.screen.height / canvas.height;
+  return earthLayeredMountLayoutV1({
+    viewportWidth: app.screen.width, viewportHeight: app.screen.height, imageWidth, imageHeight,
+    topChromeBottom: Math.min(app.screen.height, Math.max(0,
+      Math.max(canvas.top, ...upper.map(rect => rect.bottom)) - canvas.top) * scaleY),
+    rosterTop: Math.min(app.screen.height, Math.max(0,
+      (lower?.top ?? canvas.bottom) - canvas.top) * scaleY),
+  });
+}
+
+/** Each optional painting owns only its exact scene decorations. Earth fits
+ * between real DOM chrome and its Biosphere strip; native controls do not move. */
+function syncSurfaceVistaPresentation(): void {
+  const earth = surfaceVistaSprite !== null && (surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+    || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID
+    || (surfaceEarthResidentSprite !== null && surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID));
+  const earthLayout = earth ? currentEarthLayeredLayout(surfaceVistaSprite!.texture.width, surfaceVistaSprite!.texture.height) : null;
+  if (earth) {
+    for (const sprite of [surfaceVistaSprite, surfaceEarthResidentSprite]) {
+      if (!sprite) continue;
+      sprite.visible = earthLayout !== null;
+      if (earthLayout) {
+        sprite.scale.set(earthLayout.scale);
+        sprite.position.set(earthLayout.centerX, earthLayout.centerY);
+      }
+    }
+  }
+  const painted = surfaceVistaSprite !== null && (surfaceVistaArtVariant === PAINTED_MARS_VISTA_ID
+    || (earth && earthLayout !== null));
+  const cloud = earth && earthLayout ? surfClouds?.a.parent ?? null : null;
+  if (surfaceEarthCloudDeck && surfaceEarthCloudDeck.container !== cloud) {
+    if (!surfaceEarthCloudDeck.container.destroyed) surfaceEarthCloudDeck.container.visible = surfaceEarthCloudDeck.visible;
+    surfaceEarthCloudDeck = null;
+  }
+  if (cloud) {
+    surfaceEarthCloudDeck ??= { container: cloud, visible: cloud.visible };
+    cloud.visible = false;
+  }
+  if (surfacePaintedGlobe !== null
+    && (!painted || surfacePaintedGlobe !== surfacePlanetSprite)) {
+    if (!surfacePaintedGlobe.destroyed) surfacePaintedGlobe.visible = true;
+    surfacePaintedGlobe = null;
+  }
+  if (painted && surfacePlanetSprite !== null && surfaceVistaSprite !== null) {
+    surfacePaintedGlobe = surfacePlanetSprite;
+    surfacePaintedGlobe.visible = false;
+    // Mars keeps its accepted full-screen contain composition.
+    if (!earth) surfaceVistaSprite.y = app.screen.height / 2;
+  }
 }
 
 function mountSurfaceVistaCanvas(canvas: HTMLCanvasElement): void {
@@ -5777,14 +6648,75 @@ function mountSurfaceVistaCanvas(canvas: HTMLCanvasElement): void {
   const worldIndex = app.stage.children.indexOf(world);
   app.stage.addChildAt(sprite, worldIndex < 0 ? app.stage.children.length : worldIndex);
   surfaceVistaSprite = sprite;
+  audiovisualPilotVistaReady = true; syncAudiovisualPilot();
+}
+
+/** Publish the complete one- or two-layer Earth composition together. Its explicit
+ * leases retire on scene exit; canvases never enter the opaque-vista cache. */
+function mountEarthLayeredCanvases(
+  background: HTMLCanvasElement, residents: HTMLCanvasElement | null,
+  variant: typeof EARTH_LAYERED_SCENE_ID | typeof PAINTED_EARTH_LANDING_ID | typeof LOCAL_AI_LANDFALL_ID = EARTH_LAYERED_SCENE_ID,
+): boolean | 'retained-failure' {
+  if (nav.mode !== 'surface' || !surfacePlanetSprite
+    || (variant !== EARTH_LAYERED_SCENE_ID) !== (residents === null)) return false;
+  const layout = currentEarthLayeredLayout(background.width, background.height);
+  if (!layout) return false;
+  const owned: SurfaceEarthLayerResource[] = [
+    { canvas: background, lease: null, sprite: null },
+  ];
+  if (residents) owned.push({ canvas: residents, lease: null, sprite: null });
+  const sprites: Sprite[] = [];
+  try {
+    for (const [index, entry] of owned.entries()) {
+      const lease = sceneTextureLease(entry.canvas);
+      entry.lease = lease;
+      const sprite = new Sprite(lease.texture); entry.sprite = sprite; sprites.push(sprite);
+      sprite.label = variant === LOCAL_AI_LANDFALL_ID ? 'local-ai-landfall-still'
+        : variant === PAINTED_EARTH_LANDING_ID ? 'earth-painted-landing-still'
+        : index === 0 ? 'earth-painted-background' : 'earth-canonical-residents';
+      sprite.eventMode = 'none'; sprite.anchor.set(0.5); sprite.scale.set(layout.scale);
+      sprite.position.set(layout.centerX, layout.centerY);
+    }
+    const index = app.stage.children.indexOf(world);
+    app.stage.addChildAt(sprites[0]!, index < 0 ? app.stage.children.length : index);
+    if (sprites[1]) app.stage.addChildAt(sprites[1], app.stage.children.indexOf(sprites[0]!) + 1);
+    // The old scene remains intact until every successor has mounted.
+    if (surfaceVistaSprite) {
+      surfaceVistaSprite.texture = Texture.EMPTY; surfaceVistaSprite.removeFromParent();
+      surfaceVistaSprite.destroy({ children: true });
+    }
+    surfaceVistaSprite = sprites[0]!;
+    surfaceEarthResidentSprite = sprites[1] ?? null;
+    surfaceEarthLayeredResources.push(...owned);
+    surfaceVistaArtVariant = variant;
+    syncSurfaceVistaPresentation();
+    // This option excludes avpilot; publish data without another view callback
+    // inside the atomic layer transaction.
+    audiovisualPilotVistaReady = true;
+    return true;
+  } catch (error) {
+    if (surfaceVistaSprite === sprites[0]) surfaceVistaSprite = null;
+    if (surfaceEarthResidentSprite === sprites[1]) surfaceEarthResidentSprite = null;
+    surfaceVistaArtVariant = null;
+    try { syncSurfaceVistaPresentation(); }
+    catch (failure) { noteSurfaceVistaFault(failure, 'Earth globe rollback failed'); }
+    const retired = retireSurfaceEarthLayers(owned);
+    // Failed leases retain their backing canvases until an explicit later cleanup.
+    surfaceEarthLayeredResources = surfaceEarthLayeredResources.filter(entry => !owned.includes(entry));
+    surfaceEarthLayeredResources.push(...retired.retained);
+    noteSurfaceVistaFault(error, 'Earth layered mount failed');
+    for (const failure of retired.errors) noteSurfaceVistaFault(failure, 'Earth layer rollback failed');
+    return retired.retained.length ? 'retained-failure' : false;
+  }
 }
 
 function requestSurfaceVista(
   planet: PlanetNode,
   state: Extract<NavState, { mode: 'surface' }>,
   roster: CanonicalWorldRoster | null,
+  paintedFallback = false,
 ): void {
-  if (!roster || typeof Worker !== 'function') return;
+  if (!roster) return;
   const provenWorldKey = getProvenPlanetKey(state.planet);
   if (provenWorldKey === null || roster.worldKey !== provenWorldKey
     || roster.starSeed !== state.star.seed) {
@@ -5804,20 +6736,125 @@ function requestSurfaceVista(
     noteSurfaceVistaFault(error, 'biome vista request construction failed');
     return;
   }
-  const cacheKey = `vista-v1|${request.environmentFingerprint}|${roster.fullRosterFingerprint}|${request.scene}|${request.biomeKey}`;
+  audiovisualPilotBiomeKey = request.biomeKey;
+  audiovisualPilotVistaBinding = JSON.stringify(request);
+  // A6 study flag (?worldlife=1): the A5 world-life layer over the vista sprite of this landfall; dynamic import only under the flag, never on the default path.
+  if (new URLSearchParams(location.search).get('worldlife') === '1') void import('./worldlife-wiring.js').then(m => m.mountWorldLifeStudy({ request, roster, stage: app.stage, vistaSprite: () => surfaceVistaSprite, ticker: app.ticker, clock: () => performance.now(), reducedMotion: () => !motionOK(), tier: TOUCH_DPR ? 'phone' : 'desktop', pixi: { Container, Graphics }, residents: { rows: roster.view.all, artLoader: speciesArtLoader, pixi: { Sprite, Texture } } })).catch(() => { /* the flagged study never blocks the vista */ });
+  surfaceVistaWorldKey = request.worldKey;
+  surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;
+  (globalThis as { cfSoundscapeV1?: { setAmbience(t: { biome: string } | null): void } }).cfSoundscapeV1?.setAmbience({ biome: request.biomeKey }); // D15: the world's bed
+  if (currentAiLandfallInput()) { restoreCurrentAiLandfall(); return; }
+  const query = new URLSearchParams(location.search);
+  const landingRecipe = !paintedFallback && query.get('paintedlanding') === '1'
+    && query.get('planetturn') !== '1' && query.get('avpilot') !== '1'
+    ? buildPaintedEarthLandingRecipeV1(request, roster) : null;
+  if (landingRecipe) {
+    const generation = surfaceVistaGeneration;
+    const isCurrent = (): boolean => surfaceVistaGeneration === generation
+      && roster.ecologyEpoch === currentEcologyEpoch()
+      && surfaceVistaWorldKey === request.worldKey
+      && nav.mode === 'surface' && nav.star.seed === roster.starSeed
+      && getProvenPlanetKey(nav.planet) === request.worldKey
+      && surfaceVistaEnvironmentFingerprint === request.environmentFingerprint;
+    surfacePaintedVistaLoad?.dispose();
+    surfacePaintedVistaLoad = new PaintedVistaLoadV1({
+      url: new URL('./assets/painted/earth-civet-landing-v1.webp', import.meta.url).href,
+      sha256: landingRecipe.sha256, expectedBytes: landingRecipe.expectedBytes,
+      width: landingRecipe.width, height: landingRecipe.height, isCurrent,
+      commit: canvas => {
+        if (!isCurrent()) return false;
+        const mounted = mountEarthLayeredCanvases(canvas, null, PAINTED_EARTH_LANDING_ID);
+        if (mounted !== true) return mounted;
+        surfaceVistaResults++; surfaceVistaLastBiome = request.biomeKey;
+        return true;
+      },
+      fallback: error => {
+        if (!isCurrent()) return;
+        noteSurfaceVistaFault(error, 'Earth painted landing unavailable');
+        requestSurfaceVista(planet, state, roster, true);
+      },
+    });
+    return;
+  }
+  // The static landing has no worker dependency. Existing enhancement paths
+  // keep their original worker-support boundary and canonical fallback.
+  if (typeof Worker !== 'function') return;
+  const earthRecipe = !paintedFallback && query.get('livingvista') === '1'
+    && query.get('planetturn') !== '1' && query.get('avpilot') !== '1'
+    ? buildEarthLayeredRecipeV1(request, roster) : null;
+  if (earthRecipe) {
+    const generation = surfaceVistaGeneration;
+    const isCurrent = (): boolean => surfaceVistaGeneration === generation
+      && roster.ecologyEpoch === currentEcologyEpoch()
+      && nav.mode === 'surface' && nav.star.seed === roster.starSeed
+      && getProvenPlanetKey(nav.planet) === request.worldKey
+      && surfaceVistaEnvironmentFingerprint === request.environmentFingerprint;
+    surfaceEarthLayeredLoad = new EarthLayeredLoadV1({
+      plan: earthRecipe, token: `${DOCUMENT_TOKEN}:${generation}`, isCurrent,
+      commit: (background, residents) => {
+        if (!isCurrent()) return false;
+        const mounted = mountEarthLayeredCanvases(background, residents);
+        if (mounted !== true) return mounted;
+        surfaceVistaResults++; surfaceVistaLastBiome = request.biomeKey;
+        return true;
+      },
+      fallback: error => {
+        if (!isCurrent()) return;
+        noteSurfaceVistaFault(error, 'Earth layered scene unavailable');
+        requestSurfaceVista(planet, state, roster, true);
+      },
+    });
+    return;
+  }
+  const painted = !paintedFallback
+    && new URLSearchParams(location.search).get('paintedvista') === '1'
+    && isPaintedMarsVistaV1(request);
+  const variant = painted ? PAINTED_MARS_VISTA_ID : 'canonical-v1';
+  const cacheKey = `${painted ? PAINTED_MARS_VISTA_ID : 'vista-v1'}|${request.environmentFingerprint}|${roster.fullRosterFingerprint}|${request.scene}|${request.biomeKey}`;
   const cachedOutcome = mountCachedBiomeVistaV1(surfaceVistaCacheOwner, cacheKey);
   if (cachedOutcome !== 'miss') {
     if (cachedOutcome === 'fault') {
       noteSurfaceVistaFault(null, 'biome vista cache mount failed');
+      if (painted) requestSurfaceVista(planet, state, roster, true);
     }
     else {
       surfaceVistaCacheHits++;
+      surfaceVistaArtVariant = variant;
+      syncSurfaceVistaPresentation();
       surfaceVistaLastBiome = request.biomeKey;
     }
     return;
   }
 
   const generation = surfaceVistaGeneration;
+  if (painted) {
+    const isCurrent = (): boolean => surfaceVistaGeneration === generation
+      && surfaceVistaWorldKey === request.worldKey
+      && surfaceVistaEnvironmentFingerprint === request.environmentFingerprint
+      && nav.mode === 'surface' && nav.star.seed === roster.starSeed
+      && getProvenPlanetKey(nav.planet) === request.worldKey;
+    surfacePaintedVistaLoad?.dispose();
+    surfacePaintedVistaLoad = new PaintedVistaLoadV1({
+      url: new URL('./assets/painted/mars-dunesea-v1.webp', import.meta.url).href,
+      sha256: '59b9b940c17c5995d71b4f7d756f4e051ed43393d77d0213f63df52a655882e2',
+      width: 960, height: 430, isCurrent,
+      commit: canvas => {
+        if (!isCurrent()) return false;
+        if (mountAndCommitBiomeVistaV1(surfaceVistaCacheOwner, cacheKey, canvas) === 'fault') return false;
+        surfaceVistaArtVariant = PAINTED_MARS_VISTA_ID;
+        syncSurfaceVistaPresentation();
+        surfaceVistaResults++;
+        surfaceVistaLastBiome = request.biomeKey;
+        return true;
+      },
+      fallback: error => {
+        if (!isCurrent()) return;
+        noteSurfaceVistaFault(error, 'painted vista unavailable');
+        requestSurfaceVista(planet, state, roster, true);
+      },
+    });
+    return;
+  }
   let worker: Worker;
   try {
     worker = new Worker(
@@ -5832,8 +6869,6 @@ function requestSurfaceVista(
     return;
   }
   surfaceVistaWorker = worker;
-  surfaceVistaWorldKey = request.worldKey;
-  surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;
   surfaceVistaWorkerStarts++;
   const stale = (): boolean => surfaceVistaWorker !== worker
     || surfaceVistaGeneration !== generation
@@ -5936,6 +6971,8 @@ function requestSurfaceVista(
       return;
     }
     surfaceVistaResults++;
+    surfaceVistaArtVariant = 'canonical-v1';
+    syncSurfaceVistaPresentation();
     surfaceVistaLastBiome = response.biomeKey;
     finishWorker();
   });
@@ -5967,8 +7004,11 @@ function clearWorld(openNextScope = true): void {
   /* Destroy display objects first, then the scene owner's unique CanvasSource
      set. The painter caches may retain bounded CPU canvases for deterministic
      reuse, but Pixi must not keep their evicted GPU sources reachable. */
+  const releaseFailures: unknown[] = [];
   const previousSurfacePlanetTextureOwner = releaseSurfacePlanetTextureOwner();
-  releaseSurfaceVistaOwner();
+  try { releaseSurfaceVistaOwner(); }
+  catch (error) { releaseFailures.push(error); }
+  applyAudiovisualPilotSceneVisibility();
   if (systemPlanetTextureRefreshTimer !== null) {
     clearTimeout(systemPlanetTextureRefreshTimer);
     systemPlanetTextureRefreshTimer = null;
@@ -5979,7 +7019,6 @@ function clearWorld(openNextScope = true): void {
   fineTextureScope = null;
   retireFineTextureOwner(previousFineLayer, previousFineScope);
   for (const c of world.removeChildren()) c.destroy({ children: true, context: true });
-  const releaseFailures: unknown[] = [];
   if (previousSurfacePlanetTextureOwner) {
     try { previousSurfacePlanetTextureOwner.dispose(); }
     catch (error) { releaseFailures.push(error); }
@@ -6572,6 +7611,7 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
   const sys = systemScene(starSeed);
   const raw = systemFor(starSeed) as Record<string, unknown> & {
     binary?: { sep: number; r2: number; col2: string } | null;
+    trinary?: { sep: number; r2: number; col2: string } | null;
     dwarfs?: Array<{ name?: string; orb: number; seed?: number }>;
   };
   /* the primary — each kind wearing its Renderer face (main.js ~5085) */
@@ -6580,7 +7620,7 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
     b.anchor.set(0.5); b.width = 110; b.height = 110; b.eventMode = 'none';
     world.addChild(b);
   } else if (sys.kind === 'NS' || sys.kind === 'MAG') {
-    /* rotating beams + white-hot core (MAG's field-line ellipses: recorded gap) */
+    /* rotating beams; magnetars retain their static canonical magnetic field */
     const beams = new Container(); beams.eventMode = 'none';
     for (const rot of [0, Math.PI]) {
       const bm = new Sprite(sceneTexture(_beamSpr()));
@@ -6589,11 +7629,23 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
     }
     world.addChild(beams);
     orbiters.push({ c: beams, kind: 'beam', orb: 0 });
+    const field = createSystemStarField(sys.kind);
+    if (field) world.addChild(field);
     const core = new Sprite(sceneTexture(_nsCoreSpr()));
     core.anchor.set(0.5); core.width = 18; core.height = 18; core.eventMode = 'none';
     world.addChild(core);
+  } else if (sys.kind === 'PROTO') {
+    /* Static canonical dust disk and warm core; one scene-owned canvas/texture.
+       Protostars do not use the ordinary star-surface close-up path. */
+    const protostar = new Sprite(sceneTexture(createSystemProtostarCanvas()));
+    protostar.label = 'system-protostar-disk';
+    protostar.anchor.set(0.5);
+    protostar.width = SYSTEM_PROTOSTAR_WIDTH;
+    protostar.height = SYSTEM_PROTOSTAR_HEIGHT;
+    protostar.eventMode = 'none';
+    world.addChild(protostar);
   } else {
-    /* corona gradient, verbatim stops; PROTO keeps this fallback (recorded) */
+    /* corona gradient, verbatim stops */
     const col = sys.starCol || '#ffe9c4';
     const srad = Math.max(sys.starR, 8);
     const corona = new Sprite(sceneTexture(coronaSpr(col)));
@@ -6603,12 +7655,21 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
     world.addChild(corona);
     sysStar = { seed: starSeed, col, kind: sys.kind, starR: srad };   /* _starSurf close-up gate */
     if (raw.binary) {
-      const b2 = new Sprite(sceneTexture(coronaSpr(raw.binary.col2 || col)));
+      const b2 = new Sprite(sceneTexture(coronaSpr(raw.binary.col2 || col, true)));
       b2.anchor.set(0.5);
       b2.width = raw.binary.r2 * 4.8; b2.height = raw.binary.r2 * 4.8;
       b2.eventMode = 'none';
       world.addChild(b2);
       orbiters.push({ c: b2, kind: 'rock', orb: raw.binary.sep, sp: 0.25, a0: 0, mul: 1 });
+      if (raw.trinary) {
+        const b3 = new Sprite(sceneTexture(coronaSpr(raw.trinary.col2 || col, true)));
+        b3.label = 'system-trinary-companion';
+        b3.anchor.set(0.5); b3.width = raw.trinary.r2 * 4.8; b3.height = raw.trinary.r2 * 4.8;
+        b3.position.set(Math.cos(2.1) * raw.trinary.sep, Math.sin(2.1) * raw.trinary.sep);
+        b3.eventMode = 'none';
+        world.addChild(b3);
+        orbiters.push({ c: b3, kind: 'rock', orb: raw.trinary.sep, sp: 0.16, a0: 2.1, mul: 1 });
+      }
     }
   }
   /* asteroid belt + kuiper ring — real rock lumps (main.js ~5160) */
@@ -7128,6 +8189,7 @@ function projectCurrentBioscanCardState(
       roster,
       opportunity,
       settled: combat.authority.conquests.some(({ worldKey }) => worldKey === address.key),
+      sheltered: outpostShelteredAt(address.planet.seed),
     });
     if (projection.kind !== 'ready') {
       return Object.freeze({
@@ -7301,7 +8363,13 @@ function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): stri
       : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">' +
         (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
     bioscanCardActionHtml(bioscanState) +
+    harvestCardActionHtml(p) +
+    outpostCardActionHtml(p, onThisSurface) +
     '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
+    (onThisSurface && mountedLocalAiOriginal && surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID
+      && !localAiGame?.snapshot().some(job => job.status === 'ready' && job.originalId === mountedLocalAiOriginal?.originalId)
+      ? '<button data-ai-act="inspect-current" style="min-height:44px;padding:8px 12px;background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;font:12px system-ui;cursor:pointer">Inspect painting</button>' : '') +
+    (localAiGame?.html(address?.key) ?? (localAiStatus ? '<p style="flex-basis:100%">' + esc(localAiStatus) + '</p>' : '')) +
     '</div>';
 }
 function refreshPlanetSurveyCard(): boolean {
@@ -7571,6 +8639,7 @@ function publishArc0LandingFields(
     save.chacc = committed.chacc.slice();
     save.chDone = committed.chDone.slice();
     save.chProg = { ...committed.chProg };
+    save.chWeek = committed.chWeek;
     save.items = committed.items.map(([baseId, count]) => [baseId, count]);
     save.equip = { ...committed.equip };
     save.equipAff = Object.fromEntries(Object.entries(committed.equipAff).map(([slot, affix]) => [
@@ -7665,6 +8734,7 @@ async function doLand(): Promise<boolean> {
     chacc: save.chacc,
     chDone: save.chDone,
     chProg: save.chProg,
+    chWeek: save.chWeek,
     cargo: save.cargo,
     essence: save.essence,
     stats: save.stats,
@@ -7689,6 +8759,7 @@ async function doLand(): Promise<boolean> {
     save.chacc = priorLandingPublication.chacc;
     save.chDone = priorLandingPublication.chDone;
     save.chProg = priorLandingPublication.chProg;
+    save.chWeek = priorLandingPublication.chWeek;
     save.cargo = priorLandingPublication.cargo;
     save.essence = priorLandingPublication.essence;
     save.stats = priorLandingPublication.stats;
@@ -8152,12 +9223,246 @@ async function addToAtlas(): Promise<boolean> {
     if (activePersist === actionBarrier) activePersist = null;
   }
 }
+/** AI input is projected only from the current proven route and canonical roster. */
+function currentAiLandfallInput(): AiLandfallInputV1 | null {
+  if (!localAiGame || nav.mode !== 'surface' || worldIdentityProtection !== null
+    || replacementTransaction || replacementReloadPending || importWriteInFlight
+    || savedRouteWriteHeld || trainingActive() || trainingCheckpointWriteHeld) return null;
+  const roster = canonicalCurrentSurfaceRoster();
+  const planet = planetNodeForProof(nav.star, nav.planet);
+  if (!roster || !planet) return null;
+  const request = buildBiomeVistaRenderRequestV1(planet, nav.star.seed, roster.worldKey,
+    systemFor(nav.star.seed) as Record<string, unknown>, roster);
+  return localAiGame.prepare(request, roster);
+}
+function queueCurrentAiLandfall(): void {
+  const input = currentAiLandfallInput();
+  if (!localAiGame || !input || nav.mode !== 'surface') return;
+  // The painting queue never owns navigation.
+  try { localAiGame.enqueue(input); }
+  catch (error) { noteSurfaceVistaFault(error, 'AI queue unavailable'); toast('Painting paused', 'Finish model storage or an earlier painting, then land again. Your expedition is safe.'); }
+}
+const refreshLocalAiPresentation = createAiPresentationRefresh(() => {
+  refreshPlanetSurveyCard();
+  if (notificationPanel.style.display !== 'none') notificationHistory.render();
+});
+/** Stop competing asynchronous vista publications without retiring visible art. */
+function stopPendingAiVistaWork(): void {
+  surfaceVistaGeneration++;
+  if (surfaceEarthLayeredLoad) {
+    surfaceEarthLayeredLoad.dispose();
+    surfaceEarthLayeredLast = surfaceEarthLayeredLoad.snapshot();
+    surfaceEarthLayeredLoad = null;
+  }
+  if (surfacePaintedVistaLoad) {
+    surfacePaintedVistaLoad.dispose();
+    surfacePaintedVistaLast = surfacePaintedVistaLoad.snapshot();
+    surfacePaintedVistaLoad = null;
+  }
+  if (surfaceVistaDeadline !== null) {
+    clearTimeout(surfaceVistaDeadline);
+    surfaceVistaDeadline = null;
+  }
+  if (surfaceVistaWorker) {
+    surfaceVistaWorker.terminate();
+    surfaceVistaWorker = null;
+  }
+}
+async function mountLocalAiOriginal(original: Pick<AiLandfallOriginalV1, 'input' | 'blob' | 'width' | 'height'> & Partial<AiLandfallOriginalV1>): Promise<boolean> {
+  const matches = (): boolean => {
+    const current = currentAiLandfallInput();
+    return current !== null && current.worldKey === original.input.worldKey
+      && current.environmentId === original.input.environmentId && current.ecologyEpoch === original.input.ecologyEpoch
+      && current.snapshotDigest === original.input.snapshotDigest;
+  };
+  if (!matches()) return false;
+  const generation = surfaceVistaGeneration;
+  let bitmap: ImageBitmap | null = null;
+  let canvas: HTMLCanvasElement | null = null;
+  try {
+    bitmap = await createImageBitmap(original.blob);
+    if (!matches() || surfaceVistaGeneration !== generation
+      || bitmap.width !== original.width || bitmap.height !== original.height) return false;
+    canvas = document.createElement('canvas'); canvas.width = bitmap.width; canvas.height = bitmap.height;
+    const context = canvas.getContext('2d'); if (!context) return false;
+    context.drawImage(bitmap, 0, 0);
+    cancelAiCrossfade?.(); cancelAiCrossfade = null;
+    stopPendingAiVistaWork();
+    const previous = { sprite: surfaceVistaSprite, resident: surfaceEarthResidentSprite,
+      resources: [...surfaceEarthLayeredResources], variant: surfaceVistaArtVariant,
+      worldKey: surfaceVistaWorldKey, environment: surfaceVistaEnvironmentFingerprint,
+      ready: audiovisualPilotVistaReady };
+    // Keep the old display attached while the existing helper mounts/validates
+    // its successor. Clearing these pointers prevents that helper retiring it.
+    surfaceVistaSprite = null;
+    surfaceEarthResidentSprite = null;
+    surfaceVistaWorldKey = original.input.worldKey;
+    surfaceVistaEnvironmentFingerprint = original.input.environmentId;
+    let mounted: boolean | 'retained-failure' = false;
+    try { mounted = mountEarthLayeredCanvases(canvas, null, LOCAL_AI_LANDFALL_ID); }
+    catch (error) { noteSurfaceVistaFault(error, 'AI landfall mount preparation failed'); }
+    if (mounted === true || mounted === 'retained-failure') canvas = null;
+    if (mounted !== true) {
+      surfaceVistaSprite = previous.sprite && !previous.sprite.destroyed && previous.sprite.parent !== null ? previous.sprite : null;
+      surfaceEarthResidentSprite = previous.resident && !previous.resident.destroyed && previous.resident.parent !== null ? previous.resident : null;
+      surfaceVistaArtVariant = surfaceVistaSprite ? previous.variant : null;
+      surfaceVistaWorldKey = previous.worldKey;
+      surfaceVistaEnvironmentFingerprint = previous.environment;
+      audiovisualPilotVistaReady = previous.ready;
+      try { syncSurfaceVistaPresentation(); }
+      catch (error) { noteSurfaceVistaFault(error, 'Prior landfall presentation restore failed'); }
+      return false;
+    }
+    let retirementDone = false;
+    const retirePrevious = (): void => {
+      if (retirementDone) return; retirementDone = true;
+    const retired = retireSurfaceEarthLayers(previous.resources);
+    surfaceEarthLayeredResources = surfaceEarthLayeredResources.filter(entry => !previous.resources.includes(entry));
+    surfaceEarthLayeredResources.push(...retired.retained);
+    for (const error of retired.errors) noteSurfaceVistaFault(error, 'Prior landfall resource retirement failed');
+    // Canonical cached vistas are owned by their cache, not the layered lease list.
+    if (previous.sprite && !previous.resources.some(entry => entry.sprite === previous.sprite)) {
+      try {
+        previous.sprite.texture = Texture.EMPTY;
+        previous.sprite.removeFromParent();
+        previous.sprite.destroy({ children: true });
+      } catch (error) { noteSurfaceVistaFault(error, 'Prior cached vista retirement failed'); }
+    }
+    };
+    const successor = surfaceVistaSprite as Sprite | null;
+    if (original.originalId && successor && previous.sprite && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      successor.alpha = 0;
+      const began = performance.now(); let frame = 0;
+      const finish = (): void => { cancelAnimationFrame(frame); if (!successor.destroyed) successor.alpha = 1; retirePrevious(); cancelAiCrossfade = null; };
+      cancelAiCrossfade = finish;
+      const tick = (): void => {
+        if (successor.destroyed || surfaceVistaSprite !== successor) { finish(); return; }
+        successor.alpha = Math.min(1, (performance.now() - began) / 400);
+        if (successor.alpha === 1) finish(); else frame = requestAnimationFrame(tick);
+      };
+      frame = requestAnimationFrame(tick);
+    } else retirePrevious();
+    mountedLocalAiOriginal = original.originalId ? original as AiLandfallOriginalV1 : null;
+    refreshLocalAiPresentation();
+    return true;
+  } finally {
+    try { bitmap?.close(); } finally { if (canvas) { canvas.width = 1; canvas.height = 1; } }
+  }
+}
+function restoreCurrentAiLandfall(): void {
+  const input = currentAiLandfallInput(), owner = localAiGame;
+  if (!input || !owner) return;
+  const generation = surfaceVistaGeneration;
+  void (async () => {
+    const composite = await owner.composite(input);
+    if (localAiGame !== owner || surfaceVistaGeneration !== generation) return;
+    await mountLocalAiOriginal({ input, blob: composite, width: 1024, height: 576 });
+    const original = await owner.find(input);
+    if (original && localAiGame === owner && !mountedLocalAiOriginal) await mountLocalAiOriginal(original);
+  })().catch(error => noteSurfaceVistaFault(error, 'Landfall painter unavailable'));
+}
+async function viewLocalAiOriginal(original: AiLandfallOriginalV1): Promise<boolean> {
+  // View is presentation only. It cannot travel, land, consume a turn or enqueue a job.
+  if (blockRouteChangeWhileProductAction() || currentAiLandfallInput()?.snapshotDigest !== original.input.snapshotDigest) return false;
+  return mountLocalAiOriginal(original);
+}
+async function handleLocalAiAction(event: MouseEvent): Promise<boolean> {
+  const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-ai-act]') : null;
+  if (!target) return false;
+  if ((event.isTrusted || __CF_EVIDENCE_BUILD__ && new URLSearchParams(location.search).has('smoke')) && localAiGame) {
+    try {
+      if (target.dataset.aiAct === 'inspect-current') {
+        const original = mountedLocalAiOriginal, input = currentAiLandfallInput();
+        if (original && input?.snapshotDigest === original.input.snapshotDigest
+          && surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID) await localAiGame.inspect(original.input, original.originalId);
+      } else await localAiGame.action(target.dataset.aiAct ?? '', target.dataset.aiJob ?? '');
+    }
+    catch (error) { noteSurfaceVistaFault(error, 'Local AI action failed'); toast('Painting unavailable', 'Your expedition and retained originals are safe.'); }
+  }
+  return true;
+}
+notificationPanel.addEventListener('click', event => { void handleLocalAiAction(event); });
+
+/* Capture native activation before persistence. A truthy doLand result can also
+   mean Training or committed-but-unpublished recovery, so presentation requires
+   the independently published durable route and a fresh exact scene receipt. */
+async function landWithPilotPresentation(trusted: boolean): Promise<boolean> {
+  const pilot = audiovisualPilot;
+  const surface = nav.mode === 'system' ? activeCardPlanetState() : null;
+  const destination = surface === null ? null : canonicalWorldAddressForNav(surface);
+  const runtime = f4Runtime;
+  const beforeRevision = runtime?.revision ?? -1;
+  const beforeScene = renderedSceneReceipt.serial;
+  const wasTraining = trainingActive() || trainingCheckpointWriteHeld;
+  let presentation: ReturnType<AudiovisualPilot['beginLanding']> = null;
+  try {
+    if (pilot && destination && !wasTraining) {
+      presentation = pilot.beginLanding(destination.key, trusted);
+    }
+  } catch { /* Optional media cannot prevent the ordinary Landing action. */ }
+  try {
+    const landed = await doLand();
+    try {
+      if (landed && trusted && surface && destination && runtime !== null && runtime === f4Runtime
+        && runtime.revision > beforeRevision && lastArc0LandingOutcome === `committed:${runtime.revision}`
+        && f4RuntimeMayMutate(runtime) && !wasTraining && !trainingActive() && !trainingCheckpointWriteHeld
+        && !replacementTransaction && !replacementReloadPending && !importWriteInFlight
+        && worldIdentityProtection === null && !savedRouteWriteHeld
+        && nav.mode === 'surface' && canonicalWorldAddressForNav(nav)?.key === destination.key
+        && renderedSceneReceipt.serial > beforeScene && renderedSceneReceipt.mode === 'surface'
+        && renderedSceneReceipt.ecologyEpoch === currentEcologyEpoch()
+        && renderedSceneReceipt.galaxyKey === getProvenGalaxyKey(surface.gal)
+        && renderedSceneReceipt.starKey === getProvenStarKey(surface.star)
+        && renderedSceneReceipt.worldKey === getProvenPlanetKey(surface.planet)) queueCurrentAiLandfall();
+    } catch { /* Painting cannot undo or hold the independently durable landing. */ }
+    if (!presentation || !pilot || !surface || !destination) return landed;
+    try {
+      const snapshot = pilotSceneSnapshot();
+      const published = landed && trusted && audiovisualPilot === pilot
+        && runtime !== null && runtime === f4Runtime
+        && runtime.revision > beforeRevision
+        && lastArc0LandingOutcome === `committed:${runtime.revision}`
+        && f4RuntimeMayMutate(runtime)
+        && !wasTraining && !trainingActive() && !trainingCheckpointWriteHeld
+        && !replacementTransaction && !replacementReloadPending && !importWriteInFlight
+        && worldIdentityProtection === null && !savedRouteWriteHeld
+        && nav.mode === 'surface' && snapshot.mode === 'surface'
+        && snapshot.routeKey === destination.key
+        && renderedSceneReceipt.serial > beforeScene
+        && renderedSceneReceipt.mode === 'surface'
+        && renderedSceneReceipt.ecologyEpoch === currentEcologyEpoch()
+        && renderedSceneReceipt.galaxyKey === getProvenGalaxyKey(surface.gal)
+        && renderedSceneReceipt.starKey === getProvenStarKey(surface.star)
+        && renderedSceneReceipt.worldKey === getProvenPlanetKey(surface.planet);
+      if (published) tameGreetingAudioOwner?.syncRoute(destination.key);
+      pilot.sync(snapshot);
+      presentation.finish(published ? snapshot : null);
+      presentation = null;
+    } catch { /* Failed decorative publication leaves the landed game intact. */ }
+    return landed;
+  } finally {
+    try { presentation?.cancel(); } catch { /* Optional cleanup cannot alter the action outcome. */ }
+  }
+}
 card.addEventListener('click', async (e) => {
+  if (isAiActionTarget(e.target)) { await handleLocalAiAction(e); return; }
   if ((e.target as HTMLElement).closest('[data-survey-close]')) {
     hideSurvey(true);
     return;
   }
   const act = (e.target as HTMLElement).closest('[data-act]');
+  const foldHead = (e.target as HTMLElement).closest<HTMLElement>('[data-gtoggle]');
+  if (foldHead) {   /* D18: fold/unfold in place (no rebuild, focus stays), remembered in the save's `cardExpand` bits 1/2 like v1 */
+    const bit = Number(foldHead.dataset.gtoggle) | 0;
+    if (bit === 1 || bit === 2) {
+      save.cardExpand = (save.cardExpand ^ bit) & 31;
+      const open = (save.cardExpand & bit) !== 0;
+      foldHead.closest('.grp')?.classList.toggle('open', open);
+      foldHead.setAttribute('aria-expanded', String(open));
+      void persistView();
+    }
+    return;
+  }
   if (!act) return;
   const keyboard = document.activeElement === act;
   const a = (act as HTMLElement).dataset.act;
@@ -8170,7 +9475,7 @@ card.addEventListener('click', async (e) => {
     action.run();
     if (keyboard) app.canvas.focus();
   } else if (a === 'landcta') {
-    const landed = await doLand();
+    const landed = await landWithPilotPresentation(e.isTrusted);
     if (landed && keyboard) card.querySelector<HTMLElement>('[data-act="leaveworld"]')?.focus();
   }
   else if (a === 'leaveworld') {
@@ -8198,14 +9503,650 @@ card.addEventListener('click', async (e) => {
     const code = cardShareCode();
     if (code) await commitArc9ShareSend(code);
   }
+  else if (a === 'harvest') {
+    const seed = Number((act as HTMLElement).dataset.harvestWorld);
+    if (!Number.isSafeInteger(seed) || (act as HTMLButtonElement).disabled || cardCtx?.p.seed !== seed) return;
+    await runWorldHarvest(seed);
+    if (keyboard) (card.querySelector<HTMLElement>('[data-act="harvest"]') || surveyDockEl).focus();
+  }
 });
+/* Play-time harvest (v1.8.9 parity, D16): only on a world you conquered; readiness is the published active-play epoch. */
+let worldHarvestPendingSeed: number | null = null;
+let lastWorldHarvestOutcome: string | null = null;
+function harvestCardActionHtml(p: PlanetNode): string {
+  if (!save || trainingActive()) return '';
+  const h = projectWorldHarvestV1(save, p.seed, currentEcologyEpoch());
+  if (h.kind === 'not-conquered') return '';
+  const style = 'border-radius:9px;padding:8px 14px;min-height:44px;font:12px system-ui';
+  if (h.kind === 'ready') {
+    return `<button type="button" data-act="harvest" data-harvest-world="${p.seed}"${worldHarvestPendingSeed !== null ? ' disabled' : ''} title="Collect this world's Stardust. It replenishes after about 40 minutes of play." style="background:rgba(255,217,160,0.14);color:#ffd9a0;border:1px solid #caa24f;cursor:pointer;${style}">⛏ Harvest +${h.yield} ☄</button>`;
+  }
+  return `<button type="button" data-act="harvest" data-harvest-world="${p.seed}" disabled title="This world is still replenishing." style="background:#14233c;color:var(--dim);border:1px solid #2a3c5e;${style}">⛏ Replenishing · ~${h.minutesLeft} min of play</button>`;
+}
+async function runWorldHarvest(planetSeed: number): Promise<void> {
+  const runtime = f4Runtime;
+  if (worldHarvestPendingSeed !== null || smokeForceReadOnly
+    || !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
+    || replacementTransaction || replacementReloadPending
+    || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()) {
+    lastWorldHarvestOutcome = 'unavailable:write-authority';
+    toast('Harvest unavailable', 'Finish the current expedition save, then try again.');
+    return;
+  }
+  const epoch = currentEcologyEpoch();
+  const projection = projectWorldHarvestV1(save, planetSeed, epoch);
+  if (projection.kind !== 'ready') {
+    lastWorldHarvestOutcome = `refused:${projection.kind}`;
+    if (projection.kind === 'replenishing') toast('Harvest', `This world is still replenishing — about ${projection.minutesLeft} more minutes of exploring.`);
+    return;
+  }
+  const actionClaim = productActionCoordinator.tryClaim(operationForWorldHarvestV1(planetSeed, epoch));
+  if (actionClaim === null) {
+    lastWorldHarvestOutcome = 'unavailable:product-action-pending';
+    toast('Harvest unavailable', 'Another expedition action is still settling.');
+    return;
+  }
+  const actionBarrier = actionClaim.barrier;
+  const sourceState = save;
+  const sourceAuthorityJson = JSON.stringify(sourceState);
+  const prior = Object.freeze({ conquered: sourceState.conquered, essence: sourceState.essence, stats: sourceState.stats, unlocked: sourceState.unlocked });
+  const restoreLiveParent = (): void => {
+    if (save !== sourceState) return;
+    sourceState.conquered = prior.conquered; sourceState.essence = prior.essence;
+    sourceState.stats = prior.stats; sourceState.unlocked = prior.unlocked;
+  };
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  worldHarvestPendingSeed = planetSeed;
+  lastWorldHarvestOutcome = 'pending';
+  refreshPlanetSurveyCard();
+  let durable = false;
+  let convergence = false;
+  let writeAttempted = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime)
+      || importWriteInFlight || replacementTransaction || replacementReloadPending
+      || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()
+      || save !== sourceState || JSON.stringify(sourceState) !== sourceAuthorityJson
+      || currentEcologyEpoch() !== epoch || worldHarvestPendingSeed !== planetSeed) {
+      lastWorldHarvestOutcome = 'refused:authority-changed';
+      return;
+    }
+    writeAttempted = true;
+    const outcome = await commitWorldHarvestV1({ authority: runtime, state: sourceState, planetSeed, epoch, codecNow: Date.now() });
+    if (outcome.kind === 'not-ready') { lastWorldHarvestOutcome = 'refused:replenishing'; return; }
+    if (outcome.kind === 'refused') {
+      lastWorldHarvestOutcome = `refused:${outcome.detail}`;
+      if (boundedCollectionRefusalNeedsReload(outcome)) {
+        convergence = true;
+        scheduleF4AuthorityConvergenceReload(runtime, `Arc 6 harvest authority ${outcome.detail}`);
+      } else toast('Harvest unavailable', 'Nothing changed. Try again after save authority settles.');
+      return;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = `arc6-world-harvest-committed:${outcome.transaction.revision}`;
+    if (outcome.kind === 'committed-convergence') {
+      convergence = true;
+      lastWorldHarvestOutcome = `committed-convergence:${outcome.detail}`;
+      scheduleF4AuthorityConvergenceReload(runtime, `Arc 6 harvest committed; ${outcome.detail}`);
+      return;
+    }
+    try {
+      const checkpoint = runtime.checkpointParent();
+      if (runtime !== f4Runtime || save !== sourceState
+        || runtime.revision !== outcome.transaction.revision || checkpoint === null
+        || JSON.stringify(checkpoint.conquered) !== JSON.stringify(outcome.state.conquered)
+        || checkpoint.essence !== outcome.state.essence
+        || JSON.stringify(checkpoint.stats) !== JSON.stringify(outcome.state.stats)
+        || JSON.stringify(checkpoint.unlocked) !== JSON.stringify(outcome.state.unlocked)) {
+        throw new Error('harvest runtime did not retain its exact durable fixed point');
+      }
+      publishWorldHarvestFieldsV1(sourceState, outcome);
+      updateChips();
+      lastWorldHarvestOutcome = `committed:${planetSeed}:${outcome.facts.receiptOrdinal}`;
+      toast('⛏ Harvest', `+${outcome.facts.stardust} ☄ Stardust from ${lastCard?.title ?? 'your world'}. Total: ${outcome.facts.essenceAfter}. Stardust passively raises your breeding odds.`, true);
+      presentProgressionCeremony({
+        revision: outcome.transaction.revision,
+        disposition: 'committed-publication',
+        priorUnlockedIds: outcome.facts.priorUnlockedIds,
+        nextUnlockedIds: outcome.facts.nextUnlockedIds,
+        addedAchievementIds: outcome.facts.addedAchievementIds,
+        priorBestRankIndex: outcome.facts.priorBestRankIndex,
+        nextBestRankIndex: outcome.facts.nextBestRankIndex,
+      });
+    } catch (error) {
+      restoreLiveParent();
+      convergence = true;
+      lastWorldHarvestOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime, `Arc 6 harvest committed; publication ${error instanceof Error ? error.message : String(error)}`);
+    }
+  } catch (error) {
+    if (durable) restoreLiveParent();
+    lastWorldHarvestOutcome = `${durable ? 'committed-' : ''}fault`;
+    if (durable || writeAttempted) {
+      convergence = true;
+      scheduleF4AuthorityConvergenceReload(runtime, `Arc 6 harvest ${lastWorldHarvestOutcome}: ${error instanceof Error ? error.message : String(error)}`);
+    } else toast('Harvest unavailable', 'Nothing changed. Try again after save authority settles.');
+  } finally {
+    worldHarvestPendingSeed = null;
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+    if (!convergence) refreshPlanetSurveyCard();
+  }
+}
+/** The hint bubble (D16 parity, tooltips.ts; v1 `tips`): hover/focus on desktop, long-press on touch (native titles too). */
+const tooltipOwner = new TooltipOwnerV1({
+  document, touch: TOUCH_DPR,
+  enabled: () => save?.tipsOn !== false,
+  blocked: () => trainingActive(),
+});
+
+/** Prime Codex travel (D16 parity, prime-travel.ts): a claimed Signature flies to its world; an in-reach Titan is tracked to the
+ * nearest world it waits on. Both go through the one proven-route owner, so the charter gates are unchanged. */
+async function runPrimeCodexTravel(button: HTMLButtonElement): Promise<boolean> {
+  const claimedIds = Object.keys(save.primeFill);
+  const trackId = button.dataset.primeTrack;
+  const definition = PRIME_SIGNATURES_V1.find(({ id }) => id === (trackId ?? button.dataset.primeTravel));
+  if (definition === undefined) return false;
+  let address: CanonicalCF1WorldAddress | null;
+  if (trackId !== undefined) {
+    if (!trackablePrimeSignaturesV1({ ascentStage: ascStage(), claimedIds }).has(definition.id)) return false;
+    address = nearestTitanWorldV1(definition.id, { ascentStage: ascStage(), claimedIds });
+    if (address === null) {
+      toast(`📡 ${definition.element} Resonance`, `The signal scatters — press your reach farther out and it will sharpen. Hunt ${definition.hunt}.`, true);
+      return false;
+    }
+  } else address = primeClaimWorldAddressV1(save.primeFill[definition.id]?.where);
+  if (address === null) return false;
+  const moved = await searchTravel.jumpToCanonicalAddress(address);
+  if (!moved) return false;
+  closePanels();
+  if (trackId !== undefined) {
+    toast(`📡 Tracking ${definition.element} Titan`, `The resonance sharpens — bearing set for ${definition.guardianName}. Land and survey where it leads.`, true);
+  }
+  return true;
+}
+
+/** The Fabricator's 📌 (D16 parity, recipe-pin.ts): one pinned recipe, saved as view state; the chip tracks what is missing. */
+function refreshRecipePinChip(): void {
+  recipePinChip ??= new RecipePinChipV1(document, () => openPanel('shipyard'));
+  recipePinChip.render(projectRecipePinChipV1(save.pinnedRecipe, {
+    cargo: save.cargo, items: save.items, stardust: save.essence, signatureIds: Object.keys(save.primeFill),
+  }));
+}
+function toggleRecipePin(baseId: string): void {
+  if (trainingActive()) return;
+  const next = sanitizeRecipePinV1(baseId);
+  save.pinnedRecipe = next === null || save.pinnedRecipe === next ? null : next;
+  refreshRecipePinChip();
+  void persistView();
+}
+
+/** The Fabricator's ×5 (D16 parity): ordinary single fabrications in sequence, each its own receipt (fabrication-batch.ts). */
+async function fabricateEngineeringBatch(baseId: string, repeat: number): Promise<Arc3AppActionOutcome> {
+  return (await runFabricationBatchV1({
+    repeat,
+    fabricate: () => fabricateFixedEngineeringRecipe(baseId),
+    converges: engineeringOutcomeConverges,
+    released: () => engineeringPanelReleased,
+  })).outcome;
+}
+
+/* Friendly duel (v1.8.9 parity; §20 order item 2): the Compendium detail control, one receipt per duel, the credit decided at the
+   committed active-play clock (friendly-duel.ts). Publication copies only the duel's own fields (counters + the companion's Compendium
+   mirror row) and the committed ownership. */
+let lastFriendlyDuelOutcome: string | null = null;
+const friendlyDuelController = new FriendlyDuelController({ onAction: (request) => { void runFriendlyDuel(request); },
+  copy: async (text) => { try { await navigator.clipboard.writeText(text); return true; } catch { return false; } } });
+function projectCurrentFriendlyDuel(row: readonly [string, CodexRecord] | null): FriendlyDuelReadModelV1 | null {
+  const ownership = arc5OwnershipState, runtime = f4Runtime;
+  if (row === null || compendiumFixtureRows !== null || ownership?.mode !== 'current' || runtime === null
+    || arc5OwnershipProtection !== null || row[1].kind !== 'Fauna') return null;
+  try {
+    return projectFriendlyDuelV1({ ownershipV2: ownership, extensions: runtime.extensions,
+      speciesId: canonicalGenomeIdentityV1(row[1].g as never).speciesId, observedActivePlayMs: runtime.diagnostics().activePlayMs, speciesName: row[1].name });
+  } catch {
+    return null;
+  }
+}
+async function runFriendlyDuel(request: FriendlyDuelRequestV1): Promise<void> {
+  const runtime = f4Runtime;
+  const parent = arc5OwnershipState;
+  const settleWith = (title: string, detail: string): void => { friendlyDuelController.settle({ title, detail }); };
+  if (!f4RuntimeMayMutate(runtime) || parent?.mode !== 'current' || arc5OwnershipProtection !== null || activePersist
+    || importWriteInFlight || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    lastFriendlyDuelOutcome = 'unavailable:write-authority';
+    settleWith('Duel unavailable.', 'Finish the current expedition save, then try again. Nothing changed.');
+    return;
+  }
+  const actionClaim = productActionCoordinator.tryClaim('companion.friendly-duel');
+  if (actionClaim === null) { lastFriendlyDuelOutcome = 'unavailable:product-action-pending'; settleWith('Duel unavailable.', 'Another expedition action is still settling.'); return; }
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  lastFriendlyDuelOutcome = 'pending';
+  let durable = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (!f4RuntimeMayMutate(runtime) || arc5OwnershipState !== parent) {
+      lastFriendlyDuelOutcome = 'refused:authority-changed';
+      settleWith('Duel unavailable.', 'Save authority changed. Nothing changed.');
+      return;
+    }
+    const outcome = await commitFriendlyDuelActionV1({ runtime, state: save, extensions: runtime.extensions, ownershipV2: parent,
+      creatureId: request.creatureId, code: request.code, codecNow: Date.now() });
+    if (outcome.kind === 'refused') {
+      lastFriendlyDuelOutcome = `refused:${outcome.detail}`;
+      if (outcome.convergence === 'read-only-reload') scheduleF4AuthorityConvergenceReload(runtime, `friendly duel ${outcome.detail}`);
+      settleWith(outcome.detail === 'code:invalid' ? 'That doesn’t look like a creature code.' : 'Duel unavailable.',
+        outcome.detail === 'code:invalid' ? 'Codes start with CFB-. Nothing changed.' : `Nothing changed (${outcome.detail}).`);
+      return;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    const loaded = readArc5OwnershipMigration(runtime.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    if (runtime.revision !== outcome.revision || loaded.kind !== 'loaded') {
+      lastFriendlyDuelOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime, 'friendly duel committed; publication fixed point');
+      return;
+    }
+    // publish exactly the duel's fields: the counters and the one companion's Compendium mirror row
+    const liveStats = save.stats as Record<string, number | undefined>, committedStats = outcome.state.stats as Record<string, number | undefined>;
+    liveStats.duels = committedStats.duels; liveStats.duelwins = committedStats.duelwins;
+    save.codex = mirrorCompanionCodexXpV1(save.codex, outcome.state.codex);
+    arc5OwnershipState = loaded.state;
+    arc5OwnershipEvidence = loaded.evidence;
+    lastPersistenceOutcome = `friendly-duel-committed:${outcome.revision}`;
+    lastFriendlyDuelOutcome = `committed:${outcome.plan.winner ?? 'draw'}:${outcome.credit}:${outcome.xp}`;
+    const copy = friendlyDuelResultCopyV1(outcome);
+    settleWith(copy.title, copy.detail);
+    friendlyDuelController.setState(projectCurrentFriendlyDuel(currentCompendiumDetailRow()));
+    toast('⚔ Friendly duel', `${copy.title} ${copy.detail}`, true);
+  } catch (error) {
+    lastFriendlyDuelOutcome = `${durable ? 'committed-' : ''}fault`;
+    if (durable && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `friendly duel ${error instanceof Error ? error.message : String(error)}`);
+    else settleWith('Duel unavailable.', 'Nothing changed.');
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
+}
+/* §20 Command (Nick 2026-09-25): the Break loop. A Command challenge SEALS the fight (its own receipt, nothing else changes), each
+   non-final answer is appended by CAS on the count the card showed, and the answer that finishes the fight rides the ordinary
+   settlement (runArc6CombatCardAction with the answers), so a finished fight always settles in one receipt. A reload lands on the
+   same Break: the card re-simulates it from the durable record (refreshCombatCardState). */
+/* D13 companion care (N3 stage 1): the Compendium detail's condition/Rest/tastes/bond panel. Rest is one receipt on the
+   active-play clock (arc5-rest-action.ts); publication copies only the committed ownership. */
+let lastCompanionRestOutcome: string | null = null;
+const companionCareController = new CompanionCareController({ onRest: (creatureId) => { void runCompanionRest(creatureId); } });
+function projectCurrentCompanionCare(row: readonly [string, CodexRecord] | null): CompanionCareReadModelV1 | null {
+  const runtime = f4Runtime;
+  if (row === null || compendiumFixtureRows !== null || runtime === null || row[1].kind !== 'Fauna') return null;
+  try {
+    return projectCompanionCareV1({ record: { name: String(row[1].name ?? 'Companion'), g: row[1].g as Record<string, unknown> }, ownership: arc5OwnershipState,
+      activePlayMs: runtime.diagnostics().activePlayMs, writable: arc5OwnershipProtection === null && f4RuntimeMayMutate(runtime) });
+  } catch { return null; }
+}
+async function runCompanionRest(creatureId: Parameters<typeof commitArc5RestActionV1>[0]['creatureId']): Promise<void> {
+  const runtime = f4Runtime, parent = arc5OwnershipState;
+  if (!f4RuntimeMayMutate(runtime) || parent?.mode !== 'current' || arc5OwnershipProtection !== null || activePersist
+    || importWriteInFlight || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    lastCompanionRestOutcome = 'unavailable:write-authority'; companionCareController.settle('Rest unavailable. Finish the current save, then try again. Nothing changed.'); return;
+  }
+  const actionClaim = productActionCoordinator.tryClaim('companion.rest');
+  if (actionClaim === null) { lastCompanionRestOutcome = 'unavailable:product-action-pending'; companionCareController.settle('Rest unavailable — another action is still settling.'); return; }
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true; activePersist = actionBarrier; lastCompanionRestOutcome = 'pending';
+  let durable = false;
+  try {
+    await settleF4Heartbeat();
+    if (!f4RuntimeMayMutate(runtime) || arc5OwnershipState !== parent) { lastCompanionRestOutcome = 'refused:authority-changed'; companionCareController.settle('Rest unavailable. Nothing changed.'); return; }
+    const outcome = await commitArc5RestActionV1({ runtime, ownershipV2: parent, state: save, creatureId, codecNow: Date.now(), activePlayMs: runtime.diagnostics().activePlayMs });
+    if (outcome.kind === 'refused') {
+      lastCompanionRestOutcome = `refused:${outcome.detail}`;
+      if (outcome.convergence === 'read-only-reload') scheduleF4AuthorityConvergenceReload(runtime, `companion rest ${outcome.detail}`);
+      companionCareController.settle(outcome.detail === 'preflight:creature-healthy' ? 'Already healthy — nothing to rest.' : `Rest unavailable. Nothing changed (${outcome.detail}).`);
+      return;
+    }
+    durable = true; f4LastCheckpointAt = performance.now();
+    const loaded = readArc5OwnershipMigration(runtime.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    if (outcome.kind !== 'committed' || runtime.revision !== outcome.transaction.revision || loaded.kind !== 'loaded'
+      || ownershipStateDigestV2(loaded.state) !== ownershipStateDigestV2(outcome.ownershipV2)) {
+      lastCompanionRestOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime, 'companion rest committed; publication fixed point');
+      return;
+    }
+    arc5OwnershipState = loaded.state; arc5OwnershipEvidence = loaded.evidence;
+    lastPersistenceOutcome = `companion-rest-committed:${outcome.transaction.revision}`;
+    const minutes = outcome.settlement.preflight.durationActivePlayMs / 60_000;
+    lastCompanionRestOutcome = `committed:${outcome.settlement.readyAtActivePlayMs}`;
+    companionCareController.settle(`Resting — healed in ${minutes} min of play. It stays home until then.`);
+    companionCareController.setState(projectCurrentCompanionCare(currentCompendiumDetailRow()));
+  } catch (error) {
+    lastCompanionRestOutcome = `${durable ? 'committed-' : ''}fault`;
+    if (durable && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `companion rest ${error instanceof Error ? error.message : String(error)}`);
+    else companionCareController.settle('Rest unavailable. Nothing changed.');
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
+}
+/* D13 stage 2 companion missions: the board beside Care & bond (mission-board.ts). Dispatch seals its result in one receipt; claim and
+   recall are deterministic receipts (arc5-mission-action.ts). Publication copies only what each committed: the ownership, and for a
+   claim the hold, Stardust and the companion's Compendium mirror XP. No timers: the board re-projects on each render/press. */
+let lastMissionOutcome: string | null = null;
+let missionTargetWorldKey: string | null = null;
+function missionCompanionName(creatureId: string): string {
+  const c = arc5OwnershipState?.creatures.find((row) => row.creatureId === creatureId);
+  if (c === undefined) return 'Companion';
+  return c.nickname ?? String(save.codex.find(([id]) => id === `s${c.genome.seed}`)?.[1].name ?? 'Companion');
+}
+const missionBoardController = new MissionBoardController({
+  onDispatch: (request) => { void runCompanionMission('dispatch', request); },
+  onClaim: (missionId) => { void runCompanionMission('claim', missionId); },
+  onRecall: (missionId) => { void runCompanionMission('recall', missionId); },
+  onTarget: (worldKey) => { missionTargetWorldKey = worldKey; missionBoardController.setState(projectCurrentMissionBoard(), worldKey); },
+}, missionCompanionName);
+function projectCurrentMissionBoard(): ReturnType<typeof projectArc5MissionBoardV1> {
+  const runtime = f4Runtime;
+  if (runtime === null || compendiumFixtureRows !== null || arc5OwnershipProtection !== null) return null;
+  try {
+    return projectArc5MissionBoardV1({ extensions: runtime.extensions, ownershipV2: arc5OwnershipState, state: save,
+      activePlayMs: runtime.diagnostics().activePlayMs, nameOf: missionCompanionName, worldKey: missionTargetWorldKey });
+  } catch { return null; }
+}
+async function runCompanionMission(kind: 'dispatch' | 'claim' | 'recall', payload: MissionBoardRequestV1 | string): Promise<void> {
+  const runtime = f4Runtime, parent = arc5OwnershipState;
+  if (!f4RuntimeMayMutate(runtime) || parent?.mode !== 'current' || arc5OwnershipProtection !== null || activePersist
+    || importWriteInFlight || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    lastMissionOutcome = 'unavailable:write-authority'; missionBoardController.settle('Missions unavailable. Finish the current save, then try again. Nothing changed.'); return;
+  }
+  const actionClaim = productActionCoordinator.tryClaim(`companion.mission.${kind}`);
+  if (actionClaim === null) { lastMissionOutcome = 'unavailable:product-action-pending'; missionBoardController.settle('Missions unavailable — another action is still settling.'); return; }
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true; activePersist = actionBarrier; lastMissionOutcome = 'pending';
+  let durable = false;
+  try {
+    await settleF4Heartbeat();
+    if (!f4RuntimeMayMutate(runtime) || arc5OwnershipState !== parent) { lastMissionOutcome = 'refused:authority-changed'; missionBoardController.settle('Missions unavailable. Nothing changed.'); return; }
+    const base = { ownershipV2: parent, state: save, codecNow: Date.now() };
+    const outcome = kind === 'dispatch'
+      ? await commitArc5MissionDispatchV1({ ...base, runtime, ...(payload as MissionBoardRequestV1) })
+      : kind === 'claim' ? await commitArc5MissionClaimV1({ ...base, runtime, missionId: payload as string })
+        : await commitArc5MissionRecallV1({ ...base, runtime, missionId: payload as string });
+    if (outcome.kind === 'refused') {
+      lastMissionOutcome = `refused:${outcome.detail}`;
+      if (outcome.convergence === 'read-only-reload') scheduleF4AuthorityConvergenceReload(runtime, `companion mission ${outcome.detail}`);
+      const reason = outcome.detail.startsWith('refused:') ? outcome.detail.slice('refused:'.length) : null;
+      missionBoardController.settle(kind === 'claim' && reason === 'cargo-full' ? missionClaimReasonV1('cargo-full')
+        : kind === 'claim' && reason === 'mission-not-active' ? 'Already claimed. Nothing changed.' : `Mission unavailable. Nothing changed (${outcome.detail}).`);
+      return;
+    }
+    durable = true; f4LastCheckpointAt = performance.now();
+    const loaded = readArc5OwnershipMigration(runtime.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    if (outcome.kind !== 'committed' || runtime.revision !== outcome.revision || loaded.kind !== 'loaded'
+      || ownershipStateDigestV2(loaded.state) !== ownershipStateDigestV2(outcome.ownershipV2)) {
+      lastMissionOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime, `companion mission ${kind} committed; publication fixed point`);
+      return;
+    }
+    arc5OwnershipState = loaded.state; arc5OwnershipEvidence = loaded.evidence;
+    lastPersistenceOutcome = `companion-mission-${kind}-committed:${outcome.revision}`;
+    if (kind === 'claim') {
+      // publish exactly what a claim committed: the hold, Stardust, lifetime Stardust and the companion's Compendium mirror XP
+      save.cargo = outcome.state.cargo.map(([id, n]) => [id, n]);
+      save.essence = outcome.state.essence;
+      (save.stats as Record<string, number | undefined>).essenceEarned = (outcome.state.stats as Record<string, number | undefined>).essenceEarned;
+      save.codex = mirrorCompanionCodexXpV1(save.codex, outcome.state.codex);
+      updateChips();
+    }
+    const value = outcome.value as { missionId: string; creatureId: string; readyAtActivePlayMs?: number };
+    lastMissionOutcome = `committed:${kind}:${value.missionId}`;
+    missionBoardController.settle(kind === 'dispatch'
+      ? `${missionCompanionName(value.creatureId)} set out. It returns after ${Math.max(0, Math.round(((value.readyAtActivePlayMs ?? 0) - runtime.diagnostics().activePlayMs) / 60_000))} min of play.`
+      : missionReturnTextV1(outcome.value as Parameters<typeof missionReturnTextV1>[0], missionCompanionName(value.creatureId)));
+    missionBoardController.setState(projectCurrentMissionBoard());
+    companionCareController.setState(projectCurrentCompanionCare(currentCompendiumDetailRow()));
+  } catch (error) {
+    lastMissionOutcome = `${durable ? 'committed-' : ''}fault`;
+    if (durable && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `companion mission ${error instanceof Error ? error.message : String(error)}`);
+    else missionBoardController.settle('Mission unavailable. Nothing changed.');
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
+}
+let lastArc6CommandOutcome: string | null = null;
+async function runArc6CommandCardAction(request: CombatCardActionRequestV1): Promise<void> {
+  const runtime = f4Runtime;
+  const projection = currentArc6CombatProjection;
+  const parent = arc5OwnershipState;
+  const done = (outcome: string, title: string | null, detail: string, convergence = false): void => {
+    lastArc6CommandOutcome = outcome;
+    if (convergence && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `Arc 6 Command ${outcome}`);
+    combatCardController.clearPending();
+    refreshCombatCardState();
+    if (title !== null) toast(title, detail, true);
+  };
+  if (!f4RuntimeMayMutate(runtime) || projection === null || parent?.mode !== 'current' || activePersist || importWriteInFlight
+    || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld || ecologyEpochBlocksActions()) {
+    done('unavailable:write-authority', 'Command unavailable', 'Finish the current expedition save, then try again. Nothing changed.');
+    return;
+  }
+  const view = projectArc6CommandBreakV1(runtime.extensions, projection.encounter);
+  let finalAnswers: readonly EncounterDecisionV1[] | null = null;
+  let leadId = request.kind === 'challenge' ? request.championId : '';
+  if (request.kind === 'break') {
+    if (view.kind !== 'pending' || view.battleId !== request.battleId || view.decisionsSoFar !== request.expectedDecisions) {
+      done('refused:break-changed', 'Command', 'That Break was already answered. The card shows the current one.');
+      return;
+    }
+    leadId = view.leadId;
+    if (request.decision === null) {
+      if (view.breakKind !== null) { done('refused:break-open', null, ''); return; }
+      finalAnswers = view.record.decisions;
+    } else if (arc6CommandAnswerFinishesV1(view.record, request.decision)) {
+      finalAnswers = [...view.record.decisions, request.decision];
+    }
+  } else if (request.kind !== 'challenge' || view.kind !== 'none') {
+    done('refused:command-already-open', 'Command', 'A Command fight is already waiting for your answer.');
+    return;
+  }
+  if (finalAnswers === null) {
+    const actionClaim = productActionCoordinator.tryClaim('arc6.combat-command');
+    if (actionClaim === null) { done('unavailable:product-action-pending', 'Command unavailable', 'Another expedition action is still settling.'); return; }
+    const actionBarrier = actionClaim.barrier;
+    productActionInFlight = true;
+    activePersist = actionBarrier;
+    let durable = false;
+    let step: Arc6CommandActionOutcomeV1;
+    try {
+      await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+      await settleF4Heartbeat();
+      const observedActivePlayMs = runtime.diagnostics().activePlayMs;
+      const current = projectCurrentArc6CombatSurface(null, observedActivePlayMs);
+      if (!f4RuntimeMayMutate(runtime) || arc5OwnershipState !== parent || current === null
+        || current.authorityKey !== projection.authorityKey || current.encounter.witness !== projection.encounter.witness) {
+        step = Object.freeze({ kind: 'refused', detail: 'authority-changed', convergence: 'none' });
+      } else if (request.kind === 'challenge') {
+        const cardModel = currentArc6CardModel;
+        const plan = cardModel !== null && cardModel.party[0]?.id === request.championId
+          ? cardModel.party.map((m) => Object.freeze({ championId: m.id, stance: m.stance })) : null;
+        step = await openArc6CommandEncounterV1({
+          runtime, state: save, extensions: runtime.extensions, encounter: current.encounter, opportunity: current.opportunity,
+          ownershipV2: parent, championId: request.championId, championRosterAuthorityKey: current.championRoster.authorityKey,
+          observedActivePlayMs: current.observedActivePlayMs, codecNow: Date.now(), ...(plan === null ? {} : { party: plan }),
+        });
+      } else {
+        step = await decideArc6CommandEncounterV1({
+          runtime, state: save, extensions: runtime.extensions, battleId: request.battleId,
+          expectedDecisions: request.expectedDecisions, decision: request.decision!, codecNow: Date.now(),
+        });
+      }
+      durable = step.kind === 'committed';
+      if (durable) f4LastCheckpointAt = performance.now();
+    } catch (error) {
+      step = Object.freeze({ kind: 'refused', detail: error instanceof Error ? error.message : String(error), convergence: 'read-only-reload' });
+    } finally {
+      productActionInFlight = false;
+      actionClaim.settle(durable);
+      if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+      if (activePersist === actionBarrier) activePersist = null;
+    }
+    if (step.kind === 'committed') {
+      done(`committed:${step.revision}:${step.record.decisions.length}`, null, '');
+      return;
+    }
+    if (step.kind === 'refused') {
+      done(`refused:${step.detail}`, 'Command unavailable', `Nothing changed (${step.detail}).`, step.convergence === 'read-only-reload');
+      return;
+    }
+    finalAnswers = [];   // no Break: the Command fight settles at once, with no answers
+  }
+  lastArc6CommandOutcome = `settling:${finalAnswers.length}`;
+  /* the card's own press latch stays set: the ordinary settlement below settles it with the verified outcome */
+  await runArc6CombatCardAction(Object.freeze({ kind: 'challenge', championId: leadId }), Object.freeze({ decisions: finalAnswers }));
+}
+/* D14 Outposts (N4 Option A; outposts.ts / outposts-action.ts / outposts-ui.ts): the world card's "Build here" section, the Projects
+   board in the Charters panel, the Museum's Outposts gallery. Each press is ONE receipt (commitOutpostActionV1); publication copies
+   exactly the fields an outpost action owns: the parts mirror, Stardust and the live Arc 2 carrier. */
+let lastOutpostOutcome: string | null = null;
+let outpostStatus: string | null = null;
+const outpostsController = new OutpostsControllerV1((request) => { void runOutpostAction(request); });
+document.addEventListener('click', (event) => { outpostsController.handle(event.target as Element | null); });
+function currentOutpostProjects(): OutpostProjectsStateV1 | null {
+  const runtime = f4Runtime; if (runtime === null) return null;
+  const read = readOutpostProjectsV1(runtime.extensions);
+  return read.kind === 'loaded' ? read.state : null;
+}
+function outpostWorldContext(p: PlanetNode, onThisSurface: boolean): OutpostWorldContextV1 | null {
+  const address = activeCardWorldAddress();
+  if (address === null || cardCtx === null) return null;
+  const roster = canonicalRosterForBioscanCard(address, null);
+  const planets = systemScene(address.star.seed).planets.map((q) => q.seed >>> 0);
+  return Object.freeze({ world: Object.freeze({ galaxySeed: address.galaxy.seed >>> 0, starSeed: address.star.seed >>> 0, planetSeed: p.seed >>> 0,
+    name: (worldIdentityName(worldIdentityState, address) ?? p.name ?? 'Unnamed world').slice(0, 64),
+    systemPlanetSeeds: Object.freeze([...new Set([...planets, p.seed >>> 0])].sort((a, b) => a - b)) }),
+    hasFauna: roster !== null && roster.view.all.some((row) => row.kingdom === 'fauna'), standingHere: onThisSurface });
+}
+function outpostCardActionHtml(p: PlanetNode, onThisSurface: boolean): string {
+  try {
+    const runtime = f4Runtime, projects = currentOutpostProjects(), context = outpostWorldContext(p, onThisSurface);
+    if (runtime === null || projects === null || context === null) return '';
+    const facts = outpostSaveFactsV1(save, runtime.extensions); if (facts === null) return '';
+    const companions = arc5OwnershipState?.mode === 'current'
+      ? arc5OwnershipState.creatures.map((c) => Object.freeze({ id: c.creatureId, label: c.nickname ?? `Companion ${String(c.creatureId).slice(-4)}` })) : [];
+    const marks = outpostPortraitMarksV1(projects, p.seed >>> 0);
+    const html = renderOutpostCardSectionV1(projectOutpostWorldOfferV1(projects, facts, context), companions);
+    return html === '' ? '' : html.replace('<b>Outposts</b>', `<b>Outposts</b>${marks ? ` <span data-outpost-marks aria-label="finished outposts">${marks}</span>` : ''}`);
+  } catch { return ''; }
+}
+/** D14 Field Shelter reward (presentation hint; the Discover Life commit re-reads the carrier): hazard-free here. */
+function outpostShelteredAt(planetSeed: number): boolean {
+  const projects = currentOutpostProjects();
+  return projects !== null && finishedShelterPlanetSeedsV1(projects).includes(planetSeed >>> 0);
+}
+/** D14 Survey Relay reward: a relay system's star card lists every lifeless world's orbital readout without a visit. */
+function outpostRelayStarRows(address: CanonicalCF1StarAddress): readonly SurveyPresentationRow[] {
+  try {
+    const projects = currentOutpostProjects();
+    if (projects === null || arc3EngineeringState === null || arc3EngineeringProtection !== null
+      || !finishedRelayStarSeedsV1(projects).includes(address.star.seed >>> 0)) return EMPTY_SURVEY_PRESENTATION_ROWS;
+    const worlds = systemScene(address.star.seed).planets.flatMap((q) => {
+      const resolved = resolveCF1WorldAddress({ galaxy: { seed: address.galaxy.seed, x: address.galaxy.x, y: address.galaxy.y },
+        star: { seed: address.star.seed, x: address.star.x, y: address.star.y }, planet: { seed: q.seed } });
+      return resolved.ok ? [{ address: resolved.address, name: worldIdentityName(worldIdentityState, resolved.address) ?? q.name }] : [];
+    });
+    return Object.freeze(projectRelayMineralSurveyRowsV1({ engineering: arc3EngineeringState, worlds }).map((row) => Object.freeze([row.key, row.value] as const)));
+  } catch { return EMPTY_SURVEY_PRESENTATION_ROWS; }
+}
+function outpostBoardHtml(): string {
+  try {
+    const runtime = f4Runtime, projects = currentOutpostProjects();
+    if (runtime === null || projects === null) return '';
+    const facts = outpostSaveFactsV1(save, runtime.extensions); if (facts === null) return '';
+    const standing = nav.mode === 'surface' ? nav.planet.seed >>> 0 : null;
+    return renderOutpostBoardV1(projectOutpostBoardV1(projects, facts, standing), outpostStatus);
+  } catch { return ''; }
+}
+async function runOutpostAction(ui: OutpostUiRequestV1): Promise<void> {
+  const runtime = f4Runtime;
+  const finish = (outcome: string, title: string | null, detail: string): void => {
+    lastOutpostOutcome = outcome; outpostStatus = title === null ? detail : `${title} — ${detail}`;
+    outpostsController.settle(); refreshPlanetSurveyCard(); if (openPanelId() === 'ch') fillCharters();
+    if (title !== null) toast(title, detail, true);
+  };
+  if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    finish('unavailable:write-authority', 'Outpost unavailable', 'Finish the current expedition save, then try again. Nothing changed.'); return;
+  }
+  let request: OutpostRequestV1;
+  if (ui.kind === 'start') {
+    const context = cardCtx ? outpostWorldContext(cardCtx.p, nav.mode === 'surface' && nav.planet.seed === cardCtx.p.seed) : null;
+    if (context === null) { finish('unavailable:no-world', 'Outpost unavailable', 'Open the world first. Nothing changed.'); return; }
+    request = Object.freeze({ kind: 'start', outpost: ui.outpost, context });
+  } else if (ui.kind === 'build') {
+    request = Object.freeze({ kind: 'build', siteId: ui.siteId, standingHere: nav.mode === 'surface' && `${ui.siteId}`.endsWith(`@${nav.planet.seed >>> 0}`) });
+  } else if (ui.kind === 'abandon') request = Object.freeze({ kind: 'abandon', siteId: ui.siteId });
+  else request = Object.freeze({ kind: 'residents', siteId: ui.siteId, residents: ui.residents });
+  const actionClaim = productActionCoordinator.tryClaim('world.outpost');
+  if (actionClaim === null) { finish('unavailable:product-action-pending', 'Outpost unavailable', 'Another expedition action is still settling.'); return; }
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true; activePersist = actionBarrier;
+  let durable = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (!f4RuntimeMayMutate(runtime)) { finish('refused:authority-changed', 'Outpost unavailable', 'Save authority changed. Nothing changed.'); return; }
+    const outcome = await commitOutpostActionV1({ runtime: runtime!, state: save, request, codecNow: Date.now() });
+    if (outcome.kind === 'refused') {
+      if (outcome.convergence === 'read-only-reload') scheduleF4AuthorityConvergenceReload(runtime!, `outpost ${outcome.detail}`);
+      finish(`refused:${outcome.detail}`, null, `${outpostRefusalCopyV1(outcome.detail)} Nothing changed.`); return;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    const loot = readArc2Loot(runtime!.extensions);
+    if (runtime!.revision !== outcome.revision || loot.kind !== 'loaded') {
+      lastOutpostOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime!, 'outpost committed; publication fixed point');
+      return;
+    }
+    // publish exactly the outpost's fields: the parts mirror, Stardust and the live Arc 2 carrier
+    save.items = outcome.state.items.map(([id, n]) => [id, n] as [string, number]);
+    save.essence = outcome.state.essence;
+    arc2LootState = loot.state;
+    lastPersistenceOutcome = `outpost-committed:${outcome.revision}`;
+    const copy = outpostResultCopyV1(outcome);
+    updateChips();
+    finish(`committed:${request.kind}`, copy.title, copy.detail);
+  } catch (error) {
+    if (durable && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `outpost ${error instanceof Error ? error.message : String(error)}`);
+    else finish('fault', 'Outpost unavailable', 'Nothing changed.');
+  } finally {
+    productActionInFlight = false;
+    outpostsController.settle();
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
+}
 const sideEl = document.createElement('div');
 sideEl.id = 'planetside';
 sideEl.className = 'glass';
-sideEl.style.cssText = 'position:fixed;left:calc(var(--safe-left,0px) + 12px);bottom:calc(var(--safe-bottom,0px) + var(--dock-h) + var(--ctx-h) + 86px);' +
-  'max-width:min(560px,calc(100vw - var(--safe-left,0px) - var(--safe-right,0px) - 24px));box-sizing:border-box;display:none;z-index:21;border-radius:12px;padding:8px 10px;' +
-  'overflow-x:auto;white-space:nowrap;scrollbar-width:thin';
+sideEl.style.display = 'none';
 document.body.appendChild(sideEl);
+createSheetLayoutController(document, () => { syncTopbarH(); syncSurfaceChromeBottom(); });
 let planetsideGeneration = 0;
 let planetsideWorldKey: string | null = null;
 let planetsideAudioRoster: CanonicalWorldRoster | null = null;
@@ -8320,13 +10261,23 @@ function syncPlanetsideLayout(): void {
   if (getComputedStyle(sideEl).display === 'none' || nav.mode !== 'surface') {
     document.documentElement.style.removeProperty('--planetside-top');
     syncSurfaceChromeBottom();
+    if (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID
+      || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+      || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID) syncSurfaceVistaPresentation();
     return;
   }
   const r = sideEl.getBoundingClientRect();
   if (r.width > 0 && r.height > 0) document.documentElement.style.setProperty('--planetside-top', r.top.toFixed(2) + 'px');
   syncSurfaceChromeBottom();
+  if (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID
+    || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+      || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID) syncSurfaceVistaPresentation();
 }
-new ResizeObserver(syncPlanetsideLayout).observe(sideEl);
+const surfaceSceneLayoutObserver = new ResizeObserver(syncPlanetsideLayout);
+for (const element of [sideEl, ...['topbar', 'searchbox', 'objchip', 'sceneactions']
+  .map(id => document.getElementById(id)).filter(element => element !== null)]) {
+  surfaceSceneLayoutObserver.observe(element);
+}
 addEventListener('resize', syncPlanetsideLayout, { passive: true });
 /* CSS can hide Planetside while Training owns the same screen. A hidden
    surface owns no thumbnail resources; when that class clears, rebuild the
@@ -8547,6 +10498,7 @@ function normalizeCompendiumFixture(rows: unknown): Array<[string, CodexRecord]>
 async function installCompendiumFixture(rows: unknown): Promise<CompendiumFixtureResult> {
   compendiumFixtureRows = normalizeCompendiumFixture(rows);
   codexFilter = '';
+  codexView = DEFAULT_CODEX_LIST_VIEW_V1; codexOpenShelves.clear();
   codexReturnState = null;
   if (openPanelId() === 'codex') fillCodex('');
   else {
@@ -8558,6 +10510,7 @@ async function installCompendiumFixture(rows: unknown): Promise<CompendiumFixtur
 async function resetCompendiumFixture(): Promise<CompendiumFixtureResult> {
   compendiumFixtureRows = null;
   codexFilter = '';
+  codexView = DEFAULT_CODEX_LIST_VIEW_V1; codexOpenShelves.clear();
   codexReturnState = null;
   if (openPanelId() === 'codex') fillCodex('');
   else {
@@ -8612,6 +10565,19 @@ function sceneResourceDiagnostics(): unknown {
     fineScopeActive: fineTextureScope !== null,
     retiredFineOwnerCount: retiredFineTextureOwners.size,
     surfaceTextureOwnerActive: surfacePlanetTextureOwner !== null,
+    surfacePlanetTurn: surfacePlanetTurnView?.snapshot() ?? null,
+    surfacePlanetTurnPending,
+    surfacePlanetTurnLast,
+    surfacePlanetTurnProgramCache: (() => {
+      const shader = (app.renderer as unknown as { shader?: { _programDataHash?:
+        Record<string, { uniformDirtyGroups?: Record<string, unknown> }> } }).shader;
+      const programs = shader?._programDataHash ?? {};
+      const key = surfacePlanetTurnView?.snapshot().appProgramKey
+        ?? (surfacePlanetTurnLast as { appProgramKey?: number } | null)?.appProgramKey;
+      const entry = key == null ? undefined : programs[String(key)];
+      return { programCount: Object.keys(programs).length, turnProgramPresent: !!entry,
+        turnUniformGroupCount: Object.keys(entry?.uniformDirtyGroups ?? {}).length };
+    })(),
     surfaceCurrentTierPx: surfaceTextureAttachment?.currentTierPx ?? 0,
     surfaceCurrentBackingWidth: surfaceTextureAttachment?.currentBackingWidth ?? 0,
     surfaceCurrentBackingHeight: surfaceTextureAttachment?.currentBackingHeight ?? 0,
@@ -8632,6 +10598,13 @@ function sceneResourceDiagnostics(): unknown {
     surfaceVistaFaults,
     surfaceVistaLastBiome,
     surfaceVistaLastError,
+    surfaceVistaArtVariant,
+    surfacePaintedComposition: surfacePaintedGlobe !== null,
+    surfaceEarthResidentLayer: surfaceEarthResidentSprite !== null,
+    surfaceEarthLayeredCanvasCount: surfaceEarthLayeredResources.length,
+    surfaceEarthLayeredLoad: surfaceEarthLayeredLoad?.snapshot() ?? surfaceEarthLayeredLast,
+    surfacePaintedVista: surfacePaintedVistaLoad?.snapshot() ?? null,
+    surfacePaintedVistaLast,
     pendingSystemRefreshes: systemPlanetTextureRefreshTimer === null ? 0 : 1,
     pendingPersistenceWrites: activePersist === null ? 0 : 1,
     ringGeometryEntries: _rgCache.size,
@@ -8667,6 +10640,7 @@ function compendiumDiagnostics(): unknown {
       open: openPanelId() === 'codex', mode: codexMode,
       sourceCount, filteredCount, query: codexFilter,
       renderCommits: codexRenderCommits,
+      livingPreview: livingSpeciesPreview.diagnostics(),
       staleCompletionDrops: codexStaleCompletionDrops,
       closedCompletionCommits: codexClosedCompletionCommits,
     }),
@@ -8694,6 +10668,8 @@ function compendiumDiagnostics(): unknown {
     explorerMeal: compendiumExplorerMealController.diagnostics(),
     lazyArt: speciesArtLoader.diagnostics(),
     art: speciesArtLoader.artDiagnostics(),
+    // the painted card path (stand-ins, 2026-09-24): its own leases/cache/pending/resident archetypes, beside the broker's `art`
+    paintedArt: speciesArtLoader.paintedDiagnostics(),
   });
 }
 function drawSurface(
@@ -8702,10 +10678,11 @@ function drawSurface(
   preparedRoster: CanonicalWorldRoster | null = null,
 ): void {
   if (p.seed !== state.planet.seed || p.ordinal !== state.planet.ordinal) return;
-  /* Surface mode keeps the painterly globe as its usable interaction owner
-     while the deterministic 960x430 biome vista renders behind it. The globe
-     remains the fail-soft fallback if the optional worker cannot answer; the
-     survey card carries the roster — every species row is real Ecology output.
+  /* Surface mode retains the painterly globe and deterministic 960x430 biome
+     vista as its native presentation. A fully loaded, exact-bound opt-in pilot
+     may hide these decorative layers; fallback restores both. Native DOM
+     Survey, roster and Leave controls keep their existing interaction owners;
+     every species row remains real Ecology output.
      FIT the globe to the viewport (phone catch: at z=1 the 420px master
      overfilled a 390px screen as blur; the globe should present itself) */
   document.body.classList.add('surface-mode');
@@ -8726,6 +10703,7 @@ function drawSurface(
   spr.width = SURFACE_PLANET_DIAMETER_CSS_PX;
   spr.height = SURFACE_PLANET_DIAMETER_CSS_PX;
   world.addChild(spr);
+  surfacePlanetSprite = spr;
   surfacePlanetTextureOwner = new SurfacePlanetTextureAttachment({
     identity: {
       generation: surfacePlanetTextureGeneration,
@@ -8751,6 +10729,7 @@ function drawSurface(
        globe (the Renderer's rate is tuned to its 6px world masters) */
     const tex = sceneTexture(_cloudSpr(p.P), 'surface-cloud');
     const wrap = new Container();
+    wrap.label = 'surface-cloud-deck';
     wrap.eventMode = 'none';
     const mk = (): Sprite => {
       const s = new Sprite(tex);
@@ -8772,6 +10751,7 @@ function drawSurface(
   if (abortRenderBeforeReceiptForSmoke()) return;
   recordRenderedScene(state);
   requestSurfaceVista(p, state, currentSurfaceRoster);
+  startSurfacePlanetTurn(p.P, spr);
 }
 function goUp(): void {
   if (blockRouteChangeWhileProductAction()) return;
@@ -8919,10 +10899,10 @@ function zoomLimits(): [number, number] {
   if (nav.mode === 'universe') return [0.0024, 40];
   if (nav.mode === 'galaxy') return [gz0 * 0.5, mw / 2.5];
   if (nav.mode === 'system') return [sz0 * 0.5, mw / 3];
-  /* The game's 6× cap assumes interactive ground tiles. This surface keeps a
-     420px painterly globe as the interaction owner while its biome vista is a
-     presentation backdrop, so cap where the globe stays crisp (the phone
-     pinch proved that the master smears at 6×). */
+  /* The game's 6× cap assumes interactive ground tiles. Native canvas/DOM
+     controls own this surface's navigation; the globe and vista are decorative.
+     Keep the existing cap where the fallback globe stays crisp (the phone
+     pinch proved that the master smears at 6×). The painted panorama is static. */
   return [0.45, Math.max(0.9, (mw / 420) * 1.6)];
 }
 
@@ -9127,6 +11107,10 @@ async function persistView(
         return false;
       }
       epochStage = staged.stage;
+      /* Notification presentation waits until a product receipt releases its
+         exact source snapshot. It joins this existing checkpoint, never a new
+         timer or competing write. */
+      if (!productActionInFlight) notificationHistory.flushPending();
       /* Route + epoch are detached checkpoint fields. Neither may become live
          merely because a CAS was attempted; durable publication follows the
          exact committed stage below. */
@@ -9396,6 +11380,9 @@ function smokeResumeSettingsPersistence(): Readonly<{
   });
 }
 const productActionCoordinator = createProductActionCoordinator();
+/* K20: deferred notices drain when the receipt-bearing action settles, not only
+   inside a later checkpoint. Every settle site clears productActionInFlight first. */
+productActionCoordinator.bindSettleHook(() => notificationHistory.flushPending());
 const smokeProductActionHold = __CF_EVIDENCE_BUILD__
   ? createProductActionDiagnosticHold() : inactiveEvidenceHold;
 let arc9ProgressionRefreshQueued = false;
@@ -9407,7 +11394,7 @@ let arc9NameplateChoicePending = false;
 let lastArc9NameplateOutcome: string | null = null;
 let arc9FrontierEndingPending = false;
 let lastArc9FrontierEndingOutcome: string | null = null;
-let starterCharterAcceptPendingId: StarterCharterIdV1 | null = null;
+let starterCharterAcceptPendingId: CharterAcceptIdV1 | null = null;
 let lastStarterCharterAcceptOutcome: string | null = null;
 let lastStarterCharterAcceptStatus: string | null = null;
 let arc9BinderClaimPendingId: Arc9BinderClaimableSetIdV1 | null = null;
@@ -9446,7 +11433,11 @@ function boundedCollectionRefusalNeedsReload(outcome: BoundedCollectionRefusalV1
     || kind === 'storage-error';
 }
 
-async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
+/** The expedition's own active-play clock (F4), live; null before the runtime exists. Never the device clock. */
+function liveActivePlayMs(): number | null {
+  try { const ms = f4Runtime?.diagnostics().activePlayMs; return typeof ms === 'number' && Number.isSafeInteger(ms) && ms >= 0 ? ms : null; } catch { return null; }
+}
+async function runStarterCharterAccept(id: CharterAcceptIdV1): Promise<boolean> {
   const runtime = f4Runtime;
   if (starterCharterAcceptPendingId !== null || smokeForceReadOnly
     || !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
@@ -9456,39 +11447,45 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
     lastStarterCharterAcceptStatus = 'Starter Charter acceptance is unavailable until the current save operation settles.';
     if (openPanelId() === 'ch') fillCharters();
     toast('Charter acceptance unavailable', 'Finish the current expedition save, then try again.');
-    return;
+    return false;
   }
+  const weeklyAtClick = isWeeklyCharterIdV1(id) ? liveActivePlayMs() : null;
+  const weeklyRow = isWeeklyCharterIdV1(id) && weeklyAtClick !== null
+    ? projectWeeklyCharterBoardV1(save, weeklyAtClick).rows.find(({ definition }) => definition.id === id) : undefined;
   const projection = projectStarterCharterBoardV1(save);
   if (projection.kind !== 'projected') {
     lastStarterCharterAcceptOutcome = `refused:protected:${projection.reason}`;
     lastStarterCharterAcceptStatus = 'Starter Charters are protected because their saved authority could not be verified. Nothing changed.';
     if (openPanelId() === 'ch') fillCharters();
     toast('Starter Charters protected', 'Nothing changed. Reload after restoring save authority.', true);
-    return;
+    return false;
   }
-  if (save.chacc.includes(id) || save.chDone.includes(id)) {
+  if (save.chacc.includes(id) || save.chDone.includes(id) || weeklyRow?.status === 'completed') {
     lastStarterCharterAcceptOutcome = `current:${id}`;
     lastStarterCharterAcceptStatus = 'That Starter Charter is already accepted or complete.';
     if (openPanelId() === 'ch') fillCharters();
-    return;
+    return false;
   }
-  const row = projection.board.rows.find(({ definition }) => definition.id === id);
+  // the starter board's acceptedCount counts every accepted Charter, weekly included: one shared cap
+  const row = isWeeklyCharterIdV1(id) ? weeklyRow : projection.board.rows.find(({ definition }) => definition.id === id);
   if (row === undefined || row.status !== 'available'
     || projection.board.acceptedCount >= projection.board.cap) {
     lastStarterCharterAcceptOutcome = `refused:locked:${id}`;
     lastStarterCharterAcceptStatus = 'That Starter Charter is locked or unavailable. Nothing changed.';
     if (openPanelId() === 'ch') fillCharters();
     toast('Charter unavailable', row?.lockedReason ?? 'Three accepted Charters is the exact active cap.');
-    return;
+    return false;
   }
-  const operation = operationForStarterCharterAcceptV1(id);
+  const operation = isWeeklyCharterIdV1(id)
+    ? operationForWeeklyCharterAcceptV1(id, weeklyCharterCycleV1(weeklyAtClick!))
+    : operationForStarterCharterAcceptV1(id);
   const actionClaim = productActionCoordinator.tryClaim(operation);
   if (actionClaim === null) {
     lastStarterCharterAcceptOutcome = 'unavailable:product-action-pending';
     lastStarterCharterAcceptStatus = 'Another expedition action is still settling. Nothing changed.';
     if (openPanelId() === 'ch') fillCharters();
     toast('Charter acceptance unavailable', 'Another expedition action is still settling.');
-    return;
+    return false;
   }
   const actionBarrier = actionClaim.barrier;
   const sourceState = save;
@@ -9497,6 +11494,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
     chacc: sourceState.chacc,
     chDone: sourceState.chDone,
     chProg: sourceState.chProg,
+    chWeek: sourceState.chWeek,
     essence: sourceState.essence,
     stats: sourceState.stats,
     items: sourceState.items,
@@ -9510,6 +11508,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
     sourceState.chacc = prior.chacc;
     sourceState.chDone = prior.chDone;
     sourceState.chProg = prior.chProg;
+    sourceState.chWeek = prior.chWeek;
     sourceState.essence = prior.essence;
     sourceState.stats = prior.stats;
     sourceState.items = prior.items;
@@ -9526,6 +11525,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
   lastStarterCharterAcceptOutcome = 'pending';
   lastStarterCharterAcceptStatus = null;
   if (openPanelId() === 'ch') fillCharters();
+  let publishedRevision: number | null = null;
   let durable = false;
   let convergence = false;
   let writeAttempted = false;
@@ -9540,7 +11540,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
       || starterCharterAcceptPendingId !== id) {
       lastStarterCharterAcceptOutcome = 'refused:authority-changed';
       lastStarterCharterAcceptStatus = 'Save authority changed before acceptance. Nothing changed.';
-      return;
+      return false;
     }
     writeAttempted = true;
     outcome = await commitStarterCharterAcceptV1({
@@ -9548,12 +11548,13 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
       state: sourceState,
       id,
       codecNow: Date.now(),
+      ...(weeklyAtClick !== null ? { activePlayMs: weeklyAtClick } : {}),
     });
     if (outcome.kind === 'current') {
       lastStarterCharterAcceptOutcome = `current:${outcome.id}`;
       lastStarterCharterAcceptStatus = 'That Starter Charter is already durably accepted or complete.';
       toast('Charter unchanged', 'That Starter Charter is already accepted or complete.');
-      return;
+      return false;
     }
     if (outcome.kind === 'refused') {
       lastStarterCharterAcceptOutcome = `refused:${outcome.detail}`;
@@ -9568,7 +11569,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
         lastStarterCharterAcceptStatus = 'That Starter Charter is locked or unavailable. Nothing changed.';
         toast('Charter unavailable', 'Nothing changed. Reopen Charters after the current expedition state advances.');
       }
-      return;
+      return false;
     }
 
     durable = true;
@@ -9582,7 +11583,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
         runtime,
         `Starter Charter acceptance committed; ${outcome.detail}`,
       );
-      return;
+      return false;
     }
 
     try {
@@ -9594,6 +11595,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
         || JSON.stringify(checkpoint.chacc) !== JSON.stringify(successor.chacc)
         || JSON.stringify(checkpoint.chDone) !== JSON.stringify(successor.chDone)
         || JSON.stringify(checkpoint.chProg) !== JSON.stringify(successor.chProg)
+        || checkpoint.chWeek !== successor.chWeek
         || checkpoint.essence !== successor.essence
         || JSON.stringify(checkpoint.stats) !== JSON.stringify(successor.stats)
         || JSON.stringify(checkpoint.items) !== JSON.stringify(successor.items)
@@ -9644,6 +11646,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
         priorBestRankIndex: outcome.facts.stage.priorBestRankIndex,
         nextBestRankIndex: outcome.facts.stage.nextBestRankIndex,
       });
+      publishedRevision = outcome.transaction.revision;
     } catch (error) {
       restoreLiveParent();
       convergence = true;
@@ -9677,6 +11680,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
       try { fillCharters(); }
       catch (error) {
         if (durable) {
+          convergence = true;
           restoreLiveParent();
           scheduleF4AuthorityConvergenceReload(
             runtime,
@@ -9685,6 +11689,28 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
         }
       }
     }
+  }
+  // A successful write alone is not audible success. Final publication and
+  // barrier release must finish on the same exact live durable revision.
+  return publishedRevision !== null && !convergence && runtime === f4Runtime
+    && save === sourceState && runtime.revision === publishedRevision
+    && f4RuntimeMayMutate(runtime) && !activePersist
+    && !replacementTransaction && !replacementReloadPending && !importWriteInFlight;
+}
+
+async function acceptStarterCharterWithPilot(id: CharterAcceptIdV1, trusted: boolean): Promise<void> {
+  const pilot = audiovisualPilot;
+  let presentation: ReturnType<AudiovisualPilot['beginSettlement']> = null;
+  try { presentation = pilot?.beginSettlement(trusted) ?? null; }
+  catch { /* Optional audio cannot prevent the ordinary acceptance. */ }
+  try {
+    const published = await runStarterCharterAccept(id);
+    try {
+      presentation?.finish(published && trusted && audiovisualPilot === pilot);
+      presentation = null;
+    } catch { /* Optional audio cannot change the durable acceptance. */ }
+  } finally {
+    try { presentation?.cancel(); } catch { /* Preserve the gameplay outcome. */ }
   }
 }
 
@@ -10718,6 +12744,7 @@ async function runArc9Bioscan(): Promise<boolean> {
     chacc: save.chacc,
     chDone: save.chDone,
     chProg: save.chProg,
+    chWeek: save.chWeek,
     essence: save.essence,
     items: save.items,
     equip: save.equip,
@@ -10745,6 +12772,7 @@ async function runArc9Bioscan(): Promise<boolean> {
     sourceState.chacc = priorPublication.chacc;
     sourceState.chDone = priorPublication.chDone;
     sourceState.chProg = priorPublication.chProg;
+    sourceState.chWeek = priorPublication.chWeek;
     sourceState.essence = priorPublication.essence;
     sourceState.items = priorPublication.items;
     sourceState.equip = priorPublication.equip;
@@ -12367,9 +14395,10 @@ function compendiumFeedRequestIsCurrent(
     || ownershipStateDigestV2(parent) !== request.ownershipDigest) return false;
   const creature = model.creatures.find((candidate) => candidate.creatureId === request.creatureId);
   const flora = model.floraLots.find((candidate) => candidate.foodLotId === request.foodLotId);
+  const pair = model.pairs.find((candidate) => candidate.creatureId === request.creatureId && candidate.foodLotId === request.foodLotId);
   return creature?.status === 'ready'
     && creature.fedBefore === request.fedBefore
-    && creature.fedAfter === request.fedAfter
+    && pair?.fedAfter === request.fedAfter
     && flora?.quantityBefore === request.foodQuantityBefore
     && flora.quantityAfter === request.foodQuantityAfter;
 }
@@ -12497,6 +14526,7 @@ async function commitCompendiumFeedAction(
         creatureId: request.creatureId,
         foodLotId: request.foodLotId,
         codecNow: Date.now(),
+        activePlayMs: runtime.diagnostics().activePlayMs,
       });
     } finally {
       if (faultInjection === 'storage-failure') smokeRejectArc5FeedStorageBoundary = false;
@@ -12581,6 +14611,8 @@ async function commitCompendiumFeedAction(
           && settlement.foodTombstone.lotId !== request.foodLotId)) {
         throw new Error('arc5-feed-fixed-point-mismatch');
       }
+      // D13 care XP: publish the one companion's Compendium mirror row `g.xp`, by the same rule as the friendly duel
+      save.codex = mirrorCompanionCodexXpV1(save.codex, attempt.transaction.state.codex);
       arc5OwnershipState = attempt.ownershipV2;
       arc5OwnershipEvidence = attempt.ownershipV2Evidence;
       arc5OwnershipProtection = null;
@@ -13493,6 +15525,7 @@ function compendiumBreedOutcomeCopy(
 }
 
 async function runCompendiumBreedAction(request: CompendiumBreedActionRequestV1): Promise<void> {
+  const revealBefore = compendiumRevealPages.snapshot();
   let outcome: Arc5BreedCommitOutcome;
   try { outcome = await commitCompendiumBreedAction(request); }
   catch (error) {
@@ -13506,6 +15539,7 @@ async function runCompendiumBreedAction(request: CompendiumBreedActionRequestV1)
     compendiumBreedController.settle(copy);
     if (copy.convergence === 'none') refreshCompendiumFeedState();
     updateChips();
+    if (outcome.kind === 'committed' && copy.convergence === 'none') compendiumRevealPages.revealSince(revealBefore);
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
     if (outcome.durability === 'committed' && f4Runtime !== null) {
@@ -13967,6 +16001,7 @@ async function commitCompendiumScoutAction(
     chacc: sourceState.chacc,
     chDone: sourceState.chDone,
     chProg: sourceState.chProg,
+    chWeek: sourceState.chWeek,
     essence: sourceState.essence,
     stats: sourceState.stats,
     items: sourceState.items,
@@ -13980,6 +16015,7 @@ async function commitCompendiumScoutAction(
     sourceState.chacc = priorScoutCharterPublication.chacc;
     sourceState.chDone = priorScoutCharterPublication.chDone;
     sourceState.chProg = priorScoutCharterPublication.chProg;
+    sourceState.chWeek = priorScoutCharterPublication.chWeek;
     sourceState.essence = priorScoutCharterPublication.essence;
     sourceState.stats = priorScoutCharterPublication.stats;
     sourceState.items = priorScoutCharterPublication.items;
@@ -14846,6 +16882,16 @@ function refreshCombatCardState(
         : policyReason !== null
           ? `Combat is preserved but cannot settle yet: ${policyReason}. No duel was started.`
           : null;
+  if (currentArc6Plan.contextKey !== projection.contextKey) {
+    currentArc6Plan = { contextKey: projection.contextKey, stances: ['balanced', 'balanced', 'balanced'], partyIds: [null, null, null], mode: 'auto' };
+  }
+  /* §20 Command: an open Command fight is re-simulated from its durable record; on its own world the card shows the pending Break
+     (the lead is the sealed one), anywhere else every other fight waits for it */
+  const commandView = runtime === null ? null : projectArc6CommandBreakV1(runtime.extensions, projection.encounter);
+  if (commandView?.kind === 'pending') currentArc6ChampionId = commandView.leadId;
+  const commandReason = commandView?.kind === 'elsewhere'
+    ? `Your Command fight against ${commandView.defenderName} is waiting on another world. Answer it there first (Withdraw is always offered).`
+    : commandView?.kind === 'protected' ? 'Combat is unavailable while the open Command fight record is protected.' : null;
   const model = projectCombatCardReadModelV1({
     contextKey: projection.contextKey,
     encounter: projection.encounter,
@@ -14854,14 +16900,19 @@ function refreshCombatCardState(
     championRoster: projection.championRoster,
     observedActivePlayMs: projection.observedActivePlayMs,
     selectedChampionId: currentArc6ChampionId,
-    unavailableReason,
+    unavailableReason: unavailableReason ?? commandReason,
+    plan: { stances: currentArc6Plan.stances, partyIds: currentArc6Plan.partyIds },
+    mode: currentArc6Plan.mode,
+    commandBreak: commandView === null ? null : combatCardCommandBreakV1(commandView),
   });
   if (model === null) {
     currentArc6CombatProjection = null;
+    currentArc6CardModel = null;
     combatCardController.setState(null);
     return;
   }
   currentArc6CombatProjection = projection;
+  currentArc6CardModel = model;
   currentArc6ChampionId = model.selectedChampionId;
   combatCardController.setState(model);
 }
@@ -15167,6 +17218,7 @@ async function runCaptureCardAction(
   request: CaptureCardActionRequest,
   presentationFence: string | null,
 ): Promise<void> {
+  const revealBefore = compendiumRevealPages.snapshot();
   let outcome: Arc4CaptureActionOutcome;
   try {
     outcome = presentationFence === null
@@ -15201,6 +17253,7 @@ async function runCaptureCardAction(
         gameEvent('bioscan', { worldKey: outcome.result.worldKey });
       }
       if (openPanelId() === 'codex') fillCodex(codexFilter);
+      if (copy.convergence === 'none') compendiumRevealPages.revealSince(revealBefore);
     }
     const greetingClaim: TameGreetingClaim | null = tameGreetingAudioOwner
       ?.claimCommittedTameGreeting(outcome, arc5OwnershipState) ?? null;
@@ -15259,11 +17312,9 @@ function arc6CombatOutcomeCopy(outcome: Arc6CombatActionOutcomeV1): CombatCardAc
       parts.push(`Champion learned ${plan.xp.totalDelta} XP from the defeat.`);
     }
     if (plan.injury.status === 'set-hurt') {
-      parts.push(plan.injury.reason === 'bred-crawl-home'
-        ? 'The bred champion crawled home Critical.'
-        : 'The champion returned wounded.');
-    } else if (plan.injury.status === 'remove-creature') {
-      parts.push('The champion was permanently lost.');
+      parts.push('The champion returned wounded.');
+    } else if (plan.injury.status === 'set-recovery') {
+      parts.push(`The champion was defeated and is recovering (about ${Math.round(COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1 / 60_000)} minutes of play).`);
     } else if (plan.injury.status === 'damage-player') {
       parts.push(`You lost ${plan.injury.damage} HP and remain at ${plan.injury.hpAfter}.`);
     }
@@ -15325,6 +17376,8 @@ function protectArc6CombatAfterDurability(
 
 async function commitCurrentArc6Combat(
   request: Extract<CombatCardActionRequestV1, { readonly kind: 'challenge' }>,
+  /** §20 Command: settle the sealed fight with these answers (the action reads the sealed party from the record). */
+  command: Readonly<{ decisions: readonly EncounterDecisionV1[] }> | null = null,
 ): Promise<Arc6CombatActionOutcomeV1> {
   const refused = (
     detail: string,
@@ -15336,6 +17389,11 @@ async function commitCurrentArc6Combat(
   const intendedSurface = nav;
   const intendedProjection = currentArc6CombatProjection;
   const parent = arc5OwnershipState;
+  /* §20: the plan the card showed for exactly this lead; the action re-validates every member */
+  const cardModel = currentArc6CardModel;
+  const challengePlan = cardModel !== null && cardModel.party[0]?.id === request.championId
+    && !(cardModel.party.length === 1 && cardModel.party[0]!.stance === 'balanced')
+    ? cardModel.party.map((m) => Object.freeze({ championId: m.id, stance: m.stance })) : null;
   const parentEvidence = arc5OwnershipEvidence;
   if (intendedSurface.mode !== 'surface' || intendedProjection === null) {
     return refused('surface-presentation-authority-unavailable');
@@ -15409,6 +17467,9 @@ async function commitCurrentArc6Combat(
       championRosterAuthorityKey: currentProjection.championRoster.authorityKey,
       observedActivePlayMs: currentProjection.observedActivePlayMs,
       codecNow: Date.now(),
+      /* §20: the plan the card showed (lead + stances + Guardian party); a lone Balanced lead commits exactly as before */
+      ...(challengePlan === null ? {} : { party: challengePlan }),
+      ...(command === null ? {} : { command }),
     });
     lastArc6CombatOutcome = `${attempt.kind}:${attempt.kind === 'refused'
       ? attempt.detail : attempt.convergence}`;
@@ -15543,13 +17604,35 @@ function presentCommittedCombatChronicle(
   if (openPanelId() !== 'combat') {
     throw new Error('Combat Chronicle panel did not open');
   }
+  // The painted stage (the default since A4, 2026-09-26; `?battle2=0` opts out — battle2-gate.ts) paces the Chronicle log: a gate set
+  // BEFORE start, released by the stage at each turn's impact (the log never waits more than COMBAT_CHRONICLE_PACER_MAX_WAIT_MS per row);
+  // reduced motion keeps the cadence.
+  const battle2Flag = battle2On(location.search);
+  const battle2Pacer = battle2Flag && motionOK() ? createCombatChroniclePacerGateV1() : null;
+  if (battle2Flag) combatChronicleController.setPacer(battle2Pacer?.pacer ?? null);
   const generation = combatChronicleController.start(chronicle, cuePlan);
   combatChronicleAudioSession = null;
+  // D15: the battle loop under the Chronicle (major for a Guardian/Titan), then the outcome's sting as its rows finish
+  (globalThis as { cfSoundscapeV1?: { combatScene(major: boolean, result: 'win' | 'loss' | 'draw', ms: number): void } }).cfSoundscapeV1?.combatScene(
+    settlement.encounter.defender.kind === 'guardian' || settlement.encounter.defender.kind === 'titan',
+    settlement.outcome === 'champion-win' ? 'win' : settlement.outcome === 'defender-win' ? 'loss' : 'draw', 1500 + cuePlan.cues.length * 320);
   if (openPanelId() !== 'combat'
     || combatChronicleMount.querySelector('[data-combat-chronicle-log]') === null) {
     tameGreetingAudioOwner?.cancelCombatPlayback('chronicle-not-current');
     throw new Error('Combat Chronicle did not retain its current presentation');
   }
+  try {
+    combatBattleScene?.setPolicy({
+      effectsOn: save.fxOn, motion: motionOK() ? 'full' : 'reduced', deviceTier: visualPolicyDeviceTier(),
+    });
+    combatBattleScene?.start({ mount: combatChronicleMount, settlement, chronicle, cuePlan, generation });
+  } catch {
+    combatBattleScene?.stop('close');
+    /* The verified settlement and its Chronicle remain usable without art. */
+  }
+  // The painted battle stage over the same Chronicle mount (A4: the default; `?battle2=0` opts out). A dynamic import reached only when a
+  // fight is presented, so boot never loads it; a study failure leaves the Chronicle, which stays the accessible owner of the outcome.
+  if (battle2On(location.search)) void import('./battle2-wiring.js').then(m => m.mountBattle2Study({ ...(finishRoute ? { finish: async (g: Readonly<Record<string, unknown>>, p: Parameters<NonNullable<Parameters<typeof m.mountBattle2Study>[0]['finish']>>[1]) => { const r = await finishRoute; return r ? r.stage(g, p) : null; } } : {}), mount: combatChronicleMount, settlement, chronicle, generation, pacer: battle2Pacer, ownership: arc5OwnershipState, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { battle2Pacer?.releaseAll(); /* the flagged study never blocks the Chronicle */ });
   try {
     const claim = tameGreetingAudioOwner?.claimCommittedCombatSession(outcome, cuePlan) ?? null;
     if (claim !== null) {
@@ -15583,10 +17666,19 @@ async function playCombatChronicleCue(
   }
 }
 
-async function runArc6CombatCardAction(request: CombatCardActionRequestV1): Promise<void> {
+async function runArc6CombatCardAction(
+  request: CombatCardActionRequestV1,
+  command: Readonly<{ decisions: readonly EncounterDecisionV1[] }> | null = null,
+): Promise<void> {
+  /* §20 Command: a Break answer, or a Command challenge, goes through the Break loop (which comes back here to settle) */
+  if (request.kind === 'break' || (request.kind === 'challenge' && command === null
+    && currentArc6Plan.mode === 'command' && currentArc6CardModel?.partyEnabled === true)) {
+    await runArc6CommandCardAction(request);
+    return;
+  }
   if (request.kind !== 'challenge') return;
   let outcome: Arc6CombatActionOutcomeV1;
-  try { outcome = await commitCurrentArc6Combat(request); }
+  try { outcome = await commitCurrentArc6Combat(request, command); }
   catch (error) {
     outcome = Object.freeze({
       kind: 'refused', durability: 'none', convergence: 'none',
@@ -15663,7 +17755,7 @@ async function runEngineeringPanelAction(request: EngineeringPanelActionRequest)
         : request.operation === 'research' && request.id !== undefined
           ? await purchaseEngineeringResearch(request.id)
           : request.operation === 'fabricate' && request.id !== undefined
-            ? await fabricateFixedEngineeringRecipe(request.id)
+            ? await (request.repeat === undefined ? fabricateFixedEngineeringRecipe(request.id) : fabricateEngineeringBatch(request.id, request.repeat))
             : Object.freeze({
               kind: 'unavailable',
               operation: request.operation === 'research' ? 'purchase-research' : 'fabricate-fixed',
@@ -15698,7 +17790,7 @@ async function runEngineeringPanelAction(request: EngineeringPanelActionRequest)
     updateChips();
     if (outcome.operation === 'purchase-research') refreshPlanetSurveyCard();
     if (openPanelId() === 'ch') fillCharters();
-    toast('Engineering committed', 'The durable expedition record now reflects this action.', true);
+    toast('Engineering committed', engineeringCommittedCopy(outcome.detail), true);
   } else if (outcome.kind !== 'committed' && !converging) {
     toast('Engineering unavailable', outcome.detail, true);
   }
@@ -15914,14 +18006,14 @@ let lastMutationBlockWitness: Readonly<{
 }> | null = null;
 const READ_ONLY_MUTATION_SELECTOR = [
   '#dockcharts', '#setsnd', '#setvol', '#setvoice', '[data-pref]', '[data-motion]',
-  '#setcharts', '#setfx', '#setshake', '#setglass', '#setrestart',
+  '#setcharts', '#setfx', '#setshake', '#setglass', '#setrestart', '#setresetyes', '#setnotif', '#settips',
   '[data-arc9-nameplate-choice]',
   '[data-frontier-ending-id]',
   '[data-starter-charter-accept]',
   '[data-binder-claim]',
   '[data-arc9-explorer-name-save]',
   '[data-atlas-favorite]', '[data-atlas-home]', '[data-atlas-remove]', '[data-atlas-undo]',
-  '[data-act="landcta"]', '[data-act="add"]', '[data-act="bioscan"]', '[data-act="share"]',
+  '[data-act="landcta"]', '[data-act="add"]', '[data-act="bioscan"]', '[data-act="share"]', '[data-act="harvest"]',
   '[data-capture-action]',
   '[data-arc5-feed-confirm]',
   '[data-arc5-explorer-meal-confirm]',
@@ -17455,6 +19547,7 @@ async function loadSave(): Promise<void> {
     visualViewport?.removeEventListener('resize', syncRendererDensity);
     rendererDensitySync.cancel();
     closeCodexSurface();
+    livingSpeciesPreview.dispose();
     approachEcologyController.dispose();
     compendiumAuditionController.dispose();
     compendiumFeedController.dispose();
@@ -17463,6 +19556,12 @@ async function loadSave(): Promise<void> {
     compendiumRenameController.dispose();
     compendiumScoutController.dispose();
     travelPresentationOwner.dispose();
+    combatBattleScene?.dispose(); combatBattleScene = null;
+    audiovisualPilotClosed = true;
+    audiovisualPilot?.dispose();
+    audiovisualPilot = null;
+    resetAudiovisualPilotPresentation();
+    trainingForgePractice.dispose();
     engineeringPanelReleased = true;
     engineeringPanelController.dispose();
     captureCardController.dispose();
@@ -17581,6 +19680,10 @@ async function loadSave(): Promise<void> {
             lastOutcome: lastEcologyEdgeOutcome,
           }),
         },
+        localAi: { available: localAiGame !== null, status: localAiStatus,
+          jobs: localAiGame?.snapshot() ?? [], mounted: surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID,
+          input: currentAiLandfallInput(), originalId: mountedLocalAiOriginal?.originalId ?? null,
+          crossfading: cancelAiCrossfade !== null, alpha: surfaceVistaSprite?.alpha ?? null },
         landing: {
           schema: 'cf-v2-arc0-landing-app-state/v1',
           lastOutcome: lastArc0LandingOutcome,
@@ -18158,6 +20261,8 @@ async function loadSave(): Promise<void> {
     world.scale.set(cam.z);
     if (world.alpha < 1) world.alpha = animate ? Math.min(1, world.alpha + tk.deltaMS / 400) : 1;
     const t = animate ? performance.now() * 0.001 : 0;
+    surfacePlanetTurnView?.tick(tk.deltaMS, world.visible && !document.hidden,
+      animate, save.fxOn);
     /* The ticker may observe an active-play edge, but it never publishes one.
        One receipt-free lease/revision CAS owns the durable transition first;
        Reduced Motion changes only rendering and cannot enter this request. */
@@ -18406,6 +20511,8 @@ async function loadSave(): Promise<void> {
   emitBootPhase('wiring-complete');
   app.start();
   emitBootPhase('ticker-started');
+  // Matchup picker (?battle2=1&vs=Python,Eagle): any two painted archetypes on the battle2 stage with no battle played first; the same study gate, dynamic import only, never on the default path.
+  if (new URLSearchParams(location.search).get('battle2') === '1' && new URLSearchParams(location.search).get('vs') !== null) void import('./battle2-matchup.js').then(m => m.mountBattle2Matchup({ ...(finishRoute ? { finish: async (g, p) => { const r = await finishRoute; return r ? r.stage(g, p) : null; } } : {}), doc: document, search: location.search, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { /* the flagged picker never blocks the game */ });
   if (document.querySelector('meta[name="cf-pwa-enabled"][content="true"]')) {
     pwaUpdateControl = mountPwaUpdateControl({
       document,
@@ -18443,6 +20550,8 @@ async function loadSave(): Promise<void> {
            heavy painter Worker cannot start until complete app wiring, one
            animation frame, and this serviced task boundary. */
         speciesArtLoader.activate();
+        startAudiovisualPilot();
+        startLocalAiPreview();
         try {
           const binding = __CF_EVIDENCE_BUILD__
             ? (window as unknown as Record<string, unknown>).__cfSliceReadyWitness : undefined;
@@ -18473,3 +20582,20 @@ async function loadSave(): Promise<void> {
   if (document.readyState === 'complete') emitBootReady();
   else addEventListener('load', emitBootReady, { once: true });
 })();
+
+// Ordinary Land uses the approved tier-2 kit when its library supports the world.
+// Unsupported worlds retain the ordinary painter; there is no scene-generator fallback.
+function startLocalAiPreview(): void {
+  if (localAiStatus || localAiGame) return;
+  localAiStatus = 'Preparing the landfall painter…';
+  void import('./local-ai-game.js').then(module => module.createLocalAiGameV1({
+    refresh: refreshLocalAiPresentation, notice: (title, message) => toast(title, message),
+    view: viewLocalAiOriginal,
+    captureView: () => {
+      const serial = renderedSceneReceipt.serial, runtime = f4Runtime;
+      return () => renderedSceneReceipt.serial === serial && f4Runtime === runtime
+        && !replacementTransaction && !replacementReloadPending && !importWriteInFlight;
+    },
+  })).then(owner => { localAiGame = owner; localAiStatus = ''; refreshLocalAiPresentation(); restoreCurrentAiLandfall(); })
+    .catch(error => { localAiStatus = 'Local finisher unavailable. The ordinary painter remains available.'; noteSurfaceVistaFault(error, 'Local AI setup unavailable'); refreshLocalAiPresentation(); });
+}

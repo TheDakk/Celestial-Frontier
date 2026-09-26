@@ -1,0 +1,3 @@
+Create a transparent 1254 x 1254 PNG marking-mask texture. No creature, silhouette, background, checkerboard, text or labels. Draw only the following white pigment shapes on an otherwise empty alpha-zero canvas. Maintain exact canvas coordinates; no cropping or centering.
+Eight thin gently curved vertical white perch bars, width 8 pixels, across x=330 to 950, y=450 to 750. Transparent gaps and tapered ends.
+All other pixels must have alpha zero. White is the mark; transparency is a real alpha hole.

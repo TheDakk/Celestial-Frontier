@@ -1,0 +1,75 @@
+{
+  "command": [
+    "npx",
+    "vitest",
+    "run",
+    "apps/game/src/creature-rig-contact-arachnid.test.ts",
+    "apps/game/src/creature-rig-contact-rigid-refusal.test.ts"
+  ],
+  "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+  "exitCode": 0,
+  "elapsedSeconds": 0.7918680419999999,
+  "scope": "Focused policy and rigid-refusal regressions after exact policy-only source restoration. Explicit source/fixture inventory, not complete Vitest dependency closure.",
+  "files": [
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "69f27faea2f2c1e50cbb49ed8b870c52c5c9f1ce07bba3395f823e615ed83303",
+      "afterSha256": "69f27faea2f2c1e50cbb49ed8b870c52c5c9f1ce07bba3395f823e615ed83303",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "7d7f32565ceb746e90d06eb213fd622fc12360e1c425d48849a4fa6bb65b96b5",
+      "afterSha256": "7d7f32565ceb746e90d06eb213fd622fc12360e1c425d48849a4fa6bb65b96b5",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "sha256": "963b450e281494d014d975c2114904194991f683775dec6e76bc5b4ae0f1343e",
+      "afterSha256": "963b450e281494d014d975c2114904194991f683775dec6e76bc5b4ae0f1343e",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-arachnid.test.ts",
+      "sha256": "96d6ae9e9fcef61b7f357af4a1e6ef2ff7eb306a0071d96831866fb1e1fae1b8",
+      "afterSha256": "96d6ae9e9fcef61b7f357af4a1e6ef2ff7eb306a0071d96831866fb1e1fae1b8",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-rigid-refusal.test.ts",
+      "sha256": "2193aaf22b460dc7d11c19811db124140ec51ea95b9cf7be7d90f540254692a4",
+      "afterSha256": "2193aaf22b460dc7d11c19811db124140ec51ea95b9cf7be7d90f540254692a4",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/test-fixtures/family-records.json",
+      "sha256": "80bc11fc5f2045d783ef2c82e39898cffac2b680e7895f6e679da4157b586b84",
+      "afterSha256": "80bc11fc5f2045d783ef2c82e39898cffac2b680e7895f6e679da4157b586b84",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-01/record.json",
+      "sha256": "c8cf3533ad9976aaaf4eee202daf86ff6cd23aef9899ec17fd46e4829a69d748",
+      "afterSha256": "c8cf3533ad9976aaaf4eee202daf86ff6cd23aef9899ec17fd46e4829a69d748",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/record.json",
+      "sha256": "4e935e3ab068c2ed17e5d993bb542cc4f7551e549772b0d3cce772df610d50b9",
+      "afterSha256": "4e935e3ab068c2ed17e5d993bb542cc4f7551e549772b0d3cce772df610d50b9",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/binding.json",
+      "sha256": "d23162df16d6c89d1f1b16d19acf52984ff73dc5e1bddf31e6430bb955464c8e",
+      "afterSha256": "d23162df16d6c89d1f1b16d19acf52984ff73dc5e1bddf31e6430bb955464c8e",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_FINISH_20260923/04-insect/contact-diagnosis-01.json",
+      "sha256": "8607b8de2b9aacfb6578ea02f9ae9078bb0468b1b64a7628b03e5defa6d63488",
+      "afterSha256": "8607b8de2b9aacfb6578ea02f9ae9078bb0468b1b64a7628b03e5defa6d63488",
+      "unchanged": true
+    }
+  ]
+}

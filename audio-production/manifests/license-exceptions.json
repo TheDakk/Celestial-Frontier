@@ -1,0 +1,24 @@
+{
+  "schema": "cf.audio-license-exceptions/v1",
+  "authorization": "Nick, September 15, 2026: Allow CC BY with attribution",
+  "permitted": [
+    "CC-BY-4.0",
+    "CC-BY-3.0",
+    "CC-BY-2.5",
+    "CC-BY-2.0",
+    "CC-BY-1.0"
+  ],
+  "requirements": [
+    "Commercial redistribution permitted",
+    "Per-recording creator, original source URL and exact license URL",
+    "Indicate every conversion, edit and derivative",
+    "No attribution removal or endorsement implication"
+  ],
+  "notAuthorized": [
+    "CC-BY-NC",
+    "CC-BY-ND",
+    "CC-BY-SA",
+    "unclear rights"
+  ],
+  "suppliedManifestUnchanged": true
+}

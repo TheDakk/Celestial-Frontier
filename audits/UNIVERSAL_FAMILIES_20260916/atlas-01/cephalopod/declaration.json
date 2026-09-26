@@ -1,0 +1,170 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "0e25379ce2b2c9bf8abe72c2bf0e1289120dd11f06101750b641feb4c46e8fb4",
+  "cutoutSha256": "4526a040a1a8977735c8e43a39728a6cb677e870888faa28b8b465d5305af272",
+  "labelsFile": "labels.png",
+  "labelsSha256": "632aa9d879bc9df9740ea4702d617806e783c8abf6fdd7319994279f5f9e0d54",
+  "parts": [
+    {
+      "id": "part-00",
+      "joint": "root",
+      "layer": "far"
+    },
+    {
+      "id": "part-01",
+      "joint": "mantle",
+      "layer": "near"
+    },
+    {
+      "id": "part-02",
+      "joint": "head",
+      "layer": "far"
+    },
+    {
+      "id": "part-03",
+      "joint": "eyeFar",
+      "layer": "near"
+    },
+    {
+      "id": "part-04",
+      "joint": "eyeNear",
+      "layer": "far"
+    },
+    {
+      "id": "part-05",
+      "joint": "siphon",
+      "layer": "near"
+    },
+    {
+      "id": "part-06",
+      "joint": "finFar",
+      "layer": "far"
+    },
+    {
+      "id": "part-07",
+      "joint": "finNear",
+      "layer": "near"
+    },
+    {
+      "id": "part-08",
+      "joint": "arm0Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "part-09",
+      "joint": "arm0Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "part-10",
+      "joint": "arm0Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "part-11",
+      "joint": "arm1Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "part-12",
+      "joint": "arm1Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "part-13",
+      "joint": "arm1Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "part-14",
+      "joint": "arm2Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "part-15",
+      "joint": "arm2Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "part-16",
+      "joint": "arm2Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "part-17",
+      "joint": "arm3Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "part-18",
+      "joint": "arm3Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "part-19",
+      "joint": "arm3Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "part-20",
+      "joint": "arm4Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "part-21",
+      "joint": "arm4Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "part-22",
+      "joint": "arm4Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "part-23",
+      "joint": "arm5Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "part-24",
+      "joint": "arm5Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "part-25",
+      "joint": "arm5Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "part-26",
+      "joint": "arm6Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "part-27",
+      "joint": "arm6Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "part-28",
+      "joint": "arm6Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "part-29",
+      "joint": "arm7Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "part-30",
+      "joint": "arm7Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "part-31",
+      "joint": "arm7Seg2",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "a41367a423fd3045cdf08a3b9df7d8f0756d7afcac9c1172b5284231d7911869"
+}

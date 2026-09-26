@@ -1,0 +1,31 @@
+{
+  "schema": "cf.image-request/v1",
+  "runId": "20260923-centipede-paint-02",
+  "tool": "built-in image_gen",
+  "intent": "new painting with anatomy/count guide and sole style reference",
+  "promptFile": "prompt.txt",
+  "promptSha256": "b4c754b74501ae150328f77ea732889ec3c2d54cd47a3a0819f830941a54067c",
+  "references": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/pose-guide.png",
+      "role": "authored composition/count only",
+      "sha256": "103680706a06456473a3bbc54ca9ae96dfd2ff65a71c7f14678cde98bc57837b"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "role": "sole style",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "sourceSelection": {
+    "scope": "Fresh representative of the same generic Earth Centipede, same complete genome and visualKey. Not an observed count or admission until the returned painting is inspected.",
+    "source": "https://www.nhm.ac.uk/discover/how-to-make-pitfall-trap-to-catch-insects.html",
+    "terminalSource": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6330759/"
+  },
+  "proposedInventory": {
+    "joints": 63,
+    "walkingContacts": 28,
+    "paintParts": 32
+  },
+  "observedInventory": null
+}

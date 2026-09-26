@@ -1,0 +1,14 @@
+✔ loop derivative joins the exact declared samples, preserves channels and source; seed changes phase only (4.085292ms)
+✔ odd mono PCM frame count retains RIFF padding; the old unpadded output refuses (0.3585ms)
+✔ WAV intake refuses malformed, silent, clipped and wrong-format masters (0.822834ms)
+✔ 24-bit extensible PCM is equivalent; float subtype, layout and reduced precision refuse (0.495292ms)
+✔ runtime minimum admits large masters without resampling and refuses undersize or corrupt PNG (65.566792ms)
+✔ voice inventory, rights, dry source and hashes fail closed; source bytes stay unchanged (3.371583ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 118.519834

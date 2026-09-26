@@ -1,0 +1,1 @@
+First montage refused: unable to read font '' (RenderFreetype/1695), exit1. No measurements rerun; next rendering explicitly selects installed Arial.

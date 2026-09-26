@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "startedAt": "2026-09-09T07:40:26.193914+00:00",
+  "sources": {
+    "tools/local-image-generation/browser-proof.mjs": "77cd2ec4bcd948fe6b96c2e39d7fe89457f34e0b7b081b10ee9fa136bf99d702",
+    "tools/local-image-generation/browser-lifecycle.test.mjs": "eb48e403dea21d0e1e533fe3fdd40d09531bec6bca41707298da97fd0cb6e2d3"
+  },
+  "steps": [
+    {
+      "name": "lifecycle",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "reference-cleanup-controls",
+        "--",
+        "node",
+        "--test",
+        "tools/local-image-generation/browser-lifecycle.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "0ed5ad065bf3d186078ae1bf9d6aa20650b5580b93c336dbcad46f21ceea605e"
+    },
+    {
+      "name": "native-runner-syntax",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "reference-cleanup-controls",
+        "--",
+        "node",
+        "--check",
+        "audits/LOCAL_AV_AI_CONTINUATION_20260909/reference-cleanup-native-01/run.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "sourceUnchanged": true,
+  "finishedAt": "2026-09-09T07:40:26.385809+00:00"
+}

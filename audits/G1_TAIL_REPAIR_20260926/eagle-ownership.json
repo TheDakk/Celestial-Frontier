@@ -1,0 +1,10 @@
+{
+  "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-v10/eagle/packet",
+  "candidate": "audits/G1_TAIL_REPAIR_20260926/eagle-packet",
+  "masterIdentical": true,
+  "landmarksIdentical": true,
+  "changes": {
+    "tail -> body": 474,
+    "body -> tail": 1214
+  }
+}

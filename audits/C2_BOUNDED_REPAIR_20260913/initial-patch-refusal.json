@@ -1,0 +1,1 @@
+{"status":"FAIL","reason":"square-crop key guard before circular mask","headRadius":0.045,"sourceCentre":[0.35,0.49],"sourceRectangle":{"x":542,"y":356,"width":158,"height":158},"magentaSourcePixels":253,"magentaLocalBounds":[0,127,14,157],"correction":"reject retained patch ink after circular/opaque-coverage masking; retained-key negative control still refuses"}

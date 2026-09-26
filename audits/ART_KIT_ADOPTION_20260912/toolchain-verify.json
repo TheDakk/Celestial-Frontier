@@ -1,0 +1,266 @@
+{
+  "schema": "cf-development-toolchain/v1",
+  "mode": "verify",
+  "at": "2026-09-12T14:22:22.884Z",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "status": "PASS",
+  "inventory": [
+    {
+      "kind": "formula",
+      "name": "imagemagick",
+      "installed": true,
+      "version": "7.1.2-31",
+      "prefix": "/opt/homebrew/opt/imagemagick",
+      "realPath": "/opt/homebrew/Cellar/imagemagick/7.1.2-31"
+    },
+    {
+      "kind": "formula",
+      "name": "ffmpeg",
+      "installed": true,
+      "version": "9.0.1_1",
+      "prefix": "/opt/homebrew/opt/ffmpeg",
+      "realPath": "/opt/homebrew/Cellar/ffmpeg/9.0.1_1"
+    },
+    {
+      "kind": "formula",
+      "name": "python@3.12",
+      "installed": true,
+      "version": "3.12.14",
+      "prefix": "/opt/homebrew/opt/python@3.12",
+      "realPath": "/opt/homebrew/Cellar/python@3.12/3.12.14"
+    },
+    {
+      "kind": "formula",
+      "name": "node",
+      "installed": true,
+      "version": "26.8.2",
+      "prefix": "/opt/homebrew/opt/node",
+      "realPath": "/opt/homebrew/Cellar/node/26.8.2"
+    },
+    {
+      "kind": "formula",
+      "name": "gh",
+      "installed": true,
+      "version": "2.100.0",
+      "prefix": "/opt/homebrew/opt/gh",
+      "realPath": "/opt/homebrew/Cellar/gh/2.100.0"
+    },
+    {
+      "kind": "cask",
+      "name": "blender",
+      "bundle": "Blender.app",
+      "installed": true,
+      "version": "5.2.1",
+      "bundlePath": "/Applications/Blender.app",
+      "verification": "bundle metadata only; not launched or license-validated"
+    },
+    {
+      "kind": "cask",
+      "name": "inkscape",
+      "bundle": "Inkscape.app",
+      "installed": true,
+      "version": "1.4.4",
+      "bundlePath": "/Applications/Inkscape.app",
+      "verification": "bundle metadata only; not launched or license-validated"
+    },
+    {
+      "kind": "cask",
+      "name": "reaper",
+      "bundle": "REAPER.app",
+      "installed": true,
+      "version": "7.79.0_06dd787u",
+      "bundlePath": "/Applications/REAPER.app",
+      "verification": "bundle metadata only; not launched or license-validated"
+    },
+    {
+      "kind": "cask",
+      "name": "surge-xt",
+      "bundle": "Surge XT.app",
+      "installed": true,
+      "version": "1.3.4",
+      "bundlePath": "/Applications/Surge XT.app",
+      "verification": "bundle metadata only; not launched or license-validated"
+    },
+    {
+      "kind": "npm",
+      "name": "gsap",
+      "workspace": "tools/ui-motion",
+      "installed": true,
+      "version": "3.15.0",
+      "declaredVersion": "3.15.0",
+      "packagePath": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/ui-motion/node_modules/gsap/package.json"
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "FFmpeg PCM16 / ffprobe / ebur128",
+      "pass": true,
+      "version": "ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
+      "pcm": {
+        "format": 1,
+        "channels": 1,
+        "sampleRate": 48000,
+        "bitsPerSample": 16,
+        "frames": 48000,
+        "durationSeconds": 1,
+        "peak": 0.124969482421875,
+        "rms": 0.08836834780356763,
+        "upwardCrossings": 999,
+        "sha256": "593d48a0b90e80af2443c3c7774148ce842e287c0a32b13976a53ce7a3a1b872"
+      },
+      "stream": {
+        "index": 0,
+        "codec_name": "pcm_s16le",
+        "codec_long_name": "PCM signed 16-bit little-endian",
+        "codec_type": "audio",
+        "codec_tag_string": "[1][0][0][0]",
+        "codec_tag": "0x0001",
+        "sample_fmt": "s16",
+        "sample_rate": "48000",
+        "channels": 1,
+        "bits_per_sample": 16,
+        "initial_padding": 0,
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "duration_ts": 48000,
+        "duration": "1.000000",
+        "bit_rate": "768000",
+        "disposition": {
+          "default": 0,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        }
+      },
+      "integratedLufs": -21.1,
+      "controls": {
+        "silentRejected": true,
+        "truncatedRejected": true
+      }
+    },
+    {
+      "name": "ImageMagick PNG compare",
+      "pass": true,
+      "version": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org",
+      "format": "PNG",
+      "width": 16,
+      "height": 16,
+      "sameStatus": 0,
+      "samePixels": 0,
+      "changedStatus": 1,
+      "changedPixels": 1,
+      "sameMetric": {
+        "absolute": 0,
+        "normalized": 0
+      },
+      "changedMetric": {
+        "absolute": 1,
+        "normalized": 0.00390625
+      },
+      "originalSha256": "eaf39e3c65ac17eb75f29f76862e2c399fb2df6012a50e486b20b8811290e670",
+      "changedSha256": "04e3cf67b89823fe7a538686a9f2fc5815615214777366ed8f9870c752a168cb"
+    },
+    {
+      "name": "Python3.12 isolated venv / SSL / standard-library imports",
+      "pass": true,
+      "version": "3.12.14 (main, Aug 12 2026, 13:57:54) [Clang 21.0.0 (clang-2100.1.1.101)]",
+      "major": 3,
+      "minor": 12,
+      "isolatedVenv": true,
+      "ssl": "OpenSSL 3.6.4 25 Aug 2026",
+      "sqlite": "3.53.4",
+      "digest": "5deec989484019560832cf109c3c732230c6932f790e299e4bba4f29ea2e44c3",
+      "zlibRoundTrip": true
+    },
+    {
+      "name": "existing audio-render venv matches selected Python3.12",
+      "pass": true,
+      "workspace": "tools/audio-render/.venv",
+      "selected": {
+        "version": "3.12.14 (main, Aug 12 2026, 13:57:54) [Clang 21.0.0 (clang-2100.1.1.101)]",
+        "major": 3,
+        "minor": 12,
+        "architecture": "arm64",
+        "isolatedVenv": false,
+        "prefixRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12",
+        "basePrefixRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12",
+        "executableRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+        "baseExecutableRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+        "ssl": "OpenSSL 3.6.4 25 Aug 2026",
+        "sslModuleRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py",
+        "sslModuleSha256": "039a0e3f1782e14824b1624c7ffefc2de31714b4a9994424be45a4271966097c",
+        "sslExtensionRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/lib-dynload/_ssl.cpython-312-darwin.so",
+        "sslExtensionSha256": "1bb51c5a0cf06f6c5df39c5a07e7885570ef39a07834442613bdc25ba150076d",
+        "sslContextReady": true,
+        "sqlite": "3.53.4",
+        "digest": "5deec989484019560832cf109c3c732230c6932f790e299e4bba4f29ea2e44c3",
+        "zlibRoundTrip": true
+      },
+      "existing": {
+        "version": "3.12.14 (main, Aug 12 2026, 13:57:54) [Clang 21.0.0 (clang-2100.1.1.101)]",
+        "major": 3,
+        "minor": 12,
+        "architecture": "arm64",
+        "isolatedVenv": true,
+        "prefixRealPath": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/audio-render/.venv",
+        "basePrefixRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12",
+        "executableRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+        "baseExecutableRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+        "ssl": "OpenSSL 3.6.4 25 Aug 2026",
+        "sslModuleRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py",
+        "sslModuleSha256": "039a0e3f1782e14824b1624c7ffefc2de31714b4a9994424be45a4271966097c",
+        "sslExtensionRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/lib-dynload/_ssl.cpython-312-darwin.so",
+        "sslExtensionSha256": "1bb51c5a0cf06f6c5df39c5a07e7885570ef39a07834442613bdc25ba150076d",
+        "sslContextReady": true,
+        "sqlite": "3.53.4",
+        "digest": "5deec989484019560832cf109c3c732230c6932f790e299e4bba4f29ea2e44c3",
+        "zlibRoundTrip": true
+      }
+    },
+    {
+      "name": "isolated GSAP paused interpolation",
+      "pass": true,
+      "version": "3.15.0",
+      "midpoint": 5,
+      "endpoint": 10,
+      "paused": true,
+      "workspace": "tools/ui-motion"
+    },
+    {
+      "name": "Node executable",
+      "pass": true,
+      "version": "v26.8.2",
+      "runner": "v26.8.2"
+    },
+    {
+      "name": "GitHub CLI executable",
+      "pass": true,
+      "version": "gh version 2.100.0 (2026-09-03)",
+      "verification": "local version only; no GitHub access"
+    }
+  ],
+  "scope": "development tools only; no installation, upgrades, GUI launches, license reads, or runtime/workspace pin changes",
+  "homebrew": {
+    "executable": "/opt/homebrew/bin/brew",
+    "prefix": "/opt/homebrew",
+    "version": "Homebrew 6.0.22"
+  },
+  "syntheticScratchRemoved": true
+}

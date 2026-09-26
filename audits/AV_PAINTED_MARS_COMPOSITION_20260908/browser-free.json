@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "scope": "Painted Mars composition focused verification; historical full-profile and navigation failures remain open",
+  "steps": [
+    {
+      "name": "draft-pin",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_COMPOSITION_20260908/draft-pin.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_COMPOSITION_20260908/draft-pin.json"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.433
+    },
+    {
+      "name": "producer-final",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_COMPOSITION_20260908/producer.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 3.044
+    },
+    {
+      "name": "producer-refresh-final",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_COMPOSITION_20260908/refresh-producer.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.033
+    },
+    {
+      "name": "final-focused",
+      "cmd": "npm",
+      "args": [
+        "test",
+        "--",
+        "apps/game/src/painted-vista-load.test.ts",
+        "tests/painted-mars-binding.test.ts",
+        "tests/biome-vista-surface.test.ts",
+        "tests/biome-vista-cache.test.ts",
+        "tests/biome-vista-protocol.test.ts",
+        "tests/biome-vista-worker-error.test.ts",
+        "apps/game/src/planet-surface-turn-view.test.ts",
+        "tests/pwa-offline.test.ts",
+        "tests/current-producer-authorities.test.ts",
+        "tests/compendium-budget.test.ts",
+        "tests/guide-release.test.ts",
+        "tests/slicesmoke-guide-release-scroll-contract.test.ts",
+        "tests/slicesmoke-dtrain-release-convergence.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 4.463
+    },
+    {
+      "name": "typescript-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 2.371
+    },
+    {
+      "name": "art-unused-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 1.315
+    },
+    {
+      "name": "art-audit-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artaudit"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.653
+    },
+    {
+      "name": "override-check-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "overridecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.614
+    },
+    {
+      "name": "spec-check",
+      "cmd": "node",
+      "args": [
+        "tools/speccheck.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.29
+    },
+    {
+      "name": "root-validation",
+      "cmd": "node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 12.246
+    }
+  ]
+}

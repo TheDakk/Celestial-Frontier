@@ -1,0 +1,11 @@
+{
+  "createdAt": "2026-09-08T12:50:32.927Z",
+  "pid": 50733,
+  "root": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-earth-turn-local-20260908",
+  "url": "http://127.0.0.1:55005/?planetturn=1",
+  "sourceCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "sourceState": "dirty-local-only",
+  "publishable": false,
+  "contentSha256": "fb9eb501d1eb96d4a83b84387086a4465f731c39a426375ebf86d5fbbd5882db",
+  "manifestSha256": "e2912331b20b0e8c67b55101ac45d4576dc4bdc5e88bfc77bf4fe86723db358b"
+}

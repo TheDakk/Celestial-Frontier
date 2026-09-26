@@ -1,0 +1,41 @@
+[
+  {
+    "manifest": "audits/VISION_P1_CONSOLIDATED_20260920/shared-controls-result.sources.json",
+    "files": 48,
+    "changes": [
+      {
+        "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+        "before": "4b9480107e3743ce93f0623ab1d344bffa4962aabc0cd6e25cef2d95fa246517",
+        "current": "ef5cdebde69b377d3aa0416bf04a6a7c6d13ba2e3319146d66ce7cfc2196f0f0"
+      },
+      {
+        "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+        "before": "37c090988c2e96d4d4a9adc80a9697db77b58db4df667d138b842c86f85545a8",
+        "current": "d226a95458fe5330cea64b78ebbcc4b37750044fa85139466d426ef03a960d83"
+      }
+    ],
+    "diagnosis": "Only signed73398486 optional folded-presence handling; no solver, skin, accepted record, binding or image change."
+  },
+  {
+    "manifest": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/frozen-inputs.json",
+    "files": 310,
+    "changes": [
+      {
+        "path": "port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+        "before": "72c9c577976defeac75fb0e5a327ecb508e944ee89fddeb166efae0ca4027ce5",
+        "current": "d17342e3bb2beb2c8cee3f55c2bd6cbe8d369d9b91a9d56f0d45181ebcdd98cf"
+      },
+      {
+        "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+        "before": "4b9480107e3743ce93f0623ab1d344bffa4962aabc0cd6e25cef2d95fa246517",
+        "current": "ef5cdebde69b377d3aa0416bf04a6a7c6d13ba2e3319146d66ce7cfc2196f0f0"
+      },
+      {
+        "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+        "before": "37c090988c2e96d4d4a9adc80a9697db77b58db4df667d138b842c86f85545a8",
+        "current": "d226a95458fe5330cea64b78ebbcc4b37750044fa85139466d426ef03a960d83"
+      }
+    ],
+    "diagnosis": "Only signed73398486 optional folded-presence handling; no solver, skin, accepted record, binding or image change."
+  }
+]

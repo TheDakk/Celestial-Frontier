@@ -1,0 +1,1 @@
+Art Kit v3 is retired unchanged: Nick rejected `audits/ART_KIT_ADOPTION_20260912/frontier-sheet-01.png` and `audits/ART_KIT_ADOPTION_20260912/frontier-plate-01.png`; neither is a reference and no further painting may use v3.

@@ -31,9 +31,13 @@ import {
   type OwnershipStateV2,
 } from '../src/model-v2.js';
 import { sha256Hex } from '../src/canonical.js';
+import { COMPANION_FEED_POLICY_V2 } from '../src/companion-care.js';
+import { preflightArc5RestV1, settleArc5RestV1 } from '../src/rest.js';
+import { projectCompanionAvailabilityV1 } from '../src/companion-availability.js';
+/** Feed policy v2 (D13): the taste decides the gain (loved +2, +3 at flora tier ≥ 4; neutral +1; disliked 0). */
+const policyGain = (t: { preference: 'loved' | 'neutral' | 'disliked'; floraTier: number }): number => { const r = COMPANION_FEED_POLICY_V2[t.preference]; return t.floraTier >= r.rareTier ? r.fedRare : r.fed; };
 import {
   ARC5_FEED_ACTION_KIND_V1,
-  ARC5_FEED_INCREMENT_V1,
   preflightArc5FeedV1,
   settleArc5FeedV1,
 } from '../src/feed.js';
@@ -50,7 +54,8 @@ interface Fixture {
 function fixture(input: Readonly<{
   fed?: number | null;
   quantity?: number;
-  assignment?: { readonly kind: 'mission'; readonly missionId: string } | null;
+  assignment?: { readonly kind: 'mission'; readonly missionId: string }
+    | { readonly kind: 'recovery'; readonly readyAtActivePlayMs: number } | null;
 }> = {}): Fixture {
   const leftIdentity = canonicalGenomeIdentityV1({ seed: 11, kingdom: 'fauna', form: 3 });
   const rightIdentity = canonicalGenomeIdentityV1({ seed: 22, kingdom: 'fauna', form: 7 });
@@ -81,7 +86,8 @@ function fixture(input: Readonly<{
     identity: typeof leftIdentity,
     discoveryIndex: number,
     fed: number | null,
-    assignment: { readonly kind: 'mission'; readonly missionId: string } | null = null,
+    assignment: { readonly kind: 'mission'; readonly missionId: string }
+      | { readonly kind: 'recovery'; readonly readyAtActivePlayMs: number } | null = null,
   ) => createCreatureInstanceV1({
     creatureId,
     speciesId: identity.speciesId,
@@ -173,15 +179,14 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     const parentSource = ownershipSourceStateV1(f.state);
     const before = f.state.creatures.find((row) => row.creatureId === f.leftId)!;
     const twinBefore = f.state.creatures.find((row) => row.creatureId === f.twinId)!;
-    const settlement = settleArc5FeedV1(ready(f), 9);
+    const pre = ready(f), settlement = settleArc5FeedV1(pre, 9);
 
     expect(settlement.successor.revision).toBe(f.state.revision + 1);
     expect(ownershipSourceStateV1(settlement.successor)).toBe(parentSource);
     expect(settlement.creatureBefore).toBe(before);
     expect(settlement.creatureAfter).toMatchObject({
       creatureId: f.leftId,
-      fed: 20,
-      hurt: before.hurt,
+      fed: 19 + policyGain(pre.taste),
       assignment: null,
     });
     expect(settlement.successor.creatures.find((row) => row.creatureId === f.twinId))
@@ -223,7 +228,7 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     expect(left.witness).toBe(right.witness);
     expect(left.receiptEvidence).toEqual(right.receiptEvidence);
     expect(ownershipStateDigestV2(left.successor)).toBe(ownershipStateDigestV2(right.successor));
-    expect(left.preflight.fedAfter - left.preflight.fedBefore).toBe(ARC5_FEED_INCREMENT_V1);
+    expect(left.preflight.fedAfter - left.preflight.fedBefore).toBe(policyGain(left.preflight.taste));
   });
 
   it('preserves one-time bred-child inheritance while later feeding targets only that child', () => {
@@ -267,7 +272,7 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     });
     if (preflight.kind !== 'ready') throw new Error(preflight.reason);
     const fed = settleArc5FeedV1(preflight.preflight, 41);
-    expect(fed.creatureAfter.fed).toBe(16);
+    expect(fed.creatureAfter.fed).toBe(15 + policyGain(preflight.preflight.taste));
     expect(fed.successor.creatures.find((row) => row.creatureId === f.leftId)?.fed).toBe(80);
     expect(fed.successor.creatures.find((row) => row.creatureId === f.rightId)?.fed).toBe(30);
   });
@@ -281,6 +286,16 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     expect(preflightArc5FeedV1(assigned.state, {
       creatureId: assigned.leftId, foodLotId: assigned.floraLotId,
     })).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+    // Recovery locks breed/combat/dispatch only: a recovering (or recovered) parent eats and keeps its Recovery
+    for (const readyAtActivePlayMs of [0, 480_000]) {
+      const recovering = fixture({ assignment: { kind: 'recovery', readyAtActivePlayMs } });
+      const meal = preflightArc5FeedV1(recovering.state, {
+        creatureId: recovering.leftId, foodLotId: recovering.floraLotId,
+      });
+      if (meal.kind !== 'ready') throw new Error(`recovery refused a meal: ${meal.reason}`);
+      expect(settleArc5FeedV1(meal.preflight, 41).creatureAfter.assignment)
+        .toEqual({ kind: 'recovery', readyAtActivePlayMs });
+    }
     const ordinary = fixture();
     expect(preflightArc5FeedV1(ordinary.state, {
       creatureId: ownershipContentId('creature', 'absent') as CreatureInstanceId,
@@ -338,5 +353,54 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
   it('contains no ambient entropy, clock, or mutable-global dependency', () => {
     const source = readFileSync(new URL('../src/feed.ts', import.meta.url), 'utf8');
     expect(source).not.toMatch(/Math\.random|Date\.|performance\.|globalThis|window\.|document\./u);
+  });
+
+  it('D13 Feed policy v2: a meal mends by taste, pays first-time XP once and stamps its bond memories with the committed active-play time; a repeat pays nothing', () => {
+    const f = fixture();
+    const before = f.state.creatures.find((row) => row.creatureId === f.leftId)!;
+    const pre = ready(f), first = settleArc5FeedV1(pre, 9, 42_000);
+    const mend = COMPANION_FEED_POLICY_V2[pre.taste.preference].mend;
+    expect(first.creatureAfter.hurt).toBeCloseTo(Math.max(0, (before.hurt ?? 0) - mend), 6);
+    expect(first.creatureAfter.xp).toBe((before.xp ?? 0) + 3); // +1 first meal, +2 first taste of this flavour
+    expect(first.creatureAfter.bond?.memories.map((m) => [m.id, m.atActivePlayMs])).toEqual([['meal:first', 42_000], [`taste:${pre.taste.flavour}`, 42_000]]);
+    expect(first.witness).toContain('"activePlayMs":42000');
+    // the same flavour again: no XP, no new memory, bond unchanged
+    const again = preflightArc5FeedV1(first.successor, { creatureId: f.leftId, foodLotId: f.floraLotId });
+    if (again.kind !== 'ready') throw new Error(again.reason);
+    const second = settleArc5FeedV1(again.preflight, 10, 99_000);
+    expect(second.creatureAfter.xp).toBe(first.creatureAfter.xp);
+    expect(second.creatureAfter.bond).toEqual(first.creatureAfter.bond);
+    // control: a companion AWAY on a mission is still refused
+    const away = fixture({ assignment: { kind: 'mission', missionId: 'm-1' } });
+    expect(preflightArc5FeedV1(away.state, { creatureId: away.leftId, foodLotId: away.floraLotId })).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+  });
+});
+
+describe('D13 Rest — heals on the active-play clock (sealed heal, locked until the exact boundary)', () => {
+  it('a wounded companion rests 2 active minutes per 0.1 hurt: healed now, locked until readyAt, the first recovery from Injured is a memory', () => {
+    const f = fixture();
+    const pre = preflightArc5RestV1(f.state, { creatureId: f.leftId }, 1_000);
+    if (pre.kind !== 'ready') throw new Error(pre.reason);
+    expect(pre.preflight.durationActivePlayMs).toBe(8 * 60_000); // hurt 0.4 → 4 tenths → 8 minutes
+    const rest = settleArc5RestV1(pre.preflight, 3, 1_000);
+    expect(rest.readyAtActivePlayMs).toBe(481_000);
+    expect(rest.creatureAfter).toMatchObject({ hurt: 0, assignment: { kind: 'mission', missionId: 'rest:481000' } });
+    expect(rest.creatureAfter.bond?.memories.map((m) => [m.id, m.atActivePlayMs])).toEqual([['recovered:injured', 1_000]]);
+    const row = rest.successor.creatures.find((c) => c.creatureId === f.leftId)!;
+    expect(projectCompanionAvailabilityV1(row, 480_999)).toMatchObject({ rested: false, restRemainingActivePlayMs: 1, blocks: { breed: true, combat: true, dispatch: true } });
+    expect(projectCompanionAvailabilityV1(row, 481_000)).toMatchObject({ rested: true, assignment: null, blocks: { breed: false, combat: false, dispatch: false } });
+    // Feed obeys the same boundary: refused one ms early, eaten at the boundary; without a clock the stored lock holds
+    const food = { creatureId: f.leftId, foodLotId: f.floraLotId };
+    expect(preflightArc5FeedV1(rest.successor, food, 480_999)).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+    expect(preflightArc5FeedV1(rest.successor, food, 481_000).kind).toBe('ready');
+    expect(preflightArc5FeedV1(rest.successor, food)).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+    // resting again while resting is refused; once rested and healthy there is nothing to rest
+    expect(preflightArc5RestV1(rest.successor, { creatureId: f.leftId }, 2_000)).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+    expect(preflightArc5RestV1(rest.successor, { creatureId: f.leftId }, 481_000)).toEqual({ kind: 'refused', reason: 'creature-healthy' });
+  });
+  it('control: an ordinary mission never expires through the projector, and a malformed rest id is an ordinary mission', () => {
+    for (const missionId of ['m-1', 'rest:', 'rest:1e3', 'rest:-5']) {
+      expect(projectCompanionAvailabilityV1({ assignment: { kind: 'mission', missionId } }, 9_000_000)).toMatchObject({ rested: false, blocks: { breed: true } });
+    }
   });
 });

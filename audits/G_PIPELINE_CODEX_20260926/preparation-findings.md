@@ -1,0 +1,1 @@
+Pin-edit preparation refused before writing: expected11 standalone106 occurrences; actual10. Second preparation used wrong working directory and refused before writing; focused tests consequently ran with old pins (retained copy-focused.log). Explicit roots and occurrence inventory corrected.

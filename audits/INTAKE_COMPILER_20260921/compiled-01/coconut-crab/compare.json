@@ -1,0 +1,110 @@
+{
+ "codexDeclaration": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/declaration.json",
+ "perPart": {
+  "body": {
+   "iou": 0.407,
+   "compiler": 123048,
+   "codex": 98615
+  },
+  "claw-near-finger": {
+   "iou": 0,
+   "compiler": 19916,
+   "codex": 12230
+  },
+  "leg0far-upper": {
+   "iou": 0.417,
+   "compiler": 22540,
+   "codex": 29202
+  },
+  "claw-near-palm": {
+   "iou": 0,
+   "compiler": 9446,
+   "codex": 47808
+  },
+  "leg1far-upper": {
+   "iou": 0.469,
+   "compiler": 17144,
+   "codex": 32313
+  },
+  "leg0far-lower": {
+   "iou": 0.422,
+   "compiler": 14019,
+   "codex": 10701
+  },
+  "leg0near-upper": {
+   "iou": 0.078,
+   "compiler": 27606,
+   "codex": 17352
+  },
+  "leg0near-lower": {
+   "iou": 0.135,
+   "compiler": 26174,
+   "codex": 4841
+  },
+  "claw-far-palm": {
+   "iou": 0.075,
+   "compiler": 6710,
+   "codex": 82916
+  },
+  "claw-far-finger": {
+   "iou": 0.189,
+   "compiler": 79363,
+   "codex": 17150
+  },
+  "leg2far-upper": {
+   "iou": 0.629,
+   "compiler": 30920,
+   "codex": 48730
+  },
+  "leg1near-upper": {
+   "iou": 0,
+   "compiler": 10076,
+   "codex": 37052
+  },
+  "leg1far-lower": {
+   "iou": 0.618,
+   "compiler": 18517,
+   "codex": 16941
+  },
+  "leg2near-upper": {
+   "iou": 0,
+   "compiler": 28319,
+   "codex": 9873
+  },
+  "leg1near-lower": {
+   "iou": 0,
+   "compiler": 5647,
+   "codex": 10604
+  },
+  "leg2near-lower": {
+   "iou": 0,
+   "compiler": 44023,
+   "codex": 2427
+  },
+  "leg2far-lower": {
+   "iou": 0.684,
+   "compiler": 21469,
+   "codex": 23149
+  },
+  "eye-far": {
+   "iou": 0,
+   "compiler": 0,
+   "codex": 3218
+  },
+  "eye-near": {
+   "iou": 0,
+   "compiler": 0,
+   "codex": 3385
+  },
+  "claw-far-arm": {
+   "iou": 0,
+   "compiler": 0,
+   "codex": 31248
+  },
+  "claw-near-arm": {
+   "iou": 0,
+   "compiler": 0,
+   "codex": 22921
+  }
+ }
+}

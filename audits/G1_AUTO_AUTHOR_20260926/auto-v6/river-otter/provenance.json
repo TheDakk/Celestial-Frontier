@@ -1,0 +1,136 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "river-otter",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e",
+ "subjectSourceSha256": "5d2f64208f664022cc34f4d862fb5ceb390f487ecbb68a62f7532f8cd24ca96c",
+ "identity": {
+  "name": "River Otter",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"River Otter\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3920864942\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "seed": 3920864942,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "marmot",
+  "authoringSha256": "f87f8f92c1e0918313063d7e9a77c4e9b48e536ca1d5510373520c15e126dc81",
+  "masterSha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22"
+ },
+ "habitat": {
+  "profileId": "aquatic-pawed-mammal",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "9b8e1bd74f93b745a58339250e98399de256e5ed0328aba786c97644ec2490d7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group aquatic-pawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0051,
+     "class": "front",
+     "attach": {
+      "x": 342.5,
+      "y": 170,
+      "relX": 0.91,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0323,
+     "class": "front",
+     "attach": {
+      "x": 362,
+      "y": 187.5,
+      "relX": 1,
+      "relY": 0.21
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1216,
+     "class": "rear",
+     "attach": {
+      "x": 143.7,
+      "y": 233.8,
+      "relX": 0,
+      "relY": 0.82
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0369,
+     "class": "limb-down",
+     "attach": {
+      "x": 318.2,
+      "y": 246.7,
+      "relX": 0.8,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0326,
+     "class": "limb-down",
+     "attach": {
+      "x": 204,
+      "y": 246,
+      "relX": 0.28,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0356,
+     "class": "limb-down",
+     "attach": {
+      "x": 169.5,
+      "y": 248,
+      "relX": 0.12,
+      "relY": 1
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0409,
+     "class": "limb-down",
+     "attach": {
+      "x": 284,
+      "y": 249,
+      "relX": 0.65,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 2,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "marmot",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": "all-visible, backed by the measured visible inventory above; nothing declared absent, hidden or folded"
+}

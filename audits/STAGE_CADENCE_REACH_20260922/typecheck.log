@@ -1,0 +1,2 @@
+port/v2/apps/game/src/creature-stance-reach.ts(11,41): error TS2379: Argument of type 'ResolvedAnatomyRecord & { genome?: MotionGenomeFields | undefined; }' is not assignable to parameter of type 'CreatureRigRecordV1' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Property 'recipeHash' is optional in type 'ResolvedAnatomyRecord & { genome?: MotionGenomeFields | undefined; }' but required in type 'CreatureRigRecordV1'.

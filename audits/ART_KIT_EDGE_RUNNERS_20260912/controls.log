@@ -1,0 +1,40 @@
+✔ one-pixel erosion and sampled inward despill remove injected pink edge without recolouring the interior (2.472625ms)
+✔ premultiplied sampling cannot carry invisible magenta into a scaled edge (0.19725ms)
+✔ latent interiors stay anchored while boundary and ground remain editable; no-mask control fails (2.809375ms)
+✔ prepared profile meets scale relationships and refuses the former unmasked recipe (1.489916ms)
+✖ 8px erosion opens additional boundary area; unchanged 4px control fails the wider-edge criterion (4.691958ms)
+✔ two low runner instances share one organism mask; single-instance control fails (8.480375ms)
+✔ actual engine skips organism inference and runs one protected finisher; all four sessions stay warm (362.830792ms)
+✔ same reuse oracle rejects actual engine with its session cache bypassed (339.364375ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 752.417625
+
+✖ failing tests:
+
+test at tools/local-image-generation/kit-contact.test.mjs:39:1
+✖ 8px erosion opens additional boundary area; unchanged 4px control fails the wider-edge criterion (4.691958ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(m.protectedTokens<old.protectedTokens)
+  
+      at oracle (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/kit-contact.test.mjs:42:95)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/kit-contact.test.mjs:43:3)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,309 @@
+{
+  "scope": "Authored motion alternatives against unchanged actual contact solvers; diagnostic only, no skin or native acceptance",
+  "rows": [
+    {
+      "name": "gull",
+      "id": "melee:claw",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 105,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 32,
+        "ms": 177.77777777777777,
+        "error": "Error: Contact: melee:claw@177.77777777777777 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "gull",
+      "id": "melee:claw",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 103,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 31,
+        "ms": 172.2222222222222,
+        "error": "Error: Contact: melee:claw@172.2222222222222 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "gull",
+      "id": "melee:claw",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 113,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 37,
+        "ms": 205.55555555555554,
+        "error": "Error: Contact: melee:claw@205.55555555555554 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "gull",
+      "id": "melee:claw",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.13808478430072468,
+      "bodyLength": 0.20694509733206706,
+      "ratio": 0.6672532284210235,
+      "passes": 109,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 34,
+        "ms": 188.88888888888886,
+        "error": "Error: Contact: melee:claw@188.88888888888886 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "goose",
+      "id": "melee:claw",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 97,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 28,
+        "ms": 163.0222222222222,
+        "error": "Error: Contact: joint limit legFarFoot melee:claw@163.0222222222222: -45.35117518860365"
+      }
+    },
+    {
+      "name": "goose",
+      "id": "melee:claw",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 91,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 28,
+        "ms": 163.0222222222222,
+        "error": "Error: Contact: joint limit legFarFoot melee:claw@163.0222222222222: -49.275493652426675"
+      }
+    },
+    {
+      "name": "goose",
+      "id": "melee:claw",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 112,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 34,
+        "ms": 197.95555555555555,
+        "error": "Error: Contact: joint limit legFarFoot melee:claw@197.95555555555555: -46.40190593739887"
+      }
+    },
+    {
+      "name": "goose",
+      "id": "melee:claw",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.09796900142606613,
+      "bodyLength": 0.22272942836798773,
+      "ratio": 0.439856565627261,
+      "passes": 110,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 33,
+        "ms": 192.13333333333333,
+        "error": "Error: Contact: joint limit legFarFoot melee:claw@192.13333333333333: -47.0996449427597"
+      }
+    },
+    {
+      "name": "heron",
+      "id": "melee:claw",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 108,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 32,
+        "ms": 186.3111111111111,
+        "error": "Error: Contact: melee:claw@186.3111111111111 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "heron",
+      "id": "melee:claw",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 108,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 32,
+        "ms": 186.3111111111111,
+        "error": "Error: Contact: melee:claw@186.3111111111111 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "heron",
+      "id": "melee:claw",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 104,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 30,
+        "ms": 174.66666666666666,
+        "error": "Error: Contact: melee:claw@174.66666666666666 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "heron",
+      "id": "melee:claw",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.200479147890555,
+      "bodyLength": 0.14663725282987516,
+      "ratio": 1.3671774669915961,
+      "passes": 104,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 30,
+        "ms": 174.66666666666666,
+        "error": "Error: Contact: melee:claw@174.66666666666666 exceeds scale compression bound"
+      }
+    },
+    {
+      "name": "sparrow",
+      "id": "melee:claw",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 106,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 33,
+        "ms": 183.33333333333334,
+        "error": "Error: Contact: joint limit legNearFoot melee:claw@183.33333333333334: -53.32352563048952"
+      }
+    },
+    {
+      "name": "sparrow",
+      "id": "melee:claw",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 102,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 31,
+        "ms": 172.2222222222222,
+        "error": "Error: Contact: joint limit legNearFoot melee:claw@172.2222222222222: -51.932832931742894"
+      }
+    },
+    {
+      "name": "sparrow",
+      "id": "melee:claw",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 114,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 38,
+        "ms": 211.11111111111111,
+        "error": "Error: Contact: joint limit legNearFoot melee:claw@211.11111111111111: -51.6919217301887"
+      }
+    },
+    {
+      "name": "sparrow",
+      "id": "melee:claw",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.1578197101390731,
+      "bodyLength": 0.23521611991474176,
+      "ratio": 0.6709561835994814,
+      "passes": 108,
+      "maxHeadRotation": 0,
+      "first": {
+        "i": 34,
+        "ms": 188.88888888888886,
+        "error": "Error: Contact: joint limit legNearFoot melee:claw@188.88888888888886: -48.53640643982876"
+      }
+    },
+    {
+      "name": "eagle",
+      "id": "melee:claw",
+      "variant": "original",
+      "mode": "rest",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "melee:claw",
+      "variant": "original",
+      "mode": "observed",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "melee:claw",
+      "variant": "leg-scale-translation",
+      "mode": "rest",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0,
+      "first": null
+    },
+    {
+      "name": "eagle",
+      "id": "melee:claw",
+      "variant": "leg-scale-translation",
+      "mode": "observed",
+      "legLength": 0.2419992169801373,
+      "bodyLength": 0.27461526014095516,
+      "ratio": 0.8812300410979469,
+      "passes": 121,
+      "maxHeadRotation": 0,
+      "first": null
+    }
+  ]
+}

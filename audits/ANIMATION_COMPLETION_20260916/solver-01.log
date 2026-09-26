@@ -1,0 +1,18 @@
+✔ compiled solve rows and guarded numerics retain machine-scale agreement across valences and pin partitions (10.138ms)
+✔ norm scaling fallback retains finite large-scale and near-collapsed targets without changing refusal semantics (0.459042ms)
+✔ historical compiled solve rows retain exact arithmetic for short, four, eight and wide neighbor rows (8.398958ms)
+✔ ARAP retains exact rest and rigid rotation/translation, independently of prior seeks (2.398375ms)
+✔ ARAP reduces a discontinuous skin target while preserving hard authored contact handles (0.928625ms)
+✔ ARAP refuses invalid topology/targets atomically and never mutates rest or input (0.632375ms)
+✔ orientation projection repairs a reflected skin triangle with fixed joint targets; contradictory fixed triangle refuses without publication (0.233042ms)
+✔ distinct surfaces at the same source coordinates remain free to cross without welding their contact targets (0.168167ms)
+✔ a thin reflected triangle cannot pass the approximate rigid identity shortcut (0.12975ms)
+✔ exact no-progress projection stops redundant sweeps without accepting a contradictory pinned fold (0.19675ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 58.189625

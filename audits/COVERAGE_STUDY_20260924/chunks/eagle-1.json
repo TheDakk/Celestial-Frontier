@@ -1,0 +1,370 @@
+{
+ "id": "eagle-1",
+ "standIn": "Eagle",
+ "template": "biped-bird",
+ "accentGroups": [
+  "head",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/eagle/card/master-512.png",
+  "joints": [
+   "legNearFoot",
+   "legFarFoot",
+   "legNearAnkle",
+   "legFarAnkle",
+   "legNearKnee",
+   "legFarKnee",
+   "beak",
+   "head",
+   "neck1",
+   "neck0",
+   "wingNearRoot",
+   "wingNearTip",
+   "wingFarRoot",
+   "wingFarTip",
+   "tailFan",
+   "chest",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Macaw",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 0.5,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "tail streamer far longer than the body",
+    "huge pale hooked beak",
+    "bare white facial patch traced with fine feather lines"
+   ],
+   "note": "perched in side profile it is much taller than wide because the tail hangs vertically"
+  },
+  {
+   "name": "Parrot",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 0.75,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "short deeply hooked beak with a fleshy cere",
+    "zygodactyl feet, two toes forward two back",
+    "compact stocky body with a short squared tail"
+   ],
+   "note": "generic representative: an Amazon-type parrot"
+  },
+  {
+   "name": "Toucan",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.5,
+   "headFrac": 0.5,
+   "eyes": "normal",
+   "mustRead": [
+    "oversized brightly banded bill nearly as long as the body",
+    "black body with a vivid yellow-white bib",
+    "bare blue skin ringing the eye"
+   ],
+   "note": "the bill is huge but very light and slightly downcurved, not a straight cone"
+  },
+  {
+   "name": "Hornbill",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.6,
+   "headFrac": 0.45,
+   "eyes": "normal",
+   "mustRead": [
+    "huge downcurved bill topped by a hollow casque",
+    "long broad tail",
+    "bare coloured throat and eye skin with long lashes"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Hummingbird",
+   "group": "bird",
+   "posture": "flying",
+   "aspect": 1.2,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "needle-thin bill at least as long as the head",
+    "narrow blade-like wings blurred in a hover",
+    "iridescent throat gorget"
+   ],
+   "note": "the feet are tiny and tucked; hummingbirds hover with the body held near-vertical, not horizontal"
+  },
+  {
+   "name": "Kingfisher",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1,
+   "headFrac": 0.4,
+   "eyes": "normal",
+   "mustRead": [
+    "dagger bill disproportionately long and straight",
+    "oversized head with no visible neck",
+    "stubby body and very short tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Owl",
+   "group": "raptor",
+   "posture": "biped",
+   "aspect": 0.9,
+   "headFrac": 0.35,
+   "eyes": "prominent",
+   "mustRead": [
+    "flat round facial disc",
+    "enormous forward-facing eyes",
+    "upright barrel body with no visible neck"
+   ],
+   "note": "the 'ear tufts' are feathers, not ears; the wings fold flat against the body and the tail barely projects"
+  },
+  {
+   "name": "Peacock",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 2.2,
+   "headFrac": 0.16,
+   "eyes": "normal",
+   "mustRead": [
+    "extremely long trailing train covered in eyespots",
+    "fan-shaped crest of wire-tipped feathers",
+    "iridescent blue neck and breast"
+   ],
+   "note": "the 'tail' is a train of upper tail coverts and only the male has it; unfanned it drags behind, making the bird very long"
+  },
+  {
+   "name": "Vulture",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 0.9,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "bare unfeathered head and neck",
+    "hunched shoulders above a thick feather ruff",
+    "heavy hooked tearing beak"
+   ],
+   "note": "generic representative: an Old World griffon-type vulture; perched it hunches with the head drawn into the ruff"
+  },
+  {
+   "name": "Guineafowl",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 1.2,
+   "headFrac": 0.18,
+   "eyes": "normal",
+   "mustRead": [
+    "tiny bare blue-and-red head with a bony helmet casque",
+    "round hunched body densely speckled with white dots",
+    "thin naked neck on a heavy body"
+   ],
+   "note": "the head is comically small for the body and the tail droops downward"
+  },
+  {
+   "name": "Tanager",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.4,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "short conical seed-crushing bill",
+    "brilliantly saturated block-coloured plumage",
+    "compact songbird body with a squared tail"
+   ],
+   "note": "generic representative: a scarlet/tropical tanager - a small perching songbird, roughly sparrow-sized"
+  },
+  {
+   "name": "Pheasant",
+   "group": "pheasant",
+   "posture": "biped",
+   "aspect": 2.4,
+   "headFrac": 0.17,
+   "eyes": "normal",
+   "mustRead": [
+    "extremely long pointed barred tail",
+    "red bare facial wattle around the eye",
+    "iridescent green-black head with a white neck ring"
+   ],
+   "note": "generic representative: a common/ring-necked pheasant male; the tail alone is longer than the body"
+  },
+  {
+   "name": "Woodpecker",
+   "group": "bird",
+   "posture": "upright",
+   "aspect": 0.6,
+   "headFrac": 0.32,
+   "eyes": "normal",
+   "mustRead": [
+    "straight chisel-shaped bill",
+    "body clinging vertically to a trunk",
+    "stiff pointed tail feathers braced against the bark"
+   ],
+   "note": "normally drawn clinging vertically, so it reads much taller than wide; the head is often crested or red-capped"
+  },
+  {
+   "name": "Hawk",
+   "group": "raptor",
+   "posture": "biped",
+   "aspect": 0.75,
+   "headFrac": 0.24,
+   "eyes": "prominent",
+   "mustRead": [
+    "hooked raptor beak with yellow cere",
+    "heavy scaled feet with curved talons",
+    "broad rounded wings folded over the back"
+   ],
+   "note": "Read as a generic buteo (red-tailed type). Perched profile is taller than wide; the body sits at a steep angle."
+  },
+  {
+   "name": "Crow",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.7,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "all-black glossy plumage",
+    "stout straight pointed bill",
+    "square-tipped tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Raven",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.8,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "massive curved bill",
+    "shaggy throat hackles",
+    "wedge-shaped tail"
+   ],
+   "note": "Bigger-billed and shaggier-throated than a crow, with a wedge rather than a square tail."
+  },
+  {
+   "name": "Robin",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.3,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "orange-red breast",
+    "upright plump posture",
+    "thin yellow bill"
+   ],
+   "note": "Read as American robin: a large thrush, not the tiny round European robin."
+  },
+  {
+   "name": "Cardinal",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.3,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "pointed head crest",
+    "all-over scarlet plumage",
+    "black face mask around a thick conical orange bill"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Turkey",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 1.2,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "bare warty blue-and-red head with dangling wattle",
+    "broad fanned tail",
+    "bristly beard hanging from the breast"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Heron",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 0.8,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "long neck kinked into an S",
+    "heavy dagger bill",
+    "stilt legs with long trailing toes"
+   ],
+   "note": "Read as great blue heron. Neck folds back in an S at rest; it is not held straight like a stork's."
+  },
+  {
+   "name": "Grouse",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 1.4,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "plump chicken-like body",
+    "short rounded bill",
+    "broad fannable barred tail and feathered legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Ptarmigan",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 1.4,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "white winter plumage",
+    "densely feathered feet",
+    "red comb above the eye"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Goose",
+   "group": "swimming-bird",
+   "posture": "biped",
+   "aspect": 1.5,
+   "headFrac": 0.24,
+   "eyes": "small",
+   "mustRead": [
+    "long thick neck held upright",
+    "flat rounded bill",
+    "heavy body on webbed feet"
+   ],
+   "note": "Read as Canada goose: black neck and head with a white chinstrap."
+  },
+  {
+   "name": "Duck",
+   "group": "swimming-bird",
+   "posture": "biped",
+   "aspect": 1.8,
+   "headFrac": 0.26,
+   "eyes": "small",
+   "mustRead": [
+    "flat spatulate bill",
+    "compact boat-shaped body",
+    "webbed feet set far back"
+   ],
+   "note": "Read as mallard. Neck is short and thick, unlike a goose's or swan's."
+  }
+ ]
+}

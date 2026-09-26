@@ -1,0 +1,104 @@
+{
+  "genome": {
+    "seed": 350917351,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 5,
+    "body": 0,
+    "loco": 3,
+    "trait": 4,
+    "size": 1,
+    "diet": 0,
+    "head": 9,
+    "limbs": 0,
+    "skin": 3,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 3,
+    "behavior": 10,
+    "habitat": 6,
+    "detail": 6,
+    "accent": 2,
+    "temper": 1,
+    "sense": 0,
+    "repro": 3,
+    "life": 5,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Swan"
+  },
+  "observation": {
+    "schema": "cf.painter-topology/v1",
+    "ownerId": "faunaBird",
+    "family": "biped-bird",
+    "coordinateSize": 440,
+    "materials": {
+      "surface": "feather",
+      "paletteSource": "named"
+    },
+    "features": [
+      {
+        "id": "body",
+        "kind": "body",
+        "points": [
+          [
+            220,
+            281.2769352096987
+          ]
+        ],
+        "widths": [
+          163.60766197575333,
+          130.88612958060267
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "head",
+        "kind": "head",
+        "points": [
+          [
+            134.1059774627295,
+            147.11865238958097
+          ]
+        ],
+        "widths": [
+          49.578079386591924
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "wingNear",
+        "kind": "wing",
+        "points": [
+          [
+            229.8164597185452,
+            284.5490884492138
+          ],
+          [
+            305.6570022247589,
+            301.5085066921165
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "near"
+      }
+    ],
+    "unresolved": [
+      "tail, beak, neck and source part masks not captured",
+      "far wing is not independently painted"
+    ],
+    "rasterFrame": {
+      "width": 880,
+      "height": 880,
+      "origin": [
+        220,
+        220
+      ],
+      "scale": 1
+    }
+  }
+}

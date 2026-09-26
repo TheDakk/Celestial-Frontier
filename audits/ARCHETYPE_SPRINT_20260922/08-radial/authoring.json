@@ -1,0 +1,52 @@
+{
+  "id":"starfish",
+  "family":"radial",
+  "landmarksPx":{
+    "root":[614,653],
+    "centre":[636,606],
+    "bell":[643,477],
+    "arm0Seg0":[646,430],
+    "arm0Seg1":[650,245],
+    "arm0Seg2":[646,76],
+    "arm1Seg0":[833,555],
+    "arm1Seg1":[1020,484],
+    "arm1Seg2":[1183,390],
+    "arm2Seg0":[751,747],
+    "arm2Seg1":[894,948],
+    "arm2Seg2":[1069,1148],
+    "arm3Seg0":[509,765],
+    "arm3Seg1":[332,960],
+    "arm3Seg2":[181,1118],
+    "arm4Seg0":[435,562],
+    "arm4Seg1":[246,482],
+    "arm4Seg2":[61,386]
+  },
+  "groundLineY":0.97,
+  "materials":{"surface":"warty"},
+  "remainderPart":"body",
+  "parts":[
+    {"id":"central-disc-upper","joint":"bell","layer":"near","polygonPx":[[544,475],[704,472],[775,514],[716,580],[644,605],[545,563]]},
+    {"id":"arm0-tip","joint":"arm0Seg2","layer":"near","polygonPx":[[560,0],[735,0],[751,190],[554,190]]},
+    {"id":"arm0-middle","joint":"arm0Seg1","layer":"near","polygonPx":[[537,188],[761,188],[792,360],[522,360]]},
+    {"id":"arm0-base","joint":"arm0Seg0","layer":"near","polygonPx":[[503,358],[793,358],[807,513],[663,607],[508,498]]},
+    {"id":"arm1-tip","joint":"arm1Seg2","layer":"near","polygonPx":[[1055,380],[1253,302],[1253,477],[1136,552],[1059,495]]},
+    {"id":"arm1-middle","joint":"arm1Seg1","layer":"near","polygonPx":[[879,450],[1061,386],[1154,538],[1036,643],[933,609],[868,544]]},
+    {"id":"arm1-base","joint":"arm1Seg0","layer":"near","polygonPx":[[645,592],[779,490],[901,450],[979,625],[866,723],[756,713]]},
+    {"id":"arm2-tip","joint":"arm2Seg2","layer":"near","polygonPx":[[909,1001],[1031,924],[1171,1218],[1040,1253],[957,1174]]},
+    {"id":"arm2-middle","joint":"arm2Seg1","layer":"near","polygonPx":[[750,801],[868,756],[1031,956],[915,1041],[830,988],[739,888]]},
+    {"id":"arm2-base","joint":"arm2Seg0","layer":"near","polygonPx":[[638,611],[734,628],[863,740],[889,829],[759,918],[634,821],[601,714]]},
+    {"id":"arm3-tip","joint":"arm3Seg2","layer":"near","polygonPx":[[299,992],[383,1107],[211,1217],[124,1181],[129,1103]]},
+    {"id":"arm3-middle","joint":"arm3Seg1","layer":"near","polygonPx":[[398,806],[546,928],[380,1108],[259,1022],[305,929]]},
+    {"id":"arm3-base","joint":"arm3Seg0","layer":"near","polygonPx":[[630,608],[648,746],[609,855],[504,980],[384,854],[428,752],[520,657]]},
+    {"id":"arm4-tip","joint":"arm4Seg2","layer":"near","polygonPx":[[0,318],[205,358],[234,436],[166,552],[49,481],[0,412]]},
+    {"id":"arm4-middle","joint":"arm4Seg1","layer":"near","polygonPx":[[179,354],[383,411],[435,526],[340,629],[165,552],[215,437]]},
+    {"id":"arm4-base","joint":"arm4Seg0","layer":"near","polygonPx":[[369,409],[529,466],[640,586],[556,665],[431,721],[315,642],[391,536]]},
+    {"id":"body","joint":"root","layer":"near","polygonPx":[[0,0],[1,0],[0,1]]}
+  ],
+  "coverage":{
+    "declarations":"Five visible tapering arms radiate from one central disc. Arm0 is upper, then arms1 through4 proceed clockwise through upper-right, lower-right, lower-left and upper-left. Every arm has three manually observed joints; no sixth arm is invented. Root, centre and the template's bell slot lie on the painted central body region. Here bell denotes the existing radial contract's core slot, not a claim that a starfish has a jellyfish bell. Tube feet along the visible lower edges remain attached to their respective arm surfaces.",
+    "visualAcceptance":"candidate for Nick; first acceptable paint",
+    "landmarkMethod":"Manual observation of this face-on master. The species reference expressly has no true side profile. No other master coordinates, hidden surfaces or anatomy are copied.",
+    "materialAuthority":"warty is accepted by materialFromSkinName in motion/secondary.ts; it represents the painted pebbled/granular surface."
+  }
+}

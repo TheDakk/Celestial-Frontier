@@ -1,0 +1,39 @@
+--- a/port/v2/apps/game/src/battle2/choreography.ts
++++ b/port/v2/apps/game/src/battle2/choreography.ts
+@@ -242,7 +242,35 @@
+   else if (ms >= b.returnEnd && plan.targetFaints) { aPose = addPose(aPose, sampleClip(c.attacker.after, ms - b.returnEnd)); aCtx = contextOf(c.attacker.after, ms - b.returnEnd); } // victory; otherwise `after` is the idle already underneath
+   // Target: idle underneath (frozen through hitstop); reaction on top; faint holds its final pose.
+   let tPose = sampleClip(c.target.idle, ic), tCtx = contextOf(c.target.idle, ic);
+-  if (c.target.reaction && ms >= b.reactionStart) { tPose = addPose(tPose, sampleClip(c.target.reaction, ms - b.reactionStart)); tCtx = contextOf(c.target.reaction, ms - b.reactionStart); }
++  if (c.target.reaction && ms >= b.reactionStart) {
++    const elapsed = ms - b.reactionStart;
++    // Faint holds its authored final pose. Fade the underlying idle smoothly
++    // during the reaction so it cannot keep pushing a planted fallen rig.
++    if (plan.targetFaints) {
++      const gain = 1 - EASE_FN['sine-in-out'](clamp01(elapsed / clipMs(c.target.reaction)));
++      tPose = Object.fromEntries(Object.entries(tPose).map(([joint, value]) => [joint, {
++        rotation: value.rotation * gain, dx: (value.dx ?? 0) * gain, dy: (value.dy ?? 0) * gain,
++      }]));
++    }
++    let reactionPose = sampleClip(c.target.reaction, elapsed);
++    if (plan.targetFaints) {
++      // The authored material tail can reset a secondary on its last key.
++      // Settle continuously into the exact final pose during the final 120 ms.
++      const duration = clipMs(c.target.reaction), settleMs = Math.min(120, duration * 0.2);
++      const gain = EASE_FN['sine-in-out'](clamp01((elapsed - duration + settleMs) / settleMs));
++      if (gain > 0) {
++        const finalPose = sampleClip(c.target.reaction, duration);
++        reactionPose = Object.fromEntries([...new Set([...Object.keys(reactionPose), ...Object.keys(finalPose)])].map(joint => {
++          const a = reactionPose[joint], z = finalPose[joint];
++          return [joint, { rotation: (a?.rotation ?? 0) * (1 - gain) + (z?.rotation ?? 0) * gain,
++            dx: (a?.dx ?? 0) * (1 - gain) + (z?.dx ?? 0) * gain,
++            dy: (a?.dy ?? 0) * (1 - gain) + (z?.dy ?? 0) * gain }];
++        }));
++      }
++    }
++    tPose = addPose(tPose, reactionPose);
++    tCtx = contextOf(c.target.reaction, elapsed);
++  }
+   // Impact presentation (hit only): flash two frames then 120 fade; shake 6 px × mass decaying over 180; number pop/rise/fade.
+   const hit = plan.outcome === 'hit', since = ms - b.impactAt;
+   const white = FLASH.whiteFrames * SMEAR_FRAME_MS;

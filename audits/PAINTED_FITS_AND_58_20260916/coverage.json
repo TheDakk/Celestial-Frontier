@@ -1,0 +1,1491 @@
+{
+  "schema": "cf.painted-coverage-ledger/v1",
+  "sourceHead": "33e0c7a03072dc50e8e863fbfe55efdf201a0c4e",
+  "scope": "Working candidate evidence; no species promotion from contract fixtures.",
+  "counts": {
+    "missingSpecies": 58,
+    "newlyQualifiedMissingSpecies": 0,
+    "acceptedCutoutMasters": 11,
+    "mastersWithMatchingBinding": 6
+  },
+  "missingSpecies": [
+    {
+      "name": "Sponge",
+      "profile": "sponge",
+      "target": "sessile-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile filtration; effect-only combat needs a verified root/colony anchor.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Sessile filtration; effect-only combat needs a verified root/colony anchor.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Sea Squirt",
+      "profile": "tunicate",
+      "target": "sessile-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Salp",
+      "profile": "tunicate",
+      "target": "colonial-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Pyrosome",
+      "profile": "tunicate",
+      "target": "colonial-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Mussel",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Oyster",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Clam",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Razor Clam",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Giant Clam",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Scallop",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Land Snail",
+      "profile": "land-gastropod",
+      "target": "gastropod",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Banana Slug",
+      "profile": "land-gastropod",
+      "target": "gastropod",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Snail",
+      "profile": "land-gastropod",
+      "target": "gastropod",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Freshwater Snail",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Water Snail",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Sea Snail",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Limpet",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Chiton",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Nudibranch",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Cowrie",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Conch",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Abalone",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Earthworm",
+      "profile": "annelid-land",
+      "target": "annelid",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Segmented body compression needs observed source geometry.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Segmented body compression needs observed source geometry.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Ice Worm",
+      "profile": "annelid-land",
+      "target": "annelid",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Segmented body compression needs observed source geometry.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Segmented body compression needs observed source geometry.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Leech",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Marine Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Tube Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Polychaete Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Giant Tube Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Scale Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Flatworm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Crayfish",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Freshwater Crab",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Crab",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "partial-source-features",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Hermit Crab",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Fiddler Crab",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Mud Crab",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Lobster",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Vent Crab",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Brine Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Water Flea",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Krill",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Copepod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Amphipod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Cave Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Freshwater Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Prawn",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Giant Isopod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Isopod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Vent Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Fairy Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Tadpole Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Barnacle",
+      "profile": "barnacle",
+      "target": "barnacle",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Anchored feeding cirri, no locomotor leap.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Anchored feeding cirri, no locomotor leap.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Horseshoe Crab",
+      "profile": "horseshoe-crab",
+      "target": "xiphosuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Telson is not a venomous stinger; dedicated topology needed.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Telson is not a venomous stinger; dedicated topology needed.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Fly Larvae",
+      "profile": "larva",
+      "target": "larva",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Life stage cannot inherit adult wings or adult six-leg graph.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Life stage cannot inherit adult wings or adult six-leg graph.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Tardigrade",
+      "profile": "tardigrade",
+      "target": "lobopod",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Eight lobopod legs and stylets require exact topology; no arachnid fangs.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Eight lobopod legs and stylets require exact topology; no arachnid fangs.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Coconut Crab",
+      "profile": "terrestrial-crab",
+      "target": "crustacean-clawed",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Dedicated pincer/leg topology required; adult is not a submerged aquatic fighter.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "partial-source-features",
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Dedicated pincer/leg topology required; adult is not a submerged aquatic fighter.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    }
+  ],
+  "masters": [
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+      "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+      "fits": [
+        {
+          "record": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+          "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8",
+          "template": "quadruped",
+          "coverage": null,
+          "bindingExists": false
+        }
+      ],
+      "status": "no-matching-complete-binding-found",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/cranberry.png",
+      "sha256": "88f6f2a92524207a494e21564e54fa3916e15ca3aa1ff7885327a008bbf34732",
+      "fits": [],
+      "status": "no-matching-complete-binding-found",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/devils-club.png",
+      "sha256": "bfcb0b735475403d4c49bcdcc7893d0f3c98a704f5f9e5394df70cdee99b37db",
+      "fits": [],
+      "status": "no-matching-complete-binding-found",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-bird.png",
+      "sha256": "1e538078a1d64ee605122a8bb0c1fe7f0e26bfac9a34508d85ab4daf1112aef6",
+      "fits": [
+        {
+          "record": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/bird-01/record.json",
+          "sha256": "ae99e8ec381e87495c7110bac66ec2640691b6916508bc6916af493ede4d1411",
+          "template": "biped-bird",
+          "coverage": {
+            "scope": "painted bird family reference, folded wings",
+            "occluded": [
+              "far wing; anatomy exists but has no independent painted pixels"
+            ],
+            "unproven": [
+              "open wing or flight",
+              "ground contact solver",
+              "named species identity",
+              "battle staging"
+            ]
+          },
+          "bindingExists": false
+        },
+        {
+          "record": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/bird-02/record.json",
+          "sha256": "17959540cd145a056293824607f91909418bfd606fd46d1267ba8315a45a6c4f",
+          "template": "biped-bird",
+          "coverage": {
+            "scope": "painted bird family reference, folded wings",
+            "occluded": [
+              "far wing; anatomy exists but has no independent painted pixels"
+            ],
+            "unproven": [
+              "open wing or flight",
+              "ground contact solver",
+              "named species identity",
+              "battle staging"
+            ]
+          },
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-fish.png",
+      "sha256": "1997f036417384af559f5127b9eb98d4871a9cae5cec57cffa645b857a3adc22",
+      "fits": [
+        {
+          "record": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-03/record.json",
+          "sha256": "abc3ba0a9ef4fe7cded9f74c71164a3e4d6dc50cc2cebfb7d0e0145125e6786d",
+          "template": "fish",
+          "coverage": {
+            "scope": "painted fish family reference, not a named Earth species",
+            "retainedBodyAttached": [
+              "pelvic fins",
+              "anal fin",
+              "adipose fin"
+            ],
+            "unproven": [
+              "independent accessory fin articulation",
+              "out-of-plane swimming",
+              "battle staging"
+            ]
+          },
+          "bindingExists": true
+        },
+        {
+          "record": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-04/record.json",
+          "sha256": "abc3ba0a9ef4fe7cded9f74c71164a3e4d6dc50cc2cebfb7d0e0145125e6786d",
+          "template": "fish",
+          "coverage": {
+            "scope": "painted fish family reference, not a named Earth species",
+            "retainedBodyAttached": [
+              "pelvic fins",
+              "anal fin",
+              "adipose fin"
+            ],
+            "unproven": [
+              "independent accessory fin articulation",
+              "out-of-plane swimming",
+              "battle staging"
+            ]
+          },
+          "bindingExists": true
+        },
+        {
+          "record": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-02/record.json",
+          "sha256": "abc3ba0a9ef4fe7cded9f74c71164a3e4d6dc50cc2cebfb7d0e0145125e6786d",
+          "template": "fish",
+          "coverage": {
+            "scope": "painted fish family reference, not a named Earth species",
+            "retainedBodyAttached": [
+              "pelvic fins",
+              "anal fin",
+              "adipose fin"
+            ],
+            "unproven": [
+              "independent accessory fin articulation",
+              "out-of-plane swimming",
+              "battle staging"
+            ]
+          },
+          "bindingExists": true
+        },
+        {
+          "record": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-01/record.json",
+          "sha256": "abc3ba0a9ef4fe7cded9f74c71164a3e4d6dc50cc2cebfb7d0e0145125e6786d",
+          "template": "fish",
+          "coverage": {
+            "scope": "painted fish family reference, not a named Earth species",
+            "retainedBodyAttached": [
+              "pelvic fins",
+              "anal fin",
+              "adipose fin"
+            ],
+            "unproven": [
+              "independent accessory fin articulation",
+              "out-of-plane swimming",
+              "battle staging"
+            ]
+          },
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-insect.png",
+      "sha256": "5cf63ca2f7465212bc1f770babe650bd390986c7dc16a841179c326a31a74168",
+      "fits": [
+        {
+          "record": "audits/PAINTED_FITS_AND_58_20260916/beetle-01/record.json",
+          "sha256": "f7df9b4acca0a405326ca6eb5f1d0684a438d5774c6354588dea28fdffab4441",
+          "template": "insect",
+          "coverage": {
+            "occluded": [
+              "hindFar walking leg: body-covered; no separate visible surface",
+              "flight wings: folded beneath elytra; not anatomically absent"
+            ],
+            "unproven": [
+              "open-wing flight requires an additional painted view",
+              "hidden limb emergence",
+              "out-of-plane views",
+              "full motion and visual fit"
+            ]
+          },
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-mammal-quadruped.png",
+      "sha256": "15a3c9d7ee511360ed846a3fe1406c4fde124d99191c7f098538937ff164fdf3",
+      "fits": [
+        {
+          "record": "audits/C2_BOUNDED_REPAIR_20260913/candidate-01/fox.landmarks.json",
+          "sha256": "8155226f9a6653e56d4a3d54ffef748ea561cf982c8da3e340044d48b6d2b2fe",
+          "template": "quadruped",
+          "coverage": null,
+          "bindingExists": false
+        },
+        {
+          "record": "audits/CIVET_2D_PROOF_20260912/fox.landmarks.json",
+          "sha256": "8d21a249436eefb27ccfe01ec2565c57fe35ac3ab2379abc5dc9b336ea7674a7",
+          "template": "quadruped",
+          "coverage": null,
+          "bindingExists": false
+        }
+      ],
+      "status": "no-matching-complete-binding-found",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-reptile.png",
+      "sha256": "897a091b1eb8c5f74cb6f312a38e77de58a769bec876d62df4520c93f56ac7f6",
+      "fits": [
+        {
+          "record": "audits/PAINTED_FITS_AND_58_20260916/skink-01/record.json",
+          "sha256": "6fd8003ba7f6fe775e284da06052e528134d8e01d10a2f2b1e19170dceaa95d6",
+          "template": "quadruped",
+          "coverage": {
+            "occluded": [
+              "hindFar: body-covered; fitted kinematic chain has no separate visible surface"
+            ],
+            "unproven": [
+              "out-of-plane views",
+              "hidden limb emergence",
+              "planted-paw contact",
+              "full motion and visual fit"
+            ]
+          },
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/frog.png",
+      "sha256": "fb229a4a7bd86507af68da9561a5e31282d594da27901d7f30ddc11cd3c84779",
+      "fits": [
+        {
+          "record": "audits/HABITAT_BATTLE_20260916/frog-04/record.json",
+          "sha256": "1bb009685a3bb67081858d0e35b0402cad510317a4dfaec02cf0c69335a658fd",
+          "template": "hopper",
+          "coverage": null,
+          "bindingExists": true
+        },
+        {
+          "record": "audits/HABITAT_BATTLE_20260916/frog-03/record.json",
+          "sha256": "1bb009685a3bb67081858d0e35b0402cad510317a4dfaec02cf0c69335a658fd",
+          "template": "hopper",
+          "coverage": null,
+          "bindingExists": true
+        },
+        {
+          "record": "audits/HABITAT_BATTLE_20260916/frog-02/record.json",
+          "sha256": "41b066417e25c3d2e959767a4b184a0a984a277e5868870169b34b0a81be16f3",
+          "template": "hopper",
+          "coverage": null,
+          "bindingExists": false
+        },
+        {
+          "record": "audits/HABITAT_BATTLE_20260916/frog-05/record.json",
+          "sha256": "1bb009685a3bb67081858d0e35b0402cad510317a4dfaec02cf0c69335a658fd",
+          "template": "hopper",
+          "coverage": null,
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/persimmon.png",
+      "sha256": "bccad6827ad3a84974e958c2833c5fc8b9116802a7e4af4eac3fa73eb2f502d3",
+      "fits": [],
+      "status": "no-matching-complete-binding-found",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/platypus.png",
+      "sha256": "55ed1d0549f4b74d0300e1c3428ca36e07a576b4e39a9c1f357e0da188bd39f9",
+      "fits": [
+        {
+          "record": "audits/BATTLE_FACING_20260916/platypus-01/record.json",
+          "sha256": "80d4ed1cf51dc4806d3775ea73ccdcb14fba75a55a38d26b590cfd068a557c57",
+          "template": "quadruped",
+          "coverage": null,
+          "bindingExists": true
+        },
+        {
+          "record": "audits/BATTLE_FACING_20260916/platypus-02/record.json",
+          "sha256": "28ad6011a6d3653449895717c319a6ed1d621197ddc3eef95cd1bf7c5ce4509a",
+          "template": "quadruped",
+          "coverage": null,
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    }
+  ],
+  "sources": [
+    {
+      "file": "port/v2/apps/game/src/missing-body-structures.ts",
+      "sha256": "8f3d875ae77ea629d0f852a195e0e7e5a97c0358db61cd3d2a7da45408b7a27e"
+    },
+    {
+      "file": "port/v2/apps/game/src/earth-fauna-profiles.ts",
+      "sha256": "0d03b3b97e0cfed394354afb7f9a923f8eacb3a615364014d6e4a480858be262"
+    }
+  ]
+}

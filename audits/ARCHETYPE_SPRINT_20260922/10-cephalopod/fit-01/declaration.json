@@ -1,0 +1,160 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "f9fed9bd0621995b61e8560dbb8797b4c285cfb6a2637a98b8ef8f42d2df7f9f",
+  "cutoutSha256": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e",
+  "labelsFile": "labels.png",
+  "labelsSha256": "1108a8dac4d7686c83359121eb9b159486f89bfff92a97a3c60861abeed1331a",
+  "parts": [
+    {
+      "id": "near-eye",
+      "joint": "eyeNear",
+      "layer": "near"
+    },
+    {
+      "id": "far-eye-rim",
+      "joint": "eyeFar",
+      "layer": "far"
+    },
+    {
+      "id": "siphon",
+      "joint": "siphon",
+      "layer": "near"
+    },
+    {
+      "id": "arm4-tip",
+      "joint": "arm4Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm4-middle",
+      "joint": "arm4Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm4-base",
+      "joint": "arm4Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm2-tip",
+      "joint": "arm2Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm2-middle",
+      "joint": "arm2Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm2-base",
+      "joint": "arm2Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm6-tip",
+      "joint": "arm6Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm6-middle",
+      "joint": "arm6Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm6-base",
+      "joint": "arm6Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm0-tip",
+      "joint": "arm0Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "arm0-middle",
+      "joint": "arm0Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "arm0-base",
+      "joint": "arm0Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "arm7-tip",
+      "joint": "arm7Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "arm7-middle",
+      "joint": "arm7Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "arm7-base",
+      "joint": "arm7Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "arm1-tip",
+      "joint": "arm1Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "arm1-middle",
+      "joint": "arm1Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "arm1-base",
+      "joint": "arm1Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "arm3-tip",
+      "joint": "arm3Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "arm3-middle",
+      "joint": "arm3Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "arm3-base",
+      "joint": "arm3Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "arm5-tip",
+      "joint": "arm5Seg2",
+      "layer": "far"
+    },
+    {
+      "id": "arm5-middle",
+      "joint": "arm5Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "arm5-base",
+      "joint": "arm5Seg0",
+      "layer": "far"
+    },
+    {
+      "id": "mantle",
+      "joint": "mantle",
+      "layer": "far"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "f626bdf45ccb7a4cd0e0be2e8ad2e9bf46024485140355feea1b696af1ff2eff"
+}

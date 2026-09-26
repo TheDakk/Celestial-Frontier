@@ -1,0 +1,15 @@
+==> Updating Homebrew...
+Updated 1 tap (homebrew/core).
+==> New Formulae
+percona-server@8.4: Drop-in MySQL replacement
+==> Outdated Formulae
+libde265
+libheif
+merve
+node
+readline
+simdutf
+
+You have 6 outdated formulae installed.
+You can upgrade them with brew upgrade
+or list them with brew outdated.

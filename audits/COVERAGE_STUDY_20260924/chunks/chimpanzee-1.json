@@ -1,0 +1,251 @@
+{
+ "id": "chimpanzee-1",
+ "standIn": "Chimpanzee",
+ "template": "primate",
+ "accentGroups": [],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/chimpanzee/card/master-512.png",
+  "joints": [
+   "armNearHand",
+   "armFarHand",
+   "legNearFoot",
+   "legFarFoot",
+   "armNearElbow",
+   "armFarElbow",
+   "legNearKnee",
+   "legFarKnee",
+   "jaw",
+   "head",
+   "neck",
+   "chest",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Gorilla",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.3,
+   "headFrac": 0.24,
+   "eyes": "small",
+   "mustRead": [
+    "peaked skull crest over a heavy brow ridge",
+    "barrel chest with a wide pot belly",
+    "knuckle-walking on folded hands"
+   ],
+   "note": "arms are markedly longer than the legs, so the shoulders sit higher than the hips"
+  },
+  {
+   "name": "Orangutan",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.1,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "shaggy long orange-red hair",
+    "enormous arm span with short bowed legs",
+    "wide cheek flanges on adult males"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Capuchin",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.3,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "dark cap of hair over a pale pink face",
+    "long curling prehensile tail",
+    "small slender body with pale shoulders"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Howler Monkey",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.2,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "swollen bearded throat pouch",
+    "thick prehensile tail with a bare gripping tip",
+    "hunched stocky shoulders and short muzzle"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Spider Monkey",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "extremely long spindly limbs",
+    "prehensile tail longer than the whole body",
+    "small round head with a pot belly"
+   ],
+   "note": "the hands have no functional thumb - they are hooks"
+  },
+  {
+   "name": "Tamarin",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.2,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "squirrel-sized body with a long thin tail",
+    "facial mane, crest or drooping moustache",
+    "clawed fingers gripping a thin branch"
+   ],
+   "note": "generic representative: a cotton-top / emperor tamarin type. The tail is long but NOT prehensile"
+  },
+  {
+   "name": "Macaque",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.4,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "bare pink or red face with a short muzzle",
+    "short to medium tail",
+    "stocky dog-postured body on all fours"
+   ],
+   "note": "generic representative: a rhesus/bonnet macaque type"
+  },
+  {
+   "name": "Langur",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.4,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "tail far longer than the body",
+    "black face and hands framed by pale grey fur",
+    "slender long-limbed build with a crest on the crown"
+   ],
+   "note": "generic representative: a grey/Hanuman langur"
+  },
+  {
+   "name": "Baboon",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "long dog-like muzzle with close-set eyes",
+    "tail kinked sharply upward at the base then hanging down",
+    "cape of long hair over the shoulders in males"
+   ],
+   "note": "the tail has a distinctive broken/kinked profile, not a smooth curve"
+  },
+  {
+   "name": "Monkey",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "long curling tail as long as the body",
+    "grasping hands and feet with opposable thumbs",
+    "flat forward-facing face with round eyes"
+   ],
+   "note": "Generic name - interpreted as a macaque/capuchin-type monkey (tailed, not an ape)."
+  },
+  {
+   "name": "Lemur",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.22,
+   "eyes": "prominent",
+   "mustRead": [
+    "black-and-white ringed tail longer than the body",
+    "fox-like muzzle with a black mask",
+    "bright orange-gold staring eyes"
+   ],
+   "note": "Generic - interpreted as the ring-tailed lemur, the representative member of the group."
+  },
+  {
+   "name": "Gibbon",
+   "group": "primate",
+   "posture": "upright",
+   "aspect": 0.9,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "arms far longer than the legs, reaching the ground",
+    "long hook-shaped hands",
+    "no tail at all"
+   ],
+   "note": "An ape, not a monkey - tailless, and the arm span is the dominant proportion."
+  },
+  {
+   "name": "Mandrill",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "scarlet nose stripe flanked by ridged blue cheeks",
+    "olive mane over hunched high shoulders",
+    "tiny stub tail held upright"
+   ],
+   "note": "Has a stump tail, not a long one; the muzzle is deep and ridged like a dog's, not flat."
+  },
+  {
+   "name": "Marmoset",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.3,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "white fan-shaped ear tufts",
+    "squirrel-sized body clinging upright to bark",
+    "long banded tail that cannot grip"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Aye-Aye",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.4,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "enormous naked bat-like ears",
+    "skeletal elongated wire-thin middle finger",
+    "huge shaggy tail bigger than the body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Proboscis Monkey",
+   "group": "primate",
+   "posture": "quadruped",
+   "aspect": 1.3,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "huge drooping pendulous nose hanging over the mouth",
+    "round pot belly",
+    "orange-brown back with pale grey limbs and tail"
+   ],
+   "note": ""
+  }
+ ]
+}

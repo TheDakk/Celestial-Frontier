@@ -1,0 +1,36 @@
+{
+ "id": "sparrow",
+ "family": "biped-bird",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "bodyLengthPx": 911.2,
+ "landmarkMedian": 0.0538,
+ "landmarkMax": 0.27,
+ "worst": [
+  "wingNearTip 0.270",
+  "tailFan 0.254",
+  "neck0 0.148"
+ ],
+ "labelAgreement": 0.4099,
+ "missingJoints": [],
+ "static": "RED",
+ "staticFails": [
+  "faint"
+ ],
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "RED"
+  },
+  {
+   "rank": 1,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "missing-anatomy: part near-shin (legNearAnkle) covers 9% paint (reference 32%)"
+   ]
+  }
+ ]
+}

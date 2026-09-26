@@ -1,0 +1,21 @@
+{
+  "status": "REFUSED",
+  "attempts": [
+    {
+      "action": "signed continuous-field checkpoint",
+      "result": "1Password: agent returned an error"
+    },
+    {
+      "action": "public key enumeration",
+      "result": "PASS",
+      "key": "SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk"
+    },
+    {
+      "action": "same signed checkpoint retry",
+      "result": "1Password: agent returned an error"
+    }
+  ],
+  "nativeRunner": "refused dirty checkout before browser launch",
+  "configurationChanged": false,
+  "userQuestion": "Approve the actual Git signing request, if visible; vault unlock alone has not completed it."
+}

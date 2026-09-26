@@ -1,0 +1,2 @@
+import {familyContractForRecord,familyContactChains,contactStanceForAction} from '../../../../port/v2/tools/creature-animation/family-contracts.mjs';
+export function resolveSubjects(subjects){return subjects.map(({subject,record,actions})=>{const contract=familyContractForRecord(record);return {subject,contract,chains:familyContactChains(contract),stances:Object.fromEntries(actions.map(id=>[id,contactStanceForAction(contract,id)]))};});}

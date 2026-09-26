@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "fileCount": 23,
+  "totalBytes": 28393596,
+  "manifestBytes": 7814,
+  "remaining128MiBBytes": 105824132,
+  "distributionQualified": false,
+  "combinedAppAdmissionQualified": false,
+  "retainedUpdateQualified": false,
+  "deviceQualified": false
+}
+

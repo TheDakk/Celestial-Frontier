@@ -1,0 +1,4427 @@
+[
+  {
+    "subject": "crab",
+    "contract": {
+      "id": "brachyuran",
+      "version": 1,
+      "clipSetId": "brachyuran-v1",
+      "graph": [
+        [
+          "carapace",
+          "root"
+        ],
+        [
+          "leg0FarRoot",
+          "carapace"
+        ],
+        [
+          "leg0FarKnee",
+          "leg0FarRoot"
+        ],
+        [
+          "leg0FarFoot",
+          "leg0FarKnee"
+        ],
+        [
+          "leg0NearRoot",
+          "carapace"
+        ],
+        [
+          "leg0NearKnee",
+          "leg0NearRoot"
+        ],
+        [
+          "leg0NearFoot",
+          "leg0NearKnee"
+        ],
+        [
+          "leg1FarRoot",
+          "carapace"
+        ],
+        [
+          "leg1FarKnee",
+          "leg1FarRoot"
+        ],
+        [
+          "leg1FarFoot",
+          "leg1FarKnee"
+        ],
+        [
+          "leg1NearRoot",
+          "carapace"
+        ],
+        [
+          "leg1NearKnee",
+          "leg1NearRoot"
+        ],
+        [
+          "leg1NearFoot",
+          "leg1NearKnee"
+        ],
+        [
+          "leg2FarRoot",
+          "carapace"
+        ],
+        [
+          "leg2FarKnee",
+          "leg2FarRoot"
+        ],
+        [
+          "leg2FarFoot",
+          "leg2FarKnee"
+        ],
+        [
+          "leg2NearRoot",
+          "carapace"
+        ],
+        [
+          "leg2NearKnee",
+          "leg2NearRoot"
+        ],
+        [
+          "leg2NearFoot",
+          "leg2NearKnee"
+        ],
+        [
+          "leg3FarRoot",
+          "carapace"
+        ],
+        [
+          "leg3FarKnee",
+          "leg3FarRoot"
+        ],
+        [
+          "leg3FarFoot",
+          "leg3FarKnee"
+        ],
+        [
+          "leg3NearRoot",
+          "carapace"
+        ],
+        [
+          "leg3NearKnee",
+          "leg3NearRoot"
+        ],
+        [
+          "leg3NearFoot",
+          "leg3NearKnee"
+        ],
+        [
+          "eyeFarRoot",
+          "carapace"
+        ],
+        [
+          "eyeFarTip",
+          "eyeFarRoot"
+        ],
+        [
+          "clawFarBase",
+          "carapace"
+        ],
+        [
+          "clawFarElbow",
+          "clawFarBase"
+        ],
+        [
+          "clawFarPalm",
+          "clawFarElbow"
+        ],
+        [
+          "clawFarFixedRoot",
+          "clawFarPalm"
+        ],
+        [
+          "clawFarFixedTip",
+          "clawFarFixedRoot"
+        ],
+        [
+          "clawFarDactylRoot",
+          "clawFarPalm"
+        ],
+        [
+          "clawFarDactylTip",
+          "clawFarDactylRoot"
+        ],
+        [
+          "eyeNearRoot",
+          "carapace"
+        ],
+        [
+          "eyeNearTip",
+          "eyeNearRoot"
+        ],
+        [
+          "clawNearBase",
+          "carapace"
+        ],
+        [
+          "clawNearElbow",
+          "clawNearBase"
+        ],
+        [
+          "clawNearPalm",
+          "clawNearElbow"
+        ],
+        [
+          "clawNearFixedRoot",
+          "clawNearPalm"
+        ],
+        [
+          "clawNearFixedTip",
+          "clawNearFixedRoot"
+        ],
+        [
+          "clawNearDactylRoot",
+          "clawNearPalm"
+        ],
+        [
+          "clawNearDactylTip",
+          "clawNearDactylRoot"
+        ]
+      ],
+      "joints": [
+        "root",
+        "carapace",
+        "leg0FarRoot",
+        "leg0FarKnee",
+        "leg0FarFoot",
+        "leg0NearRoot",
+        "leg0NearKnee",
+        "leg0NearFoot",
+        "leg1FarRoot",
+        "leg1FarKnee",
+        "leg1FarFoot",
+        "leg1NearRoot",
+        "leg1NearKnee",
+        "leg1NearFoot",
+        "leg2FarRoot",
+        "leg2FarKnee",
+        "leg2FarFoot",
+        "leg2NearRoot",
+        "leg2NearKnee",
+        "leg2NearFoot",
+        "leg3FarRoot",
+        "leg3FarKnee",
+        "leg3FarFoot",
+        "leg3NearRoot",
+        "leg3NearKnee",
+        "leg3NearFoot",
+        "eyeFarRoot",
+        "eyeFarTip",
+        "clawFarBase",
+        "clawFarElbow",
+        "clawFarPalm",
+        "clawFarFixedRoot",
+        "clawFarFixedTip",
+        "clawFarDactylRoot",
+        "clawFarDactylTip",
+        "eyeNearRoot",
+        "eyeNearTip",
+        "clawNearBase",
+        "clawNearElbow",
+        "clawNearPalm",
+        "clawNearFixedRoot",
+        "clawNearFixedTip",
+        "clawNearDactylRoot",
+        "clawNearDactylTip"
+      ],
+      "legs": [
+        "leg0Far",
+        "leg0Near",
+        "leg1Far",
+        "leg1Near",
+        "leg2Far",
+        "leg2Near",
+        "leg3Far",
+        "leg3Near"
+      ],
+      "bodyAxis": [
+        "root",
+        "carapace"
+      ],
+      "roles": {
+        "legs": [
+          "leg0FarRoot",
+          "leg0FarKnee",
+          "leg0FarFoot",
+          "leg0NearRoot",
+          "leg0NearKnee",
+          "leg0NearFoot",
+          "leg1FarRoot",
+          "leg1FarKnee",
+          "leg1FarFoot",
+          "leg1NearRoot",
+          "leg1NearKnee",
+          "leg1NearFoot",
+          "leg2FarRoot",
+          "leg2FarKnee",
+          "leg2FarFoot",
+          "leg2NearRoot",
+          "leg2NearKnee",
+          "leg2NearFoot",
+          "leg3FarRoot",
+          "leg3FarKnee",
+          "leg3FarFoot",
+          "leg3NearRoot",
+          "leg3NearKnee",
+          "leg3NearFoot"
+        ],
+        "claws": [
+          "clawFarDactylRoot",
+          "clawNearDactylRoot"
+        ],
+        "reach": [
+          "clawFarBase",
+          "clawFarElbow",
+          "clawNearBase",
+          "clawNearElbow"
+        ],
+        "sensors": [
+          "eyeFarRoot",
+          "eyeNearRoot"
+        ]
+      },
+      "gaits": [
+        "scuttle"
+      ],
+      "anchored": false,
+      "rigid": [
+        "carapace",
+        "clawFarFixedRoot",
+        "clawFarFixedTip",
+        "clawNearFixedRoot",
+        "clawNearFixedTip",
+        "clawFarDactylTip",
+        "clawNearDactylTip"
+      ],
+      "optional": {},
+      "limitsDeg": {
+        "root": {
+          "min": -12,
+          "max": 12
+        },
+        "carapace": {
+          "min": 0,
+          "max": 0
+        },
+        "leg0FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarDactylTip": {
+          "min": 0,
+          "max": 0
+        },
+        "eyeNearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeNearTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearDactylTip": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "bounds": [
+        {
+          "id": "body",
+          "min": 0.04,
+          "max": 0.9,
+          "kind": "distance",
+          "axis": [
+            "root",
+            "carapace"
+          ]
+        },
+        {
+          "id": "bone-min",
+          "min": 0.001,
+          "max": 0.8,
+          "kind": "bone-min"
+        },
+        {
+          "id": "bone-max",
+          "min": 0.001,
+          "max": 0.8,
+          "kind": "bone-max"
+        }
+      ],
+      "secondaryChains": [],
+      "contactStance": {
+        "default": "all",
+        "actions": {}
+      },
+      "contactLimitsDeg": {
+        "root": {
+          "min": -12,
+          "max": 12
+        },
+        "carapace": {
+          "min": 0,
+          "max": 0
+        },
+        "leg0FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg0FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg0NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg0NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg1FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg1FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg1NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg1NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg2FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg2FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg2NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg2NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg3FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg3FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg3NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg3NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "eyeFarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarDactylTip": {
+          "min": 0,
+          "max": 0
+        },
+        "eyeNearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeNearTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearDactylTip": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "chains": [
+      {
+        "id": "leg0Far",
+        "hip": "leg0FarRoot",
+        "knee": "leg0FarKnee",
+        "end": "leg0FarFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg0Near",
+        "hip": "leg0NearRoot",
+        "knee": "leg0NearKnee",
+        "end": "leg0NearFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg1Far",
+        "hip": "leg1FarRoot",
+        "knee": "leg1FarKnee",
+        "end": "leg1FarFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg1Near",
+        "hip": "leg1NearRoot",
+        "knee": "leg1NearKnee",
+        "end": "leg1NearFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg2Far",
+        "hip": "leg2FarRoot",
+        "knee": "leg2FarKnee",
+        "end": "leg2FarFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg2Near",
+        "hip": "leg2NearRoot",
+        "knee": "leg2NearKnee",
+        "end": "leg2NearFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg3Far",
+        "hip": "leg3FarRoot",
+        "knee": "leg3FarKnee",
+        "end": "leg3FarFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg3Near",
+        "hip": "leg3NearRoot",
+        "knee": "leg3NearKnee",
+        "end": "leg3NearFoot",
+        "terminal": null,
+        "group": 0
+      }
+    ],
+    "stances": {
+      "idle": "all",
+      "approach": "all",
+      "melee:pinch": "all",
+      "hit": "all",
+      "alert": "all",
+      "approach:scuttle": "all",
+      "cast": "all",
+      "dodge": "all",
+      "faint": "all",
+      "victory": "all",
+      "tame": "all",
+      "feed": "all"
+    }
+  },
+  {
+    "subject": "coconut-crab",
+    "contract": {
+      "id": "brachyuran",
+      "version": 1,
+      "clipSetId": "brachyuran-v1",
+      "graph": [
+        [
+          "carapace",
+          "root"
+        ],
+        [
+          "leg0FarRoot",
+          "carapace"
+        ],
+        [
+          "leg0FarKnee",
+          "leg0FarRoot"
+        ],
+        [
+          "leg0FarFoot",
+          "leg0FarKnee"
+        ],
+        [
+          "leg0NearRoot",
+          "carapace"
+        ],
+        [
+          "leg0NearKnee",
+          "leg0NearRoot"
+        ],
+        [
+          "leg0NearFoot",
+          "leg0NearKnee"
+        ],
+        [
+          "leg1FarRoot",
+          "carapace"
+        ],
+        [
+          "leg1FarKnee",
+          "leg1FarRoot"
+        ],
+        [
+          "leg1FarFoot",
+          "leg1FarKnee"
+        ],
+        [
+          "leg1NearRoot",
+          "carapace"
+        ],
+        [
+          "leg1NearKnee",
+          "leg1NearRoot"
+        ],
+        [
+          "leg1NearFoot",
+          "leg1NearKnee"
+        ],
+        [
+          "leg2FarRoot",
+          "carapace"
+        ],
+        [
+          "leg2FarKnee",
+          "leg2FarRoot"
+        ],
+        [
+          "leg2FarFoot",
+          "leg2FarKnee"
+        ],
+        [
+          "leg2NearRoot",
+          "carapace"
+        ],
+        [
+          "leg2NearKnee",
+          "leg2NearRoot"
+        ],
+        [
+          "leg2NearFoot",
+          "leg2NearKnee"
+        ],
+        [
+          "leg3FarRoot",
+          "carapace"
+        ],
+        [
+          "leg3FarKnee",
+          "leg3FarRoot"
+        ],
+        [
+          "leg3FarFoot",
+          "leg3FarKnee"
+        ],
+        [
+          "leg3NearRoot",
+          "carapace"
+        ],
+        [
+          "leg3NearKnee",
+          "leg3NearRoot"
+        ],
+        [
+          "leg3NearFoot",
+          "leg3NearKnee"
+        ],
+        [
+          "eyeFarRoot",
+          "carapace"
+        ],
+        [
+          "eyeFarTip",
+          "eyeFarRoot"
+        ],
+        [
+          "clawFarBase",
+          "carapace"
+        ],
+        [
+          "clawFarElbow",
+          "clawFarBase"
+        ],
+        [
+          "clawFarPalm",
+          "clawFarElbow"
+        ],
+        [
+          "clawFarFixedRoot",
+          "clawFarPalm"
+        ],
+        [
+          "clawFarFixedTip",
+          "clawFarFixedRoot"
+        ],
+        [
+          "clawFarDactylRoot",
+          "clawFarPalm"
+        ],
+        [
+          "clawFarDactylTip",
+          "clawFarDactylRoot"
+        ],
+        [
+          "eyeNearRoot",
+          "carapace"
+        ],
+        [
+          "eyeNearTip",
+          "eyeNearRoot"
+        ],
+        [
+          "clawNearBase",
+          "carapace"
+        ],
+        [
+          "clawNearElbow",
+          "clawNearBase"
+        ],
+        [
+          "clawNearPalm",
+          "clawNearElbow"
+        ],
+        [
+          "clawNearFixedRoot",
+          "clawNearPalm"
+        ],
+        [
+          "clawNearFixedTip",
+          "clawNearFixedRoot"
+        ],
+        [
+          "clawNearDactylRoot",
+          "clawNearPalm"
+        ],
+        [
+          "clawNearDactylTip",
+          "clawNearDactylRoot"
+        ]
+      ],
+      "joints": [
+        "root",
+        "carapace",
+        "leg0FarRoot",
+        "leg0FarKnee",
+        "leg0FarFoot",
+        "leg0NearRoot",
+        "leg0NearKnee",
+        "leg0NearFoot",
+        "leg1FarRoot",
+        "leg1FarKnee",
+        "leg1FarFoot",
+        "leg1NearRoot",
+        "leg1NearKnee",
+        "leg1NearFoot",
+        "leg2FarRoot",
+        "leg2FarKnee",
+        "leg2FarFoot",
+        "leg2NearRoot",
+        "leg2NearKnee",
+        "leg2NearFoot",
+        "leg3FarRoot",
+        "leg3FarKnee",
+        "leg3FarFoot",
+        "leg3NearRoot",
+        "leg3NearKnee",
+        "leg3NearFoot",
+        "eyeFarRoot",
+        "eyeFarTip",
+        "clawFarBase",
+        "clawFarElbow",
+        "clawFarPalm",
+        "clawFarFixedRoot",
+        "clawFarFixedTip",
+        "clawFarDactylRoot",
+        "clawFarDactylTip",
+        "eyeNearRoot",
+        "eyeNearTip",
+        "clawNearBase",
+        "clawNearElbow",
+        "clawNearPalm",
+        "clawNearFixedRoot",
+        "clawNearFixedTip",
+        "clawNearDactylRoot",
+        "clawNearDactylTip"
+      ],
+      "legs": [
+        "leg0Far",
+        "leg0Near",
+        "leg1Far",
+        "leg1Near",
+        "leg2Far",
+        "leg2Near",
+        "leg3Far",
+        "leg3Near"
+      ],
+      "bodyAxis": [
+        "root",
+        "carapace"
+      ],
+      "roles": {
+        "legs": [
+          "leg0FarRoot",
+          "leg0FarKnee",
+          "leg0FarFoot",
+          "leg0NearRoot",
+          "leg0NearKnee",
+          "leg0NearFoot",
+          "leg1FarRoot",
+          "leg1FarKnee",
+          "leg1FarFoot",
+          "leg1NearRoot",
+          "leg1NearKnee",
+          "leg1NearFoot",
+          "leg2FarRoot",
+          "leg2FarKnee",
+          "leg2FarFoot",
+          "leg2NearRoot",
+          "leg2NearKnee",
+          "leg2NearFoot",
+          "leg3FarRoot",
+          "leg3FarKnee",
+          "leg3FarFoot",
+          "leg3NearRoot",
+          "leg3NearKnee",
+          "leg3NearFoot"
+        ],
+        "claws": [
+          "clawFarDactylRoot",
+          "clawNearDactylRoot"
+        ],
+        "reach": [
+          "clawFarBase",
+          "clawFarElbow",
+          "clawNearBase",
+          "clawNearElbow"
+        ],
+        "sensors": [
+          "eyeFarRoot",
+          "eyeNearRoot"
+        ]
+      },
+      "gaits": [
+        "scuttle"
+      ],
+      "anchored": false,
+      "rigid": [
+        "carapace",
+        "clawFarFixedRoot",
+        "clawFarFixedTip",
+        "clawNearFixedRoot",
+        "clawNearFixedTip",
+        "clawFarDactylTip",
+        "clawNearDactylTip"
+      ],
+      "optional": {},
+      "limitsDeg": {
+        "root": {
+          "min": -12,
+          "max": 12
+        },
+        "carapace": {
+          "min": 0,
+          "max": 0
+        },
+        "leg0FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarDactylTip": {
+          "min": 0,
+          "max": 0
+        },
+        "eyeNearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeNearTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearDactylTip": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "bounds": [
+        {
+          "id": "body",
+          "min": 0.04,
+          "max": 0.9,
+          "kind": "distance",
+          "axis": [
+            "root",
+            "carapace"
+          ]
+        },
+        {
+          "id": "bone-min",
+          "min": 0.001,
+          "max": 0.8,
+          "kind": "bone-min"
+        },
+        {
+          "id": "bone-max",
+          "min": 0.001,
+          "max": 0.8,
+          "kind": "bone-max"
+        }
+      ],
+      "secondaryChains": [],
+      "contactStance": {
+        "default": "all",
+        "actions": {}
+      },
+      "contactLimitsDeg": {
+        "root": {
+          "min": -12,
+          "max": 12
+        },
+        "carapace": {
+          "min": 0,
+          "max": 0
+        },
+        "leg0FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg0FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg0NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg0NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg1FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg1FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg1NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg1NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg2FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg2FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg2NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg2NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg3FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg3FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg3NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg3NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "eyeFarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarDactylTip": {
+          "min": 0,
+          "max": 0
+        },
+        "eyeNearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeNearTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearDactylTip": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "chains": [
+      {
+        "id": "leg0Far",
+        "hip": "leg0FarRoot",
+        "knee": "leg0FarKnee",
+        "end": "leg0FarFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg0Near",
+        "hip": "leg0NearRoot",
+        "knee": "leg0NearKnee",
+        "end": "leg0NearFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg1Far",
+        "hip": "leg1FarRoot",
+        "knee": "leg1FarKnee",
+        "end": "leg1FarFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg1Near",
+        "hip": "leg1NearRoot",
+        "knee": "leg1NearKnee",
+        "end": "leg1NearFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg2Far",
+        "hip": "leg2FarRoot",
+        "knee": "leg2FarKnee",
+        "end": "leg2FarFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg2Near",
+        "hip": "leg2NearRoot",
+        "knee": "leg2NearKnee",
+        "end": "leg2NearFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg3Far",
+        "hip": "leg3FarRoot",
+        "knee": "leg3FarKnee",
+        "end": "leg3FarFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg3Near",
+        "hip": "leg3NearRoot",
+        "knee": "leg3NearKnee",
+        "end": "leg3NearFoot",
+        "terminal": null,
+        "group": 0
+      }
+    ],
+    "stances": {
+      "idle": "all",
+      "approach": "all",
+      "melee:pinch": "all",
+      "hit": "all",
+      "alert": "all",
+      "approach:scuttle": "all",
+      "cast": "all",
+      "dodge": "all",
+      "faint": "all",
+      "victory": "all",
+      "tame": "all",
+      "feed": "all"
+    }
+  },
+  {
+    "subject": "freshwater-crab",
+    "contract": {
+      "id": "brachyuran",
+      "version": 1,
+      "clipSetId": "brachyuran-v1",
+      "graph": [
+        [
+          "carapace",
+          "root"
+        ],
+        [
+          "leg0FarRoot",
+          "carapace"
+        ],
+        [
+          "leg0FarKnee",
+          "leg0FarRoot"
+        ],
+        [
+          "leg0FarFoot",
+          "leg0FarKnee"
+        ],
+        [
+          "leg0NearRoot",
+          "carapace"
+        ],
+        [
+          "leg0NearKnee",
+          "leg0NearRoot"
+        ],
+        [
+          "leg0NearFoot",
+          "leg0NearKnee"
+        ],
+        [
+          "leg1FarRoot",
+          "carapace"
+        ],
+        [
+          "leg1FarKnee",
+          "leg1FarRoot"
+        ],
+        [
+          "leg1FarFoot",
+          "leg1FarKnee"
+        ],
+        [
+          "leg1NearRoot",
+          "carapace"
+        ],
+        [
+          "leg1NearKnee",
+          "leg1NearRoot"
+        ],
+        [
+          "leg1NearFoot",
+          "leg1NearKnee"
+        ],
+        [
+          "leg2FarRoot",
+          "carapace"
+        ],
+        [
+          "leg2FarKnee",
+          "leg2FarRoot"
+        ],
+        [
+          "leg2FarFoot",
+          "leg2FarKnee"
+        ],
+        [
+          "leg2NearRoot",
+          "carapace"
+        ],
+        [
+          "leg2NearKnee",
+          "leg2NearRoot"
+        ],
+        [
+          "leg2NearFoot",
+          "leg2NearKnee"
+        ],
+        [
+          "leg3FarRoot",
+          "carapace"
+        ],
+        [
+          "leg3FarKnee",
+          "leg3FarRoot"
+        ],
+        [
+          "leg3FarFoot",
+          "leg3FarKnee"
+        ],
+        [
+          "leg3NearRoot",
+          "carapace"
+        ],
+        [
+          "leg3NearKnee",
+          "leg3NearRoot"
+        ],
+        [
+          "leg3NearFoot",
+          "leg3NearKnee"
+        ],
+        [
+          "eyeFarRoot",
+          "carapace"
+        ],
+        [
+          "eyeFarTip",
+          "eyeFarRoot"
+        ],
+        [
+          "clawFarBase",
+          "carapace"
+        ],
+        [
+          "clawFarElbow",
+          "clawFarBase"
+        ],
+        [
+          "clawFarPalm",
+          "clawFarElbow"
+        ],
+        [
+          "clawFarFixedRoot",
+          "clawFarPalm"
+        ],
+        [
+          "clawFarFixedTip",
+          "clawFarFixedRoot"
+        ],
+        [
+          "clawFarDactylRoot",
+          "clawFarPalm"
+        ],
+        [
+          "clawFarDactylTip",
+          "clawFarDactylRoot"
+        ],
+        [
+          "eyeNearRoot",
+          "carapace"
+        ],
+        [
+          "eyeNearTip",
+          "eyeNearRoot"
+        ],
+        [
+          "clawNearBase",
+          "carapace"
+        ],
+        [
+          "clawNearElbow",
+          "clawNearBase"
+        ],
+        [
+          "clawNearPalm",
+          "clawNearElbow"
+        ],
+        [
+          "clawNearFixedRoot",
+          "clawNearPalm"
+        ],
+        [
+          "clawNearFixedTip",
+          "clawNearFixedRoot"
+        ],
+        [
+          "clawNearDactylRoot",
+          "clawNearPalm"
+        ],
+        [
+          "clawNearDactylTip",
+          "clawNearDactylRoot"
+        ]
+      ],
+      "joints": [
+        "root",
+        "carapace",
+        "leg0FarRoot",
+        "leg0FarKnee",
+        "leg0FarFoot",
+        "leg0NearRoot",
+        "leg0NearKnee",
+        "leg0NearFoot",
+        "leg1FarRoot",
+        "leg1FarKnee",
+        "leg1FarFoot",
+        "leg1NearRoot",
+        "leg1NearKnee",
+        "leg1NearFoot",
+        "leg2FarRoot",
+        "leg2FarKnee",
+        "leg2FarFoot",
+        "leg2NearRoot",
+        "leg2NearKnee",
+        "leg2NearFoot",
+        "leg3FarRoot",
+        "leg3FarKnee",
+        "leg3FarFoot",
+        "leg3NearRoot",
+        "leg3NearKnee",
+        "leg3NearFoot",
+        "eyeFarRoot",
+        "eyeFarTip",
+        "clawFarBase",
+        "clawFarElbow",
+        "clawFarPalm",
+        "clawFarFixedRoot",
+        "clawFarFixedTip",
+        "clawFarDactylRoot",
+        "clawFarDactylTip",
+        "eyeNearRoot",
+        "eyeNearTip",
+        "clawNearBase",
+        "clawNearElbow",
+        "clawNearPalm",
+        "clawNearFixedRoot",
+        "clawNearFixedTip",
+        "clawNearDactylRoot",
+        "clawNearDactylTip"
+      ],
+      "legs": [
+        "leg0Far",
+        "leg0Near",
+        "leg1Far",
+        "leg1Near",
+        "leg2Far",
+        "leg2Near",
+        "leg3Far",
+        "leg3Near"
+      ],
+      "bodyAxis": [
+        "root",
+        "carapace"
+      ],
+      "roles": {
+        "legs": [
+          "leg0FarRoot",
+          "leg0FarKnee",
+          "leg0FarFoot",
+          "leg0NearRoot",
+          "leg0NearKnee",
+          "leg0NearFoot",
+          "leg1FarRoot",
+          "leg1FarKnee",
+          "leg1FarFoot",
+          "leg1NearRoot",
+          "leg1NearKnee",
+          "leg1NearFoot",
+          "leg2FarRoot",
+          "leg2FarKnee",
+          "leg2FarFoot",
+          "leg2NearRoot",
+          "leg2NearKnee",
+          "leg2NearFoot",
+          "leg3FarRoot",
+          "leg3FarKnee",
+          "leg3FarFoot",
+          "leg3NearRoot",
+          "leg3NearKnee",
+          "leg3NearFoot"
+        ],
+        "claws": [
+          "clawFarDactylRoot",
+          "clawNearDactylRoot"
+        ],
+        "reach": [
+          "clawFarBase",
+          "clawFarElbow",
+          "clawNearBase",
+          "clawNearElbow"
+        ],
+        "sensors": [
+          "eyeFarRoot",
+          "eyeNearRoot"
+        ]
+      },
+      "gaits": [
+        "scuttle"
+      ],
+      "anchored": false,
+      "rigid": [
+        "carapace",
+        "clawFarFixedRoot",
+        "clawFarFixedTip",
+        "clawNearFixedRoot",
+        "clawNearFixedTip",
+        "clawFarDactylTip",
+        "clawNearDactylTip"
+      ],
+      "optional": {},
+      "limitsDeg": {
+        "root": {
+          "min": -12,
+          "max": 12
+        },
+        "carapace": {
+          "min": 0,
+          "max": 0
+        },
+        "leg0FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarDactylTip": {
+          "min": 0,
+          "max": 0
+        },
+        "eyeNearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeNearTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearDactylTip": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "bounds": [
+        {
+          "id": "body",
+          "min": 0.04,
+          "max": 0.9,
+          "kind": "distance",
+          "axis": [
+            "root",
+            "carapace"
+          ]
+        },
+        {
+          "id": "bone-min",
+          "min": 0.001,
+          "max": 0.8,
+          "kind": "bone-min"
+        },
+        {
+          "id": "bone-max",
+          "min": 0.001,
+          "max": 0.8,
+          "kind": "bone-max"
+        }
+      ],
+      "secondaryChains": [],
+      "contactStance": {
+        "default": "all",
+        "actions": {}
+      },
+      "contactLimitsDeg": {
+        "root": {
+          "min": -12,
+          "max": 12
+        },
+        "carapace": {
+          "min": 0,
+          "max": 0
+        },
+        "leg0FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg0FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg0NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg0NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg1FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg1FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg1NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg1NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg2FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg2FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg2NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg2NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg3FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg3FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg3NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg3NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "eyeFarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarDactylTip": {
+          "min": 0,
+          "max": 0
+        },
+        "eyeNearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeNearTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearDactylTip": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "chains": [
+      {
+        "id": "leg0Far",
+        "hip": "leg0FarRoot",
+        "knee": "leg0FarKnee",
+        "end": "leg0FarFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg0Near",
+        "hip": "leg0NearRoot",
+        "knee": "leg0NearKnee",
+        "end": "leg0NearFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg1Far",
+        "hip": "leg1FarRoot",
+        "knee": "leg1FarKnee",
+        "end": "leg1FarFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg1Near",
+        "hip": "leg1NearRoot",
+        "knee": "leg1NearKnee",
+        "end": "leg1NearFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg2Far",
+        "hip": "leg2FarRoot",
+        "knee": "leg2FarKnee",
+        "end": "leg2FarFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg2Near",
+        "hip": "leg2NearRoot",
+        "knee": "leg2NearKnee",
+        "end": "leg2NearFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg3Far",
+        "hip": "leg3FarRoot",
+        "knee": "leg3FarKnee",
+        "end": "leg3FarFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg3Near",
+        "hip": "leg3NearRoot",
+        "knee": "leg3NearKnee",
+        "end": "leg3NearFoot",
+        "terminal": null,
+        "group": 0
+      }
+    ],
+    "stances": {
+      "idle": "all",
+      "approach": "all",
+      "melee:pinch": "all",
+      "hit": "all",
+      "alert": "all",
+      "approach:scuttle": "all",
+      "cast": "all",
+      "dodge": "all",
+      "faint": "all",
+      "victory": "all",
+      "tame": "all",
+      "feed": "all"
+    }
+  },
+  {
+    "subject": "mud-crab",
+    "contract": {
+      "id": "brachyuran",
+      "version": 1,
+      "clipSetId": "brachyuran-v1",
+      "graph": [
+        [
+          "carapace",
+          "root"
+        ],
+        [
+          "leg0FarRoot",
+          "carapace"
+        ],
+        [
+          "leg0FarKnee",
+          "leg0FarRoot"
+        ],
+        [
+          "leg0FarFoot",
+          "leg0FarKnee"
+        ],
+        [
+          "leg0NearRoot",
+          "carapace"
+        ],
+        [
+          "leg0NearKnee",
+          "leg0NearRoot"
+        ],
+        [
+          "leg0NearFoot",
+          "leg0NearKnee"
+        ],
+        [
+          "leg1FarRoot",
+          "carapace"
+        ],
+        [
+          "leg1FarKnee",
+          "leg1FarRoot"
+        ],
+        [
+          "leg1FarFoot",
+          "leg1FarKnee"
+        ],
+        [
+          "leg1NearRoot",
+          "carapace"
+        ],
+        [
+          "leg1NearKnee",
+          "leg1NearRoot"
+        ],
+        [
+          "leg1NearFoot",
+          "leg1NearKnee"
+        ],
+        [
+          "leg2FarRoot",
+          "carapace"
+        ],
+        [
+          "leg2FarKnee",
+          "leg2FarRoot"
+        ],
+        [
+          "leg2FarFoot",
+          "leg2FarKnee"
+        ],
+        [
+          "leg2NearRoot",
+          "carapace"
+        ],
+        [
+          "leg2NearKnee",
+          "leg2NearRoot"
+        ],
+        [
+          "leg2NearFoot",
+          "leg2NearKnee"
+        ],
+        [
+          "leg3FarRoot",
+          "carapace"
+        ],
+        [
+          "leg3FarKnee",
+          "leg3FarRoot"
+        ],
+        [
+          "leg3FarFoot",
+          "leg3FarKnee"
+        ],
+        [
+          "leg3NearRoot",
+          "carapace"
+        ],
+        [
+          "leg3NearKnee",
+          "leg3NearRoot"
+        ],
+        [
+          "leg3NearFoot",
+          "leg3NearKnee"
+        ],
+        [
+          "eyeFarRoot",
+          "carapace"
+        ],
+        [
+          "eyeFarTip",
+          "eyeFarRoot"
+        ],
+        [
+          "clawFarBase",
+          "carapace"
+        ],
+        [
+          "clawFarElbow",
+          "clawFarBase"
+        ],
+        [
+          "clawFarPalm",
+          "clawFarElbow"
+        ],
+        [
+          "clawFarFixedRoot",
+          "clawFarPalm"
+        ],
+        [
+          "clawFarFixedTip",
+          "clawFarFixedRoot"
+        ],
+        [
+          "clawFarDactylRoot",
+          "clawFarPalm"
+        ],
+        [
+          "clawFarDactylTip",
+          "clawFarDactylRoot"
+        ],
+        [
+          "eyeNearRoot",
+          "carapace"
+        ],
+        [
+          "eyeNearTip",
+          "eyeNearRoot"
+        ],
+        [
+          "clawNearBase",
+          "carapace"
+        ],
+        [
+          "clawNearElbow",
+          "clawNearBase"
+        ],
+        [
+          "clawNearPalm",
+          "clawNearElbow"
+        ],
+        [
+          "clawNearFixedRoot",
+          "clawNearPalm"
+        ],
+        [
+          "clawNearFixedTip",
+          "clawNearFixedRoot"
+        ],
+        [
+          "clawNearDactylRoot",
+          "clawNearPalm"
+        ],
+        [
+          "clawNearDactylTip",
+          "clawNearDactylRoot"
+        ]
+      ],
+      "joints": [
+        "root",
+        "carapace",
+        "leg0FarRoot",
+        "leg0FarKnee",
+        "leg0FarFoot",
+        "leg0NearRoot",
+        "leg0NearKnee",
+        "leg0NearFoot",
+        "leg1FarRoot",
+        "leg1FarKnee",
+        "leg1FarFoot",
+        "leg1NearRoot",
+        "leg1NearKnee",
+        "leg1NearFoot",
+        "leg2FarRoot",
+        "leg2FarKnee",
+        "leg2FarFoot",
+        "leg2NearRoot",
+        "leg2NearKnee",
+        "leg2NearFoot",
+        "leg3FarRoot",
+        "leg3FarKnee",
+        "leg3FarFoot",
+        "leg3NearRoot",
+        "leg3NearKnee",
+        "leg3NearFoot",
+        "eyeFarRoot",
+        "eyeFarTip",
+        "clawFarBase",
+        "clawFarElbow",
+        "clawFarPalm",
+        "clawFarFixedRoot",
+        "clawFarFixedTip",
+        "clawFarDactylRoot",
+        "clawFarDactylTip",
+        "eyeNearRoot",
+        "eyeNearTip",
+        "clawNearBase",
+        "clawNearElbow",
+        "clawNearPalm",
+        "clawNearFixedRoot",
+        "clawNearFixedTip",
+        "clawNearDactylRoot",
+        "clawNearDactylTip"
+      ],
+      "legs": [
+        "leg0Far",
+        "leg0Near",
+        "leg1Far",
+        "leg1Near",
+        "leg2Far",
+        "leg2Near",
+        "leg3Far",
+        "leg3Near"
+      ],
+      "bodyAxis": [
+        "root",
+        "carapace"
+      ],
+      "roles": {
+        "legs": [
+          "leg0FarRoot",
+          "leg0FarKnee",
+          "leg0FarFoot",
+          "leg0NearRoot",
+          "leg0NearKnee",
+          "leg0NearFoot",
+          "leg1FarRoot",
+          "leg1FarKnee",
+          "leg1FarFoot",
+          "leg1NearRoot",
+          "leg1NearKnee",
+          "leg1NearFoot",
+          "leg2FarRoot",
+          "leg2FarKnee",
+          "leg2FarFoot",
+          "leg2NearRoot",
+          "leg2NearKnee",
+          "leg2NearFoot",
+          "leg3FarRoot",
+          "leg3FarKnee",
+          "leg3FarFoot",
+          "leg3NearRoot",
+          "leg3NearKnee",
+          "leg3NearFoot"
+        ],
+        "claws": [
+          "clawFarDactylRoot",
+          "clawNearDactylRoot"
+        ],
+        "reach": [
+          "clawFarBase",
+          "clawFarElbow",
+          "clawNearBase",
+          "clawNearElbow"
+        ],
+        "sensors": [
+          "eyeFarRoot",
+          "eyeNearRoot"
+        ]
+      },
+      "gaits": [
+        "scuttle"
+      ],
+      "anchored": false,
+      "rigid": [
+        "carapace",
+        "clawFarFixedRoot",
+        "clawFarFixedTip",
+        "clawNearFixedRoot",
+        "clawNearFixedTip",
+        "clawFarDactylTip",
+        "clawNearDactylTip"
+      ],
+      "optional": {},
+      "limitsDeg": {
+        "root": {
+          "min": -12,
+          "max": 12
+        },
+        "carapace": {
+          "min": 0,
+          "max": 0
+        },
+        "leg0FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarDactylTip": {
+          "min": 0,
+          "max": 0
+        },
+        "eyeNearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeNearTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearDactylTip": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "bounds": [
+        {
+          "id": "body",
+          "min": 0.04,
+          "max": 0.9,
+          "kind": "distance",
+          "axis": [
+            "root",
+            "carapace"
+          ]
+        },
+        {
+          "id": "bone-min",
+          "min": 0.001,
+          "max": 0.8,
+          "kind": "bone-min"
+        },
+        {
+          "id": "bone-max",
+          "min": 0.001,
+          "max": 0.8,
+          "kind": "bone-max"
+        }
+      ],
+      "secondaryChains": [],
+      "contactStance": {
+        "default": "all",
+        "actions": {}
+      },
+      "contactLimitsDeg": {
+        "root": {
+          "min": -12,
+          "max": 12
+        },
+        "carapace": {
+          "min": 0,
+          "max": 0
+        },
+        "leg0FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg0FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg0NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg0NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg1FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg1FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg1NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg1NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg2FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg2FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg2NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg2NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg3FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg3FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg3NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg3NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "eyeFarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarDactylTip": {
+          "min": 0,
+          "max": 0
+        },
+        "eyeNearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeNearTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearDactylTip": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "chains": [
+      {
+        "id": "leg0Far",
+        "hip": "leg0FarRoot",
+        "knee": "leg0FarKnee",
+        "end": "leg0FarFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg0Near",
+        "hip": "leg0NearRoot",
+        "knee": "leg0NearKnee",
+        "end": "leg0NearFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg1Far",
+        "hip": "leg1FarRoot",
+        "knee": "leg1FarKnee",
+        "end": "leg1FarFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg1Near",
+        "hip": "leg1NearRoot",
+        "knee": "leg1NearKnee",
+        "end": "leg1NearFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg2Far",
+        "hip": "leg2FarRoot",
+        "knee": "leg2FarKnee",
+        "end": "leg2FarFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg2Near",
+        "hip": "leg2NearRoot",
+        "knee": "leg2NearKnee",
+        "end": "leg2NearFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg3Far",
+        "hip": "leg3FarRoot",
+        "knee": "leg3FarKnee",
+        "end": "leg3FarFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg3Near",
+        "hip": "leg3NearRoot",
+        "knee": "leg3NearKnee",
+        "end": "leg3NearFoot",
+        "terminal": null,
+        "group": 0
+      }
+    ],
+    "stances": {
+      "idle": "all",
+      "approach": "all",
+      "melee:pinch": "all",
+      "hit": "all",
+      "alert": "all",
+      "approach:scuttle": "all",
+      "cast": "all",
+      "dodge": "all",
+      "faint": "all",
+      "victory": "all",
+      "tame": "all",
+      "feed": "all"
+    }
+  },
+  {
+    "subject": "vent-crab",
+    "contract": {
+      "id": "brachyuran",
+      "version": 1,
+      "clipSetId": "brachyuran-v1",
+      "graph": [
+        [
+          "carapace",
+          "root"
+        ],
+        [
+          "leg0FarRoot",
+          "carapace"
+        ],
+        [
+          "leg0FarKnee",
+          "leg0FarRoot"
+        ],
+        [
+          "leg0FarFoot",
+          "leg0FarKnee"
+        ],
+        [
+          "leg0NearRoot",
+          "carapace"
+        ],
+        [
+          "leg0NearKnee",
+          "leg0NearRoot"
+        ],
+        [
+          "leg0NearFoot",
+          "leg0NearKnee"
+        ],
+        [
+          "leg1FarRoot",
+          "carapace"
+        ],
+        [
+          "leg1FarKnee",
+          "leg1FarRoot"
+        ],
+        [
+          "leg1FarFoot",
+          "leg1FarKnee"
+        ],
+        [
+          "leg1NearRoot",
+          "carapace"
+        ],
+        [
+          "leg1NearKnee",
+          "leg1NearRoot"
+        ],
+        [
+          "leg1NearFoot",
+          "leg1NearKnee"
+        ],
+        [
+          "leg2FarRoot",
+          "carapace"
+        ],
+        [
+          "leg2FarKnee",
+          "leg2FarRoot"
+        ],
+        [
+          "leg2FarFoot",
+          "leg2FarKnee"
+        ],
+        [
+          "leg2NearRoot",
+          "carapace"
+        ],
+        [
+          "leg2NearKnee",
+          "leg2NearRoot"
+        ],
+        [
+          "leg2NearFoot",
+          "leg2NearKnee"
+        ],
+        [
+          "leg3FarRoot",
+          "carapace"
+        ],
+        [
+          "leg3FarKnee",
+          "leg3FarRoot"
+        ],
+        [
+          "leg3FarFoot",
+          "leg3FarKnee"
+        ],
+        [
+          "leg3NearRoot",
+          "carapace"
+        ],
+        [
+          "leg3NearKnee",
+          "leg3NearRoot"
+        ],
+        [
+          "leg3NearFoot",
+          "leg3NearKnee"
+        ],
+        [
+          "eyeFarRoot",
+          "carapace"
+        ],
+        [
+          "eyeFarTip",
+          "eyeFarRoot"
+        ],
+        [
+          "clawFarBase",
+          "carapace"
+        ],
+        [
+          "clawFarElbow",
+          "clawFarBase"
+        ],
+        [
+          "clawFarPalm",
+          "clawFarElbow"
+        ],
+        [
+          "clawFarFixedRoot",
+          "clawFarPalm"
+        ],
+        [
+          "clawFarFixedTip",
+          "clawFarFixedRoot"
+        ],
+        [
+          "clawFarDactylRoot",
+          "clawFarPalm"
+        ],
+        [
+          "clawFarDactylTip",
+          "clawFarDactylRoot"
+        ],
+        [
+          "eyeNearRoot",
+          "carapace"
+        ],
+        [
+          "eyeNearTip",
+          "eyeNearRoot"
+        ],
+        [
+          "clawNearBase",
+          "carapace"
+        ],
+        [
+          "clawNearElbow",
+          "clawNearBase"
+        ],
+        [
+          "clawNearPalm",
+          "clawNearElbow"
+        ],
+        [
+          "clawNearFixedRoot",
+          "clawNearPalm"
+        ],
+        [
+          "clawNearFixedTip",
+          "clawNearFixedRoot"
+        ],
+        [
+          "clawNearDactylRoot",
+          "clawNearPalm"
+        ],
+        [
+          "clawNearDactylTip",
+          "clawNearDactylRoot"
+        ]
+      ],
+      "joints": [
+        "root",
+        "carapace",
+        "leg0FarRoot",
+        "leg0FarKnee",
+        "leg0FarFoot",
+        "leg0NearRoot",
+        "leg0NearKnee",
+        "leg0NearFoot",
+        "leg1FarRoot",
+        "leg1FarKnee",
+        "leg1FarFoot",
+        "leg1NearRoot",
+        "leg1NearKnee",
+        "leg1NearFoot",
+        "leg2FarRoot",
+        "leg2FarKnee",
+        "leg2FarFoot",
+        "leg2NearRoot",
+        "leg2NearKnee",
+        "leg2NearFoot",
+        "leg3FarRoot",
+        "leg3FarKnee",
+        "leg3FarFoot",
+        "leg3NearRoot",
+        "leg3NearKnee",
+        "leg3NearFoot",
+        "eyeFarRoot",
+        "eyeFarTip",
+        "clawFarBase",
+        "clawFarElbow",
+        "clawFarPalm",
+        "clawFarFixedRoot",
+        "clawFarFixedTip",
+        "clawFarDactylRoot",
+        "clawFarDactylTip",
+        "eyeNearRoot",
+        "eyeNearTip",
+        "clawNearBase",
+        "clawNearElbow",
+        "clawNearPalm",
+        "clawNearFixedRoot",
+        "clawNearFixedTip",
+        "clawNearDactylRoot",
+        "clawNearDactylTip"
+      ],
+      "legs": [
+        "leg0Far",
+        "leg0Near",
+        "leg1Far",
+        "leg1Near",
+        "leg2Far",
+        "leg2Near",
+        "leg3Far",
+        "leg3Near"
+      ],
+      "bodyAxis": [
+        "root",
+        "carapace"
+      ],
+      "roles": {
+        "legs": [
+          "leg0FarRoot",
+          "leg0FarKnee",
+          "leg0FarFoot",
+          "leg0NearRoot",
+          "leg0NearKnee",
+          "leg0NearFoot",
+          "leg1FarRoot",
+          "leg1FarKnee",
+          "leg1FarFoot",
+          "leg1NearRoot",
+          "leg1NearKnee",
+          "leg1NearFoot",
+          "leg2FarRoot",
+          "leg2FarKnee",
+          "leg2FarFoot",
+          "leg2NearRoot",
+          "leg2NearKnee",
+          "leg2NearFoot",
+          "leg3FarRoot",
+          "leg3FarKnee",
+          "leg3FarFoot",
+          "leg3NearRoot",
+          "leg3NearKnee",
+          "leg3NearFoot"
+        ],
+        "claws": [
+          "clawFarDactylRoot",
+          "clawNearDactylRoot"
+        ],
+        "reach": [
+          "clawFarBase",
+          "clawFarElbow",
+          "clawNearBase",
+          "clawNearElbow"
+        ],
+        "sensors": [
+          "eyeFarRoot",
+          "eyeNearRoot"
+        ]
+      },
+      "gaits": [
+        "scuttle"
+      ],
+      "anchored": false,
+      "rigid": [
+        "carapace",
+        "clawFarFixedRoot",
+        "clawFarFixedTip",
+        "clawNearFixedRoot",
+        "clawNearFixedTip",
+        "clawFarDactylTip",
+        "clawNearDactylTip"
+      ],
+      "optional": {},
+      "limitsDeg": {
+        "root": {
+          "min": -12,
+          "max": 12
+        },
+        "carapace": {
+          "min": 0,
+          "max": 0
+        },
+        "leg0FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearKnee": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearFoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarDactylTip": {
+          "min": 0,
+          "max": 0
+        },
+        "eyeNearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeNearTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearDactylTip": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "bounds": [
+        {
+          "id": "body",
+          "min": 0.04,
+          "max": 0.9,
+          "kind": "distance",
+          "axis": [
+            "root",
+            "carapace"
+          ]
+        },
+        {
+          "id": "bone-min",
+          "min": 0.001,
+          "max": 0.8,
+          "kind": "bone-min"
+        },
+        {
+          "id": "bone-max",
+          "min": 0.001,
+          "max": 0.8,
+          "kind": "bone-max"
+        }
+      ],
+      "secondaryChains": [],
+      "contactStance": {
+        "default": "all",
+        "actions": {}
+      },
+      "contactLimitsDeg": {
+        "root": {
+          "min": -12,
+          "max": 12
+        },
+        "carapace": {
+          "min": 0,
+          "max": 0
+        },
+        "leg0FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg0FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg0NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg0NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg0NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg1FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg1FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg1NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg1NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg1NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg2FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg2FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg2NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg2NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg2NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg3FarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3FarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg3FarFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "leg3NearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "leg3NearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "leg3NearFoot": {
+          "min": -105,
+          "max": 105
+        },
+        "eyeFarRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeFarTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawFarDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawFarDactylTip": {
+          "min": 0,
+          "max": 0
+        },
+        "eyeNearRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "eyeNearTip": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearBase": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearElbow": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearPalm": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearFixedRoot": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearFixedTip": {
+          "min": 0,
+          "max": 0
+        },
+        "clawNearDactylRoot": {
+          "min": -35,
+          "max": 35
+        },
+        "clawNearDactylTip": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "chains": [
+      {
+        "id": "leg0Far",
+        "hip": "leg0FarRoot",
+        "knee": "leg0FarKnee",
+        "end": "leg0FarFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg0Near",
+        "hip": "leg0NearRoot",
+        "knee": "leg0NearKnee",
+        "end": "leg0NearFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg1Far",
+        "hip": "leg1FarRoot",
+        "knee": "leg1FarKnee",
+        "end": "leg1FarFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg1Near",
+        "hip": "leg1NearRoot",
+        "knee": "leg1NearKnee",
+        "end": "leg1NearFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg2Far",
+        "hip": "leg2FarRoot",
+        "knee": "leg2FarKnee",
+        "end": "leg2FarFoot",
+        "terminal": null,
+        "group": 0
+      },
+      {
+        "id": "leg2Near",
+        "hip": "leg2NearRoot",
+        "knee": "leg2NearKnee",
+        "end": "leg2NearFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg3Far",
+        "hip": "leg3FarRoot",
+        "knee": "leg3FarKnee",
+        "end": "leg3FarFoot",
+        "terminal": null,
+        "group": 1
+      },
+      {
+        "id": "leg3Near",
+        "hip": "leg3NearRoot",
+        "knee": "leg3NearKnee",
+        "end": "leg3NearFoot",
+        "terminal": null,
+        "group": 0
+      }
+    ],
+    "stances": {
+      "idle": "all",
+      "approach": "all",
+      "melee:pinch": "all",
+      "hit": "all",
+      "alert": "all",
+      "approach:scuttle": "all",
+      "cast": "all",
+      "dodge": "all",
+      "faint": "all",
+      "victory": "all",
+      "tame": "all",
+      "feed": "all"
+    }
+  },
+  {
+    "subject": "civet",
+    "contract": {
+      "id": "quadruped",
+      "version": 1,
+      "clipSetId": "quadruped-land-v1",
+      "graph": [
+        [
+          "pelvis",
+          "root"
+        ],
+        [
+          "spine",
+          "pelvis"
+        ],
+        [
+          "chest",
+          "spine"
+        ],
+        [
+          "neck",
+          "chest"
+        ],
+        [
+          "head",
+          "neck"
+        ],
+        [
+          "jaw",
+          "head"
+        ],
+        [
+          "hindFarRoot",
+          "pelvis"
+        ],
+        [
+          "hindFarKnee",
+          "hindFarRoot"
+        ],
+        [
+          "hindFarAnkle",
+          "hindFarKnee"
+        ],
+        [
+          "hindFarPaw",
+          "hindFarAnkle"
+        ],
+        [
+          "foreFarRoot",
+          "chest"
+        ],
+        [
+          "foreFarKnee",
+          "foreFarRoot"
+        ],
+        [
+          "foreFarAnkle",
+          "foreFarKnee"
+        ],
+        [
+          "foreFarPaw",
+          "foreFarAnkle"
+        ],
+        [
+          "hindNearRoot",
+          "pelvis"
+        ],
+        [
+          "hindNearKnee",
+          "hindNearRoot"
+        ],
+        [
+          "hindNearAnkle",
+          "hindNearKnee"
+        ],
+        [
+          "hindNearPaw",
+          "hindNearAnkle"
+        ],
+        [
+          "foreNearRoot",
+          "chest"
+        ],
+        [
+          "foreNearKnee",
+          "foreNearRoot"
+        ],
+        [
+          "foreNearAnkle",
+          "foreNearKnee"
+        ],
+        [
+          "foreNearPaw",
+          "foreNearAnkle"
+        ],
+        [
+          "tail0",
+          "pelvis"
+        ],
+        [
+          "tail1",
+          "tail0"
+        ],
+        [
+          "tail2",
+          "tail1"
+        ],
+        [
+          "tail3",
+          "tail2"
+        ],
+        [
+          "earFarRoot",
+          "head"
+        ],
+        [
+          "earFarTip",
+          "earFarRoot"
+        ],
+        [
+          "earNearRoot",
+          "head"
+        ],
+        [
+          "earNearTip",
+          "earNearRoot"
+        ]
+      ],
+      "bodyAxis": [
+        "pelvis",
+        "chest"
+      ],
+      "joints": [
+        "root",
+        "pelvis",
+        "spine",
+        "chest",
+        "neck",
+        "head",
+        "jaw",
+        "hindFarRoot",
+        "hindFarKnee",
+        "hindFarAnkle",
+        "hindFarPaw",
+        "foreFarRoot",
+        "foreFarKnee",
+        "foreFarAnkle",
+        "foreFarPaw",
+        "hindNearRoot",
+        "hindNearKnee",
+        "hindNearAnkle",
+        "hindNearPaw",
+        "foreNearRoot",
+        "foreNearKnee",
+        "foreNearAnkle",
+        "foreNearPaw",
+        "tail0",
+        "tail1",
+        "tail2",
+        "tail3",
+        "earFarRoot",
+        "earFarTip",
+        "earNearRoot",
+        "earNearTip"
+      ],
+      "legs": [
+        "hindFar",
+        "foreFar",
+        "hindNear",
+        "foreNear"
+      ],
+      "limitsDeg": {
+        "root": {
+          "min": -15,
+          "max": 15
+        },
+        "pelvis": {
+          "min": -20,
+          "max": 20
+        },
+        "spine": {
+          "min": -25,
+          "max": 25
+        },
+        "chest": {
+          "min": -20,
+          "max": 20
+        },
+        "neck": {
+          "min": -35,
+          "max": 35
+        },
+        "head": {
+          "min": -35,
+          "max": 35
+        },
+        "jaw": {
+          "min": -30,
+          "max": 5
+        },
+        "hindFarRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "hindFarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "hindFarAnkle": {
+          "min": -60,
+          "max": 60
+        },
+        "hindFarPaw": {
+          "min": -40,
+          "max": 40
+        },
+        "foreFarRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "foreFarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "foreFarAnkle": {
+          "min": -60,
+          "max": 60
+        },
+        "foreFarPaw": {
+          "min": -40,
+          "max": 40
+        },
+        "hindNearRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "hindNearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "hindNearAnkle": {
+          "min": -60,
+          "max": 60
+        },
+        "hindNearPaw": {
+          "min": -40,
+          "max": 40
+        },
+        "foreNearRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "foreNearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "foreNearAnkle": {
+          "min": -60,
+          "max": 60
+        },
+        "foreNearPaw": {
+          "min": -40,
+          "max": 40
+        },
+        "tail0": {
+          "min": -40,
+          "max": 40
+        },
+        "tail1": {
+          "min": -50,
+          "max": 50
+        },
+        "tail2": {
+          "min": -50,
+          "max": 50
+        },
+        "tail3": {
+          "min": -50,
+          "max": 50
+        },
+        "earFarRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "earFarTip": {
+          "min": -40,
+          "max": 40
+        },
+        "earNearRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "earNearTip": {
+          "min": -40,
+          "max": 40
+        }
+      },
+      "bounds": [
+        {
+          "id": "torso",
+          "min": 0.08,
+          "max": 0.65,
+          "kind": "distance",
+          "axis": [
+            "pelvis",
+            "chest"
+          ]
+        },
+        {
+          "id": "head",
+          "min": 0.015,
+          "max": 0.75,
+          "kind": "distance",
+          "axis": [
+            "neck",
+            "head"
+          ]
+        },
+        {
+          "id": "head/torso",
+          "min": 0.02,
+          "max": 1.6,
+          "kind": "ratio",
+          "bones": [
+            "head"
+          ],
+          "axis": [
+            "pelvis",
+            "chest"
+          ]
+        },
+        {
+          "id": "bone-min",
+          "min": 0.001,
+          "max": 0.75,
+          "kind": "bone-min"
+        },
+        {
+          "id": "bone-max",
+          "min": 0.001,
+          "max": 0.75,
+          "kind": "bone-max"
+        },
+        {
+          "id": "leg/torso:hindFar",
+          "min": 0.25,
+          "max": 2.7,
+          "kind": "ratio",
+          "bones": [
+            "hindFarKnee",
+            "hindFarAnkle",
+            "hindFarPaw"
+          ],
+          "axis": [
+            "pelvis",
+            "chest"
+          ]
+        },
+        {
+          "id": "leg/torso:foreFar",
+          "min": 0.25,
+          "max": 2.7,
+          "kind": "ratio",
+          "bones": [
+            "foreFarKnee",
+            "foreFarAnkle",
+            "foreFarPaw"
+          ],
+          "axis": [
+            "pelvis",
+            "chest"
+          ]
+        },
+        {
+          "id": "leg/torso:hindNear",
+          "min": 0.25,
+          "max": 2.7,
+          "kind": "ratio",
+          "bones": [
+            "hindNearKnee",
+            "hindNearAnkle",
+            "hindNearPaw"
+          ],
+          "axis": [
+            "pelvis",
+            "chest"
+          ]
+        },
+        {
+          "id": "leg/torso:foreNear",
+          "min": 0.25,
+          "max": 2.7,
+          "kind": "ratio",
+          "bones": [
+            "foreNearKnee",
+            "foreNearAnkle",
+            "foreNearPaw"
+          ],
+          "axis": [
+            "pelvis",
+            "chest"
+          ]
+        }
+      ],
+      "contactStance": {
+        "default": "all",
+        "gaits": {
+          "approach:walk": "alternating",
+          "approach:trot": "alternating",
+          "approach:gallop": "bounding"
+        },
+        "actions": {
+          "idle": "all",
+          "alert": "all",
+          "hit": "all",
+          "feed": "all",
+          "tame": "all",
+          "faint": "all",
+          "approach": "all",
+          "melee:*": "hind",
+          "cast": "hind",
+          "victory": "hind",
+          "dodge": "none",
+          "melee:kick": "none"
+        }
+      },
+      "contactLimitsDeg": {
+        "root": {
+          "min": -15,
+          "max": 15
+        },
+        "pelvis": {
+          "min": -20,
+          "max": 20
+        },
+        "spine": {
+          "min": -25,
+          "max": 25
+        },
+        "chest": {
+          "min": -20,
+          "max": 20
+        },
+        "neck": {
+          "min": -35,
+          "max": 35
+        },
+        "head": {
+          "min": -35,
+          "max": 35
+        },
+        "jaw": {
+          "min": -30,
+          "max": 5
+        },
+        "hindFarRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "hindFarKnee": {
+          "min": -100,
+          "max": 100
+        },
+        "hindFarAnkle": {
+          "min": -105,
+          "max": 105
+        },
+        "hindFarPaw": {
+          "min": -95,
+          "max": 95
+        },
+        "foreFarRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "foreFarKnee": {
+          "min": -100,
+          "max": 100
+        },
+        "foreFarAnkle": {
+          "min": -105,
+          "max": 105
+        },
+        "foreFarPaw": {
+          "min": -95,
+          "max": 95
+        },
+        "hindNearRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "hindNearKnee": {
+          "min": -100,
+          "max": 100
+        },
+        "hindNearAnkle": {
+          "min": -105,
+          "max": 105
+        },
+        "hindNearPaw": {
+          "min": -95,
+          "max": 95
+        },
+        "foreNearRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "foreNearKnee": {
+          "min": -100,
+          "max": 100
+        },
+        "foreNearAnkle": {
+          "min": -105,
+          "max": 105
+        },
+        "foreNearPaw": {
+          "min": -95,
+          "max": 95
+        },
+        "tail0": {
+          "min": -40,
+          "max": 40
+        },
+        "tail1": {
+          "min": -50,
+          "max": 50
+        },
+        "tail2": {
+          "min": -50,
+          "max": 50
+        },
+        "tail3": {
+          "min": -50,
+          "max": 50
+        },
+        "earFarRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "earFarTip": {
+          "min": -40,
+          "max": 40
+        },
+        "earNearRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "earNearTip": {
+          "min": -40,
+          "max": 40
+        }
+      }
+    },
+    "chains": [
+      {
+        "id": "hindFar",
+        "hip": "hindFarRoot",
+        "knee": "hindFarKnee",
+        "end": "hindFarAnkle",
+        "terminal": "hindFarPaw",
+        "group": 0
+      },
+      {
+        "id": "foreFar",
+        "hip": "foreFarRoot",
+        "knee": "foreFarKnee",
+        "end": "foreFarAnkle",
+        "terminal": "foreFarPaw",
+        "group": 1
+      },
+      {
+        "id": "hindNear",
+        "hip": "hindNearRoot",
+        "knee": "hindNearKnee",
+        "end": "hindNearAnkle",
+        "terminal": "hindNearPaw",
+        "group": 1
+      },
+      {
+        "id": "foreNear",
+        "hip": "foreNearRoot",
+        "knee": "foreNearKnee",
+        "end": "foreNearAnkle",
+        "terminal": "foreNearPaw",
+        "group": 0
+      }
+    ],
+    "stances": {
+      "idle": "all",
+      "approach": "all",
+      "melee:bite": "hind",
+      "hit": "all",
+      "alert": "all",
+      "approach:walk": "all",
+      "approach:trot": "all",
+      "approach:gallop": "all",
+      "approach:hop": "all",
+      "melee:claw": "hind",
+      "melee:gore": "hind",
+      "melee:tail": "hind",
+      "melee:headbutt": "hind",
+      "cast": "hind",
+      "dodge": "none",
+      "faint": "all",
+      "victory": "hind",
+      "tame": "all",
+      "feed": "all",
+      "melee:kick": "none"
+    }
+  }
+]

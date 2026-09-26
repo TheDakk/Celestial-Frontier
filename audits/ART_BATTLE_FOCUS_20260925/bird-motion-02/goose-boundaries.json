@@ -1,0 +1,5 @@
+{
+ "author":"Codex",
+ "pairs":[["body","near-wing-shoulder"],["body","far-wing-shoulder"],["far-wing-shoulder","neck-lower"],["near-wing-shoulder","neck-lower"]],
+ "reason":"The four proximal shoulder/body/neck feather junctions are connected paint in this single master. Native impact shows small openings here. Distal wing overlap edges, near/far wings and legs remain independent. This declaration is authored from the retained master and film, not inferred from the excluded-adjacency list."
+}

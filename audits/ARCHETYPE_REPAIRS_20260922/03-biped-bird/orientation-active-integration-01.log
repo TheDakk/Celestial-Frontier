@@ -1,0 +1,11 @@
+✔ actual fish cast uses the admitted active leaf with exact full solver and queue bytes (53.60675ms)
+✔ unavailable runtime preserves the actual active fish cast through the original JS path (26.837792ms)
+✔ post-private-active-work runtime trap preserves every live byte before fallback and disables the leaf (42.439084ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 219.723125

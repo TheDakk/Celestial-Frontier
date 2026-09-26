@@ -1,0 +1,534 @@
+{
+  "id": "bass",
+  "family": "fish",
+  "landmarksPx": {
+    "root": [
+      940,
+      619
+    ],
+    "head": [
+      1081,
+      593
+    ],
+    "jaw": [
+      1132,
+      715
+    ],
+    "spine0": [
+      862,
+      591
+    ],
+    "spine1": [
+      757,
+      586
+    ],
+    "spine2": [
+      641,
+      591
+    ],
+    "spine3": [
+      522,
+      594
+    ],
+    "spine4": [
+      400,
+      598
+    ],
+    "spine5": [
+      279,
+      595
+    ],
+    "caudal": [
+      153,
+      594
+    ],
+    "dorsal": [
+      644,
+      410
+    ],
+    "pectoralNear": [
+      850,
+      678
+    ],
+    "pectoralFar": [
+      912,
+      726
+    ]
+  },
+  "groundLineY": 0.75,
+  "materials": {
+    "surface": "plain olive-silver painted scales and translucent fin rays; no pigment markings"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "polygonPx": [
+        [
+          681,
+          597
+        ],
+        [
+          730,
+          595
+        ],
+        [
+          814,
+          623
+        ],
+        [
+          886,
+          650
+        ],
+        [
+          889,
+          708
+        ],
+        [
+          803,
+          741
+        ],
+        [
+          729,
+          723
+        ],
+        [
+          678,
+          650
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "polygonPx": [
+        [
+          894,
+          699
+        ],
+        [
+          927,
+          698
+        ],
+        [
+          941,
+          749
+        ],
+        [
+          913,
+          809
+        ],
+        [
+          882,
+          830
+        ],
+        [
+          854,
+          762
+        ],
+        [
+          862,
+          723
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "polygonPx": [
+        [
+          1020,
+          691
+        ],
+        [
+          1133,
+          679
+        ],
+        [
+          1248,
+          674
+        ],
+        [
+          1253,
+          743
+        ],
+        [
+          1088,
+          785
+        ],
+        [
+          1016,
+          733
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "polygonPx": [
+        [
+          981,
+          499
+        ],
+        [
+          1094,
+          508
+        ],
+        [
+          1253,
+          542
+        ],
+        [
+          1253,
+          701
+        ],
+        [
+          1162,
+          738
+        ],
+        [
+          1022,
+          747
+        ],
+        [
+          961,
+          670
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "polygonPx": [
+        [
+          307,
+          299
+        ],
+        [
+          834,
+          287
+        ],
+        [
+          845,
+          407
+        ],
+        [
+          681,
+          427
+        ],
+        [
+          536,
+          456
+        ],
+        [
+          381,
+          513
+        ],
+        [
+          317,
+          505
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "pelvic-near",
+      "joint": "spine0",
+      "polygonPx": [
+        [
+          826,
+          756
+        ],
+        [
+          878,
+          761
+        ],
+        [
+          844,
+          859
+        ],
+        [
+          783,
+          926
+        ],
+        [
+          751,
+          850
+        ],
+        [
+          766,
+          786
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "pelvic-far",
+      "joint": "spine0",
+      "polygonPx": [
+        [
+          746,
+          785
+        ],
+        [
+          798,
+          773
+        ],
+        [
+          779,
+          838
+        ],
+        [
+          713,
+          894
+        ],
+        [
+          698,
+          875
+        ],
+        [
+          710,
+          814
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "anal",
+      "joint": "spine3",
+      "polygonPx": [
+        [
+          326,
+          686
+        ],
+        [
+          405,
+          682
+        ],
+        [
+          530,
+          748
+        ],
+        [
+          492,
+          790
+        ],
+        [
+          389,
+          865
+        ],
+        [
+          329,
+          832
+        ],
+        [
+          306,
+          747
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "polygonPx": [
+        [
+          0,
+          369
+        ],
+        [
+          111,
+          390
+        ],
+        [
+          253,
+          508
+        ],
+        [
+          247,
+          686
+        ],
+        [
+          100,
+          800
+        ],
+        [
+          0,
+          811
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "body-0",
+      "joint": "spine0",
+      "polygonPx": [
+        [
+          793,
+          405
+        ],
+        [
+          898,
+          405
+        ],
+        [
+          898,
+          817
+        ],
+        [
+          793,
+          817
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "body-1",
+      "joint": "spine1",
+      "polygonPx": [
+        [
+          693,
+          405
+        ],
+        [
+          794,
+          405
+        ],
+        [
+          794,
+          817
+        ],
+        [
+          693,
+          817
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "body-2",
+      "joint": "spine2",
+      "polygonPx": [
+        [
+          581,
+          405
+        ],
+        [
+          694,
+          405
+        ],
+        [
+          694,
+          817
+        ],
+        [
+          581,
+          817
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "body-3",
+      "joint": "spine3",
+      "polygonPx": [
+        [
+          462,
+          405
+        ],
+        [
+          582,
+          405
+        ],
+        [
+          582,
+          817
+        ],
+        [
+          462,
+          817
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "body-4",
+      "joint": "spine4",
+      "polygonPx": [
+        [
+          341,
+          405
+        ],
+        [
+          463,
+          405
+        ],
+        [
+          463,
+          817
+        ],
+        [
+          341,
+          817
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "body-5",
+      "joint": "spine5",
+      "polygonPx": [
+        [
+          231,
+          405
+        ],
+        [
+          342,
+          405
+        ],
+        [
+          342,
+          817
+        ],
+        [
+          231,
+          817
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "polygonPx": [
+        [
+          891,
+          406
+        ],
+        [
+          995,
+          406
+        ],
+        [
+          995,
+          807
+        ],
+        [
+          891,
+          807
+        ]
+      ],
+      "layer": "near"
+    }
+  ],
+  "coverage": {
+    "declarations": "Two separately visible pectorals after explicit correction, two pelvic fins carried by spine0, one anal carried by spine3, one joined dorsal, one caudal. Mandatory jaw/head/spine inventory present. No hidden/absent/folded anatomy.",
+    "sourceFacing": "right",
+    "visualAcceptance": "Nick pending; exact manual authoring, no other asset labels reused"
+  }
+}

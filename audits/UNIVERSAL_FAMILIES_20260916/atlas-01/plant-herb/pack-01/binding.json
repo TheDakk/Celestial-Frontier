@@ -1,0 +1,318 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "292ee13b6fc0bf8ac804b29a2207b73a7f3a1ccdc41f3ac0814cbf8a9e8d50c2",
+  "atlasSha256": "9347971c3dae24da58010651fcb815f20726d06ca25de628afc25339eb93c815",
+  "atlasSize": {
+    "width": 34,
+    "height": 1932
+  },
+  "parts": [
+    {
+      "id": "part-00",
+      "joint": "root",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 8,
+        "height": 128
+      },
+      "cutout": {
+        "x": 0,
+        "y": 0,
+        "width": 8,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-01",
+      "joint": "stem0Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 143,
+        "width": 8,
+        "height": 128
+      },
+      "cutout": {
+        "x": 8,
+        "y": 0,
+        "width": 8,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-02",
+      "joint": "stem0Seg1",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1247,
+        "width": 7,
+        "height": 128
+      },
+      "cutout": {
+        "x": 16,
+        "y": 0,
+        "width": 7,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-03",
+      "joint": "stem0Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 281,
+        "width": 8,
+        "height": 128
+      },
+      "cutout": {
+        "x": 23,
+        "y": 0,
+        "width": 8,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-04",
+      "joint": "frond0",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1385,
+        "width": 7,
+        "height": 128
+      },
+      "cutout": {
+        "x": 31,
+        "y": 0,
+        "width": 7,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-05",
+      "joint": "stem1Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 419,
+        "width": 8,
+        "height": 128
+      },
+      "cutout": {
+        "x": 38,
+        "y": 0,
+        "width": 8,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-06",
+      "joint": "stem1Seg1",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1523,
+        "width": 7,
+        "height": 128
+      },
+      "cutout": {
+        "x": 46,
+        "y": 0,
+        "width": 7,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-07",
+      "joint": "stem1Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 557,
+        "width": 8,
+        "height": 128
+      },
+      "cutout": {
+        "x": 53,
+        "y": 0,
+        "width": 8,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-08",
+      "joint": "frond1",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1661,
+        "width": 7,
+        "height": 128
+      },
+      "cutout": {
+        "x": 61,
+        "y": 0,
+        "width": 7,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-09",
+      "joint": "stem2Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 695,
+        "width": 8,
+        "height": 128
+      },
+      "cutout": {
+        "x": 68,
+        "y": 0,
+        "width": 8,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-10",
+      "joint": "stem2Seg1",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1799,
+        "width": 7,
+        "height": 128
+      },
+      "cutout": {
+        "x": 76,
+        "y": 0,
+        "width": 7,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-11",
+      "joint": "stem2Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 833,
+        "width": 8,
+        "height": 128
+      },
+      "cutout": {
+        "x": 83,
+        "y": 0,
+        "width": 8,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-12",
+      "joint": "frond2",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 22,
+        "y": 1247,
+        "width": 7,
+        "height": 128
+      },
+      "cutout": {
+        "x": 91,
+        "y": 0,
+        "width": 7,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-13",
+      "joint": "stem3Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 971,
+        "width": 8,
+        "height": 128
+      },
+      "cutout": {
+        "x": 98,
+        "y": 0,
+        "width": 8,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-14",
+      "joint": "stem3Seg1",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 22,
+        "y": 1385,
+        "width": 7,
+        "height": 128
+      },
+      "cutout": {
+        "x": 106,
+        "y": 0,
+        "width": 7,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-15",
+      "joint": "stem3Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1109,
+        "width": 8,
+        "height": 128
+      },
+      "cutout": {
+        "x": 113,
+        "y": 0,
+        "width": 8,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-16",
+      "joint": "frond3",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 22,
+        "y": 1523,
+        "width": 7,
+        "height": 128
+      },
+      "cutout": {
+        "x": 121,
+        "y": 0,
+        "width": 7,
+        "height": 128
+      }
+    }
+  ],
+  "bindingHash": "50f7a1ec1f328c51fd50a868d1935d42ebb9ff481ab5da88bfc5ebe0bf9aa573"
+}

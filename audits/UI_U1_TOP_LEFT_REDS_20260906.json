@@ -1,0 +1,58 @@
+{
+  "schema": "cf-u1-top-left-red-history/v1",
+  "attempts": [
+    {
+      "source": "00675120bd5c69136c3e21aeaf2c05cce2705df8",
+      "status": "stopped",
+      "stage": "slice",
+      "runId": "20260906121642484-99852-08bf398578e9",
+      "durationMs": 376433,
+      "failure": "[phone] PHONE: pinch-out did not zoom (z 0.511875 \u2192 0.511875)",
+      "evidence": "UI_U1_TOP_LEFT_0067512_20260906/manifest.json",
+      "passedBeforeStop": [
+        "typecheck",
+        "artunused",
+        "Vitest311/3314/1skip",
+        "Glass selftest",
+        "normal build",
+        "three-view normal review,63 native deliveries"
+      ],
+      "glass": "not run",
+      "cause": "Product hit ownership regression: long Chapter3 objective in phone A++/mono spans approximately x10\u2013166/y234\u2013486 CSS pixels; first unchanged gesture contact150,400 hits parent sceneactions rather than root canvas. The objective child was transparent but the newly enclosing nav was not.",
+      "correction": "Transparent sceneactions layout wrapper, explicit pointer-events:auto on native buttons. Preserve original native gesture coordinates and >1.15 zoom assertion; prove objective/root-canvas ownership, reject restoring nav auto input, restore exactly."
+    },
+    {
+      "source": "3e65afaace952f6e34c366058f411ad598f23458",
+      "status": "pass",
+      "evidence": "UI_U1_TOP_LEFT_3e65afa_20260906/manifest.json",
+      "sliceRunId": "20260906123217459-2399-a9aa2923bcf9",
+      "correctionOutcome": {
+        "originalContacts": [
+          [
+            150,
+            400
+          ],
+          [
+            240,
+            400
+          ]
+        ],
+        "objectiveRect": [
+          10,
+          234,
+          166,
+          486.5
+        ],
+        "objectiveCenterCanvas": true,
+        "reintroducedAutoHitOwner": "sceneactions",
+        "restoration": true,
+        "trustedCanvasTouchPointers": 2,
+        "z0": 0.511875,
+        "z1": 1.194375
+      },
+      "glass": "small-phone and large-phone targeted diagnostics pass, zero findings/instrument failures",
+      "hostedAttempts": 0
+    }
+  ],
+  "priorUnresolvedNavigationObservation": "UI_U1_LAUNCHER_REDS_20260906.json retains6a88f85; no product repair established for that separate observation."
+}

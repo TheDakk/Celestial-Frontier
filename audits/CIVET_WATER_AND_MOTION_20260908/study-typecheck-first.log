@@ -1,0 +1,10 @@
+audits/CIVET_WATER_AND_MOTION_20260908/study-harness.ts(32,745): error TS2379: Argument of type '{ type: string | undefined; }' is not assignable to parameter of type 'BlobPropertyBag' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'type' are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+audits/CIVET_WATER_AND_MOTION_20260908/water-owner.ts(243,5): error TS2322: Type 'readonly Filter[] | null | undefined' is not assignable to type 'Filter[] | Filter | null | undefined'.
+  Type 'readonly Filter[]' is not assignable to type 'Filter[] | Filter | null | undefined'.
+    The type 'readonly Filter[]' is 'readonly' and cannot be assigned to the mutable type 'Filter[]'.
+audits/CIVET_WATER_AND_MOTION_20260908/water-owner.ts(294,7): error TS2322: Type 'readonly Filter[] | null | undefined' is not assignable to type 'Filter[] | Filter | null | undefined'.
+  Type 'readonly Filter[]' is not assignable to type 'Filter[] | Filter | null | undefined'.
+    The type 'readonly Filter[]' is 'readonly' and cannot be assigned to the mutable type 'Filter[]'.

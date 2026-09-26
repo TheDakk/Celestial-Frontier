@@ -1,0 +1,40 @@
+{
+  "startedAt": "2026-09-09T15:42:37.339046+00:00",
+  "checks": [
+    {
+      "label": "viewer-lifecycle",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-continuation-viewer-lifecycle",
+        "--",
+        "port/v2/node_modules/.bin/vitest",
+        "run",
+        "--root",
+        "port/v2",
+        "tests/landfall-viewer.test.ts",
+        "tests/painted-earth-mount-ownership.test.ts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "typescript",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-continuation-typescript",
+        "--",
+        "npm",
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 1
+    }
+  ],
+  "status": "FAIL",
+  "finishedAt": "2026-09-09T15:42:39.727411+00:00"
+}

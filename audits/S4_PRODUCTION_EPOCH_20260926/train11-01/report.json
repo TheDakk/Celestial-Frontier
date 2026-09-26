@@ -1,0 +1,266 @@
+{
+  "schema": "cf-s4-production-evaluation/v1",
+  "purpose": "training",
+  "epochHash": "7fcaed142e2911c1fc375757d39eea11c8fbb7995d74ddfbea7a26074e4e539d",
+  "sourceHead": "d2cf5b79516418aaa423009eb40f84e6b2601ee2",
+  "candidateHash": "0405ca43685f83b73086a0d38ccdb91abc5ce73da4d14de9b724d5ad3b72f6c5",
+  "count": 256,
+  "seedBase": 110000000,
+  "hookSeedBase": 130000000,
+  "forecastSeedBase": 120000000,
+  "productionCases": 3072,
+  "productionMismatches": 0,
+  "phaseDispatchCases": 2048,
+  "cohorts": [
+    {
+      "id": "easy",
+      "baselineWins": 256,
+      "plannedWins": 256,
+      "commandWins": 256,
+      "oracleWins": 256,
+      "phaseNodes": 0,
+      "withdrawnTerminals": 0,
+      "swapEdges": 0,
+      "planningGapPp": 0,
+      "commandEdgePp": 0
+    },
+    {
+      "id": "normal",
+      "baselineWins": 132,
+      "plannedWins": 155,
+      "commandWins": 155,
+      "oracleWins": 155,
+      "phaseNodes": 0,
+      "withdrawnTerminals": 0,
+      "swapEdges": 0,
+      "planningGapPp": 8.984375,
+      "commandEdgePp": 0
+    },
+    {
+      "id": "guardian",
+      "baselineWins": 62,
+      "plannedWins": 101,
+      "commandWins": 148,
+      "oracleWins": 154,
+      "phaseNodes": 500,
+      "withdrawnTerminals": 1933,
+      "swapEdges": 585,
+      "solo": {
+        "v1Wins": 42,
+        "phaseWins": 35
+      },
+      "planningGapPp": 15.234375,
+      "commandEdgePp": 18.359375
+    },
+    {
+      "id": "titan",
+      "baselineWins": 103,
+      "plannedWins": 150,
+      "commandWins": 199,
+      "oracleWins": 200,
+      "phaseNodes": 579,
+      "withdrawnTerminals": 2184,
+      "swapEdges": 777,
+      "solo": {
+        "v1Wins": 17,
+        "phaseWins": 11
+      },
+      "planningGapPp": 18.359375,
+      "commandEdgePp": 19.140625
+    }
+  ],
+  "threats": [
+    {
+      "id": "smite",
+      "wins": {
+        "balanced": 17,
+        "press": 33,
+        "guard": 8,
+        "evade": 82
+      }
+    },
+    {
+      "id": "aegis",
+      "wins": {
+        "balanced": 21,
+        "press": 33,
+        "guard": 15,
+        "evade": 84
+      }
+    },
+    {
+      "id": "dot",
+      "wins": {
+        "balanced": 17,
+        "press": 40,
+        "guard": 0,
+        "evade": 31
+      }
+    },
+    {
+      "id": "fury",
+      "wins": {
+        "balanced": 23,
+        "press": 46,
+        "guard": 8,
+        "evade": 74
+      }
+    },
+    {
+      "id": "ambush",
+      "wins": {
+        "balanced": 29,
+        "press": 24,
+        "guard": 113,
+        "evade": 81
+      }
+    },
+    {
+      "id": "eye",
+      "wins": {
+        "balanced": 29,
+        "press": 36,
+        "guard": 28,
+        "evade": 89
+      }
+    },
+    {
+      "id": "veil",
+      "wins": {
+        "balanced": 41,
+        "press": 36,
+        "guard": 36,
+        "evade": 114
+      }
+    },
+    {
+      "id": "mend",
+      "wins": {
+        "balanced": 7,
+        "press": 37,
+        "guard": 0,
+        "evade": 19
+      }
+    },
+    {
+      "id": "echo",
+      "wins": {
+        "balanced": 51,
+        "press": 45,
+        "guard": 38,
+        "evade": 121
+      }
+    },
+    {
+      "id": "thirst",
+      "wins": {
+        "balanced": 61,
+        "press": 49,
+        "guard": 47,
+        "evade": 89
+      }
+    },
+    {
+      "id": "thorns",
+      "wins": {
+        "balanced": 28,
+        "press": 39,
+        "guard": 11,
+        "evade": 89
+      }
+    },
+    {
+      "id": "rend",
+      "wins": {
+        "balanced": 17,
+        "press": 46,
+        "guard": 6,
+        "evade": 88
+      }
+    },
+    {
+      "id": "reck",
+      "wins": {
+        "balanced": 31,
+        "press": 41,
+        "guard": 10,
+        "evade": 92
+      }
+    },
+    {
+      "id": "bulwark",
+      "wins": {
+        "balanced": 103,
+        "press": 20,
+        "guard": 120,
+        "evade": 141
+      }
+    },
+    {
+      "id": "shock",
+      "wins": {
+        "balanced": 49,
+        "press": 45,
+        "guard": 38,
+        "evade": 91
+      }
+    },
+    {
+      "id": "roulette",
+      "wins": {
+        "balanced": 47,
+        "press": 33,
+        "guard": 45,
+        "evade": 117
+      }
+    },
+    {
+      "id": "enrage",
+      "wins": {
+        "balanced": 48,
+        "press": 40,
+        "guard": 11,
+        "evade": 89
+      }
+    }
+  ],
+  "replayCases": 1024,
+  "replayMismatches": 0,
+  "parityCases": 512,
+  "parityMismatches": 0,
+  "scope": {
+    "campaignCertificate": false,
+    "registeredGuardianWorlds": 1,
+    "registeredTitanWorlds": 1,
+    "region": 0,
+    "partySizes": [
+      1,
+      3
+    ],
+    "planning": "independent 16-seed forecast with actual public stats; fixed tie rule",
+    "command": "fixed learned break policy; oracle upper bound separate",
+    "dispatch": "production settlement planner"
+  },
+  "recovery": {
+    "defeatActiveMs": 600000,
+    "defeatWoundStep": 0
+  },
+  "measurement": {
+    "status": "RED",
+    "failures": [
+      "normal: planning gap 8.984375",
+      "smite: authored trade-off",
+      "aegis: authored trade-off",
+      "eye: authored trade-off",
+      "veil: authored trade-off",
+      "echo: authored trade-off",
+      "thirst: authored trade-off",
+      "thorns: authored trade-off",
+      "reck: authored trade-off",
+      "shock: authored trade-off",
+      "roulette: authored trade-off",
+      "enrage: authored trade-off"
+    ]
+  },
+  "status": "RED"
+}

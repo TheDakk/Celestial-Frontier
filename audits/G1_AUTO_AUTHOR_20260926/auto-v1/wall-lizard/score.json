@@ -1,0 +1,20 @@
+{
+ "id": "wall-lizard",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-far-knee (hindFarKnee) covers 17% paint (reference 97%)",
+  "missing-anatomy: part hind-far-root (hindFarRoot) covers 7% paint (reference 99%)",
+  "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 30%)"
+ ],
+ "bodyLengthPx": 1107.1,
+ "landmarkMedian": 0.0355,
+ "landmarkMax": 0.1532,
+ "worst": [
+  "tail2 0.153",
+  "root 0.121",
+  "tail1 0.113"
+ ],
+ "labelAgreement": 0.5405,
+ "missingJoints": []
+}

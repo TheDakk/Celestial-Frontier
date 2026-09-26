@@ -1,0 +1,11 @@
+{
+  "name": "cf-local-image-browser-proof",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Isolated browser AI authoring proof; not a shipped game dependency",
+  "dependencies": {
+    "@huggingface/tokenizers": "0.2.0",
+    "onnxruntime-web": "1.29.0"
+  }
+}

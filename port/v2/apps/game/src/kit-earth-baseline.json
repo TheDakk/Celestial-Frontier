@@ -1,0 +1,27 @@
+{
+  "composite": {
+    "url": "/__local_ai/inputs/earth-composite.png",
+    "sha256": "226456a3d12c93c439493d7b828e1ab29e552aaf65e7f81b3b4f181accd58e84",
+    "width": 1024,
+    "height": 576
+  },
+  "settings": {
+    "width": 1024,
+    "height": 576,
+    "passSize": 384,
+    "seed": 133,
+    "steps": 4,
+    "strength": 0.2,
+    "finisherStrength": 0.35,
+    "compositionProfile": "weather-mat-v1"
+  },
+  "acceptedPainting": {
+    "sourceHead": "9f51f2c9f32bc68b9228e543f6cfe6a5b6537121",
+    "sha256": "4b776b03194acdf9a5facfb22c2e564e43a683e4e31cf4be932615acefbf6d26",
+    "qualityAccepted": true,
+    "weatherVariant": "E",
+    "url": "/__local_ai/inputs/earth-rain-e.png",
+    "recipeSha256": "6f3d05d7f5049edca3e6fca76fbc2fa298a9d863e391ba1d2c99b307ad31de56",
+    "priorPaintingSha256": "27101ff3af6e91b3e59087e7b1c2c4564d7c3cd1fa9ca6aec11c31250508fc16"
+  }
+}

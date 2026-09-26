@@ -1,0 +1,348 @@
+{
+  "schema": "cf-ui-unapplied-preparation/v1",
+  "state": "PREPARED_NOT_APPLIED_NOT_TESTED",
+  "purpose": "Same-day durable record of authorized U3/U4 drafts. Stale guards and documented checker/comparison gaps require review; this archive does not activate a checkpoint. Inventory completion and U4 corrected checker are still being prepared separately.",
+  "sourceAtRetention": "781b79cf75538b711bb770a42c189c6dc70eeb16",
+  "archive": {
+    "file": "prepared-unapplied.tar.gz",
+    "bytes": 224408,
+    "sha256": "39d5588f90944d8c0d0834a86e5920544f7d1fefcba1562cf6dcd86c05a502af"
+  },
+  "files": [
+    {
+      "path": "cf-u3-shipyard-prepared-20260906/README.md",
+      "bytes": 3111,
+      "sha256": "0b8e88143a8a03ba28780e8c0f3712cae07840155958b842a748d1b7c87c2993"
+    },
+    {
+      "path": "cf-u3-shipyard-prepared-20260906/apply.py",
+      "bytes": 3410,
+      "sha256": "227285bccaebe1aa37339aea3c3c24138f9348b880ddffd440c20cf1cdd94211"
+    },
+    {
+      "path": "cf-u3-shipyard-prepared-20260906/manifest.json",
+      "bytes": 17198,
+      "sha256": "419506f928b99540c3048663d2d5cf77727bd1e6d06c02f67175190d296a744d"
+    },
+    {
+      "path": "cf-u3-shipyard-prepared-20260906/port/v2/apps/game/index.html",
+      "bytes": 70033,
+      "sha256": "fa500e328542fc5429b053365755ab4795b2eb1107a8ef9565cd01d54ddba068"
+    },
+    {
+      "path": "cf-u3-shipyard-prepared-20260906/port/v2/apps/game/src/engineering-panel.ts",
+      "bytes": 57191,
+      "sha256": "66546eef5c6b34993616f2b8b1d0697e3abbdd81152bf3b72609550e7c40a507"
+    },
+    {
+      "path": "cf-u3-shipyard-prepared-20260906/port/v2/tests/engineering-panel.test.ts",
+      "bytes": 75018,
+      "sha256": "7e14269d28027d46ac6d7bb5bb07073b15fbdcd014b18c73ffbb351c7d80f43b"
+    },
+    {
+      "path": "cf-u3-shipyard-prepared-20260906/shipyard.css",
+      "bytes": 2833,
+      "sha256": "4f7a5fd6f7fe6016af141ae87f073faaf23f03e0e789a3470d17562ed480796b"
+    },
+    {
+      "path": "cf-u3-atlas-prepared-20260906/README.md",
+      "bytes": 2846,
+      "sha256": "26940da2b2b2c2406b17e4c5e24f6fbe18f7a8407471f07434ff32036f1b1f92"
+    },
+    {
+      "path": "cf-u3-atlas-prepared-20260906/apply.py",
+      "bytes": 3860,
+      "sha256": "449d1199520fd1d27cdfdd8e9120c09b486b3687cc9b67b2a330fa0ff3109933"
+    },
+    {
+      "path": "cf-u3-atlas-prepared-20260906/atlas.css",
+      "bytes": 7057,
+      "sha256": "db4a73a2e4403392fddfd8babb2bbdd987a010adfa45ac9fe3f59f6588b04cf4"
+    },
+    {
+      "path": "cf-u3-atlas-prepared-20260906/manifest.json",
+      "bytes": 18893,
+      "sha256": "de8517244424dfcfcae2be787e54ef76bdf739a296cf9cb439c90f6bb71fe27c"
+    },
+    {
+      "path": "cf-u3-atlas-prepared-20260906/port/v2/apps/game/index.html",
+      "bytes": 68575,
+      "sha256": "1181fc2d76bde3e70cff50ee3a964ac56176bd1c036197daedca9addfef0d822"
+    },
+    {
+      "path": "cf-u3-atlas-prepared-20260906/port/v2/apps/game/src/star-atlas-panel.ts",
+      "bytes": 29766,
+      "sha256": "d270ab5f2f861bceb403fc99c8b1d8151d64da9286e7221ac3b3228b75993d49"
+    },
+    {
+      "path": "cf-u3-atlas-prepared-20260906/port/v2/tests/star-atlas-panel.test.ts",
+      "bytes": 21427,
+      "sha256": "f29ba008159248b48027df4b20a931a44ddf9535171575a2ed35ce4b99d801f3"
+    },
+    {
+      "path": "cf-u3-atlas-prepared-20260906/proposal.diff",
+      "bytes": 10748,
+      "sha256": "8800a5ad39ddf3919578de444c78e5ee4a7d2d657a00edddc5cc0087d40eb917"
+    },
+    {
+      "path": "cf-u3-compendium-prepared-20260906/PREPARATION.json",
+      "bytes": 2069,
+      "sha256": "779c4bfedc46a788fcacfae2773058a56cbb5d5a61ef7fd9e35189c5a44dc584"
+    },
+    {
+      "path": "cf-u3-compendium-prepared-20260906/README.md",
+      "bytes": 4152,
+      "sha256": "305db2cf6f4f71b27764ff8c1bd6fcb213b340a3a629358d5b6330625d02d731"
+    },
+    {
+      "path": "cf-u3-compendium-prepared-20260906/apply-at-u3.py",
+      "bytes": 2657,
+      "sha256": "3014b8867be96ba27a61e53932df611a8f016bca6ba1b2cb12a4522b1f8b72cb"
+    },
+    {
+      "path": "cf-u3-compendium-prepared-20260906/presentation.patch",
+      "bytes": 1436,
+      "sha256": "06c00bae79800d5fecba18371e017638d49c4a189fe5c1b122de68c489d64ea9"
+    },
+    {
+      "path": "cf-u3-compendium-prepared-20260906/replacement-after.css",
+      "bytes": 829,
+      "sha256": "7f0246fd321691a5b36f520293473e4fd53c589f6f81de611ac6491a285c7337"
+    },
+    {
+      "path": "cf-u3-compendium-prepared-20260906/replacement-before.css",
+      "bytes": 124,
+      "sha256": "f9fe677ebb685bed5a31c6e0dcbee871551b4b6d3b931dab2de4ef110bbe9239"
+    },
+    {
+      "path": "cf-u3-charters-prepared-20260906/README.md",
+      "bytes": 3804,
+      "sha256": "27a64ead97c623846888da11aa0561945dc81247119547373c392f71fbbd8e1c"
+    },
+    {
+      "path": "cf-u3-charters-prepared-20260906/apply.py",
+      "bytes": 3032,
+      "sha256": "396156aa2021daafbcde460fb13af997002d362904d87c991e78f7f5ec60c9dc"
+    },
+    {
+      "path": "cf-u3-charters-prepared-20260906/charters.css",
+      "bytes": 2608,
+      "sha256": "060b153143362e5604db4996df41927d7f180f76d092583771d8052d64494c1c"
+    },
+    {
+      "path": "cf-u3-charters-prepared-20260906/charters.patch",
+      "bytes": 2995,
+      "sha256": "3f2a85ce844adb4161de7d8d89fffe36d02f1ef493bcb5297ef2e3eae7677522"
+    },
+    {
+      "path": "cf-u3-charters-prepared-20260906/index.before.html",
+      "bytes": 67200,
+      "sha256": "db71621fb31f059014402200cd4577f43d6d171d906482ab9d2068601fbb4f1f"
+    },
+    {
+      "path": "cf-u3-charters-prepared-20260906/index.proposed.html",
+      "bytes": 69808,
+      "sha256": "438fda46001e06e93bd0ba3b5729c659547c5c561130b5aba055a8f61c5adc2e"
+    },
+    {
+      "path": "cf-u3-charters-prepared-20260906/manifest.json",
+      "bytes": 2007,
+      "sha256": "da326d5a4a93df17993f4e8dff874b844fbc50b54fe80eb9191a68759df31396"
+    },
+    {
+      "path": "cf-u3-records-prepared-20260906/README.md",
+      "bytes": 3809,
+      "sha256": "6867186dd9fee17a6216510a4ef881b030c98c2d7335ba9b2b3683c87a72f9d3"
+    },
+    {
+      "path": "cf-u3-records-prepared-20260906/apply.py",
+      "bytes": 3049,
+      "sha256": "2d0132ad3858510acbf01b1efb3c0dd119c04b1df3f7c6f63943fc54d9b4c4f3"
+    },
+    {
+      "path": "cf-u3-records-prepared-20260906/golden-association.json",
+      "bytes": 1814,
+      "sha256": "b169f9fb434ce7ca0955c4d15a5d7721edfb4f2b6ec97fd7d477674484e0bb0b"
+    },
+    {
+      "path": "cf-u3-records-prepared-20260906/index.before.html",
+      "bytes": 67200,
+      "sha256": "db71621fb31f059014402200cd4577f43d6d171d906482ab9d2068601fbb4f1f"
+    },
+    {
+      "path": "cf-u3-records-prepared-20260906/index.proposed.html",
+      "bytes": 71299,
+      "sha256": "919998b463cc31ddb91210814f6203be99f024fb53cd7a95c7ee5d60bb2598e6"
+    },
+    {
+      "path": "cf-u3-records-prepared-20260906/manifest.json",
+      "bytes": 2673,
+      "sha256": "0a9f0925f57e3c4e5f9022b943c0e9b7c3a2b37864f0d2d79b4beb09800bf68e"
+    },
+    {
+      "path": "cf-u3-records-prepared-20260906/records.css",
+      "bytes": 4099,
+      "sha256": "6d7df150e8f5312620d2b2e15aa7b6239c2854d3d6e9262ac1959ce8ef9950e8"
+    },
+    {
+      "path": "cf-u3-records-prepared-20260906/records.patch",
+      "bytes": 4503,
+      "sha256": "0dfe4fdbe406adcd9f39178dbfb8a97f529cd7346e91ddcb94b60149aee15ff5"
+    },
+    {
+      "path": "cf-u3-guide-prepared-20260906/README.md",
+      "bytes": 4416,
+      "sha256": "faa3668d86e9f27b4fdf932583215e368a9ee37b088f1ed914489e1a7f17b857"
+    },
+    {
+      "path": "cf-u3-guide-prepared-20260906/apply.py",
+      "bytes": 5553,
+      "sha256": "b2f7fe8cfcd874f32bd70030480d83da250695bbfac990abbd9788649b37ef3b"
+    },
+    {
+      "path": "cf-u3-guide-prepared-20260906/guide.css",
+      "bytes": 2474,
+      "sha256": "76478d8682eacaddd52f0cd31c2aa621640672b47d58fc10a7adca42b794bc88"
+    },
+    {
+      "path": "cf-u3-guide-prepared-20260906/guide.patch",
+      "bytes": 2856,
+      "sha256": "40fed4d2a196cc1617b0498fa89989a3ce0fb6cdec8890df1d88e117ad39125a"
+    },
+    {
+      "path": "cf-u3-settings-prepared-20260906/README.md",
+      "bytes": 4792,
+      "sha256": "42b30be0d6dcaff861566a67ab9af2da0ffc350669d872b67d05b9be19b9ab62"
+    },
+    {
+      "path": "cf-u3-settings-prepared-20260906/apply-at-u3.py",
+      "bytes": 3033,
+      "sha256": "99c6a94d16662f5fc04390c3c8e0a1827629e8ec174f125aaf6b088529526cc3"
+    },
+    {
+      "path": "cf-u3-settings-prepared-20260906/settings-proposal.css",
+      "bytes": 927,
+      "sha256": "323230da4fa4c14bbb102b5dc87d004bb456eb9f254ee90eaf4c0ca305186a78"
+    },
+    {
+      "path": "cf-u3-survey-prepared-20260906/README.md",
+      "bytes": 3871,
+      "sha256": "5116116c3479dcb93ff746917cdaf55e8abfa79c1f92dee06aabd5bf49ebab94"
+    },
+    {
+      "path": "cf-u3-survey-prepared-20260906/apply.py",
+      "bytes": 2839,
+      "sha256": "6ef8551e3189843a0bd5cf13d203d93f9f5ca6d8d7eb21089d87028f5120fefd"
+    },
+    {
+      "path": "cf-u3-survey-prepared-20260906/manifest.json",
+      "bytes": 4991,
+      "sha256": "bd31b8f55890830f4a01ef37b3ab808993431d59cd3da5edd9d7bbdcb0cd06b8"
+    },
+    {
+      "path": "cf-u3-survey-prepared-20260906/port/v2/apps/game/index.html",
+      "bytes": 67917,
+      "sha256": "ae949482b63ff53883435e09ca39a166d6d786ebfa6469493fc49e83075042d4"
+    },
+    {
+      "path": "cf-u3-survey-prepared-20260906/proposal.diff",
+      "bytes": 2966,
+      "sha256": "09c20c7eaaa2ee7b2ea3a8452185bc2dcd02a3d4d0c1caa841b183a36015a35f"
+    },
+    {
+      "path": "cf-u3-survey-prepared-20260906/survey.css",
+      "bytes": 1343,
+      "sha256": "7cceacdcae05f03660f5a5722032ca58464f256be398937e640dbe99a37589b7"
+    },
+    {
+      "path": "cf-u3-shipyard-review-prepared-20260906/APPLY_PROPOSAL.md",
+      "bytes": 2146,
+      "sha256": "25d5473b6a255d28e6b9849a4ba3be90e77bce23641b2827a3ae83afcc277449"
+    },
+    {
+      "path": "cf-u3-shipyard-review-prepared-20260906/PREPARATION.json",
+      "bytes": 851,
+      "sha256": "42f348450c4f46b59b1b3303c19bc9c47fb17133547cd7cd96e671d7936bce00"
+    },
+    {
+      "path": "cf-u3-shipyard-review-prepared-20260906/README.md",
+      "bytes": 3039,
+      "sha256": "ba6c06d549d57e08c2505e126ef093a45427ea8c7ac964317ab257910666aced"
+    },
+    {
+      "path": "cf-u3-shipyard-review-prepared-20260906/config.example.json",
+      "bytes": 483,
+      "sha256": "fa7d40d55f8b0c6b6e8a1e87eb85a31c4bbb141d3bc6e477a5319c4541ef0486"
+    },
+    {
+      "path": "cf-u3-shipyard-review-prepared-20260906/shipyard-review.mjs",
+      "bytes": 22420,
+      "sha256": "0941e2bf6734742e1a02d4d264b687272a9c5599bfb5e75754bac22d774f1fbb"
+    },
+    {
+      "path": "cf-u3-run-panel-checkpoint-20260906.cjs",
+      "bytes": 12268,
+      "sha256": "a501d4cc18b76b47445a0c69fef5041cab4bd02b4c0ec602db9c41aadfe54c10"
+    },
+    {
+      "path": "cf-u3-run-panel-checkpoint-20260906.README.md",
+      "bytes": 3348,
+      "sha256": "29cf3d9cae320ffe0c66aabb9f07be3792cadd5b389168aa6167ed750c3c239d"
+    },
+    {
+      "path": "cf-u3-normal-predecessor-20260906.mjs",
+      "bytes": 7633,
+      "sha256": "204a91072ad4c6020d8e39347be057f2e8684b56a5a18ca1943e621053a57480"
+    },
+    {
+      "path": "cf-u3-normal-predecessor-20260906.README.md",
+      "bytes": 1413,
+      "sha256": "e0579c39a672115854b1e2b5fa540521c1661024e962f21af027ecc8f10fe238"
+    },
+    {
+      "path": "cf-u3-checkpoint-docs-20260906.md",
+      "bytes": 8017,
+      "sha256": "ab8b2c4b40cc9feb18081ea13c5c1c2b864207604502aa0ce393924a0bccbc9e"
+    },
+    {
+      "path": "cf-u4-layout-prepared-20260906/PREPARATION.json",
+      "bytes": 1635,
+      "sha256": "1c1181f3c011f07deae0b7ba937b75e75d7041345e3affe2d970253f8cc1b999"
+    },
+    {
+      "path": "cf-u4-layout-prepared-20260906/README.md",
+      "bytes": 4328,
+      "sha256": "bee4f42134de92c65e9edc8d71c088f6f95604f5938a1cd7ae4991f857cc1154"
+    },
+    {
+      "path": "cf-u4-layout-prepared-20260906/apply-at-u4.py",
+      "bytes": 2323,
+      "sha256": "c7735cdf4639d5de0ba118333edc3771a23294e0595fa9edef8c44627e1fb508"
+    },
+    {
+      "path": "cf-u4-layout-prepared-20260906/collection-plan/PLAN.md",
+      "bytes": 6220,
+      "sha256": "51e0875da2559c54ae09e80effc68d7c00404c9d979ca7bf3c708edd31410a48"
+    },
+    {
+      "path": "cf-u4-layout-prepared-20260906/collection-plan/paired-screen-plan.json",
+      "bytes": 37799,
+      "sha256": "4843fcd50d7a2ae49a2bcf6fc93acf5195c4df0399bc55ed90ab831b8a804343"
+    },
+    {
+      "path": "cf-u4-layout-prepared-20260906/collection-plan/ten-view-coverage-template.json",
+      "bytes": 7482,
+      "sha256": "bca8f6935006117a8c7ff980b8397c2c294890a3afb5d099400ebea9731200f5"
+    },
+    {
+      "path": "cf-u4-layout-prepared-20260906/ui-layout-contract.mjs",
+      "bytes": 22295,
+      "sha256": "515e84fd8bf1bae9ea5382c12810af9e9142aefd295f44ecace69bb932b9eaa0"
+    },
+    {
+      "path": "cf-u4-layout-prepared-20260906/ui-layout-contract.test.ts",
+      "bytes": 11436,
+      "sha256": "343aec31dcbaf6dd9e4cbf0454aa66d2ee23aa6e23b0215b1ae343e9aaae1115"
+    }
+  ]
+}

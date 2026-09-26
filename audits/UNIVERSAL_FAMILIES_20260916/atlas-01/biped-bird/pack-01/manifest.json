@@ -1,0 +1,100 @@
+{
+  "creatureId": "biped-bird",
+  "parts": [
+    {
+      "name": "part-00.png",
+      "path": "parts/part-00.png",
+      "sha256": "3c9f5199ea423cbae39f29135c93c16138f87f0a3375fc6c0853464ae06dc028"
+    },
+    {
+      "name": "part-01.png",
+      "path": "parts/part-01.png",
+      "sha256": "19ad16a2f016c5b083266c8e324c52c30fba481327bf46acd911540040430edf"
+    },
+    {
+      "name": "part-02.png",
+      "path": "parts/part-02.png",
+      "sha256": "839973c944b2100ddec597082cf9fb0d73a3ccf141a395883c328d61da0cf85e"
+    },
+    {
+      "name": "part-03.png",
+      "path": "parts/part-03.png",
+      "sha256": "b21847498817ef1be66e61c37dcb2fd3a739568ae61f6edce9d57a6105ded062"
+    },
+    {
+      "name": "part-04.png",
+      "path": "parts/part-04.png",
+      "sha256": "db865423e5958aa0ac0250d2dc33d7a7be59d3df5dd47e21b1fa3b1b967eca72"
+    },
+    {
+      "name": "part-05.png",
+      "path": "parts/part-05.png",
+      "sha256": "54674cc9fa130f61fe3c3dda46cdd50feacee3640fe2c1941941d2ff03ff8112"
+    },
+    {
+      "name": "part-06.png",
+      "path": "parts/part-06.png",
+      "sha256": "7deb26664f67eaf1256a03db12596f7152d99c8e25321f2183a310abae425705"
+    },
+    {
+      "name": "part-07.png",
+      "path": "parts/part-07.png",
+      "sha256": "5175b571eece2a1cb175460c21d26a7b27b2ef94a2cd3ee483d80f627bbb98b5"
+    },
+    {
+      "name": "part-08.png",
+      "path": "parts/part-08.png",
+      "sha256": "e2f683991cd6be7793baa2f153ff6e5d37acc40b062b2b5b48704fc9ec87f320"
+    },
+    {
+      "name": "part-09.png",
+      "path": "parts/part-09.png",
+      "sha256": "6f47f3ccc8937091e021a033b57d500178126c0cb1ca5fe5232c7354d020f28b"
+    },
+    {
+      "name": "part-10.png",
+      "path": "parts/part-10.png",
+      "sha256": "9b45681c33deb46460117333cfd058f322f29d377301568cc4531a122e1bc08f"
+    },
+    {
+      "name": "part-11.png",
+      "path": "parts/part-11.png",
+      "sha256": "087a16a7352e3ed3da713a038977ff6ed9cac107f8ee9ce9f381b0efc9b9c167"
+    },
+    {
+      "name": "part-12.png",
+      "path": "parts/part-12.png",
+      "sha256": "af31d3917d1310ddd3c2277db314de706216d3cf0af81d7f66da0d1e3e9153ef"
+    },
+    {
+      "name": "part-13.png",
+      "path": "parts/part-13.png",
+      "sha256": "b314f721582af5d9edad24736b831ad21ab823e92b5993cb0067fd741cce27b8"
+    },
+    {
+      "name": "part-14.png",
+      "path": "parts/part-14.png",
+      "sha256": "f11e9e554e6cdfc86790316b7a6087ef9ae03a56f1e0437ecbb65be7995fee6c"
+    },
+    {
+      "name": "part-15.png",
+      "path": "parts/part-15.png",
+      "sha256": "d2e71b91d28afbd87d84d5cb6fcbe0ad6a57207a3a8f5720ece9000debefe298"
+    },
+    {
+      "name": "part-16.png",
+      "path": "parts/part-16.png",
+      "sha256": "4d5408595ac224121bbd4101789c2f33744e81ba51baaabacba3fae1a4934382"
+    },
+    {
+      "name": "part-17.png",
+      "path": "parts/part-17.png",
+      "sha256": "de6d44e5a4d9b1963e8e1ddfc8f6719674b574c97bc5584869c3b70dbf168635"
+    },
+    {
+      "name": "part-18.png",
+      "path": "parts/part-18.png",
+      "sha256": "eaddc1de9d00e1ae5569ee204842c5de08d512fc5d87856d538fdae38d6f2809"
+    }
+  ]
+}

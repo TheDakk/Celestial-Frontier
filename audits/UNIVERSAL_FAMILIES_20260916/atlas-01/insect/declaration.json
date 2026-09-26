@@ -1,0 +1,115 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "6ab17f714e5253a75bf0f4acdb26b209278b92f12dfc51a2c84cb966cf221f67",
+  "cutoutSha256": "3a190c42c09d1a7aa8d541eb4e4f979a09667ca17a9b5c4e947aac2b057ece82",
+  "labelsFile": "labels.png",
+  "labelsSha256": "1b91a47a8ed5dca884b8cdbe18f4bd628eb1546b3233bcabb308ed7327f9362a",
+  "parts": [
+    {
+      "id": "part-00",
+      "joint": "root",
+      "layer": "far"
+    },
+    {
+      "id": "part-01",
+      "joint": "thorax",
+      "layer": "near"
+    },
+    {
+      "id": "part-02",
+      "joint": "head",
+      "layer": "far"
+    },
+    {
+      "id": "part-03",
+      "joint": "mandible",
+      "layer": "near"
+    },
+    {
+      "id": "part-04",
+      "joint": "abdomen",
+      "layer": "far"
+    },
+    {
+      "id": "part-05",
+      "joint": "legFrontFarKnee",
+      "layer": "near"
+    },
+    {
+      "id": "part-06",
+      "joint": "legFrontFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "part-07",
+      "joint": "legFrontNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "part-08",
+      "joint": "legFrontNearFoot",
+      "layer": "far"
+    },
+    {
+      "id": "part-09",
+      "joint": "legMidFarKnee",
+      "layer": "near"
+    },
+    {
+      "id": "part-10",
+      "joint": "legMidFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "part-11",
+      "joint": "legMidNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "part-12",
+      "joint": "legMidNearFoot",
+      "layer": "far"
+    },
+    {
+      "id": "part-13",
+      "joint": "legHindFarKnee",
+      "layer": "near"
+    },
+    {
+      "id": "part-14",
+      "joint": "legHindFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "part-15",
+      "joint": "legHindNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "part-16",
+      "joint": "legHindNearFoot",
+      "layer": "far"
+    },
+    {
+      "id": "part-17",
+      "joint": "antennaFar",
+      "layer": "near"
+    },
+    {
+      "id": "part-18",
+      "joint": "antennaNear",
+      "layer": "far"
+    },
+    {
+      "id": "part-19",
+      "joint": "wingFar",
+      "layer": "near"
+    },
+    {
+      "id": "part-20",
+      "joint": "wingNear",
+      "layer": "far"
+    }
+  ],
+  "declarationHash": "353e4a8d71448d8c9361acfb8f0924fa89c229038178940c6df64e8b9ab47532"
+}

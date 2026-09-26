@@ -1,0 +1,3 @@
+{"name":"civet-vs-coconut-crab","exitCode":0,"status":"DIAGNOSTIC_PASS","cpuP95Ms":5.700000047683716,"frames":602,"refusals":{"left":0,"right":0}}
+{"name":"mud-crab-vs-vent-crab","exitCode":0,"status":"DIAGNOSTIC_PASS","cpuP95Ms":4.5,"frames":602,"refusals":{"left":0,"right":0}}
+{"name":"freshwater-crab-vs-civet","exitCode":0,"status":"DIAGNOSTIC_PASS","cpuP95Ms":5.5,"frames":602,"refusals":{"left":0,"right":0}}

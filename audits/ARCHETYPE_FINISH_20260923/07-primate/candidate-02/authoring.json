@@ -1,0 +1,728 @@
+{
+  "id": "chimpanzee",
+  "family": "primate",
+  "landmarksPx": {
+    "root": [
+      684,
+      430
+    ],
+    "pelvis": [
+      355,
+      493
+    ],
+    "spine": [
+      539,
+      359
+    ],
+    "chest": [
+      793,
+      307
+    ],
+    "neck": [
+      913,
+      286
+    ],
+    "head": [
+      1041,
+      258
+    ],
+    "jaw": [
+      1084,
+      372
+    ],
+    "armFarShoulder": [
+      930,
+      427
+    ],
+    "armFarElbow": [
+      986,
+      692
+    ],
+    "armFarHand": [
+      1141,
+      1076
+    ],
+    "armNearShoulder": [
+      775,
+      341
+    ],
+    "armNearElbow": [
+      796,
+      671
+    ],
+    "armNearHand": [
+      916,
+      1081
+    ],
+    "legFarHip": [
+      320,
+      550
+    ],
+    "legFarKnee": [
+      315,
+      773
+    ],
+    "legFarFoot": [
+      148,
+      1045
+    ],
+    "legNearHip": [
+      306,
+      545
+    ],
+    "legNearKnee": [
+      506,
+      748
+    ],
+    "legNearFoot": [
+      482,
+      1076
+    ]
+  },
+  "groundLineY": 0.95,
+  "materials": {
+    "surface": "fur"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "near-arm-lower-hand",
+      "joint": "armNearHand",
+      "layer": "near",
+      "polygonPx": [
+        [
+          729,
+          678
+        ],
+        [
+          869,
+          656
+        ],
+        [
+          910,
+          788
+        ],
+        [
+          966,
+          907
+        ],
+        [
+          994,
+          1012
+        ],
+        [
+          1021,
+          1099
+        ],
+        [
+          1006,
+          1167
+        ],
+        [
+          852,
+          1177
+        ],
+        [
+          820,
+          1120
+        ],
+        [
+          843,
+          1042
+        ],
+        [
+          820,
+          952
+        ],
+        [
+          778,
+          860
+        ],
+        [
+          744,
+          774
+        ]
+      ]
+    },
+    {
+      "id": "far-arm-lower-hand",
+      "joint": "armFarHand",
+      "layer": "far",
+      "polygonPx": [
+        [
+          937,
+          678
+        ],
+        [
+          1045,
+          670
+        ],
+        [
+          1088,
+          776
+        ],
+        [
+          1128,
+          902
+        ],
+        [
+          1162,
+          983
+        ],
+        [
+          1218,
+          1042
+        ],
+        [
+          1228,
+          1125
+        ],
+        [
+          1187,
+          1158
+        ],
+        [
+          1080,
+          1145
+        ],
+        [
+          1057,
+          1106
+        ],
+        [
+          1071,
+          1045
+        ],
+        [
+          1032,
+          949
+        ],
+        [
+          983,
+          855
+        ],
+        [
+          949,
+          767
+        ]
+      ]
+    },
+    {
+      "id": "near-leg-lower-foot",
+      "joint": "legNearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          433,
+          746
+        ],
+        [
+          583,
+          744
+        ],
+        [
+          604,
+          882
+        ],
+        [
+          571,
+          1029
+        ],
+        [
+          625,
+          1048
+        ],
+        [
+          696,
+          1051
+        ],
+        [
+          739,
+          1094
+        ],
+        [
+          727,
+          1140
+        ],
+        [
+          402,
+          1140
+        ],
+        [
+          395,
+          1042
+        ],
+        [
+          399,
+          904
+        ]
+      ]
+    },
+    {
+      "id": "far-leg-lower-foot",
+      "joint": "legFarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          215,
+          773
+        ],
+        [
+          339,
+          748
+        ],
+        [
+          398,
+          791
+        ],
+        [
+          300,
+          918
+        ],
+        [
+          192,
+          1014
+        ],
+        [
+          196,
+          1039
+        ],
+        [
+          262,
+          1041
+        ],
+        [
+          304,
+          1080
+        ],
+        [
+          289,
+          1114
+        ],
+        [
+          121,
+          1115
+        ],
+        [
+          53,
+          1043
+        ],
+        [
+          33,
+          992
+        ],
+        [
+          108,
+          882
+        ]
+      ]
+    },
+    {
+      "id": "near-arm-upper",
+      "joint": "armNearElbow",
+      "layer": "near",
+      "polygonPx": [
+        [
+          732,
+          303
+        ],
+        [
+          809,
+          287
+        ],
+        [
+          884,
+          360
+        ],
+        [
+          889,
+          470
+        ],
+        [
+          886,
+          584
+        ],
+        [
+          917,
+          668
+        ],
+        [
+          875,
+          733
+        ],
+        [
+          775,
+          766
+        ],
+        [
+          711,
+          718
+        ],
+        [
+          695,
+          654
+        ],
+        [
+          718,
+          560
+        ],
+        [
+          713,
+          459
+        ]
+      ]
+    },
+    {
+      "id": "far-arm-upper",
+      "joint": "armFarElbow",
+      "layer": "far",
+      "polygonPx": [
+        [
+          889,
+          373
+        ],
+        [
+          962,
+          378
+        ],
+        [
+          979,
+          500
+        ],
+        [
+          1010,
+          593
+        ],
+        [
+          1054,
+          649
+        ],
+        [
+          1060,
+          729
+        ],
+        [
+          999,
+          772
+        ],
+        [
+          932,
+          719
+        ],
+        [
+          913,
+          638
+        ],
+        [
+          882,
+          546
+        ],
+        [
+          861,
+          452
+        ]
+      ]
+    },
+    {
+      "id": "near-leg-upper",
+      "joint": "legNearKnee",
+      "layer": "near",
+      "polygonPx": [
+        [
+          212,
+          505
+        ],
+        [
+          339,
+          486
+        ],
+        [
+          452,
+          575
+        ],
+        [
+          559,
+          659
+        ],
+        [
+          605,
+          732
+        ],
+        [
+          582,
+          823
+        ],
+        [
+          441,
+          853
+        ],
+        [
+          341,
+          760
+        ],
+        [
+          249,
+          727
+        ],
+        [
+          175,
+          710
+        ],
+        [
+          175,
+          575
+        ],
+        [
+          202,
+          575
+        ]
+      ]
+    },
+    {
+      "id": "far-leg-upper",
+      "joint": "legFarKnee",
+      "layer": "far",
+      "polygonPx": [
+        [
+          199,
+          607
+        ],
+        [
+          319,
+          619
+        ],
+        [
+          389,
+          715
+        ],
+        [
+          359,
+          800
+        ],
+        [
+          249,
+          843
+        ],
+        [
+          168,
+          796
+        ],
+        [
+          157,
+          716
+        ]
+      ]
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1000,
+          329
+        ],
+        [
+          1069,
+          338
+        ],
+        [
+          1147,
+          337
+        ],
+        [
+          1157,
+          385
+        ],
+        [
+          1125,
+          437
+        ],
+        [
+          1060,
+          458
+        ],
+        [
+          1006,
+          422
+        ],
+        [
+          984,
+          378
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          844,
+          115
+        ],
+        [
+          940,
+          81
+        ],
+        [
+          1034,
+          97
+        ],
+        [
+          1104,
+          144
+        ],
+        [
+          1145,
+          206
+        ],
+        [
+          1144,
+          300
+        ],
+        [
+          1157,
+          349
+        ],
+        [
+          1114,
+          374
+        ],
+        [
+          1040,
+          383
+        ],
+        [
+          965,
+          360
+        ],
+        [
+          875,
+          307
+        ],
+        [
+          834,
+          234
+        ]
+      ]
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near",
+      "polygonPx": [
+        [
+          787,
+          164
+        ],
+        [
+          857,
+          156
+        ],
+        [
+          882,
+          239
+        ],
+        [
+          939,
+          293
+        ],
+        [
+          1008,
+          357
+        ],
+        [
+          997,
+          425
+        ],
+        [
+          925,
+          458
+        ],
+        [
+          866,
+          398
+        ],
+        [
+          814,
+          319
+        ],
+        [
+          771,
+          248
+        ]
+      ]
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near",
+      "polygonPx": [
+        [
+          629,
+          182
+        ],
+        [
+          753,
+          163
+        ],
+        [
+          801,
+          209
+        ],
+        [
+          828,
+          302
+        ],
+        [
+          819,
+          428
+        ],
+        [
+          775,
+          501
+        ],
+        [
+          708,
+          564
+        ],
+        [
+          632,
+          528
+        ],
+        [
+          611,
+          399
+        ]
+      ]
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "declarations": "Tail absent in this ape. Both long arms, both chunky knuckle-bearing hands, both bent hind legs and both feet are separately painted. Nineteen resolved primate joints are manually authored; far hip and far knee are explicitly occluded estimates, not directly observed joint centers. No hidden or folded chain declaration is made. The near arm and near hind leg take foreground ownership before their far counterparts. Ears remain head-attached because the primate contract has no independent ear slots.",
+    "visualAcceptance": "candidate for Nick; first acceptable paint",
+    "landmarkMethod": "Manual coordinates from this source master only. Distal arm owners include their forearms and hands because the existing primate graph has an Elbow-to-Hand segment without a separate wrist joint. Distal leg owners likewise include the shin and foot under the Knee-to-Foot segment. Far hip and far knee are hidden internal centers inferred from the source anatomy; no chain is entirely hidden and no presence state is automatically inferred.",
+    "materialAuthority": "The exact surface token fur is accepted by materialFromSkinName in motion/secondary.ts and maps to furred.",
+    "historicalRepair20260922": "Manually authored candidate knee pivots within the painted bend/emergence regions: near(506,748), far(315,773). Fur/occlusion prevents an exact internal joint-center observation; these are explicit rig-fit hypotheses, not a claim that the original coordinates were objectively wrong. All other landmarks, polygons, source pixels, presence and numeric limits unchanged. Static/native acceptance required.",
+    "repair": "2026-09-23: retain the two previously hypothesized knee pivots, assign the continuous proximal near-haunch rim to near-leg-upper (anatomy-review-01.md), and place the occluded far hip at320550 within the paired pelvic haunch. These are explicitly authored fitting hypotheses, not observed internal centers. No source pixels, other landmarks, other masks, numerical limits, or presence change."
+  }
+}

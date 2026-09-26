@@ -1,0 +1,28 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac
+
+ ❯ port/v2/apps/game/src/creature-rig-hidden.test.ts (2 tests | 1 failed) 11ms
+   × measured brachyuran contact limits admit P1 loading and reject an excessive planted fold without changing raw limits 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  port/v2/apps/game/src/creature-rig-hidden.test.ts > measured brachyuran contact limits admit P1 loading and reject an excessive planted fold without changing raw limits
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ port/v2/apps/game/src/creature-rig-hidden.test.ts:18:150
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  03:32:38
+   Duration  295ms (transform 69ms, setup 0ms, import 174ms, tests 11ms, environment 0ms)
+

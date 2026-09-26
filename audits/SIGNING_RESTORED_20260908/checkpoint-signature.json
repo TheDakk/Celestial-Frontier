@@ -1,0 +1,17 @@
+{
+  "recordedAt": "2026-09-08T21:35:35.963561+00:00",
+  "userAuthorization": "Nick confirmed 1Password was unlocked and asked to retry",
+  "status": "LOCAL_SSH_SIGNATURE_VERIFIED",
+  "commit": "5117b4fa18afeb4869ac459b6f95dfd6a586edc6",
+  "parent": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "tree": "3a431affade6c6274b1d0b5ea1f2c286e7144a7b",
+  "filesCommitted": 1177,
+  "verificationExitCode": 0,
+  "verification": "Good \"git\" signature for cf-local-checkpoint with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+  "trust": "Verified against the existing configured public signing key using a temporary allowed-signers file; no persistent Git configuration change or key export",
+  "signingProgram": "/Applications/1Password.app/Contents/MacOS/op-ssh-sign",
+  "unsignedFallback": false,
+  "hostedActions": 0,
+  "oldRecovery": "port/v2/apps/game/smoke/earth-layered-staged-20260908.json",
+  "gameSourceChangesThisRetry": false
+}

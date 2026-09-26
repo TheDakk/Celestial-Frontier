@@ -1,0 +1,20 @@
+{
+  "id": "20260922-tree-frog-repair-02",
+  "sourceHead": "4207748479e1ddeccb2f2f9f24c45e219f73956f",
+  "intake": {
+    "command": "node audits/ARCHETYPE_SPRINT_20260922/intake.mjs audits/ARCHETYPE_REPAIRS_20260922/06-hopper audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02",
+    "exitCode": 0
+  },
+  "static": {
+    "command": "node audits/ARCHETYPE_SPRINT_20260922/static-runner.mjs audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02 audits/ARCHETYPE_REPAIRS_20260922/06-hopper/static-02.json",
+    "exitCode": 1,
+    "sources": 55,
+    "sourceHashesUnchanged": true
+  },
+  "diagnostics": [
+    "Three recorded ARAP poses reproduced exactly; rejected output unpublished",
+    "Six actual contact inputs reconstructed through GSAP/performance; error first lines match exactly"
+  ],
+  "repaint": "One corrected image produced and rejected by two visual reviews; no third attempt",
+  "nativeRun": false
+}

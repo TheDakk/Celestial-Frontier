@@ -1,0 +1,17 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation01": {
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-6a7088bd-a0da-4e66-a768-80484e08f4a0.png",
+    "master": "master-generation-01.png",
+    "sha256": "c10e9ebce82df71fe37b5bcf38f7d57277baeef1037f21b42078477ab2e71db5",
+    "prompt": "prompt.txt",
+    "verdict": "Rejected: excessive raptor-like bill hook and insufficient padding."
+  },
+  "generation02": {
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-1c2b26fa-d803-466b-b8e9-8418530ccd17.png",
+    "master": "master.png",
+    "sha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9",
+    "prompt": "prompt-correction-02.txt",
+    "verdict": "Candidate for intake: smaller hook-tipped yellow bill, distinct folded wings/webbed feet, padded whole silhouette. Final Nick review pending."
+  }
+}

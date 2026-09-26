@@ -1,0 +1,53 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-contact-travel.test.ts (8 tests | 2 failed) 28ms
+   × returns final tame presentation travel continuously to rest before the idle boundary 7ms
+   × does not erase an impossible external root offset on a canonical source-step clock 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-contact-travel.test.ts > returns final tame presentation travel continuously to rest before the idle boundary
+AssertionError: expected 0.000016168413546257143 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 0.000016168413546257143
+
+ ❯ apps/game/src/creature-rig-contact-travel.test.ts:145:30
+    143|   const approaching = solver.resolve(before.pose, before.phase), rest …
+    144|   physical(solver, rest);
+    145|   expect(rest.pose.root!.dx).toBe(0);
+       |                              ^
+    146|   expect(Math.abs(approaching.pose.root!.dx!)).toBeLessThan(1e-7);
+    147|   for (const contact of approaching.contacts) {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  apps/game/src/creature-rig-contact-travel.test.ts > does not erase an impossible external root offset on a canonical source-step clock
+AssertionError: expected [Function] to throw error matching /horizontal reach|compression bound/ but got 'Contact: hit@55 legFrontFar outside a…'
+
+- Expected:
+/horizontal reach|compression bound/
+
++ Received:
+"Contact: hit@55 legFrontFar outside accommodatable reach"
+
+ ❯ apps/game/src/creature-rig-contact-travel.test.ts:193:50
+    191|   physical(solver, ordinary);
+    192|   const invalid: CreaturePoseV1 = {...input, root: {...input.root!, dx…
+    193|   expect(() => solver.resolve(invalid, context)).toThrow(/horizontal r…
+       |                                                  ^
+    194| });
+    195|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 6 passed (8)
+   Start at  02:04:56
+   Duration  321ms (transform 134ms, setup 0ms, import 182ms, tests 28ms, environment 0ms)
+

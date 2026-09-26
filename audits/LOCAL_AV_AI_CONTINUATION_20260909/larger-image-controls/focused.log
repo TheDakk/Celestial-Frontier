@@ -1,0 +1,22 @@
+✔ Native microseconds and host/GPU overlap remain separate, with actual CPU provider (1.229417ms)
+✔ Same program with different tensor dimensions is a distinct bounded group (0.110833ms)
+✔ More unique graph nodes than the unchanged group cap aggregate by actual op/program/shape (9.4725ms)
+✔ Different ops and programs stay distinct even when their node label and shapes agree (10.262875ms)
+✔ Malformed native name contract cannot silently merge into a generic program group (0.308042ms)
+✔ Native stdout requires exact complete framing; partial end cannot pass (0.916458ms)
+✔ Single multiline stdout message also retains complete actual bytes (0.105042ms)
+✔ Missing GPU, missing Nodes, empty/zero GPU cannot become zero-cost success (0.135083ms)
+✔ Malformed timestamps, JSEP fields, metadata and stale versions fail closed (0.2905ms)
+✔ Byte/event/group capacities reject a complete trace instead of truncating its admission (0.204791ms)
+✔ Interleaved, malformed, trailing or interrupted stdout stays a retained failure (0.170375ms)
+✔ CLI profile is explicit; accepted reference variants retain their own meaning (0.118083ms)
+✔ CLI rejects profile-only preflight, contradictory conditioning, duplicates and unknown flags (0.058875ms)
+✔ Explicit larger output changes only the bounded dimensions; arbitrary sizes are refused (0.055875ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 67.375

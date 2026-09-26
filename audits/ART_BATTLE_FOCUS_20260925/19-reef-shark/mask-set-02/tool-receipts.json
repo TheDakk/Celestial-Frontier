@@ -1,0 +1,27 @@
+{
+  "retainedUnchanged": [
+    "striped",
+    "spotted",
+    "banded",
+    "mottled"
+  ],
+  "rejectedPrevious": "marbled crossed lower fins; eye-spotted reached gills",
+  "corrected": [
+    {
+      "pattern": "marbled",
+      "tool": "image_gen.imagegen",
+      "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-9b67ab4a-d626-4621-8f8d-07563be4858c.png",
+      "sha256": "2380566ddcbb20424faa2e1c0276cfd793e8a882f27ed6c781365398dc3ca72e",
+      "promptSha256": "95e83751dd50620fc82c24401fd0fb735b98218aa1a063865ab8057a79018851",
+      "reference": "../master.png"
+    },
+    {
+      "pattern": "eye-spotted",
+      "tool": "image_gen.imagegen",
+      "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-ec6afc07-9998-48bc-8485-1d558636651a.png",
+      "sha256": "6f3c0bc8eb05efd073f9a515577b2e98a13ad91c0f531a8f1092e913e098b9f4",
+      "promptSha256": "b384892b04df5eb9cd36697dbe79755748038a542f8ac42615b63b7be7da0830",
+      "reference": "../master.png"
+    }
+  ]
+}

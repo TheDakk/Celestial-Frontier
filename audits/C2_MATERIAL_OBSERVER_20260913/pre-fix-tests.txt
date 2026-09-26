@@ -1,0 +1,30 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ packages/art/test/quadruped-material-observer.test.ts (2 tests | 1 failed) 67ms
+   × emits the routed surface actually passed to the alien skin painter, without changing draw commands 17ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/art/test/quadruped-material-observer.test.ts > emits the routed surface actually passed to the alien skin painter, without changing draw commands
+AssertionError: expected 'fur' to be 'chitinous' // Object.is equality
+
+Expected: "chitinous"
+Received: "fur"
+
+ ❯ packages/art/test/quadruped-material-observer.test.ts:40:47
+     38|    paint.mockClear();const result=draw(g,plan.spec,'proc:material-cont…
+     39|    expect(paint.mock.calls.map(call=>call[1])).toContain(expected);
+     40|    expect(result.observed?.materials.surface).toBe(expected);
+       |                                               ^
+     41|    // The original default-fur record must fail the same consumer expe…
+     42|    expect(()=>expect({...result.observed?.materials,surface:'fur'}.sur…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  00:25:47
+   Duration  264ms (transform 114ms, setup 0ms, import 135ms, tests 67ms, environment 0ms)
+

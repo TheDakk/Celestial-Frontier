@@ -1,0 +1,9 @@
+{
+ "id": "04-heron",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-thigh (legFarKnee) covers 16% paint (reference 55%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,540 @@
+{
+  "schema": "cf-u2-checkpoint-evidence/v1",
+  "source": "594ece6c79269ca36787fad2fa3f11608c9fef63",
+  "status": "PHONE_PRODUCT_RED",
+  "executionStatus": "fail",
+  "files": [
+    {
+      "file": "clone.log.gz",
+      "rawBytes": 247,
+      "rawSha256": "ecbbc8e1d8c599c6bb67435e642ddb23873ac2790affbc102db2737afdf2d316",
+      "bytes": 151,
+      "sha256": "4edd4fca608b2d791b2cc9467b14d9f1b9544004b3ba32e4dece624040e29e14"
+    },
+    {
+      "file": "execution.json.gz",
+      "rawBytes": 4953,
+      "rawSha256": "feb6977fe95a35c3d10cb498528ddc80769d247cb9ca78e7ff5e973285fe5df5",
+      "bytes": 1007,
+      "sha256": "75925a171e6a677895ed84792a83e6a5063469b96fe5f85b6e5c63aefbb7fc8a"
+    },
+    {
+      "file": "normal-build.log.gz",
+      "rawBytes": 5281,
+      "rawSha256": "4115e6b7a8c0f681ffe7407b48ed949f7fecb84c095b53f35bd8d6e0bc488e4b",
+      "bytes": 1877,
+      "sha256": "543d3d85b55332a6fbbfd58c625a8b58a1c3971628446118bd92c72e279852c9"
+    },
+    {
+      "file": "root-install.log.gz",
+      "rawBytes": 28,
+      "rawSha256": "ae07db7b518e3e86c5eb290254b1bd9cff95dd740bc8edf7992bfb55d9c842bd",
+      "bytes": 48,
+      "sha256": "ff9a3f57375077e6c33cf5dbe9e17179d1f501f497049ba412552bacafa7892e"
+    },
+    {
+      "file": "sheet-review.log.gz",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 20,
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "file": "signature.log.gz",
+      "rawBytes": 135,
+      "rawSha256": "f6da87af347cddf791a8771d5098e5c45e9c9ddf4aa8cd551fac5d7d5821a3e7",
+      "bytes": 152,
+      "sha256": "334f0dcc90089880e4acd4d3003ef1731ea177cffb7b7b3b4a73d6f6d8ffa57e"
+    },
+    {
+      "file": "small-phone.log.gz",
+      "rawBytes": 13735,
+      "rawSha256": "44064d3eed1c4272798f958d532ad7c5b30b93df52fcb699d49b6534819d4007",
+      "bytes": 3320,
+      "sha256": "71458218ac59c60dcbedbc19a8c8412268a68f03a7f60cde5aa57a105a921c8e"
+    },
+    {
+      "file": "static-develop.log.gz",
+      "rawBytes": 7004,
+      "rawSha256": "1e2b8f5ba5a7889a88dafc9476547c1da29c43297dbce899aca3535125c6b6eb",
+      "bytes": 2723,
+      "sha256": "2a9c605e9e6e024b169320ad47b68fc58078fb610aab982aa55ef51c6701de78"
+    },
+    {
+      "file": "v2-install.log.gz",
+      "rawBytes": 332,
+      "rawSha256": "aea3f9b482395ce10c898acd90c5768431e4c804c6f0c01c1df9cdcd58dc43de",
+      "bytes": 178,
+      "sha256": "55d839bb353a982076ae477da0687bb5e410e0336640a4a8e1e8cfe33942ba3c"
+    },
+    {
+      "file": "compact-phone-default-lower-lanes.png",
+      "rawBytes": 308347,
+      "rawSha256": "ce0ecc8408a843ff05ca9d3140499c5758aacb9f6663dc8e7322782bab3f5e45",
+      "bytes": 308347,
+      "sha256": "ce0ecc8408a843ff05ca9d3140499c5758aacb9f6663dc8e7322782bab3f5e45"
+    },
+    {
+      "file": "compact-phone-default-settings-scrolled.png",
+      "rawBytes": 215476,
+      "rawSha256": "705a1f9a034883bb3e5dce6154a884f5c7ec1e3acf5875f0c8d99ebe6fc618d2",
+      "bytes": 215476,
+      "sha256": "705a1f9a034883bb3e5dce6154a884f5c7ec1e3acf5875f0c8d99ebe6fc618d2"
+    },
+    {
+      "file": "compact-phone-default-training-settings.png",
+      "rawBytes": 206690,
+      "rawSha256": "a0365daffda2f418b664bd755f19d62dafd3ec081d9818ea6358c0517f594f38",
+      "bytes": 206690,
+      "sha256": "a0365daffda2f418b664bd755f19d62dafd3ec081d9818ea6358c0517f594f38"
+    },
+    {
+      "file": "compact-phone-xl-mono-lower-lanes.png",
+      "rawBytes": 293695,
+      "rawSha256": "3adbac2fcd84a9c943570ad716c69d4859f0b6a750f76d145c598b9912ff6799",
+      "bytes": 293695,
+      "sha256": "3adbac2fcd84a9c943570ad716c69d4859f0b6a750f76d145c598b9912ff6799"
+    },
+    {
+      "file": "compact-phone-xl-mono-settings-scrolled.png",
+      "rawBytes": 261986,
+      "rawSha256": "b5abd1a3f07ce0da21584bfe2ef093102f26f819711a431ca9bdaff1aca3982a",
+      "bytes": 261986,
+      "sha256": "b5abd1a3f07ce0da21584bfe2ef093102f26f819711a431ca9bdaff1aca3982a"
+    },
+    {
+      "file": "compact-phone-xl-mono-training-settings.png",
+      "rawBytes": 250322,
+      "rawSha256": "7b5ea078a6e505059e50cef0fe1128d690242d29773f156aa7d6a2d9403ff981",
+      "bytes": 250322,
+      "sha256": "7b5ea078a6e505059e50cef0fe1128d690242d29773f156aa7d6a2d9403ff981"
+    },
+    {
+      "file": "desktop-1080p-default-lower-lanes.png",
+      "rawBytes": 401959,
+      "rawSha256": "f23a1927dd6fde8ddbf4de906f4ba2a3b848ae1c7b1c964014ba84d0c3aa8d91",
+      "bytes": 401959,
+      "sha256": "f23a1927dd6fde8ddbf4de906f4ba2a3b848ae1c7b1c964014ba84d0c3aa8d91"
+    },
+    {
+      "file": "desktop-1080p-default-settings-scrolled.png",
+      "rawBytes": 466210,
+      "rawSha256": "a89511e8161ec9553fb8489f2ed90eab52952148abbd828333157f978b86b9cc",
+      "bytes": 466210,
+      "sha256": "a89511e8161ec9553fb8489f2ed90eab52952148abbd828333157f978b86b9cc"
+    },
+    {
+      "file": "desktop-1080p-default-training-settings.png",
+      "rawBytes": 477982,
+      "rawSha256": "92aebc85922b69a9b5a4a08fcbe85820c27e0559dc867dc9dc58147421b36440",
+      "bytes": 477982,
+      "sha256": "92aebc85922b69a9b5a4a08fcbe85820c27e0559dc867dc9dc58147421b36440"
+    },
+    {
+      "file": "desktop-1080p-xl-mono-lower-lanes.png",
+      "rawBytes": 458983,
+      "rawSha256": "d16e68d4c3121394f43f2795c0c9f62e1082ef110aba96bf65a0d0ffd1d1f12b",
+      "bytes": 458983,
+      "sha256": "d16e68d4c3121394f43f2795c0c9f62e1082ef110aba96bf65a0d0ffd1d1f12b"
+    },
+    {
+      "file": "desktop-1080p-xl-mono-settings-scrolled.png",
+      "rawBytes": 494829,
+      "rawSha256": "7ffa3e8d0efec61400b60e3bc2e552c5822fe8ac91f4207e9e602810b8e01043",
+      "bytes": 494829,
+      "sha256": "7ffa3e8d0efec61400b60e3bc2e552c5822fe8ac91f4207e9e602810b8e01043"
+    },
+    {
+      "file": "desktop-1080p-xl-mono-training-settings.png",
+      "rawBytes": 517547,
+      "rawSha256": "140374a5385fe41cb234c020485e438f77a645f8756ae57c9f541e591b30bbfd",
+      "bytes": 517547,
+      "sha256": "140374a5385fe41cb234c020485e438f77a645f8756ae57c9f541e591b30bbfd"
+    },
+    {
+      "file": "desktop-default-lower-lanes.png",
+      "rawBytes": 329196,
+      "rawSha256": "4c7dcddff2dde6349b7bb7752937d81f056c77750901f931674a27db27be6124",
+      "bytes": 329196,
+      "sha256": "4c7dcddff2dde6349b7bb7752937d81f056c77750901f931674a27db27be6124"
+    },
+    {
+      "file": "desktop-default-settings-scrolled.png",
+      "rawBytes": 345623,
+      "rawSha256": "886410b0c5feaaea1121545fcbc2730f536ea2668acf3d44f85cc6530972400b",
+      "bytes": 345623,
+      "sha256": "886410b0c5feaaea1121545fcbc2730f536ea2668acf3d44f85cc6530972400b"
+    },
+    {
+      "file": "desktop-default-training-settings.png",
+      "rawBytes": 350481,
+      "rawSha256": "6d94a95aec4dddadf7bffa222b77a8a1c909404f9bbbd0ac7427b5b4f631971e",
+      "bytes": 350481,
+      "sha256": "6d94a95aec4dddadf7bffa222b77a8a1c909404f9bbbd0ac7427b5b4f631971e"
+    },
+    {
+      "file": "desktop-xl-mono-lower-lanes.png",
+      "rawBytes": 371268,
+      "rawSha256": "abe23c20798326756042a4a1b4bef3e6c9d760c4f0517b40ca2bdee885090934",
+      "bytes": 371268,
+      "sha256": "abe23c20798326756042a4a1b4bef3e6c9d760c4f0517b40ca2bdee885090934"
+    },
+    {
+      "file": "desktop-xl-mono-settings-scrolled.png",
+      "rawBytes": 365288,
+      "rawSha256": "20d8209f0ff0b18c5475a24e1d68c1caceaa9f708848014a525d90fa719b96f6",
+      "bytes": 365288,
+      "sha256": "20d8209f0ff0b18c5475a24e1d68c1caceaa9f708848014a525d90fa719b96f6"
+    },
+    {
+      "file": "desktop-xl-mono-training-settings.png",
+      "rawBytes": 381537,
+      "rawSha256": "5d753b619aba58ee1a48efecacd6862aa795b320434132a03363fd0d67934c27",
+      "bytes": 381537,
+      "sha256": "5d753b619aba58ee1a48efecacd6862aa795b320434132a03363fd0d67934c27"
+    },
+    {
+      "file": "laptop-720p-default-lower-lanes.png",
+      "rawBytes": 272953,
+      "rawSha256": "c0b02875d2967b5ad0cbb6a4882d5c15d9304304e80d3742f7b7d30eda6ff9bb",
+      "bytes": 272953,
+      "sha256": "c0b02875d2967b5ad0cbb6a4882d5c15d9304304e80d3742f7b7d30eda6ff9bb"
+    },
+    {
+      "file": "laptop-720p-default-settings-scrolled.png",
+      "rawBytes": 259377,
+      "rawSha256": "22721b47c917fab483f8717b6133bd001eb0f8065c61db6222fdcbe085ea8b43",
+      "bytes": 259377,
+      "sha256": "22721b47c917fab483f8717b6133bd001eb0f8065c61db6222fdcbe085ea8b43"
+    },
+    {
+      "file": "laptop-720p-default-training-settings.png",
+      "rawBytes": 264528,
+      "rawSha256": "0f2ae887b56956d99b601218645577bd5511b043137a722fbb5a4046ec9b8955",
+      "bytes": 264528,
+      "sha256": "0f2ae887b56956d99b601218645577bd5511b043137a722fbb5a4046ec9b8955"
+    },
+    {
+      "file": "laptop-720p-xl-mono-lower-lanes.png",
+      "rawBytes": 309509,
+      "rawSha256": "95c6bdf26adc65c9b11e3bf94362282c946092699f77f45654d313f6eec28239",
+      "bytes": 309509,
+      "sha256": "95c6bdf26adc65c9b11e3bf94362282c946092699f77f45654d313f6eec28239"
+    },
+    {
+      "file": "laptop-720p-xl-mono-settings-scrolled.png",
+      "rawBytes": 283698,
+      "rawSha256": "f8c0d296cf63de1386de5cf0cb3bb6a48d39521ab88051334f22bab741f85be2",
+      "bytes": 283698,
+      "sha256": "f8c0d296cf63de1386de5cf0cb3bb6a48d39521ab88051334f22bab741f85be2"
+    },
+    {
+      "file": "laptop-720p-xl-mono-training-settings.png",
+      "rawBytes": 283241,
+      "rawSha256": "25488eb92ad338d5e4b776626a5f6a35203e5955b4d7801a56234ced6590f363",
+      "bytes": 283241,
+      "sha256": "25488eb92ad338d5e4b776626a5f6a35203e5955b4d7801a56234ced6590f363"
+    },
+    {
+      "file": "large-phone-default-lower-lanes.png",
+      "rawBytes": 609528,
+      "rawSha256": "b97f579abff68cc4e8a84bdf59b9666f00494409d3249325836faa6c7f072a33",
+      "bytes": 609528,
+      "sha256": "b97f579abff68cc4e8a84bdf59b9666f00494409d3249325836faa6c7f072a33"
+    },
+    {
+      "file": "large-phone-default-settings-scrolled.png",
+      "rawBytes": 467550,
+      "rawSha256": "05dd0bc644ae984b92708b57eeea558a37619c903b682f8683f3ecb40595f43a",
+      "bytes": 467550,
+      "sha256": "05dd0bc644ae984b92708b57eeea558a37619c903b682f8683f3ecb40595f43a"
+    },
+    {
+      "file": "large-phone-default-training-settings.png",
+      "rawBytes": 470919,
+      "rawSha256": "0447bdc856f8883e257f758e10d6797c4b9f7bf4d2abd6d382b136bdd960d360",
+      "bytes": 470919,
+      "sha256": "0447bdc856f8883e257f758e10d6797c4b9f7bf4d2abd6d382b136bdd960d360"
+    },
+    {
+      "file": "large-phone-xl-mono-lower-lanes.png",
+      "rawBytes": 631892,
+      "rawSha256": "3cbfcff44a1f2de9a520465f76578910bccc8fcbdff1abb1a30e47aafa1b1909",
+      "bytes": 631892,
+      "sha256": "3cbfcff44a1f2de9a520465f76578910bccc8fcbdff1abb1a30e47aafa1b1909"
+    },
+    {
+      "file": "large-phone-xl-mono-settings-scrolled.png",
+      "rawBytes": 524218,
+      "rawSha256": "0700f01ac64574d4f5406f65c60a257ae03b198ece9747b77de08435fd83d631",
+      "bytes": 524218,
+      "sha256": "0700f01ac64574d4f5406f65c60a257ae03b198ece9747b77de08435fd83d631"
+    },
+    {
+      "file": "large-phone-xl-mono-training-settings.png",
+      "rawBytes": 516192,
+      "rawSha256": "16d58fc2efd1ba1253d3ed5d103991ce13ee58c231b8b39640201bfdabafa52d",
+      "bytes": 516192,
+      "sha256": "16d58fc2efd1ba1253d3ed5d103991ce13ee58c231b8b39640201bfdabafa52d"
+    },
+    {
+      "file": "phone-landscape-default-lower-lanes.png",
+      "rawBytes": 311408,
+      "rawSha256": "ad983858ac80f846c46ddfffe8646332adfaf3a435e7f4f7312c8889a74d7678",
+      "bytes": 311408,
+      "sha256": "ad983858ac80f846c46ddfffe8646332adfaf3a435e7f4f7312c8889a74d7678"
+    },
+    {
+      "file": "phone-landscape-default-settings-scrolled.png",
+      "rawBytes": 299151,
+      "rawSha256": "1e7a5fd3e596868ea8643be09caebee57453125c3b97b594b45a5f12da51c34b",
+      "bytes": 299151,
+      "sha256": "1e7a5fd3e596868ea8643be09caebee57453125c3b97b594b45a5f12da51c34b"
+    },
+    {
+      "file": "phone-landscape-default-training-settings.png",
+      "rawBytes": 302309,
+      "rawSha256": "b74b62a348cb08da2618cedbd016cf9ec229e7fa3e3fd11a9ca143eeeefa0dd8",
+      "bytes": 302309,
+      "sha256": "b74b62a348cb08da2618cedbd016cf9ec229e7fa3e3fd11a9ca143eeeefa0dd8"
+    },
+    {
+      "file": "phone-landscape-xl-mono-lower-lanes.png",
+      "rawBytes": 343099,
+      "rawSha256": "89eacbcf075a8f3eb25490b1828123b2c5e82c5f7016d792c7754184f0dd8899",
+      "bytes": 343099,
+      "sha256": "89eacbcf075a8f3eb25490b1828123b2c5e82c5f7016d792c7754184f0dd8899"
+    },
+    {
+      "file": "phone-landscape-xl-mono-settings-scrolled.png",
+      "rawBytes": 303356,
+      "rawSha256": "caa35756c09da465892de745a146ef918c923a89e8aa80e5c55d451c8cec82fa",
+      "bytes": 303356,
+      "sha256": "caa35756c09da465892de745a146ef918c923a89e8aa80e5c55d451c8cec82fa"
+    },
+    {
+      "file": "phone-landscape-xl-mono-training-settings.png",
+      "rawBytes": 324279,
+      "rawSha256": "2711b0643249c8dd1640fb3f389da39919e0facedf5fac672bf0383fbe3d2287",
+      "bytes": 324279,
+      "sha256": "2711b0643249c8dd1640fb3f389da39919e0facedf5fac672bf0383fbe3d2287"
+    },
+    {
+      "file": "primary-phone-default-lower-lanes.png",
+      "rawBytes": 579971,
+      "rawSha256": "07e15d4b05bc9385c5137ea4122310e70e667b9b9ffd10e5fb76effbda4a3e6b",
+      "bytes": 579971,
+      "sha256": "07e15d4b05bc9385c5137ea4122310e70e667b9b9ffd10e5fb76effbda4a3e6b"
+    },
+    {
+      "file": "primary-phone-default-settings-scrolled.png",
+      "rawBytes": 426256,
+      "rawSha256": "5ec56cc253053eb51aa1fe5aa2b06fdfff016f478220c193b21125c9cabe2115",
+      "bytes": 426256,
+      "sha256": "5ec56cc253053eb51aa1fe5aa2b06fdfff016f478220c193b21125c9cabe2115"
+    },
+    {
+      "file": "primary-phone-default-training-settings.png",
+      "rawBytes": 419455,
+      "rawSha256": "18b61ee977079035020756763d31b80dc60e809692c192e333ad4a32e460d3b6",
+      "bytes": 419455,
+      "sha256": "18b61ee977079035020756763d31b80dc60e809692c192e333ad4a32e460d3b6"
+    },
+    {
+      "file": "primary-phone-xl-mono-lower-lanes.png",
+      "rawBytes": 599049,
+      "rawSha256": "6f18b8de9eceaff706d218277d39fc424b8ebdc0a64940508147bf526760e98d",
+      "bytes": 599049,
+      "sha256": "6f18b8de9eceaff706d218277d39fc424b8ebdc0a64940508147bf526760e98d"
+    },
+    {
+      "file": "primary-phone-xl-mono-settings-scrolled.png",
+      "rawBytes": 487933,
+      "rawSha256": "babd990bb905e20d3bd6368d9d05fc85ef7caa23adda5a997c0c1a008935c3cc",
+      "bytes": 487933,
+      "sha256": "babd990bb905e20d3bd6368d9d05fc85ef7caa23adda5a997c0c1a008935c3cc"
+    },
+    {
+      "file": "primary-phone-xl-mono-training-settings.png",
+      "rawBytes": 476345,
+      "rawSha256": "de4afcc41f142023af6b2924a62637347f04e18927a0a05df7d600bdcddcd1bd",
+      "bytes": 476345,
+      "sha256": "de4afcc41f142023af6b2924a62637347f04e18927a0a05df7d600bdcddcd1bd"
+    },
+    {
+      "file": "review.json.gz",
+      "rawBytes": 10087280,
+      "rawSha256": "828ebdce4807ce4bd26d2860d49a36d5e3b64de9b53993d06dd99458a6d7b6b5",
+      "bytes": 563287,
+      "sha256": "b5454a8122a04a89d3575b100fc8d859bf2d3bbb3f3b2c4d51377ae03d5b5766"
+    },
+    {
+      "file": "small-phone-default-lower-lanes.png",
+      "rawBytes": 258486,
+      "rawSha256": "d6c1837fa20d10bacd637e2bb727a1bbd0cefa3ec5c715455a98502402752dc7",
+      "bytes": 258486,
+      "sha256": "d6c1837fa20d10bacd637e2bb727a1bbd0cefa3ec5c715455a98502402752dc7"
+    },
+    {
+      "file": "small-phone-default-settings-scrolled.png",
+      "rawBytes": 201563,
+      "rawSha256": "bf9a573fc08b46d0741bb30f497d10cd2083a34ba263fd855bab9a7210a96016",
+      "bytes": 201563,
+      "sha256": "bf9a573fc08b46d0741bb30f497d10cd2083a34ba263fd855bab9a7210a96016"
+    },
+    {
+      "file": "small-phone-default-training-settings.png",
+      "rawBytes": 192082,
+      "rawSha256": "91d819338ec0dbcc36c6e1a326fce6c2eb53896e30329e5f17d54f51c5072e32",
+      "bytes": 192082,
+      "sha256": "91d819338ec0dbcc36c6e1a326fce6c2eb53896e30329e5f17d54f51c5072e32"
+    },
+    {
+      "file": "small-phone-xl-mono-lower-lanes.png",
+      "rawBytes": 274580,
+      "rawSha256": "d197953debf269aae88e5f5cfe29f871d3745036899fc412ef35a6c08e5fe638",
+      "bytes": 274580,
+      "sha256": "d197953debf269aae88e5f5cfe29f871d3745036899fc412ef35a6c08e5fe638"
+    },
+    {
+      "file": "small-phone-xl-mono-settings-scrolled.png",
+      "rawBytes": 253415,
+      "rawSha256": "61441eb0f5c60c15de149fe5d0c927b32594b3f218bb6a5aa19856d322df3f0c",
+      "bytes": 253415,
+      "sha256": "61441eb0f5c60c15de149fe5d0c927b32594b3f218bb6a5aa19856d322df3f0c"
+    },
+    {
+      "file": "small-phone-xl-mono-training-settings.png",
+      "rawBytes": 201842,
+      "rawSha256": "7dd11e12a3aeff57d3be54a69aabee59e580a7e121dfe66b7e063eff084569fc",
+      "bytes": 201842,
+      "sha256": "7dd11e12a3aeff57d3be54a69aabee59e580a7e121dfe66b7e063eff084569fc"
+    },
+    {
+      "file": "tablet-landscape-default-lower-lanes.png",
+      "rawBytes": 682481,
+      "rawSha256": "0085f6597cfcf4d6976534e42fab718f204df2faf71d1c22b80fe502917887d2",
+      "bytes": 682481,
+      "sha256": "0085f6597cfcf4d6976534e42fab718f204df2faf71d1c22b80fe502917887d2"
+    },
+    {
+      "file": "tablet-landscape-default-settings-scrolled.png",
+      "rawBytes": 646809,
+      "rawSha256": "0e7fac6cb0508bc67d39073c71207d82eb59ed82b372da0f68a9bbbe4a11009c",
+      "bytes": 646809,
+      "sha256": "0e7fac6cb0508bc67d39073c71207d82eb59ed82b372da0f68a9bbbe4a11009c"
+    },
+    {
+      "file": "tablet-landscape-default-training-settings.png",
+      "rawBytes": 666308,
+      "rawSha256": "190e425abf62d62f2d61272c0587b96f4e29536a4097663d9a0899e55732820b",
+      "bytes": 666308,
+      "sha256": "190e425abf62d62f2d61272c0587b96f4e29536a4097663d9a0899e55732820b"
+    },
+    {
+      "file": "tablet-landscape-xl-mono-lower-lanes.png",
+      "rawBytes": 746826,
+      "rawSha256": "5b4055852a419cda8bd19820f60f5f81eeeced93bdd1ff35dcfb223a3f8fbca0",
+      "bytes": 746826,
+      "sha256": "5b4055852a419cda8bd19820f60f5f81eeeced93bdd1ff35dcfb223a3f8fbca0"
+    },
+    {
+      "file": "tablet-landscape-xl-mono-settings-scrolled.png",
+      "rawBytes": 694079,
+      "rawSha256": "ff913cb9ad670c62958dfe4a55cdb55882b3f2fe406e42cd0531e0ebb35e01f8",
+      "bytes": 694079,
+      "sha256": "ff913cb9ad670c62958dfe4a55cdb55882b3f2fe406e42cd0531e0ebb35e01f8"
+    },
+    {
+      "file": "tablet-landscape-xl-mono-training-settings.png",
+      "rawBytes": 694267,
+      "rawSha256": "59500b6d2b0b248cc54a2e3c1bf19a594ebc83019c91c5f3f7e958945bfc87f4",
+      "bytes": 694267,
+      "sha256": "59500b6d2b0b248cc54a2e3c1bf19a594ebc83019c91c5f3f7e958945bfc87f4"
+    },
+    {
+      "file": "tablet-portrait-default-lower-lanes.png",
+      "rawBytes": 642420,
+      "rawSha256": "e6871937ee1fcb22099d24d8c698fe8910c68517c9a418d1e80874614be3a538",
+      "bytes": 642420,
+      "sha256": "e6871937ee1fcb22099d24d8c698fe8910c68517c9a418d1e80874614be3a538"
+    },
+    {
+      "file": "tablet-portrait-default-settings-scrolled.png",
+      "rawBytes": 654228,
+      "rawSha256": "94847f59285b9894cbb98e9cb9bb454c2972ba63f035922b8846f4215518a6ba",
+      "bytes": 654228,
+      "sha256": "94847f59285b9894cbb98e9cb9bb454c2972ba63f035922b8846f4215518a6ba"
+    },
+    {
+      "file": "tablet-portrait-default-training-settings.png",
+      "rawBytes": 657940,
+      "rawSha256": "eaee4615ead32d1286596991cae2631918d4eefd715f454c78fb02c7015f00dd",
+      "bytes": 657940,
+      "sha256": "eaee4615ead32d1286596991cae2631918d4eefd715f454c78fb02c7015f00dd"
+    },
+    {
+      "file": "tablet-portrait-xl-mono-lower-lanes.png",
+      "rawBytes": 690207,
+      "rawSha256": "1926d4d58fc3b82a013a76937dd1134f676a5db7bc015f1e9b7a9a31cb36e324",
+      "bytes": 690207,
+      "sha256": "1926d4d58fc3b82a013a76937dd1134f676a5db7bc015f1e9b7a9a31cb36e324"
+    },
+    {
+      "file": "tablet-portrait-xl-mono-settings-scrolled.png",
+      "rawBytes": 694200,
+      "rawSha256": "ab19cd3c0beacd1412bceeb53e9882a22f616abd39df82a60041cc65fbe45eae",
+      "bytes": 694200,
+      "sha256": "ab19cd3c0beacd1412bceeb53e9882a22f616abd39df82a60041cc65fbe45eae"
+    },
+    {
+      "file": "tablet-portrait-xl-mono-training-settings.png",
+      "rawBytes": 715986,
+      "rawSha256": "9c38ced82796a7bd7ffad171fade0ea76a04584fa1caa6db5e15efa37c092fbd",
+      "bytes": 715986,
+      "sha256": "9c38ced82796a7bd7ffad171fade0ea76a04584fa1caa6db5e15efa37c092fbd"
+    },
+    {
+      "file": "glassmatrix-local-u2-594ece6-20260906-small-phone.json.gz",
+      "rawBytes": 48018,
+      "rawSha256": "46df2717b433b647c40d94d378d52b0987f0ec2611ea4c149c65fd6ec5d96331",
+      "bytes": 5674,
+      "sha256": "d2e1e369bec82725dbb206f3b4abb97f7a90ab1c3233b05892c9dad68411649a"
+    }
+  ],
+  "stages": [
+    {
+      "name": "signature",
+      "status": "pass"
+    },
+    {
+      "name": "clone",
+      "status": "pass"
+    },
+    {
+      "name": "root-install",
+      "status": "pass"
+    },
+    {
+      "name": "v2-install",
+      "status": "pass"
+    },
+    {
+      "name": "normal-build",
+      "status": "pass"
+    },
+    {
+      "name": "sheet-review",
+      "status": "pass"
+    },
+    {
+      "name": "static-develop",
+      "status": "pass"
+    },
+    {
+      "name": "small-phone",
+      "status": "fail"
+    }
+  ],
+  "certification": false
+}

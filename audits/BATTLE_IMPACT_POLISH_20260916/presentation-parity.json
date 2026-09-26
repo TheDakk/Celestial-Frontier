@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "scope": "Exact plan-byte identity and named-frame PNG parity outside the impact envelope; all three strike frames must change.",
+  "rows": [
+    {
+      "file": "civet-idle.png",
+      "sameBytes": true,
+      "expectedChange": false,
+      "afterSha256": "1e3ddd4fee8e37eb46dc6799f8a4000a5aedc8ab278341fefeb9c756f7313e06"
+    },
+    {
+      "file": "civet-anticipation.png",
+      "sameBytes": true,
+      "expectedChange": false,
+      "afterSha256": "bd871a7c184bd991a94975f3ac923e3cf840a81d64b4ecd06185b65bc81f0a1a"
+    },
+    {
+      "file": "civet-strike.png",
+      "sameBytes": false,
+      "expectedChange": true,
+      "afterSha256": "a34a9881baa65bbb5ba6ca9adc3e45c3e122ac2236080e17fa1eee44b715aa60"
+    },
+    {
+      "file": "civet-impact-hold.png",
+      "sameBytes": true,
+      "expectedChange": false,
+      "afterSha256": "88621bf798939a6e7a200f5ca4fd010a2d8535b79bedcfde43f2c797370c1dd0"
+    },
+    {
+      "file": "civet-hit.png",
+      "sameBytes": true,
+      "expectedChange": false,
+      "afterSha256": "a338832ad0e5ea0ef1e1c54157d6f26c9a50c5ae442bbc3bf4929ec37a89361b"
+    },
+    {
+      "file": "fox-idle.png",
+      "sameBytes": true,
+      "expectedChange": false,
+      "afterSha256": "8e819aae0c8aee1ac58c4e3c9a12971046b533c08aa17211f350811b35519ae3"
+    },
+    {
+      "file": "fox-anticipation.png",
+      "sameBytes": true,
+      "expectedChange": false,
+      "afterSha256": "a79ec3bc76e28a124cbc094bfd9e1a00962ed54f18842daa282a1cd9d7de447f"
+    },
+    {
+      "file": "fox-strike.png",
+      "sameBytes": false,
+      "expectedChange": true,
+      "afterSha256": "d338ad7a08607c2d5edbc6b2ac5debbe9d6a4c9cc2ebd3a55a423346bab4d194"
+    },
+    {
+      "file": "fox-impact-hold.png",
+      "sameBytes": true,
+      "expectedChange": false,
+      "afterSha256": "8698f8e37ab6d696b1d3de82dee29b42778eb73a06c5de126316701cf9aacf85"
+    },
+    {
+      "file": "fox-hit.png",
+      "sameBytes": true,
+      "expectedChange": false,
+      "afterSha256": "d39d6e5cd72f129e4e22c5cfbbda2daeaa1cc528fa0c5e84a9916a238ffa38ee"
+    },
+    {
+      "file": "procedural-idle.png",
+      "sameBytes": true,
+      "expectedChange": false,
+      "afterSha256": "7afe26c0614ca4bc2a9949a8ec5e0781a98d52c9f6291295de5e14cb3f80b854"
+    },
+    {
+      "file": "procedural-anticipation.png",
+      "sameBytes": true,
+      "expectedChange": false,
+      "afterSha256": "0aebcf954c2c7961165e768b881f426418acd15c86ddb633c217445bd93fa775"
+    },
+    {
+      "file": "procedural-strike.png",
+      "sameBytes": false,
+      "expectedChange": true,
+      "afterSha256": "31cf2dc084c2ba5a33b4ffb121aa62c6380c2590aefd6980f4baa57089fcc49f"
+    },
+    {
+      "file": "procedural-impact-hold.png",
+      "sameBytes": true,
+      "expectedChange": false,
+      "afterSha256": "7f81a9c520ed8a95ac93cb48cce41ab38de676fa400c51703d67bca858917bd5"
+    },
+    {
+      "file": "procedural-hit.png",
+      "sameBytes": true,
+      "expectedChange": false,
+      "afterSha256": "62d5e542ef935a29831c741d8eeaf89892e46952f58dfa049e2caec019dd1da8"
+    }
+  ]
+}

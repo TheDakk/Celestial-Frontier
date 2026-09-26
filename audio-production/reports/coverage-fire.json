@@ -1,0 +1,689 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v2.ability.fire.cast.1",
+      "group": "coverage-fire",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/02fa3a2c6e79e868-spell_fire_01.ogg",
+          "sha256": "02fa3a2c6e79e868e546802f45127c5cdda69aba6d5a24ac997ea66f81a816cb",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.057188
+        },
+        {
+          "path": "source-audio/kenney_impacts/2d7c719c05999e05-impactPunch_medium_003.ogg",
+          "sha256": "2d7c719c05999e0532f4384e1018e04cd916db715140bf16dee2dff3f820e908",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.455261
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-fire",
+          "start": 0,
+          "duration": 0.55,
+          "note": 45,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.fire.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "fire",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 0,
+      "master": "masters/coverage-fire/v2.ability.fire.cast.1.wav",
+      "masterSha256": "3751f1422d1b0ae752e7fa73f12fefd9af6c7e6d92fa3352bb39a66d4406ce87",
+      "opus": "masters/coverage-fire/v2.ability.fire.cast.1.opus",
+      "opusSha256": "0e7ee7f36d26845ec6e5a79500c793d3adf23e7325b27ac26e15c707abcffa24",
+      "previewSha256": "de05afdcfebc940a6cef51ae553fe1dcc1cee57e5dae636f6b3c0ae8feb6ac30",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.fire.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.3,
+      "opusDbTP": -22.0
+    },
+    {
+      "id": "v2.ability.fire.cast.2",
+      "group": "coverage-fire",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/18025b21a4ecb3b4-spell_fire_05.ogg",
+          "sha256": "18025b21a4ecb3b41acc0dccb0697a8930262109ea198ff8c5ef0853d3ed1cfa",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.244813
+        },
+        {
+          "path": "source-audio/kenney_impacts/486988aa2d6440ff-impactPunch_medium_000.ogg",
+          "sha256": "486988aa2d6440ffc4c62a0e8ccf3c23673ba84424bd4723378d451b7255eb5c",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.430544
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-fire",
+          "start": 0,
+          "duration": 0.55,
+          "note": 45,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.fire.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "fire",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 1.65,
+      "master": "masters/coverage-fire/v2.ability.fire.cast.2.wav",
+      "masterSha256": "de07cb29a493cc821344dd9ae889b9799f0353262e4b0de70355a493da38b11c",
+      "opus": "masters/coverage-fire/v2.ability.fire.cast.2.opus",
+      "opusSha256": "e542eb1acd830cc77a3e69902566c08423a6982c49498d397756a4451bd4386d",
+      "previewSha256": "6ecc1ffd8118220c1c564600fcbe9302113f02c00236484678fb6cca57ce4596",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.fire.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.2,
+      "opusDbTP": -22.9
+    },
+    {
+      "id": "v2.ability.fire.cast.3",
+      "group": "coverage-fire",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/2e4edee4ff8d7898-spell_fire_03.ogg",
+          "sha256": "2e4edee4ff8d7898198f1ab5213e086965e14a665cb947d53759505e28ddd3e4",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.926771
+        },
+        {
+          "path": "source-audio/kenney_impacts/4a256878a3afb994-impactPunch_medium_004.ogg",
+          "sha256": "4a256878a3afb994ec9a4399336687748e68c7c136872c08c9c797d8c4e2464a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.542925
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-fire",
+          "start": 0,
+          "duration": 0.55,
+          "note": 45,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.fire.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "fire",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 3.3,
+      "master": "masters/coverage-fire/v2.ability.fire.cast.3.wav",
+      "masterSha256": "1dc7770db90b07fc9f478233425493c65131b1259e614edea1616e16c186ae09",
+      "opus": "masters/coverage-fire/v2.ability.fire.cast.3.opus",
+      "opusSha256": "27a230d130452503dd71b1b17e9d7c8f39ea67e1f1d98ec84753badc656195b8",
+      "previewSha256": "b63b04690d1d1105d4c3a14ace717c8925862bf65b7c644d9075347e92cd31fd",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.fire.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.3,
+      "opusDbTP": -23.4
+    },
+    {
+      "id": "v2.ability.fire.impact.1",
+      "group": "coverage-fire",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/64d653cd0cc6eb71-spell_fire_04.ogg",
+          "sha256": "64d653cd0cc6eb71bb45a1dfbba29eaa769ed5b663cce275082d6971e4f2ca8e",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.594875
+        },
+        {
+          "path": "source-audio/kenney_impacts/486988aa2d6440ff-impactPunch_medium_000.ogg",
+          "sha256": "486988aa2d6440ffc4c62a0e8ccf3c23673ba84424bd4723378d451b7255eb5c",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.430544
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-fire",
+          "start": 0,
+          "duration": 0.55,
+          "note": 33,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.fire.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "fire",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 4.949999999999999,
+      "master": "masters/coverage-fire/v2.ability.fire.impact.1.wav",
+      "masterSha256": "04185b62e8a9fccc6bfbfba6c88b2408f6f8e58cc184c791141a00a872aa2cf9",
+      "opus": "masters/coverage-fire/v2.ability.fire.impact.1.opus",
+      "opusSha256": "916bd27126d7562c9c47b68ff546c6e5de072948a5909d8cd27916ae8c876927",
+      "previewSha256": "25768eca6e6b76bcb4a1826cf3ff4046b3aa1303afdc88d129a0c26d03a57a3d",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.fire.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.7,
+      "opusDbTP": -23.3
+    },
+    {
+      "id": "v2.ability.fire.impact.2",
+      "group": "coverage-fire",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/66fa753e8033d08f-spell_fire_06.ogg",
+          "sha256": "66fa753e8033d08f3837d6ef1706b0450297db68c0d4b21782a03fd9ae960d63",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.004688
+        },
+        {
+          "path": "source-audio/kenney_impacts/4a256878a3afb994-impactPunch_medium_004.ogg",
+          "sha256": "4a256878a3afb994ec9a4399336687748e68c7c136872c08c9c797d8c4e2464a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.542925
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-fire",
+          "start": 0,
+          "duration": 0.55,
+          "note": 33,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.fire.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "fire",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 7.1499999999999995,
+      "master": "masters/coverage-fire/v2.ability.fire.impact.2.wav",
+      "masterSha256": "f2b7459e73929f6688034595ae60ff1098a367308e46465e7a0e83fe6d78fc31",
+      "opus": "masters/coverage-fire/v2.ability.fire.impact.2.opus",
+      "opusSha256": "d6927b2463837abcd266ecaafc6ce444a61405780f2071302fd389255ede1229",
+      "previewSha256": "7d22c230e9825f436bfc0323a792d9367d9456af8ec36509dc4a04f445ae4d54",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.fire.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.1,
+      "opusDbTP": -20.1
+    },
+    {
+      "id": "v2.ability.fire.impact.3",
+      "group": "coverage-fire",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/bb13cef9c0b0b4ec-spell_fire_07.ogg",
+          "sha256": "bb13cef9c0b0b4ec7f9335c356b14814c88418abd85dd3747cb62469e9ada93f",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.651333
+        },
+        {
+          "path": "source-audio/kenney_impacts/6492f9ccbc8d24dc-impactPunch_medium_002.ogg",
+          "sha256": "6492f9ccbc8d24dcef607bb1b48790b7870961474561f7fe5601e1c73a3018ef",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.541406
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-fire",
+          "start": 0,
+          "duration": 0.55,
+          "note": 33,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.fire.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "fire",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 9.35,
+      "master": "masters/coverage-fire/v2.ability.fire.impact.3.wav",
+      "masterSha256": "6853223ea7b4cb116b73c586f2931d59266f746ca161e45b40a32caa35c77d49",
+      "opus": "masters/coverage-fire/v2.ability.fire.impact.3.opus",
+      "opusSha256": "7b3f26f494178c956e98d045dfc8abbfdc3e5a2b13630548d3f0f81f4ad8d04d",
+      "previewSha256": "e83d38d2c90a4da75f29ed136a080d7950f7393801816b95358b6e31d2f51d75",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.fire.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.3,
+      "opusDbTP": -22.3
+    },
+    {
+      "id": "v2.ability.fire.sustain.1",
+      "group": "coverage-fire",
+      "kind": "synthetic_fictional",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/02fa3a2c6e79e868-spell_fire_01.ogg",
+          "sha256": "02fa3a2c6e79e868e546802f45127c5cdda69aba6d5a24ac997ea66f81a816cb",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.057188
+        },
+        {
+          "path": "source-audio/kenney_impacts/4a256878a3afb994-impactPunch_medium_004.ogg",
+          "sha256": "4a256878a3afb994ec9a4399336687748e68c7c136872c08c9c797d8c4e2464a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.542925
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-fire",
+          "start": 0.0,
+          "duration": 0.55,
+          "note": 45,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-fire",
+          "start": 0.6,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-fire",
+          "start": 1.2,
+          "duration": 0.55,
+          "note": 45,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-fire",
+          "start": 1.7999999999999998,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-fire",
+          "start": 2.4,
+          "duration": 0.55,
+          "note": 45,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-fire",
+          "start": 3.0,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.fire.sustain"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "fire",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 11.55,
+      "master": "masters/coverage-fire/v2.ability.fire.sustain.1.wav",
+      "masterSha256": "a6f3e60729b0a9546e58e2f6c1c716025c02efd32a03b7fc28f17188b4f6084c",
+      "opus": "masters/coverage-fire/v2.ability.fire.sustain.1.opus",
+      "opusSha256": "3ddbe00ec03533dcb089794b5a008ca0104b5c3fd7af8ccb44ca0f816cbae731",
+      "previewSha256": "9b34f23134bfbb8c207112bbbf936a0b83cc4d7aca186312eca2076f48921e5c",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/v2.ability.fire.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.4,
+      "opusDbTP": -23.4
+    },
+    {
+      "id": "v2.ability.fire.release.1",
+      "group": "coverage-fire",
+      "kind": "synthetic_fictional",
+      "duration": 0.9,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/02fa3a2c6e79e868-spell_fire_01.ogg",
+          "sha256": "02fa3a2c6e79e868e546802f45127c5cdda69aba6d5a24ac997ea66f81a816cb",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.057188
+        },
+        {
+          "path": "source-audio/kenney_impacts/6492f9ccbc8d24dc-impactPunch_medium_002.ogg",
+          "sha256": "6492f9ccbc8d24dcef607bb1b48790b7870961474561f7fe5601e1c73a3018ef",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.541406
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-fire",
+          "start": 0,
+          "duration": 0.55,
+          "note": 40,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.fire.release"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "fire",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 16.55,
+      "master": "masters/coverage-fire/v2.ability.fire.release.1.wav",
+      "masterSha256": "a0f07431786bd155e04a28144b73157e2e79660636d5ef2f482aba20efd6afca",
+      "opus": "masters/coverage-fire/v2.ability.fire.release.1.opus",
+      "opusSha256": "b0560f60d36955d850817ced254c0c2e4305a0467f818c0200a7e308bf2b2c70",
+      "previewSha256": "157c9d58d02080db359070d7df0fccc5cd5c97e1639795d60e2b6b924355f2bb",
+      "previewBytes": 86514,
+      "previewUrl": "/__cf-audio-review/v2.ability.fire.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.4,
+      "opusDbTP": -22.0
+    },
+    {
+      "id": "v2.ability.fire.shield.1",
+      "group": "coverage-fire",
+      "kind": "synthetic_fictional",
+      "duration": 1.4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/02fa3a2c6e79e868-spell_fire_01.ogg",
+          "sha256": "02fa3a2c6e79e868e546802f45127c5cdda69aba6d5a24ac997ea66f81a816cb",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.057188
+        },
+        {
+          "path": "source-audio/kenney_impacts/e71d23abcc3f10d9-impactPunch_medium_001.ogg",
+          "sha256": "e71d23abcc3f10d9d6bc9615b2a431fff70b12333a5fcdd9964457564ace4349",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.404603
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-fire",
+          "start": 0,
+          "duration": 0.55,
+          "note": 45,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-fire",
+          "start": 0.3,
+          "duration": 0.55,
+          "note": 52,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.fire.shield"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "fire",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 18.45,
+      "master": "masters/coverage-fire/v2.ability.fire.shield.1.wav",
+      "masterSha256": "944fb120b43870dd24e2424ff70f0f71fc1066b03f9d0b86ad5bfa2ac4d97664",
+      "opus": "masters/coverage-fire/v2.ability.fire.shield.1.opus",
+      "opusSha256": "438d6c60d6def5aacca8d30c381a8f34da2bbab85ed4fc1f0a8d8e9bfb245908",
+      "previewSha256": "6f810a040be1d9e3d2f7cf94a05934f30d6454f3694de5d0bd42eed54eafeb53",
+      "previewBytes": 134514,
+      "previewUrl": "/__cf-audio-review/v2.ability.fire.shield.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.0,
+      "opusDbTP": -22.7
+    },
+    {
+      "id": "v2.ability.fire.heal.1",
+      "group": "coverage-fire",
+      "kind": "synthetic_fictional",
+      "duration": 1.8,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/02fa3a2c6e79e868-spell_fire_01.ogg",
+          "sha256": "02fa3a2c6e79e868e546802f45127c5cdda69aba6d5a24ac997ea66f81a816cb",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.057188
+        },
+        {
+          "path": "source-audio/kenney_impacts/2d7c719c05999e05-impactPunch_medium_003.ogg",
+          "sha256": "2d7c719c05999e0532f4384e1018e04cd916db715140bf16dee2dff3f820e908",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.455261
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-fire",
+          "start": 0,
+          "duration": 0.55,
+          "note": 45,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-fire",
+          "start": 0.35,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-fire",
+          "start": 0.7,
+          "duration": 0.55,
+          "note": 52,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.fire.heal"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "fire",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 20.849999999999998,
+      "master": "masters/coverage-fire/v2.ability.fire.heal.1.wav",
+      "masterSha256": "68201defc9e76b7764e60ca405310c5c03f00447a7352b21b775f574bac925d2",
+      "opus": "masters/coverage-fire/v2.ability.fire.heal.1.opus",
+      "opusSha256": "b5adec9777d279352656cb3289ff6380019a55d64cb1aa4a8fecf21450993a72",
+      "previewSha256": "e31b31a11c8d36bcf87979d6964917513f16a92455568e32fd2b7df67d8ab80b",
+      "previewBytes": 172914,
+      "previewUrl": "/__cf-audio-review/v2.ability.fire.heal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.3,
+      "opusDbTP": -22.0
+    },
+    {
+      "id": "v2.ability.fire.tick.1",
+      "group": "coverage-fire",
+      "kind": "synthetic_fictional",
+      "duration": 0.45,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/02fa3a2c6e79e868-spell_fire_01.ogg",
+          "sha256": "02fa3a2c6e79e868e546802f45127c5cdda69aba6d5a24ac997ea66f81a816cb",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.057188
+        },
+        {
+          "path": "source-audio/kenney_impacts/486988aa2d6440ff-impactPunch_medium_000.ogg",
+          "sha256": "486988aa2d6440ffc4c62a0e8ccf3c23673ba84424bd4723378d451b7255eb5c",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.430544
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-fire",
+          "start": 0,
+          "duration": 0.45,
+          "note": 57,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.fire.tick"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "fire",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 23.65,
+      "master": "masters/coverage-fire/v2.ability.fire.tick.1.wav",
+      "masterSha256": "e37fee198bbf221e51f78249dc2e14f93907bf8bdcf4ed187216c1c62dc89daa",
+      "opus": "masters/coverage-fire/v2.ability.fire.tick.1.opus",
+      "opusSha256": "424f1704152d70ad1b356a64029070a5f5d2ac0521954ace430a296cb92d88dd",
+      "previewSha256": "eee5bb2df7dc927792279b14431c121f416f4cb9de3d3b5df6e0d5105604ffde",
+      "previewBytes": 43314,
+      "previewUrl": "/__cf-audio-review/v2.ability.fire.tick.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.4,
+      "opusDbTP": -22.2
+    }
+  ],
+  "listeningAccepted": false
+}

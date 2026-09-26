@@ -1,0 +1,2989 @@
+{
+  "schema": "cf-v2-glassmatrix/v2",
+  "status": "instrument-fail",
+  "terminal": true,
+  "scope": "targeted-diagnostic",
+  "certifying": false,
+  "exit": {
+    "code": 2
+  },
+  "startedAt": "2026-09-21T20:20:12.507Z",
+  "endedAt": "2026-09-21T20:20:23.883Z",
+  "run": {
+    "id": "20260921202012507-43429-673895d448ff",
+    "artifactPath": "apps/game/smoke/glassmatrix-20260921202012507-43429-673895d448ff.json",
+    "provenance": "The unique run artifact is authority; the fixed-name report is a mutable current pointer only."
+  },
+  "source": {
+    "commit": "f25098fa4202c86cd6db8b6a5ded47c9faf5dc69",
+    "branch": "openai/mac",
+    "state": "dirty-diagnostic",
+    "statusSha256": "ae81391f72f03bbcd99b03b349fcabc3494cac45e95b3b1c12da4be14c1d8052",
+    "workingTreeSha256": "62afa1c9230662236600bd8261b8cdcb6e2d2c809e350f036705155cb7a0c33d"
+  },
+  "sourceEnd": {
+    "commit": "f25098fa4202c86cd6db8b6a5ded47c9faf5dc69",
+    "branch": "openai/mac",
+    "state": "dirty-diagnostic",
+    "statusSha256": "ae81391f72f03bbcd99b03b349fcabc3494cac45e95b3b1c12da4be14c1d8052",
+    "workingTreeSha256": "62afa1c9230662236600bd8261b8cdcb6e2d2c809e350f036705155cb7a0c33d"
+  },
+  "sourceChange": {
+    "detected": false,
+    "ending": null
+  },
+  "predecessors": null,
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.48",
+    "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.7",
+    "protocol_version": "1.3",
+    "consistentAcrossViewports": true
+  },
+  "viewportInventory": [
+    {
+      "label": "small-phone",
+      "width": 320,
+      "height": 568,
+      "dpr": 2,
+      "mobile": true,
+      "safeArea": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    }
+  ],
+  "viewportTimings": [
+    {
+      "label": "small-phone",
+      "durationMs": 8366
+    }
+  ],
+  "arc4CaptureOutcomeInventory": {
+    "plannedOutcomeCodes": [
+      "ARC4_CAPTURE_NATIVE_SURVEY_RETURN",
+      "ARC4_CAPTURE_PRESENTATION_TRUTH",
+      "ARC4_CAPTURE_GEOMETRY_FOCUS"
+    ],
+    "complete": true,
+    "expectedCount": 3,
+    "observedCount": 3,
+    "omitted": [],
+    "outcomes": [
+      {
+        "viewport": "small-phone",
+        "surface": "survey-capture",
+        "code": "ARC4_CAPTURE_NATIVE_SURVEY_RETURN",
+        "ok": true,
+        "checks": {
+          "captured": true,
+          "setupCloseTrusted": true,
+          "openerTrusted": true,
+          "idleKeyboardFocus": true,
+          "closeTrusted": true,
+          "openerReturn": true,
+          "reopenTrusted": true,
+          "noCaptureActivation": true,
+          "surfaceUnchanged": true,
+          "planetsideUnchanged": true,
+          "captureUnchanged": true,
+          "persistenceUnchanged": true
+        },
+        "reasons": [],
+        "diagnostics": {
+          "schema": "cf-v2-glass-arc4-native-close-diagnostics/v1",
+          "beforeSurface": {
+            "mode": "surface",
+            "galaxySeed": 999,
+            "starSeed": 424242,
+            "planetSeed": 133,
+            "planetOrdinal": 2,
+            "worldKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+            "cardOpen": true,
+            "expanded": "true",
+            "cardTitle": "Homeworld"
+          },
+          "afterSurface": {
+            "mode": "surface",
+            "galaxySeed": 999,
+            "starSeed": 424242,
+            "planetSeed": 133,
+            "planetOrdinal": 2,
+            "worldKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+            "cardOpen": true,
+            "expanded": "true",
+            "cardTitle": "Homeworld"
+          },
+          "beforePlanetside": {
+            "mode": "surface",
+            "galaxySeed": 999,
+            "starSeed": 424242,
+            "planetSeed": 133,
+            "planetOrdinal": 2,
+            "rosterState": "ready",
+            "previewCount": 8,
+            "fullRosterCount": 21,
+            "fullRosterFingerprint": "cwr1:21:6980:bc437ec6",
+            "ecologyEpoch": 12,
+            "previewRowCount": 8,
+            "worldKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2"
+          },
+          "afterPlanetside": {
+            "mode": "surface",
+            "galaxySeed": 999,
+            "starSeed": 424242,
+            "planetSeed": 133,
+            "planetOrdinal": 2,
+            "rosterState": "ready",
+            "previewCount": 8,
+            "fullRosterCount": 21,
+            "fullRosterFingerprint": "cwr1:21:6980:bc437ec6",
+            "ecologyEpoch": 12,
+            "previewRowCount": 8,
+            "worldKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2"
+          },
+          "beforeCapture": {
+            "schema": "cf-v2-arc4-app-state/v1",
+            "stateKind": "loaded",
+            "mode": "current",
+            "protection": null,
+            "bootstrapPending": false,
+            "bootstrapCandidateReady": false,
+            "bootstrapOutcome": "committed-published",
+            "revision": 0,
+            "catalogueSpecies": 3,
+            "discoveries": 3,
+            "creatures": 2,
+            "specimenLots": 1,
+            "biospheres": 0,
+            "lastOutcome": null,
+            "lastResult": null,
+            "card": {
+              "schema": "cf-v2-capture-card-diagnostics/v1",
+              "attachedMountCount": 1,
+              "retainedDomCount": 20,
+              "pendingWork": 0,
+              "convergenceLatched": false,
+              "pendingDisabledBodyFocusOwned": false,
+              "actionControlCount": 3,
+              "delegatedListenerCount": 1,
+              "contextKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2|epoch:12|cwr1:21:6980:bc437ec6",
+              "lastRequest": null,
+              "lastOutcome": null
+            },
+            "actionCoordinator": {
+              "inFlight": false,
+              "owner": {
+                "schema": "cf-v2-product-action-coordinator-diagnostics/v1",
+                "busy": false,
+                "operation": null
+              },
+              "hold": {
+                "schema": "cf-v2-product-action-hold-diagnostics/v1",
+                "phase": "idle",
+                "operation": null,
+                "sequence": 0
+              },
+              "faultArmed": {
+                "storageFailure": false,
+                "staleAuthority": false,
+                "publicationFailure": false
+              },
+              "lastFault": null
+            }
+          },
+          "afterCapture": {
+            "schema": "cf-v2-arc4-app-state/v1",
+            "stateKind": "loaded",
+            "mode": "current",
+            "protection": null,
+            "bootstrapPending": false,
+            "bootstrapCandidateReady": false,
+            "bootstrapOutcome": "committed-published",
+            "revision": 0,
+            "catalogueSpecies": 3,
+            "discoveries": 3,
+            "creatures": 2,
+            "specimenLots": 1,
+            "biospheres": 0,
+            "lastOutcome": null,
+            "lastResult": null,
+            "card": {
+              "schema": "cf-v2-capture-card-diagnostics/v1",
+              "attachedMountCount": 1,
+              "retainedDomCount": 20,
+              "pendingWork": 0,
+              "convergenceLatched": false,
+              "pendingDisabledBodyFocusOwned": false,
+              "actionControlCount": 3,
+              "delegatedListenerCount": 1,
+              "contextKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2|epoch:12|cwr1:21:6980:bc437ec6",
+              "lastRequest": null,
+              "lastOutcome": null
+            },
+            "actionCoordinator": {
+              "inFlight": false,
+              "owner": {
+                "schema": "cf-v2-product-action-coordinator-diagnostics/v1",
+                "busy": false,
+                "operation": null
+              },
+              "hold": {
+                "schema": "cf-v2-product-action-hold-diagnostics/v1",
+                "phase": "idle",
+                "operation": null,
+                "sequence": 0
+              },
+              "faultArmed": {
+                "storageFailure": false,
+                "staleAuthority": false,
+                "publicationFailure": false
+              },
+              "lastFault": null
+            }
+          },
+          "beforeDurableFingerprint": "be9af8ca1452a3d72f2c73504ce01141082e9f9fe37e1af6ecc8cb00e08459b8",
+          "afterDurableFingerprint": "be9af8ca1452a3d72f2c73504ce01141082e9f9fe37e1af6ecc8cb00e08459b8",
+          "sampleFocusSetup": {
+            "schema": "cf-v2-glass-arc4-native-tab-setup/v1",
+            "ok": true,
+            "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+            "documentHref": "http://127.0.0.1:57786/",
+            "targetCount": 1,
+            "priorCount": 1,
+            "targetConnected": true,
+            "priorConnected": true,
+            "priorFocused": true,
+            "targetVerb": "sample",
+            "priorVerb": "scavenge",
+            "targetSemanticKey": "capture:sample",
+            "priorSemanticKey": "capture:scavenge"
+          },
+          "sampleFocusHeartbeat": null,
+          "sampleFocus": {
+            "schema": "cf-v2-glass-arc4-native-tab-focus/v1",
+            "stateFound": true,
+            "setupDocumentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+            "finalDocumentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+            "sameDocument": true,
+            "documentHref": "http://127.0.0.1:57786/",
+            "targetCount": 1,
+            "priorCount": 1,
+            "targetConnected": true,
+            "priorConnected": true,
+            "originalTargetDisconnected": false,
+            "originalPriorDisconnected": false,
+            "replacementAcquired": false,
+            "priorReplacementAcquired": false,
+            "replacementAcrossSamples": false,
+            "modality": "keyboard",
+            "nativeTabTrusted": true,
+            "focused": true,
+            "activeSemanticKey": "capture:sample",
+            "focusVisible": true,
+            "styleChanged": true,
+            "decorationPainted": true,
+            "verb": "sample",
+            "semanticKey": "capture:sample",
+            "priorVerb": "scavenge",
+            "priorSemanticKey": "capture:scavenge",
+            "close": false,
+            "before": {
+              "outline": "rgb(238, 246, 255) none 3px",
+              "outlineStyle": "none",
+              "outlineWidth": "3px",
+              "outlineColor": "rgb(238, 246, 255)",
+              "shadow": "none",
+              "border": "rgb(85, 117, 164)",
+              "background": "rgba(24, 43, 70, 0.9)"
+            },
+            "after": {
+              "outline": "rgb(255, 217, 106) solid 2px",
+              "outlineStyle": "solid",
+              "outlineWidth": "2px",
+              "outlineColor": "rgb(255, 217, 106)",
+              "shadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+              "border": "rgb(85, 117, 164)",
+              "background": "rgba(24, 43, 70, 0.9)"
+            },
+            "receipt": {
+              "key": "Tab",
+              "code": "Tab",
+              "trusted": true,
+              "targetWasCurrent": true,
+              "priorFocused": true,
+              "eventTargetTag": "BUTTON",
+              "eventTargetId": "",
+              "priorCount": 1,
+              "priorVerb": "scavenge",
+              "priorSemanticKey": "capture:scavenge",
+              "activeVerb": "scavenge",
+              "activeSemanticKey": "capture:scavenge",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb"
+            },
+            "scrollSettled": true,
+            "scroll": {
+              "captured": true,
+              "firstDocumentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "secondDocumentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "firstTargetCount": 1,
+              "secondTargetCount": 1,
+              "firstTargetConnected": true,
+              "secondTargetConnected": true,
+              "replacementAcrossSamples": false,
+              "first": {
+                "buttonRect": {
+                  "left": 36,
+                  "top": 212.671875,
+                  "right": 284,
+                  "bottom": 256.671875,
+                  "width": 248,
+                  "height": 44
+                },
+                "cardRect": {
+                  "left": 12,
+                  "top": 132,
+                  "right": 308,
+                  "bottom": 271,
+                  "width": 296,
+                  "height": 139
+                },
+                "scrollOffset": {
+                  "left": 0,
+                  "top": 2620
+                },
+                "layoutRect": {
+                  "left": 36,
+                  "top": 2832.671875,
+                  "right": 284,
+                  "bottom": 2876.671875,
+                  "width": 248,
+                  "height": 44
+                },
+                "scroll": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    2612
+                  ],
+                  [
+                    0,
+                    8
+                  ],
+                  [
+                    0,
+                    0
+                  ]
+                ]
+              },
+              "second": {
+                "buttonRect": {
+                  "left": 36,
+                  "top": 212.671875,
+                  "right": 284,
+                  "bottom": 256.671875,
+                  "width": 248,
+                  "height": 44
+                },
+                "cardRect": {
+                  "left": 12,
+                  "top": 132,
+                  "right": 308,
+                  "bottom": 271,
+                  "width": 296,
+                  "height": 139
+                },
+                "scrollOffset": {
+                  "left": 0,
+                  "top": 2620
+                },
+                "layoutRect": {
+                  "left": 36,
+                  "top": 2832.671875,
+                  "right": 284,
+                  "bottom": 2876.671875,
+                  "width": 248,
+                  "height": 44
+                },
+                "scroll": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    2612
+                  ],
+                  [
+                    0,
+                    8
+                  ],
+                  [
+                    0,
+                    0
+                  ]
+                ]
+              }
+            }
+          },
+          "sampleFocusOutcome": {
+            "schema": "cf-v2-glass-arc4-native-tab-assessment/v2",
+            "ok": true,
+            "instrumentOk": true,
+            "productOk": true,
+            "instrumentChecks": {
+              "heartbeatRequirement": true,
+              "setupCarrier": true,
+              "setupDocument": true,
+              "focusCarrier": true,
+              "documentIdentity": true,
+              "trustedTabReceipt": true,
+              "scrollCarrier": true,
+              "heartbeatLifecycle": true,
+              "cycleReceiptCarrier": true,
+              "captureRerenderCompleted": true,
+              "replacementObserved": true,
+              "receiptReplacementCoherence": true
+            },
+            "productChecks": {
+              "setupReady": true,
+              "setupIdentity": true,
+              "tabOrigin": true,
+              "currentControls": true,
+              "semanticLineage": true,
+              "heartbeatFocusRestored": true,
+              "scrollSettled": true,
+              "keyboardFocus": true,
+              "activeSemanticFocus": true
+            }
+          }
+        }
+      },
+      {
+        "viewport": "small-phone",
+        "surface": "survey-capture",
+        "code": "ARC4_CAPTURE_PRESENTATION_TRUTH",
+        "ok": true,
+        "checks": {
+          "captured": true,
+          "uiComplete": true,
+          "surfaceRoute": true,
+          "homeworldTitle": true,
+          "epochExact": true,
+          "rosterCounts": true,
+          "rosterFingerprint": true,
+          "contextIdentity": true,
+          "verbsExact": true,
+          "tameOdds": true,
+          "scavengeOdds": true,
+          "sampleOdds": true,
+          "yieldExact": true,
+          "fullPoolCopy": true,
+          "modelDisabledParity": true
+        },
+        "reasons": [],
+        "diagnostics": {
+          "schema": "cf-v2-glass-arc4-presentation-diagnostics/v1",
+          "ui": {
+            "schema": "cf-v2-slice-arc4-capture-ui-evidence/v1",
+            "cardOpen": true,
+            "cardTitle": "Homeworld",
+            "planetsideHeading": "PLANETSIDE — Biosphere",
+            "cardRect": {
+              "left": 12,
+              "top": 132,
+              "right": 308,
+              "bottom": 271,
+              "width": 296,
+              "height": 139
+            },
+            "mountCount": 1,
+            "directCloseCount": 1,
+            "close": {
+              "exists": true,
+              "tag": "BUTTON",
+              "label": "Close Survey card",
+              "rect": {
+                "left": 249,
+                "top": 147,
+                "right": 293,
+                "bottom": 191,
+                "width": 44,
+                "height": 44
+              },
+              "point": {
+                "x": 271,
+                "y": 169,
+                "tag": "BUTTON",
+                "verb": null,
+                "close": true
+              }
+            },
+            "controller": "v1",
+            "contextKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2|epoch:12|cwr1:21:6980:bc437ec6",
+            "ariaBusy": "false",
+            "summary": "Showing 8 of 21 life forms. Capture draws from all 21, not only this preview. Each action chooses uniformly from every eligible species for that action in the full biosphere.",
+            "budget": {
+              "text": "16 of 16 capture attempts remain; 0 spent this active-play cycle. Tame, Scavenge, and Sample share Biosphere Yield. Every attempt spends 1, hit or miss. Full recovery at the next 20-minute active-play cycle — 19:57 of active play remaining. Closing the game does not advance recovery.",
+              "yield": 16,
+              "used": 0,
+              "remaining": 16,
+              "cycle": 0,
+              "recoveryRemainingActivePlayMs": 1196732
+            },
+            "rows": [
+              {
+                "verb": "tame",
+                "status": "ready",
+                "semanticKey": "capture:tame",
+                "title": "Tame · fauna",
+                "detail": "Randomly attempts one of 9 eligible fauna from the full biosphere. Success adds one owned creature.",
+                "odds": {
+                  "text": "One of 9 eligible fauna is selected at random. Overall success chance 43.33333%; individual odds range 36%–60%.",
+                  "eligibleCount": 9,
+                  "overallChance": 0.43333333333333335,
+                  "chanceMin": 0.36,
+                  "chanceMax": 0.6
+                },
+                "button": {
+                  "exists": true,
+                  "connected": true,
+                  "tag": "BUTTON",
+                  "label": "Tame",
+                  "verb": "tame",
+                  "focusKey": "capture:tame",
+                  "modelEnabled": "true",
+                  "disabled": false,
+                  "ariaDisabled": "false",
+                  "rect": {
+                    "left": 36,
+                    "top": -552.53125,
+                    "right": 284,
+                    "bottom": -508.53125,
+                    "width": 248,
+                    "height": 44
+                  },
+                  "point": {
+                    "x": 160,
+                    "y": -530.53125,
+                    "tag": null,
+                    "verb": null,
+                    "close": false
+                  }
+                }
+              },
+              {
+                "verb": "scavenge",
+                "status": "ready",
+                "semanticKey": "capture:scavenge",
+                "title": "Scavenge · flora or fungi",
+                "detail": "Randomly attempts one of 9 eligible flora or fungi from the full biosphere. Success adds one specimen lot.",
+                "odds": {
+                  "text": "One of 9 eligible flora or fungi is selected at random. Overall success chance 74.86667%; individual odds range 57.6%–95%.",
+                  "eligibleCount": 9,
+                  "overallChance": 0.7486666666666666,
+                  "chanceMin": 0.576,
+                  "chanceMax": 0.95
+                },
+                "button": {
+                  "exists": true,
+                  "connected": true,
+                  "tag": "BUTTON",
+                  "label": "Scavenge",
+                  "verb": "scavenge",
+                  "focusKey": "capture:scavenge",
+                  "modelEnabled": "true",
+                  "disabled": false,
+                  "ariaDisabled": "false",
+                  "rect": {
+                    "left": 36,
+                    "top": -142.234375,
+                    "right": 284,
+                    "bottom": -98.234375,
+                    "width": 248,
+                    "height": 44
+                  },
+                  "point": {
+                    "x": 160,
+                    "y": -120.234375,
+                    "tag": null,
+                    "verb": null,
+                    "close": false
+                  }
+                }
+              },
+              {
+                "verb": "sample",
+                "status": "ready",
+                "semanticKey": "capture:sample",
+                "title": "Sample · microbes",
+                "detail": "Randomly attempts one of 3 eligible microbes from the full biosphere. Success adds one specimen lot.",
+                "odds": {
+                  "text": "One of 3 eligible microbes is selected at random. Overall success chance 70.5%; individual odds range 54%–90%.",
+                  "eligibleCount": 3,
+                  "overallChance": 0.7050000000000001,
+                  "chanceMin": 0.54,
+                  "chanceMax": 0.8999999999999999
+                },
+                "button": {
+                  "exists": true,
+                  "connected": true,
+                  "tag": "BUTTON",
+                  "label": "Sample",
+                  "verb": "sample",
+                  "focusKey": "capture:sample",
+                  "modelEnabled": "true",
+                  "disabled": false,
+                  "ariaDisabled": "false",
+                  "rect": {
+                    "left": 36,
+                    "top": 212.671875,
+                    "right": 284,
+                    "bottom": 256.671875,
+                    "width": 248,
+                    "height": 44
+                  },
+                  "point": {
+                    "x": 160,
+                    "y": 234.671875,
+                    "tag": "BUTTON",
+                    "verb": "sample",
+                    "close": false
+                  }
+                }
+              }
+            ],
+            "status": {
+              "hidden": true,
+              "kind": null,
+              "convergence": null,
+              "text": ""
+            },
+            "diagnostics": {
+              "schema": "cf-v2-capture-card-diagnostics/v1",
+              "attachedMountCount": 1,
+              "retainedDomCount": 20,
+              "pendingWork": 0,
+              "convergenceLatched": false,
+              "pendingDisabledBodyFocusOwned": false,
+              "actionControlCount": 3,
+              "delegatedListenerCount": 1,
+              "contextKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2|epoch:12|cwr1:21:6980:bc437ec6",
+              "lastRequest": null,
+              "lastOutcome": null
+            },
+            "captureState": {
+              "schema": "cf-v2-arc4-app-state/v1",
+              "stateKind": "loaded",
+              "mode": "current",
+              "protection": null,
+              "bootstrapPending": false,
+              "bootstrapCandidateReady": false,
+              "bootstrapOutcome": "committed-published",
+              "revision": 0,
+              "catalogueSpecies": 3,
+              "discoveries": 3,
+              "creatures": 2,
+              "specimenLots": 1,
+              "biospheres": 0,
+              "lastOutcome": null,
+              "lastResult": null,
+              "card": {
+                "schema": "cf-v2-capture-card-diagnostics/v1",
+                "attachedMountCount": 1,
+                "retainedDomCount": 20,
+                "pendingWork": 0,
+                "convergenceLatched": false,
+                "pendingDisabledBodyFocusOwned": false,
+                "actionControlCount": 3,
+                "delegatedListenerCount": 1,
+                "contextKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2|epoch:12|cwr1:21:6980:bc437ec6",
+                "lastRequest": null,
+                "lastOutcome": null
+              },
+              "actionCoordinator": {
+                "inFlight": false,
+                "owner": {
+                  "schema": "cf-v2-product-action-coordinator-diagnostics/v1",
+                  "busy": false,
+                  "operation": null
+                },
+                "hold": {
+                  "schema": "cf-v2-product-action-hold-diagnostics/v1",
+                  "phase": "idle",
+                  "operation": null,
+                  "sequence": 0
+                },
+                "faultArmed": {
+                  "storageFailure": false,
+                  "staleAuthority": false,
+                  "publicationFailure": false
+                },
+                "lastFault": null
+              }
+            },
+            "ownershipV2": {
+              "schema": "cf-v2-arc5-app-state/v3",
+              "stateKind": "loaded",
+              "mode": "current",
+              "representationVersion": 2,
+              "protection": null,
+              "bootstrapPending": false,
+              "bootstrapOutcome": "training-committed-published",
+              "revision": 0,
+              "sourceRevision": 0,
+              "sourceDigest": "c11f70ad8a93350db4ca4f619984daf7feacf8eebe55e2aecfab38c34ac7210e",
+              "targetDigest": "509121de43c698b914629fa2d0b782f734ed1f1110b372e46d1ee8c7011cca86",
+              "deltaDigest": "47cd0efdac5edc767ded4698d72f462335bc5e0a304cc38066b4a9c5f68315f2",
+              "deltaRows": 0,
+              "deltaShardCount": 4,
+              "deltaShardDigests": [
+                "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+              ],
+              "acquisitions": 3,
+              "bredAcquisitions": 0,
+              "creatures": 2,
+              "creatureTombstones": 0,
+              "specimenLots": 1,
+              "specimenTombstones": 0,
+              "biospheres": 0,
+              "feed": {
+                "lastOutcome": null,
+                "lastResult": null,
+                "controller": {
+                  "schema": "cf-v2-compendium-feed-diagnostics/v1",
+                  "attachedMountCount": 0,
+                  "retainedDomCount": 0,
+                  "pendingWork": 0,
+                  "convergenceLatched": false,
+                  "delegatedListenerCount": 0,
+                  "actionControlCount": 0,
+                  "radioControlCount": 0,
+                  "surfaceKey": null,
+                  "contextKey": null,
+                  "selectedCreatureId": null,
+                  "selectedFoodLotId": null,
+                  "lastRequest": null,
+                  "lastOutcome": null
+                },
+                "actionCoordinator": {
+                  "inFlight": false,
+                  "owner": {
+                    "schema": "cf-v2-product-action-coordinator-diagnostics/v1",
+                    "busy": false,
+                    "operation": null
+                  },
+                  "hold": {
+                    "schema": "cf-v2-product-action-hold-diagnostics/v1",
+                    "phase": "idle",
+                    "operation": null,
+                    "sequence": 0
+                  },
+                  "faultArmed": {
+                    "storageFailure": false,
+                    "staleAuthority": false,
+                    "publicationFailure": false
+                  },
+                  "lastFault": null
+                }
+              },
+              "explorerMeal": {
+                "lastOutcome": null,
+                "lastResult": null,
+                "controller": {
+                  "attachedMountCount": 0,
+                  "delegatedListenerCount": 0,
+                  "pendingWork": 0,
+                  "convergenceLatched": false,
+                  "actionControlCount": 0,
+                  "contextKey": null,
+                  "lastRequest": null,
+                  "lastOutcome": null
+                }
+              },
+              "breed": {
+                "lastOutcome": null,
+                "lastResult": null,
+                "controller": {
+                  "schema": "cf-v2-compendium-breed-diagnostics/v1",
+                  "attachedMountCount": 0,
+                  "retainedDomCount": 0,
+                  "pendingWork": 0,
+                  "convergenceLatched": false,
+                  "delegatedListenerCount": 0,
+                  "renderedParentControlCount": 0,
+                  "selectedPrimaryId": null,
+                  "selectedMateId": null,
+                  "primaryPage": 0,
+                  "matePage": 0,
+                  "surfaceKey": null,
+                  "contextKey": null,
+                  "lastRequest": null,
+                  "lastOutcome": null
+                }
+              },
+              "rename": {
+                "lastOutcome": null,
+                "lastResult": null,
+                "controller": {
+                  "schema": "cf-v2-compendium-rename-diagnostics/v1",
+                  "attachedMountCount": 0,
+                  "retainedDomCount": 0,
+                  "pendingWork": 0,
+                  "convergenceLatched": false,
+                  "delegatedListenerCount": 0,
+                  "creatureControlCount": 0,
+                  "surfaceKey": null,
+                  "contextKey": null,
+                  "selectedCreatureId": null,
+                  "currentPage": 0,
+                  "lastRequest": null,
+                  "lastOutcome": null
+                }
+              },
+              "scout": {
+                "lastOutcome": null,
+                "lastResult": null,
+                "controller": {
+                  "schema": "cf-v2-compendium-scout-diagnostics/v1",
+                  "attachedMountCount": 0,
+                  "retainedDomCount": 0,
+                  "pendingWork": 0,
+                  "convergenceLatched": false,
+                  "delegatedListenerCount": 0,
+                  "creatureControlCount": 0,
+                  "surfaceKey": null,
+                  "contextKey": null,
+                  "selectedCreatureId": null,
+                  "currentPage": 0,
+                  "lastRequest": null,
+                  "lastOutcome": null
+                }
+              }
+            },
+            "persistence": {
+              "schema": "cf-v2-app-persistence/v1",
+              "ready": true,
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "bootKind": "current-v5",
+              "hold": null,
+              "protectedDetail": null,
+              "authorityBootKind": "absent",
+              "seedBootstrapPending": false,
+              "bootRouteRepairPending": false,
+              "productBootstrapPending": false,
+              "engineeringBootstrapPending": false,
+              "ownershipBootstrapPending": false,
+              "ownershipV2BootstrapPending": false,
+              "visibilityOverrideHidden": false,
+              "lastOutcome": "arc0-land-committed:10",
+              "hideWitness": null,
+              "heartbeatStorageFault": null,
+              "revisionVerificationFault": null,
+              "heartbeatRunning": true,
+              "convergenceReloadScheduled": false,
+              "convergenceReloadHold": {
+                "schema": "cf-v2-product-action-hold-diagnostics/v1",
+                "phase": "idle",
+                "operation": null,
+                "sequence": 0
+              },
+              "leaseReadCount": 8,
+              "revisionReadCount": 1,
+              "mutationBlocked": false,
+              "mutationBlockCount": 0,
+              "mutationBlockWitness": null,
+              "importPhase": null,
+              "importRace": null,
+              "runtime": {
+                "schema": "cf-v2-f4-runtime/v1",
+                "revision": 10,
+                "visible": true,
+                "answerable": true,
+                "leaseOwned": true,
+                "staleBlocked": false,
+                "leaseHeartbeat": 2,
+                "activePlayMs": 3337,
+                "accruing": true,
+                "sessionSeed": 2088247963,
+                "sessionOrdinal": 2,
+                "sessionDraws": {},
+                "commits": 7,
+                "staleWrites": 0,
+                "leaseLosses": 0
+              },
+              "ecology": {
+                "schema": "cf-v2-ecology-epoch-edge/v1",
+                "publishedEpoch": 12,
+                "candidateEpoch": 12,
+                "activePlayOriginMs": 0,
+                "observedActivePlayMs": 3337,
+                "edgeDue": false,
+                "autoCheckpointDue": false,
+                "inFlight": false,
+                "stagedIntent": null,
+                "stagedEpoch": null,
+                "retrySuppressedEpoch": null,
+                "lastCommittedRevision": 8,
+                "stages": 3,
+                "commits": 3,
+                "publications": 0,
+                "rejections": 0,
+                "invalidStageCompletions": 0,
+                "projection": {
+                  "state": "current",
+                  "publishedEpoch": 12,
+                  "projectedEpoch": 12,
+                  "refreshEpoch": null,
+                  "refreshSerial": null
+                },
+                "projectionRefreshesStarted": 0,
+                "projectionRefreshesCompleted": 0,
+                "projectionRefreshesFailed": 0,
+                "projectionSuppressions": 0,
+                "invalidProjectionCompletions": 0,
+                "projectionDirty": false,
+                "projectionSuppressed": false,
+                "checkpointInFlight": false,
+                "lastOutcome": "steady:12:revision:8"
+              }
+            },
+            "activeElement": {
+              "verb": null,
+              "semanticKey": null,
+              "status": false,
+              "close": false,
+              "focusVisible": true
+            }
+          },
+          "planetside": {
+            "mode": "surface",
+            "galaxySeed": 999,
+            "starSeed": 424242,
+            "planetSeed": 133,
+            "planetOrdinal": 2,
+            "rosterState": "ready",
+            "previewCount": 8,
+            "fullRosterCount": 21,
+            "fullRosterFingerprint": "cwr1:21:6980:bc437ec6",
+            "ecologyEpoch": 12,
+            "previewRowCount": 8,
+            "worldKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2"
+          }
+        }
+      },
+      {
+        "viewport": "small-phone",
+        "surface": "survey-capture",
+        "code": "ARC4_CAPTURE_GEOMETRY_FOCUS",
+        "ok": true,
+        "checks": {
+          "captured": true,
+          "commonLayoutCoordinates": true,
+          "viewport": true,
+          "uiComplete": true,
+          "oneSurfaceOneClose": true,
+          "horizontalContainment": true,
+          "stackedSurfaceSeparation": true,
+          "controlsExact": true,
+          "noControlOverlap": true,
+          "closeGeometry": true,
+          "closeFocus": true,
+          "pendingFocus": true,
+          "settlementFocus": true,
+          "controlsGeometry": true
+        },
+        "reasons": [],
+        "diagnostics": {
+          "schema": "cf-v2-glass-arc4-geometry-diagnostics/v1",
+          "viewport": {
+            "name": "small-phone",
+            "width": 320,
+            "height": 568
+          },
+          "planetsideRect": {
+            "left": 12,
+            "top": 279,
+            "right": 308,
+            "bottom": 409.5,
+            "width": 296,
+            "height": 130.5
+          },
+          "controls": [
+            {
+              "captureSchema": "cf-v2-glass-arc4-control-geometry/v1",
+              "why": null,
+              "verb": "tame",
+              "close": false,
+              "scrollSettled": true,
+              "buttonRect": {
+                "left": 36,
+                "top": 212.46875,
+                "right": 284,
+                "bottom": 256.46875,
+                "width": 248,
+                "height": 44
+              },
+              "cardRect": {
+                "left": 12,
+                "top": 132,
+                "right": 308,
+                "bottom": 271,
+                "width": 296,
+                "height": 139
+              },
+              "scrollOffset": {
+                "left": 0,
+                "top": 1855
+              },
+              "layoutRect": {
+                "left": 36,
+                "top": 2067.46875,
+                "right": 284,
+                "bottom": 2111.46875,
+                "width": 248,
+                "height": 44
+              },
+              "beforePoint": {
+                "x": 160,
+                "y": 234.46875,
+                "tag": "BUTTON",
+                "verb": "tame",
+                "close": false
+              },
+              "afterRenderPoint": {
+                "x": 160,
+                "y": 234.46875,
+                "tag": "BUTTON",
+                "verb": "tame",
+                "close": false
+              },
+              "accessibleName": "Tame",
+              "focus": {
+                "modality": "keyboard",
+                "focused": true,
+                "focusVisible": true,
+                "styleChanged": true,
+                "decorationPainted": true,
+                "verb": "tame",
+                "semanticKey": "capture:tame",
+                "close": false,
+                "accessibleName": "Tame",
+                "before": {
+                  "outline": "rgb(238, 246, 255) none 3px",
+                  "shadow": "none",
+                  "border": "rgb(85, 117, 164)",
+                  "background": "rgba(24, 43, 70, 0.9)",
+                  "outlineStyle": "none",
+                  "outlineWidth": "3px"
+                },
+                "after": {
+                  "outline": "rgb(255, 217, 106) solid 2px",
+                  "shadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+                  "border": "rgb(85, 117, 164)",
+                  "background": "rgba(24, 43, 70, 0.9)",
+                  "outlineStyle": "solid",
+                  "outlineWidth": "2px"
+                }
+              },
+              "rerender": {
+                "schema": "cf-v2-glass-arc4-heartbeat-rerender/v2",
+                "required": false,
+                "productOk": true
+              },
+              "heartbeatRerender": {
+                "ok": true,
+                "checks": {
+                  "captured": true,
+                  "scoped": true
+                },
+                "reasons": []
+              }
+            },
+            {
+              "captureSchema": "cf-v2-glass-arc4-control-geometry/v1",
+              "why": null,
+              "verb": "scavenge",
+              "close": false,
+              "scrollSettled": true,
+              "buttonRect": {
+                "left": 36,
+                "top": 212.765625,
+                "right": 284,
+                "bottom": 256.765625,
+                "width": 248,
+                "height": 44
+              },
+              "cardRect": {
+                "left": 12,
+                "top": 132,
+                "right": 308,
+                "bottom": 271,
+                "width": 296,
+                "height": 139
+              },
+              "scrollOffset": {
+                "left": 0,
+                "top": 2265
+              },
+              "layoutRect": {
+                "left": 36,
+                "top": 2477.765625,
+                "right": 284,
+                "bottom": 2521.765625,
+                "width": 248,
+                "height": 44
+              },
+              "beforePoint": {
+                "x": 160,
+                "y": 234.765625,
+                "tag": "BUTTON",
+                "verb": "scavenge",
+                "close": false
+              },
+              "afterRenderPoint": {
+                "x": 160,
+                "y": 234.765625,
+                "tag": "BUTTON",
+                "verb": "scavenge",
+                "close": false
+              },
+              "accessibleName": "Scavenge",
+              "focus": {
+                "modality": "keyboard",
+                "focused": true,
+                "focusVisible": true,
+                "styleChanged": true,
+                "decorationPainted": true,
+                "verb": "scavenge",
+                "semanticKey": "capture:scavenge",
+                "close": false,
+                "accessibleName": "Scavenge",
+                "before": {
+                  "outline": "rgb(238, 246, 255) none 3px",
+                  "shadow": "none",
+                  "border": "rgb(85, 117, 164)",
+                  "background": "rgba(24, 43, 70, 0.9)",
+                  "outlineStyle": "none",
+                  "outlineWidth": "3px"
+                },
+                "after": {
+                  "outline": "rgb(255, 217, 106) solid 2px",
+                  "shadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+                  "border": "rgb(85, 117, 164)",
+                  "background": "rgba(24, 43, 70, 0.9)",
+                  "outlineStyle": "solid",
+                  "outlineWidth": "2px"
+                }
+              },
+              "rerender": {
+                "schema": "cf-v2-glass-arc4-heartbeat-rerender/v2",
+                "required": false,
+                "productOk": true
+              },
+              "heartbeatRerender": {
+                "ok": true,
+                "checks": {
+                  "captured": true,
+                  "scoped": true
+                },
+                "reasons": []
+              }
+            },
+            {
+              "captureSchema": "cf-v2-glass-arc4-control-geometry/v1",
+              "why": null,
+              "verb": "sample",
+              "close": false,
+              "scrollSettled": true,
+              "buttonRect": {
+                "left": 36,
+                "top": 212.671875,
+                "right": 284,
+                "bottom": 256.671875,
+                "width": 248,
+                "height": 44
+              },
+              "cardRect": {
+                "left": 12,
+                "top": 132,
+                "right": 308,
+                "bottom": 271,
+                "width": 296,
+                "height": 139
+              },
+              "scrollOffset": {
+                "left": 0,
+                "top": 2620
+              },
+              "layoutRect": {
+                "left": 36,
+                "top": 2832.671875,
+                "right": 284,
+                "bottom": 2876.671875,
+                "width": 248,
+                "height": 44
+              },
+              "beforePoint": {
+                "x": 160,
+                "y": 234.671875,
+                "tag": "BUTTON",
+                "verb": "sample",
+                "close": false
+              },
+              "afterRenderPoint": {
+                "x": 160,
+                "y": 234.671875,
+                "tag": "BUTTON",
+                "verb": "sample",
+                "close": false
+              },
+              "accessibleName": "Sample",
+              "focus": {
+                "modality": "keyboard",
+                "focused": true,
+                "focusVisible": true,
+                "styleChanged": true,
+                "decorationPainted": true,
+                "verb": "sample",
+                "semanticKey": "capture:sample",
+                "close": false,
+                "accessibleName": "Sample",
+                "before": {
+                  "outline": "rgb(238, 246, 255) none 3px",
+                  "shadow": "none",
+                  "border": "rgb(85, 117, 164)",
+                  "background": "rgba(24, 43, 70, 0.9)",
+                  "outlineStyle": "none",
+                  "outlineWidth": "3px"
+                },
+                "after": {
+                  "outline": "rgb(255, 217, 106) solid 2px",
+                  "shadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+                  "border": "rgb(85, 117, 164)",
+                  "background": "rgba(24, 43, 70, 0.9)",
+                  "outlineStyle": "solid",
+                  "outlineWidth": "2px"
+                }
+              },
+              "rerender": {
+                "schema": "cf-v2-glass-arc4-heartbeat-rerender/v2",
+                "required": true,
+                "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+                "seamsAvailable": true,
+                "initial": {
+                  "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+                  "heartbeatRunning": true
+                },
+                "priorFocusArmed": true,
+                "quiesceAttempted": true,
+                "quiescence": {
+                  "schema": "cf-v2-f4-heartbeat-quiescence/v1",
+                  "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+                  "wasRunning": true,
+                  "stopped": true,
+                  "cycleSettled": true
+                },
+                "resume": {
+                  "schema": "cf-v2-f4-heartbeat-resume/v1",
+                  "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+                  "running": true
+                },
+                "cycleReceipt": {
+                  "schema": "cf-v2-f4-heartbeat-cycle-receipt/v1",
+                  "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+                  "cycle": "completed",
+                  "reason": null,
+                  "refresh": {
+                    "shipyard": "panel-closed",
+                    "compendium": "panel-closed",
+                    "capture": "completed"
+                  }
+                },
+                "cleanup": {
+                  "attempted": false,
+                  "receipt": null,
+                  "error": null
+                },
+                "error": null,
+                "pre": {
+                  "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+                  "heartbeatRunning": false,
+                  "focusVerb": "scavenge",
+                  "buttonRect": {
+                    "left": 36,
+                    "top": 212.671875,
+                    "right": 284,
+                    "bottom": 256.671875,
+                    "width": 248,
+                    "height": 44
+                  },
+                  "cardRect": {
+                    "left": 12,
+                    "top": 132,
+                    "right": 308,
+                    "bottom": 271,
+                    "width": 296,
+                    "height": 139
+                  },
+                  "scrollOffset": {
+                    "left": 0,
+                    "top": 2620
+                  },
+                  "scroll": [
+                    [
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      2612
+                    ],
+                    [
+                      0,
+                      8
+                    ],
+                    [
+                      0,
+                      0
+                    ]
+                  ]
+                },
+                "post": {
+                  "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+                  "heartbeatRunning": true,
+                  "focusVerb": "scavenge",
+                  "buttonRect": {
+                    "left": 36,
+                    "top": 212.671875,
+                    "right": 284,
+                    "bottom": 256.671875,
+                    "width": 248,
+                    "height": 44
+                  },
+                  "cardRect": {
+                    "left": 12,
+                    "top": 132,
+                    "right": 308,
+                    "bottom": 271,
+                    "width": 296,
+                    "height": 139
+                  },
+                  "scrollOffset": {
+                    "left": 0,
+                    "top": 2620
+                  },
+                  "scroll": [
+                    [
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      2612
+                    ],
+                    [
+                      0,
+                      8
+                    ],
+                    [
+                      0,
+                      0
+                    ]
+                  ]
+                },
+                "oldDisconnected": true,
+                "replacementAcquired": true,
+                "preTargetReady": true,
+                "postTargetReady": true,
+                "scrollPreserved": true,
+                "priorFocusRestored": true,
+                "productOk": true
+              },
+              "heartbeatRerender": {
+                "ok": true,
+                "checks": {
+                  "captured": true,
+                  "armedWhileRunning": true,
+                  "quiesced": true,
+                  "resumed": true,
+                  "cycleReceiptCarrier": true,
+                  "captureRerenderCompleted": true,
+                  "remainedRunning": true,
+                  "documentIdentity": true,
+                  "replacementObserved": true,
+                  "receiptReplacementCoherence": true,
+                  "noCollectorError": true,
+                  "cleanupSafe": true
+                },
+                "reasons": []
+              }
+            }
+          ],
+          "close": {
+            "captureSchema": "cf-v2-glass-arc4-control-geometry/v1",
+            "why": null,
+            "verb": null,
+            "close": true,
+            "scrollSettled": true,
+            "buttonRect": {
+              "left": 249,
+              "top": 147,
+              "right": 293,
+              "bottom": 191,
+              "width": 44,
+              "height": 44
+            },
+            "cardRect": {
+              "left": 12,
+              "top": 132,
+              "right": 308,
+              "bottom": 271,
+              "width": 296,
+              "height": 139
+            },
+            "scrollOffset": {
+              "left": 0,
+              "top": 2555
+            },
+            "layoutRect": {
+              "left": 249,
+              "top": 2702,
+              "right": 293,
+              "bottom": 2746,
+              "width": 44,
+              "height": 44
+            },
+            "beforePoint": {
+              "x": 271,
+              "y": 169,
+              "tag": "BUTTON",
+              "verb": null,
+              "close": true
+            },
+            "afterRenderPoint": {
+              "x": 271,
+              "y": 169,
+              "tag": "BUTTON",
+              "verb": null,
+              "close": true
+            },
+            "accessibleName": "Close Survey card",
+            "focus": {
+              "modality": "keyboard",
+              "focused": true,
+              "focusVisible": true,
+              "styleChanged": true,
+              "decorationPainted": true,
+              "verb": null,
+              "semanticKey": null,
+              "close": true,
+              "accessibleName": "Close Survey card",
+              "before": {
+                "outline": "rgb(240, 244, 255) none 3px",
+                "shadow": "none",
+                "border": "rgb(64, 84, 119)",
+                "background": "rgba(9, 16, 29, 0.88)",
+                "outlineStyle": "none",
+                "outlineWidth": "3px"
+              },
+              "after": {
+                "outline": "rgb(255, 217, 106) solid 2px",
+                "shadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+                "border": "rgb(64, 84, 119)",
+                "background": "rgba(9, 16, 29, 0.88)",
+                "outlineStyle": "solid",
+                "outlineWidth": "2px"
+              }
+            },
+            "rerender": {
+              "schema": "cf-v2-glass-arc4-heartbeat-rerender/v2",
+              "required": false,
+              "productOk": true
+            },
+            "heartbeatRerender": {
+              "ok": true,
+              "checks": {
+                "captured": true,
+                "scoped": true
+              },
+              "reasons": []
+            },
+            "rect": {
+              "left": 249,
+              "top": 147,
+              "right": 293,
+              "bottom": 191,
+              "width": 44,
+              "height": 44
+            }
+          },
+          "coherence": {
+            "ok": true,
+            "checks": {
+              "carriers": true,
+              "controlsAtomic": true,
+              "closeAtomic": true
+            },
+            "reasons": []
+          },
+          "scrollWidth": 320,
+          "clientWidth": 320,
+          "clauseProjection": [
+            {
+              "verb": "tame",
+              "ok": true,
+              "clauses": {
+                "scrollSettled": true,
+                "target44": true,
+                "cardContained": true,
+                "viewportContained": true,
+                "layoutTranslation": true,
+                "ownedPoint": true,
+                "heartbeatRerender": true,
+                "name": true,
+                "focus": true
+              }
+            },
+            {
+              "verb": "scavenge",
+              "ok": true,
+              "clauses": {
+                "scrollSettled": true,
+                "target44": true,
+                "cardContained": true,
+                "viewportContained": true,
+                "layoutTranslation": true,
+                "ownedPoint": true,
+                "heartbeatRerender": true,
+                "name": true,
+                "focus": true
+              }
+            },
+            {
+              "verb": "sample",
+              "ok": true,
+              "clauses": {
+                "scrollSettled": true,
+                "target44": true,
+                "cardContained": true,
+                "viewportContained": true,
+                "layoutTranslation": true,
+                "ownedPoint": true,
+                "heartbeatRerender": true,
+                "name": true,
+                "focus": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "shipyardKeyboardHeartbeatInventory": {
+    "plannedViewports": [],
+    "complete": true,
+    "expectedCount": 0,
+    "observedCount": 0,
+    "omitted": [],
+    "outcomes": []
+  },
+  "controlSummary": {
+    "selftestRan": true,
+    "negativeControls": [
+      "accessible-name",
+      "arc4-capture-control-overlap",
+      "arc4-capture-earth-title",
+      "arc4-capture-epoch-mutation",
+      "arc4-capture-full-pool-copy",
+      "arc4-capture-model-disabled-parity",
+      "arc4-capture-native-activation",
+      "arc4-capture-native-survey-return",
+      "arc4-capture-ownership-mutation",
+      "arc4-capture-receipt-mutation",
+      "arc4-capture-roster-counts",
+      "arc4-capture-roster-fingerprint",
+      "arc4-capture-sample-odds",
+      "arc4-capture-scavenge-odds",
+      "arc4-capture-session-rng-mutation",
+      "arc4-capture-tame-odds",
+      "arc4-capture-v4-counter-mutation",
+      "arc4-capture-yield",
+      "backing-pixel-ceiling",
+      "canvas-backing-density",
+      "canvas-css-fit",
+      "centre-hit-test",
+      "clipped-without-scroll",
+      "cumulative-opacity-contrast",
+      "dock-toggle-pressed",
+      "glass-fallback",
+      "guide-render-focus",
+      "hp-label-dual-background",
+      "import-phase-sequence",
+      "inventory-action-publication",
+      "inventory-condition-wording",
+      "inventory-control-floor",
+      "inventory-convergence-retry",
+      "inventory-disabled-pager-contrast",
+      "inventory-duplicate-row",
+      "inventory-focus-wrap",
+      "inventory-missing-row",
+      "inventory-modal-duplication",
+      "inventory-modal-focus",
+      "inventory-modal-retention",
+      "inventory-protected-action",
+      "inventory-raw-authority-parity",
+      "keyboard-reachability",
+      "mobile-chrome-yield-restore",
+      "mobile-surface-objective-yield",
+      "motion-css-policy",
+      "non-glass-background-chain",
+      "opener-expanded-controls",
+      "orbital-mineral-survey-disclosure",
+      "orbital-row-containment-restore",
+      "orbital-title-semantic-copy",
+      "ordinary-panel-centre-close",
+      "panel-close-accessible-name",
+      "panel-open-focus",
+      "panel-planetside-layering",
+      "phone-dock-exact-membership",
+      "phone-dock-inventory",
+      "planetside-surface-ownership",
+      "populated-copy",
+      "preference-computed-outcome",
+      "pseudo-placeholder-contrast",
+      "rarity-opaque-contrast",
+      "ready-confirmation-heartbeat",
+      "ready-confirmation-ticker-progress",
+      "reload-audio-release",
+      "reload-resource-release",
+      "replacement-boot-phase-sequence",
+      "replacement-document-loader-token-phase",
+      "replacement-ticker-quiescence",
+      "safe-area-override",
+      "scene-transform-delta",
+      "settings-audio-non-replay",
+      "settings-creature-voice-control",
+      "settings-pressed-focus",
+      "shipyard-close-release",
+      "shipyard-contact-effect-oracle",
+      "shipyard-dom-state-parity",
+      "shipyard-geometry-focus",
+      "shipyard-opener-path",
+      "shipyard-preview-uniqueness",
+      "surface-overlap",
+      "survey-expanded-controls",
+      "target-floor",
+      "text-contrast",
+      "training-focused-action-visibility",
+      "typography-no-shrink-hierarchy",
+      "ultra-viewport-render-budget",
+      "viewport-fit",
+      "viewport-metrics",
+      "visible-focus"
+    ],
+    "plannedNegativeControls": [
+      "target-floor",
+      "visible-focus",
+      "accessible-name",
+      "keyboard-reachability",
+      "centre-hit-test",
+      "text-contrast",
+      "glass-fallback",
+      "populated-copy",
+      "viewport-fit",
+      "safe-area-override",
+      "viewport-metrics",
+      "surface-overlap",
+      "scene-transform-delta",
+      "canvas-css-fit",
+      "canvas-backing-density",
+      "non-glass-background-chain",
+      "preference-computed-outcome",
+      "settings-pressed-focus",
+      "settings-creature-voice-control",
+      "settings-audio-non-replay",
+      "settings-close-gutter-clearance",
+      "guide-render-focus",
+      "motion-css-policy",
+      "ordinary-panel-centre-close",
+      "dpr-card-preservation",
+      "opener-expanded-controls",
+      "dock-toggle-pressed",
+      "survey-expanded-controls",
+      "pseudo-placeholder-contrast",
+      "cumulative-opacity-contrast",
+      "control-on-off-contrast",
+      "typography-no-shrink-hierarchy",
+      "backing-pixel-ceiling",
+      "forced-colors-system-mapping",
+      "panel-open-focus",
+      "hp-label-dual-background",
+      "clipped-without-scroll",
+      "training-focused-action-visibility",
+      "settings-horizontal-overflow",
+      "planetside-surface-ownership",
+      "panel-planetside-layering",
+      "mobile-chrome-yield-restore",
+      "mobile-landscape-surface-chrome-yield",
+      "planetside-top-chrome-clearance",
+      "planetside-portrait-band-viability",
+      "planetside-portrait-trail-fallback",
+      "mobile-surface-objective-yield",
+      "panel-close-accessible-name",
+      "hidden-panel-opener-focus-fallback",
+      "replacement-document-loader-token-phase",
+      "import-phase-sequence",
+      "replacement-ticker-quiescence",
+      "replacement-boot-phase-sequence",
+      "reload-resource-release",
+      "reload-audio-release",
+      "ready-confirmation-heartbeat",
+      "ready-confirmation-ticker-progress",
+      "nonmodal-dock-button-contrast",
+      "phone-dock-inventory",
+      "phone-dock-exact-membership",
+      "inventory-control-floor",
+      "inventory-missing-row",
+      "inventory-duplicate-row",
+      "inventory-raw-authority-parity",
+      "inventory-disabled-pager-contrast",
+      "inventory-condition-wording",
+      "inventory-modal-duplication",
+      "inventory-modal-retention",
+      "inventory-modal-focus",
+      "inventory-focus-wrap",
+      "inventory-protected-action",
+      "inventory-action-publication",
+      "inventory-convergence-retry",
+      "shipyard-preview-uniqueness",
+      "shipyard-dom-state-parity",
+      "shipyard-contact-effect-oracle",
+      "shipyard-close-release",
+      "shipyard-opener-path",
+      "shipyard-geometry-focus",
+      "arc4-capture-full-pool-copy",
+      "arc4-capture-model-disabled-parity",
+      "arc4-capture-earth-title",
+      "arc4-capture-roster-counts",
+      "arc4-capture-roster-fingerprint",
+      "arc4-capture-yield",
+      "arc4-capture-tame-odds",
+      "arc4-capture-scavenge-odds",
+      "arc4-capture-sample-odds",
+      "arc4-capture-native-survey-return",
+      "arc4-capture-ownership-mutation",
+      "arc4-capture-session-rng-mutation",
+      "arc4-capture-receipt-mutation",
+      "arc4-capture-epoch-mutation",
+      "arc4-capture-v4-counter-mutation",
+      "arc4-capture-native-activation",
+      "arc4-capture-control-overlap",
+      "orbital-mineral-survey-disclosure",
+      "orbital-title-semantic-copy",
+      "orbital-row-containment-restore",
+      "rarity-opaque-contrast",
+      "ultra-viewport-render-budget",
+      "ultra-same-backing-resize"
+    ],
+    "blockedNegativeControls": [],
+    "omittedNegativeControls": [
+      "settings-close-gutter-clearance",
+      "dpr-card-preservation",
+      "control-on-off-contrast",
+      "forced-colors-system-mapping",
+      "settings-horizontal-overflow",
+      "mobile-landscape-surface-chrome-yield",
+      "planetside-top-chrome-clearance",
+      "planetside-portrait-band-viability",
+      "planetside-portrait-trail-fallback",
+      "hidden-panel-opener-focus-fallback",
+      "nonmodal-dock-button-contrast",
+      "ultra-same-backing-resize"
+    ],
+    "automaticRetries": 0
+  },
+  "summary": {
+    "viewportCount": 1,
+    "findingCount": 0,
+    "instrumentFailureCount": 1,
+    "counts": {}
+  },
+  "findings": [],
+  "reloadEvidence": [
+    {
+      "viewport": "small-phone",
+      "status": "pass",
+      "priorLoaderId": "E9EE932BD786A1346D9EA2CCA81B49B9",
+      "replacementLoaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+      "elapsedMs": 571,
+      "importPhases": [
+        {
+          "at": 1790022016576,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 2,
+          "loaderId": "E9EE932BD786A1346D9EA2CCA81B49B9",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-6612931801180728709.-1096005470937404457",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022015918
+          },
+          "receiptOrdinal": 1,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "68c27c71-d5f2-4355-9338-322dc11f31c5",
+              "reason": "save-import",
+              "documentToken": "c7978497-7447-418e-beda-e63e7b5c514f",
+              "stage": "invoked",
+              "sequence": 1,
+              "tickerStarted": true,
+              "performanceNow": 663.2000000476837,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016577,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 2,
+          "loaderId": "E9EE932BD786A1346D9EA2CCA81B49B9",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-6612931801180728709.-1096005470937404457",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022015918
+          },
+          "receiptOrdinal": 2,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "68c27c71-d5f2-4355-9338-322dc11f31c5",
+              "reason": "save-import",
+              "documentToken": "c7978497-7447-418e-beda-e63e7b5c514f",
+              "stage": "claimed",
+              "sequence": 2,
+              "tickerStarted": false,
+              "performanceNow": 664.6000000238419,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016577,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 2,
+          "loaderId": "E9EE932BD786A1346D9EA2CCA81B49B9",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-6612931801180728709.-1096005470937404457",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022015918
+          },
+          "receiptOrdinal": 3,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "68c27c71-d5f2-4355-9338-322dc11f31c5",
+              "reason": "save-import",
+              "documentToken": "c7978497-7447-418e-beda-e63e7b5c514f",
+              "stage": "no-active-persist",
+              "sequence": 3,
+              "tickerStarted": false,
+              "performanceNow": 664.6000000238419,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016577,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 2,
+          "loaderId": "E9EE932BD786A1346D9EA2CCA81B49B9",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-6612931801180728709.-1096005470937404457",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022015918
+          },
+          "receiptOrdinal": 4,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "68c27c71-d5f2-4355-9338-322dc11f31c5",
+              "reason": "save-import",
+              "documentToken": "c7978497-7447-418e-beda-e63e7b5c514f",
+              "stage": "primary-write-started",
+              "sequence": 4,
+              "tickerStarted": false,
+              "performanceNow": 664.6000000238419,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016578,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 2,
+          "loaderId": "E9EE932BD786A1346D9EA2CCA81B49B9",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-6612931801180728709.-1096005470937404457",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022015918
+          },
+          "receiptOrdinal": 5,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "68c27c71-d5f2-4355-9338-322dc11f31c5",
+              "reason": "save-import",
+              "documentToken": "c7978497-7447-418e-beda-e63e7b5c514f",
+              "stage": "primary-write-complete",
+              "sequence": 5,
+              "tickerStarted": false,
+              "performanceNow": 665.5,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016578,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 2,
+          "loaderId": "E9EE932BD786A1346D9EA2CCA81B49B9",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-6612931801180728709.-1096005470937404457",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022015918
+          },
+          "receiptOrdinal": 6,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "68c27c71-d5f2-4355-9338-322dc11f31c5",
+              "reason": "save-import",
+              "documentToken": "c7978497-7447-418e-beda-e63e7b5c514f",
+              "stage": "release-started",
+              "sequence": 6,
+              "tickerStarted": false,
+              "performanceNow": 665.5,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016583,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 2,
+          "loaderId": "E9EE932BD786A1346D9EA2CCA81B49B9",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-6612931801180728709.-1096005470937404457",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022015918
+          },
+          "receiptOrdinal": 8,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "68c27c71-d5f2-4355-9338-322dc11f31c5",
+              "reason": "save-import",
+              "documentToken": "c7978497-7447-418e-beda-e63e7b5c514f",
+              "stage": "release-complete",
+              "sequence": 7,
+              "tickerStarted": false,
+              "performanceNow": 670.2000000476837,
+              "error": null
+            }
+          }
+        }
+      ],
+      "releaseWitness": {
+        "at": 1790022016583,
+        "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+        "executionContextId": 2,
+        "loaderId": "E9EE932BD786A1346D9EA2CCA81B49B9",
+        "context": {
+          "active": true,
+          "id": 2,
+          "uniqueId": "-6612931801180728709.-1096005470937404457",
+          "generation": 2,
+          "origin": "http://127.0.0.1:57786",
+          "frameId": "FF917EB5875F5D7182A65491745773A5",
+          "isDefault": true,
+          "createdAt": 1790022015918
+        },
+        "receiptOrdinal": 7,
+        "validation": {
+          "ok": true,
+          "why": null,
+          "witness": {
+            "schema": "cf-v2-reload-release/v1",
+            "status": "released",
+            "error": null,
+            "reason": "save-import",
+            "documentToken": "c7978497-7447-418e-beda-e63e7b5c514f",
+            "audio": {
+              "schema": "cf-v2-tame-greeting-audio/v1",
+              "disposed": true,
+              "armed": 0,
+              "claimedEvents": 0,
+              "activeVoiceId": null,
+              "activeCombatVoiceIds": [],
+              "lastEventKey": null,
+              "lastEventKind": null,
+              "lastDisposition": "disposed",
+              "counterpart": {
+                "key": null,
+                "generation": null,
+                "status": "none"
+              },
+              "runtime": {
+                "state": "disposed",
+                "contextState": null,
+                "contextGeneration": 0,
+                "muted": true,
+                "hidden": false,
+                "gains": {
+                  "master": 1,
+                  "effectiveMaster": 0,
+                  "categories": {
+                    "music": 1,
+                    "ambience": 1,
+                    "creature": 1,
+                    "combat-gameplay": 1,
+                    "ui": 1
+                  }
+                },
+                "voiceMix": {
+                  "schema": "cf.audio.voice-mix-intent/v1",
+                  "activeOwners": 0,
+                  "owners": [],
+                  "factors": {
+                    "music": 1,
+                    "ambience": 1,
+                    "creature": 1,
+                    "combat-gameplay": 1,
+                    "ui": 1
+                  },
+                  "effectiveCategoryGains": {
+                    "music": 1,
+                    "ambience": 1,
+                    "creature": 1,
+                    "combat-gameplay": 1,
+                    "ui": 1
+                  }
+                },
+                "nodes": {
+                  "active": 0,
+                  "peak": 0,
+                  "budget": 96
+                },
+                "cache": {
+                  "active": 0,
+                  "peak": 0,
+                  "budget": 32,
+                  "evictions": 0
+                },
+                "voices": {
+                  "active": 0,
+                  "peak": 0,
+                  "budget": 24,
+                  "ids": [],
+                  "started": 0,
+                  "completed": 0,
+                  "stopped": 0,
+                  "stolen": 0,
+                  "cooldownRejects": 0,
+                  "concurrencyRejects": 0
+                },
+                "creatureEmitters": {
+                  "active": 0,
+                  "peak": 0,
+                  "budget": 8
+                },
+                "cooldowns": {
+                  "active": 0,
+                  "budget": 128
+                },
+                "reservations": {
+                  "voices": {
+                    "active": 0,
+                    "peak": 0,
+                    "activePlusReservedPeak": 0
+                  },
+                  "nodes": {
+                    "active": 0,
+                    "peak": 0,
+                    "activePlusReservedPeak": 0
+                  }
+                },
+                "cleanup": {
+                  "sourceStopFailures": 0,
+                  "nodeDisconnectFailures": 0,
+                  "cacheReleaseFailures": 0
+                },
+                "peaks": {
+                  "master": 0,
+                  "music": 0,
+                  "ambience": 0,
+                  "creature": 0,
+                  "combat-gameplay": 0,
+                  "ui": 0
+                },
+                "faults": {
+                  "total": 0,
+                  "retained": [],
+                  "budget": 20
+                }
+              }
+            },
+            "rendererReleased": true,
+            "stageReleased": true,
+            "viewDetached": true,
+            "appCanvas": {
+              "beforeWidth": 640,
+              "beforeHeight": 1136,
+              "afterWidth": 1,
+              "afterHeight": 1
+            },
+            "backdropCanvas": {
+              "beforeWidth": 640,
+              "beforeHeight": 1136,
+              "afterWidth": 1,
+              "afterHeight": 1
+            }
+          }
+        }
+      },
+      "bootPhases": [
+        {
+          "at": 1790022016657,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "8077977012675764014.8262814308903554795",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022016593
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "sequence": 1,
+              "stage": "app-init-start",
+              "tickerStarted": false,
+              "performanceNow": 73.90000009536743,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016686,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "8077977012675764014.8262814308903554795",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022016593
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "sequence": 2,
+              "stage": "app-init-complete",
+              "tickerStarted": false,
+              "performanceNow": 102.70000004768372,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016686,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "8077977012675764014.8262814308903554795",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022016593
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "sequence": 3,
+              "stage": "backdrop-complete",
+              "tickerStarted": false,
+              "performanceNow": 103.70000004768372,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016686,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "8077977012675764014.8262814308903554795",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022016593
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "sequence": 4,
+              "stage": "save-load-start",
+              "tickerStarted": false,
+              "performanceNow": 103.70000004768372,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016717,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "8077977012675764014.8262814308903554795",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022016593
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "sequence": 5,
+              "stage": "save-load-complete",
+              "tickerStarted": false,
+              "performanceNow": 134.30000007152557,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016761,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "8077977012675764014.8262814308903554795",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022016593
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "sequence": 6,
+              "stage": "scene-rendered",
+              "tickerStarted": false,
+              "performanceNow": 178.10000002384186,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016761,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "8077977012675764014.8262814308903554795",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022016593
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "sequence": 7,
+              "stage": "slice-published",
+              "tickerStarted": false,
+              "performanceNow": 178.10000002384186,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016761,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "8077977012675764014.8262814308903554795",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022016593
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "sequence": 8,
+              "stage": "wiring-complete",
+              "tickerStarted": false,
+              "performanceNow": 178.20000004768372,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016761,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "8077977012675764014.8262814308903554795",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022016593
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "sequence": 9,
+              "stage": "ticker-started",
+              "tickerStarted": true,
+              "performanceNow": 178.20000004768372,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016941,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "8077977012675764014.8262814308903554795",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022016593
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "sequence": 10,
+              "stage": "first-tick",
+              "tickerStarted": true,
+              "performanceNow": 358.3000000715256,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022016956,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "8077977012675764014.8262814308903554795",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022016593
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "sequence": 11,
+              "stage": "ready-scheduled",
+              "tickerStarted": true,
+              "performanceNow": 373.40000009536743,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790022017122,
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "8077977012675764014.8262814308903554795",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57786",
+            "frameId": "FF917EB5875F5D7182A65491745773A5",
+            "isDefault": true,
+            "createdAt": 1790022016593
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+              "sequence": 12,
+              "stage": "ready-emitted",
+              "tickerStarted": true,
+              "performanceNow": 538.6000000238419,
+              "error": null
+            }
+          }
+        }
+      ],
+      "readyWitness": {
+        "at": 1790022017122,
+        "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+        "executionContextId": 3,
+        "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+        "context": {
+          "active": true,
+          "id": 3,
+          "uniqueId": "8077977012675764014.8262814308903554795",
+          "generation": 3,
+          "origin": "http://127.0.0.1:57786",
+          "frameId": "FF917EB5875F5D7182A65491745773A5",
+          "isDefault": true,
+          "createdAt": 1790022016593
+        },
+        "receiptOrdinal": null,
+        "validation": {
+          "ok": true,
+          "why": null,
+          "witness": {
+            "schema": "cf-v2-slice-ready/v1",
+            "status": "ready",
+            "token": "a8c07a1a-37e4-491a-a193-eef4d10e35fb",
+            "href": "http://127.0.0.1:57786/",
+            "readyState": "complete",
+            "saveReady": true,
+            "viewConnected": true,
+            "rendererReady": true,
+            "stageReady": true,
+            "tickerTicks": 2,
+            "rendererDpr": 2,
+            "backingPixelCapPerCanvas": 8388608,
+            "viewportWidth": 320,
+            "viewportHeight": 568,
+            "backingWidth": 640,
+            "backingHeight": 1136,
+            "backdropBackingWidth": 640,
+            "backdropBackingHeight": 1136,
+            "combinedBackingPixels": 1454080,
+            "performanceNow": 538.6000000238419
+          }
+        }
+      },
+      "commands": [
+        {
+          "method": "Runtime.evaluate/import-arm",
+          "role": "import-arm",
+          "cycle": 0,
+          "startedAt": 1790022016575,
+          "endedAt": 1790022016577,
+          "durationMs": 2,
+          "timeoutMs": 20000,
+          "status": "completed",
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": null,
+          "awaitPromise": false,
+          "postRenderPriority": null
+        },
+        {
+          "method": "Runtime.evaluate",
+          "role": "target-exact-context",
+          "cycle": 1,
+          "startedAt": 1790022017126,
+          "endedAt": 1790022017128,
+          "durationMs": 2,
+          "timeoutMs": 2000,
+          "status": "completed",
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "awaitPromise": false,
+          "postRenderPriority": null
+        },
+        {
+          "method": "Browser.getVersion",
+          "role": "browser-process-heartbeat",
+          "cycle": 1,
+          "startedAt": 1790022017126,
+          "endedAt": 1790022017126,
+          "durationMs": 0,
+          "timeoutMs": 2000,
+          "status": "completed",
+          "sessionId": null,
+          "executionContextId": null,
+          "awaitPromise": null,
+          "postRenderPriority": null
+        },
+        {
+          "method": "Runtime.evaluate",
+          "role": "target-exact-context",
+          "cycle": 2,
+          "startedAt": 1790022017128,
+          "endedAt": 1790022017146,
+          "durationMs": 18,
+          "timeoutMs": 2000,
+          "status": "completed",
+          "sessionId": "CC7506FD537E9D2D28F11A9BCE474A0E",
+          "executionContextId": 3,
+          "awaitPromise": true,
+          "postRenderPriority": -50
+        },
+        {
+          "method": "Browser.getVersion",
+          "role": "browser-process-heartbeat",
+          "cycle": 2,
+          "startedAt": 1790022017128,
+          "endedAt": 1790022017129,
+          "durationMs": 1,
+          "timeoutMs": 2000,
+          "status": "completed",
+          "sessionId": null,
+          "executionContextId": null,
+          "awaitPromise": null,
+          "postRenderPriority": null
+        }
+      ],
+      "events": [
+        {
+          "at": 1790022016576,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 1,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016577,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 2,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016577,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 3,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016577,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 4,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016578,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 5,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016578,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 6,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016583,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfReloadReleaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 7,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016583,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 8,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016584,
+          "method": "Page.frameStartedLoading",
+          "frameId": "FF917EB5875F5D7182A65491745773A5"
+        },
+        {
+          "at": 1790022016590,
+          "method": "Page.lifecycleEvent",
+          "name": "init",
+          "frameId": "FF917EB5875F5D7182A65491745773A5",
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004"
+        },
+        {
+          "at": 1790022016590,
+          "method": "Page.frameNavigated",
+          "frameId": "FF917EB5875F5D7182A65491745773A5",
+          "parentId": null,
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004",
+          "url": "http://127.0.0.1:57786/",
+          "unreachableUrl": null
+        },
+        {
+          "at": 1790022016657,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016661,
+          "method": "Page.domContentEventFired"
+        },
+        {
+          "at": 1790022016661,
+          "method": "Page.lifecycleEvent",
+          "name": "DOMContentLoaded",
+          "frameId": "FF917EB5875F5D7182A65491745773A5",
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004"
+        },
+        {
+          "at": 1790022016669,
+          "method": "Page.lifecycleEvent",
+          "name": "firstMeaningfulPaintCandidate",
+          "frameId": "FF917EB5875F5D7182A65491745773A5",
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004"
+        },
+        {
+          "at": 1790022016669,
+          "method": "Page.lifecycleEvent",
+          "name": "firstContentfulPaint",
+          "frameId": "FF917EB5875F5D7182A65491745773A5",
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004"
+        },
+        {
+          "at": 1790022016669,
+          "method": "Page.lifecycleEvent",
+          "name": "firstPaint",
+          "frameId": "FF917EB5875F5D7182A65491745773A5",
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004"
+        },
+        {
+          "at": 1790022016669,
+          "method": "Page.loadEventFired"
+        },
+        {
+          "at": 1790022016669,
+          "method": "Page.lifecycleEvent",
+          "name": "load",
+          "frameId": "FF917EB5875F5D7182A65491745773A5",
+          "loaderId": "4D4DF8E0FFDC1C28766C347B9E20E004"
+        },
+        {
+          "at": 1790022016669,
+          "method": "Page.frameStoppedLoading",
+          "frameId": "FF917EB5875F5D7182A65491745773A5"
+        },
+        {
+          "at": 1790022016686,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016686,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016686,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016717,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016761,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016761,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016761,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016761,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016941,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022016956,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022017122,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790022017122,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfSliceReadyWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        }
+      ]
+    }
+  ],
+  "instrumentFailures": [
+    "small-phone: labelled floating-trail collision/fallback did not turn red/yield and restore the hidden native baseline ({\"portraitControls\":{\"band\":{\"baseline\":{\"ok\":true,\"meaningful\":true,\"clear\":true,\"policy\":true,\"fixedClear\":true,\"canonicalHidden\":false,\"headVisible\":true,\"specimenVisible\":true,\"specimenReachable\":true,\"scrollContract\":true,\"trailVisible\":true,\"gap\":8,\"side\":[12,148,308,300],\"trail\":[10,124,310,140],\"clientHeight\":150,\"scrollHeight\":178,\"overflowY\":\"auto\",\"maxScroll\":28,\"observedScroll\":28,\"surfaceChromeBottom\":\"140.00px\",\"fallback\":false,\"headerContained\":false,\"header\":[0,0,320,124],\"fixedChromeBottom\":116,\"fixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,124],\"bottom\":124},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,114.1875],\"bottom\":114.1875},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"surfaceBottom\":140},\"prior\":{\"value\":\"\",\"priority\":\"\",\"computed\":\"none\"},\"mutation\":{\"requested\":\"translateY(-9px)\",\"property\":{\"value\":\"translateY(-9px)\",\"priority\":\"important\"},\"computed\":\"matrix(1, 0, 0, 1, 0, -9)\",\"outcome\":{\"ok\":false,\"meaningful\":true,\"clear\":false,\"policy\":true,\"fixedClear\":false,\"canonicalHidden\":true,\"headVisible\":true,\"specimenVisible\":true,\"specimenReachable\":true,\"scrollContract\":true,\"trailVisible\":false,\"gap\":null,\"side\":[12,115,308,216],\"trail\":[0,0,0,0],\"clientHeight\":99,\"scrollHeight\":178,\"overflowY\":\"auto\",\"maxScroll\":79,\"observedScroll\":79,\"surfaceChromeBottom\":\"124.00px\",\"fallback\":true,\"headerContained\":true,\"header\":[0,0,320,124],\"fixedChromeBottom\":116,\"fixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,124],\"bottom\":124},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,114.1875],\"bottom\":114.1875},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"surfaceBottom\":124}},\"restored\":{\"property\":{\"value\":\"\",\"priority\":\"\"},\"computed\":\"none\",\"outcome\":{\"ok\":true,\"meaningful\":true,\"clear\":true,\"policy\":true,\"fixedClear\":true,\"canonicalHidden\":true,\"headVisible\":true,\"specimenVisible\":true,\"specimenReachable\":true,\"scrollContract\":true,\"trailVisible\":false,\"gap\":null,\"side\":[12,124,308,225],\"trail\":[0,0,0,0],\"clientHeight\":99,\"scrollHeight\":178,\"overflowY\":\"auto\",\"maxScroll\":79,\"observedScroll\":79,\"surfaceChromeBottom\":\"124.00px\",\"fallback\":true,\"headerContained\":true,\"header\":[0,0,320,124],\"fixedChromeBottom\":116,\"fixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,124],\"bottom\":124},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,114.1875],\"bottom\":114.1875},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"surfaceBottom\":124}},\"fixture\":{\"kind\":\"injected-floating-trail-regression\",\"nativeBaseline\":{\"ok\":true,\"meaningful\":true,\"clear\":true,\"policy\":true,\"fixedClear\":true,\"canonicalHidden\":true,\"headVisible\":true,\"specimenVisible\":false,\"specimenReachable\":true,\"scrollContract\":true,\"trailVisible\":false,\"gap\":null,\"side\":[12,330.890625,308,409.5],\"trail\":[0,0,0,0],\"clientHeight\":77,\"scrollHeight\":178,\"overflowY\":\"auto\",\"maxScroll\":101,\"observedScroll\":101,\"surfaceChromeBottom\":\"330.88px\",\"fallback\":false,\"headerContained\":true,\"header\":[0,0,320,330.875],\"fixedChromeBottom\":322.875,\"fixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,330.875],\"bottom\":330.875},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,322.875],\"bottom\":322.875},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"surfaceBottom\":330.88},\"originalStyle\":{\"present\":true,\"value\":\"\"},\"objectiveFixture\":{\"kind\":\"compact-caption-visible-opener\",\"originalStyle\":{\"present\":false,\"value\":null},\"injectedStyle\":\"white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;\",\"textUnchanged\":true},\"fixtureFixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,124],\"bottom\":124},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,114.1875],\"bottom\":114.1875},{\"id\":\"trail\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"fixtureFixedBottom\":116,\"originalRect\":[0,0,0,0],\"injectedTop\":124,\"injectedRect\":[10,124,310,140],\"injectedStyle\":\"display: flex; position: fixed !important; height: 16px !important; line-height: 16px !important; white-space: nowrap !important; overflow: hidden !important; inset: 124px auto auto 10px !important; width: 300px !important; transform: none !important;\",\"injectedBaseline\":{\"ok\":true,\"meaningful\":true,\"clear\":true,\"policy\":true,\"fixedClear\":true,\"canonicalHidden\":false,\"headVisible\":true,\"specimenVisible\":true,\"specimenReachable\":true,\"scrollContract\":true,\"trailVisible\":true,\"gap\":8,\"side\":[12,148,308,300],\"trail\":[10,124,310,140],\"clientHeight\":150,\"scrollHeight\":178,\"overflowY\":\"auto\",\"maxScroll\":28,\"observedScroll\":28,\"surfaceChromeBottom\":\"140.00px\",\"fallback\":false,\"headerContained\":false,\"header\":[0,0,320,124],\"fixedChromeBottom\":116,\"fixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,124],\"bottom\":124},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,114.1875],\"bottom\":114.1875},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"surfaceBottom\":140},\"observedOutsideHeader\":true,\"restoredStyle\":{\"present\":true,\"value\":\"\"},\"restoredObjectiveStyle\":{\"present\":false,\"value\":null},\"nativeRestored\":{\"ok\":true,\"meaningful\":true,\"clear\":true,\"policy\":true,\"fixedClear\":true,\"canonicalHidden\":true,\"headVisible\":true,\"specimenVisible\":true,\"specimenReachable\":true,\"scrollContract\":true,\"trailVisible\":false,\"gap\":null,\"side\":[12,124,308,225],\"trail\":[0,0,0,0],\"clientHeight\":99,\"scrollHeight\":178,\"overflowY\":\"auto\",\"maxScroll\":79,\"observedScroll\":79,\"surfaceChromeBottom\":\"124.00px\",\"fallback\":false,\"headerContained\":true,\"header\":[0,0,320,124],\"fixedChromeBottom\":116,\"fixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,124],\"bottom\":124},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,114.1875],\"bottom\":114.1875},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"surfaceBottom\":124},\"cleanup\":{\"kind\":\"temporary-header-contained-edge-reset\",\"rect\":[0,0,320,16],\"header\":[0,0,320,124],\"headerContained\":true},\"error\":null,\"cleanupErrors\":[]},\"error\":null},\"fallback\":{\"baseline\":{\"ok\":true,\"meaningful\":true,\"clear\":true,\"policy\":true,\"fixedClear\":true,\"canonicalHidden\":true,\"headVisible\":true,\"specimenVisible\":true,\"specimenReachable\":true,\"scrollContract\":true,\"trailVisible\":false,\"gap\":null,\"side\":[12,124,308,225],\"trail\":[0,0,0,0],\"clientHeight\":99,\"scrollHeight\":178,\"overflowY\":\"auto\",\"maxScroll\":79,\"observedScroll\":79,\"surfaceChromeBottom\":\"124.00px\",\"fallback\":true,\"headerContained\":true,\"header\":[0,0,320,124],\"fixedChromeBottom\":116,\"fixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,124],\"bottom\":124},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,114.1875],\"bottom\":114.1875},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"surfaceBottom\":124},\"prior\":{\"value\":\"\",\"priority\":\"\",\"computed\":\"0px\"},\"mutation\":{\"requested\":\"311px\",\"property\":{\"value\":\"311px\",\"priority\":\"important\"},\"computed\":\"311px\",\"baseSafe\":0,\"forcedSafe\":311,\"highestFloor\":381,\"dockTop\":464,\"noticeHeight\":67,\"noticeVisible\":true,\"noticePrior\":{\"present\":true,\"value\":\"opacity: 1;\"},\"outcome\":{\"ok\":false,\"fallback\":true,\"trailDisplay\":\"none\",\"meaningful\":true,\"scrollOk\":true,\"side\":[12,-2,308,70],\"trail\":[0,0,0,0],\"clientHeight\":70,\"scrollHeight\":178,\"overflowY\":\"auto\",\"fixedClear\":false,\"fixedRows\":[{\"id\":\"playerchip\",\"visible\":true,\"gap\":-54},{\"id\":\"hpbar\",\"visible\":true,\"gap\":-118},{\"id\":\"searchbox\",\"visible\":true,\"gap\":-54},{\"id\":\"objchip\",\"visible\":true,\"gap\":-116.1875},{\"id\":\"sceneactions\",\"visible\":false,\"gap\":-2}],\"actualFixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,124],\"bottom\":124},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,114.1875],\"bottom\":114.1875},{\"id\":\"trail\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"baseSafe\":0,\"forcedSafe\":311}},\"restored\":{\"property\":{\"value\":\"\",\"priority\":\"\"},\"computed\":\"0px\",\"outcome\":{\"ok\":true,\"meaningful\":true,\"clear\":true,\"policy\":true,\"fixedClear\":true,\"canonicalHidden\":false,\"headVisible\":true,\"specimenVisible\":false,\"specimenReachable\":true,\"scrollContract\":true,\"trailVisible\":true,\"gap\":8,\"side\":[12,148,308,225],\"trail\":[10,124,310,140],\"clientHeight\":75,\"scrollHeight\":178,\"overflowY\":\"auto\",\"maxScroll\":103,\"observedScroll\":103,\"surfaceChromeBottom\":\"140.00px\",\"fallback\":false,\"headerContained\":false,\"header\":[0,0,320,124],\"fixedChromeBottom\":116,\"fixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,124],\"bottom\":124},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,114.1875],\"bottom\":114.1875},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"surfaceBottom\":140}},\"fixture\":{\"kind\":\"injected-floating-trail-regression\",\"nativeBaseline\":{\"ok\":true,\"meaningful\":true,\"clear\":true,\"policy\":true,\"fixedClear\":true,\"canonicalHidden\":true,\"headVisible\":true,\"specimenVisible\":false,\"specimenReachable\":true,\"scrollContract\":true,\"trailVisible\":false,\"gap\":null,\"side\":[12,330.890625,308,409.5],\"trail\":[0,0,0,0],\"clientHeight\":77,\"scrollHeight\":178,\"overflowY\":\"auto\",\"maxScroll\":101,\"observedScroll\":101,\"surfaceChromeBottom\":\"330.88px\",\"fallback\":false,\"headerContained\":true,\"header\":[0,0,320,330.875],\"fixedChromeBottom\":322.875,\"fixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,330.875],\"bottom\":330.875},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,322.875],\"bottom\":322.875},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"surfaceBottom\":330.88},\"originalStyle\":{\"present\":true,\"value\":\"\"},\"objectiveFixture\":{\"kind\":\"compact-caption-visible-opener\",\"originalStyle\":{\"present\":false,\"value\":null},\"injectedStyle\":\"white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;\",\"textUnchanged\":true},\"fixtureFixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,124],\"bottom\":124},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,114.1875],\"bottom\":114.1875},{\"id\":\"trail\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"fixtureFixedBottom\":116,\"originalRect\":[0,0,0,0],\"injectedTop\":124,\"injectedRect\":[10,124,310,140],\"injectedStyle\":\"display: flex; position: fixed !important; height: 16px !important; line-height: 16px !important; white-space: nowrap !important; overflow: hidden !important; inset: 124px auto auto 10px !important; width: 300px !important; transform: none !important;\",\"injectedBaseline\":{\"ok\":true,\"meaningful\":true,\"clear\":true,\"policy\":true,\"fixedClear\":true,\"canonicalHidden\":false,\"headVisible\":true,\"specimenVisible\":true,\"specimenReachable\":true,\"scrollContract\":true,\"trailVisible\":true,\"gap\":8,\"side\":[12,148,308,300],\"trail\":[10,124,310,140],\"clientHeight\":150,\"scrollHeight\":178,\"overflowY\":\"auto\",\"maxScroll\":28,\"observedScroll\":28,\"surfaceChromeBottom\":\"140.00px\",\"fallback\":false,\"headerContained\":false,\"header\":[0,0,320,124],\"fixedChromeBottom\":116,\"fixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,124],\"bottom\":124},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,114.1875],\"bottom\":114.1875},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"surfaceBottom\":140},\"observedOutsideHeader\":true,\"restoredStyle\":{\"present\":true,\"value\":\"\"},\"restoredObjectiveStyle\":{\"present\":false,\"value\":null},\"nativeRestored\":{\"ok\":true,\"meaningful\":true,\"clear\":true,\"policy\":true,\"fixedClear\":true,\"canonicalHidden\":true,\"headVisible\":true,\"specimenVisible\":true,\"specimenReachable\":true,\"scrollContract\":true,\"trailVisible\":false,\"gap\":null,\"side\":[12,124,308,225],\"trail\":[0,0,0,0],\"clientHeight\":99,\"scrollHeight\":178,\"overflowY\":\"auto\",\"maxScroll\":79,\"observedScroll\":79,\"surfaceChromeBottom\":\"124.00px\",\"fallback\":false,\"headerContained\":true,\"header\":[0,0,320,124],\"fixedChromeBottom\":116,\"fixedRows\":[{\"id\":\"topbar\",\"visible\":false,\"excluded\":true,\"opacity\":1,\"rect\":[0,0,320,124],\"bottom\":124},{\"id\":\"dockinventory\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,8,138,52],\"bottom\":52},{\"id\":\"searchbox\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[191.609375,8,310,52],\"bottom\":52},{\"id\":\"shelfnotifications\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0},{\"id\":\"hpbar\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[10,60,138,116],\"bottom\":116},{\"id\":\"objchip\",\"visible\":true,\"excluded\":false,\"opacity\":1,\"rect\":[148,60,310,114.1875],\"bottom\":114.1875},{\"id\":\"sceneactions\",\"visible\":false,\"excluded\":false,\"opacity\":1,\"rect\":[0,0,0,0],\"bottom\":0}],\"surfaceBottom\":124},\"cleanup\":{\"kind\":\"temporary-header-contained-edge-reset\",\"rect\":[0,0,320,16],\"header\":[0,0,320,124],\"headerContained\":true},\"error\":null,\"cleanupErrors\":[]},\"error\":null},\"settlements\":[{\"label\":\"portrait.fixture.injected.fonts-two-frames\",\"expectedFrameId\":4,\"frame\":{\"id\":4,\"label\":\"portrait.fixture.injected.fonts-two-frames\",\"status\":\"settled\",\"phases\":[{\"phase\":\"fonts-wait\",\"at\":6341.700000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"fonts-ready\",\"at\":6341.700000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame1\",\"at\":6352.700000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame2\",\"at\":6363,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"settled\",\"at\":6363,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}}]},\"overflow\":false,\"error\":null},{\"label\":\"portrait.band.mutated.fonts-two-frames\",\"expectedFrameId\":5,\"frame\":{\"id\":5,\"label\":\"portrait.band.mutated.fonts-two-frames\",\"status\":\"settled\",\"phases\":[{\"phase\":\"fonts-wait\",\"at\":6363.400000095367,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"fonts-ready\",\"at\":6363.5,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame1\",\"at\":6379.200000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame2\",\"at\":6395.900000095367,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"settled\",\"at\":6395.900000095367,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}}]},\"overflow\":false,\"error\":null},{\"label\":\"portrait.band.restored.fonts-two-frames\",\"expectedFrameId\":6,\"frame\":{\"id\":6,\"label\":\"portrait.band.restored.fonts-two-frames\",\"status\":\"settled\",\"phases\":[{\"phase\":\"fonts-wait\",\"at\":6396.200000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"fonts-ready\",\"at\":6396.200000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame1\",\"at\":6412.5,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame2\",\"at\":6429.200000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"settled\",\"at\":6429.200000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}}]},\"overflow\":false,\"error\":null},{\"label\":\"portrait.fallback.mutated.fonts-two-frames\",\"expectedFrameId\":7,\"frame\":{\"id\":7,\"label\":\"portrait.fallback.mutated.fonts-two-frames\",\"status\":\"settled\",\"phases\":[{\"phase\":\"fonts-wait\",\"at\":6433.900000095367,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"fonts-ready\",\"at\":6433.900000095367,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame1\",\"at\":6449.900000095367,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame2\",\"at\":6462.600000023842,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"settled\",\"at\":6462.600000023842,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}}]},\"overflow\":false,\"error\":null},{\"label\":\"portrait.fallback.restored.fonts-two-frames\",\"expectedFrameId\":8,\"frame\":{\"id\":8,\"label\":\"portrait.fallback.restored.fonts-two-frames\",\"status\":\"settled\",\"phases\":[{\"phase\":\"fonts-wait\",\"at\":6464.300000071526,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"fonts-ready\",\"at\":6464.300000071526,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame1\",\"at\":6479.200000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame2\",\"at\":6495.900000095367,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"settled\",\"at\":6495.900000095367,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}}]},\"overflow\":false,\"error\":null},{\"label\":\"portrait.fixture.cleanup-contained.fonts-two-frames\",\"expectedFrameId\":9,\"frame\":{\"id\":9,\"label\":\"portrait.fixture.cleanup-contained.fonts-two-frames\",\"status\":\"settled\",\"phases\":[{\"phase\":\"fonts-wait\",\"at\":6497.700000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"fonts-ready\",\"at\":6497.700000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame1\",\"at\":6512.5,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame2\",\"at\":6529.200000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"settled\",\"at\":6529.200000047684,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}}]},\"overflow\":false,\"error\":null},{\"label\":\"portrait.fixture.native-restored.fonts-two-frames\",\"expectedFrameId\":10,\"frame\":{\"id\":10,\"label\":\"portrait.fixture.native-restored.fonts-two-frames\",\"status\":\"settled\",\"phases\":[{\"phase\":\"fonts-wait\",\"at\":6531.800000071526,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"fonts-ready\",\"at\":6531.900000095367,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame1\",\"at\":6545.900000095367,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"frame2\",\"at\":6562.600000023842,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}},{\"phase\":\"settled\",\"at\":6562.600000023842,\"timeOrigin\":1790022016583.2,\"fontsStatus\":\"loaded\",\"visibility\":\"visible\",\"viewport\":{\"width\":320,\"height\":568},\"visualViewport\":{\"width\":320,\"height\":568,\"scale\":1}}]},\"overflow\":false,\"error\":null}]},\"bandControlAssessment\":{\"ok\":false,\"checks\":{\"labelledFaultFixture\":true,\"fixtureRestored\":false,\"eligibleBaseline\":true,\"mutationApplied\":true,\"collisionRed\":false,\"propertyRestored\":true,\"computedRestored\":true,\"outcomeRestored\":false}},\"fallbackControlAssessment\":{\"ok\":false,\"checks\":{\"labelledFaultFixture\":true,\"fixtureRestored\":false,\"eligibleBaseline\":false,\"mutationApplied\":true,\"tightPolicyObserved\":false,\"usefulGeometry\":true,\"scrollAccessible\":true,\"fixedClearance\":false,\"propertyRestored\":true,\"computedRestored\":true,\"outcomeRestored\":true}}})"
+  ],
+  "durationMs": 11376
+}

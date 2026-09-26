@@ -1,0 +1,25 @@
+{
+  "schema": "cf-painted-civet-study-asset/v1",
+  "path": "civet-painted-v1.webp",
+  "sha256": "7df99d643544f47f0b9cfd22e97e3bcb8af5ccc184a51f29d2e6c42c603815ac",
+  "bytes": 179856,
+  "width": 768,
+  "height": 512,
+  "alphaBounds": {
+    "x0": 14,
+    "y0": 102,
+    "x1": 755,
+    "y1": 415
+  },
+  "contactY": 413,
+  "transparentPixels": 281825,
+  "opaquePixels": 105976,
+  "partialPixels": 5415,
+  "sourceMaster": "alpha-v3/civet-painted-v1.png",
+  "sourceMasterSha256": "55633a07d1d03ef55d9a3493bd5e03b871eb1ef0db57b2cb5b6d39ec48ff2508",
+  "rawRGBASourceBytes": 1572864,
+  "identity": "Exact original Civet Earth133 epoch0 genome; bound by civet-rig.ts full29-field serialization.",
+  "admission": "Local authoring study only; not imported by game.",
+  "alphaAuthority": "Nick explicitly requested ImageMagick alpha extraction.",
+  "edgeLimit": "Approximate recovered matte. Fine whiskers are attenuated; small bright fur fringe remains visible at magnification. Production clean-edge acceptance remains open."
+}

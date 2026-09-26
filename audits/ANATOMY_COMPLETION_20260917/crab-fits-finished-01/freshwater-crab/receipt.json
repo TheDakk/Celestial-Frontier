@@ -1,0 +1,101 @@
+{
+  "intake": {
+    "id": "freshwater-crab",
+    "parts": 26,
+    "atlasSize": {
+      "width": 667,
+      "height": 275
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0far-lower",
+        "vertex": 25,
+        "distancePx": 0.5946427498927386,
+        "supports": [
+          324
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0near-lower",
+        "vertex": 59,
+        "distancePx": 1.3242356285797898,
+        "supports": [
+          748
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1far-lower",
+        "vertex": 54,
+        "distancePx": 1.1063453348751886,
+        "supports": [
+          427
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1near-lower",
+        "vertex": 61,
+        "distancePx": 1.6443843832875908,
+        "supports": [
+          841
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2far-lower",
+        "vertex": 69,
+        "distancePx": 1.624315240339774,
+        "supports": [
+          543
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2near-lower",
+        "vertex": 68,
+        "distancePx": 2.0489997559785125,
+        "supports": [
+          946
+        ]
+      },
+      {
+        "joint": "leg3FarFoot",
+        "part": "leg3far-lower",
+        "vertex": 46,
+        "distancePx": 2.2128714377478027,
+        "supports": [
+          629
+        ]
+      },
+      {
+        "joint": "leg3NearFoot",
+        "part": "leg3near-lower",
+        "vertex": 83,
+        "distancePx": 1.72244012958367,
+        "supports": [
+          1070
+        ]
+      }
+    ],
+    "sourceBindingHash": "e2c9947691587065e821e2a2b548554270df4e7bfb3a74a177c1ad4c3d7c2408",
+    "sourceVertices": 1460,
+    "vertices": 1600,
+    "sharedSupports": 178,
+    "pins": 734,
+    "independentSurfaceParts": 26,
+    "sourceJoins": 24,
+    "excludedOverlaps": 2,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "textureSource": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/freshwater-crab-finished.png",
+  "nativeAcceptance": false
+}

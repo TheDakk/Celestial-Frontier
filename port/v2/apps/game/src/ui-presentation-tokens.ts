@@ -1,0 +1,53 @@
+/** U1 presentation values. Domain colors (rarity/resources/Atlas/portraits)
+ * retain their existing owners; these roles apply only to interface chrome. */
+export const UI_PRESENTATION_TOKENS = Object.freeze({
+  'space-1': '4px', 'space-2': '8px', 'space-3': '12px', 'space-4': '16px',
+  'space-5': '20px', 'space-6': '24px', 'space-8': '32px',
+  'type-caption': '10.5px', 'type-small': '11px', 'type-body': '13px',
+  'type-section': '16px', 'type-title': '20px',
+  'radius-small': '6px', 'radius-panel': '14px', 'radius-pill': '999px',
+  'layer-caption': '6', 'layer-objective': '9', 'layer-trail': '19',
+  'layer-shell': '20', 'layer-sheet': '22', 'layer-survey': '23', 'layer-utility-panel': '24',
+  'layer-toast': '18', 'layer-training': '50', 'layer-training-surface': '58',
+  'layer-training-settings': '60',
+  'color-surface': 'rgba(10,16,30,var(--glass-a))',
+  'color-elevated': 'rgba(16,24,40,.96)', 'color-border': '#405477',
+  'color-text': 'var(--ink)', 'color-muted': 'var(--dim)',
+  'color-faint': 'var(--faint)', 'color-accent-gold': '#ffd96a',
+  'color-accent-teal': '#7ec8f0', 'color-success': '#7fe6a0',
+  'color-warn': '#ffd96a', 'color-danger': '#ff806f',
+  'dock-chip-width': '60px', 'dock-pitch': '64px', 'dock-half-pitch': '32px',
+  'touch-target': '44px', 'utility-face': '36px', 'dock-row-gap': '4px',
+  'launcher-pitch': '72px', 'launcher-target': '48px', 'launcher-face': '40px',
+  'launcher-padding': '12px', 'launcher-label': '9.5px', 'launcher-count': '9px',
+  'launcher-icon': '16px', 'launcher-icon-line': '18px',
+  'phone-dock-bottom': '12px', 'phone-hint-bottom': '124px',
+  'phone-caption-bottom': '164px', 'hud-inset': '18px',
+  'hud-column': 'clamp(176px,20vw,240px)', 'hud-stack-gap': '8px',
+  'duration-press': '150ms', 'duration-enter': '200ms', 'duration-exit': '150ms',
+  'ease-standard': 'cubic-bezier(.2,.7,.2,1)',
+} as const);
+
+/** The wide launcher scales the same controls, ordering and visual roles. */
+export const UI_WIDE_LAUNCHER_TOKENS = Object.freeze({
+  'launcher-pitch': '80px', 'launcher-target': '56px', 'launcher-face': '44px',
+  'launcher-padding': '16px', 'launcher-label': '10.5px', 'launcher-count': '9.5px',
+  'launcher-icon': '18px', 'launcher-icon-line': '20px',
+} as const);
+export const UI_PRESENTATION_WIDE_MIN = 1100;
+export const UI_PRESENTATION_PHONE_MAX = 700;
+export const UI_PRESENTATION_DESKTOP_MIN = UI_PRESENTATION_PHONE_MAX + 1;
+const INTER_FONT_URL = new URL('../assets/pilot/fonts/InterVariable.woff2', import.meta.url).href;
+const properties = Object.entries(UI_PRESENTATION_TOKENS)
+  .map(([name, value]) => `--cf-${name}:${value};`).join('\n');
+
+/** Installed once before chrome measurement. Settings' body-level font and
+ * tone properties take precedence over this root-level default. */
+export const UI_PRESENTATION_CSS = `
+@font-face{font-family:Inter;src:url("${INTER_FONT_URL}") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+:root{${properties}
+--ui:Inter,system-ui,-apple-system,sans-serif;
+--cf-launcher-width:calc(9 * var(--cf-launcher-pitch) + 2 * var(--cf-launcher-padding));}
+@media(min-width:${UI_PRESENTATION_WIDE_MIN}px){:root{${Object.entries(UI_WIDE_LAUNCHER_TOKENS)
+  .map(([name, value]) => `--cf-${name}:${value};`).join('')}}}
+`;

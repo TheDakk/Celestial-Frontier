@@ -1,0 +1,52 @@
+{
+  "candidates": [
+    {
+      "order": [
+        0
+      ],
+      "stances": [
+        "balanced"
+      ]
+    },
+    {
+      "order": [
+        0
+      ],
+      "stances": [
+        "press"
+      ]
+    },
+    {
+      "order": [
+        0
+      ],
+      "stances": [
+        "guard"
+      ]
+    },
+    {
+      "order": [
+        0
+      ],
+      "stances": [
+        "evade"
+      ]
+    }
+  ],
+  "scores": [
+    57,
+    64,
+    61,
+    61
+  ],
+  "selected": {
+    "order": [
+      0
+    ],
+    "stances": [
+      "press"
+    ]
+  },
+  "trainCorpusHash": "72c3446f56100f5ee034c4c86179b44527615e3f0f0e079103dfaf392cb56533",
+  "evaluateCorpusHash": "f44af54a9ff67c877271540c3894e096787b77df1c4b7f1ada5061197c333248"
+}

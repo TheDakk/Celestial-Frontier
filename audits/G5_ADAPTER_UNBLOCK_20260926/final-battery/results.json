@@ -1,0 +1,121 @@
+{
+  "head": "bfe76a6bbfa1303c73976944cc1a9be316836a88",
+  "dirtySource": true,
+  "tests": {
+    "passed": 5635,
+    "failed": 1,
+    "expectedFail": 2,
+    "skipped": 2,
+    "onlyFailure": "current-producer-authorities: binds every live memory budget (I5)"
+  },
+  "results": [
+    {
+      "name": "develop-profile",
+      "command": [
+        "node",
+        "tools/check-profile.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 1,
+      "logSha256": "f54776a280f40b071e8a7db316496ca7e7fa3e64946f5be3131ce64283a5e50d",
+      "phase": "after two test-only repairs"
+    },
+    {
+      "name": "typecheck-root",
+      "command": [
+        "npx",
+        "tsc",
+        "--noEmit",
+        "--noUnusedLocals"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "phase": "unchanged owner carried from first run"
+    },
+    {
+      "name": "typecheck-app",
+      "command": [
+        "npx",
+        "tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "phase": "after two test-only repairs"
+    },
+    {
+      "name": "typecheck-worker",
+      "command": [
+        "npx",
+        "tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.worker.json"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "phase": "unchanged owner carried from first run"
+    },
+    {
+      "name": "artaudit",
+      "command": [
+        "npm",
+        "run",
+        "artaudit"
+      ],
+      "exitCode": 0,
+      "logSha256": "046c09792789f5099beac41496570a7dc58420ee4a9fec0d1d97d45bb8f47f21",
+      "phase": "unchanged owner carried from first run"
+    },
+    {
+      "name": "overridecheck",
+      "command": [
+        "npm",
+        "run",
+        "overridecheck"
+      ],
+      "exitCode": 0,
+      "logSha256": "b5bc5aed7f14e3c849a2db17eb64e4ccc69556e7f6733dece64b436504ce41ff",
+      "phase": "unchanged owner carried from first run"
+    },
+    {
+      "name": "speccheck",
+      "command": [
+        "node",
+        "tools/speccheck.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "b990b069a1d3ed60a587623f110cf6ad1ee1f3b6fffc919befb4f5bbcad01310",
+      "phase": "unchanged owner carried from first run"
+    },
+    {
+      "name": "overridecontrol",
+      "command": [
+        "npm",
+        "run",
+        "overridecontrol"
+      ],
+      "exitCode": 0,
+      "logSha256": "a690e68fd52b2f98c261ce9b0decdf5f408217f4ed49b00b5bb7f01fa6f7101f",
+      "phase": "unchanged owner carried from first run"
+    }
+  ],
+  "changedSourceSha256": {
+    "port/v2/apps/game/src/creature-finish-admission.test.ts": "b7854bf7c4771482d401889b175d6456c72e03802feae715e480d26937ed8fe3",
+    "port/v2/apps/game/src/creature-rig.ts": "fac6b7e510d2ea5933c5a4815175902dab041f5cda74402e5230886dff4d57d8",
+    "port/v2/apps/game/src/guide-content.ts": "4c9c6fd9e307ee13e9ef378cbe32756e5b814117709fa753f27d27185a7f7172",
+    "port/v2/apps/game/src/release-content.ts": "18d28b2374712154db45068b4ef1cc1061a681ed34e72ba3ee60588b5681b146",
+    "port/v2/tests/evidence-chain-tools.test.ts": "186b35f4c880efe2ce4bdf0bc996df76c96d9666cfb200829b9baee5cf63ca0d",
+    "port/v2/tests/exceptional-crafting-evidence-contract.test.ts": "34b213efbf140a325d3248947f848fa0503657cc30ce77efd7bb505be6ecd4c6",
+    "port/v2/tests/guide-release.test.ts": "16939b8e58c689d93dca534bfe339e603586a69597b2618a237bf4834e33b5fa",
+    "port/v2/tests/slicesmoke-sixth-red-contract.test.ts": "ff7148e97b744ad78ba1808d3fbeb770551cf0c417811b99f6d5b3db8203f90d",
+    "port/v2/tools/glassmatrix.mjs": "39ea9d1bf3e6be49e5e0da04ce086da8ab79948fa566c2b3fc99b02c53929754",
+    "port/v2/tools/painted-creature/compile-library-master.mjs": "663c463f6fe435f444813b3d3b0a9f1331b00e5e18c472e32d9520f5891786f5",
+    "port/v2/tools/slicesmoke.mjs": "0eb00d0a8650234126e6ee3386105bacacfc42757ee24c2d8c49bc5162624d4d",
+    "tools/local-image-generation/creature-finish-adapter.test.mjs": "c9ba612bcdf1bcece3128d472ac2168bf5641554fe16a2a0b59a716921d52879",
+    "tools/local-image-generation/creature-finish-math.mjs": "23a8d08e0ecde69c47fd1da0f0ad72caca68546655008f0efa14ec6189aa6c34"
+  },
+  "note": "Only the failed profile and failed app typecheck were repeated after two test-only repairs. Other six manual owners passed on identical runtime/tool source. Root validate and focused evidence are alongside this directory."
+}

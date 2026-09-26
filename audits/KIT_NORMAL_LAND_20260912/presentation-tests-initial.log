@@ -1,0 +1,25 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/ai-presentation.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ai-presentation.test.ts [ tests/ai-presentation.test.ts ]
+Error: Cannot find package 'esbuild' imported from /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/ai-presentation.test.ts
+ ❯ tests/ai-presentation.test.ts:4:1
+      2| import { createRequire } from 'node:module';
+      3| import { afterEach, it, expect, vi } from 'vitest';
+      4| import { transformSync } from 'esbuild';
+       | ^
+      5| import { createAiPresentationRefresh, isAiActionTarget } from '../apps…
+      6| const { JSDOM }=createRequire(import.meta.url)('jsdom');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  15:59:31
+   Duration  73ms (transform 10ms, setup 0ms, import 0ms, tests 0ms, environment 0ms)
+

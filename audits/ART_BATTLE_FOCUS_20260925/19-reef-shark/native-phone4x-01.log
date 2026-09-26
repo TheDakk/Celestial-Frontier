@@ -1,0 +1,1 @@
+{"status":"FAIL","error":"Error: Error: habitat: Selected home arena cannot support both organisms; no habitat or biome substitution · left Reef Shark: aquatic (water) · right Reef Shark: aquatic (water)\n    at http://127.0.0.1:56360/bundle.js:34741:39\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:51:148"}

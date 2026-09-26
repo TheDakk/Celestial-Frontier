@@ -1,0 +1,300 @@
+{
+  "kind": "brachyuran",
+  "family": "brachyuran",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Coconut Crab\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"404517011\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]",
+    "seed": 404517011,
+    "ownerId": "authored:P1-coconut-crab/generation-01",
+    "earthName": "Coconut Crab"
+  },
+  "template": {
+    "id": "brachyuran",
+    "version": 1
+  },
+  "projection": "source-pincers",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [
+      "leg3Far",
+      "leg3Near"
+    ]
+  },
+  "geometry": {
+    "cutoutAssetHash": "7954331dc3ce80bf3b4e2e3759bd0b5c576d659ff5fcb4d01b8efc536bba8890",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8516746411483254,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.518341307814992,
+      0.4226475279106858
+    ],
+    "carapace": [
+      0.4824561403508772,
+      0.29904306220095694
+    ],
+    "leg0FarRoot": [
+      0.26953748006379585,
+      0.29106858054226475
+    ],
+    "leg0FarKnee": [
+      0.09569377990430622,
+      0.4266347687400319
+    ],
+    "leg0FarFoot": [
+      0.050239234449760764,
+      0.5598086124401914
+    ],
+    "leg1FarRoot": [
+      0.33253588516746413,
+      0.35964912280701755
+    ],
+    "leg1FarKnee": [
+      0.1371610845295056,
+      0.5374800637958532
+    ],
+    "leg1FarFoot": [
+      0.12759170653907495,
+      0.7312599681020734
+    ],
+    "leg2FarRoot": [
+      0.39074960127591707,
+      0.39872408293460926
+    ],
+    "leg2FarKnee": [
+      0.25996810207336524,
+      0.6427432216905901
+    ],
+    "leg2FarFoot": [
+      0.30303030303030304,
+      0.8437001594896332
+    ],
+    "leg0NearRoot": [
+      0.7200956937799043,
+      0.36762360446570974
+    ],
+    "leg0NearKnee": [
+      0.9019138755980861,
+      0.47368421052631576
+    ],
+    "leg0NearFoot": [
+      0.9553429027113237,
+      0.5853269537480064
+    ],
+    "leg1NearRoot": [
+      0.7344497607655502,
+      0.42025518341307816
+    ],
+    "leg1NearKnee": [
+      0.9218500797448166,
+      0.6586921850079744
+    ],
+    "leg1NearFoot": [
+      0.9441786283891547,
+      0.803030303030303
+    ],
+    "leg2NearRoot": [
+      0.6730462519936204,
+      0.4784688995215311
+    ],
+    "leg2NearKnee": [
+      0.6331738437001595,
+      0.5709728867623605
+    ],
+    "leg2NearFoot": [
+      0.6618819776714514,
+      0.6244019138755981
+    ],
+    "eyeFarRoot": [
+      0.6012759170653907,
+      0.3277511961722488
+    ],
+    "eyeFarTip": [
+      0.6172248803827751,
+      0.24082934609250398
+    ],
+    "eyeNearRoot": [
+      0.6539074960127592,
+      0.3277511961722488
+    ],
+    "eyeNearTip": [
+      0.6985645933014354,
+      0.24481658692185007
+    ],
+    "clawFarBase": [
+      0.430622009569378,
+      0.3915470494417863
+    ],
+    "clawFarElbow": [
+      0.39074960127591707,
+      0.49282296650717705
+    ],
+    "clawFarPalm": [
+      0.47926634768740034,
+      0.6228070175438597
+    ],
+    "clawFarFixedRoot": [
+      0.4704944178628389,
+      0.6778309409888357
+    ],
+    "clawFarFixedTip": [
+      0.5374800637958532,
+      0.7854864433811802
+    ],
+    "clawFarDactylRoot": [
+      0.543859649122807,
+      0.6443381180223285
+    ],
+    "clawFarDactylTip": [
+      0.5765550239234449,
+      0.7759170653907496
+    ],
+    "clawNearBase": [
+      0.689792663476874,
+      0.4138755980861244
+    ],
+    "clawNearElbow": [
+      0.7695374800637959,
+      0.5087719298245614
+    ],
+    "clawNearPalm": [
+      0.7934609250398724,
+      0.6467304625199362
+    ],
+    "clawNearFixedRoot": [
+      0.817384370015949,
+      0.6921850079744817
+    ],
+    "clawNearFixedTip": [
+      0.7751196172248804,
+      0.8118022328548644
+    ],
+    "clawNearDactylRoot": [
+      0.748006379585327,
+      0.7017543859649122
+    ],
+    "clawNearDactylTip": [
+      0.7511961722488039,
+      0.8078149920255183
+    ],
+    "leg3FarRoot": [
+      0.44896331738437,
+      0.43779904306220097
+    ],
+    "leg3FarKnee": [
+      0.6900865407280197,
+      0.5738458430144461
+    ],
+    "leg3FarFoot": [
+      0.761333406802646,
+      0.7666201361019025
+    ],
+    "leg3NearRoot": [
+      0.6116427432216907,
+      0.536682615629984
+    ],
+    "leg3NearKnee": [
+      0.6948528623950384,
+      0.5934529658643206
+    ],
+    "leg3NearFoot": [
+      0.699219694673781,
+      0.6539488225012016
+    ]
+  },
+  "materials": {
+    "surface": "chitinous",
+    "paletteSource": "named"
+  },
+  "clipSetId": "brachyuran-v1",
+  "source": "audits/VISION_P1_COCONUT_20260920/generation-01/coconut-crab-master.png",
+  "masterIntakeAccepted": true,
+  "qualityAccepted": true,
+  "coverage": {
+    "scope": "Six visible legs, claws, eyes, body; fourth pair explicitly hidden",
+    "artAcceptance": "Nick; read-only P1_VERDICT.md, 2026-09-20",
+    "hiddenInference": "Pair2 mirror across body axis at extrapolated root; template segment proportions preserved 1:1",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "observationSha256": "eacb9e0c9fc80b7f45a4b2bb8e96ea3c0531c0154edcdd8cb6772b6f5b976fca",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "rgbaChanges": 0
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "carapace": 0.12870823278763135,
+      "leg0FarRoot": 0.21306794281677,
+      "leg0FarKnee": 0.22045367646654243,
+      "leg0FarFoot": 0.14071740598928711,
+      "leg0NearRoot": 0.2473375186486575,
+      "leg0NearKnee": 0.21049157559772425,
+      "leg0NearFoot": 0.12376899067347774,
+      "leg1FarRoot": 0.16170707311817,
+      "leg1FarKnee": 0.2641877292708668,
+      "leg1FarFoot": 0.19401604136785075,
+      "leg1NearRoot": 0.2796304043884289,
+      "leg1NearKnee": 0.30326734621962737,
+      "leg1NearFoot": 0.1460549773160443,
+      "leg2FarRoot": 0.13544886564165093,
+      "leg2FarKnee": 0.2768558119543053,
+      "leg2FarFoot": 0.20551896263076108,
+      "leg2NearRoot": 0.2617598551233219,
+      "leg2NearKnee": 0.10073130892911089,
+      "leg2NearFoot": 0.060653259552811534,
+      "leg3FarRoot": 0.14274099416436647,
+      "leg3FarKnee": 0.2768558119543055,
+      "leg3FarFoot": 0.2055189626307614,
+      "leg3NearRoot": 0.2704842614926951,
+      "leg3NearKnee": 0.10073130892911092,
+      "leg3NearFoot": 0.06065325955281151,
+      "eyeFarRoot": 0.12223868575291742,
+      "eyeFarTip": 0.08837294525014376,
+      "clawFarBase": 0.10603661994483358,
+      "clawFarElbow": 0.10884218079658435,
+      "clawFarPalm": 0.1572611456119462,
+      "clawFarFixedRoot": 0.055718748228272386,
+      "clawFarFixedTip": 0.12679425837320576,
+      "clawFarDactylRoot": 0.06808731804190288,
+      "clawFarDactylTip": 0.1355802600821222,
+      "eyeNearRoot": 0.17383821304422917,
+      "eyeNearTip": 0.0941934485501333,
+      "clawNearBase": 0.2370125421149591,
+      "clawNearElbow": 0.12395382023113813,
+      "clawNearPalm": 0.14001745592241038,
+      "clawNearFixedRoot": 0.051365814721492625,
+      "clawNearFixedTip": 0.12686445450390818,
+      "clawNearDactylRoot": 0.07137049708218322,
+      "clawNearDactylTip": 0.10610856202578113
+    },
+    "measures": {
+      "body": 0.12870823278763135,
+      "bone-min": 0.051365814721492625,
+      "bone-max": 0.30326734621962737
+    },
+    "hiddenJoints": [
+      "leg3FarRoot",
+      "leg3FarKnee",
+      "leg3FarFoot",
+      "leg3NearRoot",
+      "leg3NearKnee",
+      "leg3NearFoot"
+    ]
+  },
+  "recipeHash": "499b3d3e3bc9c34be83603ad31b6ac8527c732580307230610f1d69f1bab1dcc"
+}

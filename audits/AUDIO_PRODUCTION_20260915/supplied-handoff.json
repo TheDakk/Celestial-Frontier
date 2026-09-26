@@ -1,0 +1,23 @@
+{
+  "sourceZip": "/Users/nick/Library/Mobile Documents/com~apple~CloudDocs/Downloads/Celestial-Frontier-Free-Audio-Handoff.zip",
+  "files": {
+    "celestial-frontier-audio-handoff/PASTE-INTO-CODING-AGENT.txt": {
+      "bytes": 1473,
+      "sha256": "1eaa81616332daac5febc279413c855be3c597ac3859f684992e2ed5f449f1d0"
+    },
+    "celestial-frontier-audio-handoff/README.md": {
+      "bytes": 1224,
+      "sha256": "f1108bf88ab18b92ef7ae54fa2314ba3eb15cf6c146b7a6ba073805a15c40169"
+    },
+    "celestial-frontier-audio-handoff/CELESTIAL-FRONTIER-AUDIO-HANDOFF.md": {
+      "bytes": 26087,
+      "sha256": "84d16cdfbef1487b714f08163fd4ab58b15bb7e15a5814924844045393cc29d3"
+    },
+    "celestial-frontier-audio-handoff/audio-sources.json": {
+      "bytes": 16565,
+      "sha256": "3c3cbf25d8042fcea5eea092975ee2e101a4901383039ddf9587f4882065e09c"
+    }
+  },
+  "verbatim": true,
+  "authority": "Nick requested implementation of the handoff with $0 additional spend"
+}

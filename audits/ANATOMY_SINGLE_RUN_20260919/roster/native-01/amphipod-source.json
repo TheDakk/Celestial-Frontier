@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2817137578,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 5,
+    "body": 14,
+    "loco": 2,
+    "trait": 3,
+    "size": 0,
+    "diet": 4,
+    "head": 2,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 3,
+    "pattern": 6,
+    "eyes": 0,
+    "behavior": 10,
+    "habitat": 8,
+    "detail": 4,
+    "accent": 6,
+    "temper": 4,
+    "sense": 7,
+    "repro": 3,
+    "life": 3,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Amphipod"
+  },
+  "observation": null
+}

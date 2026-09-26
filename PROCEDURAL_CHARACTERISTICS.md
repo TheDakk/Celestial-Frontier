@@ -1,9 +1,71 @@
 # Procedural (Non-Earth) Characteristics — Catalog & Pass Map
 
-_Legacy v1 catalogue plus a current v2 reset overlay. The reset overlay matches
-the procedural source as of 2026-08-11; dated B15 sections below remain legacy
-`main.js` snapshots unless explicitly labelled current. Companion to
-`ART_DIRECTION.md` and `LINEAGE_AND_BREEDING.md`._
+**Local landfall conditioning — matches code as of 2026-09-09:** the bounded V2 compiler
+preserves the complete 19-genome canonical Earth epoch-0 roster and six full displayed identities.
+`buildLandfallConditioningV2` and its live-roster wrapper create ordered anatomy-reference
+requirements for Civet, Persimmon, Platypus, Frog, Devil's Club and Cranberry. Full genomes and
+`speciesVisualKey` bindings remain intact; source-backed named Earth rules determine visible
+anatomy/botany. This adapter adds no unnamed procedural family coverage, genome mutations,
+lineage rules, biome mapping or animation geometry. Unknown worlds/families remain unsupported;
+raw procedural limbs, colors and body loci do not override named Earth anatomy.
+
+The [reference set](audits/AI_SPECIES_MOBILE_20260909/references/reference-set-v1.json) combines
+four new authoring images for Frog and the three plants with the retained Civet/Platypus images.
+The [direct visual review](audits/AI_SPECIES_MOBILE_20260909/references/VISUAL_REVIEW.md) identifies
+visible body/leaf/fruit architecture and occlusions. Their studio backgrounds and exposed roots
+are reference presentation, not compulsory habitat geometry. The runtime verifies encoded
+hashes, full identities, order and geometry, preparing one reference at a time. Whole-image
+conditioning cannot enforce boxes, masks, creature counts or correct generated anatomy. It does
+not supply articulated limb rigs for land, air or water families. The first actual V2 output now
+has an [exact-artifact manual review](audits/AI_SPECIES_MOBILE_20260909/native-generation-01/INDEPENDENT_VISUAL_REVIEW.md);
+`landfall-fidelity.ts` remains a V1-only contract. It renders three separate animal bodies in a
+cohesive rainy habitat, but preserves neither several requested anchors nor all named anatomy:
+Platypus still has an upright mammalian body and external ears, and named plant diagnostics remain
+missing or unresolved. These observed limits do not authorize new procedural families or replace
+Earth anatomy with raw genes. [Current AI ownership and quality boundary](LOCAL_AI_GENERATION.md).
+
+_Legacy v1 catalogue plus current V2 routing/rig guidance, refreshed against source on
+2026-09-08. The reset audit records retain their own August dates; dated B15 sections remain
+legacy `main.js` snapshots unless explicitly labelled current. Companion to ART_DIRECTION.md,
+SPECIES_AND_GENOME.md, LINEAGE_AND_BREEDING.md and CREATURE_ANIMATION.md._
+
+## Current V2 resolved anatomy for shared animation — 2026-09-08
+
+Nick identified this pass map as the source for generated variations. It supplies vocabulary;
+an animation adapter must consume the final painter’s actual geometry. The complete source audit
+is [SOURCE_TAXONOMY.md](audits/CIVET_PAINTED_PARTS_20260908/SOURCE_TAXONOMY.md), and the shared
+land/air/water rig/material architecture is [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md).
+
+`speciesoverrides.resolveOverrideCanvas` preserves named/kingdom ownership, reviewed lineage and
+HD compatibility before unnamed procedural routing. For modern fauna `planFor` resolves:
+
+| Priority / condition | Current owner |
+| --- | --- |
+| loco 4 or 13, any body | Fish; this precedes body preservation |
+| body14 + loco3 | Bird; the spec has no four-wing option |
+| body4 / body5 / body6 | Snake / myriapod / turtle |
+| other body14 / body15 | Open-wing insect / ten-arm radial fauna |
+| body3 with loco0 or7 | Tendrilled alien quadruped |
+| body0,1,2,10,11,12,13 | Alien quadruped |
+| other body3, or body7,8,9 | Existing HD fallback |
+
+Modern alien quadruped leg pairs are four for loco5/11/17; otherwise three for loco1/7/14 or
+armored body1; otherwise two. The raw `FA_LIMBS=[2,4,6,8,3,0]` values are **total walking limbs**,
+not pairs, and modern `planFor` does not read that gene. It also does not read `eyes`, `trait`,
+`habitat` or `x` for routing. Its raw loco modulo18 differs from `locoOf`’s extremophile modulo9
+semantics: acid-cloud floaters can resolve to fish. These existing descriptor/presentation
+conflicts must stay explicit; no gene, named anatomy, lineage, ecology or roster is changed here.
+The legacy aquatic body-preservation and limb-gene claims below do not override the modern route.
+
+The shared rig must carry the actual owner/spec, variable appendage roles/counts, joint/rest
+geometry, materials and supported movement capabilities. Walking feet, grasping arms, feathered
+wings, membranes, fins/flukes, tentacles and pulsing bells use a common graph/controller but
+appropriate motions. Named and mixed-lineage exceptions retain their qualified owner. Unsupported
+adapters retain exact static presentation. Current mathematical tooling is not a completed set of
+universal gaits; the flattened painters still need the shared geometry/skin boundary. Global D-9e,
+physical/human review and full admission remain open.
+
+## Retained reset and legacy pass observations
 
 > **2026-08-10 full-catalogue reset:** prior GP7/GP7.1 bands are historical,
 > not current certification. Clean reset r1 reviewed all 1,250 rows as **516 PASS

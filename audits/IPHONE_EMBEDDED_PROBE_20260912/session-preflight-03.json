@@ -1,0 +1,8 @@
+{
+  "status": "SESSION_READY",
+  "platformName": "iOS",
+  "platformVersion": "26.6.2",
+  "browserVersion": "26.6.1",
+  "simulator": false,
+  "privateSessionAndDeviceIdExcluded": true
+}

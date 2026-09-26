@@ -1,0 +1,15 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 2,
+  "sourceFile": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-0d6f4f80-d5f6-401b-b54e-571a48fc300f.png",
+  "promptSha256": "045756be416b58af138bd5959ec6cc225897b932ee7bc0d262468396846ab98c",
+  "masterSha256": "67d17f2769afbcc1752ce2fb431dcb6fd9944f9e3a008a2b75e92b0a2d5293b3",
+  "measuredMetadata": {
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "hasAlpha": true
+  },
+  "accepted": false,
+  "reason": "Requested shallower crouch not achieved: near hind hock remains above hip in a severe crossed Z; far forelimb remains nearly straight. Qualitative image observation only; no new rig/measurement claimed."
+}

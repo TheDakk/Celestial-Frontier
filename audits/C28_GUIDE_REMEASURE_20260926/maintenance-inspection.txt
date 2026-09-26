@@ -1,0 +1,18 @@
+51705       00:00 node tools/with-toolchain-lock.mjs --label c28-maintenance-inspection -- /bin/zsh -c ps -eo pid,etime,command | rg "(Cellar/node|[v]itest|[v]ite|[r]eaper|[R]EAPER|[f]fmpeg|[B]lender|[I]nkscape)"; HOMEBREW_NO_AUTO_UPDATE=1 HOMEBREW_NO_ANALYTICS=1 brew outdated --json=v2 --greedy node reaper
+51706       00:00 /bin/zsh -c ps -eo pid,etime,command | rg "(Cellar/node|[v]itest|[v]ite|[r]eaper|[R]EAPER|[f]fmpeg|[B]lender|[I]nkscape)"; HOMEBREW_NO_AUTO_UPDATE=1 HOMEBREW_NO_ANALYTICS=1 brew outdated --json=v2 --greedy node reaper
+51708       00:00 rg (Cellar/node|[v]itest|[v]ite|[r]eaper|[R]EAPER|[f]fmpeg|[B]lender|[I]nkscape)
+{
+  "formulae": [
+    {
+      "name": "node",
+      "installed_versions": [
+        "26.8.2",
+        "26.9.0"
+      ],
+      "current_version": "26.10.0_1",
+      "pinned": false,
+      "pinned_version": null
+    }
+  ],
+  "casks": []
+}

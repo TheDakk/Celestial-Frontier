@@ -1,0 +1,85 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "e78b36c9b784e91f04c9c6f4c987fa555c330017",
+  "helperSha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/master.png",
+      "sha256": "c315307102aed608563c8caa0ed7af9a15e24f807570ac2c03a92ee496cd4358"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/authoring.json",
+      "sha256": "89c6757c60836802b2bdff47b05e24d544512015299e12bebce246950ab8c52e"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/subject-source.json",
+      "sha256": "8378816208ccdac0a98644427494e1e88a478f0b73b77c78f6c86708a6903dc6"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "f384bcb635704d3d83b888c6ce9f7f862f90948cf1aad1648da90aa7d2bfc443",
+  "bindingHash": "f757600cd41e53dc99637bccf2ee2225b70fdc822a568e3d12dfff00f75e06f9",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingNearRoot",
+    "wingNearTip",
+    "wingFarRoot",
+    "wingFarTip",
+    "tailFan",
+    "chest",
+    "spine"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/master.png",
+      "sha256": "c315307102aed608563c8caa0ed7af9a15e24f807570ac2c03a92ee496cd4358",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/authoring.json",
+      "sha256": "89c6757c60836802b2bdff47b05e24d544512015299e12bebce246950ab8c52e",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/subject-source.json",
+      "sha256": "8378816208ccdac0a98644427494e1e88a478f0b73b77c78f6c86708a6903dc6",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

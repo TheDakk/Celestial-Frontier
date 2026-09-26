@@ -1,0 +1,53 @@
+(node:86430) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all published Float32 meshes contribute extrema, including a remote seam vertex (0.886375ms)
+✔ invalid geometry cannot yield passing bounds: empty inventory (0.152208ms)
+✔ invalid geometry cannot yield passing bounds: wrong numeric type (0.044458ms)
+✔ invalid geometry cannot yield passing bounds: odd coordinate count (0.033375ms)
+✔ invalid geometry cannot yield passing bounds: NaN (0.046292ms)
+✔ invalid geometry cannot yield passing bounds: infinity (0.047459ms)
+✔ invalid geometry cannot yield passing bounds: zero height (0.044625ms)
+✔ invalid geometry cannot yield passing bounds: duplicate mesh id (0.034208ms)
+✔ the full sweep expands from actual extrema; invalid samples are not skipped (0.144333ms)
+✔ a refused or unchanged pose cannot contribute its stale mesh as a measured sample (0.112792ms)
+✔ off-centre painted bounds use their actual centre and foot, not half the cutout (0.312375ms)
+✔ water and air cap only oversized scale; ground and already-small mass scale stay unchanged (0.053125ms)
+✔ full swept geometry, rather than rest height, determines the medium scale (0.087833ms)
+✔ the existing source-owned habitat gate still refuses an oversized organism (28.16725ms)
+✔ holder facing, root dynamic scale and camera shake all enter the current frame receipt (0.174584ms)
+✔ ground skips medium-band height only and cannot hide an offscreen body (0.067334ms)
+✔ frame assessment has no epsilon and rejects malformed or collapsed transforms (0.114542ms)
+✖ ground framing closes the retained Python bottom breach without changing its foot or gate (2.718291ms)
+✔ ground fit accounts for upward motion, off-centre foot and both camera extrema (0.099833ms)
+✔ ground framing refuses unavailable or malformed placement and camera evidence (0.072792ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 19
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 128.724292
+
+✖ failing tests:
+
+test at port/v2/tools/battle2-proof/painted-envelope.test.mjs:141:1
+✖ ground framing closes the retained Python bottom breach without changing its foot or gate (2.718291ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(placement(sizing.scale).viewport.maxY <= frame.height * .95)
+  
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/painted-envelope.test.mjs:157:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

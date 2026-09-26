@@ -1,0 +1,763 @@
+{
+ "kind": "body-card",
+ "identity": {
+  "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "seed": 3212817920,
+  "ownerId": "authored:Civet/faunaResetViverridD",
+  "earthName": "Civet"
+ },
+ "recipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+ "template": {
+  "id": "quadruped",
+  "version": 1,
+  "clipSetId": "quadruped-land-v1"
+ },
+ "massClass": {
+  "name": "small",
+  "multiplier": 0.85
+ },
+ "locomotion": {
+  "loco": "climbers",
+  "gait": "walk",
+  "templateGait": "walk"
+ },
+ "realm": "land",
+ "materials": {
+  "body": "furred",
+  "head": "furred",
+  "legs": "furred",
+  "tail": "furred",
+  "ears": "furred"
+ },
+ "parts": [
+  {
+   "joint": "pelvis",
+   "parent": "root",
+   "group": "body",
+   "pivot": [
+    0.59,
+    0.47
+   ],
+   "tip": [
+    0.45,
+    0.46
+   ],
+   "boneLength": 0.14035668847618196
+  },
+  {
+   "joint": "spine",
+   "parent": "pelvis",
+   "group": "body",
+   "pivot": [
+    0.45,
+    0.46
+   ],
+   "tip": [
+    0.59,
+    0.43
+   ],
+   "boneLength": 0.1431782106327635
+  },
+  {
+   "joint": "chest",
+   "parent": "spine",
+   "group": "body",
+   "pivot": [
+    0.59,
+    0.43
+   ],
+   "tip": [
+    0.73,
+    0.47
+   ],
+   "boneLength": 0.14560219778561037
+  },
+  {
+   "joint": "neck",
+   "parent": "chest",
+   "group": "head",
+   "pivot": [
+    0.73,
+    0.47
+   ],
+   "tip": [
+    0.8,
+    0.4
+   ],
+   "boneLength": 0.09899494936611666
+  },
+  {
+   "joint": "head",
+   "parent": "neck",
+   "group": "head",
+   "pivot": [
+    0.8,
+    0.4
+   ],
+   "tip": [
+    0.846,
+    0.316
+   ],
+   "boneLength": 0.09577055915050302
+  },
+  {
+   "joint": "jaw",
+   "parent": "head",
+   "group": "head",
+   "pivot": [
+    0.846,
+    0.316
+   ],
+   "tip": [
+    0.8,
+    0.387
+   ],
+   "boneLength": 0.08459905436823743
+  },
+  {
+   "joint": "hindFarRoot",
+   "parent": "pelvis",
+   "group": "legs",
+   "pivot": [
+    0.45,
+    0.46
+   ],
+   "tip": [
+    0.59,
+    0.52
+   ],
+   "boneLength": 0.15231546211727812
+  },
+  {
+   "joint": "hindFarKnee",
+   "parent": "hindFarRoot",
+   "group": "legs",
+   "pivot": [
+    0.59,
+    0.52
+   ],
+   "tip": [
+    0.532,
+    0.661
+   ],
+   "boneLength": 0.1524631102922933
+  },
+  {
+   "joint": "hindFarAnkle",
+   "parent": "hindFarKnee",
+   "group": "legs",
+   "pivot": [
+    0.532,
+    0.661
+   ],
+   "tip": [
+    0.555,
+    0.715
+   ],
+   "boneLength": 0.058694122363316704
+  },
+  {
+   "joint": "hindFarPaw",
+   "parent": "hindFarAnkle",
+   "group": "legs",
+   "pivot": [
+    0.555,
+    0.715
+   ],
+   "tip": [
+    0.614,
+    0.739
+   ],
+   "boneLength": 0.06369458375717668
+  },
+  {
+   "joint": "foreFarRoot",
+   "parent": "chest",
+   "group": "legs",
+   "pivot": [
+    0.73,
+    0.47
+   ],
+   "tip": [
+    0.83,
+    0.54
+   ],
+   "boneLength": 0.12206555615733705
+  },
+  {
+   "joint": "foreFarKnee",
+   "parent": "foreFarRoot",
+   "group": "legs",
+   "pivot": [
+    0.83,
+    0.54
+   ],
+   "tip": [
+    0.905,
+    0.662
+   ],
+   "boneLength": 0.14320963654726593
+  },
+  {
+   "joint": "foreFarAnkle",
+   "parent": "foreFarKnee",
+   "group": "legs",
+   "pivot": [
+    0.905,
+    0.662
+   ],
+   "tip": [
+    0.906,
+    0.72
+   ],
+   "boneLength": 0.05800862004909264
+  },
+  {
+   "joint": "foreFarPaw",
+   "parent": "foreFarAnkle",
+   "group": "legs",
+   "pivot": [
+    0.906,
+    0.72
+   ],
+   "tip": [
+    0.889,
+    0.768
+   ],
+   "boneLength": 0.0509215082258961
+  },
+  {
+   "joint": "hindNearRoot",
+   "parent": "pelvis",
+   "group": "legs",
+   "pivot": [
+    0.45,
+    0.46
+   ],
+   "tip": [
+    0.45,
+    0.52
+   ],
+   "boneLength": 0.06
+  },
+  {
+   "joint": "hindNearKnee",
+   "parent": "hindNearRoot",
+   "group": "legs",
+   "pivot": [
+    0.45,
+    0.52
+   ],
+   "tip": [
+    0.372,
+    0.67
+   ],
+   "boneLength": 0.16906803364326448
+  },
+  {
+   "joint": "hindNearAnkle",
+   "parent": "hindNearKnee",
+   "group": "legs",
+   "pivot": [
+    0.372,
+    0.67
+   ],
+   "tip": [
+    0.386,
+    0.75
+   ],
+   "boneLength": 0.08121576201698777
+  },
+  {
+   "joint": "hindNearPaw",
+   "parent": "hindNearAnkle",
+   "group": "legs",
+   "pivot": [
+    0.386,
+    0.75
+   ],
+   "tip": [
+    0.424,
+    0.78
+   ],
+   "boneLength": 0.04841487374764082
+  },
+  {
+   "joint": "foreNearRoot",
+   "parent": "chest",
+   "group": "legs",
+   "pivot": [
+    0.73,
+    0.47
+   ],
+   "tip": [
+    0.71,
+    0.54
+   ],
+   "boneLength": 0.07280109889280525
+  },
+  {
+   "joint": "foreNearKnee",
+   "parent": "foreNearRoot",
+   "group": "legs",
+   "pivot": [
+    0.71,
+    0.54
+   ],
+   "tip": [
+    0.739,
+    0.689
+   ],
+   "boneLength": 0.15179591562357655
+  },
+  {
+   "joint": "foreNearAnkle",
+   "parent": "foreNearKnee",
+   "group": "legs",
+   "pivot": [
+    0.739,
+    0.689
+   ],
+   "tip": [
+    0.774,
+    0.797
+   ],
+   "boneLength": 0.11352973178863773
+  },
+  {
+   "joint": "foreNearPaw",
+   "parent": "foreNearAnkle",
+   "group": "legs",
+   "pivot": [
+    0.774,
+    0.797
+   ],
+   "tip": [
+    0.813,
+    0.823
+   ],
+   "boneLength": 0.04687216658103175
+  },
+  {
+   "joint": "tail0",
+   "parent": "pelvis",
+   "group": "tail",
+   "pivot": [
+    0.45,
+    0.46
+   ],
+   "tip": [
+    0.35,
+    0.48
+   ],
+   "boneLength": 0.10198039027185571
+  },
+  {
+   "joint": "tail1",
+   "parent": "tail0",
+   "group": "tail",
+   "pivot": [
+    0.35,
+    0.48
+   ],
+   "tip": [
+    0.265,
+    0.595
+   ],
+   "boneLength": 0.1430034964607509
+  },
+  {
+   "joint": "tail2",
+   "parent": "tail1",
+   "group": "tail",
+   "pivot": [
+    0.265,
+    0.595
+   ],
+   "tip": [
+    0.151,
+    0.68
+   ],
+   "boneLength": 0.14220056258679153
+  },
+  {
+   "joint": "tail3",
+   "parent": "tail2",
+   "group": "tail",
+   "pivot": [
+    0.151,
+    0.68
+   ],
+   "tip": [
+    0.078,
+    0.785
+   ],
+   "boneLength": 0.12788275880665068
+  },
+  {
+   "joint": "earFarRoot",
+   "parent": "head",
+   "group": "ears",
+   "pivot": [
+    0.846,
+    0.316
+   ],
+   "tip": [
+    0.777,
+    0.236
+   ],
+   "boneLength": 0.10564563407921783
+  },
+  {
+   "joint": "earFarTip",
+   "parent": "earFarRoot",
+   "group": "ears",
+   "pivot": [
+    0.777,
+    0.236
+   ],
+   "tip": [
+    0.773,
+    0.181
+   ],
+   "boneLength": 0.05514526271584894
+  },
+  {
+   "joint": "earNearRoot",
+   "parent": "head",
+   "group": "ears",
+   "pivot": [
+    0.846,
+    0.316
+   ],
+   "tip": [
+    0.906,
+    0.245
+   ],
+   "boneLength": 0.09295697929687693
+  },
+  {
+   "joint": "earNearTip",
+   "parent": "earNearRoot",
+   "group": "ears",
+   "pivot": [
+    0.906,
+    0.245
+   ],
+   "tip": [
+    0.935,
+    0.193
+   ],
+   "boneLength": 0.05953990258641678
+  }
+ ],
+ "secondaryParts": [
+  {
+   "id": "tail",
+   "driver": "pelvis",
+   "joints": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "material": "furred"
+  },
+  {
+   "id": "earFar",
+   "driver": "head",
+   "joints": [
+    "earFarRoot",
+    "earFarTip"
+   ],
+   "lagOrder": [
+    0,
+    1
+   ],
+   "material": "furred"
+  },
+  {
+   "id": "earNear",
+   "driver": "head",
+   "joints": [
+    "earNearRoot",
+    "earNearTip"
+   ],
+   "lagOrder": [
+    0,
+    1
+   ],
+   "material": "furred"
+  }
+ ],
+ "weapons": [
+  "bite",
+  "claw"
+ ],
+ "luminous": false,
+ "bodyLength": 0.28017851452243797,
+ "groundLineY": 0.837,
+ "landmarks": {
+  "root": [
+   0.59,
+   0.47
+  ],
+  "pelvis": [
+   0.45,
+   0.46
+  ],
+  "spine": [
+   0.59,
+   0.43
+  ],
+  "chest": [
+   0.73,
+   0.47
+  ],
+  "neck": [
+   0.8,
+   0.4
+  ],
+  "head": [
+   0.846,
+   0.316
+  ],
+  "jaw": [
+   0.8,
+   0.387
+  ],
+  "hindFarRoot": [
+   0.59,
+   0.52
+  ],
+  "hindFarKnee": [
+   0.532,
+   0.661
+  ],
+  "hindFarAnkle": [
+   0.555,
+   0.715
+  ],
+  "hindFarPaw": [
+   0.614,
+   0.739
+  ],
+  "foreFarRoot": [
+   0.83,
+   0.54
+  ],
+  "foreFarKnee": [
+   0.905,
+   0.662
+  ],
+  "foreFarAnkle": [
+   0.906,
+   0.72
+  ],
+  "foreFarPaw": [
+   0.889,
+   0.768
+  ],
+  "hindNearRoot": [
+   0.45,
+   0.52
+  ],
+  "hindNearKnee": [
+   0.372,
+   0.67
+  ],
+  "hindNearAnkle": [
+   0.386,
+   0.75
+  ],
+  "hindNearPaw": [
+   0.424,
+   0.78
+  ],
+  "foreNearRoot": [
+   0.71,
+   0.54
+  ],
+  "foreNearKnee": [
+   0.739,
+   0.689
+  ],
+  "foreNearAnkle": [
+   0.774,
+   0.797
+  ],
+  "foreNearPaw": [
+   0.813,
+   0.823
+  ],
+  "tail0": [
+   0.35,
+   0.48
+  ],
+  "tail1": [
+   0.265,
+   0.595
+  ],
+  "tail2": [
+   0.151,
+   0.68
+  ],
+  "tail3": [
+   0.078,
+   0.785
+  ],
+  "earFarRoot": [
+   0.777,
+   0.236
+  ],
+  "earFarTip": [
+   0.773,
+   0.181
+  ],
+  "earNearRoot": [
+   0.906,
+   0.245
+  ],
+  "earNearTip": [
+   0.935,
+   0.193
+  ]
+ },
+ "bounds": {
+  "inside": true,
+  "clamped": [],
+  "limitsDeg": {
+   "root": {
+    "min": -15,
+    "max": 15
+   },
+   "pelvis": {
+    "min": -20,
+    "max": 20
+   },
+   "spine": {
+    "min": -25,
+    "max": 25
+   },
+   "chest": {
+    "min": -20,
+    "max": 20
+   },
+   "neck": {
+    "min": -35,
+    "max": 35
+   },
+   "head": {
+    "min": -35,
+    "max": 35
+   },
+   "jaw": {
+    "min": -30,
+    "max": 5
+   },
+   "hindFarRoot": {
+    "min": -60,
+    "max": 60
+   },
+   "hindFarKnee": {
+    "min": -75,
+    "max": 75
+   },
+   "hindFarAnkle": {
+    "min": -60,
+    "max": 60
+   },
+   "hindFarPaw": {
+    "min": -40,
+    "max": 40
+   },
+   "foreFarRoot": {
+    "min": -60,
+    "max": 60
+   },
+   "foreFarKnee": {
+    "min": -75,
+    "max": 75
+   },
+   "foreFarAnkle": {
+    "min": -60,
+    "max": 60
+   },
+   "foreFarPaw": {
+    "min": -40,
+    "max": 40
+   },
+   "hindNearRoot": {
+    "min": -60,
+    "max": 60
+   },
+   "hindNearKnee": {
+    "min": -75,
+    "max": 75
+   },
+   "hindNearAnkle": {
+    "min": -60,
+    "max": 60
+   },
+   "hindNearPaw": {
+    "min": -40,
+    "max": 40
+   },
+   "foreNearRoot": {
+    "min": -60,
+    "max": 60
+   },
+   "foreNearKnee": {
+    "min": -75,
+    "max": 75
+   },
+   "foreNearAnkle": {
+    "min": -60,
+    "max": 60
+   },
+   "foreNearPaw": {
+    "min": -40,
+    "max": 40
+   },
+   "tail0": {
+    "min": -40,
+    "max": 40
+   },
+   "tail1": {
+    "min": -50,
+    "max": 50
+   },
+   "tail2": {
+    "min": -50,
+    "max": 50
+   },
+   "tail3": {
+    "min": -50,
+    "max": 50
+   },
+   "earFarRoot": {
+    "min": -60,
+    "max": 60
+   },
+   "earFarTip": {
+    "min": -40,
+    "max": 40
+   },
+   "earNearRoot": {
+    "min": -60,
+    "max": 60
+   },
+   "earNearTip": {
+    "min": -40,
+    "max": 40
+   }
+  }
+ },
+ "notes": []
+}

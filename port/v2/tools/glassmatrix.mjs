@@ -14,6 +14,7 @@
    its controls failed and its product verdict must not be trusted.
 */
 import fs from 'node:fs';
+import {usesPhoneDock} from './phone-shell-viewport.mjs';
 import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
@@ -21,6 +22,9 @@ import crypto from 'node:crypto';
 import { execFileSync, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
+import { readU1PhoneShell } from './ui-shell-review.mjs';
+import { reviewFrameSettlement, readReviewFrameSettlements, assessReviewFrameSettlement } from './ui-review-evaluation.mjs';
+import { assessGlyphStrokeContrast } from './glass-glyph-stroke-contrast.mjs';
 import { buildCompendiumFixture } from './compendiummem-fixture.mjs';
 import {
   GLASS_VETERAN_CAPTURE_ORACLE,
@@ -77,6 +81,253 @@ import {
   projectArc4V4OwnedCounters,
   projectArc5OwnershipMigrationEvidence,
 } from './arc4-browser-contract.mjs';
+
+/** The same live Charter toast brackets one named layout settlement; a new or
+ * expired toast cannot explain the previously observed Survey geometry. */
+export async function surveyLiveToastSettlement(settleFrames, readFrames) {
+  const label = 'survey.Earth.live-toast.fonts-two-frames';
+  const snapshot = () => {
+    const rect = node => {
+      if (!node) return null;
+      const r = node.getBoundingClientRect(), style = getComputedStyle(node);
+      return { left: r.left, top: r.top, right: r.right, bottom: r.bottom, width: r.width, height: r.height,
+        display: style.display, visibility: style.visibility, opacity: Number(style.opacity),
+        maxHeight: style.maxHeight, minHeight: style.minHeight, paddingTop: style.paddingTop,
+        paddingBottom: style.paddingBottom, borderTopWidth: style.borderTopWidth, borderBottomWidth: style.borderBottomWidth };
+    };
+    const toast = document.getElementById('toast'), state = window.__CF_SLICE__.api.state();
+    const root = getComputedStyle(document.documentElement);
+    return { at: performance.now(), timeOrigin: performance.timeOrigin, viewport: { width: innerWidth, height: innerHeight },
+      sheetFloor: parseFloat(root.getPropertyValue('--cf-sheet-floor')), lowerTop: parseFloat(root.getPropertyValue('--cf-lower-top')),
+      toast: { serial: state.toastSerial, on: state.toastOn, text: toast?.textContent ?? '',
+        inlineOpacity: toast?.style.opacity ?? null, computedOpacity: toast ? Number(getComputedStyle(toast).opacity) : null },
+      route: { mode: state.mode, star: state.star, cardOpen: state.cardOpen },
+      geometry: Object.fromEntries(['toast', 'hintpill', 'ctxbar', 'survey'].map(id => [id, rect(document.getElementById(id))])
+        .concat([['header', rect(document.querySelector('#survey .survey-head'))], ['close', rect(document.querySelector('#survey [data-survey-close]'))]])) };
+  };
+  const before = snapshot(), priorFrameId = readFrames()?.invocations?.at(-1)?.id ?? 0;
+  await settleFrames(label);
+  const frames = readFrames(), after = snapshot();
+  // No intervening task can expire the toast before this canonical product measurement.
+  const closeOutcome = window.__CF_GLASS_AUDIT__.closeIntegrityOutcome('#survey','[data-survey-close]','[data-pnx]');
+  return { label, before, after, closeOutcome, expectedFrameId: priorFrameId + 1,
+    frame: frames?.invocations?.at(-1) ?? null, overflow: frames?.overflow ?? true };
+}
+export function assessSurveyLiveToastSettlement(receipt, viewport) {
+  const errors = [], before = receipt?.before, after = receipt?.after, frame = receipt?.frame;
+  const frameVerdict = assessReviewFrameSettlement(frame, viewport);
+  if (!frameVerdict.pass) errors.push(...frameVerdict.errors);
+  if (receipt?.label !== 'survey.Earth.live-toast.fonts-two-frames' || frame?.label !== receipt?.label
+    || frame?.id !== receipt?.expectedFrameId || receipt?.overflow !== false) errors.push('survey settlement identity');
+  const phases = frame?.phases ?? [];
+  if (!before || !after || !Number.isFinite(before.at) || !Number.isFinite(after.at)
+    || before.timeOrigin !== after.timeOrigin || phases[0]?.timeOrigin !== before.timeOrigin
+    || !(before.at <= phases[0]?.at && phases.at(-1)?.at <= after.at)) errors.push('survey settlement interval');
+  for (const snapshot of [before, after]) {
+    if (!snapshot || !Number.isFinite(snapshot.sheetFloor) || !Number.isFinite(snapshot.lowerTop)
+      || snapshot.viewport?.width !== viewport.width || snapshot.viewport?.height !== viewport.height
+      || snapshot.route?.mode !== 'system' || snapshot.route?.star !== 424242 || snapshot.route?.cardOpen !== true
+      || !['toast', 'hintpill', 'ctxbar', 'survey', 'header', 'close'].every(key => {
+        const rect = snapshot.geometry?.[key];
+        return rect && ['left', 'top', 'right', 'bottom', 'width', 'height'].every(name => Number.isFinite(rect[name]));
+      })) errors.push('survey settlement snapshot');
+    if (snapshot?.toast?.on !== true || snapshot.toast.inlineOpacity !== '1' || !(snapshot.toast.computedOpacity > 0)
+      || snapshot.geometry?.toast?.display === 'none' || snapshot.geometry?.toast?.visibility === 'hidden'
+      || !(snapshot.geometry?.toast?.width > 0 && snapshot.geometry?.toast?.height > 0)) errors.push('Charter toast not live');
+  }
+  if (typeof receipt?.closeOutcome?.ok !== 'boolean' || ![['root', 'survey'], ['close', 'close']].every(([key, id]) => {
+    const rect = after?.geometry?.[id], measured = receipt?.closeOutcome?.[key];
+    return Array.isArray(measured) && measured.length === 4 && ['left', 'top', 'right', 'bottom'].every((edge, index) =>
+      Number.isFinite(rect?.[edge]) && measured[index] === Math.round(rect[edge] * 100) / 100);
+  })) errors.push('survey settled Close outcome missing or incoherent');
+  if (!Number.isSafeInteger(before?.toast?.serial) || before.toast.serial <= 0
+    || before.toast.serial !== after?.toast?.serial || before.toast.text !== after?.toast?.text
+    || typeof before.toast.text !== 'string' || !before.toast.text.includes('Beyond Your Charter')) errors.push('Charter toast identity changed');
+  return { ok: errors.length === 0, errors };
+}
+
+/** Keep the original synchronous Charters Close owner; only the diagnostic
+ * brackets its returned opener with one named layout settlement. */
+export async function chartersCloseSettlement(settleFrames, readFrames, auditOptions) {
+  const label = 'charters.close.opener.fonts-two-frames', keys = ['objchip','topbar','planetside','hintpill','ctxbar','dock','toast','chpanel'];
+  const snapshot = () => {
+    const geometry = node => {
+      if (!node) return null;
+      const r = node.getBoundingClientRect(), s = getComputedStyle(node);
+      return { left:r.left, top:r.top, right:r.right, bottom:r.bottom, width:r.width, height:r.height,
+        offsetHeight:node.offsetHeight, scrollTop:node.scrollTop, scrollLeft:node.scrollLeft, text:node.textContent,
+        display:s.display, visibility:s.visibility, opacity:Number(s.opacity), fontSize:s.fontSize, fontFamily:s.fontFamily,
+        minHeight:s.minHeight, maxHeight:s.maxHeight, zIndex:s.zIndex, overflowY:s.overflowY };
+    };
+    const state = window.__CF_SLICE__.api.state(), root = getComputedStyle(document.documentElement), toast = document.getElementById('toast');
+    const opener = document.getElementById('objchip'), r = opener.getBoundingClientRect(), point = [(r.left+r.right)/2,(r.top+r.bottom)/2];
+    const hit = document.elementFromPoint(...point), path = [];
+    for (let node=hit; node; node=node.parentElement) path.push({id:node.id,tag:node.tagName,classes:node.className});
+    return { at:performance.now(), timeOrigin:performance.timeOrigin, viewport:{width:innerWidth,height:innerHeight},
+      classes:document.body.getAttribute('class'), focus:document.activeElement?.id ?? null,
+      route:{mode:state.mode,star:state.star,planet:state.planet,panelOpen:state.panelOpen,cardOpen:state.cardOpen},
+      scroll:{body:[document.body.scrollLeft,document.body.scrollTop],html:[document.documentElement.scrollLeft,document.documentElement.scrollTop]},
+      vars:Object.fromEntries(['--topbar-h','--surface-chrome-bottom','--cf-lower-top','--cf-sheet-floor','--cf-sheet-bottom',
+        '--cf-toast-height','--cf-planetside-floor','--cf-planetside-height'].map(key=>[key,root.getPropertyValue(key)])),
+      toast:{serial:state.toastSerial,on:state.toastOn,text:toast?.textContent ?? '',inlineOpacity:toast?.style.opacity ?? null,
+        computedOpacity:toast ? Number(getComputedStyle(toast).opacity) : null},
+      hit:{point,owned:!!hit&&(hit===opener||opener.contains(hit)),path,geometry:geometry(hit)},
+      geometry:Object.fromEntries(keys.map(id=>[id,geometry(document.getElementById(id))])
+        .concat([['heading',geometry(document.querySelector('#planetside .planetside-heading'))]])) };
+  };
+  const receipt = {label,before:snapshot(),immediate:null,microtask:null,settled:null,closeOutcome:null,microtaskAudit:null,openerAudit:null,
+    expectedFrameId:(readFrames()?.invocations?.at(-1)?.id ?? 0)+1,frame:null,overflow:false,error:null};
+  receipt.closeOutcome = window.__CF_GLASS_AUDIT__.panelCloseOutcome('#chpanel','[data-pnx]','#objchip','#planetside');
+  receipt.immediate = snapshot();
+  await Promise.resolve(); receipt.microtask = snapshot();
+  // Retain answerability before background ceremonies may change the notice.
+  // A later expiry/replacement can never erase a red in this same-task audit.
+  receipt.microtaskAudit = window.__CF_GLASS_AUDIT__.audit(auditOptions);
+  try {
+    await settleFrames(label);
+    receipt.settled = snapshot();
+    // Same task: toast expiry cannot separate the geometry from the product audit.
+    receipt.openerAudit = window.__CF_GLASS_AUDIT__.audit(auditOptions);
+  } catch (error) { receipt.error = String(error?.stack || error); }
+  const frames = readFrames(); receipt.frame = frames?.invocations?.at(-1) ?? null; receipt.overflow = frames?.overflow ?? true;
+  return receipt;
+}
+export function assessChartersCloseSettlement(receipt, viewport) {
+  const errors = [], snapshots = ['before','immediate','microtask','settled'].map(key=>receipt?.[key]), frame = receipt?.frame;
+  const checked = assessReviewFrameSettlement(frame,viewport); if (!checked.pass) errors.push(...checked.errors);
+  const phases = Array.isArray(frame?.phases) ? frame.phases : [];
+  const stableClasses = s => typeof s?.classes==='string' ? s.classes.split(/\s+/).filter(c=>c&&c!=='panel-open'&&c!=='surface-trail-yield').sort().join(' ') : null;
+  if (receipt?.label !== 'charters.close.opener.fonts-two-frames' || frame?.label !== receipt?.label
+    || frame?.id !== receipt?.expectedFrameId || receipt?.overflow !== false || receipt?.error !== null) errors.push('Charters settlement identity/error');
+  const rectValid = r => r && ['left','top','right','bottom','width','height'].every(key=>Number.isFinite(r[key]))
+    && r.width>=0 && r.height>=0 && Math.abs(r.right-r.left-r.width)<0.01 && Math.abs(r.bottom-r.top-r.height)<0.01;
+  const baseline = snapshots[0], noticePainted = s => s?.toast?.computedOpacity>0 && s.geometry?.toast?.width>0
+    && s.geometry?.toast?.height>0 && s.geometry.toast.display!=='none' && s.geometry.toast.visibility!=='hidden';
+  const earlyAnswerable = receipt?.microtask?.hit?.owned === true && Array.isArray(receipt?.microtaskAudit) && receipt.microtaskAudit.length === 0;
+  for (const [index,s] of snapshots.entries()) {
+    if (!s || !Number.isFinite(s.at) || s.timeOrigin!==phases[0]?.timeOrigin || (index>0&&s.at<snapshots[index-1]?.at)
+      || s.viewport?.width!==viewport.width || s.viewport?.height!==viewport.height || typeof s.classes!=='string'
+      || !['objchip','topbar','planetside','heading','hintpill','ctxbar','dock','toast','chpanel'].every(key=>rectValid(s.geometry?.[key]))
+      || !['body','html'].every(key=>Array.isArray(s.scroll?.[key])&&s.scroll[key].length===2&&s.scroll[key].every(Number.isFinite))
+      || !['--topbar-h','--surface-chrome-bottom','--cf-lower-top','--cf-sheet-floor','--cf-sheet-bottom','--cf-toast-height',
+        '--cf-planetside-floor','--cf-planetside-height'].every(key=>typeof s.vars?.[key]==='string'&&Number.isFinite(parseFloat(s.vars[key]))))
+      errors.push('Charters settlement snapshot '+index);
+    if (s?.route?.mode!=='surface' || s.route.cardOpen!==false || s.route.panelOpen!==(index===0?'ch':null)
+      || s.route.star!==baseline?.route?.star || JSON.stringify(s.route.planet)!==JSON.stringify(baseline?.route?.planet)
+      || stableClasses(s)!==stableClasses(baseline) || s.geometry?.objchip?.text!==baseline?.geometry?.objchip?.text || !s.geometry?.objchip?.text?.trim()
+      || (index>0&&s.focus!=='objchip')) errors.push('Charters route/copy/focus changed '+index);
+    if (!Number.isSafeInteger(s?.toast?.serial) || s.toast.serial<0 || typeof s.toast.on!=='boolean'
+      || !Number.isFinite(s.toast.computedOpacity) || s.toast.computedOpacity<0 || s.toast.computedOpacity>1
+      || (!(index===3&&earlyAnswerable) && (!['serial','on','text','inlineOpacity'].every(key=>s.toast[key]===baseline?.toast?.[key])
+        || (noticePainted(baseline)&&!noticePainted(s))
+        || (!noticePainted(baseline)&&baseline?.toast?.inlineOpacity!=='1'&&noticePainted(s))
+        || (index===3&&baseline?.toast?.inlineOpacity==='1'&&!noticePainted(s))))) errors.push('Charters notice expired/replaced '+index);
+    const hit=s?.hit,r=s?.geometry?.objchip;
+    if (!hit || !Array.isArray(hit.path) || !hit.path.every(node=>node&&typeof node.id==='string'&&typeof node.tag==='string')
+      || typeof hit.owned!=='boolean' || hit.owned!==hit.path.some(node=>node.id==='objchip')
+      || !Array.isArray(hit.point) || hit.point.length!==2 || !hit.point.every(Number.isFinite) || !r
+      || Math.abs(hit.point[0]-(r.left+r.right)/2)>0.01 || Math.abs(hit.point[1]-(r.top+r.bottom)/2)>0.01
+      || (hit.path.length>0&&!rectValid(hit.geometry))) errors.push('Charters hit receipt incoherent '+index);
+  }
+  if (!(snapshots[2]?.at<=phases[0]?.at && phases.at(-1)?.at<=snapshots[3]?.at)) errors.push('Charters frame interval');
+  if (typeof receipt?.closeOutcome?.ok!=='boolean' || !Array.isArray(receipt?.openerAudit)
+    || !receipt.openerAudit.every(row=>row&&typeof row.code==='string')) errors.push('Charters product carriers missing');
+  const after=receipt?.settled, hitRows=receipt?.openerAudit?.filter?.(row=>row.code==='CONTROL_NOT_HITTABLE'&&row.element==='#objchip');
+  if (after && (!Array.isArray(hitRows) || hitRows.length!==(after.hit?.owned?0:1) || hitRows.some(row=>
+    JSON.stringify(row.actual?.at)!==JSON.stringify(after.hit.point.map(n=>Math.round(n*100)/100))
+    || !['left','top','right','bottom','width','height'].every(key=>row.actual?.rect?.[key]===Math.round(after.geometry.objchip[key]*100)/100))))
+    errors.push('Charters settled hit/audit disagreement');
+  return {ok:errors.length===0,errors};
+}
+
+/** Establish a closed Survey predecessor with at most one trusted activation.
+ * The bounded wait observes strict false; fonts/frames cannot replace that outcome. */
+export async function surveyPostCloseSettlement(readState, activate, waitClosed, settleFrames, readFrames) {
+  const receipt = {label:'post-close.top-chrome.fonts-two-frames',before:null,activation:null,waitOutcome:null,
+    afterClose:null,settled:null,expectedFrameId:null,frame:null,overflow:true,error:null};
+  const state = async () => {
+    const observed = await readState();
+    if (typeof observed?.cardOpen !== 'boolean') throw new Error('Survey post-close state is not a strict boolean');
+    return observed;
+  };
+  try {
+    receipt.before = await state();
+    if (receipt.before.cardOpen) {
+      receipt.activation = await activate();
+      if (receipt.activation?.ok !== true) throw new Error('Survey post-close native activation refused');
+      receipt.waitOutcome = await waitClosed();
+      if (receipt.waitOutcome !== false) throw new Error('Survey post-close wait did not observe strict false');
+    }
+    receipt.afterClose = await state();
+    if (receipt.afterClose.cardOpen !== false) throw new Error('Survey post-close card remained open');
+    const prior = await readFrames();
+    if (!Array.isArray(prior?.invocations) || prior.overflow !== false)
+      throw new Error('Survey post-close frame ledger missing or overflowed');
+    receipt.expectedFrameId = (prior.invocations.at(-1)?.id ?? 0) + 1;
+    await settleFrames(receipt.label);
+    receipt.settled = await state();
+    const frames = await readFrames();
+    receipt.frame = frames?.invocations?.at(-1) ?? null;
+    receipt.overflow = frames?.overflow ?? true;
+  } catch (error) { receipt.error = String(error?.stack || error); }
+  return receipt;
+}
+export function assessSurveyPostClose(receipt, viewport) {
+  const errors = [], frame = receipt?.frame, checked = assessReviewFrameSettlement(frame, viewport);
+  if (receipt?.error !== null) errors.push(receipt?.error ?? 'Survey post-close receipt missing');
+  if (!checked.pass) errors.push(...checked.errors);
+  if (receipt?.label !== 'post-close.top-chrome.fonts-two-frames' || frame?.label !== receipt?.label
+    || !Number.isSafeInteger(receipt?.expectedFrameId) || receipt.expectedFrameId <= 0
+    || frame?.id !== receipt?.expectedFrameId || receipt?.overflow !== false) errors.push('Survey post-close settlement identity');
+  const snapshots = [receipt?.before, receipt?.afterClose, receipt?.settled], phases = Array.isArray(frame?.phases) ? frame.phases : [];
+  for (const [index, snapshot] of snapshots.entries()) {
+    if (!snapshot || typeof snapshot.cardOpen !== 'boolean' || (index > 0 && snapshot.cardOpen !== false)
+      || !Number.isFinite(snapshot.at) || !Number.isFinite(snapshot.timeOrigin)
+      || snapshot.timeOrigin !== phases[0]?.timeOrigin || snapshot.viewport?.width !== viewport.width
+      || snapshot.viewport?.height !== viewport.height || (index > 0 && snapshot.at < snapshots[index - 1]?.at))
+      errors.push('Survey post-close snapshot ' + index);
+  }
+  if (!(receipt?.afterClose?.at <= phases[0]?.at && phases.at(-1)?.at <= receipt?.settled?.at))
+    errors.push('Survey post-close settlement interval');
+  if (receipt?.before?.cardOpen === true ? receipt?.activation?.ok !== true || receipt?.waitOutcome !== false
+    : receipt?.activation !== null || receipt?.waitOutcome !== null) errors.push('Survey post-close activation accounting');
+  return {ok:errors.length === 0,errors};
+}
+
+/** Clearance owns the painted children of a pointer-transparent topbar;
+ * a blocking wrapper still owns its entire rectangle. Only the floating-trail
+ * band fixture excludes its separately measured injected trail. */
+export function paintedPostCloseFixedRows(excludeTrail = false) {
+  const header = document.getElementById('topbar');
+  const nodes = [...new Set([header, ...(header?.children ?? []),
+    ...['searchbox', 'objchip', 'sceneactions'].map(id => document.getElementById(id))])]
+    .filter(el => el && (!excludeTrail || el.id !== 'trail'));
+  return nodes.map(el => {
+    const r = el.getBoundingClientRect(), s = getComputedStyle(el), excluded = el === header && s.pointerEvents === 'none';
+    const opacity = Number(s.opacity || '1');
+    return { id: el.id, visible: !excluded && s.display !== 'none' && s.visibility !== 'hidden'
+      && opacity > 0 && r.width > 0 && r.height > 0, excluded, opacity,
+      rect: [r.left, r.top, r.right, r.bottom], bottom: r.bottom };
+  });
+}
+
+/** Retain the attempted canonical boundary even if fonts or receipt cleanup fail. */
+export async function postCloseFrameSettlement(settleFrames, readFrames, label) {
+  const receipt = { label, expectedFrameId: (readFrames()?.invocations?.at(-1)?.id ?? 0) + 1,
+    frame: null, overflow: true, error: null };
+  try { await settleFrames(label); }
+  catch (cause) { receipt.error = String(cause?.message || cause); }
+  try {
+    const frames = readFrames(); receipt.frame = frames?.invocations?.at(-1) ?? null; receipt.overflow = frames?.overflow ?? true;
+  } catch (cause) { receipt.error ??= String(cause?.message || cause); }
+  return receipt;
+}
+export function assessPostCloseFrameSettlement(receipt, viewport) {
+  const checked = assessReviewFrameSettlement(receipt?.frame, viewport), errors = [...checked.errors];
+  if (receipt?.frame?.label !== receipt?.label || receipt?.frame?.id !== receipt?.expectedFrameId
+    || receipt?.overflow !== false || receipt?.error !== null) errors.push('post-close frame identity/error');
+  return { ok: errors.length === 0, errors };
+}
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.join(here, '..', 'apps', 'game');
@@ -588,6 +839,67 @@ function recordRenderedGuideIngressResult({
       `${viewport}: rendered F2 Guide negative controls failed (${JSON.stringify(ingress)})`, armed);
   }
   return { productFindings: findings.length, instrumentFailures: instrumentFailures.length };
+}
+
+/* A hidden-opener focus result is meaningful only after a trusted press on
+   a visible opener and baseline Close focus. Native Survey input yields the
+   wide Atlas rail; prove its natural visibility transition and unchanged
+   style bytes before judging fallback focus. */
+function hiddenOpenerNativeInput(input, id, pointerType) {
+  const rect = input?.target?.rect;
+  return input?.ok === true && input.inputDispatched === true
+    && input.target?.ok === true && input.target.id === id && input.target.visible === true
+    && Array.isArray(rect) && rect.length === 4 && rect.every(Number.isFinite)
+    && rect[2] - rect[0] >= 44 && rect[3] - rect[1] >= 44
+    && input.receipt?.buttonId === id && input.receipt.trusted === true
+    && (pointerType === 'mouse' || pointerType === 'touch')
+    && input.receipt.pointerType === pointerType;
+}
+
+export function hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, hidden, pointerType } = {}) {
+  const checks = {
+    nativeVisibleOpener: hiddenOpenerNativeInput(opening, 'railatlas', pointerType),
+    baselinePanel: baseline?.panel === 'atlas' && baseline.cardOpen === false,
+    baselineVisibleOpener: baseline?.openerId === 'railatlas' && baseline.openerRendered === true
+      && baseline.openerVisibility === 'visible' && baseline.railRendered === true && baseline.railDisplay !== 'none',
+    baselineCloseFocus: baseline?.closeFocused === true,
+    nativeSurveyTransition: hiddenOpenerNativeInput(hiding, 'docksurvey', pointerType),
+    panelPreserved: hidden?.panel === 'atlas' && hidden.cardOpen === true,
+    openerBecameHidden: hidden?.openerId === 'railatlas' && hidden.openerRendered === false
+      && hidden.railRendered === false && hidden.railDisplay === 'none' && hidden.dockRendered === true,
+    sameNativeOpener: baseline?.openerSameNode === true && hidden?.openerSameNode === true,
+    unchangedStylePresenceAndBytes: typeof baseline?.style?.present === 'boolean'
+      && (baseline.style.present ? typeof baseline.style.value === 'string' : baseline.style.value === null)
+      && hidden?.style?.present === baseline.style.present && hidden?.style?.value === baseline.style.value,
+  };
+  return { ok: Object.values(checks).every((value) => value === true), checks };
+}
+
+export function hiddenPanelOpenerFocusOutcome({ setup, closing, fallback, pointerType } = {}) {
+  const checks = {
+    provenSetup: setup?.ok === true,
+    nativeClose: hiddenOpenerNativeInput(closing, null, pointerType),
+    panelClosed: fallback?.panel === null,
+    openerHidden: fallback?.openerId === 'railatlas' && fallback.openerRendered === false
+      && fallback.railRendered === false && fallback.railDisplay === 'none' && fallback.dockRendered === true,
+    visibleSurveyFocus: fallback?.surveyRendered === true && fallback.focus === 'docksurvey',
+    surveyPreserved: fallback?.cardOpen === true,
+  };
+  return { ok: Object.values(checks).every((value) => value === true), checks,
+    openerRendered: fallback?.openerRendered, focus: fallback?.focus, cardOpen: fallback?.cardOpen };
+}
+
+export function hiddenPanelOpenerRestorationOutcome(prior, restored) {
+  const checks = {
+    exactStylePresenceAndBytes: typeof prior?.present === 'boolean'
+      && (prior.present ? typeof prior.value === 'string' : prior.value === null)
+      && restored?.present === prior.present && restored?.value === prior.value,
+    sameNativeOpener: restored?.sameNode === true && restored.openerId === 'railatlas',
+    visibleNativeTarget: restored?.openerRendered === true && restored.openerVisibility === 'visible'
+      && restored.openerDisplay !== 'none' && restored.centreOwned === true,
+    focusPreserved: restored?.focusUnchanged === true,
+  };
+  return { ok: Object.values(checks).every((value) => value === true), checks };
 }
 
 export function stopAfterRecordedProductOutcome(viewport, surface, code, element, outcome, expected) {
@@ -5397,7 +5709,7 @@ function guideRequiredControlRejected({ before, after, needle, required, result 
     && result.missing[0] === carriers[0];
 }
 
-/* Rendered Guide requirements may span inline markup (`<b>Meals by 1</b>,
+/* Rendered Guide requirements may span inline markup (`<b>Meals by 0 to 3</b>,
    capped at 200`). Mutate the paragraph's rendered text, not its HTML bytes,
    and only when one exact target exists. The caller restores the original
    innerHTML after the control so authored emphasis remains byte-exact. */
@@ -6636,7 +6948,17 @@ async function reportSelftest() {
         property: { value: '', priority: 'important' } },
     }),
   };
+  const floatingFixture = {
+      kind: 'injected-floating-trail-regression', error: null,
+      nativeBaseline: { ...hiddenPortraitBaseline, canonicalHidden: true, fixedChromeBottom: 52, surfaceBottom: 52 },
+      originalStyle: { present: false, value: null }, originalRect: [0, 0, 0, 0],
+      injectedTop: 60, injectedRect: [10, 60, 100, 76], injectedStyle: 'position: fixed; top: 60px;',
+      injectedBaseline: { ...visiblePortraitBaseline, headerContained: false }, observedOutsideHeader: true,
+      restoredStyle: { present: false, value: null }, nativeRestored: { ...hiddenPortraitBaseline, canonicalHidden: true, surfaceBottom: 52 },
+      cleanup: { kind: 'temporary-header-contained-edge-reset', headerContained: true },
+  };
   const bandControl = {
+    error: null, fixture: structuredClone(floatingFixture),
     baseline: visiblePortraitBaseline,
     prior: { value: '', priority: '', computed: 'none' },
     mutation: {
@@ -6652,6 +6974,7 @@ async function reportSelftest() {
   };
   const bandControls = {
     positive: portraitBandControlOutcome(bandControl),
+    unlabelledFixture: portraitBandControlOutcome({ ...structuredClone(bandControl), fixture: undefined }),
     noOp: portraitBandControlOutcome({
       ...structuredClone(bandControl),
       mutation: { ...bandControl.mutation, computed: 'none' },
@@ -6666,6 +6989,8 @@ async function reportSelftest() {
     }),
   };
   const fallbackControl = {
+    error: null,
+    fixture: structuredClone(floatingFixture),
     baseline: visiblePortraitBaseline,
     prior: { value: '', priority: '', computed: '0px' },
     mutation: {
@@ -6680,6 +7005,7 @@ async function reportSelftest() {
           { id: 'hpbar', visible: true, gap: 8 },
           { id: 'searchbox', visible: true, gap: 8 },
           { id: 'objchip', visible: false, gap: -40 },
+          { id: 'sceneactions', visible: true, gap: 8 },
         ],
       },
     },
@@ -6690,6 +7016,15 @@ async function reportSelftest() {
   };
   const fallbackControls = {
     positive: portraitFallbackControlOutcome(fallbackControl),
+    unlabelledFixture: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl), fixture: undefined }),
+    falseFloatingFixture: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl),
+      fixture: { ...structuredClone(fallbackControl.fixture), observedOutsideHeader: false } }),
+    missingNativeRestoration: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl),
+      fixture: { ...structuredClone(fallbackControl.fixture), nativeRestored: { ok: true, canonicalHidden: false } } }),
+    staleMeasuredEdge: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl),
+      fixture: { ...structuredClone(fallbackControl.fixture), nativeRestored: { ...fallbackControl.fixture.nativeRestored, surfaceBottom: 70 } } }),
+    lostStylePresence: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl),
+      fixture: { ...structuredClone(fallbackControl.fixture), restoredStyle: { present: true, value: '' } } }),
     noOp: portraitFallbackControlOutcome({
       ...structuredClone(fallbackControl),
       mutation: { ...fallbackControl.mutation, requested: '0px',
@@ -6852,9 +7187,11 @@ async function reportSelftest() {
     || !portraitControlBaselineEligible(visiblePortraitBaseline)
     || portraitControlBaselineEligible(hiddenPortraitBaseline)
     || portraitControlBaselineEligible({ ...visiblePortraitBaseline, ok: false })
-    || !bandControls.positive.ok || bandControls.noOp.ok || bandControls.ineligible.ok
+    || !bandControls.positive.ok || bandControls.unlabelledFixture.ok || bandControls.noOp.ok || bandControls.ineligible.ok
     || bandControls.wrongRestoration.ok
     || !fallbackControls.positive.ok || fallbackControls.noOp.ok || fallbackControls.ineligible.ok
+    || fallbackControls.unlabelledFixture.ok || fallbackControls.falseFloatingFixture.ok
+    || fallbackControls.missingNativeRestoration.ok || fallbackControls.staleMeasuredEdge.ok || fallbackControls.lostStylePresence.ok
     || fallbackControls.wrongRestoration.ok || fallbackControls.collapsedStrip.ok
     || fallbackControls.inaccessibleScroll.ok || fallbackControls.fixedRowOverlap.ok
     || !portraitCampaignControls.positive.ok || portraitCampaignControls.noEligible.ok
@@ -6976,8 +7313,8 @@ async function reportSelftest() {
   }
   const renderedGuideMutation = {
     positive: exactGuideRenderedTextMutation(
-      'One committed meal raises Meals by 1, capped at 200.',
-      'Meals by 1, capped at 200',
+      'One committed meal raises Meals by 0 to 3, capped at 200.',
+      'Meals by 0 to 3, capped at 200',
       'required Training contract removed',
     ),
     secondSplitPhrase: exactGuideRenderedTextMutation(
@@ -6987,36 +7324,36 @@ async function reportSelftest() {
     ),
     absent: exactGuideRenderedTextMutation(
       'No meal counter is rendered here.',
-      'Meals by 1, capped at 200',
+      'Meals by 0 to 3, capped at 200',
       'required Training contract removed',
     ),
     multiple: exactGuideRenderedTextMutation(
-      'Meals by 1, capped at 200; Meals by 1, capped at 200.',
-      'Meals by 1, capped at 200',
+      'Meals by 0 to 3, capped at 200; Meals by 0 to 3, capped at 200.',
+      'Meals by 0 to 3, capped at 200',
       'required Training contract removed',
     ),
     noChange: exactGuideRenderedTextMutation(
-      'Meals by 1, capped at 200',
-      'Meals by 1, capped at 200',
-      'Meals by 1, capped at 200',
+      'Meals by 0 to 3, capped at 200',
+      'Meals by 0 to 3, capped at 200',
+      'Meals by 0 to 3, capped at 200',
     ),
     rawMarkupIsNotRenderedText: exactGuideRenderedTextMutation(
-      '<b>Meals by 1</b>, capped at 200',
-      'Meals by 1, capped at 200',
+      '<b>Meals by 0 to 3</b>, capped at 200',
+      'Meals by 0 to 3, capped at 200',
       'required Training contract removed',
     ),
   };
   const renderedGuideRestoration = {
     exact: guideRenderedControlHtmlRestored(
-      '<p>raises <b>Meals by 1</b>, capped at 200.</p>',
-      '<p>raises <b>Meals by 1</b>, capped at 200.</p>',
+      '<p>raises <b>Meals by 0 to 3</b>, capped at 200.</p>',
+      '<p>raises <b>Meals by 0 to 3</b>, capped at 200.</p>',
     ),
     flattened: guideRenderedControlHtmlRestored(
-      '<p>raises <b>Meals by 1</b>, capped at 200.</p>',
-      'raises Meals by 1, capped at 200.',
+      '<p>raises <b>Meals by 0 to 3</b>, capped at 200.</p>',
+      'raises Meals by 0 to 3, capped at 200.',
     ),
     missing: guideRenderedControlHtmlRestored(
-      '<p>raises <b>Meals by 1</b>, capped at 200.</p>',
+      '<p>raises <b>Meals by 0 to 3</b>, capped at 200.</p>',
       '',
     ),
   };
@@ -7167,7 +7504,7 @@ async function reportSelftest() {
   const renderedGuideControlGateWiringCount = selfSource.split(renderedGuideControlGateWiring).length - 1;
   if (renderedGuideMutation.positive.targetCount !== 1
     || renderedGuideMutation.positive.changeCount !== 1
-    || renderedGuideMutation.positive.after.includes('Meals by 1, capped at 200')
+    || renderedGuideMutation.positive.after.includes('Meals by 0 to 3, capped at 200')
     || renderedGuideMutation.secondSplitPhrase.targetCount !== 1
     || renderedGuideMutation.secondSplitPhrase.changeCount !== 1
     || renderedGuideMutation.secondSplitPhrase.after.includes('removes 1 flora from that exact lot')
@@ -7708,7 +8045,7 @@ const MIME = Object.freeze({
   '.woff2': 'font/woff2',
 });
 
-function installAuditHarness() {
+function installAuditHarness(assessGlyphStrokeContrast) {
   const round = (n) => Number.isFinite(n) ? Math.round(n * 100) / 100 : n;
   const issue = (code, surface, element, actual, expected) => ({ code, surface, element, actual, expected });
   const visible = (el) => {
@@ -7897,6 +8234,106 @@ function installAuditHarness() {
       ...actual,
     };
   };
+  const guidancePreferenceOutcome = (afterClose = false) => {
+    const root = document.documentElement, hint = document.getElementById('hintpill'), ctx = document.getElementById('ctxbar');
+    const nodes = [hint, ctx], state = window.__CF_SLICE__?.api?.state?.(), ownClass = 'sheet-guidance-yield';
+    const yielded = nodes.some(node => node?.classList.contains(ownClass));
+    const accessible = node => !!node && (node.textContent || '').trim().length > 0
+      && !node.closest('[hidden],[inert],[aria-hidden="true"]') && !node.querySelector('[hidden],[inert],[aria-hidden="true"]');
+    if (!yielded) {
+      const preference = preferenceOutcome('body', '#hintpill', 'var(--ink)');
+      const ctxStyle = ctx ? getComputedStyle(ctx) : null;
+      const contextClipped = ctxStyle && /inset\((?:50|100)%/.test(ctxStyle.clipPath || '');
+      const contextPreference = visible(ctx) ? preferenceOutcome('#ctxbar', '#ctxbar', 'var(--ink)') : { ok: !contextClipped, notPainted: true };
+      return { ...preference, ok: preference.ok && accessible(hint) && contextPreference.ok && (!visible(ctx) || accessible(ctx))
+          && (!afterClose || state?.cardOpen === false), contextPreference,
+        guidanceRestored: afterClose ? state?.cardOpen === false && visible(hint) : null, guidanceRetainedForCapacity: false };
+    }
+    const attrs = node => node.getAttributeNames().sort().map(name => [name, node.getAttribute(name)]);
+    const rect = node => { const r = node.getBoundingClientRect(); return [r.left, r.top, r.right, r.bottom, r.width, r.height]; };
+    const layoutNodes = [...new Set([root, document.body, ...document.querySelectorAll('.panel,#survey,#planetside,#toast,#topbar,#searchbox,#objchip,#sceneactions,#trail,#dock'), ...nodes].filter(Boolean))];
+    const snapshot = () => ({
+      guidance: nodes.map(node => node ? { id: node.id, attributes: attrs(node), html: node.innerHTML, text: node.textContent, rect: rect(node),
+        style: ['display','visibility','opacity','clipPath','overflow','fontSize','fontFamily','color'].map(key => getComputedStyle(node)[key]) } : null),
+      bodyAttributes: attrs(document.body), rootAttributes: attrs(root),
+      layout: layoutNodes.map(node => ({ id: node.id || node.tagName, rect: rect(node), scroll: [node.scrollLeft, node.scrollTop] })),
+    });
+    const before = snapshot(), priorClasses = nodes.map(node => node?.getAttribute('class'));
+    const priorBodyClass = document.body.getAttribute('class'), priorRootStyle = root.getAttribute('style');
+    const survey = document.getElementById('survey'), side = document.getElementById('planetside');
+    const surveyOpen = state?.cardOpen === true && document.body.classList.contains('card-open') && visible(survey);
+    const nativeContextHidden = () => ctx && getComputedStyle(ctx).display === 'none' && surveyOpen;
+    const ancestryVisible = node => { for (let n = node; n; n = n.parentElement) {
+      const css = getComputedStyle(n); if (css.display === 'none' || css.visibility === 'hidden' || Number(css.opacity) <= 0) return false;
+    } return true; };
+    const scoped = innerWidth <= 900 && innerHeight >= innerWidth && !!state && (!afterClose || state.cardOpen === false)
+      && nodes.every(node => {
+        if (!node?.classList.contains(ownClass) || !accessible(node)) return false;
+        if (node === ctx && nativeContextHidden()) return true;
+        const css = getComputedStyle(node), r = node.getBoundingClientRect();
+        return ancestryVisible(node) && r.width === 1 && r.height === 1 && css.clipPath === 'inset(50%)' && css.overflow === 'hidden';
+      });
+    if (!scoped) return { ok: false, why: 'unauthorized or inaccessible guidance clipping', before };
+    let preference = null, contextPreference = null, native = null, justified = false, error = null, cleanupError = null;
+    try {
+      nodes.forEach(node => node.classList.remove(ownClass));
+      // The caption's native bottom depends on the native hint height, not the
+      // possibly stale 1px --hint-h published while guidance was clipped.
+      root.style.setProperty('--hint-h', `${hint.offsetHeight}px`);
+      native = snapshot();
+      const pixels = value => parseFloat(value || '') || 0;
+      const safeBottom = pixels(getComputedStyle(root).getPropertyValue('--safe-bottom'));
+      const lower = Math.min(innerHeight - safeBottom - 12, ...['hintpill','ctxbar','dock'].map(id => {
+        const node = document.getElementById(id); return visible(node) ? node.getBoundingClientRect().top : innerHeight;
+      }));
+      const toast = document.getElementById('toast'), toastStyle = toast ? getComputedStyle(toast) : null, toastRect = toast?.getBoundingClientRect();
+      const toastHeight = toast && toastStyle.display !== 'none' && toastStyle.visibility !== 'hidden'
+        && toastRect.width > 0 && toastRect.height > 0 && (toast.style.opacity === '1' || Number(toastStyle.opacity) > 0) ? toastRect.height : 0;
+      const floor = lower - 8 - (toastHeight > 0 ? toastHeight + 8 : 0), cases = [];
+      const overlaps = (a, b) => Math.min(a.right, b.right) > Math.max(a.left, b.left);
+      const landed = state.mode === 'surface' && document.body.classList.contains('surface-mode') && visible(side);
+      const panels = [...document.querySelectorAll('.panel')].filter(visible);
+      for (const sheet of [...(surveyOpen ? [survey] : []), ...panels]) {
+        const header = sheet.querySelector('.survey-head,.sheet-header'), h = header ? getComputedStyle(header) : null, css = getComputedStyle(sheet);
+        const headerHeight = header && visible(header) ? Math.max(44, header.getBoundingClientRect().height) + pixels(h.marginTop) + pixels(h.marginBottom) : NaN;
+        const edges = pixels(css.paddingTop) + pixels(css.paddingBottom) + pixels(css.borderTopWidth) + pixels(css.borderBottomWidth);
+        const minimum = headerHeight + edges + 44, start = sheet.getBoundingClientRect().top;
+        const required = minimum + (sheet === survey && landed && overlaps(sheet.getBoundingClientRect(), side.getBoundingClientRect()) ? 80 : 0);
+        cases.push({ id: sheet.id, headerHeight, edges, minimum, start, available: floor - start, required });
+      }
+      if (landed) {
+        const bar = document.getElementById('topbar');
+        const tops = [...(bar ? [...bar.children] : []), ...['searchbox','sceneactions','trail'].map(id => document.getElementById(id))].filter(visible);
+        if (visible(bar) && getComputedStyle(bar).pointerEvents !== 'none') tops.push(bar);
+        const start = Math.max(0, ...tops.map(node => node.getBoundingClientRect().bottom)) + 8;
+        cases.push({ id: 'planetside', start, available: floor - start, required: 72 });
+      }
+      const dock = document.getElementById('dock');
+      const releasedLower = Math.min(innerHeight - safeBottom - 12, visible(dock) ? dock.getBoundingClientRect().top : innerHeight);
+      native.capacity = { lower, releasedLower, toastHeight, floor, cases };
+      justified = releasedLower > lower && cases.length > 0 && cases.every(row => [row.start, row.available, row.required].every(Number.isFinite))
+        && cases.some(row => row.available < row.required);
+      preference = preferenceOutcome('body', '#hintpill', 'var(--ink)');
+      contextPreference = nativeContextHidden() ? { ok: true, nativeHiddenBySurvey: true } : preferenceOutcome('#ctxbar', '#ctxbar', 'var(--ink)');
+    } catch (cause) { error = String(cause?.message || cause); }
+    finally {
+      const restore = action => { try { action(); } catch (cause) { cleanupError = [cleanupError, String(cause?.message || cause)].filter(Boolean).join('; '); } };
+      nodes.forEach((node, i) => restore(() => node.setAttribute('class', priorClasses[i])));
+      restore(() => { if (priorBodyClass === null) document.body.removeAttribute('class'); else document.body.setAttribute('class', priorBodyClass); });
+      restore(() => { if (root.getAttribute('style') !== priorRootStyle) {
+        root.setAttribute('style', priorRootStyle ?? ''); if (priorRootStyle === null) root.removeAttribute('style');
+      } });
+      layoutNodes.forEach((node, i) => restore(() => {
+        const [left, top] = before.layout[i].scroll;
+        if (node.scrollLeft !== left) node.scrollLeft = left;
+        if (node.scrollTop !== top) node.scrollTop = top;
+      }));
+    }
+    const after = snapshot(), restored = nodes.every(node => document.getElementById(node.id) === node) && JSON.stringify(after) === JSON.stringify(before);
+    const ok = justified && preference?.ok === true && contextPreference?.ok === true && restored && error === null && cleanupError === null;
+    return { ok, scoped, justified, preference, contextPreference, before, native, after, restored, error, cleanupError,
+      guidanceRestored: afterClose ? false : null, guidanceRetainedForCapacity: afterClose && ok };
+  };
   const choiceOutcome = (rootSelector, itemSelector, expectedSelector, requireFocus = true) => {
     const root = document.querySelector(rootSelector);
     const items = root ? [...root.querySelectorAll(itemSelector)] : [];
@@ -8015,21 +8452,24 @@ function installAuditHarness() {
     const el = document.querySelector(selector), dock = document.querySelector(dockSelector);
     const a = el?.getBoundingClientRect(), d = dock?.getBoundingClientRect();
     const root = getComputedStyle(document.documentElement);
+    const safeLeft = parseFloat(root.getPropertyValue('--safe-left')) || 0;
     const safeRight = parseFloat(root.getPropertyValue('--safe-right')) || 0;
-    const safeBottom = parseFloat(root.getPropertyValue('--safe-bottom')) || 0;
-    const dockHeight = parseFloat(root.getPropertyValue('--dock-h')) || d?.height || 0;
     const rightGap = a ? innerWidth - a.right : null;
     const bottomGap = a ? innerHeight - a.bottom : null;
-    const expectedRight = safeRight + 12;
-    const expectedBottom = safeBottom + dockHeight + 24;
+    const expectedRight = d ? innerWidth - d.right : null;
+    const expectedBottom = d ? innerHeight - d.top + 12 : null;
+    const safeBottom = parseFloat(root.getPropertyValue('--safe-bottom')) || 0;
+    const dockAnchored = !!d && Math.abs(innerWidth-d.right-safeRight-16)<=2
+      && Math.abs(innerHeight-d.bottom-safeBottom-12)<=2 && Math.abs(d.width-200)<=2 && Math.abs(d.height-44)<=2;
     const dockClearance = a && d ? d.top - a.bottom : null;
     return {
-      ok: innerWidth > 900 && !!el && visible(el) && !!dock && visible(dock)
+      ok: innerWidth > 900 && !!el && visible(el) && !!dock && visible(dock) && dockAnchored
         && rightGap !== null && Math.abs(rightGap - expectedRight) <= 2
         && bottomGap !== null && Math.abs(bottomGap - expectedBottom) <= 2
         && dockClearance !== null && dockClearance >= 8,
-      rightGap: rightGap === null ? null : round(rightGap), expectedRight: round(expectedRight),
-      bottomGap: bottomGap === null ? null : round(bottomGap), expectedBottom: round(expectedBottom),
+      rightGap: rightGap === null ? null : round(rightGap), expectedRight: expectedRight === null ? null : round(expectedRight),
+      bottomGap: bottomGap === null ? null : round(bottomGap), expectedBottom: expectedBottom === null ? null : round(expectedBottom),
+      dockAnchored,
       dockClearance: dockClearance === null ? null : round(dockClearance),
       rect: a ? [round(a.left), round(a.top), round(a.right), round(a.bottom)] : null,
       dock: d ? [round(d.left), round(d.top), round(d.right), round(d.bottom)] : null,
@@ -8342,50 +8782,117 @@ function installAuditHarness() {
     bounds.height = round(Math.max(0, bounds.bottom - bounds.top));
     return { bounds, ancestors };
   };
+  const controlContentBounds = (el, root, viewport) => {
+    const clipped = clippedBounds(el, root, viewport), bounds = { ...clipped.bounds };
+    const position = getComputedStyle(el).position;
+    const scrollExemption = /^(fixed|sticky)$/.test(position) ? position
+      : el.closest('.sheet-header,.survey-head') ? 'header-owned'
+        : el.matches('.sheet-close,[data-pnx],[data-survey-close]') ? 'native-close' : null;
+    const occludingHeaders = [];
+    if (!scrollExemption) {
+      const target = el.getBoundingClientRect();
+      for (let n = el.parentElement; n; n = n.parentElement) {
+        for (const header of n.querySelectorAll('.sheet-header,.survey-head')) {
+          if (header.contains(el) || el.contains(header) || !visible(header)) continue;
+          // A title can live inside an overflow-visible content wrapper. Its
+          // nearest scroll owner, not its immediate parent, owns the occlusion.
+          let owner = header.parentElement;
+          while (owner && owner !== root) {
+            const ownerStyle = getComputedStyle(owner);
+            if (/(auto|scroll|hidden)/.test(ownerStyle.overflowY + ' ' + ownerStyle.overflowX)) break;
+            owner = owner.parentElement;
+          }
+          if ((owner || root) !== n) continue;
+          const style = getComputedStyle(header), rect = header.getBoundingClientRect();
+          if (!/^(sticky|fixed)$/.test(style.position)
+            || Math.min(rect.right, target.right) <= Math.max(rect.left, target.left)
+            || rect.bottom <= clipped.bounds.top || rect.top >= clipped.bounds.bottom) continue;
+          bounds.top = Math.max(bounds.top, rect.bottom);
+          occludingHeaders.push({ element: selectorName(header), owner: selectorName(n),
+            position: style.position, rect: box(header) });
+        }
+        if (n === root) break;
+      }
+    }
+    bounds.width = round(Math.max(0, bounds.right - bounds.left));
+    bounds.height = round(Math.max(0, bounds.bottom - bounds.top));
+    return { ...clipped, clippingBounds: clipped.bounds, bounds, occludingHeaders, scrollExemption };
+  };
   const setExactScrollPosition = (owner, left, top) => {
-    const style = owner.style;
-    const prior = {
-      value: style.getPropertyValue('scroll-behavior'),
-      priority: style.getPropertyPriority('scroll-behavior'),
+    const priorStyle = owner.getAttribute('style');
+    const readStyle = () => {
+      const computed = getComputedStyle(owner);
+      return { scrollBehavior: owner.style.getPropertyValue('scroll-behavior'),
+        scrollBehaviorPriority: owner.style.getPropertyPriority('scroll-behavior'),
+        transform: owner.style.getPropertyValue('transform'), transformPriority: owner.style.getPropertyPriority('transform'),
+        computedScrollBehavior: computed.scrollBehavior, computedTransform: computed.transform };
     };
+    const before = readStyle();
+    let error = null, cleanupError = null, restored = null;
     try {
-      style.setProperty('scroll-behavior', 'auto', 'important');
+      owner.style.setProperty('scroll-behavior', 'auto', 'important');
       owner.scrollLeft = left;
       owner.scrollTop = top;
       void owner.getBoundingClientRect();
-    } finally {
-      if (prior.value) style.setProperty('scroll-behavior', prior.value, prior.priority);
-      else style.removeProperty('scroll-behavior');
+    } catch (cause) { error = cause; }
+    finally {
+      try {
+        if (priorStyle === null) {
+          // Reset the attribute through the DOM before removal. Native Edge
+          // retains an empty carrier when only CSSStyleDeclaration is cleared.
+          owner.setAttribute('style', '');
+          owner.removeAttribute('style');
+        } else owner.setAttribute('style', priorStyle);
+        // Retain declaration/computed evidence before Chromium's second removal;
+        // normalizing the carrier must never conceal a failed style restoration.
+        const after = readStyle();
+        if (priorStyle === null) owner.removeAttribute('style');
+        const styleAttribute = owner.getAttribute('style');
+        restored = { owner: selectorName(owner), before, after, styleAttribute, expectedStyleAttribute: priorStyle,
+          ok: styleAttribute === priorStyle && JSON.stringify(after) === JSON.stringify(before) };
+        if (!restored.ok) throw new Error('exact scroll style restoration failed: ' + JSON.stringify(restored));
+      } catch (cause) { cleanupError = cause; }
     }
-    return { left: owner.scrollLeft, top: owner.scrollTop };
+    if (error) {
+      if (cleanupError && error instanceof Error) error.cleanupError = String(cleanupError?.message || cleanupError);
+      throw error;
+    }
+    if (cleanupError) throw cleanupError;
+    return { left: owner.scrollLeft, top: owner.scrollTop, styleRestoration: restored };
   };
   const scrollControlIntoView = (el, root, viewport, rememberScroll = null) => {
-    let r = box(el), clipped = clippedBounds(el, root, viewport);
+    let r = box(el), clipped = controlContentBounds(el, root, viewport);
     const scrollAttempts = [];
-    if (inside(r, clipped.bounds)) return { rect: r, ...clipped, scrollAttempts };
+    // The one-pixel clipping tolerance cannot invent room for a complete action
+    // underneath a painted header. A too-short content lane remains a finding.
+    const fits = () => inside(r, clipped.bounds) && (!clipped.occludingHeaders.length
+      || r.height <= clipped.bounds.height + 0.01);
+    const result = () => ({ rect: r, ...clipped, fits: fits(), scrollAttempts });
+    if (fits() || clipped.scrollExemption) return result();
     for (let n = el.parentElement; n; n = n.parentElement) {
       const s = getComputedStyle(n);
       if ((n.scrollHeight > n.clientHeight + 1 && /(auto|scroll)/.test(s.overflowY))
         || (n.scrollWidth > n.clientWidth + 1 && /(auto|scroll)/.test(s.overflowX))) {
         rememberScroll?.(n);
         const before = { left: round(n.scrollLeft), top: round(n.scrollTop) };
-        const nr = n.getBoundingClientRect(), er = el.getBoundingClientRect();
+        const er = el.getBoundingClientRect(), content = clipped.bounds;
         const top = n.scrollHeight > n.clientHeight + 1
-          ? n.scrollTop + (er.top + er.bottom - nr.top - nr.bottom) / 2 : n.scrollTop;
+          ? n.scrollTop + (er.top + er.bottom - content.top - content.bottom) / 2 : n.scrollTop;
         const left = n.scrollWidth > n.clientWidth + 1
-          ? n.scrollLeft + (er.left + er.right - nr.left - nr.right) / 2 : n.scrollLeft;
+          ? n.scrollLeft + (er.left + er.right - content.left - content.right) / 2 : n.scrollLeft;
         const observed = setExactScrollPosition(n, left, top);
         r = box(el);
-        clipped = clippedBounds(el, root, viewport);
+        clipped = controlContentBounds(el, root, viewport);
         scrollAttempts.push({ owner: selectorName(n), before,
           requested: { left: round(left), top: round(top) },
-          observed: { left: round(observed.left), top: round(observed.top) },
-          rect: r, bounds: clipped.bounds });
-        if (inside(r, clipped.bounds)) return { rect: r, ...clipped, scrollAttempts };
+          observed: { left: round(observed.left), top: round(observed.top) }, styleRestoration: observed.styleRestoration,
+          rect: r, bounds: clipped.bounds, clippingBounds: clipped.clippingBounds,
+          occludingHeaders: clipped.occludingHeaders });
+        if (fits()) return result();
       }
       if (n === root) break;
     }
-    return { rect: r, ...clipped, scrollAttempts };
+    return result();
   };
   const focusEvidence = (el) => {
     try { el.blur(); } catch { /* non-focusable */ }
@@ -8520,11 +9027,14 @@ function installAuditHarness() {
       if (r.width + 0.5 < targetFloor || r.height + 0.5 < targetFloor) {
         controlIssue(issue('TARGET_TOO_SMALL', surface, name, { width: r.width, height: r.height }, 'both dimensions >= ' + targetFloor + 'px'));
       }
-      if (!inside(r, controlBounds)) controlIssue(issue('CONTROL_OUTSIDE_VIEWPORT', surface, name, {
-        rect: r, bounds: controlBounds, ...identity, clippingAncestors: scrolled.ancestors,
-        scrollAttempts: scrolled.scrollAttempts,
-      }, 'control scrolls fully inside every clipping ancestor, the visual viewport, and safe area'));
-      if (!h.ok) controlIssue(issue('CONTROL_NOT_HITTABLE', surface, name, h, 'control owns its centre point after scrolling into reach'));
+      const reachEvidence = { ...h, rect: r, bounds: controlBounds, ...identity,
+        clippingBounds: scrolled.clippingBounds, clippingAncestors: scrolled.ancestors,
+        occludingHeaders: scrolled.occludingHeaders, scrollExemption: scrolled.scrollExemption,
+        scrollAttempts: scrolled.scrollAttempts };
+      if (!scrolled.fits) controlIssue(issue('CONTROL_OUTSIDE_VIEWPORT', surface, name, reachEvidence,
+        'complete control fits below painted shared headers and inside every clipping ancestor, viewport, and safe area'));
+      if (!h.ok) controlIssue(issue('CONTROL_NOT_HITTABLE', surface, name, reachEvidence,
+        'control owns its centre point after scrolling below painted shared headers into reach'));
       const a11y = accessibleName(el);
       if (!a11y) controlIssue(issue('ACCESSIBLE_NAME_MISSING', surface, name, { tag: el.tagName.toLowerCase(), type: el.getAttribute('type') }, 'non-empty accessible name'));
       const nativeKeyboard = /^(BUTTON|INPUT|TEXTAREA|SELECT)$/.test(el.tagName) || (el.tagName === 'A' && el.hasAttribute('href'));
@@ -8548,29 +9058,61 @@ function installAuditHarness() {
       if (!evidence.focused) out.push(issue('FOCUS_NOT_OWNED', surface, sel, evidence, 'document.activeElement is target'));
       else if (!evidence.visible) out.push(issue('FOCUS_INVISIBLE', surface, sel, evidence, 'rendered focus indicator'));
     }
-    const contrastNodes = new Set();
+    const contrastNodes = new Set(), nameplateOwners = new Map();
+    const directText = (el) => [...el.childNodes].filter(node => node.nodeType === Node.TEXT_NODE)
+      .map(node => node.textContent || '').join('').replace(/\s+/g, ' ').trim();
+    const addContrastSubject = (el) => {
+      if (el.matches('button#dockinventory')) {
+        const nameplate = el.querySelector(':scope > #playerchip');
+        if (nameplate && visible(nameplate)) { contrastNodes.add(nameplate); nameplateOwners.set(nameplate,el); }
+        if (directText(el)) contrastNodes.add(el);
+        return;
+      }
+      if (!el.matches('button.dock-utility')) { contrastNodes.add(el); return; }
+      const glyph = el.querySelector(':scope > .utility-face > .ico');
+      if (!glyph || !visible(glyph) || !(glyph.textContent || '').trim())
+        out.push(issue('CONTRAST_SUBJECT_MISSING', surface, selectorName(el), { markup: el.outerHTML.slice(0,1000) }, 'visible utility glyph on its painted face'));
+      // The native target is transparent; its glyph and badge have distinct painted backings.
+      for (const leaf of el.querySelectorAll(':scope > .utility-face > .ico,:scope > [data-notification-count]'))
+        if (visible(leaf)) contrastNodes.add(leaf);
+      if (directText(el)) contrastNodes.add(el);
+    };
     for (const sel of opts.contrastSelectors || []) {
       for (const el of document.querySelectorAll(sel)) if (visible(el)) {
-        contrastNodes.add(el);
+        addContrastSubject(el);
         for (const child of el.querySelectorAll('p,li,small,b,label,button,h1,h2,h3,h4,h5,h6,.sub,.cur,.sep,.guide-status,[role="status"],[style*="color"]')) {
-          if (visible(child)) contrastNodes.add(child);
+          if (visible(child)) addContrastSubject(child);
         }
       }
     }
     let contrastReports = 0;
     for (const el of contrastNodes) {
       if (contrastReports >= Number(opts.maxContrastReports || 4)) break;
-      const sample = (el.textContent || '').replace(/\s+/g, ' ').trim();
+      const sample = el.matches('button.dock-utility,button#dockinventory') ? directText(el)
+        : (el.textContent || '').replace(/\s+/g, ' ').trim();
       if (!sample) continue;
+      const utilityOwner = el.matches('.ico,[data-notification-count]') ? el.closest('button.dock-utility') : null;
+      // A direct HUD #playerchip selection keeps its historical subject identity.
+      const nameplateOwner = nameplateOwners.get(el) || null;
       const s = getComputedStyle(el), fg0 = parseColor(s.color);
       if (!fg0) continue;
-      fg0[3] *= cumulativeOpacity(el);
-      const bg = glassBackground(el), fg = composite(fg0, bg), ratio = contrast(fg, bg);
+      const opacity = cumulativeOpacity(el), bg = glassBackground(el);
+      const fg = composite([...fg0.slice(0, 3), fg0[3] * opacity], bg), directRatio = contrast(fg, bg);
+      const glyphStroke = assessGlyphStrokeContrast({ foreground: fg0, background: bg, opacity,
+        strokeWidth: s.webkitTextStrokeWidth, strokeColor: parseColor(s.webkitTextStrokeColor), paintOrder: s.paintOrder });
+      const ratio = Math.max(directRatio, glyphStroke.eligible ? glyphStroke.ratio : 0);
       const size = parseFloat(s.fontSize) || 13, weight = parseInt(s.fontWeight, 10) || 400;
       const large = size >= 24 || (size >= 18.66 && weight >= 700), threshold = large ? 3 : 4.5;
       if (ratio + 0.01 < threshold) {
         contrastReports++;
-        out.push(issue('TEXT_CONTRAST_LOW', surface, selectorName(el), { ratio: round(ratio), threshold, color: s.color, background: bg.map(round), sample: sample.slice(0, 80) }, 'WCAG contrast against bright artwork beneath glass'));
+        out.push(issue('TEXT_CONTRAST_LOW', surface, selectorName(utilityOwner || nameplateOwner || el), {
+          ratio: round(ratio), threshold, color: s.color, background: bg.map(round), sample: sample.slice(0, 80),
+          ...(parseFloat(s.webkitTextStrokeWidth) > 0 ? { glyphStroke: { width: s.webkitTextStrokeWidth,
+            color: s.webkitTextStrokeColor, paintOrder: s.paintOrder, opacity, eligible: glyphStroke.eligible,
+            reason: glyphStroke.reason, ratio: glyphStroke.ratio === null ? null : round(glyphStroke.ratio) } } : {}),
+          ...(utilityOwner ? { sampleElement: selectorName(el), sampleKind: el.hasAttribute('data-notification-count') ? 'notification-count' : 'utility-glyph' } : {}),
+          ...(nameplateOwner ? { sampleElement: '#playerchip', sampleKind: 'inventory-nameplate' } : {}),
+        }, 'WCAG contrast against bright artwork beneath glass'));
       }
     }
     for (const sel of opts.placeholderSelectors || []) {
@@ -8721,6 +9263,143 @@ function installAuditHarness() {
     list = audit({ surface: 'selftest-nonglass', root: '#cf-control-nonglass', textMin: 4, interactiveRoots: [], contrastSelectors: ['#cf-control-nonglass-copy'] });
     expect('non-glass translucent-chain injection', list, 'TEXT_CONTRAST_LOW', '#cf-control-nonglass-copy');
     nonGlass.remove();
+    // Native computed CSS calibrates the narrow opaque-stroke allowance. Shadows
+    // alone cannot turn white text over the worst bright artwork green.
+    const strokeRoot = document.createElement('section');
+    strokeRoot.id = 'cf-control-stroke-root';
+    strokeRoot.style.cssText = 'position:fixed;left:8px;top:8px;width:240px;height:60px;background:none;z-index:1000';
+    strokeRoot.innerHTML = '<span id="cf-control-stroke-copy" style="color:#fff!important;font-size:13px;-webkit-text-stroke:2px #000;paint-order:stroke fill;text-shadow:0 1px 3px #000,0 0 8px #000">Opaque glyph halo control</span>';
+    document.body.appendChild(strokeRoot);
+    const strokeCopy = strokeRoot.querySelector('#cf-control-stroke-copy');
+    const strokeOptions = { surface: 'selftest-glyph-stroke', root: '#cf-control-stroke-root', textMin: 4,
+      required: [{ selector: '#cf-control-stroke-copy', min: 1, textMin: 4 }], interactiveRoots: [], contrastSelectors: ['#cf-control-stroke-copy'] };
+    const restoreStrokeStyle = (node, prior) => {
+      node.setAttribute('style', ''); node.removeAttribute('style');
+      if (prior !== null) node.setAttribute('style', prior);
+      if (node.getAttribute('style') !== prior) failures.push('glyph stroke exact style restoration failed for ' + selectorName(node));
+    };
+    const strokeClean = (label) => {
+      const style = getComputedStyle(strokeCopy), computed = { strokeWidth: style.webkitTextStrokeWidth,
+        strokeColor: parseColor(style.webkitTextStrokeColor), paintOrder: style.paintOrder };
+      const measured = assessGlyphStrokeContrast({ ...computed, foreground: parseColor(style.color),
+        background: glassBackground(strokeCopy), opacity: cumulativeOpacity(strokeCopy) });
+      if (!visible(strokeCopy) || !measured.eligible || measured.ratio < 4.5)
+        failures.push(label + ': native opaque stroke positive failed: ' + JSON.stringify({ computed, measured }));
+      reject(label, audit(strokeOptions), 'TEXT_CONTRAST_LOW', '#cf-control-stroke-copy');
+    };
+    try {
+      strokeClean('opaque glyph stroke positive');
+      for (const [label, node, property, value] of [
+        ['blurred shadows without stroke', strokeCopy, '-webkit-text-stroke-width', '0px'],
+        ['thin glyph stroke', strokeCopy, '-webkit-text-stroke-width', '1px'],
+        ['translucent glyph stroke', strokeCopy, '-webkit-text-stroke-color', 'rgba(0,0,0,.5)'],
+        ['light glyph stroke', strokeCopy, '-webkit-text-stroke-color', '#eee'],
+        ['fill-first glyph stroke', strokeCopy, 'paint-order', 'fill stroke'],
+        ['normal glyph paint order', strokeCopy, 'paint-order', 'normal'],
+        ['glyph element opacity', strokeCopy, 'opacity', '.15'],
+        ['glyph ancestor opacity', strokeRoot, 'opacity', '.15'],
+      ]) {
+        const prior = node.getAttribute('style');
+        try {
+          node.style.setProperty(property, value, 'important');
+          expect(label, audit(strokeOptions), 'TEXT_CONTRAST_LOW', '#cf-control-stroke-copy');
+        } finally { restoreStrokeStyle(node, prior); }
+        strokeClean(label + ' restoration');
+      }
+    } finally { strokeRoot.remove(); }
+    const hint = document.getElementById('hintpill');
+    if (!hint || !visible(hint)) failures.push('live hint glyph stroke control needs its visible HUD subject');
+    else {
+      const hintStyle = hint.getAttribute('style'), hintBox = box(hint);
+      const hintOptions = { surface: 'selftest-hint-glyph-stroke', root: '#hintpill', textMin: 8,
+        interactiveRoots: [], contrastSelectors: ['#hintpill'] };
+      reject('live hint glyph stroke positive', audit(hintOptions), 'TEXT_CONTRAST_LOW', '#hintpill');
+      try {
+        hint.style.setProperty('-webkit-text-stroke-width', '0px', 'important');
+        expect('live hint glyph stroke removal', audit(hintOptions), 'TEXT_CONTRAST_LOW', '#hintpill');
+      } finally { restoreStrokeStyle(hint, hintStyle); }
+      reject('live hint glyph stroke restoration', audit(hintOptions), 'TEXT_CONTRAST_LOW', '#hintpill');
+      if (JSON.stringify(box(hint)) !== JSON.stringify(hintBox)) failures.push('live hint glyph stroke restoration changed its layout geometry');
+    }
+    const utilityRoot = document.createElement('section');
+    utilityRoot.id = 'cf-control-utility-root';
+    utilityRoot.style.cssText = 'position:fixed;left:8px;top:8px;width:240px;height:64px;background:#fff;z-index:1000';
+    utilityRoot.innerHTML = ['a','b'].map(id => `<button id="cf-control-utility-${id}" class="dock-utility" aria-label="utility ${id}" style="display:inline-flex;position:relative;width:64px;height:44px;background:none;color:#fff!important"><span class="utility-face" style="display:flex;width:36px;height:36px;background:rgb(14,22,40)"><span class="ico" style="display:block;color:#fff!important">?</span></span></button>`).join('');
+    document.body.appendChild(utilityRoot);
+    const utilityA = utilityRoot.querySelector('#cf-control-utility-a'), utilityB = utilityRoot.querySelector('#cf-control-utility-b'),
+      utilityFace = utilityA.querySelector('.utility-face'), utilityGlyph = utilityA.querySelector('.ico');
+    const badge = document.createElement('span'); badge.setAttribute('data-notification-count',''); badge.textContent = '2';
+    badge.style.cssText = 'position:absolute;top:0;right:0;background:#ffd96a!important;color:#131b28!important';
+    utilityA.appendChild(badge);
+    const utilityOptions = { surface: 'selftest-utility-contrast', root: '#cf-control-utility-root', textMin: 1,
+      interactiveRoots: [], contrastSelectors: ['#cf-control-utility-root button'], maxContrastReports: 12 };
+    const utilityLow = rows => rows.filter(row => row.code === 'TEXT_CONTRAST_LOW');
+    const utilityClean = () => { const rows = audit(utilityOptions);
+      if (utilityLow(rows).length) failures.push('readable nested utility backing rejected: ' + JSON.stringify(rows)); };
+    const restoreUtilityStyle = (node, prior) => { node.setAttribute('style',''); node.removeAttribute('style');
+      if (prior !== null) node.setAttribute('style',prior);
+      if (node.getAttribute('style') !== prior) failures.push('utility contrast exact style restoration failed'); };
+    utilityClean();
+    const faceStyle = utilityFace.getAttribute('style'), glyphStyle = utilityGlyph.getAttribute('style');
+    try {
+      utilityFace.style.setProperty('background','#fff','important'); utilityGlyph.style.setProperty('color','#fff','important');
+      const rows = utilityLow(audit(utilityOptions));
+      if (rows.length !== 1 || rows[0].element !== '#cf-control-utility-a' || rows[0].actual.sampleKind !== 'utility-glyph')
+        failures.push('nested utility glyph mutation lost its native owner or distinct readable neighbor: ' + JSON.stringify(rows));
+    } finally { restoreUtilityStyle(utilityFace,faceStyle); restoreUtilityStyle(utilityGlyph,glyphStyle); }
+    utilityClean();
+    const badgeStyle = badge.getAttribute('style');
+    try {
+      badge.style.setProperty('background','#fff','important'); badge.style.setProperty('color','#fff','important');
+      const rows = utilityLow(audit(utilityOptions));
+      if (rows.length !== 1 || rows[0].element !== '#cf-control-utility-a' || rows[0].actual.sampleKind !== 'notification-count')
+        failures.push('independent unread badge contrast mutation was not isolated: ' + JSON.stringify(rows));
+      badge.hidden = true;
+      if (utilityLow(audit(utilityOptions)).length) failures.push('hidden unread badge was sampled as painted');
+    } finally { badge.hidden = false; restoreUtilityStyle(badge,badgeStyle); }
+    utilityClean();
+    const directUtilityText = document.createTextNode('Direct'); utilityB.appendChild(directUtilityText);
+    list = utilityLow(audit(utilityOptions));
+    if (list.length !== 1 || list[0].element !== '#cf-control-utility-b' || list[0].actual.sample !== 'Direct')
+      failures.push('utility direct outer text escaped its actual transparent backing: ' + JSON.stringify(list));
+    directUtilityText.remove(); utilityClean(); utilityRoot.remove();
+    const inventoryWrapper = document.querySelector('button#dockinventory'),
+      inventoryNameplate = inventoryWrapper?.querySelector(':scope > #playerchip');
+    if (!inventoryWrapper || !inventoryNameplate || !visible(inventoryNameplate)) {
+      failures.push('native Inventory/nameplate contrast fixture is missing or hidden');
+    } else {
+      const inventoryStyles = [inventoryWrapper,inventoryNameplate].map(node => node.getAttribute('style')),
+        inventoryOptions = { surface: 'selftest-inventory-nameplate-contrast', root: '#topbar', textMin: 1,
+          interactiveRoots: [], contrastSelectors: ['#dockinventory'], maxContrastReports: 12 },
+        directNameplateOptions = { ...inventoryOptions, contrastSelectors: ['#playerchip'] },
+        directInventoryText = document.createTextNode('Direct Inventory');
+      const inventoryRows = options => audit(options).filter(row => row.code === 'TEXT_CONTRAST_LOW');
+      try {
+        inventoryWrapper.style.setProperty('background','none','important');
+        inventoryWrapper.style.setProperty('color','#fff','important');
+        inventoryNameplate.style.setProperty('background','rgb(14,22,40)','important');
+        inventoryNameplate.style.setProperty('color','#fff','important');
+        if (inventoryRows(inventoryOptions).length || inventoryRows(directNameplateOptions).length)
+          failures.push('readable native nameplate backing was rejected through its wrapper or direct HUD subject');
+        inventoryNameplate.style.setProperty('background','#fff','important');
+        const wrapperRows = inventoryRows(inventoryOptions), hudRows = inventoryRows(directNameplateOptions);
+        if (wrapperRows.length !== 1 || wrapperRows[0].element !== '#dockinventory'
+          || wrapperRows[0].actual.sampleElement !== '#playerchip' || wrapperRows[0].actual.sampleKind !== 'inventory-nameplate'
+          || hudRows.length !== 1 || hudRows[0].element !== '#playerchip' || hudRows[0].actual.sampleKind !== undefined)
+          failures.push('nameplate white-on-white mutation lost selected-wrapper versus direct-HUD identity: ' + JSON.stringify({wrapperRows,hudRows}));
+        inventoryNameplate.style.setProperty('background','rgb(14,22,40)','important');
+        inventoryWrapper.appendChild(directInventoryText);
+        const directRows = inventoryRows(inventoryOptions);
+        if (directRows.length !== 1 || directRows[0].element !== '#dockinventory'
+          || directRows[0].actual.sample !== 'Direct Inventory' || directRows[0].actual.sampleKind !== undefined)
+          failures.push('Inventory direct outer text escaped its transparent native backing: ' + JSON.stringify(directRows));
+      } finally {
+        directInventoryText.remove();
+        [inventoryWrapper,inventoryNameplate].forEach((node,index) => restoreUtilityStyle(node,inventoryStyles[index]));
+      }
+      if (inventoryRows(inventoryOptions).length || inventoryRows(directNameplateOptions).length)
+        failures.push('native Inventory/nameplate contrast failed to restore its readable baseline');
+    }
     const placeholderStyle = document.createElement('style');
     placeholderStyle.id = 'cf-control-placeholder-style';
     placeholderStyle.textContent = '#cf-control-placeholder::placeholder{color:#fff;opacity:1}';
@@ -8909,7 +9588,7 @@ function installAuditHarness() {
     return failures;
   };
   window.__CF_GLASS_AUDIT__ = Object.freeze({
-    audit, canvasIssues, safeProbe, viewportIssues, preferenceOutcome, choiceOutcome,
+    audit, canvasIssues, safeProbe, viewportIssues, preferenceOutcome, guidancePreferenceOutcome, choiceOutcome,
     navigationOutcome, openFocusOutcome, forcedColorsOutcome, motionPolicyOutcome, closeIntegrityOutcome,
     rightBottomAnchorOutcome, panelCloseOutcome, openerOutcome, pressedOutcome,
     inventoryRowsOutcome, inventoryConditionOutcome, inventoryModalOutcome, inventoryFocusTrapOutcome,
@@ -9071,6 +9750,7 @@ function trailRestorationControlOutcome(control) {
 
 function portraitBandControlOutcome(control) {
   const checks = Object.freeze({
+    ...portraitFloatingFixtureOutcome(control),
     eligibleBaseline: portraitControlBaselineEligible(control?.baseline),
     mutationApplied: typeof control?.mutation?.requested === 'string'
       && control.mutation.requested.length > 0
@@ -9092,7 +9772,43 @@ function portraitBandControlOutcome(control) {
   return { ok: Object.values(checks).every(Boolean), checks };
 }
 
+function portraitFloatingFixtureOutcome(control) {
+  const fixture = control?.fixture;
+  const nativeRect = fixture?.originalRect, injectedRect = fixture?.injectedRect;
+  const finiteRect = (rect) => Array.isArray(rect) && rect.length === 4
+    && rect.every(Number.isFinite) && rect[2] > rect[0] && rect[3] > rect[1];
+  const fixedBottom = fixture?.objectiveFixture ? fixture.fixtureFixedBottom : fixture?.nativeBaseline?.fixedChromeBottom;
+  const compactFixtureValid = !fixture?.objectiveFixture || (fixture.objectiveFixture.kind === 'compact-caption-visible-opener'
+    && fixture.objectiveFixture.textUnchanged === true && Array.isArray(fixture.fixtureFixedRows)
+    && fixture.fixtureFixedRows.some(row => row.id === 'objchip' && row.visible === true)
+    && fixedBottom === Math.max(0, ...fixture.fixtureFixedRows.filter(row => row.visible).map(row => row.bottom))
+    && JSON.stringify(fixture.restoredObjectiveStyle) === JSON.stringify(fixture.objectiveFixture.originalStyle));
+  const labelledFaultFixture = compactFixtureValid && fixture?.kind === 'injected-floating-trail-regression'
+    && fixture?.error === null && control?.error === null
+    && fixture?.nativeBaseline?.ok === true && fixture?.nativeBaseline?.canonicalHidden === true
+    && Array.isArray(nativeRect) && nativeRect.length === 4 && nativeRect.every(Number.isFinite) && finiteRect(injectedRect)
+    && Number.isFinite(fixture?.nativeBaseline?.fixedChromeBottom)
+    && Number.isFinite(fixedBottom) && injectedRect[1] >= fixedBottom + 7.5
+    && fixture?.observedOutsideHeader === true
+    && fixture?.injectedBaseline?.ok === true && fixture?.injectedBaseline?.headerContained === false
+    && fixture?.injectedBaseline?.trailVisible === true && fixture?.injectedBaseline?.fallback === false
+    && typeof fixture?.injectedStyle === 'string' && fixture.injectedStyle.length > 0;
+  const noticeChanged = typeof fixture?.noticeBefore?.text === 'string' && typeof fixture?.noticeAfter?.text === 'string'
+    && fixture.noticeLaneRemoved === true && JSON.stringify(fixture.noticeBefore) !== JSON.stringify(fixture.noticeAfter);
+  const fixtureRestored = typeof fixture?.originalStyle?.present === 'boolean'
+    && fixture?.restoredStyle?.present === fixture.originalStyle.present
+    && fixture?.restoredStyle?.value === fixture.originalStyle.value
+    && (fixture.originalStyle.present ? typeof fixture.originalStyle.value === 'string' : fixture.originalStyle.value === null)
+    && fixture?.nativeRestored?.ok === true && fixture?.nativeRestored?.canonicalHidden === true
+    && fixture?.cleanup?.kind === 'temporary-header-contained-edge-reset' && fixture.cleanup.headerContained === true
+    && Number.isFinite(fixture?.nativeBaseline?.surfaceBottom) && Number.isFinite(fixture?.nativeRestored?.surfaceBottom)
+    && (noticeChanged || Math.abs(fixture.nativeRestored.surfaceBottom-fixture.nativeBaseline.surfaceBottom)<=1);
+  return {labelledFaultFixture,fixtureRestored};
+}
+
 function portraitFallbackControlOutcome(control) {
+  const {labelledFaultFixture,fixtureRestored}=portraitFloatingFixtureOutcome(control);
+
   const baseSafe = Number(control?.mutation?.baseSafe);
   const forcedSafe = Number(control?.mutation?.forcedSafe);
   const computedSafe = Number.parseFloat(control?.mutation?.computed);
@@ -9109,12 +9825,14 @@ function portraitFallbackControlOutcome(control) {
         && outcome.scrollHeight > outcome.clientHeight));
   const fixedRows = outcome?.fixedRows;
   const fixedClearance = outcome?.fixedClear === true
-    && Array.isArray(fixedRows) && fixedRows.length === 4
-    && ['playerchip', 'hpbar', 'searchbox', 'objchip']
+    && Array.isArray(fixedRows) && fixedRows.length === 5
+    && ['playerchip', 'hpbar', 'searchbox', 'objchip', 'sceneactions']
       .every((id) => fixedRows.some((row) => row?.id === id))
     && fixedRows.every((row) => row?.visible === false
       || (Number.isFinite(row?.gap) && row.gap >= 5.5));
   const checks = Object.freeze({
+    labelledFaultFixture,
+    fixtureRestored,
     eligibleBaseline: portraitControlBaselineEligible(control?.baseline),
     mutationApplied: typeof control?.mutation?.requested === 'string'
       && typeof control?.mutation?.property?.value === 'string'
@@ -9553,7 +10271,7 @@ async function main() {
           recordInstrumentFailure(`${vp.label}: slice did not become ready (${ready?.why || 'no diagnostic'})`);
           continue;
         }
-        await evalIn(`(${installAuditHarness.toString()})()`);
+        await evalIn(`(${installAuditHarness.toString()})(${assessGlyphStrokeContrast.toString()})`);
         const audit = (options) => evalIn(`window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(options)})`);
         const waitFor = async (label, expression, timeoutMs = 5000, accept = (value) => !!value) => {
           const until = Date.now() + timeoutMs;
@@ -10264,7 +10982,7 @@ async function main() {
             reloadCaptureArmed = false;
             requestUrls.clear();
           }
-          await evalIn(`(${installAuditHarness.toString()})()`);
+          await evalIn(`(${installAuditHarness.toString()})(${assessGlyphStrokeContrast.toString()})`);
           await waitFor('preference Training', `window.__CF_SLICE__.api.state().tutActive && window.__CF_SLICE__.api.state().codexCount>=3 && document.querySelector('[data-sel=tuttext]')?.textContent?.trim().length>60`);
           add(vp.label, 'training-preferences', await audit({
             ...common, surface: 'training-preferences', root: '#tutcard', textMin: 80,
@@ -10587,46 +11305,37 @@ async function main() {
         add(vp.label, 'hud', await audit({
           ...common, surface: 'hud', root: 'body', textMin: 20,
           required: [{ selector: '#dock', min: 1 }, { selector: '#searchbox', min: 1 }, { selector: '#hintpill', min: 1, textMin: 8 }],
-          interactiveRoots: ['#dock', '#raillft', '#railrgt', '#searchbox'],
-          contrastSelectors: ['#playerchip', '#hpbar', '#searchbox', '#trail', '#objchip', '#ctxbar', '#hintpill', '#raillft button', '#railrgt button'],
+          interactiveRoots: ['#dock', '#searchbox', '#topbar', '#sceneactions'],
+          contrastSelectors: ['#playerchip', '#hpbar', '#searchbox', '#trail', '#objchip', '#ctxbar', '#hintpill', '#dock button', '#raillft button', '#railrgt button'],
           placeholderSelectors: ['#searchbox'], maxContrastReports: 24,
           focusSelectors: vp.label === 'primary-phone' || vp.label === 'desktop' ? ['#searchbox', '#dockguide', '#docksets'] : [],
           canvas: true, expectedDpr, maxBackingPixels,
         }));
-        if (vp.width <= 900) {
-          const phoneDockCheck = `(()=>{const dock=document.getElementById('dock'),style=dock?getComputedStyle(dock):null,
-            rect=dock?.getBoundingClientRect(),expected=['docksurvey','dockcodex','dockrecords','dockcharters','dockatlas','dockcharts','dockshipyard','dockinventory','docksets','dockguide'],
-            buttons=dock?[...dock.querySelectorAll(':scope > button')].filter(button=>{const s=getComputedStyle(button),r=button.getBoundingClientRect();
-              return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;}):[],rows=[];
-            for(const button of buttons){const r=button.getBoundingClientRect();let row=rows.find(candidate=>Math.abs(candidate.top-r.top)<2);
-              if(!row){row={top:r.top,ids:[]};rows.push(row);}row.ids.push(button.id);}
-            rows.sort((a,b)=>a.top-b.top);const ids=buttons.map(button=>button.id),centres=buttons.map(button=>{const r=button.getBoundingClientRect(),
-              hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);return {id:button.id,width:r.width,height:r.height,
-                hit:!!hit&&(hit===button||button.contains(hit))};});
-            return {ok:style?.display==='grid'&&buttons.length===10&&JSON.stringify(ids)===JSON.stringify(expected)
-              &&rows.length===2&&rows[0].ids.length===5&&rows[1].ids.length===5
-              &&!!rect&&Math.abs(rect.width-260)<=1&&Math.abs(rect.height-98)<=1
-              &&centres.every(row=>Math.abs(row.width-44)<=1&&Math.abs(row.height-44)<=1&&row.hit),
-              display:style?.display||null,ids,expected,rows:rows.map(row=>row.ids),
-              rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null,centres};})()`;
+        if (usesPhoneDock(vp)) {
+          const phoneDockCheck = `(${readU1PhoneShell.toString()})(false)`;
           addOutcome(vp.label, 'phone-dock', 'PHONE_DOCK_INVENTORY', '#dock', await evalIn(phoneDockCheck),
-            'the exact ten visible named controls occupy one 260x98 five-by-two grid of centre-owned 44px targets');
+            'five labelled responsive board faces and four 44px utility targets retain their measured slots; relocated Inventory and scene actions stay centre-owned');
           if (!phoneDockControlRun) {
             phoneDockControlRun = true;
-            const dockControl = await evalIn(`(()=>{const dock=document.getElementById('dock'),prior=dock?.getAttribute('style')??null;
-              dock?.style.setProperty('grid-template-columns','repeat(4,44px)','important');const broken=${phoneDockCheck};
-              if(prior===null)dock?.removeAttribute('style');else dock?.setAttribute('style',prior);
-              return {ok:broken.ok===false&&broken.rows.length===3&&${phoneDockCheck}.ok,broken};})()`);
+            const dockControl = await evalIn(`(()=>{const dock=document.getElementById('dock'),
+              priorStyle={present:dock.hasAttribute('style'),value:dock.getAttribute('style')};let broken;
+              try{dock.style.setProperty('grid-template-columns','repeat(10,26px)','important');broken=${phoneDockCheck};}
+              finally{dock.setAttribute('style','');dock.removeAttribute('style');if(priorStyle.present)dock.setAttribute('style',priorStyle.value);}
+              const restored=${phoneDockCheck},restoredStyle={present:dock.hasAttribute('style'),value:dock.getAttribute('style')},
+                styleRestored=restoredStyle.present===priorStyle.present&&restoredStyle.value===priorStyle.value;
+              return {ok:broken.ok===false&&broken.errors.some(error=>error.startsWith('dock responsive slot drifted: '))
+                &&restored.ok&&styleRestored,broken,restored,priorStyle,restoredStyle,styleRestored};})()`);
+            console.log(`GLASS PHONE DOCK COMPRESSED-TRACK CONTROL — ${vp.label}: ${JSON.stringify(dockControl)}`);
             if (!dockControl.ok) {
-              recordInstrumentFailure(`${vp.label}: phone dock 4-column control stayed green or failed to restore (${JSON.stringify(dockControl)})`);
+              recordInstrumentFailure(`${vp.label}: phone dock compressed-track control stayed green or failed to restore (${JSON.stringify(dockControl)})`);
             }
             recordControls('phone-dock-inventory');
             const membershipControl = await evalIn(`(()=>{const button=document.getElementById('dockinventory'),prior=button?.id||null;
               if(button)button.id='dockinventory-substitution';const broken=${phoneDockCheck};if(button&&prior)button.id=prior;
-              const restored=${phoneDockCheck};return {ok:broken.ok===false&&broken.ids.length===10
-                &&broken.ids.includes('dockinventory-substitution')&&!broken.ids.includes('dockinventory')&&restored.ok,broken,restored};})()`);
+              const restored=${phoneDockCheck};return {ok:broken.ok===false&&broken.ids.length===9
+                &&broken.relocatedInventory.id===null&&restored.ok,broken,restored};})()`);
             if (!membershipControl.ok) {
-              recordInstrumentFailure(`${vp.label}: substituted Inventory dock member stayed green or failed to restore (${JSON.stringify(membershipControl)})`);
+              recordInstrumentFailure(`${vp.label}: substituted relocated Inventory stayed green or failed to restore (${JSON.stringify(membershipControl)})`);
             }
             recordControls('phone-dock-exact-membership');
           }
@@ -10657,34 +11366,70 @@ async function main() {
           if (hpControl.ok) recordInstrumentFailure(`${vp.label}: HP dual-background contrast injection stayed green (${JSON.stringify(hpControl)})`);
           recordControls('hp-label-dual-background');
         }
-        const hudState = await evalIn('window.__CF_SLICE__.api.state()');
-        addOutcome(vp.label, 'hud-controls', 'DOCK_CHARTS_PRESSED_STATE', '#dockcharts',
-          await evalIn(`window.__CF_GLASS_AUDIT__.pressedOutcome('#dockcharts',${JSON.stringify(hudState.chartsOn)})`),
-          'aria-pressed exactly mirrors the real star-chart state');
+        const compactCharts = usesPhoneDock(vp);
+        const auditChartsControl = async (selector, activate) => {
+          if (selector !== (compactCharts ? '#setcharts' : '#dockcharts')) throw new Error('Charts audit selected the hidden route');
+          const initial = await evalIn('window.__CF_SLICE__.api.state().chartsOn');
+          const prior = compactCharts ? await evalIn(`(()=>{const panel=document.getElementById('setpanel');
+            if(!panel)throw new Error('Charts Settings panel missing');
+            return {left:panel.scrollLeft,top:panel.scrollTop,docLeft:scrollX,docTop:scrollY};})()`) : null;
+          const evidence = { selector, initial, states: [], activations: [], restoration: null };
+          const readPressed = expected => evalIn(`(()=>{const selectors=${JSON.stringify(compactCharts ? [selector, '#dockcharts'] : [selector])},
+                  mirrors=selectors.map(selector=>window.__CF_GLASS_AUDIT__.pressedOutcome(selector,${JSON.stringify(expected)})),
+                  dock=document.getElementById('dockcharts'),hiddenDock=!${compactCharts}||(!!dock&&getComputedStyle(dock).display==='none'&&dock.getClientRects().length===0);
+                  return {ok:mirrors.every(row=>row.ok)&&hiddenDock,mirrors,hiddenDock};})()`);
+          let primaryError = null;
+          try {
+            for (const expected of [initial, !initial]) {
+              if (compactCharts) await evalIn(`(async()=>{document.querySelector(${JSON.stringify(selector)})?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+                await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));return true;})()`);
+              const surface = `${selector.slice(1)}-${expected ? 'on' : 'off'}`;
+              const pressed = await readPressed(expected);
+              evidence.states.push({ expected, pressed });
+              addOutcome(vp.label, 'hud-controls', 'DOCK_CHARTS_PRESSED_STATE', selector, pressed,
+                'selected Charts control and its compact hidden dock mirror the current chart state');
+              add(vp.label, surface, await audit({ surface, root: selector, textMin: 1, targetFloor,
+                safe: vp.safe || {}, safeExpected: vp.safe || undefined,
+                viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr }, fitSelectors: [selector],
+                interactiveRoots: [selector], contrastSelectors: [selector], overlapPairs: [],
+              }));
+              const activation = await activate(selector, 'Star charts');
+              evidence.activations.push(activation);
+              if (compactCharts && !activation?.instrumentOk) throw new Error('Charts native activation or scroll restoration failed: ' + JSON.stringify(activation));
+              if (compactCharts && !activation?.productOk) throw new ProductAnswerabilityFinding(
+                `${vp.label}: Charts native control did not receive its trusted activation`, activation,
+                { code: 'CHARTS_NATIVE_ACTIVATION', surface, element: selector, expected: 'visible 44px Settings Charts control receives trusted input' });
+              await waitFor(expected === initial ? 'chart toggle' : 'chart toggle restore',
+                `window.__CF_SLICE__.api.state().chartsOn===${JSON.stringify(!expected)}`);
+            }
+            evidence.restoredPressed = await readPressed(initial);
+            addOutcome(vp.label, 'hud-controls', 'DOCK_CHARTS_PRESSED_STATE', selector, evidence.restoredPressed,
+              'selected Charts control and hidden dock restore their exact original pressed state');
+          } catch (error) { primaryError = error; throw error; }
+          finally {
+            if (prior) {
+              try {
+                const restoration = await evalIn(`(async()=>{const panel=document.getElementById('setpanel'),prior=${JSON.stringify(prior)};
+                  if(!panel)return {ok:false,prior,actual:null};
+                  panel.scrollLeft=prior.left;panel.scrollTop=prior.top;scrollTo(prior.docLeft,prior.docTop);
+                  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+                  const actual={left:panel.scrollLeft,top:panel.scrollTop,docLeft:scrollX,docTop:scrollY};
+                  return {ok:Object.keys(prior).every(key=>actual[key]===prior[key]),prior,actual};})()`);
+                evidence.restoration = restoration;
+                if (!restoration.ok) throw new Error('Charts outer scroll restoration failed: ' + JSON.stringify(restoration));
+              } catch (error) {
+                if (primaryError) primaryError.message += `; Charts cleanup also failed: ${error.message}`;
+                else throw error;
+              }
+            }
+          }
+          console.log(`GLASS CHARTS CONTROL — ${vp.label}: ${JSON.stringify(evidence)}`);
+          recordControls('control-on-off-contrast');
+        };
         addOutcome(vp.label, 'hud-controls', 'SURVEY_DISCLOSURE_STATE', '#docksurvey',
           await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome('#docksurvey','#survey',false)`),
           'aria-controls names the real survey and aria-expanded is false while it is closed');
-        add(vp.label, `dockcharts-${hudState.chartsOn ? 'on' : 'off'}`, await audit({
-          surface: `dockcharts-${hudState.chartsOn ? 'on' : 'off'}`, root: '#dockcharts', textMin: 1, targetFloor,
-          safe: vp.safe || {}, safeExpected: vp.safe || undefined,
-          viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr }, fitSelectors: ['#dockcharts'],
-          interactiveRoots: ['#dockcharts'], contrastSelectors: ['#dockcharts'], overlapPairs: [],
-        }));
-        const toggledCharts = !hudState.chartsOn;
-        await evalIn(`document.getElementById('dockcharts')?.click()`);
-        await waitFor('chart toggle', `window.__CF_SLICE__.api.state().chartsOn===${JSON.stringify(toggledCharts)}`);
-        addOutcome(vp.label, 'hud-controls', 'DOCK_CHARTS_PRESSED_STATE', '#dockcharts',
-          await evalIn(`window.__CF_GLASS_AUDIT__.pressedOutcome('#dockcharts',${JSON.stringify(toggledCharts)})`),
-          'aria-pressed updates after the real star-chart toggle');
-        add(vp.label, `dockcharts-${toggledCharts ? 'on' : 'off'}`, await audit({
-          surface: `dockcharts-${toggledCharts ? 'on' : 'off'}`, root: '#dockcharts', textMin: 1, targetFloor,
-          safe: vp.safe || {}, safeExpected: vp.safe || undefined,
-          viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr }, fitSelectors: ['#dockcharts'],
-          interactiveRoots: ['#dockcharts'], contrastSelectors: ['#dockcharts'], overlapPairs: [],
-        }));
-        await evalIn(`document.getElementById('dockcharts')?.click()`);
-        await waitFor('chart toggle restore', `window.__CF_SLICE__.api.state().chartsOn===${JSON.stringify(hudState.chartsOn)}`);
-        recordControls('control-on-off-contrast');
+        if (!compactCharts) await auditChartsControl('#dockcharts', async selector => evalIn(`document.querySelector(${JSON.stringify(selector)})?.click()`));
 
         if (vp.label === 'primary-phone' || vp.label === 'desktop') {
           const keyboardStart = await evalIn(`(()=>{ const canvas=document.querySelector('canvas'); canvas.focus(); const ev=(key)=>canvas.dispatchEvent(new KeyboardEvent('keydown',{key,bubbles:true,cancelable:true})); ev('ArrowRight'); const S=window.__CF_SLICE__,ring=document.getElementById('cosmosfocus'),live=document.getElementById('cosmoslive'); return {focused:document.activeElement===canvas,target:S.api.state().keyboardTarget,ringDisplay:getComputedStyle(ring).display,ringText:ring.textContent,live:live.textContent}; })()`);
@@ -10758,14 +11503,14 @@ async function main() {
         if (vp.width > 900) {
           addOutcome(vp.label, 'toast', 'DESKTOP_UTILITY_ANCHOR', '#toast',
             await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast')`),
-            'desktop notifications share the measured bottom-right utility edge above the dock');
+            'desktop toast aligns with the measured bottom-right utility tray\'s right edge, 12px above it');
           if (!toastAnchorControlRun) {
             toastAnchorControlRun = true;
             const leftToastControl = await evalIn(`(()=>{ const toast=document.getElementById('toast'),prior=toast.getAttribute('style'),
               before=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast');
               toast.style.setProperty('left','12px','important');toast.style.setProperty('right','auto','important');
               const mutated=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast');
-              if(prior===null)toast.removeAttribute('style');else toast.setAttribute('style',prior);
+              toast.setAttribute('style','');toast.removeAttribute('style');if(prior!==null)toast.setAttribute('style',prior);
               const restoredStyle=toast.getAttribute('style'),restored=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast');
               return {priorStyle:prior,before,mutated,restoredStyle,restored};})()`);
             const toastControlAssessment = toastAnchorControlOutcome(leftToastControl);
@@ -10787,6 +11532,10 @@ async function main() {
            selects the deterministic Sol body; bind readiness to its real Land action
            and exact system rather than erasing or rejecting player naming. */
         await waitFor('Earth survey', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'&&s.star===424242&&s.cardOpen&&!!document.querySelector('#survey [data-act="landcta"]'); })()`);
+        const surveySettlement = await evalIn(`(${surveyLiveToastSettlement.toString()})(${reviewFrameSettlement.toString()},${readReviewFrameSettlements.toString()})`);
+        const surveySettlementVerdict = assessSurveyLiveToastSettlement(surveySettlement, vp);
+        console.log(`GLASS SURVEY LIVE-TOAST SETTLEMENT — ${vp.label}: ${JSON.stringify({ receipt: surveySettlement, verdict: surveySettlementVerdict })}`);
+        if (!surveySettlementVerdict.ok) recordInstrumentFailure(`${vp.label}: Survey settlement lost its live Charter toast or named frame receipt (${JSON.stringify(surveySettlementVerdict)})`);
         const chromeYieldCheck = `(()=>{ const ids=['trail','objchip'],rows=ids.map(id=>{const el=document.getElementById(id);
           return {id,text:(el?.textContent||'').trim(),display:el?getComputedStyle(el).display:'missing'};});
           return {ok:rows.every(r=>r.text.length>0&&r.display==='none'),rows}; })()`;
@@ -10794,16 +11543,21 @@ async function main() {
           'opening a survey yields the mobile trail and objective instead of painting the card over them');
         if (!chromeYieldControlRun) {
           chromeYieldControlRun = true;
-          const yieldControl = await evalIn(`(()=>{ const el=document.getElementById('trail'),prior=el.getAttribute('style');
-            el.style.setProperty('display','block','important');const result=${chromeYieldCheck};
-            if(prior===null)el.removeAttribute('style');else el.setAttribute('style',prior);return result;})()`);
-          if (yieldControl.ok) recordInstrumentFailure(`${vp.label}: visible trail-under-survey injection stayed green (${JSON.stringify(yieldControl)})`);
+          for (const id of ['trail', 'objchip']) {
+            const yieldControl = await evalIn(`(()=>{ const el=document.getElementById(${JSON.stringify(id)}),prior=el.getAttribute('style'),baseline=${chromeYieldCheck};let broken;
+              try{el.style.setProperty('display','block','important');broken=${chromeYieldCheck};}
+              finally{el.setAttribute('style','');el.removeAttribute('style');if(prior!==null)el.setAttribute('style',prior);}
+              const restored=${chromeYieldCheck},styleRestored=el.getAttribute('style')===prior;
+              return {ok:baseline.ok&&broken?.ok===false&&restored.ok&&styleRestored,baseline,broken,restored,styleRestored};})()`);
+            console.log(`GLASS SURVEY CHROME YIELD CONTROL — ${vp.label}/${id}: ${JSON.stringify(yieldControl)}`);
+            if (!yieldControl.ok) recordInstrumentFailure(`${vp.label}: visible ${id}-under-survey injection did not turn red and restore (${JSON.stringify(yieldControl)})`);
+          }
         }
         addOutcome(vp.label, 'survey', 'SURVEY_DISCLOSURE_STATE', '#docksurvey',
           await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome('#docksurvey','#survey',true)`),
           'aria-controls names the real survey and aria-expanded is true while it is open');
         addOutcome(vp.label, 'survey', 'SURVEY_CLOSE_INTEGRITY', '#survey [data-survey-close]',
-          await evalIn(`window.__CF_GLASS_AUDIT__.closeIntegrityOutcome('#survey','[data-survey-close]','[data-pnx]')`),
+          surveySettlement.closeOutcome,
           'the survey owns exactly one reachable top-right close and no generic panel close');
         const surveyDisclosure = await evalIn(`(()=>{ const S=window.__CF_SLICE__,card=document.getElementById('survey'),
           landed=S.api.state().save.landed.includes(133),rarity=[...card.querySelectorAll('[data-row="Rarity"]')],
@@ -11085,13 +11839,16 @@ async function main() {
         const planetsidePreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#planetside','#planetside > div:first-child','var(--dim)')`);
         addOutcome(vp.label, 'planetside-preferences', 'PREFERENCE_SURFACE_INERT', '#planetside > div:first-child', planetsidePreference,
           'populated Planetside computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
-        const chromePreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('body','#hintpill','var(--ink)')`);
+        const chromePreference = await evalIn(`window.__CF_GLASS_AUDIT__.guidancePreferenceOutcome()`);
+        if (chromePreference?.scoped === true && (chromePreference.error !== null || chromePreference.cleanupError !== null || chromePreference.restored !== true)) {
+          recordInstrumentFailure(`${vp.label}: guidance preference reveal or exact restoration failed (${JSON.stringify(chromePreference)})`);
+        }
         addOutcome(vp.label, 'top-chrome-preferences', 'PREFERENCE_SURFACE_INERT', '#hintpill', chromePreference,
           'top chrome computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
         if (vp.width > 900) {
-          const railPreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#raillft','#railcharters','var(--ink)')`);
-          addOutcome(vp.label, 'rail-preferences', 'PREFERENCE_SURFACE_INERT', '#railcharters', railPreference,
-            'desktop rail label computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
+          const railPreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#raillft','#docksurvey','var(--ink)')`);
+          addOutcome(vp.label, 'rail-preferences', 'PREFERENCE_SURFACE_INERT', '#docksurvey', railPreference,
+            'desktop native rail label computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
         }
 
         /* Arc 4 capture remains a pure presentation/geometry audit here.
@@ -11150,6 +11907,12 @@ async function main() {
           `${vp.label} Arc 4 Survey Close return`);
         const returned = await waitFor('Arc 4 Survey Close return', captureDisclosureState, 5000,
           (value) => value?.cardOpen === false && value?.expanded === 'false' && value?.focusId === 'docksurvey');
+        const closedGuidance = await evalIn(`window.__CF_GLASS_AUDIT__.guidancePreferenceOutcome(true)`);
+        if (closedGuidance?.scoped === true && (closedGuidance.error !== null || closedGuidance.cleanupError !== null || closedGuidance.restored !== true)) {
+          recordInstrumentFailure(`${vp.label}: after-Close guidance preference reveal or exact restoration failed (${JSON.stringify(closedGuidance)})`);
+        }
+        addOutcome(vp.label, 'survey-close-guidance', 'PREFERENCE_SURFACE_INERT', '#hintpill', closedGuidance,
+          'native Survey Close retains text preferences and restores guidance unless measured biosphere capacity still requires its space');
         const reopen = await activateRealKeyboardControl('#docksurvey', `${vp.label} Arc 4 Survey reopen`);
         const reopened = await waitFor('Arc 4 Survey native reopen', captureDisclosureState, 5000,
           (value) => value?.cardOpen === true && value?.expanded === 'true');
@@ -11295,26 +12058,25 @@ async function main() {
           throw new Error(`Arc 4 dependent baseline red; Planetside/panel outcomes blocked (${JSON.stringify(arc4DependentBaseline)})`);
         }
 
-        /* Every ordinary panel is deliberately exercised with populated real
-           data. Left-rail desktop panels and all phone dock panels remain over
-           Survey; the desktop right rail is intentionally reached after the
-           card yields it. Both compositions prove geometry and focus. */
+        /* Every ordinary panel uses its visible launcher/shelf control with
+           populated real data. Retain the planned over/instead-of-Survey
+           compositions while U1 selects the visible native owner at each width. */
         const ordinaryPanels = [
           { id: 'codex', name: 'compendium', dock: '#dockcodex', rail: '#railcodex', panel: '#codexpanel', required: '[data-sel=codex-entry]', min: 1, textMin: 80 },
-          { id: 'rec', name: 'records', dock: '#dockrecords', rail: '#railrecords', panel: '#recpanel', required: '#recpanel .row', min: 6, textMin: 80 },
+          { id: 'rec', name: 'records', dock: '#dockrecords', panel: '#recpanel', required: '#recpanel .row', min: 6, textMin: 80 },
           { id: 'atlas', name: 'atlas', dock: '#dockatlas', rail: '#railatlas', panel: '#atlaspanel', required: '[data-sel=atlas-entry]', min: 1, textMin: 25 },
           { id: 'shipyard', name: 'shipyard', dock: '#dockshipyard', rail: '#railshipyard', panel: '#shipyardpanel', required: '[data-cf-shipyard-preview="v1"]', min: 1, textMin: 80, shipyard: true },
-          { id: 'inventory', name: 'inventory', dock: '#dockinventory', rail: '#railinventory', panel: '#inventorypanel', required: '[data-inventory-row="exact"]', min: 3, textMin: 120, inventory: true },
-          { id: 'ch', name: 'charters', dock: '#dockcharters', rail: '#railcharters', panel: '#chpanel', required: '[data-sel=charter-ch]', min: 1, textMin: 120 },
+          { id: 'inventory', name: 'inventory', dock: '#dockinventory', panel: '#inventorypanel', required: '[data-inventory-row="exact"]', min: 3, textMin: 120, inventory: true },
+          { id: 'ch', name: 'charters', dock: '#objchip', panel: '#chpanel', required: '[data-sel=charter-ch]', min: 1, textMin: 120 },
         ];
         for (const item of ordinaryPanels) {
-          const opener = vp.width > 900 ? item.rail : item.dock;
-          /* A populated desktop survey deliberately yields the right rail,
-             so Records/Atlas/Shipyard/Inventory are reached *instead of* the
-             card, while the left rail and every phone dock panel remain
-             operable over it. */
-          const overSurvey = !(vp.width > 900 && (item.id === 'rec' || item.id === 'atlas'
-            || item.id === 'shipyard' || item.id === 'inventory'));
+          const wideChrome = vp.width > 700 && !(vp.width <= 900 && vp.width > vp.height);
+          const opener = wideChrome && item.rail ? item.rail : item.dock;
+          /* Preserve the Survey compositions supported by the current native owners;
+             the objective and right rail yield to Survey. Close it before
+             opening Charters through its sole visible objective button. */
+          const overSurvey = !(item.id === 'ch' || (vp.width > 900 && (item.id === 'rec' || item.id === 'inventory'))
+            || (vp.width > 700 && (item.id === 'atlas' || item.id === 'shipyard')));
           const cardBeforePanel = await evalIn('window.__CF_SLICE__.api.state().cardOpen');
           if (cardBeforePanel !== overSurvey) {
             await evalIn(`document.getElementById('docksurvey')?.click()`);
@@ -11786,7 +12548,7 @@ async function main() {
             recordsAnchorObserved = true;
             addOutcome(vp.label, composition, 'DESKTOP_UTILITY_PANEL_ANCHOR', item.panel,
               await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome(${JSON.stringify(item.panel)})`),
-              'desktop Records shares the measured bottom-right utility edge above the dock');
+              'desktop Records aligns with the measured bottom-right utility tray\'s right edge, 12px above it');
           }
           const ordinaryPanelAuditOptions = {
             ...common, surface: composition, root: item.panel, textMin: item.textMin,
@@ -11794,6 +12556,13 @@ async function main() {
             fitSelectors: [item.panel], interactiveRoots: [item.panel], contrastSelectors: [item.panel, opener],
             maxContrastReports: 16, overlapPairs: item.inventory ? [[item.panel, '#dock']] : [],
           };
+          if (item.id === 'ch') {
+            const lanes = await evalIn(`(()=>{const root=getComputedStyle(document.documentElement);return {body:document.body.className,
+              values:Object.fromEntries(['--topbar-h','--cf-sheet-floor','--cf-lower-top'].map(key=>[key,root.getPropertyValue(key)])),
+              elements:['objchip','chpanel','hintpill','ctxbar','toast'].map(id=>{const el=document.getElementById(id),s=getComputedStyle(el),r=el.getBoundingClientRect();
+                return {id,classes:el.className,display:s.display,ariaHidden:el.getAttribute('aria-hidden'),top:r.top,height:r.height,bottom:r.bottom};})};})()`);
+            console.log(`GLASS CHARTERS OPEN LANES — ${vp.label}: ${JSON.stringify(lanes)}`);
+          }
           add(vp.label, composition, await audit(ordinaryPanelAuditOptions));
           if (item.id === 'codex' && !rarityContrastControlRun) {
             rarityContrastControlRun = true;
@@ -11843,21 +12612,21 @@ async function main() {
                   &&document.querySelector('#codexpanel [data-ci="0"]');})()`);
 
               const workspace = await evalIn(`(()=>{const panel=document.getElementById('codexpanel'),scroll=document.querySelector('[data-sel="codex-scroll"]'),
-                survey=document.getElementById('survey'),search=document.getElementById('searchbox'),dock=document.getElementById('dock'),
-                root=getComputedStyle(document.documentElement),yielded=['topbar','ctxbar','hintpill'].map(id=>{
-                  const el=document.getElementById(id),style=el?getComputedStyle(el):null;return {id,visibility:style?.visibility||'missing',pointerEvents:style?.pointerEvents||'missing'};});
-                if(!panel||!scroll||!survey||!search||!dock)return {ok:false,why:'missing panel/scroller/survey/Search/dock',yielded};
+                survey=document.getElementById('survey'),search=document.getElementById('searchbox'),dock=document.getElementById('dock'),shelf=document.getElementById('topbar'),
+                root=getComputedStyle(document.documentElement),yielded=['hpbar','ctxbar','hintpill'].map(id=>{
+                  const el=document.getElementById(id),style=el?getComputedStyle(el):null;return {id,display:style?.display||'missing',visibility:style?.visibility||'missing',pointerEvents:style?.pointerEvents||'missing'};});
+                if(!panel||!scroll||!survey||!search||!dock||!shelf)return {ok:false,why:'missing panel/scroller/survey/Search/dock/shelf',yielded};
                 const p=panel.getBoundingClientRect(),s=scroll.getBoundingClientRect(),v=survey.getBoundingClientRect(),
                   q=search.getBoundingClientRect(),d=dock.getBoundingClientRect(),intersects=(a,b)=>a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1,
                   safe={top:parseFloat(root.getPropertyValue('--safe-top'))||0,right:parseFloat(root.getPropertyValue('--safe-right'))||0,
                     bottom:parseFloat(root.getPropertyValue('--safe-bottom'))||0,left:parseFloat(root.getPropertyValue('--safe-left'))||0},
                   surveyStyle=getComputedStyle(survey),surveyVisible=surveyStyle.display!=='none'&&surveyStyle.visibility!=='hidden'&&v.width>0&&v.height>0,
-                  retained=[search,dock].map((el)=>{const style=getComputedStyle(el),r=el.getBoundingClientRect();return {id:el.id,display:style.display,
+                  retained=[shelf,search,dock].map((el)=>{const style=getComputedStyle(el),r=el.getBoundingClientRect();return {id:el.id,display:style.display,
                     visibility:style.visibility,pointerEvents:style.pointerEvents,rect:[r.left,r.top,r.right,r.bottom]};}),
                   overlaps={panelSurvey:intersects(p,v),panelSearch:intersects(p,q),panelDock:intersects(p,d),surveySearch:intersects(v,q),
                     surveyDock:intersects(v,d),searchDock:intersects(q,d)};
                 return {ok:document.body.classList.contains('panel-open')&&document.body.classList.contains('fs-xl')
-                    &&document.body.classList.contains('font-mono')&&yielded.every(row=>row.visibility==='hidden'&&row.pointerEvents==='none')
+                    &&document.body.classList.contains('font-mono')&&yielded.every(row=>row.id==='hpbar'?row.display==='none':row.visibility==='hidden'&&row.pointerEvents==='none')
                     &&retained.every(row=>row.display!=='none'&&row.visibility==='visible'&&row.pointerEvents!=='none')
                     &&p.left>=safe.left-1&&p.top>=safe.top-1&&p.right<=innerWidth-safe.right+1&&p.bottom<=innerHeight-safe.bottom+1
                     &&q.left>=safe.left-1&&q.top>=safe.top-1&&q.right<=innerWidth-safe.right+1&&q.bottom<=innerHeight-safe.bottom+1
@@ -11871,19 +12640,23 @@ async function main() {
               addOutcome(vp.label, 'compendium-short-landscape', 'COMPENDIUM_SHORT_LANDSCAPE_WORKSPACE', '#codexpanel', workspace,
                 'the A++ Compendium owns the safe-height left workspace while Search, dock, and Survey remain separate usable right-column surfaces');
 
-              const nonModalChrome = await evalIn(`(()=>{const search=document.getElementById('searchbox'),dock=document.getElementById('dock'),
-                dockButton=document.getElementById('dockcodex'),buttons=dock?[...dock.querySelectorAll('button')]:[],panel=document.getElementById('codexpanel');
-                if(!(search instanceof HTMLInputElement)||!dock||!dockButton||!panel)return {ok:false,why:'Search/dock/Compendium missing'};
+              const nonModalChrome = await evalIn(`(()=>{const search=document.getElementById('searchbox'),dock=document.getElementById('dock'),shelf=document.getElementById('topbar'),
+                shelfActions=['dockinventory'].map(id=>document.getElementById(id)),
+                dockButton=document.getElementById('dockcodex'),
+                buttons=dock?[...dock.querySelectorAll(':scope > button, :scope > #raillft > button')].filter(button=>{const s=getComputedStyle(button),r=button.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;}):[],panel=document.getElementById('codexpanel');
+                if(!(search instanceof HTMLInputElement)||!dock||!dockButton||!panel||!shelf||shelfActions.some(el=>!el))return {ok:false,why:'Search/dock/shelf/Compendium missing'};
                 const rendered=(el)=>{const style=getComputedStyle(el),r=el.getBoundingClientRect();return style.display!=='none'&&style.visibility==='visible'
                     &&style.pointerEvents!=='none'&&r.width>0&&r.height>0;},ownsCentre=(el)=>{const r=el.getBoundingClientRect(),hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);
                     return !!hit&&(hit===el||el.contains(hit));},named=(el)=>!!(el.getAttribute('aria-label')||el.textContent||'').trim(),
-                  exposed=(el)=>!el.inert&&!el.closest('[inert],[aria-hidden="true"]'),positiveVisibility=rendered(search)&&rendered(dock)&&exposed(search)&&exposed(dock),
-                  searchStyle=search.getAttribute('style'),dockStyle=dock.getAttribute('style'),dockAriaHidden=dock.getAttribute('aria-hidden');
-                let hiddenSearchRejected=false,blockedDockRejected=false,hiddenDockA11yRejected=false;
+                  exposed=(el)=>!el.inert&&!el.closest('[inert],[aria-hidden="true"]'),shelfVisible=()=>{const s=getComputedStyle(shelf),r=shelf.getBoundingClientRect();return s.display!=='none'&&s.visibility==='visible'&&r.width>0&&r.height>0;},positiveVisibility=rendered(search)&&rendered(dock)&&shelfVisible()&&exposed(search)&&exposed(dock)&&exposed(shelf),
+                  searchStyle=search.getAttribute('style'),dockStyle=dock.getAttribute('style'),shelfStyle=shelf.getAttribute('style'),dockAriaHidden=dock.getAttribute('aria-hidden');
+                let hiddenSearchRejected=false,hiddenShelfRejected=false,blockedDockRejected=false,hiddenDockA11yRejected=false;
+                try{shelf.style.setProperty('visibility','hidden','important');hiddenShelfRejected=!shelfVisible();}
+                finally{shelf.setAttribute('style','');shelf.removeAttribute('style');if(shelfStyle!==null)shelf.setAttribute('style',shelfStyle);}
                 try{search.style.setProperty('visibility','hidden','important');hiddenSearchRejected=!rendered(search);}
-                finally{if(searchStyle===null)search.removeAttribute('style');else search.setAttribute('style',searchStyle);}
+                finally{search.setAttribute('style','');search.removeAttribute('style');if(searchStyle!==null)search.setAttribute('style',searchStyle);}
                 try{dock.style.setProperty('pointer-events','none','important');blockedDockRejected=!rendered(dock);}
-                finally{if(dockStyle===null)dock.removeAttribute('style');else dock.setAttribute('style',dockStyle);}
+                finally{dock.setAttribute('style','');dock.removeAttribute('style');if(dockStyle!==null)dock.setAttribute('style',dockStyle);}
                 try{dock.setAttribute('aria-hidden','true');hiddenDockA11yRejected=!exposed(dock);}
                 finally{if(dockAriaHidden===null)dock.removeAttribute('aria-hidden');else dock.setAttribute('aria-hidden',dockAriaHidden);}
                 const searchHit=ownsCentre(search),dockHits=buttons.map(button=>({id:button.id,hit:ownsCentre(button),named:named(button),
@@ -11896,18 +12669,23 @@ async function main() {
                 dockButton.focus({preventScroll:true});const dockFocused=document.activeElement===dockButton;dockButton.click();
                 const closed=window.__CF_SLICE__.api.state();dockButton.click();const reopened=window.__CF_SLICE__.api.state(),
                   close=panel.querySelector('[data-pnx]'),focusEntered=!!close&&document.activeElement===close;
-                return {ok:positiveVisibility&&hiddenSearchRejected&&blockedDockRejected&&hiddenDockA11yRejected&&searchHit&&searchFocused
+                return {ok:positiveVisibility&&hiddenSearchRejected&&hiddenShelfRejected&&blockedDockRejected&&hiddenDockA11yRejected&&searchHit&&searchFocused
+                    &&shelf.getAttribute('style')===shelfStyle&&search.getAttribute('style')===searchStyle&&dock.getAttribute('style')===dockStyle
+                    &&shelfActions.every(el=>{const r=el.getBoundingClientRect();return el instanceof HTMLButtonElement&&rendered(el)&&exposed(el)&&named(el)
+                      &&r.width>=44&&r.height>=44&&ownsCentre(el)&&el.tabIndex>=0&&!el.disabled;})
                     &&search.getAttribute('aria-label')?.trim().length>0&&exposed(search)&&search.tabIndex>=0&&!search.disabled&&!search.readOnly
-                    &&dock.getAttribute('aria-label')?.trim().length>0&&dockFocused&&dockHits.length===10
+                    &&dock.getAttribute('aria-label')?.trim().length>0&&dockFocused
+                    &&JSON.stringify(dockHits.map(row=>row.id))===JSON.stringify(
+                      ['docksurvey','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'])
                     &&dockHits.every(row=>row.hit&&row.named&&row.exposed&&row.tabIndex>=0&&!row.disabled)
                     &&filtered.panel.mode==='list'&&filtered.panel.filteredCount===1
                     &&cleared.panel.mode==='list'&&cleared.panel.filteredCount===${hostileCompendiumRows.length}
                     &&closed.panelOpen===null&&reopened.panelOpen==='codex'&&focusEntered,
-                  positiveVisibility,hiddenSearchRejected,blockedDockRejected,hiddenDockA11yRejected,searchHit,searchFocused,searchName:search.getAttribute('aria-label'),
+                  positiveVisibility,hiddenSearchRejected,hiddenShelfRejected,blockedDockRejected,hiddenDockA11yRejected,searchHit,searchFocused,searchName:search.getAttribute('aria-label'),
                   dockName:dock.getAttribute('aria-label'),dockFocused,dockHits,filteredCount:filtered.panel.filteredCount,
                   clearedCount:cleared.panel.filteredCount,closedPanel:closed.panelOpen,reopenedPanel:reopened.panelOpen,focusEntered};})()`);
               addOutcome(vp.label, 'compendium-nonmodal-chrome', 'NONMODAL_CHROME_UNUSABLE', '#searchbox,#dock', nonModalChrome,
-                'non-modal Search and every dock action remain rendered, named, focusable, hit-testable, and usable while the Compendium is open');
+                'non-modal shelf Inventory, Search and all nine compact launcher actions remain rendered, named, focusable, hit-testable, and usable while the Compendium is open');
               await waitFor('non-modal Compendium reopen', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();return d.panel.mode==='list'
                 &&d.panel.sourceCount===${hostileCompendiumRows.length}&&d.panel.filteredCount===${hostileCompendiumRows.length}
                 &&document.querySelector('#codexpanel [data-ci="0"]');})()`);
@@ -11923,23 +12701,44 @@ async function main() {
               };
               const nonModalAuditRows = await audit(nonModalAuditOptions);
               add(vp.label, 'compendium-nonmodal-chrome', nonModalAuditRows);
-              const dockContrastControl = await evalIn(`(()=>{const buttons=[...document.querySelectorAll('#dock button')];
-                if(buttons.length!==10||buttons.some(button=>!(button instanceof HTMLButtonElement)||!button.id))
-                  return {ok:false,why:'exact ten named dock buttons missing',count:buttons.length};
-                const expected=buttons.map(button=>'#'+CSS.escape(button.id)).sort(),prior=buttons.map(button=>button.getAttribute('style')),
-                  baseline=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)});let injected=[];
-                try{for(const button of buttons){button.style.setProperty('color','#fff','important');button.style.setProperty('background','#fff','important');}
-                  injected=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)});
-                }finally{buttons.forEach((button,index)=>{if(prior[index]===null)button.removeAttribute('style');else button.setAttribute('style',prior[index]);});}
-                const restored=buttons.map(button=>button.getAttribute('style')),clean=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)}),
-                  contrastIds=(rows)=>rows.filter(row=>row.code==='TEXT_CONTRAST_LOW'&&expected.includes(row.element)).map(row=>row.element).sort(),
-                  baselineIds=contrastIds(baseline),injectedIds=contrastIds(injected),cleanIds=contrastIds(clean),
+              const dockContrastControl = await evalIn(`(()=>{const visible=node=>{const s=getComputedStyle(node),r=node.getBoundingClientRect();
+                  return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;},
+                buttons=[...document.querySelectorAll('#dock > button, #dock > #raillft > button')].filter(visible),
+                expectedIds=['docksurvey','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'];
+                if(JSON.stringify(buttons.map(button=>button.id))!==JSON.stringify(expectedIds)
+                  ||buttons.some(button=>!(button instanceof HTMLButtonElement)))
+                  return {ok:false,why:'exact visible U1 native dock membership missing',expectedIds,actual:buttons.map(button=>button.id)};
+                const expected=expectedIds.map(id=>'#'+CSS.escape(id)).sort(),targets=[],expectedSamples=[];
+                for(const button of buttons){const owner='#'+CSS.escape(button.id);targets.push(button);
+                  if(button.matches('.dock-utility')){const face=button.querySelector(':scope > .utility-face'),glyph=face?.querySelector(':scope > .ico');
+                    if(!face||!glyph||!visible(glyph)||!glyph.textContent.trim())return {ok:false,why:'visible utility glyph missing',owner};
+                    targets.push(face,glyph);expectedSamples.push(owner+'|utility-glyph');
+                    for(const badge of button.querySelectorAll(':scope > [data-notification-count]'))if(visible(badge)&&badge.textContent.trim()){
+                      targets.push(badge);expectedSamples.push(owner+'|notification-count');}
+                    if([...button.childNodes].some(node=>node.nodeType===Node.TEXT_NODE&&node.textContent.trim()))expectedSamples.push(owner+'|button');
+                  }else expectedSamples.push(owner+'|button');}
+                expectedSamples.sort();const controlOptions={...${JSON.stringify(nonModalAuditOptions)},
+                    maxContrastReports:Math.max(${nonModalAuditOptions.maxContrastReports},expectedSamples.length+1)},
+                  prior=targets.map(node=>({present:node.hasAttribute('style'),value:node.getAttribute('style')})),
+                  baseline=window.__CF_GLASS_AUDIT__.audit(controlOptions);let injected=[];
+                try{for(const node of targets){if(!node.matches('.utility-face'))node.style.setProperty('color','#fff','important');
+                    if(!node.matches('button.dock-utility'))node.style.setProperty('background','#fff','important');}
+                  injected=window.__CF_GLASS_AUDIT__.audit(controlOptions);
+                }finally{targets.forEach((node,index)=>{node.setAttribute('style','');node.removeAttribute('style');
+                  if(prior[index].present)node.setAttribute('style',prior[index].value);});}
+                const restored=targets.map(node=>({present:node.hasAttribute('style'),value:node.getAttribute('style')})),
+                  clean=window.__CF_GLASS_AUDIT__.audit(controlOptions),
+                  samples=rows=>[...new Set(rows.filter(row=>row.code==='TEXT_CONTRAST_LOW'&&expected.includes(row.element))
+                    .map(row=>row.element+'|'+(row.actual?.sampleKind||'button')))].sort(),
+                  baselineSamples=samples(baseline),injectedSamples=samples(injected),cleanSamples=samples(clean),
                   bare=[...baseline,...injected,...clean].some(row=>row.code==='TEXT_CONTRAST_LOW'&&row.element==='#dock'),
-                  restoredExact=restored.every((value,index)=>(${sameInlineStyleAttribute.toString()})(prior[index],value));
-                return {ok:JSON.stringify(injectedIds)===JSON.stringify(expected)&&JSON.stringify(cleanIds)===JSON.stringify(baselineIds)
-                    &&!bare&&restoredExact,expected,baselineIds,injectedIds,cleanIds,bare,restoredExact,prior,restored};})()`);
+                  restoredExact=restored.every((value,index)=>value.present===prior[index].present&&value.value===prior[index].value);
+                return {ok:baselineSamples.length===0&&JSON.stringify(injectedSamples)===JSON.stringify(expectedSamples)
+                    &&cleanSamples.length===0&&!bare&&restoredExact,expected,expectedSamples,baselineSamples,injectedSamples,
+                  cleanSamples,bare,restoredExact,prior,restored,baseline,injected,clean};})()`);
+              console.log(`GLASS NONMODAL DOCK CONTRAST CONTROL — ${vp.label}: ${JSON.stringify(dockContrastControl)}`);
               if (!dockContrastControl?.ok || nonModalAuditRows.some(row=>row.code==='TEXT_CONTRAST_LOW'&&row.element==='#dock')) {
-                recordInstrumentFailure(`${vp.label}: non-modal dock contrast control did not isolate the painted buttons from the transparent layout wrapper (${JSON.stringify(dockContrastControl)})`);
+                recordInstrumentFailure(`${vp.label}: non-modal dock contrast control did not isolate every visible board, utility glyph and badge from transparent wrappers (${JSON.stringify(dockContrastControl)})`);
               }
               recordControls('nonmodal-dock-button-contrast');
               await evalIn(`document.querySelector('#codexpanel [data-pnx]')?.focus()`);
@@ -12811,6 +13610,7 @@ async function main() {
               expanded:opener?.getAttribute('aria-expanded')||null,
               focus:document.activeElement?.id||null,preservedDisplay:preservedStyle?.display||null};})()` : null;
           let realShipyardClose = null;
+          let chartersSettlement = null;
           let closed;
           if (item.shipyard) {
             realShipyardClose = await activateRealControl('#shipyardpanel [data-pnx="shipyard"]', `${vp.label} Shipyard Close`);
@@ -12835,11 +13635,22 @@ async function main() {
               recordControls('shipyard-close-release');
               shipyardControlRun = true;
             }
+          } else if (item.id === 'ch') {
+            const options = { surface:'charters-opener-off',root:opener,textMin:1,targetFloor,safe:vp.safe||{},
+              safeExpected:vp.safe||undefined,viewportExpected:{width:vp.width,height:vp.height,dpr:vp.dpr},
+              fitSelectors:[opener],interactiveRoots:[opener],contrastSelectors:[opener],overlapPairs:[] };
+            chartersSettlement = await evalIn(`(${chartersCloseSettlement.toString()})(${reviewFrameSettlement.toString()},${readReviewFrameSettlements.toString()},${JSON.stringify(options)})`);
+            console.log(`GLASS CHARTERS CLOSE SETTLEMENT — ${vp.label}: ${JSON.stringify(chartersSettlement)}`);
+            closed = chartersSettlement.closeOutcome;
           } else {
             closed = await evalIn(`window.__CF_GLASS_AUDIT__.panelCloseOutcome(${JSON.stringify(item.panel)},'[data-pnx]',${JSON.stringify(opener)},${JSON.stringify(preservedSurface)})`);
           }
           addOutcome(vp.label, composition, 'ORDINARY_PANEL_CLOSE_OUTCOME', `${item.panel} [data-pnx]`, closed,
             `close owns its centre, closes the panel, preserves ${overSurvey ? 'the survey' : 'Planetside'}, and restores logical opener focus`);
+          if (chartersSettlement) {
+            const verdict = assessChartersCloseSettlement(chartersSettlement,vp);
+            if (!verdict.ok) recordInstrumentFailure(`${vp.label}: Charters Close settlement evidence is invalid (${JSON.stringify(verdict)})`);
+          }
           if (item.inventory) {
             addOutcome(vp.label, composition, 'INVENTORY_PANEL_CLOSE_RELEASE', '#inventorysheet',
               await evalIn('window.__CF_GLASS_AUDIT__.inventoryClosedOutcome(null)'),
@@ -12870,7 +13681,7 @@ async function main() {
           addOutcome(vp.label, composition, 'PANEL_DISCLOSURE_STATE', opener,
             await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome(${JSON.stringify(opener)},${JSON.stringify(item.panel)},false)`),
             'visible opener exposes expanded=false after its panel closes');
-          add(vp.label, `${item.name}-opener-off`, await audit({
+          add(vp.label, `${item.name}-opener-off`, chartersSettlement?.openerAudit ?? await audit({
             surface: `${item.name}-opener-off`, root: opener, textMin: 1, targetFloor,
             safe: vp.safe || {}, safeExpected: vp.safe || undefined,
             viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr },
@@ -12879,31 +13690,76 @@ async function main() {
         }
 
         if (vp.width > 900 && !hiddenOpenerControlRun) {
-          /* Reach the real focus edge: open Records from its visible right
-             rail, reopen Survey (which hides that rail), then close Records.
-             Focus must choose the visible Survey dock fallback. */
+          /* Atlas starts from its genuinely visible native rail. Opening
+             Survey naturally yields that rail; no hidden-state style is
+             injected. Close must choose the still-visible Survey control. */
+          const pointerType = vp.mobile ? 'touch' : 'mouse';
+          const hiddenOpenerSnapshot = `(()=>{const opener=document.getElementById('railatlas'),dock=document.getElementById('dock'),rail=document.getElementById('railrgt'),
+            survey=document.getElementById('docksurvey'),panel=document.getElementById('atlaspanel'),
+            close=panel?.querySelector('[data-pnx="atlas"]'),s=window.__CF_SLICE__.api.state(),
+            openerStyle=opener?getComputedStyle(opener):null,surveyStyle=survey?getComputedStyle(survey):null;
+            return {panel:s.panelOpen,cardOpen:s.cardOpen,cardTitle:s.cardTitle,bodyClass:document.body.className,
+              openerId:opener?.id??null,openerRendered:!!opener&&opener.getClientRects().length>0,
+              openerDisplay:openerStyle?.display??null,openerVisibility:openerStyle?.visibility??null,
+              dockRendered:!!dock&&dock.getClientRects().length>0,railRendered:!!rail&&rail.getClientRects().length>0,railDisplay:rail?getComputedStyle(rail).display:null,
+              openerSameNode:opener===window.__cfGlassHiddenNativeOpener,style:{present:opener?.hasAttribute('style')??null,value:opener?.getAttribute('style')??null},
+              closeFocused:!!close&&document.activeElement===close,
+              surveyRendered:!!survey&&survey.getClientRects().length>0
+                &&surveyStyle?.display!=='none'&&surveyStyle?.visibility==='visible',
+              focus:document.activeElement?.id||null};})()`;
           if ((await evalIn('window.__CF_SLICE__.api.state().cardOpen'))) {
-            await evalIn(`document.getElementById('docksurvey')?.click()`);
+            const setupClose = await activateRealControl('#docksurvey', 'hidden-opener setup Survey close');
+            if (!setupClose.ok) stopInstrumentControl(`${vp.label}: hidden-opener setup lacked native Survey input (${JSON.stringify(setupClose)})`);
             await waitFor('hidden-opener setup survey closed', `!window.__CF_SLICE__.api.state().cardOpen`);
           }
-          await evalIn(`document.getElementById('railrecords')?.click()`);
-          await waitFor('hidden-opener Records open', `window.__CF_SLICE__.api.state().panelOpen==='rec'`);
-          const hiddenOpenerSetup = await evalIn(`(()=>{ document.getElementById('docksurvey')?.click();const s=window.__CF_SLICE__.api.state();return {
-            panel:s.panelOpen,cardOpen:s.cardOpen,cardTitle:s.cardTitle,bodyClass:document.body.className,
-            railDisplay:getComputedStyle(document.getElementById('railrecords')).display,railRootDisplay:getComputedStyle(document.getElementById('railrgt')).display};})()`);
-          if (hiddenOpenerSetup.panel !== 'rec' || !hiddenOpenerSetup.cardOpen || hiddenOpenerSetup.railRootDisplay !== 'none') {
-            recordInstrumentFailure(`${vp.label}: could not construct hidden panel-opener focus state (${JSON.stringify(hiddenOpenerSetup)})`);
-          }
-          await evalIn(`document.querySelector('#recpanel [data-pnx]')?.click()`);
-          await waitFor('hidden-opener panel close', `window.__CF_SLICE__.api.state().panelOpen===null`);
-          const fallbackCheck = `(()=>{ const rail=document.getElementById('railrecords'),survey=document.getElementById('docksurvey');return {
-            ok:rail.getClientRects().length===0&&document.activeElement===survey&&window.__CF_SLICE__.api.state().cardOpen,
-            railRendered:rail.getClientRects().length>0,focus:document.activeElement?.id||null,cardOpen:window.__CF_SLICE__.api.state().cardOpen};})()`;
-          addOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST', '#docksurvey', await evalIn(fallbackCheck),
-            'closing a panel whose rail opener became hidden restores focus to the visible Survey control');
-          const fallbackControl = await evalIn(`(()=>{ document.querySelector('canvas')?.focus();return ${fallbackCheck};})()`);
-          if (fallbackControl.ok) recordInstrumentFailure(`${vp.label}: wrong hidden-opener fallback focus stayed green (${JSON.stringify(fallbackControl)})`);
-          await evalIn(`document.getElementById('docksurvey')?.focus()`);
+          await evalIn(`window.__cfGlassHiddenNativeOpener=document.getElementById('railatlas')`);
+          const opening = await activateRealControl('#railatlas', 'hidden-opener visible Atlas opener');
+          if (!opening.ok) stopInstrumentControl(`${vp.label}: hidden-opener setup lacked native visible Atlas input (${JSON.stringify(opening)})`);
+          await waitFor('hidden-opener Atlas open', `window.__CF_SLICE__.api.state().panelOpen==='atlas'`);
+          const baseline = await evalIn(hiddenOpenerSnapshot);
+          const hiding = await activateRealControl('#docksurvey', 'hidden-opener Survey transition');
+          if (!hiding.ok) stopInstrumentControl(`${vp.label}: hidden-opener setup lacked native Survey transition (${JSON.stringify(hiding)})`);
+          await waitFor('hidden-opener Survey reopened', `window.__CF_SLICE__.api.state().cardOpen`);
+          try {
+            const hidden = await evalIn(hiddenOpenerSnapshot);
+            const setup = hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, hidden, pointerType });
+            if (!setup.ok) stopInstrumentControl(`${vp.label}: could not prove natural visible-to-hidden panel opener (${JSON.stringify({ setup, opening, baseline, hiding, hidden })})`);
+            const closing = await activateRealControl('#atlaspanel [data-pnx="atlas"]', 'hidden-opener Atlas Close');
+            if (!closing.ok) stopInstrumentControl(`${vp.label}: hidden-opener Close lacked native input (${JSON.stringify(closing)})`);
+            await waitFor('hidden-opener panel close', `window.__CF_SLICE__.api.state().panelOpen===null`);
+            const fallback = await evalIn(hiddenOpenerSnapshot);
+            const fallbackOutcome = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback, pointerType });
+            addOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST', '#docksurvey',
+              { ...fallbackOutcome, diagnostics: { setup, opening, baseline, hiding, hidden, closing, fallback } },
+              'closing Atlas with its native rail opener naturally yielded to Survey restores focus to the visible Survey control');
+            stopAfterRecordedProductOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST',
+              '#docksurvey', fallbackOutcome, 'naturally hidden-opener Close restores visible Survey focus');
+            await evalIn(`document.querySelector('canvas')?.focus()`);
+            const wrongFocus = await evalIn(hiddenOpenerSnapshot);
+            const fallbackControl = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: wrongFocus, pointerType });
+            if (wrongFocus.focus === 'docksurvey' || fallbackControl.ok) {
+              stopInstrumentControl(`${vp.label}: wrong hidden-opener fallback focus was not rejected (${JSON.stringify({ wrongFocus, fallbackControl })})`);
+            }
+            await evalIn(`document.getElementById('docksurvey')?.focus()`);
+            const restoredFocus = await evalIn(hiddenOpenerSnapshot);
+            const restoredOutcome = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: restoredFocus, pointerType });
+            if (!restoredOutcome.ok) stopInstrumentControl(`${vp.label}: hidden-opener fallback restoration failed (${JSON.stringify({ restored: restoredFocus, restoredOutcome })})`);
+            const showing = await activateRealControl('#docksurvey', 'hidden-opener native Survey close restores rail');
+            if (!showing.ok) stopInstrumentControl(`${vp.label}: hidden-opener restoration lacked native Survey Close (${JSON.stringify(showing)})`);
+            await waitFor('hidden-opener restored rail', `!window.__CF_SLICE__.api.state().cardOpen`);
+            const restored = await evalIn(`(()=>{const opener=document.getElementById('railatlas'),r=opener.getBoundingClientRect(),
+              hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2),snapshot=${hiddenOpenerSnapshot};
+              return {...snapshot,...snapshot.style,sameNode:snapshot.openerSameNode,focusUnchanged:document.activeElement?.id==='docksurvey',
+                centreOwned:!!hit&&(hit===opener||opener.contains(hit))};})()`);
+            const restoration = hiddenPanelOpenerRestorationOutcome(baseline.style, restored);
+            if (!restoration.ok) stopInstrumentControl(`${vp.label}: natural hidden-opener style/target restoration failed (${JSON.stringify({ baseline, restored, restoration })})`);
+            const reopened = await activateRealControl('#docksurvey', 'hidden-opener restore Survey predecessor');
+            if (!reopened.ok) stopInstrumentControl(`${vp.label}: hidden-opener could not restore native Survey predecessor (${JSON.stringify(reopened)})`);
+            await waitFor('hidden-opener Survey predecessor restored', `window.__CF_SLICE__.api.state().cardOpen`);
+            const hiddenAgain = await evalIn(hiddenOpenerSnapshot);
+            if (!hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: hiddenAgain, pointerType }).ok)
+              stopInstrumentControl(`${vp.label}: natural hidden-opener predecessor restoration failed (${JSON.stringify(hiddenAgain)})`);
+          } finally { await evalIn(`delete window.__cfGlassHiddenNativeOpener`); }
           hiddenOpenerControlRun = true;
           recordControls('hidden-panel-opener-focus-fallback');
         }
@@ -12912,23 +13768,31 @@ async function main() {
            visible top-chrome surface that just returned. This catches short
            landscape+A++ layouts where a bottom-anchored strip can rise over
            HP/search/trail/objective despite clearing the dock. */
-        await evalIn(`document.getElementById('docksurvey')?.click()`);
-        await waitFor('survey closed for top-chrome clearance', `!window.__CF_SLICE__.api.state().cardOpen`);
-        await waitFor('deferred lower/top chrome measurement after survey close', `(()=>{ const root=getComputedStyle(document.documentElement),ctx=document.getElementById('ctxbar'),dock=document.getElementById('dock'),trail=document.getElementById('trail'),fixed=['topbar','searchbox','objchip'].map(id=>document.getElementById(id)),fallback=document.body.classList.contains('surface-trail-yield');
-          const visibleBottom=(el)=>{const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0?r.bottom:0;},
+        const topChromeState = `(()=>{const state=window.__CF_SLICE__.api.state();return {cardOpen:state.cardOpen,
+          at:performance.now(),timeOrigin:performance.timeOrigin,viewport:{width:innerWidth,height:innerHeight}};})()`;
+        const topChromeClose = await surveyPostCloseSettlement(
+          () => evalIn(topChromeState),
+          () => activateRealControl('#docksurvey','close Survey for top-chrome clearance',{maxScrolls:0,scrolling:false}),
+          () => waitFor('survey closed for top-chrome clearance', `window.__CF_SLICE__.api.state().cardOpen`,5000,value=>value===false),
+          label => evalIn(`(${reviewFrameSettlement.toString()})(${JSON.stringify(label)})`),
+          () => evalIn(`(${readReviewFrameSettlements.toString()})()`));
+        const topChromeCloseAssessment = assessSurveyPostClose(topChromeClose,vp);
+        if (!topChromeCloseAssessment.ok) stopInstrumentControl(`${vp.label}: Survey post-close predecessor failed (${JSON.stringify({topChromeClose,topChromeCloseAssessment})})`);
+        const topChromeFixedRows = `(${paintedPostCloseFixedRows.toString()})()`;
+        const topChromeFrameOwner = `(label => (${postCloseFrameSettlement.toString()})(${reviewFrameSettlement.toString()},${readReviewFrameSettlements.toString()},label))`;
+        const topChromeFrameValid = receipt => assessPostCloseFrameSettlement(receipt, vp);
+        // AppChrome's separate publication intentionally retains the full wrapper.
+        await waitFor('deferred lower/top chrome measurement after survey close', `(()=>{ const root=getComputedStyle(document.documentElement),ctx=document.getElementById('ctxbar'),dock=document.getElementById('dock'),trail=document.getElementById('trail'),fixed=['topbar','searchbox','objchip','sceneactions'].map(id=>document.getElementById(id)),fallback=document.body.classList.contains('surface-trail-yield');
+          const visibleBottom=(el)=>{const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&Number(s.opacity||'1')>0&&r.width>0&&r.height>0?r.bottom:0;},
             expectedTop=Math.max(...fixed.map(visibleBottom),fallback?0:visibleBottom(trail));
           return Math.abs(parseFloat(root.getPropertyValue('--ctx-h'))-ctx.offsetHeight)<0.6&&Math.abs(parseFloat(root.getPropertyValue('--dock-h'))-dock.offsetHeight)<0.6&&Math.abs(parseFloat(root.getPropertyValue('--surface-chrome-bottom'))-expectedTop)<0.6;})()`);
-        const mobileSurfaceYieldsObjective = vp.width <= 900;
+        const mobileSurfaceRetainsObjective = vp.width <= 900;
         const landscapeSurfaceYieldsTrail = vp.width <= 900 && vp.width > vp.height;
         const portraitSurface = vp.width <= 900 && vp.width <= vp.height;
         const chromeRestoreCheck = `(()=>{ const fallback=document.body.classList.contains('surface-trail-yield'),rows=['trail','objchip'].map(id=>{const el=document.getElementById(id);return {id,text:(el?.textContent||'').trim(),display:el?getComputedStyle(el).display:'missing'};});
-          return {ok:rows.every(r=>r.text.length>0&&(r.id==='trail'?${landscapeSurfaceYieldsTrail ? "r.display==='none'" : portraitSurface ? "r.display===(fallback?'none':'block')" : "r.display!=='none'"}:${mobileSurfaceYieldsObjective ? "r.display==='none'" : "r.display!=='none'"})),rows,fallback};})()`;
-        const chromeRestoreBaseline = await evalIn(chromeRestoreCheck);
-        const chromeRestoreExpected = landscapeSurfaceYieldsTrail
-          ? 'short-landscape surface mode keeps populated trail/objective rows yielded to Planetside'
-          : mobileSurfaceYieldsObjective
-            ? 'landed portrait restores the trail when a useful band fits, otherwise marks the bounded trail-yield fallback; the objective yields throughout'
-            : 'closing the last card restores every populated desktop trail/objective surface';
+          return {ok:rows.every(r=>r.text.length>0&&(r.id==='trail'?r.display==='none':r.display!=='none')),rows,fallback};})()`;
+        const chromeRestoreBaseline = {...await evalIn(chromeRestoreCheck),precondition:topChromeClose};
+        const chromeRestoreExpected = 'populated canonical trail remains visually hidden while the objective Charters control returns after the last card closes on every platform';
         addOutcome(vp.label, 'survey-chrome-restore', 'MOBILE_CHROME_NOT_RESTORED', '#trail,#objchip', chromeRestoreBaseline,
           chromeRestoreExpected);
         stopAfterRecordedProductOutcome(vp.label, 'survey-chrome-restore',
@@ -12960,12 +13824,14 @@ async function main() {
           if (landscapeControl.ok) recordInstrumentFailure(`${vp.label}: forced-visible surface trail injection stayed green (${JSON.stringify(landscapeControl)})`);
           recordControls('mobile-landscape-surface-chrome-yield');
         }
-        if (mobileSurfaceYieldsObjective && !objectiveYieldControlRun) {
+        if (mobileSurfaceRetainsObjective && !objectiveYieldControlRun) {
           objectiveYieldControlRun = true;
-          const objectiveControl = await evalIn(`(()=>{ const el=document.getElementById('objchip'),prior=el.getAttribute('style');
-            el.style.setProperty('display','block','important');const result=${chromeRestoreCheck};
-            if(prior===null)el.removeAttribute('style');else el.setAttribute('style',prior);return result;})()`);
-          if (objectiveControl.ok) recordInstrumentFailure(`${vp.label}: forced-visible landed objective injection stayed green (${JSON.stringify(objectiveControl)})`);
+          const objectiveControl = await evalIn(`(()=>{ const el=document.getElementById('objchip'),prior=el.getAttribute('style');let broken;
+            try{el.style.setProperty('display','none','important');broken=${chromeRestoreCheck};}
+            finally{el.setAttribute('style','');el.removeAttribute('style');if(prior!==null)el.setAttribute('style',prior);}
+            const restored=${chromeRestoreCheck},styleRestored=el.getAttribute('style')===prior;
+            return {ok:broken?.ok===false&&restored.ok&&styleRestored,broken,restored,styleRestored};})()`);
+          if (!objectiveControl.ok) recordInstrumentFailure(`${vp.label}: forced-hidden landed objective was not rejected and exactly restored (${JSON.stringify(objectiveControl)})`);
           recordControls('mobile-surface-objective-yield');
         }
         if (portraitSurface) {
@@ -12975,77 +13841,154 @@ async function main() {
           const portraitBandCheck = `(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),
             head=side?.firstElementChild,specimen=side?.querySelector('[data-sel="planetside-sp"]');
             if(!side||!trail||!head||!specimen)return {ok:false,why:'missing populated band surface'};
-            const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ts=getComputedStyle(trail),ss=getComputedStyle(side),prior=side.scrollTop;
-            const trailVisible=ts.display!=='none'&&ts.visibility!=='hidden'&&t.width>0&&t.height>0,
+            const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ts=getComputedStyle(trail),ss=getComputedStyle(side),prior=side.scrollTop,
+              header=document.getElementById('topbar'),h=header?.getBoundingClientRect(),
+              fixedRows=(${paintedPostCloseFixedRows.toString()})(true),
+              fixedChromeBottom=Math.max(0,...fixedRows.filter(row=>row.visible).map(row=>row.bottom)),
+              headerContained=!!h&&header.contains(trail)&&t.left>=h.left-1&&t.right<=h.right+1&&t.top>=h.top-1&&t.bottom<=h.bottom+1;
+            const trailVisible=ts.display!=='none'&&ts.visibility!=='hidden'&&Number(ts.opacity||'1')>0&&t.width>0&&t.height>0,
               gap=trailVisible?a.top-t.bottom:null,inside=(r)=>r.bottom>a.top+1&&r.top<a.bottom-1;
             const headAtRest=head.getBoundingClientRect(),specimenAtRest=specimen.getBoundingClientRect(),headVisible=inside(headAtRest),specimenVisible=inside(specimenAtRest);
             const clipped=side.scrollHeight>side.clientHeight+1,maxScroll=Math.max(0,side.scrollHeight-side.clientHeight);
             side.scrollTop=side.scrollHeight;const observedScroll=side.scrollTop,specimenAfterScroll=specimen.getBoundingClientRect(),specimenReachable=specimenVisible||inside(specimenAfterScroll);side.scrollTop=prior;
             const scrollContract=!clipped||((ss.overflowY==='auto'||ss.overflowY==='scroll')&&maxScroll>0&&observedScroll>0&&specimenReachable),
-              meaningful=a.height>=71&&side.clientHeight>=68,clear=trailVisible?gap>=5.5:document.body.classList.contains('surface-trail-yield'),
-              policy=trailVisible?!document.body.classList.contains('surface-trail-yield'):document.body.classList.contains('surface-trail-yield');
-            return {ok:meaningful&&clear&&policy&&headVisible&&specimenReachable&&scrollContract,meaningful,clear,policy,headVisible,specimenVisible,specimenReachable,scrollContract,
+              meaningful=a.height>=71&&side.clientHeight>=68,fixedClear=a.top-fixedChromeBottom>=5.5,
+              clear=trailVisible?gap>=5.5:fixedClear,policy=trailVisible?!document.body.classList.contains('surface-trail-yield'):true,
+              canonicalHidden=header?.contains(trail)&&!!trail.querySelector('.seg.cur')&&!!trail.textContent.trim()&&ts.display==='none';
+            return {ok:meaningful&&clear&&policy&&fixedClear&&headVisible&&specimenReachable&&scrollContract,meaningful,clear,policy,fixedClear,canonicalHidden,headVisible,specimenVisible,specimenReachable,scrollContract,
               trailVisible,gap,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,
               overflowY:ss.overflowY,maxScroll,observedScroll,surfaceChromeBottom:getComputedStyle(document.documentElement).getPropertyValue('--surface-chrome-bottom').trim(),
-              fallback:document.body.classList.contains('surface-trail-yield')}; })()`;
-          const portraitBaseline = await evalIn(portraitBandCheck);
+              fallback:document.body.classList.contains('surface-trail-yield'),headerContained,header:h?[h.left,h.top,h.right,h.bottom]:null,
+              fixedChromeBottom,fixedRows,surfaceBottom:parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--surface-chrome-bottom'))}; })()`;
+          const portraitNativeCheck = `(()=>{const outcome=${portraitBandCheck};return {...outcome,ok:outcome.ok&&outcome.canonicalHidden};})()`;
+          const portraitBaseline = await evalIn(portraitNativeCheck);
           portraitBaselineCount += 1;
-          const portraitEligible = portraitControlBaselineEligible(portraitBaseline);
-          if (portraitEligible) portraitEligibleBaselineCount += 1;
-          const portraitBaselineExpected = 'post-close Planetside keeps at least a useful 72px band, 6px trail clearance, a visible heading, and a visible or vertically reachable specimen';
-          addOutcome(vp.label, 'planetside-portrait-band', 'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', portraitBaseline,
-            portraitBaselineExpected);
-          stopAfterRecordedProductOutcome(vp.label, 'planetside-portrait-band',
-            'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', portraitBaseline,
-            portraitBaselineExpected);
-          if (portraitEligible && !portraitBandControlRun) {
-            /* Reproduce the reported geometry directly. Removing a cap and
-               appending arbitrary content only collided on the shortest
-               portrait and went green in a targeted primary-phone run. */
-            const bandControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
-                value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform'),computed:getComputedStyle(side).transform},
-                a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),dy=t.bottom-1-a.top,requested='translateY('+dy+'px)';let mutation;
-              try{side.style.setProperty('transform',requested,'important');mutation={requested,
-                property:{value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform')},
-                computed:getComputedStyle(side).transform,outcome:${portraitBandCheck}};}
-              finally{if(prior.value===''&&prior.priority==='')side.style.removeProperty('transform');else side.style.setProperty('transform',prior.value,prior.priority);}
-              const restored={property:{value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform')},
-                computed:getComputedStyle(side).transform,outcome:${portraitBandCheck}};
-              return {baseline,prior,mutation,restored};})()`);
-            const bandControlAssessment = portraitBandControlOutcome(bandControl);
-            if (!bandControlAssessment.ok) {
-              stopInstrumentControl(`${vp.label}: eligible portrait-band collision control did not change, turn red, and restore exactly (${JSON.stringify({ bandControl, bandControlAssessment })})`);
-            }
-            portraitBandControlRun = true;
-            portraitBandControlCount += 1;
-            recordControls('planetside-portrait-band-viability');
-          }
-          if (portraitEligible && !portraitFallbackControlRun) {
-            /* Tighten the lower safe rectangle through the same CSS variable
-               the product reads. The fallback must be an observable policy,
-               not a one-way class toggle that leaves the strip collapsed. */
-            const fallbackControl = await evalIn(`(()=>{ const root=document.documentElement,side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
-                value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom'),computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim()},
-                beforeSide=side.getBoundingClientRect(),beforeTrail=trail.getBoundingClientRect(),baseSafe=parseFloat(prior.computed)||0,
-                forcedSafe=baseSafe+Math.max(8,beforeSide.bottom-beforeTrail.bottom-6-64),requested=forcedSafe+'px';let mutation;
-              try{root.style.setProperty('--safe-bottom',requested,'important');window.dispatchEvent(new Event('resize'));
-                const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ss=getComputedStyle(side),ts=getComputedStyle(trail),fallback=document.body.classList.contains('surface-trail-yield'),
-                  meaningful=a.height>=71&&side.clientHeight>=68,scrollOk=side.scrollHeight<=side.clientHeight+1||((ss.overflowY==='auto'||ss.overflowY==='scroll')&&side.scrollHeight>side.clientHeight),
-                  fixedRows=['playerchip','hpbar','searchbox','objchip'].map(id=>{const el=document.getElementById(id),s=getComputedStyle(el),r=el.getBoundingClientRect(),visible=s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;return {id,visible,gap:a.top-r.bottom};}),
-                  fixedClear=fixedRows.every(row=>!row.visible||row.gap>=5.5),outcome={ok:fallback&&ts.display==='none'&&meaningful&&scrollOk&&fixedClear,fallback,trailDisplay:ts.display,meaningful,scrollOk,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,overflowY:ss.overflowY,fixedClear,fixedRows,baseSafe,forcedSafe};
-                mutation={requested,property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
-                  computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),baseSafe,forcedSafe,outcome};}
-              finally{if(prior.value===''&&prior.priority==='')root.style.removeProperty('--safe-bottom');else root.style.setProperty('--safe-bottom',prior.value,prior.priority);window.dispatchEvent(new Event('resize'));}
-              const restored={property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
-                computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),outcome:${portraitBandCheck}};
-              return {baseline,prior,mutation,restored};})()`);
-            const fallbackControlAssessment = portraitFallbackControlOutcome(fallbackControl);
-            if (!fallbackControlAssessment.ok) {
-              stopInstrumentControl(`${vp.label}: eligible forced-tight portrait did not change policy and restore exactly (${JSON.stringify({ fallbackControl, fallbackControlAssessment })})`);
-            }
-            portraitFallbackControlRun = true;
-            portraitFallbackControlCount += 1;
-            recordControls('planetside-portrait-trail-fallback');
+          const portraitBaselineExpected = 'post-close Planetside keeps a useful 72px band, a visible heading, a reachable specimen and 6px clearance from visible fixed owners; the populated canonical trail stays hidden';
+          addOutcome(vp.label, 'planetside-portrait-band', 'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', portraitBaseline, portraitBaselineExpected);
+          stopAfterRecordedProductOutcome(vp.label, 'planetside-portrait-band', 'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', portraitBaseline, portraitBaselineExpected);
+          if (!portraitBandControlRun && !portraitFallbackControlRun) {
+            /* Explicitly inject the former floating-trail regression. Both
+               controls share this labelled visible predecessor; no outcome
+               claims that the normally hidden trail occupies a native lane. */
+            const portraitControls = await evalIn(`(async()=>{const trail=document.getElementById('trail'),header=document.getElementById('topbar'),objective=document.getElementById('objchip'),notice=document.getElementById('toast'),
+              settlements=[],cleanupErrors=[],message=cause=>String(cause?.message||cause),
+              settle=async label=>{const receipt=await ${topChromeFrameOwner}(label);settlements.push(receipt);
+                if(receipt.error!==null)throw new Error(receipt.error);return receipt;},
+              nativeBaseline=${portraitNativeCheck},originalStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')},
+              originalRect=trail.getBoundingClientRect(),objectiveStyle={present:objective.hasAttribute('style'),value:objective.getAttribute('style')},
+              objectiveText=objective.textContent,noticeBefore={text:notice.textContent,opacity:notice.style.opacity??null},
+              noticeLane=document.createElement('style'),noticeHeight=notice.getBoundingClientRect().height,
+              noticeVisible=notice.style.opacity==='1'||Number(getComputedStyle(notice).opacity)>0;let fixture=null,band=null,fallback=null,cleanup=null,error=null;
+              const cleanupFailed=cause=>{const failure=message(cause);cleanupErrors.push(failure);error??=failure;};
+              try{
+                if(!nativeBaseline.ok||!nativeBaseline.canonicalHidden)throw new Error('native hidden-trail portrait predecessor is not green');
+                // This synthetic extra lane needs its own usable predecessor.
+                // Preserve the populated native opener, but bound its caption
+                // for this fixture only; native geometry was checked above.
+                // Isolate the synthetic lane from live toast arrival/expiry
+                // and compaction. Removing this rule restores the current
+                // native notice; no timer, text, serial or inline style changes.
+                noticeLane.textContent=noticeVisible
+                  ? '#toast{display:block!important;opacity:1!important;box-sizing:border-box!important;height:'+noticeHeight+'px!important;min-height:'+noticeHeight+'px!important;max-height:'+noticeHeight+'px!important}'
+                  : '#toast{display:none!important}';
+                document.head.appendChild(noticeLane);
+                objective.style.setProperty('white-space','nowrap','important');
+                objective.style.setProperty('overflow','hidden','important');
+                objective.style.setProperty('text-overflow','ellipsis','important');
+                const fixtureFixedRows=${topChromeFixedRows},fixtureFixedBottom=Math.max(0,...fixtureFixedRows.filter(row=>row.visible).map(row=>row.bottom)),
+                  rootStyle=getComputedStyle(document.documentElement),left=(parseFloat(rootStyle.getPropertyValue('--safe-left'))||0)+10,
+                  right=(parseFloat(rootStyle.getPropertyValue('--safe-right'))||0)+10,injectedTop=fixtureFixedBottom+8;
+                trail.style.setProperty('display','flex');trail.style.setProperty('position','fixed','important');
+                trail.style.setProperty('height','16px','important');trail.style.setProperty('line-height','16px','important');
+                trail.style.setProperty('white-space','nowrap','important');trail.style.setProperty('overflow','hidden','important');
+                trail.style.setProperty('left',left+'px','important');trail.style.setProperty('top',injectedTop+'px','important');
+                trail.style.setProperty('right','auto','important');trail.style.setProperty('bottom','auto','important');
+                trail.style.setProperty('width',(innerWidth-left-right)+'px','important');trail.style.setProperty('transform','none','important');
+                window.dispatchEvent(new Event('resize'));await settle('portrait.fixture.injected.fonts-two-frames');
+                const injectedBaseline=${portraitBandCheck},injectedRect=trail.getBoundingClientRect();
+                fixture={kind:'injected-floating-trail-regression',nativeBaseline,originalStyle,
+                  noticeBefore,noticeLane:{kind:'fixed-measured-notice-lane',visible:noticeVisible,height:noticeHeight,rule:noticeLane.textContent},
+                  objectiveFixture:{kind:'compact-caption-visible-opener',originalStyle:objectiveStyle,injectedStyle:objective.getAttribute('style'),textUnchanged:objective.textContent===objectiveText},fixtureFixedRows,fixtureFixedBottom,
+                  originalRect:[originalRect.left,originalRect.top,originalRect.right,originalRect.bottom],injectedTop,
+                  injectedRect:[injectedRect.left,injectedRect.top,injectedRect.right,injectedRect.bottom],injectedStyle:trail.getAttribute('style'),
+                  injectedBaseline,observedOutsideHeader:!injectedBaseline.headerContained&&injectedRect.top>=fixtureFixedBottom+7.5};
+                if(!fixture.observedOutsideHeader||!injectedBaseline.ok||!injectedBaseline.trailVisible||injectedBaseline.fallback)
+                  throw new Error('labelled floating-trail fixture did not establish a usable visible predecessor');
+                band=await (async()=>{const side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
+                  value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform'),computed:getComputedStyle(side).transform},
+                  a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),dy=t.bottom-1-a.top,requested='translateY('+dy+'px)';let mutation,failure=null;
+                  try{side.style.setProperty('transform',requested,'important');await settle('portrait.band.mutated.fonts-two-frames');mutation={requested,
+                    property:{value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform')},
+                    computed:getComputedStyle(side).transform,outcome:${portraitBandCheck}};}
+                  catch(cause){failure=cause;error??=message(cause);}
+                  finally{try{if(prior.value===''&&prior.priority==='')side.style.removeProperty('transform');else side.style.setProperty('transform',prior.value,prior.priority);
+                    await settle('portrait.band.restored.fonts-two-frames');}catch(cause){cleanupFailed(cause);failure??=cause;}}
+                  if(failure)throw failure;
+                  const restored={property:{value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform')},
+                    computed:getComputedStyle(side).transform,outcome:${portraitBandCheck}};
+                  return {baseline,prior,mutation,restored};})();
+                fallback=await (async()=>{const root=document.documentElement,side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
+                  value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom'),computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim()},
+                  beforeTrail=trail.getBoundingClientRect(),baseSafe=parseFloat(prior.computed)||0,
+                  dockTop=document.getElementById('dock').getBoundingClientRect().top,
+                  highestFloor=Math.min(innerHeight-baseSafe-12,dockTop)-8-(noticeVisible?noticeHeight+8:0),
+                  forcedSafe=baseSafe+Math.max(8,highestFloor-beforeTrail.bottom-6-64),requested=forcedSafe+'px';let mutation,failure=null;
+                  try{root.style.setProperty('--safe-bottom',requested,'important');window.dispatchEvent(new Event('resize'));await settle('portrait.fallback.mutated.fonts-two-frames');
+                    const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ss=getComputedStyle(side),ts=getComputedStyle(trail),fallback=document.body.classList.contains('surface-trail-yield'),
+                      meaningful=a.height>=71&&side.clientHeight>=68,scrollOk=side.scrollHeight<=side.clientHeight+1||((ss.overflowY==='auto'||ss.overflowY==='scroll')&&side.scrollHeight>side.clientHeight),
+                      fixedRows=['playerchip','hpbar','searchbox','objchip','sceneactions'].map(id=>{const el=document.getElementById(id),s=getComputedStyle(el),r=el.getBoundingClientRect(),visible=s.display!=='none'&&s.visibility!=='hidden'&&Number(s.opacity||'1')>0&&r.width>0&&r.height>0;return {id,visible,gap:a.top-r.bottom};}),
+                      actualFixedRows=${topChromeFixedRows},fixedClear=fixedRows.every(row=>!row.visible||row.gap>=5.5)&&actualFixedRows.every(row=>!row.visible||a.top-row.bottom>=5.5),
+                      outcome={ok:fallback&&ts.display==='none'&&meaningful&&scrollOk&&fixedClear,fallback,trailDisplay:ts.display,meaningful,scrollOk,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,overflowY:ss.overflowY,fixedClear,fixedRows,actualFixedRows,baseSafe,forcedSafe};
+                    mutation={requested,property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
+                      computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),baseSafe,forcedSafe,highestFloor,dockTop,noticeHeight,noticeVisible,outcome};}
+                  catch(cause){failure=cause;error??=message(cause);}
+                  finally{try{if(prior.value===''&&prior.priority==='')root.style.removeProperty('--safe-bottom');else root.style.setProperty('--safe-bottom',prior.value,prior.priority);
+                    window.dispatchEvent(new Event('resize'));
+                    await settle('portrait.fallback.restored.fonts-two-frames');}catch(cause){cleanupFailed(cause);failure??=cause;}}
+                  if(failure)throw failure;
+                  const restored={property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
+                    computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),outcome:${portraitBandCheck}};
+                  return {baseline,prior,mutation,restored};})();
+              }catch(cause){error??=message(cause);}
+              finally{
+                /* Reset only the fixture's remembered trail edge, then restore
+                   exact native style presence/bytes, settling each publication. */
+                try{const h=header.getBoundingClientRect();trail.style.setProperty('display','flex');
+                  trail.style.setProperty('top',h.top+'px','important');trail.style.setProperty('left',h.left+'px','important');
+                  trail.style.setProperty('width',h.width+'px','important');trail.style.setProperty('height',Math.min(16,h.height)+'px','important');
+                  window.dispatchEvent(new Event('resize'));await settle('portrait.fixture.cleanup-contained.fonts-two-frames');const c=trail.getBoundingClientRect();
+                  cleanup={kind:'temporary-header-contained-edge-reset',rect:[c.left,c.top,c.right,c.bottom],
+                    header:[h.left,h.top,h.right,h.bottom],headerContained:getComputedStyle(trail).display!=='none'&&c.width>0&&c.height>0
+                      &&c.left>=h.left-1&&c.right<=h.right+1&&c.top>=h.top-1&&c.bottom<=h.bottom+1};
+                }catch(cause){cleanupFailed(cause);}
+                finally{try{trail.setAttribute('style','');trail.removeAttribute('style');if(originalStyle.present)trail.setAttribute('style',originalStyle.value);
+                  objective.setAttribute('style','');objective.removeAttribute('style');if(objectiveStyle.present)objective.setAttribute('style',objectiveStyle.value);
+                  noticeLane.remove();
+                  window.dispatchEvent(new Event('resize'));await settle('portrait.fixture.native-restored.fonts-two-frames');
+                }catch(cause){cleanupFailed(cause);}}
+              }
+              const restoredStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')},restoredObjectiveStyle={present:objective.hasAttribute('style'),value:objective.getAttribute('style')};let nativeRestored=null;
+              if(JSON.stringify(restoredObjectiveStyle)!==JSON.stringify(objectiveStyle)||objective.textContent!==objectiveText)cleanupFailed('objective fixture did not restore exact style/text');
+              // An unsuccessful cleanup boundary does not authorize a dependent geometry read.
+              if(cleanupErrors.length===0){try{nativeRestored=${portraitNativeCheck};}catch(cause){cleanupFailed(cause);}}
+              const noticeAfter={text:notice.textContent,opacity:notice.style.opacity??null};
+              const witness={...fixture,noticeAfter,noticeLaneRemoved:!noticeLane.isConnected,restoredStyle,restoredObjectiveStyle,nativeRestored,cleanup,error,cleanupErrors};
+              return {band:{...band,fixture:witness,error},fallback:{...fallback,fixture:witness,error},settlements};})()`);
+            const fixtureError=portraitControls.band?.fixture?.error??portraitControls.fallback?.fixture?.error
+              ??portraitControls.band?.error??portraitControls.fallback?.error??null;
+            if(fixtureError!==null)
+              stopInstrumentControl(`${vp.label}: portrait fixture failed: ${fixtureError} (${JSON.stringify(portraitControls)})`);
+            const expectedSettlements=['portrait.fixture.injected','portrait.band.mutated','portrait.band.restored','portrait.fallback.mutated',
+              'portrait.fallback.restored','portrait.fixture.cleanup-contained','portrait.fixture.native-restored'].map(label=>label+'.fonts-two-frames');
+            const settlementChecks=portraitControls.settlements?.map(topChromeFrameValid)??[];
+            if(JSON.stringify(portraitControls.settlements?.map(row=>row.label))!==JSON.stringify(expectedSettlements)||settlementChecks.some(row=>!row.ok))
+              stopInstrumentControl(`${vp.label}: portrait fixture settlement evidence failed (${JSON.stringify({portraitControls,settlementChecks})})`);
+            const bandControlAssessment=portraitBandControlOutcome(portraitControls.band),fallbackControlAssessment=portraitFallbackControlOutcome(portraitControls.fallback);
+            if(!bandControlAssessment.ok||!fallbackControlAssessment.ok)
+              stopInstrumentControl(`${vp.label}: labelled floating-trail collision/fallback did not turn red/yield and restore the hidden native baseline (${JSON.stringify({portraitControls,bandControlAssessment,fallbackControlAssessment})})`);
+            portraitEligibleBaselineCount += 1;
+            portraitBandControlRun=true;portraitBandControlCount+=1;recordControls('planetside-portrait-band-viability');
+            portraitFallbackControlRun=true;portraitFallbackControlCount+=1;recordControls('planetside-portrait-trail-fallback');
           }
           if (portraitBaselineCount === portraitViewportCount) {
             const portraitCampaign = portraitControlCampaignOutcome({
@@ -13062,16 +14005,15 @@ async function main() {
           }
         }
         const topChromeCheck = `(()=>{ const side=document.getElementById('planetside'),a=side?.getBoundingClientRect();if(!side||!a)return {ok:false,why:'missing'};
-          const rows=['playerchip','hpbar','searchbox','trail','objchip'].map(id=>{const el=document.getElementById(id),s=el?getComputedStyle(el):null,r=el?.getBoundingClientRect();
-            const visible=!!el&&s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;
-            const overlap=visible&&a.left<r.right-1&&a.right>r.left+1&&a.top<r.bottom-1&&a.bottom>r.top+1;
-            return {id,visible,overlap,rect:r?[r.left,r.top,r.right,r.bottom]:null};});return {ok:rows.every(r=>!r.overlap),side:[a.left,a.top,a.right,a.bottom],rows};})()`;
+          const rows=${topChromeFixedRows}.map(row=>{const r=row.rect;
+            return {...row,overlap:row.visible&&a.left<r[2]-1&&a.right>r[0]+1&&a.top<r[3]-1&&a.bottom>r[1]+1};});
+          return {ok:rows.every(r=>!r.overlap),side:[a.left,a.top,a.right,a.bottom],rows};})()`;
         addOutcome(vp.label, 'planetside-top-clearance', 'PLANETSIDE_TOP_CHROME_OVERLAP', '#planetside', await evalIn(topChromeCheck),
-          'Planetside clears every visible player/HP/search/trail/objective surface');
+          'Planetside clears every visible player/HP/search/trail/objective/scene-action surface');
         if (!topChromeControlRun) {
           topChromeControlRun = true;
           const topControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),visible=(el)=>{if(!el)return false;const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&r.width>0&&r.height>0;},
-            target=visible(trail)?trail:['playerchip','hpbar','searchbox','objchip'].map(id=>document.getElementById(id)).find(visible),
+            target=visible(trail)?trail:['sceneactions','playerchip','hpbar','searchbox','objchip'].map(id=>document.getElementById(id)).find(visible),
             a=side.getBoundingClientRect(),b=target.getBoundingClientRect(),prior=side.style.transform;
             side.style.setProperty('transform','translate('+(b.left-a.left)+'px,'+(b.top-a.top)+'px)','important');const result=${topChromeCheck};side.style.transform=prior;return result;})()`);
           if (topControl.ok) recordInstrumentFailure(`${vp.label}: Planetside/top-chrome overlap injection stayed green (${JSON.stringify(topControl)})`);
@@ -13350,15 +14292,15 @@ async function main() {
               {id:'stardust',paragraph:1,required:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','result shows the exact amount','A miss and every later-world or later-cycle repeat earn none','Each supported Starter Charter pays its established 10–25 Stardust once','A completed unclaimed Binder Set pays its established 25–150 Stardust once from Records','A verified conquest win awards 8 + five times world tier Stardust, plus 40 against an Apex Guardian or Elemental Titan','Weekly Charters, passive gain, and the rest of the mature economy remain unavailable'],requiredControls:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','A miss and every later-world or later-cycle repeat earn none','Each supported Starter Charter pays its established 10–25 Stardust once','A completed unclaimed Binder Set pays its established 25–150 Stardust once from Records','A verified conquest win awards 8 + five times world tier Stardust, plus 40 against an Apex Guardian or Elemental Titan'],forbidden:['Every Legendary capture earns Stardust','A repeat find earns another Rare Find Stardust bonus','A miss can earn Stardust'],stale:'Every Legendary capture earns Stardust, a repeat find earns another Rare Find Stardust bonus, and a miss can earn Stardust.',contradictions:['Every Legendary capture earns Stardust.','A repeat find earns another Rare Find Stardust bonus.','A miss can earn Stardust.']},
               {id:'charters',paragraph:1,required:[...bioscanRequired,...breedCharterRequired,...["At an exact fixed Paragon home, that same Bioscan can also add only the exact Paragon catalogue record", "it creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "This catalogue exception does not count as the Chapter 2 capture milestone"]],requiredControls:[...bioscanRequired,...breedCharterRequired,...["At an exact fixed Paragon home, that same Bioscan can also add only the exact Paragon catalogue record", "it creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "This catalogue exception does not count as the Chapter 2 capture milestone"]],forbidden:[...bioscanForbidden,...breedCharterForbidden],stale:'Planetside capture is separate and never banks the Charter’s bioscan milestone.',contradictions:[...bioscanContradictions,...breedCharterContradictions]},
               {id:'ascent',paragraph:2,required:[...bioscanRequired,...breedCharterRequired,...["At an exact fixed Paragon home, that same Bioscan can also add only the exact Paragon catalogue record", "it creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "This catalogue exception does not count as the Chapter 2 capture milestone"]],requiredControls:[...bioscanRequired,...breedCharterRequired,...["At an exact fixed Paragon home, that same Bioscan can also add only the exact Paragon catalogue record", "it creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "This catalogue exception does not count as the Chapter 2 capture milestone"]],forbidden:[...bioscanForbidden,...breedCharterForbidden],stale:'Planetside capture never banks the Charter’s separate bioscan milestone.',contradictions:[...bioscanContradictions,...breedCharterContradictions]},
-              {id:'kingdoms',required:['Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','successful first Planetside capture can add one page','Tame also adds an owned fauna creature','Scavenge and Sample add specimen lots','Later-world or later-cycle successes add another creature or lot without duplicating the page','real fauna detail alone exposes narrow exact-instance Feed, Breed, Rename, Listen, and Field Scout actions','A real Flora detail can expose the explorer’s separate Eat 1 action','designated Field Scout can intercept hostile Discover Life injury','Dispatch, missions, companion care, bond, and broader husbandry remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','real fauna detail alone exposes narrow exact-instance Feed, Breed, Rename, Listen, and Field Scout actions','A real Flora detail can expose the explorer’s separate Eat 1 action','designated Field Scout can intercept hostile Discover Life injury'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Every Compendium detail offers Feed','Breeding remains unavailable','Renaming remains unavailable','Scout interception remains unavailable','Explorer eating remains unavailable'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Every Compendium detail offers Feed.','Breeding remains unavailable.','Renaming remains unavailable.','Scout interception remains unavailable.','Explorer eating remains unavailable.']},
-              {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','Both remain available around explorer eating, companion feeding, breeding, renaming, and Field Scout selection','Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row','Tame hit adds one owned fauna creature','Scavenge or Sample adds one specimen lot and never a living companion','real Flora detail previews the exact canonical owned specimen lot, healing, poison risk, and nourished stat','Eat 1 action','One specimen is consumed on either the safe or toxic durable outcome','Only a real fauna detail offers companion Feed','one exact unassigned owned companion below the 200-Meal cap and one exact owned flora lot','Identical same-species twins remain separate exact instances','Rename chooses one exact owned companion of this species from bounded 24-row pages','assigned, recovering, and injured companions may be renamed because the action changes identity only','exhibition entries and protected or non-owned rows refuse','caps the result at 24 characters','Cleaned-empty or unchanged names consume no receipt or write','commit changes only that exact companion’s nickname','keeps the old name visible while pending','one immutable receipt and one compare-and-swap with no retry or optimistic publication','requires reload, and cannot rename twice','Field Scout chooses one exact owned companion of this fauna species from bounded 24-row pages','role selector itself changes only the Scout pointer','One exact-five compare-and-swap settles that choice with no RNG, retry, or optimistic publication','designated Scout intercepts hostile Discover Life damage in the bioscan’s own transaction and remains at or below Critical','Scout standing before that successful attempt earns up to +2 XP in the same capture transaction, capped at 486','no standing Scout, miss, or repeat grants Scout XP','Refused, stale, failed, or unconfirmable writes change nothing visible and cannot apply twice','Companion tastes and flavours, stat or Power growth from Feed, injury care or healing, companion poison, bond, dispatch, missions, and friendly duels remain unavailable'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','real Flora detail previews the exact canonical owned specimen lot, healing, poison risk, and nourished stat','One specimen is consumed on either the safe or toxic durable outcome','commit changes only that exact companion’s nickname','Field Scout chooses one exact owned companion of this fauna species from bounded 24-row pages','designated Scout intercepts hostile Discover Life damage in the bioscan’s own transaction and remains at or below Critical','Scout standing before that successful attempt earns up to +2 XP in the same capture transaction, capped at 486'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Assigned companions can still be fed','Exhibition companions may still be renamed','Rename changes the selected companion genome','unchanged name consumes one receipt','Rename automatically retries','stale rename changes the nickname','Field Scout only changes the role','Explorer eating remains unavailable'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Assigned companions can still be fed.','Exhibition companions may still be renamed.','Rename changes the selected companion genome.','An unchanged name consumes one receipt.','Rename automatically retries.','A stale rename changes the nickname.','Field Scout only changes the role.','Explorer eating remains unavailable.']},
-              {id:'feeding',paragraph:1,required:['real fauna Compendium detail','Choose one exact unassigned owned companion whose Meals are below 200 and one exact owned flora lot','Use 1','Same-species twins remain separate exact instances','Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why','Meals by 1, capped at 200','removes 1 flora from that exact lot','final unit empties that exact lot','one immutable receipt and one compare-and-swap save transaction','no retry and no optimistic inventory or Meals change','refusal, stale result, or failed write uses and publishes nothing','requires reload and cannot feed twice','trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status','one deterministic synthesized acknowledgement after that status appears','Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent','same successful result and every older successful result also remain silent','Back and Close remain available','companion action is deliberately only a meal counter and inventory spend','tastes and flavours, stat or Power growth, injury care or healing, companion poison, and bond remain unavailable','explorer’s separate Eat 1 action lives on a real Flora detail and owns healing, poison, and nourishment without changing companion Feed','Companion Breed has its own eligibility, odds, lineage, and active-play Recovery','Rename changes only one selected exact companion’s nickname','Field Scout separately selects the exact role and can intercept hostile Discover Life injury','Friendly duels and missions remain unavailable'],requiredControls:['Meals by 1, capped at 200','one immutable receipt and one compare-and-swap save transaction','same successful result and every older successful result also remain silent','explorer’s separate Eat 1 action lives on a real Flora detail and owns healing, poison, and nourishment without changing companion Feed','Field Scout separately selects the exact role and can intercept hostile Discover Life injury'],forbidden:['Assigned companions can still be fed','The meal automatically retries after a stale result','Stats are now increased by feeding','Meals can rise above 200','Every Compendium detail offers Feed','Breeding remains unavailable','Renaming remains unavailable','Explorer eating remains unavailable','Field Scout interception remains unavailable'],stale:'One ordinary save updates the selected meal.',contradictions:['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.','Meals can rise above 200.','Every Compendium detail offers Feed.','Breeding remains unavailable.','Renaming remains unavailable.','Explorer eating remains unavailable.','Field Scout interception remains unavailable.']},
-              {id:'breeding',required:['real fauna Compendium detail','one exact owned companion of that detail’s species as the primary parent','one different exact owned fauna companion as the mate','Identical same-species twins remain separate exact instances','at most 24 candidates per page','paging keeps every eligible owned companion reachable','Exhibition creatures, mission-assigned companions, companions already in Recovery, and companions at 30% hurt or more stay disabled and explain why','same exact companion cannot occupy both parent roles','shown success chance comes from both parents’ established rarity tiers plus a bounded bonus from lifetime-earned Stardust','raw genetic values stay hidden','Both parents remain yours','success creates one deterministic child with its exact lineage','grants that child +2 XP','first successful union of each canonical unordered species pair grants the child another +5 XP','8 active-play minutes of Recovery','failure creates no child','2 active-play minutes of Recovery','Recovery blocks Breed, combat, and dispatch','Closing the game or moving the wall clock does not advance it','proves both possible complete save successors before its one outcome draw','one receipt-bearing compare-and-swap with no retry and no optimistic child, XP, pair claim, or Recovery','refusal, stale result, overflow, or failed write draws nothing and adds nothing','requires reload and cannot breed twice','Back and Close remain available around the action','successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save','failed pairing, refusal, stale result, or failed write banks no Charter credit','Parent consumption, taste or bond effects, manual genetic editing, broader care, missions, and combat remain unavailable'],requiredControls:['Both parents remain yours','success creates one deterministic child with its exact lineage','grants that child +2 XP','first successful union of each canonical unordered species pair grants the child another +5 XP','proves both possible complete save successors before its one outcome draw','successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save','failed pairing, refusal, stale result, or failed write banks no Charter credit'],forbidden:['Both parents are consumed','Recovery advances while the game is closed','same exact companion can occupy both parent roles','failed attempt creates one child','Breeding automatically retries','A failed pairing also banks the Charter hybrid bloodline goal'],stale:'Breeding remains unavailable in this development slice.',contradictions:['Both parents are consumed.','Recovery advances while the game is closed.','The same exact companion can occupy both parent roles.','A failed attempt creates one child.','Breeding automatically retries.','A failed pairing also banks the Charter hybrid bloodline goal.']},
+              {id:'kingdoms',required:['Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','successful first Planetside capture can add one page','Tame also adds an owned fauna creature','Scavenge and Sample add specimen lots','Later-world or later-cycle successes add another creature or lot without duplicating the page','real fauna detail alone exposes narrow exact-instance Feed, Breed, Rename, Listen, and Field Scout actions','A real Flora detail can expose the explorer’s separate Eat 1 action','designated Field Scout can intercept hostile Discover Life injury','Companion care, bond and missions are live; broader husbandry remains unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','real fauna detail alone exposes narrow exact-instance Feed, Breed, Rename, Listen, and Field Scout actions','A real Flora detail can expose the explorer’s separate Eat 1 action','designated Field Scout can intercept hostile Discover Life injury'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Every Compendium detail offers Feed','Breeding remains unavailable','Renaming remains unavailable','Scout interception remains unavailable','Explorer eating remains unavailable'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Every Compendium detail offers Feed.','Breeding remains unavailable.','Renaming remains unavailable.','Scout interception remains unavailable.','Explorer eating remains unavailable.']},
+              {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','Both remain available around explorer eating, companion feeding, breeding, renaming, and Field Scout selection','Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row','Tame hit adds one owned fauna creature','Scavenge or Sample adds one specimen lot and never a living companion','real Flora detail previews the exact canonical owned specimen lot, healing, poison risk, and nourished stat','Eat 1 action','One specimen is consumed on either the safe or toxic durable outcome','Only a real fauna detail offers companion Feed','one exact unassigned owned companion below the 200-Meal cap and one exact owned flora lot','Identical same-species twins remain separate exact instances','Rename chooses one exact owned companion of this species from bounded 24-row pages','assigned, recovering, and injured companions may be renamed because the action changes identity only','exhibition entries and protected or non-owned rows refuse','caps the result at 24 characters','Cleaned-empty or unchanged names consume no receipt or write','commit changes only that exact companion’s nickname','keeps the old name visible while pending','one immutable receipt and one compare-and-swap with no retry or optimistic publication','requires reload, and cannot rename twice','Field Scout chooses one exact owned companion of this fauna species from bounded 24-row pages','role selector itself changes only the Scout pointer','One exact-five compare-and-swap settles that choice with no RNG, retry, or optimistic publication','designated Scout intercepts hostile Discover Life damage in the bioscan’s own transaction and remains at or below Critical','Scout standing before that successful attempt earns up to +2 XP in the same capture transaction, capped at 486','no standing Scout, miss, or repeat grants Scout XP','Refused, stale, failed, or unconfirmable writes change nothing visible and cannot apply twice','Companion tastes, meal growth, wound care, bond memories, friendly duels and missions are live; companion poison remains unavailable'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','real Flora detail previews the exact canonical owned specimen lot, healing, poison risk, and nourished stat','One specimen is consumed on either the safe or toxic durable outcome','commit changes only that exact companion’s nickname','Field Scout chooses one exact owned companion of this fauna species from bounded 24-row pages','designated Scout intercepts hostile Discover Life damage in the bioscan’s own transaction and remains at or below Critical','Scout standing before that successful attempt earns up to +2 XP in the same capture transaction, capped at 486'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Assigned companions can still be fed','Exhibition companions may still be renamed','Rename changes the selected companion genome','unchanged name consumes one receipt','Rename automatically retries','stale rename changes the nickname','Field Scout only changes the role','Explorer eating remains unavailable'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Assigned companions can still be fed.','Exhibition companions may still be renamed.','Rename changes the selected companion genome.','An unchanged name consumes one receipt.','Rename automatically retries.','A stale rename changes the nickname.','Field Scout only changes the role.','Explorer eating remains unavailable.']},
+              {id:'feeding',paragraph:1,required:['real fauna Compendium detail','Choose one exact unassigned owned companion whose Meals are below 200 and one exact owned flora lot','Use 1','Same-species twins remain separate exact instances','Companions with an active assignment or Recovery timer and companions already at the 200-Meal cap stay disabled and explain why','Meals by 0 to 3, capped at 200','removes 1 flora from that exact lot','final unit empties that exact lot','one immutable receipt and one compare-and-swap save transaction','no retry and no optimistic inventory or Meals change','refusal, stale result, or failed write uses and publishes nothing','requires reload and cannot feed twice','trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status','one deterministic synthesized acknowledgement after that status appears','Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent','same successful result and every older successful result also remain silent','Back and Close remain available','companion action resolves taste, Meals growth, wound mending and first-time XP in the same inventory spend','Loved food grows Meals faster and mends wounds; disliked food is harmless; first tastes build bond memories','explorer’s separate Eat 1 action lives on a real Flora detail and owns healing, poison, and nourishment without changing companion Feed','Companion Breed has its own eligibility, odds, lineage, and active-play Recovery','Rename changes only one selected exact companion’s nickname','Field Scout separately selects the exact role and can intercept hostile Discover Life injury','Friendly duels and companion missions are live'],requiredControls:['Meals by 0 to 3, capped at 200','one immutable receipt and one compare-and-swap save transaction','same successful result and every older successful result also remain silent','explorer’s separate Eat 1 action lives on a real Flora detail and owns healing, poison, and nourishment without changing companion Feed','Field Scout separately selects the exact role and can intercept hostile Discover Life injury'],forbidden:['Assigned companions can still be fed','The meal automatically retries after a stale result','Feed can heal without consuming flora','Meals can rise above 200','Every Compendium detail offers Feed','Breeding remains unavailable','Renaming remains unavailable','Explorer eating remains unavailable','Field Scout interception remains unavailable'],stale:'One ordinary save updates the selected meal.',contradictions:['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Feed can heal without consuming flora.','Meals can rise above 200.','Every Compendium detail offers Feed.','Breeding remains unavailable.','Renaming remains unavailable.','Explorer eating remains unavailable.','Field Scout interception remains unavailable.']},
+              {id:'breeding',required:['real fauna Compendium detail','one exact owned companion of that detail’s species as the primary parent','one different exact owned fauna companion as the mate','Identical same-species twins remain separate exact instances','at most 24 candidates per page','paging keeps every eligible owned companion reachable','Exhibition creatures, mission-assigned companions, companions already in Recovery, and companions at 30% hurt or more stay disabled and explain why','same exact companion cannot occupy both parent roles','shown success chance comes from both parents’ established rarity tiers plus a bounded bonus from lifetime-earned Stardust','raw genetic values stay hidden','Both parents remain yours','success creates one deterministic child with its exact lineage','grants that child +2 XP','first successful union of each canonical unordered species pair grants the child another +5 XP','8 active-play minutes of Recovery','failure creates no child','2 active-play minutes of Recovery','Recovery blocks Breed, combat, and dispatch','Closing the game or moving the wall clock does not advance it','proves both possible complete save successors before its one outcome draw','one receipt-bearing compare-and-swap with no retry and no optimistic child, XP, pair claim, or Recovery','refusal, stale result, overflow, or failed write draws nothing and adds nothing','requires reload and cannot breed twice','Back and Close remain available around the action','successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save','failed pairing, refusal, stale result, or failed write banks no Charter credit','Parent consumption and manual genetic editing remain unavailable. Care, bond memories, combat and companion missions are live'],requiredControls:['Both parents remain yours','success creates one deterministic child with its exact lineage','grants that child +2 XP','first successful union of each canonical unordered species pair grants the child another +5 XP','proves both possible complete save successors before its one outcome draw','successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save','failed pairing, refusal, stale result, or failed write banks no Charter credit'],forbidden:['Both parents are consumed','Recovery advances while the game is closed','same exact companion can occupy both parent roles','failed attempt creates one child','Breeding automatically retries','A failed pairing also banks the Charter hybrid bloodline goal'],stale:'Breeding remains unavailable in this development slice.',contradictions:['Both parents are consumed.','Recovery advances while the game is closed.','The same exact companion can occupy both parent roles.','A failed attempt creates one child.','Breeding automatically retries.','A failed pairing also banks the Charter hybrid bloodline goal.']},
               {id:'binder',paragraph:2,required:["Eight established collection sets are live: Four Crowns, The Five Flavors, Master of Arts, The Bestiary, Warden of Realms, Against All Odds, The Apex Court, and Seeker of Legends", "A missing silhouette offers Plot course", "to its source-proven home through the existing ship and Prime reach checks", "an accepted world route opens Survey, and Land remains separate", "A found entry offers Inspect", "which opens that exact existing Compendium record without travel or acquisition", "Its ordinary Back control returns to the Compendium list", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "Binder Claim becomes available at ten exact Paragons and pays its established 120 Stardust once", "discovering a Paragon never pays that Set reward automatically", "A prior Paragon-set claim remains claimed and can never pay again"],requiredControls:["Eight established collection sets are live: Four Crowns, The Five Flavors, Master of Arts, The Bestiary, Warden of Realms, Against All Odds, The Apex Court, and Seeker of Legends", "A missing silhouette offers Plot course", "to its source-proven home through the existing ship and Prime reach checks", "an accepted world route opens Survey, and Land remains separate", "A found entry offers Inspect", "which opens that exact existing Compendium record without travel or acquisition", "Its ordinary Back control returns to the Compendium list", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "Binder Claim becomes available at ten exact Paragons and pays its established 120 Stardust once", "discovering a Paragon never pays that Set reward automatically", "A prior Paragon-set claim remains claimed and can never pay again"],forbidden:["Found Paragons plot a course instead of opening Inspect", "Missing silhouettes open Inspect instead of plotting a course", "Discover Life on any world adds a Paragon catalogue record", "An ordinary-world Bioscan catalogues a species", "A Paragon sighting creates an owned companion", "A Paragon sighting creates a specimen", "A Paragon sighting grants Capture credit", "A Paragon sighting spends 1 Biosphere Yield", "A Paragon sighting automatically pays 120 Stardust", "Seeker of Legends is claimable after one Paragon", "Repeat Paragon sightings add a discovery reward", "A prior Paragon-set claim can pay again", "Returning to a previously recorded Paragon home backfills its catalogue record"],stale:'The Fifty Paragons remain visible but unavailable.',contradictions:["Found Paragons plot a course instead of opening Inspect.", "Missing silhouettes open Inspect instead of plotting a course.", "Discover Life on any world adds a Paragon catalogue record.", "An ordinary-world Bioscan catalogues a species.", "A Paragon sighting creates an owned companion.", "A Paragon sighting creates a specimen.", "A Paragon sighting grants Capture credit.", "A Paragon sighting spends 1 Biosphere Yield.", "A Paragon sighting automatically pays 120 Stardust.", "Seeker of Legends is claimable after one Paragon.", "Repeat Paragon sightings add a discovery reward.", "A prior Paragon-set claim can pay again.", "Returning to a previously recorded Paragon home backfills its catalogue record."]},
               {id:'research',paragraph:2,required:['Engineering & Shipyard combines the capability-derived ship preview','Research Bench lists exactly six canonical, durably purchasable rows','Deep Scanners reveal bounded orbital mineral facts','Reinforced Hull reduces hostile Discover Life damage by 25%','Xenobotany Lab adds one permanent nourishment point to every safe explorer Flora meal','Fusion Drive, Antimatter Drive, and Warp Fold successively shorten the deterministic distance-scaled hyperlane presentation','never replace permanent reach systems or slow an unresearched expedition','Fabricator groups all 62 fixed recipes','exposes an action only when its output has a connected gameplay effect','exact materials, parts, Stardust, Signature, prerequisite, revision, and capacity checks pass','Parts, components, permanent ship systems, and supported explorer gear settle durably','Equipped healing, bioscan-protection, and travel-speed gear now join the already-live mining, skimming, and capture effects','When every direct material unit for a slotted craft comes from exceptional stock','exact item receives one deterministic Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','bound to its recipe and receipt','mixed stock remains an ordinary craft','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random drops, upgrades, sockets, and vendors remain separate beta work','Only one Engineering action can be pending','no reward, HP change, Charter tick, ownership change, or cost is published before the receipt-bearing transaction commits'],requiredControls:['Research Bench lists exactly six canonical, durably purchasable rows','Reinforced Hull reduces hostile Discover Life damage by 25%','Xenobotany Lab adds one permanent nourishment point to every safe explorer Flora meal','Fusion Drive, Antimatter Drive, and Warp Fold successively shorten the deterministic distance-scaled hyperlane presentation','never replace permanent reach systems or slow an unresearched expedition','Equipped healing, bioscan-protection, and travel-speed gear now join the already-live mining, skimming, and capture effects'],forbidden:['current Survey card does not yet render those orbital rows','Deep Scanners is the only current purchase','other five remain visible but disabled','Research ignores prerequisites and cost','Reinforced Hull reduces all combat damage','Xenobotany changes companion Feed','Travel research extends permanent reach','Travel research slows the unresearched baseline','Mixed stock also receives a Pureforged modifier','The Pureforged modifier rerolls after reload','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available','Orbit now shows cosmic and exceptional veins'],stale:'Only Deep Scanners can currently be purchased; the other five Research rows remain visible but disabled.',contradictions:['The current Survey card does not yet render those orbital rows.','Deep Scanners is the only current purchase; the other five remain visible but disabled.','Research ignores prerequisites and cost.','Reinforced Hull reduces all combat damage.','Xenobotany changes companion Feed.','Travel research extends permanent reach.','Travel research slows the unresearched baseline.','Mixed stock also receives a Pureforged modifier.','The Pureforged modifier rerolls after reload.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.','Orbit now shows cosmic and exceptional veins.']},
               {id:'crafting',paragraph:2,required:['Inventory is a separate board','stable item instance','Equip, Unequip, Salvage, and pending-reward claim','Engineering & Shipyard → Fabricator','lists all 62 fixed recipes','can settle only rows whose output has a connected effect','A slotted item made entirely from exceptional direct materials carries one deterministic, recipe-and-receipt-bound Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','as part of that exact item through comparison and reload','a mixed-material craft does not','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random authored drops, targeting tags, item upgrades, sockets, and vendors remain unavailable'],requiredControls:['can settle only rows whose output has a connected effect','A slotted item made entirely from exceptional direct materials carries one deterministic, recipe-and-receipt-bound Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','as part of that exact item through comparison and reload','a mixed-material craft does not','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random authored drops, targeting tags, item upgrades, sockets, and vendors remain unavailable'],forbidden:['Mixed stock also receives a Pureforged modifier','The Pureforged modifier rerolls after reload','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available'],stale:'Inventory exposes only the imported Equip, Unequip, Salvage, and reward-claim actions; Fabricator recipes are not available in this slice.',contradictions:['Mixed stock also receives a Pureforged modifier.','The Pureforged modifier rerolls after reload.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.']},
-             {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating.'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating.'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
-              {id:'settings',name:'settings-audio',paragraph:0,required:audioSettingsRequired,requiredControls:audioSettingsRequired,forbidden:audioGuideForbidden,stale:'Creature voices and master Sound own the same generic world signal.',contradictions:audioGuideContradictions},
+             {id:'settings',paragraph:2,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating.'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating.'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
+              {id:'settings',name:'settings-audio',paragraph:1,required:audioSettingsRequired,requiredControls:audioSettingsRequired,forbidden:audioGuideForbidden,stale:'Creature voices and master Sound own the same generic world signal.',contradictions:audioGuideContradictions},
               {id:'saving',paragraph:1,required:['On reload, a saved galaxy, star, or planet location is regenerated from the seeded universe','accepted only when it is source-verified','If that saved location is stale, forged, or incomplete, or if its destination is no longer authorized by your saved reach, the view returns safely to Cosmos','normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating.'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating.'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'A newer-build, incomplete, or corrupt stored expedition remains protected, and there is no cloud account yet.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
             ];
             const check=(article,spec)=>{const text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),lower=text.toLowerCase(),missing=spec.required.filter((part)=>!text.includes(part)),stale=spec.forbidden.filter((part)=>lower.includes(part.toLowerCase()));return {ok:!!article&&missing.length===0&&stale.length===0,missing,stale,text};};
@@ -13396,7 +14338,7 @@ async function main() {
                 if(!(row instanceof HTMLElement))throw new Error('Guide control search omitted '+spec.id);
                 row.click();await settle();
                 const article=panel.querySelector('.guide-topic'),paragraphs=article?[...article.querySelectorAll('p')]:[],
-                  staleParagraph=spec.name==='settings-audio'?1:spec.id==='settings'?4:(spec.paragraph??0),target=paragraphs[staleParagraph];
+                  staleParagraph=spec.name==='settings-audio'?2:spec.id==='settings'?5:(spec.paragraph??0),target=paragraphs[staleParagraph];
                 if(!(article instanceof HTMLElement)||!(target instanceof HTMLElement))throw new Error('Guide control topic did not render '+spec.id);
                 const prior=target.innerHTML,priorText=(article.textContent||'');
                 let injected;
@@ -13473,7 +14415,7 @@ async function main() {
           headings=article?[...article.querySelectorAll('h5')].map((node)=>(node.textContent||'').trim()):[],
           bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((node)=>(node.textContent||'').trim()),text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
           title=article?.querySelector('[data-guide-heading]')?.textContent||'';
-          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=79;
+          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=120;
           const unnegated=${hasUnnegatedSentenceClaim};
           const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
@@ -13486,7 +14428,7 @@ async function main() {
             frontierAudio=bulletNodes.find((item)=>/THE FRONTIER SPEAKS/.test(item.textContent||'')),
             creatureListen=bulletNodes.find((item)=>/CREATURE CALLS ARE YOURS TO REQUEST/.test(item.textContent||'')),
             biosphereListen=bulletNodes.find((item)=>/HEAR A LIVING WORLD WITHOUT SPOILERS/.test(item.textContent||'')),
-           meal=bulletNodes.find((item)=>/TWO EXACT MEAL PATHS, NO INVENTED CARE/.test(item.textContent||'')),
+           meal=bulletNodes.find((item)=>/TWO EXACT MEAL PATHS, TASTE-LED CARE/.test(item.textContent||'')),
             breed=bulletNodes.find((item)=>/TWO PARENTS, ONE DURABLE OUTCOME/.test(item.textContent||'')),
             rename=bulletNodes.find((item)=>/ONE COMPANION, ONE DURABLE NAME/.test(item.textContent||'')),
             training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
@@ -13584,7 +14526,7 @@ async function main() {
               &&captureText.includes('older Surveys and capture do not count')
               &&captureText.includes('Weekly bioscan Charters remain protected until their separate lifecycle is complete')
               &&captureText.includes('Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail')
-              &&captureText.includes('friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable')
+              &&captureText.includes('Passive evolution remains unavailable. companion missions are live. Care, bond memories and friendly duels are live')
               &&!captureContradiction&&!discoverLifeContradiction,
             scoutContradiction=/Field Scout[^.!?]{0,96}(?:dies|is lost|falls below Critical)[^.!?]{0,64}(?:Discover Life|bioscan)/i.test(scoutText)
               ||unnegated(scoutText,/(?:miss|repeat species|no standing Scout)[^.!?]{0,96}(?:grants?|earns?|awards?)[^.!?]{0,32}Scout XP/i)
@@ -13639,7 +14581,10 @@ async function main() {
               ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:grants?|awards?)[^.!?]{0,48}(?:discovery|reward)/i)
               ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:writes?|changes?)[^.!?]{0,32}(?:the )?save/i)
               ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:plays?|starts?)[^.!?]{0,64}(?:before|without)[^.!?]{0,80}(?:visible|counterpart|biosphere lead|inhabited world)/i)
-              ||unnegated(text,/\\bcombat sound remains (?:future work|unavailable)/i),
+              ||unnegated(text,/\\bcombat sound remains (?:future work|unavailable)/i)
+              ||unnegated(frontierAudioText,/(?:Starter Charter|Charter acceptance)[^.!?]{0,96}(?:plays?|sounds?)[^.!?]{0,96}(?:before (?:the )?acceptance succeeds|without (?:your )?(?:explicit )?pilot-sound choice)/i)
+              ||unnegated(frontierAudioText,/(?:duplicate|failed) acceptances[^.!?]{0,48}(?:play|sound|ring)/i)
+              ||unnegated(frontierAudioText,/Other sound mappings and creature actions[^.!?]{0,48}(?:are|remain) (?:now )?(?:available|live|complete)/i),
             audioContract=frontierAudioHeading==='New Features & Systems'
               &&creatureListenHeading==='Gameplay'&&biosphereListenHeading==='Gameplay'
               &&frontierAudioText.includes('one deterministic runtime across a verified durable wild-fauna Tame, one exact durable nonconverging Feed commit, and an explorer-requested call from one exact owned-fauna detail')
@@ -13652,7 +14597,9 @@ async function main() {
               &&frontierAudioText.includes('Guardian or Titan entrance, phase, victory, and defeat motifs')
               &&frontierAudioText.includes('at most two combat voices overlap')
               &&frontierAudioText.includes('master Sound governs them, Creature voices does not')
-              &&frontierAudioText.includes('Authored ambience, music, recorded assets, and other creature actions remain future work')
+              &&frontierAudioText.includes('In the optional audiovisual preview, accepting a Starter Charter now plays a short confirmation after the acceptance succeeds, including when existing progress completes it immediately')
+              &&frontierAudioText.includes('It follows your explicit pilot-sound choice; duplicate or failed acceptances stay quiet')
+              &&frontierAudioText.includes('Other sound mappings and creature actions remain future work')
               &&creatureListenText.includes('Open a real owned-fauna Compendium detail and choose Listen on an exact companion to hear its stable deterministic call')
               &&creatureListenText.includes('Browsing, filtering, focusing, and returning through the Compendium never auto-play it')
               &&biosphereListenText.includes('pre-landing Survey card and landed Planetside both offer Listen to biosphere')
@@ -13663,7 +14610,7 @@ async function main() {
               ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(mealText)
               ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(mealText)
               ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(mealText)
-              ||/(?:Companion Feed|feeding)[^.!?]{0,96}(?:discovers? tastes?|raises? (?:stats?|Power)|heals? injuries?|applies? poison|builds? bond)/i.test(mealText)
+              ||/Feed can heal without consuming flora|Rest advances while the game is closed|Bond decays over time|Companion Feed applies poison/i.test(mealText)
               ||/\\b(?:Stats?|Power) (?:is|are) (?:now )?(?:increased|raised) by (?:companion )?feeding\\b/i.test(mealText)
               ||/Meals can rise above 200/i.test(mealText)
               ||/Every Compendium detail offers Feed/i.test(mealText),
@@ -13672,15 +14619,15 @@ async function main() {
               &&mealText.includes('one exact unassigned owned companion below the 200-Meal cap')
               &&mealText.includes('one exact owned flora lot through Use 1')
               &&mealText.includes('Same-species twins remain separate')
-              &&mealText.includes('assigned, recovering, and capped companions stay disabled and explain why')
-              &&mealText.includes('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora')
+              &&mealText.includes('companions with an active assignment or Recovery timer and capped companions stay disabled and explain why')
+              &&mealText.includes('One receipt-bearing compare-and-swap raises Meals by 0 to 3 and removes exactly 1 flora')
               &&mealText.includes('emptying that exact lot on its final unit')
               &&mealText.includes('no retry or optimistic change')
               &&mealText.includes('trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status')
               &&mealText.includes('one deterministic synthesized acknowledgement after that status appears')
               &&/refused, stale, converging, replayed, hidden, route-lost, counterpart-lost, and older results remain silent/i.test(mealText)
-              &&mealText.includes('Companion Feed is still only an inventory spend and meal counter')
-              &&mealText.includes('tastes, Power growth, injury care or healing, companion poison, and bond remain open')
+              &&mealText.includes('Companion Feed resolves taste, Meals growth, wound mending and first-time XP in one inventory spend')
+              &&mealText.includes('loved meals grow and mend, neutral meals grow and mend less, and disliked meals are harmless; first tastes build bond memories')
               &&mealText.includes('real Flora detail previews the explorer’s healing, poison risk, and deterministic nourished stat')
               &&mealText.includes('Eat 1 consumes the canonical exact owned specimen in one receipt-bearing transaction')
               &&mealText.includes('safe meal restores shown HP with worn healing gear, raises the stat up to 330, gains +1 nourishment from Xenobotany')
@@ -13739,9 +14686,9 @@ async function main() {
               ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:close|dismiss|continue|keep playing|keep exploring)/i.test(trainingText)
               ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:discard|clear|overwrite|silently ignore)/i.test(trainingText),
             trainingContract=trainingHeading==='Gameplay'
-              &&trainingText.includes('The current 15-card drill keeps six real navigation lessons for finding Earth, reading Survey, charting, opening the Atlas, and landing')
-              &&trainingText.includes('adds read-only Planetside, Engineering, Compendium, Records, Guardian/combat, and CF1 Share/Follow orientation')
-              &&trainingText.includes('Training locks every mutating board action and performs no capture, meal, breeding, rename, Field Scout change, engineering transaction, or combat')
+              &&trainingText.includes('The current 16-card drill keeps six real navigation lessons for finding Earth, reading Survey, charting, opening the Atlas, and landing')
+              &&trainingText.includes('adds one isolated Iron Plate Forge practice and read-only Planetside, Engineering, Compendium, Records, Guardian/combat, and CF1 Share/Follow orientation')
+              &&trainingText.includes('Training locks every live mutating board action and performs no capture, meal, breeding, rename, Field Scout change, persistent engineering transaction, or combat')
               &&trainingText.includes('Restart captures the exact pre-Training view')
               &&trainingText.includes('A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view')
               &&trainingText.includes('if verification pauses, that exact view stays saved')
@@ -13840,14 +14787,14 @@ async function main() {
             ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-            ||/(?:duels?|creature combat|passive evolution|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+            ||/(?:passive evolution|Kindred preferred.mission choice)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bField Scout (?:dispatch|missions?|care|bond)\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
             ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
             ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
             ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
-            ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
-            ||/(?:Companion Feed|feeding)[^.!?]{0,96}(?:heals? injuries?|raises? (?:stats?|Power)|discovers? tastes?|builds? bond)/i.test(text)
+            ||/Feed can heal without consuming flora|Rest advances while the game is closed|Bond decays over time/i.test(text)
+            ||/Feed can heal without consuming flora/i.test(text)
             ||/Capture[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)|Discover Life[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}weekly[^.!?]{0,48}(?:Charter|bioscan)|(?:older Survey|ordinary capture)[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i.test(text)
             ||/weekly bioscan Charters?[^.!?]{0,64}(?:is|are) (?:now )?(?:live|available|playable)/i.test(text)
             ||unnegated(text,/(?:Museum|Chronicle)[^.!?]{0,96}(?:writes?|creates?)[^.!?]{0,48}(?:save|reward|mission|share|global timeline)/i)
@@ -13863,8 +14810,12 @@ async function main() {
             &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&scoutContract&&recordsContract&&audioContract&&mealContract&&breedContract&&renameContract&&lessonContract&&trainingContract&&artContract
             &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract&&publishingContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
+            &&/FAMILIAR CONTROLS ON EVERY SCREEN: Phones keep five icon-only scene buttons above four compact utility icons/.test(text)
+            &&/ONE GLASS LANGUAGE: Rounded name, health, objective and navigation controls carry the production layout forward/.test(text)
+            &&/UTILITIES STAY TOGETHER: Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge/.test(text)
+            &&/PRIME KEEPS YOUR PROGRESS: Prime Codex retains its Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
-            &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
+            &&/Spacing inside the side navigation belongs to its controls and leaves the active panel open/.test(text)
             &&/a genuine empty-sky press still dismisses it/.test(text)
             &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
             &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
@@ -13878,7 +14829,7 @@ async function main() {
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 79-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits and post-progression readiness, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 120-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits and post-progression readiness, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -13897,7 +14848,7 @@ async function main() {
               frontierAudio=items.find((item)=>/THE FRONTIER SPEAKS/.test(item.textContent||'')),
               creatureListen=items.find((item)=>/CREATURE CALLS ARE YOURS TO REQUEST/.test(item.textContent||'')),
               biosphereListen=items.find((item)=>/HEAR A LIVING WORLD WITHOUT SPOILERS/.test(item.textContent||'')),
-             meal=items.find((item)=>/TWO EXACT MEAL PATHS, NO INVENTED CARE/.test(item.textContent||'')),
+             meal=items.find((item)=>/TWO EXACT MEAL PATHS, TASTE-LED CARE/.test(item.textContent||'')),
               breed=items.find((item)=>/TWO PARENTS, ONE DURABLE OUTCOME/.test(item.textContent||'')),
               rename=items.find((item)=>/ONE COMPANION, ONE DURABLE NAME/.test(item.textContent||'')),
               training=items.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
@@ -13929,7 +14880,7 @@ async function main() {
               for(const copy of ['All 62 fixed Fabricator recipes are now actionable.','Disconnected Fabricator outputs are now playable.',
                 'Mixed stock also receives a Pureforged modifier.','Pureforged modifiers reroll after reload.',
                 'Authored affixes/drawbacks are now available.','Upgrades are now playable.','Sockets are now available.','Vendors are now live.',
-                'Creature combat is now playable.','Field Scout missions are now playable.','Companion Feed now heals injuries.',
+                'Bond decays over time.','Field Scout missions are now playable.','Feed can heal without consuming flora.',
                 'An older Survey completes the accepted Discover Life Starter Charter retroactively.','Weekly bioscan Charters are now live.',
                 'The Expedition Chronicle writes a reward and one global timeline.']){
                 claim.textContent=claimText+' '+copy;unavailableFeatureClaims.push({copy,result:${developmentDetailCheck}});
@@ -14073,7 +15024,7 @@ async function main() {
               for(const copy of [
                 'Assigned companions can still be fed.',
                 'The meal automatically retries after a stale result.',
-                'Stats are now increased by feeding.',
+                'Feed can heal without consuming flora.',
                 'Meals can rise above 200.',
                 'Every Compendium detail offers Feed.',
                 'Feeding is now playable.',
@@ -14112,7 +15063,7 @@ async function main() {
               lessonStale=${developmentDetailCheck};lesson.textContent=lessonText;
               lesson.textContent=lessonText+' Escape from a wrong-world detour abandons Sol and the lesson.';lessonContradictionChanged=lesson.textContent!==lessonText;
               lessonContradictory=${developmentDetailCheck};lesson.textContent=lessonText;
-              training.textContent=trainingText.replace('The current 15-card drill keeps six real navigation lessons for finding Earth, reading Survey, charting, opening the Atlas, and landing',
+              training.textContent=trainingText.replace('The current 16-card drill keeps six real navigation lessons for finding Earth, reading Survey, charting, opening the Atlas, and landing',
                 'current Training inventory omitted');
               trainingStale=${developmentDetailCheck};training.textContent=trainingText;
               training.textContent=trainingText.replace('every other expedition field is retained from the surrounding save','surrounding-save ownership omitted');
@@ -14219,7 +15170,7 @@ async function main() {
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&publishing?.textContent===publishingText&&S.api.state===priorState;
-            return {ok:!error&&baseline?.ok===true&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===78
+            return {ok:!error&&baseline?.ok===true&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===119
               &&identity?.ok===false&&identity?.identity===false
               &&truthfulFeatureClaims.length===11
               &&truthfulFeatureClaims.every((row)=>row.result?.ok===true&&row.result?.honest===true&&row.result?.overclaim===false)
@@ -14464,13 +15415,13 @@ async function main() {
         if (vp.width > 900) {
           addOutcome(vp.label, 'settings', 'DESKTOP_UTILITY_PANEL_ANCHOR', '#setpanel',
             await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#setpanel')`),
-            'desktop Settings shares the measured bottom-right utility edge above the dock');
+            'desktop Settings aligns with the measured bottom-right utility tray\'s right edge, 12px above it');
           if (!settingsAnchorControlRun) {
             settingsAnchorControlRun = true;
             const leftSettingsControl = await evalIn(`(()=>{ const panel=document.getElementById('setpanel'),prior=panel.getAttribute('style');
               panel.style.setProperty('left','12px','important');panel.style.setProperty('right','auto','important');
               const result=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#setpanel');
-              if(prior===null)panel.removeAttribute('style');else panel.setAttribute('style',prior);return result;})()`);
+              panel.setAttribute('style','');panel.removeAttribute('style');if(prior!==null)panel.setAttribute('style',prior);return result;})()`);
             if (leftSettingsControl.ok || !Array.isArray(leftSettingsControl.rect)
               || Math.abs(leftSettingsControl.rect[0] - 12) > 2) {
               recordInstrumentFailure(`${vp.label}: injected left-anchored Settings did not turn the bottom-right anchor outcome red (${JSON.stringify(leftSettingsControl)})`);
@@ -14531,6 +15482,7 @@ async function main() {
           if (settingsWidthControl.ok) recordInstrumentFailure(`${vp.label}: Settings horizontal-overflow injection stayed green (${JSON.stringify(settingsWidthControl)})`);
           recordControls('settings-horizontal-overflow');
         }
+        if (compactCharts) await auditChartsControl('#setcharts', activateRealSettingsControl);
         const recordSettingsAudioPhase = async (surface, expected, activation = null) => {
           const evidence = await evalIn(SETTINGS_AUDIO_EVIDENCE_EXPRESSION);
           evidence.activation = activation;
@@ -15037,7 +15989,7 @@ async function main() {
   if (!arc4CaptureControlRun && !targetedProductBlocked) {
     recordInstrumentFailure('Arc 4 capture presentation/geometry/native-return controls never ran');
   }
-  if (!phoneDockControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900)) {
+  if (!phoneDockControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some(usesPhoneDock)) {
     recordInstrumentFailure('exact ten-control 5x2 phone dock control never ran');
   }
   if (!reloadBindingControlRun && !targetedProductBlocked) recordInstrumentFailure('live slice-ready binding controls never ran');

@@ -1,0 +1,97 @@
+[
+  {
+    "id": "01-grouse",
+    "name": "Grouse",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "6898c731ddc5f7f11bc563f15332bd2ec996d969fcc49ac19a86262029809171",
+    "keyed": false,
+    "byClass": {
+      "top": 2,
+      "front": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "02-eagle",
+    "name": "Eagle",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "60f6f94779920f54c6b46bc3be8aeef2012d0f3cefdd86fa6d360ca5095f5565",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "03-sparrow",
+    "name": "Sparrow",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "ad8152deec60b1cefa91ee41d4bcb5b36d650332b30476adfe0b29239e2f0634",
+    "keyed": false,
+    "byClass": {
+      "top": 2,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "04-sandpiper",
+    "name": "Sandpiper",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "068fb0710f2d48ecc5f2fc48c1683f111f0d947aeaa3d5b3f8001b0edc87c7f0",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "05-mongoose",
+    "name": "Mongoose",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "b7aa6545d14f579ff0f3c9ea7f1aec7e33dabba949d64c9b0c957d2e84709f04",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 5,
+    "detached": []
+  },
+  {
+    "id": "06-tapir",
+    "name": "Tapir",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "8fb6be2dd8b45b88278729f5ccfb3dddfbe19dd9bf4f3172508e4807699a5504",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  }
+]

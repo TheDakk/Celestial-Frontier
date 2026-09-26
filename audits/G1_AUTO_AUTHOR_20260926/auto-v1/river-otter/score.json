@@ -1,0 +1,18 @@
+{
+ "id": "river-otter",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 7% paint (reference 52%)"
+ ],
+ "bodyLengthPx": 1005.3,
+ "landmarkMedian": 0.0165,
+ "landmarkMax": 0.0351,
+ "worst": [
+  "tail1 0.035",
+  "hindNearAnkle 0.034",
+  "pelvis 0.033"
+ ],
+ "labelAgreement": 0.5978,
+ "missingJoints": []
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "rig": "python",
+    "exit": 1,
+    "error": null
+  },
+  {
+    "rig": "salmon",
+    "exit": 0,
+    "error": null
+  }
+]

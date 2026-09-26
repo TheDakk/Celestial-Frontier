@@ -1,0 +1,128 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part arm2-middle (arm2Seg1) covers 15% paint (reference 55%)",
+  "missing-anatomy: part arm3-middle (arm3Seg1) covers 15% paint (reference 48%)",
+  "missing-anatomy: part arm3-tip (arm3Seg2) covers 6% paint (reference 22%)",
+  "unexplained-anatomy: 35.7% of the paint lies away from the body and in no part (reference 0.0%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "chains": [],
+ "bestReference": "starfish",
+ "costs": [
+  {
+   "ref": "starfish",
+   "cost": 0.08258
+  }
+ ],
+ "mirrorBest": 0.08129,
+ "otherFamilyBest": {
+  "family": "quadruped",
+  "cost": 0.05858
+ },
+ "coverage": [
+  {
+   "id": "central-disc-upper",
+   "joint": "bell",
+   "paint": 1,
+   "area": 26588.365000000013
+  },
+  {
+   "id": "arm0-base",
+   "joint": "arm0Seg0",
+   "paint": 0.8520408163265306,
+   "area": 47162.955000000016
+  },
+  {
+   "id": "arm0-middle",
+   "joint": "arm0Seg1",
+   "paint": 0.9618181818181818,
+   "area": 2955.7450000000053
+  },
+  {
+   "id": "arm0-tip",
+   "joint": "arm0Seg2",
+   "paint": 0.7967032967032966,
+   "area": 23248.135
+  },
+  {
+   "id": "arm4-base",
+   "joint": "arm4Seg0",
+   "paint": 0.23585810162991372,
+   "area": 50118.86500000017
+  },
+  {
+   "id": "arm4-middle",
+   "joint": "arm4Seg1",
+   "paint": 0.1926605504587156,
+   "area": 26152.649999999892
+  },
+  {
+   "id": "arm4-tip",
+   "joint": "arm4Seg2",
+   "paint": 0.17391304347826086,
+   "area": 26135.290000000037
+  },
+  {
+   "id": "arm2-base",
+   "joint": "arm2Seg0",
+   "paint": 0.4370887337986042,
+   "area": 80630.01000000005
+  },
+  {
+   "id": "arm2-middle",
+   "joint": "arm2Seg1",
+   "paint": 0.15067466266866567,
+   "area": 66560.79999999999
+  },
+  {
+   "id": "arm2-tip",
+   "joint": "arm2Seg2",
+   "paint": 0.12028824833702882,
+   "area": 41829.41499999992
+  },
+  {
+   "id": "arm3-base",
+   "joint": "arm3Seg0",
+   "paint": 0.3372240191252988,
+   "area": 114034.18999999994
+  },
+  {
+   "id": "arm3-middle",
+   "joint": "arm3Seg1",
+   "paint": 0.1466435471885063,
+   "area": 74400.99999999994
+  },
+  {
+   "id": "arm3-tip",
+   "joint": "arm3Seg2",
+   "paint": 0.055603079555175364,
+   "area": 38615.270000000004
+  },
+  {
+   "id": "arm1-base",
+   "joint": "arm1Seg0",
+   "paint": 0.2198768689533861,
+   "area": 18200.449999999983
+  },
+  {
+   "id": "arm1-middle",
+   "joint": "arm1Seg1",
+   "paint": 0.19161982626469085,
+   "area": 30517.705000000016
+  },
+  {
+   "id": "arm1-tip",
+   "joint": "arm1Seg2",
+   "paint": 0.16705246913580246,
+   "area": 41507.659999999974
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0,
+   "area": 0.1500000000000341
+  }
+ ],
+ "unclaimedFrac": 0.3565
+}

@@ -1,0 +1,99 @@
+{
+  "error": "Turnaround patch contains key colour",
+  "metadata": {
+    "width": 1774,
+    "height": 887
+  },
+  "rows": [
+    {
+      "joint": "head",
+      "keyPixels": 0,
+      "box": {
+        "left": 577,
+        "top": 391,
+        "size": 88
+      }
+    },
+    {
+      "joint": "jaw",
+      "keyPixels": 1080,
+      "box": {
+        "left": 452,
+        "top": 375,
+        "size": 51
+      }
+    },
+    {
+      "joint": "earFarTip",
+      "keyPixels": 0,
+      "box": {
+        "left": 915,
+        "top": 338,
+        "size": 51
+      }
+    },
+    {
+      "joint": "earNearTip",
+      "keyPixels": 0,
+      "box": {
+        "left": 915,
+        "top": 338,
+        "size": 51
+      }
+    },
+    {
+      "joint": "hindNearAnkle",
+      "keyPixels": 1111,
+      "box": {
+        "left": 918,
+        "top": 599,
+        "size": 79
+      }
+    },
+    {
+      "joint": "hindFarAnkle",
+      "keyPixels": 601,
+      "box": {
+        "left": 925,
+        "top": 606,
+        "size": 65
+      }
+    },
+    {
+      "joint": "foreNearAnkle",
+      "keyPixels": 1340,
+      "box": {
+        "left": 619,
+        "top": 621,
+        "size": 71
+      }
+    },
+    {
+      "joint": "foreFarAnkle",
+      "keyPixels": 1240,
+      "box": {
+        "left": 622,
+        "top": 624,
+        "size": 65
+      }
+    },
+    {
+      "joint": "tail2",
+      "keyPixels": 557,
+      "box": {
+        "left": 1020,
+        "top": 382,
+        "size": 88
+      }
+    },
+    {
+      "joint": "tail3",
+      "keyPixels": 557,
+      "box": {
+        "left": 1020,
+        "top": 382,
+        "size": 88
+      }
+    }
+  ]
+}

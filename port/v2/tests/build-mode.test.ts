@@ -149,6 +149,7 @@ describe('mode identity through the exact-byte PWA lifecycle', () => {
         'index.html': index,
         'assets/species-art.worker-sealed.js': 'self.onmessage = () => {};',
         'assets/biome-vista.worker-sealed.js': 'self.onmessage = () => {};',
+        'assets/earth-resident.worker-sealed.js': 'self.onmessage = () => {};',
         'assets/main.js': 'console.log("game");',
         'assets/main.js.map': '{}',
       };

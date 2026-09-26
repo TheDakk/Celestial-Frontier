@@ -1,0 +1,37 @@
+{
+  "source": "/Users/nick/Downloads/codex-long-session-pack-20260913.zip",
+  "zipSha256": "c8dbe60fe31584fd6ef9e429644d03929d63da6599dcaafc1c85540c16886b0d",
+  "logDisposition": "Incoming LOG.md retained verbatim as LOG-CLAUDE-PACKET.md; local chronological LOG.md preserved.",
+  "files": [
+    {
+      "archivePath": "audits/LONG_SESSION_20260913/WORK_ORDER.md",
+      "retainedPath": "audits/LONG_SESSION_20260913/WORK_ORDER.md",
+      "bytes": 6361,
+      "sha256": "48adedb57539b242e7f76b003b14a9021b0bcd422699afb2d601224b46825151"
+    },
+    {
+      "archivePath": "audits/LONG_SESSION_20260913/CONTRACTS.md",
+      "retainedPath": "audits/LONG_SESSION_20260913/CONTRACTS.md",
+      "bytes": 3393,
+      "sha256": "092c16f54550e0ea5a73767620e300b45e284220e6384b6296d01db8618af1e6"
+    },
+    {
+      "archivePath": "audits/LONG_SESSION_20260913/LOG.md",
+      "retainedPath": "audits/LONG_SESSION_20260913/LOG-CLAUDE-PACKET.md",
+      "bytes": 924,
+      "sha256": "c67ae8c28ec7abc018ef1451279e929d48c7a0174b2aa71be22c152bfa190c07"
+    },
+    {
+      "archivePath": "audits/LONG_SESSION_20260913/LOG-A4.md",
+      "retainedPath": "audits/LONG_SESSION_20260913/LOG-A4.md",
+      "bytes": 7243,
+      "sha256": "a2d3ee1e8bbf0f4abcba1d352945fa63483f233d9128a74332cc57d6fceef66c"
+    },
+    {
+      "archivePath": "audits/LONG_SESSION_20260913/LOG-A5.md",
+      "retainedPath": "audits/LONG_SESSION_20260913/LOG-A5.md",
+      "bytes": 6059,
+      "sha256": "13b6cc7e26cb0cf529518160bcddea08edf37596f21502da0e5f13a49c3b40bc"
+    }
+  ]
+}

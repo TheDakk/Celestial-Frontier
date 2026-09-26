@@ -1,0 +1,15 @@
+{
+  "schema": "cf.portable-first-step-run.v1",
+  "status": "FAIL",
+  "startedAt": "2026-09-09T20:38:11.396Z",
+  "scope": "Diagnostic native workers; actual product preparation; exact portable six-reference first step only.",
+  "sources": [],
+  "records": [],
+  "browserEvents": [],
+  "cleanup": {},
+  "qualityAccepted": false,
+  "physicalPhoneQualified": false,
+  "actualModelDownloaded": false,
+  "imageGenerated": false,
+  "normalInGameQualified": false
+}

@@ -1,0 +1,199 @@
+{
+  "sheets": [
+    {
+      "id": "crab",
+      "sheet": "crab-sheet.png",
+      "sheetSha256": "94456302fa9632b71371402def10b305010b9df1ab808ab1672108971bc1e87b",
+      "sources": [
+        {
+          "name": "Civet · accepted reference",
+          "path": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/parts/keyed.png",
+          "sha256": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a"
+        },
+        {
+          "name": "crab · accepted painting",
+          "path": "audits/VISION_P1_FOUR_CRABS_20260920/crab/generation-01/crab-master.png",
+          "sha256": "0586a468c0685b53aba0993788e834468dd9d7cac84bdeb212fe9531124442be"
+        },
+        {
+          "name": "Painter · family control",
+          "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/crab-master.png",
+          "sha256": "dd419ae94d47663e22cc7ca598247d5c2d539b78dff24bb2b881bf16ecae5655"
+        },
+        {
+          "path": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/crab-native-01/melee-pinch-50.png",
+          "sha256": "f1dbd266a1334611eed4dfc90d19d1cce0717a6b522660a3e509f7b5b23e0c1a"
+        },
+        {
+          "path": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/crab-native-01/faint-50.png",
+          "sha256": "e7c0dac36934559d8baa211a2e3c012d18b1c1093fda347350cec3eb7274741d"
+        }
+      ],
+      "filmSha256": "8957d00ccbd25ab62430ac5bef10c68db1e6b5e35de002540975654a7257d06c",
+      "admission": {
+        "status": "FAIL",
+        "policy": {
+          "tier": "painted-desktop",
+          "metric": "full-film rig p95",
+          "limitMs": 3.5,
+          "comparison": "<=",
+          "authority": "Nick, PROGRAM.md section6, 2026-09-20"
+        },
+        "valueMs": 4,
+        "cpuPass": false,
+        "geometryPass": true,
+        "failures": [
+          "CPU full-film rig p95"
+        ],
+        "perClipReadings": "retained unchanged; diagnostic only for painted-desktop"
+      },
+      "scope": "Native evidence; no new painting/intake; comparison images display-scaled only"
+    },
+    {
+      "id": "freshwater-crab",
+      "sheet": "freshwater-crab-sheet.png",
+      "sheetSha256": "a0d82a7e56566c219cc8c8686fe3df9f96c14ef3819e8902826e7a278fdd3a46",
+      "sources": [
+        {
+          "name": "Civet · accepted reference",
+          "path": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/parts/keyed.png",
+          "sha256": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a"
+        },
+        {
+          "name": "freshwater crab · accepted painting",
+          "path": "audits/VISION_P1_FOUR_CRABS_20260920/freshwater-crab/generation-01/freshwater-crab-master.png",
+          "sha256": "49645b5e951eaf4207e95ee2453f218abc56e49ba75451e188452e74b3cbce44"
+        },
+        {
+          "name": "Painter · family control",
+          "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/freshwater-crab-master.png",
+          "sha256": "65cd0220488bbdda7cd220c67a33817c8155e7fec87087692d02279f6df11a57"
+        },
+        {
+          "path": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/freshwater-crab-native-01/melee-pinch-50.png",
+          "sha256": "393eac335e90abbb419799453c0fae01956fb157312f4ba2e265d245895b142a"
+        },
+        {
+          "path": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/freshwater-crab-native-01/faint-50.png",
+          "sha256": "3132092a3628b885510bfbb130d448b2c34889b9f62561e2be6e2b6923cf44a0"
+        }
+      ],
+      "filmSha256": "64d0366d550d00b95965e86a854a3ca900bbbec1baf37fe604a396d1ab6c3f5f",
+      "admission": {
+        "status": "PASS",
+        "policy": {
+          "tier": "painted-desktop",
+          "metric": "full-film rig p95",
+          "limitMs": 3.5,
+          "comparison": "<=",
+          "authority": "Nick, PROGRAM.md section6, 2026-09-20"
+        },
+        "valueMs": 2.400000035762787,
+        "cpuPass": true,
+        "geometryPass": true,
+        "failures": [],
+        "perClipReadings": "retained unchanged; diagnostic only for painted-desktop"
+      },
+      "scope": "Native evidence; no new painting/intake; comparison images display-scaled only"
+    },
+    {
+      "id": "mud-crab",
+      "sheet": "mud-crab-sheet.png",
+      "sheetSha256": "701ff4512e5059b6839c6dcb6201ad98ea0d18634a0c15b6c7610726443f5fe9",
+      "sources": [
+        {
+          "name": "Civet · accepted reference",
+          "path": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/parts/keyed.png",
+          "sha256": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a"
+        },
+        {
+          "name": "mud crab · accepted painting",
+          "path": "audits/VISION_P1_FOUR_CRABS_20260920/mud-crab/generation-01/mud-crab-master.png",
+          "sha256": "7ff805602f17688c4f36db55e041849148ba4796414ff7e961032bdf7432b9cf"
+        },
+        {
+          "name": "Painter · family control",
+          "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/mud-crab-master.png",
+          "sha256": "c08d616382e86c4dfa21fd895a25f4eda1dd3ee9efa8ed9751ea978bc9ae3379"
+        },
+        {
+          "path": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/mud-crab-native-01/melee-pinch-50.png",
+          "sha256": "896a42cfe82aed5eb3718ffd82326b43456c6a8d5da6f2c0fd4eef804642c181"
+        },
+        {
+          "path": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/mud-crab-native-01/faint-50.png",
+          "sha256": "1894d0efc7e6bc4649087ac55524511b0d1f723cead57bb863f53f7bc0922501"
+        }
+      ],
+      "filmSha256": "b8b27f6c10fbddbc257fd8a0c9365d2106c8aabd5cede211787fcffcf18a9925",
+      "admission": {
+        "status": "FAIL",
+        "policy": {
+          "tier": "painted-desktop",
+          "metric": "full-film rig p95",
+          "limitMs": 3.5,
+          "comparison": "<=",
+          "authority": "Nick, PROGRAM.md section6, 2026-09-20"
+        },
+        "valueMs": 3.599999964237213,
+        "cpuPass": false,
+        "geometryPass": true,
+        "failures": [
+          "CPU full-film rig p95"
+        ],
+        "perClipReadings": "retained unchanged; diagnostic only for painted-desktop"
+      },
+      "scope": "Native evidence; no new painting/intake; comparison images display-scaled only"
+    },
+    {
+      "id": "vent-crab",
+      "sheet": "vent-crab-sheet.png",
+      "sheetSha256": "ea94c5583447be0895f786885c8fd2e7604a7f3a9bac28800bbfabe081575190",
+      "sources": [
+        {
+          "name": "Civet · accepted reference",
+          "path": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/parts/keyed.png",
+          "sha256": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a"
+        },
+        {
+          "name": "vent crab · accepted painting",
+          "path": "audits/VISION_P1_FOUR_CRABS_20260920/vent-crab/generation-01/vent-crab-master.png",
+          "sha256": "fec1a86715ddf9f79781452a050e17f5522a476184251d53e2b4e99c765ec810"
+        },
+        {
+          "name": "Painter · family control",
+          "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/vent-crab-master.png",
+          "sha256": "148bb4b6e0c937a43c5f822f561f1e76c44acdf55235ffe427867a3f831a363c"
+        },
+        {
+          "path": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/vent-crab-native-01/melee-pinch-50.png",
+          "sha256": "dd40bbd9ca51ae229fa6d646d158704335fe7f1cb48be91bb5882452831701a6"
+        },
+        {
+          "path": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/vent-crab-native-01/faint-50.png",
+          "sha256": "c857ad41ffb7c6fff948021aaf65847ef3f8c0f7c3e41e5cc6424be895f3f346"
+        }
+      ],
+      "filmSha256": "3fda2bab4d5e37520ef18611d0321e34f1d0e664bd10f60c494c6d1f762895e5",
+      "admission": {
+        "status": "FAIL",
+        "policy": {
+          "tier": "painted-desktop",
+          "metric": "full-film rig p95",
+          "limitMs": 3.5,
+          "comparison": "<=",
+          "authority": "Nick, PROGRAM.md section6, 2026-09-20"
+        },
+        "valueMs": 3.600000023841858,
+        "cpuPass": false,
+        "geometryPass": true,
+        "failures": [
+          "CPU full-film rig p95"
+        ],
+        "perClipReadings": "retained unchanged; diagnostic only for painted-desktop"
+      },
+      "scope": "Native evidence; no new painting/intake; comparison images display-scaled only"
+    }
+  ],
+  "overviewSha256": "732bb938fe2e744b8b313b2d6e59d92683ee7ac576aab91885697f9e8c0ca629"
+}

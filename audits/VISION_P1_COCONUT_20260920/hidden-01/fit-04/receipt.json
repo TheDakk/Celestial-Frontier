@@ -1,0 +1,86 @@
+{
+  "parts": {
+    "id": "p1-coconut-crab",
+    "parts": 21,
+    "atlasSize": {
+      "width": 2003,
+      "height": 2036
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0far-lower",
+        "vertex": 112,
+        "distancePx": 5.8309518948453,
+        "supports": [
+          1334
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0near-lower",
+        "vertex": 84,
+        "distancePx": 6,
+        "supports": [
+          2332
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1far-lower",
+        "vertex": 155,
+        "distancePx": 5,
+        "supports": [
+          1689
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1near-lower",
+        "vertex": 128,
+        "distancePx": 1.1180339887499964,
+        "supports": [
+          2707
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2far-lower",
+        "vertex": 190,
+        "distancePx": 9.055385138137417,
+        "supports": [
+          2118
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2near-lower",
+        "vertex": 31,
+        "distancePx": 8.000000000000114,
+        "supports": [
+          2810
+        ]
+      }
+    ],
+    "sourceBindingHash": "9d268b60bd9f8d1b0c9a87515382e68b11e2d933e30c9cdf1103f22742b1742a",
+    "sourceVertices": 3312,
+    "vertices": 3838,
+    "sharedSupports": 548,
+    "pins": 2375,
+    "independentSurfaceParts": 21,
+    "sourceJoins": 20,
+    "excludedOverlaps": 15,
+    "observedExcludedBoundaries": 15,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 15,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "masterIntakeAccepted": true,
+  "nativeAcceptance": false
+}

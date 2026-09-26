@@ -1,0 +1,372 @@
+{
+ "id": "salmon-4",
+ "standIn": "Salmon",
+ "template": "fish",
+ "accentGroups": [
+  "fins"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/salmon/card/master-512.png",
+  "joints": [
+   "pectoralNear",
+   "pectoralFar",
+   "dorsal",
+   "jaw",
+   "head",
+   "caudal",
+   "spine5",
+   "spine4",
+   "spine3",
+   "spine2",
+   "spine1",
+   "spine0",
+   "root"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Butterflyfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.15,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "near-circular plate-thin disc body",
+    "dark bar masking the eye",
+    "pointed tweezer snout"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Angelfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.1,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "tall disc body as deep as it is long",
+    "trailing dorsal and anal fin filaments",
+    "small mouth and a spine on the gill cover"
+   ],
+   "note": "marine angelfish (Pomacanthidae), not the freshwater triangular one"
+  },
+  {
+   "name": "Surgeonfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.7,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "scalpel-like spine at the base of the tail",
+    "oval compressed body with a steep forehead",
+    "long low dorsal fin running the whole back"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tang",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.4,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "round plate-like body with a sharp tail-base spine",
+    "small pointed grazing snout",
+    "crescent tail"
+   ],
+   "note": "same family as surgeonfish - drawn as a blue or yellow tang"
+  },
+  {
+   "name": "Triggerfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.8,
+   "headFrac": 0.33,
+   "eyes": "small",
+   "mustRead": [
+    "eyes set far back and high, well away from the mouth",
+    "erectile trigger spine on the forehead",
+    "rowing second dorsal and anal fins on a leathery diamond body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Parrotfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.6,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "fused beak-like teeth plates",
+    "blunt bulging forehead",
+    "large paddle pectoral fins used for rowing"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Wrasse",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.2,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "protruding buck teeth on a pointed snout",
+    "cigar-shaped body",
+    "large fan pectoral fins doing the swimming"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cardinalfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.2,
+   "headFrac": 0.35,
+   "eyes": "prominent",
+   "mustRead": [
+    "oversized eyes for the head",
+    "two clearly separate dorsal fins",
+    "large mouth on a short deep body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Lionfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.5,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "fan of long venomous dorsal spines",
+    "feathery separated pectoral fin rays spread like wings",
+    "red-brown and white zebra banding"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Pufferfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.2,
+   "headFrac": 0.4,
+   "eyes": "prominent",
+   "mustRead": [
+    "round inflated balloon body",
+    "big protruding eyes and a small beaked mouth",
+    "tiny fluttering fins with no pelvic fins"
+   ],
+   "note": "usually drawn inflated; uninflated it is a normal ovoid fish about twice as long as deep"
+  },
+  {
+   "name": "Boxfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.6,
+   "headFrac": 0.35,
+   "eyes": "prominent",
+   "mustRead": [
+    "rigid armoured box-shaped carapace",
+    "tiny fins and tail poking out of the box",
+    "big eyes and pursed lips at the front"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Seahorse",
+   "group": "tube-snouted-fish",
+   "posture": "upright",
+   "aspect": 0.35,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "horse-like head held at right angles to the body",
+    "curled prehensile tail with no tail fin",
+    "ringed bony armour plating"
+   ],
+   "note": "much taller than wide - the only fin of note is the small fluttering dorsal on the back"
+  },
+  {
+   "name": "Moray Eel",
+   "group": "eel",
+   "posture": "swimming",
+   "aspect": 9,
+   "headFrac": 0.12,
+   "eyes": "small",
+   "mustRead": [
+    "gaping mouth of needle teeth held permanently open",
+    "single fin ridge running the whole length of the back",
+    "no pectoral fins and no gill covers, just a round gill pore"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Pipefish",
+   "group": "tube-snouted-fish",
+   "posture": "swimming",
+   "aspect": 14,
+   "headFrac": 0.15,
+   "eyes": "small",
+   "mustRead": [
+    "needle-thin ringed body",
+    "tiny tube snout with a pinhole mouth",
+    "seahorse head held in line with the body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Rabbitfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "small blunt rabbit-like snout with a tiny mouth",
+    "oval compressed body",
+    "row of venomous spines along the dorsal fin"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sea Bass",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "spiny first dorsal fin ahead of a soft second one",
+    "large mouth on a robust perch body",
+    "squared or slightly forked tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Gray Whale",
+   "group": "baleen-cetacean",
+   "posture": "swimming",
+   "aspect": 5.5,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "row of knuckle bumps along the back instead of a dorsal fin",
+    "mottled grey skin crusted with barnacles and lice patches",
+    "narrow arched rostrum with a slightly bowed jawline"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tuna",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.2,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "stiff crescent-moon tail on a narrow keeled stalk",
+    "row of small yellow finlets to the tail",
+    "fat torpedo body with fins folding into grooves"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Haddock",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.5,
+   "headFrac": 0.27,
+   "eyes": "normal",
+   "mustRead": [
+    "dark thumbprint blotch above the pectoral fin",
+    "black lateral line",
+    "tall pointed first dorsal fin and three dorsals in all"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Pollock",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4.2,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "three dorsal fins and two anal fins",
+    "protruding lower jaw",
+    "pale lateral line on an olive-green back"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sperm Whale",
+   "group": "toothed-cetacean",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.33,
+   "eyes": "small",
+   "mustRead": [
+    "enormous square blunt head taking up a third of the body",
+    "narrow underslung toothed lower jaw",
+    "knuckled dorsal hump instead of a fin, and a single blowhole at the front-left of the head"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Pilot Whale",
+   "group": "toothed-cetacean",
+   "posture": "swimming",
+   "aspect": 4.5,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "bulbous melon forehead overhanging the mouth",
+    "long low swept-back dorsal fin set well forward on the back",
+    "black body with a pale anchor patch on the throat"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Beaked Whale",
+   "group": "toothed-cetacean",
+   "posture": "swimming",
+   "aspect": 5,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "long dolphin-like beak on a bulging melon",
+    "small dorsal fin set far back",
+    "pair of tusk teeth erupting from the lower jaw of males, body scarred with rake marks"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Great White Shark",
+   "group": "predatory-shark",
+   "posture": "swimming",
+   "aspect": 3.8,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "conical snout over a mouth of triangular serrated teeth",
+    "sharp line where the grey back meets the white belly",
+    "tall triangular dorsal fin and a broad crescent tail"
+   ],
+   "note": ""
+  }
+ ]
+}

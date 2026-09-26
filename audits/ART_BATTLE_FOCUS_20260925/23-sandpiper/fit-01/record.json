@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sandpiper\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3320756328\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"12\"]]]]",
+    "seed": 3320756328,
+    "ownerId": "authored:archetype-sprint/sandpiper",
+    "earthName": "Sandpiper"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3320756328,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 10,
+    "body": 15,
+    "loco": 9,
+    "trait": 12,
+    "size": 2,
+    "diet": 2,
+    "head": 5,
+    "limbs": 2,
+    "skin": 2,
+    "tail": 5,
+    "pattern": 2,
+    "eyes": 0,
+    "behavior": 11,
+    "habitat": 12,
+    "detail": 6,
+    "accent": 9,
+    "temper": 7,
+    "sense": 2,
+    "repro": 1,
+    "life": 5,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sandpiper"
+  },
+  "geometry": {
+    "cutoutAssetHash": "c315307102aed608563c8caa0ed7af9a15e24f807570ac2c03a92ee496cd4358",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.840625,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.49218740031897923,
+      0.5453125996810207
+    ],
+    "pelvis": [
+      0.45625039872408296,
+      0.6
+    ],
+    "spine": [
+      0.45156220095693783,
+      0.5265622009569377
+    ],
+    "chest": [
+      0.5726562998405104,
+      0.525
+    ],
+    "neck0": [
+      0.6132814992025518,
+      0.47421850079744815
+    ],
+    "neck1": [
+      0.6523437001594896,
+      0.44531259968102077
+    ],
+    "head": [
+      0.6992185007974482,
+      0.42812519936204146
+    ],
+    "beak": [
+      0.7757814992025519,
+      0.4718748006379585
+    ],
+    "legNearKnee": [
+      0.47421850079744815,
+      0.6203125996810207
+    ],
+    "legNearAnkle": [
+      0.45625039872408296,
+      0.7
+    ],
+    "legNearFoot": [
+      0.5523437001594896,
+      0.8109377990430623
+    ],
+    "legFarKnee": [
+      0.37890590111642747,
+      0.6171874003189792
+    ],
+    "legFarAnkle": [
+      0.3281251993620415,
+      0.6671874003189793
+    ],
+    "legFarFoot": [
+      0.325,
+      0.7828125996810208
+    ],
+    "wingNearRoot": [
+      0.5117185007974482,
+      0.4289059011164274
+    ],
+    "wingNearTip": [
+      0.26406220095693783,
+      0.2843748006379585
+    ],
+    "wingFarRoot": [
+      0.4664059011164275,
+      0.30390590111642746
+    ],
+    "wingFarTip": [
+      0.19843779904306222,
+      0.13671850079744816
+    ],
+    "tailFan": [
+      0.2703125996810207,
+      0.5539059011164273
+    ]
+  },
+  "materials": {
+    "surface": "plain brown-grey feathered shorebird; horn straight bill and scaled thin legs"
+  },
+  "source": "audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Manually declared grounded shorebird; two visible thin legs with separated unwebbed toes and two partly raised wing surfaces. Not an adult-flight override."
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Both leg chains and unwebbed feet, both partial-spread wings, tail, head, neck and bill visible. Far proximal wing partly overlapped by near wing but its exposed attachment region explicitly assigned; no unseen surface invented. No absent/hidden/folded required parts. New manual coordinates only.",
+    "sourceFacing": "right",
+    "visualAcceptance": "Nick pending; one Sandpiper only",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "89c6757c60836802b2bdff47b05e24d544512015299e12bebce246950ab8c52e",
+    "subjectSourceSha256": "8378816208ccdac0a98644427494e1e88a478f0b73b77c78f6c86708a6903dc6",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.06543836670700047,
+      "spine": 0.07358729188245114,
+      "chest": 0.12110417522222057,
+      "neck0": 0.06503204967140734,
+      "neck1": 0.04859430689857475,
+      "head": 0.04992648259764763,
+      "beak": 0.08818117903828251,
+      "legFarKnee": 0.07923116836135559,
+      "legFarAnkle": 0.07126485578928722,
+      "legFarFoot": 0.11566742669638826,
+      "legNearKnee": 0.02711926248850204,
+      "legNearAnkle": 0.08168803132476705,
+      "legNearFoot": 0.1467689266748068,
+      "wingFarRoot": 0.24529930246571344,
+      "wingFarTip": 0.3158457385405416,
+      "wingNearRoot": 0.1137870431659882,
+      "wingNearTip": 0.28674532577918344,
+      "tailFan": 0.19156599663005638
+    },
+    "measures": {
+      "body": 0.13847502957113772,
+      "bone-min": 0.02711926248850204,
+      "bone-max": 0.3158457385405416,
+      "leg/torso:legFar": 1.9221043076961175,
+      "leg/torso:legNear": 1.845648426865153,
+      "wing/torso": 4.052319344102268
+    }
+  },
+  "recipeHash": "f384bcb635704d3d83b888c6ce9f7f862f90948cf1aad1648da90aa7d2bfc443"
+}

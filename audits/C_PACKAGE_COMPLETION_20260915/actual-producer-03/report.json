@@ -1,0 +1,404 @@
+{
+  "status": "PASS",
+  "subjects": [
+    {
+      "id": "civet",
+      "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+      "material": "fur",
+      "actions": [
+        {
+          "action": "idle",
+          "bodyMs": 2417.9831728711724,
+          "durationMs": 2417.9831728711724,
+          "playbackPeriodMs": 2417.9831728711724,
+          "maxError": 0,
+          "pureSamplerMaxError": 4.149601134095793e-7,
+          "comparison": "Exact direct GSAP producer (1e-12); pure sampler quantization difference reported separately",
+          "negativeControl": true,
+          "published": 6,
+          "changedJoints": [
+            "tail0",
+            "tail1",
+            "tail2",
+            "tail3",
+            "root",
+            "pelvis",
+            "spine",
+            "chest",
+            "neck",
+            "head",
+            "earFarTip",
+            "earNearTip"
+          ],
+          "timelineHash": "78823dde"
+        },
+        {
+          "action": "melee",
+          "bodyMs": 430.66666666666663,
+          "durationMs": 942.6666666666666,
+          "playbackPeriodMs": 942.6666666666666,
+          "maxError": 0,
+          "pureSamplerMaxError": 5.293774660297679e-7,
+          "comparison": "Exact direct GSAP producer (1e-12); pure sampler quantization difference reported separately",
+          "negativeControl": true,
+          "published": 6,
+          "changedJoints": [
+            "root",
+            "spine",
+            "neck",
+            "head",
+            "jaw",
+            "hindFarKnee",
+            "hindFarAnkle",
+            "foreFarKnee",
+            "foreFarAnkle",
+            "hindNearKnee",
+            "hindNearAnkle",
+            "foreNearKnee",
+            "foreNearAnkle",
+            "tail0",
+            "tail1",
+            "tail2",
+            "tail3"
+          ],
+          "timelineHash": "6b02595e"
+        },
+        {
+          "action": "hit",
+          "bodyMs": 382.5,
+          "durationMs": 894.5,
+          "playbackPeriodMs": 894.5,
+          "maxError": 0,
+          "pureSamplerMaxError": 4.839772406173282e-7,
+          "comparison": "Exact direct GSAP producer (1e-12); pure sampler quantization difference reported separately",
+          "negativeControl": true,
+          "published": 6,
+          "changedJoints": [
+            "root",
+            "pelvis",
+            "spine",
+            "chest",
+            "neck",
+            "head",
+            "jaw",
+            "hindFarKnee",
+            "hindFarAnkle",
+            "foreNearKnee",
+            "tail0",
+            "tail1",
+            "tail2",
+            "tail3",
+            "earFarTip",
+            "earNearTip"
+          ],
+          "timelineHash": "e162f601"
+        }
+      ],
+      "missingLookFields": [
+        "painted gaze origin/forward axis",
+        "view yaw coverage and alternate-view rigs"
+      ],
+      "visualAccepted": false
+    },
+    {
+      "id": "fox",
+      "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+      "material": "fur",
+      "actions": [
+        {
+          "action": "idle",
+          "bodyMs": 2813.14336694777,
+          "durationMs": 2813.14336694777,
+          "playbackPeriodMs": 2813.14336694777,
+          "maxError": 0,
+          "pureSamplerMaxError": 4.149601134095793e-7,
+          "comparison": "Exact direct GSAP producer (1e-12); pure sampler quantization difference reported separately",
+          "negativeControl": true,
+          "published": 6,
+          "changedJoints": [
+            "tail0",
+            "tail1",
+            "tail2",
+            "tail3",
+            "root",
+            "pelvis",
+            "spine",
+            "chest",
+            "neck",
+            "head",
+            "earFarTip",
+            "earNearTip"
+          ],
+          "timelineHash": "860c2907"
+        },
+        {
+          "action": "melee",
+          "bodyMs": 506.66666666666663,
+          "durationMs": 1018.6666666666666,
+          "playbackPeriodMs": 1018.6666666666666,
+          "maxError": 0,
+          "pureSamplerMaxError": 6.388330591189373e-7,
+          "comparison": "Exact direct GSAP producer (1e-12); pure sampler quantization difference reported separately",
+          "negativeControl": true,
+          "published": 6,
+          "changedJoints": [
+            "root",
+            "spine",
+            "neck",
+            "head",
+            "jaw",
+            "hindFarKnee",
+            "hindFarAnkle",
+            "foreFarKnee",
+            "foreFarAnkle",
+            "hindNearKnee",
+            "hindNearAnkle",
+            "foreNearKnee",
+            "foreNearAnkle",
+            "tail0",
+            "tail1",
+            "tail2",
+            "tail3"
+          ],
+          "timelineHash": "3a16d327"
+        },
+        {
+          "action": "hit",
+          "bodyMs": 450,
+          "durationMs": 962,
+          "playbackPeriodMs": 962,
+          "maxError": 0,
+          "pureSamplerMaxError": 4.952559185950056e-7,
+          "comparison": "Exact direct GSAP producer (1e-12); pure sampler quantization difference reported separately",
+          "negativeControl": true,
+          "published": 6,
+          "changedJoints": [
+            "root",
+            "pelvis",
+            "spine",
+            "chest",
+            "neck",
+            "head",
+            "jaw",
+            "hindFarKnee",
+            "hindFarAnkle",
+            "foreNearKnee",
+            "tail0",
+            "tail1",
+            "tail2",
+            "tail3",
+            "earFarTip",
+            "earNearTip"
+          ],
+          "timelineHash": "127ffc02"
+        }
+      ],
+      "missingLookFields": [
+        "painted gaze origin/forward axis",
+        "view yaw coverage and alternate-view rigs"
+      ],
+      "visualAccepted": false
+    },
+    {
+      "id": "procedural",
+      "recordRecipeHash": "2b824f9cad9383d8fcbb3fd5d41ebdec2d5ecbc9128e33a5388bc21d7cb0a859",
+      "material": "translucent",
+      "actions": [
+        {
+          "action": "idle",
+          "bodyMs": 4287.46374770999,
+          "durationMs": 4287.46374770999,
+          "playbackPeriodMs": 4287.46374770999,
+          "maxError": 0,
+          "pureSamplerMaxError": 4.149601134095793e-7,
+          "comparison": "Exact direct GSAP producer (1e-12); pure sampler quantization difference reported separately",
+          "negativeControl": true,
+          "published": 6,
+          "changedJoints": [
+            "tail0",
+            "tail1",
+            "tail2",
+            "tail3",
+            "root",
+            "pelvis",
+            "spine",
+            "chest",
+            "neck",
+            "head",
+            "earFarTip",
+            "earNearTip"
+          ],
+          "timelineHash": "656e3d4c"
+        },
+        {
+          "action": "melee",
+          "bodyMs": 709.3333333333333,
+          "durationMs": 1477.3333333333333,
+          "playbackPeriodMs": 1477.3333333333333,
+          "maxError": 0,
+          "pureSamplerMaxError": 4.949806222467878e-7,
+          "comparison": "Exact direct GSAP producer (1e-12); pure sampler quantization difference reported separately",
+          "negativeControl": true,
+          "published": 6,
+          "changedJoints": [
+            "root",
+            "spine",
+            "neck",
+            "head",
+            "hindFarKnee",
+            "hindFarAnkle",
+            "foreFarKnee",
+            "foreFarAnkle",
+            "hindNearKnee",
+            "hindNearAnkle",
+            "foreNearKnee",
+            "foreNearAnkle",
+            "tail0",
+            "tail1",
+            "tail2",
+            "tail3"
+          ],
+          "timelineHash": "07e14d77"
+        },
+        {
+          "action": "hit",
+          "bodyMs": 630,
+          "durationMs": 1398,
+          "playbackPeriodMs": 1398,
+          "maxError": 0,
+          "pureSamplerMaxError": 4.958545918361951e-7,
+          "comparison": "Exact direct GSAP producer (1e-12); pure sampler quantization difference reported separately",
+          "negativeControl": true,
+          "published": 6,
+          "changedJoints": [
+            "root",
+            "pelvis",
+            "spine",
+            "chest",
+            "neck",
+            "head",
+            "jaw",
+            "hindFarKnee",
+            "hindFarAnkle",
+            "foreNearKnee",
+            "tail0",
+            "tail1",
+            "tail2",
+            "tail3",
+            "earFarTip",
+            "earNearTip"
+          ],
+          "timelineHash": "09bc693c"
+        }
+      ],
+      "missingLookFields": [
+        "painted gaze origin/forward axis",
+        "view yaw coverage and alternate-view rigs"
+      ],
+      "visualAccepted": false
+    }
+  ],
+  "scope": "Actual compiler and GSAP action samples through the new performance owner; no view, skin, native motion or game acceptance",
+  "sources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/index.ts",
+      "sha256": "5782f93542b0f138786486d0657e3b02796ecd7192336735c83eeb78b2fbbc68"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timing.ts",
+      "sha256": "135ad4c2752d8941ef4cad337d900ecfd58125dfe1bd7afbf4608c80b68534fa"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "5aff1698c63fdd66f1f83f28b61912d477593c8af4a8b96761c91d8460277566"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/secondary.ts",
+      "sha256": "a3b07b1ab839db68669e5ae2fcd24e9314c7d6495a01d2b009e8b3f2d5a0b361"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "ea1a4a57a65aa10cc1872304c9e87f31f47fcea0081f7bb7f947afab46d8bbbc"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/budget.ts",
+      "sha256": "3fac6ef0eeefe1f979130a6a0ba3adf08d3a876495e5c44a047ba1df2e1bafb5"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "f8091e7cec3ec55fc5da48f8d996fdf0e1545fa1adf593e5bbe60f9c11c9ba3d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/actions.ts",
+      "sha256": "dc1ef0becac76be8997789b08e1058fcddd04fcdd12edfff71d10a3ce02abcac"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "08319431f79dd7d51ee247cb4065d49304c0cd332ccec6d7505cec0238af71d0"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/gsap-adapter.ts",
+      "sha256": "6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "6a10af5e4b07fc49ba7a6a27ce58e96ffad983b3182549aecc8309a9d0e18c97"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/index.js",
+      "sha256": "070038235ba75ec2186d054ebd83ae94e6de6a971f5d3f3d6cd1037551f94faa"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/genome/src/index.ts",
+      "sha256": "f2936929b86938c7236d093320b52202b90169abea4c4ce4d90b55f4ec477f72"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/speciestraits/src/index.ts",
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/CSSPlugin.js",
+      "sha256": "41d061e8b0a2ddfdb647f8f85da690ec6d19194403021acca7088926105fe6bd"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/gsap-core.js",
+      "sha256": "83c4b6c0b020beba737b90896181560b76747342b0f7baa5ba1b185a75f65b65"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-performance.ts",
+      "sha256": "f4982057457346c1f5c3be6eb127f38eb89a64ce524aa11481eeae64b9350d19"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_BOUNDED_REPAIR_20260913/candidate-01/fox.landmarks.json",
+      "sha256": "8155226f9a6653e56d4a3d54ffef748ea561cf982c8da3e340044d48b6d2b2fe"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_PARTS_ATLAS_20260913/native-painter-parts-03/record.json",
+      "sha256": "9d0ae1874739d971383b50301a9153785f1b4f4f119244466b4b26aac74634be"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_2D_PROOF_20260912/procedural-genome.json",
+      "sha256": "910816b54655967bf4c5522f9630a8a5f658599501fd2d61d4fc781abe0c7681"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+ "id": "river-otter",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 1005.3,
+ "landmarkMedian": 0.0168,
+ "landmarkMax": 0.0529,
+ "worst": [
+  "tail1 0.053",
+  "tail0 0.047",
+  "tail2 0.047"
+ ],
+ "labelAgreement": 0.7023,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "fallbackFrom": "RED",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "RED"
+  },
+  {
+   "rank": 1,
+   "verdict": "ADMIT",
+   "static": "RED",
+   "reasons": []
+  },
+  {
+   "rank": 2,
+   "verdict": "ADMIT",
+   "static": "PASS_STATIC",
+   "reasons": []
+  }
+ ]
+}

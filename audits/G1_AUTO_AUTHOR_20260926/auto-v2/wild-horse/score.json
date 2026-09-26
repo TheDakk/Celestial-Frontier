@@ -1,0 +1,18 @@
+{
+ "id": "wild-horse",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 998,
+ "landmarkMedian": 0.0423,
+ "landmarkMax": 0.1031,
+ "worst": [
+  "hindFarAnkle 0.103",
+  "hindNearKnee 0.089",
+  "hindFarRoot 0.083"
+ ],
+ "labelAgreement": 0.5597,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

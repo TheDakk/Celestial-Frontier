@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "scope": "Mac client HTTPS/profile server check; not iPhone trust proof",
+  "trustedHttpsVerified": true,
+  "appleNativeTrustVerified": true,
+  "isolatedHeaders": true,
+  "profileByteExact": true,
+  "privateKeyRoutesRejected": true,
+  "modelRouteRejected": true,
+  "inferenceRuns": 0,
+  "earlierDiagnostic": "Apple CLI Python3.9 LibreSSL rejected unsupported name-constraint type; Apple native security verifier and managed Python3.12/OpenSSL3.6.4 both pass; certificate unchanged."
+}

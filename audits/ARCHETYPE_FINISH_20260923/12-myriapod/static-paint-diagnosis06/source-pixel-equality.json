@@ -1,0 +1,23 @@
+[
+  {
+    "kind": "master",
+    "before": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/master.png",
+    "after": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-11/master.png",
+    "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+    "identical": true
+  },
+  {
+    "kind": "labels",
+    "before": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-08/labels.png",
+    "after": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-09/labels.png",
+    "sha256": "4c133c6cab717ae73a07a7859b5636e617c939dc8c1e449187513877dd0395a1",
+    "identical": true
+  },
+  {
+    "kind": "keyed",
+    "before": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-08/parts/keyed.png",
+    "after": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-09/parts/keyed.png",
+    "sha256": "2e5b90fe110deefac59fa32e471a540b9e35e3d98d2a687be548ba13ec44fdd3",
+    "identical": true
+  }
+]

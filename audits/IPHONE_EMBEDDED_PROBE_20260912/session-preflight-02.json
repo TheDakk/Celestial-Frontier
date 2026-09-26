@@ -1,0 +1,6 @@
+{
+  "status": "SESSION_UNAVAILABLE",
+  "modelAttempts": 0,
+  "error": "session not created",
+  "message": "Could not create a session: Some devices were found, but could not be used:\n"
+}

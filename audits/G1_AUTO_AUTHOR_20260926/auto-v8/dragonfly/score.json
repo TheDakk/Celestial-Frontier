@@ -1,0 +1,21 @@
+{
+ "id": "dragonfly",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 9% paint (reference 25%)",
+  "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 3% paint (reference 62%)"
+ ],
+ "semanticPresence": null,
+ "bodyLengthPx": 711,
+ "landmarkMedian": 0.1427,
+ "landmarkMax": 0.8448,
+ "worst": [
+  "wingFar 0.845",
+  "legHindNearFoot 0.761",
+  "antennaFar 0.542"
+ ],
+ "labelAgreement": 0.0425,
+ "missingJoints": []
+}

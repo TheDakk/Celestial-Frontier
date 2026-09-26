@@ -1,0 +1,10 @@
+{
+  "schema": "cf.anatomy-presence/v2",
+  "absent": [],
+  "hidden": [
+    "leg3Far"
+  ],
+  "folded": [
+    "leg0Far"
+  ]
+}

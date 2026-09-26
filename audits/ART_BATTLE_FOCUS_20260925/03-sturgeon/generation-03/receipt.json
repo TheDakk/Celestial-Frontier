@@ -1,0 +1,12 @@
+{
+  "tool": "image_gen.imagegen",
+  "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-61673f84-731f-4087-8a7c-38fe7a36a0cc.png",
+  "masterSha256": "d7f7ad90c7813efb3bf9f700d81dbb5acbc8a50d14b504cfc51d9bc85b8f0f14",
+  "status": "CANDIDATE_FOR_INTAKE",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "anatomyReview": "One head, four snout barbels, two pectoral fins, two pelvic fins, one posterior dorsal, one anal, one asymmetric caudal. Extra flank projection removed. No painted patterns; scutes and fin rays are structural detail.",
+  "caveats": "Margin narrower than requested; complete silhouette remains uncropped. Low-opacity export residue below body: 5154 nonzero pixels, max alpha 14/255, 52.023529411764706 opaque-equivalent pixels. Original RGBA retained unchanged for intake."
+}

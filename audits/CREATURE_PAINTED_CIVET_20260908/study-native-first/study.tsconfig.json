@@ -1,0 +1,10 @@
+{
+  "extends": "../../port/v2/apps/game/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "pixi.js": ["../../port/v2/node_modules/pixi.js/lib/index.d.ts"]
+    }
+  },
+  "include": ["study-harness.ts"],
+  "exclude": []
+}

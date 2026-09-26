@@ -1,0 +1,73 @@
+vite v8.2.0 building client environment for evidence...
+[2Ktransforming...✓ 1025 modules transformed.
+rendering chunks...
+computing gzip size...
+smoke/earth-civet-landing-evidence-dist-20260908/manifest.webmanifest                                0.72 kB
+smoke/earth-civet-landing-evidence-dist-20260908/audit.html                                          0.77 kB │ gzip:   0.40 kB
+smoke/earth-civet-landing-evidence-dist-20260908/hybrid-matrix.html                                  0.86 kB │ gzip:   0.43 kB
+smoke/earth-civet-landing-evidence-dist-20260908/audiovisual-pilot.html                              0.89 kB │ gzip:   0.40 kB
+smoke/earth-civet-landing-evidence-dist-20260908/icons/celestial-frontier-maskable.svg               1.13 kB │ gzip:   0.53 kB
+smoke/earth-civet-landing-evidence-dist-20260908/icons/celestial-frontier.svg                        1.13 kB │ gzip:   0.53 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/Inter-LICENSE-CkXC2-KD.txt                   4.38 kB │ gzip:   1.97 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/planet-surface-turn.worker-jKUKmrS4.js       6.45 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/scout-chemical-132-Dt4gyYnA.webp            12.53 kB
+smoke/earth-civet-landing-evidence-dist-20260908/service-worker.js                                  21.69 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/cf-pilot-ui-nav-bMnbTxA8.wav                26.92 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/cf-pilot-combat-contact-DHZD2lYd.wav        33.64 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/scout-chemical-300-CxcU_kic.webp            40.66 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/cf-pilot-ui-refusal-CMon7hko.wav            43.24 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/cf-pilot-ui-settlement-uF_X4Ois.wav         67.24 kB
+smoke/earth-civet-landing-evidence-dist-20260908/index.html                                         68.80 kB │ gzip:  15.10 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/scout-chemical-512-DcNawgH5.webp            92.89 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/mars-dunesea-v1-cFwkRNdy.webp              127.08 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/earth-riverbank-v1-C4EQQH_D.webp           130.30 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/cf-pilot-scout-landing-D1k5tYuE.wav        134.44 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/biome-vista.worker-D3XRSJZJ.js             220.68 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/cf-pilot-scout-approach-Be38_iqZ.wav       230.44 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/earth-rainy-phone-DFt5murF.webp            343.07 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/InterVariable-DiVDrmQJ.woff2               352.24 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/earth-civet-landing-v1-DxWosWSp.webp       600.75 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/earth-rainy-landscape-DPgApIAi.webp        765.31 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/earth-resident.worker-BSlMnLCV.js          957.31 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/species-art.worker-DnnSDKMy.js           1,312.28 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/cf-pilot-exploration-music-CMF8UCKw.wav  4,608.04 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/cf-pilot-temperate-bed-C_jKRyj6.wav      4,608.04 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/webworkerAll-Bz2JnXQB.js                     0.05 kB │ gzip:   0.06 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/release-identity-CIuedefi.js                 0.13 kB │ gzip:   0.13 kB │ map:     0.78 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/getTextureBatchBindGroup-DkbnCTGz.js         0.40 kB │ gzip:   0.31 kB │ map:     1.79 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/getPo2TextureFromSource-BTcd7Ah1.js          0.47 kB │ gzip:   0.32 kB │ map:     1.69 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/CanvasPool-BewL5izq.js                       0.80 kB │ gzip:   0.45 kB │ map:     3.52 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/speciesidentity-DkdaK0o4.js                  2.00 kB │ gzip:   0.86 kB │ map:     5.04 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/surface-polish-CBmmi-Kj.js                   4.73 kB │ gzip:   1.69 kB │ map:    18.76 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/src-PpYgFp_O.js                              5.14 kB │ gzip:   2.47 kB │ map:    22.65 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/lib-BHX2vzcH.js                              5.80 kB │ gzip:   2.25 kB │ map:    66.47 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/canvasUtils-CWV5icuA.js                      6.07 kB │ gzip:   2.07 kB │ map:    21.94 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/BufferResource-CBxAIQXt.js                  10.57 kB │ gzip:   2.81 kB │ map:    25.68 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/planet-surface-turn-view-DxZP3AEj.js        13.84 kB │ gzip:   5.29 kB │ map:    42.01 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/init-Cw2CTxAB.js                            15.30 kB │ gzip:   4.81 kB │ map:    53.41 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/pilot-sound-player-CReDHkCf.js              16.19 kB │ gzip:   6.22 kB │ map:    40.35 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/audit-BSVJFDuL.js                           16.60 kB │ gzip:   6.53 kB │ map:    68.44 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/audiovisualPilot-DikkbSui.js                19.09 kB │ gzip:   7.29 kB │ map:    43.76 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/init-DzCRp0mF.js                            24.71 kB │ gzip:   8.52 kB │ map:   105.97 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/audiovisual-pilot-D3NkLgJq.js               25.13 kB │ gzip:   6.54 kB │ map:    39.92 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/hybridMatrix-B_EogGC7.js                    33.88 kB │ gzip:  11.03 kB │ map:    97.56 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/WebGPURenderer-9hw_QH6b.js                  38.53 kB │ gzip:  10.79 kB │ map:   124.06 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/browserAll-CZbsrlbl.js                      42.63 kB │ gzip:  11.12 kB │ map:   156.74 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/WebGLRenderer-DYlUTdA1.js                   68.03 kB │ gzip:  18.70 kB │ map:   216.10 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/RenderTargetSystem-Cjin1jYB.js              71.14 kB │ gzip:  20.24 kB │ map:   262.88 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/CanvasRenderer-D2F2hEh-.js                  87.43 kB │ gzip:  27.48 kB │ map:   463.67 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/Geometry-C5FtorEc.js                       101.66 kB │ gzip:  31.17 kB │ map:   500.75 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/visual-effect-policy-BzsgF7gl.js           124.26 kB │ gzip:  33.48 kB │ map:   468.32 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/src-dauYwI8V.js                            129.32 kB │ gzip:  50.71 kB │ map:   405.81 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/guide-content-Cy7MxzST.js                  130.92 kB │ gzip:  44.31 kB │ map:   148.59 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/release-content-CA5bdmCV.js                150.57 kB │ gzip:  57.81 kB │ map:   171.38 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/tame-greeting-audio-ge6_npOg.js            261.20 kB │ gzip:  72.76 kB │ map:   963.82 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/speciesart-DXnLiDqS.js                   1,266.06 kB │ gzip: 354.12 kB │ map: 4,434.90 kB
+smoke/earth-civet-landing-evidence-dist-20260908/assets/main-CaqzK2zA.js                         1,500.73 kB │ gzip: 393.38 kB │ map: 5,277.55 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.38s

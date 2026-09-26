@@ -1,0 +1,36 @@
+{
+  "schema": "cf-audiovisual-pilot-local-reds/v1",
+  "hostedAttempts": 0,
+  "runs": [
+    {
+      "source": "dbf3e6c9a70d6649b6883cc233616579e9c05878",
+      "command": "node tools/check-profile.mjs --profile=develop",
+      "status": "RED",
+      "stoppedAt": "npm test",
+      "testFiles": {
+        "passed": 306,
+        "failed": 2
+      },
+      "tests": {
+        "passed": 3221,
+        "failed": 3,
+        "skipped": 1
+      },
+      "failures": [
+        {
+          "file": "tests/evidence-build-runtime.test.ts",
+          "count": 2,
+          "cause": "Extracted boot callback fixture omitted the new startAudiovisualPilot environment hook."
+        },
+        {
+          "file": "tests/compendium-budget.test.ts",
+          "count": 1,
+          "cause": "ProducerAuthority/live pins were derived correctly, but append-only producer history in calibration.selectionRule omitted new producer/input hashes."
+        }
+      ],
+      "outputSha256": "cf50ad3d19c7562155ceeb9f3553c7081618badc624e1da7af7376485f22d4f9",
+      "unchangedRetry": false,
+      "correction": "Complete the boot fixture and append producer-only history. Preserve all ordering/authority assertions, measurement authority, ceilings and prior samples."
+    }
+  ]
+}

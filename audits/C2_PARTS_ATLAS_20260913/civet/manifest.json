@@ -1,0 +1,115 @@
+{
+  "creatureId": "civet",
+  "parts": [
+    {
+      "name": "ear-far.png",
+      "path": "parts/ear-far.png",
+      "sha256": "b0e81d683daa243f57e95ad0ed1e6415a9e4b3688d09210d66cd7d884e487729"
+    },
+    {
+      "name": "ear-near.png",
+      "path": "parts/ear-near.png",
+      "sha256": "3013e839706de6961710d99d64b762203b3ccf813424d6cc8199ca6ed24c8e91"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "0af17370ce8cf97ec16ae3e691602fc2390e99a7405ff67fb9e3bb7700c991b3"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "2be576da1d0f19666e9d1f1f5e8ec05c9b91c7b11b17e1487b37cc9648668447"
+    },
+    {
+      "name": "fore-near-paw.png",
+      "path": "parts/fore-near-paw.png",
+      "sha256": "249889978fe9d68694347b265a69ec54d3593e84e7dbeaae8541c7ae4135466e"
+    },
+    {
+      "name": "fore-near-lower.png",
+      "path": "parts/fore-near-lower.png",
+      "sha256": "f123d060a856eba59ceda5b50134bea6aadc5a69a75ceab3bd207686179cf097"
+    },
+    {
+      "name": "fore-near-upper.png",
+      "path": "parts/fore-near-upper.png",
+      "sha256": "ae492487851de50e04288ed3c3eba7988ad6402158b3cb10194a98f29816a1e4"
+    },
+    {
+      "name": "fore-far-paw.png",
+      "path": "parts/fore-far-paw.png",
+      "sha256": "1c3f94753c18e29c9f94a1806eeccb80f0c2652f8069e633747ea11153ed6024"
+    },
+    {
+      "name": "fore-far-lower.png",
+      "path": "parts/fore-far-lower.png",
+      "sha256": "02eee6c11b6226616cf4ad3c11ded65b9eb02f30624ffaafad38e1417a6ca528"
+    },
+    {
+      "name": "fore-far-upper.png",
+      "path": "parts/fore-far-upper.png",
+      "sha256": "ea8452df1c2747ebf94b3e36de4de6c08aeb4e0c9b837f809a75cfc8fabc976c"
+    },
+    {
+      "name": "hind-near-paw.png",
+      "path": "parts/hind-near-paw.png",
+      "sha256": "065f871cf1a2909693c47691ce3d026e66d79d6befe89a72c8f2d9b37d6daacc"
+    },
+    {
+      "name": "hind-near-lower.png",
+      "path": "parts/hind-near-lower.png",
+      "sha256": "d698ac502788687edc6d531925ef29473ef8ec2d1133ffb2f0ab81ad7d8dacf9"
+    },
+    {
+      "name": "hind-near-upper.png",
+      "path": "parts/hind-near-upper.png",
+      "sha256": "2618c172fd9bc3ea4e65e75f526412a926b0ebf8cdf13b2ce4d628c87fa76b77"
+    },
+    {
+      "name": "hind-far-paw.png",
+      "path": "parts/hind-far-paw.png",
+      "sha256": "b4450609e991ae3a19233e31f14f4d0821e0a4c70d51fe08e9d519a8b0f78b24"
+    },
+    {
+      "name": "hind-far-lower.png",
+      "path": "parts/hind-far-lower.png",
+      "sha256": "f0156c1712cb20b45ab7dedc777632ec0a35b53ee407b371369030c924995dd1"
+    },
+    {
+      "name": "hind-far-upper.png",
+      "path": "parts/hind-far-upper.png",
+      "sha256": "53b248e0f1397bf1557d03b709315f5f8afb3b0808610381a4609c3cfc3044d8"
+    },
+    {
+      "name": "tail-tip.png",
+      "path": "parts/tail-tip.png",
+      "sha256": "c9930278bf25f1796d983551b2c198fc2023bcffb50648847b4c5e57c2139225"
+    },
+    {
+      "name": "tail-middle.png",
+      "path": "parts/tail-middle.png",
+      "sha256": "42ea97b20361be77840063a3bfd53a52a36ccd2fc4374d92137e50cae6f21bd3"
+    },
+    {
+      "name": "tail-root.png",
+      "path": "parts/tail-root.png",
+      "sha256": "0e5013725c5ed451b04803ef8ffbee870f3900e63c080a4f69a1a4ba8a66b1b0"
+    },
+    {
+      "name": "neck.png",
+      "path": "parts/neck.png",
+      "sha256": "70f2ed1598ed7f53be8f70000b8ea15b1bac1f50a314bc76972339d17074701c"
+    },
+    {
+      "name": "chest.png",
+      "path": "parts/chest.png",
+      "sha256": "791b57c70d4214b2ed3f8523b2594e38c5f2b1e535140f229798abf6a81e8541"
+    },
+    {
+      "name": "torso.png",
+      "path": "parts/torso.png",
+      "sha256": "408477ce2a0183f08d4c623d6cc365ada48e9dc995697f9649ba4f6216ddc648"
+    }
+  ]
+}

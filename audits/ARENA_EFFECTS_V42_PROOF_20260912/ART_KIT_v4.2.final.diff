@@ -1,0 +1,257 @@
+--- a/ART_KIT.md
++++ b/ART_KIT.md
+@@ -1,6 +1,6 @@
+ # Celestial Frontier Art Kit
+ 
+-Art direction and prompt kit, version 4, 2026-09-12. Canonical style statement for Nick's approved Living Worlds, Discovery Atlas, Earth landfall and fungal landfall: one painted hand, the game's thirteen star kinds, source-derived subjects, and the retained class layouts and production rules. **Approved by Nick at 6f5c396e, with the September 12 engine-first order in section 9.**
++Art direction and prompt kit, version 4.2, 2026-09-12. Canonical style statement for Nick's approved Living Worlds, Discovery Atlas, Earth landfall and fungal landfall: one painted hand, the game's thirteen star kinds, source-derived subjects, and the retained class layouts and production rules. **Version 4 approved at 6f5c396e; v4.1 accepted; v4.2 approved from d2b8d8cd with the September 12 Arena/key-ground/anchor amendments.**
+ 
+ Each section is plain text inside a fenced block so it can be copied into a prompt tool exactly as written.
+ 
+@@ -20,17 +20,18 @@
+ 12. [4H. Landmarks and props (cut-out)](#4h-landmarks-and-props-cut-out)
+ 13. [4I. Items, loot and resources (cut-out)](#4i-items-loot-and-resources-cut-out)
+ 14. [4J. Emblems: upgrades, abilities, status (cut-out)](#4j-emblems-upgrades-abilities-status-cut-out)
+-15. [5. Technical output](#5-technical-output)
+-16. [6. Shared negative](#6-shared-negative)
+-17. [7. Writing a subject line](#7-writing-a-subject-line)
+-18. [8. Production discipline](#8-production-discipline)
+-19. [9. Engine proof before library rollout](#9-engine-proof-before-library-rollout)
++15. [4K. Effects (cut-out sequences)](#4k-effects-cut-out-sequences)
++16. [5. Technical output](#5-technical-output)
++17. [6. Shared negative](#6-shared-negative)
++18. [7. Writing a subject line](#7-writing-a-subject-line)
++19. [8. Production discipline](#8-production-discipline)
++20. [9. Engine proof before library rollout](#9-engine-proof-before-library-rollout)
+ 
+ ## 0. How to use
+ 
+ ```text
+ CELESTIAL FRONTIER - ART DIRECTION AND PROMPT KIT
+-style_id: frontier   |   version 4, 2026-09-12   |   one hand for the whole universe
++style_id: frontier   |   version 4.2, 2026-09-12   |   one hand for the whole universe
+ 
+ Every image prompt is built in this order:
+     REFERENCE LOCK  ->  FROZEN STYLE  ->  SYSTEM CARD  ->  SUBJECT
+@@ -47,14 +48,16 @@
+ RUNTIME PROJECTION: a local model without a negative input receives only the frozen style, the system card's Light, Mineral palette, Atmosphere and pigment lines, the subject, and the layout sentence. Reference-lock text, hashes, technical output and negatives are library-generator instructions and are never sent to such a model.
+ 
+ ACCURACY is used by the cut-out classes only (planets-orbital, flora, fauna,
+-ships, landmarks, items, emblems). Scene classes omit it. People are inactive
++ships, landmarks, items, emblems, effects, Arena MID and NEAR). Scene classes
++including Arena FAR omit it. People are inactive
+ until the game has people, as section 4F states.
+ 
+ Two kinds of image, and they take opposite rules:
+     CUT-OUT   one isolated subject on the key colour, composited in the game
+-              (orbital planets, flora, fauna, ships, landmarks, items, emblems)
++              (orbital planets, flora, fauna, ships, landmarks, items, emblems,
++               effects; Arena MID and NEAR use the arena key-painted exception)
+     SCENE     a full-bleed painting with no isolation
+-              (universe, stars, planet biomes)
++              (universe, stars, planet biomes, Arena FAR)
+ Pasting a cut-out negative into a scene prompt, or the reverse, is the one
+ copy-paste mistake that quietly ruins a batch.
+ 
+@@ -67,7 +70,8 @@
+ ```text
+ Paste in every prompt. Attach the ONE reference the class calls for, never both.
+ 
+-For cut-out classes:
++For cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,
++emblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):
+   Match the exact visual language of the attached approved Discovery Atlas,
+   audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+   style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+@@ -75,7 +79,8 @@
+   and divided layout are not the output layout; use this class's own layout.
+   SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+ 
+-For scene classes:
++For scene classes (universe, stars, planet biomes, Arena FAR), and Arena
++MID/NEAR key-painted terrain so all arena layers match the same biome hand:
+   Match the exact visual language of the attached approved Living Worlds
+   triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+   style_id "frontier". Do not redesign or reinterpret the style. The triptych
+@@ -325,6 +330,56 @@
+   characters other than the one scale figure if named.
+ ```
+ 
++### Arena scene profile
++
++```text
++WHAT (iii) ARENA: a procedural combat environment assembled from a biome-family
++  template and the same compiler-filled system card and frozen style as its
++  biome plate. The template is reusable; the battle context supplies its seed.
++
++ARENA - SUBJECT SLOT, in this order:
++  source biome family and defining landform; fighting-ground material and
++  sheen; system-card light, mineral palette, atmosphere, weather and time of
++  day; the home world's physical signature; the requested depth plate
++  (far, mid or near). No combatants are painted into the arena.
++
++ARENA - LAYOUT (paste):
++  A wide, side-view painted fighting stage at low eye level, with a flat,
++  continuous fighting-ground band and clear combatant stands at the left
++  and right thirds. Compose for two opposing creatures, each one third to
++  one half of frame height. Keep their silhouettes and run-up path clear.
++  Put atmospheric depth behind the fight, with no competing foreground.
++  Use one shared horizon, ground registration and system-card light direction
++  across all three plates. Every shadow agrees with that light.
++  Fighting-ground line: y = 0.78 in normalized full-frame coordinates,
++  measured down from the top; record it in the arena recipe for all layers.
++  Stands, paws, contact shadows and impact anchors register to this line.
++  FAR: distant landforms, sky and atmosphere behind the combatants.
++  MID: the fighting ground, horizon band and restrained biome landmarks
++  behind the stands; flat magenta key above and outside this terrain content.
++  NEAR: a quiet ground edge that supports parallax without covering the stands,
++  paws, effects or fighting path; flat magenta key above its content.
++  Parallax must not reveal gaps between plates.
++
++ARENA - OUTPUT:
++  Three separately painted 2560 x 1440 masters per biome-family template,
++  each with its own brief; never one image sliced. FAR uses the full-bleed
++  opaque scene block. MID and NEAR use the Arena key-painted technical block:
++  flat magenta above/outside the terrain, keyed at intake like cut-outs.
++  No extracted masks. Preserve the original key-painted master bytes.
++
++ARENA MID/NEAR - ACCURACY:
++  Must include: one continuous terrain layer, the shared ground registration
++  and the flat key field above its content; clear stands and fighting path.
++  Must exclude: sky painted into the key, creatures, props across the path,
++  detached terrain tiles, checkerboards and imitation transparency.
++
++ARENA - NEGATIVE ADDITIONS:
++  No characters, resident creatures, scale figures, baked-in attack effects,
++  UI, timing bar, labels, steep or broken fighting ground, competing foreground,
++  obstacles on the fighting path, inconsistent perspective or mismatched light.
++```
++
+ ## 4D. Flora (cut-out)
+ 
+ ```text
+@@ -625,6 +680,54 @@
+ OUTPUT: cut-out block, 512 square; status and condition icons 256 square.
+ ```
+ 
++## 4K. Effects (cut-out sequences)
++
++```text
++WHAT: painted ability-theme effect sequences with launch, travel and impact
++  phases, using the unchanged frozen style. The source theme keys are:
++  fire (Fire), frost (Frost), storm (Storm), tide (Tide), stone (Stone),
++  venom (Venom), void (Void), sand (Sand), chem (Chem), psionic (Psionic),
++  wild (Wild). Use only the theme and ability selected by game data.
++
++SUBJECT SLOT, in this order:
++  source ability theme and the physical action it represents; material and
++  palette; sequence phase (launch, travel or impact); the phase's strong shape
++  and direction of motion; its origin or contact anchor and relative scale.
++  Keep the same painted material, palette, direction and scale relationship
++  across the sequence. A melee travel phase may be a short directional sweep;
++  it need not invent a projectile for an ability that does not have one.
++
++ACCURACY:
++  Must include: a readable theme-specific effect silhouette in each phase,
++  with shared anchors and consistent scale for runtime sequencing.
++  Must exclude: creatures, body parts, scenery, ground, cast shadows, text,
++  symbols used as labels, UI and a baked-in target.
++
++LAYOUT (paste):
++  One isolated phase of the named ability effect, painted as a crisp-edged,
++  fully opaque shape against the flat pure magenta key (#FF00FF). Keep the
++  entire shape within the frame with room for its motion. Paint energy,
++  spray, dust and impact as bounded shapes and grouped marks in the frozen
++  hand, with no halo or soft haze bleeding into the key. Keep the canvas size,
++  registered origin/contact anchor and scale consistent between phase images.
++  Runtime placement and tweening connect the phases; do not paint a battle
++  scene or generate a contact sheet.
++
++NEGATIVE ADDITIONS:
++  No magenta or pink within the effect, soft transparent fringe, photographic
++  particles, lens flare, glowing outline, baked motion blur, lettering,
++  frames, scenery, body parts or duplicate phase images in one output.
++
++OUTPUT:
++  Cut-out block, 1024 square per phase master, subject to section 5's existing
++  authoring-target and runtime-input admission rule. Deliver launch, travel
++  and impact as separately named images. Deliver one anchor JSON per sequence
++  recording canvas size, origin and contact anchors, phase order and each
++  phase image name; normalized anchors are measured from the top-left.
++  Any extra key images use the same registration. Review sheets
++  and runtime effect atlases are assembled from these masters after intake.
++```
++
+ ## 5. Technical output
+ 
+ ```text
+@@ -635,6 +738,7 @@
+ keep that file as the master, ship it as WebP.
+ 
+   fauna, people, flora, props, ships ........ 1024 square
++  Effects phases (cut-out) .................. 1024 square
+   guardians, capital ships, screen-filling
+      landmarks and canopies ................. 1536 square
+   orbital planets ........................... 1024 square
+@@ -643,6 +747,8 @@
+   fauna turnaround (animators only) ......... 2048 x 1024
+   universe, stars, biome plates, parallax
+      layers ................................. 2560 x 1440
++  Arena FAR (scene), MID and NEAR
++     (key-painted terrain) .................. 2560 x 1440
+ 
+ Section 5 sizes are authoring targets. A master is accepted at any size at or above the runtime input size for its class (currently 384 square for cut-outs and 1024x576 for plates); the intake check records the delivered size.
+ 
+@@ -665,7 +771,7 @@
+ a baked checkerboard and for a halo, and switch only if all ten are clean.
+ 
+ CUT-OUT BLOCK (paste for orbital planets, flora, fauna, people, ships,
+-landmarks, items, emblems; put the class's size in place of 1024 where the
++landmarks, items, emblems, Effects; put the class's size in place of 1024 where the
+ table says 1536, 512 or 256):
+   Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+   flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+@@ -682,11 +788,29 @@
+ 
+ Glow is painted as shape in both kinds, or the cut-out eats the creature's
+ edge and the scene goes muddy.
++
++Arena FAR uses the SCENE BLOCK above. Arena MID/NEAR use the cut-out
++technical method with the terrain-specific block below; their landscape
++canvas and ground content replace the object block's square/no-ground rules.
++
++ARENA KEY-PAINTED BLOCK (paste for Arena MID and NEAR):
++  Create a 2560 x 1440 PNG terrain layer. Paint the named ground/horizon
++  content with a crisp fully opaque edge; every pixel above or outside it
++  is flat uniform pure magenta (#FF00FF), with no gradient, texture, noise,
++  checkerboard, transparency pattern, frame or halo. No painted sky in the
++  key field and no magenta/pink in the terrain. Key at intake like a cut-out;
++  do not extract masks from an opaque scene. Preserve full-frame registration
++  at fighting-ground y = 0.78; do not crop or recenter the layer.
+ ```
+ 
+ ## 6. Shared negative
+ 
+ ```text
++Class routing: CUT-OUT means orbital planets, flora, fauna, ships, landmarks,
++items, emblems and Effects (people remain inactive). SCENE means universe,
++stars, planet biomes and Arena FAR. Arena MID/NEAR use the key-painted
++terrain exception below.
++
+ Paste in every prompt, then add the class's NEGATIVE ADDITIONS.
+ 
+   No text, letters, numbers, watermark, signature, border, frame, grid, UI
+@@ -703,6 +827,13 @@
+   Background must be one flat uniform magenta fill and nothing else.
+ 
+   For SCENE classes, do not add those clauses. They will fight the scene.
++
++  For Arena MID/NEAR, replace those object-isolation clauses with:
++  No painted sky or scenery outside the specified terrain layer; no
++  characters, detached display base, white background, checkered background,
++  baked transparency pattern or soft fringe bleeding into the key. The field
++  above/outside the terrain must be flat uniform magenta. Ground, horizon
++  band and terrain shadows are intentional content, not forbidden scenery.
+ ```
+ 
+ ## 7. Writing a subject line

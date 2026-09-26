@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "command": "magick identify -format '%f %wx%h opaque=%[opaque]\\n' space-reference-candidate.png biome-comparison.png universe-reference.png",
+  "results": [
+    {
+      "path": "space-reference-candidate.png",
+      "width": 1536,
+      "height": 1024,
+      "opaque": true
+    },
+    {
+      "path": "biome-comparison.png",
+      "width": 1536,
+      "height": 1024,
+      "opaque": true
+    },
+    {
+      "path": "universe-reference.png",
+      "width": 1536,
+      "height": 1024,
+      "opaque": true
+    }
+  ],
+  "visualAcceptance": false
+}

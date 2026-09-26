@@ -1,0 +1,136 @@
+{
+  "schema": "cf-u1-survey-charters-evidence/v1",
+  "source": "cfba0ede81d5861df70628b462e125eeff4780b9",
+  "productSource": "053ef439774520577071f0ca50887337dd938755",
+  "status": "PASS",
+  "certification": false,
+  "summary": {
+    "viewports": 6,
+    "pointerInputs": 26,
+    "keyboardPresses": 18,
+    "negativeControls": 36,
+    "largeText": 5,
+    "images": 13,
+    "runtimeErrors": 0
+  },
+  "limitations": [
+    "Fresh isolated contexts at each size; native startup Skip only. No navigation normalization, debugger or viewport-restoration run.",
+    "Prior unsolicited-navigation and Runtime.evaluate viewport-restoration blockers remain OPEN regardless of this result.",
+    "Scoped Survey/Charters geometry and native interaction only; no full U1, Slice, Glass, Safari, physical-device or human visual-acceptance claim.",
+    "Keyboard evidence records browser-generated trusted key and click delivery; it does not constitute assistive-technology testing."
+  ],
+  "files": [
+    {
+      "path": "report.json.gz",
+      "bytes": 67251,
+      "sha256": "e2a12398cbf9d7821b6e694f40e5578ea14cd800ad4202d379145ff6e480b27c",
+      "rawBytes": 2182092,
+      "rawSha256": "4f33e2fb563b5e6824fa22ab5a74eba79d70bdbbd63335a450c8e6bb2c16c073"
+    },
+    {
+      "path": "survey-charters-1440x900-baseline.png",
+      "bytes": 249313,
+      "sha256": "9e7f15bc9bc9ba113c47d9f5477aa0a7984880a3ebad57462c119d51a7fd09a6",
+      "rawBytes": 249313,
+      "rawSha256": "9e7f15bc9bc9ba113c47d9f5477aa0a7984880a3ebad57462c119d51a7fd09a6"
+    },
+    {
+      "path": "survey-charters-1440x900-charters.png",
+      "bytes": 348192,
+      "sha256": "6cb61cb32683150c288200d10d606ce2ce7373c0fb2de77fd6f7b96fbfb0f718",
+      "rawBytes": 348192,
+      "rawSha256": "6cb61cb32683150c288200d10d606ce2ce7373c0fb2de77fd6f7b96fbfb0f718"
+    },
+    {
+      "path": "survey-charters-320x740-baseline.png",
+      "bytes": 99618,
+      "sha256": "2c1aa1269dcadaba83f79b617d399f8aed3751c0a7496c5b6ec521480946c631",
+      "rawBytes": 99618,
+      "rawSha256": "2c1aa1269dcadaba83f79b617d399f8aed3751c0a7496c5b6ec521480946c631"
+    },
+    {
+      "path": "survey-charters-320x740-charters.png",
+      "bytes": 88665,
+      "sha256": "9eca56f233499c0273845115c790bce5aa8dff785dff4ec3e662300d47e9df56",
+      "rawBytes": 88665,
+      "rawSha256": "9eca56f233499c0273845115c790bce5aa8dff785dff4ec3e662300d47e9df56"
+    },
+    {
+      "path": "survey-charters-390x844-baseline.png",
+      "bytes": 111923,
+      "sha256": "aca3080467b170ff7663c0edde9d4a0e591ff07fe6837d107a81a36570cecb20",
+      "rawBytes": 111923,
+      "rawSha256": "aca3080467b170ff7663c0edde9d4a0e591ff07fe6837d107a81a36570cecb20"
+    },
+    {
+      "path": "survey-charters-390x844-charters.png",
+      "bytes": 102974,
+      "sha256": "007755e529673f32f21ff81cb11e076ca0c6258f571bed88b3bfbb0ab3a08fb7",
+      "rawBytes": 102974,
+      "rawSha256": "007755e529673f32f21ff81cb11e076ca0c6258f571bed88b3bfbb0ab3a08fb7"
+    },
+    {
+      "path": "survey-charters-430x932-baseline.png",
+      "bytes": 119920,
+      "sha256": "30522dfe353810938425817ef15cd50ec488e241b3a6c6c021dc60cd57769898",
+      "rawBytes": 119920,
+      "rawSha256": "30522dfe353810938425817ef15cd50ec488e241b3a6c6c021dc60cd57769898"
+    },
+    {
+      "path": "survey-charters-430x932-charters.png",
+      "bytes": 127827,
+      "sha256": "9e907928cb6a56e6b4ea75e0dcb7daedbca2cabcde70c4fa9cba3d9f3391a0b7",
+      "rawBytes": 127827,
+      "rawSha256": "9e907928cb6a56e6b4ea75e0dcb7daedbca2cabcde70c4fa9cba3d9f3391a0b7"
+    },
+    {
+      "path": "survey-charters-667x375-baseline.png",
+      "bytes": 99823,
+      "sha256": "56a3971430fc3d73224595d23ca8b9d31530ff397f2ac4b37afbf6a899b8f3c1",
+      "rawBytes": 99823,
+      "rawSha256": "56a3971430fc3d73224595d23ca8b9d31530ff397f2ac4b37afbf6a899b8f3c1"
+    },
+    {
+      "path": "survey-charters-667x375-charters.png",
+      "bytes": 95760,
+      "sha256": "3bc5f21dd57876a73d6759b691df9613b4560a2ada0f367cca4157d8819985e6",
+      "rawBytes": 95760,
+      "rawSha256": "3bc5f21dd57876a73d6759b691df9613b4560a2ada0f367cca4157d8819985e6"
+    },
+    {
+      "path": "survey-charters-667x375-settings.png",
+      "bytes": 84346,
+      "sha256": "03d49b06d3f143a24d5fff0c60476bdb32bb7c50af91055976c62c059c216f36",
+      "rawBytes": 84346,
+      "rawSha256": "03d49b06d3f143a24d5fff0c60476bdb32bb7c50af91055976c62c059c216f36"
+    },
+    {
+      "path": "survey-charters-834x1112-baseline.png",
+      "bytes": 205186,
+      "sha256": "9f4c2575b712a7f4e6003ff9e91a5cf70d3fdfdfa9fc98d6aefa5e079c53bb64",
+      "rawBytes": 205186,
+      "rawSha256": "9f4c2575b712a7f4e6003ff9e91a5cf70d3fdfdfa9fc98d6aefa5e079c53bb64"
+    },
+    {
+      "path": "survey-charters-834x1112-charters.png",
+      "bytes": 258944,
+      "sha256": "71228bb89b9016c63608ca80619276d968024049586b83e309ca09e19e5d819a",
+      "rawBytes": 258944,
+      "rawSha256": "71228bb89b9016c63608ca80619276d968024049586b83e309ca09e19e5d819a"
+    },
+    {
+      "path": "cf-u1-survey-charters-build-cfba0ed-20260906.log.gz",
+      "bytes": 1875,
+      "sha256": "095e3a6994b954665be62417f5f86bc26748c29c37202f868c5a1e20797d15bc",
+      "rawBytes": 5281,
+      "rawSha256": "01fca7ba95952f99e3ac2cf29da2ba147700fae3d5adc2e7156dce405cb6d252"
+    },
+    {
+      "path": "cf-u1-survey-charters-browser-cfba0ed-20260906.log.gz",
+      "bytes": 20,
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

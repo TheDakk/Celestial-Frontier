@@ -1,0 +1,19 @@
+{
+  "schema": "cf.local-signing-attempt.v1",
+  "attempt": 1,
+  "baseCommit": "8c10463a7b0330e12f5ca42f958c85ab9b7eb6a3",
+  "status": "FAIL",
+  "exitCode": 128,
+  "error": "Couldn't sign message (signer): communication with agent failed?; fatal: failed to write commit object",
+  "commandScopedConfiguredAgent": true,
+  "unsignedFallback": false,
+  "headUnchanged": true,
+  "subsequentAgentListProbe": {
+    "exitCode": 0,
+    "identityCount": 1,
+    "meaning": "Agent responded; does not establish signing approval or lock state."
+  },
+  "caffeinateProcessObserved": 93550,
+  "cause": "Unknown; no locked-app or sleeping-machine conclusion",
+  "hostedWrites": 0
+}

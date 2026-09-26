@@ -1,0 +1,5 @@
+Create a NEW EMPTY TRANSPARENT 1254 x 1254 PNG canvas. Draw ONLY these sparse white marking shapes at the exact canvas coordinates below. Do NOT draw a fish, silhouette, animal texture, grey background or black background.
+Exactly THREE thin, gently wavy horizontal white strokes spanning x=240 to x=990; centerlines y=560, y=620, y=680, about 6 pixels wide, tapering ends, separate transparent gaps between strokes.
+Every other pixel must have alpha ZERO. White is marking ink only; transparent is a real alpha hole. No visible boxes, grids, checkerboards, labels, numbers, shadows, scale texture or anatomy. Preserve 1254-square canvas coordinates; do not crop or centre/scale the shape cluster. This is a marking mask texture, not an illustration.
+
+Make the three lines THIN and entirely separate, with very large transparent gaps. Never paint white between lines.

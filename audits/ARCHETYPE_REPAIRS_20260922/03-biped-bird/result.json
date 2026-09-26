@@ -1,0 +1,89 @@
+{
+  "schema": "cf.archetype-repair-result/v1",
+  "status": "PASS_LOCAL_NATIVE",
+  "item": 3,
+  "species": "Eagle",
+  "predecessorCommit": "9c50c190f215fab034fe7023ac0d92e72cf01497",
+  "currentFit": "fit-12",
+  "recordRecipeHash": "bb719111f61528fc2c5dad6d8a125cdefac14cd009076cf0b9fff855334d471d",
+  "bindingHash": "58149d4ad05b53882345ec5e5a9b0a9a148907cc501558c0c417ee57e7c7f6cc",
+  "masterSha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a",
+  "mesh": {
+    "boundaryStep": 40,
+    "interiorStep": 80,
+    "refinements": [],
+    "vertices": 1527,
+    "triangles": 2407,
+    "pins": 737,
+    "parts": 17
+  },
+  "static": {
+    "file": "static-13.json",
+    "status": "PASS_STATIC",
+    "actions": 14,
+    "samplesPerAction": [
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121
+    ],
+    "presentationSamples": 1043,
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  "native": {
+    "runId": "20260922-eagle-native-07",
+    "status": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "liveFrames": 602,
+    "durationMs": 10016.2,
+    "encodedFrames": {
+      "frames": 605,
+      "width": 1024,
+      "height": 576
+    },
+    "encodedMedia": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1024,
+          "height": 576,
+          "nb_read_frames": "605"
+        }
+      ],
+      "format": {
+        "duration": "10.085198"
+      }
+    },
+    "scriptMs": 9712,
+    "perRigUpdateP95Ms": {
+      "left": 0.7000000476837158,
+      "right": 0.8000000715255737
+    },
+    "wholeStageP95Ms": 1.5,
+    "cpuGateMs": 3.5,
+    "sourceFiles": 842,
+    "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
+  },
+  "protection": "Original master/presence and accepted bindings/S2 inputs unchanged. Approved implementation-only orientation optimization has exact old/new state/output/refusal parity and JS fallback. Numeric limits, family contracts, admission gates and solver settings unchanged. New authored mesh qualified independently.",
+  "next": "Codex signs this item before Beetle. Claude consumes signed evidence; Nick reviews art. No hosted attempt or PR43 certification claim."
+}

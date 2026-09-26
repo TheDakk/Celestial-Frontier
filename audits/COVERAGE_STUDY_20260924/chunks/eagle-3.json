@@ -1,0 +1,370 @@
+{
+ "id": "eagle-3",
+ "standIn": "Eagle",
+ "template": "biped-bird",
+ "accentGroups": [
+  "head",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/eagle/card/master-512.png",
+  "joints": [
+   "legNearFoot",
+   "legFarFoot",
+   "legNearAnkle",
+   "legFarAnkle",
+   "legNearKnee",
+   "legFarKnee",
+   "beak",
+   "head",
+   "neck1",
+   "neck0",
+   "wingNearRoot",
+   "wingNearTip",
+   "wingFarRoot",
+   "wingFarTip",
+   "tailFan",
+   "chest",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Snipe",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 1.8,
+   "headFrac": 0.36,
+   "eyes": "prominent",
+   "mustRead": [
+    "extremely long straight dagger bill",
+    "eye set high and far back on the head",
+    "bold cream stripes running along the back"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Roadrunner",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 2.3,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "long trailing tail often cocked upward",
+    "shaggy black crest on the head",
+    "long strong bare legs and heavy pointed bill"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Gull",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 2,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "heavy hooked-tipped bill",
+    "clean white body with a grey mantle and black wingtips",
+    "long wings crossing beyond the tail"
+   ],
+   "note": "Generic name read as a representative herring-gull type."
+  },
+  {
+   "name": "Plover",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 1.5,
+   "headFrac": 0.22,
+   "eyes": "prominent",
+   "mustRead": [
+    "large round head with a very short stubby bill",
+    "big dark eye",
+    "compact upright body on medium legs"
+   ],
+   "note": "Distinguished from a sandpiper by the short pigeon-like bill and the big-headed, big-eyed look."
+  },
+  {
+   "name": "Sandpiper",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 1.9,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "slim straightish probing bill about head length",
+    "horizontal crouched body",
+    "long thin wading legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Pigeon",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.9,
+   "headFrac": 0.19,
+   "eyes": "normal",
+   "mustRead": [
+    "small round head on a deep barrel chest",
+    "short red legs",
+    "broad fan tail and slender bill with a white cere"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Snowy Owl",
+   "group": "raptor",
+   "posture": "biped",
+   "aspect": 0.9,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "big smooth round head with no ear tufts",
+    "brilliant yellow forward-facing eyes in a white face",
+    "heavily feathered feet"
+   ],
+   "note": "Taller than wide when perched upright; the body is a rounded column, not a horizontal hawk shape."
+  },
+  {
+   "name": "Swan",
+   "group": "swimming-bird",
+   "posture": "swimming",
+   "aspect": 1.4,
+   "headFrac": 0.12,
+   "eyes": "small",
+   "mustRead": [
+    "very long S-curved neck",
+    "large white body floating high on the water",
+    "broad flat bill with a coloured base"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tern",
+   "group": "bird",
+   "posture": "flying",
+   "aspect": 2.4,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "deeply forked tail streamers",
+    "long narrow pointed wings",
+    "slim dagger bill and a black cap over the crown"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Auk",
+   "group": "swimming-bird",
+   "posture": "upright",
+   "aspect": 1.5,
+   "headFrac": 0.24,
+   "eyes": "small",
+   "mustRead": [
+    "upright penguin-like stance with black back and white front",
+    "small stubby wings held tight to the body",
+    "legs set far back at the rear of the body"
+   ],
+   "note": "Generic name read as a representative razorbill-type auk. Stands vertically, so it is taller than long."
+  },
+  {
+   "name": "Puffin",
+   "group": "swimming-bird",
+   "posture": "biped",
+   "aspect": 1.4,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "huge triangular laterally flattened bill striped orange and blue-grey",
+    "big white face patch on a black cap",
+    "bright orange webbed feet"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Guillemot",
+   "group": "swimming-bird",
+   "posture": "upright",
+   "aspect": 1.5,
+   "headFrac": 0.26,
+   "eyes": "small",
+   "mustRead": [
+    "long slender pointed dagger bill",
+    "upright chocolate-brown-and-white body",
+    "narrow head running smoothly into the neck"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Eider Duck",
+   "group": "swimming-bird",
+   "posture": "swimming",
+   "aspect": 2.2,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "long wedge-shaped bill running in a straight line into the forehead",
+    "bulky heavy-bodied duck sitting low in the water",
+    "black-and-white blocks with a pale green nape"
+   ],
+   "note": "The unbroken sloping wedge from bill tip to crown is the key read; a normal duck's stepped forehead is wrong."
+  },
+  {
+   "name": "Penguin",
+   "group": "penguin",
+   "posture": "upright",
+   "aspect": 0.45,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "fully upright standing posture on short rear-set feet",
+    "stiff flipper wings held flat at the sides",
+    "black back and white belly countershading"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Albatross",
+   "group": "bird",
+   "posture": "flying",
+   "aspect": 2.6,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "immensely long narrow stiff-held wings",
+    "heavy hooked bill with tube nostrils on the sides",
+    "short tail behind a bulky body"
+   ],
+   "note": "Wings are narrow and plank-straight, not broad and fingered like a raptor's."
+  },
+  {
+   "name": "Petrel",
+   "group": "bird",
+   "posture": "flying",
+   "aspect": 2.4,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "tubular nostrils riding on top of the bill",
+    "narrow angled swept-back wings",
+    "compact gull-like body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Skua",
+   "group": "bird",
+   "posture": "flying",
+   "aspect": 2.2,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "heavy hooked pirate bill",
+    "white flash at the base of the primaries",
+    "barrel-chested bulky gull build"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Condor",
+   "group": "bird",
+   "posture": "flying",
+   "aspect": 2.4,
+   "headFrac": 0.18,
+   "eyes": "normal",
+   "mustRead": [
+    "bare wrinkled unfeathered head",
+    "huge plank-broad wings with splayed fingered primaries",
+    "white ruff of feathers at the neck base"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Swift",
+   "group": "bird",
+   "posture": "flying",
+   "aspect": 3,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "scythe-shaped crescent wings swept far back",
+    "tiny bill with an enormous gape",
+    "cigar body with almost no visible legs"
+   ],
+   "note": "Often drawn as a swallow; the swift has stiffer sickle wings, a much shorter notched tail, and no long streamers."
+  },
+  {
+   "name": "Loon",
+   "group": "swimming-bird",
+   "posture": "swimming",
+   "aspect": 3,
+   "headFrac": 0.2,
+   "eyes": "prominent",
+   "mustRead": [
+    "straight dagger bill held level",
+    "checkerboard black-and-white back",
+    "long body riding low in the water"
+   ],
+   "note": "Legs are set at the extreme rear - it cannot stand upright like a duck and should not be drawn walking."
+  },
+  {
+   "name": "Grebe",
+   "group": "swimming-bird",
+   "posture": "swimming",
+   "aspect": 2.6,
+   "headFrac": 0.2,
+   "eyes": "prominent",
+   "mustRead": [
+    "thin sharply pointed bill",
+    "puffy rounded rear with no visible tail",
+    "lobed rather than webbed toes"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cormorant",
+   "group": "swimming-bird",
+   "posture": "upright",
+   "aspect": 2.8,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "hook-tipped bill on a long snaky neck",
+    "wings held open to dry in a heraldic pose",
+    "low-slung body with a stiff wedge tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Pelican",
+   "group": "bird",
+   "posture": "swimming",
+   "aspect": 2.2,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "enormous bill with a stretchy throat pouch slung beneath",
+    "heavy body on very short legs",
+    "long neck kinked back onto the shoulders"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Osprey",
+   "group": "raptor",
+   "posture": "flying",
+   "aspect": 2.2,
+   "headFrac": 0.18,
+   "eyes": "prominent",
+   "mustRead": [
+    "white underside with a dark mask stripe through the eye",
+    "crooked M-shaped gull-like wings",
+    "hooked bill and outsized barbed talons"
+   ],
+   "note": ""
+  }
+ ]
+}

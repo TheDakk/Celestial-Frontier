@@ -1,0 +1,213 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: serpent matches clearly better (0.0173 < 0.0826)",
+  "missing-anatomy: part arm4-seg2 (arm4Seg2) covers 0% paint (reference 30%)",
+  "missing-anatomy: part arm6-seg1 (arm6Seg1) covers 13% paint (reference 46%)",
+  "missing-anatomy: part arm6-seg2 (arm6Seg2) covers 2% paint (reference 32%)",
+  "missing-anatomy: part bell (bell) covers 13% paint (reference 50%)",
+  "unexplained-anatomy: 24.6% of the paint lies away from the body and in no part (reference 5.1%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "bestReference": "jellyfish",
+ "costs": [
+  {
+   "ref": "jellyfish",
+   "cost": 0.08257
+  }
+ ],
+ "mirrorBest": 0.08248,
+ "otherFamilyBest": {
+  "family": "serpent",
+  "cost": 0.01727
+ },
+ "coverage": [
+  {
+   "id": "arm8-oral",
+   "joint": "arm8Seg0",
+   "paint": 0.5939086294416244,
+   "area": 2328.709999999992
+  },
+  {
+   "id": "arm9-oral",
+   "joint": "arm9Seg0",
+   "paint": 0.8485915492957746,
+   "area": 4118.789999999994
+  },
+  {
+   "id": "arm10-oral",
+   "joint": "arm10Seg0",
+   "paint": 0.9724409448818898,
+   "area": 8043.860000000015
+  },
+  {
+   "id": "arm11-oral",
+   "joint": "arm11Seg0",
+   "paint": 0.9822380106571936,
+   "area": 8858.39500000004
+  },
+  {
+   "id": "arm0-seg0",
+   "joint": "arm0Seg0",
+   "paint": 0.8383484954513646,
+   "area": 68643.215
+  },
+  {
+   "id": "arm0-seg1",
+   "joint": "arm0Seg1",
+   "paint": 0.66875,
+   "area": 2598.3999999999883
+  },
+  {
+   "id": "arm0-seg2",
+   "joint": "arm0Seg2",
+   "paint": 0.9576271186440678,
+   "area": 1623.564999999996
+  },
+  {
+   "id": "arm1-seg0",
+   "joint": "arm1Seg0",
+   "paint": 0.9444191343963554,
+   "area": 35317.905
+  },
+  {
+   "id": "arm1-seg1",
+   "joint": "arm1Seg1",
+   "paint": 0.19083969465648856,
+   "area": 544.6799999999985
+  },
+  {
+   "id": "arm1-seg2",
+   "joint": "arm1Seg2",
+   "paint": 0.18699186991869918,
+   "area": 2183.209999999999
+  },
+  {
+   "id": "arm2-seg0",
+   "joint": "arm2Seg0",
+   "paint": 0.9908606245239908,
+   "area": 20990.344999999976
+  },
+  {
+   "id": "arm2-seg1",
+   "joint": "arm2Seg1",
+   "paint": 0.9298701298701298,
+   "area": 12111.520000000004
+  },
+  {
+   "id": "arm2-seg2",
+   "joint": "arm2Seg2",
+   "paint": 0.9802306425041186,
+   "area": 9239.464999999995
+  },
+  {
+   "id": "arm3-seg0",
+   "joint": "arm3Seg0",
+   "paint": 0.7845528455284553,
+   "area": 7917.989999999991
+  },
+  {
+   "id": "arm3-seg1",
+   "joint": "arm3Seg1",
+   "paint": 0.2441860465116279,
+   "area": 1274.8099999999977
+  },
+  {
+   "id": "arm3-seg2",
+   "joint": "arm3Seg2",
+   "paint": 0.5341614906832298,
+   "area": 1371.1699999999992
+  },
+  {
+   "id": "arm4-seg0",
+   "joint": "arm4Seg0",
+   "paint": 0.9438943894389439,
+   "area": 4954.589999999967
+  },
+  {
+   "id": "arm4-seg1",
+   "joint": "arm4Seg1",
+   "paint": 0.5414364640883977,
+   "area": 2722.704999999998
+  },
+  {
+   "id": "arm4-seg2",
+   "joint": "arm4Seg2",
+   "paint": 0.0035211267605633804,
+   "area": 9157.409999999985
+  },
+  {
+   "id": "arm5-seg0",
+   "joint": "arm5Seg0",
+   "paint": 0.9363867684478372,
+   "area": 6405.740000000002
+  },
+  {
+   "id": "arm5-seg1",
+   "joint": "arm5Seg1",
+   "paint": 0.9350838803792852,
+   "area": 20780.580000000016
+  },
+  {
+   "id": "arm5-seg2",
+   "joint": "arm5Seg2",
+   "paint": 0.8863428047662695,
+   "area": 17408.219999999954
+  },
+  {
+   "id": "arm6-seg0",
+   "joint": "arm6Seg0",
+   "paint": 0.3595166163141994,
+   "area": 3493.575000000008
+  },
+  {
+   "id": "arm6-seg1",
+   "joint": "arm6Seg1",
+   "paint": 0.13114754098360656,
+   "area": 2713.9400000000114
+  },
+  {
+   "id": "arm6-seg2",
+   "joint": "arm6Seg2",
+   "paint": 0.01875732708089097,
+   "area": 11003.255000000056
+  },
+  {
+   "id": "arm7-seg0",
+   "joint": "arm7Seg0",
+   "paint": 0.8263585259212992,
+   "area": 25601.179999999986
+  },
+  {
+   "id": "arm7-seg1",
+   "joint": "arm7Seg1",
+   "paint": 1,
+   "area": 3239.6550000000207
+  },
+  {
+   "id": "arm7-seg2",
+   "joint": "arm7Seg2",
+   "paint": 0.23931623931623933,
+   "area": 3568.5999999999767
+  },
+  {
+   "id": "root",
+   "joint": "root",
+   "paint": 1,
+   "area": 4432.709999999992
+  },
+  {
+   "id": "bell",
+   "joint": "bell",
+   "paint": 0.1297343131712832,
+   "area": 128657.78000000003
+  },
+  {
+   "id": "centre",
+   "joint": "centre",
+   "paint": 0.302540415704388,
+   "area": 12132.819999999992
+  }
+ ],
+ "unclaimedFrac": 0.2458
+}

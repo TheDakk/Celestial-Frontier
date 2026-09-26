@@ -1,0 +1,19 @@
+{
+  "runId": "20260923-tarantula-paint-07",
+  "mode": "image_gen built-in edit",
+  "promptFile": "prompt.txt",
+  "promptSha256": "146a05c4c9b8a1af4f1b7a5f2cef877917d9ce54313799843170c807f6507fac",
+  "references": [
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-07/master.png",
+      "role": "edit target",
+      "sha256": "a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "role": "sole style reference",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "reason": "Retained contact-only sweep proves near3 requires26.803874311353756px movement above23.31090731824911px cap at victory210ms. Change actual painted articulation; do not fabricate fit coordinates or relax limits."
+}

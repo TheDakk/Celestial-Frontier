@@ -1,0 +1,105 @@
+{
+  "parts": [
+    {
+      "id": "shadow",
+      "joint": "root",
+      "layer": "near"
+    },
+    {
+      "id": "leg0-near",
+      "joint": "leg0NearCurve",
+      "layer": "near"
+    },
+    {
+      "id": "leg1-far",
+      "joint": "leg1FarCurve",
+      "layer": "near"
+    },
+    {
+      "id": "leg1-near",
+      "joint": "leg1NearCurve",
+      "layer": "near"
+    },
+    {
+      "id": "leg2-far",
+      "joint": "leg2FarCurve",
+      "layer": "near"
+    },
+    {
+      "id": "leg2-near",
+      "joint": "leg2NearCurve",
+      "layer": "near"
+    },
+    {
+      "id": "carapace",
+      "joint": "carapace",
+      "layer": "near"
+    },
+    {
+      "id": "eye-far",
+      "joint": "eyeFarTip",
+      "layer": "near"
+    },
+    {
+      "id": "eye-near",
+      "joint": "eyeNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "claw-far-palm",
+      "joint": "clawFarPalm",
+      "layer": "near"
+    },
+    {
+      "id": "claw-far-dactyl",
+      "joint": "clawFarDactylRoot",
+      "layer": "near"
+    },
+    {
+      "id": "claw-near-palm",
+      "joint": "clawNearPalm",
+      "layer": "near"
+    },
+    {
+      "id": "claw-near-dactyl",
+      "joint": "clawNearDactylRoot",
+      "layer": "near"
+    }
+  ],
+  "replay": {
+    "method": "fresh-prefix-canvas",
+    "prefixReads": 21,
+    "differentChannels": 0
+  },
+  "genome": {
+    "seed": 4279472141,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 1,
+    "body": 9,
+    "loco": 17,
+    "trait": 15,
+    "size": 4,
+    "diet": 0,
+    "head": 7,
+    "limbs": 0,
+    "skin": 6,
+    "tail": 6,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 3,
+    "habitat": 15,
+    "detail": 2,
+    "accent": 11,
+    "temper": 7,
+    "sense": 5,
+    "repro": 2,
+    "life": 5,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Fiddler Crab"
+  },
+  "refusal": "Error: Crab observation: unsupported source"
+}

@@ -112,7 +112,7 @@ describe('v1.8.9 Field Training checkpoint fixture and ingress classifier', () =
     }).toEqual({
       fixtureJson: '26da9dc04940132a2dd4627391ef4a1be57d6a758bf3b6efb4dc6b217c273a16',
       fixtureFile: 'a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7',
-      gameHtml: '5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746',
+      gameHtml: 'a65d5905cfd181d7ef2fd356cdfa582b3e8aa4c19c0733162360f4210b56d331' /* re-sealed 2026-09-21 (Nick): TypeSafe batch a3bd835d changed the html by 8 lines; fingerprint identical */ + '',
       probeHarness: 'e20159437486c376e1b41424c3fd125e0d011299553646e859d46795770f7c06',
       captureDriver: 'c3f710d90782f7ba812a2082288ce860e5f41ce16cec2c28b3eaba1fb9ec454a',
     });

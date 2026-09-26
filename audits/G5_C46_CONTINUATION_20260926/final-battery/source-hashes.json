@@ -1,0 +1,98 @@
+{
+  "implementationHead": "cf1a24da3203c7848ec60d8e31e7220074f97dc0",
+  "scope": "Changed source relative to previous OpenAI batch, including post-native library pin update; no edits during battery.",
+  "files": [
+    {
+      "path": "port/v2/apps/game/public/library/art-library.json",
+      "sha256": "8e1cb6d72521ffd84a0700ba4bd2443ef2efd5f15e4fe75a72735bc174567cd3"
+    },
+    {
+      "path": "port/v2/apps/game/src/art-library.generated.ts",
+      "sha256": "8be0b5bb14fa4e5c2db374f48f3eec57b00d47585bf4f075b40f4e400310c1b1"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2-wiring.ts",
+      "sha256": "d99a2464b8c89095f1689bb93f711853b15b147131097cae9a2d4d45ef0ad7ce"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-finish-admission.test.ts",
+      "sha256": "3b5284522898cdd24138e6f339c7fbb125b2338edbd58d91d483206b798b298a"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-finish-app.test.ts",
+      "sha256": "d54223c3d3727f3f6a61b06c02d3b2b74bd6af8109d899469e4372644cdc512e"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-finish-app.ts",
+      "sha256": "5f45afb8819f5f45c93be810dd2e218e830804ac95b7bc53b1a33a4f80db2948"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-finish-engine.ts",
+      "sha256": "2627915924166585fafb02524124aea78e82442285ecbdc4bdb75a53cf6fd23f"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-finish-route.ts",
+      "sha256": "c3d74183cc7d4ef346b6387ab0a1fe4b29390490fc69792412dcdb2bcb8e099b"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-finish-source-pins.generated.ts",
+      "sha256": "7f72b30b68ef9332d3c1d7021c4da3eb0a0b5c49acc7d9710677ece7c49f28c8"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "sha256": "b485e47defcc799a95c67577912a4a4910234eca4bade3dfa12968c9d3714617"
+    },
+    {
+      "path": "port/v2/apps/game/src/morph/painted-card-source-finish-alpha.test.ts",
+      "sha256": "607f228e387eee70fe498c4462cc3b1fb61f51bd40a92de04a6bb02612cd7980"
+    },
+    {
+      "path": "port/v2/apps/game/src/morph/painted-card-source.ts",
+      "sha256": "cf2abc29bffaed29767fda09e77f90ae0f1170fec40d399641788513a0c5fce9"
+    },
+    {
+      "path": "port/v2/apps/game/src/painted-cards.ts",
+      "sha256": "3a1ad8ca4069dc74904a0f417f29125ee9924892e10e660be6340a7de8b58dad"
+    },
+    {
+      "path": "port/v2/tests/creature-finish-engine.test.ts",
+      "sha256": "d1a73b59f6ea9dbf05ab87b25dda21169436328a8310279f17e18254a523d239"
+    },
+    {
+      "path": "port/v2/tools/anatomy-verify/auto-author.mjs",
+      "sha256": "8218e52d0a164e5329c15448755a2b43be6a202029fce58d66977aec36bfb602"
+    },
+    {
+      "path": "port/v2/tools/anatomy-verify/leaf-growth.mjs",
+      "sha256": "5b280cf820304ae8a0ee7ee55b15422b602b9ea21fcf2d2e7172a75a28255f8c"
+    },
+    {
+      "path": "port/v2/tools/anatomy-verify/leaf-growth.test.mjs",
+      "sha256": "b653b9b5c93173cf28cb31fd3a3376b68f57fb47ec43e543b37dacb2e4a663cc"
+    },
+    {
+      "path": "port/v2/tools/anatomy-verify/limb-separation.mjs",
+      "sha256": "54ff45756a884dc9dc203e64322ee711abd44308fd318ff3791fe4cd3ce391a7"
+    },
+    {
+      "path": "port/v2/tools/morph/build-finish-sources.mjs",
+      "sha256": "e2fada7560abb1d27c51847c8f3da53bdc1039d1b0608bbcbdfd880d28163761"
+    },
+    {
+      "path": "port/v2/tools/morph/build-shipped-battle2.mjs",
+      "sha256": "be0dee97705f7762a07b63e01397b6b7ced45293fbaec88086eeb71669786a62"
+    },
+    {
+      "path": "port/v2/tools/morph/creature-finish-source-pins.mjs",
+      "sha256": "cfa2042dbf05dc7650273f3a14dd747d97b53198c9af2bd5488affd471b782e3"
+    },
+    {
+      "path": "port/v2/tools/morph/creature-finish-source-pins.test.mjs",
+      "sha256": "3726359fe45c5d7c799bb581cb5e44a82ecf450b28e843c6dbfbc190b2a2b373"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/compile-library-master.mjs",
+      "sha256": "30496d8ee2ffdfaffa88b5b4d05390aacba77b71e376cfbc1e940c3f9bb00aa2"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/07-marmot/fit-01",
+  "sourceRecordSha256": "30849c158873308156df12bfd6ddf21ef734df679367da6ec9ef277f04462e00",
+  "sourceBindingSha256": "a746204acbc8381fcd5d69d33dc620f517767fa66168b66e4d765a19b4b47d6d",
+  "sourceAtlasSha256": "b6cafb130de63a4830593e093bd8ac484d7b84a0ee8d75210fcb5ce196d9428e",
+  "helperSha256": "722d032b2befa4d6a214723aca94a5b9cbb633190036f5067a21b00d87a8584c",
+  "author": {
+    "pairs": [
+      [
+        "root",
+        "spine"
+      ],
+      [
+        "ear-near-root",
+        "neck"
+      ],
+      [
+        "ear-near-tip",
+        "spine"
+      ],
+      [
+        "jaw",
+        "neck"
+      ],
+      [
+        "jaw",
+        "spine"
+      ]
+    ],
+    "reason": "Observed torso patch and side-on head/neck fur form one continuous surface; the triangular upper-neck hole is not anatomy. Opposite ears and legs remain independent."
+  },
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "hindNearAnkle",
+      "hindNearPaw",
+      "hindNearKnee",
+      "hindNearRoot",
+      "foreNearAnkle",
+      "foreNearPaw",
+      "foreNearKnee",
+      "foreNearRoot",
+      "hindFarAnkle",
+      "hindFarPaw",
+      "hindFarKnee",
+      "hindFarRoot",
+      "foreFarAnkle",
+      "foreFarPaw",
+      "foreFarKnee",
+      "foreFarRoot",
+      "earNearTip",
+      "earNearRoot",
+      "earFarTip",
+      "earFarRoot",
+      "jaw",
+      "head",
+      "neck",
+      "chest",
+      "spine",
+      "pelvis",
+      "tail3",
+      "tail2",
+      "tail1",
+      "tail0"
+    ],
+    "contactEndpoints": [
+      "hindFarAnkle",
+      "foreFarAnkle",
+      "hindNearAnkle",
+      "foreNearAnkle"
+    ],
+    "paintBoundaryPairs": [
+      [
+        "root",
+        "spine"
+      ],
+      [
+        "ear-near-root",
+        "neck"
+      ],
+      [
+        "ear-near-tip",
+        "spine"
+      ],
+      [
+        "jaw",
+        "neck"
+      ],
+      [
+        "jaw",
+        "spine"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 38,
+        "distancePx": 1.0000000000000284,
+        "supports": [
+          858
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 40,
+        "distancePx": 6.403124237432834,
+        "supports": [
+          1056
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 63,
+        "distancePx": 5.700877125495742,
+        "supports": [
+          41
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 43,
+        "distancePx": 2.999999999999946,
+        "supports": [
+          462
+        ]
+      }
+    ],
+    "sourceBindingHash": "8c49047c5d952261cb35765a231b61f968aa16cab0f61ab8df56775ec800c17c",
+    "sourceVertices": 2175,
+    "vertices": 2454,
+    "sharedSupports": 827,
+    "pins": 306,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 40,
+    "excludedOverlaps": 31,
+    "observedExcludedBoundaries": 31,
+    "weldedExcludedBoundaries": 5,
+    "independentExcludedBoundaries": 26,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "root",
+        "spine"
+      ],
+      [
+        "ear-near-root",
+        "neck"
+      ],
+      [
+        "ear-near-tip",
+        "spine"
+      ],
+      [
+        "jaw",
+        "neck"
+      ],
+      [
+        "jaw",
+        "spine"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "d17772771f4ee6cb21a86d8202ed4d7b3d3c659db3e8a638534c0eed24f54001",
+  "scope": "New unadmitted fit, explicit source paint continuity; source pixels and solver unchanged. Inherited receipts remain historical; this receipt owns the new split."
+}

@@ -1,0 +1,264 @@
+{
+  "output": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/sparse-fit-comparison-08.json",
+  "semanticsParity": "EXACT",
+  "candidate": {
+    "recordRecipeHash": "4e806fc94a2cd6fef82e53e4482531d4795453c68a3e23eea931102ccca07422",
+    "bindingHash": "85cfa087a72df27c32f70ce4e7c7f13b65e8b23c5af7e3eed3fa9fcaf20bea6b",
+    "vertices": 3628,
+    "triangles": 6187,
+    "pins": 1983
+  },
+  "refusals": [],
+  "findings": [
+    {
+      "ms": 0,
+      "side": "left",
+      "old": {
+        "passes": 1,
+        "visits": 0,
+        "projections": 0,
+        "preFloor": 0
+      },
+      "candidate": {
+        "passes": 1,
+        "visits": 0,
+        "projections": 0,
+        "preFloor": 0,
+        "partCounts": {},
+        "refusal": null
+      }
+    },
+    {
+      "ms": 0,
+      "side": "right",
+      "old": {
+        "passes": 1,
+        "visits": 0,
+        "projections": 0,
+        "preFloor": 0
+      },
+      "candidate": {
+        "passes": 1,
+        "visits": 0,
+        "projections": 0,
+        "preFloor": 0,
+        "partCounts": {},
+        "refusal": null
+      }
+    },
+    {
+      "ms": 1206,
+      "side": "left",
+      "old": {
+        "passes": 70,
+        "visits": 33702,
+        "projections": 33702,
+        "preFloor": 103
+      },
+      "candidate": {
+        "passes": 67,
+        "visits": 14899,
+        "projections": 14899,
+        "preFloor": 69,
+        "partCounts": {
+          "near-shin": 8,
+          "near-thigh": 41,
+          "far-shin": 1,
+          "far-thigh": 23,
+          "far-wing-flight": 1
+        },
+        "refusal": null
+      }
+    },
+    {
+      "ms": 1206,
+      "side": "right",
+      "old": {
+        "passes": 1,
+        "visits": 0,
+        "projections": 0,
+        "preFloor": 0
+      },
+      "candidate": {
+        "passes": 1,
+        "visits": 0,
+        "projections": 0,
+        "preFloor": 0,
+        "partCounts": {},
+        "refusal": null
+      }
+    },
+    {
+      "ms": 2333.2,
+      "side": "left",
+      "old": {
+        "passes": 75,
+        "visits": 69525,
+        "projections": 69525,
+        "preFloor": 89
+      },
+      "candidate": {
+        "passes": 65,
+        "visits": 1284,
+        "projections": 1284,
+        "preFloor": 59,
+        "partCounts": {
+          "near-shin": 5,
+          "near-thigh": 36,
+          "far-shin": 1,
+          "far-thigh": 21
+        },
+        "refusal": null
+      }
+    },
+    {
+      "ms": 2333.2,
+      "side": "right",
+      "old": {
+        "passes": 1,
+        "visits": 0,
+        "projections": 0,
+        "preFloor": 0
+      },
+      "candidate": {
+        "passes": 1,
+        "visits": 0,
+        "projections": 0,
+        "preFloor": 0,
+        "partCounts": {},
+        "refusal": null
+      }
+    },
+    {
+      "ms": 4466.666666666666,
+      "side": "left",
+      "old": {
+        "passes": 70,
+        "visits": 33702,
+        "projections": 33702,
+        "preFloor": 103
+      },
+      "candidate": {
+        "passes": 67,
+        "visits": 14899,
+        "projections": 14899,
+        "preFloor": 69,
+        "partCounts": {
+          "near-shin": 8,
+          "near-thigh": 41,
+          "far-shin": 1,
+          "far-thigh": 23,
+          "far-wing-flight": 1
+        },
+        "refusal": null
+      }
+    },
+    {
+      "ms": 4466.666666666666,
+      "side": "right",
+      "old": {
+        "passes": 1,
+        "visits": 0,
+        "projections": 0,
+        "preFloor": 0
+      },
+      "candidate": {
+        "passes": 1,
+        "visits": 0,
+        "projections": 0,
+        "preFloor": 0,
+        "partCounts": {},
+        "refusal": null
+      }
+    },
+    {
+      "ms": 8583,
+      "side": "left",
+      "old": {
+        "passes": 1,
+        "visits": 0,
+        "projections": 0,
+        "preFloor": 0
+      },
+      "candidate": {
+        "passes": 1,
+        "visits": 0,
+        "projections": 0,
+        "preFloor": 0,
+        "partCounts": {},
+        "refusal": null
+      }
+    },
+    {
+      "ms": 8583,
+      "side": "right",
+      "old": {
+        "passes": 76,
+        "visits": 73432,
+        "projections": 73432,
+        "preFloor": 85
+      },
+      "candidate": {
+        "passes": 65,
+        "visits": 350,
+        "projections": 350,
+        "preFloor": 61,
+        "partCounts": {
+          "near-shin": 6,
+          "near-thigh": 37,
+          "far-shin": 1,
+          "far-thigh": 21
+        },
+        "refusal": null
+      }
+    },
+    {
+      "ms": 8783,
+      "side": "left",
+      "old": {
+        "passes": 76,
+        "visits": 73940,
+        "projections": 73940,
+        "preFloor": 83
+      },
+      "candidate": {
+        "passes": 65,
+        "visits": 604,
+        "projections": 604,
+        "preFloor": 56,
+        "partCounts": {
+          "near-shin": 3,
+          "near-thigh": 35,
+          "far-shin": 1,
+          "far-thigh": 20
+        },
+        "refusal": null
+      }
+    },
+    {
+      "ms": 8783,
+      "side": "right",
+      "old": {
+        "passes": 67,
+        "visits": 14727,
+        "projections": 14727,
+        "preFloor": 178
+      },
+      "candidate": {
+        "passes": 67,
+        "visits": 14843,
+        "projections": 14843,
+        "preFloor": 148,
+        "partCounts": {
+          "near-shin": 1,
+          "near-thigh": 23,
+          "far-thigh": 13,
+          "near-wing-shoulder": 2,
+          "tail": 104,
+          "chest": 5
+        },
+        "refusal": null
+      }
+    }
+  ]
+}

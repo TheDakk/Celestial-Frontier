@@ -1,0 +1,75 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "plant-woody",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "990046c7f7ec66526e007b90a2f43c107fb924448a3749290d3a1fa52a74c84f",
+    "pngSha256": "77789a50d1137f7878c3d52c8d8274be481be980f966d4864bef4180d3846776"
+  },
+  "parts": [
+    {
+      "name": "part-00.png",
+      "sha256": "6e92f58e470b6689568d44eb983edc0366169da67d19c93f4e04dc5694847ff1"
+    },
+    {
+      "name": "part-01.png",
+      "sha256": "bd3e57c677fc3870090fea45b1de73bcab488ade88cf4bf40cfc5d9609cd5c7b"
+    },
+    {
+      "name": "part-02.png",
+      "sha256": "c65bdee4c75a0a765428e09159ba99c30f71c22aa647aac410253b13b32116a4"
+    },
+    {
+      "name": "part-03.png",
+      "sha256": "e99fae68fbb96cd3673ee0e2315fe57767bab57630424feedab5bef755603218"
+    },
+    {
+      "name": "part-04.png",
+      "sha256": "8116a5354a38255735050f8866c3b80072c16c7f3fc975ba923980bd4b132281"
+    },
+    {
+      "name": "part-05.png",
+      "sha256": "08c7ccffc7de58211395ba12deaf97538135639328ac6673e7a664bf7a35197d"
+    },
+    {
+      "name": "part-06.png",
+      "sha256": "56a27ab25e43604a6a4517951eb4bcc5802a6ae69fa26b37798f88a73f0e7b0d"
+    },
+    {
+      "name": "part-07.png",
+      "sha256": "0c7cef910b722b089230509b4f8976f46709a4deb0dd4b423db2f8ef979f035f"
+    },
+    {
+      "name": "part-08.png",
+      "sha256": "79781a916a7586a7a18e50323a82808536c58386c0ecde8fac6535e2518acb1d"
+    },
+    {
+      "name": "part-09.png",
+      "sha256": "b6ee80c8907f87531f0a6b55b8b3e6242483d20d1183de365b99137d2d64adb0"
+    },
+    {
+      "name": "part-10.png",
+      "sha256": "fc0daabcddb949ce16766c210d54d608f897ed5bcacce4be130f51e613a6629d"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

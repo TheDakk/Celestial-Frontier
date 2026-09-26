@@ -1,0 +1,44 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-contact-family.test.ts (11 tests | 3 failed) 213ms
+   × keeps freshwater-crab grounded through dodge, scuttle and mirrored replay without freezing swings 25ms
+   × keeps mud-crab grounded through dodge, scuttle and mirrored replay without freezing swings 22ms
+   × keeps vent-crab grounded through dodge, scuttle and mirrored replay without freezing swings 21ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-contact-family.test.ts > keeps freshwater-crab grounded through dodge, scuttle and mirrored replay without freezing swings
+Error: Contact: joint limit leg0FarFoot
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:89:45
+     87|    for(const j of [c.knee,c.end,...c.terminal?[c.terminal]:[]]){
+     88|     const l=template.limitsDeg[j]!,deg=pose[j]!.rotation*180/Math.PI;
+     89|     if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: joint limi…
+       |                                             ^
+     90|    }
+     91|    contacts.push({joint:c.end,target,stance:!swing});
+ ❯ apps/game/src/creature-rig-contact-family.test.ts:29:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  apps/game/src/creature-rig-contact-family.test.ts > keeps mud-crab grounded through dodge, scuttle and mirrored replay without freezing swings
+ FAIL  apps/game/src/creature-rig-contact-family.test.ts > keeps vent-crab grounded through dodge, scuttle and mirrored replay without freezing swings
+RangeError: target outside two-bone reach
+ ❯ Object.solve tools/creature-animation/kinematics.ts:71:73
+     69|       if (same(r, root) && same(e, end)) return rest;
+     70|       const d = length(r, e), min = Math.abs(upper - lower), max = upp…
+     71|       if (d < KINEMATICS_LIMITS.minSegment || d < min || d > max) thro…
+       |                                                                         ^
+     72|       const ux = (e.x - r.x) / d, uy = (e.y - r.y) / d;
+     73|       const along = (upper * upper - lower * lower + d * d) / (2 * d);
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:81:84
+ ❯ apps/game/src/creature-rig-contact-family.test.ts:29:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  3 failed | 17 passed (20)
+   Start at  13:22:07
+   Duration  415ms (transform 259ms, setup 0ms, import 504ms, tests 330ms, environment 0ms)
+

@@ -1,0 +1,15 @@
+{
+  "schema": "cf-civet-local-review-receipt/v1",
+  "url": "http://127.0.0.1:58519/",
+  "pid": 598,
+  "execSession": 25947,
+  "filesVerified": 17,
+  "sourceParent": "5e222931efd642c03ce55c5e67f7670a7aef890c",
+  "contentInventorySha256": "86c5e30524484e6a4156d71b6fd051fa589719d1486997f1a52619acff4aed2d",
+  "nativeReportSha256": "cd84e42ea90c7f05a0754d4efa5595dea8e8fc20500bafd5ff4b1d87a9db97d9",
+  "certification": false,
+  "publishable": false,
+  "startCommand": "node audits/CREATURE_PAINTED_CIVET_20260908/serve-study.mjs study-native-final 58519",
+  "panelOpen": "Codex browser panel request queued, not independently claimed visible",
+  "scope": "Standalone local authoring bench; no game save, in-game Guide or native integration."
+}

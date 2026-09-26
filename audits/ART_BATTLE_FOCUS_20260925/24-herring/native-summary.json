@@ -1,0 +1,30 @@
+{
+  "runId": "native-observed-01",
+  "scope": "PROPOSED BUNDLE ONLY, not HEAD certification. E1.5 battle2 native proof: two real paint-skin fits on the real stage over the accepted Earth-temperate plates; diagnostic study, not visual acceptance.",
+  "status": "DIAGNOSTIC_PASS",
+  "cpuP95Ms": 3,
+  "cpuMaxMs": 8.600000023841858,
+  "overBudgetFrames": [],
+  "intervalsAtLeast25Ms": 0,
+  "maxFrameIntervalMs": 16.80000000000109,
+  "liveFrames": 707,
+  "durationMs": 11766.2,
+  "encoded": {
+    "frames": 711,
+    "width": 1024,
+    "height": 576,
+    "durationSeconds": 11.841806,
+    "minimumFrames": 671
+  },
+  "refusals": {
+    "left": 0,
+    "right": 0
+  },
+  "reportSha256": "6d84bb70eb166ad2d5d26610721f1ed44ad9bfd857e3d921581bf2e5f40b6cbd",
+  "filmSha256": "40b281c74753d797fc976c260d073c6eb73e272b424194118b4a4ece2d2a56a8",
+  "otherLaneActiveSamples": 0,
+  "hostSamples": 18,
+  "recipeHash": "023c9266a43cb6b07a0410afb20fcaf12ad74b80ff114b388e79537f249a224e",
+  "bindingHash": "8085508a199142d29313cb56730c9aea14815f4fcb4bd9bd3adc008aaffb2abc",
+  "masterSha256": "3abc568beb996e694c78736854a216222dc5cfae47d39494a4f6ba7e84b5494f"
+}

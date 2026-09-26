@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 3872130133,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 12,
+    "body": 7,
+    "loco": 1,
+    "trait": 17,
+    "size": 0,
+    "diet": 5,
+    "head": 1,
+    "limbs": 0,
+    "skin": 3,
+    "tail": 6,
+    "pattern": 1,
+    "eyes": 4,
+    "behavior": 5,
+    "habitat": 16,
+    "detail": 9,
+    "accent": 13,
+    "temper": 3,
+    "sense": 4,
+    "repro": 0,
+    "life": 3,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Giant Tube Worm"
+  },
+  "observation": null
+}

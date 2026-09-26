@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "calls": [
+    {
+      "joint": "root",
+      "rotation": 0,
+      "dx": 0.2,
+      "dy": -0.1
+    },
+    {
+      "joint": "spine",
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "joint": "head",
+      "rotation": 0,
+      "dx": 0,
+      "dy": 0
+    }
+  ],
+  "nonRootOffsets": [],
+  "producerSources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/gsap-adapter.ts",
+      "sha256": "6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "5aff1698c63fdd66f1f83f28b61912d477593c8af4a8b96761c91d8460277566"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/index.js",
+      "sha256": "070038235ba75ec2186d054ebd83ae94e6de6a971f5d3f3d6cd1037551f94faa"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/CSSPlugin.js",
+      "sha256": "41d061e8b0a2ddfdb647f8f85da690ec6d19194403021acca7088926105fe6bd"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/gsap-core.js",
+      "sha256": "83c4b6c0b020beba737b90896181560b76747342b0f7baa5ba1b185a75f65b65"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/actions.ts",
+      "sha256": "dc1ef0becac76be8997789b08e1058fcddd04fcdd12edfff71d10a3ce02abcac"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "ea1a4a57a65aa10cc1872304c9e87f31f47fcea0081f7bb7f947afab46d8bbbc"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/secondary.ts",
+      "sha256": "a3b07b1ab839db68669e5ae2fcd24e9314c7d6495a01d2b009e8b3f2d5a0b361"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timing.ts",
+      "sha256": "135ad4c2752d8941ef4cad337d900ecfd58125dfe1bd7afbf4608c80b68534fa"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    }
+  ],
+  "expected": "A shared root displacement is emitted once for root; a child receives only an explicitly authored local offset.",
+  "negativeControl": "PASS_ROOT_ONLY_CONTROL",
+  "rootOffsetPreserved": {
+    "joint": "root",
+    "rotation": 0,
+    "dx": 0.2,
+    "dy": -0.1
+  },
+  "scope": "real GSAP producer seek on a synthetic translation-only timeline; no creature clips changed"
+}

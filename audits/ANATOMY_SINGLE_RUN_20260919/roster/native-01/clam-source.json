@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 1086707428,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 14,
+    "body": 1,
+    "loco": 9,
+    "trait": 3,
+    "size": 4,
+    "diet": 0,
+    "head": 6,
+    "limbs": 1,
+    "skin": 3,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 2,
+    "behavior": 2,
+    "habitat": 1,
+    "detail": 1,
+    "accent": 4,
+    "temper": 6,
+    "sense": 6,
+    "repro": 2,
+    "life": 0,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Clam"
+  },
+  "observation": null
+}

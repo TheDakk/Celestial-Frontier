@@ -1,0 +1,158 @@
+{
+  "schema": "cf-earth-layered-final-results/v1",
+  "createdAt": "2026-09-08T17:23:20.417335+00:00",
+  "status": "SCOPED_IMPLEMENTATION_NATIVE_AND_LOCAL_PREVIEW_PASS",
+  "certification": false,
+  "sourceParent": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "branch": "openai/mac",
+  "focused": {
+    "tests": 351,
+    "files": 23,
+    "report": "browser-free-settled.json",
+    "allThreeTypeScriptPrograms": "PASS",
+    "artStaticRoot": "PASS",
+    "priorUnchangedGuardControls": 134,
+    "fullAdmission": false
+  },
+  "native": {
+    "phone": {
+      "status": "PASS",
+      "report": "native-phone-settled/review.json",
+      "reportSha256": "22a490ce74a5262a5300c189723d17b15f2a037b286e9bb6494dfe3133f07e09",
+      "viewport": [
+        390,
+        844,
+        2
+      ],
+      "screenshots": [
+        {
+          "path": "earth-layers-phone.png",
+          "sha256": "cc558ea47a5772afacac2945d266a809cfe697111038a994ff2a768f582e7835"
+        }
+      ],
+      "runtimeErrors": 0,
+      "journal": {
+        "frameCount": 27,
+        "observedActiveImpulse": true,
+        "observedTranslatedCanvas": true,
+        "observedEndAfterImpulse": true,
+        "restingPairSamples": 9,
+        "maxRestingErrorY": 0
+      }
+    },
+    "desktop": {
+      "status": "PASS",
+      "report": "native-desktop-settled/review.json",
+      "reportSha256": "a03b88edd453443c4a4129a88479047178a6d4e29b33aa3c90e91a61dab706be",
+      "viewport": [
+        1440,
+        1000,
+        1
+      ],
+      "screenshots": [
+        {
+          "path": "earth-layers-desktop.png",
+          "sha256": "5c4cc2b9ff8628b2f8421517ce20475813e9e1a0b5084914bfd5af311d29443e"
+        }
+      ],
+      "runtimeErrors": 0,
+      "journal": {
+        "frameCount": 29,
+        "observedActiveImpulse": true,
+        "observedTranslatedCanvas": true,
+        "observedEndAfterImpulse": true,
+        "restingPairSamples": 6,
+        "maxRestingErrorY": 0
+      }
+    },
+    "blocked": {
+      "status": "PASS",
+      "report": "native-blocked-settled/review.json",
+      "reportSha256": "1fe0fd8109664f74bc0280e3782c992c7cbd8dcb7ea368e8dd4b8872bac3a7e5",
+      "viewport": [
+        390,
+        844,
+        2
+      ],
+      "screenshots": [
+        {
+          "path": "earth-layers-blocked.png",
+          "sha256": "691c1d91bf241e04e64d719d98ab58116b49de31674ec363a8d4b2bf75d77b5f"
+        }
+      ],
+      "runtimeErrors": 0,
+      "journal": {
+        "frameCount": 24,
+        "observedActiveImpulse": true,
+        "observedTranslatedCanvas": true,
+        "observedEndAfterImpulse": true,
+        "restingPairSamples": 0,
+        "maxRestingErrorY": null
+      }
+    },
+    "default": {
+      "status": "PASS",
+      "report": "native-default-settled/review.json",
+      "reportSha256": "a69e8f9caf9da4176220c8988a2d80ece88bff4c824041e5c27a92b5707200db",
+      "viewport": [
+        390,
+        844,
+        2
+      ],
+      "screenshots": [
+        {
+          "path": "earth-layers-default.png",
+          "sha256": "6686679883702bc0411fabf81c5ac24739450a7a7c6affc6a64c9f9b9609f58c"
+        }
+      ],
+      "runtimeErrors": 0,
+      "journal": {
+        "frameCount": 25,
+        "observedActiveImpulse": true,
+        "observedTranslatedCanvas": true,
+        "observedEndAfterImpulse": true,
+        "restingPairSamples": 0,
+        "maxRestingErrorY": null
+      }
+    }
+  },
+  "nativeSourceCarriersVerified": 53,
+  "evidenceBuild": {
+    "schema": "cf-v2-scene-memory-build/v1",
+    "sha256": "c3a0604dca2d4e1bfe2c1ef03e8584005d15222c83bcdfc52ae542090791fc3e",
+    "fileCount": 96
+  },
+  "preview": {
+    "createdAt": "2026-09-08T17:22:20.979Z",
+    "pid": 84380,
+    "root": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-earth-layered-local-20260908",
+    "url": "http://127.0.0.1:58517/?livingvista=1",
+    "sourceCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+    "sourceState": "dirty-local-only",
+    "publishable": false,
+    "contentSha256": "3fbcdcf310d03e6904c40b76e73c29a68381cb7b2908e44570743b576ac878ed",
+    "manifestSha256": "e3b12cd3c0264adc9b7727592b72c0b860bd1a710c39e0f87d0ce1d01bc8a5cb"
+  },
+  "producer": "b62563276984183b933e372242e5cd68426727094f57407f9057f1ff4d8e3ba6",
+  "draftRows": 83,
+  "draftSha256": "218f02b5130fe78a6fcf76e898b6372b8761b4ef4bb4590137668920980f0793",
+  "measurementSha256": "4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12",
+  "sourceReview": "No new blocker found in bounded review; hidden-ancestor and position-only resize risks remain outside fixed-view qualification.",
+  "humanArtAcceptance": false,
+  "artAssessment": "Rich painted background with current flat/simple named bodies below approved creature detail/charm target; static relative placement, not locomotion or articulated combat.",
+  "biomeMapping": "Selected exact six named residents checked against canonical temperate families/forms; global D-9e generation filter remains decision-gated and unfixed.",
+  "automation": "celestial-frontier-48-hour-coding deleted; no recreation",
+  "signing": "No restoration evidence after prior 1Password failure; no retry or unsigned fallback",
+  "hostedAttempts": 0,
+  "productionChanged": false,
+  "retainedFailures": [
+    "browser-free.json",
+    "browser-free-corrected.json",
+    "browser-free-verified.json",
+    "browser-free-audit.json",
+    "native-phone/review.json",
+    "native-phone-policy/review.json",
+    "native-desktop-visible/review.json"
+  ],
+  "diagnosticSuccessDoesNotEraseRed": "native-desktop-diagnostic/review.json; source mechanism and original missing geometry in THIRD_NATIVE_FAILURE.md"
+}

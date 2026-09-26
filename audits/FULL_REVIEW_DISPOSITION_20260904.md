@@ -1,9 +1,76 @@
 # Full review disposition — 2026-09-04
 
+## Current applicability — PR #41 integrated, 2026-09-05
+
+Develop `c1791e210158de864fdd475323c3091d9ecbae58` includes the reviewed Batch 4 head
+`05c1d7fc7049a7b9813d2be1be020dc0d552b74f` through PR #41. Nick reports its second
+agent-lane attempt GREEN and the exact authorized merge complete. Batch 4 is landed;
+the current draft has 79 outcomes. No player import door returns. The earlier 77/78
+counts, Batch 4 parking/PR prerequisites and prior current-disposition statements below
+are retained checkpoint records. The parked WIP remains separate and unvalidated.
+ROADMAP.md owns current source, sync checks, audiovisual Batch A and zero hosted authority.
+
 > Current applicability — 2026-09-05: the dated records below are retained history. Fresh-start develop `9ea0104` removes the player import door and starts the overnight Batch 4 review at **77** ordered release outcomes. Later checkpoints, exact source, gates and remaining work are owned by `BATCH4_OVERNIGHT_REPORT_20260905.md` and `../ROADMAP.md`; old 78-count and save-export prerequisites are superseded.
 
 
+
+## Current disposition — 2026-09-05
+
+PRs #36/#38/#39/#40 are landed in develop `9ea01041dcdc711190bbf909ea8bb743cd993734`.
+Batches 1–3 are integrated without rewriting their signed commits; PR #37 is closed as
+superseded. P0-1's selected two-lane coverage and bounded review-branch admission are implemented;
+P0-3's Node phone verifier and the Batch 1–3 runtime fixes are landed. No new CI/policy edit is
+part of the audiovisual campaign. Original per-batch evidence below retains its original source.
+
+V2 starts fresh for everyone. No player import door; v1.8.9 codec/evidence `importBlob` seam stays.
+The bulletin is 77 outcomes; retained Glass carriers are judged by their planned ledger. Batch 4
+no longer depends on a real save export: its bounded review PR and exact hosted authorization
+remain separate. P1-tests' additional controls and the Batch 4 entries below are parked-source
+work, not landed capabilities. WIP stays parked at `cf1b9a7`; the pilot runtime equals develop.
+
+### Preserved differing develop-side disposition records
+
+The following lines are retained verbatim from the develop parent. They record its earlier
+assessment, superseded by the current disposition above where applicable.
+
+```text
 Status: implementation in progress. This is a finding/evidence ledger, not a replacement roadmap.
+| P0-1 | Faster develop lane | Open policy design. Preserve meaningful gameplay/save assurance; explicitly name full checks deferred to milestones/release. Current production SceneMemory activation is still open. Measure cost; 8–12 minutes is not proven. |
+| P1-tests | Layering/targeted domain gaps | Assessment complete: naming/worldconfig already have direct parity in starcatalog; mint import ownership and Guardian clone refusal already tested. Remaining narrow gaps are malformed/shallow-frozen mint registration and public-registry clone refusal, plus three WorldConfig anchor/freeze assertions. No duplicate blanket suite. |
+```
+
+### Preserved OpenAI checkpoint records
+
+All original records below are retained in their recorded order. Their former “current”,
+“not integrated”, “waiting for export” and PR-open statements are historical.
+
+Status: implementation evidence preserved on parked branch; no claim of integration.
+
+**2026-09-04 audiovisual-campaign reconciliation:** all post-PR-35 local work is explicitly
+parked at `cf1b9a7843200ecc281c5113b4139909dc0e3a29` on `openai/parked-gameplay-20260904`. The pilot starts from landed
+`7bf3e84761da2d1abe21dc6fe751b4bad2308f3b`. The implementation results below describe
+that parked branch, not current `develop` or the audiovisual pilot. Nick authorized pushing
+this disposition for Claude's read-only review; no gameplay or CI implementation is transported
+with this document. Claude owns the cheap agent-to-develop lane on `anthropic/windows`.
+The parked Node-verifier work is relevant reference, not automatically integrated code.
+
+**Later 2026-09-04 reviewed disposition:** Claude reviewed the corrections and Nick accepted
+them. Nick authorized an unchanged origin backup of the entire parked tip; remote read-back
+matches `cf1b9a7843200ecc281c5113b4139909dc0e3a29`. Only Batches 1–3 through signed
+`8bf9c45d4aae74a6924bcdc201424db0af4770e6` are prepared for a separate, unopened PR.
+Their exact-source develop profile is now green; see
+`PARKED_BATCHES_1_3_PR_PREPARATION_20260904.md`. Batch 4 awaits the real save export and its own
+PR; WIP remains parked. The faster-lane coverage decision is selected below; Claude implements
+it. No hosted attempts, labels, merge or release are authorized.
+
+**Subsequent PR36 reconciliation:** the original three signed batches now have a merge descendant
+`121df53d0d101822f32f2ca98a878db10518e65d`, combining landed `0cad14d…` with `8bf9c45…` without
+rebasing. It is pushed in [draft PR #37](https://github.com/TheDakk/Celestial-Frontier/pull/37).
+Fresh exact-source develop and 79-control Actions policy selftest pass. No labels are applied;
+the fixed-four-branch authorization guard still rejects the named review branch. See the current
+overlay in `PARKED_BATCHES_1_3_PR_PREPARATION_20260904.md`. Batch 4/WIP remain excluded.
+
+This is a finding/evidence ledger, not a replacement roadmap.
 Product scope and acceptance remain in `../port/V2_PROGRAM_ROADMAP.md`, `../port/DECISIONS.md`
 and `../port/RUBRICS.md`. Current batch state is in `../ROADMAP.md`.
 
@@ -67,7 +134,7 @@ and policy changes. **Open** means not yet implemented/verified, not silently re
 
 | ID | Finding/proposal | Corrected disposition / next acceptance |
 | --- | --- | --- |
-| P0-1 | Faster develop lane | Open policy design. Preserve meaningful gameplay/save assurance; explicitly name full checks deferred to milestones/release. Current production SceneMemory activation is still open. Measure cost; 8–12 minutes is not proven. |
+| P0-1 | Faster develop lane | Nick selected browser-free develop plus the existing small/large phone preflight on every agent PR; full Compendium → Slice → twelve-row Glass only on develop-to-main and a separate on-demand label. Claude implements on anthropic/windows; selection is not implementation or hosted/label authority. Production SceneMemory activation remains open. Measure cost; 8–12 minutes is not proven. |
 | P0-2 | Infra rerun/upload transport retry | Open separate policy. Preserve earlier product/instrument red; require verified immutable upload, final archival failure, bounded transport retries only. Cancellations are not automatically infra-safe. No whole-battery retry authorized. |
 | P0-3 | jq → Node | Implemented locally: shared targeted verifier, retained-report parity, 344 workflow lines removed, former heartbeat corruptions moved to its tests. Full Slice-bound verification is unchanged. jq remains for run-ID extraction. |
 | P0-4 | Persist post-await gate | Implemented and browser-free verified: admission repeats at queued execution/after heartbeat; owner exceptions, failed-import rearm and exact-once save behavior retained. No claim of demonstrated prior import corruption. |
@@ -372,3 +439,6 @@ zero errors and retains all 50 V1 fingerprints. The v2 draft remains 78 unique o
 SHA-256 `198bddf5c969151eba3ad9358cbcd016be0fd7c26b4e8524953892bf40484587`.
 The exact local commit is recorded in the session handoff after creation. No full profile/browser
 chain, hosted action, version bump, release or deployment is claimed here.
+
+This batch is committed locally at `53770697f6613da3ba469868dae24cf0edc3f58d`. No full
+profile/browser chain, hosted action, version bump, release or deployment is claimed here.

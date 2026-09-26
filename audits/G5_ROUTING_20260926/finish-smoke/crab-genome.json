@@ -1,0 +1,42 @@
+{
+ "family": "crust:crab",
+ "card": {
+  "earthName": "Crab",
+  "kind": "procedural-stand-in",
+  "family": "crust:crab"
+ },
+ "fit": {
+  "earthName": "Crab",
+  "kind": "procedural-stand-in",
+  "family": "crust:crab"
+ },
+ "g": {
+  "seed": 7000,
+  "kingdom": "fauna",
+  "color": 9,
+  "form": 13,
+  "body": 1,
+  "loco": 0,
+  "trait": 7,
+  "size": 1,
+  "diet": 1,
+  "head": 0,
+  "limbs": 0,
+  "skin": 4,
+  "tail": 0,
+  "pattern": 3,
+  "eyes": 0,
+  "behavior": 10,
+  "habitat": 13,
+  "detail": 9,
+  "accent": 9,
+  "temper": 1,
+  "sense": 7,
+  "repro": 6,
+  "life": 0,
+  "metab": 2,
+  "lumin": false,
+  "gen": 0,
+  "heat": 0.5
+ }
+}

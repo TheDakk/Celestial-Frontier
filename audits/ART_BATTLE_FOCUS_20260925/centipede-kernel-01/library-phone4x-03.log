@@ -1,0 +1,7 @@
+{"name":"python-vs-tarantula","exitCode":0,"status":"DIAGNOSTIC_PASS","cpuP95Ms":3.5,"frames":602,"refusals":{"left":0,"right":0}}
+{"name":"eagle-vs-beetle","exitCode":0,"status":"DIAGNOSTIC_PASS","cpuP95Ms":3.8000000715255737,"frames":602,"refusals":{"left":0,"right":0}}
+{"name":"chimpanzee-vs-centipede","exitCode":0,"status":"DIAGNOSTIC_PASS","cpuP95Ms":10.600000023841858,"frames":596,"refusals":{"left":0,"right":0}}
+{"name":"treefrog-vs-fruitbat","exitCode":0,"status":"DIAGNOSTIC_PASS","cpuP95Ms":3.700000047683716,"frames":602,"refusals":{"left":0,"right":0}}
+{"name":"salmon-vs-octopus","exitCode":0,"status":"DIAGNOSTIC_PASS","cpuP95Ms":4.600000023841858,"frames":602,"refusals":{"left":0,"right":0}}
+{"name":"eagle-vs-salmon","exitCode":0,"status":"DIAGNOSTIC_PASS","cpuP95Ms":4.399999976158142,"frames":602,"refusals":{"left":0,"right":0}}
+{"name":"crab-vs-starfish","exitCode":0,"status":"DIAGNOSTIC_PASS","cpuP95Ms":6.5,"frames":602,"refusals":{"left":0,"right":0}}

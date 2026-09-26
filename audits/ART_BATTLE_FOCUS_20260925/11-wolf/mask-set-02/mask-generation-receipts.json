@@ -1,0 +1,54 @@
+{
+  "tool": "image_gen.imagegen",
+  "rows": [
+    {
+      "pattern": "striped",
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-cf4b2f0f-4375-437d-8e0b-eff3c463acbc.png",
+      "raw": "raw/striped.png",
+      "sha256": "a7bfe184c07e7c3467644463a5b87fe4cb3a3239e4a195a7542d455af168734f",
+      "prompt": "prompts/striped.txt",
+      "promptSha256": "bb70cbfe61b8b1c1dab2c0754021cb53bc3f6642be3758da7562c9413fa8b511"
+    },
+    {
+      "pattern": "spotted",
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-cb2aef85-47b4-4900-9c59-82cdc6b9df12.png",
+      "raw": "raw/spotted.png",
+      "sha256": "15e0b825739aabb41f014fbac9ca357c4ecb3e7047f8b0485ce268c0c781c1e7",
+      "prompt": "prompts/spotted.txt",
+      "promptSha256": "dc2fdd482900556a2e7ac6bada1a800ee94717dc3d0b8baf6a715707d99e18b4"
+    },
+    {
+      "pattern": "banded",
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-d0e06615-2e8e-4dfb-9db8-d2de47888a22.png",
+      "raw": "raw/banded.png",
+      "sha256": "b88088fe64d0f8d296e960f0323d9511d5d843dc171a025b0f04e3eb96da2347",
+      "prompt": "prompts/banded.txt",
+      "promptSha256": "1947e989474fc9a6b854a0a9e73b30811173517f1b49fbef645fac01a3185bdb"
+    },
+    {
+      "pattern": "mottled",
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-9850f8b5-a3f9-4164-b406-03bd4fb15d35.png",
+      "raw": "raw/mottled.png",
+      "sha256": "a26c246891a7c72b7172e5716f54ca287cbca6ed30c349c9c63cd7c2e52a6550",
+      "prompt": "prompts/mottled.txt",
+      "promptSha256": "a6799645c8ed0b882bf9a4ba103e5c56d2d1085445877fcc0a10a6a53b8e0949"
+    },
+    {
+      "pattern": "marbled",
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-34edcb11-9569-4e08-90b9-b453ee448de2.png",
+      "raw": "raw/marbled.png",
+      "sha256": "6b6dbc6bfce828d2a1ca80e2025c44958bda585042b2e725818046be926bbcd6",
+      "prompt": "prompts/marbled.txt",
+      "promptSha256": "1b9385ce5f75b47ac1033b6df30c2a3f3d66f6a74c720b010e40361a9bcd7ec5"
+    },
+    {
+      "pattern": "eye-spotted",
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-22b5f99a-c176-454b-a0b7-6f71be6473a0.png",
+      "raw": "raw/eye-spotted.png",
+      "sha256": "6656d928657443725da9f7b2b853ecc4f91674b54c29be7c3f56609f2df3cabd",
+      "prompt": "prompts/eye-spotted.txt",
+      "promptSha256": "20bdc5853267e3bddd603d4e2955fcfa01e12ba4522f7f942b982cf9a3f86939",
+      "correction": "Move rings onto flank, retained previous set in parent; final composite visually reviewed."
+    }
+  ]
+}

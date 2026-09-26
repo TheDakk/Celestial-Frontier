@@ -1,0 +1,304 @@
+{
+  "status": "REVIEW",
+  "source": "b54473176eeb402e7b524b8a4900d834a324579f",
+  "worktreeStatus": [
+    "M port/v2/apps/game/index.html",
+    " M port/v2/apps/game/src/checkpoint-state.ts",
+    " M port/v2/apps/game/src/earth-layered-load.test.ts",
+    " M port/v2/apps/game/src/earth-layered-load.ts",
+    " M port/v2/apps/game/src/main.ts",
+    " M port/v2/apps/game/src/notification-history.ts",
+    " M port/v2/apps/game/src/pilot-pcm.ts",
+    " M port/v2/apps/game/src/pilot-sound-player.ts",
+    " M port/v2/apps/game/src/planet-surface-turn-view.test.ts",
+    " M port/v2/apps/game/src/planet-surface-turn-view.ts",
+    " M port/v2/apps/game/src/product-action-coordinator.ts",
+    " M port/v2/apps/game/src/ui-shell-style.ts",
+    " M port/v2/packages/audio/src/combat-cues.ts",
+    " M port/v2/packages/audio/test/combat-cues.test.ts",
+    " M port/v2/packages/domain/combatcore/src/index.ts",
+    " M port/v2/packages/persistence/src/combat-settlement.ts",
+    " M port/v2/tests/checkpoint-state.test.ts",
+    " M port/v2/tests/nodom.test.ts",
+    " M port/v2/tests/notification-history.test.ts",
+    " M port/v2/tests/pilot-pcm.test.ts",
+    " M port/v2/tests/pilot-sound-player.test.ts",
+    "?? audits/LONG_SESSION_20260913/a3-battle/state-sheet/battle2-state-sheet.json",
+    "?? audits/LONG_SESSION_20260913/a3-battle/state-sheet/battle2-state-sheet.png",
+    "?? audits/LONG_SESSION_20260913/a3-battle/state-sheet/battle2-state-sheet.svg",
+    "?? port/v2/apps/game/src/battle2/README.md",
+    "?? port/v2/apps/game/src/battle2/arena.ts",
+    "?? port/v2/apps/game/src/battle2/choreography.ts",
+    "?? port/v2/apps/game/src/battle2/fallback.ts",
+    "?? port/v2/apps/game/src/battle2/fixture-rig.ts",
+    "?? port/v2/apps/game/src/battle2/index.ts",
+    "?? port/v2/apps/game/src/battle2/stage.ts",
+    "?? port/v2/packages/domain/combatcore/src/player-ability.ts",
+    "?? port/v2/tests/battle2-arena.test.ts",
+    "?? port/v2/tests/battle2-choreography.test.ts",
+    "?? port/v2/tests/battle2-rig.test.ts",
+    "?? port/v2/tests/battle2-stage.test.ts",
+    "?? port/v2/tests/ui-root-font-token.test.ts",
+    "?? port/v2/tests/ui-shell-cascade.test.ts",
+    "?? port/v2/tools/battle2-proof/build.mjs",
+    "?? port/v2/tools/battle2-proof/entry.mjs",
+    "?? port/v2/tools/battle2-proof/index.html",
+    "?? port/v2/tools/battle2-proof/runner.mjs",
+    "?? port/v2/tools/battle2-proof/state-sheet.mjs"
+  ],
+  "errors": [],
+  "captures": [
+    {
+      "durationMs": 10000,
+      "frames": 602,
+      "updateP95Ms": 0.30000001192092896,
+      "updateMaxMs": 0.9000000059604645,
+      "phases": [
+        {
+          "phase": "ready",
+          "atMs": 0
+        },
+        {
+          "phase": "command",
+          "atMs": 916.6000000000001
+        },
+        {
+          "phase": "approach",
+          "atMs": 1316.6000000000001
+        },
+        {
+          "phase": "action",
+          "atMs": 1666.5000000000002
+        },
+        {
+          "phase": "hitstop",
+          "atMs": 1866.6000000000001
+        },
+        {
+          "phase": "impact",
+          "atMs": 1916.5000000000002
+        },
+        {
+          "phase": "return",
+          "atMs": 2666.5
+        },
+        {
+          "phase": "idle",
+          "atMs": 2983.2
+        },
+        {
+          "phase": "ready",
+          "atMs": 3583.0999999999995
+        },
+        {
+          "phase": "command",
+          "atMs": 4483.099999999999
+        },
+        {
+          "phase": "approach",
+          "atMs": 4883.099999999999
+        },
+        {
+          "phase": "action",
+          "atMs": 5249.7
+        },
+        {
+          "phase": "hitstop",
+          "atMs": 5449.8
+        },
+        {
+          "phase": "impact",
+          "atMs": 5499.8
+        },
+        {
+          "phase": "return",
+          "atMs": 5733.099999999999
+        },
+        {
+          "phase": "idle",
+          "atMs": 6066.4
+        },
+        {
+          "phase": "done",
+          "atMs": 6999.7
+        }
+      ],
+      "plans": [
+        {
+          "startMs": 0,
+          "beats": {
+            "readyEnd": 900,
+            "commandEnd": 1300,
+            "actionStart": 1657,
+            "impactAt": 1852.5,
+            "hitstopEnd": 1912,
+            "flashEnd": 2005.8333333333333,
+            "shakeEnd": 2032.5,
+            "numbersEnd": 2362.5,
+            "reactionStart": 1912,
+            "reactionEnd": 2294.5,
+            "actionEnd": 2659.1666666666665,
+            "returnEnd": 2982.1666666666665,
+            "idleStart": 2982.1666666666665,
+            "end": 3582.1666666666665
+          },
+          "hitstopMs": 59.5,
+          "attacker": "Civet",
+          "delivery": "melee"
+        },
+        {
+          "startMs": 3582.1666666666665,
+          "beats": {
+            "readyEnd": 900,
+            "commandEnd": 1300,
+            "actionStart": 1657,
+            "impactAt": 1852.5,
+            "hitstopEnd": 1912,
+            "flashEnd": 2005.8333333333333,
+            "shakeEnd": 2032.5,
+            "numbersEnd": 2362.5,
+            "reactionStart": 1912,
+            "reactionEnd": 2806.5,
+            "actionEnd": 2147.1666666666665,
+            "returnEnd": 2470.1666666666665,
+            "idleStart": 2806.5,
+            "end": 3406.5
+          },
+          "hitstopMs": 59.5,
+          "attacker": "Platypus",
+          "delivery": "melee"
+        }
+      ],
+      "mimeType": "video/webm;codecs=vp9",
+      "bytes": 8923289,
+      "sha256": "116d748e57c4caf7da3c9dc2e309a1be12ef6a721e64b036ebec982f20a6da17",
+      "encodedMedia": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "codec_type": "video"
+          }
+        ],
+        "format": {
+          "duration": "10.104596",
+          "size": "8923289"
+        }
+      },
+      "mp4": {
+        "path": "civet-vs-platypus-10s.mp4",
+        "bytes": 4582102,
+        "sha256": "2f7ac2a2b8e6cd30024b56c913e0db7bdb2f49ce1b6a26158a24be71adc93043"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "label": "ready",
+      "ms": 400,
+      "file": "frame-ready.png",
+      "sha256": "df4b21911c431a5d17d10f4474f9d534056c8e1610ec045a4b82b42349a07f32"
+    },
+    {
+      "label": "command",
+      "ms": 1020,
+      "file": "frame-command.png",
+      "sha256": "baccaea151bd63e0f85e37e29513e936bb41dc85ec3dbbe9224d725ee3838a05"
+    },
+    {
+      "label": "approach",
+      "ms": 1450,
+      "file": "frame-approach.png",
+      "sha256": "ac3fe5f5f3b46993d6459ff1346082107ed6e1ab263f6d1b7f368d0d281d088f"
+    },
+    {
+      "label": "strike",
+      "ms": 1852.5,
+      "file": "frame-strike.png",
+      "sha256": "b61aca8e6482e707bd980300740eb77b34f4da5dd48f848991306368f92cb5c2"
+    },
+    {
+      "label": "hitstop",
+      "ms": 1872.5,
+      "file": "frame-hitstop.png",
+      "sha256": "0c37975c2e474e162b87dca4c0754013c4f3a1a17799baf55ebf60b26ceff8eb"
+    },
+    {
+      "label": "flash-fade",
+      "ms": 1932.5,
+      "file": "frame-flash-fade.png",
+      "sha256": "246a8f6405aa8334b607dda08c25af293ab92151aa27c78a4c7aa04e2bc778a7"
+    },
+    {
+      "label": "number",
+      "ms": 2152.5,
+      "file": "frame-number.png",
+      "sha256": "e3db94df6b309324d4250989e9a20b5c6fdddd39caa16f92f1d2452920665e01"
+    },
+    {
+      "label": "return",
+      "ms": 2759.1666666666665,
+      "file": "frame-return.png",
+      "sha256": "5d306abe1531cac614a364a4459a74b2ba83fb5c9d11ec1aefc1a15768d0dd58"
+    },
+    {
+      "label": "turn2-strike",
+      "ms": 5435.166666666666,
+      "file": "frame-turn2-strike.png",
+      "sha256": "b21ad62bc6e24df767fd937cbbae21a6b44ac95e634ca35d3ae6fcd1e3c4c7b9"
+    }
+  ],
+  "origin": "http://127.0.0.1:58535",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.32",
+    "revision": "@9aab8632678bdbd60c393455e1394ee523ba682d",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.4",
+    "protocol_version": "1.3"
+  },
+  "observation": {
+    "status": "READY",
+    "errors": [],
+    "labels": {
+      "left": "fixture rig (landmark-derived parts)",
+      "right": "whole-portrait fallback (no landmark record; hit pose approximated by root offsets)",
+      "parts": 19,
+      "alphaPixels": 516758
+    },
+    "plans": [
+      {
+        "startMs": 0,
+        "beats": {
+          "readyEnd": 900,
+          "commandEnd": 1300,
+          "actionStart": 1657,
+          "impactAt": 1852.5,
+          "hitstopEnd": 1912,
+          "flashEnd": 2005.8333333333333,
+          "shakeEnd": 2032.5,
+          "numbersEnd": 2362.5,
+          "reactionStart": 1912,
+          "reactionEnd": 2294.5,
+          "actionEnd": 2659.1666666666665,
+          "returnEnd": 2982.1666666666665,
+          "idleStart": 2982.1666666666665,
+          "end": 3582.1666666666665
+        },
+        "hitstopMs": 59.5,
+        "attacker": "Civet",
+        "delivery": "melee"
+      }
+    ],
+    "captures": [],
+    "cutMs": 35.30000001192093
+  },
+  "canvasRect": {
+    "x": 0,
+    "y": 81,
+    "width": 1024,
+    "height": 576
+  },
+  "closed": true
+}

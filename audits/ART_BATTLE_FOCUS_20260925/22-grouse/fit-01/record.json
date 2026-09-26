@@ -1,0 +1,200 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Grouse\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3585809023\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"22\"]]]]",
+    "seed": 3585809023,
+    "ownerId": "authored:archetype-sprint/grouse",
+    "earthName": "Grouse"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3585809023,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 9,
+    "body": 12,
+    "loco": 3,
+    "trait": 22,
+    "size": 1,
+    "diet": 3,
+    "head": 3,
+    "limbs": 5,
+    "skin": 2,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 0,
+    "behavior": 0,
+    "habitat": 15,
+    "detail": 4,
+    "accent": 4,
+    "temper": 8,
+    "sense": 3,
+    "repro": 6,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Grouse"
+  },
+  "geometry": {
+    "cutoutAssetHash": "712072ae73b0cc55cbffc990bdc202a11871cc1b264ab98d9a13927bbda146c8",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.80625,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6398437001594897,
+      0.5843748006379585
+    ],
+    "pelvis": [
+      0.5273437001594896,
+      0.6656251993620415
+    ],
+    "spine": [
+      0.6093748006379585,
+      0.5625
+    ],
+    "chest": [
+      0.6703125996810207,
+      0.49843779904306224
+    ],
+    "neck0": [
+      0.6796874003189792,
+      0.375
+    ],
+    "neck1": [
+      0.7031251993620415,
+      0.29453110047846887
+    ],
+    "head": [
+      0.7445311004784689,
+      0.24296889952153108
+    ],
+    "beak": [
+      0.8023437001594896,
+      0.26328149920255184
+    ],
+    "legNearKnee": [
+      0.42812519936204146,
+      0.7015622009569378
+    ],
+    "legNearAnkle": [
+      0.4445311004784689,
+      0.7632814992025518
+    ],
+    "legNearFoot": [
+      0.4882814992025518,
+      0.7968748006379585
+    ],
+    "legFarKnee": [
+      0.5859377990430622,
+      0.6882814992025519
+    ],
+    "legFarAnkle": [
+      0.6093748006379585,
+      0.743750398724083
+    ],
+    "legFarFoot": [
+      0.6617185007974481,
+      0.7679688995215311
+    ],
+    "wingNearRoot": [
+      0.5695311004784689,
+      0.43125039872408294
+    ],
+    "wingNearTip": [
+      0.3554688995215311,
+      0.6632814992025519
+    ],
+    "wingFarRoot": [
+      0.5593748006379585,
+      0.3507814992025518
+    ],
+    "wingFarTip": [
+      0.41796889952153116,
+      0.23984370015948964
+    ],
+    "tailFan": [
+      0.3546874003189793,
+      0.5078125996810208
+    ]
+  },
+  "materials": {
+    "surface": "plain brown feathered gamebird, soft feather-edge form shading, horn bill and scaled feather-covered feet"
+  },
+  "source": "audits/ART_BATTLE_FOCUS_20260925/22-grouse/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Manually declared grounded Grouse with two feathered feet, broad tail fan and two visibly half-spread outer wing surfaces. No unseen underside inferred."
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Both wings, both feathered leg chains/feet, broad tail fan, short bill/head/neck visibly present. No required part absent, hidden or folded. Half-spread display wings do not supply unseen underside paint. Fresh manual landmarks and polygons, no source-label borrowing.",
+    "sourceFacing": "right",
+    "visualAcceptance": "Nick pending; single Grouse painting only",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "fc029a119afb90f432c4e7366fdbd8957651e741d46d8a95c100a1ee12ef7a64",
+    "subjectSourceSha256": "eda86ac45dbb0f4529cc2ac2b72a0e52a1bae56cf6cbc37161710d97d84e8da2",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.13877275414440135,
+      "spine": 0.13177218291114953,
+      "chest": 0.08841595412401385,
+      "neck0": 0.12379328382265689,
+      "neck1": 0.0838127330075165,
+      "head": 0.06612948823926432,
+      "beak": 0.06127722568523611,
+      "legFarKnee": 0.06282178242012076,
+      "legFarAnkle": 0.06021703959751662,
+      "legFarFoot": 0.057674940201638276,
+      "legNearKnee": 0.10552620046284619,
+      "legNearAnkle": 0.06386255058618512,
+      "legNearFoot": 0.05515983402663871,
+      "wingFarRoot": 0.18468778557097265,
+      "wingFarTip": 0.17972986431605537,
+      "wingNearRoot": 0.12112414021629521,
+      "wingNearTip": 0.31569139593561585,
+      "tailFan": 0.23391240773566993
+    },
+    "measures": {
+      "body": 0.21998121068813187,
+      "bone-min": 0.05515983402663871,
+      "bone-max": 0.31569139593561585,
+      "leg/torso:legFar": 0.821496352592923,
+      "leg/torso:legNear": 1.0207625659175652,
+      "wing/torso": 1.6565853453896306
+    }
+  },
+  "recipeHash": "daa68241ea47298267bdec89e076321856f4c6550309e1f8c30188fd68113312"
+}

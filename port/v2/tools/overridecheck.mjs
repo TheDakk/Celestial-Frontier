@@ -14,6 +14,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { parseAst } from 'rolldown/parseAst';
+import { discoverRelativeSourceClosure } from './override-source-graph.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..');
@@ -191,7 +192,9 @@ function literalRouteKeys(literal, label, validateValue) {
 
 function parseTypeScript(source, label) {
   try {
-    return parseAst(source, { lang: label.endsWith('.tsx') ? 'tsx' : 'ts' }, label);
+    const lang = label.endsWith('.tsx') ? 'tsx' : label.endsWith('.jsx') ? 'jsx'
+      : /\.(?:js|mjs|cjs)$/.test(label) ? 'js' : 'ts';
+    return parseAst(source, { lang }, label);
   } catch (error) {
     throw new ParserError(`${label} ${String(error?.message || error)}`);
   }
@@ -307,7 +310,122 @@ function isCanonIndex(node) {
     && node.left.right?.type === 'Literal' && node.left.right.value === '|';
 }
 
+/* One bounded auxiliary consumer of existing audited routes. This exact
+   six-name adapter is not another catalog or precedence authority. Seal its
+   function bytes and direct import provenance; only the actual member nodes
+   inside that body may read tables outside the two canonical dispatchers.
+   A formatting or behavior change requires deliberate source review/reseal.
+   Current Compendium-owner equality and pixel/contact tests remain separate. */
+const EARTH_RESIDENT_DISPATCH_SHA256 = '9a99a692ba30750eb2a2340b2b8078f804d7844b084d1f38c90d137adc33d75d';
+const EARTH_RESIDENT_DISPATCH_IMPORTS = new Map([
+  ['speciesGenomePalette', './speciesoverrides.js'],
+  ['faunaQuadruped', './quadrupedoverrides.js'],
+  ['QUAD2_SPEC', './mammaloverrides.js'],
+  ['faunaMonotreme', './faunaoverrides5.js'],
+  ['FAUNA2_NAME', './faunaoverrides2.js'],
+  ['FLORA_ICONIC', './floraoverrides.js'],
+  ['FLORA2_SPEC', './florarost.js'],
+]);
+function auditedEarthResidentMembers(program, label, source) {
+  const members = new Set();
+  if (label !== 'earth-resident-layer.ts') return members;
+  const matches = [];
+  const collectFunctions = (node) => {
+    if (!node || typeof node !== 'object') return;
+    if (node.type === 'FunctionDeclaration' && node.id?.name === 'paintNamedResident') matches.push(node);
+    for (const value of Object.values(node)) {
+      if (Array.isArray(value)) { for (const child of value) if (child?.type) collectFunctions(child); }
+      else if (value?.type) collectFunctions(value);
+    }
+  };
+  collectFunctions(program);
+  const fn = matches[0];
+  if (matches.length !== 1 || !program.body.includes(fn)
+      || nodeSha256(source, fn) !== EARTH_RESIDENT_DISPATCH_SHA256) {
+    parserError(label, fn, 'Earth resident dispatcher changed from its exact six-name body contract');
+  }
+  for (const [name, expectedSource] of EARTH_RESIDENT_DISPATCH_IMPORTS) {
+    const matches = [];
+    for (const statement of program.body) {
+      if (statement.type !== 'ImportDeclaration') continue;
+      for (const specifier of statement.specifiers || []) {
+        if (specifier.local?.name === name) matches.push({ statement, specifier });
+      }
+    }
+    const imported = matches[0];
+    if (matches.length !== 1 || imported.statement.source?.value !== expectedSource
+        || imported.statement.importKind === 'type' || imported.specifier.importKind === 'type'
+        || imported.specifier.type !== 'ImportSpecifier'
+        || exportedName(imported.specifier.imported) !== name
+        || writtenNames(label).has(name)) {
+      parserError(label, imported?.specifier || fn,
+        `Earth resident dispatcher import ${name} changed from its exact owner ${expectedSource}`);
+    }
+  }
+  const collectMembers = (node) => {
+    if (!node || typeof node !== 'object') return;
+    if (node.type === 'MemberExpression' && routeRoot(node)) members.add(node);
+    for (const value of Object.values(node)) {
+      if (Array.isArray(value)) { for (const child of value) if (child?.type) collectMembers(child); }
+      else if (value?.type) collectMembers(value);
+    }
+  };
+  collectMembers(fn);
+  if (members.size !== 4) parserError(label, fn, 'Earth resident dispatcher does not own its four exact table reads');
+  return members;
+}
+
+/* Descriptor-first detached data is another exact bounded capability. Its
+   prototype identity read and three fresh-output construction calls are not
+   general permission for Object prototype access or mutation elsewhere. Seal
+   the complete exported declaration so changed input/descriptor/prototype
+   behavior rejects before granting any of its four member-node exceptions. */
+const EARTH_RESIDENT_SNAPSHOT_SHA256 = '62bfacb4c5bdda7fbb8f8609f7eaa7d78e9cb4c82dc0134dad25d01ef1a6ba63';
+function auditedEarthSnapshotMembers(program, label, source) {
+  const members = new Set();
+  if (label !== 'earth-resident-plan.ts') return members;
+  const declarations = program.body.filter(node => node.type === 'ExportNamedDeclaration'
+    && node.declaration?.type === 'FunctionDeclaration'
+    && node.declaration.id?.name === 'snapshotEarthLayerDataV1');
+  const functions = [];
+  const collectFunctions = (node) => {
+    if (!node || typeof node !== 'object') return;
+    if (node.type === 'FunctionDeclaration' && node.id?.name === 'snapshotEarthLayerDataV1') functions.push(node);
+    for (const value of Object.values(node)) {
+      if (Array.isArray(value)) { for (const child of value) if (child?.type) collectFunctions(child); }
+      else if (value?.type) collectFunctions(value);
+    }
+  };
+  collectFunctions(program);
+  const declaration = declarations[0];
+  if (declarations.length !== 1 || functions.length !== 1
+      || nodeSha256(source, declaration) !== EARTH_RESIDENT_SNAPSHOT_SHA256) {
+    parserError(label, declaration || functions[0], 'Earth resident snapshot changed from its exact detached descriptor contract');
+  }
+  const names = new Set(['prototype', 'setPrototypeOf', 'create', 'defineProperty']);
+  const counts = new Map();
+  const collectMembers = (node) => {
+    if (!node || typeof node !== 'object') return;
+    if (node.type === 'MemberExpression' && node.object?.type === 'Identifier'
+        && node.object.name === 'Object' && !node.computed && names.has(propertyName(node))) {
+      members.add(node);
+      const name = propertyName(node); counts.set(name, (counts.get(name) || 0) + 1);
+    }
+    for (const value of Object.values(node)) {
+      if (Array.isArray(value)) { for (const child of value) if (child?.type) collectMembers(child); }
+      else if (value?.type) collectMembers(value);
+    }
+  };
+  collectMembers(declaration.declaration);
+  if (members.size !== 4 || [...names].some(name => counts.get(name) !== 1)) {
+    parserError(label, declaration, 'Earth resident snapshot does not own its four exact Object members');
+  }
+  return members;
+}
+
 function auditRouteTableReferences(program, label, source) {
+  const earthResidentMembers = auditedEarthResidentMembers(program, label, source);
+  const earthSnapshotMembers = auditedEarthSnapshotMembers(program, label, source);
   const approvedBareSignatures = APPROVED_BARE_REEXPORTS.get(label) || Object.freeze([]);
   const bareReexports = program.body.filter((node) => node.type === 'ExportNamedDeclaration'
     && typeof node.source?.value === 'string' && !node.source.value.startsWith('.'));
@@ -388,7 +506,12 @@ function auditRouteTableReferences(program, label, source) {
       if (object?.type === 'Identifier' && object.name === 'Object') {
         const method = propertyName(node);
         if (!(parent?.type === 'CallExpression' && parent.callee === node
-            && !node.computed && APPROVED_OBJECT_CALLS.has(method))) {
+            && !node.computed && (APPROVED_OBJECT_CALLS.has(method)
+              // A fresh null-prototype dictionary cannot mutate an existing
+              // route/prototype; descriptors and arbitrary prototypes stay refused.
+              || (method === 'create' && parent.arguments.length === 1
+                && parent.arguments[0]?.type === 'Literal' && parent.arguments[0].value === null)))
+            && !earthSnapshotMembers.has(node)) {
           parserError(label, node, 'trusted built-in Object member escapes its approved direct-call context');
         }
       }
@@ -469,7 +592,7 @@ function auditRouteTableReferences(program, label, source) {
       const method = propertyName(node.callee);
       const legalIncludes = root === 'FLORA_DUPES' && !node.callee.computed && method === 'includes'
         && node.arguments.length === 1 && isNameIndex(node.arguments[0]);
-      if (root && !legalIncludes) {
+      if (root && !legalIncludes && !earthResidentMembers.has(node.callee)) {
         parserError(label, node.callee, `${root} route table is called outside exact FLORA_DUPES.includes(name)`);
       }
     }
@@ -485,8 +608,8 @@ function auditRouteTableReferences(program, label, source) {
         && node.computed && root !== 'FLORA_DUPES'
         && (root === 'CANON' ? isCanonIndex(node.property) : isNameIndex(node.property))
         && label === 'speciesoverrides.ts'
-        && (functionScope === 'hasNamedRoute' || functionScope === 'resolveOverrideCanvas');
-      if (root && !legalIncludes && !legalIndex) {
+        && (functionScope === 'hasNamedRoute' || functionScope === 'paintOverrideCanvas');
+      if (root && !legalIncludes && !legalIndex && !earthResidentMembers.has(node)) {
         const member = node.computed ? 'computed member' : `member ${namedProperty}`;
         parserError(label, node, `${root} route table uses unsupported ${member}`);
       }
@@ -537,8 +660,8 @@ const ART_SOURCE_ROOT = path.join(root, 'packages/art/src');
 const KNOWN_VERBATIM_JS_HASHES = new Map([
   ['artextras.verbatim.js', 'dadfd860bc21b4472efb80f91399ddb89b704bc2b0396fe848aa8628b21cc2c7'],
   ['galaxyart.verbatim.js', '789a9f4e326896f6e8f9f142a6128ac8ec48a5388e2304afd4114a981ff14d27'],
-  ['hdart.verbatim.js', '8ab222a3c63a0db04c28a7e5d51a5af4e34e7dbdfe1573eaaaa2c50bed086e49'],
-  ['hdportrait.worker.verbatim.js', 'e219d4a0aa8c69fe540ebbe6ebc9beb13abc060ada2c5d3b6cf8c76aa1ad05d1'],
+  ['hdart.verbatim.js', '93d1e79292e68cd2cceab14617005900b1ccf649d2284a83f0ec497ec8e34bcd'],
+  ['hdportrait.worker.verbatim.js', '50c43aa81272cc3e7950b85cf957d0e5657b3fd2c174fa38b16dd11cdc1b67e3'],
   ['thumbart.verbatim.js', '85b54edf7f32a174da90f6f68ea474dcebe8d31997dad683c6f5b88cb5587544'],
   /* Generator/source-slice contracts and forbidden-owner negative controls
      live in the paired biome-vista tests; these whole-file hashes make the
@@ -648,7 +771,18 @@ function discoverArtSources(directory = ART_SOURCE_ROOT, relative = '') {
   }
   return files;
 }
-const FILES = discoverArtSources().sort();
+const ART_FILES = discoverArtSources().sort();
+let sourceGraph;
+try {
+  sourceGraph = discoverRelativeSourceClosure({
+    sourceRoot: ART_SOURCE_ROOT, boundaryRoot: root, seeds: ART_FILES,
+    sealed: KNOWN_VERBATIM_JS, parse: parseTypeScript,
+  });
+} catch (error) {
+  console.error(`overridecheck: ${error.message} — the PARSER is broken`);
+  process.exit(2);
+}
+const FILES = sourceGraph.files;
 const FILE_SET = new Set(FILES);
 try {
   auditGeneratedHdArt(src('packages/art/src/hdart.verbatim.js'), 'hdart.verbatim.js');
@@ -664,26 +798,19 @@ for (const [label, expected] of KNOWN_VERBATIM_JS_HASHES) {
     process.exit(2);
   }
 }
-const programCache = new Map();
+const programCache = sourceGraph.programs;
 const bindingCache = new Map();
 const exportCache = new Map();
 const writtenNameCache = new Map();
 
 function normalizedModuleTarget(label, specifier) {
-  if (typeof specifier !== 'string' || !specifier.startsWith('.')) return null;
-  const target = specifier.replace(/\.mjs$/, '.mts').replace(/\.cjs$/, '.cts')
-    .replace(/\.jsx$/, '.tsx').replace(/\.js$/, '.ts');
-  const normalized = path.posix.normalize(path.posix.join(path.posix.dirname(label), target));
-  if (path.posix.isAbsolute(normalized) || normalized === '..' || normalized.startsWith('../')) return null;
-  return normalized;
+  return sourceGraph.resolve(label, specifier);
 }
 
 function knownRelativeImport(label, specifier) {
   if (typeof specifier !== 'string' || !specifier.startsWith('.')) return true;
-  const typed = normalizedModuleTarget(label, specifier);
-  if (typed && FILE_SET.has(typed)) return true;
-  const raw = path.posix.normalize(path.posix.join(path.posix.dirname(label), specifier));
-  return !path.posix.isAbsolute(raw) && raw !== '..' && !raw.startsWith('../') && KNOWN_VERBATIM_JS.has(raw);
+  const target = normalizedModuleTarget(label, specifier);
+  return target !== null && (FILE_SET.has(target) || KNOWN_VERBATIM_JS.has(target));
 }
 
 function cachedProgram(label) {
@@ -1141,6 +1268,19 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     const call = callStatement(statement);
     return call && source.slice(call.start, call.end) === expected;
   };
+  const topologyPaintBody = (statement, kind) => {
+    const call = callStatement(statement), callback = call?.arguments?.[1];
+    if (!(identifier(call?.callee, 'paintWithTopology') && call.arguments.length === 3
+        && identifier(call.arguments[0], 'ink') && identifier(call.arguments[2], 'observeTopology')
+        && callback?.type === 'ArrowFunctionExpression' && !callback.async
+        && callback.params.length === 0)) {
+      contractError(statement, 'topology observation must synchronously wrap the same ink and exact zero-argument painter');
+    }
+    if (kind === 'expression' && callback.body?.type === 'CallExpression') return callback.body;
+    if (kind === 'dispatch' && callback.body?.type === 'BlockStatement'
+        && callback.body.body.length === 1 && callback.body.body[0].type === 'IfStatement') return callback.body.body[0];
+    contractError(callback, 'topology callback changed the audited painter/dispatch shape');
+  };
   const exactFit = (statement, tag) => fitsInkToCanvas(statement)
     && source.slice(callStatement(statement).arguments[2].start, callStatement(statement).arguments[2].end) === tag;
   const exactTypes = (statements, types, where) => {
@@ -1159,8 +1299,9 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
   };
 
   const body = matches[0].body.body;
-  if (!(matches[0].params.length === 1 && identifier(matches[0].params[0], 'g'))) {
-    contractError(matches[0], 'resolveOverrideCanvas must have only its audited g parameter');
+  if (!(matches[0].params.length === 2 && identifier(matches[0].params[0], 'g')
+      && identifier(matches[0].params[1], 'observeTopology') && matches[0].params[1].optional)) {
+    contractError(matches[0], 'paintOverrideCanvas must have only its audited g and optional observeTopology parameters');
   }
   for (const globalName of ['Object', 'String', 'Boolean', 'Set', 'Number', 'Math']) {
     if (writtenNames(label).has(globalName) || moduleBindings(label).has(globalName)) {
@@ -1168,6 +1309,9 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     }
   }
   const helperProvenance = new Map([
+    ['resolveOverrideCanvas', ['speciesoverrides.ts', 'resolveOverrideCanvas']],
+    ['paintOverrideCanvas', ['speciesoverrides.ts', 'paintOverrideCanvas']],
+    ['paintWithTopology', ['speciesoverrides.ts', 'paintWithTopology']],
     ['isEarthKingdom', ['speciesoverrides.ts', 'isEarthKingdom']],
     ['hasNamedRoute', ['speciesoverrides.ts', 'hasNamedRoute']],
     ['lineageRenderKingdom', ['speciesoverrides.ts', 'lineageRenderKingdom']],
@@ -1184,6 +1328,11 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     ['faunaQuadruped', ['quadrupedoverrides.ts', 'faunaQuadruped']],
   ]);
   const exactHelperImplementations = new Map([
+    // The public observer/replay wrapper must return the original ordinary
+    // canvas; the topology helper must synchronously execute the exact callback.
+    // These seals supplement (never replace) the live inner routing contract.
+    ['resolveOverrideCanvas', 'f93499566b46c29011e3a76cad149045bd459d10d8d8e39d0c70dc28e81cf0ff'],
+    ['paintWithTopology', '4af543414a2f37ecf8a7d5df9a56a8952b085c51ff5f75787d7df21fe30551e4'],
     ['newCanvas', 'a195d1f082fb8c24f8012bc48431c75427120f776161b8f35a98b0da08112ee8'],
     ['newInk', '83693e4187095ae9826d32fc18d72f0516cf2faeb4f44b4460d93a561e1eea85'],
     ['fitInk', '5fd7fc8bbea71d5cc392d681608d8835ce0e9a95683f9caa5b52e0c0f777ed02'],
@@ -1254,8 +1403,8 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
   if (!(notIdentifier(body[7].test, 'name') && body[7].consequent?.type === 'ReturnStatement'
       && body[7].consequent.argument?.type === 'CallExpression'
       && identifier(body[7].consequent.argument.callee, 'resolveProceduralCanvas')
-      && body[7].consequent.argument.arguments.length === 1
-      && identifier(body[7].consequent.argument.arguments[0], 'g') && !body[7].alternate)) {
+      && source.slice(body[7].consequent.argument.start, body[7].consequent.argument.end)
+        === 'resolveProceduralCanvas(g,undefined,false,observeTopology)' && !body[7].alternate)) {
     contractError(body[7], 'procedural fallthrough guard changed');
   }
 
@@ -1427,7 +1576,7 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     'VariableDeclaration', 'ExpressionStatement', 'ExpressionStatement', 'VariableDeclaration',
     'ExpressionStatement', 'ExpressionStatement', 'ExpressionStatement', 'ReturnStatement',
   ], 'canon consumer');
-  const canonCall = callStatement(canonIf.consequent.body[4]);
+  const canonCall = topologyPaintBody(canonIf.consequent.body[4], 'expression');
   if (!(identifier(canonIf.test, 'canon') && !canonIf.alternate
       && canvasDeclaration(canonIf.consequent.body[0])
       && exactCall(canonIf.consequent.body[1], "vignette(c, kingdom === 'fungi')")
@@ -1447,7 +1596,7 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     'ExpressionStatement', 'ExpressionStatement', 'VariableDeclaration', 'ExpressionStatement',
     'ExpressionStatement', 'ReturnStatement',
   ], 'flora consumer');
-  const floraCall = callStatement(floraBody[7]);
+  const floraCall = topologyPaintBody(floraBody[7], 'expression');
   if (!(andNot(floraBody[2].test, 'iconic', 'dupe') && returnNull(floraBody[2].consequent)
       && !floraBody[2].alternate
       && floraCall?.callee?.type === 'LogicalExpression' && floraCall.callee.operator === '||'
@@ -1463,10 +1612,10 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
   const faunaBody = faunaIf.consequent.body;
   exactTypes(faunaBody, [
     'VariableDeclaration', 'VariableDeclaration', 'IfStatement', 'VariableDeclaration',
-    'ExpressionStatement', 'ExpressionStatement', 'VariableDeclaration', 'IfStatement',
+    'ExpressionStatement', 'ExpressionStatement', 'VariableDeclaration', 'ExpressionStatement',
     'ExpressionStatement', 'ExpressionStatement', 'ReturnStatement',
   ], 'fauna consumer');
-  const faunaDispatch = faunaBody[7];
+  const faunaDispatch = topologyPaintBody(faunaBody[7], 'dispatch');
   const fpCall = faunaDispatch.consequent?.type === 'ExpressionStatement'
     ? faunaDispatch.consequent.expression : null;
   const quadCall = faunaDispatch.alternate?.type === 'ExpressionStatement'
@@ -1495,7 +1644,7 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     'ExpressionStatement', 'VariableDeclaration', 'ExpressionStatement', 'ExpressionStatement',
     'ReturnStatement',
   ], 'fungi/microbe consumer');
-  const painterCall = callStatement(tail[6]);
+  const painterCall = topologyPaintBody(tail[6], 'expression');
   if (!(notIdentifier(tail[1].test, 'painter') && returnNull(tail[1].consequent)
       && !tail[1].alternate && canvasDeclaration(tail[2])
       && exactCall(tail[3], "vignette(c, kingdom === 'fungi')") && exactCall(tail[4], 'floorFade(c)')
@@ -1534,6 +1683,7 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
   return { tableReads, imports };
 }
 
+console.log(`overridecheck: source graph ${ART_FILES.length} art + ${FILES.length - ART_FILES.length} transitive modules`);
 const tableOwners = new Map();
 for (const f of FILES) {
   const t = src('packages/art/src/' + f);
@@ -1640,7 +1790,7 @@ for (const f of FILES) {
   const compatibility = src('packages/art/src/speciescompat.ts');
   let wiring;
   try {
-    wiring = routerWiring(router, 'speciesoverrides.ts', 'resolveOverrideCanvas', compatibility);
+    wiring = routerWiring(router, 'speciesoverrides.ts', 'paintOverrideCanvas', compatibility);
   } catch (error) {
     if (!(error instanceof ParserError)) throw error;
     console.error(`overridecheck: ${error.message} — the PARSER is broken`);

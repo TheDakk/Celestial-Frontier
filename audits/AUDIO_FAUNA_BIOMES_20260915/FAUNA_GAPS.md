@@ -1,0 +1,484 @@
+# Named fauna still missing a permitted reference
+
+477 of 631 game entries. Each remains an explicit source gap. No silence, generic voice or
+procedural family treatment counts as an authentic recording. This list is not a biological
+claim that these animals vocalize, or that recordings cannot exist. Behavior and listening
+review also remain open for the 154 entries with reference candidates.
+
+- Jaguar
+- Leopard
+- Tiger
+- Clouded Leopard
+- Ocelot
+- Tapir
+- Forest Elephant
+- Gorilla
+- Orangutan
+- Peccary
+- Okapi
+- Sloth
+- Giant Anteater
+- Spider Monkey
+- Tamarin
+- Kinkajou
+- Civet
+- Pangolin
+- Anaconda
+- Boa
+- Python
+- Caiman
+- Crocodile
+- Leafcutter Ant
+- Butterfly
+- Tarantula
+- Elephant
+- Rhinoceros
+- Gaur
+- Banteng
+- Water Buffalo
+- Antelope
+- Sloth Bear
+- Langur
+- Mongoose
+- Peacock
+- Cobra
+- Monitor Lizard
+- Pond Turtle
+- Termite
+- Mantis
+- Giraffe
+- Kudu
+- Impala
+- Warthog
+- Buffalo
+- Hyena
+- Meerkat
+- Caracal
+- Vulture
+- Viper
+- Tortoise
+- Locust
+- Dung Beetle
+- Scorpion
+- Spectacled Bear
+- Mountain Tapir
+- Cougar
+- Tree Snake
+- Anole
+- Glass Frog
+- Salamander
+- Orchid Bee
+- Land Snail
+- Panda
+- Red Panda
+- Asian Elephant
+- Takin
+- Rat Snake
+- Skink
+- Black Bear
+- Brown Bear
+- Lynx
+- Badger
+- Weasel
+- Stoat
+- Mink
+- Marten
+- Rabbit
+- Hare
+- Mouse
+- Vole
+- Mole
+- Shrew
+- Garter Snake
+- Box Turtle
+- Newt
+- Deer Tick
+- Earthworm
+- Fisher
+- Alligator Lizard
+- Giant Salamander
+- Salmon
+- Trout
+- Char
+- Lamprey
+- Crayfish
+- Banana Slug
+- Wolverine
+- Moose
+- Reindeer
+- Caribou
+- Arctic Fox
+- Snowshoe Hare
+- Lemming
+- Pike
+- Mosquito
+- Black Fly
+- Snow Leopard
+- Mountain Goat
+- Ibex
+- Chamois
+- Mountain Lizard
+- Capybara
+- Fishing Cat
+- Cottonmouth
+- Water Snake
+- Snapping Turtle
+- Softshell Turtle
+- Catfish
+- Gar
+- Bowfin
+- Bass
+- Eel
+- Dragonfly
+- Leech
+- Cheetah
+- Spotted Hyena
+- African Wild Dog
+- African Elephant
+- Wildebeest
+- Hippopotamus
+- Eland
+- Gazelle
+- Hartebeest
+- Oryx
+- Serval
+- Aardvark
+- Ostrich
+- Secretary Bird
+- Mamba
+- Turtle
+- Carp
+- Tilapia
+- Piranha
+- Jackrabbit
+- Gopher
+- Horned Lizard
+- Ant
+- Spider
+- Saiga
+- Wild Horse
+- Wild Ass
+- Camel
+- Yak
+- Jerboa
+- Hamster
+- Bustard
+- Racer
+- Agama
+- Maned Wolf
+- Armadillo
+- Mara
+- Agouti
+- Guinea Pig
+- Rhea
+- Tegu
+- Cattle
+- Sheep
+- Goat
+- Honeybee
+- Bumblebee
+- Ladybug
+- Mountain Viper
+- Alpine Salamander
+- Whip Snake
+- Wall Lizard
+- Wild Pony
+- Grass Snake
+- Lizard
+- Whiptail
+- Dromedary Camel
+- Fennec Fox
+- Sand Cat
+- Striped Hyena
+- Gerbil
+- Sand Boa
+- Camel Spider
+- Wild Sheep
+- Centipede
+- Bactrian Camel
+- Brine Shrimp
+- Water Flea
+- Wildcat
+- Killifish
+- Freshwater Snail
+- King Snake
+- Polar Bear
+- Musk Ox
+- Arctic Hare
+- Snowy Owl
+- Walrus
+- Beluga
+- Narwhal
+- Auk
+- Puffin
+- Eider Duck
+- Arctic Cod
+- Herring
+- Krill
+- Copepod
+- Amphipod
+- Jellyfish
+- Blue Whale
+- Squid
+- Octopus
+- Starfish
+- Sea Urchin
+- Sea Cucumber
+- Cold-Water Fish
+- Condor
+- Bear
+- Cave Snake
+- Olm
+- Blind Fish
+- Cave Shrimp
+- Millipede
+- Snake
+- Wild Pig
+- Small Fish
+- Water Beetle
+- Fly Larvae
+- Grayling
+- Minnow
+- Sculpin
+- Caddisfly
+- Mayfly
+- Stonefly
+- Gharial
+- Sturgeon
+- Paddlefish
+- Perch
+- Pacu
+- Arapaima
+- Arowana
+- Freshwater Shrimp
+- Mussel
+- Giant Otter
+- Electric Eel
+- Stingray
+- Cichlid
+- Tetra
+- Caecilian
+- River Dolphin
+- Manatee
+- Pelican
+- Sunfish
+- Walleye
+- Whitefish
+- Lungfish
+- Tigerfish
+- Freshwater Crab
+- Goldfish
+- Damselfly
+- Water Strider
+- Diving Beetle
+- Water Snail
+- Water Vole
+- Giant Water Bug
+- Sea Turtle
+- Mullet
+- Tarpon
+- Snapper
+- Juvenile Shark
+- Ray
+- Crab
+- Oyster
+- Cave Fish
+- Coastal Lizard
+- Hermit Crab
+- Clam
+- Razor Clam
+- Sea Snail
+- Sand Dollar
+- Sea Otter
+- Goby
+- Blenny
+- Limpet
+- Chiton
+- Barnacle
+- Sea Anemone
+- Sponge
+- Nudibranch
+- Flounder
+- Prawn
+- Marine Worm
+- Marsh Rodent
+- Mudskipper
+- Fiddler Crab
+- Snail
+- Mud Crab
+- Dugong
+- Bonefish
+- Barracuda
+- Reef Fish
+- Shark
+- Lobster
+- Porpoise
+- Mackerel
+- Halibut
+- Cold-Water Coral
+- Reef Shark
+- Hammerhead Shark
+- Manta Ray
+- Eagle Ray
+- Clownfish
+- Damselfish
+- Butterflyfish
+- Angelfish
+- Surgeonfish
+- Tang
+- Triggerfish
+- Parrotfish
+- Wrasse
+- Cardinalfish
+- Lionfish
+- Pufferfish
+- Boxfish
+- Seahorse
+- Moray Eel
+- Cuttlefish
+- Giant Clam
+- Cowrie
+- Brittle Star
+- Coral
+- Pipefish
+- Rabbitfish
+- Conch
+- Sea Bass
+- Giant Octopus
+- Abalone
+- Gray Whale
+- Tuna
+- Pollock
+- Scallop
+- Beaked Whale
+- Great White Shark
+- Tiger Shark
+- Mako Shark
+- Whale Shark
+- Basking Shark
+- Marlin
+- Sailfish
+- Swordfish
+- Mahi-Mahi
+- Wahoo
+- Sardine
+- Anchovy
+- Flying Fish
+- Giant Squid
+- Portuguese Man-of-War
+- Anglerfish
+- Lanternfish
+- Viperfish
+- Fangtooth
+- Dragonfish
+- Oarfish
+- Barreleye
+- Blobfish
+- Gulper Eel
+- Vampire Squid
+- Deep-Sea Octopus
+- Comb Jelly
+- Giant Isopod
+- Tube Worm
+- Tripod Fish
+- Snailfish
+- Isopod
+- Polychaete Worm
+- Giant Tube Worm
+- Vent Shrimp
+- Vent Crab
+- Scale Worm
+- Deep-Sea Fish
+- Monkfish
+- Deep-Water Coral
+- Rat
+- Seabird
+- Iguana
+- Marine Iguana
+- Land Iguana
+- Coconut Crab
+- Blind Salamander
+- Cave Cricket
+- Harvestman
+- Pseudoscorpion
+- Cockroach
+- Flatworm
+- Insect-Eating Bat
+- Cave Frog
+- Giant Centipede
+- Snow Petrel
+- Mite
+- Ice Worm
+- Cow
+- Bull
+- Horse
+- Donkey
+- Pig
+- Rooster
+- Llama
+- Alpaca
+- Moth
+- Aphid
+- Carrion Beetle
+- Cold-Adapted Insect
+- Desert Owl
+- Vine Snake
+- Stick Insect
+- Kangaroo
+- Platypus
+- Echidna
+- Wombat
+- Tasmanian Devil
+- Wallaby
+- Quoll
+- Komodo Dragon
+- Chameleon
+- Gila Monster
+- Axolotl
+- Frilled Lizard
+- Mandrill
+- Aye-Aye
+- Proboscis Monkey
+- Tree Shrew
+- Colugo
+- Emu
+- Cassowary
+- Kakapo
+- Sun Bear
+- Dingo
+- Firefly
+- Vampire Bat
+- Grizzly Bear
+- Coelacanth
+- Nautilus
+- Tardigrade
+- Horseshoe Crab
+- Pronghorn
+- Springbok
+- Bongo
+- Duiker
+- Gerenuk
+- Nilgai
+- Tahr
+- Serow
+- Harpy Eagle
+- Hoatzin
+- Weaverbird
+- Ocean Sunfish
+- Remora
+- Archerfish
+- Knifefish
+- Icefish
+- Mudminnow
+- Flying Gurnard
+- Sea Squirt
+- Salp
+- Pyrosome
+- Lancelet
+- Sea Spider
+- Fairy Shrimp
+- Tadpole Shrimp
+- Springtail
+- Dobsonfly
+- Scorpionfly
+- Thrips

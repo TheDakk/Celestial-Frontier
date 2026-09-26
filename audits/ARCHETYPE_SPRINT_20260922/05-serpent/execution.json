@@ -1,0 +1,76 @@
+{
+  "id": "archetype-sprint-05-serpent-01",
+  "stages": [
+    {
+      "name": "intake",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/intake.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01"
+      ],
+      "startedAt": "2026-09-22T04:28:50.109Z",
+      "endedAt": "2026-09-22T04:28:51.657Z",
+      "durationMs": 1546.959458,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "static",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/static-runner.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/static.json"
+      ],
+      "startedAt": "2026-09-22T04:28:51.658Z",
+      "endedAt": "2026-09-22T04:28:54.965Z",
+      "durationMs": 3306.504916,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "native",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/native-01"
+      ],
+      "startedAt": "2026-09-22T04:28:54.965Z",
+      "endedAt": "2026-09-22T04:29:09.560Z",
+      "durationMs": 14595.198708,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "sheet",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/review-sheet.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent"
+      ],
+      "startedAt": "2026-09-22T04:29:09.560Z",
+      "endedAt": "2026-09-22T04:29:09.992Z",
+      "durationMs": 431.6020419999986,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "finish",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/finish-item.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent",
+        "5"
+      ],
+      "startedAt": "2026-09-22T04:29:09.992Z",
+      "endedAt": "2026-09-22T04:29:10.104Z",
+      "durationMs": 111.76979199999914,
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "noRetry": true
+}

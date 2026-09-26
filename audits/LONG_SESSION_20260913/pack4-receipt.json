@@ -1,0 +1,52 @@
+{
+  "source": "/private/tmp/claude-501/-Users-nick-Projects-celestial-frontier-anthropic-mac/f66020b6-2684-4c8e-8b6b-116f66cc7c98/scratchpad/codex-pack-4-20260913.zip",
+  "zipSha256": "4fc55bfc258ae00039ced354f39832f988550627fa5f66a7be3dd1c6fa3cea26",
+  "previousLog": "LOG-CODEX-PRE-PACK4.md",
+  "files": [
+    {
+      "path": "audits/LONG_SESSION_20260913/CONTRACTS.md",
+      "bytes": 4905,
+      "sha256": "b705bc5d452196150ad7ff2172497732ad0f342dd7d5805c3a1a991739286044"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A11.md",
+      "bytes": 11730,
+      "sha256": "377b848592a2e39b5cb31cc48e3e272a81a6f05b08cdad4b7cd5ae0ff0063f7e"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A3.md",
+      "bytes": 9920,
+      "sha256": "707d00fa9415cc18ba12dfb7fb5e8d0d0ceb0b10125d763d9067ddca7f415f42"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A6-defects.md",
+      "bytes": 12330,
+      "sha256": "9b06011a0527ce4dd20b390117d1eda59395afe66e69cdf929b809363e043e3a"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A6-wiring.md",
+      "bytes": 11301,
+      "sha256": "31dd8e5ec16c4ad1306c31e625f6a371e789657b73cf9cea9e0701d55eca15c7"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A7.md",
+      "bytes": 7090,
+      "sha256": "65449b3d52230bf1067291e7141168e1e712d2101e7c8f2235dd0a4e1de3eadf"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG.md",
+      "bytes": 3925,
+      "sha256": "1242d12d4fdd6733e91b4e7d06e371d8aea9494cfbf3a9a5c9dad2bc56a4256e"
+    },
+    {
+      "path": "audits/WILD_V43_PROOF_20260913/WILD_V43_REVIEW_RESPONSE_20260913.md",
+      "bytes": 6007,
+      "sha256": "6fad31b4f433067f529addf952330e8f1bd8b464ec87088fcda4b49fad3dad37"
+    },
+    {
+      "path": "audits/WILD_V43_PROOF_20260913/second-pass/WILD_V43_SECOND_INTAKE_REVIEW_RESPONSE_20260913.md",
+      "bytes": 5678,
+      "sha256": "7ddc73c27c8807c004a4def08582f1cd88d728ee003f0dab0825847fbb6d7a5b"
+    }
+  ]
+}

@@ -1,0 +1,2706 @@
+{
+  "stage": "denoise",
+  "state": "complete",
+  "error": null,
+  "rawBytes": 8598825,
+  "dropped": 0,
+  "invalid": 0,
+  "summary": {
+    "schema": "cf.ort-native-profile/v1",
+    "status": "COMPLETE",
+    "ortVersion": "1.29.0",
+    "unit": "microseconds",
+    "rawBytes": 8598825,
+    "eventCount": 18686,
+    "dropped": 0,
+    "invalid": 0,
+    "categories": {
+      "Session": 10,
+      "Node": 10848,
+      "Kernel": 0,
+      "Api": 7828
+    },
+    "nodeSpans": {
+      "count": 10848,
+      "durationUs": 781572,
+      "groups": [
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "QuickGelu",
+          "count": 128,
+          "durationUs": 442770,
+          "maxDurationUs": 439195
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Mul",
+          "count": 1564,
+          "durationUs": 51121,
+          "maxDurationUs": 5629
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Cast",
+          "count": 1416,
+          "durationUs": 30203,
+          "maxDurationUs": 2450
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "MatMulNBits",
+          "count": 412,
+          "durationUs": 27688,
+          "maxDurationUs": 11259
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Add",
+          "count": 788,
+          "durationUs": 23140,
+          "maxDurationUs": 4734
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Pow",
+          "count": 240,
+          "durationUs": 22474,
+          "maxDurationUs": 13174
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "MatMul",
+          "count": 200,
+          "durationUs": 17643,
+          "maxDurationUs": 9220
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Transpose",
+          "count": 500,
+          "durationUs": 15626,
+          "maxDurationUs": 1199
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Slice",
+          "count": 412,
+          "durationUs": 14603,
+          "maxDurationUs": 1684
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Concat",
+          "count": 376,
+          "durationUs": 14571,
+          "maxDurationUs": 2914
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Sqrt",
+          "count": 240,
+          "durationUs": 12568,
+          "maxDurationUs": 3124
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Split",
+          "count": 316,
+          "durationUs": 12313,
+          "maxDurationUs": 1435
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Reshape",
+          "count": 1156,
+          "durationUs": 11294,
+          "maxDurationUs": 645
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "ReduceMean",
+          "count": 240,
+          "durationUs": 9436,
+          "maxDurationUs": 1870
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Clip",
+          "count": 100,
+          "durationUs": 8467,
+          "maxDurationUs": 1935
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Softmax",
+          "count": 100,
+          "durationUs": 8097,
+          "maxDurationUs": 5294
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Reciprocal",
+          "count": 240,
+          "durationUs": 6260,
+          "maxDurationUs": 1305
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Slice",
+          "count": 300,
+          "durationUs": 6202,
+          "maxDurationUs": 2715
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "LayerNormalization",
+          "count": 164,
+          "durationUs": 5260,
+          "maxDurationUs": 689
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Expand",
+          "count": 64,
+          "durationUs": 5135,
+          "maxDurationUs": 2615
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "MemcpyFromHost",
+          "count": 8,
+          "durationUs": 5029,
+          "maxDurationUs": 2785
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Squeeze",
+          "count": 400,
+          "durationUs": 4859,
+          "maxDurationUs": 1225
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Neg",
+          "count": 200,
+          "durationUs": 4459,
+          "maxDurationUs": 995
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Unsqueeze",
+          "count": 504,
+          "durationUs": 4229,
+          "maxDurationUs": 175
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Concat",
+          "count": 304,
+          "durationUs": 3792,
+          "maxDurationUs": 480
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Cos",
+          "count": 36,
+          "durationUs": 3144,
+          "maxDurationUs": 2409
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Gemm",
+          "count": 24,
+          "durationUs": 2835,
+          "maxDurationUs": 1784
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Gather",
+          "count": 32,
+          "durationUs": 1743,
+          "maxDurationUs": 819
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Gather",
+          "count": 108,
+          "durationUs": 1671,
+          "maxDurationUs": 320
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Shape",
+          "count": 176,
+          "durationUs": 1651,
+          "maxDurationUs": 145
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Sin",
+          "count": 36,
+          "durationUs": 1071,
+          "maxDurationUs": 410
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Add",
+          "count": 8,
+          "durationUs": 681,
+          "maxDurationUs": 589
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Mul",
+          "count": 16,
+          "durationUs": 448,
+          "maxDurationUs": 329
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Cast",
+          "count": 8,
+          "durationUs": 389,
+          "maxDurationUs": 129
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Squeeze",
+          "count": 12,
+          "durationUs": 387,
+          "maxDurationUs": 294
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Reshape",
+          "count": 8,
+          "durationUs": 172,
+          "maxDurationUs": 75
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Div",
+          "count": 4,
+          "durationUs": 82,
+          "maxDurationUs": 69
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Shape",
+          "count": 8,
+          "durationUs": 59,
+          "maxDurationUs": 15
+        }
+      ],
+      "meaning": "Host-side Node intervals, separated by execution provider; not pure CPU compute or GPU hardware time."
+    },
+    "gpuDispatches": {
+      "count": 7828,
+      "durationUs": 33325520,
+      "groups": [
+        {
+          "opType": "MatMulNBits",
+          "programName": "MatMulNBitsWideTile",
+          "shapes": "inputs[0] = {1,2984,768} inputs[1] = {27648,96,2} inputs[2] = {27648,96} inputs[3] = {663552} outputs[0] = {1,2984,27648} ",
+          "examples": [
+            {
+              "name": "node_linear_67_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_69_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_71_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            }
+          ],
+          "count": 80,
+          "durationUs": 13317705,
+          "maxDurationUs": 170328
+        },
+        {
+          "opType": "MatMulNBits",
+          "programName": "MatMulNBitsWideTile",
+          "shapes": "inputs[0] = {1,2984,3072} inputs[1] = {3072,384,2} inputs[2] = {3072,384} inputs[3] = {294912} outputs[0] = {1,2984,3072} ",
+          "examples": [
+            {
+              "name": "node_linear_68_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_70_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_72_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            }
+          ],
+          "count": 80,
+          "durationUs": 5998776,
+          "maxDurationUs": 76677
+        },
+        {
+          "opType": "MatMul",
+          "programName": "MatMul",
+          "shapes": "inputs[0] = {1,24,2984,32} inputs[1] = {1,24,128,746} outputs[0] = {24,2984,746} ",
+          "examples": [
+            {
+              "name": "node_MatMul_453&MatMul&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:5;4|5;4:3:2"
+            },
+            {
+              "name": "node_MatMul_663&MatMul&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:5;4|5;4:3:2"
+            },
+            {
+              "name": "node_MatMul_870&MatMul&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:5;4|5;4:3:2"
+            }
+          ],
+          "count": 100,
+          "durationUs": 1967920,
+          "maxDurationUs": 22217
+        },
+        {
+          "opType": "MatMulNBits",
+          "programName": "MatMulNBitsWideTile",
+          "shapes": "inputs[0] = {1,2472,768} inputs[1] = {18432,96,2} inputs[2] = {18432,96} inputs[3] = {442368} outputs[0] = {1,2472,18432} ",
+          "examples": [
+            {
+              "name": "node_linear_15_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_27_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_39_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            }
+          ],
+          "count": 20,
+          "durationUs": 1842217,
+          "maxDurationUs": 94503
+        },
+        {
+          "opType": "MatMul",
+          "programName": "MatMul",
+          "shapes": "inputs[0] = {1,24,2984,746} inputs[1] = {1,24,2984,32} outputs[0] = {24,2984,32} ",
+          "examples": [
+            {
+              "name": "node_scaled_dot_product_attention&MatMul&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:5;4|5;4:3:2"
+            },
+            {
+              "name": "node_scaled_dot_product_attention_1&MatMul&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:5;4|5;4:3:2"
+            },
+            {
+              "name": "node_scaled_dot_product_attention_2&MatMul&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:5;4|5;4:3:2"
+            }
+          ],
+          "count": 100,
+          "durationUs": 1692272,
+          "maxDurationUs": 18088
+        },
+        {
+          "opType": "MatMulNBits",
+          "programName": "MatMulNBitsWideTile",
+          "shapes": "inputs[0] = {1,2472,768} inputs[1] = {3072,96,2} inputs[2] = {3072,96} inputs[3] = {73728} outputs[0] = {1,2472,3072} ",
+          "examples": [
+            {
+              "name": "node_linear_8_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_7_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_9_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            }
+          ],
+          "count": 80,
+          "durationUs": 1280637,
+          "maxDurationUs": 27132
+        },
+        {
+          "opType": "MatMulNBits",
+          "programName": "MatMulNBitsWideTile",
+          "shapes": "inputs[0] = {1,2472,2304} inputs[1] = {3072,288,2} inputs[2] = {3072,288} inputs[3] = {221184} outputs[0] = {1,2472,3072} ",
+          "examples": [
+            {
+              "name": "node_linear_16_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_28_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_40_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            }
+          ],
+          "count": 20,
+          "durationUs": 926875,
+          "maxDurationUs": 47972
+        },
+        {
+          "opType": "Split",
+          "programName": "Split",
+          "shapes": "inputs[0] = {1,2984,27648} outputs[0] = {1,2984,9216} outputs[1] = {1,2984,18432} ",
+          "examples": [
+            {
+              "name": "node_Split_4759&Split&Split",
+              "cacheKey": "Split[2]:3:1|2:3;3:3|3"
+            },
+            {
+              "name": "node_Split_4795&Split&Split",
+              "cacheKey": "Split[2]:3:1|2:3;3:3|3"
+            },
+            {
+              "name": "node_Split_4831&Split&Split",
+              "cacheKey": "Split[2]:3:1|2:3;3:3|3"
+            }
+          ],
+          "count": 80,
+          "durationUs": 564789,
+          "maxDurationUs": 10355
+        },
+        {
+          "opType": "Softmax",
+          "programName": "Softmax",
+          "shapes": "inputs[0] = {1,24,2984,746} outputs[0] = {1,24,2984,746} ",
+          "examples": [
+            {
+              "name": "node_Softmax_454&Softmax&Softmax",
+              "cacheKey": "Softmax[4|64]:64,1,1:3:1:5;4:5;4"
+            },
+            {
+              "name": "node_Softmax_664&Softmax&Softmax",
+              "cacheKey": "Softmax[4|64]:64,1,1:3:1:5;4:5;4"
+            },
+            {
+              "name": "node_Softmax_871&Softmax&Softmax",
+              "cacheKey": "Softmax[4|64]:64,1,1:3:1:5;4:5;4"
+            }
+          ],
+          "count": 100,
+          "durationUs": 541129,
+          "maxDurationUs": 11796
+        },
+        {
+          "opType": "Slice",
+          "programName": "Slice",
+          "shapes": "inputs[0] = {1,2984,24,64,2} outputs[0] = {1,2984,24,64,1} ",
+          "examples": [
+            {
+              "name": "node_Slice_411&Slice&Slice",
+              "cacheKey": "Slice:3:1|5|5|5:3;5:"
+            },
+            {
+              "name": "node_Slice_415&Slice&Slice",
+              "cacheKey": "Slice:3:1|5|5|5:3;5:"
+            },
+            {
+              "name": "node_Slice_365&Slice&Slice",
+              "cacheKey": "Slice:3:1|5|5|5:3;5:"
+            }
+          ],
+          "count": 400,
+          "durationUs": 452625,
+          "maxDurationUs": 3539
+        },
+        {
+          "opType": "MatMulNBits",
+          "programName": "MatMulNBitsWideTile",
+          "shapes": "inputs[0] = {1,512,768} inputs[1] = {18432,96,2} inputs[2] = {18432,96} inputs[3] = {442368} outputs[0] = {1,512,18432} ",
+          "examples": [
+            {
+              "name": "node_linear_17_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_29_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_41_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            }
+          ],
+          "count": 20,
+          "durationUs": 394786,
+          "maxDurationUs": 35652
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {1,2984,24,128} outputs[0] = {1,24,2984,128} ",
+          "examples": [
+            {
+              "name": "node_permute_1&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1-3]:64,1,1:3:1:3;4:"
+            },
+            {
+              "name": "node_permute&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1-3]:64,1,1:3:1:3;4:"
+            },
+            {
+              "name": "node_permute_2&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1-3]:64,1,1:3:1:3;4:"
+            }
+          ],
+          "count": 300,
+          "durationUs": 360317,
+          "maxDurationUs": 7733
+        },
+        {
+          "opType": "Cast",
+          "programName": "Cast",
+          "shapes": "inputs[0] = {2291712} outputs[0] = {2291712} ",
+          "examples": [
+            {
+              "name": "node__to_copy_12&Cast&Cast",
+              "cacheKey": "Cast[1]:1:1|1:5;:"
+            },
+            {
+              "name": "node__to_copy_11&Cast&Cast",
+              "cacheKey": "Cast[1]:1:1|1:5;:"
+            },
+            {
+              "name": "node__to_copy_13&Cast&Cast",
+              "cacheKey": "Cast[10]:1:1|1:2;:"
+            }
+          ],
+          "count": 1080,
+          "durationUs": 336128,
+          "maxDurationUs": 2490
+        },
+        {
+          "opType": "Split",
+          "programName": "Split",
+          "shapes": "inputs[0] = {1,2984,18432} outputs[0] = {1,2984,9216} outputs[1] = {1,2984,9216} ",
+          "examples": [
+            {
+              "name": "node_Split_4785&Split&Split",
+              "cacheKey": "Split[2]:3:1|2:3;3:3|3"
+            },
+            {
+              "name": "node_Split_4821&Split&Split",
+              "cacheKey": "Split[2]:3:1|2:3;3:3|3"
+            },
+            {
+              "name": "node_Split_4857&Split&Split",
+              "cacheKey": "Split[2]:3:1|2:3;3:3|3"
+            }
+          ],
+          "count": 80,
+          "durationUs": 293542,
+          "maxDurationUs": 7274
+        },
+        {
+          "opType": "MatMulNBits",
+          "programName": "MatMulNBitsWideTile",
+          "shapes": "inputs[0] = {1,512,768} inputs[1] = {3072,96,2} inputs[2] = {3072,96} inputs[3] = {73728} outputs[0] = {1,512,3072} ",
+          "examples": [
+            {
+              "name": "node_linear_11_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_10_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_12_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            }
+          ],
+          "count": 80,
+          "durationUs": 262999,
+          "maxDurationUs": 5177
+        },
+        {
+          "opType": "Concat",
+          "programName": "Concat",
+          "shapes": "inputs[0] = {1,2984,24,64,1} inputs[1] = {1,2984,24,64,1} outputs[0] = {1,2984,24,64,2} ",
+          "examples": [
+            {
+              "name": "node_stack_1&Concat&Concat",
+              "cacheKey": "Concat[2,4]:3:2|2|1:3;5|3;5:"
+            },
+            {
+              "name": "node_stack&Concat&Concat",
+              "cacheKey": "Concat[2,4]:3:2|2|1:3;5|3;5:"
+            },
+            {
+              "name": "node_stack_3&Concat&Concat",
+              "cacheKey": "Concat[2,4]:3:2|2|1:3;5|3;5:"
+            }
+          ],
+          "count": 200,
+          "durationUs": 220918,
+          "maxDurationUs": 3146
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {24,2984,128} outputs[0] = {24,128,2984} ",
+          "examples": [
+            {
+              "name": "node_Transpose_445&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1]:64,1,1:3:1:3;3:"
+            },
+            {
+              "name": "node_Transpose_655&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1]:64,1,1:3:1:3;3:"
+            },
+            {
+              "name": "node_Transpose_862&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1]:64,1,1:3:1:3;3:"
+            }
+          ],
+          "count": 100,
+          "durationUs": 207879,
+          "maxDurationUs": 6750
+        },
+        {
+          "opType": "Concat",
+          "programName": "Concat",
+          "shapes": "inputs[0] = {1,2984,3072} inputs[1] = {1,2984,9216} outputs[0] = {1,2984,12288} ",
+          "examples": [
+            {
+              "name": "node_cat_24&Concat&Concat",
+              "cacheKey": "Concat[2,2]:3:2|2|1:3;3|3;3:"
+            },
+            {
+              "name": "node_cat_25&Concat&Concat",
+              "cacheKey": "Concat[2,2]:3:2|2|1:3;3|3;3:"
+            },
+            {
+              "name": "node_cat_26&Concat&Concat",
+              "cacheKey": "Concat[2,2]:3:2|2|1:3;3|3;3:"
+            }
+          ],
+          "count": 80,
+          "durationUs": 205463,
+          "maxDurationUs": 4194
+        },
+        {
+          "opType": "MatMulNBits",
+          "programName": "MatMulNBitsWideTile",
+          "shapes": "inputs[0] = {1,512,2304} inputs[1] = {3072,288,2} inputs[2] = {3072,288} inputs[3] = {221184} outputs[0] = {1,512,3072} ",
+          "examples": [
+            {
+              "name": "node_linear_18_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_30_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_42_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            }
+          ],
+          "count": 20,
+          "durationUs": 196740,
+          "maxDurationUs": 10748
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {1,24,2984,128} outputs[0] = {1,2984,24,128} ",
+          "examples": [
+            {
+              "name": "node_permute_3&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1-3]:64,1,1:3:1:3;4:"
+            },
+            {
+              "name": "node_permute_7&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1-3]:64,1,1:3:1:3;4:"
+            },
+            {
+              "name": "node_permute_11&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1-3]:64,1,1:3:1:3;4:"
+            }
+          ],
+          "count": 100,
+          "durationUs": 192280,
+          "maxDurationUs": 3408
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {2291712} inputs[1] = {95488} outputs[0] = {2291712} ",
+          "examples": [
+            {
+              "name": "node_mul_526&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|2;:2;:4|4|4"
+            },
+            {
+              "name": "node_mul_518&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|2;:2;:4|4|4"
+            },
+            {
+              "name": "node_mul_443&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|2;:2;:4|4|4"
+            }
+          ],
+          "count": 400,
+          "durationUs": 181772,
+          "maxDurationUs": 3473
+        },
+        {
+          "opType": "Split",
+          "programName": "Split",
+          "shapes": "inputs[0] = {1,2984,9216} outputs[0] = {1,2984,3072} outputs[1] = {1,2984,3072} outputs[2] = {1,2984,3072} ",
+          "examples": [
+            {
+              "name": "node_Split_4763&Split&Split",
+              "cacheKey": "Split[2]:3:1|3:3;3:3|3|3"
+            },
+            {
+              "name": "node_Split_4799&Split&Split",
+              "cacheKey": "Split[2]:3:1|3:3;3:3|3|3"
+            },
+            {
+              "name": "node_Split_4835&Split&Split",
+              "cacheKey": "Split[2]:3:1|3:3;3:3|3|3"
+            }
+          ],
+          "count": 80,
+          "durationUs": 168614,
+          "maxDurationUs": 3670
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {2291712} inputs[1] = {2291712} outputs[0] = {2291712} ",
+          "examples": [
+            {
+              "name": "node_add_569&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_491&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_1056&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:2;|2;:2;"
+            }
+          ],
+          "count": 280,
+          "durationUs": 143721,
+          "maxDurationUs": 2949
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {768} inputs[1] = {2291712} outputs[0] = {2291712} ",
+          "examples": [
+            {
+              "name": "node_mul_2657&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_mul_2932&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_mul_2945&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            }
+          ],
+          "count": 160,
+          "durationUs": 136764,
+          "maxDurationUs": 2818
+        },
+        {
+          "opType": "Cast",
+          "programName": "Cast",
+          "shapes": "inputs[0] = {393216} outputs[0] = {393216} ",
+          "examples": [
+            {
+              "name": "linear_6_as_fp32_cast&Cast&Cast",
+              "cacheKey": "Cast[1]:1:1|1:5;:"
+            },
+            {
+              "name": "layer_norm_1_narrow&Cast&Cast",
+              "cacheKey": "Cast[10]:1:1|1:2;:"
+            },
+            {
+              "name": "node__to_copy_7&Cast&Cast",
+              "cacheKey": "Cast[1]:1:1|1:5;:"
+            }
+          ],
+          "count": 160,
+          "durationUs": 97999,
+          "maxDurationUs": 16187
+        },
+        {
+          "opType": "Split",
+          "programName": "Split",
+          "shapes": "inputs[0] = {1,2472,18432} outputs[0] = {1,2472,9216} outputs[1] = {1,2472,9216} ",
+          "examples": [
+            {
+              "name": "node_Split_4548&Split&Split",
+              "cacheKey": "Split[2]:3:1|2:3;3:3|3"
+            },
+            {
+              "name": "node_Split_4597&Split&Split",
+              "cacheKey": "Split[2]:3:1|2:3;3:3|3"
+            },
+            {
+              "name": "node_Split_4646&Split&Split",
+              "cacheKey": "Split[2]:3:1|2:3;3:3|3"
+            }
+          ],
+          "count": 20,
+          "durationUs": 95026,
+          "maxDurationUs": 6357
+        },
+        {
+          "opType": "Cast",
+          "programName": "Cast",
+          "shapes": "inputs[0] = {1898496} outputs[0] = {1898496} ",
+          "examples": [
+            {
+              "name": "linear_5_as_fp32_cast&Cast&Cast",
+              "cacheKey": "Cast[1]:1:1|1:5;:"
+            },
+            {
+              "name": "layer_norm_narrow&Cast&Cast",
+              "cacheKey": "Cast[10]:1:1|1:2;:"
+            },
+            {
+              "name": "node__to_copy_5&Cast&Cast",
+              "cacheKey": "Cast[1]:1:1|1:5;:"
+            }
+          ],
+          "count": 168,
+          "durationUs": 86412,
+          "maxDurationUs": 2359
+        },
+        {
+          "opType": "Concat",
+          "programName": "Concat",
+          "shapes": "inputs[0] = {1,512,24,128} inputs[1] = {1,2472,24,128} outputs[0] = {1,2984,24,128} ",
+          "examples": [
+            {
+              "name": "node_cat_9&Concat&Concat",
+              "cacheKey": "Concat[2,1]:3:2|2|1:3;4|3;4:"
+            },
+            {
+              "name": "node_cat_8&Concat&Concat",
+              "cacheKey": "Concat[2,1]:3:2|2|1:3;4|3;4:"
+            },
+            {
+              "name": "node_cat_10&Concat&Concat",
+              "cacheKey": "Concat[2,1]:3:2|2|1:3;4|3;4:"
+            }
+          ],
+          "count": 60,
+          "durationUs": 77844,
+          "maxDurationUs": 2884
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {6875136} inputs[1] = {6875136} outputs[0] = {6875136} ",
+          "examples": [
+            {
+              "name": "node_mul_2922&Mul&Mul",
+              "cacheKey": "Mul[E00]:3:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_mul_3210&Mul&Mul",
+              "cacheKey": "Mul[E00]:3:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_mul_3498&Mul&Mul",
+              "cacheKey": "Mul[E00]:3:1|1:5;|5;:5;"
+            }
+          ],
+          "count": 80,
+          "durationUs": 76730,
+          "maxDurationUs": 3015
+        },
+        {
+          "opType": "Split",
+          "programName": "Split",
+          "shapes": "inputs[0] = {1,512,18432} outputs[0] = {1,512,9216} outputs[1] = {1,512,9216} ",
+          "examples": [
+            {
+              "name": "node_Split_4553&Split&Split",
+              "cacheKey": "Split[2]:3:1|2:3;3:3|3"
+            },
+            {
+              "name": "node_Split_4602&Split&Split",
+              "cacheKey": "Split[2]:3:1|2:3;3:3|3"
+            },
+            {
+              "name": "node_Split_4651&Split&Split",
+              "cacheKey": "Split[2]:3:1|2:3;3:3|3"
+            }
+          ],
+          "count": 20,
+          "durationUs": 76414,
+          "maxDurationUs": 18022
+        },
+        {
+          "opType": "ReduceMean",
+          "programName": "ReduceMean",
+          "shapes": "inputs[0] = {1,2984,24,128} outputs[0] = {1,2984,24,1} ",
+          "examples": [
+            {
+              "name": "node_mean_21&ReduceMean&ReduceMean",
+              "cacheKey": "ReduceMean[1|0|0|64|3]:64,1,1:3:1:0;4:0;4"
+            },
+            {
+              "name": "node_mean_20&ReduceMean&ReduceMean",
+              "cacheKey": "ReduceMean[1|0|0|64|3]:64,1,1:3:1:0;4:0;4"
+            },
+            {
+              "name": "node_mean_23&ReduceMean&ReduceMean",
+              "cacheKey": "ReduceMean[1|0|0|64|3]:64,1,1:3:1:0;4:0;4"
+            }
+          ],
+          "count": 160,
+          "durationUs": 75807,
+          "maxDurationUs": 2556
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {2291712} inputs[1] = {1,2984,24,1} outputs[0] = {2291712} ",
+          "examples": [
+            {
+              "name": "node_mul_2742&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|4"
+            },
+            {
+              "name": "node_mul_2707&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|4"
+            },
+            {
+              "name": "node_mul_3030&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|4"
+            }
+          ],
+          "count": 160,
+          "durationUs": 75113,
+          "maxDurationUs": 2556
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {2291712} inputs[1] = {1} outputs[0] = {2291712} ",
+          "examples": [
+            {
+              "name": "node_Mul_452&Mul&Mul",
+              "cacheKey": "Mul[E01]:1:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_Mul_449&Mul&Mul",
+              "cacheKey": "Mul[E01]:1:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_Mul_662&Mul&Mul",
+              "cacheKey": "Mul[E01]:1:1|1:5;|5;:5;"
+            }
+          ],
+          "count": 200,
+          "durationUs": 72762,
+          "maxDurationUs": 16515
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {768} inputs[1] = {1898496} outputs[0] = {1898496} ",
+          "examples": [
+            {
+              "name": "node_mul_169&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_mul_574&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_mul_610&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            }
+          ],
+          "count": 60,
+          "durationUs": 68751,
+          "maxDurationUs": 3932
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {2291712} inputs[1] = {32} outputs[0] = {2291712} ",
+          "examples": [
+            {
+              "name": "node_mul_2746&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|2;:2;:4|4|1"
+            },
+            {
+              "name": "node_mul_2711&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|2;:2;:4|4|1"
+            },
+            {
+              "name": "node_mul_3034&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|2;:2;:4|4|1"
+            }
+          ],
+          "count": 160,
+          "durationUs": 65180,
+          "maxDurationUs": 2556
+        },
+        {
+          "opType": "Pow",
+          "programName": "Pow",
+          "shapes": "inputs[0] = {2291712} inputs[1] = {1} outputs[0] = {2291712} ",
+          "examples": [
+            {
+              "name": "node_pow_30&Pow&Pow",
+              "cacheKey": "Pow[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_pow_29&Pow&Pow",
+              "cacheKey": "Pow[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_pow_32&Pow&Pow",
+              "cacheKey": "Pow[E01]:1:1|1:2;|2;:2;"
+            }
+          ],
+          "count": 160,
+          "durationUs": 61246,
+          "maxDurationUs": 2621
+        },
+        {
+          "opType": "QuickGelu",
+          "programName": "QuickGelu",
+          "shapes": "inputs[0] = {6875136} outputs[0] = {6875136} ",
+          "examples": [
+            {
+              "name": "node_silu_14/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:5;:"
+            },
+            {
+              "name": "node_silu_15/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:5;:"
+            },
+            {
+              "name": "node_silu_16/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:5;:"
+            }
+          ],
+          "count": 80,
+          "durationUs": 53075,
+          "maxDurationUs": 2753
+        },
+        {
+          "opType": "LayerNormalization",
+          "programName": "LayerNorm",
+          "shapes": "inputs[0] = {2291712} inputs[1] = {768} outputs[0] = {2291712} ",
+          "examples": [
+            {
+              "name": "node_layer_norm_20&LayerNormalization&LayerNorm",
+              "cacheKey": "LayerNorm[4|0|0]:1:1|1|1|1|1:2;|2;:"
+            },
+            {
+              "name": "node_layer_norm_21&LayerNormalization&LayerNorm",
+              "cacheKey": "LayerNorm[4|0|0]:1:1|1|1|1|1:2;|2;:"
+            },
+            {
+              "name": "node_layer_norm_22&LayerNormalization&LayerNorm",
+              "cacheKey": "LayerNorm[4|0|0]:1:1|1|1|1|1:2;|2;:"
+            }
+          ],
+          "count": 80,
+          "durationUs": 45670,
+          "maxDurationUs": 1901
+        },
+        {
+          "opType": "MatMulNBits",
+          "programName": "MatMulNBitsWideTile",
+          "shapes": "inputs[0] = {1,512,1920} inputs[1] = {3072,240,2} inputs[2] = {3072,240} inputs[3] = {184320} outputs[0] = {1,512,3072} ",
+          "examples": [
+            {
+              "name": "node_linear_6_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_6_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_6_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            }
+          ],
+          "count": 4,
+          "durationUs": 35913,
+          "maxDurationUs": 12255
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {768} inputs[1] = {393216} outputs[0] = {393216} ",
+          "examples": [
+            {
+              "name": "node_mul_179&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_mul_617&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_mul_653&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            }
+          ],
+          "count": 60,
+          "durationUs": 31206,
+          "maxDurationUs": 2032
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {2291712} inputs[1] = {768} outputs[0] = {2291712} ",
+          "examples": [
+            {
+              "name": "node_add_2659&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_add_2955&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_add_3251&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:5;|5;:5;:3|3|3"
+            }
+          ],
+          "count": 80,
+          "durationUs": 30729,
+          "maxDurationUs": 2425
+        },
+        {
+          "opType": "Pow",
+          "programName": "Pow",
+          "shapes": "inputs[0] = {1898496} inputs[1] = {1} outputs[0] = {1898496} ",
+          "examples": [
+            {
+              "name": "node_pow_10&Pow&Pow",
+              "cacheKey": "Pow[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_pow_9&Pow&Pow",
+              "cacheKey": "Pow[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_pow_14&Pow&Pow",
+              "cacheKey": "Pow[E01]:1:1|1:2;|2;:2;"
+            }
+          ],
+          "count": 40,
+          "durationUs": 29622,
+          "maxDurationUs": 2228
+        },
+        {
+          "opType": "Neg",
+          "programName": "Neg",
+          "shapes": "inputs[0] = {1145856} outputs[0] = {1145856} ",
+          "examples": [
+            {
+              "name": "node_neg_1&Neg&Neg",
+              "cacheKey": "Neg:1:1|:5;:"
+            },
+            {
+              "name": "node_neg&Neg&Neg",
+              "cacheKey": "Neg:1:1|:5;:"
+            },
+            {
+              "name": "node_neg_3&Neg&Neg",
+              "cacheKey": "Neg:1:1|:5;:"
+            }
+          ],
+          "count": 200,
+          "durationUs": 24721,
+          "maxDurationUs": 2228
+        },
+        {
+          "opType": "LayerNormalization",
+          "programName": "LayerNorm",
+          "shapes": "inputs[0] = {1898496} inputs[1] = {768} outputs[0] = {1898496} ",
+          "examples": [
+            {
+              "name": "node_layer_norm&LayerNormalization&LayerNorm",
+              "cacheKey": "LayerNorm[4|0|0]:1:1|1|1|1|1:2;|2;:"
+            },
+            {
+              "name": "node_layer_norm_2&LayerNormalization&LayerNorm",
+              "cacheKey": "LayerNorm[4|0|0]:1:1|1|1|1|1:2;|2;:"
+            },
+            {
+              "name": "node_layer_norm_4&LayerNormalization&LayerNorm",
+              "cacheKey": "LayerNorm[4|0|0]:1:1|1|1|1|1:2;|2;:"
+            }
+          ],
+          "count": 44,
+          "durationUs": 21562,
+          "maxDurationUs": 1507
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {5695488} inputs[1] = {5695488} outputs[0] = {5695488} ",
+          "examples": [
+            {
+              "name": "node_mul_603&Mul&Mul",
+              "cacheKey": "Mul[E00]:3:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_mul_1100&Mul&Mul",
+              "cacheKey": "Mul[E00]:3:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_mul_1597&Mul&Mul",
+              "cacheKey": "Mul[E00]:3:1|1:5;|5;:5;"
+            }
+          ],
+          "count": 20,
+          "durationUs": 17233,
+          "maxDurationUs": 2818
+        },
+        {
+          "opType": "ReduceMean",
+          "programName": "ReduceMean",
+          "shapes": "inputs[0] = {1,2472,24,128} outputs[0] = {1,2472,24,1} ",
+          "examples": [
+            {
+              "name": "node_mean_1&ReduceMean&ReduceMean",
+              "cacheKey": "ReduceMean[1|0|0|64|3]:64,1,1:1:1:0;4:0;4"
+            },
+            {
+              "name": "node_mean&ReduceMean&ReduceMean",
+              "cacheKey": "ReduceMean[1|0|0|64|3]:64,1,1:1:1:0;4:0;4"
+            },
+            {
+              "name": "node_mean_5&ReduceMean&ReduceMean",
+              "cacheKey": "ReduceMean[1|0|0|64|3]:64,1,1:1:1:0;4:0;4"
+            }
+          ],
+          "count": 40,
+          "durationUs": 14943,
+          "maxDurationUs": 590
+        },
+        {
+          "opType": "Split",
+          "programName": "Split",
+          "shapes": "inputs[0] = {1,2984,3072} outputs[0] = {1,512,3072} outputs[1] = {1,2472,3072} ",
+          "examples": [
+            {
+              "name": "node_Split_4543&Split&Split",
+              "cacheKey": "Split[1]:3:1|2:3;3:3|3"
+            },
+            {
+              "name": "node_Split_4592&Split&Split",
+              "cacheKey": "Split[1]:3:1|2:3;3:3|3"
+            },
+            {
+              "name": "node_Split_4641&Split&Split",
+              "cacheKey": "Split[1]:3:1|2:3;3:3|3"
+            }
+          ],
+          "count": 20,
+          "durationUs": 12123,
+          "maxDurationUs": 2621
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {1898496} inputs[1] = {768} outputs[0] = {1898496} ",
+          "examples": [
+            {
+              "name": "node_add_221&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_add_626&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_add_708&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:5;|5;:5;:3|3|3"
+            }
+          ],
+          "count": 44,
+          "durationUs": 11872,
+          "maxDurationUs": 2425
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {1898496} inputs[1] = {1,2472,24,1} outputs[0] = {1898496} ",
+          "examples": [
+            {
+              "name": "node_mul_264&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|4"
+            },
+            {
+              "name": "node_mul_229&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|4"
+            },
+            {
+              "name": "node_mul_761&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|4"
+            }
+          ],
+          "count": 40,
+          "durationUs": 11865,
+          "maxDurationUs": 459
+        },
+        {
+          "opType": "Pow",
+          "programName": "Pow",
+          "shapes": "inputs[0] = {393216} inputs[1] = {1} outputs[0] = {393216} ",
+          "examples": [
+            {
+              "name": "node_pow_12&Pow&Pow",
+              "cacheKey": "Pow[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_pow_11&Pow&Pow",
+              "cacheKey": "Pow[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_pow_16&Pow&Pow",
+              "cacheKey": "Pow[E01]:1:1|1:2;|2;:2;"
+            }
+          ],
+          "count": 40,
+          "durationUs": 11673,
+          "maxDurationUs": 1835
+        },
+        {
+          "opType": "Clip",
+          "programName": "Clip",
+          "shapes": "inputs[0] = {2291712} outputs[0] = {2291712} ",
+          "examples": [
+            {
+              "name": "node_Clip_5581&Clip&Clip",
+              "cacheKey": "Clip:1:1|1:5;:"
+            },
+            {
+              "name": "node_Clip_5586&Clip&Clip",
+              "cacheKey": "Clip:1:1|1:5;:"
+            },
+            {
+              "name": "node_Clip_5591&Clip&Clip",
+              "cacheKey": "Clip:1:1|1:5;:"
+            }
+          ],
+          "count": 80,
+          "durationUs": 11402,
+          "maxDurationUs": 393
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {1898496} inputs[1] = {32} outputs[0] = {1898496} ",
+          "examples": [
+            {
+              "name": "node_mul_268&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|2;:2;:4|4|1"
+            },
+            {
+              "name": "node_mul_233&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|2;:2;:4|4|1"
+            },
+            {
+              "name": "node_mul_765&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|2;:2;:4|4|1"
+            }
+          ],
+          "count": 40,
+          "durationUs": 11271,
+          "maxDurationUs": 393
+        },
+        {
+          "opType": "QuickGelu",
+          "programName": "QuickGelu",
+          "shapes": "inputs[0] = {5695488} outputs[0] = {5695488} ",
+          "examples": [
+            {
+              "name": "node_silu_4/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:5;:"
+            },
+            {
+              "name": "node_silu_6/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:5;:"
+            },
+            {
+              "name": "node_silu_8/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:5;:"
+            }
+          ],
+          "count": 20,
+          "durationUs": 10747,
+          "maxDurationUs": 2490
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {1898496} inputs[1] = {1898496} outputs[0] = {1898496} ",
+          "examples": [
+            {
+              "name": "node_add_615&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_add_651&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_add_1102&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:5;|5;:5;"
+            }
+          ],
+          "count": 40,
+          "durationUs": 10627,
+          "maxDurationUs": 2097
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {393216} inputs[1] = {393216} outputs[0] = {393216} ",
+          "examples": [
+            {
+              "name": "node_add_658&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_add_694&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_add_1145&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:5;|5;:5;"
+            }
+          ],
+          "count": 40,
+          "durationUs": 9900,
+          "maxDurationUs": 1638
+        },
+        {
+          "opType": "Slice",
+          "programName": "Slice",
+          "shapes": "inputs[0] = {1,2984,3072} outputs[0] = {1,2472,3072} ",
+          "examples": [
+            {
+              "name": "node_slice_106&Slice&Slice",
+              "cacheKey": "Slice:3:1|3|3|3:3;3:"
+            },
+            {
+              "name": "node_slice_106&Slice&Slice",
+              "cacheKey": "Slice:3:1|3|3|3:3;3:"
+            },
+            {
+              "name": "node_slice_106&Slice&Slice",
+              "cacheKey": "Slice:3:1|3|3|3:3;3:"
+            }
+          ],
+          "count": 4,
+          "durationUs": 9438,
+          "maxDurationUs": 2884
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {1} inputs[1] = {1} outputs[0] = {1} ",
+          "examples": [
+            {
+              "name": "node_mul_4&Mul&Mul",
+              "cacheKey": "Mul[E11]:1:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_mul_4&Mul&Mul",
+              "cacheKey": "Mul[E11]:1:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_mul_4&Mul&Mul",
+              "cacheKey": "Mul[E11]:1:1|1:5;|5;:5;"
+            }
+          ],
+          "count": 4,
+          "durationUs": 9175,
+          "maxDurationUs": 5439
+        },
+        {
+          "opType": "Gemm",
+          "programName": "Gemm",
+          "shapes": "inputs[0] = {1,768} inputs[1] = {18432,768} outputs[0] = {1,4608} ",
+          "examples": [
+            {
+              "name": "node_linear_3&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            },
+            {
+              "name": "node_linear_2&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            },
+            {
+              "name": "node_linear_3&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            }
+          ],
+          "count": 8,
+          "durationUs": 8979,
+          "maxDurationUs": 1245
+        },
+        {
+          "opType": "Clip",
+          "programName": "Clip",
+          "shapes": "inputs[0] = {393216} outputs[0] = {393216} ",
+          "examples": [
+            {
+              "name": "node_Clip_5508&Clip&Clip",
+              "cacheKey": "Clip:1:1|1:5;:"
+            },
+            {
+              "name": "node_Clip_5525&Clip&Clip",
+              "cacheKey": "Clip:1:1|1:5;:"
+            },
+            {
+              "name": "node_Clip_5542&Clip&Clip",
+              "cacheKey": "Clip:1:1|1:5;:"
+            }
+          ],
+          "count": 20,
+          "durationUs": 8456,
+          "maxDurationUs": 1638
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {1898496} inputs[1] = {768} outputs[0] = {1898496} ",
+          "examples": [
+            {
+              "name": "node_mul_584&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_mul_1081&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_mul_1578&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            }
+          ],
+          "count": 24,
+          "durationUs": 7737,
+          "maxDurationUs": 2097
+        },
+        {
+          "opType": "Expand",
+          "programName": "Expand",
+          "shapes": "inputs[0] = {2472,16,1} outputs[0] = {2472,16,2} ",
+          "examples": [
+            {
+              "name": "node_Expand_170&Expand&Expand",
+              "cacheKey": "Expand:1:1:0;3:0;3"
+            },
+            {
+              "name": "node_Expand_146&Expand&Expand",
+              "cacheKey": "Expand:1:1:0;3:0;3"
+            },
+            {
+              "name": "node_Expand_123&Expand&Expand",
+              "cacheKey": "Expand:1:1:0;3:0;3"
+            }
+          ],
+          "count": 32,
+          "durationUs": 5113,
+          "maxDurationUs": 1114
+        },
+        {
+          "opType": "ReduceMean",
+          "programName": "ReduceMean",
+          "shapes": "inputs[0] = {1,512,24,128} outputs[0] = {1,512,24,1} ",
+          "examples": [
+            {
+              "name": "node_mean_3&ReduceMean&ReduceMean",
+              "cacheKey": "ReduceMean[1|0|0|64|3]:64,1,1:1:1:0;4:0;4"
+            },
+            {
+              "name": "node_mean_2&ReduceMean&ReduceMean",
+              "cacheKey": "ReduceMean[1|0|0|64|3]:64,1,1:1:1:0;4:0;4"
+            },
+            {
+              "name": "node_mean_7&ReduceMean&ReduceMean",
+              "cacheKey": "ReduceMean[1|0|0|64|3]:64,1,1:1:1:0;4:0;4"
+            }
+          ],
+          "count": 40,
+          "durationUs": 4862,
+          "maxDurationUs": 590
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {393216} inputs[1] = {1,512,24,1} outputs[0] = {393216} ",
+          "examples": [
+            {
+              "name": "node_mul_343&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|4"
+            },
+            {
+              "name": "node_mul_308&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|4"
+            },
+            {
+              "name": "node_mul_840&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|4"
+            }
+          ],
+          "count": 40,
+          "durationUs": 4605,
+          "maxDurationUs": 1966
+        },
+        {
+          "opType": "Concat",
+          "programName": "Concat",
+          "shapes": "inputs[0] = {1,512,3072} inputs[1] = {1,2472,3072} outputs[0] = {1,2984,3072} ",
+          "examples": [
+            {
+              "name": "node_cat_23&Concat&Concat",
+              "cacheKey": "Concat[2,1]:3:2|2|1:3;3|3;3:"
+            },
+            {
+              "name": "node_cat_23&Concat&Concat",
+              "cacheKey": "Concat[2,1]:3:2|2|1:3;3|3;3:"
+            },
+            {
+              "name": "node_cat_23&Concat&Concat",
+              "cacheKey": "Concat[2,1]:3:2|2|1:3;3|3;3:"
+            }
+          ],
+          "count": 4,
+          "durationUs": 4064,
+          "maxDurationUs": 2687
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {393216} inputs[1] = {768} outputs[0] = {393216} ",
+          "examples": [
+            {
+              "name": "node_mul_627&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_mul_1124&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_mul_1621&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:5;|5;:5;:3|3|3"
+            }
+          ],
+          "count": 20,
+          "durationUs": 2955,
+          "maxDurationUs": 1376
+        },
+        {
+          "opType": "Gemm",
+          "programName": "Gemm",
+          "shapes": "inputs[0] = {1,768} inputs[1] = {6144,768} outputs[0] = {1,1536} ",
+          "examples": [
+            {
+              "name": "node_linear_107&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            },
+            {
+              "name": "node_linear_107&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            },
+            {
+              "name": "node_linear_107&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            }
+          ],
+          "count": 4,
+          "durationUs": 2818,
+          "maxDurationUs": 1049
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {768} inputs[1] = {1} outputs[0] = {768} ",
+          "examples": [
+            {
+              "name": "node_add_228&Add&Add",
+              "cacheKey": "Add[E01]:1:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_add_216&Add&Add",
+              "cacheKey": "Add[E01]:1:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_add_665&Add&Add",
+              "cacheKey": "Add[E01]:1:1|1:5;|5;:5;"
+            }
+          ],
+          "count": 24,
+          "durationUs": 2753,
+          "maxDurationUs": 1901
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {393216} inputs[1] = {32} outputs[0] = {393216} ",
+          "examples": [
+            {
+              "name": "node_mul_347&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|2;:2;:4|4|1"
+            },
+            {
+              "name": "node_mul_312&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|2;:2;:4|4|1"
+            },
+            {
+              "name": "node_mul_844&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|2;:2;:4|4|1"
+            }
+          ],
+          "count": 40,
+          "durationUs": 2573,
+          "maxDurationUs": 197
+        },
+        {
+          "opType": "QuickGelu",
+          "programName": "QuickGelu",
+          "shapes": "inputs[0] = {1179648} outputs[0] = {1179648} ",
+          "examples": [
+            {
+              "name": "node_silu_5/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:1:1|1:5;:"
+            },
+            {
+              "name": "node_silu_7/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:1:1|1:5;:"
+            },
+            {
+              "name": "node_silu_9/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:1:1|1:5;:"
+            }
+          ],
+          "count": 20,
+          "durationUs": 2558,
+          "maxDurationUs": 328
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {1179648} inputs[1] = {1179648} outputs[0] = {1179648} ",
+          "examples": [
+            {
+              "name": "node_mul_646&Mul&Mul",
+              "cacheKey": "Mul[E00]:1:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_mul_1143&Mul&Mul",
+              "cacheKey": "Mul[E00]:1:1|1:5;|5;:5;"
+            },
+            {
+              "name": "node_mul_1640&Mul&Mul",
+              "cacheKey": "Mul[E00]:1:1|1:5;|5;:5;"
+            }
+          ],
+          "count": 20,
+          "durationUs": 2557,
+          "maxDurationUs": 262
+        },
+        {
+          "opType": "MatMulNBits",
+          "programName": "MatMulNBitsWideTile",
+          "shapes": "inputs[0] = {1,2472,768} inputs[1] = {128,96,2} inputs[2] = {128,96} inputs[3] = {3072} outputs[0] = {1,2472,128} ",
+          "examples": [
+            {
+              "name": "node_linear_108_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_108_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_108_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            }
+          ],
+          "count": 4,
+          "durationUs": 2555,
+          "maxDurationUs": 655
+        },
+        {
+          "opType": "Gemm",
+          "programName": "Gemm",
+          "shapes": "inputs[0] = {1,768} inputs[1] = {9216,768} outputs[0] = {1,2304} ",
+          "examples": [
+            {
+              "name": "node_linear_4&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            },
+            {
+              "name": "node_linear_4&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            },
+            {
+              "name": "node_linear_4&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            }
+          ],
+          "count": 4,
+          "durationUs": 2491,
+          "maxDurationUs": 721
+        },
+        {
+          "opType": "MatMulNBits",
+          "programName": "MatMulNBitsWideTile",
+          "shapes": "inputs[0] = {1,2472,32} inputs[1] = {3072,4,2} inputs[2] = {3072,4} inputs[3] = {3072} outputs[0] = {1,2472,3072} ",
+          "examples": [
+            {
+              "name": "node_linear_5_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_5_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            },
+            {
+              "name": "node_linear_5_Q8&MatMulNBits&MatMulNBitsWideTile",
+              "cacheKey": "MatMulNBitsWideTile[8|1|0|0|0]:128,1,1:3:1|1|1|1|1|1|1|1|1|1:5;3|17;3|3;2|15;1:3;3"
+            }
+          ],
+          "count": 4,
+          "durationUs": 2360,
+          "maxDurationUs": 590
+        },
+        {
+          "opType": "LayerNormalization",
+          "programName": "LayerNorm",
+          "shapes": "inputs[0] = {393216} inputs[1] = {768} outputs[0] = {393216} ",
+          "examples": [
+            {
+              "name": "node_layer_norm_1&LayerNormalization&LayerNorm",
+              "cacheKey": "LayerNorm[4|0|0]:1:1|1|1|1|1:2;|2;:"
+            },
+            {
+              "name": "node_layer_norm_3&LayerNormalization&LayerNorm",
+              "cacheKey": "LayerNorm[4|0|0]:1:1|1|1|1|1:2;|2;:"
+            },
+            {
+              "name": "node_layer_norm_5&LayerNormalization&LayerNorm",
+              "cacheKey": "LayerNorm[4|0|0]:1:1|1|1|1|1:2;|2;:"
+            }
+          ],
+          "count": 40,
+          "durationUs": 2307,
+          "maxDurationUs": 197
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {393216} inputs[1] = {768} outputs[0] = {393216} ",
+          "examples": [
+            {
+              "name": "node_add_232&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_add_669&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:5;|5;:5;:3|3|3"
+            },
+            {
+              "name": "node_add_719&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:5;|5;:5;:3|3|3"
+            }
+          ],
+          "count": 40,
+          "durationUs": 2175,
+          "maxDurationUs": 131
+        },
+        {
+          "opType": "Reciprocal",
+          "programName": "Reciprocal",
+          "shapes": "inputs[0] = {3072} outputs[0] = {3072} ",
+          "examples": [
+            {
+              "name": "node_rsqrt_3&Reciprocal&Reciprocal",
+              "cacheKey": "Reciprocal:1:1|:2;:"
+            },
+            {
+              "name": "node_rsqrt_2&Reciprocal&Reciprocal",
+              "cacheKey": "Reciprocal:1:1|:2;:"
+            },
+            {
+              "name": "node_rsqrt_7&Reciprocal&Reciprocal",
+              "cacheKey": "Reciprocal:1:1|:2;:"
+            }
+          ],
+          "count": 40,
+          "durationUs": 1376,
+          "maxDurationUs": 1245
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {17904} inputs[1] = {1} outputs[0] = {17904} ",
+          "examples": [
+            {
+              "name": "node_add_2738&Add&Add",
+              "cacheKey": "Add[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_2705&Add&Add",
+              "cacheKey": "Add[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_3034&Add&Add",
+              "cacheKey": "Add[E01]:1:1|1:2;|2;:2;"
+            }
+          ],
+          "count": 160,
+          "durationUs": 1320,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Gemm",
+          "programName": "Gemm",
+          "shapes": "inputs[0] = {1,768} inputs[1] = {3072,768} outputs[0] = {1,768} ",
+          "examples": [
+            {
+              "name": "node_linear_1&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            },
+            {
+              "name": "node_linear_1&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            },
+            {
+              "name": "node_linear_1&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            }
+          ],
+          "count": 4,
+          "durationUs": 1311,
+          "maxDurationUs": 459
+        },
+        {
+          "opType": "Cos",
+          "programName": "Cos",
+          "shapes": "inputs[0] = {2048} outputs[0] = {2048} ",
+          "examples": [
+            {
+              "name": "node_cos_8&Cos&Cos",
+              "cacheKey": "Cos:1:1|:2;:"
+            },
+            {
+              "name": "node_cos_7&Cos&Cos",
+              "cacheKey": "Cos:1:1|:2;:"
+            },
+            {
+              "name": "node_cos_6&Cos&Cos",
+              "cacheKey": "Cos:1:1|:2;:"
+            }
+          ],
+          "count": 16,
+          "durationUs": 983,
+          "maxDurationUs": 262
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {3072} inputs[1] = {1} outputs[0] = {3072} ",
+          "examples": [
+            {
+              "name": "node_add_389&Add&Add",
+              "cacheKey": "Add[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_356&Add&Add",
+              "cacheKey": "Add[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_876&Add&Add",
+              "cacheKey": "Add[E01]:1:1|1:2;|2;:2;"
+            }
+          ],
+          "count": 40,
+          "durationUs": 918,
+          "maxDurationUs": 524
+        },
+        {
+          "opType": "Sqrt",
+          "programName": "Sqrt",
+          "shapes": "inputs[0] = {17904} outputs[0] = {17904} ",
+          "examples": [
+            {
+              "name": "node_Sqrt_1341&Sqrt&Sqrt",
+              "cacheKey": "Sqrt:1:1|:2;:"
+            },
+            {
+              "name": "node_Sqrt_1337&Sqrt&Sqrt",
+              "cacheKey": "Sqrt:1:1|:2;:"
+            },
+            {
+              "name": "node_Sqrt_1497&Sqrt&Sqrt",
+              "cacheKey": "Sqrt:1:1|:2;:"
+            }
+          ],
+          "count": 160,
+          "durationUs": 855,
+          "maxDurationUs": 328
+        },
+        {
+          "opType": "Reciprocal",
+          "programName": "Reciprocal",
+          "shapes": "inputs[0] = {17904} outputs[0] = {17904} ",
+          "examples": [
+            {
+              "name": "node_rsqrt_21&Reciprocal&Reciprocal",
+              "cacheKey": "Reciprocal:1:1|:2;:"
+            },
+            {
+              "name": "node_rsqrt_20&Reciprocal&Reciprocal",
+              "cacheKey": "Reciprocal:1:1|:2;:"
+            },
+            {
+              "name": "node_rsqrt_23&Reciprocal&Reciprocal",
+              "cacheKey": "Reciprocal:1:1|:2;:"
+            }
+          ],
+          "count": 160,
+          "durationUs": 790,
+          "maxDurationUs": 197
+        },
+        {
+          "opType": "Expand",
+          "programName": "Expand",
+          "shapes": "inputs[0] = {512,16,1} outputs[0] = {512,16,2} ",
+          "examples": [
+            {
+              "name": "node_Expand_262&Expand&Expand",
+              "cacheKey": "Expand:1:1:0;3:0;3"
+            },
+            {
+              "name": "node_Expand_239&Expand&Expand",
+              "cacheKey": "Expand:1:1:0;3:0;3"
+            },
+            {
+              "name": "node_Expand_216&Expand&Expand",
+              "cacheKey": "Expand:1:1:0;3:0;3"
+            }
+          ],
+          "count": 32,
+          "durationUs": 592,
+          "maxDurationUs": 262
+        },
+        {
+          "opType": "Split",
+          "programName": "Split",
+          "shapes": "inputs[0] = {1,1,18432} outputs[0] = {1,1,3072} outputs[1] = {1,1,3072} outputs[2] = {1,1,3072} outputs[3] = {1,1,3072} outputs[4] = {1,1,3072} outputs[5] = {1,1,3072} ",
+          "examples": [
+            {
+              "name": "node_Split_4516&Split&Split",
+              "cacheKey": "Split[2]:1:1|6:3;3:3|3|3|3|3|3"
+            },
+            {
+              "name": "node_Split_4508&Split&Split",
+              "cacheKey": "Split[2]:1:1|6:3;3:3|3|3|3|3|3"
+            },
+            {
+              "name": "node_Split_4516&Split&Split",
+              "cacheKey": "Split[2]:1:1|6:3;3:3|3|3|3|3|3"
+            }
+          ],
+          "count": 8,
+          "durationUs": 590,
+          "maxDurationUs": 328
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {1,1} inputs[1] = {32} outputs[0] = {32} ",
+          "examples": [
+            {
+              "name": "node_mul_10&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:0;|2;:2;:2|2|2"
+            },
+            {
+              "name": "node_mul_10&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:0;|2;:2;:2|2|2"
+            },
+            {
+              "name": "node_mul_10&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:0;|2;:2;:2|2|2"
+            }
+          ],
+          "count": 4,
+          "durationUs": 524,
+          "maxDurationUs": 262
+        },
+        {
+          "opType": "Cast",
+          "programName": "Cast",
+          "shapes": "inputs[0] = {1} outputs[0] = {1} ",
+          "examples": [
+            {
+              "name": "node__to_copy&Cast&Cast",
+              "cacheKey": "Cast[1]:1:1|1:5;:"
+            },
+            {
+              "name": "node__to_copy&Cast&Cast",
+              "cacheKey": "Cast[1]:1:1|1:5;:"
+            },
+            {
+              "name": "node__to_copy&Cast&Cast",
+              "cacheKey": "Cast[1]:1:1|1:5;:"
+            }
+          ],
+          "count": 4,
+          "durationUs": 459,
+          "maxDurationUs": 262
+        },
+        {
+          "opType": "Concat",
+          "programName": "Concat",
+          "shapes": "inputs[0] = {2472,32} inputs[1] = {2472,32} inputs[2] = {2472,32} inputs[3] = {2472,32} outputs[0] = {2472,128} ",
+          "examples": [
+            {
+              "name": "node_cat_3&Concat&Concat",
+              "cacheKey": "Concat[4,1]:1:4|4|1:0;2|0;2|0;2|0;2:"
+            },
+            {
+              "name": "node_cat_2&Concat&Concat",
+              "cacheKey": "Concat[4,1]:1:4|4|1:0;2|0;2|0;2|0;2:"
+            },
+            {
+              "name": "node_cat_3&Concat&Concat",
+              "cacheKey": "Concat[4,1]:1:4|4|1:0;2|0;2|0;2|0;2:"
+            }
+          ],
+          "count": 8,
+          "durationUs": 329,
+          "maxDurationUs": 131
+        },
+        {
+          "opType": "Concat",
+          "programName": "Concat",
+          "shapes": "inputs[0] = {512,128} inputs[1] = {2472,128} outputs[0] = {2984,128} ",
+          "examples": [
+            {
+              "name": "node_cat_7&Concat&Concat",
+              "cacheKey": "Concat[2,0]:1:2|2|1:0;2|0;2:"
+            },
+            {
+              "name": "node_cat_6&Concat&Concat",
+              "cacheKey": "Concat[2,0]:1:2|2|1:0;2|0;2:"
+            },
+            {
+              "name": "node_cat_7&Concat&Concat",
+              "cacheKey": "Concat[2,0]:1:2|2|1:0;2|0;2:"
+            }
+          ],
+          "count": 8,
+          "durationUs": 264,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Concat",
+          "programName": "Concat",
+          "shapes": "inputs[0] = {512,32} inputs[1] = {512,32} inputs[2] = {512,32} inputs[3] = {512,32} outputs[0] = {512,128} ",
+          "examples": [
+            {
+              "name": "node_cat_5&Concat&Concat",
+              "cacheKey": "Concat[4,1]:1:4|4|1:0;2|0;2|0;2|0;2:"
+            },
+            {
+              "name": "node_cat_4&Concat&Concat",
+              "cacheKey": "Concat[4,1]:1:4|4|1:0;2|0;2|0;2|0;2:"
+            },
+            {
+              "name": "node_cat_5&Concat&Concat",
+              "cacheKey": "Concat[4,1]:1:4|4|1:0;2|0;2|0;2|0;2:"
+            }
+          ],
+          "count": 8,
+          "durationUs": 263,
+          "maxDurationUs": 197
+        },
+        {
+          "opType": "Gemm",
+          "programName": "Gemm",
+          "shapes": "inputs[0] = {1,64} inputs[1] = {3072,64} outputs[0] = {1,768} ",
+          "examples": [
+            {
+              "name": "node_linear&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            },
+            {
+              "name": "node_linear&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            },
+            {
+              "name": "node_linear&Gemm&Gemm",
+              "cacheKey": "Gemm[1|0|1|0|1]:8,8,1:1:1|1|1|1|1|1|1|1:5;2|5;2:5;2"
+            }
+          ],
+          "count": 4,
+          "durationUs": 198,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Cos",
+          "programName": "Cos",
+          "shapes": "inputs[0] = {32} outputs[0] = {32} ",
+          "examples": [
+            {
+              "name": "node_cos&Cos&Cos",
+              "cacheKey": "Cos:1:1|:2;:"
+            },
+            {
+              "name": "node_cos&Cos&Cos",
+              "cacheKey": "Cos:1:1|:2;:"
+            },
+            {
+              "name": "node_cos&Cos&Cos",
+              "cacheKey": "Cos:1:1|:2;:"
+            }
+          ],
+          "count": 4,
+          "durationUs": 197,
+          "maxDurationUs": 131
+        },
+        {
+          "opType": "Sin",
+          "programName": "Sin",
+          "shapes": "inputs[0] = {32} outputs[0] = {32} ",
+          "examples": [
+            {
+              "name": "node_sin&Sin&Sin",
+              "cacheKey": "Sin:1:1|:2;:"
+            },
+            {
+              "name": "node_sin&Sin&Sin",
+              "cacheKey": "Sin:1:1|:2;:"
+            },
+            {
+              "name": "node_sin&Sin&Sin",
+              "cacheKey": "Sin:1:1|:2;:"
+            }
+          ],
+          "count": 4,
+          "durationUs": 197,
+          "maxDurationUs": 197
+        },
+        {
+          "opType": "Sin",
+          "programName": "Sin",
+          "shapes": "inputs[0] = {9888} outputs[0] = {9888} ",
+          "examples": [
+            {
+              "name": "node_sin_4&Sin&Sin",
+              "cacheKey": "Sin:1:1|:2;:"
+            },
+            {
+              "name": "node_sin_3&Sin&Sin",
+              "cacheKey": "Sin:1:1|:2;:"
+            },
+            {
+              "name": "node_sin_2&Sin&Sin",
+              "cacheKey": "Sin:1:1|:2;:"
+            }
+          ],
+          "count": 16,
+          "durationUs": 197,
+          "maxDurationUs": 131
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {14832} inputs[1] = {1} outputs[0] = {14832} ",
+          "examples": [
+            {
+              "name": "node_add_311&Add&Add",
+              "cacheKey": "Add[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_278&Add&Add",
+              "cacheKey": "Add[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_798&Add&Add",
+              "cacheKey": "Add[E01]:1:1|1:2;|2;:2;"
+            }
+          ],
+          "count": 40,
+          "durationUs": 132,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Cos",
+          "programName": "Cos",
+          "shapes": "inputs[0] = {9888} outputs[0] = {9888} ",
+          "examples": [
+            {
+              "name": "node_cos_4&Cos&Cos",
+              "cacheKey": "Cos:1:1|:2;:"
+            },
+            {
+              "name": "node_cos_3&Cos&Cos",
+              "cacheKey": "Cos:1:1|:2;:"
+            },
+            {
+              "name": "node_cos_2&Cos&Cos",
+              "cacheKey": "Cos:1:1|:2;:"
+            }
+          ],
+          "count": 16,
+          "durationUs": 132,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {2472,1} inputs[1] = {4} outputs[0] = {9888} ",
+          "examples": [
+            {
+              "name": "node_mul_77&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:0;|2;:2;:2|2|1"
+            },
+            {
+              "name": "node_mul_61&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:0;|2;:2;:2|2|1"
+            },
+            {
+              "name": "node_mul_45&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:0;|2;:2;:2|2|1"
+            }
+          ],
+          "count": 16,
+          "durationUs": 132,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "QuickGelu",
+          "programName": "QuickGelu",
+          "shapes": "inputs[0] = {768} outputs[0] = {768} ",
+          "examples": [
+            {
+              "name": "node_silu/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:1:1|1:5;:"
+            },
+            {
+              "name": "node_silu_1/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:1:1|1:5;:"
+            },
+            {
+              "name": "node_silu/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:1:1|1:5;:"
+            }
+          ],
+          "count": 8,
+          "durationUs": 132,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Slice",
+          "programName": "Slice",
+          "shapes": "inputs[0] = {1,256} outputs[0] = {1,128} ",
+          "examples": [
+            {
+              "name": "node_slice_5&Slice&Slice",
+              "cacheKey": "Slice:1:1|2|2|2:0;2:"
+            },
+            {
+              "name": "node_slice_3&Slice&Slice",
+              "cacheKey": "Slice:1:1|2|2|2:0;2:"
+            },
+            {
+              "name": "node_slice_5&Slice&Slice",
+              "cacheKey": "Slice:1:1|2|2|2:0;2:"
+            }
+          ],
+          "count": 8,
+          "durationUs": 132,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Sqrt",
+          "programName": "Sqrt",
+          "shapes": "inputs[0] = {14832} outputs[0] = {14832} ",
+          "examples": [
+            {
+              "name": "node_Sqrt_308&Sqrt&Sqrt",
+              "cacheKey": "Sqrt:1:1|:2;:"
+            },
+            {
+              "name": "node_Sqrt_304&Sqrt&Sqrt",
+              "cacheKey": "Sqrt:1:1|:2;:"
+            },
+            {
+              "name": "node_Sqrt_520&Sqrt&Sqrt",
+              "cacheKey": "Sqrt:1:1|:2;:"
+            }
+          ],
+          "count": 40,
+          "durationUs": 132,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Sqrt",
+          "programName": "Sqrt",
+          "shapes": "inputs[0] = {3072} outputs[0] = {3072} ",
+          "examples": [
+            {
+              "name": "node_Sqrt_334&Sqrt&Sqrt",
+              "cacheKey": "Sqrt:1:1|:2;:"
+            },
+            {
+              "name": "node_Sqrt_330&Sqrt&Sqrt",
+              "cacheKey": "Sqrt:1:1|:2;:"
+            },
+            {
+              "name": "node_Sqrt_546&Sqrt&Sqrt",
+              "cacheKey": "Sqrt:1:1|:2;:"
+            }
+          ],
+          "count": 40,
+          "durationUs": 132,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Cast",
+          "programName": "Cast",
+          "shapes": "inputs[0] = {64} outputs[0] = {64} ",
+          "examples": [
+            {
+              "name": "node__to_copy_1&Cast&Cast",
+              "cacheKey": "Cast[10]:1:1|1:2;:"
+            },
+            {
+              "name": "node__to_copy_1&Cast&Cast",
+              "cacheKey": "Cast[10]:1:1|1:2;:"
+            },
+            {
+              "name": "node__to_copy_1&Cast&Cast",
+              "cacheKey": "Cast[10]:1:1|1:2;:"
+            }
+          ],
+          "count": 4,
+          "durationUs": 66,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Concat",
+          "programName": "Concat",
+          "shapes": "inputs[0] = {1,128} inputs[1] = {1,128} outputs[0] = {1,256} ",
+          "examples": [
+            {
+              "name": "node_cat&Concat&Concat",
+              "cacheKey": "Concat[2,1]:1:2|2|1:0;2|0;2:"
+            },
+            {
+              "name": "node_cat_1&Concat&Concat",
+              "cacheKey": "Concat[2,1]:1:2|2|1:0;2|0;2:"
+            },
+            {
+              "name": "node_cat&Concat&Concat",
+              "cacheKey": "Concat[2,1]:1:2|2|1:0;2|0;2:"
+            }
+          ],
+          "count": 8,
+          "durationUs": 66,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Gather",
+          "programName": "Gather",
+          "shapes": "inputs[0] = {9888} inputs[1] = {} outputs[0] = {2472} ",
+          "examples": [
+            {
+              "name": "node_select_5&Gather&Gather",
+              "cacheKey": "Gather[1]:1:1|1:0;1|12;0:1:2|1"
+            },
+            {
+              "name": "node_select_4&Gather&Gather",
+              "cacheKey": "Gather[1]:1:1|1:0;1|12;0:1:2|1"
+            },
+            {
+              "name": "node_select_3&Gather&Gather",
+              "cacheKey": "Gather[1]:1:1|1:0;1|12;0:1:2|1"
+            }
+          ],
+          "count": 16,
+          "durationUs": 66,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {512,1} inputs[1] = {4} outputs[0] = {2048} ",
+          "examples": [
+            {
+              "name": "node_mul_147&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:0;|2;:2;:2|2|1"
+            },
+            {
+              "name": "node_mul_131&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:0;|2;:2;:2|2|1"
+            },
+            {
+              "name": "node_mul_115&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:0;|2;:2;:2|2|1"
+            }
+          ],
+          "count": 16,
+          "durationUs": 66,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Reciprocal",
+          "programName": "Reciprocal",
+          "shapes": "inputs[0] = {14832} outputs[0] = {14832} ",
+          "examples": [
+            {
+              "name": "node_rsqrt_1&Reciprocal&Reciprocal",
+              "cacheKey": "Reciprocal:1:1|:2;:"
+            },
+            {
+              "name": "node_rsqrt&Reciprocal&Reciprocal",
+              "cacheKey": "Reciprocal:1:1|:2;:"
+            },
+            {
+              "name": "node_rsqrt_5&Reciprocal&Reciprocal",
+              "cacheKey": "Reciprocal:1:1|:2;:"
+            }
+          ],
+          "count": 40,
+          "durationUs": 66,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Split",
+          "programName": "Split",
+          "shapes": "inputs[0] = {1,1,9216} outputs[0] = {1,1,3072} outputs[1] = {1,1,3072} outputs[2] = {1,1,3072} ",
+          "examples": [
+            {
+              "name": "node_Split_4753&Split&Split",
+              "cacheKey": "Split[2]:1:1|3:3;3:3|3|3"
+            },
+            {
+              "name": "node_Split_4753&Split&Split",
+              "cacheKey": "Split[2]:1:1|3:3;3:3|3|3"
+            },
+            {
+              "name": "node_Split_4753&Split&Split",
+              "cacheKey": "Split[2]:1:1|3:3;3:3|3|3"
+            }
+          ],
+          "count": 4,
+          "durationUs": 66,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Gather",
+          "programName": "Gather",
+          "shapes": "inputs[0] = {2048} inputs[1] = {} outputs[0] = {512} ",
+          "examples": [
+            {
+              "name": "node_select_9&Gather&Gather",
+              "cacheKey": "Gather[1]:1:1|1:0;1|12;0:1:2|1"
+            },
+            {
+              "name": "node_select_8&Gather&Gather",
+              "cacheKey": "Gather[1]:1:1|1:0;1|12;0:1:2|1"
+            },
+            {
+              "name": "node_select_7&Gather&Gather",
+              "cacheKey": "Gather[1]:1:1|1:0;1|12;0:1:2|1"
+            }
+          ],
+          "count": 16,
+          "durationUs": 0,
+          "maxDurationUs": 0
+        },
+        {
+          "opType": "Sin",
+          "programName": "Sin",
+          "shapes": "inputs[0] = {2048} outputs[0] = {2048} ",
+          "examples": [
+            {
+              "name": "node_sin_8&Sin&Sin",
+              "cacheKey": "Sin:1:1|:2;:"
+            },
+            {
+              "name": "node_sin_7&Sin&Sin",
+              "cacheKey": "Sin:1:1|:2;:"
+            },
+            {
+              "name": "node_sin_6&Sin&Sin",
+              "cacheKey": "Sin:1:1|:2;:"
+            }
+          ],
+          "count": 16,
+          "durationUs": 0,
+          "maxDurationUs": 0
+        },
+        {
+          "opType": "Split",
+          "programName": "Split",
+          "shapes": "inputs[0] = {1,6144} outputs[0] = {1,3072} outputs[1] = {1,3072} ",
+          "examples": [
+            {
+              "name": "node_Split_5475&Split&Split",
+              "cacheKey": "Split[1]:1:1|2:3;2:2|2"
+            },
+            {
+              "name": "node_Split_5475&Split&Split",
+              "cacheKey": "Split[1]:1:1|2:3;2:2|2"
+            },
+            {
+              "name": "node_Split_5475&Split&Split",
+              "cacheKey": "Split[1]:1:1|2:3;2:2|2"
+            }
+          ],
+          "count": 4,
+          "durationUs": 0,
+          "maxDurationUs": 0
+        }
+      ],
+      "meaning": "Observed timestamp-query GPU intervals; do not add to Node spans or equate sum with wall-clock latency."
+    }
+  },
+  "endedBeforeRelease": true,
+  "sessionReleased": true,
+  "rawFile": "native-profile-4-denoise.json",
+  "rawSha256": "300e70700c669525a0aa7fe5f3821ffd9079349716a3bf7b024a04528e700ee2"
+}

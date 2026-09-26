@@ -1,0 +1,1 @@
+PASS: exact six trusted key edges; missing/extra/overflow/untrusted/retained053ef43 faults rejected; positive restored.

@@ -1,0 +1,136 @@
+{
+  "schema": "cf.marking-conservation/v1",
+  "status": "PASS",
+  "createdAt": "2026-09-25T15:24:02.771Z",
+  "sourceHashes": {
+    "../master.png": "77890d5b4b55daf076bfc6ca2da0b03fce16930feaca08223bc2d0822e2571cb",
+    "../fit-02/record.json": "2cad44597ba2643cb5d6f7d420aea122bbb57a01bb6bde6ca89972ce976a7b38",
+    "../fit-02/binding.json": "16e668748f842e1c1376e28617b42ef4a65d75cec124b4884c92c27cd1376384",
+    "../fit-02/parts/keyed.png": "295756e234973cc77918ce251151cbcbcf3b114ca1f9da21f773dc5ddf77aa7f",
+    "../fit-02/parts/atlas/eel.png": "ec6b20bf2d42112db1fb5d1987aa43a8b3a3eeff37a8548183833b3a30264537",
+    "../fit-02/parts/manifest.json": "d3bd33ef790b0cef998a3d6370353b66acc5a5c225b4819e6d52683911f29e50",
+    "../prompt.txt": "f3057446957dcd997d781e09b17cf638861249cfb2219329aa8a90dfafc83972",
+    "raw/striped.png": "b8a48cdd52542adb1c81664793af03e2aa91363005331c463b98889a02036ed5",
+    "prompts/striped.txt": "dc5e409be4b42c5c45a66926972a3bced84368ccdda3ab5e9e46df0092520495",
+    "raw/spotted.png": "620d93b878174653163eb18a117b4f082d020f560d5e76b929b3758d120baac4",
+    "prompts/spotted.txt": "fa5c92ec554745b35d7ab644b1b818cfa65ec5eb53cb8f0e72e0de0bc5c9f42a",
+    "raw/banded.png": "cbe3295460feba6477696bf06b482acfd88496c0a7654da03609a71b6f94ddb7",
+    "prompts/banded.txt": "a42851897d0bf8079e5039bd531c1c0ac40354fdc45fab1a6bce4a02a02a3e81",
+    "raw/mottled.png": "0aedea38129adc514ff7da4aa8be7f6592d3ba798d693c10e09b84100d48b063",
+    "prompts/mottled.txt": "fec72cdac36f63ba847153a9fb3db556d14e483c54fbda72da43fabd5f3e1837",
+    "raw/marbled.png": "11ba9b67c9c16a4e3915335e6ba63653917066c1669fcc4301f7bfd2875999e6",
+    "prompts/marbled.txt": "de31be6d5ec03116d56210f7418dfc56d51ab98eef119cd4c8e2affc4f017c4d",
+    "raw/eye-spotted.png": "a178ee3d5125dae343c1bff233c14a60ce79d3c43e6eb082f61eb84bd861e5ce",
+    "prompts/eye-spotted.txt": "ff1230e781926e86f00fad26e05a74ed3585856bfeaf19212c4d6eba7d71c8df"
+  },
+  "helperSha256": "564fc27404ee8721df715200b3144ecc5ab4a580dba62b2ad22a5a8c00b74f29",
+  "exclusion": {
+    "method": "none; every keyed-alpha pixel is eligible",
+    "excludedParts": []
+  },
+  "rows": [
+    {
+      "pattern": "striped",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 53507,
+      "opaqueEquivalentPixels": 7964.101960784314,
+      "rawOutsideAlphaPixels": 924824,
+      "sha256": "0fa73ade8c7561a8d95938d181546ad4e2a50ab32320c95b41934a0ae7e3703e",
+      "compositeFile": "composites/striped.png",
+      "compositeSha256": "3a5e91360fdbe4f644e558d8dac7c54b38678bcb8e970f1e1db91d2b7ca8f946"
+    },
+    {
+      "pattern": "spotted",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 18242,
+      "opaqueEquivalentPixels": 2345.164705882353,
+      "rawOutsideAlphaPixels": 410354,
+      "sha256": "3d85673723197be47a9cdb80afa2b6fc302fa2182fb251bfc607187eb8463be9",
+      "compositeFile": "composites/spotted.png",
+      "compositeSha256": "60cce3ce888d0e16fec0f61b8940a2a5ec698ccde86584bdd2b291f0f3c0bb03"
+    },
+    {
+      "pattern": "banded",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 26268,
+      "opaqueEquivalentPixels": 21750.066666666666,
+      "rawOutsideAlphaPixels": 583085,
+      "sha256": "d8400783a6f004b2796f7597079d8c5fb8456c7cdbf0570285f141038a7b2e06",
+      "compositeFile": "composites/banded.png",
+      "compositeSha256": "9444a3689b43b40a2936a2d18f00fcfc8e9bc5cab19075ff92e21ed913a14578"
+    },
+    {
+      "pattern": "mottled",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 69946,
+      "opaqueEquivalentPixels": 28189.866666666665,
+      "rawOutsideAlphaPixels": 1497961,
+      "sha256": "1675281b38cec4921cdc1b30d5cf83d295af96b8ad4679c97e222a379a1e1d44",
+      "compositeFile": "composites/mottled.png",
+      "compositeSha256": "5e4ed0a30bac223e9fbe42ebdb4d2b150ae91093bcd07bc9b5e845dbc2b37a71"
+    },
+    {
+      "pattern": "marbled",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 59170,
+      "opaqueEquivalentPixels": 2495.670588235294,
+      "rawOutsideAlphaPixels": 850865,
+      "sha256": "65e7ccd9fc6b28a55009ea3b7197a2321a25b2e46badc9b3853ae8fbebf9a930",
+      "compositeFile": "composites/marbled.png",
+      "compositeSha256": "f6f50b8d6bcf8f19faf15579ba1300a3da30205abdeb5234cfbf4c8e75b2a464"
+    },
+    {
+      "pattern": "eye-spotted",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 14395,
+      "opaqueEquivalentPixels": 2114.086274509804,
+      "rawOutsideAlphaPixels": 261842,
+      "sha256": "b8b3683c36c0b922a2ca253d2a9917170e932b1e8796f16831238fc0cf259622",
+      "compositeFile": "composites/eye-spotted.png",
+      "compositeSha256": "bf5e49d09415b820fffcfa3fd935f3608388fe5fd427c954e65617a101a3f6a6"
+    }
+  ],
+  "controls": {
+    "validAccepted": true,
+    "outsidePixelMutantRefused": true,
+    "outsidePixel": [
+      0,
+      0
+    ],
+    "mutantAssessment": {
+      "outsideAlphaPixels": 1,
+      "alphaExceedsKeyedPixels": 1,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 53508
+    }
+  },
+  "node": "v26.9.0",
+  "imageMagick": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org",
+  "sheetFile": "six-mask-sheet.png",
+  "sheetSha256": "75167eff2d230fec6f1736e62f3c7c250104c1f535531cd77ab9ef1e7aca4895",
+  "previewOnly": "Sheet cells are thumbnails; masks and composites remain unchanged 1254-square master coordinates."
+}

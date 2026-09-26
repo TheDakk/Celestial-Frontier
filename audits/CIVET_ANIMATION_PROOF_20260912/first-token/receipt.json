@@ -1,0 +1,83 @@
+{
+  "status": "MASTER_BUILT",
+  "qualityAccepted": false,
+  "topology": {
+    "connectedComponents": 1,
+    "componentVertices": [
+      89300
+    ],
+    "nonmanifoldEdges": 0,
+    "voxelSize": 0.011,
+    "sourceSampling": {
+      "tubeSides": 48,
+      "ellipsoidLatitudes": 32,
+      "ellipsoidLongitudes": 64,
+      "pathSteps": 5,
+      "path": "monotone Hermite; exact rings; bounded segment extrema"
+    },
+    "vertices": 89300,
+    "polygons": 89298
+  },
+  "weightError": 4.870335246209834e-08,
+  "clips": {
+    "idle": [
+      1,
+      24
+    ],
+    "attack": [
+      25,
+      48
+    ],
+    "hit": [
+      49,
+      64
+    ]
+  },
+  "devices": [
+    {
+      "name": "Apple M4 Pro",
+      "type": "CPU",
+      "use": false
+    },
+    {
+      "name": "Apple M4 Pro (GPU - 16 cores)",
+      "type": "METAL",
+      "use": true
+    }
+  ],
+  "genome": {
+    "_cradle": 1,
+    "_earthName": "Civet",
+    "accent": 3,
+    "behavior": 9,
+    "body": 13,
+    "color": 14,
+    "detail": 4,
+    "diet": 5,
+    "eyes": 5,
+    "form": 12,
+    "gen": 0,
+    "habitat": 5,
+    "head": 5,
+    "heat": 1,
+    "kingdom": "fauna",
+    "life": 5,
+    "limbs": 3,
+    "loco": 6,
+    "lumin": true,
+    "metab": 4,
+    "pattern": 0,
+    "repro": 7,
+    "seed": 3212817920,
+    "sense": 7,
+    "size": 4,
+    "skin": 8,
+    "tail": 1,
+    "temper": 1,
+    "trait": 14
+  },
+  "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "textureSha256": "5a7d18cbf0c0214ffd9b76f13597a9ce78997fec2c6cfbcb82f7177382abc924",
+  "limitation": "Named Civet only; gene-driven family bounds and local-finisher texture completion not yet proved.",
+  "tokenRendered": true
+}

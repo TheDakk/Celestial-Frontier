@@ -1,0 +1,6 @@
+{
+  "tool": "image_gen.imagegen",
+  "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-05782412-ca06-4164-b0bf-eea44b461854.png",
+  "sha256": "7276340149df2b4923473ff2ab697b7f0775ea7d30c13c48da73e85e49841b44",
+  "decision": "rejected: insufficient horizontal margin and high-contrast speckled scales/striped fins are not plain base"
+}

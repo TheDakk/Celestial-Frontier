@@ -1,0 +1,43 @@
+{
+  "status": "FAIL",
+  "steps": [
+    {
+      "name": "draft-pin",
+      "command": [
+        "node",
+        "/private/tmp/cf-mag-draft-pin-20260908.mjs",
+        "/private/tmp/cf-mag-draft-authority-20260908.json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.498
+    },
+    {
+      "name": "producer-build",
+      "command": [
+        "node",
+        "/private/tmp/cf-mag-producer-20260908.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 2.679
+    },
+    {
+      "name": "producer-refresh",
+      "command": [
+        "node",
+        "/private/tmp/cf-mag-refresh-producer-20260908.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 0.043
+    },
+    {
+      "name": "develop-profile",
+      "command": [
+        "node",
+        "tools/check-profile.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 1,
+      "seconds": 0.047
+    }
+  ]
+}

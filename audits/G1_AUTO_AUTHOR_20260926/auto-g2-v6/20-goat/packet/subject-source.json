@@ -1,0 +1,49 @@
+{
+  "name": "Goat",
+  "family": "quadruped",
+  "species": {
+    "name": "Goat",
+    "aspect": 1.5,
+    "headFrac": 0.27,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "backward-sweeping horns",
+      "chin beard",
+      "short upright tail flicked up over the rump"
+    ],
+    "note": "Unlike a sheep the tail points up, the coat is flat, and the profile of the face is straighter and narrower."
+  },
+  "genome": {
+    "seed": 347180737,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 14,
+    "body": 9,
+    "loco": 0,
+    "trait": 4,
+    "size": 2,
+    "diet": 2,
+    "head": 4,
+    "limbs": 0,
+    "skin": 2,
+    "tail": 4,
+    "pattern": 5,
+    "eyes": 1,
+    "behavior": 11,
+    "habitat": 18,
+    "detail": 2,
+    "accent": 11,
+    "temper": 9,
+    "sense": 3,
+    "repro": 3,
+    "life": 1,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Goat"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Goat\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"347180737\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"4\"]]]]",
+  "index": 250
+}

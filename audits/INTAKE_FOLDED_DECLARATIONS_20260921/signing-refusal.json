@@ -1,0 +1,8 @@
+{
+  "status": "SIGNING_REFUSED",
+  "error": "1Password: agent returned an error; fatal: failed to write commit object",
+  "head": "15a031deed222a55924e8bc96d748bf6b7cd825b",
+  "alternateIndex": "/tmp/cf-folded-index-a9wfncx5",
+  "authorizationReview": "Passed after Nick repeated folded-only authorization directly in this Mac task.",
+  "nextStep": "After 1Password is ready, refresh packet files in the retained alternate index, sign once, preserve original staging, verify signature. No test or battery rerun."
+}

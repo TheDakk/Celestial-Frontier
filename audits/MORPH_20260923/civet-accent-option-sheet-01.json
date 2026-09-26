@@ -1,0 +1,104 @@
+{
+ "schema": "cf.accent-option-sheet/v1",
+ "question": "MORPH_SYSTEM_DESIGN §5 (2) — base/accent role split",
+ "rows": [
+  "as shipped (paletteRoleOfGroup: head+jaw+neck+ears+tail = accent)",
+  "variant (head group on the base coat; ears and tail stay accent)"
+ ],
+ "control": {
+  "crabGroups": [
+   "body",
+   "legs",
+   "antennae",
+   "arms"
+  ],
+  "crabVariantIsNoOp": true,
+  "civetVariantChangesEveryTile": true
+ },
+ "tiles": [
+  {
+   "column": 0,
+   "genome": {
+    "_earthName": "Civet",
+    "seed": 40595,
+    "color": 8,
+    "accent": 7
+   },
+   "hueGapDeg": 176,
+   "base": {
+    "hue": 199.04399999999998,
+    "chroma": 0.45
+   },
+   "accent": {
+    "hue": 22.668000000000006,
+    "chroma": 0.95
+   },
+   "shippedSha256": "84a3a98bb4aaf31ab5ec844f743171aca35149ef60c12410e198b919b869559c",
+   "variantSha256": "8ecee0fda8754f7db5c07e34aababdffad162fcf144a2e4bbffa50d8c5dc8b42",
+   "differs": true
+  },
+  {
+   "column": 1,
+   "genome": {
+    "_earthName": "Civet",
+    "seed": 72271,
+    "color": 11,
+    "accent": 0
+   },
+   "hueGapDeg": 169,
+   "base": {
+    "hue": 308.5319999999999,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 139.77999999999997,
+    "chroma": 1.05
+   },
+   "shippedSha256": "7cee21dd98ee26a496a3a78bff4c40a82f38d1397947a62795dde8c39a13fc2b",
+   "variantSha256": "7daa00378f059e351fa8108ccaf612fab307f06b4c1e7ba51ad69893380735c4",
+   "differs": true
+  },
+  {
+   "column": 2,
+   "genome": {
+    "_earthName": "Civet",
+    "seed": 56433,
+    "color": 1,
+    "accent": 12
+   },
+   "hueGapDeg": 154,
+   "base": {
+    "hue": 347.528,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 193.25599999999997,
+    "chroma": 0.9
+   },
+   "shippedSha256": "00ee6f5870ebb762bd2ef296149e7519a336c2a27eaaf62de7aff36f3cb15be9",
+   "variantSha256": "931412571ecc2df5f8dbf4477317ec31fa8b57c75c61f6a44edee9826e6cbd54",
+   "differs": true
+  },
+  {
+   "column": 3,
+   "genome": {
+    "_earthName": "Civet",
+    "seed": 8919,
+    "color": 5,
+    "accent": 14
+   },
+   "hueGapDeg": 91,
+   "base": {
+    "hue": 236.46799999999996,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 145.224,
+    "chroma": 0.85
+   },
+   "shippedSha256": "d0ab732ff1452319f2266c7715fa6f4fce0ba40c39827135845594029f334bdb",
+   "variantSha256": "3204fd7195350ad7bc23ab7385c1c983089f403709a48e174cb8937063eda1fb",
+   "differs": true
+  }
+ ]
+}

@@ -27,12 +27,35 @@ export interface AudioVoiceMixIntentV1 {
 export interface AudioParamLike {
   value: number;
   setValueAtTime(value: number, time: number): unknown;
+  /** Native Web Audio capabilities; minimal injected adapters may omit both. */
+  cancelScheduledValues?(time: number): unknown;
+  linearRampToValueAtTime?(value: number, time: number): unknown;
 }
 
 export interface AudioNodeLike {
   connect(destination: AudioNodeLike): unknown;
   disconnect(): void;
+  /** Native channel mixing (mono accessibility); minimal injected fakes may omit them. */
+  channelCount?: number;
+  channelCountMode?: string;
+  channelInterpretation?: string;
 }
+
+/** Player accessibility modes applied at the master (Arc 7/8 close-out, 2026-09-25). */
+export interface AudioAccessibilityModes {
+  /** Downmix every category to one channel at the master; the destination plays it on both speakers. */
+  readonly mono: boolean;
+  /** Quieter and narrower: the master plays at AUDIO_REDUCED_INTENSITY_GAIN of its saved gain through a gentle compressor. */
+  readonly reducedIntensity: boolean;
+}
+
+/** The pilot PCM player's reduced-intensity level (pilot-pcm.ts), shared so every path agrees. */
+export const AUDIO_REDUCED_INTENSITY_GAIN = 0.55;
+/** The master limiter: a brick-wall ceiling normally, a gentle full-range compressor in reduced intensity. */
+export const AUDIO_LIMITER_SETTINGS = Object.freeze({
+  standard: Object.freeze({ threshold: -1, knee: 0, ratio: 20, attack: 0.003, release: 0.1 }),
+  reducedIntensity: Object.freeze({ threshold: -24, knee: 12, ratio: 4, attack: 0.003, release: 0.25 }),
+});
 
 export interface AudioGainNodeLike extends AudioNodeLike {
   readonly gain: AudioParamLike;
@@ -169,10 +192,11 @@ export interface AudioRuntimeDiagnostics {
   readonly contextGeneration: number;
   readonly muted: boolean;
   readonly hidden: boolean;
+  readonly accessibility: AudioAccessibilityModes;
   readonly gains: Readonly<{
     /** Saved master policy; mute is represented separately and never overwrites it. */
     master: number;
-    /** Mute-adjusted master policy, reported even before a context is created. */
+    /** Mute- and reduced-intensity-adjusted master policy, reported even before a context is created. */
     effectiveMaster: number;
     categories: Readonly<Record<AudioCategory, number>>;
   }>;
@@ -185,7 +209,7 @@ export interface AudioRuntimeDiagnostics {
     }>[];
     /** Deterministic minimum across active owners; one when none are active. */
     readonly factors: Readonly<Record<AudioCategory, number>>;
-    /** Saved category gain multiplied by the aggregate owner factor. */
+    /** Target gain: saved category gain times owner factor; native buses approach it smoothly. */
     readonly effectiveCategoryGains: Readonly<Record<AudioCategory, number>>;
   }>;
   readonly nodes: Readonly<{ active: number; peak: number; budget: number }>;
@@ -227,6 +251,7 @@ export interface AudioRuntimeOptions {
   readonly scheduleVoiceDeadline?: AudioVoiceDeadlineScheduler;
   readonly initialMuted?: boolean;
   readonly initialMasterGain?: number;
+  readonly initialAccessibility?: AudioAccessibilityModes;
   readonly categoryGains?: Readonly<Partial<Record<AudioCategory, number>>>;
   readonly budgets?: Readonly<Partial<AudioRuntimeBudgets>>;
   /** Pure lookup against the current visual/text owner registry. */
@@ -238,6 +263,8 @@ export interface AudioRuntime {
   /** Immediate zero/stop plus settled teardown of every owned context. */
   setMuted(muted: boolean): Promise<void>;
   setMasterGain(gain: number): void;
+  /** Mono downmix and reduced intensity at the master; applies live and to every later context. */
+  setAccessibility(modes: AudioAccessibilityModes): void;
   setCategoryGain(category: AudioCategory, gain: number): void;
   setHidden(hidden: boolean): Promise<void>;
   playVoice(request: AudioVoiceRequest): AudioVoiceStartResult;
@@ -254,6 +281,15 @@ export interface AudioRuntime {
 const GRAPH_NODES = 13;
 const MAX_VOICE_GRAPH_NODES = 32;
 const MAX_CATEGORY_MIX_PASSES = 12;
+const CATEGORY_DUCK_SECONDS = 0.025;
+const CATEGORY_RELEASE_SECONDS = 0.09;
+interface CategoryGainTransition {
+  readonly param: AudioParamLike;
+  readonly from: number;
+  readonly target: number;
+  readonly start: number;
+  readonly end: number;
+}
 const METERS = Object.freeze(['master', ...AUDIO_CATEGORIES] as const);
 const DEFAULT_BUDGETS: AudioRuntimeBudgets = Object.freeze({
   maxVoices: 24,
@@ -354,6 +390,15 @@ function boundedInteger(
     throw new TypeError(`${label} is outside its bounded integer range`);
   }
   return value as number;
+}
+
+function accessibilityModes(value: unknown): AudioAccessibilityModes {
+  if (value === null || typeof value !== 'object') throw new TypeError('audio accessibility modes must be an object');
+  const { mono, reducedIntensity } = value as Partial<AudioAccessibilityModes>;
+  if (typeof mono !== 'boolean' || typeof reducedIntensity !== 'boolean') {
+    throw new TypeError('audio accessibility modes must be booleans');
+  }
+  return Object.freeze({ mono, reducedIntensity });
 }
 
 function boundedGain(value: unknown, label: string): number {
@@ -500,10 +545,34 @@ function disconnectQuietly(nodes: readonly AudioNodeLike[]): void {
   }
 }
 
+function applyAccessibilityToGraph(
+  context: AudioContextLike,
+  master: AudioNodeLike,
+  limiter: AudioLimiterNodeLike,
+  modes: AudioAccessibilityModes,
+): void {
+  /* A gain node with an explicit single channel downmixes its inputs ('speakers': stereo → (L+R)/2); the analyser,
+     limiter and destination follow its channel count, so both speakers play the same signal. Off restores the default. */
+  master.channelCount = modes.mono ? 1 : 2;
+  master.channelCountMode = modes.mono ? 'explicit' : 'max';
+  master.channelInterpretation = 'speakers';
+  const limits = modes.reducedIntensity ? AUDIO_LIMITER_SETTINGS.reducedIntensity : AUDIO_LIMITER_SETTINGS.standard;
+  setParam(limiter.threshold, limits.threshold, context.currentTime);
+  setParam(limiter.knee, limits.knee, context.currentTime);
+  setParam(limiter.ratio, limits.ratio, context.currentTime);
+  setParam(limiter.attack, limits.attack, context.currentTime);
+  setParam(limiter.release, limits.release, context.currentTime);
+}
+
+function effectiveMasterGain(muted: boolean, masterGain: number, modes: AudioAccessibilityModes): number {
+  return muted ? 0 : masterGain * (modes.reducedIntensity ? AUDIO_REDUCED_INTENSITY_GAIN : 1);
+}
+
 function createGraph(
   context: AudioContextLike,
   masterGain: number,
   gains: Readonly<Record<AudioCategory, number>>,
+  modes: AudioAccessibilityModes,
 ): RuntimeGraph {
   const nodes: AudioNodeLike[] = [];
   const own = <T extends AudioNodeLike>(node: T): T => {
@@ -518,11 +587,7 @@ function createGraph(
     const meters = {} as Record<AudioMeter, MeterNode>;
 
     setParam(master.gain, masterGain, context.currentTime);
-    setParam(limiter.threshold, -1, context.currentTime);
-    setParam(limiter.knee, 0, context.currentTime);
-    setParam(limiter.ratio, 20, context.currentTime);
-    setParam(limiter.attack, 0.003, context.currentTime);
-    setParam(limiter.release, 0.1, context.currentTime);
+    applyAccessibilityToGraph(context, master, limiter, modes);
     masterAnalyser.fftSize = 32;
     masterAnalyser.smoothingTimeConstant = 0.8;
     meters.master = {
@@ -585,6 +650,8 @@ class InjectedAudioRuntime implements AudioRuntime {
   private readonly budgets: AudioRuntimeBudgets;
   private readonly gains: Record<AudioCategory, number>;
   private readonly active = new Map<string, ActiveVoice>();
+  /** At most five current-graph transitions; no callback, node or context owner. */
+  private readonly categoryTransitions = new Map<AudioCategory, CategoryGainTransition>();
   private readonly cache = new Map<string, CacheEntry>();
   private readonly cooldowns = new Map<string, CooldownEntry>();
   private readonly peakLevels: Record<AudioMeter, number>;
@@ -594,6 +661,7 @@ class InjectedAudioRuntime implements AudioRuntime {
   private state: AudioActivationState = 'blocked';
   private muted: boolean;
   private masterGain: number;
+  private accessibility: AudioAccessibilityModes = Object.freeze({ mono: false, reducedIntensity: false });
   private hidden = false;
   private disposedTerminal = false;
   private resumeBlocked = false;
@@ -651,6 +719,7 @@ class InjectedAudioRuntime implements AudioRuntime {
     let budgets: AudioRuntimeOptions['budgets'];
     let initialMuted: unknown;
     let initialMasterGain: unknown;
+    let initialAccessibility: unknown;
     let categoryGains: AudioRuntimeOptions['categoryGains'];
     try {
       /* Runtime options may cross an app/plugin boundary. Snapshot every
@@ -663,6 +732,7 @@ class InjectedAudioRuntime implements AudioRuntime {
       budgets = options.budgets;
       initialMuted = options.initialMuted;
       initialMasterGain = options.initialMasterGain;
+      initialAccessibility = options.initialAccessibility;
       categoryGains = options.categoryGains;
     } catch {
       throw new TypeError('audio runtime options could not be read');
@@ -685,6 +755,7 @@ class InjectedAudioRuntime implements AudioRuntime {
     this.budgets = resolvedBudgets(budgets);
     this.muted = initialMuted === true;
     this.masterGain = boundedGain(initialMasterGain ?? 1, 'master gain');
+    if (initialAccessibility !== undefined) this.accessibility = accessibilityModes(initialAccessibility);
     this.gains = Object.fromEntries(AUDIO_CATEGORIES.map((name) => [
       name,
       boundedGain(categoryGains?.[name] ?? 1, `${name} category gain`),
@@ -789,7 +860,7 @@ class InjectedAudioRuntime implements AudioRuntime {
           this.state = 'blocked';
           return Object.freeze({ kind: 'blocked', reason: 'context-unavailable' });
         }
-        const graph = createGraph(context, this.masterGain, this.gains);
+        const graph = createGraph(context, effectiveMasterGain(false, this.masterGain, this.accessibility), this.gains, this.accessibility);
         /* Context/node factories are injected and may call back into lifecycle
            policy synchronously. A context created by an overtaken gesture is
            never published, even when the final policy is enabled again. */
@@ -995,6 +1066,21 @@ class InjectedAudioRuntime implements AudioRuntime {
   setMasterGain(gain: number): void {
     if (this.isDisposed()) return;
     this.masterGain = boundedGain(gain, 'master gain');
+    this.applyMasterMute();
+  }
+
+  setAccessibility(modes: AudioAccessibilityModes): void {
+    if (this.isDisposed()) return;
+    const next = accessibilityModes(modes);
+    if (next.mono === this.accessibility.mono && next.reducedIntensity === this.accessibility.reducedIntensity) return;
+    this.accessibility = next;
+    if (this.graph && this.context) {
+      try {
+        applyAccessibilityToGraph(this.context, this.graph.master, this.graph.limiter, next);
+      } catch (error) {
+        this.recordFault('accessibility', error);
+      }
+    }
     this.applyMasterMute();
   }
 
@@ -1454,9 +1540,10 @@ class InjectedAudioRuntime implements AudioRuntime {
       contextGeneration: this.contextGeneration,
       muted: this.muted,
       hidden: this.hidden,
+      accessibility: this.accessibility,
       gains: Object.freeze({
         master: this.masterGain,
-        effectiveMaster: this.muted ? 0 : this.masterGain,
+        effectiveMaster: effectiveMasterGain(this.muted, this.masterGain, this.accessibility),
         categories: Object.freeze({ ...this.gains }),
       }),
       voiceMix: Object.freeze({
@@ -1779,6 +1866,52 @@ class InjectedAudioRuntime implements AudioRuntime {
     ]))) as Readonly<Record<AudioCategory, number>>;
   }
 
+  private writeCategoryGain(
+    name: AudioCategory,
+    param: AudioParamLike,
+    target: number,
+    factor: number,
+    previousFactor: number | undefined,
+    time: number,
+    stillCurrent: () => boolean,
+  ): boolean {
+    const prior = this.categoryTransitions.get(name);
+    const current = prior?.param === param ? prior : undefined;
+    const progress = current ? Math.max(0, Math.min(1, (time - current.start) / Math.max(0.000001, current.end - current.start))) : 1;
+    const held = current ? current.from + (current.target - current.from) * progress : param.value;
+    const nativeAutomation = typeof param.cancelScheduledValues === 'function'
+      && typeof param.linearRampToValueAtTime === 'function';
+    const transitioning = current !== undefined && time < current.end;
+    const smooth = nativeAutomation && target > 0
+      && (factor < 1 || (previousFactor !== undefined && previousFactor !== factor) || transitioning);
+    if (!nativeAutomation) {
+      if (current) throw new TypeError('category gain automation capabilities changed');
+      setParam(param, target, time);
+      return stillCurrent();
+    }
+    if (!smooth && current === undefined) {
+      setParam(param, target, time);
+      return stillCurrent();
+    }
+    /* Hold our exact interpolated value before replacing future automation.
+       This uses standard cancel/set/linear APIs, not a timer or
+       cancelAndHoldAtTime. Publish the held state before injected callbacks. */
+    const from = smooth ? held : target;
+    this.categoryTransitions.set(name, { param, from, target: from, start: time, end: time });
+    param.cancelScheduledValues!(time);
+    if (!stillCurrent()) return false;
+    setParam(param, from, time);
+    if (!stillCurrent()) return false;
+    if (!smooth || from === target) {
+      this.categoryTransitions.delete(name);
+      return true;
+    }
+    const end = time + (target < from ? CATEGORY_DUCK_SECONDS : CATEGORY_RELEASE_SECONDS);
+    this.categoryTransitions.set(name, { param, from, target, start: time, end });
+    param.linearRampToValueAtTime!(target, end);
+    return stillCurrent();
+  }
+
   private writeCategoryMixTarget(
     factors: Readonly<Record<AudioCategory, number>>,
     previousFactors: Readonly<Record<AudioCategory, number>> | null,
@@ -1802,11 +1935,13 @@ class InjectedAudioRuntime implements AudioRuntime {
           || this.context !== context || this.graph !== graph) {
           return Object.freeze({ kind: 'reentrant' });
         }
-        setParam(
-          graph.categories[name].gain,
-          targetGains[name],
+        const current = this.writeCategoryGain(
+          name, graph.categories[name].gain, targetGains[name], factors[name], previousFactors?.[name],
           context.currentTime,
+          () => !this.categoryMixDirty && this.categoryPolicyGeneration === expectedGeneration
+            && this.context === context && this.graph === graph,
         );
+        if (!current) return Object.freeze({ kind: 'reentrant' });
         if (this.categoryMixDirty || this.categoryPolicyGeneration !== expectedGeneration
           || this.context !== context || this.graph !== graph) {
           return Object.freeze({ kind: 'reentrant' });
@@ -1894,7 +2029,7 @@ class InjectedAudioRuntime implements AudioRuntime {
   private applyMasterMute(): void {
     if (!this.graph || !this.context) return;
     try {
-      setParam(this.graph.master.gain, this.muted ? 0 : this.masterGain, this.context.currentTime);
+      setParam(this.graph.master.gain, effectiveMasterGain(this.muted, this.masterGain, this.accessibility), this.context.currentTime);
     } catch (error) {
       this.recordFault('master-gain', error);
     }
@@ -2095,6 +2230,7 @@ class InjectedAudioRuntime implements AudioRuntime {
     if (context) this.detachStateListener(context);
     this.context = null;
     this.graph = null;
+    this.categoryTransitions.clear();
     this.resumeBlocked = false;
     const activations = context ? this.cancelActivationsForContext(context) : [];
     /* Detach both context and graph before any injected release/stop callback.

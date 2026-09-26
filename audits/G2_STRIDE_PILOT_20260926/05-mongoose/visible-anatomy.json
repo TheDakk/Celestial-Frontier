@@ -1,0 +1,204 @@
+{
+  "id": "05-mongoose",
+  "name": "Mongoose",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "b7aa6545d14f579ff0f3c9ea7f1aec7e33dabba949d64c9b0c957d2e84709f04",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 27417,
+    "coreRadius": 22,
+    "bodyBox": {
+      "x0": 11,
+      "y0": 159,
+      "x1": 409,
+      "y1": 285
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0988,
+        "pixels": 2710,
+        "box": {
+          "x0": 309,
+          "y0": 131,
+          "x1": 397,
+          "y1": 202
+        },
+        "attach": {
+          "x": 352,
+          "y": 169.7,
+          "relX": 0.86,
+          "relY": 0.08
+        },
+        "dir": {
+          "x": 0.68,
+          "y": -0.73
+        },
+        "class": "top",
+        "length": 59.4
+      },
+      {
+        "k": 1,
+        "frac": 0.2033,
+        "pixels": 5574,
+        "box": {
+          "x0": 22,
+          "y0": 176,
+          "x1": 150,
+          "y1": 280
+        },
+        "attach": {
+          "x": 99.2,
+          "y": 224.7,
+          "relX": 0.22,
+          "relY": 0.52
+        },
+        "dir": {
+          "x": -0.8,
+          "y": 0.6
+        },
+        "class": "limb-down",
+        "length": 94.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0436,
+        "pixels": 1196,
+        "box": {
+          "x0": 135,
+          "y0": 226,
+          "x1": 192,
+          "y1": 283
+        },
+        "attach": {
+          "x": 168.8,
+          "y": 235.7,
+          "relX": 0.4,
+          "relY": 0.61
+        },
+        "dir": {
+          "x": -0.61,
+          "y": 0.79
+        },
+        "class": "limb-down",
+        "length": 58.2
+      },
+      {
+        "k": 3,
+        "frac": 0.0293,
+        "pixels": 803,
+        "box": {
+          "x0": 274,
+          "y0": 235,
+          "x1": 304,
+          "y1": 283
+        },
+        "attach": {
+          "x": 286.1,
+          "y": 239.4,
+          "relX": 0.69,
+          "relY": 0.64
+        },
+        "dir": {
+          "x": 0,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 47.1
+      },
+      {
+        "k": 4,
+        "frac": 0.0382,
+        "pixels": 1048,
+        "box": {
+          "x0": 187,
+          "y0": 237,
+          "x1": 236,
+          "y1": 283
+        },
+        "attach": {
+          "x": 207.5,
+          "y": 237,
+          "relX": 0.49,
+          "relY": 0.62
+        },
+        "dir": {
+          "x": 0,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 54.1
+      },
+      {
+        "k": 5,
+        "frac": 0.0383,
+        "pixels": 1049,
+        "box": {
+          "x0": 301,
+          "y0": 239,
+          "x1": 367,
+          "y1": 284
+        },
+        "attach": {
+          "x": 316,
+          "y": 240,
+          "relX": 0.77,
+          "relY": 0.64
+        },
+        "dir": {
+          "x": 0.62,
+          "y": 0.79
+        },
+        "class": "limb-down",
+        "length": 67.4
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "ground": [
+      {
+        "x0": 11,
+        "x1": 28,
+        "cx": 18
+      },
+      {
+        "x0": 139,
+        "x1": 166,
+        "cx": 153.5
+      },
+      {
+        "x0": 204,
+        "x1": 236,
+        "cx": 220.6
+      },
+      {
+        "x0": 277,
+        "x1": 304,
+        "cx": 291.1
+      },
+      {
+        "x0": 334,
+        "x1": 367,
+        "cx": 351
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

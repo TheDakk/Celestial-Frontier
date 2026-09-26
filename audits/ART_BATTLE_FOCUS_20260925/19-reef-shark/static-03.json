@@ -1,0 +1,328 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "PASS_STATIC",
+  "sourceHead": "e7dfd9be93a3d985d253abcc4e065b5c0987f9d0",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.000056217279022371655,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.000056111549424888315,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "approach:swim",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.000058164134715915026,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:bite",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006282831854288965,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005791858957864545,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006096674747905623,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006229042893948411,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007046953071021482,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005571105567186547,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006614752798239689,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.000058866053560932404,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:body",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006262003935139006,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:tail",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006524969238637757,
+      "maxEndpointError": 0,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "82cd8b102478032bfe5a80d25761a696b7029acf5c600fdd4fb27221664a6b38",
+  "bindingHash": "46c5e400b344521aef85893da10822c3747fec560d538a2ba254d51e474f14d8",
+  "family": "fish",
+  "contacts": [],
+  "realm": "aquatic",
+  "declaredPaintBoundaries": {
+    "schema": "cf.authored-paint-boundary-continuity/v1",
+    "recordRecipeHash": "82cd8b102478032bfe5a80d25761a696b7029acf5c600fdd4fb27221664a6b38",
+    "bindingHash": "46c5e400b344521aef85893da10822c3747fec560d538a2ba254d51e474f14d8",
+    "pairs": [
+      [
+        "body",
+        "caudal"
+      ],
+      [
+        "body",
+        "dorsal"
+      ],
+      [
+        "body",
+        "far-pectoral"
+      ],
+      [
+        "body",
+        "head"
+      ],
+      [
+        "body",
+        "near-pectoral"
+      ],
+      [
+        "body",
+        "tail-peduncle"
+      ],
+      [
+        "dorsal",
+        "mid-body"
+      ],
+      [
+        "far-pectoral",
+        "near-pectoral"
+      ],
+      [
+        "front-body",
+        "near-pectoral"
+      ]
+    ],
+    "author": "Codex",
+    "declaration": "This flat connected shark master shows continuous paint across these enumerated ownership cuts, including source fringe assigned to body. All observed boundaries are manually declared continuous; no hidden pixels invented. Fins remain articulated by the existing fish joints."
+  },
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:swim",
+    "melee:bite",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed",
+    "melee:body",
+    "melee:tail"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 916,
+    "attemptedSamples": 916,
+    "status": "PASS",
+    "maxPaintDriftPx": 0,
+    "maxGapPx": 0.00006767400549767293,
+    "maxEndpointError": 0,
+    "exactRest": true
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 4063.651890978217
+      },
+      {
+        "id": "alert",
+        "startMs": 4063.651890978217,
+        "endMs": 4663.651890978217
+      },
+      {
+        "id": "approach:swim",
+        "startMs": 4663.651890978217,
+        "endMs": 5443.651890978217
+      },
+      {
+        "id": "melee:bite",
+        "startMs": 5443.651890978217,
+        "endMs": 6310.318557644884
+      },
+      {
+        "id": "cast",
+        "startMs": 6310.318557644884,
+        "endMs": 7280.318557644884
+      },
+      {
+        "id": "hit",
+        "startMs": 7280.318557644884,
+        "endMs": 8090.318557644884
+      },
+      {
+        "id": "dodge",
+        "startMs": 8090.318557644884,
+        "endMs": 8730.318557644885
+      },
+      {
+        "id": "faint",
+        "startMs": 8730.318557644885,
+        "endMs": 9610.318557644885
+      },
+      {
+        "id": "victory",
+        "startMs": 9610.318557644885,
+        "endMs": 10570.318557644885
+      },
+      {
+        "id": "tame",
+        "startMs": 10570.318557644885,
+        "endMs": 11570.318557644885
+      },
+      {
+        "id": "feed",
+        "startMs": 11570.318557644885,
+        "endMs": 12510.318557644885
+      },
+      {
+        "id": "melee:body",
+        "startMs": 12510.318557644885,
+        "endMs": 13376.985224311551
+      },
+      {
+        "id": "melee:tail",
+        "startMs": 13376.985224311551,
+        "endMs": 14243.651890978217
+      }
+    ],
+    "durationMs": 15243.651890978217
+  },
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/record.json",
+      "sha256": "d9e9713da6d79da3db95f2c73959c982454cb8bea87fc53e7e78cf5087ab6570",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/binding.json",
+      "sha256": "893c951f5129c5c02c5604a69259375746d33b2fbba631398a134e34ede774ad",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/parts/manifest.json",
+      "sha256": "ec474457a6b9d5845bec8c5b19d4c7708c58df2d35648f692c2998af8eb92080",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/parts/atlas/reef-shark.png",
+      "sha256": "a7d09dbb6a76929d0b3aeb38ff98b42fa4fe1ac315785b294d353f25f34e734b",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/parts/keyed.png",
+      "sha256": "b9ebaafad82e1514eb4c460143f6dca35683ddf6acb95e633ad6707a85030c55",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/paint-boundary-continuity.json",
+      "sha256": "6630b7991490b7762a9bd842f6cea8b804536c84f7d4b7c7d9ce52b554f44f03",
+      "unchanged": true
+    }
+  ]
+}

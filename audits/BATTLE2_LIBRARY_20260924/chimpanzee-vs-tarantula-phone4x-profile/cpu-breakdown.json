@@ -1,0 +1,219 @@
+{
+ "totalMs": 10839.2,
+ "frames": 602,
+ "cpuThrottle": 4,
+ "groups": {
+  "idle": 8111.2,
+  "wasm (orientation / skin kernels)": 621.6,
+  "other": 1439.2,
+  "skin (ARAP / mesh)": 371.6,
+  "rig motion + contact": 144.9,
+  "garbage collection": 27,
+  "stage + choreography": 38.8,
+  "rig other": 56.3,
+  "effects": 20.4,
+  "pixi render": 8.1
+ },
+ "files": [
+  {
+   "file": "(idle)",
+   "ms": 8111.2,
+   "share": 0.7483
+  },
+  {
+   "file": "wasm:wasm-function[0]",
+   "ms": 617.8,
+   "share": 0.057
+  },
+  {
+   "file": "(program)",
+   "ms": 453.2,
+   "share": 0.0418
+  },
+  {
+   "file": "tools/battle2-proof/native-entry.mjs",
+   "ms": 397.1,
+   "share": 0.0366
+  },
+  {
+   "file": "tools/creature-animation/paint-skin.mjs",
+   "ms": 167.7,
+   "share": 0.0155
+  },
+  {
+   "file": "other-script:RenderTargetSystem-CN3Y2Y0c.js",
+   "ms": 135.5,
+   "share": 0.0125
+  },
+  {
+   "file": "tools/creature-animation/arap-skin.mjs",
+   "ms": 106.7,
+   "share": 0.0098
+  },
+  {
+   "file": "other-script:Geometry-BU3enQYN.js",
+   "ms": 91.3,
+   "share": 0.0084
+  },
+  {
+   "file": "apps/game/src/creature-rig-contact.ts",
+   "ms": 80,
+   "share": 0.0074
+  },
+  {
+   "file": "tools/creature-animation/compiled-skin-field.mjs",
+   "ms": 79.6,
+   "share": 0.0073
+  },
+  {
+   "file": "native:?",
+   "ms": 72.7,
+   "share": 0.0067
+  },
+  {
+   "file": "tools/creature-animation/skeleton-pose.mjs",
+   "ms": 50.7,
+   "share": 0.0047
+  },
+  {
+   "file": "other-script:CanvasRenderer-DKel0iqG.js",
+   "ms": 48.3,
+   "share": 0.0045
+  },
+  {
+   "file": "other-script:WebGLRenderer-CHyb6njZ.js",
+   "ms": 44,
+   "share": 0.0041
+  },
+  {
+   "file": "tools/creature-animation/kinematics.ts",
+   "ms": 38.1,
+   "share": 0.0035
+  },
+  {
+   "file": "tools/creature-animation/orientation-projector.mjs",
+   "ms": 35.2,
+   "share": 0.0033
+  },
+  {
+   "file": "native:bufferSubData",
+   "ms": 34.2,
+   "share": 0.0032
+  },
+  {
+   "file": "(gc)",
+   "ms": 27,
+   "share": 0.0025
+  },
+  {
+   "file": "apps/game/src/motion/timeline.ts",
+   "ms": 26.4,
+   "share": 0.0024
+  },
+  {
+   "file": "apps/game/src/battle2/choreography.ts",
+   "ms": 26.2,
+   "share": 0.0024
+  },
+  {
+   "file": "apps/game/src/creature-rig.ts",
+   "ms": 24.7,
+   "share": 0.0023
+  },
+  {
+   "file": "apps/game/src/creature-rig-performance.ts",
+   "ms": 20.9,
+   "share": 0.0019
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "ms": 12.6,
+   "share": 0.0012
+  },
+  {
+   "file": "apps/game/src/battle2/stage.ts",
+   "ms": 12.4,
+   "share": 0.0011
+  },
+  {
+   "file": "native:requestAnimationFrame",
+   "ms": 12.1,
+   "share": 0.0011
+  },
+  {
+   "file": "native:btoa",
+   "ms": 10.9,
+   "share": 0.001
+  },
+  {
+   "file": "apps/game/src/battle2/parts-rig.ts",
+   "ms": 10.7,
+   "share": 0.001
+  },
+  {
+   "file": "apps/game/src/effects/pixi-adapter.ts",
+   "ms": 10.6,
+   "share": 0.001
+  },
+  {
+   "file": "native:bindVertexArray",
+   "ms": 9.5,
+   "share": 0.0009
+  },
+  {
+   "file": "native:clear",
+   "ms": 8.3,
+   "share": 0.0008
+  },
+  {
+   "file": "native:bindBuffer",
+   "ms": 7.7,
+   "share": 0.0007
+  },
+  {
+   "file": "native:uniformMatrix3fv",
+   "ms": 7.2,
+   "share": 0.0007
+  },
+  {
+   "file": "native:drawElements",
+   "ms": 7.1,
+   "share": 0.0007
+  },
+  {
+   "file": "apps/game/src/effects/sequencer.ts",
+   "ms": 5.1,
+   "share": 0.0005
+  },
+  {
+   "file": "apps/game/src/effects/emitter.ts",
+   "ms": 4.7,
+   "share": 0.0004
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleBuffer.mjs",
+   "ms": 4.1,
+   "share": 0.0004
+  },
+  {
+   "file": "wasm:js-to-wasm:iiiiiiiiiiiii:i",
+   "ms": 3.8,
+   "share": 0.0004
+  },
+  {
+   "file": "native:bindFramebuffer",
+   "ms": 2.4,
+   "share": 0.0002
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainerPipe.mjs",
+   "ms": 2.1,
+   "share": 0.0002
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/mesh/shared/BatchableMesh.mjs",
+   "ms": 2,
+   "share": 0.0002
+  }
+ ]
+}

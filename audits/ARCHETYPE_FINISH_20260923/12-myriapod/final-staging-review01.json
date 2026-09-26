@@ -1,0 +1,48 @@
+{
+  "schema": "cf.sprint-staging-review/v1",
+  "sourceAndCurrentReferenceWhitespace": {
+    "status": "PASS",
+    "tool": "9615bd",
+    "command": "git diff --cached --check -- . :!audits/**"
+  },
+  "rawEvidenceWhitespace": {
+    "status": "RETAINED_RAW_BYTES",
+    "tool": "41a767",
+    "exitCode": 2,
+    "diagnosis": "Full staged whitespace check reports trailing whitespace/terminal blank lines solely in retained raw test logs and native-alpha-before-01 source snapshot. Editing them would invalidate historical evidence hashes. No production/current-reference whitespace findings.",
+    "paths": [
+      "compact-count-tests-01.log",
+      "compact-count-tests-02.log",
+      "fixed-socket-contact-tests-01.log",
+      "native-alpha-before-01/port/v2/tools/battle2-proof/native-entry.mjs",
+      "native-alpha-tests01.log",
+      "support-candidate-tests-01.log",
+      "swing-lift-tests-01.log",
+      "tame-substeps-cadence-01.log",
+      "tame-substeps-swing-control-01.log",
+      "travel-substeps-swing-tests-02.log",
+      "travel-substeps-tests-01.log",
+      "typescript-08.log"
+    ]
+  },
+  "stagedArtifactBytes": {
+    "tool": "9615bd",
+    "filesCheckedBeforeThisReceipt": 2280,
+    "missingFromIndex": [],
+    "stagedByteMismatches": [],
+    "method": "Compare git index object IDs against git hash-object --no-filters for every packet file."
+  },
+  "statusAtReview": {
+    "unstagedTrackedPaths": [],
+    "untrackedOutsidePacket": [
+      ".DS_Store"
+    ],
+    "signatureConfigurationTool": "baef42",
+    "gpgSshProgram": "/Users/nick/.local/bin/git-ssh-sign",
+    "commitGpgSign": true,
+    "predecessor": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
+    "predecessorSignature": "G",
+    "newCommitAttempted": false,
+    "pushAttempted": false
+  }
+}

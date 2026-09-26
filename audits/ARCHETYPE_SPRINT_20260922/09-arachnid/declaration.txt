@@ -1,0 +1,11 @@
+Tarantula — manual anatomy presence and first coarse authoring
+
+The delivered side-oblique master contains a large abdomen, cephalothorax, paired chelicerae with fangs, front short pedipalps, and seven independently visible walking-foot tips. Sting is absent. No folded-chain declaration is made.
+
+The eighth expected walking chain is labelled leg3Far for this first-pass correspondence. Its raised proximal arch is visible near master pixel [662,374], but the distal continuation and foot cannot be independently observed. presence.json explicitly declares leg3Far hidden to preserve that partial-occlusion finding. This is not a statement that every part of the chain is invisible. Its foot is not duplicated from another leg, inferred by symmetry, or invented. Both leg3Far landmarks are omitted and no dedicated part is assigned to the incomplete chain; the visible arch stays within the body remainder.
+
+The current hidden-anatomy owner supports only brachyuran leg3Far/leg3Near. Therefore this truthful declaration is expected to receive the unchanged unsupported-hidden-chain refusal. That refusal must be retained rather than changing the contract or supplying fabricated geometry. The coarse polygons and visible points document this master; they are not an admitted rig or a visual acceptance claim.
+
+Short front pedipalps stay with the cephalothorax/body remainder because the resolved arachnid contract provides no separate pedipalp joints. The seven visible foot correspondences are a manual first-pass interpretation across overlaps. materials.surface is exactly chitin, a supported input mapped to chitinous.
+
+No solver, contract, limit, threshold, accepted binding, or S2 sentinel is changed. No tools chain, static run, native film, or fit iteration was executed while authoring these inputs.

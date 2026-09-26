@@ -1,0 +1,8 @@
+import fs from'node:fs';import path from'node:path';import{createRequire}from'node:module';import{closeDistalContour}from'./contour-close.mjs';import{paintMask}from'../../port/v2/tools/anatomy-verify/auto-author.mjs';import{familyContract}from'../../port/v2/tools/creature-animation/family-contracts.mjs';
+const require=createRequire(new URL('../../port/v2/package.json',import.meta.url));const sharp=createRequire(require.resolve('free-tex-packer-core'))('sharp'),rows=[];
+for(const name of ['eagle','grouse','sparrow','sandpiper','08-mongoose','18-tapir']){
+ const packet=path.join(import.meta.dirname,name==='18-tapir'?'18-tapir-guarded-packet':name+'-packet'),receipt=JSON.parse(fs.readFileSync(path.join(packet,'contour-receipt.json'))),source=JSON.parse(fs.readFileSync(path.join(receipt.source,'authoring.json'))),saved=JSON.parse(fs.readFileSync(path.join(packet,'authoring.json'))),{data,info}=await sharp(path.join(packet,'master.png')).ensureAlpha().raw().toBuffer({resolveWithObject:true}),mask=paintMask(data,info.width,info.height).mask;
+ const part=source.parts.find(p=>p.id===receipt.partId),parent=familyContract(source.family).graph.find(([c])=>c===part.joint)[1];const result=closeDistalContour({mask,w:info.width,h:info.height,parts:source.parts,remainderPart:source.remainderPart,partId:part.id,joint:source.landmarksPx[part.joint],parent:source.landmarksPx[parent]});
+ const same=JSON.stringify(saved.parts.find(p=>p.id===part.id))===JSON.stringify(result.part);rows.push({subject:name,currentHelperReproducesMeasuredPolygon:same});if(!same)process.exitCode=1;
+}
+fs.writeFileSync(path.join(import.meta.dirname,'candidate-reproduction.json'),JSON.stringify(rows,null,2)+'\n');console.log(JSON.stringify(rows));

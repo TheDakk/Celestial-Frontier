@@ -1,0 +1,62 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/earth-fauna-profiles.test.ts (7 tests | 2 failed) 45ms
+   × every named species has explicit deterministic habitat intent; missing templates stay missing 9ms
+   × all catalogue intent rows filter synthetic template cards without borrowing another species weapons 28ms
+ ❯ apps/game/src/motion/specialized-anatomy.test.ts (4 tests | 1 failed) 1731ms
+   × retains 53 missing identities after exactly five source-bound crab admissions 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/earth-fauna-profiles.test.ts > every named species has explicit deterministic habitat intent; missing templates stay missing
+AssertionError: expected [ 'bivalve' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "bivalve",
++ ]
+
+ ❯ apps/game/src/earth-fauna-profiles.test.ts:24:56
+     22|   const h=resolvePhysicalHabitat(r,{habitat:0,loco:0});expect(h.allowe…
+     23|  }
+     24|  expect(earthFaunaProfile('Clam')?.candidateTemplates).toEqual([]);
+       |                                                        ^
+     25|  expect(earthFaunaProfile('Butterfly')?.intendedMoves).not.toContain('…
+     26|  expect(earthFaunaProfile('Coconut Crab')?.media).toEqual(['ground']);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  apps/game/src/earth-fauna-profiles.test.ts > all catalogue intent rows filter synthetic template cards without borrowing another species weapons
+TypeError: Cannot read properties of undefined (reading 'identity')
+ ❯ card apps/game/src/earth-fauna-profiles.test.ts:10:304
+
+ ❯ apps/game/src/earth-fauna-profiles.test.ts:52:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  apps/game/src/motion/specialized-anatomy.test.ts > retains 53 missing identities after exactly five source-bound crab admissions
+AssertionError: expected [ 'sessile-filter' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "sessile-filter",
++ ]
+
+ ❯ apps/game/src/motion/specialized-anatomy.test.ts:59:131
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  3 failed | 8 passed (11)
+   Start at  10:58:25
+   Duration  2.03s (transform 248ms, setup 0ms, import 386ms, tests 1.78s, environment 0ms)
+

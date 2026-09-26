@@ -1,0 +1,11 @@
+{
+  "createdAt": "2026-09-08T13:32:45.416Z",
+  "pid": 53959,
+  "root": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-earth-material-local-20260908",
+  "url": "http://127.0.0.1:55500/?planetturn=1&planetmaterial=1",
+  "sourceCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "sourceState": "dirty-local-only",
+  "publishable": false,
+  "contentSha256": "88ecc9a8282cf12e3bd7deaea7ed663e8f262b882b154027f513287122dc0658",
+  "manifestSha256": "9bbdcf4c82c9877b8def214162486b6fa545302bb9ec448e5cee6ec2ac4070ce"
+}

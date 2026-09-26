@@ -1,0 +1,29 @@
+{
+  "schema": "cf.seam-oracle-counterexample/v1",
+  "oracleSha256": "8abc80e8ee945004953d68439a5eb7607b956e7d57664375ad89c9543c7bb4ab",
+  "rows": [
+    {
+      "name": "rest",
+      "dx": 0,
+      "split": false,
+      "seamPixels": 0,
+      "delta": 0
+    },
+    {
+      "name": "rigid-translation",
+      "dx": -18,
+      "split": false,
+      "seamPixels": 140,
+      "delta": 140
+    },
+    {
+      "name": "actual-gap",
+      "dx": 0,
+      "split": true,
+      "seamPixels": 94,
+      "delta": 94
+    }
+  ],
+  "conclusion": "A rigid shape with no new tear becomes red when an existing notch enters the fixed rest-pivot disc. The actual-gap control is also red. Positive pose-minus-rest is not sufficient to attribute a tear.",
+  "acceptanceGateChanged": false
+}

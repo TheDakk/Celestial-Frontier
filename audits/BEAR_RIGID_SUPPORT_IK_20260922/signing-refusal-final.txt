@@ -1,0 +1,6 @@
+Final evidence commit signing attempt refused.
+Command: git -c core.hooksPath=/dev/null commit -q -S -m "Retain analytic support S2 identity and bear static evidence"
+Exit: 128
+error: 1Password: agent returned an error
+fatal: failed to write commit object
+No unsigned fallback. Signed producer 58f81e545cf7d40798bddbb0592506681c124073 unchanged.

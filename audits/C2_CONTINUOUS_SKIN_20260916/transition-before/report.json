@@ -1,0 +1,1909 @@
+{
+  "scope": "Current producer epsilon continuity diagnostic; unchanged motion/skin. Values in native cut-out pixels.",
+  "rows": [
+    {
+      "id": "civet",
+      "boundaryCount": 300,
+      "window": {
+        "a": 2075,
+        "b": 2083.3333333333335,
+        "planted": [
+          false,
+          false
+        ],
+        "raw": {
+          "maxRadians": 0.18262599999999998,
+          "joint": "head",
+          "values": {
+            "pelvis": 0.0003149999999999993,
+            "spine": 0.040584,
+            "neck": 0.162333,
+            "head": 0.18262599999999998,
+            "jaw": -0.152188,
+            "foreNearKnee": -0.10145800000000005,
+            "tail0": 0.001655384167532692,
+            "tail1": -0.003715340309377993,
+            "tail2": -0.0018733631524409378,
+            "tail3": -0.0009338591093720761
+          }
+        },
+        "resolved": {
+          "maxRadians": 0.18262599999999998,
+          "joint": "head",
+          "values": {
+            "pelvis": 0.0003149999999999993,
+            "spine": 0.040584,
+            "neck": 0.162333,
+            "head": 0.18262599999999998,
+            "jaw": -0.152188,
+            "foreNearKnee": -0.10145800000000005,
+            "tail0": 0.001655384167532692,
+            "tail1": -0.003715340309377993,
+            "tail2": -0.0018733631524409378,
+            "tail3": -0.0009338591093720761
+          }
+        },
+        "rawField": {
+          "maxPx": 183.30135640754585,
+          "vertex": 106
+        },
+        "resolvedField": {
+          "maxPx": 183.30135640754585,
+          "vertex": 106
+        },
+        "compression": [
+          0,
+          0
+        ]
+      },
+      "jumps": [
+        {
+          "atMs": 1460,
+          "labels": [
+            "phase commandEnd",
+            "approach key"
+          ],
+          "epsilon": [
+            {
+              "a": 1459.9,
+              "b": 1460.1,
+              "planted": [
+                true,
+                false
+              ],
+              "raw": {
+                "maxRadians": 0.00003211805579889093,
+                "joint": "tail0",
+                "values": {
+                  "pelvis": -0.000009000000000000327,
+                  "spine": 0.000016999999999999654,
+                  "chest": 0.000016999999999999654,
+                  "neck": 0.000025999999999998247,
+                  "head": -0.000009000000000000327,
+                  "hindFarKnee": 0.000006,
+                  "hindFarAnkle": 0.000003,
+                  "foreFarKnee": -0.000006,
+                  "foreFarAnkle": -0.000003,
+                  "hindNearKnee": -0.000006,
+                  "hindNearAnkle": 0.000003,
+                  "foreNearKnee": 0.000006,
+                  "foreNearAnkle": -0.000003,
+                  "tail0": -0.00003211805579889093,
+                  "tail1": -0.000013026079770062267,
+                  "tail2": -2.2070862585769022e-7,
+                  "tail3": -0.000007850430482275045,
+                  "earFarTip": 0.000012613737563817173,
+                  "earNearTip": 0.000012613737563817173
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.458673218471488,
+                "joint": "foreFarAnkle",
+                "values": {
+                  "pelvis": -0.000009000000000000327,
+                  "spine": 0.000016999999999999654,
+                  "chest": 0.000016999999999999654,
+                  "neck": 0.000025999999999998247,
+                  "head": -0.000009000000000000327,
+                  "hindFarKnee": -0.06439623238203969,
+                  "hindFarAnkle": 0.2243638366734724,
+                  "hindFarPaw": -0.16593160429143272,
+                  "foreFarKnee": -0.21328257697187564,
+                  "foreFarAnkle": 0.458673218471488,
+                  "foreFarPaw": -0.2972926414996123,
+                  "hindNearKnee": -0.07988949802760109,
+                  "hindNearAnkle": 0.21783819382559494,
+                  "hindNearPaw": -0.14392469579799388,
+                  "foreNearKnee": -0.01522794953817639,
+                  "foreNearAnkle": -0.12111479362938862,
+                  "foreNearPaw": 0.08445274316756501,
+                  "tail0": -0.00003211805579889093,
+                  "tail1": -0.000013026079770062267,
+                  "tail2": -2.2070862585769022e-7,
+                  "tail3": -0.000007850430482275045,
+                  "earFarTip": 0.000012613737563817173,
+                  "earNearTip": 0.000012613737563817173
+                }
+              },
+              "rawField": {
+                "maxPx": 0.038479204097276,
+                "vertex": 1653
+              },
+              "resolvedField": {
+                "maxPx": 45.51933513430549,
+                "vertex": 958
+              },
+              "compression": [
+                0.01057976494185442,
+                0
+              ]
+            },
+            {
+              "a": 1459.999,
+              "b": 1460.001,
+              "planted": [
+                true,
+                false
+              ],
+              "raw": {
+                "maxRadians": 0.000001000000000001,
+                "joint": "spine",
+                "values": {
+                  "spine": 0.000001000000000001,
+                  "chest": 0.000001000000000001,
+                  "tail0": -3.211805723046801e-7,
+                  "tail1": -1.3026080350735797e-7,
+                  "earFarTip": 1.2613760078106218e-7,
+                  "earNearTip": 1.2613760078106218e-7
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.4583485285639244,
+                "joint": "foreFarAnkle",
+                "values": {
+                  "spine": 0.000001000000000001,
+                  "chest": 0.000001000000000001,
+                  "hindFarKnee": -0.0643921893743566,
+                  "hindFarAnkle": 0.22431028734065284,
+                  "hindFarPaw": -0.16589609796629623,
+                  "foreFarKnee": -0.21316083535687572,
+                  "foreFarAnkle": 0.4583485285639244,
+                  "foreFarPaw": -0.2970696932070487,
+                  "hindNearKnee": -0.07987734637996909,
+                  "hindNearAnkle": 0.21780722399609487,
+                  "hindNearPaw": -0.14390787761612578,
+                  "foreNearKnee": -0.015216587489124375,
+                  "foreNearAnkle": -0.12111179370447721,
+                  "foreNearPaw": 0.08444638119360157,
+                  "tail0": -3.211805723046801e-7,
+                  "tail1": -1.3026080350735797e-7,
+                  "earFarTip": 1.2613760078106218e-7,
+                  "earNearTip": 1.2613760078106218e-7
+                }
+              },
+              "rawField": {
+                "maxPx": 0.0013700035988447375,
+                "vertex": 816
+              },
+              "resolvedField": {
+                "maxPx": 45.51082028337977,
+                "vertex": 958
+              },
+              "compression": [
+                0.010577369318347185,
+                0
+              ]
+            },
+            {
+              "a": 1459.99999,
+              "b": 1460.00001,
+              "planted": [
+                true,
+                false
+              ],
+              "raw": {
+                "maxRadians": 3.2118056374208503e-9,
+                "joint": "tail0",
+                "values": {}
+              },
+              "resolved": {
+                "maxRadians": 0.4583485285639244,
+                "joint": "foreFarAnkle",
+                "values": {
+                  "hindFarKnee": -0.0643921893743566,
+                  "hindFarAnkle": 0.22431028734065284,
+                  "hindFarPaw": -0.16589609796629623,
+                  "foreFarKnee": -0.21316083535687572,
+                  "foreFarAnkle": 0.4583485285639244,
+                  "foreFarPaw": -0.2970696932070487,
+                  "hindNearKnee": -0.07987734637996909,
+                  "hindNearAnkle": 0.21780722399609487,
+                  "hindNearPaw": -0.14390787761612578,
+                  "foreNearKnee": -0.015216587489124375,
+                  "foreNearAnkle": -0.12111179370447721,
+                  "foreNearPaw": 0.08444638119360157
+                }
+              },
+              "rawField": {
+                "maxPx": 0.0000031294248727803885,
+                "vertex": 1653
+              },
+              "resolvedField": {
+                "maxPx": 45.51187459375084,
+                "vertex": 958
+              },
+              "compression": [
+                0.010577369318347185,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "atMs": 3142.1666666666665,
+          "labels": [
+            "phase returnEnd",
+            "phase idleStart",
+            "return key"
+          ],
+          "epsilon": [
+            {
+              "a": 3142.0666666666666,
+              "b": 3142.2666666666664,
+              "planted": [
+                false,
+                true
+              ],
+              "raw": {
+                "maxRadians": 0.00001855081157505628,
+                "joint": "tail1",
+                "values": {
+                  "pelvis": -0.0000019999999999985307,
+                  "spine": -0.0000030000000000000187,
+                  "chest": -0.0000030000000000000187,
+                  "neck": -0.000005000000000000013,
+                  "head": 0.0000019999999999999944,
+                  "tail0": 0.000009196299432634447,
+                  "tail1": 0.00001855081157505628,
+                  "tail2": 0.00001593685159077124,
+                  "tail3": 0.000010721033027068921
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.12365032725716096,
+                "joint": "foreFarAnkle",
+                "values": {
+                  "pelvis": -0.0000019999999999985307,
+                  "spine": -0.0000030000000000000187,
+                  "chest": -0.0000030000000000000187,
+                  "neck": -0.000005000000000000013,
+                  "head": 0.0000019999999999999944,
+                  "hindFarKnee": -0.022525466661521453,
+                  "hindFarAnkle": 0.04374484676100443,
+                  "hindFarPaw": -0.03850038009948298,
+                  "foreFarKnee": -0.050875674175375446,
+                  "foreFarAnkle": 0.12365032725716096,
+                  "foreFarPaw": -0.08936765308178551,
+                  "hindNearKnee": -0.05279693484668914,
+                  "hindNearAnkle": 0.11939462270085734,
+                  "hindNearPaw": -0.08387868785416819,
+                  "foreNearKnee": 0.026728741889540844,
+                  "foreNearAnkle": -0.09395113654057385,
+                  "foreNearPaw": 0.05062939465103301,
+                  "tail0": 0.000009196299432634447,
+                  "tail1": 0.00001855081157505628,
+                  "tail2": 0.00001593685159077124,
+                  "tail3": 0.000010721033027068921
+                }
+              },
+              "rawField": {
+                "maxPx": 0.02464801419595584,
+                "vertex": 1676
+              },
+              "resolvedField": {
+                "maxPx": 10.093718782246935,
+                "vertex": 1044
+              },
+              "compression": [
+                0,
+                0
+              ]
+            },
+            {
+              "a": 3142.1656666666663,
+              "b": 3142.1676666666667,
+              "planted": [
+                false,
+                true
+              ],
+              "raw": {
+                "maxRadians": 1.8550812402179373e-7,
+                "joint": "tail1",
+                "values": {
+                  "tail1": 1.8550812402179373e-7,
+                  "tail2": 1.5936852299988646e-7,
+                  "tail3": 1.0721033504718092e-7
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.12369884294880432,
+                "joint": "foreFarAnkle",
+                "values": {
+                  "hindFarKnee": -0.022525684859636,
+                  "hindFarAnkle": 0.04374624774688617,
+                  "hindFarPaw": -0.038502562887250166,
+                  "foreFarKnee": -0.050897610560683315,
+                  "foreFarAnkle": 0.12369884294880432,
+                  "foreFarPaw": -0.089399232388121,
+                  "hindNearKnee": -0.052799325283289664,
+                  "hindNearAnkle": 0.11940151296532275,
+                  "hindNearPaw": -0.0838841876820331,
+                  "foreNearKnee": 0.026746873086851756,
+                  "foreNearAnkle": -0.09400873654726725,
+                  "foreNearPaw": 0.05066386346041553,
+                  "tail1": 1.8550812402179373e-7,
+                  "tail2": 1.5936852299988646e-7,
+                  "tail3": 1.0721033504718092e-7
+                }
+              },
+              "rawField": {
+                "maxPx": 0.00025788425885878375,
+                "vertex": 1676
+              },
+              "resolvedField": {
+                "maxPx": 10.093900423547595,
+                "vertex": 1044
+              },
+              "compression": [
+                0,
+                0
+              ]
+            },
+            {
+              "a": 3142.1666566666663,
+              "b": 3142.1666766666667,
+              "planted": [
+                false,
+                true
+              ],
+              "raw": {
+                "maxRadians": 1.8550812899698066e-9,
+                "joint": "tail1",
+                "values": {}
+              },
+              "resolved": {
+                "maxRadians": 0.12369884294880432,
+                "joint": "foreFarAnkle",
+                "values": {
+                  "hindFarKnee": -0.022525684859636,
+                  "hindFarAnkle": 0.04374624774688617,
+                  "hindFarPaw": -0.038502562887250166,
+                  "foreFarKnee": -0.050897610560683315,
+                  "foreFarAnkle": 0.12369884294880432,
+                  "foreFarPaw": -0.089399232388121,
+                  "hindNearKnee": -0.052799325283289664,
+                  "hindNearAnkle": 0.11940151296532275,
+                  "hindNearPaw": -0.0838841876820331,
+                  "foreNearKnee": 0.026746873086851756,
+                  "foreNearAnkle": -0.09400873654726725,
+                  "foreNearPaw": 0.05066386346041553
+                }
+              },
+              "rawField": {
+                "maxPx": 0.000002578842896647906,
+                "vertex": 1676
+              },
+              "resolvedField": {
+                "maxPx": 10.093900450413125,
+                "vertex": 1044
+              },
+              "compression": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "atMs": 5000,
+          "labels": [
+            "role switch",
+            "idle key/wrap",
+            "idle key/wrap"
+          ],
+          "epsilon": [
+            {
+              "a": 4999.9,
+              "b": 5000.1,
+              "planted": [
+                true,
+                true
+              ],
+              "raw": {
+                "maxRadians": 0.009343293605145117,
+                "joint": "tail1",
+                "values": {
+                  "pelvis": -0.000558,
+                  "tail0": -0.003863543849261228,
+                  "tail1": -0.009343293605145117,
+                  "tail2": -0.00933706984416062,
+                  "tail3": -0.005341966274062981
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.009343293605145117,
+                "joint": "tail1",
+                "values": {
+                  "pelvis": -0.000558,
+                  "hindFarKnee": 0.0007041240867743906,
+                  "hindFarAnkle": -0.001338966101424255,
+                  "hindFarPaw": 0.0011928420146498642,
+                  "foreFarKnee": 0.001904605907291298,
+                  "foreFarAnkle": -0.004740413277835699,
+                  "foreFarPaw": 0.0033938073705444003,
+                  "hindNearKnee": 0.0015809196915161328,
+                  "hindNearAnkle": -0.0034889679672207574,
+                  "hindNearPaw": 0.0024660482757046243,
+                  "foreNearKnee": -0.0015625447347361074,
+                  "foreNearAnkle": 0.0047455449431856875,
+                  "foreNearPaw": -0.0026250002084495794,
+                  "tail0": -0.003863543849261228,
+                  "tail1": -0.009343293605145117,
+                  "tail2": -0.00933706984416062,
+                  "tail3": -0.005341966274062981
+                }
+              },
+              "rawField": {
+                "maxPx": 13.334100857328595,
+                "vertex": 1676
+              },
+              "resolvedField": {
+                "maxPx": 13.334100857328595,
+                "vertex": 1676
+              },
+              "compression": [
+                0,
+                0
+              ]
+            },
+            {
+              "a": 4999.999,
+              "b": 5000.001,
+              "planted": [
+                true,
+                true
+              ],
+              "raw": {
+                "maxRadians": 0.009366496867662027,
+                "joint": "tail1",
+                "values": {
+                  "pelvis": -0.000559,
+                  "tail0": -0.0038741977532599503,
+                  "tail1": -0.009366496867662027,
+                  "tail2": -0.009357866745357168,
+                  "tail3": -0.005352343056889627
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.009366496867662027,
+                "joint": "tail1",
+                "values": {
+                  "pelvis": -0.000559,
+                  "hindFarKnee": 0.0007053044483664966,
+                  "hindFarAnkle": -0.0013386917403725997,
+                  "hindFarPaw": 0.0011923872920061034,
+                  "foreFarKnee": 0.0019088584951776582,
+                  "foreFarAnkle": -0.004749292334874199,
+                  "foreFarPaw": 0.0033994338396965418,
+                  "hindNearKnee": 0.0015833526314681617,
+                  "hindNearAnkle": -0.0034924641912663645,
+                  "hindNearPaw": 0.002468111559798203,
+                  "foreNearKnee": -0.0015663835499881468,
+                  "foreNearAnkle": 0.004757717315940769,
+                  "foreNearPaw": -0.0026323337659526214,
+                  "tail0": -0.0038741977532599503,
+                  "tail1": -0.009366496867662027,
+                  "tail2": -0.009357866745357168,
+                  "tail3": -0.005352343056889627
+                }
+              },
+              "rawField": {
+                "maxPx": 13.366128727282225,
+                "vertex": 1676
+              },
+              "resolvedField": {
+                "maxPx": 13.366128727282225,
+                "vertex": 1676
+              },
+              "compression": [
+                0,
+                0
+              ]
+            },
+            {
+              "a": 4999.99999,
+              "b": 5000.00001,
+              "planted": [
+                true,
+                true
+              ],
+              "raw": {
+                "maxRadians": 0.00936672888670756,
+                "joint": "tail1",
+                "values": {
+                  "pelvis": -0.000559,
+                  "tail0": -0.0038743042931923682,
+                  "tail1": -0.00936672888670756,
+                  "tail2": -0.009358074692050553,
+                  "tail3": -0.005352446805021251
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.00936672888670756,
+                "joint": "tail1",
+                "values": {
+                  "pelvis": -0.000559,
+                  "hindFarKnee": 0.0007053044483664966,
+                  "hindFarAnkle": -0.0013386917403725997,
+                  "hindFarPaw": 0.0011923872920061034,
+                  "foreFarKnee": 0.0019088584951776582,
+                  "foreFarAnkle": -0.004749292334874199,
+                  "foreFarPaw": 0.0033994338396965418,
+                  "hindNearKnee": 0.0015833526314681617,
+                  "hindNearAnkle": -0.0034924641912663645,
+                  "hindNearPaw": 0.002468111559798203,
+                  "foreNearKnee": -0.0015663835499881468,
+                  "foreNearAnkle": 0.004757717315940769,
+                  "foreNearPaw": -0.0026323337659526214,
+                  "tail0": -0.0038743042931923682,
+                  "tail1": -0.00936672888670756,
+                  "tail2": -0.009358074692050553,
+                  "tail3": -0.005352446805021251
+                }
+              },
+              "rawField": {
+                "maxPx": 13.366441104644252,
+                "vertex": 1676
+              },
+              "resolvedField": {
+                "maxPx": 13.366441104644252,
+                "vertex": 1676
+              },
+              "compression": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fox",
+      "boundaryCount": 266,
+      "window": {
+        "a": 2183.3333333333335,
+        "b": 2191.6666666666665,
+        "planted": [
+          false,
+          false
+        ],
+        "raw": {
+          "maxRadians": 0.172789,
+          "joint": "head",
+          "values": {
+            "pelvis": 0.00004000000000000184,
+            "spine": 0.03839700000000001,
+            "neck": 0.15359,
+            "head": 0.172789,
+            "jaw": -0.14399,
+            "foreNearKnee": -0.09599400000000002,
+            "tail0": 0.007337050903856446,
+            "tail1": -0.0054985333709310635,
+            "tail2": -0.0023179060682825825,
+            "tail3": -0.0010857673867333967,
+            "earFarTip": 0.0007299418444928207,
+            "earNearTip": 0.0007299418444928207
+          }
+        },
+        "resolved": {
+          "maxRadians": 0.172789,
+          "joint": "head",
+          "values": {
+            "pelvis": 0.00004000000000000184,
+            "spine": 0.03839700000000001,
+            "neck": 0.15359,
+            "head": 0.172789,
+            "jaw": -0.14399,
+            "foreNearKnee": -0.09599400000000002,
+            "tail0": 0.007337050903856446,
+            "tail1": -0.0054985333709310635,
+            "tail2": -0.0023179060682825825,
+            "tail3": -0.0010857673867333967,
+            "earFarTip": 0.0007299418444928207,
+            "earNearTip": 0.0007299418444928207
+          }
+        },
+        "rawField": {
+          "maxPx": 188.23855610754615,
+          "vertex": 152
+        },
+        "resolvedField": {
+          "maxPx": 188.23855610754615,
+          "vertex": 152
+        },
+        "compression": [
+          0,
+          0
+        ]
+      },
+      "jumps": [
+        {
+          "atMs": 1460,
+          "labels": [
+            "phase commandEnd",
+            "approach key"
+          ],
+          "epsilon": [
+            {
+              "a": 1459.9,
+              "b": 1460.1,
+              "planted": [
+                true,
+                false
+              ],
+              "raw": {
+                "maxRadians": 0.000014889785211132794,
+                "joint": "tail2",
+                "values": {
+                  "pelvis": -0.0000019999999999999944,
+                  "spine": 0.000004000000000004,
+                  "chest": 0.0000050000000000050004,
+                  "neck": 0.000005999999999999062,
+                  "head": -0.000002000000000002,
+                  "hindFarKnee": 0.000005,
+                  "hindFarAnkle": 0.000002,
+                  "foreFarKnee": -0.000005,
+                  "foreFarAnkle": -0.000002,
+                  "hindNearKnee": -0.000005,
+                  "hindNearAnkle": 0.000002,
+                  "foreNearKnee": 0.000005,
+                  "foreNearAnkle": -0.000002,
+                  "tail0": -0.0000022108670845594203,
+                  "tail1": -0.00001286261665713051,
+                  "tail2": -0.000014889785211132794,
+                  "tail3": -0.000011731608139288127,
+                  "earFarTip": -0.000011304583294201309,
+                  "earNearTip": -0.000011304583294201309
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.5164429046682067,
+                "joint": "foreFarAnkle",
+                "values": {
+                  "pelvis": -0.0000019999999999999944,
+                  "spine": 0.000004000000000004,
+                  "chest": 0.0000050000000000050004,
+                  "neck": 0.000005999999999999062,
+                  "head": -0.000002000000000002,
+                  "hindFarKnee": -0.086900578119218,
+                  "hindFarAnkle": 0.25533125385323924,
+                  "hindFarPaw": -0.16881167573402123,
+                  "foreFarKnee": 0.24746600852748374,
+                  "foreFarAnkle": -0.5164429046682067,
+                  "foreFarPaw": 0.2003198961407231,
+                  "hindNearKnee": -0.08173113153209824,
+                  "hindNearAnkle": 0.24983343697821178,
+                  "hindNearPaw": -0.16849330544611352,
+                  "foreNearKnee": -0.052497082146674076,
+                  "foreNearAnkle": -0.05044500587589711,
+                  "foreNearPaw": 0.03429508802257118,
+                  "tail0": -0.0000022108670845594203,
+                  "tail1": -0.00001286261665713051,
+                  "tail2": -0.000014889785211132794,
+                  "tail3": -0.000011731608139288127,
+                  "earFarTip": -0.000011304583294201309,
+                  "earNearTip": -0.000011304583294201309
+                }
+              },
+              "rawField": {
+                "maxPx": 0.01816480923355841,
+                "vertex": 1914
+              },
+              "resolvedField": {
+                "maxPx": 54.70224736960853,
+                "vertex": 942
+              },
+              "compression": [
+                0.014494770657708544,
+                0
+              ]
+            },
+            {
+              "a": 1459.999,
+              "b": 1460.001,
+              "planted": [
+                true,
+                false
+              ],
+              "raw": {
+                "maxRadians": 1.488978601596469e-7,
+                "joint": "tail2",
+                "values": {
+                  "tail1": -1.2862617246311991e-7,
+                  "tail2": -1.488978601596469e-7,
+                  "tail3": -1.1731608898918333e-7,
+                  "earFarTip": -1.130458367956666e-7,
+                  "earNearTip": -1.130458367956666e-7
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.5164409046878495,
+                "joint": "foreFarAnkle",
+                "values": {
+                  "hindFarKnee": -0.08690075078835638,
+                  "hindFarAnkle": 0.25531052650096897,
+                  "hindFarPaw": -0.1687987757126126,
+                  "foreFarKnee": 0.24747456700464707,
+                  "foreFarAnkle": -0.5164409046878495,
+                  "foreFarPaw": 0.20031933768320243,
+                  "hindNearKnee": -0.08172213632411678,
+                  "hindNearAnkle": 0.2498149217616938,
+                  "hindNearPaw": -0.16848178543757703,
+                  "foreNearKnee": -0.05249213273020579,
+                  "foreNearAnkle": -0.05045298931204734,
+                  "foreNearPaw": 0.03429812204225313,
+                  "tail1": -1.2862617246311991e-7,
+                  "tail2": -1.488978601596469e-7,
+                  "tail3": -1.1731608898918333e-7,
+                  "earFarTip": -1.130458367956666e-7,
+                  "earNearTip": -1.130458367956666e-7
+                }
+              },
+              "rawField": {
+                "maxPx": 0.00016572826941940836,
+                "vertex": 1914
+              },
+              "resolvedField": {
+                "maxPx": 54.70318378836637,
+                "vertex": 942
+              },
+              "compression": [
+                0.014493761655675175,
+                0
+              ]
+            },
+            {
+              "a": 1459.99999,
+              "b": 1460.00001,
+              "planted": [
+                true,
+                false
+              ],
+              "raw": {
+                "maxRadians": 1.4889785619753848e-9,
+                "joint": "tail2",
+                "values": {}
+              },
+              "resolved": {
+                "maxRadians": 0.5164409046878495,
+                "joint": "foreFarAnkle",
+                "values": {
+                  "hindFarKnee": -0.08690075078835638,
+                  "hindFarAnkle": 0.25531052650096897,
+                  "hindFarPaw": -0.1687987757126126,
+                  "foreFarKnee": 0.24747456700464707,
+                  "foreFarAnkle": -0.5164409046878495,
+                  "foreFarPaw": 0.20031933768320243,
+                  "hindNearKnee": -0.08172213632411678,
+                  "hindNearAnkle": 0.2498149217616938,
+                  "hindNearPaw": -0.16848178543757703,
+                  "foreNearKnee": -0.05249213273020579,
+                  "foreNearAnkle": -0.05045298931204734,
+                  "foreNearPaw": 0.03429812204225313
+                }
+              },
+              "rawField": {
+                "maxPx": 0.0000016572826814808316,
+                "vertex": 1914
+              },
+              "resolvedField": {
+                "maxPx": 54.70318378836637,
+                "vertex": 942
+              },
+              "compression": [
+                0.014493761655675175,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "atMs": 3348.6666666666665,
+          "labels": [
+            "phase returnEnd",
+            "phase idleStart",
+            "return key"
+          ],
+          "epsilon": [
+            {
+              "a": 3348.5666666666666,
+              "b": 3348.7666666666664,
+              "planted": [
+                false,
+                true
+              ],
+              "raw": {
+                "maxRadians": 0.00003624734364408855,
+                "joint": "tail0",
+                "values": {
+                  "pelvis": 0.000007000000000000062,
+                  "tail0": 0.00003624734364408855,
+                  "tail1": 0.000027543202438466696,
+                  "tail2": 0.000014636154532116433,
+                  "tail3": 0.000006593605234334922
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.09823713259947264,
+                "joint": "hindNearAnkle",
+                "values": {
+                  "pelvis": 0.000007000000000000062,
+                  "hindFarKnee": -0.029622980582675016,
+                  "hindFarAnkle": 0.052597960374640707,
+                  "hindFarPaw": -0.03695797979196569,
+                  "foreFarKnee": 0.027288758041957926,
+                  "foreFarAnkle": -0.05953716095390794,
+                  "foreFarPaw": 0.01826540291195,
+                  "hindNearKnee": -0.043754722204777746,
+                  "hindNearAnkle": 0.09823713259947264,
+                  "hindNearPaw": -0.06846541039469489,
+                  "foreNearKnee": -0.00007643202979893544,
+                  "foreNearAnkle": -0.017087248735118132,
+                  "foreNearPaw": 0.0031806807649170654,
+                  "tail0": 0.00003624734364408855,
+                  "tail1": 0.000027543202438466696,
+                  "tail2": 0.000014636154532116433,
+                  "tail3": 0.000006593605234334922
+                }
+              },
+              "rawField": {
+                "maxPx": 0.05053862070627246,
+                "vertex": 1914
+              },
+              "resolvedField": {
+                "maxPx": 11.08200976942082,
+                "vertex": 1267
+              },
+              "compression": [
+                0,
+                0
+              ]
+            },
+            {
+              "a": 3348.6656666666663,
+              "b": 3348.6676666666667,
+              "planted": [
+                false,
+                true
+              ],
+              "raw": {
+                "maxRadians": 3.624734487978065e-7,
+                "joint": "tail0",
+                "values": {
+                  "tail0": 3.624734487978065e-7,
+                  "tail1": 2.7543203376390046e-7,
+                  "tail2": 1.463615503082688e-7
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.09821205871652762,
+                "joint": "hindNearAnkle",
+                "values": {
+                  "hindFarKnee": -0.02961512411239065,
+                  "hindFarAnkle": 0.05258368983706063,
+                  "hindFarPaw": -0.03694856572466998,
+                  "foreFarKnee": 0.027285469024839745,
+                  "foreFarAnkle": -0.05952781119456208,
+                  "foreFarPaw": 0.018262342169722334,
+                  "hindNearKnee": -0.04374364148540145,
+                  "hindNearAnkle": 0.09821205871652762,
+                  "hindNearPaw": -0.06844841723112616,
+                  "foreNearKnee": -0.00007425829070707018,
+                  "foreNearAnkle": -0.01708642769349522,
+                  "foreNearPaw": 0.0031806859842022916,
+                  "tail0": 3.624734487978065e-7,
+                  "tail1": 2.7543203376390046e-7,
+                  "tail2": 1.463615503082688e-7
+                }
+              },
+              "rawField": {
+                "maxPx": 0.0004497322241438934,
+                "vertex": 1914
+              },
+              "resolvedField": {
+                "maxPx": 11.081885104563304,
+                "vertex": 1267
+              },
+              "compression": [
+                0,
+                0
+              ]
+            },
+            {
+              "a": 3348.6666566666663,
+              "b": 3348.6666766666667,
+              "planted": [
+                false,
+                true
+              ],
+              "raw": {
+                "maxRadians": 3.624734547236219e-9,
+                "joint": "tail0",
+                "values": {}
+              },
+              "resolved": {
+                "maxRadians": 0.09821205871652762,
+                "joint": "hindNearAnkle",
+                "values": {
+                  "hindFarKnee": -0.02961512411239065,
+                  "hindFarAnkle": 0.05258368983706063,
+                  "hindFarPaw": -0.03694856572466998,
+                  "foreFarKnee": 0.027285469024839745,
+                  "foreFarAnkle": -0.05952781119456208,
+                  "foreFarPaw": 0.018262342169722334,
+                  "hindNearKnee": -0.04374364148540145,
+                  "hindNearAnkle": 0.09821205871652762,
+                  "hindNearPaw": -0.06844841723112616,
+                  "foreNearKnee": -0.00007425829070707018,
+                  "foreNearAnkle": -0.01708642769349522,
+                  "foreNearPaw": 0.0031806859842022916
+                }
+              },
+              "rawField": {
+                "maxPx": 0.000004497322645458174,
+                "vertex": 1914
+              },
+              "resolvedField": {
+                "maxPx": 11.08188612056335,
+                "vertex": 1267
+              },
+              "compression": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "atMs": 5000,
+          "labels": [
+            "role switch",
+            "idle key/wrap",
+            "idle key/wrap"
+          ],
+          "epsilon": [
+            {
+              "a": 4999.9,
+              "b": 5000.1,
+              "planted": [
+                true,
+                true
+              ],
+              "raw": {
+                "maxRadians": 0.0809156069817755,
+                "joint": "tail0",
+                "values": {
+                  "pelvis": 0.017209,
+                  "tail0": 0.0809156069817755,
+                  "tail1": 0.04924353145172544,
+                  "tail2": 0.017509036644551747,
+                  "tail3": 0.0010983526871774524,
+                  "earFarTip": 0.004021691123947256,
+                  "earNearTip": 0.004021691123947256
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.16968065737319882,
+                "joint": "foreFarAnkle",
+                "values": {
+                  "pelvis": 0.017209,
+                  "hindFarKnee": -0.013810910554721913,
+                  "hindFarAnkle": -0.0010028464142559645,
+                  "hindFarPaw": -0.0023952430310221207,
+                  "foreFarKnee": 0.0950273752514881,
+                  "foreFarAnkle": -0.16968065737319882,
+                  "foreFarPaw": 0.05744428212171071,
+                  "hindNearKnee": -0.030106733985732794,
+                  "hindNearAnkle": 0.04750455961709843,
+                  "hindNearPaw": -0.034606825631365634,
+                  "foreNearKnee": 0.04510215852023229,
+                  "foreNearAnkle": -0.09300021163364192,
+                  "foreNearPaw": 0.030689053113409637,
+                  "tail0": 0.0809156069817755,
+                  "tail1": 0.04924353145172544,
+                  "tail2": 0.017509036644551747,
+                  "tail3": 0.0010983526871774524,
+                  "earFarTip": 0.004021691123947256,
+                  "earNearTip": 0.004021691123947256
+                }
+              },
+              "rawField": {
+                "maxPx": 94.89161606430852,
+                "vertex": 1914
+              },
+              "resolvedField": {
+                "maxPx": 94.89161606283916,
+                "vertex": 1914
+              },
+              "compression": [
+                0,
+                0
+              ]
+            },
+            {
+              "a": 4999.999,
+              "b": 5000.001,
+              "planted": [
+                true,
+                true
+              ],
+              "raw": {
+                "maxRadians": 0.08091168424517925,
+                "joint": "tail0",
+                "values": {
+                  "pelvis": 0.017208,
+                  "tail0": 0.08091168424517925,
+                  "tail1": 0.049239981597193214,
+                  "tail2": 0.01750646628343624,
+                  "tail3": 0.001097420314145581,
+                  "earFarTip": 0.004014475782915375,
+                  "earNearTip": 0.004014475782915375
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.16967205967414656,
+                "joint": "foreFarAnkle",
+                "values": {
+                  "pelvis": 0.017208,
+                  "hindFarKnee": -0.013809001965374159,
+                  "hindFarAnkle": -0.0010043533528161226,
+                  "hindFarPaw": -0.002394644681809721,
+                  "foreFarKnee": 0.0950230972966125,
+                  "foreFarAnkle": -0.16967205967414656,
+                  "foreFarPaw": 0.057440962377534044,
+                  "hindNearKnee": -0.030104238948302057,
+                  "hindNearAnkle": 0.047501101627442026,
+                  "hindNearPaw": -0.03460486267913998,
+                  "foreNearKnee": 0.045101318546674096,
+                  "foreNearAnkle": -0.092996945864666,
+                  "foreNearPaw": 0.030687627317991906,
+                  "tail0": 0.08091168424517925,
+                  "tail1": 0.049239981597193214,
+                  "tail2": 0.01750646628343624,
+                  "tail3": 0.001097420314145581,
+                  "earFarTip": 0.004014475782915375,
+                  "earNearTip": 0.004014475782915375
+                }
+              },
+              "rawField": {
+                "maxPx": 94.88514681682852,
+                "vertex": 1914
+              },
+              "resolvedField": {
+                "maxPx": 94.88514681535939,
+                "vertex": 1914
+              },
+              "compression": [
+                0,
+                0
+              ]
+            },
+            {
+              "a": 4999.99999,
+              "b": 5000.00001,
+              "planted": [
+                true,
+                true
+              ],
+              "raw": {
+                "maxRadians": 0.08091164493900535,
+                "joint": "tail0",
+                "values": {
+                  "pelvis": 0.017208,
+                  "tail0": 0.08091164493900535,
+                  "tail1": 0.04923994604783856,
+                  "tail2": 0.017506440562495014,
+                  "tail3": 0.00109741099356446,
+                  "earFarTip": 0.0040144036595031185,
+                  "earNearTip": 0.0040144036595031185
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.16967205967414656,
+                "joint": "foreFarAnkle",
+                "values": {
+                  "pelvis": 0.017208,
+                  "hindFarKnee": -0.013809001965374159,
+                  "hindFarAnkle": -0.0010043533528161226,
+                  "hindFarPaw": -0.002394644681809721,
+                  "foreFarKnee": 0.0950230972966125,
+                  "foreFarAnkle": -0.16967205967414656,
+                  "foreFarPaw": 0.057440962377534044,
+                  "hindNearKnee": -0.030104238948302057,
+                  "hindNearAnkle": 0.047501101627442026,
+                  "hindNearPaw": -0.03460486267913998,
+                  "foreNearKnee": 0.045101318546674096,
+                  "foreNearAnkle": -0.092996945864666,
+                  "foreNearPaw": 0.030687627317991906,
+                  "tail0": 0.08091164493900535,
+                  "tail1": 0.04923994604783856,
+                  "tail2": 0.017506440562495014,
+                  "tail3": 0.00109741099356446,
+                  "earFarTip": 0.0040144036595031185,
+                  "earNearTip": 0.0040144036595031185
+                }
+              },
+              "rawField": {
+                "maxPx": 94.88508986474756,
+                "vertex": 1914
+              },
+              "resolvedField": {
+                "maxPx": 94.88508986327828,
+                "vertex": 1914
+              },
+              "compression": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "procedural",
+      "boundaryCount": 237,
+      "window": {
+        "a": 2383.3333333333335,
+        "b": 2391.6666666666665,
+        "planted": [
+          false,
+          false
+        ],
+        "raw": {
+          "maxRadians": 0.46552099999999996,
+          "joint": "head",
+          "values": {
+            "pelvis": -0.0002440000000000003,
+            "spine": 0.034325999999999995,
+            "chest": 0.00048799999999999885,
+            "neck": -0.379949,
+            "head": -0.46552099999999996,
+            "tail0": 0.004374573068659432,
+            "tail1": -0.004103879968313073,
+            "tail2": -0.001378512706467442,
+            "tail3": -0.0005796147740070746,
+            "earFarTip": 0.00015854514489243438,
+            "earNearTip": 0.00015854514489243438
+          }
+        },
+        "resolved": {
+          "maxRadians": 0.46552099999999996,
+          "joint": "head",
+          "values": {
+            "pelvis": -0.0002440000000000003,
+            "spine": 0.034325999999999995,
+            "chest": 0.00048799999999999885,
+            "neck": -0.379949,
+            "head": -0.46552099999999996,
+            "tail0": 0.004374573068659432,
+            "tail1": -0.004103879968313073,
+            "tail2": -0.001378512706467442,
+            "tail3": -0.0005796147740070746,
+            "earFarTip": 0.00015854514489243438,
+            "earNearTip": 0.00015854514489243438
+          }
+        },
+        "rawField": {
+          "maxPx": 100.15631363076392,
+          "vertex": 598
+        },
+        "resolvedField": {
+          "maxPx": 100.15631363076392,
+          "vertex": 598
+        },
+        "compression": [
+          0,
+          0
+        ]
+      },
+      "jumps": [
+        {
+          "atMs": 1460,
+          "labels": [
+            "phase commandEnd",
+            "approach key"
+          ],
+          "epsilon": [
+            {
+              "a": 1459.9,
+              "b": 1460.1,
+              "planted": [
+                true,
+                false
+              ],
+              "raw": {
+                "maxRadians": 0.000024164623933890794,
+                "joint": "tail0",
+                "values": {
+                  "pelvis": -0.000004999999999999796,
+                  "spine": -0.000011000000000000593,
+                  "chest": -0.000011000000000000593,
+                  "neck": -0.000017999999999997185,
+                  "head": 0.000005999999999999062,
+                  "hindFarKnee": 0.000003,
+                  "hindFarAnkle": 0.000001,
+                  "foreFarKnee": -0.000003,
+                  "foreFarAnkle": -0.000001,
+                  "hindNearKnee": -0.000003,
+                  "hindNearAnkle": 0.000001,
+                  "foreNearKnee": 0.000003,
+                  "foreNearAnkle": -0.000001,
+                  "tail0": -0.000024164623933890794,
+                  "tail1": -0.000011542445252962774,
+                  "tail2": -0.000006928488064369964,
+                  "tail3": -0.0000020576560933044385,
+                  "earFarTip": -0.000019063804255665256,
+                  "earNearTip": -0.000019063804255665256
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.4762341303712331,
+                "joint": "foreNearAnkle",
+                "values": {
+                  "pelvis": -0.000004999999999999796,
+                  "spine": -0.000011000000000000593,
+                  "chest": -0.000011000000000000593,
+                  "neck": -0.000017999999999997185,
+                  "head": 0.000005999999999999062,
+                  "hindFarKnee": -0.02741334868782896,
+                  "hindFarAnkle": 0.12056170632478655,
+                  "hindFarPaw": -0.08632135763695759,
+                  "foreFarKnee": -0.09454561735915495,
+                  "foreFarAnkle": 0.23931911562828007,
+                  "foreFarPaw": -0.18047449826912512,
+                  "hindNearKnee": -0.028893444365793157,
+                  "hindNearAnkle": 0.12685705389799048,
+                  "hindNearPaw": -0.0911426095321973,
+                  "foreNearKnee": -0.153971760950537,
+                  "foreNearAnkle": 0.4762341303712331,
+                  "foreNearPaw": -0.3579573694206961,
+                  "tail0": -0.000024164623933890794,
+                  "tail1": -0.000011542445252962774,
+                  "tail2": -0.000006928488064369964,
+                  "tail3": -0.0000020576560933044385,
+                  "earFarTip": -0.000019063804255665256,
+                  "earNearTip": -0.000019063804255665256
+                }
+              },
+              "rawField": {
+                "maxPx": 0.009167732737436596,
+                "vertex": 608
+              },
+              "resolvedField": {
+                "maxPx": 8.19894690332857,
+                "vertex": 499
+              },
+              "compression": [
+                0.004167831851725423,
+                0
+              ]
+            },
+            {
+              "a": 1459.999,
+              "b": 1460.001,
+              "planted": [
+                true,
+                false
+              ],
+              "raw": {
+                "maxRadians": 0.0000010000000000001327,
+                "joint": "pelvis",
+                "values": {
+                  "pelvis": -0.0000010000000000001327,
+                  "tail0": -2.416462446808154e-7,
+                  "tail1": -1.1542445557677361e-7,
+                  "earFarTip": -1.9063804613042579e-7,
+                  "earNearTip": -1.9063804613042579e-7
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.4762351303712355,
+                "joint": "foreNearAnkle",
+                "values": {
+                  "pelvis": -0.0000010000000000001327,
+                  "hindFarKnee": -0.027437875768789612,
+                  "hindFarAnkle": 0.12065853588786522,
+                  "hindFarPaw": -0.0863996601190756,
+                  "foreFarKnee": -0.09453974032404466,
+                  "foreFarAnkle": 0.2392802020265561,
+                  "foreFarPaw": -0.18044946170251142,
+                  "hindNearKnee": -0.028911347101758095,
+                  "hindNearAnkle": 0.12695145434926824,
+                  "hindNearPaw": -0.09121910724751014,
+                  "foreNearKnee": -0.15398183625190365,
+                  "foreNearAnkle": 0.4762351303712355,
+                  "foreNearPaw": -0.3579622941193319,
+                  "tail0": -2.416462446808154e-7,
+                  "tail1": -1.1542445557677361e-7,
+                  "earFarTip": -1.9063804613042579e-7,
+                  "earNearTip": -1.9063804613042579e-7
+                }
+              },
+              "rawField": {
+                "maxPx": 0.000257152395746246,
+                "vertex": 646
+              },
+              "resolvedField": {
+                "maxPx": 8.197088277262923,
+                "vertex": 499
+              },
+              "compression": [
+                0.004169569032270948,
+                0
+              ]
+            },
+            {
+              "a": 1459.99999,
+              "b": 1460.00001,
+              "planted": [
+                true,
+                false
+              ],
+              "raw": {
+                "maxRadians": 2.4164625023193054e-9,
+                "joint": "tail0",
+                "values": {}
+              },
+              "resolved": {
+                "maxRadians": 0.4762351303712355,
+                "joint": "foreNearAnkle",
+                "values": {
+                  "hindFarKnee": -0.027437875768789612,
+                  "hindFarAnkle": 0.12065853588786522,
+                  "hindFarPaw": -0.0863996601190756,
+                  "foreFarKnee": -0.09453974032404466,
+                  "foreFarAnkle": 0.2392802020265561,
+                  "foreFarPaw": -0.18044946170251142,
+                  "hindNearKnee": -0.028911347101758095,
+                  "hindNearAnkle": 0.12695145434926824,
+                  "hindNearPaw": -0.09121910724751014,
+                  "foreNearKnee": -0.15398183625190365,
+                  "foreNearAnkle": 0.4762351303712355,
+                  "foreNearPaw": -0.3579622941193319
+                }
+              },
+              "rawField": {
+                "maxPx": 4.91508304882309e-7,
+                "vertex": 646
+              },
+              "resolvedField": {
+                "maxPx": 8.19696923729959,
+                "vertex": 499
+              },
+              "compression": [
+                0.004169569032270948,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "atMs": 4035.333333333333,
+          "labels": [
+            "phase returnEnd",
+            "phase idleStart",
+            "return key"
+          ],
+          "epsilon": [
+            {
+              "a": 4035.233333333333,
+              "b": 4035.433333333333,
+              "planted": [
+                false,
+                true
+              ],
+              "raw": {
+                "maxRadians": 0.00001033031389206145,
+                "joint": "tail0",
+                "values": {
+                  "pelvis": 0.0000039999999999996635,
+                  "tail0": 0.00001033031389206145,
+                  "tail1": 0.0000018552359923110218,
+                  "tail2": 0.000008097936484725149,
+                  "tail3": 0.000008846958054897422
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.019942367886210288,
+                "joint": "hindFarAnkle",
+                "values": {
+                  "pelvis": 0.0000039999999999996635,
+                  "hindFarKnee": -0.00537892074968978,
+                  "hindFarAnkle": 0.019942367886210288,
+                  "hindFarPaw": -0.01682344713652051,
+                  "foreFarKnee": -0.0026442872056634133,
+                  "foreFarAnkle": 0.00910854236719394,
+                  "foreFarPaw": -0.008724255161530525,
+                  "hindNearKnee": -0.004783951718316874,
+                  "hindNearAnkle": 0.017513284848903243,
+                  "hindNearPaw": -0.014989333130586365,
+                  "foreNearKnee": -0.0035451724100715332,
+                  "foreNearAnkle": 0.01281306132577353,
+                  "foreNearPaw": -0.011527888915701997,
+                  "tail0": 0.00001033031389206145,
+                  "tail1": 0.0000018552359923110218,
+                  "tail2": 0.000008097936484725149,
+                  "tail3": 0.000008846958054897422
+                }
+              },
+              "rawField": {
+                "maxPx": 0.003155635989017978,
+                "vertex": 646
+              },
+              "resolvedField": {
+                "maxPx": 0.3222489039297256,
+                "vertex": 386
+              },
+              "compression": [
+                0,
+                0
+              ]
+            },
+            {
+              "a": 4035.332333333333,
+              "b": 4035.3343333333332,
+              "planted": [
+                false,
+                true
+              ],
+              "raw": {
+                "maxRadians": 1.0330314091080636e-7,
+                "joint": "tail0",
+                "values": {
+                  "tail0": 1.0330314091080636e-7
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.01991844942389287,
+                "joint": "hindFarAnkle",
+                "values": {
+                  "hindFarKnee": -0.005372748758410667,
+                  "hindFarAnkle": 0.01991844942389287,
+                  "hindFarPaw": -0.016803700665482202,
+                  "foreFarKnee": -0.00264431922102339,
+                  "foreFarAnkle": 0.009109699298645912,
+                  "foreFarPaw": -0.008723380077622522,
+                  "hindNearKnee": -0.004778326413244067,
+                  "hindNearAnkle": 0.017491581911120324,
+                  "hindNearPaw": -0.014971255497876253,
+                  "foreNearKnee": -0.003544408343741607,
+                  "foreNearAnkle": 0.012810943344438774,
+                  "foreNearPaw": -0.011524535000697167,
+                  "tail0": 1.0330314091080636e-7
+                }
+              },
+              "rawField": {
+                "maxPx": 0.000023424455765590593,
+                "vertex": 646
+              },
+              "resolvedField": {
+                "maxPx": 0.3224645675486017,
+                "vertex": 386
+              },
+              "compression": [
+                0,
+                0
+              ]
+            },
+            {
+              "a": 4035.333323333333,
+              "b": 4035.3333433333332,
+              "planted": [
+                false,
+                true
+              ],
+              "raw": {
+                "maxRadians": 1.0330314281943587e-9,
+                "joint": "tail0",
+                "values": {}
+              },
+              "resolved": {
+                "maxRadians": 0.01991844942389287,
+                "joint": "hindFarAnkle",
+                "values": {
+                  "hindFarKnee": -0.005372748758410667,
+                  "hindFarAnkle": 0.01991844942389287,
+                  "hindFarPaw": -0.016803700665482202,
+                  "foreFarKnee": -0.00264431922102339,
+                  "foreFarAnkle": 0.009109699298645912,
+                  "foreFarPaw": -0.008723380077622522,
+                  "hindNearKnee": -0.004778326413244067,
+                  "hindNearAnkle": 0.017491581911120324,
+                  "hindNearPaw": -0.014971255497876253,
+                  "foreNearKnee": -0.003544408343741607,
+                  "foreNearAnkle": 0.012810943344438774,
+                  "foreNearPaw": -0.011524535000697167
+                }
+              },
+              "rawField": {
+                "maxPx": 2.3424449826467283e-7,
+                "vertex": 646
+              },
+              "resolvedField": {
+                "maxPx": 0.3224645675486017,
+                "vertex": 386
+              },
+              "compression": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "atMs": 5000,
+          "labels": [
+            "role switch",
+            "idle key/wrap",
+            "idle key/wrap",
+            "idle key/wrap"
+          ],
+          "epsilon": [
+            {
+              "a": 4999.9,
+              "b": 5000.1,
+              "planted": [
+                true,
+                true
+              ],
+              "raw": {
+                "maxRadians": 0.07809756687833314,
+                "joint": "tail1",
+                "values": {
+                  "pelvis": -0.014466,
+                  "spine": 0.005974,
+                  "chest": 0.005974,
+                  "neck": 0.008961,
+                  "head": -0.002987,
+                  "tail0": -0.07206939826411987,
+                  "tail1": -0.07809756687833314,
+                  "tail2": -0.05281374844720098,
+                  "tail3": -0.03467028455366702,
+                  "earFarTip": 0.000030194686485617134,
+                  "earNearTip": 0.000030194686485617134
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.16242687704348957,
+                "joint": "hindFarAnkle",
+                "values": {
+                  "pelvis": -0.014466,
+                  "spine": 0.005974,
+                  "chest": 0.005974,
+                  "neck": 0.008961,
+                  "head": -0.002987,
+                  "hindFarKnee": 0.0437891497377453,
+                  "hindFarAnkle": -0.16242687704348957,
+                  "hindFarPaw": 0.13310372730574427,
+                  "foreFarKnee": -0.04115964630932691,
+                  "foreFarAnkle": 0.13621955011967213,
+                  "foreFarPaw": -0.09254190381034524,
+                  "hindNearKnee": 0.039076876434788764,
+                  "hindNearAnkle": -0.1438307816135662,
+                  "hindNearPaw": 0.11921990517877742,
+                  "foreNearKnee": -0.03972101455481639,
+                  "foreNearAnkle": 0.13040650470377546,
+                  "foreNearPaw": -0.08816749014895905,
+                  "tail0": -0.07206939826411987,
+                  "tail1": -0.07809756687833314,
+                  "tail2": -0.05281374844720098,
+                  "tail3": -0.03467028455366702,
+                  "earFarTip": 0.000030194686485617134,
+                  "earNearTip": 0.000030194686485617134
+                }
+              },
+              "rawField": {
+                "maxPx": 25.12442843437708,
+                "vertex": 646
+              },
+              "resolvedField": {
+                "maxPx": 25.10318909415384,
+                "vertex": 646
+              },
+              "compression": [
+                0,
+                0
+              ]
+            },
+            {
+              "a": 4999.999,
+              "b": 5000.001,
+              "planted": [
+                true,
+                true
+              ],
+              "raw": {
+                "maxRadians": 0.07810102389219709,
+                "joint": "tail1",
+                "values": {
+                  "pelvis": -0.014464,
+                  "spine": 0.005978,
+                  "chest": 0.005978,
+                  "neck": 0.008967,
+                  "head": -0.002989,
+                  "tail0": -0.07207167432940403,
+                  "tail1": -0.07810102389219709,
+                  "tail2": -0.052822650578433175,
+                  "tail3": -0.0346762992915562,
+                  "earFarTip": 0.00003067552151296773,
+                  "earNearTip": 0.00003067552151296773
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.16242464194459563,
+                "joint": "hindFarAnkle",
+                "values": {
+                  "pelvis": -0.014464,
+                  "spine": 0.005978,
+                  "chest": 0.005978,
+                  "neck": 0.008967,
+                  "head": -0.002989,
+                  "hindFarKnee": 0.043788263192190174,
+                  "hindFarAnkle": -0.16242464194459563,
+                  "hindFarPaw": 0.13310037875240543,
+                  "foreFarKnee": -0.04121125923059838,
+                  "foreFarAnkle": 0.13639863433295019,
+                  "foreFarPaw": -0.09267937510235177,
+                  "hindNearKnee": 0.03907665026741954,
+                  "hindNearAnkle": -0.14383114281957798,
+                  "hindNearPaw": 0.11921849255215844,
+                  "foreNearKnee": -0.03977753470658824,
+                  "foreNearAnkle": 0.13060553687843113,
+                  "foreNearPaw": -0.08832000217184288,
+                  "tail0": -0.07207167432940403,
+                  "tail1": -0.07810102389219709,
+                  "tail2": -0.052822650578433175,
+                  "tail3": -0.0346762992915562,
+                  "earFarTip": 0.00003067552151296773,
+                  "earNearTip": 0.00003067552151296773
+                }
+              },
+              "rawField": {
+                "maxPx": 25.125573512989167,
+                "vertex": 646
+              },
+              "resolvedField": {
+                "maxPx": 25.104334522412984,
+                "vertex": 646
+              },
+              "compression": [
+                0,
+                0
+              ]
+            },
+            {
+              "a": 4999.99999,
+              "b": 5000.00001,
+              "planted": [
+                true,
+                true
+              ],
+              "raw": {
+                "maxRadians": 0.07810105829728699,
+                "joint": "tail1",
+                "values": {
+                  "pelvis": -0.014464,
+                  "spine": 0.005978,
+                  "chest": 0.005978,
+                  "neck": 0.008967,
+                  "head": -0.002989,
+                  "tail0": -0.0720716970872499,
+                  "tail1": -0.07810105829728699,
+                  "tail2": -0.052822739590062354,
+                  "tail3": -0.03467635942791299,
+                  "earFarTip": 0.00003068034903623228,
+                  "earNearTip": 0.00003068034903623228
+                }
+              },
+              "resolved": {
+                "maxRadians": 0.16242464194459563,
+                "joint": "hindFarAnkle",
+                "values": {
+                  "pelvis": -0.014464,
+                  "spine": 0.005978,
+                  "chest": 0.005978,
+                  "neck": 0.008967,
+                  "head": -0.002989,
+                  "hindFarKnee": 0.043788263192190174,
+                  "hindFarAnkle": -0.16242464194459563,
+                  "hindFarPaw": 0.13310037875240543,
+                  "foreFarKnee": -0.04121125923059838,
+                  "foreFarAnkle": 0.13639863433295019,
+                  "foreFarPaw": -0.09267937510235177,
+                  "hindNearKnee": 0.03907665026741954,
+                  "hindNearAnkle": -0.14383114281957798,
+                  "hindNearPaw": 0.11921849255215844,
+                  "foreNearKnee": -0.03977753470658824,
+                  "foreNearAnkle": 0.13060553687843113,
+                  "foreNearPaw": -0.08832000217184288,
+                  "tail0": -0.0720716970872499,
+                  "tail1": -0.07810105829728699,
+                  "tail2": -0.052822739590062354,
+                  "tail3": -0.03467635942791299,
+                  "earFarTip": 0.00003068034903623228,
+                  "earNearTip": 0.00003068034903623228
+                }
+              },
+              "rawField": {
+                "maxPx": 25.125587080140328,
+                "vertex": 646
+              },
+              "resolvedField": {
+                "maxPx": 25.104348089125416,
+                "vertex": 646
+              },
+              "compression": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json",
+      "sha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "fdd96e54311d80eed18a8701f9feb2bd68ec9e0893f86c3dc57718753c70e153"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "sha256": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/turn-performance.mjs",
+      "sha256": "71d56f64f2e8ceef6507745a923260a0dceb271b1cc13f199163cae403e3d249"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/index.ts",
+      "sha256": "5782f93542b0f138786486d0657e3b02796ecd7192336735c83eeb78b2fbbc68"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "6a10af5e4b07fc49ba7a6a27ce58e96ffad983b3182549aecc8309a9d0e18c97"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "f8091e7cec3ec55fc5da48f8d996fdf0e1545fa1adf593e5bbe60f9c11c9ba3d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/budget.ts",
+      "sha256": "3fac6ef0eeefe1f979130a6a0ba3adf08d3a876495e5c44a047ba1df2e1bafb5"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/actions.ts",
+      "sha256": "dc1ef0becac76be8997789b08e1058fcddd04fcdd12edfff71d10a3ce02abcac"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/secondary.ts",
+      "sha256": "a3b07b1ab839db68669e5ae2fcd24e9314c7d6495a01d2b009e8b3f2d5a0b361"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "08319431f79dd7d51ee247cb4065d49304c0cd332ccec6d7505cec0238af71d0"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timing.ts",
+      "sha256": "135ad4c2752d8941ef4cad337d900ecfd58125dfe1bd7afbf4608c80b68534fa"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/gsap-adapter.ts",
+      "sha256": "6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "ea1a4a57a65aa10cc1872304c9e87f31f47fcea0081f7bb7f947afab46d8bbbc"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "5aff1698c63fdd66f1f83f28b61912d477593c8af4a8b96761c91d8460277566"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/index.js",
+      "sha256": "070038235ba75ec2186d054ebd83ae94e6de6a971f5d3f3d6cd1037551f94faa"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/speciestraits/src/index.ts",
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/genome/src/index.ts",
+      "sha256": "f2936929b86938c7236d093320b52202b90169abea4c4ce4d90b55f4ec477f72"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/CSSPlugin.js",
+      "sha256": "41d061e8b0a2ddfdb647f8f85da690ec6d19194403021acca7088926105fe6bd"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/gsap-core.js",
+      "sha256": "83c4b6c0b020beba737b90896181560b76747342b0f7baa5ba1b185a75f65b65"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7"
+    },
+    {
+      "path": "/private/tmp/cf-current-poses-candidate10-continuity/civet-poses.json",
+      "sha256": "2388df3fba489d3c0c78a9db83af4c19d91cd3eb065781ef8094951f746ba5d7"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/civet.binding.json",
+      "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178"
+    },
+    {
+      "path": "/private/tmp/cf-current-poses-candidate10-continuity/fox-poses.json",
+      "sha256": "c60d80d82338273505dfdb7edbd2ba2d0d54f018242a331c8b789cfcff0d0893"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_BOUNDED_REPAIR_20260913/candidate-01/fox.landmarks.json",
+      "sha256": "8155226f9a6653e56d4a3d54ffef748ea561cf982c8da3e340044d48b6d2b2fe"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/fox.binding.json",
+      "sha256": "b0ff5260682c3d8d0a9e156dd363b6f13673fe8bb3b8b007f91cb4b255d37898"
+    },
+    {
+      "path": "/private/tmp/cf-current-poses-candidate10-continuity/procedural-poses.json",
+      "sha256": "eeb625be16e041a28370ba2faa8a727183c0a7bf62d01e3c42854a2a2beff7ff"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_PARTS_ATLAS_20260913/native-painter-parts-03/record.json",
+      "sha256": "9d0ae1874739d971383b50301a9153785f1b4f4f119244466b4b26aac74634be"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/procedural.binding.json",
+      "sha256": "d58c2cc921ff22ca1b65608958a7c1d2ef13aca45475ca7e6bf746720b7caa96"
+    }
+  ]
+}

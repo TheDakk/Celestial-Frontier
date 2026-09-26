@@ -1,0 +1,17 @@
+{
+  "startedAt": "2026-09-09T19:17:15.935731+00:00",
+  "checkpoint": "8c10463a7b0330e12f5ca42f958c85ab9b7eb6a3",
+  "owner": "OpenAI/Codex \u00b7 macOS \u00b7 /Users/nick/Projects/celestial-frontier-openai-mac \u00b7 openai/mac \u00b7 origin/openai/mac",
+  "origin": "git@github.com:TheDakk/Celestial-Frontier.git",
+  "authentication": "Existing TheDakk SSH/read proof; no new remote comparison required",
+  "ahead": {
+    "origin/openai/mac": 12,
+    "origin/develop": 123
+  },
+  "startupReceipt": "audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json",
+  "startupReuse": "Same uninterrupted coding session; no eligible update check repeated",
+  "budget": "UNFROZEN/PUBLIC, private fallback3000, zero exact hosted authority",
+  "objective": "One changed-runner normal offline Land\u2192V2 native model\u2192retained original proof; additive strict V2 fidelity review owner. Physical phone and art acceptance remain separate.",
+  "hostedActions": false,
+  "modelDownloads": false
+}

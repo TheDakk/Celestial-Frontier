@@ -1,0 +1,32 @@
+{
+  "output": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fold-diagnosis-09.json",
+  "findings": [
+    {
+      "row": "melee:kick",
+      "recordedMs": 302.75555555555553,
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 13",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 13",
+      "reproduced": true,
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 140.1950976836038,
+        "rmsTargetErrorPx": 11.949388426864221,
+        "maximumProjectionPx": 131.33259647702081,
+        "flippedTriangles": 13,
+        "minimumAreaRatio": -0.06201905247781287,
+        "orientationPasses": 128
+      },
+      "outputUnpublished": true,
+      "sourceBounds": [
+        156,
+        783,
+        273,
+        940
+      ],
+      "partCounts": {
+        "tail": 13
+      },
+      "foldedCount": 13
+    }
+  ]
+}

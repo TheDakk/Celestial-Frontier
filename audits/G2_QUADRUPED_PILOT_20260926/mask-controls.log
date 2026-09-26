@@ -1,0 +1,11 @@
+✔ six deterministic nonempty white masks preserve source alpha ceiling and bytes (9.406959ms)
+✔ reject outside alpha, partial-alpha excess, RGB contamination and empty mutants (0.850625ms)
+✔ refuse unknown patterns and empty source (0.162542ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.576625

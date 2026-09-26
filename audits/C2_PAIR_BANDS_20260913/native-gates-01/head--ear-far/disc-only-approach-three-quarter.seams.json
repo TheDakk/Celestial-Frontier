@@ -1,0 +1,28 @@
+{
+  "schema": "cf.seam-oracle/v1",
+  "render": "disc-only-approach-three-quarter.png",
+  "record": "civet.landmarks.json",
+  "size": {
+    "width": 1254,
+    "height": 1254
+  },
+  "opaquePixels": 69282,
+  "closeRadiusPx": 25.08,
+  "discRadiusPx": 75.24,
+  "gapPixelsInsideEnvelope": 10310,
+  "perJoint": {
+    "earFarTip": {
+      "pivot": [
+        974,
+        296
+      ],
+      "seamPixels": 1158,
+      "bounds": {
+        "x": 908,
+        "y": 229,
+        "width": 102,
+        "height": 110
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "status": "WHITESPACE_FINDINGS_RETAINED",
+  "command": [
+    "git",
+    "diff",
+    "--cached",
+    "--check"
+  ],
+  "exitCode": 2,
+  "stdout": "audits/LOCAL_AV_AI_CONTINUATION_20260909/cache-plan-controls-01/focused.log:9: new blank line at EOF.\naudits/LOCAL_AV_AI_CONTINUATION_20260909/cache-plan-controls-01/typecheck.log:4: new blank line at EOF.\n",
+  "stderr": "",
+  "scope": "Raw first-run logs kept exact; no source whitespace findings accepted."
+}

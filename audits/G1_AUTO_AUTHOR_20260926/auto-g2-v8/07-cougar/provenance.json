@@ -1,0 +1,139 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "07-cougar",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "3d7ddbd36eebaaa2bdf1e8329da9514f0ce46b8892175fa45fc8cae99cf1acff",
+ "subjectSourceSha256": "8f00fc5dc51b10c6bc725fc7b50e116ca487a0938b1c2af530fd198c375596c6",
+ "identity": {
+  "name": "Cougar",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cougar\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2512776288\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "seed": 2512776288,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wolf",
+  "authoringSha256": "d7904228473f2b860116b8f91d2a42717721287e86534025f6b765121aa52abc",
+  "masterSha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43"
+ },
+ "habitat": {
+  "profileId": "felid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "74c48486113be3ee431e8a73d1f96d202de2a5c22bc39d2661f21510abbb4a65",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group felid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0756,
+     "class": "top",
+     "attach": {
+      "x": 357.5,
+      "y": 130.8,
+      "relX": 0.87,
+      "relY": 0.22
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1252,
+     "class": "limb-down",
+     "attach": {
+      "x": 94.3,
+      "y": 212.5,
+      "relX": 0.21,
+      "relY": 0.63
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0635,
+     "class": "limb-down",
+     "attach": {
+      "x": 148.6,
+      "y": 232.4,
+      "relX": 0.34,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0468,
+     "class": "limb-down",
+     "attach": {
+      "x": 328.2,
+      "y": 240.7,
+      "relX": 0.8,
+      "relY": 0.77
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0519,
+     "class": "limb-down",
+     "attach": {
+      "x": 195.5,
+      "y": 237,
+      "relX": 0.46,
+      "relY": 0.76
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0549,
+     "class": "limb-down",
+     "attach": {
+      "x": 288,
+      "y": 243,
+      "relX": 0.7,
+      "relY": 0.79
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wolf",
+   "byClass": {
+    "top": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "foreFar+foreNear"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Nick visual review pass"
+ }
+}

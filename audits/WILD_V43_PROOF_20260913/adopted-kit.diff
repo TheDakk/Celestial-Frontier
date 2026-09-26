@@ -1,0 +1,52 @@
+diff --git a/ART_KIT.md b/ART_KIT.md
+index db29f5c5..e37f9a24 100644
+--- a/ART_KIT.md
++++ b/ART_KIT.md
+@@ -1,6 +1,6 @@
+ # Celestial Frontier Art Kit
+ 
+-Art direction and prompt kit, version 4.2, 2026-09-12. Canonical style statement for Nick's approved Living Worlds, Discovery Atlas, Earth landfall and fungal landfall: one painted hand, the game's thirteen star kinds, source-derived subjects, and the retained class layouts and production rules. **Version 4 approved at 6f5c396e; v4.1 accepted; v4.2 approved from d2b8d8cd with the September 12 Arena/key-ground/anchor amendments.**
++Art direction and prompt kit, version 4.3, 2026-09-13. Canonical style statement for Nick's approved Living Worlds, Discovery Atlas, Earth landfall and fungal landfall: one painted hand, the game's thirteen star kinds, source-derived subjects, and the retained class layouts and production rules. **Version 4 approved at 6f5c396e; v4.1 accepted; v4.2 approved from d2b8d8cd with the September 12 Arena/key-ground/anchor amendments; v4.3 approved from e89cb621 with the September 13 theme material table.**
+ 
+ Each section is plain text inside a fenced block so it can be copied into a prompt tool exactly as written.
+ 
+@@ -31,7 +31,7 @@ Each section is plain text inside a fenced block so it can be copied into a prom
+ 
+ ```text
+ CELESTIAL FRONTIER - ART DIRECTION AND PROMPT KIT
+-style_id: frontier   |   version 4.2, 2026-09-12   |   one hand for the whole universe
++style_id: frontier   |   version 4.3, 2026-09-13   |   one hand for the whole universe
+ 
+ Every image prompt is built in this order:
+     REFERENCE LOCK  ->  FROZEN STYLE  ->  SYSTEM CARD  ->  SUBJECT
+@@ -689,9 +689,29 @@ WHAT: painted ability-theme effect sequences with launch, travel and impact
+   venom (Venom), void (Void), sand (Sand), chem (Chem), psionic (Psionic),
+   wild (Wild). Use only the theme and ability selected by game data.
+ 
++THEME MATERIAL TABLE (closed):
++  Use the selected theme's material and shape vocabulary below. Material
++  carries the theme identity. The game's theme hex is an accent only, never
++  the body colour of the effect. Do not change the game's theme hexes.
++  Wild uses warm ochre and earth tones, with #9fb6d6 as a sheen only.
++
++| Theme | Material and shape vocabulary | Accent (game hex) |
++|---|---|---|
++| Fire | flame tongues, embers, char, heat shimmer as shape | #ff7a4a |
++| Frost | ice shards, rime, frozen mist, crystal shatter | #8fd6ff |
++| Storm | forked arcs, charged dust, cloud rupture | #ffe06a |
++| Tide | water sheets, spray, foam crest | #5fd0c8 |
++| Stone | rock shards, grit, cracked ground | #caa06a |
++| Venom | droplets, spatter, corroding film | #9fe06a |
++| Void | torn dark, inhaled debris, collapse ring | #b58cff |
++| Sand | grain streams, scour, dune spill | #e8c878 |
++| Chem | fizzing foam, reactive spray, etched surface | #c0ff5a |
++| Psionic | concentric ripples, warped air, snap ring | #ff9fe0 |
++| Wild | claw rake, fur tufts, torn leaves, kicked earth, wind streaks; warm ochre and earth tones | #9fb6d6 as a sheen only |
++
+ SUBJECT SLOT, in this order:
+   source ability theme and the physical action it represents; material and
+-  palette; sequence phase (launch, travel or impact); the phase's strong shape
++  palette from the theme material table; sequence phase (launch, travel or impact); the phase's strong shape
+   and direction of motion; its origin or contact anchor and relative scale.
+   Keep the same painted material, palette, direction and scale relationship
+   across the sequence. A melee travel phase may be a short directional sweep;

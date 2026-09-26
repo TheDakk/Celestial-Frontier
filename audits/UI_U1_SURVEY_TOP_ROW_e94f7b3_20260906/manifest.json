@@ -1,0 +1,59 @@
+{
+  "schema": "cf-u1-survey-top-dock-evidence/v1",
+  "source": "e94f7b35211094e334abc983e716456749e2e3ae",
+  "productSource": "810ab78",
+  "status": "SCOPED DOCK PASS",
+  "certification": false,
+  "priorBlockers": "OPEN \u2014 navigation and portrait-restoration evaluation",
+  "files": [
+    {
+      "file": "report.json.gz",
+      "bytes": 25595,
+      "sha256": "d989aaa570b810d463c791882d332c07bb6a2e1120a2fbc688a756b3a886b800",
+      "originalBytes": 561048,
+      "originalSha256": "f89e243061f3d0765f5f795d16693ccc73c46e96febb397f98067a0286997bfc"
+    },
+    {
+      "file": "survey-top-320x740.png",
+      "bytes": 100170,
+      "sha256": "4c60242091729a622fa78f7080c5107f7582f2e16c6d79059eab4f327d0b4011",
+      "originalBytes": 100170,
+      "originalSha256": "4c60242091729a622fa78f7080c5107f7582f2e16c6d79059eab4f327d0b4011"
+    },
+    {
+      "file": "survey-top-390x844.png",
+      "bytes": 113160,
+      "sha256": "51a8a1699f5a1937017d7f9251cb0f09e742c8bd101af4f4e586caf67df7af11",
+      "originalBytes": 113160,
+      "originalSha256": "51a8a1699f5a1937017d7f9251cb0f09e742c8bd101af4f4e586caf67df7af11"
+    },
+    {
+      "file": "survey-top-430x932.png",
+      "bytes": 120962,
+      "sha256": "7521a9f0ba25c4e0f9874f06c0d96498268fc3e94c319a01d712e97181b98118",
+      "originalBytes": 120962,
+      "originalSha256": "7521a9f0ba25c4e0f9874f06c0d96498268fc3e94c319a01d712e97181b98118"
+    },
+    {
+      "file": "survey-top-667x375.png",
+      "bytes": 84371,
+      "sha256": "83ce16a979c35d4b7a2c6fd262ef708c1a5ced300218f1d51d26ec000164bedd",
+      "originalBytes": 84371,
+      "originalSha256": "83ce16a979c35d4b7a2c6fd262ef708c1a5ced300218f1d51d26ec000164bedd"
+    },
+    {
+      "file": "cf-u1-survey-top-normal-build-e94f7b3.log.gz",
+      "bytes": 1880,
+      "sha256": "6199cd76eeeeb4ae399a81278aa9598f74f9ccf523351bf57ae08a3f918d5b24",
+      "originalBytes": 5281,
+      "originalSha256": "812eab263c01ab7382a17ae939e0a435d91548133734d82656712ed3ff2bcdde"
+    },
+    {
+      "file": "cf-u1-survey-top-browser-e94f7b3.log.gz",
+      "bytes": 20,
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "originalBytes": 0,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

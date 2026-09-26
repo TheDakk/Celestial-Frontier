@@ -1,0 +1,27 @@
+{
+  "status": "INSTRUMENT_ERROR",
+  "capture": "Transcribed exactly from existing exec tool output; not a direct redirected raw process log.",
+  "node": "v26.8.1",
+  "exitCode": 1,
+  "reportedWallSeconds": 0.002875,
+  "stage": "Node imports before compiler/tokenizer/test invocation",
+  "compilerExecuted": false,
+  "tokenizerExecuted": false,
+  "testsExecuted": false,
+  "failure": "ERR_MODULE_NOT_FOUND: guessed private Rolldown implementation filename",
+  "correctionProposed": "Resolve public rolldown package export via createRequire scoped to port/v2/package.json. No source change or test rerun yet.",
+  "log": "conditioning-first-instrument-error.log",
+  "logSha256": "c858ebc1c19613883c75b988de6d45725d37b7375dc6ba40098b6d20c6651bb7",
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/landfall-conditioning.ts",
+      "bytes": 13817,
+      "sha256": "0c6e58b4515b0350481533bcff33809297f3d8865f71512ced052f2ba0707486"
+    },
+    {
+      "path": "port/v2/tests/landfall-conditioning.test.ts",
+      "bytes": 14191,
+      "sha256": "bf4dd40f2e365ca920f1655f535d9376cf04c40fd98b0eca3e7848c1eb3798b8"
+    }
+  ]
+}

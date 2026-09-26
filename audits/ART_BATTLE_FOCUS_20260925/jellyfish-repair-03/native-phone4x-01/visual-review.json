@@ -1,0 +1,13 @@
+{
+  "status": "VISUAL_FAIL",
+  "findings": [
+    "Long tentacles kink and form jagged triangles during approach/impact despite zero rig refusals.",
+    "19ms whole-stage p95 at4xCPU fails60fps requirement."
+  ],
+  "inspected": [
+    "turn0-hit-approach-50.png",
+    "turn1-hit-impact.png",
+    "turn3-hit-return-end.png"
+  ],
+  "next": "Test default separate observed surfaces (no full excluded-boundary weld) with the same explicit oral weights."
+}

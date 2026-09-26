@@ -1,0 +1,372 @@
+{
+ "id": "salmon-1",
+ "standIn": "Salmon",
+ "template": "fish",
+ "accentGroups": [
+  "fins"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/salmon/card/master-512.png",
+  "joints": [
+   "pectoralNear",
+   "pectoralFar",
+   "dorsal",
+   "jaw",
+   "head",
+   "caudal",
+   "spine5",
+   "spine4",
+   "spine3",
+   "spine2",
+   "spine1",
+   "spine0",
+   "root"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Trout",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.6,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "speckled spotted flanks",
+    "adipose fin",
+    "squared-off shallow-forked tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Char",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.8,
+   "headFrac": 0.23,
+   "eyes": "normal",
+   "mustRead": [
+    "pale spots on a dark ground (not dark on pale)",
+    "white leading edges on lower fins",
+    "slender streamlined body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Lamprey",
+   "group": "jawless-fish",
+   "posture": "swimming",
+   "aspect": 12,
+   "headFrac": 0.06,
+   "eyes": "small",
+   "mustRead": [
+    "round jawless sucker mouth ringed with rasping teeth",
+    "row of seven gill pores behind the eye",
+    "finless eel-like body with no paired fins"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Pike",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 5,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "long flattened duck-bill snout full of teeth",
+    "dorsal fin set far back near the tail",
+    "elongate torpedo body with pale bean markings"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Catfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.8,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "long drooping barbel whiskers around the mouth",
+    "broad flattened scaleless head",
+    "stiff spine at the front of the dorsal and pectoral fins"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Gar",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 6.5,
+   "headFrac": 0.32,
+   "eyes": "small",
+   "mustRead": [
+    "long narrow toothed beak snout",
+    "armour of hard diamond scales",
+    "dorsal and anal fins set far back near the tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Bowfin",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.26,
+   "eyes": "small",
+   "mustRead": [
+    "very long undulating dorsal fin running most of the back",
+    "rounded fan tail",
+    "bony plate under the chin and a black eyespot near the tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Bass",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.8,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "spiny front dorsal fin joined to a soft rear one",
+    "large hinged bucket mouth",
+    "deep laterally compressed body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Eel",
+   "group": "eel",
+   "posture": "swimming",
+   "aspect": 12,
+   "headFrac": 0.07,
+   "eyes": "normal",
+   "mustRead": [
+    "continuous fin fringe running along back, tail and belly",
+    "no pelvic fins",
+    "snake-like body with a blunt-jawed head"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Carp",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.8,
+   "headFrac": 0.27,
+   "eyes": "normal",
+   "mustRead": [
+    "deep heavy-shouldered body",
+    "two pairs of barbels at the mouth corners",
+    "long single dorsal fin running most of the back"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tilapia",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.3,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "deep laterally flattened disc of a body",
+    "long spiny dorsal fin along the whole back",
+    "blunt steep forehead"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Piranha",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.8,
+   "headFrac": 0.32,
+   "eyes": "prominent",
+   "mustRead": [
+    "very deep chunky body",
+    "undershot jutting lower jaw with triangular teeth",
+    "steep blunt forehead"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Killifish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.6,
+   "headFrac": 0.26,
+   "eyes": "prominent",
+   "mustRead": [
+    "flattened topped head with an upturned mouth",
+    "dorsal fin set far back near the tail",
+    "rounded paddle tail fin"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Beluga",
+   "group": "toothed-cetacean",
+   "posture": "swimming",
+   "aspect": 3.4,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "bulging rounded melon forehead",
+    "no dorsal fin, only a low ridge along the back",
+    "uniform white body with a visible neck crease"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Narwhal",
+   "group": "toothed-cetacean",
+   "posture": "swimming",
+   "aspect": 5,
+   "headFrac": 0.16,
+   "eyes": "small",
+   "mustRead": [
+    "single long spiralled tusk projecting forward from the head",
+    "no dorsal fin",
+    "mottled grey body with a blunt rounded head"
+   ],
+   "note": "The tusk grows from the left side of the upper jaw, not from the centre of the snout like a horn."
+  },
+  {
+   "name": "Orca",
+   "group": "toothed-cetacean",
+   "posture": "swimming",
+   "aspect": 2.7,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "tall triangular dorsal fin",
+    "crisp black-and-white saddle and eye patches",
+    "large rounded paddle pectoral fins"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Right Whale",
+   "group": "baleen-cetacean",
+   "posture": "swimming",
+   "aspect": 3,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "enormous strongly arched jawline taking up a third of the body",
+    "crusty white callosity patches on the head",
+    "no dorsal fin at all on a smooth broad back"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Arctic Cod",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.26,
+   "eyes": "prominent",
+   "mustRead": [
+    "slim elongated body with a deeply forked tail",
+    "small barbel under the chin",
+    "projecting upper jaw and large eye"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Herring",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4.2,
+   "headFrac": 0.24,
+   "eyes": "prominent",
+   "mustRead": [
+    "streamlined silver body with a keeled belly",
+    "single small dorsal fin at mid-back",
+    "deeply forked tail and large eye with an upturned jaw"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Blue Whale",
+   "group": "baleen-cetacean",
+   "posture": "swimming",
+   "aspect": 5.5,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "tiny nub dorsal fin set far back near the tail",
+    "broad flat U-shaped rostrum with a single ridge",
+    "pleated throat grooves"
+   ],
+   "note": "Commonly drawn with a large dorsal fin; the real fin is a thumb-sized nub three-quarters back."
+  },
+  {
+   "name": "Humpback Whale",
+   "group": "baleen-cetacean",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "enormously long white wing-like pectoral flippers",
+    "knobbly tubercles on the head and jaw",
+    "scalloped trailing edge on the tail flukes"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cold-Water Fish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.5,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "stout torpedo body",
+    "soft-rayed dorsal fin and forked tail",
+    "blunt rounded snout with a chin barbel"
+   ],
+   "note": "Generic name - interpreted as a cod/char-type coldwater bony fish."
+  },
+  {
+   "name": "Blind Fish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.28,
+   "eyes": "hidden",
+   "mustRead": [
+    "smooth blank eyeless head",
+    "pale pinkish unpigmented body",
+    "ordinary tetra-like fin layout"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Small Fish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.5,
+   "headFrac": 0.27,
+   "eyes": "prominent",
+   "mustRead": [
+    "simple streamlined silvery body",
+    "single dorsal fin mid-back",
+    "forked tail"
+   ],
+   "note": "Generic name - interpreted as a representative minnow-type baitfish."
+  }
+ ]
+}

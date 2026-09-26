@@ -9,6 +9,8 @@ import {
   captureAudioLabSample,
   createAudioRuntime,
   createAudioVoiceMixIntentV1,
+  AUDIO_LIMITER_SETTINGS,
+  AUDIO_REDUCED_INTENSITY_GAIN,
   type AudioCounterpartReceipt,
   type AudioAnalyserNodeLike,
   type AudioContextLike,
@@ -106,7 +108,7 @@ class FakeSource extends FakeNode implements AudioScheduledSourceLike {
 type ResumeOutcome = 'running' | 'reject' | 'stay-suspended';
 
 class FakeContext implements AudioContextLike {
-  readonly currentTime = 12;
+  readonly currentTime: number = 12;
   readonly destination = new FakeNode('destination');
   readonly gains: FakeGain[] = [];
   readonly analysers: FakeAnalyser[] = [];
@@ -170,6 +172,53 @@ class FakeContext implements AudioContextLike {
   private emit(): void {
     for (const listener of [...this.listeners]) listener();
   }
+}
+
+type GainAutomationPoint = Readonly<{ kind: 'set' | 'ramp'; value: number; time: number }>;
+
+/** Independent piecewise-linear Web Audio automation observer. Cancelling a
+ * future endpoint removes it; the product must explicitly hold the live value. */
+function sampleGain(points: readonly GainAutomationPoint[], time: number): number {
+  let previous = points[0];
+  if (!previous) throw new Error('gain automation has no initial value');
+  for (const point of points.slice(1)) {
+    if (time < point.time) {
+      return point.kind === 'ramp'
+        ? previous.value + (point.value - previous.value) * (time - previous.time) / (point.time - previous.time)
+        : previous.value;
+    }
+    previous = point;
+  }
+  return previous.value;
+}
+
+class RampedParam extends FakeParam {
+  readonly points: GainAutomationPoint[] = [];
+  readonly cancellations: number[] = [];
+  override setValueAtTime(value: number, time = 0): void {
+    super.setValueAtTime(value);
+    this.points.push({ kind: 'set', value, time });
+  }
+  cancelScheduledValues(time: number): void {
+    this.cancellations.push(time);
+    for (let index = this.points.length - 1; index >= 0; index--) {
+      if (this.points[index]!.time >= time) this.points.splice(index, 1);
+    }
+  }
+  linearRampToValueAtTime(value: number, time: number): void {
+    this.points.push({ kind: 'ramp', value, time });
+  }
+  at(time: number): number { return sampleGain(this.points, time); }
+}
+class RampedGain extends FakeGain { override readonly gain = new RampedParam(); }
+class RampedContext extends FakeContext {
+  override currentTime = 12;
+  override createGain(): RampedGain {
+    const gain = new RampedGain(`gain-${this.gains.length}`);
+    this.gains.push(gain);
+    return gain;
+  }
+  bus(index: number): RampedParam { return (this.gains[index] as RampedGain).gain; }
 }
 
 class DeferredContext extends FakeContext {
@@ -992,6 +1041,155 @@ describe('Arc 7 injected audio runtime', () => {
     expect(runtime.diagnostics().gains).toMatchObject({ master: 0.19, effectiveMaster: 0.19 });
   });
 
+  it('smooths duck/release and a mid-ramp reversal from the exact current gain', async () => {
+    const context = new RampedContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0,
+      categoryGains: { music: 0.8, ambience: 0.6 } });
+    await runtime.activate();
+    const source = new FakeSource('smooth-combat');
+    expect(runtime.playVoice(request(source, { mixIntent: mixIntent({ music: 0.75, ambience: 0.75 }) })).kind).toBe('started');
+    const music = context.bus(1), ambience = context.bus(2);
+    const attack = [...music.points];
+    const acceptAttack = (points: readonly GainAutomationPoint[]) => {
+      expect(sampleGain(points, 12)).toBeCloseTo(0.8, 12);
+      expect(sampleGain(points, 12.0125)).toBeCloseTo(0.7, 12);
+      expect(sampleGain(points, 12.025)).toBeCloseTo(0.6, 12);
+    };
+    acceptAttack(attack);
+    expect(ambience.at(12.0125)).toBeCloseTo(0.525, 12);
+    expect(context.bus(3).points).toHaveLength(1); // Neutral creature, combat and UI buses never ramp.
+    expect(context.bus(4).points).toHaveLength(1);
+    expect(context.bus(5).points).toHaveLength(1);
+    context.currentTime = 12.0125;
+    source.finish();
+    expect(music.at(12.0125)).toBeCloseTo(0.7, 12);
+    expect(music.at(12.0575)).toBeCloseTo(0.75, 12);
+    expect(music.at(12.1025)).toBeCloseTo(0.8, 12);
+    expect(runtime.diagnostics().voiceMix.effectiveCategoryGains.music).toBe(0.8); // Target, not instantaneous sample.
+    const release = [...music.points];
+    const acceptRelease = (points: readonly GainAutomationPoint[]) => {
+      expect(sampleGain(points, 12.0125)).toBeCloseTo(0.7, 12);
+      expect(sampleGain(points, 12.0575)).toBeCloseTo(0.75, 12);
+      expect(sampleGain(points, 12.1025)).toBeCloseTo(0.8, 12);
+    };
+    acceptRelease(release);
+    expect(() => acceptAttack(attack.map(point => ({ ...point, kind: 'set' })))).toThrow();
+    expect(() => acceptRelease(release.map((point, index) => index === release.length - 2
+      ? { ...point, value: 0.6 } : point))).toThrow(); // Jump back to the obsolete duck target.
+    expect(() => acceptRelease(release.map(point => point.kind === 'ramp'
+      ? { ...point, time: point.time + 1 } : point))).toThrow(); // Wrong release duration.
+    acceptAttack(attack); acceptRelease(release);
+    await runtime.dispose();
+  });
+
+  it('keeps overlap at the held minimum and reverses an unfinished release into a new attack', async () => {
+    const context = new RampedContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0, categoryGains: { music: 0.8 } });
+    await runtime.activate();
+    const first = new FakeSource('ramp-first'), second = new FakeSource('ramp-second');
+    runtime.playVoice(request(first, { concurrencyGroup: 'ramp-first', mixIntent: mixIntent({ music: 0.75 }) }));
+    const music = context.bus(1);
+    const initial = [...music.points];
+    context.currentTime = 12.01;
+    runtime.playVoice(request(second, { concurrencyGroup: 'ramp-second', mixIntent: mixIntent({ music: 0.75 }) }));
+    expect(music.points).toEqual(initial);
+    first.finish();
+    expect(music.points).toEqual(initial); // A surviving owner prevents early release or a restarted ramp.
+    context.currentTime = 12.025;
+    second.finish();
+    expect(music.at(12.07)).toBeCloseTo(0.7, 12);
+    context.currentTime = 12.07;
+    const third = new FakeSource('ramp-third');
+    runtime.playVoice(request(third, { concurrencyGroup: 'ramp-third', mixIntent: mixIntent({ music: 0.75 }) }));
+    expect(music.at(12.07)).toBeCloseTo(0.7, 12);
+    expect(music.at(12.0825)).toBeCloseTo(0.65, 12);
+    expect(music.at(12.095)).toBeCloseTo(0.6, 12);
+    context.currentTime = 12.095;
+    runtime.setCategoryGain('music', 0.4);
+    expect(music.at(12.12)).toBeCloseTo(0.3, 12);
+    context.currentTime = 12.12;
+    third.finish();
+    expect(music.at(12.21)).toBeCloseTo(0.4, 12);
+    expect(runtime.diagnostics().gains.categories.music).toBe(0.4);
+    await runtime.dispose();
+  });
+
+  it('cancels an in-flight category ramp immediately when the saved category is set to zero', async () => {
+    const context = new RampedContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    runtime.playVoice(request(new FakeSource('ramp-zero'), { mixIntent: mixIntent({ music: 0.75 }) }));
+    context.currentTime = 12.01;
+    runtime.setCategoryGain('music', 0);
+    expect(context.bus(1).at(12.01)).toBe(0);
+    expect(context.bus(1).at(100)).toBe(0);
+    expect(context.bus(1).points.at(-1)).toEqual({ kind: 'set', value: 0, time: 12.01 });
+    await runtime.dispose();
+  });
+
+  it.each(['mute', 'hidden', 'dispose'] as const)('keeps %s cleanup immediate during a live gain ramp', async finish => {
+    const context = new RampedContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    const source = new FakeSource('ramp-panic');
+    runtime.playVoice(request(source, { mixIntent: mixIntent({ music: 0.75 }) }));
+    context.currentTime = 12.01;
+    const operation = finish === 'mute' ? runtime.setMuted(true)
+      : finish === 'hidden' ? runtime.setHidden(true) : runtime.dispose();
+    expect(source.stopCalls).toBe(1);
+    expect(source.disconnectCalls).toBe(1);
+    expect(context.gains.every(gain => gain.connections.length === 0)).toBe(true);
+    expect(runtime.diagnostics().nodes.active).toBe(0);
+    if (finish === 'mute') expect(context.bus(0).at(12.01)).toBe(0);
+    await operation;
+    await runtime.dispose();
+  });
+
+  it('rolls back failed ramp automation without stealing the incumbent or retaining a false mix target', async () => {
+    const context = new RampedContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    const incumbent = new FakeSource('ramp-incumbent');
+    runtime.playVoice(request(incumbent, { priority: 1, concurrencyGroup: 'ramp-single', maxConcurrent: 1,
+      mixIntent: mixIntent({ music: 0.75, ambience: 0.75 }) }));
+    context.currentTime = 12.03;
+    const ambience = context.bus(2), ramp = ambience.linearRampToValueAtTime.bind(ambience);
+    let first = true;
+    ambience.linearRampToValueAtTime = (value, time) => {
+      ramp(value, time);
+      if (first) { first = false; throw new Error('injected ramp write fault'); }
+    };
+    const candidate = new FakeSource('ramp-refused');
+    expect(runtime.playVoice(request(candidate, { priority: 2, concurrencyGroup: 'ramp-single', maxConcurrent: 1,
+      mixIntent: mixIntent({ music: 0.5, ambience: 0.5 }) }))).toEqual({ kind: 'fault', reason: 'voice-start' });
+    expect(incumbent.stopCalls).toBe(0);
+    expect(candidate.stopCalls).toBe(1);
+    expect(context.bus(1).at(13)).toBeCloseTo(0.75, 12);
+    expect(ambience.at(13)).toBeCloseTo(0.75, 12);
+    expect(runtime.diagnostics().voiceMix.factors).toMatchObject({ music: 0.75, ambience: 0.75 });
+    await runtime.dispose();
+  });
+
+  it('reconciles a saved-volume change made reentrantly by a ramp adapter', async () => {
+    const context = new RampedContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    const source = new FakeSource('ramp-reentrant');
+    runtime.playVoice(request(source, { mixIntent: mixIntent({ music: 0.75 }) }));
+    context.currentTime = 12.03;
+    const music = context.bus(1), ramp = music.linearRampToValueAtTime.bind(music);
+    let first = true;
+    music.linearRampToValueAtTime = (value, time) => {
+      ramp(value, time);
+      if (first) { first = false; runtime.setCategoryGain('music', 0.4); }
+    };
+    source.finish();
+    expect(music.at(13)).toBeCloseTo(0.4, 12);
+    expect(runtime.diagnostics()).toMatchObject({ voices: { active: 0 }, gains: { categories: { music: 0.4 } },
+      voiceMix: { effectiveCategoryGains: { music: 0.4 } } });
+    await runtime.dispose();
+  });
+
   it('multiplies saved base gains by the deterministic minimum owner factor and restores the latest base', async () => {
     const context = new FakeContext();
     const runtime = createAudioRuntime({
@@ -1561,7 +1759,7 @@ describe('Arc 7 injected audio runtime', () => {
     const runtime = createAudioRuntime(options);
     expect([...optionReads.entries()]).toEqual([
       ['createContext', 1], ['nowMs', 1], ['verifyCounterpart', 1], ['scheduleVoiceDeadline', 1], ['budgets', 1],
-      ['initialMuted', 1], ['initialMasterGain', 1], ['categoryGains', 1],
+      ['initialMuted', 1], ['initialMasterGain', 1], ['initialAccessibility', 1], ['categoryGains', 1],
     ]);
     await runtime.activate();
 
@@ -2726,9 +2924,9 @@ describe('Arc 7 injected audio runtime', () => {
     expect(audit.settingsAccessibility).toMatchObject({
       meaningfulCounterpart: 'runtime-verifier-required',
       captions: 'app-integration-required',
-      mono: 'not-implemented',
-      dynamicRange: 'not-implemented',
-      reducedIntensity: 'not-implemented',
+      mono: 'runtime-implemented',
+      dynamicRange: 'runtime-implemented',
+      reducedIntensity: 'runtime-implemented',
     });
     expect(audit.resourceMeasurement).toEqual({
       encodedBytes: 'measurement-required',
@@ -2956,5 +3154,96 @@ describe('Arc 7 injected audio runtime', () => {
       };
     });
     expect(() => auditAudioLabLifecycleTrace(regressing)).toThrow(/cumulative diagnostics regressed/);
+  });
+});
+
+describe('audio accessibility modes at the master (mono, reduced intensity; 2026-09-25)', () => {
+  const limiterValues = (limiter: FakeLimiter) => ({
+    threshold: limiter.threshold.value, knee: limiter.knee.value, ratio: limiter.ratio.value,
+    attack: limiter.attack.value, release: limiter.release.value,
+  });
+
+  it('default is the unchanged stereo brick-wall mix (control)', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: contextFactory([context]).create, nowMs: () => 0, initialMasterGain: 0.8 });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    const master = context.gains[0]! as FakeGain & { channelCount?: number; channelCountMode?: string };
+    expect(master.channelCount).toBe(2);
+    expect(master.channelCountMode).toBe('max');
+    expect(master.gain.value).toBe(0.8);
+    expect(limiterValues(context.limiters[0]!)).toEqual(AUDIO_LIMITER_SETTINGS.standard);
+    expect(runtime.diagnostics().accessibility).toEqual({ mono: false, reducedIntensity: false });
+    expect(runtime.diagnostics().gains).toMatchObject({ master: 0.8, effectiveMaster: 0.8 });
+  });
+
+  it('mono downmixes every category at the master, live, and restores stereo', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: contextFactory([context]).create, nowMs: () => 0 });
+    await runtime.activate();
+    const master = context.gains[0]! as FakeGain & { channelCount?: number; channelCountMode?: string; channelInterpretation?: string };
+    runtime.setAccessibility({ mono: true, reducedIntensity: false });
+    expect([master.channelCount, master.channelCountMode, master.channelInterpretation]).toEqual([1, 'explicit', 'speakers']);
+    // every category bus feeds the master (through its meter), so one downmix covers all of them
+    for (let index = 0; index < AUDIO_CATEGORIES.length; index++) {
+      expect(context.analysers[index + 1]!.connections).toEqual([master]);
+    }
+    expect(master.gain.value).toBe(1); // mono alone never changes loudness
+    runtime.setAccessibility({ mono: false, reducedIntensity: false });
+    expect([master.channelCount, master.channelCountMode]).toEqual([2, 'max']);
+  });
+
+  it('reduced intensity lowers the master and swaps the brick wall for a gentle compressor, live and reversibly', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: contextFactory([context]).create, nowMs: () => 0, initialMasterGain: 0.5 });
+    await runtime.activate();
+    runtime.setAccessibility({ mono: false, reducedIntensity: true });
+    expect(context.gains[0]!.gain.value).toBeCloseTo(0.5 * AUDIO_REDUCED_INTENSITY_GAIN, 12);
+    expect(limiterValues(context.limiters[0]!)).toEqual(AUDIO_LIMITER_SETTINGS.reducedIntensity);
+    expect(runtime.diagnostics().gains.effectiveMaster).toBeCloseTo(0.275, 12);
+    runtime.setMasterGain(1); // a later volume change keeps the reduction
+    expect(context.gains[0]!.gain.value).toBeCloseTo(AUDIO_REDUCED_INTENSITY_GAIN, 12);
+    runtime.setAccessibility({ mono: false, reducedIntensity: false });
+    expect(context.gains[0]!.gain.value).toBe(1);
+    expect(limiterValues(context.limiters[0]!)).toEqual(AUDIO_LIMITER_SETTINGS.standard);
+  });
+
+  it('modes set before activation, or while muted, apply to the graph that is built later; mute still wins', async () => {
+    const first = new FakeContext(), second = new FakeContext();
+    const runtime = createAudioRuntime({
+      createContext: contextFactory([first, second]).create, nowMs: () => 0, initialMasterGain: 1,
+      initialAccessibility: { mono: true, reducedIntensity: true },
+    });
+    await runtime.activate();
+    expect((first.gains[0]! as FakeGain & { channelCount?: number }).channelCount).toBe(1);
+    expect(first.gains[0]!.gain.value).toBeCloseTo(AUDIO_REDUCED_INTENSITY_GAIN, 12);
+    await runtime.setMuted(true);
+    expect(runtime.diagnostics().gains.effectiveMaster).toBe(0);
+    runtime.setAccessibility({ mono: false, reducedIntensity: true });
+    await runtime.setMuted(false);
+    await runtime.activate();
+    expect((second.gains[0]! as FakeGain & { channelCount?: number }).channelCount).toBe(2);
+    expect(second.gains[0]!.gain.value).toBeCloseTo(AUDIO_REDUCED_INTENSITY_GAIN, 12);
+    expect(limiterValues(second.limiters[0]!)).toEqual(AUDIO_LIMITER_SETTINGS.reducedIntensity);
+  });
+
+  it('the lab canonicalizer accepts real reduced-intensity diagnostics and refuses a contradicting effective master', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: contextFactory([context]).create, nowMs: () => 0, initialMasterGain: 0.5 });
+    await runtime.activate();
+    runtime.setAccessibility({ mono: true, reducedIntensity: true });
+    const sample = captureAudioLabSample('running-loaded', runtime);
+    expect(sample.diagnostics.accessibility).toEqual({ mono: true, reducedIntensity: true });
+    const forged = { ...runtime.diagnostics(), gains: { ...runtime.diagnostics().gains, effectiveMaster: 0.5 } };
+    expect(() => captureAudioLabSample('running-loaded', { diagnostics: () => forged } as never)).toThrow(/reduced-intensity/);
+  });
+
+  it('refuses malformed modes without changing the mix', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: contextFactory([context]).create, nowMs: () => 0 });
+    await runtime.activate();
+    expect(() => runtime.setAccessibility({ mono: 1, reducedIntensity: false } as never)).toThrow(TypeError);
+    expect(() => runtime.setAccessibility(null as never)).toThrow(TypeError);
+    expect(runtime.diagnostics().accessibility).toEqual({ mono: false, reducedIntensity: false });
+    expect(() => createAudioRuntime({ createContext: contextFactory([]).create, nowMs: () => 0, initialAccessibility: {} as never })).toThrow(TypeError);
   });
 });

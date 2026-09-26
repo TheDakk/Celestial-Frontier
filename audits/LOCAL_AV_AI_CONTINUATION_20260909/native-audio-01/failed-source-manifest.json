@@ -1,0 +1,108 @@
+{
+  "schema": "cf-native-audio-mix-prepared-sources/v1",
+  "status": "PREPARED_NOT_RUN",
+  "preparedAt": "2026-09-09T05:39:04.928251+00:00",
+  "scope": "Primary source owners only; actual resolved dependency inventory is captured by the separate build manifest. No validation/build/native result.",
+  "sources": [
+    {
+      "path": "port/v2/tools/audio-native-mix/README.md",
+      "bytes": 5347,
+      "sha256": "4226989ab327b20ef16a1c5b258093082a433cdd0621f70894de44b2be7b01b4"
+    },
+    {
+      "path": "port/v2/tools/audio-native-mix/build.mjs",
+      "bytes": 3484,
+      "sha256": "3df85def8a472890c03966e38075638ca846d12f064c53e1e30d429de917569d"
+    },
+    {
+      "path": "port/v2/tools/audio-native-mix/chain.mjs",
+      "bytes": 2096,
+      "sha256": "60833e76cb139397714ea61c251564882bc20042d1e36bddf2d48f2b91088f62"
+    },
+    {
+      "path": "port/v2/tools/audio-native-mix/entry.ts",
+      "bytes": 18002,
+      "sha256": "97055b140f9e44b63ff87ccd47f0ac5dbfc6ae0f5baaadaec7850d2a44f29a80"
+    },
+    {
+      "path": "port/v2/tools/audio-native-mix/index.html",
+      "bytes": 796,
+      "sha256": "00d8223784b19b973b4daf1fdf029e82b8ab2b52895baa92e6bba1e8fafa7df2"
+    },
+    {
+      "path": "port/v2/tools/audio-native-mix/runner.mjs",
+      "bytes": 5960,
+      "sha256": "0638001a9717fcbc91fd6816af20998964b6a7bd6f0cbc848f6d7355f42e40e0"
+    },
+    {
+      "path": "port/v2/tools/audio-native-mix/tsconfig.json",
+      "bytes": 197,
+      "sha256": "87c99460ebbc5988e45cfb9a2145c54a1bf1471ff04cc0e61ca7f3863c441d4b"
+    },
+    {
+      "path": "port/v2/packages/audio/src/runtime.ts",
+      "bytes": 93976,
+      "sha256": "3e245551b2f36749efc4e3444f25ad1403546e2ef55f575d08ee5ec725a41acc"
+    },
+    {
+      "path": "port/v2/packages/audio/src/combat-gameplay-voice.ts",
+      "bytes": 25730,
+      "sha256": "39cb4107094fc6f16b23b4d49b5b6a130062ad64aef9421f7e442d6d7354e175"
+    },
+    {
+      "path": "port/v2/packages/audio/src/combat-cues.ts",
+      "bytes": 23581,
+      "sha256": "8ba3e3364c790fa4b53c331b565290657263ac9d4f991966a9abb959c2026564"
+    },
+    {
+      "path": "port/v2/packages/audio/src/finite-voice-lifetime.ts",
+      "bytes": 428,
+      "sha256": "2cbaade9193bf33de57727c6d3dcda31dab1ed02d0827c2282e64fde31d79576"
+    },
+    {
+      "path": "port/v2/packages/audio/src/identity.ts",
+      "bytes": 16434,
+      "sha256": "4ca7621bad99450f8142b2fdc3dc2ab44791f1a5a7202b9d8191d0238096591c"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/index.ts",
+      "bytes": 631,
+      "sha256": "fbe4bcc52197b984e57b8d48ae7a3e9110cf9b6e1cfd259f584eb2f5012761e0"
+    },
+    {
+      "path": "port/v2/packages/domain/genome/src/index.ts",
+      "bytes": 116,
+      "sha256": "f2936929b86938c7236d093320b52202b90169abea4c4ce4d90b55f4ec477f72"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/index.ts",
+      "bytes": 1080,
+      "sha256": "70a8fc4bd7c188b3e26e699e2644f8a57587cb14b6a0bf2a927f48dd4d18b96a"
+    },
+    {
+      "path": "port/v2/packages/scene/src/address.ts",
+      "bytes": 30341,
+      "sha256": "c9069b15992c4be5057dd4068c1e7c7a9dcf86768015d64e934ef14b142bd559"
+    },
+    {
+      "path": "port/v2/tools/browsercdp.mjs",
+      "bytes": 159934,
+      "sha256": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca"
+    },
+    {
+      "path": "port/v2/tools/browserpath.mjs",
+      "bytes": 7617,
+      "sha256": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0"
+    },
+    {
+      "path": "port/v2/tools/workspacelock.mjs",
+      "bytes": 6863,
+      "sha256": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606"
+    },
+    {
+      "path": "port/v2/package-lock.json",
+      "bytes": 90228,
+      "sha256": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d"
+    }
+  ]
+}

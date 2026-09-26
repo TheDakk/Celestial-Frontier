@@ -1,0 +1,36 @@
+{
+  "status": "INSPECTED_WITH_SEPARATE_FOLLOWUP",
+  "titlePaint": "PASS: six restored title/Close screenshots clear; no scrolled objective ink through or above title",
+  "images": [
+    {
+      "path": "native-desktop-corrected/phone-pilot-after-restoration.png",
+      "sha256": "5dc496798273d4bf2f49220997d998d661732dfb744c7c31345cce57a57202b3"
+    },
+    {
+      "path": "native-desktop-corrected/phone-current-after-restoration.png",
+      "sha256": "e0d9508914a61fb0fa951dc31c454d23b24f7fad0aa51046cfc407c213acd707"
+    },
+    {
+      "path": "native-desktop-corrected/phone-current-large-max-after-restoration.png",
+      "sha256": "b81c0d9fb071d3430b659c185060076cc9c9bade0316fb4b7123fd0dae783e06"
+    },
+    {
+      "path": "native-desktop-corrected/phone-current-large-max-forced-after-restoration.png",
+      "sha256": "14c3edde6583afd6f2859fba91f573d7f6261ddb52f08b809b85d3ff3bcc92d7"
+    },
+    {
+      "path": "native-desktop-corrected/desktop-current-after-restoration.png",
+      "sha256": "e3c4798f192f0e82f1d88d3689874e5889e88bb2f48b9dfd217b4b307e33679f"
+    },
+    {
+      "path": "native-desktop-corrected/desktop-pilot-after-restoration.png",
+      "sha256": "f809bc55769c6f47a4e954a424fe58f862abf404d103f2c59bc56923b1b49e21"
+    }
+  ],
+  "openFinding": {
+    "surface": "phone-current-large-max-forced bottom guidance",
+    "finding": "Existing forced-colors guidance glyph stroke becomes too heavy and reduces readability",
+    "scope": "Outside corrected header; no change in this batch"
+  },
+  "humanAcceptance": false
+}

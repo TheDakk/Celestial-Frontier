@@ -1,0 +1,59 @@
+{
+  "schema": "cf.runtime-pack-license-source.v1",
+  "retrievedAt": "2026-09-09T15:28:38.004451+00:00",
+  "retrievalMode": "exact-pinned-official-text-only",
+  "sources": [
+    {
+      "requestedUrl": "https://raw.githubusercontent.com/microsoft/onnxruntime/2e2543fbe9fae542f921d47a72d21d5a4ef0b710/ThirdPartyNotices.txt",
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/license-source/onnxruntime-2e2543f-ThirdPartyNotices.txt",
+      "httpStatus": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 336906,
+      "sha256": "53d3fa5821ac016ac24dd35775c996efec86e2ae0841e9a3a5e146c0ae916845",
+      "status": "retained-exact-upstream-text"
+    },
+    {
+      "requestedUrl": "https://raw.githubusercontent.com/huggingface/diffusers/040c7cde626504d14caf63b13b8b25b6a9f62120/LICENSE",
+      "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/license-source/diffusers-040c7cd-LICENSE",
+      "httpStatus": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 11357,
+      "sha256": "f9e2070c247517b1ddf65f7b11b393484a18da91a958fd18a97bd0f241c3125c",
+      "status": "retained-exact-upstream-text"
+    },
+    {
+      "requestedUrl": "https://raw.githubusercontent.com/huggingface/diffusers/040c7cde626504d14caf63b13b8b25b6a9f62120/NOTICE",
+      "path": null,
+      "httpStatus": 404,
+      "errorBodyBytes": 14,
+      "errorBodySha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "status": "upstream-file-unavailable"
+    }
+  ],
+  "selectedInstalledRuntime": [
+    {
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "bytes": 66348,
+      "sha256": "08272eb8dadd249a0eaa53e19f4e5b5d01bc8a121240719db29093cfb776bc27",
+      "relationship": "observed-installed-npm-bytes-not-reproduced-from-source"
+    },
+    {
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "bytes": 51407,
+      "sha256": "5d25483158d53d8f34d0e9c06a654d56c8dca4ebdf370ea0982ef11315a00e0e",
+      "relationship": "observed-installed-npm-bytes-not-reproduced-from-source"
+    },
+    {
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "bytes": 25749873,
+      "sha256": "503d17cb7411b79781b9fad1cf0978f03cf06b050c7d399c730e914f473bf549",
+      "relationship": "observed-installed-npm-bytes-not-reproduced-from-source"
+    }
+  ],
+  "scope": {
+    "onnxNotice": "Complete source-repository third-party notice aggregation at the pinned ONNX Runtime commit; this is not a selected-WASM component inventory or proof of reproduced npm binaries.",
+    "diffusers": "Pinned repository license and optional root NOTICE lookup for the source-derived pipeline math cited in tools/local-image-generation/pipeline-math.mjs and source-contract.md.",
+    "distributionQualified": false,
+    "modelWeightsIncluded": false
+  }
+}

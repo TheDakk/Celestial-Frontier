@@ -1,5 +1,96 @@
 # Celestial Frontier — Breeding & Sharing
 
+## v2 companion care and bond — D13 stage 1 (matches code as of 2026-09-25)
+
+Nick decided D13 (N3 Option B) on 2026-09-25. Owner module: `packages/domain/acquisition/src/companion-care.ts` (pure, deterministic).
+- **Tastes** are v1.8.9 `faunaTastes`, lifted verbatim (parity-tested against the tracked legacy script): two liked flavours and one disliked,
+  seeded by the genome. A flora's flavour is v1 `floraStat`. A flavour stays **hidden** on the card until this companion has eaten a flora
+  of it (its `taste:<flavour>` bond memory).
+- **Feed policy v2** — no roll, no companion poison: Loved +2 `fed` (+3 for flora tier ≥ 4) and mends 0.25 `hurt`; Neutral +1 and 0.10;
+  Disliked 0 and harmless (the flora is still eaten). First-time care XP is keyed on bond memories: +1 for the first meal, +2 per newly tasted
+  flavour (≤ 11 per companion for life). The 200 `fed` cap is unchanged. Explorer meals keep their own poison.
+- **Bond** levels 0–5 (Wary 0, Familiar 3, Trusted 8, Devoted 15, Kindred 25, Soulbound 40 memories) count distinct firsts, never decay, and
+  unlock sidegrades only — never combat stats. `bond: null` is level 0.
+- **Rest** heals on the active-play clock: 2 active minutes per 0.1 `hurt`, rounded up, at most 20. One receipt (`arc5-companion-rest`) SEALS the
+  heal (`hurt` → 0) and assigns `{kind:'mission', missionId:'rest:<readyAt>'}` with `readyAt` = the committed active-play snapshot + the duration.
+  `projectCompanionAvailabilityV1` releases it at that exact boundary, like Recovery; until then it locks breed, combat, dispatch and Feed. So every
+  reader of `hurt` agrees at every moment and there is no deferred writer (a deliberate refinement of N3's "applied by the next receipt write").
+  Nothing heals while the game is closed; the device clock never enters. The first recovery from Injured or worse is the bond memory
+  `recovered:injured`. Owners: `rest.ts` (domain), `arc5-rest-action.ts` (app).
+
+## v2 companion missions — D13 stage 2 (matches code as of 2026-09-26)
+
+Owners: `packages/domain/acquisition/src/companion-missions.ts` (pure), `packages/persistence/src/arc5-missions.ts` (carrier + derives),
+`apps/game/src/arc5-mission-action.ts` (transactions).
+- **Shape:** one companion per mission. There are **two field slots** (Rest does not use one), and the target is any world the explorer has landed on (world identity `landed`).
+  - **Prospect** returns materials from the world's canonical `depositsFor` list; the world's finite Mine reserve is untouched.
+  - **Survey** returns a small amount of Stardust and one authored lore line. It never names or reveals a species.
+- **Durations:** Short 10, Standard 25 and Long 60 minutes of ACTIVE PLAY. Long needs bond level 2 (Trusted).
+  - The wound chance (0 / 10 / 20 %) is shown before dispatch, and Devoted (bond 3) halves it.
+  - A wound is Bruised 0.15, or on Long sometimes Injured 0.35. It is never Critical or fatal, and it halves that mission's Prospect materials.
+  - A companion at Injured or worse (hurt ≥ 0.3) must Rest before a field mission.
+- **Rates:** every number is in ONE table, `MISSION_RATES_V1`, a **placeholder until Codex's stage 2a** rate table and economy-share instrument.
+  It stays inside the ceiling: two Long missions give ≤ 36 materials and ≤ 6 Stardust per active hour (`companionMissionHourlyCeilingV1`).
+- **Dispatch** (`arc5-companion-mission-dispatch`):
+  - One receipt with three `companion-mission` SessionRNG draws (wound, deposit pick, lore pick).
+  - The whole result is **sealed** with the mission in `player/arc5.missions` v1, and the board never shows it before the return.
+  - The companion takes `{kind:'mission', missionId:'mission:<receiptOrdinal>'}`, which locks breed, combat, dispatch and Feed until claim or recall. Rename and Scout designation still work. `rest:` stays reserved for Rest.
+- **Claim** (`arc5-companion-mission-claim`): allowed once the committed active-play clock reaches `readyAt`; the device clock never enters.
+  - It pays exactly the sealed result: materials into the hold, Stardust into `essence` and lifetime `essenceEarned`, and XP on the ownership row AND its v4 Compendium mirror row (the rule the duel and Feed share). It applies the wound.
+  - It adds the bond firsts `mission:first:<type>`, `mission:world:<worldKey>` and `mission:first:long`. The first Long return from a world also adds the memento `memento:mission:<worldKey>`.
+  - A claim that does not fit the hold (1,000,000 per stack, 200 rows) is refused and the mission stays ready: rewards are never lost.
+  - A second claim of the same mission finds it gone and commits nothing, whether it comes from a double press, a second tab or a reload.
+- **Recall** (`arc5-companion-mission-recall`) works at any time. The companion comes home unhurt with nothing, and the sealed result is discarded unseen.
+- **Carrier** `player/arc5.missions` v1: at most 2 active missions plus a return log (the mission Chronicle) of the latest 24. When absent, nothing is away. A malformed carrier is protected, never read as empty.
+- **Board** (`apps/game/src/mission-board.ts`, beside Care & bond in the Compendium detail): field slots, Away (minutes of play left) / Ready badges, the disclosure before dispatch, two-tap Recall, the return reveal as a `role=status` line (the text counterpart; the voiced return expression is a follow-up), and the latest returns as the mission Chronicle. No timers, polling or notifications. Main's `runCompanionMission` owns the transactions; a claim publishes only the hold, Stardust and the Compendium mirror XP.
+
+## Requested time-aware art and sharing — source reviewed 2026-09-08
+
+Nick approves the full landfall painting direction and requests procedural coverage, planetary
+rotation/daylight and seasons, plus shareable discoveries. Current source still chooses a fixed
+seeded day/dusk/night appearance; cosmetic orbital motion is not a physical year/season authority.
+CF1 native Share/Follow carries a location, not the sender's exact time/roster/art snapshot.
+CFB/CFB2 remain domain codecs without native V2 creature share/import wiring. Nothing here changes
+those formats, world/genome generation, current biome authority, saves or gameplay clock rules.
+
+[TIME_AND_SHARING.md](audits/MIDGAME_ART_DIRECTION_20260908/TIME_AND_SHARING.md) records actual
+owners and the proposed versioned appearance recipe: exact world/place, full organism identities,
+art catalogue, explicit clock coordinate, supported rotation/axis/orbit/light/season conditions
+and camera. A view snapshot would be separate from a CF1 location or ownership transfer. Keep
+visual conditions separate from the protected active-play economy and committed ecology epoch;
+wall-clock manipulation must not award yield/recovery or rewrite organisms. Seasons require an
+explicit approximation of tilt, latitude and orbital phase; not all worlds have four Earth seasons.
+This is a recorded design requirement, not implemented climate/physics or all-world painted output.
+
+
+> **2026-09-08 current sharing and visual-identity boundary (matches local code):**
+> The V2 player UI currently exposes **CF1 address Share/Follow**. A CF1 code carries galaxy/star
+> coordinates and seeds, an optional planet seed and name; the recipient regenerates and verifies
+> that hierarchy and applies its own reach policy. It is a pointer, not a creature snapshot or a
+> bypass of Land. **CFB creature/Champion sharing is not yet exposed in the V2 UI.** The legacy
+> `CFB-` codec and versioned `CFB2-` lineage codec exist in
+> [domain combatcore](port/v2/packages/domain/combatcore/src/lineage-codec.ts), separately from
+> player wiring. Both normalize incoming genome values; CFB strips parent seeds, while CFB2
+> restores one exact ordered uint32 parent pair after checking its version-2 witness. CFB2 also
+> omits feeding/brood state. Neither is a lossless archive of every original genome value or proof
+> that the receiving expedition owns a creature.
+>
+> [Canonical species identity](port/v2/packages/domain/acquisition/src/model.ts) hashes the complete
+> immutable genome as `species-v1` / `genome-v1`, excluding the separate mutable fields XP, injury,
+> feeding, brood, assignment and bond. A name or seed alone cannot identify an inherited hybrid.
+> [Portrait cache identity](port/v2/packages/art/src/speciesidentity.ts) separately preserves every
+> supplied genome field and ordered lineage input. Compatible **Celestial Frontier** instances can
+> reproduce the same supported biological identity and visual recipe; unrelated games would need
+> to implement the same formats and rules. This does not guarantee identical GPU/font/DPR pixels.
+>
+> **Planned, not implemented:** new painted art should use a separate versioned visual recipe and
+> catalogue identity, stable asset IDs/content hashes and deterministic choices derived from the
+> complete species identity. Preserve existing genome semantics and supported older recipes; an
+> unknown version must not silently reinterpret an old creature. CF1/CFB currently carry no such
+> visual-recipe/catalogue pin. See the
+> [painted-space direction addendum](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/README.md).
+>
+
 > **2026-09-01 current automatic-arrival transient-latch overlay (matches local code as of
 > 2026-09-01; supersedes older “current” labels without rewriting historical evidence):** PR #35
 > run `33522000552` tested exact head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against base
@@ -40,7 +131,8 @@
 > Eligibility, both result successors and complete-save capacity are certified before the one
 > `breedOutcome` draw. Every settled attempt is nonlethal: both parents remain owned and enter
 > F4-active-play Recovery for eight minutes on success or two minutes on failure. Recovery blocks
-> breed, combat and dispatch. Success admits the existing child successor with exactly half the
+> breed, combat and dispatch. *(2026-09-25 fix: Recovery never blocks Feed. A recovering or recovered parent eats and keeps its
+> Recovery. Only a mission blocks a meal: `preflightArc5FeedV1` and the Compendium Feed read model agree.)* Success admits the existing child successor with exactly half the
 > lower parent's bounded `fed` and gives that newborn **+2 XP**. It adds the one-time **+5 XP** only
 > when the exact unordered parent-species pair has never paid; failure creates no child and changes
 > no XP-first authority. New V2 firsts use one collision-resistant SHA-256 digest over the sorted
@@ -293,6 +385,15 @@ ingress code.
 > representative matrix still does not prove every possible bloodline, and formal
 > reset certification remains open under `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
+## v2 creature codes: share and friendly duel — matches code as of 2026-09-25
+
+- **Where.** A Compendium species detail you own has the ⚔ Friendly duel control (`friendly-duel.ts`).
+- **Share code.** The control now offers **Share code** for the selected companion (v1.8.9 `shareCreature`). It uses v1's codec verbatim: `encodeCreature({ genome, name })` gives `CFB-…`, named with the companion's nickname or else the species name.
+- **Champion code.** A companion with XP also offers **🏆 Champion code** (v1.6 `shareChampion`). It carries the level and decodes as an exhibition challenger.
+- **Delivery.** The code appears in a read-only box and is also offered to the clipboard; the box reads "Copied ✓" when the copy succeeds. Sharing writes nothing to the save.
+- **Round trip.** A friend pastes the code into their own Duel input. The decoded challenger has the same name, seed and battle stats (injuries and level are stripped unless it is a champion code).
+- **Test:** `tests/d16-cfb-export-outcome.test.ts`.
+
 ## 1. Overview
 Two coupled systems:
 
@@ -368,7 +469,7 @@ Per-creature genome fields that persist (in `codex` entries, save `codex[]`):
 ## 5. Determinism
 **Share codes MUST be deterministic / cross-device** — the whole "same universe on every device" promise depends on it, and it's a hard rule (no `Math.random`/`Date.now` in anything that feeds generation).
 
-- A code carries the **seed**, not rendered output. Everything downstream — portrait, battle stats, tastes, flora stat flavour, ability — is a **pure function of that seed** via `mulberry32`/`hashInt` (`floraStat` uses `hashInt`, `faunaTastes` uses `mulberry32(seed^0xFEED)`), so the recipient regenerates a byte-identical creature.
+- **CF1 carries a seeded address; creature codes carry genome data, not rendered output.** An inherited creature is determined by its complete immutable genome and supported generation/rendering rules, including lineage and inherited traits—not its seed alone. Legacy CFB and the domain CFB2 codec apply the normalization described above, so their compatibility promise concerns the resulting normalized creature, not byte-for-byte preservation of the original genome. CFB2 preserves one ordered parent-seed pair; legacy CFB does not. Compatible Celestial Frontier instances can derive the same supported biology and appearance from the same accepted identity/recipe. Browser, GPU, font, antialiasing and DPR differences mean this is not a guarantee of identical rendered pixel bytes.
 - **Duels are deterministic:** `runDuel` (~L11312) seeds its RNG with `mulberry32(hashInt(seedA, seedB, 0xD0E1))` — the same matchup plays out identically on every device (the tutorial even advertises this).
 - Codes **deliberately don't carry runtime randomness** — no `Math.random` state, no battlefield modifiers (`_mult`/`_wf`), no injuries (`hurt`). The **only** leveled state that travels is champion `xp`, and it's clamped to the L9 ceiling and marked exhibit-only so a shared champion can't be farmed as an owned/breedable creature.
 - `CF1-` world codes store galaxy/star coords + seed; the world is regenerated from seed on arrival — the code is a pointer, not a snapshot.

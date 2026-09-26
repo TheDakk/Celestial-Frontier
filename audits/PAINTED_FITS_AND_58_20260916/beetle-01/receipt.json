@@ -1,0 +1,33 @@
+{
+  "schema": "cf.paint-skin-intake/v1",
+  "sourceBindingHash": "a850e95d37a1f73f856d422b6afcd5fc9b704116cbe70a4859c7024903a85bc4",
+  "recordRecipeHash": "b83417bd32df6a3ddc708e07620d5055ce08a483633dd6c86b954794b86942b8",
+  "packedPixels": {
+    "schema": "cf.parts-byte-verification/v1",
+    "bindingHash": "a850e95d37a1f73f856d422b6afcd5fc9b704116cbe70a4859c7024903a85bc4",
+    "atlasSha256": "13ef63bff7e1f23b620d0599282fb212ff6e68870c95d5b6d33e5c038ff13b73",
+    "parts": 16,
+    "comparedChannels": 5300568,
+    "changedChannels": 0
+  },
+  "vertices": 1871,
+  "partVertices": 2899,
+  "parts": 16,
+  "leaves": 816,
+  "triangles": 3374,
+  "ownershipEdges": 3841,
+  "ownershipAlphaRule": "every nonzero original alpha",
+  "originalInkOnly": true,
+  "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+  "nativeAcceptance": false,
+  "intake": {
+    "id": "beetle",
+    "parts": 16,
+    "atlasSize": {
+      "width": 2045,
+      "height": 789
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  }
+}

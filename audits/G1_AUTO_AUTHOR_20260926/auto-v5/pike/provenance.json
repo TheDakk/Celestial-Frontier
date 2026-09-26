@@ -1,0 +1,126 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "pike",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "964a23d815434e6f36196eb71c3574951ca74d9d08998d8f40d458fcc7e24468",
+ "subjectSourceSha256": "c1c6b7cb50d6b0625ef972edfc0b2359ce84160c24f0bf91fca2312dd6b687ee",
+ "identity": {
+  "name": "Pike",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Pike\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2356672504\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "seed": 2356672504,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "herring",
+  "authoringSha256": "bd0fae133183dce53893214f9b2ef857d9adaa067e9994ff3488bba0aa6cf453",
+  "masterSha256": "3abc568beb996e694c78736854a216222dc5cfae47d39494a4f6ba7e84b5494f"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0294,
+     "class": "top",
+     "attach": {
+      "x": 128.8,
+      "y": 185.8,
+      "relX": 0.06,
+      "relY": 0.02
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1405,
+     "class": "rear",
+     "attach": {
+      "x": 116,
+      "y": 208.5,
+      "relX": 0,
+      "relY": 0.44
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0664,
+     "class": "front",
+     "attach": {
+      "x": 323,
+      "y": 212.5,
+      "relX": 1,
+      "relY": 0.52
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.034,
+     "class": "limb-down",
+     "attach": {
+      "x": 126.2,
+      "y": 228.8,
+      "relX": 0.04,
+      "relY": 0.83
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0345,
+     "class": "limb-down",
+     "attach": {
+      "x": 193.5,
+      "y": 236,
+      "relX": 0.37,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.027,
+     "class": "limb-down",
+     "attach": {
+      "x": 262.5,
+      "y": 239,
+      "relX": 0.71,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "herring",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": "all-visible, backed by the measured visible inventory above; nothing declared absent, hidden or folded"
+}

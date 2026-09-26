@@ -1,0 +1,378 @@
+{
+  "id": "python-open",
+  "family": "serpent",
+  "landmarksPx": {
+    "root": [
+      1094,
+      529
+    ],
+    "head": [
+      1168,
+      504
+    ],
+    "jaw": [
+      1204,
+      531
+    ],
+    "seg0": [
+      1029,
+      600
+    ],
+    "seg1": [
+      947,
+      645
+    ],
+    "seg2": [
+      835,
+      634
+    ],
+    "seg3": [
+      724,
+      602
+    ],
+    "seg4": [
+      616,
+      624
+    ],
+    "seg5": [
+      505,
+      681
+    ],
+    "seg6": [
+      395,
+      650
+    ],
+    "seg7": [
+      286,
+      601
+    ],
+    "seg8": [
+      165,
+      647
+    ],
+    "seg9": [
+      55,
+      611
+    ]
+  },
+  "groundLineY": 0.6,
+  "materials": {
+    "surface": "Brown, black and cream net-like python scale pattern; pale ventral scales; no self-overlapping coils"
+  },
+  "remainderPart": "neck-root",
+  "parts": [
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1120,
+          527
+        ],
+        [
+          1170,
+          529
+        ],
+        [
+          1238,
+          515
+        ],
+        [
+          1254,
+          515
+        ],
+        [
+          1254,
+          565
+        ],
+        [
+          1120,
+          565
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1120,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          1120,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-segment-0",
+      "joint": "seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1000,
+          0
+        ],
+        [
+          1060,
+          0
+        ],
+        [
+          1060,
+          1254
+        ],
+        [
+          1000,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-segment-1",
+      "joint": "seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          890,
+          0
+        ],
+        [
+          1000,
+          0
+        ],
+        [
+          1000,
+          1254
+        ],
+        [
+          890,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-segment-2",
+      "joint": "seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          780,
+          0
+        ],
+        [
+          890,
+          0
+        ],
+        [
+          890,
+          1254
+        ],
+        [
+          780,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-segment-3",
+      "joint": "seg3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          670,
+          0
+        ],
+        [
+          780,
+          0
+        ],
+        [
+          780,
+          1254
+        ],
+        [
+          670,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-segment-4",
+      "joint": "seg4",
+      "layer": "near",
+      "polygonPx": [
+        [
+          560,
+          0
+        ],
+        [
+          670,
+          0
+        ],
+        [
+          670,
+          1254
+        ],
+        [
+          560,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-segment-5",
+      "joint": "seg5",
+      "layer": "near",
+      "polygonPx": [
+        [
+          450,
+          0
+        ],
+        [
+          560,
+          0
+        ],
+        [
+          560,
+          1254
+        ],
+        [
+          450,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-segment-6",
+      "joint": "seg6",
+      "layer": "near",
+      "polygonPx": [
+        [
+          340,
+          0
+        ],
+        [
+          450,
+          0
+        ],
+        [
+          450,
+          1254
+        ],
+        [
+          340,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-segment-7",
+      "joint": "seg7",
+      "layer": "near",
+      "polygonPx": [
+        [
+          220,
+          0
+        ],
+        [
+          340,
+          0
+        ],
+        [
+          340,
+          1254
+        ],
+        [
+          220,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-segment-8",
+      "joint": "seg8",
+      "layer": "near",
+      "polygonPx": [
+        [
+          110,
+          0
+        ],
+        [
+          220,
+          0
+        ],
+        [
+          220,
+          1254
+        ],
+        [
+          110,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "body-segment-9",
+      "joint": "seg9",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          110,
+          0
+        ],
+        [
+          110,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ]
+    },
+    {
+      "id": "neck-root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1060,
+          0
+        ],
+        [
+          1120,
+          0
+        ],
+        [
+          1120,
+          1254
+        ],
+        [
+          1060,
+          1254
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "declarations": "One head and closed lower jaw, one continuous limbless open body and pointed tail. Root and seg0 through seg9 follow manually observed visible centerline from neck to tail. No hidden, absent or folded contract groups. Vertical mask cuts partition the open profile without self-occlusion. Source fringes/alpha specks remain with their declared lateral owner.",
+    "visualAcceptance": "New open-pose candidate; Nick retains art acceptance; delivered safe margin missed.",
+    "landmarkMethod": "Manual observation of new master only; approximate internal hinges, not measured skeletal anatomy. No coordinates or labels copied from original coiled master.",
+    "poseOverride": "Nick approved open non-overlapping profile instead of source species coiled posture hint."
+  }
+}

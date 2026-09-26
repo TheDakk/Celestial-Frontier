@@ -1,0 +1,19 @@
+{
+  "status": "STAGED_UNSIGNED_SIGNING_REFUSED",
+  "head": "fe8f6ca1a8c5a934897fbf0711319e17cc5cf388",
+  "priorPushSucceeded": true,
+  "attempts": [
+    {
+      "receipt": "2170a4",
+      "exitCode": 128
+    },
+    {
+      "receipt": "5f7efd",
+      "exitCode": 128
+    }
+  ],
+  "error": "Couldn’t sign message (signer): agent refused operation",
+  "configurationChanged": false,
+  "unsignedFallback": false,
+  "next": "Nick renews 1Password SSH approval until quit; after confirmation allow one further signed retry"
+}

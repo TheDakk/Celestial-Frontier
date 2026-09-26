@@ -7,6 +7,7 @@ import { makeGenome, type Genome } from '@cf/domain-genome';
 import { resolveCF1WorldAddress } from '@cf/scene';
 import {
   battleStats,
+  planCombatPartySettlementV1,
   planCombatSettlementV1,
   projectGuardianPrimeEncounterV1,
   runDuel,
@@ -23,9 +24,12 @@ import {
   type CombatCuePlanV1,
 } from '@cf/audio';
 import {
+  COMBAT_CHRONICLE_PACER_MAX_WAIT_MS,
   COMBAT_CHRONICLE_ROW_DELAY_MS,
   COMBAT_CHRONICLE_START_DELAY_MS,
   CombatChronicleController,
+  createCombatChroniclePacerGateV1,
+  type CombatChroniclePacerV1,
   isCombatChronicleV1,
   projectCombatChronicleV1,
   type CombatChronicleCueEmissionV1,
@@ -164,12 +168,15 @@ function startController(options: Readonly<{
   onCue?: (emission: CombatChronicleCueEmissionV1) => void;
   onShare?: (shareText: string) => void;
   onStopVoices?: (reason: CombatChronicleStopReasonV1, generation: number) => void;
+  pacer?: CombatChroniclePacerV1;
 }> = {}) {
   const view = shell();
   const pair = plans();
   const chronicle = projectCombatChronicleV1(pair.settlement, pair.cues);
-  controller = new CombatChronicleController({ root: view.root, ...options });
+  const { pacer, ...controllerOptions } = options;
+  controller = new CombatChronicleController({ root: view.root, ...controllerOptions });
   controller.attach(view.mount);
+  if (pacer) controller.setPacer(pacer);
   const generation = controller.start(chronicle, pair.cues);
   return { ...view, ...pair, chronicle, generation };
 }
@@ -493,20 +500,21 @@ describe('Arc 8 Combat Chronicle projection', () => {
     expect(projectCombatChronicleV1(playerLoss.settlement, playerLoss.cues).resultText)
       .toBe('💀 You were overpowered. The world holds.');
 
+    // §20: bred and wild losers alike limp home to recover; nothing is lost forever
     const bredLoss = plans({ champion: owned(2, 'Bred Copy'), battleId: 'copy-bred-loss' });
-    expect(bredLoss.settlement.injury).toMatchObject({ status: 'set-hurt', reason: 'bred-crawl-home' });
+    expect(bredLoss.settlement.injury).toMatchObject({ status: 'set-recovery', reason: 'defeat-recovery' });
     expect(projectCombatChronicleV1(bredLoss.settlement, bredLoss.cues).resultText)
-      .toBe('🩸 Bred Copy was broken — it crawls home Critical. The world holds.');
+      .toBe('🩸 Bred Copy fell and limps home to recover. The world holds.');
 
     const wildGenome = makeGenome(2, 'fauna', 0.5);
     const wild: CombatSettlementChampionV1 = {
       kind: 'owned-fauna', creatureId: 'copy-wild', name: 'Wild Copy', genome: wildGenome,
       legacyBredLineage: false,
     };
-    const permanentLoss = plans({ champion: wild, battleId: 'copy-permanent-loss' });
-    expect(permanentLoss.settlement.injury.status).toBe('remove-creature');
-    expect(projectCombatChronicleV1(permanentLoss.settlement, permanentLoss.cues).resultText)
-      .toBe('💀 Wild Copy fell — lost forever. The world holds.');
+    const wildLoss = plans({ champion: wild, battleId: 'copy-permanent-loss' });
+    expect(wildLoss.settlement.injury.status).toBe('set-recovery');
+    expect(projectCombatChronicleV1(wildLoss.settlement, wildLoss.cues).resultText)
+      .toBe('🩸 Wild Copy fell and limps home to recover. The world holds.');
   });
 });
 
@@ -590,6 +598,52 @@ describe('Arc 8 Combat Chronicle detached controller', () => {
     }
     expect(view.mount.querySelector<HTMLButtonElement>('[data-combat-chronicle-share]')!.style.minHeight)
       .toBe('44px');
+  });
+
+  it('with a pacer (the battle2 stage, Nick 2026-09-24) a step appears only when its transcript row is released, in order, whatever the cadence', async () => {
+    vi.useFakeTimers();
+    const gate = createCombatChroniclePacerGateV1(), onCue = vi.fn();
+    const view = startController({ onCue, pacer: gate.pacer });
+    const rows = () => view.mount.querySelectorAll('[data-combat-chronicle-kind]').length, initial = view.chronicle.initialRows.length;
+    const upTo = (n: number) => initial + view.chronicle.steps.slice(0, n).reduce((sum, step) => sum + step.rows.length, 0);
+    expect(view.chronicle.steps.length).toBeGreaterThanOrEqual(3);
+    await vi.advanceTimersByTimeAsync(COMBAT_CHRONICLE_START_DELAY_MS + 10 * COMBAT_CHRONICLE_ROW_DELAY_MS);
+    expect(rows()).toBe(initial); // the fixed cadence no longer reveals anything
+    gate.release(view.chronicle.steps[0]!.transcriptIndex); await vi.advanceTimersByTimeAsync(0);
+    expect(rows()).toBe(upTo(1));
+    await vi.advanceTimersByTimeAsync(5 * COMBAT_CHRONICLE_ROW_DELAY_MS);
+    expect(rows()).toBe(upTo(1));
+    gate.release(view.chronicle.steps[2]!.transcriptIndex); await vi.advanceTimersByTimeAsync(0); // releasing row 2 releases 1 too
+    expect(rows()).toBe(upTo(3));
+    gate.releaseAll(); await vi.runAllTimersAsync();
+    expect(view.mount.querySelector('[data-combat-chronicle-share]')).not.toBeNull();
+    expect(onCue).toHaveBeenCalledTimes(view.cues.cues.length); // every canonical cue still once
+  });
+
+  it('with a pacer that never releases, each row still appears after COMBAT_CHRONICLE_PACER_MAX_WAIT_MS (a stalled stage cannot hold the log); Skip still renders everything at once', async () => {
+    vi.useFakeTimers();
+    const gate = createCombatChroniclePacerGateV1();
+    const view = startController({ pacer: gate.pacer });
+    const rows = () => view.mount.querySelectorAll('[data-combat-chronicle-kind]').length, initial = view.chronicle.initialRows.length;
+    await vi.advanceTimersByTimeAsync(COMBAT_CHRONICLE_START_DELAY_MS + COMBAT_CHRONICLE_PACER_MAX_WAIT_MS - 1);
+    expect(rows()).toBe(initial);
+    await vi.advanceTimersByTimeAsync(1);
+    expect(rows()).toBe(initial + view.chronicle.steps[0]!.rows.length);
+    view.mount.querySelector<HTMLButtonElement>('[data-combat-chronicle-skip]')!.click();
+    const all = initial + view.chronicle.steps.reduce((sum, step) => sum + step.rows.length, 0) + view.chronicle.statisticsRows.length;
+    expect(rows()).toBe(all);
+    gate.releaseAll(); await vi.advanceTimersByTimeAsync(COMBAT_CHRONICLE_PACER_MAX_WAIT_MS * 2); // a late release after Skip changes nothing
+    expect(rows()).toBe(all);
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
+  it('setPacer(null) restores the exact legacy cadence (control for the pacer tests)', async () => {
+    vi.useFakeTimers();
+    const gate = createCombatChroniclePacerGateV1(), view = shell(), pair = plans(), chronicle = projectCombatChronicleV1(pair.settlement, pair.cues);
+    controller = new CombatChronicleController({ root: view.root }); controller.attach(view.mount); controller.setPacer(gate.pacer); controller.setPacer(null);
+    controller.start(chronicle, pair.cues);
+    await vi.advanceTimersByTimeAsync(COMBAT_CHRONICLE_START_DELAY_MS);
+    expect(view.mount.querySelectorAll('[data-combat-chronicle-kind]')).toHaveLength(chronicle.initialRows.length + chronicle.steps[0]!.rows.length);
   });
 
   it('Skip renders every remaining row and the ledger synchronously with zero skipped audio', () => {
@@ -731,3 +785,27 @@ describe('Arc 8 Combat Chronicle detached controller', () => {
     expect(controller!.counterpartIsCurrent(old)).toBe(false);
   });
 });
+
+describe('§20 party prelude in the Combat Chronicle', () => {
+  it('a Guardian party names every earlier fighter before the decisive leg plays; a single fight is unchanged', () => {
+    const encounter = target('guardian');
+    for (let seed = 5; seed < 200; seed++) {
+      const party = [owned(seed, 'First'), owned(seed + 400, 'Second'), owned(seed + 800, 'Third')].map((champion) => ({ champion, stance: 'balanced' as const }));
+      const settlement = planCombatPartySettlementV1({ battleId: `chronicle-party-${seed}`, receiptOrdinal: 47, encounter, worldTier: 5, mode: 'auto', party,
+        authority: { worldConquered: false, claimedPrimeSignatureIds: [], lossXp: { kind: 'known-target', awardedTarget: 0 } } });
+      if (settlement.status !== 'planned' || !settlement.party || settlement.party.decisiveIndex === 0) continue;
+      const chronicle = projectCombatChronicleV1(settlement, combatCuePlan(settlement, projectCombatCueParticipantsV1(settlement)));
+      const texts = chronicle.initialRows.map((r) => r.displayText);
+      const earlier = settlement.party.members.filter((m) => m.index !== settlement.party!.decisiveIndex && m.legEnd !== 'not-fought');
+      expect(earlier.length).toBeGreaterThan(0);
+      for (const member of earlier) expect(texts.some((t) => t.includes(member.champion.name) && /%\.$/.test(t))).toBe(true);
+      // the decisive leg still narrates the decisive champion
+      expect(chronicle.championName).toBe(settlement.champion.name);
+      const single = plans({ encounter });
+      expect(projectCombatChronicleV1(single.settlement, single.cues).initialRows).toHaveLength(2);   // intro + initiative, no prelude
+      return;
+    }
+    throw new Error('no party fixture reached a second fighter');
+  });
+});
+

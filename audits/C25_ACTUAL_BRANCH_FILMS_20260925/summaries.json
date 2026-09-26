@@ -1,0 +1,705 @@
+[
+  {
+    "name": "racer",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/racer-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/21-racer/observed-script.json",
+    "scriptSourceSha256": "41ae7b8a8eb2ecd921befb0469bc0289332fb69c49aabdb020fa2eba193a32ed",
+    "runId": "racer-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "6042c3b23a5c510cf9fa3396ab9f6cddb8a3cf060108d209e6fee000c2b5b181",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 1.899999976158142,
+    "cpuMaxMs": 6,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000109,
+    "liveFrames": 745,
+    "durationMs": 12399.5,
+    "encoded": {
+      "frames": 750,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 12.502739,
+      "minimumFrames": 707
+    },
+    "filmSha256": "ba45e56b1f5ebe1f97977da53fe4ce9deda27e995230c9cdcd171b878ca57ad2",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 19,
+    "runUps": [
+      0.08000000000000006,
+      -0.08000000000000006,
+      0.08000000000000006,
+      0.08000000000000006
+    ],
+    "recipeHash": "e9dcb7f05109bf5d758eb6d7053792ea93ffc677f05978c2764fd3df5dda9335",
+    "bindingFileSha256": "fa62fbfe9ca3da76ebd7dbb019f84dde0397f522b9680a4f305b6852229d9801"
+  },
+  {
+    "name": "herring",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/24-herring/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/herring-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/24-herring/observed-script.json",
+    "scriptSourceSha256": "6227a058442fd17becd58477903eb693192a8d9d8f69ee0cd7a1af7e56954797",
+    "runId": "herring-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "5f950819107ea4e39d12f1940549690df2b1751215e9cf3197184b9e291322eb",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3.100000023841858,
+    "cpuMaxMs": 8.700000047683716,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000109,
+    "liveFrames": 707,
+    "durationMs": 11766.199999999999,
+    "encoded": {
+      "frames": 711,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 11.839193,
+      "minimumFrames": 671
+    },
+    "filmSha256": "75c62f33e548f3e893e0c7d0623d55c249dd12dea2b3b67b15f5ea7d2b0efe5e",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 18,
+    "runUps": [
+      0.08000000000000006,
+      -0.08000000000000006,
+      0.08000000000000006,
+      0.08000000000000006
+    ],
+    "recipeHash": "023c9266a43cb6b07a0410afb20fcaf12ad74b80ff114b388e79537f249a224e",
+    "bindingFileSha256": "8085508a199142d29313cb56730c9aea14815f4fcb4bd9bd3adc008aaffb2abc"
+  },
+  {
+    "name": "eel",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/27-eel/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/eel-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/27-eel/observed-script.json",
+    "scriptSourceSha256": "add3c2d32b47719b35199f36fde14a403faa6d0fdf3012ff6297f05ad77dc706",
+    "runId": "eel-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "0dcb1f8c0f43ae3839f03fb43173854cb11d386cdf7fe3354f918257b0de0984",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 2.299999952316284,
+    "cpuMaxMs": 7.5,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000109,
+    "liveFrames": 757,
+    "durationMs": 12599.5,
+    "encoded": {
+      "frames": 761,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 12.683452,
+      "minimumFrames": 718
+    },
+    "filmSha256": "06f040ef84a03ac62c1c0d46d14640731edf61f8e9ea41f077131d42a8266910",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 19,
+    "runUps": [
+      0.08000000000000006,
+      -0.08000000000000006,
+      0.08000000000000006,
+      0.08000000000000006
+    ],
+    "recipeHash": "9b55893072b7c53f8bc5ae4f9ccb7cb89974743bfcd7bd3297a030553741e37c",
+    "bindingFileSha256": "16e668748f842e1c1376e28617b42ef4a65d75cec124b4884c92c27cd1376384"
+  },
+  {
+    "name": "sparrow",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/sparrow-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/observed-script.json",
+    "scriptSourceSha256": "9f5085fb62ec8baf3f2fab97725b00f715d6d0bf37dbc67dd15abfeadac2ade3",
+    "runId": "sparrow-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "dcb0ba3010499c61b8b51fd30249c6b5d4a4ede9dd6a51b64b0bb0e72648c2ce",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 6.399999976158142,
+    "cpuMaxMs": 26.299999952316284,
+    "overBudgetFrames": [
+      {
+        "ms": 12232.900000000001,
+        "turn": 3,
+        "localMs": 2712.9000000000015,
+        "phase": "idle",
+        "cpuMs": 16.799999952316284,
+        "refusals": 0
+      },
+      {
+        "ms": 12249.5,
+        "turn": 3,
+        "localMs": 2729.5,
+        "phase": "idle",
+        "cpuMs": 18.899999976158142,
+        "refusals": 0
+      },
+      {
+        "ms": 12266.099999999999,
+        "turn": 3,
+        "localMs": 2746.0999999999985,
+        "phase": "idle",
+        "cpuMs": 19.899999976158142,
+        "refusals": 0
+      },
+      {
+        "ms": 12282.900000000001,
+        "turn": 3,
+        "localMs": 2762.9000000000015,
+        "phase": "idle",
+        "cpuMs": 26,
+        "refusals": 0
+      },
+      {
+        "ms": 12316.2,
+        "turn": 3,
+        "localMs": 2796.2000000000007,
+        "phase": "idle",
+        "cpuMs": 21.100000023841858,
+        "refusals": 0
+      },
+      {
+        "ms": 12332.8,
+        "turn": 3,
+        "localMs": 2812.7999999999993,
+        "phase": "idle",
+        "cpuMs": 22.399999976158142,
+        "refusals": 0
+      },
+      {
+        "ms": 12349.599999999999,
+        "turn": 3,
+        "localMs": 2829.5999999999985,
+        "phase": "idle",
+        "cpuMs": 19.299999952316284,
+        "refusals": 0
+      },
+      {
+        "ms": 12382.8,
+        "turn": 3,
+        "localMs": 2862.7999999999993,
+        "phase": "idle",
+        "cpuMs": 21,
+        "refusals": 0
+      },
+      {
+        "ms": 12399.5,
+        "turn": 3,
+        "localMs": 2879.5,
+        "phase": "idle",
+        "cpuMs": 22.300000071525574,
+        "refusals": 0
+      },
+      {
+        "ms": 12416.2,
+        "turn": 3,
+        "localMs": 2896.2000000000007,
+        "phase": "idle",
+        "cpuMs": 22.200000047683716,
+        "refusals": 0
+      },
+      {
+        "ms": 12449.5,
+        "turn": 3,
+        "localMs": 2929.5,
+        "phase": "idle",
+        "cpuMs": 23.700000047683716,
+        "refusals": 0
+      },
+      {
+        "ms": 12466.2,
+        "turn": 3,
+        "localMs": 2946.2000000000007,
+        "phase": "idle",
+        "cpuMs": 24.899999976158142,
+        "refusals": 0
+      },
+      {
+        "ms": 12499.5,
+        "turn": 3,
+        "localMs": 2979.5,
+        "phase": "idle",
+        "cpuMs": 21.90000009536743,
+        "refusals": 0
+      },
+      {
+        "ms": 12516.099999999999,
+        "turn": 3,
+        "localMs": 2996.0999999999985,
+        "phase": "idle",
+        "cpuMs": 21.799999952316284,
+        "refusals": 0
+      },
+      {
+        "ms": 12532.8,
+        "turn": 3,
+        "localMs": 3012.7999999999993,
+        "phase": "idle",
+        "cpuMs": 20.5,
+        "refusals": 0
+      },
+      {
+        "ms": 12566.099999999999,
+        "turn": 3,
+        "localMs": 3046.0999999999985,
+        "phase": "idle",
+        "cpuMs": 26.299999952316284,
+        "refusals": 0
+      }
+    ],
+    "intervalsAtLeast25Ms": 5,
+    "maxFrameIntervalMs": 33.29999999999927,
+    "liveFrames": 760,
+    "durationMs": 12732.8,
+    "encoded": {
+      "frames": 764,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 12.819414,
+      "minimumFrames": 725
+    },
+    "filmSha256": "64bab761acaf5e7ecff0e64b768cb074044aa9ef3297cf80709d12ae79fadadb",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 21,
+    "runUps": [
+      0.08726016918646504,
+      -0.08726016918646504,
+      0.08726016918646504,
+      0.08726016918646504
+    ],
+    "recipeHash": "2d5c2c9c57d689a2859006fe73857905ffe3bac54ff101c3cafc4278bf806d28",
+    "bindingFileSha256": "021fda5d9441cfee27f6bdb92f807000dcc9ea45099ad6a8ad4e041576c1b665"
+  },
+  {
+    "name": "sturgeon",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/sturgeon-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/battle-script.json",
+    "scriptSourceSha256": "6310525625f1464892df2320b075f7bc58eaea86f2e3744a7b72af5b3a47f53b",
+    "runId": "sturgeon-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "998053f08935d0ac3a3ededfd087fd6733e60f48c1014842c96d9056989733a1",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3.5,
+    "cpuMaxMs": 10.399999976158142,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000109,
+    "liveFrames": 707,
+    "durationMs": 11766.199999999999,
+    "encoded": {
+      "frames": 711,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 11.844846,
+      "minimumFrames": 671
+    },
+    "filmSha256": "e9142e99550a0fc6cea44a93c4b5625e7f37f854bbeae6e41b00de128b054c11",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 18,
+    "runUps": [
+      0.08000000000000006,
+      -0.08000000000000006,
+      0.08000000000000006,
+      0.08000000000000006
+    ],
+    "recipeHash": "42621bc17f76e19de15b2d6300922321146355ff8699a4767373c1f03d82dd64",
+    "bindingFileSha256": "6e5299858d7b36fba5ef215a49bc6489b9968570d27f63b32767fa60870d0c07"
+  },
+  {
+    "name": "otter",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/otter-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/battle-script.json",
+    "scriptSourceSha256": "296ab8e076af0e2df49a8a00db94f725b494b763cda9564a171d786dbaaba3a4",
+    "runId": "otter-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "589da96506622751f5937ccba41777315bdcab7d74c4bf5260cc98f3cda05e6e",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 4.600000023841858,
+    "cpuMaxMs": 10.899999976158142,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000291,
+    "liveFrames": 933,
+    "durationMs": 15532.800000000001,
+    "encoded": {
+      "frames": 937,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 15.613235,
+      "minimumFrames": 886
+    },
+    "filmSha256": "01827151bc535403d2bba3e48fa1823f6237103a7a5baf6cac449dd2d9cf5472",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 24,
+    "runUps": [
+      0.07999999999999997,
+      -0.07999999999999997,
+      0.07999999999999997,
+      0.07999999999999997
+    ],
+    "recipeHash": "319995acc2303f38f7ea5ea1ae7ebedd09c525234ab97ee2e7510f90e791bb73",
+    "bindingFileSha256": "5dd755f791e843b52eefc702cf779ec2bb7b0ac1025a695c458aae11fd0dedbf"
+  },
+  {
+    "name": "cougar",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/cougar-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/full-battle-capture-01/cougar-script.json",
+    "scriptSourceSha256": "affd02e44bb42a877c56bf34b18122ad77478e40192def1f38f8fe45dfc15885",
+    "runId": "cougar-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "f80b907e326f1de1bd3b88480de9307dc42472175e869f5d9452e0038fcd0c6e",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 6.899999976158142,
+    "cpuMaxMs": 15.5,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000291,
+    "liveFrames": 933,
+    "durationMs": 15532.699999999999,
+    "encoded": {
+      "frames": 936,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 15.60816,
+      "minimumFrames": 886
+    },
+    "filmSha256": "a9519f971c7b5605af9608d05b046ebe8eb570df313f261a31eae3b4ce2126b7",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 24,
+    "runUps": [
+      0.07999999999999989,
+      -0.07999999999999989,
+      0.07999999999999989,
+      0.07999999999999989
+    ],
+    "recipeHash": "680e013221829e01699fb4e9f165446270f3bff9e022e871d96d6112206dc0d7",
+    "bindingFileSha256": "b2b60503766ba28f8c9efd7d0585d4416a23e0fbeee4f5e5cb41e97dc02c6065"
+  },
+  {
+    "name": "marmot",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/marmot-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-script.json",
+    "scriptSourceSha256": "82e5104fad937e0b84e9dd4fa24953a948abf04e5d683fe2bd526cd9e2323f7e",
+    "runId": "marmot-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "d0085fb8bc243a47d562ba78d2dcc8035ad3b659641b504a3395a711e681748d",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 7,
+    "cpuMaxMs": 15.100000023841858,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000291,
+    "liveFrames": 933,
+    "durationMs": 15532.699999999999,
+    "encoded": {
+      "frames": 937,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 15.614898,
+      "minimumFrames": 886
+    },
+    "filmSha256": "7c0a22d31f25269513199871e8b12e0bdf38ed6a49d8be7ea6db580d4e616d95",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 26,
+    "runUps": [
+      0.08000000000000006,
+      -0.08000000000000006,
+      0.08000000000000006,
+      0.08000000000000006
+    ],
+    "recipeHash": "919d9395c967cd07cd4965dc1bb753916c08a161153504dbb9e41de9e2363307",
+    "bindingFileSha256": "761e4dc8548341c4d9420791745ff4c25084944e9b28b9ea86bacbaeb5e5a7de"
+  },
+  {
+    "name": "bear",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/bear-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/bear-script.json",
+    "scriptSourceSha256": "bdec59ebeb3947894a5039a01a27693178c26ad3daf24b1701e430f6c1ddb1da",
+    "runId": "bear-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "7b435ec1cdb95afc98f2f4970e42c34761e68db52ad133d79feb3bb5e908b3a1",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 7.5,
+    "cpuMaxMs": 16.5,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000109,
+    "liveFrames": 933,
+    "durationMs": 15532.7,
+    "encoded": {
+      "frames": 936,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 15.606147,
+      "minimumFrames": 886
+    },
+    "filmSha256": "7a54d0230d6cee4bee09d0dcf430c260966437d8c4e409b140c28a01a627d53c",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 25,
+    "runUps": [
+      0.07999999999999997,
+      -0.07999999999999997,
+      0.07999999999999997,
+      0.07999999999999997
+    ],
+    "recipeHash": "a2d4471fe511a1a6eea2987e8c63d63021b3c682b260dade9c16eb5167f78153",
+    "bindingFileSha256": "18cba5268a108915523901f497443b9561f86fa30a053a1268264e518c9b2c94"
+  },
+  {
+    "name": "salamander",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/26-salamander/fit-05",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/salamander-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/salamander-motion-01/observed-script.json",
+    "scriptSourceSha256": "b53216429557992daf71861c799543d57d92e631e81872ed96b4e450bf811bb2",
+    "runId": "salamander-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "13459cfc7e13f6d072090f6ef6243a6784b09854a8e14c0b845ecd9acfd203bf",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 4.100000023841858,
+    "cpuMaxMs": 10.5,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000291,
+    "liveFrames": 872,
+    "durationMs": 14516.000000000002,
+    "encoded": {
+      "frames": 876,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 14.598644,
+      "minimumFrames": 827
+    },
+    "filmSha256": "52b9f3d36eeb994b1e359856d4f250a7c51a9d3e45945dff27829606b61c09d1",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 24,
+    "runUps": [
+      0.07999999999999997,
+      -0.07999999999999997,
+      0.07999999999999997,
+      0.07999999999999997
+    ],
+    "recipeHash": "712c584bdd51bc0c585f4f8ae059faa8d9b7f0fcdc531f7841c46c054ed1f2e2",
+    "bindingFileSha256": "db731fe504b30ed0ac48e127559ed2a28238c812ae13946a8ba15bed95758aff"
+  },
+  {
+    "name": "rat",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/29-rat/fit-03",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/rat-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/29-rat/observed-script.json",
+    "scriptSourceSha256": "60053ac734302acf361ea1f1b60326fb2e50523530974440273ec52ee4b06143",
+    "runId": "rat-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "04b106ec3c0ed06707897b63114b59a970860659674d1f6a2d8b13bcd42fa8a7",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 4.5,
+    "cpuMaxMs": 11.399999976158142,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000109,
+    "liveFrames": 933,
+    "durationMs": 15532.7,
+    "encoded": {
+      "frames": 937,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 15.607614,
+      "minimumFrames": 886
+    },
+    "filmSha256": "bec6c3ea0c88840e34c4e888e54ceb6f5e0f04b256bd0227b275b89c29d24e8c",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 24,
+    "runUps": [
+      0.08000000000000006,
+      -0.08000000000000006,
+      0.08000000000000006,
+      0.08000000000000006
+    ],
+    "recipeHash": "93a34fe91c56f8f64ed72223a5e101380065fb312d06d57f3923d815466ce9b0",
+    "bindingFileSha256": "a1190f0e1cc04dbdfdd67f4988138fa8fc7b400d0fac5c3019021e0d6ce63ad8"
+  },
+  {
+    "name": "shark",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/shark-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/battle-script.json",
+    "scriptSourceSha256": "b8c8183c4e15990debea82f42c96852a234c2b49a736bc7067b591d4281d0fed",
+    "runId": "shark-actual-02",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "ba83b43ca4d25d5d26dd9fbb9decfd84ea6e986bc78b05d8d20f102974af6a87",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3.399999976158142,
+    "cpuMaxMs": 10.199999928474426,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000109,
+    "liveFrames": 707,
+    "durationMs": 11766.199999999999,
+    "encoded": {
+      "frames": 710,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 11.848702,
+      "minimumFrames": 671
+    },
+    "filmSha256": "2a6412867d52896b454b4727eb1e0a43793a7d0e4f1b18c25ce8de817013765a",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 18,
+    "runUps": [
+      0.07999999999999997,
+      -0.07999999999999997,
+      0.07999999999999997,
+      0.07999999999999997
+    ],
+    "recipeHash": "82cd8b102478032bfe5a80d25761a696b7029acf5c600fdd4fb27221664a6b38",
+    "bindingFileSha256": "893c951f5129c5c02c5604a69259375746d33b2fbba631398a134e34ede774ad"
+  },
+  {
+    "name": "lizard",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/lizard-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-script.json",
+    "scriptSourceSha256": "8a3c22fab1e62611058176c600491568ddb84b951bdcf5f0c594d4d04c78c8a3",
+    "runId": "lizard-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "FAIL",
+    "error": "rig refusals in play: {\"left\":0,\"right\":70} {\"left\":null,\"right\":\"Contact: joint limit foreFarPaw faint@1559.999998999999: 96.00208445608911\"}",
+    "reportSha256": "a1462c061e8ba8856ac17fa60f167946e86f03e19078c24fc1c848d71b427daa",
+    "refusals": {
+      "left": 0,
+      "right": 70
+    },
+    "cpuP95Ms": 4.399999976158142,
+    "cpuMaxMs": 9.699999928474426,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000291,
+    "liveFrames": 841,
+    "durationMs": 13999.5,
+    "encoded": {
+      "frames": 845,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 14.072006,
+      "minimumFrames": 798
+    },
+    "filmSha256": "94bf693de19d03383666fcac94ed87878a75fb3733a14d74422094498bf3848d",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 23,
+    "runUps": [
+      0.08000000000000006,
+      -0.08000000000000006,
+      0.08000000000000006,
+      0.08000000000000006
+    ],
+    "recipeHash": "d21a8c87db8f91d25bfad6ada673b2e83e50d9d858d3ee39b3c533fd33080179",
+    "bindingFileSha256": "aac2d89a80939c348b5f92833ef3674d100ea7eec975f2c44bf093bf5658cfe9"
+  },
+  {
+    "name": "ibex",
+    "fit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/18-ibex/fit-02",
+    "script": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/ibex-script.json",
+    "scriptSource": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/18-ibex/battle-script.json",
+    "scriptSourceSha256": "7229491ccf534683399674a4ad4bee04859f4dd2c4f1abf62c4cce3e65463fbb",
+    "runId": "ibex-actual-01",
+    "source": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+    "status": "DIAGNOSTIC_PASS",
+    "error": null,
+    "reportSha256": "f700d25d68804def1151cd51aa43cb91bf21ee6e22380d12b637500954f08015",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 5.800000071525574,
+    "cpuMaxMs": 13.700000047683716,
+    "overBudgetFrames": [],
+    "intervalsAtLeast25Ms": 0,
+    "maxFrameIntervalMs": 16.80000000000291,
+    "liveFrames": 933,
+    "durationMs": 15532.7,
+    "encoded": {
+      "frames": 937,
+      "width": 1024,
+      "height": 576,
+      "durationSeconds": 15.610149,
+      "minimumFrames": 886
+    },
+    "filmSha256": "4b492ebe1d415bd17ba2deb89c7fe12538baffc4b775d6fa4de6f72a2a7c1a5c",
+    "otherLaneActiveSamples": 0,
+    "hostSamples": 24,
+    "runUps": [
+      0.11589880227364992,
+      -0.11589880227364992,
+      0.11589880227364992,
+      0.11589880227364992
+    ],
+    "recipeHash": "aa0d68bc6eb3850b7fbd629877a24df5b516bc65654d2a92c6184721a38e3577",
+    "bindingFileSha256": "a923e722a2aee41b13becac868f48f782f537ca0c2c9b64a2b3ceb73fd270399"
+  }
+]

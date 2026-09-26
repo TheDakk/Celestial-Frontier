@@ -1,0 +1,16 @@
+{
+  "attempts": [
+    {"command": "git commit -S (configured op-ssh-sign)", "exit": 128, "error": "1Password: agent returned an error"},
+    {"command": "git commit -S with the verified 1Password SSH_AUTH_SOCK", "exit": 128, "error": "1Password: agent returned an error"}
+  ],
+  "diagnosis": {
+    "configuredHelper": "/Applications/1Password.app/Contents/MacOS/op-ssh-sign",
+    "defaultMacAgentIdentities": 0,
+    "onePasswordAgentResponds": true,
+    "expectedSigningKeyVisible": true,
+    "causeOfSignatureFailureEstablished": false,
+    "persistentSettingsChanged": false,
+    "unsignedFallbackUsed": false
+  },
+  "note": "Both failed attempts produced no commit. Key visibility does not establish approval to sign. Check git history for any subsequent successful attempt."
+}

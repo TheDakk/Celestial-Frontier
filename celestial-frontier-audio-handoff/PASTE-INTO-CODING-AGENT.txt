@@ -1,0 +1,9 @@
+Implement the attached CELESTIAL-FRONTIER-AUDIO-HANDOFF.md in the Celestial Frontier repository, using audio-sources.json as the acquisition manifest.
+
+I already have REAPER and Surge. Use those installations plus stock REAPER effects. Spend $0 on additional software, libraries, subscriptions, or API services.
+
+Inspect the actual game data and existing audio code first. Download the approved free packs and relevant public-domain wildlife/environment recordings, retain licenses and source metadata, and build a repeatable REAPER/Surge production workflow. Create and test real Lua ReaScripts, editable projects, saved synth states, rendered sounds, runtime event mappings, and a developer audition screen.
+
+Cover the actual Earth roster and procedural families, movement/materials, all eleven ability themes, biomes, weather, battle/UI events, and music states. Keep authentic animal recordings separate from synthetic voices and marked approximations. Do not stop at the first proof or silently call generic placeholders finished coverage.
+
+Work through all unblocked steps, preserve existing approved assets and deterministic gameplay, and report actual acquisition/render/integration/listening status. If your environment cannot access my local REAPER/Surge, prepare the scripts and give me the exact local run step instead of claiming that renders were produced. Do not buy anything, bypass account restrictions, or require Freesound API access for the core build.

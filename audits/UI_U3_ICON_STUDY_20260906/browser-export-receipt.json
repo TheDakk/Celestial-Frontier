@@ -1,0 +1,46 @@
+{
+  "schema": "cf-u3-icon-study-browser-export/v1",
+  "status": "PASS",
+  "scope": "Standalone review HTML only; original SVG comparison; no game/product/browser profile",
+  "htmlSha256": "3cfd060ca06e1fc51c47cb949aa3533dc1ded44cde361365a2f84639cea88ccf",
+  "startedAt": "2026-09-06T22:20:24.907Z",
+  "errors": [],
+  "fallback": "Inkscape is unusable this session after a failed version check; no further Inkscape launch attempted.",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/152.0.4191.66",
+    "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "js_version": "15.2.23.10",
+    "protocol_version": "1.3"
+  },
+  "observation": {
+    "title": "Celestial Frontier · Icon study",
+    "cards": 10,
+    "current": [
+      "🔭",
+      "📖",
+      "✦",
+      "🛠",
+      "🌍",
+      "🏆",
+      "🔔",
+      "?",
+      "⚙",
+      "⬆ / 📜"
+    ],
+    "svg": 19,
+    "horizontalOverflow": false,
+    "size": "24",
+    "selected": false,
+    "height": 1631
+  },
+  "image": {
+    "file": "study-browser.png",
+    "bytes": 201661,
+    "sha256": "dd4ebd4382bb34022e5ecba2b275e73934e8e38946e160c5911a2f5298ea6f95",
+    "width": 1240,
+    "height": 1631
+  },
+  "endedAt": "2026-09-06T22:20:26.813Z"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Songbird",
+  "exemplar": "Sparrow",
+  "covers": [
+    "Sparrow",
+    "Finch",
+    "Tanager",
+    "Cardinal",
+    "Weaverbird",
+    "Robin",
+    "Lark",
+    "Starling"
+  ],
+  "bodyPlan": "biped-bird",
+  "mustPaint": [
+    "small round-headed perching bird on thin legs",
+    "stout conical bill; short square tail",
+    "plain brown, only lightly streaked, so colour genes read"
+  ],
+  "why": "8 misleading. Robin and Starling (thin bill) and Cardinal (crest) stay caveat."
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "commit": "ca851fb62bd35d5804ed22496c29f48969361733",
+    "verified": true,
+    "result": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+  },
+  {
+    "commit": "dd33865c0e60994b37df31364959e89749d277a8",
+    "verified": true,
+    "result": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+  }
+]

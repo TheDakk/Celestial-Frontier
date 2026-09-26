@@ -1,0 +1,26 @@
+{
+  "partId": "tail3",
+  "proximalCut": [
+    [
+      169.2,
+      772.8
+    ],
+    [
+      162.4,
+      862.3
+    ]
+  ],
+  "joint": [
+    40.7,
+    826.7
+  ],
+  "parent": [
+    210.2,
+    794.6
+  ],
+  "originalPixels": 7282,
+  "candidateAddedPixels": 447,
+  "rule": "original source alpha behind existing most-proximal transferred edge; original owner pixels seed contour; tracing can reassign boundary pixels; only remainder/unclaimed eligible for growth",
+  "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/08-mongoose/packet",
+  "masterSha256": "9f7d439cdd2f9c7984b1ab38251f1fc5135ab228fa6d8071382909a1ce0383c3"
+}

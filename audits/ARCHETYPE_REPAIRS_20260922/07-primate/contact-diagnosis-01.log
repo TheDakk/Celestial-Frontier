@@ -1,0 +1,3 @@
+{"id":"dodge","ms":44.333333333333336,"error":"Error: Contact: joint limit legNearFoot dodge@44.333333333333336: -51.14672708234197","traceEvents":13,"lastEvent":"measure"}
+{"id":"faint","ms":359.6666666666667,"error":"Error: Contact: faint@359.6666666666667 exceeds scale compression bound","traceEvents":4,"lastEvent":"compression"}
+{"id":"presentation","ms":9850,"error":"Error: Contact: joint limit legNearFoot dodge@47.64407912890056: -51.146731326657175","traceEvents":13,"lastEvent":"measure"}

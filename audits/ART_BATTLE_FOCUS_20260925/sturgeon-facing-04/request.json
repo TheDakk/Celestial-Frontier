@@ -1,0 +1,7 @@
+{
+  "tool": "image_gen.imagegen",
+  "reference": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/master.png",
+  "referenceSha256": "d7f7ad90c7813efb3bf9f700d81dbb5acbc8a50d14b504cfc51d9bc85b8f0f14",
+  "promptSha256": "30998a76ab0c2ca35af706237a3d93959adaff8d1dccff74b36a72b8c909e4e3",
+  "purpose": "Right-facing candidate; original accepted-source-coordinate proof preserved in03-sturgeon, no existing binding changed."
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "cf.review-controller-native/v1",
+  "status": "FAIL",
+  "startedAt": "2026-09-09T13:03:30.780Z",
+  "scope": "Actual controller, HTTP and trusted Land/navigation/View clicks; synthetic 2x1 RGB only; visible friendly failure/cancel, identity refusal and restored Earth return; no inference or art acceptance",
+  "qualityAccepted": false,
+  "sources": [],
+  "mutations": [],
+  "cases": [],
+  "browserEvents": [],
+  "requests": [],
+  "cleanup": {}
+}

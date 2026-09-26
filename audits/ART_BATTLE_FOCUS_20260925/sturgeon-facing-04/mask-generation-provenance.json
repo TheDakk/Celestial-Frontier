@@ -1,0 +1,66 @@
+{
+  "schema": "cf.same-subject-mask-provenance/v1",
+  "scope": "Same Sturgeon subject, new facing master. Reuse its own six original imagegen raw outputs/prompts, then run fresh conservation against the new master/recipe. No old conservation numbers or source authorities rebound.",
+  "sourceManifest": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/markings.json",
+  "sourceManifestSha256": "1171d2fc4ed6eecaf02062fa02e7c625d7355f91686862254e62860f1b942c0b",
+  "sourceGenerationReceipts": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/generation-receipts.json",
+  "sourceRefusals": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/mask-refusals.json",
+  "inputs": [
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/raw/banded.png",
+      "sha256": "c173b30fb0f4da2bf20ad5a12fde32e8bddf0428af52e7b1e66eb8a45b44b492"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/raw/eye-spotted.png",
+      "sha256": "0c10f62e6877094f5765c4be467a4ea11426bd8140003db8050e163560f3102c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/raw/marbled.png",
+      "sha256": "e50fbc357d14c8d237e1cc4a14079d2bd0dddaf7cd68e90dca918cf3fbabba32"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/raw/mottled.png",
+      "sha256": "b65766ed9f8c71fd58cb72a79dd83d8f7b6c54d48a8544c2e5661ea244acd9bc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/raw/spotted.png",
+      "sha256": "609c9cf01ae2e244905274e78f08ffd2be551c0dff576f3ff534441cb892a16b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/raw/striped-rejected-01.png",
+      "sha256": "83b7471e53f6377fdaf8ddb2e07aa9a4443569cc5a2626e97b09e77d41fccc36"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/raw/striped.png",
+      "sha256": "30fc2c5bbec1119233b51882ef1ace66d185cad4e282ef2ca6b27daf6b3264a5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/prompts/banded.txt",
+      "sha256": "9964944c6168ab85a750421429774a2cf4acd64d70c5f6e0e4d23a6895498ba8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/prompts/eye-spotted.txt",
+      "sha256": "7cafb36f8ad81148ba371583fa3ce4bffe09c75f784f1a2466ef33e73269fbd5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/prompts/marbled.txt",
+      "sha256": "e5e32577dd31900d2376d225b76c1bf8af8a72114394fe4c56e0613df3fcd419"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/prompts/mottled.txt",
+      "sha256": "be39112b638f38d43138cf2069a30ec3cca3ebe27836185a69a93163fbdc663d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/prompts/spotted.txt",
+      "sha256": "cb645ec38d719d96abc5907bb6d1f811f8bd3e8716c42402a8b42cadbb4cc561"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/prompts/striped-rejected-01.txt",
+      "sha256": "465e408b279c40d17d1eb29b36f380eeb09bfe6ee5bc089a2cdc44603e3cb270"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/prompts/striped.txt",
+      "sha256": "1f0d48295b3e61b3f3f4f30398f0a85e752001e110471bc7190bcca391edd8b1"
+    }
+  ]
+}

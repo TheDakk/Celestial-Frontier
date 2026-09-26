@@ -1,0 +1,155 @@
+{
+  "purpose": "Read-only Claude C1 review; image acceptance gates staging, independent C2 coding continues.",
+  "parts": [
+    {
+      "path": "/private/tmp/cf-wild-v43-review-part1-20260913.zip",
+      "bytes": 11884553,
+      "sha256": "5d78ac503cfa08e034ae44520b920b0893a3043926961c0eb623f3043fb348d2",
+      "entries": [
+        {
+          "path": "ART_KIT.md",
+          "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/CONTRACTS.md",
+          "sha256": "b705bc5d452196150ad7ff2172497732ad0f342dd7d5805c3a1a991739286044"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/README.md",
+          "sha256": "e331ffb85429ed944025a42ea45dfc16b4e1cf69c799ccb7ccbd93722e294b60"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/REVIEW_REQUEST.md",
+          "sha256": "be3b4cf4850f1aebc8ae378f7dc014181926ae051d30dc146fdb76769384e2bd"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/generation.json",
+          "sha256": "2cc08cc99318267b728e850d5672e21af2b62776366734954152f7a8cb857bc6"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/intake.json",
+          "sha256": "12739534490010e29464fd93b15be3f181f8cdf6e8afd5ba9943c322111a255e"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/keyed/wild-impact.png",
+          "sha256": "68d14a39890d44b5009f110a361dc7940a41fe5d80e513e6076fd6c56242d9f0"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/keyed/wild-launch.png",
+          "sha256": "8ec8ab2d2e6a578a751e9a30f2c913cc102e073767d5b94adf7edc51a7242275"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/keyed/wild-travel.png",
+          "sha256": "54d987a0413f451093285a9461ee573dcf6fb99b33940c0d003ae87501b2fa3e"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/kit-adoption.json",
+          "sha256": "9a1f7ff776ebe63e7d23c582d5ce6d0794489b005ea9458f6aa7374c1509cb8a"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/mid-verification.json",
+          "sha256": "9b996983e2936bf547fd83764f3e9c5e79743cc2328e7bafb6987d68b34216e8"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/registered/wild-impact.png",
+          "sha256": "54fdf384a6ca0f475f20cc6e3ad296b3c672d193039c263c831cdbc139ddaa37"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/registered/wild-launch.png",
+          "sha256": "164b45aad0448d2d642698136570b06b05a75f8ddf9f9a08421cf2d8edd3ed1b"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/registered/wild-travel.png",
+          "sha256": "78e11c152e4d09ccc20c7c4ccd858cc46d4afe211bf4956674ee2c9b924a1705"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/wild-anchors-master-fallback.json",
+          "sha256": "77f65708ff8f9f6e41a18ddc096cbee696f9788acb74e3b43f5e29d8871363ae"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/wild-anchors.json",
+          "sha256": "1b2598b2dc3cf6494123d61388a9291d65e4782042286b1e5c346536a8ec7373"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/wild-impact.png",
+          "sha256": "978296588ae7ad5694380c92ab7499f34a4a9ec27c654b064b82b7c0a924fc79"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/wild-impact.prompt.txt",
+          "sha256": "ef3ac73a9748668f7c7b399ea3873f2f0365f6d78bb845190b71420e6168c04e"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/wild-launch.png",
+          "sha256": "5a46a29eb41a701b428531720251c2fa688777618e824e4297c453edf537a642"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/wild-launch.prompt.txt",
+          "sha256": "0e8e09a2f32ed5f7c1b0278c03c2c6ee6aac9c5b53ad9038ce9be9dffb8aef93"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/wild-masters-review.png",
+          "sha256": "68a704ce995f631ee940b5e3a9d09bfedd9b6970c15a4029941c7cffae75883f"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/wild-registered-review.png",
+          "sha256": "cf5868e522a69a0cfa5b09200ff780c2a20ed359e19797865c533c2f819e58b8"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/wild-travel.png",
+          "sha256": "bd62c402b5bdc4929a29943952b29e5736e27f7f3ec325214bc0f5a68fb29679"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/wild-travel.prompt.txt",
+          "sha256": "bc3686e7daba3b5e051f7ffc268a06dd737e4783dd29d3f8d8a6ec3af9301bbc"
+        }
+      ]
+    },
+    {
+      "path": "/private/tmp/cf-wild-v43-review-part2-20260913.zip",
+      "bytes": 18452967,
+      "sha256": "01a41f8a6a683ab21cda6382fb967c461e167b9777f9d2b07d099cbe8e563c9a",
+      "entries": [
+        {
+          "path": "ART_KIT.md",
+          "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c"
+        },
+        {
+          "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/wild-sequence-review.png",
+          "sha256": "1c0d0f3a4fe35a2e9329a91649c54e6d51635dd6b7633a638b3a6b2c7bf39e0d"
+        },
+        {
+          "path": "audits/ARENA_V1_ACCEPTANCE_20260912/acceptance.json",
+          "sha256": "c10180d4bc4b2876a48f95861d3534a9d7da1083a8c89b6c3a4699683a68cdfa"
+        },
+        {
+          "path": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png",
+          "sha256": "d9a3690dceb71420cb1fc64898b1d74a677af4e26216a0437348959f57b55d0e"
+        },
+        {
+          "path": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-template-v1.png",
+          "sha256": "84e023f37216cbe2c6df54313dfb1a59a6c7db3bf94d441f53cbbda36c0abd5c"
+        },
+        {
+          "path": "audits/ARENA_V1_ACCEPTANCE_20260912/despill-receipt.json",
+          "sha256": "f949701a401e87525505bb8c0cca83c5eb541c7f7ac631ceee0a4e1187a3ad77"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/CONTRACTS.md",
+          "sha256": "b705bc5d452196150ad7ff2172497732ad0f342dd7d5805c3a1a991739286044"
+        },
+        {
+          "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+          "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+        },
+        {
+          "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+          "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+        },
+        {
+          "path": "audits/WILD_V43_PROOF_20260913/REVIEW_REQUEST.md",
+          "sha256": "be3b4cf4850f1aebc8ae378f7dc014181926ae051d30dc146fdb76769384e2bd"
+        }
+      ]
+    }
+  ]
+}

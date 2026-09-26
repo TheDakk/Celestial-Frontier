@@ -1,0 +1,382 @@
+{
+ "id": "civet-8",
+ "standIn": "Civet",
+ "template": "quadruped",
+ "accentGroups": [
+  "ears",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/civet-sentinel-input-01/card/master-512.png",
+  "joints": [
+   "earFarTip",
+   "earNearTip",
+   "jaw",
+   "head",
+   "foreNearPaw",
+   "foreNearAnkle",
+   "foreNearKnee",
+   "foreFarPaw",
+   "foreFarAnkle",
+   "foreFarKnee",
+   "hindNearPaw",
+   "hindNearAnkle",
+   "hindNearKnee",
+   "hindFarPaw",
+   "hindFarAnkle",
+   "hindFarKnee",
+   "tail3",
+   "tail2",
+   "tail1",
+   "neck",
+   "chest",
+   "spine"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Marine Iguana",
+   "group": "marine-iguana",
+   "posture": "sprawling",
+   "aspect": 4,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "blunt square salt-crusted snout",
+    "laterally flattened paddle-like swimming tail",
+    "low spiny crest and long curved claws"
+   ],
+   "note": "stubby blunt face and dark sooty body - not the long pointed green-iguana profile"
+  },
+  {
+   "name": "Land Iguana",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 3.8,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "heavy jowly yellow-orange head",
+    "spiny crest along the nape and back",
+    "thick round tapering tail and stout clawed legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Blind Salamander",
+   "group": "salamander",
+   "posture": "sprawling",
+   "aspect": 5.5,
+   "headFrac": 0.19,
+   "eyes": "hidden",
+   "mustRead": [
+    "blood-red feathery external gills",
+    "chalk-white unpigmented skin",
+    "spindly toothpick legs"
+   ],
+   "note": "Interpreted as the Texas blind salamander / olm type. Eyes are absent or buried under skin - never draw open eyes; the head is broad and flat, not pointed."
+  },
+  {
+   "name": "Cow",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.27,
+   "eyes": "normal",
+   "mustRead": [
+    "heavy sagging barrel body with visible udder",
+    "hanging throat dewlap",
+    "sideways-set ears with tufted tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Bull",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "massive humped neck and shoulder mass",
+    "short forward-curving horns",
+    "heavy pendulous dewlap"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Horse",
+   "group": "hoofed-unhorned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "long arched neck with crest mane",
+    "single hoof on each long slim leg",
+    "long flowing tail from a high dock"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Donkey",
+   "group": "hoofed-unhorned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "very long upright ears",
+    "short upright bristly mane",
+    "cow-like tail tufted only at the tip"
+   ],
+   "note": "Straighter back, bigger head and shorter neck than a horse; no flowing forelock."
+  },
+  {
+   "name": "Pig",
+   "group": "suid",
+   "posture": "quadruped",
+   "aspect": 1.8,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "flat round snout disc",
+    "deep barrel body on very short legs",
+    "curly corkscrew tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Llama",
+   "group": "hoofed-unhorned",
+   "posture": "quadruped",
+   "aspect": 1.1,
+   "headFrac": 0.17,
+   "eyes": "prominent",
+   "mustRead": [
+    "long banana-curved ears",
+    "long upright S-curved neck",
+    "flat back with no hump"
+   ],
+   "note": "A camelid with no hump - larger, longer-faced and less woolly than an alpaca."
+  },
+  {
+   "name": "Alpaca",
+   "group": "hoofed-unhorned",
+   "posture": "quadruped",
+   "aspect": 1.1,
+   "headFrac": 0.17,
+   "eyes": "prominent",
+   "mustRead": [
+    "dense woolly fleece covering the whole body",
+    "blunt short face under a topknot fringe",
+    "short straight spear-shaped ears"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Dog",
+   "group": "canid",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "muzzle ending in a black nose",
+    "erect or folded ears",
+    "plumed tail carried above the back"
+   ],
+   "note": "Generic - interpreted as a mid-sized domestic dog of no particular breed."
+  },
+  {
+   "name": "Koala",
+   "group": "koala",
+   "posture": "quadruped",
+   "aspect": 0.8,
+   "headFrac": 0.34,
+   "eyes": "small",
+   "mustRead": [
+    "huge round fluffy ears",
+    "large spoon-shaped black nose",
+    "no visible tail, gripping a vertical trunk"
+   ],
+   "note": "Not a bear - the nose is enormous and leathery and the eyes are small and beady."
+  },
+  {
+   "name": "Platypus",
+   "group": "platypus",
+   "posture": "swimming",
+   "aspect": 2.6,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "flat rubbery duck-like bill",
+    "broad flat paddle tail",
+    "webbed clawed feet on a low sleek body"
+   ],
+   "note": "The bill is soft and fleshy and fused into the face - not a hard bird beak stuck on."
+  },
+  {
+   "name": "Echidna",
+   "group": "toothless-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "dome of long cream-and-black spines",
+    "short tubular beak-snout with no visible mouth",
+    "stocky splayed digging claws"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Wombat",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "stout barrel body with no visible tail",
+    "broad blunt bare-nosed snout",
+    "short powerful bowed digging legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tasmanian Devil",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "oversized blocky head and gaping jaws",
+    "black fur with a white chest band",
+    "thick short tapering tail on a low stocky body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sugar Glider",
+   "group": "gliding-mammal",
+   "posture": "flying",
+   "aspect": 1.8,
+   "headFrac": 0.26,
+   "eyes": "prominent",
+   "mustRead": [
+    "skin membrane stretched from wrist to ankle",
+    "huge black eyes with dark facial stripe to the nose",
+    "long bushy tail as long as the body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Quoll",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "white spots scattered over the back and the tail",
+    "pointed pink snout",
+    "long bushy tail on a low slinking body"
+   ],
+   "note": "Unlike most spotted mammals the spots continue onto the tail."
+  },
+  {
+   "name": "Komodo Dragon",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 3.2,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "heavy limbs splayed out sideways",
+    "long muscular tail about half the total length",
+    "long forked yellow tongue and loose scaly neck skin"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Chameleon",
+   "group": "special-lizard",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "cone eye turrets that swivel independently",
+    "tail coiled into a tight spiral",
+    "laterally flattened leaf-shaped body with a helmet casque"
+   ],
+   "note": "Generic - interpreted as a veiled/panther chameleon type. Body is compressed side to side, so a side profile is the tall view."
+  },
+  {
+   "name": "Gila Monster",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 3.5,
+   "headFrac": 0.18,
+   "eyes": "small",
+   "mustRead": [
+    "beaded bumpy black-and-orange skin",
+    "fat sausage-shaped fat-storing tail",
+    "blunt heavy head on a thick neck"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Axolotl",
+   "group": "salamander",
+   "posture": "swimming",
+   "aspect": 3.5,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "three pairs of feathery external gill stalks",
+    "wide flat head with an upcurved smiling mouth",
+    "fin crest running along tail and back"
+   ],
+   "note": "Stays larval for life - it keeps four small legs plus the gills; never draw it as a metamorphosed salamander."
+  },
+  {
+   "name": "Frilled Lizard",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 3,
+   "headFrac": 0.15,
+   "eyes": "normal",
+   "mustRead": [
+    "huge circular skin frill fanned out behind the head",
+    "very long whip tail over half the length",
+    "gaping pink mouth at the frill's centre"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tree Shrew",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.2,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "long pointed squirrel-like snout",
+    "bushy tail as long as the body",
+    "small clawed grasping feet on a slim low body"
+   ],
+   "note": ""
+  }
+ ]
+}

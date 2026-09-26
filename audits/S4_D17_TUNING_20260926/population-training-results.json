@@ -1,0 +1,4234 @@
+[
+  {
+    "index": 0,
+    "tuning": {
+      "press": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 74,
+        "planned": 85,
+        "command": 102,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "guard"
+          ]
+        },
+        "gap": 8.59375,
+        "edge": 13.28125,
+        "phaseNodes": 299,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 74,
+        "planned": 95,
+        "command": 118,
+        "selected": {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "evade"
+          ]
+        },
+        "gap": 16.40625,
+        "edge": 17.96875,
+        "phaseNodes": 250,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 0,
+    "tuning": {
+      "press": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 73,
+        "planned": 81,
+        "command": 93,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "press",
+            "balanced"
+          ]
+        },
+        "gap": 6.25,
+        "edge": 9.375,
+        "phaseNodes": 235,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 72,
+        "planned": 92,
+        "command": 117,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "evade"
+          ]
+        },
+        "gap": 15.625,
+        "edge": 19.53125,
+        "phaseNodes": 274,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 0,
+    "tuning": {
+      "press": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 70,
+        "planned": 79,
+        "command": 97,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "balanced"
+          ]
+        },
+        "gap": 7.03125,
+        "edge": 14.0625,
+        "phaseNodes": 272,
+        "solo": {
+          "before": 42,
+          "after": 35,
+          "delta": -5.46875
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 71,
+        "planned": 89,
+        "command": 119,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 14.0625,
+        "edge": 23.4375,
+        "phaseNodes": 283,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "guardian:solo",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 1,
+    "tuning": {
+      "press": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 74,
+        "planned": 85,
+        "command": 102,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "guard"
+          ]
+        },
+        "gap": 8.59375,
+        "edge": 13.28125,
+        "phaseNodes": 299,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 74,
+        "planned": 95,
+        "command": 118,
+        "selected": {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "evade"
+          ]
+        },
+        "gap": 16.40625,
+        "edge": 17.96875,
+        "phaseNodes": 250,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 1,
+    "tuning": {
+      "press": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 73,
+        "planned": 81,
+        "command": 93,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "press",
+            "balanced"
+          ]
+        },
+        "gap": 6.25,
+        "edge": 9.375,
+        "phaseNodes": 235,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 72,
+        "planned": 92,
+        "command": 117,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "evade"
+          ]
+        },
+        "gap": 15.625,
+        "edge": 19.53125,
+        "phaseNodes": 274,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 1,
+    "tuning": {
+      "press": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 70,
+        "planned": 79,
+        "command": 97,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "balanced"
+          ]
+        },
+        "gap": 7.03125,
+        "edge": 14.0625,
+        "phaseNodes": 272,
+        "solo": {
+          "before": 42,
+          "after": 35,
+          "delta": -5.46875
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 71,
+        "planned": 89,
+        "command": 119,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 14.0625,
+        "edge": 23.4375,
+        "phaseNodes": 283,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "guardian:solo",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 2,
+    "tuning": {
+      "press": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.5
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 74,
+        "planned": 85,
+        "command": 102,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "guard"
+          ]
+        },
+        "gap": 8.59375,
+        "edge": 13.28125,
+        "phaseNodes": 299,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 74,
+        "planned": 95,
+        "command": 118,
+        "selected": {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "evade"
+          ]
+        },
+        "gap": 16.40625,
+        "edge": 17.96875,
+        "phaseNodes": 250,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 2,
+    "tuning": {
+      "press": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.5
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 73,
+        "planned": 81,
+        "command": 93,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "press",
+            "balanced"
+          ]
+        },
+        "gap": 6.25,
+        "edge": 9.375,
+        "phaseNodes": 235,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 72,
+        "planned": 92,
+        "command": 117,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "evade"
+          ]
+        },
+        "gap": 15.625,
+        "edge": 19.53125,
+        "phaseNodes": 274,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 2,
+    "tuning": {
+      "press": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.5
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 70,
+        "planned": 79,
+        "command": 97,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "balanced"
+          ]
+        },
+        "gap": 7.03125,
+        "edge": 14.0625,
+        "phaseNodes": 272,
+        "solo": {
+          "before": 42,
+          "after": 35,
+          "delta": -5.46875
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 71,
+        "planned": 89,
+        "command": 119,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 14.0625,
+        "edge": 23.4375,
+        "phaseNodes": 283,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "guardian:solo",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 3,
+    "tuning": {
+      "press": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.75
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 74,
+        "planned": 85,
+        "command": 102,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "guard"
+          ]
+        },
+        "gap": 8.59375,
+        "edge": 13.28125,
+        "phaseNodes": 299,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 74,
+        "planned": 95,
+        "command": 118,
+        "selected": {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "evade"
+          ]
+        },
+        "gap": 16.40625,
+        "edge": 17.96875,
+        "phaseNodes": 250,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 3,
+    "tuning": {
+      "press": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.75
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 73,
+        "planned": 81,
+        "command": 93,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "press",
+            "balanced"
+          ]
+        },
+        "gap": 6.25,
+        "edge": 9.375,
+        "phaseNodes": 235,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 72,
+        "planned": 92,
+        "command": 117,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "evade"
+          ]
+        },
+        "gap": 15.625,
+        "edge": 19.53125,
+        "phaseNodes": 274,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 3,
+    "tuning": {
+      "press": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.75
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 70,
+        "planned": 79,
+        "command": 97,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "balanced"
+          ]
+        },
+        "gap": 7.03125,
+        "edge": 14.0625,
+        "phaseNodes": 272,
+        "solo": {
+          "before": 42,
+          "after": 35,
+          "delta": -5.46875
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 71,
+        "planned": 89,
+        "command": 119,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 14.0625,
+        "edge": 23.4375,
+        "phaseNodes": 283,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "guardian:solo",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 4,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 74,
+        "planned": 85,
+        "command": 102,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "guard"
+          ]
+        },
+        "gap": 8.59375,
+        "edge": 13.28125,
+        "phaseNodes": 299,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 74,
+        "planned": 95,
+        "command": 118,
+        "selected": {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "evade"
+          ]
+        },
+        "gap": 16.40625,
+        "edge": 17.96875,
+        "phaseNodes": 250,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 4,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 73,
+        "planned": 81,
+        "command": 101,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "balanced"
+          ]
+        },
+        "gap": 6.25,
+        "edge": 15.625,
+        "phaseNodes": 316,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 72,
+        "planned": 92,
+        "command": 117,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "evade"
+          ]
+        },
+        "gap": 15.625,
+        "edge": 19.53125,
+        "phaseNodes": 274,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 4,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 70,
+        "planned": 80,
+        "command": 94,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "balanced",
+            "evade",
+            "press"
+          ]
+        },
+        "gap": 7.8125,
+        "edge": 10.9375,
+        "phaseNodes": 219,
+        "solo": {
+          "before": 42,
+          "after": 35,
+          "delta": -5.46875
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 71,
+        "planned": 89,
+        "command": 119,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 14.0625,
+        "edge": 23.4375,
+        "phaseNodes": 283,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "guardian:solo",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 5,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 74,
+        "planned": 85,
+        "command": 102,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "guard"
+          ]
+        },
+        "gap": 8.59375,
+        "edge": 13.28125,
+        "phaseNodes": 299,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 74,
+        "planned": 95,
+        "command": 118,
+        "selected": {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "evade"
+          ]
+        },
+        "gap": 16.40625,
+        "edge": 17.96875,
+        "phaseNodes": 250,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 5,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 73,
+        "planned": 81,
+        "command": 101,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "balanced"
+          ]
+        },
+        "gap": 6.25,
+        "edge": 15.625,
+        "phaseNodes": 316,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 72,
+        "planned": 92,
+        "command": 117,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "evade"
+          ]
+        },
+        "gap": 15.625,
+        "edge": 19.53125,
+        "phaseNodes": 274,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 5,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 70,
+        "planned": 80,
+        "command": 94,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "balanced",
+            "evade",
+            "press"
+          ]
+        },
+        "gap": 7.8125,
+        "edge": 10.9375,
+        "phaseNodes": 219,
+        "solo": {
+          "before": 42,
+          "after": 35,
+          "delta": -5.46875
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 71,
+        "planned": 89,
+        "command": 119,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 14.0625,
+        "edge": 23.4375,
+        "phaseNodes": 283,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "guardian:solo",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 6,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.5
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 74,
+        "planned": 85,
+        "command": 102,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "guard"
+          ]
+        },
+        "gap": 8.59375,
+        "edge": 13.28125,
+        "phaseNodes": 299,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 74,
+        "planned": 95,
+        "command": 118,
+        "selected": {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "evade"
+          ]
+        },
+        "gap": 16.40625,
+        "edge": 17.96875,
+        "phaseNodes": 250,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 6,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.5
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 73,
+        "planned": 81,
+        "command": 101,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "balanced"
+          ]
+        },
+        "gap": 6.25,
+        "edge": 15.625,
+        "phaseNodes": 316,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 72,
+        "planned": 92,
+        "command": 117,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "evade"
+          ]
+        },
+        "gap": 15.625,
+        "edge": 19.53125,
+        "phaseNodes": 274,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 6,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.5
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 70,
+        "planned": 80,
+        "command": 94,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "balanced",
+            "evade",
+            "press"
+          ]
+        },
+        "gap": 7.8125,
+        "edge": 10.9375,
+        "phaseNodes": 219,
+        "solo": {
+          "before": 42,
+          "after": 35,
+          "delta": -5.46875
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 71,
+        "planned": 89,
+        "command": 119,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 14.0625,
+        "edge": 23.4375,
+        "phaseNodes": 283,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "guardian:solo",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 7,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.75
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 74,
+        "planned": 85,
+        "command": 102,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "guard"
+          ]
+        },
+        "gap": 8.59375,
+        "edge": 13.28125,
+        "phaseNodes": 299,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 74,
+        "planned": 95,
+        "command": 118,
+        "selected": {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "evade"
+          ]
+        },
+        "gap": 16.40625,
+        "edge": 17.96875,
+        "phaseNodes": 250,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 7,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.75
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 73,
+        "planned": 81,
+        "command": 101,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "balanced"
+          ]
+        },
+        "gap": 6.25,
+        "edge": 15.625,
+        "phaseNodes": 316,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 72,
+        "planned": 92,
+        "command": 117,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "evade",
+            "evade"
+          ]
+        },
+        "gap": 15.625,
+        "edge": 19.53125,
+        "phaseNodes": 274,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 7,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "guard": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.75
+      },
+      "evade": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 53,
+        "command": 53,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 70,
+        "planned": 80,
+        "command": 94,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "balanced",
+            "evade",
+            "press"
+          ]
+        },
+        "gap": 7.8125,
+        "edge": 10.9375,
+        "phaseNodes": 219,
+        "solo": {
+          "before": 42,
+          "after": 35,
+          "delta": -5.46875
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 71,
+        "planned": 89,
+        "command": 119,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 14.0625,
+        "edge": 23.4375,
+        "phaseNodes": 283,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "normal:gap",
+      "guardian:gap",
+      "guardian:command",
+      "guardian:solo",
+      "titan:command"
+    ]
+  },
+  {
+    "index": 8,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 72,
+        "command": 72,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "guard"
+          ]
+        },
+        "gap": 14.84375,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 74,
+        "planned": 106,
+        "command": 120,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 25,
+        "edge": 10.9375,
+        "phaseNodes": 337,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 74,
+        "planned": 118,
+        "command": 126,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 34.375,
+        "edge": 6.25,
+        "phaseNodes": 247,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "guardian:gap",
+      "guardian:readiness",
+      "guardian:command",
+      "titan:gap",
+      "titan:readiness"
+    ]
+  },
+  {
+    "index": 8,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 72,
+        "command": 72,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "guard"
+          ]
+        },
+        "gap": 14.84375,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 73,
+        "planned": 105,
+        "command": 118,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 25,
+        "edge": 10.15625,
+        "phaseNodes": 337,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 72,
+        "planned": 117,
+        "command": 126,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 35.15625,
+        "edge": 7.03125,
+        "phaseNodes": 247,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "guardian:gap",
+      "guardian:readiness",
+      "guardian:command",
+      "titan:gap",
+      "titan:readiness"
+    ]
+  },
+  {
+    "index": 8,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 72,
+        "command": 72,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "guard"
+          ]
+        },
+        "gap": 14.84375,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 70,
+        "planned": 103,
+        "command": 117,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 25.78125,
+        "edge": 10.9375,
+        "phaseNodes": 337,
+        "solo": {
+          "before": 42,
+          "after": 35,
+          "delta": -5.46875
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 71,
+        "planned": 114,
+        "command": 126,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 33.59375,
+        "edge": 9.375,
+        "phaseNodes": 259,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "guardian:gap",
+      "guardian:readiness",
+      "guardian:command",
+      "guardian:solo",
+      "titan:gap",
+      "titan:readiness"
+    ]
+  },
+  {
+    "index": 9,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 72,
+        "command": 72,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "guard"
+          ]
+        },
+        "gap": 14.84375,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 74,
+        "planned": 106,
+        "command": 120,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 25,
+        "edge": 10.9375,
+        "phaseNodes": 337,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 74,
+        "planned": 118,
+        "command": 126,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 34.375,
+        "edge": 6.25,
+        "phaseNodes": 247,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "guardian:gap",
+      "guardian:readiness",
+      "guardian:command",
+      "titan:gap",
+      "titan:readiness"
+    ]
+  },
+  {
+    "index": 9,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 72,
+        "command": 72,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "guard"
+          ]
+        },
+        "gap": 14.84375,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 73,
+        "planned": 105,
+        "command": 118,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 25,
+        "edge": 10.15625,
+        "phaseNodes": 337,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 72,
+        "planned": 117,
+        "command": 126,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 35.15625,
+        "edge": 7.03125,
+        "phaseNodes": 247,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "guardian:gap",
+      "guardian:readiness",
+      "guardian:command",
+      "titan:gap",
+      "titan:readiness"
+    ]
+  },
+  {
+    "index": 9,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 72,
+        "command": 72,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "guard"
+          ]
+        },
+        "gap": 14.84375,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 70,
+        "planned": 103,
+        "command": 117,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 25.78125,
+        "edge": 10.9375,
+        "phaseNodes": 337,
+        "solo": {
+          "before": 42,
+          "after": 35,
+          "delta": -5.46875
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 71,
+        "planned": 114,
+        "command": 126,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 33.59375,
+        "edge": 9.375,
+        "phaseNodes": 259,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "guardian:gap",
+      "guardian:readiness",
+      "guardian:command",
+      "guardian:solo",
+      "titan:gap",
+      "titan:readiness"
+    ]
+  },
+  {
+    "index": 10,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0.5
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 72,
+        "command": 72,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "guard"
+          ]
+        },
+        "gap": 14.84375,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 74,
+        "planned": 106,
+        "command": 120,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 25,
+        "edge": 10.9375,
+        "phaseNodes": 337,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 74,
+        "planned": 118,
+        "command": 126,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 34.375,
+        "edge": 6.25,
+        "phaseNodes": 247,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "guardian:gap",
+      "guardian:readiness",
+      "guardian:command",
+      "titan:gap",
+      "titan:readiness"
+    ]
+  },
+  {
+    "index": 10,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0.5
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 72,
+        "command": 72,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "guard"
+          ]
+        },
+        "gap": 14.84375,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 73,
+        "planned": 105,
+        "command": 118,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 25,
+        "edge": 10.15625,
+        "phaseNodes": 337,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 72,
+        "planned": 117,
+        "command": 126,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 35.15625,
+        "edge": 7.03125,
+        "phaseNodes": 247,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "guardian:gap",
+      "guardian:readiness",
+      "guardian:command",
+      "titan:gap",
+      "titan:readiness"
+    ]
+  },
+  {
+    "index": 10,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0.5
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 72,
+        "command": 72,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "guard"
+          ]
+        },
+        "gap": 14.84375,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 70,
+        "planned": 103,
+        "command": 117,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 25.78125,
+        "edge": 10.9375,
+        "phaseNodes": 337,
+        "solo": {
+          "before": 42,
+          "after": 35,
+          "delta": -5.46875
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 71,
+        "planned": 114,
+        "command": 126,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 33.59375,
+        "edge": 9.375,
+        "phaseNodes": 259,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "guardian:gap",
+      "guardian:readiness",
+      "guardian:command",
+      "guardian:solo",
+      "titan:gap",
+      "titan:readiness"
+    ]
+  },
+  {
+    "index": 11,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0.75
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 72,
+        "command": 72,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "guard"
+          ]
+        },
+        "gap": 14.84375,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 74,
+        "planned": 106,
+        "command": 120,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 25,
+        "edge": 10.9375,
+        "phaseNodes": 337,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 74,
+        "planned": 118,
+        "command": 126,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 34.375,
+        "edge": 6.25,
+        "phaseNodes": 247,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "guardian:gap",
+      "guardian:readiness",
+      "guardian:command",
+      "titan:gap",
+      "titan:readiness"
+    ]
+  },
+  {
+    "index": 11,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0.75
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.05,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 72,
+        "command": 72,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "guard"
+          ]
+        },
+        "gap": 14.84375,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 73,
+        "planned": 105,
+        "command": 118,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 25,
+        "edge": 10.15625,
+        "phaseNodes": 337,
+        "solo": {
+          "before": 42,
+          "after": 42,
+          "delta": 0
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 72,
+        "planned": 117,
+        "command": 126,
+        "selected": {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 35.15625,
+        "edge": 7.03125,
+        "phaseNodes": 247,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "guardian:gap",
+      "guardian:readiness",
+      "guardian:command",
+      "titan:gap",
+      "titan:readiness"
+    ]
+  },
+  {
+    "index": 11,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0.75
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.08,
+      "taken": 0.96
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "balanced"
+          ]
+        },
+        "gap": 0,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 53,
+        "planned": 72,
+        "command": 72,
+        "selected": {
+          "order": [
+            0
+          ],
+          "stances": [
+            "guard"
+          ]
+        },
+        "gap": 14.84375,
+        "edge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 70,
+        "planned": 103,
+        "command": 117,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 25.78125,
+        "edge": 10.9375,
+        "phaseNodes": 337,
+        "solo": {
+          "before": 42,
+          "after": 35,
+          "delta": -5.46875
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 71,
+        "planned": 114,
+        "command": 126,
+        "selected": {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "stances": [
+            "guard",
+            "guard",
+            "guard"
+          ]
+        },
+        "gap": 33.59375,
+        "edge": 9.375,
+        "phaseNodes": 259,
+        "solo": {
+          "before": 1,
+          "after": 1,
+          "delta": 0
+        }
+      }
+    ],
+    "failures": [
+      "guardian:gap",
+      "guardian:readiness",
+      "guardian:command",
+      "guardian:solo",
+      "titan:gap",
+      "titan:readiness"
+    ]
+  }
+]

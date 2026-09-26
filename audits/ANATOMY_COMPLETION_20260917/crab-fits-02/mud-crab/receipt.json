@@ -1,0 +1,26 @@
+{
+  "intake": {
+    "id": "mud-crab",
+    "parts": 26,
+    "atlasSize": {
+      "width": 831,
+      "height": 249
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "sourceBindingHash": "e02a857751dd0f191d8a6f4679c7ab8dc0eb0b3bb3579e90efab92552a132e24",
+    "sourceVertices": 1585,
+    "vertices": 1759,
+    "sharedSupports": 210,
+    "pins": 783,
+    "independentSurfaceParts": 26,
+    "sourceJoins": 24,
+    "excludedOverlaps": 4,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "nativeAcceptance": false
+}

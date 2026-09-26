@@ -1,0 +1,53 @@
+diff --git a/audits/G1_AUTO_AUTHOR_20260926/harness/static.ts b/audits/C49_FISH_REVIEW_20260926/harness/static.ts
+index a1177e18..643fe51a 100644
+--- a/audits/G1_AUTO_AUTHOR_20260926/harness/static.ts
++++ b/audits/C49_FISH_REVIEW_20260926/harness/static.ts
+@@ -69,6 +69,22 @@ try {
+   const contact=createFamilyContactSolver(record,observedContactSupports(record,binding));
+   report.contacts=contact.chains.map(c=>c.end);report.realm=card.realm;
+   const probe=createSourceJoinProbe({record,binding,atlas:{width:atlas.width,height:atlas.height,rgba:atlas.data}});
++  // C49 audit extension. Existing mandatory-join checks below remain byte-for-byte.
++  const selectedReceipt=readJSON(path.join(fit,'../selected-pairs.json'));
++  const pairKey=pair=>{assert(Array.isArray(pair)&&pair.length===2&&pair.every(p=>typeof p==='string')&&pair[0]!==pair[1],'exact pair shape');return [...pair].sort().join('|');};
++  assert(Array.isArray(selectedReceipt.pairs)&&selectedReceipt.pairs.length>0,'nonempty selected inventory');
++  const wanted=selectedReceipt.pairs.map(pairKey);assert.equal(new Set(wanted).size,wanted.length,'unique pairs');
++  const selected=wanted.map(name=>{const matches=probe.excluded.filter(p=>pairKey(p.parts)===name);assert.equal(matches.length,1,'exact excluded pair '+name);assert(matches[0].samples.length>0&&matches[0].sourceEdges>0,'nonempty pair samples');return matches[0];});
++  const selectedProbe={...probe,joins:selected,excluded:[]};
++  report.selectedBoundaryAudit={schema:'cf.c49-selected-boundary-audit/v1',status:'RUNNING',epsilonNativePx:probe.epsilonNativePx,epsilonReason:probe.epsilonReason,
++    pairs:selected.map(p=>({name:p.name,sourceEdges:p.sourceEdges,spatialSamples:p.samples.length})),temporalSamples:0,violations:0,maxGapPx:0};
++  const measureSelected=row=>{const measured=assessSourceJoinContinuity(selectedProbe,positions),audit=report.selectedBoundaryAudit;
++    if(!row.selectedBoundaries)row.selectedBoundaries={temporalSamples:0,pairs:measured.joins.map(p=>({name:p.name,spatialSamples:p.samples,sourceEdges:p.sourceEdges,violations:0,maxGapPx:0,worst:null}))};
++    row.selectedBoundaries.temporalSamples++;audit.temporalSamples++;
++    for(const p of measured.joins){const target=row.selectedBoundaries.pairs.find(q=>q.name===p.name);target.violations+=p.violations;audit.violations+=p.violations;
++      if(p.maxGapPx>target.maxGapPx){target.maxGapPx=p.maxGapPx;target.worst={temporalSampleIndex:row.attemptedSamples-1,...p.worst};}
++      audit.maxGapPx=Math.max(audit.maxGapPx,p.maxGapPx);}
++  };
+   const marks=contact.chains.map(chain=>{
+     const owner=binding.parts.find(p=>p.joint===chain.end),part=skin.parts.find(p=>p.id===owner?.id);
+     assert(part,'Contact paint: missing endpoint surface '+chain.end);let best:any=null;
+@@ -92,6 +108,7 @@ try {
+     owner.play(id,0,0);owners[id]=owner;
+   }
+   const check=row=>{
++    measureSelected(row);
+     const seams=assessSourceJoinContinuity(probe,positions);
+     row.maxGapPx=Math.max(row.maxGapPx,seams.maxGapPx);
+     if(seams.status!=='PASS')throw Error('Source join gap '+seams.maxGapPx);
+@@ -132,6 +149,10 @@ try {
+   }catch(error){refuse(pr,ms,i,error);pr.firstRefusal.action=presented(ms).name;break;}}
+   restore(pr);report.exactRest=report.rows.every(row=>row.exactRest)&&pr.exactRest;
+   report.status=report.rows.every(row=>row.status==='PASS')&&pr.status==='PASS'&&report.exactRest?'PASS_STATIC':'RED';
++  const a=report.selectedBoundaryAudit;
++  a.expectedTemporalSamples=ids.length*121+Math.ceil(schedule.durationMs*60/1000)+1;
++  a.complete=a.temporalSamples===a.expectedTemporalSamples&&report.rows.every(r=>r.samples===121)&&pr.samples===Math.ceil(schedule.durationMs*60/1000)+1;
++  a.status=report.status==='PASS_STATIC'&&a.complete&&a.violations===0?'PASS':'RED';
+ } catch(error) {
+   report.status='REFUSED';report.refusal={stage,error:String(error.stack??error),contact:lastContact,pose:lastPose};
+ } finally {
+@@ -140,5 +161,5 @@ try {
+   if(report.inputs.some(input=>!input.unchanged)){report.status='INPUT_CHANGED';}
+   fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n',{flag:'wx'});
+   console.log(JSON.stringify({status:report.status,rows:report.rows.length,exactRest:report.exactRest,sourcePixelRest:report.sourcePixelRest,refusal:report.refusal}));
+-  if(report.status!=='PASS_STATIC')process.exitCode=1;
++  if(report.status!=='PASS_STATIC'||report.selectedBoundaryAudit?.status!=='PASS')process.exitCode=1;
+ }

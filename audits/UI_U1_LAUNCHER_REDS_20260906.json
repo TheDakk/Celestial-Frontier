@@ -1,0 +1,82 @@
+{
+  "schema": "cf-u1-uniform-launcher-reds/v1",
+  "runs": [
+    {
+      "source": "3101576abe30304317e62edfe9247dea7882f5ae",
+      "stage": "vitest",
+      "evidenceDirectory": "UI_U1_LAUNCHER_3101576_20260906",
+      "result": {
+        "failedFiles": 2,
+        "passedFiles": 309,
+        "failedTests": 3,
+        "passedTests": 3308,
+        "skippedTests": 1
+      },
+      "cause": "Rendered-release completeness oracles retained the obsolete desktop-rail gap phrase. Updated source copy describes the uniform bottom launcher.",
+      "correction": "Slice and Glass match current launcher, gap, utility-edge and Prime wording and challenge stale/removal copy while retaining81entries and gameplay truth. Focused Slice then exposed stale exact ordered-bullet hash; root independently derived current81 JSON hash687ef4b59445d308b9e633876da3ed77456d9f903e2e4cf2d9a6e9538f13a60d from tracked release source and updated only GUIDE_DRAFT_BULLET_AUTHORITY.",
+      "focusedResults": "Glass8/8PASS; Slice23/24PASS stopped at old ordered hash before root derivation. No unchanged-source retry.",
+      "preparationCarriers": [
+        {
+          "file": "UI_U1_LAUNCHER_PREP_cf-u1-launcher-release-oracle-prep.log.gz",
+          "sha256": "198a7516c5a9c9f450ba42d75582fddc0beb9711e840c798436d1a7d29f29f61"
+        },
+        {
+          "file": "UI_U1_LAUNCHER_PREP_cf-u1-glass-release-copy-focused-20260906.log.gz",
+          "sha256": "4d8f1461ad29ddf9c73965849178b1b133996afb7e79b2f7205cf9c99f38e3a4"
+        }
+      ],
+      "laterStages": "Not run after red."
+    },
+    {
+      "source": "294cc792dbc175c9463a4d1ff1fe761e73a4e9dc",
+      "stage": "slice",
+      "runId": "20260906095504288-90978-351c98d76e6f",
+      "evidenceDirectory": "UI_U1_LAUNCHER_294cc79_20260906",
+      "result": {
+        "status": "fail",
+        "control": "tap-empty-sky",
+        "durationMs": 382456,
+        "passedFiles": 311,
+        "passedTests": 3311,
+        "skippedTests": 1,
+        "normalReview": "PASS, three rows / nine images / all nine native launcher journeys"
+      },
+      "cause": "The empty-sky test retained the old fixed coordinate (900,300). With Settings anchored to the centered launcher, elementFromPoint returned a DIV inside UI instead of unowned canvas. The test correctly refused to click it.",
+      "correction": "The successor selects a measured edge point only when elementFromPoint equals the current root canvas and no UI boundary owns it, then reuses that exact point for the owned-canvas negative control and real dismissal. Both pointer receipts require trusted native mouse input, root-canvas identity and matching coordinates. Exact attribute restoration is rechecked before the final press. Scene/card/Settings outcomes stay intact; product unchanged.",
+      "laterStages": "Both phone Glass canaries were not run after the Slice red.",
+      "lateFixtureProvenance": "The five Glass release-clause removal/restoration probes in exceptional-crafting-evidence-contract.test.ts were authored and focused-tested8/8 but not included in294cc79. They will be included in the required successor; no294cc79 full-suite claim covers that late delta.",
+      "focusedResults": "Typecheck PASS; sixth-red plus shared-pointer Inventory2files/34tests PASS; module syntax/diffcheck PASS. Five late Glass probes previously focused8/8PASS.",
+      "preparationCarriers": [
+        {
+          "file": "UI_U1_LAUNCHER_PREP_cf-u1-empty-sky-root-canvas-prep.log.gz",
+          "sha256": "b8e022ca2daef5d4c094dc515d2f277e5b4a65ee1eb50998327da043fbbed4e8"
+        }
+      ]
+    },
+    {
+      "source": "6a88f859fac6df638956411974b1a8098e8e5195",
+      "stage": "ui-review",
+      "evidenceDirectory": "UI_U1_LAUNCHER_6a88f85_20260906",
+      "result": {
+        "status": "fail",
+        "passedFiles": 311,
+        "passedTests": 3312,
+        "skippedTests": 1,
+        "failure": "Notifications Close restored its shelf opener focus but scene trail was Cosmos,Milky Way instead of Cosmos. Phone geometry and Notifications bounds/Close checks passed."
+      },
+      "cause": "Unresolved. The prior captures show Cosmos before Close, which restores shelf focus but later observes Cosmos/Milky Way. Read-only product trace found no direct Close-to-navigation call or removed target: Close hides its existing panel; canvas handlers are canvas-scoped. Ticker checkTransitions can asynchronously publish a galaxy, but current evidence does not prove that it caused this observation.",
+      "laterStages": "Slice and both phone canaries not run after red.",
+      "correction": "The signed instrument-only successor requires delivered trusted pointerdown/up/click ownership through the exact requested control, records public trail before press/after down/after up plus passive changes, and writes those raw traces on red. Every Cosmos/geometry/focus assertion remains. This improves diagnosis, not a proven product fix.",
+      "focusedResults": {
+        "source": "Agent terminal output chunk386896; no on-disk raw log",
+        "result": "Exact native-delivery baseline PASS,10 rejected mutants and restoration PASS,32 generated expression shapes compile; phone oracle unchanged; module syntax and diffcheck exit0."
+      }
+    }
+  ],
+  "currentCheckpoint": {
+    "source": "88e9216ec869280900ac55df69c54238c260ea83",
+    "evidenceDirectory": "UI_U1_LAUNCHER_88e9216_20260906",
+    "status": "PASS on selected local checks",
+    "unresolvedReviewConcern": "6a88f85 scene change after Notifications Close remains unexplained. The new native-input trace passed61deliveries, but this does not prove a product repair or explain that red. U1 human approval remains open."
+  }
+}

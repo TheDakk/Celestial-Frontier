@@ -1,0 +1,25 @@
+{
+  "schema": "cf.paint-only-findings/v1",
+  "reviewType": "visual review of delivered original; no mask or rig admission",
+  "status": "RETAINED_FOR_REVIEW_INTAKE_HELD",
+  "anatomyObservations": [
+    "One carapace, two claws and two stalked eyes are visible. Overlapping walking legs prevent confident verification of four complete legs per flank. No absent or hidden state is inferred.",
+    "The claws are enlarged in the foreground and point downward/inward rather than matching the raised/outward guide pose."
+  ],
+  "sharedOutputFindings": [
+    "Delivered 1254 x 1254 RGBA rather than requested 1024 x 1024 opaque magenta. Preserve original exactly; no keying, despill, alpha rewrite or resize performed.",
+    "Prompt requires an 8 percent safe margin; alpha >= 128 content violates the side margin. No crop or framing correction performed."
+  ],
+  "alpha128MarginsFraction": {
+    "left": 0.03508771929824561,
+    "right": 0.029505582137161084,
+    "top": 0.22966507177033493,
+    "bottom": 0.20414673046251994
+  },
+  "sideMarginsPass8Percent": false,
+  "noRetries": true,
+  "qualityAccepted": false,
+  "masterIntakeAccepted": false,
+  "animationReady": false,
+  "decisionOwner": "Nick / trust-track review; not inferred from generation"
+}

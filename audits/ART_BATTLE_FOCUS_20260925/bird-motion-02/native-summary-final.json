@@ -1,0 +1,83 @@
+{
+  "scope": "Proposed stage bundle, actual observed painted supports; not integrated picker, cold loading, every pair or iPhone.25ms bins diagnose only.",
+  "rows": [
+    {
+      "name": "gull",
+      "runId": "native-gull-observed-03",
+      "status": "DIAGNOSTIC_PASS",
+      "cpuP95Ms": 4,
+      "cpuMaxMs": 9.100000023841858,
+      "overBudgetFrames": 0,
+      "intervalsAtLeast25Ms": 0,
+      "maxFrameIntervalMs": 16.80000000000291,
+      "liveFrames": 765,
+      "durationMs": 12732.8,
+      "encoded": {
+        "frames": 769,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 12.81273,
+        "minimumFrames": 725
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "supports": "observed",
+      "reportSha256": "85750ce17bb4aac6ec7b1897019813f47c40a83fdb6d63dfd3ccd16640304497",
+      "filmSha256": "db4970279964ca604f5dea1d64532697b23e96b276618d085d9949a13e58cfea"
+    },
+    {
+      "name": "goose",
+      "runId": "native-goose-observed-03",
+      "status": "DIAGNOSTIC_PASS",
+      "cpuP95Ms": 4.200000047683716,
+      "cpuMaxMs": 9.900000095367432,
+      "overBudgetFrames": 0,
+      "intervalsAtLeast25Ms": 0,
+      "maxFrameIntervalMs": 16.80000000000109,
+      "liveFrames": 780,
+      "durationMs": 12982.7,
+      "encoded": {
+        "frames": 783,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 13.055193,
+        "minimumFrames": 740
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "supports": "observed",
+      "reportSha256": "905e30676dcb2032ff09e8f77f4ff1915d2a5b6dd55d88f65b0a053e9f90ee55",
+      "filmSha256": "523bc41afcd8f37eefa328806e978f4c6b4b353ad21941882facdf8ec0b092df"
+    },
+    {
+      "name": "heron",
+      "runId": "native-heron-observed-03",
+      "status": "DIAGNOSTIC_PASS",
+      "cpuP95Ms": 3.700000047683716,
+      "cpuMaxMs": 9,
+      "overBudgetFrames": 0,
+      "intervalsAtLeast25Ms": 0,
+      "maxFrameIntervalMs": 16.80000000000291,
+      "liveFrames": 780,
+      "durationMs": 12982.9,
+      "encoded": {
+        "frames": 784,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 13.060497,
+        "minimumFrames": 740
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "supports": "observed",
+      "reportSha256": "44a8875d2440d2a98408d4a374ea9f94e1fbcb43be784e63bf1f773f8afd8931",
+      "filmSha256": "b5740ca19cb174d4c849da9bb9f226db534163063667844a2cf31769d630deaf"
+    }
+  ]
+}

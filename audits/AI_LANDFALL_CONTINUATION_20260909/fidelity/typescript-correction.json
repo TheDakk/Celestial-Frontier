@@ -1,0 +1,7 @@
+{
+  "failureLog": "audits/AI_LANDFALL_CONTINUATION_20260909/validation-01/typescript.stdout.log",
+  "preservedSourceSha256": "549c06851aeeba42c595a9e7b91b61a3320e4cc6a6cdc110c928ad5aaf7cc9d4",
+  "preservedTestSha256": "464199d05b830a5e192a8cf7bbd18dbaf698f09e002346de846258730919e2d5",
+  "changedSourceSha256": "067f552dce335f9e305ab1aa5f622be15a23ef032e3d56893dbe44c0195c63f3",
+  "change": "Declare stop as a function with an explicit never return, allowing TypeScript control-flow narrowing after existing refusal branches. No runtime guard, validation criterion, cast or test changed."
+}

@@ -19,6 +19,8 @@ import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
+import { readU1PhoneShell } from './ui-shell-review.mjs';
+import { assessCompactRailCopies } from './ui-rail-copy-check.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 import { assertBuiltGameMode } from './build-mode.mjs';
 import {
@@ -1199,7 +1201,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
-const V2_DRAFT_BULLET_COUNT = 79;
+const V2_DRAFT_BULLET_COUNT = 120;
 const GUIDE_RELEASE_TAIL_TEXT = '🌐 DEVELOPMENT PUBLISHING STAYS PARKED: The owner-authorized, labelled PR battery can build, browser-check, and archive an exact-commit v2.0 preview package with full Guide identity, origin refusal, and byte inventory; it does not publish. The separate branch-site workflow remains manually parked, and production remains the v1.8.9 main-branch site.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -1784,6 +1786,7 @@ const assessArc3SurveyClosedRailLifecycle = ({
     exactRoute: canonicalJson(arc3SurveyRouteProjection(beforeState))
       === canonicalJson(arc3SurveyRouteProjection(afterState)),
     durableReadOnly: readOnly.ok === true,
+    /* Closing Survey restores the actual wide right-rail control. */
     rightRailReady: surface?.rightRail?.id === 'railrgt'
       && surface?.rightRail?.display === 'flex'
       && surface?.rightRail?.visibility !== 'hidden'
@@ -1797,7 +1800,8 @@ const assessArc3SurveyClosedRailLifecycle = ({
       && surface?.shipyard?.visibility !== 'hidden'
       && surface?.shipyard?.rectCount === 1
       && surface?.shipyard?.width >= 44 && surface?.shipyard?.height >= 44
-      && surface?.shipyard?.hit === 'railshipyard',
+      && surface?.shipyard?.buttonId === 'railshipyard'
+      && surface?.shipyard?.buttonTag === 'BUTTON',
   });
   return { ok: Object.values(checks).every((value) => value === true), checks, readOnly };
 };
@@ -2148,11 +2152,11 @@ const assessArc2InventorySurface = ({ state, raw, surface, detail, closed, selec
     || canonicalJson(surface?.rows) !== canonicalJson(rows)) reasons.push('exact bounded DOM rows');
   const openerPoint = surface?.opener?.preClick;
   const openerPointer = surface?.opener?.pointer;
-  if (surface?.opener?.id !== 'railinventory' || surface?.opener?.tag !== 'BUTTON'
+  if (surface?.opener?.id !== 'dockinventory' || surface?.opener?.tag !== 'BUTTON'
     || surface?.opener?.visible !== true || openerPoint?.ok !== true
-    || openerPoint?.targetId !== 'railinventory'
+    || openerPoint?.buttonId !== 'dockinventory' || openerPoint?.buttonTag !== 'BUTTON'
     || !Number.isFinite(openerPoint?.x) || !Number.isFinite(openerPoint?.y)
-    || surface?.opener?.pointer?.targetId !== 'railinventory'
+    || openerPointer?.buttonId !== 'dockinventory' || openerPointer?.buttonTag !== 'BUTTON'
     || surface?.opener?.pointer?.pointerType !== 'mouse' || surface?.opener?.pointer?.trusted !== true
     || !Number.isFinite(openerPointer?.x) || !Number.isFinite(openerPointer?.y)
     || Math.abs(openerPointer.x - openerPoint.x) > 0.75
@@ -2389,7 +2393,7 @@ const assessAtlasPointerPress = (press, { atlasId } = {}) => {
   };
   return { ok: Object.values(checks).every((value) => value === true), checks };
 };
-const assessAtlasOpenerPress = (press, { ids = ['railatlas', 'dockatlas'] } = {}) => {
+const assessAtlasOpenerPress = (press, { ids = ['dockatlas'] } = {}) => {
   const checks = {
     target: press?.target?.settled === true && press.target.tag === 'BUTTON'
       && press.target.type === 'button' && ids.includes(press.target.id),
@@ -2434,7 +2438,8 @@ const assessArc2InventoryReload = ({ committed, reloaded, committedState, reload
   }
   if (!reloadDurability.ok) reasons.push(...reloadDurability.reasons);
   if (projection(reloadedState) !== projection(committedState)
-    || surface?.inventoryPointer?.targetId !== 'railinventory' || surface?.inventoryPointer?.trusted !== true
+    || surface?.inventoryPointer?.buttonId !== 'dockinventory' || surface?.inventoryPointer?.buttonTag !== 'BUTTON'
+    || surface?.inventoryPointer?.trusted !== true
     || surface?.inventoryPointer?.pointerType !== 'mouse'
     || surface?.inventoryRows?.length < 1 || surface.inventoryRows.length > 48
     || canonicalJson(surface.inventoryRows) !== canonicalJson(arc2InventoryRows(reloaded.arc2))
@@ -2442,12 +2447,14 @@ const assessArc2InventoryReload = ({ committed, reloaded, committedState, reload
       && row.pending === false && row.equipped === false)
     || surface.inventoryRows.some((row) => row.instanceId === removedInstanceId)
     || !assessInventoryPanelClose(surface?.inventoryClose).ok
-    || surface?.atlasPreClick?.ok !== true || surface?.atlasPreClick?.targetId !== 'railatlas'
+    || surface?.atlasPreClick?.ok !== true || surface?.atlasPreClick?.buttonId !== 'railatlas'
+    || surface?.atlasPreClick?.buttonTag !== 'BUTTON'
     || !Number.isFinite(surface?.atlasPreClick?.x) || !Number.isFinite(surface?.atlasPreClick?.y)
     || surface?.panelOpen !== 'atlas' || surface?.inventoryHidden !== true
     || surface?.inventoryExpanded !== 'false'
     || !assessAtlasTravelTarget(surface?.atlasTarget, { atlasId: 'p133' }).ok
-    || surface?.atlasPointer?.targetId !== 'railatlas' || surface?.atlasPointer?.trusted !== true
+    || surface?.atlasPointer?.buttonId !== 'railatlas' || surface?.atlasPointer?.buttonTag !== 'BUTTON'
+    || surface?.atlasPointer?.trusted !== true
     || surface?.atlasPointer?.pointerType !== 'mouse'
     || !Number.isFinite(surface?.atlasPointer?.x) || !Number.isFinite(surface?.atlasPointer?.y)
     || Math.abs(surface.atlasPointer.x - surface.atlasPreClick.x) > 0.75
@@ -5407,8 +5414,11 @@ try {
     document.addEventListener('pointerdown',(event)=>{ const target=event.target instanceof Element?event.target:null,
       close=target?.closest('#inventorysheet [data-inventory-sheet-close]'),
       panelClose=target?.closest('.panel > [data-pnx]'),
-      atlasTravel=target?.closest('[data-atlas-travel]'),atlasRow=atlasTravel?.closest('[data-aid]');
+      atlasTravel=target?.closest('[data-atlas-travel]'),atlasRow=atlasTravel?.closest('[data-aid]'),
+      button=target?.closest('button');
       window.__cfPanelPointer={targetId:target?.id||null,tag:target?.tagName||null,
+        rootCanvas:target===window.__CF_SLICE__?.app?.canvas,
+        buttonId:button?.id||null,buttonTag:button?.tagName||null,
         closeOwner:close?.closest('#inventorysheet')?.id==='inventorysheet'?'inventory-sheet':null,
         panelCloseOwner:panelClose?.getAttribute('data-pnx')||null,
         atlasTravelId:atlasTravel?.getAttribute('data-atlas-travel')||null,
@@ -5913,48 +5923,149 @@ try {
   /* 1d. THE GOLDEN-LAYOUT GEOMETRY CONTRACT (ui-main-desktop.png positions;
      uilayout.js discipline: measure the REAL boxes, then prove the checker
      can catch a moved element before trusting its pass). */
-  const geoCheck = `(()=>{ const W=innerWidth, H=innerHeight;
-    const r=(id)=>{ const el=document.getElementById(id); if(!el) return null;
+  /* Closing Settings restores the height-bearing Objective. Let the native
+     font/layout/ResizeObserver cycle finish before comparing published
+     anchors with actual rectangles; never call an application sync method
+     or poll the geometry oracle until it happens to pass. */
+  const renderedChromeBoundary = `(async()=>{if(document.fonts)await document.fonts.ready;let frames=0;
+    await new Promise(resolve=>requestAnimationFrame(()=>{frames+=1;requestAnimationFrame(()=>{frames+=1;resolve();});}));
+    const topbar=document.getElementById('topbar'),box=topbar?.getBoundingClientRect();
+    return {frames,fontStatus:document.fonts?.status||'unavailable',topbarHeight:box?.height??null,
+      publishedTopbarHeight:parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--topbar-h'))};})()`;
+  const geoCheck = `(()=>{ const W=innerWidth, H=innerHeight,compact=W<=700||(W<=900&&W>H);
+    const r=(id)=>{ const el=typeof id==='string'?document.getElementById(id):id; if(!el) return null;
       const b=el.getBoundingClientRect(),cs=getComputedStyle(el); return { l:b.left, t:b.top, r:b.right, b:b.bottom,
         cx:(b.left+b.right)/2,cy:(b.top+b.bottom)/2,w:b.width,h:b.height,
         vis:b.width>0&&b.height>0&&cs.display!=='none'&&cs.visibility!=='hidden'&&Number(cs.opacity)>0 }; };
-    const overlaps=(a,b)=>a&&b&&a.l<b.r-.5&&a.r>b.l+.5&&a.t<b.b-.5&&a.b>b.t+.5;
-    const pc=r('playerchip'), hp=r('hpbar'), pr=r('primechip'), obj=r('objchip'),
-      hint=r('hintpill'), ctx=r('ctxbar'), dock=r('dock'), rail=r('raillft'), dcx=r('dockcodex'),
-      srch=r('searchbox');
+    const overlaps=(a,b)=>a?.vis&&b?.vis&&a.l<b.r-.5&&a.r>b.l+.5&&a.t<b.b-.5&&a.b>b.t+.5;
+    const pc=r('playerchip'),hp=r('hpbar'),pr=r('primechip'),obj=r('objchip'),hint=r('hintpill'),ctx=r('ctxbar'),
+      dock=r('dock'),rail=r('raillft'),rightRail=r('railrgt'),srch=r('searchbox'),topbar=r('topbar'),inventory=r('dockinventory'),
+      scene=r('sceneactions'),survey=r('docksurvey'),charts=r('dockcharts'),trailNode=document.getElementById('trail');
+    const rootStyle=getComputedStyle(document.documentElement),safeLeft=parseFloat(rootStyle.getPropertyValue('--safe-left'))||0,
+      safeRight=parseFloat(rootStyle.getPropertyValue('--safe-right'))||0,safeBottom=parseFloat(rootStyle.getPropertyValue('--safe-bottom'))||0,
+      expectedLeft=safeLeft+(compact?10:18),expectedColumn=compact?Math.max(128,Math.min(176,W*.36)):Math.max(176,Math.min(240,W*.2)),
+      inside=(outer,inner)=>!!outer?.vis&&!!inner?.vis&&inner.l>=outer.l-1&&inner.r<=outer.r+1&&inner.t>=outer.t-1&&inner.b<=outer.b+1,
+      inViewport=(box)=>!!box?.vis&&box.l>=-1&&box.r<=W+1&&box.t>=-1&&box.b<=H+1,
+      aligned=(box)=>!!box?.vis&&Math.abs(box.l-expectedLeft)<=1&&Math.abs(box.w-expectedColumn)<=1,
+      fittedLeft=(box)=>!!box?.vis&&Math.abs(box.l-expectedLeft)<=1&&box.w>=44&&box.w<=expectedColumn+1,
+      nativeAvailable=(id,box)=>{const el=document.getElementById(id),hit=box?.vis?document.elementFromPoint(box.cx,box.cy):null;
+        return el instanceof HTMLButtonElement&&el.type==='button'&&!el.disabled&&!el.closest('[inert],[aria-hidden="true"]')
+          &&!!(el.getAttribute('aria-label')||el.textContent||'').trim()&&box.w>=44&&box.h>=44&&!!hit&&(hit===el||el.contains(hit));};
     const bad=[];
-    if(!pc || pc.l>80 || pc.t>60) bad.push('playerchip not top-left');
-    if(!hp || !pc || hp.t < pc.b-4) bad.push('HP bar not under the player chip');
-    if(!srch || !srch.vis || W-srch.r>40 || srch.t>60) bad.push('search bar not top-right');
-    if(srch && pc && pc.r > srch.l+4) bad.push('player chip overlaps the search bar');
-    if(W>900 && (!pr || Math.abs(pr.cx-W/2)>70 || pr.t>60)) bad.push('Prime Codex pill not top-center');
-    if(W<=900){
-      const prime=document.getElementById('primechip'),hit=pr?document.elementFromPoint(pr.cx,pr.cy):null;
-      if(!pr||!pr.vis||prime?.tagName!=='BUTTON'||prime?.type!=='button'||pr.h<44
-        ||Math.abs(pr.cx-W/2)>60||!hit||!prime.contains(hit))
-        bad.push('Prime pill is not a visible reachable phone button in the centered second chrome tier: '+JSON.stringify({pr,hit:hit?.id||null}));
-      for(const [name,box] of [['playerchip',pc],['hpbar',hp],['searchbox',srch],['trail',r('trail')]])
-        if(overlaps(pr,box))bad.push('primechip overlaps '+name);
+    if(!(compact?aligned(pc):fittedLeft(pc))||!inside(topbar,pc)||!inside(inventory,pc)||!nativeAvailable('dockinventory',inventory))
+      bad.push('playerchip not in its reachable aligned top-left Inventory owner: '+JSON.stringify({pc,inventory,topbar,expectedLeft,expectedColumn}));
+    if(!aligned(hp)||!inside(topbar,hp)||!pc||Math.abs(hp.t-pc.b-8)>1||hp.h<44)
+      bad.push('HP bar not aligned 8px under the player chip inside topbar: '+JSON.stringify({hp,pc,topbar}));
+    if(!trailNode||trailNode.parentElement!==document.getElementById('topbar')||getComputedStyle(trailNode).display!=='none'
+      ||!trailNode.querySelector('.seg.cur')||!trailNode.textContent.trim()||document.querySelector('.location-readout,.location-label'))
+      bad.push('canonical trail is not populated and visually absent from the header');
+    const searchNode=document.getElementById('searchbox'),searchHit=srch?.vis?document.elementFromPoint(srch.cx,srch.cy):null,
+      expectedRight=W-safeRight-(compact?10:18);
+    if(!inside(topbar,srch)||!inViewport(srch)||srch.h<44||srch.w<44||!pc||Math.abs(srch.t-pc.t)>1
+      ||Math.abs(srch.r-expectedRight)>1||(compact?srch.w>W*.37+1:Math.abs(srch.w-236)>1)||searchHit!==searchNode)
+      bad.push('search is not a reachable 44px control in its approved upper-right header column: '+JSON.stringify({srch,topbar,expectedRight,searchHit:searchHit?.id||null}));
+    if(overlaps(pc,srch))bad.push('player chip overlaps the search bar');
+    const prime=document.getElementById('primechip'),expectedDockWidth=Math.min(320,W-safeLeft-safeRight-20),
+      dockPitch=expectedDockWidth/5,expectedPrimeX=W/2;
+    if(!nativeAvailable('primechip',pr)||Math.abs(pr.cx-expectedPrimeX)>1||(!compact&&Math.abs(pr.t-pc.t)>1))
+      bad.push('Prime pill is not a visible reachable native button at its approved scene position: '+JSON.stringify({pr,pc,compact,expectedPrimeX}));
+    for(const [name,box] of [['playerchip',pc],['hpbar',hp],['searchbox',srch],['objective',obj]])
+      if(overlaps(pr,box))bad.push('primechip overlaps '+name);
+    const sceneNode=document.getElementById('sceneactions'),sceneOrder=sceneNode?[...sceneNode.children].map(el=>el.id):[],
+      dockNode=document.getElementById('dock'),leftNode=document.getElementById('raillft'),
+      leftOrder=leftNode?[...leftNode.children].map(el=>el.id):[],surveyNode=document.getElementById('docksurvey'),chartsNode=document.getElementById('dockcharts'),
+      sceneOwned=!!sceneNode&&sceneNode.parentElement===dockNode&&JSON.stringify(sceneOrder)===JSON.stringify(['dockcharts']),
+      leftOwned=!!leftNode&&leftNode.parentElement===dockNode&&JSON.stringify(leftOrder)===JSON.stringify(['docksurvey','railcodex']);
+    if(document.getElementById('dockcharters')||document.getElementById('railcharters'))bad.push('removed Charters shortcut remains in the DOM');
+    if(compact){
+      const icon=r(surveyNode?.querySelector(':scope > .ico')),label=r(surveyNode?.querySelector('.lbl')),
+        expectedSurveyX=dock?.l+dockPitch*.5,expectedSurveyWidth=dockPitch-4;
+      if(!leftOwned||getComputedStyle(leftNode).display!=='contents'||rail?.vis
+        ||getComputedStyle(document.getElementById('railcodex')).display!=='none'
+        ||!sceneOwned||getComputedStyle(sceneNode).display!=='contents'||scene?.vis
+        ||!chartsNode||getComputedStyle(chartsNode).display!=='none'||charts?.vis
+        ||!inside(dock,survey)||!nativeAvailable('docksurvey',survey)||Math.abs(survey.w-expectedSurveyWidth)>1
+        ||Math.abs(survey.cx-expectedSurveyX)>1||Math.abs(survey.t-dock.t)>1||Math.abs(survey.h-(dock.h-48))>1
+        ||!surveyNode.classList.contains('dock-scene')||surveyNode.querySelector('.utility-face')!==null
+        ||!inside(survey,icon)||label?.vis)
+        bad.push('phone Survey is not the reachable first top-row scene button with Charts hidden: '
+          +JSON.stringify({scene,survey,charts,icon,label,dock,sceneOrder,sceneOwned,leftOrder,leftOwned,expectedSurveyX,expectedSurveyWidth}));
+    }else{
+      const expectedSceneTop=rail?.b+8;
+      if(!leftOwned||!sceneOwned||!fittedLeft(scene)||Math.abs(scene.t-expectedSceneTop)>1||!inside(scene,charts)
+        ||!fittedLeft(charts)||Math.abs(charts.t-scene.t)>1||!nativeAvailable('dockcharts',charts))
+        bad.push('scene actions are not the aligned native 44px Charts control below the measured Survey/Compendium owner: '
+          +JSON.stringify({scene,survey,charts,topbar,rail,sceneOrder,sceneOwned,leftOrder,leftOwned,expectedSceneTop}));
     }
-    if(!obj || obj.l>40 || obj.t<H*0.18 || obj.t>H*0.42) bad.push('objective chip not left @~26vh: '+JSON.stringify(obj));
-    if(!hint || Math.abs(hint.cx-W/2)>90 || hint.b<H-160) bad.push('hint pill not bottom-center');
-    if(ctx && hint && ctx.b>hint.t+6) bad.push('caption not ABOVE the hint pill');
-    if(W>900){
-      if(!dock || dock.cx<W*0.6) bad.push('desktop cluster not bottom-RIGHT (ROADMAP #11 rail lesson)');
-      if(!rail || !rail.vis) bad.push('left rail missing on desktop');
-      if(dcx && dcx.vis) bad.push('dock codex should hide on desktop (rail owns it)');
-    } else {
-      if(!dock || Math.abs(dock.cx-W/2)>60) bad.push('phone dock not bottom-center');
-      if(rail && rail.vis) bad.push('left rail should hide on phone');
+    if(!inside(topbar,obj)||!inViewport(obj)||!srch||Math.abs(obj.t-srch.b-8)>1||Math.abs(obj.r-expectedRight)>1
+      ||obj.w<44||(compact?Math.abs(obj.l-expectedLeft-expectedColumn-10)>1:obj.w>237)||overlaps(obj,srch)||overlaps(obj,hp)
+      ||document.getElementById('objchip')?.parentElement!==document.getElementById('topbar')||!nativeAvailable('objchip',obj)
+      ||document.getElementById('objchip')?.getAttribute('aria-controls')!=='chpanel')
+      bad.push('objective chip is not contained in the right header column 8px below Search: '+JSON.stringify({obj,srch,topbar,hp,expectedRight}));
+    if(!hint||Math.abs(hint.cx-W/2)>90||hint.b<H-160)bad.push('hint pill not bottom-center');
+    if(ctx&&hint&&ctx.b>hint.t+6)bad.push('caption not ABOVE the hint pill');
+    if(!compact){
+      for(const [owner,box,ids] of [['raillft',rail,['docksurvey','railcodex']],['railrgt',rightRail,['railatlas','railshipyard']]]){
+        const rows=ids.map(id=>({id,box:r(id)}));
+        if(!box?.vis||Math.abs(box.t-topbar.b-8)>1||(owner==='raillft'?!fittedLeft(box):Math.abs(box.r-expectedRight)>1||box.w<44||box.w>236)
+          ||rows.some((row,index)=>!inside(box,row.box)||!nativeAvailable(row.id,row.box)
+            ||Math.abs(owner==='raillft'?row.box.l-box.l:row.box.r-box.r)>1
+            ||Math.abs(row.box.t-(index?rows[index-1].box.b+8:box.t))>1))
+          bad.push('native rail lost its reachable 44px targets and real 8px gaps: '+JSON.stringify({owner,box,rows,topbar}));
+      }
+      const ids=['dockrecords','docknotifications','dockguide','docksets'],rows=ids.map(id=>({id,box:r(id)})),
+        actual=[...document.querySelectorAll('#dock > button')].filter(el=>r(el.id)?.vis&&el.id!=='primechip').map(el=>el.id);
+      if(!dock?.vis||Math.abs(W-dock.r-safeRight-16)>1||Math.abs(H-dock.b-safeBottom-12)>1||Math.abs(dock.w-200)>1||Math.abs(dock.h-44)>1
+        ||JSON.stringify(actual)!==JSON.stringify(ids)||rows.some((row,index)=>!inside(dock,row.box)||!nativeAvailable(row.id,row.box)
+          ||Math.abs(row.box.w-44)>1||Math.abs(row.box.h-44)>1||(index>0&&(Math.abs(row.box.cx-rows[index-1].box.cx-52)>1||Math.abs(row.box.cy-rows[0].box.cy)>1))))
+        bad.push('wide utility tray does not retain four reachable 44px controls at its right-bottom 52px pitch: '+JSON.stringify({dock,rows,actual}));
+    }else{
+      if(rail?.vis||rightRail?.vis)bad.push('wide rail remains visible beside the compact phone dock');
+      if(!dock?.vis||Math.abs(dock.cx-W/2)>1||Math.abs(dock.w-expectedDockWidth)>1)
+        bad.push('compact dock does not retain its centered responsive five-column envelope: '+JSON.stringify({dock,expectedDockWidth}));
     }
     return bad; })()`;
+  const desktopGeometryBoundary = await evalIn(renderedChromeBoundary);
+  console.log('GOLDEN LAYOUT RENDERED BOUNDARY: '+JSON.stringify(desktopGeometryBoundary));
   const geo = await evalIn(geoCheck);
   if (geo.length) fails.push('GOLDEN LAYOUT drift: ' + geo.join(' · '));
-  /* the self-control: move the objective chip to the right, the checker
-     MUST see it (reproduce-the-reported-geometry law), then restore */
-  const geoCtl = await evalIn(`(()=>{ const o=document.getElementById('objchip'); o.style.left='900px';
-    const bad=${geoCheck}; o.style.left=''; return bad; })()`);
-  if (!geoCtl.some((b) => b.includes('objective chip'))) fails.push('GEOMETRY CHECKER CONTROL FAILED — a moved objective chip went unseen');
+  /* The objective now flows inside the right header column. Translate its actual
+     rectangle outside the viewport and onto Search; a static-position left
+     declaration cannot recreate either defect. Restore the exact owned node. */
+  if (geo.length === 0) {
+    const geoCtl = await evalIn(`(()=>{const o=document.getElementById('objchip'),charts=document.getElementById('searchbox'),
+      prior=o.getAttribute('style'),results=[];let error=null;
+      const restore=()=>{o.setAttribute('style','');o.removeAttribute('style');if(prior!==null)o.setAttribute('style',prior);};
+      try{for(const name of ['outside viewport','overlaps Search']){const a=o.getBoundingClientRect(),c=charts.getBoundingClientRect(),
+        dx=name==='outside viewport'?innerWidth+20-a.left:c.left-a.left,dy=name==='outside viewport'?0:c.top-a.top;
+        o.style.setProperty('transform','translate('+dx+'px,'+dy+'px)','important');const bad=${geoCheck},moved=o.getBoundingClientRect(),
+          reproduced=name==='outside viewport'?moved.left>innerWidth:moved.left<c.right&&moved.right>c.left&&moved.top<c.bottom&&moved.bottom>c.top;
+        restore();const restored=${geoCheck},styleRestored=o.getAttribute('style')===prior;
+        results.push({name,reproduced,bad,restored,styleRestored,ok:reproduced&&bad.some(row=>row.startsWith('objective chip'))&&styleRestored&&restored.length===0});}}
+      catch(cause){error=String(cause?.message||cause);}finally{restore();}
+      return {ok:error===null&&results.length===2&&results.every(row=>row.ok),results,error};})()`);
+    if (!geoCtl.ok) failSliceWithoutCascade('GEOMETRY CHECKER CONTROL FAILED — objective displacement/overlap was not rejected and restored: '+JSON.stringify(geoCtl));
+  }
+
+  /* Search owns the header's upper-right column. Translate its live
+     target, remove it, and reduce its touch floor independently; the same
+     geometry oracle must reject each mutation and restore the exact source. */
+  const searchBellGeometryControl = `(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
+    const bell=document.getElementById('searchbox');if(!bell)return {ok:false,why:'search missing'};
+    const prior=captureInlineStyleProperties(bell.style,['transform','display','height','min-height']);
+    const mutations=[['gap',()=>bell.style.setProperty('transform','translateX(12px)','important')],
+      ['presence',()=>bell.style.setProperty('display','none','important')],
+      ['touch floor',()=>{bell.style.setProperty('min-height','43px','important');bell.style.setProperty('height','43px','important');}]];
+    const results=[];let error=null;try{for(const [name,mutate] of mutations){mutate();const broken=${geoCheck};
+      restoreInlineStyleProperties(bell.style,prior);const restored=${geoCheck},restoration=inspectInlineStyleProperties(bell.style,prior);
+      results.push({name,broken,restored,restoration,ok:broken.some(row=>row.startsWith('search is not a reachable 44px control'))
+        &&restored.length===0&&restoration.ok});}}
+    catch(cause){error=String(cause?.message||cause);}finally{restoreInlineStyleProperties(bell.style,prior);}
+    return {ok:error===null&&results.length===3&&results.every(row=>row.ok),results,error};})()`;
+  if (geo.length === 0) {
+    const searchBellControl = await evalIn(searchBellGeometryControl);
+    if (!searchBellControl.ok) failSliceWithoutCascade('SHELF SEARCH GEOMETRY CONTROL FAILED: ' + JSON.stringify(searchBellControl));
+  }
 
   /* The HP number is an overlay owned by the track, not a flex sibling that
      can drift beside it. Its translucent dark backing is independent from
@@ -6268,7 +6379,7 @@ try {
   const law = await evalIn(`(async()=>{ const S=window.__CF_SLICE__; const st=()=>S.api.state();
     document.getElementById('docksets').click();
     const a = st().panelOpen;
-    document.getElementById('dockcodex').click();
+    document.getElementById('railcodex').click();
     const b = st().panelOpen;
     const setsHidden = document.getElementById('setpanel').style.display === 'none';
     document.getElementById('docksets').click();
@@ -6358,21 +6469,20 @@ try {
       + JSON.stringify(panelSwitchFocus));
   }
 
-  /* UI-P1: flex spacing belongs to its rail, not to the sky behind it. The
-     reported target is the exact 8px root-owned gap—not either registered
-     button—so only real-browser pointer input plus elementFromPoint can prove
-     this document-level pointerdown law. Declarative boundary inventory and
-     independent removal controls keep the old asymmetric #raillft exception
-     from surviving beside the new mechanism. */
+  /* UI-P1: painted desktop rail spacing belongs to its own root, not the
+     sky behind it. LEFT/RIGHT RAIL GAP measure the real vertical 8px gaps
+     between each rail's native controls. Trusted input on each exact root,
+     plus independent boundary-removal controls, proves dismissal law. */
   const panelBoundarySetup = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
     if(before.cardOpen)document.querySelector('#survey [data-survey-close]')?.click();
     if(S.api.state().panelOpen){const panel=[...document.querySelectorAll('.panel')]
       .find((node)=>node.style.display!=='none');panel?.querySelector('[data-pnx]')?.click();}
-    const ids=['topbar','raillft','railrgt','dock','survey'];
+    const ids=['dockinventory','shelfnotifications','raillft','railrgt','dock','sceneactions','survey'];
     const boundaries=ids.map((id)=>({id,present:document.getElementById(id)?.hasAttribute('data-panel-boundary')===true}));
-    const state=S.api.state();return {panelOpen:state.panelOpen,cardOpen:state.cardOpen,boundaries};})()`);
+    const search=document.getElementById('searchbox'),searchOutside=!!search&&search.closest('[data-panel-boundary]')===null;
+    const state=S.api.state();return {panelOpen:state.panelOpen,cardOpen:state.cardOpen,boundaries,searchOutside};})()`);
   if (panelBoundarySetup.panelOpen !== null || panelBoundarySetup.cardOpen
-    || panelBoundarySetup.boundaries.some((row) => !row.present)) {
+    || panelBoundarySetup.boundaries.some((row) => !row.present) || !panelBoundarySetup.searchOutside) {
     fails.push('PANEL BOUNDARY INVENTORY: setup or declared chrome ownership is incomplete: '
       + JSON.stringify(panelBoundarySetup));
   }
@@ -6380,28 +6490,35 @@ try {
     rail=document.getElementById(${JSON.stringify(railId)}),upper=document.getElementById(${JSON.stringify(upperId)}),
     lower=document.getElementById(${JSON.stringify(lowerId)}),rr=rail?.getBoundingClientRect(),
     ur=upper?.getBoundingClientRect(),lr=lower?.getBoundingClientRect();
-    if(!rail||!upper||!lower||!rr||!ur||!lr)return {geometry:false,why:'missing rail fixture'};
-    const gap=lr.top-ur.bottom,point={x:(rr.left+rr.right)/2,y:(ur.bottom+lr.top)/2},hit=document.elementFromPoint(point.x,point.y),
-      state=S.api.state();
-    return {geometry:innerWidth===1280&&innerHeight===800&&getComputedStyle(rail).display==='flex'
-        &&rr.width>0&&rr.height>0&&Math.abs(gap-8)<=0.5&&point.x>rr.left&&point.x<rr.right
+    if(!rail||!upper||!lower||!rr||!ur||!lr)return {geometry:false,why:'missing desktop rail gap fixture'};
+    const gap=lr.top-ur.bottom,overlapLeft=Math.max(ur.left,lr.left),overlapRight=Math.min(ur.right,lr.right),
+      point={x:(overlapLeft+overlapRight)/2,y:(ur.bottom+lr.top)/2},hit=document.elementFromPoint(point.x,point.y),
+      ownerEdge=rail.id==='raillft'?'left':'right',state=S.api.state(),style=getComputedStyle(rail);
+    return {geometry:innerWidth===1280&&innerHeight===800&&style.display==='flex'&&style.pointerEvents==='auto'
+        &&['raillft','railrgt'].includes(rail.id)&&rr.width>=44&&rr.height>0
+        &&ur.width>=44&&ur.height>=44&&lr.width>=44&&lr.height>=44
+        &&Math.abs(gap-8)<=0.5&&overlapRight-overlapLeft>=44
+        &&Math.abs(ur[ownerEdge]-rr[ownerEdge])<=0.5&&Math.abs(lr[ownerEdge]-rr[ownerEdge])<=0.5
+        &&[ur,lr].every(box=>box.left>=rr.left-.5&&box.right<=rr.right+.5&&box.top>=rr.top-.5&&box.bottom<=rr.bottom+.5)
+        &&point.x>overlapLeft&&point.x<overlapRight&&point.x>rr.left&&point.x<rr.right
         &&point.y>rr.top&&point.y<rr.bottom&&hit===rail,
-      gap,point,targetId:hit?.id||null,boundary:rail.hasAttribute('data-panel-boundary'),
-      panelOpen:state.panelOpen,cardOpen:state.cardOpen};})()`;
+      ownerId:rail.id,upperId:upper.id,lowerId:lower.id,gap,overlapLeft,overlapRight,ownerEdge,point,targetId:hit?.id||null,
+      boundary:rail.hasAttribute('data-panel-boundary'),panelOpen:state.panelOpen,cardOpen:state.cardOpen};})()`;
   const railButtonPoint = (id) => `(()=>{ const button=document.getElementById(${JSON.stringify(id)}),
     rect=button?.getBoundingClientRect(),x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0,
     hit=rect?document.elementFromPoint(x,y):null;return {ok:!!button&&!!rect&&rect.width>0&&rect.height>=44
-      &&getComputedStyle(button).display!=='none'&&!!hit&&(hit===button||button.contains(hit)),x,y,targetId:hit?.id||null};})()`;
+      &&getComputedStyle(button).display!=='none'&&!!hit&&(hit===button||button.contains(hit)),x,y,targetId:hit?.id||null,
+      buttonId:hit?.closest('button')?.id||null,buttonTag:hit?.closest('button')?.tagName||null};})()`;
   const openDesktopRailPanel = async (buttonId, panelId, label) => {
     const point = await evalIn(railButtonPoint(buttonId));
     if (!point.ok) {
-      fails.push(`${label}: visible rail opener was not browser-mouse hittable: ${JSON.stringify(point)}`);
+      fails.push(`${label}: visible panel opener was not browser-mouse hittable: ${JSON.stringify(point)}`);
       return false;
     }
     await clickDesktopPoint(point);
     const opened = await waitDesktopValue(`${label} open`, `window.__CF_SLICE__.api.state().panelOpen===${JSON.stringify(panelId)}`)
       .catch(() => false);
-    if (!opened) fails.push(`${label}: browser-mouse rail opener did not open ${panelId}`);
+    if (!opened) fails.push(`${label}: browser-mouse panel opener did not open ${panelId}`);
     return !!opened;
   };
   const closeDesktopPanel = async () => {
@@ -6410,9 +6527,9 @@ try {
     await sleep(40);
   };
   const rightGap = railGapProbe('railrgt', 'railatlas', 'railshipyard');
-  const leftGap = railGapProbe('raillft', 'railcharters', 'railcodex');
+  const leftGap = railGapProbe('raillft', 'docksurvey', 'railcodex');
 
-  /* ARC 3 ENGINEERING: exercise the real desktop right-rail route before the
+  /* ARC 3 ENGINEERING: exercise the real desktop launcher route before the
      generic gap probes. Browser pointer opens the registered panel, native
      keyboard opens every disclosure, and the independent exact catalogue
      inventory—not the DOM's own count—judges the six research rows, five
@@ -6492,9 +6609,10 @@ try {
   await armDesktopPointerReceipt();
   const shipyardOpened = await openDesktopRailPanel('railshipyard', 'shipyard', 'SHIPYARD');
   const shipyardOpenReceipt = await takeDesktopPointerReceipt();
-  if (!shipyardOpened || shipyardOpenReceipt?.targetId !== 'railshipyard'
+  if (!shipyardOpened || shipyardOpenReceipt?.buttonId !== 'railshipyard'
+    || shipyardOpenReceipt?.buttonTag !== 'BUTTON' || shipyardOpenReceipt?.trusted !== true
     || shipyardOpenReceipt?.pointerType !== 'mouse') {
-    fails.push('SHIPYARD: visible right-rail opener did not receive real browser-mouse input: '
+    fails.push('SHIPYARD: visible launcher opener did not receive trusted browser-mouse input: '
       + JSON.stringify({ shipyardOpened, shipyardOpenReceipt }));
   }
   if (shipyardOpened) {
@@ -6641,7 +6759,7 @@ try {
   if (await openDesktopRailPanel('railcodex', 'codex', 'RIGHT RAIL GAP')) {
     const before = await evalIn(rightGap);
     if (!before.geometry || before.cardOpen || before.panelOpen !== 'codex') {
-      fails.push('RIGHT RAIL GAP: reported 8px root-owned geometry was not established: ' + JSON.stringify(before));
+      fails.push('RIGHT RAIL GAP: right rail 8px root-owned geometry was not established: ' + JSON.stringify(before));
     } else {
       await armDesktopPointerReceipt();
       await clickDesktopPoint(before.point);
@@ -6649,7 +6767,7 @@ try {
       const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('railcodex'),
         panel=document.getElementById('codexpanel');return {panelOpen:s.panelOpen,expanded:button?.getAttribute('aria-expanded'),
           hidden:panel?.getAttribute('aria-hidden')};})()`);
-      if (!before.boundary || receipt?.targetId !== 'railrgt' || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'codex'
+      if (!before.boundary || receipt?.targetId !== 'railrgt' || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'codex'
         || after.expanded !== 'true' || after.hidden !== 'false') {
         fails.push('RIGHT RAIL GAP: real root-gap pointer dismissed or desynchronized the active panel: '
           + JSON.stringify({ before, receipt, after }));
@@ -6657,18 +6775,18 @@ try {
     }
     await closeDesktopPanel();
   }
-  if (await openDesktopRailPanel('railrecords', 'rec', 'LEFT RAIL GAP')) {
+  if (await openDesktopRailPanel('dockrecords', 'rec', 'LEFT RAIL GAP')) {
     const before = await evalIn(leftGap);
     if (!before.geometry || before.cardOpen || before.panelOpen !== 'rec') {
-      fails.push('LEFT RAIL GAP: symmetric 8px root-owned geometry was not established: ' + JSON.stringify(before));
+      fails.push('LEFT RAIL GAP: left rail 8px root-owned geometry was not established: ' + JSON.stringify(before));
     } else {
       await armDesktopPointerReceipt();
       await clickDesktopPoint(before.point);
       const receipt = await takeDesktopPointerReceipt();
-      const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('railrecords'),
+      const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('dockrecords'),
         panel=document.getElementById('recpanel');return {panelOpen:s.panelOpen,expanded:button?.getAttribute('aria-expanded'),
           hidden:panel?.getAttribute('aria-hidden')};})()`);
-      if (!before.boundary || receipt?.targetId !== 'raillft' || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'rec'
+      if (!before.boundary || receipt?.targetId !== 'raillft' || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'rec'
         || after.expanded !== 'true' || after.hidden !== 'false') {
         fails.push('LEFT RAIL GAP: real root-gap pointer dismissed or desynchronized the active panel: '
           + JSON.stringify({ before, receipt, after }));
@@ -6676,40 +6794,81 @@ try {
     }
     await closeDesktopPanel();
   }
-  const railBoundaryRemovalControl = async ({ railId, gapCheck, buttonId, panelId, label }) => {
-    if (!await openDesktopRailPanel(buttonId, panelId, `${label} CONTROL`)) return;
-    const prior = await evalIn(`document.getElementById(${JSON.stringify(railId)})?.getAttribute('data-panel-boundary')??null`);
-    let before = null, receipt = null;
-    try {
-      await evalIn(`document.getElementById(${JSON.stringify(railId)})?.removeAttribute('data-panel-boundary')`);
-      before = await evalIn(gapCheck);
+  const railBoundaryRemovalControl = async ({ railId, gapCheck, buttonId, panelId, label, ancestorIds = [] }) => {
+    const ids = [railId, ...ancestorIds];
+    const attributes = `(()=>{const ids=${JSON.stringify(ids)},rail=document.getElementById(ids[0]),chain=[];
+      for(let element=rail;element;element=element.parentElement)
+        if(element.hasAttribute('data-panel-boundary'))chain.push(element.id);
+      return {chain,rows:ids.map(id=>{const element=document.getElementById(id);return {id,exists:!!element,
+        present:element?.hasAttribute('data-panel-boundary')===true,value:element?.getAttribute('data-panel-boundary')??null};})};})()`;
+    const evidence = { railId, ancestorIds, panelId, prior: null, stages: [], restored: null };
+    let firstFailure = null, restorationFailure = null, mutationStarted = false;
+    const demand = (ok, reason) => { if (!ok) throw new Error(reason); };
+    const pressGap = async (name, expectedPanel, expectedChain) => {
+      const stage = { name, before: null, boundary: null, receipt: null, after: null };
+      evidence.stages.push(stage);
+      const before = stage.before = await evalIn(gapCheck);
+      stage.boundary = await evalIn(attributes);
+      demand(before?.geometry && before.panelOpen === panelId && before.cardOpen === false,
+        name + ': measured gap/panel predecessor missing');
+      demand(JSON.stringify(stage.boundary.chain) === JSON.stringify(expectedChain),
+        name + ': effective boundary chain mismatch');
+      const initialPoint = evidence.stages[0].before.point;
+      demand(Math.abs(initialPoint.x - before.point.x) <= .5 && Math.abs(initialPoint.y - before.point.y) <= .5,
+        name + ': measured gap moved');
       await armDesktopPointerReceipt();
       await clickDesktopPoint(before.point);
-      receipt = await takeDesktopPointerReceipt();
-    } finally {
-      await evalIn(`(()=>{ const rail=document.getElementById(${JSON.stringify(railId)}),prior=${JSON.stringify(prior)};
-        if(prior===null)rail?.removeAttribute('data-panel-boundary');else rail?.setAttribute('data-panel-boundary',prior);})()`);
+      const receipt = stage.receipt = await takeDesktopPointerReceipt();
+      stage.after = await evalIn('window.__CF_SLICE__.api.state().panelOpen');
+      demand(!(receipt?.targetId !== railId || receipt?.trusted !== true || receipt?.pointerType !== 'mouse')
+        && Math.abs(receipt.x - before.point.x) <= .5 && Math.abs(receipt.y - before.point.y) <= .5,
+      name + ': exact trusted gap delivery missing');
+      demand(stage.after === expectedPanel, name + ': panel dismissal/preservation outcome mismatch');
+    };
+    try {
+      demand(await openDesktopRailPanel(buttonId, panelId, label + ' CONTROL'), 'panel setup failed');
+      evidence.prior = await evalIn(attributes);
+      demand(evidence.prior.rows.every(row => row.exists && row.present && typeof row.value === 'string')
+        && JSON.stringify(evidence.prior.chain) === JSON.stringify(ids), 'boundary ownership setup mismatch');
+      mutationStarted = true;
+      await evalIn(`(()=>{for(const id of ${JSON.stringify(ancestorIds)})
+        document.getElementById(id)?.removeAttribute('data-panel-boundary');})()`);
+      await pressGap('rail-only-protection', panelId, [railId]);
+      await evalIn(`document.getElementById(${JSON.stringify(railId)})?.removeAttribute('data-panel-boundary')`);
+      await pressGap('unprotected-dismissal', null, []);
+    } catch (error) { firstFailure = String(error); }
+    finally {
+      if (mutationStarted) {
+        try {
+          await evalIn(`(()=>{for(const prior of ${JSON.stringify(evidence.prior.rows)}){
+            const element=document.getElementById(prior.id);if(!element)throw new Error('missing boundary restoration owner '+prior.id);
+            if(prior.present)element.setAttribute('data-panel-boundary',prior.value);
+            else element.removeAttribute('data-panel-boundary');}})()`);
+          evidence.restored = await evalIn(attributes);
+          demand(JSON.stringify(evidence.restored) === JSON.stringify(evidence.prior), 'exact boundary restoration failed');
+          if (await evalIn('window.__CF_SLICE__.api.state().panelOpen') !== panelId)
+            demand(await openDesktopRailPanel(buttonId, panelId, label + ' RESTORED'), 'restored panel setup failed');
+          await pressGap('restored-protection', panelId, ids);
+          await closeDesktopPanel();
+        } catch (error) { restorationFailure = String(error); }
+      }
     }
-    const after = await evalIn(`window.__CF_SLICE__.api.state().panelOpen`);
-    if (prior === null || !before?.geometry || before.boundary || before.panelOpen !== panelId
-      || receipt?.targetId !== railId || receipt?.pointerType !== 'mouse' || after !== null) {
-      fails.push(`${label} CONTROL FAILED — removing only the rail boundary did not recreate dismissal: `
-        + JSON.stringify({ prior, before, receipt, after }));
-    }
-    if (after !== null) await closeDesktopPanel();
+    console.log(label + ' CONTROL RECEIPT: ' + JSON.stringify({ ...evidence, firstFailure, restorationFailure }));
+    if (firstFailure || restorationFailure) failSliceWithoutCascade(label + ' CONTROL FAILED — '
+      + JSON.stringify({ ...evidence, firstFailure, restorationFailure }));
   };
   await railBoundaryRemovalControl({
     railId: 'railrgt', gapCheck: rightGap, buttonId: 'railcodex', panelId: 'codex', label: 'RIGHT RAIL BOUNDARY',
   });
   await railBoundaryRemovalControl({
-    railId: 'raillft', gapCheck: leftGap, buttonId: 'railrecords', panelId: 'rec', label: 'LEFT RAIL BOUNDARY',
+    railId: 'raillft', gapCheck: leftGap, buttonId: 'dockrecords', panelId: 'rec', label: 'LEFT RAIL BOUNDARY', ancestorIds: ['dock'],
   });
 
   /* Delegated document listeners are public event boundaries: a synthetic
      or retargeted non-Element target must be ignored, never allowed to throw
      before it can preserve the current panel. This restores the legacy guard
      for both pointerdown dismissal and the delegated Close click. */
-  if (await openDesktopRailPanel('railrecords', 'rec', 'PANEL NON-ELEMENT TARGET')) {
+  if (await openDesktopRailPanel('dockrecords', 'rec', 'PANEL NON-ELEMENT TARGET')) {
     const nonElementTarget = await evalIn(`new Promise((resolve)=>{ const errors=[];
       const onError=(event)=>{errors.push(String(event.error?.message||event.message||'window error'));event.preventDefault();};
       addEventListener('error',onError);document.dispatchEvent(new Event('pointerdown',{bubbles:true}));
@@ -6728,7 +6887,7 @@ try {
   if (await openDesktopRailPanel('railcodex', 'codex', 'SEARCH OUTSIDE DISMISS')) {
     const searchPoint = await evalIn(`(()=>{ const input=document.getElementById('searchbox'),rect=input?.getBoundingClientRect(),
       x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0,hit=rect?document.elementFromPoint(x,y):null;
-      return {ok:!!input&&!!rect&&rect.width>0&&rect.height>0&&hit===input&&!input.hasAttribute('data-panel-boundary'),x,y};})()`);
+      return {ok:!!input&&!!rect&&rect.width>0&&rect.height>0&&hit===input&&input.closest('[data-panel-boundary]')===null,x,y};})()`);
     let receipt = null;
     if (searchPoint.ok) {
       await armDesktopPointerReceipt();
@@ -6736,7 +6895,7 @@ try {
       receipt = await takeDesktopPointerReceipt();
     }
     const outcome = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),input=document.getElementById('searchbox');
-      const result={panelOpen:s.panelOpen,focused:document.activeElement===input,boundary:input?.hasAttribute('data-panel-boundary')===true};
+      const result={panelOpen:s.panelOpen,focused:document.activeElement===input,boundary:input?.closest('[data-panel-boundary]')!==null};
       input?.blur();return result;})()`);
     if (!searchPoint.ok || receipt?.targetId !== 'searchbox' || receipt?.pointerType !== 'mouse'
       || outcome.panelOpen !== null || !outcome.focused || outcome.boundary) {
@@ -6766,10 +6925,10 @@ try {
     ['breeding-feeding', 'injuries', 'partial'], ['breeding-feeding', 'eating', 'partial'],
     ['explorer', 'stats', 'partial'], ['explorer', 'hp', 'partial'],
     ['explorer', 'rank', 'partial'], ['explorer', 'achievements', 'partial'],
-    ['combat', 'duels', 'unavailable'], ['combat', 'abilities', 'unavailable'],
+    ['combat', 'duels', 'partial'], ['combat', 'abilities', 'unavailable'],
     ['combat', 'classes', 'partial'], ['combat', 'conquest', 'partial'],
     ['combat', 'binder', 'partial'], ['combat', 'guardians', 'partial'],
-    ['stardust-progression', 'stardust', 'partial'], ['stardust-progression', 'harvest', 'unavailable'],
+    ['stardust-progression', 'stardust', 'partial'], ['stardust-progression', 'harvest', 'partial'],
     ['stardust-progression', 'mining', 'partial'], ['stardust-progression', 'skimming', 'partial'],
     ['stardust-progression', 'research', 'partial'], ['stardust-progression', 'crafting', 'partial'],
     ['stardust-progression', 'ascent', 'partial'], ['prime-codex', 'signatures', 'partial'],
@@ -6782,8 +6941,8 @@ try {
     sha256: 'a9fa0a2dda99b6f8a4961e1e38084bf4f4976151154d034aeb34a741f9f5ccac',
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
-    count: 79,
-    sha256: '351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042',
+    count: 120,
+    sha256: 'aa5bc1c4583f685f6fe7caff9ed37636b565e290be351011dec0855fc85ef6f0',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -7131,8 +7290,8 @@ try {
       'Weekly bioscan Charters remain protected until their separate lifecycle is complete',
       'Field Scout interception is live on hostile Discover Life',
       'real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment',
-      'Companion Feed still does not discover tastes or flavours, grow stats or Power, heal injuries, apply poison, or build a bond',
-      'Dispatch, missions, care, bond, passive evolution, and friendly duels remain unavailable',
+      'Companion Feed reveals tastes, grows Meals, mends wounds and records bond memories; it never poisons a companion',
+      'Passive evolution remains unavailable. care, bond memories, friendly duels and companion missions are live',
     ], requiredControls: ["On ordinary worlds, it catalogues no species and spends no Biosphere Yield", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "becomes available at ten exact Paragons and pays its established", "120 Stardust", "discovering a Paragon never pays that Set reward automatically", "A development save that recorded a Paragon home before this feature keeps its already-recorded Bioscan refusal; returning does not backfill the Paragon"], contradictions: [
       "Found Paragons plot a course instead of opening Inspect.", "Missing silhouettes open Inspect instead of plotting a course.", "Discover Life on any world adds a Paragon catalogue record.", "An ordinary-world Bioscan catalogues a species.", "A Paragon sighting creates an owned companion.", "A Paragon sighting creates a specimen.", "A Paragon sighting grants Capture credit.", "A Paragon sighting spends 1 Biosphere Yield.", "A Paragon sighting automatically pays 120 Stardust.", "Seeker of Legends is claimable after one Paragon.", "Repeat Paragon sightings add a discovery reward.", "A prior Paragon-set claim can pay again.", "Returning to a previously recorded Paragon home backfills its catalogue record.",
       'The player chooses a visible species row to target.', 'Sample creates a living companion.',
@@ -7320,7 +7479,7 @@ try {
       'real Flora detail can expose the explorer’s separate Eat 1 action',
       'Owned fauna can become eligible conquest champions',
       'designated Field Scout can intercept hostile Discover Life injury',
-      'Dispatch, missions, companion care, bond, and broader husbandry remain unavailable',
+      'Companion care, bond and missions are live; broader husbandry remains unavailable',
     ] },
     { id: 'specimen', title: 'Reading a specimen card', required: [
       'exact 440px portrait', 'same complete-genome identity as its exact 132px list thumbnail',
@@ -7349,14 +7508,14 @@ try {
       'designated Scout intercepts hostile Discover Life damage in the bioscan’s own transaction and remains at or below Critical',
       'Scout standing before that successful attempt earns up to +2 XP in the same capture transaction, capped at 486',
       'no standing Scout, miss, or repeat grants Scout XP',
-      'Companion tastes and flavours, stat or Power growth from Feed, injury care or healing, companion poison, bond, dispatch, missions, and friendly duels remain unavailable',
+      'Companion tastes, meal growth, wound care, bond memories, friendly duels and missions are live; companion poison remains unavailable',
     ] },
     { id: 'feeding', title: 'Feeding beasts', required: [
       'real fauna Compendium detail',
       'Choose one exact unassigned owned companion whose Meals are below 200 and one exact owned flora lot',
       'Use 1', 'Same-species twins remain separate exact instances',
-      'Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why',
-      'Meals by 1, capped at 200', 'removes 1 flora from that exact lot',
+      'Companions with an active assignment or Recovery timer and companions already at the 200-Meal cap stay disabled and explain why',
+      'Meals by 0 to 3, capped at 200', 'removes 1 flora from that exact lot',
       'final unit empties that exact lot', 'one immutable receipt and one compare-and-swap save transaction',
       'no retry and no optimistic inventory or Meals change',
       'refusal, stale result, or failed write uses and publishes nothing',
@@ -7366,7 +7525,7 @@ try {
       'Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent',
       'every older successful result also remain silent',
       'Back and Close remain available',
-      'tastes and flavours, stat or Power growth, injury care or healing, companion poison, and bond remain unavailable',
+      'Loved food grows Meals faster and mends wounds; disliked food is harmless; first tastes build bond memories',
       'explorer’s separate Eat 1 action lives on a real Flora detail and owns healing, poison, and nourishment without changing companion Feed',
       'Rename changes only one selected exact companion’s nickname',
       'Field Scout separately selects the exact role and can intercept hostile Discover Life injury',
@@ -7388,7 +7547,7 @@ try {
       'requires reload and cannot breed twice', 'Back and Close remain available around the action',
       'successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save',
       'failed pairing, refusal, stale result, or failed write banks no Charter credit',
-      'Parent consumption, taste or bond effects, manual genetic editing, broader care, missions, and combat remain unavailable',
+      'Parent consumption and manual genetic editing remain unavailable. Care, bond memories, combat and companion missions are live',
     ] },
   ];
   const renderedCompendiumGuideCheck = (spec) => `(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
@@ -7404,7 +7563,7 @@ try {
       ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
       ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
       ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
-      ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
+      ||/Feed can heal without consuming flora|Rest advances while the game is closed|Bond decays over time/i.test(text)
       ||/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(text)
       ||/(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)/i.test(text)
       ||/Both parents are consumed|Recovery advances while the game is closed|same exact companion can occupy both parent roles|failed attempt creates one child|Breeding automatically retries|(?:failed pairing|refusal|stale result|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?)\\s+(?!no(?:thing)?\\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(text)
@@ -7464,7 +7623,7 @@ try {
     marker=document.createElement('p');let node=null;while(walker&&(node=walker.nextNode())&&!(node.nodeValue||'').includes(anchor)){}
     const prior=node?.nodeValue||'';if(node)node.nodeValue=prior.replace(anchor,'one ordinary save');
     const missing=${renderedCompendiumGuideCheck(compendiumGuideSpecs[2])};if(node)node.nodeValue=prior;
-    const contradictions=[];for(const copy of ['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.']){
+    const contradictions=[];for(const copy of ['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Feed can heal without consuming flora.']){
       marker.textContent=copy;article?.appendChild(marker);contradictions.push({copy,result:${renderedCompendiumGuideCheck(compendiumGuideSpecs[2])}});marker.remove();}
     const restored=${renderedCompendiumGuideCheck(compendiumGuideSpecs[2])};return {nodeFound:!!node,missing,contradictions,restored};})()`);
   const breedingGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[3]);
@@ -7843,7 +8002,7 @@ try {
       frontierAudio=bulletNodes.find((item)=>/THE FRONTIER SPEAKS/.test(item.textContent||'')),
       creatureListen=bulletNodes.find((item)=>/CREATURE CALLS ARE YOURS TO REQUEST/.test(item.textContent||'')),
       biosphereListen=bulletNodes.find((item)=>/HEAR A LIVING WORLD WITHOUT SPOILERS/.test(item.textContent||'')),
-     meal=bulletNodes.find((item)=>/TWO EXACT MEAL PATHS, NO INVENTED CARE/.test(item.textContent||'')),
+     meal=bulletNodes.find((item)=>/TWO EXACT MEAL PATHS, TASTE-LED CARE/.test(item.textContent||'')),
       breed=bulletNodes.find((item)=>/TWO PARENTS, ONE DURABLE OUTCOME/.test(item.textContent||'')),
       rename=bulletNodes.find((item)=>/ONE COMPANION, ONE DURABLE NAME/.test(item.textContent||'')),
       hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
@@ -7977,7 +8136,7 @@ try {
         &&captureText.includes('older Surveys and capture do not count')
         &&captureText.includes('Weekly bioscan Charters remain protected until their separate lifecycle is complete')
         &&captureText.includes('Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail')
-        &&captureText.includes('friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable')
+        &&captureText.includes('Passive evolution remains unavailable. companion missions are live. Care, bond memories and friendly duels are live')
         &&!captureContradiction,
       liveProgressionContradiction=/Charter rewards?[^.!?]{0,48}(?:remain|are) unavailable|Binder (?:Set )?claims?[^.!?]{0,48}(?:do not|never) pay Stardust|Conquest goals?[^.!?]{0,80}(?:remain|stay|are) (?:hidden|unavailable)|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)|(?:miss|repeat species|no standing Scout)[^.!?]{0,64}(?:earns?|grants?|awards?)\\b(?!\\s+no\\b)[^.!?]{0,32}Scout XP|accepted wk-conq[^.!?]{0,96}(?:completes?|pays?|awards?)/i.test(text)||/Found Paragons plot a course instead of opening Inspect|Missing silhouettes open Inspect instead of plotting a course|Discover Life on any world adds a Paragon catalogue record|An ordinary\-world Bioscan catalogues a species|A Paragon sighting creates an owned companion|A Paragon sighting creates a specimen|A Paragon sighting grants Capture credit|A Paragon sighting spends 1 Biosphere Yield|A Paragon sighting automatically pays 120 Stardust|Seeker of Legends is claimable after one Paragon|Repeat Paragon sightings add a discovery reward|A prior Paragon\-set claim can pay again|Returning to a previously recorded Paragon home backfills its catalogue record/i.test(text),
       liveProgressionContract=starterCharterText.includes('two established starter chains one unfinished link at a time')
@@ -8022,7 +8181,10 @@ try {
         ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:grants?|awards?)[^.!?]{0,48}(?:discovery|reward)/i)
         ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:writes?|changes?)[^.!?]{0,32}(?:the )?save/i)
         ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:plays?|starts?)[^.!?]{0,64}(?:before|without)[^.!?]{0,80}(?:visible|counterpart|biosphere lead|inhabited world)/i)
-        ||unnegated(text,/\\bcombat sound remains (?:future work|unavailable)/i),
+        ||unnegated(text,/\\bcombat sound remains (?:future work|unavailable)/i)
+        ||unnegated(frontierAudioText,/(?:Starter Charter|Charter acceptance)[^.!?]{0,96}(?:plays?|sounds?)[^.!?]{0,96}(?:before (?:the )?acceptance succeeds|without (?:your )?(?:explicit )?pilot-sound choice)/i)
+        ||unnegated(frontierAudioText,/(?:duplicate|failed) acceptances[^.!?]{0,48}(?:play|sound|ring)/i)
+        ||unnegated(frontierAudioText,/Other sound mappings and creature actions[^.!?]{0,48}(?:are|remain) (?:now )?(?:available|live|complete)/i),
       audioContract=frontierAudioHeading==='New Features & Systems'
         &&creatureListenHeading==='Gameplay'&&biosphereListenHeading==='Gameplay'
         &&frontierAudioText.includes('one deterministic runtime across a verified durable wild-fauna Tame, one exact durable nonconverging Feed commit, and an explorer-requested call from one exact owned-fauna detail')
@@ -8035,7 +8197,9 @@ try {
         &&frontierAudioText.includes('Guardian or Titan entrance, phase, victory, and defeat motifs')
         &&frontierAudioText.includes('at most two combat voices overlap')
         &&frontierAudioText.includes('master Sound governs them, Creature voices does not')
-        &&frontierAudioText.includes('Authored ambience, music, recorded assets, and other creature actions remain future work')
+        &&frontierAudioText.includes('In the optional audiovisual preview, accepting a Starter Charter now plays a short confirmation after the acceptance succeeds, including when existing progress completes it immediately')
+        &&frontierAudioText.includes('It follows your explicit pilot-sound choice; duplicate or failed acceptances stay quiet')
+        &&frontierAudioText.includes('Other sound mappings and creature actions remain future work')
         &&creatureListenText.includes('Open a real owned-fauna Compendium detail and choose Listen on an exact companion to hear its stable deterministic call')
         &&creatureListenText.includes('Browsing, filtering, focusing, and returning through the Compendium never auto-play it')
         &&biosphereListenText.includes('pre-landing Survey card and landed Planetside both offer Listen to biosphere')
@@ -8052,15 +8216,15 @@ try {
         &&mealText.includes('one exact unassigned owned companion below the 200-Meal cap')
         &&mealText.includes('one exact owned flora lot through Use 1')
         &&mealText.includes('Same-species twins remain separate')
-        &&mealText.includes('assigned, recovering, and capped companions stay disabled and explain why')
-        &&mealText.includes('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora')
+        &&mealText.includes('companions with an active assignment or Recovery timer and capped companions stay disabled and explain why')
+        &&mealText.includes('One receipt-bearing compare-and-swap raises Meals by 0 to 3 and removes exactly 1 flora')
         &&mealText.includes('emptying that exact lot on its final unit')
         &&mealText.includes('no retry or optimistic change')
         &&mealText.includes('trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status')
         &&mealText.includes('one deterministic synthesized acknowledgement after that status appears')
         &&/refused, stale, converging, replayed, hidden, route-lost, counterpart-lost, and older results remain silent/i.test(mealText)
-        &&mealText.includes('Companion Feed is still only an inventory spend and meal counter')
-        &&mealText.includes('tastes, Power growth, injury care or healing, companion poison, and bond remain open')
+        &&mealText.includes('Companion Feed resolves taste, Meals growth, wound mending and first-time XP in one inventory spend')
+        &&mealText.includes('loved meals grow and mend, neutral meals grow and mend less, and disliked meals are harmless; first tastes build bond memories')
         &&mealText.includes('real Flora detail previews the explorer’s healing, poison risk, and deterministic nourished stat')
         &&mealText.includes('Eat 1 consumes the canonical exact owned specimen in one receipt-bearing transaction')
         &&mealText.includes('safe meal restores shown HP with worn healing gear, raises the stat up to 330, gains +1 nourishment from Xenobotany')
@@ -8123,12 +8287,12 @@ try {
       ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-      ||/(?:duels?|creature combat|passive evolution|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/(?:passive evolution|Kindred preferred.mission choice)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
       ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
       ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
       ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
-      ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
+      ||/Feed can heal without consuming flora|Rest advances while the game is closed|Bond decays over time/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text)
       ||breedContradiction||renameContradiction;
@@ -8142,7 +8306,13 @@ try {
         &&shipyardContract&&captureContract&&liveProgressionContract&&audioContract&&mealContract&&breedContract&&renameContract&&hdSurfaceContract&&publishingContract
         &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
-        &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
+        &&/FAMILIAR CONTROLS ON EVERY SCREEN/.test(text)
+        &&/Phones keep five icon-only scene buttons above four compact utility icons/.test(text)
+        &&/UTILITIES STAY TOGETHER/.test(text)
+        &&/Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge/.test(text)
+        &&/PRIME KEEPS YOUR PROGRESS/.test(text)
+        &&/Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill/.test(text)
+        &&/Spacing inside the side navigation belongs to its controls and leaves the active panel open/.test(text)
         &&/a genuine empty-sky press still dismisses it/.test(text)
         &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
         &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
@@ -8424,11 +8594,11 @@ try {
       + JSON.stringify(releaseLiveProgressionCtl));
   }
   const releaseMealCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
-    .find((item)=>/TWO EXACT MEAL PATHS, NO INVENTED CARE/.test(item.textContent||''));
+    .find((item)=>/TWO EXACT MEAL PATHS, TASTE-LED CARE/.test(item.textContent||''));
     if(!row)return {missing:{complete:true,mealContract:true},contradictions:[],restored:false,error:'missing Feed release row'};
-    const prior=row.textContent;row.textContent=prior.replace('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora','meal authority removed');
+    const prior=row.textContent;row.textContent=prior.replace('One receipt-bearing compare-and-swap raises Meals by 0 to 3 and removes exactly 1 flora','meal authority removed');
     const missing=${releaseDraftCheck};const contradictions=[];
-    for(const copy of ['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.']){
+    for(const copy of ['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Feed can heal without consuming flora.']){
       row.textContent=prior+' '+copy;contradictions.push({copy,result:${releaseDraftCheck}});}
     row.textContent=prior;const restored=${releaseDraftCheck};return {missing,contradictions,
       restored:restored.mealContract===true&&restored.honest===true};})()`);
@@ -8711,7 +8881,7 @@ try {
         'Creature combat is now playable.','Feeding is now playable.',
         'Duels are now playable.',
         'Passive evolution is now available.',
-        'Missions are now playable.'],truthful=[],unavailable=[];
+        'Kindred preferred-mission choice is now playable.'],truthful=[],unavailable=[];
     for(const copy of truthfulClaims){row.textContent=prior+' '+copy;truthful.push({copy,result:${releaseDraftCheck}});}
     for(const copy of unavailableClaims){row.textContent=prior+' '+copy;unavailable.push({copy,result:${releaseDraftCheck}});}
     row.textContent=prior;const restored=${releaseDraftCheck};return {truthful,unavailable,restored}; })()`);
@@ -8939,14 +9109,34 @@ try {
      sheet must stay hidden, and nothing on the page may still carry the old
      paste/pick/import controls. The evidence-only importBlob seam remains
      the replacement driver below. */
-  const importDoor = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
-    document.getElementById('docksets').click();
-    const sheet=document.getElementById('importsheet');
-    return { button:!!document.getElementById('setimport'), sheetHidden:!!sheet&&sheet.style.display==='none',
-      panel:S.api.state().panelOpen, stale:['importtext','importgo','importpick','importfile','importclose','importmsg']
-        .filter((id)=>!!document.getElementById(id)), oldDock:!!document.getElementById('docksave') }; })()`);
-  if (importDoor.button || !importDoor.sheetHidden || importDoor.panel !== 'set' || importDoor.stale.length !== 0 || importDoor.oldDock) {
+  const importDoorCheck = `(()=>{ const S=window.__CF_SLICE__,sheet=document.getElementById('importsheet');
+    const button=!!document.getElementById('setimport'),sheetHidden=!!sheet&&sheet.style.display==='none',
+      panel=S.api.state().panelOpen,stale=['importtext','importgo','importpick','importfile','importclose','importmsg']
+        .filter((id)=>!!document.getElementById(id)),oldDock=!!document.getElementById('docksave');
+    return {ok:!button&&sheetHidden&&panel==='set'&&stale.length===0&&!oldDock,button,sheetHidden,panel,stale,oldDock}; })()`;
+  await evalIn(`(()=>{ document.getElementById('docksets').click(); return true; })()`);
+  const importDoor = await evalIn(importDoorCheck);
+  if (!importDoor.ok) {
     fails.push('SETTINGS IMPORT DOOR still exists or the recovery sheet opened without a lock: ' + JSON.stringify(importDoor));
+  }
+  /* Negative control, both directions: inject the removed door (a Settings
+     row control plus one stale paste field inside the recovery sheet), prove
+     the absence check turns red, remove the injection, prove it is green
+     again. A check that cannot see a re-added door would bless the exact
+     regression this step exists to catch. */
+  const importDoorCtl = await evalIn(`(()=>{ const panel=document.getElementById('setpanel'),sheet=document.getElementById('importsheet');
+    if(!panel||!sheet) return {injected:false};
+    const row=document.createElement('div');row.className='row';row.innerHTML='<label>Save data</label><button id="setimport">Bring expedition</button>';
+    const field=document.createElement('textarea');field.id='importtext';
+    panel.append(row);sheet.firstElementChild?.append(field);
+    const injected=${importDoorCheck};
+    row.remove();field.remove();
+    const restored=${importDoorCheck};
+    return {injected:true,red:injected,green:restored}; })()`);
+  if (!importDoorCtl.injected || importDoorCtl.red.ok || !importDoorCtl.red.button || !importDoorCtl.red.stale.includes('importtext')
+    || !importDoorCtl.green.ok) {
+    fails.push('SETTINGS IMPORT DOOR CONTROL FAILED — an injected door stayed green or its removal did not restore green: '
+      + JSON.stringify(importDoorCtl));
   }
   await evalIn(`(()=>{ document.querySelector('#setpanel [data-pnx]')?.click(); return true; })()`);
   /* FOCUS RESTORATION: closing returns focus to the opener button */
@@ -8962,21 +9152,40 @@ try {
   await sleep(250);
   const shotSet = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(screenshotPath('settings'), Buffer.from(shotSet.data, 'base64'));
-  const emptySky = await evalIn(`(()=>{ const hit=document.elementFromPoint(900,300),state=window.__CF_SLICE__.api.state(),
-    scene=JSON.stringify({mode:state.mode,gal:state.gal,star:state.star,planet:state.planet,
-      galX:state.galX,galY:state.galY,starX:state.starX,starY:state.starY});
-    return {ok:hit instanceof HTMLCanvasElement&&!hit.closest('[data-panel-boundary],.panel,#importsheet'),
-      x:900,y:300,tag:hit?.tagName||null,id:hit?.id||null,panelOpen:state.panelOpen,cardOpen:state.cardOpen,
-      scene,prior:hit?.getAttribute?.('data-panel-boundary')??null};})()`);
+  const emptySkyPointExpression = `(()=>{const S=window.__CF_SLICE__,canvas=S?.app?.canvas,state=S?.api?.state?.(),
+    rect=canvas?.getBoundingClientRect(),scene=JSON.stringify({mode:state?.mode,gal:state?.gal,star:state?.star,planet:state?.planet,
+      galX:state?.galX,galY:state?.galY,starX:state?.starX,starY:state?.starY}),attempts=[];
+    if(!(canvas instanceof HTMLCanvasElement)||!rect||rect.width<=0||rect.height<=0)
+      return {ok:false,why:'current root canvas missing or empty',attempts};
+    const left=Math.max(0,rect.left),right=Math.min(innerWidth,rect.right),top=Math.max(0,rect.top),bottom=Math.min(innerHeight,rect.bottom),
+      width=right-left,height=bottom-top;
+    if(width<=16||height<=16)return {ok:false,why:'root canvas has no useful exposed viewport',attempts};
+    /* Prefer the sky edge, away from the centred system bodies. Each candidate
+       is measured and hit-tested; no historic rail/panel coordinate is trusted. */
+    const points=[{x:left+width/2,y:top+8},{x:left+8,y:top+8},{x:right-8,y:top+8},
+      {x:left+8,y:top+height/2},{x:right-8,y:top+height/2},{x:left+width/2,y:bottom-8}];
+    for(const point of points){const hit=document.elementFromPoint(point.x,point.y),
+      owned=!!hit?.closest('[data-panel-boundary],.panel,#importsheet');
+      attempts.push({...point,tag:hit?.tagName||null,id:hit?.id||null,rootCanvas:hit===canvas,owned});
+      if(hit===canvas&&!owned)return {ok:true,...point,tag:hit.tagName,id:hit.id||null,rootCanvas:true,
+        panelOpen:state.panelOpen,cardOpen:state.cardOpen,scene,prior:hit.getAttribute('data-panel-boundary'),attempts};}
+    return {ok:false,why:'root canvas has no unowned edge candidate',panelOpen:state.panelOpen,cardOpen:state.cardOpen,scene,attempts};})()`;
+  const emptySkyPointerMatches = (receipt, point) => point?.ok === true && receipt?.tag === 'CANVAS'
+    && receipt.rootCanvas === true && receipt.trusted === true && receipt.pointerType === 'mouse'
+    && Number.isFinite(receipt.x) && Number.isFinite(receipt.y) && Number.isFinite(point.x) && Number.isFinite(point.y)
+    && Math.abs(receipt.x-point.x)<=0.75 && Math.abs(receipt.y-point.y)<=0.75;
+  const emptySky = await evalIn(emptySkyPointExpression);
   if (!emptySky.ok || emptySky.panelOpen !== 'set' || emptySky.cardOpen) {
-    fails.push('TAP EMPTY SKY: fixed browser coordinate did not resolve to real unowned canvas with Settings open: '
+    fails.push('TAP EMPTY SKY: no measured unowned root-canvas point was available with Settings open: '
       + JSON.stringify(emptySky));
   } else {
     let shieldReceipt = null, canvasOwned = false, canvasRestore = null;
     try {
-      canvasOwned = await evalIn(`(()=>{ const hit=document.elementFromPoint(900,300);
-        if(!(hit instanceof HTMLCanvasElement))return false;window.__cfPanelBoundaryCanvas=hit;
+      canvasOwned = await evalIn(`(()=>{ const hit=document.elementFromPoint(${emptySky.x},${emptySky.y});
+        if(!(hit instanceof HTMLCanvasElement)||hit!==window.__CF_SLICE__?.app?.canvas
+          ||hit.closest('[data-panel-boundary],.panel,#importsheet'))return false;window.__cfPanelBoundaryCanvas=hit;
         hit.setAttribute('data-panel-boundary','');return true;})()`);
+      if (!canvasOwned) failSliceWithoutCascade('TAP EMPTY SKY: measured point lost its exact unowned root-canvas identity before the owned-control press');
       await armDesktopPointerReceipt();
       await clickDesktopPoint(emptySky);
       shieldReceipt = await takeDesktopPointerReceipt();
@@ -8990,19 +9199,23 @@ try {
     const shielded = await evalIn(`(()=>{ const state=window.__CF_SLICE__.api.state();return {panelOpen:state.panelOpen,
       cardOpen:state.cardOpen,scene:JSON.stringify({mode:state.mode,gal:state.gal,star:state.star,planet:state.planet,
         galX:state.galX,galY:state.galY,starX:state.starX,starY:state.starY})};})()`);
-    if (!canvasOwned || !canvasRestore || shieldReceipt?.tag !== 'CANVAS' || shieldReceipt?.pointerType !== 'mouse'
+    if (!canvasOwned || !canvasRestore || !emptySkyPointerMatches(shieldReceipt, emptySky)
       || shielded.panelOpen !== 'set' || shielded.cardOpen || shielded.scene !== emptySky.scene) {
       fails.push('TAP EMPTY SKY CONTROL FAILED — temporarily owned canvas still dismissed Settings: '
         + JSON.stringify({ emptySky, canvasOwned, canvasRestore, shieldReceipt, shielded }));
       if (shielded.panelOpen === null) await evalIn(`document.getElementById('docksets').click()`);
     }
+    const unownedAgain = await evalIn(`(()=>{const hit=document.elementFromPoint(${emptySky.x},${emptySky.y});
+      return hit===window.__CF_SLICE__?.app?.canvas&&hit instanceof HTMLCanvasElement
+        &&!hit.closest('[data-panel-boundary],.panel,#importsheet');})()`);
+    if (!unownedAgain) failSliceWithoutCascade('TAP EMPTY SKY: the same measured point no longer exposes the unowned root canvas after exact boundary restoration');
     await armDesktopPointerReceipt();
     await clickDesktopPoint(emptySky);
     const receipt = await takeDesktopPointerReceipt();
     const tapClose = await evalIn(`(()=>{ const state=window.__CF_SLICE__.api.state();return {panelOpen:state.panelOpen,
       cardOpen:state.cardOpen,scene:JSON.stringify({mode:state.mode,gal:state.gal,star:state.star,planet:state.planet,
         galX:state.galX,galY:state.galY,starX:state.starX,starY:state.starY})};})()`);
-    if (receipt?.tag !== 'CANVAS' || receipt?.pointerType !== 'mouse' || tapClose.panelOpen !== null
+    if (!emptySkyPointerMatches(receipt, emptySky) || tapClose.panelOpen !== null
       || tapClose.cardOpen || tapClose.scene !== emptySky.scene) {
       fails.push('tap-empty-to-close did not close the panel from a real canvas pointer: '
         + JSON.stringify({ emptySky, receipt, tapClose }));
@@ -11013,7 +11226,7 @@ try {
     return defs.map((def)=>{const beforeState=api.state(),before=beforeState[def.field],countBefore=beforeState.persistence.mutationBlockCount,
       targetFound=def.act(before),afterState=api.state();return {id:def.id,before,after:afterState[def.field],targetFound,
         countBefore,countAfter:afterState.persistence.mutationBlockCount,witness:afterState.persistence.mutationBlockWitness};});})()`);
-  await evalIn(`document.getElementById('dockcodex').click()`);
+  await evalIn(`document.getElementById('railcodex').click()`);
   const readOnlyAfter = await evalIn(`window.__CF_SLICE__.api.state()`);
   const readOnlyRawAfter = await evalIn(READ_PRIMARY_EXPRESSION);
   await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(false)`);
@@ -11428,11 +11641,11 @@ try {
       return { pressCount: presses.length, presses };
     };
 
-    const inventoryOpenerPoint = await evalIn(railButtonPoint('railinventory'));
+    const inventoryOpenerPoint = await evalIn(railButtonPoint('dockinventory'));
     await armDesktopPointerReceipt();
-    const inventoryOpened = await openDesktopRailPanel('railinventory', 'inventory', 'ARC 2 INVENTORY');
+    const inventoryOpened = await openDesktopRailPanel('dockinventory', 'inventory', 'ARC 2 INVENTORY');
     const inventoryOpenPointer = await takeDesktopPointerReceipt();
-    const inventorySurfaceBase = await evalIn(`(()=>{const S=window.__CF_SLICE__,opener=document.getElementById('railinventory'),
+    const inventorySurfaceBase = await evalIn(`(()=>{const S=window.__CF_SLICE__,opener=document.getElementById('dockinventory'),
       panel=document.getElementById('inventorypanel'),style=opener?getComputedStyle(opener):null,r=opener?.getBoundingClientRect(),
       x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,hit=r?document.elementFromPoint(x,y):null,rows=${captureInventoryRows};
       return {opener:{id:opener?.id||null,tag:opener?.tagName||null,visible:!!r&&r.width>0&&r.height>=44
@@ -11478,7 +11691,7 @@ try {
         const closePointer = await takeDesktopPointerReceipt();
         inventoryClosed = await evalIn(`(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
           body=sheet?.querySelector('[data-inventory-sheet-body]'),panel=document.getElementById('inventorypanel'),
-          opener=document.getElementById('railinventory');return {
+          opener=document.getElementById('dockinventory');return {
             sheetPresent:!!sheet,open:!!sheet&&!sheet.hidden,hidden:sheet?.hidden,ariaHidden:sheet?.getAttribute('aria-hidden')??null,
             bodyChildren:body?.childElementCount??-1,focusInstanceId:document.activeElement?.getAttribute?.('data-instance-id')||null,
             panelPresent:!!panel,panelDisplay:panel?.style.display??null,
@@ -11549,7 +11762,7 @@ try {
         openerTarget: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
           ...inventorySurface, opener: {
             ...inventorySurface.opener,
-            preClick: { ...inventorySurface.opener.preClick, targetId: 'railatlas' },
+            preClick: { ...inventorySurface.opener.preClick, buttonId: 'railatlas' },
           },
         } }),
         openerReceiptPoint: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
@@ -11837,7 +12050,7 @@ try {
       if (actionClosePoint.ok) await clickDesktopPoint(actionClosePoint);
       const actionClosePointer = await takeDesktopPointerReceipt();
       const actionClosed = await evalIn(`(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
-        panel=document.getElementById('inventorypanel'),opener=document.getElementById('railinventory'),
+        panel=document.getElementById('inventorypanel'),opener=document.getElementById('dockinventory'),
         diagnostics=S?.api?.inventoryDiagnostics?.();return {
           sheetPresent:!!sheet,open:!!sheet&&!sheet.hidden,hidden:sheet?.hidden,ariaHidden:sheet?.getAttribute('aria-hidden')??null,
           bodyChildren:sheet?.querySelector('[data-inventory-sheet-body]')?.childElementCount??-1,
@@ -11910,7 +12123,7 @@ try {
       if (point.ok) await clickDesktopPoint(point);
       const pointer = await takeDesktopPointerReceipt();
       const closedExpression = `(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
-        panel=document.getElementById('inventorypanel'),opener=document.getElementById('railinventory'),
+        panel=document.getElementById('inventorypanel'),opener=document.getElementById('dockinventory'),
         diagnostics=S?.api?.inventoryDiagnostics?.();return {
           sheetPresent:!!sheet,open:!!sheet&&!sheet.hidden,hidden:sheet?.hidden,ariaHidden:sheet?.getAttribute('aria-hidden')??null,
           bodyChildren:sheet?.querySelector('[data-inventory-sheet-body]')?.childElementCount??-1,
@@ -12139,7 +12352,7 @@ try {
       const inventoryReloadState = await evalIn(`window.__CF_SLICE__.api.state()`);
       const inventoryReloadRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
       await armDesktopPointerReceipt();
-      const inventoryReloadOpened = await openDesktopRailPanel('railinventory', 'inventory', 'ARC 2 INVENTORY RELOAD');
+      const inventoryReloadOpened = await openDesktopRailPanel('dockinventory', 'inventory', 'ARC 2 INVENTORY RELOAD');
       const inventoryReloadPointer = await takeDesktopPointerReceipt();
       const inventoryReloadRows = await evalIn(captureInventoryRows);
       if (!inventoryReloadOpened) {
@@ -12147,9 +12360,9 @@ try {
           { alreadyReported: true });
       }
 
-      /* Inventory is intentionally a tall right-aligned panel. Once open it
-         overlaps the rail beneath it, so switching to Atlas must first use
-         the player's real 44px Close—not a synthetic panel-manager call. */
+      /* Preserve the planned real Inventory Close before the Atlas switch,
+         including exact focus restoration to the shelf opener. The following
+         Atlas press uses its actual launcher control. */
       const inventoryClosePoint = await evalIn(`(()=>{const button=document.querySelector('#inventorypanel > [data-pnx="inventory"]'),
         r=button?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
         hit=r?document.elementFromPoint(x,y):null;return {ok:!!button&&!!r&&r.width>=44&&r.height>=44
@@ -12159,7 +12372,7 @@ try {
       if (inventoryClosePoint.ok) await clickDesktopPoint(inventoryClosePoint);
       const inventoryClosePointer = await takeDesktopPointerReceipt();
       const inventoryPanelCloseStateExpression = `(()=>{const S=window.__CF_SLICE__,
-        panel=document.getElementById('inventorypanel'),opener=document.getElementById('railinventory'),
+        panel=document.getElementById('inventorypanel'),opener=document.getElementById('dockinventory'),
         diagnostics=S?.api?.inventoryDiagnostics?.();return {panelPresent:!!panel,display:panel?.style.display??null,
           ariaHidden:panel?.getAttribute('aria-hidden')??null,openerPresent:!!opener,
           panelOpen:S?.api?.state?.().panelOpen??null,inventoryExpanded:opener?.getAttribute('aria-expanded')??null,
@@ -12189,9 +12402,9 @@ try {
           .catch(() => false)
         : false;
       if (!atlasPreClick.ok) {
-        fails.push(`ARC 2 INVENTORY ATLAS CONTINUITY: visible rail opener was not browser-mouse hittable: ${JSON.stringify(atlasPreClick)}`);
+        fails.push(`ARC 2 INVENTORY ATLAS CONTINUITY: visible launcher opener was not browser-mouse hittable: ${JSON.stringify(atlasPreClick)}`);
       } else if (!atlasOpened) {
-        fails.push('ARC 2 INVENTORY ATLAS CONTINUITY: browser-mouse rail opener did not open atlas');
+        fails.push('ARC 2 INVENTORY ATLAS CONTINUITY: browser-mouse launcher opener did not open atlas');
       }
       const atlasPointer = await takeDesktopPointerReceipt();
       if (!atlasPreClick.ok || !atlasOpened) {
@@ -12199,7 +12412,7 @@ try {
           { alreadyReported: true });
       }
       const reloadSurface = await evalIn(`(()=>{const S=window.__CF_SLICE__,inventory=document.getElementById('inventorypanel'),
-        inventoryOpener=document.getElementById('railinventory');return {panelOpen:S?.api?.state?.().panelOpen??null,
+        inventoryOpener=document.getElementById('dockinventory');return {panelOpen:S?.api?.state?.().panelOpen??null,
           inventoryHidden:inventory?.style.display==='none'&&inventory?.getAttribute('aria-hidden')==='true',
           inventoryExpanded:inventoryOpener?.getAttribute('aria-expanded')||null,
           inventoryDiagnostics:S?.api?.inventoryDiagnostics?.()||null};})()`);
@@ -12318,9 +12531,9 @@ try {
             surface.inventoryClose.settled.diagnostics.selectedInstanceId = inventoryPendingInstanceId;
           }),
           atlasPreClickOk: reloadSurfaceControl((surface) => { surface.atlasPreClick.ok = false; }),
-          atlasPreClickOwner: reloadSurfaceControl((surface) => { surface.atlasPreClick.targetId = 'inventorypanel'; }),
+          atlasPreClickOwner: reloadSurfaceControl((surface) => { surface.atlasPreClick.buttonId = 'inventorypanel'; }),
           atlasPreClickCoordinate: reloadSurfaceControl((surface) => { surface.atlasPreClick.x = null; }),
-          atlasPointerOwner: reloadSurfaceControl((surface) => { surface.atlasPointer.targetId = 'inventorypanel'; }),
+          atlasPointerOwner: reloadSurfaceControl((surface) => { surface.atlasPointer.buttonId = 'inventorypanel'; }),
           atlasPointerTrust: reloadSurfaceControl((surface) => { surface.atlasPointer.trusted = false; }),
           atlasPointerType: reloadSurfaceControl((surface) => { surface.atlasPointer.pointerType = 'touch'; }),
           atlasPointerCoordinate: reloadSurfaceControl((surface) => { surface.atlasPointer.x += 2; }),
@@ -12512,7 +12725,8 @@ try {
         ariaControls:shipyard?.getAttribute('aria-controls')??null,
         ariaExpanded:shipyard?.getAttribute('aria-expanded')??null,display:shipyardStyle?.display??null,
         visibility:shipyardStyle?.visibility??null,rectCount:shipyard?.getClientRects().length??-1,
-        width:shipyardRect?.width??0,height:shipyardRect?.height??0,hit:hit?.id??null,x,y}}})()`);
+        width:shipyardRect?.width??0,height:shipyardRect?.height??0,hit:hit?.id??null,
+        buttonId:hit?.closest('button')?.id??null,buttonTag:hit?.closest('button')?.tagName??null,x,y}}})()`);
   const pressArc3SurveyLifecyclePointer = async (kind) => {
     const selector = kind === 'close' ? '#survey [data-survey-close]' : '#docksurvey';
     const armed = await evalIn(`(()=>{window.__cfArc3SurveyLifecycleAbort?.abort();
@@ -12570,7 +12784,8 @@ try {
       plate:{enabled:!button('fabricate','plate')?.disabled,model:button('fabricate','plate')?.getAttribute('data-model-enabled')},
       focus:document.activeElement===close?'close':document.activeElement?.getAttribute?.('data-focus-key')||null,diag}})()`);
   const engineeringSurfacePasses = (opening, surface) => opening?.opened === true
-    && opening?.pointer?.targetId === 'railshipyard' && opening?.pointer?.trusted === true
+    && opening?.pointer?.buttonId === 'railshipyard' && opening?.pointer?.buttonTag === 'BUTTON'
+    && opening?.pointer?.trusted === true
     && opening?.pointer?.pointerType === 'mouse' && surface?.panelOpen === 'shipyard'
     && canonicalJson(surface?.research) === canonicalJson(ENGINEERING_RESEARCH_IDS)
     && canonicalJson(surface?.groups) === canonicalJson(ENGINEERING_RECIPE_GROUPS)
@@ -13162,9 +13377,9 @@ try {
   }
 
   /* The retained read-only card owns the right-hand glass until its real
-     Close settles. Prove that exact release before asking the existing rail
-     mouse path to reach Engineering; a direct card-open -> rail order is not
-     a reachable player interaction and must never be treated as evidence. */
+     Close settles. Preserve the planned Close -> Engineering lifecycle through
+     the native launcher; historical Rail-named carriers now record #dock.
+     A hidden legacy rail is never accepted as an actionable opener. */
   const biomePreRailBeforeState = biomePreOpenStateAfter;
   const biomePreRailBeforeRaw = biomePreOpenRawAfter;
   const biomePreRailClose = await pressArc3SurveyLifecyclePointer('close');
@@ -13331,7 +13546,7 @@ try {
     omittedDock: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle, dock: null }),
     wrongDock: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
       dock: { ...biomeOwnedDockReopen,
-        target: { ...biomeOwnedDockReopen.target, id: 'dockatlas' } } }),
+        target: { ...biomeOwnedDockReopen.target, id: 'railatlas' } } }),
     staleCard: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
       afterState: { ...biomeOwnedDockAfterState, cardOpen: false },
       surface: { ...biomeOwnedDockSurface,
@@ -14176,7 +14391,7 @@ try {
       isolatesNamedCheck(assessment, biomeReloadStorageCloseExpectedCheck[name])
     ));
   if (!biomeReloadStorageCloseAssessment.ok || !biomeReloadStorageCloseControlsIsolated) {
-    failSliceWithoutCascade('ARC 3 RELOADED SURVEY/STORAGE LIFECYCLE: real trusted 44px Close did not release exact body/ARIA/dock/right-rail chrome with read-only route and durable authority: '
+    failSliceWithoutCascade('ARC 3 RELOADED SURVEY/STORAGE LIFECYCLE: real trusted 44px Close did not release exact body/ARIA/launcher chrome with read-only route and durable authority: '
       + JSON.stringify({ biomeReloadStorageClose, biomeReloadStorageCloseAssessment,
         biomeReloadStorageCloseControls, biomeReloadStorageCloseControlsIsolated,
         biomeReloadStorageCloseSurface }));
@@ -18551,6 +18766,33 @@ try {
       [key, key === 'at' ? '__codec-now__' : entry]
     )));
   };
+  const arc5FeedUnrelatedData = (raw, omitNotifications = false) => {
+    const codecRecord = (value) => {
+      const stable = arc5FeedCodecStableRecord(value);
+      return omitNotifications && stable !== null && typeof stable === 'object'
+        && !Array.isArray(stable)
+        ? Object.fromEntries(Object.entries(stable).filter(([key]) => key !== 'notifs'))
+        : stable;
+    };
+    const extensions = (row) => Object.fromEntries(
+      Object.entries(row?.extensions ?? {}).filter(([namespace]) => (
+        namespace !== 'f4.authority' && !namespace.startsWith('arc5.ownership.')
+      )),
+    );
+    return {
+      legacyData: codecRecord(raw?.legacy),
+      playerData: codecRecord(raw?.playerRow?.data),
+      creaturesData: raw?.creaturesRow?.data,
+      catalogData: raw?.catalogRow?.data,
+      inventoryData: raw?.inventoryRow?.data,
+      settingsData: raw?.settingsRow?.data,
+      playerExtensions: extensions(raw?.playerRow),
+      creaturesExtensions: extensions(raw?.creaturesRow),
+      catalogExtensions: extensions(raw?.catalogRow),
+      inventoryExtensions: extensions(raw?.inventoryRow),
+      settingsExtensions: extensions(raw?.settingsRow),
+    };
+  };
   const arc5FeedFixture = (() => {
     const source = arc4BurnRaw?.captureState;
     const creature = source?.creatures?.find((row) => (
@@ -18626,11 +18868,6 @@ try {
       const carrier = row?.extensions?.[namespace] ?? null;
       return { segment, namespace, version: carrier?.version ?? null, json: carrier?.json ?? null };
     });
-    const unrelatedExtensions = (row) => Object.fromEntries(
-      Object.entries(row?.extensions ?? {}).filter(([namespace]) => (
-        namespace !== 'f4.authority' && !namespace.startsWith('arc5.ownership.')
-      )),
-    );
     const addedReceiptKeys = raw?.receiptKeys ?? [];
     return Object.freeze({
       globalRevision: raw?.revision,
@@ -18660,19 +18897,13 @@ try {
       rawPersistenceFingerprint: arc5FeedRawPersistenceFingerprint(raw),
       durableFingerprint: arc5FeedHash(carriers),
       arc4Fingerprint: arc5FeedHash(raw?.captureState),
-      unrelatedFingerprint: arc5FeedHash({
-        legacyData: arc5FeedCodecStableRecord(raw?.legacy),
-        playerData: arc5FeedCodecStableRecord(raw?.playerRow?.data),
-        creaturesData: raw?.creaturesRow?.data,
-        catalogData: raw?.catalogRow?.data,
-        inventoryData: raw?.inventoryRow?.data,
-        settingsData: raw?.settingsRow?.data,
-        playerExtensions: unrelatedExtensions(raw?.playerRow),
-        creaturesExtensions: unrelatedExtensions(raw?.creaturesRow),
-        catalogExtensions: unrelatedExtensions(raw?.catalogRow),
-        inventoryExtensions: unrelatedExtensions(raw?.inventoryRow),
-        settingsExtensions: unrelatedExtensions(raw?.settingsRow),
-      }),
+      // Full fingerprint still owns the pending/immediate/stale-loser checks.
+      unrelatedFingerprint: arc5FeedHash(arc5FeedUnrelatedData(raw)),
+      unrelatedExceptNotificationsFingerprint: arc5FeedHash(arc5FeedUnrelatedData(raw, true)),
+      notificationHistory: {
+        legacy: raw?.legacy?.notifs ?? null,
+        player: raw?.playerRow?.data?.notifs ?? null,
+      },
       fixedCarrierCount: carriers.filter((carrier) => (
         carrier.version === 2 && typeof carrier.json === 'string'
       )).length,
@@ -19583,6 +19814,18 @@ try {
       );
       afterRaw = await winnerDriver.evaluate(ARC4_DURABLE_READ_EXPRESSION);
       afterProjection = arc5FeedCarrierProjection(afterRaw, arc5FeedFixture);
+      const notificationToast = await winnerDriver.wait(
+        'Arc 5 Feed native notification paint', `(()=>{
+        const toast=document.getElementById('toast'),title=toast?.querySelector('[data-sel="toast-title"]'),
+          style=toast?getComputedStyle(toast):null,rect=toast?.getBoundingClientRect(),
+          observed={title:title?.textContent??null,
+          message:toast?[...toast.childNodes].filter(node=>node.nodeType===Node.TEXT_NODE)
+            .map(node=>node.textContent??'').join(''):null,
+          visible:!!rect&&rect.width>0&&rect.height>0&&style?.display!=='none'
+            &&style?.visibility==='visible'&&Number(style?.opacity)===1,
+          serial:window.__CF_SLICE__.api.state().toastSerial,observedAt:Date.now()};
+        return observed.visible?observed:null;})()`, 1_500,
+      );
       const newReceiptKeys = afterRaw.receiptKeys.filter(
         (key) => !winnerBeforeActionRaw.receiptKeys.includes(key),
       );
@@ -19645,6 +19888,7 @@ try {
         lastOutcome: settledState.ownershipV2.feed.lastOutcome,
         toastSerial: settledState.toastSerial,
         toastText: settledState.toastText,
+        notificationToast,
       };
       await arc5FeedOpenDetail(
         arc5FeedFixture, 'Arc 5 Feed winner same-document reopen', winnerDriver,
@@ -19993,7 +20237,54 @@ try {
       node.contextId = 'cross-context-negative-control';
       crossContextAudioChangeCount += 1;
     }
+    const notificationControl = (mutate) => {
+      const control = structuredClone(committedBundle);
+      mutate(control);
+      return assessCompendiumFeedCommittedOutcome(control);
+    };
+    const mutateReloadNotices = (control, mutate) => {
+      for (const rows of Object.values(control.reloaded.notificationHistory)) mutate(rows);
+    };
     const committedControls = committedAssessment.ok === true ? [
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        control.reloaded.notificationHistory = null;
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        control.reloaded.notificationHistory = structuredClone(control.after.notificationHistory);
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => { rows[0].read = true; });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => { rows[0].ms += ' altered'; });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => { rows[0].id = (rows[0].id + 1) | 0; });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => { rows[0].t = control.after.codecAt - 1; });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => { rows[0].t = control.settled.notificationToast.observedAt + 1; });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => {
+          if (rows.length > 1) rows[1].read = !rows[1].read;
+          else rows.push({ ...rows[0], id: (rows[0].id + 1) | 0 });
+        });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => { rows.splice(1, 0, { ...rows[0] }); });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        control.reloaded.notificationHistory.player[0].tt = 'Wrong codec owner';
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        control.settled.notificationToast.visible = false;
+      })],
+      ['full-reload durable fixed point', notificationControl((control) => {
+        control.reloaded.unrelatedExceptNotificationsFingerprint = 'f'.repeat(64);
+      })],
       ['one global revision, ownership successor, and Feed receipt',
         assessCompendiumFeedCommittedOutcome({
           ...committedBundle,
@@ -22960,7 +23251,7 @@ try {
     fails.push('COMPENDIUM RARITY FIXTURE: transient rows did not install exactly: '
       + JSON.stringify(rarityFixtureInstall));
   }
-  await evalIn(`(()=>{const S=window.__CF_SLICE__;if(S.api.state().panelOpen!=='codex')document.getElementById('dockcodex')?.click();return true;})()`);
+  await evalIn(`(()=>{const S=window.__CF_SLICE__;if(S.api.state().panelOpen!=='codex')document.getElementById('railcodex')?.click();return true;})()`);
   await waitDesktopValue('Compendium rarity fixture list', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
     return d.panel.mode==='list'&&d.panel.sourceCount===${RARITY_COMPENDIUM_FIXTURE.length}
       &&document.querySelectorAll('#codexpanel [data-sel="codex-entry"]').length===${RARITY_COMPENDIUM_FIXTURE.length};})()`);
@@ -23102,7 +23393,7 @@ try {
      actions. Drive a REAL Enter, retain the exact row identity across the
      refill, and make both a pointer-only row and undersized Back fail before
      restoring the production DOM. */
-  const codexRow = await evalIn(`(()=>{ document.getElementById('dockcodex').click();
+  const codexRow = await evalIn(`(()=>{ document.getElementById('railcodex').click();
     const row=document.querySelector('#codexpanel [data-ci]'),r=row?.getBoundingClientRect();
     row?.focus(); return {ok:row?.tagName==='BUTTON'&&row?.type==='button'&&!!r&&r.height>=44,
       index:row?.getAttribute('data-ci')||null,logicalId:row?.getAttribute('data-cid')||null,
@@ -23368,7 +23659,31 @@ try {
       alreadyReported: true,
     });
   }
-  await evalIn(`(()=>{const opener=document.getElementById('railatlas');opener?.focus();opener?.click();return true})()`);
+  // Space travel leaves the real Survey card open, which owns the right rail.
+  // Close it through trusted native input before the next visible Atlas opener.
+  const atlasSpaceSurveyCloseToken = await sliceToken(sess);
+  const atlasSpaceSurveyClose = await pressArc3SurveyLifecyclePointer('close');
+  const atlasSpaceAfterClose = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (atlasSpaceSurveyClose?.target?.ok !== true
+    || atlasSpaceSurveyClose?.interaction?.trusted !== true
+    || atlasSpaceSurveyClose?.interaction?.pressCount !== 1
+    || atlasSpaceAfterClose.cardOpen !== false || atlasSpaceAfterClose.panelOpen !== null
+    || canonicalJson(arc3SurveyRouteProjection(atlasSpaceAfterClose))
+      !== canonicalJson(arc3SurveyRouteProjection(atlasSpace))
+    || await sliceToken(sess) !== atlasSpaceSurveyCloseToken) {
+    failSliceWithoutCascade('ATLAS ENTER REOPEN: trusted Survey Close did not preserve the exact document and selected route: '
+      + JSON.stringify({ close: atlasSpaceSurveyClose,
+        before: arc3SurveyRouteProjection(atlasSpace), after: arc3SurveyRouteProjection(atlasSpaceAfterClose) }));
+  }
+  await armDesktopPointerReceipt();
+  const atlasEnterOpened = await openDesktopRailPanel('railatlas', 'atlas', 'ATLAS ENTER REOPEN');
+  const atlasEnterOpenerReceipt = await takeDesktopPointerReceipt();
+  if (!atlasEnterOpened || atlasEnterOpenerReceipt?.buttonId !== 'railatlas'
+    || atlasEnterOpenerReceipt?.buttonTag !== 'BUTTON' || atlasEnterOpenerReceipt?.trusted !== true
+    || atlasEnterOpenerReceipt?.pointerType !== 'mouse') {
+    failSliceWithoutCascade('ATLAS ENTER REOPEN: the visible rail opener did not receive trusted native input: '
+      + JSON.stringify(atlasEnterOpenerReceipt));
+  }
   const atlasEnterSetup = await evalIn(atlasTravelTargetExpression('p133', { focus: true }));
   const atlasEnterSetupAssessment = assessAtlasTravelTarget(atlasEnterSetup, {
     atlasId: 'p133', focus: true,
@@ -23455,7 +23770,7 @@ try {
      first-world bioscan, or successful-Breed writer. Reject only genuinely
      unavailable conquest and mature accepted/weekly directives; Engineering,
      Chapter-2 life-discovery, and Chapter-3 breeding copy are current truth. */
-  const chp = await evalIn(`(()=>{ document.getElementById('dockcharters').click();
+  const chp = await evalIn(`(()=>{ document.getElementById('objchip').click();
     const chs=[...document.querySelectorAll('#chpanel [data-sel=charter-ch]')];
     const cur=chs.find(c=>c.dataset.chstate==='actionable'||c.dataset.chstate==='boundary'||c.dataset.chstate==='complete');
     const goals=document.querySelectorAll('#chpanel [data-sel=charter-goal]').length;
@@ -24397,27 +24712,34 @@ try {
   }
   /* the phone golden: the FULL geometry contract runs here too — the
      player-chip/search overlap hid in a phone-only branch the first time */
+  const phoneGeometryBoundary = await evalPh(renderedChromeBoundary);
+  console.log('PHONE GOLDEN LAYOUT RENDERED BOUNDARY: '+JSON.stringify(phoneGeometryBoundary));
   const phGeo = await evalPh(geoCheck);
   if (phGeo.length) {
     failSliceWithoutCascade('PHONE GOLDEN LAYOUT drift: ' + phGeo.join(' · '));
   }
   if (phGeo.length === 0) {
+    const phoneSearchBellControl = await evalPh(searchBellGeometryControl);
+    if (!phoneSearchBellControl.ok) failSliceWithoutCascade('PHONE SHELF SEARCH/BELL CONTROL FAILED: ' + JSON.stringify(phoneSearchBellControl));
     const phonePrimeControls = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
       const prime=document.getElementById('primechip'),hp=document.getElementById('hpbar'),
-      prior=captureInlineStyleProperties(prime.style,['display','top','left','transform']);
+      prior=captureInlineStyleProperties(prime.style,['display','top','left','transform','position','bottom']);
       let hidden=null,hiddenRestoration=null,overlap=null,error=null;
       const restore=()=>restoreInlineStyleProperties(prime.style,prior);
       try{prime.style.setProperty('display','none','important');hidden=${geoCheck};restore();
         hiddenRestoration=inspectInlineStyleProperties(prime.style,prior);
         if(!hiddenRestoration.ok)throw new Error('hidden Prime carrier restoration failed');
-        const h=hp.getBoundingClientRect();
-        prime.style.setProperty('top',h.top+'px','important');prime.style.setProperty('left',h.left+'px','important');
-        prime.style.setProperty('transform','none','important');overlap=${geoCheck};}
+        // The translated dock is a containing block for fixed descendants.
+        // Move from the actual painted rectangle, so this control really
+        // recreates the reported HP collision in the new grid owner.
+        const h=hp.getBoundingClientRect(),p=prime.getBoundingClientRect();
+        prime.style.setProperty('transform','translate('+(h.left-p.left)+'px,'+(h.top-p.top)+'px)','important');
+        overlap=${geoCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
       const restoration=inspectInlineStyleProperties(prime.style,prior),styleRestored=restoration.ok,
         restored=styleRestored?${geoCheck}:['primechip owned style properties were not restored'];
       return {hidden,hiddenRestoration,overlap,restored,styleRestored,restoration,error};})()`);
-    if (!phonePrimeControls.hidden?.some((finding) => finding.includes('visible reachable phone button'))
+    if (!phonePrimeControls.hidden?.some((finding) => finding.startsWith('Prime pill is not a visible reachable native button'))
       || !phonePrimeControls.overlap?.includes('primechip overlaps hpbar')
       || !phonePrimeControls.hiddenRestoration?.ok
       || !phonePrimeControls.styleRestored || phonePrimeControls.error !== null
@@ -24443,24 +24765,8 @@ try {
     for(const [a,b] of [['planetside','ctxbar'],['planetside','hintpill'],['planetside','dock'],['ctxbar','hintpill'],['ctxbar','dock'],['hintpill','dock']]) {
       if(overlaps(boxes[a],boxes[b])) bad.push(a+' overlaps '+b);
     }
-    const dock=document.getElementById('dock');
-    const buttons=[...dock.querySelectorAll('button')].filter((button)=>box(button.id));
-    const expectedButtonIds=['docksurvey','dockcodex','dockrecords','dockcharters','dockatlas',
-      'dockcharts','dockshipyard','dockinventory','docksets','dockguide'];
-    if(buttons.length!==10) bad.push('dock does not expose ten buttons: '+buttons.length);
-    if(JSON.stringify(buttons.map((button)=>button.id))!==JSON.stringify(expectedButtonIds))
-      bad.push('dock button identity/order drifted: '+JSON.stringify(buttons.map((button)=>button.id)));
-    const rows=[];
-    for(const button of buttons){ const b=button.getBoundingClientRect();
-      let row=rows.find((candidate)=>Math.abs(candidate.top-b.top)<2);
-      if(!row){ row={top:b.top,n:0}; rows.push(row); } row.n++;
-      if(Math.abs(b.width-44)>1||Math.abs(b.height-44)>1) bad.push(button.id+' is not a 44px target');
-      const hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
-      if(!hit||!button.contains(hit)) bad.push(button.id+' is not hit-testable at its centre');
-    }
-    rows.sort((a,b)=>a.top-b.top);
-    if(rows.length!==2||rows[0]?.n!==5||rows[1]?.n!==5) bad.push('dock is not 5x2 (5+5): '+JSON.stringify(rows.map((row)=>row.n)));
-    if(boxes.dock&&(Math.abs(boxes.dock.w-260)>1||Math.abs(boxes.dock.h-98)>1)) bad.push('dock box is not 260x98: '+JSON.stringify([boxes.dock.w,boxes.dock.h]));
+    const shell=(${readU1PhoneShell.toString()})(false);
+    bad.push(...shell.errors);
     const published=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dock-h'));
     if(!boxes.dock||!Number.isFinite(published)||Math.abs(published-boxes.dock.h)>1) bad.push('--dock-h does not match the rendered dock: '+JSON.stringify([published,boxes.dock&&boxes.dock.h]));
     const ctxPublished=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ctx-h'));
@@ -24479,10 +24785,8 @@ try {
   const phDockInventoryCtl = await evalPh(`(()=>{const button=document.getElementById('dockinventory');
     if(!button)return ['dockinventory control target is missing'];const prior=button.style.display;
     button.style.display='none';const bad=${phoneChromeCheck};button.style.display=prior;return bad;})()`);
-  if (!phDockInventoryCtl.some((finding) => finding === 'dock does not expose ten buttons: 9')
-    || !phDockInventoryCtl.some((finding) => finding.startsWith('dock button identity/order drifted:'))
-    || !phDockInventoryCtl.includes('dock is not 5x2 (5+5): [5,4]')) {
-    fails.push('PHONE LOWER CHROME INVENTORY CONTROL FAILED — removed Inventory membership/grid stayed green: '
+  if (!phDockInventoryCtl.includes('relocated Inventory is missing or not actionable in topbar')) {
+    fails.push('PHONE LOWER CHROME INVENTORY CONTROL FAILED — removed relocated Inventory stayed green: '
       + JSON.stringify(phDockInventoryCtl));
   }
   /* The Settings save-import modal was removed (v2 starts fresh, 2026-09-05).
@@ -24504,8 +24808,10 @@ try {
     pcs=getComputedStyle(prime),gcs=getComputedStyle(panel),panelOpen=body.classList.contains(${JSON.stringify(openClass)}),
     panelVisible=gcs.display!=='none'&&gcs.visibility!=='hidden'&&g.width>0&&g.height>0,
     primeHidden=pcs.display==='none'&&p.width===0&&p.height===0,
+    hit=document.elementFromPoint(p.left+p.width/2,p.top+p.height/2),primeRetained=!primeHidden&&p.width>=44&&p.height>=44
+      &&prime.parentElement?.id==='dock'&&!!hit&&(hit===prime||prime.contains(hit)),
     overlap=p.width>0&&p.height>0&&panelVisible&&p.left<g.right-.5&&p.right>g.left+.5&&p.top<g.bottom-.5&&p.bottom>g.top+.5;
-    return {ok:panelOpen&&panelVisible&&primeHidden&&!overlap,panelOpen,panelVisible,primeHidden,overlap,
+    return {ok:panelOpen&&panelVisible&&primeRetained&&!overlap,panelOpen,panelVisible,primeHidden,primeRetained,overlap,
       prime:{display:pcs.display,left:p.left,top:p.top,right:p.right,bottom:p.bottom},
       panel:{display:gcs.display,left:g.left,top:g.top,right:g.right,bottom:g.bottom}};})()`;
   await evalPh(`(()=>{ document.getElementById('dockguide').click(); return true; })()`);
@@ -24517,13 +24823,16 @@ try {
   const phoneGuidePrimeOverlayCheck = phonePrimeOverlayCheck('guidepanel', 'panel-open');
   const phonePrimeOverlay = await evalPh(phoneGuidePrimeOverlayCheck);
   if (!phonePrimeOverlay.ok) {
-    failSliceWithoutCascade('PHONE PRIME OVERLAY YIELD: open Guide did not hide Prime above its overlapping panel: '
+    failSliceWithoutCascade('PHONE PRIME OVERLAY YIELD: open Guide did not preserve a separate reachable Prime dock target: '
       + JSON.stringify(phonePrimeOverlay));
   } else {
     const phonePrimeOverlayCtl = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
-      const prime=document.getElementById('primechip'),prior=captureInlineStyleProperties(prime.style,['display']);
+      const prime=document.getElementById('primechip'),prior=captureInlineStyleProperties(prime.style,['display','position','left','top','bottom','transform','z-index']);
       let result=null,error=null;const restore=()=>restoreInlineStyleProperties(prime.style,prior);
-      try{prime.style.setProperty('display','block','important');result=${phoneGuidePrimeOverlayCheck};}
+      try{prime.style.setProperty('display','block','important');prime.style.setProperty('transform','none','important');
+        const p=document.getElementById('guidepanel').getBoundingClientRect(),q=prime.getBoundingClientRect();
+        prime.style.setProperty('transform','translate('+(p.left+8-q.left)+'px,'+(p.top+8-q.top)+'px)','important');
+        prime.style.setProperty('z-index','9999','important');result=${phoneGuidePrimeOverlayCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
       const restoration=inspectInlineStyleProperties(prime.style,prior),styleRestored=restoration.ok,
         restored=styleRestored?${phoneGuidePrimeOverlayCheck}:{ok:false,why:'owned-style-properties-not-restored'};
@@ -24566,16 +24875,76 @@ try {
     const px=await S.app.renderer.extract.pixels({ target: S.app.stage, frame: S.app.renderer.screen });
     const d=px.pixels||px; let lit=0; for(let i=0;i<d.length;i+=4){ if(d[i]+d[i+1]+d[i+2]>60) lit++; } return lit; })()`);
   if (!(phPainted > 300)) fails.push('PHONE: stage nearly blank — ' + phPainted);
-  /* pinch: two fingers spread → camT.z must grow (the touch input path, live) */
-  const z0 = await evalPh(`window.__CF_SLICE__.camT.z`);
-  await send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: 150, y: 400, id: 1 }, { x: 240, y: 400, id: 2 }] }, ph);
-  for (let s = 1; s <= 4; s++) {
-    await send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: 150 - s * 15, y: 400, id: 1 }, { x: 240 + s * 15, y: 400, id: 2 }] }, ph);
-    await sleep(40);
+  /* Keep the original pinch path. U1 once moved the passive objective into
+     an auto-hit nav, so its first contact silently missed the canvas. The
+     objective now owns a native Charters action: prove its hit target while
+     both old contacts, every movement point and blank header space expose
+     the canvas. The wrapper fault still has to intercept that blank space. */
+  const phonePinchPlanExpression = `(()=>{const canvas=window.__CF_SLICE__?.app?.canvas,objective=document.getElementById('objchip'),
+    nav=document.getElementById('topbar'),c=canvas?.getBoundingClientRect(),o=objective?.getBoundingClientRect(),n=nav?.getBoundingClientRect(),
+    os=objective?getComputedStyle(objective):null,point=(x,y)=>{const hit=document.elementFromPoint(x,y);
+      return {x,y,tag:hit?.tagName||null,id:hit?.id||null,rootCanvas:hit===canvas,objectiveOwned:!!hit&&(hit===objective||objective.contains(hit)),
+        owned:!!hit?.closest('[data-panel-boundary],.panel,#importsheet'),
+        inside:!!c&&x>=Math.max(0,c.left)&&x<Math.min(innerWidth,c.right)&&y>=Math.max(0,c.top)&&y<Math.min(innerHeight,c.bottom)};},
+    frames=Array.from({length:5},(_,step)=>[point(150-step*15,400),point(240+step*15,400)]),
+    objectiveVisible=!!o&&os.display!=='none'&&os.visibility!=='hidden'&&o.width>0&&o.height>0,
+    objectivePoint=objectiveVisible?point(o.left+o.width/2,o.top+o.height/2):null,
+    headerBlankPoint=n?.width>2&&n.height>2?point(n.left+1,n.top+n.height/2):null,
+    exposed=(p)=>!!p&&p.inside&&p.rootCanvas&&!p.owned,
+    firstStartInsideObjective=objectiveVisible&&150>=o.left&&150<o.right&&400>=o.top&&400<o.bottom;
+    return {ok:canvas instanceof HTMLCanvasElement&&objective?.parentElement===nav&&objectiveVisible
+        &&objective instanceof HTMLButtonElement&&objective.type==='button'&&!objective.disabled
+        &&objective.getAttribute('aria-controls')==='chpanel'&&o.width>=44&&o.height>=44
+        &&!!(objective.getAttribute('aria-label')||objective.textContent||'').trim()
+        &&objectivePoint?.inside&&objectivePoint.objectiveOwned&&!objectivePoint.rootCanvas
+        &&exposed(headerBlankPoint)&&frames.every(frame=>frame.every(exposed)),frames,objectivePoint,headerBlankPoint,firstStartInsideObjective,
+      objectiveRect:o?[o.left,o.top,o.right,o.bottom]:null,navPointerEvents:nav?getComputedStyle(nav).pointerEvents:null};})()`;
+  const phonePinchPointerMatches = (receipts, plan) => plan?.ok === true && Array.isArray(receipts) && receipts.length === 2
+    && new Set(receipts.map(row=>row?.pointerId)).size === 2
+    && receipts.every(row=>Number.isFinite(row?.pointerId)&&row?.rootCanvas===true&&row?.tag==='CANVAS'
+      &&row?.trusted===true&&row?.pointerType==='touch'&&Number.isFinite(row?.x)&&Number.isFinite(row?.y))
+    && plan.frames[0].every(point=>receipts.filter(row=>Math.abs(row.x-point.x)<=.75&&Math.abs(row.y-point.y)<=.75).length===1);
+  const phonePinchPlan = await evalPh(phonePinchPlanExpression);
+  if (!phonePinchPlan.ok) failSliceWithoutCascade('PHONE PINCH INPUT: original contacts/header space do not expose canvas or the objective is not reachable: '+JSON.stringify(phonePinchPlan));
+  const phonePinchControl = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
+    const nav=document.getElementById('topbar'),prior=captureInlineStyleProperties(nav.style,['pointer-events']);let broken=null,error=null;
+    try{nav.style.setProperty('pointer-events','auto','important');broken=${phonePinchPlanExpression};}
+    catch(cause){error=String(cause?.message||cause);}finally{restoreInlineStyleProperties(nav.style,prior);}
+    const restoration=inspectInlineStyleProperties(nav.style,prior),restored=${phonePinchPlanExpression};
+    return {broken,error,restoration,restored};})()`);
+  if (phonePinchControl.error !== null || phonePinchControl.broken?.ok !== false
+    || phonePinchControl.broken?.headerBlankPoint?.rootCanvas !== false
+    || phonePinchControl.broken?.headerBlankPoint?.id !== 'topbar'
+    || (phonePinchPlan.firstStartInsideObjective && phonePinchControl.broken?.frames?.[0]?.[0]?.rootCanvas !== false)
+    || !phonePinchControl.restoration?.ok || !phonePinchControl.restored?.ok) {
+    failSliceWithoutCascade('PHONE PINCH INPUT CONTROL FAILED — auto-hit blank header was not reproduced, rejected and restored: '+JSON.stringify(phonePinchControl));
   }
-  await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }, ph);
+  await evalPh(`(()=>{window.__cfPhonePinchAbort?.abort();const controller=new AbortController();window.__cfPhonePinchAbort=controller;
+    window.__cfPhonePinchReceipts=[];document.addEventListener('pointerdown',event=>{const target=event.target instanceof Element?event.target:null;
+      window.__cfPhonePinchReceipts.push({pointerId:event.pointerId,x:event.clientX,y:event.clientY,pointerType:event.pointerType,
+        trusted:event.isTrusted===true,rootCanvas:target===window.__CF_SLICE__?.app?.canvas,tag:target?.tagName||null,id:target?.id||null});},
+      {capture:true,signal:controller.signal});return true;})()`);
+  const z0 = await evalPh(`window.__CF_SLICE__.camT.z`);
+  let phonePinchReceipts = null;
+  try {
+    await send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: 150, y: 400, id: 1 }, { x: 240, y: 400, id: 2 }] }, ph);
+    for (let s = 1; s <= 4; s++) {
+      await send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: 150 - s * 15, y: 400, id: 1 }, { x: 240 + s * 15, y: 400, id: 2 }] }, ph);
+      await sleep(40);
+    }
+    await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }, ph);
+  } finally {
+    phonePinchReceipts = await evalPh(`(()=>{const receipts=window.__cfPhonePinchReceipts||null;window.__cfPhonePinchAbort?.abort();
+      delete window.__cfPhonePinchAbort;delete window.__cfPhonePinchReceipts;return receipts;})()`);
+  }
+  if (!phonePinchPointerMatches(phonePinchReceipts, phonePinchControl.restored)) {
+    failSliceWithoutCascade('PHONE PINCH INPUT: two original contacts were not delivered as trusted root-canvas touch pointers: '+JSON.stringify({phonePinchReceipts,phonePinchPlan}));
+  }
   await sleep(300);
   const z1 = await evalPh(`window.__CF_SLICE__.camT.z`);
+  console.log('PHONE PINCH INPUT: '+JSON.stringify({originalStart:phonePinchPlan.frames[0],objectivePoint:phonePinchPlan.objectivePoint,
+    firstStartInsideObjective:phonePinchPlan.firstStartInsideObjective,objectiveRect:phonePinchPlan.objectiveRect,
+    headerBlankPoint:phonePinchPlan.headerBlankPoint,autoHitControl:phonePinchControl.broken.headerBlankPoint,restoration:phonePinchControl.restoration,receipts:phonePinchReceipts,z0,z1}));
   if (!(z1 > z0 * 1.15)) fails.push('PHONE: pinch-out did not zoom (z ' + z0 + ' → ' + z1 + ')');
   const shotPh = await send('Page.captureScreenshot', { format: 'png' }, ph);
   fs.writeFileSync(screenshotPath('phone'), Buffer.from(shotPh.data, 'base64'));
@@ -24823,13 +25192,16 @@ try {
   const phoneSurveyPrimeOverlayCheck = phonePrimeOverlayCheck('survey', 'card-open');
   const phoneSurveyPrimeOverlay = await evalNavPh(phoneSurveyPrimeOverlayCheck);
   if (!phoneSurveyPrimeOverlay.ok) {
-    failSliceWithoutCascade('PHONE PRIME SURVEY YIELD: a real Earth Survey card did not hide Prime above its overlapping card: '
+    failSliceWithoutCascade('PHONE PRIME SURVEY YIELD: a real Earth Survey card did not preserve a separate reachable Prime dock target: '
       + JSON.stringify(phoneSurveyPrimeOverlay));
   } else {
     const phoneSurveyPrimeOverlayCtl = await evalNavPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
-      const prime=document.getElementById('primechip'),prior=captureInlineStyleProperties(prime.style,['display']);
+      const prime=document.getElementById('primechip'),prior=captureInlineStyleProperties(prime.style,['display','position','left','top','bottom','transform','z-index']);
       let result=null,error=null;const restore=()=>restoreInlineStyleProperties(prime.style,prior);
-      try{prime.style.setProperty('display','block','important');result=${phoneSurveyPrimeOverlayCheck};}
+      try{prime.style.setProperty('display','block','important');prime.style.setProperty('transform','none','important');
+        const p=document.getElementById('survey').getBoundingClientRect(),q=prime.getBoundingClientRect();
+        prime.style.setProperty('transform','translate('+(p.left+8-q.left)+'px,'+(p.top+8-q.top)+'px)','important');
+        prime.style.setProperty('z-index','9999','important');result=${phoneSurveyPrimeOverlayCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
       const restoration=inspectInlineStyleProperties(prime.style,prior),styleRestored=restoration.ok,
         restored=styleRestored?${phoneSurveyPrimeOverlayCheck}:{ok:false,why:'owned-style-properties-not-restored'};
@@ -25306,7 +25678,7 @@ try {
     return {ok:s.save.ascCh===1&&s.stage===0&&goals===0&&!/Land on 3 worlds beyond Sol/i.test(text)
       &&/development slice/i.test(text)&&/next Charter action is not available in this development slice/i.test(s.objective),
       ascCh:s.save.ascCh,stage:s.stage,goals,text,objective:s.objective};})()`;
-  const malformedProjection = await evalNavPh(`(()=>{ document.getElementById('dockcharters')?.click();return ${malformedProjectionCheck};})()`);
+  const malformedProjection = await evalNavPh(`(()=>{ document.getElementById('objchip')?.click();return ${malformedProjectionCheck};})()`);
   if (!malformedProjection.ok) {
     fails.push('MALFORMED CHAPTER REACH: ascCh without a saved drive exposed impossible Chapter-2 work: '
       + JSON.stringify(malformedProjection));
@@ -25559,8 +25931,139 @@ try {
             shareAuthority, shareCommitAssessment, adjacentShare }));
         return;
       }
-      beforeLand = adjacentShare.state;
-      preLandAuthority = shareAuthority;
+      /* Share's receipt precedes its clipboard toast. Prove one ordinary
+         checkpoint of that exact notice before Land inherits the source;
+         the wave-off verifier must keep comparing every other durable byte. */
+      const assessCharterShareNoticeCheckpoint = (evidence) => {
+        const checks = {};
+        const check = (name, value) => { checks[name] = value === true; };
+        const same = (left, right) => canonicalJson(left) === canonicalJson(right);
+        try {
+          const { beforeRaw: prior, afterRaw: next, beforeAuthority, afterAuthority,
+            beforeState, afterState, toast, committed } = evidence;
+          const history = prior.legacy.notifs, head = next.legacy.notifs?.[0];
+          const title = '⧉ Share code copied';
+          const message = 'Paste it into any explorer’s search bar to guide them here.';
+          const exactKeys = (value, keys) => value !== null && typeof value === 'object'
+            && !Array.isArray(value) && same(Object.keys(value).sort(), [...keys].sort());
+          const validHistory = (rows) => Array.isArray(rows) && rows.length <= 50
+            && rows.every((entry) => exactKeys(entry, ['id', 'tt', 'ms', 't', 'read'])
+              && Number.isInteger(entry.id) && entry.id >= -0x8000_0000 && entry.id <= 0x7FFF_FFFF
+              && typeof entry.tt === 'string' && entry.tt.length <= 200
+              && typeof entry.ms === 'string' && entry.ms.length <= 400
+              && Number.isSafeInteger(entry.t) && entry.t >= 0 && entry.t <= 4e12
+              && typeof entry.read === 'boolean');
+          const occupied = new Set(history.map((entry) => entry.id));
+          let id = ((history[0]?.id ?? 0) + 1) | 0;
+          while (occupied.has(id)) id = (id + 1) | 0;
+          const expectedHistory = [{ id, tt: title, ms: message, t: head?.t, read: false }, ...history].slice(0, 50);
+          check('exact painted Share notice', exactKeys(toast, ['title', 'message', 'visible', 'serial', 'observedAt'])
+            && toast.title === title && toast.message === message && toast.visible === true
+            && toast.serial === beforeState.toastSerial && Number.isSafeInteger(toast.observedAt)
+            && toast.observedAt >= prior.legacy.at && toast.observedAt <= 4e12);
+          check('exact unread notice and unchanged prior history', validHistory(history)
+            && validHistory(next.legacy.notifs) && same(history, prior.playerRow.data.notifs)
+            && same(next.legacy.notifs, expectedHistory) && same(next.playerRow.data.notifs, expectedHistory)
+            && head.t >= prior.legacy.at && head.t <= toast.observedAt);
+          const rawMatches = (raw, authority) => raw.revision === authority.raw.revision
+            && raw.revisionRaw === authority.raw.revisionRaw && raw.legacyRaw === authority.raw.legacyRaw
+            && same(raw.receiptKeys, authority.raw.receiptKeys) && same(raw.receiptRows, authority.raw.receiptRows)
+            && raw.authority.activePlayMs === authority.raw.activePlayMs
+            && same(raw.authority.sessionRng, { seed: authority.raw.seed,
+              ordinal: authority.raw.ordinal, draws: authority.raw.draws });
+          check('one admitted same-document receipt-free checkpoint', committed === true
+            && typeof beforeAuthority.token === 'string' && beforeAuthority.token.length > 0
+            && afterAuthority.token === beforeAuthority.token
+            && beforeState.persistence.documentToken === beforeAuthority.token
+            && afterState.persistence.documentToken === beforeAuthority.token
+            && rawMatches(prior, beforeAuthority) && rawMatches(next, afterAuthority)
+            && next.revision === prior.revision + 1
+            && next.revisionRaw === String(next.revision)
+            && same(prior.receiptKeys, next.receiptKeys) && same(prior.receiptRows, next.receiptRows)
+            && same(prior.receiptRawRows, next.receiptRawRows)
+            && same(prior.authority.sessionRng, next.authority.sessionRng)
+            && afterState.persistence.lastOutcome === `committed:${next.revision}`);
+          const at = next.legacy.at;
+          check('exact codec time and monotone active play', Number.isSafeInteger(prior.legacy.at)
+            && Number.isSafeInteger(at) && at >= prior.legacy.at && at >= toast.observedAt && at <= 4e12
+            && Number.isFinite(prior.authority.activePlayMs) && prior.authority.activePlayMs >= 0
+            && Number.isFinite(next.authority.activePlayMs)
+            && next.authority.activePlayMs >= prior.authority.activePlayMs);
+          const expected = structuredClone(prior);
+          expected.revision = next.revision; expected.revisionRaw = String(next.revision);
+          expected.legacy.at = at; expected.playerRow.data.at = at;
+          expected.legacy.notifs = structuredClone(expectedHistory);
+          expected.playerRow.data.notifs = structuredClone(expectedHistory);
+          const clamp = (stamp, windowMs) => Math.min(at, Math.max(Math.max(0, at - windowMs), stamp));
+          expected.legacy.conq = prior.legacy.conq.map(([key, row]) => [key, { ...row, t: clamp(row.t, 3_600_000) }]);
+          expected.playerRow.data.conq = structuredClone(expected.legacy.conq);
+          expected.legacy.minedw = prior.legacy.minedw.map(([key, stamp]) => [key, clamp(stamp, 18_000_000)]);
+          expected.inventoryRow.data.minedw = structuredClone(expected.legacy.minedw);
+          expected.authority.activePlayMs = next.authority.activePlayMs;
+          expected.authorityJson = JSON.stringify(expected.authority);
+          expected.playerRow.extensions['f4.authority'].json = expected.authorityJson;
+          expected.legacyRaw = JSON.stringify(expected.legacy);
+          expected.playerRaw = JSON.stringify(expected.playerRow);
+          expected.inventoryRaw = JSON.stringify(expected.inventoryRow);
+          check('exact full raw successor without product delta', same(next, expected));
+          const beforeCeremony = beforeState.progressionCeremony, afterCeremony = afterState.progressionCeremony;
+          check('adjacent Share toast and ceremony race preserved', same(beforeState.save, afterState.save)
+            && same([beforeState.mode, beforeState.navGalaxyKey, beforeState.navStarKey, beforeState.navWorldKey,
+              beforeState.epoch, beforeState.stage, beforeState.cardOpen, beforeState.cardTitle],
+            [afterState.mode, afterState.navGalaxyKey, afterState.navStarKey, afterState.navWorldKey,
+              afterState.epoch, afterState.stage, afterState.cardOpen, afterState.cardTitle])
+            && beforeState.toastText === title + message && afterState.toastText === beforeState.toastText
+            && afterState.toastSerial === beforeState.toastSerial
+            && beforeCeremony?.queueKeys?.[0] === 'achievement:share'
+            && same(afterCeremony?.queueKeys, beforeCeremony.queueKeys)
+            && afterCeremony?.deliveries === beforeCeremony.deliveries
+            && afterCeremony?.lastDeliveredKey === beforeCeremony.lastDeliveredKey
+            && afterCeremony?.timerPending === true);
+        } catch { check('well-formed exact Share checkpoint evidence', false); }
+        return { ok: Object.values(checks).every(Boolean), checks };
+      };
+      const shareNoticeToast = await waitNavPhValue(`${label} adjacent Share notice paint`, `(()=>{
+        const toast=document.getElementById('toast'),title=toast?.querySelector('[data-sel="toast-title"]'),
+          style=toast?getComputedStyle(toast):null,rect=toast?.getBoundingClientRect(),observed={
+          title:title?.textContent??null,message:toast?[...toast.childNodes]
+            .filter(node=>node.nodeType===Node.TEXT_NODE).map(node=>node.textContent??'').join(''):null,
+          visible:!!rect&&rect.width>0&&rect.height>0&&style?.display!=='none'
+            &&style?.visibility==='visible'&&Number(style?.opacity)===1,
+          serial:window.__CF_SLICE__.api.state().toastSerial,observedAt:Date.now()};
+        return observed.visible?observed:null;})()`, 1_500);
+      const shareNoticeBeforeRaw = await evalNavPh(ARC4_DURABLE_READ_EXPRESSION);
+      const shareNoticeCommitted = await evalNavPh(`window.__CF_SLICE__.api.__smokePersistNow()`);
+      const shareNoticeAuthority = await waitNavPhF4Writable(`${label} Share notice checkpoint`, {
+        expectedToken: charterDocumentToken,
+      });
+      const shareNoticeRaw = await evalNavPh(ARC4_DURABLE_READ_EXPRESSION);
+      const shareNoticeState = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+      const shareNoticeEvidence = { beforeRaw: shareNoticeBeforeRaw, afterRaw: shareNoticeRaw,
+        beforeAuthority: shareAuthority, afterAuthority: shareNoticeAuthority,
+        beforeState: adjacentShare.state, afterState: shareNoticeState,
+        toast: shareNoticeToast, committed: shareNoticeCommitted };
+      const shareNoticeAssessment = assessCharterShareNoticeCheckpoint(shareNoticeEvidence);
+      if (!shareNoticeAssessment.ok) {
+        failSliceWithoutCascade(`${label}: Share notice checkpoint was not an exact passive predecessor: `
+          + JSON.stringify({ assessment: shareNoticeAssessment, evidence: shareNoticeEvidence }));
+      }
+      const shareNoticeControls = [
+        ['missing notice', (control) => { control.afterRaw.legacy.notifs = structuredClone(control.beforeRaw.legacy.notifs); }],
+        ['changed prior read flag', (control) => { control.afterRaw.legacy.notifs[1].read = !control.beforeRaw.legacy.notifs[0].read; }],
+        ['wrong codec owner', (control) => { control.afterRaw.playerRow.data.notifs[0].tt = 'Wrong notice'; }],
+        ['unrelated gameplay change', (control) => { control.afterRaw.legacy.hp += 1; }],
+        ['new action receipt', (control) => { control.afterRaw.receiptRows.push({ ordinal: 999, kind: 'wrong' }); }],
+        ['ceremony already delivered', (control) => { control.afterState.progressionCeremony.deliveries += 1; }],
+        ['refused checkpoint', (control) => { control.committed = false; }],
+      ];
+      for (const [name, mutate] of shareNoticeControls) {
+        const control = structuredClone(shareNoticeEvidence); mutate(control);
+        if (assessCharterShareNoticeCheckpoint(control).ok) {
+          failSliceWithoutCascade(`${label}: Share notice checkpoint control ${name} stayed green`);
+        }
+      }
+      beforeLand = shareNoticeState;
+      preLandAuthority = shareNoticeAuthority;
     }
     const baseline = charterLandBaseline(beforeLand);
     const beforeLandRaw = await evalNavPh(ARC4_DURABLE_READ_EXPRESSION);
@@ -25977,12 +26480,12 @@ try {
   await waitPanelF4Writable('CHARTER PANEL REFRESH replacement F4 authority', {
     previousToken: panelImportToken,
   });
-  await waitPanelValue('CHARTER PANEL REFRESH system + rail restore', `(()=>{ const s=window.__CF_SLICE__.api.state(),
-    rail=document.getElementById('railcharters'),r=rail?.getBoundingClientRect(),
+  await waitPanelValue('CHARTER PANEL REFRESH system + objective restore', `(()=>{ const s=window.__CF_SLICE__.api.state(),
+    rail=document.getElementById('objchip'),r=rail?.getBoundingClientRect(),
     x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,hit=r?document.elementFromPoint(x,y):null;
     return innerWidth===1280&&innerHeight===800&&s.mode==='system'&&s.star===424242&&s.panelOpen===null&&rail&&r.width>0&&r.height>=44
       &&getComputedStyle(rail).display!=='none'&&(hit===rail||rail.contains(hit))?{x,y,state:s}:null;})()`);
-  const railAction = await evalPanel(`(()=>{ const rail=document.getElementById('railcharters'),r=rail.getBoundingClientRect();
+  const railAction = await evalPanel(`(()=>{ const rail=document.getElementById('objchip'),r=rail.getBoundingClientRect();
     return {x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};})()`);
   await send('Input.dispatchMouseEvent', {
     type: 'mousePressed', x: railAction.x, y: railAction.y, button: 'left', clickCount: 1,
@@ -25990,7 +26493,7 @@ try {
   await send('Input.dispatchMouseEvent', {
     type: 'mouseReleased', x: railAction.x, y: railAction.y, button: 'left', clickCount: 1,
   }, panelSession);
-  await waitPanelValue('CHARTER PANEL REFRESH rail open', `window.__CF_SLICE__.api.state().panelOpen==='ch'`);
+  await waitPanelValue('CHARTER PANEL REFRESH objective open', `window.__CF_SLICE__.api.state().panelOpen==='ch'`);
   const panelDocumentToken = await sliceToken(panelSession);
   const panelSurveyBeforeAuthority = await waitPanelF4Writable(
     'CHARTER PANEL REFRESH Survey predecessor F4 authority',
@@ -26364,6 +26867,17 @@ try {
     && value?.persistence?.bootKind === 'transient-protected'
     && value?.persistence?.hold === 'transient-read'
     && value?.persistence?.runtime === null;
+  const transientCanvasActivationPasses = (point, receipt) => point?.ok === true
+    && typeof point.documentToken === 'string' && point.documentToken.length > 0
+    && point.canvasTag === 'CANVAS' && point.canvasConnected === true && point.canvasOwnsPoint === true
+    && Number.isFinite(point.x) && Number.isFinite(point.y)
+    && Number.isFinite(point.viewportWidth) && Number.isFinite(point.viewportHeight)
+    && point.x >= 0 && point.x < point.viewportWidth && point.y >= 0 && point.y < point.viewportHeight
+    && receipt?.schema === 'cf-v2-transient-canvas-press/v1'
+    && receipt.documentToken === point.documentToken
+    && receipt.type === 'pointerdown' && receipt.trusted === true && receipt.targetCanvas === true
+    && receipt.button === 0 && receipt.pointerType === 'mouse'
+    && receipt.x === point.x && receipt.y === point.y;
   const transientRetryProbe = async (seedRaw) => {
     const target = await send('Target.createTarget', { url: 'about:blank' });
     const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
@@ -26438,9 +26952,56 @@ try {
         + JSON.stringify(preClickResult.exceptionDetails || preClickResult.result.value));
     }
     const preClick = preClickResult.result.value;
-    await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
-    await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
-    await waitForSlice(retrySession, 'transient-read authoritative reload', { previousToken: retryBootToken });
+    // A relocated chrome control may cover an old fixed coordinate. Select
+    // the actual root canvas hit and retain its trusted event across reload.
+    const transientPressKey = '__cf_transient_canvas_press';
+    const canvasPoint = await evalRetry(`(()=>{const S=window.__CF_SLICE__,canvas=S?.app?.canvas,
+      key=${JSON.stringify(transientPressKey)};sessionStorage.removeItem(key);
+      window.__cfTransientCanvasPressAbort?.abort();delete window.__cfTransientCanvasPressAbort;
+      if(!canvas?.isConnected||canvas.tagName!=='CANVAS')return {ok:false,why:'root canvas unavailable'};
+      const r=canvas.getBoundingClientRect(),left=Math.max(0,r.left),right=Math.min(innerWidth,r.right),
+        top=Math.max(0,r.top),bottom=Math.min(innerHeight,r.bottom),attempts=[];
+      if(!(right>left&&bottom>top))return {ok:false,why:'root canvas has no viewport area'};
+      for(const [fx,fy] of [[.5,.5],[.35,.5],[.65,.5],[.5,.65],[.5,.35]]){
+        const x=Math.floor(left+(right-left)*fx),y=Math.floor(top+(bottom-top)*fy),hit=document.elementFromPoint(x,y);
+        attempts.push({x,y,hit:hit?.id||hit?.tagName||null});if(hit!==canvas)continue;
+        const abort=new AbortController();window.__cfTransientCanvasPressAbort=abort;
+        canvas.addEventListener('pointerdown',(event)=>sessionStorage.setItem(key,JSON.stringify({
+          schema:'cf-v2-transient-canvas-press/v1',documentToken:S.documentToken,type:event.type,
+          trusted:event.isTrusted,targetCanvas:event.target===canvas,button:event.button,
+          pointerType:event.pointerType,x:event.clientX,y:event.clientY})),{capture:true,once:true,signal:abort.signal});
+        return {ok:true,documentToken:S.documentToken,canvasTag:canvas.tagName,canvasConnected:canvas.isConnected,
+          canvasOwnsPoint:true,x,y,viewportWidth:innerWidth,viewportHeight:innerHeight};}
+      return {ok:false,why:'root canvas has no unobstructed candidate',attempts};})()`);
+    let canvasPress = null, canvasFailure = null;
+    try {
+      if (canvasPoint?.ok !== true || canvasPoint.documentToken !== retryBootToken) {
+        throw new Error('transient-read retry has no exact current canvas target');
+      }
+      await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: canvasPoint.x, y: canvasPoint.y, button: 'left', clickCount: 1 }, retrySession);
+      await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: canvasPoint.x, y: canvasPoint.y, button: 'left', clickCount: 1 }, retrySession);
+      await waitForSlice(retrySession, 'transient-read authoritative reload', { previousToken: retryBootToken });
+      canvasPress = await evalRetry(`JSON.parse(sessionStorage.getItem(${JSON.stringify(transientPressKey)})||'null')`);
+      if (!transientCanvasActivationPasses(canvasPoint, canvasPress)) {
+        throw new Error('transient-read retry did not retain one exact trusted canvas press');
+      }
+    } catch (error) {
+      const observed = await evalRetry(`(()=>{const state=window.__CF_SLICE__?.api?.state?.();return {
+        receipt:JSON.parse(sessionStorage.getItem(${JSON.stringify(transientPressKey)})||'null'),
+        documentToken:window.__CF_SLICE__?.documentToken??null,panelOpen:state?.panelOpen??null,
+        hold:state?.persistence?.hold??null,bootKind:state?.persistence?.bootKind??null,
+        writes:Number(sessionStorage.getItem('__cf_transient_primary_writes')||'0')};})()`)
+        .catch((cause) => ({ unavailable: String(cause?.message || cause) }));
+      canvasFailure = { error: String(error?.message || error), point: canvasPoint, observed };
+    }
+    const canvasCleanup = await evalRetry(`(()=>{window.__cfTransientCanvasPressAbort?.abort();
+      delete window.__cfTransientCanvasPressAbort;sessionStorage.removeItem(${JSON.stringify(transientPressKey)});
+      return !('__cfTransientCanvasPressAbort' in window)&&sessionStorage.getItem(${JSON.stringify(transientPressKey)})===null;})()`)
+      .catch(() => false);
+    if (canvasFailure !== null || canvasCleanup !== true) {
+      await send('Target.closeTarget', { targetId: target.targetId });
+      throw new Error('transient-read canvas activation failed: ' + JSON.stringify({ canvasFailure, canvasCleanup }));
+    }
     /* Both exact branches settle at revision 2. A fresh expedition owns its
        two receipt-free bootstrap writes; the retained veteran source owns
        one receipt-free bootstrap followed by the required Arc 9 aggregate
@@ -26473,7 +27034,7 @@ try {
       returnByValue: true, awaitPromise: true }, retrySession);
     await send('Target.closeTarget', { targetId: target.targetId });
     if (result.exceptionDetails) throw new Error('transient retry probe threw: ' + JSON.stringify(result.exceptionDetails));
-    return { ...result.result.value, preClick };
+    return { ...result.result.value, preClick, canvasActivation: { point: canvasPoint, receipt: canvasPress, cleaned: canvasCleanup } };
   };
   const transientExistingV4Raw = (() => {
     const envelope = JSON.parse(vrRaw);
@@ -26640,26 +27201,8 @@ try {
     if(!cb) bad.push('training card is not visible');
     if(!db) bad.push('training dock is not visible');
     if(cb&&db&&cb.l<db.r-1&&cb.r>db.l+1&&cb.t<db.b-1&&cb.b>db.t+1) bad.push('training card overlaps dock');
-    const priorDockPointer=dock&&dock.style.pointerEvents, priorDockInert=dock&&dock.hasAttribute('inert');
-    if(dock){dock.style.pointerEvents='auto';dock.removeAttribute('inert');}
-    const buttons=dock?[...dock.querySelectorAll('button')].filter((button)=>box(button)):[];
-    const expectedButtonIds=['docksurvey','dockcodex','dockrecords','dockcharters','dockatlas',
-      'dockcharts','dockshipyard','dockinventory','docksets','dockguide'];
-    if(buttons.length!==10) bad.push('training dock does not expose ten buttons: '+buttons.length);
-    if(JSON.stringify(buttons.map((button)=>button.id))!==JSON.stringify(expectedButtonIds))
-      bad.push('training dock button identity/order drifted: '+JSON.stringify(buttons.map((button)=>button.id)));
-    const rows=[];
-    for(const button of buttons){ const b=button.getBoundingClientRect();
-      let row=rows.find((candidate)=>Math.abs(candidate.top-b.top)<2);
-      if(!row){row={top:b.top,n:0};rows.push(row);}row.n++;
-      if(Math.abs(b.width-44)>1||Math.abs(b.height-44)>1) bad.push(button.id+' is not a 44px training target');
-      const hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
-      if(!hit||!button.contains(hit)) bad.push(button.id+' is buried at its centre during training');
-    }
-    rows.sort((a,b)=>a.top-b.top);
-    if(rows.length!==2||rows[0]?.n!==5||rows[1]?.n!==5) bad.push('training dock is not 5x2 (5+5): '+JSON.stringify(rows.map(row=>row.n)));
-    if(db&&(Math.abs(db.w-260)>1||Math.abs(db.h-98)>1)) bad.push('training dock box is not 260x98: '+JSON.stringify([db.w,db.h]));
-    if(dock){dock.style.pointerEvents=priorDockPointer;if(priorDockInert)dock.setAttribute('inert','');}
+    const shell=(${readU1PhoneShell.toString()})(true);
+    bad.push(...shell.errors.map(finding=>'training '+finding));
     return bad; })()`;
   const phoneTraining = await evalTp(phoneTrainingCheck);
   if (phoneTraining.length) fails.push('PHONE TRAINING/DOCK drift: ' + phoneTraining.join(' · '));
@@ -26669,16 +27212,14 @@ try {
   const phoneTrainingCtl = await evalTp(`(()=>{ const card=document.getElementById('tutcard'), prev=card.style.bottom;
     card.style.bottom='12px'; const bad=${phoneTrainingCheck}; card.style.bottom=prev; return bad; })()`);
   if (!phoneTrainingCtl.includes('training card overlaps dock')
-    || !phoneTrainingCtl.some((finding) => finding.includes('is buried at its centre during training'))) {
+    || !phoneTrainingCtl.some((finding) => finding.includes('is not hit-testable at its centre'))) {
     fails.push('PHONE TRAINING/DOCK CONTROL FAILED — injected burial went unseen: ' + JSON.stringify(phoneTrainingCtl));
   }
   const phoneTrainingInventoryCtl = await evalTp(`(()=>{const button=document.getElementById('dockinventory');
     if(!button)return ['dockinventory control target is missing'];const prior=button.style.display;
     button.style.display='none';const bad=${phoneTrainingCheck};button.style.display=prior;return bad;})()`);
-  if (!phoneTrainingInventoryCtl.some((finding) => finding === 'training dock does not expose ten buttons: 9')
-    || !phoneTrainingInventoryCtl.some((finding) => finding.startsWith('training dock button identity/order drifted:'))
-    || !phoneTrainingInventoryCtl.includes('training dock is not 5x2 (5+5): [5,4]')) {
-    fails.push('PHONE TRAINING/DOCK INVENTORY CONTROL FAILED — removed Inventory membership/grid stayed green: '
+  if (!phoneTrainingInventoryCtl.includes('training relocated Inventory is missing or not actionable in topbar')) {
+    fails.push('PHONE TRAINING/DOCK INVENTORY CONTROL FAILED — removed relocated Inventory stayed green: '
       + JSON.stringify(phoneTrainingInventoryCtl));
   }
   /* Reuse this already-booted fresh-origin document only as the exact IDB
@@ -26779,10 +27320,10 @@ try {
       primary:await ${READ_PRIMARY_EXPRESSION}};})()`);
     trainingSequenceReceipts.push(receipt);
     const expectedHeading = `FIELD TRAINING · ${ordinal} / 15`;
-    const announced = new RegExp(`Field Training, step ${ordinal} of 15`, 'i').test(receipt.announcement);
+    const announced = new RegExp(`Field Training, step ${ordinal} of 16`, 'i').test(receipt.announcement);
     if (!receipt.active || receipt.step !== expectedStep || receipt.panel !== expectedPanel
       || receipt.heading !== expectedHeading || !announced || receipt.primary !== dtrainFullBootRaw) {
-      fails.push(`DRILL RECEIPT ${ordinal}/15: exact card, panel, announcement, or held primary drifted: `
+      fails.push(`DRILL RECEIPT ${ordinal}/16: exact card, panel, announcement, or held primary drifted: `
         + JSON.stringify({ expectedStep, expectedPanel, expectedHeading, receipt,
           primaryStable: receipt.primary === dtrainFullBootRaw }));
     }
@@ -26839,7 +27380,7 @@ try {
      authored instruction. Tab/Shift+Tab must wrap inside the card. */
   const welcomeFocus = await evalT(trainingFocus);
   if (welcomeFocus.active !== 'tutbtn' || !welcomeFocus.allowed
-    || !/Field Training, step 1 of 15/i.test(welcomeFocus.announcement)
+    || !/Field Training, step 1 of 16/i.test(welcomeFocus.announcement)
     || !/Welcome to Sol/i.test(welcomeFocus.announcement)) {
     fails.push('DRILL KEYBOARD: welcome was not focused and announced: ' + JSON.stringify(welcomeFocus));
   }
@@ -26933,7 +27474,7 @@ try {
   await recordTrainingReceipt('find-earth', 2);
   const findEarthFocus = await evalT(trainingFocus);
   if (findEarthFocus.active !== 'CANVAS' || !findEarthFocus.allowed
-    || !/Field Training, step 2 of 15/i.test(findEarthFocus.announcement)
+    || !/Field Training, step 2 of 16/i.test(findEarthFocus.announcement)
     || !/find home/i.test(findEarthFocus.announcement)) {
     fails.push('DRILL KEYBOARD: find-earth did not focus/announce the canvas lesson: ' + JSON.stringify(findEarthFocus));
   }
@@ -27067,7 +27608,7 @@ try {
   await recordTrainingReceipt('survey-tour', 3);
   const surveyTourFocus = await evalT(trainingFocus);
   if (surveyTourFocus.active !== 'tutbtn' || !surveyTourFocus.allowed
-    || !/Field Training, step 3 of 15/i.test(surveyTourFocus.announcement)) {
+    || !/Field Training, step 3 of 16/i.test(surveyTourFocus.announcement)) {
     fails.push('DRILL KEYBOARD: survey-tour did not focus/announce Got It: ' + JSON.stringify(surveyTourFocus));
   }
   /* Same outcome with a live Earth card: Escape must neither hide the card
@@ -27133,7 +27674,7 @@ try {
   const atlasAddFocus = await evalT(trainingFocus);
   if (atlasAddFocus.active !== 'BUTTON' || !atlasAddFocus.allowed
     || await evalT(`document.activeElement?.getAttribute('data-act')`) !== 'add'
-    || !/Field Training, step 4 of 15/i.test(atlasAddFocus.announcement)) {
+    || !/Field Training, step 4 of 16/i.test(atlasAddFocus.announcement)) {
     fails.push('DRILL KEYBOARD: atlas-add did not focus/announce the real Add action: ' + JSON.stringify(atlasAddFocus));
   }
   const atlasAddCopy = await evalT(`(()=>{ const text=(document.querySelector('[data-sel=tuttext]')||{}).textContent||'';
@@ -27173,7 +27714,7 @@ try {
   await recordTrainingReceipt('atlas-open', 5);
   const atlasOpenFocus = await evalT(trainingFocus);
   if (atlasOpenFocus.active !== 'dockatlas' || !atlasOpenFocus.allowed
-    || !/Field Training, step 5 of 15/i.test(atlasOpenFocus.announcement)) {
+    || !/Field Training, step 5 of 16/i.test(atlasOpenFocus.announcement)) {
     fails.push('DRILL KEYBOARD: atlas-open did not focus/announce the visible phone Atlas control: '
       + JSON.stringify(atlasOpenFocus));
   }
@@ -27211,7 +27752,7 @@ try {
       panel:window.__CF_SLICE__.api.state().panelOpen,pending:window.__CF_SLICE__.api.state().releasePending}; })()`);
   if (!landFocus.landFocused || !landFocus.landReachable || !landFocus.atlasClosed || !landFocus.allowed
     || landFocus.panel !== null || landFocus.pending !== RELEASE_FIXTURE_VERSION
-    || !/Field Training, step 6 of 15/i.test(landFocus.announcement)) {
+    || !/Field Training, step 6 of 16/i.test(landFocus.announcement)) {
     fails.push('DRILL KEYBOARD: land did not become the focused/reachable action after Atlas: ' + JSON.stringify(landFocus));
   }
   const landCopy = await evalT(`(document.querySelector('[data-sel=tuttext]')||{}).textContent||''`);
@@ -27254,7 +27795,7 @@ try {
   await recordTrainingReceipt('planetside-briefing', 7);
   const planetsideBriefingFocus = await evalT(trainingFocus);
   if (planetsideBriefingFocus.active !== 'tutbtn' || !planetsideBriefingFocus.allowed
-    || !/Field Training, step 7 of 15/i.test(planetsideBriefingFocus.announcement)) {
+    || !/Field Training, step 7 of 16/i.test(planetsideBriefingFocus.announcement)) {
     fails.push('DRILL KEYBOARD: Planetside briefing was not focused and announced: '
       + JSON.stringify(planetsideBriefingFocus));
   }
@@ -27295,7 +27836,7 @@ try {
   await recordTrainingReceipt('engineering-open', 8);
   const engineeringOpenFocus = await evalT(trainingFocus);
   if (engineeringOpenFocus.active !== 'dockshipyard' || !engineeringOpenFocus.allowed
-    || !/Field Training, step 8 of 15/i.test(engineeringOpenFocus.announcement)) {
+    || !/Field Training, step 8 of 16/i.test(engineeringOpenFocus.announcement)) {
     fails.push('DRILL KEYBOARD: Engineering open did not focus/announce the visible phone control: '
       + JSON.stringify(engineeringOpenFocus));
   }
@@ -27307,10 +27848,22 @@ try {
   }
   await keyT('Enter', 'Enter');
   await sleep(250);
-  if (await step() !== 'engineering-tour') {
-    fails.push('DRILL: real Engineering open did not emit the exact tour event: ' + await step());
+  if (await step() !== 'engineering-forge-practice') {
+    fails.push('DRILL: Engineering open did not enter Forge practice: ' + await step());
   }
-  await recordTrainingReceipt('engineering-tour', 9, 'shipyard');
+  await recordTrainingReceipt('engineering-forge-practice', 9, 'shipyard');
+  const practiceBefore = await evalT(READ_PRIMARY_EXPRESSION);
+  const practiceButton = await evalT(`(()=>{const b=document.querySelector('[data-training-forge-practice="true"]');
+    if(!b||b.disabled)return null;b.focus();return {text:b.textContent,enabled:!b.disabled};})()`);
+  if (!practiceButton || !/Practice Forge Iron Plate/.test(practiceButton.text)) {
+    fails.push('DRILL: native isolated Forge control missing: '+JSON.stringify(practiceButton));
+  }
+  await keyT('Enter', 'Enter');
+  await sleep(120);
+  if (await step() !== 'engineering-tour' || await evalT(READ_PRIMARY_EXPRESSION) !== practiceBefore) {
+    fails.push('DRILL: Forge practice did not reach the tour with unchanged durable save: '+await step());
+  }
+  await recordTrainingReceipt('engineering-tour', 10, 'shipyard');
   const engineeringTour = await evalT(trainingBoardTourCheck('shipyardpanel', 'engineering-tour'));
   const engineeringTourFocus = await evalT(trainingFocus);
   const engineeringHold = await evalT(`(()=>{const s=window.__CF_SLICE__.api.state(),panel=document.getElementById('shipyardpanel'),
@@ -27319,7 +27872,7 @@ try {
     actions:actions.length,allLocked:actions.length>0&&actions.every((action)=>
       action instanceof HTMLButtonElement&&action.disabled)};})()`);
   if (!engineeringTour.ok || engineeringTourFocus.active !== 'tutbtn' || !engineeringTourFocus.allowed
-    || !/Field Training, step 9 of 15/i.test(engineeringTour.announcement)
+    || !/Field Training, step 10 of 16/i.test(engineeringTour.announcement)
     || !engineeringHold.held || engineeringHold.unavailable
     || engineeringHold.actions !== ENGINEERING_ACTION_CONTROL_COUNT || !engineeringHold.allLocked
     || !/source-proven opportunities/i.test(engineeringTour.announcement)
@@ -27342,10 +27895,10 @@ try {
   if (await step() !== 'compendium-open') {
     fails.push('DRILL: Engineering tour did not close into Compendium open: ' + await step());
   }
-  await recordTrainingReceipt('compendium-open', 10);
+  await recordTrainingReceipt('compendium-open', 11);
   const compendiumOpenFocus = await evalT(trainingFocus);
   if (compendiumOpenFocus.active !== 'dockcodex' || !compendiumOpenFocus.allowed
-    || !/Field Training, step 10 of 15/i.test(compendiumOpenFocus.announcement)) {
+    || !/Field Training, step 11 of 16/i.test(compendiumOpenFocus.announcement)) {
     fails.push('DRILL KEYBOARD: Compendium open did not focus/announce the visible phone control: '
       + JSON.stringify(compendiumOpenFocus));
   }
@@ -27360,7 +27913,7 @@ try {
   if (await step() !== 'compendium-tour') {
     fails.push('DRILL: real Compendium open did not emit the exact tour event: ' + await step());
   }
-  await recordTrainingReceipt('compendium-tour', 11, 'codex');
+  await recordTrainingReceipt('compendium-tour', 12, 'codex');
   const compendiumTour = await evalT(trainingBoardTourCheck('codexpanel', 'compendium-tour'));
   const compendiumTourFocus = await evalT(trainingFocus);
   const compendiumHeldRows = await evalT(`(()=>{const panel=document.getElementById('codexpanel'),rows=[...panel.querySelectorAll('[data-sel="codex-entry"]')];return {
@@ -27368,17 +27921,17 @@ try {
     allLocked:rows.length>0&&rows.every((row)=>!!row.closest('[inert]')&&getComputedStyle(row).pointerEvents==='none'),
     emptyText:(panel.querySelector('.empty')?.textContent||'').trim()};})()`);
   if (!compendiumTour.ok || compendiumTourFocus.active !== 'tutbtn' || !compendiumTourFocus.allowed
-    || !/Field Training, step 11 of 15/i.test(compendiumTour.announcement)
+    || !/Field Training, step 12 of 16/i.test(compendiumTour.announcement)
     || compendiumHeldRows.count !== 0 || compendiumHeldRows.rows !== 0
     || !/No species yet.*imported discoveries appear here.*Live catalogue writing arrives with the discovery path/i
       .test(compendiumHeldRows.emptyText)
     || !/live exact-instance companion controls after Training/i.test(compendiumTourFocus.announcement)
     || !/intercept hostile Discover Life injury, and earn up to \+2 XP when a later successful capture catalogues a genuinely fresh species/i.test(compendiumTourFocus.announcement)
     || !/real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment/i.test(compendiumTourFocus.announcement)
-    || !/Companion tastes, stat or Power growth from Feed, injury care, bond, dispatch, missions, and friendly duels remain unavailable/i.test(compendiumTourFocus.announcement)
+    || !/Companion tastes, meal growth, wound care, bond memories, friendly duels and missions are live; companion poison remains unavailable/i.test(compendiumTourFocus.announcement)
     || !/Every same-species twin keeps its own level, XP, condition, class, and named innate arts/i.test(compendiumTourFocus.announcement)
     || !/the second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats/i.test(compendiumTourFocus.announcement)
-    || /Same-species twins share one progression row|Innate art slots unlock at levels 2 and 5|Progression rewrites the creature’s genome or base stats|Companion Feed grows stats or Power|Companion Feed heals injuries/i.test(compendiumTourFocus.announcement)) {
+    || /Same-species twins share one progression row|Innate art slots unlock at levels 2 and 5|Progression rewrites the creature’s genome or base stats|Feed can heal without consuming flora|Rest advances while the game is closed/i.test(compendiumTourFocus.announcement)) {
     fails.push('DRILL COMPENDIUM TOUR: real catalogue rows, read-only lock, or Field Scout truth drifted: '
       + JSON.stringify({ tour: compendiumTour, focus: compendiumTourFocus, rows: compendiumHeldRows }));
   }
@@ -27396,10 +27949,10 @@ try {
   if (await step() !== 'records-open') {
     fails.push('DRILL: Compendium tour did not close into Records open: ' + await step());
   }
-  await recordTrainingReceipt('records-open', 12);
+  await recordTrainingReceipt('records-open', 13);
   const recordsOpenFocus = await evalT(trainingFocus);
   if (recordsOpenFocus.active !== 'dockrecords' || !recordsOpenFocus.allowed
-    || !/Field Training, step 12 of 15/i.test(recordsOpenFocus.announcement)) {
+    || !/Field Training, step 13 of 16/i.test(recordsOpenFocus.announcement)) {
     fails.push('DRILL KEYBOARD: Records open did not focus/announce the visible phone control: '
       + JSON.stringify(recordsOpenFocus));
   }
@@ -27414,11 +27967,11 @@ try {
   if (await step() !== 'records-tour') {
     fails.push('DRILL: real Records open did not emit the exact tour event: ' + await step());
   }
-  await recordTrainingReceipt('records-tour', 13, 'rec');
+  await recordTrainingReceipt('records-tour', 14, 'rec');
   const recordsTour = await evalT(trainingBoardTourCheck('recpanel', 'records-tour'));
   const recordsTourFocus = await evalT(trainingFocus);
   if (!recordsTour.ok || recordsTourFocus.active !== 'tutbtn' || !recordsTourFocus.allowed
-    || !/Field Training, step 13 of 15/i.test(recordsTour.announcement)
+    || !/Field Training, step 14 of 16/i.test(recordsTour.announcement)
     || !/Records are evidence, not a reward fountain/i.test(recordsTourFocus.announcement)
     || !/26 exact-event achievements appear only after their owning transaction verifies/i.test(recordsTourFocus.announcement)
     || !/only daily and decade still lack event owners/i.test(recordsTourFocus.announcement)
@@ -27446,12 +27999,12 @@ try {
   await keyT('Enter', 'Enter');
   await sleep(120);
   if (await step() !== 'horizon') fails.push('DRILL: Records tour did not reach the horizon: ' + await step());
-  await recordTrainingReceipt('horizon', 14);
+  await recordTrainingReceipt('horizon', 15);
   const horizonFocus = await evalT(trainingFocus);
   if (horizonFocus.active !== 'tutbtn' || !horizonFocus.allowed
-    || !/Field Training, step 14 of 15/i.test(horizonFocus.announcement)
+    || !/Field Training, step 15 of 16/i.test(horizonFocus.announcement)
     || !/Elemental Titan.*Apex Guardian.*strongest fauna/i.test(horizonFocus.announcement)
-    || !/losing one of those captured rulers is permanent/i.test(horizonFocus.announcement)
+    || !/a defeated captured ruler returns after active-play Recovery/i.test(horizonFocus.announcement)
     || !/nine Prime Signatures.*ninth opens the Frontier/i.test(horizonFocus.announcement)
     || !/battle-log Share changes no expedition fact/i.test(horizonFocus.announcement)) {
     fails.push('DRILL HORIZON: Guardian, Prime, Chronicle, or permanence orientation drifted: '
@@ -27461,17 +28014,17 @@ try {
   await keyT('Enter', 'Enter');
   await sleep(120);
   if (await step() !== 'grad') fails.push('DRILL: horizon did not reach graduation: ' + await step());
-  await recordTrainingReceipt('grad', 15);
+  await recordTrainingReceipt('grad', 16);
   const exactTrainingSequence = [
     'welcome', 'find-earth', 'survey-tour', 'atlas-add', 'atlas-open', 'land',
-    'planetside-briefing', 'engineering-open', 'engineering-tour',
+    'planetside-briefing', 'engineering-open', 'engineering-forge-practice', 'engineering-tour',
     'compendium-open', 'compendium-tour', 'records-open', 'records-tour',
     'horizon', 'grad',
   ];
   const observedTrainingSequence = trainingSequenceReceipts.map((receipt) => receipt.step);
   if (trainingSequenceReceipts.length !== exactTrainingSequence.length
     || JSON.stringify(observedTrainingSequence) !== JSON.stringify(exactTrainingSequence)) {
-    fails.push('DRILL SEQUENCE: exact 15-card causal receipt ledger drifted or skipped a card: '
+    fails.push('DRILL SEQUENCE: exact 16-card causal receipt ledger drifted or skipped a card: '
       + JSON.stringify({ expected: exactTrainingSequence, observed: observedTrainingSequence }));
   }
   const gradSide = await evalT(trainingSideCheck('grad'));
@@ -27480,7 +28033,7 @@ try {
   }
   const gradFocus = await evalT(trainingFocus);
   if (gradFocus.active !== 'tutbtn' || !gradFocus.allowed
-    || !/Field Training, step 15 of 15/i.test(gradFocus.announcement)
+    || !/Field Training, step 16 of 16/i.test(gradFocus.announcement)
     || !/CF1 world code/i.test(gradFocus.announcement)
     || !/Biosphere Yield/i.test(gradFocus.announcement)
     || !/explicit Discover Life/i.test(gradFocus.announcement)
@@ -27490,7 +28043,7 @@ try {
     || !gradFocus.announcement.includes("Repeat sightings add no duplicate record or discovery reward")
     || !/Scout standing before the attempt earns up to \+2 XP.*capped at 486/i.test(gradFocus.announcement)
     || !/real Flora detail can Eat 1 for explorer healing, poison, and nourishment/i.test(gradFocus.announcement)
-    || !/This drill performs no capture, meal, breeding, rename, Field Scout change, engineering action, or combat/i.test(gradFocus.announcement)) {
+    || !/This drill performs no live capture, meal, breeding, rename, Field Scout change, persistent engineering action, or combat/i.test(gradFocus.announcement)) {
     fails.push('DRILL KEYBOARD: graduation was not focused and announced: ' + JSON.stringify(gradFocus));
   }
   /* Hold an older persist across the native Finish activation, then attempt
@@ -28216,7 +28769,7 @@ try {
     return { target, pointer };
   };
   const openF4WritableShipyard = async (session, label) => {
-    const opening = await nativeControlClick(session, '#railshipyard,#dockshipyard');
+    const opening = await nativeControlClick(session, '#dockshipyard');
     try {
       const surface = await waitControlValue(
         session, label, READ_F4_SHIPYARD_AUTHORITY_EXPRESSION, 8000,
@@ -28241,6 +28794,17 @@ try {
     session, label, `sessionStorage.getItem('cf_slice_collision_clipboard')`, 3000,
     (value) => typeof value === 'string' && value.startsWith('CF1-'),
   );
+
+  const collisionRailCopiesHidden = (rows) => assessCompactRailCopies(rows).pass;
+  const collisionRailCopiesExpression = `(()=>['raillft','railrgt'].map((id)=>{
+    const element=document.getElementById(id),style=element?getComputedStyle(element):null,
+      rect=element?.getBoundingClientRect(),copies=element?[...element.querySelectorAll('button')].filter(button=>button.id!=='docksurvey'):[];
+      return {id,exists:element instanceof HTMLElement,parentId:element?.parentElement?.id??null,
+        copyIds:copies.map(button=>button.id),copiesHidden:copies.length>0&&copies.every(button=>{const s=getComputedStyle(button),r=button.getBoundingClientRect();
+          return (s.display==='none'||style.display==='none')&&r.width===0&&r.height===0;}),
+        parentTag:element?.parentElement?.tagName??null,display:style?.display??null,
+        rectCount:element?.getClientRects().length??null,width:rect?.width??null,height:rect?.height??null,
+        painted:!!element&&style.display!=='none'&&style.visibility!=='hidden'&&rect.width>0&&rect.height>0};}))()`;
 
   /* Outcome-level collision proof. The setup fixture changes only reach and
      clears prior location ledgers; every identity mutation below is a real
@@ -28270,13 +28834,55 @@ try {
     collisionTarget.session, 'collision identity fixture authority', { previousToken: collisionImportToken },
   );
   const collisionSetup = collisionFixtureReady.state;
-  await nativeControlClick(collisionTarget.session, '#railrecords,#dockrecords');
+  const collisionRailBaseline = await evalF4Control(collisionTarget.session, collisionRailCopiesExpression);
+  if (!collisionRailCopiesHidden(collisionRailBaseline)) {
+    failSliceWithoutCascade('U1 RAIL DUPLICATES: desktop copies or boxed rail roots remain beside the compact launcher: '
+      + JSON.stringify(collisionRailBaseline));
+  }
+  const collisionRailControls = [];
+  for (const id of ['raillft', 'railrgt']) {
+    const control = await evalF4Control(collisionTarget.session, `(()=>{
+      const element=document.getElementById(${JSON.stringify(id)}),
+        priorStyle={present:element.hasAttribute('style'),value:element.getAttribute('style')};let shown;
+      try{element.style.setProperty('display','flex','important');shown=${collisionRailCopiesExpression};}
+      finally{element.setAttribute('style','');element.removeAttribute('style');if(priorStyle.present)element.setAttribute('style',priorStyle.value);}
+      const restored=${collisionRailCopiesExpression},
+        restoredStyle={present:element.hasAttribute('style'),value:element.getAttribute('style')};
+      return {id:${JSON.stringify(id)},shown,restored,priorStyle,restoredStyle,
+        styleRestored:restoredStyle.present===priorStyle.present&&restoredStyle.value===priorStyle.value};})()`);
+    const shown = control.shown.find((row) => row.id === id);
+    const other = control.shown.find((row) => row.id !== id);
+    if (collisionRailCopiesHidden(control.shown) || shown?.painted !== true || shown.display !== 'flex'
+      || JSON.stringify(other) !== JSON.stringify(collisionRailBaseline.find((row) => row.id !== id))
+      || control.styleRestored !== true || !collisionRailCopiesHidden(control.restored)
+      || JSON.stringify(control.restored) !== JSON.stringify(collisionRailBaseline)) {
+      failSliceWithoutCascade('U1 RAIL DUPLICATES CONTROL: showing one whole legacy rail was not rejected or exact restoration failed: '
+        + JSON.stringify(control));
+    }
+    collisionRailControls.push(control);
+  }
+  const collisionRecordsPresses = [];
+  const pressCollisionRecords = async (label) => {
+    const press = await nativeControlClick(collisionTarget.session, '#dockrecords');
+    const assessment = assessAtlasOpenerPress(press, { ids: ['dockrecords'] });
+    collisionRecordsPresses.push({ label, ...press });
+    if (!assessment.ok) {
+      failSliceWithoutCascade(`WORLD IDENTITY COLLISION RECORDS ${label}: exact native dock receipt was red before panel observation: `
+        + JSON.stringify({ press, assessment }));
+    }
+    return press;
+  };
+  await pressCollisionRecords('baseline open');
   const collisionBaselineRecords = await waitControlValue(collisionTarget.session, 'collision baseline Records landing count',
     `(()=>{const panel=document.getElementById('recpanel'),row=[...panel?.querySelectorAll('.row')??[]].find((entry)=>
       entry.querySelector('label')?.textContent==='worlds landed');if(!row)return null;return {worldsLanded:Number(row.querySelector('span')?.textContent)};})()`);
-  await nativeControlClick(collisionTarget.session, '#railrecords,#dockrecords');
-  await waitControlValue(collisionTarget.session, 'collision baseline Records close',
-    `window.__CF_SLICE__.api.state().panelOpen===null`);
+  const collisionRecordsClosePress = await pressCollisionRecords('baseline close');
+  try {
+    await waitControlValue(collisionTarget.session, 'collision baseline Records close',
+      `window.__CF_SLICE__.api.state().panelOpen===null`);
+  } catch (error) {
+    throw new Error(`${error.message}; native Records close ${JSON.stringify(collisionRecordsClosePress)}`);
+  }
   const collisionActions = [];
   for (let index = 0; index < COLLISION_REACH_WORLDS.length; index++) {
     const world = COLLISION_REACH_WORLDS[index];
@@ -28404,13 +29010,58 @@ try {
     collisionTarget.session, 'collision identity reload authority', { previousToken: collisionBeforeReloadToken },
   );
   const collisionReloaded = collisionReloadReady.state;
-  await nativeControlClick(collisionTarget.session, '#railrecords,#dockrecords');
+  await pressCollisionRecords('reload open');
   const collisionRecords = await waitControlValue(collisionTarget.session, 'collision Records landing count',
     `(()=>{const panel=document.getElementById('recpanel'),row=[...panel?.querySelectorAll('.row')??[]].find((entry)=>
       entry.querySelector('label')?.textContent==='worlds landed');if(!row)return null;return {worldsLanded:Number(row.querySelector('span')?.textContent)};})()`);
   const collisionAtlasOpeners = [];
+  const assessCollisionSurveyClosure = ({ before, after, press }) => {
+    const routeKeys = ['mode', 'gal', 'star', 'planet', 'planetOrdinal', 'navGalaxyKey', 'navStarKey',
+      'navWorldKey', 'galX', 'galY', 'starX', 'starY', 'cardTitle', 'panelOpen'];
+    const sameRoute = before?.route && after?.route && routeKeys.every((key) => (
+      Object.hasOwn(before.route, key) && Object.hasOwn(after.route, key)
+      && before.route[key] === after.route[key]
+    ));
+    return typeof before?.documentToken === 'string' && before.documentToken.length > 0
+      && before.documentToken === after?.documentToken && sameRoute === true
+      && after.cardOpen === false && after.display === 'none' && after.ariaHidden === 'true'
+      && after.expanded === 'false'
+      && (before.cardOpen === true
+        ? before.display !== 'none' && before.ariaHidden === 'false' && before.expanded === 'true'
+          && assessAtlasOpenerPress(press, { ids: ['docksurvey'] }).ok
+        : before.cardOpen === false && before.display === 'none' && before.ariaHidden === 'true'
+          && before.expanded === 'false' && press === null);
+  };
+  const collisionSurveyStateExpression = `(()=>{const S=window.__CF_SLICE__,state=S.api.state(),
+    survey=document.getElementById('survey'),button=document.getElementById('docksurvey');return {
+      documentToken:S.documentToken,cardOpen:state.cardOpen,display:survey?getComputedStyle(survey).display:null,
+      ariaHidden:survey?.getAttribute('aria-hidden')??null,expanded:button?.getAttribute('aria-expanded')??null,
+      route:Object.fromEntries(['mode','gal','star','planet','planetOrdinal','navGalaxyKey','navStarKey',
+        'navWorldKey','galX','galY','starX','starY','cardTitle','panelOpen'].map((key)=>[key,state[key]]))};})()`;
+  const collisionSurveyCloses = [];
+  const closeCollisionSurveyForAtlas = async (label) => {
+    const before = await evalF4Control(collisionTarget.session, collisionSurveyStateExpression);
+    let press = null, after = before;
+    if (before.cardOpen === true) {
+      press = await nativeControlClick(collisionTarget.session, '#docksurvey');
+      const assessment = assessAtlasOpenerPress(press, { ids: ['docksurvey'] });
+      if (!assessment.ok) {
+        failSliceWithoutCascade(`WORLD IDENTITY COLLISION SURVEY CLOSE ${label}: native scene control was red before Atlas: `
+          + JSON.stringify({ before, press, assessment }));
+      }
+      after = await waitControlValue(collisionTarget.session, `collision Survey close ${label}`,
+        collisionSurveyStateExpression, 8000, (value) => value?.cardOpen === false);
+    }
+    const evidence = { label, before, after, press };
+    if (!assessCollisionSurveyClosure(evidence)) {
+      failSliceWithoutCascade(`WORLD IDENTITY COLLISION SURVEY CLOSE ${label}: Survey did not close without changing document, route or selected world: `
+        + JSON.stringify(evidence));
+    }
+    collisionSurveyCloses.push(evidence);
+  };
+  await closeCollisionSurveyForAtlas('initial open');
   const collisionAtlasOpening = await nativeControlClick(
-    collisionTarget.session, '#railatlas,#dockatlas',
+    collisionTarget.session, '#dockatlas',
   );
   const collisionAtlasOpeningAssessment = assessAtlasOpenerPress(collisionAtlasOpening);
   if (!collisionAtlasOpeningAssessment.ok) {
@@ -28432,7 +29083,8 @@ try {
   for (let index = 0; index < COLLISION_REACH_WORLDS.length; index++) {
     const world = COLLISION_REACH_WORLDS[index];
     if (index > 0) {
-      const reopen = await nativeControlClick(collisionTarget.session, '#railatlas,#dockatlas');
+      await closeCollisionSurveyForAtlas(`reopen ${index}`);
+      const reopen = await nativeControlClick(collisionTarget.session, '#dockatlas');
       const reopenAssessment = assessAtlasOpenerPress(reopen);
       if (!reopenAssessment.ok) {
         failSliceWithoutCascade(`WORLD IDENTITY COLLISION ATLAS REOPEN ${index}: exact native opener receipt was red before Travel: `
@@ -28517,8 +29169,11 @@ try {
   await send('Target.closeTarget', { targetId: collisionTarget.targetId });
   const collisionBundle = {
     setup: collisionSetup, baselineRecords: collisionBaselineRecords,
+    recordsPresses: collisionRecordsPresses,
+    hiddenRailCopies: { baseline: collisionRailBaseline, controls: collisionRailControls },
     actions: collisionActions, reloaded: collisionReloaded,
     atlas: collisionAtlas, records: collisionRecords, atlasOpeners: collisionAtlasOpeners,
+    surveyCloses: collisionSurveyCloses,
     atlasTravel: collisionAtlasTravel, searches: collisionReloadSearches,
   };
   const collisionAssessment = assessCollisionWorldOutcome(collisionBundle);
@@ -29003,7 +29658,7 @@ if (OUTCOME_CONTROLS_ONLY) {
   console.log('SLICE OUTCOME CONTROLS: PASS — two source-generated leaf-seed-colliding worlds retain distinct Search/name/Atlas/Land/save-reload/share identity, and F4 heartbeat lease-storage plus revision-read failures stop answerability/accrual/audio/heartbeat without automatic reacquisition before a read-only convergence reload.');
   process.exit(0);
 }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact ' + V2_DRAFT_BULLET_COUNT + '-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT absent; Training recovery reload-only · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact ' + V2_DRAFT_BULLET_COUNT + '-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT absent; Training recovery reload-only · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real nameplate/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);
 console.log(ARC4_SLICE_PASS_MARKER);
 console.log(sliceScreenshotInventoryLine());

@@ -1,0 +1,14 @@
+{
+  "schema": "cf.tool-execution-receipt/v1",
+  "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/contact-regression/run-s2.mjs",
+  "startTool": "66832f",
+  "completionTool": "d8686f",
+  "exitCode": 0,
+  "report": "s2-execution.json",
+  "status": "PASS_STATIC_IDENTICAL",
+  "sourcesUnchanged": 87,
+  "subjects": 6,
+  "samples": 13286,
+  "protectedInputs": 12,
+  "scope": "Final runtime frozen; candidate authoring and Centipede static/native qualification remain separate and pending"
+}

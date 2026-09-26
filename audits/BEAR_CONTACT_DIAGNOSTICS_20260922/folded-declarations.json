@@ -1,0 +1,80 @@
+[
+  {
+    "subject": "mud-crab",
+    "presence": {
+      "schema": "cf.anatomy-presence/v2",
+      "absent": [],
+      "hidden": [],
+      "folded": [
+        "leg0Far",
+        "leg1Far",
+        "leg2Far",
+        "leg3Far"
+      ]
+    },
+    "presenceFile": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/presence.json",
+    "presenceSha256": "dc370634ec3fc3f26e326e3694a6810a7636e11d8daca8247a576285fb13ff0c",
+    "beforeRecipeHash": "cc71ff2d73f5482f16278a77a2bbff2d7e4d0888fb88883b57b21a5822f0cd35",
+    "afterRecipeHash": "15b149aab62ff824e197e34dbe6b2b98bed80dd1c320045489b82ce7eb9fd22a",
+    "files": [
+      {
+        "file": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/record.json",
+        "beforeSha256": "f16b43760db43c41a65f0272af1ec60e5c9817b3b3943caa88934f5e5a981408",
+        "afterSha256": "c2ac58531ad3585b433343a9f03e3c1bae766efb1f69e68dd6c11fe062debdd0"
+      },
+      {
+        "file": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/binding.json",
+        "beforeSha256": "f87614a4fb9745f5d265ebaa2bc2203332ab2ecfd019d6368af66ac335619788",
+        "afterSha256": "6d89da7ba04b98fd5c4d45ef38acbe4a44e28dd2e903d0cc057a6cd5792b4c04"
+      },
+      {
+        "file": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/parts/binding.json",
+        "beforeSha256": "a47e59e10599d4c5f269c91191f89015fc9b90c230459b28667db5878bf76ff8",
+        "afterSha256": "4edc762ca03d58d5661254da55dc69fcc20d7d28297c5a393659b7692d76f7e3"
+      }
+    ],
+    "authority": "Nick overnight item4: far legs declared folded; all four named Far chains, not inferred from geometry or copied from later painted fits",
+    "sourcePixelsChanged": 0,
+    "landmarksChanged": 0,
+    "skinChanges": 0
+  },
+  {
+    "subject": "vent-crab",
+    "presence": {
+      "schema": "cf.anatomy-presence/v2",
+      "absent": [],
+      "hidden": [],
+      "folded": [
+        "leg0Far",
+        "leg1Far",
+        "leg2Far",
+        "leg3Far"
+      ]
+    },
+    "presenceFile": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/presence.json",
+    "presenceSha256": "dc370634ec3fc3f26e326e3694a6810a7636e11d8daca8247a576285fb13ff0c",
+    "beforeRecipeHash": "adf835a7d5bc793f550dc953397084cf0b3ee9dba80325d8180856502e099089",
+    "afterRecipeHash": "cbb1c415eca9c4c763b4f87a1c83d7f1928b1f3b5ded1165b6bdc99a9cae2505",
+    "files": [
+      {
+        "file": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/record.json",
+        "beforeSha256": "6ed9989d14132ea998b1601da1b86838e61f87c7d973f7a1ddac00a8fd5b2f5c",
+        "afterSha256": "9625d7f7e4f275edccddc7c7e27362b13d8eabb9dd9582a9d7285a3232745b1d"
+      },
+      {
+        "file": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/binding.json",
+        "beforeSha256": "ff30f7d588fcdcb73f3320ced63d6c1d9d37548be09f07c9103f6215daa8837b",
+        "afterSha256": "d0c46782a73d9cc94a28ae258dd940af078787a287e2d8b7b5fc96fa9f9673dd"
+      },
+      {
+        "file": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/parts/binding.json",
+        "beforeSha256": "b279c73cf5b57ff88eb00205a3c961740f8842fa3af305ada91561ae458896a9",
+        "afterSha256": "8d321500f1baf0bc59263f619ce33f8751e0d26b8c4b9bf4f3a02df574315bd8"
+      }
+    ],
+    "authority": "Nick overnight item4: far legs declared folded; all four named Far chains, not inferred from geometry or copied from later painted fits",
+    "sourcePixelsChanged": 0,
+    "landmarksChanged": 0,
+    "skinChanges": 0
+  }
+]

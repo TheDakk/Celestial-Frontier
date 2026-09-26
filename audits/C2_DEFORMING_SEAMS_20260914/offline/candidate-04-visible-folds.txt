@@ -1,0 +1,18 @@
+civet
+rest { inverted: 0, visible: 0 }
+hit-recoil { inverted: 753, visible: 682 }
+strike { inverted: 1237, visible: 1118 }
+approach-quarter { inverted: 724, visible: 672 }
+approach-three-quarter { inverted: 768, visible: 690 }
+fox
+rest { inverted: 0, visible: 0 }
+hit-recoil { inverted: 823, visible: 705 }
+strike { inverted: 1716, visible: 1544 }
+approach-quarter { inverted: 898, visible: 766 }
+approach-three-quarter { inverted: 1316, visible: 1176 }
+procedural
+rest { inverted: 0, visible: 0 }
+hit-recoil { inverted: 64, visible: 54 }
+strike { inverted: 213, visible: 169 }
+approach-quarter { inverted: 128, visible: 100 }
+approach-three-quarter { inverted: 149, visible: 116 }

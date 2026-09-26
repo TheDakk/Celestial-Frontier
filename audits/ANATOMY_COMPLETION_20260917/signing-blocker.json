@@ -1,0 +1,17 @@
+{
+  "schema": "cf.local-signing-blocker/v1",
+  "at": "2026-09-17T05:25:00.137412+00:00",
+  "head": "0426ef4db5dc55205925725b9579ca61d960cd42",
+  "branch": "openai/mac",
+  "attempts": 2,
+  "exitCode": 128,
+  "error": "error: 1Password: agent returned an error; fatal: failed to write commit object",
+  "unsignedFallback": false,
+  "requiredUserAction": "Unlock 1Password and approve the configured signing request",
+  "cachedAhead": {
+    "origin/openai/mac": 126,
+    "origin/develop": 237
+  },
+  "githubWrites": 0,
+  "scope": "Verified source and evidence staged; original untracked .DS_Store untouched"
+}

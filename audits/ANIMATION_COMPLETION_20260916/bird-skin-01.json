@@ -1,0 +1,203 @@
+{
+  "schema": "cf.painted-skin-action-audit/v1",
+  "scope": "Every family action on actual fitted skin, 121 samples/clip. No rendered pixels or art acceptance.",
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "approach:walk",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "approach:flight",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "melee:peck",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "melee:claw",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "status": "PASS"
+    },
+    {
+      "id": "melee:kick",
+      "samples": 121,
+      "status": "PASS"
+    }
+  ],
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/motion/index.ts",
+      "sha256": "5782f93542b0f138786486d0657e3b02796ecd7192336735c83eeb78b2fbbc68"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/gsap-adapter.ts",
+      "sha256": "600e413b90587a5d3b2f40ace148a95e6e692fb82f3b4d2eba2f17b12f0a8660"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/secondary.ts",
+      "sha256": "138791cc3a55225a14d8168b639b6f469606441dae84a805395c77d75e6b2374"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/budget.ts",
+      "sha256": "3fac6ef0eeefe1f979130a6a0ba3adf08d3a876495e5c44a047ba1df2e1bafb5"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/actions.ts",
+      "sha256": "dc1ef0becac76be8997789b08e1058fcddd04fcdd12edfff71d10a3ce02abcac"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "d51bd0c4be3c13b852c9deb1f111df8e5d3d96a692d0d78118cebb46a922501a"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timing.ts",
+      "sha256": "135ad4c2752d8941ef4cad337d900ecfd58125dfe1bd7afbf4608c80b68534fa"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "f8091e7cec3ec55fc5da48f8d996fdf0e1545fa1adf593e5bbe60f9c11c9ba3d"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "5bed829464185d536cbf213b05c7d3c458589d25926b9f7a43d9d14aca73eff9"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "6a10af5e4b07fc49ba7a6a27ce58e96ffad983b3182549aecc8309a9d0e18c97"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "e6b87ee8e3980df49bf90934cabdd30541364f334c2995c16d34c3b80c3d9f9e"
+    },
+    {
+      "path": "port/v2/node_modules/gsap/index.js",
+      "sha256": "070038235ba75ec2186d054ebd83ae94e6de6a971f5d3f3d6cd1037551f94faa"
+    },
+    {
+      "path": "port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "port/v2/node_modules/gsap/CSSPlugin.js",
+      "sha256": "41d061e8b0a2ddfdb647f8f85da690ec6d19194403021acca7088926105fe6bd"
+    },
+    {
+      "path": "port/v2/node_modules/gsap/gsap-core.js",
+      "sha256": "83c4b6c0b020beba737b90896181560b76747342b0f7baa5ba1b185a75f65b65"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/index.ts",
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle-habitat.ts",
+      "sha256": "a5ccd7326dd31518680a980a1948e39eb9cf04f54da541a431e1b78c40abed41"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-fauna-profiles.ts",
+      "sha256": "0d03b3b97e0cfed394354afb7f9a923f8eacb3a615364014d6e4a480858be262"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pose-projection.mjs",
+      "sha256": "e087da4b05e640c643412aaca4d348baff94dfa32f620f9fc104f9fc4eacc8eb"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "5e4c971ef6d163dd892f482e3481610416f8159cb48d4e6082703e836e39e5ec"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/additional-actions.ts",
+      "sha256": "e585cd2df5c13975472a496e342f96c1704f034144a496dbe3d93df64468271f"
+    },
+    {
+      "path": "audits/HABITAT_BATTLE_20260916/airbird-05/record.json",
+      "sha256": "501542a64dcaa16b6372b0e521c3de399ab2cfee1b184b77dc2be4adb89029c7"
+    },
+    {
+      "path": "audits/HABITAT_BATTLE_20260916/airbird-05/binding.json",
+      "sha256": "3ffb21c44f0104e693f469eeb7b2064f7990a754f7f1a0229a6f9f34d19eb71b"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "6d6b0ae6aa9eb0c19975932a3879d2daa28e3a568d47fcdf51d8c87ead870fe8"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "sha256": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "3d7ba73ec369a07fc1678610b32e77fb5beadedbdee1885ca544424588e1f587"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/paint-skin.mjs",
+      "sha256": "bb6d7536aedd51af0e500c3fd5feb22049412001d627ca3282628a0a48618c51"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "77e1a47481b37ddfe0d97c2d3c137abf614e696fffc46430810295fd9ea7d604"
+    }
+  ]
+}

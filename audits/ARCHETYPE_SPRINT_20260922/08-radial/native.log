@@ -1,0 +1,1 @@
+{"status":"FAIL","error":"Error: Error: habitat: Selected home arena cannot support both organisms; no habitat or biome substitution · left Starfish: aquatic (water) · right Starfish: aquatic (water)\n    at http://127.0.0.1:61724/bundle.js:27106:40\n    at file:///Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs:47:148"}

@@ -1,0 +1,8 @@
+{
+  "stage": "signed preparation commit",
+  "exitCode": 128,
+  "message": "error: 1Password: agent returned an error; fatal: failed to write commit object",
+  "head": "61c37f3a846429bcbc0167ea92de12623593e750",
+  "unsignedFallback": false,
+  "retry": false
+}

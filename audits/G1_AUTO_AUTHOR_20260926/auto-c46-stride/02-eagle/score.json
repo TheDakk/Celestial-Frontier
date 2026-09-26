@@ -1,0 +1,9 @@
+{
+ "id": "02-eagle",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 8.6% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

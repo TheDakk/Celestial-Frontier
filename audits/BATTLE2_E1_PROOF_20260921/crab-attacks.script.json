@@ -1,0 +1,1 @@
+{"readyMs":600,"commandMs":300,"themes":{"A":"wild","B":"stone"},"rows":[{"side":"B","an":"Crab","dn":"Civet","dmg":7,"crit":false,"hpA":23,"hpB":30},{"an":"Crab","dn":"Civet","dodge":true},{"side":"B","an":"Crab","dn":"Civet","dmg":12,"crit":true,"hpA":11,"hpB":30}]}

@@ -1,0 +1,68 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/guide-release.test.ts (35 tests | 1 failed) 524ms
+     × keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes 432ms
+ ❯ tests/exceptional-crafting-evidence-contract.test.ts (8 tests | 1 failed) 1811ms
+     × replays every current rendered release control and preserves the Research reach boundary 842ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/exceptional-crafting-evidence-contract.test.ts > Pureforged browser-evidence truth > replays every current rendered release control and preserves the Research reach boundary
+AssertionError: FAMILIAR CONTROLS ON EVERY SCREEN: Phones keep five icon-only scene buttons above four compact utility icons: expected Object{ ok: false, …(61) } to match object { ok: false, honest: true, …(2) }
+(58 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "bulletCount": 106,
++   "bulletCount": 119,
+    "honest": true,
+    "ok": false,
+    "overclaim": false,
+  }
+
+ ❯ tests/exceptional-crafting-evidence-contract.test.ts:354:36
+    352|     expect(launcherClaims).toHaveLength(5);
+    353|     for (const row of launcherClaims) {
+    354|       expect(row.result, row.copy).toMatchObject({ ok: false, honest: …
+       |                                    ^
+    355|     }
+    356|     expect(result.truthfulFeatureClaims).toHaveLength(11);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/guide-release.test.ts > legacy and v2 release channels > keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes
+AssertionError: Missions are now live.: expected { categories: true, …(6) } to match object { categories: true, …(5) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "canonical": true,
+    "categories": true,
+-   "honest": false,
++   "honest": true,
+    "inventory": true,
+    "populated": true,
+    "required": true,
+  }
+
+ ❯ tests/guide-release.test.ts:3158:10
+    3156|     ]) {
+    3157|       expect(bulletinOutcome(withInjectedFeatureClaim(unavailableClaim…
+    3158|         .toMatchObject({
+       |          ^
+    3159|           categories: true, canonical: true, inventory: true, populate…
+    3160|         });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 2 passed (4)
+      Tests  2 failed | 79 passed (81)
+   Start at  00:37:14
+   Duration  14.29s (transform 746ms, setup 0ms, import 4.45s, tests 15.44s, environment 0ms)
+

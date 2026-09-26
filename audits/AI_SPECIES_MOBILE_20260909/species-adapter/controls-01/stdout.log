@@ -1,0 +1,15 @@
+
+> cf-v2@0.0.0 test
+> vitest run tests/landfall-conditioning.test.ts tests/local-ai-runtime.test.ts tests/local-ai-game.test.ts
+
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/local-ai-runtime.test.ts (25 tests | 1 failed) 344ms
+     × refuses missing/excess/reordered/duplicate references, unbound geometry, identities and digests before allocation 10ms
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 63 passed (64)
+   Start at  12:24:51
+   Duration  739ms (transform 671ms, setup 0ms, import 895ms, tests 707ms, environment 0ms)
+

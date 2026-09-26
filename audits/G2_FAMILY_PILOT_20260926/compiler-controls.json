@@ -1,0 +1,26 @@
+[
+  {
+    "name": "unknown species",
+    "status": "PASS",
+    "refusal": "Error: Exactly one canonical Earth species required"
+  },
+  {
+    "name": "unsupported family",
+    "status": "PASS",
+    "refusal": "Error: Unsupported controlled library family"
+  },
+  {
+    "name": "mammal cannot inherit fish layout",
+    "status": "PASS",
+    "refusal": "Error: Unsupported controlled library family"
+  },
+  {
+    "name": "existing packet",
+    "status": "PASS",
+    "refusal": "Error: New packet directory required"
+  },
+  {
+    "name": "20 canonical family prompts and exact prompt hashes; no authoring",
+    "status": "PASS"
+  }
+]

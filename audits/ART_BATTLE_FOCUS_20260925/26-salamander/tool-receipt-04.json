@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen.imagegen",
+  "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-e4a5ad2f-7fec-4a43-85fa-60fc16fe3af0.png",
+  "sha256": "9a9701c7b127da311b031082f29c66b8c5b01cd94d3fae4f154275a95d5f6235",
+  "prompt": "sent-prompt-04.txt",
+  "reference": "generation-03/master.png",
+  "referenceUse": "opaque background repair; anatomy independently inspected again",
+  "seed": null
+}

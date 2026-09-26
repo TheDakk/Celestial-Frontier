@@ -1,0 +1,23 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/anatomy-builders.test.ts (3 tests | 1 failed) 9ms
+   × travelling extrema advance down the chain while start/end remain exact rest 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/anatomy-builders.test.ts > travelling extrema advance down the chain while start/end remain exact rest
+TypeError: P is not a function
+ ❯ apps/game/src/motion/travelling-wave.ts:6:68
+
+ ❯ travellingWave apps/game/src/motion/travelling-wave.ts:6:15
+ ❯ apps/game/src/motion/anatomy-builders.test.ts:2:95
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  00:22:35
+   Duration  158ms (transform 22ms, setup 0ms, import 29ms, tests 9ms, environment 0ms)
+

@@ -1,0 +1,11 @@
+{
+  "schema": "cf.anatomy-presence/v2",
+  "absent": [
+    "sting"
+  ],
+  "hidden": [
+    "leg4Far"
+  ],
+  "folded": [],
+  "note": "Manual rejected-paint declaration: missing far posterior chain is an uncertain numbering interpretation, not measured hidden coordinates. At least one chain is incomplete; no admission claimed."
+}

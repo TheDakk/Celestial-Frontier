@@ -1,0 +1,3 @@
+Create a transparent 1254 x 1254 PNG marking-mask texture for one retained Dragonfly master. No creature, silhouette, background, checkerboard, text or labels. Draw only white pigment shapes on an otherwise empty alpha-zero canvas. Maintain exact canvas coordinates; no cropping, resizing or centering.
+Loose irregular islands of white pigment within x=170 to1030,y=610 to850. Forty percent patch density; shapes20 to70pixels, soft natural lobes, substantial genuine transparent holes between clusters.
+All other pixels must have alpha zero. White is the mark; transparency is a real alpha hole.

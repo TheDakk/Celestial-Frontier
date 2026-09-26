@@ -1,0 +1,698 @@
+[
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/binding.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/binding.json",
+    "sha256": "d93c03d524fed21371b4254785bf4b26c9a3669842c3ab6a57753bffea5f209e",
+    "bytes": 2359044
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/declaration.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/declaration.json",
+    "sha256": "1988ea17253b6a3df0c23bb4587706c7dcdf949fe09cf02a599f3e1a9b2e8f21",
+    "bytes": 1517
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/intake-provenance.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/intake-provenance.json",
+    "sha256": "1993a57fc56ca5126c35d8abe5e4832c66de667ab84ae5103e763ba95711faa8",
+    "bytes": 3115
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/label-authoring-receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/label-authoring-receipt.json",
+    "sha256": "dd93e57a3e236216ba30ca512cbdb79b77595a37452ae961d170d7b8c571829a",
+    "bytes": 555
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/labels.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/labels.png",
+    "sha256": "d65d670485c89014421342e22cf44b8f56002dcba484dd98606c2d4a347cfda7",
+    "bytes": 49636
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/atlas/07-perch.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/atlas/07-perch.json",
+    "sha256": "213145ce566f8b4fde020edad5e3f46ff75881fc15b7216c4983073dedca37a7",
+    "bytes": 5397
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/atlas/07-perch.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/atlas/07-perch.png",
+    "sha256": "c75cdbdf3cfe4f71b01bd8e7c1030d0ec51d13947dda4444025c051b913099cb",
+    "bytes": 1101208
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/atlas/receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/atlas/receipt.json",
+    "sha256": "3829c4a33b4c96d16b4d7a0921adee54153d9081fc8e9002e44aefb33d816a65",
+    "bytes": 2373
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/binding.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/binding.json",
+    "sha256": "9419578c21aac05e004f2d1019aff3065ff20de1e03cf4aea4bfadc9fb456f88",
+    "bytes": 4505
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/keyed.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/keyed.png",
+    "sha256": "d69422a4a64e2e6b6d5a256e052b34699c8dc034af7b0a23a807a357075f049b",
+    "bytes": 1314398
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/manifest.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/manifest.json",
+    "sha256": "bf1e1e1a9b2b6c93901a05c15866c1aea75c3781a05b1e77436ea5557f5a7b54",
+    "bytes": 2114
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/ownership.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/ownership.png",
+    "sha256": "3c898c23ddb0ab3a8b690d14786644c7880b42c1ba74db5ad5ef9b9fef2fca52",
+    "bytes": 118905
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body-0.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/body-0.png",
+    "sha256": "2a99b0b8fa30e8be27e1818349c2012cbd5a6515866f22bf380a926a6caa2dbe",
+    "bytes": 109422
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body-1.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/body-1.png",
+    "sha256": "6953f542b59aa7fb515134f11ec9db8f3cdead9a75b0417cf95973419606dabf",
+    "bytes": 81406
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body-2.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/body-2.png",
+    "sha256": "967ee58a7966d41bf18ac23b22749421101b0f99a09449621be3d5415dd31c3a",
+    "bytes": 100630
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body-3.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/body-3.png",
+    "sha256": "b23b936dbe847acebd1c72e69b5e810ccbedc919f37c39e71735b5930dd8ffb0",
+    "bytes": 163640
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body-4.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/body-4.png",
+    "sha256": "f55ab2fab40325602e3d5b5e2363288fafa152229adaae2d824d077718936971",
+    "bytes": 42653
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body-5.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/body-5.png",
+    "sha256": "1ba44063f6737ce028a482f94d50f1a876ae6a8d002fa06d444f43d87fc58226",
+    "bytes": 48704
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/body.png",
+    "sha256": "301ea3c3ed188275deb73a34bf5ebb51311aad47791e2df102d98168689e7f1d",
+    "bytes": 144950
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/caudal.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/caudal.png",
+    "sha256": "9cd4f5799c77dadf1f3cea861a85629d1b2bffd5fbfe601de015de65a421508d",
+    "bytes": 178682
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/dorsal.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/dorsal.png",
+    "sha256": "512f0911b687d244e8484f659284ccac4ff4395cde1694553e1438cbc26970a0",
+    "bytes": 174301
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/far-pectoral.png",
+    "sha256": "5d4a36ad3383a96482509ff35a86a8fe5df9bccf8d4e29dcb7113d565342edcb",
+    "bytes": 27473
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/head.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/head.png",
+    "sha256": "af814effb793f797f24945faf67576b069601958e91c3a2c33a72d1e37cb4028",
+    "bytes": 129865
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/jaw.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/jaw.png",
+    "sha256": "710f0a09d8246d6abad58e23fc6f4ecc897fbe4d8c495d5cc0078c40d14c35a2",
+    "bytes": 31697
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/parts/near-pectoral.png",
+    "sha256": "46dc9084a6555a60796fe73ce1fab0967692669609b6db1e912f3653b45742ff",
+    "bytes": 74653
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/receipt.json",
+    "sha256": "2b3f4f5701d92d9d63e5fa88ca687d40285f559ca1b7287dba727ca85a8a9079",
+    "bytes": 3692
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/pre-split-binding.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/pre-split-binding.json",
+    "sha256": "8f462a82d0f7be99814e581cc21a860e2a64d61b8c4a23449fbd5c652caeb2f4",
+    "bytes": 1689176
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/receipt.json",
+    "sha256": "dc834423d5c27d7c7bf50bee3cfe64999e685b0a0b4e7640cd2ae6f01d9f5405",
+    "bytes": 2046
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/record.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/record.json",
+    "sha256": "cfbe868474d435b9d40c14a591063fe00671c06fd650347793939b4210b462cf",
+    "bytes": 5125
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/binding.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/binding.json",
+    "sha256": "a58b74a14448df1cb38c1737438fb65129c2bd59cd01fd4cfbf3c5f55028355e",
+    "bytes": 1992439
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/declaration.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/declaration.json",
+    "sha256": "4420a472332558b2c16481c5a196ea8fdfd34101370cf4d2ada8fd37a70104ac",
+    "bytes": 1517
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/intake-provenance.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/intake-provenance.json",
+    "sha256": "c8b13512675d0015351fc0db44362e30f5c855f865c10d5ee42f8dd250acad57",
+    "bytes": 3099
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/label-authoring-receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/label-authoring-receipt.json",
+    "sha256": "d5e0374fe816ed06ffcc99216cad6a1c04a25a40616a65feb49fea853c5293e8",
+    "bytes": 556
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/labels.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/labels.png",
+    "sha256": "65182a3a09c83310cc24ae3fd15705136bd165fd50998df109315805e74e94c5",
+    "bytes": 47035
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/atlas/08-cod.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/atlas/08-cod.json",
+    "sha256": "6db6fcbbf00f58cfb460089ec2179659381798928521b852b9c7fc38d1f92d23",
+    "bytes": 5398
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/atlas/08-cod.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/atlas/08-cod.png",
+    "sha256": "e8ff6fc927c917fa5e2c86b1112cb533ff3aded329b3f2f478f26f0b3061d920",
+    "bytes": 949487
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/atlas/receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/atlas/receipt.json",
+    "sha256": "12dffc47208926f7c29e73abd1083a1098dbea221bc0bf7ce5820d0aa6483773",
+    "bytes": 2371
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/binding.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/binding.json",
+    "sha256": "ab1f1e76ebff7a65766950ddc4f0f8a59c3fd595d33a4d2dbd7cb5761752d69c",
+    "bytes": 4508
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/keyed.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/keyed.png",
+    "sha256": "5b37f25b9030a8719fa4c0cde02d94d81344967f4bdc4db7d170c704dc409aa0",
+    "bytes": 1078499
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/manifest.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/manifest.json",
+    "sha256": "3499fb159362c21f7584072b269c8d69b7b4ec9db89a52a4e1a3daf326be2ada",
+    "bytes": 2112
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/ownership.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/ownership.png",
+    "sha256": "7a81944d9cae259fd8647cbfdf8376d5281cef9d66328b4dc801079ba8c07cfb",
+    "bytes": 109383
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body-0.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/body-0.png",
+    "sha256": "1e6048961ee4ef558dd1b8cb5e2fafcfc9570d4158da302bb46d5a16f91949be",
+    "bytes": 54378
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body-1.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/body-1.png",
+    "sha256": "d3a50af29d76983bc3580c81645decfe0208ef5d5e89097870f192a6e97b0f73",
+    "bytes": 44366
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body-2.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/body-2.png",
+    "sha256": "11b69e5b7b5df2fc5e9824fc35d61c07b35298ccbda5b2903869e02fafdd7125",
+    "bytes": 79837
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body-3.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/body-3.png",
+    "sha256": "7f72b62f39df9d35aeec27e35a13b4dc0fd38592388ca2e0ce2e28d5453740d7",
+    "bytes": 172015
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body-4.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/body-4.png",
+    "sha256": "47bda142330788d39b4f48678e0651644eecde59781415dbcff2a7bb5e7cb475",
+    "bytes": 53707
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body-5.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/body-5.png",
+    "sha256": "224cb14e1d7961f3e5acfd82e8314d9194e8a1e3251ba3c38823fb076cb7894b",
+    "bytes": 74515
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/body.png",
+    "sha256": "47fab3c60b3d1f0a64d46163f37fafc20d37a6f914cca793e6ba2d115a1af9f7",
+    "bytes": 134849
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/caudal.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/caudal.png",
+    "sha256": "7af24267ef18b477421ed69a5322261926f8b8f4e1f8f18a961fa794d63ae2bc",
+    "bytes": 119332
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/dorsal.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/dorsal.png",
+    "sha256": "5c95521d477ad6ae88eb529e9b59bccf021e42b967d7f2227e6252e01fed3a0d",
+    "bytes": 149278
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/far-pectoral.png",
+    "sha256": "4012ecdd0a6c05b1ba4ca57abc3542faf4c89819b7ab70b4f5b49f5ed6dad682",
+    "bytes": 12153
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/head.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/head.png",
+    "sha256": "ec07453da516fadcb20b2135e82177fe67d128def2c2e7239f192cde69bd87f2",
+    "bytes": 91567
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/jaw.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/jaw.png",
+    "sha256": "569a78222163210872b45c005b231eeb10caf27576caebbca718e4c787196ac9",
+    "bytes": 36059
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/parts/near-pectoral.png",
+    "sha256": "bc55248372db9db1fd74cbe315d5866c488188d865d221db45d4805cf50206b6",
+    "bytes": 52623
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/parts/receipt.json",
+    "sha256": "9001a9564115c6eb57fec7333e2d756101953b7405208ce33c3c08ac14454754",
+    "bytes": 3695
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/pre-split-binding.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/pre-split-binding.json",
+    "sha256": "d0e829049adcd348d2022a1b377926ae6fe56d131c469e748e3f5e25884c5a29",
+    "bytes": 1404577
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/receipt.json",
+    "sha256": "cf22d823874c78acfd3a85f11a8ab7fa7f1bd6fbcbcb14fb2c2642e0eb2c2ea5",
+    "bytes": 2044
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/record.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/08-cod/fit/record.json",
+    "sha256": "3fb9106352ac81df53c18994d5da6a649f758588478d661fa271baaaae714191",
+    "bytes": 5120
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/binding.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/binding.json",
+    "sha256": "b9e27e9b870a65c8dfdedaade78a9113a03f2dc316ce7980e33bc65500f071ee",
+    "bytes": 2476104
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/declaration.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/declaration.json",
+    "sha256": "03c81d0adc361938b34e3da46975a43a24f1dfb293030fa04831feed728479a0",
+    "bytes": 1517
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/intake-provenance.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/intake-provenance.json",
+    "sha256": "6c487418dc5f92e0dc6d7b620649ad2785399aa978ff67a17275e8855e68507f",
+    "bytes": 3107
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/label-authoring-receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/label-authoring-receipt.json",
+    "sha256": "3eb6453db4d1dffde05eaa91b3ef3825902efbc2efab81e117314f2a7cedc0b0",
+    "bytes": 555
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/labels.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/labels.png",
+    "sha256": "7e0356af2ed02a0c74d24e622418e0dc6b76e2a116107ab1b7c970efb68500d9",
+    "bytes": 49714
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/atlas/09-carp.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/atlas/09-carp.json",
+    "sha256": "d0b7fdb9fcc32c9beaae5339764e68b9b317920e94bcbfa4c0d17259338d8bea",
+    "bytes": 5408
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/atlas/09-carp.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/atlas/09-carp.png",
+    "sha256": "f8ac2b352d3d040808630ae7bd7603f20d6f304e2941d13dc6ab1233fab77de5",
+    "bytes": 1086582
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/atlas/receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/atlas/receipt.json",
+    "sha256": "7c90278712f7f16ccf3bdab3dfd6af297e397509bda34aea2f56a9e01eb2c05d",
+    "bytes": 2372
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/binding.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/binding.json",
+    "sha256": "7d9283aa4e50bb915a2974cab3c46fe470e8e83d79867aa35a5c0b7ee6d05c8c",
+    "bytes": 4513
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/keyed.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/keyed.png",
+    "sha256": "24042d0d6336bae72b034311d71388f9bb700732a74398990add2466efdbec6c",
+    "bytes": 1290880
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/manifest.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/manifest.json",
+    "sha256": "ae41236c087c3a7c842691f983604bda9aca1e3c2150231f1c2ce5efbe7fdeb1",
+    "bytes": 2113
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/ownership.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/ownership.png",
+    "sha256": "d1bc29bd26aefa1d58a537eff1c5af69e2c1d29a57af5ace24e2daea6dd238cb",
+    "bytes": 113734
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body-0.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/body-0.png",
+    "sha256": "f61f5a357208658a0902281cff64254c68239005fe62c19e9ba019200d7a40f3",
+    "bytes": 166595
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body-1.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/body-1.png",
+    "sha256": "9f06d27fb59aee192a3ec88875955a7d4cfdaf627dd228b7992a6836b4bd11ff",
+    "bytes": 81432
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body-2.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/body-2.png",
+    "sha256": "e297f03ef943d3d75da5adba92d9472eed061a93b86ac2bfbd46b3fca9fee074",
+    "bytes": 67497
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body-3.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/body-3.png",
+    "sha256": "ece1116c7fb9b095d0000c73e9efc66403eb6143eb4a5c69becbe495c547f26f",
+    "bytes": 159971
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body-4.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/body-4.png",
+    "sha256": "c7b9026af340e07c0269895e418606d6d1ca569637c25bd7846ab22074e99a50",
+    "bytes": 54109
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body-5.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/body-5.png",
+    "sha256": "05b9b9047a102567d1e597e0c2546cd7e8b2972447f37fa4192e73cee9229072",
+    "bytes": 35370
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/body.png",
+    "sha256": "0107390a526e245f424542592f45e5827f9f45ca13df3c4530f0b25477a19a9b",
+    "bytes": 193421
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/caudal.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/caudal.png",
+    "sha256": "6e5f5e7a1b5abc15cdf66de0f5e391bcbd0e1a3fab83233737cc8300de28f37a",
+    "bytes": 190620
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/dorsal.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/dorsal.png",
+    "sha256": "039717f917731a9e868b112e2df265b74380b476b06bbfcdb49a5f524aab562b",
+    "bytes": 101345
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/far-pectoral.png",
+    "sha256": "039dfbe52807475e78799e0c842fca200515b08da7246168f7663576b22db63c",
+    "bytes": 24986
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/head.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/head.png",
+    "sha256": "b640c2cfbde5451421d15dc1d35420a2454b0284ab8a71f68ab5754eef205fcb",
+    "bytes": 90981
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/jaw.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/jaw.png",
+    "sha256": "311f27b7cd786c1001abee5a326b641e60e9473e7f447460fd33575f4dbc8961",
+    "bytes": 23993
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/parts/near-pectoral.png",
+    "sha256": "9e0ee6aefa1470d0d8503b129dbbf08f3d78c7102ec042d94f97b17d0ae5bc99",
+    "bytes": 100804
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/parts/receipt.json",
+    "sha256": "fe775a5ff19b442f84183bf65fab6f32da3abce671cd04898860b1ab8cb50730",
+    "bytes": 3694
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/pre-split-binding.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/pre-split-binding.json",
+    "sha256": "c4ce390dd71ce8b6d4398d049fbb871da434840c5d8247f7010a563d76f74668",
+    "bytes": 1753779
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/receipt.json",
+    "sha256": "1ad51b456b82802688308253b953b299bffb5e6c63063b5ccc6f9ffa8b618612",
+    "bytes": 2045
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/record.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/09-carp/fit/record.json",
+    "sha256": "ff582652feba9e1a51be808004a8e5fbb94007d88285321161156ea1020260b3",
+    "bytes": 5129
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/binding.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/binding.json",
+    "sha256": "26224a37df5ea0509c315d4d8b3d2325a59712b87e8311ac2ac476ca0aac8b6f",
+    "bytes": 2412199
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/declaration.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/declaration.json",
+    "sha256": "1988ea17253b6a3df0c23bb4587706c7dcdf949fe09cf02a599f3e1a9b2e8f21",
+    "bytes": 1517
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/intake-provenance.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/intake-provenance.json",
+    "sha256": "1993a57fc56ca5126c35d8abe5e4832c66de667ab84ae5103e763ba95711faa8",
+    "bytes": 3115
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/label-authoring-receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/label-authoring-receipt.json",
+    "sha256": "dd93e57a3e236216ba30ca512cbdb79b77595a37452ae961d170d7b8c571829a",
+    "bytes": 555
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/labels.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/labels.png",
+    "sha256": "d65d670485c89014421342e22cf44b8f56002dcba484dd98606c2d4a347cfda7",
+    "bytes": 49636
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/atlas/07-perch.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/atlas/07-perch.json",
+    "sha256": "213145ce566f8b4fde020edad5e3f46ff75881fc15b7216c4983073dedca37a7",
+    "bytes": 5397
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/atlas/07-perch.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/atlas/07-perch.png",
+    "sha256": "c75cdbdf3cfe4f71b01bd8e7c1030d0ec51d13947dda4444025c051b913099cb",
+    "bytes": 1101208
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/atlas/receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/atlas/receipt.json",
+    "sha256": "3829c4a33b4c96d16b4d7a0921adee54153d9081fc8e9002e44aefb33d816a65",
+    "bytes": 2373
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/binding.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/binding.json",
+    "sha256": "9419578c21aac05e004f2d1019aff3065ff20de1e03cf4aea4bfadc9fb456f88",
+    "bytes": 4505
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/keyed.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/keyed.png",
+    "sha256": "d69422a4a64e2e6b6d5a256e052b34699c8dc034af7b0a23a807a357075f049b",
+    "bytes": 1314398
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/manifest.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/manifest.json",
+    "sha256": "bf1e1e1a9b2b6c93901a05c15866c1aea75c3781a05b1e77436ea5557f5a7b54",
+    "bytes": 2114
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/ownership.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/ownership.png",
+    "sha256": "3c898c23ddb0ab3a8b690d14786644c7880b42c1ba74db5ad5ef9b9fef2fca52",
+    "bytes": 118905
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/body-0.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/body-0.png",
+    "sha256": "2a99b0b8fa30e8be27e1818349c2012cbd5a6515866f22bf380a926a6caa2dbe",
+    "bytes": 109422
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/body-1.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/body-1.png",
+    "sha256": "6953f542b59aa7fb515134f11ec9db8f3cdead9a75b0417cf95973419606dabf",
+    "bytes": 81406
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/body-2.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/body-2.png",
+    "sha256": "967ee58a7966d41bf18ac23b22749421101b0f99a09449621be3d5415dd31c3a",
+    "bytes": 100630
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/body-3.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/body-3.png",
+    "sha256": "b23b936dbe847acebd1c72e69b5e810ccbedc919f37c39e71735b5930dd8ffb0",
+    "bytes": 163640
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/body-4.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/body-4.png",
+    "sha256": "f55ab2fab40325602e3d5b5e2363288fafa152229adaae2d824d077718936971",
+    "bytes": 42653
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/body-5.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/body-5.png",
+    "sha256": "1ba44063f6737ce028a482f94d50f1a876ae6a8d002fa06d444f43d87fc58226",
+    "bytes": 48704
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/body.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/body.png",
+    "sha256": "301ea3c3ed188275deb73a34bf5ebb51311aad47791e2df102d98168689e7f1d",
+    "bytes": 144950
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/caudal.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/caudal.png",
+    "sha256": "9cd4f5799c77dadf1f3cea861a85629d1b2bffd5fbfe601de015de65a421508d",
+    "bytes": 178682
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/dorsal.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/dorsal.png",
+    "sha256": "512f0911b687d244e8484f659284ccac4ff4395cde1694553e1438cbc26970a0",
+    "bytes": 174301
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/far-pectoral.png",
+    "sha256": "5d4a36ad3383a96482509ff35a86a8fe5df9bccf8d4e29dcb7113d565342edcb",
+    "bytes": 27473
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/head.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/head.png",
+    "sha256": "af814effb793f797f24945faf67576b069601958e91c3a2c33a72d1e37cb4028",
+    "bytes": 129865
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/jaw.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/jaw.png",
+    "sha256": "710f0a09d8246d6abad58e23fc6f4ecc897fbe4d8c495d5cc0078c40d14c35a2",
+    "bytes": 31697
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/parts/near-pectoral.png",
+    "sha256": "46dc9084a6555a60796fe73ce1fab0967692669609b6db1e912f3653b45742ff",
+    "bytes": 74653
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/parts/receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/parts/receipt.json",
+    "sha256": "2b3f4f5701d92d9d63e5fa88ca687d40285f559ca1b7287dba727ca85a8a9079",
+    "bytes": 3692
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/pre-split-binding.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/pre-split-binding.json",
+    "sha256": "8f462a82d0f7be99814e581cc21a860e2a64d61b8c4a23449fbd5c652caeb2f4",
+    "bytes": 1689176
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/receipt.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/receipt.json",
+    "sha256": "dc834423d5c27d7c7bf50bee3cfe64999e685b0a0b4e7640cd2ae6f01d9f5405",
+    "bytes": 2046
+  },
+  {
+    "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/fit/record.json",
+    "copy": "audits/C49_FISH_REVIEW_20260926/scratch/07-perch-unwelded/fit/record.json",
+    "sha256": "cfbe868474d435b9d40c14a591063fe00671c06fd650347793939b4210b462cf",
+    "bytes": 5125
+  }
+]

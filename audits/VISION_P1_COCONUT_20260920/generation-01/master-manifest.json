@@ -1,0 +1,10 @@
+{
+  "schema": "cf.master-intake/v1",
+  "masters": [
+    {
+      "path": "coconut-crab-master.png",
+      "sha256": "7954331dc3ce80bf3b4e2e3759bd0b5c576d659ff5fcb4d01b8efc536bba8890",
+      "kind": "cutout"
+    }
+  ]
+}

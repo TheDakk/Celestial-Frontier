@@ -1,0 +1,11 @@
+{
+  "finishedAt": "2026-09-09T06:04:57.827435+00:00",
+  "command": [
+    "node",
+    "tools/validate.js"
+  ],
+  "exitCode": 0,
+  "logSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+  "legacySha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746",
+  "legacyHtmlUnchanged": true
+}

@@ -1,0 +1,5 @@
+{
+  "failure": "Negative fixture attempted direct mutation of frozen localAiReferenceBindingV2 output before runtime admission.",
+  "correction": "Serialize/detach fixture recipe reference bindings as the actual JSON transport does, then mutate those detached fields. Product and all guards unchanged.",
+  "firstResult": "63 PASS / 1 fixture FAIL; no unchanged retry."
+}

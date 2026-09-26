@@ -1,0 +1,17 @@
+$ node --test port/v2/tools/creature-animation/terminal-contact-pads.test.mjs
+✔ absence preserves the legacy result without inspecting new-model arguments (0.499416ms)
+✔ the actual hopper inventory accepts explicit positive-alpha anchors without inference or mutation (0.57975ms)
+✔ the exact declared pixel must contain paint; neighboring paint cannot admit a transparent point (0.144084ms)
+✔ closed source boundaries choose their own edge pixel and do not search inward (0.091458ms)
+✔ unknown schemas, malformed payloads and non-exact contact inventories fail closed (0.24925ms)
+✔ invalid numbers, sparse coordinates and unusable source dimensions cannot be admitted (0.228125ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 118.701
+
+EXIT_CODE=0

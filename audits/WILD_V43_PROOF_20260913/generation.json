@@ -1,0 +1,32 @@
+{
+  "tool": "built-in image_gen",
+  "calls": 3,
+  "rerolls": 0,
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "images": [
+    {
+      "phase": "launch",
+      "builtinOutput": "/Users/nick/.codex/generated_images/01a095fb-851e-7d61-9aea-08db6c84e4ed/exec-dd221536-cf13-4a00-939a-d45890a31026.png",
+      "master": "wild-launch.png",
+      "sha256": "5a46a29eb41a701b428531720251c2fa688777618e824e4297c453edf537a642",
+      "prompt": "wild-launch.prompt.txt",
+      "promptSha256": "0e8e09a2f32ed5f7c1b0278c03c2c6ee6aac9c5b53ad9038ce9be9dffb8aef93"
+    },
+    {
+      "phase": "travel",
+      "builtinOutput": "/Users/nick/.codex/generated_images/01a095fb-851e-7d61-9aea-08db6c84e4ed/exec-dc87607c-c37f-4ade-bf98-565a956202dd.png",
+      "master": "wild-travel.png",
+      "sha256": "bd62c402b5bdc4929a29943952b29e5736e27f7f3ec325214bc0f5a68fb29679",
+      "prompt": "wild-travel.prompt.txt",
+      "promptSha256": "bc3686e7daba3b5e051f7ffc268a06dd737e4783dd29d3f8d8a6ec3af9301bbc"
+    },
+    {
+      "phase": "impact",
+      "builtinOutput": "/Users/nick/.codex/generated_images/01a095fb-851e-7d61-9aea-08db6c84e4ed/exec-aa2c0227-5580-40ee-a20f-67c90e214341.png",
+      "master": "wild-impact.png",
+      "sha256": "978296588ae7ad5694380c92ab7499f34a4a9ec27c654b064b82b7c0a924fc79",
+      "prompt": "wild-impact.prompt.txt",
+      "promptSha256": "ef3ac73a9748668f7c7b399ea3873f2f0365f6d78bb845190b71420e6168c04e"
+    }
+  ]
+}

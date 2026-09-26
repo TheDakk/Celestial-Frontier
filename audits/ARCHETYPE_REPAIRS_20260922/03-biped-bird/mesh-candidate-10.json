@@ -1,0 +1,20 @@
+{
+  "schema": "cf.authored-mesh-density-candidate/v1",
+  "previous": "fit-09",
+  "candidate": "fit-10",
+  "global": {
+    "boundaryStep": 40,
+    "interiorStep": 80
+  },
+  "refinements": [
+    {
+      "x": 0,
+      "y": 680,
+      "width": 700,
+      "height": 352,
+      "boundaryStep": 24,
+      "interiorStep": 56
+    }
+  ],
+  "reason": "Retained coarse-mesh kick failure is13tail folds in source envelope[156,783,273,940]; whole tail cutout[29,744,599,205] and collar receive prior fine sampling. Masks/RGBA/presence/landmarks and all fixed/contact/shape/solver/gate policies unchanged. Actual vertex/pin IDs are remeshed and requalified."
+}

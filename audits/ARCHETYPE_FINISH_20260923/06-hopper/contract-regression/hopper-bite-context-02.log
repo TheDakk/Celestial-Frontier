@@ -1,0 +1,13 @@
+cwd: /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+command argv: ['npx', 'vitest', 'run', 'apps/game/src/creature-rig-contact-hopper.test.ts', '-t', 'melee:bite|standalone raw bite']
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed | 5 skipped (7)
+   Start at  02:24:44
+   Duration  287ms (transform 125ms, setup 0ms, import 169ms, tests 9ms, environment 0ms)
+
+
+exitCode: 0

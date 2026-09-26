@@ -1,0 +1,16 @@
+{
+  "schema": "cf.single-anatomy-review/v1",
+  "throughSourceHead": "a6afec2e065430755d2f1516c2f064f3bd4e09ab",
+  "films": 15,
+  "reviewSheets": 16,
+  "mediaFiles": 833,
+  "rosterTotal": 58,
+  "retainedFits": 5,
+  "fitRefusals": 53,
+  "newVisualQualifications": 0,
+  "openLeafRows": 82,
+  "phoneDelivery": "desktop native D1 PASS; phone canaries instrument-red",
+  "s2AfterR3S": false,
+  "gitWrites": "signed local commits only; no branches, fetch, push, PR, merge or deploy",
+  "splitProjectionHead": "a6afec2e065430755d2f1516c2f064f3bd4e09ab"
+}

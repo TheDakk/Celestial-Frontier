@@ -1,0 +1,12 @@
+0 {"kind":"easy","baseline":512,"planned":512,"command":512,"gap":0,"oracleEdge":0,"phaseNodes":0}
+0 {"kind":"normal","baseline":262,"planned":300,"command":300,"gap":7.421875,"oracleEdge":0,"phaseNodes":0}
+0 {"kind":"guardian","baseline":182,"planned":266,"command":353,"gap":16.40625,"oracleEdge":16.9921875,"phaseNodes":1036,"solo":{"before":106,"after":103,"delta":-0.5859375}}
+0 {"kind":"titan","baseline":246,"planned":348,"command":440,"gap":19.921875,"oracleEdge":17.96875,"phaseNodes":1166,"solo":{"before":44,"after":43,"delta":-0.1953125}}
+1 {"kind":"easy","baseline":512,"planned":512,"command":512,"gap":0,"oracleEdge":0,"phaseNodes":0}
+1 {"kind":"normal","baseline":262,"planned":305,"command":305,"gap":8.3984375,"oracleEdge":0,"phaseNodes":0}
+1 {"kind":"guardian","baseline":182,"planned":263,"command":352,"gap":15.8203125,"oracleEdge":17.3828125,"phaseNodes":1031,"solo":{"before":106,"after":103,"delta":-0.5859375}}
+1 {"kind":"titan","baseline":246,"planned":350,"command":441,"gap":20.3125,"oracleEdge":17.7734375,"phaseNodes":1166,"solo":{"before":44,"after":43,"delta":-0.1953125}}
+2 {"kind":"easy","baseline":512,"planned":512,"command":512,"gap":0,"oracleEdge":0,"phaseNodes":0}
+2 {"kind":"normal","baseline":262,"planned":308,"command":308,"gap":8.984375,"oracleEdge":0,"phaseNodes":0}
+2 {"kind":"guardian","baseline":182,"planned":267,"command":354,"gap":16.6015625,"oracleEdge":16.9921875,"phaseNodes":1029,"solo":{"before":106,"after":103,"delta":-0.5859375}}
+2 {"kind":"titan","baseline":246,"planned":346,"command":441,"gap":19.53125,"oracleEdge":18.5546875,"phaseNodes":1167,"solo":{"before":44,"after":43,"delta":-0.1953125}}

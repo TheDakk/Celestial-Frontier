@@ -1,0 +1,85 @@
+{
+  "schema": "cf.local-image-license-provenance.v1",
+  "observedAt": "2026-09-09",
+  "conversion": {
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "declaredLicense": "apache-2.0",
+    "ownLicenseFilePresentInRetainedTree": false,
+    "upstreamConversionCommitsPinnedByCard": false
+  },
+  "upstreamModels": {
+    "flux": {
+      "id": "black-forest-labs/FLUX.2-klein-4B",
+      "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+      "metadataSource": "https://huggingface.co/api/models/black-forest-labs/FLUX.2-klein-4B/revision/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+      "metadataResponseSha256": "0bb40fc6be7249e0f445a31f931adaa0b9dad3f8ff6d6308760a2c935f8c6519"
+    },
+    "qwen": {
+      "id": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "metadataSource": "https://huggingface.co/api/models/Qwen/Qwen3-4B",
+      "metadataResponseSha256": "14ae81b62f83fe94d226f2e7330ae7fc3059845f2ee003e9640ba0054030b454"
+    }
+  },
+  "onnxRuntimeSource": {
+    "tag": "v1.29.0",
+    "tagApiUrl": "https://api.github.com/repos/microsoft/onnxruntime/git/ref/tags/v1.29.0",
+    "commit": "2e2543fbe9fae542f921d47a72d21d5a4ef0b710",
+    "objectApiUrl": "https://api.github.com/repos/microsoft/onnxruntime/git/commits/2e2543fbe9fae542f921d47a72d21d5a4ef0b710"
+  },
+  "installedPackages": {
+    "onnxruntime-web": {
+      "version": "1.29.0",
+      "declaredLicense": "MIT",
+      "packageJsonSha256": "9c803baa1820e75a82907bbf29c0a4be84d4eaec33693b4ab3bd5051fde85ee9",
+      "lockIntegrity": "sha512-LuQlpX6MFLJZu756erwUeb1mNfoJGbs1kzDwJGNlf5RvfYMdqhcY3vNpDPK40CUV2HoWTkIj+uS0o36GFHjeYw=="
+    },
+    "onnxruntime-common": {
+      "version": "1.29.0",
+      "declaredLicense": "MIT",
+      "packageJsonSha256": "976083947171b96bb7e998fdc8137bc50d3efb44c786ff3dbafb7f1bc4684dc8",
+      "lockIntegrity": "sha512-/F63/e2VJoaVXGGNu6S5QH7jivBThGO95OzAVXXQ8hTta/b1QxI8udHa6cI3+3mAb5WWIIaMMwfZw01oivjJ1g=="
+    },
+    "@huggingface/tokenizers": {
+      "version": "0.2.0",
+      "declaredLicense": "Apache-2.0",
+      "packageJsonSha256": "f6b9849b58de625c4fd79583242dd4506914b92082f9af17719d39416658ef24",
+      "lockIntegrity": "sha512-LidMHe1FpcSYH4vcSjXooda34pC0M8m1gmDOv7SQi6Iv+ib1zX7J3sHBCC9/3FPCkn2k1b55FneVqMRxrr99pg=="
+    }
+  },
+  "files": {
+    "flux2-klein-4b-LICENSE.md": {
+      "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B/resolve/e7b7dc27f91deacad38e78976d1f2b499d76a294/LICENSE.md",
+      "bytes": 9584,
+      "sha256": "ca02bc51900ab07789d1b70283329e7137f5af98f5161c23a1c81fc38a4af1fe",
+      "origin": "pinned-upstream-file"
+    },
+    "qwen3-4b-LICENSE": {
+      "source": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/LICENSE",
+      "bytes": 11343,
+      "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+      "origin": "pinned-upstream-file"
+    },
+    "onnxruntime-1.29.0-LICENSE": {
+      "source": "https://raw.githubusercontent.com/microsoft/onnxruntime/2e2543fbe9fae542f921d47a72d21d5a4ef0b710/LICENSE",
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "origin": "pinned-upstream-file"
+    },
+    "tokenizers-0.2.0-LICENSE": {
+      "source": "tools/local-image-generation/node_modules/@huggingface/tokenizers/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "origin": "installed-package-exact-copy"
+    },
+    "onnxruntime-web-1.29.0-installed-banner.txt": {
+      "source": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "bytes": 132,
+      "sha256": "188cf2eb1cabf1a851856f9bf347885455ce47a130d42a25b675475351c0cbc0",
+      "origin": "installed-bundle-exact-leading-comment",
+      "bundleSha256": "08272eb8dadd249a0eaa53e19f4e5b5d01bc8a121240719db29093cfb776bc27"
+    }
+  },
+  "distributionQualified": false
+}

@@ -1,0 +1,23 @@
+✔ admits the actual retained PNG with its full input and returns identical bytes (4.008542ms)
+✔ rejects absent, malformed, stale content and original identities (32.393083ms)
+✔ rejects coherently rehashed wrong PNG magic or declared dimensions (10.012417ms)
+✔ admits complete ordered synthetic counterpart only; no native inference claim (0.492ms)
+✔ rejects absent/not-ready/inconsistent-phase/error status (0.184791ms)
+✔ rejects incomplete and mismatched totals (0.140208ms)
+✔ rejects a stale or substituted normalized manifest SHA (0.072416ms)
+✔ rejects missing, duplicated or reordered Blob carriers (0.149167ms)
+✔ rejects corrupt head/tail and wrong declared Blob length (0.122541ms)
+✔ rejects a changed file path even when byte samples match another carrier (0.063458ms)
+✔ pinned CLI compiles only the two production owners and preserves the real constructor error code (94.400959ms)
+✔ admits exact activated package controller on a new document (0.148167ms)
+✔ rejects uncontrolled, stale-document, substituted-script and wrong-origin controller observations (0.129125ms)
+✔ live prefix waits for only the exact committed chunk, without directory enumeration (0.621541ms)
+✔ live prefix refuses corrupt marker/chunk and propagates unrelated storage errors (0.22875ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 203.245042

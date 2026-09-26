@@ -1,0 +1,30 @@
+{
+  "schema": "cf.archetype-sprint-result/v1",
+  "item": 6,
+  "name": "Tree Frog",
+  "family": "hopper",
+  "status": "RED",
+  "restDifferentChannels": 0,
+  "static": {
+    "rows": 0,
+    "reds": 0,
+    "exactRest": false,
+    "status": "REFUSED",
+    "refusal": {
+      "stage": "fixture",
+      "error": "MotionCompileError: motion refused (unsupported-materials): surface \"moist granular green frog skin, cream underside and orange adhesive toe discs\" maps to no kit material\n    at compileBodyCard (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Nixvtq/run.mjs:10666:23)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Nixvtq/run.mjs:18863:42\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Nixvtq/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-Nixvtq/run.mjs:19137:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+      "contact": null,
+      "pose": null
+    }
+  },
+  "film": {
+    "status": "FAIL",
+    "refusals": null,
+    "cpuP95Ms": null,
+    "cpuScope": "whole two-rig battle2 stage; per-creature CPU not exposed",
+    "error": "Error: MotionCompileError: motion refused (unsupported-materials): surface \"moist granular green frog skin, cream underside and orange adhesive toe discs\" maps to no kit material\n    at compileBodyCard (http://127.0.0.1:61464/bundle.js:26841:23)\n    at loadSide (http://127.0.0.1:61464/bundle.js:27006:16)\n    at async Promise.all (index 0)\n    at async http://127.0.0.1:61464/bundle.js:27050:24\n    at file:///Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs:47:148",
+    "source": "5154c64f6f5fe0b9a75bc3f7a51e7da56b6b2e7f"
+  },
+  "intakeRefusal": null,
+  "paintHumanAccepted": false
+}

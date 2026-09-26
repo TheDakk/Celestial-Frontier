@@ -1,0 +1,12 @@
+{
+  "path": "civet-first-opaque.png",
+  "sha256": "86025b8d8c1e337e9795433f48251d6a91bd76fee69e8e13c564c7fedbb1377e",
+  "bytes": 2180743,
+  "width": 1536,
+  "height": 1024,
+  "channels": "RGB",
+  "opaque": true,
+  "status": "FAIL_ALPHA",
+  "tool": "built-in image_gen",
+  "source": "/Users/nick/.codex/generated_images/01a08300-a4ef-7a60-a9df-aabf7a21aaab/exec-9c988a98-6fb7-4dac-b172-47bc694a1baa.png"
+}

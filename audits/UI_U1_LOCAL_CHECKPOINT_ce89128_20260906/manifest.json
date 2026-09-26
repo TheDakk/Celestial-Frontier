@@ -1,0 +1,267 @@
+{
+  "schema": "cf-u1-local-checkpoint-evidence/v1",
+  "source": "ce8912864fabbe5624651e76c06b94f95b734f39",
+  "acceptedProduct": "053ef439774520577071f0ca50887337dd938755",
+  "status": "STOPPED_AT_SLICE_INSTRUMENT_RED",
+  "results": {
+    "trackedInputDevelop": "PASS",
+    "normalThreeViewReview": "PASS",
+    "slice": "FAIL: two instrument findings; dirty-diagnostic due to preserved ambient .DS_Store",
+    "phoneCanaries": "NOT RUN"
+  },
+  "retry": false,
+  "hostedActions": 0,
+  "files": [
+    {
+      "path": "static.log.gz",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-static-ce89128-20260906.log",
+      "compression": "gzip",
+      "bytes": 2948,
+      "sha256": "734adf44379f75049be9208c0b182e40c38fe194a4d3f11ef91f049dd86731d7",
+      "payloadBytes": 7510,
+      "payloadSha256": "1548d43fe65a84a0cc85600b8653e65c204ed4027a052ef02647b0495e7ec4e1"
+    },
+    {
+      "path": "normal-build.log.gz",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-build-ce89128-20260906.log",
+      "compression": "gzip",
+      "bytes": 1875,
+      "sha256": "9147047aa00bf363f934f502cf4bca756485a69978c987be1360a9d316159175",
+      "payloadBytes": 5281,
+      "payloadSha256": "ded56739c87b7260b5f0a880e804a3f76f99e5f3b5afc527784aeee3f67471bb"
+    },
+    {
+      "path": "normal-review.log.gz",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906.log",
+      "compression": "gzip",
+      "bytes": 103,
+      "sha256": "5ec985f12c14dc2edf0a69e2e69df41affc0414affedbacc7522b0ac6b5e3ab7",
+      "payloadBytes": 85,
+      "payloadSha256": "56008f9be46f8c3d947bfab754dc0280dbf1149717b99d23c7c861c831d89da7"
+    },
+    {
+      "path": "slice-command.log.gz",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-slice-ce89128-20260906.log",
+      "compression": "gzip",
+      "bytes": 599,
+      "sha256": "98c37943e11a42489c767d9bc9138cc2ad7e31d5cd683543caadbb11f4395c1b",
+      "payloadBytes": 1030,
+      "payloadSha256": "ad0eff7be400c36d06e663b201b2a8ffd58ed011bfd137b254694edbdc75684c"
+    },
+    {
+      "path": "normal-review/review.json.gz",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906/review.json",
+      "compression": "gzip",
+      "bytes": 1738414,
+      "sha256": "15574451224edcc403cf84bd868992a9f13a592f290ad00a03101206ca4f2ae5",
+      "payloadBytes": 12748548,
+      "payloadSha256": "8cae0570b8c289968b96d03a61667319651cc7512d60d30e2c1b2d9c5e06fe16"
+    },
+    {
+      "path": "normal-review/independent-verification.json",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906/independent-verification.json",
+      "compression": "none",
+      "bytes": 7812,
+      "sha256": "186daf2f960a1f598670e62069f1969b92766a94ff9a2f0a0e4eb10a08fbcf84",
+      "payloadBytes": 7812,
+      "payloadSha256": "186daf2f960a1f598670e62069f1969b92766a94ff9a2f0a0e4eb10a08fbcf84"
+    },
+    {
+      "path": "normal-review/u1-main-desktop-comparison.png",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906/u1-main-desktop-comparison.png",
+      "compression": "none",
+      "bytes": 1173420,
+      "sha256": "8859e47e43d168d63f5c5ef80ddfc5993084a85a3975230b82dcf5ad2f330a18",
+      "payloadBytes": 1173420,
+      "payloadSha256": "8859e47e43d168d63f5c5ef80ddfc5993084a85a3975230b82dcf5ad2f330a18"
+    },
+    {
+      "path": "normal-review/u1-main-desktop.png",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906/u1-main-desktop.png",
+      "compression": "none",
+      "bytes": 266958,
+      "sha256": "5074864e4262b3c5ef3ce3a198cb4e94166a2130732ef84d4710a749b6831a63",
+      "payloadBytes": 266958,
+      "payloadSha256": "5074864e4262b3c5ef3ce3a198cb4e94166a2130732ef84d4710a749b6831a63"
+    },
+    {
+      "path": "normal-review/u1-main-phone-comparison.png",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906/u1-main-phone-comparison.png",
+      "compression": "none",
+      "bytes": 623633,
+      "sha256": "bd59295482801279a2ca2c3014d4a73b0fbd6ee59cde498a71304b8289bc5596",
+      "payloadBytes": 623633,
+      "payloadSha256": "bd59295482801279a2ca2c3014d4a73b0fbd6ee59cde498a71304b8289bc5596"
+    },
+    {
+      "path": "normal-review/u1-main-phone.png",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906/u1-main-phone.png",
+      "compression": "none",
+      "bytes": 186986,
+      "sha256": "01610f6db32d0bdca491acc7ab5b60f8ab325697463ad9a1ea983737338ad29f",
+      "payloadBytes": 186986,
+      "payloadSha256": "01610f6db32d0bdca491acc7ab5b60f8ab325697463ad9a1ea983737338ad29f"
+    },
+    {
+      "path": "normal-review/u1-main-tablet-comparison.png",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906/u1-main-tablet-comparison.png",
+      "compression": "none",
+      "bytes": 937620,
+      "sha256": "9e046b03279efde90af95eaaaf9a466e280016fd59331112b781262734d215d1",
+      "payloadBytes": 937620,
+      "payloadSha256": "9e046b03279efde90af95eaaaf9a466e280016fd59331112b781262734d215d1"
+    },
+    {
+      "path": "normal-review/u1-main-tablet.png",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906/u1-main-tablet.png",
+      "compression": "none",
+      "bytes": 218537,
+      "sha256": "a849af7c2d0bc6c5b4011e1a02630645271a50649c4912995299d50049f2908f",
+      "payloadBytes": 218537,
+      "payloadSha256": "a849af7c2d0bc6c5b4011e1a02630645271a50649c4912995299d50049f2908f"
+    },
+    {
+      "path": "normal-review/u1-notifications-desktop.png",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906/u1-notifications-desktop.png",
+      "compression": "none",
+      "bytes": 289616,
+      "sha256": "36abda6252cd0bdab538d7b123a9eff9ff438f81cd87492e3d616b67f396adc5",
+      "payloadBytes": 289616,
+      "payloadSha256": "36abda6252cd0bdab538d7b123a9eff9ff438f81cd87492e3d616b67f396adc5"
+    },
+    {
+      "path": "normal-review/u1-notifications-phone.png",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906/u1-notifications-phone.png",
+      "compression": "none",
+      "bytes": 181402,
+      "sha256": "adc5fb30e473ac922ba2ff2948a3589d7d640472bc59419c8821464ee62ce495",
+      "payloadBytes": 181402,
+      "payloadSha256": "adc5fb30e473ac922ba2ff2948a3589d7d640472bc59419c8821464ee62ce495"
+    },
+    {
+      "path": "normal-review/u1-notifications-tablet.png",
+      "originalPath": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906/u1-notifications-tablet.png",
+      "compression": "none",
+      "bytes": 233215,
+      "sha256": "89a7943592843ae7baca6fc03127ce1ccfcfa6cbcc648df61439a03b38a73a5d",
+      "payloadBytes": 233215,
+      "payloadSha256": "89a7943592843ae7baca6fc03127ce1ccfcfa6cbcc648df61439a03b38a73a5d"
+    },
+    {
+      "path": "slice/slice-smoke-local-u1-ce8912864fab-20260906-slice.json.gz",
+      "originalPath": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/slice-smoke-local-u1-ce8912864fab-20260906-slice.json",
+      "compression": "gzip",
+      "bytes": 2459,
+      "sha256": "91996611a2923839fd6a9f5e74fad50a33064f35d6131c78ab120784586f43ee",
+      "payloadBytes": 8696,
+      "payloadSha256": "7ec172071735ad9fd89ed01c878b65ee345b2670dacd656c0e5870c89b8acfbb"
+    },
+    {
+      "path": "slice/slice-smoke-local-u1-ce8912864fab-20260906-slice.log.gz",
+      "originalPath": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/slice-smoke-local-u1-ce8912864fab-20260906-slice.log",
+      "compression": "gzip",
+      "bytes": 3025,
+      "sha256": "42c500eacfd54c8496ec576da247bb17e03d10c25350708f3de6cd2a818ab86c",
+      "payloadBytes": 8231,
+      "payloadSha256": "793f4200f3e512854b8f4558ae9212e9b1c92b800a62617933432f6e609259e0"
+    },
+    {
+      "path": "slice/slice-local-u1-ce8912864fab-20260906-slice-codex.png",
+      "originalPath": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/slice-local-u1-ce8912864fab-20260906-slice-codex.png",
+      "compression": "none",
+      "bytes": 623352,
+      "sha256": "d541c0f6717ceb5c840525d21b5bcec46fcf9259ff48155e92151753ff9ad47d",
+      "payloadBytes": 623352,
+      "payloadSha256": "d541c0f6717ceb5c840525d21b5bcec46fcf9259ff48155e92151753ff9ad47d"
+    },
+    {
+      "path": "slice/slice-local-u1-ce8912864fab-20260906-slice-earth.png",
+      "originalPath": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/slice-local-u1-ce8912864fab-20260906-slice-earth.png",
+      "compression": "none",
+      "bytes": 606277,
+      "sha256": "d079189ad68cc8eeab2c00b86ff1e22754226948c0c2cb0fc88e139ba3d63e27",
+      "payloadBytes": 606277,
+      "payloadSha256": "d079189ad68cc8eeab2c00b86ff1e22754226948c0c2cb0fc88e139ba3d63e27"
+    },
+    {
+      "path": "slice/slice-local-u1-ce8912864fab-20260906-slice-galaxy.png",
+      "originalPath": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/slice-local-u1-ce8912864fab-20260906-slice-galaxy.png",
+      "compression": "none",
+      "bytes": 579865,
+      "sha256": "7cc2954b30106d9edf1b4580f7bfe7fa7719b6b48c62491544c47475cfe986fe",
+      "payloadBytes": 579865,
+      "payloadSha256": "7cc2954b30106d9edf1b4580f7bfe7fa7719b6b48c62491544c47475cfe986fe"
+    },
+    {
+      "path": "slice/slice-local-u1-ce8912864fab-20260906-slice-guide.png",
+      "originalPath": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/slice-local-u1-ce8912864fab-20260906-slice-guide.png",
+      "compression": "none",
+      "bytes": 310397,
+      "sha256": "dc05a168ba8f76eaa6bd5d768a028c64bd43d5b9d164b76a30485a114fee8b90",
+      "payloadBytes": 310397,
+      "payloadSha256": "dc05a168ba8f76eaa6bd5d768a028c64bd43d5b9d164b76a30485a114fee8b90"
+    },
+    {
+      "path": "slice/slice-local-u1-ce8912864fab-20260906-slice-phone.png",
+      "originalPath": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/slice-local-u1-ce8912864fab-20260906-slice-phone.png",
+      "compression": "none",
+      "bytes": 843998,
+      "sha256": "05b9acd8a2aa2db6007d9730b17a970e26093437cf21211b7ceeb8500febf019",
+      "payloadBytes": 843998,
+      "payloadSha256": "05b9acd8a2aa2db6007d9730b17a970e26093437cf21211b7ceeb8500febf019"
+    },
+    {
+      "path": "slice/slice-local-u1-ce8912864fab-20260906-slice-settings.png",
+      "originalPath": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/slice-local-u1-ce8912864fab-20260906-slice-settings.png",
+      "compression": "none",
+      "bytes": 290020,
+      "sha256": "85cafc696f296db3bf160f5ce0af1ae14f4941e1fccb53ea6f321e7d360649dc",
+      "payloadBytes": 290020,
+      "payloadSha256": "85cafc696f296db3bf160f5ce0af1ae14f4941e1fccb53ea6f321e7d360649dc"
+    },
+    {
+      "path": "slice/slice-local-u1-ce8912864fab-20260906-slice-sol.png",
+      "originalPath": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/slice-local-u1-ce8912864fab-20260906-slice-sol.png",
+      "compression": "none",
+      "bytes": 222590,
+      "sha256": "c4440d73da7b3089479c6566f417ef26d7eaeeed92889b2183f6d7df12cb108b",
+      "payloadBytes": 222590,
+      "payloadSha256": "c4440d73da7b3089479c6566f417ef26d7eaeeed92889b2183f6d7df12cb108b"
+    },
+    {
+      "path": "slice/slice-local-u1-ce8912864fab-20260906-slice-solmark.png",
+      "originalPath": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/slice-local-u1-ce8912864fab-20260906-slice-solmark.png",
+      "compression": "none",
+      "bytes": 402351,
+      "sha256": "efc2b7fb6854a907cf0afa935d183bf2e9a225e426368421e29c2c7b7b3d5ef5",
+      "payloadBytes": 402351,
+      "payloadSha256": "efc2b7fb6854a907cf0afa935d183bf2e9a225e426368421e29c2c7b7b3d5ef5"
+    },
+    {
+      "path": "slice/slice-local-u1-ce8912864fab-20260906-slice-training.png",
+      "originalPath": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/slice-local-u1-ce8912864fab-20260906-slice-training.png",
+      "compression": "none",
+      "bytes": 488748,
+      "sha256": "e680dd01b2f96cfcd201efa5ef370d6b0d33a684a4d93726aebcd590f23bfbfc",
+      "payloadBytes": 488748,
+      "payloadSha256": "e680dd01b2f96cfcd201efa5ef370d6b0d33a684a4d93726aebcd590f23bfbfc"
+    },
+    {
+      "path": "slice/slice-local-u1-ce8912864fab-20260906-slice-universe.png",
+      "originalPath": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/slice-local-u1-ce8912864fab-20260906-slice-universe.png",
+      "compression": "none",
+      "bytes": 381579,
+      "sha256": "39b005a3097ae68a026691b0323810a18c872e10ec117b555b7e79e06c1bb622",
+      "payloadBytes": 381579,
+      "payloadSha256": "39b005a3097ae68a026691b0323810a18c872e10ec117b555b7e79e06c1bb622"
+    },
+    {
+      "path": "verification.json",
+      "compression": "none",
+      "bytes": 2975,
+      "sha256": "f1b425d8f2cb8c2d15ad912675756da5df70fc5c037e9bee1226a19a906bf19e",
+      "payloadBytes": 2975,
+      "payloadSha256": "f1b425d8f2cb8c2d15ad912675756da5df70fc5c037e9bee1226a19a906bf19e"
+    }
+  ]
+}

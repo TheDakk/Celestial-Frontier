@@ -23,6 +23,8 @@ import { installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import { createSessionRNG } from '@cf/domain-sessionrng';
 import {
+  COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
+  COMBAT_DEFEAT_WOUND_STEP_V1,
   PRIME_SIGNATURE_IDS_V1,
   isCombatSettlementPlanV1,
   planCombatSettlementV1,
@@ -81,6 +83,8 @@ import {
   prepareArc9EventAchievementJoinV1,
   projectArc9ProgressionStateV1,
 } from '../../../apps/game/src/arc9-progression-projection.js';
+
+import { WEEKLY_CHARTER_CYCLE_ACTIVE_MS, stageWeeklyCharterAcceptV1, weeklyCharterSlateV1 } from '../src/weekly-charters.js';
 
 installCaptureHooks();
 
@@ -327,6 +331,7 @@ function planForEncounter(
   opportunity: typeof OPPORTUNITY,
   claimedPrimeSignatureIds: readonly (typeof PRIME_SIGNATURE_IDS_V1)[number][],
   receiptOrdinal = 0,
+  activePlayMs = 0,
 ): CombatSettlementPlanV1 {
   const creature = fixture.ownership.creatures.find((row) => row.creatureId === fixture.creatureId);
   if (!creature) throw new Error('combat fixture creature vanished');
@@ -360,14 +365,15 @@ function planForEncounter(
       worldConquered: false,
       claimedPrimeSignatureIds,
       lossXp: { kind: 'known-target', awardedTarget: fixture.target },
+      activePlayMs,
     },
   });
   if (planned.status !== 'planned') throw new Error(`combat plan refused ${planned.reason}`);
   return planned;
 }
 
-function planFor(fixture: Harness, battleId: string, receiptOrdinal = 0): CombatSettlementPlanV1 {
-  return planForEncounter(fixture, battleId, ENCOUNTER, OPPORTUNITY, [], receiptOrdinal);
+function planFor(fixture: Harness, battleId: string, receiptOrdinal = 0, activePlayMs = 0): CombatSettlementPlanV1 {
+  return planForEncounter(fixture, battleId, ENCOUNTER, OPPORTUNITY, [], receiptOrdinal, activePlayMs);
 }
 
 function guardianChampionPlanFor(input: Readonly<{
@@ -536,7 +542,7 @@ async function commitPlayer(
   });
 }
 
-async function commit(fixture: Harness, plan: CombatSettlementPlanV1, expectedRevision = 1) {
+async function commit(fixture: Harness, plan: CombatSettlementPlanV1, expectedRevision = 1, activePlayMs = 250) {
   return createCombatSettlementPersistenceOwnerV1(
     createRevisionedRepository(fixture.backend),
     REGISTRY,
@@ -544,7 +550,7 @@ async function commit(fixture: Harness, plan: CombatSettlementPlanV1, expectedRe
     expectedRevision,
     grant: fixture.grant,
     writable: fixture.writable,
-    snapshot: { activePlayMs: 250 },
+    snapshot: { activePlayMs },
     now: NOW,
     plan,
     opportunity: OPPORTUNITY,
@@ -609,15 +615,19 @@ describe('Arc 6 combat persistence — conquest-loss XP order correction', () =>
     })).toMatchObject({ kind: 'verified', revision: 2, plan });
     expect(receipt).toEqual(plan.receipt);
     expect(loaded.state.stats.duels).toBe(1);
+    // §20: the loser is wounded (mirrored into v4) and its active-play Recovery lives in the v2 ownership carrier
     const codex = loaded.state.codex.find(([id]) => id === fixture.legacyId)?.[1];
-    expect(codex?.g).toMatchObject({ xp: 3, hurt: 0.85 });
+    expect(codex?.g).toMatchObject({ xp: 3, hurt: COMBAT_DEFEAT_WOUND_STEP_V1 });
     const ownership = readArc5OwnershipMigration(
       loaded.extensions,
       SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     );
     expect(ownership.kind).toBe('loaded');
     if (ownership.kind === 'loaded') {
-      expect(ownership.state.creatures[0]).toMatchObject({ xp: 3, hurt: 0.85 });
+      expect(ownership.state.creatures[0]).toMatchObject({
+        xp: 3, hurt: COMBAT_DEFEAT_WOUND_STEP_V1,
+        assignment: { kind: 'recovery', readyAtActivePlayMs: COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1 },
+      });
     }
     const authority = readCombatSettlementAuthorityV1(loaded.extensions);
     expect(authority).toMatchObject({
@@ -917,35 +927,72 @@ describe('Arc 6 player-live app settlement seam', () => {
     expect((await reload(fixture)).state.chDone).toContain(COMBAT_STARTER_CONQUEST_CHARTER_ID_V1);
   });
 
-  it('keeps an accepted weekly conquest Charter fail-closed before the writer', async () => {
-    const fixture = await harness(3, 0);
-    const state = cloneState(fixture.writable.state);
-    state.chacc = ['wk-conq'];
+  const conquestCycle = Array.from({ length: 40 }, (_, i) => i).find(c => weeklyCharterSlateV1(c).includes('wk-conq'))!;
+  const conquestAt = conquestCycle * WEEKLY_CHARTER_CYCLE_ACTIVE_MS + 250;
+  const acceptWeeklyConquest = (state: SaveStateV2) => {
+    state.tutDone = true; state.chDone = ['st-land', 'st-mine', 'st-scan', 'st-scout', 'st-conq'];
+    state.chacc = []; state.chProg = {}; state.chWeek = conquestCycle;
+    expect(stageWeeklyCharterAcceptV1({ draft: state, id: 'wk-conq', activePlayMs: conquestAt }).kind).toBe('ready');
+  };
+
+  it('offers weekly conquest and settles its 30 Stardust once through the app, CAS, reload and verifier', async () => {
+    const fixture = await harness(3, 0, createMemoryBackend(), 0, false, [], acceptWeeklyConquest);
+    const before = fixture.writable.state, writer = createCombatSettlementPersistenceOwnerV1(createRevisionedRepository(fixture.backend), REGISTRY);
     let commitCalls = 0;
     const outcome = await commitArc6CombatActionV1({
-      runtime: Object.freeze({
-        async commitCombatSettlement() {
-          commitCalls++;
-          throw new Error('weekly writer must remain unreachable');
-        },
-      }),
-      state,
-      extensions: fixture.writable.extensions,
-      encounter: ENCOUNTER,
-      opportunity: OPPORTUNITY,
-      ownershipV2: fixture.ownership,
-      championId: fixture.creatureId,
-      championRosterAuthorityKey: combatRosterAuthorityKey(
-        fixture.ownership, fixture.writable.extensions,
-      ),
-      observedActivePlayMs: 250,
-      codecNow: NOW,
+      runtime: { async commitCombatSettlement(input) {
+        commitCalls++;
+        return writer.commit({ ...input, expectedRevision: 1, grant: fixture.grant, writable: fixture.writable,
+          snapshot: { activePlayMs: conquestAt }, now: NOW });
+      } },
+      state: before, extensions: fixture.writable.extensions, encounter: ENCOUNTER, opportunity: OPPORTUNITY,
+      ownershipV2: fixture.ownership, championId: fixture.creatureId,
+      championRosterAuthorityKey: combatRosterAuthorityKey(fixture.ownership, fixture.writable.extensions),
+      observedActivePlayMs: conquestAt, codecNow: NOW,
     });
-    expect(outcome).toMatchObject({ kind: 'refused', durability: 'none', convergence: 'none' });
-    expect(outcome.kind === 'refused' ? outcome.detail : '').toContain('weekly lifecycle');
-    expect(commitCalls).toBe(0);
-    expect((await reload(fixture)).revision).toBe(1);
+    expect(outcome.kind).toBe('committed'); expect(commitCalls).toBe(1);
+    const loaded = await reload(fixture);
+    expect(loaded.revision).toBe(2); expect(loaded.state.chProg['wk-conq']).toBe(1); expect(loaded.state.chacc).not.toContain('wk-conq');
+    expect(loaded.state.stats.charters).toBe((before.stats.charters ?? 0) + 1);
+    if (outcome.kind !== 'committed') return;
+    expect(loaded.state.essence).toBe(before.essence + outcome.transaction.plan.rewards.stardust.amount + 30);
+    expect(stageWeeklyCharterAcceptV1({ draft: structuredClone(loaded.state), id: 'wk-conq', activePlayMs: conquestAt }).kind).toBe('refused');
   });
+
+  it('binds weekly payout to the exact saved projection; replay cannot pay twice and mutated reloads refuse', async () => {
+    const fixture = await harness(3, 0, createMemoryBackend(), 0, false, [], acceptWeeklyConquest);
+    const plan = planFor(fixture, 'combat-weekly-conquest'), outcome = await commit(fixture, plan, 1, conquestAt);
+    expect(outcome.kind).toBe('committed'); if (outcome.kind !== 'committed') return;
+    const verify = (state: SaveStateV2) => verifyCommittedCombatSettlementV1({ committed: outcome, revision: outcome.revision,
+      writable: { state, extensions: outcome.transaction.saved.extensions }, receipt: outcome.transaction.receipt });
+    const state = outcome.transaction.saved.canonicalState;
+    expect(verify(state)).toMatchObject({ kind: 'verified', weeklyConquestCharter: { stage: { completions: [{ id: 'wk-conq', stardust: 30 }] } } });
+    for (const mutate of [(s: SaveStateV2) => { s.essence++; }, (s: SaveStateV2) => { s.chProg['wk-conq'] = 0; },
+      (s: SaveStateV2) => { s.chacc.push('wk-conq'); }, (s: SaveStateV2) => { s.chWeek++; }]) {
+      const changed = structuredClone(state); mutate(changed); expect(verify(changed).kind).toBe('mismatch');
+    }
+    expect((await commit(fixture, plan, 1, conquestAt)).kind).not.toBe('committed');
+    expect((await reload(fixture)).state).toEqual(state);
+  });
+
+  it('an expired weekly acceptance earns no conquest Charter payout on the new active-play cycle', async () => {
+    const fixture = await harness(3, 0, createMemoryBackend(), 0, false, [], acceptWeeklyConquest);
+    const before = fixture.writable.state, plan = planFor(fixture, 'combat-weekly-expired');
+    expect((await commit(fixture, plan, 1, conquestAt + WEEKLY_CHARTER_CYCLE_ACTIVE_MS)).kind).toBe('committed');
+    const loaded = await reload(fixture);
+    expect(loaded.state.essence).toBe(before.essence + plan.rewards.stardust.amount);
+    expect(loaded.state.chProg['wk-conq']).toBeUndefined(); expect(loaded.state.chacc).not.toContain('wk-conq');
+    expect(loaded.state.stats.charters ?? 0).toBe(before.stats.charters ?? 0);
+  });
+
+  it('refuses completed accepted weeklies and a saturated Charter counter without a partial conquest', async () => {
+    for (const mutate of [(s: SaveStateV2) => { s.chProg['wk-conq'] = 1; }, (s: SaveStateV2) => { s.stats.charters = 1_000_000_000; }]) {
+      const fixture = await harness(3, 0, createMemoryBackend(), 0, false, [], s => { acceptWeeklyConquest(s); mutate(s); });
+      const outcome = await commit(fixture, planFor(fixture, 'combat-weekly-invalid'), 1, conquestAt);
+      expect(outcome.kind).not.toBe('committed'); expect((await reload(fixture)).revision).toBe(1);
+    }
+  });
+
 });
 
 describe('Arc 6 combat persistence — exact On the Brink event owner', () => {
@@ -1449,7 +1496,7 @@ describe('Arc 6 combat persistence — refusal, CAS, and convergence controls', 
     }
   });
 
-  it('permanently tombstones a defeated captured Guardian without erasing its immutable capture or Prime Codex', async () => {
+  it('§20: a defeated captured Guardian is KEPT (wounded, in Recovery) and its capture and Prime Codex are untouched', async () => {
     const fixture = await harness(
       242, 0, createMemoryBackend(), 0, true, PRIME_SIGNATURE_IDS_V1,
     );
@@ -1528,8 +1575,8 @@ describe('Arc 6 combat persistence — refusal, CAS, and convergence controls', 
       outcome: 'defender-win',
       champion: { creatureId: champion.creatureId, legacyBredLineage: false },
       injury: {
-        status: 'remove-creature',
-        reason: 'wild-or-unbred-defeat',
+        status: 'set-recovery',
+        reason: 'defeat-recovery',
         creatureId: champion.creatureId,
       },
       guardianCapture: { status: 'none' },
@@ -1566,16 +1613,7 @@ describe('Arc 6 combat persistence — refusal, CAS, and convergence controls', 
     expect(source).toMatchObject({ kind: 'loaded', state: { revision: 1, entries: [{}] } });
     expect(overlay).toMatchObject({
       kind: 'loaded',
-      state: {
-        revision: 1,
-        rows: [{
-          kind: 'tombstone',
-          tombstone: {
-            creatureId: champion.creatureId,
-            disposition: { ordinal: 1, actionKind: 'combat-settlement' },
-          },
-        }],
-      },
+      state: { revision: 1, rows: [{ kind: 'live', creature: { creatureId: champion.creatureId, assignment: { kind: 'recovery' } } }] },
     });
     if (source.kind !== 'loaded' || overlay.kind !== 'loaded') return;
     const roster = projectGuardianCompanionsV1({
@@ -1584,11 +1622,11 @@ describe('Arc 6 combat persistence — refusal, CAS, and convergence controls', 
     });
     expect(roster).toMatchObject({
       kind: 'projected',
-      creatures: [],
-      tombstones: [{ creatureId: champion.creatureId }],
+      creatures: [{ creatureId: champion.creatureId, assignment: { kind: 'recovery' } }],
+      tombstones: [],
     });
     const capturedSeed = source.state.entries[0]!.creature.genome.seed;
-    expect(loaded.state.codex.some(([id]) => id === `s${capturedSeed}`)).toBe(false);
+    expect(loaded.state.codex.find(([id]) => id === `s${capturedSeed}`)?.[1].g).toMatchObject({ hurt: expect.any(Number) });
     expect(Object.keys(loaded.state.primeFill).sort())
       .toEqual([...PRIME_SIGNATURE_IDS_V1].sort());
     expect(loaded.state.frontierUnlocked).toBe(true);
@@ -1683,8 +1721,12 @@ describe('Arc 6 combat persistence — refusal, CAS, and convergence controls', 
       ownership: ownership.state,
       target: 3,
     };
-    const repeated = planFor(current, 'combat-semantic-single-use', 1);
-    const outcome = await commit(current, repeated, 2);
+    // after the first defeat's Recovery has finished, so the refusal below is the battle-identity guard, not Recovery
+    const repeated = planFor(current, 'combat-semantic-single-use', 1, COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1);
+    // and while the Recovery is still running the same champion cannot fight at all (the persistence owner enforces it)
+    expect(await commit(current, planFor(current, 'combat-semantic-single-use', 1, 250), 2, 250))
+      .toEqual({ kind: 'refused', reason: 'champion-assignment-unavailable' });
+    const outcome = await commit(current, repeated, 2, COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1);
     expect(outcome).toMatchObject({
       kind: 'rejected', stage: 'derive', message: 'combat battle identity is already settled',
     });

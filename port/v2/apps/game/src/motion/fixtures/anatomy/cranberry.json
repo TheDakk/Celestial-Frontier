@@ -1,0 +1,252 @@
+{
+  "kind": "plant-woody",
+  "identity": {
+    "speciesVisualKey": "authored:accepted-cranberry-master",
+    "seed": 133,
+    "ownerId": "authored:flora/cranberry",
+    "earthName": "Cranberry"
+  },
+  "template": {
+    "id": "plant-woody",
+    "version": 1
+  },
+  "habitat": {
+    "realm": "land",
+    "source": "Authored terrestrial woody master; roots attached to substrate"
+  },
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v1",
+    "absent": [],
+    "growth": {
+      "branches": 10
+    }
+  },
+  "geometry": {
+    "cutoutAssetHash": "88f6f2a92524207a494e21564e54fa3916e15ca3aa1ff7885327a008bbf34732",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.825,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.433,
+      0.728
+    ],
+    "trunk": [
+      0.487,
+      0.546
+    ],
+    "branch0Base": [
+      0.275,
+      0.609
+    ],
+    "branch0Tip": [
+      0.218,
+      0.651
+    ],
+    "leaf0": [
+      0.192,
+      0.642
+    ],
+    "branch1Base": [
+      0.836,
+      0.652
+    ],
+    "branch1Tip": [
+      0.874,
+      0.601
+    ],
+    "leaf1": [
+      0.914,
+      0.573
+    ],
+    "branch2Base": [
+      0.694,
+      0.24
+    ],
+    "branch2Tip": [
+      0.684,
+      0.196
+    ],
+    "leaf2": [
+      0.666,
+      0.172
+    ],
+    "branch3Base": [
+      0.42,
+      0.543
+    ],
+    "branch3Tip": [
+      0.285,
+      0.45
+    ],
+    "leaf3": [
+      0.202,
+      0.391
+    ],
+    "branch4Base": [
+      0.465,
+      0.549
+    ],
+    "branch4Tip": [
+      0.407,
+      0.47
+    ],
+    "leaf4": [
+      0.375,
+      0.372
+    ],
+    "branch5Base": [
+      0.535,
+      0.544
+    ],
+    "branch5Tip": [
+      0.665,
+      0.392
+    ],
+    "leaf5": [
+      0.7,
+      0.26
+    ],
+    "branch6Base": [
+      0.735,
+      0.343
+    ],
+    "branch6Tip": [
+      0.852,
+      0.37
+    ],
+    "leaf6": [
+      0.868,
+      0.415
+    ],
+    "branch7Base": [
+      0.419,
+      0.565
+    ],
+    "branch7Tip": [
+      0.278,
+      0.615
+    ],
+    "leaf7": [
+      0.157,
+      0.671
+    ],
+    "branch8Base": [
+      0.524,
+      0.592
+    ],
+    "branch8Tip": [
+      0.682,
+      0.686
+    ],
+    "leaf8": [
+      0.829,
+      0.68
+    ],
+    "branch9Base": [
+      0.643,
+      0.708
+    ],
+    "branch9Tip": [
+      0.811,
+      0.748
+    ],
+    "leaf9": [
+      0.906,
+      0.816
+    ]
+  },
+  "materials": {
+    "surface": "bark",
+    "paletteSource": "accepted authored master",
+    "joints": {
+      "leaf0": "foliage",
+      "leaf1": "foliage",
+      "leaf2": "foliage",
+      "leaf3": "foliage",
+      "leaf4": "foliage",
+      "leaf5": "foliage",
+      "leaf6": "foliage",
+      "leaf7": "foliage",
+      "leaf8": "foliage",
+      "leaf9": "foliage"
+    }
+  },
+  "clipSetId": "plant-woody-v1",
+  "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/cranberry.png",
+  "coverage": {
+    "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+    "unproven": [
+      "hidden/reverse surfaces",
+      "individual leaf and fruit articulation",
+      "harvest item detachment",
+      "Compendium grow scale reveal",
+      "native full action visual acceptance",
+      "physical phone budget"
+    ]
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "trunk": 0.18984203960134852,
+      "branch0Base": 0.22116283593768635,
+      "branch0Tip": 0.07080254232723572,
+      "leaf0": 0.027513632984395204,
+      "branch1Base": 0.36474237483462213,
+      "branch1Tip": 0.06360031446463145,
+      "leaf1": 0.04882622246293485,
+      "branch2Base": 0.3694387635319283,
+      "branch2Tip": 0.04512205669071387,
+      "leaf2": 0.030000000000000027,
+      "branch3Base": 0.06706713054842887,
+      "branch3Tip": 0.16393291310777103,
+      "leaf3": 0.1018331969448077,
+      "branch4Base": 0.022203603311174484,
+      "branch4Tip": 0.09800510190801302,
+      "leaf4": 0.10309219175087894,
+      "branch5Base": 0.0480416485978573,
+      "branch5Tip": 0.20000999975001255,
+      "leaf5": 0.13656134152826707,
+      "branch6Base": 0.3204886893480018,
+      "branch6Tip": 0.12007497657713698,
+      "leaf6": 0.0477598157450382,
+      "branch7Base": 0.07060453243241539,
+      "branch7Tip": 0.14960280746028798,
+      "leaf7": 0.13333041663476497,
+      "branch8Base": 0.059033888572581725,
+      "branch8Tip": 0.18384776310850243,
+      "leaf8": 0.14712239802287064,
+      "branch9Base": 0.2248999777678957,
+      "branch9Tip": 0.17269626515938327,
+      "leaf9": 0.11682893477217014
+    },
+    "measures": {
+      "body": 0.18984203960134852,
+      "bone-min": 0.022203603311174484,
+      "bone-max": 0.3694387635319283,
+      "branch/trunk:branch0": 1.5379384823194249,
+      "branch/trunk:branch1": 2.256311037316789,
+      "branch/trunk:branch2": 2.183714529685749,
+      "branch/trunk:branch3": 1.216801316195715,
+      "branch/trunk:branch4": 0.6332038228814605,
+      "branch/trunk:branch5": 1.3066212777146535,
+      "branch/trunk:branch6": 2.3206854859454915,
+      "branch/trunk:branch7": 1.1599503479583304,
+      "branch/trunk:branch8": 1.2793881281043658,
+      "branch/trunk:branch9": 2.0943529882116514
+    }
+  },
+  "recipeHash": "5ea4e622886089ac81f8140f2509c80f607743d0a8c29b7ddf599091368c350a"
+}

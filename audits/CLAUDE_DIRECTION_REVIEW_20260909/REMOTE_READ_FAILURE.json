@@ -1,0 +1,15 @@
+{
+  "schema": "cf.remote-read-failure/v1",
+  "recordedAt": "2026-09-09T11:59:04.806557+00:00",
+  "environment": "OpenAI/Codex \u00b7 macOS \u00b7 /Users/nick/Projects/celestial-frontier-openai-mac \u00b7 openai/mac \u00b7 origin/openai/mac",
+  "operation": "git fetch origin",
+  "exitCode": 128,
+  "stderr": "sign_and_send_pubkey: signing failed for ED25519 \"GitHub\" from agent: communication with agent failed\ngit@github.com: Permission denied (publickey).\nfatal: Could not read from remote repository.",
+  "subsequentCommandsReached": false,
+  "remoteStateFresh": false,
+  "retried": false,
+  "diagnosis": "SSH agent communication failed; vault lock, machine sleep and credential validity are not established. No key/config changes.",
+  "cachedUpstreamHead": "9bfec7dc4a06d97dfd29f8f5424553336776c9fb",
+  "cachedDevelopHead": "c1791e210158de864fdd475323c3091d9ecbae58",
+  "localStartingHead": "ff1669a2b7906a362f985cd810c6592834857caa"
+}

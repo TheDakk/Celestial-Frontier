@@ -1,0 +1,16 @@
+[
+  {
+    "path": "/private/tmp/cf-civet-master-20260912-01/civet-master.blend",
+    "sha256": "c86ac3431eac4efa4c9dd268517f7def1aab154c896f5148d63d87da5a7a5bd6",
+    "bytes": 5641579,
+    "preservation": "private temporary master; durable independent backup not yet made",
+    "qualityAccepted": false
+  },
+  {
+    "path": "/private/tmp/cf-civet-master-20260912-02/civet-master.blend",
+    "sha256": "9d9ae96313272c98f5a80d60c9e5b229eb71911f6395b39c961c7de68673d27e",
+    "bytes": 5154791,
+    "preservation": "private temporary master; durable independent backup not yet made",
+    "qualityAccepted": false
+  }
+]

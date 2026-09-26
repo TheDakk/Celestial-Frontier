@@ -1,0 +1,16 @@
+{
+  "signedCommit": "2283e5388793a31b7fbc0d68897492adb6beadd1",
+  "item": "Tree Frog",
+  "verification": "Good git signature with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+  "signingToolReceipt": "8a8bd8",
+  "verificationToolReceipt": "96a41d",
+  "readOnlyDiagnosticToolReceipt": "665db7",
+  "facts": [
+    "Explicit 1Password SSH agent socket existed and was a socket.",
+    "ssh-add -l exited 0 with empty stderr and advertised the matching configured signing key fingerprint.",
+    "A subsequent actual signed commit succeeded; verification was run after its successful exit.",
+    "Earlier agent refused operation and agent returned an error messages do not establish that 1Password was locked.",
+    "No key export, unsigned fallback, security setting change or personal app inspection."
+  ],
+  "rootCause": "Unknown. Agent key advertisement proves connectivity, not per-request signing authorization."
+}

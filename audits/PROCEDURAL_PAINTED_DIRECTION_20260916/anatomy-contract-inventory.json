@@ -1,0 +1,216 @@
+{
+  "schema": "cf.anatomy-production-coverage-plan.v1",
+  "scope": "source-derived contract inventory, not painted/animated acceptance",
+  "families": [
+    {
+      "id": "quadruped",
+      "version": 1,
+      "joints": 31,
+      "clipSetId": "quadruped-land-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "hopper",
+      "version": 1,
+      "joints": 31,
+      "clipSetId": "hopper-land-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "biped-bird",
+      "version": 1,
+      "joints": 19,
+      "clipSetId": "biped-bird-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "fish",
+      "version": 1,
+      "joints": 13,
+      "clipSetId": "fish-aquatic-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "insect",
+      "version": 1,
+      "joints": 21,
+      "clipSetId": "insect-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "serpent",
+      "version": 1,
+      "joints": 13,
+      "clipSetId": "serpent-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "arachnid",
+      "version": 1,
+      "joints": 22,
+      "clipSetId": "arachnid-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "radial",
+      "version": 1,
+      "joints": 21,
+      "clipSetId": "radial-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "plant-woody",
+      "version": 1,
+      "joints": 11,
+      "clipSetId": "plant-woody-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "plant-herb",
+      "version": 1,
+      "joints": 17,
+      "clipSetId": "plant-herb-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "myriapod",
+      "version": 1,
+      "joints": 29,
+      "clipSetId": "myriapod-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "cephalopod",
+      "version": 1,
+      "joints": 32,
+      "clipSetId": "cephalopod-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "flyer-membrane",
+      "version": 1,
+      "joints": 22,
+      "clipSetId": "flyer-membrane-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    },
+    {
+      "id": "primate",
+      "version": 1,
+      "joints": 22,
+      "clipSetId": "primate-v1",
+      "universalProductionQualified": false,
+      "required": [
+        "source-emitted anatomy and material",
+        "painted master in approved style",
+        "hash-bound fitted parts and landmarks",
+        "locomotion/attack/contact/extreme-pose qualification",
+        "appropriate habitat",
+        "physical phone timing"
+      ]
+    }
+  ]
+}

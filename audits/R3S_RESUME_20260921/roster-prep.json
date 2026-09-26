@@ -1,0 +1,17 @@
+{
+  "status": "PREP_ONLY_IC3_FROZEN",
+  "historicalCounts": {
+    "total": 58,
+    "retained": 5,
+    "refused": 53
+  },
+  "historicalEvidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/README.md",
+  "newIntakeExecuted": false,
+  "order": "Retain clawed-crustacean \u2192 terrestrial-crab \u2192 small-crustacean \u2192 other source-family order; compiler IC-4 must pass before new-species intake.",
+  "presenceInputs": [
+    "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/presence.json",
+    "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/presence.json",
+    "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/presence.json"
+  ],
+  "sealedRecordsUnchanged": true
+}

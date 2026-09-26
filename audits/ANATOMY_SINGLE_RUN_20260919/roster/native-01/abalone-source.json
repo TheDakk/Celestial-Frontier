@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2303350840,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 14,
+    "body": 9,
+    "loco": 17,
+    "trait": 0,
+    "size": 5,
+    "diet": 3,
+    "head": 3,
+    "limbs": 4,
+    "skin": 6,
+    "tail": 4,
+    "pattern": 4,
+    "eyes": 0,
+    "behavior": 6,
+    "habitat": 14,
+    "detail": 3,
+    "accent": 16,
+    "temper": 3,
+    "sense": 0,
+    "repro": 1,
+    "life": 4,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Abalone"
+  },
+  "observation": null
+}

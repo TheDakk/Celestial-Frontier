@@ -1,0 +1,30 @@
+{
+  "totalMs": 11100.487,
+  "frames": 599,
+  "wasmCallers": [
+    {
+      "file": "tools/creature-animation/arap-skin.mjs",
+      "us": 1621884,
+      "ms": 1621.884,
+      "share": 0.14610926529619828
+    },
+    {
+      "file": "tools/creature-animation/orientation-projector.mjs",
+      "us": 293748,
+      "ms": 293.748,
+      "share": 0.026462622766010177
+    },
+    {
+      "file": "tools/creature-animation/wasm-orientation-active.mjs",
+      "us": 170352,
+      "ms": 170.352,
+      "share": 0.01534635372303936
+    },
+    {
+      "file": "apps/game/src/creature-rig.ts",
+      "us": 100,
+      "ms": 0.1,
+      "share": 0.000009008613766224851
+    }
+  ]
+}

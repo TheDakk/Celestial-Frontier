@@ -1,0 +1,54 @@
+{
+ "readyMs": 600,
+ "commandMs": 300,
+ "themes": {
+  "A": "wild",
+  "B": "stone"
+ },
+ "rows": [
+  {
+   "side": "A",
+   "an": "Eagle",
+   "dn": "Beetle",
+   "dmg": 9,
+   "crit": false,
+   "hpA": 30,
+   "hpB": 21
+  },
+  {
+   "side": "B",
+   "an": "Beetle",
+   "dn": "Eagle",
+   "dmg": 6,
+   "crit": false,
+   "hpA": 24,
+   "hpB": 21
+  },
+  {
+   "an": "Eagle",
+   "dn": "Beetle",
+   "dodge": true
+  },
+  {
+   "side": "A",
+   "an": "Eagle",
+   "dn": "Beetle",
+   "dmg": 21,
+   "crit": true,
+   "hpA": 24,
+   "hpB": 0
+  }
+ ],
+ "morph": {
+  "left": {
+   "seed": 41,
+   "color": 4,
+   "accent": 3
+  },
+  "right": {
+   "seed": 57,
+   "color": 1,
+   "accent": 6
+  }
+ }
+}

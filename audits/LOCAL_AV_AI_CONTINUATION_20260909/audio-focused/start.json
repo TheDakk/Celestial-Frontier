@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-09-09T05:01:30.243092+00:00",
+  "command": [
+    "npm",
+    "exec",
+    "--",
+    "vitest",
+    "run",
+    "packages/audio/test/runtime.test.ts",
+    "packages/audio/test/combat-gameplay-voice.test.ts",
+    "packages/audio/test/distant-ecology-voice.test.ts",
+    "tests/tame-greeting-audio.test.ts",
+    "tests/tame-greeting-main-wiring.test.ts"
+  ],
+  "sourceSha256": {
+    "packages/audio/test/runtime.test.ts": "f32ac53241c4e2846302d52a8e22d997e03ef33fdf7e60cbe763a2e67ab285a4",
+    "packages/audio/test/combat-gameplay-voice.test.ts": "71f5c8e56b83d5cac0fea83e9743dca5de5421d009a659be6d8768d9fd047181",
+    "packages/audio/test/distant-ecology-voice.test.ts": "2946ab93794d768e7ab53e1953394b3b35beae9973261a2278a255942ee1ea88",
+    "tests/tame-greeting-audio.test.ts": "662fd2b0cfef6d16e46808163e90b57fae1e645277774ffd627f619d335c9afe",
+    "tests/tame-greeting-main-wiring.test.ts": "82debb71cbe35647c01943508c120c1e085b2b0256e7c8996ed2685050241092",
+    "packages/audio/src/runtime.ts": "3e245551b2f36749efc4e3444f25ad1403546e2ef55f575d08ee5ec725a41acc",
+    "packages/audio/src/combat-gameplay-voice.ts": "39cb4107094fc6f16b23b4d49b5b6a130062ad64aef9421f7e442d6d7354e175"
+  },
+  "scope": "Audio focused only; isolated AI authoring edits concurrent, no full head certification."
+}

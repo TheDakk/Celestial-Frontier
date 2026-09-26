@@ -1,0 +1,378 @@
+{
+  "scope": "Measurement only; post-IK limit check logged instead of thrown in bundled diagnostic; runtime source unchanged",
+  "maxima": {
+    "leg0FarKnee": {
+      "ms": 260,
+      "j": "leg0FarKnee",
+      "deg": 13.249193351869732,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg0FarFoot": {
+      "ms": 260,
+      "j": "leg0FarFoot",
+      "deg": -24.115303917996425,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg0NearKnee": {
+      "ms": 260,
+      "j": "leg0NearKnee",
+      "deg": -13.319847856862268,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg0NearFoot": {
+      "ms": 260,
+      "j": "leg0NearFoot",
+      "deg": 22.97252918336632,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg1FarKnee": {
+      "ms": 260,
+      "j": "leg1FarKnee",
+      "deg": 9.941934497781244,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg1FarFoot": {
+      "ms": 260,
+      "j": "leg1FarFoot",
+      "deg": -18.042057499053232,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg1NearKnee": {
+      "ms": 260,
+      "j": "leg1NearKnee",
+      "deg": -10.301430809943199,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg1NearFoot": {
+      "ms": 260,
+      "j": "leg1NearFoot",
+      "deg": 25.803693470617652,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg2FarKnee": {
+      "ms": 260,
+      "j": "leg2FarKnee",
+      "deg": 9.415772477636082,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg2FarFoot": {
+      "ms": 260,
+      "j": "leg2FarFoot",
+      "deg": -20.19689599271324,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg2NearKnee": {
+      "ms": 260,
+      "j": "leg2NearKnee",
+      "deg": 17.117631886917547,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false
+    },
+    "leg2NearFoot": {
+      "ms": 260,
+      "j": "leg2NearFoot",
+      "deg": -50.05396663589831,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    }
+  },
+  "exceeded": [
+    {
+      "ms": 208,
+      "j": "leg2NearFoot",
+      "deg": -35.65898258123605,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 212.33333333333334,
+      "j": "leg2NearFoot",
+      "deg": -37.80146502662251,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 216.66666666666666,
+      "j": "leg2NearFoot",
+      "deg": -39.808786521558545,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 221,
+      "j": "leg2NearFoot",
+      "deg": -41.667502953919595,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 225.33333333333334,
+      "j": "leg2NearFoot",
+      "deg": -43.364855868152304,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 229.66666666666666,
+      "j": "leg2NearFoot",
+      "deg": -44.890010016223016,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 234,
+      "j": "leg2NearFoot",
+      "deg": -46.23253008586992,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 238.33333333333334,
+      "j": "leg2NearFoot",
+      "deg": -47.3839616742092,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 242.66666666666666,
+      "j": "leg2NearFoot",
+      "deg": -48.336691890768904,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 247,
+      "j": "leg2NearFoot",
+      "deg": -49.08429243077785,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 251.33333333333334,
+      "j": "leg2NearFoot",
+      "deg": -49.62173235736859,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 255.66666666666666,
+      "j": "leg2NearFoot",
+      "deg": -49.94574611521184,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 260,
+      "j": "leg2NearFoot",
+      "deg": -50.05396663589831,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 264.3333333333333,
+      "j": "leg2NearFoot",
+      "deg": -49.94574611521184,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 268.6666666666667,
+      "j": "leg2NearFoot",
+      "deg": -49.62173235736859,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 273,
+      "j": "leg2NearFoot",
+      "deg": -49.08415247311733,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 277.3333333333333,
+      "j": "leg2NearFoot",
+      "deg": -48.336691890768904,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 281.6666666666667,
+      "j": "leg2NearFoot",
+      "deg": -47.3839616742092,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 286,
+      "j": "leg2NearFoot",
+      "deg": -46.23253008586992,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 290.3333333333333,
+      "j": "leg2NearFoot",
+      "deg": -44.890010016223016,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 294.6666666666667,
+      "j": "leg2NearFoot",
+      "deg": -43.364855868152304,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 299,
+      "j": "leg2NearFoot",
+      "deg": -41.667502953919595,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 303.3333333333333,
+      "j": "leg2NearFoot",
+      "deg": -39.808786521558545,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 307.6666666666667,
+      "j": "leg2NearFoot",
+      "deg": -37.80146502662251,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    },
+    {
+      "ms": 312,
+      "j": "leg2NearFoot",
+      "deg": -35.65898258123605,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": true
+    }
+  ],
+  "failures": []
+}

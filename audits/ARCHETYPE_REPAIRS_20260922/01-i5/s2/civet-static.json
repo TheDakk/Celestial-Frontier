@@ -1,0 +1,301 @@
+{
+  "subject": "civet",
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "maxPaintDriftPx": 0.16525637288346104,
+      "maxEndpointError": 4.577566798522237e-16,
+      "maxGapPx": 0.00008221445262923185
+    },
+    {
+      "id": "approach",
+      "samples": 121,
+      "maxPaintDriftPx": 0.1513991118449841,
+      "maxEndpointError": 3.510833468576701e-16,
+      "maxGapPx": 0.00008447410891380827
+    },
+    {
+      "id": "melee:bite",
+      "samples": 121,
+      "maxPaintDriftPx": 0.019049705975938587,
+      "maxEndpointError": 2.482534153247273e-16,
+      "maxGapPx": 0.00011984712923396503
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "maxPaintDriftPx": 0.12550837485554944,
+      "maxEndpointError": 3.510833468576701e-16,
+      "maxGapPx": 0.00008221445262923185
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "maxPaintDriftPx": 0.14848632908400375,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "maxGapPx": 0.00008221445238806566
+    },
+    {
+      "id": "approach:walk",
+      "samples": 121,
+      "maxPaintDriftPx": 0.1513991118449841,
+      "maxEndpointError": 3.510833468576701e-16,
+      "maxGapPx": 0.00008447410891380827
+    },
+    {
+      "id": "approach:trot",
+      "samples": 121,
+      "maxPaintDriftPx": 0.15012830266168245,
+      "maxEndpointError": 3.510833468576701e-16,
+      "maxGapPx": 0.00012534987526169732
+    },
+    {
+      "id": "approach:gallop",
+      "samples": 121,
+      "maxPaintDriftPx": 0.16158345431137297,
+      "maxEndpointError": 3.510833468576701e-16,
+      "maxGapPx": 0.00012534987577012032
+    },
+    {
+      "id": "approach:hop",
+      "samples": 121,
+      "maxPaintDriftPx": 0,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.00012818924390391127
+    },
+    {
+      "id": "melee:claw",
+      "samples": 121,
+      "maxPaintDriftPx": 0.019049705975938587,
+      "maxEndpointError": 2.482534153247273e-16,
+      "maxGapPx": 0.00011984712923396503
+    },
+    {
+      "id": "melee:gore",
+      "samples": 121,
+      "maxPaintDriftPx": 0.019049705975938587,
+      "maxEndpointError": 2.482534153247273e-16,
+      "maxGapPx": 0.00011984712923396503
+    },
+    {
+      "id": "melee:tail",
+      "samples": 121,
+      "maxPaintDriftPx": 0.14290329814059713,
+      "maxEndpointError": 3.376611507232129e-16,
+      "maxGapPx": 0.00012018592459056611
+    },
+    {
+      "id": "melee:headbutt",
+      "samples": 121,
+      "maxPaintDriftPx": 0.019049705975938587,
+      "maxEndpointError": 2.482534153247273e-16,
+      "maxGapPx": 0.00011984712923396503
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "maxPaintDriftPx": 0.1468100554274374,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "maxGapPx": 0.00012387969816941548
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "maxPaintDriftPx": 0,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.00008221445246845438
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "maxPaintDriftPx": 0.007730024962211032,
+      "maxEndpointError": 5.9787339602818175e-16,
+      "maxGapPx": 0.00009355267484402958
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "maxPaintDriftPx": 0.14283787952503224,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "maxGapPx": 0.00012459310336062157
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "maxPaintDriftPx": 0.017696811786390862,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "maxGapPx": 0.00008975182489727262
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "maxPaintDriftPx": 0.09770455872347944,
+      "maxEndpointError": 3.1401849173675503e-16,
+      "maxGapPx": 0.00008424552929827542
+    },
+    {
+      "id": "melee:kick",
+      "samples": 121,
+      "maxPaintDriftPx": 0,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.00008368256771838011
+    }
+  ],
+  "maxPaintDriftPx": 0.16525637288346104,
+  "maxEndpointError": 5.9787339602818175e-16,
+  "maxGapPx": 0.00012818924390391127,
+  "exactRestGeometry": true,
+  "maxCovariancePx": 0,
+  "maxArapPublicationPx": 0.00014252713528909897,
+  "lastResiduals": [
+    {
+      "joint": "hindFarAnkle",
+      "lbsPrediction": [
+        0.5542265009283038,
+        0.7097288643659051
+      ],
+      "supportPrediction": [
+        0.5542265009283038,
+        0.7097288643659051
+      ],
+      "published": [
+        0.5542265176773071,
+        0.7097288370132446
+      ],
+      "kinematicResidualPx": [
+        0.000032164093023645535,
+        -0.0000040851549629739026
+      ],
+      "modelResidualPx": [
+        0.000032164093023645535,
+        -0.0000040851549629739026
+      ],
+      "arapResidualPx": [
+        0.000021003250132434204,
+        -0.000034300236229301007
+      ],
+      "modelToTriangleResidualPx": [
+        0,
+        0
+      ],
+      "publishedResidualPx": [
+        0.00005316734315607974,
+        -0.00003838539119227491
+      ],
+      "stance": true
+    },
+    {
+      "joint": "foreFarAnkle",
+      "lbsPrediction": [
+        0.9059011688843641,
+        0.7161084543187988
+      ],
+      "supportPrediction": [
+        0.9059011688843641,
+        0.7161084543187988
+      ],
+      "published": [
+        0.9059011340141296,
+        0.7161084413528442
+      ],
+      "kinematicResidualPx": [
+        0.00006578099261433934,
+        0.0000017157736131867551
+      ],
+      "modelResidualPx": [
+        0.00006578099261433934,
+        0.0000017157736131867551
+      ],
+      "arapResidualPx": [
+        -0.00004372727403501031,
+        -0.000016259306983457122
+      ],
+      "modelToTriangleResidualPx": [
+        0,
+        0
+      ],
+      "publishedResidualPx": [
+        0.00002205371857932903,
+        -0.000014543533370270367
+      ],
+      "stance": true
+    },
+    {
+      "joint": "hindNearAnkle",
+      "lbsPrediction": [
+        0.3854067401283804,
+        0.7448165838811001
+      ],
+      "supportPrediction": [
+        0.3854067401283804,
+        0.7448165838811001
+      ],
+      "published": [
+        0.3854067325592041,
+        0.7448166012763977
+      ],
+      "kinematicResidualPx": [
+        0.00005212098899676221,
+        -0.000003813100620586596
+      ],
+      "modelResidualPx": [
+        0.00005212098899676221,
+        -0.000003813100620586596
+      ],
+      "arapResidualPx": [
+        -0.000009491747062329026,
+        0.00002181370324905174
+      ],
+      "modelToTriangleResidualPx": [
+        0,
+        0
+      ],
+      "publishedResidualPx": [
+        0.00004262924193443318,
+        0.000018000602628465145
+      ],
+      "stance": true
+    },
+    {
+      "joint": "foreNearAnkle",
+      "lbsPrediction": [
+        0.7748264367796236,
+        0.7862839213935415
+      ],
+      "supportPrediction": [
+        0.7748264367796236,
+        0.7862839213935415
+      ],
+      "published": [
+        0.7748264670372009,
+        0.7862839102745056
+      ],
+      "kinematicResidualPx": [
+        0.0007727742795544668,
+        0.000037427501037745614
+      ],
+      "modelResidualPx": [
+        0.0007727742795544668,
+        0.000037427501037745614
+      ],
+      "arapResidualPx": [
+        0.00003794300197501599,
+        -0.000013943271036431781
+      ],
+      "modelToTriangleResidualPx": [
+        0,
+        0
+      ],
+      "publishedResidualPx": [
+        0.0008107172815294827,
+        0.000023484230001313833
+      ],
+      "stance": true
+    }
+  ],
+  "presentation": {
+    "samples": 601
+  }
+}

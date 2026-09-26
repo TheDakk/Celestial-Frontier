@@ -1,0 +1,17 @@
+{
+  "schema": "cf.family-contract-provenance/v1",
+  "sources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "6a10af5e4b07fc49ba7a6a27ce58e96ffad983b3182549aecc8309a9d0e18c97"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "f8091e7cec3ec55fc5da48f8d996fdf0e1545fa1adf593e5bbe60f9c11c9ba3d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/gsap-adapter.ts",
+      "sha256": "6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74"
+    }
+  ]
+}

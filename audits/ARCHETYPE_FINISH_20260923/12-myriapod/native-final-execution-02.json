@@ -1,0 +1,38 @@
+{
+  "schema": "cf.sprint-native-final-execution/v1",
+  "identity": {
+    "agent": "OpenAI/Codex",
+    "os": "macOS",
+    "root": "/Users/nick/Projects/celestial-frontier-openai-mac",
+    "branch": "openai/mac",
+    "verifiedTool": "cff315"
+  },
+  "native": {
+    "runId": "20260923-centipede-native-02",
+    "startTool": "dc0c2a",
+    "completionTool": "664d28",
+    "exitCode": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "report": "native-02/report.json",
+    "unchangedRetry": false,
+    "causeForNewAttempt": "Positive-alpha native sizing repair; native01 refusal retained"
+  },
+  "review": {
+    "sheet": "review-sheet-native-01.png",
+    "tool": "4cabd2",
+    "visualInspection": "Master, authored ownership colors, retained landmarks and real film still are visible. Art representation and margin limitations remain explicit."
+  },
+  "finalizers": {
+    "tool": "9b76d3",
+    "exitCode": 0,
+    "claims": "Local measured technical evidence only; no signing or push outcome asserted"
+  },
+  "independentNativeReview": {
+    "agent": "audit_completed_packets",
+    "tools": [
+      "bb09c5",
+      "acf4b6"
+    ],
+    "finding": "No actionable issue; helper includes every nonzero alpha byte and leaves source pixels, mass formula, ground registration and numerical gates unchanged."
+  }
+}

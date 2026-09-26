@@ -1,0 +1,44 @@
+{
+  "scope": "Candidate only, not accepted. Preserve all observed paint cuts in flattened coiled master; no hidden paint invented.",
+  "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "jaw",
+      "head",
+      "seg9",
+      "seg5",
+      "seg6",
+      "seg7",
+      "seg4",
+      "seg3",
+      "seg0",
+      "seg1",
+      "seg2",
+      "seg8"
+    ],
+    "contactEndpoints": [],
+    "preservePaintBoundaries": true
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "fad3b898f5754f6add079e6764c77975a88919c6db31221f356c9aeb0f381652",
+    "sourceVertices": 2216,
+    "vertices": 2329,
+    "sharedSupports": 889,
+    "pins": 967,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 12,
+    "excludedOverlaps": 16,
+    "observedExcludedBoundaries": 16,
+    "weldedExcludedBoundaries": 16,
+    "independentExcludedBoundaries": 0,
+    "preservePaintBoundaries": true,
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "75b512191c252994cb04b14cf2a7f60016e465d9a48904e88201ea7eded0dfaf",
+  "sourceCoordinateChanges": 0
+}

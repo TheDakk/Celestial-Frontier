@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "edit",
+  "source": "../01-jellyfish/master.png",
+  "sourceSha256": "c5e7c5230b6864ea759c5fedeab17c2a2dfb9f3a68a33a46f93477bed2bdacfb",
+  "promptSha256": "53aee993251e68e66b346a61c87de468b593455dbfbb03cfe69a3098058c8349",
+  "reason": "Explicit anatomy-count correction, no hidden inference",
+  "generation": 3
+}

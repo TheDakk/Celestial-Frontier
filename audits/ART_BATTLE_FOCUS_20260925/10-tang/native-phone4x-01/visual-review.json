@@ -1,0 +1,12 @@
+{
+  "status": "PASS_SCOPED_VISUAL_REVIEW",
+  "inspected": [
+    "turn1-hit-impact.png",
+    "turn3-hit-return-end.png"
+  ],
+  "findings": [
+    "Both fish face inward in water.",
+    "No open fin seam in inspected impact and return."
+  ],
+  "limits": "Actual picker, integrated coverage, whole-library phone tier and Nick art/device review pending."
+}

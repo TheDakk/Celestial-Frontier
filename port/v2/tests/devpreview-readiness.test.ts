@@ -22,7 +22,7 @@ describe('distributable preview readiness', () => {
     const window = renderedPreview();
     const read = new Function('document', 'window', `return (${developmentPreviewReadiness.toString()})(document,window);`);
     expect(read(window.document, window)).toMatchObject({
-      ready: true, distributable: true, harnessAbsent: true, trail: 'Cosmos · Sol',
+      ready: true, distributable: true, harnessAbsent: true, trail: 'Cosmos · Sol', trailVisible: true,
     });
   });
 
@@ -30,7 +30,10 @@ describe('distributable preview readiness', () => {
     const mutations = [
       (w: any) => { w.document.getElementById('trail').textContent = ''; },
       (w: any) => { w.document.getElementById('playerchip').textContent = ''; },
-      (w: any) => { w.document.getElementById('trail').hidden = true; },
+      (w: any) => { w.document.getElementById('playerchip').hidden = true; },
+      (w: any) => { w.document.getElementById('trail').remove(); },
+      (w: any) => { w.document.getElementById('playerchip').remove(); },
+      (w: any) => { w.document.querySelector('canvas').remove(); },
       (w: any) => { w.document.querySelector('canvas').width = 1; },
       (w: any) => { w.document.querySelector('canvas').style.visibility = 'hidden'; },
       (w: any) => { w.document.querySelector('meta').content = 'evidence'; },
@@ -46,6 +49,32 @@ describe('distributable preview readiness', () => {
     }
   });
 
+  it.each(['display', 'hidden', 'opacity', 'filter'] as const)(
+    'accepts populated canonical trail hidden by %s while reporting that it is not painted', (mode) => {
+      const window = renderedPreview(), trail = window.document.getElementById('trail');
+      if (mode === 'hidden') trail.hidden = true;
+      else trail.style.setProperty(mode, mode === 'display' ? 'none' : mode === 'filter' ? 'opacity(0)' : '0');
+      expect(developmentPreviewReadiness(window.document, window)).toMatchObject({
+        ready: true, canvasReady: true, renderedUi: true, trail: 'Cosmos · Sol', trailVisible: false,
+      });
+    });
+
+  it('rejects blank or disconnected canonical text even when the actual visible UI is ready', () => {
+    const window = renderedPreview(), trail = window.document.getElementById('trail');
+    trail.style.display = 'none'; trail.textContent = '   ';
+    expect(developmentPreviewReadiness(window.document, window)).toMatchObject({
+      ready: false, canvasReady: true, renderedUi: false, trail: '', trailVisible: false,
+    });
+    trail.textContent = 'Cosmos · Sol'; trail.remove();
+    // Retain the detached carrier through the lookup seam so connection is
+    // independently required, rather than relying only on an absent lookup.
+    const getElementById = window.document.getElementById.bind(window.document);
+    window.document.getElementById = (id: string) => id === 'trail' ? trail : getElementById(id);
+    expect(developmentPreviewReadiness(window.document, window)).toMatchObject({
+      ready: false, canvasReady: true, renderedUi: false, trail: 'Cosmos · Sol', trailVisible: false,
+    });
+  });
+
   it('recognizes rendered but inert Training background without claiming it can be activated', () => {
     const window = renderedPreview();
     window.document.body.classList.add('training');
@@ -58,7 +87,9 @@ describe('distributable preview readiness', () => {
   it.each([
     ['canvas', 'opacity', '0'],
     ['#playerchip', 'opacity', '0'],
-    ['#trail', 'filter', 'opacity(0)'],
+    ['#playerchip', 'filter', 'opacity(0)'],
+    ['canvas', 'display', 'none'],
+    ['#playerchip', 'display', 'none'],
     ['body', 'display', 'none'],
     ['body', 'visibility', 'hidden'],
     ['body', 'visibility', 'collapse'],

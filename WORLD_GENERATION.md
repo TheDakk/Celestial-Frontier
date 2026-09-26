@@ -1,5 +1,47 @@
 # Celestial Frontier — World & Universe Generation
 
+## On-demand landfall requirement — clarified 2026-09-08
+
+Nick requires the final cohesive landfall image to be produced on demand as a player visits
+worlds. The possible space may contain millions of worlds; it does not imply installing a
+separate prepainted image for each. Existing seeded world/roster generation and the one prepared
+Earth still do not yet implement that approved-quality scene generator.
+
+Nick asks to investigate generation locally as part of the game and requires no separate AI
+software installation for players. Local generation could manage model files within the game;
+an online image API could also provide a seamless player flow without a model download. These
+are different runtime choices. No model, browser/native integration or paid service is selected.
+The built-in Codex tool created the current artwork during authoring; it is not an embedded game
+generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
+qualification. A seed alone is not an exact-pixel contract. This art requirement authorizes no
+generation service or model installation; separate Git integration authority is recorded in ROADMAP. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+Local direction is conditional on feasibility, modest storage and no separate player AI setup.
+Nick now prefers adaptive scene-cache allowances: smaller on limited devices and several GB on
+capable desktops. Proposed tiers remain provisional; disk storage and RAM/GPU budgets are separate.
+All build/model/save/update bytes still count toward the total footprint. No cache manager, model
+budget or runtime gate changed. [Current adaptive limits and retention proposal](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md). The next bounded proof should create one scene on demand from an existing canonical
+world and full roster before adding a larger prepainted catalogue. Preserve generation draw order,
+biome mapping, complete organism identities, saves, clocks and current CF1/CFB formats.
+
+## Requested time-aware art and sharing — source reviewed 2026-09-08
+
+Nick approves the full landfall painting direction and requests procedural coverage, planetary
+rotation/daylight and seasons, plus shareable discoveries. Current source still chooses a fixed
+seeded day/dusk/night appearance; cosmetic orbital motion is not a physical year/season authority.
+CF1 native Share/Follow carries a location, not the sender's exact time/roster/art snapshot.
+CFB/CFB2 remain domain codecs without native V2 creature share/import wiring. Nothing here changes
+those formats, world/genome generation, current biome authority, saves or gameplay clock rules.
+
+[TIME_AND_SHARING.md](audits/MIDGAME_ART_DIRECTION_20260908/TIME_AND_SHARING.md) records actual
+owners and the proposed versioned appearance recipe: exact world/place, full organism identities,
+art catalogue, explicit clock coordinate, supported rotation/axis/orbit/light/season conditions
+and camera. A view snapshot would be separate from a CF1 location or ownership transfer. Keep
+visual conditions separate from the protected active-play economy and committed ecology epoch;
+wall-clock manipulation must not award yield/recovery or rewrite organisms. Seasons require an
+explicit approximation of tilt, latitude and orbital phase; not all worlds have four Earth seasons.
+This is a recorded design requirement, not implemented climate/physics or all-world painted output.
+
+
 **STATUS:** legacy mechanics match `main.js` as of 2026-07-23; the dated v2 overlays
 match the current local candidate boundary as of 2026-08-29.
 **Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.

@@ -1,0 +1,106 @@
+{
+  "startedAt": "2026-09-09T06:43:00.674340+00:00",
+  "sourceSha256": {
+    "tools/local-image-repack/model.mjs": "16d84698940e374306105c9494726b151d2210fd7f68cc6c4f96b72bb625e415",
+    "tools/local-image-repack/model.test.mjs": "284043d00a942e2857f0d20c405b2bd17cf45cd408cc382b0d36754258647522",
+    "tools/local-image-repack/protobuf.mjs": "098fbe1d2634525798f409296b38e40f8c927a121dda1c1067b55b14eb6f3d9d",
+    "tools/local-image-repack/protobuf.test.mjs": "43607d54c9da7996e926492e2492cb89f391ae0ab348932c54eb3369733897c0",
+    "tools/local-image-repack/repack.mjs": "b4541d8d9f4f104652fbca07ae5cb7289ef955bc5b377029bddb4540ed936eae"
+  },
+  "steps": [
+    {
+      "name": "syntax-model",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "q8-repack-controls",
+        "--",
+        "node",
+        "--check",
+        "tools/local-image-repack/model.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-model.test",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "q8-repack-controls",
+        "--",
+        "node",
+        "--check",
+        "tools/local-image-repack/model.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-protobuf",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "q8-repack-controls",
+        "--",
+        "node",
+        "--check",
+        "tools/local-image-repack/protobuf.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-protobuf.test",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "q8-repack-controls",
+        "--",
+        "node",
+        "--check",
+        "tools/local-image-repack/protobuf.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-repack",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "q8-repack-controls",
+        "--",
+        "node",
+        "--check",
+        "tools/local-image-repack/repack.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "q8-repack-controls",
+        "--",
+        "node",
+        "--test",
+        "tools/local-image-repack/protobuf.test.mjs",
+        "tools/local-image-repack/model.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "c550b3236f7b7f3525cf30e243dbae45ea872c7d7604960558a23ca197aa80a5"
+    }
+  ],
+  "status": "PASS",
+  "sourceUnchanged": true,
+  "finishedAt": "2026-09-09T06:43:01.119290+00:00"
+}

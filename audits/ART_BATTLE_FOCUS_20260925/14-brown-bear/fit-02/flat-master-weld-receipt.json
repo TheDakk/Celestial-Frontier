@@ -1,0 +1,119 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "fit-01",
+  "sourceRecordSha256": "477ff21fa6cbac7deee2d8412f91b7fa6bf15a714a3a18940a8c6ea4895fe95c",
+  "sourceBindingSha256": "804678957bc6931929f8468640ed7bb3c4601adbb58cbd4e5f866f7d1fc74ed9",
+  "sourceAtlasSha256": "9d374fe5e4397d6a90346601556909d1e1d85d2792a6ea3fec3a4a35e0ef6768",
+  "helperSha256": "3acd9b70a9543c3fe57c95ab34800d9f53211d4f184976215fb1efbd7620baa3",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "earNearTip",
+      "earNearRoot",
+      "earFarTip",
+      "earFarRoot",
+      "hindNearPaw",
+      "hindNearAnkle",
+      "hindNearKnee",
+      "hindNearRoot",
+      "foreNearPaw",
+      "foreNearAnkle",
+      "foreNearKnee",
+      "foreNearRoot",
+      "hindFarPaw",
+      "hindFarAnkle",
+      "hindFarKnee",
+      "hindFarRoot",
+      "foreFarPaw",
+      "foreFarAnkle",
+      "foreFarKnee",
+      "foreFarRoot",
+      "jaw",
+      "head",
+      "neck",
+      "tail3",
+      "tail2",
+      "tail1",
+      "tail0",
+      "chest",
+      "pelvis",
+      "spine"
+    ],
+    "contactEndpoints": [
+      "hindFarAnkle",
+      "foreFarAnkle",
+      "hindNearAnkle",
+      "foreNearAnkle"
+    ],
+    "paintBoundaryPairs": [
+      [
+        "root",
+        "spine"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 53,
+        "distancePx": 4.716990566028318,
+        "supports": [
+          970
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 74,
+        "distancePx": 5.590169943749446,
+        "supports": [
+          1267
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 69,
+        "distancePx": 4.30116263352127,
+        "supports": [
+          105
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 82,
+        "distancePx": 2.000000000000057,
+        "supports": [
+          533
+        ]
+      }
+    ],
+    "sourceBindingHash": "1b510f43d2fccff66ec315543e7ca2e1e37aa6828f665bd314ed69c026875a71",
+    "sourceVertices": 2591,
+    "vertices": 3069,
+    "sharedSupports": 881,
+    "pins": 719,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 43,
+    "excludedOverlaps": 28,
+    "observedExcludedBoundaries": 28,
+    "weldedExcludedBoundaries": 1,
+    "independentExcludedBoundaries": 27,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "root",
+        "spine"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "db34f6de657aec0e382662efad07ec4a46797e56a0a4130da48455b815e8c0cf",
+  "scope": "Only this unadmitted Brown Bear candidate. Explicit authored continuity joins only the observed interior root/spine patch boundary; other excluded surfaces stay independent. No solver/gate/limit change; no hidden pixels invented. Prior intake receipts describe inherited fit-01 inputs, this receipt owns the new split."
+}

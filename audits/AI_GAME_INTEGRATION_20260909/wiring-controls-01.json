@@ -1,0 +1,13 @@
+{
+  "status": "FAIL",
+  "testsPassed": 56,
+  "testsFailed": 3,
+  "suiteImportFailures": 1,
+  "unhandledErrors": 3,
+  "command": "node tools/with-toolchain-lock.mjs --label ai-game-wiring-focused-01 -- port/v2/node_modules/.bin/vitest run --root port/v2 port/v2/tests/pilot-landing-main-wiring.test.ts port/v2/tests/earth-layered-chrome-layout.test.ts port/v2/tests/earth-layered-shake-settlement.test.ts port/v2/tests/painted-earth-mount-ownership.test.ts",
+  "diagnosis": [
+    "Layout source extraction still matched old no-argument signature",
+    "VM mount/shake fixtures omitted new LOCAL_AI_LANDFALL_ID global; caught mount errors became false and three shake rejections were unhandled"
+  ],
+  "scope": "First instrument result, not browser or model qualification"
+}

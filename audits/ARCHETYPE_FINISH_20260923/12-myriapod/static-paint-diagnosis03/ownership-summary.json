@@ -1,0 +1,348 @@
+[
+  {
+    "part": "leg1-near",
+    "rootPins": [
+      {
+        "index": 76,
+        "xy": [
+          1018,
+          744
+        ]
+      }
+    ],
+    "edgePixels": 8,
+    "edgeBounds": [
+      1009,
+      733,
+      1016,
+      740
+    ],
+    "alpha": [
+      2,
+      251
+    ]
+  },
+  {
+    "part": "leg3-near",
+    "rootPins": [
+      {
+        "index": 123,
+        "xy": [
+          900,
+          744
+        ]
+      },
+      {
+        "index": 122,
+        "xy": [
+          890,
+          734
+        ]
+      },
+      {
+        "index": 121,
+        "xy": [
+          880,
+          724
+        ]
+      }
+    ],
+    "edgePixels": 21,
+    "edgeBounds": [
+      881,
+      705,
+      897,
+      727
+    ],
+    "alpha": [
+      1,
+      254
+    ]
+  },
+  {
+    "part": "leg5-near",
+    "rootPins": [
+      {
+        "index": 283,
+        "xy": [
+          783,
+          724
+        ]
+      },
+      {
+        "index": 287,
+        "xy": [
+          783,
+          744
+        ]
+      }
+    ],
+    "edgePixels": 9,
+    "edgeBounds": [
+      783,
+      724,
+      789,
+      732
+    ],
+    "alpha": [
+      1,
+      1
+    ]
+  },
+  {
+    "part": "leg6-near",
+    "rootPins": [
+      {
+        "index": 337,
+        "xy": [
+          705,
+          724
+        ]
+      }
+    ],
+    "edgePixels": 7,
+    "edgeBounds": [
+      701,
+      708,
+      708,
+      713
+    ],
+    "alpha": [
+      1,
+      178
+    ]
+  },
+  {
+    "part": "leg13-near",
+    "rootPins": [
+      {
+        "index": 727,
+        "xy": [
+          273,
+          724
+        ]
+      }
+    ],
+    "edgePixels": 2,
+    "edgeBounds": [
+      270,
+      707,
+      270,
+      708
+    ],
+    "alpha": [
+      1,
+      1
+    ]
+  },
+  {
+    "part": "leg0-far",
+    "rootPins": [
+      {
+        "index": 779,
+        "xy": [
+          1018,
+          627
+        ]
+      },
+      {
+        "index": 780,
+        "xy": [
+          998,
+          627
+        ]
+      },
+      {
+        "index": 781,
+        "xy": [
+          998,
+          622
+        ]
+      }
+    ],
+    "edgePixels": 29,
+    "edgeBounds": [
+      997,
+      626,
+      1020,
+      642
+    ],
+    "alpha": [
+      1,
+      252
+    ]
+  },
+  {
+    "part": "leg3-far",
+    "rootPins": [
+      {
+        "index": 1328,
+        "xy": [
+          841,
+          607
+        ]
+      },
+      {
+        "index": 1322,
+        "xy": [
+          822,
+          607
+        ]
+      }
+    ],
+    "edgePixels": 36,
+    "edgeBounds": [
+      818,
+      611,
+      846,
+      632
+    ],
+    "alpha": [
+      1,
+      253
+    ]
+  },
+  {
+    "part": "leg4-far",
+    "rootPins": [
+      {
+        "index": 1373,
+        "xy": [
+          783,
+          607
+        ]
+      },
+      {
+        "index": 1370,
+        "xy": [
+          763,
+          607
+        ]
+      }
+    ],
+    "edgePixels": 47,
+    "edgeBounds": [
+      760,
+      610,
+      802,
+      626
+    ],
+    "alpha": [
+      1,
+      253
+    ]
+  },
+  {
+    "part": "leg5-far",
+    "rootPins": [
+      {
+        "index": 1420,
+        "xy": [
+          724,
+          607
+        ]
+      },
+      {
+        "index": 1406,
+        "xy": [
+          705,
+          607
+        ]
+      }
+    ],
+    "edgePixels": 43,
+    "edgeBounds": [
+      703,
+      613,
+      743,
+      624
+    ],
+    "alpha": [
+      1,
+      253
+    ]
+  },
+  {
+    "part": "leg6-far",
+    "rootPins": [
+      {
+        "index": 1454,
+        "xy": [
+          666,
+          607
+        ]
+      },
+      {
+        "index": 1451,
+        "xy": [
+          646,
+          607
+        ]
+      }
+    ],
+    "edgePixels": 47,
+    "edgeBounds": [
+      641,
+      613,
+      685,
+      626
+    ],
+    "alpha": [
+      1,
+      253
+    ]
+  },
+  {
+    "part": "leg7-far",
+    "rootPins": [
+      {
+        "index": 1486,
+        "xy": [
+          587,
+          607
+        ]
+      }
+    ],
+    "edgePixels": 11,
+    "edgeBounds": [
+      583,
+      623,
+      592,
+      632
+    ],
+    "alpha": [
+      1,
+      252
+    ]
+  },
+  {
+    "part": "leg10-far",
+    "rootPins": [
+      {
+        "index": 1857,
+        "xy": [
+          410,
+          627
+        ]
+      },
+      {
+        "index": 1831,
+        "xy": [
+          391,
+          627
+        ]
+      }
+    ],
+    "edgePixels": 17,
+    "edgeBounds": [
+      399,
+      635,
+      411,
+      648
+    ],
+    "alpha": [
+      1,
+      255
+    ]
+  }
+]

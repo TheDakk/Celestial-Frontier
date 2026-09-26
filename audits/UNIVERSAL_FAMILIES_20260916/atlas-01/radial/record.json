@@ -1,0 +1,160 @@
+{
+  "kind": "radial",
+  "identity": {
+    "speciesVisualKey": "synthetic:radial",
+    "seed": 659718,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "radial",
+    "version": 1
+  },
+  "family": "jelly",
+  "geometry": {
+    "cutoutAssetHash": "3a190c42c09d1a7aa8d541eb4e4f979a09667ca17a9b5c4e947aac2b057ece82",
+    "width": 128,
+    "height": 128,
+    "groundLineY": 0.95,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5,
+      0.3
+    ],
+    "centre": [
+      0.5,
+      0.34
+    ],
+    "bell": [
+      0.5,
+      0.22
+    ],
+    "arm0Seg0": [
+      0.58,
+      0.44
+    ],
+    "arm0Seg1": [
+      0.62,
+      0.56
+    ],
+    "arm0Seg2": [
+      0.64,
+      0.7
+    ],
+    "arm2Seg0": [
+      0.54,
+      0.46
+    ],
+    "arm2Seg1": [
+      0.56,
+      0.6
+    ],
+    "arm2Seg2": [
+      0.57,
+      0.74
+    ],
+    "arm4Seg0": [
+      0.62,
+      0.4
+    ],
+    "arm4Seg1": [
+      0.68,
+      0.5
+    ],
+    "arm4Seg2": [
+      0.72,
+      0.62
+    ],
+    "arm1Seg0": [
+      0.42,
+      0.44
+    ],
+    "arm1Seg1": [
+      0.38,
+      0.56
+    ],
+    "arm1Seg2": [
+      0.36,
+      0.7
+    ],
+    "arm3Seg0": [
+      0.46,
+      0.46
+    ],
+    "arm3Seg1": [
+      0.44,
+      0.6
+    ],
+    "arm3Seg2": [
+      0.43,
+      0.74
+    ],
+    "arm5Seg0": [
+      0.38,
+      0.4
+    ],
+    "arm5Seg1": [
+      0.32,
+      0.5
+    ],
+    "arm5Seg2": [
+      0.28,
+      0.62
+    ]
+  },
+  "materials": {
+    "surface": "translucent",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "radial-v1",
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "centre": 0.040000000000000036,
+      "bell": 0.12000000000000002,
+      "arm0Seg0": 0.12806248474865692,
+      "arm0Seg1": 0.12649110640673522,
+      "arm0Seg2": 0.14142135623730942,
+      "arm1Seg0": 0.12806248474865697,
+      "arm1Seg1": 0.12649110640673522,
+      "arm1Seg2": 0.14142135623730942,
+      "arm2Seg0": 0.12649110640673517,
+      "arm2Seg1": 0.14142135623730948,
+      "arm2Seg2": 0.14035668847618202,
+      "arm3Seg0": 0.12649110640673514,
+      "arm3Seg1": 0.14142135623730948,
+      "arm3Seg2": 0.14035668847618202,
+      "arm4Seg0": 0.1341640786499874,
+      "arm4Seg1": 0.11661903789690602,
+      "arm4Seg2": 0.12649110640673514,
+      "arm5Seg0": 0.1341640786499874,
+      "arm5Seg1": 0.11661903789690599,
+      "arm5Seg2": 0.12649110640673514
+    },
+    "measures": {
+      "body": 0.12000000000000002,
+      "bone-min": 0.040000000000000036,
+      "bone-max": 0.14142135623730948,
+      "arm/bell:arm0": 3.2997912282725124,
+      "arm/bell:arm1": 3.2997912282725133,
+      "arm/bell:arm2": 3.4022429260018883,
+      "arm/bell:arm3": 3.4022429260018883,
+      "arm/bell:arm4": 3.143951857946904,
+      "arm/bell:arm5": 3.143951857946904
+    }
+  },
+  "recipeHash": "f22db600c82a6a37cf5cf4896f318a1be6a8f761f9eafa25232439bb84bcd4f8"
+}

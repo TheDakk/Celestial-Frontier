@@ -1,0 +1,1 @@
+{"status":"FAIL","error":"Error: Error: Guardian sizing is outside this archetype-only study\n    at loadSide (http://127.0.0.1:55303/bundle.js:33586:30)\n    at async http://127.0.0.1:55303/bundle.js:33606:9\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148"}

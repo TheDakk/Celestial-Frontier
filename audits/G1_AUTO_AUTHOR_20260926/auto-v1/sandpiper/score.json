@@ -1,0 +1,20 @@
+{
+ "id": "sandpiper",
+ "family": "biped-bird",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 954.9,
+ "landmarkMedian": 0.1061,
+ "landmarkMax": 0.3532,
+ "worst": [
+  "legFarFoot 0.353",
+  "wingFarTip 0.270",
+  "legFarAnkle 0.254"
+ ],
+ "labelAgreement": 0.4777,
+ "missingJoints": [],
+ "static": "RED",
+ "staticFails": [
+  "victory"
+ ]
+}

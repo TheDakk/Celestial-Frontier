@@ -1,5 +1,656 @@
 # Celestial Frontier — UI / Presentation System
 
+Each section dates itself (most with a `matches code as of` marker; a section without one is not a verified
+description). Refreshed in place September 24, 2026: the painted Compendium card and matchup picker section only; the
+rest of this doc was not re-verified in that refresh.
+
+## v2 H1 device probe page (`?deviceProbe=1`) — matches code as of 2026-09-26
+- Flag-gated and loaded through a dynamic import only. The default boot never loads it; a test proves this.
+- The page is a full-screen overlay with 44 px buttons in this order: **Run codec check** (D15), **Run performance (≈45 s)**, **Run heat (3 min)**, **Read memory**, **Copy results** and **Close**.
+- **Copy results** gives one plain-text block. It holds the commit, the pack digest (from the package's own `preview.json`), UA, DPR, viewport and every number beside its budget.
+- **Owners:**
+  - `device-probe.ts` owns the page and the codec section.
+  - `device-probe-performance.ts` owns the pure analysis and the recorder: the real matchup picker's scripted bout on the app's own ticker, with the stage's ticker callbacks timed and rAF intervals.
+  - `main.ts` builds the runtime port lazily, when a Run is pressed.
+- **Budgets are read, never set.**
+  - The 60 Hz pacing budget comes from `inspectFramePacing` (`tools/quadruped-proof/motion-proof-contract.mjs`): fps ≥ 57, interval p95 ≤ 25 ms, max ≤ 100 ms, ≥ 570 frames. A test checks this against the owner at its boundaries.
+  - Long intervals (≥ 25 ms) and busy frames (> 1000/60 ms) are counted the way Codex's native summaries count them.
+  - The residency limits are the caches' own constants: painted archetypes 2, and the morph atlas cache at 8 entries / 96 MiB.
+- **Heat is a proxy.** iOS exposes no temperature, so the page judges 30 s windows of the sustained heaviest pair by the same pacing budget and reports the p95 drift.
+- **Memory is reported honestly.** The JS heap is shown only where `performance.memory` exists; iOS Safari has none, so it prints "unavailable" and never an estimate.
+
+## v2 localization scaffolding (A6) — matches code as of 2026-09-26
+- **Pattern** (`i18n.ts`): each surface owns an English source-string catalog (text plus `title` / `aria-label` / `placeholder`). `localizeElementV1` swaps the strings after render.
+- **Settings is the first surface** (`SETTINGS_CATALOG_V1`, 50 strings). Its localizer is registered through `panels.ts` `setPanelLocalizerV1`, and only for a non-English `?locale=`, so English stays byte-identical.
+- **Locales:** `en`, and the pseudo-locale `qps-ploc`.
+- **Fallbacks:** a missing translation or an uncatalogued string falls back to English with a dev warning. `data-l10n-skip` guards player data.
+- The pixel fit of longer strings is still to be run in a real browser (see `audits/H1_L10N_20260926/README.md`).
+
+## v2 landing vista view and postcard (D16 #9/#10; ledger A6 share card) — matches code as of 2026-09-26
+- **The pill row.** While a landing vista is on screen (surface, vista mounted and visible, not in Field Training), a pill row of real 44 px buttons sits over the stage, outside the survey card: **⛶ Vista** and **⇪ Postcard**. The measured default card is unchanged.
+- **The view.** ⛶ Vista sets `body.vista-view`: the survey card, panels and HUD chrome step aside, so the full-stage vista stands alone (v1's Full screen). Any tap steps back without acting on the world, and so does Escape (v1: while zoomed, a tap steps out).
+- **The postcard.** It is v1's exact composition: the vista, an 86 px band, the title in Georgia 26, the CF1 share code in 9 px mono, and the wordmark. The vista is capped at 1,600 px wide. The postcard is deterministic from the world: the vista is its deterministic render, and the text is its own name and code.
+- **Sharing.** The postcard goes to the Web Share API as a file when the device can share files (the iPhone share sheet). A dismissed sheet is cancelled, never a surprise download. Otherwise it downloads. It works offline, with v1's toast.
+- **Code.** The module is `vista-postcard.ts`; `main.ts` owns `vistaPills`, `setVistaViewing` and `saveVistaPostcard`.
+
+## v2 Compendium filter chips and shelves (D16 #36/#37) — matches code as of 2026-09-26
+- **Chip bar.** One horizontally scrolling row of 44 px chips above the Compendium list, shown once the Compendium has a species: kingdom (All · 🐾 Fauna · 🌿 Flora · 🍄 Fungi · 🦠 Microbes), the rarity floor (All · Rare+ · Legendary+ · Mythic+, on the DISPLAY tier) and "▦ Shelves". This is v1's `_codexTabs` in one row; logic in `compendium-shelves.ts`.
+- **Scroll height.** The list's virtual scrollport gives up exactly the chip row (52 px) in both height owners, so no row hides under the dock.
+- **Shelves (opt-in, off by default).** The list groups onto v1's themed shelves (`CODEX_SHELF_OF_V1`, domain `REALM_ORDER`). Each shelf is a real button fold header. Nothing opens itself; a kingdom or rarity filter lays every shelf open. The default Compendium stays the flat virtual list that Codex's instruments measure.
+- **State.** Filters and shelf folds are session view state, never saved. The fixture install/reset (Codex's I5 instrument) returns them to the default.
+- **Origin travel (#38).** A wild catch's detail card has a 44 px "Travel to <world> ↗" button: v1 `data-go`, travelling to the saved `where` through the one proven-route owner (search-travel), then v1's "Course Plotted" toast. A hybrid, a page without a resolvable world, and a measurement fixture show no button and never travel.
+- **Reveal queue (#39).** A committed action's NEW pages (a first catch, a bred hybrid; a page diff taken before and after the commit) are revealed as a modal specimen card: the painted portrait (a cancellable art-loader request), the name, the kind, and a 44 px Continue ("Continue · N more"). A separate "Skip all (N)" button and Escape clear the rest (v1's "hold to skip all" as a real button). This is v1's one-voice rule: while another modal or Field Training owns the screen, reveals queue, and the next input pulse after it closes flushes them. A measurement fixture reveals nothing. `compendium-reveal.ts`, owner in `main.ts` (`compendiumReveal`, `compendiumRevealPages`).
+
+## v2 folded survey card (D18) — matches code as of 2026-09-25
+
+- **An option, off by default.** Settings → "Folded survey card" (`#setfold`). Nick decided on 2026-09-25 that the default stays the flat card, which is the card uilayout and the Slice/Glass instruments measure.
+- **Stored on the device, never in the save.** The choice is a device preference (`cf-v2-survey-folds/v1`, guarded localStorage, like Mono audio). It rides on the card element as `data-survey-folds="on"`.
+- **Flat when off.** `showSurvey` keeps its original flat row expression and only calls `surveyRowsHtmlV1` (`survey-card-folds.ts`) when the flag is set.
+- **Two folds when on,** matching v1.8.9:
+  - the environment rows (Made of, Atmosphere, Climate, Water, Gravity, Magnetism, Weather, Seasons) become one **Environment** fold. Its header shows the climate's first clause and the gravity.
+  - a civilization with census detail (Tech era, Local year, Population) becomes one fold headed by its `Civilization` row, which keeps its `data-row`.
+- **Remembered open/closed state.** Pressing a header toggles it in place without a rebuild. The open/closed state is the save's existing `cardExpand` bits 1 and 2, as in v1, so there is no save-shape change.
+- **Test:** `tests/d18-survey-folds-outcome.test.ts`.
+
+## Painted Compendium card and the matchup picker — matches code as of 2026-09-24 (anthropic/mac working copy over d643fc0e, including uncommitted changes)
+
+Scope: the card path of the morph system and the study-only matchup picker, both Claude-lane code under
+`port/v2/apps/game/src/`. Anatomy fits, motion, the parts rig and the painting pipeline are Codex's; see
+`CREATURE_ANIMATION.md` and `ART_KIT.md`. The morph design is `audits/VISION_PROGRAM_20260920/MORPH_SYSTEM_DESIGN.md`.
+
+**Which creatures are painted.** Seventeen archetypes: Crab, Coconut Crab, Freshwater Crab, Mud Crab, Vent Crab,
+Civet, Salmon, Eagle, Beetle, Python, Tree Frog, Chimpanzee, Starfish, Tarantula, Octopus, Fruit Bat and Centipede.
+One list, `CARD_ARCHETYPES` in `port/v2/tools/morph/build-card-masters.mjs`, generates the card registry
+(`morph/card-archetypes.ts`), the explicit `?url` asset map including the painted marking masks
+(`painted-cards.assets.ts`) and the arena's fit list (`battle2-archetypes.ts`). `tools/morph/build-shipped-battle2.mjs`
+ships the arena's files from the same list. `battle2-archetypes.test.ts` fails when a generated file differs from what
+the builder produces, or when a shipped mirror names another fit or record.
+
+**The card is the individual, on every device.** `main.ts` builds one `PaintedCardSource`
+(`painted-cards.ts` `createPaintedCardsForApp`) and passes it to the `SpeciesArtLoader`. The loader asks it first for
+every 132px thumb (`leaseThumb`) and 440px portrait (`requestPortrait`). That covers the Compendium row image
+(`.compendium-thumb`), the Compendium detail portrait (owner `codex-detail`) and the loader's other thumb consumers,
+such as Planetside. Which painting draws a genome is decided by `paintedArtV2` (G4, 2026-09-26; ART_DIRECTION.md "Which painting
+draws a creature"): its own species, a same-group Earth relative, the nearest same-anatomy variant, or the body plan's stand-in, rendered
+from that archetype's sealed card master (a LIBRARY archetype's files are fetched and pin-verified; an unreachable one draws its core
+family painting, labelled and uncached). A genome no painting draws gets `null`, and the painter tier answers as before. The path has no device-class branch. The loader test runs
+with the phone device class and asserts that the painter producer is never asked for a painted crab
+(`morph/painted-cards.test.ts`). If `createPaintedCardsForApp` throws (an archetype without shipped assets), `main.ts`
+continues with the painter tier for every species.
+
+**Card master and render.** Each archetype ships four card files under
+`port/v2/apps/game/assets/painted-cards/<key>/`, plus its marking masks where they were painted:
+- `card/master-512.png`: the painted master, alpha-weighted box downscale, longest side at most 512.
+- `card/labels-512.png`: the part labels, nearest-neighbour downscale.
+- `card/card.json`: a `cf.card-master/v1` receipt. It is sealed to the fit record's `recipeHash` and carries the
+  landmarks, plus the family's fixed joint sockets when the family declares any.
+- `record.json`: the fit record.
+
+A `SOURCE.json` beside them names the fit the folder mirrors; the drift test reads it, and the app never loads it.
+
+`PaintedCardSource` refuses a master or labels file whose size disagrees with the receipt, and a receipt sealed for
+another record. `morph/morph-card.ts` `renderCardIndividualV1` then runs these steps:
+1. Remap the palette by each pixel's label role.
+2. Apply the painted marking, or the emissive glow.
+3. Apply proportion.
+4. Turn a long body onto the diagonal.
+5. Crop to the alpha box with a 6% margin (`CARD_MARGIN`).
+6. Box-downscale to a square of the requested size.
+
+The result is served as a PNG data URL. Renders run one per host task (`yieldToHost`, a macrotask by default), so a
+Compendium grid never renders a page of cards in one task. Results are cached per kind by `speciesVisualKey`: 64 thumbs
+and 8 portraits by default, with the oldest evicted. Concurrent requests for the same card share one render.
+
+**What the genome changes** (`morph/morph-params.ts`, `morph-palette.ts`, `morph-markings.ts`, `morph-skeleton.ts`):
+- **Colour:** colour and accent genes pick from a 17-entry colour table with a deterministic ±12° hue jitter. Three
+  entries have no hue (obsidian-black, bone-white, glass-clear); they keep the painting's hue and only lower chroma. The
+  remap keeps luminance, so the painted finish survives. A gene equal to the archetype's own gene is identity, because the
+  painting is its own genome. `archetypeGenomeV1` reads that genome from the record's `genome` and
+  `identity.speciesVisualKey`.
+- **Accent:** the accent is trim, set per body plan in `ACCENT_GROUPS`. It covers crab claws; quadruped ears and tail;
+  fish fins; bird head and tail; insect wings and antennae; the head of serpents, hoppers, cephalopods and myriapods;
+  the radial centre disc (`body`); the arachnid abdomen (`tail`); and flying-membrane ears and head. Primates have no
+  accent (one coat). Every other joint group is the base coat. A part on joint `root` with no group takes the `body`
+  group's role, unless its id names a shadow, which stays as painted (`paletteRoleOfPart`). That makes the torso base
+  coat on every plan except the radial, where the Starfish's root `body` part is accent with its centre disc.
+- **Near-grey tint:** a role with mean saturation below 0.18 (`LOW_CHROMA_ROLE`) is tinted when the colour has a hue:
+  it takes the target hue at a saturation floor of 0.3 (`TINT_SATURATION`, before the colour's chroma multiplier), with
+  luminance kept. On the card masters this covers the Salmon's silver, the Vent Crab's white and the Chimpanzee's black.
+- **Proportion:** head and tail genes scale only non-contact sub-trees: head 0.85–1.2 and tail 0.7–1.35. Ears and
+  antennae follow the head at a gentler slope. Legs and contact chains never scale. A scaled sub-tree carries every joint
+  under it: the Octopus's arms and siphon hang from its head, so its head gene scales them too.
+- **Pattern:** the pattern gene draws a painted marking mask where one exists. Crab, Civet and Salmon ship striped,
+  spotted, banded, mottled, marbled and eye-spotted masks. A pattern nobody painted renders plain.
+- **Emissive:** the lumin gene or the iridescent pattern adds an emissive lift on the marking. With no marking, the lift
+  goes on the accent set, or on the base coat for a plan with no accent set (`emissiveRoleV1`).
+
+**Long bodies on the diagonal.** `diagonalLongBodyV1` checks the composite's alpha box. When the box is horizontal and
+its short side divided by its long side is below 0.42 (`LONG_BODY_ASPECT`), the body is rotated 45° about its centre
+with the head end raised. The rotation uses the exact constant √½ (`Math.SQRT1_2`), with no trigonometry. Today exactly
+three archetypes turn as painted: the Python, the Centipede and the Salmon. `morph/morph-library.test.ts` pins that list and
+requires each turned card to be more than 1.15× fuller. Every other card must be byte-identical with the rotation
+switched off.
+
+**Card = stage.** The card and the battle stage use the same part-role rule (`paletteRoleOfPart`: the card through
+`cardRolesV1`, the stage through `morph/morph-individual.ts` `paletteFramesV1`) and the same joint scales
+(`jointScalesV1`). The card's proportion transform (`cardProportionV1`) matches the stage's skeleton program: nested
+scaled parts compose, and a fixed socket from the receipt is the pivot, otherwise the parent's landmark (only the
+Centipede's receipt has fixed sockets today). `morph/morph-library.test.ts` checks the
+grey/tint decision against the stage's atlas on every archetype. It also checks the proportion transform against the
+stage's skeleton program, landmark by landmark, with mutation controls.
+
+**Matchup picker (study-only).** The picker is a playtest surface, not a player feature. It opens from
+`?battle2=1&vs=Left,Right`, with optional `&world=lake|land` and `&seed=N`. `main.ts` imports `battle2-matchup.ts`
+dynamically only when both `battle2=1` and `vs` are present: the battle2 study's flag plus `vs`.
+`battle2-matchup.test.ts` checks that gate from the source text, with mutation controls.
+
+The picker is a fixed full-screen layer over the game (`role="dialog"`, labelled "Painted creature matchup"). It holds
+two creature lists of the 17 archetypes, a World list (auto, land, lake), a seed field, and Play and Close buttons.
+Every control is at least 44px tall. A polite live `<output>` shows the status line. Names in the URL are
+case-insensitive. An unknown or missing left name falls back to the first archetype in the list, and the right one to
+the first other archetype. A seed that is not a whole number of at most nine digits falls back to the archetypes' own
+colours. `parseMatchup` records a note for an unknown name or a bad seed and the picker writes it to the status line,
+but the first Play's "loading" line replaces it in the same task, so today nobody sees it. Auto picks the lake when
+either side can only swim (Salmon, Octopus, Starfish). An explicit Land with a swimmer reports the habitat refusal as "could not stage". Without a seed,
+both fighters are their archetypes as painted (identity morph). With a seed, each side is a morphed individual from its
+own lane, so a mirror match shows two different individuals.
+
+Play mounts the real battle2 study (`mountBattle2Study`, `battle2-wiring.ts`) with a scripted five-turn bout: left
+hits, right hits back, right dodges, right crits, and left wins. The stage changes no HP or rewards. A new Play disposes
+the previous study. Close disposes the study and removes the layer. The picker has no Escape handling or focus trap.
+The module reads no clock and no `Math.random` (tested). Under Auto, all 17×17 pairs resolve to a ready habitat
+(`battle2-matchup.test.ts`). Sizing, stand centring and the wet arena are the stage's own rules (`battle2/stage.ts`
+`combatantPresentation` and `standCentreShift`; `battle2/habitat-arena.ts`), composed by the one placement pipeline
+`battle2/placement.ts` `placeCombatants`, which `battle2-wiring.ts` calls; the picker adds none. Real-browser
+evidence: `audits/BATTLE2_LIBRARY_20260924/picker-smoke-02/report.json` (Edge, PASS, on the committed f95fb1c1
+dev-preview package).
+
+Known issue, Codex-owned: the production service worker (`apps/game/pwa-build.ts`) answers 503 to any same-origin
+request outside the selected build's asset list. That list is built from the Rollup bundle. The card assets are `?url`
+imports: Vite emits each into the bundle, so it is in that list, or inlines one under its 4 KB default limit (six of the
+receipts) as a data URL that needs no fetch. The arena's files are copied from `apps/game/public/battle2/`, so they are
+not in the list. On a page the worker controls, the picker cannot load the arena until the worker passes the study files
+through to the network. Evidence: `audits/BATTLE2_LIBRARY_20260924/picker-smoke-03-sw-503/report.json` (FAIL,
+`battle2 asset keyed/wild-launch.png: HTTP 503`), and `picker-smoke-03/report.json`, which passes on a production
+build (`dist-picker`) with the worker refused (`--no-sw`).
+
+**Development bulletin evidence — matches code 2026-09-24.** The current authored draft has86 rendered bullets, independently measured orderedSHA256 `ab2cc349195fee0fd22fcc6de75e246c67ce3a61e6cdfc3d17d005afacb8ceaa`. Slice/Glass require that exact count and identity, and the missing-row control requires85. Semantic, duplicate/reorder/empty and restoration controls remain intact; no player copy or legacy history changed in this evidence repair. Packet: `audits/MOTION_FIVE_REDS_20260924/README.md`.
+
+
+## Paused local continuation — matches working copy September 9, 2026
+
+Nick paused development. The [complete checkpoint](audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md) owns the current implementation and exact evidence boundary. The portable six-reference first-step diagnostic completed (85.013s execution,0.275ms readback); this is not a full image or a repair of the older normal-game600s failure. New browser block32 derivation, transactional OPFS storage, explicit Prepare/Verify controls, bounded original lookup and pinned-plan runtime/mobile integration exist in the **uncommitted working copy and are not yet integration-tested**. Parent model6.23GiB plus optional336MiB derived storage remain separate from painting cache/GPU RAM. Final integrated checks, new package/native run, exact art review and physical-phone qualification are pending. The V2 draft release note records the optional action; no production version or accepted base control placement changed. Earlier verified-scope descriptions below must not be read as verification of this later integration.
+
+
+## Local AI in the game — matches code September9,2026
+
+The optional `?localai=1` preview now connects the ordinary durable Land action to a separate
+page-owned local generation queue. Its progress and explicit View/cancel controls live in Survey
+and Notifications. Completion requires an immutable original committed and reread from a separate
+IndexedDB art store; no auto-navigation, gameplay reward or save-schema change. The full native
+1024×576 image fits the existing measured scene band without moving controls. Model installation
+is explicit, chunked, resumable and hash-verified through OPFS. A separate full-painting inspection
+dialog provides Fit painting and actual-size panning from the exact retained original, without
+moving the base controls. Ready rows offer Inspect; after reload the normal Survey exposes the
+restored original. Modal background isolation covers late roots and attribute changes, and Close
+restores the same live job action or visible panel opener after a responsive panel closure,
+without world navigation. Sequence/decode guards reject stale inspections; Close and pagehide
+release transient URLs/DOM. Final native checks cover desktop/small fit, actual-size panning,
+keyboard/focus and normal Survey inspection after reload on unchanged original bytes. This remains an Earth-only
+experimental preview served by local development tooling; it is not a shipped mobile model pack.
+
+Canonical V2 conditioning preserves all19 genomes and binds six individually reviewed species
+references to their complete identities, anatomy, botany and existing composition anchors.
+Whole-image references do not enforce output counts or spatial fidelity. The model remains
+6.23 GiB; capability checks are not device qualification. The six-reference runtime is35.72 MiB,
+and the optional combined app/PWA is53.91 MiB without weights. Its installed-only manifest refuses
+generation until explicit successful browser verification, with no automatic download or developer
+fallback. Local model storage stays open during progress so Pause remains reachable; explicit
+user collapse is retained. V2 can inspect an exact same-snapshot/same-model V1 original after
+reload. Actual desktop controls now exercised Install → Pause → normal reload → Resume on the
+full20-file model, then offline Use verified browser copy after both servers closed. Attempt02
+retained exact service-worker control, finished full offline hashing and read all20 native Blobs;
+its final worker-module observer still failed, so both full-model aggregates remain FAIL.
+The optional worker now permits an exact cached module import with an explicit empty resulting
+client ID only for a persisted worker owner of a retained build. Independently verified package03
+passed the separate native04 module check online and after true offline reload, including exact
+lazy WASM bytes; no WASM instantiation, GPU/model work or inference was performed. No control
+placement, model auto-download, game-save or quality acceptance change follows. Physical-phone and distribution qualification remain open.
+The [current implementation and limits](LOCAL_AI_GENERATION.md) own the game/delivery boundary. The earlier isolated progress/ETA/fixed-shape proof and all failed
+candidates remain immutable evidence in [the preceding review packet](audits/CLAUDE_DIRECTION_REVIEW_20260909/HANDOFF.md).
+Nick's intended Claude-app review remains pending; a saved CLI response is not that review.
+
+## Earth layout geometry ownership — matches code as of 2026-09-09
+
+AppChrome's `surfaceLayoutRects()` supplies frozen detached visible rectangles for its existing
+ordered topbar/search/objective/scene-actions elements and dock. Main owns the canvas and
+Planetside rectangle, retaining visible Planetside → dock → canvas fallback, scale conversion,
+clamping and the same12px scene clearance. Disposed chrome returns null. The direct element
+visibility predicate is unchanged; this does not newly qualify hidden ancestors or native devices.
+Literal and dynamic chrome lookups in the Earth adapter are rejected by the wiring guard.
+139 focused tests, all3 TypeScript programs and root validation passed; no layout redesign or
+new native run. [Integration repairs and retained failures](audits/DEVELOP_INTEGRATION_20260909/README.md).
+
+## Layered Earth riverbank — matches local code as of 2026-09-08
+
+`?livingvista=1` admits only the complete canonical Earth request, environment/profile and
+ordered 19-genome roster. It pairs a painted rainy riverbank with a separate transparent layer
+of six existing named residents: Civet, Platypus, Frog, Persimmon, Cranberry and Devil’s Club.
+An explicit temperate-profile check requires their fauna families and plant forms. Current
+named Earth art owners preserve anatomy and colors; original genomes and encounters do not change.
+The documented global D-9e generation-filter gap remains a separate unresolved issue.
+
+Both 960×430 layers publish together; pending, failed and option-off routes retain the original
+opaque vista. The pair fits uncropped between measured upper chrome and the Biosphere strip with12px
+clearance. Existing ResizeObserver boundaries republish both sprites together, and completion of
+the final landing camera impulse restores the resting layout after canvas translation. Only successful
+Earth painting hides its own decorative globe and cloud deck; native controls/camera retain ownership. This option defers to `planetturn=1` and
+`avpilot=1`. The background is hash/dimension checked; bounded workers, generation/epoch fences
+and retryable scene leases govern publication and cleanup. No layered CPU cache is added.
+Two full RGBA canvases use 3,302,400 bytes before temporary painter, decode and GPU allocations.
+This is static, relative scene placement, not articulated animation or a claim that the existing
+creature painters meet the approved rich-detail target. No runtime AI or player authoring installs.
+[Implementation, mapping and verification limits](audits/AV_EARTH_LAYERED_SCENE_20260908/README.md) own acceptance results.
+
+## Painted Mars composition — matches local code as of 2026-09-08
+
+After exact painted-Mars success or a cache hit, the native scene hides only its own decorative
+globe Sprite and centers the complete uncropped panorama. The world container, camera and native
+Survey/Leave controls retain ownership. Pending/default/failed-image paths keep the old globe;
+Earth's finite-turn fallback is untouched. The existing image and bounded resources are unchanged.
+
+216 focused tests, all3TS/art/static/root and fresh phone/desktop/default/blocked-image native
+checks passed. Actual forced-globe paint was rejected with exact restoration; control rectangles
+and hit results stayed unchanged. Survey/policy/cache/exit checks passed. Both native observer
+setup failures remain retained. The phone keeps a full-width band with large starfield gaps;
+no immersive/animated scene or physical-device/human acceptance is implied. The new local preview
+is http://127.0.0.1:56749/?paintedvista=1, dirty-local-only/publishable:false; package/boot/Guide PASS.
+[Composition audit](audits/AV_PAINTED_MARS_COMPOSITION_20260908/README.md) owns the exact evidence and prior failure limits. End this bounded
+Mars layout pass; next advance canonical creature/inhabited scene work within the painted direction.
+
+
+## Painted Mars vista — matches local code as of 2026-09-08
+
+`?paintedvista=1` selects one static painted panorama for the complete barren canonical Mars
+request (134#3 in Sol), with exact environment/profile/options and variant cache identity.
+The original dune artwork follows Nick's approved biome direction; 960×430 WebP, 127,088 bytes.
+Hash/dimension checks, stale-work cancellation, existing scene texture ownership and one-entry
+CPU canvas caching provide canonical-worker fallback on current failure. No Earth composite,
+generation, creature identity or control placement is changed. This is not animated scenery.
+
+Final97 focused tests, all3TS/art/static/root checks, fixed phone/desktop native paint/restoration
+and native exits passed. Blocking only the exact image request produced visible canonical fallback
+without a retry. Reduced/EffectsOff keep the static art. Full admission, physical-device and human
+art acceptance remain open; the older globe and panorama composition are visibly unfinished.
+[Current preview](http://127.0.0.1:56099/?paintedvista=1) is local-only/publishable:false, with package
+and native boot/Guide checks passed. [Evidence and limits](audits/AV_PAINTED_MARS_20260908/README.md).
+
+
+## Supplied UI graphic/material reference — Nick, 2026-09-08
+
+Nick supplied a [UI example](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/ui-material-reference.png)
+for graphic/material inspiration only and explicitly said **do not copy its layout or controls**.
+Preserve CF's existing control placement, responsive layout, native actions, emoji, accessible
+browser text, 44px targets, focus behavior and text preferences. Its finish can inform coherent
+materials, lighting and palette hierarchy without moving, replacing or adding controls. The
+original space/creature references remain approved for visual direction; the newly supplied
+nine-panel biome sheet guides atmosphere, not new biome IDs or world facts.
+[Addendum and exact reference authority](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/intake.json).
+That reference-only addendum installed no artwork and granted no production-asset, runtime,
+animation or performance acceptance. Existing layout and verification boundaries remain in force.
+
+## Opt-in Earth surface turn — implemented locally, 2026-09-08
+
+`?planetturn=1` enables the WebGL surface study only on canonical Earth (galaxy 999, Sol 424242,
+planet 133). The existing globe's surface yaws for one finite 18-second interval, reaches
+0.22 radians and settles to zero; illumination remains fixed and clouds stay separate. One worker
+creates the 768×384 canonical unlit atlas. This changes no control placement, navigation or actions
+and installs none of the richer painted reference art. Use either turn option without `avpilot`:
+its separate Earth comparison can hide the globe. Players need only the browser, with no authoring installs.
+
+`?planetturn=1&planetmaterial=1` additionally enables a subtle material proof; the plain turn flag
+keeps it off. The existing shader receives `uMaterial`, reset on each accepted view. Three
+analytic noise octaves/12 hashes add bounded grain, fixed-light relief, ocean sheen and an inner
+atmospheric rim without extra texture fetches, mesh layers, dependencies or GL requirements.
+The canonical atlas, coasts, palette and 420px silhouette remain unchanged. Color masks are
+perceptual estimates, not terrain or biome facts. The 18-second/0.22-radian turn, policy fallback,
+hidden pause and exit ownership are unchanged. Fresh fixed phone/desktop native material comparisons passed
+with exact restoration; the subtle visible change does not establish the approved painted finish. Nick's exact space/creature
+and biome direction remains the target; the UI example informs materials only, preserving layout.
+[Material comparison and visual judgment](audits/AV_EARTH_SURFACE_MATERIAL_20260908/README.md).
+
+Hidden views pause; reduced motion or Effects Off shows the canonical fallback. One program and
+uniform group belong to the application, while per-view workers, texture leases and geometry
+buffers are released on exit/failure. This is not a full 360-degree rotation: source seam/backside
+mapping remains unresolved. Each raw atlas and GPU texture needs at least 1.125 MiB, before other
+allocations. Scoped phone and fresh-desktop native motion/retirement outcomes passed; physical
+phone qualification remains open. The combined run stopped after phone exit plus desktop resize
+unexpectedly returned to the galaxy. Same-document re-entry and full UI admission remain open.
+[Current Earth surface-turn scope](audits/AV_EARTH_SURFACE_TURN_20260908/README.md).
+
+Execution priority2026-09-07: Nick requested playable graphics/audio progress before exhaustive
+U3/U4 polish; see ROADMAP.md and audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md.
+The U2 tool correction was signed as `837db4aaa0ef5d3d8bffc79c70f62dcc2503032d`. Its canonical
+run passed 324 Vitest files (3,494 tests, 1 skipped), then stopped in static-develop on one
+unused test binding. No browser stage ran; U2 and audiovisual acceptance remain pending.
+The [retained checkpoint](audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json) preserves
+the first failure and the binding-only correction with fixture creation unchanged.
+
+U1 layout correction (2026-09-06): the existing body-class observer republishes the final
+header height after a same-task Settings open/change/close transition, keeping the rails below
+Search/Objective even when ResizeObserver sees no net size change. Restored visible rail
+controls declare their native button type explicitly.
+
+## V2 presentation system — U1 shell and U2 sheets, matches code as of 2026-09-08
+
+Nick authorized U2–U4, Settings above Training, and compact notifications when space is tight.
+Product icons remain emoji; accepted U1 layout is unchanged. Signed3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d passed complete develop static (322files,
+3479tests,1skip). Small-phone passed all3 Capture outcomes, caption preferences/restoration and
+the exact Charters Close/frame receipt with an empty atomic Objective audit. It later stopped
+INSTRUMENT RED/zero product findings: the top-clearance setup toggled an already-closed Survey
+open and then waited5000ms for it to close. Large-phone and Slice were NOT RUN. The nine-carrier
+checkpoint and named terminal/browser read[]/[] retain this failure; no full U2 PASS is claimed.
+
+Nick resumed on2026-09-07. The re-derived tool correction observes strict Survey state, closes
+only when open with one trusted activation and the existing5000ms strict-false wait, then binds
+one named fonts/two-frame receipt. Painted controls define clearance while AppChrome retains its
+distinct full-wrapper measurement. Only band-fixture fixed rows omit the separately measured
+injected trail. Seven named fixture/restoration/cleanup boundaries preserve the first error;
+failed cleanup cannot authorize dependent geometry. This instrument correction preserved
+thresholds and the pre-audiovisual product bytes.
+Claude's full response and original unapplied draft remain immutable. Independent source review
+CLEAR;99 focused tests, all3 TypeScript programs and root validate/50 fingerprints PASS after two
+retained test-preparation corrections. The later signed `837db4a` attempt stopped during static
+test-source checking as recorded above; small-phone, large-phone and Slice were NOT RUN.
+Read ROADMAP.md and audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md for current status;
+audits/UI_U2_NEXT_SESSION_20260906.md preserves the unapplied U3/U4 preparation map.
+
+The current bounded correction measures every visible portrait sheet's header/insets plus44px
+body, the stacked Survey/biosphere allocation, and standalone Planetside72px below actual painted
+upper chrome. Compact notices use4px vertical and8px horizontal padding. When capacity remains
+tight, passive hint and context paint may yield while preserving their text. Every decision starts
+with natural guidance; the dependent caption is measured with a temporary native hint-height
+projection, restored exactly afterward. Glass independently measures both captions and available
+space, tests their actual text preferences, and requires exact restoration. After native Close,
+remaining clipping is valid only when independent geometry still proves pressure. Earlier generic
+preference and native target-size/clipping checks remain strict. Focused84 checks, all3 TypeScript
+programs, root validate, one evidence build and101 release/budget/evidence checks PASS. Producer
+for that sheet-only preparation was aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe;
+measurement/ceilings were unchanged. Its81-bullet draft had orderedSHA
+3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
+The3a61352 result remains the prior native evidence; `837db4a` added no browser result or
+fresh Compendium certificate. These pins describe that pre-audiovisual checkpoint.
+
+All prior failures and both older unknown causes remain OPEN; no U2–U4 completion, physical UAT,
+Phase2, pilot or hosted closure is claimed.
+The [U2 audit](audits/UI_U2_SHEETS_20260906.md) retains the immutable result and prior normal
+20-row/60-PNG Settings review. [The program](port/UI_PARITY_PROGRAM_U1_U4.md) owns ordered U3/U4.
+
+The normal v2 shell uses the actual production v1.8.9 CSS as its layout reference, adapted
+through `ui-presentation-tokens.ts`, `ui-shell-style.ts` and the existing native controls.
+The live site's two style blocks match the tracked HTML byte for byte; provenance is in
+`audits/UI_U1_PRODUCTION_LAYOUT_20260906.md`. Nick's latest screenshot instructions supersede
+the earlier all-device bottom launcher and visible Current view experiments.
+
+Phone (<=700px) has five icon-only board pills in the upper dock row: Survey (🔭), Compendium,
+Prime, Shipyard and Atlas. Prime retains its visible N/9 count and accessible name in the center.
+The lower row contains only the four small utility controls: Records (including Achievements),
+Notifications, Guide and Settings. Nick explicitly replaces the Charters shortcut with Survey on
+all platforms. Duplicate dock/rail Charters shortcuts are removed; Objective now opens Charters.
+
+The compact dock uses ten half-columns and a width capped at 320px, bounded by viewport width
+minus left/right safe areas and 20px. Each board spans two half-columns; pitch is dock width / 5
+(at most 64px), and board width is pitch minus 4px with a 44px minimum. With no side safe area,
+board width is 60px at 390px/430px and 56px at 320px. Four lower 44px targets with 36px faces are
+centered beneath the upper row. Survey uses the same plain emoji board pill as its upper-row
+peers. Utilities are 12px above the safe bottom; boards start at 60px. The default dock remains
+92px high and may grow for text preferences. Labels remain accessible without visible phone
+captions. Compact Charts stays hidden; Settings → Star charts remains available.
+
+Tablet and desktop (>=701px) have Survey above Compendium in the upper-left stack, replacing
+Charters in that position. Charts stays below that stack; the right Star Atlas/Shipyard controls
+remain. Prime Codex is centered at the top with its full label and N/9.
+Search is upper-right, followed by the Objective, then Atlas and Shipyard. The four utilities
+sit bottom-right, 16px from the safe right and 12px from the safe bottom. Their 44px targets
+have 8px gaps (52px pitch) around 36px faces. These preserve earned touch/spacing protections
+instead of copying production's 42px anchors with overlapping 44px coarse-pointer targets.
+Controls cap their size while the scene benefits from additional screen space. The retained
+<=900px short-landscape exception uses compact phone navigation and existing panel-safe columns.
+With a panel open in that landscape layout, dock width is additionally capped to the existing
+header safe-column width: `min(320px, (viewport width − safe left − safe right − 36px) / 2)`.
+This keeps the dock inside the right column, including the 667×375 Settings layout.
+
+Nameplate and Health share the upper-left column; only the explorer name is visible and it
+wraps without truncation. Rank color metadata and the Inventory action remain. Health keeps
+its caption, a red heart, its exact numeric ratio without an HP suffix, accessible meter
+values and the unchanged fill calculation. Number contrast uses its independent dark backing.
+Rounded pills carry production's surface language. On desktop/tablet, the name, Objective,
+left/right rail controls and Survey/Charts text pills fit their content with bounded
+`width:max-content`; Health retains its existing meter width and geometry. Inter remains local
+OFL type; Settings font, size and tone preferences take precedence. Rarity/resource/Atlas/protected
+colors retain their owners. Emoji remain the approved product icon system.
+
+The two-row header is measured by AppChrome, never assigned a fixed height. Name/Search are
+in the first row and Health/Objective in the second. On phones Search aligns to the upper-right
+(max 37vw) with the visible placeholder **Search**; Objective sits below it. Wide Search remains
+236px and Objective fits its text up to 236px. The header remains pointer-transparent; native
+controls, including Objective, receive presses. Objective is now a named native button and the
+sole Charters opener, using the existing panel owner for pointer/keyboard activation and focus
+return. It remains available while landed and shows **Charters** when no objective is active.
+The existing objective text/progress calculation and Charter gameplay remain unchanged.
+Portrait objective allocation (matches code as of 2026-09-23): the sheet controller hides
+Objective under an open Survey, then synchronously republishes AppChrome's header height.
+Other panels keep the opener rendered. If natural wrapping prevents a panel's measured header
+and 44px body or the native 72px biosphere band from fitting, its caption ellipsizes with full
+DOM text/accessible name intact; full wrapping returns with room. Panel open/close sends
+`cf-panel-layout` before focus restoration. Temporary natural measurements preserve native
+sheet/Compendium scroll offsets. This replaces the broad portrait card/panel CSS hide rule.
+Both phone Glass diagnostics and controls are green in
+`audits/U1_SURVEY_OBJECTIVE_YIELD_20260923/README.md`; this is local proof, not hosted certification.
+The canonical #trail remains populated for diagnostics but is visually hidden, as in production.
+There is no visible Cosmos/Current view label. Actual rail wrappers own their 8px internal gaps,
+so those gaps keep a panel open; empty sky still dismisses it. The left rail `#raillft` is nested
+inside the dock and becomes `display:contents` in compact navigation: its existing Survey opener
+occupies the first upper-row slot and its duplicate Compendium rail control is hidden. Wide
+Survey/Compendium remain fitted text controls; `#sceneactions` contains only Charts below them.
+Boxless compact wrappers do not extend AppChrome's top-chrome measurement; the 72px roster
+reading-band rule remains. Survey shows the retained/current surface card; Charts toggles orbit
+rings, the habitable zone and the belt caption. Their action/save handlers are unchanged.
+Panel/Training focus, Close and Escape owners remain authoritative.
+
+Bottom guidance is plain text with no pill, border, padding or backdrop blur. Wide hint starts
+18px above safe bottom and context 64px; phone hint 124px and context 164px. Context rises when
+needed to clear measured hint height by 8px. Context retains its independent translucent contrast
+backing with zero padding/border/radius. Guidance now paints a 2px opaque black glyph stroke
+behind its fill (`paint-order:stroke fill`), leaving at least 1px outside each glyph for contrast
+against bright artwork. The outline adds no pill or box and changes no layout measurements.
+U2's `sheet-layout.ts` measures visible hint, context and dock rectangles plus the toast's
+painted height, retaining its reservation until the fade ends. In portrait layouts up to 900px,
+it compares the full toast against the active sheet's measured header, edges and 44px body room.
+Planetside instead preserves a72px total reading band below actual visible upper controls, published as `--cf-planetside-start`.
+When that room is exhausted, the toast keeps its full headline at the selected text size with4px vertical/8px horizontal padding and reserves its actual compact height. Its message remains in a visually hidden span with the same
+DOM text, existing assistive-technology announcement role, history and timer. Tame/Feed announcement
+ownership remains distinct. The full presentation returns when space permits. `ui-sheet-style.ts`
+uses the measured lower lane to bound sheets with 8px gaps. Survey keeps only its title and native
+Close sticky; the unchanged subtitle and badge follow in the scrolling body. The in-progress
+landed allocation reserves Survey's measured header, edges and 44px body room before capping
+Planetside, and gives native scroll/focus targets padding below the sticky header.
+Survey capacity uses the final floor minus measured strip height, start and 8px gap, replacing
+Main's potentially stale `--planetside-top` position receipt. If a visible portrait sheet or
+standalone biosphere still lacks its measured minimum, hint and context temporarily use clipped
+1px styling while their accessibility text remains. Natural guidance is restored before every
+decision, including a temporary exact-restored native `--hint-h` projection for caption geometry.
+Full paint returns with room; Close alone does not imply room when the biosphere still needs space.
+This is a bounded U2 space-allocation correction; accepted U1 shell geometry stays intact.
+Planetside uses the measured sheet floor; wide Settings centers in its available right workspace.
+Short-landscape sheet overrides carry
+the same ID specificity as their common owner: start safe-top+6, left safe-left+8, half safe
+width and maximum height viewport−safe-top−safe-bottom−30. The earlier class-only override
+was inert and squeezed large-text Settings to155px. Planetside keeps a separate landscape floor:
+a toast in the disjoint right column does not consume its left-column height. Other sheet lanes
+reserve the actual painted toast, retaining caption/hint gaps and 44px floors. Native verification
+is pending.
+
+The shared panel owner keeps the first direct native Close and existing first h2/h3 title as
+sticky siblings. Refills retain the same Close node and restore its focus only when it owned
+focus; the panel remains the scroller and Compendium retains its separate virtual scrollport.
+The 2026-09-08 paint correction in `ui-sheet-style.ts` gives `.panel .sheet-header` an opaque
+`#0a101e` background and a `::after` underlay (`inset:-14px -58px 0 -14px`, `z-index:-1`,
+`pointer-events:none`); forced colors uses `Canvas`. Scrolling content no longer paints through
+the title or its reserved Close gutter. Title/Close siblings, geometry, scrolling/padding, focus
+and Survey are unchanged. Scoped native phone/desktop checks and inspected title captures PASS in the
+[Charters header audit](audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md).
+One token/CSS owner places explicitly opened Settings above the current lesson surface and
+Training card. Training admits Settings and its opener except while completion is pending;
+Escape invokes Settings' real Close without ascent. Queued lesson focus and the deferred Atlas
+close yield to newly opened Settings. Only the current lesson's actual surfaces receive
+`.tutpri`, cleared on teardown. Lesson content, step advancement and persistence remain unchanged.
+The shared 150–200ms motion and control-state tokens respect reduced-motion preferences.
+Compendium focus (matches code as of 2026-09-22): generic sheet and pilot focus selectors
+exclude `.compendium-row`, preserving its 3px outline and -4px inset within the clipped
+virtual scrollport. Other controls retain their sheet/pilot focus treatments.
+
+Notifications retains saved read/unread history and clearly labelled session-only notices
+while save writes are held. Opening does not mark read; explicit Mark read uses the existing
+checkpoint path with pending/failed status and rollback. The existing 50-entry new-history
+capacity and 60-entry import allowance remain. Passive history never joins an in-flight product
+snapshot; no new timer, schema, import door or competing persistence writer is introduced.
+
+**Pop-up notifications switch (matches code as of 2026-09-25, D16 parity with v1 `notif`):** Settings → Pop-up notifications
+(`#setnotif`, saved `notif`, absent ⇒ on). Off keeps every message in the tray and still writes it into the toast's live region
+(screen readers still hear it), but the toast is not painted (`opacity 0`, `data-quiet`). A creature voice that binds the toast
+as its VISIBLE audio counterpart (`bindTameToastCounterpart`) reveals that one toast, so the cue still fires; Feed's supplemental
+toast stays hidden because its inline status is the counterpart. Outcome test: `tests/d16-notification-popups-outcome.test.ts`.
+
+**Tooltips (matches code as of 2026-09-25, D16 parity with v1 `@section tooltips` / `tips`):** `tooltips.ts` owns one
+`#tipbubble` (display only, `pointer-events:none`). Desktop: 650 ms hover or keyboard focus on `[data-tip]` (native `title`
+stays the browser's). Touch: a 600 ms long-press on `[data-tip]` or any native `[title]` (phones never show titles), cancelled
+by a 12 px drag; the click that ends a long-press is swallowed so inspecting never acts. Quiet during Field Training and when
+Settings → Tooltips (`#settips`, saved `tips`, absent ⇒ on) is off. Outcome test: `tests/d16-tooltips-outcome.test.ts`.
+The bottom bell reads this history; its old duplicate shelf button is hidden.
+
+Nick accepted the U1 layout **for UAT** on 2026-09-06 at product
+`053ef439774520577071f0ca50887337dd938755`, recorded in
+`b08c9521c90f806e42496361127c542d206628f5`. This is layout acceptance for testing, not completed
+device UAT or closure of technical gates. Signed source `cfba0ede81d5861df70628b462e125eeff4780b9`
+passed the scoped Survey/Charters probe in six fresh contexts: 390×844, 320×740, 430×932,
+667×375 with Settings open, 834×1112 and 1440×900. Objective opened the real Charters panel by
+touch, mouse, Enter and Space; Close/Escape returned focus correctly. All 36 negative controls
+and five larger-text checks passed. The run retained 26 trusted pointer inputs (18 touch,
+8 mouse), 18 logical keyboard presses (36 keydown/up events), 13 PNGs, zero runtime errors
+and no overflow. Product `053ef439774520577071f0ca50887337dd938755` is unchanged by the portable
+keyboard-dispatch correction in the probe. Its first scoped keyboard-instrument red is preserved.
+Accepted-layout source/results belong to `audits/UI_U1_SURVEY_CHARTERS_20260906.md`, ROADMAP and
+`audits/UI_U1_SURVEY_CHARTERS_cfba0ed_20260906/manifest.json`. The dock oracle independently
+applies the panel-safe width formula. The scoped PASS and Nick's later acceptance for UAT remain
+separate evidence; physical-device UAT is not claimed.
+The earlier six-board `e94f7b35211094e334abc983e716456749e2e3ae` scoped PASS and
+its preceding instrument red remain immutable predecessor evidence in
+`audits/UI_U1_SURVEY_TOP_ROW_20260906.md`; they do not verify this new five-board/action arrangement.
+The earlier `c57aaaebc656f2e2d15705601fe1a2a73cf15f1f` static/build
+passes and partial phone evidence remain predecessor evidence in
+`audits/UI_U1_COMPACT_CONTROLS_20260906.md`. That normal review stopped INSTRUMENT RED at a
+`Runtime.evaluate` timeout during phone portrait restoration after 23 trusted inputs; its two
+phone PNGs do not verify this changed dock. Both the unattributed navigation blocker and the
+portrait-restoration verification blocker remain OPEN. Full normal review, Slice, phone Glass
+and the full chain were NOT RUN for this bounded correction.
+The normal-review tool pairs three v1 goldens with v2 and exercises real visible native
+opener/Close/focus journeys. Numeric checks observe actual rails,
+phone icon/count state, Search/Objective alignment, full name, meter contrast and plain hint.
+Slice/Glass preserve their ledgers and original pinch gestures. A normally hidden canonical
+trail is described honestly: the historical visible-trail collision/fallback controls explicitly
+inject a visible floating fault, restore styles exactly and re-prove the hidden native baseline.
+No injected state is called native visible chrome; the roster still needs 72px and usable scroll.
+Phone larger-text and 844×390 Settings-open checks retain their actual viewport geometry.
+U2 sheet/stack implementation now follows the earned Settings-above-Training law. Its native
+verification and ordered U3 panel reskins/icon study and U4 gate remain ahead; no integrated-pilot
+approval, Phase2 or hosted work is implied.
+
+The phone-only restoration diagnostic PASS is bound to signed source
+`381ddf59858bd863640703e83d2d98beeedf59fa`; product `053ef439774520577071f0ca50887337dd938755`
+is unchanged. It preserved the original 23 native pointer actions and three trusted Escape
+presses/six key edges, the 15000ms transport deadline, font readiness → two animation frames
+and debugger auto-resume timing. All 30 default metrics passed and 33 injected geometry faults
+were rejected. The trace
+retains 286 named Runtime evaluations, 146 source-catalog entries and 33 frame boundaries.
+Restoration evaluation 283 (fonts plus two animation frames) settled in 29.28ms; evaluation 284
+(geometry) settled in 15.27ms. Ordered receipt 33 confirms the restored 390×844 state. Fifteen
+selftests and root validate passed; two PNGs were retained with zero runtime/evaluation errors
+or key overflow. Evidence: `audits/UI_U1_UAT_RESTORATION_20260906.md` and
+`audits/UI_U1_UAT_RESTORATION_381ddf5_20260906/manifest.json`.
+
+The rail correction passed on clean signed source `1609cf3991e20da45d5e4628fd2163278ece5ec8`:
+the isolated develop profile passed 312 test files, 3333 tests and one skip; Slice passed in
+370012ms with zero findings, ten PNGs and exact named verification. Both gap controls retained
+rail-only protection, unprotected native dismissal and exact restoration. The subsequent
+small-phone Glass diagnostic stopped PRODUCT RED on one `#hintpill` contrast finding (1 against
+4.5); large phone was NOT RUN. The [retained manifest](audits/UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json)
+keeps that stop, all eight execution logs and exact clean-source evidence. The earlier ce89128
+three-view normal review remains prior geometry evidence; it does not test the new outlined text.
+
+The bounded [hint contrast correction](audits/UI_U1_HINT_CONTRAST_20260906.md) adds the glyph
+outline described above. Glass recognizes only a proven opaque stroke painted behind the fill,
+while retaining its 4.5 threshold and effective-opacity checks. Preparation passed 25 stroke tests, 72 release/budget/evidence tests, root TypeScript, evidence
+build and root validate. The first committed candidate a528791 passed static (313 files, 3358 passed, one skipped) and
+the native outline controls. Small-phone then stopped on a stale dock-fault description with zero
+product findings; large-phone and Slice did not run. The responsive-slot assertion is corrected
+without changing the product. Its successor bb9ebe4 passed static (314 files, 3364 passed, one
+skipped) and the dock/outline controls, then stopped because Charts is intentionally hidden on
+phones. The current instrument correction audits Settings → Star charts on compact layouts
+and retains the visible wide-screen Charts route. Twelve source-executing route tests, root
+TypeScript and validate passed.
+
+Retained U1 validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
+PASS (315 files, 3376 passed, one skipped). Small-phone stopped PRODUCT RED with a real 22.5px
+Planetside/hint overlap at 320×568, zero instrument failures. Its later native Charts Settings
+phase, large-phone and Slice were NOT RUN. [The final U1 audit](audits/UI_U1_HINT_CONTRAST_20260906.md)
+retains the nine-carrier checkpoint. U1 visual acceptance stands; the technical gate remains OPEN.
+The known overlap is the first U2 failing case, not a retroactive U1 pass. U2's measured-lane,
+shared header/Close and Training-stack implementation now awaits native and checkpoint checks,
+including the previously unreached Charts Settings path. [ROADMAP](ROADMAP.md) owns the exact
+candidate, release/producer authority and verification outcome. Physical UAT and the older
+08cd97d navigation and c57aaaeb portrait-restoration causes remain unknown/OPEN. The U2–U4
+execution authorization adds no Phase2 or hosted authority.
+
+U1 diagnostic update (2026-09-06): the normal-review tool adds viewport/resize facts and
+session-owned, auto-resuming trail-writer stacks. That diagnostic changed no product layout.
+Debugger timing perturbation and absent settlement facts keep the prior navigation blocker open until attributed;
+see `audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`.
+
+## Opt-in landing and native battle presentation — 2026-09-07 local
+
+Matches code as of **2026-09-07 local**. The Phase 1 `?avpilot=1` candidate uses shared navy/glass
+and gold tokens with locally licensed Inter, compact spacing, 8px panels and 6px controls.
+Inventory, Shipyard and Atlas keep their purpose-specific layouts, native action/focus owners
+and 44px targets. Settings font, text-size and tone choices remain authoritative; canonical
+rarity/resource/status colors are preserved. Galaxy art and top bar/dock/rail structure remain.
+
+The exact eligible starter Scout material render occupies the native Shipyard preview; other
+loadouts or unavailable images retain native rendering. The rainy Earth landscape is visible
+only for its exact canonical world/roster/environment/weather request after both the native
+vista and candidate images are ready. The native globe/vista remains the fallback. Decorative
+layers do not intercept input, and bounded review controls yield to windows, Training and
+modals. The separate study leads with Earth and Scout, then full family/size and listening
+controls; source details and supporting mockups sit in accessible disclosures.
+
+The native Land handler now arms one optional Scout arrival before persistence. It requires an
+exact committed revision, current runtime/world and fresh rendered scene, then the eligible
+Earth vista and image readiness. The 1.8-second arrival is pointer-transparent and static under
+reduced motion; on phones it uses the visible Survey header beside native Close. Its existing
+1.4-second cue consumes a pre-await shared-context handoff only at the accepted destination.
+Training, wave-off/refusal, convergence, stale/hidden/disposed owners never show success.
+
+The native Combat Chronicle independently adds up to two canonical portrait leases and finite
+200ms attack/reaction translations from its own registered cue clock. A player champion without
+a fauna genome uses an honest nameplate. Static outcome text survives Effects Off/reduced motion;
+the visual caption is AT-excluded because the existing Chronicle log owns announcements. Close,
+hide and replacement release motion/art; Skip retains the actual static result until Close.
+No HP/reward/action owner or anatomical rig is added. All eight anatomical families remain
+incomplete; native battle, human listening, visual direction and physical-device acceptance
+remain pending while scene assets are authored. This is no Phase 2 chrome migration
+or release. `ART_DIRECTION.md` owns the shared pilot implementation reference; `ROADMAP.md`
+and the named review audits own exact-source verification, backup and human review status.
+
 ## Current v2 panel-refill focus
 
 Matches code as of **2026-09-04** (`main.ts` and `panel-refill-focus.ts` in
@@ -1737,7 +2388,7 @@ checks, not conclusions from those tests. Dated evidence below keeps its origina
 > The eighth phone-dock slot now opens the canonical **Guide to the Universe**
 > rather than the old import shortcut or a second seven-topic manual. V2 carries
 > the mature inventory—9 categories /43 authored stable topic ids /41
-> legacy-live topics, currently 34 partial and 7 unavailable—plus category drill-down,
+> legacy-live topics, currently 37 partial and 4 unavailable—plus category drill-down,
 > title/keyword/body search and
 > `data-gt` cross-links. A capability layer substitutes current-slice copy for
 > partially ported systems and a visible **Not yet in v2** explanation for
@@ -1745,16 +2396,18 @@ checks, not conclusions from those tests. Dated evidence below keeps its origina
 > contract but hidden from the 41-topic player catalogue. First open persists
 > `seenGuide`; the former import door (**Settings → Bring expedition**) was removed on 2026-09-05.
 > The same panel exposes all 56 immutable legacy release entries plus **A New
-> Foundation**, the cumulative categorized 77-bullet v2.0 development bulletin. Its rendered
-> ordered SHA-256 is `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`. It summarizes
+> Foundation**, the cumulative categorized 106-bullet v2.0 development bulletin. Its rendered
+> ordered SHA-256 is `9ca05cf7d271f1a93567861037e8f8ce0841af97bb7afa2f814e16b34719ebe5`. It summarizes
 > every implemented playtest layer while keeping unavailable port work out of its
 > promises. The long draft is browser-checked for canonical section order and an exact final
 > bullet that is visibly reachable through bounded adaptive native-wheel input. Each wheel is
 > followed by a fresh exact-document/tail/hit-owner/geometry observation; the control clips
 > overflow, and cleanup restores the prior scroll plus inline overflow value/priority exactly.
 > Opening and reloading the bulletin cannot change `rnSeen` or create
-> a shipped-update state. No v2 production version exists until Nick authorizes one. Tooltip deep links and
-> Advanced Briefings remain open port scope. The slice's Field Training likewise
+> a shipped-update state. No v2 production version exists until Nick authorizes one. Matches code as of 2026-09-26: five read-only Advanced Briefings live in this panel,
+> with native Previous/Next/Finish and current-topic cross-links. They retain Guide focus
+> and lazy publication guards, grant no reward and mutate no expedition state. Broader
+> tooltip deep links remain separate scope. The slice's Field Training likewise
 > owns six real chart/travel/landing lessons plus an honest graduation, not the
 > full legacy 21-step curriculum.
 > Built output additionally injects the same-origin manifest, icon, theme metadata and PWA enable
@@ -2831,3 +3484,28 @@ silently clobbered an existing check, **empty** boards that collapse under `min-
 reach the dock, and stale `--tut-bot` left over from the dodge pass. In its first two forms it
 passed on the shipped build the external round had already proven broken. *Reproduce the reported
 geometry, populate the surface, and control against the broken build — every time.*
+
+## ADDENDUM 2026-09-26 — Outposts UI (D14; matches code as of 2026-09-26)
+
+`port/v2/apps/game/src/outposts-ui.ts`, wired in `main.ts` (the block before `const sideEl`):
+- **World card:** `buildCardActions` calls `outpostCardActionHtml(p, onThisSurface)`, the **Outposts** section. It shows each site here
+  with its stage bill (short parts in red), its deed (done/need) and Build / Abandon, plus a "🏗 Build <name> here" button for every kind
+  that can start. Finished outposts put their icon beside the section title (the portrait mark). A finished Sanctuary shows a
+  6-companion checkbox picker.
+- **Projects board:** `fillCharters` appends `outpostBoardHtml()` (its own 2 slots and the 24 total).
+- **Museum:** `projectExpeditionChronicleV1` takes optional `outposts` exhibits and adds a fifth **Outposts** gallery.
+- **Controls:** ONE document-delegated `OutpostsControllerV1`. Abandon needs a second, confirming press. Every control is 44 px.
+- **Hidden before the unlock:** nothing renders before `st-comp` (projects appear in no Guide or objective before the unlock).
+
+## Current Guide inventory — matches code 2026-09-26
+
+The C34 reconciliation measures119 ordered draft release bullets,41 topics and5 read-only
+Advanced Briefings. Missions, Outposts, Compendium filters/reveals/origin travel, postcards,
+original audio and device/translation tooling are documented at their current scope. The
+painted battle note does not claim per-species generated originals before G1/G2 delivery.
+Exact copy authority and controls: audits/G_PIPELINE_CODEX_20260926/measured-copy.json.
+
+
+### Recovered Field Training and portrait presentation — matches code as of 2026-09-26
+
+Field Training has16 cards: six navigation lessons, one isolated Forge practice and the existing orientation cards. The native Engineering button completes practice, then the board returns to read-only. Training board and lesson bounds reserve separate space, with the lesson top republished on resize. Selected Compendium details own one image and ticker. Reduced motion is static; hidden, replaced and closed surfaces stop/release the owner. This is gentle whole-image presentation, not articulated rig animation.

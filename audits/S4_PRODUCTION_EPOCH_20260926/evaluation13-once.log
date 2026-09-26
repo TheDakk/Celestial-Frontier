@@ -1,0 +1,18 @@
+{"id":"easy","baselineWins":1024,"plannedWins":1024,"commandWins":1024,"oracleWins":1024,"phaseNodes":0,"withdrawnTerminals":0,"swapEdges":0,"planningGapPp":0,"commandEdgePp":0}
+{"id":"normal","baselineWins":491,"plannedWins":580,"commandWins":580,"oracleWins":580,"phaseNodes":0,"withdrawnTerminals":0,"swapEdges":0,"planningGapPp":8.69140625,"commandEdgePp":0}
+{"id":"guardian","baselineWins":239,"plannedWins":437,"commandWins":571,"oracleWins":595,"phaseNodes":1935,"withdrawnTerminals":7575,"swapEdges":2362,"solo":{"v1Wins":218,"phaseWins":161},"planningGapPp":19.3359375,"commandEdgePp":13.0859375}
+node:fs:3020
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, open '/Users/nick/Projects/celestial-frontier-openai-mac/audits/S4_PRODUCTION_EPOCH_20260926/evaluation13-once/titan-solo.json'
+    at Object.writeFileSync (node:fs:3020:20)
+    at write (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/s4-production.mjs:24:23)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/s4-production.mjs:126:4 {
+  errno: -28,
+  code: 'ENOSPC',
+  syscall: 'open',
+  path: '/Users/nick/Projects/celestial-frontier-openai-mac/audits/S4_PRODUCTION_EPOCH_20260926/evaluation13-once/titan-solo.json'
+}
+
+Node.js v26.10.0

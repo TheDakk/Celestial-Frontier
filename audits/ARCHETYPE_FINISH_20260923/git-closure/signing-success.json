@@ -1,0 +1,30 @@
+{
+  "schema": "cf.sprint-git-recovery/v1",
+  "itemCommit": "d379e61dae8d50e3ed0c68cdc8368f321431491c",
+  "signature": "G",
+  "commitTool": "b86b5f",
+  "verificationTool": "e9b037",
+  "renewedAuthority": "Nick: Please proceed",
+  "ssh": {
+    "tool": "58225e",
+    "exitCode": 1,
+    "authenticatedAccount": "TheDakk"
+  },
+  "repositoryRead": {
+    "tool": "4b36e0",
+    "exitCode": 0,
+    "remoteBranchHead": "5470360bfb959787c7894a133589910a428cc7df",
+    "remoteDefaultHead": "c1791e210158de864fdd475323c3091d9ecbae58"
+  },
+  "visibility": {
+    "tool": "66d200",
+    "value": "public"
+  },
+  "budgetMode": "UNFROZEN",
+  "privateFallbackCap": 3000,
+  "hostedAttemptsAuthorized": 0,
+  "workflowBlobsStillMatchRetainedInspection": true,
+  "remoteBranchIsAncestorOfSignedItem": true,
+  "pushPerformedAtReceiptCreation": false,
+  "sourceOrTestChanges": false
+}

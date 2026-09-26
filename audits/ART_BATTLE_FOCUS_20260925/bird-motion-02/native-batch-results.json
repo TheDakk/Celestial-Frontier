@@ -1,0 +1,54 @@
+[
+  {
+    "name": "gull",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-composed-proposal-02-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/12-gull/battle-script.json"
+    ],
+    "exit": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "cpuP95Ms": 3.700000047683716,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    }
+  },
+  {
+    "name": "goose",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-composed-proposal-02-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/15-goose/battle-script.json"
+    ],
+    "exit": 0,
+    "status": "FAIL",
+    "error": "rig refusals in play: {\"left\":0,\"right\":60} {\"left\":null,\"right\":\"Contact: joint limit legNearFoot faint@1431.999998999999: 45.14676457272354\"}",
+    "cpuP95Ms": 3.8000000715255737,
+    "refusals": {
+      "left": 0,
+      "right": 60
+    }
+  },
+  {
+    "name": "heron",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-composed-proposal-02-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/fit-01",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/fit-01",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/battle-script.json"
+    ],
+    "exit": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "cpuP95Ms": 3.799999952316284,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    }
+  }
+]

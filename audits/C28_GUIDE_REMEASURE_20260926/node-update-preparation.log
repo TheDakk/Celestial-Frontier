@@ -1,0 +1,689 @@
+==> Updating Homebrew...
+Updated 2 taps (homebrew/core and homebrew/cask).
+==> New Formulae
+kubectl-radar: Missing open-source Kubernetes UI with a built-in MCP server for AI agents
+==> New Casks
+activitywatch@experimental: Time tracker
+amp-app: Coding agent and development environment
+font-pennstander
+local-studio: Local workstation for running and managing language models
+==> Outdated Formulae
+aom
+ca-certificates
+libde265
+libheif
+libuv
+node
+simdutf
+
+You have 7 outdated formulae installed.
+You can upgrade them with brew upgrade
+or list them with brew outdated.
+{
+  "formulae": [
+    {
+      "name": "node",
+      "full_name": "node",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [
+        "node.js",
+        "node@26",
+        "nodejs",
+        "npm"
+      ],
+      "versioned_formulae": [
+        "node@24",
+        "node@22",
+        "node@20",
+        "node@18"
+      ],
+      "desc": "Open-source, cross-platform JavaScript runtime environment",
+      "license": "MIT",
+      "homepage": "https://nodejs.org/",
+      "versions": {
+        "stable": "26.10.0",
+        "head": "HEAD",
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://nodejs.org/dist/v26.10.0/node-v26.10.0.tar.xz",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "7b3a546d33cb7e15a43bdd7a57e0be5d5fd5ffc553e6e4c120033e66f0ba20c5"
+        },
+        "head": {
+          "url": "https://github.com/nodejs/node.git",
+          "branch": "main",
+          "using": null
+        }
+      },
+      "patches": [
+        {
+          "strip": "p1",
+          "url": "https://github.com/nodejs/node/commit/c4c11636b1420fd996e16a583b37309c179d17df.patch?full_index=1",
+          "sha256": "7790de4db394b03fc6c8df8101c126ea401506347d67cc1555aeeb9be1ad87f1",
+          "resolves": [
+            {
+              "type": "defect",
+              "id": "https://github.com/nodejs/node/pull/65992"
+            }
+          ]
+        },
+        {
+          "strip": "p1",
+          "url": "https://github.com/nodejs/node/commit/bba34225c149b21f5fee96e168d7ee6f0bb5efb9.patch?full_index=1",
+          "sha256": "68764ccc83203cd0a9e5b3693ffc4f9673f7dc348dffe76efb15948c07fa3d03",
+          "resolves": [
+            {
+              "type": "defect",
+              "id": "https://github.com/nodejs/node/pull/65992"
+            }
+          ]
+        }
+      ],
+      "revision": 1,
+      "version_scheme": 0,
+      "compatibility_version": null,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_golden_gate": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/node/blobs/sha256:a9b7dd7df23477efc9ef741c7550394e106cbb6126628ddfd54e8b2e3a1c934f",
+              "sha256": "a9b7dd7df23477efc9ef741c7550394e106cbb6126628ddfd54e8b2e3a1c934f"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [
+        "pkgconf",
+        "python@3.14",
+        "rust"
+      ],
+      "dependencies": [
+        "abseil",
+        "ada-url",
+        "brotli",
+        "c-ares",
+        "hdrhistogram_c",
+        "icu4c@78",
+        "libffi",
+        "libnghttp2",
+        "libuv",
+        "llhttp",
+        "merve",
+        "nbytes",
+        "openssl@3",
+        "simdjson",
+        "simdutf",
+        "sqlite",
+        "uvwasi",
+        "zstd",
+        "highway"
+      ],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "uses_from_macos": [
+        "python"
+      ],
+      "uses_from_macos_bounds": [
+        {}
+      ],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [
+        "bin/npm",
+        "bin/npx"
+      ],
+      "caveats": "Single Executable Application is disabled as it doesn't work with shared libnode.\n",
+      "installed": [
+        {
+          "version": "26.8.2",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1789222906,
+          "runtime_dependencies": [
+            {
+              "full_name": "fmt",
+              "version": "12.2.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "12.2.0",
+              "declared_directly": false
+            },
+            {
+              "full_name": "ada-url",
+              "version": "4.0.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "4.0.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "brotli",
+              "version": "1.2.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.2.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "c-ares",
+              "version": "1.34.8",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.34.8",
+              "declared_directly": true
+            },
+            {
+              "full_name": "hdrhistogram_c",
+              "version": "0.11.10",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "0.11.10",
+              "declared_directly": true
+            },
+            {
+              "full_name": "icu4c@78",
+              "version": "78.3",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "78.3",
+              "declared_directly": true
+            },
+            {
+              "full_name": "libffi",
+              "version": "3.8.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "3.8.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "libnghttp2",
+              "version": "1.70.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.70.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "libnghttp3",
+              "version": "1.18.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.18.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "ca-certificates",
+              "version": "2026-08-13",
+              "revision": 0,
+              "bottle_rebuild": 1,
+              "pkg_version": "2026-08-13",
+              "declared_directly": false
+            },
+            {
+              "full_name": "openssl@3",
+              "version": "3.6.4",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "3.6.4",
+              "declared_directly": true
+            },
+            {
+              "full_name": "libngtcp2",
+              "version": "1.25.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.25.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "libuv",
+              "version": "1.52.1",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.52.1",
+              "declared_directly": true
+            },
+            {
+              "full_name": "llhttp",
+              "version": "9.4.3",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "9.4.3",
+              "declared_directly": true
+            },
+            {
+              "full_name": "simdutf",
+              "version": "9.1.2",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "9.1.2",
+              "declared_directly": false
+            },
+            {
+              "full_name": "merve",
+              "version": "1.2.2",
+              "revision": 2,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.2.2_2",
+              "declared_directly": true
+            },
+            {
+              "full_name": "nbytes",
+              "version": "0.1.4",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "0.1.4",
+              "declared_directly": true
+            },
+            {
+              "full_name": "simdjson",
+              "version": "4.6.11",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "4.6.11",
+              "declared_directly": true
+            },
+            {
+              "full_name": "readline",
+              "version": "8.3.3",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "8.3.3",
+              "declared_directly": false
+            },
+            {
+              "full_name": "sqlite",
+              "version": "3.53.4",
+              "revision": 0,
+              "bottle_rebuild": 1,
+              "pkg_version": "3.53.4",
+              "declared_directly": true
+            },
+            {
+              "full_name": "uvwasi",
+              "version": "0.0.23",
+              "revision": 0,
+              "bottle_rebuild": 1,
+              "pkg_version": "0.0.23",
+              "declared_directly": true
+            },
+            {
+              "full_name": "lz4",
+              "version": "1.10.0",
+              "revision": 0,
+              "bottle_rebuild": 2,
+              "pkg_version": "1.10.0",
+              "declared_directly": false
+            },
+            {
+              "full_name": "xz",
+              "version": "5.8.3",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "5.8.3",
+              "declared_directly": false
+            },
+            {
+              "full_name": "zstd",
+              "version": "1.5.7",
+              "revision": 1,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.5.7_1",
+              "declared_directly": true
+            }
+          ],
+          "installed_on_request": true
+        },
+        {
+          "version": "26.9.0",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1789848894,
+          "runtime_dependencies": [
+            {
+              "full_name": "abseil",
+              "version": "20260817.0",
+              "revision": 0,
+              "bottle_rebuild": 1,
+              "pkg_version": "20260817.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "fmt",
+              "version": "12.2.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "12.2.0",
+              "declared_directly": false
+            },
+            {
+              "full_name": "ada-url",
+              "version": "4.0.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "4.0.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "brotli",
+              "version": "1.2.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.2.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "c-ares",
+              "version": "1.34.8",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.34.8",
+              "declared_directly": true
+            },
+            {
+              "full_name": "hdrhistogram_c",
+              "version": "0.11.10",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "0.11.10",
+              "declared_directly": true
+            },
+            {
+              "full_name": "icu4c@78",
+              "version": "78.3",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "78.3",
+              "declared_directly": true
+            },
+            {
+              "full_name": "libffi",
+              "version": "3.8.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "3.8.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "libnghttp2",
+              "version": "1.70.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.70.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "libuv",
+              "version": "1.52.1",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.52.1",
+              "declared_directly": true
+            },
+            {
+              "full_name": "llhttp",
+              "version": "9.4.3",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "9.4.3",
+              "declared_directly": true
+            },
+            {
+              "full_name": "simdutf",
+              "version": "9.2.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "9.2.0",
+              "declared_directly": false
+            },
+            {
+              "full_name": "merve",
+              "version": "1.2.2",
+              "revision": 3,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.2.2_3",
+              "declared_directly": true
+            },
+            {
+              "full_name": "nbytes",
+              "version": "0.1.4",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "0.1.4",
+              "declared_directly": true
+            },
+            {
+              "full_name": "ca-certificates",
+              "version": "2026-08-13",
+              "revision": 0,
+              "bottle_rebuild": 1,
+              "pkg_version": "2026-08-13",
+              "declared_directly": false
+            },
+            {
+              "full_name": "openssl@3",
+              "version": "3.6.4",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "3.6.4",
+              "declared_directly": true
+            },
+            {
+              "full_name": "simdjson",
+              "version": "4.6.11",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "4.6.11",
+              "declared_directly": true
+            },
+            {
+              "full_name": "readline",
+              "version": "8.3.6",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "8.3.6",
+              "declared_directly": false
+            },
+            {
+              "full_name": "sqlite",
+              "version": "3.53.4",
+              "revision": 0,
+              "bottle_rebuild": 1,
+              "pkg_version": "3.53.4",
+              "declared_directly": true
+            },
+            {
+              "full_name": "uvwasi",
+              "version": "0.0.23",
+              "revision": 0,
+              "bottle_rebuild": 1,
+              "pkg_version": "0.0.23",
+              "declared_directly": true
+            },
+            {
+              "full_name": "lz4",
+              "version": "1.10.0",
+              "revision": 0,
+              "bottle_rebuild": 3,
+              "pkg_version": "1.10.0",
+              "declared_directly": false
+            },
+            {
+              "full_name": "xz",
+              "version": "5.8.4",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "5.8.4",
+              "declared_directly": false
+            },
+            {
+              "full_name": "zstd",
+              "version": "1.5.7",
+              "revision": 1,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.5.7_1",
+              "declared_directly": true
+            },
+            {
+              "full_name": "highway",
+              "version": "1.4.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.4.0",
+              "declared_directly": true
+            }
+          ],
+          "installed_on_request": true
+        }
+      ],
+      "linked_keg": "26.9.0",
+      "pinned": false,
+      "outdated": true,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [
+        {
+          "path": {
+            "path": "{{HOMEBREW_PREFIX}}/lib/node_modules"
+          },
+          "type": "mkdir_p"
+        },
+        {
+          "path": {
+            "path": "{{HOMEBREW_PREFIX}}/share/man/man1"
+          },
+          "type": "mkdir_p"
+        },
+        {
+          "path": {
+            "path": "{{HOMEBREW_PREFIX}}/share/man/man5"
+          },
+          "type": "mkdir_p"
+        },
+        {
+          "path": {
+            "path": "{{HOMEBREW_PREFIX}}/share/man/man7"
+          },
+          "type": "mkdir_p"
+        },
+        {
+          "paths": [
+            {
+              "path": "{{HOMEBREW_PREFIX}}/lib/node_modules/npm"
+            }
+          ],
+          "recursive": true,
+          "guards": [
+            {
+              "path": "{{HOMEBREW_PREFIX}}/lib/node_modules/npm",
+              "condition": "if_exists",
+              "id": "1"
+            }
+          ],
+          "type": "remove"
+        },
+        {
+          "source": {
+            "path": "{{libexec}}/lib/node_modules/npm"
+          },
+          "target": {
+            "path": "{{HOMEBREW_PREFIX}}/lib/node_modules"
+          },
+          "recursive": true,
+          "type": "copy"
+        },
+        {
+          "source": {
+            "path": "{{HOMEBREW_PREFIX}}/lib/node_modules/npm/bin/npm-cli.js"
+          },
+          "target": {
+            "path": "{{bin}}/npm"
+          },
+          "force": true,
+          "type": "symlink"
+        },
+        {
+          "source": {
+            "path": "{{HOMEBREW_PREFIX}}/lib/node_modules/npm/bin/npx-cli.js"
+          },
+          "target": {
+            "path": "{{bin}}/npx"
+          },
+          "force": true,
+          "type": "symlink"
+        },
+        {
+          "source": {
+            "path": "{{HOMEBREW_PREFIX}}/lib/node_modules/npm/man/man1/{npm,npx,package-}*"
+          },
+          "target": {
+            "path": "{{HOMEBREW_PREFIX}}/share/man/man1"
+          },
+          "force": true,
+          "source_glob": true,
+          "type": "symlink"
+        },
+        {
+          "source": {
+            "path": "{{HOMEBREW_PREFIX}}/lib/node_modules/npm/man/man5/{npm,npx,package-}*"
+          },
+          "target": {
+            "path": "{{HOMEBREW_PREFIX}}/share/man/man5"
+          },
+          "force": true,
+          "source_glob": true,
+          "type": "symlink"
+        },
+        {
+          "source": {
+            "path": "{{HOMEBREW_PREFIX}}/lib/node_modules/npm/man/man7/{npm,npx,package-}*"
+          },
+          "target": {
+            "path": "{{HOMEBREW_PREFIX}}/share/man/man7"
+          },
+          "force": true,
+          "source_glob": true,
+          "type": "symlink"
+        }
+      ],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "ea5f5f9c8023c0d94b4d7d1d252c227ed05e3b67",
+      "ruby_source_path": "Formula/n/node.rb",
+      "ruby_source_checksum": {
+        "sha256": "3791b06aeb1f2bb9ce0ab9f82732469655c90c16b6234b3037f76d2304ae6373"
+      }
+    }
+  ],
+  "casks": []
+}

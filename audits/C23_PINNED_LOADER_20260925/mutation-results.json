@@ -1,0 +1,17 @@
+[
+  {
+    "name": "forged-authority",
+    "exit": 1,
+    "killed": true
+  },
+  {
+    "name": "alpha-hash",
+    "exit": 1,
+    "killed": true
+  },
+  {
+    "name": "caller-race",
+    "exit": 1,
+    "killed": true
+  }
+]

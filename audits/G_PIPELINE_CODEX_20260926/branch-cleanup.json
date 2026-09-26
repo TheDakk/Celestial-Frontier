@@ -1,0 +1,17 @@
+{
+  "authorization": "Nick requested remote OpenAI branch cleanup 2026-09-26",
+  "deleted": {
+    "openai/parked-gameplay-20260904": "cf1b9a7843200ecc281c5113b4139909dc0e3a29",
+    "openai/review-batch4-gameplay-20260905": "05c1d7fc7049a7b9813d2be1be020dc0d552b74f",
+    "openai/review-batches-1-3-20260904": "121df53d0d101822f32f2ca98a878db10518e65d"
+  },
+  "preservation": "Review tips are ancestors of published openai/mac; unique parked tip retained by LOCAL tag archive/openai-parked-gameplay-20260904",
+  "remoteHeadsAfter": [
+    "anthropic/mac",
+    "develop",
+    "main",
+    "openai/mac"
+  ],
+  "freeGiBAfter": 219,
+  "method": "git push --atomic origin --delete; verified git ls-remote --heads"
+}

@@ -1,5 +1,51 @@
 # audits/ — external review bundles, preserved
 
+September 9 full-painting continuation: [viewer/runtime/fidelity evidence](AI_LANDFALL_CONTINUATION_20260909/README.md)
+and [paired handoff](AI_LANDFALL_CONTINUATION_20260909/HANDOFF.md). Full-resolution inspection,
+actual-size panning and Survey reload access passed the native desktop/small-viewport check on
+unchanged retained image bytes; first observer/focus failures remain intact. The static runtime
+pack builds/verifies at27.08MiB without weights. A detached full-identity review contract retains
+both actual negative species outputs. Favorable finish feedback is recorded; species fidelity,
+physical phone/full6.23GiB model and combined shipping/PWA/distribution gates stay open. No hosted
+actions or new generation; Claude-app review pending. This is the current continuation below.
+
+September 9 local AI continuation: [normal-game integration and species evidence](AI_GAME_INTEGRATION_20260909/README.md)
+and [resumable browser model delivery](LOCAL_MODEL_DELIVERY_20260909/README.md) retain the actual
+Land/progress/View/original-reload run and native small-file OPFS checks. Both generated paintings
+fail species/botany quality; physical phone/full-model delivery, shipping runtime packaging and
+small-screen art legibility remain open. [Paired handoff](AI_GAME_INTEGRATION_20260909/HANDOFF.md)
+records the accumulated direction and intended Claude-app review, still pending. PR #42 remains
+parked; no GitHub write or hosted action occurred. ROADMAP.md owns current resumption.
+
+Latest local graphics checkpoint, September8: [Earth layered riverbank](AV_EARTH_LAYERED_SCENE_20260908/README.md)
+records explicit biome-family checks, current named resident bodies, measured unobstructed placement,
+351 focused tests and four final native modes PASS, plus a verified local human preview. Every first
+red is preserved. Creature artwork remains flat/simple below the approved painted target; global
+D-9e generation filtering and articulated motion remain open. No hosted
+publication. [1Password signing was subsequently restored](SIGNING_RESTORED_20260908/README.md),
+and the exact local checkpoint is now signed as5117b4fa. ROADMAP.md owns current resumption.
+
+Previous local graphics checkpoint, September 8: [painted Mars composition](AV_PAINTED_MARS_COMPOSITION_20260908/README.md)
+records the unobstructed full panorama, 216 focused tests and four passing native modes. Both
+initial observer failures are retained. The approved painted direction, Earth species rules and
+UI placement remain binding. Current work is staged locally; required signing remains blocked,
+so it is not yet committed or published. ROADMAP.md owns the live handoff and next graphics work.
+
+Latest received biome/UI material references and deterministic creature-sharing requirements:
+[PAINTED_SPACE_DIRECTION_ADDENDUM_20260908](PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/README.md).
+UI layout copying is explicitly prohibited; current placement remains authoritative.
+
+September8 painted-space intake and proposed vista/biome/universe reference sheets:
+[PAINTED_SPACE_PIPELINE_20260908](PAINTED_SPACE_PIPELINE_20260908/README.md).
+Preceding offline Wolf coat/articulation study, technically checked and below art target:
+[CREATURE_CHARM_STUDY_20260908](CREATURE_CHARM_STUDY_20260908/README.md).
+Nick subsequently approved the supplied space/creature visual references and supplied the
+biome/UI material references indexed above. ROADMAP.md owns live resumption and preserved verification blockers.
+
+
+Current U2–U4 authority and U2 sheet preparation: [UI_U2_SHEETS_20260906.md](UI_U2_SHEETS_20260906.md).
+[U3 icon study](UI_U3_ICON_STUDY_20260906/README.md) is review-only; product icons await Nick’s choice.
+
 External review rounds arrive as uploaded zips. Those uploads and any working directory used to
 unpack them are **session-scoped** — they disappear when a session ends. The fix lists were being
 copied to the repo root piecemeal while the evidence, harness code and raw measurements were not,
@@ -9,6 +55,55 @@ Everything here is committed so a future session can re-read the measurement rat
 summary of it.
 
 ## Contents
+
+### Playable graphics/audio priority and Thursday review — 2026-09-07
+
+[Next playable slice and Claude review brief](AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md)
+record Nick's expanded direction. The [manifest](AV_PLAYABLE_PRIORITY_20260907/manifest.json)
+preserves the complete staged U2 checkpoint before this priority update. No audiovisual code,
+new native run, signed commit or deployment resulted from this planning/record batch.
+
+### U2 post-close correction resumed — 2026-09-07
+
+[Current audit](UI_U2_POST_CLOSE_CORRECTION_20260907.md) records the bounded Claude-review
+correction and [preparation evidence](UI_U2_POST_CLOSE_PREPARATION_20260907/manifest.json).
+[Startup](TOOLCHAIN_STARTUP_20260907/manifest.json) records the approved Node update and verification.
+Native U2 results remain pending; earlier RED evidence and the full returned review are immutable.
+
+### U2 pause checkpoint and returned Claude review — 2026-09-06
+
+[Next-session handoff](UI_U2_NEXT_SESSION_20260906.md) contains the complete bounded correction
+plan. [Claude's response](UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md) is retained verbatim with a
+[hash/provenance receipt](UI_U2_CLAUDE_REVIEW_20260906/RESPONSE_RECEIPT.json). The diagnosis is
+confirmed by read-only review; the unfinished patch is NOT ready and remains unapplied. No new
+verification or development ran, and all retained RED evidence/older unknown causes remain open.
+
+### U1 rail proof and final guidance contrast correction — 2026-09-06
+
+[Current audit](UI_U1_HINT_CONTRAST_20260906.md) retains clean1609cf3 static/Slice/named-verifier
+PASS, small-phone hint contrast RED and large-phone NOT RUN. Its [23-carrier manifest](UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json)
+includes ten PNGs and all eight stage logs. [Preparation](UI_U1_HINT_PREPARATION_20260906/manifest.json)
+retains the bounded glyph-outline correction's 25 stroke tests, 72 release/budget tests,
+TypeScript, build and root validate results. Sourcea528791 passed static/native outline controls
+then retained a stale dock-fault wording RED with zero product findings. [Its manifest](UI_U1_LOCAL_CHECKPOINT_a528791_20260906/manifest.json)
+and [six-test correction preparation](UI_U1_DOCK_VERDICT_PREPARATION_20260906/manifest.json)
+retain that stop and the instrument-only successor. The [bb9ebe4 checkpoint](UI_U1_LOCAL_CHECKPOINT_bb9ebe4_20260906/manifest.json)
+passed static/dock/outline checks then found the intentionally hidden phone Charts shortcut;
+the instrument correction uses compact Settings→Star charts. [Route preparation](UI_U1_CHARTS_ROUTE_PREPARATION_20260906/manifest.json)
+passed 12 tests, TypeScript and root validate. [Final b457a7a checkpoint](UI_U1_LOCAL_CHECKPOINT_b457a7a_20260906/manifest.json)
+passed static315/3376/1skip then retained a real22.5px Planetside/hint overlap on small-phone.
+The U1 gate is OPEN; [the proposed U2 scope](UI_U2_PROPOSED_SCOPE_20260906.md) needs Nick's phase
+boundary decision. No U2 implementation or further U1 rework has started.
+[Rail correction](UI_U1_RAIL_CONTROL_CORRECTION_20260906.md) retains its prior controls and the
+[7c20246 static declaration RED](UI_U1_RAIL_STATIC_7c20246_RED_20260906/manifest.json).
+
+### U1 local checkpoint stopped at Slice — 2026-09-06
+
+[Audit](UI_U1_LOCAL_CHECKPOINT_20260906.md) and [resume](UI_U1_LOCAL_CHECKPOINT_RESUME_20260906.md)
+retain ce89128's clean static PASS, normal three-view PASS and noncertifying two-finding Slice RED.
+[Manifest](UI_U1_LOCAL_CHECKPOINT_ce89128_20260906/manifest.json) preserves 28 carriers, including
+19 PNGs and full source/error receipts. Both phone canaries were not run; historical causes stay open.
+
 
 ### Overnight Batch 4 completion and review handoff — 2026-09-05
 

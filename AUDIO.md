@@ -1,10 +1,361 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
-**Current runtime reference — matches code as of 2026-09-04.** Finite typed creature, biosphere
-and combat voices have a monotonic maximum lifetime as a fallback for a missing browser `onended`
-event. The original natural/manual/steal/mute/hide/dispose cleanup remains the owner; this does not
+## D15 Stages 1–3 — original sources (matches code as of 2026-09-26)
+
+**Model.** Every shipped sound is ORIGINAL, rendered at runtime by pure generators from a fixed seed. There are no recordings, downloads or AI audio, and 0 audio bytes ship. Rights are "original, CC0 by the project"; the per-source seed and output SHA-256 rows live in `AUDIO_LICENSES.md` and are generated from `originalSourceManifestV1()`, with a drift test. The Sound Kit's frozen tone rules the generators (`soundkit/organic.ts`):
+- **Creature voices** are throat, breath and body: a glottal source-filter model (jittered Rosenberg flow, aspiration, formant bank, lip radiation), breathing, a purr, stridulation, a syrinx, swim-bladder drumming, Minnaert bubbles and turbulent hiss.
+- **Impacts** are modal strikes, mass-scaled thuds and material tails.
+- **Loops** use a seamless-loop crossfade.
+- **Music** uses Karplus-Strong plucks, mallets, breath tones and bowed drones.
+
+**Stage 1 (landed).**
+- `soundkit/original-voices.ts`: the quadruped source set (call ×2, alert, attack-vocal, hurt, faint, victory, breath-idle, land-thud, footfall, tame-settle, feed-chew), the ten footfall sets, and the nine material textures shared by every archetype.
+- `soundkit/original-combat.ts`: the 16-cue battle set (struck wood, plucked stings, air) and the Wild theme (snarl, rush, rake).
+- **Wiring.** The battle stage's creature voices (`battle2-wiring.ts`), the turn sink's default renderer (`turn-audio.ts`) and the Listening page all use them. An archetype or theme without an original set yet falls back to the labelled placeholder, and says so (`library.original`, the `original-pending` flag).
+- **Levels.** Cues ATTENUATE only to their class target (creature and combat: −14 LUFS short-term, ≤ −1 dBTP). `soundkit/leveler.ts` (make-up gain under a look-ahead peak limiter) is only for beds and music.
+
+**Stage 2 (landed).**
+- **All 13 voice archetypes are original**, so the placeholder has left the creature player path:
+  - primate: hoots building to a scream, barks, lip-smacks;
+  - hopper: a vocal-sac croak gated at the pulse rate;
+  - bird: syrinx phrases, a chip, a scream, a coo;
+  - fish: swim-bladder drumming and bubbles;
+  - insect: stridulation and a wing buzz;
+  - arachnid: a hissing rasp;
+  - serpent: hisses and a rattle;
+  - myriapod: dense leg ticks;
+  - radial: water pulses and a sting snap;
+  - cephalopod: jets and bubbles;
+  - flyer-membrane: chitters and a screech;
+  - brachyuran: claw clacks and froth.
+- **All 11 ability themes are original, in the kit's words:**
+  - fire: ignition, roar, scorch;
+  - frost: crackle, hiss, shatter;
+  - storm: charge, crack, thunder;
+  - tide: draw, surge, slap;
+  - stone: grind, tumble, crunch;
+  - venom: hiss, spray, sizzle;
+  - void: inhale, tear, collapse;
+  - sand: rasp, rush, scour;
+  - chem: fizz, spray, corrode;
+  - psionic: hum, ripple, snap;
+  - wild: snarl, rush, rake.
+- **Material impacts.**
+  - `battle2/cue-plan.ts` names the struck side on `battle:hitstop-thump` (`target`).
+  - The turn sink (`impactMaterial`) layers that body's material tail (`withMaterialTailV1`): fur muffles, chitin clicks, plate rings, water slaps, crystal chimes, and so on.
+  - The stage passes each side's voice-card material.
+
+**Stage 3 (landed).**
+- **Ambience** (`soundkit/ambience.ts`).
+  - Ten family beds: temperate, jungle, coast, underwater, desert, ice, volcanic, crystal, spore and gas. They are built from wind, surf swells, insect beds, distant bird phrases, drips, glass chimes, ice creaks, magma bubbles and so on.
+  - Four weather layers: rain, wind, storm (with thunder) and snow-sand.
+  - The 43-biome derivation (`ambiencePlanV1`) uses `PRODUCTION_BIOME_BEDS` to pick a family and detail family, applies a seeded tone and level tint (±0.5 dB), and takes the weather from the biome profile. Airless worlds are silent, and underwater has no weather. Time of day is a playback gain (night −1.2 dB, twilight −0.6 dB).
+  - Beds are 24 s seamless crossfade loops and weather loops are 17 s, so the pair repeats only every 408 s. Stereo is the same loop rotated about 37 %. Rendering is at 32 kHz.
+- **Music** (`soundkit/music.ts`).
+  - Seven states in 11 pieces, 397 s in total:
+    - menu, 45 s;
+    - calm-a and calm-b, 60 s each;
+    - wonder, 50 s;
+    - tension, 40 s;
+    - battle and major-battle, 55 s loops (the tail wraps into the head);
+    - four 8 s stings: victory, discovery, defeat and triumph.
+  - Each piece is a deterministic modal score: a motif developed by repetition and transposition, over a bowed drone, mallet arpeggios, a plucked bass or a frame-drum ostinato. It is played by plucks, mallets, a breathed flute and a bowed drone. Mono, 32 kHz.
+- **Levels without runtime measurement.** Every bed, weather layer and piece is deterministic, so its level gain is a constant.
+  - The gain is found once by the real BS.1770 meter (`levelGainV1`) and stored in `soundkit/level-gains.generated.ts` (57 entries).
+  - At runtime the gain is only applied (`applyLevelV1`: gain, then a look-ahead limiter at −2 dBFS).
+  - `tests/soundkit-soundscape.test.ts` re-measures every entry, proves this exact runtime output passes the gate (beds also at night), and regenerates with `CF_REGENERATE_LEVEL_GAINS=1`.
+  - Renders are generator JOBS. Desktop measurements: a bed takes 40–85 ms in total with slices of at most ~32 ms, and a music piece takes at most ~250 ms with slices of at most ~37 ms. Phone slices are about four times that, pending the H1 probe.
+- **The owner** (`soundkit/soundscape.ts`, `createSoundscapeV1`). It is the ONE owner of continuous sound, on the accessible owner's decorative port. `DecorativeVoicePort.stopVoice` stops only the voices that port started.
+  - One bed plus its weather layer; phones get the bed only.
+  - The bed stops the moment `setAmbience(null)` is called.
+  - A hidden tab stops everything, and visibility RESTARTS the bed and the loop.
+  - The sparse rule: a calm piece plays once, then 120–300 s of only ambience. The gap comes from a presentation seed, never gameplay RNG or the wall clock.
+  - Battle and major-battle loop only in battle (`combatScene`), then the outcome's sting plays.
+  - Buffers live in a byte LRU of at most 24 MiB decoded. A port refusal (not running, muted) retries every 4 s.
+- **Wiring** (`main.ts`, loaded lazily as its own chunk).
+  - The surface vista request sets the world's bed (`request.biomeKey`); the vista teardown clears it.
+  - The visibility and pageshow handlers hide and restart.
+  - The combat Chronicle calls `combatScene` (major for Guardians and Titans; a win, loss or draw sting).
+  - Calm music starts once the owner is ready. The hooks call `globalThis.cfSoundscapeV1`, so the test-executed regions never meet an undeclared name.
+- **Listening page.** `?audioReview=1` now lists 217 items: the 143 creature cues, the 49 combat cues, the 10 ambience families, the 4 weather layers and the 11 music pieces. Each plays exactly what the game plays.
+- **Pack.** All of this is rendered at runtime, so the audio section of the pack is still 0 bytes (the Stage 0 12 MiB gate is unchanged).
+
+**Tests.** `tests/soundkit-original-sources.test.ts`:
+- every cue at three sizes passes the gate;
+- originality against the placeholder, and determinism;
+- the turn sink's real path renders the original cue (control: the placeholder renderer differs);
+- the ledger drift check (control: a changed hash fails).
+
+## D15 Stage 0 — audio plumbing (matches code as of 2026-09-25)
+Nick decided D15 (the in-house $0 plan, `audits/PROPOSALS_20260925/N5_AUDIO.md`). Stage 0 lands the plumbing; no new sound source ships.
+- **Measured loudness gate** (`port/v2/apps/game/src/soundkit/loudness.ts`):
+  - ITU-R BS.1770 K-weighting (libebur128's bilinear design, pinned to the standard's 48 kHz coefficients).
+  - Momentary (400 ms), short-term (3 s) and gated integrated loudness, plus 4× oversampled true peak.
+  - The kit's targets are one table, `LOUDNESS_TARGETS_V1`: creature and combat cues −14 LUFS short-term, music −18 integrated, ambience −22, UI −20, every class ≤ −1 dBTP.
+  - `admitLoudnessV1` returns a named refusal: silent, non-finite, too loud, too quiet (judged on the loudest 400 ms block for cues) or over the true-peak ceiling.
+  - Creature-cue derivation now ends with `limitToLoudnessV1`, which only ever ATTENUATES. Before, only sample peak was enforced, and a 0.891 sample peak overshot −1 dBTP between samples.
+  - Tests: `tests/soundkit-loudness.test.ts` (the standard's 997 Hz calibration, K-weighting, gating, inter-sample peak, the gate in both directions, and every derivable creature cue).
+- **The shipped pack's audio section and its 12 MiB cap** (`port/v2/apps/game/pwa-build.ts`, `SHIPPED_AUDIO_BYTE_LIMIT`).
+  - It is computed at `writeBundle` from the exact shipped inventory (runtime assets plus battle2 files), beside the 128 MiB pack gate. The worker and the emitted files are unchanged.
+  - Audio is any .opus/.ogg/.oga/.m4a/.aac/.mp3/.wav/.flac/.weba/.caf file.
+  - Exactly 12 MiB passes; one byte over fails the build with a named error. The cap grows only on Nick's word. Today the pack ships 0 audio bytes: the pilot cues are opt-in only.
+  - Test: `tests/pwa-audio-section.test.ts`.
+- **One voice per creature** (`port/v2/apps/game/src/soundkit/voice-identity.ts`): every path derives a creature's voice card here.
+  - The SEED comes from its resolver-v1 `AudioSignature`: the owned individual's exact projection, or `projectGenomeAudioSignatureV1` for a non-owned combatant. The two are identical for an unbred genome.
+  - The voice TEMPLATE comes from the genome (its Earth profile, or the procedural body family), never from the painting.
+  - The painted battle voices an owned champion through its ownership projection (`main.ts` passes `ownership`). Every cue derives from the card's own seed, so it sounds the same in every fight.
+  - The Compendium audition rows carry the same card (`voice`).
+  - A combatant with no resolvable signature (a partial genome) keeps the record-based voice.
+  - The oscillator Tame/Feed/Compendium call plans already key on the same signature; they become articulations of this card in Stage 4.
+  - Test: `battle2-wiring.test.ts` "one voice per creature". The stage card equals the Compendium card byte for byte, in two battles. Control: with the identity card switched off it fails.
+
+- **H1 codec decode check** (`port/v2/apps/game/src/device-probe.ts`, page `?deviceProbe=1`, dynamic import only; the same page's performance / heat / memory sections are described in UI_PRESENTATION.md):
+  - Five tiny genuine samples are embedded with their SHA-256 (`device-probe-codec-samples.ts`): a 440 Hz sine, 0.12 s, Opus in Ogg/WebM/CAF and AAC in M4A/ADTS.
+  - Each sample is verified against its hash (a mismatch is a FAIL), then decoded through the device's real `decodeAudioData`.
+  - PASS needs the real tone: 80–300 ms, at least one channel, RMS above 0.01. A rejected decode is UNSUPPORTED.
+  - Recommendation: `opus` if any Opus container passes, else `aac`, else `none` (N5: one codec, never both). `canPlayType` is recorded as provenance only.
+  - Offline: no network and no telemetry. **Copy results** gives Nick plain text to paste.
+  - Test: `tests/device-probe-codecs.test.ts` covers every outcome with a fake AudioContext, a corrupted-sample control (fails if the hash check is removed), and a source check that the page is reachable only through its flag's dynamic import.
+
+- **L1 Listening page** (`port/v2/apps/game/src/listening-review.ts`, `?audioReview=1` on a BUILT package such as the dev URL; dynamic import only; the dev server keeps Codex's production review on the same flag):
+  - Fixed order: 13 representative Earth creatures, one per voice archetype (`LISTENING_ROSTER_V1`), × the 11 creature cues = 143 items.
+  - Each item plays the cue the battle stage would play for that creature, byte for byte: its ONE voice card, `deriveCue(card, cue, sources, card.seed)`, today from the labelled placeholder library.
+  - Playback goes through the audio owner's explicit pilot gesture (`armNativePilotGesture` → `playPilotVoice`, decorative, `cf-pilot-listen-*`). Only a trusted press plays, and nothing plays with Sound off.
+  - Keep / Redo / Cut plus an optional note. Ratings live in guarded localStorage (`cf-listening-l1-v1`), never the save.
+  - **Copy results** gives a plain-text block: commit, pack digest (the package's own `preview.json` `contentSha256`, or `unavailable`), device UA, and the rated lines in order.
+  - Test: `tests/listening-review.test.ts`:
+    - the roster is truthful;
+    - the page's cue equals the battle cue;
+    - requests have the pilot shape;
+    - real presses give the exact copied text, and ratings survive a remount;
+    - controls: untrusted press, Sound off, text changes with ratings;
+    - a source check that the page is reachable only through its flag's dynamic import.
+  - Mutants killed: persistence removed; the trust gate removed.
+
+## Accessibility modes: Mono audio and Reduced intensity (matches code as of 2026-09-25)
+
+Settings has two toggles under Creature voices, and both are applied once at the master of the ONE shared runtime (`@cf/audio`
+`runtime.ts`: `setAccessibility`, `AUDIO_LIMITER_SETTINGS`, `AUDIO_REDUCED_INTENSITY_GAIN`), so they cover every category and voice.
+
+- **Mono audio:** the master gain node is set to an explicit single channel with `speakers` interpretation, so stereo is downmixed
+  as (L+R)/2 and both speakers play the same signal. Loudness is unchanged. Turning it off restores `max`/2.
+- **Reduced intensity:** the master plays at 0.55 × its saved gain (the pilot PCM player's existing level). The brick-wall limiter
+  (−1 dB, 20:1) is swapped for a gentle full-range compressor (−24 dB, knee 12, 4:1, release 0.25 s). This covers the lab's former
+  `dynamicRange` gap.
+- **Where the choice lives:** it is a **device preference, never the save** (`apps/game/src/audio-accessibility-prefs.ts`, key
+  `cf-v2-audio-accessibility/v1` in this device's storage). There is no save-shape change, no v5 settings segment and no
+  migration, and an imported save never changes how another device sounds. Storage that is absent or throws reads as off.
+- **How it applies:** changes apply live through the audio owner's `syncSettings`, and to every later context.
+- **Diagnostics:** `diagnostics().accessibility` reports both modes, and `effectiveMaster` includes the reduction. The lab
+  canonicalizer refuses a contradicting effective master.
+- **Still open:** captions beyond the listed counterparts, device evidence and human listening.
+
+## September 15 audio production — matches code as of 2026-09-15
+
+The supplied handoff is now present verbatim in celestial-frontier-audio-handoff/. Nick's direct
+request authorizes approved CC0/public-domain acquisitions, the explicit CC BY attribution
+exception, and existing REAPER/Surge/stock
+workflow with $0 additional spend. No kit wording changed. The old missing-input and
+original/commissioned-only execution stops are superseded for this task.
+
+Actual game inventory: 631 fauna, 332 flora, 27 fungi, 20 microbes; 43 biome profiles,
+29 weather defaults, 11 themes and source-bound movement/material/event vocabulary.
+
+The latest fauna continuation adds 90 source entries: 63 individually CC BY 4.0 iNaturalist,
+23 CC0 OpenGameArt animal recordings and four public-domain US FWS recordings. Nick explicitly
+approved CC BY with attribution; exact per-recording attribution, license URL, source URL and
+modifications survive into the audition catalogue and RECORDING_CREDITS.md. No NC/ND/SA license
+is admitted. Originals are unchanged. Wikimedia returned HTTP429 after four acquisitions;
+that source remains blocked and was not retried. Tortoise has no eligible sound in the bounded
+query and remains missing. No imitation or generic fictional voice fills an authentic row.
+
+There are now 1,669 source entries / 1,665 unique originals; 1,662 fully decode and the same
+three damaged originals remain quarantined. The 83 new REAPER excerpts bring totals to 1,617
+validated WAV/Opus pairs, 1,396 distinct decoded PCM treatments and 44 successful editable
+production projects. Seven lossy ZIP alternates were retained as originals but not rendered as
+extra performances. There are still 102 loop derivatives and 49 instrument stems. $0 spent.
+
+Identified reference coverage is 203 / 631 fauna; 428 remain missing. Broader labels retain the
+actual narrower taxon, age and recording context. References do not establish per-behavior calls
+or listening acceptance. All 1,010 Earth identities retain their existing ordinary-game owner;
+379 non-fauna identities remain fictional sonification. All 43 biome profiles retain explicit
+recipes: 486 audited routes, 484 rendered plans and two airless silences, with zero missing
+components. Current evidence: audits/AUDIO_FAUNA_CONTINUATION_20260915/README.md.
+
+Resolved sound plans use the painter record's family and material. The hash-bound adapter was
+exercised on the real Civet, candidate-01 fox and native-painter-parts-03 procedural records;
+materials are furred/furred/translucent, with corrupt-record refusal. Existing records lack
+kingdom, acoustic size and propagation medium. These remain explicit caller context; the proof's
+medium/size values are diagnostic declarations, not inferred biological measurements. Named Earth
+voice requests stay exact species/behavior requirements and refuse unrelated family substitutions.
+
+The in-game DEV-only Sound review now auditions layered contact, environment, ability and music
+plans. Independent component selection, bounded sequential loading, source-preserving loop blends,
+linear rate conversion and complementary musical fades create one bounded PCM preview through
+the existing audio owner. Missing components refuse playback. Maximum24s stereo output9.216MB;
+no full-library cache, new AudioContext, third-party playback URL or player-pack change.
+
+Current evidence: [fauna and biome audit](audits/AUDIO_FAUNA_BIOMES_20260915/README.md),
+[audio production](audio-production/README.md), [review prompt](audio-production/REVIEW_PROMPT.md).
+
+**Sound Kit v1 approved — matches code as of 2026-09-15:** [SOUND_KIT.md](SOUND_KIT.md)
+was replaced with the supplied bytes verbatim in8a2dfdc0. The supplied PROPOSED labels do not
+withdraw Nick's approval of v1/frozen paragraphs; do not ask again. Hashes and source paths:
+[audits/LONG_SESSION_20260913/supplied-kits-receipt.json](audits/LONG_SESSION_20260913/supplied-kits-receipt.json).
+C3 sources: quadruped voice archetype, Wild theme set, battle set, temperate rain bed, fur
+impacts; the original kit asks for original/commissioned sources, while Nick's September15
+direct task also authorizes manifest-approved free sources. Record rights,48kHz24-bit masters
+and Opus. Derive
+Civet/fox/procedural voices from one archetype for side-by-side listening, then wire the proof's
+approach/strike/hitstop/impact/hurt/damage ticks/victory. The new source-based candidates
+exist for listening; the strict first-source naming/dry-source and arena acceptance gates remain.
+C1 wording and mechanical intake are complete; first sounds of a new class stop for review.
+Claude owns soundkit/ and its tests. The read-only voice intake CLI is
+`node port/v2/tools/asset-intake/inspect.mjs voice manifest.json`: eight canonical cues and
+four to six numbered footfalls, hash-bound dry 48kHz/24-bit mono PCM and declared redistribution
+rights. It rejects bad RIFF data, silence, sample clipping, wrong sizes/names and missing rights.
+It does not prove true peak, loudness, legal ownership, dry sound or listening quality; those
+are explicit pending results. No source recording, derived voice or Opus is accepted by this tool.
+
+The `export-audio.mjs` CLI exports complete supplied voice, ability, battle and first temperate
+bed sets to new Opus directories, preserving masters and checking source/encoded true peak,
+decoded frames, channel/rate and byte budgets. The receipt binds manifests, sources, tool version,
+encoder arguments and output hashes. Real codec tests prove repeat bytes on this installed
+toolchain and reject intersample clipping. Short-term mix loudness, dry-source/rights review,
+listening, derived voices and arena wiring remain pending.
+
+`inspect.mjs sound-set` checks the eleven theme inventories, sixteen battle cues, first stereo
+temperate bed and mono/stereo rain layer. Hash-bound loop JSON records exclusive sample end,
+overlap and source bytes. `audio-loop.mjs` renders the selected loop with a convex tail/head
+crossfade and seeded cyclic phase. It preserves the original and records the exact shortened
+output length; beds below 24 seconds after overlap refuse. A technically rendered boundary is
+not an inaudible-loop verdict. Source/selected bed intervals remain 24–40 seconds; output must
+also satisfy the profile. Unspecified cue durations are not invented. Weather export still has
+no approved technical profile; fur naming and source production remain open.
+
+Nick's supplied free-audio handoff and explicit CC BY approval supersede the old
+original/commissioned-only execution stop. Kit bytes remain unchanged; the older rights-sentence
+proposal is retained as history, not a request to repeat approval. Candidate quality, source
+context, dry-source suitability and listening acceptance remain separate from permitted rights.
+
+## Canonical Explorer Chronicle repair — 2026-09-08
+
+A native fresh-Earth challenge exposed a pre-existing presentation failure: its durable result
+was verified, but audio cue projection rejected Frontier Resolve's missing creature theme and
+closed the Chronicle before it could appear. The audio projection now recognizes only the exact
+canonical player ability and explorer palette, deriving presentation metadata from its existing
+id/name/color. Original combat fields remain unchanged; malformed creature metadata still fails.
+The regression uses the actual V2 player-stat projection through a registered duel and Chronicle,
+with19 malformed ability/role/palette controls. Full native failure and caught-exception evidence
+is retained in `audits/AV_PLAYABLE_IMPLEMENTATION_20260907/`; current verification is in its README.
+
+## Playable audiovisual priority — Nick, 2026-09-07
+
+Nick requested graphics/audio implementation beyond U2–U4, incremental fixes and a development
+playtest candidate, with documented review for Claude Thursday2026-09-10. Local work can proceed
+without waiting for that review. The existing campaign's graphics/audio-first sequence owns the
+priority; exhaustive UI polish is deferred while play-blocking defects remain actionable.
+The local implementation now joins the prepared Earth/Scout visuals and landing cue to a verified
+native landing, and adds finite attack/reaction translations to the real Combat Chronicle.
+These are presentation changes over existing durable outcomes; anatomical animation is still
+incomplete. U2 and native audiovisual acceptance remain pending. Follow ROADMAP.md and
+ audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md for scope and evidence.
+Human art/listening/device acceptance remains open; no unseen direction is declared accepted.
+No exact hosted/publication authority exists. Earlier dated scope stops below remain history and
+are superseded only for this newly requested local implementation, not verification claims.
+
+
+## Audiovisual pilot implementation — matches code as of 2026-09-08 local
+
+Nick authorized B–D production under the integrated-pilot approval stop. Develop `c1791e2`
+(PR #41 included) is the merged foundation. `audiovisual-pilot.html` is the isolated direction,
+48-condition portrait comparison, eight-cue listening set and three component mockups.
+The real game accepts `?avpilot=1` after answerable boot for a bounded Scout/temperate-light
+comparison and gesture-started audio. Normal navigation does not link to the study. This is
+candidate media, not a released upgrade or accepted artistic direction.
+
+Three Blender Scout exports and one transparent atmosphere layer total 233,094 bytes. They
+retain the exact starter stage/livery/absent-hardpoint eligibility and existing canonical vista.
+The rejected coarse landscape is kept privately, excluded from the game. Eight body plans use
+unchanged canonical portraits at 132/300/440; 300 displays the existing 440 source. Anatomical
+animation remains INCOMPLETE for all eight. A CSS accent outside the frame demonstrates motion
+policy only; it is never counted as creature animation. Existing painter/artlock inputs remain.
+
+Eight original PCM16/48 kHz distribution cues total 9,752,032 bytes; 24-bit masters, MIDI, Surge
+patches and REAPER projects remain private. The existing shared Tame/creature audio owner
+admits at most four decorative pilot voices, one per category, with finite lifetimes and the
+existing mute/hide/route/teardown guards. The pilot's separate decoded-data cache is bounded at
+19,503,360 bytes; native playing AudioBuffers are additional allocations, not included in that
+cache figure. No second audio context is created inside the real game. Legacy sting compatibility
+ownership is unchanged. Music/bed return to silence after 24 seconds; no automatic resume loop.
+After explicit pilot activation, existing Shipyard/Inventory/Compendium navigation clicks may
+add a short UI cue. The existing 1.4-second Scout landing recording now follows one trusted Land
+activation only after exact durable publication and the matching Earth vista/image are ready.
+The opt-in visual arrival lasts 1.8 seconds and stays static under reduced motion; Effects Off,
+Training, wave-off/refusal, convergence, stale route/scene, hide and disposal suppress it.
+
+`armNativePilotLandingGesture` captures the existing shared-context activation before persistence,
+retires old scene voices without closing that context, and binds one origin/destination handoff.
+It also advances the existing gesture serial: an already-consumed ecology/expression claim
+that later resolves or rejects its activation cannot start a stale voice or mute the new context.
+Current-generation activation faults retain their existing silence/cleanup behavior.
+Only the observed destination can consume it; rejected or stale tickets stay silent, with no
+post-await reactivation. Pilot listening opt-in and Master Sound still govern playback.
+The existing `cf-pilot-ui-settlement` recording now maps to successful Starter Charter acceptance
+(2026-09-08), including immediate completion from qualifying existing progress. Main's
+`acceptStarterCharterWithPilot` captures `beginSettlement` during the original trusted Accept
+event, before awaiting persistence. The ticket retains the shared-context activation and exact
+current route; it consumes once only when `runStarterCharterAccept(): Promise<boolean>` returns
+true after publication, ceremonies, final Charters refresh and barrier release on the live revision.
+Duplicate/current acceptance, refusal, convergence and publication failure stay silent. Pilot
+listening opt-in, Master Sound, Effects, enhanced presentation and visibility/route/disposal remain required;
+there is no post-await activation, new media or reward change. One existing 700ms UI cue uses
+the current voice/cache owners. Corrected browser-free develop and scoped native checks PASS;
+retained observer failures and the original scrolled-header finding (corrected separately in `audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md`) are in the
+[Starter Charter audio audit](audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/README.md).
+Other unmapped authored recordings remain listening candidates. The battle stage uses the
+existing registered Chronicle audio cues and clock; it adds no sound or combat simulation.
+Canonical creature synthesis stays unchanged; human listening/device acceptance remains open.
+
+Eight rights rows, real file/header/hash checks and sanitized processing/rights evidence now
+replace the empty audio intake. Human matched-level A/B, anatomy/art direction, comfort and
+physical iPhone/Safari/PWA evidence remain open. Build-time complete-pack admission enforces
+128 MiB. The 256 MiB aggregate retained-update policy is still reserved, not runtime enforcement.
+See `audits/AAA_PILOT_BCD_20260905.md`, `AAA_GAP_AUDIT.md` and `AAA_COVERAGE_LEDGER.md`.
+
+Work stays command-line only: no desktop screenshots, existing-window inspection or user REAPER
+configuration. File inspection and isolated headless captures cover only generated game assets.
+REAPER's renderer launches its desktop process; `open -j -g` supports hidden/background startup
+for future authorized renders but does not establish a true headless or dialog-free mode.
+No further REAPER render is needed for this checkpoint. No Phase 2/chrome migration, hosted
+attempt, PR, label, merge, purchase or release is authorized.
+
+**Current runtime reference — matches code as of 2026-09-09 local.** Registered combat cues now
+soften music and ambience in the shared mixer with short native gain transitions (§0.3). Finite
+typed creature, biosphere and combat voices retain their monotonic maximum lifetime as a fallback
+for a missing browser `onended` event. The original natural/manual/steal/mute/hide/dispose cleanup remains the owner; this does not
 change sound identity, envelopes, game clocks or rewards. Detailed current behavior is in §0.3;
 dated signed evidence below is historical, not a certificate for this successor.
+
+The isolated native mixer proof `audits/LOCAL_AV_AI_CONTINUATION_20260909/native-audio-03/`
+passes six400ms48kHz renders: two positive scenarios, three deliberately broken controls and a
+restored positive. Eighteen exact PCM planes prove smooth duck/recovery, interrupted recovery,
+overlap, latest saved volume, immediate category-zero silence and cleanup. Actual production
+runtime and canonical combat requests run through a disclosed OfflineAudioContext scheduling
+adapter. This does not qualify native game gestures, natural-ended/watchdog timing, speakers or
+human listening. Both first harness failures remain; see the packet's chain and raw reports.
+
+
+## Approved audiovisual authoring exception — 2026-09-04
+
+Nick permits Blender-authored assets and REAPER/Surge audio alongside existing procedural
+painters/runtime. Canvas-only asset origin is relaxed; painterly identity, protected static
+portraits, deterministic game state and runtime budgets remain. Phase 0/1 pilot only: eight body
+plans at 132/300/440, static/animated. See `port/AAA_AUDIOVISUAL_CAMPAIGN.md` and
+`port/AAA_ASSET_POLICY.md`. The pilot implementation above owns current media status. Product
+baseline is landed develop `c1791e2`, including Batch 4/PR #41. WIP remains parked. V2 starts
+fresh: no player import door; existing codec/evidence seam stays. Claude owns CI/budget policy.
+No Phase 2/release. This reference was reconciled against code on 2026-09-05 local.
 
 > **Historical signed universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
 > signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
@@ -139,10 +490,10 @@ is stolen; partial write failure rolls back to the current owners, and an irreco
 reentrant adapter is quarantined with bounded cleanup instead of leaving diagnostics and bus values
 in disagreement. Generation/dirty fencing forces a fresh all-bus pass after a reentrant base-gain or
 owner mutation. Diagnostics and the lab validate the exact active owners, aggregate factors and
-effective category gains. The current Tame, Feed, Compendium-audition and generic ecology renderers explicitly request the frozen neutral
-intent, so this substrate changes no audible mix, adds no setting or save field and performs no extra
-category-bus write for those current voices. Non-neutral product ducking and HUMAN mix
-judgment remain later Arc 7/8 work.
+target category gains. Tame, Feed, Compendium-audition and generic ecology retain neutral intent.
+Registered combat cues now request music and ambience factors of 0.75; creature, combat/gameplay
+and UI stay at 1. This adds no setting or save field. Native duck/recovery behavior is specified in
+§0.3; human listening and device acceptance remain open.
 
 The first app adapter now projects one exact live current Arc 5 individual into that pure identity
 pipeline without writing a save, consuming gameplay RNG or admitting a tombstone/species alias.
@@ -211,8 +562,9 @@ presentation-random noise with cue-keyed local noise, and adds only that blow's 
 ability-proc layers. Separate deterministic short contours render initiative, dodge, stun-skipped,
 burn, regeneration, defeat and resolution plus Guardian/Titan entrance, phase, victory and defeat.
 A composite event uses its first stable caption family and one voice rather than double-playing each
-family. The combat/gameplay bus uses neutral mix intent, priority arbitration and a maximum of two
-concurrent combat voices. Master Sound governs this path; Creature voices does not. Skip stops active
+family. Each combat/gameplay voice requests a 0.75 music/ambience factor, with priority arbitration
+and a maximum of two concurrent combat voices. The reduction remains until the last owning cue
+ends; overlapping cues neither multiply that factor nor restart an unchanged transition. Master Sound governs this path; Creature voices does not. Skip stops active
 voices and renders the remaining transcript silently. Close, replace, hidden/unanswerable state,
 route or counterpart loss, Sound Off, context loss and disposal also stop the session. No authored
 or recorded combat asset, ambience or music follows from this bounded path.
@@ -257,11 +609,10 @@ caption; composite cue families remain one bounded voice instead of double-playi
 Broad/continuous ambience, music, recorded assets and asset loading remain absent. The one generic
 distant-biosphere pulse is not an authored ambience system. Battle sound (`cbx`) is still preserved
 by persistence rather than offered as a live v2 control; master Sound governs the combat path. The
-package owns safe per-voice category-
-mix intent and restoration, but current live callers are neutral; no audible priority ducking claim
-is made. Captions beyond the exact Tame toast, Feed status, Compendium audition status, generic
-biosphere status and Combat Chronicle counterparts, mono, dynamic range,
-reduced intensity, real-browser/physical-device audio-graph/heat/battery evidence and all HUMAN
+package owns per-voice category-mix intent and restoration. Combat now requests a restrained
+music/ambience reduction with native gain transitions; the current implementation is not a human
+listening or physical-device acceptance result. Captions beyond the exact Tame toast, Feed status, Compendium audition status, generic
+biosphere status and Combat Chronicle counterparts, real-browser/physical-device audio-graph/heat/battery evidence and all HUMAN
 listening/appeal/comfort judgments remain open. Arc 7/8 and Gate G are therefore **partial**, not
 closed.
 
@@ -304,6 +655,31 @@ acknowledgement and explicit owned-fauna Compendium audition are the only curren
 render those creature call plans.
 
 ### 0.3 Typed runtime, buses and lifecycle
+
+**Combat foreground mix (2026-09-09):** `combat-gameplay-voice.ts` requests an immutable 0.75
+factor for music and ambience (about −2.5 dB), leaving creature, combat/gameplay and UI neutral.
+`runtime.ts` combines overlapping owners by their minimum factor, never by multiplying their
+reductions. On native parameters, falling category targets ramp over 25ms and rising targets over
+90ms. A changed target cancels future automation, explicitly holds the interpolated current gain
+and starts the new linear ramp there. Another equal-factor cue does not restart a ramp; recovery
+begins only after the last reducing owner ends. User category gains remain the authoritative bases,
+including changes made during a cue. A saved category gain of zero cancels its ramp immediately.
+Master Sound Off, hide, context loss and disposal keep their immediate source/node cleanup.
+
+The owner uses `cancelScheduledValues`, `setValueAtTime` and `linearRampToValueAtTime`, with at
+most five current-graph transition records and no additional context, node, timer, media or cache.
+Context detachment clears those records. Minimal injected adapters lacking cancel/linear capability
+retain the immediate setter path; they do not prove smooth native playback. Existing generation,
+rollback and bounded quarantine rules also guard interrupted or reentrant automation writes.
+`voiceMix.effectiveCategoryGains` reports the **target** (saved gain × current minimum factor),
+not the instantaneous gain partway through a ramp; meters remain separate observations.
+
+Focused checks cover registered combat with a real generic-ecology graph, simultaneous destination
+paths, overlap/restoration, saved gains, lifecycle release and neutral/early-restoration controls.
+An independent piecewise-linear observer checks ramp samples, reversal, interrupted recovery,
+immediate zero, write failures and reentrancy. Current run results belong to the batch receipt;
+these tests and source changes alone do not establish native sound quality, freedom from pumping,
+matched-level listening, long-session comfort or physical iPhone/Safari/PWA acceptance.
 
 **Finite lifetime fallback (2026-09-04):** `AudioVoiceRequest.maxDurationMs` is optional for
 compatibility. A bounded request requires the injected `scheduleVoiceDeadline` owner and uses
@@ -842,7 +1218,7 @@ qualified route inventory and sound witness; static purity, the canonical curren
 ecology join and its explicit no-main-playback boundary; deterministic fauna oscillator/envelope
 synthesis; injected runtime lifecycle/ownership/budgets and teardown races; the trusted Tame and
 Feed postcommit/accessibility-counterpart/constant-size latest-ownership replay fences; Feed's sole
-inline polite announcement plus AT-excluded visual toast; pure lab accounting; and the empty rights
+inline polite announcement plus AT-excluded visual toast; pure lab accounting; and the eight-cue pilot rights
 authority plus hypothetical intake failures. Focused combat controls also bind registered settlement
 and cue-plan identity, trusted Challenge activation, every Chronicle cue to its exact visible
 counterpart, one-time cue playback, all already-modelled family synthesis, silent Skip,
@@ -863,3 +1239,12 @@ declined to score it.
 profile corrections make the test useful, but it has not been run and the clamp curve still must be
 tuned from its evidence. Gate G therefore remains open before any large v2 audio expansion can be
 called complete.
+
+## Recording metadata — matches code as of 2026-09-19
+
+New CC BY acquisitions label the account field creatorProfileName. The exact sound’s
+attribution remains the credit authority; legacy creator fields remain readable. The offline
+recording-metadata writer verifies retained API evidence hashes and exact sound attribution
+without downloading or rerendering audio. The R5–R7 packet contains a successor metadata
+ledger and controls for sounds 619339 and 858791; original acquisition/license/audio bytes
+remain unchanged. No new listening or licensing approval is implied.

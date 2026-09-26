@@ -1,0 +1,91 @@
+[
+ {
+  "id": "eagle",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "bodyLengthPx": 1131.6,
+  "landmarkMedian": 0.0389,
+  "landmarkMax": 0.0823,
+  "worst": [
+   "root 0.082",
+   "chest 0.064",
+   "neck0 0.059"
+  ],
+  "labelAgreement": 0.7066,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "hit",
+   "melee:kick"
+  ]
+ },
+ {
+  "id": "brown-bear",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "bodyLengthPx": 1008.3,
+  "landmarkMedian": 0.1054,
+  "landmarkMax": 0.2923,
+  "worst": [
+   "tail2 0.292",
+   "hindFarAnkle 0.270",
+   "hindNearAnkle 0.267"
+  ],
+  "labelAgreement": 0.3173,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "melee:claw",
+   "melee:tail",
+   "cast",
+   "victory"
+  ]
+ },
+ {
+  "id": "sparrow",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "bodyLengthPx": 911.2,
+  "landmarkMedian": 0.0538,
+  "landmarkMax": 0.27,
+  "worst": [
+   "wingNearTip 0.270",
+   "tailFan 0.254",
+   "neck0 0.148"
+  ],
+  "labelAgreement": 0.4176,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "faint"
+  ]
+ },
+ {
+  "id": "sandpiper",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "bodyLengthPx": 954.9,
+  "landmarkMedian": 0.1465,
+  "landmarkMax": 0.3565,
+  "worst": [
+   "legFarFoot 0.356",
+   "legFarAnkle 0.323",
+   "wingFarTip 0.270"
+  ],
+  "labelAgreement": 0.4831,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "cast",
+   "victory"
+  ]
+ }
+]

@@ -1,0 +1,20 @@
+{
+  "scope": "Exact bytes before explicit compact swing lift; no runtime behavior altered in these snapshots.",
+  "files": [
+    {
+      "source": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "snapshot": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/swing-lift-before-01/myriapod-anatomy.mjs",
+      "sha256": "feea85a1ce58317f18ca5c460d8587c838a571c6da1cd02c10111edb75c3681a"
+    },
+    {
+      "source": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "snapshot": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/swing-lift-before-01/family-contracts.d.mts",
+      "sha256": "088551d84282b6af9c677a34ec118e7efb3ba83ba92b48b131b9e657bd306b24"
+    },
+    {
+      "source": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "snapshot": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/swing-lift-before-01/creature-rig-contact.ts",
+      "sha256": "f57554f41bdc0fd16bb7093d0ba479ea2f4efdecf96198095957857d4264fe58"
+    }
+  ]
+}

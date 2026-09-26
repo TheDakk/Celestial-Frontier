@@ -1,0 +1,9 @@
+{
+  "port/v2/tools/anatomy-verify/auto-author.mjs": "a9726fb9d5b24ad621aaca61e0014c9f21c8bb06a41491f9e1fe1b878e8da208",
+  "port/v2/tools/creature-animation/build-paint-skin.mjs": "55509deba10b18a005d4ae34e296a509036ab09fdad9ae623f3c640227429951",
+  "port/v2/tools/creature-animation/split-observed-surfaces.mjs": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+  "port/v2/tools/creature-animation/intake-authored.mjs": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "audits/G1_AUTO_AUTHOR_20260926/harness/static.ts": "9bc8989236eaec1fe1362626d2212e1e187bc0bb65eea9ff698626495bb51203",
+  "audits/G1_AUTO_AUTHOR_20260926/harness/static-runner.mjs": "5241e675dd1347bcb663f99e8e7f8f1aa51f33be7c14a5b3ae6e779fb189688f",
+  "audits/G1_FIT_REPAIR_20260926/refine-contact-fit.mjs": "9e9b663bd83650558116e6e08a9b23b668806b4491f0c1fcf768745ec2f9e4b6"
+}

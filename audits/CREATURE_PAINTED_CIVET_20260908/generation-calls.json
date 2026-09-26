@@ -1,0 +1,35 @@
+{
+  "calls": [
+    {
+      "tool": "built-in image_gen",
+      "intent": "edit canonical Civet painting using approved creature style reference",
+      "prompt": "IMAGE_PROMPT.txt",
+      "promptSha256": "000f4084c7b8488c46945413fd56026128a4aa0e3756998ebcdc1d77361d5005",
+      "references": [
+        "baseline/civet-alpha-crop.png",
+        "../PAINTED_SPACE_PIPELINE_20260908/approved-creature-reference.png"
+      ],
+      "output": "civet-first-opaque.png",
+      "outputSha256": "86025b8d8c1e337e9795433f48251d6a91bd76fee69e8e13c564c7fedbb1377e",
+      "result": "Painted candidate created; FAIL real-alpha contract."
+    },
+    {
+      "tool": "built-in image_gen",
+      "intent": "one targeted true-alpha edit of exact candidate",
+      "prompt": "ALPHA_EDIT_PROMPT.txt",
+      "promptSha256": "bb4a4dffeadb92e691f1dacc42b891e235b9d06e7d987b808b74f6928d2e4b70",
+      "references": [
+        "civet-first-opaque.png"
+      ],
+      "output": "civet-alpha-edit-opaque.png",
+      "outputSha256": "680b05fd802de02e7f578ace24cc0d813fbc95bb4455eb4b22e44021a7f17f31",
+      "result": "FAIL real-alpha contract again; no further generator retry."
+    }
+  ],
+  "followupAuthority": "Nick: Use ImageMagick for alpha extraction",
+  "selectedPaint": "civet-first-opaque.png",
+  "selectedMatteRecipe": "extract-alpha-v3.mjs",
+  "sourceMaster": "alpha-v3/civet-painted-v1.png",
+  "derivative": "civet-painted-v1.webp",
+  "newReferences": "../PAINTED_EARTH_AND_ALIEN_FLORA_20260908/manifest.json"
+}

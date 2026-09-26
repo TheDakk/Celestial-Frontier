@@ -1,0 +1,9 @@
+{
+  "striped-01": {
+    "tool": "image_gen.imagegen",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-be98e23e-279b-4dcf-bd90-a83462af7eb9.png",
+    "raw": "raw/striped-rejected-01.png",
+    "prompt": "prompts/striped-rejected-01.txt",
+    "finding": "Requested line gaps ambiguous in inline preview; retained unchanged and regenerated with simpler coordinate-only brief. Actual final alpha/composite reviewed."
+  }
+}

@@ -6,6 +6,8 @@
    into caption/visual-owned cue facts. It never runs combat, imports an RNG,
    or invents a result. */
 import {
+  FRONTIER_RESOLVE_ABILITY_V1,
+  PLAYER_COMBAT_HEX_V1,
   PRIME_SIGNATURES_V1,
   isCombatSettlementPlanV1,
   type CombatSettlementPlanV1,
@@ -198,7 +200,13 @@ function digest(text: string): string {
   return `${text.length.toString(36)}-${left}${right}`;
 }
 
-function abilityFact(value: unknown): CombatCueAbilityFactV1 {
+/** K25: the native Explorer ability is admitted by identity — the settled
+ * champion kind plus the combat domain's own Frontier Resolve source — never by
+ * matching description text or numbers written into this file. */
+function abilityFact(
+  value: unknown,
+  champion: Readonly<{ kind: 'player'; color: unknown }> | null = null,
+): CombatCueAbilityFactV1 {
   if (value === null || typeof value !== 'object' || Array.isArray(value)
     || Object.getPrototypeOf(value) !== Object.prototype) {
     throw new TypeError('settled combat ability is invalid');
@@ -212,6 +220,21 @@ function abilityFact(value: unknown): CombatCueAbilityFactV1 {
       fields[key] = Object.is(child, -0) ? 0 : child;
     } else if (typeof child === 'string' || typeof child === 'boolean') fields[key] = child;
     else throw new TypeError('settled combat ability is invalid');
+  }
+  // Native Frontier Resolve has no creature-element theme. Project only its
+  // exact source identity and explorer palette; never add fields to combat
+  // stats or treat another malformed ability as this player-only exception.
+  if (champion !== null && champion.kind === 'player'
+    && champion.color === PLAYER_COMBAT_HEX_V1
+    && fields.id === FRONTIER_RESOLVE_ABILITY_V1.id
+    && exactKeys(fields, Object.keys(FRONTIER_RESOLVE_ABILITY_V1))
+    && Object.entries(FRONTIER_RESOLVE_ABILITY_V1).every(([key, expected]) => fields[key] === expected)) {
+    return Object.freeze({
+      theme: FRONTIER_RESOLVE_ABILITY_V1.id,
+      themeLabel: boundedText(fields.n, 'combat ability label', 96),
+      color: boundedText(champion.color, 'combat ability color', 32),
+      fields: Object.freeze(fields),
+    });
   }
   const theme = boundedText(fields.theme, 'combat ability theme', 64);
   const themeLabel = boundedText(fields.themeLabel, 'combat ability label', 96);
@@ -245,7 +268,8 @@ function participantFacts(plan: CombatSettlementPlanV1): CombatCueParticipantsV1
     combatName: boundedText(champion.name, 'combat champion name'),
     statName: boundedText(plan.transcript.A.name, 'combat champion stat name'),
     maxHp: finiteNumber(plan.transcript.maxA, 'combat champion maximum HP', 1),
-    ability: abilityFact(plan.transcript.A.ab),
+    ability: abilityFact(plan.transcript.A.ab,
+      champion.kind === 'player' ? { kind: 'player', color: plan.transcript.A.hex } : null),
     bodyMaterial: aBody,
   });
   const b: CombatCueParticipantFactV1 = Object.freeze({

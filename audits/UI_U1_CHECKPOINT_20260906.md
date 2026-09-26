@@ -1,0 +1,368 @@
+# U1 presentation checkpoint — 2026-09-06
+
+## Final local checkpoint — cfd63ae
+
+Exact tested source `cfd63ae6a024d806c2df02fd65b64f066f973021` passed a fresh checkout with root main.js absent:
+311 Vitest files / 3,300 tests / 1 skipped, typecheck, artunused, Glass selftest,
+Slice `20260906091030879-84426-e7f8f021242a` (374208ms), and both phone canaries:
+20260906091646886-84800-e3a2e6e93436 (small-phone); 20260906091702950-84915-6ed69372fd67 (large-phone). Both report zero product findings and instrument failures.
+A fresh normal build then passed the three-view UI review (phone390x844,
+desktop1440x900, tablet834x1112), with9 PNGs and zero console errors.
+Immutable carriers, fresh-build log, review build hashes and screenshots are in `UI_U1_FINAL_cfd63ae_20260906/`.
+
+All nine review images were inspected; see `UI_U1_FINAL_cfd63ae_20260906/VISUAL_REVIEW.md` for
+remaining visual choices and observed text truncation. No visible U1 access blocker was found.
+
+These are local scoped phone diagnostics and U1 visual evidence, not a full Glass or
+Compendium certificate, hosted result, real-iPhone test or human visual approval.
+The comparison's raster difference is for human review: scene/save/font differences prevent
+interpreting all changed pixels as geometry defects. Review mutations verify changed property
+values/priorities and restored geometry; their label “exact style restored” does not claim
+full style-attribute presence/byte identity. The separate label diagnosis does verify exact
+attribute restoration. Desktop rail pseudo-element contrast backing remains a stated U4
+coverage limitation, outside the completed phone canaries.
+
+Current producer `0df5435f66dbd057b15690404aeb38a4dcfb2d09c2bb344a53288acac237535e` and all five component pins agree; measurement,
+ruler, ceilings, samples and paired baseline remain unchanged. All prior failures remain
+below and in UI_U1_REDS_20260906.json. Normal branch push only; no U2, Phase2, hosted attempt,
+PR, label, merge, purchase, release or deployment. Nick's U1 visual approval is the next stop.
+
+## Preserved preparation and progress records
+
+Status: IMPLEMENTED, exact-source verification pending. No U2 or Phase2 approval.
+
+Starting source ec5188f5059fb3ce7ae8b99af68c51709f2ee9b6, on openai/mac. Fresh fetch confirmed
+develop c1791e210158de864fdd475323c3091d9ecbae58 already an ancestor. Codex/macOS owns
+/Users/nick/Projects/celestial-frontier-openai-mac; no other worktree was edited.
+
+Scope: normal-game U1 shared tokens/local Inter, measured shelf, five labelled phone boards,
+four utility controls, desktop/tablet bottom-right cluster, native selection/focus/Training
+roots, retained scene actions and objective/trail/caption/hint lanes. Nick amended scope to
+include existing-schema notification history/read-state persistence. Explicit reads use the
+idle guarded save owner; passive notices never schedule a competing write, and notices emitted
+during an action remain in a private buffer until the next admitted checkpoint after settlement.
+
+Geometry authority differences are documented in UI_PRESENTATION.md and port/v2/DEVIATIONS.md.
+Desktop44px pitch is a proposed2px change from the old diagram to preserve44px targets; Nick
+has not explicitly confirmed that numerical choice. Phone64px pitch is exact. Shelf height is
+content-derived (default88px), not a claimed fixed legacy measurement. V1 goldens remain unchanged.
+The old short-landscape left panel remains; relocated interactive shelf and desktop rails now
+occupy its right safe column. Broad sheet restyling/stack changes wait forU2.
+
+Verification requires a clean committed temporary checkout with no root main.js. Run each
+selected owner once, stop on red, retain the red evidence and correct on a new signed source.
+Required sequence: typecheck; artunused; full Vitest; Glass selftest; Slice develop; Glass
+small-phone; Glass large-phone. Normal-build U1 review captures phone390x844,desktop1440x900,
+tablet834x1112 against the sealed main goldens. Human visual review is not an automatic gate.
+
+The draft bulletin has81 outcomes; ordered SHA256
+f35a3cca3eea2015025bf257c7832d706d1e2961fac9417a953d0932e0f5ca08.
+Compendium producer is to be re-derived after final product edits. Measurement/ruler/ceilings,
+SceneMemory and artlock references stay unchanged. No workflow/policy edits or hosted authority.
+
+Final exact source, verification results and review image links follow after the local checkpoint.
+
+Producer derivation: `a671e70073c1a34141ece1011b9ccfbd65f5e921503bf5d2b9e312e9e5fbb46c`. Tool exit2 reports expected producer movement,
+quarantined SceneMemory drift, and a pre-existing Compendium measurement mismatch in
+`inputs.appPackage` / `inputs.packageLock` introduced by the prior GSAP setup. This batch
+preserves those dependencies and the sealed measurement authority; it does not claim a
+current Compendium certificate or silently update the ruler. Required U1 gates remain pending.
+
+## Preparation instrument result — source35ded10
+
+The first fresh clone had no main.js and matched35ded10f3d052ab5603e781ee06d2a25448397f5.
+Sandbox npm ci could not resolve registry.npmjs.org for lockedGSAP3.15.0 (ENOTFOUND).
+A prematurely submitted typecheck returned127 (tsc unavailable) before dependency setup
+completed; no TypeScript/product test ran. The remaining checks were not submitted.
+Correction: dependency installation must report exit0 before launching any check; network
+access for the unchanged locked install was granted through sandbox escalation. This is a
+local setup/instrument failure, not a product or hosted result. It is retained before the
+successor verification source; no unchanged product-red test is retried.
+
+## First product checkpoint —37d82ef
+
+Fresh committed source `37d82ef50e1c4e1554a572473019c4451c690559`, root main.js absent: install,typecheck,artunused
+PASS. VitestRED:7failed/303passed files;12failed/3,241passed/1skipped tests. Stop honored;
+Glass selftest, Slice, canaries and visual review were not run. `UI_U1_REDS_20260906.json`
+retains exact failures and log hash. Corrections preserve every tested outcome: removed-one
+bullet count80from81, native Atlas opener anchor, extracted persistView harness dependencies,
+and complete producer component record. The prior unused GSAP runtime dependency is moved to
+isolated `tools/ui-motion` (same3.15.0 installation verified). Game package/lock restored
+byte-for-byte to their sealed values; no measurement/ruler/ceiling/test expectation weakened.
+
+Corrected producer derivation: `1afd4b75628db48685ca065b8cfbfa7a8ab342c602e1fe6d7f785777a662964c`.
+Compendium sealed measurement now MATCHES. Tool exit2 reflects producer movement before pin
+update and quarantined SceneMemory drift only. Producer pins/components moved together;
+measurement/ruler/ceilings remain byte-identical. Fresh successor verification follows.
+
+## Browser checkpoint —4e6047b
+
+Fresh checkout: typecheck/artunusedPASS;310Vitestfiles/3,255testsPASS/1skip; GlassselftestPASS.
+Slice developRED and the later canaries/review were not submitted. It found Search in a broad
+non-dismiss header, missing independent HP text backing, missing8pxroot-owned rail gaps,
+the old Search-at-right-edge oracle after adding a shelf bell, and Feed's reload fixed point.
+The product repairs restore Search dismissal, HP backing and real empty rail gaps without
+weakening their controls. Rails therefore use44pxtarget+8pxgap=52pxpitch, disclosed against
+old42pxdiagram; desktop utility pitch remains44. The Search geometry oracle now measures its
+relationship to the new bell. Feed notification comparison is investigated separately.
+
+Browser correction producer: `e9d4c92fe92101fb6d97b4107444a063bfbf4ca5bda27f21591571d3165406b5`.
+Compendium measurement MATCH; all component/producer pins move together. Tool exit2 before
+pin update includes producer movement and quarantined SceneMemory drift; neither measurement
+nor SceneMemory authority was edited. Fresh corrected verification remains pending.
+
+## Bounded browser corrections prepared
+
+The Feed carrier now records both codecs' notification vectors and the actual painted toast.
+Immediate/pending/stale-loser comparisons still require the full unchanged unrelated digest.
+Reload additionally proves exactly one new bounded unread meal notice, unchanged predecessors,
+codec parity, expected collision-free ID and bounded wall-clock timing, while every other
+unrelated field retains its own exact fingerprint. Missing/extra/forged/read/late/reordered
+notice and unrelated-state negative controls are retained; no product Feed outcome changes.
+
+Notifications retains the native58px Close gutter, joins the safe left panel workspace in
+short landscape, and stays above Survey using an explicit utility-panel token. Phone Prime
+uses one label/count line to keep the default dock92px. The normal-game review now reaches
+Cosmos through actual Escape presses and captures native Notifications open/Close/focus too.
+Latest producer `6b9f100f4502f6a371f1c670cf98dac686bc5d6b69ef0f273027ffbf26f6cbd1`; sealed Compendium measurement MATCH.
+All previous red evidence is retained. Successor verification has not yet run.
+
+## Instrument correction —b08f8ac
+
+Fresh static sequence:310files/3,258testsPASS/1skip, typecheck/artunused/GlassselftestPASS.
+Slice's earlier product/history checks passed. Its sole remaining finding was the Prime
+HP-collision negative control: a transformed dock becomes the containing block for fixed
+children, so viewport coordinates did not create the intended collision. The control now
+translates from actual painted Prime/HP rectangles and retains the existing required overlap
+and exact-restoration assertions. No product change or producer movement in this correction.
+Red log is retained in `UI_U1_SLICE_RED_b08f8ac_20260906.log.gz`; later gates were not run.
+
+## Source-contract correction —b431837
+
+Fresh install/typecheck/artunused PASS. Vitest stopped on one stale source-marker test
+(309 files green; 3,257 passed / 1 failed / 1 skipped). The test still required the old
+fixed-position HP collision code after its measured-rectangle correction. Its three marker
+requirements now follow that correction and retain their remove-one negative controls. No
+product or authority changes. Glass selftest and all browser checks were not run after red.
+
+## Overlay instrument correction —ab9b807
+
+Fresh static sequence:310 files/3,258 tests PASS/1 skip, typecheck/artunused/Glass selftest
+PASS. Root validate also passes50 deterministic probes and1,010 renders. Slice stopped on
+one Guide overlay mutation: fixed Prime coordinates again resolved inside the translated
+dock instead of the viewport. Guide and the equivalent Survey mutant now translate actual
+rectangles; their collision rejection, visible Prime and exact restoration remain required.
+No product or authority changes. Both phone canaries and visual review remain unrun.
+
+## Reload harness stop —2deec82
+
+Fresh static sequence:310 files/3,258 tests PASS/1 skip; typecheck, artunused and Glass
+selftest PASS. Slice stopped at the transient-read authoritative reload: its15-second
+wait retained a stale document token. Earlier Guide collision did not recur. Diagnosis
+identified a fixed (30,300) click over the relocated Survey button. Both retry branches now
+select a measured root-canvas hit and require a matching trusted pointerdown receipt across
+reload, with explicit cleanup. The15-second cap, loader/new-token and exact write/revision
+checks remain unchanged. Focused contract24testsPASS; successor full checks are pending.
+Both phone canaries and visual review were not run. The original red log
+is preserved as `UI_U1_SLICE_RED_2deec82_20260906.log.gz`.
+
+## Records collision-close stop —40aad54
+
+Fresh typecheck, artunused,310 Vitest files/3,259tests/1skip and Glass selftest PASS.
+The corrected transient canvas activation passed. Slice advanced through Training, then
+stopped on the Records collision baseline Close outcome after8seconds. Diagnosis is
+resolved a real selector-specificity defect: shared rail button styling overrode the hide
+rule for relocated Inventory/Records. Stronger owned selectors hide both duplicates. Live
+show-one/red/restore controls and exact trusted dock Records receipts now guard the outcome;
+the old failing800px press did not retain its exact hit and is not retroactively claimed.
+The existing8-second close cap remains. Focused Atlas contract8testsPASS. Producer-only
+pins are60562956b771f572e3481075e78fdf95c764589c05ec6b6146a8f8db273c517c; measurement,
+ruler, ceilings and historical samples are unchanged. Successor verification is pending;
+phone canaries and visual review were not run. Original red evidence is retained
+in `UI_U1_SLICE_RED_40aad54_20260906.log.gz`.
+
+## Test fixture type correction —7778230
+
+Fresh typecheck caught two unchecked indexed accesses in the new two-row visibility
+mutation fixture. The bounded fixture indexes now carry non-null assertions; no product,
+assertion, geometry or authority change. Later checks were not run after red. The original
+compiler output is retained in `UI_U1_TYPECHECK_RED_7778230_20260906.log.gz`.
+
+## Producer narrative correction —2c26ee7
+
+Typecheck/artunused PASS. Vitest stopped on the required current-producer narrative:
+309files/3,260tests passed,1test failed,1skipped. Current pins were correct but the narrative
+still ended at the earlier producer. The successor and all five component hashes are now
+appended, preserving every prior narrative byte and all samples, measurement, ruler and
+ceilings. This is a record correction; product bytes are unchanged. Later gates were not run.
+
+## Relocated opener instrument stop —4af8073
+
+Fresh typecheck, artunused,310 Vitest files/3,261tests/1skip and Glass selftest PASS.
+Slice reported five findings: three remaining rail-boundary fixtures still selected the
+now-hidden compatibility Records button, and Inventory selected the hidden compatibility
+opener, leaving its dependent ledger sequence incomplete. The actual visible owners are
+`#dockrecords` and topbar `#dockinventory`. The bounded correction updates native opener,
+receipt and restored-focus identities; both real rail-gap mutations and all Inventory
+outcomes remain required. Product and producer pins are unchanged. Phone canaries and
+visual review did not run after red. Original output is retained in
+`UI_U1_SLICE_RED_4af8073_20260906.log.gz`; successor verification is pending.
+
+Relocated-opener preparation: Slice typecheck,3files/20focused tests and smoke-report selftest
+PASS; Glass native hidden-opener32tests and syntax checks PASS. An initial partial-declaration
+TS2305 repeated once after a failed edit path; final corrected import passes. Preparation
+outputs were retained only in the agent turn, not as filesystem logs; this limitation and
+the mistaken unchanged typecheck repetition are recorded in the REDS JSON. Independent
+Slice diff review is clear. The fresh successor uses the existing smoke-report wrapper
+for the same single Slice execution plus immutable report/terminal verification. Glass
+callers now follow the visible controls; Atlas/Shipyard yield Survey when rails begin at701px.
+The hidden-opener focus control starts with visible Atlas and uses native input through
+Survey/Close, retaining its original outcome/control identities and historical ledgers.
+
+## Settled Share predecessor and exact-style restoration stop —62a601c
+
+Fresh static checks and Glass selftest PASS. Immutable Slice run
+`20260906065155741-65134-c940284a4ef9` stopped with three findings from two causes. The
+wave-off check preserved all13 other outcomes but rejected an added prior Share notification
+in its full unrelated-state comparison; the dependent second Land was not issued. The rail
+visibility mutant was shown/rejected and both controls restored hidden, but exact style
+attribute equality failed. Prior/current attribute bytes were not retained by that older
+control, so absence-versus-empty is a hypothesis rather than proven original evidence.
+Both original immutable report and raw log are retained as the dated62a601c gzip carriers.
+The bounded successor will settle and prove the existing receipt-free Share-notice checkpoint
+before the Land baseline, keeping the wave-off comparison intact, and restore/record exact
+attribute presence/value for the visibility control. No product or producer edits are planned.
+Phone canaries and normal visual review did not run after red.
+
+Successor preparation: typecheck/9focused style tests and17focused Arc0 tests PASS.
+The Share checkpoint proof derives the whole expected raw successor, including only the
+exact notice, receipt-free revision, codec timer normalization and monotone active play.
+Receipts, RNG, gameplay and prior history remain exact; the adjacent toast and queued
+ceremony must survive before Land is armed. Seven live cloned controls reject corrupt
+evidence. The original full wave-off evaluator is byte-identical (SHA in REDS JSON).
+Focused logs are retained; the next clean signed-source sequence remains pending.
+
+## Share source-contract marker correction —19f8366
+
+Fresh typecheck/artunused PASS. Vitest310files/3,298tests passed; one test failed and one
+was skipped. The six-site Share contract still ended its Charter source section at the
+old pre-checkpoint baseline assignment. Its one endpoint now names `beforeLand = shareNoticeState`;
+all existing assertions remain. The focused Share file passes31tests. Original red output
+is retained; Glass selftest and browser stages did not run after red.
+
+## Native style-attribute diagnosis —b3aadd9
+
+Fresh static sequence and Glass selftest PASS. Slice had one finding: absent style became
+present-empty after temporary CSSOM editing/removal. Share checkpoint and wave-off checks
+passed. The native isolated blank-page diagnostic reproduced this on Edge152.0.4191.62:
+remove-only and clear-CSSOM-then-remove fail the absent case; set-empty-attribute then
+remove restores absent, present-empty and nonempty values exactly. That bounded correction
+is applied to the existing control with its9focused tests passing. Original immutable red
+log/report plus the9-case native probe/script/output are retained. No game/browser-profile
+or personal desktop access was part of the synthetic diagnostic. Phone canaries and review
+were not run after red; the corrected source requires its fresh sequence.
+
+## Atlas collision re-open stop —42c0805
+
+Fresh static sequence and Glass selftest PASS. Native exact-style restoration passed.
+Slice then found one later interaction mismatch: the first Atlas trip leaves Survey open;
+its right-rail Atlas opener is hidden and the old desktop dock duplicate is also hidden
+under U1. The native helper correctly retained a null target/receipt for reopen1. The
+successor must close Survey through its visible native action before reopening Atlas,
+prove unchanged route/selection, and retain all exact Atlas/Travel input assertions.
+Original immutable red log/report are retained. Phone canaries and review did not run.
+
+Successor preparation closes Survey natively before both collision Atlas openings, records
+closed DOM/ARIA state and unchanged document plus14 route/selected-world/panel fields, and
+retains both Atlas/Travel receipt gates. Typecheck and10focused tests PASS; log retained.
+
+## Slice PASS; small-phone contrast stop —6fb67a2
+
+Fresh static sequence311files/3,300tests/1skip and Glass selftest PASS. Immutable Slice
+run `20260906074236094-71755-19b4f4c46ce2` PASS in375,056ms, including collision Survey closure.
+Its original named report, log, terminal verification and10screenshots are preserved under
+`UI_U1_SLICE_6fb67a2_20260906/`. Small-phone then stopped on one caption contrast finding:
+white `#ctxbar` text measured against bright-art white, ratio1 vs4.5. Original Glass report/log
+are retained. Larger phone and normal-build review did not run. Diagnosis is pending.
+
+Caption correction restores an independent rgba(10,16,30,.94) backing with geometry unchanged.
+The existing Glass contrast check remains intact. Producer successor `f144d466e59f6ce336a5f4090be368cf776268b8917386ccd6a6d81c0d595436`
+and all component pins moved together; original narrative is retained with a complete appended
+record. Compendium measurement matches; exit2 reflects pre-pin producer movement and quarantined
+SceneMemory drift. No ruler/ceilings/history/certificate changes. Fresh successor gates follow.
+
+## Slice PASS; large-text caption lane stop —55aa04f
+
+Fresh static sequence and Glass selftest PASS. Immutable Slice `20260906075455519-73621-42ac2c1ecd66`
+PASS in374463ms; report/log/terminal verification/10screenshots retained in
+`UI_U1_SLICE_55aa04f_20260906/`. Caption contrast passed. Small-phone then found a1.5px
+caption/hint overlap under larger text (caption bottom404; hint top402.5). The correction
+uses the existing measured `--hint-h` plus8px clearance, keeping164px as a minimum, and gives
+long captions the existing90vw/620px available width instead of half-screen shrink-to-fit.
+No font shrinking or check weakening. Large-phone and review did not run after red.
+
+Producer successor `ffb80c98195f8bb2e9bbeccdf6f52e5923843c2ed6f2a668634d6c35f5b26939` and all component pins moved together.
+Compendium measurement matches; prior narrative is preserved and extended with every component.
+The independently reviewed formula has no measurement cycle; the hint observer already exists.
+
+## Slice PASS; inert grid mutation stop —7f5e63b
+
+Fresh static sequence and Glass selftest PASS. Slice `20260906080729860-75805-c343feb5e74c`
+PASS in374,168ms; original report/log/10screenshots retained under
+`UI_U1_SLICE_7f5e63b_20260906/`. Phone caption contrast and overlap checks passed with zero
+product findings. The phone spacing negative control was inert: eight explicit32px tracks
+still allowed placed children to create two implicit32px tracks, preserving every rectangle.
+The successor compresses the ten explicit widths to26px, keeps the64px positive oracle intact
+and retains both broken and restored geometry. No product/producer changes. Larger phone and
+normal visual review did not run after the instrument red.
+
+## Slice PASS; utility contrast sampling stop —06c6db3
+
+Fresh static sequence and Glass selftest PASS; immutable Slice PASS with original artifacts
+retained under `UI_U1_SLICE_06c6db3_20260906/`. The native compressed-grid control rejects
+52px centres, restores64px centres, and preserves exact styles. Small-phone then reports
+contrast on the transparent outer Records button although its visible emoji sits on the
+nested dark utility face. The directly related contrast selectors/control are under bounded
+review. No larger-phone or normal review run followed this red.
+
+Prepared instrument correction samples the actual utility glyph, visible unread badge and
+direct button text independently, retaining the native button ID for every finding. The
+nonmodal mutant now covers exact visible phone9/desktop5 membership and all owner/sample
+pairs, with exact style restoration. Existing native contrast selftests add readable nested
+backing and deliberate glyph/badge/direct-text failures. Compositing, thresholds, historical
+control IDs and input ownership are unchanged. Syntax/diff review passes; native execution
+remains pending on the signed successor.
+
+## Slice PASS; Inventory nameplate sampling stop —0b247a2
+
+Fresh static sequence and Glass selftest PASS; immutable Slice PASS, with original artifacts
+retained in `UI_U1_SLICE_0b247a2_20260906/`. Utility glyph/badge native controls and prior
+phone checks passed. The next contrast finding samples the transparent Inventory click
+wrapper instead of its painted `#playerchip` nameplate. The bounded correction extends the
+same mapping to that known wrapper, preserving the direct HUD nameplate identity when it is
+selected directly. No later phone/build/review stage followed red. Tool maintenance is now
+session-start only; the old chat automation remains deleted.
+
+Independent implementation and root diff review complete. Added native readable/red cases
+for wrapper/direct HUD identities, direct outer text and exact style restoration. Syntax and
+diff checks pass; native execution awaits the signed successor. Desktop rails use separate
+`::before` backings, outside this correction; retain that explicit limitation for U4 desktop
+contrast coverage. No product, threshold, pin or historical-ledger changes.
+
+## Both phone canaries PASS; default-font visual review stop —db777b1
+
+Fresh311 files/3,300 tests/1 skipped, Glass selftest and Slice PASS. Small-phone
+20260906090250806-82514-679166b32a10 and large-phone
+20260906090307199-82638-97dc02107523 both PASS with zero findings/instrument failures.
+Normal build PASS. Immutable evidence and the first normal phone PNG are retained under
+`UI_U1_REVIEW_RED_db777b1_20260906/`. This is local targeted evidence, not full Glass certification.
+
+Normal visual review stops at dock93.6875px against92px default-text expectation. Native
+diagnosis finds Compendium needs54.338px inside54px available width: the final letter wraps.
+Phone-only zero horizontal padding gives56px available, one line and44px row/92px dock.
+Restoration reproduces the original red with exact styles; no font shrinking, target or pitch
+change. The diagnostic deliberately exits1 after its one case and is not a certificate.
+The review labels92px as default Inter content, not a sealed fixed v1 law; thresholds remain.
+Larger Settings text may still grow the auto row. Producer0df5435f66dbd057b15690404aeb38a4dcfb2d09c2bb344a53288acac237535e
+and all component pins move together; sealed measurement matches, ruler/ceilings remain unchanged.
+Fresh successor verification and final three-view comparison remain pending.

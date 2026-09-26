@@ -1,0 +1,15 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.13361121493830086,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.12208235667626091,"gap":0.00005332715099480864,"exactRest":true,"firstRefusal":null}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.16307642373449255,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"approach:flight","status":"PASS","samples":121,"drift":0,"gap":0.00005200113021329582,"exactRest":true,"firstRefusal":null}
+{"id":"melee:peck","status":"PASS","samples":121,"drift":0.12208235667626091,"gap":0.000051744032951463855,"exactRest":true,"firstRefusal":null}
+{"id":"melee:claw","status":"PASS","samples":121,"drift":0.000040157786203347225,"gap":0.00004785965566658335,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"RED","samples":36,"drift":0.24340817179488053,"gap":0.00004785965568433824,"exactRest":true,"firstRefusal":{"ms":231,"sampleNumber":37,"error":"Error: Contact: cast@231 exceeds scale compression bound"}}
+{"id":"hit","status":"PASS","samples":121,"drift":0.000040157786203347225,"gap":0.00005381598577293122,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"RED","samples":3,"drift":0.21403525677316843,"gap":0.000047859655595563734,"exactRest":true,"firstRefusal":{"ms":11,"sampleNumber":4,"error":"Error: Contact: dodge@11 exceeds scale compression bound"}}
+{"id":"faint","status":"RED","samples":37,"drift":0.005124936991781582,"gap":0.00004785965566658335,"exactRest":true,"firstRefusal":{"ms":209.66666666666666,"sampleNumber":38,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 5"}}
+{"id":"victory","status":"PASS","samples":121,"drift":0.12208235667626091,"gap":0.000047859655595563734,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"RED","samples":20,"drift":0.23011728096902304,"gap":0.00004668606400178102,"exactRest":true,"firstRefusal":{"ms":133.33333333333334,"sampleNumber":21,"error":"Error: Contact: joint limit legNearFoot tame@133.33333333333334: -50.18051781762357"}}
+{"id":"feed","status":"PASS","samples":121,"drift":0.025704198995223408,"gap":0.00004785965566658335,"exactRest":true,"firstRefusal":null}
+{"id":"melee:kick","status":"PASS","samples":121,"drift":0,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":14,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

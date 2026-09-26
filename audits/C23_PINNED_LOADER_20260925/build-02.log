@@ -1,0 +1,192 @@
+vite v8.2.0 building client environment for production...
+[2Ktransforming...✓ 1253 modules transformed.
+
+(!) outDir /private/tmp/cf-c23-build-02 is not inside project root and will not be emptied.
+Use --emptyOutDir to override.
+
+rendering chunks...
+computing gzip size...
+../../../../private/tmp/cf-c23-build-02/__local_ai/MISSING.json                                                                 0.06 kB │ gzip:     0.08 kB
+../../../../private/tmp/cf-c23-build-02/manifest.webmanifest                                                                    0.72 kB
+../../../../private/tmp/cf-c23-build-02/audit.html                                                                              0.94 kB │ gzip:     0.44 kB
+../../../../private/tmp/cf-c23-build-02/hybrid-matrix.html                                                                      1.03 kB │ gzip:     0.46 kB
+../../../../private/tmp/cf-c23-build-02/icons/celestial-frontier-maskable.svg                                                   1.13 kB │ gzip:     0.53 kB
+../../../../private/tmp/cf-c23-build-02/icons/celestial-frontier.svg                                                            1.13 kB │ gzip:     0.53 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/kit-stage-worker.mjs                                                         1.30 kB
+../../../../private/tmp/cf-c23-build-02/audiovisual-pilot.html                                                                  1.52 kB │ gzip:     0.52 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/denoiser-shapes.mjs                                                          2.37 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/kit-worker-expansion.mjs                                                     3.92 kB
+../../../../private/tmp/cf-c23-build-02/assets/card-BlldZX5C.json                                                               4.10 kB │ gzip:     1.36 kB
+../../../../private/tmp/cf-c23-build-02/assets/card-DRUK9mE2.json                                                               4.22 kB │ gzip:     1.23 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-D9_qVAVo.png                                                          4.24 kB
+../../../../private/tmp/cf-c23-build-02/assets/card-DxOfUEXo.json                                                               4.35 kB │ gzip:     1.34 kB
+../../../../private/tmp/cf-c23-build-02/assets/Inter-LICENSE-CkXC2-KD.txt                                                       4.38 kB │ gzip:     1.97 kB
+../../../../private/tmp/cf-c23-build-02/assets/card-CFx22hZW.json                                                               4.42 kB │ gzip:     1.37 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/kit-weather-math.mjs                                                         4.43 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-ii_1GW6o.png                                                          4.49 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-Ce---SIy.png                                                          4.50 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-BBjgFyvf.json                                                             4.72 kB │ gzip:     1.61 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-C3DSnLKS.png                                                          4.98 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-X8-LwJuo.json                                                             5.01 kB │ gzip:     2.04 kB
+../../../../private/tmp/cf-c23-build-02/assets/card-Dj7NqevC.json                                                               5.57 kB │ gzip:     1.57 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-Wx5uSFJc.json                                                             5.61 kB │ gzip:     2.40 kB
+../../../../private/tmp/cf-c23-build-02/assets/card-zVhh3vfS.json                                                               5.87 kB │ gzip:     1.51 kB
+../../../../private/tmp/cf-c23-build-02/assets/card-CzE1LoTO.json                                                               5.90 kB │ gzip:     1.51 kB
+../../../../private/tmp/cf-c23-build-02/assets/card-CKrocSnU.json                                                               6.03 kB │ gzip:     1.56 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-BbX56XP1.png                                                          6.17 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-Bje60Hy0.json                                                             6.37 kB │ gzip:     2.55 kB
+../../../../private/tmp/cf-c23-build-02/assets/planet-surface-turn.worker-jKUKmrS4.js                                           6.45 kB
+../../../../private/tmp/cf-c23-build-02/assets/card-CuKsOTQe.json                                                               6.50 kB │ gzip:     1.76 kB
+../../../../private/tmp/cf-c23-build-02/assets/card-TMrtCfzp.json                                                               6.52 kB │ gzip:     1.78 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-BtqxYPzJ.json                                                             6.82 kB │ gzip:     2.81 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-Bceegcny.json                                                             7.35 kB │ gzip:     2.16 kB
+../../../../private/tmp/cf-c23-build-02/assets/record--yEptcck.json                                                             7.37 kB │ gzip:     2.97 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-ChmihkP3.json                                                             7.59 kB │ gzip:     3.13 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-wSIXyLMh.json                                                             7.66 kB │ gzip:     2.29 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-D2xkxUJB.png                                                          7.78 kB
+../../../../private/tmp/cf-c23-build-02/assets/eye-spotted-Bp51yhdL.png                                                         7.93 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-BH6vSvTR.json                                                             7.98 kB │ gzip:     3.08 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-DumRKjFB.json                                                             8.01 kB │ gzip:     2.47 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-DhoOqmw2.json                                                             8.02 kB │ gzip:     2.50 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-DKWoUiJt.json                                                             8.23 kB │ gzip:     2.45 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-CltL4ka2.json                                                             8.36 kB │ gzip:     3.36 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-BtFhpwu5.json                                                             8.48 kB │ gzip:     3.48 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-6Bkfk6sp.png                                                          8.71 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/kit-engine-math.mjs                                                          8.99 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-DcSkrGqG.json                                                             9.45 kB │ gzip:     3.95 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/gpu-profile.mjs                                                              9.72 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-DjmD2rdG.png                                                          9.98 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/pipeline-math.mjs                                                           10.22 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/kit-contact-math.mjs                                                        10.26 kB
+../../../../private/tmp/cf-c23-build-02/assets/card-BpQGSGK2.json                                                              10.47 kB │ gzip:     2.43 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-C9cSL_jj.png                                                         11.64 kB
+../../../../private/tmp/cf-c23-build-02/assets/scout-chemical-132-Dt4gyYnA.webp                                                12.53 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-DM-KWuvc.png                                                         13.02 kB
+../../../../private/tmp/cf-c23-build-02/assets/spotted-Npj35y7d.png                                                            13.23 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-JNA_uuPu.png                                                         13.63 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-CqbyMkPA.png                                                         13.65 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-CUCCGc4m.png                                                         14.01 kB
+../../../../private/tmp/cf-c23-build-02/assets/striped-DRaiiscJ.png                                                            15.88 kB
+../../../../private/tmp/cf-c23-build-02/assets/banded-J_IBEsae.png                                                             15.99 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-Bxpx5dH_.png                                                         16.85 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/kit-worker-engine.mjs                                                       17.34 kB
+../../../../private/tmp/cf-c23-build-02/assets/marbled-DePoFqIw.png                                                            17.44 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-CPYF3VnG.png                                                         17.62 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-PaPC2Z6s.png                                                         17.67 kB
+../../../../private/tmp/cf-c23-build-02/assets/mottled-C_mFzxOE.png                                                            19.78 kB
+../../../../private/tmp/cf-c23-build-02/assets/labels-512-nRPkt-Cm.png                                                         20.54 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-BPmIua6S.png                                                         21.37 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-ClpueXuE.png                                                         21.78 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-C8o98squ.png                                                         22.72 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-BUMDqvl8.png                                                         23.08 kB
+../../../../private/tmp/cf-c23-build-02/assets/spotted-yAu-My4j.png                                                            23.58 kB
+../../../../private/tmp/cf-c23-build-02/assets/record-D3aPUASz.json                                                            23.77 kB │ gzip:     7.92 kB
+../../../../private/tmp/cf-c23-build-02/assets/cf-pilot-ui-nav-bMnbTxA8.wav                                                    26.92 kB
+../../../../private/tmp/cf-c23-build-02/assets/marbled-B8SNTQY6.png                                                            30.18 kB
+../../../../private/tmp/cf-c23-build-02/assets/cf-pilot-combat-contact-DHZD2lYd.wav                                            33.64 kB
+../../../../private/tmp/cf-c23-build-02/assets/mottled-B4rrFPjC.png                                                            36.01 kB
+../../../../private/tmp/cf-c23-build-02/assets/striped-rNNGX3QK.png                                                            38.38 kB
+../../../../private/tmp/cf-c23-build-02/assets/scout-chemical-300-CxcU_kic.webp                                                40.66 kB
+../../../../private/tmp/cf-c23-build-02/assets/eye-spotted-Dkz9BjrI.png                                                        41.43 kB
+../../../../private/tmp/cf-c23-build-02/assets/cf-pilot-ui-refusal-CMon7hko.wav                                                43.24 kB
+../../../../private/tmp/cf-c23-build-02/assets/eye-spotted-CBG0LWL5.png                                                        43.58 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs       51.40 kB
+../../../../private/tmp/cf-c23-build-02/assets/markings-D8dbiufZ.json                                                          57.47 kB │ gzip:     6.66 kB
+../../../../private/tmp/cf-c23-build-02/assets/markings-wzqRFhdL.json                                                          62.71 kB │ gzip:     7.15 kB
+../../../../private/tmp/cf-c23-build-02/service-worker.js                                                                      64.75 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs                        66.34 kB
+../../../../private/tmp/cf-c23-build-02/assets/cf-pilot-ui-settlement-uF_X4Ois.wav                                             67.24 kB
+../../../../private/tmp/cf-c23-build-02/index.html                                                                             70.09 kB │ gzip:    15.52 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-DgLhmkdn.png                                                         73.33 kB
+../../../../private/tmp/cf-c23-build-02/assets/banded-B_fAJ91N.png                                                             92.23 kB
+../../../../private/tmp/cf-c23-build-02/assets/scout-chemical-512-DcNawgH5.webp                                                92.89 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs                    98.93 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-DOVn1JdB.png                                                        102.69 kB
+../../../../private/tmp/cf-c23-build-02/assets/mars-dunesea-v1-cFwkRNdy.webp                                                  127.08 kB
+../../../../private/tmp/cf-c23-build-02/assets/earth-riverbank-v1-C4EQQH_D.webp                                               130.30 kB
+../../../../private/tmp/cf-c23-build-02/assets/cf-pilot-scout-landing-D1k5tYuE.wav                                            134.44 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-BPk7psfU.png                                                        139.94 kB
+../../../../private/tmp/cf-c23-build-02/assets/markings-jGSfdbHl.json                                                         140.72 kB │ gzip:    19.85 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/browser-variant-plan.json                                                  142.91 kB │ gzip:    13.70 kB
+../../../../private/tmp/cf-c23-build-02/assets/banded-Aqv8fLnj.png                                                            143.62 kB
+../../../../private/tmp/cf-c23-build-02/assets/striped-BwucMPN6.png                                                           153.13 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-CRnahgKk.png                                                        162.94 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-BtQCfXeT.png                                                        162.99 kB
+../../../../private/tmp/cf-c23-build-02/assets/spotted-DcgjgvDz.png                                                           165.10 kB
+../../../../private/tmp/cf-c23-build-02/assets/marbled-COAlzh-t.png                                                           191.75 kB
+../../../../private/tmp/cf-c23-build-02/assets/mottled-DxDdjh2s.png                                                           214.89 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-BKBi4tKj.png                                                        216.03 kB
+../../../../private/tmp/cf-c23-build-02/assets/biome-vista.worker-D3XRSJZJ.js                                                 220.68 kB
+../../../../private/tmp/cf-c23-build-02/assets/cf-pilot-scout-approach-Be38_iqZ.wav                                           230.44 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-BQm200Oe.png                                                        242.81 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-BMaSjuP5.png                                                        247.87 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-CX1yDyzc.png                                                        291.53 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-DAxCPv4x.png                                                        307.04 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-CThTiPmB.png                                                        319.90 kB
+../../../../private/tmp/cf-c23-build-02/assets/master-512-CnK6bxUo.png                                                        320.80 kB
+../../../../private/tmp/cf-c23-build-02/assets/earth-rainy-phone-DFt5murF.webp                                                343.07 kB
+../../../../private/tmp/cf-c23-build-02/assets/InterVariable-DiVDrmQJ.woff2                                                   352.24 kB
+../../../../private/tmp/cf-c23-build-02/assets/earth-civet-landing-v1-DxWosWSp.webp                                           600.75 kB
+../../../../private/tmp/cf-c23-build-02/assets/earth-rainy-landscape-DPgApIAi.webp                                            765.31 kB
+../../../../private/tmp/cf-c23-build-02/assets/earth-resident.worker-B6A_QkaS.js                                              978.34 kB
+../../../../private/tmp/cf-c23-build-02/assets/species-art.worker-SHcKR5tI.js                                               1,342.56 kB
+../../../../private/tmp/cf-c23-build-02/assets/cf-pilot-exploration-music-CMF8UCKw.wav                                      4,608.04 kB
+../../../../private/tmp/cf-c23-build-02/assets/cf-pilot-temperate-bed-C_jKRyj6.wav                                          4,608.04 kB
+../../../../private/tmp/cf-c23-build-02/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm  25,749.87 kB │ gzip: 6,442.00 kB
+../../../../private/tmp/cf-c23-build-02/assets/webworkerAll-CCI_wjmn.js                                                         0.05 kB │ gzip:     0.06 kB
+../../../../private/tmp/cf-c23-build-02/assets/release-identity-CIuedefi.js                                                     0.13 kB │ gzip:     0.13 kB │ map:     0.91 kB
+../../../../private/tmp/cf-c23-build-02/assets/getTextureBatchBindGroup-WYWz1eAc.js                                             0.40 kB │ gzip:     0.31 kB │ map:     1.85 kB
+../../../../private/tmp/cf-c23-build-02/assets/getPo2TextureFromSource-BZgiTsLH.js                                              0.47 kB │ gzip:     0.32 kB │ map:     1.75 kB
+../../../../private/tmp/cf-c23-build-02/assets/modulepreload-polyfill-P2Xu9kJm.js                                               0.67 kB │ gzip:     0.38 kB
+../../../../private/tmp/cf-c23-build-02/assets/CanvasPool-BdanJG_4.js                                                           0.80 kB │ gzip:     0.46 kB │ map:     3.58 kB
+../../../../private/tmp/cf-c23-build-02/assets/speciesidentity-Dv9PKGDT.js                                                      1.33 kB │ gzip:     0.54 kB │ map:     5.09 kB
+../../../../private/tmp/cf-c23-build-02/assets/visual-effect-policy-DOpWhvoj.js                                                 1.57 kB │ gzip:     0.70 kB │ map:     7.31 kB
+../../../../private/tmp/cf-c23-build-02/assets/local-model-sha256-DcmCFA0U.js                                                   2.74 kB │ gzip:     1.44 kB │ map:     8.49 kB
+../../../../private/tmp/cf-c23-build-02/assets/worldlife-wiring-HHxKwMFy.js                                                     3.44 kB │ gzip:     1.62 kB │ map:    17.29 kB
+../../../../private/tmp/cf-c23-build-02/assets/Mesh-DHS_l5-c.js                                                                 3.95 kB │ gzip:     1.59 kB │ map:    15.39 kB
+../../../../private/tmp/cf-c23-build-02/assets/surface-polish-CBmmi-Kj.js                                                       4.73 kB │ gzip:     1.69 kB │ map:    18.93 kB
+../../../../private/tmp/cf-c23-build-02/assets/src-PpYgFp_O.js                                                                  5.14 kB │ gzip:     2.47 kB │ map:    22.76 kB
+../../../../private/tmp/cf-c23-build-02/assets/lib-BTmxI6xV.js                                                                  5.80 kB │ gzip:     2.24 kB │ map:    66.74 kB
+../../../../private/tmp/cf-c23-build-02/assets/canvasUtils-BdWL41L6.js                                                          6.07 kB │ gzip:     2.08 kB │ map:    22.11 kB
+../../../../private/tmp/cf-c23-build-02/assets/src-DDq_m0Mw.js                                                                  8.13 kB │ gzip:     2.69 kB │ map:    22.46 kB
+../../../../private/tmp/cf-c23-build-02/assets/world-roster-ogx-giA9.js                                                         8.62 kB │ gzip:     3.13 kB │ map:    33.98 kB
+../../../../private/tmp/cf-c23-build-02/assets/battle2-matchup-DEZK4et0.js                                                      9.22 kB │ gzip:     4.03 kB │ map:    30.56 kB
+../../../../private/tmp/cf-c23-build-02/assets/planet-surface-turn-view-CyESDNNu.js                                            10.40 kB │ gzip:     4.05 kB │ map:    28.59 kB
+../../../../private/tmp/cf-c23-build-02/assets/BufferResource-C1plebTW.js                                                      10.57 kB │ gzip:     2.81 kB │ map:    26.18 kB
+../../../../private/tmp/cf-c23-build-02/assets/repeated-anatomy-CjJiumbW.js                                                    11.33 kB │ gzip:     4.47 kB │ map:    38.15 kB
+../../../../private/tmp/cf-c23-build-02/assets/png-decode-DnFEqZ9P.js                                                          13.00 kB │ gzip:     5.65 kB │ map:    57.38 kB
+../../../../private/tmp/cf-c23-build-02/assets/init-9-szki8F.js                                                                15.31 kB │ gzip:     4.80 kB │ map:    53.91 kB
+../../../../private/tmp/cf-c23-build-02/assets/combat-chronicle-CVDYeTCx.js                                                    15.73 kB │ gzip:     5.61 kB │ map:    52.86 kB
+../../../../private/tmp/cf-c23-build-02/assets/earth-layered-recipe-DTHL9JNN.js                                                16.50 kB │ gzip:     4.36 kB │ map:    34.77 kB
+../../../../private/tmp/cf-c23-build-02/assets/audit-vckFKaJi.js                                                               16.61 kB │ gzip:     6.54 kB │ map:    68.51 kB
+../../../../private/tmp/cf-c23-build-02/assets/pilot-sound-player-DKfrcTKp.js                                                  16.93 kB │ gzip:     6.58 kB │ map:    45.00 kB
+../../../../private/tmp/cf-c23-build-02/assets/audiovisualPilot-DSisVueA.js                                                    19.20 kB │ gzip:     7.34 kB │ map:    43.97 kB
+../../../../private/tmp/cf-c23-build-02/assets/src-CoJqSmVu.js                                                                 20.61 kB │ gzip:     6.63 kB │ map:   105.49 kB
+../../../../private/tmp/cf-c23-build-02/assets/init-CDdLwmtt.js                                                                24.71 kB │ gzip:     8.52 kB │ map:   107.07 kB
+../../../../private/tmp/cf-c23-build-02/assets/audiovisual-pilot-DfkJ7Cd5.js                                                   25.15 kB │ gzip:     6.54 kB │ map:    40.15 kB
+../../../../private/tmp/cf-c23-build-02/assets/hybridMatrix-BJl2GVP1.js                                                        33.88 kB │ gzip:    11.04 kB │ map:    97.63 kB
+../../../../private/tmp/cf-c23-build-02/assets/WebGPURenderer-BjidRpHt.js                                                      38.53 kB │ gzip:    10.79 kB │ map:   125.77 kB
+../../../../private/tmp/cf-c23-build-02/assets/local-ai-game-CpcQw9AV.js                                                       38.60 kB │ gzip:    14.95 kB │ map:   118.21 kB
+../../../../private/tmp/cf-c23-build-02/assets/browserAll-CmA5K3k-.js                                                          42.63 kB │ gzip:    11.12 kB │ map:   157.68 kB
+../../../../private/tmp/cf-c23-build-02/assets/worldlife-JR6QHGKL.js                                                           52.20 kB │ gzip:    18.72 kB │ map:   191.16 kB
+../../../../private/tmp/cf-c23-build-02/assets/WebGLRenderer-qeHi6k43.js                                                       68.03 kB │ gzip:    18.72 kB │ map:   219.02 kB
+../../../../private/tmp/cf-c23-build-02/assets/landfall-conditioning-DhYbk4wy.js                                               69.16 kB │ gzip:    26.24 kB │ map:    59.61 kB
+../../../../private/tmp/cf-c23-build-02/assets/RenderTargetSystem-DUsRdIdr.js                                                  71.14 kB │ gzip:    20.22 kB │ map:   266.73 kB
+../../../../private/tmp/cf-c23-build-02/assets/CanvasRenderer-S0y0Qw5Y.js                                                      87.43 kB │ gzip:    27.42 kB │ map:   466.97 kB
+../../../../private/tmp/cf-c23-build-02/assets/Geometry-BhLxjYlb.js                                                           101.67 kB │ gzip:    31.17 kB │ map:   505.81 kB
+../../../../private/tmp/cf-c23-build-02/assets/src-BcaY20by.js                                                                115.78 kB │ gzip:    30.91 kB │ map:   445.23 kB
+../../../../private/tmp/cf-c23-build-02/assets/src-App-IaSp.js                                                                129.52 kB │ gzip:    50.75 kB │ map:   408.22 kB
+../../../../private/tmp/cf-c23-build-02/assets/guide-content-BRg14tKq.js                                                      131.09 kB │ gzip:    44.38 kB │ map:   148.83 kB
+../../../../private/tmp/cf-c23-build-02/assets/body-card-Dd5npOvD.js                                                          140.29 kB │ gzip:    40.28 kB │ map:   443.32 kB
+../../../../private/tmp/cf-c23-build-02/assets/release-content-LCdahykp.js                                                    152.32 kB │ gzip:    58.50 kB │ map:   173.27 kB
+../../../../private/tmp/cf-c23-build-02/assets/battle2-wiring-20kJBtz1.js                                                     226.74 kB │ gzip:    75.52 kB │ map:   767.76 kB
+../../../../private/tmp/cf-c23-build-02/assets/tame-greeting-audio-Bc6akZuP.js                                                246.66 kB │ gzip:    69.65 kB │ map:   889.94 kB
+../../../../private/tmp/cf-c23-build-02/assets/speciesart-CBC2WKXP.js                                                       1,294.78 kB │ gzip:   365.40 kB │ map: 4,519.14 kB
+../../../../private/tmp/cf-c23-build-02/assets/main-CfylZL9j.js                                                             1,499.60 kB │ gzip:   394.42 kB │ map: 5,318.35 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.33s

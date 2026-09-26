@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen.imagegen",
+  "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-36f60b14-ad27-47bf-b0c6-49deed7291cf.png",
+  "sha256": "7a3006d523004aa511358803eb4568ca9a24de0ab44ecf62bbf9d3843416809c",
+  "prompt": "sent-prompt-03.txt",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceUse": "style only",
+  "seed": null
+}

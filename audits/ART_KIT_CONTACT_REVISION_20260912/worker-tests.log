@@ -1,0 +1,29 @@
+✔ one-pixel erosion and sampled inward despill remove injected pink edge without recolouring the interior (2.2145ms)
+✔ premultiplied sampling cannot carry invisible magenta into a scaled edge (0.177709ms)
+✔ latent interiors stay anchored while boundary and ground remain editable; no-mask control fails (2.854959ms)
+✔ prepared profile meets scale relationships and refuses the former unmasked recipe (0.78925ms)
+✔ restored ceiling rejects overflow without truncation and allocates actual projected length (1.114416ms)
+✔ low-strength pass preserves source contribution and seed owns only the noise (0.7205ms)
+✔ key intake refuses a dark full plate and an empty key, preserving a complete foreground object (0.803959ms)
+✔ worker expansion preserves element bytes and rejects overlapping patches / corrupt plan before model fetch (3.339084ms)
+✔ an unknown recipe cannot reach a GPU stage (0.172333ms)
+✔ actual engine skips organism inference and runs one protected finisher; all four sessions stay warm (334.652125ms)
+✔ same reuse oracle rejects actual engine with its session cache bypassed (329.699041ms)
+✔ actual diagnostic worker executes one step at the exact shape, retains four-step sigmas and releases before a distinct partial result (129.009416ms)
+✔ ordinary worker preserves four runs, original progress/completion type and math without diagnostic messages (93.142167ms)
+✔ invalid diagnostic mode/schema/model/profile/seed/schedule/shapes are refused before any GPU request (79.68375ms)
+✔ nonfinite float16 embeddings and reference data are refused before allocation or model creation (28.048667ms)
+✔ deferred actual run and readback promises expose different durable boundaries (117.435417ms)
+✔ run rejection cannot be reported as readback or completion and preserves the failed boundary (72.777292ms)
+✔ readback rejection is distinct from completed execution and cannot publish partial success (71.439042ms)
+✔ device loss or repeated uncaptured errors while run is pending produce one bounded fault and prevent late success (141.836ms)
+✔ failed release cannot become diagnostic completion after one executed step (112.390417ms)
+✔ the same outcome oracle rejects an actual missing-boundary mutant and a removed first-step stop (245.963375ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1137.364625

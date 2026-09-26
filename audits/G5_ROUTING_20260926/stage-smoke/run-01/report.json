@@ -1,0 +1,41 @@
+{
+ "tool": "stage-smoke",
+ "package": "dev-preview-7710c91da8e9-20260926183856",
+ "vs": "Crab,Mud Crab",
+ "runs": [
+  {
+   "name": "plain",
+   "query": "",
+   "stage": {
+    "status": "playing",
+    "finished": null,
+    "label": "battle2 stage · left: source paint-skin rig (C2 parts) · contact: family · travel: stage · right: source paint-skin rig (C2 parts) · contact: family · travel: stage"
+   },
+   "errors": [],
+   "still": "plain.jpg",
+   "finishDeliveryFetches": 0,
+   "finishSourceFetches": 0
+  },
+  {
+   "name": "finish",
+   "query": "&finish=1",
+   "stage": {
+    "status": "playing",
+    "finished": "left:true right:true",
+    "label": "battle2 stage · left: source paint-skin rig (C2 parts) · contact: family · travel: stage · right: source paint-skin rig (C2 parts) · contact: family · travel: stage"
+   },
+   "errors": [],
+   "still": "finish.jpg",
+   "finishDeliveryFetches": 4,
+   "finishSourceFetches": 4
+  }
+ ],
+ "checks": {
+  "bothPlayed": true,
+  "plainHasNoFinishAttr": true,
+  "bothSidesFinished": true,
+  "deliveryOnlyWithFlag": true,
+  "zeroErrors": true
+ },
+ "status": "PASS"
+}

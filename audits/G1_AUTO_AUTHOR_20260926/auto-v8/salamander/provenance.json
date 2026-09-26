@@ -1,0 +1,144 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "salamander",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "9a9701c7b127da311b031082f29c66b8c5b01cd94d3fae4f154275a95d5f6235",
+ "subjectSourceSha256": "b3902910bd9e24b10c023ef2be92ee6e6c236facff62caa2f6af77bb73269cc5",
+ "identity": {
+  "name": "Salamander",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Salamander\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2107353377\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "seed": 2107353377,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "rat",
+  "authoringSha256": "033b37d14089e19e2038c6bef89967d721bf07634a5e4039e47501a554f1955b",
+  "masterSha256": "41f8ed50d1e195f7cbd2096ac228dc48df5f9da6b1a95537d67ab3427e3c4701"
+ },
+ "habitat": {
+  "profileId": "salamander",
+  "media": [
+   "water",
+   "ground"
+  ],
+  "profileSha256": "4e32272af8ac420f81285b7ddc69a584cd5a6c654fd16395a8edf09c07e37229",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group salamander (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0205,
+     "class": "front",
+     "attach": {
+      "x": 357,
+      "y": 199.5,
+      "relX": 1,
+      "relY": 0.28
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1819,
+     "class": "rear",
+     "attach": {
+      "x": 127.5,
+      "y": 229.5,
+      "relX": 0.01,
+      "relY": 0.78
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0259,
+     "class": "limb-down",
+     "attach": {
+      "x": 318.4,
+      "y": 233.9,
+      "relX": 0.84,
+      "relY": 0.85
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0387,
+     "class": "limb-down",
+     "attach": {
+      "x": 157.5,
+      "y": 240,
+      "relX": 0.14,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0335,
+     "class": "limb-down",
+     "attach": {
+      "x": 195.5,
+      "y": 241,
+      "relX": 0.31,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0315,
+     "class": "limb-down",
+     "attach": {
+      "x": 279,
+      "y": 242,
+      "relX": 0.67,
+      "relY": 0.98
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 9
+  },
+  "reference": {
+   "subject": "rat",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "groundContacts": 9,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "foreNear+foreFar"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Nick visual review pass"
+ }
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "cf-u1-production-layout-checkpoint/v1",
+  "source": "852c4964c9cfca61aec1005e82fce05e6eb65706",
+  "status": "STOPPED",
+  "scope": "Local U1 revision, no hosted/full Glass/real-device/human approval claim.",
+  "results": {
+    "source": "852c4964c9cfca61aec1005e82fce05e6eb65706",
+    "rootMainAbsent": true,
+    "checks": [
+      {
+        "name": "install",
+        "command": [
+          "npm",
+          "ci",
+          "--prefer-offline",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "startedAt": "2026-09-06T15:09:06.070964+00:00",
+        "endedAt": "2026-09-06T15:09:08.228086+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "startedAt": "2026-09-06T15:09:08.228754+00:00",
+        "endedAt": "2026-09-06T15:09:11.354966+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "artunused",
+        "command": [
+          "npm",
+          "run",
+          "artunused"
+        ],
+        "startedAt": "2026-09-06T15:09:11.355590+00:00",
+        "endedAt": "2026-09-06T15:09:13.050177+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "vitest",
+        "command": [
+          "npx",
+          "vitest",
+          "run"
+        ],
+        "startedAt": "2026-09-06T15:09:13.050609+00:00",
+        "endedAt": "2026-09-06T15:09:57.228035+00:00",
+        "exitCode": 1
+      }
+    ]
+  },
+  "slice": null,
+  "glass": [],
+  "review": null,
+  "files": [
+    {
+      "file": "install.log.gz",
+      "bytes": 178,
+      "sha256": "55d839bb353a982076ae477da0687bb5e410e0336640a4a8e1e8cfe33942ba3c",
+      "originalBytes": 332,
+      "originalSha256": "aea3f9b482395ce10c898acd90c5768431e4c804c6f0c01c1df9cdcd58dc43de"
+    },
+    {
+      "file": "typecheck.log.gz",
+      "bytes": 99,
+      "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8",
+      "originalBytes": 134,
+      "originalSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "file": "artunused.log.gz",
+      "bytes": 70,
+      "sha256": "876709bbe6c507f5d7e821ad1dfbda92aa8c5cced4bfc03ea9924afec72a21c2",
+      "originalBytes": 58,
+      "originalSha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "file": "vitest.log.gz",
+      "bytes": 2797,
+      "sha256": "a6e95d034fd6af19e5d0ff71c5bddb94346eb6bdb44fe711842499835fe6072b",
+      "originalBytes": 7630,
+      "originalSha256": "f455ee4a3e079d4f40ca55a3384d13f0064ed39fae1137a0ba25fce690587338"
+    },
+    {
+      "file": "results.json.gz",
+      "bytes": 340,
+      "sha256": "a35eaf42fe132408c335f4bc09a07fbeb0ba9a084631d7a2ff0a943d8f4cd38b",
+      "originalBytes": 1128,
+      "originalSha256": "687e5bf17d6f81331c9140051c167e1bec9683b2b15564674de1ac733139b53e"
+    }
+  ]
+}

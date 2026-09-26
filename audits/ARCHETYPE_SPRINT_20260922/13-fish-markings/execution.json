@@ -1,0 +1,13 @@
+{
+  "id": "archetype-sprint-13-fish-markings-01",
+  "stages": [
+    {
+      "name": "format-and-conservation",
+      "command": "node audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/finish-masks.mjs",
+      "exitCode": 0,
+      "report": "conservation.json",
+      "log": "conservation.log"
+    }
+  ],
+  "certificateOrFilmRepeated": false
+}

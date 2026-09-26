@@ -1,0 +1,1 @@
+Precommit whitespace inspection reports one trailing space in native-entry.mjs line52. These exact source bytes already produced the retained passing film and are preserved for source-hash identity; no semantic/lint/acceptance test is disabled. No unchanged film is repeated solely for formatting.

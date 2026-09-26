@@ -1,0 +1,22 @@
+{
+  "schema": "cf.signed-commit-attempts/v1",
+  "status": "WAITING_FOR_1PASSWORD_APPROVAL",
+  "attempts": [
+    {
+      "toolReceipt": "b841ca",
+      "exitCode": 128,
+      "error": "Could not sign message (signer): agent refused operation; fatal: failed to write commit object"
+    },
+    {
+      "toolReceipt": "dee0ca",
+      "exitCode": 128,
+      "error": "Could not sign message (signer): agent refused operation; fatal: failed to write commit object"
+    }
+  ],
+  "attemptedTitle": "Complete Chimpanzee source-fit and contact qualification",
+  "headRemains": "2398916ea8941af484dbbfb25591dd56e2b0bcb5",
+  "headSignature": "G",
+  "unsignedCommitCreated": false,
+  "rule": "PARALLEL_GIT_PROTOCOL.md Commit signing: retry at most once, then ask Nick to approve prompt until quit; retry once after approval.",
+  "next": "One approved signed retry; verify G before Tarantula. No helper/config changes."
+}

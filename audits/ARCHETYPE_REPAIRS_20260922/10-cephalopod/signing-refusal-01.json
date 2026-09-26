@@ -1,0 +1,9 @@
+{
+  "toolReceipt": "1eccc4",
+  "exitCode": 128,
+  "signer": "/usr/bin/ssh-keygen via explicit 1Password SSH agent in persistent terminal72509",
+  "error": "Couldn't sign message (signer): agent refused operation; Signing failed: agent refused operation; fatal: failed to write commit object",
+  "headUnchanged": "7a6f45980eeb5c1c400a55be188cd16a0f3faf63",
+  "interpretation": "Signing request refused. Cause unknown; this does not establish that 1Password is locked.",
+  "nextAction": "Nick explicitly requested continuation; preserve refusal and retry the already authorized signed commit."
+}

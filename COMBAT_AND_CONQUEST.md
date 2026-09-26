@@ -1,5 +1,62 @@
 # Celestial Frontier — Combat & Conquest
 
+[Animation library and shared deformation review](audits/ANIMATION_COMPLETION_20260916/README.md),
+matches code as of September 16, 2026: 169 family actions now have complete-clip limit,
+determinism and GSAP parity checks (40,729 synthetic samples). Eight additional physical
+motions bring the anatomy selector to32 rows, including actual hoof kicks, body strikes
+and fish tail sweeps. Explicit anatomical absence is shared by compiler and rig intake.
+All631 named fauna still have exact profiles:573 have candidate moves;58 require new body
+structures. A candidate is not a fitted or visually accepted species. Broad marine/crust/
+sessile labels no longer silently borrow fish/spider/radial bones.
+
+The shared skin solver retains its established fast projection and invokes a bounded
+active-set repair only for unresolved folds. No creature-specific motion attenuation or
+solver setting was added. Whole-library painted checks exposed fish cast/dodge/victory
+folds and the difference between pure and Float32-rendered geometry; failed controls are
+retained. Native films, per-action frames, source hashes and timing limitations are in the
+review folder. Some timings exceed the2ms goal; this is not universal or phone qualification.
+Originals, approved artwork, kits, combat results and seeded generation are unchanged.
+
+## Habitat-aware battle study — matches code as of 2026-09-16
+
+`battle-habitat.ts` compiles physical ground/air/water placement from authoritative creature
+habitat and explicit world capabilities. It distinguishes flightless and amphibious Earth
+species, avoids rarity/sapience realm labels, preserves liquid chemistry and refuses missing
+species/non-fauna declarations. Wild/guardian use the home world; duels alternate hosts with a
+seeded first round. Deep water requires a compatible interface. Whole painted bounds must fit
+without clipping or granting new creature capabilities. The fish/bird study uses actual rigs
+and two staged turn roles, but does not alter combat outcomes or wire the ordinary-game
+Chronicle yet. [Evidence and limitations](audits/HABITAT_BATTLE_20260916/README.md).
+
+## Canonical Explorer Chronicle repair — 2026-09-08
+
+A native fresh-Earth challenge exposed a pre-existing presentation failure: its durable result
+was verified, but audio cue projection rejected Frontier Resolve's missing creature theme and
+closed the Chronicle before it could appear. The audio projection now recognizes only the exact
+canonical player ability and explorer palette, deriving presentation metadata from its existing
+id/name/color. Original combat fields remain unchanged; malformed creature metadata still fails.
+The regression uses the actual V2 player-stat projection through a registered duel and Chronicle,
+with19 malformed ability/role/palette controls. Full native failure and caught-exception evidence
+is retained in `audits/AV_PLAYABLE_IMPLEMENTATION_20260907/`; current verification is in its README.
+
+## Native battle presentation — matches code as of 2026-09-07
+
+After exact durable, non-converging combat publication, Main starts the optional
+`combat-battle-scene.ts` stage inside the existing Combat Chronicle. It uses the registered
+settlement, cue plan, current generation and exact visible counterpart; no second combat or
+replay clock is created. The champion's owned fauna genome and the encounter's actual defender
+battle genome feed at most two existing thumbnail leases. A player champion uses its nameplate.
+
+The Chronicle's real damage/dodge/stun cues drive finite 200ms whole-portrait lunge/reaction
+translations. Combined critical/ability facts do not restart the same event. Effects Off and
+reduced motion retain static outcome copy; its visual caption is AT-excluded and the existing
+log remains the announcement owner. The owned style inherits theme/text preferences. Close,
+hide, replacement and disposal cancel motion and release art; Skip keeps the exact static result
+and portraits until Close. HP, transcript, rewards, audio and deterministic settlement retain
+their existing owners. No anatomical animation or biome locomotion is implemented by this stage.
+Native battle/human acceptance and U2 remain pending; the signed `837db4a` U2 attempt stopped in
+static test-source checking after 3,494 passing tests, before any browser stage.
+
 > **2026-08-29 current local Prime/Titan and Frontier-ending closure:** the encounter owner uses
 > the exact nine-Signature registry—Earth/`stone`, Fire/`flame`, Air/`sky`, Stellar/`star`,
 > Water/`ocean`, Electric/`mind`, Poison/`life`, Void and Prism. An unclaimed Elemental Titan can
@@ -63,8 +120,11 @@
 > **1–19 HP** appends event achievement `brink` inside that same CAS; 20 HP, creature injury and
 > non-damage outcomes do not. A successful conquest with the one accepted starter `st-conq`
 > Charter completes and removes that acceptance, pays **+25 Stardust** to both current and lifetime
-> totals, and increments honored Charters by one. The weekly `wk-conq` remains fail-closed because
-> its wall-week/slate/acceptance lifecycle is not yet owned by v2.
+> totals, and increments honored Charters by one. As of 2026-09-25, the same conquest CAS also
+> stages the accepted weekly `wk-conq` on its exact active-play snapshot: one new conquest pays
+> 30 Stardust and one honored Charter, once that cycle. Expired acceptances pay nothing. The
+> verified reload binds cycle, acceptance, progress, Stardust and honored count; stale/duplicate
+> receipts, malformed accepted progress and saturated counters cannot publish a partial payout.
 >
 > The authored one-time Guardian Gear/material reward table is still absent and remains explicitly
 > `unsupported-open`; no reward was invented. The exact legacy 40% conquest gate, worn-slot choice,
@@ -152,12 +212,89 @@ landed-Surface challenge flow match the local candidate as of 2026-08-29. Exact 
 `st-conq` joins, post-settlement accessible Combat Chronicle and its complete already-modelled
 registered combat/Guardian cue set are live in that settlement. Authored Guardian reward,
 post-construction conquest-
-affix coexistence, weekly conquest-Charter lifecycle, broader Guardian care/breeding/mission/Recovery
+affix coexistence, broader Guardian care/breeding/mission/Recovery
 and expanded party/tactics/retreat presentation remain unimplemented. The
 `size` arc CLOSED in v1.8.9 — see the 2026-07-31 addendum; all six readers now
 share one helper and the fingerprint held.
 
 ## 0. v2 combat decision and counterplay contract (bounded champion slice implemented)
+
+> **Decided next model (2026-09-25, `port/DECISIONS.md` §20; not yet implemented):** Guardian/Titan fights take a relay party of up to 3,
+> in Auto or Command. Ordinary conquest stays one fighter. Defeat becomes active-play Recovery, and Swap is never necessary. The
+> contract below describes the shipped single-champion slice until the §20 engine lands.
+>
+> **Implemented 2026-09-25 (matches code):**
+> - **Defeat is Recovery.** Every defeated companion, bred or wild, including a captured Guardian, gets the `set-recovery` injury: its
+>   wound is unchanged (`COMBAT_DEFEAT_WOUND_STEP_V1` = 0: a wound on the fallen alone would make Swap necessary), and it enters active-play Recovery for
+>   `COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1` (10 min placeholder). It is never removed. v1's permanent loss and one-time bred crawl-home
+>   are retired.
+> - **Save carriers.** The Recovery lives on the v2 ownership row and on the captured-Guardian overlay (the only assignment that
+>   overlay may add). The wound is mirrored into v4. A finished Recovery can be replaced by the next defeat; an unfinished one refuses.
+>   The persistence owner refuses a champion in Recovery.
+> - **The engine.** `runEncounterV1` (relay, stances, Breaks, Auto/Command) is built and parity-locked to `runDuel`. It is not yet
+>   wired to the card.
+> - **Auto Guardian parties are live (same date).**
+>   - **Card:** a stance for every fight's lead. Guardians and Titans get two more relay slots, each with its own stance, and the
+>     forecast shows "Your plan (Auto)" beside "Balanced alone".
+>   - **Settlement:** `planCombatPartySettlementV1` → one receipt. The decisive leg is the top-level plan, and a `party` block carries
+>     every other member.
+>   - **Carriers:** every fallen member enters Recovery on its carrier (Arc 5 ownership or the captured-Guardian overlay) in the same
+>     CAS. Every owned fighter must be on exactly one carrier and free at the committed clock, and the explorer binds wherever it
+>     fights.
+>   - **Chronicle:** it names every earlier fighter before the decisive leg.
+>   - **Still to come:** Codex's S4 balance numbers; see the Command block below for what landed after this.
+> - **Command: the open-encounter record (2026-09-25, `packages/persistence/src/combat-open-encounter.ts`; matches code).**
+>   - **Open** (`combat-open-encounter` receipt): the sealed plan — battle id, encounter digest, defender genome, every fighter's exact
+>     settlement champion + stance in relay order — is written to `player/combat.open-encounter` in its own deterministic F4 receipt.
+>     Nothing else changes (no Recovery, XP or counter). A fight that never reaches a Break is refused (`no-break`) and settles directly.
+>   - **Decide** (`combat-encounter-decision` receipt): one Hold/Swap/Withdraw appended per receipt, CAS on the revision AND on the
+>     decision count the player saw (`decision-count-stale`), and it must be an answer the pending Break offers.
+>   - **Settle:** the ordinary combat settlement consumes the record in its one CAS — the plan must be the sealed party (seal digest
+>     over battle id + encounter + defender + party + stances) with exactly the appended answers plus at most the final one, and the
+>     record closes (`open: null`; carriers are replaced, never deleted). Verification re-reads the closed record.
+>   - **No escape:** while a record is open, any other settlement (Auto included) refuses, the app refuses another fight, and Breed
+>     refuses a held parent before any draw (`open-encounter:parent-in-command-fight`). A corrupt/foreign/forged carrier reads as
+>     PROTECTED, never as "no fight". Withdraw is always offered.
+>   - **Withdraw** settles like a fight not won (a Break has no winner: a draw; after a fallen fighter, the defender's leg). Auto never
+>     withdraws. Rewards are identical to Auto for the same outcome (Command earns nothing extra).
+>   - **Reload:** `simulateCombatOpenEncounterV1(record)` re-runs `runEncounterV1(sealed, decisions)` and lands on the same Break.
+> - **Command on the card (same date; matches code).** Guardians/Titans get a **Play: Auto / Command** picker. A Command Challenge seals the
+>   fight (no Break → it settles at once). While a Break waits, the card replaces Challenge with the Break panel: a headline (who is
+>   down to what, the Guardian's health, who is ready) and one full-width button per offered answer — *Hold — X fights on*, *Swap —
+>   send in Y*, *Continue — send in Y* (after a fall), *Withdraw — leave the fight* — or *Settle the fight* when every answer is in.
+>   A non-final answer is appended (`decideArc6CommandEncounterV1`); the answer that finishes the fight rides the ordinary settlement
+>   (`runArc6CombatCardAction` → `commitCurrentArc6Combat(request, { decisions })`), so a finished fight settles in one receipt and
+>   plays the normal Chronicle. On another world the card says the Command fight is waiting there. Outcome test:
+>   `tests/a5-command-break-outcome.test.ts` (real selects + buttons, reboot, durable read-back, 3 Main mutants).
+> - **battle2 relay beats (same date).** Before the decisive leg the painted stage holds one captioned beat per earlier fighter
+>   (`battle2/swap-beats.ts`: "↻ X steps back — Guardian 62% · Y steps in", 1.1 s each, 0.7 s reduced motion), re-derived from the
+>   plan's party + decisions like the Chronicle prelude. The earlier fighters' rigs are not staged (caption only).
+> - **Friendly duels, v1.8.9 parity (same date; matches code).** A fauna Compendium detail you own shows **⚔ Friendly duel**: choose one of
+>   your companions of that species, paste a friend's `CFB-` code (v1's own decoder: normalised genome, no injuries or levels travel, a
+>   Champion code is exhibit-only), press Duel. One `friendly-duel` receipt: `stats.duels` +1; a counted win pays `duelwins` +1 and
+>   **+8 XP**; a loss/draw pays **2 XP**, or **3** when the challenger ended below 25% ("taken to the wire"). Each credit has its own
+>   **30 s window on the ACTIVE-PLAY clock** (v1 used 30 s of wall clock; the device clock never pays in v2), persisted in
+>   `player/combat.friendly-duels`. Nobody is wounded, nothing is lost; a companion in Recovery, away or held by an open Command fight
+>   cannot duel. Pure plan `packages/domain/combatcore/src/friendly-duel.ts`; ownership `@cf/domain-acquisition/friendly-duel-internal`;
+>   persistence `packages/persistence/src/friendly-duel.ts`; app `apps/game/src/friendly-duel.ts`. Outcome test
+>   `tests/a5-friendly-duel-outcome.test.ts` (real paste + press, durable XP + mirror, device-clock swing, 2 Main mutants). CFB *export*
+>   (sharing your own code) is not ported yet.
+> - **Guardian phase change (N1 §4.3 / S7; same date; matches code).** When a Guardian or Titan first falls to half health, a **phase
+>   Break** announces the change BEFORE it applies (Hold / Swap / Withdraw; Auto holds), then for the rest of the fight, across legs, it
+>   uses `ENCOUNTER_GUARDIAN_PHASE_V1` (current evaluation-only numbers in the S4 section below). The engine takes it as `defender.phase`
+>   (`encounterHasGuardianPhaseV1(kind)`); every caller derives it from the defender kind (planner, Chronicle prelude, card forecast,
+>   battle2 beats, the app probe) and the open-encounter record SEALS it (`defenderPhase`). **D17 (Nick 2026-09-25, code `832dc18b`):**
+>   the phase applies in EVERY Guardian/Titan fight, a lone Balanced Auto fighter included — the settlement planner, Main's card action
+>   and the card's single-fight forecast resolve phase fights through `runEncounterV1`; the verbatim v1 `runDuel` path is kept only for a
+>   defender without the phase, and v1 parity stays the engine's own phase-off test; the production solo win-rate band is measured separately (Codex's S4).
+> - **A4: the painted battle stage is the DEFAULT presentation (2026-09-26; matches code).** `battle2-gate.ts` (`BATTLE2_DEFAULT = true`,
+>   `battle2On`) is the one rule: every presented fight mounts the painted stage over the Chronicle; `?battle2=0` opts out to the
+>   Chronicle-only path; flip the constant to make it opt-in again. The stage is still a dynamic import reached only when a fight is
+>   presented (boot never loads it), the Chronicle stays the accessible owner of the outcome, a study failure leaves the Chronicle, and the
+>   stage never changes HP or rewards. A production release stays gated by the I5 certificate, not by this constant. Tests: `packages/domain/combatcore/test/encounter-phase.test.ts` (announced at
+>   half health before the change and identical up to it; the defender changes after — mutation control; Command pause + Swap + reload).
+>   - **The explorer fights Guardians in Auto only:** the settlement binds the explorer's exact health, which moves between Breaks, so a
+>     sealed explorer could strand the record (even Withdraw settles through that binding). `openArc6CommandEncounterV1` refuses it.
 
 The current landed-Surface card implements the minimum honest combat decision: select the explorer,
 one eligible ordinary owned-fauna champion or one live captured Guardian/Titan after reading the exact defender, abilities, deterministic
@@ -542,3 +679,29 @@ would have computed anyway.
 > The general shape is worth keeping: **a cache key derived from expensive values cannot short-circuit
 > the work that produces them.** If the key needs the stats, the stats must be hoisted to the caller
 > or the memo saves nothing on the hit path.
+
+## S4 production evaluation refusal — matches code as of 2026-09-26
+
+Candidate13 is REJECTED/not admitted. The one held-out attempt stopped on ENOSPC while
+writing Titan evidence, after observing normal planning8.69140625pp (<10) and solo
+Guardian−5.56640625pp (outside±5). It is incomplete, not a certificate; its corpus is consumed.
+Runtime encounter source was restored byte-for-byte to c17906b2: Press dealt/taken1.15/1.10;
+Guard dealt/taken/opener0.90/0.85/0.5; Evade dealt/dodge0.90/0.08; Guardian phase at half
+health dealt/taken1.2/0.9. Recovery stays600000 active ms and zero added defeat wound. `audits/S4_PRODUCTION_EPOCH_20260926/README.md` owns the current status,
+training-only selection, exact source/candidate authority and production-route controls.
+`s4-production.mjs` counts real settlement outcomes and checks decisive transcripts, phase
+dispatch, phase-off parity and exact fallen/swapped Recovery. It is a fixed two-world,
+region0 benchmark; it cannot certify the campaign, dossier UI, durable Main or economy.
+
+## §20 balance instrument — matches tooling 2026-09-25
+
+`port/v2/tools/s20-balance.mjs` measures exact committed encounter source without
+editing it. Its declared power cohorts, disjoint training/evaluation, exhaustive
+full-party plan search and selected-plan Command upper bound are documented in
+[audits/S20_BALANCE_20260925](audits/S20_BALANCE_20260925/README.md).
+Current results on Claude4093ebca miss the normal/Guardian/Titan planning targets;
+only2/17 isolated hook hypotheses meet the right/ wrong stance ordering. These probes
+are not yet the shipped dossier inventory or a campaign-wide readiness distribution.
+No gameplay constants changed. A reproduced forecast memo defect omits defender
+stats from its seed-based identity (region0/1 can incorrectly retain44% versus11%);
+Claude's card owner has the source-hashed reproduction in that packet.

@@ -1,0 +1,113 @@
+{
+  "schema": "cf-u1-local-checkpoint/v1",
+  "source": "b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322",
+  "status": "fail",
+  "qualification": "clean committed local noncertifying targeted diagnostic; no hosted authority",
+  "results": {
+    "static": {
+      "status": "pass",
+      "files": 315,
+      "passed": 3376,
+      "skipped": 1
+    },
+    "smallPhone": {
+      "id": "local-u1-b457a7a-20260906-small-phone",
+      "status": "fail",
+      "productFindings": 1,
+      "instrumentFailures": 0,
+      "diagnosis": "real Planetside/hint overlap of 22.5px on 320x568 phone; shared sheet/lane spacing belongs to U2; Charts native Settings phase not reached"
+    },
+    "largePhone": "not-run",
+    "slice": "not-run"
+  },
+  "verification": {
+    "candidateCommit": "b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322",
+    "branch": "openai/mac",
+    "fullStatus": "",
+    "terminalAndEdgeAuthorityErrors": [],
+    "originalAmbientUnchanged": true
+  },
+  "carriers": [
+    {
+      "source": "/private/tmp/cf-u1-hint-final-b457a7a-20260906/execution.json",
+      "file": "execution/execution.json.gz",
+      "kind": "terminal-execution",
+      "rawBytes": 3845,
+      "rawSha256": "ba565f92f2c5c79b14d751d34f57fa6844a32e51d8d79a1f17385c080752083f",
+      "gzipBytes": 903,
+      "gzipSha256": "aa0f22f0208350ea71729655695754733e445a70778d106fa0c3e459a6ee31ee"
+    },
+    {
+      "source": "/private/tmp/cf-u1-hint-final-b457a7a-20260906/signature.log",
+      "file": "execution/signature.log.gz",
+      "kind": "stage-log",
+      "rawBytes": 135,
+      "rawSha256": "f6da87af347cddf791a8771d5098e5c45e9c9ddf4aa8cd551fac5d7d5821a3e7",
+      "gzipBytes": 152,
+      "gzipSha256": "b6794ff735ae15cd8517333bd096c97c56efb78ee71307eb0af1aaf5246ceb22"
+    },
+    {
+      "source": "/private/tmp/cf-u1-hint-final-b457a7a-20260906/clone.log",
+      "file": "execution/clone.log.gz",
+      "kind": "stage-log",
+      "rawBytes": 75,
+      "rawSha256": "4e7c1a87bbca3786f58ce2c463d2b0976528a29f10fbf5eaa04f2e9dbed0a8d0",
+      "gzipBytes": 93,
+      "gzipSha256": "55ffec563c88e913b403f7382c9d99e0b66f306c68c5ffc696139ccd31f13c90"
+    },
+    {
+      "source": "/private/tmp/cf-u1-hint-final-b457a7a-20260906/root-install.log",
+      "file": "execution/root-install.log.gz",
+      "kind": "stage-log",
+      "rawBytes": 28,
+      "rawSha256": "43e32ef795d0f861067ab05016da5256e893f0e2ce0a5fd17ad19d8ebf1749ec",
+      "gzipBytes": 48,
+      "gzipSha256": "dcdad1b68f7c45c9cf81f7dc4b9d94cc651913492db1dd8bb429de2ae9d30d03"
+    },
+    {
+      "source": "/private/tmp/cf-u1-hint-final-b457a7a-20260906/v2-install.log",
+      "file": "execution/v2-install.log.gz",
+      "kind": "stage-log",
+      "rawBytes": 332,
+      "rawSha256": "eec981112503bc416ba691bb8d68705f1f2f163c9b18c74491df037984e54ac2",
+      "gzipBytes": 178,
+      "gzipSha256": "3d19f4c754dd3ddc407d1b34a09a95afa41c5f3c0ec1355902c5047c51f7fafe"
+    },
+    {
+      "source": "/private/tmp/cf-u1-hint-final-b457a7a-20260906/static-develop.log",
+      "file": "execution/static-develop.log.gz",
+      "kind": "stage-log",
+      "rawBytes": 6930,
+      "rawSha256": "a666afcb86f6ca5efe5da9763a586c9f076c7edfa5e2bc2d0a35cef206b89da6",
+      "gzipBytes": 2703,
+      "gzipSha256": "31018c4cdb629f83ee7bd3b6a3ed1572dee8615971e903f8420d2c1de7aa8ba1"
+    },
+    {
+      "source": "/private/tmp/cf-u1-hint-final-b457a7a-20260906/small-phone.log",
+      "file": "execution/small-phone.log.gz",
+      "kind": "stage-log",
+      "rawBytes": 13557,
+      "rawSha256": "d0ca379bf87577b62cca804fa39d3c20b1873cf64a019d733c334ea361d098d7",
+      "gzipBytes": 3230,
+      "gzipSha256": "357bb24953c8424a3f34459577b3b353f091a76dd6293df4604bc1b093f39a0a"
+    },
+    {
+      "source": "/private/tmp/cf-u1-hint-final-b457a7a-20260906/candidate/port/v2/apps/game/smoke/glassmatrix-local-u1-b457a7a-20260906-small-phone.json",
+      "file": "glass/glassmatrix-local-u1-b457a7a-20260906-small-phone.json.gz",
+      "kind": "immutable-terminal-report",
+      "rawBytes": 47759,
+      "rawSha256": "06d41299d6ddb199a414743be5b9b5171cedb01faa5ef462d5bb26656b6ba3e3",
+      "gzipBytes": 5729,
+      "gzipSha256": "4e13ea020fb5decb63fd3677cd2b543a03db09cd6d7ec4e05caddef9b78ecd5d"
+    },
+    {
+      "source": "/private/tmp/cf-u1-hint-final-b457a7a-20260906/candidate/port/v2/apps/game/smoke/glassmatrix-small-phone-diagnostic.json",
+      "file": "glass/glassmatrix-small-phone-diagnostic.json.gz",
+      "kind": "mutable-diagnostic-pointer-snapshot",
+      "rawBytes": 47759,
+      "rawSha256": "06d41299d6ddb199a414743be5b9b5171cedb01faa5ef462d5bb26656b6ba3e3",
+      "gzipBytes": 5729,
+      "gzipSha256": "4e13ea020fb5decb63fd3677cd2b543a03db09cd6d7ec4e05caddef9b78ecd5d"
+    }
+  ]
+}

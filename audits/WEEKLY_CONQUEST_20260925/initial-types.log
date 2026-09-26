@@ -1,0 +1,5 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+packages/persistence/test/combat-settlement.test.ts(950,64): error TS2339: Property 'plan' does not exist on type 'Readonly<{ readonly kind: "committed"; readonly durability: "committed"; readonly convergence: "none"; readonly transaction: CommittedCombatSettlementV1; readonly verification: Readonly<...>; }>'.

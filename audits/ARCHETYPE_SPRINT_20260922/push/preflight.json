@@ -1,0 +1,62 @@
+{
+  "recordedAt": "2026-09-22T12:35:22.601Z",
+  "host": "macOS",
+  "lane": "openai/mac",
+  "upstream": "origin/openai/mac",
+  "origin": "git@github.com:TheDakk/Celestial-Frontier.git",
+  "ssh": {
+    "account": "TheDakk",
+    "authenticated": true,
+    "exitCode": 1,
+    "knownHostFingerprintsMatched": true,
+    "officialSource": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints"
+  },
+  "repositoryRead": {
+    "exitCode": 0,
+    "remoteDefaultHead": "c1791e210158de864fdd475323c3091d9ecbae58",
+    "remoteBranchHead": "f25098fa4202c86cd6db8b6a5ded47c9faf5dc69",
+    "defaultBranch": "develop",
+    "visibility": "public"
+  },
+  "budget": {
+    "mode": "UNFROZEN",
+    "privateFallbackCap": 3000,
+    "hostedAttemptAuthorized": false,
+    "normalPushAuthorized": true,
+    "expectedWorkflowJobsForNormalPush": 0
+  },
+  "workflows": [
+    {
+      "path": ".github/workflows/branch-flow-guard.yml",
+      "gitBlobSha": "ee05d90a402831cfda829d5d6a373050dfa5d538",
+      "remoteBlobMatches": true,
+      "trigger": "workflow_dispatch"
+    },
+    {
+      "path": ".github/workflows/dev-preview-package.yml",
+      "gitBlobSha": "7cf9203f4fe2115e9ced57249aa9a2a651e89acc",
+      "remoteBlobMatches": true,
+      "trigger": "workflow_dispatch"
+    },
+    {
+      "path": ".github/workflows/publish-branch-sites.yml",
+      "gitBlobSha": "c6560e64a4ee48089b9fcd5b325718dd0aa30171",
+      "remoteBlobMatches": true,
+      "trigger": "workflow_dispatch"
+    },
+    {
+      "path": ".github/workflows/sync-agent-branches.yml",
+      "gitBlobSha": "192e9cd8128c11a07a2acc2e59d9a611c806bcb0",
+      "remoteBlobMatches": true,
+      "trigger": "workflow_dispatch"
+    },
+    {
+      "path": ".github/workflows/test.yml",
+      "gitBlobSha": "2bf56956cafaa8abf876d17d465328c2d6837b0a",
+      "remoteBlobMatches": true,
+      "trigger": "pull_request:labeled"
+    }
+  ],
+  "fetchPerformed": false,
+  "pushPerformed": false
+}

@@ -1,0 +1,27 @@
+✔ POSIX and Windows writers are relative, relocatable and refuse escapes (0.480125ms)
+✔ normalization precedes hashing without mutating an old record (7.18025ms)
+✖ source symlink into another repository refuses (0.69375ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 146.535917
+
+✖ failing tests:
+
+test at port/v2/tools/creature-animation/portable-record-writer.test.mjs:5:1
+✖ source symlink into another repository refuses (0.69375ms)
+  Error: Record source: outside repository
+      at portableRecordSource (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/portable-record-writer.mjs:12:107)
+      at draft (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/portable-record-writer.mjs:17:2)
+      at sealPortableFamilyRecord (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/portable-record-writer.mjs:20:87)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/portable-record-writer.test.mjs:5:258)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

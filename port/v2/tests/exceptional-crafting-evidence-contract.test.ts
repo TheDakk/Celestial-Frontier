@@ -271,8 +271,23 @@ async function replayRenderedReleaseControls(source: string) {
         return { copy, result: dom.window.eval(expression) as ReleaseReplayAssessment };
       } finally { shipyard.innerHTML = original; }
     });
+    const launcherClaims = [
+      'FAMILIAR CONTROLS ON EVERY SCREEN: Phones keep five icon-only scene buttons above four compact utility icons',
+      'ONE GLASS LANGUAGE: Rounded name, health, objective and navigation controls carry the production layout forward',
+      'UTILITIES STAY TOGETHER: Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge',
+      'PRIME KEEPS YOUR PROGRESS: Prime Codex retains its Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill',
+      'Spacing inside the side navigation belongs to its controls and leaves the active panel open',
+    ].map((copy) => {
+      const item = [...panel.querySelectorAll('li')].find((row) => row.textContent?.includes(copy));
+      if (!item) throw new Error(`Release replay launcher clause missing: ${copy}`);
+      const prior = item.innerHTML;
+      try {
+        item.textContent = item.textContent!.replace(copy, 'Required launcher outcome removed');
+        return { copy, result: dom.window.eval(expression) as ReleaseReplayAssessment };
+      } finally { item.innerHTML = prior; }
+    });
     const final = dom.window.eval(expression) as ReleaseReplayAssessment;
-    return { result, after, reachClaims, final };
+    return { result, after, reachClaims, launcherClaims, final };
   } finally { dom.window.close(); }
 }
 
@@ -327,13 +342,17 @@ function exceptionalFixture(
 
 describe('Pureforged browser-evidence truth', () => {
   it('replays every current rendered release control and preserves the Research reach boundary', async () => {
-    const { result, after, reachClaims, final } = await replayRenderedReleaseControls(glassSource);
+    const { result, after, reachClaims, launcherClaims, final } = await replayRenderedReleaseControls(glassSource);
     expect(result.error).toBeNull();
     expect(result.baseline.ok).toBe(true);
-    expect(result.ok).toBe(true);
+    expect(result.ok, JSON.stringify(result)).toBe(true);
     expect(result.restored).toBe(true);
     expect(after.ok).toBe(true);
     expect(final.ok).toBe(true);
+    expect(launcherClaims).toHaveLength(5);
+    for (const row of launcherClaims) {
+      expect(row.result, row.copy).toMatchObject({ ok: false, honest: true, overclaim: false, bulletCount: 120 });
+    }
     expect(result.truthfulFeatureClaims).toHaveLength(11);
     expect(result.truthfulFeatureClaims.every((row) => row.result.ok && row.result.honest
       && !row.result.overclaim)).toBe(true);

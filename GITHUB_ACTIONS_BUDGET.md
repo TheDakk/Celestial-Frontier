@@ -1,8 +1,71 @@
 # GitHub Actions Budget Protocol
 
+**Current directed integration — 2026-09-09 (Codex):** Nick requests the accumulated openai/mac
+work integrated into develop. Signed repair e4e8c331e77a53c3b71476d918811e1af7c458ee passed its
+clean local develop profile (349 files,4,121 tests/1 skip, all3 TypeScript/art/override/spec).
+The following documentation/evidence checkpoint needs its own exact-head rehearsal before the
+normal branch push and unlabeled draft PR. Those unchanged workflow triggers start no Actions.
+Fresh visibility is PUBLIC; mode UNFROZEN/private fallback3,000 stays unchanged. This integration
+request grants no exact owner-label attempt: Nick alone applies actions-budget-approved for the
+reviewed exact PR/head/base, maximum122 runner-minutes (2+120), one attempt/no retry. No hosted run,
+Ready transition, merge, release or deployment has occurred. ROADMAP and the integration packet's
+STATUS.md own the current source/handoff; older dated states below retain their original scope.
+
+**Latest synchronization record — 2026-09-05 (Codex):** Nick reports PR #40 merged as
+`9ea01041dcdc711190bbf909ea8bb743cd993734` after PRs #36/#38/#39. He explicitly authorizes a real
+merge of that develop into clean `openai/mac`, the browser-free develop profile, the existing
+81-control policy selftest and a normal `openai/mac` branch push. This adds no hosted attempt,
+label, PR or release authority; a branch push triggers no workflow. All workflow and policy-code
+bytes are inherited from develop. Both sides' earlier records below remain intact and describe
+their original checkpoints; current mode, caps, owner-label lanes and no-retry policy are unchanged.
+
 **Current mode: `UNFROZEN`**
 
-**Current state (2026-09-05 UTC): PR #39 (`anthropic/review-batches-1-3-20260905` → `develop`)
+**Current state (2026-09-05 UTC, final): PR #41 merged as `develop`
+`c1791e210158de864fdd475323c3091d9ecbae58` (Nick: "merge PR #41"; Claude merged exact head `05c1d7f` at 16:55:06 UTC;
+the merge triggered no run — the workflow fires only on a PR label). No hosted authority remains; nothing here
+authorizes a `main` merge, release or deployment.**
+
+**Previous state (2026-09-05 UTC, latest): PR #41 (`openai/review-batch4-gameplay-20260905` → `develop`,
+Codex Batch 4 gameplay) attempt 2 on head `05c1d7fc7049a7b9813d2be1be020dc0d552b74f` (base
+`9ea01041dcdc711190bbf909ea8bb743cd993734`), Nick-authorized as "one agent-lane attempt … do not merge",
+**PASSED in 8m10s**; the label was removed; the PR is open, terminal-green and mergeable; **no merge yet
+and no hosted authority remains.** Run `33977956355` attempt 1, authorization job `101337886311` (4s), battery
+job `101337900972`, lane `agent`: policy selftest, v2 develop profile (301 files / 3,100 passed / 1 skipped),
+both phone Glass canaries and the Compendium instrument selftests green; legacy gates, root layout, changed-art
+control, Edge installs, Compendium, Slice, Glass matrix, Recovery and preview skipped by the lane guards.
+Measured agent-lane duration for this v2-app-only PR: **8m10s** (attempt 1 red was 3m29s at the develop profile).
+The head differs from red head `67f5fcf` only by explicit per-test timeout headroom in three unchanged-assertion
+test files plus audit records. Merging PR #41 needs Nick's separate say-so (standing merge authority applies to
+this exact green head).
+
+**Previous state (2026-09-05 UTC, later): PR #41 (`openai/review-batch4-gameplay-20260905` → `develop`,
+Codex Batch 4 gameplay, head `67f5fcffc89aea1edea5f510cfdc9452c7e775bd`, product head `2881cda`) consumed one
+Nick-authorized agent-lane attempt ("Do all those steps for me") and went **RED in 3m29s**; the label was removed;
+no merge; no hosted authority remains.** Run `33976307813` attempt 1, authorization job `101333500544` (pass),
+battery job `101333510983` (fail at step "v2 base-profile static gates"): vitest **1 failed / 3,099 passed /
+1 skipped** — `tests/glass-targeted-verifier.test.ts` "keeps the new CLI separate…" exceeded its own **15,000 ms**
+per-test cap (three `spawnSync` launches of `glassmatrix.mjs`). That file is **unchanged by the PR** (last touched
+`e0acfab`, Batch 1–3) and took 13,372 ms in PR #40's green run vs 16,693 ms here; every heavy file ran ~15–25 %
+slower on this run (evidence-chain-tools 30.3→35.7 s, arc4-acquisition-planner 19.7→22.8 s,
+training-restore 15.3→17.6 s, arc4-recovery-tool 13.4→17.4 s) because the suite grew 274→301 files. Instrument
+timing, not product. Per protocol no retry was run. Next attempt needs (a) a bounded test-only correction on the
+review branch widening the marginal caps (glass-targeted-verifier 15 s; evidence-chain-tools 15/20 s;
+arc4-acquisition-planner 20 s) or cheapening the spawns, and (b) Nick's fresh exact authorization.
+
+**Previous state (2026-09-05 UTC, later): PR #40 (`anthropic/mac` → `develop`, v2 starts fresh /
+save-import door removed) consumed one Nick-authorized agent-lane attempt ("Go ahead and apply
+actions-budget-approved"), passed in **6m29s** and merged as
+`9ea01041dcdc711190bbf909ea8bb743cd993734`; the approval label was removed; no hosted authority
+remains.** Run `33944372214` attempt 1, authorization job `101247689950`, battery job
+`101247702939`, head `88bd00168f15b9cf88f2d07d7f1d32ed9949de20` → base
+`1d719c63fbcdb6d0e6ab98a96b16e487aafe1239`, lane `agent`. The head edited v2 app/tests/tools only
+(no workflow, root tool or legacy input), so this is the first measured **v2-app-only agent-lane
+attempt: 6m29s** (the earlier estimate of 4–5 minutes was not met; the run re-sealed Glass phone
+canaries against the 102-control ledger). Every future attempt still needs its own exact
+authorization; nothing here authorizes a `main` merge, release or deployment.
+
+**Previous state (2026-09-05 UTC): PR #39 (`anthropic/review-batches-1-3-20260905` → `develop`)
 consumed one Nick-authorized agent-lane attempt, passed in 6m28s and merged as
 `1d719c63fbcdb6d0e6ab98a96b16e487aafe1239`; the approval label was removed; no hosted authority
 remains.** Run `33940061406` attempt 1, battery job `101235592867`, head `1219648…`, lane `agent`:

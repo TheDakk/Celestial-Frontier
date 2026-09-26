@@ -1,0 +1,45 @@
+{
+  "startedAt": "2026-09-09T17:03:50.098649+00:00",
+  "status": "PASS",
+  "sources": [
+    {
+      "path": "tools/local-image-generation/frozen-preview-client.mjs",
+      "sha256": "8959f0e1b070093216cb157a117db5731069ca81c317ca390ab6e8737fc00f83"
+    },
+    {
+      "path": "tools/local-image-generation/frozen-preview-client.test.mjs",
+      "sha256": "1ca2cce9213e27c536e2d0af190b3ee3918950dd256a06afcf66fa3d76f16090"
+    },
+    {
+      "path": "tools/local-image-generation/game-preview-server.mjs",
+      "sha256": "d2b080becd2d06f2f5a31e6c9e64c2833cd305a62d1cdcc23effc1535e4c473c"
+    },
+    {
+      "path": "tools/local-image-generation/game-preview-server.test.mjs",
+      "sha256": "b747f648525648a408417954ca3dc71d3dc0f8e582bb1994ab719a8ecf40023b"
+    },
+    {
+      "path": "tools/local-image-generation/run-game-integration.mjs",
+      "sha256": "9bda7da444c1c21ad547b499e17ffc925a32060efeac630413736fb3ab51e198"
+    },
+    {
+      "path": "port/v2/node_modules/vite/dist/client/client.mjs",
+      "sha256": "81046c87b1a73014203be2d7f643ee786b8264384952648ebf2ae418008be5d4"
+    }
+  ],
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "frozen-preview-transport-controls-01",
+    "--",
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "tools/local-image-generation/frozen-preview-client.test.mjs",
+    "tools/local-image-generation/game-preview-server.test.mjs"
+  ],
+  "exitCode": 0,
+  "sourcesUnchanged": true,
+  "finishedAt": "2026-09-09T17:03:51.006237+00:00"
+}

@@ -1,0 +1,62 @@
+{
+  "scope": "proposed transformed bundle; not unmodified HEAD certification",
+  "sourceHead": "09537c6c390eac15568669f04414707be4f271ad",
+  "helperSha256": "b109a303494b6c5d98c58403a06aa5bcfdd89ad9b0190ef737c2a0e2280cb3f8",
+  "testsSha256": "dda61735838a345dac278f096003a1436ea78193fa2b3307aea7ce37fc11a687",
+  "runs": [
+    {
+      "runId": "native-ibex-01",
+      "reportSha256": "a0750b450ca14e38d8118045cc5d6e26a8d032e8e91fd168d7c0ce899841ab2d",
+      "filmSha256": "8c4a90b04df632c5151e60fa22ee1f95d2642529d04da45a891e51bce1c78a46",
+      "frames": 931,
+      "encoded": {
+        "frames": 935,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 15.610208,
+        "minimumFrames": 886
+      },
+      "cpuP95Ms": 5.5,
+      "frameDeltaP95Ms": 16.799999999999272,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "timeline": {
+        "schema": "cf.battle-capture-timeline/v1",
+        "plannedDurationMs": 15532.666666666666,
+        "totalScriptMs": 15532.666666666666,
+        "firstMs": 0,
+        "lastMs": 15532.7,
+        "frames": 931
+      }
+    },
+    {
+      "runId": "native-cougar-03",
+      "reportSha256": "00d33180c629a6c5aaef9fd80cdd07d63ce4c732eec02f37b8f9107b6808bff6",
+      "filmSha256": "2be51e3af1ca0063cf3af553403f4cf839a1b5d3c29e8da46b26a7d21ddc915b",
+      "frames": 931,
+      "encoded": {
+        "frames": 935,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 15.611769,
+        "minimumFrames": 886
+      },
+      "cpuP95Ms": 6.600000023841858,
+      "frameDeltaP95Ms": 16.799999999999272,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "timeline": {
+        "schema": "cf.battle-capture-timeline/v1",
+        "plannedDurationMs": 15532.666666666666,
+        "totalScriptMs": 15532.666666666666,
+        "firstMs": 0,
+        "lastMs": 15532.7,
+        "frames": 931
+      }
+    }
+  ]
+}

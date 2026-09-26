@@ -1,0 +1,54 @@
+{
+  "schema": "cf.continuous-skin-cut-control/v1",
+  "status": "PASS",
+  "rule": "Physical paint graph joins all axial/upper-leg source boundaries; bone ancestry alone is the failing control. Distinct limbs and distal-body crossings remain independent.",
+  "sourcePixels": "unchanged; same atlas hashes and source interpolation",
+  "measurementSha256": "73d186930702e9cea92c39502cc0df28858bdf3bb792b12e7680e12ce64d2b30",
+  "rows": [
+    {
+      "id": "civet",
+      "bindingByteIdentical": true,
+      "bindingSha256": "475b162b6698292c1362ef11d45067b40abafbe38a5ba5790201fb3d6677db6d",
+      "before": {
+        "bindingPath": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-07/civet.binding.json",
+        "failedPoses": 9,
+        "maxGapPx": 79.3124375867287
+      },
+      "after": {
+        "poses": 10,
+        "failedPoses": 0,
+        "maxGapPx": 0.000125349874702432
+      }
+    },
+    {
+      "id": "fox",
+      "bindingByteIdentical": true,
+      "bindingSha256": "c24ed03fb15ae287df4772ddb34bf644a3de2d2c6aa9b342152f9f73b400c431",
+      "before": {
+        "bindingPath": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-07/fox.binding.json",
+        "failedPoses": 9,
+        "maxGapPx": 88.00959765313496
+      },
+      "after": {
+        "poses": 10,
+        "failedPoses": 0,
+        "maxGapPx": 0.00009395937422669393
+      }
+    },
+    {
+      "id": "procedural",
+      "bindingByteIdentical": true,
+      "bindingSha256": "e993db97f5eed31e88921106a5bc79a51ec3804507ecba0950f73e58eb52cf4a",
+      "before": {
+        "bindingPath": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-07/procedural.binding.json",
+        "failedPoses": 7,
+        "maxGapPx": 0.937759217503728
+      },
+      "after": {
+        "poses": 10,
+        "failedPoses": 0,
+        "maxGapPx": 0.00006511280385039319
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/motion/repeated-anatomy.test.ts(47,28): error TS2379: Argument of type '{ kind: 'body-card'; projectionSigns?: Readonly<Record<string, number>>; identity: ResolvedAnatomyRecord['identity']; recipeHash: string | null; template: { readonly id: MotionTemplate['id']; readonly version: number; readonly clipSetId: string; }; ... 13 more ...; anatomy: undefined; }' is not assignable to parameter of type 'BodyCard' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'anatomy' are incompatible.
+    Type 'undefined' is not assignable to type 'AnatomyPresence'.

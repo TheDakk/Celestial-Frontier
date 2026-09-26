@@ -1,0 +1,19 @@
+{
+ "id": "reef-shark",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "bodyLengthPx": 764.8,
+ "landmarkMedian": 0.049,
+ "landmarkMax": 0.1345,
+ "worst": [
+  "pectoralNear 0.134",
+  "head 0.086",
+  "spine1 0.077"
+ ],
+ "labelAgreement": 0.5335,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

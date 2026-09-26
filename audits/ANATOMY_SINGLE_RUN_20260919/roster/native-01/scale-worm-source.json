@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2547278780,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 2,
+    "body": 0,
+    "loco": 0,
+    "trait": 4,
+    "size": 2,
+    "diet": 1,
+    "head": 6,
+    "limbs": 2,
+    "skin": 3,
+    "tail": 2,
+    "pattern": 1,
+    "eyes": 0,
+    "behavior": 2,
+    "habitat": 7,
+    "detail": 9,
+    "accent": 10,
+    "temper": 8,
+    "sense": 2,
+    "repro": 4,
+    "life": 5,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Scale Worm"
+  },
+  "observation": null
+}

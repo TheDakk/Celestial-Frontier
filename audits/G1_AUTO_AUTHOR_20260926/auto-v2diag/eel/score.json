@@ -1,0 +1,23 @@
+{
+ "id": "eel",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part body-segment-7 (seg7) covers 8% paint (reference 7%)",
+  "missing-anatomy: part body-segment-8 (seg8) covers 5% paint (reference 5%)",
+  "missing-anatomy: part body-segment-9 (seg9) covers 0% paint (reference 2%)"
+ ],
+ "bodyLengthPx": 863.1,
+ "landmarkMedian": 0.0681,
+ "landmarkMax": 0.1852,
+ "worst": [
+  "seg4 0.185",
+  "seg5 0.170",
+  "seg6 0.146"
+ ],
+ "labelAgreement": 0.0376,
+ "missingJoints": [],
+ "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Family admission: proportion bound: head/body\n    at need (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/family-recor"
+}

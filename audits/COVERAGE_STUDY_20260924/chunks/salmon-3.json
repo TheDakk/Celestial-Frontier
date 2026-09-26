@@ -1,0 +1,372 @@
+{
+ "id": "salmon-3",
+ "standIn": "Salmon",
+ "template": "fish",
+ "accentGroups": [
+  "fins"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/salmon/card/master-512.png",
+  "joints": [
+   "pectoralNear",
+   "pectoralFar",
+   "dorsal",
+   "jaw",
+   "head",
+   "caudal",
+   "spine5",
+   "spine4",
+   "spine3",
+   "spine2",
+   "spine1",
+   "spine0",
+   "root"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Juvenile Shark",
+   "group": "predatory-shark",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "asymmetric tail with a long upper lobe",
+    "row of five gill slits behind the head",
+    "triangular dorsal fin and stiff pectoral wings"
+   ],
+   "note": "A juvenile has proportionally larger eyes and fins and a slimmer body than an adult."
+  },
+  {
+   "name": "Ray",
+   "group": "ray",
+   "posture": "swimming",
+   "aspect": 2,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "flattened disc of wing-like pectoral fins fused to the head",
+    "eyes on top with gill slits and mouth underneath",
+    "slender trailing tail"
+   ],
+   "note": "Normally drawn from above; from the side it reads as a thin wafer, so the wing shape must be shown."
+  },
+  {
+   "name": "Cave Fish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.28,
+   "eyes": "hidden",
+   "mustRead": [
+    "completely eyeless smooth head",
+    "pale pink translucent flesh with visible internals",
+    "ordinary streamlined fish body and fins"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Goby",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "fused pelvic fins forming a suction disc on the belly",
+    "two separate dorsal fins",
+    "big blunt head with eyes set high and close together"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Blenny",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4.5,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "blunt bulldog head with high-set bulging eyes",
+    "feathery cirri tufts above the eyes",
+    "single long continuous dorsal fin down the whole back"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Dolphin",
+   "group": "toothed-cetacean",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "curved sickle-shaped dorsal fin",
+    "short beak with an upcurved smiling jawline",
+    "crescent tail flukes held horizontally"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Flounder",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.6,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "both eyes crowded onto the same side of the head",
+    "flat oval body fringed with a continuous fin skirt",
+    "twisted asymmetric mouth"
+   ],
+   "note": "Shown flat-side-on rather than in true lateral profile; a real side view would be a knife edge."
+  },
+  {
+   "name": "Mudskipper",
+   "group": "mudskipper",
+   "posture": "crawling",
+   "aspect": 4.2,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "bulging periscope eyes on top of the head",
+    "arm-like pectoral fins propping the body up",
+    "two separate dorsal fins raised like sails"
+   ],
+   "note": "a fish that walks - must be shown out of water on mud, propped on its fins, not swimming"
+  },
+  {
+   "name": "Grouper",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.8,
+   "headFrac": 0.33,
+   "eyes": "normal",
+   "mustRead": [
+    "huge cavernous mouth with a jutting lower jaw",
+    "thick heavy blunt-headed body",
+    "rounded paddle tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Dugong",
+   "group": "sirenian",
+   "posture": "swimming",
+   "aspect": 4.5,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "dolphin-like fluked tail",
+    "downturned bristly disc snout",
+    "no dorsal fin at all"
+   ],
+   "note": "often confused with a manatee - dugong has a notched whale fluke, manatee a rounded paddle tail"
+  },
+  {
+   "name": "Bonefish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4.5,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "deeply forked tail",
+    "pointed conical snout overhanging the mouth",
+    "plain mirror-silver flank"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Barracuda",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 7,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "underslung jaw full of exposed dagger teeth",
+    "two widely separated dorsal fins",
+    "long straight pike-like body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Reef Fish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.9,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "deep laterally flattened disc body",
+    "bright banded colour",
+    "forked tail"
+   ],
+   "note": "generic name - drawn as a representative deep-bodied damselfish/anthias type reef perch"
+  },
+  {
+   "name": "Shark",
+   "group": "predatory-shark",
+   "posture": "swimming",
+   "aspect": 4.4,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "tall triangular first dorsal fin",
+    "asymmetric tail with a longer upper lobe",
+    "crescent mouth set under the snout with gill slits behind"
+   ],
+   "note": "generic name - drawn as a representative requiem shark"
+  },
+  {
+   "name": "Porpoise",
+   "group": "toothed-cetacean",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.18,
+   "eyes": "small",
+   "mustRead": [
+    "blunt rounded head with no beak",
+    "small low triangular dorsal fin",
+    "stocky short body"
+   ],
+   "note": "not a dolphin - a porpoise has no beak and a squat triangular fin, not a hooked one"
+  },
+  {
+   "name": "Cod",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.9,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "single barbel hanging from the chin",
+    "three separate dorsal fins",
+    "pale curved lateral line"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Mackerel",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 5,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "wavy dark tiger bars across a steel-blue back",
+    "row of small finlets before the forked tail",
+    "narrow keeled tail stalk"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Halibut",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.1,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "both eyes on the same upper side of the head",
+    "continuous fin fringe running right around the body",
+    "diamond-elongate flatfish outline"
+   ],
+   "note": "a flatfish is drawn flank-on (the flat face toward the viewer), not edge-on; both eyes sit on one side"
+  },
+  {
+   "name": "Reef Shark",
+   "group": "predatory-shark",
+   "posture": "swimming",
+   "aspect": 4.8,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "black or white marked fin tips",
+    "slim grey torpedo body",
+    "rounded short snout"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Hammerhead Shark",
+   "group": "predatory-shark",
+   "posture": "swimming",
+   "aspect": 4.3,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "flattened T-shaped hammer head with eyes at the outer tips",
+    "very tall sickle first dorsal fin",
+    "slender grey body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Manta Ray",
+   "group": "ray",
+   "posture": "swimming",
+   "aspect": 1.7,
+   "headFrac": 0.18,
+   "eyes": "small",
+   "mustRead": [
+    "huge triangular pointed wings wider than the body is long",
+    "two horn-like cephalic lobes flanking a wide terminal mouth",
+    "thin whip tail with no barb"
+   ],
+   "note": "a true side view is a flat line - draw from above/front so the wingspan reads; mouth is at the front of the head, not underneath as in stingrays"
+  },
+  {
+   "name": "Eagle Ray",
+   "group": "ray",
+   "posture": "swimming",
+   "aspect": 1.8,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "pointed duck-bill snout jutting ahead of the wings",
+    "long whip tail far longer than the body",
+    "sharply pointed wings, often white-spotted"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Clownfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "three white bands edged in black on orange",
+    "rounded paddle-shaped fins",
+    "blunt stubby snout"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Damselfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.8,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "deep oval compressed body",
+    "single continuous dorsal fin",
+    "forked tail"
+   ],
+   "note": ""
+  }
+ ]
+}

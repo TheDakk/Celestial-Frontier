@@ -1,0 +1,14 @@
+✔ identity/changed interiors conserve alpha, ownership components and label gradients; edge mutants fail (19.390417ms)
+✔ desktop class admitted, phone and setting/model-input mutants refused (0.392167ms)
+✔ actual engine skips organism inference and runs one protected finisher; all four sessions stay warm (357.899125ms)
+✔ same reuse oracle rejects actual engine with its session cache bypassed (328.359916ms)
+✔ precomputed accepted text loads only three sessions; ignoring the embedding is rejected (543.494042ms)
+✔ precomputed embedding refuses wrong prompt, revision, shape, bytes and nonfinite data (33.672125ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1364.953791

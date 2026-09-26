@@ -1,0 +1,19 @@
+{
+  "owner": "OpenAI/Codex on macOS",
+  "root": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "branch": "openai/mac",
+  "claudeHeadRead": "aad71ea4a983c3ff2fa3a27620e1873495d79f24",
+  "signingProgram": "file:/Users/nick/Projects/Celestial-Frontier/.git/config\t/Users/nick/.local/bin/git-ssh-sign-cf",
+  "signingPublicKey": "file:/Users/nick/Projects/Celestial-Frontier/.git/config\t/Users/nick/.ssh/cf_agents_signing.pub",
+  "origin": "https://github.com/TheDakk/Celestial-Frontier.git",
+  "throwawaySignatureStatus": "G",
+  "throwawayChangedBranch": false,
+  "initialShellFinding": "The requested unquoted --format=%G? was rejected by zsh globbing. Quoting the format completed the one-time check; no signing refusal occurred.",
+  "sourceHashes": {
+    "audits/OPERATING_MODEL_20260925/README.md": "ed7d3366b843da334ab4fb6e2cb7ef754927456def7bc2f8b2fe842bdfdcfc43",
+    "audits/MAILBOX/TO_CODEX.md": "33beb3641f16ecff59f4ee82b2366f7a59ce38d668e5775224717e2cfdb65a82",
+    "audits/MAILBOX/DECISIONS.md": "9492454db5dfad6597918f5fce5080a48a2aa87333bc2980f40f5b377c62acc0",
+    "audits/BATTLE2_LIBRARY_20260924/README.md": "25eb617f878b6e2182bbaf07af0be81300c1a394d66e9af6c41209d83f4b68de",
+    "port/v2/apps/game/src/battle2-wiring.ts": "c3213d633818bb2a96314985ee5c312bb5a6a0a49da326d4f0d578b63cf0b597"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "source": "ce8912864fabbe5624651e76c06b94f95b734f39",
+  "recordedAt": "2026-09-06T19:44:23.147Z",
+  "ownership": "OpenAI/Codex on macOS | openai/mac | /Users/nick/Projects/celestial-frontier-openai-mac | origin/openai/mac",
+  "trackedClean": true,
+  "rootMainAbsent": true,
+  "ambientDsStoreSha256": "95e30c9454a9707e734f6dfcde762897cab42d9b434ecce19851d0577182e7ac",
+  "sliceSource": {
+    "commit": "ce8912864fabbe5624651e76c06b94f95b734f39",
+    "branch": "openai/mac",
+    "state": "dirty-diagnostic",
+    "statusSha256": "51ae3af8b9e4fa2c686fff2fcd83b5394fdf9b4d19e13b52323f320f21e8dc68",
+    "workingTreeSha256": "9eaac515f4ba4770991c5685f95f0436d1539a336f3282dec9b57374e8a5a3b0"
+  },
+  "sliceSourceEnd": {
+    "commit": "ce8912864fabbe5624651e76c06b94f95b734f39",
+    "branch": "openai/mac",
+    "state": "dirty-diagnostic",
+    "statusSha256": "51ae3af8b9e4fa2c686fff2fcd83b5394fdf9b4d19e13b52323f320f21e8dc68",
+    "workingTreeSha256": "9eaac515f4ba4770991c5685f95f0436d1539a336f3282dec9b57374e8a5a3b0"
+  },
+  "sliceSourceChange": {
+    "detected": false,
+    "ending": null
+  },
+  "sliceReportSha256": "7ec172071735ad9fd89ed01c878b65ee345b2670dacd656c0e5870c89b8acfbb",
+  "sliceRawLogVerified": true,
+  "slicePngsVerified": 10,
+  "sliceFindings": [
+    {
+      "index": 0,
+      "scope": "left-rail-boundary-control-failed",
+      "message": "LEFT RAIL BOUNDARY CONTROL FAILED — removing only the rail boundary did not recreate dismissal: {\"prior\":\"\",\"before\":{\"geometry\":true,\"ownerId\":\"raillft\",\"upperId\":\"docksurvey\",\"lowerId\":\"railcodex\",\"gap\":8,\"overlapLeft\":18,\"overlapRight\":110.234375,\"ownerEdge\":\"left\",\"point\":{\"x\":64.1171875,\"y\":170},\"targetId\":\"raillft\",\"boundary\":false,\"panelOpen\":\"rec\",\"cardOpen\":false},\"receipt\":{\"targetId\":\"raillft\",\"tag\":\"DIV\",\"rootCanvas\":false,\"buttonId\":null,\"buttonTag\":null,\"closeOwner\":null,\"panelCloseOwner\":null,\"atlasTravelId\":null,\"atlasRowId\":null,\"atlasActionTag\":null,\"x\":64.1171875,\"y\":170,\"pointerType\":\"mouse\",\"trusted\":true},\"after\":\"rec\"}"
+    },
+    {
+      "index": 1,
+      "scope": "u1-rail-duplicates",
+      "message": "U1 RAIL DUPLICATES: desktop copies or boxed rail roots remain beside the compact launcher: [{\"id\":\"raillft\",\"exists\":true,\"parentId\":\"dock\",\"copyIds\":[\"railcodex\"],\"copiesHidden\":true,\"parentTag\":\"NAV\",\"display\":\"contents\",\"rectCount\":0,\"width\":0,\"height\":0,\"painted\":false},{\"id\":\"railrgt\",\"exists\":true,\"parentId\":\"\",\"copyIds\":[\"railatlas\",\"railshipyard\",\"railinventory\",\"railrecords\"],\"copiesHidden\":true,\"parentTag\":\"BODY\",\"display\":\"none\",\"rectCount\":0,\"width\":0,\"height\":0,\"painted\":false}]"
+    }
+  ],
+  "notRun": [
+    "Slice PASS named verifier (skipped after nonzero)",
+    "small-phone Glass",
+    "large-phone Glass",
+    "Compendium",
+    "full Glass",
+    "U2-U4",
+    "Phase 2",
+    "hosted actions"
+  ]
+}

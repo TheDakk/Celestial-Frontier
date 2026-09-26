@@ -1,0 +1,115 @@
+{
+  "kind": "serpent",
+  "identity": {
+    "speciesVisualKey": "synthetic:serpent",
+    "seed": 659716,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "serpent",
+    "version": 1
+  },
+  "family": "snake",
+  "geometry": {
+    "cutoutAssetHash": "eef7fd5fbbcd8763e4b09ffc3afce7dfa969e801d1094625326c3858f08afdde",
+    "width": 128,
+    "height": 128,
+    "groundLineY": 0.72,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6,
+      0.6
+    ],
+    "head": [
+      0.7,
+      0.55
+    ],
+    "jaw": [
+      0.76,
+      0.59
+    ],
+    "seg0": [
+      0.54,
+      0.62
+    ],
+    "seg1": [
+      0.48,
+      0.66
+    ],
+    "seg2": [
+      0.42,
+      0.7
+    ],
+    "seg3": [
+      0.36,
+      0.72
+    ],
+    "seg4": [
+      0.3,
+      0.7
+    ],
+    "seg5": [
+      0.24,
+      0.66
+    ],
+    "seg6": [
+      0.18,
+      0.62
+    ],
+    "seg7": [
+      0.12,
+      0.6
+    ],
+    "seg8": [
+      0.07,
+      0.63
+    ],
+    "seg9": [
+      0.03,
+      0.68
+    ]
+  },
+  "materials": {
+    "surface": "scaled",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "serpent-v1",
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.11180339887498944,
+      "jaw": 0.07211102550927978,
+      "seg0": 0.06324555320336754,
+      "seg1": 0.07211102550927985,
+      "seg2": 0.07211102550927974,
+      "seg3": 0.06324555320336758,
+      "seg4": 0.06324555320336758,
+      "seg5": 0.07211102550927974,
+      "seg6": 0.07211102550927981,
+      "seg7": 0.06324555320336758,
+      "seg8": 0.05830951894845301,
+      "seg9": 0.06403124237432853
+    },
+    "measures": {
+      "body": 0.5135172830587107,
+      "bone-min": 0.05830951894845301,
+      "bone-max": 0.11180339887498944,
+      "head/body": 0.2177208101138183
+    }
+  },
+  "recipeHash": "ca9a51b51313ea2991970a972d17bed0b6fcc3e10ce643862463d53208c977d5"
+}

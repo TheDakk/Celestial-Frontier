@@ -1,0 +1,48 @@
+{
+  "schema": "cf-civet-alpha-extraction/v1",
+  "authority": "Nick: Use ImageMagick for alpha extraction",
+  "at": "2026-09-08T22:06:07.687Z",
+  "source": {
+    "path": "civet-first-opaque.png",
+    "sha256": "86025b8d8c1e337e9795433f48251d6a91bd76fee69e8e13c564c7fedbb1377e"
+  },
+  "tool": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org",
+  "files": {
+    "civet-painted-v1.png": {
+      "bytes": 2224077,
+      "sha256": "f2d8bf0b9bafd1aecc6e95af48b5cf83c0a96facbbc3ae136dee31f52fc634bd",
+      "identity": "1536x1024 srgba 4.0 opaque=False"
+    },
+    "civet-painted-v1.webp": {
+      "bytes": 1520932,
+      "sha256": "d12f99a50fae83585a2faacbef5027d8d44aef5a40875a2d3c1aee05d949b33a",
+      "identity": "1536x1024 srgba 4.0 opaque=False"
+    },
+    "edge-review-dark.png": {
+      "bytes": 963276,
+      "sha256": "fb9cfffb70c72bd67d4038906089dc34de9e019f61fec2e07ab62a05a5eec92a",
+      "identity": "1536x1024 srgb  3.0 opaque=True"
+    },
+    "edge-review-light.png": {
+      "bytes": 950551,
+      "sha256": "595d7513acd948dc1af1e2e9283abd403f4c61e6955d14c239a8b323711d7a19",
+      "identity": "1536x1024 srgb  3.0 opaque=True"
+    },
+    "matte.png": {
+      "bytes": 21257,
+      "sha256": "8bcc5689943683c56e982aaf57e852da184392e17ad1fb085f0eff2927f7d3af",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    },
+    "solid-interior.png": {
+      "bytes": 6496,
+      "sha256": "78a278418d800b225639738c18a1e070c0152d0930367a41054ae8b669446db3",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    },
+    "warm-edge.png": {
+      "bytes": 33794,
+      "sha256": "49ecf467bdab351a8279d5534b5f54595acada506992944b40b31e37d456e523",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    }
+  },
+  "limits": "Heuristic matte extraction from opaque generated pixels; dark/light visual edge review required. No claim of original alpha recovery or identical antialias colors."
+}

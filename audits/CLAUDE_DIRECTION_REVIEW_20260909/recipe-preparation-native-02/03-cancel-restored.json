@@ -1,0 +1,732 @@
+{
+  "id": "03-cancel-restored",
+  "variant": "current",
+  "kind": "cancel",
+  "negative": false,
+  "status": "PASS",
+  "mode": "hold",
+  "workerRequests": 0,
+  "closing": true,
+  "recipeRequests": [
+    {
+      "caseId": "03-cancel-restored",
+      "index": 1,
+      "mode": "hold",
+      "status": null,
+      "finished": false,
+      "clientClosedBeforeCleanup": true,
+      "cleanupStarted": true,
+      "requestAbortedEvent": true
+    }
+  ],
+  "cleanupRequests": [],
+  "unexpectedRequests": [],
+  "observations": [
+    {
+      "label": "initial",
+      "atMs": 3080.626459,
+      "state": "ready",
+      "landing": null,
+      "error": null,
+      "hasPng": false,
+      "pngPrefix": false,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": null,
+      "events": [],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "Land",
+          "rect": {
+            "x": 90,
+            "y": 283.40625,
+            "width": 73.828125,
+            "height": 46
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": true,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 183.828125,
+            "y": 283.40625,
+            "width": 144.96875,
+            "height": 46
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · ETA estimating…",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · ETA estimating…",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth · riverbank\nLand\nCancel landing\n\nReady",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 1100,
+            "height": 158.90625
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Field journalGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.Land on Earth to prepare the preview roster.The full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": null
+    },
+    {
+      "label": "held-recipe",
+      "atMs": 3085.809625,
+      "state": "running",
+      "landing": {
+        "state": "queued",
+        "key": null,
+        "progress": 0,
+        "stageLabel": "Preparing landing",
+        "etaLabel": "ETA estimating…"
+      },
+      "error": null,
+      "hasPng": false,
+      "pngPrefix": false,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": null,
+      "events": [],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": true,
+          "text": "Land",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 622,
+            "y": 283.40625,
+            "width": 144.96875,
+            "height": 46
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Preparing landing · ETA estimating…",
+          "rect": {
+            "x": 90,
+            "y": 283.40625,
+            "width": 520,
+            "height": 42
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Preparing landing · ETA estimating…",
+          "rect": {
+            "x": 90,
+            "y": 283.40625,
+            "width": 520,
+            "height": 24
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth · riverbank\nLanding · Preparing landing · ETA estimating…\nCancel landing\n\nReady",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 1100,
+            "height": 158.90625
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Field journalGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.Land on Earth to prepare the preview roster.The full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": {
+        "caseId": "03-cancel-restored",
+        "index": 1,
+        "mode": "hold",
+        "status": null,
+        "finished": false,
+        "clientClosedBeforeCleanup": false,
+        "cleanupStarted": false
+      }
+    },
+    {
+      "label": "after-cancel",
+      "atMs": 3088.248709,
+      "state": "failed",
+      "landing": {
+        "state": "canceled",
+        "key": null,
+        "progress": 0,
+        "stageLabel": "Landing unavailable",
+        "etaLabel": ""
+      },
+      "error": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:56883/browser-proof.mjs:145:55)\n    at byId.onclick (http://127.0.0.1:56883/browser-proof.mjs:146:121)",
+      "hasPng": false,
+      "pngPrefix": false,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": {
+        "phase": "failed",
+        "canceled": true,
+        "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:56883/browser-proof.mjs:145:55)\n    at byId.onclick (http://127.0.0.1:56883/browser-proof.mjs:146:121)",
+        "atMs": 91.15999984741211
+      },
+      "events": [
+        {
+          "phase": "failed",
+          "canceled": true,
+          "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:56883/browser-proof.mjs:145:55)\n    at byId.onclick (http://127.0.0.1:56883/browser-proof.mjs:146:121)",
+          "atMs": 91.15999984741211
+        }
+      ],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "Land",
+          "rect": {
+            "x": 90,
+            "y": 283.40625,
+            "width": 73.828125,
+            "height": 46
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": true,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 183.828125,
+            "y": 283.40625,
+            "width": 144.96875,
+            "height": 46
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth · riverbank\nLand\nCancel landing\n\nsignal is aborted without reason",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 1100,
+            "height": 158.90625
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Field journalGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.Land on Earth to prepare the preview roster.The full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": {
+        "caseId": "03-cancel-restored",
+        "index": 1,
+        "mode": "hold",
+        "status": null,
+        "finished": false,
+        "clientClosedBeforeCleanup": false,
+        "cleanupStarted": false
+      }
+    },
+    {
+      "label": "after-cancel",
+      "atMs": 3140.915459,
+      "state": "failed",
+      "landing": {
+        "state": "canceled",
+        "key": null,
+        "progress": 0,
+        "stageLabel": "Landing unavailable",
+        "etaLabel": ""
+      },
+      "error": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:56883/browser-proof.mjs:145:55)\n    at byId.onclick (http://127.0.0.1:56883/browser-proof.mjs:146:121)",
+      "hasPng": false,
+      "pngPrefix": false,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": {
+        "phase": "failed",
+        "canceled": true,
+        "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:56883/browser-proof.mjs:145:55)\n    at byId.onclick (http://127.0.0.1:56883/browser-proof.mjs:146:121)",
+        "atMs": 91.15999984741211
+      },
+      "events": [
+        {
+          "phase": "failed",
+          "canceled": true,
+          "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:56883/browser-proof.mjs:145:55)\n    at byId.onclick (http://127.0.0.1:56883/browser-proof.mjs:146:121)",
+          "atMs": 91.15999984741211
+        }
+      ],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "Land",
+          "rect": {
+            "x": 90,
+            "y": 283.40625,
+            "width": 73.828125,
+            "height": 46
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": true,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 183.828125,
+            "y": 283.40625,
+            "width": 144.96875,
+            "height": 46
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth · riverbank\nLand\nCancel landing\n\nsignal is aborted without reason",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 1100,
+            "height": 158.90625
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Field journalGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.Land on Earth to prepare the preview roster.The full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": {
+        "caseId": "03-cancel-restored",
+        "index": 1,
+        "mode": "hold",
+        "status": null,
+        "finished": false,
+        "clientClosedBeforeCleanup": true,
+        "cleanupStarted": false,
+        "requestAbortedEvent": true
+      }
+    }
+  ],
+  "clicks": [
+    {
+      "id": "generate",
+      "geometry": {
+        "visible": true,
+        "disabled": false,
+        "x": 126.9140625,
+        "y": 306.40625,
+        "width": 1280,
+        "height": 1000,
+        "hit": "generate",
+        "count": 0
+      },
+      "delivered": [
+        {
+          "id": "generate",
+          "isTrusted": true
+        }
+      ]
+    },
+    {
+      "id": "cancel",
+      "geometry": {
+        "visible": true,
+        "disabled": false,
+        "x": 694.484375,
+        "y": 306.40625,
+        "width": 1280,
+        "height": 1000,
+        "hit": "cancel",
+        "count": 1
+      },
+      "delivered": [
+        {
+          "id": "cancel",
+          "isTrusted": true
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "03-cancel-restored-cancel-outcome.png",
+      "bytes": 45400,
+      "sha256": "5184db0247b950cb12fb159b73db2e30ca727210b072fb6874e6e5ad7aec342b"
+    }
+  ],
+  "cleanup": {
+    "targetClosed": true,
+    "heldResponsesRetired": true
+  },
+  "judgments": [
+    {
+      "outcome": "canceled",
+      "expected": {
+        "workers": 0,
+        "completions": 0
+      },
+      "expectReject": false,
+      "accepted": true,
+      "error": null
+    }
+  ]
+}

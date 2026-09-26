@@ -1,0 +1,38 @@
+✔ admits complete ordered synthetic counterpart only; no native inference claim (0.470875ms)
+✔ rejects absent/not-ready/inconsistent-phase/error status (0.174166ms)
+✔ rejects incomplete and mismatched totals (0.141375ms)
+✔ rejects a stale or substituted normalized manifest SHA (0.076666ms)
+✔ rejects missing, duplicated or reordered Blob carriers (0.134375ms)
+✔ rejects corrupt head/tail and wrong declared Blob length (0.118875ms)
+✔ rejects a changed file path even when byte samples match another carrier (0.058875ms)
+✖ read-only diagnostic transpilation retains exactly one production SHA import and no side-effect invocation (5.527917ms)
+(node:89688) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 104.96025
+
+✖ failing tests:
+
+test at tools/local-image-generation/run-mobile-model-delivery.test.mjs:18:1
+✖ read-only diagnostic transpilation retains exactly one production SHA import and no side-effect invocation (5.527917ms)
+  :57
+  class DeliveryError extends Error {
+    constructor(readonly code: string, message = code) { super(message); }
+                         ^^^^^^^^^^^^
+  }
+  
+  SyntaxError [ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX]: TypeScript parameter property is not supported in strip-only mode
+      at parseTypeScript (node:internal/modules/typescript:57:40)
+      at processTypeScriptCode (node:internal/modules/typescript:129:37)
+      at stripTypeScriptTypes (node:internal/modules/typescript:111:10)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/run-mobile-model-delivery.test.mjs:18:256)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX'
+  }

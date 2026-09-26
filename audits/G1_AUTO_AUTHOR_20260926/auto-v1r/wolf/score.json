@@ -1,0 +1,18 @@
+{
+ "id": "wolf",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 852.7,
+ "landmarkMedian": 0.0264,
+ "landmarkMax": 0.0757,
+ "worst": [
+  "tail1 0.076",
+  "hindFarKnee 0.071",
+  "foreNearAnkle 0.065"
+ ],
+ "labelAgreement": 0.5239,
+ "missingJoints": [],
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Family admission: proportion bound: bone-min\n    at need (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/family-record"
+}

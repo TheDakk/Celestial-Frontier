@@ -1,0 +1,86 @@
+[
+  {
+    "name": "racer",
+    "code": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "error": null
+  },
+  {
+    "name": "herring",
+    "code": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "error": null
+  },
+  {
+    "name": "eel",
+    "code": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "error": null
+  },
+  {
+    "name": "sparrow",
+    "code": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "error": null
+  },
+  {
+    "name": "sturgeon",
+    "code": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "error": null
+  },
+  {
+    "name": "otter",
+    "code": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "error": null
+  },
+  {
+    "name": "cougar",
+    "code": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "error": null
+  },
+  {
+    "name": "marmot",
+    "code": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "error": null
+  },
+  {
+    "name": "bear",
+    "code": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "error": null
+  },
+  {
+    "name": "salamander",
+    "code": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "error": null
+  },
+  {
+    "name": "rat",
+    "code": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "error": null
+  },
+  {
+    "name": "shark",
+    "code": 1,
+    "status": "FAIL",
+    "error": "Error: Error: habitat: Selected home arena cannot support both organisms; no habitat or biome substitution · left Reef Shark: aquatic (water) · right Reef Shark: aquatic (water)\n    at http://127.0.0.1:62656/bundle.js:35682:39\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/C25_ACTUAL_BRANCH_FILMS_20260925/native-actual-runner.mjs:51:148"
+  },
+  {
+    "name": "lizard",
+    "code": 0,
+    "status": "FAIL",
+    "error": "rig refusals in play: {\"left\":0,\"right\":70} {\"left\":null,\"right\":\"Contact: joint limit foreFarPaw faint@1559.999998999999: 96.00208445608911\"}"
+  },
+  {
+    "name": "ibex",
+    "code": 0,
+    "status": "DIAGNOSTIC_PASS",
+    "error": null
+  }
+]
