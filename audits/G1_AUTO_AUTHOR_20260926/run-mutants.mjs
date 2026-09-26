@@ -12,6 +12,7 @@ const { familyContract, familyContactChains } = await import(path.join(ROOT, 'po
 const args = process.argv.slice(2), tag = (args.find((a) => a.startsWith('--tag=')) ?? '').slice(6), only = args.filter((a) => !a.startsWith('--'));
 const ridgeArg = args.find((x) => x.startsWith('--ridge=')), ridgeFrac = ridgeArg ? Number(ridgeArg.slice(8)) : 0;
 const nudgeArg = args.find((x) => x.startsWith('--nudge=')), nudgeFrac = nudgeArg ? Number(nudgeArg.slice(8)) : 0;
+const useCounter = args.includes('--counter'), thinArg = args.find((x) => x.startsWith('--nudge-thin=')), nudgeThinFrac = thinArg ? Number(thinArg.slice(13)) : null;
 const terminalsOf = (f) => { try { return new Set(familyContactChains(familyContract(f)).map((c) => c.terminal).filter(Boolean)); } catch { return new Set(); } };
 const corpus = JSON.parse(fs.readFileSync(path.join(HERE, 'corpus.json'), 'utf8')).subjects;
 const subjects = [];
@@ -33,8 +34,8 @@ function limbMask(s) {
   for (let y = 0; y < s.h; y += 1) for (let x = 0; x < s.w; x += 1) { const i = y * s.w + x; if (s.prepared.mask[i] === 0) continue; const k = a.parts.findIndex((p) => inside(x + 0.5, y + 0.5, p.polygonPx)); const id = k < 0 ? a.remainderPart : a.parts[k].id; if (ids.includes(id)) { m[i] = 1; n++; } }
   return { m, n, ids };
 }
-const ev = (r) => ({ v: r.verdict, cost: r.evidence ? +(r.evidence.costs?.[0]?.cost ?? 0).toFixed(4) : null, dT: r.evidence?.detour?.target ?? null, dR: r.evidence?.detour?.ref ?? null, unclaimed: r.evidence?.unclaimedFrac ?? null, why: (r.reasons?.[0] ?? '').slice(0, 60) });
-const author = (s, target, family, mirrored) => autoAuthor({ topK: 1, nudgeFrac, chains: (() => { try { return familyContactChains(familyContract(family)); } catch { return null; } })(), target, mirrored, family, id: s.id, refs: subjects.filter((o) => o.id !== s.id).map(refOf), materials: { surface: 'x' }, habitat: null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(family) } : null });
+const ev = (r) => ({ inv: r.evidence?.inventory ? { assign: r.evidence.inventory.assign, tByClass: r.evidence.inventory.target.byClass, tApp: r.evidence.inventory.target.appendages, det: r.evidence.inventory.target.detached.length, ref: r.evidence.inventory.reference } : null, reasonsAll: r.reasons, v: r.verdict, cost: r.evidence ? +(r.evidence.costs?.[0]?.cost ?? 0).toFixed(4) : null, dT: r.evidence?.detour?.target ?? null, dR: r.evidence?.detour?.ref ?? null, unclaimed: r.evidence?.unclaimedFrac ?? null, why: (r.reasons?.[0] ?? '').slice(0, 60) });
+const author = (s, target, family, mirrored) => autoAuthor({ topK: 1, nudgeFrac, nudgeThinFrac, counter: useCounter ? {} : null, chains: (() => { try { return familyContactChains(familyContract(family)); } catch { return null; } })(), target, mirrored, family, id: s.id, refs: subjects.filter((o) => o.id !== s.id).map(refOf), materials: { surface: 'x' }, habitat: null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(family) } : null });
 const rows = [];
 for (const s of subjects) {
   if (only.length && !only.includes(s.id)) continue;
