@@ -45,6 +45,11 @@ import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-b
 import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './recipe-pin.js';
 import { mirrorCompanionCodexXpV1 } from './companion-codex-mirror.js';
 import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
+import { localeFromSearchV1, localizeElementV1, SETTINGS_CATALOG_V1 } from './i18n.js';
+import { battle2On } from './battle2-gate.js';
+import { CompendiumRevealQueueV1 } from './compendium-reveal.js';
+import { VistaPillsControllerV1, composeVistaPostcardV1, deliverVistaPostcardV1, postcardTitleV1, type PostcardCanvasLike, type PostcardDeliveryV1 } from './vista-postcard.js';
+import { DEFAULT_CODEX_LIST_VIEW_V1, codexChipBarHtmlV1, codexChipPressV1, codexChipsFilteringV1, codexEntryMatchesV1, codexShelfLabelV1, shelveCodexRowsV1, type CodexListViewV1, type CodexShelfHeaderV1 } from './compendium-shelves.js';
 import { freshExpeditionPayloadV1 } from './expedition-reset.js';
 import { TooltipOwnerV1 } from './tooltips.js';
 import {
@@ -57,13 +62,15 @@ import {
 } from './friendly-duel.js';
 import { CompanionCareController, projectCompanionCareV1, type CompanionCareReadModelV1 } from './companion-care-panel.js';
 import { commitArc5RestActionV1 } from './arc5-rest-action.js';
+import { commitArc5MissionClaimV1, commitArc5MissionDispatchV1, commitArc5MissionRecallV1 } from './arc5-mission-action.js';
+import { MissionBoardController, missionClaimReasonV1, missionReturnTextV1, type MissionBoardRequestV1 } from './mission-board.js';
 import {
   deviceAudioAccessibilityStorage,
   readAudioAccessibilityPrefsV1,
   writeAudioAccessibilityPrefsV1,
 } from './audio-accessibility-prefs.js';
 import {
-  registerPanel, fillPanel, openPanel, closePanels, openPanelId,
+  registerPanel, fillPanel, openPanel, closePanels, openPanelId, setPanelLocalizerV1,
   createPanelOpenController,
 } from './panels.js';
 import { capturePanelRefillFocus } from './panel-refill-focus.js';
@@ -353,7 +360,7 @@ import {
   ARC5_OWNERSHIP_MIGRATION_VERSION,
   ARC5_OWNERSHIP_EXTENSION_TARGETS,
   committedArc5OwnershipState,
-  prepareArc5OwnershipMigration, readArc5OwnershipMigration,
+  prepareArc5OwnershipMigration, readArc5OwnershipMigration, projectArc5MissionBoardV1,
   arc2LootLegacyMirrorMatches, prepareArc2LootLegacyMigration,
   prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror,
   encodeArc2LootCarrier, readArc2EngineeringLoadout, readArc2Loot, readArc3Engineering,
@@ -371,6 +378,12 @@ import {
   type StorageBackend, type V5Extensions,
   type CanonicalWorldIdentityStateV1,
 } from '@cf/persistence';
+import {
+  finishedRelayStarSeedsV1, finishedShelterPlanetSeedsV1, outpostSaveFactsV1, projectOutpostBoardV1, projectOutpostWorldOfferV1, readOutpostProjectsV1,
+  type OutpostProjectsStateV1, type OutpostRequestV1, type OutpostWorldContextV1,
+} from '@cf/persistence';
+import { commitOutpostActionV1, outpostRefusalCopyV1, outpostResultCopyV1 } from './outposts-action.js';
+import { OutpostsControllerV1, outpostExhibitsV1, outpostPortraitMarksV1, renderOutpostBoardV1, renderOutpostCardSectionV1, type OutpostUiRequestV1 } from './outposts-ui.js';
 import {
   MAX_GEAR_CAPACITY, projectEngineeringCapabilities,
 } from '@cf/domain-loot';
@@ -421,6 +434,7 @@ import {
 import {
   projectEngineeringPanelReadModel,
   projectOrbitalMineralSurveyRow,
+  projectRelayMineralSurveyRowsV1,
 } from './engineering-panel-model.js';
 import {
   deriveArc3FixedFabricationAction,
@@ -1604,11 +1618,13 @@ addEventListener('pageshow', (event) => {
     persistedPageshowCount++;
     speciesArtLoader.resumeFromBfcache();
     tameGreetingAudioOwner?.setHidden(false);
+    (globalThis as { cfSoundscapeV1?: { setHidden(h: boolean): void } }).cfSoundscapeV1?.setHidden(false);
     void showF4();
   }
 });
 addEventListener('visibilitychange', () => {
   tameGreetingAudioOwner?.setHidden(document.visibilityState !== 'visible');
+  (globalThis as { cfSoundscapeV1?: { setHidden(h: boolean): void } }).cfSoundscapeV1?.setHidden(document.visibilityState !== 'visible'); // D15: hidden = silence; visible = RESTART
   if (!f4Runtime) return;
   if (document.visibilityState !== 'visible') {
     stopF4Heartbeat();
@@ -2136,6 +2152,53 @@ function abortRenderBeforeReceiptForSmoke(): boolean {
   smokeAbortNextRenderBeforeReceipt = false;
   return true;
 }
+/* D16 (v1 _vistaExtras / savePostcard / tap-to-zoom, #9/#10; the ledger's A6 share card): a pill row over the stage while a landing
+   vista is on screen — ⛶ Vista (the survey card and HUD step aside; any tap or Escape steps back) and ⇪ Postcard (v1's composition,
+   shared through the Web Share API when the device can share files, else downloaded; offline). Outside the survey card by design. */
+let vistaViewing = false;
+const vistaPills = new VistaPillsControllerV1({
+  document, onView: () => setVistaViewing(true), onBack: () => setVistaViewing(false), onPostcard: () => { void saveVistaPostcard(); },
+});
+function vistaOnScreen(): boolean {
+  return nav.mode === 'surface' && surfaceVistaSprite !== null && surfaceVistaSprite.visible && !trainingActive();
+}
+function syncVistaPills(): void {
+  if (vistaViewing && !vistaOnScreen()) { vistaViewing = false; document.body.classList.remove('vista-view'); }
+  vistaPills.sync(vistaOnScreen(), vistaViewing);
+}
+function setVistaViewing(on: boolean): void {
+  vistaViewing = on && vistaOnScreen();
+  document.body.classList.toggle('vista-view', vistaViewing);
+  vistaPills.sync(vistaOnScreen(), vistaViewing);
+}
+/* v1: while zoomed, a tap ANYWHERE steps back out (it never acts on the world underneath), and Escape does too */
+document.addEventListener('click', (event) => {
+  if (!vistaViewing || (event.target as HTMLElement | null)?.closest?.('.vista-pills')) return;
+  event.stopPropagation(); event.preventDefault(); setVistaViewing(false);
+}, true);
+document.addEventListener('keydown', (event) => { if (vistaViewing && event.key === 'Escape') { event.stopPropagation(); setVistaViewing(false); } }, true);
+/** The on-screen vista's own pixels: the texture resource of the stage sprite (a canvas, or a bitmap for a painted landing). */
+function vistaSourceImage(): (CanvasImageSource & { readonly width: number; readonly height: number }) | null {
+  const resource = (surfaceVistaSprite?.texture?.source as { resource?: unknown } | undefined)?.resource as { width?: unknown; height?: unknown } | undefined;
+  return resource && typeof resource.width === 'number' && typeof resource.height === 'number' && resource.width > 0 && resource.height > 0
+    ? resource as unknown as CanvasImageSource & { readonly width: number; readonly height: number } : null;
+}
+async function saveVistaPostcard(): Promise<PostcardDeliveryV1 | null> {
+  const vista = vistaOnScreen() ? vistaSourceImage() : null;
+  if (!vista) return null;
+  const address = activeCardWorldAddress();
+  const title = postcardTitleV1((address ? worldIdentityName(worldIdentityState, address) : null) ?? cardCtx?.p.name ?? null);
+  let canvas: PostcardCanvasLike;
+  try {
+    canvas = composeVistaPostcardV1({ vista, title, shareCode: cardShareCode(), createCanvas: (width, height) => {
+      const c = document.createElement('canvas'); c.width = width; c.height = height; return c as unknown as PostcardCanvasLike; } });
+  } catch { toast('⇪ Postcard', 'The view could not be composed on this device.'); return 'failed'; }
+  const result = await deliverVistaPostcardV1(canvas, title, {
+    document, navigator, createObjectURL: (blob) => URL.createObjectURL(blob), revokeObjectURL: (url) => URL.revokeObjectURL(url) });
+  if (result === 'shared' || result === 'downloaded') toast('⇪ Postcard Saved', 'The view and its share code are baked into the image — send it to a friend.');
+  else if (result === 'failed') toast('⇪ Postcard', 'The postcard could not be saved on this device.');
+  return result;
+}
 let audiovisualPilot: AudiovisualPilot | null = null;
 let audiovisualPilotClosed = false;
 let audiovisualPilotBiomeKey: string | null = null;
@@ -2151,6 +2214,7 @@ function applyAudiovisualPilotSceneVisibility(): void {
   const hidden = nav.mode === 'surface' && audiovisualPilotSurfaceVisible;
   world.visible = !hidden;
   if (surfaceVistaSprite !== null) surfaceVistaSprite.visible = !hidden;
+  syncVistaPills();
 }
 function applyAudiovisualPilotPresentation(state: AudiovisualPilotPresentationState): void {
   audiovisualPilotSurfaceVisible = state.enhanced && state.surfaceVisible;
@@ -3464,6 +3528,8 @@ document.getElementById('guidepanel')!.addEventListener('click', (event) => {
    viewports plus a pinned focused row own DOM and thumbnail leases. ---- */
 type CodexRecord = SaveStateV2['codex'][number][1];
 type CodexVirtualRow = CompendiumVirtualRow<CodexRecord>;
+/** A Compendium list row: a species, or (with ▦ Shelves on) a shelf's fold header. */
+type CodexListValue = CodexRecord | Readonly<{ codexShelf: CodexShelfHeaderV1 }>;
 type CodexReturnState = CompendiumReturnState;
 type CodexMode = 'closed' | 'list' | 'detail';
 const EMPTY_CODEX_WINDOW: CompendiumWindowSnapshot = Object.freeze({
@@ -3472,9 +3538,12 @@ const EMPTY_CODEX_WINDOW: CompendiumWindowSnapshot = Object.freeze({
   focusedLogicalId: null, pinnedLogicalIds: Object.freeze([]),
 });
 let codexFilter = '';
+/* D16 (v1 codexKing / codexRare / _cdxOpen): the chip filters and category shelves — session view state, never saved */
+let codexView: CodexListViewV1 = DEFAULT_CODEX_LIST_VIEW_V1;
+const codexOpenShelves = new Set<string>();
 let codexMode: CodexMode = 'closed';
 let codexGeneration = 0;
-let codexList: CompendiumVirtualList<CodexRecord> | null = null;
+let codexList: CompendiumVirtualList<CodexListValue> | null = null;
 let codexRows: readonly CodexVirtualRow[] = Object.freeze([]);
 let codexWindow: CompendiumWindowSnapshot = EMPTY_CODEX_WINDOW;
 let codexReturnState: CodexReturnState | null = null;
@@ -3792,20 +3861,28 @@ function activeCodexSource(): Array<[string, CodexRecord]> {
   return compendiumFixtureRows ?? save.codex;
 }
 function filteredCodexRows(): readonly CodexVirtualRow[] {
-  const f = codexFilter.toLowerCase();
+  const view = { ...codexView, query: codexFilter };
   return Object.freeze(activeCodexSource()
     .map(([logicalId, value], sourceIndex) => ({ logicalId: String(logicalId), sourceIndex, value }))
-    .filter(({ value }) => !f
-      || (value.name + ' ' + value.kind + ' ' + value.realm).toLowerCase().includes(f)));
+    .filter(({ value }) => codexEntryMatchesV1(value, view)));
 }
 function filteredCodexCount(): number {
-  const f = codexFilter.toLowerCase();
-  if (!f) return activeCodexSource().length;
+  const view = { ...codexView, query: codexFilter };
+  if (!view.query && !codexChipsFilteringV1(view)) return activeCodexSource().length;
   let count = 0;
-  for (const [, value] of activeCodexSource()) {
-    if ((value.name + ' ' + value.kind + ' ' + value.realm).toLowerCase().includes(f)) count++;
-  }
+  for (const [, value] of activeCodexSource()) if (codexEntryMatchesV1(value, view)) count++;
   return count;
+}
+/** A shelf's fold header row (D16, v1 `.cgh`): a real button; opening a shelf mounts its species rows. */
+function mountCodexShelfRow(header: CodexShelfHeaderV1): { readonly element: HTMLButtonElement; dispose(): void } {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = `codex-shelf kg-${header.kingdom}${header.open ? ' open' : ''}`;
+  button.dataset.sel = 'codex-shelf';
+  button.dataset.cg = header.shelf;
+  button.setAttribute('aria-expanded', String(header.open));
+  button.innerHTML = `<span>${esc(codexShelfLabelV1(header.shelf))}</span><span class="cnt">${header.count}${header.hybrids ? ` · ${header.hybrids} hybrid` : ''}</span>`;
+  return { element: button, dispose: () => {} };
 }
 function mountCodexRow(row: CodexVirtualRow, generation: number): {
   readonly element: HTMLButtonElement;
@@ -3886,12 +3963,17 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
   const generation = ++codexGeneration;
   codexRows = filteredCodexRows();
   const f = codexFilter.toLowerCase();
+  const sourceSize = activeCodexSource().length, chipsFiltering = codexChipsFilteringV1(codexView);
+  const chipEmpty = codexView.rarityFloor > 0
+    ? `No ${codexView.kingdom === 'all' ? 'species' : esc(codexView.kingdom.toLowerCase())} at <b style="color:${esc(projectDisplayRarity(codexView.rarityFloor)?.hex ?? '')}">${esc(projectDisplayRarity(codexView.rarityFloor)?.name ?? '')}</b> or above yet — the rarest finds live farthest out.`
+    : `Nothing on this shelf yet — every ${codexView.kingdom === 'Fauna' ? 'creature you Discover' : esc(codexView.kingdom.toLowerCase()) + ' you catalogue'} will land here.`;
   const panel = document.getElementById('codexpanel')!;
   panel.classList.add('codex-list-mode');
   fillPanel('codex',
-    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${codexRows.length}</span>${f ? ` <span class="sub codex-query">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
+    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${codexRows.length}</span>${chipsFiltering ? ` <span class="sub" data-sel="codex-shown">shown · ${sourceSize} in all</span>` : ''}${f ? ` <span class="sub codex-query">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
+    (sourceSize > 0 ? codexChipBarHtmlV1(codexView) : '') +
     (codexRows.length === 0
-      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — imported discoveries appear here. Live catalogue writing arrives with the discovery path.'}</div>`
+      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : chipsFiltering && sourceSize > 0 ? chipEmpty : 'No species yet — imported discoveries appear here. Live catalogue writing arrives with the discovery path.'}</div>`
       : '<div class="compendium-scroll" data-sel="codex-scroll" role="group" aria-label="Compendium species"></div>'));
   if (!codexRows.length) {
     previousList?.dispose();
@@ -3899,10 +3981,14 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
     return;
   }
   const scroller = panel.querySelector<HTMLElement>('[data-sel="codex-scroll"]')!;
-  const nextList = new CompendiumVirtualList({
+  const listRows: readonly CompendiumVirtualRow<CodexListValue>[] = codexView.shelves
+    ? shelveCodexRowsV1(codexRows, codexOpenShelves, chipsFiltering).map((item) => item.type === 'entry' ? item.row
+      : Object.freeze({ logicalId: `shelf:${item.header.shelf}`, sourceIndex: -1, value: Object.freeze({ codexShelf: item.header }) }))
+    : codexRows;
+  const nextList = new CompendiumVirtualList<CodexListValue>({
     scroller,
-    rows: codexRows,
-    mountRow: (row) => mountCodexRow(row, generation),
+    rows: listRows,
+    mountRow: (row) => ('codexShelf' in row.value ? mountCodexShelfRow(row.value.codexShelf) : mountCodexRow(row as CodexVirtualRow, generation)),
   });
   codexList = nextList;
   if (restore) nextList.restoreState(restore);
@@ -3997,6 +4083,9 @@ function fillCodexDetail(idx: number): void {
       `<div style="margin:4px 0 8px"><b style="font-size:16px;color:#f4f8ff">${esc(e.name)}</b>` +
       (rarityView ? ` <span class="rarity-badge" data-sel="detail-grade" style="border:1px solid ${esc(rarityView.hex)};color:${esc(rarityView.hex)};border-radius:999px;padding:1px 9px;font-size:11px">${esc(rarityView.name)}</span>` : '') +
       `<div class="sub">${esc(e.kind)} · ${esc(e.realm)}${e.hybrid ? ' · hybrid' : ''}${e.from ? ' · ' + esc(e.from) : ''}</div></div>` +
+      /* D16 (v1 data-go): a wild catch travels back to the world it was first catalogued on; a hybrid (bred) has no origin world */
+      (!e.hybrid && e.from && compendiumFixtureRows === null && primeClaimWorldAddressV1(e.where) !== null
+        ? `<button type="button" class="codex-origin" data-sel="codex-origin" data-codex-origin="${idx}">Travel to ${esc(e.from)} ↗</button>` : '') +
       `<div style="color:#b7c8e4;margin-bottom:8px" data-sel="detail-desc">${esc(d.desc || '')} ${esc(d.detail || '')}</div>` +
       KEYS.map((k, i) => {
         const v = st[k] || 0;
@@ -4010,7 +4099,7 @@ function fillCodexDetail(idx: number): void {
   } catch {
     body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
   }
-  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}${duelModel !== null ? '<section class="compendium-feed" data-friendly-duel-body aria-label="Friendly duel"></section>' : ''}${careModel !== null ? '<section class="compendium-feed" data-companion-care-body aria-label="Care and bond"></section>' : ''}</div>`);
+  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}${duelModel !== null ? '<section class="compendium-feed" data-friendly-duel-body aria-label="Friendly duel"></section>' : ''}${careModel !== null ? '<section class="compendium-feed" data-companion-care-body aria-label="Care and bond"></section><section class="compendium-feed" data-mission-board-body aria-label="Companion missions"></section>' : ''}</div>`);
   compendiumCreatureProgressionSurface.attach(
     document.querySelector<HTMLElement>('#codexpanel [data-sel="codex-detail"]')!,
   );
@@ -4057,6 +4146,8 @@ function fillCodexDetail(idx: number): void {
   if (careModel !== null) {
     companionCareController.setState(careModel);
     companionCareController.attach(document.querySelector<HTMLElement>('#codexpanel [data-companion-care-body]')!);
+    missionBoardController.setState(projectCurrentMissionBoard());
+    missionBoardController.attach(document.querySelector<HTMLElement>('#codexpanel [data-mission-board-body]')!);
   }
   const portrait = document.querySelector<HTMLImageElement>('#codexpanel [data-sel="detail-portrait"]');
   if (portrait) {
@@ -4139,10 +4230,12 @@ function fillRecords(): void {
   if (f4Runtime !== null && arc5OwnershipState?.mode === 'current') {
     const combat = readCombatSettlementAuthorityV1(f4Runtime.extensions);
     if (combat.kind === 'loaded') {
+      const outposts = currentOutpostProjects();
       const projected = projectExpeditionChronicleV1({
         save,
         ownership: ownershipSourceStateV1(arc5OwnershipState),
         combat: combat.authority,
+        ...(outposts !== null && outposts.sites.some((s) => s.built >= 3) ? { outposts: outpostExhibitsV1(outposts) } : {}),
       });
       if (projected.kind === 'projected') {
         chronicle = renderExpeditionChronicleV1(projected.model);
@@ -4423,7 +4516,7 @@ function fillCharters(): void {
   const weeklyBoard = weeklyActivePlayMs === null ? null : projectWeeklyCharterBoardV1(save, weeklyActivePlayMs);
   const weekly = weeklyBoard === null ? '' : renderWeeklyCharterBoardV1(weeklyBoard);
   const starterStatus = starterCharterPanelStatus();
-  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter + starter + weekly
+  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter + starter + weekly + outpostBoardHtml()
     + (starterStatus === null ? ''
       : `<p class="starter-charter-status" role="status" aria-live="polite" aria-atomic="true">${esc(starterStatus)}</p>`));
   syncBoundedCollectionButtons(
@@ -4508,6 +4601,10 @@ registerPanel({
 });
 registerPanel({ id: 'atlas', el: document.getElementById('atlaspanel')!, btns: [document.getElementById('dockatlas'), document.getElementById('railatlas')], onOpen: () => { fillAtlas(); gameEvent('atlas-open', { open: true }); } });
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
+// A6 localization scaffolding (i18n.ts): Settings is the first extracted surface. Only a non-English `?locale=` registers a localizer; the
+// default game never walks or rewrites the panel (English is the identity).
+{ const uiLocale = localeFromSearchV1(location.search);
+  if (uiLocale !== 'en') setPanelLocalizerV1('set', (el) => { localizeElementV1(el, SETTINGS_CATALOG_V1, uiLocale, import.meta.env.DEV ? (m) => console.warn(m) : undefined); }); }
 registerPanel({ id: 'guide', el: document.getElementById('guidepanel')!, btns: [document.getElementById('dockguide')], onOpen: fillGuide });
 let localAiGame: LocalAiGameV1 | null = null;
 let mountedLocalAiOriginal: AiLandfallOriginalV1 | null = null;
@@ -4540,6 +4637,23 @@ const codexOpenController = createPanelOpenController({
   id: 'codex',
   defaultRequest: () => '',
   populate: (filter: string) => fillCodex(filter),
+});
+/* D16 (v1 showReveal / pendingReveals / _revealBlocked): a newly catalogued page is revealed as a specimen card, queued while another
+   modal (or Field Training) owns the screen and flushed by the next input pulse. View state only; the portrait lease is cancelled on close. */
+function compendiumRevealBlocked(): boolean {
+  return trainingActive() || document.querySelector('dialog[open], [role="dialog"][aria-modal="true"]:not([hidden]):not(#reveal)') !== null;
+}
+const compendiumReveal = new CompendiumRevealQueueV1({
+  document, blocked: compendiumRevealBlocked, art: speciesArtLoader,
+  onDrained: () => { if (openPanelId() === 'codex' && codexMode === 'list') fillCodex(codexFilter); },
+});
+/** The committed action's NEW Compendium pages (by logical id, in source order) — a first catch, a bred hybrid — join the reveal. */
+const compendiumRevealPages = Object.freeze({
+  snapshot: (): ReadonlySet<string> => new Set(save ? save.codex.map(([id]) => String(id)) : []),
+  revealSince: (before: ReadonlySet<string>): void => {
+    if (!save || compendiumFixtureRows !== null) return;
+    for (const [id, e] of save.codex) if (!before.has(String(id))) compendiumReveal.enqueue({ logicalId: String(id), name: e.name, kind: e.kind, hybrid: e.hybrid, genome: e.g });
+  },
 });
 registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: () => {
   /* An ordinary Compendium open is a fresh catalogue view. Search may apply
@@ -4647,9 +4761,40 @@ function shipyardDiagnostics(): unknown {
 }
 /* codex list rows open the detail card (delegated — rows refill often) */
 document.getElementById('codexpanel')!.addEventListener('click', (e) => {
+  /* D16 (v1 data-ck / data-cr / .cgh): a chip re-filters the list; a shelf header folds its shelf. Session view state only. */
+  const chip = (e.target as HTMLElement).closest<HTMLElement>('[data-ck],[data-cr],[data-cshelves]');
+  if (chip) {
+    const next = codexChipPressV1(codexView, { ck: chip.dataset.ck, cr: chip.dataset.cr, cshelves: chip.dataset.cshelves });
+    if (next) { codexView = next; fillCodex(codexFilter); }
+    return;
+  }
+  const shelf = (e.target as HTMLElement).closest<HTMLElement>('[data-cg]');
+  if (shelf) {
+    const name = shelf.dataset.cg!;
+    if (codexOpenShelves.has(name)) codexOpenShelves.delete(name); else codexOpenShelves.add(name);
+    fillCodex(codexFilter);
+    document.getElementById('codexpanel')!.querySelector<HTMLElement>(`[data-cg="${CSS.escape(name)}"]`)?.focus();
+    return;
+  }
+  const origin = (e.target as HTMLElement).closest<HTMLElement>('[data-codex-origin]');
+  if (origin) { void runCompendiumOriginTravel(+origin.dataset.codexOrigin!); return; }
   const row = (e.target as HTMLElement).closest('[data-ci]');
   if (row) fillCodexDetail(+(row as HTMLElement).dataset.ci!);
 });
+/** D16 (v1 `data-go` → travelTo(sp.where)): fly back to the world a species was first catalogued on, through the one proven-route owner
+ * (search-travel), so charter gates and the route commit are unchanged. The saved `where` is the legacy world view; it resolves to a
+ * canonical world exactly as a Prime claim's does. */
+async function runCompendiumOriginTravel(index: number): Promise<boolean> {
+  const entry = activeCodexSource()[index]?.[1];
+  if (!entry || entry.hybrid || compendiumFixtureRows !== null) return false;
+  const address = primeClaimWorldAddressV1(entry.where);
+  if (address === null) return false;
+  const moved = await searchTravel.jumpToCanonicalAddress(address);
+  if (!moved) return false;
+  closePanels();
+  toast('Course Plotted', `Returning to ${entry.from} — where you first catalogued ${entry.name}.`);
+  return true;
+}
 
 /* ---- THE SEARCH BAR (the goldens' top-right slot): a marked CF1 string is
    exact route input, never tolerant display data. All three route tiers are
@@ -5620,6 +5765,18 @@ tameGreetingAudioOwner = createTameGreetingAudioOwner({
   }),
   verifyCounterpart: creatureExpressionCounterpartIsCurrent,
 });
+// D15 Stage 3: the ONE owner of continuous sound — the living bed under a world and the sparse score — on the accessible owner's
+// decorative port (it can never sound where the owner would not). Hooks call it through globalThis, so the main.ts regions tests execute
+// never meet an undeclared name. The presentation seed is a constant stream (never gameplay RNG, never the wall clock).
+// Loaded lazily as its own chunk, off the boot path (the battle2 gate test forbids static soundkit imports here).
+void import('./soundkit/soundscape.js').then(({ createSoundscapeV1 }) => {
+  const owner = tameGreetingAudioOwner; if (!owner) return;
+  const soundscape = createSoundscapeV1({ port: owner.decorativeVoicePort(), schedule: (fn, ms) => { const t = setTimeout(fn, ms); return () => clearTimeout(t); },
+    nowMs: () => performance.now(), presentationSeed: 0x5eed, phone: visualPolicyDeviceTier() === 'low' });
+  (globalThis as { cfSoundscapeV1?: unknown }).cfSoundscapeV1 = soundscape;
+  soundscape.setHidden(document.visibilityState !== 'visible');
+  soundscape.setMusicState('calm');
+}).catch(() => { /* sound is decoration: a failed chunk never blocks play */ });
 // L1 Listening page (D15 / N5) on a BUILT package (the dev URL): flag-gated, dynamic import only, never on the default path. Plays through
 // the audio owner's explicit pilot gesture (decorative only); ratings stay on this device. The dev server keeps Codex's production review.
 if (!import.meta.env.DEV && new URLSearchParams(location.search).get('audioReview') === '1') {
@@ -5652,7 +5809,14 @@ if (new URLSearchParams(location.search).get('deviceProbe') === '1') {
       ?? (globalThis as { webkitAudioContext?: new () => AudioContext }).webkitAudioContext;
     mountDeviceProbeV1({ doc: document, commit: previewIdentity?.sourceCommit ?? 'local development source', ua: navigator.userAgent,
       createContext: () => { if (!Ctor) throw new TypeError('AudioContext is unavailable'); return new Ctor(); },
-      canPlayType: (mime) => document.createElement('audio').canPlayType(mime) });
+      canPlayType: (mime) => document.createElement('audio').canPlayType(mime),
+      dpr: window.devicePixelRatio || 1, viewport: `${innerWidth}×${innerHeight}`,
+      readPackDigest: async () => { const r = await fetch('./preview.json', { credentials: 'omit', cache: 'no-store' }); if (!r.ok) throw new Error('no preview.json'); const m = await r.json() as { contentSha256?: unknown }; if (typeof m.contentSha256 !== 'string') throw new Error('no digest'); return m.contentSha256; },
+      // H1 performance/heat/memory: built only when a Run is pressed (after boot); the real matchup picker on the app's own ticker
+      performance: () => ({ now: () => performance.now(), raf: (cb) => requestAnimationFrame(cb), cancelRaf: (id) => cancelAnimationFrame(id), ticker: app.ticker,
+        mountMatchup: async (search, ticker) => (await import('./battle2-matchup.js')).mountBattle2Matchup({ doc: document, search, ticker, clock: () => performance.now(), reducedMotion: false, deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } as never }),
+        jsHeap: () => (performance as Performance & { memory?: { usedJSHeapSize: number; totalJSHeapSize: number; jsHeapSizeLimit: number } }).memory ?? null,
+        paintedArt: () => speciesArtLoader.paintedDiagnostics(), morphCache: async () => (await import('./morph/morph-atlas-cache.js')).morphAtlasCache.stats() }) });
   }).catch(() => { /* the flagged probe never blocks the game */ });
 }
 const primeCount = (): number => Object.keys(save.primeFill || {}).length;
@@ -6004,8 +6168,8 @@ let uniCell: { ux: number; uy: number } | null = null;   /* the streamed window'
 /* SURVEY-FIRST: one tap opens the typed card; its explicit 44px travel
    action performs the dive. The card can cover the body on a phone, so
    navigation must never depend on a second canvas tap or a timing window. */
-function surveyCard(d: unknown, travelAction: CardTravelAction | null = null): void {
-  if (d) { showSurvey(d as Descriptor, undefined, travelAction); playSurveyPing(); }
+function surveyCard(d: unknown, travelAction: CardTravelAction | null = null, supplementalRows: readonly SurveyPresentationRow[] = EMPTY_SURVEY_PRESENTATION_ROWS): void {
+  if (d) { showSurvey(d as Descriptor, undefined, travelAction, supplementalRows); playSurveyPing(); }
 }
 function canonicalStarAddressForSurvey(star: StarNodeRef): CanonicalCF1StarAddress | null {
   if (nav.mode !== 'galaxy') return null;
@@ -6024,7 +6188,7 @@ function surveyStar(star: StarNodeRef): boolean {
   const travelStar = { seed: star.seed, x: star.x, y: star.y };
   surveyCard(descriptor, {
     label: 'Enter system', run: () => descendSystem(travelStar),
-  });
+  }, outpostRelayStarRows(address));
   /* Survey presentation is immediate; its progression record is one separate
      source-rederived F4 settlement and never trusts descriptor metadata. */
   void settleArc9Survey(address);
@@ -6220,6 +6384,7 @@ function releaseSurfaceVistaOwner(): void {
   syncSurfaceVistaPresentation();
   surfaceVistaWorldKey = null;
   surfaceVistaEnvironmentFingerprint = null;
+  (globalThis as { cfSoundscapeV1?: { setAmbience(t: null): void } }).cfSoundscapeV1?.setAmbience(null); // D15: the bed never outlives its world
   if (surfaceVistaDeadline !== null) {
     clearTimeout(surfaceVistaDeadline);
     surfaceVistaDeadline = null;
@@ -6426,6 +6591,7 @@ function requestSurfaceVista(
   if (new URLSearchParams(location.search).get('worldlife') === '1') void import('./worldlife-wiring.js').then(m => m.mountWorldLifeStudy({ request, roster, stage: app.stage, vistaSprite: () => surfaceVistaSprite, ticker: app.ticker, clock: () => performance.now(), reducedMotion: () => !motionOK(), tier: TOUCH_DPR ? 'phone' : 'desktop', pixi: { Container, Graphics }, residents: { rows: roster.view.all, artLoader: speciesArtLoader, pixi: { Sprite, Texture } } })).catch(() => { /* the flagged study never blocks the vista */ });
   surfaceVistaWorldKey = request.worldKey;
   surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;
+  (globalThis as { cfSoundscapeV1?: { setAmbience(t: { biome: string } | null): void } }).cfSoundscapeV1?.setAmbience({ biome: request.biomeKey }); // D15: the world's bed
   if (currentAiLandfallInput()) { restoreCurrentAiLandfall(); return; }
   const query = new URLSearchParams(location.search);
   const landingRecipe = !paintedFallback && query.get('paintedlanding') === '1'
@@ -7872,6 +8038,7 @@ function projectCurrentBioscanCardState(
       roster,
       opportunity,
       settled: combat.authority.conquests.some(({ worldKey }) => worldKey === address.key),
+      sheltered: outpostShelteredAt(address.planet.seed),
     });
     if (projection.kind !== 'ready') {
       return Object.freeze({
@@ -8046,6 +8213,7 @@ function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): stri
         (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
     bioscanCardActionHtml(bioscanState) +
     harvestCardActionHtml(p) +
+    outpostCardActionHtml(p, onThisSurface) +
     '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
     (onThisSurface && mountedLocalAiOriginal && surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID
       && !localAiGame?.snapshot().some(job => job.status === 'ready' && job.originalId === mountedLocalAiOriginal?.originalId)
@@ -9521,6 +9689,93 @@ async function runCompanionRest(creatureId: Parameters<typeof commitArc5RestActi
     if (activePersist === actionBarrier) activePersist = null;
   }
 }
+/* D13 stage 2 companion missions: the board beside Care & bond (mission-board.ts). Dispatch seals its result in one receipt; claim and
+   recall are deterministic receipts (arc5-mission-action.ts). Publication copies only what each committed: the ownership, and for a
+   claim the hold, Stardust and the companion's Compendium mirror XP. No timers: the board re-projects on each render/press. */
+let lastMissionOutcome: string | null = null;
+let missionTargetWorldKey: string | null = null;
+function missionCompanionName(creatureId: string): string {
+  const c = arc5OwnershipState?.creatures.find((row) => row.creatureId === creatureId);
+  if (c === undefined) return 'Companion';
+  return c.nickname ?? String(save.codex.find(([id]) => id === `s${c.genome.seed}`)?.[1].name ?? 'Companion');
+}
+const missionBoardController = new MissionBoardController({
+  onDispatch: (request) => { void runCompanionMission('dispatch', request); },
+  onClaim: (missionId) => { void runCompanionMission('claim', missionId); },
+  onRecall: (missionId) => { void runCompanionMission('recall', missionId); },
+  onTarget: (worldKey) => { missionTargetWorldKey = worldKey; missionBoardController.setState(projectCurrentMissionBoard(), worldKey); },
+}, missionCompanionName);
+function projectCurrentMissionBoard(): ReturnType<typeof projectArc5MissionBoardV1> {
+  const runtime = f4Runtime;
+  if (runtime === null || compendiumFixtureRows !== null || arc5OwnershipProtection !== null) return null;
+  try {
+    return projectArc5MissionBoardV1({ extensions: runtime.extensions, ownershipV2: arc5OwnershipState, state: save,
+      activePlayMs: runtime.diagnostics().activePlayMs, nameOf: missionCompanionName, worldKey: missionTargetWorldKey });
+  } catch { return null; }
+}
+async function runCompanionMission(kind: 'dispatch' | 'claim' | 'recall', payload: MissionBoardRequestV1 | string): Promise<void> {
+  const runtime = f4Runtime, parent = arc5OwnershipState;
+  if (!f4RuntimeMayMutate(runtime) || parent?.mode !== 'current' || arc5OwnershipProtection !== null || activePersist
+    || importWriteInFlight || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    lastMissionOutcome = 'unavailable:write-authority'; missionBoardController.settle('Missions unavailable. Finish the current save, then try again. Nothing changed.'); return;
+  }
+  const actionClaim = productActionCoordinator.tryClaim(`companion.mission.${kind}`);
+  if (actionClaim === null) { lastMissionOutcome = 'unavailable:product-action-pending'; missionBoardController.settle('Missions unavailable — another action is still settling.'); return; }
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true; activePersist = actionBarrier; lastMissionOutcome = 'pending';
+  let durable = false;
+  try {
+    await settleF4Heartbeat();
+    if (!f4RuntimeMayMutate(runtime) || arc5OwnershipState !== parent) { lastMissionOutcome = 'refused:authority-changed'; missionBoardController.settle('Missions unavailable. Nothing changed.'); return; }
+    const base = { ownershipV2: parent, state: save, codecNow: Date.now() };
+    const outcome = kind === 'dispatch'
+      ? await commitArc5MissionDispatchV1({ ...base, runtime, ...(payload as MissionBoardRequestV1) })
+      : kind === 'claim' ? await commitArc5MissionClaimV1({ ...base, runtime, missionId: payload as string })
+        : await commitArc5MissionRecallV1({ ...base, runtime, missionId: payload as string });
+    if (outcome.kind === 'refused') {
+      lastMissionOutcome = `refused:${outcome.detail}`;
+      if (outcome.convergence === 'read-only-reload') scheduleF4AuthorityConvergenceReload(runtime, `companion mission ${outcome.detail}`);
+      const reason = outcome.detail.startsWith('refused:') ? outcome.detail.slice('refused:'.length) : null;
+      missionBoardController.settle(kind === 'claim' && reason === 'cargo-full' ? missionClaimReasonV1('cargo-full')
+        : kind === 'claim' && reason === 'mission-not-active' ? 'Already claimed. Nothing changed.' : `Mission unavailable. Nothing changed (${outcome.detail}).`);
+      return;
+    }
+    durable = true; f4LastCheckpointAt = performance.now();
+    const loaded = readArc5OwnershipMigration(runtime.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    if (outcome.kind !== 'committed' || runtime.revision !== outcome.revision || loaded.kind !== 'loaded'
+      || ownershipStateDigestV2(loaded.state) !== ownershipStateDigestV2(outcome.ownershipV2)) {
+      lastMissionOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime, `companion mission ${kind} committed; publication fixed point`);
+      return;
+    }
+    arc5OwnershipState = loaded.state; arc5OwnershipEvidence = loaded.evidence;
+    lastPersistenceOutcome = `companion-mission-${kind}-committed:${outcome.revision}`;
+    if (kind === 'claim') {
+      // publish exactly what a claim committed: the hold, Stardust, lifetime Stardust and the companion's Compendium mirror XP
+      save.cargo = outcome.state.cargo.map(([id, n]) => [id, n]);
+      save.essence = outcome.state.essence;
+      (save.stats as Record<string, number | undefined>).essenceEarned = (outcome.state.stats as Record<string, number | undefined>).essenceEarned;
+      save.codex = mirrorCompanionCodexXpV1(save.codex, outcome.state.codex);
+      updateChips();
+    }
+    const value = outcome.value as { missionId: string; creatureId: string; readyAtActivePlayMs?: number };
+    lastMissionOutcome = `committed:${kind}:${value.missionId}`;
+    missionBoardController.settle(kind === 'dispatch'
+      ? `${missionCompanionName(value.creatureId)} set out. It returns after ${Math.max(0, Math.round(((value.readyAtActivePlayMs ?? 0) - runtime.diagnostics().activePlayMs) / 60_000))} min of play.`
+      : missionReturnTextV1(outcome.value as Parameters<typeof missionReturnTextV1>[0], missionCompanionName(value.creatureId)));
+    missionBoardController.setState(projectCurrentMissionBoard());
+    companionCareController.setState(projectCurrentCompanionCare(currentCompendiumDetailRow()));
+  } catch (error) {
+    lastMissionOutcome = `${durable ? 'committed-' : ''}fault`;
+    if (durable && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `companion mission ${error instanceof Error ? error.message : String(error)}`);
+    else missionBoardController.settle('Mission unavailable. Nothing changed.');
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
+}
 let lastArc6CommandOutcome: string | null = null;
 async function runArc6CommandCardAction(request: CombatCardActionRequestV1): Promise<void> {
   const runtime = f4Runtime;
@@ -9611,6 +9866,128 @@ async function runArc6CommandCardAction(request: CombatCardActionRequestV1): Pro
   lastArc6CommandOutcome = `settling:${finalAnswers.length}`;
   /* the card's own press latch stays set: the ordinary settlement below settles it with the verified outcome */
   await runArc6CombatCardAction(Object.freeze({ kind: 'challenge', championId: leadId }), Object.freeze({ decisions: finalAnswers }));
+}
+/* D14 Outposts (N4 Option A; outposts.ts / outposts-action.ts / outposts-ui.ts): the world card's "Build here" section, the Projects
+   board in the Charters panel, the Museum's Outposts gallery. Each press is ONE receipt (commitOutpostActionV1); publication copies
+   exactly the fields an outpost action owns: the parts mirror, Stardust and the live Arc 2 carrier. */
+let lastOutpostOutcome: string | null = null;
+let outpostStatus: string | null = null;
+const outpostsController = new OutpostsControllerV1((request) => { void runOutpostAction(request); });
+document.addEventListener('click', (event) => { outpostsController.handle(event.target as Element | null); });
+function currentOutpostProjects(): OutpostProjectsStateV1 | null {
+  const runtime = f4Runtime; if (runtime === null) return null;
+  const read = readOutpostProjectsV1(runtime.extensions);
+  return read.kind === 'loaded' ? read.state : null;
+}
+function outpostWorldContext(p: PlanetNode, onThisSurface: boolean): OutpostWorldContextV1 | null {
+  const address = activeCardWorldAddress();
+  if (address === null || cardCtx === null) return null;
+  const roster = canonicalRosterForBioscanCard(address, null);
+  const planets = systemScene(address.star.seed).planets.map((q) => q.seed >>> 0);
+  return Object.freeze({ world: Object.freeze({ galaxySeed: address.galaxy.seed >>> 0, starSeed: address.star.seed >>> 0, planetSeed: p.seed >>> 0,
+    name: (worldIdentityName(worldIdentityState, address) ?? p.name ?? 'Unnamed world').slice(0, 64),
+    systemPlanetSeeds: Object.freeze([...new Set([...planets, p.seed >>> 0])].sort((a, b) => a - b)) }),
+    hasFauna: roster !== null && roster.view.all.some((row) => row.kingdom === 'fauna'), standingHere: onThisSurface });
+}
+function outpostCardActionHtml(p: PlanetNode, onThisSurface: boolean): string {
+  try {
+    const runtime = f4Runtime, projects = currentOutpostProjects(), context = outpostWorldContext(p, onThisSurface);
+    if (runtime === null || projects === null || context === null) return '';
+    const facts = outpostSaveFactsV1(save, runtime.extensions); if (facts === null) return '';
+    const companions = arc5OwnershipState?.mode === 'current'
+      ? arc5OwnershipState.creatures.map((c) => Object.freeze({ id: c.creatureId, label: c.nickname ?? `Companion ${String(c.creatureId).slice(-4)}` })) : [];
+    const marks = outpostPortraitMarksV1(projects, p.seed >>> 0);
+    const html = renderOutpostCardSectionV1(projectOutpostWorldOfferV1(projects, facts, context), companions);
+    return html === '' ? '' : html.replace('<b>Outposts</b>', `<b>Outposts</b>${marks ? ` <span data-outpost-marks aria-label="finished outposts">${marks}</span>` : ''}`);
+  } catch { return ''; }
+}
+/** D14 Field Shelter reward (presentation hint; the Discover Life commit re-reads the carrier): hazard-free here. */
+function outpostShelteredAt(planetSeed: number): boolean {
+  const projects = currentOutpostProjects();
+  return projects !== null && finishedShelterPlanetSeedsV1(projects).includes(planetSeed >>> 0);
+}
+/** D14 Survey Relay reward: a relay system's star card lists every lifeless world's orbital readout without a visit. */
+function outpostRelayStarRows(address: CanonicalCF1StarAddress): readonly SurveyPresentationRow[] {
+  try {
+    const projects = currentOutpostProjects();
+    if (projects === null || arc3EngineeringState === null || arc3EngineeringProtection !== null
+      || !finishedRelayStarSeedsV1(projects).includes(address.star.seed >>> 0)) return EMPTY_SURVEY_PRESENTATION_ROWS;
+    const worlds = systemScene(address.star.seed).planets.flatMap((q) => {
+      const resolved = resolveCF1WorldAddress({ galaxy: { seed: address.galaxy.seed, x: address.galaxy.x, y: address.galaxy.y },
+        star: { seed: address.star.seed, x: address.star.x, y: address.star.y }, planet: { seed: q.seed } });
+      return resolved.ok ? [{ address: resolved.address, name: worldIdentityName(worldIdentityState, resolved.address) ?? q.name }] : [];
+    });
+    return Object.freeze(projectRelayMineralSurveyRowsV1({ engineering: arc3EngineeringState, worlds }).map((row) => Object.freeze([row.key, row.value] as const)));
+  } catch { return EMPTY_SURVEY_PRESENTATION_ROWS; }
+}
+function outpostBoardHtml(): string {
+  try {
+    const runtime = f4Runtime, projects = currentOutpostProjects();
+    if (runtime === null || projects === null) return '';
+    const facts = outpostSaveFactsV1(save, runtime.extensions); if (facts === null) return '';
+    const standing = nav.mode === 'surface' ? nav.planet.seed >>> 0 : null;
+    return renderOutpostBoardV1(projectOutpostBoardV1(projects, facts, standing), outpostStatus);
+  } catch { return ''; }
+}
+async function runOutpostAction(ui: OutpostUiRequestV1): Promise<void> {
+  const runtime = f4Runtime;
+  const finish = (outcome: string, title: string | null, detail: string): void => {
+    lastOutpostOutcome = outcome; outpostStatus = title === null ? detail : `${title} — ${detail}`;
+    outpostsController.settle(); refreshPlanetSurveyCard(); if (openPanelId() === 'ch') fillCharters();
+    if (title !== null) toast(title, detail, true);
+  };
+  if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    finish('unavailable:write-authority', 'Outpost unavailable', 'Finish the current expedition save, then try again. Nothing changed.'); return;
+  }
+  let request: OutpostRequestV1;
+  if (ui.kind === 'start') {
+    const context = cardCtx ? outpostWorldContext(cardCtx.p, nav.mode === 'surface' && nav.planet.seed === cardCtx.p.seed) : null;
+    if (context === null) { finish('unavailable:no-world', 'Outpost unavailable', 'Open the world first. Nothing changed.'); return; }
+    request = Object.freeze({ kind: 'start', outpost: ui.outpost, context });
+  } else if (ui.kind === 'build') {
+    request = Object.freeze({ kind: 'build', siteId: ui.siteId, standingHere: nav.mode === 'surface' && `${ui.siteId}`.endsWith(`@${nav.planet.seed >>> 0}`) });
+  } else if (ui.kind === 'abandon') request = Object.freeze({ kind: 'abandon', siteId: ui.siteId });
+  else request = Object.freeze({ kind: 'residents', siteId: ui.siteId, residents: ui.residents });
+  const actionClaim = productActionCoordinator.tryClaim('world.outpost');
+  if (actionClaim === null) { finish('unavailable:product-action-pending', 'Outpost unavailable', 'Another expedition action is still settling.'); return; }
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true; activePersist = actionBarrier;
+  let durable = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (!f4RuntimeMayMutate(runtime)) { finish('refused:authority-changed', 'Outpost unavailable', 'Save authority changed. Nothing changed.'); return; }
+    const outcome = await commitOutpostActionV1({ runtime: runtime!, state: save, request, codecNow: Date.now() });
+    if (outcome.kind === 'refused') {
+      if (outcome.convergence === 'read-only-reload') scheduleF4AuthorityConvergenceReload(runtime!, `outpost ${outcome.detail}`);
+      finish(`refused:${outcome.detail}`, null, `${outpostRefusalCopyV1(outcome.detail)} Nothing changed.`); return;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    const loot = readArc2Loot(runtime!.extensions);
+    if (runtime!.revision !== outcome.revision || loot.kind !== 'loaded') {
+      lastOutpostOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime!, 'outpost committed; publication fixed point');
+      return;
+    }
+    // publish exactly the outpost's fields: the parts mirror, Stardust and the live Arc 2 carrier
+    save.items = outcome.state.items.map(([id, n]) => [id, n] as [string, number]);
+    save.essence = outcome.state.essence;
+    arc2LootState = loot.state;
+    lastPersistenceOutcome = `outpost-committed:${outcome.revision}`;
+    const copy = outpostResultCopyV1(outcome);
+    updateChips();
+    finish(`committed:${request.kind}`, copy.title, copy.detail);
+  } catch (error) {
+    if (durable && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `outpost ${error instanceof Error ? error.message : String(error)}`);
+    else finish('fault', 'Outpost unavailable', 'Nothing changed.');
+  } finally {
+    productActionInFlight = false;
+    outpostsController.settle();
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
 }
 const sideEl = document.createElement('div');
 sideEl.id = 'planetside';
@@ -9969,6 +10346,7 @@ function normalizeCompendiumFixture(rows: unknown): Array<[string, CodexRecord]>
 async function installCompendiumFixture(rows: unknown): Promise<CompendiumFixtureResult> {
   compendiumFixtureRows = normalizeCompendiumFixture(rows);
   codexFilter = '';
+  codexView = DEFAULT_CODEX_LIST_VIEW_V1; codexOpenShelves.clear();
   codexReturnState = null;
   if (openPanelId() === 'codex') fillCodex('');
   else {
@@ -9980,6 +10358,7 @@ async function installCompendiumFixture(rows: unknown): Promise<CompendiumFixtur
 async function resetCompendiumFixture(): Promise<CompendiumFixtureResult> {
   compendiumFixtureRows = null;
   codexFilter = '';
+  codexView = DEFAULT_CODEX_LIST_VIEW_V1; codexOpenShelves.clear();
   codexReturnState = null;
   if (openPanelId() === 'codex') fillCodex('');
   else {
@@ -14993,6 +15372,7 @@ function compendiumBreedOutcomeCopy(
 }
 
 async function runCompendiumBreedAction(request: CompendiumBreedActionRequestV1): Promise<void> {
+  const revealBefore = compendiumRevealPages.snapshot();
   let outcome: Arc5BreedCommitOutcome;
   try { outcome = await commitCompendiumBreedAction(request); }
   catch (error) {
@@ -15006,6 +15386,7 @@ async function runCompendiumBreedAction(request: CompendiumBreedActionRequestV1)
     compendiumBreedController.settle(copy);
     if (copy.convergence === 'none') refreshCompendiumFeedState();
     updateChips();
+    if (outcome.kind === 'committed' && copy.convergence === 'none') compendiumRevealPages.revealSince(revealBefore);
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
     if (outcome.durability === 'committed' && f4Runtime !== null) {
@@ -16684,6 +17065,7 @@ async function runCaptureCardAction(
   request: CaptureCardActionRequest,
   presentationFence: string | null,
 ): Promise<void> {
+  const revealBefore = compendiumRevealPages.snapshot();
   let outcome: Arc4CaptureActionOutcome;
   try {
     outcome = presentationFence === null
@@ -16718,6 +17100,7 @@ async function runCaptureCardAction(
         gameEvent('bioscan', { worldKey: outcome.result.worldKey });
       }
       if (openPanelId() === 'codex') fillCodex(codexFilter);
+      if (copy.convergence === 'none') compendiumRevealPages.revealSince(revealBefore);
     }
     const greetingClaim: TameGreetingClaim | null = tameGreetingAudioOwner
       ?.claimCommittedTameGreeting(outcome, arc5OwnershipState) ?? null;
@@ -17068,13 +17451,18 @@ function presentCommittedCombatChronicle(
   if (openPanelId() !== 'combat') {
     throw new Error('Combat Chronicle panel did not open');
   }
-  // ?battle2=1 only (Nick 2026-09-24): the painted stage paces the Chronicle log — a gate set BEFORE start, released by the stage
-  // at each turn's impact (the log never waits more than COMBAT_CHRONICLE_PACER_MAX_WAIT_MS per row); reduced motion keeps the cadence.
-  const battle2Flag = new URLSearchParams(location.search).get('battle2') === '1';
+  // The painted stage (the default since A4, 2026-09-26; `?battle2=0` opts out — battle2-gate.ts) paces the Chronicle log: a gate set
+  // BEFORE start, released by the stage at each turn's impact (the log never waits more than COMBAT_CHRONICLE_PACER_MAX_WAIT_MS per row);
+  // reduced motion keeps the cadence.
+  const battle2Flag = battle2On(location.search);
   const battle2Pacer = battle2Flag && motionOK() ? createCombatChroniclePacerGateV1() : null;
   if (battle2Flag) combatChronicleController.setPacer(battle2Pacer?.pacer ?? null);
   const generation = combatChronicleController.start(chronicle, cuePlan);
   combatChronicleAudioSession = null;
+  // D15: the battle loop under the Chronicle (major for a Guardian/Titan), then the outcome's sting as its rows finish
+  (globalThis as { cfSoundscapeV1?: { combatScene(major: boolean, result: 'win' | 'loss' | 'draw', ms: number): void } }).cfSoundscapeV1?.combatScene(
+    settlement.encounter.defender.kind === 'guardian' || settlement.encounter.defender.kind === 'titan',
+    settlement.outcome === 'champion-win' ? 'win' : settlement.outcome === 'defender-win' ? 'loss' : 'draw', 1500 + cuePlan.cues.length * 320);
   if (openPanelId() !== 'combat'
     || combatChronicleMount.querySelector('[data-combat-chronicle-log]') === null) {
     tameGreetingAudioOwner?.cancelCombatPlayback('chronicle-not-current');
@@ -17089,8 +17477,9 @@ function presentCommittedCombatChronicle(
     combatBattleScene?.stop('close');
     /* The verified settlement and its Chronicle remain usable without art. */
   }
-  // A6 study flag (?battle2=1): the A3 battle stage v2 over the same Chronicle mount; dynamic import only under the flag, never on the default path.
-  if (new URLSearchParams(location.search).get('battle2') === '1') void import('./battle2-wiring.js').then(m => m.mountBattle2Study({ mount: combatChronicleMount, settlement, chronicle, generation, pacer: battle2Pacer, ownership: arc5OwnershipState, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { battle2Pacer?.releaseAll(); /* the flagged study never blocks the Chronicle */ });
+  // The painted battle stage over the same Chronicle mount (A4: the default; `?battle2=0` opts out). A dynamic import reached only when a
+  // fight is presented, so boot never loads it; a study failure leaves the Chronicle, which stays the accessible owner of the outcome.
+  if (battle2On(location.search)) void import('./battle2-wiring.js').then(m => m.mountBattle2Study({ mount: combatChronicleMount, settlement, chronicle, generation, pacer: battle2Pacer, ownership: arc5OwnershipState, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { battle2Pacer?.releaseAll(); /* the flagged study never blocks the Chronicle */ });
   try {
     const claim = tameGreetingAudioOwner?.claimCommittedCombatSession(outcome, cuePlan) ?? null;
     if (claim !== null) {

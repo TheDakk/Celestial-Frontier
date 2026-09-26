@@ -1,5 +1,91 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
+## D15 Stages 1–3 — original sources (matches code as of 2026-09-26)
+
+**Model.** Every shipped sound is ORIGINAL, rendered at runtime by pure generators from a fixed seed. There are no recordings, downloads or AI audio, and 0 audio bytes ship. Rights are "original, CC0 by the project"; the per-source seed and output SHA-256 rows live in `AUDIO_LICENSES.md` and are generated from `originalSourceManifestV1()`, with a drift test. The Sound Kit's frozen tone rules the generators (`soundkit/organic.ts`):
+- **Creature voices** are throat, breath and body: a glottal source-filter model (jittered Rosenberg flow, aspiration, formant bank, lip radiation), breathing, a purr, stridulation, a syrinx, swim-bladder drumming, Minnaert bubbles and turbulent hiss.
+- **Impacts** are modal strikes, mass-scaled thuds and material tails.
+- **Loops** use a seamless-loop crossfade.
+- **Music** uses Karplus-Strong plucks, mallets, breath tones and bowed drones.
+
+**Stage 1 (landed).**
+- `soundkit/original-voices.ts`: the quadruped source set (call ×2, alert, attack-vocal, hurt, faint, victory, breath-idle, land-thud, footfall, tame-settle, feed-chew), the ten footfall sets, and the nine material textures shared by every archetype.
+- `soundkit/original-combat.ts`: the 16-cue battle set (struck wood, plucked stings, air) and the Wild theme (snarl, rush, rake).
+- **Wiring.** The battle stage's creature voices (`battle2-wiring.ts`), the turn sink's default renderer (`turn-audio.ts`) and the Listening page all use them. An archetype or theme without an original set yet falls back to the labelled placeholder, and says so (`library.original`, the `original-pending` flag).
+- **Levels.** Cues ATTENUATE only to their class target (creature and combat: −14 LUFS short-term, ≤ −1 dBTP). `soundkit/leveler.ts` (make-up gain under a look-ahead peak limiter) is only for beds and music.
+
+**Stage 2 (landed).**
+- **All 13 voice archetypes are original**, so the placeholder has left the creature player path:
+  - primate: hoots building to a scream, barks, lip-smacks;
+  - hopper: a vocal-sac croak gated at the pulse rate;
+  - bird: syrinx phrases, a chip, a scream, a coo;
+  - fish: swim-bladder drumming and bubbles;
+  - insect: stridulation and a wing buzz;
+  - arachnid: a hissing rasp;
+  - serpent: hisses and a rattle;
+  - myriapod: dense leg ticks;
+  - radial: water pulses and a sting snap;
+  - cephalopod: jets and bubbles;
+  - flyer-membrane: chitters and a screech;
+  - brachyuran: claw clacks and froth.
+- **All 11 ability themes are original, in the kit's words:**
+  - fire: ignition, roar, scorch;
+  - frost: crackle, hiss, shatter;
+  - storm: charge, crack, thunder;
+  - tide: draw, surge, slap;
+  - stone: grind, tumble, crunch;
+  - venom: hiss, spray, sizzle;
+  - void: inhale, tear, collapse;
+  - sand: rasp, rush, scour;
+  - chem: fizz, spray, corrode;
+  - psionic: hum, ripple, snap;
+  - wild: snarl, rush, rake.
+- **Material impacts.**
+  - `battle2/cue-plan.ts` names the struck side on `battle:hitstop-thump` (`target`).
+  - The turn sink (`impactMaterial`) layers that body's material tail (`withMaterialTailV1`): fur muffles, chitin clicks, plate rings, water slaps, crystal chimes, and so on.
+  - The stage passes each side's voice-card material.
+
+**Stage 3 (landed).**
+- **Ambience** (`soundkit/ambience.ts`).
+  - Ten family beds: temperate, jungle, coast, underwater, desert, ice, volcanic, crystal, spore and gas. They are built from wind, surf swells, insect beds, distant bird phrases, drips, glass chimes, ice creaks, magma bubbles and so on.
+  - Four weather layers: rain, wind, storm (with thunder) and snow-sand.
+  - The 43-biome derivation (`ambiencePlanV1`) uses `PRODUCTION_BIOME_BEDS` to pick a family and detail family, applies a seeded tone and level tint (±0.5 dB), and takes the weather from the biome profile. Airless worlds are silent, and underwater has no weather. Time of day is a playback gain (night −1.2 dB, twilight −0.6 dB).
+  - Beds are 24 s seamless crossfade loops and weather loops are 17 s, so the pair repeats only every 408 s. Stereo is the same loop rotated about 37 %. Rendering is at 32 kHz.
+- **Music** (`soundkit/music.ts`).
+  - Seven states in 11 pieces, 397 s in total:
+    - menu, 45 s;
+    - calm-a and calm-b, 60 s each;
+    - wonder, 50 s;
+    - tension, 40 s;
+    - battle and major-battle, 55 s loops (the tail wraps into the head);
+    - four 8 s stings: victory, discovery, defeat and triumph.
+  - Each piece is a deterministic modal score: a motif developed by repetition and transposition, over a bowed drone, mallet arpeggios, a plucked bass or a frame-drum ostinato. It is played by plucks, mallets, a breathed flute and a bowed drone. Mono, 32 kHz.
+- **Levels without runtime measurement.** Every bed, weather layer and piece is deterministic, so its level gain is a constant.
+  - The gain is found once by the real BS.1770 meter (`levelGainV1`) and stored in `soundkit/level-gains.generated.ts` (57 entries).
+  - At runtime the gain is only applied (`applyLevelV1`: gain, then a look-ahead limiter at −2 dBFS).
+  - `tests/soundkit-soundscape.test.ts` re-measures every entry, proves this exact runtime output passes the gate (beds also at night), and regenerates with `CF_REGENERATE_LEVEL_GAINS=1`.
+  - Renders are generator JOBS. Desktop measurements: a bed takes 40–85 ms in total with slices of at most ~32 ms, and a music piece takes at most ~250 ms with slices of at most ~37 ms. Phone slices are about four times that, pending the H1 probe.
+- **The owner** (`soundkit/soundscape.ts`, `createSoundscapeV1`). It is the ONE owner of continuous sound, on the accessible owner's decorative port. `DecorativeVoicePort.stopVoice` stops only the voices that port started.
+  - One bed plus its weather layer; phones get the bed only.
+  - The bed stops the moment `setAmbience(null)` is called.
+  - A hidden tab stops everything, and visibility RESTARTS the bed and the loop.
+  - The sparse rule: a calm piece plays once, then 120–300 s of only ambience. The gap comes from a presentation seed, never gameplay RNG or the wall clock.
+  - Battle and major-battle loop only in battle (`combatScene`), then the outcome's sting plays.
+  - Buffers live in a byte LRU of at most 24 MiB decoded. A port refusal (not running, muted) retries every 4 s.
+- **Wiring** (`main.ts`, loaded lazily as its own chunk).
+  - The surface vista request sets the world's bed (`request.biomeKey`); the vista teardown clears it.
+  - The visibility and pageshow handlers hide and restart.
+  - The combat Chronicle calls `combatScene` (major for Guardians and Titans; a win, loss or draw sting).
+  - Calm music starts once the owner is ready. The hooks call `globalThis.cfSoundscapeV1`, so the test-executed regions never meet an undeclared name.
+- **Listening page.** `?audioReview=1` now lists 217 items: the 143 creature cues, the 49 combat cues, the 10 ambience families, the 4 weather layers and the 11 music pieces. Each plays exactly what the game plays.
+- **Pack.** All of this is rendered at runtime, so the audio section of the pack is still 0 bytes (the Stage 0 12 MiB gate is unchanged).
+
+**Tests.** `tests/soundkit-original-sources.test.ts`:
+- every cue at three sizes passes the gate;
+- originality against the placeholder, and determinism;
+- the turn sink's real path renders the original cue (control: the placeholder renderer differs);
+- the ledger drift check (control: a changed hash fails).
+
 ## D15 Stage 0 — audio plumbing (matches code as of 2026-09-25)
 Nick decided D15 (the in-house $0 plan, `audits/PROPOSALS_20260925/N5_AUDIO.md`). Stage 0 lands the plumbing; no new sound source ships.
 - **Measured loudness gate** (`port/v2/apps/game/src/soundkit/loudness.ts`):
@@ -23,7 +109,7 @@ Nick decided D15 (the in-house $0 plan, `audits/PROPOSALS_20260925/N5_AUDIO.md`)
   - The oscillator Tame/Feed/Compendium call plans already key on the same signature; they become articulations of this card in Stage 4.
   - Test: `battle2-wiring.test.ts` "one voice per creature". The stage card equals the Compendium card byte for byte, in two battles. Control: with the identity card switched off it fails.
 
-- **H1 codec decode check** (`port/v2/apps/game/src/device-probe.ts`, page `?deviceProbe=1`, dynamic import only):
+- **H1 codec decode check** (`port/v2/apps/game/src/device-probe.ts`, page `?deviceProbe=1`, dynamic import only; the same page's performance / heat / memory sections are described in UI_PRESENTATION.md):
   - Five tiny genuine samples are embedded with their SHA-256 (`device-probe-codec-samples.ts`): a 440 Hz sine, 0.12 s, Opus in Ogg/WebM/CAF and AAC in M4A/ADTS.
   - Each sample is verified against its hash (a mismatch is a FAIL), then decoded through the device's real `decodeAudioData`.
   - PASS needs the real tone: 80–300 ms, at least one channel, RMS above 0.01. A rejected decode is UNSUPPORTED.

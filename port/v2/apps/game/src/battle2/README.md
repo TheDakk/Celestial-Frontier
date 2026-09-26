@@ -19,7 +19,9 @@ Per-ability effects (B2): `effects/theme-library.ts` resolves every kit theme; W
 
 ## Flag-gated wiring (A6 part 2)
 
-`apps/game/src/battle2-wiring.ts` mounts the stage over the Chronicle mount under `?battle2=1` (one guarded dynamic import in `main.ts`): pixi classes passed in, asset fetch by audit path relative to the shipped arena recipe (`/battle2/…`, see "Painted library in the arena"; the fetcher keeps its old name `devAssetSource`), Codex's keyer (`kit-contact-math.mjs`, static import) from the kit runtime route, `createPartsRig` for a combatant with a registered painted fit (E1), else `createFixtureRig` for a landmark record with a registered keyed master (today only the Civet's) and `createPortraitRig` otherwise, each combatant's theme from the combat domain (`abilityTheme`), the transcript log fed through `turnPlanInputFromTranscriptEvent` → `stage.play` → `stage.tick` on the app ticker with `performance.now` injected. `status()` reports rigs, effects (painted / procedural per side), voices (batch 3: one derived voice per side from its record or genome) and audio (the cue log; main.ts passes the accessible audio owner's `decorativeVoicePort()`, so the runtime's own admission still rules every cue). The Chronicle log stays the accessible owner of the outcome; the stage never changes HP or rewards.
+`apps/game/src/battle2-wiring.ts` mounts the stage over the Chronicle mount for every presented fight — the DEFAULT since A4 (2026-09-26;
+`battle2-gate.ts` `BATTLE2_DEFAULT`, `?battle2=0` opts out, `?battle2=1` forces on; the matchup picker stays behind `?battle2=1&vs=…`) —
+through one guarded dynamic import inside `presentCommittedCombatChronicle` in `main.ts`, never on the boot path: pixi classes passed in, asset fetch by audit path relative to the shipped arena recipe (`/battle2/…`, see "Painted library in the arena"; the fetcher keeps its old name `devAssetSource`), Codex's keyer (`kit-contact-math.mjs`, static import) from the kit runtime route, `createPartsRig` for a combatant with a registered painted fit (E1), else `createFixtureRig` for a landmark record with a registered keyed master (today only the Civet's) and `createPortraitRig` otherwise, each combatant's theme from the combat domain (`abilityTheme`), the transcript log fed through `turnPlanInputFromTranscriptEvent` → `stage.play` → `stage.tick` on the app ticker with `performance.now` injected. `status()` reports rigs, effects (painted / procedural per side), voices (batch 3: one derived voice per side from its record or genome) and audio (the cue log; main.ts passes the accessible audio owner's `decorativeVoicePort()`, so the runtime's own admission still rules every cue). The Chronicle log stays the accessible owner of the outcome; the stage never changes HP or rewards.
 
 Open A3 defaults recorded for Nick: melee themes = `wild, stone, sand` (others cast); run-up = 55 % of the stand distance; damage number rises 7 % of frame height from 30 % above the ground line; cursor blink 250 ms; idle tail 600 ms after the last beat.
 
@@ -94,8 +96,8 @@ painter master, painted masks) exists at its served path.
 Civet landmark record and master, and for every archetype its `record.json`, `binding.json`, `parts/keyed.png`,
 `parts/manifest.json`, atlas, painter master (`record.source`) and painted masks. It keeps the proof folders' relative
 layout and writes `MANIFEST.json` (path, bytes and sha256 per file). The wiring resolves every path against
-`/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json`, and `main.ts` imports the wiring only under
-`?battle2=1`, so the files are fetched only then. They are never precached: the service worker's asset list is the Rollup
+`/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json`, and `main.ts` imports the wiring only when a fight is
+presented (default on since A4; `?battle2=0` opts out), so the files are fetched only then. They are never precached: the service worker's asset list is the Rollup
 bundle (`apps/game/pwa-build.ts` `generateBundle`), which does not include `public/` (see Known limits).
 The sprint records carry absolute painter-master paths into the OpenAI worktree.
 `tools/creature-animation/record-source.mjs` `repoRelativeSource` rewrites a path under a Celestial Frontier worktree root

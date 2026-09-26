@@ -1,0 +1,88 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts (29 tests | 3 failed) 523ms
+     × keeps every rendered Guide and release oracle green on current exact copy before browser spend 88ms
+     × executes Guide split-markup, contradiction, polarity, and exact-restoration controls 20ms
+     × keeps a fixed 119-row Guide oracle with five independent population controls 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps every rendered Guide and release oracle green on current exact copy before browser spend
+AssertionError: specimen: expected Object{ ok: false, …(5) } to match object { ok: true, missing: [], …(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "contradictory": false,
+-   "missing": [],
+-   "ok": true,
++   "missing": [
++     "Companion tastes, meal growth, wound care, bond memories and friendly duels are live; companion poison, dispatch and missions remain unavailable",
++   ],
++   "ok": false,
+  }
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:315:68
+    313|     for (const group of specGroups) {
+    314|       for (const spec of group.specs) {
+    315|         expect(evaluateGuide(spec.id, group.check(spec)), spec.id).toM…
+       |                                                                    ^
+    316|           ok: true,
+    317|           missing: [],
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > executes Guide split-markup, contradiction, polarity, and exact-restoration controls
+AssertionError: expected Object{ ok: false, …(5) } to match object { ok: false, …(2) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "contradictory": false,
+    "missing": [
+      "successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save",
++     "Parent consumption and manual genetic editing remain unavailable. Care, bond memories and combat are live; missions remain unavailable",
+    ],
+    "ok": false,
+  }
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:624:64
+    622|           'Charter co-delivery omitted',
+    623|         )).toEqual({ count: 1, changed: true, start: expect.any(Number…
+    624|         expect(dom.window.eval(compendiumCheck(breedingSpec))).toMatch…
+       |                                                                ^
+    625|           ok: false,
+    626|           missing: [breedingAnchor],
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps a fixed 119-row Guide oracle with five independent population controls
+AssertionError: expected 105 to be 118 // Object.is equality
+
+- Expected
++ Received
+
+- 118
++ 105
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:1048:37
+    1046|     expect(glassExpectedBulletCount).toBe(119);
+    1047|     expect(glassMissingBulletCount).toBe(105);
+    1048|     expect(glassMissingBulletCount).toBe(glassExpectedBulletCount - 1);
+       |                                     ^
+    1049|     expect(glassSource).toContain('119-outcome development inventory');
+    1050|     expect(glassSource).not.toContain('55-outcome development inventor…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  3 failed | 41 passed (44)
+   Start at  00:24:11
+   Duration  21.47s (transform 1.07s, setup 0ms, import 6.71s, tests 19.36s, environment 0ms)
+

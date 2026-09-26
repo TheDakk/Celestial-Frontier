@@ -4,6 +4,43 @@ Each section dates itself (most with a `matches code as of` marker; a section wi
 description). Refreshed in place September 24, 2026: the painted Compendium card and matchup picker section only; the
 rest of this doc was not re-verified in that refresh.
 
+## v2 H1 device probe page (`?deviceProbe=1`) — matches code as of 2026-09-26
+- Flag-gated and loaded through a dynamic import only. The default boot never loads it; a test proves this.
+- The page is a full-screen overlay with 44 px buttons in this order: **Run codec check** (D15), **Run performance (≈45 s)**, **Run heat (3 min)**, **Read memory**, **Copy results** and **Close**.
+- **Copy results** gives one plain-text block. It holds the commit, the pack digest (from the package's own `preview.json`), UA, DPR, viewport and every number beside its budget.
+- **Owners:**
+  - `device-probe.ts` owns the page and the codec section.
+  - `device-probe-performance.ts` owns the pure analysis and the recorder: the real matchup picker's scripted bout on the app's own ticker, with the stage's ticker callbacks timed and rAF intervals.
+  - `main.ts` builds the runtime port lazily, when a Run is pressed.
+- **Budgets are read, never set.**
+  - The 60 Hz pacing budget comes from `inspectFramePacing` (`tools/quadruped-proof/motion-proof-contract.mjs`): fps ≥ 57, interval p95 ≤ 25 ms, max ≤ 100 ms, ≥ 570 frames. A test checks this against the owner at its boundaries.
+  - Long intervals (≥ 25 ms) and busy frames (> 1000/60 ms) are counted the way Codex's native summaries count them.
+  - The residency limits are the caches' own constants: painted archetypes 2, and the morph atlas cache at 8 entries / 96 MiB.
+- **Heat is a proxy.** iOS exposes no temperature, so the page judges 30 s windows of the sustained heaviest pair by the same pacing budget and reports the p95 drift.
+- **Memory is reported honestly.** The JS heap is shown only where `performance.memory` exists; iOS Safari has none, so it prints "unavailable" and never an estimate.
+
+## v2 localization scaffolding (A6) — matches code as of 2026-09-26
+- **Pattern** (`i18n.ts`): each surface owns an English source-string catalog (text plus `title` / `aria-label` / `placeholder`). `localizeElementV1` swaps the strings after render.
+- **Settings is the first surface** (`SETTINGS_CATALOG_V1`, 50 strings). Its localizer is registered through `panels.ts` `setPanelLocalizerV1`, and only for a non-English `?locale=`, so English stays byte-identical.
+- **Locales:** `en`, and the pseudo-locale `qps-ploc`.
+- **Fallbacks:** a missing translation or an uncatalogued string falls back to English with a dev warning. `data-l10n-skip` guards player data.
+- The pixel fit of longer strings is still to be run in a real browser (see `audits/H1_L10N_20260926/README.md`).
+
+## v2 landing vista view and postcard (D16 #9/#10; ledger A6 share card) — matches code as of 2026-09-26
+- **The pill row.** While a landing vista is on screen (surface, vista mounted and visible, not in Field Training), a pill row of real 44 px buttons sits over the stage, outside the survey card: **⛶ Vista** and **⇪ Postcard**. The measured default card is unchanged.
+- **The view.** ⛶ Vista sets `body.vista-view`: the survey card, panels and HUD chrome step aside, so the full-stage vista stands alone (v1's Full screen). Any tap steps back without acting on the world, and so does Escape (v1: while zoomed, a tap steps out).
+- **The postcard.** It is v1's exact composition: the vista, an 86 px band, the title in Georgia 26, the CF1 share code in 9 px mono, and the wordmark. The vista is capped at 1,600 px wide. The postcard is deterministic from the world: the vista is its deterministic render, and the text is its own name and code.
+- **Sharing.** The postcard goes to the Web Share API as a file when the device can share files (the iPhone share sheet). A dismissed sheet is cancelled, never a surprise download. Otherwise it downloads. It works offline, with v1's toast.
+- **Code.** The module is `vista-postcard.ts`; `main.ts` owns `vistaPills`, `setVistaViewing` and `saveVistaPostcard`.
+
+## v2 Compendium filter chips and shelves (D16 #36/#37) — matches code as of 2026-09-26
+- **Chip bar.** One horizontally scrolling row of 44 px chips above the Compendium list, shown once the Compendium has a species: kingdom (All · 🐾 Fauna · 🌿 Flora · 🍄 Fungi · 🦠 Microbes), the rarity floor (All · Rare+ · Legendary+ · Mythic+, on the DISPLAY tier) and "▦ Shelves". This is v1's `_codexTabs` in one row; logic in `compendium-shelves.ts`.
+- **Scroll height.** The list's virtual scrollport gives up exactly the chip row (52 px) in both height owners, so no row hides under the dock.
+- **Shelves (opt-in, off by default).** The list groups onto v1's themed shelves (`CODEX_SHELF_OF_V1`, domain `REALM_ORDER`). Each shelf is a real button fold header. Nothing opens itself; a kingdom or rarity filter lays every shelf open. The default Compendium stays the flat virtual list that Codex's instruments measure.
+- **State.** Filters and shelf folds are session view state, never saved. The fixture install/reset (Codex's I5 instrument) returns them to the default.
+- **Origin travel (#38).** A wild catch's detail card has a 44 px "Travel to <world> ↗" button: v1 `data-go`, travelling to the saved `where` through the one proven-route owner (search-travel), then v1's "Course Plotted" toast. A hybrid, a page without a resolvable world, and a measurement fixture show no button and never travel.
+- **Reveal queue (#39).** A committed action's NEW pages (a first catch, a bred hybrid; a page diff taken before and after the commit) are revealed as a modal specimen card: the painted portrait (a cancellable art-loader request), the name, the kind, and a 44 px Continue ("Continue · N more"). A separate "Skip all (N)" button and Escape clear the rest (v1's "hold to skip all" as a real button). This is v1's one-voice rule: while another modal or Field Training owns the screen, reveals queue, and the next input pulse after it closes flushes them. A measurement fixture reveals nothing. `compendium-reveal.ts`, owner in `main.ts` (`compendiumReveal`, `compendiumRevealPages`).
+
 ## v2 folded survey card (D18) — matches code as of 2026-09-25
 
 - **An option, off by default.** Settings → "Folded survey card" (`#setfold`). Nick decided on 2026-09-25 that the default stays the flat card, which is the card uilayout and the Slice/Glass instruments measure.
@@ -3446,3 +3483,23 @@ silently clobbered an existing check, **empty** boards that collapse under `min-
 reach the dock, and stale `--tut-bot` left over from the dodge pass. In its first two forms it
 passed on the shipped build the external round had already proven broken. *Reproduce the reported
 geometry, populate the surface, and control against the broken build — every time.*
+
+## ADDENDUM 2026-09-26 — Outposts UI (D14; matches code as of 2026-09-26)
+
+`port/v2/apps/game/src/outposts-ui.ts`, wired in `main.ts` (the block before `const sideEl`):
+- **World card:** `buildCardActions` calls `outpostCardActionHtml(p, onThisSurface)`, the **Outposts** section. It shows each site here
+  with its stage bill (short parts in red), its deed (done/need) and Build / Abandon, plus a "🏗 Build <name> here" button for every kind
+  that can start. Finished outposts put their icon beside the section title (the portrait mark). A finished Sanctuary shows a
+  6-companion checkbox picker.
+- **Projects board:** `fillCharters` appends `outpostBoardHtml()` (its own 2 slots and the 24 total).
+- **Museum:** `projectExpeditionChronicleV1` takes optional `outposts` exhibits and adds a fifth **Outposts** gallery.
+- **Controls:** ONE document-delegated `OutpostsControllerV1`. Abandon needs a second, confirming press. Every control is 44 px.
+- **Hidden before the unlock:** nothing renders before `st-comp` (projects appear in no Guide or objective before the unlock).
+
+## Current Guide inventory — matches code 2026-09-26
+
+The C34 reconciliation measures119 ordered draft release bullets,41 topics and5 read-only
+Advanced Briefings. Missions, Outposts, Compendium filters/reveals/origin travel, postcards,
+original audio and device/translation tooling are documented at their current scope. The
+painted battle note does not claim per-species generated originals before G1/G2 delivery.
+Exact copy authority and controls: audits/G_PIPELINE_CODEX_20260926/measured-copy.json.

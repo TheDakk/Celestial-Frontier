@@ -1,0 +1,68 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts (29 tests | 2 failed) 329ms
+     × keeps every rendered Guide and release oracle green on current exact copy before browser spend 81ms
+     × executes Guide split-markup, contradiction, polarity, and exact-restoration controls 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps every rendered Guide and release oracle green on current exact copy before browser spend
+AssertionError: breeding: expected Object{ ok: false, …(5) } to match object { ok: true, missing: [], …(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "contradictory": false,
+-   "missing": [],
+-   "ok": true,
++   "missing": [
++     "Parent consumption and manual genetic editing remain unavailable. Care, bond memories and combat are live; missions remain unavailable",
++   ],
++   "ok": false,
+  }
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:315:68
+    313|     for (const group of specGroups) {
+    314|       for (const spec of group.specs) {
+    315|         expect(evaluateGuide(spec.id, group.check(spec)), spec.id).toM…
+       |                                                                    ^
+    316|           ok: true,
+    317|           missing: [],
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > executes Guide split-markup, contradiction, polarity, and exact-restoration controls
+AssertionError: expected Object{ ok: false, …(5) } to match object { ok: false, …(2) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "contradictory": false,
+    "missing": [
+      "successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save",
++     "Parent consumption and manual genetic editing remain unavailable. Care, bond memories and combat are live; missions remain unavailable",
+    ],
+    "ok": false,
+  }
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:624:64
+    622|           'Charter co-delivery omitted',
+    623|         )).toEqual({ count: 1, changed: true, start: expect.any(Number…
+    624|         expect(dom.window.eval(compendiumCheck(breedingSpec))).toMatch…
+       |                                                                ^
+    625|           ok: false,
+    626|           missing: [breedingAnchor],
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  2 failed | 42 passed (44)
+   Start at  00:22:50
+   Duration  15.50s (transform 544ms, setup 0ms, import 4.21s, tests 14.15s, environment 0ms)
+

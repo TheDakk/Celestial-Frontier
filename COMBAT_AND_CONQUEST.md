@@ -283,9 +283,15 @@ share one helper and the fingerprint held.
 >   Break** announces the change BEFORE it applies (Hold / Swap / Withdraw; Auto holds), then for the rest of the fight, across legs, it
 >   uses `ENCOUNTER_GUARDIAN_PHASE_V1` (current evaluation-only numbers in the S4 section below). The engine takes it as `defender.phase`
 >   (`encounterHasGuardianPhaseV1(kind)`); every caller derives it from the defender kind (planner, Chronicle prelude, card forecast,
->   battle2 beats, the app probe) and the open-encounter record SEALS it (`defenderPhase`). **D17/C32:** every Guardian/Titan fight,
->   including lone Balanced Auto, takes the phase route. Exact v1 parity is an engine control with phase OFF;
->   the production solo win-rate band is measured separately. Tests: `packages/domain/combatcore/test/encounter-phase.test.ts` (announced at
+>   battle2 beats, the app probe) and the open-encounter record SEALS it (`defenderPhase`). **D17 (Nick 2026-09-25, code `832dc18b`):**
+>   the phase applies in EVERY Guardian/Titan fight, a lone Balanced Auto fighter included — the settlement planner, Main's card action
+>   and the card's single-fight forecast resolve phase fights through `runEncounterV1`; the verbatim v1 `runDuel` path is kept only for a
+>   defender without the phase, and v1 parity stays the engine's own phase-off test; the production solo win-rate band is measured separately (Codex's S4).
+> - **A4: the painted battle stage is the DEFAULT presentation (2026-09-26; matches code).** `battle2-gate.ts` (`BATTLE2_DEFAULT = true`,
+>   `battle2On`) is the one rule: every presented fight mounts the painted stage over the Chronicle; `?battle2=0` opts out to the
+>   Chronicle-only path; flip the constant to make it opt-in again. The stage is still a dynamic import reached only when a fight is
+>   presented (boot never loads it), the Chronicle stays the accessible owner of the outcome, a study failure leaves the Chronicle, and the
+>   stage never changes HP or rewards. A production release stays gated by the I5 certificate, not by this constant. Tests: `packages/domain/combatcore/test/encounter-phase.test.ts` (announced at
 >   half health before the change and identical up to it; the defender changes after — mutation control; Command pause + Swap + reload).
 >   - **The explorer fights Guardians in Auto only:** the settlement binds the explorer's exact health, which moves between Breaks, so a
 >     sealed explorer could strand the record (even Withdraw settles through that binding). `openArc6CommandEncounterV1` refuses it.

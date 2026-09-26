@@ -37,6 +37,25 @@ D1's later signed decision authorizes the ranked painting order with one sheet
 per ten, not per-paint approval; delivered paintings still need their evidence.
 A mailbox acknowledgment never claims a pending delivery or certificate passed.
 
+## Disk-space law — Nick, 2026-09-26 (IMPERATIVE; both lanes)
+
+On 2026-09-26 the 460 GB Mac disk reached 100 % (ENOSPC). Claude's shell died, and Codex's running lane was at risk. The causes:
+- 16 finished agent worktrees of about 10 GB each, never removed (the harness LOCKS them, so a single `git worktree remove --force` silently fails);
+- a 9.5 GB stash an agent parked;
+- stale I5 worktrees in `/private/tmp`;
+- about 20 GB of old preview packages.
+
+It must never happen again. Every batch, in either lane:
+1. **Check at the start AND the end:** `df -h /System/Volumes/Data`. Keep at least **40 GiB free**. Below **60 GiB, clean up before starting anything new**. Below 40 GiB, stop and clean first. Report the free space in every batch packet.
+2. **Remove every temporary worktree the moment its work is merged or abandoned.**
+   - Verify its HEAD is an ancestor of your lane head first.
+   - Then `git worktree remove --force --force <path>` (twice: agent worktrees are locked) and `git worktree prune`.
+   - At most **4** live temporary worktrees per lane. Cut new ones from the lane head, not `develop`.
+3. **Never park large stashes.** If a stash is unavoidable, tag it, drop it by tag the same batch, and never stash harness-populated files.
+4. **Prune ignored build output every batch:** keep only the newest 2 `apps/game/smoke/dev-preview-*` packages, and delete superseded native/film scratch output. Only ignored files: run `git status` afterwards and confirm nothing tracked changed.
+5. **Measure before committing heavy evidence.** Keep films/webm in Git only when they are the named acceptance evidence. The branch already carries ~2.9 GiB of films. Prefer a retained hash plus a scratch copy.
+6. **Model caches and node_modules copies** (`cp -cR`) count too. Remove a worktree's copy when the worktree goes.
+
 ## Long-session decision override — Nick, 2026-09-13
 
 No new branches. Prune on openai/mac first; the three promotion tiers into develop use merge

@@ -62,6 +62,13 @@ import {
   ARC5_OWNERSHIP_MIGRATION_VERSION,
   V4_PRIMARY_KEY,
   applyV5ExtensionWrites,
+  finishedShelterPlanetSeedsV1,
+  EMPTY_OUTPOST_PROJECTS_V1,
+  buildOutpostStageV1,
+  startOutpostV1,
+  outpostProjectsWriteV1,
+  readOutpostProjectsV1,
+  type OutpostProjectsStateV1,
   arc2LootLegacyMirrorMatches,
   createMemoryBackend,
   createRevisionedRepository,
@@ -280,7 +287,7 @@ async function bootFromDurableSave(backend: StorageBackend, tag: string): Promis
   };
 }
 
-async function freshFixture(sessionSeed: number, ownershipV2?: OwnershipStateV2): Promise<DurableFixture> {
+async function freshFixture(sessionSeed: number, ownershipV2?: OwnershipStateV2, outposts: OutpostProjectsStateV1 | null = null): Promise<DurableFixture> {
   const imported = importSaveV2('{}', REGISTRY, NOW);
   if (!imported.ok) throw new Error(imported.reason);
   const state: SaveStateV2 = {
@@ -308,7 +315,8 @@ async function freshFixture(sessionSeed: number, ownershipV2?: OwnershipStateV2)
   const arc5 = prepareArc5OwnershipMigration({ extensions: arc4, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER });
   if (arc5.kind !== 'prepared') throw new Error(arc5.kind);
   const backend = createMemoryBackend();
-  const initial = prepareV5SaveWrite({ state, extensions: arc5.extensions }, REGISTRY, NOW);
+  const withOutposts = outposts === null ? arc5.extensions : applyV5ExtensionWrites(arc5.extensions, [outpostProjectsWriteV1(outposts)]).extensions;
+  const initial = prepareV5SaveWrite({ state, extensions: withOutposts }, REGISTRY, NOW);
   await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: initial.legacyV4Raw }]);
   const migrated = await migrateStoredV4ToV5(backend, REGISTRY, NOW);
   if (migrated.kind !== 'migrated') throw new Error(`Bioscan fixture was ${migrated.kind}`);
@@ -395,6 +403,8 @@ function mainBioscanHarness(f: DurableFixture, mutations: readonly MainMutation[
     projectEngineeringCapabilities,
     projectWorldOpportunity,
     projectBioscanActionV1,
+    // D14: Main's presentation hint (Main-local outpostShelteredAt), read from the same runtime carrier
+    outpostShelteredAt: (seed: number) => { const r = readOutpostProjectsV1(f.runtime.extensions); return r.kind === 'loaded' && finishedShelterPlanetSeedsV1(r.state).includes(seed >>> 0); },
     commitBioscanActionV1,
     publishBioscanActionV1,
     ownershipStateDigestV2,
@@ -691,4 +701,37 @@ describe('A5 #16 — Discover Life is a UI outcome that survives reload', () => 
       name: 'drifted', needle: 'await runArc9BioscanNonexistent(', replacement: '',
     })).toThrow(/found 0/u);
   });
+});
+
+/* D14 Outposts P5 — the Field Shelter's reward, through the SAME Discover Life press on the same hostile world. */
+function shelterOn133(finished: boolean): OutpostProjectsStateV1 {
+  const ctx = { world: { galaxySeed: 999, starSeed: 424242, planetSeed: 133, name: 'Earth', systemPlanetSeeds: [133] }, hasFauna: true, standingHere: true };
+  const facts = (landings: number) => ({ honouredCharters: ['st-comp'], research: [] as string[], landed: [133], conquered: [] as number[], landings, fedTotal: 0,
+    items: { hullseg: 2, cryocap: 1, servo: 1, cell: 1, fuelcell: 1 }, stardust: 100 });
+  let t = startOutpostV1(EMPTY_OUTPOST_PROJECTS_V1, facts(1), 'shelter', ctx, 10); if (t.kind !== 'ok') throw new Error(t.reason);
+  for (const [n, landings] of (finished ? [[1, 1], [2, 1], [3, 2]] : [[1, 1], [2, 1]]) as [number, number][]) {
+    t = buildOutpostStageV1(t.state, facts(landings), 'shelter@133', { standingHere: true }, 10 + n); if (t.kind !== 'ok') throw new Error(t.reason);
+  }
+  return t.state;
+}
+describe('D14 — a finished Field Shelter makes Discover Life hazard-free (P5)', () => {
+  it('the hostile world declares no danger and the press wounds nobody; control: an UNFINISHED shelter protects nothing', async () => {
+    for (const finished of [true, false]) {
+      const f = await freshFixture(HOSTILE_SEED, undefined, shelterOn133(finished));
+      const h = mainBioscanHarness(f);
+      try {
+        const button = h.bioscanButton();
+        expect(button, 'Main must render Discover Life').not.toBeNull();
+        const probability = Number(button!.dataset.bioscanProbability);
+        if (finished) expect(probability, 'a sheltered world declares no danger').toBe(0);
+        else expect(probability, 'control: an unfinished shelter leaves the danger').toBeGreaterThan(0);
+        button!.click();
+        await settled(h);
+        const saved = await durableSave(f);
+        expect(saved.state.surveyedSet).toEqual([h.address.key]);
+        if (finished) expect(saved.state.hp, 'sheltered: the explorer is untouched').toBe(START_HP);
+        else expect(saved.state.hp, 'control: the same hostile draw wounds the explorer').toBeLessThan(START_HP);
+      } finally { h.dom.window.close(); await f.runtime.release(); }
+    }
+  }, 120_000);
 });

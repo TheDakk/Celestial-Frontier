@@ -57,6 +57,10 @@ function seatPnx(def: PanelDef, retained?: HTMLElement): void {
   title?.classList.add('sheet-header');
   title?.setAttribute('data-sheet-kind', def.id);
 }
+/** A6 localization (i18n.ts): a panel's post-render localizer, registered ONLY when a non-English locale is active — so with none
+ * registered (the default) `fillPanel` writes exactly the markup it was given. */
+const PANEL_LOCALIZERS = new Map<string, (el: HTMLElement) => void>();
+export function setPanelLocalizerV1(id: string, localize: ((el: HTMLElement) => void) | null): void { if (localize) PANEL_LOCALIZERS.set(id, localize); else PANEL_LOCALIZERS.delete(id); }
 /** refill a panel's content WITHOUT losing the sticky ✕ */
 export function fillPanel(id: string, html: string): void {
   const def = PANELS.find((p) => p.id === id);
@@ -65,6 +69,7 @@ export function fillPanel(id: string, html: string): void {
   const closeOwnedFocus = close !== undefined && document.activeElement === close;
   close?.remove();
   def.el.innerHTML = html;
+  PANEL_LOCALIZERS.get(id)?.(def.el);
   seatPnx(def, close);
   if (closeOwnedFocus) close?.focus({ preventScroll: true });
 }

@@ -1,0 +1,17 @@
+ACTIONS BUDGET POLICY: PASS — automatic hosted runner spend is disabled
+PASS  script syntax (node --check)
+PASS  css brace balance  — 2 { vs 2 }
+PASS  no duplicate element ids  — 157 ids
+PASS  no Math.random/Date.now in domain modules  — clean
+PASS  version consistency — v1.8.9 (GAME_VERSION = package.json)
+PASS  class->rig binding  — 631 fauna classified, 196 sentinels OK
+  fauna rig distribution: amphibian:15 arachnid:10 bat:4 bird:102 ceph:8 crust:24 fish:110 gastropod:11 insect:42 jelly:5 legacy:15 mammal:170 marine:20 primate:17 reptile:24 serpent:28 sessile:19 turtle:7
+PASS  color atlas  — pure, deterministic; 32 body/star combos, all hex valid
+PASS  biome profiles  — 43 live biomes, all covered; sigs + families valid
+probe build written: /Users/nick/Projects/celestial-frontier-openai-mac/tools/probe-build.html ( 309 hooked names )
+boot errors: 0
+rendered: 1010  render fails: 0
+PASS  render audit  — 1010 Earth species rendered clean (incl. new rigs)
+boot errors: 0
+probe entries: 50  probe ERRs: 0
+FINGERPRINT MATCH (50 probes identical to v1.0 baseline)

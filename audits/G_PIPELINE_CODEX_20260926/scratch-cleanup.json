@@ -1,0 +1,16 @@
+{
+  "removedReproducibleOldBuilds": [
+    "port/v2/apps/game/smoke/charter-header-evidence-dist-20260908",
+    "port/v2/apps/game/smoke/earth-civet-landing-evidence-dist-20260908",
+    "port/v2/apps/game/smoke/earth-layered-evidence-dist-20260908",
+    "port/v2/apps/game/smoke/earth-layered-settled-evidence-dist-20260908",
+    "port/v2/apps/game/smoke/earth-layered-visible-evidence-dist-20260908",
+    "port/v2/apps/game/smoke/earth-material-evidence-dist-20260908",
+    "port/v2/apps/game/smoke/earth-turn-evidence-dist-20260908",
+    "port/v2/apps/game/smoke/painted-mars-composition-evidence-dist-20260908",
+    "port/v2/apps/game/smoke/painted-mars-evidence-dist-20260908",
+    "port/v2/apps/game/smoke/trinary-evidence-dist-20260908"
+  ],
+  "statusUnchanged": true,
+  "after": "Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on\n/dev/disk3s5   460Gi   229Gi   205Gi    53%    1.2M  2.1G    0%   /System/Volumes/Data\n"
+}
