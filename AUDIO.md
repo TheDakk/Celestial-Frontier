@@ -1,5 +1,25 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
+## D15 Stages 1–3 — original sources (matches code as of 2026-09-26)
+
+**Model.** Every shipped sound is ORIGINAL, rendered at runtime by pure generators from a fixed seed. There are no recordings, downloads or AI audio, and 0 audio bytes ship. Rights are "original, CC0 by the project"; the per-source seed and output SHA-256 rows live in `AUDIO_LICENSES.md` and are generated from `originalSourceManifestV1()`, with a drift test. The Sound Kit's frozen tone rules the generators (`soundkit/organic.ts`):
+- **Creature voices** are throat, breath and body: a glottal source-filter model (jittered Rosenberg flow, aspiration, formant bank, lip radiation), breathing, a purr, stridulation, a syrinx, swim-bladder drumming, Minnaert bubbles and turbulent hiss.
+- **Impacts** are modal strikes, mass-scaled thuds and material tails.
+- **Loops** use a seamless-loop crossfade.
+- **Music** uses Karplus-Strong plucks, mallets, breath tones and bowed drones.
+
+**Stage 1 (landed).**
+- `soundkit/original-voices.ts`: the quadruped source set (call ×2, alert, attack-vocal, hurt, faint, victory, breath-idle, land-thud, footfall, tame-settle, feed-chew), the ten footfall sets, and the nine material textures shared by every archetype.
+- `soundkit/original-combat.ts`: the 16-cue battle set (struck wood, plucked stings, air) and the Wild theme (snarl, rush, rake).
+- **Wiring.** The battle stage's creature voices (`battle2-wiring.ts`), the turn sink's default renderer (`turn-audio.ts`) and the Listening page all use them. An archetype or theme without an original set yet falls back to the labelled placeholder, and says so (`library.original`, the `original-pending` flag).
+- **Levels.** Cues ATTENUATE only to their class target (creature and combat: −14 LUFS short-term, ≤ −1 dBTP). `soundkit/leveler.ts` (make-up gain under a look-ahead peak limiter) is only for beds and music.
+
+**Tests.** `tests/soundkit-original-sources.test.ts`:
+- every cue at three sizes passes the gate;
+- originality against the placeholder, and determinism;
+- the turn sink's real path renders the original cue (control: the placeholder renderer differs);
+- the ledger drift check (control: a changed hash fails).
+
 ## D15 Stage 0 — audio plumbing (matches code as of 2026-09-25)
 Nick decided D15 (the in-house $0 plan, `audits/PROPOSALS_20260925/N5_AUDIO.md`). Stage 0 lands the plumbing; no new sound source ships.
 - **Measured loudness gate** (`port/v2/apps/game/src/soundkit/loudness.ts`):

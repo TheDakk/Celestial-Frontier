@@ -62,7 +62,7 @@ import { createCreatureVoiceHook, type CreatureVoiceHook } from './soundkit/crea
 import { creatureVoiceCardV1, ownedCreatureVoiceCardV1 } from './soundkit/voice-identity.js';
 import type { VoiceCard } from './soundkit/voice-card.js';
 import type { CreatureInstanceId, OwnershipStateV2 } from '@cf/domain-acquisition';
-import { synthesizePlaceholderLibrary } from './soundkit/placeholder-archetype.js';
+import { originalSourceLibraryV1 } from './soundkit/original-voices.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
 import { BATTLE2_SWAP_BEAT_MS_V1, BATTLE2_SWAP_BEAT_REDUCED_MS_V1, battle2SwapBeatsV1, type Battle2SwapBeatV1 } from './battle2/swap-beats.js';
 import type { CombatSettlementPlanV1 } from '@cf/domain-combatcore';
@@ -464,7 +464,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       ? ownedCreatureVoiceCardV1(input.ownership, championId as CreatureInstanceId) : championGenome ? creatureVoiceCardV1(championGenome) : undefined;
     // a combatant with no resolvable AudioSignature (a partial genome) keeps the record-based voice rather than falling silent
     const defenderVoice = creatureVoiceCardV1(input.settlement.encounter.defender.battleGenome);
-    voices = createCreatureVoiceHook({ sources: synthesizePlaceholderLibrary().sources, seed: recipe.seed ^ fnv1a32(input.settlement.battleId),
+    voices = createCreatureVoiceHook({ sources: originalSourceLibraryV1().sources, seed: recipe.seed ^ fnv1a32(input.settlement.battleId),
       sides: { left: { record: matchRecord(records, championGenome), genome: championGenome, seed: left.seed, label: input.chronicle.championName, ...(championVoice?.ok ? { card: championVoice } : {}) },
         right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, seed: right.seed, label: input.chronicle.defenderName, ...(defenderVoice.ok ? { card: defenderVoice } : {}) } } });
     cueSink = input.audio ? createTurnCueSink({ runtime: input.audio, seed: recipe.seed ^ fnv1a32(input.settlement.battleId), phone: input.deviceTier === 'low', creatureVoice: voices }) : null;
