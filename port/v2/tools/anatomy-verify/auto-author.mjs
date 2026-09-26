@@ -82,7 +82,11 @@ export function cyclicDtw(A, B, { turnWeight = 0.05, offsetStep = 4 } = {}) {
       D[i * (m + 1) + j] = v + c; P[i * (m + 1) + j] = p;
     }
     const cost = D[n * (m + 1) + m] / (n + m);
-    if (cost < best.cost) { const pairs = []; let i = n, j = m; while (i > 0 && j > 0) { pairs.push([i - 1, (j - 1 + off) % m]); const p = P[i * (m + 1) + j]; if (p === 0) { i--; j--; } else if (p === 1) i--; else j--; } best = { cost, pairs: pairs.reverse() }; }
+    if (cost < best.cost) { const pairs = []; let i = n, j = m; while (i > 0 && j > 0) { pairs.push([i - 1, (j - 1 + off) % m]); const p = P[i * (m + 1) + j]; if (p === 0) { i--; j--; } else if (p === 1) i--; else j--; } pairs.reverse();
+      // detours: the longest run where the target advances while the reference index stays put (extra anatomy on the target), and
+      // the converse (reference anatomy the target lacks) — fractions of the contour
+      let runT = 0, runR = 0, curT = 0, curR = 0; for (let k = 1; k < pairs.length; k++) { if (pairs[k][0] === pairs[k - 1][0]) { curT++; runT = Math.max(runT, curT); } else curT = 0; if (pairs[k][1] === pairs[k - 1][1]) { curR++; runR = Math.max(runR, curR); } else curR = 0; }
+      best = { cost, pairs, detourTarget: runT / m, detourRef: runR / n }; }
   }
   return best;
 }
@@ -114,7 +118,7 @@ export function transferReference(target, ref, { lambda = 2e3, pairStride = 3 } 
   const landmarksPx = Object.fromEntries(Object.entries(ref.authoring.landmarksPx).map(([k, p]) => [k, map(p)]));
   const parts = ref.authoring.parts.map((p) => ({ id: p.id, joint: p.joint, layer: p.layer, polygonPx: p.polygonPx.map(map) }));
   const gRef = ref.authoring.groundLineY * ref.h, footX = ref.box.x0 + ref.box.w / 2, gy = map([footX, gRef])[1] / target.h;
-  return { cost: dtw.cost, landmarksPx, parts, groundLineY: gy, ref };
+  return { cost: dtw.cost, detourTarget: dtw.detourTarget, detourRef: dtw.detourRef, landmarksPx, parts, groundLineY: gy, ref };
 }
 
 const inside = (x, y, poly) => { let yes = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], b = poly[j]; if ((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) yes = !yes; } return yes; };
@@ -153,9 +157,11 @@ function climbToRidge(dt, w, h, [x, y], R) {
 
 /** Bone segments per part: a part at joint J owns the bones J→child for every child of J in the family graph; a terminal owns a short
  * extension of its parent→J bone (the tip); the root marker owns nothing. `graph` is the contract's [[child, parent], ...]. */
-export function boneSegments(partsSpec, landmarksPx, graph) {
+export function boneSegments(partsSpec, landmarksPx, graph, convention = null, { extendTerminals = true } = {}) {
   const children = new Map(), parent = new Map(); for (const [c, p] of graph) { if (!children.has(p)) children.set(p, []); children.get(p).push(c); parent.set(c, p); }
   return partsSpec.map((part) => { const J = part.joint, P = landmarksPx[J]; if (!P || J === 'root') return [];
+    if (convention?.get(part.id) === 'parent') { const Q = landmarksPx[parent.get(J)]; return Q ? [[Q, P]] : [[P, P]]; }
+    if (!extendTerminals && !(children.get(J) ?? []).some((c) => landmarksPx[c])) return [[P, P]];
     const kids = (children.get(J) ?? []).filter((c) => landmarksPx[c]);
     if (kids.length) return kids.map((c) => [P, landmarksPx[c]]);
     const par = parent.get(J), Q = par && landmarksPx[par]; if (!Q) return [[P, P]];
@@ -196,16 +202,64 @@ function boneOnPaint(target, segs, dilatePx) {
 }
 /** Paint far from every bone, relative to the body diagonal (duplicated or extra anatomy). */
 function farFromBones(L, diag, frac) { let n = 0, far = 0; for (let i = 0; i < L.lab.length; i++) { if (L.lab[i] < 0) continue; n++; if (L.dist[i] > frac * diag) far++; } return far / Math.max(1, n); }
-/** Skeleton statistics of a subject's OWN hand authoring (so the verdict compares like with like). */
+/** Skeleton statistics of a subject's OWN hand authoring (so the verdict compares like with like), plus, per part, how well each bone
+ * convention reproduces the subject's hand polygons (IoU on paint) — pooled over REFERENCES to choose the convention for a target. */
 export function skeletonStats(prepared, authoring, graph, farFrac = 0.1) {
-  const segs = boneSegments(authoring.parts, authoring.landmarksPx, graph), L = labelByBones(prepared, segs, 4), diag = Math.hypot(prepared.box.w, prepared.box.h);
-  const counts = authoring.parts.map((_, k) => { let n = 0; for (let i = 0; i < L.lab.length; i++) if (L.lab[i] === k) n++; return n / Math.max(1, L.lab.filter((v) => v >= 0).length); });
-  return { far: farFromBones(L, diag, farFrac), partShare: Object.fromEntries(authoring.parts.map((p, k) => [p.id, counts[k]])) };
+  const diag = Math.hypot(prepared.box.w, prepared.box.h), all = (c) => new Map(authoring.parts.map((p) => [p.id, c]));
+  const hand = (x, y) => { const k = authoring.parts.findIndex((p) => inside(x, y, p.polygonPx)); return k < 0 ? authoring.remainderPart : authoring.parts[k].id; };
+  const iou = {}; let L = null;
+  for (const conv of ['child', 'parent']) { const Lc = labelByBones(prepared, boneSegments(authoring.parts, authoring.landmarksPx, graph, all(conv)), 4); if (conv === 'child') L = Lc;
+    const inter = new Map(), a = new Map(), b = new Map();
+    for (let gy = 0; gy < Lc.H; gy++) for (let gx = 0; gx < Lc.W; gx++) { const k = Lc.lab[gy * Lc.W + gx]; if (k < 0) continue; const got = authoring.parts[k].id, want = hand(gx * 4 + 2, gy * 4 + 2);
+      a.set(got, (a.get(got) ?? 0) + 1); b.set(want, (b.get(want) ?? 0) + 1); if (got === want) inter.set(got, (inter.get(got) ?? 0) + 1); }
+    for (const p of authoring.parts) { const I = inter.get(p.id) ?? 0, U = (a.get(p.id) ?? 0) + (b.get(p.id) ?? 0) - I; (iou[p.id] ??= {})[conv] = U ? I / U : 0; } }
+  const shareOf = (Lx) => { const tot = Lx.lab.reduce((n, v) => n + (v >= 0 ? 1 : 0), 0); return Object.fromEntries(authoring.parts.map((p, k) => { let n = 0; for (let i = 0; i < Lx.lab.length; i++) if (Lx.lab[i] === k) n++; return [p.id, n / Math.max(1, tot)]; })); };
+  const Lp = labelByBones(prepared, boneSegments(authoring.parts, authoring.landmarksPx, graph, all('parent')), 4);
+  return { far: farFromBones(L, diag, farFrac), farParent: farFromBones(Lp, diag, farFrac), partShare: shareOf(L), partShareParent: shareOf(Lp), conventionIoU: iou };
+}
+/** Per-part convention pooled over reference subjects' hand authoring (never the target's). */
+export function learnConvention(refs) {
+  const sum = new Map(); for (const r of refs) for (const [id, v] of Object.entries(r.skeleton?.conventionIoU ?? {})) { const s = sum.get(id) ?? { child: 0, parent: 0 }; s.child += v.child; s.parent += v.parent; sum.set(id, s); }
+  // ONE convention per family (a mixed choice gives two parts the same bone, and one of them then owns nothing)
+  let child = 0, parent = 0; for (const s of sum.values()) { child += s.child; parent += s.parent; }
+  const pick = parent > child ? 'parent' : 'child'; return new Map([...sum.keys()].map((id) => [id, pick]));
+}
+
+/** Shortest path over the paint from A to B that favours the medial ridge (cost 1/(dt+1) per step), on a `step` grid inside the
+ * padded box of the two points; returns full-resolution points A→B, or null when the paint does not connect them. */
+export function ridgePath(target, dt, A, B, step = 3, pad = 80) {
+  const x0 = Math.max(0, Math.floor(Math.min(A[0], B[0]) - pad)), y0 = Math.max(0, Math.floor(Math.min(A[1], B[1]) - pad));
+  const x1 = Math.min(target.w - 1, Math.ceil(Math.max(A[0], B[0]) + pad)), y1 = Math.min(target.h - 1, Math.ceil(Math.max(A[1], B[1]) + pad));
+  const W = Math.floor((x1 - x0) / step) + 1, H = Math.floor((y1 - y0) / step) + 1, idx = (x, y) => y * W + x;
+  const cell = (p) => [Math.min(W - 1, Math.max(0, Math.round((p[0] - x0) / step))), Math.min(H - 1, Math.max(0, Math.round((p[1] - y0) / step)))];
+  const paint = (gx, gy) => { const X = x0 + gx * step, Y = y0 + gy * step; return target.mask[Y * target.w + X] ? dt[Y * target.w + X] : -1; };
+  const [sx, sy] = cell(A), [tx, ty] = cell(B), dist = new Float64Array(W * H).fill(Infinity), prev = new Int32Array(W * H).fill(-1);
+  const heap = []; const push = (d, i) => { heap.push([d, i]); let k = heap.length - 1; while (k > 0) { const p = (k - 1) >> 1; if (heap[p][0] <= heap[k][0]) break; [heap[p], heap[k]] = [heap[k], heap[p]]; k = p; } };
+  const pop = () => { const top = heap[0], last = heap.pop(); if (heap.length) { heap[0] = last; let k = 0; for (;;) { const l = 2 * k + 1, r = l + 1; let m = k; if (l < heap.length && heap[l][0] < heap[m][0]) m = l; if (r < heap.length && heap[r][0] < heap[m][0]) m = r; if (m === k) break; [heap[m], heap[k]] = [heap[k], heap[m]]; k = m; } } return top; };
+  dist[idx(sx, sy)] = 0; push(0, idx(sx, sy)); const goal = idx(tx, ty);
+  while (heap.length) { const [d, i] = pop(); if (d > dist[i]) continue; if (i === goal) break; const gx = i % W, gy = (i / W) | 0;
+    for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) { if (!dx && !dy) continue; const X = gx + dx, Y = gy + dy; if (X < 0 || Y < 0 || X >= W || Y >= H) continue; const v = paint(X, Y); if (v < 0 && !(X === tx && Y === ty)) continue;
+      const j = idx(X, Y), nd = d + Math.hypot(dx, dy) / (Math.max(0, v) + 1); if (nd < dist[j]) { dist[j] = nd; prev[j] = i; push(nd, j); } } }
+  if (!Number.isFinite(dist[goal])) return null;
+  const out = []; for (let i = goal; i >= 0; i = prev[i]) out.push([x0 + (i % W) * step, y0 + ((i / W) | 0) * step]);
+  return out.reverse();
+}
+/** Place a contact chain's interior joints (knee, end) along the painted leg: arc-length fractions of the reference's own bones. */
+export function refineChain(target, dt, landmarksPx, refLandmarks, chain) {
+  const ids = [chain.hip, chain.knee, chain.end, chain.terminal].filter((j) => j && landmarksPx[j] && refLandmarks[j]);
+  if (ids.length < 3) return false;
+  const path = ridgePath(target, dt, landmarksPx[ids[0]], landmarksPx[ids.at(-1)]); if (!path || path.length < 4) return false;
+  const seg = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]), refLen = []; let tot = 0;
+  for (let k = 1; k < ids.length; k++) { tot += seg(refLandmarks[ids[k - 1]], refLandmarks[ids[k]]); refLen.push(tot); }
+  const cum = [0]; for (let k = 1; k < path.length; k++) cum.push(cum[k - 1] + seg(path[k - 1], path[k]));
+  for (let k = 1; k < ids.length - 1; k++) { const t = (refLen[k - 1] / tot) * cum.at(-1); let j = 1; while (j < cum.length - 1 && cum[j] < t) j++; const f = (t - cum[j - 1]) / Math.max(1e-9, cum[j] - cum[j - 1]);
+    landmarksPx[ids[k]] = [path[j - 1][0] + (path[j][0] - path[j - 1][0]) * f, path[j - 1][1] + (path[j][1] - path[j - 1][1]) * f]; }
+  return true;
 }
 
 /** Author one target from same-family references (and, for the verdict, the other families' references and the mirrored target).
  * `refs`: [{family, subjectId, rgba?, prepared, authoring, h}] ; returns {verdict, reasons, authoring, presence, evidence}. */
-export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null }) {
+export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0 }) {
   const same = refs.filter((r) => r.family === family), other = refs.filter((r) => r.family !== family);
   if (!same.length) return { verdict: 'REFUSE', reasons: ['no-reference: no other hand-authored subject of family ' + family], authoring: null };
   const tr = same.map((r) => transferReference(target, r)).sort((a, b) => a.cost - b.cost), best = tr[0], reasons = [];
@@ -220,8 +274,20 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
   for (const joint of Object.keys(best.landmarksPx)) { const vals = top.filter((t) => t.landmarksPx[joint]).map((t) => t.landmarksPx[joint]); landmarksPx[joint] = [med(vals.map((p) => p[0])), med(vals.map((p) => p[1]))]; }
   // optional ridge refinement: interior joints climb to the limb's medial ridge (bounded); `ridge.keep` (contact terminals) only snap onto paint
   const dt = ridge ? distanceTransform(target.mask, target.w, target.h) : null, R = ridge ? ridge.radiusFrac * Math.hypot(target.box.w, target.box.h) : 0;
+  const rawLandmarks = Object.fromEntries(Object.entries(landmarksPx).map(([k, p]) => [k, [...p]]));
   for (const joint of Object.keys(landmarksPx)) { let p = snapToPaint(target.mask, target.w, target.h, landmarksPx[joint]); if (dt && !ridge.keep.has(joint)) p = climbToRidge(dt, target.w, target.h, p, R); landmarksPx[joint] = p.map((v) => Math.round(v * 10) / 10); }
-  const parts = best.parts.map((p) => ({ ...p, polygonPx: p.polygonPx.map(([x, y]) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10]) }));
+  // optional chain refinement: each contact chain's knee/end placed along the painted leg's ridge path (reference bone fractions)
+  const chainLog = []; if (chains?.length) { const dtc = dt ?? distanceTransform(target.mask, target.w, target.h);
+    for (const ch of chains) { const ok = refineChain(target, dtc, landmarksPx, best.ref.authoring.landmarksPx, ch); chainLog.push({ chain: ch.id, refined: ok }); }
+    for (const j of Object.keys(landmarksPx)) landmarksPx[j] = landmarksPx[j].map((v) => Math.round(v * 10) / 10); }
+  if (skeleton) return skeletonAuthor({ target, best, top, landmarksPx, rawLandmarks, graph: skeleton.graph, convention: learnConvention(same), reasons, family, id, habitat, materials, mirrorBest, otherBest, tr });
+  let parts = best.parts.map((p) => ({ ...p, polygonPx: p.polygonPx.map(([x, y]) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10]) }));
+  // optional bounded nudge: each non-remainder part may translate within ±nudgeFrac of the diagonal to sit on its painted anatomy
+  const nudged = []; if (nudgeFrac > 0) { const Rn = nudgeFrac * Math.hypot(target.box.w, target.box.h), stepN = Rn / 3;
+    parts = parts.map((p) => { if (p.id === best.ref.authoring.remainderPart || p.joint === 'root') return p; const base = paintCoverage(target.mask, target.w, target.h, p.polygonPx); let bestC = base, bd = [0, 0];
+      for (let dy = -Rn; dy <= Rn + 1e-9; dy += stepN) for (let dx = -Rn; dx <= Rn + 1e-9; dx += stepN) { if (!dx && !dy) continue; const c = paintCoverage(target.mask, target.w, target.h, p.polygonPx.map(([x, y]) => [x + dx, y + dy])); if (c > bestC + 0.05) { bestC = c; bd = [dx, dy]; } }
+      if (bd[0] || bd[1]) { nudged.push({ id: p.id, dx: Math.round(bd[0]), dy: Math.round(bd[1]), from: +base.toFixed(2), to: +bestC.toFixed(2) }); return { ...p, polygonPx: p.polygonPx.map(([x, y]) => [Math.round((x + bd[0]) * 10) / 10, Math.round((y + bd[1]) * 10) / 10]) }; }
+      return p; }); }
   // evidence from visible paint: every part must sit on paint; no large unclaimed painted region away from the body
   const coverage = parts.map((p) => ({ id: p.id, joint: p.joint, paint: paintCoverage(target.mask, target.w, target.h, p.polygonPx), area: polyArea(p.polygonPx) }));
   const refCoverage = new Map(best.ref.partPaint.map((c) => [c.id, c.paint]));
@@ -236,7 +302,34 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
   const authoring = { id, family, ...(habitat ? { habitat } : {}), landmarksPx, groundLineY: Math.min(0.999, Math.max(0.05, best.groundLineY)), materials, remainderPart: best.ref.authoring.remainderPart, parts,
     coverage: { declarations: `G1 automatic authoring: landmarks = median of ${top.length} registered references; parts from ${best.ref.subjectId}. No hidden/folded inference; absent only by visible-paint evidence.`, sourceFacing: 'right', visualAcceptance: 'none — automatic' } };
   return { verdict: reasons.length ? 'REFUSE' : 'ADMIT', reasons, authoring, presence: { schema: 'cf.anatomy-presence/v2', absent: [], hidden: [], folded: [] },
-    evidence: { schema: AUTO_AUTHOR_SCHEMA, bestReference: best.ref.subjectId, costs: tr.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
+    evidence: { schema: AUTO_AUTHOR_SCHEMA, chains: chainLog, nudged, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, costs: tr.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
+}
+
+/** Skeleton mode: parts grown from the TARGET's own paint by nearest bone of the placed skeleton, traced to polygons; the verdict is
+ * bone-on-paint (on the UNSNAPPED transferred skeleton: an erased limb's bones hang over empty canvas), part share against the
+ * reference's own hand skeleton, and paint far from every bone. */
+function skeletonAuthor({ target, best, top, landmarksPx, rawLandmarks, graph, convention, reasons, family, id, habitat, materials, mirrorBest, otherBest, tr }) {
+  const spec = best.ref.authoring.parts.filter((p) => landmarksPx[p.joint]), remainder = best.ref.authoring.remainderPart;
+  const diag = Math.hypot(target.box.w, target.box.h), segs = boneSegments(spec, landmarksPx, graph, convention), L = labelByBones(target, segs, 2);
+  const total = L.lab.reduce((n, v) => n + (v >= 0 ? 1 : 0), 0), share = spec.map((_, k) => { let n = 0; for (let i = 0; i < L.lab.length; i++) if (L.lab[i] === k) n++; return n / Math.max(1, total); });
+  const isParent = [...convention.values()][0] === 'parent', refShare = (isParent ? best.ref.skeleton?.partShareParent : best.ref.skeleton?.partShare) ?? {};
+  const parts = [];
+  spec.forEach((p, k) => {
+    if (p.joint === 'root') { const [x, y] = landmarksPx.root; parts.push({ id: p.id, joint: p.joint, layer: p.layer, polygonPx: [[x - 6, y - 6], [x + 6, y - 6], [x + 6, y + 6], [x - 6, y + 6]] }); return; }
+    const poly = regionPolygon(L, k); if (poly) parts.push({ id: p.id, joint: p.joint, layer: p.layer, polygonPx: poly });
+  });
+  if (!parts.some((p) => p.id === remainder)) { const r = spec.find((p) => p.id === remainder); if (r) { const [x, y] = landmarksPx[r.joint]; parts.push({ id: r.id, joint: r.joint, layer: r.layer, polygonPx: [[x - 4, y - 4], [x + 4, y - 4], [x + 4, y + 4], [x - 4, y + 4]] }); } }
+  const rawSegs = boneSegments(spec, rawLandmarks, graph, convention, { extendTerminals: false }), onPaint = boneOnPaint(target, rawSegs, Math.max(2, Math.round(0.02 * diag)));
+  const evidence = spec.map((p, k) => ({ id: p.id, joint: p.joint, boneOnPaint: +onPaint[k].toFixed(3), share: +share[k].toFixed(4), refShare: +(refShare[p.id] ?? 0).toFixed(4) }));
+  for (const e of evidence) { if (e.joint === 'root' || e.id === remainder) continue;
+    if (e.boneOnPaint < 0.5) reasons.push(`missing-anatomy: bone of ${e.id} (${e.joint}) lies ${Math.round(100 * (1 - e.boneOnPaint))}% off the paint`);
+    else if (e.refShare > 0.004 && e.share < 0.2 * e.refShare) reasons.push(`missing-anatomy: part ${e.id} owns ${(100 * e.share).toFixed(2)}% of the paint (reference ${(100 * e.refShare).toFixed(2)}%)`); }
+  const far = farFromBones(L, diag, 0.1), refFar = (isParent ? best.ref.skeleton?.farParent : best.ref.skeleton?.far) ?? 0;
+  if (far > refFar + 0.03) reasons.push(`unexplained-anatomy: ${(100 * far).toFixed(1)}% of the paint lies far from every bone (reference ${(100 * refFar).toFixed(1)}%)`);
+  const authoring = { id, family, ...(habitat ? { habitat } : {}), landmarksPx, groundLineY: Math.min(0.999, Math.max(0.05, best.groundLineY)), materials, remainderPart: remainder, parts,
+    coverage: { declarations: `G1 automatic authoring (skeleton parts): landmarks = median of ${top.length} registered references; parts grown from this painting by nearest bone; part inventory from ${best.ref.subjectId}. No hidden/folded inference.`, sourceFacing: 'right', visualAcceptance: 'none — automatic' } };
+  return { verdict: reasons.length ? 'REFUSE' : 'ADMIT', reasons, authoring, presence: { schema: 'cf.anatomy-presence/v2', absent: [], hidden: [], folded: [] },
+    evidence: { schema: AUTO_AUTHOR_SCHEMA, mode: 'skeleton', convention: Object.fromEntries(convention), bestReference: best.ref.subjectId, costs: tr.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, bones: evidence, farFromBones: +far.toFixed(4) } };
 }
 
 /** Reference-side statistics (their own authoring on their own paint) so the verdict compares like with like. */

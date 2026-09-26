@@ -1,0 +1,126 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part dorsal (dorsal) covers 19% paint (reference 58%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "chains": [],
+ "nudged": [],
+ "detour": {
+  "target": 0.0292,
+  "ref": 0.0292
+ },
+ "bestReference": "pike",
+ "costs": [
+  {
+   "ref": "pike",
+   "cost": 0.00856
+  },
+  {
+   "ref": "reef-shark",
+   "cost": 0.00886
+  },
+  {
+   "ref": "salmon",
+   "cost": 0.0108
+  },
+  {
+   "ref": "tang",
+   "cost": 0.01315
+  },
+  {
+   "ref": "bass",
+   "cost": 0.01335
+  },
+  {
+   "ref": "sturgeon",
+   "cost": 0.01899
+  }
+ ],
+ "mirrorBest": 0.01822,
+ "otherFamilyBest": {
+  "family": "flyer-membrane",
+  "cost": 0.0169
+ },
+ "coverage": [
+  {
+   "id": "near-pectoral",
+   "joint": "pectoralNear",
+   "paint": 0.7330316742081447,
+   "area": 7089.235000000008
+  },
+  {
+   "id": "far-pectoral",
+   "joint": "pectoralFar",
+   "paint": 1,
+   "area": 2496.554999999993
+  },
+  {
+   "id": "dorsal",
+   "joint": "dorsal",
+   "paint": 0.18895348837209303,
+   "area": 5450.029999999993
+  },
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.9807321772639692,
+   "area": 8312.505
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.49769452449567725,
+   "area": 55515.77999999999
+  },
+  {
+   "id": "caudal",
+   "joint": "caudal",
+   "paint": 0.31729810568295114,
+   "area": 64254.69
+  },
+  {
+   "id": "root",
+   "joint": "root",
+   "paint": 1,
+   "area": 155.79999999999723
+  },
+  {
+   "id": "tail-peduncle",
+   "joint": "spine5",
+   "paint": 0.4858447488584475,
+   "area": 17544.045000000006
+  },
+  {
+   "id": "rear-body",
+   "joint": "spine4",
+   "paint": 0.7069943289224953,
+   "area": 16928.96
+  },
+  {
+   "id": "pelvic-body",
+   "joint": "spine3",
+   "paint": 0.6657681940700808,
+   "area": 11867.760000000038
+  },
+  {
+   "id": "mid-body",
+   "joint": "spine2",
+   "paint": 0.8633818589025756,
+   "area": 14314.729999999996
+  },
+  {
+   "id": "front-body",
+   "joint": "spine1",
+   "paint": 0.6895711500974658,
+   "area": 32795.58499999999
+  },
+  {
+   "id": "body",
+   "joint": "spine0",
+   "paint": 0.6682539682539682,
+   "area": 40327.150000000016
+  }
+ ],
+ "unclaimedFrac": 0.0327
+}

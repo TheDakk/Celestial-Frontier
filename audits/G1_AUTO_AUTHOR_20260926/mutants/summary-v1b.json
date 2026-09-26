@@ -1,0 +1,263 @@
+{
+ "summary": {
+  "positivesAdmitted": "6/8",
+  "flippedRefused": "8/8",
+  "wrongFamilyRefused": "8/8",
+  "erasedRefused": "4/8",
+  "duplicatedRefused": "2/8"
+ },
+ "rows": [
+  {
+   "id": "cougar",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0051,
+    "unclaimed": 0.0574,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-ankle",
+    "hind-far-paw",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0132,
+    "unclaimed": 0.0422,
+    "why": "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers"
+   },
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0177,
+    "unclaimed": 0.0703,
+    "why": ""
+   }
+  },
+  {
+   "id": "bass",
+   "family": "fish",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0097,
+    "unclaimed": 0.0689,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0116,
+    "unclaimed": 0.047,
+    "why": ""
+   },
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0097,
+    "unclaimed": 0.0689,
+    "why": ""
+   }
+  },
+  {
+   "id": "tang",
+   "family": "fish",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0097,
+    "unclaimed": 0.0447,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0181,
+    "unclaimed": 0.0699,
+    "why": ""
+   },
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0097,
+    "unclaimed": 0.0447,
+    "why": ""
+   }
+  },
+  {
+   "id": "wolf",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.005,
+    "unclaimed": 0.0104,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-paw",
+    "hind-far-ankle",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0109,
+    "unclaimed": 0.0143,
+    "why": "missing-anatomy: part hind-near-paw (hindNearPaw) covers 14%"
+   },
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0077,
+    "unclaimed": 0.0198,
+    "why": ""
+   }
+  },
+  {
+   "id": "gull",
+   "family": "biped-bird",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0162,
+    "unclaimed": 0.0239,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0205,
+    "unclaimed": 0.0268,
+    "why": "missing-anatomy: part far-shin (legFarAnkle) covers 13% pain"
+   },
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0178,
+    "unclaimed": 0.0315,
+    "why": "missing-anatomy: part near-shin (legNearAnkle) covers 13% pa"
+   }
+  },
+  {
+   "id": "goose",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0126,
+    "unclaimed": 0.0764,
+    "why": "missing-anatomy: part near-shin (legNearAnkle) covers 22% pa"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0143,
+    "unclaimed": 0.0694,
+    "why": ""
+   },
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.014,
+    "unclaimed": 0.0809,
+    "why": "unexplained-anatomy: 8.1% of the paint lies away from the bo"
+   }
+  },
+  {
+   "id": "heron",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0187,
+    "unclaimed": 0.0503,
+    "why": "missing-anatomy: part far-foot (legFarFoot) covers 18% paint"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0226,
+    "unclaimed": 0.0392,
+    "why": ""
+   },
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0212,
+    "unclaimed": 0.0466,
+    "why": ""
+   }
+  },
+  {
+   "id": "pike",
+   "family": "fish",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0086,
+    "unclaimed": 0.0329,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "head"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0147,
+    "unclaimed": 0.0855,
+    "why": "missing-anatomy: part jaw (jaw) covers 0% paint (reference 9"
+   },
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0086,
+    "unclaimed": 0.0321,
+    "why": ""
+   }
+  }
+ ]
+}

@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {createRequire} from 'node:module';
 import {spawnSync} from 'node:child_process';
-import {autoAuthor, prepareSubject, mirrorSubject, referenceStats} from '../../port/v2/tools/anatomy-verify/auto-author.mjs';
+import {autoAuthor, prepareSubject, mirrorSubject, referenceStats, skeletonStats} from '../../port/v2/tools/anatomy-verify/auto-author.mjs';
 const HERE = import.meta.dirname, ROOT = path.resolve(HERE, '../..');
 const require = createRequire(path.join(ROOT, 'port/v2/package.json'));
 const sharp = createRequire(require.resolve('free-tex-packer-core'))('sharp');
@@ -14,7 +14,11 @@ const { earthFaunaProfile } = await import(path.join(ROOT, 'port/v2/apps/game/sr
 const args = process.argv.slice(2), tag = (args.find((a) => a.startsWith('--tag=')) ?? '').slice(6), only = args.filter((a) => !a.startsWith('--'));
 const skipStatic = args.includes('--no-static');
 const ridgeArg = args.find((x) => x.startsWith('--ridge=')), ridgeFrac = ridgeArg ? Number(ridgeArg.slice(8)) : 0;
+const nudgeArg = args.find((x) => x.startsWith('--nudge=')), nudgeFrac = nudgeArg ? Number(nudgeArg.slice(8)) : 0;
 const { familyContract, familyContactChains } = await import(path.join(ROOT, 'port/v2/tools/creature-animation/family-contracts.mjs'));
+const topkArg = args.find((x) => x.startsWith('--topk=')), topK = topkArg ? Number(topkArg.slice(7)) : 3;
+const useChains = args.includes('--chains');
+const useSkeleton = args.includes('--skeleton'), graphOf = (family) => familyContract(family).graph;
 const terminalsOf = (family) => { try { return new Set(familyContactChains(familyContract(family)).map((c) => c.terminal).filter(Boolean)); } catch { return new Set(); } };
 const OUT = path.join(HERE, 'auto' + (tag ? '-' + tag : ''));
 const corpus = JSON.parse(fs.readFileSync(path.join(HERE, 'corpus.json'), 'utf8')).subjects;
@@ -30,9 +34,9 @@ const subjects = [];
 for (const s of corpus) {
   const dir = path.join(ROOT, s.packet), img = await rgbaOf(path.join(dir, 'master.png')), prepared = prepareSubject(img.rgba, img.w, img.h);
   const authoring = JSON.parse(fs.readFileSync(path.join(dir, 'authoring.json'), 'utf8'));
-  subjects.push({ ...s, dir, img, prepared, authoring, subject: JSON.parse(fs.readFileSync(path.join(dir, 'subject-source.json'), 'utf8')), stats: referenceStats(prepared, authoring) });
+  subjects.push({ ...s, dir, img, prepared, authoring, subject: JSON.parse(fs.readFileSync(path.join(dir, 'subject-source.json'), 'utf8')), stats: referenceStats(prepared, authoring), skeleton: useSkeleton ? skeletonStats(prepared, authoring, graphOf(s.family)) : null });
 }
-const refOf = (s) => ({ ...s.prepared, family: s.family, subjectId: s.id, authoring: s.authoring, partPaint: s.stats.partPaint, unclaimedFrac: s.stats.unclaimedFrac });
+const refOf = (s) => ({ ...s.prepared, family: s.family, subjectId: s.id, authoring: s.authoring, partPaint: s.stats.partPaint, unclaimedFrac: s.stats.unclaimedFrac, skeleton: s.skeleton });
 
 const inside = (x, y, poly) => { let yes = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], b = poly[j]; if ((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) yes = !yes; } return yes; };
 const ownerAt = (a, x, y) => { const k = a.parts.findIndex((p) => inside(x, y, p.polygonPx)); return k < 0 ? a.remainderPart : a.parts[k].id; };
@@ -51,7 +55,7 @@ for (const s of subjects) {
   const dir = path.join(OUT, s.id); fs.mkdirSync(dir, { recursive: true });
   const refs = subjects.filter((o) => o.id !== s.id).map(refOf); // leave-one-subject-out
   const mirrored = mirrorSubject(s.img.rgba, s.img.w, s.img.h);
-  const res = autoAuthor({ target: s.prepared, mirrored, family: s.family, id: s.authoring.id ?? s.id, refs, materials: { surface: MATERIAL[s.family] ?? 'painted surface' }, habitat: habitatFor(s.subject.name), ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(s.family) } : null });
+  const res = autoAuthor({ target: s.prepared, mirrored, family: s.family, id: s.authoring.id ?? s.id, refs, materials: { surface: MATERIAL[s.family] ?? 'painted surface' }, habitat: habitatFor(s.subject.name), topK, nudgeFrac, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(s.family) } : null, skeleton: useSkeleton ? { graph: graphOf(s.family) } : null, chains: useChains ? (() => { try { return familyContactChains(familyContract(s.family)); } catch { return null; } })() : null });
   fs.writeFileSync(path.join(dir, 'evidence.json'), JSON.stringify({ verdict: res.verdict, reasons: res.reasons, ...res.evidence }, null, 1) + '\n');
   const row = { id: s.id, family: s.family, verdict: res.verdict, reasons: res.reasons };
   if (res.authoring) {
@@ -61,7 +65,7 @@ for (const s of subjects) {
     fs.copyFileSync(path.join(s.dir, 'subject-source.json'), path.join(packet, 'subject-source.json')); // species metadata, not anatomy
     fs.writeFileSync(path.join(packet, 'authoring.json'), JSON.stringify(res.authoring, null, 2) + '\n');
     fs.writeFileSync(path.join(packet, 'presence.json'), JSON.stringify(res.presence, null, 2) + '\n');
-    if (res.verdict === 'ADMIT' && !skipStatic) {
+    if ((res.verdict === 'ADMIT' || args.includes('--diagnostic-static')) && !skipStatic) { if (res.verdict !== 'ADMIT') row.diagnosticOnly = 'static run on a REFUSED author (diagnostic; never an admission)';
       const fit = path.join(dir, 'fit');
       if (!fs.existsSync(fit)) { const r = spawnSync(process.execPath, ['port/v2/tools/creature-animation/intake-authored.mjs', packet, fit], { cwd: ROOT, encoding: 'utf8', timeout: 900000 }); fs.writeFileSync(path.join(dir, 'intake.log'), (r.stdout || '') + (r.stderr || '')); }
       if (fs.existsSync(path.join(fit, 'binding.json'))) {

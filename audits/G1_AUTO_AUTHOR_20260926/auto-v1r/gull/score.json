@@ -1,0 +1,18 @@
+{
+ "id": "gull",
+ "family": "biped-bird",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 851,
+ "landmarkMedian": 0.0524,
+ "landmarkMax": 0.5659,
+ "worst": [
+  "wingFarTip 0.566",
+  "wingNearTip 0.185",
+  "wingNearRoot 0.079"
+ ],
+ "labelAgreement": 0.6581,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

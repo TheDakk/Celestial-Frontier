@@ -1,0 +1,220 @@
+{
+  "name": "Eel",
+  "family": "serpent",
+  "species": {
+    "name": "Eel",
+    "aspect": 12,
+    "headFrac": 0.07,
+    "eyes": "normal",
+    "posture": "swimming",
+    "mustRead": [
+      "continuous fin fringe running along back, tail and belly",
+      "no pelvic fins",
+      "snake-like body with a blunt-jawed head"
+    ]
+  },
+  "genome": {
+    "seed": 2072871458,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 17,
+    "body": 15,
+    "loco": 6,
+    "trait": 11,
+    "size": 5,
+    "diet": 5,
+    "head": 7,
+    "limbs": 4,
+    "skin": 3,
+    "tail": 2,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 4,
+    "habitat": 6,
+    "detail": 5,
+    "accent": 4,
+    "temper": 7,
+    "sense": 0,
+    "repro": 1,
+    "life": 3,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Eel"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Eel\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"2072871458\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "index": 191,
+  "contract": {
+    "id": "serpent",
+    "version": 1,
+    "clipSetId": "serpent-v1",
+    "graph": [
+      [
+        "head",
+        "root"
+      ],
+      [
+        "jaw",
+        "head"
+      ],
+      [
+        "seg0",
+        "root"
+      ],
+      [
+        "seg1",
+        "seg0"
+      ],
+      [
+        "seg2",
+        "seg1"
+      ],
+      [
+        "seg3",
+        "seg2"
+      ],
+      [
+        "seg4",
+        "seg3"
+      ],
+      [
+        "seg5",
+        "seg4"
+      ],
+      [
+        "seg6",
+        "seg5"
+      ],
+      [
+        "seg7",
+        "seg6"
+      ],
+      [
+        "seg8",
+        "seg7"
+      ],
+      [
+        "seg9",
+        "seg8"
+      ]
+    ],
+    "bodyAxis": [
+      "seg0",
+      "seg9"
+    ],
+    "joints": [
+      "root",
+      "head",
+      "jaw",
+      "seg0",
+      "seg1",
+      "seg2",
+      "seg3",
+      "seg4",
+      "seg5",
+      "seg6",
+      "seg7",
+      "seg8",
+      "seg9"
+    ],
+    "legs": [],
+    "limitsDeg": {
+      "root": {
+        "min": -25,
+        "max": 25
+      },
+      "head": {
+        "min": -50,
+        "max": 50
+      },
+      "jaw": {
+        "min": -45,
+        "max": 5
+      },
+      "seg0": {
+        "min": -45,
+        "max": 45
+      },
+      "seg1": {
+        "min": -45,
+        "max": 45
+      },
+      "seg2": {
+        "min": -45,
+        "max": 45
+      },
+      "seg3": {
+        "min": -45,
+        "max": 45
+      },
+      "seg4": {
+        "min": -45,
+        "max": 45
+      },
+      "seg5": {
+        "min": -45,
+        "max": 45
+      },
+      "seg6": {
+        "min": -45,
+        "max": 45
+      },
+      "seg7": {
+        "min": -45,
+        "max": 45
+      },
+      "seg8": {
+        "min": -45,
+        "max": 45
+      },
+      "seg9": {
+        "min": -45,
+        "max": 45
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.1,
+        "max": 0.9,
+        "kind": "distance",
+        "axis": [
+          "seg0",
+          "seg9"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "head/body",
+        "min": 0.02,
+        "max": 0.5,
+        "kind": "ratio",
+        "bones": [
+          "head"
+        ],
+        "axis": [
+          "seg0",
+          "seg9"
+        ]
+      }
+    ]
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  }
+}
