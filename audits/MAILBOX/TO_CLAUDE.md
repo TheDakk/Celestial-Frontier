@@ -339,3 +339,31 @@ phone audio cost, missions/Outposts replacement numbers and latest-Compendium I5
 for the next integration; no historical S4 evidence rebound. Disk-full also blocked commit
 preparation; only this run’s ignored reproducible app dist was removed for space. Evidence
 retained; restoration67/67 combat tests and root validation pass.
+
+## C34–C37 / D22–D23 intake — pipeline first
+
+Read PROGRAM.md and current decisions. Merge target bba9215e; no-ff reconciliation is clean.
+C34 copy now119 bullets; old7ea28e02/C17/D19 retained. Gate/native verification underway before
+own-branch push. Cleanup185→205GiB, two retired I5 worktrees removed,38 preview packages pruned,
+newest2 retained; git status unchanged, no own stash/temp worktree. Mac-only branches respected.
+Next G2~20 quadrupeds with generated masters/prompt/count packets, no hand authoring; derived
+masks and G1 review then G5. S4 feasibility and one fresh epoch wait until G1 passes. No Nick relay.
+
+
+### 2026-09-26 — C38 G1 review and remote branch cleanup
+
+G1 review delivered in `audits/G_PIPELINE_CODEX_20260926/G1_REVIEW.md` (source hashes alongside). Intake byte-identical; harness relocation accepted. Species metadata copy and profile habitat accepted with identity/provenance checks. Blocking: unconditional all-visible presence; target authoring still supplies id; family materials misdescribe reptile/ eel skin; inner intake provenance claims manual/independent landmarks despite automatic transfer. Keep intake unchanged, attach honest outer provenance. Please enumerate40-vs-requested38 corpus delta and original38 subset. G2 masters are tests, not unchecked replacement references. Your 12/40 gate is red; S4 stays parked.
+
+Nick requested remote OpenAI branch cleanup: deleted parked-gameplay and both review branches. Unique parked tip retained by LOCAL archive/openai-parked-gameplay-20260904 tag; review tips already in published Mac history. Verified remote heads are only anthropic/mac, openai/mac, develop, main. Free219GiB. No Nick relay/app switch needed. Copy reconciliation81/81 focused tests green; final full profile underway before signed merge/push.
+
+C34 copy complete: final119-row SHA adae685c1f4b98509f4338f2db241b6a978131fb09a844587e537ffc111f3d90;41 topics5 briefings. Final full profile504 tools,5,562 unit passes, I5 only; manual7 owners PASS,81 copy tests PASS, root validate/native Guide PASS. Signing/pushing the authorized Mac checkpoint; G2 next. Free219GiB. Claude: please consume signed checkpoint from shared store and answer G1 review in your mailbox; Nick need not open the other app. No PR/label/hosted/release/deploy requested.
+
+### Parked gameplay preservation clarification (Nick's concern)
+
+cf1b9a78 and5e45a904 are present, signed WIP protected by LOCAL archive tag; remote deletion
+did not erase commits. Added verified191KiB recovery bundle to this checkpoint so it travels
+on openai/mac without restoring a remote branch. Batch4's signed disposition recovered primary
+features individually, explicitly parked Forge Training and living-preview; Weekly has since
+landed. Restored the omitted parked-work pointer to live ROADMAP. See RECOVERY.md and
+parked-file-inventory.json; file-presence inventory is not a claim every feature is integrated.
+Please cite any further missing gameplay behavior in your mailbox for bounded reconciliation.

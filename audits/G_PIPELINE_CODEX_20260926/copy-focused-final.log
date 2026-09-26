@@ -1,0 +1,105 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/guide-release.test.ts (35 tests | 1 failed) 95ms
+     × keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes 12ms
+ ❯ tests/exceptional-crafting-evidence-contract.test.ts (8 tests | 2 failed) 457ms
+     × replays every current rendered release control and preserves the Research reach boundary 154ms
+     × rejects the historical generic Research-reach false green and restores the bulletin 91ms
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts (29 tests | 1 failed) 395ms
+     × keeps every rendered Guide and release oracle green on current exact copy before browser spend 131ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/exceptional-crafting-evidence-contract.test.ts > Pureforged browser-evidence truth > replays every current rendered release control and preserves the Research reach boundary
+AssertionError: expected 'development-detail baseline red befor…' to be null
+
+- Expected:
+null
+
++ Received:
+"development-detail baseline red before mutation controls: {\"ok\":false,\"identity\":true,\"honest\":false,\"overclaim\":true,\"headings\":[\"New Features & Systems\",\"UI Enhancements\",\"Gameplay\",\"Bug Fixes\",\"Under the Hood\"],\"bulletCount\":119,\"populated\":true,\"charterPlacement\":true,\"firstHeading\":\"Gameplay\",\"recoveryHeading\":\"Bug Fixes\",\"ingressPlacement\":true,\"worldCodeHeading\":\"Gameplay\",\"atlasRouteHeading\":\"Gameplay\",\"worldCodeContract\":true,\"atlasRouteContract\":true,\"captureHeading\":\"Gameplay\",\"captureContract\":true,\"captureContradiction\":false,\"captureBioscanContradiction\":false,\"discoverLifeContradiction\":false,\"scoutHeading\":\"Gameplay\",\"scoutContract\":true,\"scoutContradiction\":false,\"recordsHeading\":\"UI Enhancements\",\"recordsContract\":true,\"recordsContradiction\":false,\"frontierAudioHeading\":\"New Features & Systems\",\"creatureListenHeading\":\"Gameplay\",\"biosphereListenHeading\":\"Gameplay\",\"audioContract\":true,\"audioContradiction\":false,\"mealHeading\":\"Gameplay\",\"mealContract\":true,\"mealContradiction\":false,\"breedHeading\":\"Gameplay\",\"breedContract\":true,\"breedContradiction\":false,\"renameHeading\":\"Gameplay\",\"renameContract\":true,\"renameContradiction\":false,\"lessonHeading\":\"Bug Fixes\",\"lessonContract\":true,\"lessonContradiction\":false,\"trainingHeading\":\"Gameplay\",\"trainingContract\":true,\"trainingContradiction\":false,\"artHeading\":\"Under the Hood\",\"artContract\":true,\"artContradiction\":false,\"workspaceContract\":true,\"coldArtContract\":true,\"workerContract\":true,\"shipyardHeading\":\"New Features & Systems\",\"shipyardContract\":true,\"shipyardContradiction\":false,\"hdSurfaceHeading\":\"Under the Hood\",\"hdSurfaceContract\":true,\"publishingHeading\":\"Under the Hood\",\"publishingContract\":true,\"publishingContradiction\":false,\"rnSeen\":\"1.8.9\",\"releasePending\":null}"
+
+ ❯ tests/exceptional-crafting-evidence-contract.test.ts:346:26
+    344|   it('replays every current rendered release control and preserves the…
+    345|     const { result, after, reachClaims, launcherClaims, final } = awai…
+    346|     expect(result.error).toBeNull();
+       |                          ^
+    347|     expect(result.baseline.ok).toBe(true);
+    348|     expect(result.ok, JSON.stringify(result)).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/exceptional-crafting-evidence-contract.test.ts > Pureforged browser-evidence truth > rejects the historical generic Research-reach false green and restores the bulletin
+AssertionError: expected 'development-detail baseline red befor…' to be null
+
+- Expected:
+null
+
++ Received:
+"development-detail baseline red before mutation controls: {\"ok\":false,\"identity\":true,\"honest\":false,\"overclaim\":true,\"headings\":[\"New Features & Systems\",\"UI Enhancements\",\"Gameplay\",\"Bug Fixes\",\"Under the Hood\"],\"bulletCount\":119,\"populated\":true,\"charterPlacement\":true,\"firstHeading\":\"Gameplay\",\"recoveryHeading\":\"Bug Fixes\",\"ingressPlacement\":true,\"worldCodeHeading\":\"Gameplay\",\"atlasRouteHeading\":\"Gameplay\",\"worldCodeContract\":true,\"atlasRouteContract\":true,\"captureHeading\":\"Gameplay\",\"captureContract\":true,\"captureContradiction\":false,\"captureBioscanContradiction\":false,\"discoverLifeContradiction\":false,\"scoutHeading\":\"Gameplay\",\"scoutContract\":true,\"scoutContradiction\":false,\"recordsHeading\":\"UI Enhancements\",\"recordsContract\":true,\"recordsContradiction\":false,\"frontierAudioHeading\":\"New Features & Systems\",\"creatureListenHeading\":\"Gameplay\",\"biosphereListenHeading\":\"Gameplay\",\"audioContract\":true,\"audioContradiction\":false,\"mealHeading\":\"Gameplay\",\"mealContract\":true,\"mealContradiction\":false,\"breedHeading\":\"Gameplay\",\"breedContract\":true,\"breedContradiction\":false,\"renameHeading\":\"Gameplay\",\"renameContract\":true,\"renameContradiction\":false,\"lessonHeading\":\"Bug Fixes\",\"lessonContract\":true,\"lessonContradiction\":false,\"trainingHeading\":\"Gameplay\",\"trainingContract\":true,\"trainingContradiction\":false,\"artHeading\":\"Under the Hood\",\"artContract\":true,\"artContradiction\":false,\"workspaceContract\":true,\"coldArtContract\":true,\"workerContract\":true,\"shipyardHeading\":\"New Features & Systems\",\"shipyardContract\":true,\"shipyardContradiction\":false,\"hdSurfaceHeading\":\"Under the Hood\",\"hdSurfaceContract\":true,\"publishingHeading\":\"Under the Hood\",\"publishingContract\":true,\"publishingContradiction\":false,\"rnSeen\":\"1.8.9\",\"releasePending\":null}"
+
+ ❯ tests/exceptional-crafting-evidence-contract.test.ts:377:26
+    375|     expect(occurrences(glassSource, marker)).toBe(1);
+    376|     const { result, after, final } = await replayRenderedReleaseContro…
+    377|     expect(result.error).toBeNull();
+       |                          ^
+    378|     expect(result.baseline.ok).toBe(true);
+    379|     expect(result.ok).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/guide-release.test.ts > legacy and v2 release channels > keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes
+AssertionError: expected [ Array(1) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "/(?:passive evolution|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i",
++ ]
+
+ ❯ tests/guide-release.test.ts:2849:8
+    2847|     const draftCopy = V2_DRAFT_RELEASE.sections.flatMap((section) => s…
+    2848|     expect(forbiddenOverclaims.filter((pattern) => pattern.test(draftC…
+    2849|       .toEqual([]);
+       |        ^
+    2850|     expect(requiredCopy.filter((pattern) => !pattern.test(draftCopy)).…
+    2851|       .toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps every rendered Guide and release oracle green on current exact copy before browser spend
+AssertionError: expected Object{ …(55) } to match object { complete: true, honest: true, …(4) }
+(49 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "canonical": true,
+    "complete": true,
+-   "honest": true,
++   "honest": false,
+    "liveProgressionContract": true,
+    "liveProgressionContradiction": false,
+    "populated": true,
+  }
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:377:29
+    375|       readonly liveProgressionContradiction: boolean;
+    376|     };
+    377|     expect(releaseBaseline).toMatchObject({
+       |                             ^
+    378|       complete: true,
+    379|       honest: true,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  3 failed | 1 passed (4)
+      Tests  4 failed | 77 passed (81)
+   Start at  00:36:14
+   Duration  14.66s (transform 753ms, setup 0ms, import 4.29s, tests 13.79s, environment 0ms)
+

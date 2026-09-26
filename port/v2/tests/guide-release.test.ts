@@ -199,7 +199,7 @@ const UNAVAILABLE_V2_FEATURE_OVERCLAIMS = Object.freeze([
   /all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\s+(?:actionable|playable|available|live)/i,
   /(?:dormant|disconnected|unsupported) (?:Fabricator )?(?:effects?|outputs?|recipes?)[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i,
   ...DORMANT_CRAFTING_COPY_CONTRADICTIONS,
-  /(?:passive evolution|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i,
+  /(?:passive evolution|Kindred preferred.mission choice)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i,
   ...FEEDING_COPY_CONTRADICTIONS,
 ]);
 
@@ -499,7 +499,7 @@ function captureGuideCopyIsTruthful(body: string): boolean {
     && /Field Scout interception is live on hostile Discover Life/i.test(copy)
     && /real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment/i.test(copy)
     && /Companion Feed reveals tastes, grows Meals, mends wounds and records bond memories; it never poisons a companion/i.test(copy)
-    && /Dispatch, missions and passive evolution remain unavailable; care, bond memories and friendly duels are live/i.test(copy)
+    && /Passive evolution remains unavailable. care, bond memories, friendly duels and companion missions are live/i.test(copy)
     && FIELD_SCOUT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy))
     && COMBAT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy))
     && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
@@ -598,7 +598,7 @@ function captureReleaseCopyIsTruthful(body: string): boolean {
     && /older Surveys and capture do not count/i.test(body)
     && /Weekly bioscan Charters remain protected until their separate lifecycle is complete/i.test(body)
     && /Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail/i.test(body)
-    && /Passive evolution, dispatch and missions remain unavailable. Care, bond memories and friendly duels are live/i.test(body)
+    && /Passive evolution remains unavailable. companion missions are live. Care, bond memories and friendly duels are live/i.test(body)
     && FIELD_SCOUT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body))
     && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
 }
@@ -633,7 +633,7 @@ function breedingCopyIsTruthful(body: string): boolean {
     && /Back and Close remain available around the action/i.test(copy)
     && /successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save/i.test(copy)
     && /failed pairing, refusal, stale result, or failed write banks no Charter credit/i.test(copy)
-    && /Parent consumption and manual genetic editing remain unavailable. Care, bond memories and combat are live; missions remain unavailable/i.test(copy)
+    && /Parent consumption and manual genetic editing remain unavailable. Care, bond memories, combat and companion missions are live/i.test(copy)
     && BREEDING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
 
@@ -660,7 +660,7 @@ function breedingReleaseCopyIsTruthful(body: string): boolean {
     && /failed pairing, refusal, stale result, or failed write banks nothing and grants no Charter credit/i.test(body)
     && /unconfirmable durable result locks read-only and reloads so it cannot breed twice/i.test(body)
     && /Back and Close remain available/i.test(body)
-    && /Parent consumption, manual genetics, broader care, and missions remain unavailable/i.test(body)
+    && /Parent consumption and manual genetics remain unavailable; care, bond memories and companion missions are live/i.test(body)
     && BREEDING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
 }
 
@@ -863,7 +863,7 @@ function fieldScoutReleaseCopyIsTruthful(body: string): boolean {
     && /genuinely fresh species[^.!?]{0,160}Scout standing before the attempt earns up to \+2 XP in the same capture transaction, capped at 486/i.test(body)
     && /485 gains 1, the cap gains 0/i.test(body)
     && /no standing Scout, a miss, or a repeat species grants no Scout XP/i.test(body)
-    && /Dispatch, missions, care, and bond remain open/i.test(body)
+    && /Companion missions, care and bond are live/i.test(body)
     && FIELD_SCOUT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
 }
 
@@ -1058,7 +1058,7 @@ function compendiumCatalogueCopyIsTruthful(body: string): boolean {
     && /real Flora detail can expose the explorer’s separate .*Eat 1.* action/i.test(body)
     && /Owned fauna can become eligible conquest champions/i.test(body)
     && /designated Field Scout can intercept hostile Discover Life injury/i.test(body)
-    && /Dispatch, missions, companion care, bond, and broader husbandry remain unavailable/i.test(body)
+    && /Companion care, bond and missions are live; broader husbandry remains unavailable/i.test(body)
     && COMPENDIUM_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body))
     && FIELD_SCOUT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(plainCopy(body)))
     && FEEDING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(plainCopy(body)))
@@ -2834,7 +2834,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 106,
+        inventory: bullets.length === 119,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,
@@ -2862,7 +2862,7 @@ describe('legacy and v2 release channels', () => {
       category: section.category,
       bullets: index === 1 ? section.bullets.filter((_, bulletIndex) => bulletIndex !== 3) : section.bullets,
     }));
-    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(105);
+    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(118);
     expect(bulletinOutcome(missingMiddle).inventory).toBe(false);
     const missingRequired = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,
@@ -3121,6 +3121,7 @@ describe('legacy and v2 release channels', () => {
         )),
       }));
     for (const truthfulClaim of [
+      'Companion missions are now live.',
       'Mining is now playable.',
       'Eligible fixed Fabricator crafting is now playable.',
       'Pureforged slotted craft is now playable.',
@@ -3150,9 +3151,9 @@ describe('legacy and v2 release channels', () => {
       'Vendors are now live.',
       'Creature combat is now playable.',
       'Feeding is now playable.',
-      'Missions are now live.',
+      'Kindred preferred-mission choice is now live.',
       'Passive evolution is now available.',
-      'Missions are now playable.',
+      'Kindred preferred-mission choice is now playable.',
     ]) {
       expect(bulletinOutcome(withInjectedFeatureClaim(unavailableClaim)), unavailableClaim)
         .toMatchObject({
