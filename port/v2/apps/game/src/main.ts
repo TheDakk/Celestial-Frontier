@@ -5636,7 +5636,14 @@ if (new URLSearchParams(location.search).get('deviceProbe') === '1') {
       ?? (globalThis as { webkitAudioContext?: new () => AudioContext }).webkitAudioContext;
     mountDeviceProbeV1({ doc: document, commit: previewIdentity?.sourceCommit ?? 'local development source', ua: navigator.userAgent,
       createContext: () => { if (!Ctor) throw new TypeError('AudioContext is unavailable'); return new Ctor(); },
-      canPlayType: (mime) => document.createElement('audio').canPlayType(mime) });
+      canPlayType: (mime) => document.createElement('audio').canPlayType(mime),
+      dpr: window.devicePixelRatio || 1, viewport: `${innerWidth}×${innerHeight}`,
+      readPackDigest: async () => { const r = await fetch('./preview.json', { credentials: 'omit', cache: 'no-store' }); if (!r.ok) throw new Error('no preview.json'); const m = await r.json() as { contentSha256?: unknown }; if (typeof m.contentSha256 !== 'string') throw new Error('no digest'); return m.contentSha256; },
+      // H1 performance/heat/memory: built only when a Run is pressed (after boot); the real matchup picker on the app's own ticker
+      performance: () => ({ now: () => performance.now(), raf: (cb) => requestAnimationFrame(cb), cancelRaf: (id) => cancelAnimationFrame(id), ticker: app.ticker,
+        mountMatchup: async (search, ticker) => (await import('./battle2-matchup.js')).mountBattle2Matchup({ doc: document, search, ticker, clock: () => performance.now(), reducedMotion: false, deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } as never }),
+        jsHeap: () => (performance as Performance & { memory?: { usedJSHeapSize: number; totalJSHeapSize: number; jsHeapSizeLimit: number } }).memory ?? null,
+        paintedArt: () => speciesArtLoader.paintedDiagnostics(), morphCache: async () => (await import('./morph/morph-atlas-cache.js')).morphAtlasCache.stats() }) });
   }).catch(() => { /* the flagged probe never blocks the game */ });
 }
 const primeCount = (): number => Object.keys(save.primeFill || {}).length;

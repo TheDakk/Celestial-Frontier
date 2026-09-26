@@ -23,7 +23,7 @@ Nick decided D15 (the in-house $0 plan, `audits/PROPOSALS_20260925/N5_AUDIO.md`)
   - The oscillator Tame/Feed/Compendium call plans already key on the same signature; they become articulations of this card in Stage 4.
   - Test: `battle2-wiring.test.ts` "one voice per creature". The stage card equals the Compendium card byte for byte, in two battles. Control: with the identity card switched off it fails.
 
-- **H1 codec decode check** (`port/v2/apps/game/src/device-probe.ts`, page `?deviceProbe=1`, dynamic import only):
+- **H1 codec decode check** (`port/v2/apps/game/src/device-probe.ts`, page `?deviceProbe=1`, dynamic import only; the same page's performance / heat / memory sections are described in UI_PRESENTATION.md):
   - Five tiny genuine samples are embedded with their SHA-256 (`device-probe-codec-samples.ts`): a 440 Hz sine, 0.12 s, Opus in Ogg/WebM/CAF and AAC in M4A/ADTS.
   - Each sample is verified against its hash (a mismatch is a FAIL), then decoded through the device's real `decodeAudioData`.
   - PASS needs the real tone: 80–300 ms, at least one channel, RMS above 0.01. A rejected decode is UNSUPPORTED.

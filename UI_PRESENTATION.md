@@ -4,6 +4,21 @@ Each section dates itself (most with a `matches code as of` marker; a section wi
 description). Refreshed in place September 24, 2026: the painted Compendium card and matchup picker section only; the
 rest of this doc was not re-verified in that refresh.
 
+## v2 H1 device probe page (`?deviceProbe=1`) — matches code as of 2026-09-26
+- Flag-gated and loaded through a dynamic import only. The default boot never loads it; a test proves this.
+- The page is a full-screen overlay with 44 px buttons in this order: **Run codec check** (D15), **Run performance (≈45 s)**, **Run heat (3 min)**, **Read memory**, **Copy results** and **Close**.
+- **Copy results** gives one plain-text block. It holds the commit, the pack digest (from the package's own `preview.json`), UA, DPR, viewport and every number beside its budget.
+- **Owners:**
+  - `device-probe.ts` owns the page and the codec section.
+  - `device-probe-performance.ts` owns the pure analysis and the recorder: the real matchup picker's scripted bout on the app's own ticker, with the stage's ticker callbacks timed and rAF intervals.
+  - `main.ts` builds the runtime port lazily, when a Run is pressed.
+- **Budgets are read, never set.**
+  - The 60 Hz pacing budget comes from `inspectFramePacing` (`tools/quadruped-proof/motion-proof-contract.mjs`): fps ≥ 57, interval p95 ≤ 25 ms, max ≤ 100 ms, ≥ 570 frames. A test checks this against the owner at its boundaries.
+  - Long intervals (≥ 25 ms) and busy frames (> 1000/60 ms) are counted the way Codex's native summaries count them.
+  - The residency limits are the caches' own constants: painted archetypes 2, and the morph atlas cache at 8 entries / 96 MiB.
+- **Heat is a proxy.** iOS exposes no temperature, so the page judges 30 s windows of the sustained heaviest pair by the same pacing budget and reports the p95 drift.
+- **Memory is reported honestly.** The JS heap is shown only where `performance.memory` exists; iOS Safari has none, so it prints "unavailable" and never an estimate.
+
 ## v2 folded survey card (D18) — matches code as of 2026-09-25
 
 - **An option, off by default.** Settings → "Folded survey card" (`#setfold`). Nick decided on 2026-09-25 that the default stays the flat card, which is the card uilayout and the Slice/Glass instruments measure.
