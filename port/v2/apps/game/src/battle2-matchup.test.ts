@@ -206,7 +206,10 @@ describe('main.ts matchup gate (source text)', () => {
   const main = readFileSync(new URL('./main.ts', import.meta.url), 'utf8');
   const violations = (source: string): string[] => { const lines = source.split('\n'), out: string[] = [];
     const gated = lines.filter((l) => l.includes("get('battle2') === '1'") && l.includes("import('./battle2-matchup.js')")); if (gated.length !== 1) out.push(`expected one gated import line, found ${gated.length}`);
-    for (const l of lines) if (l.includes("import('./battle2-matchup.js')") && !l.includes("get('battle2') === '1'")) out.push('ungated dynamic import');
+    // the H1 device probe (?deviceProbe=1) also stages the real picker to time it: allowed ONLY inside that flag's own block
+    const probeGate = lines.findIndex((l) => l.startsWith("if (new URLSearchParams(location.search).get('deviceProbe') === '1') {"));
+    const probeEnd = probeGate < 0 ? -1 : lines.findIndex((l, i) => i > probeGate && l === '}');
+    lines.forEach((l, i) => { if (l.includes("import('./battle2-matchup.js')") && !l.includes("get('battle2') === '1'") && !(probeGate >= 0 && i > probeGate && i < probeEnd)) out.push('ungated dynamic import'); });
     for (const l of lines) if (/^\s*import\b/.test(l) && l.includes("'./battle2-matchup.js'")) out.push('static import');
     return out; };
   it('loads battle2-matchup only behind the study flag, dynamically; mutation controls fail', () => {
@@ -214,6 +217,11 @@ describe('main.ts matchup gate (source text)', () => {
     expect(violations(`${main}\nimport { mountBattle2Matchup } from './battle2-matchup.js';\n`)).not.toEqual([]);
     expect(violations(`${main}\nvoid import('./battle2-matchup.js');\n`)).not.toEqual([]);
     expect(violations(main.replace(/get\('battle2'\) === '1' && new URLSearchParams\(location.search\).get\('vs'\)/, "get('vs')"))).not.toEqual([]);
+    // the probe's import is inside its flag block; control: the same line moved OUTSIDE that block is caught, and removing the flag is caught
+    expect(main.split("mountMatchup: async (search, ticker) => (await import('./battle2-matchup.js'))")).toHaveLength(2);
+    const probeLine = main.split('\n').find((l) => l.includes("mountMatchup: async (search, ticker) => (await import('./battle2-matchup.js'))"))!;
+    expect(violations(main.replace(probeLine, '') + '\n' + probeLine + '\n')).not.toEqual([]);
+    expect(violations(main.replace("if (new URLSearchParams(location.search).get('deviceProbe') === '1') {", 'if (true) {'))).not.toEqual([]);
   });
   it('the picker reads no clock and no Math.random', () => {
     const code = readFileSync(new URL('./battle2-matchup.ts', import.meta.url), 'utf8').split('\n').filter((l) => !/^\s*(\*|\/\/|\/\*)/.test(l)).join('\n');
