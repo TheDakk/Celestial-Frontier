@@ -398,6 +398,8 @@ function mainBreedHarness(f: DurableFixture, mutations: readonly MainMutation[] 
     toast,
     fillCharters: vi.fn(),
     updateChips: vi.fn(),
+    // D16 reveal (compendium-reveal.ts): the runner snapshots pages before and reveals new ones after; inert here (its own test owns it)
+    compendiumRevealPages: { snapshot: () => new Set<string>(), revealSince: vi.fn() },
     refreshCompendiumFeedState: () => undefined,
   };
   const exec = executableMainBreed(env, mutations);
