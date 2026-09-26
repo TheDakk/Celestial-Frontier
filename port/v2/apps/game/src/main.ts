@@ -59,6 +59,8 @@ import {
 } from './friendly-duel.js';
 import { CompanionCareController, projectCompanionCareV1, type CompanionCareReadModelV1 } from './companion-care-panel.js';
 import { commitArc5RestActionV1 } from './arc5-rest-action.js';
+import { commitArc5MissionClaimV1, commitArc5MissionDispatchV1, commitArc5MissionRecallV1 } from './arc5-mission-action.js';
+import { MissionBoardController, missionClaimReasonV1, missionReturnTextV1, type MissionBoardRequestV1 } from './mission-board.js';
 import {
   deviceAudioAccessibilityStorage,
   readAudioAccessibilityPrefsV1,
@@ -355,7 +357,7 @@ import {
   ARC5_OWNERSHIP_MIGRATION_VERSION,
   ARC5_OWNERSHIP_EXTENSION_TARGETS,
   committedArc5OwnershipState,
-  prepareArc5OwnershipMigration, readArc5OwnershipMigration,
+  prepareArc5OwnershipMigration, readArc5OwnershipMigration, projectArc5MissionBoardV1,
   arc2LootLegacyMirrorMatches, prepareArc2LootLegacyMigration,
   prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror,
   encodeArc2LootCarrier, readArc2EngineeringLoadout, readArc2Loot, readArc3Engineering,
@@ -3996,7 +3998,7 @@ function fillCodexDetail(idx: number): void {
   } catch {
     body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
   }
-  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}${duelModel !== null ? '<section class="compendium-feed" data-friendly-duel-body aria-label="Friendly duel"></section>' : ''}${careModel !== null ? '<section class="compendium-feed" data-companion-care-body aria-label="Care and bond"></section>' : ''}</div>`);
+  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}${duelModel !== null ? '<section class="compendium-feed" data-friendly-duel-body aria-label="Friendly duel"></section>' : ''}${careModel !== null ? '<section class="compendium-feed" data-companion-care-body aria-label="Care and bond"></section><section class="compendium-feed" data-mission-board-body aria-label="Companion missions"></section>' : ''}</div>`);
   compendiumCreatureProgressionSurface.attach(
     document.querySelector<HTMLElement>('#codexpanel [data-sel="codex-detail"]')!,
   );
@@ -4043,6 +4045,8 @@ function fillCodexDetail(idx: number): void {
   if (careModel !== null) {
     companionCareController.setState(careModel);
     companionCareController.attach(document.querySelector<HTMLElement>('#codexpanel [data-companion-care-body]')!);
+    missionBoardController.setState(projectCurrentMissionBoard());
+    missionBoardController.attach(document.querySelector<HTMLElement>('#codexpanel [data-mission-board-body]')!);
   }
   const portrait = document.querySelector<HTMLImageElement>('#codexpanel [data-sel="detail-portrait"]');
   if (portrait) {
@@ -9511,6 +9515,93 @@ async function runCompanionRest(creatureId: Parameters<typeof commitArc5RestActi
     lastCompanionRestOutcome = `${durable ? 'committed-' : ''}fault`;
     if (durable && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `companion rest ${error instanceof Error ? error.message : String(error)}`);
     else companionCareController.settle('Rest unavailable. Nothing changed.');
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
+}
+/* D13 stage 2 companion missions: the board beside Care & bond (mission-board.ts). Dispatch seals its result in one receipt; claim and
+   recall are deterministic receipts (arc5-mission-action.ts). Publication copies only what each committed: the ownership, and for a
+   claim the hold, Stardust and the companion's Compendium mirror XP. No timers: the board re-projects on each render/press. */
+let lastMissionOutcome: string | null = null;
+let missionTargetWorldKey: string | null = null;
+function missionCompanionName(creatureId: string): string {
+  const c = arc5OwnershipState?.creatures.find((row) => row.creatureId === creatureId);
+  if (c === undefined) return 'Companion';
+  return c.nickname ?? String(save.codex.find(([id]) => id === `s${c.genome.seed}`)?.[1].name ?? 'Companion');
+}
+const missionBoardController = new MissionBoardController({
+  onDispatch: (request) => { void runCompanionMission('dispatch', request); },
+  onClaim: (missionId) => { void runCompanionMission('claim', missionId); },
+  onRecall: (missionId) => { void runCompanionMission('recall', missionId); },
+  onTarget: (worldKey) => { missionTargetWorldKey = worldKey; missionBoardController.setState(projectCurrentMissionBoard(), worldKey); },
+}, missionCompanionName);
+function projectCurrentMissionBoard(): ReturnType<typeof projectArc5MissionBoardV1> {
+  const runtime = f4Runtime;
+  if (runtime === null || compendiumFixtureRows !== null || arc5OwnershipProtection !== null) return null;
+  try {
+    return projectArc5MissionBoardV1({ extensions: runtime.extensions, ownershipV2: arc5OwnershipState, state: save,
+      activePlayMs: runtime.diagnostics().activePlayMs, nameOf: missionCompanionName, worldKey: missionTargetWorldKey });
+  } catch { return null; }
+}
+async function runCompanionMission(kind: 'dispatch' | 'claim' | 'recall', payload: MissionBoardRequestV1 | string): Promise<void> {
+  const runtime = f4Runtime, parent = arc5OwnershipState;
+  if (!f4RuntimeMayMutate(runtime) || parent?.mode !== 'current' || arc5OwnershipProtection !== null || activePersist
+    || importWriteInFlight || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    lastMissionOutcome = 'unavailable:write-authority'; missionBoardController.settle('Missions unavailable. Finish the current save, then try again. Nothing changed.'); return;
+  }
+  const actionClaim = productActionCoordinator.tryClaim(`companion.mission.${kind}`);
+  if (actionClaim === null) { lastMissionOutcome = 'unavailable:product-action-pending'; missionBoardController.settle('Missions unavailable — another action is still settling.'); return; }
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true; activePersist = actionBarrier; lastMissionOutcome = 'pending';
+  let durable = false;
+  try {
+    await settleF4Heartbeat();
+    if (!f4RuntimeMayMutate(runtime) || arc5OwnershipState !== parent) { lastMissionOutcome = 'refused:authority-changed'; missionBoardController.settle('Missions unavailable. Nothing changed.'); return; }
+    const base = { ownershipV2: parent, state: save, codecNow: Date.now() };
+    const outcome = kind === 'dispatch'
+      ? await commitArc5MissionDispatchV1({ ...base, runtime, ...(payload as MissionBoardRequestV1) })
+      : kind === 'claim' ? await commitArc5MissionClaimV1({ ...base, runtime, missionId: payload as string })
+        : await commitArc5MissionRecallV1({ ...base, runtime, missionId: payload as string });
+    if (outcome.kind === 'refused') {
+      lastMissionOutcome = `refused:${outcome.detail}`;
+      if (outcome.convergence === 'read-only-reload') scheduleF4AuthorityConvergenceReload(runtime, `companion mission ${outcome.detail}`);
+      const reason = outcome.detail.startsWith('refused:') ? outcome.detail.slice('refused:'.length) : null;
+      missionBoardController.settle(kind === 'claim' && reason === 'cargo-full' ? missionClaimReasonV1('cargo-full')
+        : kind === 'claim' && reason === 'mission-not-active' ? 'Already claimed. Nothing changed.' : `Mission unavailable. Nothing changed (${outcome.detail}).`);
+      return;
+    }
+    durable = true; f4LastCheckpointAt = performance.now();
+    const loaded = readArc5OwnershipMigration(runtime.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    if (outcome.kind !== 'committed' || runtime.revision !== outcome.revision || loaded.kind !== 'loaded'
+      || ownershipStateDigestV2(loaded.state) !== ownershipStateDigestV2(outcome.ownershipV2)) {
+      lastMissionOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime, `companion mission ${kind} committed; publication fixed point`);
+      return;
+    }
+    arc5OwnershipState = loaded.state; arc5OwnershipEvidence = loaded.evidence;
+    lastPersistenceOutcome = `companion-mission-${kind}-committed:${outcome.revision}`;
+    if (kind === 'claim') {
+      // publish exactly what a claim committed: the hold, Stardust, lifetime Stardust and the companion's Compendium mirror XP
+      save.cargo = outcome.state.cargo.map(([id, n]) => [id, n]);
+      save.essence = outcome.state.essence;
+      (save.stats as Record<string, number | undefined>).essenceEarned = (outcome.state.stats as Record<string, number | undefined>).essenceEarned;
+      save.codex = mirrorCompanionCodexXpV1(save.codex, outcome.state.codex);
+      updateChips();
+    }
+    const value = outcome.value as { missionId: string; creatureId: string; readyAtActivePlayMs?: number };
+    lastMissionOutcome = `committed:${kind}:${value.missionId}`;
+    missionBoardController.settle(kind === 'dispatch'
+      ? `${missionCompanionName(value.creatureId)} set out. It returns after ${Math.max(0, Math.round(((value.readyAtActivePlayMs ?? 0) - runtime.diagnostics().activePlayMs) / 60_000))} min of play.`
+      : missionReturnTextV1(outcome.value as Parameters<typeof missionReturnTextV1>[0], missionCompanionName(value.creatureId)));
+    missionBoardController.setState(projectCurrentMissionBoard());
+    companionCareController.setState(projectCurrentCompanionCare(currentCompendiumDetailRow()));
+  } catch (error) {
+    lastMissionOutcome = `${durable ? 'committed-' : ''}fault`;
+    if (durable && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `companion mission ${error instanceof Error ? error.message : String(error)}`);
+    else missionBoardController.settle('Mission unavailable. Nothing changed.');
   } finally {
     productActionInFlight = false;
     actionClaim.settle(durable);
