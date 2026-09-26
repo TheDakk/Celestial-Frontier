@@ -1,0 +1,21 @@
+{
+  "sourcePacket": "audits/G1_AUTO_AUTHOR_20260926/auto-v10/grouse/packet",
+  "sourceMasterSha256": "712072ae73b0cc55cbffc990bdc202a11871cc1b264ab98d9a13927bbda146c8",
+  "sourceAuthorSha256": "89209a688dd82523f8569525d12f93eb12dc60ef02d67a94d546e97c02989eff",
+  "moves": [
+    {
+      "joint": "legFarAnkle",
+      "from": [
+        744,
+        874.6
+      ],
+      "to": [
+        743.5,
+        881.5
+      ],
+      "fromOwner": "far-thigh",
+      "toOwner": "far-shin",
+      "distancePx": 6.918092222571167
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+[
+  {
+    "report": "07-perch-selected.json",
+    "staticStatus": "PASS_STATIC",
+    "selectedBoundaryAudit": {
+      "schema": "cf.c49-selected-boundary-audit/v1",
+      "status": "PASS",
+      "epsilonNativePx": 0.0011959075927734375,
+      "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+      "pairs": [
+        {
+          "name": "body|body-1",
+          "sourceEdges": 252,
+          "spatialSamples": 264
+        },
+        {
+          "name": "body-3|body-5",
+          "sourceEdges": 22,
+          "spatialSamples": 27
+        },
+        {
+          "name": "body|body-2",
+          "sourceEdges": 225,
+          "spatialSamples": 236
+        }
+      ],
+      "temporalSamples": 2480,
+      "violations": 0,
+      "maxGapPx": 3.8540016748420745e-05,
+      "expectedTemporalSamples": 2480,
+      "complete": true
+    },
+    "inputsUnchanged": true,
+    "producersUnchanged": true,
+    "originalProducers": 68,
+    "commonExactProducers": 67,
+    "mismatches": [],
+    "onlyOriginal": [
+      "audits/G1_AUTO_AUTHOR_20260926/harness/static.ts"
+    ],
+    "onlyExtension": [
+      "audits/C49_FISH_REVIEW_20260926/harness/static.ts"
+    ]
+  },
+  {
+    "report": "07-perch-unwelded-selected.json",
+    "staticStatus": "PASS_STATIC",
+    "selectedBoundaryAudit": {
+      "schema": "cf.c49-selected-boundary-audit/v1",
+      "status": "RED",
+      "epsilonNativePx": 0.0011959075927734375,
+      "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+      "pairs": [
+        {
+          "name": "body|body-1",
+          "sourceEdges": 252,
+          "spatialSamples": 264
+        },
+        {
+          "name": "body-3|body-5",
+          "sourceEdges": 22,
+          "spatialSamples": 27
+        },
+        {
+          "name": "body|body-2",
+          "sourceEdges": 225,
+          "spatialSamples": 236
+        }
+      ],
+      "temporalSamples": 2480,
+      "violations": 1104506,
+      "maxGapPx": 94.60925685044035,
+      "expectedTemporalSamples": 2480,
+      "complete": true
+    },
+    "inputsUnchanged": true,
+    "producersUnchanged": true,
+    "originalProducers": 68,
+    "commonExactProducers": 67,
+    "mismatches": [],
+    "onlyOriginal": [
+      "audits/G1_AUTO_AUTHOR_20260926/harness/static.ts"
+    ],
+    "onlyExtension": [
+      "audits/C49_FISH_REVIEW_20260926/harness/static.ts"
+    ]
+  },
+  {
+    "report": "08-cod-selected.json",
+    "staticStatus": "PASS_STATIC",
+    "selectedBoundaryAudit": {
+      "schema": "cf.c49-selected-boundary-audit/v1",
+      "status": "PASS",
+      "epsilonNativePx": 0.0011959075927734375,
+      "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+      "pairs": [
+        {
+          "name": "body|body-1",
+          "sourceEdges": 209,
+          "spatialSamples": 226
+        },
+        {
+          "name": "body-0|body-2",
+          "sourceEdges": 37,
+          "spatialSamples": 48
+        },
+        {
+          "name": "body-3|body-5",
+          "sourceEdges": 91,
+          "spatialSamples": 104
+        },
+        {
+          "name": "body|body-2",
+          "sourceEdges": 262,
+          "spatialSamples": 275
+        },
+        {
+          "name": "body|body-5",
+          "sourceEdges": 214,
+          "spatialSamples": 229
+        }
+      ],
+      "temporalSamples": 2522,
+      "violations": 0,
+      "maxGapPx": 5.285214819343859e-05,
+      "expectedTemporalSamples": 2522,
+      "complete": true
+    },
+    "inputsUnchanged": true,
+    "producersUnchanged": true,
+    "originalProducers": 68,
+    "commonExactProducers": 67,
+    "mismatches": [],
+    "onlyOriginal": [
+      "audits/G1_AUTO_AUTHOR_20260926/harness/static.ts"
+    ],
+    "onlyExtension": [
+      "audits/C49_FISH_REVIEW_20260926/harness/static.ts"
+    ]
+  },
+  {
+    "report": "09-carp-selected.json",
+    "staticStatus": "PASS_STATIC",
+    "selectedBoundaryAudit": {
+      "schema": "cf.c49-selected-boundary-audit/v1",
+      "status": "PASS",
+      "epsilonNativePx": 0.0011959075927734375,
+      "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+      "pairs": [
+        {
+          "name": "body|body-1",
+          "sourceEdges": 547,
+          "spatialSamples": 580
+        },
+        {
+          "name": "body-3|body-5",
+          "sourceEdges": 12,
+          "spatialSamples": 14
+        }
+      ],
+      "temporalSamples": 2505,
+      "violations": 0,
+      "maxGapPx": 4.546692386007519e-05,
+      "expectedTemporalSamples": 2505,
+      "complete": true
+    },
+    "inputsUnchanged": true,
+    "producersUnchanged": true,
+    "originalProducers": 68,
+    "commonExactProducers": 67,
+    "mismatches": [],
+    "onlyOriginal": [
+      "audits/G1_AUTO_AUTHOR_20260926/harness/static.ts"
+    ],
+    "onlyExtension": [
+      "audits/C49_FISH_REVIEW_20260926/harness/static.ts"
+    ]
+  }
+]

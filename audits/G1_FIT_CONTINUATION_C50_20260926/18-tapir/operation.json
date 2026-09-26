@@ -1,0 +1,49 @@
+{
+  "sourcePacket": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/18-tapir/packet",
+  "sourceMasterSha256": "56f534417e8305b540143c231aa54936b66f3b578ab6041fa9e9ae3a7b4bb634",
+  "sourceAuthorSha256": "a2fcdfeb1ed8cba77eae7cbb0f5d5d2f279ae1428f31880e802a8b021a23bf7e",
+  "moves": [
+    {
+      "joint": "hindFarAnkle",
+      "from": [
+        271,
+        835.9
+      ],
+      "to": [
+        271.5,
+        841.5
+      ],
+      "fromOwner": "hind-far-knee",
+      "toOwner": "hind-far-ankle",
+      "distancePx": 5.622277118748262
+    },
+    {
+      "joint": "foreFarAnkle",
+      "from": [
+        836,
+        841.9
+      ],
+      "to": [
+        835.5,
+        843.5
+      ],
+      "fromOwner": "fore-far-knee",
+      "toOwner": "fore-far-ankle",
+      "distancePx": 1.6763054614240427
+    },
+    {
+      "joint": "hindNearAnkle",
+      "from": [
+        130,
+        846.7
+      ],
+      "to": [
+        133.5,
+        850.5
+      ],
+      "fromOwner": "hind-near-knee",
+      "toOwner": "hind-near-ankle",
+      "distancePx": 5.1662365412357625
+    }
+  ]
+}
