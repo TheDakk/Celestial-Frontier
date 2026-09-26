@@ -7264,3 +7264,10 @@ preflight and consumes only a token matching the exact individual identity.
 The phone delivery callback admits both PNG and receipt via bundled G3 manifest
 pins. Four missing-label fits refuse; no new finished originals are published.
 See audits/G5_ADAPTER_UNBLOCK_20260926/C41.md for the precise calling contract.
+
+
+### G5/C45 and family pilot follow-up — matches code as of 2026-09-26
+
+`loadPinnedCreatureRigV1` composes a private verified finished atlas with the existing individual `atlasPixels` remap, then checks every alpha byte against a private original baseline and applies the unchanged seam guard. Ordinary morph callbacks also receive a copy, closing the in-place alpha mutation alias. Source/master/binding/atlas pins remain unchanged; phone delivery requires both PNG and receipt pins. Missing labels for Civet/Eel/Rat/Salamander still refuse. The native1254 Cougar run refused before inference because the unchanged alpha===255 eligibility rule finds no editable interior; alpha>=250 is a pending decision, not implemented. See G5_ADAPTER_UNBLOCK_20260926/C45.md and README.md.
+
+The G2 canonical prompt compiler adds bird/fish/serpent/insect families and complete real-tail wording. Twenty untouched1254 masters plus exact prompts/identities, one sheet and geometric observations are in G2_FAMILY_PILOT_20260926; none are automatically admitted. Subsequent bird/quadruped prompts incorporate C44's planted stride/full leg-gap request. G4 copy is measured once at120 ordered bullets, SHA `aa5bc1c4583f685f6fe7caff9ed37636b565e290be351011dec0855fc85ef6f0`, with41 Guide topics and5 briefings. Full final profile is5,635 pass/I5 only; seven manual owners pass.

@@ -1,0 +1,97 @@
+{
+  "id": "14-king-snake",
+  "name": "King Snake",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "e319fe7a3d5b38cefd845a02776cab8347ba7a3b0f04bd1d9d02904c6c5895c2",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 13342,
+    "coreRadius": 10,
+    "bodyBox": {
+      "x0": 7,
+      "y0": 156,
+      "x1": 414,
+      "y1": 255
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0163,
+        "pixels": 218,
+        "box": {
+          "x0": 391,
+          "y0": 173,
+          "x1": 409,
+          "y1": 200
+        },
+        "attach": {
+          "x": 395.2,
+          "y": 186,
+          "relX": 0.95,
+          "relY": 0.3
+        },
+        "dir": {
+          "x": 0.83,
+          "y": -0.56
+        },
+        "class": "top",
+        "length": 19.7
+      },
+      {
+        "k": 1,
+        "frac": 0.1034,
+        "pixels": 1379,
+        "box": {
+          "x0": 10,
+          "y0": 210,
+          "x1": 101,
+          "y1": 256
+        },
+        "attach": {
+          "x": 76.3,
+          "y": 226.1,
+          "relX": 0.17,
+          "relY": 0.71
+        },
+        "dir": {
+          "x": -0.72,
+          "y": 0.7
+        },
+        "class": "limb-down",
+        "length": 72.7
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 19,
+        "x1": 76,
+        "cx": 47.3
+      },
+      {
+        "x0": 186,
+        "x1": 246,
+        "cx": 216
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

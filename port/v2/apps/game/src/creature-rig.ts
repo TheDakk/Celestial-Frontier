@@ -79,7 +79,8 @@ async function decodeGuardedAtlasPng(bytes:Uint8Array,record:CreatureRigRecordV1
 export async function decodeMorphedAtlas(bytes:Uint8Array,record:CreatureRigRecordV1,binding:CreaturePartsBindingV1,atlasPixels:(rgba:Uint8Array,width:number,height:number)=>Uint8Array){
   const decoded=await decodePng(bytes);
   requireValue(decoded.width===binding.atlasSize.width&&decoded.height===binding.atlasSize.height,'decoded atlas dimensions');
-  const rgba=atlasPixels(decoded.rgba,decoded.width,decoded.height);
+  // Keep the alpha baseline private even if a remap mutates its input in place.
+  const rgba=atlasPixels(decoded.rgba.slice(),decoded.width,decoded.height);
   requireValue(rgba instanceof Uint8Array&&rgba.length===decoded.rgba.length,'morph atlas pixels size');
   for(let i=3;i<rgba.length;i+=4)requireValue(rgba[i]===decoded.rgba[i],'morph atlas pixels must keep alpha');
   const plan=createOpaqueSeamSamplingGuard({record,binding,atlas:{rgba,width:decoded.width,height:decoded.height}});
@@ -94,7 +95,7 @@ export interface CreatureRigLoadOptions {
   readonly borrowedAtlas?:boolean;
   /** Morph M1 (additive): uniform sub-tree scales composed into the skeleton; record/binding bytes unchanged. */
   readonly jointScale?:Readonly<Record<string,number>>;
-  /** Morph M2/M3 (additive): the individual's remap over the exactly decoded atlas pixels (alpha must be kept). */
+  /** Morph M2/M3: the individual's deterministic remap; after a supplied verified finish, before the seam guard. Alpha must be kept. */
   readonly atlasPixels?:(rgba:Uint8Array,width:number,height:number)=>Uint8Array;
   /** G5: privately admitted finish for the exact individual; only the pinned loader accepts it. */
   readonly finishedAtlas?:{readonly token:unknown;readonly identity:AiCreatureInputV1};
@@ -122,7 +123,8 @@ export async function loadPinnedCreatureRigV1(input:Battle2PinnedBytesV1,
     alphaPath:input.alphaPath,alpha:input.alpha.slice(),bindingBytes:input.bindingBytes.slice(),
     atlasPath:input.atlasPath,atlas:input.atlas.slice()};
   const finish=options.finishedAtlas?{token:options.finishedAtlas.token,identity:{...options.finishedAtlas.identity}}:null;
-  requireValue(!finish||(!options.atlasPixels&&!options.borrowedAtlas),'finished atlas owns its texture and cannot compose an unchecked remap');
+  const remap=options.atlasPixels;
+  requireValue(!finish||!options.borrowedAtlas,'finished atlas owns its texture');
   const admitted=await preflightBattle2PinnedBytesV1(snapshot);
   const finishedPixels=finish?creatureFinishedAtlasPixelsV1(finish.token,snapshot.pin,finish.identity):null;
   const decoded=await decodePng(snapshot.alpha);
@@ -131,7 +133,10 @@ export async function loadPinnedCreatureRigV1(input:Battle2PinnedBytesV1,
   const record=snapshot.record as CreatureRigRecordV1,binding=admitted.binding as CreaturePartsBindingV1;
   const template=await admitFamilyRecordContent(record,alpha);
   requireValue(!finishedPixels||binding.paintSkin,'finished atlas requires native paint-skin frames');
-  return createAdmittedCreatureRig(record,binding,template,snapshot.atlas,decodeAtlas,finishedPixels?{...options,atlasPixels:finishedPixels}:options);
+  const composed=finishedPixels?(rgba:Uint8Array,width:number,height:number)=>{
+    const finished=finishedPixels(rgba,width,height);return remap?remap(finished,width,height):finished;
+  }:null;
+  return createAdmittedCreatureRig(record,binding,template,snapshot.atlas,decodeAtlas,composed?{...options,atlasPixels:composed}:options);
 }
 /** One private allocation/admission tail for both byte and build-pin authority. */
 async function createAdmittedCreatureRig(record:CreatureRigRecordV1,binding:CreaturePartsBindingV1,

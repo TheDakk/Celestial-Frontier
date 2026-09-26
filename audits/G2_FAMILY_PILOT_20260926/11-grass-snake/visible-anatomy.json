@@ -1,0 +1,92 @@
+{
+  "id": "11-grass-snake",
+  "name": "Grass Snake",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "7cae23b4fd47bba63f56813f7aa7c66bbb965de0a686e9efd6543466b6138ca5",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 14265,
+    "coreRadius": 10,
+    "bodyBox": {
+      "x0": 55,
+      "y0": 158,
+      "x1": 414,
+      "y1": 261
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1736,
+        "pixels": 2477,
+        "box": {
+          "x0": 303,
+          "y0": 137,
+          "x1": 409,
+          "y1": 201
+        },
+        "attach": {
+          "x": 325.6,
+          "y": 184,
+          "relX": 0.75,
+          "relY": 0.25
+        },
+        "dir": {
+          "x": 0.66,
+          "y": -0.75
+        },
+        "class": "top",
+        "length": 95.7
+      },
+      {
+        "k": 1,
+        "frac": 0.1124,
+        "pixels": 1603,
+        "box": {
+          "x0": 11,
+          "y0": 208,
+          "x1": 100,
+          "y1": 319
+        },
+        "attach": {
+          "x": 55.5,
+          "y": 221,
+          "relX": 0,
+          "relY": 0.61
+        },
+        "dir": {
+          "x": -0.47,
+          "y": 0.88
+        },
+        "class": "limb-down",
+        "length": 107.6
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 86,
+        "x1": 100,
+        "cx": 93.8
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}
