@@ -33,5 +33,5 @@ describe('the card masters ship with the app', () => {
       const plain = await src.card({ _earthName: a.earthName, kingdom: 'fauna', seed: 9, pattern: own }, 'thumb')!, striped = await src.card({ _earthName: a.earthName, kingdom: 'fauna', seed: 9, pattern: marked }, 'thumb')!;
       expect(striped.url, a.earthName + `: ${PATTERN_NAMES[marked]} equals plain — the marking never reached the app card`).not.toBe(plain.url);
     }
-  });
+  }, 60_000); // renders two cards for every archetype that ships masks (23 today) — seconds under a parallel run
 });
