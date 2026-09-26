@@ -1,0 +1,29 @@
+{
+ "id": "racer",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part head (head) covers 1% paint (reference 4%)",
+  "missing-anatomy: part body-segment-0 (seg0) covers 6% paint (reference 12%)",
+  "missing-anatomy: part body-segment-2 (seg2) covers 6% paint (reference 9%)",
+  "missing-anatomy: part body-segment-3 (seg3) covers 6% paint (reference 9%)",
+  "missing-anatomy: part body-segment-4 (seg4) covers 6% paint (reference 10%)",
+  "missing-anatomy: part body-segment-6 (seg6) covers 6% paint (reference 10%)",
+  "missing-anatomy: part body-segment-7 (seg7) covers 3% paint (reference 7%)",
+  "missing-anatomy: part body-segment-8 (seg8) covers 2% paint (reference 5%)",
+  "missing-anatomy: part body-segment-9 (seg9) covers 0% paint (reference 2%)"
+ ],
+ "bodyLengthPx": 625.5,
+ "landmarkMedian": 0.0699,
+ "landmarkMax": 0.1594,
+ "worst": [
+  "seg4 0.159",
+  "seg5 0.132",
+  "seg6 0.128"
+ ],
+ "labelAgreement": 0.0107,
+ "missingJoints": [],
+ "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

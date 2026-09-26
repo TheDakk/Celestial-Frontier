@@ -1,0 +1,18 @@
+{
+ "id": "bass",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 986.4,
+ "landmarkMedian": 0.0558,
+ "landmarkMax": 0.0973,
+ "worst": [
+  "spine5 0.097",
+  "pectoralNear 0.077",
+  "dorsal 0.072"
+ ],
+ "labelAgreement": 0.6297,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

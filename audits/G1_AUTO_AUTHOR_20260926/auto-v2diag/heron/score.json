@@ -1,0 +1,22 @@
+{
+ "id": "heron",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-foot (legFarFoot) covers 18% paint (reference 53%)",
+  "missing-anatomy: part far-thigh (legFarKnee) covers 23% paint (reference 70%)"
+ ],
+ "bodyLengthPx": 826.7,
+ "landmarkMedian": 0.0294,
+ "landmarkMax": 0.2125,
+ "worst": [
+  "wingFarTip 0.212",
+  "wingFarRoot 0.095",
+  "wingNearRoot 0.063"
+ ],
+ "labelAgreement": 0.7748,
+ "missingJoints": [],
+ "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

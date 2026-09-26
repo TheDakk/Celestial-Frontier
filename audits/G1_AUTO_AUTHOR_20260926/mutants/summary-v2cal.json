@@ -1,0 +1,420 @@
+{
+ "summary": {
+  "positivesAdmitted": "8/10",
+  "flippedRefused": "10/10",
+  "wrongFamilyRefused": "10/10",
+  "erasedRefused": "6/10",
+  "duplicatedRefused": "5/10"
+ },
+ "rows": [
+  {
+   "id": "cougar",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0051,
+    "dT": 0.0292,
+    "dR": 0.025,
+    "unclaimed": 0.0574,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-ankle",
+    "hind-far-paw",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0132,
+    "dT": 0.0417,
+    "dR": 0.0292,
+    "unclaimed": 0.0422,
+    "why": "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers"
+   },
+   "dupShift": null,
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0051,
+    "dT": 0.0292,
+    "dR": 0.025,
+    "unclaimed": 0.0574,
+    "why": ""
+   }
+  },
+  {
+   "id": "impala",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0159,
+    "dT": 0.0208,
+    "dR": 0.0292,
+    "unclaimed": 0.0626,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-ankle",
+    "hind-far-paw",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0208,
+    "dT": 0.0292,
+    "dR": 0.0292,
+    "unclaimed": 0.0745,
+    "why": "missing-anatomy: part hind-near-paw (hindNearPaw) covers 19%"
+   },
+   "dupShift": [
+    0,
+    -684
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0202,
+    "dT": 0.0292,
+    "dR": 0.025,
+    "unclaimed": 0.0363,
+    "why": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers"
+   }
+  },
+  {
+   "id": "bass",
+   "family": "fish",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0097,
+    "dT": 0.025,
+    "dR": 0.0292,
+    "unclaimed": 0.0689,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0116,
+    "dT": 0.0375,
+    "dR": 0.0375,
+    "unclaimed": 0.047,
+    "why": ""
+   },
+   "dupShift": [
+    0,
+    522
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0278,
+    "dT": 0.0333,
+    "dR": 0.075,
+    "unclaimed": 0.2081,
+    "why": "unexplained-anatomy: 20.8% of the paint lies away from the b"
+   }
+  },
+  {
+   "id": "cattle",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0087,
+    "dT": 0.0167,
+    "dR": 0.0417,
+    "unclaimed": 0.0418,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-ankle",
+    "hind-far-paw",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0136,
+    "dT": 0.0375,
+    "dR": 0.0458,
+    "unclaimed": 0.041,
+    "why": "missing-anatomy: part hind-far-paw (hindFarPaw) covers 8% pa"
+   },
+   "dupShift": null,
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0087,
+    "dT": 0.0167,
+    "dR": 0.0417,
+    "unclaimed": 0.0418,
+    "why": ""
+   }
+  },
+  {
+   "id": "tang",
+   "family": "fish",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0097,
+    "dT": 0.0292,
+    "dR": 0.025,
+    "unclaimed": 0.0447,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0181,
+    "dT": 0.0417,
+    "dR": 0.0667,
+    "unclaimed": 0.0699,
+    "why": ""
+   },
+   "dupShift": null,
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0097,
+    "dT": 0.0292,
+    "dR": 0.025,
+    "unclaimed": 0.0447,
+    "why": ""
+   }
+  },
+  {
+   "id": "wolf",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.005,
+    "dT": 0.025,
+    "dR": 0.0292,
+    "unclaimed": 0.0104,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-paw",
+    "hind-far-ankle",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0109,
+    "dT": 0.0333,
+    "dR": 0.0292,
+    "unclaimed": 0.0143,
+    "why": "missing-anatomy: part hind-near-paw (hindNearPaw) covers 14%"
+   },
+   "dupShift": [
+    0,
+    -420
+   ],
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0132,
+    "dT": 0.0375,
+    "dR": 0.0375,
+    "unclaimed": 0.017,
+    "why": ""
+   }
+  },
+  {
+   "id": "gull",
+   "family": "biped-bird",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0162,
+    "dT": 0.0167,
+    "dR": 0.0333,
+    "unclaimed": 0.0239,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0205,
+    "dT": 0.025,
+    "dR": 0.0458,
+    "unclaimed": 0.0268,
+    "why": "missing-anatomy: part far-shin (legFarAnkle) covers 13% pain"
+   },
+   "dupShift": [
+    -228,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0178,
+    "dT": 0.0417,
+    "dR": 0.0417,
+    "unclaimed": 0.0315,
+    "why": "missing-anatomy: part near-shin (legNearAnkle) covers 13% pa"
+   }
+  },
+  {
+   "id": "goose",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0126,
+    "dT": 0.0333,
+    "dR": 0.0292,
+    "unclaimed": 0.0764,
+    "why": "missing-anatomy: part near-shin (legNearAnkle) covers 22% pa"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0143,
+    "dT": 0.0333,
+    "dR": 0.05,
+    "unclaimed": 0.0694,
+    "why": ""
+   },
+   "dupShift": [
+    -245,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.014,
+    "dT": 0.0333,
+    "dR": 0.0375,
+    "unclaimed": 0.0809,
+    "why": "unexplained-anatomy: 8.1% of the paint lies away from the bo"
+   }
+  },
+  {
+   "id": "heron",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0187,
+    "dT": 0.05,
+    "dR": 0.0375,
+    "unclaimed": 0.0503,
+    "why": "missing-anatomy: part far-foot (legFarFoot) covers 18% paint"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "ADMIT",
+   "erEv": {
+    "v": "ADMIT",
+    "cost": 0.0226,
+    "dT": 0.0667,
+    "dR": 0.0375,
+    "unclaimed": 0.0392,
+    "why": ""
+   },
+   "dupShift": [
+    -286,
+    0
+   ],
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0209,
+    "dT": 0.0625,
+    "dR": 0.0375,
+    "unclaimed": 0.0423,
+    "why": ""
+   }
+  },
+  {
+   "id": "pike",
+   "family": "fish",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0086,
+    "dT": 0.0292,
+    "dR": 0.0292,
+    "unclaimed": 0.0329,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0131,
+    "dT": 0.0333,
+    "dR": 0.0333,
+    "unclaimed": 0.0896,
+    "why": "unexplained-anatomy: 9.0% of the paint lies away from the bo"
+   },
+   "dupShift": [
+    0,
+    264
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0472,
+    "dT": 0.0708,
+    "dR": 0.1292,
+    "unclaimed": 0.1803,
+    "why": "unexplained-anatomy: 18.0% of the paint lies away from the b"
+   }
+  }
+ ]
+}

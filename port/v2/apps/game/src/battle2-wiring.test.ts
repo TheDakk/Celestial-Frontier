@@ -349,7 +349,7 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     const { devAssetSource } = await import('./battle2-wiring.js');
     const { gzipSync } = await import('node:zlib');
     const value = { parts: [{ id: 'head', box: [1, 2, 3, 4] }], note: 'binding' }, text = JSON.stringify(value), gz = new Uint8Array(gzipSync(Buffer.from(text)));
-    const src = devAssetSource('/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json', 'http://localhost/');
+    const src = devAssetSource('/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json', 'http://localhost/', false); // core-pack files only (the library path has its own tests)
     const reply = (bytes: Uint8Array) => ({ ok: true, status: 200, arrayBuffer: async () => bytes.slice().buffer, json: async () => JSON.parse(new TextDecoder().decode(bytes)) } as unknown as Response);
     const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(reply(gz)).mockResolvedValueOnce(reply(new TextEncoder().encode(text))).mockResolvedValueOnce(reply(new TextEncoder().encode(text)));
     expect(await src.json('../X/binding.json.gz')).toEqual(value);

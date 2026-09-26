@@ -1,0 +1,18 @@
+{
+ "id": "cattle",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 1248.2,
+ "landmarkMedian": 0.0666,
+ "landmarkMax": 0.1979,
+ "worst": [
+  "tail1 0.198",
+  "foreFarRoot 0.154",
+  "earNearTip 0.135"
+ ],
+ "labelAgreement": 0.5372,
+ "missingJoints": [],
+ "static": "RED",
+ "staticFails": []
+}
