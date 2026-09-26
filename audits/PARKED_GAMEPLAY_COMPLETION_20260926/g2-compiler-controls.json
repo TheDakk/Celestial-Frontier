@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "rejected": [
+    {
+      "name": "Definitely Not A Species",
+      "status": 1,
+      "reason": "Error: Exactly one canonical Earth quadruped required"
+    },
+    {
+      "name": "Bass",
+      "status": 1,
+      "reason": "Error: Exactly one canonical Earth quadruped required"
+    },
+    {
+      "name": "Coyote",
+      "status": 1,
+      "reason": "Error: New packet directory required"
+    }
+  ],
+  "promptHashesVerified": 20,
+  "noAuthoring": true
+}

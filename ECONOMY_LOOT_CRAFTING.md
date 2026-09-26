@@ -761,3 +761,8 @@ v1.8.7 and passes on v1.8.8.
 
 ⚠ **`HARVEST_CD` still exists** as the legacy constant and is used by the *load-path display clamp*
 only. It gates nothing. If it ever reappears inside `doHarvest`, the gate above fails by design.
+
+
+### Recovered Forge practice — matches code as of 2026-09-26
+
+Field Training adds one Iron Plate practice using the canonical fixed-fabrication derivation in a cloned, in-memory expedition. The loan is the current recipe cost. The practice output never enters live cargo, inventory, Charters, achievements, receipts or SessionRNG. Exact session tickets reject stale/repeated actions; Close, Skip and replacement release the sandbox.

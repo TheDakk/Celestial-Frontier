@@ -33,6 +33,17 @@ async function pinScenario(sections = ENGINEERING_SECTIONS()) {
 }
 
 describe('D16 pin recipe — the real 📌, the durable pin, the chip, reboot', () => {
+  it('Training refuses a recipe pin even if a control is activated programmatically', async () => {
+    const nav = marsSurface(), save = fixtureSave(1);
+    const booted = await boot(save, fixtureExtensions(save, nav));
+    const view = mount({ save, booted, nav, extraEnv: { trainingActive: () => true } });
+    const before = JSON.stringify(save);
+    pinOf(view.body, 'plate')!.click();
+    expect(JSON.stringify(save)).toBe(before);
+    expect(view.env.persistView).not.toHaveBeenCalled();
+    view.main.controller.dispose(); view.dom.window.close();
+  });
+
   it('pins, saves `pin`, shows the chip with what is missing, survives two reads and a reboot, turns READY, opens the Shipyard, and unpins', async () => {
     const { nav, booted, view } = await pinScenario();
     expect(pinOf(view.body, 'plate')!.getAttribute('aria-pressed')).toBe('true');

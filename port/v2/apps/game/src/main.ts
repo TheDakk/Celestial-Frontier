@@ -16,7 +16,7 @@
    Field Training currently has 15 lesson IDs; a fuller hands-on curriculum remains
    on the V2 program roadmap. Atlas charting/favorites and rarity stings are live.
    Static deterministic Canvas species portraits and the preserved 43-biome landing vistas are live;
-   retained Pixi actors, meshes, and portrait animation remain later work. */
+   selected Compendium portraits have bounded presentation motion; articulated rigs are a separate owner. */
 import { readSurveyFoldPrefV1, surveyRowsHtmlV1, writeSurveyFoldPrefV1 } from './survey-card-folds.js';
 import { createPaintedCardsForApp } from './painted-cards.js';
 import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin, RendererType, MeshPipe, Particle, ParticleContainer } from 'pixi.js';
@@ -146,13 +146,14 @@ import {
   bindSpeciesThumb,
   SpeciesArtLoader,
   SpeciesThumbLeaseGroup,
-  type Portrait440,
   type SpeciesThumbBinding,
 } from './species-art-loader.js';
 import {
   initTraining, gameEvent, trainingActive, trainingStepId, refreshTrainingScope,
   type TrainingEndIntent, type TrainingEndResult,
 } from './training.js';
+import { LivingSpeciesPreviewControllerV1 } from './living-species-preview.js';
+import { createTrainingForgePracticeAdapterV1, TRAINING_FORGE_IRON_PLATE_BASE_ID_V1, type TrainingForgePracticeActionOutcomeV1 } from './training-forge-practice.js';
 import {
   buildLegacyTrainingRestoreCandidate,
   committedTrainingArc4State,
@@ -2912,6 +2913,7 @@ function applyDisplayPreferences(): void {
   body.classList.toggle('motion-reduced', !motionOK());
   refreshVisualPolicies();
   applyGlass();
+  signalLivingSpeciesEnvironment();
   syncTopbarH(); syncDockH(); syncCtxH(); syncHintH(); syncSurfaceChromeBottom();
 }
 reducedMotionQuery.addEventListener('change', () => {
@@ -3548,7 +3550,90 @@ let codexRows: readonly CodexVirtualRow[] = Object.freeze([]);
 let codexWindow: CompendiumWindowSnapshot = EMPTY_CODEX_WINDOW;
 let codexReturnState: CodexReturnState | null = null;
 let codexDetailLogicalId: string | null = null;
-let codexDetailArtCancel: (() => void) | null = null;
+let livingSpeciesPortrait: HTMLImageElement | null = null;
+const livingSpeciesEnvironmentListeners = new Set<() => void>();
+function signalLivingSpeciesEnvironment(): void {
+  for (const listener of livingSpeciesEnvironmentListeners) listener();
+}
+const livingSpeciesPreview = new LivingSpeciesPreviewControllerV1({
+  owner: 'codex-living-detail',
+  requestPortrait: (owner, genome, listener) => (
+    speciesArtLoader.requestPortrait(owner, genome, listener)
+  ),
+  createRenderer: (asset, plan, generation) => {
+    const target = livingSpeciesPortrait;
+    if (target === null) throw new Error('living portrait target is unavailable');
+    const token = String(generation);
+    let attached = false;
+    return {
+      identityKey: plan.identityKey,
+      resourceKind: 'image',
+      attach(): void {
+        if (target !== livingSpeciesPortrait || !target.isConnected) {
+          throw new Error('living portrait target became stale');
+        }
+        target.dataset.livingGeneration = token;
+        target.dataset.livingMotion = plan.primaryMotion;
+        target.dataset.artState = 'ready';
+        target.style.transformOrigin = '50% 68%';
+        target.style.willChange = motionOK() ? 'transform, opacity' : 'auto';
+        target.src = asset.url;
+        attached = true;
+      },
+      draw(frame): void {
+        if (!attached || target !== livingSpeciesPortrait
+          || target.dataset.livingGeneration !== token || !target.isConnected) {
+          throw new Error('living portrait frame target became stale');
+        }
+        target.style.transform = `translate3d(${frame.translateX}px, ${frame.translateY}px, 0) `
+          + `rotate(${frame.rotationDegrees}deg) scale(${frame.scaleX}, ${frame.scaleY})`;
+        target.style.opacity = String(frame.opacity);
+        target.style.willChange = frame.mode === 'animated' ? 'transform, opacity' : 'auto';
+      },
+      destroy(): void {
+        if (target.dataset.livingGeneration !== token) return;
+        target.removeAttribute('src');
+        delete target.dataset.livingGeneration;
+        delete target.dataset.livingMotion;
+        target.style.removeProperty('transform');
+        target.style.removeProperty('transform-origin');
+        target.style.removeProperty('will-change');
+        target.style.removeProperty('opacity');
+      },
+    };
+  },
+  ticker: {
+    subscribe(listener) {
+      const tick = (): void => listener(app.ticker.deltaMS);
+      app.ticker.add(tick);
+      return () => { app.ticker.remove(tick); };
+    },
+  },
+  environment: {
+    snapshot: () => {
+      const connected = livingSpeciesPortrait?.isConnected === true;
+      return Object.freeze({
+        connected,
+        visible: connected && document.visibilityState === 'visible'
+          && codexMode === 'detail' && openPanelId() === 'codex',
+        reducedMotion: save === undefined ? reducedMotionQuery.matches : !motionOK(),
+      });
+    },
+    subscribe(listener) {
+      livingSpeciesEnvironmentListeners.add(listener);
+      document.addEventListener('visibilitychange', listener);
+      return () => {
+        livingSpeciesEnvironmentListeners.delete(listener);
+        document.removeEventListener('visibilitychange', listener);
+      };
+    },
+  },
+  onFault: () => {
+    if (livingSpeciesPortrait?.isConnected) {
+      livingSpeciesPortrait.dataset.artState = 'error';
+    }
+  },
+});
 let codexRenderCommits = 0;
 let codexStaleCompletionDrops = 0;
 let codexClosedCompletionCommits = 0;
@@ -3822,8 +3907,9 @@ function disposeCodexList(): void {
   codexWindow = EMPTY_CODEX_WINDOW;
 }
 function cancelCodexDetailArt(): void {
-  codexDetailArtCancel?.();
-  codexDetailArtCancel = null;
+  livingSpeciesPreview.close();
+  livingSpeciesPortrait = null;
+  signalLivingSpeciesEnvironment();
 }
 function closeCodexSurface(): void {
   const wasOpen = codexMode !== 'closed';
@@ -4001,7 +4087,7 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
 /* the Compendium DETAIL CARD: the whole domain stack speaking for one
    creature — describeSpecies (fixture-pinned sentences + fauna enrichments),
    battleStats (the five stats as bars in their own hues), the grade badge.
-   The static Canvas portrait is live. Pixi living actors and animation remain
+   The current portrait receives bounded selected-detail presentation motion. Pixi living actors remain
    a separate Phase 5 pipeline. */
 function fillCodexDetail(idx: number): void {
   if (!save) return;
@@ -4151,28 +4237,11 @@ function fillCodexDetail(idx: number): void {
   }
   const portrait = document.querySelector<HTMLImageElement>('#codexpanel [data-sel="detail-portrait"]');
   if (portrait) {
-    const publishPortrait = (asset: Portrait440 | null, error?: unknown): void => {
-      const current = codexGeneration === generation && codexMode === 'detail'
-        && codexDetailLogicalId === String(row[0]) && openPanelId() === 'codex'
-        && portrait.isConnected;
-      if (!current) { codexStaleCompletionDrops++; return; }
-      if (error !== undefined || !asset || asset.width !== 440 || asset.height !== 440) {
-        portrait.removeAttribute('src');
-        portrait.dataset.artState = 'error';
-        return;
-      }
-      portrait.src = asset.url;
-      portrait.dataset.artState = 'ready';
-    };
+    livingSpeciesPortrait = portrait;
+    signalLivingSpeciesEnvironment();
     try {
-      const request = speciesArtLoader.requestPortrait(
-        'codex-detail', e.g as Record<string, unknown>, publishPortrait,
-      );
-      codexDetailArtCancel = request.cancel;
-      if (request.current) publishPortrait(request.current);
-    } catch {
-      portrait.dataset.artState = 'error';
-    }
+      livingSpeciesPreview.select(e.g as Record<string, unknown>);
+    } catch { portrait.dataset.artState = 'error'; }
   }
   const back = document.getElementById('codexback')!;
   back.addEventListener('click', () => fillCodex(codexFilter, codexReturnState));
@@ -4731,11 +4800,13 @@ const engineeringPanelController = new EngineeringPanelController({
   panel: document.getElementById('shipyardpanel')!,
   openers: [document.getElementById('dockshipyard'), document.getElementById('railshipyard')],
   onAction: (request) => {
+    if (runTrainingForgePracticeRequest(request)) return;
     engineeringPanelController.setPending(request);
     void runEngineeringPanelAction(request);
   },
   recipePin: { pinned: () => save.pinnedRecipe, toggle: toggleRecipePin },
 });
+const trainingForgePractice = createTrainingForgePracticeAdapterV1();
 let engineeringPanelReleased = false;
 const engineeringPanelRegistration = engineeringPanelController.registration();
 registerPanel({
@@ -4744,8 +4815,84 @@ registerPanel({
     refreshEngineeringPanelState();
     engineeringPanelRegistration.onOpen();
     gameEvent('panel-open', { id: 'shipyard', open: true });
+    prepareTrainingForgePracticeSurface();
+  },
+  onClose: () => {
+    trainingForgePractice.exit();
+    engineeringPanelRegistration.onClose();
   },
 });
+function trainingForgeStatus(detail: string): void {
+  const status = document.querySelector<HTMLElement>('#tutcard [data-sel="tutstatus"]');
+  if (status === null) return;
+  status.hidden = false;
+  status.textContent = detail;
+}
+
+function prepareTrainingForgePracticeSurface(): boolean {
+  if (!trainingActive() || trainingStepId() !== 'engineering-forge-practice') return false;
+  const runtime = f4Runtime;
+  if (runtime === null) {
+    trainingForgeStatus('The practice Forge is waiting for expedition read authority.');
+    return false;
+  }
+  const opened = trainingForgePractice.enter({
+    state: save,
+    extensions: runtime.extensions,
+    codecNow: Date.now(),
+  });
+  if (opened.kind !== 'ready') {
+    trainingForgeStatus(`Practice Forge unavailable: ${opened.detail}`);
+    return false;
+  }
+  const row = document.querySelector<HTMLElement>(
+    `#shipyardpanel [data-recipe-id="${TRAINING_FORGE_IRON_PLATE_BASE_ID_V1}"]`,
+  );
+  const button = row?.querySelector<HTMLButtonElement>('[data-engineering-action="fabricate"]');
+  const fabricator = row?.closest<HTMLDetailsElement>('[data-engineering-section="fabricator"]');
+  if (row === null || button == null || fabricator == null) {
+    trainingForgePractice.exit();
+    trainingForgeStatus('The canonical Iron Plate practice control is unavailable.');
+    return false;
+  }
+  fabricator.open = true;
+  button.dataset.trainingForgePractice = 'true';
+  button.dataset.modelEnabled = 'true';
+  button.dataset.disabledReason = 'Training uses loaned materials in an isolated simulator.';
+  button.disabled = false;
+  button.setAttribute('aria-disabled', 'false');
+  button.title = 'Uses loaned materials; changes no expedition fact.';
+  button.textContent = `Practice Forge ${opened.snapshot.plan.name}`;
+  refreshTrainingScope();
+  return true;
+}
+
+function runTrainingForgePracticeRequest(request: EngineeringPanelActionRequest): boolean {
+  if (!trainingActive() || trainingStepId() !== 'engineering-forge-practice'
+    || request.operation !== 'fabricate'
+    || request.id !== TRAINING_FORGE_IRON_PLATE_BASE_ID_V1) return false;
+  engineeringPanelController.setPending(request);
+  let outcome: TrainingForgePracticeActionOutcomeV1;
+  try { outcome = trainingForgePractice.fabricate(); }
+  catch (error) {
+    outcome = Object.freeze({
+      kind: 'refused',
+      reason: 'fixed-point-mismatch',
+      detail: error instanceof Error ? error.message : String(error),
+      snapshot: trainingForgePractice.snapshot(),
+    });
+  }
+  engineeringPanelController.setPending(null);
+  if (outcome.kind !== 'completed') {
+    trainingForgeStatus(`Practice Forge stopped safely: ${outcome.detail}`);
+    return true;
+  }
+  gameEvent(outcome.completion.event.type, { ...outcome.completion.event.detail });
+  trainingForgePractice.exit();
+  refreshEngineeringPanelState();
+  refreshTrainingScope();
+  return true;
+}
 function shipyardDiagnostics(): unknown {
   const diagnostics = engineeringPanelController.diagnostics();
   const panelOpen = openPanelId() === 'shipyard';
@@ -4753,6 +4900,7 @@ function shipyardDiagnostics(): unknown {
     schema: 'cf-v2-shipyard-diagnostics/v1',
     status: panelOpen ? 'open' : 'closed',
     stateKey: panelOpen ? diagnostics.previewStateKey : null,
+    trainingPractice: trainingForgePractice.snapshot(),
     activePreviewCount: diagnostics.activePreviewCount,
     retainedPreviewCount: diagnostics.retainedPreviewCount,
     pendingPreviewWork: diagnostics.pendingWork,
@@ -9529,6 +9677,7 @@ function refreshRecipePinChip(): void {
   }));
 }
 function toggleRecipePin(baseId: string): void {
+  if (trainingActive()) return;
   const next = sanitizeRecipePinV1(baseId);
   save.pinnedRecipe = next === null || save.pinnedRecipe === next ? null : next;
   refreshRecipePinChip();
@@ -10488,6 +10637,7 @@ function compendiumDiagnostics(): unknown {
       open: openPanelId() === 'codex', mode: codexMode,
       sourceCount, filteredCount, query: codexFilter,
       renderCommits: codexRenderCommits,
+      livingPreview: livingSpeciesPreview.diagnostics(),
       staleCompletionDrops: codexStaleCompletionDrops,
       closedCompletionCommits: codexClosedCompletionCommits,
     }),
@@ -19394,6 +19544,7 @@ async function loadSave(): Promise<void> {
     visualViewport?.removeEventListener('resize', syncRendererDensity);
     rendererDensitySync.cancel();
     closeCodexSurface();
+    livingSpeciesPreview.dispose();
     approachEcologyController.dispose();
     compendiumAuditionController.dispose();
     compendiumFeedController.dispose();
@@ -19407,6 +19558,7 @@ async function loadSave(): Promise<void> {
     audiovisualPilot?.dispose();
     audiovisualPilot = null;
     resetAudiovisualPilotPresentation();
+    trainingForgePractice.dispose();
     engineeringPanelReleased = true;
     engineeringPanelController.dispose();
     captureCardController.dispose();

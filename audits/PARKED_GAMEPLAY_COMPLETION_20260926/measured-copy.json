@@ -1,0 +1,395 @@
+{
+  "schema": "cf-guide-copy-measurement/v1",
+  "sourceHashes": {
+    "port/v2/apps/game/src/guide-content.ts": "0ac0d8bc62334f235f856e3af07ae7f51053e67bfd1f7128e9ba127914d6ca7c",
+    "port/v2/apps/game/src/release-content.ts": "dd0445d532a9630e0950ff9e643ddfd8babd5266e48a4afa287575b795a16516",
+    "port/v2/apps/game/src/guide-briefings.ts": "0836ed2ec7db145e9ab1fe688c947e21b8bec3f363c57b8d0bb8d310ed43ef49",
+    "port/v2/apps/game/src/release-identity.ts": "98be69d11abbb746e0196770b2bb55b19adcea8d40ac377d25705ba62ac9c077"
+  },
+  "sections": [
+    {
+      "category": "New Features & Systems",
+      "count": 28
+    },
+    {
+      "category": "UI Enhancements",
+      "count": 28
+    },
+    {
+      "category": "Gameplay",
+      "count": 23
+    },
+    {
+      "category": "Bug Fixes",
+      "count": 23
+    },
+    {
+      "category": "Under the Hood",
+      "count": 17
+    }
+  ],
+  "draft": {
+    "count": 119,
+    "sha256": "28246d589db8a5625042fd711744eca3595bfb0f02986fb33381be990bf62c4b",
+    "rows": [
+      "🧭 COMPANION MISSIONS — send a companion to a world you've landed on: Prospect brings back that world's materials, Survey brings a little Stardust and a story. 10, 25 or 60 minutes of play; the risk is shown before it leaves, and you can recall it any time. Two at once.",
+      "✨ SPECIMEN REVEALS — every new Compendium page is revealed with its painted portrait; several at once queue up, with Continue and Skip all.",
+      "⇪ VISTA POSTCARDS — step into a landing vista with ⛶ Vista, then save or share it as a postcard with the world's name and share code.",
+      "🎵 A LIVING SOUNDSCAPE — every world now has its own bed of wind, water, insects and weather, from 43 biomes; music is sparse and melodic — a calm piece, then minutes of only the world — and battles carry their own theme, with stings for victory and defeat.",
+      "🦎 EVERY CREATURE HAS ITS OWN VOICE — thirteen body plans voiced from throat, breath and body (croaks, chirps, hisses, clicks, hoots, bubbles), one voice per creature, the same everywhere; every ability theme and impact has its own material sound.",
+      "🏗 OUTPOSTS — Build a Survey Relay, a Field Shelter or a Companion Sanctuary on a world you chose: three stages each, paid in parts and Stardust, with no timers or upkeep. Finished outposts change their world for good and join the Museum.",
+      "🍃 COMPANION TASTES: Every companion loves two flavours and dislikes one. Loved meals grow it faster and mend wounds; disliked meals are consumed harmlessly. A first meal and each new flavour earn one-time XP.",
+      "💤 REST: A wounded companion can rest at home for 2 minutes of active play per 0.1 injury, rounded up and capped at 20 minutes. It heals and becomes available when that timer ends; closing the game does not advance it.",
+      "💞 BOND: Six levels, Wary to Soulbound, record distinct shared firsts and never decay. Bond itself adds no combat power; Trusted opens Long missions and Devoted halves mission wound risk.",
+      "🔗 SHARE YOUR CREATURE: A companion’s Friendly duel panel offers its battle-ready CFB- code, and a champion code once it has earned XP, for a friend to paste into their own duel.",
+      "🌌 THE FRONTIER HAS A NEW FOUNDATION: A playable TypeScript and Pixi v2 development build carries one deterministic expedition from the infinite universe through galaxies and star systems to Planetside, with the current view preserved across reloads.",
+      "✨ A UNIVERSE WORTH CROSSING: The streaming sky layers a cosmic web, galaxy haze and nebulae, named stellar fields, compact objects, wormholes, supernova remnants, belts, rings, moons, comets, clouded worlds, and a seeded deep-space backdrop.",
+      "🎨 ONE POLISHED UNIVERSE: Galaxies, stars, planets, all 43 live biomes, creatures, plants, and the current ship now share richer warm/cool light, material depth, atmosphere, and focal contrast while keeping every seed, silhouette, anatomy, proportion, placement, and gameplay boundary unchanged. Sol is a calibration point, never a special-case filter.",
+      "🛬 THE SCOUT COMES IN TO LAND: The optional audiovisual preview shows a brief Scout arrival over its matching Earth landscape after a successful landing. Its landing sound follows your explicit pilot-sound choice; failed approaches stay quiet, and reduced motion uses a still pose.",
+      "⚔ BATTLES HAVE A STAGE: The Combat Chronicle shows its exact creature combatants making short attacks, recoiling and dodging in time with the recorded fight. Your explorer uses a nameplate, and Frontier Resolve now opens its Chronicle correctly. Health, results and rewards follow the same settled battle, while reduced motion keeps the action text and still portraits.",
+      "🌄 EVERY LANDED WORLD HAS A HORIZON: Planetside now lazily paints the preserved 960×430 authored landing vista for the exact current world and full canonical biosphere. Portrait phones show the complete composition above the fitted globe instead of cropping away most residents; unsupported workers or failed art mounts leave the usable globe intact. An optional Earth motion study gently turns the canonical surface under fixed lighting and separate clouds, then settles; an additional optional material study adds fine surface relief, ocean sheen and an atmospheric edge. Reduced Motion and Effects Off retain the standard globe. An optional painted Mars dune-sea study shows its full landscape unobstructed after landing, with detailed dunes and rocky horizons that preserve its barren ecology and two moons. An optional Earth riverbank study places existing named plants and animals in a separate layer over its rainy landscape. An optional static Earth painting brings the canonical Civet and its riverbank into one cohesive composition while retaining the same biosphere and landing controls.",
+      "🖌️ PAINTED EARTH LANDFALLS: Land shows the painter composition immediately. The accepted rainy Earth painting fades in and is retained without a model download. Other supported recipes use the local finisher when ready. View never travels or starts another painting; Inspect opens the retained original at its actual size.",
+      "The local painting engine keeps its models warm between landings. Browser model downloads are explicit and resumable; a damaged install offers Restart. Originals are kept separately from model files. Earth is the first supported art library; the phone finisher tier is not yet qualified.",
+      "🦋 EARTH LIFE LOOKS LIKE ITSELF: The rebuilt portrait library gives familiar fauna, flora, fungi, and microbes anatomy, materials, poses, markings, and species-true color instead of generic or repeatedly recolored forms.",
+      "🧬 ALIEN LIFE SPEAKS THE SAME VISUAL LANGUAGE: Planetside stages deterministic biospheres whose procedural organisms vary by kingdom, body family, habitat, silhouette, substrate, and seeded palette, while imported discoveries keep their exact identity in the Compendium.",
+      "🗂 THE EXPLORER’S BOARDS RETURN: Current-slice versions of the Star Atlas, Compendium, Records, Charters, Settings, Field Training are open for development playtests.",
+      "🎒 EVERY PIECE STAYS ITSELF: Inventory migrates each owned explorer-gear copy into a stable exact item instance with its slot, base effects, legacy affix, provenance, equipped binding, and protection state intact. Oversized legacy holds remain lossless inspection-only evidence instead of being truncated to fit an invented capacity.",
+      "🛠 ENGINEERING TURNS OPPORTUNITY INTO REACH: Engineering & Shipyard keeps its capability-derived preview, then adds finite grounded Mine and Jump-gated Skim actions, six durably purchasable Research rows, and all 62 fixed Fabricator recipes. Deep Scanners reveal bounded orbital mineral facts; Reinforced Hull reduces hostile Discover Life damage by 25%; Xenobotany Lab adds one permanent nourishment point to a safe explorer Flora meal; and Fusion Drive, Antimatter Drive, and Warp Fold use the established 2×, 4×, and 8× travel-speed bases. Equipped healing, bioscan-protection, and travel-speed gear feed those same registered consumers. Speed never replaces permanent reach or slows the unresearched baseline. Fabrication enables only outputs with connected effects and exact cost, prerequisite, revision, and capacity headroom. A slotted craft paid entirely from exceptional direct materials receives one deterministic Pureforged modifier—mining yield, rich-strike chance, or capture-contact points—bound to the exact recipe, receipt, and item; mixed stock remains ordinary. Authored natural affixes/drawbacks, random drops, upgrades, sockets, and vendors remain unavailable. Built permanent systems change the real ship and star reach; a legacy charter refit still never names or draws a missing drive. Remnant skim damage is previewed before it can spend HP, Engineering can spend preserved Stardust but does not earn it, and no reward, cost, Charter tick, or optimistic panel change publishes before the one receipt-bearing transaction commits.",
+      "📖 THE WHOLE FIELD MANUAL: The mature Guide returns with nine categories and 41 player topics drawn from 43 authored stable IDs, plus search, cross-links, and explicit current-slice notes, so mechanics that are not yet playable are labelled instead of promised.",
+      "💾 EXPEDITIONS HAVE A GUARDED HOME: IndexedDB persistence, last-known-good recovery, and protected handling for incomplete, corrupt, transiently unavailable, or newer-build saves replace the temporary slice store.",
+      "📡 AN INSTALLED FRONTIER CAN TRAVEL OFFLINE: The installable v2 web build accepts an offline candidate only after every exact emitted runtime file passes its recorded digest and the complete marker is written last. A failed or altered candidate is deleted without replacing the current build. Core runtime requests stay inside one selected complete build with no network fallback or cross-build mixing, and one complete predecessor is retained when available for rollback. Declared painted-arena files download on first use, are checked against that build’s exact size and SHA-256, and then remain cached for offline reuse; they do not download during installation.",
+      "🔊 THE FRONTIER SPEAKS: Survey pings and travel, planetfall, and ascent whooshes answer the live exploration loop. The persistent master Sound control immediately silences any sting already ringing, while Volume stays remembered for the next enabled sound. Creature voices now shares one deterministic runtime across a verified durable wild-fauna Tame, one exact durable nonconverging Feed commit, and an explorer-requested call from one exact owned-fauna detail. Each waits for its own current visible accessible counterpart; browsing, filtering, focus, navigation, misses, refusals, stale or converging results, repeats, reloads, hidden play, route or counterpart loss, and disabled Sound or Creature voices remain silent without retry or replay. Feed keeps only the latest successful ownership key, so the same or an older successful result never replays; its inline polite result is the sole screen-reader announcement while the simultaneous corner toast is visual-only. A separate explicit pre-landing Survey and Planetside biosphere Listen may play one generic distant-ecology signal only while that exact inhabited world surface’s visible biosphere lead agrees; the two controls retain distinct approach/roster evidence, reveal no species, spend no Yield, grant nothing, and write no save. After a verified settlement, the Combat Chronicle now gives every already-modelled registered cue its own exact visible-caption sound: initiative, dodge, stun, damage with critical or ability layers, burn, regeneration, defeat, resolution, and Guardian or Titan entrance, phase, victory, and defeat motifs. Composite events remain one bounded voice, at most two combat voices overlap, master Sound governs them, Creature voices does not, and Skip completes the remaining Chronicle silently. Combat cues briefly soften music and ambience already playing in the shared mix, then restore your chosen levels smoothly after the last overlapping cue. Finite creature, biosphere, and combat cues now release their voice slots and audio nodes even if the browser misses the completion event, without changing their sound plans. In the optional audiovisual preview, accepting a Starter Charter now plays a short confirmation after the acceptance succeeds, including when existing progress completes it immediately. It follows your explicit pilot-sound choice; duplicate or failed acceptances stay quiet. Other sound mappings and creature actions remain future work.",
+      "🜲 FOLLOW THE FIFTY: Records → Binder reveals fifty fixed Paragon trails shared by every explorer. A missing silhouette plots its source-proven home through existing ship and Prime reach checks; a found entry uses Inspect to open its exact existing Compendium record without travel, and Back returns to the Compendium list. Discover Life at an exact fixed home adds only that Paragon catalogue record in the same verified save, with no owned companion or specimen, no Capture credit and no Biosphere Yield spend. Repeat sightings add no duplicate record or discovery reward. Seeker of Legends becomes claimable after ten exact Paragons through a separate Binder Claim and pays its established 120 Stardust once; a sighting never pays that Set reward automatically.",
+      "⚔️ PAINTED BATTLES BY DEFAULT — every fight now plays out on the painted battle stage, with painted creature art and motion, above the Combat Chronicle. Add `?battle2=0` to the address to watch the Chronicle alone.",
+      "📚 COMPENDIUM FILTERS AND SHELVES — sift the Compendium by kingdom (Fauna, Flora, Fungi, Microbes) and rarity (Rare+, Legendary+, Mythic+), or turn on ▦ Shelves to fold it by habitat.",
+      "↗ ORIGIN TRAVEL — a wild catch's page flies you back to the world where you first catalogued it.",
+      "🎧 MONO AUDIO AND REDUCED INTENSITY: Two Creature voices settings offer the same sound in both ears and a quieter, gentler mix. Both are remembered on this device.",
+      "🔔 MARK ALL READ AND CLEAR ALL: Notifications can mark every entry read in one press and clear its history with a two-step confirmation.",
+      "⚙ BATTLE SOUNDS AND CONFIRM SALVAGE: Turn battle hits and effects off without muting creature voices, and choose whether salvage asks first.",
+      "📂 FOLDED SURVEY CARD: An option in Settings folds environment and census rows behind remembered toggles. The survey card stays fully open by default.",
+      "🎧 LISTENING REVIEW: The optional review page in built packages plays creature voices in a fixed order for Keep, Redo or Cut ratings you can copy out. Ratings stay on your device.",
+      "📌 PIN A RECIPE: Pin an unbuilt recipe to track missing materials while gathering; its chip turns READY when you can forge it.",
+      "🗺 PRIME CODEX TRAVEL: Return to a Signature’s source or track the nearest in-reach world with an unclaimed Titan.",
+      "⚙ MORE SETTINGS: Reset expedition asks for confirmation. Pop-ups Off keeps the notification tray and screen-reader announcements; creature cues still reveal their counterpart. Tooltips support press-and-hold on phones.",
+      "📖 ADVANCED BRIEFINGS: Five optional Guide pages explain v2 travel, resources, companion care, combat and progress, with links to the live manual. Browsing changes no expedition progress.",
+      "📱 FAMILIAR CONTROLS ON EVERY SCREEN: Phones keep five icon-only scene buttons above four compact utility icons. Survey replaces the separate Charters shortcut on phones and larger screens; your objective opens the full Charters panel. Survey reopens the selected object or current landed world. Star charts stays available in Settings without a duplicate phone shortcut. Tablet and desktop use the production side controls, top-center Prime Codex and bottom-right utilities. Inventory opens from your full nameplate; gold selection and local Inter respect your font and larger-text preferences.",
+      "🔔 MESSAGES KEEP THEIR PLACE: Notifications collects recent expedition messages and saves up to 50 with their read state. Opening the bell leaves unread messages unread; Mark read saves that choice. Messages shown while saves are protected remain clearly labelled for this session only.",
+      "🫧 ONE GLASS LANGUAGE: Rounded name, health, objective and navigation controls carry the production layout forward. Text pills on larger screens fit their labels instead of stretching to uniform widths. Search sits in the upper-right corner on phones with a simple Search prompt. Your objective shares that right edge below Search, followed by Star Atlas and Shipyard on larger screens. A red heart accompanies Health and its exact count; bottom guidance is plain text with a dark letter outline for bright scenes, and the Current view readout is hidden.",
+      "⚖ COMPARISON TELLS THE WHOLE STORY: Inventory opens from the shelf nameplate, keeps a bounded 48-row page, and gives one selected item a focus-owned detail sheet whose comparison includes every base and affix delta, conditional context, provenance, and equipped state. While the detail is open, current and newly mounted background surfaces stay inert and hidden from assistive technology; Close restores each surface’s exact prior state. On the narrowest phones, full item copy now reflows above its wrapping badges instead of being starved beside them.",
+      "📱 PHONE FIRST, EVERYWHERE ELSE READY: Safe areas and measured top, context, and dock heights keep controls clear from 320-pixel phones through tablets, laptops, desktops, ultrawide displays, and short landscape screens.",
+      "🪐 SHEETS KEEP THEIR ROOM: Panels share a title strip and sticky Close, scroll inside their own bounds, and clear measured guidance, captions and notices even with larger text. Keyboard scrolling leaves room below each sheet heading for its controls. Survey keeps its title and Close visible while details scroll above the biosphere. On crowded phones, notices use compact headlines; Notifications keeps the full messages. Scene instructions and captions tuck away when a sheet or biosphere needs their space, then return when room is available. Settings stays available above Field Training; closing it returns you to the lesson without changing your progress.",
+      "↔ SHORT LANDSCAPE KEEPS EVERY COMMAND: Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column. Its heading shares the reserved Close row instead of spending a second header row and clipping the list.",
+      "⌨ THE SKY ANSWERS EVERY INPUT: Pointer, touch, wheel, pinch, and keyboard explorers share the same survey outcomes; arrows cycle visible bodies, Enter or Space surveys, plus and minus zoom, and Escape releases focus or rises one level.",
+      "♿ ACCESSIBILITY IS PART OF THE SHELL: Text size, text tone, font, panel tint, visible focus, forced-colors treatment, minimum 44-pixel actions, named controls, focus restoration, and true reduced-motion behavior are built into the live surfaces.",
+      "⚙ GRAPHICS CHOICES NOW CONTROL THE SKY: Saved Visual Effects and Screen Shake controls are live. Effects Off allocates no frontier fog particles; reduced motion and low-tier devices keep bounded static atmosphere; full capable devices animate capped fog, blazar bloom, and bright-star breathing. Screen Shake adds only a short deterministic planetfall impulse when Effects, Shake, and full motion are all enabled. Magnetar systems now show their two static blue magnetic-field arcs around the core, matching their distinct Survey artwork. Protostars show their tilted dusty birth disk and warm core instead of an ordinary stellar surface. Trinary systems now show all three generated stars instead of drawing only the primary and one companion.",
+      "🧪 BUILD IDENTITY STAYS IN THE GUIDE: The development page shows Celestial Frontier v2.0 plus its full source commit inside the Guide, without covering the playable sky with a floating DEV badge.",
+      "🔄 UPDATES WAIT FOR YOUR COMMAND: Installable builds place an accessible App status disclosure at the end of Settings with minimum-size Check for updates, Activate update, Reload when ready, and Roll back actions plus polite status announcements. A verified update never forces a reload, rollback changes app files rather than expedition data, and a verification failure leaves the current offline build unchanged.",
+      "🔔 UTILITIES STAY TOGETHER: Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge, keeping Records, Notifications, Guide and Settings together as the window changes size.",
+      "🏅 EVERY EXPEDITION HAS A RANKED RECORD: Records renders the exact ten ranks from Cadet through Eternal Frontier, all six score factors, and all 96 achievements across 13 shelves. One nonoptimistic aggregate refresh can durably add the 68 aggregate milestones and permanent best-rank record; exact-event rows remain locked until their true owner fires. Twenty-six exact joins now belong to their true actions: Earth landing, world or companion Rename, Legendary-pair successful Breed, first verified conquest settlement, settled explorer injury below 20 HP, valid-world Share, accepted CF1 Follow, twelve source-derived Survey observations, wormhole/quasar/dwarf-galaxy travel, first explicit Atlas Favorite, safe explorer Flora healing, a safe above-40%-risk Flora meal, and any hostile Discover Life encounter whether the Field Scout or explorer takes the nonlethal wound. Accepted Follow folds its route, Jumps, galaxy visit, wayfarer, and any proved quasar/dwarfg event into one receipt; ordinary navigation cannot counterfeit Follow. Exactly two event owners—daily and decade—remain open. Records also houses the Binder’s six established type pages and eight current-proof Set claims. One completed unclaimed Set pays its established 25–150 Stardust, updates lifetime earned, records the claim, and refreshes achievements and rank in one receipt and one compare-and-swap with no retry or optimistic reward; the Fifty-Paragon hunt is live, and prior Set claims remain claimed. Missing silhouettes plot their source-proven homes, while found entries use Inspect to open the exact Compendium record without travel. Seeker of Legends is a separate Binder Claim at ten exact Paragons for 120 Stardust once; a sighting never pays that Set reward automatically. Its read-only Expedition Chronicle & Museum projects four escaped, independently ordered, at-most-60-row galleries from already-owned facts: latest-receipt Battle Chronicle, canonical first-species Discovery Museum, Signature-ordered Prime Victories without invented dates, and latest-first Legacy Journal. Protected authority yields one protected panel; the Museum creates no writer, reward, RNG, save field, mission, share card, or global cross-gallery timeline. The top bar shows the player name and rank in its earned permanent color or Eternal Frontier foil. Only a post-action durable promotion announces the new named rank—boot catch-up stays silent; a newly durable post-action achievement likewise announces only after commit. Achievement ceremonies use the authored name and description with a tier-3 sting; rank promotion uses a tier-5 sting and an at-most-40-particle gold burst that the effects, motion, and device budget may lower. Presentation ceremonies keep durable action order: an older queued achievement or rank ceremony waits intact behind the current receipt-bearing product action, then resumes only after that action’s own result is published. Replay, already-durable recovery, Training, convergence, and refusals stay silent, and ceremonies never write or reward. Settings → Nameplate offers Auto/current-rank or any permanently earned rank color through one receipt-bearing compare-and-swap with no retry or optimistic color change; locked choices refuse and durable ambiguity reloads instead of applying twice. Settings → Explorer name → Change name uses the shipped sanitizer and 24-character cap, changes only the explorer name, makes cleaned-empty or unchanged input receipt-free, and settles through one receipt-bearing compare-and-swap with no retry or optimistic name; durable ambiguity reloads instead of applying twice. Explorer self-rename deliberately does not grant the discovery-name namer achievement. Achievement rewards remain open.",
+      "✕ ONE SURFACE, ONE CLOSE: Every panel and Survey card owns exactly one 44-pixel top-right Close action with a reserved content gutter, so refilling or scrolling a surface cannot duplicate it, detach it to the upper-left, place another control beneath it, or strand keyboard focus behind a hidden surface. Panel titles keep an opaque backing over scrolling rows, including the space above and beside the title. Spacing inside the side navigation belongs to its controls and leaves the active panel open; a genuine empty-sky press still dismisses it.",
+      "🖥 SHARP WHERE IT COUNTS, RESPONSIVE WHERE IT HURTS: Native backing is preserved through UHD, while larger displays use a deterministic capped tier that keeps the live scene answerable without allocating two full-resolution 8K canvases.",
+      "A returning companion earns XP and bond memories; its first long mission to a world leaves a memento.",
+      "⛏ HARVEST YOUR WORLDS: A conquered world offers Harvest on an active-play cooldown. Moving the device clock cannot speed it up.",
+      "🍽 TASTE DECIDES THE MEAL: Companion feeding is deterministic. Loved, neutral and disliked food have distinct, previewed growth and healing outcomes.",
+      "🛠 CRAFT ×5: Fabricator parts and components can forge up to five times. Each craft is its own saved result and the batch stops at the first refusal.",
+      "♺ SALVAGE ALL: A confirmed action salvages unequipped, unprotected Common and Uncommon gear, excluding relics. Its confirmation also offers Don’t ask again.",
+      "🗓 WEEKLY CHARTERS KEEP THE EXPEDITION’S OWN TIME: Once the five trades are learned, three Weekly Charters appear and a new board arrives every four hours of play. The board runs on the game’s own active-play clock, so changing the device clock never resets or advances it; each counts only deeds done after you accept it and pays once.",
+      "🚀 SURVEY BEFORE YOU TRAVEL: One selection opens a card; explicit Enter galaxy, Enter system, Land, and Leave world actions make descent deliberate on mouse, touch, and keyboard instead of depending on a second tap or timing window.",
+      "🔗 WORLD CODES KEEP THE WHOLE DESTINATION: CF1 addresses preserve galaxy, star, planet, coordinates, and accepted custom names. Landing history and names follow that complete identity, so different worlds that happen to share a planet seed remain independent. A valid-world Share first settles its Shares record and one-time share achievement before the independent clipboard copy/fallback result. A submitted CF1 earns Follow only after its route is source-proven, reach-authorized, and accepted; that accepted saved route, Jumps record, and wayfarer achievement settle with its galaxy visit and any source-proved quasar or dwarf-galaxy event in the same receipt. Ordinary direct navigation cannot own Follow, Jumps, or wayfarer, but still owns its source-proved arrival and galaxy-event aggregate. Each action uses one receipt and one compare-and-swap with no retry or optimistic record or route; durable ambiguity reloads instead of applying twice. A named planet code now settles its accepted custom world name first, then lets Follow own the joined route and progression without an intervening catch-up writer. A successful Follow still uses its single receipt; a post-name route that refuses or otherwise does not join progression queues exactly one later bounded catch-up for the already-committed name. Every accepted galaxy, star, or planet route is regenerated from the seeded universe and source-verified instead of trusting the code. A stale or forged code leaves the current view unchanged and keeps the exact query unchanged. An in-reach planet address returns to Survey without bypassing Land; an out-of-reach address leaves the explorer in place. A star beyond owned ship reach stays blocked until Engineering builds the required permanent system. Saved Prime Signatures separately gate galaxy distance; verified Titan victories can claim new Signatures, and the ninth distinct claim unlocks the Frontier.",
+      "🧭 THE ATLAS LEADS BACK: Star Atlas restores semantic List and Chart views plus All, Favorites, Visited, Conquered, and Life filters. Overlapping Chart targets become one large control for a bounded exact-destination list, with Return to Chart restoring focus and no automatic travel. Chart coordinates come only from source-proven route sidecars, the current view has its own marker, canonical world-key history keeps same-seed worlds independent, and only legacy p-seed rows use preserved seed facts. Charted galaxies, stars, and worlds can reopen their own navigation level only after the saved route is regenerated from the seeded universe and source-verified; a proven planet entry returns to Survey and Land remains explicit. Stale, forged, or incomplete rows remain visible but disabled with an honest unavailable label. Favorite, Home, and Remove each settle one exact row through one receipt and one compare-and-swap with no retry or optimistic publication. Travel Home remains honest when its route is unavailable. Remove preserves every survivor and offers one eight-second Undo that restores the exact pair, source position, Home state, and present-or-absent route sidecar; another Atlas mutation, route-identity change, or convergence reload expires it. Accepted Atlas, Search, and CF1 arrivals may paint the same deterministic, skippable hyperlane streak overlay after the route publishes. Unresearched travel keeps the established baseline; Fusion, Antimatter, and Warp Fold use 2×, 4×, and 8× speed bases, with equipped travel-speed gear added to the active base. Effects, Motion, and device limits may reduce or omit the treatment without delaying or changing the destination.",
+      "🔎 SEARCH UNDERSTANDS DISCOVERIES AND ADDRESSES: The top-bar field filters imported Compendium life and accepts CF1 world codes, with an exact selected-text fallback when browser clipboard access is denied.",
+      "🐾 DISCOVER LIFE AND CAPTURE HAVE HONEST LIMITS: A living planet’s Survey card offers explicit Discover Life before or after landing. Ordinary inspection stays write-free. On ordinary worlds, the action records that exact world and resolves one shown deterministic hazard without cataloguing a species or spending Biosphere Yield. At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record. It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield. Repeat sightings add no duplicate record or discovery reward. Conquered and otherwise safe worlds cause no wound. Reinforced Hull reduces hostile damage by 25% before worn bioscan protection; an assigned Field Scout intercepts the nonlethal wound at no worse than Critical, otherwise the explorer remains at or above 1 HP. Any hostile outcome owns survivor in that same receipt whether Scout or explorer absorbs the wound; safe scans do not. Capture remains a separate landed action. Tame chooses uniformly from eligible fauna in the full biosphere, Scavenge from flora and fungi, and Sample from microbes—not only the at-most-eight-row preview. Equipped capture-chance gear adds 1.5 percentage points per point before the 95% overall ceiling, capped at +25 points; first contact remains unavailable. All three share one finite Biosphere Yield; every hit or miss spends 1, and the pool recovers at the next 20-minute active-play cycle, never from closing the game or changing the wall clock. A hit removes that species from its action pool for the cycle; a miss stays eligible. The first successful observation adds one Compendium page plus one owned creature for Tame or one specimen lot for Scavenge and Sample. A Legendary-or-better first find also awards its one Rare Find Stardust bonus. A repeat adds another creature or lot without another page or first-find reward; a miss adds none. The first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction; a miss, Sol, repeat, stale tab, or failed write banks nothing. That Chapter 2 milestone is separate from Discover Life. An accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt, including its established Earpiece reward; older Surveys and capture do not count. Weekly bioscan Charters remain protected until their separate lifecycle is complete. Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail; Passive evolution remains unavailable. companion missions are live. Care, bond memories and friendly duels are live.",
+      "🐕 ONE EXACT FIELD SCOUT, NEVER A GUESS: A real fauna Compendium detail names, switches, or stands down one exact owned companion through bounded 24-row pages; same-species twins remain separate by stable instance identity. Assigned, recovering, and injured companions stay eligible because the selector itself changes only the Scout pointer. One exact-five compare-and-swap settles the role with no RNG, retry, or optimistic publication. Refused, stale, failed, and unconfirmable writes change nothing visible and cannot apply twice. The standing Scout intercepts hostile Discover Life damage in that bioscan’s own save and remains at or below Critical. When a later successful Tame, Scavenge, or Sample catalogues a genuinely fresh species, the Scout standing before the attempt earns up to +2 XP in the same capture transaction, capped at 486; 485 gains 1, the cap gains 0, and a capture with no standing Scout, a miss, or a repeat species grants no Scout XP. Each exact owned twin also retains its own XP, level, class, wounds or Recovery, name, and deterministic innate combat arts; innate slots unlock at levels 3 and 6. Companion missions, care and bond are live.",
+      "⚔ ONE WORLD, ONE VERIFIED DUEL: A landed non-Training Surface now lets the explorer, an eligible ordinary owned-fauna companion, or a live captured Guardian or Titan challenge its deterministic Elemental Titan, Apex Guardian, or strongest fauna after an exact 160-run forecast. One immutable receipt and one compare-and-swap settle one deterministic duel with no retry, reroll, or optimistic result. Only after exact durability is verified, an accessible timed Combat Chronicle opens with named transcript rows, two HP meters, settled statistics and result. Skip stops active combat sound and completes the remaining transcript silently; Share battle log copies plain text or selects the exact log in a visible fallback without granting the world-Share achievement. Every already-modelled registered initiative, dodge, stun, impact/critical/ability, burn, regeneration, defeat, resolution, and Guardian or Titan motif owns an exact visible-caption counterpart. Composite events remain one voice and at most two combat voices overlap. Master Sound—not Creature voices—governs playback; Close, Skip, hidden/replaced presentation, route loss, counterpart loss, or Sound Off stops playback. Authored or recorded combat assets, ambience, and music remain unavailable. A verified win conquers the world once, awards exact tier-scaled Stardust and fauna XP, and persists injury; player defeat keeps a 1 HP mercy floor, a bred fauna loser returns through active-play Recovery, and a wild-caught loser returns through active-play Recovery. Captured Guardians and Titans return through a separate combat-only companion record rather than ordinary Arc 5 ownership. They use the same forecast, Chronicle, registered audio, win-XP, exact loss-XP, and injury path; XP and injury survive reload. Regardless of lineage, defeat assigns a temporary Recovery lock. The champion remains in the composite Compendium and returns to the combat roster when active-play Recovery ends; reload, Training restore and capture reconciliation preserve that lock. They gain no Arc 5 care, breeding or missions; a combat-only Recovery overlay controls their availability. Defeated Guardians and Titans join the Compendium with battlefield modifiers stripped; a Titan win claims its Prime Signature, and the ninth distinct claim unlocks the Frontier. Prime claims remain independent of later champion use. Chapter 2 conquest and the settle1 achievement bank in that same save. If starter st-conq is accepted, the verified conquest also removes it from accepted work, records it complete, adds +25 current and lifetime-earned Stardust, and honors one Charter. Accepted wk-conq refuses before combat because its weekly lifecycle owner is missing. Authored extra Guardian Gear or material caches remain open; a world whose legacy 40% conquest-imbue gate would fire stays blocked until that modifier can coexist with natural and Pureforged gear. Guardian and Titan fights offer up to three fighters, stances, Auto or Command, and offered Hold, Swap or Withdraw choices; ordinary wild fights stay Auto. Defeat applies active-play Recovery with no added defeat wound. Broader Guardian care, breeding and missions remain open.",
+      "🔊 CREATURE CALLS ARE YOURS TO REQUEST: Open a real owned-fauna Compendium detail and choose Listen on an exact companion to hear its stable deterministic call. Browsing, filtering, focusing, and returning through the Compendium never auto-play it.",
+      "🪐 HEAR A LIVING WORLD WITHOUT SPOILERS: A living world’s pre-landing Survey card and landed Planetside both offer Listen to biosphere. Their quiet generic ecology pulse appears only while that exact surface’s biosphere lead is visible; it never names a hidden species, spends Yield, grants a discovery or reward, or changes the save.",
+      "🌿 TWO EXACT MEAL PATHS, TASTE-LED CARE: A real fauna Compendium detail can Feed one exact unassigned owned companion below the 200-Meal cap from one exact owned flora lot through Use 1. Same-species twins remain separate; companions with an active assignment or Recovery timer and capped companions stay disabled and explain why. One receipt-bearing compare-and-swap raises Meals by 0 to 3 and removes exactly 1 flora, emptying that exact lot on its final unit, with no retry or optimistic change. A committed Feed requires its trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status, then may produce one deterministic synthesized acknowledgement after that status appears; refused, stale, converging, replayed, hidden, route-lost, counterpart-lost, and older results remain silent. Companion Feed resolves taste, Meals growth, wound mending and first-time XP in one inventory spend: loved meals grow and mend, neutral meals grow and mend less, and disliked meals are harmless; first tastes build bond memories. Separately, a real Flora detail previews the explorer’s healing, poison risk, and deterministic nourished stat, then Eat 1 consumes the canonical exact owned specimen in one receipt-bearing transaction. A safe meal restores shown HP with worn healing gear, raises the stat up to 330, gains +1 nourishment from Xenobotany, and recomputes maximum HP after Vitality; a toxic meal grants no healing or stat and leaves the explorer at or above 1 HP. Safe healing owns fieldmedic, and a safe meal above 40% poison risk also owns gambler, in that same save. Refused, busy, stale, and failed writes consume nothing; durable ambiguity reloads read-only and cannot eat twice. Companion Breed remains separate; Rename is identity-only; Field Scout can intercept hostile Discover Life injury. Friendly duels and companion missions are live.",
+      "🧬 TWO PARENTS, ONE DURABLE OUTCOME: Breed is now available from a real fauna Compendium detail. Choose one exact owned companion of that detail’s species and one distinct exact owned fauna mate; same-species twins remain separate, every eligible candidate stays reachable through bounded 24-row pages, and exhibition, mission-assigned, recovering, or 30%-hurt companions explain why they cannot participate. The shown chance uses both established rarity tiers plus a bounded lifetime-earned Stardust bonus without revealing raw genetic values. Parents are never consumed. Success creates one deterministic child with +2 XP and gives both parents 8 active-play minutes of Recovery; the first successful union of each canonical unordered species pair gives that child another +5 XP. Renaming or reversing the parents cannot re-arm that claim, and imported v1 pair claims and their archive remain authoritative; failure creates no child and gives both 2 active-play minutes of Recovery. Recovery blocks Breed, combat, and dispatch and never advances from closed-game time or a changed wall clock. Both complete save outcomes—including exact Charter progress—are proved before the one draw; the action then uses one immutable receipt and one compare-and-swap with no retry or optimistic child, XP, pair claim, or Recovery. A successful offspring banks Chapter 3’s Breed a hybrid bloodline goal in that same save; a failed pairing, refusal, stale result, or failed write banks nothing and grants no Charter credit. An unconfirmable durable result locks read-only and reloads so it cannot breed twice. Back and Close remain available. Parent consumption and manual genetics remain unavailable; care, bond memories and companion missions are live.",
+      "✎ ONE COMPANION, ONE DURABLE NAME: Rename is now available from a real fauna Compendium detail. Choose one exact owned companion from bounded 24-row pages; same-species twins remain separate by stable instance identity. Assigned, recovering, and injured companions may be renamed because this action changes identity only, while exhibition, non-owned, protected, and revision-exhausted rows refuse. The shipped policy strips angle brackets, ampersands, quotation marks, and apostrophes, trims whitespace, and caps the result at 24 characters; a cleaned-empty or unchanged name consumes no receipt or write. A committed rename changes only that exact companion’s nickname—never its species, genome, traits, lineage, assignment, condition, bond, catalogue alias, or another twin—and keeps the old name visible until durability is verified. One immutable receipt and one exact-five compare-and-swap settle without RNG, retry, or optimistic publication. Stale, duplicate, storage, carrier, and postcommit faults change nothing visible and converge read-only through reload so the name cannot apply twice. Back and Close remain safe during settlement.",
+      "🔒 THE FRONTIER HONORS YOUR PROGRESS: Owned Jump Drive, Long-Range Array, and Intergalactic Drive systems—with compatible Charter state—gate star travel; successful fixed fabrication can extend that reach immediately. The Prime Codex presents all nine established Signatures with their exact Titans, lore, hunt, reach, and claimed state. Saved Prime Signatures separately gate galaxy distance, verified Titan victories can claim new Signatures, and the ninth distinct claim unlocks the Frontier. Prime completion exposes the five established choices—Sovereign of the Frontier, Warden of Life, World-Shaper, The Unseen Hand, and Prismatic Pathfinder—while the Balance path additionally requires three conquered worlds, the Electric Signature, and 40 catalogued species. One ending receipt and one compare-and-swap write only the ending record, cannot overwrite a prior choice, never retry or publish optimistically, and preserve unknown imported ending evidence. The galaxy remains open afterward; later Legacy consequences remain unavailable. A blocked destination never moves the camera or quietly skips the requirement, and chapter progress alone never invents a system or Signature.",
+      "🪐 FIRST PLANETFALL COUNTS: Only a world’s first landing banks the live landfall objective and visible worlds-landed Record; revisits bank and pay nothing. Sol-versus-beyond-Sol Charter credit follows the complete verified galaxy, star, planet, and source ordinal, so a matching planet seed elsewhere cannot impersonate Sol. Chapter 1 Mine credit likewise requires the exact home-galaxy, Sol-star, dead-world, coordinate, and source-ordinal hierarchy; the same dead-world seed elsewhere cannot advance it. Successful Mine presses, fixed Fabricator outputs, one successful Breed, a qualifying capture on a source-proven world beyond Sol, and verified Conquest now bank only their exact Charter goals, while Research and Skim bank neither. Mine, Skim, and Fabricator compatibility counters persist, but the visible Records board does not list those Arc 3 counters as separate totals yet. Any successful Land, Mine, Fabricator, Breed, qualifying capture, or Conquest commit may reconcile an imported Chapter only when canonical progress and owned reach already prove it.",
+      "🛬 DESCENT DISCLOSES ITS RISKS: An unfamiliar world uses its authored type and biome odds, seeded weather, worn landing gear, and exact-world approach learning. Before commitment, the Land button and visible note show chance, possible nonlethal HP cost, and the learned bonus. A failed approach stays in orbit and teaches only that exact address; successful arrival clears its wave-offs. Earth, Training, and known-world returns are safe, and any 100% approach shows guaranteed arrival with zero descent damage risk. One lease-fenced receipt settles the outcome, HP and canonical-address learning together; stale tabs and failed writes never publish a result.",
+      "🧾 GEAR ACTIONS SETTLE ONCE: Equip, Unequip, confirmed Salvage, and pending-reward claim use the tab lease, save revision, exact item identity, and one immutable receipt. A double press, stale tab, failed write, or reload cannot duplicate or reroll the action; salvage follows the exact legacy direct-material-half return instead of inventing scrap or Stardust.",
+      "🎓 FIELD TRAINING LIVES IN THE NEW SHELL: The current 16-card drill keeps six real navigation lessons for finding Earth, reading Survey, charting, opening the Atlas, and landing, then adds one isolated Iron Plate Forge practice and read-only Planetside, Engineering, Compendium, Records, Guardian/combat, and CF1 Share/Follow orientation. Training locks every live mutating board action and performs no capture, meal, breeding, rename, Field Scout change, persistent engineering transaction, or combat. Restart captures the exact pre-Training view. A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view; if verification pauses, that exact view stays saved, and when Sol can still be verified, Training returns there so a reload can restart safely and retry. Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured; every other expedition field is retained from the surrounding save. That older checkpoint contains no saved view: Skip from Welcome stays in Sol, while completing the drill after Land stays at Earth. An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen and leaves the stored expedition unchanged; reload after updating.",
+      "🍃 A RESTING PARENT CAN EAT AGAIN: Breeding Recovery stops blocking Feed when its active-play timer ends. Companions still busy with Rest or another assignment remain unavailable.",
+      "⌨ KEEP YOUR PLACE AS THE BOARDS REFRESH: Records, Star Atlas, and Charters preserve the current keyboard control without scrolling to it; an action that disappears or becomes unavailable returns focus to Close. A finished Favorite save no longer takes focus back after you move elsewhere. Queued saves also recheck current save, Training, import, and replacement permissions before preparing a write. Compendium keyboard selection keeps its focus ring inside each creature row in both the standard and pilot presentation.",
+      "📱 PRIME KEEPS YOUR PROGRESS: Prime Codex retains its Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill, with its full label on larger screens and the existing touch and keyboard protections.",
+      "⏳ SETTLING IS NOT READ-ONLY: If one durable expedition action is still in flight, another mutating press now says that the action is settling and asks you to stay on that location. Read-only expedition is reserved for actual save-authority loss; inspection and Survey Close remain available.",
+      "🐾 CAPTURE ACTIONS STAY READY AFTER PROGRESS: When a durable Tame, Scavenge, or Sample also settles new achievement or rank progress, the still-open Survey now republishes its exact current Biosphere actions after that follow-up receipt releases. Eligible actions no longer remain disabled until a later heartbeat or card reopen.",
+      "⌨ ENGINEERING KEEPS YOUR PLACE: Activating Research or Fabrication with Enter no longer lets the browser drop focus onto the page while the action settles. The exact row now keeps keyboard context; a completed Research stays on its result, and a still-available recipe returns to its exact action without stealing focus after the explorer moves elsewhere or closes the section.",
+      "💾 PROTECTED MEANS PROTECTED: Sparse, corrupt, transiently unavailable, and newer-build saves are classified before promotion, and a recovery backup is proven safe before it can replace the primary. Promotion and recovery now recheck the exact primary, backup, revision, and lease evidence immediately before writing, so a newer tab cannot be overwritten by a result proved against older bytes. A source-valid saved destination that is no longer authorized repairs only its location to Cosmos and preserves the rest of the expedition. While storage is protected, every ordinary save-mutating preference and Training control—including Creature Voices—remains inspection-only; a protected reload is the only recovery path. Protected Engineering likewise keeps the independently capability-derived current-ship preview available for inspection while suppressing every authority-dependent detail and action. If authority is lost while Shipyard is already open, it immediately becomes preview-only; the protected reload remains scheduled even if that repaint fails. Invalid or future backup bytes cannot destroy the evidence they were meant to recover.",
+      "🌱 EVERY EXPLORER STARTS FRESH: v2 begins a brand-new expedition for everyone. The v1 “Bring expedition” save-import door is gone from Settings, so only your own play can change your live save; while storage is protected, a protected reload is the only recovery path. Expedition replacement still cancels and drains queued preference writes and claims one exclusive reload transaction, so an older save cannot overwrite a newer one or another flow’s rollback.",
+      "🧷 CARDS ACT ON WHAT THEY SHOW: Land, Atlas, Share, and travel actions bind to full composite identity, preventing an equal seed at different coordinates from inheriting stale controls.",
+      "🗺 OLD ATLAS ROWS NO LONGER PRETEND: Imported entries with incomplete legacy coordinates stay visible but disabled, rather than offering a travel action that cannot resolve its destination.",
+      "📎 COPY FEEDBACK TELLS THE TRUTH: Clipboard denial no longer reports success; the exact world code is selected in Search with a browser-copy instruction.",
+      "📋 THE CHARTER STOPS AT THE LIVE FRONTIER: The primary chip and Charter board show only landfall, mining, fixed-fabrication, successful-breeding, first-world alien bioscan, and conquest goals with real outcome writers. The board exposes the two established starter chains one unfinished link at a time, requires Accept before tracking, and caps incomplete accepted work at three. Exact writers cover first planetfall beyond canonical Earth, one Mine, a non-null Field Scout assignment or switch, verified conquest, full-address Mercury, Mars, Uranus, or Neptune landfall, five manual Mine presses on Jupiter or Saturn, and any canonical T2 component. Full-address Sol hierarchy is required; a matching leaf seed elsewhere earns nothing. Each supported completion pays its established 10–25 Stardust once in the same receipt, and supported gear uses the exact inventory carrier with empty-slot auto-equip only. A successful offspring banks its exact Chapter 3 milestone in the same durable Breed transaction; failure banks nothing. A verified conquest banks Chapter 2 conquest and can honor one accepted starter st-conq for +25 Stardust in the same combat save. An accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt; older Surveys and capture do not count. Accepted wk-conq remains fail-closed because its weekly lifecycle owner is missing; wall-week, slate, acceptance, and rollover authority must all be complete before weekly work can settle. Weekly rewards remain unavailable instead of being presented as settled work.",
+      "📋 COMPLETE IMPORTED CHAPTERS MOVE AGAIN: Saturated veteran Charter records no longer wedge. Any successful planetfall acknowledges every consecutive already-proven, reach-backed chapter without rebanking or inventing progress, while incomplete or unpowered records stay put.",
+      "🎓 A LESSON OWNS ITS ESCAPE KEY: Active Field Training keeps the navigation and Survey state needed by the current step instead of ascending or closing the only required action. If Survey is rebuilt while a lesson owns it, the new Land and Atlas actions inherit the same keyboard, focus, and pointer scope before they can answer. A wrong-world detour keeps only its real Close available, and Escape dismisses it without abandoning Sol or the lesson.",
+      "🎞 REDUCED MOTION ACTUALLY STILLS THE SCENE: Visual animation clocks, camera easing, fades, and decorative scene transforms stop or settle instead of leaving the most expensive motion running behind a preference.",
+      "🌈 RARITY IS NOT A SPECTRAL CLASS: Survey cards no longer show a player-facing Spectral class row. Galaxies and stars show plain Rarity immediately; planets reveal plain Rarity only after landing. The Compendium now speaks the same ten-name Common-to-Transcendent ladder in both its list and detail card, including deep raw grades, while malformed legacy records invent no grade. Canonical rarity hues now sit on an opaque reading badge so even Exotic stays legible over bright glass artwork. Seeded spectral color remains internal art data, and real stellar G/K/M/remnant classification remains astronomical identity.",
+      "🖥 RELOADS RELEASE THE OLD SKY: Training restart, Training recovery, and storage recovery stop and release the outgoing renderer and full-size canvases before the replacement page starts, preventing overlapping scenes and very-large-display starvation.",
+      "↔ RESIZING KEEPS YOUR PLACE: Density and viewport changes refresh canvas, pointer, Survey, and backdrop geometry while preserving the current location and open card, including same-backing 8K-to-5K transitions. Resize bursts settle at most once per animation frame and density-only work never creates a save write.",
+      "🦋 COLD PLANETSIDE ART NO LONGER FREEZES THE DECK: Loading and painting the first specimen thumbnails now happens away from the renderer thread, so Search, navigation, and browser controls stay answerable while neutral tiles fill in; the globe starts at the resolution its fitted size needs and upgrades only when real zoom or display density asks for a sharper tier. Species and biome workers are still created only when their art is requested, but each now owns one complete verified module response—there is no later painter or vista file for a first-install service-worker claim to strand. Production rejects any split worker graph, update and mixed-build requests remain fail-closed, and a real worker failure keeps its exact bounded diagnosis.",
+      "🔊 A NEWLY TAMED CREATURE CAN GREET YOU: The greeting compared two different save revisions and treated a valid capture as stale. It now follows the committed creature record while keeping stale results silent.",
+      "🌧 AURORAS RESPECT THE WEATHER: Canonical magnetic-field identity is preserved, but rain and snow once again suppress the aurora overlay instead of painting both at the same time.",
+      "🌐 ALIEN YEARS AGREE ON EVERY DEVICE: Generated non-Earth civilization years now use deterministic ASCII comma grouping instead of the device locale. Earth keeps its authored Year 2026 CE, while the numeric year, RNG chronology, and every other generated field remain unchanged.",
+      "🪟 A FAILED VISTA CANNOT POISON THE NEXT VISIT: Malformed worker results, throwing bitmap cleanup, context loss, and failed Pixi mounts now stay fail-soft; an unmountable cached canvas is evicted and a new canvas is committed only after it mounts successfully.",
+      "🌐 READY FOR OTHER LANGUAGES: the Settings panel now draws its words from a translation table (English unchanged); more screens follow.",
+      "📱 DEVICE CHECK: a hidden page (?deviceProbe=1) measures how smoothly the painted battles run on your phone, over a longer stretch as it warms up, and what the painted art keeps in memory, and gives you one block to copy. It sends nothing anywhere.",
+      "🎧 All sound is original and generated on the device — nothing downloaded, no recordings, no AI audio; the hidden Listening page now reviews every sound in the game.",
+      "🔬 DEVICE PROBE: The optional device probe checks Opus and AAC decoding from hash-checked samples and reports which formats work on this device. It does not silently select or download new production sound sources.",
+      "🐾 CREATURE MOTION STUDIES: Fish and snakes carry travelling body waves, while walking insects and spiders spend longer on supporting feet and centipede steps ripple along the body. Existing painted artwork is preserved; the motion study remains separate from release and full biomechanical qualification. The painted battle preview checks its bundled art identities without downloading painter masters, and switching matchups keeps the main game renderer alive.",
+      "🧱 A MODULAR CORE UNDER ONE UNIVERSE: Deterministic domain facades, strict root and app TypeScript programs, Pixi rendering, and IndexedDB persistence form the current playable Phase-4 foundation without changing seeded world identity. One versioned, digested 43-key domain biome-profile authority binds the exact current-world roster environment fingerprint to art and to a pure already-surfaced distant-ecology plan. A strict playback join accepts only exact visible inhabited-biosphere evidence and renders one generic deterministic neutral signal; it writes no save, spends no Yield, and reveals no species.",
+      "🔐 ONE DURABLE AUTHORITY AT A TIME: Versioned split-store saves, a per-document tab lease, revision fences, immutable receipts, an active-play-only clock, and isolated SessionRNG counters commit product state together. A lease-storage failure or rejected repository-revision read immediately stops eligibility and accrual and converges through protected reload instead of silently reacquiring; a losing tab cannot rebase, and a failed transaction publishes neither the reward nor its entropy advance.",
+      "🔢 THE REVISION CEILING FAILS CLOSED: The maximum safe revision remains readable, but a mutation that would overflow it returns a typed protected outcome before changing product rows, receipts, F4 state, or revision bytes.",
+      "🌐 BROWSER UPDATES ARE PROVENANCE, NOT BASELINES: Local Chromium-driving art and layout tools resolve an explicit or installed compatible Edge/Chrome executable across macOS, Windows, and Linux. Before art evidence, the connected browser must report complete Chromium-family identity, version, executable, revision, user agent, JavaScript, and CDP 1.3 provenance. Any compatible point version is accepted and never demands a visual rebaseline by itself.",
+      "📦 ART ARRIVES WHEN IT IS NEEDED: Species art loads on demand. The read-only Compendium supports up to 1,500 logical entries while mounting the visible viewport plus half a viewport of overscan on each side (about two viewports total), plus at most the focused pinned row; each visible row moves from a neutral placeholder to an exact 132px thumbnail keyed by the complete genome. Search filters the logical count, Back restores the saved row and focus, and Close returns focus to the exact opener. Planetside shares the same bounded thumbnail lease path, leases release with their visible owners, and only specimen detail publishes and retains an exact 440px portrait with gentle selected-image motion that stops when hidden, closed, or reduced motion is enabled; thumbnail scratch art is downsampled to 132px before it crosses the worker boundary. The worker keeps its immutable data-URL handoff, while the window converts only settled 132px thumbnails into revocable Blob URLs. Closed surfaces release their visible owners, evict unowned portraits, and retain only the 17 most-recently used unleased thumbnails for bounded warm reuse; live leases survive, reacquisition works, and invalid, dropped, oversize, duplicate, evicted, or finally disposed art releases its Blob ownership.",
+      "🧵 ONE BACKGROUND PAINTER AT A TIME, OWNED END TO END: A dedicated worker is constructed only after a real owner and a serviced boot turn, with its complete portrait graph sealed into that exact worker entry so painting needs no second module fetch. One broker serializes work, deduplicates complete-genome keys, bounds caches and leases, validates every 132px/440px result, contains failed tiles, revokes stale bfcache work, and terminates an idle or replaced producer without a synchronous renderer fallback.",
+      "🪐 HD SURFACES HAVE ONE NAMED OWNER: A named HD surface-planet texture attachment binds each completion to the exact surface generation and planet identity, retains the displayed predecessor until an acquired successor publishes, rejects stale work, suppresses same-texture swaps, and cancels and releases its timer and leases at the owning scene boundary.",
+      "📚 HISTORY STAYS HISTORY: All 56 v1 releases and 398 legacy bullets remain byte-parity checked and separate from the v2.0 development bulletin; this draft cannot trigger the shipped-update popup or mutate the seen-release marker.",
+      "🧪 THE TEST FLEET DRIVES THE REAL SURFACES: Determinism and parity checks, full TypeScript tests, one-attempt browser smoke, a 12-viewport responsive matrix, deliberate broken-build controls, and nine automated play lenses guard the development package. Closed Inventory panels retain their inventory, filter, and page state without keeping hidden item rows or dormant event subscriptions, and every registered panel opener shares one focus-capture owner. The memory ruler names the exact exceeded counter and cannot move merely because the browser received a compatible point update. Automated lenses still do not replace human play.",
+      "🔬 RELOADS HAVE AN EVIDENCE CHAIN: Import settlement, renderer release, navigation commit, replacement boot, ready publication, and later page commandability are measured as separate ordered outcomes instead of one blind reload delay.",
+      "❤️ THE BROWSER GETS A VOTE: Exact-page checks run beside an independent browser heartbeat, so a scene that cannot answer is reported as a product finding rather than hidden as a test timeout or retried away.",
+      "🌐 DEVELOPMENT PUBLISHING STAYS PARKED: The owner-authorized, labelled PR battery can build, browser-check, and archive an exact-commit v2.0 preview package with full Guide identity, origin refusal, and byte inventory; it does not publish. The separate branch-site workflow remains manually parked, and production remains the v1.8.9 main-branch site."
+    ]
+  },
+  "topics": [
+    {
+      "categoryId": "getting-around",
+      "id": "zoom",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "getting-around",
+      "id": "survey",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "getting-around",
+      "id": "landing",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "getting-around",
+      "id": "search",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "getting-around",
+      "id": "codes",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "getting-around",
+      "id": "charters",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "getting-around",
+      "id": "atlas",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "getting-around",
+      "id": "colors",
+      "availability": "unavailable"
+    },
+    {
+      "categoryId": "life-compendium",
+      "id": "discover",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "life-compendium",
+      "id": "kingdoms",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "life-compendium",
+      "id": "rarity",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "life-compendium",
+      "id": "specimen",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "life-compendium",
+      "id": "drift",
+      "availability": "unavailable"
+    },
+    {
+      "categoryId": "life-compendium",
+      "id": "sapience",
+      "availability": "unavailable"
+    },
+    {
+      "categoryId": "breeding-feeding",
+      "id": "breeding",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "breeding-feeding",
+      "id": "feeding",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "breeding-feeding",
+      "id": "injuries",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "breeding-feeding",
+      "id": "eating",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "explorer",
+      "id": "stats",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "explorer",
+      "id": "hp",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "explorer",
+      "id": "rank",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "explorer",
+      "id": "achievements",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "combat",
+      "id": "duels",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "combat",
+      "id": "abilities",
+      "availability": "unavailable"
+    },
+    {
+      "categoryId": "combat",
+      "id": "classes",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "combat",
+      "id": "conquest",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "combat",
+      "id": "binder",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "combat",
+      "id": "guardians",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "stardust-progression",
+      "id": "stardust",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "stardust-progression",
+      "id": "harvest",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "stardust-progression",
+      "id": "mining",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "stardust-progression",
+      "id": "skimming",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "stardust-progression",
+      "id": "research",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "stardust-progression",
+      "id": "crafting",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "stardust-progression",
+      "id": "ascent",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "prime-codex",
+      "id": "signatures",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "prime-codex",
+      "id": "regions",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "prime-codex",
+      "id": "endings",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "living-universe",
+      "id": "determinism",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "settings-saving",
+      "id": "settings",
+      "availability": "partial"
+    },
+    {
+      "categoryId": "settings-saving",
+      "id": "saving",
+      "availability": "partial"
+    }
+  ],
+  "briefings": {
+    "count": 5,
+    "sha256": "3600b9a23a6bcd15c0509bc31f6a457bc7eccfc4d68123b1754ef95152c67043",
+    "rows": [
+      {
+        "id": "reach",
+        "title": "Plan a route, then earn its reach",
+        "body": "<p>Survey a destination before entering. A world route opens its system card; <b>Land</b> remains a separate action. The Star Atlas and CF1 Follow respect your expedition’s current reach.</p><p>Build permanent ship systems in Engineering to reach more stars. Titan victories earn Prime Signatures, which separately open galaxy distance. Travel speed never replaces reach.</p><p>Continue with <span data-gt=\"landing\">Landing</span>, <span data-gt=\"atlas\">Star Atlas</span> and <span data-gt=\"signatures\">Prime Codex</span>.</p>"
+      },
+      {
+        "id": "resources",
+        "title": "Turn discoveries into equipment",
+        "body": "<p>Mine finite grounded deposits and Skim eligible stars through Engineering. Each action shows its own cost, opportunity and limits before you commit. The Fabricator offers connected recipes; <b>Craft ×5</b> stops if a later craft cannot complete.</p><p>Pin a recipe to track its missing stock. Inventory equips exact gear copies; Salvage all requires confirmation and excludes equipped, protected and relic gear. Pureforged modifiers require exceptional direct materials, not a random reroll.</p><p>Read <span data-gt=\"mining\">Mining</span> and <span data-gt=\"crafting\">Fabrication</span>.</p>"
+      },
+      {
+        "id": "companions",
+        "title": "Care for the individual you chose",
+        "body": "<p>A Compendium fauna detail selects an exact owned companion, even among identical twins. Feed consumes one flora from the chosen lot. Loved food raises Meals by 2, or 3 for tier 4 or higher flora, and mends 0.25 injury; neutral food raises Meals by 1 and mends 0.10; disliked food is consumed harmlessly without growth. Meals stop at 200.</p><p>First meals and new tastes earn their own one-time XP and bond memories. <b>Rest</b> heals a wounded companion and reserves it until its active-play timer ends: 2 minutes per 0.1 injury, rounded up, at most 20 minutes. Closing the game does not advance that timer. Bond records distinct firsts and never decays. Two companions can take Prospect or Survey missions of 10, 25 or 60 active-play minutes. Review the disclosed risk, then claim the sealed return once; Recall pays nothing. Trusted opens Long missions and Devoted halves wound risk.</p><p>Read <span data-gt=\"feeding\">Feeding</span>, <span data-gt=\"injuries\">Recovery</span> and <span data-gt=\"breeding\">Breeding</span>.</p>"
+      },
+      {
+        "id": "combat",
+        "title": "Choose a plan; keep the same rewards",
+        "body": "<p>Wild conquest is Auto. Against a Guardian or Titan, choose up to three eligible fighters and their stances, then Auto or Command. Command pauses at offered breaks for Hold, Swap or Withdraw; it gives the same rewards as Auto. A forecast is a simulation, not a guaranteed result.</p><p>Every Guardian and Titan can change phase at half health, including solo Balanced Auto fights. Defeat puts companions into active-play Recovery; it does not delete them or add a defeat wound. Winning and losing never pay twice after reload.</p><p>Friendly duels use a shared CFB- creature code and their own reward cooldowns. Read <span data-gt=\"conquest\">Conquest</span> and <span data-gt=\"duels\">Friendly duels</span>.</p>"
+      },
+      {
+        "id": "progress",
+        "title": "Know which clock and record owns progress",
+        "body": "<p>Accept a Charter before doing its counted deeds. The Weekly board changes after four hours of active play; moving the device clock grants no reset. Conquered-world Harvest has its own active-play cooldown.</p><p>Records, the Binder and Prime Codex describe different accomplishments. A creature share code starts a duel; it does not import an expedition. Reset expedition is a separate confirmed Settings action. A protected save stays protected.</p><p>Settings also offers sound, motion, folded survey cards, pop-up notifications and tooltips. On phones, press and hold to read a tooltip. Read <span data-gt=\"charters\">Charters</span>, <span data-gt=\"settings\">Settings</span> and <span data-gt=\"saving\">Saving</span>.</p>"
+      }
+    ]
+  },
+  "scope": "current rendered copy; no browser certificate or runtime budget admission"
+}
