@@ -1,0 +1,8 @@
+{
+  "base": "8c41803cd04749c1f99b73fe49c69c17c3349cad",
+  "head": "6cbeefe0ac987594af3ae92e7d8a5da5159cbc6a",
+  "packBytes": 120567446,
+  "under2GB": true,
+  "measurement": "git pack-objects --revs --stdout --thin; counted streamed bytes",
+  "seconds": 1.125558375
+}
