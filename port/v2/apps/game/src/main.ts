@@ -46,6 +46,7 @@ import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './
 import { mirrorCompanionCodexXpV1 } from './companion-codex-mirror.js';
 import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
 import { localeFromSearchV1, localizeElementV1, SETTINGS_CATALOG_V1 } from './i18n.js';
+import { battle2On } from './battle2-gate.js';
 import { freshExpeditionPayloadV1 } from './expedition-reset.js';
 import { TooltipOwnerV1 } from './tooltips.js';
 import {
@@ -17064,9 +17065,10 @@ function presentCommittedCombatChronicle(
   if (openPanelId() !== 'combat') {
     throw new Error('Combat Chronicle panel did not open');
   }
-  // ?battle2=1 only (Nick 2026-09-24): the painted stage paces the Chronicle log — a gate set BEFORE start, released by the stage
-  // at each turn's impact (the log never waits more than COMBAT_CHRONICLE_PACER_MAX_WAIT_MS per row); reduced motion keeps the cadence.
-  const battle2Flag = new URLSearchParams(location.search).get('battle2') === '1';
+  // The painted stage (the default since A4, 2026-09-26; `?battle2=0` opts out — battle2-gate.ts) paces the Chronicle log: a gate set
+  // BEFORE start, released by the stage at each turn's impact (the log never waits more than COMBAT_CHRONICLE_PACER_MAX_WAIT_MS per row);
+  // reduced motion keeps the cadence.
+  const battle2Flag = battle2On(location.search);
   const battle2Pacer = battle2Flag && motionOK() ? createCombatChroniclePacerGateV1() : null;
   if (battle2Flag) combatChronicleController.setPacer(battle2Pacer?.pacer ?? null);
   const generation = combatChronicleController.start(chronicle, cuePlan);
@@ -17085,8 +17087,9 @@ function presentCommittedCombatChronicle(
     combatBattleScene?.stop('close');
     /* The verified settlement and its Chronicle remain usable without art. */
   }
-  // A6 study flag (?battle2=1): the A3 battle stage v2 over the same Chronicle mount; dynamic import only under the flag, never on the default path.
-  if (new URLSearchParams(location.search).get('battle2') === '1') void import('./battle2-wiring.js').then(m => m.mountBattle2Study({ mount: combatChronicleMount, settlement, chronicle, generation, pacer: battle2Pacer, ownership: arc5OwnershipState, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { battle2Pacer?.releaseAll(); /* the flagged study never blocks the Chronicle */ });
+  // The painted battle stage over the same Chronicle mount (A4: the default; `?battle2=0` opts out). A dynamic import reached only when a
+  // fight is presented, so boot never loads it; a study failure leaves the Chronicle, which stays the accessible owner of the outcome.
+  if (battle2On(location.search)) void import('./battle2-wiring.js').then(m => m.mountBattle2Study({ mount: combatChronicleMount, settlement, chronicle, generation, pacer: battle2Pacer, ownership: arc5OwnershipState, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { battle2Pacer?.releaseAll(); /* the flagged study never blocks the Chronicle */ });
   try {
     const claim = tameGreetingAudioOwner?.claimCommittedCombatSession(outcome, cuePlan) ?? null;
     if (claim !== null) {

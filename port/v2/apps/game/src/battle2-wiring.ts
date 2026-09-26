@@ -74,7 +74,8 @@ import type { SpeciesArtLoader } from './species-art-loader.js';
 import { loaderPortrait } from './species-portrait.js';
 import { compileWorldLife, WorldLifePixiAdapter, type WorldLifeGraphicsLike } from './worldlife/index.js';
 
-export const BATTLE2_FLAG = 'battle2' as const;
+import { BATTLE2_FLAG, battle2On } from './battle2-gate.js';
+export { BATTLE2_FLAG };
 export const BATTLE2_FRAME = Object.freeze({ width: 1024, height: 576 });
 /** Audit paths (relative to the arena proof directory) of the accepted plates, anchors, the landmark records and the
  * source paint-skin fits (E1 §1.1): every painted archetype (`battle2-archetypes.ts`, generated). Each fit
@@ -95,8 +96,8 @@ export const auditAssetPath = (repoRelative: string): string => { if (!repoRelat
 export const repoPathOfAsset = (assetPath: string): string => (assetPath.startsWith('../') ? 'audits/' + assetPath.slice(3) : assetPath);
 export const PLAYER_PLACEHOLDER_LABEL = 'player champion placeholder (nameplate; no creature art)' as const;
 
-/** The gate main.ts tests in source text; kept here so the wiring and its test agree on the spelling. */
-export function battle2Enabled(search: string): boolean { return new URLSearchParams(search).get(BATTLE2_FLAG) === '1'; }
+/** The same rule main.ts uses (battle2-gate.ts): default on since A4; `?battle2=0` opts out, `?battle2=1` forces on. */
+export function battle2Enabled(search: string): boolean { return battle2On(search); }
 
 /* ---------- structural inputs (pixi.js is never imported here; main.ts passes its classes) ---------- */
 export interface Battle2Image { readonly width: number; readonly height: number; readonly source: unknown; pixels(): Uint8ClampedArray; }
