@@ -1,0 +1,606 @@
+{
+  "name": "Marmot",
+  "family": "quadruped",
+  "species": {
+    "name": "Marmot",
+    "aspect": 2,
+    "headFrac": 0.26,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "fat barrel body on very short legs",
+      "short furry tail",
+      "blunt rounded head with small ears"
+    ],
+    "note": "Frequently drawn rearing upright on the haunches; the natural profile is low and squat."
+  },
+  "genome": {
+    "seed": 1242552574,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 3,
+    "body": 5,
+    "loco": 2,
+    "trait": 19,
+    "size": 4,
+    "diet": 5,
+    "head": 3,
+    "limbs": 2,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 1,
+    "detail": 8,
+    "accent": 5,
+    "temper": 8,
+    "sense": 2,
+    "repro": 1,
+    "life": 1,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Marmot"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Marmot\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1242552574\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 172,
+  "contract": {
+    "id": "quadruped",
+    "version": 1,
+    "clipSetId": "quadruped-land-v1",
+    "graph": [
+      [
+        "pelvis",
+        "root"
+      ],
+      [
+        "spine",
+        "pelvis"
+      ],
+      [
+        "chest",
+        "spine"
+      ],
+      [
+        "neck",
+        "chest"
+      ],
+      [
+        "head",
+        "neck"
+      ],
+      [
+        "jaw",
+        "head"
+      ],
+      [
+        "hindFarRoot",
+        "pelvis"
+      ],
+      [
+        "hindFarKnee",
+        "hindFarRoot"
+      ],
+      [
+        "hindFarAnkle",
+        "hindFarKnee"
+      ],
+      [
+        "hindFarPaw",
+        "hindFarAnkle"
+      ],
+      [
+        "foreFarRoot",
+        "chest"
+      ],
+      [
+        "foreFarKnee",
+        "foreFarRoot"
+      ],
+      [
+        "foreFarAnkle",
+        "foreFarKnee"
+      ],
+      [
+        "foreFarPaw",
+        "foreFarAnkle"
+      ],
+      [
+        "hindNearRoot",
+        "pelvis"
+      ],
+      [
+        "hindNearKnee",
+        "hindNearRoot"
+      ],
+      [
+        "hindNearAnkle",
+        "hindNearKnee"
+      ],
+      [
+        "hindNearPaw",
+        "hindNearAnkle"
+      ],
+      [
+        "foreNearRoot",
+        "chest"
+      ],
+      [
+        "foreNearKnee",
+        "foreNearRoot"
+      ],
+      [
+        "foreNearAnkle",
+        "foreNearKnee"
+      ],
+      [
+        "foreNearPaw",
+        "foreNearAnkle"
+      ],
+      [
+        "tail0",
+        "pelvis"
+      ],
+      [
+        "tail1",
+        "tail0"
+      ],
+      [
+        "tail2",
+        "tail1"
+      ],
+      [
+        "tail3",
+        "tail2"
+      ],
+      [
+        "earFarRoot",
+        "head"
+      ],
+      [
+        "earFarTip",
+        "earFarRoot"
+      ],
+      [
+        "earNearRoot",
+        "head"
+      ],
+      [
+        "earNearTip",
+        "earNearRoot"
+      ]
+    ],
+    "bodyAxis": [
+      "pelvis",
+      "chest"
+    ],
+    "joints": [
+      "root",
+      "pelvis",
+      "spine",
+      "chest",
+      "neck",
+      "head",
+      "jaw",
+      "hindFarRoot",
+      "hindFarKnee",
+      "hindFarAnkle",
+      "hindFarPaw",
+      "foreFarRoot",
+      "foreFarKnee",
+      "foreFarAnkle",
+      "foreFarPaw",
+      "hindNearRoot",
+      "hindNearKnee",
+      "hindNearAnkle",
+      "hindNearPaw",
+      "foreNearRoot",
+      "foreNearKnee",
+      "foreNearAnkle",
+      "foreNearPaw",
+      "tail0",
+      "tail1",
+      "tail2",
+      "tail3",
+      "earFarRoot",
+      "earFarTip",
+      "earNearRoot",
+      "earNearTip"
+    ],
+    "legs": [
+      "hindFar",
+      "foreFar",
+      "hindNear",
+      "foreNear"
+    ],
+    "limitsDeg": {
+      "root": {
+        "min": -15,
+        "max": 15
+      },
+      "pelvis": {
+        "min": -20,
+        "max": 20
+      },
+      "spine": {
+        "min": -25,
+        "max": 25
+      },
+      "chest": {
+        "min": -20,
+        "max": 20
+      },
+      "neck": {
+        "min": -35,
+        "max": 35
+      },
+      "head": {
+        "min": -35,
+        "max": 35
+      },
+      "jaw": {
+        "min": -30,
+        "max": 5
+      },
+      "hindFarRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "hindFarKnee": {
+        "min": -75,
+        "max": 75
+      },
+      "hindFarAnkle": {
+        "min": -60,
+        "max": 60
+      },
+      "hindFarPaw": {
+        "min": -40,
+        "max": 40
+      },
+      "foreFarRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "foreFarKnee": {
+        "min": -75,
+        "max": 75
+      },
+      "foreFarAnkle": {
+        "min": -60,
+        "max": 60
+      },
+      "foreFarPaw": {
+        "min": -40,
+        "max": 40
+      },
+      "hindNearRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "hindNearKnee": {
+        "min": -75,
+        "max": 75
+      },
+      "hindNearAnkle": {
+        "min": -60,
+        "max": 60
+      },
+      "hindNearPaw": {
+        "min": -40,
+        "max": 40
+      },
+      "foreNearRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "foreNearKnee": {
+        "min": -75,
+        "max": 75
+      },
+      "foreNearAnkle": {
+        "min": -60,
+        "max": 60
+      },
+      "foreNearPaw": {
+        "min": -40,
+        "max": 40
+      },
+      "tail0": {
+        "min": -40,
+        "max": 40
+      },
+      "tail1": {
+        "min": -50,
+        "max": 50
+      },
+      "tail2": {
+        "min": -50,
+        "max": 50
+      },
+      "tail3": {
+        "min": -50,
+        "max": 50
+      },
+      "earFarRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "earFarTip": {
+        "min": -40,
+        "max": 40
+      },
+      "earNearRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "earNearTip": {
+        "min": -40,
+        "max": 40
+      }
+    },
+    "bounds": [
+      {
+        "id": "torso",
+        "min": 0.08,
+        "max": 0.65,
+        "kind": "distance",
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "head",
+        "min": 0.015,
+        "max": 0.75,
+        "kind": "distance",
+        "axis": [
+          "neck",
+          "head"
+        ]
+      },
+      {
+        "id": "head/torso",
+        "min": 0.02,
+        "max": 1.6,
+        "kind": "ratio",
+        "bones": [
+          "head"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "leg/torso:hindFar",
+        "min": 0.25,
+        "max": 2.7,
+        "kind": "ratio",
+        "bones": [
+          "hindFarKnee",
+          "hindFarAnkle",
+          "hindFarPaw"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:foreFar",
+        "min": 0.25,
+        "max": 2.7,
+        "kind": "ratio",
+        "bones": [
+          "foreFarKnee",
+          "foreFarAnkle",
+          "foreFarPaw"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:hindNear",
+        "min": 0.25,
+        "max": 2.7,
+        "kind": "ratio",
+        "bones": [
+          "hindNearKnee",
+          "hindNearAnkle",
+          "hindNearPaw"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:foreNear",
+        "min": 0.25,
+        "max": 2.7,
+        "kind": "ratio",
+        "bones": [
+          "foreNearKnee",
+          "foreNearAnkle",
+          "foreNearPaw"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      }
+    ],
+    "contactStance": {
+      "default": "all",
+      "gaits": {
+        "approach:walk": "alternating",
+        "approach:trot": "alternating",
+        "approach:gallop": "bounding"
+      },
+      "actions": {
+        "idle": "all",
+        "alert": "all",
+        "hit": "all",
+        "feed": "all",
+        "tame": "all",
+        "faint": "all",
+        "approach": "all",
+        "melee:*": "hind",
+        "cast": "hind",
+        "victory": "hind",
+        "dodge": "none",
+        "melee:kick": "none"
+      }
+    },
+    "contactLimitsDeg": {
+      "root": {
+        "min": -15,
+        "max": 15
+      },
+      "pelvis": {
+        "min": -20,
+        "max": 20
+      },
+      "spine": {
+        "min": -25,
+        "max": 25
+      },
+      "chest": {
+        "min": -20,
+        "max": 20
+      },
+      "neck": {
+        "min": -35,
+        "max": 35
+      },
+      "head": {
+        "min": -35,
+        "max": 35
+      },
+      "jaw": {
+        "min": -30,
+        "max": 5
+      },
+      "hindFarRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "hindFarKnee": {
+        "min": -100,
+        "max": 100
+      },
+      "hindFarAnkle": {
+        "min": -105,
+        "max": 105
+      },
+      "hindFarPaw": {
+        "min": -95,
+        "max": 95
+      },
+      "foreFarRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "foreFarKnee": {
+        "min": -100,
+        "max": 100
+      },
+      "foreFarAnkle": {
+        "min": -105,
+        "max": 105
+      },
+      "foreFarPaw": {
+        "min": -95,
+        "max": 95
+      },
+      "hindNearRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "hindNearKnee": {
+        "min": -100,
+        "max": 100
+      },
+      "hindNearAnkle": {
+        "min": -105,
+        "max": 105
+      },
+      "hindNearPaw": {
+        "min": -95,
+        "max": 95
+      },
+      "foreNearRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "foreNearKnee": {
+        "min": -100,
+        "max": 100
+      },
+      "foreNearAnkle": {
+        "min": -105,
+        "max": 105
+      },
+      "foreNearPaw": {
+        "min": -95,
+        "max": 95
+      },
+      "tail0": {
+        "min": -40,
+        "max": 40
+      },
+      "tail1": {
+        "min": -50,
+        "max": 50
+      },
+      "tail2": {
+        "min": -50,
+        "max": 50
+      },
+      "tail3": {
+        "min": -50,
+        "max": 50
+      },
+      "earFarRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "earFarTip": {
+        "min": -40,
+        "max": 40
+      },
+      "earNearRoot": {
+        "min": -60,
+        "max": 60
+      },
+      "earNearTip": {
+        "min": -40,
+        "max": 40
+      }
+    }
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  }
+}
