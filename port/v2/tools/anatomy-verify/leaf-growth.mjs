@@ -14,6 +14,7 @@ export function traceRegion(region0, w, h, epsilon = 1.5) {
     while (stack.length) { const q = stack.pop(); n++; const qx = q % w, qy = (q / w) | 0;
       for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) { const X = qx + dx, Y = qy + dy; if (X < 0 || Y < 0 || X >= w || Y >= h) continue; const r = Y * w + X; if (region0[r] && lab[r] < 0) { lab[r] = s0; stack.push(r); } } }
     if (n > bestN) { bestN = n; best = s0; } }
+  if (best < 0) return null; // Empty paint must never select the unvisited (-1) background as anatomy.
   const region = new Uint8Array(w * h); for (let i = 0; i < w * h; i++) region[i] = lab[i] === best ? 1 : 0;
   let start = -1; for (let i = 0; i < w * h; i++) if (region[i]) { start = i; break; } if (start < 0) return null;
   const at = (x, y) => (x >= 0 && y >= 0 && x < w && y < h ? region[y * w + x] : 0);

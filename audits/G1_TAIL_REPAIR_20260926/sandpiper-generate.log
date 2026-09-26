@@ -1,0 +1,1 @@
+{"partId":"tail","proximalCut":[[433.4,621.2],[406.3,684.4]],"joint":[199.5,667.5],"parent":[543.2,762.7],"originalPixels":16879,"candidateAddedPixels":4767,"rule":"original source alpha behind existing most-proximal transferred edge; original owner pixels seed contour; tracing can reassign boundary pixels; only remainder/unclaimed eligible for growth"}

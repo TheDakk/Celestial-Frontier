@@ -1,0 +1,21 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Sandpiper",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "d084332d317cfa3533ef34a2511601c13628e87c0c452d8720cf8ff764547710",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "30496d8ee2ffdfaffa88b5b4d05390aacba77b71e376cfbc1e940c3f9bb00aa2",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "wading-bird",
+  "authoringCreated": false,
+  "sourceHead": "375935b6b3259f9195a722cc5fe26c891c74090e"
+}

@@ -17,9 +17,10 @@ const bundled=vi.hoisted(()=>({pin:{path:'library/art-library.json',sha256:'',by
 vi.mock('./art-library.generated.js',()=>({ART_LIBRARY_MANIFEST_PIN:bundled.pin}));
 const root=new URL('../../../../../',import.meta.url),pin=getBattle2MasterPin('crab')!;
 const read=(p:string)=>new Uint8Array(readFileSync(new URL(p,root))),sha=(b:Uint8Array)=>new LocalModelSha256V1().update(b).digestHex();
-const labelsPng=()=>read(creatureFinishLabelsPinV1(pin).labelsPath);
-const input=()=>({pin,creatureId:pin.creatureId,record:JSON.parse(new TextDecoder().decode(read(pin.recordPath))),alphaPath:pin.alphaPath,alpha:read('port/v2/apps/game/public/battle2/'+pin.alphaPath),bindingBytes:read(pin.recordPath.replace('record.json','binding.json')),atlasPath:pin.atlasPath,atlas:read(pin.atlasPath)});
-async function fixture(altered=false){const i=input(),source=await finishSourceV1({fit:{record:i.record,masterPng:read(pin.masterPath),labelsPng:labelsPng(),binding:i.bindingBytes},visualKey:'test-compendium-individual',identitySeed:7,modelHash:'a'.repeat(64)});
+const labelsPng=(p=pin)=>read(creatureFinishLabelsPinV1(p).labelsPath);
+const shippedAlpha=(p=pin)=>{try{return read('port/v2/apps/game/public/battle2/'+p.alphaPath);}catch{return read('port/v2/apps/game/public/library/battle2/'+p.alphaPath);}};
+const input=(p=pin)=>({pin:p,creatureId:p.creatureId,record:JSON.parse(new TextDecoder().decode(read(p.recordPath))),alphaPath:p.alphaPath,alpha:shippedAlpha(p),bindingBytes:read(p.recordPath.replace('record.json','binding.json')),atlasPath:p.atlasPath,atlas:read(p.atlasPath)});
+async function fixture(altered=false,p=pin){const i=input(p),source=await finishSourceV1({fit:{record:i.record,masterPng:read(p.masterPath),labelsPng:labelsPng(p),binding:i.bindingBytes},visualKey:'test-compendium-individual:'+p.creatureId,identitySeed:7,modelHash:'a'.repeat(64)});
  let row:AiCreatureOriginalV1|null=null;const find=async()=>row;
  const engine=createCreatureFinishEngineV1({tier:'desktop',store:{find,read:find,close(){},async retain(identity,blob,receipt){row={key:creatureOriginalKey(identity),sha256:sha(new Uint8Array(await blob.arrayBuffer())),blob,receipt};return row;}},createInfer:async()=>async s=>{const rgba=s.rgba.slice();if(altered){let changed=false;for(let y=2;y<s.height-2&&!changed;y++)for(let x=2;x<s.width-2&&!changed;x++){const at=(y*s.width+x)*4,label=s.labels[at];if(!label||rgba[at+3]!==255)continue;let inside=true;for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++)if(s.labels[((y+dy)*s.width+x+dx)*4]!==label)inside=false;if(inside){rgba[at]=(rgba[at]!+1)%256;changed=true;}}if(!changed)throw Error('no interior test pixel');}return {rgba,labels:s.labels.slice(),binding:s.binding.slice()};}});
  const result=await engine.request(source);engine.close();if(result.status!=='original')throw Error(result.reason);return {i,source,original:result.original};}
@@ -52,8 +53,8 @@ it('loader rejects forged finish or wrong individual before remap/Pixi allocatio
  await expect(loadPinnedCreatureRigV1(i,decode,{finishedAtlas:{token,identity},borrowedAtlas:true,atlasPixels:remap})).rejects.toThrow('owns its texture');
  expect(remap).not.toHaveBeenCalled();expect(decode).not.toHaveBeenCalled();
 });
-it('missing ownership label evidence fails closed for the four unsupported fits',()=>{
- for(const id of['civet','eel','rat','salamander'])expect(()=>creatureFinishLabelsPinV1(getBattle2MasterPin(id)!)).toThrow('missing source pin');
+it('C46 reviewed derived-label pins bind all four supplementary audit paths; forged rig authority still refuses',()=>{
+ for(const id of['civet','eel','rat','salamander']){const p=getBattle2MasterPin(id)!,l=creatureFinishLabelsPinV1(p);expect(l.labelsPath).toBe('audits/G5_DERIVED_LABELS_20260926/'+id+'/labels.png');expect(l.labelsPngSha256).toBe(sha(read(l.labelsPath)));expect(l.bindingSha256).toBe(p.bindingSha256);expect(l.atlasSha256).toBe(p.atlasSha256);}
  expect(()=>creatureFinishLabelsPinV1({...pin})).toThrow('untrusted rig pin');expect(sha(labelsPng())).toBe(creatureFinishLabelsPinV1(pin).labelsPngSha256);
 });
 it('phone delivery requires both pinned files, exact identity, and unchanged bytes before returning an original',async()=>{
@@ -96,4 +97,10 @@ it('C45: both in-place and copied alpha mutations refuse after finish projection
  for(const copied of[false,true])for(const finished of[false,true])await expect(loadPinnedCreatureRigV1(i,undefined,{...(finished?{finishedAtlas:{token,identity}}:{}),atlasPixels:a=>{const out=copied?a.slice():a;out[3]=(out[3]!+1)%256;return out;}})).rejects.toThrow('must keep alpha');
  await expect(loadPinnedCreatureRigV1(i,undefined,{finishedAtlas:{token,identity},atlasPixels:a=>a.subarray(0,a.length-4)})).rejects.toThrow('pixels size');
  const rig=await loadPinnedCreatureRigV1(i,undefined,{finishedAtlas:{token,identity},atlasPixels:a=>a});rig.dispose();
+},60000);
+
+for(const id of['civet','eel','rat','salamander'])it('C46 '+id+': exact source and reviewed ownership admit an identity finish through the existing pinned rig',async()=>{
+ const p=getBattle2MasterPin(id)!,{i,source,original}=await fixture(false,p),identity=creatureFinishIdentityV1(source),token=await admitCreatureFinishedAtlasV1(i,source,original,labelsPng(p));
+ expect(token.creatureId).toBe(id);const rig=await loadPinnedCreatureRigV1(i,undefined,{finishedAtlas:{token,identity}});try{expect(rig.recipeHash).toBe(p.recipeHash);}finally{rig.dispose();}
+ const forged=source.labels.slice();forged[0]=1;await expect(admitCreatureFinishedAtlasV1(i,{...source,labels:forged,labelsHash:sha(forged)},original,labelsPng(p))).rejects.toThrow('source labels mismatch');
 },60000);

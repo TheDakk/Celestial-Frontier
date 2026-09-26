@@ -67,3 +67,8 @@ it('every visual/seed/settings/model/rig input invalidates the exact-individual 
  const s=await source(),key=creatureOriginalKey(creatureFinishIdentityV1(s));
  for(const change of [{visualKey:'other'},{seed:124},{settingsHash:'d'.repeat(64)},{modelHash:'d'.repeat(64)},{recordRecipeHash:'d'.repeat(64)},{labelsHash:'d'.repeat(64)},{bindingHash:'d'.repeat(64)}])expect(creatureOriginalKey(creatureFinishIdentityV1({...s,...change}))).not.toBe(key);
 });
+it('runtime visual identities retain their exact strings through2048, while missing/non-string/2049 identities refuse',async()=>{
+ const s=await source();for(const length of[739,747,2048]){const id='x'.repeat(length);const result=await createCreatureFinishEngineV1({tier:'desktop',store:memoryStore().store,createInfer:async()=>unchanged}).request({...s,individualId:id,visualKey:id});expect(result.status).toBe('original');if(result.status==='original'){const r=JSON.parse(result.original.receipt);expect(r.individualId).toBe(id);expect(r.visualKey).toBe(id);expect(result.original.receipt.length).toBeLessThan(1048576);}}
+ for(const field of['individualId','visualKey'])for(const bad of['','x'.repeat(2049),undefined,null,123,[],{length:1,toString:()=> 'x'}])expect(()=>creatureFinishIdentityV1({...s,[field]:bad} as CreatureFinishSourceV1)).toThrow('individual identity');
+ expect(()=>creatureFinishIdentityV1({...s,modelHash:{toString:()=> 'a'.repeat(64)}} as unknown as CreatureFinishSourceV1)).toThrow('source identity');
+});

@@ -1,0 +1,71 @@
+[
+  {
+    "id": "01-grouse",
+    "family": "biped-bird",
+    "verdict": "REFUSE",
+    "reasons": [
+      "unexplained-anatomy: 7.4% of the paint lies away from the body and in no part (reference 1.2%)"
+    ],
+    "semanticPresence": null,
+    "static": null,
+    "staticFails": null
+  },
+  {
+    "id": "02-eagle",
+    "family": "biped-bird",
+    "verdict": "REFUSE",
+    "reasons": [
+      "extra-anatomy (unassigned): a limb-down appendage of 8.6% paint that no reference appendage lands on"
+    ],
+    "semanticPresence": null,
+    "static": null,
+    "staticFails": null
+  },
+  {
+    "id": "03-sparrow",
+    "family": "biped-bird",
+    "verdict": "REFUSE",
+    "reasons": [
+      "facing: the mirrored painting matches biped-bird better (0.0166 < 0.0197)"
+    ],
+    "semanticPresence": null,
+    "static": null,
+    "staticFails": null
+  },
+  {
+    "id": "04-sandpiper",
+    "family": "biped-bird",
+    "verdict": "REFUSE",
+    "reasons": [
+      "missing-anatomy: part tail (tailFan) covers 19% paint (reference 61%)",
+      "unexplained-anatomy: 7.2% of the paint lies away from the body and in no part (reference 1.2%)"
+    ],
+    "semanticPresence": null,
+    "static": null,
+    "staticFails": null
+  },
+  {
+    "id": "05-mongoose",
+    "family": "quadruped",
+    "verdict": "REFUSE",
+    "reasons": [
+      "missing-anatomy: part ear-far-tip (earFarTip) covers 13% paint (reference 52%)"
+    ],
+    "semanticPresence": null,
+    "static": null,
+    "staticFails": null
+  },
+  {
+    "id": "06-tapir",
+    "family": "quadruped",
+    "verdict": "ADMIT",
+    "reasons": [],
+    "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+    "static": "RED",
+    "staticFails": [
+      "melee:tail",
+      "faint",
+      "presentation"
+    ]
+  }
+]
