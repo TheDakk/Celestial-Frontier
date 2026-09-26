@@ -193,3 +193,20 @@ The existing kit interpreter admits `creature-finish-v1` on desktop only. `compi
 ### G2 generated quadruped pilot — matches tooling as of 2026-09-26
 
 `compile-master-prompt.mjs --library` compiles canonical quadruped identities without hand authoring. `derive-marking-masks.mjs` creates six source-alpha-conserved candidate masks; these require G1 record binding before admission. Twenty retained masters and verifier findings are in `audits/G2_QUADRUPED_PILOT_20260926/README.md`. No runtime creature replacement follows from this tooling.
+
+### G5 adapter boundary — matches code as of 2026-09-26
+
+C43 now accepts original dimensions 128–2048: the worker pads only right/bottom
+to a multiple of 16, finishes, and crops back before original-region conservation.
+Transferred ArrayBuffer input uses original-byte SHA/length checks before model
+construction; legacy /inputs transport remains. Fixed settings are unchanged.
+
+C41 admits a finished master through a private token after the complete original
+rig preflight, independently pinned source labels, exact engine identity and
+conservation. The loader projects into unchanged atlas frames; original record,
+binding and atlas pins remain intact. A supplementary generated label registry
+covers 34 fits; Civet, Eel, Rat and Salamander have missing source labels and refuse.
+Phone delivery pins BOTH original.png and receipt.json at an exact per-key G3
+manifest path; no finished entries are published here. Default game routing remains
+Claude's next task behind ?finish=1 and quality review. Contract, tests and native
+1254 proof status: audits/G5_ADAPTER_UNBLOCK_20260926.

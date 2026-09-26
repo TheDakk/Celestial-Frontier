@@ -1,0 +1,100 @@
+{
+  "status": "FIT_COMPILED",
+  "refinements": [
+    {
+      "x": 695,
+      "y": 942,
+      "width": 112,
+      "height": 112,
+      "boundaryStep": 4,
+      "interiorStep": 8
+    },
+    {
+      "x": 499,
+      "y": 983,
+      "width": 112,
+      "height": 112,
+      "boundaryStep": 4,
+      "interiorStep": 8
+    }
+  ],
+  "compiler": {
+    "schema": "cf.paint-skin-intake/v1",
+    "refinements": [
+      {
+        "x": 695,
+        "y": 942,
+        "width": 112,
+        "height": 112,
+        "boundaryStep": 4,
+        "interiorStep": 8
+      },
+      {
+        "x": 499,
+        "y": 983,
+        "width": 112,
+        "height": 112,
+        "boundaryStep": 4,
+        "interiorStep": 8
+      }
+    ],
+    "sourceBindingHash": "620047b67d73a8ec4e1709829ad21fe3457217bd8b48737efd235b52d6e3f87d",
+    "recordRecipeHash": "cc0d32751e5d84c0fad84f0db854304ab70f006fedf85b5ea1ce2be8cf76d4cd",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "620047b67d73a8ec4e1709829ad21fe3457217bd8b48737efd235b52d6e3f87d",
+      "atlasSha256": "ceb1a62b9dfa1a2068c9385f89344f6f6cc0e2b3daee253b9e64f43374058a8e",
+      "parts": 17,
+      "comparedChannels": 8742752,
+      "changedChannels": 0
+    },
+    "vertices": 5154,
+    "partVertices": 6919,
+    "parts": 17,
+    "leaves": 2227,
+    "triangles": 9424,
+    "ownershipEdges": 6887,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 332,
+        "distancePx": 11.30398159941881,
+        "supports": [
+          1034,
+          1033
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 225,
+        "distancePx": 20.45531715715995,
+        "supports": [
+          2083,
+          158
+        ]
+      }
+    ],
+    "sourceBindingHash": "37216e423ac15c323ac4500defef53adf5ecdd18bdcb8a0313ea26b072b6cad8",
+    "sourceVertices": 5154,
+    "vertices": 5976,
+    "sharedSupports": 567,
+    "pins": 4643,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 16,
+    "observedExcludedBoundaries": 16,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 16,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

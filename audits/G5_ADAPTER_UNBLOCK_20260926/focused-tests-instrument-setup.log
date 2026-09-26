@@ -1,0 +1,41 @@
+✔ identity/changed interiors conserve alpha, ownership components and label gradients; edge mutants fail (36.379666ms)
+✔ desktop class admitted, phone and setting/model-input mutants refused (0.335792ms)
+✔ 1254 master pads to1264 without moving, scaling, relabeling or mutating original pixels (1575.412416ms)
+✔ aligned old dimensions remain byte-identical; invalid dimensions/crop/source shapes refuse (1.944917ms)
+✔ transferred buffers retain exact SHA/byte checks and old URL transport stays supported (5.136959ms)
+✔ corrupt, detached, ambiguous, shared, resized or wrong-size references fail closed (1.347459ms)
+✖ actual worker dispatch validates transferred bytes before constructing model engine (4.600584ms)
+✔ creature mask: interior editable (0), band and outside protected (1); opposite polarity to the landfall interior mask (5.149625ms)
+✔ creature mask: a wider band shrinks the editable interior; edge-only alpha yields no editable cell and refuses (2.623125ms)
+✔ protectLatents at the final sigma returns protected cells to the original latent exactly, editable cells keep the prediction (0.101833ms)
+✔ creature finish admission: accepted settings exact; every loosening refused (0.389292ms)
+✔ work plan crops the silhouette with margin, picks an integer scale up to 4 and a 16-aligned canvas; resampling round-trips a flat crop exactly (37.312708ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1697.746875
+
+✖ failing tests:
+
+test at tools/local-image-generation/creature-finish-adapter.test.mjs:43:1
+✖ actual worker dispatch validates transferred bytes before constructing model engine (4.600584ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'error'
+  - 'complete'
+  
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/creature-finish-adapter.test.mjs:48:95)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'complete',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

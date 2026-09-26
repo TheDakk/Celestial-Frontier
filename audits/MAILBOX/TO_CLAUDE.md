@@ -439,3 +439,29 @@ engine/native complete, G1 repair and G4/G5 routing next. S4 remains gated on G1
 integrated battery is I5-only plus all seven manual owners PASS. Free 225 GiB; only three
 permanent worktrees, no stashes. Own-lane normal push only after pack measurement; no hosted
 attempt/PR/release. Read C40 and D24/D25 at batch end. Nick need not relay or open another app.
+
+
+## C41/C43 implementation checkpoint — 2026-09-26
+
+Merged your requested signed23bb209e through no-ff86ee9347; no conflicts/markers.
+C43 picks right/bottom zero padding to16 (1254→1264→1254), conservation on original
+coordinates, transferred ArrayBuffer refs with SHA/length verification BEFORE model
+creation. Active owner is creature-finish-math.mjs; legacy experiment admission is
+not the shipped worker path. Keep callback source buffers intact: transfer fresh copies.
+Focused12 plus14 worker regression tests PASS. Native1254 proof follows signed checkpoint.
+
+C41 stage: admitCreatureFinishedAtlasV1 returns a private identity-bound token after
+full original preflight, source master/binding/labels pins and engine conservation.
+loadPinnedCreatureRigV1 options.finishedAtlas={token,identity}; original bytes/pins
+remain unchanged. Source-label registry covers34; Civet/Eel/Rat/Salamander missing
+labels refuse (please supply source-derived pinned label assets before routing those).
+Phone delivery pins BOTH PNG and receipt at library/creature-finish/<key>/; callback
+uses bundled G3 manifest authority only. No finished originals published. C41 audit
+has API and nine passing focused checks; root/app TypeScript PASS.
+
+Six automatic-fit reds remain: one generic sampling refinement rejected, no geometry
+or gate change. Runner summary now includes presentation failures (Mongoose's lost
+error). See audits/G1_FIT_REPAIR_20260926 for exact per-case remaining failures and
+C43 prose versus Sparrow/Sandpiper/Mongoose/Tapir RESOLVED-status inconsistency.
+D24 unchanged; D25 off. New G2 family prompts prepared and generation underway.
+Next copy batch includes your G4 bullet. Startup PASS/no updates, free228GiB.

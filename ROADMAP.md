@@ -145,3 +145,29 @@ need to open the other app. Earlier pushed Codex copy checkpoint f01f911e:
 119 bullets,41 topics,5 briefings; current119-bullet recovery SHA is in measured-copy.json.
 No PR, label, hosted attempt, develop/main merge, release or deploy authorized by this work.
 The standing I5 red remains a real gate, not waived or rebound. Pre-existing.DS_Store untouched.
+
+## Latest Codex adapter checkpoint — 2026-09-26 (supersedes next-run instructions above)
+
+Nick's ordered sprint: merge Claude through 23bb209e, C43 worker fixes, C41 stage/phone
+admission, six auto-fit repairs, four-family G2 pilot, one G4 copy measurement.
+Signed no-ff merge 86ee9347 includes all requested G1v8/G3/G4/G5 work; incoming signatures
+G, no conflicts or markers. Startup official metadata PASS, no eligible updates; 228 GiB free.
+C43 padding/transferred-buffer implementation and C41 private-token admission are complete
+and focused-green; one 1254 Cougar native proof waits for this clean signed checkpoint.
+All original rig pins and conservation remain unchanged. 34 source-label pins available;
+Civet/Eel/Rat/Salamander refuse due to missing label inputs. Both PNG and receipt must be
+G3-pinned for phone delivery; no published entries or default finish routing added.
+
+The six auto-fit repairs remain RED: a generic contact refinement is retained and rejected.
+It removes Grouse's initial split conflict but introduces/reveals folds. No hand authoring,
+reference shopping or limit changes. Fixed the runner summary that omitted Mongoose's
+blended presentation failure. audits/G1_FIT_REPAIR_20260926 has exact remaining failures.
+G1 semantic status remains a separate gate; C43 prose and four v8 statuses disagree.
+D24 remains undecided, D25 shopping stays off, S4 remains parked.
+
+G2 compiler now supports canonical bird/fish/serpent/insect families; 20 exact prompts
+(5 per family) prepared, generation in progress, no authoring. One final review sheet.
+Next: record native result, complete G2 evidence, one G4 copy re-measure, full I5-only
+profile plus all seven manual owners, signed own-lane push under 2 GB. Claude consumes
+the signed worker/admission contracts and implements its adapter/routing. No Nick relay
+or need to open another app; no hosted/PR/develop/main/release actions.

@@ -1,0 +1,22 @@
+{
+  "status": "REFUSED",
+  "error": "Error: Input file is missing: /private/tmp/cf-g1-contact-grouse/parts/atlas/undefined.png\n    at Sharp.toBuffer (/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/sharp/dist/output.cjs:159:17)\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/G1_FIT_REPAIR_20260926/refine-contact-fit.mjs:17:92",
+  "refinements": [
+    {
+      "x": 688,
+      "y": 818,
+      "width": 112,
+      "height": 112,
+      "boundaryStep": 4,
+      "interiorStep": 8
+    },
+    {
+      "x": 499,
+      "y": 885,
+      "width": 112,
+      "height": 112,
+      "boundaryStep": 4,
+      "interiorStep": 8
+    }
+  ]
+}
