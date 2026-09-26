@@ -26,7 +26,7 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 - **Gate:** `node tools/check-profile.mjs --profile=develop` (from `port/v2`) gives **5,645 pass; the ONLY red is I5** (`current-producer-authorities`, "binds every live memory budget").
   - Run it on a QUIET tree. A commit during the run produces a spurious "Source changed during authority read".
   - Also run by hand, all clean this session: `npm run typecheck` (root, app and worker), `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
-- **Dev site:** https://dev-celestialfrontier.github.io serves `14b712e6` (G4; G5 card + stage behind `?finish=1`; Codex's phone originals). Evidence is in `audits/DEV_PUBLISH/14b712e6e14f`.
+- **Dev site:** https://dev-celestialfrontier.github.io serves `66801cbe` (G4; G5 card + stage behind `?finish=1`, stage via the picker too). Evidence is in `audits/DEV_PUBLISH/66801cbee71b`.
 - **develop** is still `c1791e21`. PR #43 is open. No hosted attempt: I5 is red (D5).
 - **Disk:** about 230 GiB free. No agent worktrees are live, and the limb-counter branch is merged (it had no worktree). The newest 2 preview packages are kept.
 
