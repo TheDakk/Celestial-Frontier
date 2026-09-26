@@ -31,6 +31,11 @@ test('shipped fitted pixels equal accepted inputs; wrong fitted geometry and URL
  const escaped=structuredClone(job);escaped.plate.url='/inputs/../arbitrary.rgba';assert.throws(()=>admitKitEngineJob(escaped),/fitted/);
 });
 
+test('preview boot admits the actual repository tracked inventory beyond the child-process default buffer',async()=>{
+ const {assertTrackedKitSources}=await import('./kit-tracked-inputs.mjs');
+ assert.equal(assertTrackedKitSources(root).tracked,true);
+});
+
 test('preview boot refuses each omitted load-bearing source, including the ten checkpoint files',async()=>{
  const {KIT_TRACKED_SOURCES,assertTrackedKitSources}=await import('./kit-tracked-inputs.mjs');
  assert.equal(assertTrackedKitSources('.',KIT_TRACKED_SOURCES).tracked,true);

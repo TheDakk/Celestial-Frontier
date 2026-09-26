@@ -17,7 +17,7 @@ import { BROWSER_VARIANT_SOURCE, assertBrowserVariantPlan } from './browser-vari
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '../..');
 const PREFIX = '/__local_ai/';
-const HELPERS = ['stage-worker.mjs', 'pipeline-math.mjs', 'gpu-profile.mjs', 'denoiser-shapes.mjs'];
+const HELPERS = ['creature-finish-math.mjs', 'stage-worker.mjs', 'pipeline-math.mjs', 'gpu-profile.mjs', 'denoiser-shapes.mjs'];
 const PINNED_RUNTIME = Object.freeze({ 'onnxruntime-web': '1.29.0', '@huggingface/tokenizers': '0.2.0' });
 const sha = value => createHash('sha256').update(value).digest('hex');
 const mime = file => ({ '.mjs': 'text/javascript', '.js': 'text/javascript', '.json': 'application/json',

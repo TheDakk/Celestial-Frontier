@@ -75,6 +75,8 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 
 ## Current Codex sprint handoff — 2026-09-26, C46 completed batch
 
+**C50 in progress:** signed mergef85cac18 throughbb770d53, Claude handoff preserved.16MiB tracked inventory and explicit finisher helper preview/build delivery fixed; focused controls PASS (C50_SHIPPED_FINISH_FIX_20260926). Claude can rerun shipped smoke; Codex C49 review/layout/fit continuation and final integrated battery pending. D26 unchanged.
+
 ### Working state and authority
 
 - Worktree `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`; signed no-ff merge `375935b6` integrates Claude through `0c208c4c`. Signed implementation/native checkpoint `cf1a24da`; the final evidence/library commit carries this handoff (resolve from `git log openai/mac`). Claude's block above is retained verbatim. Older Codex handoff is verbatim in ROADMAP_ARCHIVE.md.
