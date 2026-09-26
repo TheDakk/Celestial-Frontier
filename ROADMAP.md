@@ -17,23 +17,17 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## C27 D17 measurement checkpoint — 2026-09-26
+## Current sprint handoff — 2026-09-26, C28(f) first
 
-Signed merge2fae1e73 includesClaude1199e6b4. S4 candidate03 is frozen after retained training searches: Press1.4/1.7, Guard.65/.585/opener.25, Evade.64/.32; phase.5/1.02/.9; Recovery600000active ms. Packet `audits/S4_D17_TUNING_20260926/README.md` retains rejected candidates01/02, all training, source proof and24instrument controls. Training is green; held-out admission is PENDING. Do not wire or describe these as accepted constants until the final result is read. Production solo Balanced Auto phase bypass is a specific Claude mailbox request. Current fullprofile5454pass/two knownreds(I5,GuideSHA), rootvalidationPASS. No hosted operation.
+Own lane is `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`. Claude’s lane is absolute-path read-only. Repo keychain signing only, every commit G. Read its mailbox at run start/batch end and reply in this lane’s TO_CLAUDE.md. No Nick relay. Explicit authority covers signed no-ff integration of anthropic/mac and measured own-branch pushes below2GB; no PR, label, hosted, develop/main merge, release or deploy.
 
-Next: single held-out evaluation on this clean signed checkpoint, record its exact outcome, then C25 rig/performance/mask fixes, lossless pack diet, D1 painting/capabilities, D13/D14 economy, one C17/D16/D19 Guide batch, and C8/I5 last. Newer signed Claude care/A5 work is visible in the shared store; merge before later integrated gates, not mid-measurement. Claude reads own-lane mailbox for the wiring request; Nick need not open another app to relay it.
+C28(f)/C17/D19 is implemented in `audits/C28_GUIDE_REMEASURE_20260926/README.md`: integrated signed832dc18b (C32 production phase dispatch plus care/A5);106 measured ordered release bullets; five read-only Advanced Briefings; current care/bond/Recovery/duel/Harvest/Settings copy and mutation controls. Edge390×844/1440×900 native tours PASS; old keyboard-driver refusal retained. The packet owns exact tests, hashes and delivery state. I5 v1 samples untouched; no certificate consumed. Node26.10.0 is the current verified idle-maintenance version.
 
-### Current work and boundaries
+Candidate03 is REJECTED, never wired. Its sole held-out run on63e61b5f failed normal9.765625pp and Titan25.390625pp; original runtime constants were restored in3c01a70f. `audits/S4_D17_TUNING_20260926/README.md` retains that history. C32 now fixes the production solo-Auto phase bypass; old claims that Claude still owes it are superseded.
 
-- Own worktree: `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`. Other lane is absolute-path read-only. Read its `audits/MAILBOX/TO_CODEX.md` at start/end; write only our `TO_CLAUDE.md`. No Nick relay. Repo keychain signing only; require G. Own-branch pushes need measured packs below2GB and required local gates. No PR, label, hosted attempt, develop/main merge, release or deploy in this run.
-- C22 cheaper reach, C23 genuine-pin loader, C24 root types, C25 actual-source films and old S20 diagnostic were pushed through8c41803c. Claude integrated them, removed packaged masters, fixed forecast identity, unified card/stage tint, repaired water envelopes and wired38archetypes. C28–31 contain current evidence and remaining asks. No claim that all artwork or phone frames pass.
-- S4 first: latest Nick targets planning10–20pp, Command≥5pp, no near-total party defeats, solo Auto near v1. New candidate is NOT accepted until its held-out result exists; v1 phase-off parity is engine-only. Claude still owes D17 production dispatch.
-- C25 next: Wall Lizard observed-support final-faint foreFarPaw96°, Sparrow/Honeybee phone spikes, Cattle phone cost, Brown Bear sixth mask. Claude owns stage/water; REST-support Lizard passes in the game but does not repair observed-support admission. Also actual-source films for Grouse/Sandpiper/WildHorse, Herring alpha hold.
-- Pack diet: propose lossless atlas/binding re-encoding, measure per-archetype savings, issue fresh hashes/pins rather than changing admitted bytes silently.
-- D1: Rat item29 is delivered; Hare onward and the third-ten sheet remain. Tailed-primate tail1–3 and hidden-wing closed beetle are Codex contracts. Each creature needs six masks, anatomy/intake, motion evidence and its signed packet before Claude wires it.
-- D13: care/bond shipped; Codex mission rate/share≤15% instrument then duplicate/two-tab/reload/clock controls. D14 costs/scenarios remain ordered later; Claude C31 says Outposts held until combat/art settle.
-- One release/Guide batch: C17+D16+D19 plus C30 care/audio/A5/CFB/D18 bullets, Settings capacity and audio inventory. Current Guide SHA is red. C8/I5 v2 follows all this on integrated clean source; keep v1 immutable, no historical rebinding. Nick's authority is three calibration runs then one certification, not repeated attempts.
+## Remaining order (Nick’s latest request)
 
+<<<<<<< HEAD
 ### What Claude owes next
 -114. **The vision batch (D21, 2026-09-26): live on the dev URL `0b4c8dca`.**
 - **Merged:** the H1 probe (perf/heat/memory) + A6 localization; battle2 as the development DEFAULT (`BATTLE2_DEFAULT`, `?battle2=0` opts out); D13 missions; D16 final (Compendium chips/shelves, origin travel, reveal queue, vista mode + postcard); D14 Outposts; audio Stages 1–3 (original seeded sources, 0 audio bytes shipped).
@@ -76,9 +70,39 @@ Next: single held-out evaluation on this clean signed checkpoint, record its exa
 - the Recovery helpers for both carriers, plus the persistence routing and verification;
 - the card (stance, two Guardian party slots, "Your plan" forecast), with the plan state in Main;
 - the Chronicle prelude.
+=======
+1. C28(f) DONE and pushed as6cbeefe0(G),120,567,446-byte pack. Delivery receipt in S4 production epoch packet.
+2. Fresh S4 epoch: declare untouched evaluation corpus and cohorts BEFORE tuning, use actual production dispatch, candidate03 remains rejected. Normal10–20pp; Titan≤20pp; declared Guardian band; playable Command≥5pp without near-total defeats; solo Auto±5pp v1. No repeated held-out evaluation.
+3. C30/C31 audio-section inventory; new Settings/Glass capacity; dev audioReview versus packaged Listening split decision.
+4. Decide quadruped observed/rest supports; if observed, fix Lizard final faint (foreFarPaw96°). Rest passes on Claude’s source.
+5. D13 stage2a mission rates/≤15% economy instrument, then duplicate/two-tab/reload/clock controls; `rest:` reserved.
+6. Sparrow/Honeybee/Cattle phone reds, Bear sixth mask, Herring alpha. Then lossless atlas/binding diet with new honest pins and per-archetype saved bytes.
+7. D1 painting Hare onward/third-ten sheet; actual Claude films for Grouse/Sandpiper/Wild Horse plus repaired Herring/Honeybee; tailed-primate and closed-shell-beetle capabilities.
+8. D14 P0 costs/scenarios only; no Outposts build.
+9. C8/I5 one integrated clean-source v2 epoch, three calibration runs plus one certificate, v1 untouched and growth guard unchanged.
+>>>>>>> openai/mac
 
-## Final handoff — S4 stopped at a measured refusal
+Claude consumes signed packets from the shared object store and owns cards/stage/wiring/picker/republishing. Codex owns art/rig/instruments/rates. Nick need not open another app to relay. Sole standing I5 red does not authorize hosted work or battle2 default; D21 lifts the device wait for development; the certificate still gates production.
 
-`audits/S4_D17_TUNING_20260926/README.md` is authoritative. Candidate03 was signed63e61b5f(G), then evaluated once asheld-out-01: normal planning9.765625pp (needs≥10), Titan25.390625pp (needs≤20), henceRED. Guardian/Command,17hooks,2048replays/1024phase-off parity pass. Prior runtime constants restored exactly from2fae1e73; no candidate acceptance, no retry, no I5 attempt. Instruments/evidence remain signed for review. Earlier training-green text above is historical and does not admit the constants.
+Current state: **STOPPED at the S4 measurement gate**, not a user-requested pause.
+Candidate13 was frozen on signed59b09881(G), then its ONE held-out attempt exited1 with
+ENOSPC while writing Titan evidence. The retained prefix already refuses normal planning
+8.69140625pp (<10) and solo Guardian−5.56640625pp (outside±5). No complete certificate;
+90m/100m is consumed and MUST NOT be retried/reused.13 and03 are rejected/not admitted.
+Read `audits/S4_PRODUCTION_EPOCH_20260926/README.md` and `evaluation13-refusal.json`.
 
-This is Nick's real measurement stop gate. Items2–7 remain pending in order. Next Codex work is a separately declared S4 tuning epoch with untouched evaluation seeds; never fit then reuse held-out-01 as certification. Claude should consume the packet, keep old runtime values and repair D17 solo-Auto dispatch, using the mailbox directly. Push held while Guide SHA and I5 remain red; origin/openai/mac was8c41803c at last verified push. No Nick relay or app switch required.
+Runtime encounter.ts restored byte-for-byte to c17906b2; Recovery never changed.39 new
+instrument controls pass; actual duration/wound mutations refused710/710 and199/710.
+Freeze battery:504 Node-tool and5471 Vitest passes; only standingI5 producer mismatch.
+All seven manual owners and root validation pass. Restoration checks are in the same packet.
+
+Next Codex: report the refusal and await a newly authorized independent epoch; no tuning
+against consumed seeds. Disk capacity must be resolved before new bulky measurements.
+Remaining ordered work above is pending, including latest observed signed Claude7964bb0b integration,
+missions/Outposts numbers and finalI5. C34 arrived at batch end: vision batch dev0b4c8dca,
+additional Guide/release bullets and inventory pins, phone audio CPU (~37ms desktop slices),
+and finalI5 on the newly integrated Compendium head. C33/D21 lifts device waiting for DEVELOPMENT battle2;
+production remains gated. Next Claude: consume the restoration/evidence checkpoint from the
+shared store, NEVER wire the intermediate59b09881 candidate or candidate03; keep its new
+vision work separate until integration. No Nick relay or other-app opening needed.
+Remote last verified6cbeefe0; no GitHub write/hosted/PR/release/deploy in this resume.

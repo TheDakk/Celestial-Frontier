@@ -1,0 +1,192 @@
+{
+  "schema": "cf-s4-production-candidate/v1",
+  "tuning": {
+    "press": {
+      "dealt": 1.42,
+      "taken": 1.7
+    },
+    "guard": {
+      "dealt": 0.67,
+      "taken": 0.6,
+      "openerBlunt": 0.25
+    },
+    "evade": {
+      "dealt": 0.7,
+      "dodge": 0.32
+    }
+  },
+  "phase": {
+    "atFraction": 0.25,
+    "dealt": 1.02,
+    "taken": 0.5
+  },
+  "recoveryActiveMs": 600000,
+  "recoveryRationale": "Keep existing10active minutes; equalfallen/swapped, no addedwound. Win-rate simulations supply no evidence to change the economy duration.",
+  "commandPolicies": {
+    "guardian": {
+      "lowRatio": 1000,
+      "phaseHp": 0.5,
+      "nextFerRatio": 1.2
+    },
+    "titan": {
+      "lowRatio": 1000,
+      "phaseHp": 0,
+      "nextFerRatio": 0
+    }
+  },
+  "threats": [
+    {
+      "id": "smite",
+      "ab": {
+        "dmg": 1.255
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "aegis",
+      "ab": {
+        "taken": 0.842
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "dot",
+      "ab": {
+        "burn": 0.037
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "fury",
+      "ab": {
+        "ramp": 0.0506
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "ambush",
+      "ab": {
+        "first": 2.05
+      },
+      "right": "guard",
+      "wrong": "press"
+    },
+    {
+      "id": "eye",
+      "ab": {
+        "critB": 0.304
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "veil",
+      "ab": {
+        "dodge": 0.166
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "mend",
+      "ab": {
+        "regen": 0.048
+      },
+      "right": "evade",
+      "wrong": "guard"
+    },
+    {
+      "id": "echo",
+      "ab": {
+        "dbl": 0.188
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "thirst",
+      "ab": {
+        "drink": true,
+        "critB": 0.124
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "thorns",
+      "ab": {
+        "thorns": 0.155
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "rend",
+      "ab": {
+        "shred": 0.102
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "reck",
+      "ab": {
+        "execB": 0.55
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "bulwark",
+      "ab": {
+        "cap": 0.235
+      },
+      "right": "guard",
+      "wrong": "press"
+    },
+    {
+      "id": "shock",
+      "ab": {
+        "stun": 0.167
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "roulette",
+      "ab": {
+        "gambit": 0.55
+      },
+      "right": "evade",
+      "wrong": "press"
+    },
+    {
+      "id": "enrage",
+      "ab": {
+        "enrage": 0.31
+      },
+      "right": "evade",
+      "wrong": "press"
+    }
+  ],
+  "targets": {
+    "easyPlanning": [
+      0,
+      5
+    ],
+    "otherPlanning": [
+      10,
+      20
+    ],
+    "commandMinimum": 5,
+    "soloV1AbsoluteDelta": 5,
+    "partyAutoMinimumWinPercent": 20
+  },
+  "policyCorrection": "Nick specifies >=5pp Command edge; old <=5 and provisional <=10 maximum are not the new minimum-only contract. Originaltraining reports remain intact. No historical gate is rebound.",
+  "scope": "Fixed benchmark; held-out outcomes not yet read. Solo Titan baseline weakness must be reported separately. No campaign/dossier UI certification.",
+  "rationale": "Training candidate20: retain useful normal stance planning while moving the defensive Guardian phase later in the fight; its lower damage-taken multiplier taxes slow long-relay wins without imposing an early solo penalty."
+}

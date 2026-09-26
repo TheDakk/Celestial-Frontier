@@ -281,8 +281,9 @@ share one helper and the fingerprint held.
 >   (sharing your own code) is not ported yet.
 > - **Guardian phase change (N1 §4.3 / S7; same date; matches code).** When a Guardian or Titan first falls to half health, a **phase
 >   Break** announces the change BEFORE it applies (Hold / Swap / Withdraw; Auto holds), then for the rest of the fight, across legs, it
->   hits 20% harder and takes 10% less (`ENCOUNTER_GUARDIAN_PHASE_V1`, placeholder for S4). The engine takes it as `defender.phase`
+>   uses `ENCOUNTER_GUARDIAN_PHASE_V1` (current evaluation-only numbers in the S4 section below). The engine takes it as `defender.phase`
 >   (`encounterHasGuardianPhaseV1(kind)`); every caller derives it from the defender kind (planner, Chronicle prelude, card forecast,
+<<<<<<< HEAD
 >   battle2 beats, the app probe) and the open-encounter record SEALS it (`defenderPhase`). **D17 (Nick 2026-09-25, code `832dc18b`):**
 >   the phase applies in EVERY Guardian/Titan fight, a lone Balanced Auto fighter included — the settlement planner, Main's card action
 >   and the card's single-fight forecast resolve phase fights through `runEncounterV1`; the verbatim v1 `runDuel` path is kept only for a
@@ -292,6 +293,11 @@ share one helper and the fingerprint held.
 >   Chronicle-only path; flip the constant to make it opt-in again. The stage is still a dynamic import reached only when a fight is
 >   presented (boot never loads it), the Chronicle stays the accessible owner of the outcome, a study failure leaves the Chronicle, and the
 >   stage never changes HP or rewards. A production release stays gated by the I5 certificate, not by this constant. Tests: `packages/domain/combatcore/test/encounter-phase.test.ts` (announced at
+=======
+>   battle2 beats, the app probe) and the open-encounter record SEALS it (`defenderPhase`). **D17/C32:** every Guardian/Titan fight,
+>   including lone Balanced Auto, takes the phase route. Exact v1 parity is an engine control with phase OFF;
+>   the production solo win-rate band is measured separately. Tests: `packages/domain/combatcore/test/encounter-phase.test.ts` (announced at
+>>>>>>> openai/mac
 >   half health before the change and identical up to it; the defender changes after — mutation control; Command pause + Swap + reload).
 >   - **The explorer fights Guardians in Auto only:** the settlement binds the explorer's exact health, which moves between Breaks, so a
 >     sealed explorer could strand the record (even Withdraw settles through that binding). `openArc6CommandEncounterV1` refuses it.
@@ -679,6 +685,19 @@ would have computed anyway.
 > The general shape is worth keeping: **a cache key derived from expensive values cannot short-circuit
 > the work that produces them.** If the key needs the stats, the stats must be hoisted to the caller
 > or the memo saves nothing on the hit path.
+
+## S4 production evaluation refusal — matches code as of 2026-09-26
+
+Candidate13 is REJECTED/not admitted. The one held-out attempt stopped on ENOSPC while
+writing Titan evidence, after observing normal planning8.69140625pp (<10) and solo
+Guardian−5.56640625pp (outside±5). It is incomplete, not a certificate; its corpus is consumed.
+Runtime encounter source was restored byte-for-byte to c17906b2: Press dealt/taken1.15/1.10;
+Guard dealt/taken/opener0.90/0.85/0.5; Evade dealt/dodge0.90/0.08; Guardian phase at half
+health dealt/taken1.2/0.9. Recovery stays600000 active ms and zero added defeat wound. `audits/S4_PRODUCTION_EPOCH_20260926/README.md` owns the current status,
+training-only selection, exact source/candidate authority and production-route controls.
+`s4-production.mjs` counts real settlement outcomes and checks decisive transcripts, phase
+dispatch, phase-off parity and exact fallen/swapped Recovery. It is a fixed two-world,
+region0 benchmark; it cannot certify the campaign, dossier UI, durable Main or economy.
 
 ## §20 balance instrument — matches tooling 2026-09-25
 

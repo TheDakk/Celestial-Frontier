@@ -7192,6 +7192,19 @@ the allocation owner. creature-rig.ts re-exports the previous contract names.
 Root `tsc --noEmit --noUnusedLocals`, app and worker programs pass without any
 compiler-setting change. Thirteen edited modules emit identical runtime code.
 
+## S4 production evaluation refusal — matches code as of 2026-09-26
+
+Candidate13 is REJECTED/not admitted. The one held-out attempt stopped on ENOSPC while
+writing Titan evidence, after observing normal planning8.69140625pp (<10) and solo
+Guardian−5.56640625pp (outside±5). It is incomplete, not a certificate; its corpus is consumed.
+Runtime encounter source was restored byte-for-byte to c17906b2: Press dealt/taken1.15/1.10;
+Guard dealt/taken/opener0.90/0.85/0.5; Evade dealt/dodge0.90/0.08; Guardian phase at half
+health dealt/taken1.2/0.9. Recovery stays600000 active ms and zero added defeat wound. `audits/S4_PRODUCTION_EPOCH_20260926/README.md` owns the current status,
+training-only selection, exact source/candidate authority and production-route controls.
+`s4-production.mjs` counts real settlement outcomes and checks decisive transcripts, phase
+dispatch, phase-off parity and exact fallen/swapped Recovery. It is a fixed two-world,
+region0 benchmark; it cannot certify the campaign, dossier UI, durable Main or economy.
+
 ## §20 balance measurement tooling — 2026-09-25
 
 `port/v2/tools/s20-balance.mjs` and `s20-balance-contract.mjs` are browser-free,
@@ -7201,3 +7214,13 @@ training-only policy selection and exhaustive Command trees on held-out cases.
 [audits/S20_BALANCE_20260925](audits/S20_BALANCE_20260925/README.md) owns measured
 RED findings, negative controls, invalid historical fixture attempts and the actual
 forecast-cache reproduction. This adds no game tuning or admission certificate.
+
+## Current v2 Guide — matches code as of 2026-09-26
+
+The immutable v1 manual and release archive remain byte-pinned. The v2 Guide has41 visible
+topics (37 partial,4 unavailable) and106 ordered draft bullets; current copy measurement
+and SHA authority are retained in `audits/C28_GUIDE_REMEASURE_20260926/measured-copy.json`.
+`guide-briefings.ts` supplies five read-only Advanced Briefings through Main’s existing lazy
+Guide owner. Native buttons traverse, finish or follow current topic links, with heading focus
+and no expedition writes beyond the existing first-open seenGuide flag. Care/Rest/bond, CFB
+duels, Harvest, phase-aware Guardian combat and Settings copy reflect the integrated app.

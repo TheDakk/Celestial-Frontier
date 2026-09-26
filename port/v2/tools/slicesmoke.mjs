@@ -1201,7 +1201,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
-const V2_DRAFT_BULLET_COUNT = 87;
+const V2_DRAFT_BULLET_COUNT = 106;
 const GUIDE_RELEASE_TAIL_TEXT = '🌐 DEVELOPMENT PUBLISHING STAYS PARKED: The owner-authorized, labelled PR battery can build, browser-check, and archive an exact-commit v2.0 preview package with full Guide identity, origin refusal, and byte inventory; it does not publish. The separate branch-site workflow remains manually parked, and production remains the v1.8.9 main-branch site.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -6925,10 +6925,10 @@ try {
     ['breeding-feeding', 'injuries', 'partial'], ['breeding-feeding', 'eating', 'partial'],
     ['explorer', 'stats', 'partial'], ['explorer', 'hp', 'partial'],
     ['explorer', 'rank', 'partial'], ['explorer', 'achievements', 'partial'],
-    ['combat', 'duels', 'unavailable'], ['combat', 'abilities', 'unavailable'],
+    ['combat', 'duels', 'partial'], ['combat', 'abilities', 'unavailable'],
     ['combat', 'classes', 'partial'], ['combat', 'conquest', 'partial'],
     ['combat', 'binder', 'partial'], ['combat', 'guardians', 'partial'],
-    ['stardust-progression', 'stardust', 'partial'], ['stardust-progression', 'harvest', 'unavailable'],
+    ['stardust-progression', 'stardust', 'partial'], ['stardust-progression', 'harvest', 'partial'],
     ['stardust-progression', 'mining', 'partial'], ['stardust-progression', 'skimming', 'partial'],
     ['stardust-progression', 'research', 'partial'], ['stardust-progression', 'crafting', 'partial'],
     ['stardust-progression', 'ascent', 'partial'], ['prime-codex', 'signatures', 'partial'],
@@ -6941,8 +6941,8 @@ try {
     sha256: 'a9fa0a2dda99b6f8a4961e1e38084bf4f4976151154d034aeb34a741f9f5ccac',
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
-    count: 87,
-    sha256: '10b82045cb6431b82866201961be53dde2fe542d7be4284b17f1c24f4426f840',
+    count: 106,
+    sha256: '9ca05cf7d271f1a93567861037e8f8ce0841af97bb7afa2f814e16b34719ebe5',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -7290,8 +7290,8 @@ try {
       'Weekly bioscan Charters remain protected until their separate lifecycle is complete',
       'Field Scout interception is live on hostile Discover Life',
       'real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment',
-      'Companion Feed still does not discover tastes or flavours, grow stats or Power, heal injuries, apply poison, or build a bond',
-      'Dispatch, missions, care, bond, passive evolution, and friendly duels remain unavailable',
+      'Companion Feed reveals tastes, grows Meals, mends wounds and records bond memories; it never poisons a companion',
+      'Dispatch, missions and passive evolution remain unavailable; care, bond memories and friendly duels are live',
     ], requiredControls: ["On ordinary worlds, it catalogues no species and spends no Biosphere Yield", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "becomes available at ten exact Paragons and pays its established", "120 Stardust", "discovering a Paragon never pays that Set reward automatically", "A development save that recorded a Paragon home before this feature keeps its already-recorded Bioscan refusal; returning does not backfill the Paragon"], contradictions: [
       "Found Paragons plot a course instead of opening Inspect.", "Missing silhouettes open Inspect instead of plotting a course.", "Discover Life on any world adds a Paragon catalogue record.", "An ordinary-world Bioscan catalogues a species.", "A Paragon sighting creates an owned companion.", "A Paragon sighting creates a specimen.", "A Paragon sighting grants Capture credit.", "A Paragon sighting spends 1 Biosphere Yield.", "A Paragon sighting automatically pays 120 Stardust.", "Seeker of Legends is claimable after one Paragon.", "Repeat Paragon sightings add a discovery reward.", "A prior Paragon-set claim can pay again.", "Returning to a previously recorded Paragon home backfills its catalogue record.",
       'The player chooses a visible species row to target.', 'Sample creates a living companion.',
@@ -7508,14 +7508,14 @@ try {
       'designated Scout intercepts hostile Discover Life damage in the bioscan’s own transaction and remains at or below Critical',
       'Scout standing before that successful attempt earns up to +2 XP in the same capture transaction, capped at 486',
       'no standing Scout, miss, or repeat grants Scout XP',
-      'Companion tastes and flavours, stat or Power growth from Feed, injury care or healing, companion poison, bond, dispatch, missions, and friendly duels remain unavailable',
+      'Companion tastes, meal growth, wound care, bond memories and friendly duels are live; companion poison, dispatch and missions remain unavailable',
     ] },
     { id: 'feeding', title: 'Feeding beasts', required: [
       'real fauna Compendium detail',
       'Choose one exact unassigned owned companion whose Meals are below 200 and one exact owned flora lot',
       'Use 1', 'Same-species twins remain separate exact instances',
-      'Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why',
-      'Meals by 1, capped at 200', 'removes 1 flora from that exact lot',
+      'Companions with an active assignment or Recovery timer and companions already at the 200-Meal cap stay disabled and explain why',
+      'Meals by 0 to 3, capped at 200', 'removes 1 flora from that exact lot',
       'final unit empties that exact lot', 'one immutable receipt and one compare-and-swap save transaction',
       'no retry and no optimistic inventory or Meals change',
       'refusal, stale result, or failed write uses and publishes nothing',
@@ -7525,7 +7525,7 @@ try {
       'Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent',
       'every older successful result also remain silent',
       'Back and Close remain available',
-      'tastes and flavours, stat or Power growth, injury care or healing, companion poison, and bond remain unavailable',
+      'Loved food grows Meals faster and mends wounds; disliked food is harmless; first tastes build bond memories',
       'explorer’s separate Eat 1 action lives on a real Flora detail and owns healing, poison, and nourishment without changing companion Feed',
       'Rename changes only one selected exact companion’s nickname',
       'Field Scout separately selects the exact role and can intercept hostile Discover Life injury',
@@ -7547,7 +7547,7 @@ try {
       'requires reload and cannot breed twice', 'Back and Close remain available around the action',
       'successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save',
       'failed pairing, refusal, stale result, or failed write banks no Charter credit',
-      'Parent consumption, taste or bond effects, manual genetic editing, broader care, missions, and combat remain unavailable',
+      'Parent consumption and manual genetic editing remain unavailable. Care, bond memories and combat are live; missions remain unavailable',
     ] },
   ];
   const renderedCompendiumGuideCheck = (spec) => `(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
@@ -7563,7 +7563,7 @@ try {
       ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
       ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
       ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
-      ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
+      ||/Feed can heal without consuming flora|Rest advances while the game is closed|Bond decays over time/i.test(text)
       ||/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(text)
       ||/(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)/i.test(text)
       ||/Both parents are consumed|Recovery advances while the game is closed|same exact companion can occupy both parent roles|failed attempt creates one child|Breeding automatically retries|(?:failed pairing|refusal|stale result|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?)\\s+(?!no(?:thing)?\\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(text)
@@ -7623,7 +7623,7 @@ try {
     marker=document.createElement('p');let node=null;while(walker&&(node=walker.nextNode())&&!(node.nodeValue||'').includes(anchor)){}
     const prior=node?.nodeValue||'';if(node)node.nodeValue=prior.replace(anchor,'one ordinary save');
     const missing=${renderedCompendiumGuideCheck(compendiumGuideSpecs[2])};if(node)node.nodeValue=prior;
-    const contradictions=[];for(const copy of ['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.']){
+    const contradictions=[];for(const copy of ['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Feed can heal without consuming flora.']){
       marker.textContent=copy;article?.appendChild(marker);contradictions.push({copy,result:${renderedCompendiumGuideCheck(compendiumGuideSpecs[2])}});marker.remove();}
     const restored=${renderedCompendiumGuideCheck(compendiumGuideSpecs[2])};return {nodeFound:!!node,missing,contradictions,restored};})()`);
   const breedingGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[3]);
@@ -8002,7 +8002,7 @@ try {
       frontierAudio=bulletNodes.find((item)=>/THE FRONTIER SPEAKS/.test(item.textContent||'')),
       creatureListen=bulletNodes.find((item)=>/CREATURE CALLS ARE YOURS TO REQUEST/.test(item.textContent||'')),
       biosphereListen=bulletNodes.find((item)=>/HEAR A LIVING WORLD WITHOUT SPOILERS/.test(item.textContent||'')),
-     meal=bulletNodes.find((item)=>/TWO EXACT MEAL PATHS, NO INVENTED CARE/.test(item.textContent||'')),
+     meal=bulletNodes.find((item)=>/TWO EXACT MEAL PATHS, TASTE-LED CARE/.test(item.textContent||'')),
       breed=bulletNodes.find((item)=>/TWO PARENTS, ONE DURABLE OUTCOME/.test(item.textContent||'')),
       rename=bulletNodes.find((item)=>/ONE COMPANION, ONE DURABLE NAME/.test(item.textContent||'')),
       hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
@@ -8136,7 +8136,7 @@ try {
         &&captureText.includes('older Surveys and capture do not count')
         &&captureText.includes('Weekly bioscan Charters remain protected until their separate lifecycle is complete')
         &&captureText.includes('Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail')
-        &&captureText.includes('friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable')
+        &&captureText.includes('Passive evolution, dispatch and missions remain unavailable. Care, bond memories and friendly duels are live')
         &&!captureContradiction,
       liveProgressionContradiction=/Charter rewards?[^.!?]{0,48}(?:remain|are) unavailable|Binder (?:Set )?claims?[^.!?]{0,48}(?:do not|never) pay Stardust|Conquest goals?[^.!?]{0,80}(?:remain|stay|are) (?:hidden|unavailable)|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)|(?:miss|repeat species|no standing Scout)[^.!?]{0,64}(?:earns?|grants?|awards?)\\b(?!\\s+no\\b)[^.!?]{0,32}Scout XP|accepted wk-conq[^.!?]{0,96}(?:completes?|pays?|awards?)/i.test(text)||/Found Paragons plot a course instead of opening Inspect|Missing silhouettes open Inspect instead of plotting a course|Discover Life on any world adds a Paragon catalogue record|An ordinary\-world Bioscan catalogues a species|A Paragon sighting creates an owned companion|A Paragon sighting creates a specimen|A Paragon sighting grants Capture credit|A Paragon sighting spends 1 Biosphere Yield|A Paragon sighting automatically pays 120 Stardust|Seeker of Legends is claimable after one Paragon|Repeat Paragon sightings add a discovery reward|A prior Paragon\-set claim can pay again|Returning to a previously recorded Paragon home backfills its catalogue record/i.test(text),
       liveProgressionContract=starterCharterText.includes('two established starter chains one unfinished link at a time')
@@ -8216,15 +8216,15 @@ try {
         &&mealText.includes('one exact unassigned owned companion below the 200-Meal cap')
         &&mealText.includes('one exact owned flora lot through Use 1')
         &&mealText.includes('Same-species twins remain separate')
-        &&mealText.includes('assigned, recovering, and capped companions stay disabled and explain why')
-        &&mealText.includes('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora')
+        &&mealText.includes('companions with an active assignment or Recovery timer and capped companions stay disabled and explain why')
+        &&mealText.includes('One receipt-bearing compare-and-swap raises Meals by 0 to 3 and removes exactly 1 flora')
         &&mealText.includes('emptying that exact lot on its final unit')
         &&mealText.includes('no retry or optimistic change')
         &&mealText.includes('trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status')
         &&mealText.includes('one deterministic synthesized acknowledgement after that status appears')
         &&/refused, stale, converging, replayed, hidden, route-lost, counterpart-lost, and older results remain silent/i.test(mealText)
-        &&mealText.includes('Companion Feed is still only an inventory spend and meal counter')
-        &&mealText.includes('tastes, Power growth, injury care or healing, companion poison, and bond remain open')
+        &&mealText.includes('Companion Feed resolves taste, Meals growth, wound mending and first-time XP in one inventory spend')
+        &&mealText.includes('loved meals grow and mend, neutral meals grow and mend less, and disliked meals are harmless; first tastes build bond memories')
         &&mealText.includes('real Flora detail previews the explorer’s healing, poison risk, and deterministic nourished stat')
         &&mealText.includes('Eat 1 consumes the canonical exact owned specimen in one receipt-bearing transaction')
         &&mealText.includes('safe meal restores shown HP with worn healing gear, raises the stat up to 330, gains +1 nourishment from Xenobotany')
@@ -8287,12 +8287,12 @@ try {
       ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-      ||/(?:duels?|creature combat|passive evolution|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/(?:passive evolution|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
       ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
       ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
       ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
-      ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
+      ||/Feed can heal without consuming flora|Rest advances while the game is closed|Bond decays over time/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text)
       ||breedContradiction||renameContradiction;
@@ -8594,11 +8594,11 @@ try {
       + JSON.stringify(releaseLiveProgressionCtl));
   }
   const releaseMealCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
-    .find((item)=>/TWO EXACT MEAL PATHS, NO INVENTED CARE/.test(item.textContent||''));
+    .find((item)=>/TWO EXACT MEAL PATHS, TASTE-LED CARE/.test(item.textContent||''));
     if(!row)return {missing:{complete:true,mealContract:true},contradictions:[],restored:false,error:'missing Feed release row'};
-    const prior=row.textContent;row.textContent=prior.replace('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora','meal authority removed');
+    const prior=row.textContent;row.textContent=prior.replace('One receipt-bearing compare-and-swap raises Meals by 0 to 3 and removes exactly 1 flora','meal authority removed');
     const missing=${releaseDraftCheck};const contradictions=[];
-    for(const copy of ['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.']){
+    for(const copy of ['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Feed can heal without consuming flora.']){
       row.textContent=prior+' '+copy;contradictions.push({copy,result:${releaseDraftCheck}});}
     row.textContent=prior;const restored=${releaseDraftCheck};return {missing,contradictions,
       restored:restored.mealContract===true&&restored.honest===true};})()`);
@@ -27916,10 +27916,10 @@ try {
     || !/live exact-instance companion controls after Training/i.test(compendiumTourFocus.announcement)
     || !/intercept hostile Discover Life injury, and earn up to \+2 XP when a later successful capture catalogues a genuinely fresh species/i.test(compendiumTourFocus.announcement)
     || !/real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment/i.test(compendiumTourFocus.announcement)
-    || !/Companion tastes, stat or Power growth from Feed, injury care, bond, dispatch, missions, and friendly duels remain unavailable/i.test(compendiumTourFocus.announcement)
+    || !/Companion tastes, meal growth, wound care, bond memories and friendly duels are live; companion poison, dispatch and missions remain unavailable/i.test(compendiumTourFocus.announcement)
     || !/Every same-species twin keeps its own level, XP, condition, class, and named innate arts/i.test(compendiumTourFocus.announcement)
     || !/the second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats/i.test(compendiumTourFocus.announcement)
-    || /Same-species twins share one progression row|Innate art slots unlock at levels 2 and 5|Progression rewrites the creature’s genome or base stats|Companion Feed grows stats or Power|Companion Feed heals injuries/i.test(compendiumTourFocus.announcement)) {
+    || /Same-species twins share one progression row|Innate art slots unlock at levels 2 and 5|Progression rewrites the creature’s genome or base stats|Feed can heal without consuming flora|Rest advances while the game is closed/i.test(compendiumTourFocus.announcement)) {
     fails.push('DRILL COMPENDIUM TOUR: real catalogue rows, read-only lock, or Field Scout truth drifted: '
       + JSON.stringify({ tour: compendiumTour, focus: compendiumTourFocus, rows: compendiumHeldRows }));
   }
@@ -27992,7 +27992,7 @@ try {
   if (horizonFocus.active !== 'tutbtn' || !horizonFocus.allowed
     || !/Field Training, step 14 of 15/i.test(horizonFocus.announcement)
     || !/Elemental Titan.*Apex Guardian.*strongest fauna/i.test(horizonFocus.announcement)
-    || !/losing one of those captured rulers is permanent/i.test(horizonFocus.announcement)
+    || !/a defeated captured ruler returns after active-play Recovery/i.test(horizonFocus.announcement)
     || !/nine Prime Signatures.*ninth opens the Frontier/i.test(horizonFocus.announcement)
     || !/battle-log Share changes no expedition fact/i.test(horizonFocus.announcement)) {
     fails.push('DRILL HORIZON: Guardian, Prime, Chronicle, or permanence orientation drifted: '

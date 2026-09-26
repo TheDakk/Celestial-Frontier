@@ -1,0 +1,99 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/guide-release.test.ts (35 tests | 3 failed) 79ms
+     × uses current-slice copy for partial topics and explicit copy for unavailable topics 7ms
+     × documents live Scout, conquest, Prime, ranks, achievements, and starter Charter joins without claiming their open successors 2ms
+     × keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes 7ms
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts (29 tests | 1 failed) 315ms
+     × keeps every rendered Guide and release oracle green on current exact copy before browser spend 61ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/guide-release.test.ts > v2 Guide capability filter > uses current-slice copy for partial topics and explicit copy for unavailable topics
+AssertionError: expected '<p>Surface conquest settles persisten…' to contain 'healing, broader care'
+
+Expected: "healing, broader care"
+Received: "<p>Surface conquest settles persistent wounds for an exact owned-fauna champion. A hard-won victory can increase its hurt. On defeat, a bred champion returns through active-play Recovery while a wild-caught champion returns through active-play Recovery; every result is part of the same verified combat save and never appears optimistically.</p><p>An assigned Field Scout intercepts hostile <b>Discover Life</b> field damage in the bioscan transaction and remains at or below Critical; protected imported injury above that cap refuses instead of being rewritten. Without a Scout, the explorer takes the nonlethal field wound. Explorer <span data-gt="eating">Flora meals</span> can heal or poison the explorer only. Companion Feed mends wounds according to taste; Rest heals a wounded companion and locks it until its active-play timer ends; companion poison is absent. A companion already at 30% hurt or more cannot enter combat or Breed, while Field Scout and identity-only Rename selection remain available.</p>"
+
+ ❯ tests/guide-release.test.ts:1422:45
+    1420|     expect(getGuideTopic('injuries')?.availability).toBe('partial');
+    1421|     expect(getGuideTopic('injuries')?.body).toContain('bred champion r…
+    1422|     expect(getGuideTopic('injuries')?.body).toContain('healing, broade…
+       |                                             ^
+    1423|     expect(getGuideTopic('eating')?.availability).toBe('partial');
+    1424|     expect(getGuideTopic('eating')?.body).toContain('real Flora Compen…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/guide-release.test.ts > v2 Guide capability filter > documents live Scout, conquest, Prime, ranks, achievements, and starter Charter joins without claiming their open successors
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/guide-release.test.ts:2255:54
+    2253|     expect(fieldScoutGuideCopyIsTruthful(specimen)).toBe(true);
+    2254|     expect(fieldScoutReleaseCopyIsTruthful(scoutBullet ?? '')).toBe(tr…
+    2255|     expect(guardianChampionCopyIsTruthful(conquest)).toBe(true);
+       |                                                      ^
+    2256|     expect(conquestCopy).toMatch(/Only after (?:that )?exact durab(?:l…
+    2257|     expect(conquestCopy).toMatch(/(?:accessible timed Combat Chronicle…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/guide-release.test.ts > legacy and v2 release channels > keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes
+AssertionError: expected [ Array(1) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "/(?:duels?|passive evolution|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i",
++ ]
+
+ ❯ tests/guide-release.test.ts:2846:8
+    2844|     const draftCopy = V2_DRAFT_RELEASE.sections.flatMap((section) => s…
+    2845|     expect(forbiddenOverclaims.filter((pattern) => pattern.test(draftC…
+    2846|       .toEqual([]);
+       |        ^
+    2847|     expect(requiredCopy.filter((pattern) => !pattern.test(draftCopy)).…
+    2848|       .toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps every rendered Guide and release oracle green on current exact copy before browser spend
+AssertionError: specimen: expected Object{ ok: false, …(5) } to match object { ok: true, missing: [], …(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "contradictory": false,
++   "contradictory": true,
+    "missing": [],
+-   "ok": true,
++   "ok": false,
+  }
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:315:68
+    313|     for (const group of specGroups) {
+    314|       for (const spec of group.specs) {
+    315|         expect(evaluateGuide(spec.id, group.check(spec)), spec.id).toM…
+       |                                                                    ^
+    316|           ok: true,
+    317|           missing: [],
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  4 failed | 60 passed (64)
+   Start at  22:50:04
+   Duration  2.35s (transform 362ms, setup 0ms, import 2.18s, tests 393ms, environment 0ms)
+

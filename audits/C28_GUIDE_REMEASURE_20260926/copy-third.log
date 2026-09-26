@@ -1,0 +1,104 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/guide-release.test.ts (35 tests | 2 failed) 99ms
+     × separates Survey reveal and Engineering extraction from random finite Planetside capture 7ms
+     × keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes 12ms
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts (29 tests | 2 failed) 404ms
+     × keeps every rendered Guide and release oracle green on current exact copy before browser spend 133ms
+     × keeps a fixed 106-row Guide oracle with five independent population controls 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/guide-release.test.ts > v2 Guide capability filter > separates Survey reveal and Engineering extraction from random finite Planetside capture
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/guide-release.test.ts:1704:58
+    1702|     expect(stardustGuideCopyIsTruthful(stardust)).toBe(true);
+    1703|     expect(captureBullet).toBeDefined();
+    1704|     expect(captureReleaseCopyIsTruthful(captureBullet!)).toBe(true);
+       |                                                          ^
+    1705|
+    1706|     /* Missing-anchor and contradictory controls are independent: each…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/guide-release.test.ts > legacy and v2 release channels > keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes
+AssertionError: expected [ Array(1) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "/ONE WORLD, ONE VERIFIED DUEL:[^\\n]*landed non-Training Surface[^\\n]*live captured Guardian or Titan[^\\n]*exact 160-run forecast[^\\n]*One immutable receipt and one compare-and-swap[^\\n]*no retry, reroll, or optimistic result[^\\n]*accessible timed Combat Chronicle[^\\n]*two HP meters[^\\n]*Skip stops active combat sound[^\\n]*Share battle log copies plain text[^\\n]*without granting the world-Share achievement[^\\n]*Every already-modelled registered initiative, dodge, stun, impact\\/critical\\/ability, burn, regeneration, defeat, resolution, and Guardian or Titan motif owns an exact visible-caption counterpart[^\\n]*Composite events remain one voice[^\\n]*at most two combat voices overlap[^\\n]*Master Sound—not Creature voices—governs playback[^\\n]*Authored or recorded combat assets, ambience, and music remain unavailable[^\\n]*separate combat-only companion record[^\\n]*rather than ordinary Arc 5 ownership[^\\n]*exact loss-XP[^\\n]*XP and injury survive reload[^\\n]*defeat assigns a temporary Recovery lock[^\\n]*remains in the composite Compendium through reload, Training restore, and capture reconciliation[^\\n]*Defeated Guardians and Titans join the Compendium[^\\n]*Titan win claims its Prime Signature[^\\n]*ninth distinct claim unlocks the Frontier[^\\n]*Prime claims remain independent of later champion use[^\\n]*starter st-conq[^\\n]*adds \\+25 current and lifetime-earned Stardust[^\\n]*Accepted wk-conq refuses before combat[^\\n]*legacy 40% conquest-imbue gate[^\\n]*natural and Pureforged gear/",
++ ]
+
+ ❯ tests/guide-release.test.ts:2848:8
+    2846|       .toEqual([]);
+    2847|     expect(requiredCopy.filter((pattern) => !pattern.test(draftCopy)).…
+    2848|       .toEqual([]);
+       |        ^
+    2849|     const outcome = bulletinOutcome(V2_DRAFT_RELEASE.sections);
+    2850|     expect(outcome).toEqual({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps every rendered Guide and release oracle green on current exact copy before browser spend
+AssertionError: expected Object{ …(55) } to match object { complete: true, honest: true, …(4) }
+(49 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "canonical": true,
+-   "complete": true,
++   "complete": false,
+    "honest": true,
+    "liveProgressionContract": true,
+    "liveProgressionContradiction": false,
+    "populated": true,
+  }
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:377:29
+    375|       readonly liveProgressionContradiction: boolean;
+    376|     };
+    377|     expect(releaseBaseline).toMatchObject({
+       |                             ^
+    378|       complete: true,
+    379|       honest: true,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps a fixed 106-row Guide oracle with five independent population controls
+AssertionError: expected 86 to be 105 // Object.is equality
+
+- Expected
++ Received
+
+- 105
++ 86
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:1048:37
+    1046|     expect(glassExpectedBulletCount).toBe(106);
+    1047|     expect(glassMissingBulletCount).toBe(86);
+    1048|     expect(glassMissingBulletCount).toBe(glassExpectedBulletCount - 1);
+       |                                     ^
+    1049|     expect(glassSource).toContain('106-outcome development inventory');
+    1050|     expect(glassSource).not.toContain('55-outcome development inventor…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  4 failed | 69 passed (73)
+   Start at  22:56:46
+   Duration  15.69s (transform 776ms, setup 0ms, import 5.39s, tests 14.08s, environment 0ms)
+
