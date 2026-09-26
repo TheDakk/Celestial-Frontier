@@ -30,7 +30,7 @@ export interface PaintedCardSourceOptions { readonly assets: PaintedCardAssets; 
   /** G5: the individual's retained FINISHED card master (creature-finish-route.ts), or null. Never triggers inference. When it names
    * the drawn archetype's record and matches its card-master size, the card renders the finished pixels (the morph still applies on
    * top) under its own cache key; otherwise the unfinished painting draws. Absent = today's path, byte for byte. */
-  readonly finished?: (genome: Readonly<Record<string, unknown>>, archetype: PaintedCardArchetype) => Promise<FinishedCardMasterV1 | null>; }
+  readonly finished?: (genome: Readonly<Record<string, unknown>>, archetype: PaintedCardArchetype, kind: CardKind) => Promise<FinishedCardMasterV1 | null>; }
 /** An individual's finished card master (the box-downscaled finished original), in the archetype's card-master space. */
 export interface FinishedCardMasterV1 { readonly sha256: string; readonly recordRecipeHash: string; readonly width: number; readonly height: number; readonly rgba: Uint8Array; }
 const macrotask = (): Promise<void> => new Promise((resolve) => { if (typeof MessageChannel === 'function') { const c = new MessageChannel(); c.port1.onmessage = () => { c.port1.close(); resolve(); }; c.port2.postMessage(0); } else setTimeout(resolve, 0); });
@@ -134,7 +134,7 @@ export class PaintedCardSource {
   card(genome: Readonly<Record<string, unknown>>, kind: CardKind): Promise<PaintedCardAsset> | null {
     const a = this.archetypeFor(genome); if (!a) return null;
     const hook = this.#o.finished; if (!hook) return this.#card(genome, kind, a, null);
-    return hook(genome, a).catch(() => null).then((f) => this.#card(genome, kind, a, f));
+    return hook(genome, a, kind).catch(() => null).then((f) => this.#card(genome, kind, a, f));
   }
   #card(genome: Readonly<Record<string, unknown>>, kind: CardKind, a: PaintedCardArchetype, finished: FinishedCardMasterV1 | null): Promise<PaintedCardAsset> {
     const key = speciesVisualKey(genome as Record<string, unknown>), cacheKey = kind + ':' + key + (finished ? '~' + finished.sha256 : ''); const hit = this.#cache[kind].get(key); if (hit && hit.finishedSha256 === (finished?.sha256 ?? undefined)) return Promise.resolve(hit);

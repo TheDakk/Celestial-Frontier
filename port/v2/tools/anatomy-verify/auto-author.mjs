@@ -16,6 +16,8 @@
  * Presence (cf.anatomy-presence/v2) starts all-visible; hidden/folded are declared classes and are NEVER inferred here. */
 import {keyAndDespill} from '../../../../tools/local-image-generation/kit-contact-math.mjs';
 import {countVisibleAnatomy, referenceInventory, inventoryCheck} from './limb-counter.mjs';
+import {limbSeparation, nearFarPairs} from './limb-separation.mjs';
+import {growAppendageParts} from './leaf-growth.mjs';
 /** Counter results cached per painting (keyed by its mask array, which prepared copies share). */
 const COUNT_CACHE = new WeakMap();
 export const countOf = (subject) => { let c = COUNT_CACHE.get(subject.mask); if (!c) { c = countVisibleAnatomy(subject.mask, subject.w, subject.h); COUNT_CACHE.set(subject.mask, c); } return c; };
@@ -112,7 +114,7 @@ export function thinPlate(src, dst, lambda) {
 /** A prepared subject: mask, contour, descriptors. */
 export function prepareSubject(rgba, w, h) {
   const { mask, keyed } = paintMask(rgba, w, h), box = bboxOf(mask, w, h), contour = outerContour(mask, w, h);
-  return { w, h, mask, keyed, box, contour, desc: describe(contour, box) };
+  return { w, h, mask, keyed, box, contour, desc: describe(contour, box), rgba };
 }
 export function mirrorSubject(rgba, w, h) { const out = new Uint8ClampedArray(rgba.length); for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const s = (y * w + x) * 4, d = (y * w + (w - 1 - x)) * 4; for (let k = 0; k < 4; k++) out[d + k] = rgba[s + k]; } return prepareSubject(out, w, h); }
 
@@ -294,7 +296,7 @@ export function autoAuthorShop(opts) {
 
 /** Author one target from same-family references (and, for the verdict, the other families' references and the mirrored target).
  * `refs`: [{family, subjectId, rgba?, prepared, authoring, h}] ; returns {verdict, reasons, authoring, presence, evidence}. */
-export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0, counter = null, nudgeThinFrac = null, nudgeSkipChains = false, requireCount = true, refRank = 0 }) {
+export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0, counter = null, nudgeThinFrac = null, nudgeSkipChains = false, requireCount = true, refRank = 0, separation = false, grow = false }) {
   const same = refs.filter((r) => r.family === family), other = refs.filter((r) => r.family !== family);
   if (!same.length) return { verdict: 'REFUSE', reasons: ['no-reference: no other hand-authored subject of family ' + family], authoring: null };
   const trAll = same.map((r) => transferReference(target, r)).sort((a, b) => a.cost - b.cost), reasons = [];
@@ -321,7 +323,14 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
     for (const ch of chains) { const snap = { terminal: snapOf(ch.terminal), end: snapOf(ch.end) }; const ok = refineChain(target, dtc, landmarksPx, best.ref.authoring.landmarksPx, ch); chainLog.push({ chain: ch.id, refined: ok, snap }); }
     for (const j of Object.keys(landmarksPx)) landmarksPx[j] = landmarksPx[j].map((v) => Math.round(v * 10) / 10); }
   if (skeleton) return skeletonAuthor({ target, best, top, landmarksPx, rawLandmarks, graph: skeleton.graph, convention: learnConvention(same), reasons, family, id, habitat, materials, mirrorBest, otherBest, tr });
-  let parts = best.parts.map((p) => ({ ...p, polygonPx: p.polygonPx.map(([x, y]) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10]) }));
+  // the remainder part's polygon in the hand packets is often a CONVENTION MARKER, not geometry: a ≤ 2 px² triangle at the origin, or
+  // the full canvas (the remainder owns every pixel no other part claims). A marker is copied from the reference verbatim; warping it
+  // threw it into the body or clamped it to three identical points (v8: 12/40 packets, every failing bird). Real remainder regions transfer.
+  const polyArea0 = (P) => { let a = 0; for (let i = 0; i < P.length; i++) { const q = P[i], r = P[(i + 1) % P.length]; a += q[0] * r[1] - r[0] * q[1]; } return Math.abs(a / 2); };
+  const refRemainder = best.ref.authoring.parts.find((q) => q.id === best.ref.authoring.remainderPart)?.polygonPx ?? null;
+  const remainderMarker = refRemainder && (polyArea0(refRemainder) <= 2 || polyArea0(refRemainder) >= 0.99 * target.w * target.h);
+  let parts = best.parts.map((p) => (remainderMarker && p.id === best.ref.authoring.remainderPart ? { ...p, polygonPx: refRemainder.map((q) => [...q]) }
+    : { ...p, polygonPx: p.polygonPx.map(([x, y]) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10]) }));
   // v3: the INDEPENDENT counter's inventory admission, on the UNNUDGED transfer (counting stays strict while placement may relax)
   let inventory = null; if (counter) { const tc = countOf(target), rc = countOf(best.ref);
     inventory = inventoryCheck(tc, rc, inventoryOf(best.ref), rc.detached.length, parts, { remainderPart: best.ref.authoring.remainderPart, sameFamilyCounts: same.map((r) => countOf(r)), ...(counter.options ?? {}) });
@@ -339,6 +348,10 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
   // polygon outside the normalised [0, 1] canvas, so vertices are clamped to it before the untangle
   const clamped = []; parts = parts.map((p) => { let n = 0; const poly = p.polygonPx.map(([x, y]) => { const cx = Math.min(target.w, Math.max(0, x)), cy = Math.min(target.h, Math.max(0, y)); if (cx !== x || cy !== y) n++; return [cx, cy]; }); if (n) clamped.push({ id: p.id, vertices: n }); return n ? { ...p, polygonPx: poly } : p; });
   const untangled = []; parts = parts.map((p) => { const u = untanglePolygon(p.polygonPx); if (u.repairs > 0) { untangled.push({ id: p.id, repairs: u.repairs }); return { ...p, polygonPx: u.polygon }; } return p; });
+  for (const p of parts) if (p.id !== best.ref.authoring.remainderPart && polyArea0(p.polygonPx) < 1) reasons.push(`missing-anatomy: part ${p.id} (${p.joint}) was transferred off the canvas (area < 1 px²)`);
+  // v9 (measurement only unless a rule is enabled): near/far limb separation evidence on the final parts
+  let separationEvidence = null; if (separation && target.rgba && chains?.length) { const pairs = nearFarPairs(chains);
+    if (pairs.length) separationEvidence = limbSeparation({ rgba: target.rgba, mask: target.mask, w: target.w, h: target.h, parts, chains, pairs }); }
   // evidence from visible paint: every part must sit on paint; no large unclaimed painted region away from the body
   const coverage = parts.map((p) => ({ id: p.id, joint: p.joint, paint: paintCoverage(target.mask, target.w, target.h, p.polygonPx), area: polyArea(p.polygonPx) }));
   const refCoverage = new Map(best.ref.partPaint.map((c) => [c.id, c.paint]));
@@ -353,10 +366,13 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
   // presence is a measured claim (Codex G1 review): all-visible lists are emitted only when the independent visible-appendage
   // counter ran on this painting and resolved without a refusal; without it the author refuses rather than assert maximum anatomy
   if (requireCount && !inventory) reasons.push('presence-unmeasured: no independent visible-appendage count; an all-visible presence is never asserted without one');
+  // v10 (placement only, AFTER every verdict check above): paint-grown appendage parts from the counter's assignment
+  let grown = null; if (grow && inventory?.assign) { const g = growAppendageParts({ mask: target.mask, w: target.w, h: target.h, parts, remainderPart: best.ref.authoring.remainderPart, count: countOf(target), assign: inventory.assign, skipJoints: new Set((chains ?? []).flatMap((c) => [c.hip, c.knee, c.end, c.terminal].filter(Boolean))) });
+    grown = g.grown; if (grown.length) parts = g.parts.map((p) => { const u = untanglePolygon(p.polygonPx); return u.repairs > 0 ? { ...p, polygonPx: u.polygon } : p; }); }
   const authoring = { id, family, ...(habitat ? { habitat } : {}), landmarksPx, groundLineY: Math.min(0.999, Math.max(0.05, best.groundLineY)), materials, remainderPart: best.ref.authoring.remainderPart, parts,
     coverage: { declarations: `G1 automatic authoring (automatic transfer, not observed): landmarks transferred from ${top.length === 1 ? 'the single best registered reference' : `the median of ${top.length} registered references`}; parts from ${best.ref.subjectId}. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.`, sourceFacing: 'right', visualAcceptance: 'none — automatic' } };
   return { verdict: reasons.length ? 'REFUSE' : 'ADMIT', reasons, authoring, presence: { schema: 'cf.anatomy-presence/v2', absent: [], hidden: [], folded: [] },
-    evidence: { schema: AUTO_AUTHOR_SCHEMA, chains: chainLog, nudged, clamped, untangled, inventory, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, refRank, costs: trAll.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
+    evidence: { schema: AUTO_AUTHOR_SCHEMA, remainderMarker: !!remainderMarker, grown, chains: chainLog, nudged, clamped, untangled, separation: separationEvidence, inventory, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, refRank, costs: trAll.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
 }
 
 /** Skeleton mode: parts grown from the TARGET's own paint by nearest bone of the placed skeleton, traced to polygons; the verdict is

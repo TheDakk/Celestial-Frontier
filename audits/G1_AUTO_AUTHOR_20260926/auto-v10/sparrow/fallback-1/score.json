@@ -1,0 +1,19 @@
+{
+ "id": "sparrow",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part near-shin (legNearAnkle) covers 9% paint (reference 32%)"
+ ],
+ "semanticPresence": null,
+ "bodyLengthPx": 911.2,
+ "landmarkMedian": 0.0699,
+ "landmarkMax": 0.3316,
+ "worst": [
+  "wingFarTip 0.332",
+  "wingNearTip 0.231",
+  "tailFan 0.180"
+ ],
+ "labelAgreement": 0.3442,
+ "missingJoints": []
+}

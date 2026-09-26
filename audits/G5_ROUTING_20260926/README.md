@@ -39,6 +39,40 @@ This is Stage G5 of the Generated Creature Pipeline (`audits/GENERATION_PIPELINE
   - `Math.floor` in the box kernel fails the kernel and end-to-end tests;
   - dropping the record-ownership check in the hook fails the hook test.
 
+## The stage (session 3, on Codex's C45(a) composition, `9cf27be1`)
+
+- The battle2 study input takes an optional `finish` provider. `main.ts` passes it through the existing gated battle2 line only when `?finish=1` built a route.
+- For each rig, `stageFinishV1` (creature-finish-app.ts) turns the creature's retained original (`route.retained`, store only) into Codex's `admitCreatureFinishedAtlasV1` token against the rig's own pinned bytes.
+- The loader then composes, in Codex's order: finished pixels, then the individual's morph (`atlasPixels`), then the alpha check, then the seam guard. CARD = STAGE: both show the finished texture with the individual's colours.
+- Any refusal is recorded in the study's `skipped` list, and the unfinished painting draws.
+- Test (`creature-finish-app.test.ts`): on the real pinned Crab, no retained finish gives null. A retained identity finish becomes a token whose projection is EXACTLY the original atlas, and it loads through the pinned loader. Another creature gives null.
+- Civet/Eel/Rat/Salamander: derived ownership evidence is ready for Codex's review (`audits/G5_DERIVED_LABELS_20260926`).
+
+## In the game behind `?finish=1` (session 3, after Codex's C43/C41 unblock `bfe76a6b`)
+
+- **Finish sources on the library** (`tools/morph/build-finish-sources.mjs`, called by `build-shipped-battle2.mjs` before the manifest pass):
+  - the 34 archetypes that have both a bundled master pin and a supplementary labels pin get `library/creature-finish-source/<creatureId>/{master.png,labels.png}` (26.4 MiB, outside the pack, fetched only by a finishing desktop);
+  - both hashes are checked against the bundled pins before copying;
+  - Civet, Eel, Rat and Salamander have no pinned source labels and refuse (Codex C41: supply source-derived label assets first).
+- **`apps/game/src/creature-finish-app.ts`:**
+  - `developerFinishRuntimeV1`: the same-origin developer model transport, with the checks local-ai-game applies (pinned model id and revision, verified developer cache, same-origin file URLs only).
+  - `createFinishInferV1`: the desktop adapter, Codex's native client generalised. One worker. The recipe is re-derived and pin-checked (model hash, settings hash, seed). The `creature-finish-v1` job carries fresh copies of the RGBA and labels as TRANSFERRED buffers; the worker pads 1254² sources itself. The result contract is checked.
+  - `appFinishFitForV1`: the G4-drawn painting's fit. The record and binding come over the stage's pinned asset source, loaded lazily so battle2 code stays off the boot path; the master and labels come from the pinned library.
+  - `createAppFinishRouteV1`: tier from the probe plus device class; desktop inference only when the developer transport exists; delivered originals for every tier via Codex's `createCreatureFinishDeliveryV1`.
+- **`main.ts`, one gated line (`?finish=1`):**
+  - the Compendium card draws a retained or delivered finished original (with the morph on top);
+  - a finishing desktop enqueues a creature's finish when its PORTRAIT opens and finds none;
+  - default OFF until Nick's quality review.
+  - On the static dev site there is no developer model transport and no finished original has been published, so the flag is inert there. It finishes on a local dev server with the verified model cache.
+- **Tests** (`creature-finish-app.test.ts`, 2):
+  - the developer transport admits only the pinned model on this origin;
+  - END TO END on the real Crab: the pinned library master and labels, then the adapter's job through a worker double that REALLY transfers (the sender's buffers detach), then Codex's engine and the store, give exactly the shipped card master;
+  - controls: a worker error, a short result and a wrong model pin all fall back with nothing retained; Civet (no labels) is refused by the library.
+  - Mutation control: dropping the transfer list fails the test.
+- **Not yet:**
+  - The STAGE. Codex's loader takes the finished atlas through `admitCreatureFinishedAtlasV1`, but refuses to compose the morph palette remap over it ("cannot compose an unchecked remap"). A finished creature on the stage would therefore lose its individual colours while its card keeps them: CARD ≠ STAGE. Asked in C45.
+  - A real browser run with the model.
+
 ## Stage projection (session 3)
 
 `projectFinishedToAtlasV1` is the runtime generalisation of `rebind-finished.mjs` (Codex C40(c)). Every bound part's atlas-frame pixels with alpha > 0 take the finished RGB from the same place in the part's cut-out. Alpha is never touched, nothing outside a frame changes, and a rotated or resized frame refuses.

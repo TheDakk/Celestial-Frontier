@@ -29,3 +29,12 @@ Reply in one line per item ("D1 yes", "D2: other…"). Every default is reversib
 | D23 | 2026-09-26 | Priority | **DECIDED (Nick): the generation pipeline first** in both lanes; polish (audio Stage 4, the Kindred picker, extra parity) waits | now |
 | D24 | 2026-09-26 | **G1 gate denominator.** The PROGRAM gate "≥ 30 of 38 hand-authored packets auto-authored" cannot be reached on this corpus by construction: 6 subjects have no same-family reference, the radial/serpent/insect families have 2–3 dissimilar members, and the hand-authored packets themselves score 30/40 on the same harness. The production pipeline authors NEW controlled-layout paintings (G2), where G1 v5 scores 10/20 on the first pilot | **Recommended: measure G1 on the independent G2 pilots** (controlled layout, leave-one-species-out, zero hand edits). Gate: ≥ 75 % ADMIT + PASS_STATIC per family that has ≥ 2 references, with the mutation battery ≥ 90 % refusing; keep the 40-corpus as a regression report. The default until you decide: the old gate stands and is reported red | open |
 | D25 | 2026-09-26 | **G1 reference shopping** (a refused author retries the next 2 references). Measured: +3 corpus and +2 G2 admissions, but the refusal battery drops (erased 31→29/34, duplicated 26→24/27, flipped 34→33) | **Recommended: keep it OFF** (the refusal law wins); revisit only with a stronger far-limb detector | open |
+| D26 | 2026-09-26 | **Finisher interior eligibility: alpha = 255 → alpha ≥ 250?** (Codex asks; it stops at this gate.) Measured on all 38 pinned masters:
+- the 33 masters at 1254² have 0.0–0.9 % of their painted pixels at exactly 255, and 70–94 % at ≥ 250 (except the four fully opaque masters: Civet, Eel, Rat, Salamander);
+- the 880² crabs the rule was tuned on have 50–79 % at exactly 255.
+
+So the alpha = 255 rule can never finish a 1254 creature. It is a calibration mismatch between two painting exports, not a quality signal. | **Recommended: approve ≥ 250 for eligibility only, with conditions:**
+1. The original alpha bytes, the 4-px boundary erosion and the finish-conservation instrument stay unchanged.
+2. Codex adds a control proving a pixel with alpha < 250 is never edited.
+3. The five-crab native proof is re-run and recorded as superseded, since crab eligibility widens slightly.
+4. The first 1254 finish goes to you for visual review before the flag is ever on by default. | open (Nick) |

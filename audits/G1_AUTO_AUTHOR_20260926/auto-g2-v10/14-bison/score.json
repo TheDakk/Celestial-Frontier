@@ -1,0 +1,10 @@
+{
+ "id": "14-bison",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 38%)",
+  "unexplained-anatomy: 6.7% of the paint lies away from the body and in no part (reference 1.7%)"
+ ],
+ "semanticPresence": null
+}

@@ -723,7 +723,10 @@ const DOCUMENT_TOKEN = crypto.randomUUID();
    same JS realm and therefore correctly retains this token. */
 const F4_TAB_TOKEN = DOCUMENT_TOKEN;
 // the painted individual on the card (morph system): asked first for every thumb/portrait; painter tier otherwise
-const paintedCards = (() => { try { return createPaintedCardsForApp(); } catch { return null; } })();
+// G5 (?finish=1, development only until Nick's quality review): an individual's retained finished original draws its card; a desktop
+// with the developer model transport finishes a creature when its Compendium portrait opens (creature-finish-app.ts)
+const finishRoute = new URLSearchParams(location.search).get('finish') === '1' ? import('./creature-finish-app.js').then((m) => m.createAppFinishRouteV1()).catch(() => null) : null;
+const paintedCards = (() => { try { return createPaintedCardsForApp(fetch, finishRoute ? async (g, _a, kind) => { const r = await finishRoute; if (!r) return null; const f = await r.lookup(g); if (!f && kind === 'portrait') void r.enqueue(g).catch(() => undefined); return f; } : undefined); } catch { return null; } })();
 const speciesArtLoader = new SpeciesArtLoader(DOCUMENT_TOKEN, paintedCards ? { paintedCards } : {});
 /* Keep one exact SceneMemory route's 9 Compendium + 8 Planetside thumbs warm.
    Repainting the same bounded set on every navigation grows V8's worker/task
@@ -17629,7 +17632,7 @@ function presentCommittedCombatChronicle(
   }
   // The painted battle stage over the same Chronicle mount (A4: the default; `?battle2=0` opts out). A dynamic import reached only when a
   // fight is presented, so boot never loads it; a study failure leaves the Chronicle, which stays the accessible owner of the outcome.
-  if (battle2On(location.search)) void import('./battle2-wiring.js').then(m => m.mountBattle2Study({ mount: combatChronicleMount, settlement, chronicle, generation, pacer: battle2Pacer, ownership: arc5OwnershipState, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { battle2Pacer?.releaseAll(); /* the flagged study never blocks the Chronicle */ });
+  if (battle2On(location.search)) void import('./battle2-wiring.js').then(m => m.mountBattle2Study({ ...(finishRoute ? { finish: async (g: Readonly<Record<string, unknown>>, p: Parameters<NonNullable<Parameters<typeof m.mountBattle2Study>[0]['finish']>>[1]) => { const r = await finishRoute; return r ? r.stage(g, p) : null; } } : {}), mount: combatChronicleMount, settlement, chronicle, generation, pacer: battle2Pacer, ownership: arc5OwnershipState, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { battle2Pacer?.releaseAll(); /* the flagged study never blocks the Chronicle */ });
   try {
     const claim = tameGreetingAudioOwner?.claimCommittedCombatSession(outcome, cuePlan) ?? null;
     if (claim !== null) {

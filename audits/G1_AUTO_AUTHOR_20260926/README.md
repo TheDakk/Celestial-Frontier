@@ -83,13 +83,27 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 2. a short-tailed reference in the pool (only via admitted, independently accepted packets; never bootstrapped unchecked, per Codex's review);
 3. a measured-absence declaration: truncating a tail chain whose paint is measured absent. This needs Codex's intake/presence contract review first.
 
+**v9–v11 (session 3, continued): four levers tried; one bug fixed, no count change.**
+
+| Lever | Result | Status |
+|---|---|---|
+| **Near/far limb separator** (`limb-separation.mjs`, measured inside the author on the mutation battery, `summary-v9-sepdiag.json`): contact between the transferred near and far limb regions inside paint, and the image edge there against interior texture | **Dead end.** Erased-far-leg mutants often show MORE contact than the unmutated positives (Wolf 87 vs 14 px on the hind pair, Marmot 108 vs 29, Sparrow 47 vs 16), with the same edge ratio (~2–3). The transferred far-leg polygon lands on the near leg's own paint, so the "edge" is ordinary texture inside one leg; many true positives touch nowhere (contact 0). No threshold separates them. | module kept as an off-by-default diagnostic |
+| **Remainder marker** | A real bug: 18 hand packets mark the remainder part with a ≤ 2 px² origin triangle (3 use the full canvas). The author warped that marker like geometry, or clamped it to three identical points (12/40 packets, every failing bird). Markers are now copied verbatim, and a real part transferred off the canvas refuses. | **adopted (v10):** the battery is identical (31/34 · 26/27 · 34/34 · 34/34); static is unchanged at 12/40 and 10/20 |
+| **Per-part swap on the Eagle** (`hybrid-eagle-parts/`): each auto polygon replaced by the hand one, one at a time | **The Eagle's red is entirely its TAIL outline.** Only the hand tail turns it PASS_STATIC; the other 15 swaps stay RED on cast and victory. The transferred tail (from the Gull's shorter tail) leaves 27 % of the painted tail to the body part (`tailcov`); the chest leaks 43 %. Landmark/polygon hybrids (`hybrid-v8/`): Eagle = polygons (hand polygons + auto landmarks PASS); Sparrow = mixed (faint is landmark-driven, cast polygon-driven). | handed to Codex's fit repair (C44) |
+| **Paint-grown appendage parts** (`leaf-growth.mjs`, `--grow`, run AFTER the verdict so refusals cannot change): unclaimed paint inside a counted appendage goes to its nearest assigned owner part; contact-chain parts never grow | The Eagle's cast/victory reds clear, but hit/kick reds appear. Sparrow, Sandpiper and Brown Bear are unchanged. Growing feet (the first probe) made contact reds. Net zero: fold behaviour is sensitive to exact outlines, and the counter's appendage blob stops short of the tail root. | option, off by default |
+
+**Where this leaves G1:** the author-side levers available without new information are exhausted. What moves the numbers now is on the painting side (C44):
+- **G2 paintings posed with near and far limbs apart** (a stride with no overlap). The paint-only counter then sees every leg, semantic presence resolves, and the thin-part and far-leg ambiguities disappear.
+- **True tails painted clearly** (short-tailed species refuse by rule).
+- **More same-family references,** only via independently accepted packets.
+
 **v8 (session 3): Codex's second review closed in the runner** (`auto-v8/`, `auto-g2-v8/`; results identical to v5: 12/40, 10/20, same subjects).
 - **Canonical identity:** the runner now recomputes `speciesVisualKey(genome)` and refuses on disagreement. Provenance `identity.checks` states exactly what was checked. 60/60 agree.
 - **Presence narrowed to what is measured.** Each ADMIT's `provenance.json` `presence` records:
   - the geometric inventory (appendages by class, ground contacts, detached islands);
   - that the empty absent/hidden/folded lists are an intake-format necessity, NOT an all-visible attestation;
   - a semantic status. It is **RESOLVED** only when every reference appendage is assigned AND no appendage merges two limb chains; otherwise it is **UNRESOLVED**, with the unassigned and merged chains named. `playAdmission` stays blocked until semantic presence resolves and native + visual review pass.
-- **Result:** RESOLVED for the 6 fish (salmon, sturgeon, bass, tang, reef-shark, pike). UNRESOLVED for all 6 admitted quadrupeds/birds and all 10 G2 passes. The cause is ALWAYS overlapped near/far limbs (for example `foreFar+foreNear`); no reference appendage is unassigned.
+- **Result** (corrected after Codex's check; the first wording counted only the ADMIT + PASS_STATIC packets): among those 12, RESOLVED for the 6 fish (salmon, sturgeon, bass, tang, reef-shark, pike), and UNRESOLVED for the 6 quadrupeds/birds and all 10 G2 passes. Across ALL admitted packets, Sparrow, Sandpiper, Mongoose and Tapir are RESOLVED; each of them is static-RED. The cause is ALWAYS overlapped near/far limbs (for example `foreFar+foreNear`); no reference appendage is unassigned.
 - **The one lever that closes both open G1 findings** (semantic presence and thin-part false refusals): a near/far limb separator for overlapped side-profile limbs.
 
 **Codex's second review (C40 answers, `audits/G1_CONTRACT_REVIEW_20260926`), status:**

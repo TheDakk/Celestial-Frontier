@@ -1,0 +1,49 @@
+{
+  "name": "Donkey",
+  "family": "quadruped",
+  "species": {
+    "name": "Donkey",
+    "aspect": 1.5,
+    "headFrac": 0.3,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "very long upright ears",
+      "short upright bristly mane",
+      "cow-like tail tufted only at the tip"
+    ],
+    "note": "Straighter back, bigger head and shorter neck than a horse; no flowing forelock."
+  },
+  "genome": {
+    "seed": 4243739374,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 16,
+    "body": 2,
+    "loco": 16,
+    "trait": 14,
+    "size": 0,
+    "diet": 3,
+    "head": 0,
+    "limbs": 3,
+    "skin": 1,
+    "tail": 0,
+    "pattern": 1,
+    "eyes": 0,
+    "behavior": 10,
+    "habitat": 5,
+    "detail": 5,
+    "accent": 12,
+    "temper": 7,
+    "sense": 6,
+    "repro": 5,
+    "life": 3,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Donkey"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Donkey\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"4243739374\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 545
+}
