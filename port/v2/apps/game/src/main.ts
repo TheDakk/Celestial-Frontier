@@ -5603,6 +5603,19 @@ tameGreetingAudioOwner = createTameGreetingAudioOwner({
   }),
   verifyCounterpart: creatureExpressionCounterpartIsCurrent,
 });
+// L1 Listening page (D15 / N5) on a BUILT package (the dev URL): flag-gated, dynamic import only, never on the default path. Plays through
+// the audio owner's explicit pilot gesture (decorative only); ratings stay on this device. The dev server keeps Codex's production review.
+if (!import.meta.env.DEV && new URLSearchParams(location.search).get('audioReview') === '1') {
+  void import('./listening-review.js').then(({ mountListeningReviewV1 }) => {
+    const owner = tameGreetingAudioOwner; if (!owner) return;
+    let storage: Storage | null = null; try { storage = window.localStorage; } catch { storage = null; }
+    const page = mountListeningReviewV1({ doc: document, commit: previewIdentity?.sourceCommit ?? 'local build', ua: navigator.userAgent, storage,
+      port: { arm: () => owner.armNativePilotGesture(), play: (request) => owner.playPilotVoice(request), stop: () => owner.cancelPilotPlayback() },
+      readPackDigest: async () => { const r = await fetch('./preview.json', { credentials: 'omit', cache: 'no-store' }); if (!r.ok) throw new Error('no preview.json'); const m = await r.json() as { contentSha256?: unknown }; if (typeof m.contentSha256 !== 'string') throw new Error('no digest'); return m.contentSha256; } });
+    const closeReview = (event: PageTransitionEvent): void => { if (!event.persisted) { page.dispose(); removeEventListener('pagehide', closeReview); } };
+    addEventListener('pagehide', closeReview);
+  }).catch(() => { /* the flagged page never blocks the game */ });
+}
 // Explicit local developer review; reuses the existing audio owner, never gameplay RNG.
 if (import.meta.env.DEV && new URLSearchParams(location.search).get('audioReview') === '1') {
   void import('./audio-production-review.js').then(({ mountAudioProductionReview }) => {
