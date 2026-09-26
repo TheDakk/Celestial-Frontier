@@ -4,7 +4,10 @@
 import { readFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
-import { appFinishFitForV1, createFinishInferV1, creatureFinishModelHashV1, developerFinishRuntimeV1 } from './creature-finish-app.js';
+import { appFinishFitForV1, createFinishInferV1, creatureFinishModelHashV1, developerFinishRuntimeV1, stageFinishV1 } from './creature-finish-app.js';
+import { getBattle2MasterPin } from './battle2-master-pins.generated.js';
+import { creatureFinishedAtlasPixelsV1 } from './creature-finish-admission.js';
+import { loadPinnedCreatureRigV1 } from './creature-rig.js';
 import { createCreatureFinishRouteV1 } from './creature-finish-route.js';
 import { creatureOriginalKey, type AiCreatureInputV1, type AiCreatureOriginalStoreV1, type AiCreatureOriginalV1 } from './creature-originals.js';
 import { LocalModelSha256V1 } from './local-model-sha256.js';
@@ -64,5 +67,22 @@ describe('G5 in the game', () => {
     for (const answer of ['error', 'short'] as const) { const bad = make(answer); expect(await bad.route.enqueue(crab())).toBe('fallback'); expect(bad.m.rows.size).toBe(0); }
     const wrongModel = make('identity', 'f'.repeat(64)); expect(await wrongModel.route.enqueue(crab())).toBe('fallback'); expect(wrongModel.log.jobs).toHaveLength(0);
     await expect(fitFor({ _earthName: 'Civet', kingdom: 'fauna', seed: 1 })).rejects.toMatchObject({ code: 'not-in-library' });
+  }, 240_000);
+  it('STAGE: a retained finish becomes Codex\'s admitted finished-atlas capability for the real pinned Crab rig (identity finish projects to the original atlas) and loads through the pinned loader; no retained finish, or another creature\'s, gives null (controls)', async () => {
+    const pin = getBattle2MasterPin('crab')!, readRepo = (p: string) => read(new URL(p, REPO));
+    const pinned = { pin, creatureId: pin.creatureId, record: JSON.parse(new TextDecoder().decode(readRepo(pin.recordPath))), alphaPath: pin.alphaPath, alpha: readRepo('port/v2/apps/game/public/battle2/' + pin.alphaPath),
+      bindingBytes: readRepo(pin.recordPath.replace('record.json', 'binding.json')), atlasPath: pin.atlasPath, atlas: readRepo(pin.atlasPath) };
+    const modelHash = creatureFinishModelHashV1(), m = memoryStore(), cutouts = new Map<string, string>(), log = { jobs: [] as Record<string, unknown>[], detached: [] as boolean[] };
+    const route = createCreatureFinishRouteV1({ tier: 'desktop', store: m.store, modelHash, fitFor: appFinishFitForV1(repoAssets, LIB), identityOf: (g) => ({ visualKey: speciesVisualKey(g as Record<string, unknown>), seed: Number(g.seed) >>> 0 }),
+      onSource: (s) => cutouts.set(s.individualId + '|' + s.settingsHash, s.cutoutAssetHash),
+      createInfer: createFinishInferV1({ workerUrl: '/w.mjs', modelFiles: {}, modelHash, cutoutOf: (id, st) => cutouts.get(id + '|' + st) ?? null, WorkerCtor: fakeWorker(log) }) });
+    const stage = stageFinishV1(route);
+    expect(await stage(crab(), pinned as never)).toBeNull(); // nothing retained yet: the unfinished painting
+    expect(await route.enqueue(crab())).toBe('retained');
+    const fin = await stage(crab(), pinned as never); expect(fin).not.toBeNull();
+    const atlas = await decodePng(pinned.atlas);
+    expect(Buffer.from(creatureFinishedAtlasPixelsV1(fin!.token, pin, fin!.identity)(atlas.rgba, atlas.width, atlas.height)).equals(Buffer.from(atlas.rgba))).toBe(true);
+    const rig = await loadPinnedCreatureRigV1(pinned as never, undefined, { finishedAtlas: fin! }); expect(rig.recipeHash).toBe(pin.recipeHash); rig.dispose();
+    expect(await stage(crab(6), pinned as never)).toBeNull(); // another creature has no retained finish
   }, 240_000);
 });

@@ -39,6 +39,15 @@ This is Stage G5 of the Generated Creature Pipeline (`audits/GENERATION_PIPELINE
   - `Math.floor` in the box kernel fails the kernel and end-to-end tests;
   - dropping the record-ownership check in the hook fails the hook test.
 
+## The stage (session 3, on Codex's C45(a) composition, `9cf27be1`)
+
+- The battle2 study input takes an optional `finish` provider. `main.ts` passes it through the existing gated battle2 line only when `?finish=1` built a route.
+- For each rig, `stageFinishV1` (creature-finish-app.ts) turns the creature's retained original (`route.retained`, store only) into Codex's `admitCreatureFinishedAtlasV1` token against the rig's own pinned bytes.
+- The loader then composes, in Codex's order: finished pixels, then the individual's morph (`atlasPixels`), then the alpha check, then the seam guard. CARD = STAGE: both show the finished texture with the individual's colours.
+- Any refusal is recorded in the study's `skipped` list, and the unfinished painting draws.
+- Test (`creature-finish-app.test.ts`): on the real pinned Crab, no retained finish gives null. A retained identity finish becomes a token whose projection is EXACTLY the original atlas, and it loads through the pinned loader. Another creature gives null.
+- Civet/Eel/Rat/Salamander: derived ownership evidence is ready for Codex's review (`audits/G5_DERIVED_LABELS_20260926`).
+
 ## In the game behind `?finish=1` (session 3, after Codex's C43/C41 unblock `bfe76a6b`)
 
 - **Finish sources on the library** (`tools/morph/build-finish-sources.mjs`, called by `build-shipped-battle2.mjs` before the manifest pass):

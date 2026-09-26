@@ -14,10 +14,11 @@ import { gunzipTransportBytes } from './battle2-master-pin-admission.js';
 import { getBattle2MasterPin } from './battle2-master-pins.generated.js';
 import type { Battle2AssetSource } from './battle2-wiring.js';
 import { fetchArtLibraryBytesV1, type ArtLibraryOptionsV1 } from './art-library.js';
-import { createCreatureFinishDeliveryV1 } from './creature-finish-admission.js';
-import type { CreatureFinishInferV1 } from './creature-finish-engine.js';
+import { admitCreatureFinishedAtlasV1, createCreatureFinishDeliveryV1 } from './creature-finish-admission.js';
+import type { Battle2PinnedBytesV1 } from './battle2-master-pin-admission.js';
+import { creatureFinishIdentityV1, type CreatureFinishInferV1 } from './creature-finish-engine.js';
 import { createCreatureFinishRouteV1, finishTierV1, type FinishFitBytesV1 } from './creature-finish-route.js';
-import { createAiCreatureOriginalStoreV1 } from './creature-originals.js';
+import { createAiCreatureOriginalStoreV1, type AiCreatureInputV1 } from './creature-originals.js';
 import { compileCreatureFinishV1 } from './landfall-conditioning.js';
 import { probeLocalModelCapabilitiesV1 } from './local-model-delivery.js';
 import { PINNED_LOCAL_MODEL_MANIFEST_V1 } from './local-model-manifest.js';
@@ -90,6 +91,16 @@ export function appFinishFitForV1(assetsOf: () => Promise<Battle2AssetSource> = 
   };
 }
 
+/** STAGE (CARD = STAGE, Codex C45(a)): the creature's retained finish, admitted by Codex's admitCreatureFinishedAtlasV1 against the
+ * rig's own pinned bytes, as the loader's `finishedAtlas` capability; the loader composes the individual's morph on top. null = none. */
+export function stageFinishV1(route: { retained: (g: Readonly<Record<string, unknown>>) => Promise<{ fit: FinishFitBytesV1; source: Parameters<typeof creatureFinishIdentityV1>[0]; original: Parameters<typeof admitCreatureFinishedAtlasV1>[2] } | null> }) {
+  return async (genome: Readonly<Record<string, unknown>>, pinned: Battle2PinnedBytesV1): Promise<{ token: unknown; identity: AiCreatureInputV1 } | null> => {
+    const r = await route.retained(genome); if (!r) return null;
+    const token = await admitCreatureFinishedAtlasV1(pinned, r.source, r.original, r.fit.labelsPng);
+    return { token, identity: creatureFinishIdentityV1(r.source) };
+  };
+}
+
 /** The in-game route, or null. Desktop inference only over the developer transport; otherwise delivered/retained originals only. */
 export async function createAppFinishRouteV1(o: { readonly fetchImpl?: typeof fetch } = {}) {
   const fetchImpl = o.fetchImpl ?? fetch, touch = navigator.maxTouchPoints > 0 || (typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches);
@@ -102,5 +113,5 @@ export async function createAppFinishRouteV1(o: { readonly fetchImpl?: typeof fe
     delivered: createCreatureFinishDeliveryV1({ fetchImpl }),
     onSource: (src) => cutouts.set(src.individualId + '|' + src.settingsHash, src.cutoutAssetHash),
     ...(runtime ? { createInfer: createFinishInferV1({ ...runtime, modelHash, cutoutOf: (id, settings) => cutouts.get(id + '|' + settings) ?? null }) } : {}) });
-  return route;
+  return Object.freeze({ ...route, stage: stageFinishV1(route) });
 }

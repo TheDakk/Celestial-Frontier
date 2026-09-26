@@ -68,7 +68,8 @@ import { artLibraryEntryV1, fetchArtLibraryBytesV1, libraryPathOfArenaUrl, type 
 import { BATTLE2_SWAP_BEAT_MS_V1, BATTLE2_SWAP_BEAT_REDUCED_MS_V1, battle2SwapBeatsV1, type Battle2SwapBeatV1 } from './battle2/swap-beats.js';
 import type { CombatSettlementPlanV1 } from '@cf/domain-combatcore';
 import { getBattle2MasterPin } from './battle2-master-pins.generated.js';
-import { Battle2PinRefusal, gunzipTransportBytes, preflightBattle2PinnedBytesV1 } from './battle2-master-pin-admission.js';
+import { Battle2PinRefusal, gunzipTransportBytes, preflightBattle2PinnedBytesV1, type Battle2PinnedBytesV1 } from './battle2-master-pin-admission.js';
+import type { AiCreatureInputV1 } from './creature-originals.js';
 import { placeCombatants } from './battle2/placement.js';
 import { MASS_BY_SIZE_INDEX, MASS_CLASS } from './motion/timing.js';
 import type { SpeciesArtLoader } from './species-art-loader.js';
@@ -155,6 +156,9 @@ export interface Battle2StudyInput {
   /** D15 Stage 0: the live ownership state, so an owned champion speaks with the voice its own AudioSignature gives it everywhere else. */
   readonly ownership?: OwnershipStateV2 | null;
   readonly records?: readonly ResolvedAnatomyRecord[];
+  /** G5 (?finish=1): the creature's admitted finished atlas for this pinned rig, or null (creature-finish-app.ts stageFinishV1). The
+   * pinned loader composes the individual's morph over it (Codex C45(a)); any refusal keeps the unfinished painting. */
+  readonly finish?: ((genome: Readonly<Record<string, unknown>>, pinned: Battle2PinnedBytesV1) => Promise<{ readonly token: unknown; readonly identity: AiCreatureInputV1 } | null>) | null;
   /** Portrait art for combatants without a landmark record (default: the species art loader's 132 px thumb). */
   readonly portrait?: (genome: Readonly<Record<string, unknown>>) => Promise<Battle2Image>;
   readonly win?: Pick<Window, 'addEventListener' | 'removeEventListener'> & { readonly MutationObserver?: typeof MutationObserver };
@@ -405,7 +409,9 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
             // a morphed individual's texture comes from the app's cache (one decode + remap per individual, shared and borrowed;
             // released when this study is disposed); the archetype itself takes the loader's own guarded decode as before
             let paintRig: CreatureRigV1;
-            if (morph.atlasPixels) { const lease = await morphAtlasCache.acquire(morphAtlasKey(record.recipeHash ?? record.identity.speciesVisualKey, speciesVisualKey(genome as Record<string, unknown>), morph.marking), async () => (await decodeMorphedAtlas(atlas, record as unknown as CreatureRigRecordV1, binding, morph.atlasPixels!)).texture); atlasLeases.push(lease);
+            const finished = input.finish && genome ? await input.finish(genome, pinnedInput).catch((e: unknown) => { skipped.push(`${name}: finished atlas refused (${e instanceof Error ? e.message : String(e)}); unfinished painting`); return null; }) : null;
+            if (finished) paintRig = await loadPinnedCreatureRigV1(pinnedInput, undefined, { finishedAtlas: finished, ...(morph.atlasPixels ? { atlasPixels: morph.atlasPixels } : {}), ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) });
+            else if (morph.atlasPixels) { const lease = await morphAtlasCache.acquire(morphAtlasKey(record.recipeHash ?? record.identity.speciesVisualKey, speciesVisualKey(genome as Record<string, unknown>), morph.marking), async () => (await decodeMorphedAtlas(atlas, record as unknown as CreatureRigRecordV1, binding, morph.atlasPixels!)).texture); atlasLeases.push(lease);
               paintRig = await loadPinnedCreatureRigV1(pinnedInput, async () => lease.texture, { borrowedAtlas: true, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) }); }
             else paintRig = await loadPinnedCreatureRigV1(pinnedInput, undefined, morph.jointScale ? { jointScale: morph.jointScale } : {});
             const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height), binding, ...(fit.contactSupports ? { contactSupports: fit.contactSupports } : {}), ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) });
