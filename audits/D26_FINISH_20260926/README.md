@@ -1,0 +1,7 @@
+# D26 approved finisher eligibility — 2026-09-26
+
+Dakk approved alpha ≥ 250 for finisher interior eligibility only (C54/D26). The worker mask now requires that threshold at the candidate pixel and throughout the unchanged four-pixel same-label erosion. Original alpha bytes, ownership, strength, steps, gradient ratio and the conservation instrument remain unchanged.
+
+`interiorAlphaMin:250` is included in both compiled and worker settings, so the existing settings identity gives the new policy a distinct cache/delivery key. Old originals remain preserved; they are not silently relabeled as outputs of the wider policy. Six focused adapter controls pass, including the alpha249 exclusion, alpha250 positive interior, exact radius, original-alpha preservation, unchanged conservation and rejection of old/249 settings. App/engine/route checks pass.
+
+Five canonical crab originals will be regenerated on a signed clean source, retaining genuine runtime source/atlas admission and phone zero-model controls. Then the native 1254 Cougar proof runs with transferred buffers and right/bottom padding; its original will be retained for Dakk. Each native row independently measures all sub250 pixels and every alpha byte. Historical five-crab proof remains intact and will be marked superseded only after the new proof passes. Native runs are pending at this checkpoint; no output or quality approval is claimed.

@@ -203,3 +203,8 @@ C50 fixes the complete tracked-file inventory read with a16MiB child-process buf
 ### C47 layout follow-up — matches tooling as of 2026-09-26
 
 The canonical compiler now asks for low horizontal, level-headed serpents; two separately visible bird ground contacts; and explicitly right-facing insects with readable abdomens. Fish layout is unchanged. Nine unmodified 1254×1254 masters and exact requests are in `audits/G2_LAYOUT_C47_20260926`. Eight refuse automatic authoring; Robin passes static actions/presentation but semantic near/far leg presence remains UNRESOLVED, so none is admitted to play. No alpha normalization, hand authoring, reference shopping or gate change accompanies these layouts.
+
+
+### D26 eligibility — matches code as of 2026-09-26
+
+D26 is now DECIDED yes. The finisher alone admits alpha≥250 interior, with the same four-pixel erosion and unchanged original alpha/conservation. Compiled and worker settings explicitly bind interiorAlphaMin:250, giving widened-policy outputs distinct cache/delivery identities. Previous alpha255 outputs remain historical and immutable. The new crab/Cougar native proof is pending at the implementation checkpoint; see audits/D26_FINISH_20260926. This supersedes earlier pending-decision statements above; the default finish flag is unchanged.

@@ -84,6 +84,9 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 
 ## Current Codex sprint handoff — 2026-09-26, C49/C50 completed batch
 
+**C54 active batch:** signed merge9860799 throughfe344e2b; Claude block retained. D24 now measures G2 per-family; 40-corpus is regression. D26 approved and implemented (alpha≥250, unchanged erosion/alpha/conservation, new identity settings); native5crab/Cougar proofs pending. Fish rejected by Dakk; new tail candidates retained but NOT adopted (static-positive Cod/Perch still native-red; Carp/ArcticFox red). Full visual pass is at the end. Generated Earth painting coverage remains the main goal.
+
+
 ### Working state and authority
 
 - Worktree `/Users/dakk/Projects/celestial-frontier-openai-mac`, branch `openai/mac`. Signed no-ff merge `f85cac18` integrates Claude through requested `bb770d53`; seven incoming commits verified G. Signed C50 checkpoint `e12a3786`; final evidence/prompt commit carries this handoff (resolve `git log openai/mac`). Claude's block above is preserved byte-identical; older Codex blocks are archived verbatim.

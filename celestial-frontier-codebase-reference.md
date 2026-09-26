@@ -7282,3 +7282,8 @@ kit-tracked-inputs.mjs reads git ls-files with bounded16MiB output and unchanged
 `audits/C49_FISH_REVIEW_20260926` adds source-pinned, audit-only selected-boundary measurements for automatic Perch/Cod/Carp: unchanged static gates plus exact selected pairs pass; original unwelded Perch is a genuine failing control. Final bindings reproduce byte-exact. Existing native evidence is tied to signed 91a62a50, not the current head. Durable candidate inputs and Dakk's visual decision still precede registry admission; Trout/Herring remain refused. No source-join runtime semantics or registry rows changed.
 
 The canonical G2 compiler tightens serpent/bird/insect layouts while retaining true species tails and existing fish wording. Nine untouched originals yield eight author refusals and one static-positive Robin with UNRESOLVED semantic presence; no play admission. A contact-endpoint projection worsens Sparrow/Tapir and leaves Grouse refused; it is retained only as a rejected audit operation. Evidence: G2_LAYOUT_C47_20260926 and G1_FIT_CONTINUATION_C50_20260926. No limits, conservation, D24 or D25 policy changed.
+
+
+### D26 eligibility — matches code as of 2026-09-26
+
+D26 is now DECIDED yes. The finisher alone admits alpha≥250 interior, with the same four-pixel erosion and unchanged original alpha/conservation. Compiled and worker settings explicitly bind interiorAlphaMin:250, giving widened-policy outputs distinct cache/delivery identities. Previous alpha255 outputs remain historical and immutable. The new crab/Cougar native proof is pending at the implementation checkpoint; see audits/D26_FINISH_20260926. This supersedes earlier pending-decision statements above; the default finish flag is unchanged.
