@@ -265,7 +265,7 @@ export function refineChain(target, dt, landmarksPx, refLandmarks, chain) {
 
 /** Author one target from same-family references (and, for the verdict, the other families' references and the mirrored target).
  * `refs`: [{family, subjectId, rgba?, prepared, authoring, h}] ; returns {verdict, reasons, authoring, presence, evidence}. */
-export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0, counter = null, nudgeThinFrac = null }) {
+export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0, counter = null, nudgeThinFrac = null, nudgeSkipChains = false }) {
   const same = refs.filter((r) => r.family === family), other = refs.filter((r) => r.family !== family);
   if (!same.length) return { verdict: 'REFUSE', reasons: ['no-reference: no other hand-authored subject of family ' + family], authoring: null };
   const tr = same.map((r) => transferReference(target, r)).sort((a, b) => a.cost - b.cost), best = tr[0], reasons = [];
@@ -292,10 +292,12 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
   let inventory = null; if (counter) { const tc = countOf(target), rc = countOf(best.ref);
     inventory = inventoryCheck(tc, rc, inventoryOf(best.ref), rc.detached.length, parts, { remainderPart: best.ref.authoring.remainderPart, sameFamilyCounts: same.map((r) => countOf(r)), ...(counter.options ?? {}) });
     reasons.push(...inventory.reasons);
-    inventory = { ...inventory, target: { appendages: tc.appendages.map(({ k, frac, class: c, attach }) => ({ k, frac, class: c, attach })), detached: tc.detached, byClass: tc.byClass }, reference: { subject: best.ref.subjectId, byClass: rc.byClass, detached: rc.detached.length } }; }
+    inventory = { ...inventory, target: { appendages: tc.appendages.map(({ k, frac, class: c, attach }) => ({ k, frac, class: c, attach })), detached: tc.detached, byClass: tc.byClass, ground: tc.ground.length }, reference: { subject: best.ref.subjectId, byClass: rc.byClass, detached: rc.detached.length } }; }
   // optional bounded nudge: each non-remainder part may translate within ±nudgeFrac of the diagonal to sit on its painted anatomy
   const nudged = []; if (nudgeFrac > 0) { const Rn = nudgeFrac * Math.hypot(target.box.w, target.box.h), stepN = Rn / 3;
-    const diagArea = target.box.w * target.box.h; parts = parts.map((p) => { if (p.id === best.ref.authoring.remainderPart || p.joint === 'root') return p; if (nudgeThinFrac !== null && polyArea(p.polygonPx) > nudgeThinFrac * diagArea) return p; const base = paintCoverage(target.mask, target.w, target.h, p.polygonPx); let bestC = base, bd = [0, 0];
+    // contact-chain parts (legs) stay where the transfer put them: their paint coverage is the erased-limb evidence
+    const chainJoints = new Set(nudgeSkipChains ? (chains ?? []).flatMap((c) => [c.hip, c.knee, c.end, c.terminal].filter(Boolean)) : []);
+    const diagArea = target.box.w * target.box.h; parts = parts.map((p) => { if (p.id === best.ref.authoring.remainderPart || p.joint === 'root') return p; if (nudgeThinFrac !== null && polyArea(p.polygonPx) > nudgeThinFrac * diagArea) return p; if (chainJoints.has(p.joint)) return p; const base = paintCoverage(target.mask, target.w, target.h, p.polygonPx); let bestC = base, bd = [0, 0];
       for (let dy = -Rn; dy <= Rn + 1e-9; dy += stepN) for (let dx = -Rn; dx <= Rn + 1e-9; dx += stepN) { if (!dx && !dy) continue; const c = paintCoverage(target.mask, target.w, target.h, p.polygonPx.map(([x, y]) => [x + dx, y + dy])); if (c > bestC + 0.05) { bestC = c; bd = [dx, dy]; } }
       if (bd[0] || bd[1]) { nudged.push({ id: p.id, dx: Math.round(bd[0]), dy: Math.round(bd[1]), from: +base.toFixed(2), to: +bestC.toFixed(2) }); return { ...p, polygonPx: p.polygonPx.map(([x, y]) => [Math.round((x + bd[0]) * 10) / 10, Math.round((y + bd[1]) * 10) / 10]) }; }
       return p; }); }
