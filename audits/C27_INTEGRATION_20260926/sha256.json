@@ -1,0 +1,18 @@
+{
+  "run-checks.mjs": "ef86ea32ef64e05d19b3f33ded14dadffda41c13d412973ddb8a6df5a3c879f0",
+  "incoming-files.txt": "6aea62d765898e37d9529b54e11547d87ce523d375f62bde5eb522ca96d99acc",
+  "speccheck.log": "b990b069a1d3ed60a587623f110cf6ad1ee1f3b6fffc919befb4f5bbcad01310",
+  "maintenance-decision.json": "87092cd0ba6f40d1f552a841a41e32c86ac7feafc7e98b662e3474c4a1fa4abf",
+  "toolchain-check.json": "4952062270c188af282c969c48eaa64013794b557a6e1ad1107e9e9d23b6e13a",
+  "develop.log": "8d191af413c5d483c809d434c143b75f631940a76a246fab879c0e2cf043e5c4",
+  "README.md": "162f13db6d9238374acc6a60a1bb082d46ebae2aa9e94e3d21905281fbbe9fa9",
+  "incoming-commits.txt": "f7387a2624dbe5fd77bf090679d1dc0cd8e4928a3380395b7d4be2b571a214c7",
+  "artaudit.log": "046c09792789f5099beac41496570a7dc58420ee4a9fec0d1d97d45bb8f47f21",
+  "worker-types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "root-types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "merge-preview.txt": "2a20396cb95345cab018a807807c010ba206698949c38c4b95f3eb4e8dc1abec",
+  "check-results.json": "ecb5d328420349a58da1b18efc9180682aa1173d40f9fd21da8d3c0ad1528cb1",
+  "overridecheck.log": "b5bc5aed7f14e3c849a2db17eb64e4ccc69556e7f6733dece64b436504ce41ff",
+  "overridecontrol.log": "a690e68fd52b2f98c261ce9b0decdf5f408217f4ed49b00b5bb7f01fa6f7101f",
+  "app-types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

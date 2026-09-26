@@ -1,0 +1,215 @@
+[
+  {
+    "index": 0,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.65,
+        "taken": 0.585,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "gap": 0,
+        "oracleEdge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 57,
+        "planned": 77,
+        "command": 77,
+        "gap": 15.625,
+        "oracleEdge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 42,
+        "planned": 63,
+        "command": 92,
+        "gap": 16.40625,
+        "oracleEdge": 22.65625,
+        "phaseNodes": 277,
+        "solo": {
+          "before": 30,
+          "after": 29,
+          "delta": -0.78125
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 67,
+        "planned": 92,
+        "command": 119,
+        "gap": 19.53125,
+        "oracleEdge": 21.09375,
+        "phaseNodes": 301,
+        "solo": {
+          "before": 12,
+          "after": 12,
+          "delta": 0
+        }
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.65,
+        "taken": 0.595,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "gap": 0,
+        "oracleEdge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 57,
+        "planned": 73,
+        "command": 73,
+        "gap": 12.5,
+        "oracleEdge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 42,
+        "planned": 61,
+        "command": 86,
+        "gap": 14.84375,
+        "oracleEdge": 19.53125,
+        "phaseNodes": 261,
+        "solo": {
+          "before": 30,
+          "after": 29,
+          "delta": -0.78125
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 67,
+        "planned": 94,
+        "command": 116,
+        "gap": 21.09375,
+        "oracleEdge": 17.1875,
+        "phaseNodes": 294,
+        "solo": {
+          "before": 12,
+          "after": 12,
+          "delta": 0
+        }
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.65,
+        "taken": 0.605,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "gap": 0,
+        "oracleEdge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 57,
+        "planned": 66,
+        "command": 66,
+        "gap": 7.03125,
+        "oracleEdge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 42,
+        "planned": 61,
+        "command": 83,
+        "gap": 14.84375,
+        "oracleEdge": 17.1875,
+        "phaseNodes": 249,
+        "solo": {
+          "before": 30,
+          "after": 29,
+          "delta": -0.78125
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 67,
+        "planned": 93,
+        "command": 116,
+        "gap": 20.3125,
+        "oracleEdge": 17.96875,
+        "phaseNodes": 291,
+        "solo": {
+          "before": 12,
+          "after": 12,
+          "delta": 0
+        }
+      }
+    ]
+  }
+]

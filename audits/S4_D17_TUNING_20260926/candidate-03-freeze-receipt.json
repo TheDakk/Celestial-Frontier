@@ -1,0 +1,93 @@
+{
+  "candidateFileSha256": "52c2beb9fdddbace9760a61c20d523d97908211b2a202896bbb0b1fe674c0f0b",
+  "training": {
+    "index": 1,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.65,
+        "taken": 0.585,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.64,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.9
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 512,
+        "planned": 512,
+        "command": 512,
+        "gap": 0,
+        "oracleEdge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 262,
+        "planned": 320,
+        "command": 320,
+        "gap": 11.328125,
+        "oracleEdge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 171,
+        "planned": 252,
+        "command": 351,
+        "gap": 15.8203125,
+        "oracleEdge": 19.3359375,
+        "phaseNodes": 1028,
+        "solo": {
+          "before": 106,
+          "after": 98,
+          "delta": -1.5625
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 238,
+        "planned": 338,
+        "command": 437,
+        "gap": 19.53125,
+        "oracleEdge": 19.3359375,
+        "phaseNodes": 1171,
+        "solo": {
+          "before": 44,
+          "after": 41,
+          "delta": -0.5859375
+        }
+      }
+    ]
+  },
+  "playableCommand": [
+    {
+      "kind": "guardian",
+      "auto": 252,
+      "command": 345,
+      "edge": 18.1640625
+    },
+    {
+      "kind": "titan",
+      "auto": 338,
+      "command": 435,
+      "edge": 18.9453125
+    }
+  ],
+  "hookControls": {
+    "count": 17,
+    "passed": 17
+  },
+  "heldOutConsumed": false
+}

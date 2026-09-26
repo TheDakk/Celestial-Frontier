@@ -1,0 +1,6146 @@
+[
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      1,
+      0
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "press",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "press",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      1,
+      0
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      2,
+      1,
+      0
+    ],
+    "stances": [
+      "guard",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "press",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "press",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "press",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      2,
+      1,
+      0
+    ],
+    "stances": [
+      "guard",
+      "press",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "press",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "press",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      1,
+      0
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "press",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "press",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      1,
+      0
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "press",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      2,
+      1,
+      0
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "press",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "press",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "press",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "press",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "press",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "press",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      2,
+      0,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "balanced",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      2,
+      0
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "press",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "balanced",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "guard",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "press",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      1,
+      0,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "balanced"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "balanced",
+      "balanced",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "evade",
+      "guard"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "guard",
+      "evade",
+      "evade"
+    ]
+  },
+  {
+    "order": [
+      0,
+      2,
+      1
+    ],
+    "stances": [
+      "guard",
+      "guard",
+      "press"
+    ]
+  },
+  {
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "stances": [
+      "evade",
+      "balanced",
+      "evade"
+    ]
+  }
+]

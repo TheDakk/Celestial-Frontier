@@ -4804,3 +4804,9 @@ fail-closed findings. Source HEAD must verify G; port/v2 must be clean; no outpu
 The current local lane needs Claude's engine source via the read-only source-root option.
 This is an explicit diagnostic, not a develop-profile owner or campaign certificate.
 See [measured red results and limitations](../../audits/S20_BALANCE_20260925/README.md).
+
+### D17 balance epoch — tooling2026-09-26
+
+The earlier S20 report remains historical. `node --test tools/s4-d17.test.mjs` checks the new D17 assessor, which requires a ≥5pp playable Command edge,10–20pp normal/Guardian/Titan planning gaps, and solo phase-enabled Auto within±5pp of v1. It retains phase-off engine parity.
+
+`node tools/s4-d17.mjs --candidate=/absolute/committed/candidate.json --out=/new/output` bundles clean signed source and refuses constants that differ from the frozen candidate. It uses512held-out cases per cohort, independent forecast seeds, all17hook controls, and a fixed learned Command policy with a separate oracle upper bound. Its scoped result cannot certify production settlement dispatch, dossier inventory coverage or the entire campaign. No automatic retry or output reuse. Current candidate and every training rejection live in `audits/S4_D17_TUNING_20260926/`.

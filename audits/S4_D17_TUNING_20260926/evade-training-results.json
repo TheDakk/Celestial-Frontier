@@ -1,0 +1,73 @@
+[
+  {
+    "index": 0,
+    "tuning": {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.65,
+        "taken": 0.585,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.64,
+        "dodge": 0.32
+      }
+    },
+    "phase": {
+      "atFraction": 0.5,
+      "dealt": 1.02,
+      "taken": 0.98
+    },
+    "rows": [
+      {
+        "kind": "easy",
+        "baseline": 128,
+        "planned": 128,
+        "command": 128,
+        "gap": 0,
+        "oracleEdge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "normal",
+        "baseline": 57,
+        "planned": 80,
+        "command": 80,
+        "gap": 17.96875,
+        "oracleEdge": 0,
+        "phaseNodes": 0
+      },
+      {
+        "kind": "guardian",
+        "baseline": 42,
+        "planned": 63,
+        "command": 93,
+        "gap": 16.40625,
+        "oracleEdge": 23.4375,
+        "phaseNodes": 290,
+        "solo": {
+          "before": 30,
+          "after": 29,
+          "delta": -0.78125
+        }
+      },
+      {
+        "kind": "titan",
+        "baseline": 67,
+        "planned": 96,
+        "command": 119,
+        "gap": 22.65625,
+        "oracleEdge": 17.96875,
+        "phaseNodes": 295,
+        "solo": {
+          "before": 12,
+          "after": 12,
+          "delta": 0
+        }
+      }
+    ]
+  }
+]
