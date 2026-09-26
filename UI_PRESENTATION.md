@@ -3444,3 +3444,15 @@ silently clobbered an existing check, **empty** boards that collapse under `min-
 reach the dock, and stale `--tut-bot` left over from the dodge pass. In its first two forms it
 passed on the shipped build the external round had already proven broken. *Reproduce the reported
 geometry, populate the surface, and control against the broken build — every time.*
+
+## ADDENDUM 2026-09-26 — Outposts UI (D14; matches code as of 2026-09-26)
+
+`port/v2/apps/game/src/outposts-ui.ts`, wired in `main.ts` (the block before `const sideEl`):
+- **World card:** `buildCardActions` calls `outpostCardActionHtml(p, onThisSurface)`, the **Outposts** section. It shows each site here
+  with its stage bill (short parts in red), its deed (done/need) and Build / Abandon, plus a "🏗 Build <name> here" button for every kind
+  that can start. Finished outposts put their icon beside the section title (the portrait mark). A finished Sanctuary shows a
+  6-companion checkbox picker.
+- **Projects board:** `fillCharters` appends `outpostBoardHtml()` (its own 2 slots and the 24 total).
+- **Museum:** `projectExpeditionChronicleV1` takes optional `outposts` exhibits and adds a fifth **Outposts** gallery.
+- **Controls:** ONE document-delegated `OutpostsControllerV1`. Abandon needs a second, confirming press. Every control is 44 px.
+- **Hidden before the unlock:** nothing renders before `st-comp` (projects appear in no Guide or objective before the unlock).
