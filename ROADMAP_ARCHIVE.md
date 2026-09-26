@@ -1,3 +1,9 @@
+# S4 pause handoff superseded at resume — 2026-09-26
+
+Current state: **PAUSED at Nick's request** after S4 training. Resume from `audits/S4_PRODUCTION_EPOCH_20260926/README.md` and `training-summary.json`. Declaration d2cf5b79(G) preceded23 training runs (candidates04–26);13/24/26 pass training, none selected, admitted or wired. New production instrument has29 passing contract controls and the actual C32 mutation control (164/256 mismatches versus0 restored). Evaluation90m/100m (1,024 cases) remains untouched. Product constants unchanged. Recovery exact-value control review, candidate freeze, current battery and ONE held-out run are next; never retry the held-out set. No evaluator is running.
+
+Remote remains6cbeefe0; declaration and pause checkpoint are local. Do not claim the unfinished S4 tooling has passed the full profile. C33/D21 read at batch end: Claude is building further vision features and asks for mission/Outposts replacement numbers. Observed signed anthropic/mac76689959 is newer than integrated832dc18b and is not merged here. Re-read the live mailbox before choosing the next clean integration head; do not rebind existing measurements. All remaining ordered items above are open; pause overrides further sprint work.
+
 ## Archived at C28 Guide batch — 2026-09-26
 
 ## C27 D17 measurement checkpoint — 2026-09-26

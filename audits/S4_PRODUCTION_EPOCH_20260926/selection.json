@@ -1,0 +1,209 @@
+{
+  "candidate": "candidate13-frozen.json",
+  "uses": "training only; evaluation untouched",
+  "runtimeBaseline": "c17906b2b12e43a140e3893af93bdaee4d85a679",
+  "decision": "13 maximizes the minimum planning-band margin among passing retained candidates: 0.9375pp versus 0.46875pp for24/26. Guardian baseline22.265625% remains close to20% floor; normal gap10.9375pp and Titan18.75pp are generalization risks, not reasons to alter bounds. No extra search.",
+  "reviewed": [
+    {
+      "run": "train13-01",
+      "candidateHash": "b4fb275a1d3f6e26bb6134b957d1db7fb38ba233259fd2ac8a91c336adacec8a",
+      "status": "SCOPED_PASS",
+      "count": 256,
+      "productionCases": 3072,
+      "productionMismatches": 0,
+      "cohorts": [
+        {
+          "id": "easy",
+          "baselineWins": 256,
+          "plannedWins": 256,
+          "commandWins": 256,
+          "oracleWins": 256,
+          "phaseNodes": 0,
+          "withdrawnTerminals": 0,
+          "swapEdges": 0,
+          "planningGapPp": 0,
+          "commandEdgePp": 0
+        },
+        {
+          "id": "normal",
+          "baselineWins": 132,
+          "plannedWins": 160,
+          "commandWins": 160,
+          "oracleWins": 160,
+          "phaseNodes": 0,
+          "withdrawnTerminals": 0,
+          "swapEdges": 0,
+          "planningGapPp": 10.9375,
+          "commandEdgePp": 0
+        },
+        {
+          "id": "guardian",
+          "baselineWins": 57,
+          "plannedWins": 94,
+          "commandWins": 142,
+          "oracleWins": 144,
+          "phaseNodes": 500,
+          "withdrawnTerminals": 1927,
+          "swapEdges": 585,
+          "solo": {
+            "v1Wins": 42,
+            "phaseWins": 33
+          },
+          "planningGapPp": 14.453125,
+          "commandEdgePp": 18.75
+        },
+        {
+          "id": "titan",
+          "baselineWins": 101,
+          "plannedWins": 149,
+          "commandWins": 197,
+          "oracleWins": 198,
+          "phaseNodes": 563,
+          "withdrawnTerminals": 2148,
+          "swapEdges": 771,
+          "solo": {
+            "v1Wins": 17,
+            "phaseWins": 10
+          },
+          "planningGapPp": 18.75,
+          "commandEdgePp": 18.75
+        }
+      ],
+      "failures": []
+    },
+    {
+      "run": "train24-01",
+      "candidateHash": "8f6d982451b0a43d912723fc99b31409f1dcb89a65a6d562eaa5579498ca65e6",
+      "status": "SCOPED_PASS",
+      "count": 256,
+      "productionCases": 3072,
+      "productionMismatches": 0,
+      "cohorts": [
+        {
+          "id": "easy",
+          "baselineWins": 256,
+          "plannedWins": 256,
+          "commandWins": 256,
+          "oracleWins": 256,
+          "phaseNodes": 0,
+          "withdrawnTerminals": 0,
+          "swapEdges": 0,
+          "planningGapPp": 0,
+          "commandEdgePp": 0
+        },
+        {
+          "id": "normal",
+          "baselineWins": 132,
+          "plannedWins": 160,
+          "commandWins": 160,
+          "oracleWins": 160,
+          "phaseNodes": 0,
+          "withdrawnTerminals": 0,
+          "swapEdges": 0,
+          "planningGapPp": 10.9375,
+          "commandEdgePp": 0
+        },
+        {
+          "id": "guardian",
+          "baselineWins": 72,
+          "plannedWins": 100,
+          "commandWins": 147,
+          "oracleWins": 152,
+          "phaseNodes": 503,
+          "withdrawnTerminals": 1930,
+          "swapEdges": 605,
+          "solo": {
+            "v1Wins": 42,
+            "phaseWins": 39
+          },
+          "planningGapPp": 10.9375,
+          "commandEdgePp": 18.359375
+        },
+        {
+          "id": "titan",
+          "baselineWins": 114,
+          "plannedWins": 164,
+          "commandWins": 212,
+          "oracleWins": 213,
+          "phaseNodes": 583,
+          "withdrawnTerminals": 2173,
+          "swapEdges": 783,
+          "solo": {
+            "v1Wins": 17,
+            "phaseWins": 14
+          },
+          "planningGapPp": 19.53125,
+          "commandEdgePp": 18.75
+        }
+      ],
+      "failures": []
+    },
+    {
+      "run": "train26-01",
+      "candidateHash": "39922d61ca352927daea01d6cc0bfb0379b7ccbd5f74bc405e9fd949e77d2856",
+      "status": "SCOPED_PASS",
+      "count": 256,
+      "productionCases": 3072,
+      "productionMismatches": 0,
+      "cohorts": [
+        {
+          "id": "easy",
+          "baselineWins": 256,
+          "plannedWins": 256,
+          "commandWins": 256,
+          "oracleWins": 256,
+          "phaseNodes": 0,
+          "withdrawnTerminals": 0,
+          "swapEdges": 0,
+          "planningGapPp": 0,
+          "commandEdgePp": 0
+        },
+        {
+          "id": "normal",
+          "baselineWins": 132,
+          "plannedWins": 160,
+          "commandWins": 160,
+          "oracleWins": 160,
+          "phaseNodes": 0,
+          "withdrawnTerminals": 0,
+          "swapEdges": 0,
+          "planningGapPp": 10.9375,
+          "commandEdgePp": 0
+        },
+        {
+          "id": "guardian",
+          "baselineWins": 72,
+          "plannedWins": 100,
+          "commandWins": 147,
+          "oracleWins": 152,
+          "phaseNodes": 503,
+          "withdrawnTerminals": 1930,
+          "swapEdges": 605,
+          "solo": {
+            "v1Wins": 42,
+            "phaseWins": 39
+          },
+          "planningGapPp": 10.9375,
+          "commandEdgePp": 18.359375
+        },
+        {
+          "id": "titan",
+          "baselineWins": 114,
+          "plannedWins": 164,
+          "commandWins": 212,
+          "oracleWins": 213,
+          "phaseNodes": 583,
+          "withdrawnTerminals": 2173,
+          "swapEdges": 783,
+          "solo": {
+            "v1Wins": 17,
+            "phaseWins": 14
+          },
+          "planningGapPp": 19.53125,
+          "commandEdgePp": 18.75
+        }
+      ],
+      "failures": []
+    }
+  ]
+}

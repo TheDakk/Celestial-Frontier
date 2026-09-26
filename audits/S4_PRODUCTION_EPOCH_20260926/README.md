@@ -1,5 +1,31 @@
 # S4 production epoch — declaration before tuning
 
+## Active resume — candidate13 evaluation freeze, 2026-09-26
+
+Nick lifted the pause. Codex/macOS identity verified at signed c17906b2(G), openai/mac;
+only pre-existing .DS_Store is untracked. Claude's signed76689959 and C33/D21 were read:
+development battle2 wait is lifted; new mission/Outposts/Compendium work remains outside
+this S4 source epoch. Do not merge it or rebind old measurements during this freeze.
+
+Selected13 from training only (`selection.json`, exact `candidate13-frozen.json`). It has
+more minimum planning-band margin than24/26, but Guardian readiness and normal/Titan gaps
+remain close to bounds. Runtime constants are staged solely for ONE held-out run; they are
+NOT admitted, and must be restored on refusal. Candidate03 stays rejected. Recovery is
+unchanged at600000 active ms, zero added defeat wound. Source remains fixed through battery
+and evaluation; no UI/release claim or Claude wiring until measured green.
+
+Startup official check PASS, all tools current; REAPER suffix resolved by scoped Homebrew
+outdated (empty). Node26.10.0; no update or dependency changes. Receipts: resume-toolchain-check.json
+and resume-reaper-outdated.json. Recovery review added literal policy checks plus per-companion
+production settlement checks (fallen/swapped, exact active deadline, identity and unchanged wounds).
+39 contract controls PASS. Actual retained training bundle mutation: duration+1ms refuses710/710;
+added defeat wound refuses199/710; original/restored both0/710. First JSON-projection preparation
+refusal is retained; authentic projection fixed setup. No historical report was rebound.
+
+Freeze battery:504 Node tools PASS;5471 Vitest PASS (2 expected failures,2 skipped), sole standing I5 producer mismatch. All seven manual owners PASS, including overridecontrol; root validate PASS. This is not a full-green admission claim and authorizes no push/hosted action. Next: sign the clean freeze, then run
+`node tools/s4-production.mjs --candidate=../../audits/S4_PRODUCTION_EPOCH_20260926/candidate13-frozen.json --out=../../audits/S4_PRODUCTION_EPOCH_20260926/evaluation13-once` from port/v2.
+Stop on refusal, retain every result, restore runtime tuning; no held-out retry or reselection.
+
 Declared on signed integrated6cbeefe0, after C28(f) was delivered. `epoch.json` fixes the untouched evaluation seed90,000,000, hook seed100,000,000,1,024 cases per cohort and the same public readiness definitions. New training seeds110,000,000/130,000,000 are separate; forecast seeds120,000,000 are independent of actual battle RNG. No evaluation outcomes have been inspected at declaration. Candidate03 and old held-out70,000,000/80,000,000 are excluded from calibration and acceptance.
 
 The production settlement planner owns counted outcomes; every baseline/planned/Command transcript must equal the corresponding engine decisive leg. This catches C32’s former solo-Auto phase bypass. The card and durable Main integration have their existing integrated A5 tests; this numerical study does not substitute for those UI transactions. Wild fights use one fighter and Auto, with the real card’s lead stance selector; only Guardians/Titans get the three-member relay and Command.

@@ -3,7 +3,7 @@
 import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';import {execFileSync} from 'node:child_process';import {rolldown} from 'rolldown';
 import {createHash} from 'node:crypto';
 import {STANCES,applyPolicy,win,commandEnvelope} from './s20-balance-contract.mjs';
-import {planFromForecast,playCommand,assessProduction} from './s4-production-contract.mjs';
+import {planFromForecast,playCommand,assessProduction,recoveryReceipt} from './s4-production-contract.mjs';
 const hash=x=>createHash('sha256').update(Buffer.isBuffer(x)||typeof x==='string'?x:JSON.stringify(x)).digest('hex');
 const args=Object.fromEntries(process.argv.slice(2).map(a=>{const i=a.indexOf('=');if(!a.startsWith('--')||i<0)throw Error('use --source-root=... --out=...');return[a.slice(2,i),a.slice(i+1)];}));
 if(Object.keys(args).some(x=>!['source-root','out','candidate','purpose'].includes(x))||!args.out||!args.candidate)throw Error('required --out (new directory)');
@@ -86,7 +86,7 @@ function fixture(kind,i,solo=false){
 const report={schema:'cf-s4-production-evaluation/v1',purpose,epochHash:hash(epoch),sourceHead:head,candidateHash:hash(candidate),count:config.count,seedBase:config.seedBase,hookSeedBase:config.hookSeedBase,forecastSeedBase:config.forecastSeedBase,productionCases:0,productionMismatches:0,phaseDispatchCases:0,
  cohorts:[],threats:[],replayCases:0,replayMismatches:0,parityCases:0,parityMismatches:0,
  scope:{campaignCertificate:false,registeredGuardianWorlds:1,registeredTitanWorlds:1,region:0,partySizes:[1,3],planning:'independent 16-seed forecast with actual public stats; fixed tie rule',command:'fixed learned break policy; oracle upper bound separate',dispatch:'production settlement planner'},
- recovery:{defeatActiveMs:api.COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,defeatWoundStep:api.COMBAT_DEFEAT_WOUND_STEP_V1}};
+ recovery:{defeatActiveMs:api.COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,defeatWoundStep:api.COMBAT_DEFEAT_WOUND_STEP_V1,outcomes:{cases:0,mismatches:0,fallen:0,swapped:0}}};
 const canonical=x=>Array.isArray(x)?x.map(canonical):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).sort().map(k=>[k,canonical(x[k])])):x;
 function production(p,expected,decisions=[]){
  const result=api.planCombatPartySettlementV1({battleId:'s4-'+report.productionCases,receiptOrdinal:21,encounter:p.encounter,worldTier:4,mode:p.mode,decisions,
@@ -99,7 +99,9 @@ function production(p,expected,decisions=[]){
  const expectedOutcome=expected.outcome==='party'?'champion-win':expected.outcome==='draw'?'draw':'defender-win';
  if(!same||result.outcome!==expectedOutcome)report.productionMismatches++;
  if(p.defender.phase&&result.party)report.phaseDispatchCases++;
- return {won:result.outcome==='champion-win'?1:0,transcriptHash:hash(result.transcript),outcome:result.outcome};
+ const recovery=recoveryReceipt(result,expected,p,5000);
+ for(const key of Object.keys(recovery))report.recovery.outcomes[key]+=recovery[key];
+ return {won:result.outcome==='champion-win'?1:0,transcriptHash:hash(result.transcript),outcome:result.outcome,recovery};
 }
 for(const kind of ['easy','normal','guardian','titan']){
  const rows=[],row={id:kind,baselineWins:0,plannedWins:0,commandWins:0,oracleWins:0,phaseNodes:0,withdrawnTerminals:0,swapEdges:0};

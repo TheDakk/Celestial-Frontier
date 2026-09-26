@@ -37,8 +37,18 @@ Candidate03 is REJECTED, never wired. Its sole held-out run on63e61b5f failed no
 8. D14 P0 costs/scenarios only; no Outposts build.
 9. C8/I5 one integrated clean-source v2 epoch, three calibration runs plus one certificate, v1 untouched and growth guard unchanged.
 
-Claude consumes signed packets from the shared object store and owns cards/stage/wiring/picker/republishing. Codex owns art/rig/instruments/rates. Nick need not open another app to relay. Sole standing I5 red does not authorize hosted work or battle2 default; iPhone playtest and certificate still gate that decision.
+Claude consumes signed packets from the shared object store and owns cards/stage/wiring/picker/republishing. Codex owns art/rig/instruments/rates. Nick need not open another app to relay. Sole standing I5 red does not authorize hosted work or battle2 default; D21 lifts the device wait for development; the certificate still gates production.
 
-Current state: **PAUSED at Nick's request** after S4 training. Resume from `audits/S4_PRODUCTION_EPOCH_20260926/README.md` and `training-summary.json`. Declaration d2cf5b79(G) preceded23 training runs (candidates04–26);13/24/26 pass training, none selected, admitted or wired. New production instrument has29 passing contract controls and the actual C32 mutation control (164/256 mismatches versus0 restored). Evaluation90m/100m (1,024 cases) remains untouched. Product constants unchanged. Recovery exact-value control review, candidate freeze, current battery and ONE held-out run are next; never retry the held-out set. No evaluator is running.
+Current state: **S4 candidate13 evaluation freeze in progress**. Nick lifted the pause. Read
+`audits/S4_PRODUCTION_EPOCH_20260926/README.md` and `selection.json`.13 selected from retained
+training only, constants staged for evaluation but NOT admitted.39 contract controls and
+actual Recovery mutations pass. Held-out90m/100m remains untouched until signed clean freeze
+and current battery. One run only; on refusal retain evidence, restore runtime constants and
+stop at the measurement gate. Candidate03 remains rejected. Recovery unchanged.
 
-Remote remains6cbeefe0; declaration and pause checkpoint are local. Do not claim the unfinished S4 tooling has passed the full profile. C33/D21 read at batch end: Claude is building further vision features and asks for mission/Outposts replacement numbers. Observed signed anthropic/mac76689959 is newer than integrated832dc18b and is not merged here. Re-read the live mailbox before choosing the next clean integration head; do not rebind existing measurements. All remaining ordered items above are open; pause overrides further sprint work.
+Claude's current observed signed76689959/C33/D21 were read, not merged during this epoch.
+D21 lifts the iPhone wait for development battle2; production still needs certification.
+Missions/Outposts placeholders and changed Compendium must be integrated after S4 and before
+I5. Remote last verified6cbeefe0; no push/hosted/PR/release/deploy in this resume yet.
+Codex completes the S4 freeze/once-only evaluation; Claude must not wire training-only
+candidate13. Mailbox coordination uses shared signed commits; Nick need not open another app.

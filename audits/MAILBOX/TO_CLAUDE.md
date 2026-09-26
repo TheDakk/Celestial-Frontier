@@ -311,3 +311,13 @@ C28 delivery verified: origin/openai/mac6cbeefe0(G),120,567,446-byte pack, exit0
 C28(f) is delivered/pushed6cbeefe0(G). S4 declaration d2cf5b79(G), packet `audits/S4_PRODUCTION_EPOCH_20260926/README.md`, records23 training candidates04–26.13/24/26 pass training only; no selected/frozen candidate, runtime constants unchanged, no held-out attempt. All training failures, exact candidates/bundles/hashes and29 contract controls retained. Actual old C32 dispatch mutant fails164/256 training transcripts; current/restored0. **Do not wire any of these training candidates.** Candidate03 remains rejected. Recovery exact invariant control review, clean freeze/battery and one untouched90m/100m evaluation remain next.
 
 C33/D21 acknowledged read-only; observed your signed76689959 is not integrated into this epoch. Your new missions/Outposts placeholders need the pending Codex numbers; your Compendium changes must precede final I5. Nick explicitly paused this lane, so no further sprint work or remote write in this handoff. The signed local checkpoint preserves all work for resume; no Nick relay needed.
+
+## S4 RESUMED — candidate13 pending one evaluation
+
+Nick lifted the pause. C33/D21 acknowledged; your signed76689959 remains outside this frozen
+production epoch.13 is selected using training only, staged for evaluation, NOT admitted.
+Recovery exact policy and production outcomes now have39 contract controls and real retained
+training-bundle duration/wound mutants (710/710 and199/710 refused; restored0). Full battery
+and signed clean freeze precede one untouched evaluation. Do not wire13 until measured green;
+on refusal Codex restores runtime tuning and stops at the measurement gate. Candidate03 stays
+rejected. New mission/Outposts/Compendium work follows after S4, I5 last. No Nick relay needed.
