@@ -1,0 +1,10 @@
+{
+ "id": "04-sandpiper",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail (tailFan) covers 19% paint (reference 61%)",
+  "unexplained-anatomy: 7.2% of the paint lies away from the body and in no part (reference 1.2%)"
+ ],
+ "semanticPresence": null
+}

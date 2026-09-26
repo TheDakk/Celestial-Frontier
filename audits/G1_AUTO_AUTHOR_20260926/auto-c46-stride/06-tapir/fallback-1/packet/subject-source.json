@@ -1,0 +1,68 @@
+{
+  "name": "Tapir",
+  "family": "quadruped",
+  "species": {
+    "name": "Tapir",
+    "aspect": 1.8,
+    "headFrac": 0.28,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "short flexible prehensile snout",
+      "rounded high rump with a sloping back",
+      "stubby nub of a tail"
+    ],
+    "note": "generic representative: a lowland tapir. Not a pig - the nose is a short mobile proboscis, not a flat disc snout"
+  },
+  "genome": {
+    "seed": 4279472141,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 1,
+    "body": 9,
+    "loco": 17,
+    "trait": 15,
+    "size": 4,
+    "diet": 0,
+    "head": 7,
+    "limbs": 0,
+    "skin": 6,
+    "tail": 6,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 3,
+    "habitat": 15,
+    "detail": 2,
+    "accent": 11,
+    "temper": 7,
+    "sense": 5,
+    "repro": 2,
+    "life": 5,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Tapir"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tapir\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"4279472141\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "index": 5,
+  "profile": {
+    "id": "tapir",
+    "names": [
+      "Tapir",
+      "Mountain Tapir"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "bite",
+      "headbutt"
+    ],
+    "notes": ""
+  }
+}

@@ -1,0 +1,10 @@
+{
+ "id": "06-tapir",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 9% paint (reference 57%)",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 2% paint (reference 23%)"
+ ],
+ "semanticPresence": null
+}

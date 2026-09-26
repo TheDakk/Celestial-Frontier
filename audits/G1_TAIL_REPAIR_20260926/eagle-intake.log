@@ -1,0 +1,17 @@
+node:fs:778
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/Users/nick/Projects/celestial-frontier-openai-mac/audits/G1_TAIL_REPAIR_20260926/eagle-packet/master.png'
+    at Object.openSync (node:fs:778:18)
+    at Object.readFileSync (node:fs:624:35)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/intake-authored.mjs:35:62
+    at Array.map (<anonymous>)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/intake-authored.mjs:35:43 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/nick/Projects/celestial-frontier-openai-mac/audits/G1_TAIL_REPAIR_20260926/eagle-packet/master.png'
+}
+
+Node.js v26.10.0

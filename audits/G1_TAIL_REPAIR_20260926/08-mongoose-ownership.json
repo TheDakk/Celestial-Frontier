@@ -1,0 +1,11 @@
+{
+  "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/08-mongoose/packet",
+  "candidate": "audits/G1_TAIL_REPAIR_20260926/08-mongoose-packet",
+  "masterIdentical": true,
+  "landmarksIdentical": true,
+  "changes": {
+    "spine -> tail3": 416,
+    "tail3 -> spine": 135,
+    "tail3 -> tail2": 71
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "tool": "image_gen.imagegen",
+  "originalPath": "/Users/nick/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ce43469b-c856-45bc-9e23-a65b0c524241.png",
+  "masterSha256": "8fb6be2dd8b45b88278729f5ccfb3dddfbe19dd9bf4f3172508e4807699a5504",
+  "promptSha256": "60f5993b2cf867b2dee7bba7d77b0e08a373e161a4545726947be24b946b3c93",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "bytes": 1346908,
+  "transparent_background": false,
+  "edited": false,
+  "authoringCreated": false
+}

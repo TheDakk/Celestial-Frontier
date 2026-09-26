@@ -1,0 +1,128 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "01-grouse",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "6898c731ddc5f7f11bc563f15332bd2ec996d969fcc49ac19a86262029809171",
+ "subjectSourceSha256": "e1b26b13b59c5e092027e45ee52588a62068a038c8dc0e0ebf4796e93b71612b",
+ "identity": {
+  "name": "Grouse",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Grouse\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3585809023\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "seed": 3585809023,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "gull",
+  "authoringSha256": "9d5ce3cc7a41cf6a139848982114319c2374828a04e313c38619d8dce938aa73",
+  "masterSha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9"
+ },
+ "habitat": {
+  "profileId": "ground-foraging-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "2458c82bbd8f37b007dbba5ae84cc60975cf0f4ecad7d901ee633e684483d7c2",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group ground-foraging-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0668,
+     "class": "top",
+     "attach": {
+      "x": 352.5,
+      "y": 121.1,
+      "relX": 0.87,
+      "relY": 0.2
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0112,
+     "class": "top",
+     "attach": {
+      "x": 56.9,
+      "y": 154.6,
+      "relX": 0.11,
+      "relY": 0.36
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0049,
+     "class": "front",
+     "attach": {
+      "x": 375,
+      "y": 174,
+      "relX": 0.93,
+      "relY": 0.45
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0069,
+     "class": "limb-down",
+     "attach": {
+      "x": 67,
+      "y": 248,
+      "relX": 0.14,
+      "relY": 0.8
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0508,
+     "class": "limb-down",
+     "attach": {
+      "x": 213,
+      "y": 291.5,
+      "relX": 0.51,
+      "relY": 1
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0542,
+     "class": "limb-down",
+     "attach": {
+      "x": 279.5,
+      "y": 292,
+      "relX": 0.68,
+      "relY": 1
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "gull",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

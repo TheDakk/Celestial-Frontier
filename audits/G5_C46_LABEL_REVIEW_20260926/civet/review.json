@@ -1,0 +1,17 @@
+{
+  "id": "civet",
+  "labelsPath": "audits/G5_DERIVED_LABELS_20260926/civet/labels.png",
+  "labelsPngSha256": "da39e0a76713f5adee819751c96db00ffebad52288b3d113a84baf218ced2132",
+  "labelsRgbaSha256": "43590f52f80fec30b727181bd707a5f9fdf6ad9328b845fc8a0f063c273dde24",
+  "receiptPath": "audits/G5_DERIVED_LABELS_20260926/civet/receipt.json",
+  "receiptSha256": "657f2fcd70529278caf24973efa2030ad11af8adf10167167e54de4502eeca21",
+  "width": 1254,
+  "height": 1254,
+  "labels": 22,
+  "painted": 516758,
+  "unowned": 0,
+  "outside": 0,
+  "overwrites": {},
+  "masterAlphaMismatchPixels": 1055758,
+  "identityConservation": "PASS"
+}

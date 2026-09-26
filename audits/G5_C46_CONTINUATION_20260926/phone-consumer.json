@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "schema": "cf.c46-runtime-consumer/v1",
+  "manifestConsumer": "createCreatureFinishDeliveryV1",
+  "fetches": 7,
+  "rows": [
+    {
+      "id": "crab",
+      "key": "ec2e35e0299d0e4d47261267b83b15375e43297831303c5b67ae9eb3fd5a01e2",
+      "sha256": "cc870adc8ad629df189de879fb8eb497b28baa61c329947b63630c35925da926",
+      "pngBytes": 34690,
+      "individualIdLength": 739,
+      "actualConsumer": true
+    },
+    {
+      "id": "freshwater-crab",
+      "key": "9d29bc0fe48eb61901948bf72f2a871f507f579352ff15f2f85ae734abfd41ec",
+      "sha256": "4f33f8595b67f42b37f1298d574c653d0f161f2d8e68041f13ec46141a7bdb25",
+      "pngBytes": 42794,
+      "individualIdLength": 747,
+      "actualConsumer": true
+    },
+    {
+      "id": "mud-crab",
+      "key": "fe91e4d748f14c2c3969583e8c4f3c7c1a977db24af7968c853208700bb0a138",
+      "sha256": "b1e80c121ea329ab9c4e9c54c34d9192c5e499d429a0f0283f047ba25684d003",
+      "pngBytes": 42238,
+      "individualIdLength": 741,
+      "actualConsumer": true
+    }
+  ],
+  "scope": "Actual bundled manifest and filesystem-backed HTTP responses; not physical phone rendering"
+}

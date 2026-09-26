@@ -1,0 +1,75 @@
+{
+  "name": "Eagle",
+  "family": "biped-bird",
+  "species": {
+    "name": "Eagle",
+    "aspect": 0.9,
+    "headFrac": 0.24,
+    "eyes": "prominent",
+    "posture": "biped",
+    "mustRead": [
+      "heavy hooked beak with a fleshy cere",
+      "bony brow ridge giving a scowling glare",
+      "massive feathered legs ending in taloned feet"
+    ],
+    "note": "generic representative: a large booted eagle. Perched, the folded wings reach roughly to the tail tip"
+  },
+  "genome": {
+    "seed": 3837331972,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 15,
+    "body": 7,
+    "loco": 17,
+    "trait": 5,
+    "size": 3,
+    "diet": 1,
+    "head": 7,
+    "limbs": 3,
+    "skin": 1,
+    "tail": 2,
+    "pattern": 5,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 3,
+    "detail": 9,
+    "accent": 16,
+    "temper": 1,
+    "sense": 1,
+    "repro": 6,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Eagle"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Eagle\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3837331972\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"5\"]]]]",
+  "index": 30,
+  "profile": {
+    "id": "raptor",
+    "names": [
+      "Eagle",
+      "Owl",
+      "Hawk",
+      "Falcon",
+      "Snowy Owl",
+      "Osprey",
+      "Kestrel",
+      "Desert Owl",
+      "Harpy Eagle"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw",
+      "peck"
+    ],
+    "notes": ""
+  }
+}

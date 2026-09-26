@@ -63,7 +63,7 @@ export function createFinishInferV1(o: { readonly workerUrl: string; readonly mo
         w.onmessage = ({ data }: MessageEvent<Record<string, unknown>>) => {
           if (data.type === 'progress') return; if (data.requestId !== requestId) return; clearTimeout(timer);
           if (data.type === 'error') { reject(Error(String(data.message))); return; }
-          const out = data.rgba instanceof Uint8Array ? data.rgba : data.rgba instanceof ArrayBuffer ? new Uint8Array(data.rgba) : null;
+          const out = data.rgba instanceof Uint8Array || data.rgba instanceof Uint8ClampedArray ? new Uint8Array(data.rgba) : data.rgba instanceof ArrayBuffer ? new Uint8Array(data.rgba).slice() : null;
           if (data.type !== 'complete' || !out || out.length !== s.width * s.height * 4) { reject(Error('finish adapter: result contract')); return; }
           resolve(out); };
         w.onerror = (e) => { clearTimeout(timer); worker?.terminate(); worker = null; reject(Error(e.message || 'finish worker failed')); };

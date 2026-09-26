@@ -1,0 +1,17 @@
+{
+  "id": "rat",
+  "labelsPath": "audits/G5_DERIVED_LABELS_20260926/rat/labels.png",
+  "labelsPngSha256": "9205f57215cb3631e592b8bcda5ffa335365cda028aa1c117d11e454d984212e",
+  "labelsRgbaSha256": "446d6caba605efd6bb2e31a4e8ae5de88ecb6406936ce21716d81a1e8d45fc96",
+  "receiptPath": "audits/G5_DERIVED_LABELS_20260926/rat/receipt.json",
+  "receiptSha256": "5ef387e6620f9112ef5ce318bc0c95679959ee609666a4feb9fc75878f449df1",
+  "width": 1254,
+  "height": 1254,
+  "labels": 31,
+  "painted": 151783,
+  "unowned": 0,
+  "outside": 0,
+  "overwrites": {},
+  "masterAlphaMismatchPixels": 1420733,
+  "identityConservation": "PASS"
+}
