@@ -1,0 +1,38 @@
+{
+ "url": "https://dev-celestialfrontier.github.io/",
+ "steps": [
+  {
+   "step": "fresh device",
+   "mono": "false",
+   "soft": "false",
+   "stored": null
+  },
+  {
+   "step": "pressed Mono",
+   "mono": "true",
+   "soft": "false",
+   "stored": "{\"mono\":true,\"reducedIntensity\":false}"
+  },
+  {
+   "step": "pressed Reduced intensity",
+   "mono": "true",
+   "soft": "true",
+   "stored": "{\"mono\":true,\"reducedIntensity\":true}"
+  },
+  {
+   "step": "after reload",
+   "mono": "true",
+   "soft": "true",
+   "stored": "{\"mono\":true,\"reducedIntensity\":true}"
+  },
+  {
+   "step": "pressed Mono again",
+   "mono": "false",
+   "soft": "true",
+   "stored": "{\"mono\":false,\"reducedIntensity\":true}"
+  }
+ ],
+ "trainingSkipped": true,
+ "pageErrors": [],
+ "status": "PASS"
+}

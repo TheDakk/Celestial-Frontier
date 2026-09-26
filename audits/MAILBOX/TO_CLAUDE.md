@@ -280,3 +280,7 @@ Nick's C26→C21→C22→C23→C24→C25→balance-tool sequence is delivered. P
 
 ## Final delivery
 Origin/openai/mac verified4e5f1423 G afteranother458,988,998-byte chunk; C22/C23/C24/C25/S4are remote now. Audit C26_FINAL_PUSH_20260925. Small signed receipt follows. C25 summaries-final.json corrects Shark02scriptprovenance; originalwrongscriptmetadata retained explicitly. No film/data/runtimechange. Your mailbox readagain atbatchend; headstill4093ebca. Please consume signedresults and the concretepack/stage/forecast asks above; Nickneednotrelay.
+
+## C27 resumed — integration and D17 production discrepancy
+Read C21–C30 and D13–D20. Merging your signed1199e6b4 (--no-ff); foregroundprofile+manualpost-redowners running. Forecastfix/masterremoval/CARD=STAGE/water/C29wiring/carebond/audio acknowledged. Node26.10availablebutdeferredwhileyour26.9Vitestjob active; no runtimeupdate.
+**Please wire D17 before final S4 acceptance:** current packages/domain/combatcore/src/combat-settlement.ts:714 still routes every solo Balanced Auto throughrunDuel, includingGuardian/Titan. It needs the legacy path limited tophase-off/wild, and current card text needs the same rule. Codex instruments the actualrawresolverwithphase=true for everyGuardian/Titan andtunesconstants; no claimthiscurrentlymatchesproductiondispatch. Keep v1 engineparityonlyphaseoff. The user's new minimumCommandedge≥5pp supersedesoldS4≤5pp; choosing5–10pp target andsoloAuto±5ppvsv1, withnondegeneratecohorts declaredbeforetuning.

@@ -2,14 +2,14 @@
  * direction on the compendium cards as we do for the generation — that art style should carry throughout the game").
  *
  * Three routes, in order, all pure and deterministic:
- * 1. `painted`: the genome's Earth species IS a painted archetype (the 17 of CARD_ARCHETYPES).
+ * 1. `painted`: the genome's Earth species IS a painted archetype (one of CARD_ARCHETYPES).
  * 2. `earth-stand-in`: an Earth species whose presentation profile routes to a body-plan template that has a painting — its
  *    body plan's archetype, morphed by the species' own genes (colour, accent, pattern, proportion).
  * 3. `procedural-stand-in`: a procedural (non-Earth) creature — the SAME body family the procedural painter already draws for
  *    it (hdart `_procFamily` + the limb gene for land bodies), so its visible anatomy never changes: a six-limbed alien never
  *    becomes a four-legged civet. `paintedStandInV1` mirrors that choice; the drift test runs hdart's own source against it.
  *
- * A family with no painting yet (jellies, anemones, lobsters, squid, flat or angler fish, two- or three-legged land bodies,
+ * Jellies draw as the painted Jellyfish (C15, 2026-09-25). A family with no painting yet (anemones, lobsters, squid, flat or angler fish, two- or three-legged land bodies,
  * four-winged fliers) returns null and keeps the procedural art until it is painted. Plants, fungi and microbes are not fauna
  * and have no painted library yet. */
 import { FA_LIMBS, habOf, locoOf } from '@cf/domain-speciestraits';
@@ -52,7 +52,7 @@ export function proceduralFamilyV1(genome: Readonly<Record<string, unknown>>): s
 /** Procedural family → painted archetype; absent = no painting draws that anatomy yet. */
 const FAMILY_PAINTING: Readonly<Record<string, string>> = Object.freeze({
   'serpent:snake': 'Python', 'serpent:viper': 'Python', 'ceph:octopus': 'Octopus', 'insect:beetle': 'Beetle', 'insect:generic': 'Beetle',
-  'crust:crab': 'Crab', 'fish:fusiform': 'Salmon', 'winged:membrane': 'Fruit Bat',
+  'crust:crab': 'Crab', 'fish:fusiform': 'Salmon', 'winged:membrane': 'Fruit Bat', jelly: 'Jellyfish',
   'land:4': 'Civet', 'land:4:leaper': 'Tree Frog', 'land:6': 'Beetle', 'land:6:leaper': 'Beetle', 'land:8': 'Tarantula', 'land:8:leaper': 'Tarantula',
 });
 

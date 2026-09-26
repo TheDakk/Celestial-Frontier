@@ -4,6 +4,17 @@ Each section dates itself (most with a `matches code as of` marker; a section wi
 description). Refreshed in place September 24, 2026: the painted Compendium card and matchup picker section only; the
 rest of this doc was not re-verified in that refresh.
 
+## v2 folded survey card (D18) — matches code as of 2026-09-25
+
+- **An option, off by default.** Settings → "Folded survey card" (`#setfold`). Nick decided on 2026-09-25 that the default stays the flat card, which is the card uilayout and the Slice/Glass instruments measure.
+- **Stored on the device, never in the save.** The choice is a device preference (`cf-v2-survey-folds/v1`, guarded localStorage, like Mono audio). It rides on the card element as `data-survey-folds="on"`.
+- **Flat when off.** `showSurvey` keeps its original flat row expression and only calls `surveyRowsHtmlV1` (`survey-card-folds.ts`) when the flag is set.
+- **Two folds when on,** matching v1.8.9:
+  - the environment rows (Made of, Atmosphere, Climate, Water, Gravity, Magnetism, Weather, Seasons) become one **Environment** fold. Its header shows the climate's first clause and the gravity.
+  - a civilization with census detail (Tech era, Local year, Population) becomes one fold headed by its `Civilization` row, which keeps its `data-row`.
+- **Remembered open/closed state.** Pressing a header toggles it in place without a rebuild. The open/closed state is the save's existing `cardExpand` bits 1 and 2, as in v1, so there is no save-shape change.
+- **Test:** `tests/d18-survey-folds-outcome.test.ts`.
+
 ## Painted Compendium card and the matchup picker — matches code as of 2026-09-24 (anthropic/mac working copy over d643fc0e, including uncommitted changes)
 
 Scope: the card path of the morph system and the study-only matchup picker, both Claude-lane code under
@@ -466,6 +477,18 @@ while save writes are held. Opening does not mark read; explicit Mark read uses 
 checkpoint path with pending/failed status and rollback. The existing 50-entry new-history
 capacity and 60-entry import allowance remain. Passive history never joins an in-flight product
 snapshot; no new timer, schema, import door or competing persistence writer is introduced.
+
+**Pop-up notifications switch (matches code as of 2026-09-25, D16 parity with v1 `notif`):** Settings → Pop-up notifications
+(`#setnotif`, saved `notif`, absent ⇒ on). Off keeps every message in the tray and still writes it into the toast's live region
+(screen readers still hear it), but the toast is not painted (`opacity 0`, `data-quiet`). A creature voice that binds the toast
+as its VISIBLE audio counterpart (`bindTameToastCounterpart`) reveals that one toast, so the cue still fires; Feed's supplemental
+toast stays hidden because its inline status is the counterpart. Outcome test: `tests/d16-notification-popups-outcome.test.ts`.
+
+**Tooltips (matches code as of 2026-09-25, D16 parity with v1 `@section tooltips` / `tips`):** `tooltips.ts` owns one
+`#tipbubble` (display only, `pointer-events:none`). Desktop: 650 ms hover or keyboard focus on `[data-tip]` (native `title`
+stays the browser's). Touch: a 600 ms long-press on `[data-tip]` or any native `[title]` (phones never show titles), cancelled
+by a 12 px drag; the click that ends a long-press is swallowed so inspecting never acts. Quiet during Field Training and when
+Settings → Tooltips (`#settips`, saved `tips`, absent ⇒ on) is off. Outcome test: `tests/d16-tooltips-outcome.test.ts`.
 The bottom bell reads this history; its old duplicate shelf button is hidden.
 
 Nick accepted the U1 layout **for UAT** on 2026-09-06 at product

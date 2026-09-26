@@ -89,6 +89,27 @@ function assertShippedPackBytes(runtimeAssetBytes: readonly number[], serviceWor
   return total;
 }
 
+/** D15 Stage 0 (N5_AUDIO.md): the shipped pack's AUDIO section and its 12 MiB cap inside the 128 MiB pack — it grows only on Nick's word.
+ * Computed from the exact shipped inventory (runtime assets + battle2 files) at writeBundle; a named RangeError one byte over. */
+export const SHIPPED_AUDIO_BYTE_LIMIT = 12_582_912;
+const AUDIO_FILE = /\.(?:opus|ogg|oga|m4a|aac|mp3|wav|flac|weba|caf)$/iu;
+export interface ShippedAudioSectionV1 {
+  readonly schema: 'cf-pwa-audio-section/v1';
+  readonly limitBytes: number;
+  readonly bytes: number;
+  readonly files: readonly Readonly<{ path: string; bytes: number }>[];
+}
+function shippedAudioSection(files: readonly Readonly<{ path: string; bytes: number }>[]): ShippedAudioSectionV1 {
+  const audio = files.filter((file) => AUDIO_FILE.test(file.path)).map((file) => Object.freeze({ path: file.path, bytes: file.bytes })).sort(compareAssetPath);
+  let bytes = 0;
+  for (const file of audio) {
+    if (!Number.isSafeInteger(file.bytes) || file.bytes < 0) throw new RangeError('Celestial Frontier PWA received an invalid audio byte count');
+    bytes += file.bytes;
+  }
+  if (bytes > SHIPPED_AUDIO_BYTE_LIMIT) throw new RangeError(`Celestial Frontier shipped audio exceeds 12 MiB (${bytes} bytes in ${audio.length} files)`);
+  return Object.freeze({ schema: 'cf-pwa-audio-section/v1', limitBytes: SHIPPED_AUDIO_BYTE_LIMIT, bytes, files: Object.freeze(audio) });
+}
+
 function compareAssetPath(
   left: Readonly<Pick<PwaAssetDigestV1, 'path'>>,
   right: Readonly<Pick<PwaAssetDigestV1, 'path'>>,
@@ -681,15 +702,16 @@ export function celestialFrontierPwaPlugin(options: Readonly<{ modelDelivery?: P
            generateBundle. Hash the bytes that were actually written, then
            replace only the generated worker. This prevents a plausible
            pre-finalization digest from rejecting the real deployed bundle. */
-        const writtenAssetByteCounts: number[] = [];
+        const writtenAssetByteCounts: number[] = [], writtenFiles: { path: string; bytes: number }[] = [];
         const assets = runtimeFileNames.map((fileName) => {
           const bytes = readFileSync(resolve(outDir, fileName));
-          writtenAssetByteCounts.push(bytes.byteLength);
+          writtenAssetByteCounts.push(bytes.byteLength); writtenFiles.push({ path: fileName, bytes: bytes.byteLength });
           return Object.freeze({ path: assetPath(base, fileName), sha256: sha256Hex(bytes) });
         });
         verifyBattle2AssetFiles(outDir, battle2Files);
         const finalWorkerSource = serviceWorkerSource(base, [...assets, ...lazyAssets()], workerRevision, delivery);
         assertShippedPackBytes([...writtenAssetByteCounts, ...battle2Files.map((file) => file.bytes)], textEncoder.encode(finalWorkerSource).byteLength);
+        shippedAudioSection([...writtenFiles, ...battle2Files.map((file) => ({ path: file.path, bytes: file.bytes }))]);
         writeFileSync(
           resolve(outDir, CF_PWA_SERVICE_WORKER),
           finalWorkerSource,
@@ -702,6 +724,7 @@ export function celestialFrontierPwaPlugin(options: Readonly<{ modelDelivery?: P
 
 export const __pwaBuildTestOnly = Object.freeze({
   assertShippedPackBytes,
+  shippedAudioSection,
   modelDeliveryPolicy,
   assertSealedWorkerGraphs,
   assetPath,

@@ -19,6 +19,24 @@ describe('painted card source — the individual on the card', () => {
     closeThumb(); closeThumb(); // idempotent
     expect(s.ownership().leases).toBe(0); expect(s.releaseUnowned()).toBe(1); expect(s.ownership().keys.cachedThumbs).toEqual([]); expect(s.ownership().totals.releasedUnowned).toBe(1);
   });
+  it('ACCOUNTING (C8 resume, 2026-09-25): encoded bytes and pixels per card kind; resident bytes = master+labels + every retained marking mask, and an evicted archetype takes its masks with it', async () => {
+    const now = () => Promise.resolve(), s = new PaintedCardSource({ assets, registry: REGISTRY, yieldToHost: now, archetypeEntries: 1 });
+    const civet = (pattern: number) => ({ _earthName: 'Civet', kingdom: 'fauna', seed: 21, color: 7, accent: 2, size: 2, head: 1, tail: 1, pattern });
+    await s.card(civet(0), 'thumb'); await s.card(civet(0), 'portrait');
+    const o = s.ownership();
+    expect(o.byKind.thumb).toMatchObject({ entries: 1, decodedPixels: CARD_SIZES.thumb ** 2 });
+    expect(o.byKind.portrait).toMatchObject({ entries: 1, decodedPixels: CARD_SIZES.portrait ** 2 });
+    expect(o.byKind.thumb.encodedBytes + o.byKind.portrait.encodedBytes).toBe(o.encodedBytes);
+    const base = s.residentArchetypes(); expect(base.bytes).toBe(base.masterLabelBytes + base.maskBytes);
+    // render patterns until one uses a painted mask (the Civet ships marking masks); each retained mask is counted exactly
+    for (let pattern = 1; pattern < 12 && s.residentArchetypes().masks === 0; pattern++) await s.card(civet(pattern), 'thumb');
+    const marked = s.residentArchetypes();
+    expect(marked.masks).toBeGreaterThan(0); expect(marked.maskBytes).toBeGreaterThan(0);
+    expect(marked.bytes).toBe(marked.masterLabelBytes + marked.maskBytes);
+    expect(s.ownership().residentArchetypes).toMatchObject({ masks: marked.masks, maskBytes: marked.maskBytes, bytes: marked.bytes });
+    await s.card(crabGenome(), 'thumb'); // evicts the Civet (one resident archetype)
+    expect(s.residentArchetypes()).toMatchObject({ count: 1, maskBytes: 0, masks: 0 });
+  }, 120_000);
   it('MEMORY (I5 review 2026-09-24): at most ARCHETYPE_RESIDENT_DEFAULT decoded archetypes stay resident while cards of all of them render; eviction never changes a card; control: an unbounded source keeps them all', async () => {
     const one = (name: string) => ({ _earthName: name, kingdom: 'fauna', seed: 11, color: 4, accent: 9, size: 2, head: 3, tail: 2, pattern: 0 });
     const names = [...new Set(CARD_ARCHETYPES.map((a) => a.earthName))], now = () => Promise.resolve();

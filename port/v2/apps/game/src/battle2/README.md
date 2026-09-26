@@ -193,12 +193,38 @@ sits just above the target's painted top, clamped inside the frame.
 - **Pacing.** With `input.pacer` (a `CombatChroniclePacerGateV1`; `main.ts` passes one under `?battle2=1` with motion on), the study
   releases each staged turn's Chronicle row at the turn's impact, and everything on finish, failure or dispose.
 
+### Build-generated master pins, C13 (matches code as of 2026-09-25)
+- **Generator.** `tools/morph/battle2-master-pins.mjs` (run by `build-shipped-battle2.mjs`, or alone) runs the EXISTING full byte admission of
+  every archetype's retained original master (`admitFamilyRecord` against the keyed alpha, plus binding hash, record linkage and atlas hash),
+  and only then emits a pin. It writes the checked-in `apps/game/src/battle2-master-pins.generated.ts`. A failed admission, a duplicate id, a
+  malformed hash/dimension or a non-canonical path fails the build. Re-run it whenever the archetype list or a fit changes (the drift test
+  regenerates the module byte for byte).
+- **Authority is identity.** The generated module exports only `getBattle2MasterPin(creatureId)` and `isBattle2MasterPin(value)`, backed by a
+  private `WeakSet` of its own frozen entries. Clones, JSON copies and look-alikes are not pins. The hash definitions are the one shared
+  contract `tools/morph/battle2-pin-contract.mjs` (record = stableJSON UTF-8; binding = exact decompressed bytes; alpha/atlas/master = exact
+  PNG bytes; paths canonical repo-relative POSIX, never resolved or decoded).
+- **Preflight order in the wiring.** For a parts fit the study now fetches the manifest, looks up the pin (a missing pin is the named refusal
+  `missing-pin`, never a master fallback), fetches the alpha/binding/atlas as raw BYTES and runs `preflightBattle2PinnedBytesV1`
+  (`battle2-master-pin-admission.ts`) BEFORE any image decode, marking-mask fetch, morph-cache lease, master fetch or Pixi allocation. The
+  binding is parsed from the hashed bytes, and the alpha is decoded exactly (`decodePng`) after admission. A refusal falls back to the fixture or
+  portrait rig with its reason in `status().skipped`.
+- **Masters stay shipped.** The loader's unchanged byte admission (`loadCreatureRigV1`) still hashes the master. Dropping masters from the
+  package waits for Codex's narrow pin overload and its controls, then Claude's cold/worker/offline/picker checks (C4 §5).
+
 ### The real-duel picker and the ticker guard (matches code as of 2026-09-24, late)
 - `?battle2=1&vs=A,B&duel=1` (or the "Real duel + Chronicle" checkbox): `matchupDuel` builds full genomes carrying each painting's visual genes
   and runs a real duel through the combat domain, the settlement, the cue plan and the Combat Chronicle. The picker mounts the Chronicle and the
   stage in `main.ts`'s order (pacer, start, stage), so the log is paced exactly as in the game.
 - The study's tick is guarded: a throw fails the study (labelled) and never reaches the game's shared Pixi ticker. A body plan without a
   voice source set has no creature voice (labelled). `data-battle2-turn` and `data-battle2-ticks` on the section are smoke diagnostics.
+
+### C15 wiring: READY spacing, full travel, declared weapons (matches code as of 2026-09-25)
+- **`placement.readySpacing`**: the two painted boxes at rest keep `READY_GAP` (0.10 of the frame) between them and stay `EDGE_MARGIN` (0.02) from the sides. The stands spread first; the non-guardian bodies scale down only when the frame cannot hold both.
+- **Run-up**: `stage.centresX()` feeds `arena.centresX`, so the run-up is measured box to box and travels to `CONTACT_GAP`. The old root-distance rule (capped at 0.55 of the stand distance) applies only when the centres are absent.
+- **Reach**: `parts-rig` measures Codex's layered idle+approach reach (`creature-layered-stance-reach.ts`) and caches it by complete input (`layeredReachKey`).
+- **Damage number**: a flyer's number starts at `NUMBER_TOP_MIN + NUMBER_RISE` or lower, so its whole pop and rise stay inside the frame.
+- **Per-archetype fields**: `BATTLE2_PARTS_FITS` entries may carry `weaponDeclaration` (hash-bound, proven before play) and `contactSupports: 'observed'`.
+- **Held rows**: `tools/morph/budget-held-archetypes.json`. Evidence: `audits/C15_WIRING_20260925/`.
 
 ### Known limits
 - The Centipede's ARAP skin folds a triangle at 0.85× its default presentation scale (Codex's anatomy chain). The

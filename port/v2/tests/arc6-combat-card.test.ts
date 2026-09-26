@@ -122,6 +122,9 @@ function readModel(): CombatCardReadModelV1 {
       color: '#ff5a4a',
       why: 'it strikes first · its blows land harder',
     },
+    partyEnabled: true,
+    party: [{ id: '__self__', stance: 'balanced' }],
+    planForecast: null,
     stakes: 'Loss wounds you but never kills you; your HP stops at 1.',
     reward: 'Win: conquer the world and claim its Prime Signature.',
     policy: 'Current conquest fields one champion; party roles and retreat remain open.',
@@ -543,3 +546,39 @@ describe('Arc 6 combat card', () => {
     expect(mutated.probability).not.toBe(first.probability);
   });
 });
+
+describe('§20 plan controls on the combat card', () => {
+  it('a stance change and a party-slot choice each reach Main; the challenge emission stays the one pinned request', () => {
+    const view = shell();
+    const onAction = vi.fn();
+    const model = deepFreeze({ ...JSON.parse(JSON.stringify(readModel())),
+      championOptions: [
+        { id: '__self__', kind: 'player', label: 'Explorer — 100/100 HP', power: 250, ability: 'Frontier Resolve', disabled: false, disabledReason: null },
+        { id: 'c-1', kind: 'owned-fauna', label: 'Bruin', power: 300, ability: 'Maul', disabled: false, disabledReason: null },
+      ],
+      party: [{ id: '__self__', stance: 'guard' }] }) as CombatCardReadModelV1;
+    controller = new CombatCardController({ root: view.root, onAction });
+    controller.setState(model);
+    controller.attach(view.mount);
+    const stance = view.mount.querySelector<HTMLSelectElement>('[data-combat-stance="0"]')!;
+    expect(stance.value).toBe('guard');
+    stance.value = 'press'; stance.dispatchEvent(new view.document.defaultView!.Event('change', { bubbles: true }));
+    expect(onAction).toHaveBeenLastCalledWith({ kind: 'stance', index: 0, stance: 'press' });
+    const slot = view.mount.querySelector<HTMLSelectElement>('[data-combat-party-slot="1"]')!;
+    expect([...slot.options].map((o) => o.value)).toEqual(['', 'c-1']);   // the lead is never offered twice
+    slot.value = 'c-1'; slot.dispatchEvent(new view.document.defaultView!.Event('change', { bubbles: true }));
+    expect(onAction).toHaveBeenLastCalledWith({ kind: 'party-slot', index: 1, championId: 'c-1' });
+    view.mount.querySelector<HTMLButtonElement>('[data-combat-challenge]')!.click();
+    expect(onAction).toHaveBeenLastCalledWith({ kind: 'challenge', championId: '__self__' });
+  });
+
+  it('an ordinary (non-Guardian) fight offers a stance but no party slots', () => {
+    const view = shell();
+    controller = new CombatCardController({ root: view.root, onAction: vi.fn() });
+    controller.setState(deepFreeze({ ...JSON.parse(JSON.stringify(readModel())), partyEnabled: false }) as CombatCardReadModelV1);
+    controller.attach(view.mount);
+    expect(view.mount.querySelector('[data-combat-stance="0"]')).not.toBeNull();
+    expect(view.mount.querySelector('[data-combat-party-slot]')).toBeNull();
+  });
+});
+

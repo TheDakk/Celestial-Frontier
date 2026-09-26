@@ -9,8 +9,15 @@
    retry, or newly-authored reward policy. */
 import {
   isGuardianPrimeEncounterV1,
+  planCombatPartySettlementV1,
   planCombatSettlementV1,
   runDuel,
+  runEncounterV1,
+  encounterHasGuardianPhaseV1,
+  type CombatPartyMemberInputV1,
+  type EncounterDecisionV1,
+  type EncounterResultV1,
+  type EncounterStanceV1,
   type CombatSettlementChampionV1,
   type CombatSettlementOutcomeV1,
   type GuardianPrimeEncounterV1,
@@ -31,6 +38,14 @@ import {
 } from '@cf/domain-acquisition/guardian-companion-internal';
 import type { Genome } from '@cf/domain-genome';
 import {
+  COMBAT_OPEN_ENCOUNTER_DECIDE_OPERATION_V1,
+  COMBAT_OPEN_ENCOUNTER_OPEN_OPERATION_V1,
+  CombatOpenEncounterRefusal,
+  deriveCombatOpenEncounterDecisionV1,
+  deriveCombatOpenEncounterOpenV1,
+  readCombatOpenEncounterV1,
+  simulateCombatOpenEncounterV1,
+  type CombatOpenEncounterRecordV1,
   COMBAT_SETTLEMENT_OPERATION_V1,
   planF4DeterministicProductReceipt,
   projectCombatLossXpAuthorityV1,
@@ -55,6 +70,7 @@ import {
   projectArc9ProgressionStateV1,
 } from './arc9-progression-projection.js';
 import type {
+  F4RuntimeActionCommitOutcome,
   F4RuntimeAuthority,
   F4RuntimeCombatSettlementOutcome,
 } from './f4-runtime-authority.js';
@@ -188,7 +204,16 @@ export interface Arc6CombatActionInputV1 {
   readonly championRosterAuthorityKey: string;
   readonly observedActivePlayMs: number;
   readonly codecNow: number;
+  /** §20 (Nick 2026-09-25): the fighters in relay order with their stances, first = `championId`. Absent = today's single Balanced
+   *  champion. More than one fighter is for Guardians and Titans only. Auto only until the Command open-encounter record lands. */
+  readonly party?: readonly Readonly<{ championId: string; stance: EncounterStanceV1 }>[];
+  /** §20 Command: settle the Command fight with these Break answers. When an open-encounter record exists the SEALED party and battle id
+   *  are used (the live projection must still equal them) and the answers must be the appended ones plus at most the final one; with no
+   *  record, only a fight that never reached a Break may settle (no answers). Absent = Auto. */
+  readonly command?: Readonly<{ decisions: readonly EncounterDecisionV1[] }>;
 }
+
+export const ARC6_PARTY_MAX_V1 = 3;
 
 export type Arc6CombatActionOutcomeV1 =
   | Readonly<{
@@ -420,10 +445,24 @@ export function arc6CombatOpenPolicyReasonV1(
   }
 }
 
-/** One deterministic duel, one registered plan, one F3 CAS, no retry. */
-export async function commitArc6CombatActionV1(
-  input: Arc6CombatActionInputV1,
-): Promise<Arc6CombatActionOutcomeV1> {
+type Arc6Refusal = Extract<Arc6CombatActionOutcomeV1, { readonly kind: 'refused' }>;
+const refusedV1 = (detail: string, convergence: 'none' | 'read-only-reload' = 'none'): Arc6Refusal => Object.freeze({
+  kind: 'refused', durability: 'none', convergence, detail, transaction: null,
+});
+
+interface Arc6PreparedPartyV1 {
+  readonly kind: 'prepared';
+  readonly championRoster: Extract<Arc6CombatChampionRosterProjectionV1, { readonly kind: 'projected' }>;
+  readonly activePlayMs: number;
+  readonly partyChampions: readonly CombatSettlementChampionV1[];
+  readonly partyMembers: readonly CombatPartyMemberInputV1[];
+}
+
+/** Every check a fight's party needs before it is planned or sealed: the roster authority, the open policy, each member available and
+ *  projected exactly (the lead is `championId`), and the Guardians/Titans-only party rule. Shared by Auto, Command's seal and its settlement. */
+function prepareArc6CombatPartyV1(
+  input: Omit<Arc6CombatActionInputV1, 'runtime' | 'command'>,
+): Arc6PreparedPartyV1 | Arc6Refusal {
   if (!input || typeof input !== 'object'
     || !isGuardianPrimeEncounterV1(input.encounter)
     || !isWorldOpportunitySnapshot(input.opportunity)
@@ -433,10 +472,7 @@ export async function commitArc6CombatActionV1(
     || typeof input.championRosterAuthorityKey !== 'string'
     || input.championRosterAuthorityKey.length < 1
     || typeof input.codecNow !== 'number' || !Number.isFinite(input.codecNow)) {
-    return Object.freeze({
-      kind: 'refused', durability: 'none', convergence: 'none',
-      detail: 'input:invalid-or-unregistered', transaction: null,
-    });
+    return refusedV1('input:invalid-or-unregistered');
   }
   const championRoster = projectArc6CombatChampionRosterV1({
     ownershipV2: input.ownershipV2,
@@ -492,12 +528,102 @@ export async function commitArc6CombatActionV1(
     });
   }
 
+  /* §20 party: every member is validated like the champion; the engine then names the DECISIVE fighter, whose loss-XP authority plans */
+  const partyInput = input.party ?? [{ championId: input.championId, stance: 'balanced' as const }];
+  if (!Array.isArray(partyInput) || partyInput.length < 1 || partyInput.length > ARC6_PARTY_MAX_V1
+    || partyInput[0]!.championId !== input.championId
+    || new Set(partyInput.map((m) => m.championId)).size !== partyInput.length) {
+    return Object.freeze({ kind: 'refused', durability: 'none', convergence: 'none', detail: 'party:invalid', transaction: null });
+  }
+  if (partyInput.length > 1 && input.encounter.defender.kind !== 'guardian' && input.encounter.defender.kind !== 'titan') {
+    return Object.freeze({ kind: 'refused', durability: 'none', convergence: 'none', detail: 'party:guardians-and-titans-only', transaction: null });
+  }
+  const partyChampions: CombatSettlementChampionV1[] = [champion];
+  for (const member of partyInput.slice(1)) {
+    const memberAvailability = projectArc6CombatChampionAvailabilityV1({
+      ownershipV2: input.ownershipV2, guardianRoster: championRoster, championId: member.championId, observedActivePlayMs: input.observedActivePlayMs,
+    });
+    if (memberAvailability.kind !== 'available') {
+      return Object.freeze({ kind: 'refused', durability: 'none', convergence: 'none', detail: `party-member:${memberAvailability.reason}`, transaction: null });
+    }
+    const memberChampion = projectArc6CombatChampionV1({ state: input.state, ownershipV2: input.ownershipV2, guardianRoster: championRoster, championId: member.championId });
+    if (memberChampion === null) {
+      return Object.freeze({ kind: 'refused', durability: 'none', convergence: 'none', detail: 'party-member:missing-or-stale', transaction: null });
+    }
+    if (memberChampion.kind === 'player' && memberChampion.currentHp < Math.ceil(input.state.HP_MAX * 0.25)) {
+      return Object.freeze({ kind: 'refused', durability: 'none', convergence: 'none', detail: 'party-member:player-below-quarter-health', transaction: null });
+    }
+    partyChampions.push(memberChampion);
+  }
+  const partyMembers = partyChampions.map((c, index) => Object.freeze({ champion: c, stance: partyInput[index]!.stance }));
+  const validatedClock = availability.activePlayMs;
+  return Object.freeze({ kind: 'prepared', championRoster, activePlayMs: validatedClock, partyChampions, partyMembers });
+}
+
+/** One deterministic duel, one registered plan, one F3 CAS; a refusal is final (never re-attempted). */
+export async function commitArc6CombatActionV1(
+  input: Arc6CombatActionInputV1,
+): Promise<Arc6CombatActionOutcomeV1> {
+  if (!input || typeof input !== 'object') return refusedV1('input:invalid-or-unregistered');
+  /* §20 Command: the open record (if any) supplies the SEALED party and battle id */
+  let command: Readonly<{ decisions: readonly EncounterDecisionV1[]; record: CombatOpenEncounterRecordV1 | null }> | null = null;
+  let partyRequest = input.party;
+  if (input.command !== undefined) {
+    const read = readCombatOpenEncounterV1(input.extensions);
+    if (read.kind !== 'loaded') return refusedV1(`command:${read.reason}`, 'read-only-reload');
+    const decisions = input.command?.decisions;
+    if (!Array.isArray(decisions)) return refusedV1('command:decisions-invalid');
+    if (read.record === null && decisions.length > 0) return refusedV1('command:no-open-encounter');
+    if (read.record !== null) {
+      if (!isGuardianPrimeEncounterV1(input.encounter) || read.record.encounterDigest !== sha256Hex(input.encounter.witness)) {
+        return refusedV1('command:open-encounter-elsewhere');
+      }
+      partyRequest = read.record.party.map((m) => Object.freeze({
+        championId: m.champion.kind === 'player' ? ARC6_PLAYER_CHAMPION_ID : m.champion.creatureId, stance: m.stance }));
+      if (partyRequest[0]!.championId !== input.championId) return refusedV1('command:lead-mismatch');
+    }
+    command = Object.freeze({ decisions: Object.freeze([...decisions]), record: read.record });
+  } else if (isOwnershipStateV2(input.ownershipV2)) {
+    const read = readCombatOpenEncounterV1(input.extensions);
+    if (read.kind !== 'loaded') return refusedV1(`command:${read.reason}`, 'read-only-reload');
+    if (read.record !== null) return refusedV1('command:open-encounter-must-be-answered');
+  }
+  const prepared = prepareArc6CombatPartyV1({ ...input, ...(partyRequest === undefined ? {} : { party: partyRequest }) });
+  if (prepared.kind !== 'prepared') return prepared;
+  const { championRoster, partyChampions, partyMembers } = prepared;
+  const champion = partyChampions[0]!;
+  const availability = Object.freeze({ activePlayMs: prepared.activePlayMs });
+  if (command?.record != null) {
+    // the live projection must still be exactly the sealed fighters (the record holds them; anything else is another fight)
+    const live = canonicalJson(partyMembers.map((m) => ({ champion: m.champion, stance: m.stance })));
+    const sealed = canonicalJson(command.record.party.map((m) => ({ champion: m.champion, stance: m.stance })));
+    if (live !== sealed) return refusedV1('command:party-changed-since-sealed', 'read-only-reload');
+  }
+  const mode = command === null ? 'auto' as const : 'command' as const;
+  const decisions = command?.decisions ?? [];
+  const legacySingle = mode === 'auto' && partyMembers.length === 1 && partyMembers[0]!.stance === 'balanced';
+  let decisiveIndex = 0;
+  if (!legacySingle) {
+    try {
+      const probe = runEncounterV1({ mode, defender: { name: input.encounter.defender.name, genome: input.encounter.defender.battleGenome as never,
+        phase: encounterHasGuardianPhaseV1(input.encounter.defender.kind) },
+        party: partyMembers.map((m) => (m.champion.kind === 'player'
+          ? { name: m.champion.name, genome: { seed: m.champion.genomeSeed }, stats: m.champion.stats as never, stance: m.stance }
+          : { name: m.champion.name, genome: m.champion.genome as never, stance: m.stance })) }, decisions);
+      if (probe.status !== 'finished' || probe.decisionsUsed !== decisions.length) throw new Error('encounter paused');
+      decisiveIndex = probe.legs[probe.legs.length - 1]!.fighterIndex;
+    } catch {
+      return refusedV1(command === null ? 'party:encounter-invalid' : 'command:answers-do-not-finish-the-fight');
+    }
+  }
+  const decisiveChampion = partyChampions[decisiveIndex]!;
+
   let lossXp: ReturnType<typeof projectCombatLossXpAuthorityV1> | null = null;
-  if (champion.kind === 'owned-fauna') {
+  if (decisiveChampion.kind === 'owned-fauna') {
     const row = championRosterRow(
       input.ownershipV2,
       championRoster,
-      champion.creatureId,
+      decisiveChampion.creatureId,
     );
     if (row === null) {
       return Object.freeze({
@@ -542,28 +668,45 @@ export async function commitArc6CombatActionV1(
     });
   }
 
-  const mine = champion.kind === 'player'
-    ? { name: champion.name, genome: { seed: champion.genomeSeed }, stats: champion.stats }
-    : { name: champion.name, genome: champion.genome as Genome };
-  const transcript = runDuel(mine, {
-    name: input.encounter.defender.name,
-    genome: input.encounter.defender.battleGenome as Genome,
+  const settlementAuthority = Object.freeze({
+    worldConquered: false,
+    claimedPrimeSignatureIds: input.encounter.identity.claimedSignatureIds,
+    lossXp: lossXp?.kind === 'ready' ? lossXp.authority : null,
+    activePlayMs: availability.activePlayMs,   // §20: a defeat's Recovery ends on the active-play clock
   });
-  const outcome = settledOutcome(transcript);
-  const plan = planCombatSettlementV1({
-    battleId: `arc6:${sha256Hex(input.encounter.witness)}:${receipt.plan.receiptOrdinal}`,
-    receiptOrdinal: receipt.plan.receiptOrdinal,
-    encounter: input.encounter,
-    champion,
-    transcript,
-    outcome,
-    worldTier: input.opportunity.effectiveTier,
-    authority: Object.freeze({
-      worldConquered: false,
-      claimedPrimeSignatureIds: input.encounter.identity.claimedSignatureIds,
-      lossXp: lossXp?.kind === 'ready' ? lossXp.authority : null,
-    }),
-  });
+  const battleId = command?.record?.battleId ?? `arc6:${sha256Hex(input.encounter.witness)}:${receipt.plan.receiptOrdinal}`;
+  let plan: ReturnType<typeof planCombatSettlementV1>;
+  if (legacySingle) {
+    const mine = champion.kind === 'player'
+      ? { name: champion.name, genome: { seed: champion.genomeSeed }, stats: champion.stats }
+      : { name: champion.name, genome: champion.genome as Genome };
+    const transcript = runDuel(mine, {
+      name: input.encounter.defender.name,
+      genome: input.encounter.defender.battleGenome as Genome,
+    });
+    const outcome = settledOutcome(transcript);
+    plan = planCombatSettlementV1({
+      battleId,
+      receiptOrdinal: receipt.plan.receiptOrdinal,
+      encounter: input.encounter,
+      champion,
+      transcript,
+      outcome,
+      worldTier: input.opportunity.effectiveTier,
+      authority: settlementAuthority,
+    });
+  } else {
+    plan = planCombatPartySettlementV1({
+      battleId,
+      receiptOrdinal: receipt.plan.receiptOrdinal,
+      encounter: input.encounter,
+      worldTier: input.opportunity.effectiveTier,
+      authority: settlementAuthority,
+      mode,
+      party: partyMembers,
+      decisions,
+    });
+  }
   if (plan.status !== 'planned') {
     return Object.freeze({
       kind: 'refused', durability: 'none', convergence: 'none',
@@ -607,7 +750,7 @@ export async function commitArc6CombatActionV1(
       codecNow: input.codecNow,
       plan,
       opportunity: input.opportunity,
-      ownershipV2: champion.kind === 'owned-fauna'
+      ownershipV2: partyChampions.some((c) => c.kind === 'owned-fauna')
         || plan.guardianCapture.status === 'ownership-writer-required'
         ? input.ownershipV2 : null,
       brinkAchievementJoin,
@@ -664,4 +807,152 @@ export async function commitArc6CombatActionV1(
     kind: 'committed', durability: 'committed', convergence: 'none',
     transaction, verification,
   });
+}
+
+/* ---------- §20 Command: seal, answer, resume ---------- */
+
+export type Arc6CommandActionOutcomeV1 =
+  | Readonly<{ kind: 'committed'; record: CombatOpenEncounterRecordV1; result: EncounterResultV1; revision: number }>
+  /** The fight never reaches a Break: there is nothing to command, so it settles directly (Command, no answers). */
+  | Readonly<{ kind: 'no-break' }>
+  | Readonly<{ kind: 'refused'; detail: string; convergence: 'none' | 'read-only-reload' }>;
+
+const commandRefused = (detail: string, convergence: 'none' | 'read-only-reload' = 'none'): Arc6CommandActionOutcomeV1 =>
+  Object.freeze({ kind: 'refused', detail, convergence });
+
+function commandActionOutcome(transaction: F4RuntimeActionCommitOutcome, expectedSeal: string): Arc6CommandActionOutcomeV1 {
+  if (transaction.kind !== 'committed') {
+    const detail = transaction.kind === 'rejected' ? `transaction:rejected:${transaction.message}` : `transaction:${transaction.kind}`;
+    const reload = transaction.kind === 'stale' || transaction.kind === 'lost' || transaction.kind === 'duplicate-receipt'
+      || transaction.kind === 'revision-exhausted' || transaction.kind === 'storage-error' || transaction.kind === 'protected';
+    return commandRefused(detail, reload ? 'read-only-reload' : 'none');
+  }
+  const read = readCombatOpenEncounterV1(transaction.saved.extensions);
+  if (read.kind !== 'loaded' || read.record === null || read.record.sealDigest !== expectedSeal) {
+    return commandRefused('verification:open-encounter-fixed-point', 'read-only-reload');
+  }
+  return Object.freeze({ kind: 'committed', record: read.record, result: simulateCombatOpenEncounterV1(read.record), revision: transaction.revision });
+}
+
+/** Seal a Command fight in its own Recovery-free receipt (Guardians/Titans only). Refusals are decided on the exact current extensions
+ *  BEFORE any write; the commit re-derives inside the same F4/F3 CAS. */
+export async function openArc6CommandEncounterV1(
+  input: Omit<Arc6CombatActionInputV1, 'runtime' | 'command'> & Readonly<{ runtime: Pick<F4RuntimeAuthority, 'commitAction'> }>,
+): Promise<Arc6CommandActionOutcomeV1> {
+  if (!input || typeof input !== 'object' || !isGuardianPrimeEncounterV1(input.encounter)) return commandRefused('input:invalid-or-unregistered');
+  if (input.encounter.defender.kind !== 'guardian' && input.encounter.defender.kind !== 'titan') {
+    return commandRefused('command:guardians-and-titans-only');
+  }
+  const read = readCombatOpenEncounterV1(input.extensions);
+  if (read.kind !== 'loaded') return commandRefused(`command:${read.reason}`, 'read-only-reload');
+  if (read.record !== null) return commandRefused('command:already-open');
+  const prepared = prepareArc6CombatPartyV1(input);
+  if (prepared.kind !== 'prepared') return commandRefused(prepared.detail, prepared.convergence);
+  /* the explorer's health moves between Breaks, and the settlement binds it exactly: a sealed explorer could strand the record (even
+     Withdraw settles through the same binding), so the explorer fights Guardians in Auto only */
+  if (prepared.partyChampions.some((c) => c.kind === 'player')) return commandRefused('command:explorer-fights-in-auto-only');
+  const receipt = planF4DeterministicProductReceipt(input.extensions, COMBAT_OPEN_ENCOUNTER_OPEN_OPERATION_V1);
+  if (receipt.kind !== 'planned') return commandRefused(`receipt:${receipt.reason}`, 'read-only-reload');
+  const battleIdAt = (ordinal: number): string => `arc6:${sha256Hex(input.encounter.witness)}:${ordinal}`;
+  const derive = (draft: SaveStateV2, extensions: V5Extensions, receiptOrdinal: number) => deriveCombatOpenEncounterOpenV1({
+    draft, extensions, receiptOrdinal, battleId: battleIdAt(receiptOrdinal), encounter: input.encounter, party: prepared.partyMembers,
+  });
+  let expectedSeal: string;
+  try {
+    const dry = derive(input.state, input.extensions, receipt.plan.receiptOrdinal);
+    const write = dry.extensionWrites![0]!;
+    const sealed = readCombatOpenEncounterV1({ ...input.extensions, player: { ...input.extensions.player, [write.namespace]: write.carrier } });
+    if (sealed.kind !== 'loaded' || sealed.record === null) return commandRefused('command:seal-unreadable');
+    expectedSeal = sealed.record.sealDigest;
+  } catch (error) {
+    if (error instanceof CombatOpenEncounterRefusal) {
+      return error.reason === 'no-break' ? Object.freeze({ kind: 'no-break' }) : commandRefused(`command:${error.reason}`);
+    }
+    return commandRefused('command:seal-invalid');
+  }
+  let transaction: F4RuntimeActionCommitOutcome;
+  try {
+    transaction = await input.runtime.commitAction({
+      state: input.state, operation: COMBAT_OPEN_ENCOUNTER_OPEN_OPERATION_V1, receiptKind: COMBAT_OPEN_ENCOUNTER_OPEN_OPERATION_V1,
+      codecNow: input.codecNow, derive: ({ draft, extensions, receiptOrdinal }) => derive(draft, extensions, receiptOrdinal),
+    });
+  } catch (error) {
+    return commandRefused(`transaction:threw:${error instanceof Error ? error.message : String(error)}`, 'read-only-reload');
+  }
+  return commandActionOutcome(transaction, expectedSeal);
+}
+
+/** Append one Break answer (Hold / Swap / Withdraw) by CAS on the decision count the player saw. The FINAL answer is not appended here:
+ *  it rides the settlement (`commitArc6CombatActionV1` with `command`), so a finished fight always settles in one receipt. */
+export async function decideArc6CommandEncounterV1(input: Readonly<{
+  runtime: Pick<F4RuntimeAuthority, 'commitAction'>;
+  state: SaveStateV2;
+  extensions: V5Extensions;
+  battleId: string;
+  expectedDecisions: number;
+  decision: EncounterDecisionV1;
+  codecNow: number;
+}>): Promise<Arc6CommandActionOutcomeV1> {
+  const read = readCombatOpenEncounterV1(input.extensions);
+  if (read.kind !== 'loaded') return commandRefused(`command:${read.reason}`, 'read-only-reload');
+  if (read.record === null) return commandRefused('command:not-open');
+  const derive = (draft: SaveStateV2, extensions: V5Extensions) => deriveCombatOpenEncounterDecisionV1({
+    draft, extensions, battleId: input.battleId, expectedDecisions: input.expectedDecisions, decision: input.decision,
+  });
+  try {
+    derive(input.state, input.extensions);
+  } catch (error) {
+    return commandRefused(error instanceof CombatOpenEncounterRefusal ? `command:${error.reason}` : 'command:decision-invalid');
+  }
+  let transaction: F4RuntimeActionCommitOutcome;
+  try {
+    transaction = await input.runtime.commitAction({
+      state: input.state, operation: COMBAT_OPEN_ENCOUNTER_DECIDE_OPERATION_V1, receiptKind: COMBAT_OPEN_ENCOUNTER_DECIDE_OPERATION_V1,
+      codecNow: input.codecNow, derive: ({ draft, extensions }) => derive(draft, extensions),
+    });
+  } catch (error) {
+    return commandRefused(`transaction:threw:${error instanceof Error ? error.message : String(error)}`, 'read-only-reload');
+  }
+  return commandActionOutcome(transaction, read.record.sealDigest);
+}
+
+/** What the card shows about an open Command fight, re-simulated from the durable record (a reload lands on the same Break). */
+export type Arc6CommandBreakViewV1 =
+  | Readonly<{ kind: 'none' }>
+  | Readonly<{ kind: 'protected'; reason: string }>
+  | Readonly<{ kind: 'elsewhere'; defenderName: string }>
+  | Readonly<{ kind: 'pending'; record: CombatOpenEncounterRecordV1; leadId: string; battleId: string; decisionsSoFar: number;
+      /** null = every answer is appended but the settlement never landed (e.g. the tab closed): it settles with no further answer */
+      breakKind: 'low-hp' | 'next-fighter' | 'phase' | null; fighterName: string; fighterHp: number; fighterMax: number;
+      defenderName: string; defenderHp: number; defenderMax: number; nextName: string | null;
+      options: readonly EncounterDecisionV1[] }>;
+
+export function projectArc6CommandBreakV1(extensions: V5Extensions, encounter: GuardianPrimeEncounterV1 | null): Arc6CommandBreakViewV1 {
+  const read = readCombatOpenEncounterV1(extensions);
+  if (read.kind !== 'loaded') return Object.freeze({ kind: 'protected', reason: read.reason });
+  const record = read.record;
+  if (record === null) return Object.freeze({ kind: 'none' });
+  if (encounter === null || !isGuardianPrimeEncounterV1(encounter) || record.encounterDigest !== sha256Hex(encounter.witness)) {
+    return Object.freeze({ kind: 'elsewhere', defenderName: record.defenderName });
+  }
+  const result = simulateCombatOpenEncounterV1(record);
+  const lead = record.party[0]!.champion;
+  const leadId = lead.kind === 'player' ? ARC6_PLAYER_CHAMPION_ID : lead.creatureId;
+  if (result.status !== 'paused') {
+    return Object.freeze({ kind: 'pending', record, leadId, battleId: record.battleId, decisionsSoFar: record.decisions.length,
+      breakKind: null, fighterName: '', fighterHp: 0, fighterMax: 0, defenderName: record.defenderName,
+      defenderHp: result.defenderHp, defenderMax: result.defenderMax, nextName: null, options: Object.freeze([]) });
+  }
+  const b = result.pendingBreak;
+  return Object.freeze({
+    kind: 'pending', record, leadId, battleId: record.battleId, decisionsSoFar: record.decisions.length, breakKind: b.kind,
+    fighterName: record.party[b.fighterIndex]!.champion.name, fighterHp: Math.max(0, b.fighterHp), fighterMax: b.fighterMax,
+    defenderName: record.defenderName, defenderHp: b.defenderHp, defenderMax: b.defenderMax,
+    nextName: b.nextIndex === null ? null : record.party[b.nextIndex]!.champion.name, options: b.options,
+  });
+}
+
+/** Whether answering `decision` now FINISHES the fight (then it rides the settlement instead of its own append). */
+export function arc6CommandAnswerFinishesV1(record: CombatOpenEncounterRecordV1, decision: EncounterDecisionV1): boolean {
+  try { return simulateCombatOpenEncounterV1(record, [...record.decisions, decision]).status === 'finished'; } catch { return false; }
 }

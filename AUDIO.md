@@ -1,5 +1,69 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
+## D15 Stage 0 — audio plumbing (matches code as of 2026-09-25)
+Nick decided D15 (the in-house $0 plan, `audits/PROPOSALS_20260925/N5_AUDIO.md`). Stage 0 lands the plumbing; no new sound source ships.
+- **Measured loudness gate** (`port/v2/apps/game/src/soundkit/loudness.ts`):
+  - ITU-R BS.1770 K-weighting (libebur128's bilinear design, pinned to the standard's 48 kHz coefficients).
+  - Momentary (400 ms), short-term (3 s) and gated integrated loudness, plus 4× oversampled true peak.
+  - The kit's targets are one table, `LOUDNESS_TARGETS_V1`: creature and combat cues −14 LUFS short-term, music −18 integrated, ambience −22, UI −20, every class ≤ −1 dBTP.
+  - `admitLoudnessV1` returns a named refusal: silent, non-finite, too loud, too quiet (judged on the loudest 400 ms block for cues) or over the true-peak ceiling.
+  - Creature-cue derivation now ends with `limitToLoudnessV1`, which only ever ATTENUATES. Before, only sample peak was enforced, and a 0.891 sample peak overshot −1 dBTP between samples.
+  - Tests: `tests/soundkit-loudness.test.ts` (the standard's 997 Hz calibration, K-weighting, gating, inter-sample peak, the gate in both directions, and every derivable creature cue).
+- **The shipped pack's audio section and its 12 MiB cap** (`port/v2/apps/game/pwa-build.ts`, `SHIPPED_AUDIO_BYTE_LIMIT`).
+  - It is computed at `writeBundle` from the exact shipped inventory (runtime assets plus battle2 files), beside the 128 MiB pack gate. The worker and the emitted files are unchanged.
+  - Audio is any .opus/.ogg/.oga/.m4a/.aac/.mp3/.wav/.flac/.weba/.caf file.
+  - Exactly 12 MiB passes; one byte over fails the build with a named error. The cap grows only on Nick's word. Today the pack ships 0 audio bytes: the pilot cues are opt-in only.
+  - Test: `tests/pwa-audio-section.test.ts`.
+- **One voice per creature** (`port/v2/apps/game/src/soundkit/voice-identity.ts`): every path derives a creature's voice card here.
+  - The SEED comes from its resolver-v1 `AudioSignature`: the owned individual's exact projection, or `projectGenomeAudioSignatureV1` for a non-owned combatant. The two are identical for an unbred genome.
+  - The voice TEMPLATE comes from the genome (its Earth profile, or the procedural body family), never from the painting.
+  - The painted battle voices an owned champion through its ownership projection (`main.ts` passes `ownership`). Every cue derives from the card's own seed, so it sounds the same in every fight.
+  - The Compendium audition rows carry the same card (`voice`).
+  - A combatant with no resolvable signature (a partial genome) keeps the record-based voice.
+  - The oscillator Tame/Feed/Compendium call plans already key on the same signature; they become articulations of this card in Stage 4.
+  - Test: `battle2-wiring.test.ts` "one voice per creature". The stage card equals the Compendium card byte for byte, in two battles. Control: with the identity card switched off it fails.
+
+- **H1 codec decode check** (`port/v2/apps/game/src/device-probe.ts`, page `?deviceProbe=1`, dynamic import only):
+  - Five tiny genuine samples are embedded with their SHA-256 (`device-probe-codec-samples.ts`): a 440 Hz sine, 0.12 s, Opus in Ogg/WebM/CAF and AAC in M4A/ADTS.
+  - Each sample is verified against its hash (a mismatch is a FAIL), then decoded through the device's real `decodeAudioData`.
+  - PASS needs the real tone: 80–300 ms, at least one channel, RMS above 0.01. A rejected decode is UNSUPPORTED.
+  - Recommendation: `opus` if any Opus container passes, else `aac`, else `none` (N5: one codec, never both). `canPlayType` is recorded as provenance only.
+  - Offline: no network and no telemetry. **Copy results** gives Nick plain text to paste.
+  - Test: `tests/device-probe-codecs.test.ts` covers every outcome with a fake AudioContext, a corrupted-sample control (fails if the hash check is removed), and a source check that the page is reachable only through its flag's dynamic import.
+
+- **L1 Listening page** (`port/v2/apps/game/src/listening-review.ts`, `?audioReview=1` on a BUILT package such as the dev URL; dynamic import only; the dev server keeps Codex's production review on the same flag):
+  - Fixed order: 13 representative Earth creatures, one per voice archetype (`LISTENING_ROSTER_V1`), × the 11 creature cues = 143 items.
+  - Each item plays the cue the battle stage would play for that creature, byte for byte: its ONE voice card, `deriveCue(card, cue, sources, card.seed)`, today from the labelled placeholder library.
+  - Playback goes through the audio owner's explicit pilot gesture (`armNativePilotGesture` → `playPilotVoice`, decorative, `cf-pilot-listen-*`). Only a trusted press plays, and nothing plays with Sound off.
+  - Keep / Redo / Cut plus an optional note. Ratings live in guarded localStorage (`cf-listening-l1-v1`), never the save.
+  - **Copy results** gives a plain-text block: commit, pack digest (the package's own `preview.json` `contentSha256`, or `unavailable`), device UA, and the rated lines in order.
+  - Test: `tests/listening-review.test.ts`:
+    - the roster is truthful;
+    - the page's cue equals the battle cue;
+    - requests have the pilot shape;
+    - real presses give the exact copied text, and ratings survive a remount;
+    - controls: untrusted press, Sound off, text changes with ratings;
+    - a source check that the page is reachable only through its flag's dynamic import.
+  - Mutants killed: persistence removed; the trust gate removed.
+
+## Accessibility modes: Mono audio and Reduced intensity (matches code as of 2026-09-25)
+
+Settings has two toggles under Creature voices, and both are applied once at the master of the ONE shared runtime (`@cf/audio`
+`runtime.ts`: `setAccessibility`, `AUDIO_LIMITER_SETTINGS`, `AUDIO_REDUCED_INTENSITY_GAIN`), so they cover every category and voice.
+
+- **Mono audio:** the master gain node is set to an explicit single channel with `speakers` interpretation, so stereo is downmixed
+  as (L+R)/2 and both speakers play the same signal. Loudness is unchanged. Turning it off restores `max`/2.
+- **Reduced intensity:** the master plays at 0.55 × its saved gain (the pilot PCM player's existing level). The brick-wall limiter
+  (−1 dB, 20:1) is swapped for a gentle full-range compressor (−24 dB, knee 12, 4:1, release 0.25 s). This covers the lab's former
+  `dynamicRange` gap.
+- **Where the choice lives:** it is a **device preference, never the save** (`apps/game/src/audio-accessibility-prefs.ts`, key
+  `cf-v2-audio-accessibility/v1` in this device's storage). There is no save-shape change, no v5 settings segment and no
+  migration, and an imported save never changes how another device sounds. Storage that is absent or throws reads as off.
+- **How it applies:** changes apply live through the audio owner's `syncSettings`, and to every later context.
+- **Diagnostics:** `diagnostics().accessibility` reports both modes, and `effectiveMaster` includes the reduction. The lab
+  canonicalizer refuses a contradicting effective master.
+- **Still open:** captions beyond the listed counterparts, device evidence and human listening.
+
 ## September 15 audio production — matches code as of 2026-09-15
 
 The supplied handoff is now present verbatim in celestial-frontier-audio-handoff/. Nick's direct
@@ -462,8 +526,7 @@ by persistence rather than offered as a live v2 control; master Sound governs th
 package owns per-voice category-mix intent and restoration. Combat now requests a restrained
 music/ambience reduction with native gain transitions; the current implementation is not a human
 listening or physical-device acceptance result. Captions beyond the exact Tame toast, Feed status, Compendium audition status, generic
-biosphere status and Combat Chronicle counterparts, mono, dynamic range,
-reduced intensity, real-browser/physical-device audio-graph/heat/battery evidence and all HUMAN
+biosphere status and Combat Chronicle counterparts, real-browser/physical-device audio-graph/heat/battery evidence and all HUMAN
 listening/appeal/comfort judgments remain open. Arc 7/8 and Gate G are therefore **partial**, not
 closed.
 

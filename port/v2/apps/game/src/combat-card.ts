@@ -5,8 +5,15 @@
    durable action. The controller cannot plan a fight, mutate a save, play
    audio, or publish an unverified combat result. */
 import {
+  COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
+  ENCOUNTER_STANCES_V1,
   battleStats,
   runDuel,
+  runEncounterV1,
+  encounterHasGuardianPhaseV1,
+  ENCOUNTER_GUARDIAN_PHASE_V1,
+  type EncounterDecisionV1,
+  type EncounterStanceV1,
   type BattleStats,
   type CombatSettlementChampionV1,
   type GuardianPrimeEncounterV1,
@@ -20,6 +27,7 @@ import {
   projectArc6CombatChampionAvailabilityV1,
   projectArc6CombatChampionV1,
   type Arc6CombatChampionRosterV1,
+  type Arc6CommandBreakViewV1,
 } from './arc6-combat-action.js';
 
 export const COMBAT_CARD_READ_MODEL_SCHEMA = 'cf-v2-combat-card-read-model/v1' as const;
@@ -63,15 +71,106 @@ export interface CombatCardReadModelV1 {
   readonly championOptions: readonly CombatCardChampionOptionV1[];
   readonly selectedChampionId: string;
   readonly forecast: CombatCardForecastV1;
+  /** §20: a party (Guardians/Titans only) of up to 3 in relay order, lead first, each with a stance. */
+  readonly partyEnabled: boolean;
+  readonly party: readonly Readonly<{ id: string; stance: EncounterStanceV1 }>[];
+  /** The whole plan's odds (Auto), shown beside the lead's Balanced-alone odds when the plan differs from it; null when it does not. */
+  readonly planForecast: Readonly<{ probability: number; percent: string; band: CombatOddsBandV1; color: string; sampleSize: number }> | null;
+  /** §20: Auto (every Break answered for you) or Command (you answer each Break). Guardians/Titans only; absent = Auto. */
+  readonly mode?: 'auto' | 'command';
+  /** §20 Command: the pending Break of this world's open Command fight (re-simulated from the durable record); absent/null = none. */
+  readonly commandBreak?: CombatCardCommandBreakV1 | null;
   readonly stakes: string;
   readonly reward: string;
   readonly policy: string;
   readonly unavailableReason: string | null;
 }
 
+export interface CombatCardCommandBreakV1 {
+  readonly battleId: string;
+  readonly decisionsSoFar: number;
+  readonly headline: string;
+  /** Empty = every answer is in and the fight only needs to settle (one "Settle" press). */
+  readonly options: readonly Readonly<{ decision: EncounterDecisionV1; label: string }>[];
+}
+
+/** The card's words for one pending Break (pure; Main passes the durable view). */
+export function combatCardCommandBreakV1(view: Arc6CommandBreakViewV1): CombatCardCommandBreakV1 | null {
+  if (view.kind !== 'pending') return null;
+  const pct = (hp: number, max: number): number => Math.max(0, Math.round((hp / Math.max(1, max)) * 100));
+  const defender = `${view.defenderName} is at ${pct(view.defenderHp, view.defenderMax)}%.`;
+  if (view.breakKind === null) {
+    return Object.freeze({ battleId: view.battleId, decisionsSoFar: view.decisionsSoFar,
+      headline: `Every choice is made. ${defender} Settle the fight to see how it ends.`, options: Object.freeze([]) });
+  }
+  const headline = view.breakKind === 'phase'
+    ? `⚠ ${view.defenderName} is changing — at half strength it will hit ${Math.round((ENCOUNTER_GUARDIAN_PHASE_V1.dealt - 1) * 100)}% harder and take ${Math.round((1 - ENCOUNTER_GUARDIAN_PHASE_V1.taken) * 100)}% less. ${view.fighterName} is at ${pct(view.fighterHp, view.fighterMax)}%.`
+    : view.breakKind === 'low-hp'
+    ? `⏸ Break — ${view.fighterName} is down to ${pct(view.fighterHp, view.fighterMax)}%. ${defender}`
+    : `⏸ Break — ${view.fighterName} is out. ${defender}${view.nextName === null ? '' : ` ${view.nextName} is ready.`}`;
+  const label = (decision: EncounterDecisionV1): string => decision === 'swap' ? `Swap — send in ${view.nextName ?? 'the next fighter'}`
+    : decision === 'withdraw' ? 'Withdraw — leave the fight'
+      : view.breakKind === 'next-fighter' ? `Continue — send in ${view.nextName ?? 'the next fighter'}` : `Hold — ${view.fighterName} fights on`;
+  return Object.freeze({ battleId: view.battleId, decisionsSoFar: view.decisionsSoFar, headline,
+    options: Object.freeze(view.options.map((decision) => Object.freeze({ decision, label: label(decision) }))) });
+}
+
 export type CombatCardActionRequestV1 =
   | Readonly<{ readonly kind: 'select'; readonly championId: string }>
-  | Readonly<{ readonly kind: 'challenge'; readonly championId: string }>;
+  | Readonly<{ readonly kind: 'stance'; readonly index: number; readonly stance: EncounterStanceV1 }>
+  | Readonly<{ readonly kind: 'party-slot'; readonly index: number; readonly championId: string | null }>
+  | Readonly<{ readonly kind: 'challenge'; readonly championId: string }>
+  | Readonly<{ readonly kind: 'mode'; readonly mode: 'auto' | 'command' }>
+  /** §20 Command: answer the pending Break (null = settle a fight whose answers are all in) for the count the player saw. */
+  | Readonly<{ readonly kind: 'break'; readonly decision: EncounterDecisionV1 | null; readonly battleId: string; readonly expectedDecisions: number }>;
+
+export const COMBAT_PARTY_SLOTS_V1 = 3;
+export const COMBAT_STANCE_LABELS_V1: Readonly<Record<EncounterStanceV1, string>> = Object.freeze({
+  balanced: 'Balanced', press: 'Press — hit harder, take more', guard: 'Guard — take less, blunt openers', evade: 'Evade — dodge more, hit softer',
+});
+const PLAN_FORECAST_MEMO = new Map<string, NonNullable<CombatCardReadModelV1['planForecast']>>();
+/** Test seam: empties the plan-forecast memo. */
+export function clearCombatPlanForecastMemoV1(): void { PLAN_FORECAST_MEMO.clear(); }
+/** Key-sorted JSON (objects only; arrays keep order) — a memo key must not depend on property insertion order. */
+function canonicalJson(value: unknown): string {
+  if (value === null || typeof value !== 'object') return JSON.stringify(value) ?? 'undefined';
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
+  return `{${Object.keys(value as Record<string, unknown>).sort().map((k) => `${JSON.stringify(k)}:${canonicalJson((value as Record<string, unknown>)[k])}`).join(',')}}`;
+}
+
+/** The whole plan's Auto odds over deterministic sampled seeds (the same seed variation as the single forecast, across every fighter). */
+export function projectCombatPlanForecastV1(
+  members: readonly Readonly<{ champion: CombatSettlementChampionV1; stance: EncounterStanceV1 }>[],
+  encounter: GuardianPrimeEncounterV1,
+  sampleSize = 160,
+): NonNullable<CombatCardReadModelV1['planForecast']> {
+  const fighters = members.map(({ champion, stance }) => {
+    const projected = championCombatant(champion);
+    return { projected, stance, stats: projected.stats ?? battleStats(projected.genome as Genome) };
+  });
+  // The COMPLETE combat identity (S20 finding: a seed-only defender key reused a weaker region's odds for the same Guardian — 44 % shown,
+  // 11 % true): every fighter's genome, stats and stance; the defender's whole battle genome, kind, name and phase; the sample size.
+  const key = canonicalJson({ fighters: fighters.map((f) => ({ genome: f.projected.genome, stats: f.stats, stance: f.stance, sig: statsSignature(f.projected.genome.seed >>> 0, f.stats) })),
+    defender: { genome: encounter.defender.battleGenome, kind: encounter.defender.kind, name: encounter.defender.name, phase: encounterHasGuardianPhaseV1(encounter.defender.kind) }, sampleSize });
+  const memo = PLAN_FORECAST_MEMO.get(key);
+  if (memo !== undefined) return memo;
+  let wins = 0, decisive = 0;
+  for (let index = 0; index < sampleSize; index++) {
+    const result = runEncounterV1({ mode: 'auto',
+      defender: { name: encounter.defender.name, genome: encounter.defender.battleGenome as never, phase: encounterHasGuardianPhaseV1(encounter.defender.kind) },
+      party: fighters.map((f) => ({ name: f.projected.name, stance: f.stance, stats: f.stats,
+        genome: { ...f.projected.genome, seed: hashInt(f.projected.genome.seed >>> 0, index, 0x51ee) >>> 0 } as never })) });
+    if (result.status !== 'finished' || result.outcome === 'draw' || result.outcome === 'withdrawn') continue;
+    decisive++;
+    if (result.outcome === 'party') wins++;
+  }
+  const probability = decisive > 0 ? wins / decisive : 0.5;
+  const band = oddsBand(probability);
+  const out = Object.freeze({ probability, percent: oddsPercent(probability), band: band.band, color: band.color, sampleSize });
+  if (PLAN_FORECAST_MEMO.size > 200) PLAN_FORECAST_MEMO.clear();
+  PLAN_FORECAST_MEMO.set(key, out);
+  return out;
+}
 
 export interface CombatCardActionOutcomeV1 {
   readonly schema: typeof COMBAT_CARD_OUTCOME_SCHEMA;
@@ -239,13 +338,8 @@ function stakesFor(champion: CombatSettlementChampionV1): string {
   if (champion.kind === 'player') {
     return 'Loss wounds you but never kills you; your HP stops at 1.';
   }
-  const hurt = typeof champion.genome.hurt === 'number' ? champion.genome.hurt : 0;
-  if (champion.legacyBredLineage && hurt < 0.85) {
-    return 'First bred-line defeat: crawls home Critical. Fielding it Critical risks permanent loss.';
-  }
-  return champion.legacyBredLineage
-    ? 'Critical repeat defeat: this champion is permanently lost.'
-    : 'Defeat: this wild or unbred champion is permanently lost.';
+  /* §20 (Nick 2026-09-25): defeat is Recovery, never loss */
+  return `Defeat sends this champion home to rest for about ${Math.round(COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1 / 60_000)} minutes of play. It is never lost.`;
 }
 
 /** Project one truthful current card. No candidate other than the selected
@@ -259,6 +353,12 @@ export function projectCombatCardReadModelV1(input: Readonly<{
   readonly observedActivePlayMs: number;
   readonly selectedChampionId: string | null;
   readonly unavailableReason: string | null;
+  /** §20 plan: stances by slot (lead = 0) and the extra party slots (1, 2) chosen on the card; absent = lead alone, Balanced. */
+  readonly plan?: Readonly<{ stances: readonly EncounterStanceV1[]; partyIds: readonly (string | null)[] }>;
+  /** §20: Auto or Command (Guardians/Titans only; anything else plays Auto). */
+  readonly mode?: 'auto' | 'command';
+  /** §20 Command: this world's pending Break (from `combatCardCommandBreakV1`); absent = none. */
+  readonly commandBreak?: CombatCardCommandBreakV1 | null;
 }>): CombatCardReadModelV1 | null {
   const champions: Array<Readonly<{
     champion: CombatSettlementChampionV1;
@@ -309,6 +409,22 @@ export function projectCombatCardReadModelV1(input: Readonly<{
   const selectedIndex = requested >= 0 ? requested : firstEnabled >= 0 ? firstEnabled : 0;
   const selected = champions[selectedIndex]!.champion;
   const selectedOption = options[selectedIndex]!;
+  const partyEnabled = input.encounter.defender.kind === 'guardian' || input.encounter.defender.kind === 'titan';
+  const stanceAt = (slot: number): EncounterStanceV1 => {
+    const chosen = input.plan?.stances[slot];
+    return chosen !== undefined && (ENCOUNTER_STANCES_V1 as readonly string[]).includes(chosen) ? chosen : 'balanced';
+  };
+  const party: { id: string; stance: EncounterStanceV1 }[] = [{ id: selectedOption.id, stance: stanceAt(0) }];
+  if (partyEnabled) {
+    for (let slot = 1; slot < COMBAT_PARTY_SLOTS_V1; slot++) {
+      const id = input.plan?.partyIds[slot] ?? null;
+      if (id === null || party.some((m) => m.id === id)) continue;
+      const option = options.find((row) => row.id === id && !row.disabled);
+      if (option) party.push({ id: option.id, stance: stanceAt(slot) });
+    }
+  }
+  const members = party.map((m) => ({ champion: champions[options.findIndex((row) => row.id === m.id)]!.champion, stance: m.stance }));
+  const planDiffers = members.length > 1 || members[0]!.stance !== 'balanced';
   const defenderStats = battleStats(input.encounter.defender.battleGenome as Genome);
   const defenderLabel = input.encounter.defender.kind === 'titan'
     ? 'Elemental Titan' : input.encounter.defender.kind === 'guardian'
@@ -328,13 +444,20 @@ export function projectCombatCardReadModelV1(input: Readonly<{
     championOptions: Object.freeze(options),
     selectedChampionId: selectedOption.id,
     forecast: projectCombatCardForecastV1(selected, input.encounter),
+    partyEnabled,
+    party: Object.freeze(party.map((m) => Object.freeze(m))),
+    planForecast: planDiffers ? projectCombatPlanForecastV1(members, input.encounter) : null,
+    mode: partyEnabled && input.mode === 'command' ? 'command' : 'auto',
+    commandBreak: input.commandBreak ?? null,
     stakes: stakesFor(selected),
     reward: input.encounter.defender.kind === 'titan'
       ? 'Win: conquer the world, capture the Titan, claim its Prime Signature, earn exact Stardust and champion XP.'
       : input.encounter.defender.kind === 'guardian'
         ? 'Win: conquer the world, capture its Guardian, and earn exact Stardust and champion XP.'
         : 'Win: conquer the world and earn exact Stardust and champion XP.',
-    policy: 'Current conquest fields one champion. Party roles and retreat remain a named design gate; no hidden tactics are implied.',
+    policy: partyEnabled
+      ? 'Bring up to 3 fighters: they enter one at a time and the Guardian keeps its wounds between them. Auto plays every choice for you; rewards are the same either way. Command pauses at each Break for Hold, Swap or Withdraw, and Swap is never necessary. With a stance or a party, the Guardian changes at half health, announced at a Break first.'
+      : 'One champion fights this world. A stance trades damage for safety; Balanced is the classic fight.',
     unavailableReason: input.unavailableReason ?? selectedOption.disabledReason,
   });
 }
@@ -358,7 +481,27 @@ export class CombatCardController {
   #disposed = false;
   #onChange = (event: Event): void => {
     const target = event.target;
-    if (!(target instanceof HTMLSelectElement) || !target.matches('[data-combat-champion]')) return;
+    if (!(target instanceof HTMLSelectElement) || this.#pending !== null || this.#convergence) return;
+    if (target.matches('[data-combat-stance]')) {
+      const index = Number(target.dataset.combatStance), stance = target.value as EncounterStanceV1;
+      if (!Number.isSafeInteger(index) || index < 0 || index >= COMBAT_PARTY_SLOTS_V1 || !(ENCOUNTER_STANCES_V1 as readonly string[]).includes(stance)) return;
+      this.#onAction(Object.freeze({ kind: 'stance', index, stance }));
+      return;
+    }
+    if (target.matches('[data-combat-mode]')) {
+      const mode = target.value;
+      if ((mode !== 'auto' && mode !== 'command') || !this.#model?.partyEnabled) return;
+      this.#onAction(Object.freeze({ kind: 'mode', mode }));
+      return;
+    }
+    if (target.matches('[data-combat-party-slot]')) {
+      const index = Number(target.dataset.combatPartySlot), id = target.value === '' ? null : target.value;
+      if (!Number.isSafeInteger(index) || index < 1 || index >= COMBAT_PARTY_SLOTS_V1 || !this.#model?.partyEnabled) return;
+      if (id !== null && !this.#model.championOptions.some((row) => row.id === id && !row.disabled)) return;
+      this.#onAction(Object.freeze({ kind: 'party-slot', index, championId: id }));
+      return;
+    }
+    if (!target.matches('[data-combat-champion]')) return;
     const championId = target.value;
     if (!this.#model?.championOptions.some((row) => (
       row.id === championId && !row.disabled
@@ -368,6 +511,21 @@ export class CombatCardController {
   #onClick = (event: Event): void => {
     const target = event.target;
     if (!(target instanceof Element)) return;
+    const answer = target.closest<HTMLButtonElement>('[data-combat-break]');
+    if (answer !== null) {
+      const pendingBreak = this.#model?.commandBreak ?? null;
+      if (pendingBreak === null || this.#pending !== null || this.#convergence || answer.disabled) return;
+      const raw = answer.dataset.combatBreak ?? '';
+      const decision = raw === 'settle' && pendingBreak.options.length === 0 ? null
+        : pendingBreak.options.find((o) => o.decision === raw)?.decision;
+      if (decision === undefined) return;
+      const latch = Object.freeze({ championId: this.#model!.selectedChampionId, contextKey: this.#model!.contextKey });
+      this.#pending = latch;
+      this.#outcome = null;
+      this.#render();
+      this.#onAction(Object.freeze({ kind: 'break', decision, battleId: pendingBreak.battleId, expectedDecisions: pendingBreak.decisionsSoFar }));
+      return;
+    }
     const button = target.closest<HTMLButtonElement>('[data-combat-challenge]');
     if (button === null || this.#model === null || this.#pending !== null || this.#convergence) return;
     const option = this.#model.championOptions.find((row) => (
@@ -381,6 +539,7 @@ export class CombatCardController {
     });
     this.#outcome = null;
     this.#render();
+    /* the party and stances are Main's plan state (every 'stance'/'party-slot' change went to Main, which rendered this card from it) */
     this.#onAction(Object.freeze({ kind: 'challenge', championId: option.id }));
   };
 
@@ -458,6 +617,38 @@ export class CombatCardController {
     this.#listenersInstalled = false;
   }
 
+  #planHtml(model: CombatCardReadModelV1, pending: boolean): string {
+    const lock = pending || this.#convergence ? ' disabled' : '';
+    const stanceSelect = (slot: number, current: EncounterStanceV1): string =>
+      `<select data-combat-stance="${slot}" aria-label="Stance for fighter ${slot + 1}"${lock}>${ENCOUNTER_STANCES_V1.map((stance) =>
+        `<option value="${stance}"${stance === current ? ' selected' : ''}>${esc(COMBAT_STANCE_LABELS_V1[stance])}</option>`).join('')}</select>`;
+    let html = `<div class="combat-card-plan" data-combat-plan><label class="combat-card-label">Stance</label>${stanceSelect(0, model.party[0]?.stance ?? 'balanced')}`;
+    if (model.partyEnabled) {
+      const mode = model.mode ?? 'auto';
+      html += `<label class="combat-card-label">Play</label><select data-combat-mode aria-label="Auto or Command"${lock}>` +
+        `<option value="auto"${mode === 'auto' ? ' selected' : ''}>Auto — every choice made for you</option>` +
+        `<option value="command"${mode === 'command' ? ' selected' : ''}>Command — you decide at each Break</option></select>`;
+      for (let slot = 1; slot < COMBAT_PARTY_SLOTS_V1; slot++) {
+        const member = model.party[slot];
+        const taken = new Set(model.party.filter((_, i) => i !== slot).map((m) => m.id));
+        const opts = model.championOptions.filter((row) => !row.disabled && !taken.has(row.id))
+          .map((row) => `<option value="${esc(row.id)}"${member?.id === row.id ? ' selected' : ''}>${esc(row.label)} · ${row.power} power</option>`).join('');
+        html += `<label class="combat-card-label">Fighter ${slot + 1} (enters when the one before falls)</label>` +
+          `<select data-combat-party-slot="${slot}" aria-label="Party fighter ${slot + 1}"${lock}><option value="">— none —</option>${opts}</select>` +
+          (member ? stanceSelect(slot, member.stance) : '');
+      }
+    }
+    return `${html}</div>`;
+  }
+
+  #breakHtml(pendingBreak: CombatCardCommandBreakV1, pending: boolean): string {
+    const lock = pending || this.#convergence ? ' disabled' : '';
+    const buttons = pendingBreak.options.length === 0
+      ? `<button type="button" data-combat-break="settle" data-focus-key="combat-break-settle"${lock}>Settle the fight</button>`
+      : pendingBreak.options.map((o) => `<button type="button" data-combat-break="${o.decision}" data-focus-key="combat-break-${o.decision}"${lock}>${esc(o.label)}</button>`).join('');
+    return `<div class="combat-card-break" data-combat-break-panel role="group" aria-label="Command Break"><p class="combat-card-break-headline">${esc(pendingBreak.headline)}</p>${buttons}</div>`;
+  }
+
   #render(): void {
     if (this.#mount === null) return;
     const model = this.#model;
@@ -482,12 +673,15 @@ export class CombatCardController {
       `<p class="combat-card-defender"><b>${esc(model.defender.label)}:</b> ${esc(model.defender.name)} · tier ${model.defender.tier} · ${model.defender.power} power · ✧ ${esc(model.defender.ability)}</p>` +
       '<label class="combat-card-label" for="combat-champion-select">Choose your champion</label>' +
       `<select id="combat-champion-select" data-combat-champion data-focus-key="combat-champion"${pending || this.#convergence ? ' disabled' : ''}>${options}</select>` +
-      `<div class="combat-card-forecast" style="--combat-odds-color:${esc(model.forecast.color)}"><b>${esc(model.forecast.band)} · ${esc(model.forecast.percent)}</b> over ${model.forecast.sampleSize} deterministic simulations</div>` +
+      this.#planHtml(model, pending) +
+      `<div class="combat-card-forecast" style="--combat-odds-color:${esc(model.forecast.color)}"><b>${esc(model.forecast.band)} · ${esc(model.forecast.percent)}</b> ${model.planForecast === null ? '' : 'Balanced alone '}over ${model.forecast.sampleSize} deterministic simulations</div>` +
+      (model.planForecast === null ? '' : `<div class="combat-card-forecast" data-combat-plan-forecast style="--combat-odds-color:${esc(model.planForecast.color)}"><b>Your plan: ${esc(model.planForecast.band)} · ${esc(model.planForecast.percent)}</b> (Auto) over ${model.planForecast.sampleSize} simulations</div>`) +
       `<p class="combat-card-why">${esc(model.forecast.why)}</p>` +
       `<p class="combat-card-stakes"><b>Risk:</b> ${esc(model.stakes)}</p>` +
       `<p class="combat-card-reward"><b>Outcome:</b> ${esc(model.reward)}</p>` +
       `<p class="combat-card-policy">${esc(model.policy)}</p>` +
-      `<button type="button" data-combat-challenge data-focus-key="combat-challenge"${disabled ? ' disabled' : ''}>${pending ? 'Settling duel…' : `Challenge ${esc(model.defender.name)}`}</button>` +
+      (model.commandBreak ? this.#breakHtml(model.commandBreak, pending) :
+      `<button type="button" data-combat-challenge data-focus-key="combat-challenge"${disabled ? ' disabled' : ''}>${pending ? 'Settling duel…' : `Challenge ${esc(model.defender.name)}`}</button>`) +
       `<p class="combat-card-status" role="status" aria-live="polite"${this.#convergence ? ' data-convergence="read-only-reload"' : ''}>${esc(status)}</p>`;
     this.#mount.setAttribute('aria-busy', pending ? 'true' : 'false');
   }

@@ -16,6 +16,10 @@ import { RUN_UP_FRACTION } from './arena.js';
 export const APPROACH_CAP_MS = 500, RETURN_CAP_MS = 500, IDLE_TAIL_MS = 600, CURSOR_BLINK_MS = 250;
 /** A2: the approach walks at most this long in whole gait cycles (≈ 2 crab cycles); the lunge covers the rest. */
 export const APPROACH_CADENCE_CAP_MS = 900;
+/** The damage number's highest allowed CENTRE (normalized frame height): the 34 px glyph at its back-out pop overshoot plus its 4 px stroke is
+ * ~23 px above its centre on the 576 px frame, plus a margin. A high flyer's number starts low enough that its whole rise stays inside
+ * (C15 2026-09-25: the Dragonfly's damage 9 was clipped above the viewport — dragonfly-repair-03 turn0-hit-reaction-50.png). */
+export const NUMBER_TOP_MIN = 0.05;
 export const NUMBER_RISE = 0.07, NUMBER_LIFT = 0.30, DODGE_LEAD_MS = 120, CONTACT_GAP = 0.02, RUN_UP_MIN_FRACTION = 0.15;
 export type Side = 'left' | 'right';
 export type TurnOutcome = 'hit' | 'dodge' | 'miss';
@@ -31,6 +35,9 @@ export interface TurnArena {
   readonly groundLineY: number; readonly stands: Readonly<{ left: NormalizedPoint; right: NormalizedPoint }>;
   /** Half the standing width of each combatant at stage scale, as a fraction of frame width; the run-up stops at contact. Absent → RUN_UP_FRACTION. */
   readonly halfWidths?: Readonly<{ left: number; right: number }>;
+  /** Each combatant's painted box centre at rest (frame-width fraction; the stage fills it). With it the run-up is measured box to box and
+   * travels all the way to contact (C15 full-stage travel); without it the old root-distance rule applies unchanged. */
+  readonly centresX?: Readonly<{ left: number; right: number }>;
   /** Each combatant's painted box at rest (frame-height fractions: centre and top). The stage fills it (like halfWidths). A target that does not
    * stand on the ground line (a flyer, a swimmer) takes the impact and the damage number at its BODY, not on the dry ground line (review
    * 2026-09-24: a Fruit Bat's hit burst landed on the ground under it). Absent, or a grounded target → the ground line as before. */
@@ -130,7 +137,9 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
   const massA = A.card ? A.card.massClass.multiplier : A.mass, massT = T.card ? T.card.massClass.multiplier : T.mass;
   const facing = facingOf(A.side), standA = input.arena.stands[A.side], standT = input.arena.stands[T.side];
   const standDistance = Math.abs(standT.x - standA.x), hw = input.arena.halfWidths;
-  const runUpLength = hw ? Math.min(RUN_UP_FRACTION * standDistance, Math.max(RUN_UP_MIN_FRACTION * standDistance, standDistance - hw[A.side] - hw[T.side] - CONTACT_GAP)) : RUN_UP_FRACTION * standDistance;
+  const cx = input.arena.centresX, boxDistance = cx ? Math.abs(cx[T.side] - cx[A.side]) : standDistance;
+  const runUpLength = hw && cx ? Math.max(RUN_UP_MIN_FRACTION * standDistance, boxDistance - hw[A.side] - hw[T.side] - CONTACT_GAP)
+    : hw ? Math.min(RUN_UP_FRACTION * standDistance, Math.max(RUN_UP_MIN_FRACTION * standDistance, standDistance - hw[A.side] - hw[T.side] - CONTACT_GAP)) : RUN_UP_FRACTION * standDistance;
   const runUp = runUpLength * facing;
   const hit = input.outcome === 'hit', targetFaints = hit && input.targetFaints === true;
   const seedA = (input.seed ^ A.seed) >>> 0, seedT = (input.seed ^ T.seed ^ 0x9e3779b9) >>> 0;
@@ -151,7 +160,7 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
   const bodyPoint = (side: Side, stand: NormalizedPoint): NormalizedPoint => { const b = input.arena.bodies?.[side]; return b && Math.abs(stand.y - input.arena.groundLineY) >= 1e-9 ? { x: stand.x, y: Math.min(0.98, Math.max(0.02, b.centreY)) } : stand; };
   const targetBody = input.arena.bodies?.[T.side], grounded = !targetBody || Math.abs(standT.y - input.arena.groundLineY) < 1e-9;
   const impactY = grounded ? input.arena.groundLineY : Math.min(0.98, Math.max(0.02, targetBody.centreY));
-  const numberY = grounded ? input.arena.groundLineY - NUMBER_LIFT : Math.max(0.04, targetBody.topY - 0.04);
+  const numberY = grounded ? input.arena.groundLineY - NUMBER_LIFT : Math.max(NUMBER_TOP_MIN + NUMBER_RISE, targetBody.topY - 0.04);
   // A2 cadence: whole gait cycles (unmodified gait duration) up to the cap; feet planted; the lunge does the rest
   let cadence: TurnCadence | null = null;
   if (A.cadence) {
@@ -242,7 +251,35 @@ export function sampleTurn(plan: TurnPlan, ms: number): StageSample {
   else if (ms >= b.returnEnd && plan.targetFaints) { aPose = addPose(aPose, sampleClip(c.attacker.after, ms - b.returnEnd)); aCtx = contextOf(c.attacker.after, ms - b.returnEnd); } // victory; otherwise `after` is the idle already underneath
   // Target: idle underneath (frozen through hitstop); reaction on top; faint holds its final pose.
   let tPose = sampleClip(c.target.idle, ic), tCtx = contextOf(c.target.idle, ic);
-  if (c.target.reaction && ms >= b.reactionStart) { tPose = addPose(tPose, sampleClip(c.target.reaction, ms - b.reactionStart)); tCtx = contextOf(c.target.reaction, ms - b.reactionStart); }
+  if (c.target.reaction && ms >= b.reactionStart) {
+    const elapsed = ms - b.reactionStart;
+    // Faint holds its authored final pose. Fade the underlying idle smoothly
+    // during the reaction so it cannot keep pushing a planted fallen rig.
+    if (plan.targetFaints) {
+      const gain = 1 - EASE_FN['sine-in-out'](clamp01(elapsed / clipMs(c.target.reaction)));
+      tPose = Object.fromEntries(Object.entries(tPose).map(([joint, value]) => [joint, {
+        rotation: value.rotation * gain, dx: (value.dx ?? 0) * gain, dy: (value.dy ?? 0) * gain,
+      }]));
+    }
+    let reactionPose = sampleClip(c.target.reaction, elapsed);
+    if (plan.targetFaints) {
+      // The authored material tail can reset a secondary on its last key.
+      // Settle continuously into the exact final pose during the final 120 ms.
+      const duration = clipMs(c.target.reaction), settleMs = Math.min(120, duration * 0.2);
+      const gain = EASE_FN['sine-in-out'](clamp01((elapsed - duration + settleMs) / settleMs));
+      if (gain > 0) {
+        const finalPose = sampleClip(c.target.reaction, duration);
+        reactionPose = Object.fromEntries([...new Set([...Object.keys(reactionPose), ...Object.keys(finalPose)])].map(joint => {
+          const a = reactionPose[joint], z = finalPose[joint];
+          return [joint, { rotation: (a?.rotation ?? 0) * (1 - gain) + (z?.rotation ?? 0) * gain,
+            dx: (a?.dx ?? 0) * (1 - gain) + (z?.dx ?? 0) * gain,
+            dy: (a?.dy ?? 0) * (1 - gain) + (z?.dy ?? 0) * gain }];
+        }));
+      }
+    }
+    tPose = addPose(tPose, reactionPose);
+    tCtx = contextOf(c.target.reaction, elapsed);
+  }
   // Impact presentation (hit only): flash two frames then 120 fade; shake 6 px × mass decaying over 180; number pop/rise/fade.
   const hit = plan.outcome === 'hit', since = ms - b.impactAt;
   const white = FLASH.whiteFrames * SMEAR_FRAME_MS;

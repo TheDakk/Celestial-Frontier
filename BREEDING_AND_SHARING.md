@@ -1,5 +1,23 @@
 # Celestial Frontier — Breeding & Sharing
 
+## v2 companion care and bond — D13 stage 1 (matches code as of 2026-09-25)
+
+Nick decided D13 (N3 Option B) on 2026-09-25. Owner module: `packages/domain/acquisition/src/companion-care.ts` (pure, deterministic).
+- **Tastes** are v1.8.9 `faunaTastes`, lifted verbatim (parity-tested against the tracked legacy script): two liked flavours and one disliked,
+  seeded by the genome. A flora's flavour is v1 `floraStat`. A flavour stays **hidden** on the card until this companion has eaten a flora
+  of it (its `taste:<flavour>` bond memory).
+- **Feed policy v2** — no roll, no companion poison: Loved +2 `fed` (+3 for flora tier ≥ 4) and mends 0.25 `hurt`; Neutral +1 and 0.10;
+  Disliked 0 and harmless (the flora is still eaten). First-time care XP is keyed on bond memories: +1 for the first meal, +2 per newly tasted
+  flavour (≤ 11 per companion for life). The 200 `fed` cap is unchanged. Explorer meals keep their own poison.
+- **Bond** levels 0–5 (Wary 0, Familiar 3, Trusted 8, Devoted 15, Kindred 25, Soulbound 40 memories) count distinct firsts, never decay, and
+  unlock sidegrades only — never combat stats. `bond: null` is level 0.
+- **Rest** heals on the active-play clock: 2 active minutes per 0.1 `hurt`, rounded up, at most 20. One receipt (`arc5-companion-rest`) SEALS the
+  heal (`hurt` → 0) and assigns `{kind:'mission', missionId:'rest:<readyAt>'}` with `readyAt` = the committed active-play snapshot + the duration.
+  `projectCompanionAvailabilityV1` releases it at that exact boundary, like Recovery; until then it locks breed, combat, dispatch and Feed. So every
+  reader of `hurt` agrees at every moment and there is no deferred writer (a deliberate refinement of N3's "applied by the next receipt write").
+  Nothing heals while the game is closed; the device clock never enters. The first recovery from Injured or worse is the bond memory
+  `recovered:injured`. Owners: `rest.ts` (domain), `arc5-rest-action.ts` (app).
+
 ## Requested time-aware art and sharing — source reviewed 2026-09-08
 
 Nick approves the full landfall painting direction and requests procedural coverage, planetary
@@ -87,7 +105,8 @@ This is a recorded design requirement, not implemented climate/physics or all-wo
 > Eligibility, both result successors and complete-save capacity are certified before the one
 > `breedOutcome` draw. Every settled attempt is nonlethal: both parents remain owned and enter
 > F4-active-play Recovery for eight minutes on success or two minutes on failure. Recovery blocks
-> breed, combat and dispatch. Success admits the existing child successor with exactly half the
+> breed, combat and dispatch. *(2026-09-25 fix: Recovery never blocks Feed. A recovering or recovered parent eats and keeps its
+> Recovery. Only a mission blocks a meal: `preflightArc5FeedV1` and the Compendium Feed read model agree.)* Success admits the existing child successor with exactly half the
 > lower parent's bounded `fed` and gives that newborn **+2 XP**. It adds the one-time **+5 XP** only
 > when the exact unordered parent-species pair has never paid; failure creates no child and changes
 > no XP-first authority. New V2 firsts use one collision-resistant SHA-256 digest over the sorted
@@ -339,6 +358,15 @@ ingress code.
 > polish only**. Its sealed UNREVIEWED fields remain preparation metadata; the
 > representative matrix still does not prove every possible bloodline, and formal
 > reset certification remains open under `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+
+## v2 creature codes: share and friendly duel — matches code as of 2026-09-25
+
+- **Where.** A Compendium species detail you own has the ⚔ Friendly duel control (`friendly-duel.ts`).
+- **Share code.** The control now offers **Share code** for the selected companion (v1.8.9 `shareCreature`). It uses v1's codec verbatim: `encodeCreature({ genome, name })` gives `CFB-…`, named with the companion's nickname or else the species name.
+- **Champion code.** A companion with XP also offers **🏆 Champion code** (v1.6 `shareChampion`). It carries the level and decodes as an exhibition challenger.
+- **Delivery.** The code appears in a read-only box and is also offered to the clipboard; the box reads "Copied ✓" when the copy succeeds. Sharing writes nothing to the save.
+- **Round trip.** A friend pastes the code into their own Duel input. The decoded challenger has the same name, seed and battle stats (injuries and level are stripped unless it is a champion code).
+- **Test:** `tests/d16-cfb-export-outcome.test.ts`.
 
 ## 1. Overview
 Two coupled systems:

@@ -27,12 +27,12 @@
  * paint-skin fits (Civet + five crabs) stage as parts rigs through Codex's owner and contact solver; the habitat picks each
  * side's medium/band on the battle's worlds (labelled dry Earth-temperate default without world context; UNSUPPORTED keeps
  * the Chronicle path with the reason); each staged attack is Codex's `compileAnatomyAttack` when admitted, else the family
- * delivery clip, labelled. Not yet done here: synchronising turns to the Chronicle cue cadence (the study plays the
+ * delivery clip, labelled. C13 (2026-09-25): each parts fit's raw bytes pass the bundled build pin's preflight
+ * (`battle2-master-pin-admission.ts`) before any decode, mask fetch, morph-cache lease or master fetch. Not yet done here: synchronising turns to the Chronicle cue cadence (the study plays the
  * transcript through at its own pace); a crab cannot attack until R3 admits pinch (labelled per side in `status().attacks`). */
 import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-contact-math.mjs';
 /** The shipped battle2 assets (`apps/game/public/battle2/…`, mirrored by `tools/morph/build-shipped-battle2.mjs`) keep the
  * proof folders' relative layout, so every path below resolves against this recipe URL unchanged. */
-export const repoPathOfAsset = (assetPath:string):string => assetPath.startsWith('../') ? 'audits/'+assetPath.slice(3) : assetPath;
 const arenaRecipeUrl = '/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json';
 import { speciesVisualKey } from '@cf/art/species-identity';
 import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, lakeArenaWorld, selectHabitatArena, turnPlanInputFromTranscriptEvent,
@@ -41,7 +41,7 @@ import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShi
 // parts-rig (and Codex's pixi-backed creature-rig behind it) is imported by path, not through battle2/index: the root
 // test program must stay free of pixi.js types (see apps/game/tsconfig.json _skipLibCheckReason).
 import { createPartsRig } from './battle2/parts-rig.js';
-import { compileAnatomyAttack } from './anatomy-attacks.js';
+import { attackRepertoire, compileAnatomyAttack, type WeaponDeclaration } from './anatomy-attacks.js';
 import type { ArenaWorld } from './battle-habitat.js';
 import { individualFromGenomeV1 } from './morph/morph-individual.js';
 import { morphAtlasCache, morphAtlasKey, type MorphAtlasLease } from './morph/morph-atlas-cache.js';
@@ -59,11 +59,16 @@ import { createPixiEffectHost, type EffectParticleLike, type EffectSpriteLike, t
 import { compileBodyCard, MotionCompileError, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from './motion/body-card.js';
 import { createTurnCueSink, type TurnAudioRuntime, type TurnCueSink } from './soundkit/turn-audio.js';
 import { createCreatureVoiceHook, type CreatureVoiceHook } from './soundkit/creature-voices.js';
+import { creatureVoiceCardV1, ownedCreatureVoiceCardV1 } from './soundkit/voice-identity.js';
+import type { VoiceCard } from './soundkit/voice-card.js';
+import type { CreatureInstanceId, OwnershipStateV2 } from '@cf/domain-acquisition';
 import { synthesizePlaceholderLibrary } from './soundkit/placeholder-archetype.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
+import { BATTLE2_SWAP_BEAT_MS_V1, BATTLE2_SWAP_BEAT_REDUCED_MS_V1, battle2SwapBeatsV1, type Battle2SwapBeatV1 } from './battle2/swap-beats.js';
+import type { CombatSettlementPlanV1 } from '@cf/domain-combatcore';
+import { getBattle2MasterPin } from './battle2-master-pins.generated.js';
+import { Battle2PinRefusal, gunzipTransportBytes, preflightBattle2PinnedBytesV1 } from './battle2-master-pin-admission.js';
 import { placeCombatants } from './battle2/placement.js';
-import {getBattle2MasterPin} from './battle2-master-pins.generated.js';
-import {preflightBattle2PinnedBytesV1,gunzipTransportBytes,Battle2PinRefusal} from './battle2-master-pin-admission.js';
 import { MASS_BY_SIZE_INDEX, MASS_CLASS } from './motion/timing.js';
 import type { SpeciesArtLoader } from './species-art-loader.js';
 import { loaderPortrait } from './species-portrait.js';
@@ -85,6 +90,9 @@ export const BATTLE2_ASSETS = Object.freeze({
 });
 /** A repo-relative `record.source` (e.g. `audits/X/master.png`) as an asset path relative to the arena proof directory. */
 export const auditAssetPath = (repoRelative: string): string => { if (!repoRelative.startsWith('audits/')) throw new Error(`battle2: record source ${repoRelative} is not under audits/`); return '../' + repoRelative.slice('audits/'.length); };
+/** The inverse (C13 pin paths): an arena-relative `../X` asset path as its repo-relative `audits/X`; anything else is returned
+ * unchanged and therefore fails the pin's canonical-path equality (fail closed, never resolved). */
+export const repoPathOfAsset = (assetPath: string): string => (assetPath.startsWith('../') ? 'audits/' + assetPath.slice(3) : assetPath);
 export const PLAYER_PLACEHOLDER_LABEL = 'player champion placeholder (nameplate; no creature art)' as const;
 
 /** The gate main.ts tests in source text; kept here so the wiring and its test agree on the spelling. */
@@ -118,8 +126,10 @@ export interface Battle2Champion { readonly kind: string; readonly name: string;
 export interface Battle2SettlementLike {
   readonly battleId: string;
   readonly champion: Battle2Champion;
-  readonly encounter: { readonly defender: { readonly battleGenome: Readonly<Record<string, unknown>> } };
+  readonly encounter: { readonly defender: { readonly battleGenome: Readonly<Record<string, unknown>>; readonly kind?: string } };
   readonly transcript: { readonly log: readonly Readonly<Record<string, unknown>>[] };
+  /** §20 Guardian party: the settled plan's party block; the stage plays one relay beat per earlier fighter first. */
+  readonly party?: CombatSettlementPlanV1['party'];
 }
 export interface Battle2StudyInput {
   readonly mount: HTMLElement;
@@ -140,6 +150,8 @@ export interface Battle2StudyInput {
   /** Nick 2026-09-24: the stage paces the Chronicle log — each transcript row is released at its turn's impact (every row on
    * finish, failure or dispose). main.ts passes a gate only when motion is on; absent = the log keeps its own cadence. */
   readonly pacer?: CombatChroniclePacerGateV1 | null;
+  /** D15 Stage 0: the live ownership state, so an owned champion speaks with the voice its own AudioSignature gives it everywhere else. */
+  readonly ownership?: OwnershipStateV2 | null;
   readonly records?: readonly ResolvedAnatomyRecord[];
   /** Portrait art for combatants without a landmark record (default: the species art loader's 132 px thumb). */
   readonly portrait?: (genome: Readonly<Record<string, unknown>>) => Promise<Battle2Image>;
@@ -162,6 +174,10 @@ export interface Battle2Status {
   readonly audio: string;
   /** Per-side creature voice (B5): archetype, material and pitch, or why the side is silent. */
   readonly voices: Readonly<{ left: string | null; right: string | null }>;
+  /** D15 Stage 0 diagnostics: each side's ONE voice card as the stage voices it (null = no voice). */
+  readonly voiceCards: Readonly<{ left: VoiceCard | null; right: VoiceCard | null }>;
+  /** §20: relay beats before the decisive leg (one per earlier fighter) and the one showing (-1 before, = beats when done). */
+  readonly beats?: Readonly<{ count: number; index: number; text: string | null }>;
   /** E1: the habitat arena selection (world, medium per side, source), or null before it ran / when it refused. */
   readonly arena: string | null;
   /** E1: per side, the anatomy attack in play (`verb (contactJoint)`) or why the family delivery clip is used. */
@@ -266,13 +282,24 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   let app: Battle2AppLike | null = null, stage: BattleStage | null = null, ticking = false, disposed = false, cueSink: TurnCueSink | null = null;
   const audioSummary = (): string => (cueSink ? `${cueSink.log.length} cues: ${cueSink.log.map((e) => `${e.cueId}=${e.result}`).join(', ')}` : 'none');
   let voices: CreatureVoiceHook | null = null;
-  const status = (): Battle2Status => Object.freeze({ phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }) });
+  let beats: readonly Battle2SwapBeatV1[] = [], beatIndex = -1, beatStart = 0, beatCaption: StageTextLike | null = null;
+  const beatMs = input.reducedMotion ? BATTLE2_SWAP_BEAT_REDUCED_MS_V1 : BATTLE2_SWAP_BEAT_MS_V1;
+  const status = (): Battle2Status => Object.freeze({ beats: Object.freeze({ count: beats.length, index: beatIndex, text: beatIndex >= 0 && beatIndex < beats.length ? beats[beatIndex]!.text : null }), phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }), voiceCards: Object.freeze({ left: voices?.cards.left ?? null, right: voices?.cards.right ?? null }) });
   const setPhase = (next: Battle2Phase, why: string | null = null): void => { phase = next; reason = why; section.dataset.battle2Status = next; if (why) section.dataset.battle2Reason = why; };
   const tickUnguarded = (): void => {
     if (disposed || !stage || !app) return;
     if (!input.mount.isConnected || section.parentElement !== input.mount) { dispose('mount left the document'); return; }
     ticks++;
     const play = (i: number): void => { turnStart = input.clock(); impactAt = stage!.play(turns[i]!).beats.impactAt; section.dataset.battle2Turn = String(i); };
+    // §20 relay beats: each earlier party fighter's exit holds a captioned beat before the decisive leg's first turn
+    if (turnIndex < 0 && beatIndex < beats.length) {
+      if (beatIndex < 0 || input.clock() - beatStart >= beatMs) {
+        beatIndex++; beatStart = input.clock();
+        if (beatIndex < beats.length && beatCaption) { beatCaption.text = beats[beatIndex]!.text; section.dataset.battle2Beat = String(beatIndex); }
+      }
+      if (beatIndex < beats.length) { stage.tick(); app.renderer.render(app.stage); return; }
+      if (beatCaption) beatCaption.visible = false;
+    }
     if (turnIndex < 0) { turnIndex = 0; play(0); }
     const frame = stage.tick();
     if (ticks % 30 === 0) section.dataset.battle2Ticks = String(ticks); // smoke diagnostics (cheap)
@@ -332,7 +359,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const texture = (img: Battle2Image): EffectTextureLike => pixi.Texture.from(img.source);
     const champion = input.settlement.champion, championGenome = champion.kind === 'owned-fauna' && champion.genome ? champion.genome : null;
     const rigContainer = (): RigContainerLike => new pixi.Container();
-    const buildRig = async (side: 'left' | 'right', name: string, genome: Readonly<Record<string, unknown>> | null): Promise<{ rig: BattleRigV1; card: BodyCard | null; mass: number; seed: number }> => {
+    const buildRig = async (side: 'left' | 'right', name: string, genome: Readonly<Record<string, unknown>> | null): Promise<{ rig: BattleRigV1; card: BodyCard | null; mass: number; seed: number; declaration?: WeaponDeclaration }> => {
       const seed = genomeSeed(genome, `${input.settlement.battleId}:${side}:${name}`);
       const record = matchRecord(records, genome);
       if (record) {
@@ -363,8 +390,10 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
             if (morph.atlasPixels) { const lease = await morphAtlasCache.acquire(morphAtlasKey(record.recipeHash ?? record.identity.speciesVisualKey, speciesVisualKey(genome as Record<string, unknown>), morph.marking), async () => (await decodeMorphedAtlas(atlas, record as unknown as CreatureRigRecordV1, binding, morph.atlasPixels!)).texture); atlasLeases.push(lease);
               paintRig = await loadPinnedCreatureRigV1(pinnedInput, async () => lease.texture, { borrowedAtlas: true, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) }); }
             else paintRig = await loadPinnedCreatureRigV1(pinnedInput, undefined, morph.jointScale ? { jointScale: morph.jointScale } : {});
-            const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height), binding, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) });
-            return { rig, card, mass: card.massClass.multiplier, seed };
+            const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height), binding, ...(fit.contactSupports ? { contactSupports: fit.contactSupports } : {}), ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) });
+            // C15: a painter weapon declaration (hash-bound to this record) rides with its fit into compileAnatomyAttack
+            const declaration = fit.weaponDeclaration ? await assets.json(fit.weaponDeclaration) as WeaponDeclaration : undefined;
+            return { rig, card, mass: card.massClass.multiplier, seed, ...(declaration ? { declaration } : {}) };
           } catch (error) { throw new Error(`${name}: pinned parts rig unavailable (${error instanceof Error ? error.message : String(error)})`); }
         } else if (fit) skipped.push(`${name}: parts rig needs raw asset bytes; fixture fallback`);
         try {
@@ -407,9 +436,15 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const stagedLayout = placed.layout;
     const mediums = { A: placed.habitat.stands.left.medium, B: placed.habitat.stands.right.medium } as const;
     // E1 §1.2: one anatomy attack per staged attack, chosen deterministically by Codex's compiler; a refusal leaves the family delivery clip and is labelled once.
+    // A DECLARED weapon fails closed (Codex's native harness law): the declared repertoire is proven here, before play, so a refusal
+    // keeps the Chronicle path with its reason instead of silently staging the generic family clip (and never throws inside the ticker).
+    for (const [s, built] of [['A', left], ['B', right]] as const) if (built.declaration && built.card) {
+      const rep = attackRepertoire(built.card, mediums[s], built.declaration);
+      if (rep.status !== 'READY') { left.rig.dispose(); right.rig.dispose(); throw new Error(`battle2: declared weapons refused for ${built.card.identity.earthName ?? 'a painted record'} (${rep.rejected.map((r) => `${r.verb}: ${r.reason}`).join(', ')})`); }
+    }
     const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => {
       const card = side === 'A' ? left.card : right.card, key = side === 'A' ? 'left' : 'right'; if (!card) return null;
-      try { const r = compileAnatomyAttack(card, mediums[side], ordinal); attackLabels[key] = `${r.attack.verb} (${r.attack.contactJoint})`; return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; }
+      try { const r = compileAnatomyAttack(card, mediums[side], ordinal, undefined, (side === 'A' ? left : right).declaration); attackLabels[key] = `${r.attack.verb} (${r.attack.contactJoint})`; return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; }
       catch (error) { attackLabels[key] ??= `family delivery clip (no admitted anatomy move: ${error instanceof Error ? error.message : String(error)})`; return null; }
     };
     const phaseTextures = new Map<string, Promise<EffectTextureLike>>();
@@ -422,9 +457,16 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const style = { fontFamily: 'system-ui', fontSize: 34, fontWeight: '700', fill: '#fff2c8', stroke: { color: '#2a1a0a', width: 4 } };
     const factory: BattleStageFactory = { container: () => new pixi.Container(), sprite: (t) => new pixi.Sprite(t), text: (t) => new pixi.Text({ text: t, style, anchor: 0.5 }), graphics: () => new pixi.Graphics() };
     // B5: one voice per side from its record (or genome), derived through the A4 engine from the labelled placeholder archetype until C3 lands.
+    // D15 Stage 0: each side's ONE voice card (voice-identity.ts) — an owned champion through its exact ownership projection (the
+    // AudioSignature Tame, Feed and the Compendium resolve), anyone else from its genome-only signature; a player has no creature voice
+    const championId = (champion as { creatureId?: unknown }).creatureId;
+    const championVoice = champion.kind === 'owned-fauna' && typeof championId === 'string' && input.ownership
+      ? ownedCreatureVoiceCardV1(input.ownership, championId as CreatureInstanceId) : championGenome ? creatureVoiceCardV1(championGenome) : undefined;
+    // a combatant with no resolvable AudioSignature (a partial genome) keeps the record-based voice rather than falling silent
+    const defenderVoice = creatureVoiceCardV1(input.settlement.encounter.defender.battleGenome);
     voices = createCreatureVoiceHook({ sources: synthesizePlaceholderLibrary().sources, seed: recipe.seed ^ fnv1a32(input.settlement.battleId),
-      sides: { left: { record: matchRecord(records, championGenome), genome: championGenome, seed: left.seed, label: input.chronicle.championName },
-        right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, seed: right.seed, label: input.chronicle.defenderName } } });
+      sides: { left: { record: matchRecord(records, championGenome), genome: championGenome, seed: left.seed, label: input.chronicle.championName, ...(championVoice?.ok ? { card: championVoice } : {}) },
+        right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, seed: right.seed, label: input.chronicle.defenderName, ...(defenderVoice.ok ? { card: defenderVoice } : {}) } } });
     cueSink = input.audio ? createTurnCueSink({ runtime: input.audio, seed: recipe.seed ^ fnv1a32(input.settlement.battleId), phone: input.deviceTier === 'low', creatureVoice: voices }) : null;
     const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass }, ...(placed.presentationScales ? { presentationScales: placed.presentationScales } : {}), ...(placed.water ? { water: placed.water } : {}),
       worldLife, reducedMotion: input.reducedMotion, cues: cueSink ? { sink: cueSink, phone: input.deviceTier === 'low' } : null, effects: input.reducedMotion ? null : { host: createPixiEffectHost({ Sprite: pixi.Sprite, Particle: pixi.Particle, ParticleContainer: pixi.ParticleContainer } as unknown as Parameters<typeof createPixiEffectHost>[0]),
@@ -446,6 +488,11 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     if (disposed) { built.dispose(); application.destroy({ removeView: true, releaseGlobalResources: false }, { children: true }); throw new Error('disposed while initialising the renderer'); }
     application.canvas.style.cssText = 'display:block;width:100%;height:100%'; section.append(application.canvas);
     application.stage.addChild(built.root); app = application; stage = built; label = built.label; section.dataset.battle2Label = built.label;
+    beats = battle2SwapBeatsV1(input.settlement.party, { name: input.chronicle.defenderName, battleGenome: input.settlement.encounter.defender.battleGenome, kind: input.settlement.encounter.defender.kind });
+    if (beats.length > 0) {
+      beatCaption = new pixi.Text({ text: '', style: { ...style, fontSize: 28 }, anchor: 0.5 });
+      beatCaption.x = BATTLE2_FRAME.width / 2; beatCaption.y = 56; application.stage.addChild(beatCaption as unknown as object);
+    }
     setPhase('playing'); startTicking(); tick();
     return status();
   };

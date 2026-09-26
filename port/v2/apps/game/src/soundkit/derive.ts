@@ -1,6 +1,7 @@
 /* Sound Kit derivation: deriveCue is a pure function of (voice card, cue id,
    source masters, seed). Identical recipe, identical bytes. The recipe hash is
    the SHA-256 of the stable JSON of (card, cueId, seed, source hashes). */
+import { limitToLoudnessV1 } from './loudness.js';
 import { hashInt, mulberry32 } from '@cf/domain-rand';
 import { LocalModelSha256V1 } from '../local-model-sha256.js';
 import { CREATURE_CUES, type CreatureCueId } from './cues.js';
@@ -117,7 +118,10 @@ export function deriveCue(card: VoiceCard, cueId: string, sources: SourceLibrary
   const cap = MAX_CREATURE_SECONDS * SAMPLE_RATE;
   if (out.length > cap) { out = envelope(fitLength(out, cap), 0, 0.05); flags.push('length-capped-2s'); }
   out = normalizePeak(out, CREATURE_PEAK);
+  // the MEASURED loudness gate's derivation stage (D15 Stage 0): attenuate to -14 LUFS short-term, true peak under -1 dBTP (loudness.ts)
+  const limited = limitToLoudnessV1(out, SAMPLE_RATE, 'creature'); out = limited.samples;
+  if (limited.gainDb < 0) flags.push(`loudness-attenuated:${limited.gainDb.toFixed(2)}dB`);
 
-  const recipeHash = sha256Hex(new TextEncoder().encode(stableJson({ card, cueId: cue, seed: seed >>> 0, sources: used })));
+  const recipeHash = sha256Hex(new TextEncoder().encode(stableJson({ card, cueId: cue, seed: seed >>> 0, sources: used, loudness: 'bs1770-v1' })));
   return Object.freeze({ cueId: cue, sampleRate: SAMPLE_RATE, samples: out, recipeHash, flags: Object.freeze(flags) });
 }

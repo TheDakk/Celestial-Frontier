@@ -809,6 +809,9 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
       './guardian-companion-internal': './src/guardian-companion.ts',
       './companion-availability': './src/companion-availability.ts',
       './scout-internal': './src/scout.ts',
+      './friendly-duel-internal': './src/friendly-duel.ts',
+      './companion-care': './src/companion-care.ts', // D13 (2026-09-25): tastes, Feed policy v2, bond, Rest duration
+      './rest-internal': './src/rest.ts', // D13 Rest authority
     });
   });
 

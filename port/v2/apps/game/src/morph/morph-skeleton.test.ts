@@ -45,7 +45,7 @@ describe('morph M1 — proportion on the real rigs', () => {
     for (const j of contactJoints(civet.card)) expect(sc[j]).toBeUndefined();
     const sk = jointScalesV1(crab.card, p); expect(Object.keys(sk).sort()).toEqual(['eyeFarRoot', 'eyeNearRoot']);
     expect(Object.keys(MORPH_GROUPS)).toEqual(['head', 'tail', 'ears', 'antennae']);
-  });
+  }, 60_000); // loads parts rigs: each measures its layered idle+approach reach once (Codex 412e2cf2)
   it('Civet at head 1.2 / tail 1.35: the head landmark sits 1.2× farther from the neck pivot at rest, the tail tip 1.35× farther from the tail root; every paw is exactly where the archetype\'s is', async () => {
     const base = await loadFitDir(FITS.civet); const p = morphParamsV1({ head: 7, tail: 6 }, ARCH); const morphed = await loadFitDir(FITS.civet, undefined, undefined, jointScalesV1(base.card, p));
     base.rig.applyPose({}); morphed.rig.applyPose({});

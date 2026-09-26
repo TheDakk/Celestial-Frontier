@@ -2,6 +2,8 @@
 // PRESERVED — the painted finish (shading, edges, fur/chitin structure) survives; only hue and chroma move. Applied
 // once per individual at load; never per tick. Alpha is never touched; pixels outside every frame are never touched.
 import type { MorphParamsV1, PaletteParamsV1 } from './morph-params.js';
+import { earthFaunaProfile } from '../earth-fauna-profiles.js';
+import { CARD_TINT_V1 } from './card-tint.generated.js';
 export type PaletteRole = 'base' | 'accent' | 'keep';
 /** Pixel index (y·width + x) → whether it belongs to the role being remapped. */
 export type PixelSelect = (pixel: number) => boolean;
@@ -55,7 +57,10 @@ export function remapAtlasPaletteV1(rgba: Uint8Array, width: number, height: num
     // LOW_CHROMA_ROLE, every pixel takes the target hue at a saturation floor — luminance still exact, so the painted
     // finish survives; a hue-less colour (obsidian, bone, glass) still only desaturates.
     const pick = select?.(role);
-    const tint = p.hue !== null && meanSaturation(rgba, width, frames, role, pick) < LOW_CHROMA_ROLE;
+    // ONE decision per archetype and role (CARD = STAGE, 2026-09-25): the generated table measured once on the card master; a stage atlas and
+    // a 512 card of the same painting could otherwise straddle the threshold (the Gull's accent: 0.183 vs 0.176). Measured only when absent.
+    const decided = CARD_TINT_V1[params.archetype]?.[role];
+    const tint = p.hue !== null && (decided ?? meanSaturation(rgba, width, frames, role, pick) < LOW_CHROMA_ROLE);
     const from = p.hue === null || tint ? null : dominantHue(rgba, width, frames, role, pick); const delta = p.hue === null || from === null ? 0 : p.hue - from;
     for (const f of frames) { if (f.role !== role) continue; for (let y = f.y; y < f.y + f.height; y++) for (let x = f.x; x < f.x + f.width; x++) {
       const i = (y * width + x) * 4; if (!rgba[i + 3] || (pick && !pick(i / 4))) continue; const hsl = rgbToHsl(rgba[i]!, rgba[i + 1]!, rgba[i + 2]!), h = hsl[0]!, s = hsl[1]!, l = hsl[2]!;
@@ -87,7 +92,22 @@ export const ACCENT_GROUPS: Readonly<Record<string, readonly string[]>> = Object
   // primate: none — a primate's head in a second colour read as a graft on library sheet 02; one coat
   serpent: ['head'], hopper: ['head'], primate: [], radial: ['body'], arachnid: ['tail'], cephalopod: ['head'],
   'flyer-membrane': ['ears', 'head'], myriapod: ['head'],
+  // a SWIMMING-BELL radial (cnidarian: the Jellyfish, C15 2026-09-25): its `body` group is the whole bell (36.5 % of the paint, where the
+  // Starfish's is a 1.9 % disc) and its arms are the other 63 % — no group is trim, so one coat, like the primate (emissive = whole body)
+  'radial-bell': [],
+  // a FLYING insect with both unfolded wings (the Dragonfly, C15 2026-09-25): four spread wings are 67 % of its paint, not trim — antennae only
+  'insect-flight': ['antennae'],
 });
+/** The accent plan of a card: its template, except a radial whose Earth profile is the cnidarian family (a swimming bell) — a
+ * family-level split of one template, never a species branch (procedural jellies draw as the Jellyfish record, so they follow). */
+export function accentPlanOfCard(card: { readonly template?: Readonly<{ id: string }>; readonly identity?: Readonly<{ earthName?: string | null }>;
+  readonly habitat?: Readonly<{ realm?: string; gait?: string }>; readonly parts?: readonly Readonly<{ joint: string }>[] }): string | undefined {
+  const id = card.template?.id;
+  if (id === 'radial') { const earth = card.identity?.earthName; return earth && earthFaunaProfile(earth)?.id === 'cnidarian' ? 'radial-bell' : id; }
+  // the same evidence the attack selector requires for adult flight: an explicit aerial fly/glide habitat and both unfolded wing owners
+  if (id === 'insect' && card.habitat?.realm === 'aerial' && ['fly', 'glide'].includes(card.habitat.gait ?? '') && ['wingNear', 'wingFar'].every((j) => card.parts?.some((p) => p.joint === j))) return 'insect-flight';
+  return id;
+}
 /** Where an emissive individual (lumin gene / iridescent pattern, no painted mask) glows: its accent set, or — for a body plan whose
  * accent set is EMPTY (the primate, one coat) — its base coat (2026-09-24, review finding: a lumin Chimpanzee changed 0 pixels). */
 export function emissiveRoleV1(roles: Iterable<PaletteRole>): 'accent' | 'base' { for (const r of roles) if (r === 'accent') return 'accent'; return 'base'; }
