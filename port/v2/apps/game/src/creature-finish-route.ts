@@ -14,7 +14,7 @@
  *   A master whose own alpha is not the card's keyed alpha (an opaque keyed painting such as the Civet) is not card-eligible. */
 import { compileCreatureFinishV1 } from './landfall-conditioning.js';
 import { createCreatureFinishEngineV1, type CreatureFinishInferV1, type CreatureFinishSourceV1 } from './creature-finish-engine.js';
-import type { AiCreatureOriginalStoreV1 } from './creature-originals.js';
+import type { AiCreatureInputV1, AiCreatureOriginalStoreV1, AiCreatureOriginalV1 } from './creature-originals.js';
 import type { LocalModelCapabilityV1 } from './local-model-delivery.js';
 import { LocalModelSha256V1 } from './local-model-sha256.js';
 import { decodePng } from './morph/png-decode.js';
@@ -84,13 +84,18 @@ export interface CreatureFinishRouteOptionsV1 {
   readonly identityOf: (genome: Readonly<Record<string, unknown>>) => { visualKey: string; seed: number };
   readonly createInfer?: () => Promise<CreatureFinishInferV1>;
   readonly maxPending?: number;
+  /** Delivered originals (Codex's createCreatureFinishDeliveryV1, pinned by the bundled G3 manifest), for every tier. */
+  readonly delivered?: (identity: AiCreatureInputV1) => Promise<AiCreatureOriginalV1 | null>;
+  /** Observes each built source (the desktop adapter needs its cut-out hash). */
+  readonly onSource?: (source: CreatureFinishSourceV1) => void;
 }
 export function createCreatureFinishRouteV1(o: CreatureFinishRouteOptionsV1) {
   // lookups use a phone-tier engine over the same store: cache (or delivered) only, never a model, never inference
-  const reader = createCreatureFinishEngineV1({ tier: 'phone', store: o.store, maxPending: 8 });
-  const finisher = o.tier === 'desktop' && o.createInfer ? createCreatureFinishEngineV1({ tier: 'desktop', store: o.store, createInfer: o.createInfer, maxPending: o.maxPending ?? 4 }) : null;
+  const delivered = o.delivered ? { delivered: o.delivered } : {};
+  const reader = createCreatureFinishEngineV1({ tier: 'phone', store: o.store, maxPending: 8, ...delivered });
+  const finisher = o.tier === 'desktop' && o.createInfer ? createCreatureFinishEngineV1({ tier: 'desktop', store: o.store, createInfer: o.createInfer, maxPending: o.maxPending ?? 4, ...delivered }) : null;
   const sourceOf = async (genome: Readonly<Record<string, unknown>>) => { const fit = await o.fitFor(genome); if (!fit) return null; const id = o.identityOf(genome);
-    return { fit, source: await finishSourceV1({ fit, visualKey: id.visualKey, identitySeed: id.seed, modelHash: o.modelHash }) }; };
+    const source = await finishSourceV1({ fit, visualKey: id.visualKey, identitySeed: id.seed, modelHash: o.modelHash }); o.onSource?.(source); return { fit, source }; };
   // bounded memo per identity: a verified lookup decodes the whole source and re-runs conservation, so it runs once per identity;
   // only definitive answers are kept (a retained original, or no painting) — a busy reader queue is retried next time
   const memo = new Map<string, Promise<FinishedCardMasterV1 | null>>(), MEMO = 64;
