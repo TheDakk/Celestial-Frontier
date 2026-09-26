@@ -711,7 +711,9 @@ export function planCombatPartySettlementV1(input: PlanCombatPartySettlementInpu
   if (new Set(ids).size !== ids.length) return refused('input-invalid');
   const defender = { name: input.encounter.defender.name, genome: input.encounter.defender.battleGenome as unknown as EncounterFighterV1['genome'],
     phase: encounterHasGuardianPhaseV1(input.encounter.defender.kind) };
-  const legacy = input.party.length === 1 && input.party[0]!.stance === 'balanced' && input.mode === 'auto' && decisions.length === 0;
+  // D17 (Nick 2026-09-25): the phase change applies in EVERY Guardian/Titan fight, solo Auto included — the legacy runDuel path (v1 parity)
+  // is only for a defender without the phase; the engine keeps v1 parity as its own phase-off test.
+  const legacy = !defender.phase && input.party.length === 1 && input.party[0]!.stance === 'balanced' && input.mode === 'auto' && decisions.length === 0;
   if (legacy) {
     const champion = input.party[0]!.champion;
     const mine = encounterFighter(input.party[0]!);
