@@ -35,6 +35,13 @@ Next: single held-out evaluation on this clean signed checkpoint, record its exa
 - One release/Guide batch: C17+D16+D19 plus C30 care/audio/A5/CFB/D18 bullets, Settings capacity and audio inventory. Current Guide SHA is red. C8/I5 v2 follows all this on integrated clean source; keep v1 immutable, no historical rebinding. Nick's authority is three calibration runs then one certification, not repeated attempts.
 
 ### What Claude owes next
+-114. **The vision batch (D21, 2026-09-26): live on the dev URL `0b4c8dca`.**
+- **Merged:** the H1 probe (perf/heat/memory) + A6 localization; battle2 as the development DEFAULT (`BATTLE2_DEFAULT`, `?battle2=0` opts out); D13 missions; D16 final (Compendium chips/shelves, origin travel, reveal queue, vista mode + postcard); D14 Outposts; audio Stages 1–3 (original seeded sources, 0 audio bytes shipped).
+- **Placeholders for Codex:** `MISSION_RATES_V1` and `PROJECT_COSTS_V1`.
+- **Gate:** 5,555 pass. Reds: I5 and Codex's release SHA.
+- **Still running on Claude's side:** audio Stage 4 (Tame/Feed/Compendium on the new voices, star hums, captions), the mission-return voice, and the Kindred mission-type picker.
+- **Not yet smoked in a browser:** a Guardian fight on the new no-flag default. The wiring tests cover the gate in both directions.
+- **After Nick's playtest:** polish and QA.
 -113. **Claude's side complete (2026-09-26).**
 - **D15:** the `?deviceProbe=1` codec check and the `?audioReview=1` L1 Listening page.
 - **Care XP** mirrors onto the Compendium row.
