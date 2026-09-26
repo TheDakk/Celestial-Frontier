@@ -1109,3 +1109,11 @@ Nick decided D14 "yes" (Option A of `audits/PROPOSALS_20260925/N4_PROJECTS.md`).
   - the Relay's system readout (`finishedRelayStarSeedsV1`);
   - the Shelter's hazard-free bioscan (`finishedShelterPlanetSeedsV1`);
   - the Sanctuary's display residents (`sanctuaryOnV1`).
+
+- **Consumers (P5, 2026-09-26):**
+  - **Relay:** `engineering-panel-model.ts projectRelayMineralSurveyRowsV1`. The star card (`surveyStar` → `surveyCard` rows) lists each
+    lifeless non-Earth world's orbit readout. It equals the in-orbit Deep Scanner row (test `tests/outposts-relay-readout.test.ts`).
+  - **Shelter:** the bioscan hazard's optional `sheltered` input gives the safe reason `shelter`. The Discover Life commit re-reads the
+    carrier, and Main passes only a preview hint. `settled` (conquest) is unchanged and is never written by Outposts. Test: the A5 bioscan
+    harness shows a hostile world with a finished Shelter wounding nobody; the unfinished Shelter is the control.
+  - **Sanctuary:** the world card lists the chosen residents (display only).

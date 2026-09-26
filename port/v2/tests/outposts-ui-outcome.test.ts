@@ -6,12 +6,11 @@ import { createRequire } from 'node:module';
 import { transformSync } from 'rolldown/utils';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { installCaptureHooks } from '@cf/domain-descriptors';
-import { systemFor } from '@cf/domain-worldgen';
 import {
   outpostSaveFactsV1, prepareArc2LootLegacyMigration, projectArc2LootLegacyMirror, projectOutpostBoardV1, projectOutpostWorldOfferV1,
   readArc2Loot, readOutpostProjectsV1, readSaveV5, type SaveStateV2, type V5Extensions,
 } from '@cf/persistence';
-import { resolveCF1WorldAddress } from '@cf/scene';
+import { resolveCF1WorldAddress, systemScene } from '@cf/scene';
 import { prepareArc3AppBootstrap } from '../apps/game/src/arc3-engineering-actions.js';
 import { commitOutpostActionV1, outpostRefusalCopyV1, outpostResultCopyV1 } from '../apps/game/src/outposts-action.js';
 import { OutpostsControllerV1, outpostPortraitMarksV1, renderOutpostBoardV1, renderOutpostCardSectionV1 } from '../apps/game/src/outposts-ui.js';
@@ -44,7 +43,7 @@ async function mountMain(mutate: (source: string) => string = (s) => s) {
   const p = { seed: 134, name: 'Mars', ordinal: 3 };
   const env: Record<string, unknown> = {
     document: doc, performance, Date, f4Runtime: booted.runtime, save, nav: { mode: 'surface', planet: { seed: 134 } }, cardCtx: { p },
-    activeCardWorldAddress: () => MARS.address, canonicalRosterForBioscanCard: () => null, systemFor, worldIdentityName: () => null, worldIdentityState: null,
+    activeCardWorldAddress: () => MARS.address, canonicalRosterForBioscanCard: () => null, systemScene, worldIdentityName: () => null, worldIdentityState: null,
     arc5OwnershipState: null, readOutpostProjectsV1, outpostSaveFactsV1, projectOutpostWorldOfferV1, projectOutpostBoardV1, renderOutpostCardSectionV1,
     renderOutpostBoardV1, outpostPortraitMarksV1, OutpostsControllerV1, commitOutpostActionV1, outpostRefusalCopyV1, outpostResultCopyV1, readArc2Loot,
     f4RuntimeMayMutate: (runtime: unknown) => runtime === env.f4Runtime, activePersist: null, importWriteInFlight: false, replacementTransaction: null,
@@ -83,6 +82,9 @@ describe('outposts UI outcome (P4)', () => {
     expect(m.main.outcome()).toBe('committed:start');
     let d = await durableProjects(m.booted.backend);
     expect(d.projects.sites.map((s) => [s.id, s.built])).toEqual([['relay@134', 0]]);
+    // the site records its REAL system (found 2026-09-26: raw systemFor planets carry no `seed`, which would record [0, …, 134])
+    expect(d.projects.sites[0]!.world.systemPlanetSeeds.length).toBeGreaterThan(3);
+    expect(d.projects.sites[0]!.world.systemPlanetSeeds.every((seed) => seed > 0)).toBe(true);
     await m.press('[data-outpost-build="relay@134"]');
     expect(m.main.outcome()).toBe('committed:build');
     d = await durableProjects(m.booted.backend);
