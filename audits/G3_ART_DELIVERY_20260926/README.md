@@ -61,7 +61,15 @@ This is Stage G3 of the Generated Creature Pipeline (`audits/GENERATION_PIPELINE
   - The offline reload refuses every `/battle2/` and `/library/` request at the server, and Wolf vs Racer still stages two painted rigs from the verified worker cache with zero server hits.
   - The cold control (an uncached pair) fails as required, and there are zero page errors.
   - `picker-smoke.mjs` now counts `libraryHits` and refuses `/library/` in its offline run.
-- **Not browser-smoked:** the Compendium card path over the library, and the offline card fallback. Both are covered by the outcome tests above.
+- **Compendium card path, browser-smoked 2026-09-26** (`card-smoke/`; package `dev-preview-65800c42ede6`, the G4 head; Edge at 390×844@3 touch, with the service worker served and controlling the page).
+  - **Seeded save:** the veteran fixture plus five procedural fauna chosen with the real resolver.
+  - **Online:** 8 rows, 5 painted (a `data:image/png` thumb, where the procedural painter gives `blob:`). The server served the manifest once plus 6 card files each for Wolf, Cougar, Pike and Racer. 0 refusals and 0 page errors. The core Civet row fetched nothing.
+  - **Offline library** (fresh profile; every `/library/` request is a 404 from the first):
+    - 3 manifest refusals and 0 card files served;
+    - still 5 painted rows and 0 page errors;
+    - exactly the 4 library rows changed image (Cougar → Civet, Pike → Salmon on screen); the Civet row is byte-identical.
+  - **Negative control** (`--control`, unmodified fixture): all five painted/library checks fail on it.
+  - **Not covered:** the 440 detail portrait, offline reuse of worker-cached cards, a real iPhone, and the Earth-variant route in the browser. The `libraryFallback` label is proven by outcome only; it has no DOM attribute.
 
 ## What Codex's pins and loader must keep
 

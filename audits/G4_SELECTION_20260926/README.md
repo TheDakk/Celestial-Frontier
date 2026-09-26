@@ -44,3 +44,7 @@ Resolution order:
 - **The G2 library at scale** (Codex): every new painted Earth species becomes route 1 for itself and route 2 for its group, with no code change. Exception: a new painting whose anatomy should join a `VARIANT_SETS` row is added there, and the one-template test guards it.
 - **A variant within an Earth group is the group's first painted name,** not a gene-nearest one (Earth genes are not species-true). A finer choice needs species-level visual data, which G2's per-species prompts could supply later.
 - **A real-browser smoke of the card path over the library:** see `audits/G3_ART_DELIVERY_20260926/card-smoke/`.
+
+## Proposed release/Guide bullet (Codex owns the measured inventory; not rebound here)
+
+- *Gameplay / UI Enhancements:* "More creatures now wear a painting close to their own kind: an Earth animal without a painting of its own borrows its nearest painted relative (a lion draws as the cougar, a fox as the wolf), and alien creatures take the painting that best matches their skin, size and tail, including new sturgeon- and shark-shaped fish. Cards and battles always show the same painting."
