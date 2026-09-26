@@ -298,7 +298,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   section.setAttribute('aria-hidden', 'true'); section.style.cssText = 'display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#141d22';
   input.mount.prepend(section);
   let phase: Battle2Phase = 'loading', reason: string | null = null, label: string | null = null, ticks = 0, turnIndex = -1;
-  const skipped: string[] = []; let turns: TurnPlanInput[] = []; const turnRows: number[] = []; let turnStart = 0, impactAt = Infinity, releasedTurn = -1;
+  const skipped: string[] = []; const finishedSides = { left: false, right: false }; /* G5: which sides drew an admitted finished atlas */ let turns: TurnPlanInput[] = []; const turnRows: number[] = []; let turnStart = 0, impactAt = Infinity, releasedTurn = -1;
   const releaseThrough = (turn: number): void => { if (turn <= releasedTurn) return; releasedTurn = turn; input.pacer?.release(turnRows[turn]!); }; const rigLabels = { left: null as string | null, right: null as string | null }, effectLabels = { left: null as string | null, right: null as string | null };
   const attackLabels = { left: null as string | null, right: null as string | null }; let arenaLabel: string | null = null; let refusalsOf: () => Readonly<{ left: number | null; right: number | null }> = () => Object.freeze({ left: null, right: null });
   let app: Battle2AppLike | null = null, stage: BattleStage | null = null, ticking = false, disposed = false, cueSink: TurnCueSink | null = null;
@@ -410,6 +410,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
             // released when this study is disposed); the archetype itself takes the loader's own guarded decode as before
             let paintRig: CreatureRigV1;
             const finished = input.finish && genome ? await input.finish(genome, pinnedInput).catch((e: unknown) => { skipped.push(`${name}: finished atlas refused (${e instanceof Error ? e.message : String(e)}); unfinished painting`); return null; }) : null;
+            if (finished) finishedSides[side] = true;
             if (finished) paintRig = await loadPinnedCreatureRigV1(pinnedInput, undefined, { finishedAtlas: finished, ...(morph.atlasPixels ? { atlasPixels: morph.atlasPixels } : {}), ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) });
             else if (morph.atlasPixels) { const lease = await morphAtlasCache.acquire(morphAtlasKey(record.recipeHash ?? record.identity.speciesVisualKey, speciesVisualKey(genome as Record<string, unknown>), morph.marking), async () => (await decodeMorphedAtlas(atlas, record as unknown as CreatureRigRecordV1, binding, morph.atlasPixels!)).texture); atlasLeases.push(lease);
               paintRig = await loadPinnedCreatureRigV1(pinnedInput, async () => lease.texture, { borrowedAtlas: true, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) }); }
@@ -516,7 +517,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     await application.init({ width: BATTLE2_FRAME.width, height: BATTLE2_FRAME.height, resolution: input.deviceTier === 'high' ? 2 : 1, autoDensity: false, background: '#141d22', antialias: true, autoStart: false, sharedTicker: false });
     if (disposed) { built.dispose(); application.destroy({ removeView: true, releaseGlobalResources: false }, { children: true }); throw new Error('disposed while initialising the renderer'); }
     application.canvas.style.cssText = 'display:block;width:100%;height:100%'; section.append(application.canvas);
-    application.stage.addChild(built.root); app = application; stage = built; label = built.label; section.dataset.battle2Label = built.label;
+    application.stage.addChild(built.root); app = application; stage = built; label = built.label; section.dataset.battle2Label = built.label; if (input.finish) section.dataset.battle2Finished = `left:${finishedSides.left} right:${finishedSides.right}`;
     beats = battle2SwapBeatsV1(input.settlement.party, { name: input.chronicle.defenderName, battleGenome: input.settlement.encounter.defender.battleGenome, kind: input.settlement.encounter.defender.kind });
     if (beats.length > 0) {
       beatCaption = new pixi.Text({ text: '', style: { ...style, fontSize: 28 }, anchor: 0.5 });
