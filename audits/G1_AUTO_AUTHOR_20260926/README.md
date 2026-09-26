@@ -103,7 +103,7 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
   - the geometric inventory (appendages by class, ground contacts, detached islands);
   - that the empty absent/hidden/folded lists are an intake-format necessity, NOT an all-visible attestation;
   - a semantic status. It is **RESOLVED** only when every reference appendage is assigned AND no appendage merges two limb chains; otherwise it is **UNRESOLVED**, with the unassigned and merged chains named. `playAdmission` stays blocked until semantic presence resolves and native + visual review pass.
-- **Result:** RESOLVED for the 6 fish (salmon, sturgeon, bass, tang, reef-shark, pike). UNRESOLVED for all 6 admitted quadrupeds/birds and all 10 G2 passes. The cause is ALWAYS overlapped near/far limbs (for example `foreFar+foreNear`); no reference appendage is unassigned.
+- **Result** (corrected after Codex's check; the first wording counted only the ADMIT + PASS_STATIC packets): among those 12, RESOLVED for the 6 fish (salmon, sturgeon, bass, tang, reef-shark, pike), and UNRESOLVED for the 6 quadrupeds/birds and all 10 G2 passes. Across ALL admitted packets, Sparrow, Sandpiper, Mongoose and Tapir are RESOLVED; each of them is static-RED. The cause is ALWAYS overlapped near/far limbs (for example `foreFar+foreNear`); no reference appendage is unassigned.
 - **The one lever that closes both open G1 findings** (semantic presence and thin-part false refusals): a near/far limb separator for overlapped side-profile limbs.
 
 **Codex's second review (C40 answers, `audits/G1_CONTRACT_REVIEW_20260926`), status:**

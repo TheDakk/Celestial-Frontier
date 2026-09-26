@@ -22,7 +22,7 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 
 **Where things stand**
 - **Branch:** `anthropic/mac` is pushed through the commit that adds this block. Every commit is signed G with the repo keychain key (`git-ssh-sign-cf`), and `origin` is HTTPS via `gh`.
-- **Codex:** merged through `d809c53b` (parked gameplay, the G5 engine and its native proof: five crabs finished, delivered byte-exact, 0 phone model constructions). Before merging again, read `/Users/nick/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md` (read-only) and run `git log HEAD..openai/mac`. Codex's current focus, per Nick: finish the preserved parked gameplay (Forge Training, the living-portrait decision) BEFORE its G5 engine work.
+- **Codex:** merged through `bfe76a6b` (G5 sizes/transport/stage admission). Before that: `d809c53b` (parked gameplay, the G5 engine and its native proof: five crabs finished, delivered byte-exact, 0 phone model constructions). Before merging again, read `/Users/nick/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md` (read-only) and run `git log HEAD..openai/mac`. Codex's current focus, per Nick: finish the preserved parked gameplay (Forge Training, the living-portrait decision) BEFORE its G5 engine work.
 - **Gate:** `node tools/check-profile.mjs --profile=develop` (from `port/v2`) gives **5,628 pass; the ONLY red is I5** (`current-producer-authorities`, "binds every live memory budget").
   - Run it on a QUIET tree. A commit during the run produces a spurious "Source changed during authority read".
   - Also run by hand, all clean this session: `npm run typecheck` (root, app and worker), `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
@@ -38,7 +38,7 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 | G2 library at scale | Codex | Pilot delivered (20 quadrupeds + 120 derived-mask candidates, `audits/G2_QUADRUPED_PILOT_20260926`). Next families are Codex's. |
 | **G3 on-demand delivery** | Claude | Live. **Card path now browser-smoked PASS** (online library cards, offline core fallback, negative control): `audits/G3_ART_DELIVERY_20260926/card-smoke/`. |
 | **G4 selection** | Claude | **Landed and live.** `paintedArtV2`, one resolver for card and stage: exact → same Earth profile group → nearest same-anatomy visual-gene variant → v1 stand-in. Sturgeon and Reef Shark now draw sturgeon- and shark-shaped procedural fish. 7 tests with controls. `audits/G4_SELECTION_20260926/README.md`. |
-| **G5 finisher in the game** | Claude routes, Codex engine | **Codex's engine landed (`26a4bc57`, merged). Claude's routing layer v1 landed:** `creature-finish-route.ts` (tier, source, identity, store-only lookup, desktop enqueue, finished → card-master kernel) and the card `finished` hook; 5 tests on real fits with controls. NOT yet wired into `main.ts`: the desktop `createInfer` adapter and `?finish=1` wiring are next. Stage-loader and phone-delivery shapes asked in C41. `audits/G5_ROUTING_20260926/README.md`. |
+| **G5 finisher in the game** | Claude routes, Codex engine | **Card path in the game behind `?finish=1`** (session 3, on Codex's `bfe76a6b` unblock); stage waits on C45(a). Earlier: **Codex's engine landed (`26a4bc57`, merged). Claude's routing layer v1 landed:** `creature-finish-route.ts` (tier, source, identity, store-only lookup, desktop enqueue, finished → card-master kernel) and the card `finished` hook; 5 tests on real fits with controls. NOT yet wired into `main.ts`: the desktop `createInfer` adapter and `?finish=1` wiring are next. Stage-loader and phone-delivery shapes asked in C41. `audits/G5_ROUTING_20260926/README.md`. |
 
 **Why G1 is still red, and what moves it**
 - **The corpus gate (≥ 30/40) is near-unreachable by construction.** 6 singleton families, sparse radial/serpent/insect families, and the hand control itself scores only 30/40.
@@ -53,11 +53,11 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 **Next, in order (Claude)**
 1. Read Codex's answers to C41 (loader admission, phone delivery) and C43 (worker size + transport); merge its signed commits. Re-score G1 on any new G2 families as they land (`run-auto.mjs --targets=<pilot.json>`).
 2. **G1:** Codex's second review is closed in the runner (v8). Four author levers were tried in v9–v11: the separator is a dead end; the remainder-marker bug is fixed; the Eagle's red is its tail outline (handed to Codex); paint-grown parts are net zero. **The author-side levers are exhausted.** Next gains come from the G2 paintings: limbs posed apart and true tails (C44). Re-score each new G2 family with `run-auto.mjs --targets=`.
-3. **G5, next steps:**
-   - the desktop `createInfer` adapter: **blocked on Codex C43** (the worker refuses 1254² masters, 33 of 38, and requires `/inputs/*.rgba` paths). The stage projection `projectFinishedToAtlasV1` has landed
-   - `main.ts` wiring behind `?finish=1`: the route plus the card `finished` hook, and an enqueue on discovery or when a portrait opens. Default off until Nick's quality review;
-   - **Stage seam (Codex C40(c)):** the engine returns a full original-coordinate PNG plus receipt, NOT an atlas. Claude owns the runtime projection into the unchanged atlas frames, generalising `rebind-finished.mjs` (sample through the original cut-outs, preserve part alpha, byte-identical parts/paintSkin after rebuild).
-   - The phone delivery shape is still open (C41(b)).
+3. **G5:** in the game behind `?finish=1`, card path (finish sources in the pinned library, the desktop adapter, the route, one gated `main.ts` line; E2E test on the real Crab). Next:
+   - the stage, after Codex answers C45(a) (morph remap over a finished atlas);
+   - labels for Civet/Eel/Rat/Salamander (C45(b));
+   - a real-browser run on a local dev server with the verified model cache;
+   - Nick's quality review before the flag is ever on by default.
 4. Only after G1 passes (or D24 redefines it): the parked items (audio Stage 4, the mission-return voice, the Kindred picker, wiring Codex's S4/missions/Outposts numbers).
 
 **Nick (none blocking): D24 and D25** in `audits/MAILBOX/DECISIONS.md`. Also still open: the playtest checklist (`?deviceProbe=1`, `?audioReview=1`, a full journey, `?battle2=1&vs=…` pairs).

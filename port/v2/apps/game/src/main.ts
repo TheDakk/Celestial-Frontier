@@ -723,7 +723,10 @@ const DOCUMENT_TOKEN = crypto.randomUUID();
    same JS realm and therefore correctly retains this token. */
 const F4_TAB_TOKEN = DOCUMENT_TOKEN;
 // the painted individual on the card (morph system): asked first for every thumb/portrait; painter tier otherwise
-const paintedCards = (() => { try { return createPaintedCardsForApp(); } catch { return null; } })();
+// G5 (?finish=1, development only until Nick's quality review): an individual's retained finished original draws its card; a desktop
+// with the developer model transport finishes a creature when its Compendium portrait opens (creature-finish-app.ts)
+const finishRoute = new URLSearchParams(location.search).get('finish') === '1' ? import('./creature-finish-app.js').then((m) => m.createAppFinishRouteV1()).catch(() => null) : null;
+const paintedCards = (() => { try { return createPaintedCardsForApp(fetch, finishRoute ? async (g, _a, kind) => { const r = await finishRoute; if (!r) return null; const f = await r.lookup(g); if (!f && kind === 'portrait') void r.enqueue(g).catch(() => undefined); return f; } : undefined); } catch { return null; } })();
 const speciesArtLoader = new SpeciesArtLoader(DOCUMENT_TOKEN, paintedCards ? { paintedCards } : {});
 /* Keep one exact SceneMemory route's 9 Compendium + 8 Planetside thumbs warm.
    Repainting the same bounded set on every navigation grows V8's worker/task

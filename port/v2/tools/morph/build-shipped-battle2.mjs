@@ -11,6 +11,7 @@ import { gzipSync } from 'node:zlib';
 import { alphaOnlyPng, writeBattle2MasterPins } from './battle2-master-pins.mjs';
 import { artTierOf } from './art-library-tiers.mjs';
 import { writeArtLibraryManifest } from './art-library-manifest.mjs';
+import { writeFinishSources } from './build-finish-sources.mjs';
 const R = path.resolve(import.meta.dirname, '../../../..'), OUT = path.join(R, 'port/v2/apps/game/public/battle2');
 // G3: a LIBRARY archetype's arena files are served on demand from `public/library/battle2/…` (same relative layout, outside the pack);
 // the CORE archetypes and the shared arena files stay under `public/battle2/…` (pinned first-use pack files, as before).
@@ -67,5 +68,6 @@ const pinned = pins.reduce((n, p) => n + p.bytes, 0);
 // C13: the bundled master pins — full byte admission of every retained master first; one failure fails this build
 const masterPins = await writeBattle2MasterPins(CARD_ARCHETYPES);
 // G3: the on-demand library manifest (every file under public/library, cards included) and its bundled pin — written LAST
+const finishSources = writeFinishSources(); // G5: finish sources join the library before it is pinned
 const library = writeArtLibraryManifest();
 console.log(JSON.stringify({ files: manifest.length, mb: +(bytes / 1048576).toFixed(1), pins: pins.length, pinnedMiB: +(pinned / 1048576).toFixed(1), masterPins: masterPins.length, libraryFiles: library.files, libraryMiB: +(library.bytes / 1048576).toFixed(1) }));
