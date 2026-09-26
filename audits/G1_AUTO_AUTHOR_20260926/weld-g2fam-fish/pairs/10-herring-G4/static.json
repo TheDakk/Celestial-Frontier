@@ -1,0 +1,278 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "PASS_STATIC",
+  "sourceHead": "91a62a50f70571d19217724240b25be3a0d14123",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006457149398009088,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006223507032492898,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "approach:swim",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006416109379166902,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:bite",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006365865508156944,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.0000741315566340306,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.000061063613162339,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006335232373247991,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006040245495189037,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006070371579330531,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00008672013096176511,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.000059776697153343496,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:body",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005259940202322389,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:tail",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005999308454627228,
+      "maxEndpointError": 0,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "96e7b6f53f6d383d126480e41ae2560c12efc39e61efccfec0320c177ad07b7f",
+  "bindingHash": "07671e26fe9c557b9a577b946a1c903ebb26ffb22282ca0109d3dbb624606bbe",
+  "family": "fish",
+  "contacts": [],
+  "realm": "aquatic",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:swim",
+    "melee:bite",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed",
+    "melee:body",
+    "melee:tail"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 949,
+    "attemptedSamples": 949,
+    "status": "PASS",
+    "maxPaintDriftPx": 0,
+    "maxGapPx": 0.00008672013096176511,
+    "maxEndpointError": 0,
+    "exactRest": true
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 4617.55965474993
+      },
+      {
+        "id": "alert",
+        "startMs": 4617.55965474993,
+        "endMs": 5217.55965474993
+      },
+      {
+        "id": "approach:swim",
+        "startMs": 5217.55965474993,
+        "endMs": 5997.55965474993
+      },
+      {
+        "id": "melee:bite",
+        "startMs": 5997.55965474993,
+        "endMs": 6864.226321416597
+      },
+      {
+        "id": "cast",
+        "startMs": 6864.226321416597,
+        "endMs": 7834.226321416597
+      },
+      {
+        "id": "hit",
+        "startMs": 7834.226321416597,
+        "endMs": 8644.226321416598
+      },
+      {
+        "id": "dodge",
+        "startMs": 8644.226321416598,
+        "endMs": 9284.226321416598
+      },
+      {
+        "id": "faint",
+        "startMs": 9284.226321416598,
+        "endMs": 10164.226321416598
+      },
+      {
+        "id": "victory",
+        "startMs": 10164.226321416598,
+        "endMs": 11124.226321416598
+      },
+      {
+        "id": "tame",
+        "startMs": 11124.226321416598,
+        "endMs": 12124.226321416598
+      },
+      {
+        "id": "feed",
+        "startMs": 12124.226321416598,
+        "endMs": 13064.226321416598
+      },
+      {
+        "id": "melee:body",
+        "startMs": 13064.226321416598,
+        "endMs": 13930.892988083264
+      },
+      {
+        "id": "melee:tail",
+        "startMs": 13930.892988083264,
+        "endMs": 14797.55965474993
+      }
+    ],
+    "durationMs": 15797.55965474993
+  },
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-G4/fit/record.json",
+      "sha256": "af3870e014db21e50ce5a1fe1e33c7ec7b3eae2624de4c45fa8e276ebe8d3cca",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-G4/fit/binding.json",
+      "sha256": "53bad964826217bffdd73c9bb9aa7ea4b7a67515e15bbd89ddf9e572b261a4e4",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-G4/fit/parts/manifest.json",
+      "sha256": "5183a68d5480a56b107640156bad585306907c4c1b94fdd4b7fa59cbb16ea8c5",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-G4/fit/parts/atlas/10-herring.png",
+      "sha256": "054bb8109143386002fcf1f266ab6a56584fc7762af6f87e12c240f92c3fcb09",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-G4/fit/parts/keyed.png",
+      "sha256": "9ab579253b81cf77fa4366bce86090a5b9c90b6f7686b6b40b5d8b60af59ffba",
+      "unchanged": true
+    }
+  ]
+}

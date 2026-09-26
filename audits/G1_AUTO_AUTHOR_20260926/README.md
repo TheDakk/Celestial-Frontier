@@ -96,7 +96,14 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
   - **All five DIAGNOSTIC_PASS:** 0/0 rig refusals, 707 frames, CPU p95 3.3–5.6 ms. They are the first creatures through the whole chain (generated painting → automatic authoring → intake → static → native) with zero hand edits.
   - **But visual review FAILS:** the Carp shows a hole behind the head on both fighters, where background shows through a part seam, and the Trout shows a crack at the gill line (`09-carp/turn1-hit-reaction-50.png`, `06-trout/turn0-hit-impact.png`). This is the flat-master sibling seam Codex met on its own Bass fit-03 (a numerical pass and a visual fail).
   - **Codex's accepted weld** (`preservePaintBoundaries: true`, its Bass fit-05 recipe, applied unchanged in `weld-g2fam-fish/weld.mjs`) does NOT transfer to the automatic fits. All five welded fits go static RED (hit/dodge/body/tail), and 4/5 native captures failed ("missing live frames"; possibly a concurrent-browser instrument issue, moot given the static reds). The weld is rejected for automatic packets.
-  - So no automatic creature is visually acceptable yet. The seam is a fit-side repair (C48).
+  - **Codex's C48 proposal (selective axial welds via the existing `paintBoundaryPairs`), tried here** (`weld-g2fam-fish/weld-pairs.mjs`, `greedy.sh`, `greedy.log`):
+    - Starting from the one axial pair that passes static (`body↔body-1`, or `body↔spine1` on the Salmon-referenced fits), each remaining OBSERVED axial adjacency is added one at a time and kept only if the unchanged static gate still passes.
+    - Final welds: Trout 3 pairs, Perch 3, Cod 5, Carp 2, Herring 5. `body↔caudal` folds for every fish; the head has no observed adjacency to the body in any of them.
+    - All five finals are PASS_STATIC and native DIAGNOSTIC_PASS (0/0 refusals, 707 frames).
+  - **Claude's visual check** (`weld-g2fam-fish/review-final.png`, turn-1 reaction at full resolution):
+    - **Perch, Cod and Carp look clean:** no holes or cracks in the frames that showed them before. They are the FIRST fully automatic creatures ready for Nick's review (generated painting → automatic authoring → intake → selective weld → static → native, zero hand edits).
+    - **Trout and Herring (from the Salmon reference):** the extra welds close the cracks but deform the silhouette (a lumpy back and belly on the Herring, a floating dorsal on the Trout). The single-weld versions (`pairs/*-A5`) still crack. Not acceptable yet.
+  - Nothing here is play admission: Nick's visual review and the library/registry admission remain.
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 

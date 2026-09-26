@@ -1,0 +1,36 @@
+{
+ "schema": "cf.selective-weld/v1",
+ "fit": "07-perch",
+ "variant": "A1",
+ "pairs": [
+  [
+   "body",
+   "body-1"
+  ]
+ ],
+ "helperSha256": "f13467912a1537adcc4624e5b5b3efdfb738aaaf5c073e37ab2f88862696de3c",
+ "bindingHash": "c7b07a8da269ea57cd3a9663ac97ca9688fc3311d57865cccda98f6d7262a88b",
+ "receipt": {
+  "schema": "cf.observed-surface-split/v1",
+  "contactPins": [],
+  "sourceBindingHash": "c1dbcfd23de5b1043d1745d2f4cbec76a3c0b92fdb4ef28ec73a7fd18a75d731",
+  "sourceVertices": 2229,
+  "vertices": 2445,
+  "sharedSupports": 553,
+  "pins": 1356,
+  "independentSurfaceParts": 13,
+  "sourceJoins": 12,
+  "excludedOverlaps": 13,
+  "observedExcludedBoundaries": 13,
+  "weldedExcludedBoundaries": 1,
+  "independentExcludedBoundaries": 12,
+  "preservePaintBoundaries": false,
+  "paintBoundaryPairs": [
+   [
+    "body",
+    "body-1"
+   ]
+  ],
+  "sourceCoordinateChanges": 0
+ }
+}
