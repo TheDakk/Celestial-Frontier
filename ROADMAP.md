@@ -27,7 +27,7 @@ Candidate03 is REJECTED, never wired. Its sole held-out run on63e61b5f failed no
 
 ## Remaining order (Nick’s latest request)
 
-1. Finish C28(f) verification/signing and own-branch measured push.
+1. C28(f) DONE and pushed as6cbeefe0(G),120,567,446-byte pack. Delivery receipt in S4 production epoch packet.
 2. Fresh S4 epoch: declare untouched evaluation corpus and cohorts BEFORE tuning, use actual production dispatch, candidate03 remains rejected. Normal10–20pp; Titan≤20pp; declared Guardian band; playable Command≥5pp without near-total defeats; solo Auto±5pp v1. No repeated held-out evaluation.
 3. C30/C31 audio-section inventory; new Settings/Glass capacity; dev audioReview versus packaged Listening split decision.
 4. Decide quadruped observed/rest supports; if observed, fix Lizard final faint (foreFarPaw96°). Rest passes on Claude’s source.
@@ -38,3 +38,5 @@ Candidate03 is REJECTED, never wired. Its sole held-out run on63e61b5f failed no
 9. C8/I5 one integrated clean-source v2 epoch, three calibration runs plus one certificate, v1 untouched and growth guard unchanged.
 
 Claude consumes signed packets from the shared object store and owns cards/stage/wiring/picker/republishing. Codex owns art/rig/instruments/rates. Nick need not open another app to relay. Sole standing I5 red does not authorize hosted work or battle2 default; iPhone playtest and certificate still gate that decision.
+
+Current active item: `audits/S4_PRODUCTION_EPOCH_20260926/epoch.json` declares1,024 fresh evaluation cases before tuning. Production-route evaluator and training are next; no evaluation consumed.
