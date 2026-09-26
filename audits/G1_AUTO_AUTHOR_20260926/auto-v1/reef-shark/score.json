@@ -1,0 +1,18 @@
+{
+ "id": "reef-shark",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 764.8,
+ "landmarkMedian": 0.0335,
+ "landmarkMax": 0.086,
+ "worst": [
+  "head 0.086",
+  "spine1 0.073",
+  "root 0.060"
+ ],
+ "labelAgreement": 0.5335,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

@@ -1,0 +1,18 @@
+{
+ "id": "marmot",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+ ],
+ "bodyLengthPx": 1088.6,
+ "landmarkMedian": 0.0368,
+ "landmarkMax": 0.1212,
+ "worst": [
+  "tail0 0.121",
+  "earFarTip 0.111",
+  "earFarRoot 0.098"
+ ],
+ "labelAgreement": 0.5744,
+ "missingJoints": []
+}

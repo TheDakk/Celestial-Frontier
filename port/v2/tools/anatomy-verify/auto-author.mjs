@@ -1,0 +1,248 @@
+/** G1 AUTO-AUTHOR (Generated Creature Pipeline, audits/GENERATION_PIPELINE_20260926/PROGRAM.md): a painting + its body family →
+ * the exact `authoring.json` Codex hand-writes today, for the UNCHANGED `tools/creature-animation/intake-authored.mjs`.
+ *
+ * Method: registration by transfer, no creature or family special cases. Every master shares the controlled layout (1254² canvas,
+ * strict side profile, facing right). The target's outer silhouette contour is matched to each REFERENCE of the same family by cyclic
+ * dynamic time warping on bbox-normalised position + local turning; a regularised thin-plate spline built from the matched contour
+ * points carries the reference's landmarks and part polygons onto the target. Polygons come from the best reference; each landmark
+ * is the median over the best few references that carry it. References are hand-authored packets of OTHER subjects only (the caller
+ * enforces leave-one-subject-out).
+ *
+ * Verdict (evidence from the target's VISIBLE paint, never the template):
+ * - `missing-anatomy`: a part whose mapped polygon covers too little paint (an erased limb),
+ * - `unexplained-anatomy`: a large painted region no part claims and far from the body (a duplicated / extra limb),
+ * - `facing`: the mirrored target matches its family better than the target does,
+ * - `wrong-family`: another family's references match clearly better.
+ * Presence (cf.anatomy-presence/v2) starts all-visible; hidden/folded are declared classes and are NEVER inferred here. */
+import {keyAndDespill} from '../../../../tools/local-image-generation/kit-contact-math.mjs';
+
+export const AUTO_AUTHOR_SCHEMA = 'cf.g1-auto-author/v1';
+const N = 240, WORK = 314; // contour samples; working grid for tracing (1254 / 4)
+
+/** Binary mask (Uint8Array, 1 = paint) from RGBA: alpha where the master has transparency, else the magenta key. */
+export function paintMask(rgba, w, h) {
+  let transparent = false; for (let i = 3; i < rgba.length; i += 4) if (rgba[i] === 0) { transparent = true; break; }
+  const alpha = transparent ? null : keyAndDespill(new Uint8ClampedArray(rgba), w, h).alpha;
+  const m = new Uint8Array(w * h);
+  for (let i = 0; i < w * h; i++) m[i] = (transparent ? rgba[i * 4 + 3] : alpha[i]) >= 128 ? 1 : 0;
+  return { mask: m, keyed: !transparent };
+}
+
+/** Largest 8-connected component of a mask (holes kept). */
+function largestComponent(m, w, h) {
+  const lab = new Int32Array(w * h).fill(-1); let best = -1, bestN = 0; const stack = [];
+  for (let s = 0; s < w * h; s++) { if (!m[s] || lab[s] >= 0) continue; let n = 0; stack.push(s); lab[s] = s;
+    while (stack.length) { const p = stack.pop(); n++; const x = p % w, y = (p / w) | 0;
+      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) { const X = x + dx, Y = y + dy; if (X < 0 || Y < 0 || X >= w || Y >= h) continue; const q = Y * w + X; if (m[q] && lab[q] < 0) { lab[q] = s; stack.push(q); } } }
+    if (n > bestN) { bestN = n; best = s; } }
+  const out = new Uint8Array(w * h); for (let i = 0; i < w * h; i++) out[i] = lab[i] === best ? 1 : 0; return out;
+}
+
+/** Outer contour of a mask, traced on a downsampled grid (Moore neighbourhood), returned in full-resolution pixel coordinates,
+ * clockwise, resampled to N points by arc length. */
+export function outerContour(mask, w, h) {
+  const s = w / WORK, W = WORK, H = Math.round(h / s), g = new Uint8Array(W * H);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) { let any = 0; for (let yy = Math.floor(y * s); yy < Math.min(h, Math.floor((y + 1) * s)) && !any; yy++) for (let xx = Math.floor(x * s); xx < Math.min(w, Math.floor((x + 1) * s)); xx++) if (mask[yy * w + xx]) { any = 1; break; } g[y * W + x] = any; }
+  const c = largestComponent(g, W, H);
+  let start = -1; for (let i = 0; i < W * H; i++) if (c[i]) { start = i; break; } if (start < 0) throw Error('auto-author: empty silhouette');
+  const at = (x, y) => (x >= 0 && y >= 0 && x < W && y < H ? c[y * W + x] : 0);
+  const dirs = [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]];
+  const pts = []; let x = start % W, y = (start / W) | 0, d = 7; const sx = x, sy = y;
+  for (let guard = 0; guard < W * H * 4; guard++) { pts.push([x, y]); let found = false;
+    for (let k = 0; k < 8; k++) { const nd = (d + 6 + k) % 8, X = x + dirs[nd][0], Y = y + dirs[nd][1]; if (at(X, Y)) { x = X; y = Y; d = nd; found = true; break; } }
+    if (!found || (x === sx && y === sy && pts.length > 2)) break; }
+  const full = pts.map(([px, py]) => [(px + 0.5) * s, (py + 0.5) * s]);
+  const len = [0]; for (let i = 1; i <= full.length; i++) { const a = full[i - 1], b = full[i % full.length]; len.push(len[i - 1] + Math.hypot(b[0] - a[0], b[1] - a[1])); }
+  const total = len[full.length], out = [];
+  for (let k = 0, j = 0; k < N; k++) { const t = (k / N) * total; while (len[j + 1] < t) j++; const a = full[j], b = full[(j + 1) % full.length], f = (t - len[j]) / Math.max(1e-9, len[j + 1] - len[j]); out.push([a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f]); }
+  return out;
+}
+
+const bboxOf = (m, w, h) => { let x0 = w, y0 = h, x1 = -1, y1 = -1; for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) if (m[y * w + x]) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; } return { x0, y0, w: x1 - x0 + 1, h: y1 - y0 + 1 }; };
+
+/** Per-point descriptor: bbox-normalised position and the turning angle over a short window (curvature sign/size). */
+function describe(contour, box) {
+  const n = contour.length, K = 4;
+  return contour.map(([x, y], i) => { const a = contour[(i - K + n) % n], b = contour[(i + K) % n];
+    const t1 = Math.atan2(y - a[1], x - a[0]), t2 = Math.atan2(b[1] - y, b[0] - x); let turn = t2 - t1; while (turn > Math.PI) turn -= 2 * Math.PI; while (turn < -Math.PI) turn += 2 * Math.PI;
+    return [(x - box.x0) / box.w, (y - box.y0) / box.h, turn]; });
+}
+
+/** Cyclic DTW: best alignment of B (target) to A (reference) over start offsets; returns mean step cost and the matched index pairs. */
+export function cyclicDtw(A, B, { turnWeight = 0.05, offsetStep = 4 } = {}) {
+  const n = A.length, m = B.length; let best = { cost: Infinity, pairs: [] };
+  const D = new Float64Array((n + 1) * (m + 1)), P = new Uint8Array((n + 1) * (m + 1));
+  for (let off = 0; off < m; off += offsetStep) {
+    D.fill(Infinity); D[0] = 0;
+    for (let i = 1; i <= n; i++) for (let j = 1; j <= m; j++) {
+      const a = A[i - 1], b = B[(j - 1 + off) % m], du = a[0] - b[0], dv = a[1] - b[1], dt = a[2] - b[2];
+      const c = du * du + dv * dv + turnWeight * dt * dt;
+      const x0 = D[(i - 1) * (m + 1) + (j - 1)], x1 = D[(i - 1) * (m + 1) + j], x2 = D[i * (m + 1) + (j - 1)];
+      let v = x0, p = 0; if (x1 < v) { v = x1; p = 1; } if (x2 < v) { v = x2; p = 2; }
+      D[i * (m + 1) + j] = v + c; P[i * (m + 1) + j] = p;
+    }
+    const cost = D[n * (m + 1) + m] / (n + m);
+    if (cost < best.cost) { const pairs = []; let i = n, j = m; while (i > 0 && j > 0) { pairs.push([i - 1, (j - 1 + off) % m]); const p = P[i * (m + 1) + j]; if (p === 0) { i--; j--; } else if (p === 1) i--; else j--; } best = { cost, pairs: pairs.reverse() }; }
+  }
+  return best;
+}
+
+/** Regularised 2-D thin-plate spline through control pairs (src → dst). */
+export function thinPlate(src, dst, lambda) {
+  const n = src.length, U = (r2) => (r2 < 1e-12 ? 0 : r2 * Math.log(r2)), M = n + 3, A = Array.from({ length: M }, () => new Float64Array(M + 2));
+  for (let i = 0; i < n; i++) { for (let j = 0; j < n; j++) { const dx = src[i][0] - src[j][0], dy = src[i][1] - src[j][1]; A[i][j] = U(dx * dx + dy * dy) + (i === j ? lambda : 0); }
+    A[i][n] = 1; A[i][n + 1] = src[i][0]; A[i][n + 2] = src[i][1]; A[n][i] = 1; A[n + 1][i] = src[i][0]; A[n + 2][i] = src[i][1]; A[i][M] = dst[i][0]; A[i][M + 1] = dst[i][1]; }
+  for (let c = 0; c < M; c++) { let p = c; for (let r = c + 1; r < M; r++) if (Math.abs(A[r][c]) > Math.abs(A[p][c])) p = r; [A[c], A[p]] = [A[p], A[c]]; const piv = A[c][c] || 1e-12;
+    for (let r = 0; r < M; r++) { if (r === c) continue; const f = A[r][c] / piv; if (!f) continue; for (let k = c; k < M + 2; k++) A[r][k] -= f * A[c][k]; } }
+  const wx = A.map((row, i) => row[M] / (row[i] || 1e-12)), wy = A.map((row, i) => row[M + 1] / (row[i] || 1e-12));
+  return ([x, y]) => { let X = wx[n] + wx[n + 1] * x + wx[n + 2] * y, Y = wy[n] + wy[n + 1] * x + wy[n + 2] * y;
+    for (let i = 0; i < n; i++) { const dx = x - src[i][0], dy = y - src[i][1], u = U(dx * dx + dy * dy); X += wx[i] * u; Y += wy[i] * u; } return [X, Y]; };
+}
+
+/** A prepared subject: mask, contour, descriptors. */
+export function prepareSubject(rgba, w, h) {
+  const { mask, keyed } = paintMask(rgba, w, h), box = bboxOf(mask, w, h), contour = outerContour(mask, w, h);
+  return { w, h, mask, keyed, box, contour, desc: describe(contour, box) };
+}
+export function mirrorSubject(rgba, w, h) { const out = new Uint8ClampedArray(rgba.length); for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const s = (y * w + x) * 4, d = (y * w + (w - 1 - x)) * 4; for (let k = 0; k < 4; k++) out[d + k] = rgba[s + k]; } return prepareSubject(out, w, h); }
+
+/** Transfer one reference onto the target: DTW, spline, mapped landmarks + polygons. */
+export function transferReference(target, ref, { lambda = 2e3, pairStride = 3 } = {}) {
+  const dtw = cyclicDtw(ref.desc, target.desc), used = new Set(), src = [], dst = [];
+  dtw.pairs.forEach(([i, j], k) => { if (k % pairStride || used.has(i)) return; used.add(i); src.push(ref.contour[i]); dst.push(target.contour[j]); });
+  const map = thinPlate(src, dst, lambda);
+  const landmarksPx = Object.fromEntries(Object.entries(ref.authoring.landmarksPx).map(([k, p]) => [k, map(p)]));
+  const parts = ref.authoring.parts.map((p) => ({ id: p.id, joint: p.joint, layer: p.layer, polygonPx: p.polygonPx.map(map) }));
+  const gRef = ref.authoring.groundLineY * ref.h, footX = ref.box.x0 + ref.box.w / 2, gy = map([footX, gRef])[1] / target.h;
+  return { cost: dtw.cost, landmarksPx, parts, groundLineY: gy, ref };
+}
+
+const inside = (x, y, poly) => { let yes = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], b = poly[j]; if ((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) yes = !yes; } return yes; };
+const polyArea = (poly) => { let s = 0; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) s += (poly[j][0] + poly[i][0]) * (poly[j][1] - poly[i][1]); return Math.abs(s / 2); };
+/** Fraction of a polygon's area that is paint (sampled on a 4 px grid). */
+function paintCoverage(mask, w, h, poly) {
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity; for (const [x, y] of poly) { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); }
+  let n = 0, p = 0; for (let y = Math.max(0, Math.floor(y0)); y <= Math.min(h - 1, y1); y += 4) for (let x = Math.max(0, Math.floor(x0)); x <= Math.min(w - 1, x1); x += 4) if (inside(x + 0.5, y + 0.5, poly)) { n++; if (mask[y * w + x]) p++; }
+  return n ? p / n : 0;
+}
+/** Nearest paint pixel to a point (bounded spiral search). */
+function snapToPaint(mask, w, h, [x, y], R = 60) {
+  const xi = Math.round(x), yi = Math.round(y); if (xi >= 0 && yi >= 0 && xi < w && yi < h && mask[yi * w + xi]) return [x, y];
+  let best = null, bd = Infinity; for (let dy = -R; dy <= R; dy++) for (let dx = -R; dx <= R; dx++) { const X = xi + dx, Y = yi + dy; if (X < 0 || Y < 0 || X >= w || Y >= h || !mask[Y * w + X]) continue; const d = dx * dx + dy * dy; if (d < bd) { bd = d; best = [X + 0.5, Y + 0.5]; } }
+  return best ?? [x, y];
+}
+
+/** Two-pass chamfer distance transform of the paint (distance to the nearest non-paint pixel, in px). */
+export function distanceTransform(mask, w, h) {
+  const d = new Float32Array(w * h), INF = 1e9, A = 1, B = Math.SQRT2;
+  for (let i = 0; i < w * h; i++) d[i] = mask[i] ? INF : 0;
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const i = y * w + x; if (!d[i]) continue; let v = d[i];
+    if (x > 0) v = Math.min(v, d[i - 1] + A); if (y > 0) { v = Math.min(v, d[i - w] + A); if (x > 0) v = Math.min(v, d[i - w - 1] + B); if (x < w - 1) v = Math.min(v, d[i - w + 1] + B); } d[i] = v; }
+  for (let y = h - 1; y >= 0; y--) for (let x = w - 1; x >= 0; x--) { const i = y * w + x; if (!d[i]) continue; let v = d[i];
+    if (x < w - 1) v = Math.min(v, d[i + 1] + A); if (y < h - 1) { v = Math.min(v, d[i + w] + A); if (x < w - 1) v = Math.min(v, d[i + w + 1] + B); if (x > 0) v = Math.min(v, d[i + w - 1] + B); } d[i] = v; }
+  return d;
+}
+/** Move a point uphill on the distance transform (toward the limb's medial ridge), never farther than R px from where it started. */
+function climbToRidge(dt, w, h, [x, y], R) {
+  let cx = Math.round(x), cy = Math.round(y); const sx = cx, sy = cy;
+  for (let it = 0; it < 4 * R; it++) { let bx = cx, by = cy, bv = dt[cy * w + cx];
+    for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) { const X = cx + dx, Y = cy + dy; if (X < 0 || Y < 0 || X >= w || Y >= h || Math.hypot(X - sx, Y - sy) > R) continue; const v = dt[Y * w + X]; if (v > bv + 1e-6) { bv = v; bx = X; by = Y; } }
+    if (bx === cx && by === cy) break; cx = bx; cy = by; }
+  return [cx + 0.5, cy + 0.5];
+}
+
+/** Bone segments per part: a part at joint J owns the bones J→child for every child of J in the family graph; a terminal owns a short
+ * extension of its parent→J bone (the tip); the root marker owns nothing. `graph` is the contract's [[child, parent], ...]. */
+export function boneSegments(partsSpec, landmarksPx, graph) {
+  const children = new Map(), parent = new Map(); for (const [c, p] of graph) { if (!children.has(p)) children.set(p, []); children.get(p).push(c); parent.set(c, p); }
+  return partsSpec.map((part) => { const J = part.joint, P = landmarksPx[J]; if (!P || J === 'root') return [];
+    const kids = (children.get(J) ?? []).filter((c) => landmarksPx[c]);
+    if (kids.length) return kids.map((c) => [P, landmarksPx[c]]);
+    const par = parent.get(J), Q = par && landmarksPx[par]; if (!Q) return [[P, P]];
+    return [[P, [P[0] + (P[0] - Q[0]) * 0.45, P[1] + (P[1] - Q[1]) * 0.45]]]; });
+}
+const segDist2 = (x, y, [a, b]) => { const vx = b[0] - a[0], vy = b[1] - a[1], L = vx * vx + vy * vy; let t = L ? ((x - a[0]) * vx + (y - a[1]) * vy) / L : 0; t = t < 0 ? 0 : t > 1 ? 1 : t; const dx = a[0] + t * vx - x, dy = a[1] + t * vy - y; return dx * dx + dy * dy; };
+/** Label every painted pixel (on a `step` grid) with the part whose bone is nearest; returns labels (part index, -1 = none) and
+ * each pixel's distance to its nearest bone. */
+export function labelByBones(target, segs, step = 2) {
+  const W = Math.ceil(target.w / step), H = Math.ceil(target.h / step), lab = new Int16Array(W * H).fill(-1), dist = new Float32Array(W * H);
+  for (let gy = 0; gy < H; gy++) for (let gx = 0; gx < W; gx++) { const x = gx * step + step / 2, y = gy * step + step / 2, xi = Math.min(target.w - 1, Math.floor(x)), yi = Math.min(target.h - 1, Math.floor(y));
+    if (!target.mask[yi * target.w + xi]) continue; let best = -1, bd = Infinity;
+    for (let k = 0; k < segs.length; k++) for (const s of segs[k]) { const d = segDist2(x, y, s); if (d < bd) { bd = d; best = k; } }
+    lab[gy * W + gx] = best; dist[gy * W + gx] = Math.sqrt(bd); }
+  return { lab, dist, W, H, step };
+}
+/** Trace the outer boundary of label k's largest region on the label grid → a simplified polygon in pixel coordinates. */
+function regionPolygon(L, k) {
+  const { lab, W, H, step } = L, m = new Uint8Array(W * H); let any = 0; for (let i = 0; i < W * H; i++) if (lab[i] === k) { m[i] = 1; any++; }
+  if (!any) return null;
+  const c = largestComponent(m, W, H); let start = -1; for (let i = 0; i < W * H; i++) if (c[i]) { start = i; break; }
+  const at = (x, y) => (x >= 0 && y >= 0 && x < W && y < H ? c[y * W + x] : 0), dirs = [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]];
+  const pts = []; let x = start % W, y = (start / W) | 0, d = 7; const sx = x, sy = y;
+  for (let g = 0; g < W * H * 4; g++) { pts.push([x, y]); let f = false; for (let t = 0; t < 8; t++) { const nd = (d + 6 + t) % 8, X = x + dirs[nd][0], Y = y + dirs[nd][1]; if (at(X, Y)) { x = X; y = Y; d = nd; f = true; break; } } if (!f || (x === sx && y === sy && pts.length > 2)) break; }
+  // pad each traced cell outward by half a cell so the polygon covers its pixels, then Ramer–Douglas–Peucker
+  const cx = pts.reduce((a, p) => a + p[0], 0) / pts.length, cy = pts.reduce((a, p) => a + p[1], 0) / pts.length;
+  const full = pts.map(([px, py]) => { const vx = px - cx, vy = py - cy, n = Math.hypot(vx, vy) || 1; return [(px + 0.5 + 0.7 * vx / n) * step, (py + 0.5 + 0.7 * vy / n) * step]; });
+  const rdp = (a, eps) => { if (a.length < 3) return a; let idx = -1, dm = 0; const [p, q] = [a[0], a[a.length - 1]];
+    for (let i = 1; i < a.length - 1; i++) { const d = Math.sqrt(segDist2(a[i][0], a[i][1], [p, q])); if (d > dm) { dm = d; idx = i; } }
+    return dm > eps ? [...rdp(a.slice(0, idx + 1), eps).slice(0, -1), ...rdp(a.slice(idx), eps)] : [p, q]; };
+  const poly = full.length > 8 ? rdp(full, 1.5) : full;
+  return poly.length >= 3 ? poly.map(([a, b]) => [Math.round(a * 10) / 10, Math.round(b * 10) / 10]) : null;
+}
+/** Bone-on-paint evidence: the share of each part's bone length that lies on (slightly dilated) paint. */
+function boneOnPaint(target, segs, dilatePx) {
+  const on = (x, y) => { const xi = Math.round(x), yi = Math.round(y); for (let dy = -dilatePx; dy <= dilatePx; dy += Math.max(1, dilatePx >> 1)) for (let dx = -dilatePx; dx <= dilatePx; dx += Math.max(1, dilatePx >> 1)) { const X = xi + dx, Y = yi + dy; if (X >= 0 && Y >= 0 && X < target.w && Y < target.h && target.mask[Y * target.w + X]) return true; } return false; };
+  return segs.map((ss) => { if (!ss.length) return 1; let n = 0, p = 0; for (const [a, b] of ss) for (let t = 0; t <= 1.0001; t += 0.1) { n++; if (on(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)) p++; } return p / n; });
+}
+/** Paint far from every bone, relative to the body diagonal (duplicated or extra anatomy). */
+function farFromBones(L, diag, frac) { let n = 0, far = 0; for (let i = 0; i < L.lab.length; i++) { if (L.lab[i] < 0) continue; n++; if (L.dist[i] > frac * diag) far++; } return far / Math.max(1, n); }
+/** Skeleton statistics of a subject's OWN hand authoring (so the verdict compares like with like). */
+export function skeletonStats(prepared, authoring, graph, farFrac = 0.1) {
+  const segs = boneSegments(authoring.parts, authoring.landmarksPx, graph), L = labelByBones(prepared, segs, 4), diag = Math.hypot(prepared.box.w, prepared.box.h);
+  const counts = authoring.parts.map((_, k) => { let n = 0; for (let i = 0; i < L.lab.length; i++) if (L.lab[i] === k) n++; return n / Math.max(1, L.lab.filter((v) => v >= 0).length); });
+  return { far: farFromBones(L, diag, farFrac), partShare: Object.fromEntries(authoring.parts.map((p, k) => [p.id, counts[k]])) };
+}
+
+/** Author one target from same-family references (and, for the verdict, the other families' references and the mirrored target).
+ * `refs`: [{family, subjectId, rgba?, prepared, authoring, h}] ; returns {verdict, reasons, authoring, presence, evidence}. */
+export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null }) {
+  const same = refs.filter((r) => r.family === family), other = refs.filter((r) => r.family !== family);
+  if (!same.length) return { verdict: 'REFUSE', reasons: ['no-reference: no other hand-authored subject of family ' + family], authoring: null };
+  const tr = same.map((r) => transferReference(target, r)).sort((a, b) => a.cost - b.cost), best = tr[0], reasons = [];
+  // facing / family checks on the contour cost alone
+  const mirrorBest = Math.min(...same.map((r) => cyclicDtw(r.desc, mirrored.desc).cost));
+  if (mirrorBest < best.cost * 0.85) reasons.push(`facing: the mirrored painting matches ${family} better (${mirrorBest.toFixed(4)} < ${best.cost.toFixed(4)})`);
+  const otherBest = other.length ? other.map((r) => ({ f: r.family, c: cyclicDtw(r.desc, target.desc).cost })).sort((a, b) => a.c - b.c)[0] : null;
+  if (otherBest && otherBest.c < best.cost * 0.7) reasons.push(`wrong-family: ${otherBest.f} matches clearly better (${otherBest.c.toFixed(4)} < ${best.cost.toFixed(4)})`);
+  // landmarks: median over the best K references carrying the joint; contact endpoints snapped onto paint
+  const top = tr.slice(0, topK), med = (vals) => { const s = [...vals].sort((a, b) => a - b); return s[(s.length - 1) >> 1]; };
+  const landmarksPx = {};
+  for (const joint of Object.keys(best.landmarksPx)) { const vals = top.filter((t) => t.landmarksPx[joint]).map((t) => t.landmarksPx[joint]); landmarksPx[joint] = [med(vals.map((p) => p[0])), med(vals.map((p) => p[1]))]; }
+  // optional ridge refinement: interior joints climb to the limb's medial ridge (bounded); `ridge.keep` (contact terminals) only snap onto paint
+  const dt = ridge ? distanceTransform(target.mask, target.w, target.h) : null, R = ridge ? ridge.radiusFrac * Math.hypot(target.box.w, target.box.h) : 0;
+  for (const joint of Object.keys(landmarksPx)) { let p = snapToPaint(target.mask, target.w, target.h, landmarksPx[joint]); if (dt && !ridge.keep.has(joint)) p = climbToRidge(dt, target.w, target.h, p, R); landmarksPx[joint] = p.map((v) => Math.round(v * 10) / 10); }
+  const parts = best.parts.map((p) => ({ ...p, polygonPx: p.polygonPx.map(([x, y]) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10]) }));
+  // evidence from visible paint: every part must sit on paint; no large unclaimed painted region away from the body
+  const coverage = parts.map((p) => ({ id: p.id, joint: p.joint, paint: paintCoverage(target.mask, target.w, target.h, p.polygonPx), area: polyArea(p.polygonPx) }));
+  const refCoverage = new Map(best.ref.partPaint.map((c) => [c.id, c.paint]));
+  const missing = coverage.filter((c) => c.id !== best.ref.authoring.remainderPart && c.paint < Math.max(minPartPaint, 0.35 * (refCoverage.get(c.id) ?? 0)));
+  for (const c of missing) reasons.push(`missing-anatomy: part ${c.id} (${c.joint}) covers ${(c.paint * 100).toFixed(0)}% paint (reference ${((refCoverage.get(c.id) ?? 0) * 100).toFixed(0)}%)`);
+  let paint = 0, unclaimed = 0; const nonRemainder = parts.filter((p) => p.id !== best.ref.authoring.remainderPart);
+  const cx = target.box.x0 + target.box.w / 2, cy = target.box.y0 + target.box.h / 2;
+  for (let y = 0; y < target.h; y += 6) for (let x = 0; x < target.w; x += 6) { if (!target.mask[y * target.w + x]) continue; paint++;
+    if (!nonRemainder.some((p) => inside(x + 0.5, y + 0.5, p.polygonPx))) { const far = Math.hypot((x - cx) / target.box.w, (y - cy) / target.box.h) > 0.28; if (far) unclaimed++; } }
+  const refUnclaimed = best.ref.unclaimedFrac ?? 0;
+  if (unclaimed / Math.max(1, paint) > Math.max(unexplainedFrac, refUnclaimed + 0.04)) reasons.push(`unexplained-anatomy: ${(100 * unclaimed / paint).toFixed(1)}% of the paint lies away from the body and in no part (reference ${(100 * refUnclaimed).toFixed(1)}%)`);
+  const authoring = { id, family, ...(habitat ? { habitat } : {}), landmarksPx, groundLineY: Math.min(0.999, Math.max(0.05, best.groundLineY)), materials, remainderPart: best.ref.authoring.remainderPart, parts,
+    coverage: { declarations: `G1 automatic authoring: landmarks = median of ${top.length} registered references; parts from ${best.ref.subjectId}. No hidden/folded inference; absent only by visible-paint evidence.`, sourceFacing: 'right', visualAcceptance: 'none — automatic' } };
+  return { verdict: reasons.length ? 'REFUSE' : 'ADMIT', reasons, authoring, presence: { schema: 'cf.anatomy-presence/v2', absent: [], hidden: [], folded: [] },
+    evidence: { schema: AUTO_AUTHOR_SCHEMA, bestReference: best.ref.subjectId, costs: tr.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
+}
+
+/** Reference-side statistics (their own authoring on their own paint) so the verdict compares like with like. */
+export function referenceStats(prepared, authoring) {
+  const partPaint = authoring.parts.map((p) => ({ id: p.id, paint: paintCoverage(prepared.mask, prepared.w, prepared.h, p.polygonPx) }));
+  const nonRemainder = authoring.parts.filter((p) => p.id !== authoring.remainderPart), cx = prepared.box.x0 + prepared.box.w / 2, cy = prepared.box.y0 + prepared.box.h / 2;
+  let paint = 0, unclaimed = 0; for (let y = 0; y < prepared.h; y += 6) for (let x = 0; x < prepared.w; x += 6) { if (!prepared.mask[y * prepared.w + x]) continue; paint++; if (!nonRemainder.some((p) => inside(x + 0.5, y + 0.5, p.polygonPx)) && Math.hypot((x - cx) / prepared.box.w, (y - cy) / prepared.box.h) > 0.28) unclaimed++; }
+  return { partPaint, unclaimedFrac: unclaimed / Math.max(1, paint) };
+}
