@@ -61,7 +61,7 @@ producer; the engine's exact codec remains the retained-output authority.
 - Native runner syntax and browser client bundling pass. Application TypeScript
   result is reported to the parent batch when it completes.
 
-## Prepared native proof (pending signed clean source)
+## Native harness and required proof (attempt below refused)
 
 `native-runner.mjs` uses the shipped Cougar source
 `audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03`, whose original master is
@@ -77,5 +77,57 @@ conservation and unchanged source hashes. There is no new fit or G2 admission.
 node audits/G5_ADAPTER_UNBLOCK_20260926/native-runner.mjs /private/tmp/cf-g5-native1254-NEW
 ```
 
-Do not run before the parent signs a clean checkpoint and grants the native slot.
+Any future native attempt needs a fresh clean signed source and the shared native slot; do not retry the unchanged refused source. The alpha-eligibility decision below remains pending.
 No quality acceptance or physical-iPhone qualification is implied by this proof.
+
+
+## Native attempt and bounded eligibility inventory (retained refusal)
+
+The single authorized run on signed
+`bfe76a6bbfa1303c73976944cc1a9be316836a88` **REFUSED** the unchanged Cougar source
+with `No editable creature interior`. It did not produce a finished PNG or start
+model inference. The valid job's source dimensions were 1254² and its padded
+canvas 1264². The corrupt-transfer control was refused before any model progress;
+four buffers detached across the negative and valid submissions. This is a
+retained valid refusal, not a successful native1254 proof.
+
+`native-bfe76a6b-refused/result.json` preserves the complete native result and
+`source-stats.json` identifies the exact source pins and alpha distribution.
+Cougar has 375,802 painted pixels but only193 alpha255 pixels; most of its
+interior is alpha253, so no original pixel has the required fully opaque9×9
+same-owner neighborhood.
+
+The subsequent bounded read-only inventory (`eligibility-inventory.mjs`, `.json`
+and `.log`) verifies the master, canonical record and labels pins for all34
+labels-present sources among the38 pinned archetypes. Only the five880² crabs
+are eligible; **zero1254 sources pass**. Wolf and Salmon also have zero original
+editable pixels. Padding does not change the editable-pixel count. No alternate
+subject was inferred, no alpha was normalized, and no threshold changed.
+
+The pre-model eligibility check now runs the **same existing padded mask** inside
+`prepareCreatureFinishJob`, after exact input hash checks and before the worker
+constructs its GPU/model engine. The engine recomputes the mask rather than
+trusting a caller-supplied derived mask. The worker-dispatch negative control
+proves a correctly hashed alpha253 source refuses with zero engine constructions,
+and the alpha255 positive control still reaches the engine. Results are in
+`pre-model-eligibility-tests.log`.
+
+A proposed alpha>=250 eligibility decision is pending separately. This packet
+neither adopts that proposal nor claims the requested real1254 native proof has
+passed. Original alpha bytes, fixed boundary width, labels/binding equality and
+the existing conservation gate remain unchanged.
+
+
+## Final integrated result and handoff
+
+The final browser-free develop profile has **5,635 PASS, one FAIL (I5), two expected failures and two skips** across560 files. All seven manual owners pass: root/app/worker TypeScript, artaudit, overridecheck, speccheck and overridecontrol. Root validate passes with zero boot errors,1010 rendered Earth species and the unchanged50-probe v1.0 fingerprint. `final-battery/results.json` binds logs and changed code hashes.
+
+The first integrated run exposed two repairable test issues: an old119/118 bulletin-count control and a test hash helper receiving a Uint8ClampedArray union. Updating the count pair to120/119 and explicitly copying the guard output into Uint8Array preserves the complete assertions. `pre-repair-battery` retains that run. Only the failed profile and app TypeScript owner were repeated; the six unchanged passing manual owners were carried forward. C45's earlier app check preceded its last test assertion; the final integrated app check is authoritative.
+
+C41/C45 stage and phone contracts are complete in this lane (`C41.md`, `C45.md`). Stage composition is verified finish → existing individual morph → protected alpha check → seam guard. The in-place alpha-baseline alias is repaired. Fifteen focused stage/pinned/morph tests pass. No delivered finished originals or runtime library entries are published here.
+
+C43's size/transfer code and pre-engine rejection are complete, but **the real1254 finish proof remains blocked**: the unchanged alpha===255 mask admits zero editable interior on every labels-present1254 source. Nick's proposed alpha>=250 eligibility decision is pending; no threshold or conservation gate changed. Do not claim native1254 acceptance or publish a nonexistent finished PNG.
+
+The one six-case fit refinement was rejected; all six reds remain explicit in G1_FIT_REPAIR_20260926. G2_FAMILY_PILOT_20260926 retains20 unedited1254 masters, one sheet and independent observations. G4_COPY_REMEASURE_20260926 records the one120-bullet copy measurement. D24 remains open, D25 off, G1 red and S4 parked.
+
+Cleanup removed82,199,096 bytes of ignored rejected-fit copies and completed native preparation scratch, retaining original inputs, full reports, hashes and reproduction scripts. Finder metadata has a temporary backup; only the three permanent worktrees and newest two previews remain. Free disk227GiB. See `cleanup.json`.

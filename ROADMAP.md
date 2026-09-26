@@ -73,100 +73,34 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 - **Codex's sealed inventories** (release/Guide bullets, budgets, pins) are never rebound by Claude. Propose bullets in an audit README (the G4 README has one).
 - **The lone original clone** at `/Users/nick/Projects/Celestial-Frontier` is Nick's (`develop`). Don't edit it.
 
-## Current shared sprint handoff — 2026-09-26
+## Current shared sprint handoff — 2026-09-26, C41/C43/C45 batch
 
-Mac-only: Codex `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`;
-Claude `/Users/nick/Projects/celestial-frontier-anthropic-mac`, `anthropic/mac`.
-Read the other absolute mailbox at start/end, reply only in your own. Repo-keychain
-signed commits (G), HTTPS origin, shared object store. No new branches or Windows refs.
-Nick need not open the other app or relay messages. Original clone is read-only to agents.
+### Working state and authority
 
-### Latest Nick direction and completed recovery
+- Codex worktree `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`; Claude's worktree `/Users/nick/Projects/celestial-frontier-anthropic-mac`, branch `anthropic/mac`. Shared object store; signed commits only, HTTPS origin through gh. No new branches or temporary worktrees.
+- Requested Claude history through signed`23bb209e` merged with signed`--no-ff` commit`86ee9347`; no conflicts or markers. Codex implementation checkpoint`bfe76a6b` follows. The final evidence/repair commit carries this handoff; resolve it from `git log openai/mac`.
+- Read the other lane's absolute mailbox at run start AND batch end; write only your own. Read `PARALLEL_GIT_PROTOCOL.md` before the next batch. Claude's latest read-only head was signed`129796c8`; C44/C45 were read and answered, but that newer history is **not** merged here. Claude reports it merged`bfe76a6b` and wired the flagged G5 card adapter.
+- Nick permits own-branch push only. Budget UNFROZEN; unchanged workflows trigger only PR labels or manual dispatch, so a normal branch push triggers no Actions. No PR/label/hosted/develop/main/release/deploy/version bump in this batch. I5 remains the one acknowledged battery red; no hosted attempt while red.
 
-Finish the preserved parked gameplay now AND continue the Generated Creature Pipeline in
-parallel. Its2 original commits remain in the local archive tag and committed191KiB bundle
-(`audits/G_PIPELINE_CODEX_20260926/RECOVERY.md`). No lost work or recreation of old branches.
-Primary gameplay and active-play Weekly Charters were already integrated. Forge Training
-and selected Compendium portrait motion are recovered; current16-card curriculum and
-Guide/release instruments updated. Old wall-week code, import door and whole-file replacements
-are superseded, not pending features. Full evidence: `audits/PARKED_GAMEPLAY_COMPLETION_20260926`.
+### Completed work
 
-Native390×844 and1440×900: practice produces the next lesson without any live save/storage
-change; portrait animates one image, reduced motion stops the ticker, Back releases ownership.
-The native run exposed and repaired a Training-panel overlap; original failure/control retained.
-Root validate passes50 unchanged legacy fingerprints. Integrated final battery507 tool passes,5,615 unit passes, standingI5 only; all7 manual owners pass. Native320×568 also passes, including Close/reopen and action isolation. No full browser certificate or physical-phone claim.
+- **Parked gameplay remains consolidated and complete** from the prior batch: Forge Training and motion-aware living portraits. No parked branch or unfinished stash is needed to retain it. The generated creature pipeline remains the shared priority (D22/D23).
+- **C43 size/transport code:** original128–2048 dimensions; right/bottom zero-pad1254→1264, crop back1254 without shifting/resampling original pixels. Transferred ArrayBuffers or legacy `/inputs` refs, exact SHA/length checks before GPU/model engine creation. Existing settings, alpha bytes, labels/binding and conservation checks unchanged. Corrupt/detached/shared/resizable/ambiguous refs refuse. Eligibility now refuses before engine construction too.
+- **C41 stage/phones:** private per-individual admission after original rig preflight plus genuine master/binding/label pins and finish conservation. Phone delivery requires BOTH PNG and receipt entries at `library/creature-finish/<exactkey>/` in bundled G3 authority. No delivered originals published here. Supplementary label pins cover34fits; Civet/Eel/Rat/Salamander still refuse missing labels.
+- **C45 CARD = STAGE seam:** verified finished pixels → existing individual palette remap → every-alpha-byte check against private baseline → unchanged seam guard. Fixed an in-place alpha alias in ordinary morphs too. Fifteen focused admission/pinned/morph tests pass. Claude can now wire stage with both `finishedAtlas` and `atlasPixels`; API/evidence in `audits/G5_ADAPTER_UNBLOCK_20260926/C45.md`.
+- **G2 family pilot:**20 untouched1254 originals (five each birds/fish/serpents/insects), exact canonical identities/prompts/style hashes, one sheet and independent geometric observations in `audits/G2_FAMILY_PILOT_20260926`. No hand authoring or game admission. Full true tails requested and visibly retained; overlaps and unwanted markings remain findings. C44's later planted-stride/full leg-gap wording is in the compiler for subsequent bird/quadruped packets; these20 retain their earlier prompt receipts.
+- **One G4 copy remeasurement:**120 ordered release bullets, SHA`aa5bc1c4583f685f6fe7caff9ed37636b565e290be351011dec0855fc85ef6f0`;41 Guide topics,5 briefings. G4 bullet/Compendium paragraph, Slice and Glass authorities and missing-row controls agree. `audits/G4_COPY_REMEASURE_20260926` retains the measurement and46 focused passing checks.
 
-### Generated Creature Pipeline — still the priority
+### Open gates and exact next work
 
-D22/D23 PROGRAM.md is current. Claude G1/G3 and cleanup merged through signedfdb9f627
-by no-ffbd5530d7. G3 delivers pinned on-demand art outside the core pack; preserve its routing.
-G1 remains12/40, below30; hand ceiling30/40. Review findings and exact invariants are in
-`audits/G_PIPELINE_CODEX_20260926/G1_REVIEW.md`. Claude has since merged the limb counter and advanced G1/G4 through signedfd37bfd6 (not yet merged here). G1v5 remains12/40 and scores10/20 on G2; mutation controls improved. D24 is Claude’s pending denominator decision, not authority to weaken this gate.
-Read-only follow-up on signed 77623d3f is in `audits/G1_CONTRACT_REVIEW_20260926`: materials,
-habitat and outer provenance improved; all-visible presence and canonical identity are still
-not proved, and the exact shipped-38 status manifest is requested. D25 reference shopping
-stays off; weaker mutation refusal is not accepted. C40 answers are in our mailbox.
+1. **Nick-only alpha eligibility decision is pending:** keep alpha===255, or allow alpha>=250 for the editable interior while retaining all original alpha bytes, the four-pixel boundary and conservation gates. The one native1254 Cougar run on signed`bfe76a6b` refused with `No editable creature interior`; no inference/output was produced. A pinned read-only inventory proves ZERO labels-present1254 masters eligible (only five880crabs pass). Do not rerun unchanged inputs or claim1254 native acceptance. If approved, change eligibility with controls and run one fresh native1254 proof on clean signed source. Otherwise record C43 native proof blocked. Evidence: `audits/G5_ADAPTER_UNBLOCK_20260926/{README.md,eligibility-inventory.json,native-bfe76a6b-refused}`.
+2. **Six G1 author/fit reds stay open:** Grouse support split, Eagle/Sandpiper folds, Sparrow foot limit, Mongoose blended-presentation limit and Tapir compression/fold. One generic contact refinement was rejected; no hand fixes or relaxed gates. The runner's omitted presentation-failure reporting is repaired. Full findings/reproduction in `audits/G1_FIT_REPAIR_20260926`. C44 further identifies Eagle's under-owned tail and Sparrow's landmark limit. These need automatic source-evidenced ownership/landmarks and the unchanged static/native gates.
+3. **Claude:** consume Codex's signed final commit from the shared store, wire the additive stage seam, re-score the20 new G2 packets, and create NEW candidate derived-label audit packets for the four missing sources under C45.md's provenance/overlap/coverage controls. Do not alter original fit evidence or call derived ownership an anatomical observation. Civet's opaque master is a separate card limitation. Native1254 original publication waits for a real output and its receipt.
+4. **G1 remains red, S4/broad generation parked.** D24's alternative denominator is undecided; old gate stands. D25 reference shopping remains OFF. No fit static/semantic/quality acceptance is inferred from library generation, unit tests or a RESOLVED status.
 
-G2 complete at90ef2c56:20 quadruped originals, exact prompts, source/verifier hashes and ONE
-review sheet in`audits/G2_QUADRUPED_PILOT_20260926`;120 derived six-pattern mask candidates.
-NO hand authoring. IC4 reports10 ADMIT/10 REFUSE but these are unqualified: Coyote places a
-paw on an ear. Requested counts are never acceptance. Keep originals unchanged for G1 tests.
-Masks conserve source alpha; G1 record binding is still required before rig admission.
+### Final verification and cleanup
 
-G5 engine/tests and native harness are in`audits/G5_FINISHER_ENGINE_20260926`. Codex supplies
-per-individual retained originals, bounded serial/deduplicated jobs, lazy desktop inference,
-phone delivery with zero model construction and exact PNG/conservation. Claude owns actual
-G5 gameplay/landfall routing and G4 selection. Native proof on signed 26a4bc57 PASS:
-five real inferences, exact cache/deduplication, five byte-exact delivered originals in fresh
-IndexedDB, zero phone model construction; 199,641 PNG bytes total. Output is master-space,
-not an atlas; C40 projection contract and runtime-adapter boundary are in the G5 packet.
-A desktop Chromium phone-path proof is not physical iPhone or Nick quality acceptance.
-
-Only AFTER G1 PASS: S4 training-only feasibility map, then ONE fresh declared held-out epoch
-or one recommended target decision. Candidates03/13 rejected and unwired, old corpora consumed.
-Hand-painted rigs, missions/Outposts numbers, pack diet and I5 remain parked until G1 passes.
-
-### Git, cleanup and next actions
-
-Remote branches now only openai/mac, anthropic/mac, develop, main. Local OpenAI only openai/mac.
-Old I5 worktrees removed; keep newest2 ignored preview packages. Git connectivity passes.
-Original clone develop0 ahead/472 behind, modifiedpackage-lock.json and untracked.claude/:
-no pull performed. Historical Markdown retained verbatim; current references refreshed.
-Free 225 GiB at the final native boundary; check each batch, cleanup below 60 GiB, floor 40 GiB.
-
-Codex: recovery and G5 implementation signed at 26a4bc57, native proof complete; publish
-the evidence successor only to our lane with a measured pack below 2 GB under Nick's
-explicit I5-only push authority. Next integrate Claude's newer G1/G4 work in a fresh tested
-batch and incorporate its proposed release bullet in that batch's copy measurement. Claude:
-consume signed G2/G5/recovery from the shared store, close G1 presence/identity findings,
-and wire the master-space morph → finisher → unchanged atlas projection. No Nick relay or
-need to open the other app. Earlier pushed Codex copy checkpoint f01f911e:
-119 bullets,41 topics,5 briefings; current119-bullet recovery SHA is in measured-copy.json.
-No PR, label, hosted attempt, develop/main merge, release or deploy authorized by this work.
-The standing I5 red remains a real gate, not waived or rebound. Pre-existing.DS_Store untouched.
-
-## Latest Codex adapter checkpoint — 2026-09-26 (supersedes next-run instructions above)
-
-Nick's ordered sprint: merge Claude through 23bb209e, C43 worker fixes, C41 stage/phone
-admission, six auto-fit repairs, four-family G2 pilot, one G4 copy measurement.
-Signed no-ff merge 86ee9347 includes all requested G1v8/G3/G4/G5 work; incoming signatures
-G, no conflicts or markers. Startup official metadata PASS, no eligible updates; 228 GiB free.
-C43 padding/transferred-buffer implementation and C41 private-token admission are complete
-and focused-green; one 1254 Cougar native proof waits for this clean signed checkpoint.
-All original rig pins and conservation remain unchanged. 34 source-label pins available;
-Civet/Eel/Rat/Salamander refuse due to missing label inputs. Both PNG and receipt must be
-G3-pinned for phone delivery; no published entries or default finish routing added.
-
-The six auto-fit repairs remain RED: a generic contact refinement is retained and rejected.
-It removes Grouse's initial split conflict but introduces/reveals folds. No hand authoring,
-reference shopping or limit changes. Fixed the runner summary that omitted Mongoose's
-blended presentation failure. audits/G1_FIT_REPAIR_20260926 has exact remaining failures.
-G1 semantic status remains a separate gate; C43 prose and four v8 statuses disagree.
-D24 remains undecided, D25 shopping stays off, S4 remains parked.
-
-G2 compiler now supports canonical bird/fish/serpent/insect families; 20 exact prompts
-(5 per family) prepared, generation in progress, no authoring. One final review sheet.
-Next: record native result, complete G2 evidence, one G4 copy re-measure, full I5-only
-profile plus all seven manual owners, signed own-lane push under 2 GB. Claude consumes
-the signed worker/admission contracts and implements its adapter/routing. No Nick relay
-or need to open another app; no hosted/PR/develop/main/release actions.
+- Browser-free `node tools/check-profile.mjs --profile=develop`: **5,635 PASS; I5 only FAIL**,2 expected failures,2 skips across560 files. All seven manual owners PASS: root/app/worker TypeScript, artaudit, overridecheck, speccheck, overridecontrol. Logs and exact changed-code hashes: `audits/G5_ADAPTER_UNBLOCK_20260926/final-battery`.
+- Root validate PASS: zero boot errors,1010 Earth renders, unchanged50-probe fingerprint. Worker regressions, C41/C45 controls and copy mutation controls pass. Initial test-only count/type failures are retained in `pre-repair-battery`; both corrected without weakening assertions. No full browser certificate or physical-iPhone proof is claimed.
+- Startup approved-tool check PASS, no eligible updates; receipt in G5_ADAPTER_UNBLOCK_20260926. Free disk **227GiB**, above40GiB floor. Removed82.2MB of ignored rejected-fit/prepared-input scratch; kept full reports/originals/hashes/reproduction. Only3 permanent worktrees, no stashes, newest2 previews retained; image-tool originals remain in their original location.
+- Next Codex: resolve the actual alpha gate, then proof and remaining automatic-fit repair. Next Claude: shared-store merge/stage wiring/G1 re-score and derived-label evidence. **Nick need not open the other app or relay this handoff.** No PR or hosted attempt is requested.
