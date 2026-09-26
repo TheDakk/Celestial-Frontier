@@ -289,6 +289,9 @@ function mainChartersHarness(f: DurableFixture, mutations: readonly MainMutation
     renderStarterCharterBoardV1,
     projectWeeklyCharterBoardV1,
     renderWeeklyCharterBoardV1,
+    // D14: the Projects board beside the Charters (Main-local; its own outcome test is tests/outposts-ui-outcome.test.ts). This fixture has
+    // not honoured st-comp, so the real board renders nothing — exactly this.
+    outpostBoardHtml: () => '',
     weeklyCharterCycleV1,
     operationForStarterCharterAcceptV1,
     operationForWeeklyCharterAcceptV1,

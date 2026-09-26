@@ -50,6 +50,8 @@ import {
   readArc4Ownership,
   readArc5OwnershipMigration,
   readCombatSettlementAuthorityV1,
+  readOutpostProjectsV1,
+  finishedShelterPlanetSeedsV1,
   type Arc5OwnershipMigrationEvidenceV2,
   type Arc2LootInventoryV1,
   type CodexEntry,
@@ -104,6 +106,8 @@ export interface BioscanActionProjectionInputV1 {
   readonly opportunity: WorldOpportunitySnapshot;
   /** Presentation hint only. Commit re-reads the canonical combat ledger. */
   readonly settled: boolean;
+  /** D14 presentation hint only: a finished Field Shelter stands here. Commit re-reads the arc9.projects carrier. */
+  readonly sheltered?: boolean;
 }
 
 export type BioscanActionProjectionV1 =
@@ -254,6 +258,7 @@ function project(
   roster: CanonicalWorldRoster,
   opportunity: WorldOpportunitySnapshot,
   settled: boolean,
+  sheltered = false,
 ): BioscanActionProjectionV1 {
   if (!isOwnershipStateV2(ownershipV2) || !isEngineeringState(engineering)
     || !isEngineeringCapabilitySnapshot(capabilities) || !isCanonicalWorldRoster(roster)
@@ -283,6 +288,7 @@ function project(
         settled,
         reinforcedHull: engineering.research.includes('hull1'),
         fieldWoundReduction: capabilities.bioscanDamageReduction,
+        ...(sheltered ? { sheltered: true } : {}),
       }),
     });
   } catch (error) {
@@ -296,7 +302,7 @@ export function projectBioscanActionV1(input: BioscanActionProjectionInputV1): B
   try {
     return project(
       input.ownershipV2, input.engineering, input.capabilities, input.state,
-      input.address, input.roster, input.opportunity, input.settled,
+      input.address, input.roster, input.opportunity, input.settled, input.sheltered === true,
     );
   } catch { return Object.freeze({ kind: 'unavailable', detail: 'input-invalid' }); }
 }
@@ -476,6 +482,9 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
           throw new Error('bioscan survey parent changed');
         }
         const settled = combat.authority.conquests.some(({ worldKey }) => worldKey === captured.roster.worldKey);
+        // D14: a FINISHED Field Shelter on this world makes Discover Life hazard-free (re-read from the committed carrier, never a hint)
+        const outposts = readOutpostProjectsV1(extensions);
+        const sheltered = outposts.kind === 'loaded' && finishedShelterPlanetSeedsV1(outposts.state).includes(captured.address.planet.seed >>> 0);
         const hazard = projectBioscanHazardPolicyV1({
           address: captured.address,
           planetType: captured.opportunity.source.planetType,
@@ -483,6 +492,7 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
           settled,
           reinforcedHull: engineering.state.research.includes('hull1'),
           fieldWoundReduction: loadout.capabilities.bioscanDamageReduction,
+          ...(sheltered ? { sheltered: true } : {}),
         });
         const hazardOutcome = resolveBioscanHazardV1(hazard, value);
         const settlement = settleArc5BioscanV1(

@@ -379,6 +379,12 @@ import {
   type CanonicalWorldIdentityStateV1,
 } from '@cf/persistence';
 import {
+  finishedRelayStarSeedsV1, finishedShelterPlanetSeedsV1, outpostSaveFactsV1, projectOutpostBoardV1, projectOutpostWorldOfferV1, readOutpostProjectsV1,
+  type OutpostProjectsStateV1, type OutpostRequestV1, type OutpostWorldContextV1,
+} from '@cf/persistence';
+import { commitOutpostActionV1, outpostRefusalCopyV1, outpostResultCopyV1 } from './outposts-action.js';
+import { OutpostsControllerV1, outpostExhibitsV1, outpostPortraitMarksV1, renderOutpostBoardV1, renderOutpostCardSectionV1, type OutpostUiRequestV1 } from './outposts-ui.js';
+import {
   MAX_GEAR_CAPACITY, projectEngineeringCapabilities,
 } from '@cf/domain-loot';
 import { runF3PersistenceBrowserProbe } from './f3-persistence-browser-probe.js';
@@ -428,6 +434,7 @@ import {
 import {
   projectEngineeringPanelReadModel,
   projectOrbitalMineralSurveyRow,
+  projectRelayMineralSurveyRowsV1,
 } from './engineering-panel-model.js';
 import {
   deriveArc3FixedFabricationAction,
@@ -4205,10 +4212,12 @@ function fillRecords(): void {
   if (f4Runtime !== null && arc5OwnershipState?.mode === 'current') {
     const combat = readCombatSettlementAuthorityV1(f4Runtime.extensions);
     if (combat.kind === 'loaded') {
+      const outposts = currentOutpostProjects();
       const projected = projectExpeditionChronicleV1({
         save,
         ownership: ownershipSourceStateV1(arc5OwnershipState),
         combat: combat.authority,
+        ...(outposts !== null && outposts.sites.some((s) => s.built >= 3) ? { outposts: outpostExhibitsV1(outposts) } : {}),
       });
       if (projected.kind === 'projected') {
         chronicle = renderExpeditionChronicleV1(projected.model);
@@ -4489,7 +4498,7 @@ function fillCharters(): void {
   const weeklyBoard = weeklyActivePlayMs === null ? null : projectWeeklyCharterBoardV1(save, weeklyActivePlayMs);
   const weekly = weeklyBoard === null ? '' : renderWeeklyCharterBoardV1(weeklyBoard);
   const starterStatus = starterCharterPanelStatus();
-  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter + starter + weekly
+  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter + starter + weekly + outpostBoardHtml()
     + (starterStatus === null ? ''
       : `<p class="starter-charter-status" role="status" aria-live="polite" aria-atomic="true">${esc(starterStatus)}</p>`));
   syncBoundedCollectionButtons(
@@ -6129,8 +6138,8 @@ let uniCell: { ux: number; uy: number } | null = null;   /* the streamed window'
 /* SURVEY-FIRST: one tap opens the typed card; its explicit 44px travel
    action performs the dive. The card can cover the body on a phone, so
    navigation must never depend on a second canvas tap or a timing window. */
-function surveyCard(d: unknown, travelAction: CardTravelAction | null = null): void {
-  if (d) { showSurvey(d as Descriptor, undefined, travelAction); playSurveyPing(); }
+function surveyCard(d: unknown, travelAction: CardTravelAction | null = null, supplementalRows: readonly SurveyPresentationRow[] = EMPTY_SURVEY_PRESENTATION_ROWS): void {
+  if (d) { showSurvey(d as Descriptor, undefined, travelAction, supplementalRows); playSurveyPing(); }
 }
 function canonicalStarAddressForSurvey(star: StarNodeRef): CanonicalCF1StarAddress | null {
   if (nav.mode !== 'galaxy') return null;
@@ -6149,7 +6158,7 @@ function surveyStar(star: StarNodeRef): boolean {
   const travelStar = { seed: star.seed, x: star.x, y: star.y };
   surveyCard(descriptor, {
     label: 'Enter system', run: () => descendSystem(travelStar),
-  });
+  }, outpostRelayStarRows(address));
   /* Survey presentation is immediate; its progression record is one separate
      source-rederived F4 settlement and never trusts descriptor metadata. */
   void settleArc9Survey(address);
@@ -7997,6 +8006,7 @@ function projectCurrentBioscanCardState(
       roster,
       opportunity,
       settled: combat.authority.conquests.some(({ worldKey }) => worldKey === address.key),
+      sheltered: outpostShelteredAt(address.planet.seed),
     });
     if (projection.kind !== 'ready') {
       return Object.freeze({
@@ -8171,6 +8181,7 @@ function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): stri
         (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
     bioscanCardActionHtml(bioscanState) +
     harvestCardActionHtml(p) +
+    outpostCardActionHtml(p, onThisSurface) +
     '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
     (onThisSurface && mountedLocalAiOriginal && surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID
       && !localAiGame?.snapshot().some(job => job.status === 'ready' && job.originalId === mountedLocalAiOriginal?.originalId)
@@ -9823,6 +9834,128 @@ async function runArc6CommandCardAction(request: CombatCardActionRequestV1): Pro
   lastArc6CommandOutcome = `settling:${finalAnswers.length}`;
   /* the card's own press latch stays set: the ordinary settlement below settles it with the verified outcome */
   await runArc6CombatCardAction(Object.freeze({ kind: 'challenge', championId: leadId }), Object.freeze({ decisions: finalAnswers }));
+}
+/* D14 Outposts (N4 Option A; outposts.ts / outposts-action.ts / outposts-ui.ts): the world card's "Build here" section, the Projects
+   board in the Charters panel, the Museum's Outposts gallery. Each press is ONE receipt (commitOutpostActionV1); publication copies
+   exactly the fields an outpost action owns: the parts mirror, Stardust and the live Arc 2 carrier. */
+let lastOutpostOutcome: string | null = null;
+let outpostStatus: string | null = null;
+const outpostsController = new OutpostsControllerV1((request) => { void runOutpostAction(request); });
+document.addEventListener('click', (event) => { outpostsController.handle(event.target as Element | null); });
+function currentOutpostProjects(): OutpostProjectsStateV1 | null {
+  const runtime = f4Runtime; if (runtime === null) return null;
+  const read = readOutpostProjectsV1(runtime.extensions);
+  return read.kind === 'loaded' ? read.state : null;
+}
+function outpostWorldContext(p: PlanetNode, onThisSurface: boolean): OutpostWorldContextV1 | null {
+  const address = activeCardWorldAddress();
+  if (address === null || cardCtx === null) return null;
+  const roster = canonicalRosterForBioscanCard(address, null);
+  const planets = systemScene(address.star.seed).planets.map((q) => q.seed >>> 0);
+  return Object.freeze({ world: Object.freeze({ galaxySeed: address.galaxy.seed >>> 0, starSeed: address.star.seed >>> 0, planetSeed: p.seed >>> 0,
+    name: (worldIdentityName(worldIdentityState, address) ?? p.name ?? 'Unnamed world').slice(0, 64),
+    systemPlanetSeeds: Object.freeze([...new Set([...planets, p.seed >>> 0])].sort((a, b) => a - b)) }),
+    hasFauna: roster !== null && roster.view.all.some((row) => row.kingdom === 'fauna'), standingHere: onThisSurface });
+}
+function outpostCardActionHtml(p: PlanetNode, onThisSurface: boolean): string {
+  try {
+    const runtime = f4Runtime, projects = currentOutpostProjects(), context = outpostWorldContext(p, onThisSurface);
+    if (runtime === null || projects === null || context === null) return '';
+    const facts = outpostSaveFactsV1(save, runtime.extensions); if (facts === null) return '';
+    const companions = arc5OwnershipState?.mode === 'current'
+      ? arc5OwnershipState.creatures.map((c) => Object.freeze({ id: c.creatureId, label: c.nickname ?? `Companion ${String(c.creatureId).slice(-4)}` })) : [];
+    const marks = outpostPortraitMarksV1(projects, p.seed >>> 0);
+    const html = renderOutpostCardSectionV1(projectOutpostWorldOfferV1(projects, facts, context), companions);
+    return html === '' ? '' : html.replace('<b>Outposts</b>', `<b>Outposts</b>${marks ? ` <span data-outpost-marks aria-label="finished outposts">${marks}</span>` : ''}`);
+  } catch { return ''; }
+}
+/** D14 Field Shelter reward (presentation hint; the Discover Life commit re-reads the carrier): hazard-free here. */
+function outpostShelteredAt(planetSeed: number): boolean {
+  const projects = currentOutpostProjects();
+  return projects !== null && finishedShelterPlanetSeedsV1(projects).includes(planetSeed >>> 0);
+}
+/** D14 Survey Relay reward: a relay system's star card lists every lifeless world's orbital readout without a visit. */
+function outpostRelayStarRows(address: CanonicalCF1StarAddress): readonly SurveyPresentationRow[] {
+  try {
+    const projects = currentOutpostProjects();
+    if (projects === null || arc3EngineeringState === null || arc3EngineeringProtection !== null
+      || !finishedRelayStarSeedsV1(projects).includes(address.star.seed >>> 0)) return EMPTY_SURVEY_PRESENTATION_ROWS;
+    const worlds = systemScene(address.star.seed).planets.flatMap((q) => {
+      const resolved = resolveCF1WorldAddress({ galaxy: { seed: address.galaxy.seed, x: address.galaxy.x, y: address.galaxy.y },
+        star: { seed: address.star.seed, x: address.star.x, y: address.star.y }, planet: { seed: q.seed } });
+      return resolved.ok ? [{ address: resolved.address, name: worldIdentityName(worldIdentityState, resolved.address) ?? q.name }] : [];
+    });
+    return Object.freeze(projectRelayMineralSurveyRowsV1({ engineering: arc3EngineeringState, worlds }).map((row) => Object.freeze([row.key, row.value] as const)));
+  } catch { return EMPTY_SURVEY_PRESENTATION_ROWS; }
+}
+function outpostBoardHtml(): string {
+  try {
+    const runtime = f4Runtime, projects = currentOutpostProjects();
+    if (runtime === null || projects === null) return '';
+    const facts = outpostSaveFactsV1(save, runtime.extensions); if (facts === null) return '';
+    const standing = nav.mode === 'surface' ? nav.planet.seed >>> 0 : null;
+    return renderOutpostBoardV1(projectOutpostBoardV1(projects, facts, standing), outpostStatus);
+  } catch { return ''; }
+}
+async function runOutpostAction(ui: OutpostUiRequestV1): Promise<void> {
+  const runtime = f4Runtime;
+  const finish = (outcome: string, title: string | null, detail: string): void => {
+    lastOutpostOutcome = outcome; outpostStatus = title === null ? detail : `${title} — ${detail}`;
+    outpostsController.settle(); refreshPlanetSurveyCard(); if (openPanelId() === 'ch') fillCharters();
+    if (title !== null) toast(title, detail, true);
+  };
+  if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    finish('unavailable:write-authority', 'Outpost unavailable', 'Finish the current expedition save, then try again. Nothing changed.'); return;
+  }
+  let request: OutpostRequestV1;
+  if (ui.kind === 'start') {
+    const context = cardCtx ? outpostWorldContext(cardCtx.p, nav.mode === 'surface' && nav.planet.seed === cardCtx.p.seed) : null;
+    if (context === null) { finish('unavailable:no-world', 'Outpost unavailable', 'Open the world first. Nothing changed.'); return; }
+    request = Object.freeze({ kind: 'start', outpost: ui.outpost, context });
+  } else if (ui.kind === 'build') {
+    request = Object.freeze({ kind: 'build', siteId: ui.siteId, standingHere: nav.mode === 'surface' && `${ui.siteId}`.endsWith(`@${nav.planet.seed >>> 0}`) });
+  } else if (ui.kind === 'abandon') request = Object.freeze({ kind: 'abandon', siteId: ui.siteId });
+  else request = Object.freeze({ kind: 'residents', siteId: ui.siteId, residents: ui.residents });
+  const actionClaim = productActionCoordinator.tryClaim('world.outpost');
+  if (actionClaim === null) { finish('unavailable:product-action-pending', 'Outpost unavailable', 'Another expedition action is still settling.'); return; }
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true; activePersist = actionBarrier;
+  let durable = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (!f4RuntimeMayMutate(runtime)) { finish('refused:authority-changed', 'Outpost unavailable', 'Save authority changed. Nothing changed.'); return; }
+    const outcome = await commitOutpostActionV1({ runtime: runtime!, state: save, request, codecNow: Date.now() });
+    if (outcome.kind === 'refused') {
+      if (outcome.convergence === 'read-only-reload') scheduleF4AuthorityConvergenceReload(runtime!, `outpost ${outcome.detail}`);
+      finish(`refused:${outcome.detail}`, null, `${outpostRefusalCopyV1(outcome.detail)} Nothing changed.`); return;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    const loot = readArc2Loot(runtime!.extensions);
+    if (runtime!.revision !== outcome.revision || loot.kind !== 'loaded') {
+      lastOutpostOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime!, 'outpost committed; publication fixed point');
+      return;
+    }
+    // publish exactly the outpost's fields: the parts mirror, Stardust and the live Arc 2 carrier
+    save.items = outcome.state.items.map(([id, n]) => [id, n] as [string, number]);
+    save.essence = outcome.state.essence;
+    arc2LootState = loot.state;
+    lastPersistenceOutcome = `outpost-committed:${outcome.revision}`;
+    const copy = outpostResultCopyV1(outcome);
+    updateChips();
+    finish(`committed:${request.kind}`, copy.title, copy.detail);
+  } catch (error) {
+    if (durable && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `outpost ${error instanceof Error ? error.message : String(error)}`);
+    else finish('fault', 'Outpost unavailable', 'Nothing changed.');
+  } finally {
+    productActionInFlight = false;
+    outpostsController.settle();
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
 }
 const sideEl = document.createElement('div');
 sideEl.id = 'planetside';
