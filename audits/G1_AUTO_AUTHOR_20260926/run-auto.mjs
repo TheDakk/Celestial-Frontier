@@ -16,6 +16,7 @@ const skipStatic = args.includes('--no-static');
 const ridgeArg = args.find((x) => x.startsWith('--ridge=')), ridgeFrac = ridgeArg ? Number(ridgeArg.slice(8)) : 0;
 const nudgeArg = args.find((x) => x.startsWith('--nudge=')), nudgeFrac = nudgeArg ? Number(nudgeArg.slice(8)) : 0;
 const useCounter = args.includes('--counter'), thinArg = args.find((x) => x.startsWith('--nudge-thin=')), nudgeThinFrac = thinArg ? Number(thinArg.slice(13)) : null;
+const nudgeSkipChains = args.includes('--nudge-skip-chains');
 const { familyContract, familyContactChains } = await import(path.join(ROOT, 'port/v2/tools/creature-animation/family-contracts.mjs'));
 const topkArg = args.find((x) => x.startsWith('--topk=')), topK = topkArg ? Number(topkArg.slice(7)) : 3;
 const useChains = args.includes('--chains');
@@ -56,7 +57,7 @@ for (const s of subjects) {
   const dir = path.join(OUT, s.id); fs.mkdirSync(dir, { recursive: true });
   const refs = subjects.filter((o) => o.id !== s.id).map(refOf); // leave-one-subject-out
   const mirrored = mirrorSubject(s.img.rgba, s.img.w, s.img.h);
-  const res = autoAuthor({ target: s.prepared, mirrored, family: s.family, id: s.authoring.id ?? s.id, refs, materials: { surface: MATERIAL[s.family] ?? 'painted surface' }, habitat: habitatFor(s.subject.name), topK, nudgeFrac, nudgeThinFrac, counter: useCounter ? {} : null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(s.family) } : null, skeleton: useSkeleton ? { graph: graphOf(s.family) } : null, chains: useChains ? (() => { try { return familyContactChains(familyContract(s.family)); } catch { return null; } })() : null });
+  const res = autoAuthor({ target: s.prepared, mirrored, family: s.family, id: s.authoring.id ?? s.id, refs, materials: { surface: MATERIAL[s.family] ?? 'painted surface' }, habitat: habitatFor(s.subject.name), topK, nudgeFrac, nudgeThinFrac, nudgeSkipChains, counter: useCounter ? {} : null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(s.family) } : null, skeleton: useSkeleton ? { graph: graphOf(s.family) } : null, chains: useChains ? (() => { try { return familyContactChains(familyContract(s.family)); } catch { return null; } })() : null });
   fs.writeFileSync(path.join(dir, 'evidence.json'), JSON.stringify({ verdict: res.verdict, reasons: res.reasons, ...res.evidence }, null, 1) + '\n');
   const row = { id: s.id, family: s.family, verdict: res.verdict, reasons: res.reasons };
   if (res.authoring) {

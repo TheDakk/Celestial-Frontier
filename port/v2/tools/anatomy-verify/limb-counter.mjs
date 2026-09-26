@@ -19,7 +19,7 @@ import {erodeAlpha} from '../../../../tools/local-image-generation/kit-contact-m
 import {distanceTransform} from './thickness.mjs';
 
 export const LIMB_COUNTER_SCHEMA = 'cf.g1-limb-counter/v1';
-export const COUNTER_DEFAULTS = Object.freeze({ longest: 420, coreRatio: 0.55, minAppendageFrac: 0.004, minDetachedFrac: 0.01 });
+export const COUNTER_DEFAULTS = Object.freeze({ longest: 420, coreRatio: 0.55, minAppendageFrac: 0.004, minDetachedFrac: 0.01, groundBand: 0.06, minContactFrac: 0.015 });
 
 function components(m, W, H) {
   const lab = new Int32Array(W * H).fill(-1), stack = new Int32Array(W * H), parts = [];
@@ -72,7 +72,14 @@ export function countVisibleAnatomy(mask, w, h, options = {}) {
     appendages.push({ k, frac: +(p.pixels / paint).toFixed(4), pixels: p.pixels, box: p.box, attach: { x: +ax.toFixed(1), y: +ay.toFixed(1), relX: +relX.toFixed(2), relY: +relY.toFixed(2) }, dir, class: cls,
       length: +Math.hypot(Math.max(p.box.x1 - ax, ax - p.box.x0), Math.max(p.box.y1 - ay, ay - p.box.y0)).toFixed(1) }); }
   const byClass = {}; for (const a of appendages) byClass[a.class] = (byClass[a.class] ?? 0) + 1;
-  return { schema: LIMB_COUNTER_SCHEMA, W, H, scale, paint, coreRadius: r, bodyBox, detached, appendages, byClass, label, params: o };
+  // ground contacts: separate paint blobs in the bottom band of the main component (feet, hooves, a resting belly), each at least
+  // `minContactFrac` of the main component's width; counted on the painting alone
+  let lowest = -1; for (let i = W * H - 1; i >= 0; i--) if (mainMask[i]) { lowest = (i - (i % W)) / W; break; }
+  const bandTop = Math.max(0, Math.round(lowest - o.groundBand * (main.box.y1 - main.box.y0 + 1))), band = new Uint8Array(W * H);
+  for (let y = bandTop; y <= lowest; y++) for (let x = 0; x < W; x++) if (mainMask[y * W + x]) band[y * W + x] = 1;
+  const bc = components(band, W, H), minW = o.minContactFrac * (main.box.x1 - main.box.x0 + 1);
+  const ground = bc.parts.filter((p) => p.box.x1 - p.box.x0 + 1 >= minW).map((p) => ({ x0: p.box.x0, x1: p.box.x1, cx: +p.cx.toFixed(1) }));
+  return { schema: LIMB_COUNTER_SCHEMA, W, H, scale, paint, coreRadius: r, bodyBox, detached, appendages, byClass, ground, label, params: o };
 }
 
 const inside = (x, y, poly) => { let yes = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], b = poly[j]; if ((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) yes = !yes; } return yes; };
@@ -110,7 +117,7 @@ export function referenceInventory(refCount, authoring, { minRefFrac = 0.006, ow
  * alternative): detached islands, an unassigned target appendage ≥ 6 % of the paint, and the family floor on the REAR class. The
  * per-appendage missing / merged / covered-extra rules are kept as options, OFF: their overlap distributions for positives and
  * erased limbs coincide (README v3). */
-export const V3_RULES = Object.freeze({ detached: true, unassignedMin: 0.06, assignOverlap: 0.1, floor: Object.freeze({ classes: Object.freeze(['rear']), rho: 0.7, presentOnly: true }),
+export const V3_RULES = Object.freeze({ detached: true, unassignedMin: 0.06, assignOverlap: 0.1, floor: Object.freeze({ classes: Object.freeze(['rear']), rho: 0.7, presentOnly: true }), groundFloor: true,
   missing: false, merged: false, coveredExtra: false });
 /** Largest appendage of each geometric class, as a fraction of the paint. */
 export const largestByClass = (count) => { const o = {}; for (const a of count.appendages) o[a.class] = Math.max(o[a.class] ?? 0, a.frac); return o; };
@@ -147,6 +154,9 @@ export function inventoryCheck(targetCount, refCount, refInventory, refDetached,
   // family floor: the target's largest appendage of a class the family always shows must not shrink far below the family's smallest
   if (rules.floor && sameFamilyCounts.length) { const f = familyFloor(sameFamilyCounts, rules.floor.classes), mine = largestByClass(T);
     for (const [c, v] of Object.entries(f)) { if (rules.floor.presentOnly && !(c in mine)) continue; if ((mine[c] ?? 0) < rules.floor.rho * v) reasons.push(`missing-anatomy (family floor): the largest ${c} appendage is ${(100 * (mine[c] ?? 0)).toFixed(1)}% of the paint; every same-family reference shows at least ${(100 * v).toFixed(1)}%`); } }
+  // ground floor: at least as many separate ground contacts as the fewest any same-family reference shows (an erased foot)
+  if (rules.groundFloor && sameFamilyCounts.length) { const g = Math.min(...sameFamilyCounts.map((c) => c.ground.length));
+    if (T.ground.length < g) reasons.push(`missing-anatomy (ground): ${T.ground.length} ground contact(s); every same-family reference shows at least ${g}`); }
   if (rules.detached && T.detached.length > refDetached) reasons.push(`extra-anatomy (detached): ${T.detached.length} separate paint island(s) of ≥ ${(100 * T.params.minDetachedFrac).toFixed(0)}% (reference ${refDetached})`);
   void tgtPaint;
   return { reasons, assign: assign.map((a) => ({ owners: a.A.owners, names: a.A.names, refFrac: a.A.frac, target: a.best, overlap: +a.frac.toFixed(3) })) };
