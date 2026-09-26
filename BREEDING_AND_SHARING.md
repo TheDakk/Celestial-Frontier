@@ -18,6 +18,31 @@ Nick decided D13 (N3 Option B) on 2026-09-25. Owner module: `packages/domain/acq
   Nothing heals while the game is closed; the device clock never enters. The first recovery from Injured or worse is the bond memory
   `recovered:injured`. Owners: `rest.ts` (domain), `arc5-rest-action.ts` (app).
 
+## v2 companion missions — D13 stage 2 (matches code as of 2026-09-26)
+
+Owners: `packages/domain/acquisition/src/companion-missions.ts` (pure), `packages/persistence/src/arc5-missions.ts` (carrier + derives),
+`apps/game/src/arc5-mission-action.ts` (transactions).
+- **Shape:** one companion per mission. There are **two field slots** (Rest does not use one), and the target is any world the explorer has landed on (world identity `landed`).
+  - **Prospect** returns materials from the world's canonical `depositsFor` list; the world's finite Mine reserve is untouched.
+  - **Survey** returns a small amount of Stardust and one authored lore line. It never names or reveals a species.
+- **Durations:** Short 10, Standard 25 and Long 60 minutes of ACTIVE PLAY. Long needs bond level 2 (Trusted).
+  - The wound chance (0 / 10 / 20 %) is shown before dispatch, and Devoted (bond 3) halves it.
+  - A wound is Bruised 0.15, or on Long sometimes Injured 0.35. It is never Critical or fatal, and it halves that mission's Prospect materials.
+  - A companion at Injured or worse (hurt ≥ 0.3) must Rest before a field mission.
+- **Rates:** every number is in ONE table, `MISSION_RATES_V1`, a **placeholder until Codex's stage 2a** rate table and economy-share instrument.
+  It stays inside the ceiling: two Long missions give ≤ 36 materials and ≤ 6 Stardust per active hour (`companionMissionHourlyCeilingV1`).
+- **Dispatch** (`arc5-companion-mission-dispatch`):
+  - One receipt with three `companion-mission` SessionRNG draws (wound, deposit pick, lore pick).
+  - The whole result is **sealed** with the mission in `player/arc5.missions` v1, and the board never shows it before the return.
+  - The companion takes `{kind:'mission', missionId:'mission:<receiptOrdinal>'}`, which locks breed, combat, dispatch and Feed until claim or recall. Rename and Scout designation still work. `rest:` stays reserved for Rest.
+- **Claim** (`arc5-companion-mission-claim`): allowed once the committed active-play clock reaches `readyAt`; the device clock never enters.
+  - It pays exactly the sealed result: materials into the hold, Stardust into `essence` and lifetime `essenceEarned`, and XP on the ownership row AND its v4 Compendium mirror row (the rule the duel and Feed share). It applies the wound.
+  - It adds the bond firsts `mission:first:<type>`, `mission:world:<worldKey>` and `mission:first:long`. The first Long return from a world also adds the memento `memento:mission:<worldKey>`.
+  - A claim that does not fit the hold (1,000,000 per stack, 200 rows) is refused and the mission stays ready: rewards are never lost.
+  - A second claim of the same mission finds it gone and commits nothing, whether it comes from a double press, a second tab or a reload.
+- **Recall** (`arc5-companion-mission-recall`) works at any time. The companion comes home unhurt with nothing, and the sealed result is discarded unseen.
+- **Carrier** `player/arc5.missions` v1: at most 2 active missions plus a return log (the mission Chronicle) of the latest 24. When absent, nothing is away. A malformed carrier is protected, never read as empty.
+
 ## Requested time-aware art and sharing — source reviewed 2026-09-08
 
 Nick approves the full landfall painting direction and requests procedural coverage, planetary

@@ -30,6 +30,7 @@ export * from './arc5-ownership-migration.js';
 export * from './xp-firsts-authority.js';
 export * from './combat-settlement.js';
 export * from './combat-open-encounter.js';
+export * from './arc5-missions.js';
 export * from './friendly-duel.js';
 export * from './guardian-acquisition.js';
 export * from './guardian-companion.js';

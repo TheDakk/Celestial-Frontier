@@ -27,6 +27,7 @@ const EXPECTED_DOMAIN_FILES = Object.freeze([
   'acquisition/src/combat-settlement-internal.ts',
   'acquisition/src/companion-availability.ts',
   'acquisition/src/companion-care.ts',
+  'acquisition/src/companion-missions.ts',
   'acquisition/src/feed.ts',
   'acquisition/src/friendly-duel.ts',
   'acquisition/src/guardian-acquisition.ts',
