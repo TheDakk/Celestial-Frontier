@@ -4,6 +4,12 @@ Each section dates itself (most with a `matches code as of` marker; a section wi
 description). Refreshed in place September 24, 2026: the painted Compendium card and matchup picker section only; the
 rest of this doc was not re-verified in that refresh.
 
+## v2 Compendium filter chips and shelves (D16 #36/#37) — matches code as of 2026-09-26
+- **Chip bar.** One horizontally scrolling row of 44 px chips above the Compendium list, shown once the Compendium has a species: kingdom (All · 🐾 Fauna · 🌿 Flora · 🍄 Fungi · 🦠 Microbes), the rarity floor (All · Rare+ · Legendary+ · Mythic+, on the DISPLAY tier) and "▦ Shelves". This is v1's `_codexTabs` in one row; logic in `compendium-shelves.ts`.
+- **Scroll height.** The list's virtual scrollport gives up exactly the chip row (52 px) in both height owners, so no row hides under the dock.
+- **Shelves (opt-in, off by default).** The list groups onto v1's themed shelves (`CODEX_SHELF_OF_V1`, domain `REALM_ORDER`). Each shelf is a real button fold header. Nothing opens itself; a kingdom or rarity filter lays every shelf open. The default Compendium stays the flat virtual list that Codex's instruments measure.
+- **State.** Filters and shelf folds are session view state, never saved. The fixture install/reset (Codex's I5 instrument) returns them to the default.
+
 ## v2 folded survey card (D18) — matches code as of 2026-09-25
 
 - **An option, off by default.** Settings → "Folded survey card" (`#setfold`). Nick decided on 2026-09-25 that the default stays the flat card, which is the card uilayout and the Slice/Glass instruments measure.
