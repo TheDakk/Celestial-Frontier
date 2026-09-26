@@ -7236,3 +7236,17 @@ version remains null; the development draft never consumes the shipped update po
 ### Parked gameplay recovery — matches code as of 2026-09-26
 
 The two missing cf1b9a78 owners are training-forge-practice.ts and living-species-preview.ts, now integrated through Main. The Forge owner uses a private cloned state and canonical Arc3 derivation with exact output/unchanged protected-carrier checks. The preview owns one existing440px image through SpeciesArtLoader with bounded motion and lifecycle cleanup. Current16-card Training retains save restoration; no old whole-file Main/Guide or wall-week lifecycle was restored. See audits/PARKED_GAMEPLAY_COMPLETION_20260926 for evidence.
+
+### G5 per-individual finisher — matches code as of 2026-09-26
+
+`apps/game/src/creature-finish-engine.ts` owns bounded serial/deduplicated requests, exact
+individual/visual/source/model/settings identity and immutable `creature-originals` retention.
+It validates cached and delivered originals before use, lazily creates desktop inference only
+when needed, and falls back on phones without a delivered original. Existing conservation,
+exact labels/binding and lossless PNG checks apply before retention. The returned PNG uses
+original master coordinates; runtime master-to-atlas projection and game routing are not
+implemented by this engine. Claude owns that adapter, capability policy and master-space morph.
+Native evidence on signed 26a4bc57: five real inferences, deduplication/cache reuse, fresh
+IndexedDB delivery with zero phone model construction; total PNG payload 199,641 bytes.
+See `audits/G5_FINISHER_ENGINE_20260926/README.md` for pins, bounds, projection contract and
+physical-phone/quality limitations. G1 remains red; G2 candidates are not admitted rigs.
