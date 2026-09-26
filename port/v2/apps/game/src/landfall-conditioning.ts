@@ -394,7 +394,9 @@ export function compileEarthArtKitV4(input: unknown, kit: string) {
 
 /** Desktop creature texture class, same kit finisher, inverted protection polarity.
  * No per-species prompt/settings; pixels carry anatomy and palette. */
-export function compileCreatureFinishV1(input:{recordRecipeHash:string;cutoutAssetHash:string;seed:number;width:number;height:number;master:KitPreparedImageV4;labels:KitPreparedImageV4}) {
+export type CreatureFinishImageV1 = {readonly sha256:string;readonly width:number;readonly height:number} &
+ ({readonly url:string;readonly buffer?:never}|{readonly buffer:ArrayBuffer;readonly url?:never});
+export function compileCreatureFinishV1(input:{recordRecipeHash:string;cutoutAssetHash:string;seed:number;width:number;height:number;master:CreatureFinishImageV1;labels:CreatureFinishImageV1}) {
  if(!/^[a-f0-9]{64}$/.test(input.recordRecipeHash)||!/^[a-f0-9]{64}$/.test(input.cutoutAssetHash)||!Number.isSafeInteger(input.seed))throw Error('Creature finish identity');
  const seed=(input.seed ^ Number.parseInt(input.recordRecipeHash.slice(0,8),16))>>>0;
  return freeze({schema:'cf.creature-finish.v1',tier:'desktop',width:input.width,height:input.height,seed,master:input.master,labels:input.labels,

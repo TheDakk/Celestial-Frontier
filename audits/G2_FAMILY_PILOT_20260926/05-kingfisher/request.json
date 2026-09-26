@@ -1,0 +1,21 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Kingfisher",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "524c8b21f4685732f6ce18e1614308f46cacd7b7000193bb798b2ce67730c05e",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "30f6b5524d148ad9210238327b781c2d8b009d5e9e0caea46ff7f92c4b8c18cb",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "bird",
+  "authoringCreated": false,
+  "sourceHead": "86ee934746cc4178b99a5493bf990c9d662d329a"
+}

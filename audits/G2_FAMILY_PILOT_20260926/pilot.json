@@ -1,0 +1,122 @@
+[
+  {
+    "id": "01-hawk",
+    "name": "Hawk",
+    "family": "biped-bird",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/01-hawk"
+  },
+  {
+    "id": "02-heron",
+    "name": "Heron",
+    "family": "biped-bird",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/02-heron"
+  },
+  {
+    "id": "03-pheasant",
+    "name": "Pheasant",
+    "family": "biped-bird",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/03-pheasant"
+  },
+  {
+    "id": "04-robin",
+    "name": "Robin",
+    "family": "biped-bird",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/04-robin"
+  },
+  {
+    "id": "05-kingfisher",
+    "name": "Kingfisher",
+    "family": "biped-bird",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/05-kingfisher"
+  },
+  {
+    "id": "06-trout",
+    "name": "Trout",
+    "family": "fish",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/06-trout"
+  },
+  {
+    "id": "07-perch",
+    "name": "Perch",
+    "family": "fish",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/07-perch"
+  },
+  {
+    "id": "08-cod",
+    "name": "Cod",
+    "family": "fish",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/08-cod"
+  },
+  {
+    "id": "09-carp",
+    "name": "Carp",
+    "family": "fish",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/09-carp"
+  },
+  {
+    "id": "10-herring",
+    "name": "Herring",
+    "family": "fish",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/10-herring"
+  },
+  {
+    "id": "11-grass-snake",
+    "name": "Grass Snake",
+    "family": "serpent",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/11-grass-snake"
+  },
+  {
+    "id": "12-rat-snake",
+    "name": "Rat Snake",
+    "family": "serpent",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/12-rat-snake"
+  },
+  {
+    "id": "13-garter-snake",
+    "name": "Garter Snake",
+    "family": "serpent",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/13-garter-snake"
+  },
+  {
+    "id": "14-king-snake",
+    "name": "King Snake",
+    "family": "serpent",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/14-king-snake"
+  },
+  {
+    "id": "15-tree-snake",
+    "name": "Tree Snake",
+    "family": "serpent",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/15-tree-snake"
+  },
+  {
+    "id": "16-ant",
+    "name": "Ant",
+    "family": "insect",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/16-ant"
+  },
+  {
+    "id": "17-beetle",
+    "name": "Beetle",
+    "family": "insect",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/17-beetle"
+  },
+  {
+    "id": "18-cricket",
+    "name": "Cricket",
+    "family": "insect",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/18-cricket"
+  },
+  {
+    "id": "19-grasshopper",
+    "name": "Grasshopper",
+    "family": "insect",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/19-grasshopper"
+  },
+  {
+    "id": "20-mantis",
+    "name": "Mantis",
+    "family": "insect",
+    "packet": "audits/G2_FAMILY_PILOT_20260926/20-mantis"
+  }
+]
