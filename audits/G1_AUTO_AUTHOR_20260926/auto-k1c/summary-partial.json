@@ -1,0 +1,155 @@
+[
+ {
+  "id": "eagle",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 1131.6,
+  "landmarkMedian": 0.0389,
+  "landmarkMax": 0.0823,
+  "worst": [
+   "root 0.082",
+   "chest 0.064",
+   "neck0 0.059"
+  ],
+  "labelAgreement": 0.7082,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "alert",
+   "cast",
+   "victory"
+  ]
+ },
+ {
+  "id": "impala",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 1268.6,
+  "landmarkMedian": 0.041,
+  "landmarkMax": 0.2126,
+  "worst": [
+   "hindFarPaw 0.213",
+   "hindNearPaw 0.180",
+   "foreNearPaw 0.123"
+  ],
+  "labelAgreement": 0.5178,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "cattle",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 1248.2,
+  "landmarkMedian": 0.067,
+  "landmarkMax": 0.1979,
+  "worst": [
+   "tail1 0.198",
+   "foreFarRoot 0.154",
+   "earNearTip 0.135"
+  ],
+  "labelAgreement": 0.5372,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "wolf",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 852.7,
+  "landmarkMedian": 0.051,
+  "landmarkMax": 0.2038,
+  "worst": [
+   "hindFarPaw 0.204",
+   "hindNearPaw 0.183",
+   "hindNearAnkle 0.136"
+  ],
+  "labelAgreement": 0.5239,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "gull",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 851,
+  "landmarkMedian": 0.0378,
+  "landmarkMax": 0.0954,
+  "worst": [
+   "spine 0.095",
+   "chest 0.092",
+   "wingNearRoot 0.077"
+  ],
+  "labelAgreement": 0.6581,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "sparrow",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 911.2,
+  "landmarkMedian": 0.0538,
+  "landmarkMax": 0.27,
+  "worst": [
+   "wingNearTip 0.270",
+   "tailFan 0.254",
+   "neck0 0.148"
+  ],
+  "labelAgreement": 0.4099,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "faint"
+  ]
+ },
+ {
+  "id": "grouse",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 776.4,
+  "landmarkMedian": 0.0366,
+  "landmarkMax": 0.7,
+  "worst": [
+   "wingNearTip 0.700",
+   "tailFan 0.244",
+   "root 0.201"
+  ],
+  "labelAgreement": 0.3804,
+  "missingJoints": [],
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Observed surfaces: contact conflicts with fixed owner\n    at need (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/spli"
+ },
+ {
+  "id": "sandpiper",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 954.9,
+  "landmarkMedian": 0.1465,
+  "landmarkMax": 0.3565,
+  "worst": [
+   "legFarFoot 0.356",
+   "legFarAnkle 0.323",
+   "wingFarTip 0.270"
+  ],
+  "labelAgreement": 0.4777,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "alert",
+   "victory"
+  ]
+ }
+]

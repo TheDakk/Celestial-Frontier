@@ -1,0 +1,244 @@
+[
+ {
+  "id": "eagle",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 1131.6,
+  "landmarkMedian": 0.0607,
+  "landmarkMax": 0.4573,
+  "worst": [
+   "wingFarTip 0.457",
+   "wingNearRoot 0.194",
+   "chest 0.133"
+  ],
+  "labelAgreement": 0.7082,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "dodge",
+   "victory",
+   "melee:kick"
+  ]
+ },
+ {
+  "id": "cougar",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 1209.3,
+  "landmarkMedian": 0.0383,
+  "landmarkMax": 0.1581,
+  "worst": [
+   "hindFarPaw 0.158",
+   "hindNearPaw 0.137",
+   "hindFarAnkle 0.128"
+  ],
+  "labelAgreement": 0.5412,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "approach:gallop"
+  ]
+ },
+ {
+  "id": "impala",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 1268.6,
+  "landmarkMedian": 0.044,
+  "landmarkMax": 0.1709,
+  "worst": [
+   "earFarTip 0.171",
+   "hindNearAnkle 0.168",
+   "earFarRoot 0.166"
+  ],
+  "labelAgreement": 0.5178,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "approach:gallop",
+   "melee:tail"
+  ]
+ },
+ {
+  "id": "cattle",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 1248.2,
+  "landmarkMedian": 0.0616,
+  "landmarkMax": 0.1602,
+  "worst": [
+   "hindFarKnee 0.160",
+   "tail1 0.152",
+   "hindFarRoot 0.131"
+  ],
+  "labelAgreement": 0.5372,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "alert",
+   "melee:tail",
+   "hit"
+  ]
+ },
+ {
+  "id": "wolf",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 852.7,
+  "landmarkMedian": 0.0264,
+  "landmarkMax": 0.0757,
+  "worst": [
+   "tail1 0.076",
+   "hindFarKnee 0.071",
+   "foreNearAnkle 0.065"
+  ],
+  "labelAgreement": 0.5239,
+  "missingJoints": [],
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Family admission: proportion bound: bone-min\n    at need (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/family-record"
+ },
+ {
+  "id": "gull",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 851,
+  "landmarkMedian": 0.0524,
+  "landmarkMax": 0.5659,
+  "worst": [
+   "wingFarTip 0.566",
+   "wingNearTip 0.185",
+   "wingNearRoot 0.079"
+  ],
+  "labelAgreement": 0.6581,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "brown-bear",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 1008.3,
+  "landmarkMedian": 0.0491,
+  "landmarkMax": 0.2921,
+  "worst": [
+   "tail2 0.292",
+   "tail3 0.263",
+   "tail1 0.216"
+  ],
+  "labelAgreement": 0.3173,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "idle",
+   "alert",
+   "approach:walk",
+   "approach:trot",
+   "approach:gallop",
+   "melee:bite",
+   "melee:claw",
+   "melee:gore",
+   "melee:tail",
+   "melee:headbutt",
+   "cast",
+   "hit",
+   "faint",
+   "victory",
+   "tame",
+   "feed"
+  ]
+ },
+ {
+  "id": "sparrow",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 911.2,
+  "landmarkMedian": 0.0627,
+  "landmarkMax": 0.21,
+  "worst": [
+   "wingNearTip 0.210",
+   "tailFan 0.176",
+   "wingNearRoot 0.146"
+  ],
+  "labelAgreement": 0.4099,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "approach:walk",
+   "cast",
+   "dodge",
+   "faint",
+   "tame"
+  ]
+ },
+ {
+  "id": "grouse",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 776.4,
+  "landmarkMedian": 0.0435,
+  "landmarkMax": 0.6689,
+  "worst": [
+   "wingNearTip 0.669",
+   "tailFan 0.214",
+   "root 0.185"
+  ],
+  "labelAgreement": 0.3804,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "cast",
+   "dodge",
+   "faint",
+   "melee:kick"
+  ]
+ },
+ {
+  "id": "sandpiper",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 954.9,
+  "landmarkMedian": 0.1073,
+  "landmarkMax": 0.3532,
+  "worst": [
+   "legFarFoot 0.353",
+   "wingFarTip 0.261",
+   "legFarAnkle 0.252"
+  ],
+  "labelAgreement": 0.4777,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "cast",
+   "victory"
+  ]
+ },
+ {
+  "id": "salamander",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 868.3,
+  "landmarkMedian": 0.0276,
+  "landmarkMax": 0.1572,
+  "worst": [
+   "hindFarAnkle 0.157",
+   "hindFarPaw 0.156",
+   "hindFarRoot 0.114"
+  ],
+  "labelAgreement": 0.4049,
+  "missingJoints": [],
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Family admission: proportion bound: bone-min\n    at need (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/family-record"
+ }
+]

@@ -1,0 +1,160 @@
+[
+ {
+  "id": "eagle",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 1131.6,
+  "landmarkMedian": 0.039,
+  "landmarkMax": 0.0823,
+  "worst": [
+   "root 0.082",
+   "legNearKnee 0.072",
+   "chest 0.064"
+  ],
+  "labelAgreement": 0.7082,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "alert",
+   "faint",
+   "victory"
+  ]
+ },
+ {
+  "id": "impala",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 1268.6,
+  "landmarkMedian": 0.0438,
+  "landmarkMax": 0.2126,
+  "worst": [
+   "hindFarPaw 0.213",
+   "hindNearPaw 0.180",
+   "foreNearPaw 0.123"
+  ],
+  "labelAgreement": 0.5178,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "cattle",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 1248.2,
+  "landmarkMedian": 0.0666,
+  "landmarkMax": 0.1979,
+  "worst": [
+   "tail1 0.198",
+   "foreFarRoot 0.154",
+   "earNearTip 0.135"
+  ],
+  "labelAgreement": 0.5372,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": []
+ },
+ {
+  "id": "wolf",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 852.7,
+  "landmarkMedian": 0.0566,
+  "landmarkMax": 0.2038,
+  "worst": [
+   "hindFarPaw 0.204",
+   "hindNearPaw 0.183",
+   "hindFarAnkle 0.143"
+  ],
+  "labelAgreement": 0.5239,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "gull",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 851,
+  "landmarkMedian": 0.0378,
+  "landmarkMax": 0.0954,
+  "worst": [
+   "spine 0.095",
+   "chest 0.092",
+   "wingNearRoot 0.077"
+  ],
+  "labelAgreement": 0.6581,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "sparrow",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 911.2,
+  "landmarkMedian": 0.0529,
+  "landmarkMax": 0.27,
+  "worst": [
+   "wingNearTip 0.270",
+   "tailFan 0.254",
+   "neck0 0.148"
+  ],
+  "labelAgreement": 0.4099,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "cast",
+   "dodge",
+   "faint"
+  ]
+ },
+ {
+  "id": "grouse",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 776.4,
+  "landmarkMedian": 0.0438,
+  "landmarkMax": 0.7,
+  "worst": [
+   "wingNearTip 0.700",
+   "tailFan 0.244",
+   "root 0.201"
+  ],
+  "labelAgreement": 0.3804,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "dodge",
+   "faint"
+  ]
+ },
+ {
+  "id": "sandpiper",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "bodyLengthPx": 954.9,
+  "landmarkMedian": 0.1465,
+  "landmarkMax": 0.3565,
+  "worst": [
+   "legFarFoot 0.356",
+   "legFarAnkle 0.350",
+   "wingFarTip 0.270"
+  ],
+  "labelAgreement": 0.4777,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "alert",
+   "victory"
+  ]
+ }
+]

@@ -1,0 +1,118 @@
+{
+ "verdict": "ADMIT",
+ "reasons": [],
+ "schema": "cf.g1-auto-author/v1",
+ "bestReference": "herring",
+ "costs": [
+  {
+   "ref": "herring",
+   "cost": 0.00862
+  },
+  {
+   "ref": "bass",
+   "cost": 0.01133
+  },
+  {
+   "ref": "reef-shark",
+   "cost": 0.0133
+  },
+  {
+   "ref": "salmon",
+   "cost": 0.01446
+  },
+  {
+   "ref": "tang",
+   "cost": 0.01501
+  },
+  {
+   "ref": "sturgeon",
+   "cost": 0.01824
+  }
+ ],
+ "mirrorBest": 0.02038,
+ "otherFamilyBest": {
+  "family": "flyer-membrane",
+  "cost": 0.01512
+ },
+ "coverage": [
+  {
+   "id": "near-pectoral",
+   "joint": "pectoralNear",
+   "paint": 1,
+   "area": 6117.2699999999895
+  },
+  {
+   "id": "far-pectoral",
+   "joint": "pectoralFar",
+   "paint": 0.7477272727272727,
+   "area": 7037.324999999997
+  },
+  {
+   "id": "dorsal",
+   "joint": "dorsal",
+   "paint": 0.2718676122931442,
+   "area": 6781.790000000009
+  },
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.8920863309352518,
+   "area": 6700.025000000007
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.5792771084337349,
+   "area": 33267.77000000001
+  },
+  {
+   "id": "caudal",
+   "joint": "caudal",
+   "paint": 0.34775888717156106,
+   "area": 41429.939999999995
+  },
+  {
+   "id": "root",
+   "joint": "root",
+   "paint": 0.7646683673469388,
+   "area": 25098.780000000017
+  },
+  {
+   "id": "tail-peduncle",
+   "joint": "spine5",
+   "paint": 0.24427480916030533,
+   "area": 16757.895000000026
+  },
+  {
+   "id": "rear-body",
+   "joint": "spine4",
+   "paint": 0.5246690734055355,
+   "area": 26549.929999999964
+  },
+  {
+   "id": "pelvic-body",
+   "joint": "spine3",
+   "paint": 0.3899862195682131,
+   "area": 34745.695
+  },
+  {
+   "id": "mid-body",
+   "joint": "spine2",
+   "paint": 0.649016641452345,
+   "area": 31813.00499999999
+  },
+  {
+   "id": "front-body",
+   "joint": "spine1",
+   "paint": 0.5934891485809682,
+   "area": 19162.934999999976
+  },
+  {
+   "id": "body",
+   "joint": "spine0",
+   "paint": 0,
+   "area": 0.3300000000000125
+  }
+ ],
+ "unclaimedFrac": 0.0329
+}

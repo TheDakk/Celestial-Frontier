@@ -1,0 +1,21 @@
+{
+ "id": "wolf",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 852.7,
+ "landmarkMedian": 0.0336,
+ "landmarkMax": 0.0761,
+ "worst": [
+  "tail1 0.076",
+  "hindFarRoot 0.075",
+  "hindFarKnee 0.070"
+ ],
+ "labelAgreement": 0.5239,
+ "missingJoints": [],
+ "static": "RED",
+ "staticFails": [
+  "approach:gallop",
+  "tame"
+ ]
+}

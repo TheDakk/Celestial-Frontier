@@ -1,0 +1,331 @@
+[
+ {
+  "id": "beetle",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part leg-hind-far (legHindFarKnee) covers 0% paint (reference 98%)",
+   "unexplained-anatomy: 6.5% of the paint lies away from the body and in no part (reference 1.6%)"
+  ],
+  "bodyLengthPx": 1041.4,
+  "landmarkMedian": 0.1394,
+  "landmarkMax": 0.2682,
+  "worst": [
+   "legHindFarFoot 0.268",
+   "wingFar 0.255",
+   "legMidNearFoot 0.253"
+  ],
+  "labelAgreement": 0.1,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "RED",
+  "staticFails": [
+   "cast",
+   "hit",
+   "faint",
+   "tame"
+  ]
+ },
+ {
+  "id": "python",
+  "family": "serpent",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part segment-4 (seg4) covers 8% paint (reference 3%)",
+   "missing-anatomy: part segment-8 (seg8) covers 7% paint (reference 2%)"
+  ],
+  "bodyLengthPx": 1151.8,
+  "landmarkMedian": 0.0585,
+  "landmarkMax": 0.1461,
+  "worst": [
+   "seg5 0.146",
+   "seg6 0.094",
+   "seg7 0.089"
+  ],
+  "labelAgreement": 0.016,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Part masks: empty painter part\n    at requireValue (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/part-masks.mjs:4:48"
+ },
+ {
+  "id": "wall-lizard",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-far-knee (hindFarKnee) covers 17% paint (reference 97%)",
+   "missing-anatomy: part hind-far-root (hindFarRoot) covers 7% paint (reference 99%)",
+   "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 30%)"
+  ],
+  "bodyLengthPx": 1107.1,
+  "landmarkMedian": 0.0358,
+  "landmarkMax": 0.1532,
+  "worst": [
+   "tail2 0.153",
+   "tail1 0.113",
+   "hindFarAnkle 0.112"
+  ],
+  "labelAgreement": 0.5405,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Skeleton pose: exact landmark inventory\n    at need (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/skeleton-pose.mjs:"
+ },
+ {
+  "id": "marmot",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  ],
+  "bodyLengthPx": 1088.6,
+  "landmarkMedian": 0.0317,
+  "landmarkMax": 0.0956,
+  "worst": [
+   "earFarTip 0.096",
+   "earFarRoot 0.094",
+   "foreFarRoot 0.076"
+  ],
+  "labelAgreement": 0.5744,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "RED",
+  "staticFails": [
+   "melee:tail",
+   "tame"
+  ]
+ },
+ {
+  "id": "river-otter",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 7% paint (reference 52%)"
+  ],
+  "bodyLengthPx": 1005.3,
+  "landmarkMedian": 0.0252,
+  "landmarkMax": 0.1371,
+  "worst": [
+   "hindNearAnkle 0.137",
+   "hindNearPaw 0.135",
+   "hindFarPaw 0.129"
+  ],
+  "labelAgreement": 0.5978,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "goose",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part near-shin (legNearAnkle) covers 22% paint (reference 74%)",
+   "unexplained-anatomy: 7.6% of the paint lies away from the body and in no part (reference 3.0%)"
+  ],
+  "bodyLengthPx": 875.1,
+  "landmarkMedian": 0.0409,
+  "landmarkMax": 0.7464,
+  "worst": [
+   "wingNearTip 0.746",
+   "tailFan 0.341",
+   "root 0.142"
+  ],
+  "labelAgreement": 0.3131,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "RED",
+  "staticFails": [
+   "faint"
+  ]
+ },
+ {
+  "id": "heron",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part far-foot (legFarFoot) covers 18% paint (reference 53%)",
+   "missing-anatomy: part far-thigh (legFarKnee) covers 23% paint (reference 70%)"
+  ],
+  "bodyLengthPx": 826.7,
+  "landmarkMedian": 0.0294,
+  "landmarkMax": 0.2125,
+  "worst": [
+   "wingFarTip 0.212",
+   "wingFarRoot 0.095",
+   "wingNearRoot 0.063"
+  ],
+  "labelAgreement": 0.7748,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "ibex",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-near-tip (earNearTip) covers 11% paint (reference 62%)",
+   "unexplained-anatomy: 7.4% of the paint lies away from the body and in no part (reference 0.0%)"
+  ],
+  "bodyLengthPx": 852.6,
+  "landmarkMedian": 0.0663,
+  "landmarkMax": 0.2076,
+  "worst": [
+   "hindFarPaw 0.208",
+   "foreNearAnkle 0.150",
+   "hindNearPaw 0.150"
+  ],
+  "labelAgreement": 0.5147,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "racer",
+  "family": "serpent",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part head (head) covers 1% paint (reference 4%)",
+   "missing-anatomy: part body-segment-0 (seg0) covers 6% paint (reference 12%)",
+   "missing-anatomy: part body-segment-2 (seg2) covers 6% paint (reference 9%)",
+   "missing-anatomy: part body-segment-3 (seg3) covers 6% paint (reference 9%)",
+   "missing-anatomy: part body-segment-4 (seg4) covers 6% paint (reference 10%)",
+   "missing-anatomy: part body-segment-6 (seg6) covers 6% paint (reference 10%)",
+   "missing-anatomy: part body-segment-7 (seg7) covers 3% paint (reference 7%)",
+   "missing-anatomy: part body-segment-8 (seg8) covers 2% paint (reference 5%)",
+   "missing-anatomy: part body-segment-9 (seg9) covers 0% paint (reference 2%)"
+  ],
+  "bodyLengthPx": 625.5,
+  "landmarkMedian": 0.0699,
+  "landmarkMax": 0.1594,
+  "worst": [
+   "seg4 0.159",
+   "seg5 0.132",
+   "seg6 0.128"
+  ],
+  "labelAgreement": 0.0107,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "herring",
+  "family": "fish",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part dorsal (dorsal) covers 19% paint (reference 58%)"
+  ],
+  "bodyLengthPx": 801.5,
+  "landmarkMedian": 0.0373,
+  "landmarkMax": 0.2167,
+  "worst": [
+   "dorsal 0.217",
+   "pectoralNear 0.078",
+   "spine3 0.058"
+  ],
+  "labelAgreement": 0.5572,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "eel",
+  "family": "serpent",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part body-segment-7 (seg7) covers 8% paint (reference 7%)",
+   "missing-anatomy: part body-segment-8 (seg8) covers 5% paint (reference 5%)",
+   "missing-anatomy: part body-segment-9 (seg9) covers 0% paint (reference 2%)"
+  ],
+  "bodyLengthPx": 863.1,
+  "landmarkMedian": 0.0681,
+  "landmarkMax": 0.1852,
+  "worst": [
+   "seg4 0.185",
+   "seg5 0.170",
+   "seg6 0.146"
+  ],
+  "labelAgreement": 0.0376,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Family admission: proportion bound: head/body\n    at need (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/family-recor"
+ },
+ {
+  "id": "honeybee",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 1.0%)"
+  ],
+  "bodyLengthPx": 893.2,
+  "landmarkMedian": 0.1256,
+  "landmarkMax": 0.2665,
+  "worst": [
+   "legFrontNearFoot 0.267",
+   "wingNear 0.247",
+   "legMidNearFoot 0.238"
+  ],
+  "labelAgreement": 0.1468,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Part masks: polygon\n    at requireValue (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at cu"
+ },
+ {
+  "id": "rat",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 30%)",
+   "missing-anatomy: part tail1 (tail1) covers 21% paint (reference 79%)",
+   "unexplained-anatomy: 24.8% of the paint lies away from the body and in no part (reference 11.4%)"
+  ],
+  "bodyLengthPx": 827.1,
+  "landmarkMedian": 0.0545,
+  "landmarkMax": 0.1733,
+  "worst": [
+   "hindNearKnee 0.173",
+   "hindFarPaw 0.166",
+   "hindNearPaw 0.162"
+  ],
+  "labelAgreement": 0.4574,
+  "missingJoints": [
+   "earNearRoot",
+   "earNearTip",
+   "earFarRoot",
+   "earFarTip"
+  ],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Skeleton pose: exact landmark inventory\n    at need (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/skeleton-pose.mjs:"
+ },
+ {
+  "id": "dragonfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 9% paint (reference 25%)",
+   "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 18% paint (reference 62%)"
+  ],
+  "bodyLengthPx": 711,
+  "landmarkMedian": 0.1427,
+  "landmarkMax": 0.8448,
+  "worst": [
+   "wingFar 0.845",
+   "legHindNearFoot 0.761",
+   "antennaFar 0.542"
+  ],
+  "labelAgreement": 0.0425,
+  "missingJoints": [],
+  "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Family admission: proportion bound: leg/body:legHindNear\n    at need (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/f"
+ }
+]

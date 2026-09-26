@@ -1,0 +1,10 @@
+[
+ {
+  "id": "wolf",
+  "family": "quadruped",
+  "status": "PASS_STATIC",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ }
+]

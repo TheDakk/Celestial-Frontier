@@ -1,0 +1,319 @@
+[
+ {
+  "id": "salmon",
+  "family": "fish",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "eagle",
+  "family": "biped-bird",
+  "status": "PASS_STATIC",
+  "rows": 14,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "beetle",
+  "status": "INTAKE_REFUSED"
+ },
+ {
+  "id": "python",
+  "family": "serpent",
+  "status": "PASS_STATIC",
+  "rows": 12,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "tree-frog",
+  "family": "hopper",
+  "status": "RED",
+  "rows": 12,
+  "fails": [
+   "hit",
+   "faint"
+  ],
+  "exactRest": true
+ },
+ {
+  "id": "chimpanzee",
+  "family": "primate",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "starfish",
+  "family": "radial",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "tarantula",
+  "family": "arachnid",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "octopus",
+  "family": "cephalopod",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "fruit-bat",
+  "family": "flyer-membrane",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "centipede",
+  "status": "INTAKE_REFUSED"
+ },
+ {
+  "id": "sturgeon",
+  "family": "fish",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "wall-lizard",
+  "family": "quadruped",
+  "status": "RED",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "cougar",
+  "family": "quadruped",
+  "status": "RED",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "impala",
+  "family": "quadruped",
+  "status": "PASS_STATIC",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "marmot",
+  "family": "quadruped",
+  "status": "RED",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "bass",
+  "family": "fish",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "cattle",
+  "family": "quadruped",
+  "status": "PASS_STATIC",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "tang",
+  "family": "fish",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "wolf",
+  "family": "quadruped",
+  "status": "PASS_STATIC",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "gull",
+  "family": "biped-bird",
+  "status": "RED",
+  "rows": 14,
+  "fails": [
+   "faint"
+  ],
+  "exactRest": true
+ },
+ {
+  "id": "river-otter",
+  "family": "quadruped",
+  "status": "PASS_STATIC",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "brown-bear",
+  "family": "quadruped",
+  "status": "RED",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "goose",
+  "family": "biped-bird",
+  "status": "PASS_STATIC",
+  "rows": 14,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "heron",
+  "family": "biped-bird",
+  "status": "PASS_STATIC",
+  "rows": 14,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "sparrow",
+  "family": "biped-bird",
+  "status": "PASS_STATIC",
+  "rows": 14,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "ibex",
+  "family": "quadruped",
+  "status": "RED",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "reef-shark",
+  "family": "fish",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "pike",
+  "family": "fish",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "racer",
+  "family": "serpent",
+  "status": "PASS_STATIC",
+  "rows": 12,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "grouse",
+  "family": "biped-bird",
+  "status": "PASS_STATIC",
+  "rows": 14,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "sandpiper",
+  "family": "biped-bird",
+  "status": "PASS_STATIC",
+  "rows": 14,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "herring",
+  "family": "fish",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "wild-horse",
+  "family": "quadruped",
+  "status": "PASS_STATIC",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "salamander",
+  "family": "quadruped",
+  "status": "RED",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "eel",
+  "family": "serpent",
+  "status": "PASS_STATIC",
+  "rows": 12,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "honeybee",
+  "family": "insect",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "rat",
+  "family": "quadruped",
+  "status": "PASS_STATIC",
+  "rows": 19,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "dragonfly",
+  "family": "insect",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ },
+ {
+  "id": "jellyfish",
+  "family": "radial",
+  "status": "PASS_STATIC",
+  "rows": 13,
+  "fails": [],
+  "exactRest": true
+ }
+]
