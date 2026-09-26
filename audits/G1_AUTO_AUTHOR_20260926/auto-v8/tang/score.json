@@ -1,0 +1,19 @@
+{
+ "id": "tang",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "bodyLengthPx": 948.7,
+ "landmarkMedian": 0.0587,
+ "landmarkMax": 0.1984,
+ "worst": [
+  "dorsal 0.198",
+  "spine4 0.131",
+  "spine3 0.116"
+ ],
+ "labelAgreement": 0.5227,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

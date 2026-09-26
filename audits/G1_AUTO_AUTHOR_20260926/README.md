@@ -83,6 +83,15 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 2. a short-tailed reference in the pool (only via admitted, independently accepted packets; never bootstrapped unchecked, per Codex's review);
 3. a measured-absence declaration: truncating a tail chain whose paint is measured absent. This needs Codex's intake/presence contract review first.
 
+**v8 (session 3): Codex's second review closed in the runner** (`auto-v8/`, `auto-g2-v8/`; results identical to v5: 12/40, 10/20, same subjects).
+- **Canonical identity:** the runner now recomputes `speciesVisualKey(genome)` and refuses on disagreement. Provenance `identity.checks` states exactly what was checked. 60/60 agree.
+- **Presence narrowed to what is measured.** Each ADMIT's `provenance.json` `presence` records:
+  - the geometric inventory (appendages by class, ground contacts, detached islands);
+  - that the empty absent/hidden/folded lists are an intake-format necessity, NOT an all-visible attestation;
+  - a semantic status. It is **RESOLVED** only when every reference appendage is assigned AND no appendage merges two limb chains; otherwise it is **UNRESOLVED**, with the unassigned and merged chains named. `playAdmission` stays blocked until semantic presence resolves and native + visual review pass.
+- **Result:** RESOLVED for the 6 fish (salmon, sturgeon, bass, tang, reef-shark, pike). UNRESOLVED for all 6 admitted quadrupeds/birds and all 10 G2 passes. The cause is ALWAYS overlapped near/far limbs (for example `foreFar+foreNear`); no reference appendage is unassigned.
+- **The one lever that closes both open G1 findings** (semantic presence and thin-part false refusals): a near/far limb separator for overlapped side-profile limbs.
+
 **Codex's second review (C40 answers, `audits/G1_CONTRACT_REVIEW_20260926`), status:**
 - **Canonical identity:** `identity-and-shipped38.json` records that for all 60 subjects (40 corpus + 20 G2) the subject-source `visualKey` equals `speciesVisualKey(genome)`. The runner's identity check is still shape-level; a canonical check in the Node runner is next. It would change no result today.
 - **The exact shipped-38 ID/status manifest** is in the same file: 32 evaluable (10 ADMIT + PASS_STATIC under v5) and 6 UNEVALUABLE (5 crabs and Civet: no hand `authoring.json`).
@@ -117,7 +126,7 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
   - `no-reference`: no other hand-authored subject of the family exists.
 - **Evaluation corpus (`corpus.json`):** 40 subjects, one canonical hand-authored packet each. The test is **leave-one-subject-out**: a subject's own packets are never its reference, and the author never reads the subject's `authoring.json`. `subject-source.json` (species name and genome, not anatomy) is copied into the auto packet.
 - **Materials and habitat are automatic:**
-  - Materials: a family default table.
+  - Materials: the species group's integument keyed by the pinned Earth profile (v5+; the v1–v3 family default table is retired).
   - Habitat: the Earth fauna profile's media (water → aquatic, ground+water → amphibious, ground → land, air only → aerial). Adult flight stays a declaration.
 - **Static gate (`harness/`):** the sprint static gate (`audits/ARCHETYPE_SPRINT_20260922/static.ts` + runner), re-rooted to this worktree. The gate logic is identical; only the import paths and ROOT changed (14 lines). The original hard-codes Codex's worktree and refuses paths outside it.
 

@@ -117,3 +117,24 @@ export function createCreatureFinishRouteV1(o: CreatureFinishRouteOptionsV1) {
     close(): void { reader.close(); finisher?.close(); },
   });
 }
+
+/** STAGE projection (Codex C40(c): the engine returns a full original-coordinate PNG, never an atlas). The deterministic runtime
+ * generalisation of `tools/painted-creature/rebind-finished.mjs`: for every bound part, every atlas-frame pixel the part owns (atlas
+ * alpha > 0) takes the finished RGB at the same place in the part's cut-out box; alpha is never touched, nothing outside a frame
+ * changes, and the binding (frames, cut-outs, paint skin) stays byte-identical, so only the texture hash moves. Unrotated frames of
+ * the cut-out's own size only; anything else refuses. */
+export interface ProjectionPartV1 { readonly id: string; readonly frame: { x: number; y: number; width: number; height: number; rotated?: boolean }; readonly cutout: { x: number; y: number; width: number; height: number } }
+export function projectFinishedToAtlasV1(o: { readonly atlas: Uint8Array; readonly atlasWidth: number; readonly atlasHeight: number; readonly finished: Uint8Array; readonly finishedWidth: number; readonly finishedHeight: number; readonly parts: readonly ProjectionPartV1[] }): Uint8Array {
+  if (o.atlas.length !== o.atlasWidth * o.atlasHeight * 4 || o.finished.length !== o.finishedWidth * o.finishedHeight * 4) throw Error('projection: buffer sizes');
+  const out = new Uint8Array(o.atlas);
+  for (const p of o.parts) {
+    const f = p.frame, c = p.cutout;
+    if (f.rotated || f.width !== c.width || f.height !== c.height) throw Error(`projection: part ${p.id} frame is not its cut-out's own size`);
+    if (f.x < 0 || f.y < 0 || f.x + f.width > o.atlasWidth || f.y + f.height > o.atlasHeight || c.x < 0 || c.y < 0 || c.x + c.width > o.finishedWidth || c.y + c.height > o.finishedHeight) throw Error(`projection: part ${p.id} out of bounds`);
+    for (let y = 0; y < c.height; y++) for (let x = 0; x < c.width; x++) {
+      const a = ((y + f.y) * o.atlasWidth + x + f.x) * 4; if (!o.atlas[a + 3]) continue;
+      const s = ((y + c.y) * o.finishedWidth + x + c.x) * 4; out[a] = o.finished[s]!; out[a + 1] = o.finished[s + 1]!; out[a + 2] = o.finished[s + 2]!;
+    }
+  }
+  return out;
+}
