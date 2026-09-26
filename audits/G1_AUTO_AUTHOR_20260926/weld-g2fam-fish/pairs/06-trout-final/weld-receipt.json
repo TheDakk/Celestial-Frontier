@@ -1,0 +1,52 @@
+{
+ "schema": "cf.selective-weld/v1",
+ "fit": "06-trout",
+ "variant": "final",
+ "pairs": [
+  [
+   "body",
+   "spine1"
+  ],
+  [
+   "body",
+   "spine2"
+  ],
+  [
+   "body",
+   "spine3"
+  ]
+ ],
+ "helperSha256": "f13467912a1537adcc4624e5b5b3efdfb738aaaf5c073e37ab2f88862696de3c",
+ "bindingHash": "82cadcdc93183f671a1eaa68749bbf86aa29fc23c871c8167c2b85dcc6c9f973",
+ "receipt": {
+  "schema": "cf.observed-surface-split/v1",
+  "contactPins": [],
+  "sourceBindingHash": "0a2ca353dcfce0860f687897909ef3e198715cf69ee88a24e713951677b4a15c",
+  "sourceVertices": 1510,
+  "vertices": 1816,
+  "sharedSupports": 431,
+  "pins": 968,
+  "independentSurfaceParts": 13,
+  "sourceJoins": 10,
+  "excludedOverlaps": 13,
+  "observedExcludedBoundaries": 13,
+  "weldedExcludedBoundaries": 3,
+  "independentExcludedBoundaries": 10,
+  "preservePaintBoundaries": false,
+  "paintBoundaryPairs": [
+   [
+    "body",
+    "spine1"
+   ],
+   [
+    "body",
+    "spine2"
+   ],
+   [
+    "body",
+    "spine3"
+   ]
+  ],
+  "sourceCoordinateChanges": 0
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "schema": "cf.selective-weld/v1",
+ "fit": "10-herring",
+ "variant": "G5",
+ "pairs": [
+  [
+   "body",
+   "spine1"
+  ],
+  [
+   "body",
+   "spine2"
+  ],
+  [
+   "body",
+   "spine3"
+  ],
+  [
+   "body",
+   "spine4"
+  ]
+ ],
+ "helperSha256": "f13467912a1537adcc4624e5b5b3efdfb738aaaf5c073e37ab2f88862696de3c",
+ "bindingHash": "d5a60cea35aa42c67d4ecc8f6cc00696ccb58e2823d01f32f1f7d3398074a977",
+ "receipt": {
+  "schema": "cf.observed-surface-split/v1",
+  "contactPins": [],
+  "sourceBindingHash": "ff819c2acf91f604e6f7a36c9e254bf45d86932a5323d3eee72e97ba58d677d5",
+  "sourceVertices": 1397,
+  "vertices": 1663,
+  "sharedSupports": 400,
+  "pins": 994,
+  "independentSurfaceParts": 13,
+  "sourceJoins": 10,
+  "excludedOverlaps": 14,
+  "observedExcludedBoundaries": 14,
+  "weldedExcludedBoundaries": 4,
+  "independentExcludedBoundaries": 10,
+  "preservePaintBoundaries": false,
+  "paintBoundaryPairs": [
+   [
+    "body",
+    "spine1"
+   ],
+   [
+    "body",
+    "spine2"
+   ],
+   [
+    "body",
+    "spine3"
+   ],
+   [
+    "body",
+    "spine4"
+   ]
+  ],
+  "sourceCoordinateChanges": 0
+ }
+}
