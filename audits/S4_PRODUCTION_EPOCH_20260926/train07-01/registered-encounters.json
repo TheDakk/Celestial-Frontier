@@ -1,0 +1,243 @@
+{
+  "guardian": {
+    "identity": {
+      "schema": "cf-v2-guardian-prime-encounter/v1",
+      "world": {
+        "format": "CF1",
+        "galaxy": {
+          "seed": 999,
+          "x": 90,
+          "y": -60,
+          "size": 78,
+          "sp": 0,
+          "tilt": 0.62,
+          "rot": 0.5,
+          "home": true,
+          "quasar": false,
+          "dwarf": false,
+          "parentCell": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "star": {
+          "seed": 3824583279,
+          "x": -820.95,
+          "y": -620.69,
+          "layer": "coarse",
+          "parentCell": {
+            "x": -20,
+            "y": -15
+          }
+        },
+        "planet": {
+          "seed": 2456455053,
+          "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:3824583279@-820.95,-620.69|p:2456455053#0"
+      },
+      "worldType": "airless",
+      "regionIndex": 0,
+      "claimedSignatureIds": [],
+      "conquered": false,
+      "defenderKind": "guardian",
+      "defenderSourceId": "guardian:2456455053",
+      "signatureId": null
+    },
+    "defender": {
+      "kind": "guardian",
+      "sourceId": "guardian:2456455053",
+      "name": "Velemnoid the Skyrender",
+      "tier": 12,
+      "regionIndex": 0,
+      "signatureId": null,
+      "battleGenome": {
+        "seed": 335675536,
+        "kingdom": "fauna",
+        "color": 7,
+        "form": 4,
+        "body": 6,
+        "loco": 7,
+        "trait": 14,
+        "size": 5,
+        "diet": 0,
+        "head": 7,
+        "limbs": 5,
+        "skin": 1,
+        "tail": 1,
+        "pattern": 4,
+        "eyes": 2,
+        "behavior": 10,
+        "habitat": 4,
+        "detail": 3,
+        "accent": 13,
+        "temper": 7,
+        "sense": 0,
+        "repro": 5,
+        "life": 3,
+        "metab": 3,
+        "lumin": true,
+        "gen": 0,
+        "heat": 1,
+        "wild": 1,
+        "apex": 12,
+        "ep": 7
+      },
+      "capturableGenome": {
+        "seed": 335675536,
+        "kingdom": "fauna",
+        "color": 7,
+        "form": 4,
+        "body": 6,
+        "loco": 7,
+        "trait": 14,
+        "size": 5,
+        "diet": 0,
+        "head": 7,
+        "limbs": 5,
+        "skin": 1,
+        "tail": 1,
+        "pattern": 4,
+        "eyes": 2,
+        "behavior": 10,
+        "habitat": 4,
+        "detail": 3,
+        "accent": 13,
+        "temper": 7,
+        "sense": 0,
+        "repro": 5,
+        "life": 3,
+        "metab": 3,
+        "lumin": true,
+        "gen": 0,
+        "heat": 1,
+        "wild": 1,
+        "apex": 12,
+        "ep": 7
+      },
+      "power": 650
+    },
+    "witness": "{\"defender\":{\"battleGenome\":{\"accent\":13,\"apex\":12,\"behavior\":10,\"body\":6,\"color\":7,\"detail\":3,\"diet\":0,\"ep\":7,\"eyes\":2,\"form\":4,\"gen\":0,\"habitat\":4,\"head\":7,\"heat\":1,\"kingdom\":\"fauna\",\"life\":3,\"limbs\":5,\"loco\":7,\"lumin\":true,\"metab\":3,\"pattern\":4,\"repro\":5,\"seed\":335675536,\"sense\":0,\"size\":5,\"skin\":1,\"tail\":1,\"temper\":7,\"trait\":14,\"wild\":1},\"capturableGenome\":{\"accent\":13,\"apex\":12,\"behavior\":10,\"body\":6,\"color\":7,\"detail\":3,\"diet\":0,\"ep\":7,\"eyes\":2,\"form\":4,\"gen\":0,\"habitat\":4,\"head\":7,\"heat\":1,\"kingdom\":\"fauna\",\"life\":3,\"limbs\":5,\"loco\":7,\"lumin\":true,\"metab\":3,\"pattern\":4,\"repro\":5,\"seed\":335675536,\"sense\":0,\"size\":5,\"skin\":1,\"tail\":1,\"temper\":7,\"trait\":14,\"wild\":1},\"kind\":\"guardian\",\"name\":\"Velemnoid the Skyrender\",\"power\":650,\"signatureId\":null,\"sourceId\":\"guardian:2456455053\",\"tier\":12},\"identity\":{\"claimedSignatureIds\":[],\"conquered\":false,\"defenderKind\":\"guardian\",\"defenderSourceId\":\"guardian:2456455053\",\"regionIndex\":0,\"schema\":\"cf-v2-guardian-prime-encounter/v1\",\"signatureId\":null,\"world\":{\"format\":\"CF1\",\"galaxy\":{\"dwarf\":false,\"home\":true,\"parentCell\":{\"x\":0,\"y\":-1},\"quasar\":false,\"rot\":0.5,\"seed\":999,\"size\":78,\"sp\":0,\"tilt\":0.62,\"x\":90,\"y\":-60},\"key\":\"CF1|g:999@90,-60|s:3824583279@-820.95,-620.69|p:2456455053#0\",\"planet\":{\"ordinal\":0,\"seed\":2456455053},\"star\":{\"layer\":\"coarse\",\"parentCell\":{\"x\":-20,\"y\":-15},\"seed\":3824583279,\"x\":-820.95,\"y\":-620.69}},\"worldType\":\"airless\"}}"
+  },
+  "titan": {
+    "identity": {
+      "schema": "cf-v2-guardian-prime-encounter/v1",
+      "world": {
+        "format": "CF1",
+        "galaxy": {
+          "seed": 999,
+          "x": 90,
+          "y": -60,
+          "size": 78,
+          "sp": 0,
+          "tilt": 0.62,
+          "rot": 0.5,
+          "home": true,
+          "quasar": false,
+          "dwarf": false,
+          "parentCell": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "star": {
+          "seed": 1704147477,
+          "x": -816.52,
+          "y": -572.55,
+          "layer": "coarse",
+          "parentCell": {
+            "x": -20,
+            "y": -14
+          }
+        },
+        "planet": {
+          "seed": 3351403606,
+          "ordinal": 0
+        },
+        "key": "CF1|g:999@90,-60|s:1704147477@-816.52,-572.55|p:3351403606#0"
+      },
+      "worldType": "rocky",
+      "regionIndex": 0,
+      "claimedSignatureIds": [],
+      "conquered": false,
+      "defenderKind": "titan",
+      "defenderSourceId": "titan:stone:3351403606",
+      "signatureId": "stone"
+    },
+    "defender": {
+      "kind": "titan",
+      "sourceId": "titan:stone:3351403606",
+      "name": "Terrakoth, the Mountain’s Fist",
+      "tier": 14,
+      "regionIndex": 0,
+      "signatureId": "stone",
+      "battleGenome": {
+        "seed": 3071781101,
+        "kingdom": "fauna",
+        "color": 13,
+        "form": 10,
+        "body": 4,
+        "loco": 16,
+        "trait": 3,
+        "size": 5,
+        "diet": 4,
+        "head": 8,
+        "limbs": 4,
+        "skin": 0,
+        "tail": 6,
+        "pattern": 4,
+        "eyes": 5,
+        "behavior": 3,
+        "habitat": 18,
+        "detail": 3,
+        "accent": 9,
+        "temper": 5,
+        "sense": 8,
+        "repro": 2,
+        "life": 0,
+        "metab": 0,
+        "lumin": true,
+        "gen": 0,
+        "heat": 1,
+        "wild": 1,
+        "apex": 14,
+        "_titan": "stone",
+        "_mult": 1.15
+      },
+      "capturableGenome": {
+        "seed": 3071781101,
+        "kingdom": "fauna",
+        "color": 13,
+        "form": 10,
+        "body": 4,
+        "loco": 16,
+        "trait": 3,
+        "size": 5,
+        "diet": 4,
+        "head": 8,
+        "limbs": 4,
+        "skin": 0,
+        "tail": 6,
+        "pattern": 4,
+        "eyes": 5,
+        "behavior": 3,
+        "habitat": 18,
+        "detail": 3,
+        "accent": 9,
+        "temper": 5,
+        "sense": 8,
+        "repro": 2,
+        "life": 0,
+        "metab": 0,
+        "lumin": true,
+        "gen": 0,
+        "heat": 1,
+        "wild": 1,
+        "apex": 14,
+        "_titan": "stone"
+      },
+      "power": 856
+    },
+    "witness": "{\"defender\":{\"battleGenome\":{\"_mult\":1.15,\"_titan\":\"stone\",\"accent\":9,\"apex\":14,\"behavior\":3,\"body\":4,\"color\":13,\"detail\":3,\"diet\":4,\"eyes\":5,\"form\":10,\"gen\":0,\"habitat\":18,\"head\":8,\"heat\":1,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":4,\"loco\":16,\"lumin\":true,\"metab\":0,\"pattern\":4,\"repro\":2,\"seed\":3071781101,\"sense\":8,\"size\":5,\"skin\":0,\"tail\":6,\"temper\":5,\"trait\":3,\"wild\":1},\"capturableGenome\":{\"_titan\":\"stone\",\"accent\":9,\"apex\":14,\"behavior\":3,\"body\":4,\"color\":13,\"detail\":3,\"diet\":4,\"eyes\":5,\"form\":10,\"gen\":0,\"habitat\":18,\"head\":8,\"heat\":1,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":4,\"loco\":16,\"lumin\":true,\"metab\":0,\"pattern\":4,\"repro\":2,\"seed\":3071781101,\"sense\":8,\"size\":5,\"skin\":0,\"tail\":6,\"temper\":5,\"trait\":3,\"wild\":1},\"kind\":\"titan\",\"name\":\"Terrakoth, the Mountain’s Fist\",\"power\":856,\"signatureId\":\"stone\",\"sourceId\":\"titan:stone:3351403606\",\"tier\":14},\"identity\":{\"claimedSignatureIds\":[],\"conquered\":false,\"defenderKind\":\"titan\",\"defenderSourceId\":\"titan:stone:3351403606\",\"regionIndex\":0,\"schema\":\"cf-v2-guardian-prime-encounter/v1\",\"signatureId\":\"stone\",\"world\":{\"format\":\"CF1\",\"galaxy\":{\"dwarf\":false,\"home\":true,\"parentCell\":{\"x\":0,\"y\":-1},\"quasar\":false,\"rot\":0.5,\"seed\":999,\"size\":78,\"sp\":0,\"tilt\":0.62,\"x\":90,\"y\":-60},\"key\":\"CF1|g:999@90,-60|s:1704147477@-816.52,-572.55|p:3351403606#0\",\"planet\":{\"ordinal\":0,\"seed\":3351403606},\"star\":{\"layer\":\"coarse\",\"parentCell\":{\"x\":-20,\"y\":-14},\"seed\":1704147477,\"x\":-816.52,\"y\":-572.55}},\"worldType\":\"rocky\"}}"
+  }
+}

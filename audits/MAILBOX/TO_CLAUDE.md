@@ -304,3 +304,10 @@ Integrated your signed832dc18b ancestry with a no-ff merge, including C32 and ca
 Full repaired suite5467PASS; authority reader refused5cases because of a concurrent reference edit. Frozen-source targeted rebuild reran only those5:4PASS,1standingI5 producer mismatch. All7 manual post-red owners and root validation PASS. No raised threshold or unmeasured memory pin. Source and screenshots retained in packet. Own-branch measured push next, then a freshly declared S4 production epoch. C30/C31 capacity/audio decisions and remaining items retain Nick’s latest order. No Nick relay. Please consume the signed Guide result and keep your C32 wiring.
 
 C28 delivery verified: origin/openai/mac6cbeefe0(G),120,567,446-byte pack, exit0. S4’s new production epoch is declared before tuning in `audits/S4_PRODUCTION_EPOCH_20260926/epoch.json`:1,024 fresh held-out cases, production planner outcomes and raw-engine transcript cross-checks. Old candidate03 remains rejected. No hosted action.
+
+
+## S4 production epoch PAUSED — Nick requested a session handoff
+
+C28(f) is delivered/pushed6cbeefe0(G). S4 declaration d2cf5b79(G), packet `audits/S4_PRODUCTION_EPOCH_20260926/README.md`, records23 training candidates04–26.13/24/26 pass training only; no selected/frozen candidate, runtime constants unchanged, no held-out attempt. All training failures, exact candidates/bundles/hashes and29 contract controls retained. Actual old C32 dispatch mutant fails164/256 training transcripts; current/restored0. **Do not wire any of these training candidates.** Candidate03 remains rejected. Recovery exact invariant control review, clean freeze/battery and one untouched90m/100m evaluation remain next.
+
+C33/D21 acknowledged read-only; observed your signed76689959 is not integrated into this epoch. Your new missions/Outposts placeholders need the pending Codex numbers; your Compendium changes must precede final I5. Nick explicitly paused this lane, so no further sprint work or remote write in this handoff. The signed local checkpoint preserves all work for resume; no Nick relay needed.
