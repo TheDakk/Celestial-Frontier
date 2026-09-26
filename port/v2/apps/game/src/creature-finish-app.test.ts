@@ -31,13 +31,15 @@ function memoryStore() { const rows = new Map<string, AiCreatureOriginalV1>(); c
   return { store, rows }; }
 /** A worker double: receives the job through a REAL structured-clone transfer (the sender's buffers detach) and answers with the
  * master it was sent (an identity finish), or an error. */
-function fakeWorker(log: { jobs: Record<string, unknown>[]; detached: boolean[] }, answer: 'identity' | 'error' | 'short' = 'identity') {
+function fakeWorker(log: { jobs: Record<string, unknown>[]; detached: boolean[] }, answer: 'identity' | 'error' | 'short' | 'clamped' | 'wrong-type' = 'identity') {
   return class { onmessage: ((e: { data: unknown }) => void) | null = null; onerror: ((e: { message: string }) => void) | null = null;
     constructor(public url: string) {}
     postMessage(msg: { recipe: { master: { buffer: ArrayBuffer }; labels: { buffer: ArrayBuffer } }; requestId: number }, transfer: ArrayBuffer[]) {
       const job = structuredClone(msg, { transfer }) as typeof msg & Record<string, unknown>; log.jobs.push(job); log.detached.push(...transfer.map((b) => b.byteLength === 0));
-      queueMicrotask(() => this.onmessage?.({ data: answer === 'error' ? { type: 'error', requestId: job.requestId, message: 'model refused' }
-        : { type: 'complete', requestId: job.requestId, rgba: answer === 'short' ? new Uint8Array(4) : new Uint8Array(job.recipe.master.buffer) } })); }
+      queueMicrotask(() => { const rgba = answer === 'short' ? new Uint8Array(4) : answer === 'clamped' ? new Uint8ClampedArray(job.recipe.master.buffer) : answer === 'wrong-type' ? new Uint16Array(job.recipe.master.buffer) : new Uint8Array(job.recipe.master.buffer);
+        this.onmessage?.({ data: answer === 'error' ? { type: 'error', requestId: job.requestId, message: 'model refused' } : { type: 'complete', requestId: job.requestId, rgba } });
+        if(answer==='clamped')rgba.fill(0); // Adapter must copy exact bytes before the sender can reuse its view.
+      }); }
     terminate() {} } as unknown as typeof Worker;
 }
 const crab = (seed = 5) => ({ _earthName: 'Crab', kingdom: 'fauna', seed, color: 12, accent: 3, size: 0, head: 0, tail: 1, pattern: 0 });
@@ -54,19 +56,19 @@ describe('G5 in the game', () => {
   });
   it('END TO END on the real Crab: pinned library master+labels → adapter (transferred job) → engine → store → the shipped card master; wrong model pin, a worker error and a short result all fall back (controls)', async () => {
     const modelHash = creatureFinishModelHashV1(), fitFor = appFinishFitForV1(repoAssets, LIB), cutouts = new Map<string, string>();
-    const make = (answer: 'identity' | 'error' | 'short', mh = modelHash) => { const log = { jobs: [] as Record<string, unknown>[], detached: [] as boolean[] }, m = memoryStore();
+    const make = (answer: 'identity' | 'error' | 'short' | 'clamped' | 'wrong-type', mh = modelHash) => { const log = { jobs: [] as Record<string, unknown>[], detached: [] as boolean[] }, m = memoryStore();
       const route = createCreatureFinishRouteV1({ tier: 'desktop', store: m.store, modelHash: mh, fitFor, identityOf: (g) => ({ visualKey: speciesVisualKey(g as Record<string, unknown>), seed: Number(g.seed) >>> 0 }),
         onSource: (s) => cutouts.set(s.individualId + '|' + s.settingsHash, s.cutoutAssetHash),
         createInfer: createFinishInferV1({ workerUrl: '/w.mjs', modelFiles: { a: 'b' }, modelHash, cutoutOf: (id, st) => cutouts.get(id + '|' + st) ?? null, WorkerCtor: fakeWorker(log, answer) }) });
       return { route, log, m }; };
-    const good = make('identity');
+    const good = make('clamped');
     expect(await good.route.enqueue(crab())).toBe('retained');
     expect(good.log.jobs).toHaveLength(1); expect(good.log.jobs[0]).toMatchObject({ stage: 'creature-finish-v1', modelFiles: { a: 'b' } }); expect(good.log.detached).toEqual([true, true]);
     const f = await good.route.lookup(crab()), shipped = await decodePng(read(new URL(CARD_ARCHETYPES.find((a) => a.earthName === 'Crab')!.dir + 'card/master-512.png', REPO)));
     expect(Buffer.from(f!.rgba).equals(Buffer.from(shipped.rgba))).toBe(true);
-    for (const answer of ['error', 'short'] as const) { const bad = make(answer); expect(await bad.route.enqueue(crab())).toBe('fallback'); expect(bad.m.rows.size).toBe(0); }
+    for (const answer of ['error', 'short', 'wrong-type'] as const) { const bad = make(answer); expect(await bad.route.enqueue(crab())).toBe('fallback'); expect(bad.m.rows.size).toBe(0); }
     const wrongModel = make('identity', 'f'.repeat(64)); expect(await wrongModel.route.enqueue(crab())).toBe('fallback'); expect(wrongModel.log.jobs).toHaveLength(0);
-    await expect(fitFor({ _earthName: 'Civet', kingdom: 'fauna', seed: 1 })).rejects.toMatchObject({ code: 'not-in-library' });
+    await expect(fitFor({ _earthName: 'Civet', kingdom: 'fauna', seed: 1 })).resolves.toMatchObject({ creatureId: 'civet' }); // C46 now publishes its genuine master + reviewed labels.
   }, 240_000);
   it('STAGE: a retained finish becomes Codex\'s admitted finished-atlas capability for the real pinned Crab rig (identity finish projects to the original atlas) and loads through the pinned loader; no retained finish, or another creature\'s, gives null (controls)', async () => {
     const pin = getBattle2MasterPin('crab')!, readRepo = (p: string) => read(new URL(p, REPO));

@@ -805,3 +805,8 @@ motion. Runtime output is unchanged (13-module parity receipt in C24 audit).
 ### Recovered selected-detail presentation — matches code as of 2026-09-26
 
 living-species-preview.ts owns bounded whole-image breath/sway/pulse/drift for the selected Compendium portrait. It reuses the complete-genome SpeciesArtLoader portrait lease, creates no extra texture/canvas, and does not modify paint/anatomy/rig/genome/save. Hidden state pauses; reduced motion draws one static frame; Back/Close/replacement releases the ticker and image. The generated creature rig pipeline remains a separate priority.
+
+
+### Automatic tail ownership candidates — matches tooling as of 2026-09-26
+
+The audit-only contour closure in `audits/G1_TAIL_REPAIR_20260926` repairs Eagle and Sandpiper static actions and full presentations with original pixels and landmarks unchanged. Eagle remains semantically UNRESOLVED; Sandpiper passes the current native stage diagnostic at4×CPU with0/0 refusals across780 frames,7ms CPU p95 and13.206083s encoded film; this is not visual-quality or physical-phone acceptance. Grouse, Sparrow, Mongoose and Tapir retain their documented failures. This operation is not adopted before G1 coverage admission; that requires the full same-policy mutation battery. The shared offline `leaf-growth.mjs` helper now returns null for an empty mask instead of a whole-canvas polygon, with positive and intentionally broken controls. Six fresh stride/tail paintings in `G2_STRIDE_PILOT_20260926` receive unchanged author evaluation: five refusals, one Tapir static failure, no new admission.

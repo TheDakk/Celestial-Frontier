@@ -32,10 +32,10 @@ export interface CreatureFinishEngineOptionsV1 {
 const hash=(bytes:Uint8Array)=>new LocalModelSha256V1().update(bytes).digestHex();
 const textHash=(text:string)=>hash(new TextEncoder().encode(text));
 const same=(a:Uint8Array,b:Uint8Array)=>a.length===b.length&&a.every((v,i)=>v===b[i]);
-const isHash=(s:string)=>/^[a-f0-9]{64}$/.test(s);
+const isHash=(s:string)=>typeof s==='string'&&/^[a-f0-9]{64}$/.test(s);
 const MAX_PIXELS=2048*2048,MAX_PNG=8*1024*1024,MAX_BINDING=16*1024*1024;
 function validateShape(s:CreatureFinishSourceV1):void {
- if(!s.individualId||s.individualId.length>512||!s.visualKey||s.visualKey.length>2048)throw Error('individual identity');
+ if(typeof s.individualId!=='string'||!s.individualId||s.individualId.length>2048||typeof s.visualKey!=='string'||!s.visualKey||s.visualKey.length>2048)throw Error('individual identity');
  if(![s.recordRecipeHash,s.modelHash,s.settingsHash,s.cutoutAssetHash,s.labelsHash,s.bindingHash].every(isHash))throw Error('source identity');
  if(!Number.isSafeInteger(s.seed)||s.seed<0||s.seed>0xffffffff)throw Error('seed');
  if(!Number.isSafeInteger(s.width)||!Number.isSafeInteger(s.height)||s.width<1||s.height<1||s.width*s.height>MAX_PIXELS)throw Error('dimensions');
