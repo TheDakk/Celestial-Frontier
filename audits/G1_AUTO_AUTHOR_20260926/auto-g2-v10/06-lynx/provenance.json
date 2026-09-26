@@ -1,0 +1,114 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "06-lynx",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "17a2640ae3cf7e98cacf844925cfed0dca4508d396e48c638a2545b651eeeffa",
+ "subjectSourceSha256": "4132ec3be0f4903c3bb3c14e49bf5d88e964804741cc5aebe7980b5a5f24c62d",
+ "identity": {
+  "name": "Lynx",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Lynx\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3915197780\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "seed": 3915197780,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wolf",
+  "authoringSha256": "d7904228473f2b860116b8f91d2a42717721287e86534025f6b765121aa52abc",
+  "masterSha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43"
+ },
+ "habitat": {
+  "profileId": "felid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "74c48486113be3ee431e8a73d1f96d202de2a5c22bc39d2661f21510abbb4a65",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group felid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0873,
+     "class": "top",
+     "attach": {
+      "x": 363.7,
+      "y": 117.2,
+      "relX": 0.89,
+      "relY": 0.24
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0284,
+     "class": "rear",
+     "attach": {
+      "x": 62.6,
+      "y": 180,
+      "relX": 0.11,
+      "relY": 0.45
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0862,
+     "class": "limb-down",
+     "attach": {
+      "x": 83.8,
+      "y": 267.6,
+      "relX": 0.17,
+      "relY": 0.74
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0674,
+     "class": "limb-down",
+     "attach": {
+      "x": 155.5,
+      "y": 270,
+      "relX": 0.35,
+      "relY": 0.75
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0912,
+     "class": "limb-down",
+     "attach": {
+      "x": 307.7,
+      "y": 298.6,
+      "relX": 0.75,
+      "relY": 0.85
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "wolf",
+   "byClass": {
+    "top": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "id": "09-badger",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 10% paint (reference 52%)"
+ ],
+ "semanticPresence": null
+}

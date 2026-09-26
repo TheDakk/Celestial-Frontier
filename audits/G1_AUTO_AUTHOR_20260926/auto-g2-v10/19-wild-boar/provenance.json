@@ -1,0 +1,147 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "19-wild-boar",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "23e2181e9e811049cba56ee4c52530658c45ebd6c5600eb56a744e0f4a5dc038",
+ "subjectSourceSha256": "7eca5771a72b0551799b5f73b5105989069db5c82d93c0465fb872248671aade",
+ "identity": {
+  "name": "Wild Boar",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wild Boar\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"903932006\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 903932006,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wild-horse",
+  "authoringSha256": "3fe23c7c93b2c88c5bdc0e04213468c64b26517662d8865102e802f58c9a4301",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+ },
+ "habitat": {
+  "profileId": "suid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "8d8550f943318af12d90e04264eb87247c2a8036fc8d377baf85b7a225002490",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group suid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0048,
+     "class": "top",
+     "attach": {
+      "x": 260.5,
+      "y": 84,
+      "relX": 0.62,
+      "relY": 0
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.004,
+     "class": "top",
+     "attach": {
+      "x": 337.5,
+      "y": 106,
+      "relX": 0.81,
+      "relY": 0.09
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0084,
+     "class": "top",
+     "attach": {
+      "x": 46.7,
+      "y": 194.2,
+      "relX": 0.09,
+      "relY": 0.45
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0123,
+     "class": "limb-down",
+     "attach": {
+      "x": 371.1,
+      "y": 212.7,
+      "relX": 0.89,
+      "relY": 0.52
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.044,
+     "class": "limb-down",
+     "attach": {
+      "x": 61.9,
+      "y": 269.3,
+      "relX": 0.13,
+      "relY": 0.75
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0391,
+     "class": "limb-down",
+     "attach": {
+      "x": 119.5,
+      "y": 256,
+      "relX": 0.27,
+      "relY": 0.7
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.039,
+     "class": "limb-down",
+     "attach": {
+      "x": 232.1,
+      "y": 261.9,
+      "relX": 0.55,
+      "relY": 0.72
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.0382,
+     "class": "limb-down",
+     "attach": {
+      "x": 274.5,
+      "y": 262,
+      "relX": 0.65,
+      "relY": 0.72
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 3,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Camel",
+  "family": "quadruped",
+  "species": {
+    "name": "Camel",
+    "aspect": 1.35,
+    "headFrac": 0.24,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "hump on the back",
+      "long curving neck held high",
+      "very long knobbly-kneed legs"
+    ],
+    "note": "Generic name read as a representative dromedary. Taller than most people draw: the leg mass is roughly half the total height."
+  },
+  "genome": {
+    "seed": 3197228666,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 0,
+    "body": 15,
+    "loco": 11,
+    "trait": 4,
+    "size": 4,
+    "diet": 5,
+    "head": 5,
+    "limbs": 2,
+    "skin": 6,
+    "tail": 1,
+    "pattern": 2,
+    "eyes": 3,
+    "behavior": 1,
+    "habitat": 6,
+    "detail": 4,
+    "accent": 12,
+    "temper": 9,
+    "sense": 1,
+    "repro": 3,
+    "life": 2,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Camel"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Camel\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"3197228666\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"4\"]]]]",
+  "index": 231
+}

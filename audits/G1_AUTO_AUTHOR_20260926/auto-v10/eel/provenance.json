@@ -1,0 +1,92 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "eel",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "77890d5b4b55daf076bfc6ca2da0b03fce16930feaca08223bc2d0822e2571cb",
+ "subjectSourceSha256": "f0221ad6aea42396d59f6ab3f186e58ed9753287b29f6978443cad38b9d64f70",
+ "identity": {
+  "name": "Eel",
+  "family": "serpent",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Eel\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"2072871458\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "seed": 2072871458,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "python",
+  "authoringSha256": "3a6a75b2524550a4d80a2fabba037ba7f1d4ae2ec3502b42ed11f7c66d8fc5c9",
+  "masterSha256": "d0a777d5186a6787461d795b41b34b8ce4569af1efd10b14f98524fc92ef8cae"
+ },
+ "habitat": {
+  "profileId": "eel",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d108e81464489f0db6b6053fe0baa8f671cff71d21fe2f84c97f03ee71d0ed0c",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group eel (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0836,
+     "class": "rear",
+     "attach": {
+      "x": 89.2,
+      "y": 223.2,
+      "relX": 0.01,
+      "relY": 0.66
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0359,
+     "class": "front",
+     "attach": {
+      "x": 346,
+      "y": 214.5,
+      "relX": 1,
+      "relY": 0.49
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0054,
+     "class": "limb-down",
+     "attach": {
+      "x": 317.5,
+      "y": 233,
+      "relX": 0.89,
+      "relY": 0.85
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "python",
+   "byClass": {
+    "top": 1,
+    "rear": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
