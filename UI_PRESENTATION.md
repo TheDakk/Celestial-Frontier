@@ -19,6 +19,13 @@ rest of this doc was not re-verified in that refresh.
 - **Heat is a proxy.** iOS exposes no temperature, so the page judges 30 s windows of the sustained heaviest pair by the same pacing budget and reports the p95 drift.
 - **Memory is reported honestly.** The JS heap is shown only where `performance.memory` exists; iOS Safari has none, so it prints "unavailable" and never an estimate.
 
+## v2 localization scaffolding (A6) — matches code as of 2026-09-26
+- **Pattern** (`i18n.ts`): each surface owns an English source-string catalog (text plus `title` / `aria-label` / `placeholder`). `localizeElementV1` swaps the strings after render.
+- **Settings is the first surface** (`SETTINGS_CATALOG_V1`, 50 strings). Its localizer is registered through `panels.ts` `setPanelLocalizerV1`, and only for a non-English `?locale=`, so English stays byte-identical.
+- **Locales:** `en`, and the pseudo-locale `qps-ploc`.
+- **Fallbacks:** a missing translation or an uncatalogued string falls back to English with a dev warning. `data-l10n-skip` guards player data.
+- The pixel fit of longer strings is still to be run in a real browser (see `audits/H1_L10N_20260926/README.md`).
+
 ## v2 folded survey card (D18) — matches code as of 2026-09-25
 
 - **An option, off by default.** Settings → "Folded survey card" (`#setfold`). Nick decided on 2026-09-25 that the default stays the flat card, which is the card uilayout and the Slice/Glass instruments measure.

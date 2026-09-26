@@ -45,6 +45,7 @@ import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-b
 import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './recipe-pin.js';
 import { mirrorCompanionCodexXpV1 } from './companion-codex-mirror.js';
 import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
+import { localeFromSearchV1, localizeElementV1, SETTINGS_CATALOG_V1 } from './i18n.js';
 import { freshExpeditionPayloadV1 } from './expedition-reset.js';
 import { TooltipOwnerV1 } from './tooltips.js';
 import {
@@ -63,7 +64,7 @@ import {
   writeAudioAccessibilityPrefsV1,
 } from './audio-accessibility-prefs.js';
 import {
-  registerPanel, fillPanel, openPanel, closePanels, openPanelId,
+  registerPanel, fillPanel, openPanel, closePanels, openPanelId, setPanelLocalizerV1,
   createPanelOpenController,
 } from './panels.js';
 import { capturePanelRefillFocus } from './panel-refill-focus.js';
@@ -4492,6 +4493,10 @@ registerPanel({
 });
 registerPanel({ id: 'atlas', el: document.getElementById('atlaspanel')!, btns: [document.getElementById('dockatlas'), document.getElementById('railatlas')], onOpen: () => { fillAtlas(); gameEvent('atlas-open', { open: true }); } });
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
+// A6 localization scaffolding (i18n.ts): Settings is the first extracted surface. Only a non-English `?locale=` registers a localizer; the
+// default game never walks or rewrites the panel (English is the identity).
+{ const uiLocale = localeFromSearchV1(location.search);
+  if (uiLocale !== 'en') setPanelLocalizerV1('set', (el) => { localizeElementV1(el, SETTINGS_CATALOG_V1, uiLocale, import.meta.env.DEV ? (m) => console.warn(m) : undefined); }); }
 registerPanel({ id: 'guide', el: document.getElementById('guidepanel')!, btns: [document.getElementById('dockguide')], onOpen: fillGuide });
 let localAiGame: LocalAiGameV1 | null = null;
 let mountedLocalAiOriginal: AiLandfallOriginalV1 | null = null;

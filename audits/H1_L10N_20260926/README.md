@@ -48,5 +48,38 @@ Branch `claude/h1-probe-l10n` from `832dc18b`.
 
 These numbers gate D6 (battle2 as the default) and the Phase 9 budgets. The probe changes no budget.
 
+## 2. A6 localization scaffolding: Settings, the first extracted surface
+
+**Pattern** (`port/v2/apps/game/src/i18n.ts`): source-string catalogs, gettext-style.
+- Each surface owns one catalog of its exact English strings: visible text plus `title` / `aria-label` / `placeholder`.
+- A locale maps each source string to its translation.
+- After the surface renders its unchanged English markup, `localizeElementV1` swaps every catalogued string once.
+- **English is the identity.** No localizer is registered unless `?locale=` names a non-English locale (`panels.ts` `setPanelLocalizerV1`, registered by `main.ts` behind that check). The default game is therefore byte-identical by construction, and `fillSettings` itself is not edited.
+- **Fallbacks:** a missing translation falls back to English with a dev warning. An uncatalogued string is left as rendered and warned the same way. Player data is marked `data-l10n-skip` and never touched.
+
+**Catalog and locales:**
+- `SETTINGS_CATALOG_V1` holds all 50 strings the Settings template renders (collected by rendering the exact shipped `fillSettings`).
+- Locales: `en`, and `qps-ploc`, a pseudo-locale: accented, about 40% longer and bracketed, so a missed string or a clipped control is obvious.
+
+**Tests** (`port/v2/tests/l10n-settings.test.ts`, 4), all on the exact shipped `fillSettings` in JSDOM:
+- **Completeness in both directions:** every rendered string is catalogued, and every catalogued string is rendered. Control: a catalog missing one string is caught.
+- **English:** byte-identical.
+- **Pseudo-locale:**
+  - every catalogued string is translated;
+  - the markup is structurally identical (the same elements, ids, `data-sel`, pressed states, classes and hidden flags);
+  - the localized Folded survey card switch still lands its press.
+- **Fallback warnings,** and the `data-l10n-skip` guard.
+
+**Not proven here:** JSDOM cannot lay out text, so the pixel fit of the ~40% longer strings needs a real-browser run: the uilayout harness or the dev URL with `?locale=qps-ploc`, then open Settings. The Settings rows use the panel's existing wrapping rules; nothing was restyled.
+
+**Extending it:**
+1. Collect the surface's rendered strings, as the test does.
+2. Add a `<SURFACE>_CATALOG_V1`.
+3. Register the panel's localizer, or call `localizeElementV1` after the surface renders.
+4. Copy the four tests.
+
+The next surfaces are the explorer-name and nameplate rows inside Settings (they have their own owners), then the Guide and the Compendium. Real translations come after that; adding a locale is one table.
+
 ## Proposed release bullets (for Codex's batched C17/D19 re-measure; the sealed inventory is not edited here)
+- **Under the Hood:** "🌐 READY FOR OTHER LANGUAGES: the Settings panel now draws its words from a translation table (English unchanged); more screens follow."
 - **Under the Hood:** "📱 DEVICE CHECK: a hidden page (?deviceProbe=1) measures how smoothly the painted battles run on your phone, over a longer stretch as it warms up, and what the painted art keeps in memory, and gives you one block to copy. It sends nothing anywhere."
