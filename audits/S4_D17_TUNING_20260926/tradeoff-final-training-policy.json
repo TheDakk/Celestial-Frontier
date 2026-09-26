@@ -1,0 +1,132 @@
+{
+  "epoch": "training-07-tradeoff-final",
+  "source": "same exact encounter source as integrated 2fae1e73",
+  "count": 128,
+  "seedBase": 50000000,
+  "poolSize": 50000,
+  "careFed": [
+    0,
+    10,
+    20,
+    40,
+    60
+  ],
+  "partyBands": [
+    [
+      0.6,
+      0.8
+    ],
+    [
+      0.7,
+      0.9
+    ],
+    [
+      0.8,
+      1
+    ]
+  ],
+  "soloBand": [
+    0.9,
+    1.1
+  ],
+  "forecastSeeds": 16,
+  "planning": "best expected outcome on fixed independent forecast seeds with frozen actual stats; never sees the actual genome RNG seeds",
+  "command": "oracle upper bound retained separately; not a learned human-play minimum",
+  "candidates": [
+    {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.65,
+        "taken": 0.592,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.64,
+        "dodge": 0.32
+      }
+    },
+    {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.65,
+        "taken": 0.594,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.64,
+        "dodge": 0.32
+      }
+    },
+    {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.65,
+        "taken": 0.596,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.64,
+        "dodge": 0.32
+      }
+    },
+    {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.65,
+        "taken": 0.592,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.66,
+        "dodge": 0.32
+      }
+    },
+    {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.65,
+        "taken": 0.594,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.66,
+        "dodge": 0.32
+      }
+    },
+    {
+      "press": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "guard": {
+        "dealt": 0.65,
+        "taken": 0.596,
+        "openerBlunt": 0.25
+      },
+      "evade": {
+        "dealt": 0.66,
+        "dodge": 0.32
+      }
+    }
+  ],
+  "phase": {
+    "atFraction": 0.5,
+    "dealt": 1.02,
+    "taken": 0.98
+  }
+}

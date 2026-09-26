@@ -1,0 +1,11 @@
+file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/S4_D17_TUNING_20260926/train-population.mjs:15
+const choose=(min,max,index,banned=[])=>{const eligible=pool.filter(p=>p.power>=min&&p.power<=max&&!banned.includes(p.genome.seed));if(eligible.length<3)throw Error('empty readiness band');return eligible[index%eligible.length];};
+                                                                                                                                                               ^
+
+Error: empty readiness band
+    at choose (file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/S4_D17_TUNING_20260926/train-population.mjs:15:160)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/S4_D17_TUNING_20260926/train-population.mjs:22:280
+    at Array.from (<anonymous>)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/S4_D17_TUNING_20260926/train-population.mjs:22:160
+
+Node.js v26.9.0

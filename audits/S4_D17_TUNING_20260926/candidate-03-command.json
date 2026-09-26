@@ -1,0 +1,14 @@
+[
+  {
+    "kind": "guardian",
+    "auto": 252,
+    "command": 345,
+    "edge": 18.1640625
+  },
+  {
+    "kind": "titan",
+    "auto": 338,
+    "command": 435,
+    "edge": 18.9453125
+  }
+]
