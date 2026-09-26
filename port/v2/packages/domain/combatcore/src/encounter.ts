@@ -6,13 +6,13 @@
    the player's next decision is supplied. The result is a PURE function of (plan, decisions): a reload re-simulates to the same Break,
    and the same plan always gives the same fight (no attempt counter, no reroll).
 
-   PARITY LAW: with the Guardian phase OFF, one fighter + Balanced + Auto reproduces the verbatim v1.8.9 `runDuel` exactly (winner, HP, the whole log): the same
+   PARITY LAW: one fighter + Balanced + Auto reproduces the verbatim v1.8.9 `runDuel` exactly (winner, HP, the whole log): the same
    seeds, the same RNG draws in the same order, the same 26 half-turn cap and tie coins. A leg is `runDuel`'s loop with two additions
    that draw no randomness: a carried defender HP and the Break hook. Balanced adds no ability fields, so it draws nothing extra.
    `test/encounter.test.ts` holds that control over the golden fixture pairs. `combatcore.verbatim.js` is never edited.
 
-   S4 candidate13 is frozen for one production-route held-out evaluation, not admitted.
-   Training-derived hooks are benchmark hypotheses, not shipped dossier coverage. Command has a minimum 5pp edge target. */
+   Stance numbers are PLACEHOLDERS for Codex's S4 balance instrument (one right stance per threat, none best everywhere, and
+   Command's best swap only a small edge over Auto's own swap). */
 import { hashInt, mulberry32 } from '@cf/domain-rand';
 import { battleStats, type BattleStats } from './combatcore.verbatim.js';
 
@@ -24,17 +24,17 @@ export const ENCOUNTER_LOW_HP_FRACTION_V1 = 1 / 3;
 
 export type EncounterStanceV1 = 'balanced' | 'press' | 'guard' | 'evade';
 export const ENCOUNTER_STANCES_V1 = Object.freeze(['balanced', 'press', 'guard', 'evade'] as const);
-/** S4 candidate13 evaluation freeze, not admitted: multipliers on the fighter's own ability hooks. */
+/** Placeholder tuning (S4 owns the numbers): multipliers on the fighter's own ability hooks. */
 export const ENCOUNTER_STANCE_TUNING_V1 = Object.freeze({
-  press: Object.freeze({ dealt: 1.42, taken: 1.7 }),
-  guard: Object.freeze({ dealt: 0.67, taken: 0.635, openerBlunt: 0.25 }),
-  evade: Object.freeze({ dealt: 0.7, dodge: 0.32 }),
+  press: Object.freeze({ dealt: 1.15, taken: 1.10 }),
+  guard: Object.freeze({ dealt: 0.90, taken: 0.85, openerBlunt: 0.5 }),
+  evade: Object.freeze({ dealt: 0.90, dodge: 0.08 }),
 });
 
 /** §20 Guardian phase (N1 §4.3, S7): when a Guardian or Titan first falls to half health it changes to a telegraphed second behavior.
  *  The change is announced at a Break BEFORE it applies (Hold / Swap / Withdraw), then lasts for the rest of the fight, across legs.
- *  S4 candidate13 evaluation freeze, not admitted: the phased defender hits 8% harder and takes 20% less. */
-export const ENCOUNTER_GUARDIAN_PHASE_V1 = Object.freeze({ atFraction: 0.5, dealt: 1.08, taken: 0.8 });
+ *  Placeholder numbers (one constant; Codex's S4 instrument owns them): the phased defender hits 20% harder and takes 10% less. */
+export const ENCOUNTER_GUARDIAN_PHASE_V1 = Object.freeze({ atFraction: 0.5, dealt: 1.2, taken: 0.9 });
 export type EncounterDefenderKindV1 = 'fauna' | 'guardian' | 'titan';
 /** Whether a defender of this kind has the phase change (Guardians and Titans only). */
 export function encounterHasGuardianPhaseV1(kind: string | undefined | null): boolean { return kind === 'guardian' || kind === 'titan'; }

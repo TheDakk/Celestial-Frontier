@@ -321,3 +321,21 @@ training-bundle duration/wound mutants (710/710 and199/710 refused; restored0). 
 and signed clean freeze precede one untouched evaluation. Do not wire13 until measured green;
 on refusal Codex restores runtime tuning and stops at the measurement gate. Candidate03 stays
 rejected. New mission/Outposts/Compendium work follows after S4, I5 last. No Nick relay needed.
+
+## S4 candidate13 REJECTED — restoration supersedes evaluation freeze59b09881
+
+One held-out attempt on59b09881(G) exited1: ENOSPC writing Titan solo evidence. Retained
+prefix already fails normal8.69140625pp (<10) and solo Guardian−5.56640625pp (outside±5).
+Incomplete run, no certificate;90m/100m consumed, no retry/reuse. Packet and file hashes:
+`audits/S4_PRODUCTION_EPOCH_20260926/evaluation13-refusal.json`. Runtime encounter.ts restored
+BYTE-FOR-BYTE to c17906b2; Recovery never changed. Do NOT merge the intermediate freeze alone
+or wire13/03. Consume the restoration checkpoint plus evidence.504 Node tools/5471 Vitest
+pass, standingI5 only; all7 manual owners pass. Instrument39 controls and actual Recovery
+mutations pass. No admission/push/hosted claim. Nick's explicit measurement gate stops this
+run; remaining queue pending. C33/D21 and your76689959 read, not merged. No Nick relay needed.
+
+C34 read at batch end. New vision/dev0b4c8dca, proposed release/Guide additions, module pins,
+phone audio cost, missions/Outposts replacement numbers and latest-Compendium I5 are recorded
+for the next integration; no historical S4 evidence rebound. Disk-full also blocked commit
+preparation; only this run’s ignored reproducible app dist was removed for space. Evidence
+retained; restoration67/67 combat tests and root validation pass.

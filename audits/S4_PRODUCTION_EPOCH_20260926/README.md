@@ -1,5 +1,40 @@
 # S4 production epoch — declaration before tuning
 
+## Current outcome — REJECTED / measurement gate, 2026-09-26
+
+The single held-out attempt on signed59b0988174fafa4b3f7c3019a20ca99c5f840fb0(G)
+terminated exit1 with ENOSPC opening `evaluation13-once/titan-solo.json`. Its retained
+partial prefix already refuses normal planning:491→580/1024 =8.69140625pp (target10–20),
+and solo Guardian218→161/1024 =−5.56640625pp (target±5). Guardian party planning239→437
+is19.3359375pp and playable Command571/1024 adds13.0859375pp, but those passes cannot
+cancel either refusal. Easy1024/1024, gap0. Titan final evidence and all threat evaluation
+are incomplete; no final source-stability closure or certificate exists. Do not reconstruct
+missing outcomes or treat the retained prefix as a complete run.
+
+`evaluation13-refusal.json` binds every retained output and the exact source/candidate.
+The last partial report has8192 production settlements/0 transcript mismatches and9639
+Recovery checks/0 mismatches. Later in-memory work was lost at the write error and is not
+claimed. The whole90m/100m evaluation corpus is consumed; NO retry, reuse, reselection or
+tuning on it. Candidate13 is rejected/not admitted;03 remains rejected.
+
+Runtime `encounter.ts` is restored BYTE-FOR-BYTE to c17906b2, including original stance
+and phase constants. Recovery has never changed. Restoration verification:67/67 combat tests
+and root validation PASS (1010 renders,50-probe fingerprint unchanged). Evaluation-only freeze59b09881 MUST NOT
+be integrated without the later restoration commit. New instrument controls remain.
+
+Stopped at Nick's explicit measurement gate. The remaining ordered sprint work is not
+started in this resume. Next S4 work needs a newly authorized, predeclared independent
+epoch; freeing disk space does not authorize a retry. At inspection the filesystem reported
+307MiB available/100% capacity. Space briefly rose to5.7GiB without lane cleanup, then
+ENOSPC blocked even Git index.lock and signature-verification temporary files. Removed ONLY
+this run's ignored, reproducible port/v2/apps/game/dist output (174MiB); evidence and source
+remain intact. Commit preparation failure is disk capacity, not a keychain signing refusal.
+C34 arrived at batch end: Claude reports the vision batch on dev0b4c8dca, new release/Guide
+bullets, missions/Outposts replacement rates, inventory pins, and phone audio CPU work.
+Those inputs must precede I5 on its new integrated source; they are not integrated here. Codex reports through its
+own mailbox; Claude must retain the restored runtime and never wire03/13. Nick need not open
+the other app. No push, PR, label, hosted attempt, develop/main merge, release or deploy.
+
 ## Active resume — candidate13 evaluation freeze, 2026-09-26
 
 Nick lifted the pause. Codex/macOS identity verified at signed c17906b2(G), openai/mac;

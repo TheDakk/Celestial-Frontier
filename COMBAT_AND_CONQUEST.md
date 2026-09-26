@@ -674,13 +674,14 @@ would have computed anyway.
 > the work that produces them.** If the key needs the stats, the stats must be hoisted to the caller
 > or the memo saves nothing on the hit path.
 
-## S4 production evaluation freeze — matches code as of 2026-09-26
+## S4 production evaluation refusal — matches code as of 2026-09-26
 
-Candidate13 is applied ONLY for the declared one-shot held-out production evaluation; it is
-not admitted. Press dealt/taken1.42/1.7; Guard dealt/taken/opener0.67/0.635/0.25;
-Evade dealt/dodge0.7/0.32; Guardian phase at half health dealt/taken1.08/0.8.
-Recovery remains600000 active ms and zero added defeat wound. On refusal restore the prior
-runtime tuning. `audits/S4_PRODUCTION_EPOCH_20260926/README.md` owns the current status,
+Candidate13 is REJECTED/not admitted. The one held-out attempt stopped on ENOSPC while
+writing Titan evidence, after observing normal planning8.69140625pp (<10) and solo
+Guardian−5.56640625pp (outside±5). It is incomplete, not a certificate; its corpus is consumed.
+Runtime encounter source was restored byte-for-byte to c17906b2: Press dealt/taken1.15/1.10;
+Guard dealt/taken/opener0.90/0.85/0.5; Evade dealt/dodge0.90/0.08; Guardian phase at half
+health dealt/taken1.2/0.9. Recovery stays600000 active ms and zero added defeat wound. `audits/S4_PRODUCTION_EPOCH_20260926/README.md` owns the current status,
 training-only selection, exact source/candidate authority and production-route controls.
 `s4-production.mjs` counts real settlement outcomes and checks decisive transcripts, phase
 dispatch, phase-off parity and exact fallen/swapped Recovery. It is a fixed two-world,

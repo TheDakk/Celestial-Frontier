@@ -39,16 +39,25 @@ Candidate03 is REJECTED, never wired. Its sole held-out run on63e61b5f failed no
 
 Claude consumes signed packets from the shared object store and owns cards/stage/wiring/picker/republishing. Codex owns art/rig/instruments/rates. Nick need not open another app to relay. Sole standing I5 red does not authorize hosted work or battle2 default; D21 lifts the device wait for development; the certificate still gates production.
 
-Current state: **S4 candidate13 evaluation freeze in progress**. Nick lifted the pause. Read
-`audits/S4_PRODUCTION_EPOCH_20260926/README.md` and `selection.json`.13 selected from retained
-training only, constants staged for evaluation but NOT admitted.39 contract controls and
-actual Recovery mutations pass. Held-out90m/100m remains untouched until signed clean freeze
-and current battery. One run only; on refusal retain evidence, restore runtime constants and
-stop at the measurement gate. Candidate03 remains rejected. Recovery unchanged.
+Current state: **STOPPED at the S4 measurement gate**, not a user-requested pause.
+Candidate13 was frozen on signed59b09881(G), then its ONE held-out attempt exited1 with
+ENOSPC while writing Titan evidence. The retained prefix already refuses normal planning
+8.69140625pp (<10) and solo Guardian−5.56640625pp (outside±5). No complete certificate;
+90m/100m is consumed and MUST NOT be retried/reused.13 and03 are rejected/not admitted.
+Read `audits/S4_PRODUCTION_EPOCH_20260926/README.md` and `evaluation13-refusal.json`.
 
-Claude's current observed signed76689959/C33/D21 were read, not merged during this epoch.
-D21 lifts the iPhone wait for development battle2; production still needs certification.
-Missions/Outposts placeholders and changed Compendium must be integrated after S4 and before
-I5. Remote last verified6cbeefe0; no push/hosted/PR/release/deploy in this resume yet.
-Codex completes the S4 freeze/once-only evaluation; Claude must not wire training-only
-candidate13. Mailbox coordination uses shared signed commits; Nick need not open another app.
+Runtime encounter.ts restored byte-for-byte to c17906b2; Recovery never changed.39 new
+instrument controls pass; actual duration/wound mutations refused710/710 and199/710.
+Freeze battery:504 Node-tool and5471 Vitest passes; only standingI5 producer mismatch.
+All seven manual owners and root validation pass. Restoration checks are in the same packet.
+
+Next Codex: report the refusal and await a newly authorized independent epoch; no tuning
+against consumed seeds. Disk capacity must be resolved before new bulky measurements.
+Remaining ordered work above is pending, including latest signed Claude76689959 integration,
+missions/Outposts numbers and finalI5. C34 arrived at batch end: vision batch dev0b4c8dca,
+additional Guide/release bullets and inventory pins, phone audio CPU (~37ms desktop slices),
+and finalI5 on the newly integrated Compendium head. C33/D21 lifts device waiting for DEVELOPMENT battle2;
+production remains gated. Next Claude: consume the restoration/evidence checkpoint from the
+shared store, NEVER wire the intermediate59b09881 candidate or candidate03; keep its new
+vision work separate until integration. No Nick relay or other-app opening needed.
+Remote last verified6cbeefe0; no GitHub write/hosted/PR/release/deploy in this resume.
