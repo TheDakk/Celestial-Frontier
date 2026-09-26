@@ -263,17 +263,37 @@ export function refineChain(target, dt, landmarksPx, refLandmarks, chain) {
   return true;
 }
 
+/** Deterministic polygon repair: a warped polygon can cross itself (a thin tail or shin folded by the spline). At each crossing
+ * the ring splits into two loops and the larger-area loop is kept; repeated until simple. Geometry only, no anatomy decision. */
+export function untanglePolygon(P) {
+  const o = (p, q, r) => Math.sign((q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]));
+  const area = (Q) => { let s = 0; for (let i = 0; i < Q.length; i++) { const a = Q[i], b = Q[(i + 1) % Q.length]; s += a[0] * b[1] - b[0] * a[1]; } return Math.abs(s / 2); };
+  let ring = P.map((p) => [...p]), repairs = 0;
+  for (let guard = 0; guard < 64; guard++) { let hit = null; const n = ring.length;
+    for (let i = 0; i < n && !hit; i++) for (let j = i + 2; j < n; j++) { if (i === 0 && j === n - 1) continue; const a = ring[i], b = ring[(i + 1) % n], c = ring[j], d = ring[(j + 1) % n];
+      if (o(a, b, c) * o(a, b, d) < 0 && o(c, d, a) * o(c, d, b) < 0) { const den = (a[0] - b[0]) * (c[1] - d[1]) - (a[1] - b[1]) * (c[0] - d[0]), t = ((a[0] - c[0]) * (c[1] - d[1]) - (a[1] - c[1]) * (c[0] - d[0])) / den;
+        hit = { i, j, x: [Math.round((a[0] + t * (b[0] - a[0])) * 10) / 10, Math.round((a[1] + t * (b[1] - a[1])) * 10) / 10] }; break; } }
+    if (!hit) break; repairs++;
+    const A = [...ring.slice(0, hit.i + 1), hit.x, ...ring.slice(hit.j + 1)], B = [hit.x, ...ring.slice(hit.i + 1, hit.j + 1)];
+    ring = area(A) >= area(B) ? A : B; if (ring.length < 3) return { polygon: P, repairs: -1 }; }
+  return { polygon: ring, repairs };
+}
+
 /** Author one target from same-family references (and, for the verdict, the other families' references and the mirrored target).
  * `refs`: [{family, subjectId, rgba?, prepared, authoring, h}] ; returns {verdict, reasons, authoring, presence, evidence}. */
-export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0, counter = null, nudgeThinFrac = null, nudgeSkipChains = false }) {
+export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0, counter = null, nudgeThinFrac = null, nudgeSkipChains = false, requireCount = true, refRank = 0 }) {
   const same = refs.filter((r) => r.family === family), other = refs.filter((r) => r.family !== family);
   if (!same.length) return { verdict: 'REFUSE', reasons: ['no-reference: no other hand-authored subject of family ' + family], authoring: null };
-  const tr = same.map((r) => transferReference(target, r)).sort((a, b) => a.cost - b.cost), best = tr[0], reasons = [];
+  const trAll = same.map((r) => transferReference(target, r)).sort((a, b) => a.cost - b.cost), reasons = [];
+  // `refRank` > 0: author from the k-th best reference instead (a labelled fallback candidate); facing and family are judged on the
+  // painting's best match either way
+  if (refRank >= trAll.length) return { verdict: 'REFUSE', reasons: [`no-reference: no reference of rank ${refRank} (${trAll.length} same-family)`], authoring: null };
+  const tr = [trAll[refRank], ...trAll.filter((_, k) => k !== refRank)], best = tr[0], judge = trAll[0];
   // facing / family checks on the contour cost alone
   const mirrorBest = Math.min(...same.map((r) => cyclicDtw(r.desc, mirrored.desc).cost));
-  if (mirrorBest < best.cost * 0.85) reasons.push(`facing: the mirrored painting matches ${family} better (${mirrorBest.toFixed(4)} < ${best.cost.toFixed(4)})`);
+  if (mirrorBest < judge.cost * 0.85) reasons.push(`facing: the mirrored painting matches ${family} better (${mirrorBest.toFixed(4)} < ${judge.cost.toFixed(4)})`);
   const otherBest = other.length ? other.map((r) => ({ f: r.family, c: cyclicDtw(r.desc, target.desc).cost })).sort((a, b) => a.c - b.c)[0] : null;
-  if (otherBest && otherBest.c < best.cost * 0.7) reasons.push(`wrong-family: ${otherBest.f} matches clearly better (${otherBest.c.toFixed(4)} < ${best.cost.toFixed(4)})`);
+  if (otherBest && otherBest.c < judge.cost * 0.7) reasons.push(`wrong-family: ${otherBest.f} matches clearly better (${otherBest.c.toFixed(4)} < ${judge.cost.toFixed(4)})`);
   // landmarks: median over the best K references carrying the joint; contact endpoints snapped onto paint
   const top = tr.slice(0, topK), med = (vals) => { const s = [...vals].sort((a, b) => a - b); return s[(s.length - 1) >> 1]; };
   const landmarksPx = {};
@@ -284,7 +304,8 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
   for (const joint of Object.keys(landmarksPx)) { let p = snapToPaint(target.mask, target.w, target.h, landmarksPx[joint]); if (dt && !ridge.keep.has(joint)) p = climbToRidge(dt, target.w, target.h, p, R); landmarksPx[joint] = p.map((v) => Math.round(v * 10) / 10); }
   // optional chain refinement: each contact chain's knee/end placed along the painted leg's ridge path (reference bone fractions)
   const chainLog = []; if (chains?.length) { const dtc = dt ?? distanceTransform(target.mask, target.w, target.h);
-    for (const ch of chains) { const ok = refineChain(target, dtc, landmarksPx, best.ref.authoring.landmarksPx, ch); chainLog.push({ chain: ch.id, refined: ok }); }
+    const diagT = Math.hypot(target.box.w, target.box.h), snapOf = (j) => (j && rawLandmarks[j] && landmarksPx[j] ? +(Math.hypot(rawLandmarks[j][0] - landmarksPx[j][0], rawLandmarks[j][1] - landmarksPx[j][1]) / diagT).toFixed(4) : null);
+    for (const ch of chains) { const snap = { terminal: snapOf(ch.terminal), end: snapOf(ch.end) }; const ok = refineChain(target, dtc, landmarksPx, best.ref.authoring.landmarksPx, ch); chainLog.push({ chain: ch.id, refined: ok, snap }); }
     for (const j of Object.keys(landmarksPx)) landmarksPx[j] = landmarksPx[j].map((v) => Math.round(v * 10) / 10); }
   if (skeleton) return skeletonAuthor({ target, best, top, landmarksPx, rawLandmarks, graph: skeleton.graph, convention: learnConvention(same), reasons, family, id, habitat, materials, mirrorBest, otherBest, tr });
   let parts = best.parts.map((p) => ({ ...p, polygonPx: p.polygonPx.map(([x, y]) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10]) }));
@@ -301,6 +322,7 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
       for (let dy = -Rn; dy <= Rn + 1e-9; dy += stepN) for (let dx = -Rn; dx <= Rn + 1e-9; dx += stepN) { if (!dx && !dy) continue; const c = paintCoverage(target.mask, target.w, target.h, p.polygonPx.map(([x, y]) => [x + dx, y + dy])); if (c > bestC + 0.05) { bestC = c; bd = [dx, dy]; } }
       if (bd[0] || bd[1]) { nudged.push({ id: p.id, dx: Math.round(bd[0]), dy: Math.round(bd[1]), from: +base.toFixed(2), to: +bestC.toFixed(2) }); return { ...p, polygonPx: p.polygonPx.map(([x, y]) => [Math.round((x + bd[0]) * 10) / 10, Math.round((y + bd[1]) * 10) / 10]) }; }
       return p; }); }
+  const untangled = []; parts = parts.map((p) => { const u = untanglePolygon(p.polygonPx); if (u.repairs > 0) { untangled.push({ id: p.id, repairs: u.repairs }); return { ...p, polygonPx: u.polygon }; } return p; });
   // evidence from visible paint: every part must sit on paint; no large unclaimed painted region away from the body
   const coverage = parts.map((p) => ({ id: p.id, joint: p.joint, paint: paintCoverage(target.mask, target.w, target.h, p.polygonPx), area: polyArea(p.polygonPx) }));
   const refCoverage = new Map(best.ref.partPaint.map((c) => [c.id, c.paint]));
@@ -312,10 +334,13 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
     if (!nonRemainder.some((p) => inside(x + 0.5, y + 0.5, p.polygonPx))) { const far = Math.hypot((x - cx) / target.box.w, (y - cy) / target.box.h) > 0.28; if (far) unclaimed++; } }
   const refUnclaimed = best.ref.unclaimedFrac ?? 0;
   if (unclaimed / Math.max(1, paint) > Math.max(unexplainedFrac, refUnclaimed + 0.04)) reasons.push(`unexplained-anatomy: ${(100 * unclaimed / paint).toFixed(1)}% of the paint lies away from the body and in no part (reference ${(100 * refUnclaimed).toFixed(1)}%)`);
+  // presence is a measured claim (Codex G1 review): all-visible lists are emitted only when the independent visible-appendage
+  // counter ran on this painting and resolved without a refusal; without it the author refuses rather than assert maximum anatomy
+  if (requireCount && !inventory) reasons.push('presence-unmeasured: no independent visible-appendage count; an all-visible presence is never asserted without one');
   const authoring = { id, family, ...(habitat ? { habitat } : {}), landmarksPx, groundLineY: Math.min(0.999, Math.max(0.05, best.groundLineY)), materials, remainderPart: best.ref.authoring.remainderPart, parts,
-    coverage: { declarations: `G1 automatic authoring: landmarks = median of ${top.length} registered references; parts from ${best.ref.subjectId}. No hidden/folded inference; absent only by visible-paint evidence.`, sourceFacing: 'right', visualAcceptance: 'none — automatic' } };
+    coverage: { declarations: `G1 automatic authoring (automatic transfer, not observed): landmarks transferred from ${top.length === 1 ? 'the single best registered reference' : `the median of ${top.length} registered references`}; parts from ${best.ref.subjectId}. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.`, sourceFacing: 'right', visualAcceptance: 'none — automatic' } };
   return { verdict: reasons.length ? 'REFUSE' : 'ADMIT', reasons, authoring, presence: { schema: 'cf.anatomy-presence/v2', absent: [], hidden: [], folded: [] },
-    evidence: { schema: AUTO_AUTHOR_SCHEMA, chains: chainLog, nudged, inventory, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, costs: tr.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
+    evidence: { schema: AUTO_AUTHOR_SCHEMA, chains: chainLog, nudged, untangled, inventory, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, refRank, costs: trAll.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
 }
 
 /** Skeleton mode: parts grown from the TARGET's own paint by nearest bone of the placed skeleton, traced to polygons; the verdict is
@@ -339,6 +364,7 @@ function skeletonAuthor({ target, best, top, landmarksPx, rawLandmarks, graph, c
     else if (e.refShare > 0.004 && e.share < 0.2 * e.refShare) reasons.push(`missing-anatomy: part ${e.id} owns ${(100 * e.share).toFixed(2)}% of the paint (reference ${(100 * e.refShare).toFixed(2)}%)`); }
   const far = farFromBones(L, diag, 0.1), refFar = (isParent ? best.ref.skeleton?.farParent : best.ref.skeleton?.far) ?? 0;
   if (far > refFar + 0.03) reasons.push(`unexplained-anatomy: ${(100 * far).toFixed(1)}% of the paint lies far from every bone (reference ${(100 * refFar).toFixed(1)}%)`);
+  reasons.push('presence-unmeasured: the skeleton mode has no independent visible-appendage count; it is a diagnostic, never an admission');
   const authoring = { id, family, ...(habitat ? { habitat } : {}), landmarksPx, groundLineY: Math.min(0.999, Math.max(0.05, best.groundLineY)), materials, remainderPart: remainder, parts,
     coverage: { declarations: `G1 automatic authoring (skeleton parts): landmarks = median of ${top.length} registered references; parts grown from this painting by nearest bone; part inventory from ${best.ref.subjectId}. No hidden/folded inference.`, sourceFacing: 'right', visualAcceptance: 'none — automatic' } };
   return { verdict: reasons.length ? 'REFUSE' : 'ADMIT', reasons, authoring, presence: { schema: 'cf.anatomy-presence/v2', absent: [], hidden: [], folded: [] },
