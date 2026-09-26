@@ -57,7 +57,16 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
    - The five automatic fish **pass Codex's native harness** (0/0 refusals) but **fail visual review** (seam holes; Codex's weld doesn't transfer): C48.
    - Author-side levers are exhausted (v9–v11).
    - Next: re-score each new G2 batch with `run-auto.mjs --targets=`, and run the native harness on its passes.
-3. **G5:** card AND stage in the game behind `?finish=1`. The stage uses Codex's C45(a) composition: finished texture, then the individual's morph. Derived ownership evidence for Civet/Eel/Rat/Salamander awaits Codex's review (C46). **Blocked on D26** (Nick: the finisher's alpha = 255 interior rule excludes every 1254 master). Then a real-browser run on a local dev server with the model, and Nick's quality review before the flag is ever on by default.
+3. **G5:** card AND stage in the game behind `?finish=1`, proven in real browsers:
+   - the desktop model run on a crab (four bugs found; two fixed by Codex, two Codex tool fixes pending, C50);
+   - the phone delivery path PASS;
+   - the stage (picker) PASS with both fighters finished.
+
+   Open:
+   - the shipped-path rerun after C50;
+   - a pin-based identity to spare phone downloads (C51);
+   - **D26 (Nick)** for 1254² masters and a visible finish;
+   - Nick's quality review before the flag defaults on.
 4. Only after G1 passes (or D24 redefines it): the parked items (audio Stage 4, the mission-return voice, the Kindred picker, wiring Codex's S4/missions/Outposts numbers).
 
 **Nick: D26 blocks the 1254 finisher (recommended: approve alpha ≥ 250 for eligibility, with conditions).** Also D24 and D25 in `audits/MAILBOX/DECISIONS.md`. Also still open: the playtest checklist (`?deviceProbe=1`, `?audioReview=1`, a full journey, `?battle2=1&vs=…` pairs).
