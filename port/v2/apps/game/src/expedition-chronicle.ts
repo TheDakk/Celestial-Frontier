@@ -23,7 +23,7 @@ export const EXPEDITION_CHRONICLE_SCHEMA_V1 = 'cf-v2-expedition-chronicle/v1' as
 export const EXPEDITION_CHRONICLE_SECTION_LIMIT_V1 = 60;
 
 export type ExpeditionChronicleSectionIdV1 =
-  | 'battles' | 'discoveries' | 'prime-codex' | 'legacy-journal';
+  | 'battles' | 'discoveries' | 'prime-codex' | 'legacy-journal' | 'outposts';
 
 export interface ExpeditionChronicleEntryV1 {
   readonly id: string;
@@ -50,6 +50,8 @@ export interface ExpeditionChronicleProjectionInputV1 {
   readonly save: SaveStateV2;
   readonly ownership: OwnershipStateV1;
   readonly combat: CombatSettlementAuthorityV1;
+  /** D14: the fifth gallery — one exhibit per FINISHED outpost (from the verified `arc9.projects` carrier). Absent = no gallery. */
+  readonly outposts?: readonly Readonly<{ id: string; title: string; detail: string }>[];
 }
 
 export type ExpeditionChronicleProjectionOutcomeV1 =
@@ -198,6 +200,11 @@ function project(input: ExpeditionChronicleProjectionInputV1): ExpeditionChronic
         legacy,
         journalSlice.omitted,
       ),
+      ...(Array.isArray(input.outposts) ? [(() => {
+        const exhibits = input.outposts.filter((row) => safeText(row.id, 96) !== null && safeText(row.title, 160) !== null && safeText(row.detail, 300) !== null);
+        const slice = boundedAuthorityOrder(exhibits);
+        return section('outposts', 'Outposts', 'No outposts built yet.', slice.rows.map((row) => Object.freeze({ id: row.id, title: row.title, detail: row.detail, outcome: 'gain' as const })), slice.omitted);
+      })()] : []),
     ]);
     return Object.freeze({
       schema: EXPEDITION_CHRONICLE_SCHEMA_V1,
