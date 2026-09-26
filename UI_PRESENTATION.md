@@ -26,6 +26,21 @@ rest of this doc was not re-verified in that refresh.
 - **Fallbacks:** a missing translation or an uncatalogued string falls back to English with a dev warning. `data-l10n-skip` guards player data.
 - The pixel fit of longer strings is still to be run in a real browser (see `audits/H1_L10N_20260926/README.md`).
 
+## v2 landing vista view and postcard (D16 #9/#10; ledger A6 share card) — matches code as of 2026-09-26
+- **The pill row.** While a landing vista is on screen (surface, vista mounted and visible, not in Field Training), a pill row of real 44 px buttons sits over the stage, outside the survey card: **⛶ Vista** and **⇪ Postcard**. The measured default card is unchanged.
+- **The view.** ⛶ Vista sets `body.vista-view`: the survey card, panels and HUD chrome step aside, so the full-stage vista stands alone (v1's Full screen). Any tap steps back without acting on the world, and so does Escape (v1: while zoomed, a tap steps out).
+- **The postcard.** It is v1's exact composition: the vista, an 86 px band, the title in Georgia 26, the CF1 share code in 9 px mono, and the wordmark. The vista is capped at 1,600 px wide. The postcard is deterministic from the world: the vista is its deterministic render, and the text is its own name and code.
+- **Sharing.** The postcard goes to the Web Share API as a file when the device can share files (the iPhone share sheet). A dismissed sheet is cancelled, never a surprise download. Otherwise it downloads. It works offline, with v1's toast.
+- **Code.** The module is `vista-postcard.ts`; `main.ts` owns `vistaPills`, `setVistaViewing` and `saveVistaPostcard`.
+
+## v2 Compendium filter chips and shelves (D16 #36/#37) — matches code as of 2026-09-26
+- **Chip bar.** One horizontally scrolling row of 44 px chips above the Compendium list, shown once the Compendium has a species: kingdom (All · 🐾 Fauna · 🌿 Flora · 🍄 Fungi · 🦠 Microbes), the rarity floor (All · Rare+ · Legendary+ · Mythic+, on the DISPLAY tier) and "▦ Shelves". This is v1's `_codexTabs` in one row; logic in `compendium-shelves.ts`.
+- **Scroll height.** The list's virtual scrollport gives up exactly the chip row (52 px) in both height owners, so no row hides under the dock.
+- **Shelves (opt-in, off by default).** The list groups onto v1's themed shelves (`CODEX_SHELF_OF_V1`, domain `REALM_ORDER`). Each shelf is a real button fold header. Nothing opens itself; a kingdom or rarity filter lays every shelf open. The default Compendium stays the flat virtual list that Codex's instruments measure.
+- **State.** Filters and shelf folds are session view state, never saved. The fixture install/reset (Codex's I5 instrument) returns them to the default.
+- **Origin travel (#38).** A wild catch's detail card has a 44 px "Travel to <world> ↗" button: v1 `data-go`, travelling to the saved `where` through the one proven-route owner (search-travel), then v1's "Course Plotted" toast. A hybrid, a page without a resolvable world, and a measurement fixture show no button and never travel.
+- **Reveal queue (#39).** A committed action's NEW pages (a first catch, a bred hybrid; a page diff taken before and after the commit) are revealed as a modal specimen card: the painted portrait (a cancellable art-loader request), the name, the kind, and a 44 px Continue ("Continue · N more"). A separate "Skip all (N)" button and Escape clear the rest (v1's "hold to skip all" as a real button). This is v1's one-voice rule: while another modal or Field Training owns the screen, reveals queue, and the next input pulse after it closes flushes them. A measurement fixture reveals nothing. `compendium-reveal.ts`, owner in `main.ts` (`compendiumReveal`, `compendiumRevealPages`).
+
 ## v2 folded survey card (D18) — matches code as of 2026-09-25
 
 - **An option, off by default.** Settings → "Folded survey card" (`#setfold`). Nick decided on 2026-09-25 that the default stays the flat card, which is the card uilayout and the Slice/Glass instruments measure.

@@ -47,6 +47,9 @@ import { mirrorCompanionCodexXpV1 } from './companion-codex-mirror.js';
 import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
 import { localeFromSearchV1, localizeElementV1, SETTINGS_CATALOG_V1 } from './i18n.js';
 import { battle2On } from './battle2-gate.js';
+import { CompendiumRevealQueueV1 } from './compendium-reveal.js';
+import { VistaPillsControllerV1, composeVistaPostcardV1, deliverVistaPostcardV1, postcardTitleV1, type PostcardCanvasLike, type PostcardDeliveryV1 } from './vista-postcard.js';
+import { DEFAULT_CODEX_LIST_VIEW_V1, codexChipBarHtmlV1, codexChipPressV1, codexChipsFilteringV1, codexEntryMatchesV1, codexShelfLabelV1, shelveCodexRowsV1, type CodexListViewV1, type CodexShelfHeaderV1 } from './compendium-shelves.js';
 import { freshExpeditionPayloadV1 } from './expedition-reset.js';
 import { TooltipOwnerV1 } from './tooltips.js';
 import {
@@ -2140,6 +2143,53 @@ function abortRenderBeforeReceiptForSmoke(): boolean {
   smokeAbortNextRenderBeforeReceipt = false;
   return true;
 }
+/* D16 (v1 _vistaExtras / savePostcard / tap-to-zoom, #9/#10; the ledger's A6 share card): a pill row over the stage while a landing
+   vista is on screen — ⛶ Vista (the survey card and HUD step aside; any tap or Escape steps back) and ⇪ Postcard (v1's composition,
+   shared through the Web Share API when the device can share files, else downloaded; offline). Outside the survey card by design. */
+let vistaViewing = false;
+const vistaPills = new VistaPillsControllerV1({
+  document, onView: () => setVistaViewing(true), onBack: () => setVistaViewing(false), onPostcard: () => { void saveVistaPostcard(); },
+});
+function vistaOnScreen(): boolean {
+  return nav.mode === 'surface' && surfaceVistaSprite !== null && surfaceVistaSprite.visible && !trainingActive();
+}
+function syncVistaPills(): void {
+  if (vistaViewing && !vistaOnScreen()) { vistaViewing = false; document.body.classList.remove('vista-view'); }
+  vistaPills.sync(vistaOnScreen(), vistaViewing);
+}
+function setVistaViewing(on: boolean): void {
+  vistaViewing = on && vistaOnScreen();
+  document.body.classList.toggle('vista-view', vistaViewing);
+  vistaPills.sync(vistaOnScreen(), vistaViewing);
+}
+/* v1: while zoomed, a tap ANYWHERE steps back out (it never acts on the world underneath), and Escape does too */
+document.addEventListener('click', (event) => {
+  if (!vistaViewing || (event.target as HTMLElement | null)?.closest?.('.vista-pills')) return;
+  event.stopPropagation(); event.preventDefault(); setVistaViewing(false);
+}, true);
+document.addEventListener('keydown', (event) => { if (vistaViewing && event.key === 'Escape') { event.stopPropagation(); setVistaViewing(false); } }, true);
+/** The on-screen vista's own pixels: the texture resource of the stage sprite (a canvas, or a bitmap for a painted landing). */
+function vistaSourceImage(): (CanvasImageSource & { readonly width: number; readonly height: number }) | null {
+  const resource = (surfaceVistaSprite?.texture?.source as { resource?: unknown } | undefined)?.resource as { width?: unknown; height?: unknown } | undefined;
+  return resource && typeof resource.width === 'number' && typeof resource.height === 'number' && resource.width > 0 && resource.height > 0
+    ? resource as unknown as CanvasImageSource & { readonly width: number; readonly height: number } : null;
+}
+async function saveVistaPostcard(): Promise<PostcardDeliveryV1 | null> {
+  const vista = vistaOnScreen() ? vistaSourceImage() : null;
+  if (!vista) return null;
+  const address = activeCardWorldAddress();
+  const title = postcardTitleV1((address ? worldIdentityName(worldIdentityState, address) : null) ?? cardCtx?.p.name ?? null);
+  let canvas: PostcardCanvasLike;
+  try {
+    canvas = composeVistaPostcardV1({ vista, title, shareCode: cardShareCode(), createCanvas: (width, height) => {
+      const c = document.createElement('canvas'); c.width = width; c.height = height; return c as unknown as PostcardCanvasLike; } });
+  } catch { toast('⇪ Postcard', 'The view could not be composed on this device.'); return 'failed'; }
+  const result = await deliverVistaPostcardV1(canvas, title, {
+    document, navigator, createObjectURL: (blob) => URL.createObjectURL(blob), revokeObjectURL: (url) => URL.revokeObjectURL(url) });
+  if (result === 'shared' || result === 'downloaded') toast('⇪ Postcard Saved', 'The view and its share code are baked into the image — send it to a friend.');
+  else if (result === 'failed') toast('⇪ Postcard', 'The postcard could not be saved on this device.');
+  return result;
+}
 let audiovisualPilot: AudiovisualPilot | null = null;
 let audiovisualPilotClosed = false;
 let audiovisualPilotBiomeKey: string | null = null;
@@ -2155,6 +2205,7 @@ function applyAudiovisualPilotSceneVisibility(): void {
   const hidden = nav.mode === 'surface' && audiovisualPilotSurfaceVisible;
   world.visible = !hidden;
   if (surfaceVistaSprite !== null) surfaceVistaSprite.visible = !hidden;
+  syncVistaPills();
 }
 function applyAudiovisualPilotPresentation(state: AudiovisualPilotPresentationState): void {
   audiovisualPilotSurfaceVisible = state.enhanced && state.surfaceVisible;
@@ -3452,6 +3503,8 @@ document.getElementById('guidepanel')!.addEventListener('click', (event) => {
    viewports plus a pinned focused row own DOM and thumbnail leases. ---- */
 type CodexRecord = SaveStateV2['codex'][number][1];
 type CodexVirtualRow = CompendiumVirtualRow<CodexRecord>;
+/** A Compendium list row: a species, or (with ▦ Shelves on) a shelf's fold header. */
+type CodexListValue = CodexRecord | Readonly<{ codexShelf: CodexShelfHeaderV1 }>;
 type CodexReturnState = CompendiumReturnState;
 type CodexMode = 'closed' | 'list' | 'detail';
 const EMPTY_CODEX_WINDOW: CompendiumWindowSnapshot = Object.freeze({
@@ -3460,9 +3513,12 @@ const EMPTY_CODEX_WINDOW: CompendiumWindowSnapshot = Object.freeze({
   focusedLogicalId: null, pinnedLogicalIds: Object.freeze([]),
 });
 let codexFilter = '';
+/* D16 (v1 codexKing / codexRare / _cdxOpen): the chip filters and category shelves — session view state, never saved */
+let codexView: CodexListViewV1 = DEFAULT_CODEX_LIST_VIEW_V1;
+const codexOpenShelves = new Set<string>();
 let codexMode: CodexMode = 'closed';
 let codexGeneration = 0;
-let codexList: CompendiumVirtualList<CodexRecord> | null = null;
+let codexList: CompendiumVirtualList<CodexListValue> | null = null;
 let codexRows: readonly CodexVirtualRow[] = Object.freeze([]);
 let codexWindow: CompendiumWindowSnapshot = EMPTY_CODEX_WINDOW;
 let codexReturnState: CodexReturnState | null = null;
@@ -3780,20 +3836,28 @@ function activeCodexSource(): Array<[string, CodexRecord]> {
   return compendiumFixtureRows ?? save.codex;
 }
 function filteredCodexRows(): readonly CodexVirtualRow[] {
-  const f = codexFilter.toLowerCase();
+  const view = { ...codexView, query: codexFilter };
   return Object.freeze(activeCodexSource()
     .map(([logicalId, value], sourceIndex) => ({ logicalId: String(logicalId), sourceIndex, value }))
-    .filter(({ value }) => !f
-      || (value.name + ' ' + value.kind + ' ' + value.realm).toLowerCase().includes(f)));
+    .filter(({ value }) => codexEntryMatchesV1(value, view)));
 }
 function filteredCodexCount(): number {
-  const f = codexFilter.toLowerCase();
-  if (!f) return activeCodexSource().length;
+  const view = { ...codexView, query: codexFilter };
+  if (!view.query && !codexChipsFilteringV1(view)) return activeCodexSource().length;
   let count = 0;
-  for (const [, value] of activeCodexSource()) {
-    if ((value.name + ' ' + value.kind + ' ' + value.realm).toLowerCase().includes(f)) count++;
-  }
+  for (const [, value] of activeCodexSource()) if (codexEntryMatchesV1(value, view)) count++;
   return count;
+}
+/** A shelf's fold header row (D16, v1 `.cgh`): a real button; opening a shelf mounts its species rows. */
+function mountCodexShelfRow(header: CodexShelfHeaderV1): { readonly element: HTMLButtonElement; dispose(): void } {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = `codex-shelf kg-${header.kingdom}${header.open ? ' open' : ''}`;
+  button.dataset.sel = 'codex-shelf';
+  button.dataset.cg = header.shelf;
+  button.setAttribute('aria-expanded', String(header.open));
+  button.innerHTML = `<span>${esc(codexShelfLabelV1(header.shelf))}</span><span class="cnt">${header.count}${header.hybrids ? ` · ${header.hybrids} hybrid` : ''}</span>`;
+  return { element: button, dispose: () => {} };
 }
 function mountCodexRow(row: CodexVirtualRow, generation: number): {
   readonly element: HTMLButtonElement;
@@ -3874,12 +3938,17 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
   const generation = ++codexGeneration;
   codexRows = filteredCodexRows();
   const f = codexFilter.toLowerCase();
+  const sourceSize = activeCodexSource().length, chipsFiltering = codexChipsFilteringV1(codexView);
+  const chipEmpty = codexView.rarityFloor > 0
+    ? `No ${codexView.kingdom === 'all' ? 'species' : esc(codexView.kingdom.toLowerCase())} at <b style="color:${esc(projectDisplayRarity(codexView.rarityFloor)?.hex ?? '')}">${esc(projectDisplayRarity(codexView.rarityFloor)?.name ?? '')}</b> or above yet — the rarest finds live farthest out.`
+    : `Nothing on this shelf yet — every ${codexView.kingdom === 'Fauna' ? 'creature you Discover' : esc(codexView.kingdom.toLowerCase()) + ' you catalogue'} will land here.`;
   const panel = document.getElementById('codexpanel')!;
   panel.classList.add('codex-list-mode');
   fillPanel('codex',
-    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${codexRows.length}</span>${f ? ` <span class="sub codex-query">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
+    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${codexRows.length}</span>${chipsFiltering ? ` <span class="sub" data-sel="codex-shown">shown · ${sourceSize} in all</span>` : ''}${f ? ` <span class="sub codex-query">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
+    (sourceSize > 0 ? codexChipBarHtmlV1(codexView) : '') +
     (codexRows.length === 0
-      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — imported discoveries appear here. Live catalogue writing arrives with the discovery path.'}</div>`
+      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : chipsFiltering && sourceSize > 0 ? chipEmpty : 'No species yet — imported discoveries appear here. Live catalogue writing arrives with the discovery path.'}</div>`
       : '<div class="compendium-scroll" data-sel="codex-scroll" role="group" aria-label="Compendium species"></div>'));
   if (!codexRows.length) {
     previousList?.dispose();
@@ -3887,10 +3956,14 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
     return;
   }
   const scroller = panel.querySelector<HTMLElement>('[data-sel="codex-scroll"]')!;
-  const nextList = new CompendiumVirtualList({
+  const listRows: readonly CompendiumVirtualRow<CodexListValue>[] = codexView.shelves
+    ? shelveCodexRowsV1(codexRows, codexOpenShelves, chipsFiltering).map((item) => item.type === 'entry' ? item.row
+      : Object.freeze({ logicalId: `shelf:${item.header.shelf}`, sourceIndex: -1, value: Object.freeze({ codexShelf: item.header }) }))
+    : codexRows;
+  const nextList = new CompendiumVirtualList<CodexListValue>({
     scroller,
-    rows: codexRows,
-    mountRow: (row) => mountCodexRow(row, generation),
+    rows: listRows,
+    mountRow: (row) => ('codexShelf' in row.value ? mountCodexShelfRow(row.value.codexShelf) : mountCodexRow(row as CodexVirtualRow, generation)),
   });
   codexList = nextList;
   if (restore) nextList.restoreState(restore);
@@ -3985,6 +4058,9 @@ function fillCodexDetail(idx: number): void {
       `<div style="margin:4px 0 8px"><b style="font-size:16px;color:#f4f8ff">${esc(e.name)}</b>` +
       (rarityView ? ` <span class="rarity-badge" data-sel="detail-grade" style="border:1px solid ${esc(rarityView.hex)};color:${esc(rarityView.hex)};border-radius:999px;padding:1px 9px;font-size:11px">${esc(rarityView.name)}</span>` : '') +
       `<div class="sub">${esc(e.kind)} · ${esc(e.realm)}${e.hybrid ? ' · hybrid' : ''}${e.from ? ' · ' + esc(e.from) : ''}</div></div>` +
+      /* D16 (v1 data-go): a wild catch travels back to the world it was first catalogued on; a hybrid (bred) has no origin world */
+      (!e.hybrid && e.from && compendiumFixtureRows === null && primeClaimWorldAddressV1(e.where) !== null
+        ? `<button type="button" class="codex-origin" data-sel="codex-origin" data-codex-origin="${idx}">Travel to ${esc(e.from)} ↗</button>` : '') +
       `<div style="color:#b7c8e4;margin-bottom:8px" data-sel="detail-desc">${esc(d.desc || '')} ${esc(d.detail || '')}</div>` +
       KEYS.map((k, i) => {
         const v = st[k] || 0;
@@ -4535,6 +4611,23 @@ const codexOpenController = createPanelOpenController({
   defaultRequest: () => '',
   populate: (filter: string) => fillCodex(filter),
 });
+/* D16 (v1 showReveal / pendingReveals / _revealBlocked): a newly catalogued page is revealed as a specimen card, queued while another
+   modal (or Field Training) owns the screen and flushed by the next input pulse. View state only; the portrait lease is cancelled on close. */
+function compendiumRevealBlocked(): boolean {
+  return trainingActive() || document.querySelector('dialog[open], [role="dialog"][aria-modal="true"]:not([hidden]):not(#reveal)') !== null;
+}
+const compendiumReveal = new CompendiumRevealQueueV1({
+  document, blocked: compendiumRevealBlocked, art: speciesArtLoader,
+  onDrained: () => { if (openPanelId() === 'codex' && codexMode === 'list') fillCodex(codexFilter); },
+});
+/** The committed action's NEW Compendium pages (by logical id, in source order) — a first catch, a bred hybrid — join the reveal. */
+const compendiumRevealPages = Object.freeze({
+  snapshot: (): ReadonlySet<string> => new Set(save ? save.codex.map(([id]) => String(id)) : []),
+  revealSince: (before: ReadonlySet<string>): void => {
+    if (!save || compendiumFixtureRows !== null) return;
+    for (const [id, e] of save.codex) if (!before.has(String(id))) compendiumReveal.enqueue({ logicalId: String(id), name: e.name, kind: e.kind, hybrid: e.hybrid, genome: e.g });
+  },
+});
 registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: () => {
   /* An ordinary Compendium open is a fresh catalogue view. Search may apply
      one requested query as its opening population, while detail → Back
@@ -4641,9 +4734,40 @@ function shipyardDiagnostics(): unknown {
 }
 /* codex list rows open the detail card (delegated — rows refill often) */
 document.getElementById('codexpanel')!.addEventListener('click', (e) => {
+  /* D16 (v1 data-ck / data-cr / .cgh): a chip re-filters the list; a shelf header folds its shelf. Session view state only. */
+  const chip = (e.target as HTMLElement).closest<HTMLElement>('[data-ck],[data-cr],[data-cshelves]');
+  if (chip) {
+    const next = codexChipPressV1(codexView, { ck: chip.dataset.ck, cr: chip.dataset.cr, cshelves: chip.dataset.cshelves });
+    if (next) { codexView = next; fillCodex(codexFilter); }
+    return;
+  }
+  const shelf = (e.target as HTMLElement).closest<HTMLElement>('[data-cg]');
+  if (shelf) {
+    const name = shelf.dataset.cg!;
+    if (codexOpenShelves.has(name)) codexOpenShelves.delete(name); else codexOpenShelves.add(name);
+    fillCodex(codexFilter);
+    document.getElementById('codexpanel')!.querySelector<HTMLElement>(`[data-cg="${CSS.escape(name)}"]`)?.focus();
+    return;
+  }
+  const origin = (e.target as HTMLElement).closest<HTMLElement>('[data-codex-origin]');
+  if (origin) { void runCompendiumOriginTravel(+origin.dataset.codexOrigin!); return; }
   const row = (e.target as HTMLElement).closest('[data-ci]');
   if (row) fillCodexDetail(+(row as HTMLElement).dataset.ci!);
 });
+/** D16 (v1 `data-go` → travelTo(sp.where)): fly back to the world a species was first catalogued on, through the one proven-route owner
+ * (search-travel), so charter gates and the route commit are unchanged. The saved `where` is the legacy world view; it resolves to a
+ * canonical world exactly as a Prime claim's does. */
+async function runCompendiumOriginTravel(index: number): Promise<boolean> {
+  const entry = activeCodexSource()[index]?.[1];
+  if (!entry || entry.hybrid || compendiumFixtureRows !== null) return false;
+  const address = primeClaimWorldAddressV1(entry.where);
+  if (address === null) return false;
+  const moved = await searchTravel.jumpToCanonicalAddress(address);
+  if (!moved) return false;
+  closePanels();
+  toast('Course Plotted', `Returning to ${entry.from} — where you first catalogued ${entry.name}.`);
+  return true;
+}
 
 /* ---- THE SEARCH BAR (the goldens' top-right slot): a marked CF1 string is
    exact route input, never tolerant display data. All three route tiers are
@@ -10057,6 +10181,7 @@ function normalizeCompendiumFixture(rows: unknown): Array<[string, CodexRecord]>
 async function installCompendiumFixture(rows: unknown): Promise<CompendiumFixtureResult> {
   compendiumFixtureRows = normalizeCompendiumFixture(rows);
   codexFilter = '';
+  codexView = DEFAULT_CODEX_LIST_VIEW_V1; codexOpenShelves.clear();
   codexReturnState = null;
   if (openPanelId() === 'codex') fillCodex('');
   else {
@@ -10068,6 +10193,7 @@ async function installCompendiumFixture(rows: unknown): Promise<CompendiumFixtur
 async function resetCompendiumFixture(): Promise<CompendiumFixtureResult> {
   compendiumFixtureRows = null;
   codexFilter = '';
+  codexView = DEFAULT_CODEX_LIST_VIEW_V1; codexOpenShelves.clear();
   codexReturnState = null;
   if (openPanelId() === 'codex') fillCodex('');
   else {
@@ -15081,6 +15207,7 @@ function compendiumBreedOutcomeCopy(
 }
 
 async function runCompendiumBreedAction(request: CompendiumBreedActionRequestV1): Promise<void> {
+  const revealBefore = compendiumRevealPages.snapshot();
   let outcome: Arc5BreedCommitOutcome;
   try { outcome = await commitCompendiumBreedAction(request); }
   catch (error) {
@@ -15094,6 +15221,7 @@ async function runCompendiumBreedAction(request: CompendiumBreedActionRequestV1)
     compendiumBreedController.settle(copy);
     if (copy.convergence === 'none') refreshCompendiumFeedState();
     updateChips();
+    if (outcome.kind === 'committed' && copy.convergence === 'none') compendiumRevealPages.revealSince(revealBefore);
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
     if (outcome.durability === 'committed' && f4Runtime !== null) {
@@ -16772,6 +16900,7 @@ async function runCaptureCardAction(
   request: CaptureCardActionRequest,
   presentationFence: string | null,
 ): Promise<void> {
+  const revealBefore = compendiumRevealPages.snapshot();
   let outcome: Arc4CaptureActionOutcome;
   try {
     outcome = presentationFence === null
@@ -16806,6 +16935,7 @@ async function runCaptureCardAction(
         gameEvent('bioscan', { worldKey: outcome.result.worldKey });
       }
       if (openPanelId() === 'codex') fillCodex(codexFilter);
+      if (copy.convergence === 'none') compendiumRevealPages.revealSince(revealBefore);
     }
     const greetingClaim: TameGreetingClaim | null = tameGreetingAudioOwner
       ?.claimCommittedTameGreeting(outcome, arc5OwnershipState) ?? null;
