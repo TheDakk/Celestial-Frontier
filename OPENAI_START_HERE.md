@@ -1,3 +1,5 @@
+> **RETIRED (Nick, 2026-09-26): development is Mac-only.** The `openai/windows` branch and the `C:\Projects\celestial-frontier-openai-windows` folder are no longer used; the branch is deleted on GitHub. Work only in `/Users/nick/Projects/celestial-frontier-openai-mac` on branch `openai/mac`, and follow `PARALLEL_GIT_PROTOCOL.md` (including its Disk-space law). The Windows instructions below are kept only as history.
+
 # OpenAI / Codex — Start Here
 
 This is the **only folder OpenAI/Codex should edit on this Windows PC**:
