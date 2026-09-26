@@ -1,0 +1,91 @@
+{
+  "name": "Mantis",
+  "family": "insect",
+  "species": {
+    "name": "Mantis",
+    "aspect": 1,
+    "headFrac": 0.15,
+    "eyes": "prominent",
+    "posture": "upright",
+    "mustRead": [
+      "spined raptorial forelegs folded in prayer",
+      "triangular head that swivels on a neck",
+      "long slender prothorax raising the front of the body"
+    ],
+    "note": "only a mantis truly has a neck - the head turns independently of the body"
+  },
+  "genome": {
+    "seed": 3978992523,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 7,
+    "body": 13,
+    "loco": 0,
+    "trait": 14,
+    "size": 5,
+    "diet": 1,
+    "head": 6,
+    "limbs": 4,
+    "skin": 1,
+    "tail": 0,
+    "pattern": 4,
+    "eyes": 0,
+    "behavior": 8,
+    "habitat": 15,
+    "detail": 8,
+    "accent": 12,
+    "temper": 3,
+    "sense": 8,
+    "repro": 7,
+    "life": 3,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Mantis"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mantis\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3978992523\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 63,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

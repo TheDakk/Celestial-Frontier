@@ -1,0 +1,9 @@
+{
+ "id": "05-kingfisher",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 12.0% of the paint lies away from the body and in no part (reference 4.3%)"
+ ],
+ "semanticPresence": null
+}

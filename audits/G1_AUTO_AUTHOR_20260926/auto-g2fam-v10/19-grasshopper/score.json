@@ -1,0 +1,11 @@
+{
+ "id": "19-grasshopper",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (family floor): the largest rear appendage is 2.3% of the paint; every same-family reference shows at least 3.8%",
+  "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 30% paint (reference 88%)",
+  "missing-anatomy: part mandible (mandible) covers 5% paint (reference 32%)"
+ ],
+ "semanticPresence": null
+}

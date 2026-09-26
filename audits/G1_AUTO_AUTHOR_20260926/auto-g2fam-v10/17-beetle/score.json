@@ -1,0 +1,11 @@
+{
+ "id": "17-beetle",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: quadruped matches clearly better (0.0217 < 0.0443)",
+  "missing-anatomy: part leg-mid-near-knee (legMidNearKnee) covers 0% paint (reference 62%)",
+  "unexplained-anatomy: 15.2% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

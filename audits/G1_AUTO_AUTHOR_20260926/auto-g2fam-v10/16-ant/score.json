@@ -1,0 +1,10 @@
+{
+ "id": "16-ant",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches insect better (0.0277 < 0.0341)",
+  "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 14% paint (reference 42%)"
+ ],
+ "semanticPresence": null
+}

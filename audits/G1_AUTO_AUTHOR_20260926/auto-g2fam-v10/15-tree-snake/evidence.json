@@ -1,0 +1,258 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 25.3% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a rear appendage of 15.5% paint that no reference appendage lands on",
+  "missing-anatomy: part head (head) covers 5% paint (reference 4%)",
+  "missing-anatomy: part body-segment-0 (seg0) covers 6% paint (reference 12%)",
+  "missing-anatomy: part body-segment-1 (seg1) covers 6% paint (reference 9%)",
+  "missing-anatomy: part body-segment-2 (seg2) covers 5% paint (reference 9%)",
+  "missing-anatomy: part body-segment-3 (seg3) covers 8% paint (reference 9%)",
+  "missing-anatomy: part body-segment-4 (seg4) covers 4% paint (reference 10%)",
+  "missing-anatomy: part body-segment-5 (seg5) covers 4% paint (reference 10%)",
+  "missing-anatomy: part body-segment-6 (seg6) covers 4% paint (reference 10%)",
+  "missing-anatomy: part body-segment-7 (seg7) covers 1% paint (reference 7%)",
+  "missing-anatomy: part body-segment-8 (seg8) covers 5% paint (reference 5%)",
+  "missing-anatomy: part body-segment-9 (seg9) covers 5% paint (reference 2%)",
+  "unexplained-anatomy: 33.6% of the paint lies away from the body and in no part (reference 5.1%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "remainderMarker": false,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [
+  {
+   "id": "head",
+   "vertices": 4
+  },
+  {
+   "id": "body-segment-0",
+   "vertices": 4
+  },
+  {
+   "id": "body-segment-1",
+   "vertices": 4
+  },
+  {
+   "id": "body-segment-2",
+   "vertices": 4
+  },
+  {
+   "id": "body-segment-3",
+   "vertices": 4
+  },
+  {
+   "id": "body-segment-4",
+   "vertices": 4
+  },
+  {
+   "id": "body-segment-5",
+   "vertices": 4
+  },
+  {
+   "id": "body-segment-6",
+   "vertices": 4
+  },
+  {
+   "id": "body-segment-7",
+   "vertices": 4
+  },
+  {
+   "id": "body-segment-8",
+   "vertices": 4
+  },
+  {
+   "id": "body-segment-9",
+   "vertices": 4
+  },
+  {
+   "id": "neck-root",
+   "vertices": 4
+  }
+ ],
+ "untangled": [
+  {
+   "id": "body-segment-7",
+   "repairs": 1
+  }
+ ],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "extra-anatomy (unassigned): a top appendage of 25.3% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a rear appendage of 15.5% paint that no reference appendage lands on"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "head"
+    ],
+    "names": [
+     "head"
+    ],
+    "refFrac": 0.0922,
+    "target": 0,
+    "overlap": 0.041
+   },
+   {
+    "owners": [
+     "body-segment-9",
+     "body-segment-8"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.1004,
+    "target": -1,
+    "overlap": 0
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2527,
+     "class": "top",
+     "attach": {
+      "x": 327.8,
+      "y": 213.8,
+      "relX": 0.99,
+      "relY": 0.35
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1547,
+     "class": "rear",
+     "attach": {
+      "x": 122,
+      "y": 260.5,
+      "relX": 0.01,
+      "relY": 0.85
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "python",
+   "byClass": {
+    "top": 1,
+    "rear": 1
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0417,
+  "ref": 0.0917
+ },
+ "bestReference": "python",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "python",
+   "cost": 0.01292
+  },
+  {
+   "ref": "racer",
+   "cost": 0.01538
+  },
+  {
+   "ref": "eel",
+   "cost": 0.02869
+  }
+ ],
+ "mirrorBest": 0.01878,
+ "otherFamilyBest": {
+  "family": "radial",
+  "cost": 0.0366
+ },
+ "coverage": [
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.24181360201511334,
+   "area": 6317.234999999983
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.05293276108726753,
+   "area": 89284.80000000005
+  },
+  {
+   "id": "body-segment-0",
+   "joint": "seg0",
+   "paint": 0.05525606469002695,
+   "area": 71101.80000000028
+  },
+  {
+   "id": "body-segment-1",
+   "joint": "seg1",
+   "paint": 0.06113161131611316,
+   "area": 129851.69999999995
+  },
+  {
+   "id": "body-segment-2",
+   "joint": "seg2",
+   "paint": 0.04938734683670918,
+   "area": 127719.90000000002
+  },
+  {
+   "id": "body-segment-3",
+   "joint": "seg3",
+   "paint": 0.07846691700116536,
+   "area": 123330.8999999999
+  },
+  {
+   "id": "body-segment-4",
+   "joint": "seg4",
+   "paint": 0.04412781850878406,
+   "area": 115430.70000000007
+  },
+  {
+   "id": "body-segment-5",
+   "joint": "seg5",
+   "paint": 0.04278897952901339,
+   "area": 103705.79999999993
+  },
+  {
+   "id": "body-segment-6",
+   "joint": "seg6",
+   "paint": 0.0412463976945245,
+   "area": 88595.1000000001
+  },
+  {
+   "id": "body-segment-7",
+   "joint": "seg7",
+   "paint": 0.007352941176470588,
+   "area": 4310.350000000006
+  },
+  {
+   "id": "body-segment-8",
+   "joint": "seg8",
+   "paint": 0.047619047619047616,
+   "area": 6708.900000000023
+  },
+  {
+   "id": "body-segment-9",
+   "joint": "seg9",
+   "paint": 0.04823151125401929,
+   "area": 4953.300000000047
+  },
+  {
+   "id": "neck-root",
+   "joint": "root",
+   "paint": 0.055843094524652685,
+   "area": 58624.49999999977
+  }
+ ],
+ "unclaimedFrac": 0.3363
+}

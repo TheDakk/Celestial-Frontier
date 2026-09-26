@@ -1,0 +1,81 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "11-grass-snake",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "7cae23b4fd47bba63f56813f7aa7c66bbb965de0a686e9efd6543466b6138ca5",
+ "subjectSourceSha256": "e793930986cef638b876b290d9573aafa2ad559de59ef2a7f55aac4957bdbe35",
+ "identity": {
+  "name": "Grass Snake",
+  "family": "serpent",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Grass Snake\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1134753514\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"4\"]]]]",
+  "seed": 1134753514,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "python",
+  "authoringSha256": "3a6a75b2524550a4d80a2fabba037ba7f1d4ae2ec3502b42ed11f7c66d8fc5c9",
+  "masterSha256": "d0a777d5186a6787461d795b41b34b8ce4569af1efd10b14f98524fc92ef8cae"
+ },
+ "habitat": {
+  "profileId": "snake",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "79391ed84f3bf3de9b249a50f96cba52b142c09f2362a1dc4a604e85036973b0",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group snake (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1736,
+     "class": "top",
+     "attach": {
+      "x": 325.6,
+      "y": 184,
+      "relX": 0.75,
+      "relY": 0.25
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1124,
+     "class": "limb-down",
+     "attach": {
+      "x": 55.5,
+      "y": 221,
+      "relX": 0,
+      "relY": 0.61
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "python",
+   "byClass": {
+    "top": 1,
+    "rear": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

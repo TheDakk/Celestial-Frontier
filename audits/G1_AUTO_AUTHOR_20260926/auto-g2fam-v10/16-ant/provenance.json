@@ -1,0 +1,104 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "16-ant",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "3dcd578a22fce37fec6d4d722610757050f855fe76cbbab51021fc9e786e338a",
+ "subjectSourceSha256": "6e7df0cbdd46b7878d5fb573edb15b0d01cb3e6da68538fc655ce0e2eb22953c",
+ "identity": {
+  "name": "Ant",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Ant\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3772671348\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "seed": 3772671348,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "beetle",
+  "authoringSha256": "4860cd36c43bb774dbab8b686cecce2a00062707190f152bc0ea30741c4eee9e",
+  "masterSha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb"
+ },
+ "habitat": {
+  "profileId": "mandibulate-insect",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "f14555d246abbf4d1ce67dda63834ec805d8075cfd627c188a7a3e118c74fda7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group mandibulate-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.6036,
+     "class": "rear",
+     "attach": {
+      "x": 220.7,
+      "y": 176.4,
+      "relX": 0.47,
+      "relY": 0.52
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0049,
+     "class": "top",
+     "attach": {
+      "x": 117.5,
+      "y": 165,
+      "relX": 0.19,
+      "relY": 0.45
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0436,
+     "class": "limb-down",
+     "attach": {
+      "x": 57.9,
+      "y": 239.1,
+      "relX": 0.03,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0283,
+     "class": "limb-down",
+     "attach": {
+      "x": 112,
+      "y": 245,
+      "relX": 0.17,
+      "relY": 0.97
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 1,
+    "top": 1,
+    "limb-down": 2
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "beetle",
+   "byClass": {
+    "top": 1,
+    "rear": 3,
+    "limb-down": 6
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
