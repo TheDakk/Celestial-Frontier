@@ -7,6 +7,11 @@
  */
 import fs from 'node:fs';import path from 'node:path';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';import {pathToFileURL} from 'node:url';import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url),{PNG}=createRequire(require.resolve('free-tex-packer-core'))('pngjs'),sharp=createRequire(require.resolve('free-tex-packer-core'))('sharp');
+if(process.argv[2]==='--library'){
+ if(process.argv.length!==5)throw Error('Usage: compile-master-prompt.mjs --library EARTH_NAME NEW_PACKET_DIR');
+ const {compileLibraryMaster}=await import('./compile-library-master.mjs');
+ console.log(JSON.stringify(await compileLibraryMaster(process.argv[3],process.argv[4])));process.exit(0);
+}
 const [fitArg,outArg]=process.argv.slice(2);if(!fitArg||!outArg)throw Error('Usage: compile-master-prompt.mjs <fitDir> NEW_PACKET_DIR');
 const root=process.cwd(),fit=path.resolve(fitArg),out=path.resolve(outArg);if(fs.existsSync(out))throw Error('New packet directory required');fs.mkdirSync(out,{recursive:true});
 const sha=b=>createHash('sha256').update(b).digest('hex');

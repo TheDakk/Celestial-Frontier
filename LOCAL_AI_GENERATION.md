@@ -168,3 +168,8 @@ checkout lock outside unit tests. Retain the first failed run; never relabel it 
 ## Creature textures — matches code as of 2026-09-19
 
 The existing kit interpreter admits `creature-finish-v1` on desktop only. `compileCreatureFinishV1` produces one shared texture prompt, recipe-derived seed and fixed 0.35/one-step settings. Its protection polarity permits interior texture while preserving alpha and four-pixel part-boundary bands. `creature-originals.ts` owns a separate immutable IndexedDB database keyed by recipe, cutout, settings and model hashes; find precedes inference, duplicate retain fails. Phones read retained PNGs or receive the painter fallback without inference. This entry is an anatomy-run candidate; no new model, visual acceptance or runtime delivery qualification is implied.
+
+
+### G2 generated quadruped pilot — matches tooling as of 2026-09-26
+
+`compile-master-prompt.mjs --library` compiles canonical quadruped identities without hand authoring. `derive-marking-masks.mjs` creates six source-alpha-conserved candidate masks; these require G1 record binding before admission. Twenty retained masters and verifier findings are in `audits/G2_QUADRUPED_PILOT_20260926/README.md`. No runtime creature replacement follows from this tooling.
