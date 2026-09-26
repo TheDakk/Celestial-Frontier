@@ -1942,3 +1942,12 @@ generation.
   a future breaking shape change would need an explicit migration branch keyed on `v`.
 - `mx` is stored uncapped while some sibling structures cap; documented as intentional
   in-code (the finite-reserve refill audit), noted here for future maintainers.
+
+## ADDENDUM 2026-09-26 — `arc9.projects` v1 (Outposts, D14; matches code as of 2026-09-26)
+
+`port/v2/packages/persistence/src/outposts-carrier.ts`: the Outposts carrier lives in the `player` segment.
+- **Absent means no projects:** an old save loads unchanged, with no migration.
+- **Strict:** it is canonical JSON checked field by field (site id = `kind@planetSeed`, stages 0–3, spent rows equal built stages,
+  sorted system seeds, at most 24 sites, one Relay per star, residents only on a finished Sanctuary). Anything malformed, a future
+  version or the namespace in another segment reads as PROTECTED, never as empty.
+- **Portable:** it rides the portable v5 export byte-identically (test `packages/persistence/test/outposts-carrier.test.ts`).
