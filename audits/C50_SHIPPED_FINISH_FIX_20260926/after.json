@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "trackedListingBytes": 3041940,
+  "tracked": true,
+  "files": [
+    "tools/local-image-generation/browser-variant-plan.json",
+    "tools/local-image-generation/browser-variant-plan.mjs",
+    "tools/local-image-generation/browser-variant-plan.test.mjs",
+    "tools/local-image-generation/browser-variant-source.mjs",
+    "tools/local-image-generation/first-step-harness.mjs",
+    "tools/local-image-generation/first-step-harness.test.mjs",
+    "tools/local-image-generation/offline-variant-proof.mjs",
+    "tools/local-image-generation/offline-variant-proof.test.mjs",
+    "tools/local-image-generation/run-first-step-diagnostic.mjs",
+    "tools/local-image-generation/stage-worker-first-step.test.mjs",
+    "tools/local-image-generation/kit-stage-worker.mjs",
+    "tools/local-image-generation/creature-finish-math.mjs",
+    "tools/local-image-generation/kit-worker-engine.mjs",
+    "tools/local-image-generation/kit-worker-expansion.mjs",
+    "tools/local-image-generation/kit-engine-math.mjs",
+    "tools/local-image-generation/kit-contact-math.mjs",
+    "tools/local-image-generation/kit-weather-math.mjs"
+  ]
+}

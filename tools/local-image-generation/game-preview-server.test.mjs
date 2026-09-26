@@ -100,6 +100,10 @@ test('serves exact config, locked relative worker imports, range bytes, HEAD and
   for (const source of ['/__local_ai/pipeline-math.mjs', '/__local_ai/gpu-profile.mjs', '/__local_ai/denoiser-shapes.mjs',
     '/__local_ai/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs', '/__local_ai/node_modules/onnxruntime-web/dist/runtime.wasm',
     '/__local_ai/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs']) assert.equal((await rawRequest(server.url, source)).status, 200);
+  const finishMath = await rawRequest(server.url, '/__local_ai/creature-finish-math.mjs');
+  assert.equal(finishMath.status, 200);
+  assert.match(finishMath.headers['content-type'], /javascript/);
+  assert.deepEqual(finishMath.body, await fs.readFile(new URL('./creature-finish-math.mjs', import.meta.url)));
   assert.match((await rawRequest(server.url, '/')).body.toString(), /fixture game/);
   assert.ok(server.modelFiles.every(row => /^[a-f0-9]{64}$/u.test(row.sha256)));
 });
