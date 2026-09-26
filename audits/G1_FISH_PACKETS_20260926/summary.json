@@ -1,0 +1,26 @@
+[
+ {
+  "id": "07-perch",
+  "files": 51,
+  "reproduces": true,
+  "sourceCoordinateChanges": 0,
+  "recordSourceCopyMatches": true,
+  "bindingSemanticHash": "8caccda18b86f7398af0360a25221eb90dcb80b6716286dd25a900bcaf910713"
+ },
+ {
+  "id": "08-cod",
+  "files": 51,
+  "reproduces": true,
+  "sourceCoordinateChanges": 0,
+  "recordSourceCopyMatches": true,
+  "bindingSemanticHash": "11a1ae95a73dc6462237236d1c1de96c06de18d42d7a1d178b488729d0e1caf6"
+ },
+ {
+  "id": "09-carp",
+  "files": 51,
+  "reproduces": true,
+  "sourceCoordinateChanges": 0,
+  "recordSourceCopyMatches": true,
+  "bindingSemanticHash": "f7fd14857053ce0dc3af62b3cf8194ec26016bf54c59f41d3817eb9e849a0d15"
+ }
+]

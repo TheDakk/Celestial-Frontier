@@ -39,6 +39,36 @@ This is Stage G5 of the Generated Creature Pipeline (`audits/GENERATION_PIPELINE
   - `Math.floor` in the box kernel fails the kernel and end-to-end tests;
   - dropping the record-ownership check in the hook fails the hook test.
 
+## Shipped desktop path in a real browser (`finish-smoke/run-03-shipped`: PASS, after Codex's C50 fixes `e12a3786`)
+
+- **Setup:** `--phases=control,shipped`: no identity rewrite, and no helper served by the smoke (the process-local `maxBuffer` shim is moot now that the source is fixed).
+- **Control (no flag):** nothing retained, no finish worker, the portrait unchanged (`244c677f`).
+- **Shipped (`?finish=1`):**
+  - the finish worker is constructed and runs the job, and one original is retained (`2b131d1d…`, the same bytes as the earlier worked-around run: deterministic);
+  - reopening the portrait shows the finished image (`244c677f` → `0765a7b8`, again identical to the earlier run);
+  - 0 page errors.
+- G5 now works end to end, unmodified, on the desktop tier (with the local model), the phone tier (delivered originals) and the stage.
+
+## Stage in a real browser (`stage-smoke/`, run-01: PASS)
+
+- **Setup:** built package 7710c91d at 390×844@3 touch; `?battle2=1&vs=Crab,Mud Crab`, plain then `&finish=1`. The matchup picker now forwards the finish provider, and the stage publishes `data-battle2-finished`.
+- **With the flag:** both fighters draw their admitted finished atlas (`left:true right:true`, via Codex's delivered originals, the admission and the loader composition with the morph on top). The study plays, delivery files are fetched only with the flag (4), and there are 0 page errors.
+- **Without the flag:** no finished attribute and no delivery fetch.
+- **Visually,** the finish is subtle (0.66 % of the master is editable under today's alpha = 255 rule).
+
+## Phone path in a real browser (`phone-smoke/`, run-02: PASS)
+
+- **Setup:** built package 14b712e6, 390×844@3 touch (finish tier `phone`); the veteran save plus Codex's three canonical crabs (Crab, Freshwater Crab, Mud Crab), whose finished originals it published under `library/creature-finish/<key>/`. Fresh profiles, `plain` then `?finish=1`.
+- **Results:**
+  - all three crab cards are painted in both phases, and with `?finish=1` each draws a DIFFERENT image (the delivered finish plus the morph);
+  - the delivery files are fetched only with the flag;
+  - `?finish=1` adds no `/__local_ai/` request (the package's service worker precaches the landfall runtime files in BOTH phases);
+  - no model file is ever requested;
+  - 0 page errors;
+  - the image hashes are identical to run-01 (deterministic).
+- **Instrument correction:** run-01 counted that precache as a finisher request; the check now compares against the plain phase.
+- **Measured cost (not a failure):** to compute an identity key, the phone route downloads each archetype's master and labels once (6 source fetches for 3 crabs), because the key binds a hash of the decoded labels. A pin-based identity function in the engine would remove this (asked in C51).
+
 ## First real-browser run of `?finish=1` (`finish-smoke/`, run-02; headless Edge 154, WebGPU Apple metal-3, probe `supported`)
 
 - **Setup:** a procedural `crust:crab` (seed 7000) drawn by the core Crab painting (880² master), served by Codex's `game-preview-server.mjs` with the verified local model cache.

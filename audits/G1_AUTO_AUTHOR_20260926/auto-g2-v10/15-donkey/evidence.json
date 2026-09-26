@@ -3,6 +3,7 @@
  "reasons": [],
  "schema": "cf.g1-auto-author/v1",
  "remainderMarker": true,
+ "grown": null,
  "chains": [
   {
    "chain": "hindFar",
