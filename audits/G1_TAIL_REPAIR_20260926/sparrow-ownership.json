@@ -1,0 +1,10 @@
+{
+  "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-v10/sparrow/packet",
+  "candidate": "audits/G1_TAIL_REPAIR_20260926/sparrow-packet",
+  "masterIdentical": true,
+  "landmarksIdentical": true,
+  "changes": {
+    "body -> tail": 5335,
+    "tail -> body": 179
+  }
+}

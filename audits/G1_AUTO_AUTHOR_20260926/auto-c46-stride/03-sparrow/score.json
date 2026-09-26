@@ -1,0 +1,9 @@
+{
+ "id": "03-sparrow",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches biped-bird better (0.0166 < 0.0197)"
+ ],
+ "semanticPresence": null
+}

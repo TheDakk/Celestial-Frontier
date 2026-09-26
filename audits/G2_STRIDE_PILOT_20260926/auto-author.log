@@ -1,0 +1,6 @@
+{"id":"01-grouse","verdict":"REFUSE","reasons":["unexplained-anatomy: 7.4% of the paint lies away from the body and in no part (reference 1.2%)"]}
+{"id":"02-eagle","verdict":"REFUSE","reasons":["extra-anatomy (unassigned): a limb-down appendage of 8.6% paint that no reference appendage lands on"]}
+{"id":"03-sparrow","verdict":"REFUSE","reasons":["facing: the mirrored painting matches biped-bird better (0.0166 < 0.0197)"]}
+{"id":"04-sandpiper","verdict":"REFUSE","reasons":["missing-anatomy: part tail (tailFan) covers 19% paint (reference 61%)","unexplained-anatomy: 7.2% of the paint lies away from the body and in no part (reference 1.2%)"]}
+{"id":"05-mongoose","verdict":"REFUSE","reasons":["missing-anatomy: part ear-far-tip (earFarTip) covers 13% paint (reference 52%)"]}
+{"id":"06-tapir","verdict":"ADMIT","static":"RED","reasons":[]}

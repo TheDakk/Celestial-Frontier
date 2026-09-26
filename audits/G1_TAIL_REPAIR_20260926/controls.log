@@ -1,0 +1,14 @@
+✔ same source-evidenced Eagle closure is deterministic; no master/landmark/other-part mutation (231.670833ms)
+✔ closure refuses missing declared owner or degenerate direction rather than inventing anatomy (0.178583ms)
+✔ retained baseline is RED; changed tail passes every measured action and blended presentation (0.280791ms)
+✔ detached rear paint cannot replace an erased tail; earlier owners remain protected (0.471167ms)
+✔ same rule repairs Sandpiper with unchanged master and landmarks and complete static presentation (1.007208ms)
+✔ empty source region refuses instead of tracing the unvisited background as whole-canvas paint (0.488375ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 347.444625

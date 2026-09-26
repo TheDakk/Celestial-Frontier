@@ -1,0 +1,38 @@
+[
+  {
+    "id": "01-grouse",
+    "name": "Grouse",
+    "family": "biped-bird",
+    "packet": "audits/G2_STRIDE_PILOT_20260926/01-grouse"
+  },
+  {
+    "id": "02-eagle",
+    "name": "Eagle",
+    "family": "biped-bird",
+    "packet": "audits/G2_STRIDE_PILOT_20260926/02-eagle"
+  },
+  {
+    "id": "03-sparrow",
+    "name": "Sparrow",
+    "family": "biped-bird",
+    "packet": "audits/G2_STRIDE_PILOT_20260926/03-sparrow"
+  },
+  {
+    "id": "04-sandpiper",
+    "name": "Sandpiper",
+    "family": "biped-bird",
+    "packet": "audits/G2_STRIDE_PILOT_20260926/04-sandpiper"
+  },
+  {
+    "id": "05-mongoose",
+    "name": "Mongoose",
+    "family": "quadruped",
+    "packet": "audits/G2_STRIDE_PILOT_20260926/05-mongoose"
+  },
+  {
+    "id": "06-tapir",
+    "name": "Tapir",
+    "family": "quadruped",
+    "packet": "audits/G2_STRIDE_PILOT_20260926/06-tapir"
+  }
+]

@@ -28,11 +28,17 @@ export interface PaintedCardSourceOptions { readonly assets: PaintedCardAssets; 
    * in ONE task — ~20–40 ms each on a desktop, several times that on a phone). Default: a macrotask. Output is unaffected. */
   readonly yieldToHost?: () => Promise<void>;
   /** G5: the individual's retained FINISHED card master (creature-finish-route.ts), or null. Never triggers inference. When it names
-   * the drawn archetype's record and matches its card-master size, the card renders the finished pixels (the morph still applies on
+   * the drawn archetype's record and matches its card-master size and every alpha byte, the card renders the finished pixels (the morph still applies on
    * top) under its own cache key; otherwise the unfinished painting draws. Absent = today's path, byte for byte. */
   readonly finished?: (genome: Readonly<Record<string, unknown>>, archetype: PaintedCardArchetype, kind: CardKind) => Promise<FinishedCardMasterV1 | null>; }
 /** An individual's finished card master (the box-downscaled finished original), in the archetype's card-master space. */
 export interface FinishedCardMasterV1 { readonly sha256: string; readonly recordRecipeHash: string; readonly width: number; readonly height: number; readonly rgba: Uint8Array; }
+/** Final consumer check: source conservation may preserve an opaque/keyed master; the admitted card has its own keyed alpha. */
+function matchesCardAlpha(finished:ArrayLike<number>,master:ArrayLike<number>):boolean {
+  if(finished.length!==master.length)return false;
+  for(let i=3;i<master.length;i+=4)if(finished[i]!==master[i])return false;
+  return true;
+}
 const macrotask = (): Promise<void> => new Promise((resolve) => { if (typeof MessageChannel === 'function') { const c = new MessageChannel(); c.port1.onmessage = () => { c.port1.close(); resolve(); }; c.port2.postMessage(0); } else setTimeout(resolve, 0); });
 export const CARD_SIZES = Object.freeze({ thumb: 132, portrait: 440 } as const);
 export interface PaintedCardOwnershipV1 {
@@ -149,7 +155,7 @@ export class PaintedCardSource {
       });
       return this.#slot(async () => { const card: BodyCard = compileBodyCard(arch.record, genome as MotionGenomeFields);
       const params = morphParamsV1(genome as MorphGenome, arch.record.recipeHash, archetypeGenomeV1(arch.record as { genome?: MorphGenome; identity?: { speciesVisualKey?: string } })), marking = markingNameV1(params), markingMask = marking ? await this.#mask(drawnBy, arch, marking) : null;
-      const own = finished && !fallback && finished.recordRecipeHash === arch.record.recipeHash && finished.width === arch.master.width && finished.height === arch.master.height && finished.rgba.length === arch.master.master.length;
+      const own = finished && !fallback && finished.recordRecipeHash === arch.record.recipeHash && finished.width === arch.master.width && finished.height === arch.master.height && finished.rgba.length === arch.master.master.length && matchesCardAlpha(finished.rgba, arch.master.master);
       const master = own ? { ...arch.master, master: finished.rgba } : arch.master;
       const size = CARD_SIZES[kind], rgba = renderCardIndividualV1({ master, receipt: arch.receipt, card, params, size, markingMask }); this.#renders++;
       const png = await encodePng(rgba, size, size); const asset: PaintedCardAsset = Object.freeze({ key, url: pngDataUrl(png), width: size, height: size, encodedBytes: png.length, decodedPixels: size * size, ...(fallback ? { libraryFallback: fallback } : {}), ...(own ? { finishedSha256: finished.sha256 } : {}) });

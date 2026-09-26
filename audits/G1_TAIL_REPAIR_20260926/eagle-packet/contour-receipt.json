@@ -1,0 +1,26 @@
+{
+  "partId": "tail",
+  "proximalCut": [
+    [
+      410.7,
+      776.9
+    ],
+    [
+      446.3,
+      858.5
+    ]
+  ],
+  "joint": [
+    153.1,
+    853.7
+  ],
+  "parent": [
+    731.1,
+    745.1
+  ],
+  "originalPixels": 30153,
+  "candidateAddedPixels": 5655,
+  "rule": "original source alpha behind existing most-proximal transferred edge; original ownership retained; only remainder/unclaimed eligible",
+  "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-v10/eagle/packet",
+  "masterSha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+}

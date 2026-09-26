@@ -147,7 +147,7 @@ and remaining adapter seam: `audits/G5_FINISHER_ENGINE_20260926/README.md`.
   - Card lookups read the retained store only.
   - A retained original becomes the card master through the card builder's own box kernel.
 - **Card hook:** the card source's optional `finished` hook draws it.
-- **Not yet wired into `main.ts`:** the desktop model adapter, `?finish=1`, the stage and phone delivery are next.
+- **Wired into `main.ts` behind `?finish=1`:** desktop model adapter, retained/delivered originals, card lookup and stage provider. Stage finishing precedes the individual palette remap; the flag remains off by default.
 
 ## Model installation and phone boundary
 
@@ -205,16 +205,15 @@ C41 admits a finished master through a private token after the complete original
 rig preflight, independently pinned source labels, exact engine identity and
 conservation. The loader projects into unchanged atlas frames; original record,
 binding and atlas pins remain intact. A supplementary generated label registry
-covers 34 fits; Civet, Eel, Rat and Salamander have missing source labels and refuse.
+covers 38 fits: four independently reproduced derived maps for Civet, Eel, Rat and Salamander now bind original record/binding/atlas plus candidate evidence hashes. Their fully opaque originals differ from keyed card alpha; the final card consumer checks every alpha byte and keeps the painter when they differ. Stage eligibility remains separate.
 Phone delivery pins BOTH original.png and receipt.json at an exact per-key G3
 manifest path; no finished entries are published here. C45 allows the existing
 individual palette remap after the verified finished pixels; a private alpha baseline
 rejects both copied and in-place alpha mutations before the unchanged seam guard.
-Claude reports the card adapter on its newer lane behind ?finish=1; that newer lane
-is not merged here. Stage wiring consumes this additive loader contract.
+Claude through signed 0c208c4c is merged, including the flagged card and stage wiring. Runtime IDs and visual keys share the bounded 2048-character limit; values and identity hashing are unchanged. The worker adapter copies its actual Uint8ClampedArray output, as well as Uint8Array/ArrayBuffer, retaining exact length checks. New canonical phone originals are pending native production; older proof identities are not relabelled.
 
 The worker still requires alpha===255 across its unchanged protected interior.
-All labels-present1254 masters have zero eligible interior under that rule; the
+The previously available labels-present1254 masters have zero eligible interior under that rule; the
 Cougar native attempt refused before inference. Alpha>=250 is proposed, awaiting
 Nick; no alpha bytes or conservation thresholds have changed. Contract, passing
 unit checks and retained native refusal: audits/G5_ADAPTER_UNBLOCK_20260926.

@@ -1,0 +1,26 @@
+{
+  "partId": "tail",
+  "proximalCut": [
+    [
+      433.4,
+      621.2
+    ],
+    [
+      406.3,
+      684.4
+    ]
+  ],
+  "joint": [
+    199.5,
+    667.5
+  ],
+  "parent": [
+    543.2,
+    762.7
+  ],
+  "originalPixels": 16879,
+  "candidateAddedPixels": 4767,
+  "rule": "original source alpha behind existing most-proximal transferred edge; original owner pixels seed contour; tracing can reassign boundary pixels; only remainder/unclaimed eligible for growth",
+  "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-v10/sandpiper/packet",
+  "masterSha256": "c315307102aed608563c8caa0ed7af9a15e24f807570ac2c03a92ee496cd4358"
+}

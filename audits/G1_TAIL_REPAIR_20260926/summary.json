@@ -1,0 +1,101 @@
+[
+  {
+    "subject": "eagle",
+    "status": "PASS_STATIC",
+    "actionRows": 14,
+    "presentationSamples": 1043,
+    "actionRefusals": [],
+    "presentationRefusal": "",
+    "recordRecipeHash": "389199d9467bbd6b1adcd787a114025bdeecf6c756229ee13b465cf6afe7dbe4",
+    "bindingHash": "a9162a4d3cd234f9cf36c3447709d30fde83f4fe2a10b4277d11e3228348901e",
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "sourceInputsUnchanged": true
+  },
+  {
+    "subject": "sparrow",
+    "status": "RED",
+    "actionRows": 14,
+    "presentationSamples": 722,
+    "actionRefusals": [
+      {
+        "id": "faint",
+        "error": "Error: Contact: joint limit legNearFoot faint@403.46666666666664: 45.190043168390744"
+      }
+    ],
+    "presentationRefusal": "Error: Contact: joint limit legNearFoot faint@406.196858599782: 45.389424035465424",
+    "recordRecipeHash": "8910f2d24d962fae9c536be44f417ec19a621fd3f9796b0b0abb1b60692b455b",
+    "bindingHash": "f7f5188dc401e6349c353706d273f91d009485bafc8e2e48d2c79d2ab466173e",
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "sourceInputsUnchanged": true
+  },
+  {
+    "subject": "sandpiper",
+    "status": "PASS_STATIC",
+    "actionRows": 14,
+    "presentationSamples": 1053,
+    "actionRefusals": [],
+    "presentationRefusal": "",
+    "recordRecipeHash": "c52942142416564e8450f015992e24ee957435ca853e1c50a9e06e1789abbb73",
+    "bindingHash": "c7261a36e4099070caf783f5133d9be1bd399b7c742afd7f0361cde17bbe961a",
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "sourceInputsUnchanged": true
+  },
+  {
+    "subject": "08-mongoose",
+    "status": "RED",
+    "actionRows": 19,
+    "presentationSamples": 485,
+    "actionRefusals": [],
+    "presentationRefusal": "Error: Contact: joint limit foreFarAnkle approach:gallop@714.7218966384726: -108.52991092650029",
+    "recordRecipeHash": "438caa7728630c4c3d94b8dc9ac1241c847fd0dfeda6b371687ee7c4e746e4e9",
+    "bindingHash": "ea3312f845b1a3616852c2041e57d2f673b33fd246779e18b1f74ea0d20ea8fc",
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "sourceInputsUnchanged": true
+  },
+  {
+    "subject": "18-tapir",
+    "status": "RED",
+    "actionRows": 19,
+    "presentationSamples": 863,
+    "actionRefusals": [
+      {
+        "id": "melee:tail",
+        "error": "Error: Contact: melee:tail@246.17777777777778 exceeds scale compression bound"
+      },
+      {
+        "id": "faint",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 15"
+      }
+    ],
+    "presentationRefusal": "Error: Contact: melee:tail@246.60849383970344 exceeds scale compression bound",
+    "recordRecipeHash": "5641aef38f385ca81f8770b0c7030b4b43f1330b64c6340a9cf66b50bf1ab458",
+    "bindingHash": "f47fbd33259b35d92b6bcc6371e79d308f095854d1ad7e1eb9277e6666340f2e",
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "sourceInputsUnchanged": true
+  },
+  {
+    "subject": "grouse",
+    "status": "INTAKE_REFUSED",
+    "error": "observed-split: contact conflicts with fixed owner"
+  }
+]
