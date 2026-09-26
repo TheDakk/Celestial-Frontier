@@ -23,6 +23,29 @@ Nick decided D15 (the in-house $0 plan, `audits/PROPOSALS_20260925/N5_AUDIO.md`)
   - The oscillator Tame/Feed/Compendium call plans already key on the same signature; they become articulations of this card in Stage 4.
   - Test: `battle2-wiring.test.ts` "one voice per creature". The stage card equals the Compendium card byte for byte, in two battles. Control: with the identity card switched off it fails.
 
+- **H1 codec decode check** (`port/v2/apps/game/src/device-probe.ts`, page `?deviceProbe=1`, dynamic import only):
+  - Five tiny genuine samples are embedded with their SHA-256 (`device-probe-codec-samples.ts`): a 440 Hz sine, 0.12 s, Opus in Ogg/WebM/CAF and AAC in M4A/ADTS.
+  - Each sample is verified against its hash (a mismatch is a FAIL), then decoded through the device's real `decodeAudioData`.
+  - PASS needs the real tone: 80–300 ms, at least one channel, RMS above 0.01. A rejected decode is UNSUPPORTED.
+  - Recommendation: `opus` if any Opus container passes, else `aac`, else `none` (N5: one codec, never both). `canPlayType` is recorded as provenance only.
+  - Offline: no network and no telemetry. **Copy results** gives Nick plain text to paste.
+  - Test: `tests/device-probe-codecs.test.ts` covers every outcome with a fake AudioContext, a corrupted-sample control (fails if the hash check is removed), and a source check that the page is reachable only through its flag's dynamic import.
+
+- **L1 Listening page** (`port/v2/apps/game/src/listening-review.ts`, `?audioReview=1` on a BUILT package such as the dev URL; dynamic import only; the dev server keeps Codex's production review on the same flag):
+  - Fixed order: 13 representative Earth creatures, one per voice archetype (`LISTENING_ROSTER_V1`), × the 11 creature cues = 143 items.
+  - Each item plays the cue the battle stage would play for that creature, byte for byte: its ONE voice card, `deriveCue(card, cue, sources, card.seed)`, today from the labelled placeholder library.
+  - Playback goes through the audio owner's explicit pilot gesture (`armNativePilotGesture` → `playPilotVoice`, decorative, `cf-pilot-listen-*`). Only a trusted press plays, and nothing plays with Sound off.
+  - Keep / Redo / Cut plus an optional note. Ratings live in guarded localStorage (`cf-listening-l1-v1`), never the save.
+  - **Copy results** gives a plain-text block: commit, pack digest (the package's own `preview.json` `contentSha256`, or `unavailable`), device UA, and the rated lines in order.
+  - Test: `tests/listening-review.test.ts`:
+    - the roster is truthful;
+    - the page's cue equals the battle cue;
+    - requests have the pilot shape;
+    - real presses give the exact copied text, and ratings survive a remount;
+    - controls: untrusted press, Sound off, text changes with ratings;
+    - a source check that the page is reachable only through its flag's dynamic import.
+  - Mutants killed: persistence removed; the trust gate removed.
+
 ## Accessibility modes: Mono audio and Reduced intensity (matches code as of 2026-09-25)
 
 Settings has two toggles under Creature voices, and both are applied once at the master of the ONE shared runtime (`@cf/audio`

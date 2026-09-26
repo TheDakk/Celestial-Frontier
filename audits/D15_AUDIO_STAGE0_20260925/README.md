@@ -33,8 +33,19 @@ Nick decided D15: the in-house plan with $0 spend (`audits/PROPOSALS_20260925/N5
 
 ## Still to do (outside this batch's directive)
 The rest of N5's Stage 0 row:
-- the Opus/AAC decode check on the H1 iPhone probe page, which decides the one codec we ship;
-- the Listening page built from `?audioReview=1`.
+- ~~the Opus/AAC decode check on the H1 iPhone probe page~~ **done** (`device-probe.ts`, `?deviceProbe=1`). No H1 page existed yet, so this is its first section; the performance, heat and memory sections join the same page later. Nick runs it on the iPhone and pastes **Copy results**; the recommendation decides the one codec we ship;
+- ~~the Listening page built from `?audioReview=1`~~ **done** (`listening-review.ts`, on built packages; see AUDIO.md). It reviews today's placeholder-derived voices, so the page, its order and its Copy results are ready before Stage 1 swaps in real sources.
+
+### How Nick runs L1 on the iPhone (about 15 minutes)
+1. In Safari on the iPhone, open `https://dev-celestialfrontier.github.io/?audioReview=1`, press **Skip** on Field Training if it shows, and make sure **Sound** is on in Settings.
+2. The Listening review opens over the game. Expand a creature, press **▶ Play** on the iPhone speaker, then again on headphones.
+3. Tap **Keep**, **Redo** or **Cut**, and type a note if you want. Ratings stay on the phone, so you can stop and resume later.
+4. Press **Copy results** and paste the text into chat. Claude commits it to `audits/listening-<date>/`.
+5. The codec check is separate: open `https://dev-celestialfrontier.github.io/?deviceProbe=1`, press **Run codec check**, then **Copy results**, and paste. Its recommendation (opus, aac or none) decides the one codec we ship.
+
+### Proposed release bullets (for Codex's batched re-measure; the sealed inventory was not edited)
+- UI Enhancements: "🎧 LISTENING REVIEW — a hidden review page (`?audioReview=1`) plays every creature's voice in a fixed order, for Keep / Redo / Cut ratings you can copy out. Nothing leaves your device."
+- Under the Hood: "🔬 DEVICE PROBE — `?deviceProbe=1` checks which audio codecs this device decodes, offline, to choose the one format the game ships."
 
 ## Nick's listening review for Stage 1 (about 15 minutes, L1)
 Stage 1 brings in the first real sources (kit §8b–d). Each is derived three ways and heard in the arena turn: approach, strike, hitstop, impact, hurt, damage ticks and victory. Rights rows land in the same batch.
