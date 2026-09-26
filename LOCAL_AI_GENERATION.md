@@ -207,6 +207,19 @@ conservation. The loader projects into unchanged atlas frames; original record,
 binding and atlas pins remain intact. A supplementary generated label registry
 covers 34 fits; Civet, Eel, Rat and Salamander have missing source labels and refuse.
 Phone delivery pins BOTH original.png and receipt.json at an exact per-key G3
-manifest path; no finished entries are published here. Default game routing remains
-Claude's next task behind ?finish=1 and quality review. Contract, tests and native
-1254 proof status: audits/G5_ADAPTER_UNBLOCK_20260926.
+manifest path; no finished entries are published here. C45 allows the existing
+individual palette remap after the verified finished pixels; a private alpha baseline
+rejects both copied and in-place alpha mutations before the unchanged seam guard.
+Claude reports the card adapter on its newer lane behind ?finish=1; that newer lane
+is not merged here. Stage wiring consumes this additive loader contract.
+
+The worker still requires alpha===255 across its unchanged protected interior.
+All labels-present1254 masters have zero eligible interior under that rule; the
+Cougar native attempt refused before inference. Alpha>=250 is proposed, awaiting
+Nick; no alpha bytes or conservation thresholds have changed. Contract, passing
+unit checks and retained native refusal: audits/G5_ADAPTER_UNBLOCK_20260926.
+
+
+### G2 four-family pilot — matches tooling as of 2026-09-26
+
+The canonical library compiler also supports birds, fish, serpents and insects through actual profile candidates. Twenty unmodified1254 masters and original generation receipts are retained in `audits/G2_FAMILY_PILOT_20260926`. Complete true tails, open serpent curves and species-specific insect anatomy are requested; geometric observations remain distinct from biological inventory or G1 admission. Visible overlap and unwanted markings remain findings. After C44, subsequent bird/quadruped prompts request planted strides with full near/far shaft gaps; prior packets preserve their exact earlier prompts. No hand authoring, fit replacement or runtime adoption occurs here.

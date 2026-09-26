@@ -45,5 +45,7 @@ test('actual worker dispatch validates transferred bytes before constructing mod
  const context={ort:{},Tokenizer:class{},onmessage:null,postMessage:m=>messages.push(m),prepareCreatureFinishJob,admitKitEngineJob(){throw Error('unexpected kit');},createKitWorkerEngine:async()=>{creates++;return {async finishCreature(recipe){finishes++;assert.ok(recipe.master.buffer instanceof ArrayBuffer);assert.equal('url' in recipe.master,false);return {status:'fixture'};},async dispose(){}};}};
  vm.runInNewContext(source,context);
  const bad=job();new Uint8Array(bad.labels.buffer)[8]^=1;await context.onmessage({data:{stage:'creature-finish-v1',requestId:1,recipe:bad}});assert.equal(messages.at(-1).type,'error');assert.match(messages.at(-1).message,/hash mismatch/);assert.equal(creates,0);assert.equal(finishes,0);
- await context.onmessage({data:{stage:'creature-finish-v1',requestId:2,recipe:job()}});assert.equal(messages.at(-1).type,'complete');assert.equal(creates,1);assert.equal(finishes,1);
+ const partial=fixture(129);for(let i=3;i<partial.master.length;i+=4)if(partial.master[i]===255)partial.master[i]=253;
+ await context.onmessage({data:{stage:'creature-finish-v1',requestId:2,recipe:job(partial)}});assert.equal(messages.at(-1).type,'error');assert.match(messages.at(-1).message,/No editable creature interior/);assert.equal(creates,0);assert.equal(finishes,0);
+ await context.onmessage({data:{stage:'creature-finish-v1',requestId:3,recipe:job()}});assert.equal(messages.at(-1).type,'complete');assert.equal(creates,1);assert.equal(finishes,1);
 });

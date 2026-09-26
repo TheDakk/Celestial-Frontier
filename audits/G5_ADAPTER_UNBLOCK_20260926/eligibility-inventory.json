@@ -1,0 +1,2623 @@
+{
+  "schema": "cf.g5-source-eligibility/v1",
+  "head": "bfe76a6bbfa1303c73976944cc1a9be316836a88",
+  "pinsSha256": "e02980010fd542c3d05399827b534ea80d7d4b5f52e9f1b220fe7edddb639da1",
+  "labelsPinsSha256": "4fa50f00a4161de21d28c3cee529952a89633302148e90a64133edd7c73a8ca4",
+  "total": 38,
+  "labelsPresent": 34,
+  "eligible": 5,
+  "eligible1254": [],
+  "recommendedDistinctCase": null,
+  "scope": "Original source bytes unchanged; existing mask criteria unchanged; read-only preflight, not a native inference",
+  "rows": [
+    {
+      "id": "bass",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/08-bass/master.png",
+      "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/08-bass/fit-05/record.json",
+      "recordSha256": "a5a134a3a158c856a7620a5bfb7c2d7eab08dd010cc3a4f79d1e12d74ded5043",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/08-bass/fit-05/labels.png",
+      "labelsPngSha256": "99f22a00de556ce6f7f2578c6184900d802db8fed0f0ae19a3d4cdc4a447f1e1",
+      "width": 1254,
+      "height": 1254,
+      "painted": 429747,
+      "opaque": 347,
+      "labeled": 429747,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1142769
+        ],
+        [
+          "253",
+          370796
+        ],
+        [
+          "252",
+          19739
+        ],
+        [
+          "1",
+          6666
+        ],
+        [
+          "251",
+          5905
+        ],
+        [
+          "254",
+          3681
+        ],
+        [
+          "250",
+          2791
+        ],
+        [
+          "2",
+          2144
+        ],
+        [
+          "249",
+          1632
+        ],
+        [
+          "3",
+          1316
+        ],
+        [
+          "248",
+          1167
+        ],
+        [
+          "4",
+          1001
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "beetle",
+      "masterPath": "audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-04-fit/master.png",
+      "masterSha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb",
+      "recordPath": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/record.json",
+      "recordSha256": "6ccea5117da3296e2e8e0967ee83a95d5790650c89f0754277daa6dcba19f0a9",
+      "labelsPath": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/labels.png",
+      "labelsPngSha256": "07186d15f8df2f202e4cff8799598f68325116d8c4748e4bece9c7653cae78e4",
+      "width": 1254,
+      "height": 1254,
+      "painted": 421077,
+      "opaque": 639,
+      "labeled": 421077,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1151439
+        ],
+        [
+          "252",
+          187479
+        ],
+        [
+          "253",
+          94195
+        ],
+        [
+          "251",
+          41273
+        ],
+        [
+          "1",
+          22057
+        ],
+        [
+          "250",
+          12506
+        ],
+        [
+          "2",
+          6497
+        ],
+        [
+          "249",
+          6326
+        ],
+        [
+          "248",
+          4507
+        ],
+        [
+          "3",
+          3526
+        ],
+        [
+          "247",
+          3295
+        ],
+        [
+          "246",
+          2606
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "centipede",
+      "masterPath": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-13/master.png",
+      "masterSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+      "recordPath": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/record.json",
+      "recordSha256": "1e450966e4d95383a5219914f27d2fbc8e4047200598e4bd3d6bc50a48fda7c6",
+      "labelsPath": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/labels.png",
+      "labelsPngSha256": "637ea64a967c55876c31acb7c0aa2096e4a863cf73a9ae9cca8d76057313b477",
+      "width": 1254,
+      "height": 1254,
+      "painted": 178726,
+      "opaque": 708,
+      "labeled": 178726,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1393790
+        ],
+        [
+          "253",
+          48984
+        ],
+        [
+          "252",
+          23601
+        ],
+        [
+          "1",
+          21220
+        ],
+        [
+          "251",
+          15736
+        ],
+        [
+          "250",
+          9894
+        ],
+        [
+          "2",
+          6536
+        ],
+        [
+          "249",
+          5488
+        ],
+        [
+          "3",
+          3821
+        ],
+        [
+          "248",
+          3634
+        ],
+        [
+          "247",
+          2893
+        ],
+        [
+          "4",
+          2590
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "chimpanzee",
+      "masterPath": "audits/ARCHETYPE_FINISH_20260923/07-primate/candidate-02/master.png",
+      "masterSha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408",
+      "recordPath": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/record.json",
+      "recordSha256": "a0bc1dfa21c92a723e15786c4500dd807911ef1d7838ceca734ad669aa68f857",
+      "labelsPath": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/labels.png",
+      "labelsPngSha256": "60192171eaa2af8a72771581340a034cc203e2a69bac86059f35589a48de8009",
+      "width": 1254,
+      "height": 1254,
+      "painted": 717860,
+      "opaque": 384,
+      "labeled": 717860,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          854656
+        ],
+        [
+          "252",
+          392935
+        ],
+        [
+          "253",
+          201296
+        ],
+        [
+          "251",
+          29077
+        ],
+        [
+          "1",
+          16751
+        ],
+        [
+          "250",
+          8180
+        ],
+        [
+          "2",
+          4623
+        ],
+        [
+          "249",
+          3956
+        ],
+        [
+          "248",
+          2521
+        ],
+        [
+          "3",
+          2453
+        ],
+        [
+          "247",
+          1645
+        ],
+        [
+          "4",
+          1595
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "civet",
+      "status": "NO_LABELS_PIN",
+      "reason": "Error: finish labels: stale or missing source pin"
+    },
+    {
+      "id": "coconut-crab",
+      "masterPath": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/coconut-crab-master.png",
+      "masterSha256": "a0f681a8e44f374407424e5e60b2e5deffb8a23162cfefe3ace96b8cfb4d4832",
+      "recordPath": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/record.json",
+      "recordSha256": "848352d4d30b8351a37202a90cf7690a1d98a4e0af45c1bf8c70961ef072e1f9",
+      "labelsPath": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/labels.png",
+      "labelsPngSha256": "234df901e16b674429a14ceeec4edb89ec3ec742f73027ec50cf23700ad3e4d7",
+      "width": 880,
+      "height": 880,
+      "painted": 34298,
+      "opaque": 27005,
+      "labeled": 34298,
+      "originalEligiblePixels": 11454,
+      "topAlphaCounts": [
+        [
+          "0",
+          740102
+        ],
+        [
+          "255",
+          27005
+        ],
+        [
+          "107",
+          3932
+        ],
+        [
+          "128",
+          150
+        ],
+        [
+          "54",
+          130
+        ],
+        [
+          "97",
+          127
+        ],
+        [
+          "80",
+          125
+        ],
+        [
+          "27",
+          118
+        ],
+        [
+          "176",
+          108
+        ],
+        [
+          "73",
+          99
+        ],
+        [
+          "191",
+          84
+        ],
+        [
+          "137",
+          83
+        ]
+      ],
+      "originalMask": {
+        "status": "PASS",
+        "editablePixels": 11454
+      },
+      "workWidth": 880,
+      "workHeight": 880,
+      "paddedMask": {
+        "status": "PASS",
+        "editablePixels": 11454,
+        "editableTokens": 41
+      },
+      "status": "ELIGIBLE"
+    },
+    {
+      "id": "cougar",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/master.png",
+      "masterSha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03/record.json",
+      "recordSha256": "a011ebc38f3fd54430ccfc90cd94178b213bf507beebff8e415ffc693397cb6a",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03/labels.png",
+      "labelsPngSha256": "56cb5cb87b39d1146db824e39add6426bb0083c5775775dc25d072b8521dc5c2",
+      "width": 1254,
+      "height": 1254,
+      "painted": 375802,
+      "opaque": 193,
+      "labeled": 375802,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1196714
+        ],
+        [
+          "253",
+          295389
+        ],
+        [
+          "252",
+          23882
+        ],
+        [
+          "1",
+          12710
+        ],
+        [
+          "251",
+          7559
+        ],
+        [
+          "254",
+          4233
+        ],
+        [
+          "2",
+          3788
+        ],
+        [
+          "250",
+          3663
+        ],
+        [
+          "249",
+          2179
+        ],
+        [
+          "3",
+          1833
+        ],
+        [
+          "248",
+          1442
+        ],
+        [
+          "4",
+          1169
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "crab",
+      "masterPath": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/crab-master.png",
+      "masterSha256": "dd419ae94d47663e22cc7ca598247d5c2d539b78dff24bb2b881bf16ecae5655",
+      "recordPath": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/record.json",
+      "recordSha256": "3f9041a69889c156c051ad23946e6f33f87675b46212b9536b3c828b7c9b49da",
+      "labelsPath": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/labels.png",
+      "labelsPngSha256": "2f8752420492af502902f818cfd35fc8085719ab2752e09ae2aad92218067075",
+      "width": 880,
+      "height": 880,
+      "painted": 16619,
+      "opaque": 11675,
+      "labeled": 16619,
+      "originalEligiblePixels": 5128,
+      "topAlphaCounts": [
+        [
+          "0",
+          757781
+        ],
+        [
+          "255",
+          11675
+        ],
+        [
+          "107",
+          2972
+        ],
+        [
+          "80",
+          111
+        ],
+        [
+          "97",
+          101
+        ],
+        [
+          "128",
+          89
+        ],
+        [
+          "27",
+          81
+        ],
+        [
+          "54",
+          80
+        ],
+        [
+          "176",
+          69
+        ],
+        [
+          "64",
+          67
+        ],
+        [
+          "49",
+          62
+        ],
+        [
+          "191",
+          62
+        ]
+      ],
+      "originalMask": {
+        "status": "PASS",
+        "editablePixels": 5128
+      },
+      "workWidth": 880,
+      "workHeight": 880,
+      "paddedMask": {
+        "status": "PASS",
+        "editablePixels": 5128,
+        "editableTokens": 16
+      },
+      "status": "ELIGIBLE"
+    },
+    {
+      "id": "dragonfly",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/master.png",
+      "masterSha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/fit-03/record.json",
+      "recordSha256": "d7bd0ab92be377a8c4234798fc015e514cea37260cb51949ec48ef42e82cf182",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/fit-03/labels.png",
+      "labelsPngSha256": "ace081d5deb8c9728f500458a054453a6249cda18814fc82d16da508092a7e71",
+      "width": 1254,
+      "height": 1254,
+      "painted": 342988,
+      "opaque": 550,
+      "labeled": 342988,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1229528
+        ],
+        [
+          "253",
+          183197
+        ],
+        [
+          "252",
+          57579
+        ],
+        [
+          "1",
+          21956
+        ],
+        [
+          "251",
+          14924
+        ],
+        [
+          "2",
+          7431
+        ],
+        [
+          "250",
+          6841
+        ],
+        [
+          "249",
+          4404
+        ],
+        [
+          "3",
+          3756
+        ],
+        [
+          "248",
+          3160
+        ],
+        [
+          "4",
+          2400
+        ],
+        [
+          "247",
+          2393
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "eagle",
+      "masterPath": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-12/master.png",
+      "masterSha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a",
+      "recordPath": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/record.json",
+      "recordSha256": "600e7cde066fa25bcafecd85c82879f23b880ac29ac79b6c667984c4a9fe9db5",
+      "labelsPath": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/labels.png",
+      "labelsPngSha256": "66f75a3c56760f750b5d023b54eab085ed3a5e646902ef559f9dda4fd4271ab6",
+      "width": 1254,
+      "height": 1254,
+      "painted": 622400,
+      "opaque": 504,
+      "labeled": 622400,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          950116
+        ],
+        [
+          "252",
+          346034
+        ],
+        [
+          "253",
+          153048
+        ],
+        [
+          "251",
+          35592
+        ],
+        [
+          "1",
+          19552
+        ],
+        [
+          "250",
+          10129
+        ],
+        [
+          "249",
+          5573
+        ],
+        [
+          "2",
+          5215
+        ],
+        [
+          "248",
+          3681
+        ],
+        [
+          "3",
+          2888
+        ],
+        [
+          "247",
+          2827
+        ],
+        [
+          "246",
+          2206
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "eel",
+      "status": "NO_LABELS_PIN",
+      "reason": "Error: finish labels: stale or missing source pin"
+    },
+    {
+      "id": "freshwater-crab",
+      "masterPath": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/freshwater-crab-master.png",
+      "masterSha256": "65cd0220488bbdda7cd220c67a33817c8155e7fec87087692d02279f6df11a57",
+      "recordPath": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/record.json",
+      "recordSha256": "c72fcc04fd3d2e5d2a9b71d8c76e10231c40596ac32a37bf605c5091dfeb4f50",
+      "labelsPath": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/labels.png",
+      "labelsPngSha256": "286942e6b23d96b9307a6f3ce62f23dc2cc7548f1d480561ac1bbacd0884b48e",
+      "width": 880,
+      "height": 880,
+      "painted": 29689,
+      "opaque": 18182,
+      "labeled": 29689,
+      "originalEligiblePixels": 11755,
+      "topAlphaCounts": [
+        [
+          "0",
+          744711
+        ],
+        [
+          "255",
+          18182
+        ],
+        [
+          "107",
+          4674
+        ],
+        [
+          "250",
+          2500
+        ],
+        [
+          "253",
+          514
+        ],
+        [
+          "125",
+          506
+        ],
+        [
+          "254",
+          405
+        ],
+        [
+          "188",
+          359
+        ],
+        [
+          "63",
+          351
+        ],
+        [
+          "251",
+          345
+        ],
+        [
+          "209",
+          282
+        ],
+        [
+          "80",
+          171
+        ]
+      ],
+      "originalMask": {
+        "status": "PASS",
+        "editablePixels": 11755
+      },
+      "workWidth": 880,
+      "workHeight": 880,
+      "paddedMask": {
+        "status": "PASS",
+        "editablePixels": 11755,
+        "editableTokens": 46
+      },
+      "status": "ELIGIBLE"
+    },
+    {
+      "id": "fruit-bat",
+      "masterPath": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/candidate-02/master.png",
+      "masterSha256": "ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7",
+      "recordPath": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/record.json",
+      "recordSha256": "589afa4484013fe422c85608f342403b2e3d5a20dbb1e1ee2150599afa68aee0",
+      "labelsPath": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/labels.png",
+      "labelsPngSha256": "833871cbbd4239542d6fbf890f32301a26b8d5f72deefe000d880179764f82cb",
+      "width": 1254,
+      "height": 1254,
+      "painted": 372374,
+      "opaque": 399,
+      "labeled": 372374,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1200142
+        ],
+        [
+          "253",
+          225418
+        ],
+        [
+          "252",
+          98865
+        ],
+        [
+          "251",
+          11061
+        ],
+        [
+          "1",
+          7294
+        ],
+        [
+          "250",
+          3826
+        ],
+        [
+          "2",
+          2341
+        ],
+        [
+          "249",
+          2223
+        ],
+        [
+          "248",
+          1402
+        ],
+        [
+          "3",
+          1329
+        ],
+        [
+          "247",
+          980
+        ],
+        [
+          "4",
+          878
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "goose",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/15-goose/master.png",
+      "masterSha256": "0f3575a5fe537ced0a819a5bb181a1115914c3eef824bcad3440bf541e16cfd1",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/record.json",
+      "recordSha256": "010e51ae7afe4f5e9a79051ef1dd5a260d3fcfbcc72deb0bba5754bcb5b3eff6",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/labels.png",
+      "labelsPngSha256": "169735e054c8d410a9d31fcb4ba8d35e411af90fab13c004d643d26e6d8d59ef",
+      "width": 1254,
+      "height": 1254,
+      "painted": 345522,
+      "opaque": 772,
+      "labeled": 345522,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1226994
+        ],
+        [
+          "253",
+          267506
+        ],
+        [
+          "252",
+          33139
+        ],
+        [
+          "1",
+          7712
+        ],
+        [
+          "251",
+          7663
+        ],
+        [
+          "250",
+          3337
+        ],
+        [
+          "2",
+          2428
+        ],
+        [
+          "254",
+          2146
+        ],
+        [
+          "249",
+          2057
+        ],
+        [
+          "248",
+          1517
+        ],
+        [
+          "3",
+          1499
+        ],
+        [
+          "247",
+          1104
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "gull",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/12-gull/master.png",
+      "masterSha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/record.json",
+      "recordSha256": "9c2b13f2d6dfebaa68a7069975fdc8cb2715690253e704865ab25ce2462794ae",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/labels.png",
+      "labelsPngSha256": "030ed5cc891734fc383746e73a0d82fb79a3aa083f75ddeefd07d8ed70208df9",
+      "width": 1254,
+      "height": 1254,
+      "painted": 210852,
+      "opaque": 224,
+      "labeled": 210852,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1361664
+        ],
+        [
+          "253",
+          148373
+        ],
+        [
+          "252",
+          19014
+        ],
+        [
+          "1",
+          8574
+        ],
+        [
+          "251",
+          6559
+        ],
+        [
+          "250",
+          3156
+        ],
+        [
+          "254",
+          3139
+        ],
+        [
+          "2",
+          2488
+        ],
+        [
+          "249",
+          2041
+        ],
+        [
+          "3",
+          1542
+        ],
+        [
+          "248",
+          1218
+        ],
+        [
+          "4",
+          1024
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "heron",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/16-heron/master.png",
+      "masterSha256": "15618869db6ea85407c2566b5dacd469513bffd1db2fa0a76247918cb51c491c",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/16-heron/fit-01/record.json",
+      "recordSha256": "586233ae2b9bf20b7de4ed9e534d7968ed841ee7ab4730f1aac0c17673767c88",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/16-heron/fit-01/labels.png",
+      "labelsPngSha256": "a0b49bcc1bd0088e56b5e02e5381a0cc0318b0e5bf4edf23288542edd800ade3",
+      "width": 1254,
+      "height": 1254,
+      "painted": 228745,
+      "opaque": 745,
+      "labeled": 228745,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1343771
+        ],
+        [
+          "253",
+          159858
+        ],
+        [
+          "252",
+          13793
+        ],
+        [
+          "1",
+          8569
+        ],
+        [
+          "254",
+          7866
+        ],
+        [
+          "251",
+          5978
+        ],
+        [
+          "250",
+          3766
+        ],
+        [
+          "2",
+          2812
+        ],
+        [
+          "249",
+          2354
+        ],
+        [
+          "3",
+          1635
+        ],
+        [
+          "248",
+          1607
+        ],
+        [
+          "247",
+          1316
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "ibex",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/18-ibex/master.png",
+      "masterSha256": "97dde355ce484eaa944a58ecb67674fb08fa2d36299904d4e1b0d539b27c988a",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/18-ibex/fit-02/record.json",
+      "recordSha256": "98ad5f34352615b8f94891b95f6da623c44dd178a3241b479dde625351478b80",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/18-ibex/fit-02/labels.png",
+      "labelsPngSha256": "1bae9560418b52e9583ae4c4e13fb5745dc1c064d3549685b1f75dd63fdd0288",
+      "width": 1254,
+      "height": 1254,
+      "painted": 272753,
+      "opaque": 394,
+      "labeled": 272753,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1299763
+        ],
+        [
+          "253",
+          182501
+        ],
+        [
+          "254",
+          26239
+        ],
+        [
+          "252",
+          19226
+        ],
+        [
+          "1",
+          8063
+        ],
+        [
+          "251",
+          6312
+        ],
+        [
+          "250",
+          3028
+        ],
+        [
+          "2",
+          2438
+        ],
+        [
+          "249",
+          2064
+        ],
+        [
+          "3",
+          1529
+        ],
+        [
+          "248",
+          1469
+        ],
+        [
+          "247",
+          1100
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "impala",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-input-01/master.png",
+      "masterSha256": "abad16f380bf27e2a17123882dd1ba027e196f10a180f299dbb470663e2b031a",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/record.json",
+      "recordSha256": "c58dd32f5343053c92ef32e770367d3944b276ba073e95234b481a8bc50b2d67",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/labels.png",
+      "labelsPngSha256": "5c3af48c71510d30ccad33d15d8b6eda279b0ee3ce4f1a2395fdd8c4786e88af",
+      "width": 1254,
+      "height": 1254,
+      "painted": 369964,
+      "opaque": 923,
+      "labeled": 369964,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1202552
+        ],
+        [
+          "253",
+          213423
+        ],
+        [
+          "252",
+          82364
+        ],
+        [
+          "1",
+          17706
+        ],
+        [
+          "251",
+          13801
+        ],
+        [
+          "250",
+          5290
+        ],
+        [
+          "2",
+          3888
+        ],
+        [
+          "249",
+          2932
+        ],
+        [
+          "3",
+          2220
+        ],
+        [
+          "248",
+          2083
+        ],
+        [
+          "4",
+          1578
+        ],
+        [
+          "247",
+          1492
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "jellyfish",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/master.png",
+      "masterSha256": "5c878a70e83b232ef7aa1d716f6deab99626a8292e2a9714d87d945b1187e2ee",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/record.json",
+      "recordSha256": "5a970d35d5a9da8715b51f685e70bae55420aa77a850776c158b9e9c7752a6df",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/labels.png",
+      "labelsPngSha256": "67d05b4d70e7d33c6bc8ecff0777430f94f0f4625bd8b42d0522ae006acf8d9f",
+      "width": 1254,
+      "height": 1254,
+      "painted": 399548,
+      "opaque": 2863,
+      "labeled": 399548,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1172968
+        ],
+        [
+          "253",
+          182300
+        ],
+        [
+          "1",
+          41788
+        ],
+        [
+          "252",
+          38383
+        ],
+        [
+          "251",
+          25892
+        ],
+        [
+          "254",
+          16454
+        ],
+        [
+          "250",
+          12755
+        ],
+        [
+          "2",
+          10949
+        ],
+        [
+          "249",
+          6590
+        ],
+        [
+          "3",
+          5680
+        ],
+        [
+          "248",
+          4618
+        ],
+        [
+          "4",
+          4147
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "marmot",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/07-marmot/master.png",
+      "masterSha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/record.json",
+      "recordSha256": "1b6d32c306b23aa9eafbe1dd29536d54898d242a6c08f63b42d32d621b84800c",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/labels.png",
+      "labelsPngSha256": "18366bee7fb2829c3def587db9be787b70081f66dd8cc1bf07f323a5e0c2382d",
+      "width": 1254,
+      "height": 1254,
+      "painted": 457226,
+      "opaque": 29,
+      "labeled": 457226,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1115290
+        ],
+        [
+          "253",
+          376610
+        ],
+        [
+          "252",
+          18304
+        ],
+        [
+          "254",
+          11318
+        ],
+        [
+          "1",
+          7776
+        ],
+        [
+          "251",
+          6850
+        ],
+        [
+          "250",
+          3797
+        ],
+        [
+          "249",
+          2487
+        ],
+        [
+          "2",
+          2398
+        ],
+        [
+          "248",
+          1626
+        ],
+        [
+          "3",
+          1407
+        ],
+        [
+          "247",
+          1163
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "mud-crab",
+      "masterPath": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/mud-crab-master.png",
+      "masterSha256": "c08d616382e86c4dfa21fd895a25f4eda1dd3ee9efa8ed9751ea978bc9ae3379",
+      "recordPath": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/record.json",
+      "recordSha256": "5fc648200c7f53dbb289ed3ae47400642bc4a32a95544695e7be6a91d28098c3",
+      "labelsPath": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/labels.png",
+      "labelsPngSha256": "0f53dbfb39d02ed4371fb01fb55845cc7a71eec5edf025365eb5a11ef3329756",
+      "width": 880,
+      "height": 880,
+      "painted": 30993,
+      "opaque": 19140,
+      "labeled": 30993,
+      "originalEligiblePixels": 11441,
+      "topAlphaCounts": [
+        [
+          "0",
+          743407
+        ],
+        [
+          "255",
+          19140
+        ],
+        [
+          "107",
+          4676
+        ],
+        [
+          "250",
+          2554
+        ],
+        [
+          "253",
+          518
+        ],
+        [
+          "125",
+          508
+        ],
+        [
+          "254",
+          439
+        ],
+        [
+          "251",
+          378
+        ],
+        [
+          "63",
+          371
+        ],
+        [
+          "188",
+          356
+        ],
+        [
+          "209",
+          273
+        ],
+        [
+          "80",
+          175
+        ]
+      ],
+      "originalMask": {
+        "status": "PASS",
+        "editablePixels": 11441
+      },
+      "workWidth": 880,
+      "workHeight": 880,
+      "paddedMask": {
+        "status": "PASS",
+        "editablePixels": 11441,
+        "editableTokens": 44
+      },
+      "status": "ELIGIBLE"
+    },
+    {
+      "id": "octopus",
+      "masterPath": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/master.png",
+      "masterSha256": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e",
+      "recordPath": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/record.json",
+      "recordSha256": "efc022ee48645c35083eb5cd50c57776d00f552b3b49a972faff21e48221190a",
+      "labelsPath": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/labels.png",
+      "labelsPngSha256": "1108a8dac4d7686c83359121eb9b159486f89bfff92a97a3c60861abeed1331a",
+      "width": 1254,
+      "height": 1254,
+      "painted": 638124,
+      "opaque": 1001,
+      "labeled": 638124,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          934392
+        ],
+        [
+          "252",
+          335968
+        ],
+        [
+          "253",
+          149234
+        ],
+        [
+          "251",
+          46077
+        ],
+        [
+          "1",
+          28685
+        ],
+        [
+          "250",
+          14302
+        ],
+        [
+          "2",
+          7843
+        ],
+        [
+          "249",
+          6943
+        ],
+        [
+          "3",
+          4125
+        ],
+        [
+          "248",
+          3995
+        ],
+        [
+          "247",
+          2902
+        ],
+        [
+          "4",
+          2780
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "pike",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/20-pike/master.png",
+      "masterSha256": "964a23d815434e6f36196eb71c3574951ca74d9d08998d8f40d458fcc7e24468",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/20-pike/fit-02/record.json",
+      "recordSha256": "f97368d0825cd8d7baff2063540766c609299e5d9cd7e3e5021415847b54a203",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/20-pike/fit-02/labels.png",
+      "labelsPngSha256": "915d74261a74eca04e027fa348baf100c2485168b09f46301b95ea2c7a51e09b",
+      "width": 1254,
+      "height": 1254,
+      "painted": 135760,
+      "opaque": 596,
+      "labeled": 135760,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1436756
+        ],
+        [
+          "253",
+          96383
+        ],
+        [
+          "252",
+          13304
+        ],
+        [
+          "1",
+          4001
+        ],
+        [
+          "254",
+          3937
+        ],
+        [
+          "251",
+          3573
+        ],
+        [
+          "250",
+          1512
+        ],
+        [
+          "2",
+          1305
+        ],
+        [
+          "249",
+          987
+        ],
+        [
+          "3",
+          865
+        ],
+        [
+          "248",
+          760
+        ],
+        [
+          "247",
+          652
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "python-open",
+      "masterPath": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/master.png",
+      "masterSha256": "d0a777d5186a6787461d795b41b34b8ce4569af1efd10b14f98524fc92ef8cae",
+      "recordPath": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/record.json",
+      "recordSha256": "391ea2ad4dbe52b9685bc62d58036f0357948680537f3315f65d58da43cc56b0",
+      "labelsPath": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/labels.png",
+      "labelsPngSha256": "be1fa59cf243258db7107f96991e0cec04085c6547c03fb84c970e89dcf0130c",
+      "width": 1254,
+      "height": 1254,
+      "painted": 130853,
+      "opaque": 613,
+      "labeled": 130853,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1441663
+        ],
+        [
+          "253",
+          71153
+        ],
+        [
+          "252",
+          31280
+        ],
+        [
+          "251",
+          6495
+        ],
+        [
+          "1",
+          5336
+        ],
+        [
+          "250",
+          2140
+        ],
+        [
+          "2",
+          1630
+        ],
+        [
+          "254",
+          1024
+        ],
+        [
+          "249",
+          993
+        ],
+        [
+          "3",
+          835
+        ],
+        [
+          "248",
+          697
+        ],
+        [
+          "247",
+          613
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "racer",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/21-racer/master.png",
+      "masterSha256": "650d3a5d2fe3fe0b5fc986448a3a7818f89975642af68b51d27dac1366bc958e",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/record.json",
+      "recordSha256": "410dcd1115efb8959bc5c6cca509dcd1a354f525758c481073e793ff469d42d3",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/labels.png",
+      "labelsPngSha256": "5c6d2b215392ce97b6a0f9fa004f17a68d5b3ef0923c26f66340aaed9f2b33cc",
+      "width": 1254,
+      "height": 1254,
+      "painted": 33001,
+      "opaque": 292,
+      "labeled": 33001,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1539515
+        ],
+        [
+          "253",
+          16063
+        ],
+        [
+          "252",
+          4378
+        ],
+        [
+          "1",
+          2142
+        ],
+        [
+          "251",
+          1221
+        ],
+        [
+          "254",
+          1180
+        ],
+        [
+          "2",
+          741
+        ],
+        [
+          "250",
+          605
+        ],
+        [
+          "249",
+          524
+        ],
+        [
+          "248",
+          431
+        ],
+        [
+          "3",
+          428
+        ],
+        [
+          "247",
+          350
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "rat",
+      "status": "NO_LABELS_PIN",
+      "reason": "Error: finish labels: stale or missing source pin"
+    },
+    {
+      "id": "reef-shark",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/master.png",
+      "masterSha256": "c3d4a67f11764fb5fe7a9f98d2fa44b85fc63cd40b17b8d9ae934557fa6ebb46",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/record.json",
+      "recordSha256": "687bc604480eb28a39bd3dbc52eefb37c55e914876eaaad918dbd04639e1b5c1",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/labels.png",
+      "labelsPngSha256": "b09ed706fdd131e3206114213f471a03040125f890f3f30d3d5de5d90f2eb908",
+      "width": 1254,
+      "height": 1254,
+      "painted": 148832,
+      "opaque": 388,
+      "labeled": 148832,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1423684
+        ],
+        [
+          "253",
+          110476
+        ],
+        [
+          "252",
+          14907
+        ],
+        [
+          "251",
+          4167
+        ],
+        [
+          "1",
+          3709
+        ],
+        [
+          "250",
+          1811
+        ],
+        [
+          "2",
+          1181
+        ],
+        [
+          "249",
+          1169
+        ],
+        [
+          "248",
+          873
+        ],
+        [
+          "3",
+          745
+        ],
+        [
+          "247",
+          698
+        ],
+        [
+          "254",
+          676
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "river-otter",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/13-river-otter/master.png",
+      "masterSha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02/record.json",
+      "recordSha256": "65ca954e86b9a90a87bd3167f25de40ab14e771bd847353f51d64d96595f7209",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02/labels.png",
+      "labelsPngSha256": "ea72693a20b3100eb285cb4713e2de667619986fcd71a97b94b4efe8146bb46d",
+      "width": 1254,
+      "height": 1254,
+      "painted": 162980,
+      "opaque": 310,
+      "labeled": 162980,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1409536
+        ],
+        [
+          "253",
+          108435
+        ],
+        [
+          "252",
+          13135
+        ],
+        [
+          "254",
+          11977
+        ],
+        [
+          "1",
+          5124
+        ],
+        [
+          "251",
+          4043
+        ],
+        [
+          "2",
+          1798
+        ],
+        [
+          "250",
+          1759
+        ],
+        [
+          "3",
+          1268
+        ],
+        [
+          "249",
+          984
+        ],
+        [
+          "4",
+          818
+        ],
+        [
+          "248",
+          801
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "salamander",
+      "status": "NO_LABELS_PIN",
+      "reason": "Error: finish labels: stale or missing source pin"
+    },
+    {
+      "id": "salmon",
+      "masterPath": "audits/ARCHETYPE_SPRINT_20260922/02-fish/master.png",
+      "masterSha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4",
+      "recordPath": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/record.json",
+      "recordSha256": "831cba7ef4a1d20f50822763391ed37a1db9550e4018851567a008e4cadac519",
+      "labelsPath": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/labels.png",
+      "labelsPngSha256": "64076272f5ed1b9e78e3afbae099f958b6730524b0dbe6891f4f8f4dd844b368",
+      "width": 1254,
+      "height": 1254,
+      "painted": 314642,
+      "opaque": 692,
+      "labeled": 314642,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1257874
+        ],
+        [
+          "252",
+          189118
+        ],
+        [
+          "253",
+          55741
+        ],
+        [
+          "251",
+          34381
+        ],
+        [
+          "1",
+          7345
+        ],
+        [
+          "250",
+          6550
+        ],
+        [
+          "249",
+          2527
+        ],
+        [
+          "2",
+          1803
+        ],
+        [
+          "248",
+          1503
+        ],
+        [
+          "3",
+          1138
+        ],
+        [
+          "247",
+          1099
+        ],
+        [
+          "4",
+          907
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "starfish",
+      "masterPath": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/master.png",
+      "masterSha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687",
+      "recordPath": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/record.json",
+      "recordSha256": "cc76a9b0ffb7c199052adccfecaa032f50c0b40bdd1d13c7b958849ca86186ff",
+      "labelsPath": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/labels.png",
+      "labelsPngSha256": "7e5c10d96ef98da4260f60d14d885a5bb0357a1d171e88a7f4de020848643f87",
+      "width": 1254,
+      "height": 1254,
+      "painted": 594263,
+      "opaque": 674,
+      "labeled": 594263,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          978253
+        ],
+        [
+          "252",
+          319972
+        ],
+        [
+          "253",
+          156021
+        ],
+        [
+          "251",
+          39841
+        ],
+        [
+          "1",
+          22746
+        ],
+        [
+          "250",
+          8541
+        ],
+        [
+          "2",
+          6491
+        ],
+        [
+          "249",
+          4520
+        ],
+        [
+          "3",
+          3263
+        ],
+        [
+          "248",
+          2840
+        ],
+        [
+          "247",
+          2122
+        ],
+        [
+          "4",
+          2079
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "sturgeon",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/master.png",
+      "masterSha256": "cd1a2cd6aecb629019d576abe64b50f549f95a4efa2cb8c58744aa5b0a9601f2",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/fit-02/record.json",
+      "recordSha256": "126685c83a39b9b47366f4cff46c59e939850d32c9e4b4247196f3389d7a4834",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/fit-02/labels.png",
+      "labelsPngSha256": "2e7e03d6aa463d2a611c395b1753d6f3a36280cb8a8f24d06afe017ce2e311bf",
+      "width": 1254,
+      "height": 1254,
+      "painted": 190183,
+      "opaque": 255,
+      "labeled": 190183,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1382333
+        ],
+        [
+          "253",
+          136191
+        ],
+        [
+          "252",
+          18197
+        ],
+        [
+          "1",
+          6699
+        ],
+        [
+          "251",
+          5351
+        ],
+        [
+          "2",
+          2255
+        ],
+        [
+          "250",
+          2235
+        ],
+        [
+          "249",
+          1432
+        ],
+        [
+          "3",
+          1373
+        ],
+        [
+          "254",
+          1153
+        ],
+        [
+          "248",
+          1083
+        ],
+        [
+          "4",
+          1039
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "tang",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/10-tang/master.png",
+      "masterSha256": "e6970b7e7d2320aca6022ae2b74117f10f7d38e66fc5b81568b0061ce65f8ffe",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/record.json",
+      "recordSha256": "5734a3fd8735d7cf2bb662649404c77041518b6452e82d0f75426f5b377caaf1",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/labels.png",
+      "labelsPngSha256": "443f4d643b590ece80eafc7c8db3205bea0876bbb3d6983346144384f07f10b9",
+      "width": 1254,
+      "height": 1254,
+      "painted": 530486,
+      "opaque": 695,
+      "labeled": 530486,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1042030
+        ],
+        [
+          "253",
+          265453
+        ],
+        [
+          "252",
+          218641
+        ],
+        [
+          "251",
+          12372
+        ],
+        [
+          "1",
+          10017
+        ],
+        [
+          "250",
+          3531
+        ],
+        [
+          "2",
+          2372
+        ],
+        [
+          "249",
+          1662
+        ],
+        [
+          "3",
+          1301
+        ],
+        [
+          "248",
+          1103
+        ],
+        [
+          "4",
+          955
+        ],
+        [
+          "247",
+          880
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "tarantula",
+      "masterPath": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-08/master.png",
+      "masterSha256": "55d8a5d00e4eabd761fc64cc42d82da1d3837b0448651d8c78820b9cfe9fb19b",
+      "recordPath": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/record.json",
+      "recordSha256": "a7ae1dd18c295f658139b79662bf9e5d71073a32046e41dcf67070e415911e8d",
+      "labelsPath": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/labels.png",
+      "labelsPngSha256": "4a04124fcc308c96121eb658d7f2db3becb55c4a4b54901ba72a4d50bc62ff84",
+      "width": 1254,
+      "height": 1254,
+      "painted": 492651,
+      "opaque": 157,
+      "labeled": 492651,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1079865
+        ],
+        [
+          "253",
+          302842
+        ],
+        [
+          "252",
+          47761
+        ],
+        [
+          "1",
+          20046
+        ],
+        [
+          "251",
+          17588
+        ],
+        [
+          "250",
+          9168
+        ],
+        [
+          "249",
+          5661
+        ],
+        [
+          "254",
+          5380
+        ],
+        [
+          "2",
+          5045
+        ],
+        [
+          "248",
+          3858
+        ],
+        [
+          "247",
+          2799
+        ],
+        [
+          "3",
+          2646
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "tree-frog",
+      "masterPath": "audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-08/master.png",
+      "masterSha256": "aa1ad50d8ac1e354d0f0ba5beeb211a22519461ac36802ca621022f2418c65eb",
+      "recordPath": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/record.json",
+      "recordSha256": "e6dcf6498e7ad2d0220f9e3c995c08e20fb13d7678e29bd1ed2e8065ae5383b2",
+      "labelsPath": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/labels.png",
+      "labelsPngSha256": "03f28532d7c074afebf5c5803df3ac913aaf16bb5efd67fd49e2a75ba4fb65ae",
+      "width": 1254,
+      "height": 1254,
+      "painted": 260398,
+      "opaque": 590,
+      "labeled": 260398,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1312118
+        ],
+        [
+          "253",
+          170950
+        ],
+        [
+          "252",
+          29289
+        ],
+        [
+          "1",
+          11201
+        ],
+        [
+          "251",
+          9277
+        ],
+        [
+          "254",
+          6490
+        ],
+        [
+          "250",
+          3886
+        ],
+        [
+          "2",
+          3738
+        ],
+        [
+          "249",
+          2384
+        ],
+        [
+          "3",
+          2240
+        ],
+        [
+          "248",
+          1649
+        ],
+        [
+          "4",
+          1489
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "vent-crab",
+      "masterPath": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/vent-crab-master.png",
+      "masterSha256": "148bb4b6e0c937a43c5f822f561f1e76c44acdf55235ffe427867a3f831a363c",
+      "recordPath": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/record.json",
+      "recordSha256": "c3629f4aff1b9222d776b1207fb65e37728c495ec3a63c8d94ff103a1c20ea2d",
+      "labelsPath": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/labels.png",
+      "labelsPngSha256": "ea38a3aa433bc98aa3568a534e43d8090c60dead8b26f57f59c4969385042166",
+      "width": 880,
+      "height": 880,
+      "painted": 21365,
+      "opaque": 10758,
+      "labeled": 21365,
+      "originalEligiblePixels": 6162,
+      "topAlphaCounts": [
+        [
+          "0",
+          753035
+        ],
+        [
+          "255",
+          10758
+        ],
+        [
+          "107",
+          3772
+        ],
+        [
+          "250",
+          1861
+        ],
+        [
+          "253",
+          730
+        ],
+        [
+          "125",
+          722
+        ],
+        [
+          "254",
+          557
+        ],
+        [
+          "63",
+          542
+        ],
+        [
+          "251",
+          530
+        ],
+        [
+          "188",
+          516
+        ],
+        [
+          "184",
+          216
+        ],
+        [
+          "80",
+          136
+        ]
+      ],
+      "originalMask": {
+        "status": "PASS",
+        "editablePixels": 6162
+      },
+      "workWidth": 880,
+      "workHeight": 880,
+      "paddedMask": {
+        "status": "PASS",
+        "editablePixels": 6162,
+        "editableTokens": 21
+      },
+      "status": "ELIGIBLE"
+    },
+    {
+      "id": "wall-lizard",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/master.png",
+      "masterSha256": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/record.json",
+      "recordSha256": "d272c23cf4a06c98273395b56e3b311d8513037f4607d358d89dbe3315645650",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/labels.png",
+      "labelsPngSha256": "45db669c40b134630df60fc99ff33b50233d715727b93f6f2fc9dcaec2caaf98",
+      "width": 1254,
+      "height": 1254,
+      "painted": 120672,
+      "opaque": 827,
+      "labeled": 120672,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1451844
+        ],
+        [
+          "253",
+          55077
+        ],
+        [
+          "252",
+          25787
+        ],
+        [
+          "1",
+          8308
+        ],
+        [
+          "251",
+          6626
+        ],
+        [
+          "250",
+          2712
+        ],
+        [
+          "2",
+          1957
+        ],
+        [
+          "249",
+          1543
+        ],
+        [
+          "3",
+          1375
+        ],
+        [
+          "248",
+          1250
+        ],
+        [
+          "247",
+          1035
+        ],
+        [
+          "4",
+          961
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    },
+    {
+      "id": "wolf",
+      "masterPath": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/master.png",
+      "masterSha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43",
+      "recordPath": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03/record.json",
+      "recordSha256": "f6cce15e091d745afa02e2e408d754053fbe9512bbf97345f796e51e92223929",
+      "labelsPath": "audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03/labels.png",
+      "labelsPngSha256": "abe41912a83f5277e05b4bbe5aaa5cab051823586b77b1a453dda58b7ca0d7d3",
+      "width": 1254,
+      "height": 1254,
+      "painted": 225251,
+      "opaque": 558,
+      "labeled": 225251,
+      "originalEligiblePixels": 0,
+      "topAlphaCounts": [
+        [
+          "0",
+          1347265
+        ],
+        [
+          "253",
+          117601
+        ],
+        [
+          "254",
+          67022
+        ],
+        [
+          "252",
+          10434
+        ],
+        [
+          "251",
+          3928
+        ],
+        [
+          "1",
+          3683
+        ],
+        [
+          "250",
+          2162
+        ],
+        [
+          "2",
+          1416
+        ],
+        [
+          "249",
+          1401
+        ],
+        [
+          "248",
+          1050
+        ],
+        [
+          "3",
+          848
+        ],
+        [
+          "247",
+          730
+        ]
+      ],
+      "originalMask": {
+        "status": "REFUSE",
+        "reason": "Error: Creature mask shape"
+      },
+      "workWidth": 1264,
+      "workHeight": 1264,
+      "paddedMask": {
+        "status": "REFUSE",
+        "reason": "Error: No editable creature interior"
+      },
+      "status": "REFUSE"
+    }
+  ]
+}

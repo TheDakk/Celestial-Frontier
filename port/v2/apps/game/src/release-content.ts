@@ -884,6 +884,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
       category: 'UI Enhancements',
       bullets: Object.freeze([
         "⚔️ PAINTED BATTLES BY DEFAULT — every fight now plays out on the painted battle stage, with painted creature art and motion, above the Combat Chronicle. Add `?battle2=0` to the address to watch the Chronicle alone.",
+        "🎨 PAINTINGS CLOSER TO THEIR OWN KIND — an Earth animal without its own painting borrows a painted relative of the same kind: a lion draws as the cougar, a fox as the wolf. Alien creatures take the painting that best matches their skin, size and tail, including sturgeon- and shark-shaped fish. Cards and battles use the same selection rule, with an available stand-in when library art is offline.",
         "📚 COMPENDIUM FILTERS AND SHELVES — sift the Compendium by kingdom (Fauna, Flora, Fungi, Microbes) and rarity (Rare+, Legendary+, Mythic+), or turn on ▦ Shelves to fold it by habitat.",
         "↗ ORIGIN TRAVEL — a wild catch's page flies you back to the world where you first catalogued it.",
         "🎧 MONO AUDIO AND REDUCED INTENSITY: Two Creature voices settings offer the same sound in both ears and a quieter, gentler mix. Both are remembered on this device.",

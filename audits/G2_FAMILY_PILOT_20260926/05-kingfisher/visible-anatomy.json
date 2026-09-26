@@ -1,0 +1,168 @@
+{
+  "id": "05-kingfisher",
+  "name": "Kingfisher",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "c9fc6023fbbfacf786fc9cffc2e6f7f1848b1a37b70e3fe002d1dc85a412bc6a",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 42078,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 11,
+      "y0": 77,
+      "x1": 410,
+      "y1": 307
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0082,
+        "pixels": 344,
+        "box": {
+          "x0": 215,
+          "y0": 69,
+          "x1": 277,
+          "y1": 76
+        },
+        "attach": {
+          "x": 246,
+          "y": 76,
+          "relX": 0.59,
+          "relY": 0
+        },
+        "dir": {
+          "x": -0.42,
+          "y": -0.91
+        },
+        "class": "top",
+        "length": 31.8
+      },
+      {
+        "k": 1,
+        "frac": 0.0615,
+        "pixels": 2586,
+        "box": {
+          "x0": 295,
+          "y0": 85,
+          "x1": 387,
+          "y1": 148
+        },
+        "attach": {
+          "x": 311.5,
+          "y": 119.9,
+          "relX": 0.75,
+          "relY": 0.19
+        },
+        "dir": {
+          "x": 0.98,
+          "y": 0.18
+        },
+        "class": "front",
+        "length": 83.2
+      },
+      {
+        "k": 2,
+        "frac": 0.0497,
+        "pixels": 2092,
+        "box": {
+          "x0": 32,
+          "y0": 228,
+          "x1": 100,
+          "y1": 305
+        },
+        "attach": {
+          "x": 70.6,
+          "y": 273.2,
+          "relX": 0.15,
+          "relY": 0.85
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.09
+        },
+        "class": "rear",
+        "length": 59.4
+      },
+      {
+        "k": 3,
+        "frac": 0.0257,
+        "pixels": 1080,
+        "box": {
+          "x0": 203,
+          "y0": 298,
+          "x1": 283,
+          "y1": 342
+        },
+        "attach": {
+          "x": 211.5,
+          "y": 298,
+          "relX": 0.5,
+          "relY": 0.96
+        },
+        "dir": {
+          "x": 0.74,
+          "y": 0.68
+        },
+        "class": "limb-down",
+        "length": 84
+      },
+      {
+        "k": 4,
+        "frac": 0.0274,
+        "pixels": 1154,
+        "box": {
+          "x0": 126,
+          "y0": 302,
+          "x1": 209,
+          "y1": 345
+        },
+        "attach": {
+          "x": 153.5,
+          "y": 302,
+          "relX": 0.36,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": 0.5,
+          "y": 0.87
+        },
+        "class": "limb-down",
+        "length": 70.2
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 132,
+        "x1": 209,
+        "cx": 173.4
+      },
+      {
+        "x0": 214,
+        "x1": 283,
+        "cx": 254.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}
