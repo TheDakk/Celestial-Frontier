@@ -53,6 +53,7 @@ import {
 } from '../apps/game/src/friendly-duel.js';
 import { createF4RuntimeAuthority, type F4RuntimeAuthority } from '../apps/game/src/f4-runtime-authority.js';
 import { createProductActionCoordinator, createProductActionDiagnosticHold } from '../apps/game/src/product-action-coordinator.js';
+import { mirrorCompanionCodexXpV1 } from '../apps/game/src/companion-codex-mirror.js';
 import { readTrackedV1Source } from '../test-support/tracked-v1-source.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -143,7 +144,7 @@ function harness(f: Awaited<ReturnType<typeof fixture>>, mutations: readonly Mai
   const toast = vi.fn(), reload = vi.fn();
   const row = [`s${MINE_SEED}`, f.state.codex[0]![1]] as const;
   const env: Record<string, unknown> = {
-    document, FriendlyDuelController, commitFriendlyDuelActionV1, friendlyDuelResultCopyV1, projectFriendlyDuelV1,
+    document, FriendlyDuelController, mirrorCompanionCodexXpV1, commitFriendlyDuelActionV1, friendlyDuelResultCopyV1, projectFriendlyDuelV1,
     canonicalGenomeIdentityV1, readArc5OwnershipMigration, SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     save: f.state, f4Runtime: f.runtime, arc5OwnershipState: f.ownership, arc5OwnershipEvidence: f.evidence, arc5OwnershipProtection: null,
     compendiumFixtureRows: null, currentCompendiumDetailRow: () => row,
