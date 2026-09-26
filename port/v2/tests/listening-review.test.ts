@@ -5,16 +5,19 @@ import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { describe, expect, it } from 'vitest';
 import { createCreatureVoiceHook } from '../apps/game/src/soundkit/creature-voices.js';
-import { synthesizePlaceholderLibrary } from '../apps/game/src/soundkit/placeholder-archetype.js';
+import { originalSourceLibraryV1 } from '../apps/game/src/soundkit/original-voices.js';
 import { creatureVoiceCardV1 } from '../apps/game/src/soundkit/voice-identity.js';
 import { CREATURE_CUES } from '../apps/game/src/soundkit/cues.js';
+import { ambiencePlanV1, bedJobV1, runJobV1 } from '../apps/game/src/soundkit/ambience.js';
+import { renderCombatCueV1 } from '../apps/game/src/soundkit/original-combat.js';
+import { musicJobV1, musicPieceV1 } from '../apps/game/src/soundkit/music.js';
 import {
-  LISTENING_ROSTER_V1, LISTENING_STORAGE_KEY, formatListeningResultsV1, listeningCueV1, listeningItemsV1, listeningRequestV1, mountListeningReviewV1,
+  LISTENING_ROSTER_V1, LISTENING_STORAGE_KEY, formatListeningResultsV1, listeningCueV1, listeningExtraItemsV1, listeningExtraRequestV1, listeningItemsV1, listeningRequestV1, mountListeningReviewV1,
   type ListeningAudioPortV1,
 } from '../apps/game/src/listening-review.js';
 
 const { JSDOM } = createRequire(import.meta.url)('jsdom') as { JSDOM: new (html: string, o?: { url?: string }) => { window: Window & typeof globalThis & { close(): void } } };
-const SOURCES = synthesizePlaceholderLibrary().sources;
+const SOURCES = originalSourceLibraryV1().sources; // the player path's library (D15 Stages 1–2)
 const memoryStorage = (): Storage => { const m = new Map<string, string>(); return { getItem: (k) => m.get(k) ?? null, setItem: (k, v) => { m.set(k, String(v)); }, removeItem: (k) => { m.delete(k); }, clear: () => m.clear(), key: (i) => [...m.keys()][i] ?? null, get length() { return m.size; } } as Storage; };
 
 describe('L1 listening review', () => {
@@ -58,8 +61,8 @@ describe('L1 listening review', () => {
     (page.root.querySelector('[data-listen-copy]') as HTMLButtonElement).click(); for (let i = 0; i < 5; i++) await new Promise((r) => setTimeout(r, 0));
     expect(played).toEqual(['cf-pilot-listen-quadruped-call']);
     expect(copied).toBe([
-      'Celestial Frontier — L1 listening review (D15, placeholder-derived voices)', 'commit: c0ffee', 'pack: digest-1', 'device: iPhone test',
-      'order: iPhone speaker first, then headphones', 'rated: 2 of 143 (keep 1 · redo 0 · cut 1)', 'quadruped.call | keep', 'fish.hurt | cut | too harsh on speaker',
+      'Celestial Frontier — L1 listening review (D15, original sources: voices, combat, ambience, music)', 'commit: c0ffee', 'pack: digest-1', 'device: iPhone test',
+      'order: iPhone speaker first, then headphones', 'rated: 2 of 217 (keep 1 · redo 0 · cut 1)', 'quadruped.call | keep', 'fish.hurt | cut | too harsh on speaker',
     ].join('\n'));
     expect(JSON.parse(storage.getItem(LISTENING_STORAGE_KEY)!).ratings['fish.hurt']).toEqual({ rating: 'cut', note: 'too  harsh   on speaker' });
     page.dispose();
@@ -78,8 +81,23 @@ describe('L1 listening review', () => {
     const before = await muted.resultsText(); expect(before).toContain('pack: unavailable');
     (muted.root.querySelector('[data-listen-item="quadruped.alert"] [data-listen-rate="redo"]') as HTMLButtonElement).click();
     expect(await muted.resultsText()).not.toBe(before); muted.dispose(); dom.window.close();
-    expect(formatListeningResultsV1({ commit: 'c', packDigest: 'p', ua: 'u', ratings: {} })).toContain('rated: 0 of 143');
+    expect(formatListeningResultsV1({ commit: 'c', packDigest: 'p', ua: 'u', ratings: {} })).toContain('rated: 0 of 217');
   });
+  it('D15 Stages 2–3: every combat cue, ambience family, weather layer and music piece is on the page and plays EXACTLY what the game plays (control: another item gives other bytes)', () => {
+    const extra = listeningExtraItemsV1();
+    expect(extra).toHaveLength(49 + 10 + 4 + 11);
+    const captured = (req: ReturnType<typeof listeningExtraRequestV1>): Float32Array[] => { const out: Float32Array[] = [];
+      req.create({ currentTime: 0, createBuffer: (c: number, n: number) => { const bufs = Array.from({ length: c }, () => new Float32Array(n)); return { copyToChannel: (s: Float32Array, ch: number) => { bufs[ch]!.set(s); out[ch] = bufs[ch]!; } }; },
+        createBufferSource: () => ({ buffer: null, connect() {}, start() {}, stop() {}, disconnect() {} }), createGain: () => ({ gain: { setValueAtTime() {} }, connect() {}, disconnect() {} }) } as never, { voiceId: 'x' } as never); return out; };
+    const same = (a: Float32Array, b: Float32Array) => a.length === b.length && Buffer.from(a.buffer, a.byteOffset, a.byteLength).equals(Buffer.from(b.buffer, b.byteOffset, b.byteLength));
+    const hit = extra.find((i) => i.id === 'combat.battle:hitstop-thump')!, req = listeningExtraRequestV1(hit);
+    expect(req.key.startsWith('cf-pilot-listen-')).toBe(true); expect(req.meaning).toEqual({ kind: 'decorative' });
+    expect(same(captured(req)[0]!, renderCombatCueV1('battle:hitstop-thump', 7, { amount: 25 }).samples)).toBe(true);
+    const bed = extra.find((i) => i.id === 'bed.coast')!, game = runJobV1(bedJobV1(ambiencePlanV1('opensea')))!, got = captured(listeningExtraRequestV1(bed));
+    expect(same(got[0]!, game.left) && same(got[1]!, game.right)).toBe(true);
+    const music = extra.find((i) => i.id === 'music.sting-victory')!; expect(same(captured(listeningExtraRequestV1(music))[0]!, runJobV1(musicJobV1(musicPieceV1('sting-victory'))))).toBe(true);
+    expect(same(captured(listeningExtraRequestV1(extra.find((i) => i.id === 'music.sting-defeat')!))[0]!, runJobV1(musicJobV1(musicPieceV1('sting-victory'))))).toBe(false);
+  }, 300_000);
 });
 
 /** The default boot path never loads the page: main.ts reaches it ONLY through a dynamic import inside the built-package audioReview flag. */
