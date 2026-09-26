@@ -83,6 +83,18 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 2. a short-tailed reference in the pool (only via admitted, independently accepted packets; never bootstrapped unchecked, per Codex's review);
 3. a measured-absence declaration: truncating a tail chain whose paint is measured absent. This needs Codex's intake/presence contract review first.
 
+**G2 family pilot (Codex `9cf27be1`: 5 birds, 5 fish, 5 serpents, 5 insects), scored with the adopted v10 author** (`auto-g2fam-v10/`; leave-one-species-out; zero hand edits):
+
+| Family | ADMIT + PASS_STATIC | Semantic presence | What refuses |
+|---|---:|---|---|
+| **Fish** (trout, perch, cod, carp, herring) | **5/5** | all RESOLVED | — |
+| Birds (hawk, heron, pheasant, robin, kingfisher) | 0/5 | Hawk ADMIT but static RED (`approach:flight`, presentation) | thin foot and tail-fan coverage; the Robin shows one ground contact; the Kingfisher has 12 % unexplained paint |
+| Serpents (grass, rat, garter, king, tree snake) | 0/5 | — | every one: an unassigned "appendage" of 9–25 % of the paint. The generated snakes are THIN and posed on a rising diagonal (head raised, tail curled down); the references (Python, Racer) are thick and horizontal, so the counter's body core (the thickest segment) leaves most of a thin S-curve outside it. A layout mismatch, not an anatomy error |
+| Insects (ant, beetle, cricket, grasshopper, mantis) | 0/5 | — | Ant: facing (the mirror matches better); Beetle: wrong family (a quadruped matches better); Cricket: antenna coverage; Grasshopper and Mantis: the rear-class family floor (a slender abdomen against the Beetle/Honeybee floor) |
+
+- **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
+- **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
+
 **v9–v11 (session 3, continued): four levers tried; one bug fixed, no count change.**
 
 | Lever | Result | Status |

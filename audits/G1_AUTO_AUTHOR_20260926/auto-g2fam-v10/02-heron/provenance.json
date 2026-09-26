@@ -1,0 +1,141 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "02-heron",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "ac15abd5e333fcac664caf183be1ddd1437c35f083ba98e2418f7eeb9e862144",
+ "subjectSourceSha256": "252e22e379a57bcdfc81c87ee4535aa4f5420e49e18c1d16197730c998e22fc4",
+ "identity": {
+  "name": "Heron",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Heron\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"13215684\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"2\"]]]]",
+  "seed": 13215684,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "gull",
+  "authoringSha256": "9d5ce3cc7a41cf6a139848982114319c2374828a04e313c38619d8dce938aa73",
+  "masterSha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9"
+ },
+ "habitat": {
+  "profileId": "wading-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "6d8efc434397d850b8454feeae51f8b874edc579c5d7ef1b95bbdff2553a7074",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group wading-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1761,
+     "class": "top",
+     "attach": {
+      "x": 308.2,
+      "y": 98.8,
+      "relX": 0.75,
+      "relY": 0.2
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.011,
+     "class": "top",
+     "attach": {
+      "x": 252.5,
+      "y": 126,
+      "relX": 0.61,
+      "relY": 0.27
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1447,
+     "class": "rear",
+     "attach": {
+      "x": 109.3,
+      "y": 250.5,
+      "relX": 0.25,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0042,
+     "class": "limb-down",
+     "attach": {
+      "x": 306,
+      "y": 204,
+      "relX": 0.74,
+      "relY": 0.47
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0098,
+     "class": "limb-down",
+     "attach": {
+      "x": 288.4,
+      "y": 223.2,
+      "relX": 0.7,
+      "relY": 0.52
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0449,
+     "class": "front",
+     "attach": {
+      "x": 277.8,
+      "y": 337,
+      "relX": 0.67,
+      "relY": 0.82
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0374,
+     "class": "other",
+     "attach": {
+      "x": 195.5,
+      "y": 365,
+      "relX": 0.46,
+      "relY": 0.9
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 2,
+    "front": 1,
+    "other": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "gull",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
