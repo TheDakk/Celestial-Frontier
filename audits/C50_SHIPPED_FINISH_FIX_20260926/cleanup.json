@@ -1,0 +1,566 @@
+{
+  "scope": "Rejected automatic contact-projection fit scratch only; packet JSON, logs and source manifests retained; originals and candidate review copies retained.",
+  "bytes": 26871161,
+  "files": [
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/record.json",
+      "bytes": 5917,
+      "sha256": "94d8d7ddfb86831af68857959096cc373aa9f8d9c3fe06e8a9227df22c0665ec"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/binding.json",
+      "bytes": 2630808,
+      "sha256": "a72d6f3354b2681514d818fd9a1bf9054e986ffd83fa736d42428424fe2afb14"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/pre-split-binding.json",
+      "bytes": 1870052,
+      "sha256": "5b44056143c0db4dad22ca71fe4c68ab2d56cf79fa90e5e62cc91022a9395c16"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/intake-provenance.json",
+      "bytes": 3169,
+      "sha256": "46f91f2f394818912e3a4bd90fb0904b84fbb3c1732a114cff2f0e8234bc5c37"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/label-authoring-receipt.json",
+      "bytes": 592,
+      "sha256": "6870c0d48dcbb6f7cb31067ad7ac4db6628b864befeb0efd5eb758c26770cb43"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/declaration.json",
+      "bytes": 1930,
+      "sha256": "90a403b29f9bc46be8c1be089a1e13aa28c9e168d0a91d7755a576366c17d77d"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/labels.png",
+      "bytes": 52300,
+      "sha256": "05b927c931dc57db85781c4154f92b44d755e6ec665fed991a3f0446c4e4575d"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/receipt.json",
+      "bytes": 2451,
+      "sha256": "0776415b10014c81bfb880ca3228875ee429d30919aa6733eaab65df0b1cf634"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/binding.json",
+      "bytes": 5853,
+      "sha256": "bd05b9edb4bbf4b6003a1f80759a9e3aecaea4e6a460ca9f9e71a97e072ff435"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/keyed.png",
+      "bytes": 1464155,
+      "sha256": "98872f0a246f2c7e28720f25ec3ce2d24f51fca4cb98a103bb391545b70ddd3a"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/ownership.png",
+      "bytes": 155596,
+      "sha256": "b7ac57a5f9626e4a9d73f443d4ab69b10d664dae23f09e29d1cdd16b6f3237f6"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/manifest.json",
+      "bytes": 2849,
+      "sha256": "bb30536e140dea071f3b784af3391948dd77d3e4cee921df03d032024836d861"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/receipt.json",
+      "bytes": 4690,
+      "sha256": "6562da1ee69024fe4f637789f9f647f487cf76ed47e7afe4cc5a12cb8747a8f7"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/near-wing-shoulder.png",
+      "bytes": 57466,
+      "sha256": "593221915edc8c13ec9fb00f61d62057536aaacbb236aa63592ac621aff82081"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/beak.png",
+      "bytes": 43982,
+      "sha256": "399dd653e9e7cf9b20683bfe326022c456f657758d68c9d3c55f35c4537530d1"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/far-shin.png",
+      "bytes": 3154,
+      "sha256": "5a73258696bae0f203b45663e1a2b62fb2603825c4736508ea5b04d935775763"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/far-wing-shoulder.png",
+      "bytes": 14802,
+      "sha256": "82248f38f63b4e8685c52483fb5084c4b51039cc8351a2ab3f965a9770928ab1"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/body.png",
+      "bytes": 294097,
+      "sha256": "6cf5651293837b7cec2c3eac141e90bd55d2c282af5639b13680a58733b617af"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/near-wing-flight.png",
+      "bytes": 416104,
+      "sha256": "8a0f0928ae1e8e504dd530cb4a41d26f67b7a844cffb26f09b10cbd70b28ff37"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/chest.png",
+      "bytes": 177391,
+      "sha256": "e84b6b689f1fea8b8feaa9b8fbf1835060a16e0874df849e3f88545f9a91330b"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/far-foot.png",
+      "bytes": 24174,
+      "sha256": "560104e51035eddf059c9f1091ed70bef5d3a1c0e40d4e9d5a20ed3cba069546"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/far-wing-flight.png",
+      "bytes": 68582,
+      "sha256": "7423716f77ed2719503c77edae0719255ba882015c71ac583fb7cab381ae948a"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/neck-lower.png",
+      "bytes": 123966,
+      "sha256": "90c60cfbeda7438171803a0cd44c3f66d470f0ad3976138c3246556fd846208e"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/near-foot.png",
+      "bytes": 15270,
+      "sha256": "190853950520283857edfeeaf7dfec0679b5b596d1397a5aba1f8004c85692e4"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/head.png",
+      "bytes": 19392,
+      "sha256": "af17bf92a098e69197f3600cc95b0b8718f17f92fedd5c7e43626a22ffcdc1ff"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/tail.png",
+      "bytes": 86624,
+      "sha256": "552e3a5ff801a56320a90bc384206f930a28d73109a01747bf456828ec02bbd0"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/far-thigh.png",
+      "bytes": 23295,
+      "sha256": "9dc9bc891b76dca7ccfa175a742aed703bdf7c391f85ec29e446a0d2b05690db"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/near-shin.png",
+      "bytes": 3283,
+      "sha256": "8878a54faeaa856574cde841d99ff6d0bda71a637802e631ab1653138454f16c"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/near-thigh.png",
+      "bytes": 23419,
+      "sha256": "6dcd7232e4372f104cfa00323e62a399cd443a485ea2cac9e16851d255866e21"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/parts/neck-upper.png",
+      "bytes": 43659,
+      "sha256": "36e209a67cf8f0fa99b9b9df736b6c3317bbe09da320984cd34de861183ab09b"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/atlas/sparrow.png",
+      "bytes": 1247798,
+      "sha256": "ceb1a62b9dfa1a2068c9385f89344f6f6cc0e2b3daee253b9e64f43374058a8e"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/atlas/sparrow.json",
+      "bytes": 7045,
+      "sha256": "628023dce1a7f1c3cf6a5bfe823063494a5366a2c4b76705dae7cd467a5fe5e4"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/sparrow/fit/parts/atlas/receipt.json",
+      "bytes": 2920,
+      "sha256": "4e4777e4e8e80fa1a9dfe1d09ae68f184d2d0ecf1bf3e745c9b8140c84896c3f"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/record.json",
+      "bytes": 7508,
+      "sha256": "b6f48be41026e9d0e399c7ef10b96b58bf931a3facde595999790150068641b5"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/binding.json",
+      "bytes": 4128057,
+      "sha256": "3f8b116096310a819c286fee96bef87a6c0dc0e8341bfb19bdf102724fd575e3"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/pre-split-binding.json",
+      "bytes": 2451457,
+      "sha256": "565115c89db9cb9b26ec1a74cefcf4df8ec3d32b8a205add26892d2d84b41b34"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/intake-provenance.json",
+      "bytes": 3464,
+      "sha256": "99f7d9951f6a3871e91cd0e7cf6247821aef6a195868429aac39d890b439c1cc"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/label-authoring-receipt.json",
+      "bytes": 736,
+      "sha256": "a7e3fa7f0ed37333df211633266ba9864c08b36af19248cc4aaef528a6f4d113"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/declaration.json",
+      "bytes": 3192,
+      "sha256": "536d1a4d55b1314a9d8080c0c9ed5d08c5e38beae7044564d427dd843a6b527f"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/labels.png",
+      "bytes": 57280,
+      "sha256": "6931267566f0427ed94192626a11bec28bad42c6d1773b82fec74b608765a249"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/receipt.json",
+      "bytes": 2829,
+      "sha256": "bc9f3387f06f189ce5315d91ec74652c099156a2e946ca4733b62feca2b66353"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/binding.json",
+      "bytes": 10390,
+      "sha256": "cba42f8174cea271e42cbacf9ddb3166414bd44a3186ec1287e38e802bc428db"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/keyed.png",
+      "bytes": 1589865,
+      "sha256": "dd8fea05472fc0899198d99bb1a0da19a0332b6ec25dde6e4e3fa8f2e620c76e"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/ownership.png",
+      "bytes": 154461,
+      "sha256": "9c4ffcdb6a898c86ea5f64fef3c74188e2d33ac641dde094d54cc8da89e05bf8"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/manifest.json",
+      "bytes": 5204,
+      "sha256": "c3efc08cd4ed61f732c1677e22dc4493be789744e1d8950d4a336abe3f9bd8a0"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/receipt.json",
+      "bytes": 8006,
+      "sha256": "fcc25a4fe3e289658a760b638f9887e959c574124b0223d75420efc314345970"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/jaw.png",
+      "bytes": 49260,
+      "sha256": "f7a47350d20fc7a509d7572acfe38658e894a1a1bac48396086fb7d5d510516c"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/fore-far-root.png",
+      "bytes": 50478,
+      "sha256": "8f80e7ba9389b4383d4a6c7a99ffa10ededa67f5b6e5fbc617288207ea1bd364"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/ear-far-root.png",
+      "bytes": 4163,
+      "sha256": "08ace0f4564089544ffa64df0096868550a010970e919b68a96ed7deb65407fc"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/fore-near-root.png",
+      "bytes": 125786,
+      "sha256": "bc00bf0d036271dd4e901a57a2ec89e6a72e410e3cd5838bf41d489b173dc969"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/fore-near-paw.png",
+      "bytes": 18512,
+      "sha256": "e7e79c1f5783d59b8585b290ae8a3eee7bbc516c5a772ab0edbd9d53c1c1ba3a"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/ear-far-tip.png",
+      "bytes": 3311,
+      "sha256": "49d202609c1c63e17bb709db36be87b08615792bb6e8a542e722e107f599f146"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/hind-near-paw.png",
+      "bytes": 20877,
+      "sha256": "8e2a7b39a80c20b1963f8bb3c297e745fc3edd0f8ff3a3d0013b6be4083ce06f"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/hind-far-root.png",
+      "bytes": 108919,
+      "sha256": "35c61091e68a45f7c68f77f991be43ebe1b99327b60bc285f6d6c2f2ba94ebf3"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/hind-near-root.png",
+      "bytes": 159329,
+      "sha256": "5b7ad9f3ed9eccf8b652853d4e0e391fcfae3c25e00d995f37fefc4d22495b8f"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/fore-far-paw.png",
+      "bytes": 19487,
+      "sha256": "2777009bf40e858b106d8bbf3aca6408211b8fddcded5570001d5321dfae187f"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/tail2.png",
+      "bytes": 4079,
+      "sha256": "fa2ad339de2a410baf140fdbb48f37625779ceeb3da064bcfab803fe6affc040"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/chest.png",
+      "bytes": 66665,
+      "sha256": "d53c9ffd0450402ae99cd9ed5af41a08dce0db4e9b25e9d8df2b248da72f883a"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/tail3.png",
+      "bytes": 2782,
+      "sha256": "32d44b7af9c1cdf5778a6def13243327e4510d66185438749df2f9f1edf97309"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/tail1.png",
+      "bytes": 6309,
+      "sha256": "ab5448c3b9451f2f50abc1fe68869e1ba757420426466a30eee18421851c5d91"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/tail0.png",
+      "bytes": 10942,
+      "sha256": "ee88b64ab2441a565f0cf643074380a44d81277e6dad565bc8daaab511d4840b"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/fore-near-ankle.png",
+      "bytes": 17707,
+      "sha256": "63754de622b1ec84a28253033f676e435c01e0e1558c531a789d42ffba78ee92"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/ear-near-tip.png",
+      "bytes": 908,
+      "sha256": "c5776baf6457e43202aff0aa2480dd610f1eabe549b48a8e3942cc81c1b53fc7"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/fore-far-ankle.png",
+      "bytes": 11891,
+      "sha256": "b9fd3d353ac15586ab68f18a92f6b39baa807cc02fd0818e56b6cf9df77f8615"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/ear-near-root.png",
+      "bytes": 3503,
+      "sha256": "66169501927d3ea177928f55b0063aab5b2e0b36f8faa539ec3e1b5c10582587"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/hind-far-knee.png",
+      "bytes": 56044,
+      "sha256": "726d3605daa03894b6963edc5b73788c04879f44b2c026ac8c77bcdf4381f0ac"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/hind-near-knee.png",
+      "bytes": 53903,
+      "sha256": "931a5534e89718680dca2d2ea992659ed79503b2377e9e7fa17ebb7c1d045670"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/head.png",
+      "bytes": 63602,
+      "sha256": "668205ade00bec9ceaa46d002a27c67b8d5f960e119dd9a574af0a6991c50f91"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/hind-far-ankle.png",
+      "bytes": 22674,
+      "sha256": "f0d71444ea98f367c947d9c45bcebb05f4ce2d931a673bb8b0d7b3607c76daac"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/fore-near-knee.png",
+      "bytes": 56230,
+      "sha256": "7662fcdce68b384f123a453737bffb0a349a73f2a433097905f2a84a1b9e668a"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/fore-far-knee.png",
+      "bytes": 57293,
+      "sha256": "26d2cffe5941f76af9f5bad7e2da37d58e8cacd83b8777acdb677958321fc6b2"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/root.png",
+      "bytes": 579,
+      "sha256": "a55294789b0ed07313db3a0342687d0c8d3d52f1332df4ad16e8a440d1428397"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/hind-far-paw.png",
+      "bytes": 26362,
+      "sha256": "e8f1a057a5e37affb58b66af4ca9891f5caac153d88c2f51a6d7b4116237ad15"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/spine.png",
+      "bytes": 326206,
+      "sha256": "10546fffc71dab709bc99c725699ee3f2b6f97644150475c90d23aad82816b66"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/neck.png",
+      "bytes": 91347,
+      "sha256": "961e3b58c07ab921d4dcf570fd8301f1c2be5ee21272a4c62bf8a36bf63eda92"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/pelvis.png",
+      "bytes": 131633,
+      "sha256": "919f770545a26b0cbcb8ed0c129c40930f1cf6c0bf9a50fd62c3d24b43439598"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/parts/hind-near-ankle.png",
+      "bytes": 7825,
+      "sha256": "cbc9776baebe4c05e0b1197f964b108f568b94b3c5bdd4dc46a7fec4691a8104"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/atlas/18-tapir.png",
+      "bytes": 1452845,
+      "sha256": "6dfa7f5b8380d75e8430e17e658a640127e059d432982d0681f72ea9f5babaf6"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/atlas/18-tapir.json",
+      "bytes": 12717,
+      "sha256": "33d7eedd3f21b4e95da76a15f4c42a3df63661511ebed1c82f73c5ca25fd30c8"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/18-tapir/fit/parts/atlas/receipt.json",
+      "bytes": 4728,
+      "sha256": "9f64af0c26ae9eb054757d97ce1ff50717000ba0a26acc283dabe46942008056"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/refusal.json",
+      "bytes": 535,
+      "sha256": "d710fa583bc0c24777fff41a8365ad96727a79dbffae7d8f4d988342e748b46b"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/record.json",
+      "bytes": 5940,
+      "sha256": "6e1436f6d3c80c4d8b23a8df4c569dd4f6f27aeaf93e0f07b6b5ef59a81fe680"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/pre-split-binding.json",
+      "bytes": 1896044,
+      "sha256": "734ee26e12bd95d69d067feda7b1bfc0d588ba36ac24b68367d12bd8968d3966"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/intake-provenance.json",
+      "bytes": 3179,
+      "sha256": "9f7ea221bbd8d3971128079342e34228821b2a24236aec8be0a708baac0ff7e2"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/label-authoring-receipt.json",
+      "bytes": 595,
+      "sha256": "0a1a5a72c8a78bb5a2386f31171132a71a50e7d827eacbc13f9673a161ceeec5"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/declaration.json",
+      "bytes": 1930,
+      "sha256": "851ea75a21ebe67aee4c0312aacf97c6261ff7e3746e7407e4a7660829d5ceb3"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/labels.png",
+      "bytes": 52345,
+      "sha256": "321804acdc2f2c74096abb67c74f570763cdb86560a88a3dc0759d87c9f005e3"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/binding.json",
+      "bytes": 5853,
+      "sha256": "c49d788da40f1e240d525c0a7ec8343b65f4bc75c1a4d5f5c5699600b2f6e455"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/keyed.png",
+      "bytes": 1523916,
+      "sha256": "24e0dbf2893dc4819279027d1902973bc3b2fa4dfa7400c1c643324a3dcd0875"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/ownership.png",
+      "bytes": 164213,
+      "sha256": "716974679e0a73be187a32bf214d2984209400c8a97a27b064e5ea31ac69d9bd"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/manifest.json",
+      "bytes": 2848,
+      "sha256": "dc4f917c8e221b26b67c4005d61dac9e2ad8fa08f3e728f4dc1efcb86118f5af"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/receipt.json",
+      "bytes": 4693,
+      "sha256": "4f36fb463129945e2761c611f9d2dce6c7a054a76c019077fb8680f4bd2629e3"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/near-wing-shoulder.png",
+      "bytes": 73231,
+      "sha256": "9cca34ac672bb49b97ae2bb3b0c1973367bdfeda4126e855b781817f289787dd"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/beak.png",
+      "bytes": 19452,
+      "sha256": "fd72c580e810cec108782e91a6d83a3b2927b164cf598936ada4839fb7cbbc48"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/far-shin.png",
+      "bytes": 13786,
+      "sha256": "26a430d9358d3a26e9b74d2cb9694229c09909441a52b4a7b6635549540029e6"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/far-wing-shoulder.png",
+      "bytes": 20698,
+      "sha256": "52d2743d95d06a5b4dff97275472cd5d8257a97ed56fcded3513beaf735e75a8"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/body.png",
+      "bytes": 350619,
+      "sha256": "2a1d6b9c7b635f188c25b49f4b4a3efd0058e0bdf3aa6b72cf5717f06965f18e"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/near-wing-flight.png",
+      "bytes": 420663,
+      "sha256": "872127e7f36cd053f65b26e58baca1663ef04f11eafe2f969ff5d28d66661e3d"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/chest.png",
+      "bytes": 130066,
+      "sha256": "88a52d1d5d3bcd5561df0024ebe4fbb9026e546e93fab3f63be709612ec77690"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/far-foot.png",
+      "bytes": 34600,
+      "sha256": "7cfbcb70a40fcd1dfa7bbf11389b8903414b07bfb06bce745eb626ceea49e76b"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/far-wing-flight.png",
+      "bytes": 144390,
+      "sha256": "e6404f787726042d519441a15c7639b534c5f2a0e996376f3da4e22c65c404ee"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/neck-lower.png",
+      "bytes": 130126,
+      "sha256": "50b483c828aaccfc5b45c84e3f71810cec110c8479f203414433af63ef5a310b"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/near-foot.png",
+      "bytes": 39913,
+      "sha256": "587d6377be77a21c5f29ada863f361db23216793f6075acd17b121a0a9b6c0ec"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/head.png",
+      "bytes": 43846,
+      "sha256": "e145926828fd11768e3045d41ead4389558f7dde89e9e458f83511f8eb2d3c0e"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/tail.png",
+      "bytes": 14699,
+      "sha256": "c4a27c1d597c7f516b604843886191f5bfffcc1644190519b3fdab3dc53ee4fc"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/far-thigh.png",
+      "bytes": 19315,
+      "sha256": "fd6cdd09815da7aa5d53cbc2ff0082048c50ddfca80cccb8a6f106e671e08b5e"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/near-shin.png",
+      "bytes": 14444,
+      "sha256": "38e54c82ea38f2d789cbbabfa9e32d77ab8fbd59e48d6dc225199112a979e0f2"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/near-thigh.png",
+      "bytes": 10900,
+      "sha256": "b363641f9703cbb30f9846557ce999328aeeb6ff9f058b6ae6fe9c9b3c5fc334"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/parts/neck-upper.png",
+      "bytes": 29945,
+      "sha256": "2401a4918f10742fdcf17905541cfe509d54696738019902e80ee86cc92b2751"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/atlas/grouse.json",
+      "bytes": 7044,
+      "sha256": "a69a14df391b2f25ac8558c405552ceb57d67df975b4a410583f28dc364a1591"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/atlas/grouse.png",
+      "bytes": 1320284,
+      "sha256": "52b8bc987e39eca43a9f273fa8159acefb6781cad2b46a42cea1f504ef7f1f12"
+    },
+    {
+      "path": "audits/G1_FIT_CONTINUATION_C50_20260926/grouse/fit/parts/atlas/receipt.json",
+      "bytes": 2919,
+      "sha256": "558f0cbde42f5791d579b92c4d820ed750980023a46193336b49cda1f6700e02"
+    }
+  ]
+}

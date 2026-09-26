@@ -1,0 +1,14 @@
+/** Read exact source paint ownership at automatically placed contact-chain landmarks. No fitting or mutation. */
+import fs from'node:fs';import path from'node:path';import{createRequire}from'node:module';import{createHash}from'node:crypto';
+import{ownerRaster}from'../../port/v2/tools/anatomy-verify/limb-separation.mjs';import{familyContactChains,familyContract}from'../../port/v2/tools/creature-animation/family-contracts.mjs';
+const require=createRequire(new URL('../../port/v2/package.json',import.meta.url));const sharp=createRequire(require.resolve('free-tex-packer-core'))('sharp'),root=path.resolve(import.meta.dirname,'../..');
+const corpus=JSON.parse(fs.readFileSync(path.join(root,'audits/G1_AUTO_AUTHOR_20260926/corpus.json'))).subjects,pilot=JSON.parse(fs.readFileSync(path.join(root,'audits/G2_QUADRUPED_PILOT_20260926/pilot.json')));
+const rows=[];for(const[tag,id]of[['auto-v10','grouse'],['auto-v10','sparrow'],['auto-g2-v10','08-mongoose'],['auto-g2-v10','18-tapir']]){
+ const packet=path.join(root,'audits/G1_AUTO_AUTHOR_20260926',tag,id,'packet'),authorBytes=fs.readFileSync(path.join(packet,'authoring.json')),a=JSON.parse(authorBytes);
+ const original=corpus.find(x=>x.id===id)??pilot.find(x=>x.id===id);if(!original)throw Error('original source not found '+id);const master=path.join(root,original.packet,'master.png'),bytes=fs.readFileSync(master),{data,info}=await sharp(bytes).ensureAlpha().raw().toBuffer({resolveWithObject:true}),{width:w,height:h}=info,owners=ownerRaster(a.parts,w,h),rem=a.parts.findIndex(p=>p.id===a.remainderPart);
+ const points=[];for(const chain of familyContactChains(familyContract(a.family)))for(const role of['hip','knee','end','terminal']){const joint=chain[role],point=a.landmarksPx[joint],partIndex=a.parts.findIndex(p=>p.joint===joint);if(!point||partIndex<0)continue;const px=Math.max(0,Math.min(w-1,Math.floor(point[0]))),py=Math.max(0,Math.min(h-1,Math.floor(point[1]))),actual=owners[py*w+px]<0?rem:owners[py*w+px];let best=Infinity,nearest=null,ownedPixels=0;
+ for(let i=0;i<owners.length;i++)if(data[i*4+3]>0&&(owners[i]<0?rem:owners[i])===partIndex){ownedPixels++;const x=i%w+.5,y=Math.floor(i/w)+.5,d=Math.hypot(x-point[0],y-point[1]);if(d<best){best=d;nearest=[x,y];}}
+ points.push({chain:chain.id,role,joint,point,expectedPart:a.parts[partIndex].id,actualPart:a.parts[actual].id,alphaAtPoint:data[(py*w+px)*4+3],ownedPixels,nearestOwnedPixel:nearest,nearestOwnedDistancePx:best});}
+ rows.push({id,packet:path.relative(root,packet),master:path.relative(root,master),masterSha256:createHash('sha256').update(bytes).digest('hex'),authorSha256:createHash('sha256').update(authorBytes).digest('hex'),points});
+}
+fs.writeFileSync(path.join(import.meta.dirname,'contact-ownership.json'),JSON.stringify(rows,null,2)+'\n');console.log(JSON.stringify(rows.map(r=>({id:r.id,conflicts:r.points.filter(p=>p.actualPart!==p.expectedPart||!p.alphaAtPoint)}))));

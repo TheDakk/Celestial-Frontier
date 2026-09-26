@@ -1,0 +1,56 @@
+[
+  {
+    "id": "01-grass-snake",
+    "name": "Grass Snake",
+    "family": "serpent",
+    "packet": "audits/G2_LAYOUT_C47_20260926/01-grass-snake"
+  },
+  {
+    "id": "02-rat-snake",
+    "name": "Rat Snake",
+    "family": "serpent",
+    "packet": "audits/G2_LAYOUT_C47_20260926/02-rat-snake"
+  },
+  {
+    "id": "03-king-snake",
+    "name": "King Snake",
+    "family": "serpent",
+    "packet": "audits/G2_LAYOUT_C47_20260926/03-king-snake"
+  },
+  {
+    "id": "04-heron",
+    "name": "Heron",
+    "family": "biped-bird",
+    "packet": "audits/G2_LAYOUT_C47_20260926/04-heron"
+  },
+  {
+    "id": "05-pheasant",
+    "name": "Pheasant",
+    "family": "biped-bird",
+    "packet": "audits/G2_LAYOUT_C47_20260926/05-pheasant"
+  },
+  {
+    "id": "06-robin",
+    "name": "Robin",
+    "family": "biped-bird",
+    "packet": "audits/G2_LAYOUT_C47_20260926/06-robin"
+  },
+  {
+    "id": "07-ant",
+    "name": "Ant",
+    "family": "insect",
+    "packet": "audits/G2_LAYOUT_C47_20260926/07-ant"
+  },
+  {
+    "id": "08-cricket",
+    "name": "Cricket",
+    "family": "insect",
+    "packet": "audits/G2_LAYOUT_C47_20260926/08-cricket"
+  },
+  {
+    "id": "09-mantis",
+    "name": "Mantis",
+    "family": "insect",
+    "packet": "audits/G2_LAYOUT_C47_20260926/09-mantis"
+  }
+]
