@@ -4,6 +4,13 @@ Each section dates itself (most with a `matches code as of` marker; a section wi
 description). Refreshed in place September 24, 2026: the painted Compendium card and matchup picker section only; the
 rest of this doc was not re-verified in that refresh.
 
+## v2 landing vista view and postcard (D16 #9/#10; ledger A6 share card) — matches code as of 2026-09-26
+- **The pill row.** While a landing vista is on screen (surface, vista mounted and visible, not in Field Training), a pill row of real 44 px buttons sits over the stage, outside the survey card: **⛶ Vista** and **⇪ Postcard**. The measured default card is unchanged.
+- **The view.** ⛶ Vista sets `body.vista-view`: the survey card, panels and HUD chrome step aside, so the full-stage vista stands alone (v1's Full screen). Any tap steps back without acting on the world, and so does Escape (v1: while zoomed, a tap steps out).
+- **The postcard.** It is v1's exact composition: the vista, an 86 px band, the title in Georgia 26, the CF1 share code in 9 px mono, and the wordmark. The vista is capped at 1,600 px wide. The postcard is deterministic from the world: the vista is its deterministic render, and the text is its own name and code.
+- **Sharing.** The postcard goes to the Web Share API as a file when the device can share files (the iPhone share sheet). A dismissed sheet is cancelled, never a surprise download. Otherwise it downloads. It works offline, with v1's toast.
+- **Code.** The module is `vista-postcard.ts`; `main.ts` owns `vistaPills`, `setVistaViewing` and `saveVistaPostcard`.
+
 ## v2 Compendium filter chips and shelves (D16 #36/#37) — matches code as of 2026-09-26
 - **Chip bar.** One horizontally scrolling row of 44 px chips above the Compendium list, shown once the Compendium has a species: kingdom (All · 🐾 Fauna · 🌿 Flora · 🍄 Fungi · 🦠 Microbes), the rarity floor (All · Rare+ · Legendary+ · Mythic+, on the DISPLAY tier) and "▦ Shelves". This is v1's `_codexTabs` in one row; logic in `compendium-shelves.ts`.
 - **Scroll height.** The list's virtual scrollport gives up exactly the chip row (52 px) in both height owners, so no row hides under the dock.

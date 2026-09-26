@@ -46,6 +46,7 @@ import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './
 import { mirrorCompanionCodexXpV1 } from './companion-codex-mirror.js';
 import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
 import { CompendiumRevealQueueV1 } from './compendium-reveal.js';
+import { VistaPillsControllerV1, composeVistaPostcardV1, deliverVistaPostcardV1, postcardTitleV1, type PostcardCanvasLike, type PostcardDeliveryV1 } from './vista-postcard.js';
 import { DEFAULT_CODEX_LIST_VIEW_V1, codexChipBarHtmlV1, codexChipPressV1, codexChipsFilteringV1, codexEntryMatchesV1, codexShelfLabelV1, shelveCodexRowsV1, type CodexListViewV1, type CodexShelfHeaderV1 } from './compendium-shelves.js';
 import { freshExpeditionPayloadV1 } from './expedition-reset.js';
 import { TooltipOwnerV1 } from './tooltips.js';
@@ -2138,6 +2139,53 @@ function abortRenderBeforeReceiptForSmoke(): boolean {
   smokeAbortNextRenderBeforeReceipt = false;
   return true;
 }
+/* D16 (v1 _vistaExtras / savePostcard / tap-to-zoom, #9/#10; the ledger's A6 share card): a pill row over the stage while a landing
+   vista is on screen — ⛶ Vista (the survey card and HUD step aside; any tap or Escape steps back) and ⇪ Postcard (v1's composition,
+   shared through the Web Share API when the device can share files, else downloaded; offline). Outside the survey card by design. */
+let vistaViewing = false;
+const vistaPills = new VistaPillsControllerV1({
+  document, onView: () => setVistaViewing(true), onBack: () => setVistaViewing(false), onPostcard: () => { void saveVistaPostcard(); },
+});
+function vistaOnScreen(): boolean {
+  return nav.mode === 'surface' && surfaceVistaSprite !== null && surfaceVistaSprite.visible && !trainingActive();
+}
+function syncVistaPills(): void {
+  if (vistaViewing && !vistaOnScreen()) { vistaViewing = false; document.body.classList.remove('vista-view'); }
+  vistaPills.sync(vistaOnScreen(), vistaViewing);
+}
+function setVistaViewing(on: boolean): void {
+  vistaViewing = on && vistaOnScreen();
+  document.body.classList.toggle('vista-view', vistaViewing);
+  vistaPills.sync(vistaOnScreen(), vistaViewing);
+}
+/* v1: while zoomed, a tap ANYWHERE steps back out (it never acts on the world underneath), and Escape does too */
+document.addEventListener('click', (event) => {
+  if (!vistaViewing || (event.target as HTMLElement | null)?.closest?.('.vista-pills')) return;
+  event.stopPropagation(); event.preventDefault(); setVistaViewing(false);
+}, true);
+document.addEventListener('keydown', (event) => { if (vistaViewing && event.key === 'Escape') { event.stopPropagation(); setVistaViewing(false); } }, true);
+/** The on-screen vista's own pixels: the texture resource of the stage sprite (a canvas, or a bitmap for a painted landing). */
+function vistaSourceImage(): (CanvasImageSource & { readonly width: number; readonly height: number }) | null {
+  const resource = (surfaceVistaSprite?.texture?.source as { resource?: unknown } | undefined)?.resource as { width?: unknown; height?: unknown } | undefined;
+  return resource && typeof resource.width === 'number' && typeof resource.height === 'number' && resource.width > 0 && resource.height > 0
+    ? resource as unknown as CanvasImageSource & { readonly width: number; readonly height: number } : null;
+}
+async function saveVistaPostcard(): Promise<PostcardDeliveryV1 | null> {
+  const vista = vistaOnScreen() ? vistaSourceImage() : null;
+  if (!vista) return null;
+  const address = activeCardWorldAddress();
+  const title = postcardTitleV1((address ? worldIdentityName(worldIdentityState, address) : null) ?? cardCtx?.p.name ?? null);
+  let canvas: PostcardCanvasLike;
+  try {
+    canvas = composeVistaPostcardV1({ vista, title, shareCode: cardShareCode(), createCanvas: (width, height) => {
+      const c = document.createElement('canvas'); c.width = width; c.height = height; return c as unknown as PostcardCanvasLike; } });
+  } catch { toast('⇪ Postcard', 'The view could not be composed on this device.'); return 'failed'; }
+  const result = await deliverVistaPostcardV1(canvas, title, {
+    document, navigator, createObjectURL: (blob) => URL.createObjectURL(blob), revokeObjectURL: (url) => URL.revokeObjectURL(url) });
+  if (result === 'shared' || result === 'downloaded') toast('⇪ Postcard Saved', 'The view and its share code are baked into the image — send it to a friend.');
+  else if (result === 'failed') toast('⇪ Postcard', 'The postcard could not be saved on this device.');
+  return result;
+}
 let audiovisualPilot: AudiovisualPilot | null = null;
 let audiovisualPilotClosed = false;
 let audiovisualPilotBiomeKey: string | null = null;
@@ -2153,6 +2201,7 @@ function applyAudiovisualPilotSceneVisibility(): void {
   const hidden = nav.mode === 'surface' && audiovisualPilotSurfaceVisible;
   world.visible = !hidden;
   if (surfaceVistaSprite !== null) surfaceVistaSprite.visible = !hidden;
+  syncVistaPills();
 }
 function applyAudiovisualPilotPresentation(state: AudiovisualPilotPresentationState): void {
   audiovisualPilotSurfaceVisible = state.enhanced && state.surfaceVisible;
