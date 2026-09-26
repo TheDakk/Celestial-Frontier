@@ -1,0 +1,18 @@
+{
+ "id": "salamander",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 868.3,
+ "landmarkMedian": 0.0276,
+ "landmarkMax": 0.1572,
+ "worst": [
+  "hindFarAnkle 0.157",
+  "hindFarPaw 0.156",
+  "hindFarRoot 0.114"
+ ],
+ "labelAgreement": 0.4049,
+ "missingJoints": [],
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Family admission: proportion bound: bone-min\n    at need (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/family-record"
+}

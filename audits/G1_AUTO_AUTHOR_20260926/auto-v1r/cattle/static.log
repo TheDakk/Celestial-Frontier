@@ -1,0 +1,20 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.11803368003794716,"gap":0.00007126312901820676,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"RED","samples":14,"drift":0.13474835326176784,"gap":0.000053375516293564165,"exactRest":true,"firstRefusal":{"ms":85.4,"sampleNumber":15,"error":"Error: Contact: joint limit hindNearPaw alert@85.4: 95.60309242576773"}}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.03937180700707943,"gap":0.00007261894543726311,"exactRest":true,"firstRefusal":null}
+{"id":"approach:trot","status":"PASS","samples":121,"drift":0.03937180700707943,"gap":0.00006959791156372108,"exactRest":true,"firstRefusal":null}
+{"id":"approach:gallop","status":"PASS","samples":121,"drift":0.11476784137872109,"gap":0.00007788737620890964,"exactRest":true,"firstRefusal":null}
+{"id":"approach:hop","status":"PASS","samples":121,"drift":0,"gap":0.00006699201440852987,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0.11507087251278933,"gap":0.00006238591646313706,"exactRest":true,"firstRefusal":null}
+{"id":"melee:claw","status":"PASS","samples":121,"drift":0.11507087251278933,"gap":0.00006238591646313706,"exactRest":true,"firstRefusal":null}
+{"id":"melee:gore","status":"PASS","samples":121,"drift":0.11507087251278933,"gap":0.00006238591646313706,"exactRest":true,"firstRefusal":null}
+{"id":"melee:tail","status":"RED","samples":11,"drift":0.12685960967445492,"gap":0.00006105608015919258,"exactRest":true,"firstRefusal":{"ms":93.37777777777777,"sampleNumber":12,"error":"Error: Contact: joint limit hindNearAnkle melee:tail@93.37777777777777: -113.57070082723523"}}
+{"id":"melee:headbutt","status":"PASS","samples":121,"drift":0.11507087251278933,"gap":0.00006238591646313706,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.1416336706203166,"gap":0.00006586239588165741,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"RED","samples":9,"drift":0.12493780139291838,"gap":0.00006547325362627064,"exactRest":true,"firstRefusal":{"ms":72.15,"sampleNumber":10,"error":"Error: Contact: joint limit hindNearPaw hit@72.15: 99.64025654924282"}}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.000061710893217453,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0.11786825762097065,"gap":0.00007317598952219779,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0.014650316090869232,"gap":0.00006234394191562676,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.16751691438922195,"gap":0.00012689696058595958,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.03999595506074765,"gap":0.0000799006170849844,"exactRest":true,"firstRefusal":null}
+{"id":"melee:kick","status":"PASS","samples":121,"drift":0,"gap":0.00006403935906051087,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":19,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

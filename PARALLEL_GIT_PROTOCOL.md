@@ -116,6 +116,8 @@ recovery bundle and outstanding-work disposition are linked from ROADMAP.md. No 
 | OpenAI/Codex on macOS | `openai/mac` | `/Users/nick/Projects/celestial-frontier-openai-mac` |
 | Anthropic/Claude Code on macOS | `anthropic/mac` | `/Users/nick/Projects/celestial-frontier-anthropic-mac` |
 
+**Mac-only since 2026-09-26 (Nick).** The Windows lanes (`openai/windows`, `anthropic/windows`) are retired: their branches are deleted on GitHub and on both machines. Never push to, merge from or recreate them. Historical records that mention them stay as history.
+
 `develop` is the integration branch. `main` is the production branch.
 Neither agent may commit directly to either one.
 

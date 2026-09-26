@@ -7,6 +7,7 @@ import { deriveCue } from '../apps/game/src/soundkit/derive.js';
 import { CREATURE_CUES } from '../apps/game/src/soundkit/cues.js';
 import { BATTLE2_PARTS_FITS } from '../apps/game/src/battle2-archetypes.js';
 import { readFileSync } from 'node:fs';
+import { servedArt } from '../apps/game/src/art-library.fixtures.js';
 import { createHash } from 'node:crypto';
 import { createTurnCueSink } from '../apps/game/src/soundkit/turn-audio.js';
 import type { TurnCue } from '../apps/game/src/battle2/cue-plan.js';
@@ -84,8 +85,8 @@ describe('placeholder voices for every body plan (2026-09-24)', () => {
     }
   });
   it('all 17 painted archetypes now have a voice in the battle (each record through the hook)', () => {
-    const SERVED = new URL('../apps/game/public/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/', import.meta.url);
-    for (const fit of BATTLE2_PARTS_FITS) { const record = JSON.parse(readFileSync(new URL(fit.dir + 'record.json', SERVED), 'utf8'));
+    // G3: a record is served from the core pack or the on-demand library (servedArt resolves both, as the app does)
+    for (const fit of BATTLE2_PARTS_FITS) { const record = JSON.parse(readFileSync(servedArt(fit.dir + 'record.json'), 'utf8'));
       const hook = createCreatureVoiceHook({ seed: 5, sources: lib.sources, sides: { left: { record, genome: null, seed: 1, label: fit.earthName }, right: { record: null, genome: null, seed: 2, label: 'x' } } });
       expect(hook.cards.left, `${fit.earthName}: ${hook.status.left}`).not.toBeNull(); expect(hook(cue('creature:hurt', 'left')), fit.earthName).not.toBeNull(); }
   });

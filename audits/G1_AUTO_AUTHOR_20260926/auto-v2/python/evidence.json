@@ -1,0 +1,106 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part segment-4 (seg4) covers 8% paint (reference 3%)",
+  "missing-anatomy: part segment-8 (seg8) covers 7% paint (reference 2%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "chains": [],
+ "bestReference": "racer",
+ "costs": [
+  {
+   "ref": "racer",
+   "cost": 0.01772
+  },
+  {
+   "ref": "eel",
+   "cost": 0.02058
+  }
+ ],
+ "mirrorBest": 0.01732,
+ "otherFamilyBest": {
+  "family": "radial",
+  "cost": 0.02343
+ },
+ "coverage": [
+  {
+   "id": "root-patch",
+   "joint": "root",
+   "paint": 1,
+   "area": 187.1599999999978
+  },
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.436127744510978,
+   "area": 17895.63999999998
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.18110918544194107,
+   "area": 63877.789999999986
+  },
+  {
+   "id": "segment-0",
+   "joint": "seg0",
+   "paint": 0.015101692851053465,
+   "area": 1340057.5649999995
+  },
+  {
+   "id": "segment-1",
+   "joint": "seg1",
+   "paint": 0.08845126835781042,
+   "area": 166958.88000000003
+  },
+  {
+   "id": "segment-2",
+   "joint": "seg2",
+   "paint": 0.08266597778351847,
+   "area": 187470.14499999984
+  },
+  {
+   "id": "segment-3",
+   "joint": "seg3",
+   "paint": 0.08443708609271523,
+   "area": 182751.14000000025
+  },
+  {
+   "id": "segment-4",
+   "joint": "seg4",
+   "paint": 0.07852004110996917,
+   "area": 191882.33999999976
+  },
+  {
+   "id": "segment-5",
+   "joint": "seg5",
+   "paint": 0.0879392212725546,
+   "area": 192694.16999999984
+  },
+  {
+   "id": "segment-6",
+   "joint": "seg6",
+   "paint": 0.12984913793103448,
+   "area": 191045.2850000003
+  },
+  {
+   "id": "segment-7",
+   "joint": "seg7",
+   "paint": 0.10694403750366246,
+   "area": 219611.80000000005
+  },
+  {
+   "id": "segment-8",
+   "joint": "seg8",
+   "paint": 0.07181634868931286,
+   "area": 195757.93999999974
+  },
+  {
+   "id": "segment-9",
+   "joint": "seg9",
+   "paint": 0.10136063321776673,
+   "area": 1074390.6900000004
+  }
+ ],
+ "unclaimedFrac": 0.0704
+}

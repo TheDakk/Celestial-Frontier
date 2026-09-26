@@ -64,6 +64,7 @@ import type { VoiceCard } from './soundkit/voice-card.js';
 import type { CreatureInstanceId, OwnershipStateV2 } from '@cf/domain-acquisition';
 import { originalSourceLibraryV1 } from './soundkit/original-voices.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
+import { artLibraryEntryV1, fetchArtLibraryBytesV1, libraryPathOfArenaUrl, type ArtLibraryOptionsV1 } from './art-library.js';
 import { BATTLE2_SWAP_BEAT_MS_V1, BATTLE2_SWAP_BEAT_REDUCED_MS_V1, battle2SwapBeatsV1, type Battle2SwapBeatV1 } from './battle2/swap-beats.js';
 import type { CombatSettlementPlanV1 } from '@cf/domain-combatcore';
 import { getBattle2MasterPin } from './battle2-master-pins.generated.js';
@@ -220,7 +221,16 @@ export function matchRecord(records: readonly ResolvedAnatomyRecord[], genome: R
   if (exact) return exact;
   // Nick 2026-09-24 ("that art style should carry throughout the game"): no painting of its own → the painted STAND-IN for its body
   // (painted-stand-in.ts: its body plan's archetype, or the body family the procedural painter draws), morphed by its own genes
-  const painted = new Set(BATTLE2_ASSETS.partsFits.map((f) => f.earthName)), stand = paintedStandInV1(genome, painted);
+  // G3: only paintings whose record actually loaded can stand in (an unreachable library record must not strand the creature on its portrait)
+  const loaded = new Set(records.map((r) => r.identity.earthName)), painted = new Set(BATTLE2_ASSETS.partsFits.map((f) => f.earthName).filter((n) => loaded.has(n))), stand = paintedStandInV1(genome, painted);
+  return stand ? records.find((r) => r.identity.earthName === stand.earthName) ?? null : null;
+}
+/** G3: the CORE (in-pack) painting that stands in for a genome's body family, from the loaded records; null when none. */
+export function coreStandInRecord(records: readonly ResolvedAnatomyRecord[], genome: Readonly<Record<string, unknown>> | null | undefined): ResolvedAnatomyRecord | null {
+  if (!genome) return null;
+  const loaded = new Set(records.map((r) => r.identity.earthName)), core = new Set(BATTLE2_ASSETS.partsFits.filter((f) => !f.library && loaded.has(f.earthName)).map((f) => f.earthName));
+  const earth = typeof genome._earthName === 'string' ? genome._earthName : null, g = earth !== null && core.has(earth) ? genome : earth !== null ? { ...genome, _earthName: earth } : genome;
+  const stand = paintedStandInV1(g, core);
   return stand ? records.find((r) => r.identity.earthName === stand.earthName) ?? null : null;
 }
 export function alphaBox(rgba: Uint8ClampedArray, width: number, height: number): { x: number; y: number; width: number; height: number } {
@@ -239,10 +249,17 @@ function browserRaster(): Battle2Raster {
 }
 /** Fetches each arena file relative to arena-recipe.json (`/battle2/…`, served from `public/`). A built game's service worker
  * refuses these today (they are outside the build marker, pwa-build.ts), so the arena stages only on an uncontrolled page. */
-export function devAssetSource(recipeUrl: string = arenaRecipeUrl, base: string = location.href): Battle2AssetSource {
+export function devAssetSource(recipeUrl: string = arenaRecipeUrl, base: string = location.href, library: ArtLibraryOptionsV1 | false = {}): Battle2AssetSource {
   if (/^data:/.test(recipeUrl)) throw new Error('battle2 assets unavailable: this build inlined arena-recipe.json; the proof plates are a dev-only fetch');
   const dir = new URL('.', new URL(recipeUrl, base));
-  const get = async (path: string): Promise<Response> => { const r = await fetch(new URL(path, dir).href); if (!r.ok) throw new Error(`battle2 asset ${path}: HTTP ${r.status}`); return r; };
+  // G3: a LIBRARY archetype's files are served on demand under `library/battle2/…`; the manifest (pinned in the bundle) says which, and a
+  // library file's bytes are verified against its pin BEFORE they are returned — no decode or cache ever sees unverified art. A file
+  // the manifest does not list is a core pack file, fetched as before.
+  const libraryBase = new URL(recipeUrl.slice(0, recipeUrl.indexOf('battle2/')) || '/', new URL(recipeUrl, base)).href;
+  const get = async (path: string): Promise<Response> => {
+    const url = new URL(path, dir).href, lib = libraryPathOfArenaUrl(url);
+    if (library !== false && lib !== null && await artLibraryEntryV1(lib, { base: libraryBase, ...library }) !== null) return new Response(new Blob([await fetchArtLibraryBytesV1(lib, { base: libraryBase, ...library }) as unknown as BlobPart]));
+    const r = await fetch(url); if (!r.ok) throw new Error(`battle2 asset ${path}: HTTP ${r.status}`); return r; };
   return {
     // a `.gz` file (the shipped part bindings) is gunzipped here; the bytes are sniffed, so a server that already decoded it still works
     json: async (path) => { const r = await get(path); if (!path.endsWith('.gz')) return r.json(); const b = new Uint8Array(await r.arrayBuffer());
@@ -360,9 +377,9 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const texture = (img: Battle2Image): EffectTextureLike => pixi.Texture.from(img.source);
     const champion = input.settlement.champion, championGenome = champion.kind === 'owned-fauna' && champion.genome ? champion.genome : null;
     const rigContainer = (): RigContainerLike => new pixi.Container();
-    const buildRig = async (side: 'left' | 'right', name: string, genome: Readonly<Record<string, unknown>> | null): Promise<{ rig: BattleRigV1; card: BodyCard | null; mass: number; seed: number; declaration?: WeaponDeclaration }> => {
+    const buildRig = async (side: 'left' | 'right', name: string, genome: Readonly<Record<string, unknown>> | null, forced?: ResolvedAnatomyRecord): Promise<{ rig: BattleRigV1; card: BodyCard | null; mass: number; seed: number; declaration?: WeaponDeclaration }> => {
       const seed = genomeSeed(genome, `${input.settlement.battleId}:${side}:${name}`);
-      const record = matchRecord(records, genome);
+      const record = forced ?? matchRecord(records, genome);
       if (record) {
         // E1 §1.1: the source paint-skin rig when this record has a registered fit; fixture, then portrait, otherwise.
         const fit = BATTLE2_ASSETS.partsFits.find((f) => f.earthName === record.identity.earthName);
@@ -395,7 +412,12 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
             // C15: a painter weapon declaration (hash-bound to this record) rides with its fit into compileAnatomyAttack
             const declaration = fit.weaponDeclaration ? await assets.json(fit.weaponDeclaration) as WeaponDeclaration : undefined;
             return { rig, card, mass: card.massClass.multiplier, seed, ...(declaration ? { declaration } : {}) };
-          } catch (error) { throw new Error(`${name}: pinned parts rig unavailable (${error instanceof Error ? error.message : String(error)})`); }
+          } catch (error) {
+            // G3: a LIBRARY painting that cannot be fetched or admitted (offline, refused by its pin) fights as its body family's CORE
+            // painting, labelled — never a silent substitute for a pack failure (a core fit's failure still fails the study, as before)
+            const core = fit.library ? coreStandInRecord(records, genome) : null;
+            if (core && !forced) { skipped.push(`${name}: library painting ${fit.earthName} unavailable (${error instanceof Error ? error.message : String(error)}); family stand-in ${core.identity.earthName}`); return buildRig(side, name, genome, core); }
+            throw new Error(`${name}: pinned parts rig unavailable (${error instanceof Error ? error.message : String(error)})`); }
         } else if (fit) skipped.push(`${name}: parts rig needs raw asset bytes; fixture fallback`);
         try {
           const card = compileBodyCard(record, (genome ?? undefined) as MotionGenomeFields | undefined);

@@ -1,0 +1,14 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.0000573858111285565,"gap":0.000052852148113049855,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.00006281674238149125,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.001170315955924795,"gap":0.000052852148113049855,"exactRest":true,"firstRefusal":null}
+{"id":"approach:climb","status":"PASS","samples":121,"drift":0,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"melee:punch","status":"PASS","samples":121,"drift":0.002716437238141084,"gap":0.000052852148113049855,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0.0035171321513669048,"gap":0.00006734185490793697,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.06373531328052381,"gap":0.00006370621261352405,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"PASS","samples":121,"drift":0.00003075692083060338,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0.009119551832701968,"gap":0.000052852148113049855,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0.0027087545358365204,"gap":0.00005285214803266112,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.00404276836468891,"gap":0.0000734271925630587,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.0000366153308917808,"gap":0.00006234988733540778,"exactRest":true,"firstRefusal":null}
+{"status":"PASS_STATIC","rows":13,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}

@@ -111,10 +111,11 @@ function createWorkerHarness(
     revealClientIdsAtClaim?: readonly string[];
     sourceTransform?: (source: string) => string;
     networkResponse?: (request: Request, body: string) => Response;
+    libraryPin?: Readonly<{ path: string; sha256: string; bytes: number }>;
   }> = Object.freeze({}),
 ): WorkerHarness {
   const workerRevision = options.workerRevision ?? pwaWorkerRevisionV1();
-  const generatedSource = __pwaBuildTestOnly.serviceWorkerSource('/', assets, workerRevision);
+  const generatedSource = __pwaBuildTestOnly.serviceWorkerSource('/', assets, workerRevision, undefined, options.libraryPin ?? null);
   const source = options.sourceTransform?.(generatedSource) ?? generatedSource;
   const listeners = new Map<string, (event: Record<string, unknown>) => void>();
   const caches = options.caches ?? new MemoryCacheStorage();
@@ -1275,5 +1276,62 @@ describe('first-use battle2 assets', () => {
       expect(source.split(needle)).toHaveLength(2);return source.replace(needle,'at!==asset.bytes');
     }});await h.dispatch('install');await h.dispatch('activate');
     expect(await (await get(h)).text()).toBe('wrong');
+  });
+});
+
+/* G3 (audits/G3_ART_DELIVERY_20260926): the on-demand ART LIBRARY route — outside the build table and the pack, one pinned manifest
+   authenticates every file, a response is cached only after its exact size and digest match, LRU-bounded, served offline. */
+describe('on-demand art library (G3)', () => {
+  const files: Record<string, string> = { '/library/cards/wolf/card/master-512.png': 'wolf-paint', '/library/battle2/audits/X/fit/parts/atlas/wolf.png': 'wolf-atlas', '/library/cards/ibex/record.json': '{"ibex":1}' };
+  const manifestBody = (rows: Record<string, string> = files) => JSON.stringify({ schema: 'cf-art-library/v1', files: Object.entries(rows).map(([p, b]) => ({ path: p.slice(1), bytes: new TextEncoder().encode(b).byteLength, sha256: sha256Hex(b) })) });
+  const pinOf = (body: string) => Object.freeze({ path: 'library/art-library.json', sha256: sha256Hex(body), bytes: new TextEncoder().encode(body).byteLength });
+  const index = { '/index.html': 'index' };
+  const setup = (net: Record<string, string>, options: Parameters<typeof createWorkerHarness>[2] = {}) => { const body = manifestBody();
+    return createWorkerHarness(assetsFor(index), { ...index, '/library/art-library.json': body, ...net }, { libraryPin: pinOf(body), ...options }); };
+  const get = (h: WorkerHarness, path: string, init: RequestInit = {}) => h.dispatch('fetch', { request: new Request('https://game.test' + path, init) }) as Promise<Response>;
+  const libraryCache = (h: WorkerHarness) => h.caches.open('cf-art-library-v1');
+  it('fetches on first use, verifies, caches, and serves the verified copy offline; the build cache never holds it', async () => {
+    const net: Record<string, string> = { ...files }, h = setup(net); await h.dispatch('install'); await h.dispatch('activate');
+    expect(h.fetches).toEqual(['https://game.test/index.html']); // nothing from the library at install
+    const path = '/library/cards/wolf/card/master-512.png';
+    expect(await (await get(h, path)).text()).toBe('wolf-paint');
+    expect(await (await libraryCache(h)).match('https://game.test' + path)).toBeDefined();
+    for (const k of Object.keys(files)) delete net[k];
+    expect(await (await get(h, path)).text()).toBe('wolf-paint'); // offline: the verified cached copy
+    expect(h.fetches.filter((u) => u.endsWith(path))).toHaveLength(1);
+    expect(await (await h.caches.open('cf-v2-build-' + h.buildId)).match('https://game.test' + path)).toBeUndefined();
+  });
+  it.each([['tampered', 'wolf-PAINT'], ['oversized', 'wolf-paint!!'], ['truncated', 'wolf']])('refuses and never caches a %s file', async (_label, body) => {
+    const h = setup({ ...files, '/library/cards/wolf/card/master-512.png': body }); await h.dispatch('install'); await h.dispatch('activate');
+    expect((await get(h, '/library/cards/wolf/card/master-512.png')).status).toBe(503);
+    expect(await (await libraryCache(h)).match('https://game.test/library/cards/wolf/card/master-512.png')).toBeUndefined();
+  });
+  it('a manifest that does not match the worker pin authenticates nothing; unlisted paths are 404; query/range variants are 403', async () => {
+    const h = setup({ ...files, '/library/art-library.json': manifestBody() + ' ' }); await h.dispatch('install'); await h.dispatch('activate');
+    expect((await get(h, '/library/cards/wolf/card/master-512.png')).status).toBe(503);
+    const ok = setup({ ...files }); await ok.dispatch('install'); await ok.dispatch('activate');
+    expect((await get(ok, '/library/cards/nobody/card.json')).status).toBe(404);
+    expect((await get(ok, '/library/cards/wolf/card/master-512.png?x=1')).status).toBe(403);
+    expect((await get(ok, '/library/cards/wolf/card/master-512.png', { headers: { range: 'bytes=0-' } })).status).toBe(403);
+  });
+  it('evicts the least recently used files beyond the byte cap, keeping the newest', async () => {
+    const h = setup({ ...files }, { sourceTransform: (src) => src.replace(/const ART_LIBRARY_CACHE_BYTES=\d+;/u, 'const ART_LIBRARY_CACHE_BYTES=25;') });
+    await h.dispatch('install'); await h.dispatch('activate');
+    for (const p of Object.keys(files)) expect((await get(h, p)).status).toBe(200);
+    const cache = await libraryCache(h), cached = await Promise.all(Object.keys(files).map(async (p) => (await cache.match('https://game.test' + p)) !== undefined));
+    expect(cached.filter(Boolean).length).toBeLessThan(Object.keys(files).length); // the cap forced an eviction
+    expect(cached[cached.length - 1]).toBe(true); // the most recently used file stays
+  });
+  it('a quota failure still serves the verified bytes, uncached', async () => {
+    const caches = new MemoryCacheStorage(), open = caches.open.bind(caches);
+    caches.open = async (name: string) => { const c = await open(name); if (name === 'cf-art-library-v1') c.put = async () => { throw new Error('QuotaExceededError'); }; return c; };
+    const h = setup({ ...files }, { caches }); await h.dispatch('install'); await h.dispatch('activate');
+    const r = await get(h, '/library/cards/ibex/record.json'); expect(r.status).toBe(200); expect(await r.text()).toBe('{"ibex":1}');
+    expect(await (await libraryCache(h)).match('https://game.test/library/cards/ibex/record.json')).toBeUndefined();
+  });
+  it('mutation control: a worker that skips library verification serves a tampered file — so the refusal test would fail', async () => {
+    const h = setup({ ...files, '/library/cards/wolf/card/master-512.png': 'wolf-PAINT' }, { sourceTransform: (src) => src.replace('const verified=await verifiedLazyBytes(response,pin);', 'const verified=response;') });
+    await h.dispatch('install'); await h.dispatch('activate');
+    const r = await get(h, '/library/cards/wolf/card/master-512.png'); expect(r.status).toBe(200); expect(await r.text()).toBe('wolf-PAINT');
   });
 });

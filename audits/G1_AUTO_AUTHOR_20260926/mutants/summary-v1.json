@@ -1,0 +1,89 @@
+{
+ "summary": {
+  "positivesAdmitted": "5/6",
+  "flippedRefused": "6/6",
+  "wrongFamilyRefused": "6/6",
+  "erasedRefused": "3/4",
+  "duplicatedRefused": "1/4"
+ },
+ "rows": [
+  {
+   "id": "cougar",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-ankle",
+    "hind-far-paw",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "duplicated": "ADMIT"
+  },
+  {
+   "id": "bass",
+   "family": "fish",
+   "positive": "ADMIT",
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [],
+   "erased": "n/a",
+   "duplicated": "n/a"
+  },
+  {
+   "id": "wolf",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-paw",
+    "hind-far-ankle",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "duplicated": "ADMIT"
+  },
+  {
+   "id": "gull",
+   "family": "biped-bird",
+   "positive": "ADMIT",
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "REFUSE",
+   "duplicated": "REFUSE"
+  },
+  {
+   "id": "heron",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "ADMIT",
+   "duplicated": "ADMIT"
+  },
+  {
+   "id": "pike",
+   "family": "fish",
+   "positive": "ADMIT",
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [],
+   "erased": "n/a",
+   "duplicated": "n/a"
+  }
+ ]
+}

@@ -1,6 +1,7 @@
 /** The matchup picker (battle2-matchup.ts) — outcomes: every pair the picker offers is PLAYABLE under Auto (never a habitat
  * refusal), the scripted bout stages, the archetype's own genome renders the painting itself, the picker mounts, replays and
  * closes the study, and main.ts loads it only behind the study gate. */
+import { servedArt } from './art-library.fixtures.js';
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { describe, expect, it } from 'vitest';
@@ -25,8 +26,8 @@ import { CARD_ARCHETYPES } from './morph/card-archetypes.js';
 
 const { JSDOM } = createRequire(import.meta.url)('jsdom') as { JSDOM: new (html: string) => { window: Window & typeof globalThis } };
 const SERVED = new URL('port/v2/apps/game/public/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/', REPO_ROOT);
-const diskAssets: Battle2AssetSource = { json: async (p) => JSON.parse(readFileSync(new URL(p, SERVED), 'utf8')), image: async () => { throw new Error('no images in this test'); } };
-const recordOf = (name: string) => { const fit = BATTLE2_PARTS_FITS.find((f) => f.earthName === name)!; return JSON.parse(readFileSync(new URL(fit.dir + 'record.json', SERVED), 'utf8')) as { recipeHash: string; genome?: Record<string, unknown>; identity?: { speciesVisualKey?: string } }; };
+const diskAssets: Battle2AssetSource = { json: async (p) => JSON.parse(readFileSync(servedArt(p), 'utf8')), image: async () => { throw new Error('no images in this test'); } };
+const recordOf = (name: string) => { const fit = BATTLE2_PARTS_FITS.find((f) => f.earthName === name)!; return JSON.parse(readFileSync(servedArt(fit.dir + 'record.json'), 'utf8')) as { recipeHash: string; genome?: Record<string, unknown>; identity?: { speciesVisualKey?: string } }; };
 const FRAME = { width: 1024, height: 576 }, TEX = { width: 1672, height: 941 };
 const layout = composeArena({ id: 'matchup', groundLineNormalized: 0.78, plates: { far: TEX, mid: TEX, near: TEX } }, FRAME);
 

@@ -1,0 +1,18 @@
+{
+ "id": "salamander",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 868.3,
+ "landmarkMedian": 0.0256,
+ "landmarkMax": 0.1576,
+ "worst": [
+  "hindFarAnkle 0.158",
+  "hindFarPaw 0.156",
+  "tail1 0.093"
+ ],
+ "labelAgreement": 0.4049,
+ "missingJoints": [],
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Part masks: polygon\n    at requireValue (file:///Users/nick/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at cu"
+}
