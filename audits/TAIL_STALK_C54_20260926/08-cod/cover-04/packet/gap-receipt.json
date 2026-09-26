@@ -1,0 +1,19 @@
+{
+ "tail": "caudal",
+ "stalk": "body-5",
+ "maxDistPx": 58,
+ "automaticDistance": true,
+ "boundaryComponents": [
+  96,
+  1,
+  1,
+  1
+ ],
+ "gainedPixels": 4550,
+ "requestedRetained": 4550,
+ "remaining": 0,
+ "otherOwnersChanged": 0,
+ "extraRemainder": 128,
+ "contourCollarPx": 1,
+ "rule": "remainder-owned paint within maxD (through paint) of BOTH the tail part and the stalk part goes to the stalk part"
+}

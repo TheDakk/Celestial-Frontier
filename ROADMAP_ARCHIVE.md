@@ -1,3 +1,39 @@
+# Archived C49/C50 and C54 interim Codex handoff — 2026-09-26
+
+## Current Codex sprint handoff — 2026-09-26, C49/C50 completed batch
+
+**C54 active batch:** signed merge9860799 throughfe344e2b; Claude block retained. D24 now measures G2 per-family; 40-corpus is regression. D26 approved and implemented (alpha≥250, unchanged erosion/alpha/conservation, new identity settings); native5crab/Cougar proofs pending. Fish rejected by Dakk; new tail candidates retained but NOT adopted (static-positive Cod/Perch still native-red; Carp/ArcticFox red). Full visual pass is at the end. Generated Earth painting coverage remains the main goal.
+
+
+### Working state and authority
+
+- Worktree `/Users/dakk/Projects/celestial-frontier-openai-mac`, branch `openai/mac`. Signed no-ff merge `f85cac18` integrates Claude through requested `bb770d53`; seven incoming commits verified G. Signed C50 checkpoint `e12a3786`; final evidence/prompt commit carries this handoff (resolve `git log openai/mac`). Claude's block above is preserved byte-identical; older Codex blocks are archived verbatim.
+- Read absolute other-lane mailbox at start/end and PARALLEL_GIT_PROTOCOL before each batch. C49–C52 read; write only own TO_CLAUDE. Newer Claude head `54cac950` was observed but not merged here. Shared store needs no relay or push wait.
+- Signed own-branch normal push only; budget UNFROZEN, fresh visibility/workflow checks before push. No PR/label/hosted/develop/main/release/deploy/version bump. I5 remains the only accepted battery red; no hosted attempt while red.
+
+### Completed this batch
+
+- **C50 fixed:** 16 MiB buffer for the actual 3,041,940-byte tracked inventory; explicit finisher math helper in preview HELPERS and build/dev names. Exact HTTP and emitted-helper controls pass; actual built helper equals source. Claude C52 reports the shipped desktop path now passes with no workarounds; C51 phone browser delivery also passes. See C50_SHIPPED_FINISH_FIX_20260926 and read-only mailbox snapshot.
+- **C49 reviewed:** Perch/Cod/Carp final bindings/split receipts reproduce exactly. Additional exact selected-seam measurement passes all actions and full presentation; original unwelded Perch fails (94.609 px). Native historical producers match signed 91a62a50. Sampled full films and native stills support Dakk-review candidates, not admission. `C49_FISH_REVIEW_20260926/{README.md,packet-contract.json,dakk-review.png}` specifies durable record/binding/labels/atlas, immutable hashes, weld provenance, selected-seam evidence, native films/stills and visual decision required before registry/library pins. Trout/Herring remain visually refused; measure physical collar width/strain first, no reference shopping.
+- **C47 delivered:** nine untouched 1254 originals (three serpents/birds/insects), exact canonical prompts/receipts and sheet in G2_LAYOUT_C47_20260926. Eight author refusals; Robin ADMIT/PASS_STATIC but semantic presence UNRESOLVED (`legFar+legNear`). No native or play admission. True-tail/layout wording improved; fish wording unchanged. Original alpha/pixels untouched; no hand authoring.
+- **Fit continuation:** nearest-own-painted-part projection of contact endpoints fails Grouse and worsens Sparrow/Tapir. Mongoose endpoints already correct, so no unchanged rerun. Rejected operation/reports retained in G1_FIT_CONTINUATION_C50_20260926. No adoption, limits/pins/conservation unchanged. Prior Eagle/Sandpiper tail improvements remain; Eagle UNRESOLVED, Sandpiper prior native diagnostic positive but no human acceptance.
+- Parked gameplay stays consolidated and complete. Three canonical crab phone originals, 38 source rows and opaque-card fallback from C46 remain. G4 copy unchanged at 120/41/5; no remeasurement.
+
+### Open gates and concrete next work
+
+1. **D26 still open (Dakk); no explicit approval received.** Keep alpha===255, original alpha bytes, four-pixel erosion and conservation. Conditional five-crab rerun/Cougar proof remain blocked; old proof is not superseded. If explicitly approved, add alpha<250 exclusion control, rerun/supersede five crabs, then native 1254 Cougar and send the exact original for review.
+2. Claude: make the three fish packets durable using C49 packet contract; preserve reviewed binding bytes and disclose final-pair versus full-search reproducibility. Dakk: review the three candidates; static/native diagnostic PASS alone is not art acceptance. Do not admit Trout/Herring. Proposed next Salmon diagnostic compares original/single/final weld collar geometry under identical bytes/reference and gates.
+3. Four failures remain: Grouse root/contact support topology, Sparrow faint foot angle, Mongoose blended foreFarAnkle, Tapir compression/faint folds. Next read-only diagnostic records the exact first failing target, rest chain, parent transform, support weights and independent feasibility under unchanged bounds; details in continuation README. No more blind joint snapping.
+4. G2 new layout originals are available for author investigation. Robin's merged-chain evidence blocks play; serpent core classification and thin insect parts still refuse. No blind repeated generation, no author mutation-battery bypass. D24 old gate stands; D25 reference shopping OFF; G1 unmet, broad generation/S4 parked.
+5. New C51 optional efficiency request: pin-only finish identity must be obtained from a generated trusted source pin with decoded-label hash, not caller-provided strings. A future implementation must prove byte-source/key parity and keep full byte preflight before inference/finished-atlas admission. Not implemented in this batch.
+
+### Verification and cleanup
+
+- Browser-free develop profile: **5,646 PASS; I5 only FAIL**, two expected failures/two skips, 563 files. All seven manual owners PASS; root validation 1,010 renders/zero boot errors/unchanged 50-probe fingerprint. Tested source hashes and exact logs in C50 packet. No current-head browser certificate claimed.
+- Approved tool startup current, no update. Disk about 222 GiB (minimum40); 26.87 MB ignored rejected-fit scratch pruned after hash inventory, all originals/positive candidates retained. Three permanent worktrees/no stashes/two preview directories; no branch changes beyond requested merge.
+- Next Codex: D26 only on explicit answer; otherwise retained fit/collar diagnostics and reviewed packet admission. Next Claude: shared-store merge and C49 durable packets, consume new G2 results. **Dakk need not open another app or relay messages.** No PR or hosted attempt requested.
+
+
 # Archived C46/C50 interim Codex handoff — 2026-09-26
 
 ## Current Codex sprint handoff — 2026-09-26, C46 completed batch

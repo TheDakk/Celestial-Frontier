@@ -1,0 +1,15 @@
+{
+  "id": "14-goose",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-7c5c4b60-ca80-40b9-b032-fe3f52df3bfc.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "ace5ecc67e73e5f75f38d0e0ecfeab8f533317d4060131ec66ff2d9bca690b63",
+  "bytes": 1188464,
+  "promptSha256": "0cadbed77fd3eaf12fa453f4f67671d994f8c82798056b5d9f27ab3073b8ed0d",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

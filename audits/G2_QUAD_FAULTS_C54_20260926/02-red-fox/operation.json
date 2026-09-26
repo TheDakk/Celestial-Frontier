@@ -1,0 +1,35 @@
+{
+  "sourcePacket": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/02-red-fox/packet",
+  "sourceMasterSha256": "f45478fccdfb399188fe3eb17dece1cbb50eb90f3519dc436697dc6788636ec4",
+  "sourceAuthorSha256": "422dbf167e9943fa0af464311334e98b37f3fe7149bb0a8d3dc4e5b7793ea344",
+  "moves": [
+    {
+      "joint": "hindFarRoot",
+      "from": [
+        588.6,
+        624.8
+      ],
+      "to": [
+        631.5,
+        624.5
+      ],
+      "fromOwner": "hind-near-root",
+      "toOwner": "hind-far-root",
+      "distancePx": 42.90104893822525
+    },
+    {
+      "joint": "foreFarAnkle",
+      "from": [
+        1000,
+        969.8
+      ],
+      "to": [
+        999.5,
+        966.5
+      ],
+      "fromOwner": "fore-far-paw",
+      "toOwner": "fore-far-ankle",
+      "distancePx": 3.337663853655682
+    }
+  ]
+}

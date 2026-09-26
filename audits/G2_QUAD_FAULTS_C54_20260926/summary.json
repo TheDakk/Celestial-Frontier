@@ -1,0 +1,150 @@
+[
+  {
+    "id": "02-red-fox",
+    "status": "PASS_STATIC",
+    "moves": [
+      {
+        "joint": "hindFarRoot",
+        "from": [
+          588.6,
+          624.8
+        ],
+        "to": [
+          631.5,
+          624.5
+        ],
+        "fromOwner": "hind-near-root",
+        "toOwner": "hind-far-root",
+        "distancePx": 42.90104893822525
+      },
+      {
+        "joint": "foreFarAnkle",
+        "from": [
+          1000,
+          969.8
+        ],
+        "to": [
+          999.5,
+          966.5
+        ],
+        "fromOwner": "fore-far-paw",
+        "toOwner": "fore-far-ankle",
+        "distancePx": 3.337663853655682
+      }
+    ],
+    "refusals": [],
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "id": "11-marmot",
+    "status": "PASS_STATIC",
+    "moves": [
+      {
+        "joint": "hindFarRoot",
+        "from": [
+          529.5,
+          674.1
+        ],
+        "to": [
+          606.5,
+          674.5
+        ],
+        "fromOwner": "hind-near-root",
+        "toOwner": "hind-far-root",
+        "distancePx": 77.0010389540297
+      },
+      {
+        "joint": "hindFarKnee",
+        "from": [
+          467,
+          779.9
+        ],
+        "to": [
+          495.5,
+          844.5
+        ],
+        "fromOwner": "hind-near-knee",
+        "toOwner": "hind-far-knee",
+        "distancePx": 70.6074358690358
+      },
+      {
+        "joint": "hindNearAnkle",
+        "from": [
+          309,
+          885.5
+        ],
+        "to": [
+          310.5,
+          885.5
+        ],
+        "fromOwner": "spine",
+        "toOwner": "hind-near-ankle",
+        "distancePx": 1.5
+      }
+    ],
+    "refusals": [],
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  {
+    "id": "13-cattle",
+    "status": "PASS_STATIC",
+    "moves": [
+      {
+        "joint": "foreFarKnee",
+        "from": [
+          780,
+          792.7
+        ],
+        "to": [
+          805.5,
+          818.5
+        ],
+        "fromOwner": "fore-near-root",
+        "toOwner": "fore-far-knee",
+        "distancePx": 36.27519813867317
+      },
+      {
+        "joint": "hindNearKnee",
+        "from": [
+          221,
+          690.2
+        ],
+        "to": [
+          218.5,
+          714.5
+        ],
+        "fromOwner": "hind-near-root",
+        "toOwner": "hind-near-knee",
+        "distancePx": 24.428262320517145
+      },
+      {
+        "joint": "foreNearKnee",
+        "from": [
+          762.5,
+          809.5
+        ],
+        "to": [
+          759.5,
+          812.5
+        ],
+        "fromOwner": "fore-near-root",
+        "toOwner": "fore-near-knee",
+        "distancePx": 4.242640687119286
+      }
+    ],
+    "refusals": [],
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  }
+]

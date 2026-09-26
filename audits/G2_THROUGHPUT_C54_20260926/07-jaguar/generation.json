@@ -1,0 +1,15 @@
+{
+  "id": "07-jaguar",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-9a9a59f3-25a7-41e6-923b-5e0256db0ed7.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "c601ea255ba061f840d0b7ca075ffb1c0703440d90290794c40dffbf99fd4a0e",
+  "bytes": 989222,
+  "promptSha256": "d51699636c64b94d3cffa401bfd988839fe2e8aef5ab5ff00f83738d64339266",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

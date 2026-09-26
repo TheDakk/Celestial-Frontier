@@ -1,0 +1,1 @@
+{"status":"FAIL","error":"rig refusals in play: {\"left\":23,\"right\":9} {\"left\":\"ARAP skin: unresolved folded triangles: 2\",\"right\":\"ARAP skin: unresolved folded triangles: 2\"}","refusals":{"left":23,"right":9},"attacks":{"left":"bite (jaw)","right":"bite (jaw)"},"capture":{"frames":707,"cpuP95Ms":4,"frameDeltaP95Ms":16.799999999999272}}

@@ -1,0 +1,15 @@
+{
+  "id": "11-stoat",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-67e661c1-5009-434e-848f-f3143b056708.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "befd0dcfc9653a6d57c658a0f4f10e8e6fae3f72fe3981b16bf59e61af236a92",
+  "bytes": 818501,
+  "promptSha256": "f194101187fa00f9ac713b2bed6988c0357131565c5f4dd0a2454f0fcef1ccd0",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

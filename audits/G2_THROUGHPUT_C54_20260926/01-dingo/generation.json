@@ -1,0 +1,15 @@
+{
+  "id": "01-dingo",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-66bd8f79-93a3-4a75-bc51-deac218fc4b5.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "8b130553f51d55c95faeebf22bdd308ff0d8c890fd813fefc8d37c92aed7c84d",
+  "bytes": 1145127,
+  "promptSha256": "ad097b986a42a7d6322c7b052a05fa75e63887b9aa4d48590fbe94e79227c609",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -400,7 +400,7 @@ export function compileCreatureFinishV1(input:{recordRecipeHash:string;cutoutAss
  if(!/^[a-f0-9]{64}$/.test(input.recordRecipeHash)||!/^[a-f0-9]{64}$/.test(input.cutoutAssetHash)||!Number.isSafeInteger(input.seed))throw Error('Creature finish identity');
  const seed=(input.seed ^ Number.parseInt(input.recordRecipeHash.slice(0,8),16))>>>0;
  return freeze({schema:'cf.creature-finish.v1',tier:'desktop',width:input.width,height:input.height,seed,master:input.master,labels:input.labels,
-   settings:{strength:.35,steps:1,boundaryPixels:4,gradientRatio:.95},
+   settings:{strength:.35,steps:1,boundaryPixels:4,gradientRatio:.95,interiorAlphaMin:250},
    prompt:'Rich natural-history fantasy painting. Finish the existing painted creature with fine natural material texture and softly modeled light. Preserve its exact anatomy, count of legs and pincers, pose, silhouette, pigment colors, markings and part boundaries. Work only inside the existing painted surfaces. Keep the source background unchanged. No added limbs, objects, scenery, lettering or decorations.'});
 }
 

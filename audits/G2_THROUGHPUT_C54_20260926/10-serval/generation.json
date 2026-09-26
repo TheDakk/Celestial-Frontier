@@ -1,0 +1,15 @@
+{
+  "id": "10-serval",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f9282721-aca8-45d3-8554-3a346b5d0526.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "f5b2a598e72772ab696c94f5a41bb0b19d74f0e2ac1780649f24588cefc381ed",
+  "bytes": 1323393,
+  "promptSha256": "e1715a3e5bf27922639772d5ea5fd2f4fd4753965231c007ef9913ed30f115da",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

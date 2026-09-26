@@ -1,0 +1,13 @@
+{
+  "reason": "Dakk approved D26 widens finisher interior eligibility. Original alpha, erosion and conservation unchanged.",
+  "old": {
+    "path": "audits/G5_FINISHER_ENGINE_20260926/native-26a4bc57/result.json",
+    "sha256": "1bef281dfe779336a47b420de35c7898a022c7b28a32ca21a242353fdeb95fb9",
+    "status": "SUPERSEDED_FOR_CURRENT_ELIGIBILITY_POLICY"
+  },
+  "current": {
+    "path": "audits/D26_FINISH_20260926/native-five-crabs-01/result.json",
+    "sha256": "5c5051b58970dfa293c85206106ed53002cc5cda255a66b281bae5a8ddee71e0",
+    "status": "PASS"
+  }
+}

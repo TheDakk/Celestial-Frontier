@@ -1,0 +1,61 @@
+{
+  "pairs": [
+    [
+      "body",
+      "body-1"
+    ],
+    [
+      "body-0",
+      "body-2"
+    ],
+    [
+      "body-3",
+      "body-5"
+    ],
+    [
+      "body",
+      "body-2"
+    ],
+    [
+      "body",
+      "body-5"
+    ]
+  ],
+  "schema": "cf.observed-surface-split/v1",
+  "contactPins": [],
+  "sourceBindingHash": "2c85fe7bb2d3aea1d2d90de529e00d979ca266135ecf5a7a26d22b14b64c7ac9",
+  "sourceVertices": 1759,
+  "vertices": 1953,
+  "sharedSupports": 548,
+  "pins": 964,
+  "independentSurfaceParts": 13,
+  "sourceJoins": 12,
+  "excludedOverlaps": 15,
+  "observedExcludedBoundaries": 15,
+  "weldedExcludedBoundaries": 5,
+  "independentExcludedBoundaries": 10,
+  "preservePaintBoundaries": false,
+  "paintBoundaryPairs": [
+    [
+      "body",
+      "body-1"
+    ],
+    [
+      "body-0",
+      "body-2"
+    ],
+    [
+      "body-3",
+      "body-5"
+    ],
+    [
+      "body",
+      "body-2"
+    ],
+    [
+      "body",
+      "body-5"
+    ]
+  ],
+  "sourceCoordinateChanges": 0
+}

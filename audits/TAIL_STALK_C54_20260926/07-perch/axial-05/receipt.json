@@ -1,0 +1,127 @@
+{
+  "schema": "cf.tail-stalk-candidate/v1",
+  "id": "07-perch",
+  "chain": [
+    "root",
+    "spine0",
+    "spine1",
+    "spine2",
+    "spine3",
+    "spine4",
+    "spine5",
+    "caudal"
+  ],
+  "pairs": [
+    [
+      "body",
+      "body-1"
+    ],
+    [
+      "body-3",
+      "body-5"
+    ],
+    [
+      "body",
+      "body-2"
+    ],
+    [
+      "body",
+      "caudal"
+    ]
+  ],
+  "axialParts": [
+    "caudal",
+    "body",
+    "body-0",
+    "body-1",
+    "body-2",
+    "body-3",
+    "body-4",
+    "body-5"
+  ],
+  "supports": 1771,
+  "components": [
+    1401,
+    30,
+    27,
+    23,
+    15,
+    14,
+    11,
+    11,
+    11,
+    11,
+    11,
+    9,
+    9,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5
+  ],
+  "sourceCoordinateChanges": 0,
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "c1dbcfd23de5b1043d1745d2f4cbec76a3c0b92fdb4ef28ec73a7fd18a75d731",
+    "sourceVertices": 2229,
+    "vertices": 2393,
+    "sharedSupports": 599,
+    "pins": 1302,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 12,
+    "excludedOverlaps": 13,
+    "observedExcludedBoundaries": 13,
+    "weldedExcludedBoundaries": 4,
+    "independentExcludedBoundaries": 9,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "body-1"
+      ],
+      [
+        "body-3",
+        "body-5"
+      ],
+      [
+        "body",
+        "body-2"
+      ],
+      [
+        "body",
+        "caudal"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "sourceBindingHash": "c1dbcfd23de5b1043d1745d2f4cbec76a3c0b92fdb4ef28ec73a7fd18a75d731",
+  "bindingHash": "15336d81d0595cc9adcec2ebe59b969845fca1682599b4ac07ceff3d09db2db4"
+}

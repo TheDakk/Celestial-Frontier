@@ -1,0 +1,26 @@
+import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';
+import {splitObservedSurfaces} from '../../port/v2/tools/creature-animation/split-observed-surfaces.mjs';
+import {createSourceJoinProbe} from '../../port/v2/tools/quadruped-proof/source-join-continuity.mjs';
+import {familyContractForRecord,familyContactChains} from '../../port/v2/tools/creature-animation/family-contracts.mjs';
+import {hashJSON} from '../../port/v2/tools/creature-animation/quadruped-template.mjs';
+const root=process.cwd(),req=createRequire(root+'/port/v2/package.json'),sharp=createRequire(req.resolve('free-tex-packer-core'))('sharp');
+const src='/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/03-arctic-fox/fit',out=path.join(import.meta.dirname,'03-arctic-fox/axial-02');
+if(fs.existsSync(out))throw Error('New output required');
+const read=n=>JSON.parse(fs.readFileSync(path.join(src,n))),record=read('record.json'),input=read('pre-split-binding.json'),manifest=read('parts/manifest.json');
+const atlas=await sharp(path.join(src,'parts/atlas',manifest.creatureId+'.png')).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+const probe=createSourceJoinProbe({record,binding:input,atlas:{rgba:atlas.data,width:atlas.info.width,height:atlas.info.height}});
+const chain=['pelvis','tail0','tail1','tail2','tail3'],owners=new Set(['spine',...chain]);
+const pairs=probe.excluded.filter(j=>owners.has(j.ancestorPart)&&owners.has(j.descendantPart)&&[j.ancestorPart,j.descendantPart].some(p=>p.startsWith('tail'))).map(j=>[j.ancestorPart,j.descendantPart]);
+const split=await splitObservedSurfaces(input,record,probe,{fixedJoints:['root'],shapeJoints:input.parts.filter(p=>p.joint!=='root').map(p=>p.joint),contactEndpoints:familyContactChains(familyContractForRecord(record)).map(c=>c.end),paintBoundaryPairs:pairs});
+const binding=split.binding,skin=binding.paintSkin,w=record.geometry.width,h=record.geometry.height,points=chain.map(j=>record.landmarks[j].map((v,k)=>v*(k?h:w)));
+const axis=[points.at(-1)[0]-points[0][0],points.at(-1)[1]-points[0][1]],length=Math.hypot(...axis),station=v=>((v.x-points[0][0])*axis[0]+(v.y-points[0][1])*axis[1])/length;
+const knots=points.slice(0,-1).map(([x,y])=>station({x,y})),names=['pelvis','tail0','tail1','tail3'];if(knots.some((s,i)=>i&&s<=knots[i-1]))throw Error('Nonmonotone tail');
+const supports=new Set(skin.parts.filter(p=>owners.has(p.id)).flatMap(p=>p.fieldTriangles)),changed=[];
+for(const i of supports){const v=skin.vertices[i],u=station(v);if(u<=knots[0])continue;let k=0;while(k<names.length-2&&u>knots[k+1])k++;
+ const t=Math.max(0,Math.min(1,(u-knots[k])/(knots[k+1]-knots[k]))),s=t*t*(3-2*t),blend=Math.min(1,u/knots[1]);
+ const weights=new Map(v.weights.map(([j,n])=>[j,n*(1-blend)]));for(const [j,n]of [[names[k],1-s],[names[k+1],s]])weights.set(j,(weights.get(j)??0)+n*blend);v.weights=[...weights].filter(([,n])=>n>1e-12).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,8);const total=v.weights.reduce((s,[,n])=>s+n,0);v.weights=v.weights.map(([j,n])=>[j,n/total]);changed.push(i);
+}
+skin.solver.pins=[...new Set([...skin.solver.pins,...changed.filter(i=>station(skin.vertices[i])>=knots[1])])].sort((a,b)=>a-b);
+const {bindingHash,...body}=binding;binding.bindingHash=await hashJSON(body);
+fs.mkdirSync(out,{recursive:true});fs.cpSync(src,path.join(out,'fit'),{recursive:true});fs.writeFileSync(path.join(out,'fit/binding.json'),JSON.stringify(binding,null,2)+'\n');
+fs.writeFileSync(path.join(out,'receipt.json'),JSON.stringify({sourceFit:src,sourceBindingHash:input.bindingHash,bindingHash:binding.bindingHash,pairs,chain,knots,changedVertices:changed.length,sourceCoordinateChanges:0,split:split.receipt},null,2)+'\n');

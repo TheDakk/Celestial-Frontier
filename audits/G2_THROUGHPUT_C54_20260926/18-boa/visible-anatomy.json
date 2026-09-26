@@ -1,0 +1,97 @@
+{
+  "id": "18-boa",
+  "name": "Boa",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "2f24a176cb547e5a9731d918a1eeed07b8f4c750fbaaef462ea67d26efe83cae",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 16140,
+    "coreRadius": 13,
+    "bodyBox": {
+      "x0": 10,
+      "y0": 176,
+      "x1": 410,
+      "y1": 250
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1981,
+        "pixels": 3197,
+        "box": {
+          "x0": 286,
+          "y0": 173,
+          "x1": 406,
+          "y1": 216
+        },
+        "attach": {
+          "x": 327.8,
+          "y": 196.3,
+          "relX": 0.79,
+          "relY": 0.27
+        },
+        "dir": {
+          "x": 0.99,
+          "y": -0.14
+        },
+        "class": "front",
+        "length": 81.6
+      },
+      {
+        "k": 1,
+        "frac": 0.1014,
+        "pixels": 1637,
+        "box": {
+          "x0": 13,
+          "y0": 198,
+          "x1": 85,
+          "y1": 251
+        },
+        "attach": {
+          "x": 50.9,
+          "y": 217,
+          "relX": 0.1,
+          "relY": 0.55
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.1
+        },
+        "class": "rear",
+        "length": 50.9
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 30,
+        "x1": 54,
+        "cx": 44.4
+      },
+      {
+        "x0": 209,
+        "x1": 280,
+        "cx": 244.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

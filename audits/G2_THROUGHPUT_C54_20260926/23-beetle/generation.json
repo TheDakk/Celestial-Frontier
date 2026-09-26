@@ -1,0 +1,15 @@
+{
+  "id": "23-beetle",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-95b27ed1-0095-4c71-b712-32e4a71c8b4d.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "5e5b080811a78c09fdcb0c76d02f96a26980d1f4d1a75000cca5b40bb73728dd",
+  "bytes": 1060560,
+  "promptSha256": "800cd8114832eda1b2ee45bde3b88c493131a6f90fab2371fa32d872ffe85289",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,15 @@
+{
+  "id": "16-partridge",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-4b1a64d2-0ded-44ee-add4-a4e37d7bf18f.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "e48ac3b67a14db0bc59c3dc122528a0be927b2c18b219b294135168bb7c91813",
+  "bytes": 1204623,
+  "promptSha256": "47e3a3a4c05e19ce0a2ebdc49475dadfd5d19730463786499f7a5ddba8badba9",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

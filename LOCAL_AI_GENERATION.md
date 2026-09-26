@@ -183,11 +183,7 @@ individual palette remap after the verified finished pixels; a private alpha bas
 rejects both copied and in-place alpha mutations before the unchanged seam guard.
 Claude through signed 0c208c4c is merged, including the flagged card and stage wiring. Runtime IDs and visual keys share the bounded 2048-character limit; values and identity hashing are unchanged. The worker adapter copies its actual Uint8ClampedArray output, as well as Uint8Array/ArrayBuffer, retaining exact length checks. New canonical phone originals pass the native worker/audit-adapter proof and actual bundled-manifest consumer; older proof identities are not relabelled. `audits/G5_C46_CONTINUATION_20260926/PHONE_DELIVERY.md` distinguishes those proofs from the separately tested application adapter.
 
-The worker still requires alpha===255 across its unchanged protected interior.
-The previously available labels-present1254 masters have zero eligible interior under that rule; the
-Cougar native attempt refused before inference. Alpha>=250 is proposed, awaiting
-Dakk; no alpha bytes or conservation thresholds have changed. Contract, passing
-unit checks and retained native refusal: audits/G5_ADAPTER_UNBLOCK_20260926.
+The old alpha===255 policy refused the first1254 Cougar attempt before inference; that diagnostic is retained in audits/G5_ADAPTER_UNBLOCK_20260926. D26 now authorizes alpha≥250 eligibility only. The current worker, policy-bound identity, successful native proof and unchanged protection rules are described below.
 
 
 ### G2 four-family pilot — matches tooling as of 2026-09-26
@@ -203,3 +199,13 @@ C50 fixes the complete tracked-file inventory read with a16MiB child-process buf
 ### C47 layout follow-up — matches tooling as of 2026-09-26
 
 The canonical compiler now asks for low horizontal, level-headed serpents; two separately visible bird ground contacts; and explicitly right-facing insects with readable abdomens. Fish layout is unchanged. Nine unmodified 1254×1254 masters and exact requests are in `audits/G2_LAYOUT_C47_20260926`. Eight refuse automatic authoring; Robin passes static actions/presentation but semantic near/far leg presence remains UNRESOLVED, so none is admitted to play. No alpha normalization, hand authoring, reference shopping or gate change accompanies these layouts.
+
+
+### D26 eligibility — matches code as of 2026-09-26
+
+D26 is now DECIDED yes. The finisher alone admits alpha≥250 interior, with the same four-pixel erosion and unchanged original alpha/conservation. Compiled and worker settings explicitly bind interiorAlphaMin:250, giving widened-policy outputs distinct cache/delivery identities. Previous alpha255 outputs remain historical and immutable. The signed-source five-crab and native1254 Cougar proofs pass, independently finding zero sub250 RGB changes and zero alpha changes. Five new canonical crab PNG/receipt pairs are published in the local613-file library; the actual pinned consumer resolves all five. The native Cougar original is retained for Dakk's full visual pass, not published under an invented phone identity. Historical alpha255 proofs remain intact and are explicitly superseded for current eligibility. See audits/D26_FINISH_20260926; the default finish flag is unchanged.
+
+
+### C54 generated coverage — matches tooling as of 2026-09-26
+
+`audits/G2_THROUGHPUT_C54_20260926` adds24 untouched1254 originals (12quadrupeds,4birds,4serpents,4insects), exact canonical C47 requests and per-output hashes. D24 now measures G1 per generated family; the40-corpus is a regression report. Automatic authoring/scoring and Dakk's full visual pass remain distinct from generation. No new creature is admitted to the runtime library merely by producing its painting. The Cod tail ownership candidate passes static/native but its whole-fish/general-tail repair remains open; RedFox, Marmot and Cattle visual/stage faults also remain open (TAIL_STALK_C54_20260926 and G2_QUAD_FAULTS_C54_20260926).

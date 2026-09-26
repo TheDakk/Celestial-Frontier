@@ -1,0 +1,15 @@
+{
+  "id": "04-lion",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-af23a026-dcf3-4c12-973d-b77ea104cd89.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "179395d308e4aa355612221ea58357a4149eae97f525f2723714bf96cf99ae04",
+  "bytes": 1315233,
+  "promptSha256": "4ef99333934051fba6caa5c73f2122c13c30a7a75fe1f3e0737671e7de3b2895",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

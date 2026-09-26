@@ -1,0 +1,8 @@
+{"status":"running","rows":[]}
+{"status":"running","subject":"cougar","rows":[{"id":"cougar","status":"FAIL"}],"last":{"phase":"inference-start","stage":"encode"}}
+{"status":"running","subject":"cougar","rows":[{"id":"cougar","status":"FAIL"}],"last":{"phase":"expansion"}}
+{"status":"running","subject":"cougar","rows":[{"id":"cougar","status":"FAIL"}],"last":{"phase":"inference-start","stage":"denoise"}}
+{"status":"running","subject":"cougar","rows":[{"id":"cougar","status":"FAIL"}],"last":{"phase":"inference-start","stage":"decode"}}
+{"status":"running","subject":"cougar","rows":[{"id":"cougar","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"complete","subject":"cougar","rows":[{"id":"cougar","status":"PASS"}],"last":{"phase":"readback-complete","stage":"decode"}}
+{"status":"PASS","output":"/Users/dakk/Projects/celestial-frontier-openai-mac/audits/D26_FINISH_20260926/cougar-01"}

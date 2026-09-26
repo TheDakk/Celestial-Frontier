@@ -1,0 +1,168 @@
+{
+  "id": "16-partridge",
+  "name": "Partridge",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "e48ac3b67a14db0bc59c3dc122528a0be927b2c18b219b294135168bb7c91813",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 45775,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 30,
+      "y0": 85,
+      "x1": 389,
+      "y1": 292
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0882,
+        "pixels": 4038,
+        "box": {
+          "x0": 290,
+          "y0": 52,
+          "x1": 387,
+          "y1": 115
+        },
+        "attach": {
+          "x": 329.6,
+          "y": 111.7,
+          "relX": 0.83,
+          "relY": 0.13
+        },
+        "dir": {
+          "x": 0.26,
+          "y": -0.97
+        },
+        "class": "top",
+        "length": 82.8
+      },
+      {
+        "k": 1,
+        "frac": 0.004,
+        "pixels": 185,
+        "box": {
+          "x0": 362,
+          "y0": 139,
+          "x1": 365,
+          "y1": 199
+        },
+        "attach": {
+          "x": 362,
+          "y": 169,
+          "relX": 0.92,
+          "relY": 0.41
+        },
+        "dir": {
+          "x": 0.96,
+          "y": 0.26
+        },
+        "class": "front",
+        "length": 30.1
+      },
+      {
+        "k": 2,
+        "frac": 0.0681,
+        "pixels": 3118,
+        "box": {
+          "x0": 32,
+          "y0": 207,
+          "x1": 121,
+          "y1": 273
+        },
+        "attach": {
+          "x": 106.9,
+          "y": 244,
+          "relX": 0.21,
+          "relY": 0.77
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.07
+        },
+        "class": "rear",
+        "length": 83.6
+      },
+      {
+        "k": 3,
+        "frac": 0.0426,
+        "pixels": 1949,
+        "box": {
+          "x0": 113,
+          "y0": 282,
+          "x1": 240,
+          "y1": 373
+        },
+        "attach": {
+          "x": 189.2,
+          "y": 291.8,
+          "relX": 0.44,
+          "relY": 1
+        },
+        "dir": {
+          "x": -0.72,
+          "y": 0.69
+        },
+        "class": "limb-down",
+        "length": 111.4
+      },
+      {
+        "k": 4,
+        "frac": 0.0438,
+        "pixels": 2004,
+        "box": {
+          "x0": 245,
+          "y0": 293,
+          "x1": 340,
+          "y1": 371
+        },
+        "attach": {
+          "x": 263,
+          "y": 293,
+          "relX": 0.65,
+          "relY": 1
+        },
+        "dir": {
+          "x": 0.43,
+          "y": 0.9
+        },
+        "class": "limb-down",
+        "length": 109.6
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 131,
+        "x1": 179,
+        "cx": 152.4
+      },
+      {
+        "x0": 264,
+        "x1": 340,
+        "cx": 303.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

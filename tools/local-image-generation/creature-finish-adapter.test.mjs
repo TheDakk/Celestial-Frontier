@@ -45,7 +45,33 @@ test('actual worker dispatch validates transferred bytes before constructing mod
  const context={ort:{},Tokenizer:class{},onmessage:null,postMessage:m=>messages.push(m),prepareCreatureFinishJob,admitKitEngineJob(){throw Error('unexpected kit');},createKitWorkerEngine:async()=>{creates++;return {async finishCreature(recipe){finishes++;assert.ok(recipe.master.buffer instanceof ArrayBuffer);assert.equal('url' in recipe.master,false);return {status:'fixture'};},async dispose(){}};}};
  vm.runInNewContext(source,context);
  const bad=job();new Uint8Array(bad.labels.buffer)[8]^=1;await context.onmessage({data:{stage:'creature-finish-v1',requestId:1,recipe:bad}});assert.equal(messages.at(-1).type,'error');assert.match(messages.at(-1).message,/hash mismatch/);assert.equal(creates,0);assert.equal(finishes,0);
- const partial=fixture(129);for(let i=3;i<partial.master.length;i+=4)if(partial.master[i]===255)partial.master[i]=253;
+ const partial=fixture(129);for(let i=3;i<partial.master.length;i+=4)if(partial.master[i]===255)partial.master[i]=249;
  await context.onmessage({data:{stage:'creature-finish-v1',requestId:2,recipe:job(partial)}});assert.equal(messages.at(-1).type,'error');assert.match(messages.at(-1).message,/No editable creature interior/);assert.equal(creates,0);assert.equal(finishes,0);
  await context.onmessage({data:{stage:'creature-finish-v1',requestId:3,recipe:job()}});assert.equal(messages.at(-1).type,'complete');assert.equal(creates,1);assert.equal(finishes,1);
+});
+
+test('D26 alpha250 eligibility preserves original alpha, 4px erosion and every sub250 pixel',async()=>{
+ const f=fixture(128);for(let i=3;i<f.master.length;i+=4)if(f.master[i]===255)f.master[i]=250;
+ const at=(x,y)=>(y*f.w+x)*4;
+ f.master[at(32,32)+3]=249;
+ const before=f.master.slice(),m=creatureFinishMask(f.master,f.labels,f.w,f.h),generated=new Uint8ClampedArray(f.master.length).fill(111);
+ assert.equal(m.editable[48*f.w+32],1,'alpha250 interior is eligible');
+ for(let y=28;y<=36;y++)for(let x=28;x<=36;x++)assert.equal(m.editable[y*f.w+x],0,'four-pixel erosion around alpha249');
+ assert.equal(m.editable[32*f.w+37],1,'radius is exactly four, not five');
+ const output=conserveCreaturePixels(f.master,generated,m.editable);
+ let eligibleChanges=0;
+ for(let i=0;i<m.editable.length;i++){
+  assert.equal(output[i*4+3],before[i*4+3],'original alpha');
+  if(before[i*4+3]<250||!m.editable[i])assert.deepEqual(output.subarray(i*4,i*4+4),before.subarray(i*4,i*4+4));
+  else if(output[i*4]!==before[i*4])eligibleChanges++;
+ }
+ assert.ok(eligibleChanges>0);assert.deepEqual(f.master,before);
+ assert.equal(finishConservation(f.master,output,f.labels,f.w,f.h).status,'PASS');
+ await prepareCreatureFinishJob(job(f),undefined,'Macintosh');
+ const old={...CREATURE_FINISH_SETTINGS};delete old.interiorAlphaMin;
+ assert.throws(()=>admitCreatureFinishJob({...job(f),settings:old},'Macintosh'),/settings/,'old identity settings refuse');
+ assert.throws(()=>admitCreatureFinishJob({...job(f),settings:{...CREATURE_FINISH_SETTINGS,interiorAlphaMin:249}},'Macintosh'),/settings/);
+ // Opposite control: the retired ==255 mask cannot pass the required eligibility outcome.
+ const retired=f.master.slice();for(let i=3;i<retired.length;i+=4)if(retired[i]<255)retired[i]=0;
+ assert.throws(()=>creatureFinishMask(retired,f.labels,f.w,f.h),/No editable/);
 });
