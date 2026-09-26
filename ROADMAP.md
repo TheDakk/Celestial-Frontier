@@ -22,7 +22,7 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 
 **Where things stand**
 - **Branch:** `anthropic/mac` is pushed through the commit that adds this block. Every commit is signed G with the repo keychain key (`git-ssh-sign-cf`), and `origin` is HTTPS via `gh`.
-- **Codex:** merged through `bd5530d7` (its G2 quadruped pilot). Before merging again, read `/Users/nick/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md` (read-only) and run `git log HEAD..openai/mac`. Codex's current focus, per Nick: finish the preserved parked gameplay (Forge Training, the living-portrait decision) BEFORE its G5 engine work.
+- **Codex:** merged through `26a4bc57` (parked gameplay + the G5 engine). Before merging again, read `/Users/nick/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md` (read-only) and run `git log HEAD..openai/mac`. Codex's current focus, per Nick: finish the preserved parked gameplay (Forge Training, the living-portrait decision) BEFORE its G5 engine work.
 - **Gate:** `node tools/check-profile.mjs --profile=develop` (from `port/v2`) gives **5,586 pass; the ONLY red is I5** (`current-producer-authorities`, "binds every live memory budget").
   - Run it on a QUIET tree. A commit during the run produces a spurious "Source changed during authority read".
   - Also run by hand, all clean this session: `npm run typecheck` (root, app and worker), `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
@@ -38,7 +38,7 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 | G2 library at scale | Codex | Pilot delivered (20 quadrupeds + 120 derived-mask candidates, `audits/G2_QUADRUPED_PILOT_20260926`). Next families are Codex's. |
 | **G3 on-demand delivery** | Claude | Live. **Card path now browser-smoked PASS** (online library cards, offline core fallback, negative control): `audits/G3_ART_DELIVERY_20260926/card-smoke/`. |
 | **G4 selection** | Claude | **Landed and live.** `paintedArtV2`, one resolver for card and stage: exact → same Earth profile group → nearest same-anatomy visual-gene variant → v1 stand-in. Sturgeon and Reef Shark now draw sturgeon- and shark-shaped procedural fish. 7 tests with controls. `audits/G4_SELECTION_20260926/README.md`. |
-| G5 finisher in the game | Claude routes, Codex engine | **Blocked on a seam (mailbox C40(c)).** Codex's finisher takes an ARCHETYPE master. Per-individual finishing needs Claude's master-space morph plus Codex's finished-master → rig-atlas format under finish-conservation. |
+| **G5 finisher in the game** | Claude routes, Codex engine | **Codex's engine landed (`26a4bc57`, merged). Claude's routing layer v1 landed:** `creature-finish-route.ts` (tier, source, identity, store-only lookup, desktop enqueue, finished → card-master kernel) and the card `finished` hook; 5 tests on real fits with controls. NOT yet wired into `main.ts`: the desktop `createInfer` adapter and `?finish=1` wiring are next. Stage-loader and phone-delivery shapes asked in C41. `audits/G5_ROUTING_20260926/README.md`. |
 
 **Why G1 is still red, and what moves it**
 - **The corpus gate (≥ 30/40) is near-unreachable by construction.** 6 singleton families, sparse radial/serpent/insect families, and the hand control itself scores only 30/40.
@@ -53,7 +53,10 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 **Next, in order (Claude)**
 1. Read Codex's answers to C40 (a)–(d); merge its signed commits. Re-score G1 on any new G2 families as they land (`run-auto.mjs --targets=<pilot.json>`).
 2. **G1:** build a far-limb detector, so thin-part placement can relax without leaking erased far legs. Target: the corpus above 12 AND G2 above 10/20, with the battery ≥ 90 % and no flip/wrong-family loss.
-3. **G5:** once Codex confirms the finished-original format, build the master-space morph (the individual's own master) and the router. Desktop: enqueue on the landfall job queue and retain in `creature-originals`. Phones: delivered finished originals via `deliverCreaturePngV1`.
+3. **G5, next steps:**
+   - the desktop `createInfer` adapter over the `/__local_ai/` developer transport (`kit-stage-worker.mjs`, `{stage: 'creature-finish-v1', recipe, modelFiles}`, the shape of Codex's `native-client.ts`);
+   - `main.ts` wiring behind `?finish=1`: the route plus the card `finished` hook, and an enqueue on discovery or when a portrait opens. Default off until Nick's quality review;
+   - then the stage and phone paths, once Codex answers C41.
 4. Only after G1 passes (or D24 redefines it): the parked items (audio Stage 4, the mission-return voice, the Kindred picker, wiring Codex's S4/missions/Outposts numbers).
 
 **Nick (none blocking): D24 and D25** in `audits/MAILBOX/DECISIONS.md`. Also still open: the playtest checklist (`?deviceProbe=1`, `?audioReview=1`, a full journey, `?battle2=1&vs=…` pairs).
