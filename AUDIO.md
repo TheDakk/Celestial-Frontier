@@ -45,6 +45,41 @@
   - The turn sink (`impactMaterial`) layers that body's material tail (`withMaterialTailV1`): fur muffles, chitin clicks, plate rings, water slaps, crystal chimes, and so on.
   - The stage passes each side's voice-card material.
 
+**Stage 3 (landed).**
+- **Ambience** (`soundkit/ambience.ts`).
+  - Ten family beds: temperate, jungle, coast, underwater, desert, ice, volcanic, crystal, spore and gas. They are built from wind, surf swells, insect beds, distant bird phrases, drips, glass chimes, ice creaks, magma bubbles and so on.
+  - Four weather layers: rain, wind, storm (with thunder) and snow-sand.
+  - The 43-biome derivation (`ambiencePlanV1`) uses `PRODUCTION_BIOME_BEDS` to pick a family and detail family, applies a seeded tone and level tint (±0.5 dB), and takes the weather from the biome profile. Airless worlds are silent, and underwater has no weather. Time of day is a playback gain (night −1.2 dB, twilight −0.6 dB).
+  - Beds are 24 s seamless crossfade loops and weather loops are 17 s, so the pair repeats only every 408 s. Stereo is the same loop rotated about 37 %. Rendering is at 32 kHz.
+- **Music** (`soundkit/music.ts`).
+  - Seven states in 11 pieces, 397 s in total:
+    - menu, 45 s;
+    - calm-a and calm-b, 60 s each;
+    - wonder, 50 s;
+    - tension, 40 s;
+    - battle and major-battle, 55 s loops (the tail wraps into the head);
+    - four 8 s stings: victory, discovery, defeat and triumph.
+  - Each piece is a deterministic modal score: a motif developed by repetition and transposition, over a bowed drone, mallet arpeggios, a plucked bass or a frame-drum ostinato. It is played by plucks, mallets, a breathed flute and a bowed drone. Mono, 32 kHz.
+- **Levels without runtime measurement.** Every bed, weather layer and piece is deterministic, so its level gain is a constant.
+  - The gain is found once by the real BS.1770 meter (`levelGainV1`) and stored in `soundkit/level-gains.generated.ts` (57 entries).
+  - At runtime the gain is only applied (`applyLevelV1`: gain, then a look-ahead limiter at −2 dBFS).
+  - `tests/soundkit-soundscape.test.ts` re-measures every entry, proves this exact runtime output passes the gate (beds also at night), and regenerates with `CF_REGENERATE_LEVEL_GAINS=1`.
+  - Renders are generator JOBS. Desktop measurements: a bed takes 40–85 ms in total with slices of at most ~32 ms, and a music piece takes at most ~250 ms with slices of at most ~37 ms. Phone slices are about four times that, pending the H1 probe.
+- **The owner** (`soundkit/soundscape.ts`, `createSoundscapeV1`). It is the ONE owner of continuous sound, on the accessible owner's decorative port. `DecorativeVoicePort.stopVoice` stops only the voices that port started.
+  - One bed plus its weather layer; phones get the bed only.
+  - The bed stops the moment `setAmbience(null)` is called.
+  - A hidden tab stops everything, and visibility RESTARTS the bed and the loop.
+  - The sparse rule: a calm piece plays once, then 120–300 s of only ambience. The gap comes from a presentation seed, never gameplay RNG or the wall clock.
+  - Battle and major-battle loop only in battle (`combatScene`), then the outcome's sting plays.
+  - Buffers live in a byte LRU of at most 24 MiB decoded. A port refusal (not running, muted) retries every 4 s.
+- **Wiring** (`main.ts`, loaded lazily as its own chunk).
+  - The surface vista request sets the world's bed (`request.biomeKey`); the vista teardown clears it.
+  - The visibility and pageshow handlers hide and restart.
+  - The combat Chronicle calls `combatScene` (major for Guardians and Titans; a win, loss or draw sting).
+  - Calm music starts once the owner is ready. The hooks call `globalThis.cfSoundscapeV1`, so the test-executed regions never meet an undeclared name.
+- **Listening page.** `?audioReview=1` now lists 217 items: the 143 creature cues, the 49 combat cues, the 10 ambience families, the 4 weather layers and the 11 music pieces. Each plays exactly what the game plays.
+- **Pack.** All of this is rendered at runtime, so the audio section of the pack is still 0 bytes (the Stage 0 12 MiB gate is unchanged).
+
 **Tests.** `tests/soundkit-original-sources.test.ts`:
 - every cue at three sizes passes the gate;
 - originality against the placeholder, and determinism;

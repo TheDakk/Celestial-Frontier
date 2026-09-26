@@ -17,6 +17,23 @@ export function peakLimit(x: Float32Array, ceiling: number, rate: number): Float
   for (let i = 0; i < n; i++) { const target = win[i]!; g = target < g ? target : g + (target - g) * rel; y[i] = x[i]! * g; }
   return y;
 }
+/** The RUNTIME level stage for deterministic long renders (beds, weather, music): the measured gain is a constant of the content, so it is
+ *  computed once offline (`levelGainV1`, through the real meter) and stored in `level-gains.generated.ts`; here it is only applied, with
+ *  the look-ahead limiter at −2 dBFS. No measurement at runtime (a 60 s measurement is a second of phone CPU). The drift test proves
+ *  this exact output passes the gate. */
+export const LEVEL_CEILING_DB = -2.0;
+export function applyLevelV1(samples: Float32Array, rate: number, gainDb: number): Float32Array {
+  const g = db2lin(gainDb), y = new Float32Array(samples.length); for (let i = 0; i < samples.length; i++) y[i] = samples[i]! * g;
+  return peakLimit(y, db2lin(LEVEL_CEILING_DB), rate);
+}
+/** Offline: the gain that puts `applyLevelV1`'s output on the class target (integrated), found by the real meter (a few passes). */
+export function levelGainV1(samples: Float32Array, rate: number, cls: LoudnessClass, offsetDb = 0): number {
+  const t = LOUDNESS_TARGETS_V1[cls], target = t.targetLufs + offsetDb, m0 = measureLoudnessV1(samples, rate).integratedLufs;
+  if (!Number.isFinite(m0)) return 0;
+  let gain = target - m0;
+  for (let pass = 0; pass < 4; pass++) { const m = measureLoudnessV1(applyLevelV1(samples, rate, gain), rate).integratedLufs; const d = target - m; if (Math.abs(d) < 0.15) break; gain += d; }
+  return Math.round(gain * 1000) / 1000;
+}
 /** Level `samples` to the class target (integrated for music/ambience, loudest short-term window for cues). */
 export function levelToTargetV1(samples: Float32Array, rate: number, cls: LoudnessClass): { readonly samples: Float32Array; readonly makeupDb: number } {
   const t = LOUDNESS_TARGETS_V1[cls], ceiling = db2lin(t.maxTruePeakDb - 0.6);
