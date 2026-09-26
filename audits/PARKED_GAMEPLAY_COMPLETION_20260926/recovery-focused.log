@@ -1,0 +1,85 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/training-main-wiring.test.ts (10 tests | 3 failed) 15ms
+     × rejects missing, unimported, and pre-publication refresh wiring 3ms
+     × requires every exact card and each populated read-only board without rewriting the held primary 2ms
+     × rejects skipped cards, forged board receipts, missing storage proof, and vacuous board locks 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/training-main-wiring.test.ts > Field Training Survey replacement wiring > rejects missing, unimported, and pre-publication refresh wiring
+AssertionError:   refreshTrainingScope();
+: expected 3 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 3
+
+ ❯ replaceUnique tests/training-main-wiring.test.ts:22:51
+     20|
+     21| function replaceUnique(source: string, target: string, replacement: st…
+     22|   expect(source.split(target).length - 1, target).toBe(1);
+       |                                                   ^
+     23|   const next = source.replace(target, replacement);
+     24|   expect(next).not.toBe(source);
+ ❯ tests/training-main-wiring.test.ts:173:25
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/training-main-wiring.test.ts > Field Training authoritative Slice journey > requires every exact card and each populated read-only board without rewriting the held primary
+AssertionError: expected [ 'slice-training-receipt-10', …(6) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "slice-training-receipt-10",
++   "slice-training-receipt-11",
++   "slice-training-receipt-12",
++   "slice-training-receipt-13",
++   "slice-training-receipt-14",
++   "slice-training-receipt-15",
++   "slice-training-oracle-16",
++ ]
+
+ ❯ tests/training-main-wiring.test.ts:299:50
+    297| describe('Field Training authoritative Slice journey', () => {
+    298|   it('requires every exact card and each populated read-only board wit…
+    299|     expect(sliceTrainingTourErrors(sliceSource)).toEqual([]);
+       |                                                  ^
+    300|   });
+    301|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/training-main-wiring.test.ts > Field Training authoritative Slice journey > rejects skipped cards, forged board receipts, missing storage proof, and vacuous board locks
+AssertionError:   await recordTrainingReceipt('records-tour', 13, 'rec');
+: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ replaceUnique tests/training-main-wiring.test.ts:22:51
+     20|
+     21| function replaceUnique(source: string, target: string, replacement: st…
+     22|   expect(source.split(target).length - 1, target).toBe(1);
+       |                                                   ^
+     23|   const next = source.replace(target, replacement);
+     24|   expect(next).not.toBe(source);
+ ❯ tests/training-main-wiring.test.ts:321:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  3 failed | 77 passed (80)
+   Start at  01:15:18
+   Duration  853ms (transform 824ms, setup 0ms, import 1.22s, tests 1.04s, environment 0ms)
+

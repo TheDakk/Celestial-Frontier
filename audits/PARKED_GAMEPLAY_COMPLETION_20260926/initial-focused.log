@@ -1,0 +1,108 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/training-forge-practice.test.ts (6 tests | 4 failed) 18ms
+     × uses the real fixed-fabrication derivation while leaving every live authority byte untouched 9ms
+     × is deterministic from the same source and never advances the live F4 draw or receipt authority 2ms
+     × brands sessions, rejects stale action/cleanup, and releases the one sandbox on close and dispose 3ms
+     × provides a narrow Main/Training adapter with explicit enter, lesson event, exit, and teardown 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/training-forge-practice.test.ts > D-TRAIN-2 in-memory Forge practice authority > uses the real fixed-fabrication derivation while leaving every live authority byte untouched
+AssertionError: expected 'refused' to be 'completed' // Object.is equality
+
+Expected: "completed"
+Received: "refused"
+
+ ❯ tests/training-forge-practice.test.ts:154:26
+    152|     }
+    153|
+    154|     expect(outcome.kind).toBe('completed');
+       |                          ^
+    155|     if (outcome.kind !== 'completed') return;
+    156|     expect(outcome.completion).toMatchObject({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/training-forge-practice.test.ts > D-TRAIN-2 in-memory Forge practice authority > is deterministic from the same source and never advances the live F4 draw or receipt authority
+AssertionError: expected 'refused' to be 'completed' // Object.is equality
+
+Expected: "completed"
+Received: "refused"
+
+ ❯ run tests/training-forge-practice.test.ts:214:28
+    212|       expect(opened.kind).toBe('ready');
+    213|       const crafted = adapter.fabricate();
+    214|       expect(crafted.kind).toBe('completed');
+       |                            ^
+    215|       if (crafted.kind !== 'completed') throw new Error(crafted.detail…
+    216|       return crafted.completion;
+ ❯ tests/training-forge-practice.test.ts:218:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/training-forge-practice.test.ts > D-TRAIN-2 in-memory Forge practice authority > brands sessions, rejects stale action/cleanup, and releases the one sandbox on close and dispose
+AssertionError: expected { kind: 'refused', …(3) } to match object { kind: 'completed', …(1) }
+(14 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "kind": "completed",
++   "kind": "refused",
+    "snapshot": {
+      "retainedSandboxCount": 0,
+-     "status": "completed",
++     "status": "refused",
+    },
+  }
+
+ ❯ tests/training-forge-practice.test.ts:262:23
+    260|     if (third.kind !== 'ready') return;
+    261|     const completed = authority.fabricate(third.ticket);
+    262|     expect(completed).toMatchObject({
+       |                       ^
+    263|       kind: 'completed', snapshot: { status: 'completed', retainedSand…
+    264|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/training-forge-practice.test.ts > D-TRAIN-2 in-memory Forge practice authority > provides a narrow Main/Training adapter with explicit enter, lesson event, exit, and teardown
+AssertionError: expected { kind: 'refused', …(3) } to match object { kind: 'completed', …(1) }
+(11 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "completion": {
+-     "event": {
+-       "detail": {
+-         "baseId": "plate",
+-         "outputCount": 1,
+-       },
+-       "type": "training-forge-practice",
+-     },
+-   },
+-   "kind": "completed",
++   "kind": "refused",
+  }
+
+ ❯ tests/training-forge-practice.test.ts:344:20
+    342|     });
+    343|     const result = adapter.fabricate();
+    344|     expect(result).toMatchObject({
+       |                    ^
+    345|       kind: 'completed',
+    346|       completion: {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  4 failed | 18 passed (22)
+   Start at  01:13:13
+   Duration  782ms (transform 587ms, setup 0ms, import 745ms, tests 97ms, environment 0ms)
+

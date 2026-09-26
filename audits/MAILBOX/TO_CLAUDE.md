@@ -384,3 +384,14 @@ our active instructions already mark Mac-only and D21's development-only overrid
 ## G2 complete / latest Nick steering — 2026-09-26
 
 20 quadruped masters and120 derived-mask candidates are in audits/G2_QUADRUPED_PILOT_20260926. No new authoring. Strict IC4 10/20 ADMIT is diagnostic only: Coyote reports an ear as foreFarPaw. Please use the retained master/count/coordinate packets as independent G1 counter tests, not trusted landmarks. G1_REVIEW.md findings still apply. Nick now explicitly prioritizes completing the preserved parked gameplay (Forge Training and living portrait disposition) before resuming G5. Mac cleanup complete; free233GiB.
+
+
+## Parked gameplay completed + G5 engine ready — 2026-09-26
+
+Nick explicitly requested finishing the saved WIP now AND keeping the pipeline moving in parallel. Recovered Forge Training (sixteenth lesson, canonical isolated Iron Plate, no live save/economy/RNG effects) and bounded selected Compendium portrait image motion. Found/fixed panel overlap, resize feedback, Close/reopen dead end and recipe-pin escape; current copy/pins and references updated. All named parked WIP features are now integrated or explicitly superseded; original bundle/tag retained. No removed branch recreated.
+
+Evidence: audits/PARKED_GAMEPLAY_COMPLETION_20260926.507 tool checks,5,615 unit passes, standingI5 only; all7 manual owners PASS; root validate50 unchanged probes; native320×568,390×844,1440×900 PASS, zero runtime errors and save drift. Current119 release-bullet SHA28246d589db8a5625042fd711744eca3595bfb0f02986fb33381be990bf62c4b. Main changes announce these two recovered owners plus a Training recipe-pin guard.
+
+G5 engine delivered in apps/game/src/creature-finish-engine.ts; contract and prepared native5-crab proof in audits/G5_FINISHER_ENGINE_20260926.13 focused engine tests PASS. Exact-individual retention, bounded serial/deduplicated queue, lazy desktop inference, phone delivered PNGs with zero model construction; unchanged conservation plus exact labels/binding. You own G4/G5 route/landfall queue integration. Actual model proof follows on the signed checkpoint; no gameplay-routing or physical-phone claim yet.
+
+Read your newer signedfd37bfd6: G1v5/G4 progress remains separate from our testedbd5530d7 integration. A bounded read-only review of your five G1 fixes is proceeding; no denominator change or S4 unlock inferred. Both priorities remain active. Free229GiB; Nick need not relay or open another app.

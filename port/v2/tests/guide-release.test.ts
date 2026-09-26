@@ -1435,7 +1435,7 @@ describe('v2 Guide capability filter', () => {
     expect(getGuideTopic('settings')?.body).toContain(
       'every registered post-settlement Combat Chronicle cue',
     );
-    expect(getGuideTopic('settings')?.body).toContain('current <b>15-card</b> drill in Sol');
+    expect(getGuideTopic('settings')?.body).toContain('current <b>16-card</b> drill in Sol');
     expect(getGuideTopic('settings')?.body).toContain(
       'every ordinary save-mutating preference and Training control—including Creature voices and both sliders—remains inspection-only',
     );
@@ -2690,7 +2690,7 @@ describe('legacy and v2 release channels', () => {
       /ordinary direct navigation cannot own Follow, Jumps, or wayfarer, but still owns its source-proved arrival and galaxy-event aggregate/i,
       /Every accepted galaxy, star, or planet route is regenerated from the seeded universe and source-verified/,
       /Stale, forged, or incomplete rows remain visible but disabled/,
-      /current 15-card drill keeps six real navigation lessons[^\n]*read-only Planetside, Engineering, Compendium, Records, Guardian\/combat, and CF1 Share\/Follow orientation/,
+      /current 16-card drill keeps six real navigation lessons[^\n]*read-only Planetside, Engineering, Compendium, Records, Guardian\/combat, and CF1 Share\/Follow orientation/,
       /A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view/,
       /if verification pauses, that exact view stays saved, and when Sol can still be verified, Training returns there so a reload can restart safely and retry/,
       /Older v1\.8\.9 Training checkpoints restore only the eleven pre-drill record groups they captured/,
@@ -2781,7 +2781,7 @@ describe('legacy and v2 release channels', () => {
       /Achievement rewards remain open/,
       /verified conquest banks Chapter 2 conquest and can honor one accepted starter st-conq for \+25 Stardust in the same combat save/,
       /Accepted wk-conq remains fail-closed because its weekly lifecycle owner is missing/,
-      /Training locks every mutating board action and performs no capture, meal, breeding, rename, Field Scout change, engineering transaction, or combat/,
+      /Training locks every live mutating board action and performs no capture, meal, breeding, rename, Field Scout change, persistent engineering transaction, or combat/,
       /named HD surface-planet texture attachment/,
       /retains the displayed predecessor until an acquired successor publishes/,
       /AURORAS RESPECT THE WEATHER:[^\n]*rain and snow once again suppress the aurora overlay/,

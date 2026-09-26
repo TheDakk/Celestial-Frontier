@@ -3503,3 +3503,8 @@ Advanced Briefings. Missions, Outposts, Compendium filters/reveals/origin travel
 original audio and device/translation tooling are documented at their current scope. The
 painted battle note does not claim per-species generated originals before G1/G2 delivery.
 Exact copy authority and controls: audits/G_PIPELINE_CODEX_20260926/measured-copy.json.
+
+
+### Recovered Field Training and portrait presentation — matches code as of 2026-09-26
+
+Field Training has16 cards: six navigation lessons, one isolated Forge practice and the existing orientation cards. The native Engineering button completes practice, then the board returns to read-only. Training board and lesson bounds reserve separate space, with the lesson top republished on resize. Selected Compendium details own one image and ticker. Reduced motion is static; hidden, replaced and closed surfaces stop/release the owner. This is gentle whole-image presentation, not articulated rig animation.

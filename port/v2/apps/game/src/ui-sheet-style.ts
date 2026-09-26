@@ -33,6 +33,10 @@ body:not(.training) :is(#codexpanel,#recpanel,#atlaspanel,#chpanel,#primepanel,#
 #planetside{position:fixed;left:calc(var(--safe-left) + 12px);bottom:var(--cf-sheet-bottom);max-width:min(560px,calc(100vw - var(--safe-left) - var(--safe-right) - 24px));box-sizing:border-box;z-index:var(--cf-layer-sheet);border-radius:var(--cf-radius-panel);padding:8px 10px;overflow:auto;white-space:nowrap;scrollbar-width:thin}
 #toast{bottom:var(--cf-toast-bottom);z-index:var(--cf-layer-toast);transition:opacity var(--cf-duration-exit) var(--cf-ease-standard)}
 #tutcard{z-index:var(--cf-layer-training)}#tutspot{z-index:calc(var(--cf-layer-training) - 1)}
+/* Training's lesson and actionable board share the vertical viewport. */
+body.training.panel-open #tutcard{max-height:max(100px,min(45dvh,calc(100dvh - var(--topbar-h) - var(--dock-h) - var(--safe-bottom) - 220px)))!important}
+body.training :is(#codexpanel,#recpanel,#atlaspanel,#chpanel,#primepanel,#shipyardpanel,#inventorypanel,#combatpanel).tutpri{top:var(--cf-sheet-start);bottom:auto;transform:none;max-height:max(44px,min(calc(var(--cf-sheet-floor) - var(--cf-sheet-start)),calc(var(--tut-bot,100dvh) - var(--cf-sheet-start) - 8px)))}
+
 body.training :is(#survey,#codexpanel,#recpanel,#atlaspanel,#chpanel,#primepanel,#shipyardpanel,#inventorypanel,#combatpanel).tutpri{z-index:var(--cf-layer-training-surface)}
 body.training #setpanel{z-index:var(--cf-layer-training-settings)}
 :is(.panel,#survey,#dock,#topbar,#sceneactions,#raillft,#railrgt) :is(button,input,select){transition:background-color var(--cf-duration-press) var(--cf-ease-standard),border-color var(--cf-duration-press) var(--cf-ease-standard),box-shadow var(--cf-duration-press) var(--cf-ease-standard)}

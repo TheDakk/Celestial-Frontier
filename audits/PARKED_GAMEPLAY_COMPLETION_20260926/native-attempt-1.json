@@ -1,0 +1,104 @@
+{
+  "schema": "cf-parked-gameplay-native/v1",
+  "status": "FAIL",
+  "certification": false,
+  "scope": "Actual local Vite app; isolated fresh save, native input. Synthetic lesson/corpus setup, native Forge and portrait controls. Not full Slice/Glass/I5.",
+  "sources": {
+    "main.ts": "7348093f9b38e145767c0f1003baab89b3aadefa33cbcdcb51b12e224d8827ae",
+    "training.ts": "7d417b876f7013c938209e64aac2981eae2b50a22b50583ac2c0a59b4f534a28",
+    "training-forge-practice.ts": "e042f6f8cb35df66b62ebdc5c5cbc61e12207ed34c2be2ef17847a314c73073c",
+    "living-species-preview.ts": "04ade0153d1ce77a206fd6bbf7a7f93d5de564386fa74150b28e8b7042818ec1"
+  },
+  "rows": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "mobile": true
+      },
+      "inputs": [
+        {
+          "selector": "[data-sel=tutbtn]",
+          "target": {
+            "selector": "[data-sel=tutbtn]",
+            "available": true,
+            "issues": [],
+            "point": {
+              "x": 72.1328125,
+              "y": 666.859375
+            },
+            "rect": {
+              "top": 636.71875,
+              "bottom": 697,
+              "left": 25,
+              "right": 119.265625,
+              "width": 94.265625,
+              "height": 60.28125
+            },
+            "hit": {
+              "tag": "BUTTON",
+              "id": "",
+              "sel": "tutbtn"
+            },
+            "clips": [
+              {
+                "owner": {
+                  "tag": "DIV",
+                  "id": "tutcard",
+                  "sel": "tutcard"
+                },
+                "top": 489.90625,
+                "bottom": 712,
+                "left": 8,
+                "right": 382,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "BODY",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 844,
+                "left": 0,
+                "right": 390,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "HTML",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 844,
+                "left": 0,
+                "right": 390,
+                "scrollTop": 0
+              }
+            ]
+          },
+          "events": [
+            {
+              "trusted": true
+            }
+          ]
+        }
+      ],
+      "pages": [],
+      "controls": []
+    }
+  ],
+  "errors": [
+    "Error: {\"exceptionId\":1,\"text\":\"Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'api')\",\"lineNumber\":1,\"columnNumber\":105,\"scriptId\":\"493\",\"stackTrace\":{\"callFrames\":[{\"functionName\":\"step\",\"scriptId\":\"493\",\"url\":\"\",\"lineNumber\":0,\"columnNumber\":104},{\"functionName\":\"\",\"scriptId\":\"493\",\"url\":\"\",\"lineNumber\":0,\"columnNumber\":306},{\"functionName\":\"\",\"scriptId\":\"493\",\"url\":\"\",\"lineNumber\":0,\"columnNumber\":0}]},\"exception\":{\"type\":\"object\",\"subtype\":\"error\",\"className\":\"TypeError\",\"description\":\"TypeError: Cannot read properties of undefined (reading 'api')\\n    at step (<anonymous>:1:105)\\n    at <anonymous>:1:307\\n    at new Promise (<anonymous>)\\n    at <anonymous>:1:1\",\"objectId\":\"-5872955492198259627.1.1\"}}\n    at evaluate (file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/PARKED_GAMEPLAY_COMPLETION_20260926/native-gameplay.mjs:29:173)\n    at async file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/PARKED_GAMEPLAY_COMPLETION_20260926/native-gameplay.mjs:55:5"
+  ],
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/154.0.4258.37",
+    "revision": "@f6ddc7bb8d2ad05a6979ebc09b83893c2d128a62",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "js_version": "15.4.11.5",
+    "protocol_version": "1.3"
+  }
+}
