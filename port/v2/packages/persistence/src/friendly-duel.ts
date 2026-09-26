@@ -74,6 +74,9 @@ function ledgerWrite(ledger: FriendlyDuelLedgerV1): V5ExtensionWrite {
     version: VERSION, json: canonicalJson({ schema: FRIENDLY_DUEL_LEDGER_SCHEMA_V1, ...ledger }) }) });
 }
 
+/** The v4 Compendium row that mirrors an owned companion (its legacy codex id, else `s<seed>`) — ONE rule for every writer of the row's
+ * `g.xp` copy (the friendly duel and D13 care XP). */
+export function companionLegacyCodexIdV1(ownership: OwnershipStateV2, creature: CreatureInstanceV1): string { return legacyCodexId(ownership, creature); }
 function legacyCodexId(ownership: OwnershipStateV2, creature: CreatureInstanceV1): string {
   const acquisition = ownership.acquisitions.find((row) => row.recordId === creature.acquisitionRecordId);
   if (acquisition?.acquisition === 'legacy' && acquisition.provenance.kind === 'legacy') return acquisition.provenance.legacyCodexId;
