@@ -5,7 +5,7 @@ import type { Plugin } from 'vite';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../..');
 const tools = path.join(root, 'tools/local-image-generation');
 export function kitRuntimeAssets(): Plugin {
-  const names = ['kit-stage-worker.mjs', 'kit-worker-engine.mjs', 'kit-worker-expansion.mjs',
+  const names = ['creature-finish-math.mjs', 'kit-stage-worker.mjs', 'kit-worker-engine.mjs', 'kit-worker-expansion.mjs',
     'kit-engine-math.mjs', 'kit-contact-math.mjs', 'kit-weather-math.mjs', 'pipeline-math.mjs', 'gpu-profile.mjs',
     'denoiser-shapes.mjs', 'browser-variant-plan.json',
     'node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs',
