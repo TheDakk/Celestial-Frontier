@@ -1,0 +1,49 @@
+{
+  "name": "Wild Horse",
+  "family": "quadruped",
+  "species": {
+    "name": "Wild Horse",
+    "aspect": 1.6,
+    "headFrac": 0.32,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "stiff upright brush mane with no forelock",
+      "stocky barrel body on short legs",
+      "large heavy head"
+    ],
+    "note": "Read as Przewalski's horse: dun coat, erect mane, dark dorsal stripe. Not a slender domestic riding horse with a flowing mane."
+  },
+  "genome": {
+    "seed": 3970611737,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 14,
+    "body": 12,
+    "loco": 15,
+    "trait": 13,
+    "size": 2,
+    "diet": 0,
+    "head": 8,
+    "limbs": 0,
+    "skin": 1,
+    "tail": 6,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 5,
+    "habitat": 12,
+    "detail": 8,
+    "accent": 14,
+    "temper": 8,
+    "sense": 9,
+    "repro": 0,
+    "life": 1,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Wild Horse"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wild Horse\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3970611737\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "index": 229
+}

@@ -52,7 +52,7 @@ S4 candidates03/13 remain rejected; prior runtime restored exactly. Old held-out
 consumed and never reused. S4 refusal packet: audits/S4_PRODUCTION_EPOCH_20260926/README.md.
 Claude builds G1/G3; Codex supplies G2/masks/G5 and reviews the interface. Shared signed commits
 are immediately available; Nick need not open another app. Prior remote openai/mac6cbeefe0;
-no GitHub write yet in this batch. Pre-existing .DS_Store stays untouched.
+copy checkpoint f01f911e is signed G and pushed (18,031,040-byte pack). Pre-existing .DS_Store stays untouched.
 
 Remote cleanup complete: only openai/mac, anthropic/mac, develop and main remain. Retired
 parked OpenAI tip retained by local archive tag. Free219GiB at copy checkpoint.
@@ -68,3 +68,8 @@ owners individually. Forge Training remains parked; assess old living-preview be
 the current generated-art pipeline before marking it superseded. Weekly lifecycle is now live.
 See RECOVERY.md and BATCH4_OVERNIGHT_REPORT_20260905.md for exact disposition; no wholesale
 WIP merge. This is an outstanding-work pointer, not a change to G1/G2 priority.
+
+
+## Latest steering — complete preserved gameplay first
+
+Nick explicitly requests finishing the removed parked branch work now. G2 delivered20 masters/120 candidate masks (10 ADMIT/10 REFUSE, unqualified; ear-as-paw verifier finding), no hand authoring. Audit README retains evidence. Recover Forge Training and assess/recover bounded living portraits against current owners, then resume G5. Existing weekly lifecycle already supersedes the old wall-week WIP. Free233GiB.

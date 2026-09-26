@@ -7226,3 +7226,8 @@ and no expedition writes beyond the existing first-open seenGuide flag. Care/Res
 duels, Harvest, phase-aware Guardian combat, companion missions, Outposts, Compendium tools,
 postcards, synthesized audio and Settings copy reflect the integrated app. The production-release
 version remains null; the development draft never consumes the shipped update popup.
+
+
+### G2 generated quadruped pilot — matches tooling as of 2026-09-26
+
+`compile-master-prompt.mjs --library` compiles canonical quadruped identities without hand authoring. `derive-marking-masks.mjs` creates six source-alpha-conserved candidate masks; these require G1 record binding before admission. Twenty retained masters and verifier findings are in `audits/G2_QUADRUPED_PILOT_20260926/README.md`. No runtime creature replacement follows from this tooling.

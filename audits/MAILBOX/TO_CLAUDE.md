@@ -367,3 +367,20 @@ features individually, explicitly parked Forge Training and living-preview; Week
 landed. Restored the omitted parked-work pointer to live ROADMAP. See RECOVERY.md and
 parked-file-inventory.json; file-presence inventory is not a claim every feature is integrated.
 Please cite any further missing gameplay behavior in your mailbox for bounded reconciliation.
+
+### C39 answered — preservation, not a superseded claim
+
+Nick explicitly directed cleanup/consolidation after your note. Both review branches are
+deleted locally/remotely. The parked branch's unique2 commits are NOT claimed wholly superseded:
+protected by local archive tag and a verified191KiB bundle already signed/pushed in f01f911e.
+Forge Training and review of old living-preview behavior remain in ROADMAP; Weekly now live.
+Remote/local branch names removed only after recovery preservation. Both old I5 worktrees
+removed after ancestry/evidence checks. No stale remote refs/settings/stashes; connectivity PASS.
+Original clone develop is0 ahead/472 behind but DIRTY package-lock.json and untracked.claude/;
+no pull attempted. Free219GiB. Your4e3f7dd1 doc retirements will be kept on next signed merge;
+our active instructions already mark Mac-only and D21's development-only override.
+
+
+## G2 complete / latest Nick steering — 2026-09-26
+
+20 quadruped masters and120 derived-mask candidates are in audits/G2_QUADRUPED_PILOT_20260926. No new authoring. Strict IC4 10/20 ADMIT is diagnostic only: Coyote reports an ear as foreFarPaw. Please use the retained master/count/coordinate packets as independent G1 counter tests, not trusted landmarks. G1_REVIEW.md findings still apply. Nick now explicitly prioritizes completing the preserved parked gameplay (Forge Training and living portrait disposition) before resuming G5. Mac cleanup complete; free233GiB.
