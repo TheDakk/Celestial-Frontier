@@ -18,13 +18,14 @@ if (SW_CONTROL && NO_SW) throw Error('--sw-control and --no-sw are exclusive');
 // --duel: a REAL duel with the Combat Chronicle under the stage (&duel=1): samples every 200 ms when each log row appears
 // against the stage's turn, and requires the log to be PACED by the stage (rows spread over the fight, not the 240 ms cadence).
 const DUEL = process.argv.includes('--duel');
-let refuseArena = false; const arenaHits = { served: 0, refused: 0 };
+let refuseArena = false; const arenaHits = { served: 0, refused: 0 }, libraryHits = { served: 0, refused: 0 };
 const [pkgArg, outArg, firstArg = 'Salmon,Octopus', secondArg = 'Eagle,Python'] = process.argv.slice(2).filter((a) => !a.startsWith('--'));
 if (!pkgArg || !outArg) throw Error('usage: picker-smoke.mjs <packageDir> <outDir> [Left,Right] [Left2,Right2]');
 const root = path.resolve(pkgArg), out = path.resolve(outArg); fs.mkdirSync(out, { recursive: true });
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.wasm': 'application/wasm', '.webm': 'video/webm', '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg', '.wav': 'audio/wav', '.woff2': 'font/woff2' };
 const server = http.createServer((req, res) => { let rel = decodeURIComponent(new URL(req.url, 'http://x').pathname); if (rel.endsWith('/')) rel += 'index.html'; const file = path.join(root, rel);
-  if (rel.startsWith('/battle2/')) { if (refuseArena) { arenaHits.refused++; res.writeHead(404).end(); return; } arenaHits.served++; }
+  // G3: the on-demand art library (/library/) is refused offline too, so the third run proves it is served from the worker's verified cache
+  if (rel.startsWith('/battle2/') || rel.startsWith('/library/')) { if (rel.startsWith('/library/')) libraryHits[refuseArena ? 'refused' : 'served']++; if (refuseArena) { arenaHits.refused++; res.writeHead(404).end(); return; } arenaHits.served++; }
   if ((NO_SW && rel === '/service-worker.js') || !file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) { res.writeHead(404).end(); return; }
   res.setHeader('Content-Type', TYPES[path.extname(file)] ?? 'application/octet-stream'); res.end(fs.readFileSync(file)); });
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
@@ -85,7 +86,7 @@ try {
     refuseArena = true; await send('Page.navigate', { url: firstUrl });
     const s3 = await waitStudy('offline reuse'); await sleep(2500);
     report.runs.push({ from: 'reload, arena refused by the server', vs: firstArg, status: s3.status, controlled: await controlled(), text: await evaluate(`document.querySelector('[data-battle2-matchup] output').textContent`), still: await shot('picker-3-offline.png') });
-    report.arenaHits = { ...arenaHits }; report.runs[2].rigs = await paintedSides();
+    report.arenaHits = { ...arenaHits }; report.libraryHits = { ...libraryHits }; report.runs[2].rigs = await paintedSides();
     if (!report.runs[2].controlled) throw Error('offline run was not controlled');
     if (report.runs[2].rigs.painted !== 2 || arenaHits.refused !== 0) throw Error('offline reuse did not stage both painted rigs from the cache: ' + JSON.stringify({ rigs: report.runs[2].rigs, arenaHits }));
     // control: a pair never staged before has nothing cached, so with the arena refused it must FAIL (else run 3 proved nothing)

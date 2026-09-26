@@ -4,17 +4,28 @@
 // app runs. The species-art loader asks this source first; the painter tier answers for every other species.
 import { CARD_ARCHETYPES } from './morph/card-archetypes.js';
 import { PaintedCardSource, type PaintedCardAssets } from './morph/painted-card-source.js';
-export { CARD_ASSET_URLS } from './painted-cards.assets.js';
-import { CARD_ASSET_URLS } from './painted-cards.assets.js';
+export { CARD_ASSET_URLS, CARD_LIBRARY_FILES } from './painted-cards.assets.js';
+import { CARD_ASSET_URLS, CARD_LIBRARY_FILES } from './painted-cards.assets.js';
+import { fetchArtLibraryBytesV1, type ArtLibraryOptionsV1 } from './art-library.js';
 export function cardAssetUrl(repoRelative: string): string {
   for (const [dir, files] of CARD_ASSET_URLS) if (repoRelative.startsWith(dir)) { const u = files[repoRelative.slice(dir.length)]; if (u) return u; }
   throw new Error('painted cards: no shipped asset for ' + repoRelative);
 }
-export const shippedCardAssets = (fetchImpl: typeof fetch = fetch): PaintedCardAssets => ({
-  json: async (p) => { const r = await fetchImpl(cardAssetUrl(p)); if (!r.ok) throw new Error(`painted card asset ${p}: HTTP ${r.status}`); return r.json(); },
-  bytes: async (p) => { const r = await fetchImpl(cardAssetUrl(p)); if (!r.ok) throw new Error(`painted card asset ${p}: HTTP ${r.status}`); return new Uint8Array(await r.arrayBuffer()); },
-});
+/** G3: a LIBRARY archetype's card file → its served library path (fetched on demand, verified against the manifest pin), or null. */
+export function cardLibraryPath(repoRelative: string): string | null {
+  for (const [dir, files] of CARD_LIBRARY_FILES) if (repoRelative.startsWith(dir)) { const u = files[repoRelative.slice(dir.length)]; if (u) return u; }
+  return null;
+}
+export const shippedCardAssets = (fetchImpl: typeof fetch = fetch, library: ArtLibraryOptionsV1 = {}): PaintedCardAssets => {
+  // ONE resolver for every card file: a library file only ever returns bytes that matched its pin (CARD = STAGE: the stage's asset source
+  // uses the same art-library module); a core file is a bundled asset
+  const bytesOf = async (p: string): Promise<Uint8Array> => {
+    const lib = cardLibraryPath(p); if (lib !== null) return fetchArtLibraryBytesV1(lib, { fetchImpl, ...library });
+    const r = await fetchImpl(cardAssetUrl(p)); if (!r.ok) throw new Error(`painted card asset ${p}: HTTP ${r.status}`); return new Uint8Array(await r.arrayBuffer()); };
+  return { json: async (p) => JSON.parse(new TextDecoder().decode(await bytesOf(p))), bytes: bytesOf };
+};
 export function createPaintedCardsForApp(fetchImpl: typeof fetch = fetch): PaintedCardSource {
-  for (const a of CARD_ARCHETYPES) if (!CARD_ASSET_URLS.has(a.dir)) throw new Error('painted cards: archetype without shipped assets: ' + a.earthName);
-  return new PaintedCardSource({ assets: shippedCardAssets(fetchImpl), registry: CARD_ARCHETYPES });
+  for (const a of CARD_ARCHETYPES) if (!CARD_ASSET_URLS.has(a.dir) && !CARD_LIBRARY_FILES.has(a.dir)) throw new Error('painted cards: archetype without shipped or library assets: ' + a.earthName);
+  const core = new Set(CARD_ARCHETYPES.filter((a) => CARD_ASSET_URLS.has(a.dir)).map((a) => a.earthName));
+  return new PaintedCardSource({ assets: shippedCardAssets(fetchImpl), registry: CARD_ARCHETYPES, core });
 }

@@ -12,10 +12,15 @@ import { markingNameV1, maskAlphaOf, scaleMaskV1, type AlphaMask } from './morph
 import { encodePng, pngDataUrl } from './png-encode.js';
 export interface PaintedCardArchetype { readonly earthName: string; readonly dir: string; }
 export interface PaintedCardAssets { json(path: string): Promise<unknown>; bytes(path: string): Promise<Uint8Array>; }
-export interface PaintedCardAsset { readonly key: string; readonly url: string; readonly width: number; readonly height: number; readonly encodedBytes: number; readonly decodedPixels: number; }
+export interface PaintedCardAsset { readonly key: string; readonly url: string; readonly width: number; readonly height: number; readonly encodedBytes: number; readonly decodedPixels: number;
+  /** G3: set when the creature's own LIBRARY painting could not be fetched (offline / refused) and its body family's CORE painting drew it; such a card is never cached. */
+  readonly libraryFallback?: Readonly<{ wanted: string; drawnBy: string; reason: string }>; }
 export interface PaintedCardSourceOptions { readonly assets: PaintedCardAssets; readonly registry: readonly PaintedCardArchetype[];
   /** Painted stand-ins for every creature whose anatomy a painting draws (default ON, Nick 2026-09-24); false = painted species only. */
   readonly standIns?: boolean;
+  /** G3: the archetypes that ship in the pack (the rest are on-demand library art). When a library archetype cannot be loaded, the card
+   * falls back to the body family's CORE painting (`paintedStandInV1` over this set), labelled and uncached. Absent = no fallback. */
+  readonly core?: ReadonlySet<string>;
   /** How many decoded archetypes stay resident (LRU); default ARCHETYPE_RESIDENT_DEFAULT. */
   readonly archetypeEntries?: number; readonly cacheEntries?: { thumb: number; portrait: number };
   /** Hand the thread back to the host between two renders (2026-09-24, review finding: a grid asking for 20 painted cards rendered them all
@@ -122,10 +127,19 @@ export class PaintedCardSource {
     const a = this.archetypeFor(genome); if (!a) return null;
     const key = speciesVisualKey(genome as Record<string, unknown>), cacheKey = kind + ':' + key; const hit = this.#cache[kind].get(key); if (hit) return Promise.resolve(hit);
     const pending = this.#pending.get(cacheKey); if (pending) return pending;
-    const p = (async () => { const arch = await this.#archetype(a); return this.#slot(async () => { const card: BodyCard = compileBodyCard(arch.record, genome as MotionGenomeFields);
-      const params = morphParamsV1(genome as MorphGenome, arch.record.recipeHash, archetypeGenomeV1(arch.record as { genome?: MorphGenome; identity?: { speciesVisualKey?: string } })), marking = markingNameV1(params), markingMask = marking ? await this.#mask(a, arch, marking) : null;
+    const p = (async () => {
+      let drawnBy = a, fallback: PaintedCardAsset['libraryFallback'];
+      const arch = await this.#archetype(a).catch(async (error: unknown) => {
+        const core = this.#o.core, s = core && !core.has(a.earthName) ? paintedStandInV1(genome, core) : null, f = s ? this.#byName.get(s.earthName) : undefined;
+        if (!f) throw error;
+        drawnBy = f; fallback = Object.freeze({ wanted: a.earthName, drawnBy: f.earthName, reason: error instanceof Error ? error.message : String(error) });
+        return this.#archetype(f);
+      });
+      return this.#slot(async () => { const card: BodyCard = compileBodyCard(arch.record, genome as MotionGenomeFields);
+      const params = morphParamsV1(genome as MorphGenome, arch.record.recipeHash, archetypeGenomeV1(arch.record as { genome?: MorphGenome; identity?: { speciesVisualKey?: string } })), marking = markingNameV1(params), markingMask = marking ? await this.#mask(drawnBy, arch, marking) : null;
       const size = CARD_SIZES[kind], rgba = renderCardIndividualV1({ master: arch.master, receipt: arch.receipt, card, params, size, markingMask }); this.#renders++;
-      const png = await encodePng(rgba, size, size); const asset: PaintedCardAsset = Object.freeze({ key, url: pngDataUrl(png), width: size, height: size, encodedBytes: png.length, decodedPixels: size * size });
+      const png = await encodePng(rgba, size, size); const asset: PaintedCardAsset = Object.freeze({ key, url: pngDataUrl(png), width: size, height: size, encodedBytes: png.length, decodedPixels: size * size, ...(fallback ? { libraryFallback: fallback } : {}) });
+      if (fallback) return asset; // never cached: the creature's own painting replaces it once the library is reachable
       const cache = this.#cache[kind], cap = this.#o.cacheEntries?.[kind] ?? (kind === 'thumb' ? 64 : 8); cache.set(key, asset); while (cache.size > cap) { const oldest = cache.keys().next().value!; cache.delete(oldest); this.#evicted++; }
       return asset; }); })().finally(() => { this.#pending.delete(cacheKey); });
     this.#pending.set(cacheKey, p); return p;
