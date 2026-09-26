@@ -1,0 +1,631 @@
+{
+ "schema": "cf.g1-automatic-candidate-packet/v1",
+ "contract": "audits/C49_FISH_REVIEW_20260926/packet-contract.json",
+ "status": "CANDIDATE: admits nothing; Nick visual decision PENDING",
+ "identity": {
+  "speciesId": "perch",
+  "speciesName": "Perch",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Perch\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"2217116209\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "recordRecipeHash": "4b59fc2dc5d11971147d4326df6f36e24019d1768d4de17b0c4e04274adda7d9",
+  "width": 1254,
+  "height": 1254
+ },
+ "hashes": {
+  "masterEncodedSha256": "182fc9ba765ebba2411b74a8a573b520acadc32a578a186cab9603a931c9f34b",
+  "keyedAlphaSha256": "d69422a4a64e2e6b6d5a256e052b34699c8dc034af7b0a23a807a357075f049b",
+  "labelsEncodedSha256": "d65d670485c89014421342e22cf44b8f56002dcba484dd98606c2d4a347cfda7",
+  "labelsDecodedSha256": "a53e9d172c95892ff0a35ff577e628fd06ba7551b85a3b37fae4ff875c36a61c",
+  "atlasEncodedSha256": "c75cdbdf3cfe4f71b01bd8e7c1030d0ec51d13947dda4444025c051b913099cb",
+  "recordFileSha256": "cfbe868474d435b9d40c14a591063fe00671c06fd650347793939b4210b462cf",
+  "preSplitFileSha256": "8f462a82d0f7be99814e581cc21a860e2a64d61b8c4a23449fbd5c652caeb2f4",
+  "bindingFileSha256": "d93c03d524fed21371b4254785bf4b26c9a3669842c3ab6a57753bffea5f209e",
+  "bindingSemanticHash": "8caccda18b86f7398af0360a25221eb90dcb80b6716286dd25a900bcaf910713"
+ },
+ "master": {
+  "durableLocation": "audits/G2_FAMILY_PILOT_20260926/07-perch/master.png",
+  "sha256": "182fc9ba765ebba2411b74a8a573b520acadc32a578a186cab9603a931c9f34b",
+  "bytes": 1076115,
+  "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/master.png",
+  "recordSourceIsIgnoredCopy": true,
+  "recordSourceCopyMatches": true,
+  "note": "record.source is an ignored copy of the tracked G2 master; bound here by byte equality; the record is not edited"
+ },
+ "weld": {
+  "orderedPaintBoundaryPairs": [
+   [
+    "body",
+    "body-1"
+   ],
+   [
+    "body-3",
+    "body-5"
+   ],
+   [
+    "body",
+    "body-2"
+   ]
+  ],
+  "fixedJoints": [
+   "root"
+  ],
+  "shapeJoints": [
+   "pectoralNear",
+   "pectoralFar",
+   "jaw",
+   "head",
+   "dorsal",
+   "caudal",
+   "spine0",
+   "spine1",
+   "spine2",
+   "spine3",
+   "spine4",
+   "spine5"
+  ],
+  "contactEndpoints": [],
+  "sourceBindingHash": "c1dbcfd23de5b1043d1745d2f4cbec76a3c0b92fdb4ef28ec73a7fd18a75d731",
+  "preSplitFileSha256": "8f462a82d0f7be99814e581cc21a860e2a64d61b8c4a23449fbd5c652caeb2f4",
+  "outputBindingHash": "8caccda18b86f7398af0360a25221eb90dcb80b6716286dd25a900bcaf910713",
+  "outputBindingFileSha256": "d93c03d524fed21371b4254785bf4b26c9a3669842c3ab6a57753bffea5f209e",
+  "reproducesFinalBindingByteForByte": true,
+  "sourceCoordinateChanges": 0,
+  "selectionOrigin": "greedy automatic search: candidates = observed axial excluded adjacencies (adjjson.mjs), each added in order and kept only if the unchanged static gate passed (greedy.sh)",
+  "candidates": [
+   "[\"body-3\",\"body-5\"]",
+   "[\"body\",\"body-1\"]",
+   "[\"body\",\"body-2\"]",
+   "[\"body\",\"caudal\"]"
+  ],
+  "searchTrajectory": [
+   "07-perch +[\"body-3\",\"body-5\"] PASS_STATIC",
+   "07-perch +[\"body\",\"body-2\"] PASS_STATIC",
+   "07-perch +[\"body\",\"caudal\"] RED",
+   "FINAL 07-perch [[\"body\",\"body-1\"],[\"body-3\",\"body-5\"],[\"body\",\"body-2\"]]"
+  ],
+  "producerFileInventory": [
+   {
+    "path": "port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+    "bytes": 9648,
+    "sha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95"
+   },
+   {
+    "path": "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+    "bytes": 10706,
+    "sha256": "1001719307a03717ec39b080858e8f5b5c334c0cb75e73a02ea1ccd7e0832732"
+   },
+   {
+    "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+    "bytes": 74520,
+    "sha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a"
+   },
+   {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/weld-pairs.mjs",
+    "bytes": 2545,
+    "sha256": "f13467912a1537adcc4624e5b5b3efdfb738aaaf5c073e37ab2f88862696de3c"
+   },
+   {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/greedy.sh",
+    "bytes": 1435,
+    "sha256": "303d9d1a73515e4e171fb5b2d5db2d1552c6fcc8936a91119a6f38973ff82b11"
+   },
+   {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/adjjson.mjs",
+    "bytes": 1494,
+    "sha256": "97b5b082a9cd81118488be47852872927393b8b7759268ebe2836f9798045b44"
+   },
+   {
+    "path": "port/v2/tools/anatomy-verify/auto-author.mjs",
+    "bytes": 47118,
+    "sha256": "8218e52d0a164e5329c15448755a2b43be6a202029fce58d66977aec36bfb602"
+   },
+   {
+    "path": "port/v2/tools/anatomy-verify/limb-counter.mjs",
+    "bytes": 17953,
+    "sha256": "f8d418c599137ea132daddc1f5fdceb93fb3b2edd5bf335784819468e9a0735c"
+   },
+   {
+    "path": "port/v2/tools/creature-animation/intake-authored.mjs",
+    "bytes": 11226,
+    "sha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a"
+   }
+  ]
+ },
+ "provenance": {
+  "G2GenerationReceipt": [
+   {
+    "path": "audits/G2_FAMILY_PILOT_20260926/07-perch/generation.json",
+    "bytes": 539,
+    "sha256": "56c06b19900c2aabdb98291dddf1ac5828fbf6979d7fc6cb420e765c1494821c"
+   },
+   {
+    "path": "audits/G2_FAMILY_PILOT_20260926/07-perch/request.json",
+    "bytes": 910,
+    "sha256": "1f36455665cd376e6255e903a81d6c67024ab52c25d43877d8f21b598e460978"
+   },
+   {
+    "path": "audits/G2_FAMILY_PILOT_20260926/07-perch/prompt.txt",
+    "bytes": 8792,
+    "sha256": "04d89220fcd7766be61ee63f689b86e1594a60149e55c9bd10fbe8a090bf9624"
+   },
+   {
+    "path": "audits/G2_FAMILY_PILOT_20260926/07-perch/compiler-inputs.json",
+    "bytes": 15811,
+    "sha256": "cb64fcfaedec21da6cc67e0ac79ab832ee66c7a4fdf3f4967e07a94c277a0705"
+   },
+   {
+    "path": "audits/G2_FAMILY_PILOT_20260926/07-perch/visible-anatomy.json",
+    "bytes": 3622,
+    "sha256": "76f47a4ef73aeb27120bf97b7c2b92e6fb6351f7a5bd3bd6b5256f7d2f9a22ee"
+   }
+  ],
+  "subjectSource": {
+   "path": "audits/G2_FAMILY_PILOT_20260926/07-perch/subject-source.json",
+   "bytes": 3784,
+   "sha256": "fa34bdde7437ae9cd6204ea1da2c2dc4cdc66091d4235d76b8247b33d9729f20"
+  },
+  "presenceEvidence": {
+   "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/presence.json",
+   "bytes": 89,
+   "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+  },
+  "authoringEvidence": [
+   {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/authoring.json",
+    "bytes": 7203,
+    "sha256": "e981ab099e0574c27a94604e8a163d3bc1976882afa30766a6323a2b44206b17"
+   },
+   {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/evidence.json",
+    "bytes": 4439,
+    "sha256": "e863bdaec356529edbe95cc51af3dfb298966c044b085e2de2a83db65044ad46"
+   }
+  ],
+  "automaticTransferProvenance": {
+   "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/provenance.json",
+   "bytes": 4489,
+   "sha256": "cb2f9c0b004e341e982378f664347d9160345d7960aa4c496c6f36b74383f343"
+  },
+  "legacyFlagCorrections": "intake writes manualAuthoring=true / sourceLandmarksReused=false unconditionally; provenance.json records that these are NOT an automatic-origin attestation"
+ },
+ "evidence": {
+  "originalStatic": {
+   "file": "evidence/static.json",
+   "status": "PASS_STATIC"
+  },
+  "selectedBoundaryAudit": {
+   "path": "audits/C49_FISH_REVIEW_20260926/07-perch-selected.json",
+   "bytes": 29260,
+   "sha256": "db8182bdcdcb33346d74f7c23bacce081de31e4786be7a4d3a1a838d044f4881"
+  },
+  "unweldedNegativeControl": {
+   "path": "audits/C49_FISH_REVIEW_20260926/07-perch-unwelded-selected.json",
+   "bytes": 34655,
+   "sha256": "d83f209a915e7a8addd8b56d8dcb599f1165b6bf7ff1aa761cfcef4cf1a5f1c4"
+  },
+  "nativeRecordedHead": {
+   "file": "native/report.json",
+   "recordedSource": "91a62a50f70571d19217724240b25be3a0d14123",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 707,
+   "cpuP95Ms": 4.899999976158142,
+   "cpuThrottle": 4,
+   "note": "historical diagnostic at its recorded head; a current-head native requirement needs a new run"
+  },
+  "codexReview": {
+   "path": "audits/C49_FISH_REVIEW_20260926/README.md",
+   "bytes": 9668,
+   "sha256": "1857c7f3634f2fb36d0513cead28e855acc7f4e782df86f332cf59485b45c050"
+  },
+  "filmAndStillInventory": [
+   {
+    "relativePath": "native/battle-full.webm",
+    "bytes": 7367576,
+    "sha256": "41512f2277ca57d5b58533dbdbedd0d5eadfe448488da8e8400ad70247167cbd"
+   },
+   {
+    "relativePath": "native/report.json",
+    "bytes": 355218,
+    "sha256": "6ec9f0eac8d782db9ae1bf9569e428f4e81a97951956df929608820afa2f06c0"
+   },
+   {
+    "relativePath": "native/turn0-hit-approach-50.png",
+    "bytes": 1193566,
+    "sha256": "2675b3509d557b209bf0413ccbc54d97ba2d5ae5ffd502eca729863dcb4ea04b"
+   },
+   {
+    "relativePath": "native/turn0-hit-impact.png",
+    "bytes": 682283,
+    "sha256": "5ad945873e410268a7c8fe13c9723ca3ca4b7edc6a3d6ebc888a6432dac7edb1"
+   },
+   {
+    "relativePath": "native/turn0-hit-reaction-50.png",
+    "bytes": 1209894,
+    "sha256": "6af1cbe44bc79773323fb59dbcca84dfbf4c88db9af556e439456eb304c522b6"
+   },
+   {
+    "relativePath": "native/turn0-hit-return-end.png",
+    "bytes": 1193010,
+    "sha256": "daa33b65bdaeda9595f6511fa4a8c76cb5219983b58f63a09cd7524b74b1b5d8"
+   },
+   {
+    "relativePath": "native/turn1-hit-approach-50.png",
+    "bytes": 1195001,
+    "sha256": "a3d370749847067c6f5007279ce348c07c85708a4d8a86e1f3e2c18e947c04bf"
+   },
+   {
+    "relativePath": "native/turn1-hit-impact.png",
+    "bytes": 1195527,
+    "sha256": "36123973c40f5d902dc1ab1cc419c13cbcdfa858ea2fbc687144e07e02ddc7e0"
+   },
+   {
+    "relativePath": "native/turn1-hit-reaction-50.png",
+    "bytes": 1199023,
+    "sha256": "e434a8ed55bd7f96e1b19a97283f18557424f66677bbeabe6407fdfea51a85f9"
+   },
+   {
+    "relativePath": "native/turn1-hit-return-end.png",
+    "bytes": 1192918,
+    "sha256": "2933b99d9ed65819844484c6436e3cfdbc52faeb693df90dfb04c4315b497a49"
+   },
+   {
+    "relativePath": "native/turn2-dodge-approach-50.png",
+    "bytes": 1193566,
+    "sha256": "2675b3509d557b209bf0413ccbc54d97ba2d5ae5ffd502eca729863dcb4ea04b"
+   },
+   {
+    "relativePath": "native/turn2-dodge-impact.png",
+    "bytes": 1206403,
+    "sha256": "fdcb8c0afe8f453f5c644da11ee746e95567197b2944369102891a96e099108f"
+   },
+   {
+    "relativePath": "native/turn2-dodge-reaction-50.png",
+    "bytes": 1212117,
+    "sha256": "64bf519cb772ffc3b98326891835c7d2fd5e7d3b0f5ae3165097693b4a26a488"
+   },
+   {
+    "relativePath": "native/turn2-dodge-return-end.png",
+    "bytes": 1193010,
+    "sha256": "daa33b65bdaeda9595f6511fa4a8c76cb5219983b58f63a09cd7524b74b1b5d8"
+   },
+   {
+    "relativePath": "native/turn3-hit-approach-50.png",
+    "bytes": 1193566,
+    "sha256": "2675b3509d557b209bf0413ccbc54d97ba2d5ae5ffd502eca729863dcb4ea04b"
+   },
+   {
+    "relativePath": "native/turn3-hit-idle-50.png",
+    "bytes": 1197181,
+    "sha256": "c59dbaeb4bb7167466d24432371dec1a1d860ed2ed3637e06ff626603ddf5240"
+   },
+   {
+    "relativePath": "native/turn3-hit-idle-90.png",
+    "bytes": 1196499,
+    "sha256": "af979fbb11d0b2a2dc1c604a02bd53224d18a61a683b77dd2623f3a19ea20d96"
+   },
+   {
+    "relativePath": "native/turn3-hit-impact.png",
+    "bytes": 1194560,
+    "sha256": "1fe41024eccc8bc5039e3e8331c85b631fe2b5b5032422fc41db02f5c6f9d4d7"
+   },
+   {
+    "relativePath": "native/turn3-hit-reaction-50.png",
+    "bytes": 1207403,
+    "sha256": "ec4aaea5c464efbd6662b84f927fadb878c73419fcfb82225bd9eb9963451e7e"
+   },
+   {
+    "relativePath": "native/turn3-hit-return-end.png",
+    "bytes": 1196483,
+    "sha256": "cdbeeceffba3578e0165a61e3e4daac471df07c2135b9ce827b7368bed6e52b1"
+   }
+  ],
+  "NickVisualDecisionForExactPacket": "PENDING"
+ },
+ "fileInventory": [
+  {
+   "relativePath": "fit/binding.json",
+   "bytes": 2359044,
+   "sha256": "d93c03d524fed21371b4254785bf4b26c9a3669842c3ab6a57753bffea5f209e",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/binding.json"
+  },
+  {
+   "relativePath": "fit/declaration.json",
+   "bytes": 1517,
+   "sha256": "1988ea17253b6a3df0c23bb4587706c7dcdf949fe09cf02a599f3e1a9b2e8f21",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/declaration.json"
+  },
+  {
+   "relativePath": "fit/intake-provenance.json",
+   "bytes": 3115,
+   "sha256": "1993a57fc56ca5126c35d8abe5e4832c66de667ab84ae5103e763ba95711faa8",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/intake-provenance.json"
+  },
+  {
+   "relativePath": "fit/label-authoring-receipt.json",
+   "bytes": 555,
+   "sha256": "dd93e57a3e236216ba30ca512cbdb79b77595a37452ae961d170d7b8c571829a",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/label-authoring-receipt.json"
+  },
+  {
+   "relativePath": "fit/labels.png",
+   "bytes": 49636,
+   "sha256": "d65d670485c89014421342e22cf44b8f56002dcba484dd98606c2d4a347cfda7",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/labels.png"
+  },
+  {
+   "relativePath": "fit/parts/atlas/07-perch.json",
+   "bytes": 5397,
+   "sha256": "213145ce566f8b4fde020edad5e3f46ff75881fc15b7216c4983073dedca37a7",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/atlas/07-perch.json"
+  },
+  {
+   "relativePath": "fit/parts/atlas/07-perch.png",
+   "bytes": 1101208,
+   "sha256": "c75cdbdf3cfe4f71b01bd8e7c1030d0ec51d13947dda4444025c051b913099cb",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/atlas/07-perch.png"
+  },
+  {
+   "relativePath": "fit/parts/atlas/receipt.json",
+   "bytes": 2373,
+   "sha256": "3829c4a33b4c96d16b4d7a0921adee54153d9081fc8e9002e44aefb33d816a65",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/atlas/receipt.json"
+  },
+  {
+   "relativePath": "fit/parts/binding.json",
+   "bytes": 4505,
+   "sha256": "9419578c21aac05e004f2d1019aff3065ff20de1e03cf4aea4bfadc9fb456f88",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/binding.json"
+  },
+  {
+   "relativePath": "fit/parts/keyed.png",
+   "bytes": 1314398,
+   "sha256": "d69422a4a64e2e6b6d5a256e052b34699c8dc034af7b0a23a807a357075f049b",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/keyed.png"
+  },
+  {
+   "relativePath": "fit/parts/manifest.json",
+   "bytes": 2114,
+   "sha256": "bf1e1e1a9b2b6c93901a05c15866c1aea75c3781a05b1e77436ea5557f5a7b54",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/manifest.json"
+  },
+  {
+   "relativePath": "fit/parts/ownership.png",
+   "bytes": 118905,
+   "sha256": "3c898c23ddb0ab3a8b690d14786644c7880b42c1ba74db5ad5ef9b9fef2fca52",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/ownership.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body-0.png",
+   "bytes": 109422,
+   "sha256": "2a99b0b8fa30e8be27e1818349c2012cbd5a6515866f22bf380a926a6caa2dbe",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/body-0.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body-1.png",
+   "bytes": 81406,
+   "sha256": "6953f542b59aa7fb515134f11ec9db8f3cdead9a75b0417cf95973419606dabf",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/body-1.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body-2.png",
+   "bytes": 100630,
+   "sha256": "967ee58a7966d41bf18ac23b22749421101b0f99a09449621be3d5415dd31c3a",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/body-2.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body-3.png",
+   "bytes": 163640,
+   "sha256": "b23b936dbe847acebd1c72e69b5e810ccbedc919f37c39e71735b5930dd8ffb0",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/body-3.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body-4.png",
+   "bytes": 42653,
+   "sha256": "f55ab2fab40325602e3d5b5e2363288fafa152229adaae2d824d077718936971",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/body-4.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body-5.png",
+   "bytes": 48704,
+   "sha256": "1ba44063f6737ce028a482f94d50f1a876ae6a8d002fa06d444f43d87fc58226",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/body-5.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body.png",
+   "bytes": 144950,
+   "sha256": "301ea3c3ed188275deb73a34bf5ebb51311aad47791e2df102d98168689e7f1d",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/body.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/caudal.png",
+   "bytes": 178682,
+   "sha256": "9cd4f5799c77dadf1f3cea861a85629d1b2bffd5fbfe601de015de65a421508d",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/caudal.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/dorsal.png",
+   "bytes": 174301,
+   "sha256": "512f0911b687d244e8484f659284ccac4ff4395cde1694553e1438cbc26970a0",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/dorsal.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/far-pectoral.png",
+   "bytes": 27473,
+   "sha256": "5d4a36ad3383a96482509ff35a86a8fe5df9bccf8d4e29dcb7113d565342edcb",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/far-pectoral.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/head.png",
+   "bytes": 129865,
+   "sha256": "af814effb793f797f24945faf67576b069601958e91c3a2c33a72d1e37cb4028",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/head.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/jaw.png",
+   "bytes": 31697,
+   "sha256": "710f0a09d8246d6abad58e23fc6f4ecc897fbe4d8c495d5cc0078c40d14c35a2",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/jaw.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/near-pectoral.png",
+   "bytes": 74653,
+   "sha256": "46dc9084a6555a60796fe73ce1fab0967692669609b6db1e912f3653b45742ff",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/parts/near-pectoral.png"
+  },
+  {
+   "relativePath": "fit/parts/receipt.json",
+   "bytes": 3692,
+   "sha256": "2b3f4f5701d92d9d63e5fa88ca687d40285f559ca1b7287dba727ca85a8a9079",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/parts/receipt.json"
+  },
+  {
+   "relativePath": "fit/pre-split-binding.json",
+   "bytes": 1689176,
+   "sha256": "8f462a82d0f7be99814e581cc21a860e2a64d61b8c4a23449fbd5c652caeb2f4",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/pre-split-binding.json"
+  },
+  {
+   "relativePath": "fit/receipt.json",
+   "bytes": 2046,
+   "sha256": "dc834423d5c27d7c7bf50bee3cfe64999e685b0a0b4e7640cd2ae6f01d9f5405",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/receipt.json"
+  },
+  {
+   "relativePath": "fit/record.json",
+   "bytes": 5125,
+   "sha256": "cfbe868474d435b9d40c14a591063fe00671c06fd650347793939b4210b462cf",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/record.json"
+  },
+  {
+   "relativePath": "native/battle-full.webm",
+   "bytes": 7367576,
+   "sha256": "41512f2277ca57d5b58533dbdbedd0d5eadfe448488da8e8400ad70247167cbd",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/battle-full.webm"
+  },
+  {
+   "relativePath": "native/report.json",
+   "bytes": 355218,
+   "sha256": "6ec9f0eac8d782db9ae1bf9569e428f4e81a97951956df929608820afa2f06c0",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/report.json"
+  },
+  {
+   "relativePath": "native/turn0-hit-approach-50.png",
+   "bytes": 1193566,
+   "sha256": "2675b3509d557b209bf0413ccbc54d97ba2d5ae5ffd502eca729863dcb4ea04b",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn0-hit-approach-50.png"
+  },
+  {
+   "relativePath": "native/turn0-hit-impact.png",
+   "bytes": 682283,
+   "sha256": "5ad945873e410268a7c8fe13c9723ca3ca4b7edc6a3d6ebc888a6432dac7edb1",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn0-hit-impact.png"
+  },
+  {
+   "relativePath": "native/turn0-hit-reaction-50.png",
+   "bytes": 1209894,
+   "sha256": "6af1cbe44bc79773323fb59dbcca84dfbf4c88db9af556e439456eb304c522b6",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn0-hit-reaction-50.png"
+  },
+  {
+   "relativePath": "native/turn0-hit-return-end.png",
+   "bytes": 1193010,
+   "sha256": "daa33b65bdaeda9595f6511fa4a8c76cb5219983b58f63a09cd7524b74b1b5d8",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn0-hit-return-end.png"
+  },
+  {
+   "relativePath": "native/turn1-hit-approach-50.png",
+   "bytes": 1195001,
+   "sha256": "a3d370749847067c6f5007279ce348c07c85708a4d8a86e1f3e2c18e947c04bf",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn1-hit-approach-50.png"
+  },
+  {
+   "relativePath": "native/turn1-hit-impact.png",
+   "bytes": 1195527,
+   "sha256": "36123973c40f5d902dc1ab1cc419c13cbcdfa858ea2fbc687144e07e02ddc7e0",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn1-hit-impact.png"
+  },
+  {
+   "relativePath": "native/turn1-hit-reaction-50.png",
+   "bytes": 1199023,
+   "sha256": "e434a8ed55bd7f96e1b19a97283f18557424f66677bbeabe6407fdfea51a85f9",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn1-hit-reaction-50.png"
+  },
+  {
+   "relativePath": "native/turn1-hit-return-end.png",
+   "bytes": 1192918,
+   "sha256": "2933b99d9ed65819844484c6436e3cfdbc52faeb693df90dfb04c4315b497a49",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn1-hit-return-end.png"
+  },
+  {
+   "relativePath": "native/turn2-dodge-approach-50.png",
+   "bytes": 1193566,
+   "sha256": "2675b3509d557b209bf0413ccbc54d97ba2d5ae5ffd502eca729863dcb4ea04b",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn2-dodge-approach-50.png"
+  },
+  {
+   "relativePath": "native/turn2-dodge-impact.png",
+   "bytes": 1206403,
+   "sha256": "fdcb8c0afe8f453f5c644da11ee746e95567197b2944369102891a96e099108f",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn2-dodge-impact.png"
+  },
+  {
+   "relativePath": "native/turn2-dodge-reaction-50.png",
+   "bytes": 1212117,
+   "sha256": "64bf519cb772ffc3b98326891835c7d2fd5e7d3b0f5ae3165097693b4a26a488",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn2-dodge-reaction-50.png"
+  },
+  {
+   "relativePath": "native/turn2-dodge-return-end.png",
+   "bytes": 1193010,
+   "sha256": "daa33b65bdaeda9595f6511fa4a8c76cb5219983b58f63a09cd7524b74b1b5d8",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn2-dodge-return-end.png"
+  },
+  {
+   "relativePath": "native/turn3-hit-approach-50.png",
+   "bytes": 1193566,
+   "sha256": "2675b3509d557b209bf0413ccbc54d97ba2d5ae5ffd502eca729863dcb4ea04b",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn3-hit-approach-50.png"
+  },
+  {
+   "relativePath": "native/turn3-hit-idle-50.png",
+   "bytes": 1197181,
+   "sha256": "c59dbaeb4bb7167466d24432371dec1a1d860ed2ed3637e06ff626603ddf5240",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn3-hit-idle-50.png"
+  },
+  {
+   "relativePath": "native/turn3-hit-idle-90.png",
+   "bytes": 1196499,
+   "sha256": "af979fbb11d0b2a2dc1c604a02bd53224d18a61a683b77dd2623f3a19ea20d96",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn3-hit-idle-90.png"
+  },
+  {
+   "relativePath": "native/turn3-hit-impact.png",
+   "bytes": 1194560,
+   "sha256": "1fe41024eccc8bc5039e3e8331c85b631fe2b5b5032422fc41db02f5c6f9d4d7",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn3-hit-impact.png"
+  },
+  {
+   "relativePath": "native/turn3-hit-reaction-50.png",
+   "bytes": 1207403,
+   "sha256": "ec4aaea5c464efbd6662b84f927fadb878c73419fcfb82225bd9eb9963451e7e",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn3-hit-reaction-50.png"
+  },
+  {
+   "relativePath": "native/turn3-hit-return-end.png",
+   "bytes": 1196483,
+   "sha256": "cdbeeceffba3578e0165a61e3e4daac471df07c2135b9ce827b7368bed6e52b1",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/turn3-hit-return-end.png"
+  },
+  {
+   "relativePath": "evidence/static.json",
+   "bytes": 7463,
+   "sha256": "fbf9cd7f0951da71cfcedcfd500b07989ceff08760fdcc50f77f7372c4d29d99",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/evidence/static.json"
+  },
+  {
+   "relativePath": "evidence/weld-receipt.json",
+   "bytes": 1017,
+   "sha256": "0e715a5c441eb4bf713eb29ff5a4a83f8be8908374f9e9bca3f21e9b1faabc1a",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/evidence/weld-receipt.json"
+  }
+ ]
+}

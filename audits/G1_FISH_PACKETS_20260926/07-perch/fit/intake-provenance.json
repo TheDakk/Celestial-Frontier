@@ -1,0 +1,77 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "0c208c4c34cceab418c86cc6c2ff1dda3d51392a",
+  "helperSha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/master.png",
+      "sha256": "182fc9ba765ebba2411b74a8a573b520acadc32a578a186cab9603a931c9f34b"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/authoring.json",
+      "sha256": "e981ab099e0574c27a94604e8a163d3bc1976882afa30766a6323a2b44206b17"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/subject-source.json",
+      "sha256": "fa34bdde7437ae9cd6204ea1da2c2dc4cdc66091d4235d76b8247b33d9729f20"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "4b59fc2dc5d11971147d4326df6f36e24019d1768d4de17b0c4e04274adda7d9",
+  "bindingHash": "5ea4a61edc2f4e901defa8fb939f6a7d3298e89865726f86659edcf46472c587",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "pectoralNear",
+    "pectoralFar",
+    "jaw",
+    "head",
+    "dorsal",
+    "caudal",
+    "spine0",
+    "spine1",
+    "spine2",
+    "spine3",
+    "spine4",
+    "spine5"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/master.png",
+      "sha256": "182fc9ba765ebba2411b74a8a573b520acadc32a578a186cab9603a931c9f34b",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/authoring.json",
+      "sha256": "e981ab099e0574c27a94604e8a163d3bc1976882afa30766a6323a2b44206b17",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/subject-source.json",
+      "sha256": "fa34bdde7437ae9cd6204ea1da2c2dc4cdc66091d4235d76b8247b33d9729f20",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

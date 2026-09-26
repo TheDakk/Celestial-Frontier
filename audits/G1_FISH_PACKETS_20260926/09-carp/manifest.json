@@ -1,0 +1,627 @@
+{
+ "schema": "cf.g1-automatic-candidate-packet/v1",
+ "contract": "audits/C49_FISH_REVIEW_20260926/packet-contract.json",
+ "status": "CANDIDATE: admits nothing; Nick visual decision PENDING",
+ "identity": {
+  "speciesId": "carp",
+  "speciesName": "Carp",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Carp\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"245884779\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"17\"]]]]",
+  "recordRecipeHash": "cc1d09e50e2a726b985f49fd6bf752280abf90e665d4698731074ab4597611ac",
+  "width": 1254,
+  "height": 1254
+ },
+ "hashes": {
+  "masterEncodedSha256": "ce3c2a8a31998a84eaea13ea31fbb34a86053096c042a4400cc28a05187f4bc1",
+  "keyedAlphaSha256": "24042d0d6336bae72b034311d71388f9bb700732a74398990add2466efdbec6c",
+  "labelsEncodedSha256": "7e0356af2ed02a0c74d24e622418e0dc6b76e2a116107ab1b7c970efb68500d9",
+  "labelsDecodedSha256": "498b3d1bcac30dd8bcab35565693577c168bc48c0d3357197f814c72efb8da6b",
+  "atlasEncodedSha256": "f8ac2b352d3d040808630ae7bd7603f20d6f304e2941d13dc6ab1233fab77de5",
+  "recordFileSha256": "ff582652feba9e1a51be808004a8e5fbb94007d88285321161156ea1020260b3",
+  "preSplitFileSha256": "c4ce390dd71ce8b6d4398d049fbb871da434840c5d8247f7010a563d76f74668",
+  "bindingFileSha256": "b9e27e9b870a65c8dfdedaade78a9113a03f2dc316ce7980e33bc65500f071ee",
+  "bindingSemanticHash": "f7fd14857053ce0dc3af62b3cf8194ec26016bf54c59f41d3817eb9e849a0d15"
+ },
+ "master": {
+  "durableLocation": "audits/G2_FAMILY_PILOT_20260926/09-carp/master.png",
+  "sha256": "ce3c2a8a31998a84eaea13ea31fbb34a86053096c042a4400cc28a05187f4bc1",
+  "bytes": 1044324,
+  "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/09-carp/packet/master.png",
+  "recordSourceIsIgnoredCopy": true,
+  "recordSourceCopyMatches": true,
+  "note": "record.source is an ignored copy of the tracked G2 master; bound here by byte equality; the record is not edited"
+ },
+ "weld": {
+  "orderedPaintBoundaryPairs": [
+   [
+    "body",
+    "body-1"
+   ],
+   [
+    "body-3",
+    "body-5"
+   ]
+  ],
+  "fixedJoints": [
+   "root"
+  ],
+  "shapeJoints": [
+   "pectoralNear",
+   "pectoralFar",
+   "jaw",
+   "head",
+   "dorsal",
+   "caudal",
+   "spine0",
+   "spine1",
+   "spine2",
+   "spine3",
+   "spine4",
+   "spine5"
+  ],
+  "contactEndpoints": [],
+  "sourceBindingHash": "0e9e3ed56cf0471353e7913a92b8496682590ff76697d86f9c7f224a24638927",
+  "preSplitFileSha256": "c4ce390dd71ce8b6d4398d049fbb871da434840c5d8247f7010a563d76f74668",
+  "outputBindingHash": "f7fd14857053ce0dc3af62b3cf8194ec26016bf54c59f41d3817eb9e849a0d15",
+  "outputBindingFileSha256": "b9e27e9b870a65c8dfdedaade78a9113a03f2dc316ce7980e33bc65500f071ee",
+  "reproducesFinalBindingByteForByte": true,
+  "sourceCoordinateChanges": 0,
+  "selectionOrigin": "greedy automatic search: candidates = observed axial excluded adjacencies (adjjson.mjs), each added in order and kept only if the unchanged static gate passed (greedy.sh)",
+  "candidates": [
+   "[\"body-3\",\"body-5\"]",
+   "[\"body\",\"body-1\"]",
+   "[\"body\",\"body-2\"]",
+   "[\"body\",\"caudal\"]"
+  ],
+  "searchTrajectory": [
+   "09-carp +[\"body-3\",\"body-5\"] PASS_STATIC",
+   "09-carp +[\"body\",\"body-2\"] RED",
+   "09-carp +[\"body\",\"caudal\"] RED",
+   "FINAL 09-carp [[\"body\",\"body-1\"],[\"body-3\",\"body-5\"]]"
+  ],
+  "producerFileInventory": [
+   {
+    "path": "port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+    "bytes": 9648,
+    "sha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95"
+   },
+   {
+    "path": "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+    "bytes": 10706,
+    "sha256": "1001719307a03717ec39b080858e8f5b5c334c0cb75e73a02ea1ccd7e0832732"
+   },
+   {
+    "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+    "bytes": 74520,
+    "sha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a"
+   },
+   {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/weld-pairs.mjs",
+    "bytes": 2545,
+    "sha256": "f13467912a1537adcc4624e5b5b3efdfb738aaaf5c073e37ab2f88862696de3c"
+   },
+   {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/greedy.sh",
+    "bytes": 1435,
+    "sha256": "303d9d1a73515e4e171fb5b2d5db2d1552c6fcc8936a91119a6f38973ff82b11"
+   },
+   {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/adjjson.mjs",
+    "bytes": 1494,
+    "sha256": "97b5b082a9cd81118488be47852872927393b8b7759268ebe2836f9798045b44"
+   },
+   {
+    "path": "port/v2/tools/anatomy-verify/auto-author.mjs",
+    "bytes": 47118,
+    "sha256": "8218e52d0a164e5329c15448755a2b43be6a202029fce58d66977aec36bfb602"
+   },
+   {
+    "path": "port/v2/tools/anatomy-verify/limb-counter.mjs",
+    "bytes": 17953,
+    "sha256": "f8d418c599137ea132daddc1f5fdceb93fb3b2edd5bf335784819468e9a0735c"
+   },
+   {
+    "path": "port/v2/tools/creature-animation/intake-authored.mjs",
+    "bytes": 11226,
+    "sha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a"
+   }
+  ]
+ },
+ "provenance": {
+  "G2GenerationReceipt": [
+   {
+    "path": "audits/G2_FAMILY_PILOT_20260926/09-carp/generation.json",
+    "bytes": 539,
+    "sha256": "e976e0f5e7558ae7ef7785193fdac813043bd8d00bf4bab06429e2307e43da13"
+   },
+   {
+    "path": "audits/G2_FAMILY_PILOT_20260926/09-carp/request.json",
+    "bytes": 909,
+    "sha256": "608e9f63e91bfe4d4efae0144e83aeacbd56e57ad509c1d1685b006308357ea1"
+   },
+   {
+    "path": "audits/G2_FAMILY_PILOT_20260926/09-carp/prompt.txt",
+    "bytes": 8787,
+    "sha256": "0a92da6faf86f8cfe1fe9897398a064b65f0bb5f866621bd1d2b578b06b4ab72"
+   },
+   {
+    "path": "audits/G2_FAMILY_PILOT_20260926/09-carp/compiler-inputs.json",
+    "bytes": 15811,
+    "sha256": "cb64fcfaedec21da6cc67e0ac79ab832ee66c7a4fdf3f4967e07a94c277a0705"
+   },
+   {
+    "path": "audits/G2_FAMILY_PILOT_20260926/09-carp/visible-anatomy.json",
+    "bytes": 3686,
+    "sha256": "64f4633e96028458baf5953f56d9b2fe86ef4eddeabe2af103dce556b921833f"
+   }
+  ],
+  "subjectSource": {
+   "path": "audits/G2_FAMILY_PILOT_20260926/09-carp/subject-source.json",
+   "bytes": 3779,
+   "sha256": "5db0add5004ff03acf1ddfc75a53abc7dde92733100f39b1a023afbfa7aabd83"
+  },
+  "presenceEvidence": {
+   "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/09-carp/packet/presence.json",
+   "bytes": 89,
+   "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+  },
+  "authoringEvidence": [
+   {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/09-carp/packet/authoring.json",
+    "bytes": 7212,
+    "sha256": "d665533a41ba0c4eb209d1c23b300f6da7e1d17bd6ef258307703a0758256315"
+   },
+   {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/09-carp/evidence.json",
+    "bytes": 4363,
+    "sha256": "86b5761cb3f8002355a5ba7a5cd231ddd8be4e4c2ff3e18be03793d8811bf6fd"
+   }
+  ],
+  "automaticTransferProvenance": {
+   "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/09-carp/provenance.json",
+   "bytes": 4486,
+   "sha256": "0480de4249784424e9a74c64e0bf3c02b5e7cfb53ffbb95b0fb27486b6ec1649"
+  },
+  "legacyFlagCorrections": "intake writes manualAuthoring=true / sourceLandmarksReused=false unconditionally; provenance.json records that these are NOT an automatic-origin attestation"
+ },
+ "evidence": {
+  "originalStatic": {
+   "file": "evidence/static.json",
+   "status": "PASS_STATIC"
+  },
+  "selectedBoundaryAudit": {
+   "path": "audits/C49_FISH_REVIEW_20260926/09-carp-selected.json",
+   "bytes": 20841,
+   "sha256": "8fd352f2f8c4b4696620b66f6566831fb95fbbac07692f5fcc603dfd8fc185fb"
+  },
+  "unweldedNegativeControl": {
+   "path": "audits/C49_FISH_REVIEW_20260926/07-perch-unwelded-selected.json",
+   "bytes": 34655,
+   "sha256": "d83f209a915e7a8addd8b56d8dcb599f1165b6bf7ff1aa761cfcef4cf1a5f1c4"
+  },
+  "nativeRecordedHead": {
+   "file": "native/report.json",
+   "recordedSource": "91a62a50f70571d19217724240b25be3a0d14123",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 707,
+   "cpuP95Ms": 5.5,
+   "cpuThrottle": 4,
+   "note": "historical diagnostic at its recorded head; a current-head native requirement needs a new run"
+  },
+  "codexReview": {
+   "path": "audits/C49_FISH_REVIEW_20260926/README.md",
+   "bytes": 9668,
+   "sha256": "1857c7f3634f2fb36d0513cead28e855acc7f4e782df86f332cf59485b45c050"
+  },
+  "filmAndStillInventory": [
+   {
+    "relativePath": "native/battle-full.webm",
+    "bytes": 7566622,
+    "sha256": "ae1f7e5266705fb2c8420b66bd2eb39c42192ebcd4107378658ba732c738a6be"
+   },
+   {
+    "relativePath": "native/report.json",
+    "bytes": 355671,
+    "sha256": "6a940841a72725774541288fb4e311952828c837269b53330777d83b73873f80"
+   },
+   {
+    "relativePath": "native/turn0-hit-approach-50.png",
+    "bytes": 1204996,
+    "sha256": "61e76d6fcff57de7952f15d332a31b053fb9a17c904e815559dc7465b37a706d"
+   },
+   {
+    "relativePath": "native/turn0-hit-impact.png",
+    "bytes": 691781,
+    "sha256": "4fbc35e74c20e96ce12c9f9f595dac3795d989afbed969ae4e251a2e6e59c0c1"
+   },
+   {
+    "relativePath": "native/turn0-hit-reaction-50.png",
+    "bytes": 1221390,
+    "sha256": "238918e090961b4ff64f88e972e48d0788212c642bb7ac30a32e81749f435e2b"
+   },
+   {
+    "relativePath": "native/turn0-hit-return-end.png",
+    "bytes": 1204434,
+    "sha256": "6c55f0407c17cf99b361262a345e32a2529a1465656985e99c885972c2916dda"
+   },
+   {
+    "relativePath": "native/turn1-hit-approach-50.png",
+    "bytes": 1206245,
+    "sha256": "26dd6a189c925831abe1bc6d0a883c35b9e10f5d51a24441128051f7731413be"
+   },
+   {
+    "relativePath": "native/turn1-hit-impact.png",
+    "bytes": 1206746,
+    "sha256": "efcc52536424453c6dde43a1b34fc1c3d0640284c3c112180644988cc30f6fd8"
+   },
+   {
+    "relativePath": "native/turn1-hit-reaction-50.png",
+    "bytes": 1209849,
+    "sha256": "ce81afdf46132e4ea7e15b27dae5151ae0a0cf0aa06f30ca2add9fdb6f16cab3"
+   },
+   {
+    "relativePath": "native/turn1-hit-return-end.png",
+    "bytes": 1204516,
+    "sha256": "da98948e7eaa4bd3d8067e89f6a6bb92b22b52c41ddda8fbcddca04a792d485e"
+   },
+   {
+    "relativePath": "native/turn2-dodge-approach-50.png",
+    "bytes": 1204996,
+    "sha256": "61e76d6fcff57de7952f15d332a31b053fb9a17c904e815559dc7465b37a706d"
+   },
+   {
+    "relativePath": "native/turn2-dodge-impact.png",
+    "bytes": 1218561,
+    "sha256": "e44b5d99f5c10035345dcbe2001149d56a30719acb99b56622cff60f0954daa5"
+   },
+   {
+    "relativePath": "native/turn2-dodge-reaction-50.png",
+    "bytes": 1223885,
+    "sha256": "074811fe1635be2eb27521d15d0982486c5b4b5aac60c12df1cddd95ca618954"
+   },
+   {
+    "relativePath": "native/turn2-dodge-return-end.png",
+    "bytes": 1204434,
+    "sha256": "6c55f0407c17cf99b361262a345e32a2529a1465656985e99c885972c2916dda"
+   },
+   {
+    "relativePath": "native/turn3-hit-approach-50.png",
+    "bytes": 1204996,
+    "sha256": "61e76d6fcff57de7952f15d332a31b053fb9a17c904e815559dc7465b37a706d"
+   },
+   {
+    "relativePath": "native/turn3-hit-idle-50.png",
+    "bytes": 1209534,
+    "sha256": "23a1e0ce2dd4343bf41808d1d7efd6d979417a140a6db197d299c4cd1e4b6c96"
+   },
+   {
+    "relativePath": "native/turn3-hit-idle-90.png",
+    "bytes": 1209004,
+    "sha256": "af9493d29b27798a5507d015161e4febfc22e985a29f60d9b5fd368bb5a5a7ee"
+   },
+   {
+    "relativePath": "native/turn3-hit-impact.png",
+    "bytes": 1205841,
+    "sha256": "fc0ad73aa5d050d0d860184ce18fdb5064be82209f7184b968e692599909b8e3"
+   },
+   {
+    "relativePath": "native/turn3-hit-reaction-50.png",
+    "bytes": 1220127,
+    "sha256": "5a0d31ce9f7c82935a4afd9b4eef5be9ac43202f1efcf51972b9244ad7396acb"
+   },
+   {
+    "relativePath": "native/turn3-hit-return-end.png",
+    "bytes": 1208692,
+    "sha256": "4f43ff25d62e829e6a92753d67e64f76adbc9159783ab711e5c465a0ce7818a7"
+   }
+  ],
+  "NickVisualDecisionForExactPacket": "PENDING"
+ },
+ "fileInventory": [
+  {
+   "relativePath": "fit/binding.json",
+   "bytes": 2476104,
+   "sha256": "b9e27e9b870a65c8dfdedaade78a9113a03f2dc316ce7980e33bc65500f071ee",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/binding.json"
+  },
+  {
+   "relativePath": "fit/declaration.json",
+   "bytes": 1517,
+   "sha256": "03c81d0adc361938b34e3da46975a43a24f1dfb293030fa04831feed728479a0",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/declaration.json"
+  },
+  {
+   "relativePath": "fit/intake-provenance.json",
+   "bytes": 3107,
+   "sha256": "6c487418dc5f92e0dc6d7b620649ad2785399aa978ff67a17275e8855e68507f",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/intake-provenance.json"
+  },
+  {
+   "relativePath": "fit/label-authoring-receipt.json",
+   "bytes": 555,
+   "sha256": "3eb6453db4d1dffde05eaa91b3ef3825902efbc2efab81e117314f2a7cedc0b0",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/label-authoring-receipt.json"
+  },
+  {
+   "relativePath": "fit/labels.png",
+   "bytes": 49714,
+   "sha256": "7e0356af2ed02a0c74d24e622418e0dc6b76e2a116107ab1b7c970efb68500d9",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/labels.png"
+  },
+  {
+   "relativePath": "fit/parts/atlas/09-carp.json",
+   "bytes": 5408,
+   "sha256": "d0b7fdb9fcc32c9beaae5339764e68b9b317920e94bcbfa4c0d17259338d8bea",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/atlas/09-carp.json"
+  },
+  {
+   "relativePath": "fit/parts/atlas/09-carp.png",
+   "bytes": 1086582,
+   "sha256": "f8ac2b352d3d040808630ae7bd7603f20d6f304e2941d13dc6ab1233fab77de5",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/atlas/09-carp.png"
+  },
+  {
+   "relativePath": "fit/parts/atlas/receipt.json",
+   "bytes": 2372,
+   "sha256": "7c90278712f7f16ccf3bdab3dfd6af297e397509bda34aea2f56a9e01eb2c05d",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/atlas/receipt.json"
+  },
+  {
+   "relativePath": "fit/parts/binding.json",
+   "bytes": 4513,
+   "sha256": "7d9283aa4e50bb915a2974cab3c46fe470e8e83d79867aa35a5c0b7ee6d05c8c",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/binding.json"
+  },
+  {
+   "relativePath": "fit/parts/keyed.png",
+   "bytes": 1290880,
+   "sha256": "24042d0d6336bae72b034311d71388f9bb700732a74398990add2466efdbec6c",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/keyed.png"
+  },
+  {
+   "relativePath": "fit/parts/manifest.json",
+   "bytes": 2113,
+   "sha256": "ae41236c087c3a7c842691f983604bda9aca1e3c2150231f1c2ce5efbe7fdeb1",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/manifest.json"
+  },
+  {
+   "relativePath": "fit/parts/ownership.png",
+   "bytes": 113734,
+   "sha256": "d1bc29bd26aefa1d58a537eff1c5af69e2c1d29a57af5ace24e2daea6dd238cb",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/ownership.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body-0.png",
+   "bytes": 166595,
+   "sha256": "f61f5a357208658a0902281cff64254c68239005fe62c19e9ba019200d7a40f3",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/body-0.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body-1.png",
+   "bytes": 81432,
+   "sha256": "9f06d27fb59aee192a3ec88875955a7d4cfdaf627dd228b7992a6836b4bd11ff",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/body-1.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body-2.png",
+   "bytes": 67497,
+   "sha256": "e297f03ef943d3d75da5adba92d9472eed061a93b86ac2bfbd46b3fca9fee074",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/body-2.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body-3.png",
+   "bytes": 159971,
+   "sha256": "ece1116c7fb9b095d0000c73e9efc66403eb6143eb4a5c69becbe495c547f26f",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/body-3.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body-4.png",
+   "bytes": 54109,
+   "sha256": "c7b9026af340e07c0269895e418606d6d1ca569637c25bd7846ab22074e99a50",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/body-4.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body-5.png",
+   "bytes": 35370,
+   "sha256": "05b9b9047a102567d1e597e0c2546cd7e8b2972447f37fa4192e73cee9229072",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/body-5.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/body.png",
+   "bytes": 193421,
+   "sha256": "0107390a526e245f424542592f45e5827f9f45ca13df3c4530f0b25477a19a9b",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/body.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/caudal.png",
+   "bytes": 190620,
+   "sha256": "6e5f5e7a1b5abc15cdf66de0f5e391bcbd0e1a3fab83233737cc8300de28f37a",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/caudal.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/dorsal.png",
+   "bytes": 101345,
+   "sha256": "039717f917731a9e868b112e2df265b74380b476b06bbfcdb49a5f524aab562b",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/dorsal.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/far-pectoral.png",
+   "bytes": 24986,
+   "sha256": "039dfbe52807475e78799e0c842fca200515b08da7246168f7663576b22db63c",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/far-pectoral.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/head.png",
+   "bytes": 90981,
+   "sha256": "b640c2cfbde5451421d15dc1d35420a2454b0284ab8a71f68ab5754eef205fcb",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/head.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/jaw.png",
+   "bytes": 23993,
+   "sha256": "311f27b7cd786c1001abee5a326b641e60e9473e7f447460fd33575f4dbc8961",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/jaw.png"
+  },
+  {
+   "relativePath": "fit/parts/parts/near-pectoral.png",
+   "bytes": 100804,
+   "sha256": "9e0ee6aefa1470d0d8503b129dbbf08f3d78c7102ec042d94f97b17d0ae5bc99",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/parts/near-pectoral.png"
+  },
+  {
+   "relativePath": "fit/parts/receipt.json",
+   "bytes": 3694,
+   "sha256": "fe775a5ff19b442f84183bf65fab6f32da3abce671cd04898860b1ab8cb50730",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/parts/receipt.json"
+  },
+  {
+   "relativePath": "fit/pre-split-binding.json",
+   "bytes": 1753779,
+   "sha256": "c4ce390dd71ce8b6d4398d049fbb871da434840c5d8247f7010a563d76f74668",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/pre-split-binding.json"
+  },
+  {
+   "relativePath": "fit/receipt.json",
+   "bytes": 2045,
+   "sha256": "1ad51b456b82802688308253b953b299bffb5e6c63063b5ccc6f9ffa8b618612",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/receipt.json"
+  },
+  {
+   "relativePath": "fit/record.json",
+   "bytes": 5129,
+   "sha256": "ff582652feba9e1a51be808004a8e5fbb94007d88285321161156ea1020260b3",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/record.json"
+  },
+  {
+   "relativePath": "native/battle-full.webm",
+   "bytes": 7566622,
+   "sha256": "ae1f7e5266705fb2c8420b66bd2eb39c42192ebcd4107378658ba732c738a6be",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/battle-full.webm"
+  },
+  {
+   "relativePath": "native/report.json",
+   "bytes": 355671,
+   "sha256": "6a940841a72725774541288fb4e311952828c837269b53330777d83b73873f80",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/report.json"
+  },
+  {
+   "relativePath": "native/turn0-hit-approach-50.png",
+   "bytes": 1204996,
+   "sha256": "61e76d6fcff57de7952f15d332a31b053fb9a17c904e815559dc7465b37a706d",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn0-hit-approach-50.png"
+  },
+  {
+   "relativePath": "native/turn0-hit-impact.png",
+   "bytes": 691781,
+   "sha256": "4fbc35e74c20e96ce12c9f9f595dac3795d989afbed969ae4e251a2e6e59c0c1",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn0-hit-impact.png"
+  },
+  {
+   "relativePath": "native/turn0-hit-reaction-50.png",
+   "bytes": 1221390,
+   "sha256": "238918e090961b4ff64f88e972e48d0788212c642bb7ac30a32e81749f435e2b",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn0-hit-reaction-50.png"
+  },
+  {
+   "relativePath": "native/turn0-hit-return-end.png",
+   "bytes": 1204434,
+   "sha256": "6c55f0407c17cf99b361262a345e32a2529a1465656985e99c885972c2916dda",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn0-hit-return-end.png"
+  },
+  {
+   "relativePath": "native/turn1-hit-approach-50.png",
+   "bytes": 1206245,
+   "sha256": "26dd6a189c925831abe1bc6d0a883c35b9e10f5d51a24441128051f7731413be",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn1-hit-approach-50.png"
+  },
+  {
+   "relativePath": "native/turn1-hit-impact.png",
+   "bytes": 1206746,
+   "sha256": "efcc52536424453c6dde43a1b34fc1c3d0640284c3c112180644988cc30f6fd8",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn1-hit-impact.png"
+  },
+  {
+   "relativePath": "native/turn1-hit-reaction-50.png",
+   "bytes": 1209849,
+   "sha256": "ce81afdf46132e4ea7e15b27dae5151ae0a0cf0aa06f30ca2add9fdb6f16cab3",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn1-hit-reaction-50.png"
+  },
+  {
+   "relativePath": "native/turn1-hit-return-end.png",
+   "bytes": 1204516,
+   "sha256": "da98948e7eaa4bd3d8067e89f6a6bb92b22b52c41ddda8fbcddca04a792d485e",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn1-hit-return-end.png"
+  },
+  {
+   "relativePath": "native/turn2-dodge-approach-50.png",
+   "bytes": 1204996,
+   "sha256": "61e76d6fcff57de7952f15d332a31b053fb9a17c904e815559dc7465b37a706d",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn2-dodge-approach-50.png"
+  },
+  {
+   "relativePath": "native/turn2-dodge-impact.png",
+   "bytes": 1218561,
+   "sha256": "e44b5d99f5c10035345dcbe2001149d56a30719acb99b56622cff60f0954daa5",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn2-dodge-impact.png"
+  },
+  {
+   "relativePath": "native/turn2-dodge-reaction-50.png",
+   "bytes": 1223885,
+   "sha256": "074811fe1635be2eb27521d15d0982486c5b4b5aac60c12df1cddd95ca618954",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn2-dodge-reaction-50.png"
+  },
+  {
+   "relativePath": "native/turn2-dodge-return-end.png",
+   "bytes": 1204434,
+   "sha256": "6c55f0407c17cf99b361262a345e32a2529a1465656985e99c885972c2916dda",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn2-dodge-return-end.png"
+  },
+  {
+   "relativePath": "native/turn3-hit-approach-50.png",
+   "bytes": 1204996,
+   "sha256": "61e76d6fcff57de7952f15d332a31b053fb9a17c904e815559dc7465b37a706d",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn3-hit-approach-50.png"
+  },
+  {
+   "relativePath": "native/turn3-hit-idle-50.png",
+   "bytes": 1209534,
+   "sha256": "23a1e0ce2dd4343bf41808d1d7efd6d979417a140a6db197d299c4cd1e4b6c96",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn3-hit-idle-50.png"
+  },
+  {
+   "relativePath": "native/turn3-hit-idle-90.png",
+   "bytes": 1209004,
+   "sha256": "af9493d29b27798a5507d015161e4febfc22e985a29f60d9b5fd368bb5a5a7ee",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn3-hit-idle-90.png"
+  },
+  {
+   "relativePath": "native/turn3-hit-impact.png",
+   "bytes": 1205841,
+   "sha256": "fc0ad73aa5d050d0d860184ce18fdb5064be82209f7184b968e692599909b8e3",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn3-hit-impact.png"
+  },
+  {
+   "relativePath": "native/turn3-hit-reaction-50.png",
+   "bytes": 1220127,
+   "sha256": "5a0d31ce9f7c82935a4afd9b4eef5be9ac43202f1efcf51972b9244ad7396acb",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn3-hit-reaction-50.png"
+  },
+  {
+   "relativePath": "native/turn3-hit-return-end.png",
+   "bytes": 1208692,
+   "sha256": "4f43ff25d62e829e6a92753d67e64f76adbc9159783ab711e5c465a0ce7818a7",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/turn3-hit-return-end.png"
+  },
+  {
+   "relativePath": "evidence/static.json",
+   "bytes": 7453,
+   "sha256": "ba984ebbbde88fb179a1f7f8868c2d681aa75abe9f6ed49876e7b7823991f3f3",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/evidence/static.json"
+  },
+  {
+   "relativePath": "evidence/weld-receipt.json",
+   "bytes": 948,
+   "sha256": "4ec8f4bc9937398f28c9d9f01a7dc5a33a82a4ae559ff109408e936c8f9a2218",
+   "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/evidence/weld-receipt.json"
+  }
+ ]
+}

@@ -56,6 +56,7 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
    - On Codex's G2 family pilot: **fish 5/5** (RESOLVED); birds, serpents and insects 0/5 each, from layout drift (C47 asks for layout-matched prompts).
    - The five automatic fish **pass Codex's native harness** (0/0 refusals) but **fail visual review** (seam holes; Codex's weld doesn't transfer): C48.
    - Author-side levers are exhausted (v9–v11).
+   - **Perch, Cod and Carp:** selective welds fix the seams; Codex reviewed them; durable candidate packets are built (`audits/G1_FISH_PACKETS_20260926/`). They await **Nick's visual decision**, then registry/library admission by its owners (C53).
    - Next: re-score each new G2 batch with `run-auto.mjs --targets=`, and run the native harness on its passes.
 3. **G5:** card AND stage in the game behind `?finish=1`, proven in real browsers:
    - the desktop model run on a crab: shipped path PASS after Codex's C50 fixes (run-03-shipped);

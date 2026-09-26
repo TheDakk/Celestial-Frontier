@@ -4,7 +4,7 @@
 cd /Users/nick/Projects/celestial-frontier-anthropic-mac; W=audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish
 typeset -A BASE; BASE=(06-trout '[["body","spine1"]]' 07-perch '[["body","body-1"]]' 08-cod '[["body","body-1"]]' 09-carp '[["body","body-1"]]' 10-herring '[["body","spine1"]]')
 for f in 06-trout 07-perch 08-cod 09-carp 10-herring; do
-  cand=$(node /private/tmp/claude-501/-Users-nick-Projects-celestial-frontier-anthropic-mac/c7be4168-2776-4f72-9756-abbd6d48cfd1/scratchpad/adjjson.mjs $f)
+  cand=$(node $W/adjjson.mjs $f)
   kept=${BASE[$f]}; i=0
   for p in ${(f)cand}; do i=$((i+1)); try=$(node -e 'const k=JSON.parse(process.argv[1]),p=JSON.parse(process.argv[2]);if(k.some(q=>q.slice().sort().join()===p.slice().sort().join()))process.exit(3);console.log(JSON.stringify([...k,p]))' "$kept" "$p") || continue
     v=G$i; node $W/weld-pairs.mjs $f $v "$try" >/dev/null 2>&1 || { echo "$f +$p weld-refused"; continue; }
