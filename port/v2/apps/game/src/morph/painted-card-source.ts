@@ -3,7 +3,7 @@
 // rendered from the sealed card master (`renderCardIndividualV1`) as a PNG data URL — on every device, phone included
 // (a 512² master, one render per individual, cached). Otherwise `null` and the painter tier answers as before.
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { paintedStandInV1, type PaintedStandIn } from './painted-stand-in.js';
+import { paintedArtV2, type PaintedArtV2 } from './painted-variants.js';
 import { compileBodyCard, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from '../motion/body-card.js';
 import { renderCardIndividualV1, type CardMasterV1, type CardReceiptV1 } from './morph-card.js';
 import { archetypeGenomeV1, morphParamsV1, type MorphGenome } from './morph-params.js';
@@ -19,7 +19,7 @@ export interface PaintedCardSourceOptions { readonly assets: PaintedCardAssets; 
   /** Painted stand-ins for every creature whose anatomy a painting draws (default ON, Nick 2026-09-24); false = painted species only. */
   readonly standIns?: boolean;
   /** G3: the archetypes that ship in the pack (the rest are on-demand library art). When a library archetype cannot be loaded, the card
-   * falls back to the body family's CORE painting (`paintedStandInV1` over this set), labelled and uncached. Absent = no fallback. */
+   * falls back to the body family's CORE painting (`paintedArtV2` over this set, as the stage's coreStandInRecord), labelled and uncached. Absent = no fallback. */
   readonly core?: ReadonlySet<string>;
   /** How many decoded archetypes stay resident (LRU); default ARCHETYPE_RESIDENT_DEFAULT. */
   readonly archetypeEntries?: number; readonly cacheEntries?: { thumb: number; portrait: number };
@@ -56,8 +56,9 @@ export class PaintedCardSource {
   /** Which painted archetype draws this genome, and why (painted-stand-in.ts): the species' own painting, its body plan's
    * archetype (Earth stand-in), or the painting of the body family the procedural painter already draws (procedural stand-in).
    * `standIns: false` restores the painted-species-only card (null for everything else). */
-  standInFor(genome: Readonly<Record<string, unknown>> | null | undefined): PaintedStandIn | null {
-    const s = paintedStandInV1(genome, this.#names); return s && (s.kind === 'painted' || this.#o.standIns !== false) ? s : null;
+  standInFor(genome: Readonly<Record<string, unknown>> | null | undefined): PaintedArtV2 | null {
+    // G4: the ONE resolver the stage also uses (CARD = STAGE)
+    const s = paintedArtV2(genome, this.#names); return s && (s.kind === 'painted' || this.#o.standIns !== false) ? s : null;
   }
   /** The archetype for a genome, or null (keep the procedural art). */
   archetypeFor(genome: Readonly<Record<string, unknown>> | null | undefined): PaintedCardArchetype | null { const s = this.standInFor(genome); return s ? this.#byName.get(s.earthName) ?? null : null; }
@@ -130,7 +131,7 @@ export class PaintedCardSource {
     const p = (async () => {
       let drawnBy = a, fallback: PaintedCardAsset['libraryFallback'];
       const arch = await this.#archetype(a).catch(async (error: unknown) => {
-        const core = this.#o.core, s = core && !core.has(a.earthName) ? paintedStandInV1(genome, core) : null, f = s ? this.#byName.get(s.earthName) : undefined;
+        const core = this.#o.core, s = core && !core.has(a.earthName) ? paintedArtV2(genome, core) : null, f = s ? this.#byName.get(s.earthName) : undefined;
         if (!f) throw error;
         drawnBy = f; fallback = Object.freeze({ wanted: a.earthName, drawnBy: f.earthName, reason: error instanceof Error ? error.message : String(error) });
         return this.#archetype(f);
