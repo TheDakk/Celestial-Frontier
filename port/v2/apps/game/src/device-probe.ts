@@ -2,10 +2,12 @@
  * the D15 Stage 0 CODEC decode check (N5: "one codec, never both — ship Opus if the iPhone probe shows Safari decodes it, otherwise AAC"):
  * each tiny embedded sample (Opus in Ogg/WebM/CAF, AAC in M4A/ADTS) is verified against its SHA-256, then decoded through the REAL
  * `AudioContext.decodeAudioData`, and the decoded buffer must be a real signal (≈0.12 s, non-silent) to PASS. Fully offline: no fetch, no
- * network, no telemetry. The result is shown on the page and copied as plain text for Nick to paste. Performance / heat / memory sections
- * of H1 are later additions to this same page. */
+ * network, no telemetry. The result is shown on the page and copied as plain text for Nick to paste. The PERFORMANCE / HEAT / MEMORY
+ * sections (device-probe-performance.ts) run on the real painted battle2 stage when their buttons are pressed; Copy results then carries
+ * every section that ran. */
 import { CODEC_PROBE_SAMPLES_V1, type CodecProbeSampleV1 } from './device-probe-codec-samples.js';
 import { sha256Hex } from './soundkit/derive.js';
+import { formatDeviceProbeSectionsV1, readMemoryProbeV1, runHeatProbeV1, runPerformanceProbeV1, type HeatAnalysisV1, type MemorySectionV1, type PerformanceProbePortV1, type PerformanceSectionV1 } from './device-probe-performance.js';
 
 export const DEVICE_PROBE_FLAG = 'deviceProbe' as const;
 export type CodecProbeStatusV1 = 'pass' | 'fail' | 'unsupported';
@@ -75,9 +77,14 @@ export interface DeviceProbeMountV1 {
   readonly createContext: () => ProbeAudioContextLike;
   readonly canPlayType?: (mime: string) => string;
   readonly copyText?: (text: string) => Promise<void>;
+  /** H1 performance/heat/memory: builds the runtime port LAZILY (only when a Run is pressed, long after boot). Absent = codec section only. */
+  readonly performance?: () => PerformanceProbePortV1;
+  readonly readPackDigest?: () => Promise<string>;
+  readonly dpr?: number;
+  readonly viewport?: string;
 }
 /** The probe page as an overlay: Run (a user gesture creates the AudioContext), the results table, Copy results. */
-export function mountDeviceProbeV1(options: DeviceProbeMountV1): { readonly root: HTMLElement; run(): Promise<CodecProbeReportV1>; dispose(): void } {
+export function mountDeviceProbeV1(options: DeviceProbeMountV1): { readonly root: HTMLElement; run(): Promise<CodecProbeReportV1>; runPerformance(): Promise<void>; runHeat(): Promise<void>; readMemory(): Promise<void>; text(): string; dispose(): void } {
   const d = options.doc, root = d.createElement('section');
   root.dataset.deviceProbe = 'codecs'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-label', 'Device probe');
   root.style.cssText = 'position:fixed;inset:0;z-index:10050;overflow:auto;background:#0b1428;color:#edf3fa;padding:16px;font:16px/1.45 system-ui';
@@ -88,17 +95,41 @@ export function mountDeviceProbeV1(options: DeviceProbeMountV1): { readonly root
   run.dataset.probeRun = ''; copy.dataset.probeCopy = ''; status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite');
   out.dataset.probeOut = ''; out.style.cssText = 'white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px';
   for (const b of [run, copy, close]) b.style.cssText = 'min-height:44px;min-width:44px;margin:6px 8px 6px 0;padding:10px 14px;font:inherit';
-  root.append(h, p, run, copy, close, status, out); d.body.append(root);
+  const perfBtn = d.createElement('button'), heatBtn = d.createElement('button'), memBtn = d.createElement('button');
+  perfBtn.textContent = 'Run performance (≈45 s)'; heatBtn.textContent = 'Run heat (3 min)'; memBtn.textContent = 'Read memory';
+  perfBtn.dataset.probePerf = ''; heatBtn.dataset.probeHeat = ''; memBtn.dataset.probeMem = '';
+  const sectionButtons = options.performance ? [perfBtn, heatBtn, memBtn] : [];
+  for (const b of sectionButtons) b.style.cssText = 'min-height:44px;min-width:44px;margin:6px 8px 6px 0;padding:10px 14px;font:inherit';
+  root.append(h, p, run, ...sectionButtons, copy, close, status, out); d.body.append(root);
   let last = '';
+  const sections: { performance?: PerformanceSectionV1; heat?: HeatAnalysisV1 & { vs: string; loadError: string | null }; memory?: MemorySectionV1 } = {};
+  let sectionText = '';
+  const fullText = (): string => [last, sectionText].filter(Boolean).join('\n\n');
+  const refreshSections = async (): Promise<void> => {
+    let pack = 'unavailable'; try { pack = options.readPackDigest ? await options.readPackDigest() : 'unavailable'; } catch { /* a local build has no preview.json */ }
+    sectionText = formatDeviceProbeSectionsV1({ commit: options.commit, packDigest: pack, ua: options.ua, dpr: options.dpr ?? 1, viewport: options.viewport ?? 'unknown' }, sections);
+    out.textContent = fullText(); copy.disabled = false;
+  };
+  const busy = (on: boolean): void => { for (const b of [run, ...sectionButtons]) b.disabled = on; };
+  const runSection = async (label: string, work: (port: PerformanceProbePortV1) => Promise<void>): Promise<void> => {
+    if (!options.performance) return; busy(true); status.textContent = `${label}…`;
+    try { await work(options.performance()); await refreshSections(); status.textContent = `${label}: done.`; }
+    catch (error) { status.textContent = `${label} could not run: ${error instanceof Error ? error.message : String(error)}`; }
+    finally { busy(false); }
+  };
+  const runPerformance = (): Promise<void> => runSection('Performance', async (port) => { sections.performance = await runPerformanceProbeV1(port, undefined, (t) => { status.textContent = `Performance — ${t}`; }); });
+  const runHeat = (): Promise<void> => runSection('Heat', async (port) => { sections.heat = await runHeatProbeV1(port, undefined, undefined, (t) => { status.textContent = `Heat — ${t}`; }); });
+  const readMemory = (): Promise<void> => runSection('Memory', async (port) => { sections.memory = await readMemoryProbeV1(port); });
+  perfBtn.onclick = () => { void runPerformance(); }; heatBtn.onclick = () => { void runHeat(); }; memBtn.onclick = () => { void readMemory(); };
   const doRun = async (): Promise<CodecProbeReportV1> => {
     run.disabled = true; status.textContent = 'Decoding…';
     const report = await runCodecProbeV1({ createContext: options.createContext, ua: options.ua, ...(options.canPlayType ? { canPlayType: options.canPlayType } : {}) });
-    last = formatCodecProbeV1(report, { commit: options.commit }); out.textContent = last; copy.disabled = false; run.disabled = false;
+    last = formatCodecProbeV1(report, { commit: options.commit }); out.textContent = fullText(); copy.disabled = false; run.disabled = false;
     status.textContent = `Done: ${report.rows.filter((r) => r.status === 'pass').length} of ${report.rows.length} decoded. Recommendation: ${report.recommendation}.`;
     return report;
   };
   run.onclick = () => { void doRun(); };
-  copy.onclick = () => { void (options.copyText ?? ((t: string) => navigator.clipboard.writeText(t)))(last).then(() => { status.textContent = 'Copied.'; }, () => { status.textContent = 'Copy failed — select the text below.'; }); };
+  copy.onclick = () => { void (options.copyText ?? ((t: string) => navigator.clipboard.writeText(t)))(fullText()).then(() => { status.textContent = 'Copied.'; }, () => { status.textContent = 'Copy failed — select the text below.'; }); };
   close.onclick = () => root.remove();
-  return { root, run: doRun, dispose: () => root.remove() };
+  return { root, run: doRun, runPerformance, runHeat, readMemory, text: fullText, dispose: () => root.remove() };
 }
