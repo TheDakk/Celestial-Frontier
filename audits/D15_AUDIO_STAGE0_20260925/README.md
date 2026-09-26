@@ -33,7 +33,7 @@ Nick decided D15: the in-house plan with $0 spend (`audits/PROPOSALS_20260925/N5
 
 ## Still to do (outside this batch's directive)
 The rest of N5's Stage 0 row:
-- the Opus/AAC decode check on the H1 iPhone probe page, which decides the one codec we ship;
+- ~~the Opus/AAC decode check on the H1 iPhone probe page~~ **done** (`device-probe.ts`, `?deviceProbe=1`). No H1 page existed yet, so this is its first section; the performance, heat and memory sections join the same page later. Nick runs it on the iPhone and pastes **Copy results**; the recommendation decides the one codec we ship;
 - the Listening page built from `?audioReview=1`.
 
 ## Nick's listening review for Stage 1 (about 15 minutes, L1)

@@ -23,6 +23,14 @@ Nick decided D15 (the in-house $0 plan, `audits/PROPOSALS_20260925/N5_AUDIO.md`)
   - The oscillator Tame/Feed/Compendium call plans already key on the same signature; they become articulations of this card in Stage 4.
   - Test: `battle2-wiring.test.ts` "one voice per creature". The stage card equals the Compendium card byte for byte, in two battles. Control: with the identity card switched off it fails.
 
+- **H1 codec decode check** (`port/v2/apps/game/src/device-probe.ts`, page `?deviceProbe=1`, dynamic import only):
+  - Five tiny genuine samples are embedded with their SHA-256 (`device-probe-codec-samples.ts`): a 440 Hz sine, 0.12 s, Opus in Ogg/WebM/CAF and AAC in M4A/ADTS.
+  - Each sample is verified against its hash (a mismatch is a FAIL), then decoded through the device's real `decodeAudioData`.
+  - PASS needs the real tone: 80–300 ms, at least one channel, RMS above 0.01. A rejected decode is UNSUPPORTED.
+  - Recommendation: `opus` if any Opus container passes, else `aac`, else `none` (N5: one codec, never both). `canPlayType` is recorded as provenance only.
+  - Offline: no network and no telemetry. **Copy results** gives Nick plain text to paste.
+  - Test: `tests/device-probe-codecs.test.ts` covers every outcome with a fake AudioContext, a corrupted-sample control (fails if the hash check is removed), and a source check that the page is reachable only through its flag's dynamic import.
+
 ## Accessibility modes: Mono audio and Reduced intensity (matches code as of 2026-09-25)
 
 Settings has two toggles under Creature voices, and both are applied once at the master of the ONE shared runtime (`@cf/audio`

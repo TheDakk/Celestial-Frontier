@@ -5614,6 +5614,17 @@ if (import.meta.env.DEV && new URLSearchParams(location.search).get('audioReview
     addEventListener('pagehide', closeReview);
   });
 }
+// H1 iPhone device probe (D15 Stage 0 codec decode check; later: performance/heat/memory): flag-gated, dynamic import only, never on the
+// default path; decodes embedded samples through this device's own audio engine — no network, no telemetry.
+if (new URLSearchParams(location.search).get('deviceProbe') === '1') {
+  void import('./device-probe.js').then(({ mountDeviceProbeV1 }) => {
+    const Ctor = (globalThis as { AudioContext?: new () => AudioContext; webkitAudioContext?: new () => AudioContext }).AudioContext
+      ?? (globalThis as { webkitAudioContext?: new () => AudioContext }).webkitAudioContext;
+    mountDeviceProbeV1({ doc: document, commit: previewIdentity?.sourceCommit ?? 'local development source', ua: navigator.userAgent,
+      createContext: () => { if (!Ctor) throw new TypeError('AudioContext is unavailable'); return new Ctor(); },
+      canPlayType: (mime) => document.createElement('audio').canPlayType(mime) });
+  }).catch(() => { /* the flagged probe never blocks the game */ });
+}
 const primeCount = (): number => Object.keys(save.primeFill || {}).length;
 const SHIP_LIVERY_SEED = 0x5111;   /* legacy ship painter's stable livery authority */
 type ShipVisualViewState = ShipVisualState & { readonly stateKey: string };
