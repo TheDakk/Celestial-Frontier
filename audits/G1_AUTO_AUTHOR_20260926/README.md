@@ -83,6 +83,30 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 2. a short-tailed reference in the pool (only via admitted, independently accepted packets; never bootstrapped unchecked, per Codex's review);
 3. a measured-absence declaration: truncating a tail chain whose paint is measured absent. This needs Codex's intake/presence contract review first.
 
+**G2 family pilot (Codex `9cf27be1`: 5 birds, 5 fish, 5 serpents, 5 insects), scored with the adopted v10 author** (`auto-g2fam-v10/`; leave-one-species-out; zero hand edits):
+
+| Family | ADMIT + PASS_STATIC | Semantic presence | What refuses |
+|---|---:|---|---|
+| **Fish** (trout, perch, cod, carp, herring) | **5/5** | all RESOLVED | — |
+| Birds (hawk, heron, pheasant, robin, kingfisher) | 0/5 | Hawk ADMIT but static RED (`approach:flight`, presentation) | thin foot and tail-fan coverage; the Robin shows one ground contact; the Kingfisher has 12 % unexplained paint |
+| Serpents (grass, rat, garter, king, tree snake) | 0/5 | — | every one: an unassigned "appendage" of 9–25 % of the paint. The generated snakes are THIN and posed on a rising diagonal (head raised, tail curled down); the references (Python, Racer) are thick and horizontal, so the counter's body core (the thickest segment) leaves most of a thin S-curve outside it. A layout mismatch, not an anatomy error |
+| Insects (ant, beetle, cricket, grasshopper, mantis) | 0/5 | — | Ant: facing (the mirror matches better); Beetle: wrong family (a quadruped matches better); Cricket: antenna coverage; Grasshopper and Mantis: the rear-class family floor (a slender abdomen against the Beetle/Honeybee floor) |
+
+- **The five fish through Codex's native harness** (`native-g2fam-fish/`: `tools/battle2-proof/native-runner.mjs`, mirror match, the Tang's lake script, CPU ×4):
+  - **All five DIAGNOSTIC_PASS:** 0/0 rig refusals, 707 frames, CPU p95 3.3–5.6 ms. They are the first creatures through the whole chain (generated painting → automatic authoring → intake → static → native) with zero hand edits.
+  - **But visual review FAILS:** the Carp shows a hole behind the head on both fighters, where background shows through a part seam, and the Trout shows a crack at the gill line (`09-carp/turn1-hit-reaction-50.png`, `06-trout/turn0-hit-impact.png`). This is the flat-master sibling seam Codex met on its own Bass fit-03 (a numerical pass and a visual fail).
+  - **Codex's accepted weld** (`preservePaintBoundaries: true`, its Bass fit-05 recipe, applied unchanged in `weld-g2fam-fish/weld.mjs`) does NOT transfer to the automatic fits. All five welded fits go static RED (hit/dodge/body/tail), and 4/5 native captures failed ("missing live frames"; possibly a concurrent-browser instrument issue, moot given the static reds). The weld is rejected for automatic packets.
+  - **Codex's C48 proposal (selective axial welds via the existing `paintBoundaryPairs`), tried here** (`weld-g2fam-fish/weld-pairs.mjs`, `greedy.sh`, `greedy.log`):
+    - Starting from the one axial pair that passes static (`body↔body-1`, or `body↔spine1` on the Salmon-referenced fits), each remaining OBSERVED axial adjacency is added one at a time and kept only if the unchanged static gate still passes.
+    - Final welds: Trout 3 pairs, Perch 3, Cod 5, Carp 2, Herring 5. `body↔caudal` folds for every fish; the head has no observed adjacency to the body in any of them.
+    - All five finals are PASS_STATIC and native DIAGNOSTIC_PASS (0/0 refusals, 707 frames).
+  - **Claude's visual check** (`weld-g2fam-fish/review-final.png`, turn-1 reaction at full resolution):
+    - **Perch, Cod and Carp look clean:** no holes or cracks in the frames that showed them before. They are the FIRST fully automatic creatures ready for Nick's review (generated painting → automatic authoring → intake → selective weld → static → native, zero hand edits).
+    - **Trout and Herring (from the Salmon reference):** the extra welds close the cracks but deform the silhouette (a lumpy back and belly on the Herring, a floating dorsal on the Trout). The single-weld versions (`pairs/*-A5`) still crack. Not acceptable yet.
+  - Nothing here is play admission: Nick's visual review and the library/registry admission remain.
+- **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
+- **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
+
 **v9–v11 (session 3, continued): four levers tried; one bug fixed, no count change.**
 
 | Lever | Result | Status |

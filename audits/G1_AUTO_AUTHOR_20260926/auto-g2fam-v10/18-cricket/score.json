@@ -1,0 +1,11 @@
+{
+ "id": "18-cricket",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part antenna-near (antennaNear) covers 2% paint (reference 27%)",
+  "missing-anatomy: part wing-far (wingFar) covers 0% paint (reference 73%)",
+  "unexplained-anatomy: 16.6% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

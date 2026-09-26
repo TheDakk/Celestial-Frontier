@@ -1,0 +1,60 @@
+{
+ "schema": "cf.selective-weld/v1",
+ "fit": "07-perch",
+ "variant": "G4",
+ "pairs": [
+  [
+   "body",
+   "body-1"
+  ],
+  [
+   "body-3",
+   "body-5"
+  ],
+  [
+   "body",
+   "body-2"
+  ],
+  [
+   "body",
+   "caudal"
+  ]
+ ],
+ "helperSha256": "f13467912a1537adcc4624e5b5b3efdfb738aaaf5c073e37ab2f88862696de3c",
+ "bindingHash": "b6f62a73b2df6885e0985f8ad24b724d8fca800ea80f6dbc1e43580c60534356",
+ "receipt": {
+  "schema": "cf.observed-surface-split/v1",
+  "contactPins": [],
+  "sourceBindingHash": "c1dbcfd23de5b1043d1745d2f4cbec76a3c0b92fdb4ef28ec73a7fd18a75d731",
+  "sourceVertices": 2229,
+  "vertices": 2393,
+  "sharedSupports": 599,
+  "pins": 1302,
+  "independentSurfaceParts": 13,
+  "sourceJoins": 12,
+  "excludedOverlaps": 13,
+  "observedExcludedBoundaries": 13,
+  "weldedExcludedBoundaries": 4,
+  "independentExcludedBoundaries": 9,
+  "preservePaintBoundaries": false,
+  "paintBoundaryPairs": [
+   [
+    "body",
+    "body-1"
+   ],
+   [
+    "body-3",
+    "body-5"
+   ],
+   [
+    "body",
+    "body-2"
+   ],
+   [
+    "body",
+    "caudal"
+   ]
+  ],
+  "sourceCoordinateChanges": 0
+ }
+}

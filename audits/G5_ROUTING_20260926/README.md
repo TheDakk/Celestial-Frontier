@@ -39,6 +39,24 @@ This is Stage G5 of the Generated Creature Pipeline (`audits/GENERATION_PIPELINE
   - `Math.floor` in the box kernel fails the kernel and end-to-end tests;
   - dropping the record-ownership check in the hook fails the hook test.
 
+## First real-browser run of `?finish=1` (`finish-smoke/`, run-02; headless Edge 154, WebGPU Apple metal-3, probe `supported`)
+
+- **Setup:** a procedural `crust:crab` (seed 7000) drawn by the core Crab painting (880² master), served by Codex's `game-preview-server.mjs` with the verified local model cache.
+- **Negative control (no flag):** 0 originals retained, 0 model files or finish sources fetched, the portrait unchanged, 0 page errors. **PASS.**
+- **The whole chain works** once four bugs are worked around inside the smoke only (no source edits):
+  - the portrait open posts the finish job 569 ms later;
+  - the model fetch is 6.77 GB in 18.3 s (cold), and the job runs to completion in 22.5 s;
+  - one 880² PNG is retained;
+  - reopening the portrait shows the finished image (13,160 of 193,600 portrait pixels changed, 6.8 %);
+  - two runs give the same finished sha (deterministic); 0 page errors.
+- **The four bugs:**
+  1. The preview server can't start in this repo: `kit-tracked-inputs.mjs` runs `git ls-files` without `maxBuffer` (3.0 MB > 1 MiB).
+  2. `creature-finish-math.mjs` (imported by the worker) is never served: it is missing from the preview server's `HELPERS` and from `kit-runtime-assets.ts` `names`, so built packages lack it too.
+  3. The canonical visual key (~700 characters) exceeded the engine's 512 cap: fixed by Codex in `1b01b93e` (now 2048).
+  4. The worker returns a `Uint8ClampedArray` that the adapter refused: fixed by Codex in `1b01b93e`.
+- Bugs 1 and 2 are in Codex's local-AI tools (C50). The shipped path gets its end-to-end rerun (`--phases=control,finish`) after those fixes.
+- **Quality:** the finish is nearly invisible at a glance. The worker edits only 5,128 pixels, 0.66 % of the master, under today's alpha = 255 eligibility; D26 bears on this. Nick's call.
+
 ## The stage (session 3, on Codex's C45(a) composition, `9cf27be1`)
 
 - The battle2 study input takes an optional `finish` provider. `main.ts` passes it through the existing gated battle2 line only when `?finish=1` built a route.

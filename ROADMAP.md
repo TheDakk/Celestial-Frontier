@@ -22,11 +22,11 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 
 **Where things stand**
 - **Branch:** `anthropic/mac` is pushed through the commit that adds this block. Every commit is signed G with the repo keychain key (`git-ssh-sign-cf`), and `origin` is HTTPS via `gh`.
-- **Codex:** merged through `bfe76a6b` (G5 sizes/transport/stage admission). Before that: `d809c53b` (parked gameplay, the G5 engine and its native proof: five crabs finished, delivered byte-exact, 0 phone model constructions). Before merging again, read `/Users/nick/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md` (read-only) and run `git log HEAD..openai/mac`. Codex's current focus, per Nick: finish the preserved parked gameplay (Forge Training, the living-portrait decision) BEFORE its G5 engine work.
-- **Gate:** `node tools/check-profile.mjs --profile=develop` (from `port/v2`) gives **5,638 pass; the ONLY red is I5** (`current-producer-authorities`, "binds every live memory budget").
+- **Codex:** merged through `1b01b93e` (accepted derived labels, phone originals, runtime fixes). Earlier: `bfe76a6b` (G5 sizes/transport/stage admission). Before that: `d809c53b` (parked gameplay, the G5 engine and its native proof: five crabs finished, delivered byte-exact, 0 phone model constructions). Before merging again, read `/Users/nick/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md` (read-only) and run `git log HEAD..openai/mac`. Codex's current focus, per Nick: finish the preserved parked gameplay (Forge Training, the living-portrait decision) BEFORE its G5 engine work.
+- **Gate:** `node tools/check-profile.mjs --profile=develop` (from `port/v2`) gives **5,645 pass; the ONLY red is I5** (`current-producer-authorities`, "binds every live memory budget").
   - Run it on a QUIET tree. A commit during the run produces a spurious "Source changed during authority read".
   - Also run by hand, all clean this session: `npm run typecheck` (root, app and worker), `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
-- **Dev site:** https://dev-celestialfrontier.github.io serves `29b827df` (G4; G5 card + stage behind `?finish=1`). Evidence is in `audits/DEV_PUBLISH/29b827dfecb1`.
+- **Dev site:** https://dev-celestialfrontier.github.io serves `14b712e6` (G4; G5 card + stage behind `?finish=1`; Codex's phone originals). Evidence is in `audits/DEV_PUBLISH/14b712e6e14f`.
 - **develop** is still `c1791e21`. PR #43 is open. No hosted attempt: I5 is red (D5).
 - **Disk:** about 230 GiB free. No agent worktrees are live, and the limb-counter branch is merged (it had no worktree). The newest 2 preview packages are kept.
 
@@ -52,7 +52,11 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 
 **Next, in order (Claude)**
 1. Read Codex's answers to C41 (loader admission, phone delivery) and C43 (worker size + transport); merge its signed commits. Re-score G1 on any new G2 families as they land (`run-auto.mjs --targets=<pilot.json>`).
-2. **G1:** Codex's second review is closed in the runner (v8). Four author levers were tried in v9–v11: the separator is a dead end; the remainder-marker bug is fixed; the Eagle's red is its tail outline (handed to Codex); paint-grown parts are net zero. **The author-side levers are exhausted.** Next gains come from the G2 paintings: limbs posed apart and true tails (C44). Re-score each new G2 family with `run-auto.mjs --targets=`.
+2. **G1:**
+   - On Codex's G2 family pilot: **fish 5/5** (RESOLVED); birds, serpents and insects 0/5 each, from layout drift (C47 asks for layout-matched prompts).
+   - The five automatic fish **pass Codex's native harness** (0/0 refusals) but **fail visual review** (seam holes; Codex's weld doesn't transfer): C48.
+   - Author-side levers are exhausted (v9–v11).
+   - Next: re-score each new G2 batch with `run-auto.mjs --targets=`, and run the native harness on its passes.
 3. **G5:** card AND stage in the game behind `?finish=1`. The stage uses Codex's C45(a) composition: finished texture, then the individual's morph. Derived ownership evidence for Civet/Eel/Rat/Salamander awaits Codex's review (C46). **Blocked on D26** (Nick: the finisher's alpha = 255 interior rule excludes every 1254 master). Then a real-browser run on a local dev server with the model, and Nick's quality review before the flag is ever on by default.
 4. Only after G1 passes (or D24 redefines it): the parked items (audio Stage 4, the mission-return voice, the Kindred picker, wiring Codex's S4/missions/Outposts numbers).
 

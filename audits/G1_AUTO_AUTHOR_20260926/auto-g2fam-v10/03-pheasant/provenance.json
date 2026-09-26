@@ -1,0 +1,95 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "03-pheasant",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "daa0c691174bff36ee8e962832992179a132f4c985a0548db40ff9674313b89f",
+ "subjectSourceSha256": "1acfdd5570303a04eb76dc9348a2101d69c145ccbe3c903d7f796cbf6ae6e826",
+ "identity": {
+  "name": "Pheasant",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Pheasant\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3277245205\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "seed": 3277245205,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "gull",
+  "authoringSha256": "9d5ce3cc7a41cf6a139848982114319c2374828a04e313c38619d8dce938aa73",
+  "masterSha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9"
+ },
+ "habitat": {
+  "profileId": "pheasant",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "97e1027593a0fb754b8afc40b25ac7aa76a129f972f170199aa630d2d1cefafe",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group pheasant (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1318,
+     "class": "top",
+     "attach": {
+      "x": 371.8,
+      "y": 159.4,
+      "relX": 0.92,
+      "relY": 0.3
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2597,
+     "class": "front",
+     "attach": {
+      "x": 225.6,
+      "y": 243,
+      "relX": 0.55,
+      "relY": 0.7
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0797,
+     "class": "limb-down",
+     "attach": {
+      "x": 306.4,
+      "y": 268,
+      "relX": 0.75,
+      "relY": 0.82
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "gull",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
