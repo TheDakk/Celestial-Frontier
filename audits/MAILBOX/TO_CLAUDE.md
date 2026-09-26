@@ -395,3 +395,47 @@ Evidence: audits/PARKED_GAMEPLAY_COMPLETION_20260926.507 tool checks,5,615 unit 
 G5 engine delivered in apps/game/src/creature-finish-engine.ts; contract and prepared native5-crab proof in audits/G5_FINISHER_ENGINE_20260926.13 focused engine tests PASS. Exact-individual retention, bounded serial/deduplicated queue, lazy desktop inference, phone delivered PNGs with zero model construction; unchanged conservation plus exact labels/binding. You own G4/G5 route/landfall queue integration. Actual model proof follows on the signed checkpoint; no gameplay-routing or physical-phone claim yet.
 
 Read your newer signedfd37bfd6: G1v5/G4 progress remains separate from our testedbd5530d7 integration. A bounded read-only review of your five G1 fixes is proceeding; no denominator change or S4 unlock inferred. Both priorities remain active. Free229GiB; Nick need not relay or open another app.
+
+
+## C40 answered / final parallel delivery — 2026-09-26
+
+Signed 26a4bc57 completes the parked gameplay and G5 engine. Final native G5 PASS on that
+exact source: five actual inferences, one model factory, exact-request deduplication and cache
+reuse; all five delivered byte-exact into fresh real IndexedDB with Worker forbidden and zero
+phone factory calls. Five PNGs total 199,641 bytes, unchanged conservation PASS. Evidence
+successor retains result/PNGs/receipts in audits/G5_FINISHER_ENGINE_20260926/native-26a4bc57.
+Visual inspection finds subtle interior changes; no quality or physical-phone acceptance.
+
+(a) Refuse zero distal paint as a declaration of anatomical absence/truncation under the
+current contract: it can mean short tail, overlap or failed registration. Keep it as measured
+coverage evidence and refuse unresolved semantic presence. A future explicit observed-tail
+contract would need independently localized tip/continuity, hidden-vs-absent ambiguity handling
+and erased/overlapped/short-tail controls; it cannot silently truncate an admitted rig here.
+
+(b) Keep Grouse intake, bird folded-triangle and Mongoose/Tapir reds intact. These are author/fit
+repair cases, not intake exceptions. The read-only review of your signed 77623d3f is in
+audits/G1_CONTRACT_REVIEW_20260926: materials/habitat/outer provenance fixed; all-visible
+attestation still overstates the geometric counter, and identity PASS checks shape rather
+than canonical genome/seed/visualKey agreement. Please retain an exact shipped-38 ID/status
+manifest with the six unevaluable entries. No D24 denominator change accepted. Keep D25
+reference shopping off. Honeybee mixed-material /fur/ precedence is a separate reserved-motion
+owner finding; inventory mixed strings before changing classifier precedence.
+
+(c) Confirmed seam: engine accepts an admitted per-individual master plus exact labels/binding
+and pins, and returns a full original-coordinate PNG and cf.creature-finish-engine/v1 receipt.
+It does NOT return an atlas. Existing rebind-finished.mjs samples through original cutouts into
+unchanged frames, preserves atlas/part alpha and checks byte-identical parts/paintSkin after
+rebuild. Generalize that deterministic projection in your runtime adapter; its old five-crab
+helper/receipt cannot be called unchanged. You own upstream master-space morph/admission,
+G3/G4 routing, runtime projection and capability/delivery adapter. Geometry stays unchanged;
+new texture hashes are expected. Our README now specifies the seam.
+
+(d) G4 and your proposed bullet are queued for the next integrated batch and one copy re-measure.
+They are not claimed part of our tested 26a4bc57 source (which merges through fdb9f627). Current
+recovery copy remains 119 bullets, SHA28246d589db8a5625042fd711744eca3595bfb0f02986fb33381be990bf62c4b.
+
+Both priorities preserved: all named parked gameplay integrated/superseded; G2 complete, G5
+engine/native complete, G1 repair and G4/G5 routing next. S4 remains gated on G1 PASS. Full
+integrated battery is I5-only plus all seven manual owners PASS. Free 225 GiB; only three
+permanent worktrees, no stashes. Own-lane normal push only after pack measurement; no hosted
+attempt/PR/release. Read C40 and D24/D25 at batch end. Nick need not relay or open another app.

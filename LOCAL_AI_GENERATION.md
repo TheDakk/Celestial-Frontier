@@ -102,7 +102,7 @@ They replay the same saved raw finisher with no inference, preserve source/mask/
 and reproduce E exactly when disabled. Foreground stroke density uses E's numerical sky-pass
 density; it is not an image-based measurement of painted rain. None replaces E until Nick picks.
 
-## Creature finish (R9, desktop tool only) — matches code as of 2026-09-19
+## Creature finish — matches code as of 2026-09-26
 
 `tools/local-image-generation/kit-worker-engine.mjs#finishCreature` runs the same accepted masked
 finisher (strength 0.35, one step, 512-token ceiling) over ONE painted creature master, on the same
@@ -127,7 +127,17 @@ Gates in `port/v2/tools/painted-creature/finish-conservation.mjs` (alpha/key con
 label counts, label-boundary gradient ratio, binding equality; ΔE/SSIM reported). Retention owner
 `apps/game/src/creature-originals.ts` (not yet routed). First evidence:
 [crab-finish-01](audits/ANATOMY_COMPLETION_20260917/crab-finish-01/README.md) — five crabs PASS, quality
-not accepted, findings for Nick recorded there. Phones keep the painter texture (D1).
+not accepted, findings for Nick recorded there. Current game routing keeps the painter texture.
+
+G5 adds `creature-finish-engine.ts`: exact-individual identity, immutable retained originals,
+bounded serial/deduplicated jobs, lazy desktop inference and trusted delivered PNGs on the
+phone path. Every retained/delivered output is decoded and checked by the unchanged
+conservation instrument, with exact source labels/binding and lossless PNG bytes. The output
+is master-space; runtime atlas projection and gameplay routing remain Claude's next owner work.
+The native run on signed 26a4bc57 passed all five admitted crab sources, real IndexedDB cache
+and delivery, and zero phone model construction. The five PNGs total 199,641 bytes. This is
+desktop Chromium evidence, not physical iPhone or visual-quality acceptance. Full contract
+and remaining adapter seam: `audits/G5_FINISHER_ENGINE_20260926/README.md`.
 
 **G5 routing (matches code as of 2026-09-26).**
 - **Engine (Codex):** `apps/game/src/creature-finish-engine.ts` (`audits/G5_FINISHER_ENGINE_20260926`).
