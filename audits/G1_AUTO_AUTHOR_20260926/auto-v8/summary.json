@@ -1,0 +1,887 @@
+[
+ {
+  "id": "salmon",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "bodyLengthPx": 1066,
+  "landmarkMedian": 0.0577,
+  "landmarkMax": 0.1048,
+  "worst": [
+   "pectoralNear 0.105",
+   "spine4 0.105",
+   "pectoralFar 0.084"
+  ],
+  "labelAgreement": 0.2624,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "eagle",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "bodyLengthPx": 1131.6,
+  "landmarkMedian": 0.0389,
+  "landmarkMax": 0.0823,
+  "worst": [
+   "root 0.082",
+   "chest 0.064",
+   "neck0 0.059"
+  ],
+  "labelAgreement": 0.7082,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "cast",
+   "victory"
+  ],
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "extra-anatomy (unassigned): a limb-down appendage of 7.0% paint that no reference appendage lands on"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "beetle",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part leg-hind-far (legHindFarKnee) covers 0% paint (reference 98%)",
+   "unexplained-anatomy: 6.5% of the paint lies away from the body and in no part (reference 1.6%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 1041.4,
+  "landmarkMedian": 0.1394,
+  "landmarkMax": 0.2682,
+  "worst": [
+   "legHindFarFoot 0.268",
+   "wingFar 0.255",
+   "legMidNearFoot 0.253"
+  ],
+  "labelAgreement": 0.0999,
+  "missingJoints": []
+ },
+ {
+  "id": "python",
+  "family": "serpent",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 10.0% paint that no reference appendage lands on",
+   "missing-anatomy: part segment-3 (seg3) covers 7% paint (reference 4%)",
+   "missing-anatomy: part segment-4 (seg4) covers 7% paint (reference 3%)",
+   "missing-anatomy: part segment-5 (seg5) covers 0% paint (reference 4%)",
+   "missing-anatomy: part segment-6 (seg6) covers 0% paint (reference 3%)",
+   "missing-anatomy: part segment-7 (seg7) covers 0% paint (reference 3%)",
+   "missing-anatomy: part segment-8 (seg8) covers 0% paint (reference 2%)",
+   "missing-anatomy: part segment-9 (seg9) covers 0% paint (reference 0%)",
+   "unexplained-anatomy: 45.1% of the paint lies away from the body and in no part (reference 5.7%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 1151.8,
+  "landmarkMedian": 0.0585,
+  "landmarkMax": 0.1461,
+  "worst": [
+   "seg5 0.146",
+   "seg6 0.094",
+   "seg7 0.089"
+  ],
+  "labelAgreement": 0.016,
+  "missingJoints": []
+ },
+ {
+  "id": "tree-frog",
+  "family": "hopper",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family hopper"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "chimpanzee",
+  "family": "primate",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family primate"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "starfish",
+  "family": "radial",
+  "verdict": "REFUSE",
+  "reasons": [
+   "wrong-family: serpent matches clearly better (0.0173 < 0.0826)",
+   "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on",
+   "missing-anatomy (ground): 2 ground contact(s); every same-family reference shows at least 3",
+   "missing-anatomy: part arm3-seg1 (arm3Seg1) covers 5% paint (reference 48%)",
+   "missing-anatomy: part arm4-seg2 (arm4Seg2) covers 0% paint (reference 30%)",
+   "missing-anatomy: part arm6-seg1 (arm6Seg1) covers 11% paint (reference 46%)",
+   "missing-anatomy: part arm6-seg2 (arm6Seg2) covers 0% paint (reference 32%)",
+   "missing-anatomy: part bell (bell) covers 14% paint (reference 50%)",
+   "unexplained-anatomy: 25.0% of the paint lies away from the body and in no part (reference 5.1%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 1263.6,
+  "landmarkMedian": 0.1596,
+  "landmarkMax": 0.6284,
+  "worst": [
+   "arm2Seg2 0.628",
+   "arm4Seg2 0.581",
+   "arm0Seg2 0.503"
+  ],
+  "labelAgreement": 0,
+  "missingJoints": []
+ },
+ {
+  "id": "tarantula",
+  "family": "arachnid",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family arachnid"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "octopus",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family cephalopod"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "fruit-bat",
+  "family": "flyer-membrane",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family flyer-membrane"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "centipede",
+  "family": "myriapod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family myriapod"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "sturgeon",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "bodyLengthPx": 962.2,
+  "landmarkMedian": 0.0352,
+  "landmarkMax": 0.3475,
+  "worst": [
+   "dorsal 0.347",
+   "spine3 0.062",
+   "jaw 0.056"
+  ],
+  "labelAgreement": 0.2726,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "wall-lizard",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-far-knee (hindFarKnee) covers 17% paint (reference 97%)",
+   "missing-anatomy: part hind-far-root (hindFarRoot) covers 7% paint (reference 99%)",
+   "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 30%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 1107.1,
+  "landmarkMedian": 0.0358,
+  "landmarkMax": 0.1532,
+  "worst": [
+   "tail2 0.153",
+   "tail1 0.113",
+   "hindFarAnkle 0.112"
+  ],
+  "labelAgreement": 0.5423,
+  "missingJoints": []
+ },
+ {
+  "id": "cougar",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "bodyLengthPx": 1209.3,
+  "landmarkMedian": 0.0381,
+  "landmarkMax": 0.1581,
+  "worst": [
+   "hindFarPaw 0.158",
+   "hindNearPaw 0.137",
+   "hindFarAnkle 0.123"
+  ],
+  "labelAgreement": 0.5412,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "impala",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "bodyLengthPx": 1268.6,
+  "landmarkMedian": 0.041,
+  "landmarkMax": 0.2126,
+  "worst": [
+   "hindFarPaw 0.213",
+   "hindNearPaw 0.180",
+   "foreNearPaw 0.123"
+  ],
+  "labelAgreement": 0.5178,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "marmot",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 1088.6,
+  "landmarkMedian": 0.0317,
+  "landmarkMax": 0.0956,
+  "worst": [
+   "earFarTip 0.096",
+   "earFarRoot 0.094",
+   "foreFarRoot 0.076"
+  ],
+  "labelAgreement": 0.5744,
+  "missingJoints": []
+ },
+ {
+  "id": "bass",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "bodyLengthPx": 986.4,
+  "landmarkMedian": 0.0558,
+  "landmarkMax": 0.0973,
+  "worst": [
+   "spine5 0.097",
+   "pectoralNear 0.077",
+   "dorsal 0.072"
+  ],
+  "labelAgreement": 0.6283,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "cattle",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "bodyLengthPx": 1248.2,
+  "landmarkMedian": 0.067,
+  "landmarkMax": 0.1979,
+  "worst": [
+   "tail1 0.198",
+   "foreFarRoot 0.154",
+   "earNearTip 0.135"
+  ],
+  "labelAgreement": 0.5372,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "tang",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "bodyLengthPx": 948.7,
+  "landmarkMedian": 0.0587,
+  "landmarkMax": 0.1984,
+  "worst": [
+   "dorsal 0.198",
+   "spine4 0.131",
+   "spine3 0.116"
+  ],
+  "labelAgreement": 0.5227,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "wolf",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "bodyLengthPx": 852.7,
+  "landmarkMedian": 0.051,
+  "landmarkMax": 0.2038,
+  "worst": [
+   "hindFarPaw 0.204",
+   "hindNearPaw 0.183",
+   "hindNearAnkle 0.136"
+  ],
+  "labelAgreement": 0.5239,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "gull",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "bodyLengthPx": 851,
+  "landmarkMedian": 0.0378,
+  "landmarkMax": 0.0954,
+  "worst": [
+   "spine 0.095",
+   "chest 0.092",
+   "wingNearRoot 0.077"
+  ],
+  "labelAgreement": 0.6581,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "river-otter",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 7% paint (reference 52%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 1005.3,
+  "landmarkMedian": 0.0252,
+  "landmarkMax": 0.1371,
+  "worst": [
+   "hindNearAnkle 0.137",
+   "hindNearPaw 0.135",
+   "hindFarPaw 0.129"
+  ],
+  "labelAgreement": 0.5978,
+  "missingJoints": []
+ },
+ {
+  "id": "brown-bear",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "bodyLengthPx": 1008.3,
+  "landmarkMedian": 0.1054,
+  "landmarkMax": 0.2923,
+  "worst": [
+   "tail2 0.292",
+   "hindFarAnkle 0.270",
+   "hindNearAnkle 0.267"
+  ],
+  "labelAgreement": 0.3173,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "melee:claw",
+   "melee:tail",
+   "cast",
+   "victory"
+  ],
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part tail2 (tail2) covers 6% paint (reference 69%)",
+     "missing-anatomy: part tail1 (tail1) covers 9% paint (reference 65%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "goose",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part near-shin (legNearAnkle) covers 22% paint (reference 74%)",
+   "unexplained-anatomy: 7.6% of the paint lies away from the body and in no part (reference 3.0%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 875.1,
+  "landmarkMedian": 0.0409,
+  "landmarkMax": 0.7464,
+  "worst": [
+   "wingNearTip 0.746",
+   "tailFan 0.341",
+   "root 0.142"
+  ],
+  "labelAgreement": 0.3131,
+  "missingJoints": []
+ },
+ {
+  "id": "heron",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part far-foot (legFarFoot) covers 18% paint (reference 53%)",
+   "missing-anatomy: part far-thigh (legFarKnee) covers 23% paint (reference 70%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 826.7,
+  "landmarkMedian": 0.0294,
+  "landmarkMax": 0.2125,
+  "worst": [
+   "wingFarTip 0.212",
+   "wingFarRoot 0.095",
+   "wingNearRoot 0.063"
+  ],
+  "labelAgreement": 0.7748,
+  "missingJoints": []
+ },
+ {
+  "id": "sparrow",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "bodyLengthPx": 911.2,
+  "landmarkMedian": 0.0538,
+  "landmarkMax": 0.27,
+  "worst": [
+   "wingNearTip 0.270",
+   "tailFan 0.254",
+   "neck0 0.148"
+  ],
+  "labelAgreement": 0.4099,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "faint"
+  ],
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part near-shin (legNearAnkle) covers 9% paint (reference 32%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ibex",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-near-tip (earNearTip) covers 11% paint (reference 62%)",
+   "unexplained-anatomy: 7.4% of the paint lies away from the body and in no part (reference 0.0%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 852.6,
+  "landmarkMedian": 0.0663,
+  "landmarkMax": 0.2076,
+  "worst": [
+   "hindFarPaw 0.208",
+   "foreNearAnkle 0.150",
+   "hindNearPaw 0.150"
+  ],
+  "labelAgreement": 0.5147,
+  "missingJoints": []
+ },
+ {
+  "id": "reef-shark",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "bodyLengthPx": 764.8,
+  "landmarkMedian": 0.049,
+  "landmarkMax": 0.1345,
+  "worst": [
+   "pectoralNear 0.134",
+   "head 0.086",
+   "spine1 0.077"
+  ],
+  "labelAgreement": 0.5335,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "pike",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "bodyLengthPx": 787.1,
+  "landmarkMedian": 0.0351,
+  "landmarkMax": 0.3091,
+  "worst": [
+   "dorsal 0.309",
+   "pectoralNear 0.104",
+   "spine3 0.104"
+  ],
+  "labelAgreement": 0.6352,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "racer",
+  "family": "serpent",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 11.1% paint that no reference appendage lands on",
+   "missing-anatomy: part head (head) covers 1% paint (reference 4%)",
+   "missing-anatomy: part body-segment-0 (seg0) covers 6% paint (reference 12%)",
+   "missing-anatomy: part body-segment-2 (seg2) covers 6% paint (reference 9%)",
+   "missing-anatomy: part body-segment-3 (seg3) covers 6% paint (reference 9%)",
+   "missing-anatomy: part body-segment-4 (seg4) covers 6% paint (reference 10%)",
+   "missing-anatomy: part body-segment-6 (seg6) covers 6% paint (reference 10%)",
+   "missing-anatomy: part body-segment-7 (seg7) covers 3% paint (reference 7%)",
+   "missing-anatomy: part body-segment-8 (seg8) covers 2% paint (reference 5%)",
+   "missing-anatomy: part body-segment-9 (seg9) covers 0% paint (reference 2%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 625.5,
+  "landmarkMedian": 0.0699,
+  "landmarkMax": 0.1594,
+  "worst": [
+   "seg4 0.159",
+   "seg5 0.132",
+   "seg6 0.128"
+  ],
+  "labelAgreement": 0.0107,
+  "missingJoints": []
+ },
+ {
+  "id": "grouse",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "bodyLengthPx": 776.4,
+  "landmarkMedian": 0.0366,
+  "landmarkMax": 0.7,
+  "worst": [
+   "wingNearTip 0.700",
+   "tailFan 0.244",
+   "root 0.201"
+  ],
+  "labelAgreement": 0.3804,
+  "missingJoints": [],
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Observed surfaces: contact conflicts with fixed owner\n    at need (file:///Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs:6:36",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "RED",
+    "reasons": []
+   },
+   {
+    "rank": 2,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "unexplained-anatomy: 12.4% of the paint lies away from the body and in no part (reference 4.3%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "sandpiper",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "bodyLengthPx": 954.9,
+  "landmarkMedian": 0.1465,
+  "landmarkMax": 0.3565,
+  "worst": [
+   "legFarFoot 0.356",
+   "legFarAnkle 0.323",
+   "wingFarTip 0.270"
+  ],
+  "labelAgreement": 0.4777,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "cast",
+   "victory"
+  ],
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part far-shin (legFarAnkle) covers 20% paint (reference 60%)",
+     "missing-anatomy: part near-thigh (legNearKnee) covers 20% paint (reference 79%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "herring",
+  "family": "fish",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part dorsal (dorsal) covers 19% paint (reference 58%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 801.5,
+  "landmarkMedian": 0.0373,
+  "landmarkMax": 0.2167,
+  "worst": [
+   "dorsal 0.217",
+   "pectoralNear 0.078",
+   "spine3 0.058"
+  ],
+  "labelAgreement": 0.5572,
+  "missingJoints": []
+ },
+ {
+  "id": "wild-horse",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "bodyLengthPx": 998,
+  "landmarkMedian": 0.0423,
+  "landmarkMax": 0.1031,
+  "worst": [
+   "hindFarAnkle 0.103",
+   "hindNearKnee 0.089",
+   "hindFarRoot 0.083"
+  ],
+  "labelAgreement": 0.5597,
+  "missingJoints": [],
+  "static": "PASS_STATIC",
+  "staticFails": []
+ },
+ {
+  "id": "salamander",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "bodyLengthPx": 868.3,
+  "landmarkMedian": 0.0372,
+  "landmarkMax": 0.1861,
+  "worst": [
+   "hindNearPaw 0.186",
+   "hindFarPaw 0.175",
+   "hindNearAnkle 0.170"
+  ],
+  "labelAgreement": 0.4049,
+  "missingJoints": [],
+  "static": "RED",
+  "staticFails": [
+   "hit"
+  ],
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part fore-near-paw (foreNearPaw) covers 15% paint (reference 48%)",
+     "missing-anatomy: part ear-far-tip (earFarTip) covers 5% paint (reference 24%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "eel",
+  "family": "serpent",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 8.4% paint that no reference appendage lands on",
+   "missing-anatomy: part jaw (jaw) covers 0% paint (reference 23%)",
+   "missing-anatomy: part body-segment-7 (seg7) covers 8% paint (reference 7%)",
+   "missing-anatomy: part body-segment-8 (seg8) covers 8% paint (reference 5%)",
+   "missing-anatomy: part body-segment-9 (seg9) covers 6% paint (reference 2%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 863.1,
+  "landmarkMedian": 0.0681,
+  "landmarkMax": 0.1852,
+  "worst": [
+   "seg4 0.185",
+   "seg5 0.170",
+   "seg6 0.146"
+  ],
+  "labelAgreement": 0.0381,
+  "missingJoints": []
+ },
+ {
+  "id": "honeybee",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (family floor): the largest rear appendage is 3.8% of the paint; every same-family reference shows at least 6.3%",
+   "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 1.0%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 893.2,
+  "landmarkMedian": 0.1256,
+  "landmarkMax": 0.2665,
+  "worst": [
+   "legFrontNearFoot 0.267",
+   "wingNear 0.247",
+   "legMidNearFoot 0.238"
+  ],
+  "labelAgreement": 0.1468,
+  "missingJoints": []
+ },
+ {
+  "id": "rat",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 30%)",
+   "missing-anatomy: part tail1 (tail1) covers 21% paint (reference 79%)",
+   "unexplained-anatomy: 24.8% of the paint lies away from the body and in no part (reference 11.4%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 827.1,
+  "landmarkMedian": 0.0545,
+  "landmarkMax": 0.1733,
+  "worst": [
+   "hindNearKnee 0.173",
+   "hindFarPaw 0.166",
+   "hindNearPaw 0.162"
+  ],
+  "labelAgreement": 0.4574,
+  "missingJoints": [
+   "earNearRoot",
+   "earNearTip",
+   "earFarRoot",
+   "earFarTip"
+  ]
+ },
+ {
+  "id": "dragonfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+   "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 9% paint (reference 25%)",
+   "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 3% paint (reference 62%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 711,
+  "landmarkMedian": 0.1427,
+  "landmarkMax": 0.8448,
+  "worst": [
+   "wingFar 0.845",
+   "legHindNearFoot 0.761",
+   "antennaFar 0.542"
+  ],
+  "labelAgreement": 0.0425,
+  "missingJoints": []
+ },
+ {
+  "id": "jellyfish",
+  "family": "radial",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a other appendage of 23.2% paint that no reference appendage lands on",
+   "missing-anatomy: part arm2-middle (arm2Seg1) covers 17% paint (reference 55%)",
+   "missing-anatomy: part arm3-middle (arm3Seg1) covers 16% paint (reference 48%)",
+   "missing-anatomy: part arm3-tip (arm3Seg2) covers 6% paint (reference 22%)",
+   "unexplained-anatomy: 35.7% of the paint lies away from the body and in no part (reference 0.0%)"
+  ],
+  "semanticPresence": null,
+  "bodyLengthPx": 1048.1,
+  "landmarkMedian": 0.1847,
+  "landmarkMax": 1.0553,
+  "worst": [
+   "arm0Seg2 1.055",
+   "arm0Seg1 0.695",
+   "arm4Seg2 0.619"
+  ],
+  "labelAgreement": 0,
+  "missingJoints": [
+   "arm8Seg0",
+   "arm8Seg1",
+   "arm8Seg2",
+   "arm9Seg0",
+   "arm9Seg1",
+   "arm9Seg2",
+   "arm10Seg0",
+   "arm10Seg1",
+   "arm10Seg2",
+   "arm11Seg0",
+   "arm11Seg1",
+   "arm11Seg2",
+   "arm5Seg0",
+   "arm5Seg1",
+   "arm5Seg2",
+   "arm6Seg0",
+   "arm6Seg1",
+   "arm6Seg2",
+   "arm7Seg0",
+   "arm7Seg1",
+   "arm7Seg2"
+  ]
+ }
+]

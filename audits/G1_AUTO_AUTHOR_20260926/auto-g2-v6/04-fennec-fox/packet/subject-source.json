@@ -1,0 +1,49 @@
+{
+  "name": "Fennec Fox",
+  "family": "quadruped",
+  "species": {
+    "name": "Fennec Fox",
+    "aspect": 1.6,
+    "headFrac": 0.3,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "gigantic triangular ears nearly as long as the head",
+      "tiny slender pale body",
+      "black-tipped bushy tail"
+    ],
+    "note": "The ears alone can be a third of the standing height; undersized ears turn it into an ordinary fox."
+  },
+  "genome": {
+    "seed": 2955372393,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 3,
+    "body": 10,
+    "loco": 14,
+    "trait": 1,
+    "size": 2,
+    "diet": 1,
+    "head": 5,
+    "limbs": 1,
+    "skin": 3,
+    "tail": 5,
+    "pattern": 7,
+    "eyes": 5,
+    "behavior": 7,
+    "habitat": 5,
+    "detail": 2,
+    "accent": 14,
+    "temper": 1,
+    "sense": 9,
+    "repro": 0,
+    "life": 4,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Fennec Fox"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Fennec Fox\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2955372393\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "index": 274
+}

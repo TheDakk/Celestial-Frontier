@@ -1,0 +1,48 @@
+{
+  "name": "Badger",
+  "family": "quadruped",
+  "species": {
+    "name": "Badger",
+    "aspect": 2.4,
+    "headFrac": 0.24,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "broad flattened low-slung body",
+      "white stripe running back over the face",
+      "long straight digging foreclaws"
+    ]
+  },
+  "genome": {
+    "seed": 633435082,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 7,
+    "body": 4,
+    "loco": 1,
+    "trait": 10,
+    "size": 5,
+    "diet": 2,
+    "head": 7,
+    "limbs": 2,
+    "skin": 1,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 4,
+    "behavior": 5,
+    "habitat": 5,
+    "detail": 0,
+    "accent": 15,
+    "temper": 7,
+    "sense": 3,
+    "repro": 4,
+    "life": 5,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Badger"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Badger\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"633435082\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "index": 112
+}

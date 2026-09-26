@@ -1,0 +1,19 @@
+{
+ "id": "eagle",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 7.0% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null,
+ "bodyLengthPx": 1131.6,
+ "landmarkMedian": 0.1147,
+ "landmarkMax": 0.4757,
+ "worst": [
+  "wingFarTip 0.476",
+  "tailFan 0.404",
+  "wingNearTip 0.269"
+ ],
+ "labelAgreement": 0.4407,
+ "missingJoints": []
+}

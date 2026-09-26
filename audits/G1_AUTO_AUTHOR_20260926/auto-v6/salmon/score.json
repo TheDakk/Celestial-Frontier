@@ -1,0 +1,18 @@
+{
+ "id": "salmon",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 1066,
+ "landmarkMedian": 0.0577,
+ "landmarkMax": 0.1048,
+ "worst": [
+  "pectoralNear 0.105",
+  "spine4 0.105",
+  "pectoralFar 0.084"
+ ],
+ "labelAgreement": 0.2624,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

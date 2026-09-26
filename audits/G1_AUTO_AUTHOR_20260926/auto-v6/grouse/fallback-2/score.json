@@ -1,0 +1,18 @@
+{
+ "id": "grouse",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 12.4% of the paint lies away from the body and in no part (reference 4.3%)"
+ ],
+ "bodyLengthPx": 776.4,
+ "landmarkMedian": 0.0697,
+ "landmarkMax": 0.6396,
+ "worst": [
+  "wingNearTip 0.640",
+  "beak 0.326",
+  "tailFan 0.239"
+ ],
+ "labelAgreement": 0.379,
+ "missingJoints": []
+}

@@ -1,0 +1,50 @@
+[
+ {
+  "rules": "base",
+  "positivesKept": "18/34",
+  "erasedRefused": "23/34",
+  "duplicatedRefused": "23/27"
+ },
+ {
+  "rules": "detached",
+  "positivesKept": "18/34",
+  "erasedRefused": "23/34",
+  "duplicatedRefused": "23/27"
+ },
+ {
+  "rules": "detached+extra≥1.2%",
+  "positivesKept": "17/34",
+  "erasedRefused": "24/34",
+  "duplicatedRefused": "23/27"
+ },
+ {
+  "rules": "detached+extra≥3%",
+  "positivesKept": "17/34",
+  "erasedRefused": "23/34",
+  "duplicatedRefused": "23/27"
+ },
+ {
+  "rules": "detached+merged",
+  "positivesKept": "18/34",
+  "erasedRefused": "23/34",
+  "duplicatedRefused": "23/27"
+ },
+ {
+  "rules": "detached+leg/tail<0.12",
+  "positivesKept": "16/34",
+  "erasedRefused": "24/34",
+  "duplicatedRefused": "25/27"
+ },
+ {
+  "rules": "detached+leg/tail/fin8%<0.15",
+  "positivesKept": "15/34",
+  "erasedRefused": "26/34",
+  "duplicatedRefused": "25/27"
+ },
+ {
+  "rules": "counted (all v3a rules)",
+  "positivesKept": "3/34",
+  "erasedRefused": "34/34",
+  "duplicatedRefused": "25/27"
+ }
+]

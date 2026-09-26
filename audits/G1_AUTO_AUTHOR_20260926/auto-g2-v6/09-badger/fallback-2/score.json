@@ -1,0 +1,8 @@
+{
+ "id": "09-badger",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 8.6% of the paint lies away from the body and in no part (reference 3.4%)"
+ ]
+}

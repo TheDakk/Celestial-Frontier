@@ -1,0 +1,124 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "wall-lizard",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff",
+ "subjectSourceSha256": "ccd978ba613eca27cd02eaa0666e91ca9ea11b9b339c63d65eecfef1e8ddebed",
+ "identity": {
+  "name": "Wall Lizard",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wall Lizard\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1380073923\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"4\"]]]]",
+  "seed": 1380073923,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "salamander",
+  "authoringSha256": "f866320348c6b6bbba64058a1e3b2052dc2518fd404e504698af8d9e76b59d09",
+  "masterSha256": "9a9701c7b127da311b031082f29c66b8c5b01cd94d3fae4f154275a95d5f6235"
+ },
+ "habitat": {
+  "profileId": "lizard",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group lizard (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0251,
+     "class": "front",
+     "attach": {
+      "x": 393.8,
+      "y": 182.6,
+      "relX": 0.96,
+      "relY": 0.17
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2211,
+     "class": "rear",
+     "attach": {
+      "x": 184.4,
+      "y": 216.4,
+      "relX": 0.44,
+      "relY": 0.68
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0374,
+     "class": "front",
+     "attach": {
+      "x": 342.1,
+      "y": 227.6,
+      "relX": 0.83,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0527,
+     "class": "limb-down",
+     "attach": {
+      "x": 314.5,
+      "y": 233,
+      "relX": 0.76,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0562,
+     "class": "limb-down",
+     "attach": {
+      "x": 216,
+      "y": 238.5,
+      "relX": 0.52,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0202,
+     "class": "front",
+     "attach": {
+      "x": 243.8,
+      "y": 237.7,
+      "relX": 0.59,
+      "relY": 1
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 3,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "salamander",
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": "not asserted (refused)"
+}

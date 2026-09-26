@@ -139,6 +139,16 @@ and delivery, and zero phone model construction. The five PNGs total 199,641 byt
 desktop Chromium evidence, not physical iPhone or visual-quality acceptance. Full contract
 and remaining adapter seam: `audits/G5_FINISHER_ENGINE_20260926/README.md`.
 
+**G5 routing (matches code as of 2026-09-26).**
+- **Engine (Codex):** `apps/game/src/creature-finish-engine.ts` (`audits/G5_FINISHER_ENGINE_20260926`).
+- **Routing layer (Claude):** `apps/game/src/creature-finish-route.ts` (`audits/G5_ROUTING_20260926`).
+  - Only a desktop-class device with the probe's full capability set finishes on the device.
+  - A finish starts from the painting that draws the creature, and there is one finish per Compendium identity.
+  - Card lookups read the retained store only.
+  - A retained original becomes the card master through the card builder's own box kernel.
+- **Card hook:** the card source's optional `finished` hook draws it.
+- **Not yet wired into `main.ts`:** the desktop model adapter, `?finish=1`, the stage and phone delivery are next.
+
 ## Model installation and phone boundary
 
 Model downloads are explicit and resumable. Invalid installations expose Restart. Preparation

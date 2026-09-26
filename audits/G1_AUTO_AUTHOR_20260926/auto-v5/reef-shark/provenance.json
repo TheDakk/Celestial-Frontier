@@ -1,0 +1,137 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "reef-shark",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "c3d4a67f11764fb5fe7a9f98d2fa44b85fc63cd40b17b8d9ae934557fa6ebb46",
+ "subjectSourceSha256": "da3f098a88065dd1d975d3f49c2a9bfb683a73aaaa74a20392dd4855d813e673",
+ "identity": {
+  "name": "Reef Shark",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Reef Shark\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"163690985\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "seed": 163690985,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "herring",
+  "authoringSha256": "bd0fae133183dce53893214f9b2ef857d9adaa067e9994ff3488bba0aa6cf453",
+  "masterSha256": "3abc568beb996e694c78736854a216222dc5cfae47d39494a4f6ba7e84b5494f"
+ },
+ "habitat": {
+  "profileId": "predatory-shark",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "f556dbca707ac039356ce514538077710238e9929a630376c8085a5c0dccd2a5",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group predatory-shark (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0546,
+     "class": "top",
+     "attach": {
+      "x": 242.5,
+      "y": 189,
+      "relX": 0.49,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2188,
+     "class": "rear",
+     "attach": {
+      "x": 159,
+      "y": 225.5,
+      "relX": -0.01,
+      "relY": 0.47
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0635,
+     "class": "front",
+     "attach": {
+      "x": 330,
+      "y": 228.5,
+      "relX": 1.01,
+      "relY": 0.51
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0064,
+     "class": "limb-down",
+     "attach": {
+      "x": 168,
+      "y": 248,
+      "relX": 0.05,
+      "relY": 0.77
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0061,
+     "class": "limb-down",
+     "attach": {
+      "x": 186,
+      "y": 249,
+      "relX": 0.15,
+      "relY": 0.79
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0339,
+     "class": "limb-down",
+     "attach": {
+      "x": 255.8,
+      "y": 264.7,
+      "relX": 0.57,
+      "relY": 1
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0092,
+     "class": "limb-down",
+     "attach": {
+      "x": 281,
+      "y": 266,
+      "relX": 0.72,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "herring",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": "all-visible, backed by the measured visible inventory above; nothing declared absent, hidden or folded"
+}

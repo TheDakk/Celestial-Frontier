@@ -1,0 +1,49 @@
+{
+  "name": "Marmot",
+  "family": "quadruped",
+  "species": {
+    "name": "Marmot",
+    "aspect": 2,
+    "headFrac": 0.26,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "fat barrel body on very short legs",
+      "short furry tail",
+      "blunt rounded head with small ears"
+    ],
+    "note": "Frequently drawn rearing upright on the haunches; the natural profile is low and squat."
+  },
+  "genome": {
+    "seed": 1242552574,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 3,
+    "body": 5,
+    "loco": 2,
+    "trait": 19,
+    "size": 4,
+    "diet": 5,
+    "head": 3,
+    "limbs": 2,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 0,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 1,
+    "detail": 8,
+    "accent": 5,
+    "temper": 8,
+    "sense": 2,
+    "repro": 1,
+    "life": 1,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Marmot"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Marmot\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1242552574\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 172
+}

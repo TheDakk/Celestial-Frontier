@@ -1,0 +1,20 @@
+{
+ "id": "python",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 10.0% paint that no reference appendage lands on",
+  "missing-anatomy: part segment-4 (seg4) covers 8% paint (reference 3%)",
+  "missing-anatomy: part segment-8 (seg8) covers 7% paint (reference 2%)"
+ ],
+ "bodyLengthPx": 1151.8,
+ "landmarkMedian": 0.0585,
+ "landmarkMax": 0.1461,
+ "worst": [
+  "seg5 0.146",
+  "seg6 0.094",
+  "seg7 0.089"
+ ],
+ "labelAgreement": 0.016,
+ "missingJoints": []
+}

@@ -48,7 +48,7 @@ import { morphAtlasCache, morphAtlasKey, type MorphAtlasLease } from './morph/mo
 import { markingNameV1, maskAlphaOf, type AlphaMask } from './morph/morph-markings.js';
 import { archetypeGenomeV1, morphParamsV1 } from './morph/morph-params.js';
 import { decodePng } from './morph/png-decode.js';
-import { paintedStandInV1 } from './morph/painted-stand-in.js';
+import { paintedArtV2 } from './morph/painted-variants.js';
 import type { CombatChroniclePacerGateV1 } from './combat-chronicle.js';
 import { decodeMorphedAtlas, loadPinnedCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV1, type CreatureRigV1 } from './creature-rig.js';
 import { abilityTheme } from '@cf/domain-combatcore';
@@ -222,7 +222,7 @@ export function matchRecord(records: readonly ResolvedAnatomyRecord[], genome: R
   // Nick 2026-09-24 ("that art style should carry throughout the game"): no painting of its own → the painted STAND-IN for its body
   // (painted-stand-in.ts: its body plan's archetype, or the body family the procedural painter draws), morphed by its own genes
   // G3: only paintings whose record actually loaded can stand in (an unreachable library record must not strand the creature on its portrait)
-  const loaded = new Set(records.map((r) => r.identity.earthName)), painted = new Set(BATTLE2_ASSETS.partsFits.map((f) => f.earthName).filter((n) => loaded.has(n))), stand = paintedStandInV1(genome, painted);
+  const loaded = new Set(records.map((r) => r.identity.earthName)), painted = new Set(BATTLE2_ASSETS.partsFits.map((f) => f.earthName).filter((n) => loaded.has(n))), stand = paintedArtV2(genome, painted); // G4: the card's resolver (CARD = STAGE)
   return stand ? records.find((r) => r.identity.earthName === stand.earthName) ?? null : null;
 }
 /** G3: the CORE (in-pack) painting that stands in for a genome's body family, from the loaded records; null when none. */
@@ -230,7 +230,7 @@ export function coreStandInRecord(records: readonly ResolvedAnatomyRecord[], gen
   if (!genome) return null;
   const loaded = new Set(records.map((r) => r.identity.earthName)), core = new Set(BATTLE2_ASSETS.partsFits.filter((f) => !f.library && loaded.has(f.earthName)).map((f) => f.earthName));
   const earth = typeof genome._earthName === 'string' ? genome._earthName : null, g = earth !== null && core.has(earth) ? genome : earth !== null ? { ...genome, _earthName: earth } : genome;
-  const stand = paintedStandInV1(g, core);
+  const stand = paintedArtV2(g, core);
   return stand ? records.find((r) => r.identity.earthName === stand.earthName) ?? null : null;
 }
 export function alphaBox(rgba: Uint8ClampedArray, width: number, height: number): { x: number; y: number; width: number; height: number } {

@@ -1,0 +1,49 @@
+{
+  "name": "Arctic Fox",
+  "family": "quadruped",
+  "species": {
+    "name": "Arctic Fox",
+    "aspect": 2.1,
+    "headFrac": 0.26,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "short rounded ears",
+      "blunt short muzzle",
+      "thick fluffy all-white coat and dense round tail"
+    ],
+    "note": "Everything is shortened and rounded compared to a red fox - ears, muzzle and legs."
+  },
+  "genome": {
+    "seed": 2034374599,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 4,
+    "body": 13,
+    "loco": 9,
+    "trait": 0,
+    "size": 5,
+    "diet": 1,
+    "head": 8,
+    "limbs": 1,
+    "skin": 3,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 17,
+    "detail": 5,
+    "accent": 8,
+    "temper": 4,
+    "sense": 8,
+    "repro": 6,
+    "life": 2,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Arctic Fox"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Arctic Fox\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2034374599\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "index": 157
+}

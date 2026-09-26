@@ -1,0 +1,34 @@
+{
+ "id": "salamander",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 868.3,
+ "landmarkMedian": 0.0372,
+ "landmarkMax": 0.1861,
+ "worst": [
+  "hindNearPaw 0.186",
+  "hindFarPaw 0.175",
+  "hindNearAnkle 0.170"
+ ],
+ "labelAgreement": 0.4049,
+ "missingJoints": [],
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Part masks: polygon\n    at requireValue (file:///Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at cutAuthoredParts (file:///User",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "missing-anatomy: part fore-near-paw (foreNearPaw) covers 15% paint (reference 48%)",
+    "missing-anatomy: part ear-far-tip (earFarTip) covers 5% paint (reference 24%)"
+   ]
+  }
+ ]
+}

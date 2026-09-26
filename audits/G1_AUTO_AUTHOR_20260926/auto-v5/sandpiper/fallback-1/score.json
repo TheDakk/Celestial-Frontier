@@ -1,0 +1,19 @@
+{
+ "id": "sandpiper",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-shin (legFarAnkle) covers 20% paint (reference 60%)",
+  "missing-anatomy: part near-thigh (legNearKnee) covers 20% paint (reference 79%)"
+ ],
+ "bodyLengthPx": 954.9,
+ "landmarkMedian": 0.0926,
+ "landmarkMax": 0.3648,
+ "worst": [
+  "legFarFoot 0.365",
+  "legFarAnkle 0.319",
+  "legNearFoot 0.220"
+ ],
+ "labelAgreement": 0.4346,
+ "missingJoints": []
+}

@@ -1,0 +1,39 @@
+{
+ "id": "grouse",
+ "family": "biped-bird",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 776.4,
+ "landmarkMedian": 0.0366,
+ "landmarkMax": 0.7,
+ "worst": [
+  "wingNearTip 0.700",
+  "tailFan 0.244",
+  "root 0.201"
+ ],
+ "labelAgreement": 0.3804,
+ "missingJoints": [],
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Observed surfaces: contact conflicts with fixed owner\n    at need (file:///Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs:6:36",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "ADMIT",
+   "static": "RED",
+   "reasons": []
+  },
+  {
+   "rank": 2,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "unexplained-anatomy: 12.4% of the paint lies away from the body and in no part (reference 4.3%)"
+   ]
+  }
+ ]
+}

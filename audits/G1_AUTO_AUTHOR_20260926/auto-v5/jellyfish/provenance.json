@@ -1,0 +1,135 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "jellyfish",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "5c878a70e83b232ef7aa1d716f6deab99626a8292e2a9714d87d945b1187e2ee",
+ "subjectSourceSha256": "b6e42cbd3b8967347a2d49bf5563d7ed5ca4a742703f8d5b16fe0f22c4445d54",
+ "identity": {
+  "name": "Jellyfish",
+  "family": "radial",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Jellyfish\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2660681326\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "seed": 2660681326,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "starfish",
+  "authoringSha256": "5f1995bdccf09d6e49e15549c7c6f13a3b1b81fef154ec4c51fe2e227fcf8763",
+  "masterSha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687"
+ },
+ "habitat": {
+  "profileId": "cnidarian",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "5b5dd148188d76ce4ba104c9d344189bdd73fdd656b3626337d5f6d02f9434a7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "translucent",
+  "source": "species group cnidarian (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.125,
+     "class": "other",
+     "attach": {
+      "x": 136,
+      "y": 100.5,
+      "relX": 0.16,
+      "relY": 0.2
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0707,
+     "class": "other",
+     "attach": {
+      "x": 287,
+      "y": 98,
+      "relX": 0.89,
+      "relY": 0.19
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0467,
+     "class": "limb-down",
+     "attach": {
+      "x": 141.3,
+      "y": 215,
+      "relX": 0.19,
+      "relY": 0.5
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0426,
+     "class": "other",
+     "attach": {
+      "x": 162,
+      "y": 133,
+      "relX": 0.29,
+      "relY": 0.28
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0455,
+     "class": "limb-down",
+     "attach": {
+      "x": 287.3,
+      "y": 209.2,
+      "relX": 0.89,
+      "relY": 0.49
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.2322,
+     "class": "other",
+     "attach": {
+      "x": 209.5,
+      "y": 141.6,
+      "relX": 0.51,
+      "relY": 0.31
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0477,
+     "class": "limb-down",
+     "attach": {
+      "x": 264.5,
+      "y": 220.3,
+      "relX": 0.78,
+      "relY": 0.52
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "other": 4,
+    "limb-down": 3
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "starfish",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": "not asserted (refused)"
+}

@@ -1,0 +1,18 @@
+{
+ "id": "sturgeon",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 962.2,
+ "landmarkMedian": 0.0352,
+ "landmarkMax": 0.3475,
+ "worst": [
+  "dorsal 0.347",
+  "spine3 0.062",
+  "jaw 0.056"
+ ],
+ "labelAgreement": 0.2726,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}
