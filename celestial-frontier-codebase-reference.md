@@ -7250,3 +7250,17 @@ Native evidence on signed 26a4bc57: five real inferences, deduplication/cache re
 IndexedDB delivery with zero phone model construction; total PNG payload 199,641 bytes.
 See `audits/G5_FINISHER_ENGINE_20260926/README.md` for pins, bounds, projection contract and
 physical-phone/quality limitations. G1 remains red; G2 candidates are not admitted rigs.
+
+### G5 source/finished admission — matches code as of 2026-09-26
+
+`tools/local-image-generation/creature-finish-math.mjs` owns active creature-job
+admission. Source dimensions need not be divisible by 16; transparent right/bottom
+work padding leaves source coordinates and output size unchanged. Original RGBA
+SHA and byte length are verified for transferred buffers before model creation.
+`creature-finish-admission.ts` verifies pinned master/binding and supplemental
+source-label pins, reuses the phone-tier conservation verifier, and creates a
+private finished-atlas token. `loadPinnedCreatureRigV1` retains full original
+preflight and consumes only a token matching the exact individual identity.
+The phone delivery callback admits both PNG and receipt via bundled G3 manifest
+pins. Four missing-label fits refuse; no new finished originals are published.
+See audits/G5_ADAPTER_UNBLOCK_20260926/C41.md for the precise calling contract.
