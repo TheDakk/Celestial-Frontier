@@ -728,3 +728,64 @@ describe('D13 care XP reaches the Compendium mirror row', () => {
     controller.detach();
   });
 });
+
+/* A5 — the Feed XP ledger (2026-09-26): a real Feed press pays D13's first-award XP (first meal +1, first taste +2) EXACTLY ONCE into the
+   durable save. The second meal of the same flavour is pressed against ownership read back from a FRESH v5 load (as Main has after a
+   reboot) and pays nothing; the paid-once key is the persisted bond memory. Controls: (1) the same meal WOULD pay again if the memory
+   had not persisted (so the zero is not vacuous); (2) a stale-publication mutant — pressing against the pre-meal ownership instead of
+   the durable read-back — is refused by the durable transaction and pays nothing. */
+describe('A5 Feed XP ledger after a UI action', () => {
+  it('first-award XP lands once, survives a reboot, and a repeat of the flavour pays nothing', async () => {
+    const { CompendiumFeedController, projectCompendiumFeedV1 } = await import('../apps/game/src/compendium-feed.js');
+    const { readArc5OwnershipMigration } = await import('@cf/persistence');
+    const { SCENE_OWNERSHIP_ADDRESS_RESOLVER } = await import('@cf/domain-acquisition');
+    const { companionMealOutcomeV2 } = await import('@cf/domain-acquisition/companion-care');
+    const { JSDOM } = createRequire(import.meta.url)('jsdom') as { JSDOM: new (html: string) => { window: { document: Document } } };
+    const fixture = await runtimeFixture();
+    const fauna = fixture.ownershipV2.catalogSpecies.find((row) => row.kingdom === 'fauna')!;
+    const dom = new JSDOM('<!doctype html><body><aside id="codexpanel"><div data-arc5-feed-body></div></aside></body>');
+    const root = dom.window.document.getElementById('codexpanel') as HTMLElement, mount = dom.window.document.querySelector('[data-arc5-feed-body]') as HTMLElement;
+    const requests: { creatureId: string; foodLotId: string }[] = [];
+    const controller = new CompendiumFeedController({ root, isCurrent: () => true, onAction: (request) => { requests.push(request); } });
+    const press = (ownership: typeof fixture.ownershipV2) => {
+      controller.detach();
+      controller.setState(projectCompendiumFeedV1({ generation: 1, logicalId: 'row-1', record: { id: 'row-1', name: 'Grazer', g: fauna.genome as unknown as Record<string, unknown> }, ownership, protected: false, fixture: false, activePlayMs: 0 } as never));
+      controller.attach(mount);
+      mount.querySelector<HTMLInputElement>(`input[data-arc5-feed-creature-id="${fixture.ownership.creatureId}"]`)!.click();
+      mount.querySelector<HTMLInputElement>(`input[data-arc5-feed-food-lot-id="${fixture.ownership.foodLotId}"]`)!.click();
+      mount.querySelector<HTMLButtonElement>('[data-arc5-feed-confirm]')!.click();
+      return requests.at(-1)!;
+    };
+    const reboot = async () => {
+      const saved = await readSaveV5(fixture.backend, REGISTRY, NOW); if (saved.kind !== 'loaded') throw new Error(saved.kind);
+      const owned = readArc5OwnershipMigration(saved.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER); if (owned.kind !== 'loaded') throw new Error(owned.kind);
+      return { state: saved.state, ownership: owned.state, companion: owned.state.creatures.find((c) => c.creatureId === fixture.ownership.creatureId)! };
+    };
+    const xpStart = fixture.ownershipV2.creatures.find((c) => c.creatureId === fixture.ownership.creatureId)!.xp ?? 0;
+    const r1 = press(fixture.ownershipV2);
+    const first = await commitArc5FeedActionV1({ ...actionInput(fixture), creatureId: r1.creatureId as never, foodLotId: r1.foodLotId as never, activePlayMs: 0 });
+    if (first.kind !== 'committed') throw new Error(first.kind);
+    const afterFirst = await reboot();
+    expect(afterFirst.companion.xp).toBe(xpStart + 3);
+    expect(afterFirst.companion.bond?.memories.map((m) => m.id).sort()).toEqual(['meal:first', `taste:${first.settlement.preflight.taste.flavour}`].sort());
+    // control 1: without the persisted memories the SAME meal would pay again — the zero below is the ledger's doing
+    // (the pure meal rule the preflight uses, on the durable companion with and without its memories — a cloned ownership state would be
+    // refused as unregistered before the rule under test)
+    const flora = fixture.ownershipV2.catalogSpecies.find((row) => row.kingdom === 'flora')!.genome as unknown as Record<string, unknown>;
+    expect(companionMealOutcomeV2({ ...afterFirst.companion, bond: null } as never, flora).xpGain).toBeGreaterThan(0);
+    expect(companionMealOutcomeV2(afterFirst.companion as never, flora).xpGain).toBe(0);
+    // control 2 (stale-publication mutant): pressing against the PRE-meal ownership is refused durably and pays nothing
+    const stale = await commitArc5FeedActionV1({ runtime: fixture.runtime, ownershipV2: fixture.ownershipV2, state: afterFirst.state, creatureId: fixture.ownership.creatureId, foodLotId: fixture.ownership.foodLotId, codecNow: NOW, activePlayMs: 0 });
+    expect(stale.kind).toBe('refused');
+    expect((await reboot()).companion.xp).toBe(xpStart + 3);
+    // the second meal of the same flavour, pressed against the durable read-back: committed, and pays nothing
+    const r2 = press(afterFirst.ownership);
+    const second = await commitArc5FeedActionV1({ runtime: fixture.runtime, ownershipV2: afterFirst.ownership, state: afterFirst.state, creatureId: r2.creatureId as never, foodLotId: r2.foodLotId as never, codecNow: NOW, activePlayMs: 0 });
+    if (second.kind !== 'committed') throw new Error(`second meal ${second.kind}${second.kind === 'refused' ? ':' + second.detail : ''}`);
+    const afterSecond = await reboot();
+    expect(afterSecond.companion.xp).toBe(xpStart + 3);
+    expect(afterSecond.companion.fed).toBeGreaterThanOrEqual(afterFirst.companion.fed ?? 0); // the meal itself did land
+    expect(await receiptKeys(fixture.backend)).toHaveLength(2);
+    controller.detach();
+  });
+});
