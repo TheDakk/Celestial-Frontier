@@ -114,6 +114,12 @@ export function createCreatureFinishRouteV1(o: CreatureFinishRouteOptionsV1) {
       void p.then(() => { if (definitive) remember(k, p); }, () => {});
       return p;
     },
+    /** The creature's retained (or delivered) original with the source and fit it was made from, or null. Store only, never inference.
+     * The stage hands these to Codex's admitCreatureFinishedAtlasV1, which re-verifies everything against the rig's own pins. */
+    async retained(genome: Readonly<Record<string, unknown>>): Promise<{ fit: FinishFitBytesV1; source: CreatureFinishSourceV1; original: AiCreatureOriginalV1 } | null> {
+      const s = await sourceOf(genome).catch(() => null); if (!s) return null;
+      const r = await reader.request(s.source); return r.status === 'original' ? { fit: s.fit, source: s.source, original: r.original } : null;
+    },
     /** Desktop only: enqueue this creature's finish (bounded, deduplicated, serial; a full queue falls back). Phones: a no-op. */
     async enqueue(genome: Readonly<Record<string, unknown>>): Promise<'retained' | 'fallback' | 'not-desktop' | 'no-source'> {
       if (!finisher) return 'not-desktop'; const s = await sourceOf(genome).catch(() => null); if (!s) return 'no-source';

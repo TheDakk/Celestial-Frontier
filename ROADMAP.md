@@ -53,14 +53,10 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 **Next, in order (Claude)**
 1. Read Codex's answers to C41 (loader admission, phone delivery) and C43 (worker size + transport); merge its signed commits. Re-score G1 on any new G2 families as they land (`run-auto.mjs --targets=<pilot.json>`).
 2. **G1:** Codex's second review is closed in the runner (v8). Four author levers were tried in v9–v11: the separator is a dead end; the remainder-marker bug is fixed; the Eagle's red is its tail outline (handed to Codex); paint-grown parts are net zero. **The author-side levers are exhausted.** Next gains come from the G2 paintings: limbs posed apart and true tails (C44). Re-score each new G2 family with `run-auto.mjs --targets=`.
-3. **G5:** in the game behind `?finish=1`, card path (finish sources in the pinned library, the desktop adapter, the route, one gated `main.ts` line; E2E test on the real Crab). Next:
-   - the stage, after Codex answers C45(a) (morph remap over a finished atlas);
-   - labels for Civet/Eel/Rat/Salamander (C45(b));
-   - a real-browser run on a local dev server with the verified model cache;
-   - Nick's quality review before the flag is ever on by default.
+3. **G5:** card AND stage in the game behind `?finish=1`. The stage uses Codex's C45(a) composition: finished texture, then the individual's morph. Derived ownership evidence for Civet/Eel/Rat/Salamander awaits Codex's review (C46). **Blocked on D26** (Nick: the finisher's alpha = 255 interior rule excludes every 1254 master). Then a real-browser run on a local dev server with the model, and Nick's quality review before the flag is ever on by default.
 4. Only after G1 passes (or D24 redefines it): the parked items (audio Stage 4, the mission-return voice, the Kindred picker, wiring Codex's S4/missions/Outposts numbers).
 
-**Nick (none blocking): D24 and D25** in `audits/MAILBOX/DECISIONS.md`. Also still open: the playtest checklist (`?deviceProbe=1`, `?audioReview=1`, a full journey, `?battle2=1&vs=…` pairs).
+**Nick: D26 blocks the 1254 finisher (recommended: approve alpha ≥ 250 for eligibility, with conditions).** Also D24 and D25 in `audits/MAILBOX/DECISIONS.md`. Also still open: the playtest checklist (`?deviceProbe=1`, `?audioReview=1`, a full journey, `?battle2=1&vs=…` pairs).
 
 **Traps (obey them)**
 - **Disk-space law:** `df -h /System/Volumes/Data` at batch start and end; stay ≥ 40 GiB free. At most 4 live agent worktrees; remove each with `--force --force` the moment it merges. No large stashes. Newest 2 preview packages only.
