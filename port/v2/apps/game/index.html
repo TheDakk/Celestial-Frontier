@@ -922,6 +922,19 @@
     /* D16 (v1 data-go): the detail card's origin travel, a real 44px button under the kind/realm line */
     .panel button.codex-origin { min-height: 44px; margin: 0 0 8px; padding: 0 14px; border-radius: 22px; border: 1px solid #2a3550;
       background: #0d1426; color: #7ec8f0; font: inherit; font-size: 13px; cursor: pointer; }
+    /* D16 (v1 showReveal): the specimen reveal, a centered modal card with 44px Continue and Skip-all buttons; queued, never stacked */
+    #reveal { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center;
+      padding: calc(var(--safe-top, 0px) + 12px) 16px calc(var(--safe-bottom, 0px) + 12px); background: rgba(3, 6, 14, 0.72); }
+    #reveal[hidden] { display: none; }
+    #reveal .reveal-card { width: min(360px, 100%); max-height: 100%; overflow-y: auto; box-sizing: border-box; padding: 16px;
+      border-radius: 14px; border: 1px solid #2a3550; background: #0a101e; text-align: center; }
+    #reveal .reveal-title { color: var(--dim); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+    #reveal img { width: 100%; height: auto; border-radius: 10px; background: #0b1220; }
+    #reveal .reveal-name { color: #f4f8ff; font-size: 18px; font-weight: 700; margin-top: 8px; }
+    #reveal .reveal-kind { color: var(--dim); font-size: 13px; margin: 2px 0 12px; }
+    #reveal button { display: block; width: 100%; min-height: 44px; margin: 6px 0 0; border-radius: 22px; border: 1px solid #2a3550;
+      background: #1a2238; color: #fff; font: inherit; cursor: pointer; }
+    #reveal button[data-rev="skip"] { background: none; color: var(--dim); }
 </style>
 </head>
 <body>
