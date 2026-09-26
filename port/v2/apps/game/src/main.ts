@@ -45,6 +45,7 @@ import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-b
 import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './recipe-pin.js';
 import { mirrorCompanionCodexXpV1 } from './companion-codex-mirror.js';
 import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
+import { DEFAULT_CODEX_LIST_VIEW_V1, codexChipBarHtmlV1, codexChipPressV1, codexChipsFilteringV1, codexEntryMatchesV1, codexShelfLabelV1, shelveCodexRowsV1, type CodexListViewV1, type CodexShelfHeaderV1 } from './compendium-shelves.js';
 import { freshExpeditionPayloadV1 } from './expedition-reset.js';
 import { TooltipOwnerV1 } from './tooltips.js';
 import {
@@ -3448,6 +3449,8 @@ document.getElementById('guidepanel')!.addEventListener('click', (event) => {
    viewports plus a pinned focused row own DOM and thumbnail leases. ---- */
 type CodexRecord = SaveStateV2['codex'][number][1];
 type CodexVirtualRow = CompendiumVirtualRow<CodexRecord>;
+/** A Compendium list row: a species, or (with ▦ Shelves on) a shelf's fold header. */
+type CodexListValue = CodexRecord | Readonly<{ codexShelf: CodexShelfHeaderV1 }>;
 type CodexReturnState = CompendiumReturnState;
 type CodexMode = 'closed' | 'list' | 'detail';
 const EMPTY_CODEX_WINDOW: CompendiumWindowSnapshot = Object.freeze({
@@ -3456,9 +3459,12 @@ const EMPTY_CODEX_WINDOW: CompendiumWindowSnapshot = Object.freeze({
   focusedLogicalId: null, pinnedLogicalIds: Object.freeze([]),
 });
 let codexFilter = '';
+/* D16 (v1 codexKing / codexRare / _cdxOpen): the chip filters and category shelves — session view state, never saved */
+let codexView: CodexListViewV1 = DEFAULT_CODEX_LIST_VIEW_V1;
+const codexOpenShelves = new Set<string>();
 let codexMode: CodexMode = 'closed';
 let codexGeneration = 0;
-let codexList: CompendiumVirtualList<CodexRecord> | null = null;
+let codexList: CompendiumVirtualList<CodexListValue> | null = null;
 let codexRows: readonly CodexVirtualRow[] = Object.freeze([]);
 let codexWindow: CompendiumWindowSnapshot = EMPTY_CODEX_WINDOW;
 let codexReturnState: CodexReturnState | null = null;
@@ -3776,20 +3782,28 @@ function activeCodexSource(): Array<[string, CodexRecord]> {
   return compendiumFixtureRows ?? save.codex;
 }
 function filteredCodexRows(): readonly CodexVirtualRow[] {
-  const f = codexFilter.toLowerCase();
+  const view = { ...codexView, query: codexFilter };
   return Object.freeze(activeCodexSource()
     .map(([logicalId, value], sourceIndex) => ({ logicalId: String(logicalId), sourceIndex, value }))
-    .filter(({ value }) => !f
-      || (value.name + ' ' + value.kind + ' ' + value.realm).toLowerCase().includes(f)));
+    .filter(({ value }) => codexEntryMatchesV1(value, view)));
 }
 function filteredCodexCount(): number {
-  const f = codexFilter.toLowerCase();
-  if (!f) return activeCodexSource().length;
+  const view = { ...codexView, query: codexFilter };
+  if (!view.query && !codexChipsFilteringV1(view)) return activeCodexSource().length;
   let count = 0;
-  for (const [, value] of activeCodexSource()) {
-    if ((value.name + ' ' + value.kind + ' ' + value.realm).toLowerCase().includes(f)) count++;
-  }
+  for (const [, value] of activeCodexSource()) if (codexEntryMatchesV1(value, view)) count++;
   return count;
+}
+/** A shelf's fold header row (D16, v1 `.cgh`): a real button; opening a shelf mounts its species rows. */
+function mountCodexShelfRow(header: CodexShelfHeaderV1): { readonly element: HTMLButtonElement; dispose(): void } {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = `codex-shelf kg-${header.kingdom}${header.open ? ' open' : ''}`;
+  button.dataset.sel = 'codex-shelf';
+  button.dataset.cg = header.shelf;
+  button.setAttribute('aria-expanded', String(header.open));
+  button.innerHTML = `<span>${esc(codexShelfLabelV1(header.shelf))}</span><span class="cnt">${header.count}${header.hybrids ? ` · ${header.hybrids} hybrid` : ''}</span>`;
+  return { element: button, dispose: () => {} };
 }
 function mountCodexRow(row: CodexVirtualRow, generation: number): {
   readonly element: HTMLButtonElement;
@@ -3872,10 +3886,15 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
   const f = codexFilter.toLowerCase();
   const panel = document.getElementById('codexpanel')!;
   panel.classList.add('codex-list-mode');
+  const sourceSize = activeCodexSource().length, chipsFiltering = codexChipsFilteringV1(codexView);
+  const chipEmpty = codexView.rarityFloor > 0
+    ? `No ${codexView.kingdom === 'all' ? 'species' : esc(codexView.kingdom.toLowerCase())} at <b style="color:${esc(projectDisplayRarity(codexView.rarityFloor)?.hex ?? '')}">${esc(projectDisplayRarity(codexView.rarityFloor)?.name ?? '')}</b> or above yet — the rarest finds live farthest out.`
+    : `Nothing on this shelf yet — every ${codexView.kingdom === 'Fauna' ? 'creature you Discover' : esc(codexView.kingdom.toLowerCase()) + ' you catalogue'} will land here.`;
   fillPanel('codex',
-    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${codexRows.length}</span>${f ? ` <span class="sub codex-query">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
+    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${codexRows.length}</span>${chipsFiltering ? ` <span class="sub" data-sel="codex-shown">shown · ${sourceSize} in all</span>` : ''}${f ? ` <span class="sub codex-query">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
+    (sourceSize > 0 ? codexChipBarHtmlV1(codexView) : '') +
     (codexRows.length === 0
-      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — imported discoveries appear here. Live catalogue writing arrives with the discovery path.'}</div>`
+      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : chipsFiltering && sourceSize > 0 ? chipEmpty : 'No species yet — imported discoveries appear here. Live catalogue writing arrives with the discovery path.'}</div>`
       : '<div class="compendium-scroll" data-sel="codex-scroll" role="group" aria-label="Compendium species"></div>'));
   if (!codexRows.length) {
     previousList?.dispose();
@@ -3883,10 +3902,14 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
     return;
   }
   const scroller = panel.querySelector<HTMLElement>('[data-sel="codex-scroll"]')!;
-  const nextList = new CompendiumVirtualList({
+  const listRows: readonly CompendiumVirtualRow<CodexListValue>[] = codexView.shelves
+    ? shelveCodexRowsV1(codexRows, codexOpenShelves, chipsFiltering).map((item) => item.type === 'entry' ? item.row
+      : Object.freeze({ logicalId: `shelf:${item.header.shelf}`, sourceIndex: -1, value: Object.freeze({ codexShelf: item.header }) }))
+    : codexRows;
+  const nextList = new CompendiumVirtualList<CodexListValue>({
     scroller,
-    rows: codexRows,
-    mountRow: (row) => mountCodexRow(row, generation),
+    rows: listRows,
+    mountRow: (row) => ('codexShelf' in row.value ? mountCodexShelfRow(row.value.codexShelf) : mountCodexRow(row as CodexVirtualRow, generation)),
   });
   codexList = nextList;
   if (restore) nextList.restoreState(restore);
@@ -4631,6 +4654,21 @@ function shipyardDiagnostics(): unknown {
 }
 /* codex list rows open the detail card (delegated — rows refill often) */
 document.getElementById('codexpanel')!.addEventListener('click', (e) => {
+  /* D16 (v1 data-ck / data-cr / .cgh): a chip re-filters the list; a shelf header folds its shelf. Session view state only. */
+  const chip = (e.target as HTMLElement).closest<HTMLElement>('[data-ck],[data-cr],[data-cshelves]');
+  if (chip) {
+    const next = codexChipPressV1(codexView, { ck: chip.dataset.ck, cr: chip.dataset.cr, cshelves: chip.dataset.cshelves });
+    if (next) { codexView = next; fillCodex(codexFilter); }
+    return;
+  }
+  const shelf = (e.target as HTMLElement).closest<HTMLElement>('[data-cg]');
+  if (shelf) {
+    const name = shelf.dataset.cg!;
+    if (codexOpenShelves.has(name)) codexOpenShelves.delete(name); else codexOpenShelves.add(name);
+    fillCodex(codexFilter);
+    document.getElementById('codexpanel')!.querySelector<HTMLElement>(`[data-cg="${CSS.escape(name)}"]`)?.focus();
+    return;
+  }
   const row = (e.target as HTMLElement).closest('[data-ci]');
   if (row) fillCodexDetail(+(row as HTMLElement).dataset.ci!);
 });
@@ -9953,6 +9991,7 @@ function normalizeCompendiumFixture(rows: unknown): Array<[string, CodexRecord]>
 async function installCompendiumFixture(rows: unknown): Promise<CompendiumFixtureResult> {
   compendiumFixtureRows = normalizeCompendiumFixture(rows);
   codexFilter = '';
+  codexView = DEFAULT_CODEX_LIST_VIEW_V1; codexOpenShelves.clear();
   codexReturnState = null;
   if (openPanelId() === 'codex') fillCodex('');
   else {
@@ -9964,6 +10003,7 @@ async function installCompendiumFixture(rows: unknown): Promise<CompendiumFixtur
 async function resetCompendiumFixture(): Promise<CompendiumFixtureResult> {
   compendiumFixtureRows = null;
   codexFilter = '';
+  codexView = DEFAULT_CODEX_LIST_VIEW_V1; codexOpenShelves.clear();
   codexReturnState = null;
   if (openPanelId() === 'codex') fillCodex('');
   else {

@@ -900,7 +900,26 @@
       #shipyardpanel [data-layer="livery-core"], #shipyardpanel [data-hardpoint] circle { fill: Highlight; }
       :is(button, input, textarea, [tabindex]):focus-visible { outline-color: Highlight; box-shadow: none; }
     }
-  </style>
+      /* D16 (v1 _codexTabs + shelves): the Compendium chip bar is ONE horizontally scrolling row of 44px chips (a phone keeps its list
+       height), and the virtual scrollport gives up exactly that row (52px) in both height owners (the U2 sheet rule and the landscape
+       phone rule); higher specificity than either, so neither can win back the space and push rows under the dock. */
+    #codexpanel .codex-chips { display: flex; gap: 6px; align-items: center; height: 52px; margin: 0 0 4px;
+      overflow-x: auto; overflow-y: hidden; scrollbar-width: none; overscroll-behavior-x: contain; }
+    #codexpanel .codex-chip-row { display: contents; }
+    #codexpanel .codex-chip { flex: 0 0 auto; min-height: 44px; min-width: 44px; padding: 0 12px; border-radius: 22px;
+      border: 1px solid #2a3550; background: #0d1426; color: var(--dim); font: inherit; font-size: 13px; cursor: pointer; }
+    #codexpanel .codex-chip.on { border-color: #f2c45a; color: #fff; background: #1a2238; }
+    #codexpanel:has(.codex-chips) .compendium-scroll { height: min(560px, max(44px, calc(var(--cf-sheet-floor) - var(--topbar-h) - 168px))); }
+    @media (max-width: 900px) and (orientation: landscape) {
+      body.panel-open #codexpanel:has(.codex-chips) .compendium-scroll { height: min(560px, max(44px, calc(100dvh - var(--safe-top) - var(--safe-bottom) - 178px))); }
+    }
+    .panel button.codex-shelf { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%;
+      min-height: 44px; margin: 0; padding: 6px 4px; border: 0; border-bottom: 1px solid #1e2740; background: none;
+      color: var(--cf-color-accent-gold, #f2c45a); font: inherit; text-align: left; cursor: pointer; }
+    .panel button.codex-shelf .cnt { color: var(--dim); font-size: 12px; }
+    .panel button.codex-shelf::after { content: '▸'; color: var(--dim); }
+    .panel button.codex-shelf.open::after { content: '▾'; }
+</style>
 </head>
 <body>
   <header id="topbar">
