@@ -17,65 +17,57 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## CLAUDE SESSION HANDOFF — 2026-09-26 (end of day) · THE GENERATED CREATURE PIPELINE IS THE PRIORITY
-Self-contained for a fresh Claude session. Codex's own block follows below; older Claude handoffs are verbatim in `ROADMAP_ARCHIVE.md`.
+## CLAUDE SESSION HANDOFF — 2026-09-26 (session 2) · THE GENERATED CREATURE PIPELINE IS THE PRIORITY
+Self-contained for a fresh Claude session. Codex's own block follows below. Older Claude handoffs are verbatim in `ROADMAP_ARCHIVE.md`.
 
 **Where things stand**
 - **Branch:** `anthropic/mac` is pushed through the commit that adds this block. Every commit is signed G with the repo keychain key (`git-ssh-sign-cf`), and `origin` is HTTPS via `gh`.
-- **Codex:** `openai/mac` last merged at `f01f911e` on Codex's side, and HEAD contains every Codex commit through `6cbeefe0`. Before merging, read Codex's mailbox (`/Users/nick/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md`, read-only) and run `git log HEAD..openai/mac`.
-- **Gate** (`node tools/check-profile.mjs --profile=develop` from `port/v2`): **5,579 pass; the ONLY red is I5.** The Guide/release SHA red is fixed by Codex's C28(f) re-measure.
-  - The profile stops at the first red, so ALWAYS also run by hand: `npx tsc --noEmit --noUnusedLocals`, the app and worker `tsc`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs` and `npm run overridecontrol`. All are clean.
-- **Dev site:** https://dev-celestialfrontier.github.io serves `f1620af4`. Republish with `node tools/deploy-dev.mjs` from `port/v2`, out of the sandbox, on a clean signed head.
-- **develop** is still `c1791e21`. PR #43 (`anthropic/mac` → `develop`) is open. No hosted attempt: I5 is red (D5).
-- **Branches:** development is Mac-only. The Windows branches and `anthropic/review-batches-1-3-20260905` are deleted; the live docs mark Windows retired. Remote branches are `main`, `develop`, `anthropic/mac`, `openai/mac`, plus three old `openai/*` branches. Two of those are merged; `openai/parked-gameplay-20260904` has 2 unmerged commits (question to Codex, C39).
-- **Disk:** about 214 GiB free. Obey the **Disk-space law** in `PARALLEL_GIT_PROTOCOL.md` (it's imperative).
+- **Codex:** merged through `bd5530d7` (its G2 quadruped pilot). Before merging again, read `/Users/nick/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md` (read-only) and run `git log HEAD..openai/mac`. Codex's current focus, per Nick: finish the preserved parked gameplay (Forge Training, the living-portrait decision) BEFORE its G5 engine work.
+- **Gate:** `node tools/check-profile.mjs --profile=develop` (from `port/v2`) gives **5,586 pass; the ONLY red is I5** (`current-producer-authorities`, "binds every live memory budget").
+  - Run it on a QUIET tree. A commit during the run produces a spurious "Source changed during authority read".
+  - Also run by hand, all clean this session: `npm run typecheck` (root, app and worker), `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
+- **Dev site:** https://dev-celestialfrontier.github.io serves `77623d3f` (G4 is live). Evidence is in `audits/DEV_PUBLISH/77623d3fdd26`.
+- **develop** is still `c1791e21`. PR #43 is open. No hosted attempt: I5 is red (D5).
+- **Disk:** about 230 GiB free. No agent worktrees are live, and the limb-counter branch is merged (it had no worktree). The newest 2 preview packages are kept.
 
-**The priority: the Generated Creature Pipeline** (Nick D22 hybrid generation, D23 pipeline first; `audits/GENERATION_PIPELINE_20260926/PROGRAM.md`)
+**The priority: the Generated Creature Pipeline** (`audits/GENERATION_PIPELINE_20260926/PROGRAM.md`, Nick D22/D23)
 
-Nick's vision is that every creature shows its OWN AI-generated painting. Today we have a bridge: 38 archetypes painted by hand-driven AI, and every other creature drawn as the nearest archetype morphed by its genes. The painting-to-rig step (`authoring.json`) is hand-authored by Codex.
-
-| Stage | Owner | State |
+| Stage | Owner | State now |
 |---|---|---|
-| G1 auto-author: painting + family → `authoring.json` → Codex's UNCHANGED `intake-authored.mjs` | Claude | **v2 merged: 12/40** admitted + static with zero hand edits. The gate is ≥ 30/40; the hand ceiling on this gate is 30/40. Code: `port/v2/tools/anatomy-verify/auto-author.mjs`; results: `audits/G1_AUTO_AUTHOR_20260926/README.md`. |
-| G1 v3: independent limb counter | Claude | **The agent stopped at session exit (stale).** Its work is on LOCAL branch `claude/t1-limb-counter`: `99b0c771` (the counter + its admission, committed by the agent) and `8a0332e8` (its uncommitted v3c iteration, retained as an UNVERIFIED WIP). The worktree is removed; the branch lives in the shared object store. **First task of the next session:** see below. |
-| G2 library at scale (every Earth fauna + alien variants per family; derived masks) | Codex | Assigned (C35–C38). Pilot: ~20 same-family quadrupeds, plus 3–5 each for radial, serpent, insect and bird. These packets are also G1's missing references. |
-| G3 on-demand art delivery | Claude | **Merged + live.** 14 core archetypes in the pack, 24 fetched from a pinned library (manifest pin in bundle and worker, per-file SHA before decode, 128 MiB LRU worker cache, offline reuse). Pack 91.3 → 60.7 MiB. `audits/G3_ART_DELIVERY_20260926/README.md`. **Not browser-smoked:** Compendium cards loading library art, and the offline card fallback. |
-| G4 selection (exact species → nearest library variant → stand-in; one card/stage resolver) | Claude | Next, after G1 moves |
-| G5 finisher in the game (desktop per individual; phones get delivered finished originals) | Claude routes, Codex engine | After G3 (done) and Codex's finished-original format |
+| **G1 auto-author** | Claude | **v5 adopted, gate NOT met.** Corpus **12/40**. Codex's independent **G2 quadruped pilot: 10/20** ADMIT + PASS_STATIC, zero hand edits. Mutation battery erased **31/34**, duplicated 26/27, flip 34/34, wrong family 34/34 (the limb counter, merged from `claude/t1-limb-counter`). All five of Codex's blocking review findings are fixed. Rejected with numbers: reference shopping (D25) and thin-part nudging. `audits/G1_AUTO_AUTHOR_20260926/README.md` "Session 2". |
+| G2 library at scale | Codex | Pilot delivered (20 quadrupeds + 120 derived-mask candidates, `audits/G2_QUADRUPED_PILOT_20260926`). Next families are Codex's. |
+| **G3 on-demand delivery** | Claude | Live. **Card path now browser-smoked PASS** (online library cards, offline core fallback, negative control): `audits/G3_ART_DELIVERY_20260926/card-smoke/`. |
+| **G4 selection** | Claude | **Landed and live.** `paintedArtV2`, one resolver for card and stage: exact → same Earth profile group → nearest same-anatomy visual-gene variant → v1 stand-in. Sturgeon and Reef Shark now draw sturgeon- and shark-shaped procedural fish. 7 tests with controls. `audits/G4_SELECTION_20260926/README.md`. |
+| G5 finisher in the game | Claude routes, Codex engine | **Blocked on a seam (mailbox C40(c)).** Codex's finisher takes an ARCHETYPE master. Per-individual finishing needs Claude's master-space morph plus Codex's finished-master → rig-atlas format under finish-conservation. |
 
-**Everything else built this session is merged and on the dev site** (details in the item list below, -110…-114):
-- §20 combat: Auto/Command parties for Guardians/Titans, Break UI, defeat = Recovery, friendly duels + CFB export, and the D17 phase change on EVERY Guardian/Titan fight, solo Auto included.
-- 38 painted archetypes with READY spacing, box-to-box travel and motion-envelope band fit; battle2 is the development DEFAULT (`BATTLE2_DEFAULT`, `?battle2=0`).
-- D13 companion care, bond and missions (placeholder `MISSION_RATES_V1`); D14 Outposts (placeholder `PROJECT_COSTS_V1`).
-- D16 parity complete (Compendium chips, shelves, origin travel, reveal queue, vista + postcard, craft ×5, pin, salvage-all, Prime travel, reset, pop-ups, tooltips, D18 fold option).
-- A5 outcome tests.
-- Audio Stages 0–3 (original seeded sources, loudness gate, one voice per creature, soundscape).
-- `?deviceProbe=1` (codec/perf/heat/memory), `?audioReview=1` (L1 Listening), and A6 localization (Settings).
-
-**Parked by D23 until G1 passes:** audio Stage 4 (Tame/Feed/Compendium on the new voices, star hums, captions), the mission-return voice, the Kindred mission-type picker, the S4 re-tune (Codex: feasibility map first, C37), the placeholder numbers, the pack diet and I5.
+**Why G1 is still red, and what moves it**
+- **The corpus gate (≥ 30/40) is near-unreachable by construction.** 6 singleton families, sparse radial/serpent/insect families, and the hand control itself scores only 30/40.
+  - **D24 (Nick):** measure G1 on the independent G2 pilots instead (recommended gate: ≥ 75 % per family with ≥ 2 references, battery ≥ 90 %).
+- **G2 refusals are dominated by short tails** (Lynx, Brown Bear, Bison, Camel, Wild Boar: the reference tail chain has no paint). Presence never declares an absence, so these refuse. Levers:
+  1. G2 prompts that paint the true tail;
+  2. independently accepted short-tailed references;
+  3. a measured-truncation presence contract (asked of Codex, C40(a)).
+- **Admitted packets refused by Codex's stages:** bird ARAP folds (Eagle, Sparrow, Sandpiper), the Grouse surface split, Mongoose/Tapir RED. Asked in C40(b).
+- **Thin parts:** ear tips and fins land beside their paint (Marmot, River Otter, Ibex, Heron, Herring). Loosening them exposes erased far-hind legs that no current check sees. The real fix is a far-limb detector (the next Claude lever).
 
 **Next, in order (Claude)**
-1. **Finish G1 v3 from branch `claude/t1-limb-counter`** (the agent went stale at session exit):
-   - Review `99b0c771` and the WIP `8a0332e8` with `git show`, then re-run its harness to get real numbers. Don't trust the WIP's untested summary.
-   - Continue in a fresh worktree cut from that branch, or check the files out onto a new branch at the lane head.
-   - Targets: erase/dup refusals ≥ 90% with no loss in wrong-family/flip refusals; admitted + static above 12/40.
-   - Merge (`--no-ff`, signed) only when the full gate stays I5-only. Remove any worktree the moment it merges.
-2. **Merge Codex's G2 pilot packets** as they arrive, and re-score G1 on them; they are the missing same-family references. Push G1 toward ≥ 30/40.
-3. **G4 selection,** then **G5 finisher routing.**
-4. **Browser-smoke G3's card path:** Compendium library art, and the offline fallback.
-5. **After G1 passes:** the parked items above. Polish and QA come after Nick's playtest (D21).
+1. Read Codex's answers to C40 (a)–(d); merge its signed commits. Re-score G1 on any new G2 families as they land (`run-auto.mjs --targets=<pilot.json>`).
+2. **G1:** build a far-limb detector, so thin-part placement can relax without leaking erased far legs. Target: the corpus above 12 AND G2 above 10/20, with the battery ≥ 90 % and no flip/wrong-family loss.
+3. **G5:** once Codex confirms the finished-original format, build the master-space morph (the individual's own master) and the router. Desktop: enqueue on the landfall job queue and retain in `creature-originals`. Phones: delivered finished originals via `deliverCreaturePngV1`.
+4. Only after G1 passes (or D24 redefines it): the parked items (audio Stage 4, the mission-return voice, the Kindred picker, wiring Codex's S4/missions/Outposts numbers).
 
-**Nick (none blocking):** the playtest checklist (`?deviceProbe=1`, `?audioReview=1`, a full journey, `?battle2=1&vs=…` pairs), then paste the Copy results. Also whether `openai/parked-gameplay-20260904` may be deleted (Codex answers C39 first).
+**Nick (none blocking): D24 and D25** in `audits/MAILBOX/DECISIONS.md`. Also still open: the playtest checklist (`?deviceProbe=1`, `?audioReview=1`, a full journey, `?battle2=1&vs=…` pairs).
 
 **Traps (obey them)**
-- **Disk-space law:** `df -h /System/Volumes/Data` at batch start and end; stay ≥ 40 GiB free. At most 4 live agent worktrees. Remove each one as soon as it merges with `--force --force` (they are LOCKED; a single `--force` silently fails). Never park large stashes. Keep only the newest 2 preview packages.
-- **Agent worktrees are cut from `develop` and pre-populated.** Switch to a branch at the lane head first, and give `port/v2/node_modules` a copy-on-write copy (`cp -cR`), never a symlink.
-- **Merges:** after resolving, run `git grep -n "^<<<<<<<\|^>>>>>>>"` BEFORE committing. Committed conflict markers happened once (859b9bfe, fixed forward in e85318b3). Never `git add -A` straight after a conflicted merge.
-- **Slice-executing tests** (A5, D16, arc6, Command, missions, Outposts) run exact `main.ts` regions inside `with(env)`. New code inside a slice needs its real function added to that test's env, or the slice must end at its own block.
-- **`tools/run-unit-tests.mjs` builds the PWA pack first.** Over 128 MiB, every test dies with `RangeError`. For quick diagnostics, run `node node_modules/vitest/vitest.mjs run <file>` directly.
-- **Codex's sealed inventories** (release/Guide bullets, budgets, pins) are never rebound by Claude. Propose bullets in an audit README; Codex re-measures.
-- **Rig loads now take seconds** (layered reach, cached by complete input). Tests that load rigs need explicit timeouts.
-- **The lone agent-harness checkout** at `/Users/nick/Projects/Celestial-Frontier` is Nick's original clone (`develop`). Don't edit it.
+- **Disk-space law:** `df -h /System/Volumes/Data` at batch start and end; stay ≥ 40 GiB free. At most 4 live agent worktrees; remove each with `--force --force` the moment it merges. No large stashes. Newest 2 preview packages only.
+- **Merges:** after resolving, run `git grep -n "^<<<<<<<\|^>>>>>>>"` BEFORE committing.
+- **Inline `//` comments inside one-line JS statements swallow the rest of the line.** This bit twice this session; use `/* */`.
+- **G1 runner caches fits:** `run-auto.mjs` skips intake when `fit/` exists. Use a fresh `--tag` after changing the author.
+- **The motion kit refuses an unclassified material.** Auto packets need a real kit material: `SPECIES_MATERIAL`, keyed by the Earth profile.
+- **Slice-executing tests** run exact `main.ts` regions. New code inside a slice needs its real function added to that test's env.
+- **`tools/run-unit-tests.mjs` builds the PWA pack first.** For quick diagnostics, run `node node_modules/vitest/vitest.mjs run <file>` directly.
+- **Codex's sealed inventories** (release/Guide bullets, budgets, pins) are never rebound by Claude. Propose bullets in an audit README (the G4 README has one).
+- **The lone original clone** at `/Users/nick/Projects/Celestial-Frontier` is Nick's (`develop`). Don't edit it.
 
 ## Current sprint handoff — Generated Creature Pipeline, 2026-09-26
 
