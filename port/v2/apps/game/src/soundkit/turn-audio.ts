@@ -1,7 +1,8 @@
 /* Turn audio sink: the bridge from battle2's TurnCuePlayer to the existing audio runtime. Every cue the
    player fires becomes one derived-voice request (buffer source → gain) through the kit's mix policy
    and the runtime's own admission (cooldown, concurrency, budgets), so the arena never bypasses the
-   audio authority. Ability and battle cues render through the labelled placeholder synth; creature
+   audio authority. Ability and battle cues render through the ORIGINAL combat set (`original-combat.ts`; a theme without an original
+   set yet falls back to the labelled placeholder and flags it); creature
    cues come from the caller's voice hook (A4 derivation) or are skipped with a reason. Synthesis is
    cached per (cueId, amount), and results are kept in a bounded log for the study status and tests. */
 import type { AudioVoiceRequest, AudioVoiceStartResult } from '@cf/audio';
@@ -9,7 +10,8 @@ import type { CueSink, TurnCue } from '../battle2/cue-plan.js';
 import { createDerivedVoiceRequest } from './browser-adapter.js';
 import { parseCueId } from './cues.js';
 import { planCues, type MixOptions } from './mix.js';
-import { synthesizeBattleCue, type SynthCue } from './battle-synth.js';
+import type { SynthCue } from './battle-synth.js';
+import { renderCombatCueV1 } from './original-combat.js';
 
 export interface TurnAudioRuntime { playVoice(request: AudioVoiceRequest): AudioVoiceStartResult; }
 export interface TurnAudioEntry { readonly cueId: string; readonly source: TurnCue['source']; readonly atMs: number; readonly lateMs: number; readonly result: string; }
@@ -29,7 +31,7 @@ export interface TurnAudioOptions extends MixOptions {
 }
 
 export function createTurnCueSink(options: TurnAudioOptions): TurnCueSink {
-  const synth = options.synthesize ?? synthesizeBattleCue, cache = new Map<string, Pick<SynthCue, 'samples' | 'sampleRate'>>(), log: TurnAudioEntry[] = [], limit = options.logLimit ?? 64;
+  const synth = options.synthesize ?? renderCombatCueV1, cache = new Map<string, Pick<SynthCue, 'samples' | 'sampleRate'>>(), log: TurnAudioEntry[] = [], limit = options.logLimit ?? 64;
   const record = (cue: TurnCue, lateMs: number, result: string): void => { log.push(Object.freeze({ cueId: cue.cueId, source: cue.source, atMs: cue.atMs, lateMs, result })); if (log.length > limit) log.splice(0, log.length - limit); };
   const sink: TurnCueSink = {
     log,

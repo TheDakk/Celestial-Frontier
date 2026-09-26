@@ -11,7 +11,7 @@ import { createDerivedVoiceRequest, type RenderedCue } from './soundkit/browser-
 import { CREATURE_CUES, type CreatureCueId } from './soundkit/cues.js';
 import { deriveCue, type SourceLibrary } from './soundkit/derive.js';
 import { planCues } from './soundkit/mix.js';
-import { synthesizePlaceholderLibrary } from './soundkit/placeholder-archetype.js';
+import { originalSourceLibraryV1 } from './soundkit/original-voices.js';
 import type { VoiceCard } from './soundkit/voice-card.js';
 import { creatureVoiceCardV1 } from './soundkit/voice-identity.js';
 
@@ -99,7 +99,7 @@ export interface ListeningMountV1 {
 }
 export function mountListeningReviewV1(o: ListeningMountV1): { readonly root: HTMLElement; ratings(): ListeningRatingsV1; resultsText(): Promise<string>; dispose(): void } {
   const d = o.doc, items = listeningItemsV1(), trusted = o.trusted ?? ((e: Event) => e.isTrusted);
-  let sources: SourceLibrary | null = o.sources ?? null; const lib = (): SourceLibrary => (sources ??= synthesizePlaceholderLibrary().sources);
+  let sources: SourceLibrary | null = o.sources ?? null; const lib = (): SourceLibrary => (sources ??= originalSourceLibraryV1().sources);
   let ratings: Record<string, { rating: ListeningRatingV1; note: string }> = { ...loadListeningRatingsV1(o.storage) };
   const root = d.createElement('section'); root.dataset.listeningReview = 'l1'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-label', 'Listening review');
   root.style.cssText = 'position:fixed;inset:0;z-index:10040;overflow:auto;background:#0b1428;color:#edf3fa;padding:12px 16px 48px;font:16px/1.45 system-ui';
