@@ -10,22 +10,6 @@ import a0_7 from '../assets/painted-cards/crab/markings/banded.png?url';
 import a0_8 from '../assets/painted-cards/crab/markings/mottled.png?url';
 import a0_9 from '../assets/painted-cards/crab/markings/marbled.png?url';
 import a0_10 from '../assets/painted-cards/crab/markings/eye-spotted.png?url';
-import a1_0 from '../assets/painted-cards/coconut-crab/card/card.json?url';
-import a1_1 from '../assets/painted-cards/coconut-crab/record.json?url';
-import a1_2 from '../assets/painted-cards/coconut-crab/card/master-512.png?url';
-import a1_3 from '../assets/painted-cards/coconut-crab/card/labels-512.png?url';
-import a2_0 from '../assets/painted-cards/freshwater-crab/card/card.json?url';
-import a2_1 from '../assets/painted-cards/freshwater-crab/record.json?url';
-import a2_2 from '../assets/painted-cards/freshwater-crab/card/master-512.png?url';
-import a2_3 from '../assets/painted-cards/freshwater-crab/card/labels-512.png?url';
-import a3_0 from '../assets/painted-cards/mud-crab/card/card.json?url';
-import a3_1 from '../assets/painted-cards/mud-crab/record.json?url';
-import a3_2 from '../assets/painted-cards/mud-crab/card/master-512.png?url';
-import a3_3 from '../assets/painted-cards/mud-crab/card/labels-512.png?url';
-import a4_0 from '../assets/painted-cards/vent-crab/card/card.json?url';
-import a4_1 from '../assets/painted-cards/vent-crab/record.json?url';
-import a4_2 from '../assets/painted-cards/vent-crab/card/master-512.png?url';
-import a4_3 from '../assets/painted-cards/vent-crab/card/labels-512.png?url';
 import a5_0 from '../assets/painted-cards/civet-sentinel-input-01/card/card.json?url';
 import a5_1 from '../assets/painted-cards/civet-sentinel-input-01/record.json?url';
 import a5_2 from '../assets/painted-cards/civet-sentinel-input-01/card/master-512.png?url';
@@ -88,226 +72,6 @@ import a16_0 from '../assets/painted-cards/centipede/card/card.json?url';
 import a16_1 from '../assets/painted-cards/centipede/record.json?url';
 import a16_2 from '../assets/painted-cards/centipede/card/master-512.png?url';
 import a16_3 from '../assets/painted-cards/centipede/card/labels-512.png?url';
-import a17_0 from '../assets/painted-cards/bass/card/card.json?url';
-import a17_1 from '../assets/painted-cards/bass/record.json?url';
-import a17_2 from '../assets/painted-cards/bass/card/master-512.png?url';
-import a17_3 from '../assets/painted-cards/bass/card/labels-512.png?url';
-import a17_4 from '../assets/painted-cards/bass/markings.json?url';
-import a17_5 from '../assets/painted-cards/bass/markings/striped.png?url';
-import a17_6 from '../assets/painted-cards/bass/markings/spotted.png?url';
-import a17_7 from '../assets/painted-cards/bass/markings/banded.png?url';
-import a17_8 from '../assets/painted-cards/bass/markings/mottled.png?url';
-import a17_9 from '../assets/painted-cards/bass/markings/marbled.png?url';
-import a17_10 from '../assets/painted-cards/bass/markings/eye-spotted.png?url';
-import a18_0 from '../assets/painted-cards/tang/card/card.json?url';
-import a18_1 from '../assets/painted-cards/tang/record.json?url';
-import a18_2 from '../assets/painted-cards/tang/card/master-512.png?url';
-import a18_3 from '../assets/painted-cards/tang/card/labels-512.png?url';
-import a18_4 from '../assets/painted-cards/tang/markings.json?url';
-import a18_5 from '../assets/painted-cards/tang/markings/striped.png?url';
-import a18_6 from '../assets/painted-cards/tang/markings/spotted.png?url';
-import a18_7 from '../assets/painted-cards/tang/markings/banded.png?url';
-import a18_8 from '../assets/painted-cards/tang/markings/mottled.png?url';
-import a18_9 from '../assets/painted-cards/tang/markings/marbled.png?url';
-import a18_10 from '../assets/painted-cards/tang/markings/eye-spotted.png?url';
-import a19_0 from '../assets/painted-cards/dragonfly/card/card.json?url';
-import a19_1 from '../assets/painted-cards/dragonfly/record.json?url';
-import a19_2 from '../assets/painted-cards/dragonfly/card/master-512.png?url';
-import a19_3 from '../assets/painted-cards/dragonfly/card/labels-512.png?url';
-import a19_4 from '../assets/painted-cards/dragonfly/markings.json?url';
-import a19_5 from '../assets/painted-cards/dragonfly/markings/striped.png?url';
-import a19_6 from '../assets/painted-cards/dragonfly/markings/spotted.png?url';
-import a19_7 from '../assets/painted-cards/dragonfly/markings/banded.png?url';
-import a19_8 from '../assets/painted-cards/dragonfly/markings/mottled.png?url';
-import a19_9 from '../assets/painted-cards/dragonfly/markings/marbled.png?url';
-import a19_10 from '../assets/painted-cards/dragonfly/markings/eye-spotted.png?url';
-import a20_0 from '../assets/painted-cards/sturgeon/card/card.json?url';
-import a20_1 from '../assets/painted-cards/sturgeon/record.json?url';
-import a20_2 from '../assets/painted-cards/sturgeon/card/master-512.png?url';
-import a20_3 from '../assets/painted-cards/sturgeon/card/labels-512.png?url';
-import a20_4 from '../assets/painted-cards/sturgeon/markings.json?url';
-import a20_5 from '../assets/painted-cards/sturgeon/markings/striped.png?url';
-import a20_6 from '../assets/painted-cards/sturgeon/markings/spotted.png?url';
-import a20_7 from '../assets/painted-cards/sturgeon/markings/banded.png?url';
-import a20_8 from '../assets/painted-cards/sturgeon/markings/mottled.png?url';
-import a20_9 from '../assets/painted-cards/sturgeon/markings/marbled.png?url';
-import a20_10 from '../assets/painted-cards/sturgeon/markings/eye-spotted.png?url';
-import a21_0 from '../assets/painted-cards/wolf/card/card.json?url';
-import a21_1 from '../assets/painted-cards/wolf/record.json?url';
-import a21_2 from '../assets/painted-cards/wolf/card/master-512.png?url';
-import a21_3 from '../assets/painted-cards/wolf/card/labels-512.png?url';
-import a21_4 from '../assets/painted-cards/wolf/markings.json?url';
-import a21_5 from '../assets/painted-cards/wolf/markings/striped.png?url';
-import a21_6 from '../assets/painted-cards/wolf/markings/spotted.png?url';
-import a21_7 from '../assets/painted-cards/wolf/markings/banded.png?url';
-import a21_8 from '../assets/painted-cards/wolf/markings/mottled.png?url';
-import a21_9 from '../assets/painted-cards/wolf/markings/marbled.png?url';
-import a21_10 from '../assets/painted-cards/wolf/markings/eye-spotted.png?url';
-import a22_0 from '../assets/painted-cards/impala/card/card.json?url';
-import a22_1 from '../assets/painted-cards/impala/record.json?url';
-import a22_2 from '../assets/painted-cards/impala/card/master-512.png?url';
-import a22_3 from '../assets/painted-cards/impala/card/labels-512.png?url';
-import a22_4 from '../assets/painted-cards/impala/markings.json?url';
-import a22_5 from '../assets/painted-cards/impala/markings/striped.png?url';
-import a22_6 from '../assets/painted-cards/impala/markings/spotted.png?url';
-import a22_7 from '../assets/painted-cards/impala/markings/banded.png?url';
-import a22_8 from '../assets/painted-cards/impala/markings/mottled.png?url';
-import a22_9 from '../assets/painted-cards/impala/markings/marbled.png?url';
-import a22_10 from '../assets/painted-cards/impala/markings/eye-spotted.png?url';
-import a23_0 from '../assets/painted-cards/river-otter/card/card.json?url';
-import a23_1 from '../assets/painted-cards/river-otter/record.json?url';
-import a23_2 from '../assets/painted-cards/river-otter/card/master-512.png?url';
-import a23_3 from '../assets/painted-cards/river-otter/card/labels-512.png?url';
-import a23_4 from '../assets/painted-cards/river-otter/markings.json?url';
-import a23_5 from '../assets/painted-cards/river-otter/markings/striped.png?url';
-import a23_6 from '../assets/painted-cards/river-otter/markings/spotted.png?url';
-import a23_7 from '../assets/painted-cards/river-otter/markings/banded.png?url';
-import a23_8 from '../assets/painted-cards/river-otter/markings/mottled.png?url';
-import a23_9 from '../assets/painted-cards/river-otter/markings/marbled.png?url';
-import a23_10 from '../assets/painted-cards/river-otter/markings/eye-spotted.png?url';
-import a24_0 from '../assets/painted-cards/heron/card/card.json?url';
-import a24_1 from '../assets/painted-cards/heron/record.json?url';
-import a24_2 from '../assets/painted-cards/heron/card/master-512.png?url';
-import a24_3 from '../assets/painted-cards/heron/card/labels-512.png?url';
-import a24_4 from '../assets/painted-cards/heron/markings.json?url';
-import a24_5 from '../assets/painted-cards/heron/markings/striped.png?url';
-import a24_6 from '../assets/painted-cards/heron/markings/spotted.png?url';
-import a24_7 from '../assets/painted-cards/heron/markings/banded.png?url';
-import a24_8 from '../assets/painted-cards/heron/markings/mottled.png?url';
-import a24_9 from '../assets/painted-cards/heron/markings/marbled.png?url';
-import a24_10 from '../assets/painted-cards/heron/markings/eye-spotted.png?url';
-import a25_0 from '../assets/painted-cards/marmot/card/card.json?url';
-import a25_1 from '../assets/painted-cards/marmot/record.json?url';
-import a25_2 from '../assets/painted-cards/marmot/card/master-512.png?url';
-import a25_3 from '../assets/painted-cards/marmot/card/labels-512.png?url';
-import a25_4 from '../assets/painted-cards/marmot/markings.json?url';
-import a25_5 from '../assets/painted-cards/marmot/markings/striped.png?url';
-import a25_6 from '../assets/painted-cards/marmot/markings/spotted.png?url';
-import a25_7 from '../assets/painted-cards/marmot/markings/banded.png?url';
-import a25_8 from '../assets/painted-cards/marmot/markings/mottled.png?url';
-import a25_9 from '../assets/painted-cards/marmot/markings/marbled.png?url';
-import a25_10 from '../assets/painted-cards/marmot/markings/eye-spotted.png?url';
-import a26_0 from '../assets/painted-cards/wall-lizard/card/card.json?url';
-import a26_1 from '../assets/painted-cards/wall-lizard/record.json?url';
-import a26_2 from '../assets/painted-cards/wall-lizard/card/master-512.png?url';
-import a26_3 from '../assets/painted-cards/wall-lizard/card/labels-512.png?url';
-import a26_4 from '../assets/painted-cards/wall-lizard/markings.json?url';
-import a26_5 from '../assets/painted-cards/wall-lizard/markings/striped.png?url';
-import a26_6 from '../assets/painted-cards/wall-lizard/markings/spotted.png?url';
-import a26_7 from '../assets/painted-cards/wall-lizard/markings/banded.png?url';
-import a26_8 from '../assets/painted-cards/wall-lizard/markings/mottled.png?url';
-import a26_9 from '../assets/painted-cards/wall-lizard/markings/marbled.png?url';
-import a26_10 from '../assets/painted-cards/wall-lizard/markings/eye-spotted.png?url';
-import a27_0 from '../assets/painted-cards/cougar/card/card.json?url';
-import a27_1 from '../assets/painted-cards/cougar/record.json?url';
-import a27_2 from '../assets/painted-cards/cougar/card/master-512.png?url';
-import a27_3 from '../assets/painted-cards/cougar/card/labels-512.png?url';
-import a27_4 from '../assets/painted-cards/cougar/markings.json?url';
-import a27_5 from '../assets/painted-cards/cougar/markings/striped.png?url';
-import a27_6 from '../assets/painted-cards/cougar/markings/spotted.png?url';
-import a27_7 from '../assets/painted-cards/cougar/markings/banded.png?url';
-import a27_8 from '../assets/painted-cards/cougar/markings/mottled.png?url';
-import a27_9 from '../assets/painted-cards/cougar/markings/marbled.png?url';
-import a27_10 from '../assets/painted-cards/cougar/markings/eye-spotted.png?url';
-import a28_0 from '../assets/painted-cards/ibex/card/card.json?url';
-import a28_1 from '../assets/painted-cards/ibex/record.json?url';
-import a28_2 from '../assets/painted-cards/ibex/card/master-512.png?url';
-import a28_3 from '../assets/painted-cards/ibex/card/labels-512.png?url';
-import a28_4 from '../assets/painted-cards/ibex/markings.json?url';
-import a28_5 from '../assets/painted-cards/ibex/markings/striped.png?url';
-import a28_6 from '../assets/painted-cards/ibex/markings/spotted.png?url';
-import a28_7 from '../assets/painted-cards/ibex/markings/banded.png?url';
-import a28_8 from '../assets/painted-cards/ibex/markings/mottled.png?url';
-import a28_9 from '../assets/painted-cards/ibex/markings/marbled.png?url';
-import a28_10 from '../assets/painted-cards/ibex/markings/eye-spotted.png?url';
-import a29_0 from '../assets/painted-cards/pike/card/card.json?url';
-import a29_1 from '../assets/painted-cards/pike/record.json?url';
-import a29_2 from '../assets/painted-cards/pike/card/master-512.png?url';
-import a29_3 from '../assets/painted-cards/pike/card/labels-512.png?url';
-import a29_4 from '../assets/painted-cards/pike/markings.json?url';
-import a29_5 from '../assets/painted-cards/pike/markings/striped.png?url';
-import a29_6 from '../assets/painted-cards/pike/markings/spotted.png?url';
-import a29_7 from '../assets/painted-cards/pike/markings/banded.png?url';
-import a29_8 from '../assets/painted-cards/pike/markings/mottled.png?url';
-import a29_9 from '../assets/painted-cards/pike/markings/marbled.png?url';
-import a29_10 from '../assets/painted-cards/pike/markings/eye-spotted.png?url';
-import a30_0 from '../assets/painted-cards/goose/card/card.json?url';
-import a30_1 from '../assets/painted-cards/goose/record.json?url';
-import a30_2 from '../assets/painted-cards/goose/card/master-512.png?url';
-import a30_3 from '../assets/painted-cards/goose/card/labels-512.png?url';
-import a30_4 from '../assets/painted-cards/goose/markings.json?url';
-import a30_5 from '../assets/painted-cards/goose/markings/striped.png?url';
-import a30_6 from '../assets/painted-cards/goose/markings/spotted.png?url';
-import a30_7 from '../assets/painted-cards/goose/markings/banded.png?url';
-import a30_8 from '../assets/painted-cards/goose/markings/mottled.png?url';
-import a30_9 from '../assets/painted-cards/goose/markings/marbled.png?url';
-import a30_10 from '../assets/painted-cards/goose/markings/eye-spotted.png?url';
-import a31_0 from '../assets/painted-cards/gull/card/card.json?url';
-import a31_1 from '../assets/painted-cards/gull/record.json?url';
-import a31_2 from '../assets/painted-cards/gull/card/master-512.png?url';
-import a31_3 from '../assets/painted-cards/gull/card/labels-512.png?url';
-import a31_4 from '../assets/painted-cards/gull/markings.json?url';
-import a31_5 from '../assets/painted-cards/gull/markings/striped.png?url';
-import a31_6 from '../assets/painted-cards/gull/markings/spotted.png?url';
-import a31_7 from '../assets/painted-cards/gull/markings/banded.png?url';
-import a31_8 from '../assets/painted-cards/gull/markings/mottled.png?url';
-import a31_9 from '../assets/painted-cards/gull/markings/marbled.png?url';
-import a31_10 from '../assets/painted-cards/gull/markings/eye-spotted.png?url';
-import a32_0 from '../assets/painted-cards/racer/card/card.json?url';
-import a32_1 from '../assets/painted-cards/racer/record.json?url';
-import a32_2 from '../assets/painted-cards/racer/card/master-512.png?url';
-import a32_3 from '../assets/painted-cards/racer/card/labels-512.png?url';
-import a32_4 from '../assets/painted-cards/racer/markings.json?url';
-import a32_5 from '../assets/painted-cards/racer/markings/striped.png?url';
-import a32_6 from '../assets/painted-cards/racer/markings/spotted.png?url';
-import a32_7 from '../assets/painted-cards/racer/markings/banded.png?url';
-import a32_8 from '../assets/painted-cards/racer/markings/mottled.png?url';
-import a32_9 from '../assets/painted-cards/racer/markings/marbled.png?url';
-import a32_10 from '../assets/painted-cards/racer/markings/eye-spotted.png?url';
-import a33_0 from '../assets/painted-cards/eel/card/card.json?url';
-import a33_1 from '../assets/painted-cards/eel/record.json?url';
-import a33_2 from '../assets/painted-cards/eel/card/master-512.png?url';
-import a33_3 from '../assets/painted-cards/eel/card/labels-512.png?url';
-import a33_4 from '../assets/painted-cards/eel/markings.json?url';
-import a33_5 from '../assets/painted-cards/eel/markings/striped.png?url';
-import a33_6 from '../assets/painted-cards/eel/markings/spotted.png?url';
-import a33_7 from '../assets/painted-cards/eel/markings/banded.png?url';
-import a33_8 from '../assets/painted-cards/eel/markings/mottled.png?url';
-import a33_9 from '../assets/painted-cards/eel/markings/marbled.png?url';
-import a33_10 from '../assets/painted-cards/eel/markings/eye-spotted.png?url';
-import a34_0 from '../assets/painted-cards/salamander/card/card.json?url';
-import a34_1 from '../assets/painted-cards/salamander/record.json?url';
-import a34_2 from '../assets/painted-cards/salamander/card/master-512.png?url';
-import a34_3 from '../assets/painted-cards/salamander/card/labels-512.png?url';
-import a34_4 from '../assets/painted-cards/salamander/markings.json?url';
-import a34_5 from '../assets/painted-cards/salamander/markings/striped.png?url';
-import a34_6 from '../assets/painted-cards/salamander/markings/spotted.png?url';
-import a34_7 from '../assets/painted-cards/salamander/markings/banded.png?url';
-import a34_8 from '../assets/painted-cards/salamander/markings/mottled.png?url';
-import a34_9 from '../assets/painted-cards/salamander/markings/marbled.png?url';
-import a34_10 from '../assets/painted-cards/salamander/markings/eye-spotted.png?url';
-import a35_0 from '../assets/painted-cards/rat/card/card.json?url';
-import a35_1 from '../assets/painted-cards/rat/record.json?url';
-import a35_2 from '../assets/painted-cards/rat/card/master-512.png?url';
-import a35_3 from '../assets/painted-cards/rat/card/labels-512.png?url';
-import a35_4 from '../assets/painted-cards/rat/markings.json?url';
-import a35_5 from '../assets/painted-cards/rat/markings/striped.png?url';
-import a35_6 from '../assets/painted-cards/rat/markings/spotted.png?url';
-import a35_7 from '../assets/painted-cards/rat/markings/banded.png?url';
-import a35_8 from '../assets/painted-cards/rat/markings/mottled.png?url';
-import a35_9 from '../assets/painted-cards/rat/markings/marbled.png?url';
-import a35_10 from '../assets/painted-cards/rat/markings/eye-spotted.png?url';
-import a36_0 from '../assets/painted-cards/reef-shark/card/card.json?url';
-import a36_1 from '../assets/painted-cards/reef-shark/record.json?url';
-import a36_2 from '../assets/painted-cards/reef-shark/card/master-512.png?url';
-import a36_3 from '../assets/painted-cards/reef-shark/card/labels-512.png?url';
-import a36_4 from '../assets/painted-cards/reef-shark/markings.json?url';
-import a36_5 from '../assets/painted-cards/reef-shark/markings/striped.png?url';
-import a36_6 from '../assets/painted-cards/reef-shark/markings/spotted.png?url';
-import a36_7 from '../assets/painted-cards/reef-shark/markings/banded.png?url';
-import a36_8 from '../assets/painted-cards/reef-shark/markings/mottled.png?url';
-import a36_9 from '../assets/painted-cards/reef-shark/markings/marbled.png?url';
-import a36_10 from '../assets/painted-cards/reef-shark/markings/eye-spotted.png?url';
 import a37_0 from '../assets/painted-cards/jellyfish/card/card.json?url';
 import a37_1 from '../assets/painted-cards/jellyfish/record.json?url';
 import a37_2 from '../assets/painted-cards/jellyfish/card/master-512.png?url';
@@ -319,13 +83,9 @@ import a37_7 from '../assets/painted-cards/jellyfish/markings/banded.png?url';
 import a37_8 from '../assets/painted-cards/jellyfish/markings/mottled.png?url';
 import a37_9 from '../assets/painted-cards/jellyfish/markings/marbled.png?url';
 import a37_10 from '../assets/painted-cards/jellyfish/markings/eye-spotted.png?url';
-/** Repo-relative shipped archetype dir → its shipped asset URLs by file (card, record, and the painted masks when it has them). */
+/** CORE: repo-relative shipped archetype dir → its bundled asset URLs by file (card, record, and the painted masks when it has them). */
 export const CARD_ASSET_URLS: ReadonlyMap<string, Readonly<Record<string, string>>> = new Map([
   ['port/v2/apps/game/assets/painted-cards/crab/', { 'card/card.json': a0_0, 'record.json': a0_1, 'card/master-512.png': a0_2, 'card/labels-512.png': a0_3, 'markings.json': a0_4, 'markings/striped.png': a0_5, 'markings/spotted.png': a0_6, 'markings/banded.png': a0_7, 'markings/mottled.png': a0_8, 'markings/marbled.png': a0_9, 'markings/eye-spotted.png': a0_10 }],
-  ['port/v2/apps/game/assets/painted-cards/coconut-crab/', { 'card/card.json': a1_0, 'record.json': a1_1, 'card/master-512.png': a1_2, 'card/labels-512.png': a1_3 }],
-  ['port/v2/apps/game/assets/painted-cards/freshwater-crab/', { 'card/card.json': a2_0, 'record.json': a2_1, 'card/master-512.png': a2_2, 'card/labels-512.png': a2_3 }],
-  ['port/v2/apps/game/assets/painted-cards/mud-crab/', { 'card/card.json': a3_0, 'record.json': a3_1, 'card/master-512.png': a3_2, 'card/labels-512.png': a3_3 }],
-  ['port/v2/apps/game/assets/painted-cards/vent-crab/', { 'card/card.json': a4_0, 'record.json': a4_1, 'card/master-512.png': a4_2, 'card/labels-512.png': a4_3 }],
   ['port/v2/apps/game/assets/painted-cards/civet-sentinel-input-01/', { 'card/card.json': a5_0, 'record.json': a5_1, 'card/master-512.png': a5_2, 'card/labels-512.png': a5_3, 'markings.json': a5_4, 'markings/striped.png': a5_5, 'markings/spotted.png': a5_6, 'markings/banded.png': a5_7, 'markings/mottled.png': a5_8, 'markings/marbled.png': a5_9, 'markings/eye-spotted.png': a5_10 }],
   ['port/v2/apps/game/assets/painted-cards/salmon/', { 'card/card.json': a6_0, 'record.json': a6_1, 'card/master-512.png': a6_2, 'card/labels-512.png': a6_3, 'markings.json': a6_4, 'markings/striped.png': a6_5, 'markings/spotted.png': a6_6, 'markings/banded.png': a6_7, 'markings/mottled.png': a6_8, 'markings/marbled.png': a6_9, 'markings/eye-spotted.png': a6_10 }],
   ['port/v2/apps/game/assets/painted-cards/eagle/', { 'card/card.json': a7_0, 'record.json': a7_1, 'card/master-512.png': a7_2, 'card/labels-512.png': a7_3 }],
@@ -338,25 +98,32 @@ export const CARD_ASSET_URLS: ReadonlyMap<string, Readonly<Record<string, string
   ['port/v2/apps/game/assets/painted-cards/octopus/', { 'card/card.json': a14_0, 'record.json': a14_1, 'card/master-512.png': a14_2, 'card/labels-512.png': a14_3 }],
   ['port/v2/apps/game/assets/painted-cards/fruit-bat/', { 'card/card.json': a15_0, 'record.json': a15_1, 'card/master-512.png': a15_2, 'card/labels-512.png': a15_3 }],
   ['port/v2/apps/game/assets/painted-cards/centipede/', { 'card/card.json': a16_0, 'record.json': a16_1, 'card/master-512.png': a16_2, 'card/labels-512.png': a16_3 }],
-  ['port/v2/apps/game/assets/painted-cards/bass/', { 'card/card.json': a17_0, 'record.json': a17_1, 'card/master-512.png': a17_2, 'card/labels-512.png': a17_3, 'markings.json': a17_4, 'markings/striped.png': a17_5, 'markings/spotted.png': a17_6, 'markings/banded.png': a17_7, 'markings/mottled.png': a17_8, 'markings/marbled.png': a17_9, 'markings/eye-spotted.png': a17_10 }],
-  ['port/v2/apps/game/assets/painted-cards/tang/', { 'card/card.json': a18_0, 'record.json': a18_1, 'card/master-512.png': a18_2, 'card/labels-512.png': a18_3, 'markings.json': a18_4, 'markings/striped.png': a18_5, 'markings/spotted.png': a18_6, 'markings/banded.png': a18_7, 'markings/mottled.png': a18_8, 'markings/marbled.png': a18_9, 'markings/eye-spotted.png': a18_10 }],
-  ['port/v2/apps/game/assets/painted-cards/dragonfly/', { 'card/card.json': a19_0, 'record.json': a19_1, 'card/master-512.png': a19_2, 'card/labels-512.png': a19_3, 'markings.json': a19_4, 'markings/striped.png': a19_5, 'markings/spotted.png': a19_6, 'markings/banded.png': a19_7, 'markings/mottled.png': a19_8, 'markings/marbled.png': a19_9, 'markings/eye-spotted.png': a19_10 }],
-  ['port/v2/apps/game/assets/painted-cards/sturgeon/', { 'card/card.json': a20_0, 'record.json': a20_1, 'card/master-512.png': a20_2, 'card/labels-512.png': a20_3, 'markings.json': a20_4, 'markings/striped.png': a20_5, 'markings/spotted.png': a20_6, 'markings/banded.png': a20_7, 'markings/mottled.png': a20_8, 'markings/marbled.png': a20_9, 'markings/eye-spotted.png': a20_10 }],
-  ['port/v2/apps/game/assets/painted-cards/wolf/', { 'card/card.json': a21_0, 'record.json': a21_1, 'card/master-512.png': a21_2, 'card/labels-512.png': a21_3, 'markings.json': a21_4, 'markings/striped.png': a21_5, 'markings/spotted.png': a21_6, 'markings/banded.png': a21_7, 'markings/mottled.png': a21_8, 'markings/marbled.png': a21_9, 'markings/eye-spotted.png': a21_10 }],
-  ['port/v2/apps/game/assets/painted-cards/impala/', { 'card/card.json': a22_0, 'record.json': a22_1, 'card/master-512.png': a22_2, 'card/labels-512.png': a22_3, 'markings.json': a22_4, 'markings/striped.png': a22_5, 'markings/spotted.png': a22_6, 'markings/banded.png': a22_7, 'markings/mottled.png': a22_8, 'markings/marbled.png': a22_9, 'markings/eye-spotted.png': a22_10 }],
-  ['port/v2/apps/game/assets/painted-cards/river-otter/', { 'card/card.json': a23_0, 'record.json': a23_1, 'card/master-512.png': a23_2, 'card/labels-512.png': a23_3, 'markings.json': a23_4, 'markings/striped.png': a23_5, 'markings/spotted.png': a23_6, 'markings/banded.png': a23_7, 'markings/mottled.png': a23_8, 'markings/marbled.png': a23_9, 'markings/eye-spotted.png': a23_10 }],
-  ['port/v2/apps/game/assets/painted-cards/heron/', { 'card/card.json': a24_0, 'record.json': a24_1, 'card/master-512.png': a24_2, 'card/labels-512.png': a24_3, 'markings.json': a24_4, 'markings/striped.png': a24_5, 'markings/spotted.png': a24_6, 'markings/banded.png': a24_7, 'markings/mottled.png': a24_8, 'markings/marbled.png': a24_9, 'markings/eye-spotted.png': a24_10 }],
-  ['port/v2/apps/game/assets/painted-cards/marmot/', { 'card/card.json': a25_0, 'record.json': a25_1, 'card/master-512.png': a25_2, 'card/labels-512.png': a25_3, 'markings.json': a25_4, 'markings/striped.png': a25_5, 'markings/spotted.png': a25_6, 'markings/banded.png': a25_7, 'markings/mottled.png': a25_8, 'markings/marbled.png': a25_9, 'markings/eye-spotted.png': a25_10 }],
-  ['port/v2/apps/game/assets/painted-cards/wall-lizard/', { 'card/card.json': a26_0, 'record.json': a26_1, 'card/master-512.png': a26_2, 'card/labels-512.png': a26_3, 'markings.json': a26_4, 'markings/striped.png': a26_5, 'markings/spotted.png': a26_6, 'markings/banded.png': a26_7, 'markings/mottled.png': a26_8, 'markings/marbled.png': a26_9, 'markings/eye-spotted.png': a26_10 }],
-  ['port/v2/apps/game/assets/painted-cards/cougar/', { 'card/card.json': a27_0, 'record.json': a27_1, 'card/master-512.png': a27_2, 'card/labels-512.png': a27_3, 'markings.json': a27_4, 'markings/striped.png': a27_5, 'markings/spotted.png': a27_6, 'markings/banded.png': a27_7, 'markings/mottled.png': a27_8, 'markings/marbled.png': a27_9, 'markings/eye-spotted.png': a27_10 }],
-  ['port/v2/apps/game/assets/painted-cards/ibex/', { 'card/card.json': a28_0, 'record.json': a28_1, 'card/master-512.png': a28_2, 'card/labels-512.png': a28_3, 'markings.json': a28_4, 'markings/striped.png': a28_5, 'markings/spotted.png': a28_6, 'markings/banded.png': a28_7, 'markings/mottled.png': a28_8, 'markings/marbled.png': a28_9, 'markings/eye-spotted.png': a28_10 }],
-  ['port/v2/apps/game/assets/painted-cards/pike/', { 'card/card.json': a29_0, 'record.json': a29_1, 'card/master-512.png': a29_2, 'card/labels-512.png': a29_3, 'markings.json': a29_4, 'markings/striped.png': a29_5, 'markings/spotted.png': a29_6, 'markings/banded.png': a29_7, 'markings/mottled.png': a29_8, 'markings/marbled.png': a29_9, 'markings/eye-spotted.png': a29_10 }],
-  ['port/v2/apps/game/assets/painted-cards/goose/', { 'card/card.json': a30_0, 'record.json': a30_1, 'card/master-512.png': a30_2, 'card/labels-512.png': a30_3, 'markings.json': a30_4, 'markings/striped.png': a30_5, 'markings/spotted.png': a30_6, 'markings/banded.png': a30_7, 'markings/mottled.png': a30_8, 'markings/marbled.png': a30_9, 'markings/eye-spotted.png': a30_10 }],
-  ['port/v2/apps/game/assets/painted-cards/gull/', { 'card/card.json': a31_0, 'record.json': a31_1, 'card/master-512.png': a31_2, 'card/labels-512.png': a31_3, 'markings.json': a31_4, 'markings/striped.png': a31_5, 'markings/spotted.png': a31_6, 'markings/banded.png': a31_7, 'markings/mottled.png': a31_8, 'markings/marbled.png': a31_9, 'markings/eye-spotted.png': a31_10 }],
-  ['port/v2/apps/game/assets/painted-cards/racer/', { 'card/card.json': a32_0, 'record.json': a32_1, 'card/master-512.png': a32_2, 'card/labels-512.png': a32_3, 'markings.json': a32_4, 'markings/striped.png': a32_5, 'markings/spotted.png': a32_6, 'markings/banded.png': a32_7, 'markings/mottled.png': a32_8, 'markings/marbled.png': a32_9, 'markings/eye-spotted.png': a32_10 }],
-  ['port/v2/apps/game/assets/painted-cards/eel/', { 'card/card.json': a33_0, 'record.json': a33_1, 'card/master-512.png': a33_2, 'card/labels-512.png': a33_3, 'markings.json': a33_4, 'markings/striped.png': a33_5, 'markings/spotted.png': a33_6, 'markings/banded.png': a33_7, 'markings/mottled.png': a33_8, 'markings/marbled.png': a33_9, 'markings/eye-spotted.png': a33_10 }],
-  ['port/v2/apps/game/assets/painted-cards/salamander/', { 'card/card.json': a34_0, 'record.json': a34_1, 'card/master-512.png': a34_2, 'card/labels-512.png': a34_3, 'markings.json': a34_4, 'markings/striped.png': a34_5, 'markings/spotted.png': a34_6, 'markings/banded.png': a34_7, 'markings/mottled.png': a34_8, 'markings/marbled.png': a34_9, 'markings/eye-spotted.png': a34_10 }],
-  ['port/v2/apps/game/assets/painted-cards/rat/', { 'card/card.json': a35_0, 'record.json': a35_1, 'card/master-512.png': a35_2, 'card/labels-512.png': a35_3, 'markings.json': a35_4, 'markings/striped.png': a35_5, 'markings/spotted.png': a35_6, 'markings/banded.png': a35_7, 'markings/mottled.png': a35_8, 'markings/marbled.png': a35_9, 'markings/eye-spotted.png': a35_10 }],
-  ['port/v2/apps/game/assets/painted-cards/reef-shark/', { 'card/card.json': a36_0, 'record.json': a36_1, 'card/master-512.png': a36_2, 'card/labels-512.png': a36_3, 'markings.json': a36_4, 'markings/striped.png': a36_5, 'markings/spotted.png': a36_6, 'markings/banded.png': a36_7, 'markings/mottled.png': a36_8, 'markings/marbled.png': a36_9, 'markings/eye-spotted.png': a36_10 }],
   ['port/v2/apps/game/assets/painted-cards/jellyfish/', { 'card/card.json': a37_0, 'record.json': a37_1, 'card/master-512.png': a37_2, 'card/labels-512.png': a37_3, 'markings.json': a37_4, 'markings/striped.png': a37_5, 'markings/spotted.png': a37_6, 'markings/banded.png': a37_7, 'markings/mottled.png': a37_8, 'markings/marbled.png': a37_9, 'markings/eye-spotted.png': a37_10 }],
+]);
+/** LIBRARY (G3): repo-relative library archetype dir → each file's SERVED path under the site base (fetched on demand, admitted by the art-library manifest). */
+export const CARD_LIBRARY_FILES: ReadonlyMap<string, Readonly<Record<string, string>>> = new Map([
+  ['port/v2/apps/game/public/library/cards/coconut-crab/', { 'card/card.json': 'library/cards/coconut-crab/card/card.json', 'record.json': 'library/cards/coconut-crab/record.json', 'card/master-512.png': 'library/cards/coconut-crab/card/master-512.png', 'card/labels-512.png': 'library/cards/coconut-crab/card/labels-512.png' }],
+  ['port/v2/apps/game/public/library/cards/freshwater-crab/', { 'card/card.json': 'library/cards/freshwater-crab/card/card.json', 'record.json': 'library/cards/freshwater-crab/record.json', 'card/master-512.png': 'library/cards/freshwater-crab/card/master-512.png', 'card/labels-512.png': 'library/cards/freshwater-crab/card/labels-512.png' }],
+  ['port/v2/apps/game/public/library/cards/mud-crab/', { 'card/card.json': 'library/cards/mud-crab/card/card.json', 'record.json': 'library/cards/mud-crab/record.json', 'card/master-512.png': 'library/cards/mud-crab/card/master-512.png', 'card/labels-512.png': 'library/cards/mud-crab/card/labels-512.png' }],
+  ['port/v2/apps/game/public/library/cards/vent-crab/', { 'card/card.json': 'library/cards/vent-crab/card/card.json', 'record.json': 'library/cards/vent-crab/record.json', 'card/master-512.png': 'library/cards/vent-crab/card/master-512.png', 'card/labels-512.png': 'library/cards/vent-crab/card/labels-512.png' }],
+  ['port/v2/apps/game/public/library/cards/bass/', { 'card/card.json': 'library/cards/bass/card/card.json', 'record.json': 'library/cards/bass/record.json', 'card/master-512.png': 'library/cards/bass/card/master-512.png', 'card/labels-512.png': 'library/cards/bass/card/labels-512.png', 'markings.json': 'library/cards/bass/markings.json', 'markings/striped.png': 'library/cards/bass/markings/striped.png', 'markings/spotted.png': 'library/cards/bass/markings/spotted.png', 'markings/banded.png': 'library/cards/bass/markings/banded.png', 'markings/mottled.png': 'library/cards/bass/markings/mottled.png', 'markings/marbled.png': 'library/cards/bass/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/bass/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/tang/', { 'card/card.json': 'library/cards/tang/card/card.json', 'record.json': 'library/cards/tang/record.json', 'card/master-512.png': 'library/cards/tang/card/master-512.png', 'card/labels-512.png': 'library/cards/tang/card/labels-512.png', 'markings.json': 'library/cards/tang/markings.json', 'markings/striped.png': 'library/cards/tang/markings/striped.png', 'markings/spotted.png': 'library/cards/tang/markings/spotted.png', 'markings/banded.png': 'library/cards/tang/markings/banded.png', 'markings/mottled.png': 'library/cards/tang/markings/mottled.png', 'markings/marbled.png': 'library/cards/tang/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/tang/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/dragonfly/', { 'card/card.json': 'library/cards/dragonfly/card/card.json', 'record.json': 'library/cards/dragonfly/record.json', 'card/master-512.png': 'library/cards/dragonfly/card/master-512.png', 'card/labels-512.png': 'library/cards/dragonfly/card/labels-512.png', 'markings.json': 'library/cards/dragonfly/markings.json', 'markings/striped.png': 'library/cards/dragonfly/markings/striped.png', 'markings/spotted.png': 'library/cards/dragonfly/markings/spotted.png', 'markings/banded.png': 'library/cards/dragonfly/markings/banded.png', 'markings/mottled.png': 'library/cards/dragonfly/markings/mottled.png', 'markings/marbled.png': 'library/cards/dragonfly/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/dragonfly/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/sturgeon/', { 'card/card.json': 'library/cards/sturgeon/card/card.json', 'record.json': 'library/cards/sturgeon/record.json', 'card/master-512.png': 'library/cards/sturgeon/card/master-512.png', 'card/labels-512.png': 'library/cards/sturgeon/card/labels-512.png', 'markings.json': 'library/cards/sturgeon/markings.json', 'markings/striped.png': 'library/cards/sturgeon/markings/striped.png', 'markings/spotted.png': 'library/cards/sturgeon/markings/spotted.png', 'markings/banded.png': 'library/cards/sturgeon/markings/banded.png', 'markings/mottled.png': 'library/cards/sturgeon/markings/mottled.png', 'markings/marbled.png': 'library/cards/sturgeon/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/sturgeon/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/wolf/', { 'card/card.json': 'library/cards/wolf/card/card.json', 'record.json': 'library/cards/wolf/record.json', 'card/master-512.png': 'library/cards/wolf/card/master-512.png', 'card/labels-512.png': 'library/cards/wolf/card/labels-512.png', 'markings.json': 'library/cards/wolf/markings.json', 'markings/striped.png': 'library/cards/wolf/markings/striped.png', 'markings/spotted.png': 'library/cards/wolf/markings/spotted.png', 'markings/banded.png': 'library/cards/wolf/markings/banded.png', 'markings/mottled.png': 'library/cards/wolf/markings/mottled.png', 'markings/marbled.png': 'library/cards/wolf/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/wolf/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/impala/', { 'card/card.json': 'library/cards/impala/card/card.json', 'record.json': 'library/cards/impala/record.json', 'card/master-512.png': 'library/cards/impala/card/master-512.png', 'card/labels-512.png': 'library/cards/impala/card/labels-512.png', 'markings.json': 'library/cards/impala/markings.json', 'markings/striped.png': 'library/cards/impala/markings/striped.png', 'markings/spotted.png': 'library/cards/impala/markings/spotted.png', 'markings/banded.png': 'library/cards/impala/markings/banded.png', 'markings/mottled.png': 'library/cards/impala/markings/mottled.png', 'markings/marbled.png': 'library/cards/impala/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/impala/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/river-otter/', { 'card/card.json': 'library/cards/river-otter/card/card.json', 'record.json': 'library/cards/river-otter/record.json', 'card/master-512.png': 'library/cards/river-otter/card/master-512.png', 'card/labels-512.png': 'library/cards/river-otter/card/labels-512.png', 'markings.json': 'library/cards/river-otter/markings.json', 'markings/striped.png': 'library/cards/river-otter/markings/striped.png', 'markings/spotted.png': 'library/cards/river-otter/markings/spotted.png', 'markings/banded.png': 'library/cards/river-otter/markings/banded.png', 'markings/mottled.png': 'library/cards/river-otter/markings/mottled.png', 'markings/marbled.png': 'library/cards/river-otter/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/river-otter/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/heron/', { 'card/card.json': 'library/cards/heron/card/card.json', 'record.json': 'library/cards/heron/record.json', 'card/master-512.png': 'library/cards/heron/card/master-512.png', 'card/labels-512.png': 'library/cards/heron/card/labels-512.png', 'markings.json': 'library/cards/heron/markings.json', 'markings/striped.png': 'library/cards/heron/markings/striped.png', 'markings/spotted.png': 'library/cards/heron/markings/spotted.png', 'markings/banded.png': 'library/cards/heron/markings/banded.png', 'markings/mottled.png': 'library/cards/heron/markings/mottled.png', 'markings/marbled.png': 'library/cards/heron/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/heron/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/marmot/', { 'card/card.json': 'library/cards/marmot/card/card.json', 'record.json': 'library/cards/marmot/record.json', 'card/master-512.png': 'library/cards/marmot/card/master-512.png', 'card/labels-512.png': 'library/cards/marmot/card/labels-512.png', 'markings.json': 'library/cards/marmot/markings.json', 'markings/striped.png': 'library/cards/marmot/markings/striped.png', 'markings/spotted.png': 'library/cards/marmot/markings/spotted.png', 'markings/banded.png': 'library/cards/marmot/markings/banded.png', 'markings/mottled.png': 'library/cards/marmot/markings/mottled.png', 'markings/marbled.png': 'library/cards/marmot/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/marmot/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/wall-lizard/', { 'card/card.json': 'library/cards/wall-lizard/card/card.json', 'record.json': 'library/cards/wall-lizard/record.json', 'card/master-512.png': 'library/cards/wall-lizard/card/master-512.png', 'card/labels-512.png': 'library/cards/wall-lizard/card/labels-512.png', 'markings.json': 'library/cards/wall-lizard/markings.json', 'markings/striped.png': 'library/cards/wall-lizard/markings/striped.png', 'markings/spotted.png': 'library/cards/wall-lizard/markings/spotted.png', 'markings/banded.png': 'library/cards/wall-lizard/markings/banded.png', 'markings/mottled.png': 'library/cards/wall-lizard/markings/mottled.png', 'markings/marbled.png': 'library/cards/wall-lizard/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/wall-lizard/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/cougar/', { 'card/card.json': 'library/cards/cougar/card/card.json', 'record.json': 'library/cards/cougar/record.json', 'card/master-512.png': 'library/cards/cougar/card/master-512.png', 'card/labels-512.png': 'library/cards/cougar/card/labels-512.png', 'markings.json': 'library/cards/cougar/markings.json', 'markings/striped.png': 'library/cards/cougar/markings/striped.png', 'markings/spotted.png': 'library/cards/cougar/markings/spotted.png', 'markings/banded.png': 'library/cards/cougar/markings/banded.png', 'markings/mottled.png': 'library/cards/cougar/markings/mottled.png', 'markings/marbled.png': 'library/cards/cougar/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/cougar/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/ibex/', { 'card/card.json': 'library/cards/ibex/card/card.json', 'record.json': 'library/cards/ibex/record.json', 'card/master-512.png': 'library/cards/ibex/card/master-512.png', 'card/labels-512.png': 'library/cards/ibex/card/labels-512.png', 'markings.json': 'library/cards/ibex/markings.json', 'markings/striped.png': 'library/cards/ibex/markings/striped.png', 'markings/spotted.png': 'library/cards/ibex/markings/spotted.png', 'markings/banded.png': 'library/cards/ibex/markings/banded.png', 'markings/mottled.png': 'library/cards/ibex/markings/mottled.png', 'markings/marbled.png': 'library/cards/ibex/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/ibex/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/pike/', { 'card/card.json': 'library/cards/pike/card/card.json', 'record.json': 'library/cards/pike/record.json', 'card/master-512.png': 'library/cards/pike/card/master-512.png', 'card/labels-512.png': 'library/cards/pike/card/labels-512.png', 'markings.json': 'library/cards/pike/markings.json', 'markings/striped.png': 'library/cards/pike/markings/striped.png', 'markings/spotted.png': 'library/cards/pike/markings/spotted.png', 'markings/banded.png': 'library/cards/pike/markings/banded.png', 'markings/mottled.png': 'library/cards/pike/markings/mottled.png', 'markings/marbled.png': 'library/cards/pike/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/pike/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/goose/', { 'card/card.json': 'library/cards/goose/card/card.json', 'record.json': 'library/cards/goose/record.json', 'card/master-512.png': 'library/cards/goose/card/master-512.png', 'card/labels-512.png': 'library/cards/goose/card/labels-512.png', 'markings.json': 'library/cards/goose/markings.json', 'markings/striped.png': 'library/cards/goose/markings/striped.png', 'markings/spotted.png': 'library/cards/goose/markings/spotted.png', 'markings/banded.png': 'library/cards/goose/markings/banded.png', 'markings/mottled.png': 'library/cards/goose/markings/mottled.png', 'markings/marbled.png': 'library/cards/goose/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/goose/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/gull/', { 'card/card.json': 'library/cards/gull/card/card.json', 'record.json': 'library/cards/gull/record.json', 'card/master-512.png': 'library/cards/gull/card/master-512.png', 'card/labels-512.png': 'library/cards/gull/card/labels-512.png', 'markings.json': 'library/cards/gull/markings.json', 'markings/striped.png': 'library/cards/gull/markings/striped.png', 'markings/spotted.png': 'library/cards/gull/markings/spotted.png', 'markings/banded.png': 'library/cards/gull/markings/banded.png', 'markings/mottled.png': 'library/cards/gull/markings/mottled.png', 'markings/marbled.png': 'library/cards/gull/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/gull/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/racer/', { 'card/card.json': 'library/cards/racer/card/card.json', 'record.json': 'library/cards/racer/record.json', 'card/master-512.png': 'library/cards/racer/card/master-512.png', 'card/labels-512.png': 'library/cards/racer/card/labels-512.png', 'markings.json': 'library/cards/racer/markings.json', 'markings/striped.png': 'library/cards/racer/markings/striped.png', 'markings/spotted.png': 'library/cards/racer/markings/spotted.png', 'markings/banded.png': 'library/cards/racer/markings/banded.png', 'markings/mottled.png': 'library/cards/racer/markings/mottled.png', 'markings/marbled.png': 'library/cards/racer/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/racer/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/eel/', { 'card/card.json': 'library/cards/eel/card/card.json', 'record.json': 'library/cards/eel/record.json', 'card/master-512.png': 'library/cards/eel/card/master-512.png', 'card/labels-512.png': 'library/cards/eel/card/labels-512.png', 'markings.json': 'library/cards/eel/markings.json', 'markings/striped.png': 'library/cards/eel/markings/striped.png', 'markings/spotted.png': 'library/cards/eel/markings/spotted.png', 'markings/banded.png': 'library/cards/eel/markings/banded.png', 'markings/mottled.png': 'library/cards/eel/markings/mottled.png', 'markings/marbled.png': 'library/cards/eel/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/eel/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/salamander/', { 'card/card.json': 'library/cards/salamander/card/card.json', 'record.json': 'library/cards/salamander/record.json', 'card/master-512.png': 'library/cards/salamander/card/master-512.png', 'card/labels-512.png': 'library/cards/salamander/card/labels-512.png', 'markings.json': 'library/cards/salamander/markings.json', 'markings/striped.png': 'library/cards/salamander/markings/striped.png', 'markings/spotted.png': 'library/cards/salamander/markings/spotted.png', 'markings/banded.png': 'library/cards/salamander/markings/banded.png', 'markings/mottled.png': 'library/cards/salamander/markings/mottled.png', 'markings/marbled.png': 'library/cards/salamander/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/salamander/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/rat/', { 'card/card.json': 'library/cards/rat/card/card.json', 'record.json': 'library/cards/rat/record.json', 'card/master-512.png': 'library/cards/rat/card/master-512.png', 'card/labels-512.png': 'library/cards/rat/card/labels-512.png', 'markings.json': 'library/cards/rat/markings.json', 'markings/striped.png': 'library/cards/rat/markings/striped.png', 'markings/spotted.png': 'library/cards/rat/markings/spotted.png', 'markings/banded.png': 'library/cards/rat/markings/banded.png', 'markings/mottled.png': 'library/cards/rat/markings/mottled.png', 'markings/marbled.png': 'library/cards/rat/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/rat/markings/eye-spotted.png' }],
+  ['port/v2/apps/game/public/library/cards/reef-shark/', { 'card/card.json': 'library/cards/reef-shark/card/card.json', 'record.json': 'library/cards/reef-shark/record.json', 'card/master-512.png': 'library/cards/reef-shark/card/master-512.png', 'card/labels-512.png': 'library/cards/reef-shark/card/labels-512.png', 'markings.json': 'library/cards/reef-shark/markings.json', 'markings/striped.png': 'library/cards/reef-shark/markings/striped.png', 'markings/spotted.png': 'library/cards/reef-shark/markings/spotted.png', 'markings/banded.png': 'library/cards/reef-shark/markings/banded.png', 'markings/mottled.png': 'library/cards/reef-shark/markings/mottled.png', 'markings/marbled.png': 'library/cards/reef-shark/markings/marbled.png', 'markings/eye-spotted.png': 'library/cards/reef-shark/markings/eye-spotted.png' }],
 ]);

@@ -4,6 +4,7 @@
  * record field is read); the preflight admits the genuine SERVED bytes of every archetype and refuses each tampered input at its
  * own check, with a genuine control before and after the negatives. The wiring order (no decode/cache/master fetch before a
  * refused preflight) is proven in battle2-wiring.test.ts. */
+import { servedArt } from './art-library.fixtures.js';
 import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -24,8 +25,8 @@ import { hashBytes } from '../../../tools/creature-animation/quadruped-template.
 
 const ROOT = fileURLToPath(REPO_ROOT);
 const SERVED = new URL('port/v2/apps/game/public/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/', REPO_ROOT);
-const served = (assetPath: string): Uint8Array => new Uint8Array(readFileSync(new URL(assetPath, SERVED)));
-const servedJson = <T,>(assetPath: string): T => JSON.parse(readFileSync(new URL(assetPath, SERVED), 'utf8')) as T;
+const served = (assetPath: string): Uint8Array => new Uint8Array(readFileSync(servedArt(assetPath)));
+const servedJson = <T,>(assetPath: string): T => JSON.parse(readFileSync(servedArt(assetPath), 'utf8')) as T;
 
 /** The genuine served bytes of one fit, exactly as the wiring fetches them. */
 async function servedInput(fit: (typeof BATTLE2_PARTS_FITS)[number]): Promise<Battle2PinnedBytesV1> {
