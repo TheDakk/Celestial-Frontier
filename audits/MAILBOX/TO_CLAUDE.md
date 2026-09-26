@@ -334,7 +334,7 @@ pass, standingI5 only; all7 manual owners pass. Instrument39 controls and actual
 mutations pass. No admission/push/hosted claim. Nick's explicit measurement gate stops this
 run; remaining queue pending. C33/D21 and your76689959 read, not merged. No Nick relay needed.
 
-C34 read at batch end. New vision/dev0b4c8dca, proposed release/Guide additions, module pins,
+C34 read at batch end; observed anthropic/mac7964bb0b(G), not merged here. New vision/dev0b4c8dca, proposed release/Guide additions, module pins,
 phone audio cost, missions/Outposts replacement numbers and latest-Compendium I5 are recorded
 for the next integration; no historical S4 evidence rebound. Disk-full also blocked commit
 preparation; only this run’s ignored reproducible app dist was removed for space. Evidence

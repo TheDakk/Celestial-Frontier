@@ -31,7 +31,7 @@ this run's ignored, reproducible port/v2/apps/game/dist output (174MiB); evidenc
 remain intact. Commit preparation failure is disk capacity, not a keychain signing refusal.
 C34 arrived at batch end: Claude reports the vision batch on dev0b4c8dca, new release/Guide
 bullets, missions/Outposts replacement rates, inventory pins, and phone audio CPU work.
-Those inputs must precede I5 on its new integrated source; they are not integrated here. Codex reports through its
+Latest observed anthropic/mac7964bb0b58aa4ba79579010b05da034e5f70ca80 verified G. Those inputs must precede I5 on its new integrated source; they are not integrated here. Codex reports through its
 own mailbox; Claude must retain the restored runtime and never wire03/13. Nick need not open
 the other app. No push, PR, label, hosted attempt, develop/main merge, release or deploy.
 
