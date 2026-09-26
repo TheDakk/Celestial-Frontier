@@ -1,0 +1,24 @@
+{
+ "id": "goose",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part near-shin (legNearAnkle) covers 22% paint (reference 74%)",
+  "unexplained-anatomy: 7.6% of the paint lies away from the body and in no part (reference 3.0%)"
+ ],
+ "bodyLengthPx": 875.1,
+ "landmarkMedian": 0.0409,
+ "landmarkMax": 0.7464,
+ "worst": [
+  "wingNearTip 0.746",
+  "tailFan 0.341",
+  "root 0.142"
+ ],
+ "labelAgreement": 0.3131,
+ "missingJoints": [],
+ "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+ "static": "RED",
+ "staticFails": [
+  "faint"
+ ]
+}

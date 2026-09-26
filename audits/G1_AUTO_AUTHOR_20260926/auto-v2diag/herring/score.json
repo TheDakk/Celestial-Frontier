@@ -1,0 +1,21 @@
+{
+ "id": "herring",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part dorsal (dorsal) covers 19% paint (reference 58%)"
+ ],
+ "bodyLengthPx": 801.5,
+ "landmarkMedian": 0.0373,
+ "landmarkMax": 0.2167,
+ "worst": [
+  "dorsal 0.217",
+  "pectoralNear 0.078",
+  "spine3 0.058"
+ ],
+ "labelAgreement": 0.5572,
+ "missingJoints": [],
+ "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

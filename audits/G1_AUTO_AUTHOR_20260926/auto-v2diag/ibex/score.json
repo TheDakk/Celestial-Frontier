@@ -1,0 +1,22 @@
+{
+ "id": "ibex",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 11% paint (reference 62%)",
+  "unexplained-anatomy: 7.4% of the paint lies away from the body and in no part (reference 0.0%)"
+ ],
+ "bodyLengthPx": 852.6,
+ "landmarkMedian": 0.0663,
+ "landmarkMax": 0.2076,
+ "worst": [
+  "hindFarPaw 0.208",
+  "foreNearAnkle 0.150",
+  "hindNearPaw 0.150"
+ ],
+ "labelAgreement": 0.5147,
+ "missingJoints": [],
+ "diagnosticOnly": "static run on a REFUSED author (diagnostic; never an admission)",
+ "static": "PASS_STATIC",
+ "staticFails": []
+}
