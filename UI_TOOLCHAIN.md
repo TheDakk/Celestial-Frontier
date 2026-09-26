@@ -1,5 +1,11 @@
 # Celestial Frontier — development toolchain
 
+**September 26 startup:** official metadata and idle processes checked under the shared lock.
+Approved Node26.9.0 → 26.10.0_1 (runtime v26.10.0) and its inspected simdutf9.2.0 → 9.2.1_1
+dependency installed; Homebrew7.0.6. All seven CLI capability checks pass. No project dependency
+lock, sealed input, license or cleanup changed. Receipt and retained preparation output:
+[audits/C28_GUIDE_REMEASURE_20260926](audits/C28_GUIDE_REMEASURE_20260926/README.md).
+
 **R2c″ continuation startup, September19:** official metadata current; Node26.9.0 retained;
 REAPER suffix resolved with scoped brew outdated. No executable/dependency update.
 Repository-relative pose exporter tests reveal missing reserved battle2/effects modules:

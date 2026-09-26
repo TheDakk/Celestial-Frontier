@@ -1,0 +1,37 @@
+✔ declared D17 outcomes admit a complete positive control (0.852708ms)
+✔ raw engine substituted (0.160875ms)
+✔ production mismatch (0.118334ms)
+✔ missing production (0.122292ms)
+✔ phase bypass (0.109958ms)
+✔ epoch rebound (0.111583ms)
+✔ wrong version (0.099042ms)
+✔ wrong count (0.104958ms)
+✔ candidate rebound (0.11925ms)
+✔ training reused (0.190833ms)
+✔ missing cohort (0.112334ms)
+✔ duplicate cohort (0.098917ms)
+✔ fractional wins (0.240833ms)
+✔ normal too small (0.1415ms)
+✔ titan too large (0.113958ms)
+✔ near-total defeats (0.105459ms)
+✔ oracle cannot stand for playable Command (0.095ms)
+✔ missing phase (0.080875ms)
+✔ missing withdrawal (0.072709ms)
+✔ missing swap (0.079417ms)
+✔ solo drifts (0.083959ms)
+✔ drop threat (0.070166ms)
+✔ wrong stance beats right (0.066625ms)
+✔ right stance ties (0.261208ms)
+✔ parity mismatch (0.108833ms)
+✔ empty replay (0.078708ms)
+✔ changing actual fight seeds cannot change forecast policy when public stats are unchanged (0.430208ms)
+✔ Command policy reads the offered break and preserves its actual terminal outcome (0.061208ms)
+✔ a candidate cannot remove or redefine an inconvenient threat (0.297417ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 100.171458
