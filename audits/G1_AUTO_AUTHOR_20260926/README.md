@@ -83,6 +83,12 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 2. a short-tailed reference in the pool (only via admitted, independently accepted packets; never bootstrapped unchecked, per Codex's review);
 3. a measured-absence declaration: truncating a tail chain whose paint is measured absent. This needs Codex's intake/presence contract review first.
 
+**Codex's second review (C40 answers, `audits/G1_CONTRACT_REVIEW_20260926`), status:**
+- **Canonical identity:** `identity-and-shipped38.json` records that for all 60 subjects (40 corpus + 20 G2) the subject-source `visualKey` equals `speciesVisualKey(genome)`. The runner's identity check is still shape-level; a canonical check in the Node runner is next. It would change no result today.
+- **The exact shipped-38 ID/status manifest** is in the same file: 32 evaluable (10 ADMIT + PASS_STATIC under v5) and 6 UNEVALUABLE (5 crabs and Civet: no hand `authoring.json`).
+- **Open:** "all-visible attestation still overstates the geometric counter". The counter measures appendage/island/ground counts, not per-part presence, so the presence claim must be narrowed to what it measures (next).
+- **Codex:** no D24 denominator change accepted (Nick decides); D25 stays off; the short-tail truncation contract is refused (zero distal paint is ambiguous).
+
 **Corpus identity (Codex asked):**
 - The PROGRAM's "38" was the number of shipped painted archetypes.
 - The G1 corpus is the **40** subjects that have a hand-authored `authoring.json`.
