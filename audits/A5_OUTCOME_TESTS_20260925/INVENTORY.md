@@ -61,8 +61,8 @@ Notes on the table:
 | 6 | Card fold (`gtoggle`, persists `cardExpand`) | D | 11807 | none (`cardExpand` is absent in v2) | — → **UNPORTED** | Parity decision |
 | 7 | Life-forms roster fold and species row | V | 11826, 11850 | planetside roster `sideEl` (main.ts:8969) | — → **NONE** | Pressing a roster chip should open a catalogued card or refuse an uncaught one (the CF1802-09 anti-mint law) |
 | 8 | "More" opens the Compendium from the card | V | 11834 | none found | — → **UNPORTED** | — |
-| 9 | Vista reshow, fullscreen, tap-to-zoom | V | 11790, 10253, 10285 | none (the v2 vista is automatic) | — → **UNPORTED** | — |
-| 10 | Save postcard | V | 10260, 10204 | none | — → **UNPORTED** | — |
+| 9 | Vista reshow, fullscreen, tap-to-zoom | V | 11790, 10253, 10285 | `vista-postcard.ts` + main `vistaPills` / `setVistaViewing` (pill row over the stage; the v2 vista is the stage itself) | `tests/d16-vista-postcard-outcome.test.ts` → **UI** (ported 2026-09-26) | — |
+| 10 | Save postcard | V | 10260, 10204 | `composeVistaPostcardV1` + `deliverVistaPostcardV1` (Web Share file, else download) | `tests/d16-vista-postcard-outcome.test.ts` → **UI** (ported 2026-09-26) | — |
 | 11 | Depart / leave world | D (nav) | 11798 | main.ts:8938 `leaveworld`, then `goUp` | S:24097 CDP Enter and S:25330 touch read live mode only → **CODE** (UI-live) | **Closed 2026-09-25:** `tests/a5-leave-world-outcome.test.ts` presses the card's Leave world and runs goUp, rerender and the real persistView over a real F4 runtime. It reads the durable `savedView` (the ascended system) twice and after a reboot. Mutation controls: the press never ascends; the ascent never checkpoints |
 | 12 | Land (card `landcta`) | D | 11862, 11180, 11007 | `doLand` 8128, arc0-landing-action.ts | S:28935 CDP mouse, then S:28937 `arc0-land` receipt and S:28993 reload; phone S:25267 → **UI** | — |
 | 13 | Wave-off (failed descent) | D | 10980 | arc0-landing-action.ts | S:28957, then S:28951 `assessBoundedDescentWaveOff` → **UI** | — |
@@ -98,10 +98,10 @@ Notes on the table:
 |---|---|---|---|---|---|---|
 | 34 | Open the Compendium | V | 12896 | codex panel | S:23409 CDP Enter → **UI** (view) | — |
 | 35 | Open a species card (row or pick) | V | 12892, 12555 | main.ts:4475 `fillCodexDetail` | S:23409, then S:23419 live detail → **UI** (view) | — |
-| 36 | Rarity and kingdom filter chips | V | 12868-12871 | text query only (`codexFilter`) | — → **UNPORTED** | — |
-| 37 | Category group fold | V | 12872 | virtual list, no groups | — → **UNPORTED** | — |
-| 38 | Travel to the species' origin (`data-go`) | D | 12881 | none found | — → **UNPORTED** | — |
-| 39 | Reveal queue next, skip all (`rev-x`) | V | 12751 | none found | — → **UNPORTED** | — |
+| 36 | Rarity and kingdom filter chips | V | 12868-12871 | `compendium-shelves.ts` chip bar + main `codexView` | `tests/d16-compendium-chips-outcome.test.ts` → **UI** (ported 2026-09-26) | — |
+| 37 | Category group fold | V | 12872 | opt-in "▦ Shelves" (fold headers in the virtual list) | `tests/d16-compendium-chips-outcome.test.ts` → **UI** (ported 2026-09-26) | — |
+| 38 | Travel to the species' origin (`data-go`) | D | 12881 | detail card `data-codex-origin` → `runCompendiumOriginTravel` (search-travel) | `tests/d16-compendium-origin-outcome.test.ts` → **UI** (ported 2026-09-26) | — |
+| 39 | Reveal queue next, skip all (`rev-x`) | V | 12751 | `compendium-reveal.ts` + main `compendiumReveal` / `compendiumRevealPages` | `tests/d16-compendium-reveal-outcome.test.ts` → **UI** (ported 2026-09-26) | — |
 | 40 | Field-notes and lineage folds (`cardExpand` 4/8) | D | 12716, 12726 | none | — → **UNPORTED** | — |
 | 41 | Feed (picker: choose flora, confirm, retry) | D | 12738, 16725, 16455 | compendium-feed.ts, `runCompendiumFeedAction` 13525 | S:18994 `arc5FeedClick`, S:19453 confirm, then S:20156 `assessCompendiumFeedCommittedOutcome` → **UI** | — |
 | 42 | Breed (picker) | D | 12737, 16703, 16365 | compendium-breed.ts, `runCompendiumBreedAction` 14341 | tests/arc5-breed-action.test.ts:370 (`readSaveV5` :471) → **DIRECT** | **Top gap** |
@@ -341,9 +341,9 @@ The ranking weighs player-visible value and the risk of silent breakage.
 - reset expedition (#120)
 - craft ×5, pin recipe, salvage-all, "don't ask again" and mend-bulk (#50, 68-69, 75-76)
 - Prime slot travel and Titan tracking (#88-89)
-- Compendium origin travel, filters and reveal queue (#36-39)
+- ~~Compendium origin travel, filters and reveal queue (#36-39)~~ — ported 2026-09-26 (`audits/D16_FINAL_20260926/README.md`)
 - notification mark-all, clear-all and bell auto-read (#103, 105-106)
 - combat-sound, notification and tooltip toggles (#117)
-- postcard and vista zoom (#9-10)
+- ~~postcard and vista zoom (#9-10)~~ — ported 2026-09-26 (`audits/D16_FINAL_20260926/README.md`)
 
 Each needs a DECISIONS.md line that says either "port" or "dropped by design" before A5 can close.

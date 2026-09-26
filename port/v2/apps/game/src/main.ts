@@ -3934,12 +3934,12 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
   const generation = ++codexGeneration;
   codexRows = filteredCodexRows();
   const f = codexFilter.toLowerCase();
-  const panel = document.getElementById('codexpanel')!;
-  panel.classList.add('codex-list-mode');
   const sourceSize = activeCodexSource().length, chipsFiltering = codexChipsFilteringV1(codexView);
   const chipEmpty = codexView.rarityFloor > 0
     ? `No ${codexView.kingdom === 'all' ? 'species' : esc(codexView.kingdom.toLowerCase())} at <b style="color:${esc(projectDisplayRarity(codexView.rarityFloor)?.hex ?? '')}">${esc(projectDisplayRarity(codexView.rarityFloor)?.name ?? '')}</b> or above yet — the rarest finds live farthest out.`
     : `Nothing on this shelf yet — every ${codexView.kingdom === 'Fauna' ? 'creature you Discover' : esc(codexView.kingdom.toLowerCase()) + ' you catalogue'} will land here.`;
+  const panel = document.getElementById('codexpanel')!;
+  panel.classList.add('codex-list-mode');
   fillPanel('codex',
     `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${codexRows.length}</span>${chipsFiltering ? ` <span class="sub" data-sel="codex-shown">shown · ${sourceSize} in all</span>` : ''}${f ? ` <span class="sub codex-query">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
     (sourceSize > 0 ? codexChipBarHtmlV1(codexView) : '') +
