@@ -43,6 +43,7 @@ import {
 } from './world-harvest.js';
 import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-batch.js';
 import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './recipe-pin.js';
+import { mirrorCompanionCodexXpV1 } from './companion-codex-mirror.js';
 import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
 import { freshExpeditionPayloadV1 } from './expedition-reset.js';
 import { TooltipOwnerV1 } from './tooltips.js';
@@ -9422,10 +9423,7 @@ async function runFriendlyDuel(request: FriendlyDuelRequestV1): Promise<void> {
     // publish exactly the duel's fields: the counters and the one companion's Compendium mirror row
     const liveStats = save.stats as Record<string, number | undefined>, committedStats = outcome.state.stats as Record<string, number | undefined>;
     liveStats.duels = committedStats.duels; liveStats.duelwins = committedStats.duelwins;
-    save.codex = save.codex.map(([id, entry]) => {
-      const committed = outcome.state.codex.find(([rowId]) => rowId === id)?.[1];
-      return committed !== undefined && committed.g?.xp !== entry.g?.xp ? [id, { ...entry, g: { ...entry.g, xp: committed.g.xp } }] : [id, entry];
-    });
+    save.codex = mirrorCompanionCodexXpV1(save.codex, outcome.state.codex);
     arc5OwnershipState = loaded.state;
     arc5OwnershipEvidence = loaded.evidence;
     lastPersistenceOutcome = `friendly-duel-committed:${outcome.revision}`;
@@ -14065,6 +14063,8 @@ async function commitCompendiumFeedAction(
           && settlement.foodTombstone.lotId !== request.foodLotId)) {
         throw new Error('arc5-feed-fixed-point-mismatch');
       }
+      // D13 care XP: publish the one companion's Compendium mirror row `g.xp`, by the same rule as the friendly duel
+      save.codex = mirrorCompanionCodexXpV1(save.codex, attempt.transaction.state.codex);
       arc5OwnershipState = attempt.ownershipV2;
       arc5OwnershipEvidence = attempt.ownershipV2Evidence;
       arc5OwnershipProtection = null;

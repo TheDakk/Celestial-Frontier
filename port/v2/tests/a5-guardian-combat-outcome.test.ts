@@ -55,6 +55,7 @@ import {
   COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   PRIME_SIGNATURE_IDS_V1,
   projectGuardianPrimeEncounterV1,
+  runDuel,
 } from '@cf/domain-combatcore';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome, type Genome } from '@cf/domain-genome';
@@ -86,6 +87,7 @@ import {
   type ContentRegistry,
   type SaveStateV2,
   type StorageBackend,
+  projectLegacyOwnershipMirror,
 } from '@cf/persistence';
 import {
   arc6CombatOpenPolicyReasonV1,
@@ -130,9 +132,17 @@ const EARTH_WORLD = Object.freeze({
   star: Object.freeze({ seed: 424242, x: 560, y: 170 }),
   planet: Object.freeze({ seed: 133 }),
 });
-interface WorldSpec { readonly spec: typeof GUARDIAN_WORLD | typeof EARTH_WORLD; readonly worldType: string }
+/* A5 #57: the Star Titan's world — the nearest world its Titan waits on at ascent stage 3 (prime-travel `nearestTitanWorldV1`, the same
+ * scan v1's Titan tracking runs); a desert world of the home galaxy with native fauna. */
+const TITAN_WORLD = Object.freeze({
+  galaxy: Object.freeze({ seed: 999, x: 90, y: -60 }),
+  star: Object.freeze({ seed: 3726379773, x: 654.9, y: -353.15 }),
+  planet: Object.freeze({ seed: 1146974993 }),
+});
+interface WorldSpec { readonly spec: typeof GUARDIAN_WORLD | typeof EARTH_WORLD | typeof TITAN_WORLD; readonly worldType: string }
 const GUARDIAN: WorldSpec = Object.freeze({ spec: GUARDIAN_WORLD, worldType: WORLD_TYPE });
 const EARTH: WorldSpec = Object.freeze({ spec: EARTH_WORLD, worldType: 'terran' });
+const TITAN: WorldSpec = Object.freeze({ spec: TITAN_WORLD, worldType: 'desert' });
 
 beforeAll(() => installCaptureHooks());
 
@@ -281,10 +291,13 @@ interface DurableFixture {
   readonly evidence: unknown;
 }
 
-async function freshFixture(spec: ChampionSpec): Promise<DurableFixture> {
+/** `mirrorCodex`: the save's Compendium carries the legacy champion's own v4 mirror row (the production projector) — as every real save
+ * does. A Titan/Guardian win adds a captured-Guardian page, and Main verifies the WHOLE composite Compendium against the ownership. */
+async function freshFixture(spec: ChampionSpec, options: Readonly<{ mirrorCodex?: boolean }> = {}): Promise<DurableFixture> {
   const imported = importSaveV2('{}', REGISTRY, NOW);
   if (!imported.ok) throw new Error(`combat base save failed: ${imported.reason}`);
-  const state = imported.state;
+  const state = options.mirrorCodex === true ? { ...imported.state, codex: (projectLegacyOwnershipMirror(ownershipSource(spec)) as unknown as { codex: readonly { legacyCodexId: string; g: Record<string, unknown>; f: string; w: string | null }[] })
+    .codex.map((row) => [row.legacyCodexId, { id: row.legacyCodexId, name: 'Vanguard species', kind: 'Fauna', tier: null, realm: 'Wild', sapient: 0, from: row.f, hybrid: false, g: row.g, where: row.w }]) as never } : imported.state;
   const f4 = prepareF4AuthorityUpdate({}, { activePlayMs: 0 }, createSessionRNG(0).state());
   const arc4 = applyV5ExtensionWrites(f4.extensions, encodeArc4Ownership(ownershipSource(spec)).writes).extensions;
   const arc5 = prepareArc5OwnershipMigration({ extensions: arc4, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER });
@@ -798,5 +811,75 @@ describe('A5 #55-57 — a Guardian fight through the combat card is a durable UI
     expect(() => replaceExact(MAIN_COMBAT_SOURCE, {
       name: 'drifted', needle: 'void runArc6CombatCardActionNonexistent(', replacement: '',
     })).toThrow(/found 0/u);
+  });
+});
+
+/* ---------------- A5 #57: a Titan fought through the card to the Prime Signature (2026-09-26) ----------------
+ * The world is where `nearestTitanWorldV1('star', { ascentStage: 3 })` tracks the Star Titan; the champion is a real owned companion that
+ * beats the Titan (found by a runDuel search over makeGenome(s, 'fauna', 0.9) at xp 300 (level 7) — seed 690; the same genome at xp 0 loses). Asserted: one settlement receipt,
+ * the Prime Signature durably claimed exactly once (primeFill), live = durable, and after a reboot the claimed Titan is never offered again. */
+const TITAN_SLAYER: ChampionSpec = Object.freeze({ genome: makeGenome(690, 'fauna', 0.9), xp: 300 }); // level 7: wins from level 6 (xp 250); under the 486 cap with room for the award
+
+async function pressTitanScenario(mutations: readonly MainMutation[] = []): Promise<void> {
+  let f = await freshFixture(TITAN_SLAYER, { mirrorCodex: true });
+  const harnesses: Harness[] = [];
+  try {
+    const titanAddress = guardianWorld(TITAN);
+    const encounter = projectGuardianPrimeEncounterV1({ world: titanAddress, descriptor: { worldType: TITAN.worldType }, regionIndex: 0,
+      faunaRoster: [], claimedSignatureIds: [], conquered: false } as never) as { defender: { kind: string } } | null;
+    expect(encounter?.defender.kind, 'the fixture world must field its Titan').toBe('titan');
+    const h = mainCombatHarness(f, mutations, TITAN);
+    harnesses.push(h);
+    h.chooseCompanion();
+    const stateBefore = f.state;
+    expect(stateBefore.primeFill.star, 'no Signature before the fight').toBeUndefined();
+    h.challenge()!.click();
+    await settled(h);
+
+    expect(await f.repository.revision(), 'titan: pressing Challenge must commit exactly one revision').toBe(1);
+    const receipt = await f.repository.readReceipt(0);
+    expect(receipt?.kind).toBe('combat-settlement');
+    const witness = JSON.parse(String((receipt as { witness?: unknown }).witness)) as Witness;
+    expect(witness.outcome, 'titan: the champion must win').toBe('champion-win');
+    const saved = await durableSave(f);
+    expect(saved.state.primeFill.star, 'titan: the Star Signature must be durably claimed').toBeDefined();
+    expect(Object.keys(saved.state.primeFill), 'titan: exactly one Signature is claimed').toEqual(['star']);
+    expect(JSON.stringify(h.env.save), 'titan: the live save must equal the durable save').toBe(JSON.stringify(saved.state));
+    // reboot: the claim is what storage says, and the claimed Titan is never offered again
+    await f.runtime.release();
+    f = await bootFromDurableSave(f.backend, 'titan-claimed', START_ACTIVE_PLAY_MS + 1);
+    expect(JSON.stringify(f.state.primeFill)).toBe(JSON.stringify(saved.state.primeFill));
+    const after = projectGuardianPrimeEncounterV1({ world: titanAddress, descriptor: { worldType: TITAN.worldType }, regionIndex: 0,
+      faunaRoster: [], claimedSignatureIds: ['star'], conquered: saved.state.conquered.some(([seed]) => Number(seed) === TITAN_WORLD.planet.seed) } as never) as { defender: { kind: string } } | null;
+    expect(after?.defender.kind, 'titan: a claimed Titan is never fought again').not.toBe('titan');
+    const reloaded = mainCombatHarness(f, mutations, TITAN);
+    harnesses.push(reloaded);
+    expect(await f.repository.revision(), 'titan: a reload commits nothing').toBe(1);
+  } finally {
+    for (const x of harnesses) { x.exec.controller().dispose(); x.dom.window.close(); }
+    restoreDomGlobals();
+    await f.runtime.release();
+  }
+}
+
+describe('A5 #57 — a Titan fought through the card claims its Prime Signature durably', () => {
+  it('a pressed Challenge against the Star Titan wins, claims the Signature exactly once, live = durable, and survives a reboot', async () => {
+    await pressTitanScenario();
+  }, 90_000);
+  it('negative control — UNPUBLISHED: the verified save is never published: the Titan outcome test fails', async () => {
+    await expect(pressTitanScenario([{ name: 'unpublished', needle: '      save = verification.state;', replacement: '      void verification.state;' }]))
+      .rejects.toThrow(/titan: the live save must equal the durable save/u);
+  }, 90_000);
+  it('negative control — DROPPED COMMIT: the Titan outcome test fails', async () => {
+    await expect(pressTitanScenario([{ name: 'dropped', needle: '    attempt = await commitArc6CombatActionV1({',
+      replacement: "    attempt = { kind: 'refused', detail: 'mutant-dropped', convergence: 'none', durability: 'none', transaction: null } as never; void ({" }]))
+      .rejects.toThrow(/titan: pressing Challenge must commit exactly one revision/u);
+  }, 90_000);
+  it('control: a zero-XP weak companion does NOT beat the Star Titan (the win is the champion\'s, not the fixture\'s)', () => {
+    const titanAddress = guardianWorld(TITAN);
+    const encounter = projectGuardianPrimeEncounterV1({ world: titanAddress, descriptor: { worldType: TITAN.worldType }, regionIndex: 0,
+      faunaRoster: [], claimedSignatureIds: [], conquered: false } as never) as unknown as { defender: { battleGenome: Genome } };
+    expect((runDuel({ genome: WEAK.genome } as never, { genome: encounter.defender.battleGenome } as never) as { winner: unknown }).winner).not.toBe('A');
+    expect((runDuel({ genome: { ...TITAN_SLAYER.genome, xp: TITAN_SLAYER.xp } } as never, { genome: encounter.defender.battleGenome } as never) as { winner: unknown }).winner).toBe('A');
   });
 });
