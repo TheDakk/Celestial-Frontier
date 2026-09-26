@@ -1,0 +1,19 @@
+{
+ "id": "cougar",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "bodyLengthPx": 1209.3,
+ "landmarkMedian": 0.0381,
+ "landmarkMax": 0.1581,
+ "worst": [
+  "hindFarPaw 0.158",
+  "hindNearPaw 0.137",
+  "hindFarAnkle 0.123"
+ ],
+ "labelAgreement": 0.5412,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

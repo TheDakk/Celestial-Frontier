@@ -1,0 +1,125 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "18-tapir",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "56f534417e8305b540143c231aa54936b66f3b578ab6041fa9e9ae3a7b4bb634",
+ "subjectSourceSha256": "03ec8c9b57dd9880adcd27dfca188a74a8ff40b120a147c3ab8c3429ded51f0b",
+ "identity": {
+  "name": "Tapir",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tapir\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"4279472141\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "seed": 4279472141,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "cattle",
+  "authoringSha256": "d9c23635c440d69a21b69a8644bb559d83db17b559150cd40dcfa997054f2563",
+  "masterSha256": "0510920919b791b9186d0d1dafeed17625074ee2a6c586d9ddcb703f2005f590"
+ },
+ "habitat": {
+  "profileId": "tapir",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "1758d0246104af4a75229fc0deecf5ab9604438efba8756895028246d9985e34",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group tapir (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0065,
+     "class": "front",
+     "attach": {
+      "x": 306.5,
+      "y": 90,
+      "relX": 0.74,
+      "relY": 0
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0264,
+     "class": "front",
+     "attach": {
+      "x": 369.7,
+      "y": 157.7,
+      "relX": 0.9,
+      "relY": 0.29
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0372,
+     "class": "limb-down",
+     "attach": {
+      "x": 41.7,
+      "y": 275.2,
+      "relX": 0.07,
+      "relY": 0.81
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0337,
+     "class": "limb-down",
+     "attach": {
+      "x": 279.6,
+      "y": 261.1,
+      "relX": 0.67,
+      "relY": 0.75
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0465,
+     "class": "limb-down",
+     "attach": {
+      "x": 93.5,
+      "y": 257,
+      "relX": 0.2,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0377,
+     "class": "limb-down",
+     "attach": {
+      "x": 235,
+      "y": 265,
+      "relX": 0.56,
+      "relY": 0.76
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 2,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "cattle",
+   "byClass": {
+    "top": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

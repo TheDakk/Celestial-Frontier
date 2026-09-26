@@ -1,0 +1,21 @@
+{
+ "id": "brown-bear",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail2 (tail2) covers 6% paint (reference 69%)",
+  "missing-anatomy: part tail1 (tail1) covers 9% paint (reference 65%)",
+  "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 1.7%)"
+ ],
+ "semanticPresence": null,
+ "bodyLengthPx": 1008.3,
+ "landmarkMedian": 0.0628,
+ "landmarkMax": 0.2521,
+ "worst": [
+  "tail2 0.252",
+  "tail3 0.224",
+  "tail1 0.166"
+ ],
+ "labelAgreement": 0.484,
+ "missingJoints": []
+}
