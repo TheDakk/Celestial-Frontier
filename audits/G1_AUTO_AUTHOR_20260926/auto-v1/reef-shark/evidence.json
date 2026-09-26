@@ -1,0 +1,118 @@
+{
+ "verdict": "ADMIT",
+ "reasons": [],
+ "schema": "cf.g1-auto-author/v1",
+ "bestReference": "herring",
+ "costs": [
+  {
+   "ref": "herring",
+   "cost": 0.00886
+  },
+  {
+   "ref": "salmon",
+   "cost": 0.01101
+  },
+  {
+   "ref": "pike",
+   "cost": 0.01342
+  },
+  {
+   "ref": "tang",
+   "cost": 0.01372
+  },
+  {
+   "ref": "bass",
+   "cost": 0.01415
+  },
+  {
+   "ref": "sturgeon",
+   "cost": 0.01694
+  }
+ ],
+ "mirrorBest": 0.02257,
+ "otherFamilyBest": {
+  "family": "quadruped",
+  "cost": 0.01973
+ },
+ "coverage": [
+  {
+   "id": "near-pectoral",
+   "joint": "pectoralNear",
+   "paint": 1,
+   "area": 3695.0100000000166
+  },
+  {
+   "id": "far-pectoral",
+   "joint": "pectoralFar",
+   "paint": 0.6888888888888889,
+   "area": 4290.195000000007
+  },
+  {
+   "id": "dorsal",
+   "joint": "dorsal",
+   "paint": 0.4674012855831038,
+   "area": 17452.40499999999
+  },
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.9114391143911439,
+   "area": 8766.949999999992
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.5974025974025974,
+   "area": 44421.69999999996
+  },
+  {
+   "id": "caudal",
+   "joint": "caudal",
+   "paint": 0.2773457750129601,
+   "area": 61715.15
+  },
+  {
+   "id": "root",
+   "joint": "root",
+   "paint": 0.6838926174496645,
+   "area": 23837.989999999976
+  },
+  {
+   "id": "tail-peduncle",
+   "joint": "spine5",
+   "paint": 0.11764705882352941,
+   "area": 20770.12999999999
+  },
+  {
+   "id": "rear-body",
+   "joint": "spine4",
+   "paint": 0.2695883134130146,
+   "area": 24098.98500000004
+  },
+  {
+   "id": "pelvic-body",
+   "joint": "spine3",
+   "paint": 0.2562814070351759,
+   "area": 28683.03999999998
+  },
+  {
+   "id": "mid-body",
+   "joint": "spine2",
+   "paint": 0.39000515198351365,
+   "area": 31063.334999999955
+  },
+  {
+   "id": "front-body",
+   "joint": "spine1",
+   "paint": 0.55858310626703,
+   "area": 41417.930000000015
+  },
+  {
+   "id": "body",
+   "joint": "spine0",
+   "paint": 0,
+   "area": 0.5999999999999943
+  }
+ ],
+ "unclaimedFrac": 0.0499
+}

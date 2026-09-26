@@ -1,0 +1,165 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 9% paint (reference 25%)",
+  "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 18% paint (reference 62%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "bestReference": "beetle",
+ "costs": [
+  {
+   "ref": "beetle",
+   "cost": 0.03993
+  },
+  {
+   "ref": "honeybee",
+   "cost": 0.04484
+  }
+ ],
+ "mirrorBest": 0.04554,
+ "otherFamilyBest": {
+  "family": "fish",
+  "cost": 0.04164
+ },
+ "coverage": [
+  {
+   "id": "hind-near-lower",
+   "joint": "legHindNearFoot",
+   "paint": 0.3525971792225662,
+   "area": 92943.585
+  },
+  {
+   "id": "mid-near-lower",
+   "joint": "legMidNearFoot",
+   "paint": 0.2583201267828843,
+   "area": 10092.609999999979
+  },
+  {
+   "id": "front-near-lower",
+   "joint": "legFrontNearFoot",
+   "paint": 0.2558139534883721,
+   "area": 9037.804999999993
+  },
+  {
+   "id": "hind-near-upper",
+   "joint": "legHindNearKnee",
+   "paint": 0.7961165048543689,
+   "area": 1584.5000000000045
+  },
+  {
+   "id": "mid-near-upper",
+   "joint": "legMidNearKnee",
+   "paint": 0.883289124668435,
+   "area": 5984.32
+  },
+  {
+   "id": "front-near-upper",
+   "joint": "legFrontNearKnee",
+   "paint": 0.6506024096385542,
+   "area": 2702.6550000000134
+  },
+  {
+   "id": "hind-far-lower",
+   "joint": "legHindFarFoot",
+   "paint": 0.08565153733528551,
+   "area": 21897.495000000003
+  },
+  {
+   "id": "mid-far-lower",
+   "joint": "legMidFarFoot",
+   "paint": 0.31666666666666665,
+   "area": 6800.029999999984
+  },
+  {
+   "id": "front-far-lower",
+   "joint": "legFrontFarFoot",
+   "paint": 0.1791044776119403,
+   "area": 3290.8649999999834
+  },
+  {
+   "id": "front-far-upper",
+   "joint": "legFrontFarKnee",
+   "paint": 0.43478260869565216,
+   "area": 2221.8200000000033
+  },
+  {
+   "id": "mid-far-upper",
+   "joint": "legMidFarKnee",
+   "paint": 0.8648648648648649,
+   "area": 2359.2100000000028
+  },
+  {
+   "id": "hind-far-upper",
+   "joint": "legHindFarKnee",
+   "paint": 0.17647058823529413,
+   "area": 798.7049999999981
+  },
+  {
+   "id": "antenna-far",
+   "joint": "antennaFar",
+   "paint": 0.6663402692778457,
+   "area": 65497.67000000004
+  },
+  {
+   "id": "antenna-near",
+   "joint": "antennaNear",
+   "paint": 0.7417162276975361,
+   "area": 18929.56999999995
+  },
+  {
+   "id": "mandible",
+   "joint": "mandible",
+   "paint": 0.8793103448275862,
+   "area": 2843.5350000000035
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.8668418747262374,
+   "area": 36523.26500000003
+  },
+  {
+   "id": "elytron-near",
+   "joint": "thorax",
+   "paint": 0.9815782238108332,
+   "area": 58165.96500000003
+  },
+  {
+   "id": "elytron-far",
+   "joint": "thorax",
+   "paint": 0.7138873396542108,
+   "area": 28709.725
+  },
+  {
+   "id": "membrane-near",
+   "joint": "wingNear",
+   "paint": 0.9403058707449433,
+   "area": 32462.679999999993
+  },
+  {
+   "id": "membrane-far",
+   "joint": "wingFar",
+   "paint": 0.6025998142989787,
+   "area": 34624.78999999997
+  },
+  {
+   "id": "thorax",
+   "joint": "thorax",
+   "paint": 0.9970674486803519,
+   "area": 5361.82999999998
+  },
+  {
+   "id": "abdomen",
+   "joint": "abdomen",
+   "paint": 0.9541457286432161,
+   "area": 25413.309999999998
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0,
+   "area": 0.49000000000006594
+  }
+ ],
+ "unclaimedFrac": 0.0465
+}

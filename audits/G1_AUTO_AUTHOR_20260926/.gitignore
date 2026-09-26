@@ -1,0 +1,7 @@
+# Regenerable outputs: fits (atlases, bindings) and master copies are rebuilt by run-control.mjs / run-auto.mjs from the committed
+# authoring, presence and the source packets. Reports, scores, evidence and the generated authoring stay committed.
+*/*/fit/
+*/*/packet/master.png
+auto-trial/
+auto-trial2/
+auto-r025/
