@@ -1,3 +1,4 @@
+import { createTrainingForgePracticeAdapterV1 } from '../apps/game/src/training-forge-practice.js';
 /* Shared harness for the D16 parity outcome tests that drive the real Shipyard (EngineeringPanelController) through the exact
  * shipped Main sections over a real F4 runtime + memory backend. See tests/d16-craft-batch-outcome.test.ts for the pattern. */
 import fs from 'node:fs';
@@ -55,6 +56,7 @@ export function section(start: string, end: string): string {
 }
 /** The Shipyard sections every D16 engineering harness executes (the controller construction wires the pin port). */
 export const ENGINEERING_SECTIONS = (): string => [
+  section('function runTrainingForgePracticeRequest(', '\nfunction shipyardDiagnostics('),
   section('function refreshRecipePinChip(): void {', '\n/** The Fabricator\'s ×5 (D16 parity)'),
   section('const engineeringPanelController = new EngineeringPanelController({', '\nlet engineeringPanelReleased'),
   section('function refreshEngineeringPanelState(): void {', '\nfunction updateChips(): void {'),
@@ -132,6 +134,7 @@ export function mount(input: Readonly<{ save: SaveStateV2; booted: Booted; nav: 
   const toast = vi.fn();
   const env: Record<string, unknown> = {
     document: dom.window.document, EngineeringPanelController, performance, Date,
+    createTrainingForgePracticeAdapterV1, trainingActive: () => false,
     f4Runtime: input.booted.runtime, revisionRepo: input.booted.repository, save: input.save, nav: input.nav,
     arc3EngineeringState: engineering.state, arc3EngineeringProtection: null, lastArc3ProjectionDiagnostics: null,
     f4RuntimeMayMutate: (runtime: unknown) => runtime === env.f4Runtime,

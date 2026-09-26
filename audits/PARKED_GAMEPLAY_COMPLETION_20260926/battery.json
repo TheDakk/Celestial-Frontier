@@ -1,0 +1,50 @@
+[
+  {
+    "name": "develop-profile-accepted",
+    "returncode": 1,
+    "I5_only": true,
+    "sha256": "ba45021311e004b0545a36044fd2a966864fedb813b5be22cadf8d32b08411be"
+  },
+  {
+    "name": "tsc-root",
+    "returncode": 0,
+    "I5_only": false,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "tsc-app",
+    "returncode": 0,
+    "I5_only": false,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "tsc-worker",
+    "returncode": 0,
+    "I5_only": false,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "artaudit",
+    "returncode": 0,
+    "I5_only": false,
+    "sha256": "046c09792789f5099beac41496570a7dc58420ee4a9fec0d1d97d45bb8f47f21"
+  },
+  {
+    "name": "overridecheck",
+    "returncode": 0,
+    "I5_only": false,
+    "sha256": "b5bc5aed7f14e3c849a2db17eb64e4ccc69556e7f6733dece64b436504ce41ff"
+  },
+  {
+    "name": "speccheck",
+    "returncode": 0,
+    "I5_only": false,
+    "sha256": "b990b069a1d3ed60a587623f110cf6ad1ee1f3b6fffc919befb4f5bbcad01310"
+  },
+  {
+    "name": "overridecontrol",
+    "returncode": 0,
+    "I5_only": false,
+    "sha256": "a690e68fd52b2f98c261ce9b0decdf5f408217f4ed49b00b5bb7f01fa6f7101f"
+  }
+]

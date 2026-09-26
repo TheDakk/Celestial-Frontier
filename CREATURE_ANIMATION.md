@@ -800,3 +800,8 @@ record, binding and seam shapes. Motion/contact/marking helpers import those
 structural types directly; the Pixi loader re-exports existing public names for
 compatibility. Strict root typechecking no longer reaches Pixi/WebGPU through
 motion. Runtime output is unchanged (13-module parity receipt in C24 audit).
+
+
+### Recovered selected-detail presentation — matches code as of 2026-09-26
+
+living-species-preview.ts owns bounded whole-image breath/sway/pulse/drift for the selected Compendium portrait. It reuses the complete-genome SpeciesArtLoader portrait lease, creates no extra texture/canvas, and does not modify paint/anatomy/rig/genome/save. Hidden state pauses; reduced motion draws one static frame; Back/Close/replacement releases the ticker and image. The generated creature rig pipeline remains a separate priority.

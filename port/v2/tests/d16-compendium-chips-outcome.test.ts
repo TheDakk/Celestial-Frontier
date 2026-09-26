@@ -1,3 +1,4 @@
+import { LivingSpeciesPreviewControllerV1 } from '../apps/game/src/living-species-preview.js';
 /* D16 parity — the Compendium's kingdom + rarity filter chips and category shelves (v1 `_codexTabs`, `codexKing`, `codexRare`,
  * `_SHELF_OF`, `_cdxOpen`) — INVENTORY rows #36/#37.
  *
@@ -60,6 +61,7 @@ function mount(source = MAIN) {
     esc: (v: unknown) => String(v).replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`),
     fillPanel: (id: string, html: string) => { if (id === 'codex') doc.getElementById('codexpanel')!.innerHTML = html; },
     openPanelId: () => 'codex', projectDisplayRarity, CompendiumVirtualList,
+    LivingSpeciesPreviewControllerV1, motionOK: () => true,
     releaseCompendiumAudition() {}, releaseCompendiumFeedExpression() {}, cancelCodexDetailArt() {},
     compendiumAuditionController: stub(), compendiumFeedController: stub(), compendiumExplorerMealController: stub(), compendiumBreedController: stub(),
     compendiumRenameController: stub(), compendiumScoutController: stub(), compendiumCreatureProgressionSurface: { detach() {} },

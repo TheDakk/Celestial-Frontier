@@ -69,59 +69,64 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 - **Codex's sealed inventories** (release/Guide bullets, budgets, pins) are never rebound by Claude. Propose bullets in an audit README (the G4 README has one).
 - **The lone original clone** at `/Users/nick/Projects/Celestial-Frontier` is Nick's (`develop`). Don't edit it.
 
-## Current sprint handoff — Generated Creature Pipeline, 2026-09-26
+## Current shared sprint handoff — 2026-09-26
 
-Codex/macOS: /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac → origin/openai/mac.
-HTTPS origin; repository keychain signing, every commit G. Claude's worktree is read-only.
-D22/D23 and the pipeline PROGRAM.md are current. Mac-only development: never push, merge from
-or recreate either retired Windows branch. Read both lane mailboxes at start/end; no Nick relay.
+Mac-only: Codex `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`;
+Claude `/Users/nick/Projects/celestial-frontier-anthropic-mac`, `anthropic/mac`.
+Read the other absolute mailbox at start/end, reply only in your own. Repo-keychain
+signed commits (G), HTTPS origin, shared object store. No new branches or Windows refs.
+Nick need not open the other app or relay messages. Original clone is read-only to agents.
 
-Disk law: check df at every batch boundary, cleanup below60GiB, stop/clean below40GiB.
-This batch185GiB before →205GiB after two completed I5 worktrees and38 stale preview packages
-removed; newest2 retained and git status unchanged. No own stashes/temp worktrees remain.
-Finisher model cache and named recovery/evidence retained. See audits/G_PIPELINE_CODEX_20260926.
+### Latest Nick direction and completed recovery
 
-Completed C34 copy checkpoint: signed Claude bba9215e merged no-ff (inherited main.ts
-changes announced),119 release bullets,41 topics,5 briefings;7ea28e02/C17/D19 retained.
-Full develop profile504 tool passes,5,562 unit passes, standingI5 only; all seven manual
-owners PASS;81 focused copy tests and native phone/desktop Guide briefings PASS. Root validate PASS.
-Own-branch push is explicitly authorized, each measured pack below2GB. No PR/label,
-hosted attempt, develop/main merge, release or deploy. Budget UNFROZEN; no hosted authority.
+Finish the preserved parked gameplay now AND continue the Generated Creature Pipeline in
+parallel. Its2 original commits remain in the local archive tag and committed191KiB bundle
+(`audits/G_PIPELINE_CODEX_20260926/RECOVERY.md`). No lost work or recreation of old branches.
+Primary gameplay and active-play Weekly Charters were already integrated. Forge Training
+and selected Compendium portrait motion are recovered; current16-card curriculum and
+Guide/release instruments updated. Old wall-week code, import door and whole-file replacements
+are superseded, not pending features. Full evidence: `audits/PARKED_GAMEPLAY_COMPLETION_20260926`.
 
-Next order:
-1. Sign/push completed copy checkpoint, then G2.
-2. G2: ~20 Earth quadruped generated masters from the compiled controlled-layout prompt,
-   with exact prompts and visible-anatomy verifier counts. NO new hand authoring. One sheet.
-3. Derived six marking masks, unchanged conservation gate.
-4. Review Claude G1 auto-author contract against unchanged intake and38 reference packets;
-   report field/invariant failures without silent repair.
-5. G5 phone-deliverable finished original engine after G3; desktop per individual.
-6. Only after G1 PASS: S4 training-only feasibility map, then the ONE authorized fresh epoch
-   (declare new untouched corpus before tuning) or one recommended target decision for Nick.
-Hand paintings, missions/Outposts numbers, pack diet and I5 are parked until G1 passes.
+Native390×844 and1440×900: practice produces the next lesson without any live save/storage
+change; portrait animates one image, reduced motion stops the ticker, Back releases ownership.
+The native run exposed and repaired a Training-panel overlap; original failure/control retained.
+Root validate passes50 unchanged legacy fingerprints. Integrated final battery507 tool passes,5,615 unit passes, standingI5 only; all7 manual owners pass. Native320×568 also passes, including Close/reopen and action isolation. No full browser certificate or physical-phone claim.
 
-S4 candidates03/13 remain rejected; prior runtime restored exactly. Old held-out corpora are
-consumed and never reused. S4 refusal packet: audits/S4_PRODUCTION_EPOCH_20260926/README.md.
-Claude builds G1/G3; Codex supplies G2/masks/G5 and reviews the interface. Shared signed commits
-are immediately available; Nick need not open another app. Prior remote openai/mac6cbeefe0;
-copy checkpoint f01f911e is signed G and pushed (18,031,040-byte pack). Pre-existing .DS_Store stays untouched.
+### Generated Creature Pipeline — still the priority
 
-Remote cleanup complete: only openai/mac, anthropic/mac, develop and main remain. Retired
-parked OpenAI tip retained by local archive tag. Free219GiB at copy checkpoint.
-G1 contract review delivered (G1_REVIEW.md):12/40 red, all-visible presence lacks independent
-counts. Claude G3 has since landed; merge its signed result after this checkpoint for G5.
+D22/D23 PROGRAM.md is current. Claude G1/G3 and cleanup merged through signedfdb9f627
+by no-ffbd5530d7. G3 delivers pinned on-demand art outside the core pack; preserve its routing.
+G1 remains12/40, below30; hand ceiling30/40. Review findings and exact invariants are in
+`audits/G_PIPELINE_CODEX_20260926/G1_REVIEW.md`. Claude has since merged the limb counter and advanced G1/G4 through signedfd37bfd6 (not yet merged here). G1v5 remains12/40 and scores10/20 on G2; mutation controls improved. D24 is Claude’s pending denominator decision, not authority to weaken this gate.
 
-## Preserved unfinished gameplay — keep visible across handoffs
+G2 complete at90ef2c56:20 quadruped originals, exact prompts, source/verifier hashes and ONE
+review sheet in`audits/G2_QUADRUPED_PILOT_20260926`;120 derived six-pattern mask candidates.
+NO hand authoring. IC4 reports10 ADMIT/10 REFUSE but these are unqualified: Coyote places a
+paw on an ear. Requested counts are never acceptance. Keep originals unchanged for G1 tests.
+Masks conserve source alpha; G1 record binding is still required before rig admission.
 
-Signed parked WIP cf1b9a78 is preserved by local tag archive/openai-parked-gameplay-20260904
-and the verified191KiB recovery bundle in audits/G_PIPELINE_CODEX_20260926. Remote branch
-was deleted at Nick's request; commits were NOT discarded. Batch4 recovered primary gameplay
-owners individually. Forge Training remains parked; assess old living-preview behavior against
-the current generated-art pipeline before marking it superseded. Weekly lifecycle is now live.
-See RECOVERY.md and BATCH4_OVERNIGHT_REPORT_20260905.md for exact disposition; no wholesale
-WIP merge. This is an outstanding-work pointer, not a change to G1/G2 priority.
+G5 engine/tests and native harness are in`audits/G5_FINISHER_ENGINE_20260926`. Codex supplies
+per-individual retained originals, bounded serial/deduplicated jobs, lazy desktop inference,
+phone delivery with zero model construction and exact PNG/conservation. Claude owns actual
+G5 gameplay/landfall routing and G4 selection. G5 native result will be recorded in that packet.
+A desktop Chromium phone-path proof is not physical iPhone or Nick quality acceptance.
 
+Only AFTER G1 PASS: S4 training-only feasibility map, then ONE fresh declared held-out epoch
+or one recommended target decision. Candidates03/13 rejected and unwired, old corpora consumed.
+Hand-painted rigs, missions/Outposts numbers, pack diet and I5 remain parked until G1 passes.
 
-## Latest steering — complete preserved gameplay first
+### Git, cleanup and next actions
 
-Nick explicitly requests finishing the removed parked branch work now. G2 delivered20 masters/120 candidate masks (10 ADMIT/10 REFUSE, unqualified; ear-as-paw verifier finding), no hand authoring. Audit README retains evidence. Recover Forge Training and assess/recover bounded living portraits against current owners, then resume G5. Existing weekly lifecycle already supersedes the old wall-week WIP. Free233GiB.
+Remote branches now only openai/mac, anthropic/mac, develop, main. Local OpenAI only openai/mac.
+Old I5 worktrees removed; keep newest2 ignored preview packages. Git connectivity passes.
+Original clone develop0 ahead/472 behind, modifiedpackage-lock.json and untracked.claude/:
+no pull performed. Historical Markdown retained verbatim; current references refreshed.
+Free230GiB at this batch boundary; check again at end, cleanup<60GiB, floor40GiB.
+
+Codex: finish current integrated verification, sign, run G5 native proof, publish only own lane
+with each measured pack<2GB under Nick's explicit I5-only push authority. Claude: consume
+signed G2/G5/recovery checkpoint from shared store, repair G1 presence/counter/material findings,
+and route G5. No Nick relay/wait for pushes. Last already-pushed Codex copy checkpointf01f911e:
+119 bullets,41 topics,5 briefings; current119-bullet recovery SHA is in measured-copy.json.
+No PR, label, hosted attempt, develop/main merge, release or deploy authorized by this work.
+The standing I5 red remains a real gate, not waived or rebound. Pre-existing.DS_Store untouched.
