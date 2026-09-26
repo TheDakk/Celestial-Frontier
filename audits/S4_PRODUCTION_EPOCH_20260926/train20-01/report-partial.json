@@ -1,0 +1,94 @@
+{
+  "schema": "cf-s4-production-evaluation/v1",
+  "purpose": "training",
+  "epochHash": "7fcaed142e2911c1fc375757d39eea11c8fbb7995d74ddfbea7a26074e4e539d",
+  "sourceHead": "d2cf5b79516418aaa423009eb40f84e6b2601ee2",
+  "candidateHash": "d31a6e57ba8b3dc846a752219a51dd6a9e11c823e4cbb832cbb005fe04321202",
+  "count": 256,
+  "seedBase": 110000000,
+  "hookSeedBase": 130000000,
+  "forecastSeedBase": 120000000,
+  "productionCases": 3072,
+  "productionMismatches": 0,
+  "phaseDispatchCases": 2048,
+  "cohorts": [
+    {
+      "id": "easy",
+      "baselineWins": 256,
+      "plannedWins": 256,
+      "commandWins": 256,
+      "oracleWins": 256,
+      "phaseNodes": 0,
+      "withdrawnTerminals": 0,
+      "swapEdges": 0,
+      "planningGapPp": 0,
+      "commandEdgePp": 0
+    },
+    {
+      "id": "normal",
+      "baselineWins": 132,
+      "plannedWins": 168,
+      "commandWins": 168,
+      "oracleWins": 168,
+      "phaseNodes": 0,
+      "withdrawnTerminals": 0,
+      "swapEdges": 0,
+      "planningGapPp": 14.0625,
+      "commandEdgePp": 0
+    },
+    {
+      "id": "guardian",
+      "baselineWins": 68,
+      "plannedWins": 95,
+      "commandWins": 140,
+      "oracleWins": 146,
+      "phaseNodes": 445,
+      "withdrawnTerminals": 1877,
+      "swapEdges": 517,
+      "solo": {
+        "v1Wins": 42,
+        "phaseWins": 36
+      },
+      "planningGapPp": 10.546875,
+      "commandEdgePp": 17.578125
+    },
+    {
+      "id": "titan",
+      "baselineWins": 92,
+      "plannedWins": 153,
+      "commandWins": 201,
+      "oracleWins": 202,
+      "phaseNodes": 615,
+      "withdrawnTerminals": 2114,
+      "swapEdges": 722,
+      "solo": {
+        "v1Wins": 17,
+        "phaseWins": 9
+      },
+      "planningGapPp": 23.828125,
+      "commandEdgePp": 18.75
+    }
+  ],
+  "threats": [],
+  "replayCases": 1024,
+  "replayMismatches": 0,
+  "parityCases": 512,
+  "parityMismatches": 0,
+  "scope": {
+    "campaignCertificate": false,
+    "registeredGuardianWorlds": 1,
+    "registeredTitanWorlds": 1,
+    "region": 0,
+    "partySizes": [
+      1,
+      3
+    ],
+    "planning": "independent 16-seed forecast with actual public stats; fixed tie rule",
+    "command": "fixed learned break policy; oracle upper bound separate",
+    "dispatch": "production settlement planner"
+  },
+  "recovery": {
+    "defeatActiveMs": 600000,
+    "defeatWoundStep": 0
+  }
+}
