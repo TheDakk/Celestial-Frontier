@@ -15,6 +15,12 @@
  * - `wrong-family`: another family's references match clearly better.
  * Presence (cf.anatomy-presence/v2) starts all-visible; hidden/folded are declared classes and are NEVER inferred here. */
 import {keyAndDespill} from '../../../../tools/local-image-generation/kit-contact-math.mjs';
+import {countVisibleAnatomy, referenceInventory, inventoryCheck} from './limb-counter.mjs';
+/** Counter results cached per painting (keyed by its mask array, which prepared copies share). */
+const COUNT_CACHE = new WeakMap();
+export const countOf = (subject) => { let c = COUNT_CACHE.get(subject.mask); if (!c) { c = countVisibleAnatomy(subject.mask, subject.w, subject.h); COUNT_CACHE.set(subject.mask, c); } return c; };
+const INV_CACHE = new WeakMap();
+const inventoryOf = (ref) => { let v = INV_CACHE.get(ref.mask); if (!v) { v = referenceInventory(countOf(ref), ref.authoring); INV_CACHE.set(ref.mask, v); } return v; };
 
 export const AUTO_AUTHOR_SCHEMA = 'cf.g1-auto-author/v1';
 const N = 240, WORK = 314; // contour samples; working grid for tracing (1254 / 4)
@@ -259,7 +265,7 @@ export function refineChain(target, dt, landmarksPx, refLandmarks, chain) {
 
 /** Author one target from same-family references (and, for the verdict, the other families' references and the mirrored target).
  * `refs`: [{family, subjectId, rgba?, prepared, authoring, h}] ; returns {verdict, reasons, authoring, presence, evidence}. */
-export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0 }) {
+export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0, counter = null, nudgeThinFrac = null }) {
   const same = refs.filter((r) => r.family === family), other = refs.filter((r) => r.family !== family);
   if (!same.length) return { verdict: 'REFUSE', reasons: ['no-reference: no other hand-authored subject of family ' + family], authoring: null };
   const tr = same.map((r) => transferReference(target, r)).sort((a, b) => a.cost - b.cost), best = tr[0], reasons = [];
@@ -282,9 +288,14 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
     for (const j of Object.keys(landmarksPx)) landmarksPx[j] = landmarksPx[j].map((v) => Math.round(v * 10) / 10); }
   if (skeleton) return skeletonAuthor({ target, best, top, landmarksPx, rawLandmarks, graph: skeleton.graph, convention: learnConvention(same), reasons, family, id, habitat, materials, mirrorBest, otherBest, tr });
   let parts = best.parts.map((p) => ({ ...p, polygonPx: p.polygonPx.map(([x, y]) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10]) }));
+  // v3: the INDEPENDENT counter's inventory admission, on the UNNUDGED transfer (counting stays strict while placement may relax)
+  let inventory = null; if (counter) { const tc = countOf(target), rc = countOf(best.ref);
+    inventory = inventoryCheck(tc, rc, inventoryOf(best.ref), rc.detached.length, parts, { remainderPart: best.ref.authoring.remainderPart, sameFamilyCounts: same.map((r) => countOf(r)), ...(counter.options ?? {}) });
+    reasons.push(...inventory.reasons);
+    inventory = { ...inventory, target: { appendages: tc.appendages.map(({ k, frac, class: c, attach }) => ({ k, frac, class: c, attach })), detached: tc.detached, byClass: tc.byClass }, reference: { subject: best.ref.subjectId, byClass: rc.byClass, detached: rc.detached.length } }; }
   // optional bounded nudge: each non-remainder part may translate within ±nudgeFrac of the diagonal to sit on its painted anatomy
   const nudged = []; if (nudgeFrac > 0) { const Rn = nudgeFrac * Math.hypot(target.box.w, target.box.h), stepN = Rn / 3;
-    parts = parts.map((p) => { if (p.id === best.ref.authoring.remainderPart || p.joint === 'root') return p; const base = paintCoverage(target.mask, target.w, target.h, p.polygonPx); let bestC = base, bd = [0, 0];
+    const diagArea = target.box.w * target.box.h; parts = parts.map((p) => { if (p.id === best.ref.authoring.remainderPart || p.joint === 'root') return p; if (nudgeThinFrac !== null && polyArea(p.polygonPx) > nudgeThinFrac * diagArea) return p; const base = paintCoverage(target.mask, target.w, target.h, p.polygonPx); let bestC = base, bd = [0, 0];
       for (let dy = -Rn; dy <= Rn + 1e-9; dy += stepN) for (let dx = -Rn; dx <= Rn + 1e-9; dx += stepN) { if (!dx && !dy) continue; const c = paintCoverage(target.mask, target.w, target.h, p.polygonPx.map(([x, y]) => [x + dx, y + dy])); if (c > bestC + 0.05) { bestC = c; bd = [dx, dy]; } }
       if (bd[0] || bd[1]) { nudged.push({ id: p.id, dx: Math.round(bd[0]), dy: Math.round(bd[1]), from: +base.toFixed(2), to: +bestC.toFixed(2) }); return { ...p, polygonPx: p.polygonPx.map(([x, y]) => [Math.round((x + bd[0]) * 10) / 10, Math.round((y + bd[1]) * 10) / 10]) }; }
       return p; }); }
@@ -302,7 +313,7 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
   const authoring = { id, family, ...(habitat ? { habitat } : {}), landmarksPx, groundLineY: Math.min(0.999, Math.max(0.05, best.groundLineY)), materials, remainderPart: best.ref.authoring.remainderPart, parts,
     coverage: { declarations: `G1 automatic authoring: landmarks = median of ${top.length} registered references; parts from ${best.ref.subjectId}. No hidden/folded inference; absent only by visible-paint evidence.`, sourceFacing: 'right', visualAcceptance: 'none — automatic' } };
   return { verdict: reasons.length ? 'REFUSE' : 'ADMIT', reasons, authoring, presence: { schema: 'cf.anatomy-presence/v2', absent: [], hidden: [], folded: [] },
-    evidence: { schema: AUTO_AUTHOR_SCHEMA, chains: chainLog, nudged, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, costs: tr.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
+    evidence: { schema: AUTO_AUTHOR_SCHEMA, chains: chainLog, nudged, inventory, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, costs: tr.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
 }
 
 /** Skeleton mode: parts grown from the TARGET's own paint by nearest bone of the placed skeleton, traced to polygons; the verdict is
