@@ -39,6 +39,13 @@ This is Stage G5 of the Generated Creature Pipeline (`audits/GENERATION_PIPELINE
   - `Math.floor` in the box kernel fails the kernel and end-to-end tests;
   - dropping the record-ownership check in the hook fails the hook test.
 
+## Stage in a real browser (`stage-smoke/`, run-01: PASS)
+
+- **Setup:** built package 7710c91d at 390×844@3 touch; `?battle2=1&vs=Crab,Mud Crab`, plain then `&finish=1`. The matchup picker now forwards the finish provider, and the stage publishes `data-battle2-finished`.
+- **With the flag:** both fighters draw their admitted finished atlas (`left:true right:true`, via Codex's delivered originals, the admission and the loader composition with the morph on top). The study plays, delivery files are fetched only with the flag (4), and there are 0 page errors.
+- **Without the flag:** no finished attribute and no delivery fetch.
+- **Visually,** the finish is subtle (0.66 % of the master is editable under today's alpha = 255 rule).
+
 ## Phone path in a real browser (`phone-smoke/`, run-02: PASS)
 
 - **Setup:** built package 14b712e6, 390×844@3 touch (finish tier `phone`); the veteran save plus Codex's three canonical crabs (Crab, Freshwater Crab, Mud Crab), whose finished originals it published under `library/creature-finish/<key>/`. Fresh profiles, `plain` then `?finish=1`.
