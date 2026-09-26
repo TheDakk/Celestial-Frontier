@@ -1,0 +1,47 @@
+[
+  {
+    "id": "06-trout",
+    "filmPath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/battle-full.webm",
+    "filmBytes": 7282802,
+    "filmSha256": "9f0a1df9bd4dec6497c685de3fae7bd94cc15bc64eb113916e5c229e1c945ee4",
+    "sheet": "/private/tmp/cf-c49-film-review/06-trout.png",
+    "sheetSha256": "e0dd24233e89844ce5a90e8480993d683eef1b45aba7f0feeaebbe8330a9dc21",
+    "sampling": "2fps, complete approximately12s film; full native stills separately inspected"
+  },
+  {
+    "id": "07-perch",
+    "filmPath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/battle-full.webm",
+    "filmBytes": 7367576,
+    "filmSha256": "41512f2277ca57d5b58533dbdbedd0d5eadfe448488da8e8400ad70247167cbd",
+    "sheet": "/private/tmp/cf-c49-film-review/07-perch.png",
+    "sheetSha256": "684dba04df8dfdf50dcc68ce8e3c6dafa4d2f6453dde330f24a020bdcd297e26",
+    "sampling": "2fps, complete approximately12s film; full native stills separately inspected"
+  },
+  {
+    "id": "08-cod",
+    "filmPath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/battle-full.webm",
+    "filmBytes": 7049992,
+    "filmSha256": "7a47d5e8995127ac2059416fc6e474ac94a8caa548815719b6ee9b4ea93f3de1",
+    "sheet": "/private/tmp/cf-c49-film-review/08-cod.png",
+    "sheetSha256": "a63c972eb9f09494998c930ced9d0bf974891b9d10f5259298a1b97e16ab3207",
+    "sampling": "2fps, complete approximately12s film; full native stills separately inspected"
+  },
+  {
+    "id": "09-carp",
+    "filmPath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/battle-full.webm",
+    "filmBytes": 7566622,
+    "filmSha256": "ae1f7e5266705fb2c8420b66bd2eb39c42192ebcd4107378658ba732c738a6be",
+    "sheet": "/private/tmp/cf-c49-film-review/09-carp.png",
+    "sheetSha256": "c3d85578d310959204b9d6b5b34460916dc979afa40659b69fa310961a454a4b",
+    "sampling": "2fps, complete approximately12s film; full native stills separately inspected"
+  },
+  {
+    "id": "10-herring",
+    "filmPath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/battle-full.webm",
+    "filmBytes": 7532375,
+    "filmSha256": "4e19f74e012a4687f0d6b026f883e14d89821a40d4b7608c54511fc0fb0e2468",
+    "sheet": "/private/tmp/cf-c49-film-review/10-herring.png",
+    "sheetSha256": "b4cca96f8a7b3f329b723c0055f26f1886ad8f7c4aa1faedc938d00192ee99a4",
+    "sampling": "2fps, complete approximately12s film; full native stills separately inspected"
+  }
+]

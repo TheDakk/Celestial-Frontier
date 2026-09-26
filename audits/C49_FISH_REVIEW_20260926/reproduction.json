@@ -1,0 +1,138 @@
+{
+  "schema": "cf.c49-reproduction/v1",
+  "rows": [
+    {
+      "id": "07-perch",
+      "options": {
+        "fixedJoints": [
+          "root"
+        ],
+        "shapeJoints": [
+          "pectoralNear",
+          "pectoralFar",
+          "jaw",
+          "head",
+          "dorsal",
+          "caudal",
+          "spine0",
+          "spine1",
+          "spine2",
+          "spine3",
+          "spine4",
+          "spine5"
+        ],
+        "contactEndpoints": [],
+        "paintBoundaryPairs": [
+          [
+            "body",
+            "body-1"
+          ],
+          [
+            "body-3",
+            "body-5"
+          ],
+          [
+            "body",
+            "body-2"
+          ]
+        ]
+      },
+      "preSplitSha256": "8f462a82d0f7be99814e581cc21a860e2a64d61b8c4a23449fbd5c652caeb2f4",
+      "recordSha256": "cfbe868474d435b9d40c14a591063fe00671c06fd650347793939b4210b462cf",
+      "bindingFileSha256": "d93c03d524fed21371b4254785bf4b26c9a3669842c3ab6a57753bffea5f209e",
+      "bindingHash": "8caccda18b86f7398af0360a25221eb90dcb80b6716286dd25a900bcaf910713",
+      "byteExact": true,
+      "receiptExact": true
+    },
+    {
+      "id": "08-cod",
+      "options": {
+        "fixedJoints": [
+          "root"
+        ],
+        "shapeJoints": [
+          "pectoralNear",
+          "pectoralFar",
+          "jaw",
+          "head",
+          "dorsal",
+          "caudal",
+          "spine0",
+          "spine1",
+          "spine2",
+          "spine3",
+          "spine4",
+          "spine5"
+        ],
+        "contactEndpoints": [],
+        "paintBoundaryPairs": [
+          [
+            "body",
+            "body-1"
+          ],
+          [
+            "body-0",
+            "body-2"
+          ],
+          [
+            "body-3",
+            "body-5"
+          ],
+          [
+            "body",
+            "body-2"
+          ],
+          [
+            "body",
+            "body-5"
+          ]
+        ]
+      },
+      "preSplitSha256": "d0e829049adcd348d2022a1b377926ae6fe56d131c469e748e3f5e25884c5a29",
+      "recordSha256": "3fb9106352ac81df53c18994d5da6a649f758588478d661fa271baaaae714191",
+      "bindingFileSha256": "a58b74a14448df1cb38c1737438fb65129c2bd59cd01fd4cfbf3c5f55028355e",
+      "bindingHash": "11a1ae95a73dc6462237236d1c1de96c06de18d42d7a1d178b488729d0e1caf6",
+      "byteExact": true,
+      "receiptExact": true
+    },
+    {
+      "id": "09-carp",
+      "options": {
+        "fixedJoints": [
+          "root"
+        ],
+        "shapeJoints": [
+          "pectoralNear",
+          "pectoralFar",
+          "jaw",
+          "head",
+          "dorsal",
+          "caudal",
+          "spine0",
+          "spine1",
+          "spine2",
+          "spine3",
+          "spine4",
+          "spine5"
+        ],
+        "contactEndpoints": [],
+        "paintBoundaryPairs": [
+          [
+            "body",
+            "body-1"
+          ],
+          [
+            "body-3",
+            "body-5"
+          ]
+        ]
+      },
+      "preSplitSha256": "c4ce390dd71ce8b6d4398d049fbb871da434840c5d8247f7010a563d76f74668",
+      "recordSha256": "ff582652feba9e1a51be808004a8e5fbb94007d88285321161156ea1020260b3",
+      "bindingFileSha256": "b9e27e9b870a65c8dfdedaade78a9113a03f2dc316ce7980e33bc65500f071ee",
+      "bindingHash": "f7fd14857053ce0dc3af62b3cf8194ec26016bf54c59f41d3817eb9e849a0d15",
+      "byteExact": true,
+      "receiptExact": true
+    }
+  ]
+}

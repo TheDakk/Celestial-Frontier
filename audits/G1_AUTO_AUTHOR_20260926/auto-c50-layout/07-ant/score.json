@@ -1,0 +1,9 @@
+{
+ "id": "07-ant",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches insect better (0.0257 < 0.0320)"
+ ],
+ "semanticPresence": null
+}

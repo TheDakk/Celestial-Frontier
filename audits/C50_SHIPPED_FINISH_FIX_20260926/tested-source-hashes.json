@@ -1,0 +1,38 @@
+{
+  "head": "e12a378656466b2905c5b9438860986d59df3027",
+  "scope": "Working-tree implementation tested by retained battery; compiler prompt edits were uncommitted, stable throughout. Final docs/audit assets follow. Not a new exact-head browser certificate.",
+  "files": [
+    {
+      "path": "tools/local-image-generation/kit-tracked-inputs.mjs",
+      "sha256": "1f478bac2b6348a39eae8a9e7ae2a29d5251a90f1cc4d2ff15e273341bdd1917"
+    },
+    {
+      "path": "tools/local-image-generation/game-preview-server.mjs",
+      "sha256": "bd8e9687570798d83af444e6a8cc7072ab6dc0de2eb2bc332b1c1f69c495605c"
+    },
+    {
+      "path": "tools/local-image-generation/creature-finish-math.mjs",
+      "sha256": "23a8d08e0ecde69c47fd1da0f0ad72caca68546655008f0efa14ec6189aa6c34"
+    },
+    {
+      "path": "port/v2/apps/game/kit-runtime-assets.ts",
+      "sha256": "9a123a2a6d0aa7e1c006fd99aab7c77777efa089933937f192c58b6e15444de5"
+    },
+    {
+      "path": "port/v2/tests/kit-runtime-assets.test.ts",
+      "sha256": "64b13556d01132eab423aaf1a455221640e4e111c77a6f4bdfd0471dc1d1b8a1"
+    },
+    {
+      "path": "tools/local-image-generation/game-preview-server.test.mjs",
+      "sha256": "77138e472f7f250e56edd5f62084d7f318a59dc86d7eda930e7ac550f6ae0c7d"
+    },
+    {
+      "path": "tools/local-image-generation/kit-integration-controls.test.mjs",
+      "sha256": "d981f25216372ff11e537299244b32b33ff3bf97236413f0fdce65fca26d5cca"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/compile-library-master.mjs",
+      "sha256": "a4b9e356e82cb3a7cd86f82b4993d6ae85538996854a2ab9afccae3fe57aafdf"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "head": "e12a378656466b2905c5b9438860986d59df3027",
+  "dirtySource": true,
+  "results": [
+    {
+      "name": "develop-profile",
+      "command": [
+        "node",
+        "tools/check-profile.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 1,
+      "logSha256": "ac0114e3f8d6a69ce0f639a4684ad75cf5f4d44c0e19a9be6b0b78fa255b14cc"
+    },
+    {
+      "name": "typecheck-root",
+      "command": [
+        "npx",
+        "tsc",
+        "--noEmit",
+        "--noUnusedLocals"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "typecheck-app",
+      "command": [
+        "npx",
+        "tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "typecheck-worker",
+      "command": [
+        "npx",
+        "tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.worker.json"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "artaudit",
+      "command": [
+        "npm",
+        "run",
+        "artaudit"
+      ],
+      "exitCode": 0,
+      "logSha256": "046c09792789f5099beac41496570a7dc58420ee4a9fec0d1d97d45bb8f47f21"
+    },
+    {
+      "name": "overridecheck",
+      "command": [
+        "npm",
+        "run",
+        "overridecheck"
+      ],
+      "exitCode": 0,
+      "logSha256": "b5bc5aed7f14e3c849a2db17eb64e4ccc69556e7f6733dece64b436504ce41ff"
+    },
+    {
+      "name": "speccheck",
+      "command": [
+        "node",
+        "tools/speccheck.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "b990b069a1d3ed60a587623f110cf6ad1ee1f3b6fffc919befb4f5bbcad01310"
+    },
+    {
+      "name": "overridecontrol",
+      "command": [
+        "npm",
+        "run",
+        "overridecontrol"
+      ],
+      "exitCode": 0,
+      "logSha256": "a690e68fd52b2f98c261ce9b0decdf5f408217f4ed49b00b5bb7f01fa6f7101f"
+    }
+  ]
+}

@@ -1,0 +1,2266 @@
+{
+  "schema": "cf.c49-source-pinned-review-manifest/v1",
+  "scope": "Review inventory only; no registry/library admission. Retained reports describe their recorded source; current hashes do not create a new native run.",
+  "currentHead": "e12a378656466b2905c5b9438860986d59df3027",
+  "originalStatic": {
+    "path": "audits/G1_AUTO_AUTHOR_20260926/harness/static.ts",
+    "sha256": "9bc8989236eaec1fe1362626d2212e1e187bc0bb65eea9ff698626495bb51203",
+    "bytes": 12314,
+    "tracked": true
+  },
+  "originalStaticMatchesOwn": true,
+  "rows": [
+    {
+      "id": "06-trout",
+      "reference": {
+        "subject": "salmon",
+        "authoringSha256": "b973fe0595d98ed9c27e3c272d03163fbbf777f810e6a92c93f2962a61a7f390",
+        "masterSha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4"
+      },
+      "identity": {
+        "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Trout\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2927950469\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"7\"]]]]",
+        "seed": 2927950469,
+        "ownerId": "authored:archetype-sprint/06-trout",
+        "earthName": "Trout"
+      },
+      "recordRecipeHash": "d62718bf3eac731a6af7bd6134487453bbc16ed45fbc4b6a8a4b6f45b9e62b1d",
+      "bindingHash": "82cadcdc93183f671a1eaa68749bbf86aa29fc23c871c8167c2b85dcc6c9f973",
+      "pairs": [
+        [
+          "body",
+          "spine1"
+        ],
+        [
+          "body",
+          "spine2"
+        ],
+        [
+          "body",
+          "spine3"
+        ]
+      ],
+      "helperMatches": true,
+      "master": {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/06-trout/packet/master.png",
+        "sha256": "ec01a13926f9b5acc98c91dc041c178cafb0e71cc933c880a6c113e1b4a192b6",
+        "bytes": 809499,
+        "tracked": false
+      },
+      "masterMatchesAutomaticProvenance": true,
+      "fitFiles": [
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/binding.json",
+          "sha256": "76fcc605bc2eed9a1b3664a43db8c99a49a4500d75d99fa46c0dee343a55c0e4",
+          "bytes": 1828141,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/declaration.json",
+          "sha256": "e9dbf751720c237a037d34b7c5709dbc1cd62abdfb18589b81cf40c7bc387df4",
+          "bytes": 1515,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/intake-provenance.json",
+          "sha256": "e5357f0222411c4a45a9343a3655140eef1dd942a1e106d343dc54bb2ace86d2",
+          "bytes": 3115,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/label-authoring-receipt.json",
+          "sha256": "12e2ed4f2c7eeab3becb08e678b97d3de5d614ddc48b45bc188629507f4aed01",
+          "bytes": 553,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/labels.png",
+          "sha256": "67d9795244850534d3971eea16f8e63075194593244dcdfc01c9af545b77277e",
+          "bytes": 46524,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/atlas/06-trout.json",
+          "sha256": "eeb21a25eafe9ad47e29a8073857136f21415d5d123e80a4174110c4b5473c46",
+          "bytes": 5388,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/atlas/06-trout.png",
+          "sha256": "d5107b1092c7aaca3f187a82d6c6d63d93c8262126a1f69f1088e9dfefe71d00",
+          "bytes": 826250,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/atlas/receipt.json",
+          "sha256": "1ee9c0b71170428fab48a722c27711f2334f7f3ecd85ac6dc2baaf20e7c84f44",
+          "bytes": 2373,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/binding.json",
+          "sha256": "7041934dc067a1e7c84f4209d938a878b592b9499aeb90858a8433477b7484d1",
+          "bytes": 4496,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/keyed.png",
+          "sha256": "3991929d7019ef1312a8696bc68d0334ff325f984b0a8320c5f371c9888ccd65",
+          "bytes": 979316,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/manifest.json",
+          "sha256": "0ca5fc84c1c4a461e3c9f1888763c7c330b48691644738181c65e930e06016d3",
+          "bytes": 2114,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/ownership.png",
+          "sha256": "1f620c96a10d4b827d3bded29ba5d3881807fb86f9c2d876273d9634a7b95c5b",
+          "bytes": 91576,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/body.png",
+          "sha256": "241c2e8c75fcabcdc97a8cfda292c9ba4e41f6eca60c848e410332371dd602e6",
+          "bytes": 69998,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/caudal.png",
+          "sha256": "ef2870b6182cd02edf6ace159cc45e68f29c33c45f6d5784fd97e5485a291939",
+          "bytes": 134131,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/dorsal.png",
+          "sha256": "d0f391f98fbc2b4a58cf276c4daad1cfc0879683d22029916e1f707e5fdcf46a",
+          "bytes": 45024,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/far-pectoral.png",
+          "sha256": "315018b8ff2b254f8ca794c23bb2ee20a2b6c2ff61ba6d290bb0af877cdfc6a8",
+          "bytes": 1950,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/head.png",
+          "sha256": "0dc7eb35d2d3abb394d7c04247a042bceb4eb851d7ee5870f9f97061f78eb02b",
+          "bytes": 91367,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/jaw.png",
+          "sha256": "31f3b0b3c9239f37cce5bc5d09636dd97806c44d7250988c03848e62497535f7",
+          "bytes": 17513,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/near-pectoral.png",
+          "sha256": "8dedeb291d1946e9c24142cd2c5b6924b90435692cf159bcbea200d22ba792ea",
+          "bytes": 22100,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/spine0.png",
+          "sha256": "db9611fb220fe8de78510ca3724236516b954915f5efc60bfd556a4b93daf413",
+          "bytes": 107983,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/spine1.png",
+          "sha256": "7b1c7c2927fdd2d6d5a520db3352e968700c5d83079416afa618406c1c682d3e",
+          "bytes": 93192,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/spine2.png",
+          "sha256": "e7478cda896afd9d5bb2890a1b126472c82aae46aa09dc85d1f0c3631e5de932",
+          "bytes": 96401,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/spine3.png",
+          "sha256": "a0e9de56c0fccfdc9f91daf2672808fa292a7de143753f3fe49e5194918cbfbf",
+          "bytes": 118834,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/spine4.png",
+          "sha256": "ba4ac3204e7159ec6c20b0a4aef2dce60fe852cb89cfbd55f0ec6bdcf05b7a6d",
+          "bytes": 107170,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/parts/spine5.png",
+          "sha256": "789cafb0c30d50d3d4d650db06413761adf84c7101eb3380e9b227227c204395",
+          "bytes": 60543,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/receipt.json",
+          "sha256": "5deb397ef4968adbd06643a932697d78ab44977b3ccd3be8d1bfcb47e4bbbca3",
+          "bytes": 3688,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/pre-split-binding.json",
+          "sha256": "42672e242c7f6c1fd393df1a5a5fa47b84223b9bfd7325f1d781e90a77b96a3d",
+          "bytes": 1262797,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/receipt.json",
+          "sha256": "7ad1e676f1048560c497b9c45ed2a114deb18199e7c0772896579a7adc22daf9",
+          "bytes": 2045,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/record.json",
+          "sha256": "9df3313ddec25b98b84f7bd8d43e6208ec8d235e126356e68c7dd892909a1f8e",
+          "bytes": 5127,
+          "tracked": false
+        }
+      ],
+      "static": {
+        "source": "91a62a50f70571d19217724240b25be3a0d14123",
+        "status": "PASS_STATIC",
+        "inputs": [
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/record.json",
+            "sha256": "9df3313ddec25b98b84f7bd8d43e6208ec8d235e126356e68c7dd892909a1f8e",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/binding.json",
+            "sha256": "76fcc605bc2eed9a1b3664a43db8c99a49a4500d75d99fa46c0dee343a55c0e4",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/manifest.json",
+            "sha256": "0ca5fc84c1c4a461e3c9f1888763c7c330b48691644738181c65e930e06016d3",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/atlas/06-trout.png",
+            "sha256": "d5107b1092c7aaca3f187a82d6c6d63d93c8262126a1f69f1088e9dfefe71d00",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/keyed.png",
+            "sha256": "3991929d7019ef1312a8696bc68d0334ff325f984b0a8320c5f371c9888ccd65",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          }
+        ],
+        "producerComparison": {
+          "count": 68,
+          "currentOwnMissing": [],
+          "currentOwnMismatches": [],
+          "retainedChangedFlags": []
+        }
+      },
+      "native": {
+        "source": "91a62a50f70571d19217724240b25be3a0d14123",
+        "status": "DIAGNOSTIC_PASS",
+        "refusals": {
+          "left": 0,
+          "right": 0
+        },
+        "frames": 707,
+        "cpuP95Ms": 4.199999928474426,
+        "cpuThrottle": 4,
+        "fitSourcesMatch": true,
+        "fitSourceCount": 4,
+        "producerComparison": {
+          "count": 895,
+          "currentOwnMissing": [
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/record.json",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/binding.json",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/keyed.png",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/fit/parts/atlas/06-trout.png",
+            "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/06-trout/packet/master.png"
+          ],
+          "currentOwnMismatches": [
+            "port/v2/apps/game/src/creature-finish-source-pins.generated.ts",
+            "port/v2/apps/game/src/creature-finish-engine.ts",
+            "port/v2/apps/game/src/art-library.generated.ts"
+          ],
+          "retainedChangedFlags": []
+        },
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "712"
+            }
+          ],
+          "format": {
+            "duration": "11.863197"
+          }
+        },
+        "files": [
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/battle-full.webm",
+            "sha256": "9f0a1df9bd4dec6497c685de3fae7bd94cc15bc64eb113916e5c229e1c945ee4",
+            "bytes": 7282802,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn0-hit-approach-50.png",
+            "sha256": "1237a8aceb63104dbafa472504916a3fc35467dcc5e290424b86add696549740",
+            "bytes": 1206899,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn0-hit-impact.png",
+            "sha256": "cb9fb4d9c77257499da65941dc05cec47cd8a5c4403248f857f29fe837246eea",
+            "bytes": 696062,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn0-hit-reaction-50.png",
+            "sha256": "17de2ad009250ae6e24e6027daa14276f109ee25fdd2b50ca336fab4b2af8f21",
+            "bytes": 1228291,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn0-hit-return-end.png",
+            "sha256": "66fed33a95d892346946e3ed9165b739837cbcfaaf774d568036b7c50814605c",
+            "bytes": 1205658,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn1-hit-approach-50.png",
+            "sha256": "91865f040fc861269e823ce16d797c7dd7759f600f2c5c4b3de33a8982d27d14",
+            "bytes": 1208275,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn1-hit-impact.png",
+            "sha256": "f9b966330a599973976ecd829a083cbbc50dae0988505d78343a32a0b14f2a7e",
+            "bytes": 1211220,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn1-hit-reaction-50.png",
+            "sha256": "c95e85c6bc5f2c0c58920ad643554d6f6de16a9b5a6b0eed3f0459cae016623d",
+            "bytes": 1213458,
+            "tracked": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn1-hit-return-end.png",
+            "sha256": "043e51c92eae1518da5bf096522c472fd24a946dbc1d4e0054983f7f138e84e5",
+            "bytes": 1205686,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn2-dodge-approach-50.png",
+            "sha256": "1237a8aceb63104dbafa472504916a3fc35467dcc5e290424b86add696549740",
+            "bytes": 1206899,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn2-dodge-impact.png",
+            "sha256": "15961b894813805e8adbdaf87c8984370d12f13e40726170b7d4ecc9ece63051",
+            "bytes": 1226682,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn2-dodge-reaction-50.png",
+            "sha256": "6ebf5e46a02fd12eb6f9001862c325f99bfc5fd8bb31f95937272d8c545f26b1",
+            "bytes": 1229392,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn2-dodge-return-end.png",
+            "sha256": "66fed33a95d892346946e3ed9165b739837cbcfaaf774d568036b7c50814605c",
+            "bytes": 1205658,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn3-hit-approach-50.png",
+            "sha256": "1237a8aceb63104dbafa472504916a3fc35467dcc5e290424b86add696549740",
+            "bytes": 1206899,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn3-hit-impact.png",
+            "sha256": "cb26b96284b218e71608b1f40cbdf18ef7da7c326e0ab29b470621c400d68c31",
+            "bytes": 1210207,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn3-hit-reaction-50.png",
+            "sha256": "e17f602790ef8bfdb245d47bba7cb6cb9dec42bcdbfc5ce0c8031f7e6484e9cf",
+            "bytes": 1227771,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn3-hit-return-end.png",
+            "sha256": "af37f87b5f7b4d2f712f3a17bffd25a3ea625f6b169c9c170bef5dd5f9130ef8",
+            "bytes": 1213988,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn3-hit-idle-50.png",
+            "sha256": "1103afa3114a37ff26ea69fc94fa26554a0d60361d360c3ae93243b6531e8070",
+            "bytes": 1214818,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/turn3-hit-idle-90.png",
+            "sha256": "64f4bab69cdff1add227d3e73a7008c8662f9bc6ebe7b017240b19871f258d96",
+            "bytes": 1214736,
+            "tracked": false
+          }
+        ],
+        "all187RecordedTrackedProducersMatch": true
+      },
+      "retainedReports": [
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/weld-receipt.json",
+          "sha256": "d2b53aafdfe23dd3f6c47ebc53d91790cb715c969450f8350a92d01ec0672f0f",
+          "bytes": 1012,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/static.json",
+          "sha256": "e26a954928c87926424eb4012d3b382f32d1b67b7d7c8a0562010ba7b95e9abb",
+          "bytes": 7459,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/static.json.sources.json",
+          "sha256": "a76795829c766640cdd1fb99b9e4cfe13c8db2dc2dd144f03deb842670f60297",
+          "bytes": 15799,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/report.json",
+          "sha256": "5e535031c5865265c4f811b5351d4ef693151692d9e9a8d047899638337e5565",
+          "bytes": 356480,
+          "tracked": true
+        }
+      ],
+      "durableG2Master": {
+        "path": "audits/G2_FAMILY_PILOT_20260926/06-trout/master.png",
+        "sha256": "ec01a13926f9b5acc98c91dc041c178cafb0e71cc933c880a6c113e1b4a192b6",
+        "matchesPacketMaster": true
+      }
+    },
+    {
+      "id": "07-perch",
+      "reference": {
+        "subject": "bass",
+        "authoringSha256": "8da048f4c2be9106a763434c279ed370366c538801f6cc342c878492d18798fb",
+        "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
+      },
+      "identity": {
+        "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Perch\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"2217116209\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "seed": 2217116209,
+        "ownerId": "authored:archetype-sprint/07-perch",
+        "earthName": "Perch"
+      },
+      "recordRecipeHash": "4b59fc2dc5d11971147d4326df6f36e24019d1768d4de17b0c4e04274adda7d9",
+      "bindingHash": "8caccda18b86f7398af0360a25221eb90dcb80b6716286dd25a900bcaf910713",
+      "pairs": [
+        [
+          "body",
+          "body-1"
+        ],
+        [
+          "body-3",
+          "body-5"
+        ],
+        [
+          "body",
+          "body-2"
+        ]
+      ],
+      "helperMatches": true,
+      "master": {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/master.png",
+        "sha256": "182fc9ba765ebba2411b74a8a573b520acadc32a578a186cab9603a931c9f34b",
+        "bytes": 1076115,
+        "tracked": false
+      },
+      "masterMatchesAutomaticProvenance": true,
+      "fitFiles": [
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/binding.json",
+          "sha256": "d93c03d524fed21371b4254785bf4b26c9a3669842c3ab6a57753bffea5f209e",
+          "bytes": 2359044,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/declaration.json",
+          "sha256": "1988ea17253b6a3df0c23bb4587706c7dcdf949fe09cf02a599f3e1a9b2e8f21",
+          "bytes": 1517,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/intake-provenance.json",
+          "sha256": "1993a57fc56ca5126c35d8abe5e4832c66de667ab84ae5103e763ba95711faa8",
+          "bytes": 3115,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/label-authoring-receipt.json",
+          "sha256": "dd93e57a3e236216ba30ca512cbdb79b77595a37452ae961d170d7b8c571829a",
+          "bytes": 555,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/labels.png",
+          "sha256": "d65d670485c89014421342e22cf44b8f56002dcba484dd98606c2d4a347cfda7",
+          "bytes": 49636,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/atlas/07-perch.json",
+          "sha256": "213145ce566f8b4fde020edad5e3f46ff75881fc15b7216c4983073dedca37a7",
+          "bytes": 5397,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/atlas/07-perch.png",
+          "sha256": "c75cdbdf3cfe4f71b01bd8e7c1030d0ec51d13947dda4444025c051b913099cb",
+          "bytes": 1101208,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/atlas/receipt.json",
+          "sha256": "3829c4a33b4c96d16b4d7a0921adee54153d9081fc8e9002e44aefb33d816a65",
+          "bytes": 2373,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/binding.json",
+          "sha256": "9419578c21aac05e004f2d1019aff3065ff20de1e03cf4aea4bfadc9fb456f88",
+          "bytes": 4505,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/keyed.png",
+          "sha256": "d69422a4a64e2e6b6d5a256e052b34699c8dc034af7b0a23a807a357075f049b",
+          "bytes": 1314398,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/manifest.json",
+          "sha256": "bf1e1e1a9b2b6c93901a05c15866c1aea75c3781a05b1e77436ea5557f5a7b54",
+          "bytes": 2114,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/ownership.png",
+          "sha256": "3c898c23ddb0ab3a8b690d14786644c7880b42c1ba74db5ad5ef9b9fef2fca52",
+          "bytes": 118905,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body-0.png",
+          "sha256": "2a99b0b8fa30e8be27e1818349c2012cbd5a6515866f22bf380a926a6caa2dbe",
+          "bytes": 109422,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body-1.png",
+          "sha256": "6953f542b59aa7fb515134f11ec9db8f3cdead9a75b0417cf95973419606dabf",
+          "bytes": 81406,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body-2.png",
+          "sha256": "967ee58a7966d41bf18ac23b22749421101b0f99a09449621be3d5415dd31c3a",
+          "bytes": 100630,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body-3.png",
+          "sha256": "b23b936dbe847acebd1c72e69b5e810ccbedc919f37c39e71735b5930dd8ffb0",
+          "bytes": 163640,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body-4.png",
+          "sha256": "f55ab2fab40325602e3d5b5e2363288fafa152229adaae2d824d077718936971",
+          "bytes": 42653,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body-5.png",
+          "sha256": "1ba44063f6737ce028a482f94d50f1a876ae6a8d002fa06d444f43d87fc58226",
+          "bytes": 48704,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/body.png",
+          "sha256": "301ea3c3ed188275deb73a34bf5ebb51311aad47791e2df102d98168689e7f1d",
+          "bytes": 144950,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/caudal.png",
+          "sha256": "9cd4f5799c77dadf1f3cea861a85629d1b2bffd5fbfe601de015de65a421508d",
+          "bytes": 178682,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/dorsal.png",
+          "sha256": "512f0911b687d244e8484f659284ccac4ff4395cde1694553e1438cbc26970a0",
+          "bytes": 174301,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/far-pectoral.png",
+          "sha256": "5d4a36ad3383a96482509ff35a86a8fe5df9bccf8d4e29dcb7113d565342edcb",
+          "bytes": 27473,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/head.png",
+          "sha256": "af814effb793f797f24945faf67576b069601958e91c3a2c33a72d1e37cb4028",
+          "bytes": 129865,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/jaw.png",
+          "sha256": "710f0a09d8246d6abad58e23fc6f4ecc897fbe4d8c495d5cc0078c40d14c35a2",
+          "bytes": 31697,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/parts/near-pectoral.png",
+          "sha256": "46dc9084a6555a60796fe73ce1fab0967692669609b6db1e912f3653b45742ff",
+          "bytes": 74653,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/receipt.json",
+          "sha256": "2b3f4f5701d92d9d63e5fa88ca687d40285f559ca1b7287dba727ca85a8a9079",
+          "bytes": 3692,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/pre-split-binding.json",
+          "sha256": "8f462a82d0f7be99814e581cc21a860e2a64d61b8c4a23449fbd5c652caeb2f4",
+          "bytes": 1689176,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/receipt.json",
+          "sha256": "dc834423d5c27d7c7bf50bee3cfe64999e685b0a0b4e7640cd2ae6f01d9f5405",
+          "bytes": 2046,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/record.json",
+          "sha256": "cfbe868474d435b9d40c14a591063fe00671c06fd650347793939b4210b462cf",
+          "bytes": 5125,
+          "tracked": false
+        }
+      ],
+      "static": {
+        "source": "91a62a50f70571d19217724240b25be3a0d14123",
+        "status": "PASS_STATIC",
+        "inputs": [
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/record.json",
+            "sha256": "cfbe868474d435b9d40c14a591063fe00671c06fd650347793939b4210b462cf",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/binding.json",
+            "sha256": "d93c03d524fed21371b4254785bf4b26c9a3669842c3ab6a57753bffea5f209e",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/manifest.json",
+            "sha256": "bf1e1e1a9b2b6c93901a05c15866c1aea75c3781a05b1e77436ea5557f5a7b54",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/atlas/07-perch.png",
+            "sha256": "c75cdbdf3cfe4f71b01bd8e7c1030d0ec51d13947dda4444025c051b913099cb",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/keyed.png",
+            "sha256": "d69422a4a64e2e6b6d5a256e052b34699c8dc034af7b0a23a807a357075f049b",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          }
+        ],
+        "producerComparison": {
+          "count": 68,
+          "currentOwnMissing": [],
+          "currentOwnMismatches": [],
+          "retainedChangedFlags": []
+        }
+      },
+      "native": {
+        "source": "91a62a50f70571d19217724240b25be3a0d14123",
+        "status": "DIAGNOSTIC_PASS",
+        "refusals": {
+          "left": 0,
+          "right": 0
+        },
+        "frames": 707,
+        "cpuP95Ms": 4.899999976158142,
+        "cpuThrottle": 4,
+        "fitSourcesMatch": true,
+        "fitSourceCount": 4,
+        "producerComparison": {
+          "count": 895,
+          "currentOwnMissing": [
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/record.json",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/binding.json",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/keyed.png",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/parts/atlas/07-perch.png",
+            "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/packet/master.png"
+          ],
+          "currentOwnMismatches": [
+            "port/v2/apps/game/src/creature-finish-source-pins.generated.ts",
+            "port/v2/apps/game/src/creature-finish-engine.ts",
+            "port/v2/apps/game/src/art-library.generated.ts"
+          ],
+          "retainedChangedFlags": []
+        },
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "711"
+            }
+          ],
+          "format": {
+            "duration": "11.844250"
+          }
+        },
+        "files": [
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/battle-full.webm",
+            "sha256": "41512f2277ca57d5b58533dbdbedd0d5eadfe448488da8e8400ad70247167cbd",
+            "bytes": 7367576,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn0-hit-approach-50.png",
+            "sha256": "2675b3509d557b209bf0413ccbc54d97ba2d5ae5ffd502eca729863dcb4ea04b",
+            "bytes": 1193566,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn0-hit-impact.png",
+            "sha256": "5ad945873e410268a7c8fe13c9723ca3ca4b7edc6a3d6ebc888a6432dac7edb1",
+            "bytes": 682283,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn0-hit-reaction-50.png",
+            "sha256": "6af1cbe44bc79773323fb59dbcca84dfbf4c88db9af556e439456eb304c522b6",
+            "bytes": 1209894,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn0-hit-return-end.png",
+            "sha256": "daa33b65bdaeda9595f6511fa4a8c76cb5219983b58f63a09cd7524b74b1b5d8",
+            "bytes": 1193010,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn1-hit-approach-50.png",
+            "sha256": "a3d370749847067c6f5007279ce348c07c85708a4d8a86e1f3e2c18e947c04bf",
+            "bytes": 1195001,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn1-hit-impact.png",
+            "sha256": "36123973c40f5d902dc1ab1cc419c13cbcdfa858ea2fbc687144e07e02ddc7e0",
+            "bytes": 1195527,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn1-hit-reaction-50.png",
+            "sha256": "e434a8ed55bd7f96e1b19a97283f18557424f66677bbeabe6407fdfea51a85f9",
+            "bytes": 1199023,
+            "tracked": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn1-hit-return-end.png",
+            "sha256": "2933b99d9ed65819844484c6436e3cfdbc52faeb693df90dfb04c4315b497a49",
+            "bytes": 1192918,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn2-dodge-approach-50.png",
+            "sha256": "2675b3509d557b209bf0413ccbc54d97ba2d5ae5ffd502eca729863dcb4ea04b",
+            "bytes": 1193566,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn2-dodge-impact.png",
+            "sha256": "fdcb8c0afe8f453f5c644da11ee746e95567197b2944369102891a96e099108f",
+            "bytes": 1206403,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn2-dodge-reaction-50.png",
+            "sha256": "64bf519cb772ffc3b98326891835c7d2fd5e7d3b0f5ae3165097693b4a26a488",
+            "bytes": 1212117,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn2-dodge-return-end.png",
+            "sha256": "daa33b65bdaeda9595f6511fa4a8c76cb5219983b58f63a09cd7524b74b1b5d8",
+            "bytes": 1193010,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn3-hit-approach-50.png",
+            "sha256": "2675b3509d557b209bf0413ccbc54d97ba2d5ae5ffd502eca729863dcb4ea04b",
+            "bytes": 1193566,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn3-hit-impact.png",
+            "sha256": "1fe41024eccc8bc5039e3e8331c85b631fe2b5b5032422fc41db02f5c6f9d4d7",
+            "bytes": 1194560,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn3-hit-reaction-50.png",
+            "sha256": "ec4aaea5c464efbd6662b84f927fadb878c73419fcfb82225bd9eb9963451e7e",
+            "bytes": 1207403,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn3-hit-return-end.png",
+            "sha256": "cdbeeceffba3578e0165a61e3e4daac471df07c2135b9ce827b7368bed6e52b1",
+            "bytes": 1196483,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn3-hit-idle-50.png",
+            "sha256": "c59dbaeb4bb7167466d24432371dec1a1d860ed2ed3637e06ff626603ddf5240",
+            "bytes": 1197181,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/turn3-hit-idle-90.png",
+            "sha256": "af979fbb11d0b2a2dc1c604a02bd53224d18a61a683b77dd2623f3a19ea20d96",
+            "bytes": 1196499,
+            "tracked": false
+          }
+        ],
+        "all187RecordedTrackedProducersMatch": true
+      },
+      "retainedReports": [
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/weld-receipt.json",
+          "sha256": "0e715a5c441eb4bf713eb29ff5a4a83f8be8908374f9e9bca3f21e9b1faabc1a",
+          "bytes": 1017,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/static.json",
+          "sha256": "fbf9cd7f0951da71cfcedcfd500b07989ceff08760fdcc50f77f7372c4d29d99",
+          "bytes": 7463,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/static.json.sources.json",
+          "sha256": "e9b10c82816130ac9b60cede32bf793ff0dcdfaf528dd38b7196008dcf3cf737",
+          "bytes": 15799,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/report.json",
+          "sha256": "6ec9f0eac8d782db9ae1bf9569e428f4e81a97951956df929608820afa2f06c0",
+          "bytes": 355218,
+          "tracked": true
+        }
+      ],
+      "durableG2Master": {
+        "path": "audits/G2_FAMILY_PILOT_20260926/07-perch/master.png",
+        "sha256": "182fc9ba765ebba2411b74a8a573b520acadc32a578a186cab9603a931c9f34b",
+        "matchesPacketMaster": true
+      }
+    },
+    {
+      "id": "08-cod",
+      "reference": {
+        "subject": "bass",
+        "authoringSha256": "8da048f4c2be9106a763434c279ed370366c538801f6cc342c878492d18798fb",
+        "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
+      },
+      "identity": {
+        "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cod\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"4\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1819530406\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"24\"]]]]",
+        "seed": 1819530406,
+        "ownerId": "authored:archetype-sprint/08-cod",
+        "earthName": "Cod"
+      },
+      "recordRecipeHash": "a9077119c851fcd2434a36484302099d96bd6809aabf77c1fc1ff8705009dfc2",
+      "bindingHash": "11a1ae95a73dc6462237236d1c1de96c06de18d42d7a1d178b488729d0e1caf6",
+      "pairs": [
+        [
+          "body",
+          "body-1"
+        ],
+        [
+          "body-0",
+          "body-2"
+        ],
+        [
+          "body-3",
+          "body-5"
+        ],
+        [
+          "body",
+          "body-2"
+        ],
+        [
+          "body",
+          "body-5"
+        ]
+      ],
+      "helperMatches": true,
+      "master": {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/08-cod/packet/master.png",
+        "sha256": "a3c2fa7823f0b2256dc1569b464401e71ce4efc360f0c2e6cd059a884148b994",
+        "bytes": 922124,
+        "tracked": false
+      },
+      "masterMatchesAutomaticProvenance": true,
+      "fitFiles": [
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/binding.json",
+          "sha256": "a58b74a14448df1cb38c1737438fb65129c2bd59cd01fd4cfbf3c5f55028355e",
+          "bytes": 1992439,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/declaration.json",
+          "sha256": "4420a472332558b2c16481c5a196ea8fdfd34101370cf4d2ada8fd37a70104ac",
+          "bytes": 1517,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/intake-provenance.json",
+          "sha256": "c8b13512675d0015351fc0db44362e30f5c855f865c10d5ee42f8dd250acad57",
+          "bytes": 3099,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/label-authoring-receipt.json",
+          "sha256": "d5e0374fe816ed06ffcc99216cad6a1c04a25a40616a65feb49fea853c5293e8",
+          "bytes": 556,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/labels.png",
+          "sha256": "65182a3a09c83310cc24ae3fd15705136bd165fd50998df109315805e74e94c5",
+          "bytes": 47035,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/atlas/08-cod.json",
+          "sha256": "6db6fcbbf00f58cfb460089ec2179659381798928521b852b9c7fc38d1f92d23",
+          "bytes": 5398,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/atlas/08-cod.png",
+          "sha256": "e8ff6fc927c917fa5e2c86b1112cb533ff3aded329b3f2f478f26f0b3061d920",
+          "bytes": 949487,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/atlas/receipt.json",
+          "sha256": "12dffc47208926f7c29e73abd1083a1098dbea221bc0bf7ce5820d0aa6483773",
+          "bytes": 2371,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/binding.json",
+          "sha256": "ab1f1e76ebff7a65766950ddc4f0f8a59c3fd595d33a4d2dbd7cb5761752d69c",
+          "bytes": 4508,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/keyed.png",
+          "sha256": "5b37f25b9030a8719fa4c0cde02d94d81344967f4bdc4db7d170c704dc409aa0",
+          "bytes": 1078499,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/manifest.json",
+          "sha256": "3499fb159362c21f7584072b269c8d69b7b4ec9db89a52a4e1a3daf326be2ada",
+          "bytes": 2112,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/ownership.png",
+          "sha256": "7a81944d9cae259fd8647cbfdf8376d5281cef9d66328b4dc801079ba8c07cfb",
+          "bytes": 109383,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body-0.png",
+          "sha256": "1e6048961ee4ef558dd1b8cb5e2fafcfc9570d4158da302bb46d5a16f91949be",
+          "bytes": 54378,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body-1.png",
+          "sha256": "d3a50af29d76983bc3580c81645decfe0208ef5d5e89097870f192a6e97b0f73",
+          "bytes": 44366,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body-2.png",
+          "sha256": "11b69e5b7b5df2fc5e9824fc35d61c07b35298ccbda5b2903869e02fafdd7125",
+          "bytes": 79837,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body-3.png",
+          "sha256": "7f72b62f39df9d35aeec27e35a13b4dc0fd38592388ca2e0ce2e28d5453740d7",
+          "bytes": 172015,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body-4.png",
+          "sha256": "47bda142330788d39b4f48678e0651644eecde59781415dbcff2a7bb5e7cb475",
+          "bytes": 53707,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body-5.png",
+          "sha256": "224cb14e1d7961f3e5acfd82e8314d9194e8a1e3251ba3c38823fb076cb7894b",
+          "bytes": 74515,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/body.png",
+          "sha256": "47fab3c60b3d1f0a64d46163f37fafc20d37a6f914cca793e6ba2d115a1af9f7",
+          "bytes": 134849,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/caudal.png",
+          "sha256": "7af24267ef18b477421ed69a5322261926f8b8f4e1f8f18a961fa794d63ae2bc",
+          "bytes": 119332,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/dorsal.png",
+          "sha256": "5c95521d477ad6ae88eb529e9b59bccf021e42b967d7f2227e6252e01fed3a0d",
+          "bytes": 149278,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/far-pectoral.png",
+          "sha256": "4012ecdd0a6c05b1ba4ca57abc3542faf4c89819b7ab70b4f5b49f5ed6dad682",
+          "bytes": 12153,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/head.png",
+          "sha256": "ec07453da516fadcb20b2135e82177fe67d128def2c2e7239f192cde69bd87f2",
+          "bytes": 91567,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/jaw.png",
+          "sha256": "569a78222163210872b45c005b231eeb10caf27576caebbca718e4c787196ac9",
+          "bytes": 36059,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/parts/near-pectoral.png",
+          "sha256": "bc55248372db9db1fd74cbe315d5866c488188d865d221db45d4805cf50206b6",
+          "bytes": 52623,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/receipt.json",
+          "sha256": "9001a9564115c6eb57fec7333e2d756101953b7405208ce33c3c08ac14454754",
+          "bytes": 3695,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/pre-split-binding.json",
+          "sha256": "d0e829049adcd348d2022a1b377926ae6fe56d131c469e748e3f5e25884c5a29",
+          "bytes": 1404577,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/receipt.json",
+          "sha256": "cf22d823874c78acfd3a85f11a8ab7fa7f1bd6fbcbcb14fb2c2642e0eb2c2ea5",
+          "bytes": 2044,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/record.json",
+          "sha256": "3fb9106352ac81df53c18994d5da6a649f758588478d661fa271baaaae714191",
+          "bytes": 5120,
+          "tracked": false
+        }
+      ],
+      "static": {
+        "source": "91a62a50f70571d19217724240b25be3a0d14123",
+        "status": "PASS_STATIC",
+        "inputs": [
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/record.json",
+            "sha256": "3fb9106352ac81df53c18994d5da6a649f758588478d661fa271baaaae714191",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/binding.json",
+            "sha256": "a58b74a14448df1cb38c1737438fb65129c2bd59cd01fd4cfbf3c5f55028355e",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/manifest.json",
+            "sha256": "3499fb159362c21f7584072b269c8d69b7b4ec9db89a52a4e1a3daf326be2ada",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/atlas/08-cod.png",
+            "sha256": "e8ff6fc927c917fa5e2c86b1112cb533ff3aded329b3f2f478f26f0b3061d920",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/keyed.png",
+            "sha256": "5b37f25b9030a8719fa4c0cde02d94d81344967f4bdc4db7d170c704dc409aa0",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          }
+        ],
+        "producerComparison": {
+          "count": 68,
+          "currentOwnMissing": [],
+          "currentOwnMismatches": [],
+          "retainedChangedFlags": []
+        }
+      },
+      "native": {
+        "source": "91a62a50f70571d19217724240b25be3a0d14123",
+        "status": "DIAGNOSTIC_PASS",
+        "refusals": {
+          "left": 0,
+          "right": 0
+        },
+        "frames": 707,
+        "cpuP95Ms": 4.399999976158142,
+        "cpuThrottle": 4,
+        "fitSourcesMatch": true,
+        "fitSourceCount": 4,
+        "producerComparison": {
+          "count": 895,
+          "currentOwnMissing": [
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/record.json",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/binding.json",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/keyed.png",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/parts/atlas/08-cod.png",
+            "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/08-cod/packet/master.png"
+          ],
+          "currentOwnMismatches": [
+            "port/v2/apps/game/src/creature-finish-source-pins.generated.ts",
+            "port/v2/apps/game/src/creature-finish-engine.ts",
+            "port/v2/apps/game/src/art-library.generated.ts"
+          ],
+          "retainedChangedFlags": []
+        },
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "711"
+            }
+          ],
+          "format": {
+            "duration": "11.846713"
+          }
+        },
+        "files": [
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/battle-full.webm",
+            "sha256": "7a47d5e8995127ac2059416fc6e474ac94a8caa548815719b6ee9b4ea93f3de1",
+            "bytes": 7049992,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn0-hit-approach-50.png",
+            "sha256": "1c5b6e83b8c22143c77744259ad4eeece653b2ae51669a9ca4d8d598e83655f0",
+            "bytes": 1181646,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn0-hit-impact.png",
+            "sha256": "611f797ba59d3106c30ee12b8b1f41dade0adaafbd21fefe5114dc7fc45205db",
+            "bytes": 667926,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn0-hit-reaction-50.png",
+            "sha256": "467e7903cc2dfced014093574aca1dd5ec3f306bab8396b04e988cc178f36a57",
+            "bytes": 1198354,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn0-hit-return-end.png",
+            "sha256": "e4b2fad879c5d54d73327f523f19bc8f09cc185334e7205e9dac89264affea57",
+            "bytes": 1183655,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn1-hit-approach-50.png",
+            "sha256": "b04acee14d7e680dabe2f95ffe062f73352b8257dcd95d17e26a17a9f1eff9f5",
+            "bytes": 1183250,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn1-hit-impact.png",
+            "sha256": "52b60affaa5784330e305e089cf3772276e5d01e600f1bd176535259d9b99714",
+            "bytes": 1183447,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn1-hit-reaction-50.png",
+            "sha256": "83facbf1fd3777ffb4f31a575ed9f72b623339dc5c9df456bbf15dca4451c31c",
+            "bytes": 1190387,
+            "tracked": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn1-hit-return-end.png",
+            "sha256": "5336f172d549923b5f5fc8e52a0f9c66105964c35e313240ce935e61de65671e",
+            "bytes": 1183015,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn2-dodge-approach-50.png",
+            "sha256": "1c5b6e83b8c22143c77744259ad4eeece653b2ae51669a9ca4d8d598e83655f0",
+            "bytes": 1181646,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn2-dodge-impact.png",
+            "sha256": "fcc391701f38cbdd32e886fda47584de987aff116def59353c406febb0019afa",
+            "bytes": 1193114,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn2-dodge-reaction-50.png",
+            "sha256": "0ad7f5b8fb05ea0a627efbaa0ca21dc7d76cfdc245afd823bc85221c890b02f0",
+            "bytes": 1198499,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn2-dodge-return-end.png",
+            "sha256": "e4b2fad879c5d54d73327f523f19bc8f09cc185334e7205e9dac89264affea57",
+            "bytes": 1183655,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn3-hit-approach-50.png",
+            "sha256": "1c5b6e83b8c22143c77744259ad4eeece653b2ae51669a9ca4d8d598e83655f0",
+            "bytes": 1181646,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn3-hit-impact.png",
+            "sha256": "29e70405197e4505b70537208feb0743bb6fe65a3bb7f7ac09a56589a3e65f53",
+            "bytes": 1182544,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn3-hit-reaction-50.png",
+            "sha256": "61d3d422bbd24d70f090bd3bfd0a8eb6ec0d49eb1a02b57aa2be8e4a4ebeeea7",
+            "bytes": 1197508,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn3-hit-return-end.png",
+            "sha256": "2035a3bb7afe1c3379f00b481b33a877c74a3b82b6de3aff45b0c285d046289f",
+            "bytes": 1187599,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn3-hit-idle-50.png",
+            "sha256": "2f965f567c551648df053f1d816608faed017c299255a8857cd221e6b727bc3d",
+            "bytes": 1187521,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/turn3-hit-idle-90.png",
+            "sha256": "b256a3298356f54ae3ccc82714c956953fe1c3e2fe4582a9f888784fb33d6c4a",
+            "bytes": 1187198,
+            "tracked": false
+          }
+        ],
+        "all187RecordedTrackedProducersMatch": true
+      },
+      "retainedReports": [
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/weld-receipt.json",
+          "sha256": "7bfb87fc672cef5353a800a35605a2d1a64a5112d554814ef879c718f40c5f74",
+          "bytes": 1155,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/static.json",
+          "sha256": "0fdf1decc333bce2af900522b4ab1f3710aad35f550cd71b897b49c507500e24",
+          "bytes": 7449,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/static.json.sources.json",
+          "sha256": "1873c37eebcc47854fbaf7f4fcea5a85a7523c28dbf83ae1756946397fe90a1e",
+          "bytes": 15799,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/report.json",
+          "sha256": "4823c7defddf3c31174553efa868711d6a44b852dd4d899151f078df309e6a95",
+          "bytes": 355219,
+          "tracked": true
+        }
+      ],
+      "durableG2Master": {
+        "path": "audits/G2_FAMILY_PILOT_20260926/08-cod/master.png",
+        "sha256": "a3c2fa7823f0b2256dc1569b464401e71ce4efc360f0c2e6cd059a884148b994",
+        "matchesPacketMaster": true
+      }
+    },
+    {
+      "id": "09-carp",
+      "reference": {
+        "subject": "bass",
+        "authoringSha256": "8da048f4c2be9106a763434c279ed370366c538801f6cc342c878492d18798fb",
+        "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
+      },
+      "identity": {
+        "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Carp\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"245884779\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"17\"]]]]",
+        "seed": 245884779,
+        "ownerId": "authored:archetype-sprint/09-carp",
+        "earthName": "Carp"
+      },
+      "recordRecipeHash": "cc1d09e50e2a726b985f49fd6bf752280abf90e665d4698731074ab4597611ac",
+      "bindingHash": "f7fd14857053ce0dc3af62b3cf8194ec26016bf54c59f41d3817eb9e849a0d15",
+      "pairs": [
+        [
+          "body",
+          "body-1"
+        ],
+        [
+          "body-3",
+          "body-5"
+        ]
+      ],
+      "helperMatches": true,
+      "master": {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/09-carp/packet/master.png",
+        "sha256": "ce3c2a8a31998a84eaea13ea31fbb34a86053096c042a4400cc28a05187f4bc1",
+        "bytes": 1044324,
+        "tracked": false
+      },
+      "masterMatchesAutomaticProvenance": true,
+      "fitFiles": [
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/binding.json",
+          "sha256": "b9e27e9b870a65c8dfdedaade78a9113a03f2dc316ce7980e33bc65500f071ee",
+          "bytes": 2476104,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/declaration.json",
+          "sha256": "03c81d0adc361938b34e3da46975a43a24f1dfb293030fa04831feed728479a0",
+          "bytes": 1517,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/intake-provenance.json",
+          "sha256": "6c487418dc5f92e0dc6d7b620649ad2785399aa978ff67a17275e8855e68507f",
+          "bytes": 3107,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/label-authoring-receipt.json",
+          "sha256": "3eb6453db4d1dffde05eaa91b3ef3825902efbc2efab81e117314f2a7cedc0b0",
+          "bytes": 555,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/labels.png",
+          "sha256": "7e0356af2ed02a0c74d24e622418e0dc6b76e2a116107ab1b7c970efb68500d9",
+          "bytes": 49714,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/atlas/09-carp.json",
+          "sha256": "d0b7fdb9fcc32c9beaae5339764e68b9b317920e94bcbfa4c0d17259338d8bea",
+          "bytes": 5408,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/atlas/09-carp.png",
+          "sha256": "f8ac2b352d3d040808630ae7bd7603f20d6f304e2941d13dc6ab1233fab77de5",
+          "bytes": 1086582,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/atlas/receipt.json",
+          "sha256": "7c90278712f7f16ccf3bdab3dfd6af297e397509bda34aea2f56a9e01eb2c05d",
+          "bytes": 2372,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/binding.json",
+          "sha256": "7d9283aa4e50bb915a2974cab3c46fe470e8e83d79867aa35a5c0b7ee6d05c8c",
+          "bytes": 4513,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/keyed.png",
+          "sha256": "24042d0d6336bae72b034311d71388f9bb700732a74398990add2466efdbec6c",
+          "bytes": 1290880,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/manifest.json",
+          "sha256": "ae41236c087c3a7c842691f983604bda9aca1e3c2150231f1c2ce5efbe7fdeb1",
+          "bytes": 2113,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/ownership.png",
+          "sha256": "d1bc29bd26aefa1d58a537eff1c5af69e2c1d29a57af5ace24e2daea6dd238cb",
+          "bytes": 113734,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body-0.png",
+          "sha256": "f61f5a357208658a0902281cff64254c68239005fe62c19e9ba019200d7a40f3",
+          "bytes": 166595,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body-1.png",
+          "sha256": "9f06d27fb59aee192a3ec88875955a7d4cfdaf627dd228b7992a6836b4bd11ff",
+          "bytes": 81432,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body-2.png",
+          "sha256": "e297f03ef943d3d75da5adba92d9472eed061a93b86ac2bfbd46b3fca9fee074",
+          "bytes": 67497,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body-3.png",
+          "sha256": "ece1116c7fb9b095d0000c73e9efc66403eb6143eb4a5c69becbe495c547f26f",
+          "bytes": 159971,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body-4.png",
+          "sha256": "c7b9026af340e07c0269895e418606d6d1ca569637c25bd7846ab22074e99a50",
+          "bytes": 54109,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body-5.png",
+          "sha256": "05b9b9047a102567d1e597e0c2546cd7e8b2972447f37fa4192e73cee9229072",
+          "bytes": 35370,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/body.png",
+          "sha256": "0107390a526e245f424542592f45e5827f9f45ca13df3c4530f0b25477a19a9b",
+          "bytes": 193421,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/caudal.png",
+          "sha256": "6e5f5e7a1b5abc15cdf66de0f5e391bcbd0e1a3fab83233737cc8300de28f37a",
+          "bytes": 190620,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/dorsal.png",
+          "sha256": "039717f917731a9e868b112e2df265b74380b476b06bbfcdb49a5f524aab562b",
+          "bytes": 101345,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/far-pectoral.png",
+          "sha256": "039dfbe52807475e78799e0c842fca200515b08da7246168f7663576b22db63c",
+          "bytes": 24986,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/head.png",
+          "sha256": "b640c2cfbde5451421d15dc1d35420a2454b0284ab8a71f68ab5754eef205fcb",
+          "bytes": 90981,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/jaw.png",
+          "sha256": "311f27b7cd786c1001abee5a326b641e60e9473e7f447460fd33575f4dbc8961",
+          "bytes": 23993,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/parts/near-pectoral.png",
+          "sha256": "9e0ee6aefa1470d0d8503b129dbbf08f3d78c7102ec042d94f97b17d0ae5bc99",
+          "bytes": 100804,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/receipt.json",
+          "sha256": "fe775a5ff19b442f84183bf65fab6f32da3abce671cd04898860b1ab8cb50730",
+          "bytes": 3694,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/pre-split-binding.json",
+          "sha256": "c4ce390dd71ce8b6d4398d049fbb871da434840c5d8247f7010a563d76f74668",
+          "bytes": 1753779,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/receipt.json",
+          "sha256": "1ad51b456b82802688308253b953b299bffb5e6c63063b5ccc6f9ffa8b618612",
+          "bytes": 2045,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/record.json",
+          "sha256": "ff582652feba9e1a51be808004a8e5fbb94007d88285321161156ea1020260b3",
+          "bytes": 5129,
+          "tracked": false
+        }
+      ],
+      "static": {
+        "source": "91a62a50f70571d19217724240b25be3a0d14123",
+        "status": "PASS_STATIC",
+        "inputs": [
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/record.json",
+            "sha256": "ff582652feba9e1a51be808004a8e5fbb94007d88285321161156ea1020260b3",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/binding.json",
+            "sha256": "b9e27e9b870a65c8dfdedaade78a9113a03f2dc316ce7980e33bc65500f071ee",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/manifest.json",
+            "sha256": "ae41236c087c3a7c842691f983604bda9aca1e3c2150231f1c2ce5efbe7fdeb1",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/atlas/09-carp.png",
+            "sha256": "f8ac2b352d3d040808630ae7bd7603f20d6f304e2941d13dc6ab1233fab77de5",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/keyed.png",
+            "sha256": "24042d0d6336bae72b034311d71388f9bb700732a74398990add2466efdbec6c",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          }
+        ],
+        "producerComparison": {
+          "count": 68,
+          "currentOwnMissing": [],
+          "currentOwnMismatches": [],
+          "retainedChangedFlags": []
+        }
+      },
+      "native": {
+        "source": "91a62a50f70571d19217724240b25be3a0d14123",
+        "status": "DIAGNOSTIC_PASS",
+        "refusals": {
+          "left": 0,
+          "right": 0
+        },
+        "frames": 707,
+        "cpuP95Ms": 5.5,
+        "cpuThrottle": 4,
+        "fitSourcesMatch": true,
+        "fitSourceCount": 4,
+        "producerComparison": {
+          "count": 895,
+          "currentOwnMissing": [
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/record.json",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/binding.json",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/keyed.png",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/parts/atlas/09-carp.png",
+            "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/09-carp/packet/master.png"
+          ],
+          "currentOwnMismatches": [
+            "port/v2/apps/game/src/creature-finish-source-pins.generated.ts",
+            "port/v2/apps/game/src/creature-finish-engine.ts",
+            "port/v2/apps/game/src/art-library.generated.ts"
+          ],
+          "retainedChangedFlags": []
+        },
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "710"
+            }
+          ],
+          "format": {
+            "duration": "11.840051"
+          }
+        },
+        "files": [
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/battle-full.webm",
+            "sha256": "ae1f7e5266705fb2c8420b66bd2eb39c42192ebcd4107378658ba732c738a6be",
+            "bytes": 7566622,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn0-hit-approach-50.png",
+            "sha256": "61e76d6fcff57de7952f15d332a31b053fb9a17c904e815559dc7465b37a706d",
+            "bytes": 1204996,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn0-hit-impact.png",
+            "sha256": "4fbc35e74c20e96ce12c9f9f595dac3795d989afbed969ae4e251a2e6e59c0c1",
+            "bytes": 691781,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn0-hit-reaction-50.png",
+            "sha256": "238918e090961b4ff64f88e972e48d0788212c642bb7ac30a32e81749f435e2b",
+            "bytes": 1221390,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn0-hit-return-end.png",
+            "sha256": "6c55f0407c17cf99b361262a345e32a2529a1465656985e99c885972c2916dda",
+            "bytes": 1204434,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn1-hit-approach-50.png",
+            "sha256": "26dd6a189c925831abe1bc6d0a883c35b9e10f5d51a24441128051f7731413be",
+            "bytes": 1206245,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn1-hit-impact.png",
+            "sha256": "efcc52536424453c6dde43a1b34fc1c3d0640284c3c112180644988cc30f6fd8",
+            "bytes": 1206746,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn1-hit-reaction-50.png",
+            "sha256": "ce81afdf46132e4ea7e15b27dae5151ae0a0cf0aa06f30ca2add9fdb6f16cab3",
+            "bytes": 1209849,
+            "tracked": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn1-hit-return-end.png",
+            "sha256": "da98948e7eaa4bd3d8067e89f6a6bb92b22b52c41ddda8fbcddca04a792d485e",
+            "bytes": 1204516,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn2-dodge-approach-50.png",
+            "sha256": "61e76d6fcff57de7952f15d332a31b053fb9a17c904e815559dc7465b37a706d",
+            "bytes": 1204996,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn2-dodge-impact.png",
+            "sha256": "e44b5d99f5c10035345dcbe2001149d56a30719acb99b56622cff60f0954daa5",
+            "bytes": 1218561,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn2-dodge-reaction-50.png",
+            "sha256": "074811fe1635be2eb27521d15d0982486c5b4b5aac60c12df1cddd95ca618954",
+            "bytes": 1223885,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn2-dodge-return-end.png",
+            "sha256": "6c55f0407c17cf99b361262a345e32a2529a1465656985e99c885972c2916dda",
+            "bytes": 1204434,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn3-hit-approach-50.png",
+            "sha256": "61e76d6fcff57de7952f15d332a31b053fb9a17c904e815559dc7465b37a706d",
+            "bytes": 1204996,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn3-hit-impact.png",
+            "sha256": "fc0ad73aa5d050d0d860184ce18fdb5064be82209f7184b968e692599909b8e3",
+            "bytes": 1205841,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn3-hit-reaction-50.png",
+            "sha256": "5a0d31ce9f7c82935a4afd9b4eef5be9ac43202f1efcf51972b9244ad7396acb",
+            "bytes": 1220127,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn3-hit-return-end.png",
+            "sha256": "4f43ff25d62e829e6a92753d67e64f76adbc9159783ab711e5c465a0ce7818a7",
+            "bytes": 1208692,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn3-hit-idle-50.png",
+            "sha256": "23a1e0ce2dd4343bf41808d1d7efd6d979417a140a6db197d299c4cd1e4b6c96",
+            "bytes": 1209534,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/turn3-hit-idle-90.png",
+            "sha256": "af9493d29b27798a5507d015161e4febfc22e985a29f60d9b5fd368bb5a5a7ee",
+            "bytes": 1209004,
+            "tracked": false
+          }
+        ],
+        "all187RecordedTrackedProducersMatch": true
+      },
+      "retainedReports": [
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/weld-receipt.json",
+          "sha256": "4ec8f4bc9937398f28c9d9f01a7dc5a33a82a4ae559ff109408e936c8f9a2218",
+          "bytes": 948,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/static.json",
+          "sha256": "ba984ebbbde88fb179a1f7f8868c2d681aa75abe9f6ed49876e7b7823991f3f3",
+          "bytes": 7453,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/static.json.sources.json",
+          "sha256": "fc83a5fa693a3a36ad4d4c1ba5cbbcf116c04d9182b65cbaff20cd71875700c5",
+          "bytes": 15799,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/report.json",
+          "sha256": "6a940841a72725774541288fb4e311952828c837269b53330777d83b73873f80",
+          "bytes": 355671,
+          "tracked": true
+        }
+      ],
+      "durableG2Master": {
+        "path": "audits/G2_FAMILY_PILOT_20260926/09-carp/master.png",
+        "sha256": "ce3c2a8a31998a84eaea13ea31fbb34a86053096c042a4400cc28a05187f4bc1",
+        "matchesPacketMaster": true
+      }
+    },
+    {
+      "id": "10-herring",
+      "reference": {
+        "subject": "salmon",
+        "authoringSha256": "b973fe0595d98ed9c27e3c272d03163fbbf777f810e6a92c93f2962a61a7f390",
+        "masterSha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4"
+      },
+      "identity": {
+        "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Herring\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3143885446\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"5\"]]]]",
+        "seed": 3143885446,
+        "ownerId": "authored:archetype-sprint/10-herring",
+        "earthName": "Herring"
+      },
+      "recordRecipeHash": "96e7b6f53f6d383d126480e41ae2560c12efc39e61efccfec0320c177ad07b7f",
+      "bindingHash": "38f0f51eb695def87d09874c689abc5411c20cc2f438c01d0dae27e12c42e49a",
+      "pairs": [
+        [
+          "body",
+          "spine1"
+        ],
+        [
+          "body",
+          "spine2"
+        ],
+        [
+          "body",
+          "spine3"
+        ],
+        [
+          "body",
+          "spine4"
+        ],
+        [
+          "body",
+          "spine5"
+        ]
+      ],
+      "helperMatches": true,
+      "master": {
+        "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/10-herring/packet/master.png",
+        "sha256": "a0ce035f462ab4bad53bcf68dee03720850fad4dca3e1682ccb57379e343e9b0",
+        "bytes": 738102,
+        "tracked": false
+      },
+      "masterMatchesAutomaticProvenance": true,
+      "fitFiles": [
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/binding.json",
+          "sha256": "1916154d00925d24d5c3a045cf8d111b6dec67a3f9e6dbb433fcdc4c935e82ca",
+          "bytes": 1638209,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/declaration.json",
+          "sha256": "33194fb2fc8f7460473e446407d3f06f63e94f7ae4797d44a2078f7454fbf0ac",
+          "bytes": 1515,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/intake-provenance.json",
+          "sha256": "0f2f466a0bc74ecb5c083aed52b70e761e8c248a02590c6ee077c9b544b27e5c",
+          "bytes": 3131,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/label-authoring-receipt.json",
+          "sha256": "543ac3ec74d44838267452e9fa18dfa59927105de10d18e3cac961149359b08c",
+          "bytes": 552,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/labels.png",
+          "sha256": "7fff96c590f3267f55317cd77ce7b1f7598c976a217ad37ced8f959e8f82360e",
+          "bytes": 45569,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/atlas/10-herring.json",
+          "sha256": "32f235d981be26c12ca32fe70e92482e338942fd018a0edb45f94fb6e5efea2d",
+          "bytes": 5397,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/atlas/10-herring.png",
+          "sha256": "054bb8109143386002fcf1f266ab6a56584fc7762af6f87e12c240f92c3fcb09",
+          "bytes": 757142,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/atlas/receipt.json",
+          "sha256": "ce3a02c312a3377ac62df3d8f094f90258fb9eaeabebb0492f23620251c1a9d6",
+          "bytes": 2375,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/binding.json",
+          "sha256": "0c09e64b6f326294dde47fff9c23e0fdc0b0fb412aee05d47b46ed031222167c",
+          "bytes": 4502,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/keyed.png",
+          "sha256": "9ab579253b81cf77fa4366bce86090a5b9c90b6f7686b6b40b5d8b60af59ffba",
+          "bytes": 862469,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/manifest.json",
+          "sha256": "5183a68d5480a56b107640156bad585306907c4c1b94fdd4b7fa59cbb16ea8c5",
+          "bytes": 2116,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/ownership.png",
+          "sha256": "be070f7ef24a4598614e2d186c77a2475c66d7a2ab59ff78a26bda20a59b827e",
+          "bytes": 86592,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/body.png",
+          "sha256": "30000fd42f241125ac498d03b68e2a5c8a57ed4b0c371cb1071475b9a708732d",
+          "bytes": 87723,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/caudal.png",
+          "sha256": "537a56486e48f8a077c674c34298492aa0907f6859746006e03c8ae642b76f0d",
+          "bytes": 103655,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/dorsal.png",
+          "sha256": "6736aabda809d67ffcc28b6fc933a4a36e818d38afdf8719b6234e91054062e3",
+          "bytes": 29659,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/far-pectoral.png",
+          "sha256": "07bcd12ee73a0054de1bc44daff317a9681094e6e582d8439de5b7bb1aacfe1a",
+          "bytes": 3181,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/head.png",
+          "sha256": "850ea5b70ee2838c932e7dba5b03d444bf0eadd8ac4bbe1bbea60e62bcf824b1",
+          "bytes": 84605,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/jaw.png",
+          "sha256": "2f1e509ea77baae4308ccf64a04d4dce4e2b39c706d9edd7bf3f15b1835cc072",
+          "bytes": 15364,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/near-pectoral.png",
+          "sha256": "6b166c6ff68dcb81f0fa061f6735967ddbff952711ae0a140d908fee64504ecd",
+          "bytes": 12461,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/spine0.png",
+          "sha256": "9676627ecf06708713056841bb2b91ac141e035308044dcc9355d2bb8a3f23eb",
+          "bytes": 97591,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/spine1.png",
+          "sha256": "9a8afe3d82a0cbe84f8f13d1d35f8e91a7cb764b1c5518f38b8d03eca8965c14",
+          "bytes": 80624,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/spine2.png",
+          "sha256": "41352c556e39ca452313b4c680b69db58cb973d45b27dad2f7577f902bb5c33f",
+          "bytes": 81073,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/spine3.png",
+          "sha256": "c976ade418179db7d74fa958e2e4f847e9f4fe91fcdb6a1644ec938fda172ccc",
+          "bytes": 125789,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/spine4.png",
+          "sha256": "2c7e1421eed5d22a5a1563ad7415363b938d442be6ef8a185e9548b26b828bd1",
+          "bytes": 70456,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/parts/spine5.png",
+          "sha256": "e826eca5c609dd4a9bd90edd56d81bdea8fd6ad95ddce795654807e7ede5fb5a",
+          "bytes": 58462,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/receipt.json",
+          "sha256": "b0e44fd75684d86e33432dc53fa2597a1f1cc4f330d887291affb30b94f22e99",
+          "bytes": 3688,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/pre-split-binding.json",
+          "sha256": "a88f4cfa32221c8aa20e11b1f09da9568885ae66df67f8f966bd4bbc7ca2c3fb",
+          "bytes": 1158863,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/receipt.json",
+          "sha256": "e7c333fa8853ad2271b14e279c3c716954f2b8f8c57001f386a2dcbcc7dc6963",
+          "bytes": 2048,
+          "tracked": false
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/record.json",
+          "sha256": "af3870e014db21e50ce5a1fe1e33c7ec7b3eae2624de4c45fa8e276ebe8d3cca",
+          "bytes": 5136,
+          "tracked": false
+        }
+      ],
+      "static": {
+        "source": "91a62a50f70571d19217724240b25be3a0d14123",
+        "status": "PASS_STATIC",
+        "inputs": [
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/record.json",
+            "sha256": "af3870e014db21e50ce5a1fe1e33c7ec7b3eae2624de4c45fa8e276ebe8d3cca",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/binding.json",
+            "sha256": "1916154d00925d24d5c3a045cf8d111b6dec67a3f9e6dbb433fcdc4c935e82ca",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/manifest.json",
+            "sha256": "5183a68d5480a56b107640156bad585306907c4c1b94fdd4b7fa59cbb16ea8c5",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/atlas/10-herring.png",
+            "sha256": "054bb8109143386002fcf1f266ab6a56584fc7762af6f87e12c240f92c3fcb09",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/keyed.png",
+            "sha256": "9ab579253b81cf77fa4366bce86090a5b9c90b6f7686b6b40b5d8b60af59ffba",
+            "matchesRetained": true,
+            "originalUnchanged": true
+          }
+        ],
+        "producerComparison": {
+          "count": 68,
+          "currentOwnMissing": [],
+          "currentOwnMismatches": [],
+          "retainedChangedFlags": []
+        }
+      },
+      "native": {
+        "source": "91a62a50f70571d19217724240b25be3a0d14123",
+        "status": "DIAGNOSTIC_PASS",
+        "refusals": {
+          "left": 0,
+          "right": 0
+        },
+        "frames": 705,
+        "cpuP95Ms": 4.900000095367432,
+        "cpuThrottle": 4,
+        "fitSourcesMatch": true,
+        "fitSourceCount": 4,
+        "producerComparison": {
+          "count": 895,
+          "currentOwnMissing": [
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/record.json",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/binding.json",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/keyed.png",
+            "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/fit/parts/atlas/10-herring.png",
+            "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/10-herring/packet/master.png"
+          ],
+          "currentOwnMismatches": [
+            "port/v2/apps/game/src/creature-finish-source-pins.generated.ts",
+            "port/v2/apps/game/src/creature-finish-engine.ts",
+            "port/v2/apps/game/src/art-library.generated.ts"
+          ],
+          "retainedChangedFlags": []
+        },
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "709"
+            }
+          ],
+          "format": {
+            "duration": "11.845777"
+          }
+        },
+        "files": [
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/battle-full.webm",
+            "sha256": "4e19f74e012a4687f0d6b026f883e14d89821a40d4b7608c54511fc0fb0e2468",
+            "bytes": 7532375,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn0-hit-approach-50.png",
+            "sha256": "6ae797be6798af9b6a80beb667886a3fda751b689a73299bf16dd7e879714ad5",
+            "bytes": 1192760,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn0-hit-impact.png",
+            "sha256": "d802bf7bf653adc39a5df0487dca5435432b9a58aa2f72aa2d632ef60473571c",
+            "bytes": 683449,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn0-hit-reaction-50.png",
+            "sha256": "523c5d751f113101367d5b881910935b8c82ec2013e14de16e77b91c4b6af00a",
+            "bytes": 1214128,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn0-hit-return-end.png",
+            "sha256": "cabfa721e76bc864377616d7617d411922de6731829419f208f7e9081554208e",
+            "bytes": 1191704,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn1-hit-approach-50.png",
+            "sha256": "fa057ab4e268ee6184882e7c145c24dd3ece5c7a2cead7ea05ff357827a5954c",
+            "bytes": 1194248,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn1-hit-impact.png",
+            "sha256": "727426d45e0531c7a131bb1ac00f6824dcac78387e0b045d42c0eb842c236922",
+            "bytes": 1195538,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn1-hit-reaction-50.png",
+            "sha256": "b05d3e12ac5e177d9468c6bdec18f092767fac4d41f063be1698547d0dbec8ef",
+            "bytes": 1200099,
+            "tracked": true
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn1-hit-return-end.png",
+            "sha256": "6eb0eff0dbc9145fb677ec2f88a9a28fc50c4149bef0f030cf92f354da6be49c",
+            "bytes": 1191896,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn2-dodge-approach-50.png",
+            "sha256": "6ae797be6798af9b6a80beb667886a3fda751b689a73299bf16dd7e879714ad5",
+            "bytes": 1192760,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn2-dodge-impact.png",
+            "sha256": "a7a9d7a6b36d6a49afd16b5ad13d82d681f092b74c31b821361cba4baba1f02b",
+            "bytes": 1210329,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn2-dodge-reaction-50.png",
+            "sha256": "6000dfa4ff23a1c65a8635bae4e8fdbbf92ab784508d68647ac54aaff3361fb5",
+            "bytes": 1215331,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn2-dodge-return-end.png",
+            "sha256": "cabfa721e76bc864377616d7617d411922de6731829419f208f7e9081554208e",
+            "bytes": 1191704,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn3-hit-approach-50.png",
+            "sha256": "6ae797be6798af9b6a80beb667886a3fda751b689a73299bf16dd7e879714ad5",
+            "bytes": 1192760,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn3-hit-impact.png",
+            "sha256": "13b80f35aa511cb5ff0de4318010db0db6ce6fb0ebd3f96cc5ffd4b4f5c3e7bd",
+            "bytes": 1194381,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn3-hit-reaction-50.png",
+            "sha256": "f2e09bcfee9874dc2065bcb32ce8d05a3b60d2403d604b620653fa3d113385c8",
+            "bytes": 1213327,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn3-hit-return-end.png",
+            "sha256": "8ec3e5a18d008e955c83577c2364e00407f439b985385fff76dfc55e532452a8",
+            "bytes": 1199948,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn3-hit-idle-50.png",
+            "sha256": "6c2c9f62a91c97986500cafb1e1fae385f292306398a45940f2547b408126406",
+            "bytes": 1200170,
+            "tracked": false
+          },
+          {
+            "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/turn3-hit-idle-90.png",
+            "sha256": "c9ba96cd80aa49dca833645df6d14fe5418c642a88f4895cfa93756d1dd74d56",
+            "bytes": 1200625,
+            "tracked": false
+          }
+        ],
+        "all187RecordedTrackedProducersMatch": true
+      },
+      "retainedReports": [
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/weld-receipt.json",
+          "sha256": "240a45051a46de050a780075481e084a4302a7f58de8675ef4b77fe4299e31c8",
+          "bytes": 1149,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/static.json",
+          "sha256": "5b877c2e6fb5f12f8a7068fe0815d2fdf263d53cf5ae564403c9a517dc3577d6",
+          "bytes": 7470,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/static.json.sources.json",
+          "sha256": "1a5d37f45308b677a3ba57be2da50729b4c45296bee989d4f0e68028dc745498",
+          "bytes": 15799,
+          "tracked": true
+        },
+        {
+          "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/report.json",
+          "sha256": "259a6e9dedf526207d15d328a66e966013e57d608374440ee3f4651d36cec111",
+          "bytes": 356882,
+          "tracked": true
+        }
+      ],
+      "durableG2Master": {
+        "path": "audits/G2_FAMILY_PILOT_20260926/10-herring/master.png",
+        "sha256": "a0ce035f462ab4bad53bcf68dee03720850fad4dca3e1682ccb57379e343e9b0",
+        "matchesPacketMaster": true
+      }
+    }
+  ]
+}

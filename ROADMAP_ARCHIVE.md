@@ -1,3 +1,37 @@
+# Archived C46/C50 interim Codex handoff — 2026-09-26
+
+## Current Codex sprint handoff — 2026-09-26, C46 completed batch
+
+**C50 in progress:** signed mergef85cac18 throughbb770d53, Claude handoff preserved.16MiB tracked inventory and explicit finisher helper preview/build delivery fixed; focused controls PASS (C50_SHIPPED_FINISH_FIX_20260926). Claude can rerun shipped smoke; Codex C49 review/layout/fit continuation and final integrated battery pending. D26 unchanged.
+
+### Working state and authority
+
+- Worktree `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`; signed no-ff merge `375935b6` integrates Claude through `0c208c4c`. Signed implementation/native checkpoint `cf1a24da`; the final evidence/library commit carries this handoff (resolve from `git log openai/mac`). Claude's block above is retained verbatim. Older Codex handoff is verbatim in ROADMAP_ARCHIVE.md.
+- Read the other lane's absolute mailbox at start/end; write only `TO_CLAUDE.md` here. C46–C48 read. Claude now has newer signed work through91a62a50, not merged in this batch. Shared Git store needs no push wait or Nick relay. Read PARALLEL_GIT_PROTOCOL before the next batch.
+- Own-branch push only. Budget UNFROZEN; repository freshly PUBLIC and workflows have no push trigger. No PR/label/hosted/develop/main/release/deploy/version bump. I5 remains the only accepted battery red; no hosted attempt while red.
+
+### Completed
+
+- C46 derived ownership reviewed independently and accepted for Civet/Eel/Rat/Salamander; genuine record/master/binding/atlas/evidence pins, exact reproduction and corruption controls. Registry/source library38. All FOUR masters are opaque: final card consumer now falls back unless every alpha byte equals its admitted card master. Stage projection retains original atlas alpha before individual morph.
+- Fixed runtime contract mismatches without identity/pixel rebinding: canonical individual IDs up to2048 characters (same bound as visual keys), actual worker Uint8ClampedArray output copied byte-exact; malformed/oversize/wrong-type controls pass.
+- Three canonical880 crab originals on signedcf1a24da pass native worker/audit-adapter inference, conservation, cache and fresh phone-tier delivery:3inferences/1worker/6detached buffers/0phone model creations. Strict publisher verifies producer/identity/PNG/receipt before writing exact files under `library/creature-finish/<key>/`. After manifest regeneration the ACTUAL bundled-pin consumer admits all three (7fetches).603files/65,315,121library bytes;119,722PNG bytes. See `audits/G5_C46_CONTINUATION_20260926/PHONE_DELIVERY.md` for scope and exact identities. No site deployment, ordinary main.ts native flow, physical phone or quality approval claimed.
+- Automatic tail closure makes prior Eagle and Sandpiper packets PASS_STATIC across all actions and full presentations with original pixels/landmarks unchanged. Sandpiper also passes the CURRENT native stage at4×CPU:0/0refusals,780frames,7msCPU p95,13.206083sfilm. Named report/stills in `G1_TAIL_REPAIR_20260926/sandpiper-native-01`; full film retained locally at hash-bound receipt path. Eagle remains UNRESOLVED. No pre-admission bypass or default adoption; broad use needs full same-policy mutation battery. Empty-mask contour bug fixed with controls.
+- Six new untouched stride/tail paintings and exact receipts in `G2_STRIDE_PILOT_20260926`: five author refusals and Tapir static failure, zero new admissions. Prior20 family masters retained. G4 copy unchanged120bullets/41Guide/5briefings; no remeasurement. Parked gameplay remains consolidated and complete; generated creature pipeline stays priority.
+
+### Open gates and next work
+
+1. **D26 still open (Nick); explicit answer requested but not received.** Keep alpha===255, original alpha,4-pixel erosion and conservation unchanged. Conditional five-crab rerun/Cougar proof are blocked; old five-crab proof is NOT superseded. If explicitly approved: add alpha<250 never-edited control, rerun/supersede the old five-crab proof, then native1254Cougar and send its original for review. No Cougar original exists from this batch.
+2. Four old fit failures remain: Grouse support/fixed-root split, Sparrow faint foot45.1900°, Mongoose blended foreFarAnkle−108.5299°, Tapir tail compression/faint folds. Keep full-presentation failures visible. Eagle's semantic UNRESOLVED also prevents play admission. Sandpiper diagnostic is not Nick quality acceptance.
+3. C47/C48: Claude's five automatic G2 fish pass static/native numerical diagnostics but show seam holes; no art acceptance. Recommended bounded hypothesis: selectively weld Carp axial body↔body-1 (547 edges), then assess body↔body-2 (71); keep fins/siblings independent. Preserve UV/pixels/exact rest and every static/contact/fold/seam gate; measure seam gaps before native inspection. No overlap/underpaint workaround: priority masks stay exclusive and duplicate translucent paint changes alpha. Not implemented here.
+4. Next G2 layouts: low horizontal S serpents, level head, no downward tail curl, reference-like body thickness; right-facing insects with6separated legs/readable abdomen; birds ground contacts/legs/tail fan apart. Keep successful fish layout. D24 old gate stands; D25 reference shopping OFF. G1 remains unmet; broad generation and S4 remain parked.
+
+### Verification and cleanup
+
+- Full browser-free develop profile: **5,645 PASS; I5 only FAIL**,2expected failures/2skips across562files. All7manual owners PASS: root/app/worker TypeScript, artaudit, overridecheck, speccheck, overridecontrol. Exact logs/source hashes in G5_C46_CONTINUATION_20260926/final-battery. Root validate repeated after final assets:1010renders/0boot errors/unchanged50-probe fingerprint. No full browser certificate claimed.
+- Startup approved tools current; no updates. Free disk223GiB (≥40). Pruned80,371,278bytes of ignored rejected-fit/native preparation scratch with retained input/report/hash evidence. Kept positive Eagle/Sandpiper fits, all originals, exact output receipts and named film; three permanent worktrees/no stashes/newest2previews.
+- Next Codex: act on D26 only after explicit approval; otherwise selective seam/remaining fit/layout work. Next Claude: merge signed OpenAI work from shared store, consume38sources and three originals; preserve opaque-card fallback and flag. **Nick need not open another app or relay messages.** No PR or hosted attempt requested.
+
+
 # Archived C41/C43/C45 Codex handoff — 2026-09-26
 
 ## Current shared sprint handoff — 2026-09-26, C41/C43/C45 batch
