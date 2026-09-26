@@ -281,11 +281,11 @@ share one helper and the fingerprint held.
 >   (sharing your own code) is not ported yet.
 > - **Guardian phase change (N1 §4.3 / S7; same date; matches code).** When a Guardian or Titan first falls to half health, a **phase
 >   Break** announces the change BEFORE it applies (Hold / Swap / Withdraw; Auto holds), then for the rest of the fight, across legs, it
->   hits 20% harder and takes 10% less (`ENCOUNTER_GUARDIAN_PHASE_V1`, placeholder for S4). The engine takes it as `defender.phase`
+>   uses `ENCOUNTER_GUARDIAN_PHASE_V1` (current evaluation-only numbers in the S4 section below). The engine takes it as `defender.phase`
 >   (`encounterHasGuardianPhaseV1(kind)`); every caller derives it from the defender kind (planner, Chronicle prelude, card forecast,
->   battle2 beats, the app probe) and the open-encounter record SEALS it (`defenderPhase`). **Parity law:** a lone Balanced Auto fighter
->   still takes the verbatim v1 `runDuel` path, so it meets no phase; the phase applies whenever the fight is planned as an encounter
->   (a stance, a party, or Command). The card says so. Tests: `packages/domain/combatcore/test/encounter-phase.test.ts` (announced at
+>   battle2 beats, the app probe) and the open-encounter record SEALS it (`defenderPhase`). **D17/C32:** every Guardian/Titan fight,
+>   including lone Balanced Auto, takes the phase route. Exact v1 parity is an engine control with phase OFF;
+>   the production solo win-rate band is measured separately. Tests: `packages/domain/combatcore/test/encounter-phase.test.ts` (announced at
 >   half health before the change and identical up to it; the defender changes after — mutation control; Command pause + Swap + reload).
 >   - **The explorer fights Guardians in Auto only:** the settlement binds the explorer's exact health, which moves between Breaks, so a
 >     sealed explorer could strand the record (even Withdraw settles through that binding). `openArc6CommandEncounterV1` refuses it.
@@ -673,6 +673,18 @@ would have computed anyway.
 > The general shape is worth keeping: **a cache key derived from expensive values cannot short-circuit
 > the work that produces them.** If the key needs the stats, the stats must be hoisted to the caller
 > or the memo saves nothing on the hit path.
+
+## S4 production evaluation freeze — matches code as of 2026-09-26
+
+Candidate13 is applied ONLY for the declared one-shot held-out production evaluation; it is
+not admitted. Press dealt/taken1.42/1.7; Guard dealt/taken/opener0.67/0.635/0.25;
+Evade dealt/dodge0.7/0.32; Guardian phase at half health dealt/taken1.08/0.8.
+Recovery remains600000 active ms and zero added defeat wound. On refusal restore the prior
+runtime tuning. `audits/S4_PRODUCTION_EPOCH_20260926/README.md` owns the current status,
+training-only selection, exact source/candidate authority and production-route controls.
+`s4-production.mjs` counts real settlement outcomes and checks decisive transcripts, phase
+dispatch, phase-off parity and exact fallen/swapped Recovery. It is a fixed two-world,
+region0 benchmark; it cannot certify the campaign, dossier UI, durable Main or economy.
 
 ## §20 balance instrument — matches tooling 2026-09-25
 

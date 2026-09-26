@@ -33,6 +33,26 @@ export function playCommand(api, plan, policy) {
   }
   return {result: r, decisions};
 }
+/** Literal policy independent of runtime exports; checks the actual settlement for every fought companion. */
+export function recoveryReceipt(result, expected, plan, activePlayMs) {
+  const receipt = { cases: 0, mismatches: 0, fallen: 0, swapped: 0 };
+  const decisive = expected.legs.at(-1).fighterIndex;
+  for (let index = 0; index < plan.party.length; index++) {
+    const leg = expected.legs.find(x => x.fighterIndex === index);
+    const needsRecovery = index === decisive ? expected.outcome !== 'party' : !!leg;
+    if (!needsRecovery) continue;
+    receipt.cases++;
+    if (leg?.end === 'fighter-fell') receipt.fallen++;
+    if (leg?.end === 'swapped') receipt.swapped++;
+    const injury = index === decisive ? result.injury : result.party?.members?.[index]?.injury;
+    const before = plan.party[index].genome.hurt ?? 0;
+    if (injury?.status !== 'set-recovery' || injury.reason !== 'defeat-recovery'
+      || injury.creatureId !== 's4-' + plan.party[index].genome.seed
+      || injury.readyAtActivePlayMs !== activePlayMs + 600000
+      || injury.hurtBefore !== before || injury.hurtAfter !== before) receipt.mismatches++;
+  }
+  return receipt;
+}
 export function assessProduction(report, candidate, epoch) {
   const failures = [], fail = x => failures.push(x), declaration = report.purpose === 'training' ? epoch.training : epoch.evaluation, n = declaration.count;
   if (hash(epoch) !== '7fcaed142e2911c1fc375757d39eea11c8fbb7995d74ddfbea7a26074e4e539d' || report.epochHash !== hash(epoch)) fail('epoch authority');
@@ -43,6 +63,11 @@ export function assessProduction(report, candidate, epoch) {
   if (report.schema !== 'cf-s4-production-evaluation/v1' || report.count !== n) fail('schema/count');
   if (report.candidateHash !== hash(candidate)) fail('candidate authority');
   if (report.seedBase !== declaration.seedBase || report.hookSeedBase !== declaration.hookSeedBase || report.forecastSeedBase !== epoch.forecast.seedBase) fail('disjoint seed authority');
+  if (candidate.recoveryActiveMs !== 600000 || report.recovery?.defeatActiveMs !== 600000
+    || report.recovery?.defeatWoundStep !== 0) fail('exact Recovery policy');
+  const recovery = report.recovery?.outcomes;
+  if (!recovery || !Number.isSafeInteger(recovery.cases) || recovery.cases <= 0
+    || recovery.mismatches !== 0 || !(recovery.fallen > 0 && recovery.swapped > 0)) fail('Recovery settlement outcomes');
   const rows = report.cohorts ?? [];
   if (rows.map(r => r.id).sort().join(',') !== 'easy,guardian,normal,titan') fail('cohort inventory');
   for (const r of rows) {

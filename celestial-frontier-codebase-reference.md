@@ -7192,6 +7192,18 @@ the allocation owner. creature-rig.ts re-exports the previous contract names.
 Root `tsc --noEmit --noUnusedLocals`, app and worker programs pass without any
 compiler-setting change. Thirteen edited modules emit identical runtime code.
 
+## S4 production evaluation freeze — matches code as of 2026-09-26
+
+Candidate13 is applied ONLY for the declared one-shot held-out production evaluation; it is
+not admitted. Press dealt/taken1.42/1.7; Guard dealt/taken/opener0.67/0.635/0.25;
+Evade dealt/dodge0.7/0.32; Guardian phase at half health dealt/taken1.08/0.8.
+Recovery remains600000 active ms and zero added defeat wound. On refusal restore the prior
+runtime tuning. `audits/S4_PRODUCTION_EPOCH_20260926/README.md` owns the current status,
+training-only selection, exact source/candidate authority and production-route controls.
+`s4-production.mjs` counts real settlement outcomes and checks decisive transcripts, phase
+dispatch, phase-off parity and exact fallen/swapped Recovery. It is a fixed two-world,
+region0 benchmark; it cannot certify the campaign, dossier UI, durable Main or economy.
+
 ## §20 balance measurement tooling — 2026-09-25
 
 `port/v2/tools/s20-balance.mjs` and `s20-balance-contract.mjs` are browser-free,
