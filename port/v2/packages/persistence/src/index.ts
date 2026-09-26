@@ -31,6 +31,7 @@ export * from './xp-firsts-authority.js';
 export * from './combat-settlement.js';
 export * from './combat-open-encounter.js';
 export * from './friendly-duel.js';
+export * from './outposts.js';
 export * from './guardian-acquisition.js';
 export * from './guardian-companion.js';
 export * from './import-v2.js';
