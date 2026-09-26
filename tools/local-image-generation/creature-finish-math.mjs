@@ -47,6 +47,10 @@ export async function readCreatureFinishRef(ref,fetcher=globalThis.fetch){
 /** Hash/size-check before worker/model construction, and normalize URL input to owned bytes. */
 export async function prepareCreatureFinishJob(input,fetcher=globalThis.fetch,ua=globalThis.navigator?.userAgent??''){
  const job=admitCreatureFinishJob(input,ua),master=await readCreatureFinishRef(job.master,fetcher),labels=await readCreatureFinishRef(job.labels,fetcher);
+ // Refuse ineligible masters before a worker constructs its GPU/model engine.
+ // The engine recomputes this mask; caller-provided derived masks are never trusted.
+ const work=padCreatureFinishCanvas(master,labels,job.width,job.height);
+ creatureFinishMask(work.master,work.labels,work.width,work.height);
  const ref=(source,pixels)=>({width:source.width,height:source.height,sha256:source.sha256,buffer:pixels.buffer});
  return {...job,master:ref(job.master,master),labels:ref(job.labels,labels)};
 }

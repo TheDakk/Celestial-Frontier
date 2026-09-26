@@ -40,3 +40,8 @@ node --test port/v2/tools/anatomy-verify/static-outcome.test.mjs
 Use fresh paths. The static owner requires fit/report paths under this worktree's `audits/`. Rebuilt fit directories are ignored to avoid committing duplicate originals/atlases; receipts and exact binding identities remain in this packet. Source hashes are in `source-hashes.json`.
 
 Two harness mistakes were caught before measurement and retained: the first diagnostic looked up an absent record `id` instead of the parts manifest's `creatureId`; the first static invocation used `/private/tmp`, which the unchanged audit-path guard refused. Both were corrected in the harness/path only; each candidate's full measured static gate ran once, with no unchanged retry.
+
+
+## Batch-end C44/C45 reconciliation
+
+Claude C45 corrects the C43 prose inconsistency described above; the exact statuses retained here remain valid. C44 supplies additional source evidence: Eagle's transferred tail leaves27% of its painted tail assigned to body, and only the hand-tail diagnostic turns that static control green; Sparrow's mixed control still fails the faint foot landmark limit. These are diagnoses, not permission for hand fixes. No further automatic geometry candidate was adopted here. Six ignored diagnostic fit copies were removed after retaining reports, hashes and regeneration commands; originals remain untouched.

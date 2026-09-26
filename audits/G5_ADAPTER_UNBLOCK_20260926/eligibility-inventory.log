@@ -1,0 +1,35 @@
+{"id":"bass","status":"REFUSE","opaque":347,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"beetle","status":"REFUSE","opaque":639,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"centipede","status":"REFUSE","opaque":708,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"chimpanzee","status":"REFUSE","opaque":384,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"coconut-crab","status":"ELIGIBLE","opaque":27005,"originalEligiblePixels":11454,"paddedMask":{"status":"PASS","editablePixels":11454,"editableTokens":41}}
+{"id":"cougar","status":"REFUSE","opaque":193,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"crab","status":"ELIGIBLE","opaque":11675,"originalEligiblePixels":5128,"paddedMask":{"status":"PASS","editablePixels":5128,"editableTokens":16}}
+{"id":"dragonfly","status":"REFUSE","opaque":550,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"eagle","status":"REFUSE","opaque":504,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"freshwater-crab","status":"ELIGIBLE","opaque":18182,"originalEligiblePixels":11755,"paddedMask":{"status":"PASS","editablePixels":11755,"editableTokens":46}}
+{"id":"fruit-bat","status":"REFUSE","opaque":399,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"goose","status":"REFUSE","opaque":772,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"gull","status":"REFUSE","opaque":224,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"heron","status":"REFUSE","opaque":745,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"ibex","status":"REFUSE","opaque":394,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"impala","status":"REFUSE","opaque":923,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"jellyfish","status":"REFUSE","opaque":2863,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"marmot","status":"REFUSE","opaque":29,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"mud-crab","status":"ELIGIBLE","opaque":19140,"originalEligiblePixels":11441,"paddedMask":{"status":"PASS","editablePixels":11441,"editableTokens":44}}
+{"id":"octopus","status":"REFUSE","opaque":1001,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"pike","status":"REFUSE","opaque":596,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"python-open","status":"REFUSE","opaque":613,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"racer","status":"REFUSE","opaque":292,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"reef-shark","status":"REFUSE","opaque":388,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"river-otter","status":"REFUSE","opaque":310,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"salmon","status":"REFUSE","opaque":692,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"starfish","status":"REFUSE","opaque":674,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"sturgeon","status":"REFUSE","opaque":255,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"tang","status":"REFUSE","opaque":695,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"tarantula","status":"REFUSE","opaque":157,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"tree-frog","status":"REFUSE","opaque":590,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"vent-crab","status":"ELIGIBLE","opaque":10758,"originalEligiblePixels":6162,"paddedMask":{"status":"PASS","editablePixels":6162,"editableTokens":21}}
+{"id":"wall-lizard","status":"REFUSE","opaque":827,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"id":"wolf","status":"REFUSE","opaque":558,"originalEligiblePixels":0,"paddedMask":{"status":"REFUSE","reason":"Error: No editable creature interior"}}
+{"total":38,"labelsPresent":34,"eligible":5,"eligible1254":[],"recommendedDistinctCase":null}
