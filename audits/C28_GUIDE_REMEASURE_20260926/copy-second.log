@@ -1,0 +1,139 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/guide-release.test.ts (35 tests | 4 failed) 111ms
+     × returns the 41 legacy-live topics without advertising dormant systems 5ms
+     × describes the exact live Engineering and Inventory actions without promoting dormant rows 3ms
+     × documents live Scout, conquest, Prime, ranks, achievements, and starter Charter joins without claiming their open successors 15ms
+     × keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes 9ms
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts (29 tests | 2 failed) 414ms
+     × binds Guide navigation to publication and the exact current 41-topic capability identity 5ms
+     × keeps every rendered Guide and release oracle green on current exact copy before browser spend 132ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/guide-release.test.ts > v2 Guide capability filter > returns the 41 legacy-live topics without advertising dormant systems
+AssertionError: expected [ { id: 'zoom', …(9) }, …(36) ] to have a length of 35 but got 37
+
+- Expected
++ Received
+
+- 35
++ 37
+
+ ❯ tests/guide-release.test.ts:1261:72
+    1259|     expect(topics).toHaveLength(41);
+    1260|     expect(topics.filter((topic) => topic.availability === 'available'…
+    1261|     expect(topics.filter((topic) => topic.availability === 'partial'))…
+       |                                                                        ^
+    1262|     expect(topics.filter((topic) => topic.availability === 'unavailabl…
+    1263|     expect(topics.filter((topic) => topic.availability === 'partial')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  tests/guide-release.test.ts > v2 Guide capability filter > describes the exact live Engineering and Inventory actions without promoting dormant rows
+AssertionError: expected 'partial' to be 'unavailable' // Object.is equality
+
+Expected: "unavailable"
+Received: "partial"
+
+ ❯ tests/guide-release.test.ts:1594:52
+    1592|       expect(getGuideTopic(id)?.availability, `${id} live Arc 3 bounda…
+    1593|     }
+    1594|     expect(getGuideTopic('harvest')?.availability).toBe('unavailable');
+       |                                                    ^
+    1595|     expect(engineeringBullet).toBeDefined();
+    1596|     expect(engineeringReleaseCopyIsTruthful(engineeringBullet!)).toBe(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  tests/guide-release.test.ts > v2 Guide capability filter > documents live Scout, conquest, Prime, ranks, achievements, and starter Charter joins without claiming their open successors
+AssertionError: expected '<p>Rare worlds can field their determ…' to contain 'temporary Recovery lock'
+
+Expected: "temporary Recovery lock"
+Received: "<p>Rare worlds can field their deterministic <b>Apex Guardian</b>; eligible Signature worlds can instead field one named <b>Elemental Titan</b>. They are selected from the exact world, region, roster, and already-claimed Prime set, so the same canonical expedition facts produce the same ruler.</p><p>A verified victory adds the defeated Guardian or Titan to the Compendium with temporary battlefield modifiers stripped. Titan victories also claim the matching Prime Signature. The normal conquest Stardust and fauna XP bonuses settle in the same receipt-backed save.</p><p>Each live captured Guardian or Titan can return as a conquest champion from its separate combat-only record. It uses the existing forecast, Chronicle, registered combat audio and XP path. Defeat starts active-play Recovery, with no added defeat wound; the creature stays in the Compendium and returns to the roster when ready. Prime Signature claims remain independent. These captures stay outside ordinary Arc 5 care, breeding and missions. A combat-only Recovery overlay controls availability. Guardian and Titan encounters offer a party, stances, Auto or Command, and offered Hold, Swap or Withdraw choices. Their phase change applies even to solo Balanced Auto.</p><p>The authored extra Guardian Gear or material cache is not yet authoritative and is never invented; see <span data-gt="conquest">Conquest</span>.</p>"
+
+ ❯ tests/guide-release.test.ts:2277:46
+    2275|     expect(getGuideTopic('guardians')?.body).toContain('battlefield mo…
+    2276|     expect(getGuideTopic('guardians')?.body).toContain('can return as …
+    2277|     expect(getGuideTopic('guardians')?.body).toContain('temporary Reco…
+       |                                              ^
+    2278|     expect(getGuideTopic('signatures')?.body).toContain('ninth distinc…
+    2279|     expect(combatGuideCopyIsTruthful(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  tests/guide-release.test.ts > legacy and v2 release channels > keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes
+AssertionError: expected [ Array(1) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "/(?:passive evolution|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i",
++ ]
+
+ ❯ tests/guide-release.test.ts:2846:8
+    2844|     const draftCopy = V2_DRAFT_RELEASE.sections.flatMap((section) => s…
+    2845|     expect(forbiddenOverclaims.filter((pattern) => pattern.test(draftC…
+    2846|       .toEqual([]);
+       |        ^
+    2847|     expect(requiredCopy.filter((pattern) => !pattern.test(draftCopy)).…
+    2848|       .toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > binds Guide navigation to publication and the exact current 41-topic capability identity
+AssertionError: expected [ { …(3) }, { …(3) }, { …(3) }, …(34) ] to have a length of 35 but got 37
+
+- Expected
++ Received
+
+- 35
++ 37
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:198:74
+    196|     expect(catalogue).toHaveLength(9);
+    197|     expect(expected).toHaveLength(41);
+    198|     expect(expected.filter((topic) => topic.availability === 'partial'…
+       |                                                                          ^
+    199|     expect(expected.filter((topic) => topic.availability === 'unavaila…
+    200|     const categoryAuthorityOwner = section(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps every rendered Guide and release oracle green on current exact copy before browser spend
+AssertionError: expected Object{ …(55) } to match object { complete: true, honest: true, …(4) }
+(49 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "canonical": true,
+    "complete": true,
+-   "honest": true,
++   "honest": false,
+    "liveProgressionContract": true,
+    "liveProgressionContradiction": false,
+-   "populated": true,
++   "populated": false,
+  }
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:377:29
+    375|       readonly liveProgressionContradiction: boolean;
+    376|     };
+    377|     expect(releaseBaseline).toMatchObject({
+       |                             ^
+    378|       complete: true,
+    379|       honest: true,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  6 failed | 67 passed (73)
+   Start at  22:55:21
+   Duration  15.17s (transform 705ms, setup 0ms, import 4.94s, tests 13.53s, environment 0ms)
+

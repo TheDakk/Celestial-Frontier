@@ -1,0 +1,100 @@
+[
+  {
+    "name": "develop",
+    "bin": "node",
+    "args": [
+      "tools/check-profile.mjs",
+      "--profile=develop"
+    ],
+    "status": 1,
+    "error": null,
+    "elapsedMs": 147381.244375
+  },
+  {
+    "name": "root-types",
+    "bin": "npm",
+    "args": [
+      "exec",
+      "--",
+      "tsc",
+      "--noEmit",
+      "--noUnusedLocals"
+    ],
+    "status": 0,
+    "error": null,
+    "elapsedMs": 1878.4094589999877
+  },
+  {
+    "name": "app-types",
+    "bin": "npm",
+    "args": [
+      "exec",
+      "--",
+      "tsc",
+      "--noEmit",
+      "-p",
+      "apps/game/tsconfig.json"
+    ],
+    "status": 0,
+    "error": null,
+    "elapsedMs": 1130.0617499999935
+  },
+  {
+    "name": "worker-types",
+    "bin": "npm",
+    "args": [
+      "exec",
+      "--",
+      "tsc",
+      "--noEmit",
+      "-p",
+      "apps/game/tsconfig.worker.json"
+    ],
+    "status": 0,
+    "error": null,
+    "elapsedMs": 517.8292089999886
+  },
+  {
+    "name": "artaudit",
+    "bin": "npm",
+    "args": [
+      "run",
+      "artaudit"
+    ],
+    "status": 0,
+    "error": null,
+    "elapsedMs": 906.2235410000139
+  },
+  {
+    "name": "overridecheck",
+    "bin": "npm",
+    "args": [
+      "run",
+      "overridecheck"
+    ],
+    "status": 0,
+    "error": null,
+    "elapsedMs": 915.2862909999967
+  },
+  {
+    "name": "speccheck",
+    "bin": "node",
+    "args": [
+      "tools/speccheck.mjs"
+    ],
+    "status": 0,
+    "error": null,
+    "elapsedMs": 343.2209579999908
+  },
+  {
+    "name": "overridecontrol",
+    "bin": "npm",
+    "args": [
+      "run",
+      "overridecontrol"
+    ],
+    "status": 0,
+    "error": null,
+    "elapsedMs": 125197.639834
+  }
+]

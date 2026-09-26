@@ -2350,7 +2350,7 @@ checks, not conclusions from those tests. Dated evidence below keeps its origina
 > The eighth phone-dock slot now opens the canonical **Guide to the Universe**
 > rather than the old import shortcut or a second seven-topic manual. V2 carries
 > the mature inventory—9 categories /43 authored stable topic ids /41
-> legacy-live topics, currently 34 partial and 7 unavailable—plus category drill-down,
+> legacy-live topics, currently 37 partial and 4 unavailable—plus category drill-down,
 > title/keyword/body search and
 > `data-gt` cross-links. A capability layer substitutes current-slice copy for
 > partially ported systems and a visible **Not yet in v2** explanation for
@@ -2358,16 +2358,18 @@ checks, not conclusions from those tests. Dated evidence below keeps its origina
 > contract but hidden from the 41-topic player catalogue. First open persists
 > `seenGuide`; the former import door (**Settings → Bring expedition**) was removed on 2026-09-05.
 > The same panel exposes all 56 immutable legacy release entries plus **A New
-> Foundation**, the cumulative categorized 77-bullet v2.0 development bulletin. Its rendered
-> ordered SHA-256 is `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`. It summarizes
+> Foundation**, the cumulative categorized 106-bullet v2.0 development bulletin. Its rendered
+> ordered SHA-256 is `9ca05cf7d271f1a93567861037e8f8ce0841af97bb7afa2f814e16b34719ebe5`. It summarizes
 > every implemented playtest layer while keeping unavailable port work out of its
 > promises. The long draft is browser-checked for canonical section order and an exact final
 > bullet that is visibly reachable through bounded adaptive native-wheel input. Each wheel is
 > followed by a fresh exact-document/tail/hit-owner/geometry observation; the control clips
 > overflow, and cleanup restores the prior scroll plus inline overflow value/priority exactly.
 > Opening and reloading the bulletin cannot change `rnSeen` or create
-> a shipped-update state. No v2 production version exists until Nick authorizes one. Tooltip deep links and
-> Advanced Briefings remain open port scope. The slice's Field Training likewise
+> a shipped-update state. No v2 production version exists until Nick authorizes one. Matches code as of 2026-09-26: five read-only Advanced Briefings live in this panel,
+> with native Previous/Next/Finish and current-topic cross-links. They retain Guide focus
+> and lazy publication guards, grant no reward and mutate no expedition state. Broader
+> tooltip deep links remain separate scope. The slice's Field Training likewise
 > owns six real chart/travel/landing lessons plus an honest graduation, not the
 > full legacy 21-step curriculum.
 > Built output additionally injects the same-origin manifest, icon, theme metadata and PWA enable

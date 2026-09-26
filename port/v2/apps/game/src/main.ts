@@ -43,6 +43,7 @@ import {
 } from './world-harvest.js';
 import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-batch.js';
 import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './recipe-pin.js';
+import { mirrorCompanionCodexXpV1 } from './companion-codex-mirror.js';
 import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
 import { freshExpeditionPayloadV1 } from './expedition-reset.js';
 import { TooltipOwnerV1 } from './tooltips.js';
@@ -3307,6 +3308,20 @@ function renderGuideTopic(id: GuideTopicId, focusResult = false): void {
     if (focusResult) focusGuide('[data-guide-category]');
   });
 }
+function renderGuideBriefing(index: number): void {
+  requestGuideContent((module) => {
+    const rows = module.V2_ADVANCED_BRIEFINGS;
+    if (!Number.isSafeInteger(index) || index < 0 || index >= rows.length) return;
+    const body = guideBodyEl(), row = rows[index]; if (!body || !row) return;
+    body.innerHTML = '<button class="guide-back" data-guide-home>‹ Guide</button>' +
+      `<article class="guide-topic" data-guide-briefing-page="${row.id}"><h4 tabindex="-1" data-guide-heading>Advanced Briefings · ${index + 1} of ${rows.length}: ${esc(row.title)}</h4>` +
+      interactiveGuideBody(row.body) + '</article><div class="guide-related">' +
+      (index > 0 ? `<button data-guide-briefing="${index - 1}">Previous briefing</button>` : '') +
+      (index + 1 < rows.length ? `<button data-guide-briefing="${index + 1}">Next briefing</button>` : '<button data-guide-home>Finish briefings</button>') + '</div>';
+    body.scrollTop = 0;
+    focusGuide('[data-guide-heading]');
+  });
+}
 function renderGuideSearch(query: string): void {
   if (query.trim().length < 2) { renderGuideMenu(); return; }
   requestGuideContent((module, catalogue) => {
@@ -3417,7 +3432,7 @@ function fillGuide(): void {
     '<h3>Guide to the Universe</h3>' +
     guideBuildIdentity() +
     '<div class="guide-tools"><input id="guidesearch" type="search" autocomplete="off" aria-label="Search the Guide" placeholder="Search 41 Guide topics" disabled>' +
-    '<button data-guide-releases>Release history</button></div>' +
+    '<button data-guide-briefing="0">Advanced Briefings</button><button data-guide-releases>Release history</button></div>' +
     '<div class="sub guide-scope">The mature manual, adapted to what is actually live in this v2 development build. Unported active systems stay visible and honestly marked; intentionally dormant topics remain recorded but hidden.</div>' +
     '<div class="guide-body" data-sel="guide-body"><div class="empty" data-guide-loading>Opening the expedition archive…</div></div>');
   renderGuideMenu();
@@ -3435,7 +3450,9 @@ document.getElementById('guidepanel')!.addEventListener('click', (event) => {
   const topic = (topicEl?.dataset.guideTopic || topicEl?.dataset.gt) as GuideTopicId | undefined;
   const category = target.closest<HTMLElement>('[data-guide-category]')?.dataset.guideCategory as GuideCategoryId | undefined;
   const releaseIndex = target.closest<HTMLElement>('[data-release-index]')?.dataset.releaseIndex;
-  if (topic) renderGuideTopic(topic, true);
+  const briefing = target.closest<HTMLElement>('[data-guide-briefing]')?.dataset.guideBriefing;
+  if (briefing !== undefined && /^\d+$/.test(briefing)) renderGuideBriefing(Number(briefing));
+  else if (topic) renderGuideTopic(topic, true);
   else if (category) renderGuideCategory(category, true);
   else if (releaseIndex !== undefined) renderRelease(+releaseIndex, true);
   else if (target.closest('[data-guide-releases]')) renderReleaseHistory(true);
@@ -9422,10 +9439,7 @@ async function runFriendlyDuel(request: FriendlyDuelRequestV1): Promise<void> {
     // publish exactly the duel's fields: the counters and the one companion's Compendium mirror row
     const liveStats = save.stats as Record<string, number | undefined>, committedStats = outcome.state.stats as Record<string, number | undefined>;
     liveStats.duels = committedStats.duels; liveStats.duelwins = committedStats.duelwins;
-    save.codex = save.codex.map(([id, entry]) => {
-      const committed = outcome.state.codex.find(([rowId]) => rowId === id)?.[1];
-      return committed !== undefined && committed.g?.xp !== entry.g?.xp ? [id, { ...entry, g: { ...entry.g, xp: committed.g.xp } }] : [id, entry];
-    });
+    save.codex = mirrorCompanionCodexXpV1(save.codex, outcome.state.codex);
     arc5OwnershipState = loaded.state;
     arc5OwnershipEvidence = loaded.evidence;
     lastPersistenceOutcome = `friendly-duel-committed:${outcome.revision}`;
@@ -14065,6 +14079,8 @@ async function commitCompendiumFeedAction(
           && settlement.foodTombstone.lotId !== request.foodLotId)) {
         throw new Error('arc5-feed-fixed-point-mismatch');
       }
+      // D13 care XP: publish the one companion's Compendium mirror row `g.xp`, by the same rule as the friendly duel
+      save.codex = mirrorCompanionCodexXpV1(save.codex, attempt.transaction.state.codex);
       arc5OwnershipState = attempt.ownershipV2;
       arc5OwnershipEvidence = attempt.ownershipV2Evidence;
       arc5OwnershipProtection = null;

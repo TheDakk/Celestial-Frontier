@@ -1,0 +1,12 @@
+{
+  "origin": "https://github.com/TheDakk/Celestial-Frontier.git",
+  "visibility": "PUBLIC",
+  "remoteOpenaiMac": "8c41803cd04749c1f99b73fe49c69c17c3349cad",
+  "workflowDiffFromRemote": "empty",
+  "triggers": [
+    "pull_request:labeled",
+    "workflow_dispatch"
+  ],
+  "budgetMode": "UNFROZEN",
+  "authorization": "Nick explicitly directs own-branch measured pushes below2GB; no hosted attempt"
+}

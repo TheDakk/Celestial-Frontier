@@ -23,6 +23,7 @@ import {
 } from '@cf/domain-acquisition/feed-internal';
 import {
   committedArc5OwnershipState,
+  companionLegacyCodexIdV1,
   prepareArc5OwnershipV2Successor,
   type Arc5OwnershipMigrationEvidenceV2,
   type Arc5OwnershipV2SuccessorProtectionReason,
@@ -291,6 +292,12 @@ export async function commitArc5FeedActionV1(
           throw new Error(`Arc 5 feed ownership carrier refused ${prepared.reason}`);
         }
         selected = Object.freeze({ settlement, prepared });
+        // D13 care XP (first meal, a newly tasted flavour) also lands on the companion's v4 Compendium mirror row's `g.xp`, exactly as the
+        // friendly duel's does — the row the Compendium shows and the ownership row never disagree
+        if ((settlement.creatureAfter.xp ?? 0) !== (settlement.creatureBefore.xp ?? 0)) {
+          const id = companionLegacyCodexIdV1(captured.ownershipV2, settlement.creatureBefore), xp = settlement.creatureAfter.xp ?? 0;
+          draft.codex = draft.codex.map(([rowId, entry]) => (rowId === id ? [rowId, { ...entry, g: { ...entry.g, xp } }] : [rowId, entry]));
+        }
         return Object.freeze({
           state: draft,
           extensionWrites: prepared.writes,

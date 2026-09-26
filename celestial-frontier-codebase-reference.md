@@ -7201,3 +7201,13 @@ training-only policy selection and exhaustive Command trees on held-out cases.
 [audits/S20_BALANCE_20260925](audits/S20_BALANCE_20260925/README.md) owns measured
 RED findings, negative controls, invalid historical fixture attempts and the actual
 forecast-cache reproduction. This adds no game tuning or admission certificate.
+
+## Current v2 Guide — matches code as of 2026-09-26
+
+The immutable v1 manual and release archive remain byte-pinned. The v2 Guide has41 visible
+topics (37 partial,4 unavailable) and106 ordered draft bullets; current copy measurement
+and SHA authority are retained in `audits/C28_GUIDE_REMEASURE_20260926/measured-copy.json`.
+`guide-briefings.ts` supplies five read-only Advanced Briefings through Main’s existing lazy
+Guide owner. Native buttons traverse, finish or follow current topic links, with heading focus
+and no expedition writes beyond the existing first-open seenGuide flag. Care/Rest/bond, CFB
+duels, Harvest, phase-aware Guardian combat and Settings copy reflect the integrated app.

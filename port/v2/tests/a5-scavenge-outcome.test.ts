@@ -33,7 +33,14 @@ import { beforeAll, describe, expect, it, vi } from 'vitest';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   capturePresentationFenceV1,
+  createCatalogSpeciesV1,
+  createCreatureInstanceV1,
   createEmptyOwnershipStateV1,
+  createInitialOwnershipStateV1,
+  createLegacyDiscoveryRecordV1,
+  ownershipContentId,
+  preflightCaptureV1,
+  type OwnershipStateV1,
   formatCaptureChancePercentV1,
   ownershipSourceStateV1,
   ownershipStateDigestV1,
@@ -46,6 +53,7 @@ import {
   canonicalCF1WorldAddressFromNav,
   navFromCanonicalCF1Address,
   resolveCF1WorldAddress,
+  systemScene,
   type CanonicalCF1WorldAddress,
 } from '@cf/scene';
 import {
@@ -61,6 +69,7 @@ import {
   prepareArc5OwnershipMigration,
   prepareF4AuthorityUpdate,
   prepareV5SaveWrite,
+  projectLegacyOwnershipMirror,
   readArc4Ownership,
   readArc5OwnershipMigration,
   readF4Authority,
@@ -257,18 +266,19 @@ async function bootFromDurableSave(backend: StorageBackend, tag: string): Promis
   };
 }
 
-async function freshFixture(): Promise<DurableFixture> {
+interface FixtureOptions { readonly seed?: number; readonly ownership?: OwnershipStateV1; readonly codex?: SaveStateV2['codex'] }
+async function freshFixture(options: FixtureOptions = {}): Promise<DurableFixture> {
   const imported = importSaveV2('{}', REGISTRY, NOW);
   if (!imported.ok) throw new Error(imported.reason);
-  const state = imported.state;
+  const state = options.codex === undefined ? imported.state : { ...imported.state, codex: options.codex };
   const arc2 = prepareArc2LootLegacyMigration({
     extensions: {},
     legacy: { items: state.items, equip: state.equip, equipAff: state.equipAff },
     capacity: 6,
   });
   if (arc2.kind !== 'prepared') throw new Error(`Arc 2 fixture was ${arc2.kind}`);
-  const f4 = prepareF4AuthorityUpdate(arc2.extensions, { activePlayMs: 0 }, createSessionRNG(HIT_SEED).state());
-  const arc4 = applyV5ExtensionWrites(f4.extensions, encodeArc4Ownership(createEmptyOwnershipStateV1()).writes).extensions;
+  const f4 = prepareF4AuthorityUpdate(arc2.extensions, { activePlayMs: 0 }, createSessionRNG(options.seed ?? HIT_SEED).state());
+  const arc4 = applyV5ExtensionWrites(f4.extensions, encodeArc4Ownership(options.ownership ?? createEmptyOwnershipStateV1()).writes).extensions;
   const arc5 = prepareArc5OwnershipMigration({ extensions: arc4, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER });
   if (arc5.kind !== 'prepared') throw new Error(`Arc 5 fixture was ${arc5.kind}`);
   const backend = createMemoryBackend();
@@ -282,13 +292,13 @@ async function freshFixture(): Promise<DurableFixture> {
 
 /* ---------------- the Main harness ---------------- */
 
-function mainScavengeHarness(f: DurableFixture, mutations: readonly MainMutation[] = []) {
+function mainScavengeHarness(f: DurableFixture, mutations: readonly MainMutation[] = [], world: CanonicalCF1WorldAddress = earth()) {
   const dom = new JSDOM(`<!doctype html><html><body>
     <section id="card" aria-label="Survey" style="display:block"></section>
   </body></html>`);
   const document = dom.window.document;
   const card = document.getElementById('card')!;
-  const nav = navFromCanonicalCF1Address(earth());
+  const nav = navFromCanonicalCF1Address(world);
   if (!nav.ok) throw new Error(nav.reason);
   const toast = vi.fn();
   const scheduleReload = vi.fn();
@@ -377,8 +387,9 @@ function mainScavengeHarness(f: DurableFixture, mutations: readonly MainMutation
   const exec = executableMainScavenge(env, mutations);
   exec.present();
   const scavengeButton = () => card.querySelector<HTMLButtonElement>('button[data-capture-action="scavenge"]');
+  const tameButton = () => card.querySelector<HTMLButtonElement>('button[data-capture-action="tame"]');
   const budget = () => card.querySelector<HTMLElement>('[data-capture-budget]');
-  return { dom, env, exec, card, toast, scheduleReload, queueProgressionRefresh, scavengeButton, budget };
+  return { dom, env, exec, card, toast, scheduleReload, queueProgressionRefresh, scavengeButton, tameButton, budget };
 }
 type Harness = ReturnType<typeof mainScavengeHarness>;
 
@@ -589,4 +600,113 @@ describe('A5 #53 — Scavenge is a UI outcome that survives reload', () => {
       name: 'drifted', needle: 'void runCaptureCardActionNonexistent(', replacement: '',
     })).toThrow(/found 0/u);
   });
+});
+
+/* ---------------- A5 capture ledger: a RARE FIND tame (2026-09-26) ----------------
+ * Earth's tame pool tops out at tier 2, so no Earth tame can ever pay the Rare Find (v1: Stardust = tier - 3 for a genuinely NEW
+ * species of tier >= 5, CLAUDE.md invariant 9). The fixture world is a real living world of the foreign system the capture tests use
+ * (galaxy 394332036, star 676840317): its tame pool is found by the production planner (compose → preflight), and the SessionRNG seed is
+ * a bounded search whose first candidate draw picks a tier >= 5 candidate and whose first success draw hits. The tier the payout uses
+ * is the PLAN's own (the committed result's stardustReward); the search only finds the seed. */
+const FOREIGN = Object.freeze({ galaxy: Object.freeze({ seed: 394332036, x: -300.95, y: 175.47 }), star: Object.freeze({ seed: 676840317, x: 27.3, y: -24.6 }) });
+function rareWorld(): CanonicalCF1WorldAddress {
+  for (const planet of systemScene(FOREIGN.star.seed).planets) {
+    if (planet.seed !== 571651108) continue;
+    const resolved = resolveCF1WorldAddress({ ...FOREIGN, planet: { seed: planet.seed } });
+    if (resolved.ok) return resolved.address;
+  }
+  throw new Error('rare-find fixture world is gone');
+}
+/** The production tame pool on the rare world for a fixture's ownership (the planner's own compose + preflight). */
+function tamePool(f: DurableFixture) {
+  const world = rareWorld(), roster = canonicalWorldRoster(world, 0), nav = navFromCanonicalCF1Address(world);
+  if (!roster.ok || !nav.ok) throw new Error('rare-find world roster/nav');
+  const composed = composeAcquisitionSnapshotV1({ nav: nav.state, address: world, roster: roster.roster, ecologyEpoch: 0, fullRosterFingerprint: roster.roster.fullRosterFingerprint, extensions: f.runtime.extensions } as never);
+  if (composed.kind !== 'ready') throw new Error(`rare-find snapshot ${composed.reason}`);
+  const pre = preflightCaptureV1(composed.snapshot, 'tame');
+  if (pre.kind !== 'ready') throw new Error(`rare-find preflight ${pre.reason}`);
+  return pre.pool;
+}
+const RARE_SEED = 4; // bounded search result (candidate draw → pool index 1, the tier-5 species; success draw 0.031 < chance 0.1053)
+
+/** The prior companion's v4 Compendium row (a fauna row's canonical id is `s<seed>`, as a v1 row migrates). */
+const priorCodexId = (identity: { genome: unknown }) => `s${(identity.genome as { seed: number }).seed}`;
+/** The save's Compendium rows are EXACTLY the ownership's own v4 mirror (the production projector), so the capture path's round trip holds. */
+function priorCodexRows(ownership: OwnershipStateV1): SaveStateV2['codex'] {
+  const mirror = projectLegacyOwnershipMirror(ownership) as { codex: readonly { legacyCodexId: string; g: Record<string, unknown>; f: string; w: string | null }[] };
+  return mirror.codex.map((row) => [row.legacyCodexId, { id: row.legacyCodexId, name: 'Prior find', kind: 'Fauna', tier: null, realm: 'Wild', sapient: 0,
+    from: row.f, hybrid: false, g: row.g, where: row.w }]) as never;
+}
+/** An Arc 4 ownership that already CATALOGUES the given species (a prior legacy discovery) — the "not new" control. */
+function cataloguedOwnership(identity: Parameters<typeof createCatalogSpeciesV1>[0]['identity']): OwnershipStateV1 {
+  const discovery = createLegacyDiscoveryRecordV1({ recordId: ownershipContentId('discovery', 'rare-find-prior') as never, speciesId: identity.speciesId,
+    legacyCodexId: priorCodexId(identity), legacySourceIndex: 0, from: 'Legacy', legacyLocation: null, firstForSpecies: true });
+  // a legacy discovery is audited against its owned row: the prior find is a companion of that species
+  const creature = createCreatureInstanceV1({ creatureId: ownershipContentId('creature', 'rare-find-prior') as never, speciesId: identity.speciesId,
+    genomeIdentity: identity.genomeIdentity, genome: identity.genome, nickname: null, origin: 'legacy', acquisitionRecordId: discovery.recordId,
+    lineage: { kind: 'none', generation: 0 }, xp: 0, hurt: 0, fed: 0, brood: null, assignment: null, bond: null } as never);
+  return createInitialOwnershipStateV1({ catalogSpecies: [createCatalogSpeciesV1({ identity, alias: null, firstObservationId: discovery.recordId })],
+    discoveries: [discovery], creatures: [creature], specimenLots: [], biosphereProgress: [], legacyBioX: [], scoutCreatureId: null } as never);
+}
+
+async function pressRareTameScenario(mutations: readonly MainMutation[] = [], catalogued = false): Promise<{ reward: number }> {
+  let f = await freshFixture({ seed: RARE_SEED });
+  if (catalogued) {
+    const pool = tamePool(f); await f.runtime.release();
+    const prior = cataloguedOwnership(pool[1]!.identity as never);
+    f = await freshFixture({ seed: RARE_SEED, ownership: prior, codex: priorCodexRows(prior) });
+  }
+  const harnesses: Harness[] = [];
+  try {
+    const pool = tamePool(f);
+    expect(pool.length, 'the rare world offers a two-species tame pool').toBe(2);
+    const h = mainScavengeHarness(f, mutations, rareWorld());
+    harnesses.push(h);
+    const button = h.tameButton();
+    expect(button, 'Main must render the Tame control').not.toBeNull();
+    expect(button!.disabled, 'the Tame control must be enabled').toBe(false);
+    const essenceBefore = f.state.essence, earnedBefore = f.state.stats.essenceEarned ?? 0;
+    button!.click();
+    await settled(h);
+    expect(await f.repository.revision(), 'rare tame: pressing Tame must commit exactly one revision').toBe(1);
+    expect(await f.backend.keys('receipts')).toHaveLength(1);
+    const result = h.exec.result();
+    expect(result, 'rare tame: the committed result must be published').not.toBeNull();
+    expect(result).toMatchObject({ hit: true, speciesId: pool[1]!.identity.speciesId, firstForSpecies: !catalogued });
+    const saved = await durableSave(f);
+    // the ledger: Stardust and lifetime Stardust move by EXACTLY the Rare Find, once, durably
+    expect(saved.state.essence, 'rare tame: durable Stardust must be the start plus the Rare Find reward only').toBe(essenceBefore + result!.stardustReward);
+    expect(saved.state.stats.essenceEarned ?? 0, 'rare tame: lifetime Stardust moves by the same reward').toBe(earnedBefore + result!.stardustReward);
+    expect(JSON.stringify(h.env.save), 'rare tame: the live save must equal the durable save').toBe(JSON.stringify(saved.state));
+    // reboot: the ledger survives exactly
+    await f.runtime.release();
+    f = await bootFromDurableSave(f.backend, 'rare-reloaded');
+    expect(f.state.essence, 'rare tame: the reboot keeps the paid Stardust exactly').toBe(essenceBefore + result!.stardustReward);
+    expect(f.state.stats.essenceEarned ?? 0).toBe(earnedBefore + result!.stardustReward);
+    return { reward: result!.stardustReward };
+  } finally {
+    for (const x of harnesses) x.dom.window.close();
+    await f.runtime.release();
+  }
+}
+
+describe('A5 — the capture ledger: a Rare Find tame pays Stardust exactly once, only for a genuinely new species', () => {
+  it('a pressed Tame of a NEW tier-5 species pays 5 - 3 = 2 Stardust once, durably, live = durable, and survives a reboot', async () => {
+    expect((await pressRareTameScenario()).reward).toBe(2);
+  }, 60_000);
+  it('control: the SAME species already catalogued pays nothing (rare-find Stardust only for genuinely new species)', async () => {
+    expect((await pressRareTameScenario([], true)).reward).toBe(0);
+  }, 60_000);
+  const RARE_MUTANTS: ReadonlyArray<Readonly<{ mutation: MainMutation; failsWith: RegExp }>> = [
+    { mutation: { name: 'UNPUBLISHED: the committed capture fields never reach the live save', needle: '      publishArc4CaptureFields(save, transaction.state);', replacement: '      void transaction;' },
+      failsWith: /rare tame: the live save must equal the durable save/u },
+    { mutation: { name: 'DOUBLED REWARD (durable): the commit starts from a pre-paid parent', needle: '        state: save,\n        nav,',
+      replacement: '        state: { ...save, essence: save.essence + 25, stats: { ...save.stats, essenceEarned: (save.stats.essenceEarned ?? 0) + 25 } },\n        nav,' },
+      failsWith: /rare tame: durable Stardust must be the start plus the Rare Find reward only/u },
+  ];
+  for (const { mutation, failsWith } of RARE_MUTANTS) {
+    it(`negative control — ${mutation.name}: the rare-find outcome test fails`, async () => {
+      await expect(pressRareTameScenario([mutation])).rejects.toThrow(failsWith);
+    }, 60_000);
+  }
 });

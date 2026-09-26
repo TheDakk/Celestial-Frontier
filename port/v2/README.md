@@ -3475,13 +3475,13 @@ controls, `cf_v2_import_original` keepsake) is removed — v2 starts every explo
 `#importsheet` survives only as the nonclosable Field Training recovery sheet (reload/update only), and
 the evidence-build `importBlob` seam remains the Slice/Glass replacement driver. Glass retired
 `modal-background-containment-restore` and `modal-live-error`; retained carriers are judged against the
-ledger they planned (`GLASS_NEGATIVE_CONTROL_LEDGERS`). The draft bulletin is 77 outcomes.
+ledger they planned (`GLASS_NEGATIVE_CONTROL_LEDGERS`). The current draft bulletin is 106 outcomes (measured 2026-09-26).
 
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,
 43 authored stable IDs and 41 player topics with search, categories, native-keyboard
-cross-links and capability-aware v2 copy. At the current Step 2e boundary, 35 topics are
-partial and 6 are unavailable; the Capture/Discover guidance separates write-free living-world
+cross-links and capability-aware v2 copy. At the current September26 boundary, 37 topics are
+partial and 4 are unavailable; the Capture/Discover guidance separates write-free living-world
 inspection, explicit durable Discover Life, and landed random-pool Capture without inventing targeted selection. It states the current
 capture-backed Charter rule exactly: the first durable successful Tame, Scavenge, or Sample on
 each source-proven world beyond Sol banks that world's one Chapter 2 life-discovery tick in the
@@ -3524,8 +3524,8 @@ settles, and request/body/open-panel fences prevent a closed or replaced Guide f
 publication. A cached archive publishes on the following microtask because panel `onOpen` runs
 before the manager exposes the open panel. Opening it persists the existing `seenGuide` field. The Guide also carries the full
 56-release/398-bullet legacy history beside **A New Foundation**, the cumulative
-categorized v2.0 development bulletin, now 79 bullets. Its rendered ordered SHA-256 is
-`351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`. The draft summarizes the
+categorized v2.0 development bulletin, now 106 bullets. Its rendered ordered SHA-256 is
+`9ca05cf7d271f1a93567861037e8f8ce0841af97bb7afa2f814e16b34719ebe5`. The draft summarizes the
 implemented playtest
 surface rather than the open roadmap; tests require canonical section order, unique
 nonempty bullets, the key player-facing outcomes, and a final item reached through bounded adaptive
@@ -3536,8 +3536,11 @@ create `releasePending`, or create a production release. There is no player save
 The v1.8.9 codec remains the v2 load/compatibility owner, and evidence-build `importBlob` remains
 the Slice/Glass replacement seam. `#importsheet` is only the nonclosable Field Training recovery
 surface; it does not restore Bring expedition or its former modal controls. This is deliberately
-an honest manual for the current slice, not a claim that tooltip deep-links,
-Advanced Briefings, or every late-game system has already been ported.
+an honest manual for the current slice. Matches code as of 2026-09-26: five read-only
+Advanced Briefings cover reach, resources, companions, combat and progress. Native Previous,
+Next, Finish and topic cross-links use the existing lazy Guide publication and focus owners;
+they grant no reward and write no expedition state. Broader tooltip deep-links and open
+late-game systems remain separate work.
 **Current curriculum correction (pre-existing reference drift, 2026-09-05):** Field Training
 uses the existing 15 cards. The six welcome/find-Earth/survey/chart/Atlas/land cards lead into
 read-only Planetside, Engineering, Compendium, Records and combat/horizon orientation, then
