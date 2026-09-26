@@ -9,6 +9,7 @@ rest of this doc was not re-verified in that refresh.
 - **Scroll height.** The list's virtual scrollport gives up exactly the chip row (52 px) in both height owners, so no row hides under the dock.
 - **Shelves (opt-in, off by default).** The list groups onto v1's themed shelves (`CODEX_SHELF_OF_V1`, domain `REALM_ORDER`). Each shelf is a real button fold header. Nothing opens itself; a kingdom or rarity filter lays every shelf open. The default Compendium stays the flat virtual list that Codex's instruments measure.
 - **State.** Filters and shelf folds are session view state, never saved. The fixture install/reset (Codex's I5 instrument) returns them to the default.
+- **Origin travel (#38).** A wild catch's detail card has a 44 px "Travel to <world> ↗" button: v1 `data-go`, travelling to the saved `where` through the one proven-route owner (search-travel), then v1's "Course Plotted" toast. A hybrid, a page without a resolvable world, and a measurement fixture show no button and never travel.
 
 ## v2 folded survey card (D18) — matches code as of 2026-09-25
 

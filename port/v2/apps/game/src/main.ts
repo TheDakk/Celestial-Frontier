@@ -4004,6 +4004,9 @@ function fillCodexDetail(idx: number): void {
       `<div style="margin:4px 0 8px"><b style="font-size:16px;color:#f4f8ff">${esc(e.name)}</b>` +
       (rarityView ? ` <span class="rarity-badge" data-sel="detail-grade" style="border:1px solid ${esc(rarityView.hex)};color:${esc(rarityView.hex)};border-radius:999px;padding:1px 9px;font-size:11px">${esc(rarityView.name)}</span>` : '') +
       `<div class="sub">${esc(e.kind)} · ${esc(e.realm)}${e.hybrid ? ' · hybrid' : ''}${e.from ? ' · ' + esc(e.from) : ''}</div></div>` +
+      /* D16 (v1 data-go): a wild catch travels back to the world it was first catalogued on; a hybrid (bred) has no origin world */
+      (!e.hybrid && e.from && compendiumFixtureRows === null && primeClaimWorldAddressV1(e.where) !== null
+        ? `<button type="button" class="codex-origin" data-sel="codex-origin" data-codex-origin="${idx}">Travel to ${esc(e.from)} ↗</button>` : '') +
       `<div style="color:#b7c8e4;margin-bottom:8px" data-sel="detail-desc">${esc(d.desc || '')} ${esc(d.detail || '')}</div>` +
       KEYS.map((k, i) => {
         const v = st[k] || 0;
@@ -4669,9 +4672,25 @@ document.getElementById('codexpanel')!.addEventListener('click', (e) => {
     document.getElementById('codexpanel')!.querySelector<HTMLElement>(`[data-cg="${CSS.escape(name)}"]`)?.focus();
     return;
   }
+  const origin = (e.target as HTMLElement).closest<HTMLElement>('[data-codex-origin]');
+  if (origin) { void runCompendiumOriginTravel(+origin.dataset.codexOrigin!); return; }
   const row = (e.target as HTMLElement).closest('[data-ci]');
   if (row) fillCodexDetail(+(row as HTMLElement).dataset.ci!);
 });
+/** D16 (v1 `data-go` → travelTo(sp.where)): fly back to the world a species was first catalogued on, through the one proven-route owner
+ * (search-travel), so charter gates and the route commit are unchanged. The saved `where` is the legacy world view; it resolves to a
+ * canonical world exactly as a Prime claim's does. */
+async function runCompendiumOriginTravel(index: number): Promise<boolean> {
+  const entry = activeCodexSource()[index]?.[1];
+  if (!entry || entry.hybrid || compendiumFixtureRows !== null) return false;
+  const address = primeClaimWorldAddressV1(entry.where);
+  if (address === null) return false;
+  const moved = await searchTravel.jumpToCanonicalAddress(address);
+  if (!moved) return false;
+  closePanels();
+  toast('Course Plotted', `Returning to ${entry.from} — where you first catalogued ${entry.name}.`);
+  return true;
+}
 
 /* ---- THE SEARCH BAR (the goldens' top-right slot): a marked CF1 string is
    exact route input, never tolerant display data. All three route tiers are
