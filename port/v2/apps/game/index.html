@@ -935,6 +935,16 @@
     #reveal button { display: block; width: 100%; min-height: 44px; margin: 6px 0 0; border-radius: 22px; border: 1px solid #2a3550;
       background: #1a2238; color: #fff; font: inherit; cursor: pointer; }
     #reveal button[data-rev="skip"] { background: none; color: var(--dim); }
+    /* D16 (v1 _vistaExtras): the vista pill row over the stage (outside the survey card) and the full-screen VISTA VIEW, where the survey
+       card, panels and HUD chrome step aside so the landing vista stands alone; the pill row stays (Back, Postcard) */
+    .vista-pills { position: fixed; z-index: 30; right: calc(var(--safe-right, 0px) + 12px); bottom: calc(var(--safe-bottom, 0px) + var(--dock-h, 0px) + 12px);
+      display: flex; gap: 8px; }
+    .vista-pills[hidden] { display: none; }
+    .vista-pills button { min-height: 44px; min-width: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid #2a3550;
+      background: rgba(10, 16, 30, 0.86); color: #f4f8ff; font: inherit; font-size: 13px; cursor: pointer; }
+    body.vista-view :is(#survey, .panel, #topbar, #dock, #hpbar, #ctxbar, #hintpill, #objchip, #playerchip, #primechip, #sceneactions, #raillft, #railrgt, #trail) {
+      visibility: hidden; pointer-events: none; }
+    body.vista-view .vista-pills { bottom: calc(var(--safe-bottom, 0px) + 12px); }
 </style>
 </head>
 <body>
