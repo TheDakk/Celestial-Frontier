@@ -1,0 +1,116 @@
+{
+  "schema": "cf.tail-stalk-candidate/v1",
+  "id": "08-cod",
+  "chain": [
+    "root",
+    "spine0",
+    "spine1",
+    "spine2",
+    "spine3",
+    "spine4",
+    "spine5",
+    "caudal"
+  ],
+  "pairs": [
+    [
+      "body",
+      "body-1"
+    ],
+    [
+      "body-0",
+      "body-2"
+    ],
+    [
+      "body-3",
+      "body-5"
+    ],
+    [
+      "body",
+      "body-2"
+    ],
+    [
+      "body",
+      "body-5"
+    ],
+    [
+      "body",
+      "caudal"
+    ]
+  ],
+  "axialParts": [
+    "caudal",
+    "body",
+    "body-0",
+    "body-1",
+    "body-2",
+    "body-3",
+    "body-4",
+    "body-5"
+  ],
+  "supports": 1388,
+  "components": [
+    1286,
+    21,
+    8,
+    8,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5
+  ],
+  "sourceCoordinateChanges": 0,
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "d90ea4082307f028af73c3969e7115599a37622d9cd0f0e5fbbdd619ed91cfd5",
+    "sourceVertices": 1764,
+    "vertices": 1946,
+    "sharedSupports": 578,
+    "pins": 964,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 11,
+    "excludedOverlaps": 15,
+    "observedExcludedBoundaries": 15,
+    "weldedExcludedBoundaries": 6,
+    "independentExcludedBoundaries": 9,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "body-1"
+      ],
+      [
+        "body-0",
+        "body-2"
+      ],
+      [
+        "body-3",
+        "body-5"
+      ],
+      [
+        "body",
+        "body-2"
+      ],
+      [
+        "body",
+        "body-5"
+      ],
+      [
+        "body",
+        "caudal"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "sourceBindingHash": "d90ea4082307f028af73c3969e7115599a37622d9cd0f0e5fbbdd619ed91cfd5",
+  "bindingHash": "0daf4347bb5eae938ea9443acda34007ef624e4375001239557991446e386c44"
+}

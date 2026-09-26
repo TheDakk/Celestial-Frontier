@@ -1,0 +1,15 @@
+{
+  "id": "06-leopard",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-b91acf8e-f3ec-47f7-8577-8649e0e6798e.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "07d0cec15b091e4d6743e4312c2babc6c6782f37bcd7d41c51444c74a7ea782b",
+  "bytes": 982951,
+  "promptSha256": "db8f0d724ff4422ca00e8af6e8211cf62284d15967d1f6215391ff3c56967301",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

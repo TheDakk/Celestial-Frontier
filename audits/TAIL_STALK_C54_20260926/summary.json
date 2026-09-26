@@ -1,0 +1,377 @@
+[
+  {
+    "path": "09-carp/axial-05/static.json",
+    "status": "RED",
+    "exactRest": true,
+    "refusals": [
+      {
+        "id": "approach:swim",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      },
+      {
+        "id": "melee:bite",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      },
+      {
+        "id": "hit",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "victory",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "melee:tail",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      }
+    ]
+  },
+  {
+    "path": "09-carp/axial-04/static.json",
+    "status": "RED",
+    "exactRest": true,
+    "refusals": [
+      {
+        "id": "alert",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 8"
+      },
+      {
+        "id": "approach:swim",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      },
+      {
+        "id": "melee:bite",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      },
+      {
+        "id": "hit",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "dodge",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7"
+      },
+      {
+        "id": "victory",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "melee:tail",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      }
+    ]
+  },
+  {
+    "path": "09-carp/cover-04/static.json",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "refusals": []
+  },
+  {
+    "path": "09-carp/axial-06/static.json",
+    "status": "RED",
+    "exactRest": true,
+    "refusals": [
+      {
+        "id": "idle",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "approach:swim",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "melee:bite",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "cast",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "hit",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "dodge",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "victory",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "melee:body",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      },
+      {
+        "id": "melee:tail",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      }
+    ]
+  },
+  {
+    "path": "09-carp/axial-07/static.json",
+    "status": "RED",
+    "exactRest": true,
+    "refusals": [
+      {
+        "id": "approach:swim",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      },
+      {
+        "id": "melee:bite",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      },
+      {
+        "id": "hit",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "victory",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "melee:tail",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      }
+    ]
+  },
+  {
+    "path": "07-perch/axial-05/static.json",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "refusals": []
+  },
+  {
+    "path": "07-perch/axial-04/static.json",
+    "status": "RED",
+    "exactRest": true,
+    "refusals": [
+      {
+        "id": "dodge",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      }
+    ]
+  },
+  {
+    "path": "07-perch/cover-04/static.json",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "refusals": []
+  },
+  {
+    "path": "07-perch/axial-07/static.json",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "refusals": []
+  },
+  {
+    "path": "03-arctic-fox/axial-02/static.json",
+    "status": "RED",
+    "exactRest": true,
+    "refusals": [
+      {
+        "id": "idle",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "alert",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "approach:gallop",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 4"
+      },
+      {
+        "id": "approach:hop",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      },
+      {
+        "id": "melee:bite",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      },
+      {
+        "id": "melee:claw",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      },
+      {
+        "id": "melee:gore",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      },
+      {
+        "id": "melee:tail",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      },
+      {
+        "id": "melee:headbutt",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      },
+      {
+        "id": "hit",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 17"
+      },
+      {
+        "id": "faint",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      },
+      {
+        "id": "victory",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      },
+      {
+        "id": "melee:kick",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 14"
+      }
+    ]
+  },
+  {
+    "path": "03-arctic-fox/axial-01/static.json",
+    "status": "REFUSED",
+    "exactRest": false,
+    "refusals": []
+  },
+  {
+    "path": "08-cod/axial-05/static.json",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "refusals": []
+  },
+  {
+    "path": "08-cod/axial-02/static.json",
+    "status": "RED",
+    "exactRest": true,
+    "refusals": [
+      {
+        "id": "melee:bite",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      },
+      {
+        "id": "cast",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      },
+      {
+        "id": "dodge",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      },
+      {
+        "id": "faint",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "victory",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      },
+      {
+        "id": "tame",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "melee:body",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      }
+    ]
+  },
+  {
+    "path": "08-cod/axial-03/static.json",
+    "status": "RED",
+    "exactRest": true,
+    "refusals": [
+      {
+        "id": "victory",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      },
+      {
+        "id": "melee:tail",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      }
+    ]
+  },
+  {
+    "path": "08-cod/axial-04/static.json",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "refusals": []
+  },
+  {
+    "path": "08-cod/cover-04/static.json",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "refusals": []
+  },
+  {
+    "path": "08-cod/cover-02/static.json",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "refusals": []
+  },
+  {
+    "path": "08-cod/axial-01/static.json",
+    "status": "RED",
+    "exactRest": true,
+    "refusals": [
+      {
+        "id": "approach:swim",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "melee:bite",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "cast",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3"
+      },
+      {
+        "id": "hit",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "dodge",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2"
+      },
+      {
+        "id": "faint",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "victory",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "tame",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "feed",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "melee:body",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      },
+      {
+        "id": "melee:tail",
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1"
+      }
+    ]
+  },
+  {
+    "path": "08-cod/axial-07/static.json",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "refusals": []
+  },
+  {
+    "path": "08-cod/cover-01/static.json",
+    "status": "PASS_STATIC",
+    "exactRest": true,
+    "refusals": []
+  },
+  {
+    "path": "08-cod/cover-04-weld/static.json",
+    "status": "RED",
+    "exactRest": true,
+    "refusals": []
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "22-locust",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-cf229b56-f17b-4be7-956f-be0d288b83e5.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "b7a0177d5b5610bdc96a5441330987ec6ff8ebfea65d0af32871ae3b1869a6cb",
+  "bytes": 947816,
+  "promptSha256": "0559d70b0a4744a0162e681c9b9305105ed41d538d53924abded6aa9e0b6b5f7",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

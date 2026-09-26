@@ -134,3 +134,8 @@ G2 pilot masters are not substituted for admitted rigs.
 Disk at engine batch start: 232 GiB free on `/System/Volumes/Data`.
 
 Disk at final native boundary: 225 GiB free. Compact native evidence retained; model cache unchanged.
+
+
+## D26 policy supersession — 2026-09-26
+
+The alpha255 native five-crab proof remains historical evidence with its original bytes and identities. For current alpha≥250 finisher eligibility it is superseded by the signed22176bd7 five-crab proof in `../D26_FINISH_20260926`, with exact predecessor/successor hashes in `supersession.json`. No historical output is relabelled.

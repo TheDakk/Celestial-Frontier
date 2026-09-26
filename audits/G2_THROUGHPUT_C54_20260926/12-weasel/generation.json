@@ -1,0 +1,15 @@
+{
+  "id": "12-weasel",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ffede294-5694-4f7a-8505-50275dc9216c.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "9bfda3da56f43941f0fe9fd9115fb788c3d07603b068789898c27127184b0ef2",
+  "bytes": 632401,
+  "promptSha256": "f8f5daf60d75d4539e24408f96b24589f7e7bc50c064c23dcd59987f0179cea6",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "03-arctic-fox",
+    "exitCode": 1,
+    "noPartialPacket": true,
+    "stderr": "file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_STALK_C54_20260926/fill-gap-observed.mjs:25\nconst next=ownerRaster(a.parts.map((p,k)=>k===si?{...p,polygonPx:poly}:p),w,h);let requestedRetained=0,remaining=0,otherOwnersChanged=0,extraRemainder=0;for(let i=0;i<own.length;i++)if(mask[i]){if(region[i]&&own[i]!==si){if(next[i]===si)requestedRetained++;else remaining++;}if(own[i]>=0&&own[i]!==ri&&own[i]!==si&&own[i]!==next[i])otherOwnersChanged++;if(!region[i]&&next[i]===si&&(own[i]<0||own[i]===ri))extraRemainder++;}if(otherOwnersChanged)throw Error('Earlier ownership changed');\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^\n\nError: Earlier ownership changed\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_STALK_C54_20260926/fill-gap-observed.mjs:25:453\n\nNode.js v26.10.0\n"
+  },
+  {
+    "id": "07-perch",
+    "exitCode": 1,
+    "noPartialPacket": true,
+    "stderr": "file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_STALK_C54_20260926/fill-gap-observed.mjs:26\nif(remaining)throw Error('Requested gap pixels lost during contour rasterization: '+remaining);\n                   ^\n\nError: Requested gap pixels lost during contour rasterization: 9\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_STALK_C54_20260926/fill-gap-observed.mjs:26:20\n\nNode.js v26.10.0\n"
+  },
+  {
+    "id": "09-carp",
+    "exitCode": 1,
+    "noPartialPacket": true,
+    "stderr": "file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_STALK_C54_20260926/fill-gap-observed.mjs:26\nif(remaining)throw Error('Requested gap pixels lost during contour rasterization: '+remaining);\n                   ^\n\nError: Requested gap pixels lost during contour rasterization: 28\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_STALK_C54_20260926/fill-gap-observed.mjs:26:20\n\nNode.js v26.10.0\n"
+  }
+]

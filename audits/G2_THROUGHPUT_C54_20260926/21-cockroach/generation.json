@@ -1,0 +1,15 @@
+{
+  "id": "21-cockroach",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-57213146-1905-4437-81f5-8fa1e8169997.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "497f45951d675c5b152394d44bb4c2f85d10239edeab3c4f6e08620e7619d67b",
+  "bytes": 953202,
+  "promptSha256": "520a1e9b8cab913c4e0828291732c5d0888bb691c6b7c0c8fc9934c98f388243",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

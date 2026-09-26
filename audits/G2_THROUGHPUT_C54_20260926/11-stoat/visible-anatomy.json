@@ -1,0 +1,199 @@
+{
+  "id": "11-stoat",
+  "name": "Stoat",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "befd0dcfc9653a6d57c658a0f4f10e8e6fae3f72fe3981b16bf59e61af236a92",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 29635,
+    "coreRadius": 23,
+    "bodyBox": {
+      "x0": 13,
+      "y0": 140,
+      "x1": 405,
+      "y1": 275
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1378,
+        "pixels": 4084,
+        "box": {
+          "x0": 305,
+          "y0": 109,
+          "x1": 396,
+          "y1": 210
+        },
+        "attach": {
+          "x": 350.2,
+          "y": 171.1,
+          "relX": 0.86,
+          "relY": 0.23
+        },
+        "dir": {
+          "x": 0.17,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 77.2
+      },
+      {
+        "k": 1,
+        "frac": 0.154,
+        "pixels": 4564,
+        "box": {
+          "x0": 23,
+          "y0": 184,
+          "x1": 139,
+          "y1": 275
+        },
+        "attach": {
+          "x": 88.4,
+          "y": 228.2,
+          "relX": 0.19,
+          "relY": 0.65
+        },
+        "dir": {
+          "x": -0.86,
+          "y": 0.52
+        },
+        "class": "limb-down",
+        "length": 80.5
+      },
+      {
+        "k": 2,
+        "frac": 0.0445,
+        "pixels": 1320,
+        "box": {
+          "x0": 118,
+          "y0": 229,
+          "x1": 177,
+          "y1": 294
+        },
+        "attach": {
+          "x": 151.1,
+          "y": 246.9,
+          "relX": 0.35,
+          "relY": 0.79
+        },
+        "dir": {
+          "x": -0.66,
+          "y": 0.75
+        },
+        "class": "limb-down",
+        "length": 57.6
+      },
+      {
+        "k": 3,
+        "frac": 0.0402,
+        "pixels": 1192,
+        "box": {
+          "x0": 317,
+          "y0": 232,
+          "x1": 382,
+          "y1": 292
+        },
+        "attach": {
+          "x": 334.8,
+          "y": 244.8,
+          "relX": 0.82,
+          "relY": 0.78
+        },
+        "dir": {
+          "x": 0.53,
+          "y": 0.85
+        },
+        "class": "limb-down",
+        "length": 66.7
+      },
+      {
+        "k": 4,
+        "frac": 0.0411,
+        "pixels": 1217,
+        "box": {
+          "x0": 280,
+          "y0": 248,
+          "x1": 319,
+          "y1": 296
+        },
+        "attach": {
+          "x": 297.5,
+          "y": 248,
+          "relX": 0.73,
+          "relY": 0.8
+        },
+        "dir": {
+          "x": -0.04,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 52.6
+      },
+      {
+        "k": 5,
+        "frac": 0.036,
+        "pixels": 1066,
+        "box": {
+          "x0": 176,
+          "y0": 251,
+          "x1": 227,
+          "y1": 291
+        },
+        "attach": {
+          "x": 194.5,
+          "y": 251,
+          "relX": 0.46,
+          "relY": 0.82
+        },
+        "dir": {
+          "x": 0.1,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 51.5
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "ground": [
+      {
+        "x0": 119,
+        "x1": 149,
+        "cx": 134.5
+      },
+      {
+        "x0": 191,
+        "x1": 227,
+        "cx": 210
+      },
+      {
+        "x0": 286,
+        "x1": 319,
+        "cx": 303
+      },
+      {
+        "x0": 351,
+        "x1": 382,
+        "cx": 367.7
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

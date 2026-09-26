@@ -1,0 +1,15 @@
+{
+  "id": "13-duck",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1152a0ec-c2e8-468a-ba17-e3200f962884.png",
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "transparent_background": false,
+  "masterSha256": "9cfa6b7ca05b8c682046ce391f421b1a28c76ba01e492ed48429a9e5011667c6",
+  "bytes": 1168548,
+  "promptSha256": "ada4cc362509f416e80884ae62a088f26d6d2dd08970c2b4da7123ef3ff953d9",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

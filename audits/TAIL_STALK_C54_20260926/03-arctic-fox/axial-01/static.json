@@ -1,0 +1,56 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "REFUSED",
+  "sourceHead": "986079959b8e385e4c6d1f93eb7052b61e5af615",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [],
+  "exactRest": false,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "166c64cc866b1b0fb34fc9f174991fd9ee17686ba004a1649eda47ae441d4517",
+  "bindingHash": "3bd4600168d68e26e08004eda3d7fe33910f9d1f74503b587df7be51e51212b8",
+  "family": "quadruped",
+  "refusal": {
+    "stage": "fixture",
+    "error": "Error: Compiled skin field: source vertex\n    at fail (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-x6qbIc/run.mjs:17371:9)\n    at createCompiledSkinField (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-x6qbIc/run.mjs:17286:238)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-x6qbIc/run.mjs:26937:20\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-x6qbIc/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-x6qbIc/run.mjs:27209:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+    "contact": null,
+    "pose": null
+  },
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_STALK_C54_20260926/03-arctic-fox/axial-01/fit/record.json",
+      "sha256": "ca01c02e0a1f609517ffd9111a98c545dc3ef16db6e210d06ccf367bd758df0d",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_STALK_C54_20260926/03-arctic-fox/axial-01/fit/binding.json",
+      "sha256": "293efe2dbf04f83a2d9af5f92949de46ca85db69ffd40adc29234e355e06aab8",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_STALK_C54_20260926/03-arctic-fox/axial-01/fit/parts/manifest.json",
+      "sha256": "91f68ce7097fc9beb559454eaca3d5990bb0d0af8688f96bb03117e05ca886ef",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_STALK_C54_20260926/03-arctic-fox/axial-01/fit/parts/atlas/03-arctic-fox.png",
+      "sha256": "6062bec0938dbb2a4371ae72b644e21d525f09fd9d93d50ec3c3064f4b497dac",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_STALK_C54_20260926/03-arctic-fox/axial-01/fit/parts/keyed.png",
+      "sha256": "b976efcdb799ff42591141a4145aba1210138ccc8f5c29d1966661aa9fd52a29",
+      "unchanged": true
+    }
+  ]
+}
