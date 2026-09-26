@@ -39,6 +39,27 @@ This is Stage G5 of the Generated Creature Pipeline (`audits/GENERATION_PIPELINE
   - `Math.floor` in the box kernel fails the kernel and end-to-end tests;
   - dropping the record-ownership check in the hook fails the hook test.
 
+## Stage projection (session 3)
+
+`projectFinishedToAtlasV1` is the runtime generalisation of `rebind-finished.mjs` (Codex C40(c)). Every bound part's atlas-frame pixels with alpha > 0 take the finished RGB from the same place in the part's cut-out. Alpha is never touched, nothing outside a frame changes, and a rotated or resized frame refuses.
+
+Test on the real Crab fit:
+- projecting the UNFINISHED master reproduces the shipped atlas byte for byte;
+- an altered master changes more than 1,000 owned RGB values with 0 alpha changes and 0 changes outside the frames;
+- controls: a one-pixel cut-out error on the largest part is detected, and a resized frame refuses.
+
+Not wired: the pinned loader's admission of the projected atlas is C41(a).
+
+## Finding: the worker's admission contract blocks the in-game adapter (asked in C43)
+
+`kit-stage-worker.mjs` → `admitCreatureFinishJob` (`tools/local-image-generation/kit-engine-math.mjs`) has two constraints:
+- **Size:** it requires width and height to be multiples of 16. **33 of the 38 archetype masters are 1254×1254 and are refused;** only the five crabs (880×880) can be finished today.
+- **Input paths:** it requires the master and labels references at `/inputs/<id>.rgba` paths. That fits the native proof server, but not a game page: blob URLs and in-message buffers are refused.
+
+The route is safe under both constraints, because the engine turns any refusal into a painter fallback. But the desktop adapter is not built until Codex chooses:
+- **size:** pad to 16 with conservation on the original region, or cut a work canvas;
+- **transport:** transferred buffers, or same-origin object URLs.
+
 ## Next (in order)
 
 1. **Desktop adapter (`createInfer`)** over the same developer transport local-ai-game already uses:

@@ -1,0 +1,128 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "01-coyote",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "d789b6c572a7e9eab0ce5ba03be64d1b24c253c54f16b760b6ebbb993345698b",
+ "subjectSourceSha256": "441ff7b11bc2f3718a16630467ab4fd17e70ce86271c00488acea9d8e18b8324",
+ "identity": {
+  "name": "Coyote",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Coyote\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3133276098\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "seed": 3133276098,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wolf",
+  "authoringSha256": "d7904228473f2b860116b8f91d2a42717721287e86534025f6b765121aa52abc",
+  "masterSha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43"
+ },
+ "habitat": {
+  "profileId": "canid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "6cc3083fa01c948828b762e2e4f3364af76f39dbeba7e1bf7c8e6423730d26d2",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group canid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0764,
+     "class": "top",
+     "attach": {
+      "x": 355.9,
+      "y": 119.1,
+      "relX": 0.86,
+      "relY": 0.08
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1001,
+     "class": "limb-down",
+     "attach": {
+      "x": 62.9,
+      "y": 243.8,
+      "relX": 0.13,
+      "relY": 0.64
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0444,
+     "class": "limb-down",
+     "attach": {
+      "x": 119.8,
+      "y": 257.7,
+      "relX": 0.27,
+      "relY": 0.7
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1018,
+     "class": "limb-down",
+     "attach": {
+      "x": 289,
+      "y": 241,
+      "relX": 0.69,
+      "relY": 0.63
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0393,
+     "class": "limb-down",
+     "attach": {
+      "x": 160,
+      "y": 262,
+      "relX": 0.37,
+      "relY": 0.72
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wolf",
+   "byClass": {
+    "top": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "limb-down": 4
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "foreFar+foreNear"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Nick visual review pass"
+ }
+}

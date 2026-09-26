@@ -1,0 +1,118 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "heron",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "15618869db6ea85407c2566b5dacd469513bffd1db2fa0a76247918cb51c491c",
+ "subjectSourceSha256": "5eecda3718f23ba7d32c1e713029f75adffc2eeffc2a1c4d1a4bb8c45bdbd1e9",
+ "identity": {
+  "name": "Heron",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Heron\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"13215684\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"2\"]]]]",
+  "seed": 13215684,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "goose",
+  "authoringSha256": "6ccbeeab12e74a3a24bd29b59b5b1e3a995219c1757613677ffaa66573ca02cf",
+  "masterSha256": "0f3575a5fe537ced0a819a5bb181a1115914c3eef824bcad3440bf541e16cfd1"
+ },
+ "habitat": {
+  "profileId": "wading-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "6d8efc434397d850b8454feeae51f8b874edc579c5d7ef1b95bbdff2553a7074",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group wading-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0924,
+     "class": "rear",
+     "attach": {
+      "x": 128,
+      "y": 133,
+      "relX": 0.07,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.02,
+     "class": "top",
+     "attach": {
+      "x": 186,
+      "y": 117,
+      "relX": 0.5,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1451,
+     "class": "other",
+     "attach": {
+      "x": 254,
+      "y": 218,
+      "relX": 1.01,
+      "relY": 0.7
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.066,
+     "class": "limb-down",
+     "attach": {
+      "x": 173.8,
+      "y": 257.2,
+      "relX": 0.41,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0354,
+     "class": "limb-down",
+     "attach": {
+      "x": 216,
+      "y": 261,
+      "relX": 0.73,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 1,
+    "top": 1,
+    "other": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "goose",
+   "byClass": {
+    "top": 2,
+    "other": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

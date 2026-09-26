@@ -12,6 +12,7 @@ const HERE = import.meta.dirname, ROOT = path.resolve(HERE, '../..');
 const require = createRequire(path.join(ROOT, 'port/v2/package.json'));
 const sharp = createRequire(require.resolve('free-tex-packer-core'))('sharp');
 const { earthFaunaProfile } = await import(path.join(ROOT, 'port/v2/apps/game/src/earth-fauna-profiles.ts'));
+const { speciesVisualKey } = await import(path.join(ROOT, 'port/v2/packages/art/src/speciesidentity.ts'));
 const args = process.argv.slice(2), tag = (args.find((a) => a.startsWith('--tag=')) ?? '').slice(6), only = args.filter((a) => !a.startsWith('--'));
 const skipStatic = args.includes('--no-static');
 const ridgeArg = args.find((x) => x.startsWith('--ridge=')), ridgeFrac = ridgeArg ? Number(ridgeArg.slice(8)) : 0;
@@ -61,6 +62,26 @@ const targetsArg = args.find((x) => x.startsWith('--targets=')), targets = [];
 if (targetsArg) for (const t of JSON.parse(fs.readFileSync(path.join(ROOT, targetsArg.slice(10)), 'utf8'))) {
   const dir = path.join(ROOT, t.packet), img = await rgbaOf(path.join(dir, 'master.png')), subject = JSON.parse(fs.readFileSync(path.join(dir, 'subject-source.json'), 'utf8'));
   targets.push({ id: t.id, family: subject.family, packet: t.packet, dir, img, prepared: prepareSubject(img.rgba, img.w, img.h), authoring: null, subject }); }
+// presence (Codex second review): the counter measures appendage/island/ground-contact GEOMETRY; it does not resolve every named limb.
+// presence.json's empty lists are an intake-format necessity (no absence/hidden/folded claim), never an all-visible attestation.
+// Semantic presence is RESOLVED only when every reference appendage is assigned to a target appendage AND no reference appendage
+// merges two contact chains (overlapped near/far limbs); otherwise it is UNRESOLVED and the packet is not play-admissible.
+function semanticPresence(res, family) {
+  if (res.verdict !== 'ADMIT') return { attestation: 'none (refused)' };
+  const inv = res.evidence?.inventory; if (!inv) return { attestation: 'none', semantic: 'UNRESOLVED: no inventory' };
+  const jointOf = new Map((res.authoring?.parts ?? []).map((p) => [p.id, p.joint]));
+  let chains = []; try { chains = familyContactChains(familyContract(family)); } catch {}
+  const chainOf = (joint) => chains.find((c) => [c.hip, c.knee, c.end, c.terminal].includes(joint))?.id ?? null;
+  const unassigned = [], merged = [];
+  for (const a of inv.assign ?? []) { if (a.target === null || a.target === undefined) unassigned.push(a.owners.join('+'));
+    const cs = new Set(a.owners.map((o) => chainOf(jointOf.get(o))).filter(Boolean)); if (cs.size > 1) merged.push([...cs].join('+')); }
+  const resolved = !unassigned.length && !merged.length;
+  return { lists: 'absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim',
+    geometric: { appendagesByClass: inv.target?.byClass ?? null, groundContacts: inv.target?.ground ?? null, detachedIslands: Array.isArray(inv.target?.detached) ? inv.target.detached.length : null },
+    semantic: resolved ? 'RESOLVED: every reference appendage assigned; no appendage merges two limb chains' : 'UNRESOLVED', unassigned, mergedChains: merged,
+    attestation: resolved ? 'geometric + semantic inventory resolved (still not play admission: native and visual review remain)' : 'geometric only: NOT an all-visible attestation',
+    playAdmission: 'blocked until semantic presence is resolved and native + Nick visual review pass' };
+}
 const refOf = (s) => ({ ...s.prepared, family: s.family, subjectId: s.id, authoring: s.authoring, partPaint: s.stats.partPaint, unclaimedFrac: s.stats.unclaimedFrac, skeleton: s.skeleton });
 
 const inside = (x, y, poly) => { let yes = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], b = poly[j]; if ((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) yes = !yes; } return yes; };
@@ -87,6 +108,9 @@ function runCandidate(s, rank, dir) {
   if (!profile) idReasons.push(`identity: no pinned Earth fauna profile for ${s.subject.name}`);
   if (!(s.subject.genome && Number.isInteger(s.subject.genome.seed))) idReasons.push('identity: subject-source genome has no integer seed');
   if (!(typeof s.subject.visualKey === 'string' && s.subject.visualKey.length > 5)) idReasons.push('identity: subject-source visualKey missing');
+  // canonical agreement (Codex second review): the visualKey must be the one the genome itself yields, and the genome's own seed
+  let canonicalKey = null; try { canonicalKey = speciesVisualKey({ ...s.subject.genome }); } catch (e) { idReasons.push('identity: genome yields no visualKey (' + String(e).slice(0, 80) + ')'); }
+  if (canonicalKey !== null && canonicalKey !== s.subject.visualKey) idReasons.push('identity: subject-source visualKey is not the genome\'s own visualKey');
   const material = profile ? materialForProfile(profile.id) : null; if (!material) idReasons.push(`materials-unknown: no species-group material for profile ${profile?.id ?? '(none)'}; the motion kit refuses an unclassified surface`);
   const res0 = (rank === 0 && shopN > 0 ? autoAuthorShop : autoAuthor)({ shop: shopN, target: s.prepared, mirrored, family: s.family, id: s.id, refs, refRank: rank, materials: { surface: material ?? 'unclassified' }, habitat: habitatFor(s.subject.name), topK, nudgeFrac, nudgeThinFrac, nudgeSkipChains, counter: useCounter ? {} : null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(s.family) } : null, skeleton: useSkeleton ? { graph: graphOf(s.family) } : null, chains: useChains ? (() => { try { return familyContactChains(familyContract(s.family)); } catch { return null; } })() : null });
   const res = idReasons.length ? { ...res0, verdict: 'REFUSE', reasons: [...idReasons, ...res0.reasons] } : res0;
@@ -99,13 +123,13 @@ function runCandidate(s, rank, dir) {
     origin: 'automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation',
     intakeLegacyFields: 'intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.',
     targetMasterSha256: sha(path.join(s.dir, 'master.png')), subjectSourceSha256: sha(path.join(s.dir, 'subject-source.json')),
-    identity: { name: s.subject.name, family: s.subject.family, visualKey: s.subject.visualKey ?? null, seed: s.subject.genome?.seed ?? null, checks: idReasons.length ? idReasons : 'PASS' },
+    identity: { name: s.subject.name, family: s.subject.family, visualKey: s.subject.visualKey ?? null, seed: s.subject.genome?.seed ?? null, checks: idReasons.length ? idReasons : 'PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)' },
     reference: ref ? { subject: ref.id, authoringSha256: sha(path.join(ref.dir, 'authoring.json')), masterSha256: sha(path.join(ref.dir, 'master.png')) } : null,
     habitat: profile ? { profileId: profile.id, media: profile.media, profileSha256: profileHash(profile), meaning: 'capability, not painted pose or observed supports' } : 'unknown',
     materials: { surface: material, source: profile ? `species group ${profile.id} (Earth fauna profile)` : null, meaning: 'the species group\'s integument; not an observation of the painting, not a finisher permission' },
     visibleInventory: res.evidence?.inventory ? { measuredBy: 'limb-counter.mjs (paint only)', target: res.evidence.inventory.target, reference: res.evidence.inventory.reference } : 'unmeasured',
-    presence: res.verdict === 'ADMIT' ? 'all-visible, backed by the measured visible inventory above; nothing declared absent, hidden or folded' : 'not asserted (refused)' }, null, 1) + '\n');
-  const row = { id: s.id, family: s.family, verdict: res.verdict, reasons: res.reasons };
+    presence: semanticPresence(res, s.family) }, null, 1) + '\n');
+  const row = { id: s.id, family: s.family, verdict: res.verdict, reasons: res.reasons, semanticPresence: res.verdict === 'ADMIT' ? semanticPresence(res, s.family).semantic : null };
   if (res.authoring) {
     if (s.authoring) Object.assign(row, score(res.authoring, s.authoring, s.prepared)); // independent targets have no hand authoring to score against
     const packet = path.join(dir, 'packet'); fs.mkdirSync(packet, { recursive: true });

@@ -7,7 +7,7 @@ import { describe, expect, it } from 'vitest';
 import { speciesVisualKey } from '@cf/art/species-identity';
 import { creatureOriginalKey, type AiCreatureInputV1, type AiCreatureOriginalStoreV1, type AiCreatureOriginalV1 } from './creature-originals.js';
 import type { CreatureFinishInferV1 } from './creature-finish-engine.js';
-import { boxDownscaleV1, cardDimsV1, cardEligibleV1, createCreatureFinishRouteV1, finishTierV1, type FinishFitBytesV1 } from './creature-finish-route.js';
+import { boxDownscaleV1, cardDimsV1, cardEligibleV1, createCreatureFinishRouteV1, finishTierV1, projectFinishedToAtlasV1, type FinishFitBytesV1 } from './creature-finish-route.js';
 import { LocalModelSha256V1 } from './local-model-sha256.js';
 import { decodePng } from './morph/png-decode.js';
 import { CARD_ARCHETYPES } from './morph/card-archetypes.js';
@@ -80,4 +80,19 @@ describe('G5 routing', () => {
     expect(other.url).toBe(plain.url); expect(other.finishedSha256).toBeUndefined();
     expect(own.key).toBe(plain.key); // the lease key stays the species visual key (ownership reports stay truthful)
   }, 180_000);
+  it('STAGE PROJECTION on the real Crab fit: projecting the unfinished master reproduces the shipped atlas byte for byte; a finished master changes only owned RGB (alpha and everything outside the frames byte-identical); a bad frame refuses (control)', async () => {
+    const d = fitDir('Crab'), binding = JSON.parse(readFileSync(new URL(d + 'binding.json', REPO), 'utf8')), manifest = JSON.parse(readFileSync(new URL(d + 'parts/manifest.json', REPO), 'utf8'));
+    const record = JSON.parse(readFileSync(new URL(d + 'record.json', REPO), 'utf8')), master = await decodePng(read(record.source)), atlas = await decodePng(read(d + 'parts/atlas/' + manifest.creatureId + '.png'));
+    const run = (finished: Uint8Array, parts = binding.parts) => projectFinishedToAtlasV1({ atlas: atlas.rgba, atlasWidth: atlas.width, atlasHeight: atlas.height, finished, finishedWidth: master.width, finishedHeight: master.height, parts });
+    expect(Buffer.from(run(master.rgba)).equals(Buffer.from(atlas.rgba))).toBe(true);
+    const altered = new Uint8Array(master.rgba); for (let i = 0; i < altered.length; i += 4) altered[i] = 255 - altered[i]!;
+    const out = run(altered); let changed = 0, alphaMoved = 0, outsideMoved = 0;
+    const inFrame = new Uint8Array(atlas.width * atlas.height); for (const p of binding.parts) for (let y = 0; y < p.frame.height; y++) for (let x = 0; x < p.frame.width; x++) inFrame[(y + p.frame.y) * atlas.width + x + p.frame.x] = 1;
+    for (let i = 0; i < out.length; i += 4) { if (out[i + 3] !== atlas.rgba[i + 3]) alphaMoved++; if (out[i] !== atlas.rgba[i]) { changed++; if (!inFrame[i / 4]) outsideMoved++; } }
+    expect(changed).toBeGreaterThan(1000); expect(alphaMoved).toBe(0); expect(outsideMoved).toBe(0);
+    const big = binding.parts.reduce((m: number, p: { cutout: { width: number; height: number } }, k: number, a: { cutout: { width: number; height: number } }[]) => (p.cutout.width * p.cutout.height > a[m]!.cutout.width * a[m]!.cutout.height ? k : m), 0); // the largest (textured) part, not the flat shadow
+    const shifted = binding.parts.map((p: { cutout: { x: number } }, k: number) => (k === big ? { ...p, cutout: { ...p.cutout, x: p.cutout.x + 1 } } : p));
+    expect(Buffer.from(run(master.rgba, shifted)).equals(Buffer.from(atlas.rgba))).toBe(false); // control: a one-pixel cut-out error is seen
+    expect(() => run(master.rgba, [{ ...binding.parts[0], frame: { ...binding.parts[0].frame, width: binding.parts[0].frame.width + 1 } }])).toThrow('cut-out');
+  }, 120_000);
 });

@@ -1,0 +1,19 @@
+{
+ "id": "pike",
+ "family": "fish",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "bodyLengthPx": 787.1,
+ "landmarkMedian": 0.0351,
+ "landmarkMax": 0.3091,
+ "worst": [
+  "dorsal 0.309",
+  "pectoralNear 0.104",
+  "spine3 0.104"
+ ],
+ "labelAgreement": 0.6352,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

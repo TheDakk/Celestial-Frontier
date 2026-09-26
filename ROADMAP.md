@@ -51,16 +51,11 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 - **Thin parts:** ear tips and fins land beside their paint (Marmot, River Otter, Ibex, Heron, Herring). Loosening them exposes erased far-hind legs that no current check sees. The real fix is a far-limb detector (the next Claude lever).
 
 **Next, in order (Claude)**
-1. Read Codex's answers to C40 (a)–(d); merge its signed commits. Re-score G1 on any new G2 families as they land (`run-auto.mjs --targets=<pilot.json>`).
-2. **G1, from Codex's second review** (`audits/G1_CONTRACT_REVIEW_20260926`, C40 answers):
-   - narrow the all-visible presence attestation to what the counter actually measures;
-   - a canonical `visualKey`/genome/seed identity check in the runner (the data agree today, see `identity-and-shipped38.json`);
-   - short tails stay refused (Codex refuses a truncation contract);
-   - Codex does not accept D24 (Nick decides).
-
+1. Read Codex's answers to C41 (loader admission, phone delivery) and C43 (worker size + transport); merge its signed commits. Re-score G1 on any new G2 families as they land (`run-auto.mjs --targets=<pilot.json>`).
+2. **G1:** Codex's second review is closed in the runner (v8: canonical identity; presence narrowed with a RESOLVED/UNRESOLVED semantic status). Every quadruped/bird ADMIT is UNRESOLVED only because of overlapped near/far limbs. **The next lever is a near/far limb separator:** it closes semantic presence AND the thin-part false refusals.
    Then build a far-limb detector, so thin-part placement can relax without leaking erased far legs. Target: the corpus above 12 AND G2 above 10/20, with the battery ≥ 90 % and no flip/wrong-family loss.
 3. **G5, next steps:**
-   - the desktop `createInfer` adapter over the `/__local_ai/` developer transport (`kit-stage-worker.mjs`, `{stage: 'creature-finish-v1', recipe, modelFiles}`, the shape of Codex's `native-client.ts`);
+   - the desktop `createInfer` adapter: **blocked on Codex C43** (the worker refuses 1254² masters, 33 of 38, and requires `/inputs/*.rgba` paths). The stage projection `projectFinishedToAtlasV1` has landed
    - `main.ts` wiring behind `?finish=1`: the route plus the card `finished` hook, and an enqueue on discovery or when a portrait opens. Default off until Nick's quality review;
    - **Stage seam (Codex C40(c)):** the engine returns a full original-coordinate PNG plus receipt, NOT an atlas. Claude owns the runtime projection into the unchanged atlas frames, generalising `rebind-finished.mjs` (sample through the original cut-outs, preserve part alpha, byte-identical parts/paintSkin after rebuild).
    - The phone delivery shape is still open (C41(b)).
