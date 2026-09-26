@@ -197,4 +197,9 @@ The canonical library compiler also supports birds, fish, serpents and insects t
 
 ### Shipped helper reachability — matches code as of 2026-09-26
 
-C50 fixes the complete tracked-file inventory read with a16MiB child-process buffer, preserving exact required-source membership. The local preview server and game development/build plugin explicitly include creature-finish-math.mjs, imported by the shipped worker/engine. Exact HTTP bytes and emitted-asset controls guard the former missing route; no model, alpha, conservation or broad route policy changed. See audits/C50_SHIPPED_FINISH_FIX_20260926. Claude owns the subsequent shipped-path browser smoke.
+C50 fixes the complete tracked-file inventory read with a16MiB child-process buffer, preserving exact required-source membership. The local preview server and game development/build plugin explicitly include creature-finish-math.mjs, imported by the shipped worker/engine. Exact HTTP bytes and emitted-asset controls guard the former missing route; no model, alpha, conservation or broad route policy changed. See audits/C50_SHIPPED_FINISH_FIX_20260926. The actual built helper is byte-identical to its source. Claude reports C52 shipped desktop smoke PASS without workarounds and C51 phone delivery PASS; these remain Claude-owned diagnostics, not a physical-iPhone or visual-quality approval.
+
+
+### C47 layout follow-up — matches tooling as of 2026-09-26
+
+The canonical compiler now asks for low horizontal, level-headed serpents; two separately visible bird ground contacts; and explicitly right-facing insects with readable abdomens. Fish layout is unchanged. Nine unmodified 1254×1254 masters and exact requests are in `audits/G2_LAYOUT_C47_20260926`. Eight refuse automatic authoring; Robin passes static actions/presentation but semantic near/far leg presence remains UNRESOLVED, so none is admitted to play. No alpha normalization, hand authoring, reference shopping or gate change accompanies these layouts.

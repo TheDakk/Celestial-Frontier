@@ -1,0 +1,11 @@
+{
+  "schema": "cf.c49-candidate-packet-contract/v1",
+  "status": "PROPOSED_NOT_RUNTIME_AUTHORITY",
+  "identity": ["speciesId", "visualKey", "recordRecipeHash", "width", "height"],
+  "requiredHashes": ["masterEncodedSha256", "keyedAlphaSha256", "labelsEncodedSha256", "labelsDecodedSha256", "atlasEncodedSha256", "recordFileSha256", "preSplitFileSha256", "bindingFileSha256", "bindingSemanticHash"],
+  "fileInventory": {"exactRequiredSet": true, "entryFields": ["relativePath", "bytes", "sha256", "durableLocation"]},
+  "weld": {"required": ["orderedPaintBoundaryPairs", "fixedJoints", "shapeJoints", "contactEndpoints", "producerFileInventory", "sourceBindingHash", "outputBindingHash", "outputBindingFileSha256", "sourceCoordinateChanges", "selectionOrigin"], "sourceCoordinateChanges": 0},
+  "provenance": {"required": ["G2GenerationReceipt", "subjectSource", "presenceEvidence", "authoringEvidence", "automaticTransferProvenance", "referenceIdentityAndHashes", "legacyFlagCorrections"]},
+  "evidence": {"required": ["originalStatic", "selectedBoundaryAudit", "nonemptyExactSelectedInventory", "unweldedNegativeControl", "nativeRecordedHead", "nativeProducers", "nativeFitHashes", "filmAndStillInventory", "NickVisualDecisionForExactPacket"], "epsilonPolicy": "unchanged source-join Float32 epsilon"},
+  "admission": "Only existing registry/library and build-pin admission owners may grant runtime authority after packet verification and required visual decision. This contract admits nothing."
+}

@@ -1,0 +1,14 @@
+{
+ "id": "09-mantis",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (family floor): the largest rear appendage is 2.3% of the paint; every same-family reference shows at least 3.8%",
+  "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 3% paint (reference 32%)",
+  "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 15% paint (reference 44%)",
+  "missing-anatomy: part leg-mid-far-knee (legMidFarKnee) covers 23% paint (reference 69%)",
+  "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+  "unexplained-anatomy: 15.3% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

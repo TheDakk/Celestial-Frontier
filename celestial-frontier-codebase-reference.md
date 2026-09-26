@@ -7274,4 +7274,11 @@ The G2 canonical prompt compiler adds bird/fish/serpent/insect families and comp
 
 ### C50 worker helper delivery — matches code as of 2026-09-26
 
-kit-tracked-inputs.mjs reads git ls-files with bounded16MiB output and unchanged required-file checks. game-preview-server.mjs HELPERS and apps/game/kit-runtime-assets.ts names now include creature-finish-math.mjs, so both development paths and packaged assets resolve the shipped worker's import. HTTP200/exact-byte and emitted-asset omission/corruption controls pass. Model/eligibility/conservation policy is unchanged; browser rerun remains Claude's next check.
+kit-tracked-inputs.mjs reads git ls-files with bounded16MiB output and unchanged required-file checks. game-preview-server.mjs HELPERS and apps/game/kit-runtime-assets.ts names now include creature-finish-math.mjs, so both development paths and packaged assets resolve the shipped worker's import. HTTP200/exact-byte and emitted-asset omission/corruption controls pass. Model/eligibility/conservation policy is unchanged. Actual built helper bytes match source. Claude C52 reports the shipped desktop smoke passes without workarounds; C51 reports browser phone delivery passes. These are retained as cross-lane reports, not physical-phone or quality acceptance.
+
+
+### C49 / C47 candidate follow-up — matches tooling as of 2026-09-26
+
+`audits/C49_FISH_REVIEW_20260926` adds source-pinned, audit-only selected-boundary measurements for automatic Perch/Cod/Carp: unchanged static gates plus exact selected pairs pass; original unwelded Perch is a genuine failing control. Final bindings reproduce byte-exact. Existing native evidence is tied to signed 91a62a50, not the current head. Durable candidate inputs and Nick's visual decision still precede registry admission; Trout/Herring remain refused. No source-join runtime semantics or registry rows changed.
+
+The canonical G2 compiler tightens serpent/bird/insect layouts while retaining true species tails and existing fish wording. Nine untouched originals yield eight author refusals and one static-positive Robin with UNRESOLVED semantic presence; no play admission. A contact-endpoint projection worsens Sparrow/Tapir and leaves Grouse refused; it is retained only as a rejected audit operation. Evidence: G2_LAYOUT_C47_20260926 and G1_FIT_CONTINUATION_C50_20260926. No limits, conservation, D24 or D25 policy changed.

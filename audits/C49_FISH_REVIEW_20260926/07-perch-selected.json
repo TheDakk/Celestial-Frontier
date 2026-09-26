@@ -1,0 +1,1109 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "PASS_STATIC",
+  "sourceHead": "e12a378656466b2905c5b9438860986d59df3027",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006342257768742659,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.000012813295711566752,
+            "worst": {
+              "temporalSampleIndex": 64,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                692.8985744476319,
+                735.4115645885468
+              ],
+              "descendant": [
+                692.8985872609276,
+                735.4115645885468
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.00003747962247559642,
+            "worst": {
+              "temporalSampleIndex": 20,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                375.6154639720917,
+                716.1283729076385
+              ],
+              "descendant": [
+                375.6154478430748,
+                716.128406739235
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006040245503227911,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.000012813295597879915,
+            "worst": {
+              "temporalSampleIndex": 0,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                693.0000023603441,
+                739.9999929428102
+              ],
+              "descendant": [
+                693.0000151736397,
+                739.9999929428101
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.00003677822778046313,
+            "worst": {
+              "temporalSampleIndex": 13,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                366.03517216444016,
+                672.4379818439484
+              ],
+              "descendant": [
+                366.0351865887642,
+                672.4380156755448
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "approach:swim",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006040245487150163,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.000012813295597879915,
+            "worst": {
+              "temporalSampleIndex": 0,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                693.0000023603441,
+                739.9999929428102
+              ],
+              "descendant": [
+                693.0000151736397,
+                739.9999929428101
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.00003626882637627903,
+            "worst": {
+              "temporalSampleIndex": 32,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                371.96342968940735,
+                637.3661624193192
+              ],
+              "descendant": [
+                371.96343755722046,
+                637.3661270141602
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "melee:bite",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006342257776781531,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.000012813295597879915,
+            "worst": {
+              "temporalSampleIndex": 0,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                693.0000023603441,
+                739.9999929428102
+              ],
+              "descendant": [
+                693.0000151736397,
+                739.9999929428101
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.000038540016748420745,
+            "worst": {
+              "temporalSampleIndex": 98,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                369.11209094524384,
+                682.3886843919754
+              ],
+              "descendant": [
+                369.11210733652115,
+                682.3886495113372
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006342257768742659,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.000012813295711566752,
+            "worst": {
+              "temporalSampleIndex": 2,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                692.9519418239594,
+                739.8804021835329
+              ],
+              "descendant": [
+                692.9519546372551,
+                739.8804021835329
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.000035315683082952916,
+            "worst": {
+              "temporalSampleIndex": 16,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                371.69734811782837,
+                706.6934959888458
+              ],
+              "descendant": [
+                371.6973630666733,
+                706.6935279846191
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006837093642558826,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.00002734837471227451,
+            "worst": {
+              "temporalSampleIndex": 93,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                696.702143597603,
+                738.5217913627625
+              ],
+              "descendant": [
+                696.7021222421101,
+                738.5218084471567
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.00003417772734036131,
+            "worst": {
+              "temporalSampleIndex": 68,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                338.4292818903923,
+                680.8621122837067
+              ],
+              "descendant": [
+                338.4292867422104,
+                680.8620784521104
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006040245495189037,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.000030201227516139556,
+            "worst": {
+              "temporalSampleIndex": 84,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                696.8052308321,
+                740.0979527235031
+              ],
+              "descendant": [
+                696.8052094766072,
+                740.0979740789958
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.00003842920898616677,
+            "worst": {
+              "temporalSampleIndex": 48,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                336.9771746993065,
+                761.4674760103226
+              ],
+              "descendant": [
+                336.97719082832333,
+                761.4674411296844
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006342257768742659,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.000027348374783294117,
+            "worst": {
+              "temporalSampleIndex": 24,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                685.5649701118471,
+                731.4041828870774
+              ],
+              "descendant": [
+                685.5649487563542,
+                731.4041658026831
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.000036356193016746814,
+            "worst": {
+              "temporalSampleIndex": 12,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                368.0997374653816,
+                673.3318873643875
+              ],
+              "descendant": [
+                368.0997292041779,
+                673.3318519592285
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006194719513989153,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.00002734837460574511,
+            "worst": {
+              "temporalSampleIndex": 68,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                720.6503127336503,
+                755.7370157003403
+              ],
+              "descendant": [
+                720.6503340891429,
+                755.736998615946
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.000036566526031647124,
+            "worst": {
+              "temporalSampleIndex": 54,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                398.8888308405876,
+                758.3803979158401
+              ],
+              "descendant": [
+                398.88884854316706,
+                758.3804299116134
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00009933484074629292,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.000012813295711566752,
+            "worst": {
+              "temporalSampleIndex": 15,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                733.273087477684,
+                737.3150309085847
+              ],
+              "descendant": [
+                733.2731002909798,
+                737.3150309085845
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.00003644759646362389,
+            "worst": {
+              "temporalSampleIndex": 68,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                436.94376307725906,
+                660.3199682235718
+              ],
+              "descendant": [
+                436.9437717318535,
+                660.3200036287308
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006342257728548292,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.000012813295711566752,
+            "worst": {
+              "temporalSampleIndex": 11,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                700.1901725292206,
+                744.3140800952913
+              ],
+              "descendant": [
+                700.1901853425163,
+                744.3140800952912
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.000036575694694730324,
+            "worst": {
+              "temporalSampleIndex": 7,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                371.98033368587494,
+                659.236582159996
+              ],
+              "descendant": [
+                371.9803197860718,
+                659.2366159915924
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "melee:body",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006604512431861577,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.000012813295597879915,
+            "worst": {
+              "temporalSampleIndex": 0,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                693.0000023603441,
+                739.9999929428102
+              ],
+              "descendant": [
+                693.0000151736397,
+                739.9999929428101
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.00003533612685465061,
+            "worst": {
+              "temporalSampleIndex": 73,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                384.63683223724365,
+                741.0342303514481
+              ],
+              "descendant": [
+                384.63684403896326,
+                741.0342636585235
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "melee:tail",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006342257752664912,
+      "maxEndpointError": 0,
+      "exactRest": true,
+      "selectedBoundaries": {
+        "temporalSamples": 121,
+        "pairs": [
+          {
+            "name": "body|body-1",
+            "spatialSamples": 264,
+            "sourceEdges": 252,
+            "violations": 0,
+            "maxGapPx": 0.000012813295597879915,
+            "worst": {
+              "temporalSampleIndex": 0,
+              "source": [
+                693,
+                740
+              ],
+              "ancestor": [
+                693.0000023603441,
+                739.9999929428102
+              ],
+              "descendant": [
+                693.0000151736397,
+                739.9999929428101
+              ]
+            }
+          },
+          {
+            "name": "body-3|body-5",
+            "spatialSamples": 27,
+            "sourceEdges": 22,
+            "violations": 0,
+            "maxGapPx": 0.000035851347073372876,
+            "worst": {
+              "temporalSampleIndex": 75,
+              "source": [
+                369,
+                681
+              ],
+              "ancestor": [
+                388.4482507109642,
+                718.2996611595154
+              ],
+              "descendant": [
+                388.4482563495636,
+                718.2996965646744
+              ]
+            }
+          },
+          {
+            "name": "body|body-2",
+            "spatialSamples": 236,
+            "sourceEdges": 225,
+            "violations": 0,
+            "maxGapPx": 0,
+            "worst": null
+          }
+        ]
+      }
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "4b59fc2dc5d11971147d4326df6f36e24019d1768d4de17b0c4e04274adda7d9",
+  "bindingHash": "8caccda18b86f7398af0360a25221eb90dcb80b6716286dd25a900bcaf910713",
+  "family": "fish",
+  "contacts": [],
+  "realm": "aquatic",
+  "selectedBoundaryAudit": {
+    "schema": "cf.c49-selected-boundary-audit/v1",
+    "status": "PASS",
+    "epsilonNativePx": 0.0011959075927734375,
+    "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+    "pairs": [
+      {
+        "name": "body|body-1",
+        "sourceEdges": 252,
+        "spatialSamples": 264
+      },
+      {
+        "name": "body-3|body-5",
+        "sourceEdges": 22,
+        "spatialSamples": 27
+      },
+      {
+        "name": "body|body-2",
+        "sourceEdges": 225,
+        "spatialSamples": 236
+      }
+    ],
+    "temporalSamples": 2480,
+    "violations": 0,
+    "maxGapPx": 0.000038540016748420745,
+    "expectedTemporalSamples": 2480,
+    "complete": true
+  },
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:swim",
+    "melee:bite",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed",
+    "melee:body",
+    "melee:tail"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 907,
+    "attemptedSamples": 907,
+    "status": "PASS",
+    "maxPaintDriftPx": 0,
+    "maxGapPx": 0.00009318166508045305,
+    "maxEndpointError": 0,
+    "exactRest": true,
+    "selectedBoundaries": {
+      "temporalSamples": 907,
+      "pairs": [
+        {
+          "name": "body|body-1",
+          "spatialSamples": 264,
+          "sourceEdges": 252,
+          "violations": 0,
+          "maxGapPx": 0.00002734837462350001,
+          "worst": {
+            "temporalSampleIndex": 452,
+            "source": [
+              693,
+              740
+            ],
+            "ancestor": [
+              643.5189519882202,
+              759.6732409000397
+            ],
+            "descendant": [
+              643.5189306327275,
+              759.6732238156455
+            ]
+          }
+        },
+        {
+          "name": "body-3|body-5",
+          "spatialSamples": 27,
+          "sourceEdges": 22,
+          "violations": 0,
+          "maxGapPx": 0.00003771014177565006,
+          "worst": {
+            "temporalSampleIndex": 127,
+            "source": [
+              369,
+              681
+            ],
+            "ancestor": [
+              372.86190247535706,
+              701.094288110733
+            ],
+            "descendant": [
+              372.86191545724864,
+              701.094323515892
+            ]
+          }
+        },
+        {
+          "name": "body|body-2",
+          "spatialSamples": 236,
+          "sourceEdges": 225,
+          "violations": 0,
+          "maxGapPx": 0,
+          "worst": null
+        }
+      ]
+    }
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 3914.795693680644
+      },
+      {
+        "id": "alert",
+        "startMs": 3914.795693680644,
+        "endMs": 4514.795693680644
+      },
+      {
+        "id": "approach:swim",
+        "startMs": 4514.795693680644,
+        "endMs": 5294.795693680644
+      },
+      {
+        "id": "melee:bite",
+        "startMs": 5294.795693680644,
+        "endMs": 6161.462360347311
+      },
+      {
+        "id": "cast",
+        "startMs": 6161.462360347311,
+        "endMs": 7131.462360347311
+      },
+      {
+        "id": "hit",
+        "startMs": 7131.462360347311,
+        "endMs": 7941.462360347311
+      },
+      {
+        "id": "dodge",
+        "startMs": 7941.462360347311,
+        "endMs": 8581.462360347312
+      },
+      {
+        "id": "faint",
+        "startMs": 8581.462360347312,
+        "endMs": 9461.462360347312
+      },
+      {
+        "id": "victory",
+        "startMs": 9461.462360347312,
+        "endMs": 10421.462360347312
+      },
+      {
+        "id": "tame",
+        "startMs": 10421.462360347312,
+        "endMs": 11421.462360347312
+      },
+      {
+        "id": "feed",
+        "startMs": 11421.462360347312,
+        "endMs": 12361.462360347312
+      },
+      {
+        "id": "melee:body",
+        "startMs": 12361.462360347312,
+        "endMs": 13228.129027013978
+      },
+      {
+        "id": "melee:tail",
+        "startMs": 13228.129027013978,
+        "endMs": 14094.795693680644
+      }
+    ],
+    "durationMs": 15094.795693680644
+  },
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/record.json",
+      "sha256": "cfbe868474d435b9d40c14a591063fe00671c06fd650347793939b4210b462cf",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/binding.json",
+      "sha256": "d93c03d524fed21371b4254785bf4b26c9a3669842c3ab6a57753bffea5f209e",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/manifest.json",
+      "sha256": "bf1e1e1a9b2b6c93901a05c15866c1aea75c3781a05b1e77436ea5557f5a7b54",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/atlas/07-perch.png",
+      "sha256": "c75cdbdf3cfe4f71b01bd8e7c1030d0ec51d13947dda4444025c051b913099cb",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C49_FISH_REVIEW_20260926/scratch/07-perch/fit/parts/keyed.png",
+      "sha256": "d69422a4a64e2e6b6d5a256e052b34699c8dc034af7b0a23a807a357075f049b",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C49_FISH_REVIEW_20260926/scratch/07-perch/selected-pairs.json",
+      "sha256": "0e715a5c441eb4bf713eb29ff5a4a83f8be8908374f9e9bca3f21e9b1faabc1a",
+      "unchanged": true
+    }
+  ]
+}

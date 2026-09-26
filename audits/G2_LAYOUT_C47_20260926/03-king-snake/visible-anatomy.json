@@ -1,0 +1,92 @@
+{
+  "id": "03-king-snake",
+  "name": "King Snake",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "f1906d11c4c16fadc0e38bd5dd7a8acafd01e541a9aed64803927396e0a62dc4",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 10657,
+    "coreRadius": 10,
+    "bodyBox": {
+      "x0": 5,
+      "y0": 184,
+      "x1": 414,
+      "y1": 242
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1244,
+        "pixels": 1326,
+        "box": {
+          "x0": 322,
+          "y0": 183,
+          "x1": 409,
+          "y1": 216
+        },
+        "attach": {
+          "x": 343.6,
+          "y": 202,
+          "relX": 0.83,
+          "relY": 0.31
+        },
+        "dir": {
+          "x": 0.95,
+          "y": -0.31
+        },
+        "class": "front",
+        "length": 68.1
+      },
+      {
+        "k": 1,
+        "frac": 0.114,
+        "pixels": 1215,
+        "box": {
+          "x0": 10,
+          "y0": 207,
+          "x1": 111,
+          "y1": 234
+        },
+        "attach": {
+          "x": 87.1,
+          "y": 220.9,
+          "relX": 0.2,
+          "relY": 0.64
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.13
+        },
+        "class": "rear",
+        "length": 78.4
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 196,
+        "x1": 253,
+        "cx": 224.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}
