@@ -1,0 +1,35 @@
+{
+ "schema": "cf.flat-master-weld/v1",
+ "appliedTo": "automatic G1 packet (not hand-authored)",
+ "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/08-cod/fit",
+ "sourceRecordSha256": "3fb9106352ac81df53c18994d5da6a649f758588478d661fa271baaaae714191",
+ "sourceBindingSha256": "d0e829049adcd348d2022a1b377926ae6fe56d131c469e748e3f5e25884c5a29",
+ "sourceAtlasSha256": "e8ff6fc927c917fa5e2c86b1112cb533ff3aded329b3f2f478f26f0b3061d920",
+ "helperSha256": "178721638f302e936f8af9e3b6e52cc9f213af49eab01c27d564b68161f1dbf7",
+ "options": {
+  "fixedJoints": [
+   "root"
+  ],
+  "shapeJoints": 12,
+  "contactEndpoints": [],
+  "preservePaintBoundaries": true
+ },
+ "bindingHash": "90082912ffe2cbc30606459bbcf6e8a36f4cad124139c4540daad4ff7b0de7f3",
+ "receipt": {
+  "schema": "cf.observed-surface-split/v1",
+  "contactPins": [],
+  "sourceBindingHash": "d90ea4082307f028af73c3969e7115599a37622d9cd0f0e5fbbdd619ed91cfd5",
+  "sourceVertices": 1764,
+  "vertices": 1825,
+  "sharedSupports": 668,
+  "pins": 757,
+  "independentSurfaceParts": 13,
+  "sourceJoins": 11,
+  "excludedOverlaps": 15,
+  "observedExcludedBoundaries": 15,
+  "weldedExcludedBoundaries": 15,
+  "independentExcludedBoundaries": 0,
+  "preservePaintBoundaries": true,
+  "sourceCoordinateChanges": 0
+ }
+}
