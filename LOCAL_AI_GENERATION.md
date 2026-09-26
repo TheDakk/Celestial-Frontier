@@ -104,40 +104,13 @@ density; it is not an image-based measurement of painted rain. None replaces E u
 
 ## Creature finish — matches code as of 2026-09-26
 
-`tools/local-image-generation/kit-worker-engine.mjs#finishCreature` runs the same accepted masked
-finisher (strength 0.35, one step, 512-token ceiling) over ONE painted creature master, on the same
-sampler and sessions as the landfall. The class block is the opposite polarity of the landfall's:
-the solid interior (alpha >= 250, eroded 4 px) is editable and the alpha band + outside are
-protected (`kit-contact-math.mjs#latentCreatureMask`, `creatureWorkPlan`, integer-scale resamplers).
-The silhouette is cropped and upscaled (<= 4x, <= 1024 px) for inference and box-filtered back;
-only pixels inside the eroded solid interior take finisher colour, the alpha plane and every other
-pixel stay the painter's byte for byte. Admission is `kit-engine-math.mjs#admitCreatureFinishJob`
-(`cf.creature-finish.v1`); the job is compiled by `landfall-conditioning.ts#compileCreatureFinishV1`
-on the shared `readArtKitBlocksV4` reader (the Earth kit output is byte-identical before/after that
-refactor). Tool-only worker `creature-stage-worker.mjs` and page client `creature-finish-client.mjs`;
-the shipped kit worker is untouched. Runner, gates and sheet:
+`tools/local-image-generation/kit-stage-worker.mjs` admits desktop `creature-finish-v1` through `creature-finish-math.mjs` before GPU/model construction. `kit-worker-engine.mjs#finishCreature` uses the existing strength0.35/one-step sampler and sessions. The active editable interior requires **alpha===255**, the same nonzero source label throughout the4-pixel eroded neighborhood, and the unchanged latent protection test. D26's alpha>=250 proposal is pending; older tool-only descriptions are not the active policy.
 
-```sh
-node port/v2/tools/painted-creature/finish-master.mjs NEW_OUTPUT_DIR [--subjects=crab,mud-crab] [--no-triptych] [--allow-dirty] [--prepare-only]
-node port/v2/tools/family-review/prepare-observed-crabs.mjs audits/ANATOMY_COMPLETION_20260917/crab-masks-05 NEW_FITS_DIR --finished=OUTPUT_DIR
-node port/v2/tools/painted-creature/finish-sheet.mjs OUTPUT_DIR NEW_SHEET.png
-```
+Inputs are original128–2048 dimensions, SHA-bound RGBA references or transferred buffers. Right/bottom zero padding reaches a multiple of16; output is cropped back without moving or resampling original coordinates. Only editable RGB may change. Every original alpha byte and protected/outside pixel is retained. `finish-conservation.mjs` independently checks alpha/outside, labelled structure, gradients and binding; no threshold is weakened.
 
-Gates in `port/v2/tools/painted-creature/finish-conservation.mjs` (alpha/key conservation, structural
-label counts, label-boundary gradient ratio, binding equality; ΔE/SSIM reported). Retention owner
-`apps/game/src/creature-originals.ts` (not yet routed). First evidence:
-[crab-finish-01](audits/ANATOMY_COMPLETION_20260917/crab-finish-01/README.md) — five crabs PASS, quality
-not accepted, findings for Nick recorded there. Current game routing keeps the painter texture.
+`creature-finish-engine.ts` owns exact individual/visual/source/model/settings identity, immutable `creature-originals` retention, bounded serial/deduplicated jobs, lazy desktop inference and delivered originals on phones. Every retained/delivered output is decoded and rechecked with exact labels/binding. The flagged game route projects verified master-space output into the original atlas, then applies individual morph; card alpha compatibility is checked separately.
 
-G5 adds `creature-finish-engine.ts`: exact-individual identity, immutable retained originals,
-bounded serial/deduplicated jobs, lazy desktop inference and trusted delivered PNGs on the
-phone path. Every retained/delivered output is decoded and checked by the unchanged
-conservation instrument, with exact source labels/binding and lossless PNG bytes. The output
-is master-space; runtime atlas projection and gameplay routing remain Claude's next owner work.
-The native run on signed 26a4bc57 passed all five admitted crab sources, real IndexedDB cache
-and delivery, and zero phone model construction. The five PNGs total 199,641 bytes. This is
-desktop Chromium evidence, not physical iPhone or visual-quality acceptance. Full contract
-and remaining adapter seam: `audits/G5_FINISHER_ENGINE_20260926/README.md`.
+The original five-crab native proof on signed26a4bc57 remains dated evidence (199,641 PNG bytes); it is not relabelled or superseded while D26 is open. C46's separate canonical-runtime three-crab proof on signedcf1a24da produces119,722 PNG bytes and exact receipts, with genuine source/model/identity pins, cache/delivery and zero phone model construction. These originals are in the branch library. Neither proof is physical-iPhone or Nick visual-quality acceptance. Current production/publication commands and adapter scope: `audits/G5_C46_CONTINUATION_20260926/PHONE_DELIVERY.md`; older tool-only commands remain in their dated audit packets.
 
 **G5 routing (matches code as of 2026-09-26).**
 - **Engine (Codex):** `apps/game/src/creature-finish-engine.ts` (`audits/G5_FINISHER_ENGINE_20260926`).
@@ -164,9 +137,7 @@ fallback. Latest phone decision: stop Klein probes. The expanded stack and obser
 normal-session origin quota exceed the chosen phone budget. Physical RAM is not the browser's
 usable GPU/storage budget. No smaller phone finisher is qualified yet.
 
-Next phone work is up to three redistributable approximately 1 GB finisher candidates on Mac,
-with the same composite, precomputed embedding and masked 0.35 pass, followed by one phone
-attempt with the best candidate. No delivery/storage engineering precedes that result.
+D22 selects delivered finished creature originals for phones. The current phone path constructs no model and keeps the painter when delivery is missing or fails verification. Older proposals for smaller phone inference candidates remain unqualified; they do not block the approved hybrid delivery path.
 
 ## Evidence and checks
 
@@ -207,10 +178,10 @@ conservation. The loader projects into unchanged atlas frames; original record,
 binding and atlas pins remain intact. A supplementary generated label registry
 covers 38 fits: four independently reproduced derived maps for Civet, Eel, Rat and Salamander now bind original record/binding/atlas plus candidate evidence hashes. Their fully opaque originals differ from keyed card alpha; the final card consumer checks every alpha byte and keeps the painter when they differ. Stage eligibility remains separate.
 Phone delivery pins BOTH original.png and receipt.json at an exact per-key G3
-manifest path; no finished entries are published here. C45 allows the existing
+manifest path; three verified canonical crab originals and exact receipts now ship in the branch library (119,722 PNG bytes), admitted through the actual bundled-pin delivery consumer. No site deployment or physical-phone proof is implied. C45 allows the existing
 individual palette remap after the verified finished pixels; a private alpha baseline
 rejects both copied and in-place alpha mutations before the unchanged seam guard.
-Claude through signed 0c208c4c is merged, including the flagged card and stage wiring. Runtime IDs and visual keys share the bounded 2048-character limit; values and identity hashing are unchanged. The worker adapter copies its actual Uint8ClampedArray output, as well as Uint8Array/ArrayBuffer, retaining exact length checks. New canonical phone originals are pending native production; older proof identities are not relabelled.
+Claude through signed 0c208c4c is merged, including the flagged card and stage wiring. Runtime IDs and visual keys share the bounded 2048-character limit; values and identity hashing are unchanged. The worker adapter copies its actual Uint8ClampedArray output, as well as Uint8Array/ArrayBuffer, retaining exact length checks. New canonical phone originals pass the native worker/audit-adapter proof and actual bundled-manifest consumer; older proof identities are not relabelled. `audits/G5_C46_CONTINUATION_20260926/PHONE_DELIVERY.md` distinguishes those proofs from the separately tested application adapter.
 
 The worker still requires alpha===255 across its unchanged protected interior.
 The previously available labels-present1254 masters have zero eligible interior under that rule; the

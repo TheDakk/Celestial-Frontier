@@ -84,7 +84,15 @@ old-ID/wrong-key/model/labels/PNG corruption controls. These use deterministic
 identity inference for tests only; they are not the new production originals.
 `runtime-contract-tests.log`: final engine/adapter controls; the initial stale
 Civet unavailable-source assertion is retained separately in
-`runtime-contract-stale-civet-control.log`. C46 now publishes that genuine source,
+`runtime-contract-stale-civet-control.log.gz` (lossless raw-output SHA/size in its adjacent receipt). C46 now publishes that genuine source,
 so the refreshed assertion expects its real fit. `runtime-app-typecheck.log`
 records application TypeScript. Native production has not yet been run by this
 agent; do not claim it passed until the parent records a PASS receipt.
+
+## Parent native production and library result
+
+PASS on clean signed `cf1a24da3203c7848ec60d8e31e7220074f97dc0`, retained byte-exact in `native-cf1a24da/`. Three inferences, one worker creation (one of each model session), six detached transfers, unchanged conservation with zero alpha/outside edits, actual IndexedDB cache, fresh phone-tier store delivery and zero phone model construction. The harness uses the real worker via its audit adapter; it does not execute the separate `createFinishInferV1` application adapter or ordinary main.ts controls. Those adapter response/identity contracts have their separate passing unit controls.
+
+Publisher verified all producer hashes while they still matched the native checkpoint, then wrote all six exact files. Only afterward was the G3 manifest regenerated:603 files/65,315,121 bytes; manifest SHA `8e1cb6d72521ffd84a0700ba4bd2443ef2efd5f15e4fe75a72735bc174567cd3`. This expected manifest change means rerunning historical producer verification requires its original checkpoint; never rewrite that native receipt. `publication.json` retains exact keys/identities/hashes. PNG sizes34,690/42,794/42,238 bytes (119,722 total); receipts31,741 bytes total. `phone-consumer.json` then proves all three through the actual bundled-pin consumer with seven filesystem-backed HTTP responses and finished-atlas admission.
+
+The originals are committed under `apps/game/public/library/creature-finish/<key>/` on the OpenAI branch only; no site deployment. Original PNG inspection retains source silhouettes/alpha and subtle texture, with striping visible on Crab. This is technical delivery acceptance, not Nick's quality approval or physical-iPhone testing. D26 remains pending; none of this supersedes the old five-crab proof or produces Cougar.
