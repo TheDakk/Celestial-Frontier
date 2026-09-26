@@ -1,0 +1,102 @@
+[
+  {
+    "id": "01-coyote",
+    "name": "Coyote",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/01-coyote"
+  },
+  {
+    "id": "02-red-fox",
+    "name": "Red Fox",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/02-red-fox"
+  },
+  {
+    "id": "03-arctic-fox",
+    "name": "Arctic Fox",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/03-arctic-fox"
+  },
+  {
+    "id": "04-fennec-fox",
+    "name": "Fennec Fox",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/04-fennec-fox"
+  },
+  {
+    "id": "05-caracal",
+    "name": "Caracal",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/05-caracal"
+  },
+  {
+    "id": "06-lynx",
+    "name": "Lynx",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/06-lynx"
+  },
+  {
+    "id": "07-cougar",
+    "name": "Cougar",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/07-cougar"
+  },
+  {
+    "id": "08-mongoose",
+    "name": "Mongoose",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/08-mongoose"
+  },
+  {
+    "id": "09-badger",
+    "name": "Badger",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/09-badger"
+  },
+  {
+    "id": "10-raccoon",
+    "name": "Raccoon",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/10-raccoon"
+  },
+  {
+    "id": "11-marmot",
+    "name": "Marmot",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/11-marmot"
+  },
+  {
+    "id": "12-brown-bear",
+    "name": "Brown Bear",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/12-brown-bear"
+  },
+  {
+    "id": "13-cattle",
+    "name": "Cattle",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/13-cattle"
+  },
+  {
+    "id": "14-bison",
+    "name": "Bison",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/14-bison"
+  },
+  {
+    "id": "15-donkey",
+    "name": "Donkey",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/15-donkey"
+  },
+  {
+    "id": "16-wild-horse",
+    "name": "Wild Horse",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/16-wild-horse"
+  },
+  {
+    "id": "17-camel",
+    "name": "Camel",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/17-camel"
+  },
+  {
+    "id": "18-tapir",
+    "name": "Tapir",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/18-tapir"
+  },
+  {
+    "id": "19-wild-boar",
+    "name": "Wild Boar",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/19-wild-boar"
+  },
+  {
+    "id": "20-goat",
+    "name": "Goat",
+    "packet": "audits/G2_QUADRUPED_PILOT_20260926/20-goat"
+  }
+]

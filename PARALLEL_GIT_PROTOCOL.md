@@ -33,7 +33,7 @@ as at most one label cycle per day per PR only with the WHOLE local gate list
 green (including overridecontrol); no red, stale, missing or ambiguous evidence
 may be bypassed, and the exact budget authorization/attempt record remains
 required. D6 keeps battle2 flagged until the iPhone probe and v2 certificate.
-D1's later signed decision authorizes the ranked painting order with one sheet
+D21 later lifts D6's probe wait for development only: battle2 is the reversible development default; production still requires I5. D22/D23 prioritizes the generated pipeline. D1's later signed decision authorizes the ranked painting order with one sheet
 per ten, not per-paint approval; delivered paintings still need their evidence.
 A mailbox acknowledgment never claims a pending delivery or certificate passed.
 
@@ -106,6 +106,11 @@ creatures one by one.
 
 ## Ownership
 
+**Current September26 override:** development is Mac-only. Both Windows branches are retired;
+never push to, merge from, or recreate them. Retired OpenAI review/gameplay branches have
+been consolidated or preserved on openai/mac and deleted locally/remotely. The parked WIP
+recovery bundle and outstanding-work disposition are linked from ROADMAP.md. No new branches.
+
 | Agent environment | Allowed branch | Allowed folder |
 | --- | --- | --- |
 | OpenAI/Codex on macOS | `openai/mac` | `/Users/nick/Projects/celestial-frontier-openai-mac` |
@@ -116,7 +121,7 @@ creatures one by one.
 `develop` is the integration branch. `main` is the production branch.
 Neither agent may commit directly to either one.
 
-**Bounded review branches (policy decision 2026-09-05, Claude under Nick's authority):** when an
+**Historical bounded-review policy (2026-09-05; superseded by the no-new-branches rule):** when an
 agent's machine branch is occupied by unrelated in-flight work, that agent may carry one reviewed
 candidate to `develop` on a branch named `openai/review-*` or `anthropic/review-*`. Such a branch
 is still owned by the same agent, is pushed only from that agent's own worktree above, is admitted

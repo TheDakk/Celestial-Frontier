@@ -1,0 +1,19 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Coyote",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "9f3071eff43bd9b05045a5327cc6edf40538855033b635c775a6fe971a85b8c5",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "424c643a80b4a9dd35ee33fd565110d2ed872fa347ac2e6d4f40cda450e094fd",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "authoringCreated": false,
+  "sourceHead": "f01f911e4b1c646b5bbb61f06e702c903eb10bd2"
+}

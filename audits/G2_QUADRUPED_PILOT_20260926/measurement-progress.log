@@ -1,0 +1,12 @@
+{"id":"01-coyote","count":5,"verdict":"REFUSE","reasons":["2 unused endpoint leg candidates"],"masks":6}
+{"id":"02-red-fox","count":5,"verdict":"ADMIT","reasons":[],"masks":6}
+{"id":"03-arctic-fox","count":4,"verdict":"ADMIT","reasons":[],"masks":6}
+{"id":"04-fennec-fox","count":4,"verdict":"ADMIT","reasons":[],"masks":6}
+{"id":"05-caracal","count":5,"verdict":"ADMIT","reasons":[],"masks":6}
+{"id":"06-lynx","count":4,"verdict":"ADMIT","reasons":[],"masks":6}
+{"id":"07-cougar","count":4,"verdict":"ADMIT","reasons":[],"masks":6}
+{"id":"08-mongoose","count":5,"verdict":"ADMIT","reasons":[],"masks":6}
+{"id":"09-badger","count":4,"verdict":"REFUSE","reasons":["visible foreFar not found"],"masks":6}
+{"id":"10-raccoon","count":5,"verdict":"REFUSE","reasons":["1 unused endpoint leg candidates"],"masks":6}
+{"id":"11-marmot","count":4,"verdict":"ADMIT","reasons":[],"masks":6}
+{"id":"12-brown-bear","count":4,"verdict":"REFUSE","reasons":["2 unused endpoint leg candidates"],"masks":6}
