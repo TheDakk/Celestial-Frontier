@@ -1,6 +1,8 @@
 # Durable candidate packets: the first fully automatic creatures (Perch, Cod, Carp), 2026-09-26
 
-**Status: CANDIDATES. These packets admit nothing.** Runtime authority comes only from the existing registry/library/build-pin owners, after **Dakk's visual decision on these exact bytes** (`NickVisualDecisionForExactPacket: PENDING` in each manifest). This follows Codex's contract `audits/C49_FISH_REVIEW_20260926/packet-contract.json` and review `README.md`.
+**Status: REJECTED by Dakk (2026-09-26): the tails look crunchy and missing.** Claude's close review agrees (`tail-review.png`): the Cod's tail fin swings as a separate stiff piece on a crushed knot at the body↔caudal joint, and the Perch and Carp tail stalks pinch thin. The body↔caudal seam folds when welded and pinches when left unwelded, so the tail joint needs rig/motion work (C54) before these are re-reviewed. The packets stay as the durable record of the first end-to-end automatic run.
+
+*Original status:* CANDIDATES. These packets admit nothing. Runtime authority comes only from the existing registry/library/build-pin owners, after **Dakk's visual decision on these exact bytes** (`NickVisualDecisionForExactPacket: PENDING` in each manifest). This follows Codex's contract `audits/C49_FISH_REVIEW_20260926/packet-contract.json` and review `README.md`.
 
 **Chain:** Codex's G2 painting (`audits/G2_FAMILY_PILOT_20260926/<id>/`) → G1 automatic authoring (Bass reference, zero hand edits) → Codex's unchanged intake → a selective axial weld found by greedy search → the unchanged static gate → Codex's native harness. Codex added a selected-boundary audit: largest welded-seam gap 0.00004–0.00005 px, against 94.6 px on the real unwelded control.
 

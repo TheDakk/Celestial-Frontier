@@ -1,7 +1,7 @@
 {
  "schema": "cf.g1-automatic-candidate-packet/v1",
  "contract": "audits/C49_FISH_REVIEW_20260926/packet-contract.json",
- "status": "CANDIDATE: admits nothing; Dakk visual decision PENDING",
+ "status": "REJECTED BY DAKK: tail-stalk joint; not admissible until the tail joint is repaired and re-reviewed",
  "identity": {
   "speciesId": "perch",
   "speciesName": "Perch",
@@ -318,7 +318,7 @@
     "sha256": "cdbeeceffba3578e0165a61e3e4daac471df07c2135b9ce827b7368bed6e52b1"
    }
   ],
-  "NickVisualDecisionForExactPacket": "PENDING"
+  "NickVisualDecisionForExactPacket": "REJECTED (Dakk 2026-09-26): \"the tail just looks like it is all crunchy and missing; it definitely needs more work\". Claude review agrees: Cod tail fin swings on a crushed knot at the body-caudal joint; Perch and Carp pinch at the tail stalk (tail-review.png)."
  },
  "fileInventory": [
   {
