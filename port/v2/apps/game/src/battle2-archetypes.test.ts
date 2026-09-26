@@ -2,6 +2,7 @@
  * gzipped binding, alpha-only cut-out, parts manifest, atlas, painter master via the record's source, and the painted masks) exists in
  * `public/battle2/` at the exact path the wiring resolves against the recipe URL. A path bug (an absolute record source, a
  * mask set outside its fit) fails here, not in a playtest. */
+import { SERVED_CORE, SERVED_LIBRARY, servedArt } from './art-library.fixtures.js';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
@@ -12,9 +13,9 @@ import { BATTLE2_ASSETS, auditAssetPath } from './battle2-wiring.js';
 import { CARD_ARCHETYPES } from './morph/card-archetypes.js';
 import { decodePng } from './morph/png-decode.js';
 import { repoRelativeSource } from '../../../tools/creature-animation/record-source.mjs';
-import { CARD_ARCHETYPES as BUILD_LIST, SHIPPED_ROOT, generatedSources } from '../../../tools/morph/build-card-masters.mjs';
+import { CARD_ARCHETYPES as BUILD_LIST, cardRootOf, generatedSources } from '../../../tools/morph/build-card-masters.mjs';
 const SERVED = new URL('port/v2/apps/game/public/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/', REPO_ROOT); // the recipe's directory, as served
-const served = (rel: string): URL => new URL(rel, SERVED);
+const served = (rel: string): URL => servedArt(rel); // G3: core pack or on-demand library copy
 describe('the shipped arena carries every painted archetype', () => {
   it('the arena fit list IS the card list (same archetypes, same order)', () => {
     expect(BATTLE2_ASSETS.partsFits).toBe(BATTLE2_PARTS_FITS);
@@ -43,7 +44,7 @@ describe('the shipped arena carries every painted archetype', () => {
     // the arena reads only the alpha (rig alpha + alpha box); the colour comes from the atlas. Compare every alpha byte.
     const alphaOf = async (bytes: Buffer) => { const p = await decodePng(new Uint8Array(bytes)), a = new Uint8Array(p.width * p.height); let rgb = 0; for (let i = 0; i < a.length; i++) { a[i] = p.rgba[i * 4 + 3]!; rgb |= p.rgba[i * 4]! | p.rgba[i * 4 + 1]! | p.rgba[i * 4 + 2]!; } return { w: p.width, h: p.height, a, rgb }; };
     const firstDiff = (x: Uint8Array, y: Uint8Array) => { if (x.length !== y.length) return -2; for (let i = 0; i < x.length; i++) if (x[i] !== y[i]) return i; return -1; };
-    const shipped = JSON.parse(readFileSync(served('../../MANIFEST.json'), 'utf8')) as { files: { path: string; derivedFrom?: { path: string; sha256: string } }[] };
+    const shipped = shippedProvenance() as { files: { path: string; derivedFrom?: { path: string; sha256: string } }[] };
     let checked = 0, control = -1;
     for (const fit of BATTLE2_PARTS_FITS) {
       const source = readFileSync(new URL(fit.dir.replace(/^\.\.\//, 'audits/') + 'parts/keyed.png', REPO_ROOT)), cut = await alphaOf(readFileSync(served(fit.dir + 'parts/alpha.png'))), want = await alphaOf(source);
@@ -60,7 +61,7 @@ describe('the shipped arena carries every painted archetype', () => {
     expect(control).toBeGreaterThanOrEqual(0);
   }, 60_000); // decodes every archetype's alpha + keyed cut-out (38 archetypes; seconds under a parallel run)
   it('each shipped binding.json.gz gunzips to its fit\'s binding.json byte for byte, and battle2-assets.json pins EVERY shipped file (the PWA build\'s first-use list)', () => {
-    const shipped = JSON.parse(readFileSync(served('../../MANIFEST.json'), 'utf8')) as { files: { path: string; derivedFrom?: { path: string; encoding?: string } }[] };
+    const shipped = shippedProvenance() as { files: { path: string; derivedFrom?: { path: string; encoding?: string } }[] };
     let checked = 0;
     for (const fit of BATTLE2_PARTS_FITS) {
       const rel = fit.dir.replace(/^\.\.\//, 'audits/'), gz = readFileSync(served(fit.dir + 'binding.json.gz')), src = readFileSync(new URL(rel + 'binding.json', REPO_ROOT));
@@ -88,13 +89,13 @@ describe('the shipped arena carries every painted archetype', () => {
     expect(() => repoRelativeSource('/etc/passwd')).toThrow(/outside a Celestial Frontier worktree/);
   });
   it('NO DRIFT: the three generated files are exactly what the builder generates from its one list, and every shipped mirror names its fit and seals its record (review 2026-09-24: nothing tied them together)', () => {
-    const markingsFilesOf = (a: { key: string }) => { const dir = new URL(SHIPPED_ROOT + a.key + '/', REPO_ROOT), mj = new URL('markings.json', dir);
+    const markingsFilesOf = (a: { key: string; earthName: string }) => { const dir = new URL(cardRootOf(a as { key: string; earthName: string }) + a.key + '/', REPO_ROOT), mj = new URL('markings.json', dir);
       if (!existsSync(mj)) return []; const j = JSON.parse(readFileSync(mj, 'utf8')) as { patterns: Record<string, { file?: string }> }; return ['markings.json', ...Object.values(j.patterns).map((v) => v.file!).filter(Boolean)]; };
     const gen = generatedSources(BUILD_LIST, markingsFilesOf), src = (f: string) => readFileSync(new URL('port/v2/apps/game/src/' + f, REPO_ROOT), 'utf8');
     expect(src('morph/card-archetypes.ts')).toBe(gen.registry); expect(src('painted-cards.assets.ts')).toBe(gen.assets); expect(src('battle2-archetypes.ts')).toBe(gen.arena);
-    for (const a of BUILD_LIST) { const mirror = JSON.parse(readFileSync(new URL(SHIPPED_ROOT + a.key + '/SOURCE.json', REPO_ROOT), 'utf8')) as { fitDir: string; recordRecipeHash: string; markingsDir?: string };
+    for (const a of BUILD_LIST) { const mirror = JSON.parse(readFileSync(new URL(cardRootOf(a) + a.key + '/SOURCE.json', REPO_ROOT), 'utf8')) as { fitDir: string; recordRecipeHash: string; markingsDir?: string };
       expect(mirror.fitDir, a.earthName).toBe(a.dir); expect(mirror.markingsDir ?? null, a.earthName).toBe(a.markings ?? null);
-      const fit = JSON.parse(readFileSync(new URL(a.dir + 'record.json', REPO_ROOT), 'utf8')) as { recipeHash: string }, shipped = JSON.parse(readFileSync(new URL(SHIPPED_ROOT + a.key + '/record.json', REPO_ROOT), 'utf8')) as { recipeHash: string };
+      const fit = JSON.parse(readFileSync(new URL(a.dir + 'record.json', REPO_ROOT), 'utf8')) as { recipeHash: string }, shipped = JSON.parse(readFileSync(new URL(cardRootOf(a) + a.key + '/record.json', REPO_ROOT), 'utf8')) as { recipeHash: string };
       expect(mirror.recordRecipeHash, a.earthName).toBe(fit.recipeHash); expect(shipped.recipeHash, a.earthName + ' shipped record').toBe(fit.recipeHash);
       const arenaFit = BATTLE2_PARTS_FITS.find((f) => f.earthName === a.earthName)!, served = JSON.parse(readFileSync(served_(arenaFit.dir + 'record.json'), 'utf8')) as { recipeHash: string };
       expect(served.recipeHash, a.earthName + ' arena record').toBe(fit.recipeHash); }
@@ -102,4 +103,7 @@ describe('the shipped arena carries every painted archetype', () => {
     expect(src('battle2-archetypes.ts').replace("'Python'", "'Pythn'")).not.toBe(gen.arena);
   });
 });
-const served_ = (rel: string): URL => new URL(rel, SERVED);
+const served_ = (rel: string): URL => servedArt(rel);
+/** The arena provenance: the CORE pack's MANIFEST.json plus the on-demand LIBRARY's (G3), one list. */
+const shippedProvenance = () => { const read = (u: URL) => (existsSync(u) ? (JSON.parse(readFileSync(u, 'utf8')) as { files: { path: string; derivedFrom?: { path: string; sha256?: string; encoding?: string } }[] }).files : []);
+  return { files: [...read(new URL('../../MANIFEST.json', SERVED_CORE)), ...read(new URL('../../MANIFEST.json', SERVED_LIBRARY))] }; };
