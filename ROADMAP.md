@@ -53,7 +53,7 @@ All seven manual owners and root validation pass. Restoration checks are in the 
 
 Next Codex: report the refusal and await a newly authorized independent epoch; no tuning
 against consumed seeds. Disk capacity must be resolved before new bulky measurements.
-Remaining ordered work above is pending, including latest signed Claude76689959 integration,
+Remaining ordered work above is pending, including latest observed signed Claude7964bb0b integration,
 missions/Outposts numbers and finalI5. C34 arrived at batch end: vision batch dev0b4c8dca,
 additional Guide/release bullets and inventory pins, phone audio CPU (~37ms desktop slices),
 and finalI5 on the newly integrated Compendium head. C33/D21 lifts device waiting for DEVELOPMENT battle2;
