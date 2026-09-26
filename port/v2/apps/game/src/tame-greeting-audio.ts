@@ -256,7 +256,11 @@ export interface TameGreetingAudioOwner {
    * concurrency, budgets) still rules every request. A study can never make a sound the accessible owner would not. */
   decorativeVoicePort(): DecorativeVoicePort;
 }
-export interface DecorativeVoicePort { playVoice(request: AudioVoiceRequest): AudioVoiceStartResult; }
+export interface DecorativeVoicePort {
+  playVoice(request: AudioVoiceRequest): AudioVoiceStartResult;
+  /** D15 Stage 3: stop a voice THIS port started (a looping bed or music the soundscape owns); any other id is refused (false). */
+  stopVoice(voiceId: string): boolean;
+}
 
 export interface TameGreetingAudioOwnerOptions {
   readonly createContext: () => AudioContextLike;
@@ -1398,13 +1402,20 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
   }
 
   decorativeVoicePort(): DecorativeVoicePort {
+    const mine = new Set<string>();
     return Object.freeze({
       playVoice: (request: AudioVoiceRequest): AudioVoiceStartResult => {
         if (this.#disposed || this.#hidden || !this.#answerable) return Object.freeze({ kind: 'rejected', reason: 'not-running' });
         if (!enabledMasterPolicy(safePolicy(this.#readPolicy))) return Object.freeze({ kind: 'rejected', reason: 'muted' });
         const meaning = request && typeof request === 'object' ? (request as { meaning?: { kind?: unknown } }).meaning : undefined;
         if (!meaning || meaning.kind !== 'decorative') return Object.freeze({ kind: 'rejected', reason: 'invalid-request' });
-        return this.#runtime.playVoice(request);
+        const result = this.#runtime.playVoice(request);
+        if (result.kind === 'started') { mine.add(result.voiceId); if (mine.size > 64) mine.delete(mine.values().next().value!); }
+        return result;
+      },
+      stopVoice: (voiceId: string): boolean => {
+        if (typeof voiceId !== 'string' || !mine.has(voiceId)) return false;
+        mine.delete(voiceId); return this.#runtime.stopVoice(voiceId);
       },
     });
   }

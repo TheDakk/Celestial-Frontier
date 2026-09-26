@@ -1,7 +1,8 @@
 /** @module listening-review [app] — the L1 Listening page (D15 / N5 "the listening test Nick runs"): `?audioReview=1` on a built package
  * (the dev URL), flag-gated, dynamic import only. It plays every creature cue set in a FIXED order: one representative creature per voice
  * archetype, each through its ONE voice card (`creatureVoiceCardV1`) and derived exactly as the battle stage derives an identity card's cue
- * (`deriveCue(card, cue, sources, card.seed)`), today from the labelled placeholder library. Nick listens on the iPhone speaker first, then
+ * (`deriveCue(card, cue, sources, card.seed)`) from the ORIGINAL library, then the combat set, the ambience beds, the weather layers and the
+ * music (D15 Stages 1–3). Nick listens on the iPhone speaker first, then
  * on headphones, and taps Keep / Redo / Cut with an optional note. Ratings stay on this device (guarded localStorage, never the save);
  * **Copy results** gives a plain-text block — commit, pack digest, device, ratings — for Nick to paste. No network beyond reading this
  * package's own `preview.json`; no telemetry. Playback goes through the audio owner's explicit pilot gesture path (decorative only). */
@@ -11,7 +12,12 @@ import { createDerivedVoiceRequest, type RenderedCue } from './soundkit/browser-
 import { CREATURE_CUES, type CreatureCueId } from './soundkit/cues.js';
 import { deriveCue, type SourceLibrary } from './soundkit/derive.js';
 import { planCues } from './soundkit/mix.js';
-import { synthesizePlaceholderLibrary } from './soundkit/placeholder-archetype.js';
+import { originalSourceLibraryV1 } from './soundkit/original-voices.js';
+import type { BiomeProfileKeyV1 } from '@cf/domain-biome-profile';
+import { AMBIENCE_FAMILIES_V1, WEATHER_LAYERS_V1, ambiencePlanV1, bedJobV1, runJobV1, weatherJobV1, type AmbienceFamilyV1, type WeatherLayerV1 } from './soundkit/ambience.js';
+import { COMBAT_CUE_IDS_V1, renderCombatCueV1 } from './soundkit/original-combat.js';
+import { MUSIC_PIECES_V1, MUSIC_RATE, musicJobV1, musicPieceV1 } from './soundkit/music.js';
+import { soundscapeVoiceRequestV1 } from './soundkit/soundscape.js';
 import type { VoiceCard } from './soundkit/voice-card.js';
 import { creatureVoiceCardV1 } from './soundkit/voice-identity.js';
 
@@ -55,13 +61,39 @@ export function listeningRequestV1(item: ListeningItemV1, rendered: RenderedCue)
   return createDerivedVoiceRequest({ ...intent, key, category: 'combat-gameplay', cooldownGroup: 'cf-pilot-listen', cooldownMs: 0, concurrencyGroup: 'cf-pilot-listen', maxConcurrent: 1 }, rendered, { kind: 'decorative' });
 }
 
+/* ---------- D15 Stages 2–3: the rest of the sound, so Nick rates everything the game can play ---------- */
+export type ListeningExtraKindV1 = 'combat' | 'bed' | 'weather' | 'music';
+export interface ListeningExtraItemV1 { readonly id: string; readonly kind: ListeningExtraKindV1; readonly group: string; readonly key: string; readonly label: string }
+/** One representative biome per ambience family (the family's own bed; every other biome is that bed tinted). */
+export const LISTENING_BED_BIOMES_V1: Readonly<Record<AmbienceFamilyV1, BiomeProfileKeyV1>> = Object.freeze({
+  temperate: 'temperate', jungle: 'jungle', coast: 'opensea', underwater: 'abyssal', desert: 'dunesea', ice: 'glacier', volcanic: 'magmasea', crystal: 'crystalsteppe', spore: 'fungal', gas: 'ammonia',
+});
+export function listeningExtraItemsV1(): readonly ListeningExtraItemV1[] {
+  return Object.freeze([
+    ...COMBAT_CUE_IDS_V1.map((c) => Object.freeze({ id: `combat.${c}`, kind: 'combat' as const, group: c.startsWith('battle:') ? 'Battle set' : `Ability · ${c.split(':')[1]}`, key: c, label: c })),
+    ...AMBIENCE_FAMILIES_V1.map((f) => Object.freeze({ id: `bed.${f}`, kind: 'bed' as const, group: 'Ambience beds (24 s loops)', key: f, label: `${f} bed (${LISTENING_BED_BIOMES_V1[f]})` })),
+    ...WEATHER_LAYERS_V1.map((w) => Object.freeze({ id: `weather.${w}`, kind: 'weather' as const, group: 'Weather layers', key: w, label: `${w} layer` })),
+    ...MUSIC_PIECES_V1.map((p) => Object.freeze({ id: `music.${p.id}`, kind: 'music' as const, group: 'Music (sparse score)', key: p.id, label: `${p.id} (${p.state}, ${p.seconds} s)` })),
+  ]);
+}
+/** Exactly what the game plays for an extra item, as a pilot-path preview request. */
+export function listeningExtraRequestV1(item: ListeningExtraItemV1): AudioVoiceRequest {
+  const pilot = { key: `cf-pilot-listen-${item.id.replace(/[^a-z0-9-]/gu, '-')}`, category: 'combat-gameplay' as const, cooldownGroup: 'cf-pilot-listen', cooldownMs: 0, concurrencyGroup: 'cf-pilot-listen', maxConcurrent: 1 };
+  if (item.kind === 'combat') { const intent = planCues([item.key]).admitted[0]; if (!intent) throw new Error(`${item.label}: the mix admitted no voice`); return createDerivedVoiceRequest({ ...intent, ...pilot }, renderCombatCueV1(item.key, 7, { amount: 25 }), { kind: 'decorative' }); }
+  if (item.kind === 'music') { const samples = runJobV1(musicJobV1(musicPieceV1(item.key))); return Object.freeze({ ...soundscapeVoiceRequestV1('music:title', { kind: 'mono', samples, rate: MUSIC_RATE }, false, 0), ...pilot }); }
+  const b = item.kind === 'bed' ? runJobV1(bedJobV1(ambiencePlanV1(LISTENING_BED_BIOMES_V1[item.key as AmbienceFamilyV1]))) : runJobV1(weatherJobV1(item.key as WeatherLayerV1, 0));
+  if (!b) throw new Error(`${item.label}: silence`);
+  return Object.freeze({ ...soundscapeVoiceRequestV1(`ambience:bed:${item.key}`, { kind: 'stereo', b }, false, 0), ...pilot });
+}
+const allItemIds = (): readonly string[] => [...listeningItemsV1().map((i) => i.id), ...listeningExtraItemsV1().map((i) => i.id)];
+
 export function loadListeningRatingsV1(storage: Pick<Storage, 'getItem'> | null): ListeningRatingsV1 {
   let raw: string | null = null; try { raw = storage?.getItem(LISTENING_STORAGE_KEY) ?? null; } catch { return {}; }
   if (!raw) return {};
   try {
     const v = JSON.parse(raw) as { schema?: unknown; ratings?: Record<string, { rating?: unknown; note?: unknown }> };
     if (v.schema !== 'cf.listening-l1/v1' || !v.ratings || typeof v.ratings !== 'object') return {};
-    const ids = new Set(listeningItemsV1().map((i) => i.id)), out: Record<string, { rating: ListeningRatingV1; note: string }> = {};
+    const ids = new Set(allItemIds()), out: Record<string, { rating: ListeningRatingV1; note: string }> = {};
     for (const [id, r] of Object.entries(v.ratings)) if (ids.has(id) && (r?.rating === 'keep' || r?.rating === 'redo' || r?.rating === 'cut')) out[id] = { rating: r.rating, note: typeof r.note === 'string' ? r.note.slice(0, 280) : '' };
     return out;
   } catch { return {}; }
@@ -71,10 +103,10 @@ export function saveListeningRatingsV1(storage: Pick<Storage, 'setItem'> | null,
 }
 
 export function formatListeningResultsV1(input: Readonly<{ commit: string; packDigest: string; ua: string; ratings: ListeningRatingsV1 }>): string {
-  const items = listeningItemsV1(), rated = items.filter((i) => input.ratings[i.id]);
+  const items = allItemIds().map((id) => ({ id })), rated = items.filter((i) => input.ratings[i.id]);
   const n = (r: ListeningRatingV1) => rated.filter((i) => input.ratings[i.id]!.rating === r).length;
   return [
-    'Celestial Frontier — L1 listening review (D15, placeholder-derived voices)',
+    'Celestial Frontier — L1 listening review (D15, original sources: voices, combat, ambience, music)',
     `commit: ${input.commit}`,
     `pack: ${input.packDigest}`,
     `device: ${input.ua}`,
@@ -99,7 +131,7 @@ export interface ListeningMountV1 {
 }
 export function mountListeningReviewV1(o: ListeningMountV1): { readonly root: HTMLElement; ratings(): ListeningRatingsV1; resultsText(): Promise<string>; dispose(): void } {
   const d = o.doc, items = listeningItemsV1(), trusted = o.trusted ?? ((e: Event) => e.isTrusted);
-  let sources: SourceLibrary | null = o.sources ?? null; const lib = (): SourceLibrary => (sources ??= synthesizePlaceholderLibrary().sources);
+  let sources: SourceLibrary | null = o.sources ?? null; const lib = (): SourceLibrary => (sources ??= originalSourceLibraryV1().sources);
   let ratings: Record<string, { rating: ListeningRatingV1; note: string }> = { ...loadListeningRatingsV1(o.storage) };
   const root = d.createElement('section'); root.dataset.listeningReview = 'l1'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-label', 'Listening review');
   root.style.cssText = 'position:fixed;inset:0;z-index:10040;overflow:auto;background:#0b1428;color:#edf3fa;padding:12px 16px 48px;font:16px/1.45 system-ui';
@@ -130,6 +162,27 @@ export function mountListeningReviewV1(o: ListeningMountV1): { readonly root: HT
       void o.port.play(request).then((r) => { status.textContent = r.kind === 'started' ? `Playing ${item.label}.` : `${item.label} did not start: ${r.reason ?? r.kind}`; });
     };
     paint(); row.append(label, play, ...choices, note); group!.append(row);
+  }
+  // Stages 2–3: combat, ambience, weather and music — the same row, the same pilot path, exactly what the game plays
+  let extraGroup: HTMLDetailsElement | null = null, lastGroup = '';
+  for (const item of listeningExtraItemsV1()) {
+    if (item.group !== lastGroup) { lastGroup = item.group; extraGroup = d.createElement('details'); const s = d.createElement('summary'); s.textContent = item.group; s.style.cssText = 'min-height:44px;padding:10px 0;font-weight:600'; extraGroup.append(s); root.append(extraGroup); }
+    const row = d.createElement('div'); row.dataset.listenItem = item.id; row.style.cssText = 'border-top:1px solid #2a3b55;padding:6px 0';
+    const label = d.createElement('div'); label.textContent = item.label;
+    const play = btn('▶ Play', { listenPlay: item.id });
+    const choices = (['keep', 'redo', 'cut'] as const).map((r) => btn(r[0]!.toUpperCase() + r.slice(1), { listenRate: r }));
+    const note = d.createElement('input'); note.type = 'text'; note.maxLength = 280; note.placeholder = 'note (optional)'; note.setAttribute('aria-label', `${item.label} note`); note.style.cssText = 'min-height:44px;width:100%;box-sizing:border-box;font:inherit';
+    const paint = (): void => { for (const c of choices) c.setAttribute('aria-pressed', String(ratings[item.id]?.rating === c.dataset.listenRate)); note.value = ratings[item.id]?.note ?? ''; };
+    for (const c of choices) c.onclick = () => { ratings = { ...ratings, [item.id]: { rating: c.dataset.listenRate as ListeningRatingV1, note: ratings[item.id]?.note ?? '' } }; persist(); paint(); };
+    note.onchange = () => { const r = ratings[item.id]; if (!r) { status.textContent = 'Rate the sound first, then add a note.'; note.value = ''; return; } ratings = { ...ratings, [item.id]: { ...r, note: note.value.slice(0, 280) } }; persist(); };
+    play.onclick = (event) => {
+      if (!trusted(event)) return;
+      if (!o.port.arm()) { status.textContent = 'Sound is off or the game is not ready — turn Sound on in Settings.'; return; }
+      let request: AudioVoiceRequest; try { request = listeningExtraRequestV1(item); } catch (error) { status.textContent = String(error instanceof Error ? error.message : error); return; }
+      status.textContent = `Playing ${item.label}…`;
+      void o.port.play(request).then((r) => { status.textContent = r.kind === 'started' ? `Playing ${item.label}.` : `${item.label} did not start: ${r.reason ?? r.kind}`; });
+    };
+    paint(); row.append(label, play, ...choices, note); extraGroup!.append(row);
   }
   const resultsText = async (): Promise<string> => { let pack = 'unavailable'; try { pack = await o.readPackDigest(); } catch { /* local build */ } return formatListeningResultsV1({ commit: o.commit, packDigest: pack, ua: o.ua, ratings }); };
   copy.onclick = () => { void resultsText().then((t) => (o.copyText ?? ((x: string) => navigator.clipboard.writeText(x)))(t)).then(() => { status.textContent = 'Copied — paste it to Claude.'; }, () => { status.textContent = 'Copy failed.'; }); };

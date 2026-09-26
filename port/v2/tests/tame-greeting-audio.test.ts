@@ -2063,4 +2063,15 @@ describe('decorative voice port (batch 2: the battle2 study through the accessib
     expect(muted.owner.decorativeVoicePort().playVoice(decorativeRequest())).toMatchObject({ kind: 'rejected', reason: 'muted' });
     await h.owner.dispose(); expect(port.playVoice(decorativeRequest())).toMatchObject({ kind: 'rejected', reason: 'not-running' });
   });
+  it('D15 Stage 3: the port stops a voice IT started (the soundscape\'s looping bed); control: an id it did not start — another port\'s, or unknown — is refused and the voice keeps playing', async () => {
+    const h = harness(); expect(h.owner.armNativeCombatGesture()).toBe(true); await Promise.resolve(); await Promise.resolve();
+    const port = h.owner.decorativeVoicePort(), other = h.owner.decorativeVoicePort();
+    const mine = port.playVoice(decorativeRequest()) as { voiceId: string }, theirs = other.playVoice({ ...decorativeRequest(), key: 'other', cooldownGroup: 'other', concurrencyGroup: 'other' }) as { voiceId: string };
+    expect(mine.voiceId).toBeTruthy(); expect(theirs.voiceId).toBeTruthy();
+    expect(port.stopVoice(theirs.voiceId)).toBe(false); expect(port.stopVoice('no-such-voice')).toBe(false);
+    expect(h.owner.diagnostics().runtime.voices.ids).toContain(theirs.voiceId);
+    expect(port.stopVoice(mine.voiceId)).toBe(true);
+    expect(h.owner.diagnostics().runtime.voices.ids).not.toContain(mine.voiceId);
+    expect(port.stopVoice(mine.voiceId), 'a stopped voice is no longer this port\'s').toBe(false);
+  });
 });
