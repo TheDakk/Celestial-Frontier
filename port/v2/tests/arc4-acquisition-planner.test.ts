@@ -812,6 +812,7 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
       './friendly-duel-internal': './src/friendly-duel.ts',
       './companion-care': './src/companion-care.ts', // D13 (2026-09-25): tastes, Feed policy v2, bond, Rest duration
       './rest-internal': './src/rest.ts', // D13 Rest authority
+      './missions-internal': './src/companion-missions.ts', // D13 stage 2 companion missions (placeholder rates until Codex's 2a)
     });
   });
 
