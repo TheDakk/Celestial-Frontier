@@ -1,12 +1,13 @@
 /** H1 codec decode check (D15 Stage 0). The page logic against a fake AudioContext for every outcome, a corrupted-sample control that must
  * report failure (never success) even when the decoder would accept it, and the real page's Run → Copy text. */
 import { readFileSync } from 'node:fs';
-import { JSDOM } from 'jsdom';
+import { createRequire } from 'node:module';
 import { describe, expect, it } from 'vitest';
 import { CODEC_PROBE_SAMPLES_V1 } from '../apps/game/src/device-probe-codec-samples.js';
 import { formatCodecProbeV1, mountDeviceProbeV1, runCodecProbeV1, type DecodedBufferLike, type ProbeAudioContextLike } from '../apps/game/src/device-probe.js';
 import { sha256Hex } from '../apps/game/src/soundkit/derive.js';
 
+const { JSDOM } = createRequire(import.meta.url)('jsdom') as { JSDOM: new (html: string) => { window: Window & { close(): void } } };
 const tone = (ms = 120, sampleRate = 48_000, amp = 0.5): DecodedBufferLike => {
   const n = Math.round((ms / 1000) * sampleRate), data = new Float32Array(n); for (let i = 0; i < n; i++) data[i] = amp * Math.sin((2 * Math.PI * 440 * i) / sampleRate);
   return { length: n, duration: n / sampleRate, sampleRate, numberOfChannels: 1, getChannelData: () => data };
