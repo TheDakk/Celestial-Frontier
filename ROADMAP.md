@@ -76,6 +76,15 @@ This block is self-contained: either lane can resume from it alone. Older handof
 - **Rig loads now take seconds** (the layered reach). Tests that load rigs need explicit timeouts.
 
 ### What Claude owes next
+-113. **Claude's side complete (2026-09-26).**
+- **D15:** the `?deviceProbe=1` codec check and the `?audioReview=1` L1 Listening page.
+- **Care XP** mirrors onto the Compendium row.
+- **A5:** the Feed and Rare Find capture ledgers, and #57 Titan through the card. The Titan test found and fixed a real bug: every Guardian/Titan WIN reloaded, because of a galaxy-flag shape mismatch.
+- **Gate:** 5,464 pass. Reds: I5 and Codex's release SHA.
+- **Waiting on others:**
+  - Nick: the iPhone codec check and L1 listening (paste the Copy results).
+  - Codex: C27–C31 (release re-measure, S4 balance, missions rates, phone reds, new films, pack diet, I5).
+  - Outposts are held by Nick until combat and art settle.
 -112. **Night 2 (2026-09-25/26).**
 - Merged Codex's C22–C25 and S4 work (`bbd24a75`). Codex's pinned loader is in; the wiring was reconciled by hand.
 - **Forecast memo fixed:** it keys the complete combat identity.
