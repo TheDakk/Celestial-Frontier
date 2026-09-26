@@ -7,7 +7,7 @@ import { describe, expect, it } from 'vitest';
 import { makeGenome } from '@cf/domain-genome';
 import type { AudioVoiceRequest } from '@cf/audio';
 import { admitLoudnessV1 } from '../apps/game/src/soundkit/loudness.js';
-import { CREATURE_CUES } from '../apps/game/src/soundkit/cues.js';
+import { ABILITY_THEMES, CREATURE_CUES } from '../apps/game/src/soundkit/cues.js';
 import { deriveCue, sha256Hex } from '../apps/game/src/soundkit/derive.js';
 import { compileVoiceCard, VOICE_ARCHETYPES } from '../apps/game/src/soundkit/voice-card.js';
 import { synthesizePlaceholderLibrary } from '../apps/game/src/soundkit/placeholder-archetype.js';
@@ -42,11 +42,11 @@ describe('original creature sources', () => {
     expect(rows.length).toBeGreaterThan(ORIGINAL_ARCHETYPES.length * 11);
     for (const r of rows) { expect(r.sha256).toMatch(/^[0-9a-f]{64}$/); expect(Number.isInteger(r.seed)).toBe(true); expect(r.samples).toBeGreaterThan(0); }
   }, 120_000);
-  it('an archetype without an original set yet is served by the labelled placeholder and listed as such (the library says which)', () => {
-    const lib = originalSourceLibraryV1(), pending = VOICE_ARCHETYPES.filter((x) => !ORIGINAL_ARCHETYPES.includes(x));
-    expect(lib.original).toEqual(ORIGINAL_ARCHETYPES);
-    for (const x of pending) expect(sha256Hex(bytes((lib.sources[x]!.call as readonly Float32Array[])[0]!))).toBe(sha256Hex(bytes((synthesizePlaceholderLibrary().sources[x]!.call as readonly Float32Array[])[0]!)));
-  }, 120_000);
+  it('Stage 2: EVERY voice archetype has an original set — the placeholder has left the creature player path', () => {
+    const lib = originalSourceLibraryV1();
+    expect([...lib.original].sort()).toEqual([...VOICE_ARCHETYPES].sort());
+    for (const x of VOICE_ARCHETYPES) expect(sha256Hex(bytes((lib.sources[x]!.call as readonly Float32Array[])[0]!)), x).not.toBe(sha256Hex(bytes((synthesizePlaceholderLibrary().sources[x]!.call as readonly Float32Array[])[0]!)));
+  }, 300_000);
 });
 
 describe('original combat set', () => {
@@ -59,6 +59,8 @@ describe('original combat set', () => {
       expect(c.samples.length / c.sampleRate).toBeLessThanOrEqual(id.endsWith(':impact') || id === 'battle:hitstop-thump' ? 0.6 : 1.4); original++;
     }
     expect(original).toBeGreaterThanOrEqual(16 + ORIGINAL_THEMES.length * 3);
+    expect([...ORIGINAL_THEMES].sort(), 'Stage 2: every ability theme is original').toEqual([...ABILITY_THEMES].sort());
+    expect(original).toBe(COMBAT_CUE_IDS_V1.length);
     // damage-tick is pitched by amount
     expect(sha256Hex(bytes(renderCombatCueV1('battle:damage-tick', 7, { amount: 5 }).samples))).not.toBe(sha256Hex(bytes(renderCombatCueV1('battle:damage-tick', 7, { amount: 90 }).samples)));
   }, 120_000);
@@ -71,6 +73,22 @@ describe('original combat set', () => {
     expect(sha256Hex(bytes(played[0]!))).toBe(sha256Hex(bytes(renderCombatCueV1('battle:hitstop-thump', 7).samples)));
     createTurnCueSink({ runtime, seed: 7, synthesize: synthesizeBattleCue }).play({ cueId: 'battle:hitstop-thump', atMs: 0, source: 'battle', beat: 'impact' }, 0);
     expect(sha256Hex(bytes(played[1]!))).not.toBe(sha256Hex(bytes(played[0]!)));
+  });
+});
+
+describe('impacts are layered with the struck body\'s material (kit §2)', () => {
+  it('OUTCOME: the turn plan names the target on its hit, and the sink layers that body\'s material tail — plate rings differ from fur; control: no material gives the plain thump', () => {
+    const played: Float32Array[] = [];
+    const ctx = { currentTime: 0, createBuffer: (_c: number, n: number) => { const buf = new Float32Array(n); return { copyToChannel: (s: Float32Array) => { buf.set(s); played.push(buf); } }; },
+      createBufferSource: () => ({ buffer: null, connect() {}, start() {}, stop() {}, disconnect() {}, onended: null }), createGain: () => ({ gain: { setValueAtTime() {} }, connect() {}, disconnect() {} }) };
+    const runtime = { playVoice: (r: AudioVoiceRequest) => { r.create(ctx as never, { voiceId: 'v' } as never); return { kind: 'started' as const, voiceId: 'v' }; } };
+    const hit = { cueId: 'battle:hitstop-thump', atMs: 0, source: 'battle' as const, beat: 'impact', target: 'right' as const };
+    for (const m of ['plated', 'furred'] as const) createTurnCueSink({ runtime, seed: 7, impactMaterial: (side) => (side === 'right' ? m : null) }).play(hit, 0);
+    createTurnCueSink({ runtime, seed: 7, impactMaterial: () => null }).play(hit, 0);
+    const [plated, furred, plain] = played.map((x) => sha256Hex(bytes(x)));
+    expect(plated).not.toBe(furred); expect(plated).not.toBe(plain);
+    expect(plain).toBe(sha256Hex(bytes(renderCombatCueV1('battle:hitstop-thump', 7).samples)));
+    for (const x of played) expect(admitLoudnessV1(x, 48_000, 'combat').ok).toBe(true);
   });
 });
 
