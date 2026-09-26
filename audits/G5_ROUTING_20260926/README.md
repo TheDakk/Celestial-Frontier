@@ -39,6 +39,19 @@ This is Stage G5 of the Generated Creature Pipeline (`audits/GENERATION_PIPELINE
   - `Math.floor` in the box kernel fails the kernel and end-to-end tests;
   - dropping the record-ownership check in the hook fails the hook test.
 
+## Phone path in a real browser (`phone-smoke/`, run-02: PASS)
+
+- **Setup:** built package 14b712e6, 390×844@3 touch (finish tier `phone`); the veteran save plus Codex's three canonical crabs (Crab, Freshwater Crab, Mud Crab), whose finished originals it published under `library/creature-finish/<key>/`. Fresh profiles, `plain` then `?finish=1`.
+- **Results:**
+  - all three crab cards are painted in both phases, and with `?finish=1` each draws a DIFFERENT image (the delivered finish plus the morph);
+  - the delivery files are fetched only with the flag;
+  - `?finish=1` adds no `/__local_ai/` request (the package's service worker precaches the landfall runtime files in BOTH phases);
+  - no model file is ever requested;
+  - 0 page errors;
+  - the image hashes are identical to run-01 (deterministic).
+- **Instrument correction:** run-01 counted that precache as a finisher request; the check now compares against the plain phase.
+- **Measured cost (not a failure):** to compute an identity key, the phone route downloads each archetype's master and labels once (6 source fetches for 3 crabs), because the key binds a hash of the decoded labels. A pin-based identity function in the engine would remove this (asked in C51).
+
 ## First real-browser run of `?finish=1` (`finish-smoke/`, run-02; headless Edge 154, WebGPU Apple metal-3, probe `supported`)
 
 - **Setup:** a procedural `crust:crab` (seed 7000) drawn by the core Crab painting (880² master), served by Codex's `game-preview-server.mjs` with the verified local model cache.
