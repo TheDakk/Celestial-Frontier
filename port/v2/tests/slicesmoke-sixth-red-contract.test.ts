@@ -103,7 +103,7 @@ function executableDeclaration<T>(name: string, nextDeclaration: string): T {
     'hasUnnegatedSentenceClaim',
     'V2_DRAFT_BULLET_COUNT',
     `return (${expression});`,
-  )(hasUnnegatedSentenceClaim, 106) as T;
+  )(hasUnnegatedSentenceClaim, 119) as T;
 }
 
 interface GuideSpec {
@@ -414,14 +414,14 @@ describe('sixth Slice red contract repairs', () => {
     ] as const) {
       const sample = () => releaseDom.window.eval(expression) as Record<string, unknown>;
       expect(sample(), `${label} audio baseline: ${JSON.stringify(sample())}`).toMatchObject({
-        [verdict]: true, audioContract: true, audioContradiction: false, bulletCount: 106,
+        [verdict]: true, audioContract: true, audioContradiction: false, bulletCount: 119,
       });
       for (const omitted of audioOmissions) {
         expect(audioText.split(omitted), `${label}: unique omission ${omitted}`).toHaveLength(2);
         try {
           audioRow.textContent = audioText.replace(omitted, 'required audio clause omitted');
           expect(sample(), `${label}: missing ${omitted}`).toMatchObject({
-            [verdict]: false, audioContract: false, audioContradiction: false, bulletCount: 106,
+            [verdict]: false, audioContract: false, audioContradiction: false, bulletCount: 119,
           });
         } finally { audioRow.innerHTML = audioHtml; }
         expect(sample(), `${label}: omission restored`).toMatchObject({ [verdict]: true, audioContract: true });
@@ -430,7 +430,7 @@ describe('sixth Slice red contract repairs', () => {
         try {
           audioRow.textContent = `${audioText} ${claim}`;
           expect(sample(), `${label}: ${claim}`).toMatchObject({
-            [verdict]: false, audioContract: false, audioContradiction: true, bulletCount: 106,
+            [verdict]: false, audioContract: false, audioContradiction: true, bulletCount: 119,
           });
         } finally { audioRow.innerHTML = audioHtml; }
         expect(sample(), `${label}: overclaim restored`).toMatchObject({ [verdict]: true, audioContract: true });
@@ -453,10 +453,10 @@ describe('sixth Slice red contract repairs', () => {
       try {
         row.textContent = prior!.replace(current, stale);
         expect(releaseDom.window.eval(releaseCheck)).toMatchObject({ complete: false, populated: true,
-          canonical: true, bulletCount: 106, liveProgressionContract: true, liveProgressionContradiction: false });
+          canonical: true, bulletCount: 119, liveProgressionContract: true, liveProgressionContradiction: false });
       } finally { row.textContent = prior; }
       expect(releaseDom.window.eval(releaseCheck)).toMatchObject({ complete: true, populated: true,
-        canonical: true, bulletCount: 106, liveProgressionContract: true, liveProgressionContradiction: false });
+        canonical: true, bulletCount: 119, liveProgressionContract: true, liveProgressionContradiction: false });
       expect([...releaseDom.window.document.querySelectorAll('li')].map(item => item.textContent)).toEqual(releaseRowsBefore);
     }
     const currentGuideCopy = catalogue.flatMap((category) => category.topics).map((topic) => {
@@ -999,8 +999,8 @@ describe('sixth Slice red contract repairs', () => {
     expect(cf1).not.toContain("result.mode==='system'&&result.title==='Blue Earth'?result:null");
   });
 
-  it('keeps a fixed 106-row Guide oracle with five independent population controls', () => {
-    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 106;');
+  it('keeps a fixed 119-row Guide oracle with five independent population controls', () => {
+    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 119;');
     const owner = section(
       sliceSource,
       '  const releaseDraftCheck = `',
@@ -1043,10 +1043,10 @@ describe('sixth Slice red contract repairs', () => {
     const glassMissingBulletCount = Number(
       glassSource.match(/inventory\?\.bulletCount===(\d+)/)?.[1],
     );
-    expect(glassExpectedBulletCount).toBe(106);
-    expect(glassMissingBulletCount).toBe(105);
+    expect(glassExpectedBulletCount).toBe(119);
+    expect(glassMissingBulletCount).toBe(118);
     expect(glassMissingBulletCount).toBe(glassExpectedBulletCount - 1);
-    expect(glassSource).toContain('106-outcome development inventory');
+    expect(glassSource).toContain('119-outcome development inventory');
     expect(glassSource).not.toContain('55-outcome development inventory');
   });
 

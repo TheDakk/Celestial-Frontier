@@ -3495,3 +3495,11 @@ geometry, populate the surface, and control against the broken build — every t
 - **Museum:** `projectExpeditionChronicleV1` takes optional `outposts` exhibits and adds a fifth **Outposts** gallery.
 - **Controls:** ONE document-delegated `OutpostsControllerV1`. Abandon needs a second, confirming press. Every control is 44 px.
 - **Hidden before the unlock:** nothing renders before `st-comp` (projects appear in no Guide or objective before the unlock).
+
+## Current Guide inventory — matches code 2026-09-26
+
+The C34 reconciliation measures119 ordered draft release bullets,41 topics and5 read-only
+Advanced Briefings. Missions, Outposts, Compendium filters/reveals/origin travel, postcards,
+original audio and device/translation tooling are documented at their current scope. The
+painted battle note does not claim per-species generated originals before G1/G2 delivery.
+Exact copy authority and controls: audits/G_PIPELINE_CODEX_20260926/measured-copy.json.
