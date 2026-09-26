@@ -70,9 +70,10 @@ the builder produces, or when a shipped mirror names another fit or record.
 (`painted-cards.ts` `createPaintedCardsForApp`) and passes it to the `SpeciesArtLoader`. The loader asks it first for
 every 132px thumb (`leaseThumb`) and 440px portrait (`requestPortrait`). That covers the Compendium row image
 (`.compendium-thumb`), the Compendium detail portrait (owner `codex-detail`) and the loader's other thumb consumers,
-such as Planetside. When a genome's `_earthName` names a painted archetype, the card shows that individual, rendered
-from the archetype's sealed card master. Every other genome gets `null`, and the painter tier answers as before:
-procedural species and Earth species without a painting. The path has no device-class branch. The loader test runs
+such as Planetside. Which painting draws a genome is decided by `paintedArtV2` (G4, 2026-09-26; ART_DIRECTION.md "Which painting
+draws a creature"): its own species, a same-group Earth relative, the nearest same-anatomy variant, or the body plan's stand-in, rendered
+from that archetype's sealed card master (a LIBRARY archetype's files are fetched and pin-verified; an unreachable one draws its core
+family painting, labelled and uncached). A genome no painting draws gets `null`, and the painter tier answers as before. The path has no device-class branch. The loader test runs
 with the phone device class and asserts that the painter producer is never asked for a painted crab
 (`morph/painted-cards.test.ts`). If `createPaintedCardsForApp` throws (an archetype without shipped assets), `main.ts`
 continues with the painter tier for every species.
