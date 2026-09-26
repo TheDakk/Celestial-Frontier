@@ -1,0 +1,75 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "4b59fc2dc5d11971147d4326df6f36e24019d1768d4de17b0c4e04274adda7d9",
+  "cutoutSha256": "182fc9ba765ebba2411b74a8a573b520acadc32a578a186cab9603a931c9f34b",
+  "labelsFile": "labels.png",
+  "labelsSha256": "d65d670485c89014421342e22cf44b8f56002dcba484dd98606c2d4a347cfda7",
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near"
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "layer": "near"
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    },
+    {
+      "id": "body-0",
+      "joint": "spine0",
+      "layer": "near"
+    },
+    {
+      "id": "body-1",
+      "joint": "spine1",
+      "layer": "near"
+    },
+    {
+      "id": "body-2",
+      "joint": "spine2",
+      "layer": "near"
+    },
+    {
+      "id": "body-3",
+      "joint": "spine3",
+      "layer": "near"
+    },
+    {
+      "id": "body-4",
+      "joint": "spine4",
+      "layer": "near"
+    },
+    {
+      "id": "body-5",
+      "joint": "spine5",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "0bdd47d9323e8324abeddea2893b5dca4ef31d9368f0eeb2714fd0fd050c74ee"
+}
