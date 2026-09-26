@@ -17,6 +17,9 @@ export interface TurnCue {
   readonly beat: string;
   /** damage-tick only: the damage amount (pitch by amount, kit §4). */
   readonly amount?: number;
+  /** hitstop-thump only: the side that takes the hit — the sink layers that body's material tail (kit §2: "a transient, a body thud
+   *  scaled by mass, and a material tail"). */
+  readonly target?: 'left' | 'right';
 }
 export interface DroppedCue extends TurnCue { readonly reason: string; }
 export interface TurnCuePlan {
@@ -47,7 +50,7 @@ export function buildTurnCuePlan(plan: TurnPlan, options: MixOptions = {}): Turn
     cue(`ability:${plan.theme}:impact`, t0 + s.impactAt, A, 'impact');
   }
   if (hit) {
-    cue('battle:hitstop-thump', b.impactAt, 'battle', 'impact');
+    cue('battle:hitstop-thump', b.impactAt, 'battle', 'impact'); { const i = raw.length - 1; if (T === 'left' || T === 'right') raw[i] = Object.freeze({ ...raw[i]!, target: T }); }
     if (!reduced) { cue('battle:flash-sting', b.impactAt, 'battle', 'impact'); cue('battle:shake-rumble', b.impactAt, 'battle', 'impact'); }
     cue('battle:damage-tick', b.impactAt + DAMAGE_NUMBER.popMs, 'battle', 'number', Number(plan.number.text.replace('!', '')) || 0);
     if (plan.targetFaints) { cue('creature:faint', b.reactionStart, T, 'reaction'); cue('battle:faint-fall', b.reactionStart + (b.reactionEnd - b.reactionStart) * 0.8, 'battle', 'reaction'); cue('creature:victory', b.returnEnd, A, 'return'); cue('battle:victory-sting', b.returnEnd, 'battle', 'return'); }

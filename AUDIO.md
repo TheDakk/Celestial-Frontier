@@ -14,6 +14,37 @@
 - **Wiring.** The battle stage's creature voices (`battle2-wiring.ts`), the turn sink's default renderer (`turn-audio.ts`) and the Listening page all use them. An archetype or theme without an original set yet falls back to the labelled placeholder, and says so (`library.original`, the `original-pending` flag).
 - **Levels.** Cues ATTENUATE only to their class target (creature and combat: −14 LUFS short-term, ≤ −1 dBTP). `soundkit/leveler.ts` (make-up gain under a look-ahead peak limiter) is only for beds and music.
 
+**Stage 2 (landed).**
+- **All 13 voice archetypes are original**, so the placeholder has left the creature player path:
+  - primate: hoots building to a scream, barks, lip-smacks;
+  - hopper: a vocal-sac croak gated at the pulse rate;
+  - bird: syrinx phrases, a chip, a scream, a coo;
+  - fish: swim-bladder drumming and bubbles;
+  - insect: stridulation and a wing buzz;
+  - arachnid: a hissing rasp;
+  - serpent: hisses and a rattle;
+  - myriapod: dense leg ticks;
+  - radial: water pulses and a sting snap;
+  - cephalopod: jets and bubbles;
+  - flyer-membrane: chitters and a screech;
+  - brachyuran: claw clacks and froth.
+- **All 11 ability themes are original, in the kit's words:**
+  - fire: ignition, roar, scorch;
+  - frost: crackle, hiss, shatter;
+  - storm: charge, crack, thunder;
+  - tide: draw, surge, slap;
+  - stone: grind, tumble, crunch;
+  - venom: hiss, spray, sizzle;
+  - void: inhale, tear, collapse;
+  - sand: rasp, rush, scour;
+  - chem: fizz, spray, corrode;
+  - psionic: hum, ripple, snap;
+  - wild: snarl, rush, rake.
+- **Material impacts.**
+  - `battle2/cue-plan.ts` names the struck side on `battle:hitstop-thump` (`target`).
+  - The turn sink (`impactMaterial`) layers that body's material tail (`withMaterialTailV1`): fur muffles, chitin clicks, plate rings, water slaps, crystal chimes, and so on.
+  - The stage passes each side's voice-card material.
+
 **Tests.** `tests/soundkit-original-sources.test.ts`:
 - every cue at three sizes passes the gate;
 - originality against the placeholder, and determinism;

@@ -11,7 +11,8 @@ import { createDerivedVoiceRequest } from './browser-adapter.js';
 import { parseCueId } from './cues.js';
 import { planCues, type MixOptions } from './mix.js';
 import type { SynthCue } from './battle-synth.js';
-import { renderCombatCueV1 } from './original-combat.js';
+import { renderCombatCueV1, withMaterialTailV1 } from './original-combat.js';
+import type { VoiceMaterial } from './voice-card.js';
 
 export interface TurnAudioRuntime { playVoice(request: AudioVoiceRequest): AudioVoiceStartResult; }
 export interface TurnAudioEntry { readonly cueId: string; readonly source: TurnCue['source']; readonly atMs: number; readonly lateMs: number; readonly result: string; }
@@ -28,6 +29,8 @@ export interface TurnAudioOptions extends MixOptions {
   readonly synthesize?: (cueId: string, seed: number, options: { readonly amount?: number }) => Pick<SynthCue, 'samples' | 'sampleRate'>;
   readonly gain?: number;
   readonly logLimit?: number;
+  /** The body material of the side taking a hit (its voice card's material); the hitstop thump gets that material's tail. */
+  readonly impactMaterial?: (side: 'left' | 'right') => VoiceMaterial | null;
 }
 
 export function createTurnCueSink(options: TurnAudioOptions): TurnCueSink {
@@ -42,9 +45,14 @@ export function createTurnCueSink(options: TurnAudioOptions): TurnCueSink {
       let derived: Pick<SynthCue, 'samples' | 'sampleRate'> | null;
       if (parsed.group === 'creature') { derived = options.creatureVoice?.(cue) ?? null; if (!derived) { record(cue, lateMs, 'skipped: no creature voice for this side'); return; } }
       else {
-        const key = `${cue.cueId}:${cue.amount ?? 0}`;
+        const material = parsed.key === 'hitstop-thump' && cue.target && options.impactMaterial ? options.impactMaterial(cue.target) : null;
+        const key = `${cue.cueId}:${cue.amount ?? 0}:${material ?? ''}`;
         derived = cache.get(key) ?? null;
-        if (!derived) { derived = synth(cue.cueId, options.seed, cue.amount !== undefined ? { amount: cue.amount } : {}); cache.set(key, derived); }
+        if (!derived) {
+          derived = synth(cue.cueId, options.seed, cue.amount !== undefined ? { amount: cue.amount } : {});
+          if (material) derived = withMaterialTailV1(derived, material, options.seed);
+          cache.set(key, derived);
+        }
       }
       const intent = planCues([cue.cueId], { ...(options.phone !== undefined ? { phone: options.phone } : {}) }).admitted[0];
       if (!intent) { record(cue, lateMs, 'dropped: mix policy'); return; }
