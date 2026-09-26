@@ -7,8 +7,8 @@
 import fs from 'node:fs'; import path from 'node:path'; import { createHash } from 'node:crypto';
 import { CARD_ARCHETYPES } from './build-card-masters.mjs';
 import { repoRelativeSource } from '../creature-animation/record-source.mjs';
-import { PNG } from 'pngjs';
 import { gzipSync } from 'node:zlib';
+import { alphaOnlyPng, writeBattle2MasterPins } from './battle2-master-pins.mjs';
 const R = path.resolve(import.meta.dirname, '../../../..'), OUT = path.join(R, 'port/v2/apps/game/public/battle2');
 const ARENA = 'audits/ARENA_EFFECTS_V42_PROOF_20260912/';
 // every painted archetype — the card builder's list is the one source (the card, the arena and these shipped files agree)
@@ -20,9 +20,7 @@ const alphaOnly = new Set();
 // decompresses it and the loader's own binding hash (over the parsed JSON) is unchanged. Keeps the arena inside the PWA's
 // 128 MiB shipped-pack cap, which counts the first-use arena (2026-09-24).
 const gzipped = new Set();
-const alphaOnlyPng = (bytes) => { const src = PNG.sync.read(bytes), out = new PNG({ width: src.width, height: src.height });
-  for (let i = 0; i < src.width * src.height; i++) out.data[i * 4 + 3] = src.data[i * 4 + 3]; // RGB stays 0
-  return PNG.sync.write(out, { deflateLevel: 9, colorType: 6 }); };
+// alphaOnlyPng lives in battle2-master-pins.mjs: ONE copy, so the pinned alpha bytes are exactly the served ones (C13)
 const FITS = CARD_ARCHETYPES.map((a) => a.dir), MARKINGS = CARD_ARCHETYPES.map((a) => a.markings ?? a.dir);
 const files = new Set([ARENA + 'arena-recipe.json', ARENA + 'wild-anchors.json', ARENA + 'arena-far.png', ARENA + 'keyed/arena-mid.png', ARENA + 'keyed/arena-near.png', 'audits/CIVET_2D_PROOF_20260912/civet.landmarks.json', 'audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png']);
 const anchors = JSON.parse(fs.readFileSync(path.join(R, ARENA, 'wild-anchors.json'), 'utf8')); for (const p of anchors.phases ?? []) if (p.keyedImage && !/^procedural:/.test(p.keyedImage)) files.add(ARENA + p.keyedImage);
@@ -30,8 +28,10 @@ for (const dir of FITS) { const record = JSON.parse(fs.readFileSync(path.join(R,
   for (const f of ['record.json', 'parts/manifest.json', 'parts/atlas/' + manifest.creatureId + '.png']) files.add(dir + f);
   gzipped.add(dir + 'binding.json');
   alphaOnly.add(dir + 'parts/keyed.png');
-  if (typeof record.source === 'string') files.add(repoRelativeSource(record.source));
-  const mdir = MARKINGS[FITS.indexOf(dir)]; if (fs.existsSync(path.join(R, mdir, 'markings.json'))) { files.add(mdir + 'markings.json'); const mj = JSON.parse(fs.readFileSync(path.join(R, mdir, 'markings.json'), 'utf8')); for (const v of Object.values(mj.patterns ?? {})) if (v?.file) files.add(mdir + v.file); } }
+  // painter masters are NOT shipped (2026-09-25): Codex's pinned loader (C23, loadPinnedCreatureRigV1) admits a rig from the build pin's master
+  // hash and never fetches the master; cold/worker/offline controls proved zero master requests. The builder still reads it to emit the pin.
+  const weapons = CARD_ARCHETYPES[FITS.indexOf(dir)].weapons; if (weapons) { const decl = JSON.parse(fs.readFileSync(path.join(R, weapons), 'utf8')); if (decl.recordHash !== record.recipeHash) throw Error('weapon declaration sealed for another record: ' + weapons); files.add(weapons); }
+  const mdir = MARKINGS[FITS.indexOf(dir)]; if (fs.existsSync(path.join(R, mdir, 'markings.json'))) { files.add(mdir + 'markings.json'); const mj = JSON.parse(fs.readFileSync(path.join(R, mdir, 'markings.json'), 'utf8')); for (const v of Object.values(mj.patterns ?? {})) if (v?.file) files.add(path.posix.normalize(mdir + v.file)); } }
 fs.rmSync(OUT, { recursive: true, force: true });
 const manifest = []; let bytes = 0;
 for (const rel of [...files].sort()) { const src = path.join(R, rel), dst = path.join(OUT, rel); if (!fs.existsSync(src)) throw Error('missing ' + rel); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.copyFileSync(src, dst); const b = fs.readFileSync(src); bytes += b.length; manifest.push({ path: rel, bytes: b.length, sha256: createHash('sha256').update(b).digest('hex') }); }
@@ -51,4 +51,6 @@ const pins = [], walk = (rel) => { for (const e of fs.readdirSync(path.join(OUT,
 walk('battle2'); pins.sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0));
 fs.writeFileSync(path.join(R, 'port/v2/apps/game/battle2-assets.json'), JSON.stringify({ schema: 'cf-battle2-assets/v1', files: pins }, null, 1) + '\n');
 const pinned = pins.reduce((n, p) => n + p.bytes, 0);
-console.log(JSON.stringify({ files: manifest.length, mb: +(bytes / 1048576).toFixed(1), pins: pins.length, pinnedMiB: +(pinned / 1048576).toFixed(1) }));
+// C13: the bundled master pins — full byte admission of every retained master first; one failure fails this build
+const masterPins = await writeBattle2MasterPins(CARD_ARCHETYPES);
+console.log(JSON.stringify({ files: manifest.length, mb: +(bytes / 1048576).toFixed(1), pins: pins.length, pinnedMiB: +(pinned / 1048576).toFixed(1), masterPins: masterPins.length }));

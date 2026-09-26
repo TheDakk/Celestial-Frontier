@@ -15,6 +15,8 @@ import { BATTLE2_ASSETS, PLAYER_PLACEHOLDER_LABEL, alphaBox, battle2Enabled, fnv
   type Battle2AssetSource, type Battle2Image, type Battle2Keyer, type Battle2PixiBindings, type Battle2Raster, type Battle2StudyInput } from './battle2-wiring.js';
 import type { ResolvedAnatomyRecord } from './motion/body-card.js';
 import { civetRecord } from '../../../tools/motion-proof/fixtures.js';
+import { makeGenome } from '@cf/domain-genome';
+import { runEncounterV1 } from '@cf/domain-combatcore';
 
 const { JSDOM } = createRequire(import.meta.url)('jsdom') as { JSDOM: new (html: string) => { window: Window & typeof globalThis } };
 const mainSource = readFileSync(new URL('./main.ts', import.meta.url), 'utf8');
@@ -199,6 +201,40 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     expect((await mountBattle2Study(empty.input).ready).phase).toBe('failed'); expect(failedAll).toBe(1);
   });
 
+  it('§20 RELAY BEATS: a party settlement holds one captioned beat per earlier fighter before the decisive leg; a lone fighter starts at once', async () => {
+    const defenderGenome = makeGenome(424242, 'fauna', 0.5) as unknown as Record<string, unknown>;
+    let party: unknown = null;
+    for (let base = 5; base < 6_000 && party === null; base += 11) {
+      const members = [base, base + 1_000, base + 2_000].map((seed) => ({ champion: { kind: 'owned-fauna', creatureId: `c${seed}`, name: `Fighter ${seed}`, genome: makeGenome(seed, 'fauna', 0.5) }, stance: 'balanced' as const }));
+      const r = runEncounterV1({ mode: 'auto', defender: { name: 'Platypus', genome: defenderGenome as never }, party: members.map((m) => ({ name: m.champion.name, genome: m.champion.genome as never, stance: m.stance })) });
+      if (r.status === 'finished' && r.legs.length >= 2) party = { schema: 'cf-v2-combat-party/v1', mode: 'auto', decisions: [], decisiveIndex: r.legs[r.legs.length - 1]!.fighterIndex, members, encounterFingerprint: 'x' };
+    }
+    expect(party).not.toBeNull();
+    const h = harness();
+    const settlement = { ...h.input.settlement, encounter: { defender: { battleGenome: defenderGenome } }, party } as unknown as Battle2StudyInput['settlement'];
+    const handle = mountBattle2Study({ ...h.input, settlement });
+    expect((await handle.ready).phase).toBe('playing');
+    const app = FakeApp.made[FakeApp.made.length - 1]!;
+    expect(app.stage.children, 'the stage root plus the relay caption').toHaveLength(2);
+    const count = handle.status().beats!.count;
+    expect(count).toBeGreaterThanOrEqual(1);
+    h.setNow(10); h.ticker.step();
+    expect(handle.status().beats).toMatchObject({ index: 0, text: expect.stringMatching(/^↻ Fighter \d+ /u) });
+    expect(handle.status().turnIndex, 'the decisive leg waits for the beats').toBe(-1);
+    let t = 10;
+    for (let i = 1; i < count; i++) { t += 1_100; h.setNow(t); h.ticker.step(); expect(handle.status().beats!.index).toBe(i); expect(handle.status().turnIndex).toBe(-1); }
+    t += 1_100; h.setNow(t); h.ticker.step();
+    expect(handle.status().turnIndex, 'after the last beat the decisive leg plays').toBe(0);
+    expect((app.stage.children[1] as { visible: boolean }).visible).toBe(false);
+    handle.dispose('test');
+    // control: the same study without a party starts its first turn on the first tick, with no caption
+    const lone = harness(); const loneHandle = mountBattle2Study(lone.input); await loneHandle.ready;
+    lone.setNow(10); lone.ticker.step();
+    expect(loneHandle.status().turnIndex).toBe(0); expect(loneHandle.status().beats).toMatchObject({ count: 0 });
+    expect(FakeApp.made[FakeApp.made.length - 1]!.stage.children).toHaveLength(1);
+    loneHandle.dispose('test');
+  });
+
   it('a throw inside the stage tick fails the STUDY (labelled) and never escapes into the game\'s shared ticker (a throw there stops Pixi\'s ticker and freezes the game, 2026-09-24)', async () => {
     let boom = false; const h = harness(); const clock = h.input.clock; const input = { ...h.input, clock: () => { if (boom) throw new Error('boom from the clock'); return clock(); } };
     const handle = mountBattle2Study(input); expect((await handle.ready).phase).toBe('playing');
@@ -292,6 +328,7 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
   });
 });
 
+
 // Keeps the part type referenced so a rename in fixture-rig surfaces here as a type error.
 const _partTypeGuard: FixturePartCut | null = null; void _partTypeGuard;
 
@@ -331,5 +368,48 @@ describe('battle2 wiring: master-pin preflight order (C13)', { timeout: 60_000 }
     expect(r.ready.skipped.filter((s) => s.includes('pin refused'))).toEqual([]);
     expect(r.log.bytes).not.toContain(masterAsset);
     expect(r.log.bytes.some(p=>p.includes('/parts/atlas/'))).toBe(true);
+  });
+});
+
+/* D15 Stage 0 — ONE voice per creature. OUTCOME through the real study and the real Compendium read model over one registered ownership
+ * state: the owned champion's voice card on the painted stage is BYTE-IDENTICAL to the card its Compendium row carries, and it does not
+ * change with the battle. Controls: without the ownership state the stage cannot resolve the owned individual (a bred lineage would differ);
+ * a different companion gets a different voice; and the legacy per-battle path gives a different card seed from the identity one. */
+describe('battle2 wiring: one voice per creature (D15 Stage 0)', { timeout: 60_000 }, () => {
+  afterEach(() => { vi.restoreAllMocks(); FakeApp.made = []; });
+  async function ownedFixture() {
+    const acq = await import('@cf/domain-acquisition');
+    const identity = acq.canonicalGenomeIdentityV1(makeGenome(68, 'fauna', 1));
+    const discoveries = [0, 1].map((index) => acq.createLegacyDiscoveryRecordV1({ recordId: acq.ownershipContentId('discovery', `voice-${index}`) as never, speciesId: identity.speciesId,
+      legacyCodexId: `codex-voice-${index}`, legacySourceIndex: index, from: 'Legacy', legacyLocation: null, firstForSpecies: index === 0 }));
+    const creatureIds = ['voice-left', 'voice-right'].map((k) => acq.ownershipContentId('creature', k) as never);
+    const creatures = creatureIds.map((creatureId, index) => acq.createCreatureInstanceV1({ creatureId, speciesId: identity.speciesId, genomeIdentity: identity.genomeIdentity,
+      genome: identity.genome, nickname: null, origin: 'legacy', acquisitionRecordId: discoveries[index]!.recordId,
+      lineage: { kind: 'none', generation: 0 }, xp: 0, hurt: null, fed: 11, brood: null, assignment: null, bond: null }));
+    const ownership = acq.migrateOwnershipStateV1ToV2(acq.createInitialOwnershipStateV1({ catalogSpecies: [acq.createCatalogSpeciesV1({ identity, alias: null, firstObservationId: discoveries[0]!.recordId })],
+      discoveries, creatures, specimenLots: [], biosphereProgress: [], legacyBioX: [], scoutCreatureId: null }));
+    return { identity, ownership, creatureIds, genome: identity.genome as unknown as Record<string, unknown> };
+  }
+  it('the owned champion speaks with the SAME voice card on the stage as on its Compendium row, in every battle', async () => {
+    const f = await ownedFixture(), { projectCompendiumAuditionV1 } = await import('./compendium-audition.js');
+    const model = projectCompendiumAuditionV1({ generation: 7, logicalId: 'codex-voice', record: { id: 'codex-voice', name: 'Voice', g: f.identity.genome as never }, ownership: f.ownership, fixture: false }) as unknown as { availability: string; creatures?: readonly { creatureId: string; voice: unknown }[] };
+    expect(model.availability).toBe('ready');
+    const row = model.creatures!.find((c) => c.creatureId === f.creatureIds[0])!, other = model.creatures!.find((c) => c.creatureId === f.creatureIds[1])!;
+    expect(row.voice, 'the Compendium carries a voice card').not.toBeNull();
+    const cardOn = async (battleId: string, ownership: unknown) => { const h = harness({ ownership: ownership as never, settlement: { battleId, champion: { kind: 'owned-fauna', creatureId: f.creatureIds[0], name: 'Voice', genome: f.genome } as never,
+      encounter: { defender: { battleGenome: makeGenome(424242, 'fauna', 0.5) as unknown as Record<string, unknown> } }, transcript: { log: LOG } } as Battle2StudyInput['settlement'] });
+      const handle = mountBattle2Study(h.input); await handle.ready; const s = handle.status(); handle.dispose('test'); return s.voiceCards; };
+    const first = await cardOn('battle-A', f.ownership), second = await cardOn('battle-B', f.ownership);
+    expect(first.left).toEqual(row.voice); // byte-identical parameters on the stage and in the Compendium
+    expect(second.left).toEqual(first.left); // and the same in another battle
+    expect(first.right, 'the wild defender resolves its own identity voice').not.toBeNull();
+    // an unbred companion with the SAME genome is the same identity, so the same voice (the signature is genome + lineage, never a row id)
+    expect(other.voice).toEqual(row.voice);
+    // controls: another genome has another voice; the legacy per-record card (no identity) seeds differently
+    const { creatureVoiceCardV1 } = await import('./soundkit/voice-identity.js'), another = creatureVoiceCardV1(makeGenome(69, 'fauna', 1) as unknown as Record<string, unknown>);
+    expect(another.ok && another.card).not.toEqual(row.voice);
+    const { compileVoiceCard } = await import('./soundkit/voice-card.js');
+    const legacy = compileVoiceCard({ template: { id: (row.voice as { archetype: string }).archetype }, identity: {} }, f.genome as never);
+    expect(legacy.ok && legacy.card.seed).not.toBe((row.voice as { seed: number }).seed);
   });
 });

@@ -347,6 +347,14 @@ reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended de
 > advance the separate galaxy-radius ladder from Solar Reach through the Frontier, and the ninth
 > distinct claim opens the Frontier ending choice.
 >
+> **Travel and tracking (matches code as of 2026-09-25, D16 parity with v1 `data-pgo`/`data-tgo`):** a claimed
+> Signature row offers **Travel there ↗** to the world saved with the claim (`primeFill[id].where`, resolved by
+> `primeClaimWorldAddressV1`); an unclaimed Signature whose resonance is **strong** (the Ascent has opened the galaxy and its
+> minimum region is reached) offers **📡 Track the Titan ↗**, which runs v1's deterministic `nearestTitanWorld` scan
+> (`nearestTitanWorldV1`, `prime-travel.ts`; on tap, never per frame) with the same placement facts the encounter uses. Both
+> fly through the one proven-route owner (`searchTravel.jumpToCanonicalAddress`), so the charter gates are unchanged; an empty
+> scan toasts "The signal scatters". Outcome test: `tests/d16-prime-travel-outcome.test.ts`.
+>
 > The five established one-time legacies are **Sovereign of the Frontier**, **Warden of Life**,
 > **World-Shaper**, **The Unseen Hand**, and **Prismatic Pathfinder**. The first four require all
 > nine Signatures; Prismatic Pathfinder additionally requires at least three conquered worlds, the

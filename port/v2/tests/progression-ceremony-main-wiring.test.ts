@@ -257,6 +257,11 @@ function ceremonyWiringErrors(source: string): string[] {
       'async function commitCurrentArc6Combat(',
       '\nfunction presentCommittedCombatChronicle(',
     ),
+    harvest: section(
+      source,
+      'async function runWorldHarvest(',
+      "\nconst sideEl = document.createElement('div');",
+    ),
   };
   for (const [label, owner] of Object.entries(owners)) {
     if (owner.length === 0 || exactCallCount(owner) !== 1) {

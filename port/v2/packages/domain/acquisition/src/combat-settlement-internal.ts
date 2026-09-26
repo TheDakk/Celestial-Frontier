@@ -7,6 +7,7 @@
    acquisition carrier; this bridge remains responsible only for the current
    champion's XP, injury, or tombstone. */
 import {
+  COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   COMBAT_SETTLEMENT_RECEIPT_KIND_V1,
   isCombatSettlementPlanV1,
   type CombatSettlementPlanV1,
@@ -79,15 +80,19 @@ function sameChampionSource(
   row: CreatureInstanceV1,
   plan: CombatSettlementPlanV1,
 ): boolean {
-  if (plan.champion.kind !== 'owned-fauna') return false;
+  return sameOwnedSource(row, plan.champion);
+}
+
+function sameOwnedSource(row: CreatureInstanceV1, champion: CombatSettlementPlanV1['champion']): boolean {
+  if (champion.kind !== 'owned-fauna') return false;
   try {
-    const identity = canonicalGenomeIdentityV1(plan.champion.genome);
-    return row.creatureId === plan.champion.creatureId
+    const identity = canonicalGenomeIdentityV1(champion.genome);
+    return row.creatureId === champion.creatureId
       && row.speciesId === identity.speciesId
       && row.genomeIdentity === identity.genomeIdentity
       && canonicalJson(row.genome) === canonicalJson(identity.genome)
-      && (row.xp ?? 0) === mutableNumber(plan.champion.genome.xp)
-      && (row.hurt ?? 0) === mutableNumber(plan.champion.genome.hurt);
+      && (row.xp ?? 0) === mutableNumber(champion.genome.xp)
+      && (row.hurt ?? 0) === mutableNumber(champion.genome.hurt);
   } catch {
     return false;
   }
@@ -133,18 +138,25 @@ export function prepareArc6CombatOwnershipV1(
   }
 
   let hurtAfter = creature.hurt;
-  let remove = false;
+  const remove = false;   // §20 retired permanent loss; kept so the successor/tombstone shape below stays the audited one
+  let recoveryReadyAt: number | null = null;
   if (plan.injury.status === 'set-hurt') {
     if (plan.injury.creatureId !== creature.creatureId
       || plan.injury.hurtBefore !== (creature.hurt ?? 0)) {
       return refused('settlement-shape-mismatch');
     }
     hurtAfter = plan.injury.hurtAfter;
-  } else if (plan.injury.status === 'remove-creature') {
-    if (plan.injury.creatureId !== creature.creatureId) {
+  } else if (plan.injury.status === 'set-recovery') {
+    /* §20: a defeated companion is wounded and enters active-play Recovery — never removed */
+    if (plan.injury.creatureId !== creature.creatureId
+      || plan.injury.hurtBefore !== (creature.hurt ?? 0)
+      /* only a FINISHED Recovery may be replaced (it stays on the row until the next companion action); anything else is busy */
+      || (creature.assignment !== null && !(creature.assignment.kind === 'recovery'
+        && creature.assignment.readyAtActivePlayMs <= plan.injury.readyAtActivePlayMs - COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1))) {
       return refused('settlement-shape-mismatch');
     }
-    remove = true;
+    hurtAfter = plan.injury.hurtAfter;
+    recoveryReadyAt = plan.injury.readyAtActivePlayMs;
   } else if (plan.injury.status !== 'none') {
     return refused('settlement-shape-mismatch');
   }
@@ -168,6 +180,7 @@ export function prepareArc6CombatOwnershipV1(
       ...creature,
       xp: xpAfter,
       hurt: hurtAfter,
+      ...(recoveryReadyAt === null ? {} : { assignment: { kind: 'recovery' as const, readyAtActivePlayMs: recoveryReadyAt } }),
     });
     const creatureTombstone = remove
       ? createCreatureTombstoneV2(creature, receiptEvidence)
@@ -204,3 +217,105 @@ export function prepareArc6CombatOwnershipV1(
     return refused('settlement-shape-mismatch');
   }
 }
+
+/* ---- §20 Guardian parties (S2b step 2): the Arc 5 side of ONE party receipt ----
+   A party plan's decisive champion (when it is an Arc 5 creature) settles exactly as a single fight, and every other Arc 5 member that
+   fought enters active-play Recovery, all in ONE ownership successor. Members on the Guardian overlay are the overlay's; the explorer
+   has no Recovery. A member still in an unfinished Recovery refuses the whole settlement. */
+export const ARC6_PARTY_OWNERSHIP_SCHEMA_V1 = 'cf-v2-arc6-party-ownership/v1' as const;
+export interface Arc6PartyOwnershipChangeV1 {
+  readonly creatureBefore: CreatureInstanceV1;
+  readonly creatureAfter: CreatureInstanceV1;
+}
+export interface Arc6PartyOwnershipSettlementV1 {
+  readonly schema: typeof ARC6_PARTY_OWNERSHIP_SCHEMA_V1;
+  readonly parentRevision: number;
+  readonly parentDigest: string;
+  readonly receiptEvidence: F4ReceiptEvidenceV2;
+  /** The decisive champion when it lives in Arc 5 (null when it is the explorer or a captured Guardian). */
+  readonly champion: Arc6PartyOwnershipChangeV1 | null;
+  readonly members: readonly Arc6PartyOwnershipChangeV1[];
+  readonly successor: OwnershipStateV2;
+  readonly successorDigest: string;
+}
+export type Arc6PartyOwnershipPreparationV1 =
+  | Readonly<{ readonly kind: 'not-applicable'; readonly reason: 'no-arc5-party-member' }>
+  | Readonly<{ readonly kind: 'prepared'; readonly settlement: Arc6PartyOwnershipSettlementV1 }>
+  | Readonly<{ readonly kind: 'refused'; readonly reason: Arc6CombatOwnershipRefusalReasonV1 }>;
+
+export function prepareArc6PartyOwnershipV1(
+  parent: OwnershipStateV2,
+  plan: CombatSettlementPlanV1,
+): Arc6PartyOwnershipPreparationV1 {
+  if (!isCombatSettlementPlanV1(plan) || plan.party === undefined) return Object.freeze({ kind: 'refused', reason: 'plan-unregistered' });
+  if (!isOwnershipStateV2(parent)) return Object.freeze({ kind: 'refused', reason: 'ownership-invalid' });
+  if (parent.mode !== 'current') return Object.freeze({ kind: 'refused', reason: 'ownership-protected' });
+  if (parent.revision === MAX_OWNERSHIP_REVISION) return Object.freeze({ kind: 'refused', reason: 'ownership-revision-exhausted' });
+  let champion: Arc6PartyOwnershipChangeV1 | null = null;
+  if (plan.champion.kind === 'owned-fauna') {
+    const championId = plan.champion.creatureId;
+    if (parent.creatures.some((row) => row.creatureId === championId)) {
+      const single = prepareArc6CombatOwnershipV1(parent, plan);
+      if (single.kind === 'refused') return single;
+      if (single.kind !== 'prepared' || single.settlement.creatureAfter === null) {
+        return Object.freeze({ kind: 'refused', reason: 'settlement-shape-mismatch' });
+      }
+      champion = Object.freeze({ creatureBefore: single.settlement.creatureBefore, creatureAfter: single.settlement.creatureAfter });
+    }
+  }
+  const members: Arc6PartyOwnershipChangeV1[] = [];
+  for (const member of plan.party.members) {
+    if (member.injury === null || member.injury.status !== 'set-recovery' || member.champion.kind !== 'owned-fauna') continue;
+    const memberId = member.champion.creatureId;
+    const creature = parent.creatures.find((row) => row.creatureId === memberId);
+    if (creature === undefined) continue;   // a captured Guardian: the overlay settles it
+    if (!sameOwnedSource(creature, member.champion)) return Object.freeze({ kind: 'refused', reason: 'champion-source-mismatch' });
+    const settledAt = member.injury.readyAtActivePlayMs - COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1;
+    const busy = creature.assignment !== null
+      && !(creature.assignment.kind === 'recovery' && creature.assignment.readyAtActivePlayMs <= settledAt);
+    if (busy || member.injury.hurtBefore !== (creature.hurt ?? 0)) {
+      return Object.freeze({ kind: 'refused', reason: 'settlement-shape-mismatch' });
+    }
+    try {
+      members.push(Object.freeze({
+        creatureBefore: creature,
+        creatureAfter: createCreatureInstanceV2({ ...creature, assignment: { kind: 'recovery', readyAtActivePlayMs: member.injury.readyAtActivePlayMs } }),
+      }));
+    } catch {
+      return Object.freeze({ kind: 'refused', reason: 'settlement-shape-mismatch' });
+    }
+  }
+  if (champion === null && members.length === 0) return Object.freeze({ kind: 'not-applicable', reason: 'no-arc5-party-member' });
+  try {
+    const changed = new Map<string, CreatureInstanceV1>();
+    if (champion !== null) changed.set(champion.creatureAfter.creatureId, champion.creatureAfter);
+    for (const change of members) changed.set(change.creatureAfter.creatureId, change.creatureAfter);
+    const receiptEvidence = createF4ReceiptEvidenceV2({
+      ordinal: plan.receiptOrdinal,
+      actionKind: ARC6_COMBAT_ACTION_KIND_V1,
+      witnessDigest: sha256Hex(plan.witness),
+    });
+    const successor = createOwnershipSuccessorV2(parent, {
+      source: ownershipSourceStateV1(parent),
+      bredAcquisitions: parent.bredAcquisitions,
+      creatures: parent.creatures.map((row) => changed.get(row.creatureId) ?? row),
+      creatureTombstones: parent.creatureTombstones,
+      specimenLots: parent.specimenLots,
+      specimenTombstones: parent.specimenTombstones,
+      scoutCreatureId: parent.scoutCreatureId,
+    });
+    return Object.freeze({ kind: 'prepared', settlement: Object.freeze({
+      schema: ARC6_PARTY_OWNERSHIP_SCHEMA_V1,
+      parentRevision: parent.revision,
+      parentDigest: ownershipStateDigestV2(parent),
+      receiptEvidence,
+      champion,
+      members: Object.freeze(members),
+      successor,
+      successorDigest: ownershipStateDigestV2(successor),
+    }) });
+  } catch {
+    return Object.freeze({ kind: 'refused', reason: 'settlement-shape-mismatch' });
+  }
+}
+

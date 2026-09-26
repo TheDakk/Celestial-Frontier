@@ -2,9 +2,10 @@
    injected runtime but owns no AudioContext, timer, filesystem, browser, or
    content. Its certificate is intentionally narrow: two identical synthetic
    workload cycles prove package lifecycle/accounting plateau; browser bytes,
-   device heat, listening, and unimplemented accessibility modes stay open. */
+   device heat and listening stay open. Mono/reduced intensity are runtime modes (2026-09-25). */
 import {
   AUDIO_CATEGORIES,
+  AUDIO_REDUCED_INTENSITY_GAIN,
   AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
 } from './runtime.js';
 import type {
@@ -22,9 +23,9 @@ export const AUDIO_SETTING_ACCESSIBILITY_DIAGNOSTICS = Object.freeze({
   categoryGains: 'runtime-implemented',
   meaningfulCounterpart: 'runtime-verifier-required',
   captions: 'app-integration-required',
-  mono: 'not-implemented',
-  dynamicRange: 'not-implemented',
-  reducedIntensity: 'not-implemented',
+  mono: 'runtime-implemented',
+  dynamicRange: 'runtime-implemented',
+  reducedIntensity: 'runtime-implemented',
   highFrequencyComfort: 'content-and-human-review-required',
 } as const);
 
@@ -71,10 +72,11 @@ const REQUIRED_PHASES = Object.freeze([
 
 const SAMPLE_KEYS = Object.freeze(['phase', 'diagnostics'] as const);
 const DIAGNOSTIC_KEYS = Object.freeze([
-  'state', 'contextState', 'contextGeneration', 'muted', 'hidden', 'gains',
+  'state', 'contextState', 'contextGeneration', 'muted', 'hidden', 'accessibility', 'gains',
   'voiceMix', 'nodes', 'cache', 'voices', 'creatureEmitters', 'cooldowns',
   'reservations', 'cleanup', 'peaks', 'faults',
 ] as const);
+const ACCESSIBILITY_KEYS = Object.freeze(['mono', 'reducedIntensity'] as const);
 const GAIN_KEYS = Object.freeze(['master', 'effectiveMaster', 'categories'] as const);
 const VOICE_MIX_KEYS = Object.freeze([
   'schema', 'activeOwners', 'owners', 'factors', 'effectiveCategoryGains',
@@ -257,6 +259,11 @@ function canonicalDiagnostics(value: unknown, label: string): AudioRuntimeDiagno
   const contextGeneration = finiteCount(input.contextGeneration, `${label} context generation`);
   const muted = booleanValue(input.muted, `${label} muted`);
   const hidden = booleanValue(input.hidden, `${label} hidden`);
+  const accessibilityInput = exactPlainData(input.accessibility, ACCESSIBILITY_KEYS, `${label} accessibility`);
+  const accessibility = Object.freeze({
+    mono: booleanValue(accessibilityInput.mono, `${label} mono`),
+    reducedIntensity: booleanValue(accessibilityInput.reducedIntensity, `${label} reduced intensity`),
+  });
 
   const gainInput = exactPlainData(input.gains, GAIN_KEYS, `${label} gains`);
   const categoryInput = exactPlainData(
@@ -275,8 +282,8 @@ function canonicalDiagnostics(value: unknown, label: string): AudioRuntimeDiagno
     0,
     1,
   );
-  if (effectiveMaster !== (muted ? 0 : master)) {
-    throw new RangeError(`${label} effective master gain contradicts mute policy`);
+  if (effectiveMaster !== (muted ? 0 : master * (accessibility.reducedIntensity ? AUDIO_REDUCED_INTENSITY_GAIN : 1))) {
+    throw new RangeError(`${label} effective master gain contradicts mute/reduced-intensity policy`);
   }
 
   const voiceMixInput = exactPlainData(input.voiceMix, VOICE_MIX_KEYS, `${label} voice mix`);
@@ -421,6 +428,7 @@ function canonicalDiagnostics(value: unknown, label: string): AudioRuntimeDiagno
     contextGeneration,
     muted,
     hidden,
+    accessibility,
     gains: Object.freeze({ master, effectiveMaster, categories }),
     voiceMix,
     nodes,

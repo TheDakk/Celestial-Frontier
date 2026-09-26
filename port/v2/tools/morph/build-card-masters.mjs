@@ -36,6 +36,35 @@ export const CARD_ARCHETYPES = Object.freeze([
   { earthName: 'Octopus', dir: 'audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/', key: 'octopus' },
   { earthName: 'Fruit Bat', dir: 'audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/', key: 'fruit-bat' },
   { earthName: 'Centipede', dir: 'audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/', key: 'centipede' },
+  // C15 (Codex, signed 2026-09-25; D1 standing order): candidates Codex marked READY — only the named fits, masks bound to the
+  // same recipe at the packet root. `weapons` is a hash-bound painter weapon declaration the arena passes to compileAnatomyAttack.
+  { earthName: 'Bass', dir: 'audits/ART_BATTLE_FOCUS_20260925/08-bass/fit-05/', key: 'bass', markings: 'audits/ART_BATTLE_FOCUS_20260925/08-bass/' },
+  { earthName: 'Tang', dir: 'audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/', key: 'tang', markings: 'audits/ART_BATTLE_FOCUS_20260925/10-tang/' },
+  { earthName: 'Dragonfly', dir: 'audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/fit-03/', key: 'dragonfly', markings: 'audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/' },
+  // C15 (2026-09-25): candidates that waited only on the stage fixes (layered idle+approach reach, faint idle settle, READY spacing) and pass
+  // the integrated library check (zero refusals as attacker and target). the Gull returned with the one CARD = STAGE tint table (morph/card-tint.generated.ts) (the arena may hold ~73.5 MiB; the masters still ship until C13's loader controls pass) — re-add
+  // them when the masters leave the pack. Their exact rows are kept in tools/morph/budget-held-archetypes.json (data, so this file keeps one earthName literal per archetype).
+  { earthName: 'Sturgeon', dir: 'audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/fit-02/', key: 'sturgeon', markings: 'audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/' },
+  { earthName: 'Wolf', dir: 'audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03/', key: 'wolf', markings: 'audits/ART_BATTLE_FOCUS_20260925/11-wolf/mask-set-02/' },
+  { earthName: 'Impala', dir: 'audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/', key: 'impala' },
+  { earthName: 'River Otter', dir: 'audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02/', key: 'river-otter', markings: 'audits/ART_BATTLE_FOCUS_20260925/13-river-otter/' },
+  { earthName: 'Heron', dir: 'audits/ART_BATTLE_FOCUS_20260925/16-heron/fit-01/', key: 'heron', markings: 'audits/ART_BATTLE_FOCUS_20260925/16-heron/', contactSupports: 'observed' },
+  // restored 2026-09-25 once the masters left the pack (C23): they passed the integrated library check when held
+  { earthName: 'Marmot', dir: 'audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/', key: 'marmot' },
+  { earthName: 'Wall Lizard', dir: 'audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/', key: 'wall-lizard' },
+  { earthName: 'Cougar', dir: 'audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03/', key: 'cougar', markings: 'audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/' },
+  { earthName: 'Ibex', dir: 'audits/ART_BATTLE_FOCUS_20260925/18-ibex/fit-02/', key: 'ibex', markings: 'audits/ART_BATTLE_FOCUS_20260925/18-ibex/' },
+  { earthName: 'Pike', dir: 'audits/ART_BATTLE_FOCUS_20260925/20-pike/fit-02/', key: 'pike', markings: 'audits/ART_BATTLE_FOCUS_20260925/20-pike/' },
+  { earthName: 'Goose', dir: 'audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/', key: 'goose', markings: 'audits/ART_BATTLE_FOCUS_20260925/15-goose/', contactSupports: 'observed' },
+  { earthName: 'Gull', dir: 'audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/', key: 'gull', markings: 'audits/ART_BATTLE_FOCUS_20260925/12-gull/', contactSupports: 'observed' },
+  // C25 (Codex's actual-branch films on anthropic/mac, 0/0 refusals, 2026-09-25): Racer, Eel, Salamander, Rat, Reef Shark (Eel/Shark water
+  // containment now held by the motion-envelope band fit)
+  { earthName: 'Racer', dir: 'audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/', key: 'racer', markings: 'audits/ART_BATTLE_FOCUS_20260925/21-racer/' },
+  { earthName: 'Eel', dir: 'audits/ART_BATTLE_FOCUS_20260925/27-eel/fit-02/', key: 'eel', markings: 'audits/ART_BATTLE_FOCUS_20260925/27-eel/mask-set-03/' },
+  { earthName: 'Salamander', dir: 'audits/ART_BATTLE_FOCUS_20260925/26-salamander/fit-05/', key: 'salamander', markings: 'audits/ART_BATTLE_FOCUS_20260925/26-salamander/' },
+  { earthName: 'Rat', dir: 'audits/ART_BATTLE_FOCUS_20260925/29-rat/fit-03/', key: 'rat', markings: 'audits/ART_BATTLE_FOCUS_20260925/29-rat/' },
+  { earthName: 'Reef Shark', dir: 'audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/', key: 'reef-shark', markings: 'audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/mask-set-02/' },
+  { earthName: 'Jellyfish', dir: 'audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/', key: 'jellyfish', markings: 'audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/', weapons: 'audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/weapon-declaration.json' },
 ]);
 const sha = (b) => createHash('sha256').update(b).digest('hex');
 const box = (img, dw, dh) => { const o = new Uint8Array(dw * dh * 4), sx = img.width / dw, sy = img.height / dh;
@@ -64,9 +93,9 @@ export function generatedSources(archetypes, markingsFilesOf) {
   // masks live outside the fit (the Salmon) — the same archetypes, so a creature on the card can always fight
   const rel = (repo) => '../' + repo.slice('audits/'.length);
   const arena = head + "/** One entry per painted archetype that can FIGHT: its source paint-skin fit (and its painted masks' folder when they\n * live outside the fit), relative to the arena proof directory the battle2 wiring resolves against. */\n"
-    + 'export interface Battle2PartsFit { readonly earthName: string; readonly dir: string; readonly markingsDir?: string; }\n'
+    + 'export interface Battle2PartsFit { readonly earthName: string; readonly dir: string; readonly markingsDir?: string; readonly weaponDeclaration?: string; readonly contactSupports?: \'observed\'; }\n'
     + 'export const BATTLE2_PARTS_FITS: readonly Battle2PartsFit[] = Object.freeze([\n'
-    + archetypes.map((a) => `  Object.freeze({ ${field('earthName', a.earthName)}, ${field('dir', rel(a.dir))}${a.markings ? ', ' + field('markingsDir', rel(a.markings)) : ''} }),\n`).join('') + ']);\n';
+    + archetypes.map((a) => `  Object.freeze({ ${field('earthName', a.earthName)}, ${field('dir', rel(a.dir))}${a.markings ? ', ' + field('markingsDir', rel(a.markings)) : ''}${a.weapons ? ', ' + field('weaponDeclaration', rel(a.weapons)) : ''}${a.contactSupports ? ', ' + field('contactSupports', a.contactSupports) : ''} }),\n`).join('') + ']);\n';
   return { registry, assets, arena };
 }
 if (import.meta.url === new URL(process.argv[1], 'file:').href) {
@@ -102,8 +131,13 @@ if (import.meta.url === new URL(process.argv[1], 'file:').href) {
     const mdir = path.join(R, a.markings ?? a.dir), files = [];
     if (fs.existsSync(path.join(mdir, 'markings.json'))) { const mj = JSON.parse(fs.readFileSync(path.join(mdir, 'markings.json')));
       if (mj.recordRecipeHash !== record.recipeHash) throw Error(a.earthName + ': markings sealed for another record (' + mj.recordRecipeHash + ')');
-      fs.copyFileSync(path.join(mdir, 'markings.json'), path.join(ship, 'markings.json')); fs.mkdirSync(path.join(ship, 'markings'), { recursive: true }); files.push('markings.json');
-      for (const v of Object.values(mj.patterns ?? {})) if (v?.file) { fs.copyFileSync(path.join(mdir, v.file), path.join(ship, v.file)); files.push(v.file); } }
+      fs.mkdirSync(path.join(ship, 'markings'), { recursive: true }); files.push('markings.json');
+      // a mask set that lives in another packet (`../../06-impala/markings/x.png`, C15 repairs) ships at `markings/<name>` and ONLY the shipped
+      // copy's `file` fields are rewritten; a set already relative to its folder ships byte-identical, as before
+      const escapes = Object.values(mj.patterns ?? {}).some((v) => v?.file && v.file.split('/').includes('..'));
+      for (const v of Object.values(mj.patterns ?? {})) if (v?.file) { const to = escapes ? 'markings/' + path.posix.basename(v.file) : v.file; fs.copyFileSync(path.join(mdir, v.file), path.join(ship, to)); files.push(to); if (escapes) v.file = to; }
+      if (escapes) fs.writeFileSync(path.join(ship, 'markings.json'), JSON.stringify({ ...mj, shippedFrom: { markingsDir: a.markings ?? a.dir, note: 'pattern file paths rewritten to the shipped folder' } }, null, 2) + '\n');
+      else fs.copyFileSync(path.join(mdir, 'markings.json'), path.join(ship, 'markings.json')); }
     shippedMarkings.set(a.key, files);
     fs.writeFileSync(path.join(ship, 'SOURCE.json'), JSON.stringify({ schema: 'cf.shipped-card-archetype/v1', earthName: a.earthName, fitDir: a.dir, ...(a.markings ? { markingsDir: a.markings } : {}), mirroredBy: 'tools/morph/build-card-masters.mjs', recordRecipeHash: record.recipeHash }, null, 1) + '\n');
     console.log(JSON.stringify({ earthName: a.earthName, from: [master.width, master.height], to: [dw, dh], masterSha256: receipt.card.masterSha256.slice(0, 12), masks: Math.max(0, files.length - 1), shipped: SHIPPED_ROOT + a.key + '/' }));

@@ -108,6 +108,8 @@ export function compileVoiceCard(
   genome?: Genome | null,
   systemCard?: SystemCardLike | null,
   overrides?: VoiceCardOverrides | null,
+  /** D15 Stage 0: the creature's identity seed (voice-identity.ts draws it from its AudioSignature); replaces the genome/record seed. */
+  identity?: Readonly<{ seed: number }> | null,
 ): VoiceCardResult {
   const templateId = record?.template?.id;
   if (typeof templateId !== 'string' || templateId.length === 0) return { ok: false, reason: 'missing-template-id' };
@@ -142,7 +144,7 @@ export function compileVoiceCard(
   const time = clampFlag(timeBase + (overrides?.timePercent ?? 0), VOICE_BOUNDS.timePercent, 'time', flags);
 
   const identitySeed = typeof record.identity?.seed === 'number' ? record.identity.seed : 0;
-  const baseSeed = g !== null && typeof g.seed === 'number' ? g.seed : identitySeed;
+  const baseSeed = identity != null && Number.isFinite(identity.seed) ? identity.seed : g !== null && typeof g.seed === 'number' ? g.seed : identitySeed;
   const seed = hashInt(baseSeed >>> 0, VOICE_ARCHETYPES.indexOf(archetype), 0xA4);
   const key = typeof record.identity?.speciesVisualKey === 'string' ? record.identity.speciesVisualKey
     : `genome:${baseSeed >>> 0}`;

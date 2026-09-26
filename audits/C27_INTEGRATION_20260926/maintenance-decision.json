@@ -1,0 +1,7 @@
+{
+  "node": "26.9.0",
+  "available": "26.10.0_1",
+  "decision": "defer; managed Node 26.9.0 actively runs Claude Vitest PID93710 and worker93714 at startup; do not interrupt other-lane jobs or change their runtime",
+  "reaper": "brew outdated --json=v2 --greedy reaper returns no outdated casks; installed build suffix is current",
+  "otherTools": "official stable check current; no eligible idle update"
+}

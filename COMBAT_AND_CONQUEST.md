@@ -219,6 +219,77 @@ share one helper and the fingerprint held.
 
 ## 0. v2 combat decision and counterplay contract (bounded champion slice implemented)
 
+> **Decided next model (2026-09-25, `port/DECISIONS.md` §20; not yet implemented):** Guardian/Titan fights take a relay party of up to 3,
+> in Auto or Command. Ordinary conquest stays one fighter. Defeat becomes active-play Recovery, and Swap is never necessary. The
+> contract below describes the shipped single-champion slice until the §20 engine lands.
+>
+> **Implemented 2026-09-25 (matches code):**
+> - **Defeat is Recovery.** Every defeated companion, bred or wild, including a captured Guardian, gets the `set-recovery` injury: its
+>   wound is unchanged (`COMBAT_DEFEAT_WOUND_STEP_V1` = 0: a wound on the fallen alone would make Swap necessary), and it enters active-play Recovery for
+>   `COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1` (10 min placeholder). It is never removed. v1's permanent loss and one-time bred crawl-home
+>   are retired.
+> - **Save carriers.** The Recovery lives on the v2 ownership row and on the captured-Guardian overlay (the only assignment that
+>   overlay may add). The wound is mirrored into v4. A finished Recovery can be replaced by the next defeat; an unfinished one refuses.
+>   The persistence owner refuses a champion in Recovery.
+> - **The engine.** `runEncounterV1` (relay, stances, Breaks, Auto/Command) is built and parity-locked to `runDuel`. It is not yet
+>   wired to the card.
+> - **Auto Guardian parties are live (same date).**
+>   - **Card:** a stance for every fight's lead. Guardians and Titans get two more relay slots, each with its own stance, and the
+>     forecast shows "Your plan (Auto)" beside "Balanced alone".
+>   - **Settlement:** `planCombatPartySettlementV1` → one receipt. The decisive leg is the top-level plan, and a `party` block carries
+>     every other member.
+>   - **Carriers:** every fallen member enters Recovery on its carrier (Arc 5 ownership or the captured-Guardian overlay) in the same
+>     CAS. Every owned fighter must be on exactly one carrier and free at the committed clock, and the explorer binds wherever it
+>     fights.
+>   - **Chronicle:** it names every earlier fighter before the decisive leg.
+>   - **Still to come:** Codex's S4 balance numbers; see the Command block below for what landed after this.
+> - **Command: the open-encounter record (2026-09-25, `packages/persistence/src/combat-open-encounter.ts`; matches code).**
+>   - **Open** (`combat-open-encounter` receipt): the sealed plan — battle id, encounter digest, defender genome, every fighter's exact
+>     settlement champion + stance in relay order — is written to `player/combat.open-encounter` in its own deterministic F4 receipt.
+>     Nothing else changes (no Recovery, XP or counter). A fight that never reaches a Break is refused (`no-break`) and settles directly.
+>   - **Decide** (`combat-encounter-decision` receipt): one Hold/Swap/Withdraw appended per receipt, CAS on the revision AND on the
+>     decision count the player saw (`decision-count-stale`), and it must be an answer the pending Break offers.
+>   - **Settle:** the ordinary combat settlement consumes the record in its one CAS — the plan must be the sealed party (seal digest
+>     over battle id + encounter + defender + party + stances) with exactly the appended answers plus at most the final one, and the
+>     record closes (`open: null`; carriers are replaced, never deleted). Verification re-reads the closed record.
+>   - **No escape:** while a record is open, any other settlement (Auto included) refuses, the app refuses another fight, and Breed
+>     refuses a held parent before any draw (`open-encounter:parent-in-command-fight`). A corrupt/foreign/forged carrier reads as
+>     PROTECTED, never as "no fight". Withdraw is always offered.
+>   - **Withdraw** settles like a fight not won (a Break has no winner: a draw; after a fallen fighter, the defender's leg). Auto never
+>     withdraws. Rewards are identical to Auto for the same outcome (Command earns nothing extra).
+>   - **Reload:** `simulateCombatOpenEncounterV1(record)` re-runs `runEncounterV1(sealed, decisions)` and lands on the same Break.
+> - **Command on the card (same date; matches code).** Guardians/Titans get a **Play: Auto / Command** picker. A Command Challenge seals the
+>   fight (no Break → it settles at once). While a Break waits, the card replaces Challenge with the Break panel: a headline (who is
+>   down to what, the Guardian's health, who is ready) and one full-width button per offered answer — *Hold — X fights on*, *Swap —
+>   send in Y*, *Continue — send in Y* (after a fall), *Withdraw — leave the fight* — or *Settle the fight* when every answer is in.
+>   A non-final answer is appended (`decideArc6CommandEncounterV1`); the answer that finishes the fight rides the ordinary settlement
+>   (`runArc6CombatCardAction` → `commitCurrentArc6Combat(request, { decisions })`), so a finished fight settles in one receipt and
+>   plays the normal Chronicle. On another world the card says the Command fight is waiting there. Outcome test:
+>   `tests/a5-command-break-outcome.test.ts` (real selects + buttons, reboot, durable read-back, 3 Main mutants).
+> - **battle2 relay beats (same date).** Before the decisive leg the painted stage holds one captioned beat per earlier fighter
+>   (`battle2/swap-beats.ts`: "↻ X steps back — Guardian 62% · Y steps in", 1.1 s each, 0.7 s reduced motion), re-derived from the
+>   plan's party + decisions like the Chronicle prelude. The earlier fighters' rigs are not staged (caption only).
+> - **Friendly duels, v1.8.9 parity (same date; matches code).** A fauna Compendium detail you own shows **⚔ Friendly duel**: choose one of
+>   your companions of that species, paste a friend's `CFB-` code (v1's own decoder: normalised genome, no injuries or levels travel, a
+>   Champion code is exhibit-only), press Duel. One `friendly-duel` receipt: `stats.duels` +1; a counted win pays `duelwins` +1 and
+>   **+8 XP**; a loss/draw pays **2 XP**, or **3** when the challenger ended below 25% ("taken to the wire"). Each credit has its own
+>   **30 s window on the ACTIVE-PLAY clock** (v1 used 30 s of wall clock; the device clock never pays in v2), persisted in
+>   `player/combat.friendly-duels`. Nobody is wounded, nothing is lost; a companion in Recovery, away or held by an open Command fight
+>   cannot duel. Pure plan `packages/domain/combatcore/src/friendly-duel.ts`; ownership `@cf/domain-acquisition/friendly-duel-internal`;
+>   persistence `packages/persistence/src/friendly-duel.ts`; app `apps/game/src/friendly-duel.ts`. Outcome test
+>   `tests/a5-friendly-duel-outcome.test.ts` (real paste + press, durable XP + mirror, device-clock swing, 2 Main mutants). CFB *export*
+>   (sharing your own code) is not ported yet.
+> - **Guardian phase change (N1 §4.3 / S7; same date; matches code).** When a Guardian or Titan first falls to half health, a **phase
+>   Break** announces the change BEFORE it applies (Hold / Swap / Withdraw; Auto holds), then for the rest of the fight, across legs, it
+>   hits 20% harder and takes 10% less (`ENCOUNTER_GUARDIAN_PHASE_V1`, placeholder for S4). The engine takes it as `defender.phase`
+>   (`encounterHasGuardianPhaseV1(kind)`); every caller derives it from the defender kind (planner, Chronicle prelude, card forecast,
+>   battle2 beats, the app probe) and the open-encounter record SEALS it (`defenderPhase`). **Parity law:** a lone Balanced Auto fighter
+>   still takes the verbatim v1 `runDuel` path, so it meets no phase; the phase applies whenever the fight is planned as an encounter
+>   (a stance, a party, or Command). The card says so. Tests: `packages/domain/combatcore/test/encounter-phase.test.ts` (announced at
+>   half health before the change and identical up to it; the defender changes after — mutation control; Command pause + Swap + reload).
+>   - **The explorer fights Guardians in Auto only:** the settlement binds the explorer's exact health, which moves between Breaks, so a
+>     sealed explorer could strand the record (even Withdraw settles through that binding). `openArc6CommandEncounterV1` refuses it.
+
 The current landed-Surface card implements the minimum honest combat decision: select the explorer,
 one eligible ordinary owned-fauna champion or one live captured Guardian/Titan after reading the exact defender, abilities, deterministic
 forecast, stakes and supported reward family. That selected identity changes the sealed settlement;

@@ -167,6 +167,12 @@ export class BattleStage {
     return Object.freeze({ left: hw('left'), right: hw('right') });
   }
 
+  /** Each combatant's painted box CENTRE at rest, as a frame-width fraction: its stand (the root) less the stand-centre shift (C15: the run-up is
+   * measured between the painted boxes, not between the roots — a fish's root sits far from its box centre). */
+  centresX(): Readonly<{ left: number; right: number }> {
+    const L = this.#o.layout, c = (side: Side, facing: 1 | -1): number => L.stands[side].x - standCentreShift(this.#o.rigs[side], this.#scales[side], L.frame.width, facing);
+    return Object.freeze({ left: c('left', 1), right: c('right', -1) });
+  }
   /** Each combatant's painted box at rest in frame-height fractions (centre, top), from the rig's extent at the drawn scale — the
    * choreography aims a flyer's or swimmer's impact at it and the cursor sits above it. Without `extent` the box is assumed centred. */
   bodies(): Readonly<{ left: Readonly<{ centreY: number; topY: number }>; right: Readonly<{ centreY: number; topY: number }> }> {
@@ -180,7 +186,7 @@ export class BattleStage {
   play(turn: TurnPlan | TurnPlanInput): TurnPlan {
     this.#assertLive();
     const plan = (turn as TurnPlan).kind === 'turn-plan' ? (turn as TurnPlan) : buildTurnPlan({ ...(turn as TurnPlanInput), attacker: this.#withCadence((turn as TurnPlanInput).attacker), reducedMotion: (turn as TurnPlanInput).reducedMotion === true || this.#o.reducedMotion === true,
-      arena: { ...(turn as TurnPlanInput).arena, halfWidths: (turn as TurnPlanInput).arena.halfWidths ?? this.halfWidths(), bodies: (turn as TurnPlanInput).arena.bodies ?? this.bodies() } });
+      arena: { ...(turn as TurnPlanInput).arena, halfWidths: (turn as TurnPlanInput).arena.halfWidths ?? this.halfWidths(), centresX: (turn as TurnPlanInput).arena.centresX ?? this.centresX(), bodies: (turn as TurnPlanInput).arena.bodies ?? this.bodies() } });
     this.#clearEffect();
     this.#plan = plan; this.#startMs = this.#o.clock();
     // Reduced motion (E1 §1.6): both rigs take the rest pose once per turn here and are never updated per tick.

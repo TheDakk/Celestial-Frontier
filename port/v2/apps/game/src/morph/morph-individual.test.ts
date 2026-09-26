@@ -38,7 +38,7 @@ describe('morph individual — archetype + genome through the real loader', () =
     for (const p of f.card.parts) if (p.group === 'legs') { const a = rig.jointPosition(p.joint)!, b = plainRig.jointPosition(p.joint)!; expect(Math.hypot(a.x - b.x, a.y - b.y), p.joint).toBeLessThan(1e-12); }
     const again = individualFromGenomeV1({ record: f.record, binding: f.binding, card: f.card, genome }); expect(JSON.stringify(again.params)).toBe(JSON.stringify(morph.params));
     rig.dispose(); plainRig.dispose();
-  });
+  }, 60_000); // the parts rig now measures the layered idle+approach reach at load (Codex 412e2cf2)
   it('M3 through the real loader: a striped crab (its painted mask in master space) loads with the marking applied in the atlas — only masked, opaque texels differ from the unmarked individual; alpha identical', async () => {
     const f = crab(); const { readFileSync: rf } = await import('node:fs'); const { maskAlphaOf, masterMaskToAtlasV1 } = await import('./morph-markings.js');
     const markings = repoJson<{ patterns: Record<string, { file: string }> }>(FITS.crab + 'markings.json'); const png = PNG.sync.read(rf(new URL(FITS.crab + markings.patterns['striped']!.file, REPO_ROOT)));

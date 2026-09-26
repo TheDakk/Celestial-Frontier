@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { CARD_ARCHETYPES } from './morph/card-archetypes.js';
 import { decodePng } from './morph/png-decode.js';
+import { MASKED_PATTERNS, PATTERN_NAMES } from './morph/morph-markings.js';
 import { CARD_ASSET_URLS, cardAssetUrl, createPaintedCardsForApp } from './painted-cards.js';
 import { REPO_ROOT } from './battle2/parts-rig.fixtures.js';
 import { CARD_ARCHETYPES as BUILD_LIST } from '../../../tools/morph/build-card-masters.mjs';
@@ -23,10 +24,14 @@ describe('the card masters ship with the app', () => {
     // the archetypes that SHOULD ship masks come from the source of truth (the builder list and each fit's markings), not from the shipped dirs
     const shouldShip = BUILD_LIST.filter((b) => existsSync(fileURLToPath(new URL((b.markings ?? b.dir) + 'markings.json', REPO_ROOT)))).map((b) => b.earthName).sort();
     const src = createPaintedCardsForApp(fetchFromDisk), shipsMasks = CARD_ARCHETYPES.filter((a) => shouldShip.includes(a.earthName));
-    expect(shouldShip).toEqual(['Civet', 'Crab', 'Salmon']); expect(shipsMasks.map((a) => a.earthName).sort()).toEqual(shouldShip);
+    expect(shouldShip).toEqual(['Bass', 'Civet', 'Cougar', 'Crab', 'Dragonfly', 'Eel', 'Goose', 'Gull', 'Heron', 'Ibex', 'Impala', 'Jellyfish', 'Marmot', 'Pike', 'Racer', 'Rat', 'Reef Shark', 'River Otter', 'Salamander', 'Salmon', 'Sturgeon', 'Tang', 'Wall Lizard', 'Wolf']); expect(shipsMasks.map((a) => a.earthName).sort()).toEqual(shouldShip);
     for (const a of shipsMasks) {
-      const plain = await src.card({ _earthName: a.earthName, kingdom: 'fauna', seed: 9, pattern: 0 }, 'thumb')!, striped = await src.card({ _earthName: a.earthName, kingdom: 'fauna', seed: 9, pattern: 1 }, 'thumb')!;
-      expect(striped.url, a.earthName + ': striped equals plain — the marking never reached the app card').not.toBe(plain.url);
+      // a pattern gene EQUAL to the archetype's own is its identity (no marking): the Dragonfly's own painted genome is striped (pattern 1),
+      // so each archetype is marked with the first MASKED pattern that is not its own, and its own pattern is the plain control
+      const own = (JSON.parse(readFileSync(fileURLToPath(new URL(a.dir + 'record.json', REPO_ROOT)), 'utf8')) as { genome?: { pattern?: number } }).genome?.pattern ?? 0;
+      const marked = PATTERN_NAMES.findIndex((n, i) => MASKED_PATTERNS.has(n) && i !== own % PATTERN_NAMES.length);
+      const plain = await src.card({ _earthName: a.earthName, kingdom: 'fauna', seed: 9, pattern: own }, 'thumb')!, striped = await src.card({ _earthName: a.earthName, kingdom: 'fauna', seed: 9, pattern: marked }, 'thumb')!;
+      expect(striped.url, a.earthName + `: ${PATTERN_NAMES[marked]} equals plain — the marking never reached the app card`).not.toBe(plain.url);
     }
   });
 });

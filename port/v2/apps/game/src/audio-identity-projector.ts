@@ -271,3 +271,20 @@ export function projectOwnedCreatureAudioIdentity(
     return unavailable('resolver-rejected');
   }
 }
+
+/** A creature's AudioSignature from its GENOME alone — for a combatant that is not an owned individual (a wild defender, a Guardian, a
+ * picker fighter). The same phenotype and owner rules as the owned projection, with no surviving lineage (unbred): an owned unbred
+ * creature and the same genome met in the wild therefore resolve to the SAME signature (D15 Stage 0: one voice per creature). */
+export function projectGenomeAudioSignatureV1(genome: unknown): AudioSignature | null {
+  if (genome === null || typeof genome !== 'object') return null;
+  const canonical = genome as CanonicalGenomeV1;
+  const phenotype = projectPhenotype({ genome: canonical, origin: 'wild' } as unknown as CreatureInstanceV1);
+  if (!phenotype) return null;
+  const owner = projectOwner(canonical, phenotype.kingdom);
+  if (!owner) return null;
+  try {
+    return createAudioSignature({ owner: owner.owner, phenotype, lineage: Object.freeze({ parentSeeds: null, anchorBasisPoints: owner.anchorBasisPoints }) });
+  } catch {
+    return null;
+  }
+}

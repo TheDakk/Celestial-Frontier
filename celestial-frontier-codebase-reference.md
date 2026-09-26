@@ -5492,6 +5492,11 @@ floaters/drifters→psionic, burrowers→stone); `abilityOf(g)` returns the reso
   `decodeCreature` (CFB- codes to fight a friend's creature).
 - **Conquest:** `conquerPlanet` → `runConquestBattle` vs the world's `apexNative`. Win →
   the world is added to `conquered` (Map keyed by planet seed → `{t, tier}`).
+- **v2 §20 Command (2026-09-25):** a Guardian/Titan party fight in Command is sealed by
+  `openArc6CommandEncounterV1` (persistence `combat-open-encounter.ts`, carrier `player/combat.open-encounter`),
+  each Break answer is appended by `decideArc6CommandEncounterV1` (CAS on the decision count), and
+  `commitArc6CombatActionV1({ command: { decisions } })` settles the sealed party and consumes the record in one
+  receipt. While open, no other fight settles and Breed refuses held parents. See `COMBAT_AND_CONQUEST.md` §0.
 
 ---
 

@@ -675,6 +675,39 @@ describe('Arc 7/8 player-live Tame greeting owner', () => {
   });
 });
 
+describe('audio accessibility modes reach the shared runtime (Mono audio / Reduced intensity, 2026-09-25)', () => {
+  it('a policy with the modes on activates the runtime with them, and syncSettings follows a live change', async () => {
+    const h = harness({ mono: true, reducedIntensity: true });
+    expect(h.owner.armNativeTameGesture()).toBe(true);
+    await Promise.resolve();
+    h.owner.syncSettings();
+    expect(h.owner.diagnostics().runtime.accessibility).toEqual({ mono: true, reducedIntensity: true });
+    expect(h.owner.diagnostics().runtime.gains.effectiveMaster).toBeCloseTo(0.64 * 0.55, 12);
+    h.policy.mono = false;
+    h.policy.reducedIntensity = false;
+    h.owner.syncSettings();
+    expect(h.owner.diagnostics().runtime.accessibility).toEqual({ mono: false, reducedIntensity: false });
+    expect(h.owner.diagnostics().runtime.gains.effectiveMaster).toBeCloseTo(0.64, 12);
+  });
+
+  it('Battle sounds (save cbx) gates only the combat-gameplay category; creature voices keep their own switch', () => {
+    const h = harness({ combatSoundsOn: false });
+    h.owner.syncSettings();
+    expect(h.owner.diagnostics().runtime.gains.categories['combat-gameplay']).toBe(0);
+    expect(h.owner.diagnostics().runtime.gains.categories.creature).toBe(1);
+    h.policy.combatSoundsOn = true;
+    h.owner.syncSettings();
+    expect(h.owner.diagnostics().runtime.gains.categories['combat-gameplay']).toBe(1);
+  });
+
+  it('a policy without the fields (older callers) plays the unchanged mix', () => {
+    const h = harness();
+    h.owner.syncSettings();
+    expect(h.owner.diagnostics().runtime.accessibility).toEqual({ mono: false, reducedIntensity: false });
+    expect(h.owner.diagnostics().runtime.gains.categories['combat-gameplay']).toBe(1); // absent = on (older callers)
+  });
+});
+
 describe('Arc 7 explicit noncombat audition and ecology playback', () => {
   function auditionRequest(h: ReturnType<typeof harness>) {
     const creature = h.state.creatures.find((row) => row.creatureId === h.creatureId)!;
