@@ -1,0 +1,248 @@
+[
+  {
+    "subject": "grouse",
+    "status": "RED",
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "recordRecipeHash": "efdf22808ace741fc20cde0d0ea0e598cd6d1e9122aea8defc37386d07b21071",
+    "bindingHash": "090e76049ad970b966d5588f8742323c99739293d3a3c67c1158dcf919cddb7a",
+    "staticSourcesUnchanged": true,
+    "actionFailures": [
+      {
+        "id": "approach:walk",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 34"
+      },
+      {
+        "id": "approach:flight",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 13"
+      },
+      {
+        "id": "melee:claw",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 107"
+      },
+      {
+        "id": "hit",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 55"
+      },
+      {
+        "id": "dodge",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 30"
+      },
+      {
+        "id": "faint",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 22"
+      },
+      {
+        "id": "tame",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 20"
+      },
+      {
+        "id": "melee:kick",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 32"
+      }
+    ],
+    "presentationFailure": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 113",
+    "vertices": 7037
+  },
+  {
+    "subject": "eagle",
+    "status": "RED",
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "recordRecipeHash": "ef71ffcc9657555413e3e0eeefa2714bcdae1e64517c26daa766ea73f8389327",
+    "bindingHash": "228ffbd605f22e93ecb3558159d7e3f70685599dfc35beddef4bb65c560d07fb",
+    "staticSourcesUnchanged": true,
+    "actionFailures": [
+      {
+        "id": "melee:claw",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 68"
+      },
+      {
+        "id": "cast",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 49"
+      },
+      {
+        "id": "victory",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 73"
+      },
+      {
+        "id": "tame",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 11"
+      },
+      {
+        "id": "melee:kick",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 74"
+      }
+    ],
+    "presentationFailure": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 69",
+    "vertices": 7374
+  },
+  {
+    "subject": "sparrow",
+    "status": "RED",
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "recordRecipeHash": "cc0d32751e5d84c0fad84f0db854304ab70f006fedf85b5ea1ce2be8cf76d4cd",
+    "bindingHash": "1fad4f7ac81c4758e1be19ed8472291077fcdff9ed4f374c053904dcb3a7da12",
+    "staticSourcesUnchanged": true,
+    "actionFailures": [
+      {
+        "id": "faint",
+        "firstRefusal": "Error: Contact: joint limit legNearFoot faint@403.46666666666664: 45.190043168390744"
+      }
+    ],
+    "presentationFailure": "Error: Contact: joint limit legNearFoot faint@406.196858599782: 45.389424035465424",
+    "vertices": 5976
+  },
+  {
+    "subject": "sandpiper",
+    "status": "RED",
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "recordRecipeHash": "1e109255e89f2477d4aa994b048a92705fd355a381cc774bdfdc2fe51293d245",
+    "bindingHash": "a3ca4f08320025fb431691260c86c20d56023a3bb5a452bb597511f3b9336818",
+    "staticSourcesUnchanged": true,
+    "actionFailures": [
+      {
+        "id": "victory",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 48"
+      }
+    ],
+    "presentationFailure": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 6",
+    "vertices": 5002
+  },
+  {
+    "subject": "08-mongoose",
+    "status": "RED",
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "recordRecipeHash": "85f4704b561e16beef2d17737a62001eb72fe90121ab231bc452ad60fcda1cbe",
+    "bindingHash": "82119f0d4c21cddf2ba28c236e9cc9b2b3af30874ad1ab9d004157cb4e76c4fb",
+    "staticSourcesUnchanged": true,
+    "actionFailures": [
+      {
+        "id": "faint",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 421"
+      },
+      {
+        "id": "tame",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 56"
+      }
+    ],
+    "presentationFailure": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 53",
+    "vertices": 8455
+  },
+  {
+    "subject": "18-tapir",
+    "status": "RED",
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "recordRecipeHash": "b5be138ea7d869ab65ea992d37c23abd6dc964db3e246501aff8868c5659840c",
+    "bindingHash": "3fa361845c469a7aa51b9f2479ad2e8efc2b9afa240101ec1f3c963cd3e2438d",
+    "staticSourcesUnchanged": true,
+    "actionFailures": [
+      {
+        "id": "idle",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 108"
+      },
+      {
+        "id": "alert",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 293"
+      },
+      {
+        "id": "approach:walk",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 230"
+      },
+      {
+        "id": "approach:trot",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 193"
+      },
+      {
+        "id": "approach:gallop",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 191"
+      },
+      {
+        "id": "approach:hop",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 108"
+      },
+      {
+        "id": "melee:bite",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 94"
+      },
+      {
+        "id": "melee:claw",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 94"
+      },
+      {
+        "id": "melee:gore",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 94"
+      },
+      {
+        "id": "melee:tail",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 76"
+      },
+      {
+        "id": "melee:headbutt",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 94"
+      },
+      {
+        "id": "cast",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 116"
+      },
+      {
+        "id": "hit",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 755"
+      },
+      {
+        "id": "dodge",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 23"
+      },
+      {
+        "id": "faint",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 117"
+      },
+      {
+        "id": "victory",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7"
+      },
+      {
+        "id": "tame",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 245"
+      },
+      {
+        "id": "feed",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 16"
+      },
+      {
+        "id": "melee:kick",
+        "firstRefusal": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 237"
+      }
+    ],
+    "presentationFailure": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 107",
+    "vertices": 10449
+  }
+]

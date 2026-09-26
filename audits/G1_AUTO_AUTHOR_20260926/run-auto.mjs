@@ -7,6 +7,7 @@ import path from 'node:path';
 import {createRequire} from 'node:module';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
+import {summarizeStaticOutcome} from '../../port/v2/tools/anatomy-verify/static-outcome.mjs';
 import {autoAuthor, autoAuthorShop, prepareSubject, mirrorSubject, referenceStats, skeletonStats} from '../../port/v2/tools/anatomy-verify/auto-author.mjs';
 const HERE = import.meta.dirname, ROOT = path.resolve(HERE, '../..');
 const require = createRequire(path.join(ROOT, 'port/v2/package.json'));
@@ -144,7 +145,7 @@ function runCandidate(s, rank, dir) {
         const report = path.join(dir, 'static.json');
         if (!fs.existsSync(report)) { const r = spawnSync(process.execPath, [path.join(HERE, 'harness/static-runner.mjs'), fit, report], { cwd: ROOT, encoding: 'utf8', timeout: 1800000 }); fs.writeFileSync(path.join(dir, 'static.log'), (r.stdout || '') + (r.stderr || '')); }
         let st = null; try { st = JSON.parse(fs.readFileSync(report, 'utf8')); } catch {}
-        row.static = st ? st.status : 'STATIC_ERROR'; row.staticFails = st?.rows?.filter((r) => r.status !== 'PASS').map((r) => r.id) ?? null;
+        Object.assign(row, summarizeStaticOutcome(st));
         if (!st) { const log = fs.readFileSync(path.join(dir, 'static.log'), 'utf8'); row.staticError = (log.match(/"error":"([^"]{0,200})/) ?? [])[1] ?? log.slice(-200); }
       } else { row.static = 'INTAKE_REFUSED'; try { row.intakeError = JSON.parse(fs.readFileSync(path.join(fit, 'refusal.json'), 'utf8')).error.slice(0, 200); } catch {} }
     }
