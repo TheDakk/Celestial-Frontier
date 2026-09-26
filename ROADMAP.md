@@ -58,12 +58,11 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
    - Author-side levers are exhausted (v9–v11).
    - Next: re-score each new G2 batch with `run-auto.mjs --targets=`, and run the native harness on its passes.
 3. **G5:** card AND stage in the game behind `?finish=1`, proven in real browsers:
-   - the desktop model run on a crab (four bugs found; two fixed by Codex, two Codex tool fixes pending, C50);
+   - the desktop model run on a crab: shipped path PASS after Codex's C50 fixes (run-03-shipped);
    - the phone delivery path PASS;
    - the stage (picker) PASS with both fighters finished.
 
    Open:
-   - the shipped-path rerun after C50;
    - a pin-based identity to spare phone downloads (C51);
    - **D26 (Nick)** for 1254² masters and a visible finish;
    - Nick's quality review before the flag defaults on.
