@@ -1,0 +1,4 @@
+0 {"kind":"easy","baseline":512,"planned":512,"command":512,"gap":0,"oracleEdge":0,"phaseNodes":0}
+0 {"kind":"normal","baseline":262,"planned":301,"command":301,"gap":7.6171875,"oracleEdge":0,"phaseNodes":0}
+0 {"kind":"guardian","baseline":182,"planned":265,"command":355,"gap":16.2109375,"oracleEdge":17.578125,"phaseNodes":1039,"solo":{"before":106,"after":103,"delta":-0.5859375}}
+0 {"kind":"titan","baseline":246,"planned":345,"command":436,"gap":19.3359375,"oracleEdge":17.7734375,"phaseNodes":1174,"solo":{"before":44,"after":43,"delta":-0.1953125}}

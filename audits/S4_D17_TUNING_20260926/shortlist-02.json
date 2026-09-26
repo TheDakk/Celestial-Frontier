@@ -1,0 +1,1673 @@
+{
+  "eligible": 12,
+  "candidates": [
+    {
+      "p": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "g": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0
+      },
+      "e": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      },
+      "failed": [],
+      "answers": [
+        {
+          "threat": "smite",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 4
+        },
+        {
+          "threat": "aegis",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 8,
+          "wrongGap": 9
+        },
+        {
+          "threat": "dot",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 16,
+          "wrongGap": 7
+        },
+        {
+          "threat": "fury",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 20,
+          "wrongGap": 11
+        },
+        {
+          "threat": "ambush",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 47,
+          "wrongGap": 3
+        },
+        {
+          "threat": "eye",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 11,
+          "wrongGap": 3
+        },
+        {
+          "threat": "veil",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 7,
+          "wrongGap": 2
+        },
+        {
+          "threat": "mend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 5
+        },
+        {
+          "threat": "echo",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 2,
+          "wrongGap": 6
+        },
+        {
+          "threat": "thirst",
+          "right": "press",
+          "wrong": "evade",
+          "rightGap": 10,
+          "wrongGap": 6
+        },
+        {
+          "threat": "thorns",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 7,
+          "wrongGap": 10
+        },
+        {
+          "threat": "rend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 20,
+          "wrongGap": 3
+        },
+        {
+          "threat": "reck",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 13,
+          "wrongGap": 13
+        },
+        {
+          "threat": "bulwark",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 4,
+          "wrongGap": 20
+        },
+        {
+          "threat": "shock",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 7
+        },
+        {
+          "threat": "roulette",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 21,
+          "wrongGap": 9
+        },
+        {
+          "threat": "enrage",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 3,
+          "wrongGap": 7
+        }
+      ],
+      "hypothesisChanges": 11,
+      "minMargin": 2
+    },
+    {
+      "p": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "g": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.25
+      },
+      "e": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      },
+      "failed": [],
+      "answers": [
+        {
+          "threat": "smite",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 4
+        },
+        {
+          "threat": "aegis",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 8,
+          "wrongGap": 9
+        },
+        {
+          "threat": "dot",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 16,
+          "wrongGap": 7
+        },
+        {
+          "threat": "fury",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 20,
+          "wrongGap": 11
+        },
+        {
+          "threat": "ambush",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 43,
+          "wrongGap": 3
+        },
+        {
+          "threat": "eye",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 11,
+          "wrongGap": 3
+        },
+        {
+          "threat": "veil",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 7,
+          "wrongGap": 2
+        },
+        {
+          "threat": "mend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 5
+        },
+        {
+          "threat": "echo",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 2,
+          "wrongGap": 6
+        },
+        {
+          "threat": "thirst",
+          "right": "press",
+          "wrong": "evade",
+          "rightGap": 10,
+          "wrongGap": 6
+        },
+        {
+          "threat": "thorns",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 7,
+          "wrongGap": 10
+        },
+        {
+          "threat": "rend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 20,
+          "wrongGap": 3
+        },
+        {
+          "threat": "reck",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 13,
+          "wrongGap": 13
+        },
+        {
+          "threat": "bulwark",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 4,
+          "wrongGap": 20
+        },
+        {
+          "threat": "shock",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 7
+        },
+        {
+          "threat": "roulette",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 21,
+          "wrongGap": 9
+        },
+        {
+          "threat": "enrage",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 3,
+          "wrongGap": 7
+        }
+      ],
+      "hypothesisChanges": 11,
+      "minMargin": 2
+    },
+    {
+      "p": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "g": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.5
+      },
+      "e": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      },
+      "failed": [],
+      "answers": [
+        {
+          "threat": "smite",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 4
+        },
+        {
+          "threat": "aegis",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 8,
+          "wrongGap": 9
+        },
+        {
+          "threat": "dot",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 16,
+          "wrongGap": 7
+        },
+        {
+          "threat": "fury",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 20,
+          "wrongGap": 11
+        },
+        {
+          "threat": "ambush",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 33,
+          "wrongGap": 3
+        },
+        {
+          "threat": "eye",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 11,
+          "wrongGap": 3
+        },
+        {
+          "threat": "veil",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 7,
+          "wrongGap": 2
+        },
+        {
+          "threat": "mend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 5
+        },
+        {
+          "threat": "echo",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 2,
+          "wrongGap": 6
+        },
+        {
+          "threat": "thirst",
+          "right": "press",
+          "wrong": "evade",
+          "rightGap": 10,
+          "wrongGap": 6
+        },
+        {
+          "threat": "thorns",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 7,
+          "wrongGap": 10
+        },
+        {
+          "threat": "rend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 20,
+          "wrongGap": 3
+        },
+        {
+          "threat": "reck",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 13,
+          "wrongGap": 13
+        },
+        {
+          "threat": "bulwark",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 4,
+          "wrongGap": 20
+        },
+        {
+          "threat": "shock",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 7
+        },
+        {
+          "threat": "roulette",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 21,
+          "wrongGap": 9
+        },
+        {
+          "threat": "enrage",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 3,
+          "wrongGap": 7
+        }
+      ],
+      "hypothesisChanges": 11,
+      "minMargin": 2
+    },
+    {
+      "p": {
+        "dealt": 1.3,
+        "taken": 1.4
+      },
+      "g": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.75
+      },
+      "e": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      },
+      "failed": [],
+      "answers": [
+        {
+          "threat": "smite",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 4
+        },
+        {
+          "threat": "aegis",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 8,
+          "wrongGap": 9
+        },
+        {
+          "threat": "dot",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 16,
+          "wrongGap": 7
+        },
+        {
+          "threat": "fury",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 20,
+          "wrongGap": 11
+        },
+        {
+          "threat": "ambush",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 23,
+          "wrongGap": 3
+        },
+        {
+          "threat": "eye",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 11,
+          "wrongGap": 3
+        },
+        {
+          "threat": "veil",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 7,
+          "wrongGap": 2
+        },
+        {
+          "threat": "mend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 5
+        },
+        {
+          "threat": "echo",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 2,
+          "wrongGap": 6
+        },
+        {
+          "threat": "thirst",
+          "right": "press",
+          "wrong": "evade",
+          "rightGap": 10,
+          "wrongGap": 6
+        },
+        {
+          "threat": "thorns",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 7,
+          "wrongGap": 10
+        },
+        {
+          "threat": "rend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 20,
+          "wrongGap": 3
+        },
+        {
+          "threat": "reck",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 13,
+          "wrongGap": 13
+        },
+        {
+          "threat": "bulwark",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 4,
+          "wrongGap": 20
+        },
+        {
+          "threat": "shock",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 7
+        },
+        {
+          "threat": "roulette",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 21,
+          "wrongGap": 9
+        },
+        {
+          "threat": "enrage",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 3,
+          "wrongGap": 7
+        }
+      ],
+      "hypothesisChanges": 11,
+      "minMargin": 2
+    },
+    {
+      "p": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "g": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0
+      },
+      "e": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      },
+      "failed": [],
+      "answers": [
+        {
+          "threat": "smite",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 6,
+          "wrongGap": 4
+        },
+        {
+          "threat": "aegis",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 8,
+          "wrongGap": 9
+        },
+        {
+          "threat": "dot",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 17,
+          "wrongGap": 7
+        },
+        {
+          "threat": "fury",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 16,
+          "wrongGap": 11
+        },
+        {
+          "threat": "ambush",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 47,
+          "wrongGap": 8
+        },
+        {
+          "threat": "eye",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 7,
+          "wrongGap": 3
+        },
+        {
+          "threat": "veil",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 7,
+          "wrongGap": 20
+        },
+        {
+          "threat": "mend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 2,
+          "wrongGap": 5
+        },
+        {
+          "threat": "echo",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 2,
+          "wrongGap": 8
+        },
+        {
+          "threat": "thirst",
+          "right": "press",
+          "wrong": "evade",
+          "rightGap": 3,
+          "wrongGap": 6
+        },
+        {
+          "threat": "thorns",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 5,
+          "wrongGap": 10
+        },
+        {
+          "threat": "rend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 21,
+          "wrongGap": 3
+        },
+        {
+          "threat": "reck",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 8,
+          "wrongGap": 13
+        },
+        {
+          "threat": "bulwark",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 4,
+          "wrongGap": 34
+        },
+        {
+          "threat": "shock",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 7
+        },
+        {
+          "threat": "roulette",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 21,
+          "wrongGap": 7
+        },
+        {
+          "threat": "enrage",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 2,
+          "wrongGap": 7
+        }
+      ],
+      "hypothesisChanges": 12,
+      "minMargin": 2
+    },
+    {
+      "p": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "g": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.25
+      },
+      "e": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      },
+      "failed": [],
+      "answers": [
+        {
+          "threat": "smite",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 6,
+          "wrongGap": 4
+        },
+        {
+          "threat": "aegis",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 8,
+          "wrongGap": 9
+        },
+        {
+          "threat": "dot",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 17,
+          "wrongGap": 7
+        },
+        {
+          "threat": "fury",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 16,
+          "wrongGap": 11
+        },
+        {
+          "threat": "ambush",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 43,
+          "wrongGap": 8
+        },
+        {
+          "threat": "eye",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 7,
+          "wrongGap": 3
+        },
+        {
+          "threat": "veil",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 7,
+          "wrongGap": 20
+        },
+        {
+          "threat": "mend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 2,
+          "wrongGap": 5
+        },
+        {
+          "threat": "echo",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 2,
+          "wrongGap": 8
+        },
+        {
+          "threat": "thirst",
+          "right": "press",
+          "wrong": "evade",
+          "rightGap": 3,
+          "wrongGap": 6
+        },
+        {
+          "threat": "thorns",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 5,
+          "wrongGap": 10
+        },
+        {
+          "threat": "rend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 21,
+          "wrongGap": 3
+        },
+        {
+          "threat": "reck",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 8,
+          "wrongGap": 13
+        },
+        {
+          "threat": "bulwark",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 4,
+          "wrongGap": 34
+        },
+        {
+          "threat": "shock",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 7
+        },
+        {
+          "threat": "roulette",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 21,
+          "wrongGap": 7
+        },
+        {
+          "threat": "enrage",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 2,
+          "wrongGap": 7
+        }
+      ],
+      "hypothesisChanges": 12,
+      "minMargin": 2
+    },
+    {
+      "p": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "g": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.5
+      },
+      "e": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      },
+      "failed": [],
+      "answers": [
+        {
+          "threat": "smite",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 6,
+          "wrongGap": 4
+        },
+        {
+          "threat": "aegis",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 8,
+          "wrongGap": 9
+        },
+        {
+          "threat": "dot",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 17,
+          "wrongGap": 7
+        },
+        {
+          "threat": "fury",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 16,
+          "wrongGap": 11
+        },
+        {
+          "threat": "ambush",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 33,
+          "wrongGap": 8
+        },
+        {
+          "threat": "eye",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 7,
+          "wrongGap": 3
+        },
+        {
+          "threat": "veil",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 7,
+          "wrongGap": 20
+        },
+        {
+          "threat": "mend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 2,
+          "wrongGap": 5
+        },
+        {
+          "threat": "echo",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 2,
+          "wrongGap": 8
+        },
+        {
+          "threat": "thirst",
+          "right": "press",
+          "wrong": "evade",
+          "rightGap": 3,
+          "wrongGap": 6
+        },
+        {
+          "threat": "thorns",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 5,
+          "wrongGap": 10
+        },
+        {
+          "threat": "rend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 21,
+          "wrongGap": 3
+        },
+        {
+          "threat": "reck",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 8,
+          "wrongGap": 13
+        },
+        {
+          "threat": "bulwark",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 4,
+          "wrongGap": 34
+        },
+        {
+          "threat": "shock",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 7
+        },
+        {
+          "threat": "roulette",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 21,
+          "wrongGap": 7
+        },
+        {
+          "threat": "enrage",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 2,
+          "wrongGap": 7
+        }
+      ],
+      "hypothesisChanges": 12,
+      "minMargin": 2
+    },
+    {
+      "p": {
+        "dealt": 1.4,
+        "taken": 1.55
+      },
+      "g": {
+        "dealt": 0.7,
+        "taken": 0.7,
+        "openerBlunt": 0.75
+      },
+      "e": {
+        "dealt": 0.9,
+        "dodge": 0.08
+      },
+      "failed": [],
+      "answers": [
+        {
+          "threat": "smite",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 6,
+          "wrongGap": 4
+        },
+        {
+          "threat": "aegis",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 8,
+          "wrongGap": 9
+        },
+        {
+          "threat": "dot",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 17,
+          "wrongGap": 7
+        },
+        {
+          "threat": "fury",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 16,
+          "wrongGap": 11
+        },
+        {
+          "threat": "ambush",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 23,
+          "wrongGap": 8
+        },
+        {
+          "threat": "eye",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 7,
+          "wrongGap": 3
+        },
+        {
+          "threat": "veil",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 7,
+          "wrongGap": 20
+        },
+        {
+          "threat": "mend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 2,
+          "wrongGap": 5
+        },
+        {
+          "threat": "echo",
+          "right": "evade",
+          "wrong": "press",
+          "rightGap": 2,
+          "wrongGap": 8
+        },
+        {
+          "threat": "thirst",
+          "right": "press",
+          "wrong": "evade",
+          "rightGap": 3,
+          "wrongGap": 6
+        },
+        {
+          "threat": "thorns",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 5,
+          "wrongGap": 10
+        },
+        {
+          "threat": "rend",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 21,
+          "wrongGap": 3
+        },
+        {
+          "threat": "reck",
+          "right": "press",
+          "wrong": "guard",
+          "rightGap": 8,
+          "wrongGap": 13
+        },
+        {
+          "threat": "bulwark",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 4,
+          "wrongGap": 34
+        },
+        {
+          "threat": "shock",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 9,
+          "wrongGap": 7
+        },
+        {
+          "threat": "roulette",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 21,
+          "wrongGap": 7
+        },
+        {
+          "threat": "enrage",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 2,
+          "wrongGap": 7
+        }
+      ],
+      "hypothesisChanges": 12,
+      "minMargin": 2
+    },
+    {
+      "p": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "g": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0
+      },
+      "e": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      },
+      "failed": [],
+      "answers": [
+        {
+          "threat": "smite",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 51,
+          "wrongGap": 2
+        },
+        {
+          "threat": "aegis",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 68,
+          "wrongGap": 9
+        },
+        {
+          "threat": "dot",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 3,
+          "wrongGap": 6
+        },
+        {
+          "threat": "fury",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 9,
+          "wrongGap": 3
+        },
+        {
+          "threat": "ambush",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 106,
+          "wrongGap": 15
+        },
+        {
+          "threat": "eye",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 59,
+          "wrongGap": 11
+        },
+        {
+          "threat": "veil",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 49,
+          "wrongGap": 22
+        },
+        {
+          "threat": "mend",
+          "right": "press",
+          "wrong": "evade",
+          "rightGap": 2,
+          "wrongGap": 5
+        },
+        {
+          "threat": "echo",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 50,
+          "wrongGap": 16
+        },
+        {
+          "threat": "thirst",
+          "right": "guard",
+          "wrong": "evade",
+          "rightGap": 58,
+          "wrongGap": 11
+        },
+        {
+          "threat": "thorns",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 62,
+          "wrongGap": 8
+        },
+        {
+          "threat": "rend",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 14,
+          "wrongGap": 2
+        },
+        {
+          "threat": "reck",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 58,
+          "wrongGap": 9
+        },
+        {
+          "threat": "bulwark",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 63,
+          "wrongGap": 46
+        },
+        {
+          "threat": "shock",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 42,
+          "wrongGap": 15
+        },
+        {
+          "threat": "roulette",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 59,
+          "wrongGap": 19
+        },
+        {
+          "threat": "enrage",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 58,
+          "wrongGap": 14
+        }
+      ],
+      "hypothesisChanges": 12,
+      "minMargin": 2
+    },
+    {
+      "p": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "g": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0.25
+      },
+      "e": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      },
+      "failed": [],
+      "answers": [
+        {
+          "threat": "smite",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 51,
+          "wrongGap": 2
+        },
+        {
+          "threat": "aegis",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 68,
+          "wrongGap": 9
+        },
+        {
+          "threat": "dot",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 3,
+          "wrongGap": 6
+        },
+        {
+          "threat": "fury",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 9,
+          "wrongGap": 3
+        },
+        {
+          "threat": "ambush",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 105,
+          "wrongGap": 15
+        },
+        {
+          "threat": "eye",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 59,
+          "wrongGap": 11
+        },
+        {
+          "threat": "veil",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 49,
+          "wrongGap": 22
+        },
+        {
+          "threat": "mend",
+          "right": "press",
+          "wrong": "evade",
+          "rightGap": 2,
+          "wrongGap": 5
+        },
+        {
+          "threat": "echo",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 50,
+          "wrongGap": 16
+        },
+        {
+          "threat": "thirst",
+          "right": "guard",
+          "wrong": "evade",
+          "rightGap": 58,
+          "wrongGap": 11
+        },
+        {
+          "threat": "thorns",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 62,
+          "wrongGap": 8
+        },
+        {
+          "threat": "rend",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 14,
+          "wrongGap": 2
+        },
+        {
+          "threat": "reck",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 58,
+          "wrongGap": 9
+        },
+        {
+          "threat": "bulwark",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 63,
+          "wrongGap": 46
+        },
+        {
+          "threat": "shock",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 42,
+          "wrongGap": 15
+        },
+        {
+          "threat": "roulette",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 59,
+          "wrongGap": 19
+        },
+        {
+          "threat": "enrage",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 58,
+          "wrongGap": 14
+        }
+      ],
+      "hypothesisChanges": 12,
+      "minMargin": 2
+    },
+    {
+      "p": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "g": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0.5
+      },
+      "e": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      },
+      "failed": [],
+      "answers": [
+        {
+          "threat": "smite",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 51,
+          "wrongGap": 2
+        },
+        {
+          "threat": "aegis",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 68,
+          "wrongGap": 9
+        },
+        {
+          "threat": "dot",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 3,
+          "wrongGap": 6
+        },
+        {
+          "threat": "fury",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 9,
+          "wrongGap": 3
+        },
+        {
+          "threat": "ambush",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 104,
+          "wrongGap": 15
+        },
+        {
+          "threat": "eye",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 59,
+          "wrongGap": 11
+        },
+        {
+          "threat": "veil",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 49,
+          "wrongGap": 22
+        },
+        {
+          "threat": "mend",
+          "right": "press",
+          "wrong": "evade",
+          "rightGap": 2,
+          "wrongGap": 5
+        },
+        {
+          "threat": "echo",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 50,
+          "wrongGap": 16
+        },
+        {
+          "threat": "thirst",
+          "right": "guard",
+          "wrong": "evade",
+          "rightGap": 58,
+          "wrongGap": 11
+        },
+        {
+          "threat": "thorns",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 62,
+          "wrongGap": 8
+        },
+        {
+          "threat": "rend",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 14,
+          "wrongGap": 2
+        },
+        {
+          "threat": "reck",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 58,
+          "wrongGap": 9
+        },
+        {
+          "threat": "bulwark",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 63,
+          "wrongGap": 46
+        },
+        {
+          "threat": "shock",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 42,
+          "wrongGap": 15
+        },
+        {
+          "threat": "roulette",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 59,
+          "wrongGap": 19
+        },
+        {
+          "threat": "enrage",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 58,
+          "wrongGap": 14
+        }
+      ],
+      "hypothesisChanges": 12,
+      "minMargin": 2
+    },
+    {
+      "p": {
+        "dealt": 1.4,
+        "taken": 1.7
+      },
+      "g": {
+        "dealt": 0.6,
+        "taken": 0.5,
+        "openerBlunt": 0.75
+      },
+      "e": {
+        "dealt": 0.6,
+        "dodge": 0.32
+      },
+      "failed": [],
+      "answers": [
+        {
+          "threat": "smite",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 51,
+          "wrongGap": 2
+        },
+        {
+          "threat": "aegis",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 68,
+          "wrongGap": 9
+        },
+        {
+          "threat": "dot",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 3,
+          "wrongGap": 6
+        },
+        {
+          "threat": "fury",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 9,
+          "wrongGap": 3
+        },
+        {
+          "threat": "ambush",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 101,
+          "wrongGap": 15
+        },
+        {
+          "threat": "eye",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 59,
+          "wrongGap": 11
+        },
+        {
+          "threat": "veil",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 49,
+          "wrongGap": 22
+        },
+        {
+          "threat": "mend",
+          "right": "press",
+          "wrong": "evade",
+          "rightGap": 2,
+          "wrongGap": 5
+        },
+        {
+          "threat": "echo",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 50,
+          "wrongGap": 16
+        },
+        {
+          "threat": "thirst",
+          "right": "guard",
+          "wrong": "evade",
+          "rightGap": 58,
+          "wrongGap": 11
+        },
+        {
+          "threat": "thorns",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 62,
+          "wrongGap": 8
+        },
+        {
+          "threat": "rend",
+          "right": "evade",
+          "wrong": "guard",
+          "rightGap": 14,
+          "wrongGap": 2
+        },
+        {
+          "threat": "reck",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 58,
+          "wrongGap": 9
+        },
+        {
+          "threat": "bulwark",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 63,
+          "wrongGap": 46
+        },
+        {
+          "threat": "shock",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 42,
+          "wrongGap": 15
+        },
+        {
+          "threat": "roulette",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 59,
+          "wrongGap": 19
+        },
+        {
+          "threat": "enrage",
+          "right": "guard",
+          "wrong": "press",
+          "rightGap": 58,
+          "wrongGap": 14
+        }
+      ],
+      "hypothesisChanges": 12,
+      "minMargin": 2
+    }
+  ]
+}
