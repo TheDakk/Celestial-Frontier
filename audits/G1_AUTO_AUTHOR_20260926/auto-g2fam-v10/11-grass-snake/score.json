@@ -1,0 +1,18 @@
+{
+ "id": "11-grass-snake",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 17.4% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a limb-down appendage of 11.2% paint that no reference appendage lands on",
+  "missing-anatomy: part jaw (jaw) covers 7% paint (reference 23%)",
+  "missing-anatomy: part head (head) covers 3% paint (reference 4%)",
+  "missing-anatomy: part body-segment-0 (seg0) covers 6% paint (reference 12%)",
+  "missing-anatomy: part body-segment-3 (seg3) covers 8% paint (reference 9%)",
+  "missing-anatomy: part body-segment-6 (seg6) covers 7% paint (reference 10%)",
+  "missing-anatomy: part body-segment-7 (seg7) covers 8% paint (reference 7%)",
+  "missing-anatomy: part body-segment-8 (seg8) covers 7% paint (reference 5%)",
+  "missing-anatomy: part body-segment-9 (seg9) covers 7% paint (reference 2%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,9 @@
+{
+ "id": "04-robin",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+ ],
+ "semanticPresence": null
+}
