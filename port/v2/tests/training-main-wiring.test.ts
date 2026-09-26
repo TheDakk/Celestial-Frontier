@@ -105,13 +105,14 @@ function sliceTrainingTourErrors(source: string): string[] {
     "await recordTrainingReceipt('land', 6);",
     "await recordTrainingReceipt('planetside-briefing', 7);",
     "await recordTrainingReceipt('engineering-open', 8);",
-    "await recordTrainingReceipt('engineering-tour', 9, 'shipyard');",
-    "await recordTrainingReceipt('compendium-open', 10);",
-    "await recordTrainingReceipt('compendium-tour', 11, 'codex');",
-    "await recordTrainingReceipt('records-open', 12);",
-    "await recordTrainingReceipt('records-tour', 13, 'rec');",
-    "await recordTrainingReceipt('horizon', 14);",
-    "await recordTrainingReceipt('grad', 15);",
+    "await recordTrainingReceipt('engineering-forge-practice', 9, 'shipyard');",
+    "await recordTrainingReceipt('engineering-tour', 10, 'shipyard');",
+    "await recordTrainingReceipt('compendium-open', 11);",
+    "await recordTrainingReceipt('compendium-tour', 12, 'codex');",
+    "await recordTrainingReceipt('records-open', 13);",
+    "await recordTrainingReceipt('records-tour', 14, 'rec');",
+    "await recordTrainingReceipt('horizon', 15);",
+    "await recordTrainingReceipt('grad', 16);",
   ] as const;
   let prior = -1;
   for (const [index, receipt] of receipts.entries()) {
@@ -138,7 +139,7 @@ function sliceTrainingTourErrors(source: string): string[] {
     'hasUnnegatedSentenceClaim(planetsideBriefingCopy, /preview row[^.!?]*capture/i)',
     "trainingSideCheck('planetside-briefing')",
     "trainingSideCheck('grad')",
-    '/Field Training, step 15 of 15/i.test(gradFocus.announcement)',
+    '/Field Training, step 16 of 16/i.test(gradFocus.announcement)',
   ] as const;
   for (const [index, marker] of required.entries()) {
     if (!owner.includes(marker)) errors.push(`slice-training-oracle-${index + 1}`);
@@ -170,7 +171,8 @@ describe('Field Training Survey replacement wiring', () => {
   });
 
   it('rejects missing, unimported, and pre-publication refresh wiring', () => {
-    const missingCall = replaceUnique(mainSource, '  refreshTrainingScope();\n', '');
+    const surveyOwner = section(mainSource, 'function showSurvey(', '\nfunction hideSurvey(');
+    const missingCall = replaceUnique(mainSource, surveyOwner, replaceUnique(surveyOwner, '  refreshTrainingScope();\n', ''));
     expect(wiringErrors(missingCall)).toEqual(['training-refresh-order']);
 
     const missingImport = replaceUnique(mainSource, ', refreshTrainingScope,', ',');
@@ -320,19 +322,19 @@ describe('Field Training authoritative Slice journey', () => {
   it('rejects skipped cards, forged board receipts, missing storage proof, and vacuous board locks', () => {
     const missingOrientation = replaceUnique(
       sliceSource,
-      "  await recordTrainingReceipt('records-tour', 13, 'rec');\n",
+      "  await recordTrainingReceipt('records-tour', 14, 'rec');\n",
       '',
     );
     expect(sliceTrainingTourErrors(missingOrientation))
-      .toContain('slice-training-receipt-13');
+      .toContain('slice-training-receipt-14');
 
     const forgedPanel = replaceUnique(
       sliceSource,
-      "await recordTrainingReceipt('engineering-tour', 9, 'shipyard');",
-      "await recordTrainingReceipt('engineering-tour', 9, 'codex');",
+      "await recordTrainingReceipt('engineering-tour', 10, 'shipyard');",
+      "await recordTrainingReceipt('engineering-tour', 10, 'codex');",
     );
     expect(sliceTrainingTourErrors(forgedPanel))
-      .toContain('slice-training-receipt-9');
+      .toContain('slice-training-receipt-10');
 
     const noPrimaryProof = replaceUnique(
       sliceSource,

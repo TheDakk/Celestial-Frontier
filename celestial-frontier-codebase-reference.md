@@ -7231,3 +7231,8 @@ version remains null; the development draft never consumes the shipped update po
 ### G2 generated quadruped pilot — matches tooling as of 2026-09-26
 
 `compile-master-prompt.mjs --library` compiles canonical quadruped identities without hand authoring. `derive-marking-masks.mjs` creates six source-alpha-conserved candidate masks; these require G1 record binding before admission. Twenty retained masters and verifier findings are in `audits/G2_QUADRUPED_PILOT_20260926/README.md`. No runtime creature replacement follows from this tooling.
+
+
+### Parked gameplay recovery — matches code as of 2026-09-26
+
+The two missing cf1b9a78 owners are training-forge-practice.ts and living-species-preview.ts, now integrated through Main. The Forge owner uses a private cloned state and canonical Arc3 derivation with exact output/unchanged protected-carrier checks. The preview owns one existing440px image through SpeciesArtLoader with bounded motion and lifecycle cleanup. Current16-card Training retains save restoration; no old whole-file Main/Guide or wall-week lifecycle was restored. See audits/PARKED_GAMEPLAY_COMPLETION_20260926 for evidence.

@@ -6942,7 +6942,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 119,
-    sha256: 'adae685c1f4b98509f4338f2db241b6a978131fb09a844587e537ffc111f3d90',
+    sha256: '28246d589db8a5625042fd711744eca3595bfb0f02986fb33381be990bf62c4b',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -27320,10 +27320,10 @@ try {
       primary:await ${READ_PRIMARY_EXPRESSION}};})()`);
     trainingSequenceReceipts.push(receipt);
     const expectedHeading = `FIELD TRAINING · ${ordinal} / 15`;
-    const announced = new RegExp(`Field Training, step ${ordinal} of 15`, 'i').test(receipt.announcement);
+    const announced = new RegExp(`Field Training, step ${ordinal} of 16`, 'i').test(receipt.announcement);
     if (!receipt.active || receipt.step !== expectedStep || receipt.panel !== expectedPanel
       || receipt.heading !== expectedHeading || !announced || receipt.primary !== dtrainFullBootRaw) {
-      fails.push(`DRILL RECEIPT ${ordinal}/15: exact card, panel, announcement, or held primary drifted: `
+      fails.push(`DRILL RECEIPT ${ordinal}/16: exact card, panel, announcement, or held primary drifted: `
         + JSON.stringify({ expectedStep, expectedPanel, expectedHeading, receipt,
           primaryStable: receipt.primary === dtrainFullBootRaw }));
     }
@@ -27380,7 +27380,7 @@ try {
      authored instruction. Tab/Shift+Tab must wrap inside the card. */
   const welcomeFocus = await evalT(trainingFocus);
   if (welcomeFocus.active !== 'tutbtn' || !welcomeFocus.allowed
-    || !/Field Training, step 1 of 15/i.test(welcomeFocus.announcement)
+    || !/Field Training, step 1 of 16/i.test(welcomeFocus.announcement)
     || !/Welcome to Sol/i.test(welcomeFocus.announcement)) {
     fails.push('DRILL KEYBOARD: welcome was not focused and announced: ' + JSON.stringify(welcomeFocus));
   }
@@ -27474,7 +27474,7 @@ try {
   await recordTrainingReceipt('find-earth', 2);
   const findEarthFocus = await evalT(trainingFocus);
   if (findEarthFocus.active !== 'CANVAS' || !findEarthFocus.allowed
-    || !/Field Training, step 2 of 15/i.test(findEarthFocus.announcement)
+    || !/Field Training, step 2 of 16/i.test(findEarthFocus.announcement)
     || !/find home/i.test(findEarthFocus.announcement)) {
     fails.push('DRILL KEYBOARD: find-earth did not focus/announce the canvas lesson: ' + JSON.stringify(findEarthFocus));
   }
@@ -27608,7 +27608,7 @@ try {
   await recordTrainingReceipt('survey-tour', 3);
   const surveyTourFocus = await evalT(trainingFocus);
   if (surveyTourFocus.active !== 'tutbtn' || !surveyTourFocus.allowed
-    || !/Field Training, step 3 of 15/i.test(surveyTourFocus.announcement)) {
+    || !/Field Training, step 3 of 16/i.test(surveyTourFocus.announcement)) {
     fails.push('DRILL KEYBOARD: survey-tour did not focus/announce Got It: ' + JSON.stringify(surveyTourFocus));
   }
   /* Same outcome with a live Earth card: Escape must neither hide the card
@@ -27674,7 +27674,7 @@ try {
   const atlasAddFocus = await evalT(trainingFocus);
   if (atlasAddFocus.active !== 'BUTTON' || !atlasAddFocus.allowed
     || await evalT(`document.activeElement?.getAttribute('data-act')`) !== 'add'
-    || !/Field Training, step 4 of 15/i.test(atlasAddFocus.announcement)) {
+    || !/Field Training, step 4 of 16/i.test(atlasAddFocus.announcement)) {
     fails.push('DRILL KEYBOARD: atlas-add did not focus/announce the real Add action: ' + JSON.stringify(atlasAddFocus));
   }
   const atlasAddCopy = await evalT(`(()=>{ const text=(document.querySelector('[data-sel=tuttext]')||{}).textContent||'';
@@ -27714,7 +27714,7 @@ try {
   await recordTrainingReceipt('atlas-open', 5);
   const atlasOpenFocus = await evalT(trainingFocus);
   if (atlasOpenFocus.active !== 'dockatlas' || !atlasOpenFocus.allowed
-    || !/Field Training, step 5 of 15/i.test(atlasOpenFocus.announcement)) {
+    || !/Field Training, step 5 of 16/i.test(atlasOpenFocus.announcement)) {
     fails.push('DRILL KEYBOARD: atlas-open did not focus/announce the visible phone Atlas control: '
       + JSON.stringify(atlasOpenFocus));
   }
@@ -27752,7 +27752,7 @@ try {
       panel:window.__CF_SLICE__.api.state().panelOpen,pending:window.__CF_SLICE__.api.state().releasePending}; })()`);
   if (!landFocus.landFocused || !landFocus.landReachable || !landFocus.atlasClosed || !landFocus.allowed
     || landFocus.panel !== null || landFocus.pending !== RELEASE_FIXTURE_VERSION
-    || !/Field Training, step 6 of 15/i.test(landFocus.announcement)) {
+    || !/Field Training, step 6 of 16/i.test(landFocus.announcement)) {
     fails.push('DRILL KEYBOARD: land did not become the focused/reachable action after Atlas: ' + JSON.stringify(landFocus));
   }
   const landCopy = await evalT(`(document.querySelector('[data-sel=tuttext]')||{}).textContent||''`);
@@ -27795,7 +27795,7 @@ try {
   await recordTrainingReceipt('planetside-briefing', 7);
   const planetsideBriefingFocus = await evalT(trainingFocus);
   if (planetsideBriefingFocus.active !== 'tutbtn' || !planetsideBriefingFocus.allowed
-    || !/Field Training, step 7 of 15/i.test(planetsideBriefingFocus.announcement)) {
+    || !/Field Training, step 7 of 16/i.test(planetsideBriefingFocus.announcement)) {
     fails.push('DRILL KEYBOARD: Planetside briefing was not focused and announced: '
       + JSON.stringify(planetsideBriefingFocus));
   }
@@ -27836,7 +27836,7 @@ try {
   await recordTrainingReceipt('engineering-open', 8);
   const engineeringOpenFocus = await evalT(trainingFocus);
   if (engineeringOpenFocus.active !== 'dockshipyard' || !engineeringOpenFocus.allowed
-    || !/Field Training, step 8 of 15/i.test(engineeringOpenFocus.announcement)) {
+    || !/Field Training, step 8 of 16/i.test(engineeringOpenFocus.announcement)) {
     fails.push('DRILL KEYBOARD: Engineering open did not focus/announce the visible phone control: '
       + JSON.stringify(engineeringOpenFocus));
   }
@@ -27848,10 +27848,22 @@ try {
   }
   await keyT('Enter', 'Enter');
   await sleep(250);
-  if (await step() !== 'engineering-tour') {
-    fails.push('DRILL: real Engineering open did not emit the exact tour event: ' + await step());
+  if (await step() !== 'engineering-forge-practice') {
+    fails.push('DRILL: Engineering open did not enter Forge practice: ' + await step());
   }
-  await recordTrainingReceipt('engineering-tour', 9, 'shipyard');
+  await recordTrainingReceipt('engineering-forge-practice', 9, 'shipyard');
+  const practiceBefore = await evalT(READ_PRIMARY_EXPRESSION);
+  const practiceButton = await evalT(`(()=>{const b=document.querySelector('[data-training-forge-practice="true"]');
+    if(!b||b.disabled)return null;b.focus();return {text:b.textContent,enabled:!b.disabled};})()`);
+  if (!practiceButton || !/Practice Forge Iron Plate/.test(practiceButton.text)) {
+    fails.push('DRILL: native isolated Forge control missing: '+JSON.stringify(practiceButton));
+  }
+  await keyT('Enter', 'Enter');
+  await sleep(120);
+  if (await step() !== 'engineering-tour' || await evalT(READ_PRIMARY_EXPRESSION) !== practiceBefore) {
+    fails.push('DRILL: Forge practice did not reach the tour with unchanged durable save: '+await step());
+  }
+  await recordTrainingReceipt('engineering-tour', 10, 'shipyard');
   const engineeringTour = await evalT(trainingBoardTourCheck('shipyardpanel', 'engineering-tour'));
   const engineeringTourFocus = await evalT(trainingFocus);
   const engineeringHold = await evalT(`(()=>{const s=window.__CF_SLICE__.api.state(),panel=document.getElementById('shipyardpanel'),
@@ -27860,7 +27872,7 @@ try {
     actions:actions.length,allLocked:actions.length>0&&actions.every((action)=>
       action instanceof HTMLButtonElement&&action.disabled)};})()`);
   if (!engineeringTour.ok || engineeringTourFocus.active !== 'tutbtn' || !engineeringTourFocus.allowed
-    || !/Field Training, step 9 of 15/i.test(engineeringTour.announcement)
+    || !/Field Training, step 10 of 16/i.test(engineeringTour.announcement)
     || !engineeringHold.held || engineeringHold.unavailable
     || engineeringHold.actions !== ENGINEERING_ACTION_CONTROL_COUNT || !engineeringHold.allLocked
     || !/source-proven opportunities/i.test(engineeringTour.announcement)
@@ -27883,10 +27895,10 @@ try {
   if (await step() !== 'compendium-open') {
     fails.push('DRILL: Engineering tour did not close into Compendium open: ' + await step());
   }
-  await recordTrainingReceipt('compendium-open', 10);
+  await recordTrainingReceipt('compendium-open', 11);
   const compendiumOpenFocus = await evalT(trainingFocus);
   if (compendiumOpenFocus.active !== 'dockcodex' || !compendiumOpenFocus.allowed
-    || !/Field Training, step 10 of 15/i.test(compendiumOpenFocus.announcement)) {
+    || !/Field Training, step 11 of 16/i.test(compendiumOpenFocus.announcement)) {
     fails.push('DRILL KEYBOARD: Compendium open did not focus/announce the visible phone control: '
       + JSON.stringify(compendiumOpenFocus));
   }
@@ -27901,7 +27913,7 @@ try {
   if (await step() !== 'compendium-tour') {
     fails.push('DRILL: real Compendium open did not emit the exact tour event: ' + await step());
   }
-  await recordTrainingReceipt('compendium-tour', 11, 'codex');
+  await recordTrainingReceipt('compendium-tour', 12, 'codex');
   const compendiumTour = await evalT(trainingBoardTourCheck('codexpanel', 'compendium-tour'));
   const compendiumTourFocus = await evalT(trainingFocus);
   const compendiumHeldRows = await evalT(`(()=>{const panel=document.getElementById('codexpanel'),rows=[...panel.querySelectorAll('[data-sel="codex-entry"]')];return {
@@ -27909,7 +27921,7 @@ try {
     allLocked:rows.length>0&&rows.every((row)=>!!row.closest('[inert]')&&getComputedStyle(row).pointerEvents==='none'),
     emptyText:(panel.querySelector('.empty')?.textContent||'').trim()};})()`);
   if (!compendiumTour.ok || compendiumTourFocus.active !== 'tutbtn' || !compendiumTourFocus.allowed
-    || !/Field Training, step 11 of 15/i.test(compendiumTour.announcement)
+    || !/Field Training, step 12 of 16/i.test(compendiumTour.announcement)
     || compendiumHeldRows.count !== 0 || compendiumHeldRows.rows !== 0
     || !/No species yet.*imported discoveries appear here.*Live catalogue writing arrives with the discovery path/i
       .test(compendiumHeldRows.emptyText)
@@ -27937,10 +27949,10 @@ try {
   if (await step() !== 'records-open') {
     fails.push('DRILL: Compendium tour did not close into Records open: ' + await step());
   }
-  await recordTrainingReceipt('records-open', 12);
+  await recordTrainingReceipt('records-open', 13);
   const recordsOpenFocus = await evalT(trainingFocus);
   if (recordsOpenFocus.active !== 'dockrecords' || !recordsOpenFocus.allowed
-    || !/Field Training, step 12 of 15/i.test(recordsOpenFocus.announcement)) {
+    || !/Field Training, step 13 of 16/i.test(recordsOpenFocus.announcement)) {
     fails.push('DRILL KEYBOARD: Records open did not focus/announce the visible phone control: '
       + JSON.stringify(recordsOpenFocus));
   }
@@ -27955,11 +27967,11 @@ try {
   if (await step() !== 'records-tour') {
     fails.push('DRILL: real Records open did not emit the exact tour event: ' + await step());
   }
-  await recordTrainingReceipt('records-tour', 13, 'rec');
+  await recordTrainingReceipt('records-tour', 14, 'rec');
   const recordsTour = await evalT(trainingBoardTourCheck('recpanel', 'records-tour'));
   const recordsTourFocus = await evalT(trainingFocus);
   if (!recordsTour.ok || recordsTourFocus.active !== 'tutbtn' || !recordsTourFocus.allowed
-    || !/Field Training, step 13 of 15/i.test(recordsTour.announcement)
+    || !/Field Training, step 14 of 16/i.test(recordsTour.announcement)
     || !/Records are evidence, not a reward fountain/i.test(recordsTourFocus.announcement)
     || !/26 exact-event achievements appear only after their owning transaction verifies/i.test(recordsTourFocus.announcement)
     || !/only daily and decade still lack event owners/i.test(recordsTourFocus.announcement)
@@ -27987,10 +27999,10 @@ try {
   await keyT('Enter', 'Enter');
   await sleep(120);
   if (await step() !== 'horizon') fails.push('DRILL: Records tour did not reach the horizon: ' + await step());
-  await recordTrainingReceipt('horizon', 14);
+  await recordTrainingReceipt('horizon', 15);
   const horizonFocus = await evalT(trainingFocus);
   if (horizonFocus.active !== 'tutbtn' || !horizonFocus.allowed
-    || !/Field Training, step 14 of 15/i.test(horizonFocus.announcement)
+    || !/Field Training, step 15 of 16/i.test(horizonFocus.announcement)
     || !/Elemental Titan.*Apex Guardian.*strongest fauna/i.test(horizonFocus.announcement)
     || !/a defeated captured ruler returns after active-play Recovery/i.test(horizonFocus.announcement)
     || !/nine Prime Signatures.*ninth opens the Frontier/i.test(horizonFocus.announcement)
@@ -28002,17 +28014,17 @@ try {
   await keyT('Enter', 'Enter');
   await sleep(120);
   if (await step() !== 'grad') fails.push('DRILL: horizon did not reach graduation: ' + await step());
-  await recordTrainingReceipt('grad', 15);
+  await recordTrainingReceipt('grad', 16);
   const exactTrainingSequence = [
     'welcome', 'find-earth', 'survey-tour', 'atlas-add', 'atlas-open', 'land',
-    'planetside-briefing', 'engineering-open', 'engineering-tour',
+    'planetside-briefing', 'engineering-open', 'engineering-forge-practice', 'engineering-tour',
     'compendium-open', 'compendium-tour', 'records-open', 'records-tour',
     'horizon', 'grad',
   ];
   const observedTrainingSequence = trainingSequenceReceipts.map((receipt) => receipt.step);
   if (trainingSequenceReceipts.length !== exactTrainingSequence.length
     || JSON.stringify(observedTrainingSequence) !== JSON.stringify(exactTrainingSequence)) {
-    fails.push('DRILL SEQUENCE: exact 15-card causal receipt ledger drifted or skipped a card: '
+    fails.push('DRILL SEQUENCE: exact 16-card causal receipt ledger drifted or skipped a card: '
       + JSON.stringify({ expected: exactTrainingSequence, observed: observedTrainingSequence }));
   }
   const gradSide = await evalT(trainingSideCheck('grad'));
@@ -28021,7 +28033,7 @@ try {
   }
   const gradFocus = await evalT(trainingFocus);
   if (gradFocus.active !== 'tutbtn' || !gradFocus.allowed
-    || !/Field Training, step 15 of 15/i.test(gradFocus.announcement)
+    || !/Field Training, step 16 of 16/i.test(gradFocus.announcement)
     || !/CF1 world code/i.test(gradFocus.announcement)
     || !/Biosphere Yield/i.test(gradFocus.announcement)
     || !/explicit Discover Life/i.test(gradFocus.announcement)
@@ -28031,7 +28043,7 @@ try {
     || !gradFocus.announcement.includes("Repeat sightings add no duplicate record or discovery reward")
     || !/Scout standing before the attempt earns up to \+2 XP.*capped at 486/i.test(gradFocus.announcement)
     || !/real Flora detail can Eat 1 for explorer healing, poison, and nourishment/i.test(gradFocus.announcement)
-    || !/This drill performs no capture, meal, breeding, rename, Field Scout change, engineering action, or combat/i.test(gradFocus.announcement)) {
+    || !/This drill performs no live capture, meal, breeding, rename, Field Scout change, persistent engineering action, or combat/i.test(gradFocus.announcement)) {
     fails.push('DRILL KEYBOARD: graduation was not focused and announced: ' + JSON.stringify(gradFocus));
   }
   /* Hold an older persist across the native Finish activation, then attempt

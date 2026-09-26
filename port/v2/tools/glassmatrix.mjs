@@ -14686,9 +14686,9 @@ async function main() {
               ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:close|dismiss|continue|keep playing|keep exploring)/i.test(trainingText)
               ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:discard|clear|overwrite|silently ignore)/i.test(trainingText),
             trainingContract=trainingHeading==='Gameplay'
-              &&trainingText.includes('The current 15-card drill keeps six real navigation lessons for finding Earth, reading Survey, charting, opening the Atlas, and landing')
-              &&trainingText.includes('adds read-only Planetside, Engineering, Compendium, Records, Guardian/combat, and CF1 Share/Follow orientation')
-              &&trainingText.includes('Training locks every mutating board action and performs no capture, meal, breeding, rename, Field Scout change, engineering transaction, or combat')
+              &&trainingText.includes('The current 16-card drill keeps six real navigation lessons for finding Earth, reading Survey, charting, opening the Atlas, and landing')
+              &&trainingText.includes('adds one isolated Iron Plate Forge practice and read-only Planetside, Engineering, Compendium, Records, Guardian/combat, and CF1 Share/Follow orientation')
+              &&trainingText.includes('Training locks every live mutating board action and performs no capture, meal, breeding, rename, Field Scout change, persistent engineering transaction, or combat')
               &&trainingText.includes('Restart captures the exact pre-Training view')
               &&trainingText.includes('A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view')
               &&trainingText.includes('if verification pauses, that exact view stays saved')
@@ -15063,7 +15063,7 @@ async function main() {
               lessonStale=${developmentDetailCheck};lesson.textContent=lessonText;
               lesson.textContent=lessonText+' Escape from a wrong-world detour abandons Sol and the lesson.';lessonContradictionChanged=lesson.textContent!==lessonText;
               lessonContradictory=${developmentDetailCheck};lesson.textContent=lessonText;
-              training.textContent=trainingText.replace('The current 15-card drill keeps six real navigation lessons for finding Earth, reading Survey, charting, opening the Atlas, and landing',
+              training.textContent=trainingText.replace('The current 16-card drill keeps six real navigation lessons for finding Earth, reading Survey, charting, opening the Atlas, and landing',
                 'current Training inventory omitted');
               trainingStale=${developmentDetailCheck};training.textContent=trainingText;
               training.textContent=trainingText.replace('every other expedition field is retained from the surrounding save','surrounding-save ownership omitted');

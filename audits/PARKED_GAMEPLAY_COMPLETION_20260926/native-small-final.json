@@ -1,0 +1,778 @@
+{
+  "schema": "cf-parked-gameplay-native/v1",
+  "status": "PASS",
+  "certification": false,
+  "scope": "Actual local Vite app; isolated fresh save, native input. Synthetic lesson/corpus setup, native Forge and portrait controls. Not full Slice/Glass/I5.",
+  "sources": {
+    "main.ts": "9c56410b358c28fe9b84d7649fae0e87d5b613772cbcf0d28e2cbdf3480e5b9c",
+    "training.ts": "23a6939a879f041ed348d387cab38e6cf3877be0f7b6d548ff237780ba14a69d",
+    "training-forge-practice.ts": "e042f6f8cb35df66b62ebdc5c5cbc61e12207ed34c2be2ef17847a314c73073c",
+    "living-species-preview.ts": "04ade0153d1ce77a206fd6bbf7a7f93d5de564386fa74150b28e8b7042818ec1",
+    "ui-sheet-style.ts": "f9ed00f1c59f7944e8e8058ad1fb34b47c60a809673e5b164a5b415449a357ac"
+  },
+  "rows": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568,
+        "mobile": true
+      },
+      "inputs": [
+        {
+          "selector": "[data-sel=tutbtn]",
+          "target": {
+            "selector": "[data-sel=tutbtn]",
+            "available": true,
+            "issues": [],
+            "point": {
+              "x": 66.7421875,
+              "y": 390.859375
+            },
+            "rect": {
+              "top": 360.71875,
+              "bottom": 421,
+              "left": 25,
+              "right": 108.484375,
+              "width": 83.484375,
+              "height": 60.28125
+            },
+            "hit": {
+              "tag": "BUTTON",
+              "id": "",
+              "sel": "tutbtn"
+            },
+            "clips": [
+              {
+                "owner": {
+                  "tag": "DIV",
+                  "id": "tutcard",
+                  "sel": "tutcard"
+                },
+                "top": 193.765625,
+                "bottom": 436,
+                "left": 8,
+                "right": 312,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "BODY",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "HTML",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              }
+            ]
+          },
+          "events": [
+            {
+              "trusted": true
+            }
+          ]
+        },
+        {
+          "selector": "#dockshipyard",
+          "target": {
+            "selector": "#dockshipyard",
+            "available": true,
+            "issues": [],
+            "point": {
+              "x": 220,
+              "y": 486
+            },
+            "rect": {
+              "top": 464,
+              "bottom": 508,
+              "left": 192,
+              "right": 248,
+              "width": 56,
+              "height": 44
+            },
+            "hit": {
+              "tag": "SPAN",
+              "id": "",
+              "sel": null
+            },
+            "clips": [
+              {
+                "owner": {
+                  "tag": "BODY",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "HTML",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              }
+            ]
+          },
+          "events": [
+            {
+              "trusted": true
+            }
+          ]
+        },
+        {
+          "selector": "#shipyardpanel [data-pnx=\"shipyard\"]",
+          "target": {
+            "selector": "#shipyardpanel [data-pnx=\"shipyard\"]",
+            "available": true,
+            "issues": [],
+            "point": {
+              "x": 279,
+              "y": 174
+            },
+            "rect": {
+              "top": 152,
+              "bottom": 196,
+              "left": 257,
+              "right": 301,
+              "width": 44,
+              "height": 44
+            },
+            "hit": {
+              "tag": "BUTTON",
+              "id": "",
+              "sel": null
+            },
+            "clips": [
+              {
+                "owner": {
+                  "tag": "ASIDE",
+                  "id": "shipyardpanel",
+                  "sel": null
+                },
+                "top": 137,
+                "bottom": 301,
+                "left": 8,
+                "right": 312,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "BODY",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "HTML",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              }
+            ]
+          },
+          "events": [
+            {
+              "trusted": true
+            }
+          ]
+        },
+        {
+          "selector": "#dockshipyard",
+          "target": {
+            "selector": "#dockshipyard",
+            "available": true,
+            "issues": [],
+            "point": {
+              "x": 220,
+              "y": 486
+            },
+            "rect": {
+              "top": 464,
+              "bottom": 508,
+              "left": 192,
+              "right": 248,
+              "width": 56,
+              "height": 44
+            },
+            "hit": {
+              "tag": "SPAN",
+              "id": "",
+              "sel": null
+            },
+            "clips": [
+              {
+                "owner": {
+                  "tag": "BODY",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "HTML",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              }
+            ]
+          },
+          "events": [
+            {
+              "trusted": true
+            }
+          ]
+        },
+        {
+          "selector": "[data-training-forge-practice]",
+          "target": {
+            "selector": "[data-training-forge-practice]",
+            "available": true,
+            "issues": [],
+            "point": {
+              "x": 114,
+              "y": 218.6875
+            },
+            "rect": {
+              "top": 195.6875,
+              "bottom": 241.6875,
+              "left": 41,
+              "right": 187,
+              "width": 146,
+              "height": 46
+            },
+            "hit": {
+              "tag": "BUTTON",
+              "id": "",
+              "sel": null
+            },
+            "clips": [
+              {
+                "owner": {
+                  "tag": "ASIDE",
+                  "id": "shipyardpanel",
+                  "sel": null
+                },
+                "top": 137,
+                "bottom": 301,
+                "left": 8,
+                "right": 312,
+                "scrollTop": 1379
+              },
+              {
+                "owner": {
+                  "tag": "BODY",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "HTML",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              }
+            ]
+          },
+          "events": [
+            {
+              "trusted": true
+            }
+          ]
+        },
+        {
+          "selector": "[data-sel=tutskip]",
+          "target": {
+            "selector": "[data-sel=tutskip]",
+            "available": true,
+            "issues": [],
+            "point": {
+              "x": 218.640625,
+              "y": 404.78125
+            },
+            "rect": {
+              "top": 376.59375,
+              "bottom": 432.96875,
+              "left": 142.28125,
+              "right": 295,
+              "width": 152.71875,
+              "height": 56.375
+            },
+            "hit": {
+              "tag": "BUTTON",
+              "id": "",
+              "sel": "tutskip"
+            },
+            "clips": [
+              {
+                "owner": {
+                  "tag": "DIV",
+                  "id": "tutcard",
+                  "sel": "tutcard"
+                },
+                "top": 309,
+                "bottom": 436,
+                "left": 8,
+                "right": 312,
+                "scrollTop": 343
+              },
+              {
+                "owner": {
+                  "tag": "BODY",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "HTML",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              }
+            ]
+          },
+          "events": [
+            {
+              "trusted": true
+            }
+          ]
+        },
+        {
+          "selector": "#dockcodex",
+          "target": {
+            "selector": "#dockcodex",
+            "available": true,
+            "issues": [],
+            "point": {
+              "x": 100,
+              "y": 486
+            },
+            "rect": {
+              "top": 464,
+              "bottom": 508,
+              "left": 72,
+              "right": 128,
+              "width": 56,
+              "height": 44
+            },
+            "hit": {
+              "tag": "SPAN",
+              "id": "",
+              "sel": null
+            },
+            "clips": [
+              {
+                "owner": {
+                  "tag": "BODY",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "HTML",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              }
+            ]
+          },
+          "events": [
+            {
+              "trusted": true
+            }
+          ]
+        },
+        {
+          "selector": "[data-sel=codex-entry]",
+          "target": {
+            "selector": "[data-sel=codex-entry]",
+            "available": true,
+            "issues": [],
+            "point": {
+              "x": 138,
+              "y": 292.5
+            },
+            "rect": {
+              "top": 264,
+              "bottom": 321,
+              "left": 23,
+              "right": 253,
+              "width": 230,
+              "height": 57
+            },
+            "hit": {
+              "tag": "SPAN",
+              "id": "",
+              "sel": null
+            },
+            "clips": [
+              {
+                "owner": {
+                  "tag": "DIV",
+                  "id": "",
+                  "sel": "codex-scroll"
+                },
+                "top": 264,
+                "bottom": 343.25,
+                "left": 23,
+                "right": 253,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "ASIDE",
+                  "id": "codexpanel",
+                  "sel": null
+                },
+                "top": 137,
+                "bottom": 358.25,
+                "left": 8,
+                "right": 312,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "BODY",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "HTML",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              }
+            ]
+          },
+          "events": [
+            {
+              "trusted": true
+            }
+          ]
+        },
+        {
+          "selector": "#codexback",
+          "target": {
+            "selector": "#codexback",
+            "available": true,
+            "issues": [],
+            "point": {
+              "x": 105.3671875,
+              "y": 174
+            },
+            "rect": {
+              "top": 152,
+              "bottom": 196,
+              "left": 52,
+              "right": 158.734375,
+              "width": 106.734375,
+              "height": 44
+            },
+            "hit": {
+              "tag": "BUTTON",
+              "id": "codexback",
+              "sel": null
+            },
+            "clips": [
+              {
+                "owner": {
+                  "tag": "ASIDE",
+                  "id": "codexpanel",
+                  "sel": null
+                },
+                "top": 137,
+                "bottom": 376.25,
+                "left": 8,
+                "right": 312,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "BODY",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              },
+              {
+                "owner": {
+                  "tag": "HTML",
+                  "id": "",
+                  "sel": null
+                },
+                "top": 0,
+                "bottom": 568,
+                "left": 0,
+                "right": 320,
+                "scrollTop": 0
+              }
+            ]
+          },
+          "events": [
+            {
+              "trusted": true
+            }
+          ]
+        }
+      ],
+      "pages": [],
+      "controls": [],
+      "practiceLocks": {
+        "pinLocked": true,
+        "otherActionsLocked": true
+      },
+      "practice": {
+        "schema": "cf-v2-training-forge-practice/v1",
+        "revision": 5,
+        "generation": 2,
+        "status": "closed",
+        "plan": {
+          "schema": "cf-v2-training-forge-practice/v1",
+          "baseId": "plate",
+          "name": "Iron Plate",
+          "category": "part",
+          "outputCount": 1,
+          "loanedMaterials": [
+            {
+              "id": "Fe",
+              "quantity": 4
+            }
+          ]
+        },
+        "completion": null,
+        "refusalDetail": null,
+        "retainedSandboxCount": 0
+      },
+      "bounds": {
+        "panelBottom": 301,
+        "lessonTop": 309
+      },
+      "overlapControl": true,
+      "preview": {
+        "schema": "cf.app.living-species-preview-diagnostics.v1",
+        "state": "animating",
+        "generation": 1,
+        "identityKey": "[\"object\",[[\"_earthName\",[\"string\",\"Coyote\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3133276098\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"19\"]]]]",
+        "kingdom": "fauna",
+        "primaryMotion": "breathe",
+        "live": {
+          "portraitRequestCount": 1,
+          "acceptedAssetCount": 1,
+          "rendererCount": 1,
+          "imageCount": 1,
+          "textureCount": 0,
+          "canvasCount": 0,
+          "tickerCount": 1
+        },
+        "totals": {
+          "selections": 1,
+          "portraitRequests": 1,
+          "portraitCancellations": 0,
+          "rendererCreates": 1,
+          "rendererAttaches": 1,
+          "rendererDestroys": 0,
+          "tickerStarts": 1,
+          "tickerStops": 0,
+          "animatedFrames": 3,
+          "staticFrames": 0,
+          "staleCompletionDrops": 0,
+          "invalidCompletions": 0,
+          "hiddenStops": 0,
+          "detachedStops": 0,
+          "faults": 0
+        },
+        "peaks": {
+          "rendererCount": 1,
+          "imageCount": 1,
+          "textureCount": 0,
+          "canvasCount": 0,
+          "tickerCount": 1
+        }
+      },
+      "reduced": {
+        "schema": "cf.app.living-species-preview-diagnostics.v1",
+        "state": "static",
+        "generation": 1,
+        "identityKey": "[\"object\",[[\"_earthName\",[\"string\",\"Coyote\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3133276098\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"19\"]]]]",
+        "kingdom": "fauna",
+        "primaryMotion": "breathe",
+        "live": {
+          "portraitRequestCount": 1,
+          "acceptedAssetCount": 1,
+          "rendererCount": 1,
+          "imageCount": 1,
+          "textureCount": 0,
+          "canvasCount": 0,
+          "tickerCount": 0
+        },
+        "totals": {
+          "selections": 1,
+          "portraitRequests": 1,
+          "portraitCancellations": 0,
+          "rendererCreates": 1,
+          "rendererAttaches": 1,
+          "rendererDestroys": 0,
+          "tickerStarts": 1,
+          "tickerStops": 1,
+          "animatedFrames": 10,
+          "staticFrames": 1,
+          "staleCompletionDrops": 0,
+          "invalidCompletions": 0,
+          "hiddenStops": 0,
+          "detachedStops": 0,
+          "faults": 0
+        },
+        "peaks": {
+          "rendererCount": 1,
+          "imageCount": 1,
+          "textureCount": 0,
+          "canvasCount": 0,
+          "tickerCount": 1
+        }
+      },
+      "closed": {
+        "schema": "cf.app.living-species-preview-diagnostics.v1",
+        "state": "idle",
+        "generation": 1,
+        "identityKey": null,
+        "kingdom": null,
+        "primaryMotion": null,
+        "live": {
+          "portraitRequestCount": 0,
+          "acceptedAssetCount": 0,
+          "rendererCount": 0,
+          "imageCount": 0,
+          "textureCount": 0,
+          "canvasCount": 0,
+          "tickerCount": 0
+        },
+        "totals": {
+          "selections": 1,
+          "portraitRequests": 1,
+          "portraitCancellations": 1,
+          "rendererCreates": 1,
+          "rendererAttaches": 1,
+          "rendererDestroys": 1,
+          "tickerStarts": 1,
+          "tickerStops": 1,
+          "animatedFrames": 10,
+          "staticFrames": 1,
+          "staleCompletionDrops": 0,
+          "invalidCompletions": 0,
+          "hiddenStops": 0,
+          "detachedStops": 0,
+          "faults": 0
+        },
+        "peaks": {
+          "rendererCount": 1,
+          "imageCount": 1,
+          "textureCount": 0,
+          "canvasCount": 0,
+          "tickerCount": 1
+        }
+      },
+      "runtimeErrors": []
+    }
+  ],
+  "errors": [],
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/154.0.4258.37",
+    "revision": "@f6ddc7bb8d2ad05a6979ebc09b83893c2d128a62",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "js_version": "15.4.11.5",
+    "protocol_version": "1.3"
+  }
+}
