@@ -1,0 +1,18 @@
+{
+  "status": "BLOCKED_MEASUREMENT_GATE",
+  "measuredHead": "63e61b5fb98769fec67eff82668686468c155967",
+  "runId": "held-out-01",
+  "exitCode": 2,
+  "rejectedCandidate": "candidate-03.json",
+  "restoredRuntimeFile": "port/v2/packages/domain/combatcore/src/encounter.ts",
+  "restoredFrom": "2fae1e737f59ba96269ee207693226acc50f775d",
+  "restoredSha256": "f9c0714f7db68eca952f6c1ff76eee18c6c06ea10844f60e0f96e62358dd9cd2",
+  "failures": [
+    "normal: planning gap 9.765625",
+    "titan: planning gap 25.390625"
+  ],
+  "heldOutRetries": 0,
+  "i5Attempts": 0,
+  "push": "held: Guide SHA red, no overall green local gate",
+  "next": "A separately declared future tuning epoch and fresh untouched evaluation corpus; do not train or refreeze against held-out-01."
+}

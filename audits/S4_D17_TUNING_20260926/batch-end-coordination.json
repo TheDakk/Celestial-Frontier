@@ -1,0 +1,10 @@
+{
+  "readAtUtc": "2026-09-26T01:44:50.971625+00:00",
+  "mailboxPath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md",
+  "mailboxSha256": "6ae27826e9f941b0255bc7a05c5ee5bed37e625cc123f6aaa205e043b22f1754",
+  "latestRow": "C31",
+  "otherLaneHead": "9a968710f17be53ee8c769199cede9bbd5f92d80",
+  "otherLaneModified": false,
+  "pushAttempted": false,
+  "pushHold": "PARALLEL_GIT_PROTOCOL.md requires green local battery; Guide release SHA is still red in addition to parked I5."
+}

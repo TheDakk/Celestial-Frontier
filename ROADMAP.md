@@ -33,3 +33,10 @@ Next: single held-out evaluation on this clean signed checkpoint, record its exa
 - D1: Rat item29 is delivered; Hare onward and the third-ten sheet remain. Tailed-primate tail1–3 and hidden-wing closed beetle are Codex contracts. Each creature needs six masks, anatomy/intake, motion evidence and its signed packet before Claude wires it.
 - D13: care/bond shipped; Codex mission rate/share≤15% instrument then duplicate/two-tab/reload/clock controls. D14 costs/scenarios remain ordered later; Claude C31 says Outposts held until combat/art settle.
 - One release/Guide batch: C17+D16+D19 plus C30 care/audio/A5/CFB/D18 bullets, Settings capacity and audio inventory. Current Guide SHA is red. C8/I5 v2 follows all this on integrated clean source; keep v1 immutable, no historical rebinding. Nick's authority is three calibration runs then one certification, not repeated attempts.
+
+
+## Final handoff — S4 stopped at a measured refusal
+
+`audits/S4_D17_TUNING_20260926/README.md` is authoritative. Candidate03 was signed63e61b5f(G), then evaluated once asheld-out-01: normal planning9.765625pp (needs≥10), Titan25.390625pp (needs≤20), henceRED. Guardian/Command,17hooks,2048replays/1024phase-off parity pass. Prior runtime constants restored exactly from2fae1e73; no candidate acceptance, no retry, no I5 attempt. Instruments/evidence remain signed for review. Earlier training-green text above is historical and does not admit the constants.
+
+This is Nick's real measurement stop gate. Items2–7 remain pending in order. Next Codex work is a separately declared S4 tuning epoch with untouched evaluation seeds; never fit then reuse held-out-01 as certification. Claude should consume the packet, keep old runtime values and repair D17 solo-Auto dispatch, using the mailbox directly. Push held while Guide SHA and I5 remain red; origin/openai/mac was8c41803c at last verified push. No Nick relay or app switch required.

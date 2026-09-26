@@ -24,17 +24,17 @@ export const ENCOUNTER_LOW_HP_FRACTION_V1 = 1 / 3;
 
 export type EncounterStanceV1 = 'balanced' | 'press' | 'guard' | 'evade';
 export const ENCOUNTER_STANCES_V1 = Object.freeze(['balanced', 'press', 'guard', 'evade'] as const);
-/** S4 D17 candidate03: frozen training result; held-out admission recorded in its audit packet. */
+/** Placeholder tuning (S4 owns the numbers): multipliers on the fighter's own ability hooks. */
 export const ENCOUNTER_STANCE_TUNING_V1 = Object.freeze({
-  press: Object.freeze({ dealt: 1.4, taken: 1.7 }),
-  guard: Object.freeze({ dealt: 0.65, taken: 0.585, openerBlunt: 0.25 }),
-  evade: Object.freeze({ dealt: 0.64, dodge: 0.32 }),
+  press: Object.freeze({ dealt: 1.15, taken: 1.10 }),
+  guard: Object.freeze({ dealt: 0.90, taken: 0.85, openerBlunt: 0.5 }),
+  evade: Object.freeze({ dealt: 0.90, dodge: 0.08 }),
 });
 
 /** §20 Guardian phase (N1 §4.3, S7): when a Guardian or Titan first falls to half health it changes to a telegraphed second behavior.
  *  The change is announced at a Break BEFORE it applies (Hold / Swap / Withdraw), then lasts for the rest of the fight, across legs.
- *  S4 D17 candidate: the phased defender hits 2% harder and takes 10% less. */
-export const ENCOUNTER_GUARDIAN_PHASE_V1 = Object.freeze({ atFraction: 0.5, dealt: 1.02, taken: 0.9 });
+ *  Placeholder numbers (one constant; Codex's S4 instrument owns them): the phased defender hits 20% harder and takes 10% less. */
+export const ENCOUNTER_GUARDIAN_PHASE_V1 = Object.freeze({ atFraction: 0.5, dealt: 1.2, taken: 0.9 });
 export type EncounterDefenderKindV1 = 'fauna' | 'guardian' | 'titan';
 /** Whether a defender of this kind has the phase change (Guardians and Titans only). */
 export function encounterHasGuardianPhaseV1(kind: string | undefined | null): boolean { return kind === 'guardian' || kind === 'titan'; }
