@@ -193,3 +193,8 @@ unit checks and retained native refusal: audits/G5_ADAPTER_UNBLOCK_20260926.
 ### G2 four-family pilot — matches tooling as of 2026-09-26
 
 The canonical library compiler also supports birds, fish, serpents and insects through actual profile candidates. Twenty unmodified1254 masters and original generation receipts are retained in `audits/G2_FAMILY_PILOT_20260926`. Complete true tails, open serpent curves and species-specific insect anatomy are requested; geometric observations remain distinct from biological inventory or G1 admission. Visible overlap and unwanted markings remain findings. After C44, subsequent bird/quadruped prompts request planted strides with full near/far shaft gaps; prior packets preserve their exact earlier prompts. No hand authoring, fit replacement or runtime adoption occurs here.
+
+
+### Shipped helper reachability — matches code as of 2026-09-26
+
+C50 fixes the complete tracked-file inventory read with a16MiB child-process buffer, preserving exact required-source membership. The local preview server and game development/build plugin explicitly include creature-finish-math.mjs, imported by the shipped worker/engine. Exact HTTP bytes and emitted-asset controls guard the former missing route; no model, alpha, conservation or broad route policy changed. See audits/C50_SHIPPED_FINISH_FIX_20260926. Claude owns the subsequent shipped-path browser smoke.
