@@ -304,6 +304,7 @@ describe('synchronous semantic panel refill focus', () => {
       readCombatSettlementAuthorityV1: () => ({ kind: 'loaded', authority: { conquests: [] } }),
       ownershipSourceStateV1: () => ({}),
       projectExpeditionChronicleV1: () => ({ kind: 'projected', model: {} }),
+      currentOutpostProjects: () => null, // D14: no F4 runtime here, so no Outposts carrier (Main-local)
       renderExpeditionChronicleV1: () => '<section data-test-chronicle>Retained expedition history</section>',
       projectArc9RecordsRankReadModelV1: () => ({ kind: 'protected' }),
       projectArc9BinderReadModelV1: () => ({ kind: 'projected', model: {} }),
@@ -314,6 +315,7 @@ describe('synchronous semantic panel refill focus', () => {
       renderStarterCharterBoardV1: () => '<button data-starter-charter-accept="st">Accept</button>',
       starterCharterPanelStatus: () => null, starterCharterAcceptPendingId: null, arc9BinderClaimPendingId: null,
       liveActivePlayMs: () => null, projectWeeklyCharterBoardV1: () => null, renderWeeklyCharterBoardV1: () => '', // no F4 runtime here: no weekly board
+      outpostBoardHtml: () => '', // D14: no F4 runtime here, so no Projects board (Main-local)
       syncBoundedCollectionButtons: (_root: HTMLElement, selector: string) => {
         for (const button of root.querySelectorAll<HTMLButtonElement>(selector)) button.disabled = disabled;
       },
