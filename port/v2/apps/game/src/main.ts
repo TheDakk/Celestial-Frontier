@@ -45,6 +45,7 @@ import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-b
 import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './recipe-pin.js';
 import { mirrorCompanionCodexXpV1 } from './companion-codex-mirror.js';
 import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
+import { CompendiumRevealQueueV1 } from './compendium-reveal.js';
 import { DEFAULT_CODEX_LIST_VIEW_V1, codexChipBarHtmlV1, codexChipPressV1, codexChipsFilteringV1, codexEntryMatchesV1, codexShelfLabelV1, shelveCodexRowsV1, type CodexListViewV1, type CodexShelfHeaderV1 } from './compendium-shelves.js';
 import { freshExpeditionPayloadV1 } from './expedition-reset.js';
 import { TooltipOwnerV1 } from './tooltips.js';
@@ -4550,6 +4551,23 @@ const codexOpenController = createPanelOpenController({
   id: 'codex',
   defaultRequest: () => '',
   populate: (filter: string) => fillCodex(filter),
+});
+/* D16 (v1 showReveal / pendingReveals / _revealBlocked): a newly catalogued page is revealed as a specimen card, queued while another
+   modal (or Field Training) owns the screen and flushed by the next input pulse. View state only; the portrait lease is cancelled on close. */
+function compendiumRevealBlocked(): boolean {
+  return trainingActive() || document.querySelector('dialog[open], [role="dialog"][aria-modal="true"]:not([hidden]):not(#reveal)') !== null;
+}
+const compendiumReveal = new CompendiumRevealQueueV1({
+  document, blocked: compendiumRevealBlocked, art: speciesArtLoader,
+  onDrained: () => { if (openPanelId() === 'codex' && codexMode === 'list') fillCodex(codexFilter); },
+});
+/** The committed action's NEW Compendium pages (by logical id, in source order) — a first catch, a bred hybrid — join the reveal. */
+const compendiumRevealPages = Object.freeze({
+  snapshot: (): ReadonlySet<string> => new Set(save ? save.codex.map(([id]) => String(id)) : []),
+  revealSince: (before: ReadonlySet<string>): void => {
+    if (!save || compendiumFixtureRows !== null) return;
+    for (const [id, e] of save.codex) if (!before.has(String(id))) compendiumReveal.enqueue({ logicalId: String(id), name: e.name, kind: e.kind, hybrid: e.hybrid, genome: e.g });
+  },
 });
 registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: () => {
   /* An ordinary Compendium open is a fresh catalogue view. Search may apply
@@ -15036,6 +15054,7 @@ function compendiumBreedOutcomeCopy(
 }
 
 async function runCompendiumBreedAction(request: CompendiumBreedActionRequestV1): Promise<void> {
+  const revealBefore = compendiumRevealPages.snapshot();
   let outcome: Arc5BreedCommitOutcome;
   try { outcome = await commitCompendiumBreedAction(request); }
   catch (error) {
@@ -15049,6 +15068,7 @@ async function runCompendiumBreedAction(request: CompendiumBreedActionRequestV1)
     compendiumBreedController.settle(copy);
     if (copy.convergence === 'none') refreshCompendiumFeedState();
     updateChips();
+    if (outcome.kind === 'committed' && copy.convergence === 'none') compendiumRevealPages.revealSince(revealBefore);
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
     if (outcome.durability === 'committed' && f4Runtime !== null) {
@@ -16727,6 +16747,7 @@ async function runCaptureCardAction(
   request: CaptureCardActionRequest,
   presentationFence: string | null,
 ): Promise<void> {
+  const revealBefore = compendiumRevealPages.snapshot();
   let outcome: Arc4CaptureActionOutcome;
   try {
     outcome = presentationFence === null
@@ -16761,6 +16782,7 @@ async function runCaptureCardAction(
         gameEvent('bioscan', { worldKey: outcome.result.worldKey });
       }
       if (openPanelId() === 'codex') fillCodex(codexFilter);
+      if (copy.convergence === 'none') compendiumRevealPages.revealSince(revealBefore);
     }
     const greetingClaim: TameGreetingClaim | null = tameGreetingAudioOwner
       ?.claimCommittedTameGreeting(outcome, arc5OwnershipState) ?? null;

@@ -378,6 +378,8 @@ function mainScavengeHarness(f: DurableFixture, mutations: readonly MainMutation
     scheduleF4AuthorityConvergenceReload: scheduleReload,
     toast,
     updateChips: vi.fn(),
+    // D16 reveal (compendium-reveal.ts): the runner snapshots pages before and reveals new ones after; inert here (its own test owns it)
+    compendiumRevealPages: { snapshot: () => new Set<string>(), revealSince: vi.fn() },
     openPanelId: () => null,
     fillCharters: vi.fn(),
     fillCodex: vi.fn(),
