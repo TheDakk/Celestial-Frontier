@@ -22,11 +22,11 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 
 **Where things stand**
 - **Branch:** `anthropic/mac` is pushed through the commit that adds this block. Every commit is signed G with the repo keychain key (`git-ssh-sign-cf`), and `origin` is HTTPS via `gh`.
-- **Codex:** merged through `bfe76a6b` (G5 sizes/transport/stage admission). Before that: `d809c53b` (parked gameplay, the G5 engine and its native proof: five crabs finished, delivered byte-exact, 0 phone model constructions). Before merging again, read `/Users/nick/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md` (read-only) and run `git log HEAD..openai/mac`. Codex's current focus, per Nick: finish the preserved parked gameplay (Forge Training, the living-portrait decision) BEFORE its G5 engine work.
-- **Gate:** `node tools/check-profile.mjs --profile=develop` (from `port/v2`) gives **5,638 pass; the ONLY red is I5** (`current-producer-authorities`, "binds every live memory budget").
+- **Codex:** merged through `1b01b93e` (accepted derived labels, phone originals, runtime fixes). Earlier: `bfe76a6b` (G5 sizes/transport/stage admission). Before that: `d809c53b` (parked gameplay, the G5 engine and its native proof: five crabs finished, delivered byte-exact, 0 phone model constructions). Before merging again, read `/Users/nick/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md` (read-only) and run `git log HEAD..openai/mac`. Codex's current focus, per Nick: finish the preserved parked gameplay (Forge Training, the living-portrait decision) BEFORE its G5 engine work.
+- **Gate:** `node tools/check-profile.mjs --profile=develop` (from `port/v2`) gives **5,645 pass; the ONLY red is I5** (`current-producer-authorities`, "binds every live memory budget").
   - Run it on a QUIET tree. A commit during the run produces a spurious "Source changed during authority read".
   - Also run by hand, all clean this session: `npm run typecheck` (root, app and worker), `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
-- **Dev site:** https://dev-celestialfrontier.github.io serves `29b827df` (G4; G5 card + stage behind `?finish=1`). Evidence is in `audits/DEV_PUBLISH/29b827dfecb1`.
+- **Dev site:** https://dev-celestialfrontier.github.io serves `14b712e6` (G4; G5 card + stage behind `?finish=1`; Codex's phone originals). Evidence is in `audits/DEV_PUBLISH/14b712e6e14f`.
 - **develop** is still `c1791e21`. PR #43 is open. No hosted attempt: I5 is red (D5).
 - **Disk:** about 230 GiB free. No agent worktrees are live, and the limb-counter branch is merged (it had no worktree). The newest 2 preview packages are kept.
 
