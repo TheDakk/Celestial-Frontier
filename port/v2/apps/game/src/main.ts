@@ -1618,11 +1618,13 @@ addEventListener('pageshow', (event) => {
     persistedPageshowCount++;
     speciesArtLoader.resumeFromBfcache();
     tameGreetingAudioOwner?.setHidden(false);
+    (globalThis as { cfSoundscapeV1?: { setHidden(h: boolean): void } }).cfSoundscapeV1?.setHidden(false);
     void showF4();
   }
 });
 addEventListener('visibilitychange', () => {
   tameGreetingAudioOwner?.setHidden(document.visibilityState !== 'visible');
+  (globalThis as { cfSoundscapeV1?: { setHidden(h: boolean): void } }).cfSoundscapeV1?.setHidden(document.visibilityState !== 'visible'); // D15: hidden = silence; visible = RESTART
   if (!f4Runtime) return;
   if (document.visibilityState !== 'visible') {
     stopF4Heartbeat();
@@ -5747,6 +5749,18 @@ tameGreetingAudioOwner = createTameGreetingAudioOwner({
   }),
   verifyCounterpart: creatureExpressionCounterpartIsCurrent,
 });
+// D15 Stage 3: the ONE owner of continuous sound — the living bed under a world and the sparse score — on the accessible owner's
+// decorative port (it can never sound where the owner would not). Hooks call it through globalThis, so the main.ts regions tests execute
+// never meet an undeclared name. The presentation seed is a constant stream (never gameplay RNG, never the wall clock).
+// Loaded lazily as its own chunk, off the boot path (the battle2 gate test forbids static soundkit imports here).
+void import('./soundkit/soundscape.js').then(({ createSoundscapeV1 }) => {
+  const owner = tameGreetingAudioOwner; if (!owner) return;
+  const soundscape = createSoundscapeV1({ port: owner.decorativeVoicePort(), schedule: (fn, ms) => { const t = setTimeout(fn, ms); return () => clearTimeout(t); },
+    nowMs: () => performance.now(), presentationSeed: 0x5eed, phone: visualPolicyDeviceTier() === 'low' });
+  (globalThis as { cfSoundscapeV1?: unknown }).cfSoundscapeV1 = soundscape;
+  soundscape.setHidden(document.visibilityState !== 'visible');
+  soundscape.setMusicState('calm');
+}).catch(() => { /* sound is decoration: a failed chunk never blocks play */ });
 // L1 Listening page (D15 / N5) on a BUILT package (the dev URL): flag-gated, dynamic import only, never on the default path. Plays through
 // the audio owner's explicit pilot gesture (decorative only); ratings stay on this device. The dev server keeps Codex's production review.
 if (!import.meta.env.DEV && new URLSearchParams(location.search).get('audioReview') === '1') {
@@ -6354,6 +6368,7 @@ function releaseSurfaceVistaOwner(): void {
   syncSurfaceVistaPresentation();
   surfaceVistaWorldKey = null;
   surfaceVistaEnvironmentFingerprint = null;
+  (globalThis as { cfSoundscapeV1?: { setAmbience(t: null): void } }).cfSoundscapeV1?.setAmbience(null); // D15: the bed never outlives its world
   if (surfaceVistaDeadline !== null) {
     clearTimeout(surfaceVistaDeadline);
     surfaceVistaDeadline = null;
@@ -6560,6 +6575,7 @@ function requestSurfaceVista(
   if (new URLSearchParams(location.search).get('worldlife') === '1') void import('./worldlife-wiring.js').then(m => m.mountWorldLifeStudy({ request, roster, stage: app.stage, vistaSprite: () => surfaceVistaSprite, ticker: app.ticker, clock: () => performance.now(), reducedMotion: () => !motionOK(), tier: TOUCH_DPR ? 'phone' : 'desktop', pixi: { Container, Graphics }, residents: { rows: roster.view.all, artLoader: speciesArtLoader, pixi: { Sprite, Texture } } })).catch(() => { /* the flagged study never blocks the vista */ });
   surfaceVistaWorldKey = request.worldKey;
   surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;
+  (globalThis as { cfSoundscapeV1?: { setAmbience(t: { biome: string } | null): void } }).cfSoundscapeV1?.setAmbience({ biome: request.biomeKey }); // D15: the world's bed
   if (currentAiLandfallInput()) { restoreCurrentAiLandfall(); return; }
   const query = new URLSearchParams(location.search);
   const landingRecipe = !paintedFallback && query.get('paintedlanding') === '1'
@@ -17427,6 +17443,10 @@ function presentCommittedCombatChronicle(
   if (battle2Flag) combatChronicleController.setPacer(battle2Pacer?.pacer ?? null);
   const generation = combatChronicleController.start(chronicle, cuePlan);
   combatChronicleAudioSession = null;
+  // D15: the battle loop under the Chronicle (major for a Guardian/Titan), then the outcome's sting as its rows finish
+  (globalThis as { cfSoundscapeV1?: { combatScene(major: boolean, result: 'win' | 'loss' | 'draw', ms: number): void } }).cfSoundscapeV1?.combatScene(
+    settlement.encounter.defender.kind === 'guardian' || settlement.encounter.defender.kind === 'titan',
+    settlement.outcome === 'champion-win' ? 'win' : settlement.outcome === 'defender-win' ? 'loss' : 'draw', 1500 + cuePlan.cues.length * 320);
   if (openPanelId() !== 'combat'
     || combatChronicleMount.querySelector('[data-combat-chronicle-log]') === null) {
     tameGreetingAudioOwner?.cancelCombatPlayback('chronicle-not-current');
