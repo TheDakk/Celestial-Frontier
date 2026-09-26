@@ -104,7 +104,7 @@ const MAIN_COMMAND_SOURCE = [
   exactMainSection('let currentArc6CombatProjection: Arc6CombatSurfaceProjection | null = null;', '\ninterface ApproachEcologyPresentation'),
   exactMainSection('function refreshCombatCardState(', '\nfunction refreshCaptureCardState('),
   exactMainSection('function arc6CombatOutcomeCopy(', '\nfunction engineeringOutcomeConverges('),
-  exactMainSection('let lastArc6CommandOutcome: string | null = null;', '\nconst sideEl = document.createElement'),
+  exactMainSection('let lastArc6CommandOutcome: string | null = null;', '\n/* D14 Outposts (N4 Option A;'), // ends at its own block (Outposts follows, 2026-09-26)
 ].join('\n');
 
 interface MainMutation { readonly name: string; readonly needle: string; readonly replacement: string }

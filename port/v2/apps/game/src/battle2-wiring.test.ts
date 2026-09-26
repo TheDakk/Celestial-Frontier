@@ -14,6 +14,7 @@ import { FIXTURE_RIG_LABEL, PORTRAIT_RIG_LABEL, type FixturePartCut } from './ba
 import { BATTLE2_ASSETS, PLAYER_PLACEHOLDER_LABEL, alphaBox, battle2Enabled, fnv1a32, genomeMass, genomeSeed, genomeTheme, matchRecord, mountBattle2Study, mountBattle2StudyIfEnabled,
   type Battle2AssetSource, type Battle2Image, type Battle2Keyer, type Battle2PixiBindings, type Battle2Raster, type Battle2StudyInput } from './battle2-wiring.js';
 import type { ResolvedAnatomyRecord } from './motion/body-card.js';
+import { BATTLE2_DEFAULT, battle2On } from './battle2-gate.js';
 import { civetRecord } from '../../../tools/motion-proof/fixtures.js';
 import { makeGenome } from '@cf/domain-genome';
 import { runEncounterV1 } from '@cf/domain-combatcore';
@@ -23,29 +24,61 @@ const mainSource = readFileSync(new URL('./main.ts', import.meta.url), 'utf8');
 const AUDIT = new URL('../../../../../audits/ARENA_EFFECTS_V42_PROOF_20260912/', import.meta.url);
 const auditJson = (name: string): unknown => JSON.parse(readFileSync(new URL(name, AUDIT), 'utf8'));
 
-/** The gate contract: the flag test and the dynamic import share one line; battle2 is never imported statically. */
+/** The gate contract (A4, 2026-09-26: the painted stage is the default; `?battle2=0` opts out): the gate call `battle2On(location.search)`
+ * and the static-string dynamic import share ONE line, that line sits inside the fight presenter (never on the boot path), and battle2 is
+ * never imported statically. `flag` is kept in the signature for the matchup picker's own gate check. */
+const GATE_CALL = 'battle2On(location.search)';
 function gateViolations(source: string, flag: string, module: string, dir: string): string[] {
   const out: string[] = [];
+  void flag;
   const lines = source.split('\n');
-  const gated = lines.filter((l) => l.includes(`get('${flag}') === '1'`) && l.includes(`import('./${module}.js')`));
+  const gated = lines.filter((l) => l.includes(`if (${GATE_CALL})`) && l.includes(`import('./${module}.js')`));
   if (gated.length !== 1) out.push(`expected exactly one gated import line, found ${gated.length}`);
-  for (const l of lines) if (l.includes(`import('./${module}.js')`) && !l.includes(`get('${flag}') === '1'`)) out.push(`ungated dynamic import: ${l.trim().slice(0, 80)}`);
+  for (const l of lines) if (l.includes(`import('./${module}.js')`) && !l.includes(`if (${GATE_CALL})`)) out.push(`ungated dynamic import: ${l.trim().slice(0, 80)}`);
+  // never on the boot path: the gated import lives inside the function that presents a settled fight
+  const start = source.indexOf('\nfunction presentCommittedCombatChronicle('), end = start < 0 ? -1 : source.indexOf('\n}\n', start);
+  const at = gated.length === 1 ? source.indexOf(gated[0]!) : -1;
+  if (at < 0 || start < 0 || end < 0 || at < start || at > end) out.push('the gated import is not inside presentCommittedCombatChronicle');
   for (const l of lines) if (/^\s*import\b/.test(l) && (l.includes(`'./${module}.js'`) || l.includes(`'./${dir}/`))) out.push(`static import: ${l.trim().slice(0, 80)}`);
   for (const l of lines) if (/\bfrom '\.\/(battle2|worldlife|effects|motion|soundkit)\//.test(l)) out.push(`static import of a study module: ${l.trim().slice(0, 80)}`);
   return out;
 }
 
 describe('main.ts battle2 gate (source text)', () => {
-  it('imports battle2-wiring only behind ?battle2=1 and never statically', () => {
+  it('imports battle2-wiring only through the one gate, only when a fight is presented, and never statically', () => {
     expect(gateViolations(mainSource, 'battle2', 'battle2-wiring', 'battle2')).toEqual([]);
+    // the gate module main.ts imports statically is dependency-free (boot pays nothing for the stage)
+    const gate = readFileSync(new URL('./battle2-gate.ts', import.meta.url), 'utf8');
+    expect(gate.split('\n').filter((l) => /^\s*import\b/.test(l))).toEqual([]);
+    expect(mainSource).toMatch(/^import \{ battle2On \} from '\.\/battle2-gate\.js';$/m);
+  });
+  it('A4: the painted stage is the DEFAULT; ?battle2=0 opts out, ?battle2=1 forces on; the matchup picker stays opt-in', () => {
+    expect(BATTLE2_DEFAULT).toBe(true);
+    expect(battle2On('')).toBe(true); expect(battle2On('?worldlife=1')).toBe(true); expect(battle2On('?battle2')).toBe(true);
+    expect(battle2On('?battle2=0')).toBe(false); expect(battle2On('?battle2=0&worldlife=1')).toBe(false);
+    expect(battle2On('?battle2=1')).toBe(true);
+    // the picker line keeps its explicit opt-in: ?battle2=1 AND vs
+    // (the H1 device probe's own `mountMatchup:` import is excluded by name — its test pins it inside the ?deviceProbe=1 block)
+    const picker = mainSource.split('\n').filter((l) => l.includes("import('./battle2-matchup.js')") && !/^\s*mountMatchup: async/.test(l));
+    expect(picker).toHaveLength(1); expect(picker[0]).toContain("get('battle2') === '1'"); expect(picker[0]).toContain("get('vs') !== null");
+    // mutation control: the same gate module with the default flipped off makes this test's default assertion fail
+    const gateSrc = readFileSync(new URL('./battle2-gate.ts', import.meta.url), 'utf8').replace('export const BATTLE2_DEFAULT = true;', 'export const BATTLE2_DEFAULT = false;');
+    expect(gateSrc).toContain('BATTLE2_DEFAULT = false');
+    const js = gateSrc.replace(/^export /gm, '').replace(/ as const/g, '').replace(/\(search: string\): boolean/, '(search)');
+    const offOn = new Function(`${js}; return battle2On;`)() as (search: string) => boolean;
+    expect(offOn('')).toBe(false); expect(offOn('?battle2=1')).toBe(true);
   });
   it('mutation controls: a static import, an ungated dynamic import, or a missing gate all fail the check', () => {
     expect(gateViolations(`${mainSource}\nimport { BattleStage } from './battle2/stage.js';\n`, 'battle2', 'battle2-wiring', 'battle2')).not.toEqual([]);
     expect(gateViolations(`${mainSource}\nvoid import('./battle2-wiring.js');\n`, 'battle2', 'battle2-wiring', 'battle2')).not.toEqual([]);
     // the gate ON THE IMPORT LINE is mutated (main.ts also reads the flag earlier to set the Chronicle pacer, 2026-09-24)
-    const ungate = (src: string) => src.split('\n').map((l) => (l.includes("import('./battle2-wiring.js')") ? l.replace("get('battle2') === '1'", "get('battle2') !== null") : l)).join('\n');
+    const ungate = (src: string) => src.split('\n').map((l) => (l.includes("import('./battle2-wiring.js')") ? l.replace(`if (${GATE_CALL})`, 'if (true)') : l)).join('\n');
     expect(ungate(mainSource)).not.toBe(mainSource);
     expect(gateViolations(ungate(mainSource), 'battle2', 'battle2-wiring', 'battle2')).not.toEqual([]);
+    // the boot path: the same gated line moved to the top level (outside the fight presenter) fails the check
+    const gatedLine = mainSource.split('\n').find((l) => l.includes(`if (${GATE_CALL})`) && l.includes("import('./battle2-wiring.js')"))!;
+    const hoisted = mainSource.replace(`${gatedLine}\n`, '') + `\n${gatedLine.trim()}\n`;
+    expect(gateViolations(hoisted, 'battle2', 'battle2-wiring', 'battle2')).toContain('the gated import is not inside presentCommittedCombatChronicle');
   });
   it('neither wiring module reads a wall clock or Math.random outside comments (the clock is injected by main.ts)', () => {
     for (const file of ['battle2-wiring.ts', 'worldlife-wiring.ts']) {
@@ -53,9 +86,9 @@ describe('main.ts battle2 gate (source text)', () => {
       expect(code, file).not.toMatch(/Math\.random|Date\.now|performance\.now/);
     }
   });
-  it('battle2Enabled reads exactly the flag the gate reads', () => {
-    expect(battle2Enabled('?battle2=1')).toBe(true); expect(battle2Enabled('?battle2=1&worldlife=1')).toBe(true);
-    expect(battle2Enabled('')).toBe(false); expect(battle2Enabled('?battle2=0')).toBe(false); expect(battle2Enabled('?battle2')).toBe(false);
+  it('battle2Enabled is exactly the rule main.ts gates on (battle2On)', () => {
+    for (const q of ['', '?battle2=1', '?battle2=1&worldlife=1', '?battle2=0', '?battle2', '?battle2=0&vs=A,B']) expect(battle2Enabled(q), q).toBe(battle2On(q));
+    expect(battle2Enabled('')).toBe(true); expect(battle2Enabled('?battle2=0')).toBe(false);
   });
 });
 
@@ -132,16 +165,16 @@ const fire = (h: ReturnType<typeof harness>, type: string, persisted: boolean) =
 describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
   afterEach(() => { vi.restoreAllMocks(); FakeApp.made = []; });
 
-  it('flag off: mountBattle2StudyIfEnabled does no work at all', () => {
+  it('opted out (?battle2=0): mountBattle2StudyIfEnabled does no work at all', () => {
     const h = harness();
-    expect(mountBattle2StudyIfEnabled('', h.input)).toBeNull(); expect(mountBattle2StudyIfEnabled('?battle2=0', h.input)).toBeNull();
+    expect(mountBattle2StudyIfEnabled('?battle2=0', h.input)).toBeNull(); expect(mountBattle2StudyIfEnabled('?battle2=0&worldlife=1', h.input)).toBeNull();
     expect(h.counts).toEqual({ container: 0, sprite: 0, text: 0, graphics: 0, particle: 0, particleContainer: 0, texture: 0 });
     expect(h.calls).toEqual([]); expect(h.ticker.fns.size).toBe(0); expect(h.mount.querySelector('[data-battle2-stage]')).toBeNull(); expect(FakeApp.made).toHaveLength(0);
   });
 
-  it('flag on: builds the stage (Civet fixture rig + portrait fallback), attaches the ticker, advances turns on the injected clock, disposes totally', async () => {
+  it('the DEFAULT (no query, A4): builds the stage (Civet fixture rig + portrait fallback), attaches the ticker, advances turns on the injected clock, disposes totally', async () => {
     const h = harness();
-    const handle = mountBattle2StudyIfEnabled('?battle2=1', h.input)!;
+    const handle = mountBattle2StudyIfEnabled('', h.input)!;
     expect(handle).not.toBeNull(); expect(handle.status().phase).toBe('loading');
     const section = h.mount.querySelector<HTMLElement>('[data-battle2-stage]')!;
     expect(section).not.toBeNull(); expect(section.getAttribute('aria-hidden')).toBe('true'); expect(section.dataset.battle2Generation).toBe('7');

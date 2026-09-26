@@ -1201,7 +1201,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
-const V2_DRAFT_BULLET_COUNT = 106;
+const V2_DRAFT_BULLET_COUNT = 119;
 const GUIDE_RELEASE_TAIL_TEXT = '🌐 DEVELOPMENT PUBLISHING STAYS PARKED: The owner-authorized, labelled PR battery can build, browser-check, and archive an exact-commit v2.0 preview package with full Guide identity, origin refusal, and byte inventory; it does not publish. The separate branch-site workflow remains manually parked, and production remains the v1.8.9 main-branch site.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -6941,8 +6941,8 @@ try {
     sha256: 'a9fa0a2dda99b6f8a4961e1e38084bf4f4976151154d034aeb34a741f9f5ccac',
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
-    count: 106,
-    sha256: '9ca05cf7d271f1a93567861037e8f8ce0841af97bb7afa2f814e16b34719ebe5',
+    count: 119,
+    sha256: 'adae685c1f4b98509f4338f2db241b6a978131fb09a844587e537ffc111f3d90',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -7291,7 +7291,7 @@ try {
       'Field Scout interception is live on hostile Discover Life',
       'real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment',
       'Companion Feed reveals tastes, grows Meals, mends wounds and records bond memories; it never poisons a companion',
-      'Dispatch, missions and passive evolution remain unavailable; care, bond memories and friendly duels are live',
+      'Passive evolution remains unavailable. care, bond memories, friendly duels and companion missions are live',
     ], requiredControls: ["On ordinary worlds, it catalogues no species and spends no Biosphere Yield", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "becomes available at ten exact Paragons and pays its established", "120 Stardust", "discovering a Paragon never pays that Set reward automatically", "A development save that recorded a Paragon home before this feature keeps its already-recorded Bioscan refusal; returning does not backfill the Paragon"], contradictions: [
       "Found Paragons plot a course instead of opening Inspect.", "Missing silhouettes open Inspect instead of plotting a course.", "Discover Life on any world adds a Paragon catalogue record.", "An ordinary-world Bioscan catalogues a species.", "A Paragon sighting creates an owned companion.", "A Paragon sighting creates a specimen.", "A Paragon sighting grants Capture credit.", "A Paragon sighting spends 1 Biosphere Yield.", "A Paragon sighting automatically pays 120 Stardust.", "Seeker of Legends is claimable after one Paragon.", "Repeat Paragon sightings add a discovery reward.", "A prior Paragon-set claim can pay again.", "Returning to a previously recorded Paragon home backfills its catalogue record.",
       'The player chooses a visible species row to target.', 'Sample creates a living companion.',
@@ -7479,7 +7479,7 @@ try {
       'real Flora detail can expose the explorer’s separate Eat 1 action',
       'Owned fauna can become eligible conquest champions',
       'designated Field Scout can intercept hostile Discover Life injury',
-      'Dispatch, missions, companion care, bond, and broader husbandry remain unavailable',
+      'Companion care, bond and missions are live; broader husbandry remains unavailable',
     ] },
     { id: 'specimen', title: 'Reading a specimen card', required: [
       'exact 440px portrait', 'same complete-genome identity as its exact 132px list thumbnail',
@@ -7508,7 +7508,7 @@ try {
       'designated Scout intercepts hostile Discover Life damage in the bioscan’s own transaction and remains at or below Critical',
       'Scout standing before that successful attempt earns up to +2 XP in the same capture transaction, capped at 486',
       'no standing Scout, miss, or repeat grants Scout XP',
-      'Companion tastes, meal growth, wound care, bond memories and friendly duels are live; companion poison, dispatch and missions remain unavailable',
+      'Companion tastes, meal growth, wound care, bond memories, friendly duels and missions are live; companion poison remains unavailable',
     ] },
     { id: 'feeding', title: 'Feeding beasts', required: [
       'real fauna Compendium detail',
@@ -7547,7 +7547,7 @@ try {
       'requires reload and cannot breed twice', 'Back and Close remain available around the action',
       'successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save',
       'failed pairing, refusal, stale result, or failed write banks no Charter credit',
-      'Parent consumption and manual genetic editing remain unavailable. Care, bond memories and combat are live; missions remain unavailable',
+      'Parent consumption and manual genetic editing remain unavailable. Care, bond memories, combat and companion missions are live',
     ] },
   ];
   const renderedCompendiumGuideCheck = (spec) => `(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
@@ -8136,7 +8136,7 @@ try {
         &&captureText.includes('older Surveys and capture do not count')
         &&captureText.includes('Weekly bioscan Charters remain protected until their separate lifecycle is complete')
         &&captureText.includes('Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail')
-        &&captureText.includes('Passive evolution, dispatch and missions remain unavailable. Care, bond memories and friendly duels are live')
+        &&captureText.includes('Passive evolution remains unavailable. companion missions are live. Care, bond memories and friendly duels are live')
         &&!captureContradiction,
       liveProgressionContradiction=/Charter rewards?[^.!?]{0,48}(?:remain|are) unavailable|Binder (?:Set )?claims?[^.!?]{0,48}(?:do not|never) pay Stardust|Conquest goals?[^.!?]{0,80}(?:remain|stay|are) (?:hidden|unavailable)|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)|(?:miss|repeat species|no standing Scout)[^.!?]{0,64}(?:earns?|grants?|awards?)\\b(?!\\s+no\\b)[^.!?]{0,32}Scout XP|accepted wk-conq[^.!?]{0,96}(?:completes?|pays?|awards?)/i.test(text)||/Found Paragons plot a course instead of opening Inspect|Missing silhouettes open Inspect instead of plotting a course|Discover Life on any world adds a Paragon catalogue record|An ordinary\-world Bioscan catalogues a species|A Paragon sighting creates an owned companion|A Paragon sighting creates a specimen|A Paragon sighting grants Capture credit|A Paragon sighting spends 1 Biosphere Yield|A Paragon sighting automatically pays 120 Stardust|Seeker of Legends is claimable after one Paragon|Repeat Paragon sightings add a discovery reward|A prior Paragon\-set claim can pay again|Returning to a previously recorded Paragon home backfills its catalogue record/i.test(text),
       liveProgressionContract=starterCharterText.includes('two established starter chains one unfinished link at a time')
@@ -8287,7 +8287,7 @@ try {
       ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-      ||/(?:passive evolution|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/(?:passive evolution|Kindred preferred.mission choice)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
       ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
       ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
@@ -8881,7 +8881,7 @@ try {
         'Creature combat is now playable.','Feeding is now playable.',
         'Duels are now playable.',
         'Passive evolution is now available.',
-        'Missions are now playable.'],truthful=[],unavailable=[];
+        'Kindred preferred-mission choice is now playable.'],truthful=[],unavailable=[];
     for(const copy of truthfulClaims){row.textContent=prior+' '+copy;truthful.push({copy,result:${releaseDraftCheck}});}
     for(const copy of unavailableClaims){row.textContent=prior+' '+copy;unavailable.push({copy,result:${releaseDraftCheck}});}
     row.textContent=prior;const restored=${releaseDraftCheck};return {truthful,unavailable,restored}; })()`);
@@ -27916,7 +27916,7 @@ try {
     || !/live exact-instance companion controls after Training/i.test(compendiumTourFocus.announcement)
     || !/intercept hostile Discover Life injury, and earn up to \+2 XP when a later successful capture catalogues a genuinely fresh species/i.test(compendiumTourFocus.announcement)
     || !/real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment/i.test(compendiumTourFocus.announcement)
-    || !/Companion tastes, meal growth, wound care, bond memories and friendly duels are live; companion poison, dispatch and missions remain unavailable/i.test(compendiumTourFocus.announcement)
+    || !/Companion tastes, meal growth, wound care, bond memories, friendly duels and missions are live; companion poison remains unavailable/i.test(compendiumTourFocus.announcement)
     || !/Every same-species twin keeps its own level, XP, condition, class, and named innate arts/i.test(compendiumTourFocus.announcement)
     || !/the second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats/i.test(compendiumTourFocus.announcement)
     || /Same-species twins share one progression row|Innate art slots unlock at levels 2 and 5|Progression rewrites the creature’s genome or base stats|Feed can heal without consuming flora|Rest advances while the game is closed/i.test(compendiumTourFocus.announcement)) {

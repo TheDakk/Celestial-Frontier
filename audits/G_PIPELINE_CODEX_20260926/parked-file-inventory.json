@@ -1,0 +1,442 @@
+{
+  "parkedHead": "cf1b9a7843200ecc281c5113b4139909dc0e3a29",
+  "base": "53770697f6613da3ba469868dae24cf0edc3f58d",
+  "scope": "presence and byte comparison only; not semantic completion",
+  "files": [
+    {
+      "path": "COMBAT_AND_CONQUEST.md",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "PROGRESSION.md",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "QUESTS_AND_CHAPTERS.md",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "ROADMAP.md",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "SPECIES_AND_GENOME.md",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "audits/FULL_REVIEW_DISPOSITION_20260904.md",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/index.html",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/arc0-landing-action.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/arc3-engineering-actions.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/arc5-feed-action.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/arc9-atlas-row-actions.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/apps/game/src/binder-sets.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/biome-vista-surface.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/apps/game/src/bioscan-action.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/compendium-creature-progression-surface.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/compendium-creature-progression.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/apps/game/src/guide-content.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/landing-card.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/living-species-preview.ts",
+      "present": false,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/paragon-finder.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/star-atlas-panel.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/star-atlas-state.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/apps/game/src/starter-charter-action.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/starter-charters.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/training-forge-practice.ts",
+      "present": false,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/training.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/apps/game/src/weekly-charters.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/package-lock.json",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/domain/acquisition/package.json",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/domain/acquisition/src/bioscan.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/packages/domain/acquisition/src/model.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/domain/acquisition/src/ownership-v2-internal.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/packages/domain/acquisition/src/paragon-internal.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/domain/acquisition/src/paragon.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/domain/acquisition/test/paragon.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/combatcore.verbatim.d.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/creature-level-progress.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/index.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/test/creature-level-progress.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/domain/loot/src/engineering-capabilities.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/packages/domain/loot/test/engineering-capabilities.test.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/packages/domain/opportunity/package.json",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/domain/opportunity/src/descent-waveoffs.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/packages/domain/opportunity/src/descent.ts",
+      "present": false,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/domain/opportunity/src/index.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/domain/opportunity/test/descent.test.ts",
+      "present": false,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/persistence/src/arc4-ownership.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/packages/persistence/src/arc5-ownership-migration.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/packages/persistence/src/combat-settlement.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/persistence/src/descent-waveoffs.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/packages/persistence/src/index.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/persistence/test/arc2-engineering-loadout.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/packages/persistence/test/descent-waveoffs.test.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/tests/arc0-landing-action.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/arc0-main-wiring.test.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/tests/arc3-app-backend.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/arc9-atlas-favorite-main-wiring.test.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/tests/arc9-atlas-row-actions.test.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/tests/arc9-main-wiring.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/binder-sets.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/bioscan-action.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/bioscan-main-wiring.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/combatcore-innate-adapter-lift.test.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/tests/compendium-creature-progression-main-wiring.test.ts",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/tests/compendium-creature-progression-surface.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/compendium-creature-progression.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/guide-release.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/landing-card-main-wiring.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/landing-card.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/living-species-preview-main-wiring.test.ts",
+      "present": false,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/living-species-preview.test.ts",
+      "present": false,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/paragon-finder.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/star-atlas-css.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/star-atlas-main-wiring.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/star-atlas-panel.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/starter-charters.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/training-forge-main-wiring.test.ts",
+      "present": false,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/training-forge-practice.test.ts",
+      "present": false,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/training.test.ts",
+      "present": true,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tests/weekly-charters.test.ts",
+      "present": false,
+      "identical": false
+    },
+    {
+      "path": "port/v2/tools/lift.mjs",
+      "present": true,
+      "identical": true
+    },
+    {
+      "path": "port/v2/tools/registry.mjs",
+      "present": true,
+      "identical": true
+    }
+  ]
+}

@@ -49,6 +49,8 @@ describe('explicit evidence-build runtime isolation', () => {
       engineeringPanelReleased: false, engineeringPanelController: { setPresentation },
       currentShipVisualState, currentTameGreetingRouteKey: () => 'earth',
       motionOK: () => true, save: { fxOn: true },
+      // D16 vista pills (vista-postcard.ts): every scene-visibility change resyncs the pill row
+      syncVistaPills: vi.fn(),
     };
     type Presentation = { enhanced: boolean; surfaceVisible: boolean; starterScoutImageUrl: string | null };
     type Api = { present(state: Presentation): void; apply(): void; sync(): void; reset(): void };
@@ -63,6 +65,7 @@ describe('explicit evidence-build runtime isolation', () => {
     expect(setPresentation).toHaveBeenLastCalledWith({ mode: 'audiovisual-pilot', starterScoutImageUrl: '/assets/scout.webp' });
     env.surfaceVistaSprite = { visible: true }; api.apply();
     expect(env.surfaceVistaSprite.visible).toBe(false);
+    expect(env.syncVistaPills).toHaveBeenCalled(); // the vista pills follow the scene's visibility
     for (const mode of ['system', 'galaxy', 'universe']) {
       env.nav.mode = mode; api.apply();
       expect(env.world.visible, mode).toBe(true); expect(env.surfaceVistaSprite.visible, mode).toBe(true);
@@ -96,7 +99,7 @@ describe('explicit evidence-build runtime isolation', () => {
       nav: { mode: 'surface', gal: {}, star: {}, planet: {} }, world: { visible: true },
       surfaceVistaSprite: null,
       currentShipVisualState: () => ({ chassisStage: 0 }), currentTameGreetingRouteKey: () => 'earth',
-      motionOK: () => true, save: { fxOn: true },
+      motionOK: () => true, save: { fxOn: true }, syncVistaPills: vi.fn(),
       renderedSceneReceipt: { serial: 8 }, currentEcologyEpoch: () => 2,
       getProvenGalaxyKey: () => 'galaxy', getProvenStarKey: () => 'star', getProvenPlanetKey: () => 'earth',
     };
