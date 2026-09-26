@@ -71,7 +71,7 @@ These focused tests use a memory implementation of the existing store interface
 and deterministic injected inference; they are not an IndexedDB or native-model
 performance claim.
 
-## Prepared native proof (not yet run)
+## Native proof — PASS on signed 26a4bc57
 
 `native-runner.mjs` adapts the existing `finish-master.mjs` harness to this engine.
 It uses only the five already-admitted crab fits under
@@ -93,7 +93,34 @@ node audits/G5_FINISHER_ENGINE_20260926/native-runner.mjs /private/tmp/cf-g5-nat
 A phone path exercised in desktop Chromium is not physical iPhone qualification.
 The harness retains original labels and binding bytes; it does not create a new
 fit or admit any G2 pilot image. Its real model output still needs Nick's quality
-review and Claude's game routing. Native results are added only after execution.
+review and Claude's game routing. The one run completed on signed
+`26a4bc5716afda8e2a196264b7093f679cea8407`; final producer source hashes matched.
+
+Retained evidence: `native-26a4bc57/result.json`, compact `summary.json`, five PNGs
+and receipts. Five model inferences used one lazy model factory; inference times
+were 24.003, 20.626, 20.069, 15.191 and 17.849 seconds. Exact duplicate requests
+shared a promise and later requests reused immutable cached originals. All five
+PNGs were delivered byte-exact into a fresh real IndexedDB store with Worker
+construction forbidden and zero phone factory calls. A missing individual fell
+back. Total PNG payload: **199,641 bytes**. Conservation passed on every output.
+
+All five outputs were inspected: subtle interior texture changes preserve the
+simple source paintings. This is evidence that the engine executes and conserves
+its inputs, not acceptance of visual quality or a new high-detail painting.
+
+### C40 master-to-atlas seam
+
+The returned PNG remains in the original master coordinate space, with identical
+width, height and alpha. The engine does not return an atlas. The existing tool
+`tools/painted-creature/rebind-finished.mjs#rebindFinished` demonstrates the
+deterministic projection: sample master RGB through each original `part.cutout`,
+write it at the unchanged `part.frame`, preserve part/atlas alpha, and require
+byte-identical `binding.parts` and `binding.paintSkin` after rebuilding. Texture
+and content hashes change; geometry does not. That helper is currently limited
+to five crab packets and its old receipt shape. Claude's runtime routing adapter
+must generalize the projection and consume the engine receipt; it cannot call
+the old helper unchanged. Per-individual master-space morph/admission precedes
+this engine and must bind its own source/label/binding hashes.
 
 ## Remaining owner work
 
@@ -105,3 +132,5 @@ phone delivery/rendering remains a separate qualification. G1 is still red and
 G2 pilot masters are not substituted for admitted rigs.
 
 Disk at engine batch start: 232 GiB free on `/System/Volumes/Data`.
+
+Disk at final native boundary: 225 GiB free. Compact native evidence retained; model cache unchanged.

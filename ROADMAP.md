@@ -46,6 +46,10 @@ D22/D23 PROGRAM.md is current. Claude G1/G3 and cleanup merged through signedfdb
 by no-ffbd5530d7. G3 delivers pinned on-demand art outside the core pack; preserve its routing.
 G1 remains12/40, below30; hand ceiling30/40. Review findings and exact invariants are in
 `audits/G_PIPELINE_CODEX_20260926/G1_REVIEW.md`. Claude has since merged the limb counter and advanced G1/G4 through signedfd37bfd6 (not yet merged here). G1v5 remains12/40 and scores10/20 on G2; mutation controls improved. D24 is Claude’s pending denominator decision, not authority to weaken this gate.
+Read-only follow-up on signed 77623d3f is in `audits/G1_CONTRACT_REVIEW_20260926`: materials,
+habitat and outer provenance improved; all-visible presence and canonical identity are still
+not proved, and the exact shipped-38 status manifest is requested. D25 reference shopping
+stays off; weaker mutation refusal is not accepted. C40 answers are in our mailbox.
 
 G2 complete at90ef2c56:20 quadruped originals, exact prompts, source/verifier hashes and ONE
 review sheet in`audits/G2_QUADRUPED_PILOT_20260926`;120 derived six-pattern mask candidates.
@@ -56,7 +60,10 @@ Masks conserve source alpha; G1 record binding is still required before rig admi
 G5 engine/tests and native harness are in`audits/G5_FINISHER_ENGINE_20260926`. Codex supplies
 per-individual retained originals, bounded serial/deduplicated jobs, lazy desktop inference,
 phone delivery with zero model construction and exact PNG/conservation. Claude owns actual
-G5 gameplay/landfall routing and G4 selection. G5 native result will be recorded in that packet.
+G5 gameplay/landfall routing and G4 selection. Native proof on signed 26a4bc57 PASS:
+five real inferences, exact cache/deduplication, five byte-exact delivered originals in fresh
+IndexedDB, zero phone model construction; 199,641 PNG bytes total. Output is master-space,
+not an atlas; C40 projection contract and runtime-adapter boundary are in the G5 packet.
 A desktop Chromium phone-path proof is not physical iPhone or Nick quality acceptance.
 
 Only AFTER G1 PASS: S4 training-only feasibility map, then ONE fresh declared held-out epoch
@@ -69,12 +76,15 @@ Remote branches now only openai/mac, anthropic/mac, develop, main. Local OpenAI 
 Old I5 worktrees removed; keep newest2 ignored preview packages. Git connectivity passes.
 Original clone develop0 ahead/472 behind, modifiedpackage-lock.json and untracked.claude/:
 no pull performed. Historical Markdown retained verbatim; current references refreshed.
-Free230GiB at this batch boundary; check again at end, cleanup<60GiB, floor40GiB.
+Free 225 GiB at the final native boundary; check each batch, cleanup below 60 GiB, floor 40 GiB.
 
-Codex: finish current integrated verification, sign, run G5 native proof, publish only own lane
-with each measured pack<2GB under Nick's explicit I5-only push authority. Claude: consume
-signed G2/G5/recovery checkpoint from shared store, repair G1 presence/counter/material findings,
-and route G5. No Nick relay/wait for pushes. Last already-pushed Codex copy checkpointf01f911e:
+Codex: recovery and G5 implementation signed at 26a4bc57, native proof complete; publish
+the evidence successor only to our lane with a measured pack below 2 GB under Nick's
+explicit I5-only push authority. Next integrate Claude's newer G1/G4 work in a fresh tested
+batch and incorporate its proposed release bullet in that batch's copy measurement. Claude:
+consume signed G2/G5/recovery from the shared store, close G1 presence/identity findings,
+and wire the master-space morph → finisher → unchanged atlas projection. No Nick relay or
+need to open the other app. Earlier pushed Codex copy checkpoint f01f911e:
 119 bullets,41 topics,5 briefings; current119-bullet recovery SHA is in measured-copy.json.
 No PR, label, hosted attempt, develop/main merge, release or deploy authorized by this work.
 The standing I5 red remains a real gate, not waived or rebound. Pre-existing.DS_Store untouched.
