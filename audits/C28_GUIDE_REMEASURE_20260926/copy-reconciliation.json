@@ -1,0 +1,372 @@
+[
+  {
+    "file": "port/v2/apps/game/src/guide-content.ts",
+    "replacements": [
+      {
+        "old": "Companion tastes and flavours, stat or Power growth from Feed, injury care or healing, companion poison, bond, dispatch, missions, and friendly duels remain unavailable",
+        "new": "Companion tastes, meal growth, wound care, bond memories and friendly duels are live; companion poison, dispatch and missions remain unavailable",
+        "count": 1
+      },
+      {
+        "old": "Companion Feed still does not discover tastes or flavours, grow stats or Power, heal injuries, apply poison, or build a bond",
+        "new": "Companion Feed reveals tastes, grows Meals, mends wounds and records bond memories; it never poisons a companion",
+        "count": 1
+      },
+      {
+        "old": "Dispatch, missions, care, bond, passive evolution, and friendly duels remain unavailable",
+        "new": "Dispatch, missions and passive evolution remain unavailable; care, bond memories and friendly duels are live",
+        "count": 1
+      },
+      {
+        "old": "Friendly duels and missions remain unavailable",
+        "new": "Friendly duels are live; missions remain unavailable",
+        "count": 1
+      },
+      {
+        "old": "Friendly or imported creature-code duels and shared timed events",
+        "new": "Shared timed events",
+        "count": 1
+      },
+      {
+        "old": "companion action is deliberately only a meal counter and inventory spend",
+        "new": "companion action resolves taste, Meals growth, wound mending and first-time XP in the same inventory spend",
+        "count": 1
+      },
+      {
+        "old": "tastes and flavours, stat or Power growth, injury care or healing, companion poison, and bond remain unavailable",
+        "new": "Loved food grows Meals faster and mends wounds; disliked food is harmless; first tastes build bond memories",
+        "count": 1
+      },
+      {
+        "old": "Meals by 1",
+        "new": "Meals by 0 to 3",
+        "count": 2
+      },
+      {
+        "old": "Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why",
+        "new": "Companions with an active assignment or Recovery timer and companions already at the 200-Meal cap stay disabled and explain why",
+        "count": 1
+      },
+      {
+        "old": "bred champion crawls home Critical",
+        "new": "bred champion returns through active-play Recovery",
+        "count": 1
+      },
+      {
+        "old": "bred fauna loser crawls home Critical",
+        "new": "bred fauna loser returns through active-play Recovery",
+        "count": 1
+      },
+      {
+        "old": "wild-caught champion can be permanently lost",
+        "new": "wild-caught champion returns through active-play Recovery",
+        "count": 1
+      },
+      {
+        "old": "wild-caught loser can be permanently lost",
+        "new": "wild-caught loser returns through active-play Recovery",
+        "count": 1
+      },
+      {
+        "old": "Companion Feed-based healing, broader care, and poison treatment remain unavailable",
+        "new": "Companion Feed mends wounds according to taste; Rest heals a wounded companion and locks it until its active-play timer ends; companion poison is absent",
+        "count": 1
+      },
+      {
+        "old": "companion healing and broader care remain open",
+        "new": "companion Feed mending and timed Rest are live",
+        "count": 1
+      },
+      {
+        "old": "Party roles, tactics, retreat, and broader Guardian care, breeding, Recovery, or mission systems remain open",
+        "new": "Guardian and Titan fights offer up to three fighters, stances, Auto or Command, and offered Hold, Swap or Withdraw choices; ordinary wild fights stay Auto. Defeat applies active-play Recovery with no added defeat wound. Broader Guardian care, breeding and missions remain open",
+        "count": 1
+      },
+      {
+        "old": "They gain no Arc 5 care, breeding, mission, or Recovery fields",
+        "new": "They gain no Arc 5 care, breeding or missions; a combat-only Recovery overlay controls their availability",
+        "count": 1
+      },
+      {
+        "old": "Because their lineage is not bred, defeat can permanently remove them: an immutable tombstone preserves the last live state, and the lost champion stays absent from both the combat roster and composite Compendium after reload, Training restore, and capture reconciliation",
+        "new": "Regardless of lineage, defeat assigns a temporary Recovery lock. The champion remains in the composite Compendium and returns to the combat roster when active-play Recovery ends; reload, Training restore and capture reconciliation preserve that lock",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "file": "port/v2/apps/game/src/release-content.ts",
+    "replacements": [
+      {
+        "old": "friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable",
+        "new": "passive evolution, dispatch and missions remain unavailable; care, bond memories and friendly duels are live",
+        "count": 1
+      },
+      {
+        "old": "Friendly duels and missions remain unavailable",
+        "new": "Friendly duels are live; missions remain unavailable",
+        "count": 1
+      },
+      {
+        "old": "Companion Feed is still only an inventory spend and meal counter",
+        "new": "Companion Feed resolves taste, Meals growth, wound mending and first-time XP in one inventory spend",
+        "count": 1
+      },
+      {
+        "old": "tastes, Power growth, injury care or healing, companion poison, and bond remain open",
+        "new": "loved meals grow and mend, neutral meals grow and mend less, and disliked meals are harmless; first tastes build bond memories",
+        "count": 1
+      },
+      {
+        "old": "TWO EXACT MEAL PATHS, NO INVENTED CARE",
+        "new": "TWO EXACT MEAL PATHS, TASTE-LED CARE",
+        "count": 1
+      },
+      {
+        "old": "Meals by 1",
+        "new": "Meals by 0 to 3",
+        "count": 1
+      },
+      {
+        "old": "assigned, recovering, and capped companions stay disabled and explain why",
+        "new": "companions with an active assignment or Recovery timer and capped companions stay disabled and explain why",
+        "count": 1
+      },
+      {
+        "old": "bred fauna loser crawls home Critical",
+        "new": "bred fauna loser returns through active-play Recovery",
+        "count": 1
+      },
+      {
+        "old": "wild-caught loser can be permanently lost",
+        "new": "wild-caught loser returns through active-play Recovery",
+        "count": 1
+      },
+      {
+        "old": "Party roles, tactics, retreat, and broader Guardian care, breeding, Recovery, or mission systems remain open",
+        "new": "Guardian and Titan fights offer up to three fighters, stances, Auto or Command, and offered Hold, Swap or Withdraw choices; ordinary wild fights stay Auto. Defeat applies active-play Recovery with no added defeat wound. Broader Guardian care, breeding and missions remain open",
+        "count": 1
+      },
+      {
+        "old": "They gain no Arc 5 care, breeding, mission, or Recovery fields",
+        "new": "They gain no Arc 5 care, breeding or missions; a combat-only Recovery overlay controls their availability",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "file": "port/v2/tools/slicesmoke.mjs",
+    "replacements": [
+      {
+        "old": "Companion tastes and flavours, stat or Power growth from Feed, injury care or healing, companion poison, bond, dispatch, missions, and friendly duels remain unavailable",
+        "new": "Companion tastes, meal growth, wound care, bond memories and friendly duels are live; companion poison, dispatch and missions remain unavailable",
+        "count": 1
+      },
+      {
+        "old": "Companion tastes, stat or Power growth from Feed, injury care, bond, dispatch, missions, and friendly duels remain unavailable",
+        "new": "Companion tastes, meal growth, wound care, bond memories and friendly duels are live; companion poison, dispatch and missions remain unavailable",
+        "count": 1
+      },
+      {
+        "old": "Companion Feed still does not discover tastes or flavours, grow stats or Power, heal injuries, apply poison, or build a bond",
+        "new": "Companion Feed reveals tastes, grows Meals, mends wounds and records bond memories; it never poisons a companion",
+        "count": 1
+      },
+      {
+        "old": "Dispatch, missions, care, bond, passive evolution, and friendly duels remain unavailable",
+        "new": "Dispatch, missions and passive evolution remain unavailable; care, bond memories and friendly duels are live",
+        "count": 1
+      },
+      {
+        "old": "friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable",
+        "new": "passive evolution, dispatch and missions remain unavailable; care, bond memories and friendly duels are live",
+        "count": 1
+      },
+      {
+        "old": "tastes and flavours, stat or Power growth, injury care or healing, companion poison, and bond remain unavailable",
+        "new": "Loved food grows Meals faster and mends wounds; disliked food is harmless; first tastes build bond memories",
+        "count": 1
+      },
+      {
+        "old": "Companion Feed is still only an inventory spend and meal counter",
+        "new": "Companion Feed resolves taste, Meals growth, wound mending and first-time XP in one inventory spend",
+        "count": 1
+      },
+      {
+        "old": "tastes, Power growth, injury care or healing, companion poison, and bond remain open",
+        "new": "loved meals grow and mend, neutral meals grow and mend less, and disliked meals are harmless; first tastes build bond memories",
+        "count": 1
+      },
+      {
+        "old": "TWO EXACT MEAL PATHS, NO INVENTED CARE",
+        "new": "TWO EXACT MEAL PATHS, TASTE-LED CARE",
+        "count": 2
+      },
+      {
+        "old": "Meals by 1",
+        "new": "Meals by 0 to 3",
+        "count": 3
+      },
+      {
+        "old": "Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why",
+        "new": "Companions with an active assignment or Recovery timer and companions already at the 200-Meal cap stay disabled and explain why",
+        "count": 1
+      },
+      {
+        "old": "assigned, recovering, and capped companions stay disabled and explain why",
+        "new": "companions with an active assignment or Recovery timer and capped companions stay disabled and explain why",
+        "count": 1
+      },
+      {
+        "old": "losing one of those captured rulers is permanent",
+        "new": "a defeated captured ruler returns after active-play Recovery",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "file": "port/v2/tools/glassmatrix.mjs",
+    "replacements": [
+      {
+        "old": "Companion tastes and flavours, stat or Power growth from Feed, injury care or healing, companion poison, bond, dispatch, missions, and friendly duels remain unavailable",
+        "new": "Companion tastes, meal growth, wound care, bond memories and friendly duels are live; companion poison, dispatch and missions remain unavailable",
+        "count": 1
+      },
+      {
+        "old": "friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable",
+        "new": "passive evolution, dispatch and missions remain unavailable; care, bond memories and friendly duels are live",
+        "count": 1
+      },
+      {
+        "old": "Friendly duels and missions remain unavailable",
+        "new": "Friendly duels are live; missions remain unavailable",
+        "count": 1
+      },
+      {
+        "old": "companion action is deliberately only a meal counter and inventory spend",
+        "new": "companion action resolves taste, Meals growth, wound mending and first-time XP in the same inventory spend",
+        "count": 1
+      },
+      {
+        "old": "tastes and flavours, stat or Power growth, injury care or healing, companion poison, and bond remain unavailable",
+        "new": "Loved food grows Meals faster and mends wounds; disliked food is harmless; first tastes build bond memories",
+        "count": 1
+      },
+      {
+        "old": "Companion Feed is still only an inventory spend and meal counter",
+        "new": "Companion Feed resolves taste, Meals growth, wound mending and first-time XP in one inventory spend",
+        "count": 1
+      },
+      {
+        "old": "tastes, Power growth, injury care or healing, companion poison, and bond remain open",
+        "new": "loved meals grow and mend, neutral meals grow and mend less, and disliked meals are harmless; first tastes build bond memories",
+        "count": 1
+      },
+      {
+        "old": "TWO EXACT MEAL PATHS, NO INVENTED CARE",
+        "new": "TWO EXACT MEAL PATHS, TASTE-LED CARE",
+        "count": 2
+      },
+      {
+        "old": "Meals by 1",
+        "new": "Meals by 0 to 3",
+        "count": 21
+      },
+      {
+        "old": "Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why",
+        "new": "Companions with an active assignment or Recovery timer and companions already at the 200-Meal cap stay disabled and explain why",
+        "count": 1
+      },
+      {
+        "old": "assigned, recovering, and capped companions stay disabled and explain why",
+        "new": "companions with an active assignment or Recovery timer and capped companions stay disabled and explain why",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "file": "port/v2/tests/guide-release.test.ts",
+    "replacements": [
+      {
+        "old": "Companion Feed still does not discover tastes or flavours, grow stats or Power, heal injuries, apply poison, or build a bond",
+        "new": "Companion Feed reveals tastes, grows Meals, mends wounds and records bond memories; it never poisons a companion",
+        "count": 1
+      },
+      {
+        "old": "Dispatch, missions, care, bond, passive evolution, and friendly duels remain unavailable",
+        "new": "Dispatch, missions and passive evolution remain unavailable; care, bond memories and friendly duels are live",
+        "count": 1
+      },
+      {
+        "old": "friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable",
+        "new": "passive evolution, dispatch and missions remain unavailable; care, bond memories and friendly duels are live",
+        "count": 1
+      },
+      {
+        "old": "Friendly or imported creature-code duels and shared timed events",
+        "new": "Shared timed events",
+        "count": 1
+      },
+      {
+        "old": "companion action is deliberately only a meal counter and inventory spend",
+        "new": "companion action resolves taste, Meals growth, wound mending and first-time XP in the same inventory spend",
+        "count": 1
+      },
+      {
+        "old": "tastes and flavours, stat or Power growth, injury care or healing, companion poison, and bond remain unavailable",
+        "new": "Loved food grows Meals faster and mends wounds; disliked food is harmless; first tastes build bond memories",
+        "count": 1
+      },
+      {
+        "old": "Companion Feed is still only an inventory spend and meal counter",
+        "new": "Companion Feed resolves taste, Meals growth, wound mending and first-time XP in one inventory spend",
+        "count": 2
+      },
+      {
+        "old": "tastes, Power growth, injury care or healing, companion poison, and bond remain open",
+        "new": "loved meals grow and mend, neutral meals grow and mend less, and disliked meals are harmless; first tastes build bond memories",
+        "count": 2
+      },
+      {
+        "old": "TWO EXACT MEAL PATHS, NO INVENTED CARE",
+        "new": "TWO EXACT MEAL PATHS, TASTE-LED CARE",
+        "count": 3
+      },
+      {
+        "old": "Meals by 1",
+        "new": "Meals by 0 to 3",
+        "count": 3
+      },
+      {
+        "old": "Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why",
+        "new": "Companions with an active assignment or Recovery timer and companions already at the 200-Meal cap stay disabled and explain why",
+        "count": 1
+      },
+      {
+        "old": "assigned, recovering, and capped companions stay disabled and explain why",
+        "new": "companions with an active assignment or Recovery timer and capped companions stay disabled and explain why",
+        "count": 1
+      },
+      {
+        "old": "bred champion crawls home Critical",
+        "new": "bred champion returns through active-play Recovery",
+        "count": 1
+      },
+      {
+        "old": "bred fauna loser crawls home Critical",
+        "new": "bred fauna loser returns through active-play Recovery",
+        "count": 1
+      },
+      {
+        "old": "wild-caught loser can be permanently lost",
+        "new": "wild-caught loser returns through active-play Recovery",
+        "count": 1
+      },
+      {
+        "old": "Party roles, tactics, retreat, and broader Guardian care, breeding, Recovery, or mission systems remain open",
+        "new": "Guardian and Titan fights offer up to three fighters, stances, Auto or Command, and offered Hold, Swap or Withdraw choices; ordinary wild fights stay Auto. Defeat applies active-play Recovery with no added defeat wound. Broader Guardian care, breeding and missions remain open",
+        "count": 2
+      }
+    ]
+  }
+]

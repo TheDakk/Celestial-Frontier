@@ -1,0 +1,31 @@
+{
+  "New Features & Systems": [
+    "🍃 COMPANION TASTES: Every companion loves two flavours and dislikes one. Loved meals grow it faster and mend wounds; disliked meals are consumed harmlessly. A first meal and each new flavour earn one-time XP.",
+    "💤 REST: A wounded companion can rest at home for 2 minutes of active play per 0.1 injury, rounded up and capped at 20 minutes. It heals and becomes available when that timer ends; closing the game does not advance it.",
+    "💞 BOND: Six levels, Wary to Soulbound, record distinct shared firsts and never decay. Bond itself adds no combat power; mission perks await the mission system.",
+    "🔗 SHARE YOUR CREATURE: A companion’s Friendly duel panel offers its battle-ready CFB- code, and a champion code once it has earned XP, for a friend to paste into their own duel."
+  ],
+  "UI Enhancements": [
+    "🎧 MONO AUDIO AND REDUCED INTENSITY: Two Creature voices settings offer the same sound in both ears and a quieter, gentler mix. Both are remembered on this device.",
+    "🔔 MARK ALL READ AND CLEAR ALL: Notifications can mark every entry read in one press and clear its history with a two-step confirmation.",
+    "⚙ BATTLE SOUNDS AND CONFIRM SALVAGE: Turn battle hits and effects off without muting creature voices, and choose whether salvage asks first.",
+    "📂 FOLDED SURVEY CARD: An option in Settings folds environment and census rows behind remembered toggles. The survey card stays fully open by default.",
+    "🎧 LISTENING REVIEW: The optional review page in built packages plays creature voices in a fixed order for Keep, Redo or Cut ratings you can copy out. Ratings stay on your device.",
+    "📌 PIN A RECIPE: Pin an unbuilt recipe to track missing materials while gathering; its chip turns READY when you can forge it.",
+    "🗺 PRIME CODEX TRAVEL: Return to a Signature’s source or track the nearest in-reach world with an unclaimed Titan.",
+    "⚙ MORE SETTINGS: Reset expedition asks for confirmation. Pop-ups Off keeps the notification tray and screen-reader announcements; creature cues still reveal their counterpart. Tooltips support press-and-hold on phones.",
+    "📖 ADVANCED BRIEFINGS: Five optional Guide pages explain v2 travel, resources, companion care, combat and progress, with links to the live manual. Browsing changes no expedition progress."
+  ],
+  "Gameplay": [
+    "⛏ HARVEST YOUR WORLDS: A conquered world offers Harvest on an active-play cooldown. Moving the device clock cannot speed it up.",
+    "🍽 TASTE DECIDES THE MEAL: Companion feeding is deterministic. Loved, neutral and disliked food have distinct, previewed growth and healing outcomes.",
+    "🛠 CRAFT ×5: Fabricator parts and components can forge up to five times. Each craft is its own saved result and the batch stops at the first refusal.",
+    "♺ SALVAGE ALL: A confirmed action salvages unequipped, unprotected Common and Uncommon gear, excluding relics. Its confirmation also offers Don’t ask again."
+  ],
+  "Bug Fixes": [
+    "🍃 A RESTING PARENT CAN EAT AGAIN: Breeding Recovery stops blocking Feed when its active-play timer ends. Companions still busy with Rest or another assignment remain unavailable."
+  ],
+  "Under the Hood": [
+    "🔬 DEVICE PROBE: The optional device probe checks Opus and AAC decoding from hash-checked samples and reports which formats work on this device. It does not silently select or download new production sound sources."
+  ]
+}

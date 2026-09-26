@@ -89,8 +89,8 @@ const FEEDING_COPY_CONTRADICTIONS = Object.freeze([
   /(?:all|every) Compendium (?:row|detail)[^.!?]{0,80}(?:can feed|offers? Feed|exposes? Feed)/i,
   /(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i,
   /Meals[^.!?]{0,64}(?:above|beyond|past|over) 200/i,
-  /(?:companion Feed|feeding a companion)[^.!?]{0,96}(?:discovers? tastes?|grows? (?:stats?|Power)|heals? injuries?|applies? poison|builds? bond)/i,
-  /Stats?[^.!?]{0,48}(?:is|are) (?:now )?(?:increased|raised|grown) by (?:companion )?feeding/i,
+  /Feed can heal without consuming flora|Rest advances while the game is closed|Bond decays over time/i,
+  /Companion Feed applies poison/i,
   /(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i,
   /optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i,
 ]);
@@ -138,8 +138,8 @@ const COMBAT_COPY_CONTRADICTIONS = Object.freeze([
   /(?:combat|duel|conquest)[^.!?]{0,64}(?:automatically )?(?:retries|rerolls)/i,
   /160-run forecast[^.!?]{0,64}(?:random|estimated|guessed)/i,
   /(?:Captured )?(?:Guardians?|Titans?)[^.!?]{0,96}(?:are inserted|join|enter)[^.!?]{0,48}(?:ordinary )?Arc 5/i,
-  /(?:Captured )?(?:Guardians?|Titans?)[^.!?]{0,96}(?:can|may) (?:recover|return)[^.!?]{0,48}(?:after|from) defeat/i,
-  /(?:Guardian|Titan) champion[^.!?]{0,96}(?:care|breed|mission|Recovery)[^.!?]{0,64}(?:is|are) (?:now )?(?:live|available)/i,
+  /(?:Captured )?(?:Guardians?|Titans?)[^.!?]{0,96}(?:are|become) permanently lost after defeat/i,
+  /(?:Guardian|Titan) champion[^.!?]{0,96}(?:care|breed|mission)[^.!?]{0,64}(?:is|are) (?:now )?(?:live|available)/i,
   /extra Guardian (?:Gear|material|cache)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|awarded)/i,
   /wk-conq[^.!?]{0,80}(?:settles?|completes?|awards?)/i,
   /Creature voices (?:controls?|governs?)[^.!?]{0,48}(?:combat|impact)/i,
@@ -199,7 +199,7 @@ const UNAVAILABLE_V2_FEATURE_OVERCLAIMS = Object.freeze([
   /all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\s+(?:actionable|playable|available|live)/i,
   /(?:dormant|disconnected|unsupported) (?:Fabricator )?(?:effects?|outputs?|recipes?)[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i,
   ...DORMANT_CRAFTING_COPY_CONTRADICTIONS,
-  /(?:duels?|passive evolution|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i,
+  /(?:passive evolution|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i,
   ...FEEDING_COPY_CONTRADICTIONS,
 ]);
 
@@ -498,8 +498,8 @@ function captureGuideCopyIsTruthful(body: string): boolean {
     && /Narrow companion feeding, nonlethal Breeding, exact-instance companion renaming, and Field Scout selection are available only from a real fauna Compendium detail/i.test(copy)
     && /Field Scout interception is live on hostile Discover Life/i.test(copy)
     && /real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment/i.test(copy)
-    && /Companion Feed still does not discover tastes or flavours, grow stats or Power, heal injuries, apply poison, or build a bond/i.test(copy)
-    && /Dispatch, missions, care, bond, passive evolution, and friendly duels remain unavailable/i.test(copy)
+    && /Companion Feed reveals tastes, grows Meals, mends wounds and records bond memories; it never poisons a companion/i.test(copy)
+    && /Dispatch, missions and passive evolution remain unavailable; care, bond memories and friendly duels are live/i.test(copy)
     && FIELD_SCOUT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy))
     && COMBAT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy))
     && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
@@ -598,7 +598,7 @@ function captureReleaseCopyIsTruthful(body: string): boolean {
     && /older Surveys and capture do not count/i.test(body)
     && /Weekly bioscan Charters remain protected until their separate lifecycle is complete/i.test(body)
     && /Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail/i.test(body)
-    && /friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable/i.test(body)
+    && /Passive evolution, dispatch and missions remain unavailable. Care, bond memories and friendly duels are live/i.test(body)
     && FIELD_SCOUT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body))
     && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
 }
@@ -633,7 +633,7 @@ function breedingCopyIsTruthful(body: string): boolean {
     && /Back and Close remain available around the action/i.test(copy)
     && /successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save/i.test(copy)
     && /failed pairing, refusal, stale result, or failed write banks no Charter credit/i.test(copy)
-    && /Parent consumption, taste or bond effects, manual genetic editing, broader care, missions, and combat remain unavailable/i.test(copy)
+    && /Parent consumption and manual genetic editing remain unavailable. Care, bond memories and combat are live; missions remain unavailable/i.test(copy)
     && BREEDING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
 
@@ -788,8 +788,8 @@ function feedingCopyIsTruthful(body: string): boolean {
     && /Choose one exact unassigned owned companion whose Meals are below 200 and one exact owned flora lot/i.test(copy)
     && /Use 1/i.test(copy)
     && /Same-species twins remain separate exact instances/i.test(copy)
-    && /Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why/i.test(copy)
-    && /Meals by 1[^.!?]{0,48}capped at 200/i.test(copy)
+    && /Companions with an active assignment or Recovery timer and companions already at the 200-Meal cap stay disabled and explain why/i.test(copy)
+    && /Meals by 0 to 3[^.!?]{0,48}capped at 200/i.test(copy)
     && /removes 1 flora from that exact lot/i.test(copy)
     && /final unit empties that exact lot/i.test(copy)
     && /one immutable receipt and one compare-and-swap save transaction/i.test(copy)
@@ -801,8 +801,8 @@ function feedingCopyIsTruthful(body: string): boolean {
     && /one deterministic synthesized acknowledgement after that status appears/i.test(copy)
     && /refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(copy)
     && /Back and Close remain available/i.test(copy)
-    && /companion action is deliberately only a meal counter and inventory spend/i.test(copy)
-    && /tastes and flavours, stat or Power growth, injury care or healing, companion poison, and bond remain unavailable/i.test(copy)
+    && /companion action resolves taste, Meals growth, wound mending and first-time XP in the same inventory spend/i.test(copy)
+    && /Loved food grows Meals faster and mends wounds; disliked food is harmless; first tastes build bond memories/i.test(copy)
     && /explorer’s separate Eat 1 action lives on a real Flora detail and owns healing, poison, and nourishment without changing companion Feed/i.test(copy)
     && /Companion Breed (?:is a separate action with|has) its own eligibility, odds, lineage, and active-play Recovery/i.test(copy)
     && /Rename changes only one selected exact companion’s nickname/i.test(copy)
@@ -812,19 +812,19 @@ function feedingCopyIsTruthful(body: string): boolean {
 }
 
 function feedingReleaseCopyIsTruthful(body: string): boolean {
-  return /TWO EXACT MEAL PATHS, NO INVENTED CARE/i.test(body)
+  return /TWO EXACT MEAL PATHS, TASTE-LED CARE/i.test(body)
     && /real fauna Compendium detail/i.test(body)
     && /one exact unassigned owned companion below the 200-Meal cap/i.test(body)
     && /one exact owned flora lot through Use 1/i.test(body)
     && /Same-species twins remain separate/i.test(body)
-    && /assigned, recovering, and capped companions stay disabled and explain why/i.test(body)
-    && /One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora/i.test(body)
+    && /companions with an active assignment or Recovery timer and capped companions stay disabled and explain why/i.test(body)
+    && /One receipt-bearing compare-and-swap raises Meals by 0 to 3 and removes exactly 1 flora/i.test(body)
     && /emptying that exact lot on its final unit/i.test(body)
     && /no retry or optimistic change/i.test(body)
     && /committed Feed requires its trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status, then may produce one deterministic synthesized acknowledgement after that status appears/i.test(body)
     && FEED_RELEASE_REPLAY_SILENCE_COPY.test(body)
-    && /Companion Feed is still only an inventory spend and meal counter/i.test(body)
-    && /tastes, Power growth, injury care or healing, companion poison, and bond remain open/i.test(body)
+    && /Companion Feed resolves taste, Meals growth, wound mending and first-time XP in one inventory spend/i.test(body)
+    && /loved meals grow and mend, neutral meals grow and mend less, and disliked meals are harmless; first tastes build bond memories/i.test(body)
     && /real Flora detail previews the explorer’s healing, poison risk, and deterministic nourished stat/i.test(body)
     && /Eat 1 consumes the canonical exact owned specimen in one receipt-bearing transaction/i.test(body)
     && /safe meal restores shown HP with worn healing gear, raises the stat up to 330, gains \+1 nourishment from Xenobotany/i.test(body)
@@ -893,10 +893,10 @@ function guardianChampionCopyIsTruthful(body: string): boolean {
     && /same forecast[^.!?]{0,160}(?:Combat )?Chronicle[^.!?]{0,160}registered audio[^.!?]{0,160}(?:win-XP|XP)/i.test(copy)
     && /exact loss-XP/i.test(copy)
     && /XP and injury (?:persist through|survive) reload/i.test(copy)
-    && /(?:not bred|lineage is not bred)[^.!?]{0,96}defeat (?:can )?permanently/i.test(copy)
-    && /immutable tombstone/i.test(copy)
-    && /absent from (?:both )?the (?:combat )?roster and (?:the )?composite Compendium[^.!?]{0,160}reload[^.!?]{0,96}Training restore[^.!?]{0,96}capture reconciliation/i.test(copy)
-    && /(?:gain|have) no Arc 5 care, breeding, mission, or Recovery fields/i.test(copy)
+    && /Regardless of lineage, defeat assigns a temporary Recovery lock/i.test(copy)
+    && /temporary Recovery lock/i.test(copy)
+    && /remains in the composite Compendium[^.!?]{0,200}reload[^.!?]{0,96}Training restore[^.!?]{0,96}capture reconciliation/i.test(copy)
+    && /(?:gain|have) no Arc 5 care, breeding or missions; a combat-only Recovery overlay controls their availability/i.test(copy)
     && /Prime claims remain independent of later champion use/i.test(copy)
     && COMBAT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
@@ -912,15 +912,15 @@ function combatGuideCopyIsTruthful(body: string): boolean {
     && /verified win conquers the world once/i.test(copy)
     && /8 \+ five times world tier Stardust, plus 40 more against a Guardian or Titan/i.test(copy)
     && /player defeat[^.!?]{0,96}never falls below 1 HP/i.test(copy)
-    && /bred fauna loser crawls home Critical/i.test(copy)
-    && /wild-caught loser can be permanently lost/i.test(copy)
+    && /bred fauna loser returns through active-play Recovery/i.test(copy)
+    && /wild-caught loser returns through active-play Recovery/i.test(copy)
     && /defeated Guardian or Titan is added to the Compendium with battlefield modifiers stripped/i.test(copy)
     && /Titan victory also claims its new Prime Signature[^.!?]{0,96}ninth distinct claim unlocks the Frontier/i.test(copy)
     && /Chapter 2 conquest and an accepted starter st-conq reward settle in the same save/i.test(copy)
     && /accepted wk-conq refuses before combat/i.test(copy)
     && /Authored extra Guardian Gear or material caches remain unavailable/i.test(copy)
     && /legacy 40% conquest-imbue gate[^.!?]{0,160}refuses before the duel/i.test(copy)
-    && /Party roles, tactics, retreat, and broader Guardian care, breeding, Recovery, or mission systems remain open/i.test(copy)
+    && /Guardian and Titan fights offer up to three fighters, stances, Auto or Command, and offered Hold, Swap or Withdraw choices; ordinary wild fights stay Auto. Defeat applies active-play Recovery with no added defeat wound. Broader Guardian care, breeding and missions remain open/i.test(copy)
     && guardianChampionCopyIsTruthful(body)
     && combatChronicleCopyIsTruthful(body)
     && COMBAT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
@@ -940,7 +940,7 @@ function combatReleaseCopyIsTruthful(body: string): boolean {
     && /starter st-conq[^.!?]{0,240}adds \+25 current and lifetime-earned Stardust[^.!?]{0,96}honors one Charter/i.test(body)
     && /Accepted wk-conq refuses before combat/i.test(body)
     && /legacy 40% conquest-imbue gate[^.!?]{0,160}coexist with natural and Pureforged gear/i.test(body)
-    && /Party roles, tactics, retreat, and broader Guardian care, breeding, Recovery, or mission systems remain open/i.test(body)
+    && /Guardian and Titan fights offer up to three fighters, stances, Auto or Command, and offered Hold, Swap or Withdraw choices; ordinary wild fights stay Auto. Defeat applies active-play Recovery with no added defeat wound. Broader Guardian care, breeding and missions remain open/i.test(body)
     && guardianChampionCopyIsTruthful(body)
     && combatChronicleCopyIsTruthful(body)
     && COMBAT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
@@ -1258,8 +1258,8 @@ describe('v2 Guide capability filter', () => {
     expect(categories).toHaveLength(9);
     expect(topics).toHaveLength(41);
     expect(topics.filter((topic) => topic.availability === 'available')).toHaveLength(0);
-    expect(topics.filter((topic) => topic.availability === 'partial')).toHaveLength(35);
-    expect(topics.filter((topic) => topic.availability === 'unavailable')).toHaveLength(6);
+    expect(topics.filter((topic) => topic.availability === 'partial')).toHaveLength(37);
+    expect(topics.filter((topic) => topic.availability === 'unavailable')).toHaveLength(4);
     expect(topics.filter((topic) => topic.availability === 'partial')
       .every((topic) => topic.body !== topic.legacyBody)).toBe(true);
     expect(topics.some((topic) => topic.id === 'beacon' || topic.id === 'events')).toBe(false);
@@ -1418,8 +1418,8 @@ describe('v2 Guide capability filter', () => {
     expect(feeding?.availability).toBe('partial');
     expect(feedingCopyIsTruthful(feeding?.body ?? '')).toBe(true);
     expect(getGuideTopic('injuries')?.availability).toBe('partial');
-    expect(getGuideTopic('injuries')?.body).toContain('bred champion crawls home Critical');
-    expect(getGuideTopic('injuries')?.body).toContain('healing, broader care');
+    expect(getGuideTopic('injuries')?.body).toContain('bred champion returns through active-play Recovery');
+    expect(getGuideTopic('injuries')?.body).toContain('Rest heals a wounded companion');
     expect(getGuideTopic('eating')?.availability).toBe('partial');
     expect(getGuideTopic('eating')?.body).toContain('real Flora Compendium detail');
     expect(getGuideTopic('eating')?.body).toContain('beta-safe meal rule stops at <b>1 HP</b>');
@@ -1477,7 +1477,7 @@ describe('v2 Guide capability filter', () => {
     expect(determinism?.availability).toBe('partial');
     expect(determinism?.body).toContain('accepts only a source-verified match');
     expect(determinism?.body).toContain('Landed deterministic conquest duels and their verified Combat Chronicle are live');
-    expect(determinism?.body).toContain('Friendly or imported creature-code duels and shared timed events');
+    expect(determinism?.body).toContain('Shared timed events');
     expect(determinism?.body).not.toContain('duels fair, and events shared');
     expect(getGuideTopic('saving')?.body).toContain('returns safely to <b>Cosmos</b>');
     expect(getGuideTopic('saving')?.body).toContain('without losing the rest of your expedition progress');
@@ -1591,7 +1591,7 @@ describe('v2 Guide capability filter', () => {
     for (const id of ['stardust', 'mining', 'skimming'] as const) {
       expect(getGuideTopic(id)?.availability, `${id} live Arc 3 boundary is hidden`).toBe('partial');
     }
-    expect(getGuideTopic('harvest')?.availability).toBe('unavailable');
+    expect(getGuideTopic('harvest')?.availability).toBe('partial');
     expect(engineeringBullet).toBeDefined();
     expect(engineeringReleaseCopyIsTruthful(engineeringBullet!)).toBe(true);
     expect(attachmentBullet).toBeDefined();
@@ -2138,7 +2138,7 @@ describe('v2 Guide capability filter', () => {
       .find((bullet) => bullet.includes('ART ARRIVES WHEN IT IS NEEDED'));
     const feedingBullet = V2_DRAFT_RELEASE.sections
       .flatMap((section) => section.bullets)
-      .find((bullet) => bullet.includes('TWO EXACT MEAL PATHS, NO INVENTED CARE'));
+      .find((bullet) => bullet.includes('TWO EXACT MEAL PATHS, TASTE-LED CARE'));
 
     expect(artBullet).toBeDefined();
     expect(feedingBullet).toBeDefined();
@@ -2202,7 +2202,10 @@ describe('v2 Guide capability filter', () => {
     for (const contradiction of [
       ' Assigned companions can still be fed.',
       ' The meal automatically retries after a stale result.',
-      ' Stats are now increased by feeding.',
+      ' Feed can heal without consuming flora.',
+      ' Rest advances while the game is closed.',
+      ' Bond decays over time.',
+      ' Companion Feed applies poison.',
     ]) {
       expect(feedingCopyIsTruthful(feeding + contradiction), contradiction).toBe(false);
       expect(feedingReleaseCopyIsTruthful(feedingBullet! + contradiction), contradiction).toBe(false);
@@ -2274,7 +2277,7 @@ describe('v2 Guide capability filter', () => {
     expect(stardustGuideCopyIsTruthful(stardust)).toBe(true);
     expect(getGuideTopic('guardians')?.body).toContain('battlefield modifiers stripped');
     expect(getGuideTopic('guardians')?.body).toContain('can return as a conquest champion');
-    expect(getGuideTopic('guardians')?.body).toContain('immutable tombstone');
+    expect(getGuideTopic('guardians')?.body).toContain('Defeat starts active-play Recovery');
     expect(getGuideTopic('signatures')?.body).toContain('ninth distinct claim unlocks the Frontier');
     expect(combatGuideCopyIsTruthful(
       conquest.replace(
@@ -2302,8 +2305,8 @@ describe('v2 Guide capability filter', () => {
     )).toBe(false);
     expect(combatReleaseCopyIsTruthful(
       combatBullet!.replace(
-        'defeat permanently removes them through an immutable tombstone',
-        'they can recover after defeat',
+        'defeat assigns a temporary Recovery lock',
+        'defeat permanently removes them',
       ),
     )).toBe(false);
 
@@ -2755,11 +2758,11 @@ describe('legacy and v2 release channels', () => {
       /Chapter 2 milestone is separate from Discover Life[^\n]*accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt[^\n]*older Surveys and capture do not count[^\n]*Weekly bioscan Charters remain protected until their separate lifecycle is complete/,
       /Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail/,
       /ONE EXACT FIELD SCOUT, NEVER A GUESS:[^\n]*bounded 24-row pages[^\n]*same-species twins remain separate by stable instance identity[^\n]*One exact-five compare-and-swap[^\n]*standing Scout intercepts hostile Discover Life damage[^\n]*genuinely fresh species[^\n]*earns up to \+2 XP[^\n]*capped at 486[^\n]*485 gains 1[^\n]*cap gains 0[^\n]*no standing Scout, a miss, or a repeat species grants no Scout XP/,
-      /ONE WORLD, ONE VERIFIED DUEL:[^\n]*landed non-Training Surface[^\n]*live captured Guardian or Titan[^\n]*exact 160-run forecast[^\n]*One immutable receipt and one compare-and-swap[^\n]*no retry, reroll, or optimistic result[^\n]*accessible timed Combat Chronicle[^\n]*two HP meters[^\n]*Skip stops active combat sound[^\n]*Share battle log copies plain text[^\n]*without granting the world-Share achievement[^\n]*Every already-modelled registered initiative, dodge, stun, impact\/critical\/ability, burn, regeneration, defeat, resolution, and Guardian or Titan motif owns an exact visible-caption counterpart[^\n]*Composite events remain one voice[^\n]*at most two combat voices overlap[^\n]*Master Sound—not Creature voices—governs playback[^\n]*Authored or recorded combat assets, ambience, and music remain unavailable[^\n]*separate combat-only companion record[^\n]*rather than ordinary Arc 5 ownership[^\n]*exact loss-XP[^\n]*XP and injury survive reload[^\n]*defeat permanently removes them through an immutable tombstone[^\n]*absent from the roster and composite Compendium across reload, Training restore, and capture reconciliation[^\n]*Defeated Guardians and Titans join the Compendium[^\n]*Titan win claims its Prime Signature[^\n]*ninth distinct claim unlocks the Frontier[^\n]*Prime claims remain independent of later champion use[^\n]*starter st-conq[^\n]*adds \+25 current and lifetime-earned Stardust[^\n]*Accepted wk-conq refuses before combat[^\n]*legacy 40% conquest-imbue gate[^\n]*natural and Pureforged gear/,
-      /TWO EXACT MEAL PATHS, NO INVENTED CARE:[^\n]*one exact unassigned owned companion below the 200-Meal cap[^\n]*one exact owned flora lot through Use 1[^\n]*Meals by 1[^\n]*exactly 1 flora[^\n]*no retry or optimistic change[^\n]*real Flora detail[^\n]*Eat 1[^\n]*safe meal restores shown HP[^\n]*toxic meal grants no healing or stat[^\n]*fieldmedic[^\n]*gambler/,
+      /ONE WORLD, ONE VERIFIED DUEL:[^\n]*landed non-Training Surface[^\n]*live captured Guardian or Titan[^\n]*exact 160-run forecast[^\n]*One immutable receipt and one compare-and-swap[^\n]*no retry, reroll, or optimistic result[^\n]*accessible timed Combat Chronicle[^\n]*two HP meters[^\n]*Skip stops active combat sound[^\n]*Share battle log copies plain text[^\n]*without granting the world-Share achievement[^\n]*Every already-modelled registered initiative, dodge, stun, impact\/critical\/ability, burn, regeneration, defeat, resolution, and Guardian or Titan motif owns an exact visible-caption counterpart[^\n]*Composite events remain one voice[^\n]*at most two combat voices overlap[^\n]*Master Sound—not Creature voices—governs playback[^\n]*Authored or recorded combat assets, ambience, and music remain unavailable[^\n]*separate combat-only companion record[^\n]*rather than ordinary Arc 5 ownership[^\n]*exact loss-XP[^\n]*XP and injury survive reload[^\n]*defeat assigns a temporary Recovery lock[^\n]*remains in the composite Compendium[^\n]*reload, Training restore and capture reconciliation preserve that lock[^\n]*Defeated Guardians and Titans join the Compendium[^\n]*Titan win claims its Prime Signature[^\n]*ninth distinct claim unlocks the Frontier[^\n]*Prime claims remain independent of later champion use[^\n]*starter st-conq[^\n]*adds \+25 current and lifetime-earned Stardust[^\n]*Accepted wk-conq refuses before combat[^\n]*legacy 40% conquest-imbue gate[^\n]*natural and Pureforged gear/,
+      /TWO EXACT MEAL PATHS, TASTE-LED CARE:[^\n]*one exact unassigned owned companion below the 200-Meal cap[^\n]*one exact owned flora lot through Use 1[^\n]*Meals by 0 to 3[^\n]*exactly 1 flora[^\n]*no retry or optimistic change[^\n]*real Flora detail[^\n]*Eat 1[^\n]*safe meal restores shown HP[^\n]*toxic meal grants no healing or stat[^\n]*fieldmedic[^\n]*gambler/,
       /committed Feed requires its trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status, then may produce one deterministic synthesized acknowledgement after that status appears/,
       /refused, stale, converging, replayed, hidden, route-lost, counterpart-lost, and older results remain silent/,
-      /Companion Feed is still only an inventory spend and meal counter[^\n]*tastes, Power growth, injury care or healing, companion poison, and bond remain open/,
+      /Companion Feed resolves taste, Meals growth, wound mending and first-time XP in one inventory spend[^\n]*loved meals grow and mend, neutral meals grow and mend less, and disliked meals are harmless; first tastes build bond memories/,
       /TWO PARENTS, ONE DURABLE OUTCOME:[^\n]*Parents are never consumed[^\n]*Success creates one deterministic child[^\n]*8 active-play minutes of Recovery[^\n]*failure creates no child[^\n]*both 2/,
       /Both complete save outcomes—including exact Charter progress—are proved before the one draw[^\n]*one immutable receipt and one compare-and-swap with no retry or optimistic child/,
       /unconfirmable durable result locks read-only and reloads so it cannot breed twice/,
@@ -2831,7 +2834,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 87,
+        inventory: bullets.length === 106,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,
@@ -2859,7 +2862,7 @@ describe('legacy and v2 release channels', () => {
       category: section.category,
       bullets: index === 1 ? section.bullets.filter((_, bulletIndex) => bulletIndex !== 3) : section.bullets,
     }));
-    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(86);
+    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(105);
     expect(bulletinOutcome(missingMiddle).inventory).toBe(false);
     const missingRequired = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,
@@ -3147,7 +3150,7 @@ describe('legacy and v2 release channels', () => {
       'Vendors are now live.',
       'Creature combat is now playable.',
       'Feeding is now playable.',
-      'Duels are now playable.',
+      'Missions are now live.',
       'Passive evolution is now available.',
       'Missions are now playable.',
     ]) {

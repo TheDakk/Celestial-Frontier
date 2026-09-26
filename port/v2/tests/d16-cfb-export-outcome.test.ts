@@ -23,6 +23,7 @@ import {
   V4_PRIMARY_KEY, applyV5ExtensionWrites, createMemoryBackend, createRevisionedRepository, encodeArc4Ownership, importSaveV2, migrateStoredV4ToV5,
   prepareArc5OwnershipMigration, prepareF4AuthorityUpdate, prepareV5SaveWrite, readArc5OwnershipMigration, readSaveV5, type ContentRegistry, type SaveStateV2,
 } from '@cf/persistence';
+import { mirrorCompanionCodexXpV1 } from '../apps/game/src/companion-codex-mirror.js';
 import { FriendlyDuelController, commitFriendlyDuelActionV1, friendlyDuelResultCopyV1, projectFriendlyDuelV1 } from '../apps/game/src/friendly-duel.js';
 import { createF4RuntimeAuthority, type F4RuntimeAuthority } from '../apps/game/src/f4-runtime-authority.js';
 import { createProductActionCoordinator, createProductActionDiagnosticHold } from '../apps/game/src/product-action-coordinator.js';
@@ -74,7 +75,7 @@ function mount(e: Awaited<ReturnType<typeof explorer>>, mutations: readonly { ne
   const clipboard = vi.fn(async () => undefined);
   const row = [`s${e.seed}`, e.state.codex[0]![1]] as const;
   const env: Record<string, unknown> = {
-    document, FriendlyDuelController, commitFriendlyDuelActionV1, friendlyDuelResultCopyV1, projectFriendlyDuelV1, canonicalGenomeIdentityV1, readArc5OwnershipMigration,
+    document, FriendlyDuelController, mirrorCompanionCodexXpV1, commitFriendlyDuelActionV1, friendlyDuelResultCopyV1, projectFriendlyDuelV1, canonicalGenomeIdentityV1, readArc5OwnershipMigration,
     SCENE_OWNERSHIP_ADDRESS_RESOLVER, navigator: { clipboard: { writeText: clipboard } },
     save: e.state, f4Runtime: e.runtime, arc5OwnershipState: e.ownership, arc5OwnershipEvidence: e.evidence, arc5OwnershipProtection: null, compendiumFixtureRows: null,
     currentCompendiumDetailRow: () => row, f4RuntimeMayMutate: (r: F4RuntimeAuthority | null) => r !== null && r.diagnostics().leaseOwned && !r.diagnostics().staleBlocked,

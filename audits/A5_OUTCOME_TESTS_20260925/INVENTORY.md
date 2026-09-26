@@ -285,10 +285,26 @@ and carries mutation controls that break the WIRING (not the assertion) and fail
 | 15 PWA update reload with a write in flight | #129 | `tests/a5-pwa-update-outcome.test.ts` | 6 (3) |
 | 2-7, 11 (earlier today) | #16, #42, #43-44, #53, #79-80, #84, #118-119 | `tests/a5-{bioscan,breed,rename-scout,scavenge,charter-accept,binder-claim,settings-identity}-outcome.test.ts` | 70 |
 
-**Still open (not closed here):**
-- **#57 Titan → Prime Signature through the card.** Its fixture needs a Titan placed within reach at the fixture's ascent stage, plus a champion strong enough to win. Use the Guardian harness as the template.
-- **The capture ledger.** It needs a rare-find tame fixture whose reward is above 0.
-- **The Feed ledger.** It lands with D13's first-award XP.
+**Closed 2026-09-26 (branch `claude/care-xp-a5-ledger`):**
+
+| Gap | Rows | File | Tests (controls) |
+|---|---|---|---|
+| #57 Titan → Prime Signature through the card | #57 | `tests/a5-guardian-combat-outcome.test.ts` (A5 #57 block) | 4 (3) |
+| The capture ledger (a Rare Find tame) | #81/82 capture | `tests/a5-scavenge-outcome.test.ts` (rare-find block) | 4 (3) |
+| The Feed ledger (D13 first-award XP) | #81/82 Feed | `tests/arc5-feed-action.test.ts` (A5 Feed XP ledger) | 1 (2 + a mutation run) |
+| D13 care XP on the Compendium mirror row | — | `tests/arc5-feed-action.test.ts` (care XP mirror) | 1 (mutation run) |
+
+**Bug found and fixed by #57:** every Guardian/Titan WIN fell back to a publication reload ("Do not challenge again"). The captured
+Guardian's Compendium page is written by two owners with different galaxy-flag shapes (the Guardian projector wrote flags only when
+true; the Arc 4/5 legacy mirror writes explicit booleans, which is what durable saves hold), so Main's composite Compendium check never
+matched. The Guardian projector now emits explicit booleans. The Guardian-LOSS scenario never reached that path.
+
+**Fixture notes:** Earth's tame pool tops out at tier 2, so the Rare Find fixture uses a foreign living world (planet 571651108) with
+SessionRNG seed 4. A companion needs level 6+ to beat the Star Titan (xp 300 here, under the 486 cap). A fixture whose save holds a
+legacy companion must also hold that companion's exact v4 mirror row (the production `projectLegacyOwnershipMirror`); without it the
+capture path refuses with `v4-round-trip-failed` and the Guardian path hits the composite check.
+
+**Still open:** none of the listed gaps.
 
 (#11, #73, #81/82 for Land, and #92 were closed on 2026-09-25 by the A5/CFB/D18 fork.)
 

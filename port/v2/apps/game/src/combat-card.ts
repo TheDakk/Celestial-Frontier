@@ -259,7 +259,9 @@ export function projectCombatCardForecastV1(
   const defenderSeed = encounter.defender.battleGenome.seed >>> 0;
   const championStats = projected.stats ?? battleStats(projected.genome as Genome);
   const defenderStats = battleStats(encounter.defender.battleGenome as Genome);
-  const key = `${statsSignature(championSeed, championStats)}|${statsSignature(defenderSeed, defenderStats)}|${sampleSize}`;
+  // D17: a Guardian/Titan forecast simulates WITH the phase change, exactly as the settlement resolves the fight
+  const phase = encounterHasGuardianPhaseV1(encounter.defender.kind);
+  const key = `${statsSignature(championSeed, championStats)}|${statsSignature(defenderSeed, defenderStats)}|${phase ? 'phase' : 'plain'}|${sampleSize}`;
   const memo = FORECAST_MEMO.get(key);
   if (memo !== undefined) return memo;
   let wins = 0;
@@ -270,19 +272,28 @@ export function projectCombatCardForecastV1(
       ...projected.genome,
       seed: hashInt(championSeed, index, 0x51ee) >>> 0,
     }) as unknown as Genome;
-    const result = runDuel({
-      name: projected.name,
-      genome: variedGenome,
-      stats: championStats,
-      isPlayer: projected.isPlayer,
-    }, {
-      name: encounter.defender.name,
-      genome: encounter.defender.battleGenome as Genome,
-      stats: defenderStats,
-    });
-    if (result.winner !== 'A' && result.winner !== 'B') continue;
+    let winner: 'A' | 'B' | null, result: Readonly<{ hpA?: unknown; hpB?: unknown; maxA?: unknown; maxB?: unknown }>;
+    if (phase) {
+      const r = runEncounterV1({ mode: 'auto', defender: { name: encounter.defender.name, genome: encounter.defender.battleGenome as never, phase: true },
+        party: [{ name: projected.name, stance: 'balanced', stats: championStats, genome: variedGenome as never }] });
+      winner = r.status !== 'finished' || r.outcome === 'draw' || r.outcome === 'withdrawn' ? null : r.outcome === 'party' ? 'A' : 'B';
+      result = r.status === 'finished' ? (r.legs[r.legs.length - 1] ?? {}) : {};
+    } else {
+      const duel = runDuel({
+        name: projected.name,
+        genome: variedGenome,
+        stats: championStats,
+        isPlayer: projected.isPlayer,
+      }, {
+        name: encounter.defender.name,
+        genome: encounter.defender.battleGenome as Genome,
+        stats: defenderStats,
+      });
+      winner = duel.winner === 'A' || duel.winner === 'B' ? duel.winner : null; result = duel;
+    }
+    if (winner === null) continue;
     decisiveRuns++;
-    if (result.winner === 'A') wins++;
+    if (winner === 'A') wins++;
     const hpA = typeof result.hpA === 'number' ? result.hpA : 0;
     const hpB = typeof result.hpB === 'number' ? result.hpB : 0;
     const maxA = typeof result.maxA === 'number' ? result.maxA : 1;

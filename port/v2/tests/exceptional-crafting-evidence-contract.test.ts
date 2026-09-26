@@ -345,13 +345,13 @@ describe('Pureforged browser-evidence truth', () => {
     const { result, after, reachClaims, launcherClaims, final } = await replayRenderedReleaseControls(glassSource);
     expect(result.error).toBeNull();
     expect(result.baseline.ok).toBe(true);
-    expect(result.ok).toBe(true);
+    expect(result.ok, JSON.stringify(result)).toBe(true);
     expect(result.restored).toBe(true);
     expect(after.ok).toBe(true);
     expect(final.ok).toBe(true);
     expect(launcherClaims).toHaveLength(5);
     for (const row of launcherClaims) {
-      expect(row.result, row.copy).toMatchObject({ ok: false, honest: true, overclaim: false, bulletCount: 87 });
+      expect(row.result, row.copy).toMatchObject({ ok: false, honest: true, overclaim: false, bulletCount: 106 });
     }
     expect(result.truthfulFeatureClaims).toHaveLength(11);
     expect(result.truthfulFeatureClaims.every((row) => row.result.ok && row.result.honest

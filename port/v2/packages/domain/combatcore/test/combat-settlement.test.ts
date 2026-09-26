@@ -177,6 +177,7 @@ function findLossFixtures(target: GuardianPrimeEncounterV1): LossFixtures {
   return { ordinaryLoss, nearBrinkLoss, woundedWin };
 }
 
+const canonical = (v: unknown): string => JSON.stringify(v, (_k, x) => (x && typeof x === 'object' && !Array.isArray(x) ? Object.fromEntries(Object.keys(x).sort().map((k) => [k, (x as Record<string, unknown>)[k]])) : x));
 describe('Arc 6 combat settlement evidence binding', () => {
   it('binds the registered encounter, complete transcript, declared outcome, battle id, and receipt ordinal', () => {
     const target = encounter({
@@ -448,15 +449,23 @@ describe('§20 party settlement (S2b step 1): one receipt for a Guardian party',
   });
   const titan = () => encounter({ world: 'flame', worldType: 'lava' });
 
-  it('PARITY: a lone Balanced Auto fighter plans byte-identically to the single-champion planner (no party block)', () => {
-    const champion = owned(7, { creatureId: 'solo' });
-    const party = planCombatPartySettlementV1({ ...base(titan(), 'solo'), mode: 'auto', party: [{ champion, stance: 'balanced' }] });
-    const single = planned({ champion, encounter: titan(), battleId: 'solo', receiptOrdinal: 21, activePlayMs: 5_000 });
-    if (party.status !== 'planned') throw new Error(party.reason);
-    expect(party.party).toBeUndefined();
-    expect(party.witness).toBe(single.witness);
-    expect(party.receipt).toEqual(single.receipt);
+  it('D17: a lone Balanced Auto fighter against a Titan resolves through the PHASE engine (the phase change applies in every Guardian/Titan fight); control: the phase really changes fights, so the legacy runDuel path would differ', () => {
+    let differs = 0, checked = 0;
+    for (let seed = 1; seed < 60 && checked < 12; seed++) {
+      const champion = owned(seed, { creatureId: `solo${seed}` });
+      const party = planCombatPartySettlementV1({ ...base(titan(), `solo-${seed}`), mode: 'auto', party: [{ champion, stance: 'balanced' }] });
+      if (party.status !== 'planned') continue; checked++;
+      const engine = runEncounterV1({ mode: 'auto', defender: { name: titan().defender.name, genome: titan().defender.battleGenome as never, phase: true },
+        party: [{ name: champion.name, genome: (champion as unknown as { genome: unknown }).genome as never, stance: 'balanced' }] });
+      if (engine.status !== 'finished') throw new Error('engine did not finish');
+      expect(canonical((party as unknown as { transcript: { log: unknown } }).transcript.log), `seed ${seed}: the settlement is the phase engine's decisive leg`).toBe(canonical(engine.legs[engine.legs.length - 1]!.log));
+      const single = planned({ champion, encounter: titan(), battleId: `solo-${seed}`, receiptOrdinal: 21, activePlayMs: 5_000 });
+      if (canonical(single.receipt) !== canonical(party.receipt)) differs++;
+    }
+    expect(checked).toBeGreaterThanOrEqual(12);
+    expect(differs, 'the phase changed at least one solo fight versus the phase-less v1 planner').toBeGreaterThan(0);
   });
+
 
   it('a three-member party: the decisive leg is the top-level plan; every other fighter who fought enters Recovery; the witness fits one receipt', () => {
     let checked = 0;

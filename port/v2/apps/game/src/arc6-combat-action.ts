@@ -601,7 +601,8 @@ export async function commitArc6CombatActionV1(
   }
   const mode = command === null ? 'auto' as const : 'command' as const;
   const decisions = command?.decisions ?? [];
-  const legacySingle = mode === 'auto' && partyMembers.length === 1 && partyMembers[0]!.stance === 'balanced';
+  // D17: a Guardian/Titan (phase) fight never takes the phase-less legacy path, even solo Balanced Auto
+  const legacySingle = mode === 'auto' && partyMembers.length === 1 && partyMembers[0]!.stance === 'balanced' && !encounterHasGuardianPhaseV1(input.encounter.defender.kind);
   let decisiveIndex = 0;
   if (!legacySingle) {
     try {
