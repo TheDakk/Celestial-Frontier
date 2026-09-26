@@ -33,7 +33,7 @@ describe('the art library trust chain', () => {
     expect(Buffer.from(bytes).equals(readFileSync(fileURLToPath(new URL(WOLF_MASTER, PUBLIC_ROOT))))).toBe(true);
   });
   it('refuses by name: a tampered file (digest), a truncated file (size), an unlisted path, and every file when the manifest does not match its pin', async () => {
-    const flip = (target: string) => publicFetch((p, b) => { if (p === '/' + target) { const c = new Uint8Array(b); c[c.length >> 1] ^= 1; return c; } return b; });
+    const flip = (target: string) => publicFetch((p, b) => { if (p === '/' + target) { const c = new Uint8Array(b), i = c.length >> 1; c[i] = (c[i] ?? 0) ^ 1; return c; } return b; });
     await expect(fetchArtLibraryBytesV1(WOLF_MASTER, { ...BASE, fetchImpl: flip(WOLF_MASTER) })).rejects.toMatchObject({ name: 'ArtLibraryRefusal', code: 'digest-mismatch' });
     resetArtLibraryForTestsV1();
     await expect(fetchArtLibraryBytesV1(WOLF_MASTER, { ...BASE, fetchImpl: publicFetch((p, b) => (p === '/' + WOLF_MASTER ? b.slice(0, 100) : b)) })).rejects.toMatchObject({ code: 'size-mismatch' });
@@ -62,7 +62,7 @@ describe('CARD = STAGE on the library', () => {
     expect(await src.card(wolf, 'thumb')!).toBe(own); // the creature's own painting IS cached
   });
   it('a tampered library master never reaches the decoder: the card refuses it by name and draws the family painting instead', async () => {
-    const src = createPaintedCardsForApp(appFetch((p, b) => { if (p === '/' + WOLF_MASTER) { const c = new Uint8Array(b); c[40] ^= 0xff; return c; } return b; }));
+    const src = createPaintedCardsForApp(appFetch((p, b) => { if (p === '/' + WOLF_MASTER) { const c = new Uint8Array(b); c[40] = (c[40] ?? 0) ^ 0xff; return c; } return b; }));
     const card = await src.card(wolf, 'portrait')!;
     expect(card.libraryFallback?.reason).toMatch(/digest-mismatch/); expect(card.libraryFallback?.drawnBy).toBe('Civet');
   });

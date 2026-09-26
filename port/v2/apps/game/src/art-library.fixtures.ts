@@ -2,7 +2,8 @@
  * `public/battle2/…`, or the on-demand LIBRARY under `public/library/…`), and a fetch that serves the site from disk. */
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { REPO_ROOT } from './battle2/parts-rig.fixtures.js';
+/** The repository root (computed here, not imported from parts-rig.fixtures, so root-program tests never pull pixi's types in). */
+const REPO_ROOT = new URL('../../../../../', import.meta.url);
 
 export const SERVED_CORE = new URL('port/v2/apps/game/public/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/', REPO_ROOT);
 export const SERVED_LIBRARY = new URL('port/v2/apps/game/public/library/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/', REPO_ROOT);

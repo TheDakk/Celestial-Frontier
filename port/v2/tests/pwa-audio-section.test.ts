@@ -26,7 +26,8 @@ describe('shipped audio section (12 MiB cap)', () => {
     const src = readFileSync(new URL('../apps/game/pwa-build.ts', import.meta.url), 'utf8');
     const call = "shippedAudioSection([...writtenFiles, ...battle2Files.map((file) => ({ path: file.path, bytes: file.bytes }))]);";
     expect(src.split(call).length - 1).toBe(1);
-    const packGate = src.indexOf('assertShippedPackBytes([...writtenAssetByteCounts'), audioGate = src.indexOf(call);
+    // G3: the pack gate's inventory goes through shippedPackByteInputsV1 (runtime + battle2; the on-demand art library is outside the pack)
+    const packGate = src.indexOf('assertShippedPackBytes(shippedPackByteInputsV1({ runtime: writtenAssetByteCounts, battle2: battle2Files.map((file) => file.bytes)'), audioGate = src.indexOf(call);
     expect(packGate).toBeGreaterThan(0); expect(audioGate).toBeGreaterThan(packGate); expect(audioGate - packGate).toBeLessThan(400); // beside it, in writeBundle
     // negative control run by hand (2026-09-25): deleting the call from pwa-build.ts fails this test
   });
