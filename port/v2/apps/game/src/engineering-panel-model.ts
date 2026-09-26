@@ -5,6 +5,7 @@
    re-derived from freshly read carriers inside F4. */
 import {
   ENGINEERING_RESEARCH_CATALOGUE,
+  isCanonicalEarthWorldAddress,
   isEngineeringRevisionExhausted,
   projectStarOpportunity,
   projectWorldMineralReveal,
@@ -163,6 +164,29 @@ export function projectOrbitalMineralSurveyRow(input: Readonly<{
   } catch {
     return null;
   }
+}
+
+/** D14 Survey Relay consumer (outposts.ts `finishedRelayStarSeedsV1`): the SAME orbit-level readout Deep Scanners gives in orbit —
+ * ordinary deposits + the biome vein of each lifeless, non-Earth world — for every world of a relay system, shown on the star's card
+ * without a visit. Exactly the orbit reveal's gates (Deep Scanners owned, no biosphere, not Earth); no species, grades, cosmic or
+ * exceptional veins, and never mining authority. */
+export function projectRelayMineralSurveyRowsV1(input: Readonly<{
+  engineering: EngineeringStateV2;
+  worlds: readonly Readonly<{ address: CanonicalCF1WorldAddress; name: string }>[];
+}>): readonly Readonly<{ key: string; value: string }>[] {
+  if (!input.engineering.research.includes('scan1')) return deepFreeze([]);
+  const rows: { key: string; value: string }[] = [];
+  for (const world of input.worlds) {
+    try {
+      if (isCanonicalEarthWorldAddress(world.address)) continue;
+      const opportunity = projectWorldOpportunity(world.address);
+      if (opportunity.source.biosphereKey !== 'none') continue;
+      const labels = opportunity.deposits.map(labelFor);
+      if (opportunity.biomeVein !== null) labels.push(`${labelFor(opportunity.biomeVein)} ✦`);
+      if (labels.length > 0) rows.push({ key: `📡 ${world.name}`, value: labels.join(' · ') });
+    } catch { /* an unproven world shows nothing */ }
+  }
+  return deepFreeze(rows);
 }
 
 function costRows(

@@ -372,7 +372,7 @@ import {
   type CanonicalWorldIdentityStateV1,
 } from '@cf/persistence';
 import {
-  outpostSaveFactsV1, projectOutpostBoardV1, projectOutpostWorldOfferV1, readOutpostProjectsV1,
+  finishedRelayStarSeedsV1, finishedShelterPlanetSeedsV1, outpostSaveFactsV1, projectOutpostBoardV1, projectOutpostWorldOfferV1, readOutpostProjectsV1,
   type OutpostProjectsStateV1, type OutpostRequestV1, type OutpostWorldContextV1,
 } from '@cf/persistence';
 import { commitOutpostActionV1, outpostRefusalCopyV1, outpostResultCopyV1 } from './outposts-action.js';
@@ -427,6 +427,7 @@ import {
 import {
   projectEngineeringPanelReadModel,
   projectOrbitalMineralSurveyRow,
+  projectRelayMineralSurveyRowsV1,
 } from './engineering-panel-model.js';
 import {
   deriveArc3FixedFabricationAction,
@@ -5996,8 +5997,8 @@ let uniCell: { ux: number; uy: number } | null = null;   /* the streamed window'
 /* SURVEY-FIRST: one tap opens the typed card; its explicit 44px travel
    action performs the dive. The card can cover the body on a phone, so
    navigation must never depend on a second canvas tap or a timing window. */
-function surveyCard(d: unknown, travelAction: CardTravelAction | null = null): void {
-  if (d) { showSurvey(d as Descriptor, undefined, travelAction); playSurveyPing(); }
+function surveyCard(d: unknown, travelAction: CardTravelAction | null = null, supplementalRows: readonly SurveyPresentationRow[] = EMPTY_SURVEY_PRESENTATION_ROWS): void {
+  if (d) { showSurvey(d as Descriptor, undefined, travelAction, supplementalRows); playSurveyPing(); }
 }
 function canonicalStarAddressForSurvey(star: StarNodeRef): CanonicalCF1StarAddress | null {
   if (nav.mode !== 'galaxy') return null;
@@ -6016,7 +6017,7 @@ function surveyStar(star: StarNodeRef): boolean {
   const travelStar = { seed: star.seed, x: star.x, y: star.y };
   surveyCard(descriptor, {
     label: 'Enter system', run: () => descendSystem(travelStar),
-  });
+  }, outpostRelayStarRows(address));
   /* Survey presentation is immediate; its progression record is one separate
      source-rederived F4 settlement and never trusts descriptor metadata. */
   void settleArc9Survey(address);
@@ -7864,6 +7865,7 @@ function projectCurrentBioscanCardState(
       roster,
       opportunity,
       settled: combat.authority.conquests.some(({ worldKey }) => worldKey === address.key),
+      sheltered: outpostShelteredAt(address.planet.seed),
     });
     if (projection.kind !== 'ready') {
       return Object.freeze({
@@ -9621,7 +9623,7 @@ function outpostWorldContext(p: PlanetNode, onThisSurface: boolean): OutpostWorl
   const address = activeCardWorldAddress();
   if (address === null || cardCtx === null) return null;
   const roster = canonicalRosterForBioscanCard(address, null);
-  const planets = (systemFor(address.star.seed).planets as unknown as readonly { seed: unknown }[]).map((q) => Number(q.seed) >>> 0);
+  const planets = systemScene(address.star.seed).planets.map((q) => q.seed >>> 0);
   return Object.freeze({ world: Object.freeze({ galaxySeed: address.galaxy.seed >>> 0, starSeed: address.star.seed >>> 0, planetSeed: p.seed >>> 0,
     name: (worldIdentityName(worldIdentityState, address) ?? p.name ?? 'Unnamed world').slice(0, 64),
     systemPlanetSeeds: Object.freeze([...new Set([...planets, p.seed >>> 0])].sort((a, b) => a - b)) }),
@@ -9638,6 +9640,25 @@ function outpostCardActionHtml(p: PlanetNode, onThisSurface: boolean): string {
     const html = renderOutpostCardSectionV1(projectOutpostWorldOfferV1(projects, facts, context), companions);
     return html === '' ? '' : html.replace('<b>Outposts</b>', `<b>Outposts</b>${marks ? ` <span data-outpost-marks aria-label="finished outposts">${marks}</span>` : ''}`);
   } catch { return ''; }
+}
+/** D14 Field Shelter reward (presentation hint; the Discover Life commit re-reads the carrier): hazard-free here. */
+function outpostShelteredAt(planetSeed: number): boolean {
+  const projects = currentOutpostProjects();
+  return projects !== null && finishedShelterPlanetSeedsV1(projects).includes(planetSeed >>> 0);
+}
+/** D14 Survey Relay reward: a relay system's star card lists every lifeless world's orbital readout without a visit. */
+function outpostRelayStarRows(address: CanonicalCF1StarAddress): readonly SurveyPresentationRow[] {
+  try {
+    const projects = currentOutpostProjects();
+    if (projects === null || arc3EngineeringState === null || arc3EngineeringProtection !== null
+      || !finishedRelayStarSeedsV1(projects).includes(address.star.seed >>> 0)) return EMPTY_SURVEY_PRESENTATION_ROWS;
+    const worlds = systemScene(address.star.seed).planets.flatMap((q) => {
+      const resolved = resolveCF1WorldAddress({ galaxy: { seed: address.galaxy.seed, x: address.galaxy.x, y: address.galaxy.y },
+        star: { seed: address.star.seed, x: address.star.x, y: address.star.y }, planet: { seed: q.seed } });
+      return resolved.ok ? [{ address: resolved.address, name: worldIdentityName(worldIdentityState, resolved.address) ?? q.name }] : [];
+    });
+    return Object.freeze(projectRelayMineralSurveyRowsV1({ engineering: arc3EngineeringState, worlds }).map((row) => Object.freeze([row.key, row.value] as const)));
+  } catch { return EMPTY_SURVEY_PRESENTATION_ROWS; }
 }
 function outpostBoardHtml(): string {
   try {
