@@ -180,6 +180,23 @@ gameplay time. Current painted examples are authored review images; universal pr
 dynamic daylight/seasons and exact-view sharing are not implemented by these images.
 
 
+## Which painting draws a creature (G4 selection) — matches code as of September 26, 2026
+
+The painted library now has 38 archetypes: 14 CORE, shipped in the pack, and 24 LIBRARY, fetched on demand and pinned (G3,
+`audits/G3_ART_DELIVERY_20260926/README.md`). The "17 species" sentence in the next section predates both.
+
+ONE pure resolver, `paintedArtV2` (`port/v2/apps/game/src/morph/painted-variants.ts`), decides which painting draws a creature. The
+Compendium card and the battle stage both call it (CARD = STAGE). The route, in order:
+1. the exact Earth species painting;
+2. otherwise, for an Earth species, a painted member of the same Earth fauna profile group (Lion → Cougar, Red Fox → Wolf);
+3. otherwise, for a procedural creature, the nearest painting by skin, size and tail type among the paintings of its SAME anatomy
+   (`VARIANT_SETS`, keyed by the procedural painter's own family);
+4. otherwise, the body plan's one stand-in painting;
+5. otherwise, the procedural painter.
+
+The genes then morph palette, pattern and proportion on top. Offline, the resolver only draws CORE paintings. Details, tests
+and the authored traits table are in `audits/G4_SELECTION_20260926/README.md`.
+
 ## Painted individual (the morph system) — matches code as of September 24, 2026
 
 The painted library is the art for 17 Earth species: the five crabs (Crab, Coconut Crab,

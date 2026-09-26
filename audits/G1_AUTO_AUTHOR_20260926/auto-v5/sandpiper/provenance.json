@@ -1,0 +1,105 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "sandpiper",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "c315307102aed608563c8caa0ed7af9a15e24f807570ac2c03a92ee496cd4358",
+ "subjectSourceSha256": "8378816208ccdac0a98644427494e1e88a478f0b73b77c78f6c86708a6903dc6",
+ "identity": {
+  "name": "Sandpiper",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sandpiper\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3320756328\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 3320756328,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "heron",
+  "authoringSha256": "c35735a7c145d14e334211c06dc937b8b07f9116f9aff9be2d8b98586d07330d",
+  "masterSha256": "15618869db6ea85407c2566b5dacd469513bffd1db2fa0a76247918cb51c491c"
+ },
+ "habitat": {
+  "profileId": "wading-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "6d8efc434397d850b8454feeae51f8b874edc579c5d7ef1b95bbdff2553a7074",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group wading-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1948,
+     "class": "top",
+     "attach": {
+      "x": 138.8,
+      "y": 127.3,
+      "relX": 0.13,
+      "relY": 0.09
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1449,
+     "class": "front",
+     "attach": {
+      "x": 244,
+      "y": 222.5,
+      "relX": 1.01,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0646,
+     "class": "rear",
+     "attach": {
+      "x": 124,
+      "y": 224,
+      "relX": 0.01,
+      "relY": 0.74
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0763,
+     "class": "limb-down",
+     "attach": {
+      "x": 187,
+      "y": 263,
+      "relX": 0.53,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "heron",
+   "byClass": {
+    "rear": 1,
+    "top": 1,
+    "other": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": "all-visible, backed by the measured visible inventory above; nothing declared absent, hidden or folded"
+}

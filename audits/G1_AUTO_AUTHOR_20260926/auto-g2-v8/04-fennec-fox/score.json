@@ -1,0 +1,9 @@
+{
+ "id": "04-fennec-fox",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

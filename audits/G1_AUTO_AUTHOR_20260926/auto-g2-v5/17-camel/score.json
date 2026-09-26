@@ -1,0 +1,8 @@
+{
+ "id": "17-camel",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 12% paint (reference 38%)"
+ ]
+}

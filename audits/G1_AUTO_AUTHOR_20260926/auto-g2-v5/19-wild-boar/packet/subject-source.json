@@ -1,0 +1,49 @@
+{
+  "name": "Wild Boar",
+  "family": "quadruped",
+  "species": {
+    "name": "Wild Boar",
+    "aspect": 1.8,
+    "headFrac": 0.3,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "high shoulder hump sloping down to a low rump",
+      "upward-curving tusks from the lower jaw",
+      "bristly mane along the spine"
+    ],
+    "note": "front-heavy wedge silhouette; not the round barrel body of a farm pig"
+  },
+  "genome": {
+    "seed": 903932006,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 16,
+    "body": 11,
+    "loco": 13,
+    "trait": 18,
+    "size": 0,
+    "diet": 3,
+    "head": 9,
+    "limbs": 1,
+    "skin": 0,
+    "tail": 3,
+    "pattern": 6,
+    "eyes": 5,
+    "behavior": 10,
+    "habitat": 15,
+    "detail": 9,
+    "accent": 13,
+    "temper": 0,
+    "sense": 3,
+    "repro": 2,
+    "life": 3,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Wild Boar"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wild Boar\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"903932006\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 10
+}

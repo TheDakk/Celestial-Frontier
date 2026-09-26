@@ -1,0 +1,9 @@
+{
+ "id": "octopus",
+ "family": "cephalopod",
+ "verdict": "REFUSE",
+ "reasons": [
+  "no-reference: no other hand-authored subject of family cephalopod"
+ ],
+ "semanticPresence": null
+}

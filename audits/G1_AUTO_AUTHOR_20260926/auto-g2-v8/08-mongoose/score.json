@@ -1,0 +1,24 @@
+{
+ "id": "08-mongoose",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+ "static": "RED",
+ "staticFails": [],
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "RED"
+  },
+  {
+   "rank": 1,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "missing-anatomy: part ear-far-tip (earFarTip) covers 14% paint (reference 52%)"
+   ]
+  }
+ ]
+}

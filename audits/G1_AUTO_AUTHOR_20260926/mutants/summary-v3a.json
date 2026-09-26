@@ -1,0 +1,1352 @@
+{
+ "summary": {
+  "positivesAdmitted": "3/34",
+  "flippedRefused": "34/34",
+  "wrongFamilyRefused": "34/34",
+  "erasedRefused": "34/34",
+  "duplicatedRefused": "25/27"
+ },
+ "rows": [
+  {
+   "id": "salmon",
+   "family": "fish",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0108,
+    "dT": 0.05,
+    "dR": 0.0333,
+    "unclaimed": 0.036,
+    "why": "missing-anatomy (counted): reference fin appendage [dorsal] "
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0118,
+    "dT": 0.0375,
+    "dR": 0.0208,
+    "unclaimed": 0.0788,
+    "why": "missing-anatomy (counted): reference fin/other appendage [ca"
+   },
+   "dupShift": [
+    0,
+    483
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.041,
+    "dT": 0.0333,
+    "dR": 0.0208,
+    "unclaimed": 0.1986,
+    "why": "missing-anatomy (counted): reference fin appendage [dorsal] "
+   }
+  },
+  {
+   "id": "eagle",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0162,
+    "dT": 0.0333,
+    "dR": 0.0167,
+    "unclaimed": 0.0384,
+    "why": "missing-anatomy (counted): reference head appendage [head, n"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.016,
+    "dT": 0.0375,
+    "dR": 0.0167,
+    "unclaimed": 0.0448,
+    "why": "missing-anatomy (counted): reference head appendage [head, n"
+   },
+   "dupShift": null,
+   "duplicated": "n/a"
+  },
+  {
+   "id": "beetle",
+   "family": "insect",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0264,
+    "dT": 0.0417,
+    "dR": 0.0417,
+    "unclaimed": 0.0652,
+    "why": "missing-anatomy (counted): reference wing appendage [wing-fa"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "front-far-lower",
+    "front-far-upper",
+    "elytron-near",
+    "elytron-far",
+    "thorax"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0382,
+    "dT": 0.0333,
+    "dR": 0.05,
+    "unclaimed": 0.0737,
+    "why": "missing-anatomy (counted): reference wing appendage [wing-fa"
+   },
+   "dupShift": null,
+   "duplicated": "n/a"
+  },
+  {
+   "id": "python",
+   "family": "serpent",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0177,
+    "dT": 0.1167,
+    "dR": 0.0625,
+    "unclaimed": 0.0704,
+    "why": "missing-anatomy (counted): reference other appendage [segmen"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "body-segment-9"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0167,
+    "dT": 0.0542,
+    "dR": 0.0583,
+    "unclaimed": 0.0728,
+    "why": "missing-anatomy (counted): reference other appendage [segmen"
+   },
+   "dupShift": [
+    0,
+    194
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0337,
+    "dT": 0.1125,
+    "dR": 0.0667,
+    "unclaimed": 0.1846,
+    "why": "missing-anatomy (counted): reference other appendage [segmen"
+   }
+  },
+  {
+   "id": "starfish",
+   "family": "radial",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0826,
+    "dT": 0.0792,
+    "dR": 0.0792,
+    "unclaimed": 0.2458,
+    "why": "wrong-family: serpent matches clearly better (0.0173 < 0.082"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "arm0-tip"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0837,
+    "dT": 0.125,
+    "dR": 0.1042,
+    "unclaimed": 0.2737,
+    "why": "wrong-family: biped-bird matches clearly better (0.0178 < 0."
+   },
+   "dupShift": [
+    -229,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0826,
+    "dT": 0.0792,
+    "dR": 0.0792,
+    "unclaimed": 0.2454,
+    "why": "wrong-family: serpent matches clearly better (0.0173 < 0.082"
+   }
+  },
+  {
+   "id": "sturgeon",
+   "family": "fish",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0145,
+    "dT": 0.0542,
+    "dR": 0.0208,
+    "unclaimed": 0.0538,
+    "why": "missing-anatomy (counted): reference fin appendage [dorsal] "
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0218,
+    "dT": 0.0458,
+    "dR": 0.0375,
+    "unclaimed": 0.0832,
+    "why": "missing-anatomy (counted): reference fin appendage [dorsal] "
+   },
+   "dupShift": [
+    0,
+    371
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0479,
+    "dT": 0.0458,
+    "dR": 0.025,
+    "unclaimed": 0.2057,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   }
+  },
+  {
+   "id": "wall-lizard",
+   "family": "quadruped",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.02,
+    "dT": 0.0417,
+    "dR": 0.0458,
+    "unclaimed": 0.0648,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-ankle",
+    "hind-far-paw",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0197,
+    "dT": 0.0417,
+    "dR": 0.0458,
+    "unclaimed": 0.0719,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   },
+   "dupShift": [
+    0,
+    97
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0218,
+    "dT": 0.0542,
+    "dR": 0.0333,
+    "unclaimed": 0.0761,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   }
+  },
+  {
+   "id": "cougar",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0051,
+    "dT": 0.0292,
+    "dR": 0.025,
+    "unclaimed": 0.0574,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-ankle",
+    "hind-far-paw",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0132,
+    "dT": 0.0417,
+    "dR": 0.0292,
+    "unclaimed": 0.0422,
+    "why": "missing-anatomy (counted): reference leg appendage [hind-nea"
+   },
+   "dupShift": null,
+   "duplicated": "n/a"
+  },
+  {
+   "id": "impala",
+   "family": "quadruped",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0159,
+    "dT": 0.0208,
+    "dR": 0.0292,
+    "unclaimed": 0.0626,
+    "why": "missing-anatomy (counted): reference tail/leg appendage [tai"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-ankle",
+    "hind-far-paw",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0208,
+    "dT": 0.0292,
+    "dR": 0.0292,
+    "unclaimed": 0.0745,
+    "why": "missing-anatomy (counted): reference tail/leg appendage [tai"
+   },
+   "dupShift": [
+    0,
+    -684
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0202,
+    "dT": 0.0292,
+    "dR": 0.025,
+    "unclaimed": 0.0363,
+    "why": "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers"
+   }
+  },
+  {
+   "id": "marmot",
+   "family": "quadruped",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0085,
+    "dT": 0.0208,
+    "dR": 0.0208,
+    "unclaimed": 0.0495,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-ankle",
+    "hind-far-paw",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0107,
+    "dT": 0.0333,
+    "dR": 0.0458,
+    "unclaimed": 0.0421,
+    "why": "missing-anatomy (counted): reference head appendage [neck, h"
+   },
+   "dupShift": [
+    0,
+    320
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0205,
+    "dT": 0.0333,
+    "dR": 0.05,
+    "unclaimed": 0.1903,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   }
+  },
+  {
+   "id": "bass",
+   "family": "fish",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0097,
+    "dT": 0.025,
+    "dR": 0.0292,
+    "unclaimed": 0.0689,
+    "why": "missing-anatomy (counted): reference other appendage [body-1"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0116,
+    "dT": 0.0375,
+    "dR": 0.0375,
+    "unclaimed": 0.047,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   },
+   "dupShift": [
+    0,
+    522
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0278,
+    "dT": 0.0333,
+    "dR": 0.075,
+    "unclaimed": 0.2081,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   }
+  },
+  {
+   "id": "cattle",
+   "family": "quadruped",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0087,
+    "dT": 0.0167,
+    "dR": 0.0417,
+    "unclaimed": 0.0418,
+    "why": "missing-anatomy (counted): reference head-appendage/head app"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-ankle",
+    "hind-far-paw",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0136,
+    "dT": 0.0375,
+    "dR": 0.0458,
+    "unclaimed": 0.041,
+    "why": "missing-anatomy (counted): reference head-appendage/head app"
+   },
+   "dupShift": null,
+   "duplicated": "n/a"
+  },
+  {
+   "id": "tang",
+   "family": "fish",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0097,
+    "dT": 0.0292,
+    "dR": 0.025,
+    "unclaimed": 0.0447,
+    "why": "missing-anatomy (counted): reference fin appendage [dorsal] "
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0181,
+    "dT": 0.0417,
+    "dR": 0.0667,
+    "unclaimed": 0.0699,
+    "why": "missing-anatomy (counted): reference fin appendage [dorsal] "
+   },
+   "dupShift": null,
+   "duplicated": "n/a"
+  },
+  {
+   "id": "wolf",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.005,
+    "dT": 0.025,
+    "dR": 0.0292,
+    "unclaimed": 0.0104,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-paw",
+    "hind-far-ankle",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0109,
+    "dT": 0.0333,
+    "dR": 0.0292,
+    "unclaimed": 0.0143,
+    "why": "missing-anatomy (counted): reference leg appendage [hind-nea"
+   },
+   "dupShift": [
+    0,
+    -420
+   ],
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0132,
+    "dT": 0.0375,
+    "dR": 0.0375,
+    "unclaimed": 0.017,
+    "why": ""
+   }
+  },
+  {
+   "id": "gull",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0162,
+    "dT": 0.0167,
+    "dR": 0.0333,
+    "unclaimed": 0.0239,
+    "why": "missing-anatomy (counted): reference wing appendage [far-win"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0205,
+    "dT": 0.025,
+    "dR": 0.0458,
+    "unclaimed": 0.0268,
+    "why": "missing-anatomy (counted): reference wing appendage [far-win"
+   },
+   "dupShift": [
+    -228,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0178,
+    "dT": 0.0417,
+    "dR": 0.0417,
+    "unclaimed": 0.0315,
+    "why": "missing-anatomy (counted): reference wing appendage [far-win"
+   }
+  },
+  {
+   "id": "river-otter",
+   "family": "quadruped",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0074,
+    "dT": 0.0375,
+    "dR": 0.0375,
+    "unclaimed": 0.0103,
+    "why": "missing-anatomy (counted): reference head appendage [neck, h"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-paw",
+    "hind-far-ankle",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0092,
+    "dT": 0.025,
+    "dR": 0.0375,
+    "unclaimed": 0.0093,
+    "why": "missing-anatomy (counted): reference head appendage [neck, h"
+   },
+   "dupShift": [
+    0,
+    173
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0253,
+    "dT": 0.0375,
+    "dR": 0.0458,
+    "unclaimed": 0.0791,
+    "why": "missing-anatomy (counted): reference head appendage [neck, h"
+   }
+  },
+  {
+   "id": "brown-bear",
+   "family": "quadruped",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0118,
+    "dT": 0.0375,
+    "dR": 0.0375,
+    "unclaimed": 0.0607,
+    "why": "missing-anatomy (counted): reference head-appendage appendag"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-paw",
+    "hind-far-ankle",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0168,
+    "dT": 0.0417,
+    "dR": 0.075,
+    "unclaimed": 0.0816,
+    "why": "missing-anatomy (counted): reference head-appendage/head app"
+   },
+   "dupShift": [
+    -285,
+    -439
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0171,
+    "dT": 0.0292,
+    "dR": 0.0458,
+    "unclaimed": 0.0811,
+    "why": "missing-anatomy (counted): reference tail appendage [tail1, "
+   }
+  },
+  {
+   "id": "goose",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0126,
+    "dT": 0.0333,
+    "dR": 0.0292,
+    "unclaimed": 0.0764,
+    "why": "missing-anatomy (counted): reference tail appendage [tail] l"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0143,
+    "dT": 0.0333,
+    "dR": 0.05,
+    "unclaimed": 0.0694,
+    "why": "missing-anatomy (counted): reference tail appendage [tail] l"
+   },
+   "dupShift": [
+    -245,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.014,
+    "dT": 0.0333,
+    "dR": 0.0375,
+    "unclaimed": 0.0809,
+    "why": "missing-anatomy (counted): reference tail appendage [tail] l"
+   }
+  },
+  {
+   "id": "heron",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0187,
+    "dT": 0.05,
+    "dR": 0.0375,
+    "unclaimed": 0.0503,
+    "why": "missing-anatomy (counted): reference wing appendage [near-wi"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0226,
+    "dT": 0.0667,
+    "dR": 0.0375,
+    "unclaimed": 0.0392,
+    "why": "missing-anatomy (counted): reference wing appendage [near-wi"
+   },
+   "dupShift": [
+    -286,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0209,
+    "dT": 0.0625,
+    "dR": 0.0375,
+    "unclaimed": 0.0423,
+    "why": "missing-anatomy (counted): reference wing appendage [far-win"
+   }
+  },
+  {
+   "id": "sparrow",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0193,
+    "dT": 0.025,
+    "dR": 0.0458,
+    "unclaimed": 0.0591,
+    "why": "missing-anatomy (counted): reference wing appendage [near-wi"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.02,
+    "dT": 0.0542,
+    "dR": 0.0625,
+    "unclaimed": 0.0847,
+    "why": "missing-anatomy (counted): reference wing appendage [near-wi"
+   },
+   "dupShift": [
+    -398,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0221,
+    "dT": 0.0375,
+    "dR": 0.0292,
+    "unclaimed": 0.0962,
+    "why": "missing-anatomy (counted): reference wing appendage [far-win"
+   }
+  },
+  {
+   "id": "ibex",
+   "family": "quadruped",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0168,
+    "dT": 0.0417,
+    "dR": 0.0208,
+    "unclaimed": 0.0742,
+    "why": "missing-anatomy (counted): reference leg/tail appendage [hin"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-paw",
+    "hind-far-ankle",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0175,
+    "dT": 0.0417,
+    "dR": 0.0375,
+    "unclaimed": 0.1025,
+    "why": "missing-anatomy (counted): reference leg/tail appendage [hin"
+   },
+   "dupShift": [
+    -156,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0197,
+    "dT": 0.0417,
+    "dR": 0.05,
+    "unclaimed": 0.103,
+    "why": "extra-anatomy (detached): 1 separate paint island(s) of ≥ 1%"
+   }
+  },
+  {
+   "id": "reef-shark",
+   "family": "fish",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0089,
+    "dT": 0.0458,
+    "dR": 0.0333,
+    "unclaimed": 0.0499,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0129,
+    "dT": 0.0542,
+    "dR": 0.0667,
+    "unclaimed": 0.0577,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   },
+   "dupShift": [
+    0,
+    384
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0434,
+    "dT": 0.0333,
+    "dR": 0.0375,
+    "unclaimed": 0.2261,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   }
+  },
+  {
+   "id": "pike",
+   "family": "fish",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0086,
+    "dT": 0.0292,
+    "dR": 0.0292,
+    "unclaimed": 0.0329,
+    "why": "missing-anatomy (counted): reference fin appendage [dorsal] "
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0131,
+    "dT": 0.0333,
+    "dR": 0.0333,
+    "unclaimed": 0.0896,
+    "why": "missing-anatomy (counted): reference fin appendage [dorsal] "
+   },
+   "dupShift": [
+    0,
+    264
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0472,
+    "dT": 0.0708,
+    "dR": 0.1292,
+    "unclaimed": 0.1803,
+    "why": "missing-anatomy (counted): reference fin appendage [dorsal] "
+   }
+  },
+  {
+   "id": "racer",
+   "family": "serpent",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0164,
+    "dT": 0.0625,
+    "dR": 0.1167,
+    "unclaimed": 0.0453,
+    "why": "missing-anatomy (counted): reference head appendage [head] l"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "segment-9"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0182,
+    "dT": 0.0417,
+    "dR": 0.125,
+    "unclaimed": 0.0467,
+    "why": "missing-anatomy (counted): reference head appendage [head] l"
+   },
+   "dupShift": [
+    -141,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0181,
+    "dT": 0.0458,
+    "dR": 0.1458,
+    "unclaimed": 0.1058,
+    "why": "missing-anatomy (counted): reference head appendage [head] l"
+   }
+  },
+  {
+   "id": "grouse",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0126,
+    "dT": 0.0292,
+    "dR": 0.0333,
+    "unclaimed": 0.0541,
+    "why": "missing-anatomy (counted): reference wing appendage [near-wi"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0135,
+    "dT": 0.0333,
+    "dR": 0.0333,
+    "unclaimed": 0.0366,
+    "why": "missing-anatomy (counted): reference wing appendage [near-wi"
+   },
+   "dupShift": [
+    332,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0162,
+    "dT": 0.0667,
+    "dR": 0.0208,
+    "unclaimed": 0.0864,
+    "why": "missing-anatomy (counted): reference wing appendage [near-wi"
+   }
+  },
+  {
+   "id": "sandpiper",
+   "family": "biped-bird",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0199,
+    "dT": 0.025,
+    "dR": 0.0708,
+    "unclaimed": 0.0288,
+    "why": "missing-anatomy (counted): reference wing appendage [far-win"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "far-foot",
+    "far-shin",
+    "far-thigh"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0224,
+    "dT": 0.0333,
+    "dR": 0.075,
+    "unclaimed": 0.0528,
+    "why": "missing-anatomy (counted): reference leg appendage [near-shi"
+   },
+   "dupShift": [
+    -275,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.018,
+    "dT": 0.025,
+    "dR": 0.0417,
+    "unclaimed": 0.0669,
+    "why": "missing-anatomy (counted): reference leg appendage [near-shi"
+   }
+  },
+  {
+   "id": "herring",
+   "family": "fish",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0086,
+    "dT": 0.0292,
+    "dR": 0.0292,
+    "unclaimed": 0.0327,
+    "why": "missing-anatomy (counted): reference fin appendage [dorsal] "
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "caudal"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0113,
+    "dT": 0.0583,
+    "dR": 0.0417,
+    "unclaimed": 0.0226,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   },
+   "dupShift": [
+    0,
+    322
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0457,
+    "dT": 0.0333,
+    "dR": 0.0292,
+    "unclaimed": 0.2324,
+    "why": "missing-anatomy (counted): reference fin appendage [dorsal] "
+   }
+  },
+  {
+   "id": "wild-horse",
+   "family": "quadruped",
+   "positive": "ADMIT",
+   "posEv": {
+    "v": "ADMIT",
+    "cost": 0.0087,
+    "dT": 0.025,
+    "dR": 0.0167,
+    "unclaimed": 0.0417,
+    "why": ""
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-paw",
+    "hind-far-ankle",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0129,
+    "dT": 0.05,
+    "dR": 0.0542,
+    "unclaimed": 0.0149,
+    "why": "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers"
+   },
+   "dupShift": [
+    -193,
+    -489
+   ],
+   "duplicated": "ADMIT",
+   "dupEv": {
+    "v": "ADMIT",
+    "cost": 0.0121,
+    "dT": 0.0333,
+    "dR": 0.0333,
+    "unclaimed": 0.0211,
+    "why": ""
+   }
+  },
+  {
+   "id": "salamander",
+   "family": "quadruped",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0101,
+    "dT": 0.025,
+    "dR": 0.05,
+    "unclaimed": 0.0907,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-paw",
+    "hind-far-ankle",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0143,
+    "dT": 0.0417,
+    "dR": 0.05,
+    "unclaimed": 0.1004,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   },
+   "dupShift": [
+    0,
+    157
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0381,
+    "dT": 0.0292,
+    "dR": 0.0625,
+    "unclaimed": 0.1824,
+    "why": "missing-anatomy (counted): reference head appendage [head, j"
+   }
+  },
+  {
+   "id": "eel",
+   "family": "serpent",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0206,
+    "dT": 0.0667,
+    "dR": 0.1167,
+    "unclaimed": 0.07,
+    "why": "missing-anatomy (counted): reference head appendage [head] l"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "segment-9"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0231,
+    "dT": 0.0583,
+    "dR": 0.1083,
+    "unclaimed": 0.0762,
+    "why": "missing-anatomy (counted): reference head appendage [head] l"
+   },
+   "dupShift": [
+    -121,
+    0
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0182,
+    "dT": 0.0542,
+    "dR": 0.1167,
+    "unclaimed": 0.0951,
+    "why": "missing-anatomy (counted): reference head appendage [head] l"
+   }
+  },
+  {
+   "id": "honeybee",
+   "family": "insect",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0262,
+    "dT": 0.0417,
+    "dR": 0.0417,
+    "unclaimed": 0.0628,
+    "why": "missing-anatomy (counted): reference other/head appendage [t"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "leg-front-far-foot",
+    "leg-front-far",
+    "thorax"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0621,
+    "dT": 0.0542,
+    "dR": 0.0958,
+    "unclaimed": 0.2994,
+    "why": "facing: the mirrored painting matches insect better (0.0519 "
+   },
+   "dupShift": null,
+   "duplicated": "n/a"
+  },
+  {
+   "id": "rat",
+   "family": "quadruped",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0101,
+    "dT": 0.05,
+    "dR": 0.0208,
+    "unclaimed": 0.2477,
+    "why": "missing-anatomy (counted): reference tail appendage [tail3, "
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "hind-far-paw",
+    "hind-far-ankle",
+    "hind-far-knee",
+    "hind-far-root"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0148,
+    "dT": 0.0542,
+    "dR": 0.0542,
+    "unclaimed": 0.2536,
+    "why": "missing-anatomy (counted): reference tail appendage [tail3, "
+   },
+   "dupShift": [
+    0,
+    232
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.0264,
+    "dT": 0.025,
+    "dR": 0.0208,
+    "unclaimed": 0.2801,
+    "why": "missing-anatomy (counted): reference tail appendage [tail3, "
+   }
+  },
+  {
+   "id": "dragonfly",
+   "family": "insect",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0399,
+    "dT": 0.0417,
+    "dR": 0.0333,
+    "unclaimed": 0.0465,
+    "why": "missing-anatomy (merged): 2 reference appendages [front-near"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "leg-front-far-foot",
+    "leg-front-far-knee",
+    "thorax"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.068,
+    "dT": 0.0958,
+    "dR": 0.0792,
+    "unclaimed": 0.3391,
+    "why": "wrong-family: radial matches clearly better (0.0321 < 0.0680"
+   },
+   "dupShift": [
+    0,
+    -483
+   ],
+   "duplicated": "REFUSE",
+   "dupEv": {
+    "v": "REFUSE",
+    "cost": 0.04,
+    "dT": 0.05,
+    "dR": 0.0375,
+    "unclaimed": 0.2152,
+    "why": "missing-anatomy (counted): reference leg appendage [leg-mid-"
+   }
+  },
+  {
+   "id": "jellyfish",
+   "family": "radial",
+   "positive": "REFUSE",
+   "posEv": {
+    "v": "REFUSE",
+    "cost": 0.0826,
+    "dT": 0.0792,
+    "dR": 0.0792,
+    "unclaimed": 0.3565,
+    "why": "missing-anatomy (counted): reference tentacle appendage [arm"
+   },
+   "flipped": "REFUSE",
+   "wrongFamily": "REFUSE",
+   "limbParts": [
+    "bell"
+   ],
+   "erased": "REFUSE",
+   "erEv": {
+    "v": "REFUSE",
+    "cost": 0.0934,
+    "dT": 0.1875,
+    "dR": 0.0875,
+    "unclaimed": 0.1981,
+    "why": "wrong-family: quadruped matches clearly better (0.0649 < 0.0"
+   },
+   "dupShift": null,
+   "duplicated": "n/a"
+  }
+ ]
+}

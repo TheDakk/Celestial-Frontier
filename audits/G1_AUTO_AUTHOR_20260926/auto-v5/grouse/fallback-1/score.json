@@ -1,0 +1,20 @@
+{
+ "id": "grouse",
+ "family": "biped-bird",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 776.4,
+ "landmarkMedian": 0.0389,
+ "landmarkMax": 0.706,
+ "worst": [
+  "wingNearTip 0.706",
+  "tailFan 0.239",
+  "root 0.198"
+ ],
+ "labelAgreement": 0.373,
+ "missingJoints": [],
+ "static": "RED",
+ "staticFails": [
+  "hit"
+ ]
+}

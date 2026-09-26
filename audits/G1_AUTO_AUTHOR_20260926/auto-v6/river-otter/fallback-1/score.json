@@ -1,0 +1,20 @@
+{
+ "id": "river-otter",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 1005.3,
+ "landmarkMedian": 0.0227,
+ "landmarkMax": 0.0935,
+ "worst": [
+  "earFarTip 0.094",
+  "earFarRoot 0.089",
+  "hindNearKnee 0.052"
+ ],
+ "labelAgreement": 0.6088,
+ "missingJoints": [],
+ "static": "RED",
+ "staticFails": [
+  "tame"
+ ]
+}

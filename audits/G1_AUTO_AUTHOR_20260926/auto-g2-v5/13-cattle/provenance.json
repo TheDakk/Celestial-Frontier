@@ -1,0 +1,113 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "13-cattle",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "b69bb1d3c6918217337a2b541aee923df279d5b8b3996ae5f5f68848ccbf31bb",
+ "subjectSourceSha256": "21994a1fcc058db5b585fdd46482e65dab7e547adcc815a66f6258801e64f775",
+ "identity": {
+  "name": "Cattle",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cattle\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1951619619\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "seed": 1951619619,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "wild-horse",
+  "authoringSha256": "3fe23c7c93b2c88c5bdc0e04213468c64b26517662d8865102e802f58c9a4301",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+ },
+ "habitat": {
+  "profileId": "hoofed-horned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "62c0dded1645b5a41c293433ed1a8a238fad1365ee1feeac841dcad7a483d8fe",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-horned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0662,
+     "class": "top",
+     "attach": {
+      "x": 357.8,
+      "y": 119.7,
+      "relX": 0.85,
+      "relY": 0.25
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0148,
+     "class": "other",
+     "attach": {
+      "x": 35.2,
+      "y": 186.9,
+      "relX": 0.06,
+      "relY": 0.52
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0507,
+     "class": "limb-down",
+     "attach": {
+      "x": 67.4,
+      "y": 238.6,
+      "relX": 0.14,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0445,
+     "class": "limb-down",
+     "attach": {
+      "x": 109.5,
+      "y": 241,
+      "relX": 0.25,
+      "relY": 0.74
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0691,
+     "class": "limb-down",
+     "attach": {
+      "x": 272.5,
+      "y": 248,
+      "relX": 0.65,
+      "relY": 0.77
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "other": 1,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": "all-visible, backed by the measured visible inventory above; nothing declared absent, hidden or folded"
+}
