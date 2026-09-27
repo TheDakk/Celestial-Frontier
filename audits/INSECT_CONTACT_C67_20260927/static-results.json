@@ -1,0 +1,22 @@
+[
+  {
+    "name": "termite",
+    "exitCode": 0
+  },
+  {
+    "name": "cicada",
+    "exitCode": 1
+  },
+  {
+    "name": "ant",
+    "exitCode": 0
+  },
+  {
+    "name": "cricket",
+    "exitCode": 0
+  },
+  {
+    "name": "beetle",
+    "exitCode": 0
+  }
+]

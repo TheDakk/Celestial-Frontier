@@ -5,11 +5,11 @@
 import type {BodyCard} from './body-card.js';
 import type {MotionPose,MotionTimeline} from './timeline.js';
 import type {ContactStanceEnvelope} from './contact-envelope.js';
-import {familyContract} from '../../../../tools/creature-animation/family-contracts.mjs';
+import {familyContract,familyContactChains} from '../../../../tools/creature-animation/family-contracts.mjs';
 import {createSkeletonPoseProgram} from '../../../../tools/creature-animation/skeleton-pose.mjs';
 import {createTwoBoneChain,transformPoint,type Point2} from '../../../../tools/creature-animation/kinematics.js';
 
-const TORSO = new Set(['root','pelvis','spine','chest']);
+const TORSO = new Set(['root','pelvis','spine','chest','thorax']);
 /** Author below the contact ceiling to leave room for the painted-foot offset.
  * This is a smaller motion target, never a substitute for the real support gate. */
 const ANGLE_RESERVE = .9;
@@ -22,34 +22,35 @@ export interface StanceEnvelope {
  readonly torsoGain:number; readonly angleReserve:number; readonly samples:number;
 }
 export function faintStanceEnvelope(card:BodyCard,tl:MotionTimeline,sample:(ms:number)=>MotionPose):StanceEnvelope|null {
- if(card.template.id!=='quadruped'||tl.actionId!=='faint'||(card.realm!=='land'&&card.realm!=='amphibious'))return null;
- const base=familyContract('quadruped'),parents=new Map(base.graph);
+ if(!['quadruped','insect'].includes(card.template.id)||tl.actionId!=='faint'||(card.realm!=='land'&&card.realm!=='amphibious'))return null;
+ const base=familyContract(card.template.id),parents=new Map(base.graph),contactChains=familyContactChains(base);
  // Hidden ears/tails do not remove a planted leg. A different leg graph keeps
  // its existing motion and must pass its own unchanged runtime guards.
- if(card.parts.some(p=>parents.get(p.joint)!==p.parent)||base.legs.some((id:string)=>['Root','Knee','Ankle','Paw'].some(suffix=>!card.landmarks[id+suffix])))return null;
+ if(card.parts.some(p=>parents.get(p.joint)!==p.parent)||contactChains.some(c=>[c.hip,c.knee,c.end,...c.terminal?[c.terminal]:[]].some(j=>!card.landmarks[j])))return null;
  const definition={...base,graph:card.parts.map(p=>[p.joint,p.parent] as const)};
  const program=createSkeletonPoseProgram(definition,card.landmarks),limits=definition.contactLimitsDeg??definition.limitsDeg;
- const observed=definition.legs.map((id:string)=>{
-  const root=point(card.landmarks[id+'Root']!),joint=point(card.landmarks[id+'Knee']!),end=point(card.landmarks[id+'Ankle']!);
+ const observed=contactChains.map(c=>{
+  const root=point(card.landmarks[c.hip]!),joint=point(card.landmarks[c.knee]!),end=point(card.landmarks[c.end]!);
   const cross=(end.x-root.x)*(joint.y-root.y)-(end.y-root.y)*(joint.x-root.x);
-  return {id,root,joint,end,cross};
+  return {...c,root,joint,endPoint:end,cross};
  });
  // A straight source has no declared bend side. Preserve its existing preview
  // timeline; the unchanged contact admission still refuses that source.
  if(observed.some(c=>Math.abs(c.cross)<1e-12))return null;
- const chains=observed.map(c=>({...c,chain:createTwoBoneChain({root:c.root,joint:c.joint,end:c.end,bend:c.cross<0?-1:1})}));
+ const chains=observed.map(c=>({...c,chain:createTwoBoneChain({root:c.root,joint:c.joint,end:c.endPoint,bend:c.cross<0?-1:1})}));
  const poses=Array.from({length:SAMPLES+1},(_,i)=>sample(tl.durationMs*i/SAMPLES));
  const fits=(gain:number):boolean=>{
   for(const p of poses){
    const pose:Record<string,{rotation:number;dx?:number;dy?:number}>={};
-   for(const j of TORSO)pose[j]={rotation:(p.joints[j]??0)*gain};
+   for(const j of TORSO)if(card.landmarks[j])pose[j]={rotation:(p.joints[j]??0)*gain};
    pose.root={rotation:(p.joints.root??0)*gain,dx:p.root.dx*gain,dy:p.root.dy*gain};
    const matrices=program.evaluate(pose);
    for(const c of chains){
-    const parent=matrices[c.id+'Root']!,root=transformPoint(parent,c.root),distance=Math.hypot(c.end.x-root.x,c.end.y-root.y);
+    const parent=matrices[c.hip]!,root=transformPoint(parent,c.root),distance=Math.hypot(c.endPoint.x-root.x,c.endPoint.y-root.y);
     if(distance<Math.abs(c.chain.lengths.upper-c.chain.lengths.lower)||distance>c.chain.lengths.upper+c.chain.lengths.lower||distance<.000001)return false;
-    const solved=c.chain.solve(root,c.end),upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c.joint)),lower=wrapped(angle(solved.joint,solved.end)-angle(c.joint,c.end));
-    const rotations:[string,number][]=[[c.id+'Knee',wrapped(upper-Math.atan2(parent[1],parent[0]))],[c.id+'Ankle',wrapped(lower-upper)],[c.id+'Paw',wrapped(-lower)]];
+    const solved=c.chain.solve(root,c.endPoint),upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c.joint)),lower=wrapped(angle(solved.joint,solved.end)-angle(c.joint,c.endPoint));
+    const rotations:[string,number][]=[[c.knee,wrapped(upper-Math.atan2(parent[1],parent[0]))],[c.end,wrapped(lower-upper)]];
+    if(c.terminal)rotations.push([c.terminal,wrapped(-lower)]);
     for(const[j,value]of rotations){const bound=limits[j]!,degrees=value*180/Math.PI;if(degrees<bound.min*ANGLE_RESERVE||degrees>bound.max*ANGLE_RESERVE)return false;}
    }
   }

@@ -39,7 +39,7 @@ type Envelope=StanceEnvelope|ContactStanceEnvelope|null;
 // in the key, while returned timelines keep their actual seed and hash.
 const envelopeCache=new WeakMap<BodyCard,Map<string,{key:string;value:Envelope}>>();
 function envelopeFor(card:BodyCard,base:MotionTimeline):Envelope {
-  if(card.template.id!=='quadruped'||!['hit','tame','faint'].includes(base.actionId))return null;
+  if(!((card.template.id==='quadruped'&&['hit','tame','faint'].includes(base.actionId))||(card.template.id==='insect'&&base.actionId==='faint')))return null;
   const key=JSON.stringify({card,timeline:{...base,seed:0,hash:''}}),cache=envelopeCache.get(card)??new Map<string,{key:string;value:Envelope}>(),prior=cache.get(base.actionId);
   if(prior?.key===key)return prior.value;
   const value=faintStanceEnvelope(card,base,ms=>sampleTimeline(base,ms))??stationaryContactEnvelope(card,base,ms=>sampleTimeline(base,ms));
