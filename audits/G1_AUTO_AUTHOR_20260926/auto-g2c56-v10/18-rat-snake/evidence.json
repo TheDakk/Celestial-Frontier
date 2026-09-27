@@ -1,0 +1,200 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 13.2% paint that no reference appendage lands on",
+  "missing-anatomy: part head (head) covers 6% paint (reference 4%)",
+  "missing-anatomy: part body-segment-6 (seg6) covers 8% paint (reference 10%)",
+  "missing-anatomy: part body-segment-7 (seg7) covers 5% paint (reference 7%)",
+  "missing-anatomy: part body-segment-8 (seg8) covers 3% paint (reference 5%)",
+  "missing-anatomy: part body-segment-9 (seg9) covers 1% paint (reference 2%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "remainderMarker": false,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [
+  {
+   "id": "body-segment-9",
+   "vertices": 1
+  }
+ ],
+ "untangled": [],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 13.2% paint that no reference appendage lands on"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "head"
+    ],
+    "names": [
+     "head"
+    ],
+    "refFrac": 0.0922,
+    "target": 0,
+    "overlap": 0.009
+   },
+   {
+    "owners": [
+     "body-segment-9",
+     "body-segment-8"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.1004,
+    "target": 1,
+    "overlap": 0.023
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0127,
+     "class": "front",
+     "attach": {
+      "x": 403,
+      "y": 193.5,
+      "relX": 1,
+      "relY": 0.15
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1315,
+     "class": "rear",
+     "attach": {
+      "x": 118.9,
+      "y": 208.9,
+      "relX": 0.01,
+      "relY": 0.47
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "python",
+   "byClass": {
+    "top": 1,
+    "rear": 1
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0208,
+  "ref": 0.0333
+ },
+ "bestReference": "python",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "python",
+   "cost": 0.00468
+  },
+  {
+   "ref": "eel",
+   "cost": 0.01915
+  },
+  {
+   "ref": "racer",
+   "cost": 0.02072
+  }
+ ],
+ "mirrorBest": 0.0139,
+ "otherFamilyBest": {
+  "family": "radial",
+  "cost": 0.02088
+ },
+ "coverage": [
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.29608938547486036,
+   "area": 2801.2299999999977
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.05643086816720257,
+   "area": 99378.13999999985
+  },
+  {
+   "id": "body-segment-0",
+   "joint": "seg0",
+   "paint": 0.10327811068029609,
+   "area": 45715.92999999998
+  },
+  {
+   "id": "body-segment-1",
+   "joint": "seg1",
+   "paint": 0.09224674589700056,
+   "area": 84753.88499999992
+  },
+  {
+   "id": "body-segment-2",
+   "joint": "seg2",
+   "paint": 0.10804208944006012,
+   "area": 85113.97000000002
+  },
+  {
+   "id": "body-segment-3",
+   "joint": "seg3",
+   "paint": 0.10436107408112741,
+   "area": 84003.07500000003
+  },
+  {
+   "id": "body-segment-4",
+   "joint": "seg4",
+   "paint": 0.10686274509803921,
+   "area": 81704.23000000003
+  },
+  {
+   "id": "body-segment-5",
+   "joint": "seg5",
+   "paint": 0.08963414634146341,
+   "area": 78830.7199999999
+  },
+  {
+   "id": "body-segment-6",
+   "joint": "seg6",
+   "paint": 0.07912457912457913,
+   "area": 76095.57500000004
+  },
+  {
+   "id": "body-segment-7",
+   "joint": "seg7",
+   "paint": 0.05102040816326531,
+   "area": 79977.20000000001
+  },
+  {
+   "id": "body-segment-8",
+   "joint": "seg8",
+   "paint": 0.027020890099909173,
+   "area": 70678.08499999998
+  },
+  {
+   "id": "body-segment-9",
+   "joint": "seg9",
+   "paint": 0.01004260499087036,
+   "area": 52413.645000000004
+  },
+  {
+   "id": "neck-root",
+   "joint": "root",
+   "paint": 0.08230742173760112,
+   "area": 45188.58000000012
+  }
+ ],
+ "unclaimedFrac": 0.0543
+}

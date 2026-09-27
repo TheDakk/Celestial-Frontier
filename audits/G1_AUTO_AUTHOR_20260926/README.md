@@ -2,7 +2,7 @@
 
 Program: `audits/GENERATION_PIPELINE_20260926/PROGRAM.md` (Dakk D22/D23). Owner: Claude.
 
-**Latest (session 4, 2026-09-26):** the 24 C54 paintings give 9 ADMIT + PASS_STATIC and 7 native PASS, all 7 quadrupeds (section "G2 C54 batch" below). D24 scores G1 per family on generated paintings.
+**Latest (session 4, 2026-09-26):** C54 gave 9 static / 7 native; C56+C57 gave 8 static / 7 native, including the Raven, the first bird (sections below). The exact-label tail contract passed Claude's independent checks with a rig-derived identity guard (`audits/TAIL_LABELS_CHECK_20260926`). D24 scores G1 per family on generated paintings.
 
 **Status (end of session 2, 2026-09-26): the corpus gate (≥ 30/40 admitted with zero hand edits) is NOT met.**
 - Adopted author **v5:**
@@ -117,6 +117,29 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **Fish packets REJECTED by Dakk** (tail stalk crunchy/pinched). The tail joint is the top rig priority (C54).
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
+
+**G2 C56 + C57 batches (Codex `126d8765`: 32 new paintings + 7 pattern re-paints), scored with v10 (session 4, continued)** (`auto-g2c56-v10/`, `auto-g2c57-v10/`, `native-g2c56/`):
+- **Pattern gate honoured before scoring** (`pilots/*-pattern-eligible.json`). Six paintings were skipped because Codex's `pattern-check.json` REFUSES them: both Jaguars, the C56 Clouded Leopard, Water Snake, Mountain Viper and Ladybug. 33 were scored.
+- **ADMIT + PASS_STATIC: 8/33.**
+  - C57 re-paints: Snow Leopard and Clouded Leopard (Cougar ref.).
+  - C56: Coyote (Wolf), Bobcat (Brown Bear), Mink (Cougar), Marten (River Otter), Fisher (Cougar), Raven (Gull).
+- **Static RED:**
+  - Leopard re-paint: `approach:trot` exceeds the contact scale-compression bound.
+  - Crow, Magpie, Dove: ARAP folds in faint/presentation.
+- **Refused:**
+  - Tiger re-paint (the far ear tip covers 6 %), Ocelot re-paint, Caracal, Lynx (limb-down appendage).
+  - Robin (facing), Cardinal, Jay (wrong family), Pigeon (unexplained paint).
+  - All 6 snakes (thin S-curve appendages).
+  - 6 insects (floors and coverage); Cicada ADMIT but intake refused (source-join owners).
+  - The earlier plain-coat Tiger, Leopard and Ocelot passed. Their pattern re-paints score worse, so pattern paint and the rig are now in tension for those three.
+- **Native (CPU ×4): 7/8 DIAGNOSTIC_PASS**, 0/0 refusals. **The Raven is the first bird through the whole chain.**
+  - Bobcat FAIL: 0 rig refusals in 850 frames, but the capture reports "missing live frames" (instrument class). Not retried, per the no-retry rule.
+- **Full-size look** (`fullsize-approach.jpg`, `fullsize-reaction.jpg`, `chest-zoom.jpg`, `raven-tail-zoom.jpg`):
+  - The pattern re-paints work: real spots and clouds.
+  - Coyote and Marten look clean.
+  - **Elbow flap on every Cougar-referenced fit:** Mink, Fisher, Snow Leopard, and mildly the Clouded Leopard. This is Codex's C57 diagnosis (the `fore-near-root` distal corners reach 108–116 px lateral).
+  - **The Raven's tail splits in the hit reaction**, although its approach is clean.
+- **Running total of generated creatures passing native:** 9 (session 3) + 7 (C54) + 7 (C56/C57) = 23. All but the Raven are quadrupeds. None is visually accepted yet: Dakk's end-of-pass review.
 
 **G2 C54 batch (Codex `2447b472`: 24 new paintings), scored with the adopted v10 author (session 4, 2026-09-26)** (`auto-g2c54-v10/`; leave-one-species-out; zero hand edits; the command is in the ROADMAP handoff):
 

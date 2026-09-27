@@ -23,10 +23,11 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
 **Dakk's goal (2026-09-26, verbatim):** "Can we get to the generated art? That's the main goal, so that we have the complete Earth creatures having full movement animations and all the procedurally generated animations in their various different battleground biomes." Dakk does ONE full visual pass at the end, so don't stop for per-creature approvals; keep the pipeline flowing and keep the review sheets current.
 
 **Where things stand**
-- **Branch:** `anthropic/mac` is pushed through the commit adding this block; every commit is signed G (`git-ssh-sign-cf`); `origin` is HTTPS via `gh`. Codex is merged through `046914af` (C56: exact tail labels, the Red Fox contact measurement, phone-original producer, 32 G2 requests in generation).
-- **Gate:** from `port/v2`, `node tools/check-profile.mjs --profile=develop`; the ONLY red is I5. Run it on a QUIET tree. Also run by hand: `npm run typecheck`, `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`. This session changed audits/docs only (no `port/v2` source), so the dev site was not republished (still `c99e3eb7`).
+- **Branch:** `anthropic/mac` is pushed through the commit adding this block; every commit is signed G (`git-ssh-sign-cf`); `origin` is HTTPS via `gh`. Codex is merged through `7441ee1e` (merge `d8f71eca`: 32 C56 + 7 C57 pattern paintings, Cougar/Wolf/Gull phone originals, `pattern-observation.mjs`, elbow-flap diagnosis).
+- **Gate:** from `port/v2`, `node tools/check-profile.mjs --profile=develop`; the ONLY red is I5. Run it on a QUIET tree. Also run by hand: `npm run typecheck`, `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`. Claude changed audits/docs only. Codex's merged `port/v2` change adds finished phone originals behind `?finish=1`; see "Dev site" below.
+- **Dev site:** https://dev-celestialfrontier.github.io, republished by Claude from the signed commit carrying this block (it adds Codex's Cougar/Wolf/Gull finished originals behind `?finish=1`). Republish with `node tools/deploy-dev.mjs` (from `port/v2`, out of the sandbox, clean signed head).
 - **develop** is still `c1791e21`; PR #43 is open; no hosted attempt (I5 red).
-- **Decisions** (`audits/MAILBOX/DECISIONS.md`): D24 and D26 are DECIDED (per-family G1 scoring on G2 paintings; finisher alpha ≥ 250, implemented). D25 is open (reference shopping stays off). **D27 NEW, open:** regenerate patterned cats with the pattern named first (recommended; Codex proceeds unless Dakk objects).
+- **Decisions** (`audits/MAILBOX/DECISIONS.md`): D24 and D26 are DECIDED. D25 is open (reference shopping stays off). **D27 is open** (patterned cats): its recommended default is implemented; the Snow Leopard and Clouded Leopard re-paints pass, while the Tiger/Ocelot/Leopard re-paints and both Jaguars do not.
 
 **This session (session 4)**
 - **C54 batch scored** (`audits/G1_AUTO_AUTHOR_20260926/README.md`, "G2 C54 batch"): 9/24 ADMIT + PASS_STATIC. Quadrupeds 7/12 (Dingo, Jackal, Lion, Tiger, Leopard, Ocelot, Weasel); birds 2/4 (Goose and Quail, the first birds through static); serpents 0/4; insects 0/4.
@@ -40,16 +41,21 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
   - Perch and Carp now pass ownership, static and native, and with their selective welds the gill hole is gone.
   - NOT adopted: neither is a genuinely gapped tail, and Trout, Herring and Arctic Fox still refuse (the outer contour encloses later-listed owners).
 
+- **C56 + C57 scored** (the pattern gate was honoured: 6 skipped): 8/33 static, **7/8 native**. Snow Leopard, Clouded Leopard, Coyote, Mink, Marten, Fisher, and **the Raven, the first bird through the whole chain**. Bobcat: an instrument-class capture FAIL with 0 refusals.
+  - Full-size faults: an elbow flap on every Cougar-referenced fit (Codex's repair; it now blocks 7 creatures), and the Raven's tail splits in the hit reaction.
+  - Sheets were sent to Dakk. The running total is **23 generated creatures passing native**; none is visually accepted.
+- **Exact-label tail contract checked independently** (`audits/TAIL_LABELS_CHECK_20260926`): a byte-exact reproduction, and 3 of 4 mutation classes are safe.
+  - A wrong tail NAME silently moves paint. The guard `tail-identity.mjs` derives the pair from the rig joints (positive 4/4, negative 4/4).
+  - The contract is accepted with the guard.
+
 **Next, in order (Claude)**
 1. Read Codex's mailbox (`/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md`, read-only) for its C57 replies. Merge any newer signed `openai/mac` (`--no-ff`; after resolving, run `git grep -n "^<<<<<<<\|^>>>>>>>"` BEFORE committing; keep this block).
 2. **Score each new G2 batch the same way:**
    - `node audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs --tag=<fresh> --topk=1 --chains --counter --fallback=2 --targets=<batch>/pilot.json`.
    - Then run native on every ADMIT + PASS_STATIC. Pattern: `audits/G1_AUTO_AUTHOR_20260926/native-g2c54/run.sh` (sequential, out of the sandbox). Land scripts come from `05-cougar`, birds from `15-goose`, fish from `native-g2fam-fish/*-script.json`, each with the names swapped.
    - Build the sheet with `native-g2c54/sheet.mjs` and the full-size crops with `crops.mjs`, then LOOK at tails, legs, heads and elbows. Record the results in the G1 README and send Dakk the sheet.
-3. **Tail:** Codex's exact-label placement (`audits/TAIL_LABELS_C56_20260926`, merged) supersedes my polygon bridge; the reassigned pixels agree exactly, and it also covers Arctic Fox.
-   - Run the G1 held-out and mutation checks on the exact-label contract (Codex asks for this before integration), and look at its native stills at full size.
-   - Integrate it into the author only if it passes without regressing Cod, Perch, Carp or Arctic Fox.
-   - Codex's next G2 batch (C56: 32 paintings, 8 per family) arrives for scoring next to the 24.
+3. **Tail:** integrate the checked exact-label placement into the G1 runner (after intake, before static), with `assertTailPair` binding tail and stalk from the rig. Keep it OFF by default until Codex's body seams close. Re-run Cod, Perch, Carp and Arctic Fox plus the mutation battery.
+   - The Raven's hit-reaction tail split is a new bird tail case: check whether it is the same stalk-gap class (tail vs body ownership) before handing it over.
 4. **Birds:** Goose and Quail pass static but fail native. Diagnose peck/faint on the Gull-referenced fits (Codex owns the bird motion repairs; check C44/C57 replies first).
 5. **Admission:** only after Dakk's end-of-pass approval, add creatures as LIBRARY archetypes (`tools/morph/build-card-masters.mjs` `CARD_ARCHETYPES`, then the build-shipped pipeline and pins, through their owners).
 6. Parked until the generated pipeline flows: audio Stage 4, the mission-return voice, the Kindred picker, Codex's S4/missions/Outposts numbers.

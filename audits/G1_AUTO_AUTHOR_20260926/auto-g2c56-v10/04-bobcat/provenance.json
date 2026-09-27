@@ -1,0 +1,140 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "04-bobcat",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "3dcb12fc477dc4798e058fec0211b5d652cec3fcbd1645255f78a78f9aba0fad",
+ "subjectSourceSha256": "7d34b400e0aa4d0be41dd931d1f3da143a112eada527d189b93515d3b6512ada",
+ "identity": {
+  "name": "Bobcat",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Bobcat\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3043053920\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"2\"]]]]",
+  "seed": 3043053920,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "80f67d9f8f8bb8449330be0aea9e1aa5d3f9893059415b884f76579f9b8ed1c0",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "felid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "74c48486113be3ee431e8a73d1f96d202de2a5c22bc39d2661f21510abbb4a65",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group felid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0876,
+     "class": "top",
+     "attach": {
+      "x": 351.7,
+      "y": 134.2,
+      "relX": 0.87,
+      "relY": 0.12
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0139,
+     "class": "rear",
+     "attach": {
+      "x": 63,
+      "y": 173.5,
+      "relX": 0.12,
+      "relY": 0.29
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0618,
+     "class": "limb-down",
+     "attach": {
+      "x": 53.5,
+      "y": 261.7,
+      "relX": 0.09,
+      "relY": 0.67
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0749,
+     "class": "limb-down",
+     "attach": {
+      "x": 132.5,
+      "y": 246,
+      "relX": 0.3,
+      "relY": 0.6
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0697,
+     "class": "limb-down",
+     "attach": {
+      "x": 297.2,
+      "y": 255.2,
+      "relX": 0.73,
+      "relY": 0.64
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.054,
+     "class": "limb-down",
+     "attach": {
+      "x": 243.8,
+      "y": 255.2,
+      "relX": 0.59,
+      "relY": 0.64
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

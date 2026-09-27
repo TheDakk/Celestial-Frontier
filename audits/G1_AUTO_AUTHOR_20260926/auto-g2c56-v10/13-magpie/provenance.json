@@ -1,0 +1,122 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "13-magpie",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "c548d79ad9dd3591b5a82f2395cef5b8ddb6a12ef371b7a7a4628c6bf5e06571",
+ "subjectSourceSha256": "f16dbe9347cda2f3e70069cbf59579fe0c20a1b1cda945551556d9388bb996e6",
+ "identity": {
+  "name": "Magpie",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Magpie\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3654948043\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "seed": 3654948043,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "gull",
+  "authoringSha256": "9d5ce3cc7a41cf6a139848982114319c2374828a04e313c38619d8dce938aa73",
+  "masterSha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9"
+ },
+ "habitat": {
+  "profileId": "bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "080136b779f700a6c6860d1d4eb9593834bb0258212903c6b3656f9a8aca3675",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0648,
+     "class": "top",
+     "attach": {
+      "x": 357.4,
+      "y": 122.4,
+      "relX": 0.86,
+      "relY": 0.08
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2856,
+     "class": "rear",
+     "attach": {
+      "x": 167.9,
+      "y": 227.9,
+      "relX": 0.4,
+      "relY": 0.71
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.041,
+     "class": "limb-down",
+     "attach": {
+      "x": 257.3,
+      "y": 253.7,
+      "relX": 0.62,
+      "relY": 0.86
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0497,
+     "class": "limb-down",
+     "attach": {
+      "x": 302.5,
+      "y": 255,
+      "relX": 0.73,
+      "relY": 0.87
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "gull",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "legFar+legNear"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}
