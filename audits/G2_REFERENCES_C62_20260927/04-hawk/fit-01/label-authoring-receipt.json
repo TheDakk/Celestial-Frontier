@@ -1,0 +1,120 @@
+{
+  "regionOwnerMap": [
+    {
+      "region": "near-foot",
+      "joint": "legNearFoot",
+      "owner": "near-foot"
+    },
+    {
+      "region": "far-foot",
+      "joint": "legFarFoot",
+      "owner": "far-foot"
+    },
+    {
+      "region": "near-shin",
+      "joint": "legNearAnkle",
+      "owner": "near-shin"
+    },
+    {
+      "region": "far-shin",
+      "joint": "legFarAnkle",
+      "owner": "far-shin"
+    },
+    {
+      "region": "near-thigh",
+      "joint": "legNearKnee",
+      "owner": "near-thigh"
+    },
+    {
+      "region": "far-thigh",
+      "joint": "legFarKnee",
+      "owner": "far-thigh"
+    },
+    {
+      "region": "beak",
+      "joint": "beak",
+      "owner": "beak"
+    },
+    {
+      "region": "head",
+      "joint": "head",
+      "owner": "head"
+    },
+    {
+      "region": "neck-upper",
+      "joint": "neck1",
+      "owner": "neck-upper"
+    },
+    {
+      "region": "neck-lower",
+      "joint": "neck0",
+      "owner": "neck-lower"
+    },
+    {
+      "region": "far-wing-root",
+      "joint": "wingFarRoot",
+      "owner": "far-wing-root"
+    },
+    {
+      "region": "far-wing-flight",
+      "joint": "wingFarTip",
+      "owner": "far-wing-flight"
+    },
+    {
+      "region": "near-wing-root",
+      "joint": "wingNearRoot",
+      "owner": "near-wing-root"
+    },
+    {
+      "region": "near-wing-flight",
+      "joint": "wingNearTip",
+      "owner": "near-wing-flight"
+    },
+    {
+      "region": "tail",
+      "joint": "tailFan",
+      "owner": "tail"
+    },
+    {
+      "region": "chest",
+      "joint": "chest",
+      "owner": "chest"
+    },
+    {
+      "region": "body",
+      "joint": "root",
+      "owner": "body"
+    }
+  ],
+  "schema": "cf.sprint-authored-labels/v1",
+  "owner": "explicit new-master priority polygons; not source painter labels",
+  "counts": [
+    11169,
+    14310,
+    3466,
+    3720,
+    18184,
+    35528,
+    4101,
+    23677,
+    8966,
+    18940,
+    12507,
+    18505,
+    27181,
+    100801,
+    46410,
+    23265,
+    40509
+  ],
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "rgbaChangedChannels": 0,
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "remainderPart": "body"
+}

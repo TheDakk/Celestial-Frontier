@@ -1,0 +1,25 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Ant",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "b264d0e80b40cd1dac5b31926a45d68b6b03d4da866e1966e9c3e5a3f9b7a94a",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "093f566d833ecf044db9b8a1c15f87d3541f801f",
+  "canonicalPromptSha256": "51910be602d18c6209cb6f0f7d19e93b8e581cbdb754c774555aa7593d407d1c",
+  "purpose": "Dakk-authorized new hand-authored reference, C62 overnight queue item2",
+  "layoutSupplement": "REFERENCE POSE PRIORITY: six naturally attached thoracic legs in a widely spaced walking stance, each traceable from thorax to its own separate tarsal endpoint; strict head-right side profile, far legs offset front-to-back, antennae separate from all six legs.",
+  "framingSupplement": "central75%;125pxclearborder"
+}

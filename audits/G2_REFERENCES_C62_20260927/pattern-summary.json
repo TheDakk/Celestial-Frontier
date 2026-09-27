@@ -1,0 +1,119 @@
+[
+  {
+    "id": "01-robin",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Robin",
+    "masterSha256": "e23c895629f36cd69be0861a16c0bf27516f85bb1ad385f00016ea2bf7d8a080",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "02-pigeon",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Pigeon",
+    "masterSha256": "64746615ffdc4c8648153537fc25e2b5e03671dceb9f9880186a71e4ae3151db",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "03-duck",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Duck",
+    "masterSha256": "b1311edf9b88da5e6854e2c7fac562eaaa89ce2e674a47616fc8adc2d089af97",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "03-duck-v2",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Duck",
+    "masterSha256": "b1311edf9b88da5e6854e2c7fac562eaaa89ce2e674a47616fc8adc2d089af97",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "04-hawk",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Hawk",
+    "masterSha256": "a3cc39bbb343cd4f6ed8eec6af71759ce283d0ea0eec26c6cdb24d91d5fe73d3",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "04-hawk-v2",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Hawk",
+    "masterSha256": "a3cc39bbb343cd4f6ed8eec6af71759ce283d0ea0eec26c6cdb24d91d5fe73d3",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "05-cat",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Cat",
+    "masterSha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "05-cat-v2",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Cat",
+    "masterSha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "06-dog",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Dog",
+    "masterSha256": "def3517a227c224e1f5142ec4ffe88523e9f9d983b57948df985acef387368e9",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "06-dog-margin",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Dog",
+    "masterSha256": "d7dd14c398a7e35a786fab91f7c593d8efdd7b0442f3198c26b4757f0addfa25",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "07-weasel",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Weasel",
+    "masterSha256": "43006af17548682e07146521da9d676d75643dcb0012334230f0549f2ab5560b",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "08-ant",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Ant",
+    "masterSha256": "c08ceac5e56a3ee468c08e38487f28f3a9d25a5d08d0eb266491c02fb319b754",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "09-cricket",
+    "schema": "cf.g2-pattern-observation/v1",
+    "name": "Cricket",
+    "masterSha256": "69d905966cfb597f0c09d44f0f857cce30e28201ed1d7358621e289ded468ca4",
+    "required": [],
+    "source": "explicit visual observation; not prompt or pixel-variance inference",
+    "status": "NOT_REQUIRED"
+  }
+]

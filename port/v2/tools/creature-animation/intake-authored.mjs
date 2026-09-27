@@ -16,6 +16,7 @@ import {sealPortableFamilyRecord as sealFamilyRecord} from './portable-record-wr
 import {hashJSON} from './quadruped-template.mjs';
 import {buildAuthoredParts} from './build-authored-parts.mjs';
 import {intakeAuthoredPixels} from './authored-intake.mjs';
+import {authoredRegionOwners} from './authored-region-owners.mjs';
 import {buildPaintSkin} from './build-paint-skin.mjs';
 import {splitObservedSurfaces} from './split-observed-surfaces.mjs';
 import {createSourceJoinProbe} from '../quadruped-proof/source-join-continuity.mjs';
@@ -57,11 +58,12 @@ const parts=author.parts.map(p=>{
   need(Array.isArray(p.polygonPx)&&p.polygonPx.length>=3,'manual polygonPx');
   return {id:p.id,joint:p.joint,layer:p.layer,polygon:p.polygonPx.map(normalized)};
 });
+const owners=authoredRegionOwners(parts,author.remainderPart);
 const masterFile=path.join(packet,'master.png');
 fs.mkdirSync(out,{recursive:true});
 const write=(name,value)=>fs.writeFileSync(path.join(out,name),JSON.stringify(value,null,2)+'\n',{flag:'wx'});
 let stage='family-record',failure=null;
-const provenance={schema:'cf.sprint-authored-intake/v1',status:'RUNNING',sourceHead:execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim(),helperSha256:sha(fs.readFileSync(fileURLToPath(import.meta.url))),inputs,manualAuthoring:true,sourceLabelsReused:false,sourceLandmarksReused:false,hiddenInference:false,options:{boundaryStep:24,interiorStep:56,includeTopology:true,fixedJoints:['root']},nativeAcceptance:false};
+const provenance={schema:'cf.sprint-authored-intake/v1',status:'RUNNING',sourceHead:execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim(),helperSha256:sha(fs.readFileSync(fileURLToPath(import.meta.url))),regionOwnerHelperSha256:sha(fs.readFileSync(new URL('./authored-region-owners.mjs',import.meta.url))),inputs,manualAuthoring:true,sourceLabelsReused:false,sourceLandmarksReused:false,hiddenInference:false,options:{boundaryStep:24,interiorStep:56,includeTopology:true,fixedJoints:['root']},nativeAcceptance:false};
 try {
   const contract=familyContract(author.family);
   const record=await sealFamilyRecord({kind:author.family, // Template id is not the optional taxonomy-family field.
@@ -88,18 +90,19 @@ try {
       const a=polygon[i],b=polygon[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])yes=!yes;
     }return yes;};
     const fallback=parts.findIndex(part=>part.id===author.remainderPart);
-    const labels=Buffer.alloc(info.width*info.height*4),counts=parts.map(()=>0);
+    const labels=Buffer.alloc(info.width*info.height*4),counts=owners.ownerParts.map(()=>0);
     for(let y=0;y<info.height;y++)for(let x=0;x<info.width;x++){
       const i=y*info.width+x;let label=0;
-      if(data[i*4+3]){let owner=parts.findIndex(part=>inside((x+.5)/info.width,(y+.5)/info.height,part.polygon));if(owner<0)owner=fallback;label=owner+1;counts[owner]++;}
+      if(data[i*4+3]){let owner=parts.findIndex(part=>inside((x+.5)/info.width,(y+.5)/info.height,part.polygon));if(owner<0)owner=fallback;label=owners.ownerIndex[owner]+1;counts[owners.ownerIndex[owner]]++;}
       labels.set([label,label,label,255],i*4);
     }
     const labelsPng=await sharp(labels,{raw:{width:info.width,height:info.height,channels:4}}).png().toBuffer();
     fs.writeFileSync(path.join(out,'labels.png'),labelsPng,{flag:'wx'});
-    declarationBody={schema:'cf.painter-part-intake/v1',recordRecipeHash:record.recipeHash,cutoutSha256:record.geometry.cutoutAssetHash,labelsFile:'labels.png',labelsSha256:sha(labelsPng),parts:parts.map(({polygon,...part})=>part)};
-    write('label-authoring-receipt.json',{schema:'cf.sprint-authored-labels/v1',owner:'explicit new-master priority polygons; not source painter labels',counts,sourceLabelsReused:false,sourceLandmarksReused:false,rgbaChangedChannels:0,intake:checked.receipt,remainderPart:author.remainderPart});
+    declarationBody={schema:'cf.painter-part-intake/v1',recordRecipeHash:record.recipeHash,cutoutSha256:record.geometry.cutoutAssetHash,labelsFile:'labels.png',labelsSha256:sha(labelsPng),parts:owners.ownerParts};
+    write('label-authoring-receipt.json',{regionOwnerMap:owners.regionOwnerMap,schema:'cf.sprint-authored-labels/v1',owner:'explicit new-master priority polygons; not source painter labels',counts,sourceLabelsReused:false,sourceLandmarksReused:false,rgbaChangedChannels:0,intake:checked.receipt,remainderPart:author.remainderPart});
     provenance.maskMode='authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1';
   }else{
+    need(!owners.merged,'same-joint region merge requires a true-alpha master');
     declarationBody={schema:'cf.authored-part-masks/v1',recordRecipeHash:record.recipeHash,cutoutSha256:record.geometry.cutoutAssetHash,remainderPart:author.remainderPart,parts};
     provenance.maskMode='opaque source; established authored-mask key/despill';
   }
@@ -109,7 +112,7 @@ try {
   stage='paint-skin';
   const compiled=await buildPaintSkin(path.join(out,'parts'),{seamBridges:{groups:[]}},record,{boundaryStep:24,interiorStep:56,includeTopology:true});
   const {bindingHash:_prior,...bindingBody}=compiled.binding;
-  bindingBody.sourceJoinTopology={remainderPartId:author.remainderPart};
+  bindingBody.sourceJoinTopology={remainderPartId:owners.remainderOwner};
   const binding={...bindingBody,bindingHash:await hashJSON(bindingBody)};
   write('pre-split-binding.json',binding);
   stage='source-join-probe';
