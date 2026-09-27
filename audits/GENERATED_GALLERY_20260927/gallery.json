@@ -404,16 +404,16 @@
   {
    "family": "Fish",
    "name": "Sculpin",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/03-sculpin",
+   "nativeDir": "audits/FISH_SEAMS_C78_20260927/native-sculpin-final",
    "report": "DIAGNOSTIC_PASS",
-   "note": "body fragments visibly: NOT acceptable"
+   "note": "now whole after Codex keyed-label pectoral welds (was fragmented)"
   },
   {
    "family": "Fish",
    "name": "Walleye",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/04-walleye",
+   "nativeDir": "audits/FISH_SEAMS_C78_20260927/native-walleye-final",
    "report": "DIAGNOSTIC_PASS",
-   "note": "vertical body crack (unwelded)"
+   "note": "clean after Codex tail+axis repair"
   },
   {
    "family": "Fish",
@@ -425,9 +425,9 @@
   {
    "family": "Fish",
    "name": "Pacu",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/06-pacu",
+   "nativeDir": "audits/FISH_SEAMS_C78_20260927/native-pacu-final",
    "report": "DIAGNOSTIC_PASS",
-   "note": "body seam cracks (unwelded)"
+   "note": "fine seam near the pectoral remains; tail+axis repaired"
   },
   {
    "family": "Fish",
