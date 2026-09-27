@@ -131,3 +131,20 @@ test('stopped foreground deadline retains the last raw pending observation and s
  sendCleanup:async(method)=>{calls.push(method);return {result:{value:{cleanupPresent:false,servicePresent:false}}};}}),error=>error.message==='original deadline; last foreground observation: '+JSON.stringify(observation));
  assert.deepEqual(calls,['Runtime.evaluate','Emulation.setFocusEmulationEnabled']);
 });
+
+
+test('v2 foreground owns the real page before emulation and preserves exact receipt refusals',async()=>{
+ const id={targetId:'target',sessionId:'session',documentToken:'document'}, phase=n=>({observed:true,sequence:n,visibilityState:'visible',hidden:false,focused:true});
+ const green={schema:'cf-v2-compendium-foreground-service-observation/v1',...id,visibilityState:'visible',hidden:false,focused:true,service:{token:'token',visibilityChanges:0,focusLosses:0,arm:phase(0),raf:phase(1),laterTask:phase(2)}};
+ const calls=[];
+ const run=async(observation)=>collector.ownCandidateForeground({attachment:id,activationTargetId:id.targetId,serviceToken:'token',label:'diagnostic',sendStage:async(_label,method,params,session)=>{calls.push({method,params,session})},evaluate:async()=>({cleanupPresent:false,servicePresent:false}),
+ waitValue:async(_s,_l,_e,o)=>{assert.equal(o.timeoutMs,5000);o.onObservation(observation,{phaseDeadlineMs:6000,target:{completedAtMs:1100}});if(!o.acceptValue())throw Error('not serviced');return observation;},
+ sendCleanup:async()=>({result:{value:{cleanupPresent:false,servicePresent:false}}})});
+ const result=await run(green);
+ assert.equal(result.observation.service.laterTask.observed,true);assert.equal(result.timing.timeoutMs,5000);
+ assert.deepEqual(calls.slice(0,3).map(c=>c.method),['Target.activateTarget','Page.bringToFront','Emulation.setFocusEmulationEnabled']);
+ assert.equal(calls[0].params.targetId,id.targetId);assert.equal(calls[1].session,id.sessionId);assert.equal(calls[2].session,id.sessionId);
+ for(const mutate of [o=>{o.targetId='other'},o=>{o.documentToken='other'},o=>{o.service.laterTask.sequence=1},o=>{o.service.raf.hidden=true},o=>{o.service.focusLosses=1},o=>{o.service.laterTask={observed:false,sequence:null,visibilityState:null,hidden:null,focused:null}}]){
+  const bad=structuredClone(green);mutate(bad);await assert.rejects(()=>run(bad));
+ }
+});
