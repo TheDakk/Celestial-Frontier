@@ -15,3 +15,9 @@ Native counter lifetime is consistent with Chromium's [JSBasedEventListener cons
 See SESSION_HANDOFF.md for the paused art/gameplay queue and full continuation instructions. No thresholds, measurement inventory, deadlines, history or v1 evidence changed.
 
 Exact signed d20c271 battery:5703PASS/I5solefailure+seven ownersPASS; unchanged before/after source and log hashes verified. Fresh3+1 on this signed repaired product follows.
+
+## Terminal result and explicit profile activation
+
+Epoch i5-v2-d20c27166042 is CERTIFIED: three calibrations and one certification, all four raw verifiers exit0, zero automatic retries, unchanged clean product, unchanged v1 history. Every phase passes78outcomes. The successful evidence is signedafec51f84. No stopped epoch resumed.
+
+The explicit active-v2 selector retains all raw inputs; read-only admission reconstructs the current generated instrument without writing it and confirms byte identity to the certified materialization. It verifies every raw phase, artifact bytes, exact browser/source/run/phase identity, unchanged guard and raw-derived calibration samples against the current measured build.21controls include rehashed forged summaries, missing outcomes, raised limits, stale producers, altered screenshots/instrument, incomplete/changed source and phase errors. Fullbattery follows; no hosted run or historical v1 rewrite.

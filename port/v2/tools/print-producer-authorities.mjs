@@ -16,6 +16,7 @@ import { findCandidateSpeciesArtBuildGraph } from './speciesart-build.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 import { checkCommandInvocation } from './check-profile.mjs';
 import { assertBuiltGameMode } from './build-mode.mjs';
+import { activeCompendiumMeasurementSources, readActiveCompendiumBudget, verifyActiveCompendiumCertificate } from './compendiummem-active.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
@@ -46,7 +47,8 @@ export function authorityMismatchPaths(expected, observed, prefix = '') {
 
 /** Keep the CLI fail-closed unless every independently derived live authority matches. */
 export function producerAuthorityExitCode(report) {
-  return report?.sceneMemory?.budgetMatches === true
+  return report?.compendium?.certificate?.ok === true
+    && report?.sceneMemory?.budgetMatches === true
     && report?.compendium?.measurementBudgetMatches === true
     && report?.compendium?.producerBudgetMatches === true
     ? 0
@@ -62,7 +64,8 @@ const PRODUCER_AUTHORITY_CHECK_PROFILES = Object.freeze(['dev', 'develop', 'prod
  */
 export function producerAuthorityCheckProfileExitCode(report, profile) {
   if (!PRODUCER_AUTHORITY_CHECK_PROFILES.includes(profile)) return 2;
-  return report?.compendium?.measurementBudgetMatches === true
+  return report?.compendium?.certificate?.ok === true
+    && report?.compendium?.measurementBudgetMatches === true
     && report?.compendium?.producerBudgetMatches === true
     && (profile !== 'production' || report?.sceneMemory?.budgetMatches === true)
     ? 0
@@ -140,9 +143,9 @@ function compendiumAuthorities(fixture) {
     fixtureSpec: hashFile(COMPENDIUM_FIXTURE_SPEC_PATH),
     fixtureRows: fixture.rowsSha256,
     fixtureGenerator: hashFile(file('tools', 'compendiummem-fixture.mjs')),
-    budgetSchema: hashFile(file('budgets', 'compendium-memory-v1.schema.json')),
-    outcomeContract: hashFile(file('tools', 'compendiummem-contract.mjs')),
-    collector: hashFile(file('tools', 'compendiummem.mjs')),
+    budgetSchema: hashFile(file('budgets', 'compendium-memory-v2-policy.json')),
+    outcomeContract: activeCompendiumMeasurementSources.outcomeContract,
+    collector: activeCompendiumMeasurementSources.collector,
     browserCdp: hashFile(file('tools', 'browsercdp.mjs')),
     browserPath: hashFile(file('tools', 'browserpath.mjs')),
     workspaceLock: hashFile(file('tools', 'workspacelock.mjs')),
@@ -222,9 +225,8 @@ function observeCurrentProducerAuthorities(sourceSha256) {
     const sceneMemory = sceneMemoryProducerAuthority(fixture, build);
     const compendium = compendiumAuthorities(fixture);
     const sceneBudget = readJson(path.join(v2Root, 'budgets', 'scene-memory-v2.json'));
-    const compendiumBudget = readJson(path.join(
-      v2Root, 'budgets', 'compendium-memory-v1.json',
-    ));
+    const compendiumBudget = readActiveCompendiumBudget();
+    const certificate = verifyActiveCompendiumCertificate(compendium.measurement, compendium.producer);
     const sceneMemoryBudgetMismatches = authorityMismatchPaths(
       sceneBudget.authority?.producer, sceneMemory,
     );
@@ -248,6 +250,7 @@ function observeCurrentProducerAuthorities(sourceSha256) {
         budgetMismatches: sceneMemoryBudgetMismatches,
       }),
       compendium: Object.freeze({
+        certificate,
         measurement: compendium.measurement,
         producer: compendium.producer,
         measurementBudgetMatches: compendiumMeasurementBudgetMismatches.length === 0,
