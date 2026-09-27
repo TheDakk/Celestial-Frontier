@@ -23,7 +23,7 @@ export function claimPhase(ledger, phase) {
   assert(phases[ledger.steps.length] === phase, 'phase repeated, skipped or out of order');
   ledger.steps.push({ phase, exitCode: null });
 }
-export function samplesFromReports(reports) {
+export function samplesFromReports(reports, reducers = { calibrationMetrics, candidateCalibrationEvidence }) {
   return Object.fromEntries(['phone', 'desktop'].map(profile => [profile, reports.map(report => ({
     runId: report.runId, commit: report.source.begin.commit,
     workingTreeDigest: report.source.begin.workingTreeSha256,
@@ -35,14 +35,14 @@ export function samplesFromReports(reports) {
     browser: { executable: report.browser.executable, product: report.browser.product,
       revision: report.browser.revision, userAgent: report.browser.user_agent,
       jsVersion: report.browser.js_version, protocolVersion: report.browser.protocol_version },
-    metrics: calibrationMetrics(report.profiles[profile]),
-    evidence: candidateCalibrationEvidence(report.profiles[profile], { runId: report.runId }),
+    metrics: reducers.calibrationMetrics(report.profiles[profile]),
+    evidence: reducers.candidateCalibrationEvidence(report.profiles[profile], { runId: report.runId }),
   }))]));
 }
 export async function runEpoch({ source, head, out }) {
   assert(path.isAbsolute(source) && path.isAbsolute(out), 'absolute source/output required');
   source = fs.realpathSync(source);
-  assert(source.startsWith('/private/tmp/') && source !== instrumentRoot, 'epoch requires its isolated temporary checkout');
+  assert(source !== fs.realpathSync(instrumentRoot) && git(source, ['rev-parse', '--show-toplevel']) === source, 'epoch requires a separate clean Git checkout');
   assert(/^[a-f0-9]{40}$/.test(head), 'full expected product head required');
   assert(git(source, ['rev-parse', '--show-toplevel']) === source && git(source, ['rev-parse', 'HEAD']) === head, 'product checkout identity mismatch');
   assert(git(source, ['status', '--porcelain=v1', '--untracked-files=all']) === '', 'product source is dirty');
@@ -112,7 +112,7 @@ export async function runEpoch({ source, head, out }) {
     for (const phase of phases) {
       invariant();
       if (phase === 'certification') {
-        budget.calibration.samples = samplesFromReports(reports);
+        budget.calibration.samples = samplesFromReports(reports, contract);
         for (const samples of Object.values(budget.calibration.samples)) for (const sample of samples) sample.measurementAuthoritySha256 = measurementAuthority.sha256;
         budget.status = 'active';
         validation = contract.validateBudgetRecord(budget, fixture.rowsSha256, null, measurementAuthority, budget.producerAuthority);

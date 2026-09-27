@@ -45,8 +45,10 @@ export interface PaintedCardOwnershipV1 {
   readonly schema: 'cf-v2-painted-card-ownership/v1'; readonly leases: number;
   readonly keys: Readonly<{ leasedThumbs: readonly string[]; leasedPortraits: readonly string[]; cachedThumbs: readonly string[]; cachedPortraits: readonly string[]; pendingThumbs: readonly string[]; pendingPortraits: readonly string[] }>;
   readonly cacheEntries: number; readonly encodedBytes: number; readonly decodedPixels: number;
+  /** Retained ASCII data-URL bytes, including prefix/base64 (same ruler as broker). */
+  readonly dataUrlBytes: number;
   /** The same totals per card kind (C8 resume, 2026-09-25): the portrait counter reads `portrait` exactly. */
-  readonly byKind: Readonly<Record<CardKind, Readonly<{ entries: number; encodedBytes: number; decodedPixels: number }>>>;
+  readonly byKind: Readonly<Record<CardKind, Readonly<{ entries: number; encodedBytes: number; decodedPixels: number; dataUrlBytes: number }>>>;
   /** `bytes` = masterLabelBytes + maskBytes: every decoded buffer the resident archetypes retain, masks included (C8 resume). */
   readonly residentArchetypes: Readonly<{ count: number; bytes: number; masterLabelBytes: number; maskBytes: number; masks: number; names: readonly string[] }>;
   readonly totals: Readonly<{ renders: number; capEvictions: number; releasedUnowned: number }>;
@@ -127,12 +129,12 @@ export class PaintedCardSource {
   ownership(): PaintedCardOwnershipV1 {
     const keys = (kind: CardKind) => Object.freeze([...this.#cache[kind].keys()].sort()), leased = (kind: CardKind) => Object.freeze([...this.#leases.keys()].filter((k) => k.startsWith(kind + ':')).map((k) => k.slice(kind.length + 1)).sort());
     const pending = (kind: CardKind) => Object.freeze([...this.#pending.keys()].filter((k) => k.startsWith(kind + ':')).map((k) => k.slice(kind.length + 1)).sort());
-    let encodedBytes = 0, decodedPixels = 0; const byKind = {} as Record<CardKind, Readonly<{ entries: number; encodedBytes: number; decodedPixels: number }>>;
-    for (const kind of ['thumb', 'portrait'] as const) { let e = 0, d = 0; for (const a of this.#cache[kind].values()) { e += a.encodedBytes; d += a.decodedPixels; } encodedBytes += e; decodedPixels += d; byKind[kind] = Object.freeze({ entries: this.#cache[kind].size, encodedBytes: e, decodedPixels: d }); }
+    let encodedBytes = 0, decodedPixels = 0, dataUrlBytes = 0; const byKind = {} as Record<CardKind, Readonly<{ entries: number; encodedBytes: number; decodedPixels: number; dataUrlBytes: number }>>;
+    for (const kind of ['thumb', 'portrait'] as const) { let e = 0, d = 0, u = 0; for (const a of this.#cache[kind].values()) { e += a.encodedBytes; d += a.decodedPixels; u += a.url.length; } encodedBytes += e; decodedPixels += d; dataUrlBytes += u; byKind[kind] = Object.freeze({ entries: this.#cache[kind].size, encodedBytes: e, decodedPixels: d, dataUrlBytes: u }); }
     let leases = 0; for (const n of this.#leases.values()) leases += n;
     const r = this.residentArchetypes();
     return Object.freeze({ schema: 'cf-v2-painted-card-ownership/v1' as const, leases, keys: Object.freeze({ leasedThumbs: leased('thumb'), leasedPortraits: leased('portrait'), cachedThumbs: keys('thumb'), cachedPortraits: keys('portrait'), pendingThumbs: pending('thumb'), pendingPortraits: pending('portrait') }),
-      cacheEntries: this.#cache.thumb.size + this.#cache.portrait.size, encodedBytes, decodedPixels, byKind: Object.freeze(byKind),
+      cacheEntries: this.#cache.thumb.size + this.#cache.portrait.size, encodedBytes, decodedPixels, dataUrlBytes, byKind: Object.freeze(byKind),
       residentArchetypes: Object.freeze({ count: r.count, bytes: r.bytes, masterLabelBytes: r.masterLabelBytes, maskBytes: r.maskBytes, masks: r.masks, names: Object.freeze([...this.#archetypes.keys()]) }),
       totals: Object.freeze({ renders: this.#renders, capEvictions: this.#evicted, releasedUnowned: this.#released }) });
   }
