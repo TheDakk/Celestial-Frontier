@@ -1,0 +1,9 @@
+{
+ "id": "24-hyrax",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 11% paint (reference 57%)"
+ ],
+ "semanticPresence": null
+}
