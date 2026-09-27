@@ -25,3 +25,7 @@ Raw witness replay also found that the worker-injected error now belongs to row2
 The at-run helper is preserved separately because the first materializer used an external import; the successor embeds its helper inside the hashed output directory so subsequent source edits cannot change its replay. The stopped report and manifest are not modified.
 
 Current controls:63instrument checks pass, including the mixed-owner error/recovery mutations; the real Edge synthetic keyboard control passes. The first new control failure (recovery still assumed all rows were broker-cached) and its fix are retained in flow-controls-01/02.log. Full quiet-head battery and final signed handoff follow. A fresh epoch on this changed instrument is still needed; the stopped epoch is never resumed.
+
+## Final signed preparation
+
+Successor `c506e1a4` is signed G. Quiet battery:5,647testsPASS; historicalI5authority alone red; all7remainingownersPASS. Root validation,63instrumentcontrols and native synthetic keyboard controls PASS. See final-battery/REVIEW.md. Managed measurement checkout archived after preserving named evidence;216GiB free. No current-source memory PASS, v2 budget activation or profile promotion. Next needs one explicitly authorized fresh local3+1 epoch on c506e1a4, unchanged40ceilings/no retries. Final evidence-only descendant and normal own-branch push follow; no hosted action.
