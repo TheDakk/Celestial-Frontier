@@ -15,7 +15,7 @@ import {
   AMBIENCE_FAMILIES_V1, AMBIENCE_RATE, WEATHER_LAYERS_V1, ambiencePlanV1, bedJobV1, bedLevelKeyV1, rawBedJobV1, rawWeatherJobV1, runJobV1, weatherLevelKeyV1,
 } from '../apps/game/src/soundkit/ambience.js';
 import { MUSIC_PIECES_V1, MUSIC_RATE, MUSIC_TOTAL_SECONDS_V1, musicJobV1, musicLevelKeyV1, rawMusicJobV1 } from '../apps/game/src/soundkit/music.js';
-import { CALM_GAP_MS, DECODED_CEILING_BYTES, createSoundscapeV1 } from '../apps/game/src/soundkit/soundscape.js';
+import { CALM_GAP_MS, DECODED_CEILING_BYTES, RETRY_MS, createSoundscapeV1 } from '../apps/game/src/soundkit/soundscape.js';
 
 const TABLE = new URL('../apps/game/src/soundkit/level-gains.generated.ts', import.meta.url);
 const db = (x: Float32Array, dB: number) => { const g = Math.pow(10, dB / 20); return Float32Array.from(x, (v) => v * g); };
@@ -68,19 +68,20 @@ describe('the 43-biome derivation and loops', () => {
 });
 
 // ---- the owner, through a fake port and virtual timers ----
-function harness(options: { phone?: boolean; seed?: number } = {}) {
-  let now = 0; const tasks: { at: number; fn: () => void; id: number }[] = []; let nextId = 0;
+function harness(options: { phone?: boolean; seed?: number; probe?: boolean; stepMs?: number } = {}) {
+  let now = 0, admit = true, probes = 0; const tasks: { at: number; fn: () => void; id: number }[] = []; let nextId = 0;
   const schedule = (fn: () => void, ms: number) => { const t = { at: now + ms, fn, id: nextId++ }; tasks.push(t); return () => { const i = tasks.indexOf(t); if (i >= 0) tasks.splice(i, 1); }; };
   const advance = (ms: number) => { const end = now + ms; for (;;) { tasks.sort((a, b) => a.at - b.at || a.id - b.id); const t = tasks[0]; if (!t || t.at > end) break; tasks.shift(); now = Math.max(now, t.at); t.fn(); } now = end; };
   const started: { id: string; key: string; category: string; loop: boolean; bounded: boolean }[] = [], stopped: string[] = []; let hiddenPort = false, n = 0;
   const ctx = { currentTime: 0, createBuffer: (c: number, len: number) => ({ copyToChannel() {}, c, len }), createGain: () => ({ gain: { setValueAtTime() {} }, connect() {}, disconnect() {} }),
     createBufferSource: () => ({ buffer: null, loop: false, connect() {}, start() {}, stop() {}, disconnect() {}, onended: null }) };
-  const port = { playVoice: (r: AudioVoiceRequest) => { if (hiddenPort) return { kind: 'rejected' as const, reason: 'not-running' as const };
+  const port = { ...(options.probe ? { mayPlay: () => { probes++; return admit && !hiddenPort; } } : {}),
+    playVoice: (r: AudioVoiceRequest) => { if (hiddenPort || (options.probe && !admit)) return { kind: 'rejected' as const, reason: 'not-running' as const };
       const g = r.create(ctx as never, { voiceId: 'x' } as never); const id = `v${n++}`; started.push({ id, key: r.key, category: r.category, loop: (g.source as { loop?: boolean }).loop === true, bounded: r.maxDurationMs !== undefined }); return { kind: 'started' as const, voiceId: id }; },
     stopVoice: (id: string) => { stopped.push(id); return true; } };
-  const s = createSoundscapeV1({ port, schedule, nowMs: () => now, presentationSeed: options.seed ?? 42, ...(options.phone ? { phone: true } : {}) });
+  const s = createSoundscapeV1({ port, schedule, nowMs: () => (now += options.stepMs ?? 0), presentationSeed: options.seed ?? 42, ...(options.phone ? { phone: true } : {}) });
   const live = () => started.filter((v) => !stopped.includes(v.id));
-  return { s, advance, started, stopped, live, setPortHidden: (h: boolean) => { hiddenPort = h; }, now: () => now };
+  return { s, advance, started, stopped, live, setPortHidden: (h: boolean) => { hiddenPort = h; }, setAdmit: (a: boolean) => { admit = a; }, probes: () => probes, now: () => now };
 }
 
 describe('the soundscape owner', () => {
@@ -123,4 +124,33 @@ describe('the soundscape owner', () => {
     for (const b of ['temperate', 'jungle', 'coral', 'glacier', 'dunesea', 'magmasea', 'geode', 'fungal', 'ammonia', 'abyssal'] as const) { h.s.setAmbience({ biome: b }); h.advance(10); expect(h.s.status().residentBytes).toBeLessThanOrEqual(DECODED_CEILING_BYTES); }
     for (const st of ['menu', 'wonder', 'tension', 'battle'] as const) { h.s.setMusicState(st); h.advance(10); expect(h.s.status().residentBytes).toBeLessThanOrEqual(DECODED_CEILING_BYTES); }
   }, 600_000);
+  it('ADMISSION (C105): nothing is rendered or retained while audio is not admitted; admission starts the bed and the battle loop within one retry (control: a port without the probe renders and retains)', () => {
+    const h = harness({ probe: true }); h.setAdmit(false); h.s.setAmbience({ biome: 'stormsea' }); h.s.setMusicState('battle'); h.advance(60_000);
+    expect(h.started).toEqual([]); expect(h.s.status().residentBytes).toBe(0); expect(h.s.status().pendingRenders).toBe(0);
+    expect(h.probes()).toBeGreaterThan(10); /* the probe keeps retrying cheaply */
+    h.setAdmit(true); h.advance(RETRY_MS + 10);
+    expect(h.live().map((v) => v.key).sort()).toEqual(['soundscape:ambience:bed:coast', 'soundscape:ambience:weather:storm', 'soundscape:music:battle-theme']);
+    expect(h.s.status().residentBytes).toBeGreaterThan(0);
+    /* control: the same refusal without the probe still synthesizes and retains the decoded PCM (the C105 heap finding) */
+    const c = harness(); c.setPortHidden(true); c.s.setAmbience({ biome: 'stormsea' }); c.s.setMusicState('battle'); c.advance(60_000);
+    expect(c.started).toEqual([]); expect(c.s.status().residentBytes).toBeGreaterThan(6_000_000);
+  }, 300_000);
+  it('ADMISSION LOST MID-RENDER cancels the queued synthesis and releases every buffer; re-admission resumes (control: an admitted render completes and plays)', () => {
+    const h = harness({ probe: true, stepMs: 1 }); h.s.setAmbience({ biome: 'temperate' }); h.s.setMusicState('battle');
+    h.advance(0); expect(h.s.status().pendingRenders).toBeGreaterThan(0); expect(h.started.some((v) => v.category === 'music'), 'the battle loop is still rendering').toBe(false);
+    h.setAdmit(false); h.advance(100);
+    expect(h.s.status().pendingRenders).toBe(0); expect(h.s.status().residentBytes).toBe(0); expect(h.s.status().log.some((l) => l.startsWith('cancelled '))).toBe(true);
+    const n = h.started.length; h.advance(30_000); expect(h.started.length).toBe(n); expect(h.s.status().residentBytes).toBe(0);
+    h.setAdmit(true); h.advance(RETRY_MS + 60_000);
+    expect(h.live().map((v) => v.key).sort()).toEqual(['soundscape:ambience:bed:temperate', 'soundscape:music:battle-theme']);
+    const c = harness({ probe: true, stepMs: 1 }); c.s.setAmbience({ biome: 'temperate' }); c.advance(60_000);
+    expect(c.live().map((v) => v.key)).toEqual(['soundscape:ambience:bed:temperate']);
+  }, 300_000);
+  it('a hidden tab releases every decoded buffer (live voices hold their own copies); visibility re-renders and restarts', () => {
+    const h = harness({ probe: true }); h.s.setAmbience({ biome: 'temperate' }); h.s.setMusicState('battle'); h.advance(10);
+    expect(h.s.status().residentBytes).toBeGreaterThan(0);
+    h.s.setHidden(true); h.setPortHidden(true); expect(h.s.status().residentBytes).toBe(0); expect(h.s.status().pendingRenders).toBe(0);
+    h.setPortHidden(false); h.s.setHidden(false); h.advance(10);
+    expect(h.live().map((v) => v.key).sort()).toEqual(['soundscape:ambience:bed:temperate', 'soundscape:music:battle-theme']);
+  }, 300_000);
 });

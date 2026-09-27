@@ -2063,6 +2063,23 @@ describe('decorative voice port (batch 2: the battle2 study through the accessib
     expect(muted.owner.decorativeVoicePort().playVoice(decorativeRequest())).toMatchObject({ kind: 'rejected', reason: 'muted' });
     await h.owner.dispose(); expect(port.playVoice(decorativeRequest())).toMatchObject({ kind: 'rejected', reason: 'not-running' });
   });
+  it('C105: mayPlay() agrees with playVoice in every owner state (cold, admitted, hidden, not answerable, muted, disposed), so the soundscape can skip rendering what would be refused', async () => {
+    let k = 0; const fresh = () => { const id = `probe-${k++}`; return { ...decorativeRequest(), key: id, cooldownGroup: id, concurrencyGroup: id }; };
+    const agree = (port: { mayPlay(): boolean; playVoice(r: never): { kind: string } }, label: string, want: boolean) => {
+      const may = port.mayPlay(), r = port.playVoice(fresh() as never); expect(may, label).toBe(want); expect(r.kind === 'started', `${label}: playVoice agrees`).toBe(want); };
+    const h = harness(); const port = h.owner.decorativeVoicePort();
+    agree(port, 'cold (no gesture: the runtime is not running)', false);
+    expect(h.owner.armNativeCombatGesture()).toBe(true); await Promise.resolve(); await Promise.resolve();
+    agree(port, 'admitted', true);
+    h.owner.setHidden(true); agree(port, 'hidden', false); h.owner.setHidden(false);
+    h.owner.setAnswerable(false); agree(port, 'not answerable', false); h.owner.setAnswerable(true);
+    for (let i = 0; i < 6; i++) await Promise.resolve();
+    agree(port, 'visible again but the context is blocked until a new gesture', false);
+    expect(h.owner.armNativeCombatGesture()).toBe(true); for (let i = 0; i < 6; i++) await Promise.resolve();
+    agree(port, 'admitted again after the gesture', true);
+    const muted = harness({ soundOn: false }); agree(muted.owner.decorativeVoicePort(), 'muted', false);
+    await h.owner.dispose(); agree(port, 'disposed', false);
+  });
   it('D15 Stage 3: the port stops a voice IT started (the soundscape\'s looping bed); control: an id it did not start — another port\'s, or unknown — is refused and the voice keeps playing', async () => {
     const h = harness(); expect(h.owner.armNativeCombatGesture()).toBe(true); await Promise.resolve(); await Promise.resolve();
     const port = h.owner.decorativeVoicePort(), other = h.owner.decorativeVoicePort();
