@@ -163,7 +163,11 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **Regression + held-out:** all six fits PASS_STATIC. Cod 4,550 / Perch 14 / Carp 109 / Arctic Fox 7,554 px filled, as before.
 - **Herring (4,450 px) and Trout (725 px) are NEW:** the polygon route had to refuse both. Both are native DIAGNOSTIC_PASS.
 - **Herring is the genuinely gapped held-out fish Codex asked for:** Salmon-referenced, and never in Codex's set.
-- Full-size (`TAIL_LABELS_CHECK_20260926/fish-labels-zoom.jpg`): all three tails are full, but unwelded body seams remain (vertical cracks; the Cod's hole behind the fin). The greedy selective weld is being run on the labelled Herring and Trout (`weld-g2fam-fish/greedy-labels.sh`). Codex's `cod-gill-two` / `perch-gill-two` already close the Cod and Perch holes.
+- Full-size (`TAIL_LABELS_CHECK_20260926/fish-labels-zoom.jpg`): all three tails are full, but unwelded body seams remain (vertical cracks; the Cod's hole behind the fin). - **Greedy selective weld on the labelled fits** (`weld-g2fam-fish/greedy-labels.sh`, the unchanged C48 recipe):
+  - Final pairs: Herring `body↔spine1–4`; Trout `body↔spine1–4 + head↔spine0`. Both PASS_STATIC and native DIAGNOSTIC_PASS.
+  - Full-size (`TAIL_LABELS_CHECK_20260926/fish-welded-zoom.jpg`): **the approach frames are clean** (the cracks close, tails full). **But in the hit reaction the welded backs go lumpy, and the Trout's dorsal fin floats off its back.** This is the same weld-induced silhouette deformation as the earlier Salmon-referenced Herring/Trout welds.
+  - Not acceptable. The body-seam repair for the Salmon-referenced fish stays with Codex.
+  - Codex's `cod-gill-two` / `perch-gill-two` (two observed gill welds on the tail labels) close the Cod and Perch holes.
 
 **G2 C56 + C57 batches (Codex `126d8765`: 32 new paintings + 7 pattern re-paints), scored with v10 (session 4, continued)** (`auto-g2c56-v10/`, `auto-g2c57-v10/`, `native-g2c56/`):
 - **Pattern gate honoured before scoring** (`pilots/*-pattern-eligible.json`). Six paintings were skipped because Codex's `pattern-check.json` REFUSES them: both Jaguars, the C56 Clouded Leopard, Water Snake, Mountain Viper and Ladybug. 33 were scored.
