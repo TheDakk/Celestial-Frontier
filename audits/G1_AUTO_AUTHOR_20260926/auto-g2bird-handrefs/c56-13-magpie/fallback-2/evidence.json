@@ -1,0 +1,318 @@
+{
+ "verdict": "ADMIT",
+ "reasons": [],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": true,
+ "grown": null,
+ "chains": [
+  {
+   "chain": "legFar",
+   "refined": true,
+   "snap": {
+    "terminal": 0,
+    "end": 0
+   }
+  },
+  {
+   "chain": "legNear",
+   "refined": true,
+   "snap": {
+    "terminal": 0,
+    "end": 0
+   }
+  }
+ ],
+ "nudged": [],
+ "clamped": [
+  {
+   "id": "beak",
+   "vertices": 1
+  },
+  {
+   "id": "tail",
+   "vertices": 1
+  }
+ ],
+ "untangled": [],
+ "separation": null,
+ "inventory": {
+  "reasons": [],
+  "assign": [
+   {
+    "owners": [
+     "head"
+    ],
+    "names": [
+     "head"
+    ],
+    "refFrac": 0.0481,
+    "target": 0,
+    "overlap": 0.501
+   },
+   {
+    "owners": [
+     "near-wing-flight",
+     "tail"
+    ],
+    "names": [
+     "wing",
+     "tail"
+    ],
+    "refFrac": 0.1337,
+    "target": 1,
+    "overlap": 0.528
+   },
+   {
+    "owners": [
+     "far-thigh",
+     "far-foot"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.0858,
+    "target": 3,
+    "overlap": 0.342
+   },
+   {
+    "owners": [
+     "near-thigh",
+     "near-foot"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.0627,
+    "target": 2,
+    "overlap": 0.401
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0648,
+     "class": "top",
+     "attach": {
+      "x": 357.4,
+      "y": 122.4,
+      "relX": 0.86,
+      "relY": 0.08
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2856,
+     "class": "rear",
+     "attach": {
+      "x": 167.9,
+      "y": 227.9,
+      "relX": 0.4,
+      "relY": 0.71
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.041,
+     "class": "limb-down",
+     "attach": {
+      "x": 257.3,
+      "y": 253.7,
+      "relX": 0.62,
+      "relY": 0.86
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0497,
+     "class": "limb-down",
+     "attach": {
+      "x": 302.5,
+      "y": 255,
+      "relX": 0.73,
+      "relY": 0.87
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "04-hawk-v2",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0333,
+  "ref": 0.0375
+ },
+ "bestReference": "04-hawk-v2",
+ "refRank": 2,
+ "costs": [
+  {
+   "ref": "01-robin",
+   "cost": 0.00534
+  },
+  {
+   "ref": "02-pigeon",
+   "cost": 0.00799
+  },
+  {
+   "ref": "04-hawk-v2",
+   "cost": 0.00801
+  },
+  {
+   "ref": "gull",
+   "cost": 0.01945
+  },
+  {
+   "ref": "03-duck-v2",
+   "cost": 0.02207
+  },
+  {
+   "ref": "eagle",
+   "cost": 0.03164
+  },
+  {
+   "ref": "grouse",
+   "cost": 0.03365
+  },
+  {
+   "ref": "sparrow",
+   "cost": 0.04355
+  },
+  {
+   "ref": "heron",
+   "cost": 0.04952
+  },
+  {
+   "ref": "goose",
+   "cost": 0.05122
+  },
+  {
+   "ref": "sandpiper",
+   "cost": 0.06752
+  }
+ ],
+ "mirrorBest": 0.02372,
+ "otherFamilyBest": {
+  "family": "quadruped",
+  "cost": 0.01801
+ },
+ "coverage": [
+  {
+   "id": "near-foot",
+   "joint": "legNearFoot",
+   "paint": 0.3424657534246575,
+   "area": 11712.314999999995
+  },
+  {
+   "id": "far-foot",
+   "joint": "legFarFoot",
+   "paint": 0.2976827094474153,
+   "area": 17947.33000000002
+  },
+  {
+   "id": "near-shin",
+   "joint": "legNearAnkle",
+   "paint": 0.48582995951417,
+   "area": 3944.5300000000043
+  },
+  {
+   "id": "far-shin",
+   "joint": "legFarAnkle",
+   "paint": 0.6979166666666666,
+   "area": 1537.9150000000027
+  },
+  {
+   "id": "near-thigh",
+   "joint": "legNearKnee",
+   "paint": 0.5626168224299065,
+   "area": 8585.079999999994
+  },
+  {
+   "id": "far-thigh",
+   "joint": "legFarKnee",
+   "paint": 0.6264478764478765,
+   "area": 16488.539999999994
+  },
+  {
+   "id": "beak",
+   "joint": "beak",
+   "paint": 0.5722222222222222,
+   "area": 5792.129999999997
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.6480541455160744,
+   "area": 28369.235000000008
+  },
+  {
+   "id": "neck-upper",
+   "joint": "neck1",
+   "paint": 0.9954058192955589,
+   "area": 10612.545000000006
+  },
+  {
+   "id": "neck-lower",
+   "joint": "neck0",
+   "paint": 0.9534671532846716,
+   "area": 17465.214999999997
+  },
+  {
+   "id": "far-wing-root",
+   "joint": "wingFarRoot",
+   "paint": 0.9845261121856866,
+   "area": 8232.179999999993
+  },
+  {
+   "id": "far-wing-flight",
+   "joint": "wingFarTip",
+   "paint": 0.9302631578947368,
+   "area": 12199.970000000001
+  },
+  {
+   "id": "near-wing-root",
+   "joint": "wingNearRoot",
+   "paint": 1,
+   "area": 21977.459999999995
+  },
+  {
+   "id": "near-wing-flight",
+   "joint": "wingNearTip",
+   "paint": 0.9198301698301699,
+   "area": 64126.94999999999
+  },
+  {
+   "id": "tail",
+   "joint": "tailFan",
+   "paint": 0.6747137879542061,
+   "area": 64384.99499999997
+  },
+  {
+   "id": "chest",
+   "joint": "chest",
+   "paint": 0.7903055848261328,
+   "area": 15177.944999999992
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0,
+   "area": 0.5
+  }
+ ],
+ "unclaimedFrac": 0.0592
+}

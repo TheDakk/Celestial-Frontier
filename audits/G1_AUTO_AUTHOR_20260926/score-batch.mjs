@@ -15,7 +15,7 @@ for (const p of pilot) { let st = 'MISSING'; for (const n of ['pattern-check.jso
   (st === 'PASS' || st === 'NOT_REQUIRED' ? eligible : skipped).push(st === 'PASS' || st === 'NOT_REQUIRED' ? p : { id: p.id, pattern: st }); }
 const pilotOut = path.join(HERE, 'pilots', `${tag}-eligible.json`); fs.writeFileSync(pilotOut, JSON.stringify(eligible, null, 1) + '\n');
 /* 2. author + intake + static (standard flags; the serpent strip and shared-joint merge apply only where they belong) */
-const auth = run(process.execPath, [path.join(HERE, 'run-auto.mjs'), `--tag=${tag}`, '--topk=1', '--chains', '--counter', '--fallback=2', '--serpent-strips', '--merge-joint-labels', `--targets=${rel(pilotOut)}`], { timeout: 6 * 3600e3 });
+const auth = run(process.execPath, [path.join(HERE, 'run-auto.mjs'), `--tag=${tag}`, '--topk=1', '--chains', '--counter', '--fallback=2', '--serpent-strips', '--merge-joint-labels', '--extra-refs=audits/G1_AUTO_AUTHOR_20260926/pilots/reference-pool-extras.json', `--targets=${rel(pilotOut)}`], { timeout: 6 * 3600e3 });
 const rows = eligible.map((p) => { const f = path.join(HERE, `auto-${tag}`, p.id, 'score.json'); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : { id: p.id, verdict: 'NO_SCORE' }; });
 /* 3. native on every ADMIT + PASS_STATIC, sequentially (one browser at a time) */
 const N = path.join(HERE, `native-${tag}`); fs.mkdirSync(N, { recursive: true });
@@ -26,7 +26,9 @@ if (!flags.includes('--no-native')) for (const r of passes) { const p = eligible
   const base = JSON.parse(fs.readFileSync(path.join(ROOT, 'audits/ART_BATTLE_FOCUS_20260925', r.family === 'biped-bird' ? '15-goose' : '05-cougar', 'battle-script.json'), 'utf8'));
   for (const row of base.rows) { if ('an' in row) row.an = name; if ('dn' in row) row.dn = name; }
   const script = path.join(N, `${r.id}-script.json`); fs.writeFileSync(script, JSON.stringify(base, null, 1) + '\n');
-  const A = path.join(HERE, `auto-${tag}`, r.id), fit = ['merge-joint', 'tail-labels'].map((d) => path.join(A, d, 'fit')).find((f) => fs.existsSync(path.join(f, 'binding.json'))) ?? path.join(A, 'fit');
+  /* the passing packet may be a labelled fallback candidate: native must use THAT candidate's fit (bug found on the hand-ref Beetle) */
+  const win = r.fallbackFrom ? (r.candidates ?? []).find((c) => c.static === 'PASS_STATIC') : null;
+  const A = win && win.rank > 0 ? path.join(HERE, `auto-${tag}`, r.id, `fallback-${win.rank}`) : path.join(HERE, `auto-${tag}`, r.id), fit = ['merge-joint', 'tail-labels'].map((d) => path.join(A, d, 'fit')).find((f) => fs.existsSync(path.join(f, 'binding.json'))) ?? path.join(A, 'fit');
   const nr = run(process.execPath, ['tools/battle2-proof/native-runner.mjs', fit, fit, path.join(N, r.id), script], { cwd: path.join(ROOT, 'port/v2'), env: { ...process.env, CF_CPU_THROTTLE: '4' }, timeout: 1800e3 });
   fs.writeFileSync(path.join(N, `${r.id}.log`), nr.out); let status = 'NO_REPORT'; try { status = JSON.parse(fs.readFileSync(path.join(N, r.id, 'report.json'), 'utf8')).status; } catch {}
   natives.push({ id: r.id, name, family: r.family, exit: nr.code, status }); }

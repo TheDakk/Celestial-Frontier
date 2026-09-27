@@ -1,8 +1,8 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 37,
- "pct": 5.9,
+ "covered": 42,
+ "pct": 6.7,
  "unmatchedRegistryNames": [],
  "families": [
   {
@@ -24,14 +24,14 @@
     "Arctic Fox",
     "Fennec Fox",
     "Dingo",
+    "Mongoose",
     "Raccoon",
     "Weasel",
     "Mink",
     "Marten",
     "Fisher",
     "Marmot",
-    "Cattle",
-    "Donkey"
+    "Cattle"
    ]
   },
   {
@@ -50,19 +50,25 @@
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 2,
-   "pct": 2,
+   "covered": 6,
+   "pct": 5.9,
    "names": [
+    "Goose",
+    "Quail",
     "Vulture",
-    "Raven"
+    "Raven",
+    "Robin",
+    "Starling"
    ]
   },
   {
    "family": "insect",
    "species": 41,
-   "covered": 0,
-   "pct": 0,
-   "names": []
+   "covered": 1,
+   "pct": 2.4,
+   "names": [
+    "Beetle"
+   ]
   },
   {
    "family": "serpent",

@@ -1,0 +1,103 @@
+{
+  "name": "Wolverine",
+  "family": "quadruped",
+  "species": {
+    "name": "Wolverine",
+    "aspect": 2.2,
+    "headFrac": 0.24,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "heavy bear-like build with humped shoulders",
+      "pale stripe sweeping along each flank to the tail",
+      "bushy tail and huge clawed paws"
+    ],
+    "note": "It is a giant mustelid, not a small bear: body still long and low, legs short and stout."
+  },
+  "genome": {
+    "seed": 4203184528,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 3,
+    "body": 3,
+    "loco": 9,
+    "trait": 2,
+    "size": 0,
+    "diet": 0,
+    "head": 2,
+    "limbs": 4,
+    "skin": 2,
+    "tail": 4,
+    "pattern": 2,
+    "eyes": 1,
+    "behavior": 6,
+    "habitat": 10,
+    "detail": 6,
+    "accent": 6,
+    "temper": 6,
+    "sense": 5,
+    "repro": 5,
+    "life": 5,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Wolverine"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wolverine\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"4203184528\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"2\"]]]]",
+  "index": 152,
+  "profile": {
+    "id": "small-clawed-mammal",
+    "names": [
+      "Kinkajou",
+      "Coati",
+      "Civet",
+      "Mongoose",
+      "Meerkat",
+      "Red Panda",
+      "Raccoon",
+      "Badger",
+      "Weasel",
+      "Stoat",
+      "Mink",
+      "Marten",
+      "Fisher",
+      "Wolverine",
+      "Possum",
+      "Porcupine",
+      "Squirrel",
+      "Chipmunk",
+      "Mouse",
+      "Vole",
+      "Mole",
+      "Shrew",
+      "Hedgehog",
+      "Lemming",
+      "Marmot",
+      "Prairie Dog",
+      "Ground Squirrel",
+      "Gopher",
+      "Hamster",
+      "Gerbil",
+      "Hyrax",
+      "Agouti",
+      "Guinea Pig",
+      "Rat",
+      "Tree Shrew",
+      "Wombat",
+      "Tasmanian Devil",
+      "Quoll"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

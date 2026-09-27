@@ -1,0 +1,125 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c54-10-serval",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "f5b2a598e72772ab696c94f5a41bb0b19d74f0e2ac1780649f24588cefc381ed",
+ "subjectSourceSha256": "95c18144eec22f1c7639223716c5fbcf62bf85abe116f37d4646e97fc689db78",
+ "identity": {
+  "name": "Serval",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Serval\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2340052459\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 2340052459,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wild-horse",
+  "authoringSha256": "3fe23c7c93b2c88c5bdc0e04213468c64b26517662d8865102e802f58c9a4301",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+ },
+ "habitat": {
+  "profileId": "felid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "74c48486113be3ee431e8a73d1f96d202de2a5c22bc39d2661f21510abbb4a65",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group felid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1139,
+     "class": "top",
+     "attach": {
+      "x": 355.2,
+      "y": 122.6,
+      "relX": 0.86,
+      "relY": 0.35
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0561,
+     "class": "limb-down",
+     "attach": {
+      "x": 62.2,
+      "y": 202.5,
+      "relX": 0.13,
+      "relY": 0.71
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0629,
+     "class": "limb-down",
+     "attach": {
+      "x": 91.8,
+      "y": 238.8,
+      "relX": 0.2,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0527,
+     "class": "limb-down",
+     "attach": {
+      "x": 264,
+      "y": 243.5,
+      "relX": 0.63,
+      "relY": 0.89
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0604,
+     "class": "limb-down",
+     "attach": {
+      "x": 304,
+      "y": 245,
+      "relX": 0.73,
+      "relY": 0.9
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0612,
+     "class": "limb-down",
+     "attach": {
+      "x": 140.5,
+      "y": 248,
+      "relX": 0.32,
+      "relY": 0.91
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

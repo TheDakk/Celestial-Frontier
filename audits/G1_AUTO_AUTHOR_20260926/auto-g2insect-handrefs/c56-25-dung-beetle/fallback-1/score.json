@@ -1,0 +1,9 @@
+{
+ "id": "c56-25-dung-beetle",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 10.5% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

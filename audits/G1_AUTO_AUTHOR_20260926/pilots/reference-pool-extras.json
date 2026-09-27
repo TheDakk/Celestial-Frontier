@@ -1,0 +1,22 @@
+[
+ {
+  "id": "05-cat-v2",
+  "family": "quadruped",
+  "packet": "audits/G2_REFERENCES_C62_20260927/05-cat-v2"
+ },
+ {
+  "id": "07-weasel",
+  "family": "quadruped",
+  "packet": "audits/G2_REFERENCES_C62_20260927/07-weasel"
+ },
+ {
+  "id": "08-ant",
+  "family": "insect",
+  "packet": "audits/G2_REFERENCES_C62_20260927/08-ant"
+ },
+ {
+  "id": "09-cricket",
+  "family": "insect",
+  "packet": "audits/G2_REFERENCES_C62_20260927/09-cricket"
+ }
+]

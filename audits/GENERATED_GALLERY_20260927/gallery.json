@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 38,
+ "total": 45,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -130,17 +130,10 @@
   },
   {
    "family": "Quadrupeds",
-   "name": "Donkey",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/15-donkey",
-   "report": "DIAGNOSTIC_PASS",
-   "note": "clean"
-  },
-  {
-   "family": "Quadrupeds",
    "name": "Weasel",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c54/12-weasel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/12-weasel",
    "report": "DIAGNOSTIC_PASS",
-   "note": "clean"
+   "note": "clean (re-run on the correct fallback fit)"
   },
   {
    "family": "Quadrupeds",
@@ -162,6 +155,27 @@
    "nativeDir": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native",
    "report": "DIAGNOSTIC_PASS",
    "note": "thin pale chest strand"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Mongoose",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/q20-08-mongoose",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Caracal (C56)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c56-02-caracal",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Ocelot (pattern re-paint)",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c57-04-ocelot",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "spotted; clean"
   },
   {
    "family": "Snakes (serpent strip author)",
@@ -241,6 +255,34 @@
    "note": "feather shard above wing in reaction"
   },
   {
+   "family": "Birds",
+   "name": "Goose",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/14-goose",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Quail",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/15-quail",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Robin",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/c56-11-robin",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Starling",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c59-07-starling",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -267,6 +309,13 @@
    "nativeDir": "audits/TAIL_LABELS_CHECK_20260926/native-06-trout-welded",
    "report": "DIAGNOSTIC_PASS",
    "note": "lumpy back; dorsal floats in reaction"
+  },
+  {
+   "family": "Insects",
+   "name": "Beetle",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/c54-23-beetle",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "first insect; legs slightly smeared"
   }
  ]
 }

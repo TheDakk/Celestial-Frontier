@@ -28,7 +28,7 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
 - **Dev site:** serves `e71d1496`; no player-visible change since.
 - **develop** is still `c1791e21`; PR #43 is open; no hosted attempt.
 - **Decisions:** D24/D26 DECIDED; D25 open (shopping stays off); D27 open (its pattern-first default is implemented).
-- **Progress** (`audits/GENERATED_GALLERY_20260927/coverage.json`, regenerate with `coverage.mjs` after each batch): **37 of 631 Earth species (5.9 %)** have a generated creature passing native with zero hand edits: quadrupeds 21/205, snakes 9/22, fish 5/132, birds 2/102, insects 0/41, every other family 0. None is visually accepted or admitted. Master gallery: `gallery.jpg`.
+- **Progress** (`audits/GENERATED_GALLERY_20260927/coverage.json`, regenerate with `coverage.mjs` after each batch): **42 of 631 Earth species (6.7 %)** have a generated creature passing native with zero hand edits: quadrupeds 21/205, snakes 9/22, birds 6/102, fish 5/132, **insects 1/41 (Beetle)**; every other family 0. None is visually accepted or admitted. Master gallery: `gallery.jpg` (45 tiles). The reference pool now includes Codex's hand Cat/Weasel/Ant/Cricket (`pilots/reference-pool-extras.json`; `score-batch.mjs` uses it).
 
 **Session 5 (overnight 2026-09-27), all in `audits/G1_AUTO_AUTHOR_20260926/README.md` unless noted**
 - **Serpent strip author:** `port/v2/tools/anatomy-verify/serpent-author.mjs`, runner `--serpent-strips` (USE IT for every serpent batch). **Snakes 0 → 9** static + native, clean at full size. Battery `serpent/battery.mjs`: 59/60 mutants, 9/9 wrong family.
