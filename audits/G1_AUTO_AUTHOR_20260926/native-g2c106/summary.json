@@ -1,0 +1,165 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C106_20260927",
+ "tag": "g2c106",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-shark",
+  "02-great-white-shark",
+  "03-tiger-shark",
+  "04-mako-shark",
+  "05-whale-shark",
+  "06-basking-shark",
+  "07-reef-shark",
+  "08-hammerhead-shark",
+  "09-flounder",
+  "10-halibut",
+  "13-rhea",
+  "20-seabird",
+  "22-fox"
+ ],
+ "refused": [
+  {
+   "id": "11-knifefish",
+   "reason": "extra-anatomy (unassigned): a front appendage of 7.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "12-flying-gurnard",
+   "reason": "missing-anatomy: part jaw (jaw) covers 3% paint (reference 56%)"
+  },
+  {
+   "id": "14-emu",
+   "reason": "unexplained-anatomy: 7.9% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "15-cassowary",
+   "reason": "unexplained-anatomy: 8.4% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "16-kiwi",
+   "reason": "facing: the mirrored painting matches biped-bird better (0.0147 < 0.0218)"
+  },
+  {
+   "id": "19-quetzal",
+   "reason": "unexplained-anatomy: 15.6% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "23-porcupine",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.7% paint that no reference appendage lands on"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "17-kakapo",
+   "static": "RED"
+  },
+  {
+   "id": "18-hoatzin",
+   "static": "RED"
+  },
+  {
+   "id": "21-wolf",
+   "static": "RED"
+  },
+  {
+   "id": "24-lemming",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "01-shark",
+   "name": "Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "02-great-white-shark",
+   "name": "Great White Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "03-tiger-shark",
+   "name": "Tiger Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "04-mako-shark",
+   "name": "Mako Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "05-whale-shark",
+   "name": "Whale Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "06-basking-shark",
+   "name": "Basking Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "07-reef-shark",
+   "name": "Reef Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "08-hammerhead-shark",
+   "name": "Hammerhead Shark",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "09-flounder",
+   "name": "Flounder",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "10-halibut",
+   "name": "Halibut",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "13-rhea",
+   "name": "Rhea",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "20-seabird",
+   "name": "Seabird",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "22-fox",
+   "name": "Fox",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

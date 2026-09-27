@@ -1,0 +1,238 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c106/20-seabird/fit",
+  "sourceMasterSha256": "5753b0e68473c1f86bdc6987fce788a89bb62c2cbe79384d4e9d3e2c94f8d9a3",
+  "keyedRgbaSha256": "ec798bb2abacb5933831060f2ba587aecedd961e9a904bbd27dfa50e1c9ca21d",
+  "remainder": "body",
+  "remainderPixels": 29202,
+  "movedPixels": 856,
+  "islands": [
+    {
+      "pixels": 4,
+      "to": "beak",
+      "border": {
+        "beak": 3,
+        "head": 3
+      }
+    },
+    {
+      "pixels": 261,
+      "to": "far-wing-root",
+      "border": {
+        "neck-upper": 10,
+        "neck-lower": 23,
+        "far-wing-root": 31
+      }
+    },
+    {
+      "pixels": 161,
+      "to": "neck-lower",
+      "border": {
+        "neck-lower": 43,
+        "far-wing-root": 14,
+        "near-wing-root": 43
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "neck-lower",
+      "border": {
+        "neck-upper": 4,
+        "neck-lower": 9
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "neck-lower",
+      "border": {
+        "neck-lower": 2,
+        "near-wing-root": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 2
+      }
+    },
+    {
+      "pixels": 197,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 61
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 4,
+        "tail": 4
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 2,
+        "tail": 2
+      }
+    },
+    {
+      "pixels": 15,
+      "to": "tail",
+      "border": {
+        "tail": 7
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail",
+      "border": {
+        "tail": 1
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "tail",
+      "border": {
+        "tail": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "tail",
+      "border": {
+        "tail": 3
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "tail",
+      "border": {
+        "tail": 3
+      }
+    },
+    {
+      "pixels": 51,
+      "to": "tail",
+      "border": {
+        "tail": 36
+      }
+    },
+    {
+      "pixels": 24,
+      "to": "far-thigh",
+      "border": {
+        "far-shin": 6,
+        "far-thigh": 11
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-shin",
+      "border": {
+        "near-foot": 1,
+        "near-shin": 2
+      }
+    },
+    {
+      "pixels": 23,
+      "to": "far-shin",
+      "border": {
+        "far-foot": 4,
+        "far-shin": 15
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 2
+      }
+    },
+    {
+      "pixels": 48,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 20
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 3
+      }
+    },
+    {
+      "pixels": 25,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 11
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "20-seabird",
+    "parts": 17,
+    "atlasSize": {
+      "width": 1570,
+      "height": 417
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 28,
+        "distancePx": 5.500000000000017,
+        "supports": [
+          40,
+          42
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 20,
+        "distancePx": 0.4000000000000392,
+        "supports": [
+          2,
+          3
+        ]
+      }
+    ],
+    "sourceBindingHash": "cb1d80bd7d454f6c11fac34fc76fe6162a2ff5d887c9f6bb6fdf6b665457bda1",
+    "sourceVertices": 921,
+    "vertices": 1149,
+    "sharedSupports": 266,
+    "pins": 582,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 14,
+    "excludedOverlaps": 10,
+    "observedExcludedBoundaries": 10,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 10,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

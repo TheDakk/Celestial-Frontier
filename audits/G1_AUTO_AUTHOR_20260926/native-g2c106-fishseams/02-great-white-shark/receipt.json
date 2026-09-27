@@ -1,0 +1,234 @@
+{
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c106/02-great-white-shark/fit",
+  "sourceRecordSha256": "98a6ed8f6d733fa4759804a3ef2f2235425029c293ac5a3c925d29c2797aad1d",
+  "sourceLabelsSha256": "7fc3ff38bdc51e4f26d7843c4f3108d61a837fb32243413eccbe24f3b06db421",
+  "newLabelsSha256": "eb78008572dd4f6e8f44be1072af2b299dd39b901163971ccf75ca49dcd87c5b",
+  "newDecodedLabelsSha256": "00a1331c03d624774e6dba8d585830425e53fdf859f9513697affacb8bb7b47c",
+  "sourceMasterSha256": "a88ed058aebc70fc143a1fb70884cb87537a28f75a5a757433b4924528b664fb",
+  "helperSha256": "a73140ee3f90e5a26b4f23acb6dcd7b0b973020105b2b5fc83340113609315ad",
+  "firstAxisHelperSha256": "fabef6f0d2d583abdbddd3d29792369aa61ffc0c739196992d0a8b8094e52d11",
+  "tailIdentity": {
+    "tail": "caudal",
+    "stalk": "tail-peduncle",
+    "tailOwner": 6,
+    "stalkOwner": 8,
+    "sharedEdges": 100
+  },
+  "tailIdentityHelperSha256": "27b63227ed5f3fdb8079f74b54ccefc0335432f8b1c12bf483a07eec3ef0b529",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "mode": "tail-axial",
+    "moved": 12748,
+    "phases": [
+      {
+        "phase": "tail",
+        "schema": "cf.remainder-gap-labels/v1",
+        "tail": 6,
+        "stalk": 8,
+        "remainder": 13,
+        "maxDistance": 201,
+        "components": [
+          123,
+          14,
+          9,
+          1,
+          1
+        ],
+        "changedPixels": 2621,
+        "requestedRetained": 2621,
+        "otherOwnersChanged": 0,
+        "unowned": 0,
+        "sourceRgbaChanges": 0,
+        "contourProjection": false
+      },
+      {
+        "phase": "axial",
+        "moved": 10127,
+        "counts": {
+          "11": 525,
+          "12": 9602
+        },
+        "separateRootOwner": 7,
+        "originalRgbaChanged": false,
+        "nonRemainderChanges": 0,
+        "axis": [
+          [
+            0.6854066985645934,
+            0.48213716108452953
+          ],
+          [
+            0.5997607655502393,
+            0.48086124401913877
+          ],
+          [
+            0.519457735247209,
+            0.48086124401913877
+          ],
+          [
+            0.45454545454545453,
+            0.4871610845295056
+          ],
+          [
+            0.38460925039872407,
+            0.49194577352472085
+          ],
+          [
+            0.30406698564593304,
+            0.49457735247208934
+          ],
+          [
+            0.22208931419457736,
+            0.49290271132376395
+          ]
+        ],
+        "scope": "First-spine placement diagnostic; original root and all foreign ownership protected"
+      }
+    ],
+    "originalPartsDifferentChannels": 0,
+    "keyedRgbaSha256": "edb9818f0476c6e9c2979cd996e3bd94ad6281d2ff369344ec24643f21ed17d0",
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false
+  },
+  "intake": {
+    "id": "02-great-white-shark",
+    "parts": 13,
+    "atlasSize": {
+      "width": 2045,
+      "height": 703
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "59ee3271d52a3a092e11b4a61977a0a96da7d449b122505bef334c7f171ca3c8",
+    "sourceVertices": 1129,
+    "vertices": 1243,
+    "sharedSupports": 362,
+    "pins": 192,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 9,
+    "excludedOverlaps": 11,
+    "observedExcludedBoundaries": 11,
+    "weldedExcludedBoundaries": 6,
+    "independentExcludedBoundaries": 5,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "dorsal"
+      ],
+      [
+        "body",
+        "far-pectoral"
+      ],
+      [
+        "body",
+        "near-pectoral"
+      ],
+      [
+        "dorsal",
+        "mid-body"
+      ],
+      [
+        "front-body",
+        "near-pectoral"
+      ],
+      [
+        "mid-body",
+        "near-pectoral"
+      ]
+    ],
+    "sourceCoordinateChanges": 0,
+    "fixedCandidateRecipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar",
+    "sourceOwnerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+    "virtualOwnerSha256": "27fc9159b1b1e0924ad96a71ece5ec848df6a7746d55c79df644ecc06a090cb9"
+  },
+  "joins": [
+    {
+      "name": "body--front-body",
+      "sourceEdges": 149
+    },
+    {
+      "name": "front-body--dorsal",
+      "sourceEdges": 146
+    },
+    {
+      "name": "front-body--mid-body",
+      "sourceEdges": 232
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 286
+    },
+    {
+      "name": "mid-body--pelvic-body",
+      "sourceEdges": 193
+    },
+    {
+      "name": "pelvic-body--rear-body",
+      "sourceEdges": 98
+    },
+    {
+      "name": "rear-body--tail-peduncle",
+      "sourceEdges": 64
+    },
+    {
+      "name": "root--body",
+      "sourceEdges": 72
+    },
+    {
+      "name": "tail-peduncle--caudal",
+      "sourceEdges": 340
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body|caudal",
+      "sourceEdges": 21
+    },
+    {
+      "name": "body|dorsal",
+      "sourceEdges": 63
+    },
+    {
+      "name": "body|far-pectoral",
+      "sourceEdges": 187
+    },
+    {
+      "name": "body|head",
+      "sourceEdges": 239
+    },
+    {
+      "name": "body|near-pectoral",
+      "sourceEdges": 203
+    },
+    {
+      "name": "body|tail-peduncle",
+      "sourceEdges": 20
+    },
+    {
+      "name": "dorsal|mid-body",
+      "sourceEdges": 5
+    },
+    {
+      "name": "far-pectoral|near-pectoral",
+      "sourceEdges": 113
+    },
+    {
+      "name": "front-body|near-pectoral",
+      "sourceEdges": 330
+    },
+    {
+      "name": "mid-body|near-pectoral",
+      "sourceEdges": 50
+    },
+    {
+      "name": "pelvic-body|tail-peduncle",
+      "sourceEdges": 11
+    }
+  ]
+}

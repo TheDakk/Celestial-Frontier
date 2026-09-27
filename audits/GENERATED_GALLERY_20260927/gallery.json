@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 162,
+ "total": 175,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -302,6 +302,13 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/22-possum",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle (one faint chest scratch at full size)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Fox",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/22-fox",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (one tiny speck above the back in late idle, visible only at full size)"
   },
   {
    "family": "Snakes (serpent strip author)",
@@ -659,6 +666,20 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/20-snow-petrel",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: small feather fragment above the back and a background-coloured patch on the wing in turn3 idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Rhea",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/13-rhea",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: background-coloured patch on the wing in late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Seabird",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/20-seabird",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: small feather fragment floats above the back in late idle (same bird pattern as Snow Petrel)"
   },
   {
    "family": "Fish",
@@ -1100,6 +1121,76 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/12-ocean-sunfish/native",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole after the fish-seams batch (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/01-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams repaired fit (unrepaired fit showed seam lines)"
+  },
+  {
+   "family": "Fish",
+   "name": "Great White Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/02-great-white-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: framing REFUSE by Codex (98 vs 101); motion itself whole on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Tiger Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/03-tiger-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: framing REFUSE by Codex (64/63 vs 101); motion itself whole on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Mako Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/04-mako-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: extra finlets in the painting (Codex hold); motion whole on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Whale Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/05-whale-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: framing REFUSE by Codex (76/77 vs 101); motion itself whole on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Basking Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/06-basking-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: framing REFUSE by Codex (89/96 vs 101); motion itself whole on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Reef Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/07-reef-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams repaired fit (unrepaired fit showed seam lines)"
+  },
+  {
+   "family": "Fish",
+   "name": "Hammerhead Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/08-hammerhead-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams repaired fit (unrepaired fit showed seam lines)"
+  },
+  {
+   "family": "Fish",
+   "name": "Flounder",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/09-flounder/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: body gaps remain in reaction and late idle even on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Halibut",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/10-halibut/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: lower-body gap in late idle even on the seams fit"
   },
   {
    "family": "Insects",

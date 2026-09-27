@@ -1,0 +1,200 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c101/20-snow-petrel/fit",
+  "sourceMasterSha256": "4e2ac41fd0f0a1428d075c50c2697ba78f4b5aeeb218d80bdc258d1b6969910e",
+  "keyedRgbaSha256": "dd278cc2d0a9a2a7b15720608b2a07d190ed4c69d684c96b77506af00393aa37",
+  "remainder": "body",
+  "remainderPixels": 28339,
+  "movedPixels": 1497,
+  "islands": [
+    {
+      "pixels": 1,
+      "to": "beak",
+      "border": {
+        "beak": 2
+      }
+    },
+    {
+      "pixels": 20,
+      "to": "beak",
+      "border": {
+        "beak": 16
+      }
+    },
+    {
+      "pixels": 211,
+      "to": "far-wing-root",
+      "border": {
+        "neck-upper": 13,
+        "neck-lower": 12,
+        "far-wing-root": 28
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "beak",
+      "border": {
+        "beak": 3,
+        "head": 2
+      }
+    },
+    {
+      "pixels": 18,
+      "to": "head",
+      "border": {
+        "head": 7,
+        "neck-upper": 7
+      }
+    },
+    {
+      "pixels": 248,
+      "to": "near-wing-root",
+      "border": {
+        "neck-lower": 43,
+        "far-wing-root": 20,
+        "near-wing-root": 47
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 2
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 3
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 6
+      }
+    },
+    {
+      "pixels": 39,
+      "to": "near-wing-flight",
+      "border": {
+        "near-wing-flight": 38
+      }
+    },
+    {
+      "pixels": 792,
+      "to": "tail",
+      "border": {
+        "tail": 90
+      }
+    },
+    {
+      "pixels": 22,
+      "to": "far-thigh",
+      "border": {
+        "far-thigh": 9
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "far-shin",
+      "border": {
+        "far-shin": 5,
+        "far-thigh": 1
+      }
+    },
+    {
+      "pixels": 75,
+      "to": "far-shin",
+      "border": {
+        "far-foot": 12,
+        "far-shin": 29
+      }
+    },
+    {
+      "pixels": 30,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 6
+      }
+    },
+    {
+      "pixels": 3,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 3
+      }
+    },
+    {
+      "pixels": 9,
+      "to": "near-foot",
+      "border": {
+        "near-foot": 9
+      }
+    },
+    {
+      "pixels": 16,
+      "to": "far-foot",
+      "border": {
+        "far-foot": 14
+      }
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "20-snow-petrel",
+    "parts": 17,
+    "atlasSize": {
+      "width": 1365,
+      "height": 342
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 21,
+        "distancePx": 16.278820596099873,
+        "supports": [
+          44,
+          41,
+          40
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 16,
+        "distancePx": 6.000000000000031,
+        "supports": [
+          5,
+          6
+        ]
+      }
+    ],
+    "sourceBindingHash": "2d8929b9595487904ec563d0568b7f1c0972f8907e41da2f79702d6dd93a7507",
+    "sourceVertices": 738,
+    "vertices": 929,
+    "sharedSupports": 242,
+    "pins": 451,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 14,
+    "excludedOverlaps": 9,
+    "observedExcludedBoundaries": 9,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 9,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}
