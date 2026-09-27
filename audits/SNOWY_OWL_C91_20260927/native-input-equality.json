@@ -1,0 +1,20 @@
+[
+  {
+    "local": "audits/SNOWY_OWL_C91_20260927/original-fit/record.json",
+    "originalNativeSource": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/record.json",
+    "sha256": "1297c09fa4e25e4a89988d3df299551fe2c8d84d8d33d3d3f661c7e3fbeb9682",
+    "exact": true
+  },
+  {
+    "local": "audits/SNOWY_OWL_C91_20260927/original-fit/binding.json",
+    "originalNativeSource": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/10-snowy-owl/fallback-1/fit/binding.json",
+    "sha256": "862b02df4e39e6a6f97a3b6ca31f9a17364ae54bf28d82c34eb8917ab1be73a3",
+    "exact": true
+  },
+  {
+    "local": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+    "originalNativeSource": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+    "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4",
+    "exact": true
+  }
+]
