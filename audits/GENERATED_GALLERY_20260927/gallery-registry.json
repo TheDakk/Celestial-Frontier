@@ -521,5 +521,21 @@
   "note": "left fighter far wing hangs away (wing split)",
   "batch": "bird pool v2",
   "tag": "g2bird-poolv2"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Magpie",
+  "nativeDir": "audits/BIRD_NATIVE_INPUT_C79_20260927/native-magpie-observed",
+  "note": "passes with observed supports; upper-back/neck shards (Codex)",
+  "batch": "C79 observed supports",
+  "tag": "c79"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Dove",
+  "nativeDir": "audits/BIRD_NATIVE_INPUT_C79_20260927/native-dove-observed",
+  "note": "passes with observed supports; tail curl, neck shards (Codex)",
+  "batch": "C79 observed supports",
+  "tag": "c79"
  }
 ]

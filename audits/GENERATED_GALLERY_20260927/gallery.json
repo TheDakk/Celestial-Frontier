@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 70,
+ "total": 72,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -358,6 +358,20 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2bird-poolv2/fam-02-heron",
    "report": "DIAGNOSTIC_PASS",
    "note": "left fighter far wing hangs away (wing split)"
+  },
+  {
+   "family": "Birds",
+   "name": "Magpie",
+   "nativeDir": "audits/BIRD_NATIVE_INPUT_C79_20260927/native-magpie-observed",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "passes with observed supports; upper-back/neck shards (Codex)"
+  },
+  {
+   "family": "Birds",
+   "name": "Dove",
+   "nativeDir": "audits/BIRD_NATIVE_INPUT_C79_20260927/native-dove-observed",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "passes with observed supports; tail curl, neck shards (Codex)"
   },
   {
    "family": "Fish",
