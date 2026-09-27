@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Gopher",
+  "masterSha256": "54ead4d0484c2e8ccc390e85b325c55c63c857732842c50da5a050f24aa8d295",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Gulper Eel",
+  "masterSha256": "f8a46be6a7e7a7b5cc4b776d5f361c5c4e896fe165e68e3f9ad424a104d3241e",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,67 @@
+{
+  "name": "Giant Anteater",
+  "family": "quadruped",
+  "species": {
+    "name": "Giant Anteater",
+    "aspect": 2.6,
+    "headFrac": 0.33,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "long tapered tubular snout with a pin-hole mouth",
+      "enormous bushy flag-like tail",
+      "black-and-white diagonal shoulder wedge"
+    ],
+    "note": "walks on the knuckles of the forefeet to keep the huge claws curled inward"
+  },
+  "genome": {
+    "seed": 2794683102,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 8,
+    "body": 15,
+    "loco": 6,
+    "trait": 19,
+    "size": 5,
+    "diet": 4,
+    "head": 7,
+    "limbs": 0,
+    "skin": 1,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 1,
+    "behavior": 8,
+    "habitat": 16,
+    "detail": 9,
+    "accent": 10,
+    "temper": 4,
+    "sense": 9,
+    "repro": 5,
+    "life": 2,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Giant Anteater"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Giant Anteater\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2794683102\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 14,
+  "profile": {
+    "id": "toothless-clawed-mammal",
+    "names": [
+      "Giant Anteater",
+      "Pangolin",
+      "Echidna"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw"
+    ],
+    "notes": "No bite granted from the quadruped default."
+  }
+}

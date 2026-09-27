@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Gull",
+  "masterSha256": "bafe37c0ed04bbef1f85cf8b888bf54db0125983978fd0cb59d8cb9f072952c5",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,154 @@
+{
+  "id": "10-giant-anteater",
+  "name": "Giant Anteater",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "c09c80a72d781efd8cc835cc0d2316edf7847534f09902e60e6dd1831e06c8bb",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 28149,
+    "coreRadius": 23,
+    "bodyBox": {
+      "x0": 21,
+      "y0": 137,
+      "x1": 399,
+      "y1": 243
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.087,
+        "pixels": 2448,
+        "box": {
+          "x0": 305,
+          "y0": 151,
+          "x1": 396,
+          "y1": 240
+        },
+        "attach": {
+          "x": 321.5,
+          "y": 184.4,
+          "relX": 0.8,
+          "relY": 0.45
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.17
+        },
+        "class": "front",
+        "length": 92.9
+      },
+      {
+        "k": 1,
+        "frac": 0.4157,
+        "pixels": 11702,
+        "box": {
+          "x0": 23,
+          "y0": 159,
+          "x1": 212,
+          "y1": 266
+        },
+        "attach": {
+          "x": 160.2,
+          "y": 203.6,
+          "relX": 0.37,
+          "relY": 0.63
+        },
+        "dir": {
+          "x": -0.97,
+          "y": 0.24
+        },
+        "class": "rear",
+        "length": 150.7
+      },
+      {
+        "k": 2,
+        "frac": 0.0962,
+        "pixels": 2708,
+        "box": {
+          "x0": 260,
+          "y0": 206,
+          "x1": 329,
+          "y1": 272
+        },
+        "attach": {
+          "x": 284.4,
+          "y": 208.9,
+          "relX": 0.7,
+          "relY": 0.68
+        },
+        "dir": {
+          "x": 0.3,
+          "y": 0.95
+        },
+        "class": "limb-down",
+        "length": 77.3
+      },
+      {
+        "k": 3,
+        "frac": 0.0318,
+        "pixels": 896,
+        "box": {
+          "x0": 214,
+          "y0": 221,
+          "x1": 251,
+          "y1": 266
+        },
+        "attach": {
+          "x": 228.9,
+          "y": 221,
+          "relX": 0.55,
+          "relY": 0.79
+        },
+        "dir": {
+          "x": 0.12,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 50.1
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 165,
+        "x1": 185,
+        "cx": 175
+      },
+      {
+        "x0": 228,
+        "x1": 251,
+        "cx": 239.2
+      },
+      {
+        "x0": 275,
+        "x1": 291,
+        "cx": 282.9
+      },
+      {
+        "x0": 308,
+        "x1": 329,
+        "cx": 320.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

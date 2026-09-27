@@ -1,0 +1,92 @@
+{
+  "id": "03-electric-eel",
+  "name": "Electric Eel",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "5000405f795b63fc567e51fda5f7a608e54cd868b2ee56a4a326677f958c4aa7",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 12443,
+    "coreRadius": 13,
+    "bodyBox": {
+      "x0": 96,
+      "y0": 179,
+      "x1": 371,
+      "y1": 245
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1026,
+        "pixels": 1277,
+        "box": {
+          "x0": 25,
+          "y0": 184,
+          "x1": 95,
+          "y1": 210
+        },
+        "attach": {
+          "x": 95,
+          "y": 196.5,
+          "relX": 0,
+          "relY": 0.27
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.06
+        },
+        "class": "rear",
+        "length": 71.3
+      },
+      {
+        "k": 1,
+        "frac": 0.0344,
+        "pixels": 428,
+        "box": {
+          "x0": 372,
+          "y0": 190,
+          "x1": 394,
+          "y1": 215
+        },
+        "attach": {
+          "x": 372,
+          "y": 202.5,
+          "relX": 1,
+          "relY": 0.36
+        },
+        "dir": {
+          "x": 0.99,
+          "y": -0.15
+        },
+        "class": "front",
+        "length": 25.3
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "front": 1
+    },
+    "ground": [
+      {
+        "x0": 209,
+        "x1": 277,
+        "cx": 243.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

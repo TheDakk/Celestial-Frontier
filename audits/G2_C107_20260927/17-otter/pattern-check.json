@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Otter",
+  "masterSha256": "27ca21d3c2dbb8d015312ea27d0cc63b8d0490297d4d7de72f5d3a41fdc966e6",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

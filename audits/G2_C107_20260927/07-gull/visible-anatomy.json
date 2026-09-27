@@ -1,0 +1,121 @@
+{
+  "id": "07-gull",
+  "name": "Gull",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "bafe37c0ed04bbef1f85cf8b888bf54db0125983978fd0cb59d8cb9f072952c5",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 12062,
+    "coreRadius": 20,
+    "bodyBox": {
+      "x0": 166,
+      "y0": 161,
+      "x1": 290,
+      "y1": 239
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.145,
+        "pixels": 1749,
+        "box": {
+          "x0": 252,
+          "y0": 124,
+          "x1": 320,
+          "y1": 200
+        },
+        "attach": {
+          "x": 281.3,
+          "y": 170.3,
+          "relX": 0.93,
+          "relY": 0.12
+        },
+        "dir": {
+          "x": 0,
+          "y": -1
+        },
+        "class": "top",
+        "length": 60.3
+      },
+      {
+        "k": 1,
+        "frac": 0.1302,
+        "pixels": 1570,
+        "box": {
+          "x0": 101,
+          "y0": 193,
+          "x1": 165,
+          "y1": 241
+        },
+        "attach": {
+          "x": 165,
+          "y": 212.5,
+          "relX": -0.01,
+          "relY": 0.66
+        },
+        "dir": {
+          "x": -0.95,
+          "y": 0.31
+        },
+        "class": "rear",
+        "length": 70.1
+      },
+      {
+        "k": 2,
+        "frac": 0.0749,
+        "pixels": 904,
+        "box": {
+          "x0": 198,
+          "y0": 240,
+          "x1": 274,
+          "y1": 290
+        },
+        "attach": {
+          "x": 224.5,
+          "y": 240,
+          "relX": 0.47,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.14,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 70.4
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 198,
+        "x1": 230,
+        "cx": 212.1
+      },
+      {
+        "x0": 239,
+        "x1": 274,
+        "cx": 254.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,69 @@
+{
+  "name": "Moray Eel",
+  "family": "serpent",
+  "species": {
+    "name": "Moray Eel",
+    "aspect": 9,
+    "headFrac": 0.12,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "gaping mouth of needle teeth held permanently open",
+      "single fin ridge running the whole length of the back",
+      "no pectoral fins and no gill covers, just a round gill pore"
+    ]
+  },
+  "genome": {
+    "seed": 679273159,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 5,
+    "body": 4,
+    "loco": 17,
+    "trait": 1,
+    "size": 5,
+    "diet": 5,
+    "head": 6,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 2,
+    "pattern": 1,
+    "eyes": 2,
+    "behavior": 10,
+    "habitat": 4,
+    "detail": 9,
+    "accent": 12,
+    "temper": 5,
+    "sense": 4,
+    "repro": 6,
+    "life": 4,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Moray Eel"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Moray Eel\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"679273159\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "index": 459,
+  "profile": {
+    "id": "eel",
+    "names": [
+      "Eel",
+      "Electric Eel",
+      "Moray Eel",
+      "Gulper Eel"
+    ],
+    "candidateTemplates": [
+      "fish",
+      "serpent"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "bite",
+      "strike"
+    ],
+    "notes": "No legs. Electrical effects are abilities, not physical anatomy."
+  }
+}

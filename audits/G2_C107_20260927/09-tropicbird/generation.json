@@ -1,0 +1,13 @@
+{
+  "id": "09-tropicbird",
+  "name": "Tropicbird",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ef9ada64-9d29-4cbc-a28a-ab63b824531c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "51a5888d0f8cd09a5c75a6ff4848c5a40dcd2fa2de0992cfc9b761b8fbdc22a5",
+  "bytes": 1025952,
+  "promptSha256": "2b71915c1205929fdfbc3e5711f11236232846a23d75569e02c1d01f54858c01",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

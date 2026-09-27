@@ -1,0 +1,13 @@
+{
+  "id": "20-hamster",
+  "name": "Hamster",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-3114222a-57e3-4fab-93a5-f1c65f958e0a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e2c98f103a9bbbbcd73e6ff22bb0233865519a1b5bb5032f9699d4954ba06ba3",
+  "bytes": 1237074,
+  "promptSha256": "44fdf66d781e54fb722a6536890a76dc9e0a73149df967b3307402fe707717a8",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

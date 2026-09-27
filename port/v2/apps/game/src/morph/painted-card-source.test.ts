@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { REPO_ROOT } from '../battle2/parts-rig.fixtures.js';
 import { ARCHETYPE_RESIDENT_DEFAULT, CARD_SIZES, PaintedCardSource, type PaintedCardAssets } from './painted-card-source.js';
 import { CARD_ARCHETYPES } from './card-archetypes.js';
@@ -8,6 +8,29 @@ const assets: PaintedCardAssets = { json: async (p) => JSON.parse(readFileSync(n
 const REGISTRY = [{ earthName: 'Crab', dir: 'audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/' }, { earthName: 'Civet', dir: 'audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/' }];
 const crabGenome = (over: Record<string, unknown> = {}) => ({ _earthName: 'Crab', kingdom: 'fauna', seed: 5, color: 12, accent: 3, size: 0, head: 0, tail: 1, pattern: 0, ...over });
 describe('painted card source — the individual on the card', () => {
+  it('releases both message ports and its callback after every default render yield, without changing the painted bytes', async () => {
+    class Port { onmessage: (() => void) | null = null; closed = false; close(): void { this.closed = true; } }
+    const channels: Array<{ port1: Port; port2: Port }> = [];
+    class Channel {
+      readonly port1 = new Port();
+      readonly port2 = Object.assign(new Port(), { postMessage: () => { queueMicrotask(() => this.port1.onmessage?.()); } });
+      constructor() { channels.push(this); }
+    }
+    vi.stubGlobal('MessageChannel', Channel);
+    try {
+      const normal = new PaintedCardSource({ assets, registry: REGISTRY });
+      const control = new PaintedCardSource({ assets, registry: REGISTRY, yieldToHost: () => Promise.resolve() });
+      for (const color of [1, 2, 3]) {
+        const genome = crabGenome({ color });
+        expect((await normal.card(genome, 'thumb'))!.url).toBe((await control.card(genome, 'thumb'))!.url);
+      }
+      expect(channels).toHaveLength(3);
+      expect(channels.map(c => [c.port1.closed, c.port2.closed, c.port1.onmessage])).toEqual(
+        Array.from({ length: 3 }, () => [true, true, null]));
+      expect(normal.renders).toBe(3);
+    } finally { vi.unstubAllGlobals(); }
+  });
+
   it('OWNERSHIP (I5 v2 diagnosis 2026-09-25): a painted card\'s leases, cache, pending renders and resident archetypes are reported truthfully; release and releaseUnowned trim exactly the unleased cards', async () => {
     const s = new PaintedCardSource({ assets, registry: REGISTRY, yieldToHost: () => Promise.resolve() }), g = crabGenome(), key = (await import('@cf/art/species-identity')).speciesVisualKey(g as Record<string, unknown>);
     const closeThumb = s.openLease('thumb', key), p = s.card(g, 'thumb')!;

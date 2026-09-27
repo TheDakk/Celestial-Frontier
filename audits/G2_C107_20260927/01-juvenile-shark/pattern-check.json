@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Juvenile Shark",
+  "masterSha256": "9da7e928726dd316874af5f6975c0b98d4d9e58c9f2b1a46ef5920a5c726915b",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

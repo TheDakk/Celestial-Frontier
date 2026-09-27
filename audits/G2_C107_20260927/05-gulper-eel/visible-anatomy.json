@@ -1,0 +1,115 @@
+{
+  "id": "05-gulper-eel",
+  "name": "Gulper Eel",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "f8a46be6a7e7a7b5cc4b776d5f361c5c4e896fe165e68e3f9ad424a104d3241e",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 8337,
+    "coreRadius": 18,
+    "bodyBox": {
+      "x0": 309,
+      "y0": 172,
+      "x1": 384,
+      "y1": 239
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0149,
+        "pixels": 124,
+        "box": {
+          "x0": 378,
+          "y0": 173,
+          "x1": 396,
+          "y1": 185
+        },
+        "attach": {
+          "x": 378,
+          "y": 179,
+          "relX": 0.92,
+          "relY": 0.1
+        },
+        "dir": {
+          "x": 0.93,
+          "y": -0.36
+        },
+        "class": "front",
+        "length": 19
+      },
+      {
+        "k": 1,
+        "frac": 0.3986,
+        "pixels": 3323,
+        "box": {
+          "x0": 48,
+          "y0": 179,
+          "x1": 308,
+          "y1": 225
+        },
+        "attach": {
+          "x": 308,
+          "y": 196,
+          "relX": -0.01,
+          "relY": 0.36
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.12
+        },
+        "class": "rear",
+        "length": 261.6
+      },
+      {
+        "k": 2,
+        "frac": 0.048,
+        "pixels": 400,
+        "box": {
+          "x0": 349,
+          "y0": 205,
+          "x1": 398,
+          "y1": 243
+        },
+        "attach": {
+          "x": 375.8,
+          "y": 231.3,
+          "relX": 0.89,
+          "relY": 0.88
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.09
+        },
+        "class": "front",
+        "length": 37.5
+      }
+    ],
+    "byClass": {
+      "front": 2,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 346,
+        "x1": 390,
+        "cx": 368.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

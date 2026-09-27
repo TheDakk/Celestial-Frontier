@@ -47,6 +47,9 @@ class EvidenceWorker implements SpeciesArtWorkerLike {
   terminated = 0;
   postMessage(message: unknown): void { this.sent.push(message); }
   terminate(): void { this.terminated++; }
+  removeEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
+    this.listeners.set(type, (this.listeners.get(type) ?? []).filter(fn => fn !== listener));
+  }
   addEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
     const group = this.listeners.get(type) ?? [];
     group.push(listener as (event: MessageEvent<unknown> | Event) => void);
@@ -65,6 +68,26 @@ class EvidenceWorker implements SpeciesArtWorkerLike {
 }
 
 describe('species art worker protocol', () => {
+  it('detaches every worker callback on ordinary disposal, suspension and fatal termination', () => {
+    for (const terminal of ['dispose', 'suspend', 'fatal'] as const) {
+      const worker = new EvidenceWorker(), tasks: Array<() => void> = [];
+      const loader = new SpeciesArtLoader('listener-lifetime-' + terminal, {
+        workerFactory: () => worker, scheduleTask: task => { tasks.push(task); },
+      });
+      const lease = loader.leaseThumb(GENOME); loader.activate(); tasks.shift()!();
+      expect([...worker.listeners.values()].flat()).toHaveLength(3);
+      if (terminal === 'dispose') loader.dispose('lifetime control');
+      else if (terminal === 'suspend') loader.suspendForBfcache();
+      else worker.emitEvent('error');
+      expect(worker.terminated).toBe(1);
+      expect([...worker.listeners.values()].flat()).toHaveLength(0);
+      const after = loader.diagnostics();
+      worker.emitEvent('error'); worker.emitEvent('messageerror'); worker.emit({ invalid: true });
+      expect(loader.diagnostics()).toEqual(after);
+      lease.release(); loader.dispose('test complete');
+    }
+  });
+
   it('accepts only exact request and response shapes', () => {
     expect(validSpeciesArtWorkerRequest(init())).toBe(true);
     expect(validSpeciesArtWorkerRequest(render())).toBe(true);
@@ -279,6 +302,9 @@ describe('species art worker protocol', () => {
       terminated = 0;
       postMessage(message: unknown): void { this.sent.push(message); }
       terminate(): void { this.terminated++; }
+      removeEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
+        this.listeners.set(type, (this.listeners.get(type) ?? []).filter(fn => fn !== listener));
+      }
       addEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
         const group = this.listeners.get(type) ?? [];
         group.push(listener as (event: MessageEvent<unknown> | Event) => void);
@@ -426,6 +452,9 @@ describe('species art worker protocol', () => {
       terminated = 0;
       postMessage(message: unknown): void { this.sent.push(message); }
       terminate(): void { this.terminated++; }
+      removeEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
+        this.listeners.set(type, (this.listeners.get(type) ?? []).filter(fn => fn !== listener));
+      }
       addEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
         const group = this.listeners.get(type) ?? [];
         group.push(listener as (event: MessageEvent<unknown> | Event) => void);
@@ -748,6 +777,9 @@ describe('species art worker protocol', () => {
       terminated = 0;
       postMessage(message: unknown): void { this.sent.push(message); }
       terminate(): void { this.terminated++; }
+      removeEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
+        if (type === 'message' && this.message === listener) this.message = null;
+      }
       addEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
         if (type === 'message') this.message = listener as (event: MessageEvent<unknown>) => void;
       }
@@ -1029,6 +1061,9 @@ describe('species art worker protocol', () => {
         terminated = 0;
         postMessage(message: unknown): void { this.sent.push(message); }
         terminate(): void { this.terminated++; }
+        removeEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
+          this.listeners.set(type, (this.listeners.get(type) ?? []).filter(fn => fn !== listener));
+        }
         addEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
           const group = this.listeners.get(type) ?? [];
           group.push(listener as (event: MessageEvent<unknown> | Event) => void);
@@ -1131,6 +1166,9 @@ describe('species art worker protocol', () => {
       terminated = 0;
       postMessage(message: unknown): void { this.sent.push(message); }
       terminate(): void { this.terminated++; }
+      removeEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
+        if (type === 'message' && this.message === listener) this.message = null;
+      }
       addEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
         if (type === 'message') this.message = listener as (event: MessageEvent<unknown>) => void;
       }

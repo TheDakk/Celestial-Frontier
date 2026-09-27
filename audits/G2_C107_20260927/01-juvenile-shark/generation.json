@@ -1,0 +1,13 @@
+{
+  "id": "01-juvenile-shark",
+  "name": "Juvenile Shark",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1589fdcc-f883-4e4b-87a5-e8d51eb780e5.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9da7e928726dd316874af5f6975c0b98d4d9e58c9f2b1a46ef5920a5c726915b",
+  "bytes": 1140816,
+  "promptSha256": "da67b1372f181fcdd00e3abb5ca29db1ff57bc055d599b39104930e66d50a81c",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

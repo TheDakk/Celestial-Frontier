@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Giant Anteater",
+  "masterSha256": "c09c80a72d781efd8cc835cc0d2316edf7847534f09902e60e6dd1831e06c8bb",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

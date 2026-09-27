@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Electric Eel",
+  "masterSha256": "5000405f795b63fc567e51fda5f7a608e54cd868b2ee56a4a326677f958c4aa7",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

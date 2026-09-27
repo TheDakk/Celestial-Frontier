@@ -39,7 +39,15 @@ function matchesCardAlpha(finished:ArrayLike<number>,master:ArrayLike<number>):b
   for(let i=3;i<master.length;i+=4)if(finished[i]!==master[i])return false;
   return true;
 }
-const macrotask = (): Promise<void> => new Promise((resolve) => { if (typeof MessageChannel === 'function') { const c = new MessageChannel(); c.port1.onmessage = () => { c.port1.close(); resolve(); }; c.port2.postMessage(0); } else setTimeout(resolve, 0); });
+const macrotask = (): Promise<void> => new Promise((resolve) => {
+  if (typeof MessageChannel !== 'function') { setTimeout(resolve, 0); return; }
+  const c = new MessageChannel();
+  c.port1.onmessage = () => {
+    // A serviced yield owns no callbacks or ports while the card renders.
+    c.port1.onmessage = null; c.port1.close(); c.port2.close(); resolve();
+  };
+  c.port2.postMessage(0);
+});
 export const CARD_SIZES = Object.freeze({ thumb: 132, portrait: 440 } as const);
 export interface PaintedCardOwnershipV1 {
   readonly schema: 'cf-v2-painted-card-ownership/v1'; readonly leases: number;
