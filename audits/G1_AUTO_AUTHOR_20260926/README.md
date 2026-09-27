@@ -118,6 +118,15 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**Insects: the intake blocker found and fixed (session 5)** (`merge-joint-labels-fit.mjs`, runner `--merge-joint-labels`, labelled; `merge-joint/`, `auto-g2insect-mergejoint/`):
+- **Cause:** the corpus Beetle packet authors three regions on ONE joint (`elytron-near`, `elytron-far`, `thorax`). The shipped beetle's intake merged them (`fit-04/label-authoring-receipt.json` regionOwnerMap → `thorax`), but `intake-authored.mjs` does not. So the hand Beetle packet itself, and every insect transferred from it, is refused at the source-join probe ("unique known source owners"). Termite and Cicada were ADMITTED by the author and then died there.
+- **Fix:** merge on the label raster (a traced polygon union was tried first and took ~50 px of other owners, so it was rejected), then compile through the unchanged painter-label path. Conservation: only group pixels change owner, to the kept `thorax`.
+- **Control:** the hand Beetle packet, after the merge, **matches the shipped `fit-04` owner map on all 1,572,516 pixels** with the same part set.
+- **Result on all 17 G2 insects:** Termite and Cicada now compile and reach static, but both are **static RED on motion limits** (Codex's lane, limits unchanged):
+  - Termite: only the `legFrontFarFoot` joint limit in faint (−77°).
+  - Cicada: the contact scale-compression bound in cast/hit/tame/feed, plus the same faint foot limit.
+- The other 15 are author refusals: thin legs and antennae against 3 dissimilar references (Beetle, Honeybee, Dragonfly), and the rear-appendage family floor. **Levers:** more insect references with legs apart, or an insect-specific transfer. Insects stay at 0 native.
+
 **Rejected lever: `legMatch` (session 5)** (`auto-author.mjs` option, runner/battery flag `--leg-match=N`, off by default):
 - **The idea:** eight quadrupeds are refused for "an unassigned limb-down appendage" (Hyena, Jaguar, Serval, Caracal, Lynx, Badger, Wolverine, the Ocelot re-paint). The evidence shows the painting's four separate legs against a reference whose near/far legs overlap (e.g. Wild Horse for Serval and Hyena). legMatch picks, among the 3 cheapest references, the first whose MEASURED limb-down count equals the painting's. It chooses before any verdict and never retries after a refusal.
 - **Measured:**

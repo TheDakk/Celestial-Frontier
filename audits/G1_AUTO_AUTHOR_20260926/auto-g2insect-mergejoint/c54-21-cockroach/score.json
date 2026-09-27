@@ -1,0 +1,11 @@
+{
+ "id": "c54-21-cockroach",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (family floor): the largest rear appendage is 1.2% of the paint; every same-family reference shows at least 3.8%",
+  "missing-anatomy: part antenna-far (antennaFar) covers 7% paint (reference 25%)",
+  "missing-anatomy: part antenna-near (antennaNear) covers 6% paint (reference 31%)"
+ ],
+ "semanticPresence": null
+}

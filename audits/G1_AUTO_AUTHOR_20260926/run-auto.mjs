@@ -25,7 +25,7 @@ const shopArg = args.find((x) => x.startsWith('--shop=')), shopN = shopArg ? Num
 const fallbackArg = args.find((x) => x.startsWith('--fallback=')), fallbackN = fallbackArg ? Number(fallbackArg.slice(11)) : 0;
 const { familyContract, familyContactChains } = await import(path.join(ROOT, 'port/v2/tools/creature-animation/family-contracts.mjs'));
 const topkArg = args.find((x) => x.startsWith('--topk=')), topK = topkArg ? Number(topkArg.slice(7)) : 3;
-const useChains = args.includes('--chains'); const useSerpentStrips = args.includes('--serpent-strips'), useTailLabels = args.includes('--tail-labels'); const legMatchArg = args.find((x) => x.startsWith('--leg-match=')), legMatch = legMatchArg ? Number(legMatchArg.slice(12)) : 0;
+const useChains = args.includes('--chains'); const useSerpentStrips = args.includes('--serpent-strips'), useTailLabels = args.includes('--tail-labels'), useMergeJoint = args.includes('--merge-joint-labels'); const legMatchArg = args.find((x) => x.startsWith('--leg-match=')), legMatch = legMatchArg ? Number(legMatchArg.slice(12)) : 0;
 const useSkeleton = args.includes('--skeleton'), graphOf = (family) => familyContract(family).graph;
 const terminalsOf = (family) => { try { return new Set(familyContactChains(familyContract(family)).map((c) => c.terminal).filter(Boolean)); } catch { return new Set(); } };
 const OUT = path.join(HERE, 'auto' + (tag ? '-' + tag : ''));
@@ -152,11 +152,17 @@ function runCandidate(s, rank, dir) {
        * identity guard) rebuilds the fit with the remainder gap between tail and stalk owned by the stalk; static then runs on that fit.
        * Skipped (and recorded) when the rig has no tail pair or the placement refuses. */
       let staticFit = fit;
+      /* --merge-joint-labels (labelled): when intake refused at the source-join probe on shared joints (the hand beetle's three
+       * `thorax` regions), merge them on the label raster exactly as the shipped beetle's intake did (merge-joint-labels-fit.mjs;
+       * control: reproduces shipped fit-04 on every pixel), then run static on that fit. */
+      if (useMergeJoint && !fs.existsSync(path.join(fit, 'binding.json')) && fs.existsSync(path.join(fit, 'refusal.json')) && /unique known source owners/.test(fs.readFileSync(path.join(fit, 'refusal.json'), 'utf8'))) {
+        const mj = path.join(dir, 'merge-joint'); if (!fs.existsSync(path.join(mj, 'fit', 'binding.json'))) { fs.rmSync(mj, { recursive: true, force: true }); const r = spawnSync(process.execPath, [path.join(HERE, 'merge-joint-labels-fit.mjs'), s.id, fit, mj], { cwd: ROOT, encoding: 'utf8', timeout: 900000 }); fs.writeFileSync(path.join(dir, 'merge-joint.log'), (r.stdout || '') + (r.stderr || '')); }
+        if (fs.existsSync(path.join(mj, 'fit', 'binding.json'))) { staticFit = path.join(mj, 'fit'); row.mergeJoint = JSON.parse(fs.readFileSync(path.join(mj, 'receipt.json'), 'utf8')).merged; } }
       if (useTailLabels && fs.existsSync(path.join(fit, 'binding.json'))) { const tl = path.join(dir, 'tail-labels');
         if (!fs.existsSync(path.join(tl, 'fit', 'binding.json'))) { fs.rmSync(tl, { recursive: true, force: true }); const r = spawnSync(process.execPath, [path.join(HERE, 'tail-labels-fit.mjs'), s.id, fit, tl], { cwd: ROOT, encoding: 'utf8', timeout: 900000 }); fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(path.join(dir, 'tail-labels.log'), (r.stdout || '') + (r.stderr || '')); }
         if (fs.existsSync(path.join(tl, 'fit', 'binding.json'))) { staticFit = path.join(tl, 'fit'); try { row.tailLabels = JSON.parse(fs.readFileSync(path.join(tl, 'receipt.json'), 'utf8')).gap.changedPixels; } catch { row.tailLabels = 'receipt missing'; } }
         else row.tailLabels = 'skipped: ' + ((fs.readFileSync(path.join(dir, 'tail-labels.log'), 'utf8').match(/Error: [^\n]{0,160}/) ?? ['unknown'])[0]); }
-      if (fs.existsSync(path.join(fit, 'binding.json'))) {
+      if (fs.existsSync(path.join(staticFit, 'binding.json'))) {
         const report = path.join(dir, 'static.json');
         if (!fs.existsSync(report)) { const r = spawnSync(process.execPath, [path.join(HERE, 'harness/static-runner.mjs'), staticFit, report], { cwd: ROOT, encoding: 'utf8', timeout: 1800000 }); fs.writeFileSync(path.join(dir, 'static.log'), (r.stdout || '') + (r.stderr || '')); }
         let st = null; try { st = JSON.parse(fs.readFileSync(report, 'utf8')); } catch {}
