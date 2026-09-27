@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mouse",
+  "masterSha256": "2504f6befded8d27d70d9bd52752e22d74ef0d4ac8229a101f49e9c73e1bc02a",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

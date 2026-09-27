@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Triggerfish",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "71d52dd518fb0aa3bbb43ffa22cf255e21a93645087fb5abc73e3eadb810cfa0",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "fish",
+  "authoringCreated": false,
+  "sourceHead": "968770093a661993ab4ef04b9f234a26002cdc76",
+  "basePromptSha256": "87be9031d993eb966d2b10b61d4a2601023a9d6ba43356052b29cab790e029cf",
+  "layoutCompilerSha256": "20078d5ecddab064447a5dd99ba457dc349fce7d692bc4125b585ac1bb17b4c9",
+  "layoutClarification": "Species identity features FIRST: eyes set far back and high, well away from the mouth; erectile trigger spine on the forehead; rowing second dorsal and anal fins on a leathery diamond body. One Earth Triggerfish. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: horizontal fish, head RIGHT and complete caudal tail LEFT; species-correct fin count, finlets, barbels and tail shape. Natural fin rays and fin roots must stay distinct; no detached pieces. Keep the tail stalk continuous.\n\n"
+}

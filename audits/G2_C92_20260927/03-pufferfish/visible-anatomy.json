@@ -1,0 +1,168 @@
+{
+  "id": "03-pufferfish",
+  "name": "Pufferfish",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "71ae9d9cddceeceb262668ecf05088931d26e89bf1d73adba0ddb9c98e452549",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 19228,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 168,
+      "y0": 152,
+      "x1": 298,
+      "y1": 266
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0219,
+        "pixels": 422,
+        "box": {
+          "x0": 200,
+          "y0": 138,
+          "x1": 265,
+          "y1": 151
+        },
+        "attach": {
+          "x": 233.5,
+          "y": 151,
+          "relX": 0.5,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.2,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 35.9
+      },
+      {
+        "k": 1,
+        "frac": 0.0284,
+        "pixels": 546,
+        "box": {
+          "x0": 149,
+          "y0": 149,
+          "x1": 178,
+          "y1": 178
+        },
+        "attach": {
+          "x": 169.5,
+          "y": 167,
+          "relX": 0.01,
+          "relY": 0.13
+        },
+        "dir": {
+          "x": -0.95,
+          "y": -0.32
+        },
+        "class": "rear",
+        "length": 27.3
+      },
+      {
+        "k": 2,
+        "frac": 0.1787,
+        "pixels": 3436,
+        "box": {
+          "x0": 93,
+          "y0": 172,
+          "x1": 171,
+          "y1": 245
+        },
+        "attach": {
+          "x": 167.2,
+          "y": 208.3,
+          "relX": -0.01,
+          "relY": 0.49
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.09
+        },
+        "class": "rear",
+        "length": 82.7
+      },
+      {
+        "k": 3,
+        "frac": 0.0353,
+        "pixels": 679,
+        "box": {
+          "x0": 299,
+          "y0": 176,
+          "x1": 316,
+          "y1": 239
+        },
+        "attach": {
+          "x": 299,
+          "y": 207.5,
+          "relX": 1.01,
+          "relY": 0.49
+        },
+        "dir": {
+          "x": 0.99,
+          "y": -0.11
+        },
+        "class": "front",
+        "length": 35.8
+      },
+      {
+        "k": 4,
+        "frac": 0.0203,
+        "pixels": 390,
+        "box": {
+          "x0": 205,
+          "y0": 267,
+          "x1": 269,
+          "y1": 280
+        },
+        "attach": {
+          "x": 238,
+          "y": 267,
+          "relX": 0.54,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.2,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 35.5
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 2,
+      "front": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 214,
+        "x1": 258,
+        "cx": 235.4
+      },
+      {
+        "x0": 263,
+        "x1": 266,
+        "cx": 264.8
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

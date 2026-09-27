@@ -1,0 +1,121 @@
+{
+  "id": "10-cormorant",
+  "name": "Cormorant",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "6f696f246d44710bf9e523595be6f8f2c14b50f70c322b43de88c8e8cf635c5d",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 15004,
+    "coreRadius": 21,
+    "bodyBox": {
+      "x0": 165,
+      "y0": 175,
+      "x1": 286,
+      "y1": 262
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2152,
+        "pixels": 3229,
+        "box": {
+          "x0": 248,
+          "y0": 102,
+          "x1": 335,
+          "y1": 216
+        },
+        "attach": {
+          "x": 277.5,
+          "y": 185,
+          "relX": 0.93,
+          "relY": 0.12
+        },
+        "dir": {
+          "x": 0.19,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 101
+      },
+      {
+        "k": 1,
+        "frac": 0.1773,
+        "pixels": 2660,
+        "box": {
+          "x0": 85,
+          "y0": 218,
+          "x1": 214,
+          "y1": 301
+        },
+        "attach": {
+          "x": 173.8,
+          "y": 249.9,
+          "relX": 0.07,
+          "relY": 0.86
+        },
+        "dir": {
+          "x": -0.93,
+          "y": 0.38
+        },
+        "class": "rear",
+        "length": 102.4
+      },
+      {
+        "k": 2,
+        "frac": 0.0489,
+        "pixels": 734,
+        "box": {
+          "x0": 213,
+          "y0": 263,
+          "x1": 277,
+          "y1": 306
+        },
+        "attach": {
+          "x": 223.5,
+          "y": 263,
+          "relX": 0.48,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.53,
+          "y": 0.85
+        },
+        "class": "limb-down",
+        "length": 68.6
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 170,
+        "x1": 214,
+        "cx": 193.1
+      },
+      {
+        "x0": 223,
+        "x1": 277,
+        "cx": 250
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "04-boxfish",
+  "name": "Boxfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-8469910d-7be7-4fbe-889a-281235f3360c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "27162f2b3e6c38720acdffe842c41f4d6161c4376909d45ee44062f5714a2100",
+  "bytes": 1278126,
+  "promptSha256": "bde3d0e76d7c5bf7b8f3bf12e316e7b4cc400f7ef3de6486bd6ced1f31ac96be",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
