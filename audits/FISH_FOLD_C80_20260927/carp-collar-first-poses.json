@@ -1,0 +1,24 @@
+{
+  "fit": "audits/FISH_FOLD_C80_20260927/carp-fin-collar-01/fit",
+  "report": "audits/BODY_SEAMS_HELDOUT_20260927/09-carp-axial/static.json",
+  "recordRecipeHash": "81e34da6cbcf5eeade4b4036f617b978e19bab2ccc38ec45691f25f9c151c7db",
+  "bindingHash": "68e9dcfa9d9118a193776e5dba7c53437387ecffba727246f7599246d6bf936c",
+  "reportSha256": "74ae5be69a6db18a003d6e776c535f2390a11e7c7abaa63ddea172e18f9409a9",
+  "scope": "Replay retained first-refusal poses through unchanged compiled field and solver; no acceptance or guard change",
+  "rows": [
+    {
+      "id": "dodge",
+      "ms": 207,
+      "originalError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 4",
+      "error": null,
+      "triangles": []
+    },
+    {
+      "id": "victory",
+      "ms": 175.66666666666666,
+      "originalError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 3",
+      "error": null,
+      "triangles": []
+    }
+  ]
+}
