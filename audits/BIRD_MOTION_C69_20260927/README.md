@@ -13,3 +13,7 @@ A robust hit/tame repair requires canonical motion authoring against the same so
 Raven/Vulture old Gull transfers remain wing–tail ownership failures; the reviewed Raven reaction clearly splits a feather strip. New hand-reference transfers first need the painted-support author boundary. Crow/Magpie/Dove/Hawk prior static refusals are preserved in prior-static-failures.json; Crow/Magpie are ARAP, not contact. No polygon hand-edit, weld or species exception has been presented as a general repair. Correct winning-fit Goose/Quail native passes supersede their earlier wrong-rank reports.
 
 Next: Bobcat/Donkey/Lynx late lethal performance, remaining quadruped faults, then broad G2 batches. I5 remains open after the one stopped authorized epoch; no retry.212GiB free; no hosted work.
+
+## Final disposition — REJECTED candidate
+
+The full develop battery on4c230c64 found a NEW Goose regression:56arena ARAPfoldrefusals. A follow-up that retained curves fitting original endpoint angle limits still changes Goose (endpoint reach itself refuses despite the painted solution passing). Both demonstrate that endpoint authoring alone is insufficient. All production stance-envelope/timeline bytes are restored to6f8ef98. No bird motion change is admitted. The proposed author and focused tests are preserved as rejected-faint-author.ts/rejected-faint-controls.ts, and failed-candidate-battery preserves the full red. The earlier Hawk/Dove improvements are candidate observations only, superseded for adoption by this regression. No test weakened or limit changed.

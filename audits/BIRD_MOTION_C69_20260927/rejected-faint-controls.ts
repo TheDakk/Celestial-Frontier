@@ -33,3 +33,9 @@ it.each(cases)('authors a nonzero continuous faint within unchanged actual paint
  expect(refused).toBeGreaterThan(0);expect(()=>solver.resolve({...poseAt(tl,tl.durationMs),root:{rotation:1,dy:2}},{actionId:'faint',elapsedMs:tl.durationMs,durationMs:tl.durationMs,realm:card.realm})).toThrow();
  expect(JSON.stringify({r,b})).toBe(before);
 });
+
+it('preserves the shipped Goose faint exactly when it already fits original endpoint limits',()=>{
+ const r=read('audits/ART_BATTLE_FOCUS_20260925/15-goose/fit-02/record.json'),card=compileBodyCard(r,r.genome),actual=buildTimeline(card,'faint',card.identity.seed);
+ const spy=vi.spyOn(envelopes,'faintStanceEnvelope').mockReturnValue(null);
+ try{const old=compileBodyCard(r,r.genome);expect(actual).toEqual(buildTimeline(old,'faint',old.identity.seed));}finally{spy.mockRestore();}
+});

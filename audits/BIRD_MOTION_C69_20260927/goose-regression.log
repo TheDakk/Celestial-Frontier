@@ -1,0 +1,107 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+stdout | apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > every archetype with a card fights: as ATTACKER with its own anatomy attack and as TARGET, zero rig refusals at 30 Hz
+
+Crab             brachyuran      water  ticks  734 refusals 0  attack: pinch (clawNearDactylTip)
+Coconut Crab     brachyuran      ground ticks  734 refusals 0  attack: pinch (clawNearDactylTip)
+Freshwater Crab  brachyuran      water  ticks  782 refusals 0  attack: pinch (clawNearDactylTip)
+Mud Crab         brachyuran      water  ticks  734 refusals 0  attack: pinch (clawNearDactylTip)
+Vent Crab        brachyuran      water  ticks  734 refusals 0  attack: pinch (clawNearDactylTip)
+Civet            quadruped       ground ticks  882 refusals 0  attack: claw (foreNearPaw)
+Salmon           fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Eagle            biped-bird      air    ticks  774 refusals 0  attack: peck (beak)
+Beetle           insect          ground ticks  782 refusals 0  attack: mandible (mandible)
+Python           serpent         ground ticks  788 refusals 0  attack: strike (jaw)
+Tree Frog        hopper          ground ticks  734 refusals 0  attack: bite (jaw)
+Chimpanzee       primate         ground ticks  782 refusals 0  attack: bite (jaw)
+Starfish         radial          water  ticks  796 refusals 0  attack: body (bell)
+Tarantula        arachnid        ground ticks  782 refusals 0  attack: bite (cheliceraNear)
+Octopus          cephalopod      water  ticks  812 refusals 0  attack: lash (arm4Seg2)
+Fruit Bat        flyer-membrane  air    ticks  788 refusals 0  attack: bite (jaw)
+Centipede        myriapod        ground ticks  782 refusals 0  attack: mandible (mandible)
+Bass             fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Tang             fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Dragonfly        insect          air    ticks  734 refusals 0  attack: mandible (mandible)
+Sturgeon         fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Wolf             quadruped       ground ticks  914 refusals 0  attack: claw (foreNearPaw)
+Impala           quadruped       ground ticks  914 refusals 0  attack: kick (foreNearPaw)
+River Otter      quadruped       ground ticks  914 refusals 0  attack: claw (foreNearPaw)
+Heron            biped-bird      ground ticks  796 refusals 0  attack: peck (beak)
+Marmot           quadruped       ground ticks  914 refusals 0  attack: claw (foreNearPaw)
+Wall Lizard      quadruped       ground ticks  844 refusals 0  attack: tail (tail3)
+Cougar           quadruped       ground ticks  914 refusals 0  attack: bite (jaw)
+Ibex             quadruped       ground ticks  914 refusals 0  attack: kick (foreNearPaw)
+Pike             fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Goose            biped-bird      ground ticks  796 refusals 56  attack: peck (beak)  last: ARAP skin: unresolved folded triangles: 2
+Gull             biped-bird      ground ticks  784 refusals 0  attack: peck (beak)
+Racer            serpent         ground ticks  788 refusals 0  attack: strike (jaw)
+Eel              serpent         water  ticks  796 refusals 0  attack: strike (jaw)
+Salamander       quadruped       ground ticks  868 refusals 0  attack: bite (jaw)
+Rat              quadruped       ground ticks  914 refusals 0  attack: bite (jaw)
+Reef Shark       fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Jellyfish        radial          water  ticks  796 refusals 0  attack: sting-arms (arm0Seg2)
+
+ ❯ apps/game/src/battle2/library-arena.test.ts (9 tests | 1 failed | 8 skipped) 39458ms
+     × every archetype with a card fights: as ATTACKER with its own anatomy attack and as TARGET, zero rig refusals at 30 Hz 39457ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > every archetype with a card fights: as ATTACKER with its own anatomy attack and as TARGET, zero rig refusals at 30 Hz
+AssertionError: Goose
+Crab             brachyuran      water  ticks  734 refusals 0  attack: pinch (clawNearDactylTip)
+Coconut Crab     brachyuran      ground ticks  734 refusals 0  attack: pinch (clawNearDactylTip)
+Freshwater Crab  brachyuran      water  ticks  782 refusals 0  attack: pinch (clawNearDactylTip)
+Mud Crab         brachyuran      water  ticks  734 refusals 0  attack: pinch (clawNearDactylTip)
+Vent Crab        brachyuran      water  ticks  734 refusals 0  attack: pinch (clawNearDactylTip)
+Civet            quadruped       ground ticks  882 refusals 0  attack: claw (foreNearPaw)
+Salmon           fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Eagle            biped-bird      air    ticks  774 refusals 0  attack: peck (beak)
+Beetle           insect          ground ticks  782 refusals 0  attack: mandible (mandible)
+Python           serpent         ground ticks  788 refusals 0  attack: strike (jaw)
+Tree Frog        hopper          ground ticks  734 refusals 0  attack: bite (jaw)
+Chimpanzee       primate         ground ticks  782 refusals 0  attack: bite (jaw)
+Starfish         radial          water  ticks  796 refusals 0  attack: body (bell)
+Tarantula        arachnid        ground ticks  782 refusals 0  attack: bite (cheliceraNear)
+Octopus          cephalopod      water  ticks  812 refusals 0  attack: lash (arm4Seg2)
+Fruit Bat        flyer-membrane  air    ticks  788 refusals 0  attack: bite (jaw)
+Centipede        myriapod        ground ticks  782 refusals 0  attack: mandible (mandible)
+Bass             fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Tang             fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Dragonfly        insect          air    ticks  734 refusals 0  attack: mandible (mandible)
+Sturgeon         fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Wolf             quadruped       ground ticks  914 refusals 0  attack: claw (foreNearPaw)
+Impala           quadruped       ground ticks  914 refusals 0  attack: kick (foreNearPaw)
+River Otter      quadruped       ground ticks  914 refusals 0  attack: claw (foreNearPaw)
+Heron            biped-bird      ground ticks  796 refusals 0  attack: peck (beak)
+Marmot           quadruped       ground ticks  914 refusals 0  attack: claw (foreNearPaw)
+Wall Lizard      quadruped       ground ticks  844 refusals 0  attack: tail (tail3)
+Cougar           quadruped       ground ticks  914 refusals 0  attack: bite (jaw)
+Ibex             quadruped       ground ticks  914 refusals 0  attack: kick (foreNearPaw)
+Pike             fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Goose            biped-bird      ground ticks  796 refusals 56  attack: peck (beak)  last: ARAP skin: unresolved folded triangles: 2
+Gull             biped-bird      ground ticks  784 refusals 0  attack: peck (beak)
+Racer            serpent         ground ticks  788 refusals 0  attack: strike (jaw)
+Eel              serpent         water  ticks  796 refusals 0  attack: strike (jaw)
+Salamander       quadruped       ground ticks  868 refusals 0  attack: bite (jaw)
+Rat              quadruped       ground ticks  914 refusals 0  attack: bite (jaw)
+Reef Shark       fish            water  ticks  748 refusals 0  attack: bite (jaw)
+Jellyfish        radial          water  ticks  796 refusals 0  attack: sting-arms (arm0Seg2): expected 56 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 56
+
+ ❯ apps/game/src/battle2/library-arena.test.ts:72:134
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 skipped (9)
+   Start at  02:35:23
+   Duration  42.00s (transform 1.81s, setup 0ms, import 2.35s, tests 39.46s, environment 0ms)
+
