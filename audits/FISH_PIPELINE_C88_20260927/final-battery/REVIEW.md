@@ -1,0 +1,3 @@
+# Exact-source verification
+
+C88 final verification: signed 701e39cd4 unchanged-source develop profile: 5,675 pass, I5 sole failure, 2 expected failures and 2 skipped. All seven remaining owners and root validation pass. Source/HEAD and exact log hashes verified; 200 GiB free. PUBLIC/UNFROZEN/five reviewed workflows rechecked. Eight static/native passes, full-size caveats retained, no visual admission or shared default change. Claude C88 brings coverage to 104/631; Snowy Owl has a real two-triangle lethal-faint refusal, and canonical tailless Hyrax exposes an invented tail attack. Source-bound presence work comes next, then further G2. No I5 retry or hosted work.
