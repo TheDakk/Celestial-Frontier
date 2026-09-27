@@ -1,3 +1,7 @@
+# Codex I5 continuation superseded 2026-09-27
+
+I5 continuation: ca46 fresh epoch stopped at133249-byte pending carrier vs unchanged131072 bound after Back/keyboard passed. Raw epoch retained; no resume. Corrected v2 compact SHA256 ownership inventories,65instrument controls/actual mutant PASS; runtime-only dependency link makes generated authority bytes portable. All78outcomes/40ceilings/deadlines/v1 unchanged. Fresh changed-instrument proof next; no certificate claimed. C101 scored8nativepass, six gallery candidates/two held; coverage158/631. Root layout787PASS.
+
 # C99 superseded Codex handoff — verbatim
 
 ## Current Codex sprint handoff — 2026-09-27, overnight run ongoing

@@ -1,0 +1,19 @@
+{
+  "path": "/private/tmp/cf-i5-heap-before/retained.heapsnapshot",
+  "sha256": "a03332a6e12d90b8cff17733b79ecf3d70e50bd3cc8fd08b5f9d62d076c4d9dd",
+  "retainers": [
+    {
+      "bytes": 6144000,
+      "chain": "JSArrayBufferData -> Float32Array left/right -> stereo b -> soundscape Map cache",
+      "source": "port/v2/apps/game/src/soundkit/soundscape.ts"
+    },
+    {
+      "bytes": 2097152,
+      "chain": "painted card master and labels, one idle resident archetype"
+    },
+    {
+      "bytes": 262144,
+      "chain": "painted marking mask, one idle resident archetype"
+    }
+  ]
+}

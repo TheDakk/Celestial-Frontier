@@ -21,6 +21,25 @@ export function flowPatch({collector,contract}) {
     }
 `+collector.slice(to);
  }
+ // Retain the last foreground sample in a stopped failure, not just its timeout.
+ // This is diagnosis only: the original classifier, deadline and cleanup stay intact.
+ const fgStart=collector.indexOf('export async function ownCandidateForeground('),fgEnd=collector.indexOf('\nexport ',fgStart+1);
+ let fg=collector.slice(fgStart,fgEnd);
+ fg=once(fg,'  try {\n    await sendStage', '  let lastForegroundObservation = null;\n  try {\n    await sendStage');
+ fg=once(fg,'        onObservation: (value, command) => {', '        onObservation: (value, command) => {\n          lastForegroundObservation = value;');
+ fg=once(fg,'  } catch (primary) {', `  } catch (primary) {
+    if (primary instanceof Error && lastForegroundObservation !== null) {
+      primary.message += '; last foreground observation: ' + JSON.stringify(lastForegroundObservation);
+    }`);
+ collector=collector.slice(0,fgStart)+fg+collector.slice(fgEnd);
+ // Publication must settle BOTH owners before accepting the error witness.
+ const workStart=collector.indexOf('export function candidateProducerErrorWorkExpression('),workEnd=collector.indexOf('export function validCandidateProducerErrorExpression(',workStart);
+ let work=collector.slice(workStart,workEnd);
+ work=once(work,'    return observation})()',`    const p=observation.paintedArt;
+    observation.ready=observation.ready&&(!p||(p.keys.pendingThumbs.length===0&&p.keys.pendingPortraits.length===0&&rows.filter(row=>p.keys.leasedThumbs.includes(row.visualKey)).every(row=>p.keys.cachedThumbs.includes(row.visualKey)&&!row.cached&&row.thumbState==='ready'&&row.complete&&row.naturalWidth===132&&row.naturalHeight===132)));
+    return observation})()`);
+ collector=collector.slice(0,workStart)+work+collector.slice(workEnd);
+ contract=once(contract, "const expectedReady = observation.panelMode === 'list' && observation.sourceCount === 1500", "const expectedReady = paintedErrorRows(observation) !== null && observation.panelMode === 'list' && observation.sourceCount === 1500");
  // Raw sibling evidence appears on pre-arm, publication and recovery carriers.
  collector=once(collector,'return `art:{cacheLimit:a.limits.cacheEntries,','return `paintedArt:d.paintedArt,art:{cacheLimit:a.limits.cacheEntries,');
  contract=once(contract,"'planetsideDistinctVisualKeys', 'cachedKeys', 'art',","'planetsideDistinctVisualKeys', 'cachedKeys', 'art', 'paintedArt',");

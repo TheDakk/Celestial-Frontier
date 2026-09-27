@@ -2612,6 +2612,8 @@ checks, not conclusions from those tests. Dated evidence below keeps its origina
 > reordered, wrong-operation/context, just-late, and still-rendering evidence.
 > IndexedDB itself is not wrapped in a timeout race, and no retry or timeout
 > increase turns a red import green.
+> Current memory ownership (matches code 2026-09-27): painted card PNGs remain cached, but the app's decoded master/label/mask inputs are released when its serialized render batch drains. Broker admission reserves actual painted thumbnail resources inside its unchanged device caps; ownership telemetry remains separate and truthful. Compendium reveal click/keydown pulses attach only while a queued reveal is blocked behind another modal, and detach on show/dispose. Focused heap evidence in `audits/I5_BACK_REPAIR_20260927` proves the idle-buffer release; it is not I5 certification.
+>
 > The Arc 1A Compendium product, fail-closed memory/resource instrument, and serviced-turn scheduler
 > repair are implemented. Da0's baseline3/candidate2/3/4 ruler and local certification remain truthful
 > history, but its no-retry PR battery produced a valid phone product-answerability red. The scheduler

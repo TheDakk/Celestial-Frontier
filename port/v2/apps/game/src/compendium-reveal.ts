@@ -42,32 +42,44 @@ export class CompendiumRevealQueueV1 {
   /** The current specimen's portrait once it arrives — reapplied by every render (a queued arrival re-renders the card). */
   #portraitUrl: string | null = null;
   #returnFocus: HTMLElement | null = null;
-  readonly #pulse = (): void => { setTimeout(() => this.flush(), 0); };
+  #watching = false;
+  #disposed = false;
+  #pulseTimer: ReturnType<typeof setTimeout> | null = null;
+  readonly #pulse = (): void => {
+    if (this.#pulseTimer !== null) return;
+    this.#pulseTimer = setTimeout(() => { this.#pulseTimer = null; this.flush(); }, 0);
+  };
+  #watchInput(watching: boolean): void {
+    if (watching === this.#watching) return;
+    this.#watching = watching;
+    const doc = this.#o.document;
+    if (watching) { doc.addEventListener('click', this.#pulse, true); doc.addEventListener('keydown', this.#pulse, true); }
+    else { doc.removeEventListener('click', this.#pulse, true); doc.removeEventListener('keydown', this.#pulse, true);
+      if (this.#pulseTimer !== null) clearTimeout(this.#pulseTimer); this.#pulseTimer = null; }
+  }
 
   constructor(options: CompendiumRevealOptionsV1) {
     this.#o = options;
-    // v1 `_revealFlush` rides the input pulse: every click/keydown after a blocking modal closes lets a queued reveal through
-    options.document.addEventListener('click', this.#pulse, true);
-    options.document.addEventListener('keydown', this.#pulse, true);
+    // Input pulses are owned only while a reveal is queued behind another modal.
   }
 
   /** A new page to reveal: shown now, or queued while a reveal is up or another modal owns the screen. */
   enqueue(entry: RevealEntryV1): void {
-    if (this.#showing !== null || this.#o.blocked()) { this.#queue.push(entry); this.#render(); return; }
+    if (this.#disposed) return;
+    if (this.#showing !== null || this.#o.blocked()) { this.#queue.push(entry); this.#watchInput(this.#showing === null); this.#render(); return; }
     this.#show(entry);
   }
   /** Show the next queued reveal when nothing blocks it (the input pulse calls this; so may the owner). */
   flush(): void {
-    if (this.#showing !== null || this.#queue.length === 0 || this.#o.blocked()) return;
+    if (this.#disposed || this.#showing !== null || this.#queue.length === 0 || this.#o.blocked()) return;
     this.#show(this.#queue.shift()!);
   }
   state(): CompendiumRevealStateV1 {
     return Object.freeze({ showing: this.#showing?.logicalId ?? null, queued: Object.freeze(this.#queue.map((e) => e.logicalId)) });
   }
   dispose(): void {
-    this.#o.document.removeEventListener('click', this.#pulse, true);
-    this.#o.document.removeEventListener('keydown', this.#pulse, true);
-    this.#close(true);
+    this.#disposed = true; this.#queue.length = 0; this.#watchInput(false);
+    this.#close(true); this.#host?.remove(); this.#host = null;
   }
 
   #ensureHost(): HTMLElement {
@@ -92,6 +104,7 @@ export class CompendiumRevealQueueV1 {
     return host;
   }
   #show(entry: RevealEntryV1): void {
+    this.#watchInput(false);
     const doc = this.#o.document;
     if (this.#showing === null) this.#returnFocus = doc.activeElement instanceof doc.defaultView!.HTMLElement ? doc.activeElement as HTMLElement : null;
     this.#portrait?.cancel(); this.#portrait = null; this.#portraitUrl = null;

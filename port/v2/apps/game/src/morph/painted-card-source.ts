@@ -22,7 +22,7 @@ export interface PaintedCardSourceOptions { readonly assets: PaintedCardAssets; 
   /** G3: the archetypes that ship in the pack (the rest are on-demand library art). When a library archetype cannot be loaded, the card
    * falls back to the body family's CORE painting (`paintedArtV2` over this set, as the stage's coreStandInRecord), labelled and uncached. Absent = no fallback. */
   readonly core?: ReadonlySet<string>;
-  /** How many decoded archetypes stay resident (LRU); default ARCHETYPE_RESIDENT_DEFAULT. */
+  /** Explicit retained authoring-tool LRU. The app default keeps at most ARCHETYPE_RESIDENT_DEFAULT during a render batch and releases every decoded archetype when the batch drains. */
   readonly archetypeEntries?: number; readonly cacheEntries?: { thumb: number; portrait: number };
   /** Hand the thread back to the host between two renders (2026-09-24, review finding: a grid asking for 20 painted cards rendered them all
    * in ONE task — ~20–40 ms each on a desktop, several times that on a phone). Default: a macrotask. Output is unaffected. */
@@ -65,6 +65,9 @@ export class PaintedCardSource {
   #renders = 0; #evicted = 0; #released = 0; #dedupeHits = 0; readonly #leases = new Map<string, number>(); #tail: Promise<unknown> = Promise.resolve();
   /** One render per host task: each waits for the previous one and a yield, so the page can paint between cards. */
   #slot<T>(render: () => T | Promise<T>): Promise<T> { const run = this.#tail.then(() => (this.#o.yieldToHost ?? macrotask)()).then(render); this.#tail = run.then(() => undefined, () => undefined); return run; }
+  readonly #resourceListeners = new Set<() => void>();
+  subscribeResources(listener: () => void): () => void { this.#resourceListeners.add(listener); return () => { this.#resourceListeners.delete(listener); }; }
+  #resourcesChanged(): void { for (const listener of this.#resourceListeners) listener(); }
   readonly #names: ReadonlySet<string>;
   constructor(o: PaintedCardSourceOptions) { this.#o = o; this.#byName = new Map(o.registry.map((a) => [a.earthName, a])); this.#names = new Set(this.#byName.keys()); }
   /** The archetype for a genome, or null (procedural species and Earth species without a painted archetype). */
@@ -123,7 +126,7 @@ export class PaintedCardSource {
   releaseUnowned(): number {
     let dropped = 0;
     for (const kind of ['thumb', 'portrait'] as const) for (const key of [...this.#cache[kind].keys()]) if (!this.#leases.has(kind + ':' + key)) { this.#cache[kind].delete(key); dropped++; }
-    this.#released += dropped; return dropped;
+    this.#released += dropped; if (dropped) this.#resourcesChanged(); return dropped;
   }
   /** The painted path's truthful ownership and resources — a sibling of the broker's diagnostics, never merged into it. */
   ownership(): PaintedCardOwnershipV1 {
@@ -147,7 +150,7 @@ export class PaintedCardSource {
   #card(genome: Readonly<Record<string, unknown>>, kind: CardKind, a: PaintedCardArchetype, finished: FinishedCardMasterV1 | null): Promise<PaintedCardAsset> {
     const key = speciesVisualKey(genome as Record<string, unknown>), cacheKey = kind + ':' + key + (finished ? '~' + finished.sha256 : ''); const hit = this.#cache[kind].get(key); if (hit && hit.finishedSha256 === (finished?.sha256 ?? undefined)) { this.#dedupeHits++; return Promise.resolve(hit); }
     const pending = this.#pending.get(cacheKey); if (pending) { this.#dedupeHits++; return pending; }
-    const p = (async () => {
+    const p = this.#slot(async () => {
       let drawnBy = a, fallback: PaintedCardAsset['libraryFallback'];
       const arch = await this.#archetype(a).catch(async (error: unknown) => {
         const core = this.#o.core, s = core && !core.has(a.earthName) ? paintedArtV2(genome, core) : null, f = s ? this.#byName.get(s.earthName) : undefined;
@@ -155,7 +158,7 @@ export class PaintedCardSource {
         drawnBy = f; fallback = Object.freeze({ wanted: a.earthName, drawnBy: f.earthName, reason: error instanceof Error ? error.message : String(error) });
         return this.#archetype(f);
       });
-      return this.#slot(async () => { const card: BodyCard = compileBodyCard(arch.record, genome as MotionGenomeFields);
+      const card: BodyCard = compileBodyCard(arch.record, genome as MotionGenomeFields);
       const params = morphParamsV1(genome as MorphGenome, arch.record.recipeHash, archetypeGenomeV1(arch.record as { genome?: MorphGenome; identity?: { speciesVisualKey?: string } })), marking = markingNameV1(params), markingMask = marking ? await this.#mask(drawnBy, arch, marking) : null;
       const own = finished && !fallback && finished.recordRecipeHash === arch.record.recipeHash && finished.width === arch.master.width && finished.height === arch.master.height && finished.rgba.length === arch.master.master.length && matchesCardAlpha(finished.rgba, arch.master.master);
       const master = own ? { ...arch.master, master: finished.rgba } : arch.master;
@@ -163,7 +166,16 @@ export class PaintedCardSource {
       const png = await encodePng(rgba, size, size); const asset: PaintedCardAsset = Object.freeze({ key, url: pngDataUrl(png), width: size, height: size, encodedBytes: png.length, decodedPixels: size * size, ...(fallback ? { libraryFallback: fallback } : {}), ...(own ? { finishedSha256: finished.sha256 } : {}) });
       if (fallback) return asset; // never cached: the creature's own painting replaces it once the library is reachable
       const cache = this.#cache[kind], cap = this.#o.cacheEntries?.[kind] ?? (kind === 'thumb' ? 64 : 8); cache.set(key, asset); while (cache.size > cap) { const oldest = cache.keys().next().value!; cache.delete(oldest); this.#evicted++; }
-      return asset; }); })().finally(() => { this.#pending.delete(cacheKey); });
+      return asset; }).finally(() => {
+        this.#pending.delete(cacheKey);
+        // The PNG is the retained card. Default app sources keep decoded masters
+        // only while a render batch needs them, never for the life of the page.
+        // An explicit archetypeEntries retains the bounded authoring-tool LRU.
+        if (this.#pending.size === 0 && this.#o.archetypeEntries === undefined) {
+          this.#archetypes.clear(); this.#archetypeBytes.clear(); this.#maskBytes.clear();
+        }
+        this.#resourcesChanged();
+      });
     this.#pending.set(cacheKey, p); return p;
   }
 }
