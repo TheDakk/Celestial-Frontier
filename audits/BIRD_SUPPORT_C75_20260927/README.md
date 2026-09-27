@@ -11,3 +11,5 @@ Full static: Goose passes every action, presentation, exact rest and source-pixe
 Goose native, both sides, observed supports, four turns including lethal reaction: 780 frames, zero refusals, 5.5 ms CPU p95 at 4x throttle. The full-size hit and faint remain assembled, with a small upright feather fragment on the faint back; no whole-painting or Dakk visual acceptance. Named full film and three stills retained. A failed preparation attempt caused by an incorrect script path is retained separately; it did not supply native evidence.
 
 Next: full quiet battery, signed own-branch delivery, then more G2 originals and remaining body/tail/wing ownership, faint, Bobcat and quad faults. I5's authorized epoch remains stopped and cannot be retried.
+
+Final verification: signed 337e7cf8 quiet develop profile: 5,664 pass, I5 authority sole failure, 2 expected failures, 2 skipped. All seven remaining owners, root validate and nine shared library-arena checks pass. 209 GiB free. Player-facing release copy remains unchanged because the earlier C70 attempt hit its sealed copy hash; no oracle or measurement was rebound. Current technical references carry the repair.
