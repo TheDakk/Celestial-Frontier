@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 47,
+ "total": 61,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -255,6 +255,34 @@
    "note": "clean"
   },
   {
+   "family": "Snakes (serpent strip author)",
+   "name": "King Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/21-king-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Grass Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/22-grass-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Whip Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/23-whip-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (the new painting; the C56 Whip was refused)"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Vine Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/24-vine-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Birds",
    "name": "Raven",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c56/c56-10-raven",
@@ -297,6 +325,20 @@
    "note": "clean"
   },
   {
+   "family": "Birds",
+   "name": "Ibis",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/13-ibis",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Oystercatcher",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/16-oystercatcher",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -323,6 +365,62 @@
    "nativeDir": "audits/TAIL_LABELS_CHECK_20260926/native-06-trout-welded",
    "report": "DIAGNOSTIC_PASS",
    "note": "lumpy back; dorsal floats in reaction"
+  },
+  {
+   "family": "Fish",
+   "name": "Grayling",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/01-grayling",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "vertical body crack (unwelded; needs tail labels + seam repair)"
+  },
+  {
+   "family": "Fish",
+   "name": "Minnow",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/02-minnow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Sculpin",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/03-sculpin",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "body fragments visibly: NOT acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Walleye",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/04-walleye",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "vertical body crack (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Whitefish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/05-whitefish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Pacu",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/06-pacu",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "body seam cracks (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Cichlid",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/07-cichlid",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Tetra",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/08-tetra",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
   },
   {
    "family": "Insects",

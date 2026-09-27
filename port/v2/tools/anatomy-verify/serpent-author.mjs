@@ -6,12 +6,16 @@
  * thickness per column and transfers the reference's cuts, landmarks and head/jaw polygons by fraction of body length and by offset in
  * local thicknesses from the centreline. It never invents paint and refuses anything that is not a single, continuous, x-monotone,
  * elongated, right-facing, tapering serpent. Pure function of pixels + reference authoring. */
+import { paintMask } from './auto-author.mjs';
 export const SERPENT_DEFAULTS = Object.freeze({ alpha: 128, minRun: 3, mainShare: 0.97, dominantShare: 0.97, maxGapFrac: 0.01, minElongation: 8,
   endFrac: 0.08, headTailRatio: 1.15, tailTipFrac: 0.03, tailTaper: 0.6, snoutFrac: 0.015, maxSnoutRatio: 0.72, smooth: 15, minPartShareOfRef: 0.25, maxUnowned: 0.01 });
 
 /** Column profile of the painted body: centreline cy[x], thickness th[x] of the dominant run, plus the refusal measures. */
 export function serpentProfile(rgba, w, h, o = SERPENT_DEFAULTS) {
-  const mask = new Uint8Array(w * h); for (let i = 0; i < w * h; i++) mask[i] = rgba[i * 4 + 3] >= o.alpha ? 1 : 0;
+  /* transparent cut-outs use alpha; an opaque chroma-keyed master (G2 C72: magenta background, no transparent pixel) uses the general
+   * author's own key (paintMask), never a second keying rule */
+  let transparent = false; for (let i = 3; i < rgba.length && !transparent; i += 4) if (rgba[i] < o.alpha) transparent = true;
+  const mask = transparent ? Uint8Array.from({ length: w * h }, (_, i) => (rgba[i * 4 + 3] >= o.alpha ? 1 : 0)) : Uint8Array.from(paintMask(rgba, w, h).mask, (v) => (v ? 1 : 0));
   /* 8-connected components: the body must be one piece */
   const lab = new Int32Array(w * h).fill(-1), sizes = []; let total = 0;
   for (let s = 0; s < w * h; s++) { if (!mask[s] || lab[s] >= 0) continue; const st = [s], id = sizes.length; lab[s] = id; let n = 0;
@@ -79,7 +83,9 @@ export function serpentAuthor({ rgba, w, h, id, refs, materials, habitat, o = SE
   const mapX = (x) => (x <= 0 ? 0 : x >= RW ? w : T.measures.xmin + ((x - R.measures.xmin) / R.measures.ext) * T.measures.ext);
   const map = ([x, y]) => { const X = mapX(x); if (y <= 0) return [X, 0]; if (y >= RH) return [X, h];
     const kx = rx(x), dy = (y - R.cy[kx]) / Math.max(1, R.th[kx]), kt = tx(X); return [X, Math.min(h, Math.max(0, T.cy[kt] + dy * T.th[kt]))]; };
-  const r1 = (p) => [Math.round(p[0] * 10) / 10, Math.round(p[1] * 10) / 10];
+  /* canvas clamp (as the general author's v7 repair): a transferred vertex past the canvas edge lies where there is no paint; opaque keyed
+   * masters go through the authored-mask intake, which requires every vertex inside the canvas */
+  const r1 = (p) => [Math.round(Math.min(w, Math.max(0, p[0])) * 10) / 10, Math.round(Math.min(h, Math.max(0, p[1])) * 10) / 10];
   const landmarksPx = Object.fromEntries(Object.entries(ref.authoring.landmarksPx).map(([k, p]) => [k, r1(map(p))]));
   const parts = ref.authoring.parts.map((p) => ({ ...p, polygonPx: p.polygonPx.map((q) => r1(map(q))) }));
   /* ground line: keep the reference's gap between its lowest paint and its ground line */

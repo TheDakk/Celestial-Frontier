@@ -1,8 +1,8 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 44,
- "pct": 7,
+ "covered": 57,
+ "pct": 9,
  "unmatchedRegistryNames": [],
  "families": [
   {
@@ -39,23 +39,33 @@
   {
    "family": "fish",
    "species": 132,
-   "covered": 5,
-   "pct": 3.8,
+   "covered": 13,
+   "pct": 9.8,
    "names": [
     "Trout",
     "Carp",
     "Herring",
+    "Grayling",
+    "Minnow",
+    "Sculpin",
     "Perch",
+    "Pacu",
+    "Cichlid",
+    "Tetra",
+    "Walleye",
+    "Whitefish",
     "Cod"
    ]
   },
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 6,
-   "pct": 5.9,
+   "covered": 8,
+   "pct": 7.8,
    "names": [
     "Goose",
+    "Ibis",
+    "Oystercatcher",
     "Quail",
     "Vulture",
     "Raven",
@@ -75,8 +85,8 @@
   {
    "family": "serpent",
    "species": 22,
-   "covered": 9,
-   "pct": 40.9,
+   "covered": 12,
+   "pct": 54.5,
    "names": [
     "Python",
     "Tree Snake",
@@ -86,7 +96,10 @@
     "Water Snake",
     "Mamba",
     "Racer",
-    "Grass Snake"
+    "Whip Snake",
+    "Grass Snake",
+    "King Snake",
+    "Vine Snake"
    ]
   },
   {

@@ -337,5 +337,117 @@
   "note": "clean in reaction; Codex saw fragments in other frames",
   "batch": "perf recheck",
   "tag": "2026-09-27"
+ },
+ {
+  "family": "fish",
+  "name": "Grayling",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/01-grayling",
+  "note": "vertical body crack (unwelded; needs tail labels + seam repair)",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Minnow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/02-minnow",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Sculpin",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/03-sculpin",
+  "note": "body fragments visibly: NOT acceptable",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Walleye",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/04-walleye",
+  "note": "vertical body crack (unwelded)",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Whitefish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/05-whitefish",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Pacu",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/06-pacu",
+  "note": "body seam cracks (unwelded)",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Cichlid",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/07-cichlid",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Tetra",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/08-tetra",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Ibis",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/13-ibis",
+  "note": "clean",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Oystercatcher",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/16-oystercatcher",
+  "note": "clean",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "serpent",
+  "name": "King Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/21-king-snake",
+  "note": "clean",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "serpent",
+  "name": "Grass Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/22-grass-snake",
+  "note": "clean",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "serpent",
+  "name": "Whip Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/23-whip-snake",
+  "note": "clean (the new painting; the C56 Whip was refused)",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
+ },
+ {
+  "family": "serpent",
+  "name": "Vine Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/24-vine-snake",
+  "note": "clean",
+  "batch": "audits/G2_C72_20260927",
+  "tag": "g2c72c"
  }
 ]

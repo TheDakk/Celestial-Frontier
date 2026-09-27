@@ -1,0 +1,118 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "11-chough",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "759203eff18b1e9818af207ec51dcc84de8441269b16f97f21d3561e96d48c74",
+ "subjectSourceSha256": "40bfee796060ee4e3592abd7bccf2ebac68786d7475ebe3dae88959ba0aeb999",
+ "identity": {
+  "name": "Chough",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Chough\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2759847108\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "seed": 2759847108,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "grouse",
+  "authoringSha256": "fc029a119afb90f432c4e7366fdbd8957651e741d46d8a95c100a1ee12ef7a64",
+  "masterSha256": "712072ae73b0cc55cbffc990bdc202a11871cc1b264ab98d9a13927bbda146c8"
+ },
+ "habitat": {
+  "profileId": "bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "080136b779f700a6c6860d1d4eb9593834bb0258212903c6b3656f9a8aca3675",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0792,
+     "class": "top",
+     "attach": {
+      "x": 330.7,
+      "y": 105.4,
+      "relX": 0.8,
+      "relY": 0.05
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0044,
+     "class": "other",
+     "attach": {
+      "x": 347,
+      "y": 149,
+      "relX": 0.84,
+      "relY": 0.32
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1471,
+     "class": "rear",
+     "attach": {
+      "x": 105.7,
+      "y": 220,
+      "relX": 0.24,
+      "relY": 0.76
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0426,
+     "class": "limb-down",
+     "attach": {
+      "x": 202.9,
+      "y": 259.6,
+      "relX": 0.48,
+      "relY": 1
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0539,
+     "class": "limb-down",
+     "attach": {
+      "x": 252,
+      "y": 260,
+      "relX": 0.61,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "other": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "grouse",
+   "byClass": {
+    "top": 3,
+    "other": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

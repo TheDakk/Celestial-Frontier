@@ -118,6 +118,16 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**G2 C72 batch (Codex `b8741e6f`: 8 fish, 8 birds, 4 insects, 4 snakes), scored with `score-batch.mjs` (session 5)** (`auto-g2c72c/`, `native-g2c72c/`):
+- **Three instrument problems found on the first two runs and fixed; none was a creature fault:**
+  1. **Fish need an aquatic WORLD block in the battle script**, not just lake themes. The stage refused "home arena cannot support both organisms". `score-batch` now bases fish on the `native-g2fam-fish` script.
+  2. **This batch's masters are opaque and magenta-keyed**, not transparent. The serpent author read alpha only, so every snake measured length/thickness 1. It now uses the general author's own `paintMask` key when there is no transparency.
+  3. **The serpent author lacked the general author's canvas clamp.** Opaque masters go through the authored-mask intake, which refuses vertices outside the canvas (the Racer's head polygon overshoots the body).
+  The serpent battery verdicts are identical after both serpent fixes, and the tests pass.
+- **Result: 14/24 native DIAGNOSTIC_PASS.** All 8 fish, Ibis and Oystercatcher, and all 4 snakes (King, Grass, Whip, Vine; the first opaque-master snakes).
+- **Refused:** Finch/Egret/Stork (leg coverage), Lark/Chough (facing), Ptarmigan (wrong family), Water Strider, Cockroach, Stick Insect. The Carrion Beetle is refused at intake.
+- **Full-size:** snakes and both birds look clean. The fish are unwelded: body cracks on Grayling, Walleye and Pacu, and the **Sculpin fragments (not acceptable)**. Minnow, Whitefish, Cichlid and Tetra look acceptable. The fish need the tail-label and axial seam repairs before acceptance.
+
 **Codex's hand-authored reference candidates evaluated (C66 → C67, session 5)** (`audits/G2_REFERENCES_C62_20260927`: Robin, Pigeon, Duck, Hawk, Cat, Weasel, Ant, Cricket; hand observations on NEW originals; `--extra-refs`, leave-one-species-out):
 - **Battery with them: unchanged** (18/34 · 34/34 · 34/34 · 31/34 · 26/27; `mutants/summary-handrefs-c66.json`). Hand references cost no safety, unlike the rejected automatic bootstrapping (D28).
 
