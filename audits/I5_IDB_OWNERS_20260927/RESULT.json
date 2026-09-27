@@ -133,5 +133,23 @@
     ".github/workflows/dev-preview-package.yml": "1ba3d58179f85f424b735346373431f625b351b87b21380101663a0f11181a86",
     ".github/workflows/publish-branch-sites.yml": "beea847251257299b63325b733d302b9e158cb954503d8dc09b89b42583be34c",
     ".github/workflows/sync-agent-branches.yml": "252c890888d9c2aaa417524e52a4c8d417d538dc7d368f4070232c77dd78b681"
+  },
+  "publication": {
+    "confirmedCheckpoint": "7227a39af2835397c941724bbee7686a74f63fa7",
+    "remote": "origin/openai/mac",
+    "normalPush": true,
+    "hostedAttempt": false
+  },
+  "claudeIndependentConfirmation": {
+    "signedCommit": "e573f934dc1b508f2f0db05efb9cd2b7deb244f1",
+    "testedMerge": "8cbc0f5d3",
+    "unitPassed": 5725,
+    "develop": "PASS",
+    "sevenOwners": "PASS",
+    "handoffPreservedByteIdentical": true,
+    "mergeChanges": [
+      "ROADMAP.md",
+      "audits/MAILBOX/TO_CODEX.md"
+    ]
   }
 }
