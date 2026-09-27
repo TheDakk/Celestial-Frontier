@@ -1,0 +1,177 @@
+[
+  {
+    "id": "01-goby",
+    "masterSha256": "7b576b4726075d251f6dea73633ccde8223471c394c5910c841355db0dbf6c8a",
+    "promptSha256": "9d9b8343decc2fb1e7147a0919d3ea188660a9785169e1b6aaa95a713798017d",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "02-blenny",
+    "masterSha256": "00c536117708ad6eba37883d562d72b59728babe96c3ca9466e084ac1b5788de",
+    "promptSha256": "e2e4cff2e46e4a28edab82f3ae3106052bdc5a99c81cfa5c3090425939ca8dbb",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "03-wrasse",
+    "masterSha256": "da948c355f98c7cfe840dc91bf8afc6ec01cb73a3599d1ca1d8289dabfc26c1d",
+    "promptSha256": "09a5658e530cf9bc8f6e314b2490a0df9fea0f7a0bcfff207c80aadbeedc07dc",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "04-damselfish",
+    "masterSha256": "b31301ff4e81aaa1e39e6b8030d9e2e7e22982074527088eb3cc6daa4daf99ca",
+    "promptSha256": "edefea61afd10e6316b01bfc10672e742916722a85f6173230be46713d297c1b",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "05-clownfish",
+    "masterSha256": "f0c243583fa619afab456422e121283c46dede7275d315519e6e771d3095f5ce",
+    "promptSha256": "070528fa158700cc168c6ee6698cecc078f2b3df9e4f4bc60644b4dfc876bf31",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "06-butterflyfish",
+    "masterSha256": "a1dc3415acbec70e77b2c6653673e5305afa4cec8385c27bd0d8afed42828d96",
+    "promptSha256": "a1c07b4c003cf71ec115057f55f6f5c549c8ab02d1a041f58cf88b0abafa2e1e",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "07-surgeonfish",
+    "masterSha256": "e1d2ca7fd88815cc64332e152c462cc01d867a469a8f30ab90fa94d418e2def5",
+    "promptSha256": "d55025733f63e3b7ff96e3b0e2c107f70613098163aa3139d629444997eed068",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "08-angelfish",
+    "masterSha256": "893f29f87affca73f79d7440699f9adddea27f6b513dea3549a44e5f4979d1ec",
+    "promptSha256": "bfb001dc758b0dc384186ce873e079805c940bbfc586d894434ec0acc3128451",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "09-owl",
+    "masterSha256": "d38aa0247a8378632fc79acf345717b9dc56e9736fff6dd5cf5c34fad2ce8ca2",
+    "promptSha256": "c3a7c04d0c78a395122227f478cf32e7ca52a82eff29fcbe89aa2120b79e9cdf",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "10-snowy-owl",
+    "masterSha256": "c406be06b90a517547653ae28bdec013b51aa5c4d0e2169cb4f6445236608b1a",
+    "promptSha256": "254640347b789f0a1151b5b9b6e7a674c70dcb589194413553d7f3e84f5bfcb6",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "11-roadrunner",
+    "masterSha256": "2bca779a9e41b3602c8f97ed7ced955bd4d6c4765ad526e154a184101d3f53f9",
+    "promptSha256": "c0fc483ed3591a585187e6e50d011b4036a7b452cb804a37b432be20e14ef1ad",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "12-sandgrouse",
+    "masterSha256": "8ef26e194950c91f692a1afab80239dc878a983fb95c9cd0f1896e5dbcb1ac99",
+    "promptSha256": "04c9175ae44774c0ca59fc0dfad1e001912544f92843c0bbc6b3380add1df862",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "13-turkey",
+    "masterSha256": "58423cc009b8f6309ddac46ff18547b49319df2cb00ec7e86c22cac2070e890d",
+    "promptSha256": "c4046259afc680b3288f49caf424ca3a5c6e05c72e4bb0f644c9b100d3ca4615",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "14-woodpecker",
+    "masterSha256": "08cf942e09969e6aefdb0874f6d6fbe31ff5e448ee17e8f8967a744072c31eb4",
+    "promptSha256": "b616ae3bb9a0e04f4b7a2d04e1d6125983844963f6dea53b66094527bfa3cebe",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "15-guillemot",
+    "masterSha256": "5699a582606854edeac1e5477a02aec67ed3b9d648af8d9034105c603b43e43c",
+    "promptSha256": "9b28c4590e684f29263d22269f3f57981ff736cbd7299bd60294aa64d79d6f00",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "16-eider-duck",
+    "masterSha256": "5076153c46529cb07edcd5b2c3be17ac0db81e53e14227436b1918a98c0a0503",
+    "promptSha256": "ec101899217228188f1b7a039d917fc06e8acacfa47b0ad7e30d0c35eb1053a5",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "17-coati",
+    "masterSha256": "7dc0efc0af808bba6a89c9470e50b70a59c182eb37980bb43fc4e355a12c8ee9",
+    "promptSha256": "51cd852092b75812960730287eff1bda07fbf54a78e65c86fb15742a01c377c0",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "18-red-panda",
+    "masterSha256": "3a60fe3e897e6b7516a6dbc36b5b14d39f0ca23e107c002a355f71639247cef1",
+    "promptSha256": "27a1dbe5812e353e8fe459fcfbf718ec691fc11ef7575d4b73901f1b2a75aadf",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "19-pampas-fox",
+    "masterSha256": "3e9e73f497771936c853068d5fd3072ad35efcdf8d06c55c503eee184c27b523",
+    "promptSha256": "911615d95c0998527eae5141800d75097c41ca3367e758a0d79c7fd17b6e1bba",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "20-striped-hyena",
+    "masterSha256": "d40de6a36b421cc5dd7495eb8ac0fe01af0baf2e90429874a33f71b6157506fe",
+    "promptSha256": "056aaa7bb1461d4174b0210c904bd27f056d6e002421ed34a9078f5fc37c7d1e",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "21-wildcat",
+    "masterSha256": "16fa30958dfa493f6672ecdcc134a86580e5abd8bd6bf5d5fbb90d850cb5c6c9",
+    "promptSha256": "b629f53ce6b877448ea3a3c8d33fd0568f912f30a385ffce8c0775d310a28329",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "22-black-bear",
+    "masterSha256": "4cd24e7dbf19c7668857ca0b3354b42a20a5863c97296e3f5b60c647836c3ed5",
+    "promptSha256": "caadb9e4f111fc0bc8664f8b0c018a51740225bba046aed51a69003289db1243",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "23-spectacled-bear",
+    "masterSha256": "887c6038336013e1b3fabdfd5206f7655edd2b86104e8e4c61c5c3c315365293",
+    "promptSha256": "07433ba6a6eb3c18306605f9cc125c5c6f7bacde1d0c81e7b048c4d83bd9e9ef",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "24-hyrax",
+    "masterSha256": "214a7761aa7d238e2b17e2f80093b2bc0eb3910661a98944ec714c6cc827274d",
+    "promptSha256": "eadc37ef5ae64c1812fe07044b98301e70a7c024c237c79ef365561b90e73fe2",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  },
+  {
+    "id": "25-angelfish-marine",
+    "masterSha256": "4c14c5ac441636af8d8e671b62bfca36c567a0bd1627b19b3c06a1ab54106ef7",
+    "promptSha256": "0fafdabdf70cdd9e2901950740dbdbd22fe2f99a60f42d11e79022686c933d65",
+    "originalRetainedExactly": true,
+    "outputModified": false
+  }
+]

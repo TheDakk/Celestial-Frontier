@@ -1,0 +1,146 @@
+{
+  "id": "14-woodpecker",
+  "name": "Woodpecker",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "08cf942e09969e6aefdb0874f6d6fbe31ff5e448ee17e8f8967a744072c31eb4",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 11619,
+    "coreRadius": 19,
+    "bodyBox": {
+      "x0": 178,
+      "y0": 163,
+      "x1": 268,
+      "y1": 254
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2048,
+        "pixels": 2380,
+        "box": {
+          "x0": 228,
+          "y0": 111,
+          "x1": 311,
+          "y1": 162
+        },
+        "attach": {
+          "x": 247.5,
+          "y": 162,
+          "relX": 0.77,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.31,
+          "y": -0.95
+        },
+        "class": "top",
+        "length": 81.4
+      },
+      {
+        "k": 1,
+        "frac": 0.007,
+        "pixels": 81,
+        "box": {
+          "x0": 269,
+          "y0": 169,
+          "x1": 271,
+          "y1": 203
+        },
+        "attach": {
+          "x": 269,
+          "y": 186,
+          "relX": 1.01,
+          "relY": 0.25
+        },
+        "dir": {
+          "x": 1,
+          "y": 0
+        },
+        "class": "front",
+        "length": 17.1
+      },
+      {
+        "k": 2,
+        "frac": 0.2385,
+        "pixels": 2771,
+        "box": {
+          "x0": 115,
+          "y0": 217,
+          "x1": 273,
+          "y1": 299
+        },
+        "attach": {
+          "x": 192.8,
+          "y": 246.9,
+          "relX": 0.16,
+          "relY": 0.92
+        },
+        "dir": {
+          "x": -0.42,
+          "y": 0.91
+        },
+        "class": "limb-down",
+        "length": 95.7
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 115,
+        "x1": 123,
+        "cx": 119
+      },
+      {
+        "x0": 122,
+        "x1": 142,
+        "cx": 131.7
+      },
+      {
+        "x0": 189,
+        "x1": 192,
+        "cx": 189.9
+      },
+      {
+        "x0": 194,
+        "x1": 206,
+        "cx": 199
+      },
+      {
+        "x0": 211,
+        "x1": 221,
+        "cx": 216
+      },
+      {
+        "x0": 223,
+        "x1": 225,
+        "cx": 224
+      },
+      {
+        "x0": 223,
+        "x1": 273,
+        "cx": 248
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

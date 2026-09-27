@@ -1,0 +1,13 @@
+{
+  "id": "13-turkey",
+  "name": "Turkey",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d0a1e403-5cc3-4b6d-b18a-93aadebcdc0c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "58423cc009b8f6309ddac46ff18547b49319df2cb00ec7e86c22cac2070e890d",
+  "bytes": 1258692,
+  "promptSha256": "c4046259afc680b3288f49caf424ca3a5c6e05c72e4bb0f644c9b100d3ca4615",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

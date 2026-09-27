@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Owl",
+  "masterSha256": "d38aa0247a8378632fc79acf345717b9dc56e9736fff6dd5cf5c34fad2ce8ca2",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

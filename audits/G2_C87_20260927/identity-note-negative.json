@@ -1,0 +1,7 @@
+{
+  "mutation": "actual canonical note emission removed",
+  "exitCode": 1,
+  "sourceSha256": "60246f8e5ef5b58a6bc26155abc5c92a50475d82a2f62a3046ebdd23a0f6ba8b",
+  "mutantSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "sourceRestoredExactly": true
+}

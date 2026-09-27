@@ -1,0 +1,13 @@
+{
+  "id": "15-guillemot",
+  "name": "Guillemot",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e8717cac-71c6-4e7d-8959-38b40cdd7a9d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5699a582606854edeac1e5477a02aec67ed3b9d648af8d9034105c603b43e43c",
+  "bytes": 1183047,
+  "promptSha256": "9b28c4590e684f29263d22269f3f57981ff736cbd7299bd60294aa64d79d6f00",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

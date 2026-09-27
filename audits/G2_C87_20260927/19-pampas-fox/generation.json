@@ -1,0 +1,13 @@
+{
+  "id": "19-pampas-fox",
+  "name": "Pampas Fox",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ce21110a-3580-4ae7-8a16-4711576c3cb3.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3e9e73f497771936c853068d5fd3072ad35efcdf8d06c55c503eee184c27b523",
+  "bytes": 1253411,
+  "promptSha256": "911615d95c0998527eae5141800d75097c41ca3367e758a0d79c7fd17b6e1bba",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

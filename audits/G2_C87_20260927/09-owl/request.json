@@ -1,0 +1,26 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Owl",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "c3a7c04d0c78a395122227f478cf32e7ca52a82eff29fcbe89aa2120b79e9cdf",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "raptor",
+  "authoringCreated": false,
+  "sourceHead": "36fe9633c9efbe6d915a63a751cfe9aa2ee5429a",
+  "basePromptSha256": "ff2ae42f8c1710c40fab104ce41217e9e80713034893b2763edbfcf3beb12e9a",
+  "layoutCompilerSha256": "81a982bac26e9844354b448d5d8a8d8bc89122768db072c3fbcb0e668505640d",
+  "layoutClarification": "Species identity features FIRST: flat round facial disc; enormous forward-facing eyes; upright barrel body with no visible neck. One Earth Owl. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n",
+  "addedCanonicalIdentityNote": "the 'ear tufts' are feathers, not ears; the wings fold flat against the body and the tail barely projects",
+  "previousNotePromptSha256": "71a4cac8b47fdc0883764f272702422b9c88712025cbfb8c3ef9c0e2c52b5143"
+}

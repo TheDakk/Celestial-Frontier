@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Goby",
+  "masterSha256": "7b576b4726075d251f6dea73633ccde8223471c394c5910c841355db0dbf6c8a",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,5 +1,7 @@
 # Local AI generation — painted landfalls
 
+**Canonical generation identity — matches tooling 2026-09-27.** The G2 library prompt compiler includes the canonical species note as well as mustRead features. This prevents losing explicit disambiguation such as marine Angelfish versus freshwater angelfish. Actual compiler controls cover note presence/absence and exact prompt hashes; removing note emission fails the Angelfish control. C87 retains the refused freshwater original and a separately generated marine replacement, plus 23 other selected species. Pattern, anatomy, native motion and visual admission remain distinct. Evidence: `audits/G2_C87_20260927`.
+
 > Matches D1 delivery code, 2026-09-19: `creature-delivery.ts` reads retained PNG originals by full identity and expected hash, otherwise returns the verified painter. It has no inference, worker, GPU or rig dependency. Selection of a finish is explicit; proof usage does not adopt artwork into production. Evidence: `audits/ANATOMY_SINGLE_RUN_20260919/R8/README.md`.
 
 [Seeded painted biome encounter](audits/PAINTED_BIOME_ENCOUNTER_20260916/README.md),

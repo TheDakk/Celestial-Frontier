@@ -1,0 +1,23 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Angelfish",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "0fafdabdf70cdd9e2901950740dbdbd22fe2f99a60f42d11e79022686c933d65",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "60246f8e5ef5b58a6bc26155abc5c92a50475d82a2f62a3046ebdd23a0f6ba8b",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "fish",
+  "authoringCreated": false,
+  "sourceHead": "36fe9633c9efbe6d915a63a751cfe9aa2ee5429a",
+  "basePromptSha256": "1c9776ea0479b5c17c5ff6b3f0ee9d5797a1c7aeb7629ff08c3ef8ebb76cfbb3",
+  "identityClarification": "IDENTITY FIRST: a MARINE angelfish of family Pomacanthidae, not freshwater Pterophyllum. Paint a naturally rounded tall disc-shaped reef-fish body, small mouth, visible natural gill-cover spine, and species-correct trailing dorsal/anal tips. No freshwater triangular silhouette or long threadlike pelvic whips. Preserve the canonical source features below.\nZOOMED-OUT COMPOSITION: one small whole fish centred in a large empty magenta square, occupying only HALF the 1254-square canvas width and height, with at least 200 pixels empty margin on all four sides. Head RIGHT, full true caudal tail LEFT, horizontal side view, all natural fin roots continuous. No crop, scenery or shadow.\n\n"
+}
