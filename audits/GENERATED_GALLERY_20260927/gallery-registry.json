@@ -383,8 +383,8 @@
  {
   "family": "fish",
   "name": "Minnow",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/02-minnow",
-  "note": "acceptable; unwelded",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; no large opening",
   "batch": "audits/G2_C72_20260927",
   "tag": "g2c72c"
  },
@@ -407,8 +407,8 @@
  {
   "family": "fish",
   "name": "Whitefish",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/05-whitefish",
-  "note": "acceptable; unwelded",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; no large opening",
   "batch": "audits/G2_C72_20260927",
   "tag": "g2c72c"
  },
@@ -423,16 +423,16 @@
  {
   "family": "fish",
   "name": "Cichlid",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/07-cichlid",
-  "note": "acceptable; unwelded",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; no large opening",
   "batch": "audits/G2_C72_20260927",
   "tag": "g2c72c"
  },
  {
   "family": "fish",
   "name": "Tetra",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/08-tetra",
-  "note": "acceptable; unwelded",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; belly loop (Codex)",
   "batch": "audits/G2_C72_20260927",
   "tag": "g2c72c"
  },
@@ -489,8 +489,8 @@
  {
   "family": "fish",
   "name": "Pike",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/01-pike",
-  "note": "body cracks (unwelded)",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; snout distortion in late pose",
   "batch": "audits/G2_C76_20260927",
   "tag": "g2c76"
  },
@@ -505,16 +505,16 @@
  {
   "family": "fish",
   "name": "Char",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/03-char",
-  "note": "nearly clean; unwelded",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; snout distortion (Codex)",
   "batch": "audits/G2_C76_20260927",
   "tag": "g2c76"
  },
  {
   "family": "fish",
   "name": "Sturgeon",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/04-sturgeon",
-  "note": "gill seam line (unwelded)",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; chest opening (Codex)",
   "batch": "audits/G2_C76_20260927",
   "tag": "g2c76"
  },
@@ -529,8 +529,8 @@
  {
   "family": "fish",
   "name": "Goldfish",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/08-goldfish",
-  "note": "small body crack; unwelded",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; no large opening",
   "batch": "audits/G2_C76_20260927",
   "tag": "g2c76"
  },
@@ -589,8 +589,8 @@
  {
   "family": "fish",
   "name": "Haddock",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/02-haddock",
-  "note": "vertical body cracks (unwelded)",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; face compressed (Codex)",
   "batch": "audits/G2_C81_20260927",
   "tag": "g2c81",
   "supports": "observed"
@@ -598,8 +598,8 @@
  {
   "family": "fish",
   "name": "Pollock",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/03-pollock",
-  "note": "vertical body cracks (unwelded)",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; snout distortion (Codex)",
   "batch": "audits/G2_C81_20260927",
   "tag": "g2c81",
   "supports": "observed"
@@ -616,8 +616,8 @@
  {
   "family": "fish",
   "name": "Anchovy",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/05-anchovy",
-  "note": "small body crack (unwelded)",
+  "nativeDir": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01",
+  "note": "cracks closed by Codex fixed fish recipe; snout distortion (Codex)",
   "batch": "audits/G2_C81_20260927",
   "tag": "g2c81",
   "supports": "observed"
@@ -665,6 +665,78 @@
   "note": "clean",
   "batch": "audits/G2_C81_20260927",
   "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Grouper",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/01-grouper",
+  "note": "gill hole (unwelded)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Barracuda",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/02-barracuda",
+  "note": "small crack (unwelded)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Sailfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/05-sailfish",
+  "note": "body cracks (unwelded)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Mahi-Mahi",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/07-mahi-mahi",
+  "note": "vertical cracks (unwelded)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Tanager",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/13-tanager",
+  "note": "clean",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cheetah",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/18-cheetah",
+  "note": "clean (both ears / offset feet / clear tail layout)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Maned Wolf",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/21-maned-wolf",
+  "note": "clean (C83 layout)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Sand Cat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/22-sand-cat",
+  "note": "clean (C83 layout)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
   "supports": "observed"
  }
 ]

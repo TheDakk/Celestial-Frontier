@@ -1,0 +1,9 @@
+{
+ "id": "06-swordfish",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part jaw (jaw) covers 0% paint (reference 93%)"
+ ],
+ "semanticPresence": null
+}

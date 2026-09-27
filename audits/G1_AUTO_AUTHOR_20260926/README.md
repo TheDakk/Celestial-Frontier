@@ -118,6 +118,12 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**G2 C83 batch (Codex `b16ee2fa`: the painting-side levers applied — quadrupeds with both ear tips, four offset feet and clear tails; birds with short folded wing tips)** (`native-g2c83/`):
+- **8/24 native PASS:** Grouper, Barracuda, Sailfish, Mahi-mahi; Tanager; **Cheetah, Maned Wolf, Sand Cat**.
+- **The layout lever works for quadrupeds:** 3/8, against 0/8 in C76, and no far-ear/tail refusals remain. The remaining quad refusals are unexplained paint (Fishing Cat, Aardvark) and an extra limb (Wild Dog, Spotted Hyena); Prairie Dog is static RED.
+- **Birds:** Tanager passes; the Cockatoo is static RED and the Kookaburra is refused at intake. The others are refused on thigh coverage, ground contacts or unexplained paint (big bills/casques).
+- **Full-size:** the three quads and the Tanager are clean. The fish are unwelded (Grouper gill hole; cracks on Barracuda, Sailfish, Mahi-mahi).
+
 **Bird wing/tail division (Codex C82 asked for a source-supported guard): two measured guards, both rejected** (16 admitted birds, including the faulty Raven and Vulture):
 1. **Transferred tail polygon covered by wing-tip polygons:** Raven 15.8 %, Vulture 17.7 %, clean birds 0–24 % (Goose 19.7, Kestrel 22.0). No threshold separates them.
 2. **Wing-tip landmarks on the paint-only counter's rear (tail) appendage:** Raven 2/2, Vulture 0/2, but clean Kestrel and Magpie are 2/2 as well.

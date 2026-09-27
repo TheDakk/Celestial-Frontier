@@ -1,0 +1,145 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C83_20260927",
+ "tag": "g2c83",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-grouper",
+  "02-barracuda",
+  "05-sailfish",
+  "07-mahi-mahi",
+  "13-tanager",
+  "18-cheetah",
+  "21-maned-wolf",
+  "22-sand-cat"
+ ],
+ "refused": [
+  {
+   "id": "03-tuna",
+   "reason": "unexplained-anatomy: 8.9% of the paint lies away from the body and in no part (reference 3.9%)"
+  },
+  {
+   "id": "04-marlin",
+   "reason": "missing-anatomy: part head (head) covers 12% paint (reference 48%)"
+  },
+  {
+   "id": "06-swordfish",
+   "reason": "missing-anatomy: part jaw (jaw) covers 0% paint (reference 93%)"
+  },
+  {
+   "id": "08-wahoo",
+   "reason": "missing-anatomy: part dorsal (dorsal) covers 30% paint (reference 92%)"
+  },
+  {
+   "id": "09-macaw",
+   "reason": "missing-anatomy: part near-thigh (legNearKnee) covers 29% paint (reference 84%)"
+  },
+  {
+   "id": "10-parrot",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "11-toucan",
+   "reason": "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "12-hornbill",
+   "reason": "unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "14-weaverbird-standing-v2",
+   "reason": "missing-anatomy: part near-thigh (legNearKnee) covers 19% paint (reference 73%)"
+  },
+  {
+   "id": "17-fishing-cat",
+   "reason": "unexplained-anatomy: 9.8% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "19-african-wild-dog",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "20-spotted-hyena",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "24-aardvark",
+   "reason": "unexplained-anatomy: 15.4% of the paint lies away from the body and in no part (reference 8.6%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "15-kookaburra",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "16-cockatoo",
+   "static": "RED"
+  },
+  {
+   "id": "23-prairie-dog",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "01-grouper",
+   "name": "Grouper",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "02-barracuda",
+   "name": "Barracuda",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "05-sailfish",
+   "name": "Sailfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "07-mahi-mahi",
+   "name": "Mahi-Mahi",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "13-tanager",
+   "name": "Tanager",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "18-cheetah",
+   "name": "Cheetah",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "21-maned-wolf",
+   "name": "Maned Wolf",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "22-sand-cat",
+   "name": "Sand Cat",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

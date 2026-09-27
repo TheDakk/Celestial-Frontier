@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 82,
+ "total": 90,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -190,6 +190,27 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/lynx",
    "report": "DIAGNOSTIC_PASS",
    "note": "clean in reaction; Codex saw fragments in other frames"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Cheetah",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/18-cheetah",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (both ears / offset feet / clear tail layout)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Maned Wolf",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/21-maned-wolf",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (C83 layout)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Sand Cat",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/22-sand-cat",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (C83 layout)"
   },
   {
    "family": "Snakes (serpent strip author)",
@@ -395,6 +416,13 @@
    "note": "clean"
   },
   {
+   "family": "Birds",
+   "name": "Tanager",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/13-tanager",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -432,9 +460,9 @@
   {
    "family": "Fish",
    "name": "Minnow",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/02-minnow",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "acceptable; unwelded"
+   "note": "cracks closed by Codex fixed fish recipe; no large opening"
   },
   {
    "family": "Fish",
@@ -453,9 +481,9 @@
   {
    "family": "Fish",
    "name": "Whitefish",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/05-whitefish",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "acceptable; unwelded"
+   "note": "cracks closed by Codex fixed fish recipe; no large opening"
   },
   {
    "family": "Fish",
@@ -467,23 +495,23 @@
   {
    "family": "Fish",
    "name": "Cichlid",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/07-cichlid",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "acceptable; unwelded"
+   "note": "cracks closed by Codex fixed fish recipe; no large opening"
   },
   {
    "family": "Fish",
    "name": "Tetra",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/08-tetra",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "acceptable; unwelded"
+   "note": "cracks closed by Codex fixed fish recipe; belly loop (Codex)"
   },
   {
    "family": "Fish",
    "name": "Pike",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/01-pike",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "body cracks (unwelded)"
+   "note": "cracks closed by Codex fixed fish recipe; snout distortion in late pose"
   },
   {
    "family": "Fish",
@@ -495,16 +523,16 @@
   {
    "family": "Fish",
    "name": "Char",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/03-char",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "nearly clean; unwelded"
+   "note": "cracks closed by Codex fixed fish recipe; snout distortion (Codex)"
   },
   {
    "family": "Fish",
    "name": "Sturgeon",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/04-sturgeon",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "gill seam line (unwelded)"
+   "note": "cracks closed by Codex fixed fish recipe; chest opening (Codex)"
   },
   {
    "family": "Fish",
@@ -516,9 +544,9 @@
   {
    "family": "Fish",
    "name": "Goldfish",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/08-goldfish",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "small body crack; unwelded"
+   "note": "cracks closed by Codex fixed fish recipe; no large opening"
   },
   {
    "family": "Fish",
@@ -530,16 +558,16 @@
   {
    "family": "Fish",
    "name": "Haddock",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/02-haddock",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "vertical body cracks (unwelded)"
+   "note": "cracks closed by Codex fixed fish recipe; face compressed (Codex)"
   },
   {
    "family": "Fish",
    "name": "Pollock",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/03-pollock",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "vertical body cracks (unwelded)"
+   "note": "cracks closed by Codex fixed fish recipe; snout distortion (Codex)"
   },
   {
    "family": "Fish",
@@ -551,9 +579,9 @@
   {
    "family": "Fish",
    "name": "Anchovy",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/05-anchovy",
+   "nativeDir": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "small body crack (unwelded)"
+   "note": "cracks closed by Codex fixed fish recipe; snout distortion (Codex)"
   },
   {
    "family": "Fish",
@@ -568,6 +596,34 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/07-tarpon",
    "report": "DIAGNOSTIC_PASS",
    "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Grouper",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/01-grouper",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "gill hole (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Barracuda",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/02-barracuda",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small crack (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Sailfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/05-sailfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "body cracks (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Mahi-Mahi",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/07-mahi-mahi",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "vertical cracks (unwelded)"
   },
   {
    "family": "Insects",

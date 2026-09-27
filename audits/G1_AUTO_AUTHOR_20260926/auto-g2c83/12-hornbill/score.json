@@ -1,0 +1,9 @@
+{
+ "id": "12-hornbill",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 2.3%)"
+ ],
+ "semanticPresence": null
+}
