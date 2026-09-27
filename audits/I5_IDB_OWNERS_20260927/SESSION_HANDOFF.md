@@ -15,3 +15,7 @@ Completion path: prove ownership fix; preserve stopped evidence; refresh current
 ## Latest superseding status
 
 The database-capture repair is signedbc86c863b and native-proven (including actual constraint-error rollback). Product d20c2716604209a67359d4f16cfaac504347963f passed all3calibrations+singlecertification and4rawverifiers; terminal evidence signedafec51f84. Native reservation released in C127. Strict active-v2 admission is implemented with21negative/positive controls, immutable generated-byte comparison and current product/measurement binding. Final fullbattery+7owners/push is in progress. Claude's paused handoff through816f30dd1 merged signed in d34db50. Art remains paused;168originals retained, C121 queued. Earlier incomplete-candidate statements above are historical, not current.
+
+## Final local closure
+
+I5 CLOSED. Strict current-authority develop profile PASS on signed991997ae5262cbd82ddfd7f4c71704505f9f1be6:5725testsPASS,2expectedfail/2skipped,0unexpectedfailures. Allseven additionalownersPASS. Source clean before/after; everyloghash verified. RESULT.json binds the tested source digest, complete local proof and workflow preflight. Claude's acknowledgment merge through8cbc0f5d3 has identical tree bytes. Current code and complete evidence are ready for the normal signed own-branch checkpoint push; no hosted job/PR/label/release/deploy occurred. Development/art remain paused,168recentoriginals saved; next action only when Dakk resumes. No app relay or per-creature approval needed.
