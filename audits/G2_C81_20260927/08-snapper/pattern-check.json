@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Snapper",
+  "masterSha256": "f42ad70bc6476109b0566ebcd30d154d1491c12dcfd8045523c3b617b3d1353c",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

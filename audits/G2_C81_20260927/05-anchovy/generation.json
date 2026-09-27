@@ -1,0 +1,13 @@
+{
+  "id": "05-anchovy",
+  "name": "Anchovy",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-cc9835cd-d39f-4bca-b03a-ea79c1bcdbe8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6d0edf55957889606fa01673e0f1ab61e7ff9461762ad90870520403e5be14ef",
+  "bytes": 1181485,
+  "promptSha256": "33ca7db85fac8bf2f75b89a3a0014cdaf6a66587a7490f6112137eb39c9e8b7b",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

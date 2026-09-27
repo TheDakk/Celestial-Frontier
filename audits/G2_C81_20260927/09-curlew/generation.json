@@ -1,0 +1,13 @@
+{
+  "id": "09-curlew",
+  "name": "Curlew",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-450b3378-adbc-4e31-b043-daba6dc3f300.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7bb4d4fa9243cf3ba6fc17e4ecf25521213fc23e055fb4b474f6ccb3a2456963",
+  "bytes": 1267124,
+  "promptSha256": "7edbec7590a458fd77ec4ca90965805f3e7f21b5f07e771b48b16d0dc6638038",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

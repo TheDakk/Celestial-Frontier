@@ -1,0 +1,13 @@
+{
+  "id": "20-damselfly",
+  "name": "Damselfly",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-bd6869d3-a23e-49dd-8f25-19e20eb36e67.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "08f6125e2093f3df188bc7608d9e05ef997ce0820d64991568acb040338e8f9e",
+  "bytes": 1094470,
+  "promptSha256": "a8116270c6b9feae5cabdc3914290d88247142bafd2d391ea892b4cf0be80d07",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

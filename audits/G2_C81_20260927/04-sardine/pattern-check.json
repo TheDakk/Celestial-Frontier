@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Sardine",
+  "masterSha256": "03458b7f3fa484345c94357b289127ea26349a1bce99c907dfa67a3d9d5333fc",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

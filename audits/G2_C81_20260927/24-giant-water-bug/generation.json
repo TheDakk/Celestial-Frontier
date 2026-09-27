@@ -1,0 +1,13 @@
+{
+  "id": "24-giant-water-bug",
+  "name": "Giant Water Bug",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-94b25455-b2cc-4f75-9fca-bda0b660ae64.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "acd618f800c08d91249c34afde64cd5aff4f9012638ebc36b8edd382b6c82171",
+  "bytes": 1294379,
+  "promptSha256": "668b868738e8886356bcfb0333df2f78dd805450e7a782e364f72cc753c47b63",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

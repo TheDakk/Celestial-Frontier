@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Moorhen",
+  "masterSha256": "570ec9195a70b82471d97649653624906bc6be56374584631f683beb65116aed",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

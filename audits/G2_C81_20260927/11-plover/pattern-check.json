@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Plover",
+  "masterSha256": "1c06ec5e8e525dc18c5673e8b9431b77cd1e32e8b13afdcb3ade1c05ae2c0942",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

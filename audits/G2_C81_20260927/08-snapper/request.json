@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Snapper",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "844156f9a3c453afc4aa6e280c33227d3ef8df72e7229b3e4ba82cbd9baf5cd4",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "fish",
+  "authoringCreated": false,
+  "sourceHead": "48c225b1de6dc5d8269478c17dc5d74c38913c13",
+  "basePromptSha256": "92133b46100677324c44ecbf512bb2df4bd25d9f8c9c2df1915545b82783158a",
+  "layoutCompilerSha256": "c51024b78d65a0497013a724c921fb78ea6148ff682ef3c2c1bfa47e731bd72b",
+  "layoutClarification": "Species identity features FIRST: sloping forehead running to a pointed snout; pair of canine teeth at the front of the jaw; continuous spiny dorsal fin over a stout body. One Earth Snapper. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: horizontal fish, head RIGHT and complete caudal tail LEFT; species-correct fin count, finlets, barbels and tail shape. Natural fin rays and fin roots must stay distinct; no detached pieces. Keep the tail stalk continuous.\n\n"
+}

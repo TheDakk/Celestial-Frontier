@@ -1,0 +1,13 @@
+{
+  "id": "07-tarpon",
+  "name": "Tarpon",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-0c586b41-4207-4341-b74c-3d6345b86de7.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4cbce40d5e35b24168fdcc2b96f35ff21b3cc74c80c1cea39b84f73dd5962b40",
+  "bytes": 1303678,
+  "promptSha256": "11ba0bf4ff648454ef4ad6b84d4776d41ce770b58e8a19b6f41308a508e0e202",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

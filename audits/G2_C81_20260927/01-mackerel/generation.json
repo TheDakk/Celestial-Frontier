@@ -1,0 +1,13 @@
+{
+  "id": "01-mackerel",
+  "name": "Mackerel",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-69d6a3d3-68d2-40fb-a3d1-e801ea6f7402.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f4cfc6e1ee5a177417e1e007b92e5befcbb502a30564b5d01c724cc7af4bc6c5",
+  "bytes": 1238875,
+  "promptSha256": "7c42d295de0b68d72392a00989d71f8ffe8774fb9b07fefd9bc92ba931cf411a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
