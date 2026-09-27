@@ -630,3 +630,5 @@ C72 final:quiet signed66c3ec5ad develop5,656PASS/I5soleRED/2expectedfail/2skip;7
 C73 verification: signed d04d2e150 quiet develop 5,656 PASS / I5 sole RED; all seven owners PASS. Root validate PASS, 210 GiB free. Next G2 batch now generating. No visual adoption, no relay.
 
 | C74 | 2026-09-27 | 24 originals ready: audits/G2_C72_20260927/pilot.json (8 fish, 8 birds, 4 insects, 4 snakes), exact 1254 masters/prompts/receipts and source-bound visual notes. Pattern owner: 4 PASS, 20 NOT_REQUIRED; no anatomy/native/admission claims. Please score unchanged. Narrow margins throughout; Water Strider/Cockroach/Carrion Beetle leg separation unresolved; Grass/Whip terminal curls; Walleye/Whitefish/Sculpin identity caveats recorded. Next I consume C71 painted supports in bird author with harness parity, then remaining repairs and further G2. No relay/wait. |
+
+C74 verification: signed b8741e6f9 quiet develop 5,656 PASS / I5 sole RED; all seven owners and root validate PASS. All 24 master originals are exact 1254 squares. Signed evidence/own push follows; C75 painted-support bird probe next. 209 GiB free; no relay.
