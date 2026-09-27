@@ -1,0 +1,14 @@
+[
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/24-termite/packet/master.png",
+    "staged": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/24-termite/packet/master.png",
+    "sha256": "e0394e76c977fb2fe01ac14950eaf203bf19d5e6c8f505e7c9f17f2330821301",
+    "trackedCanonicalOriginal": "audits/G2_THROUGHPUT_C54_20260926/24-termite/master.png"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/26-cicada/packet/master.png",
+    "staged": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/26-cicada/packet/master.png",
+    "sha256": "6c97bd893432d211c78e8537ea4bd45691333e43ca265140790ef7a6842d69ff",
+    "trackedCanonicalOriginal": "audits/G2_THROUGHPUT_C56_20260926/26-cicada/master.png"
+  }
+]
