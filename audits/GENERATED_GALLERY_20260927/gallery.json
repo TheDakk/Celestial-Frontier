@@ -985,9 +985,9 @@
   {
    "family": "Fish",
    "name": "Cold-Water Fish",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/01-cold-water-fish",
+   "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/01-cold-water-fish/native",
    "report": "DIAGNOSTIC_PASS",
-   "note": "body cracks (unwelded)"
+   "note": "whole after Codex fish batch seam repair"
   },
   {
    "family": "Fish",
@@ -1006,9 +1006,9 @@
   {
    "family": "Fish",
    "name": "Sunfish",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/04-sunfish",
+   "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/04-sunfish/native",
    "report": "DIAGNOSTIC_PASS",
-   "note": "body crack (unwelded)"
+   "note": "whole after Codex fish batch seam repair"
   },
   {
    "family": "Fish",
@@ -1041,9 +1041,9 @@
   {
    "family": "Fish",
    "name": "Snailfish",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/10-snailfish",
+   "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/10-snailfish/native",
    "report": "DIAGNOSTIC_PASS",
-   "note": "FRAGMENTED: not acceptable"
+   "note": "HELD: improved but splits head/trunk in late idle"
   },
   {
    "family": "Insects",

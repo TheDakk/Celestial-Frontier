@@ -1,11 +1,11 @@
 /** One command per G2 batch (Claude 2026-09-27): pattern gate → G1 author (standard flags) → intake/static → native on every pass →
  * review sheet + full-size crops → gallery registry. Replaces the dozen hand steps of sessions 4–5 (and their zsh traps).
  * Usage (repo root; native needs the real browser, so run OUT of the sandbox):
- *   node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir-with-pilot.json> <tag> [--no-native]
+ *   node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir-with-pilot.json> <tag> [--no-native] [--fish-seams]
  * Writes: pilots/<tag>-eligible.json, auto-<tag>/ (runner), native-<tag>/ (scripts, films, stills, sheets, summary.json), and appends
  * every native PASS to gallery-registry.json (entries are data; the gallery notes start as "unreviewed" until Claude looks). */
 import fs from 'node:fs'; import path from 'node:path'; import { spawnSync } from 'node:child_process';
-const [batchArg, tag, ...flags] = process.argv.slice(2); if (!batchArg || !tag) throw Error('usage: score-batch.mjs <batchDir> <tag> [--no-native]');
+const [batchArg, tag, ...flags] = process.argv.slice(2); if (!batchArg || !tag) throw Error('usage: score-batch.mjs <batchDir> <tag> [--no-native] [--fish-seams]');
 const ROOT = path.resolve(import.meta.dirname, '../..'), HERE = import.meta.dirname, rel = (p) => path.relative(ROOT, p);
 const batch = path.resolve(ROOT, batchArg), pilot = JSON.parse(fs.readFileSync(path.join(batch, 'pilot.json'), 'utf8'));
 const run = (cmd, args, opts = {}) => { const r = spawnSync(cmd, args, { cwd: ROOT, encoding: 'utf8', maxBuffer: 1 << 28, ...opts }); return { code: r.status, out: (r.stdout || '') + (r.stderr || '') }; };
@@ -35,6 +35,10 @@ if (!flags.includes('--no-native')) for (const r of passes) { const p = eligible
   const nr = run(process.execPath, ['tools/battle2-proof/native-runner.mjs', fit, fit, path.join(N, r.id), script], { cwd: path.join(ROOT, 'port/v2'), env: { ...process.env, CF_CPU_THROTTLE: '4' }, timeout: 1800e3 });
   fs.writeFileSync(path.join(N, `${r.id}.log`), nr.out); let status = 'NO_REPORT'; try { status = JSON.parse(fs.readFileSync(path.join(N, r.id, 'report.json'), 'utf8')).status; } catch {}
   natives.push({ id: r.id, name, family: r.family, exit: nr.code, status }); }
+/* 3b. --fish-seams (opt-in): Codex's guarded fish-seams-batch.mjs on this batch's pilot + author root, native included. It writes
+ * candidate repaired fits/films to native-<tag>-fishseams/; the gallery swap stays a separate full-size review (never automatic). */
+if (flags.includes('--fish-seams') && eligible.some((p) => JSON.parse(fs.readFileSync(path.join(ROOT, p.packet, 'subject-source.json'), 'utf8')).family === 'fish')) {
+  const fsOut = path.join(HERE, `native-${tag}-fishseams`); if (!fs.existsSync(fsOut)) { const fr = run(process.execPath, [path.join(HERE, 'fish-seams-batch.mjs'), rel(pilotOut), rel(path.join(HERE, `auto-${tag}`)), rel(fsOut), '--native'], { timeout: 6 * 3600e3 }); fs.writeFileSync(path.join(N, 'fish-seams.log'), fr.out); } }
 /* 4. sheets: review sheet (master | approach | return | reaction) and full-size reaction crops of the native passes */
 const ok = natives.filter((n) => n.status === 'DIAGNOSTIC_PASS');
 if (ok.length) { run(process.execPath, [path.join(HERE, 'native-g2c54/sheet.mjs'), path.join(N, 'review-sheet.jpg'), ...ok.map((n) => `${n.name}=${path.join(N, n.id)}=${path.join(ROOT, eligible.find((e) => e.id === n.id).packet, 'master.png')}=${n.family}; native PASS; unreviewed`)]);
