@@ -1,0 +1,114 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "06-oarfish",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "4296848c4e3bc36f518019046c6a720712bf1c28cd931a1ac44b76f88fd8acfa",
+ "subjectSourceSha256": "7a87f82051ca5865b61415c48324b2ba3b470e5aae6a4a778402cf0e7ef829c2",
+ "identity": {
+  "name": "Oarfish",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Oarfish\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2635221988\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 2635221988,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "tang",
+  "authoringSha256": "7ca39db0dde7740e946443b2d9749c47cdb7de746cb3be6abf7d810fca21f7e4",
+  "masterSha256": "e6970b7e7d2320aca6022ae2b74117f10f7d38e66fc5b81568b0061ce65f8ffe"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0401,
+     "class": "top",
+     "attach": {
+      "x": 384.6,
+      "y": 196.6,
+      "relX": 0.98,
+      "relY": 0.14
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.007,
+     "class": "rear",
+     "attach": {
+      "x": 213.8,
+      "y": 200.1,
+      "relX": 0.21,
+      "relY": 0.22
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1892,
+     "class": "rear",
+     "attach": {
+      "x": 167,
+      "y": 216.5,
+      "relX": 0,
+      "relY": 0.58
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0085,
+     "class": "limb-down",
+     "attach": {
+      "x": 390,
+      "y": 214.5,
+      "relX": 1,
+      "relY": 0.53
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0161,
+     "class": "limb-down",
+     "attach": {
+      "x": 362.5,
+      "y": 232,
+      "relX": 0.88,
+      "relY": 0.91
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 2,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "tang",
+   "byClass": {
+    "rear": 2,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
