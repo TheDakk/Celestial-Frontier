@@ -1,0 +1,129 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "12-platypus",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "133a504266934c3bf8cbb4dc9f85bc0502f3e6e72b6fd36e35493589181901d9",
+ "subjectSourceSha256": "9623a3f0983c69089695dd4c0a14c6712331eb279b87444ea83e61aa4c0a12f8",
+ "identity": {
+  "name": "Platypus",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Platypus\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"9\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3589797716\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "seed": 3589797716,
+  "checks": [
+   "materials-unknown: no species-group material for profile platypus; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "salamander",
+  "authoringSha256": "f866320348c6b6bbba64058a1e3b2052dc2518fd404e504698af8d9e76b59d09",
+  "masterSha256": "9a9701c7b127da311b031082f29c66b8c5b01cd94d3fae4f154275a95d5f6235"
+ },
+ "habitat": {
+  "profileId": "platypus",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "707d7fcee489077befeec1d9ad3593d63a40505a9566196a327be09a17b0db1d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group platypus (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0686,
+     "class": "front",
+     "attach": {
+      "x": 329,
+      "y": 186.5,
+      "relX": 1.01,
+      "relY": 0.41
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1556,
+     "class": "rear",
+     "attach": {
+      "x": 131,
+      "y": 199,
+      "relX": -0.01,
+      "relY": 0.57
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0449,
+     "class": "limb-down",
+     "attach": {
+      "x": 147.1,
+      "y": 225.9,
+      "relX": 0.08,
+      "relY": 0.9
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0266,
+     "class": "limb-down",
+     "attach": {
+      "x": 298,
+      "y": 232.5,
+      "relX": 0.85,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0282,
+     "class": "limb-down",
+     "attach": {
+      "x": 179.5,
+      "y": 228,
+      "relX": 0.24,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0474,
+     "class": "limb-down",
+     "attach": {
+      "x": 263,
+      "y": 235,
+      "relX": 0.67,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "salamander",
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

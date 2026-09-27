@@ -1,0 +1,15 @@
+{
+ "id": "17-dragonfly",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 10% paint (reference 36%)",
+  "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 12% paint (reference 40%)",
+  "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 12% paint (reference 37%)",
+  "missing-anatomy: part elytron-far (thorax) covers 23% paint (reference 79%)",
+  "missing-anatomy: part membrane-near (wingNear) covers 21% paint (reference 89%)",
+  "missing-anatomy: part membrane-far (wingFar) covers 14% paint (reference 86%)",
+  "unexplained-anatomy: 6.5% of the paint lies away from the body and in no part (reference 1.0%)"
+ ],
+ "semanticPresence": null
+}

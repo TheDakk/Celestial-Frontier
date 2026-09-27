@@ -1,0 +1,69 @@
+{
+  "name": "Elephant",
+  "family": "quadruped",
+  "species": {
+    "name": "Elephant",
+    "aspect": 1.3,
+    "headFrac": 0.26,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "trunk reaching the ground with two grasping lips",
+      "huge fan-shaped ears",
+      "pillar legs and a dipped saddle back"
+    ],
+    "note": "generic representative: an African savanna elephant - big ears, dipped back, both sexes tusked"
+  },
+  "genome": {
+    "seed": 619104521,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 10,
+    "body": 15,
+    "loco": 5,
+    "trait": 10,
+    "size": 5,
+    "diet": 5,
+    "head": 9,
+    "limbs": 1,
+    "skin": 4,
+    "tail": 3,
+    "pattern": 3,
+    "eyes": 2,
+    "behavior": 0,
+    "habitat": 2,
+    "detail": 4,
+    "accent": 9,
+    "temper": 8,
+    "sense": 5,
+    "repro": 6,
+    "life": 1,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Elephant"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Elephant\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"619104521\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "index": 42,
+  "profile": {
+    "id": "elephant",
+    "names": [
+      "Elephant",
+      "Forest Elephant",
+      "Asian Elephant",
+      "African Elephant"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "gore",
+      "headbutt"
+    ],
+    "notes": "Tusks/trunk require their own observed contact geometry."
+  }
+}

@@ -1,0 +1,151 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "11-koala",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "182386634ee74d82efa54024f01fd3d13187407392d8d71976ee0c31222752ba",
+ "subjectSourceSha256": "168dbabc7a0a0fcce9c21d8ab3b01fcdd893fad98ef75891fcc3efb7a88713ac",
+ "identity": {
+  "name": "Koala",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Koala\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"548554154\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "seed": 548554154,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "80f67d9f8f8bb8449330be0aea9e1aa5d3f9893059415b884f76579f9b8ed1c0",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "koala",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "eeb28d912890ff1ea33ef97877b1e06258d0cd97d015f5100cb088adaacddbe6",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group koala (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.015,
+     "class": "top",
+     "attach": {
+      "x": 256.5,
+      "y": 122,
+      "relX": 0.69,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0162,
+     "class": "top",
+     "attach": {
+      "x": 307.4,
+      "y": 128.5,
+      "relX": 0.96,
+      "relY": 0.04
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.018,
+     "class": "front",
+     "attach": {
+      "x": 317,
+      "y": 176,
+      "relX": 1.01,
+      "relY": 0.41
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0984,
+     "class": "limb-down",
+     "attach": {
+      "x": 130.5,
+      "y": 224.5,
+      "relX": 0.04,
+      "relY": 0.79
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0498,
+     "class": "limb-down",
+     "attach": {
+      "x": 272.2,
+      "y": 249.7,
+      "relX": 0.77,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0497,
+     "class": "limb-down",
+     "attach": {
+      "x": 184.5,
+      "y": 245,
+      "relX": 0.32,
+      "relY": 0.95
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0542,
+     "class": "limb-down",
+     "attach": {
+      "x": 231,
+      "y": 252,
+      "relX": 0.56,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 4
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

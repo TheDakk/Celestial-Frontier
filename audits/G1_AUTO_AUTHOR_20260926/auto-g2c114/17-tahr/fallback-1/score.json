@@ -1,0 +1,9 @@
+{
+ "id": "17-tahr",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+ ],
+ "semanticPresence": null
+}

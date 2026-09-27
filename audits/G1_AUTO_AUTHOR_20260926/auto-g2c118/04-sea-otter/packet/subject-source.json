@@ -1,0 +1,74 @@
+{
+  "name": "Sea Otter",
+  "family": "quadruped",
+  "species": {
+    "name": "Sea Otter",
+    "aspect": 2.6,
+    "headFrac": 0.2,
+    "eyes": "prominent",
+    "posture": "swimming",
+    "mustRead": [
+      "floats belly-up on its back, often with a rock on the chest",
+      "blunt round face packed with pale whiskers",
+      "webbed flipper-like hind feet"
+    ],
+    "note": "Much bulkier and blunter-faced than a river otter, and habitually drawn on its back rather than running."
+  },
+  "genome": {
+    "seed": 815594337,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 11,
+    "body": 11,
+    "loco": 14,
+    "trait": 8,
+    "size": 1,
+    "diet": 0,
+    "head": 2,
+    "limbs": 0,
+    "skin": 5,
+    "tail": 6,
+    "pattern": 2,
+    "eyes": 2,
+    "behavior": 7,
+    "habitat": 15,
+    "detail": 7,
+    "accent": 8,
+    "temper": 0,
+    "sense": 4,
+    "repro": 6,
+    "life": 0,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sea Otter"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sea Otter\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"815594337\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "index": 408,
+  "profile": {
+    "id": "aquatic-pawed-mammal",
+    "names": [
+      "River Otter",
+      "Otter",
+      "Giant Otter",
+      "Sea Otter",
+      "Beaver",
+      "Capybara",
+      "Water Vole",
+      "Marsh Rodent"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

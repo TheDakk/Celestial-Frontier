@@ -1,0 +1,129 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "23-water-beetle",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "2878f81146a315c801bc7a1a6202a077541ce7e8fd5e1317da52ce0ffb615c58",
+ "subjectSourceSha256": "0269a5c252b25d2925f2ed59b3072520cd04a596b62be5f7193b1047b667a71a",
+ "identity": {
+  "name": "Water Beetle",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Water Beetle\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"4206572592\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"5\"]]]]",
+  "seed": 4206572592,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "beetle",
+  "authoringSha256": "4860cd36c43bb774dbab8b686cecce2a00062707190f152bc0ea30741c4eee9e",
+  "masterSha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb"
+ },
+ "habitat": {
+  "profileId": "mandibulate-insect",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "f14555d246abbf4d1ce67dda63834ec805d8075cfd627c188a7a3e118c74fda7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group mandibulate-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1231,
+     "class": "limb-down",
+     "attach": {
+      "x": 132.3,
+      "y": 183.2,
+      "relX": 0,
+      "relY": 0.55
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0611,
+     "class": "front",
+     "attach": {
+      "x": 303,
+      "y": 189.5,
+      "relX": 1.01,
+      "relY": 0.62
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0683,
+     "class": "limb-down",
+     "attach": {
+      "x": 174.9,
+      "y": 219.6,
+      "relX": 0.25,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0286,
+     "class": "limb-down",
+     "attach": {
+      "x": 281,
+      "y": 216,
+      "relX": 0.88,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0495,
+     "class": "limb-down",
+     "attach": {
+      "x": 231.5,
+      "y": 223,
+      "relX": 0.58,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "limb-down": 4,
+    "front": 1
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "beetle",
+   "byClass": {
+    "top": 1,
+    "rear": 3,
+    "limb-down": 6
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "limb-down": 4,
+    "front": 1
+   },
+   "groundContacts": 3,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "legHindNear+legHindFar"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

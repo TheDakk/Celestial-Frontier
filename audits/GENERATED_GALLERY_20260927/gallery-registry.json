@@ -1546,5 +1546,101 @@
   "note": "whole in reaction and late idle (aquatic arena; rests on the seabed, lower body near the frame edge)",
   "batch": "audits/G2_C107_20260927",
   "tag": "g2c107"
+ },
+ {
+  "family": "quadruped",
+  "name": "Polar Bear",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c114-07-polar-bear/native",
+  "note": "whole after the remainder-island repair; one faint dark line at the neck in late idle remains (for Dakk's pass)",
+  "batch": "audits/G2_C114_20260927",
+  "tag": "g2c114"
+ },
+ {
+  "family": "quadruped",
+  "name": "Horse",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114/13-horse",
+  "note": "HELD: a fragment floats above the back in late idle; island repair refused at the 5% cap (7.5%)",
+  "batch": "audits/G2_C114_20260927",
+  "tag": "g2c114"
+ },
+ {
+  "family": "quadruped",
+  "name": "Sun Bear",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c114-14-sun-bear/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)",
+  "batch": "audits/G2_C114_20260927",
+  "tag": "g2c114"
+ },
+ {
+  "family": "quadruped",
+  "name": "Arctic Hare",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c114-18-arctic-hare/native",
+  "note": "whole after the remainder-island repair (unrepaired: black ear-tip fragments floated above the lowered head)",
+  "batch": "audits/G2_C114_20260927",
+  "tag": "g2c114"
+ },
+ {
+  "family": "fish",
+  "name": "Blobfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/19-blobfish/native",
+  "note": "whole on the fish-seams fit (unrepaired fit split at seams)",
+  "batch": "audits/G2_C114_20260927",
+  "tag": "g2c114"
+ },
+ {
+  "family": "fish",
+  "name": "Monkfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/21-monkfish/native",
+  "note": "whole on the fish-seams fit (unrepaired fit split at seams)",
+  "batch": "audits/G2_C114_20260927",
+  "tag": "g2c114"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wombat",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c118-01-wombat/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)",
+  "batch": "audits/G2_C118_20260927",
+  "tag": "g2c118"
+ },
+ {
+  "family": "quadruped",
+  "name": "Sugar Glider",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118/08-sugar-glider",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/G2_C118_20260927",
+  "tag": "g2c118"
+ },
+ {
+  "family": "quadruped",
+  "name": "Koala",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c118-11-koala/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)",
+  "batch": "audits/G2_C118_20260927",
+  "tag": "g2c118"
+ },
+ {
+  "family": "fish",
+  "name": "Flounder",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118/20-flounder",
+  "note": "HELD: body gap line remains in reaction and late idle even on the seams fit",
+  "batch": "audits/G2_C118_20260927",
+  "tag": "g2c118"
+ },
+ {
+  "family": "fish",
+  "name": "Halibut",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118-fishseams/21-halibut/native",
+  "note": "whole on the fish-seams fit (this C118 painting; the C106 Halibut stays held)",
+  "batch": "audits/G2_C118_20260927",
+  "tag": "g2c118"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hummingbird",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118/24-hummingbird",
+  "note": "HELD: crown island floats above the lowered head (same as the C101 Hummingbird); repair refused at the cap (14.8%)",
+  "batch": "audits/G2_C118_20260927",
+  "tag": "g2c118"
  }
 ]

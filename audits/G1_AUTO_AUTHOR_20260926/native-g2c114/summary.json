@@ -1,0 +1,141 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C114_20260927",
+ "tag": "g2c114",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "07-polar-bear",
+  "13-horse",
+  "14-sun-bear",
+  "18-arctic-hare",
+  "19-blobfish",
+  "21-monkfish",
+  "22-loon"
+ ],
+ "refused": [
+  {
+   "id": "01-forest-elephant",
+   "reason": "materials-unknown: no species-group material for profile elephant; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "02-elephant",
+   "reason": "materials-unknown: no species-group material for profile elephant; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "03-asian-elephant",
+   "reason": "materials-unknown: no species-group material for profile elephant; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "04-african-elephant",
+   "reason": "materials-unknown: no species-group material for profile elephant; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "05-rhinoceros",
+   "reason": "materials-unknown: no species-group material for profile rhino; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "06-hippopotamus",
+   "reason": "materials-unknown: no species-group material for profile hippo; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "10-rat",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) was transferred off the canvas (area < 1 px²)"
+  },
+  {
+   "id": "11-cow",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 11% paint (reference 38%)"
+  },
+  {
+   "id": "12-bull",
+   "reason": "missing-anatomy: part ear-near-tip (earNearTip) covers 18% paint (reference 84%)"
+  },
+  {
+   "id": "16-gerenuk",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "20-tripod-fish",
+   "reason": "wrong-family: arachnid matches clearly better (0.0283 < 0.0416)"
+  },
+  {
+   "id": "24-diving-beetle",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.1% paint that no reference appendage lands on"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "08-bear",
+   "static": "RED"
+  },
+  {
+   "id": "09-wild-pig",
+   "static": "RED"
+  },
+  {
+   "id": "15-grizzly-bear",
+   "static": "RED"
+  },
+  {
+   "id": "17-tahr",
+   "static": "RED"
+  },
+  {
+   "id": "23-water-beetle",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "07-polar-bear",
+   "name": "Polar Bear",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "13-horse",
+   "name": "Horse",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "14-sun-bear",
+   "name": "Sun Bear",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "18-arctic-hare",
+   "name": "Arctic Hare",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "19-blobfish",
+   "name": "Blobfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "21-monkfish",
+   "name": "Monkfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "22-loon",
+   "name": "Loon",
+   "family": "biped-bird",
+   "exit": 1,
+   "status": "FAIL"
+  }
+ ],
+ "runnerExit": 0
+}
