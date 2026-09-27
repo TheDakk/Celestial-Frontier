@@ -52,6 +52,9 @@ export interface BodyCard {
   readonly kind: 'body-card';
   /** Original normalized contact geometry and pixel scale for pure motion authoring probes. */
   readonly contactGeometry?: import('../creature-rig-types.js').CreatureRigRecordV1['geometry'];
+  /** Source-bound painted contact supports (the runtime's own `observedContactSupports`), attached only by
+   * `withPaintedContactSupports` for fits whose runtime rig publishes against observed supports; absent otherwise. */
+  readonly paintedContactSupports?: { readonly recipeHash: string; readonly bindingHash: string; readonly supports: Readonly<Record<string, import('../creature-rig-contact.js').WeightedContactSupport>> };
   /** Explicit observed life-stage habitat; species defaults never synthesize it. */
   readonly habitat?:NonNullable<ResolvedAnatomyRecord['habitat']>;
   readonly anatomy?:AnatomyPresence;

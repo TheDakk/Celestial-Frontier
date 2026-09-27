@@ -57,6 +57,7 @@ import { EffectThemeLibrary, isEffectTheme, isProceduralImage } from './effects/
 import { PARTICLE_DISC_SIZE, particleDiscRgba } from './effects/particle-texture.js';
 import { createPixiEffectHost, type EffectParticleLike, type EffectSpriteLike, type EffectTextureLike } from './effects/pixi-adapter.js';
 import { compileBodyCard, MotionCompileError, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from './motion/body-card.js';
+import { withPaintedContactSupports } from './motion/painted-supports.js';
 import { createTurnCueSink, type TurnAudioRuntime, type TurnCueSink } from './soundkit/turn-audio.js';
 import { createCreatureVoiceHook, type CreatureVoiceHook } from './soundkit/creature-voices.js';
 import { creatureVoiceCardV1, ownedCreatureVoiceCardV1 } from './soundkit/voice-identity.js';
@@ -389,7 +390,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
         const fit = BATTLE2_ASSETS.partsFits.find((f) => f.earthName === record.identity.earthName);
         if (fit && assets.bytes) {
           try {
-            const card = compileBodyCard(record, (genome ?? undefined) as MotionGenomeFields | undefined);
+            let card = compileBodyCard(record, (genome ?? undefined) as MotionGenomeFields | undefined);
             const manifest = await assets.json(fit.dir + 'parts/manifest.json') as { creatureId?: string };
             if (typeof manifest.creatureId !== 'string') throw new Error('parts manifest lacks creatureId');
             const pin = getBattle2MasterPin(manifest.creatureId);
@@ -415,6 +416,9 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
             else if (morph.atlasPixels) { const lease = await morphAtlasCache.acquire(morphAtlasKey(record.recipeHash ?? record.identity.speciesVisualKey, speciesVisualKey(genome as Record<string, unknown>), morph.marking), async () => (await decodeMorphedAtlas(atlas, record as unknown as CreatureRigRecordV1, binding, morph.atlasPixels!)).texture); atlasLeases.push(lease);
               paintRig = await loadPinnedCreatureRigV1(pinnedInput, async () => lease.texture, { borrowedAtlas: true, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) }); }
             else paintRig = await loadPinnedCreatureRigV1(pinnedInput, undefined, morph.jointScale ? { jointScale: morph.jointScale } : {});
+            // C71: a fit that publishes against observed painted supports carries those same supports on its card, so canonical motion
+            // authors test the whole curve against the contact the runtime guard will check (identity-validated; nothing else changes)
+            if (fit.contactSupports === 'observed') card = withPaintedContactSupports(card, record as unknown as CreatureRigRecordV1, binding);
             const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height), binding, ...(fit.contactSupports ? { contactSupports: fit.contactSupports } : {}), ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) });
             // C15: a painter weapon declaration (hash-bound to this record) rides with its fit into compileAnatomyAttack
             const declaration = fit.weaponDeclaration ? await assets.json(fit.weaponDeclaration) as WeaponDeclaration : undefined;
