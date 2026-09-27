@@ -1,0 +1,6 @@
+{
+  "status": "REQUEST_FAILED_BEFORE_BROWSER",
+  "reason": "Preparation used port/v2 cwd with root-relative source script, so script.json was missing. No browser launched; no timing or motion sampled.",
+  "retained": "native-01/report.json",
+  "correctedScript": "audits/BOBCAT_LAYOUT_C96_20260927/script.json"
+}

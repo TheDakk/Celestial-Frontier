@@ -1,0 +1,9 @@
+[
+  {
+    "id": "01-bobcat",
+    "name": "Bobcat",
+    "family": "quadruped",
+    "packet": "audits/BOBCAT_LAYOUT_C96_20260927/01-bobcat",
+    "master": "audits/BOBCAT_LAYOUT_C96_20260927/01-bobcat/master.png"
+  }
+]

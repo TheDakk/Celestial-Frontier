@@ -1,0 +1,30 @@
+[
+  {
+    "candidate": "original-c70",
+    "report": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/report.json",
+    "reportSha256": "ca3123d0dd73554e32925a7a825ac025c7b6b979f683953ca7c0d27c96c92336",
+    "nativeStatus": "FAIL",
+    "cpuThrottle": 4,
+    "frames": 868,
+    "allFrameCpuP95Ms": 9,
+    "lethalReactionSamples": 20,
+    "lethalReactionCpuMedianMs": 8,
+    "lethalReactionCpuP95Ms": 191.19999992847443,
+    "lethalReactionCpuMaxMs": 192.10000002384186,
+    "scope": "Observed historical runs, different source painting/mesh/current runtime; not isolated solver benchmark, new limit or certificate"
+  },
+  {
+    "candidate": "replacement-c96",
+    "report": "audits/BOBCAT_LAYOUT_C96_20260927/native-02/report.json",
+    "reportSha256": "269582e0a273aceff4251f620cbba3e85579ed24a8dc8a1e6bc8feddd5a5f5b5",
+    "nativeStatus": "DIAGNOSTIC_PASS",
+    "cpuThrottle": 4,
+    "frames": 933,
+    "allFrameCpuP95Ms": 9,
+    "lethalReactionSamples": 62,
+    "lethalReactionCpuMedianMs": 11.399999976158142,
+    "lethalReactionCpuP95Ms": 12.600000023841858,
+    "lethalReactionCpuMaxMs": 12.800000071525574,
+    "scope": "Observed historical runs, different source painting/mesh/current runtime; not isolated solver benchmark, new limit or certificate"
+  }
+]
