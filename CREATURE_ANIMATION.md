@@ -853,3 +853,5 @@ The proposed biped-bird faint extension is REJECTED: Hawk/Dove improved, but the
 ### Exact repeated skin fields — matches code2026-09-27
 
 The admitted runtime keeps one private exact Float32 target/solved-field pair per rig. Changed inputs run the unchanged full solver; all downstream guards still run. Two bounded buffers add at most640,000bytes under the existing40,000vertex limit. Donkey/Lynx pass fullnative4× capture after reuse;Bobcat remains868/887frames. Visual fragments remain. Controls/evidence:audits/LATE_REACTION_C70_20260927.
+
+Upper-body diagnostic (2026-09-27): audits/QUAD_UPPER_C73_20260927 retains Marmot/Cattle chest/neck ownership candidates, both static/native green but visibly incomplete; no default author or library adoption. Red Fox refuses identically with rest and observed supports.

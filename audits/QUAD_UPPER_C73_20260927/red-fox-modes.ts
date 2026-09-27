@@ -1,0 +1,4 @@
+import fs from'node:fs';import {measureLayeredStanceReach}from'../../port/v2/apps/game/src/creature-layered-stance-reach.ts';import{compileBodyCard}from'../../port/v2/apps/game/src/motion/body-card.ts';import{observedContactSupports}from'../../port/v2/apps/game/src/creature-rig-contact.ts';
+const base='audits/QUAD_UPPER_C73_20260927/',r=JSON.parse(fs.readFileSync(base+'02-red-fox/source-fit/record.json','utf8')),b=JSON.parse(fs.readFileSync(base+'02-red-fox/source-fit/binding.json','utf8')),rows=[];
+for(const mode of ['rest','observed']){try{rows.push({mode,status:'PASS',result:measureLayeredStanceReach(r,mode==='observed'?observedContactSupports(r,b):{},.5,compileBodyCard(r,r.genome))});}catch(e){rows.push({mode,status:'REFUSED',error:String(e)});}}
+fs.writeFileSync(base+'red-fox-modes.json',JSON.stringify(rows,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(rows));
