@@ -1,0 +1,500 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "RED",
+  "sourceHead": "f90e4d6e41b3253c131901130e16c9820fcf2ba6",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.006413317190466711,
+      "maxGapPx": 0.00007223279557153996,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.006096471760686666,
+      "maxGapPx": 0.00006914183679647774,
+      "maxEndpointError": 1.5700924586837752e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:walk",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00820916477869025,
+      "maxGapPx": 0.00007758876510231784,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:flight",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007642379215162106,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:peck",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.006096471760686666,
+      "maxGapPx": 0.00007053067556262322,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:claw",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.006096471760686666,
+      "maxGapPx": 0.00007346446234359418,
+      "maxEndpointError": 3.1401849173675503e-16,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.03531888902011957,
+      "maxGapPx": 0.00007376074793228326,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.003243563149697465,
+      "maxGapPx": 0.00006939077318169406,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0068358163480477544,
+      "maxGapPx": 0.00007257098041466687,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 78,
+      "attemptedSamples": 79,
+      "status": "RED",
+      "maxPaintDriftPx": 0.0000929420483336763,
+      "maxGapPx": 0.0000819634413036438,
+      "maxEndpointError": 4.965068306494546e-16,
+      "exactRest": true,
+      "firstRefusal": {
+        "sampleIndex": 78,
+        "sampleNumber": 79,
+        "ms": 462.8,
+        "error": "Error: Contact: joint limit legNearKnee faint@462.8: -70.17566413057403\n    at measure (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:12233:59)\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:12250:16)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:27013:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:27114:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:17206:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:27114:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:27231:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26",
+        "contact": null,
+        "pose": {
+          "root": {
+            "rotation": 0.232439,
+            "dx": -0.019025,
+            "dy": 0.194153
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0.172832,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck0": {
+            "rotation": 0.420173,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck1": {
+            "rotation": 0.420173,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0.337159,
+            "dx": 0,
+            "dy": 0
+          },
+          "beak": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.4428349664629161
+          },
+          "legFarAnkle": {
+            "rotation": 0.09597883460283245
+          },
+          "legFarFoot": {
+            "rotation": 0.11441713186008365
+          },
+          "legNearKnee": {
+            "rotation": -1.2184939523256975
+          },
+          "legNearAnkle": {
+            "rotation": 1.3707403104690405
+          },
+          "legNearFoot": {
+            "rotation": -0.38468535814334315
+          },
+          "wingFarRoot": {
+            "rotation": -0.5331797432721265,
+            "dx": 0,
+            "dy": 0
+          },
+          "wingFarTip": {
+            "rotation": -0.4369845193963576,
+            "dx": 0,
+            "dy": 0
+          },
+          "wingNearRoot": {
+            "rotation": -0.5331797432721265,
+            "dx": 0,
+            "dy": 0
+          },
+          "wingNearTip": {
+            "rotation": -0.4369845193963576,
+            "dx": 0,
+            "dy": 0
+          },
+          "tailFan": {
+            "rotation": 0.35545316218141765,
+            "dx": 0,
+            "dy": 0
+          }
+        },
+        "arapStats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 204.7155955691918,
+          "rmsTargetErrorPx": 18.112171864686267,
+          "maximumProjectionPx": 150.08932308665655,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06050601773431056,
+          "orientationPasses": 65
+        }
+      }
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.006096471760686666,
+      "maxGapPx": 0.00006777609824562181,
+      "maxEndpointError": 3.1401849173675503e-16,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.03431444207311466,
+      "maxGapPx": 0.00007661593090903504,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00017751259937505946,
+      "maxGapPx": 0.00007468697429651227,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:kick",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007690793595874773,
+      "maxEndpointError": 0,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "43254b8f35b56838cfa91d078944d364d52e45a186e1949aa5cfda76f7759c2e",
+  "bindingHash": "0e7de1640a60433d305f0d74fafe0b6e11c08eb7c4e345867b2ad60d2f60dac6",
+  "family": "biped-bird",
+  "contacts": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "realm": "land",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:walk",
+    "approach:flight",
+    "melee:peck",
+    "melee:claw",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed",
+    "melee:kick"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 746,
+    "attemptedSamples": 747,
+    "status": "RED",
+    "maxPaintDriftPx": 0.02992738224988813,
+    "maxGapPx": 0.00008571776133488487,
+    "maxEndpointError": 4.710277376051326e-16,
+    "exactRest": true,
+    "firstRefusal": {
+      "sampleIndex": 746,
+      "sampleNumber": 747,
+      "ms": 12433.333333333334,
+      "error": "Error: Contact: joint limit legNearKnee faint@464.59261836111546: -70.2776502449791\n    at measure (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:12233:59)\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:12250:16)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:27013:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:27190:44\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:17206:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:27190:23\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-LrQCw0/run.mjs:27231:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26",
+      "contact": null,
+      "pose": {
+        "root": {
+          "rotation": 0.228828,
+          "dx": -0.01873,
+          "dy": 0.192379
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.172316,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck0": {
+          "rotation": 0.415272,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck1": {
+          "rotation": 0.415272,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0.333548,
+          "dx": 0,
+          "dy": 0
+        },
+        "beak": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.4386301812352664
+        },
+        "legFarAnkle": {
+          "rotation": 0.09889034360685386
+        },
+        "legFarFoot": {
+          "rotation": 0.11091183762841261
+        },
+        "legNearKnee": {
+          "rotation": -1.2078109184440116
+        },
+        "legNearAnkle": {
+          "rotation": 1.3643557212992483
+        },
+        "legNearFoot": {
+          "rotation": -0.3853728028552367
+        },
+        "wingFarRoot": {
+          "rotation": -0.5149222121020884,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingFarTip": {
+          "rotation": -0.40660795056957005,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearRoot": {
+          "rotation": -0.5149222121020884,
+          "dx": 0,
+          "dy": 0
+        },
+        "wingNearTip": {
+          "rotation": -0.40660795056957005,
+          "dx": 0,
+          "dy": 0
+        },
+        "tailFan": {
+          "rotation": 0.34328147473472564,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "arapStats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 200.58715358468078,
+        "rmsTargetErrorPx": 17.474168273634,
+        "maximumProjectionPx": 147.90775429542273,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.06306849609499426,
+        "orientationPasses": 65
+      },
+      "action": "faint"
+    }
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 4659.4073816388845
+      },
+      {
+        "id": "alert",
+        "startMs": 4659.4073816388845,
+        "endMs": 5351.4073816388845
+      },
+      {
+        "id": "approach:walk",
+        "startMs": 5351.4073816388845,
+        "endMs": 6243.4073816388845
+      },
+      {
+        "id": "approach:flight",
+        "startMs": 6243.4073816388845,
+        "endMs": 7135.4073816388845
+      },
+      {
+        "id": "melee:peck",
+        "startMs": 7135.4073816388845,
+        "endMs": 8114.0740483055515
+      },
+      {
+        "id": "melee:claw",
+        "startMs": 8114.0740483055515,
+        "endMs": 9092.740714972218
+      },
+      {
+        "id": "cast",
+        "startMs": 9092.740714972218,
+        "endMs": 10174.740714972218
+      },
+      {
+        "id": "hit",
+        "startMs": 10174.740714972218,
+        "endMs": 11096.740714972218
+      },
+      {
+        "id": "dodge",
+        "startMs": 11096.740714972218,
+        "endMs": 11848.740714972218
+      },
+      {
+        "id": "faint",
+        "startMs": 11848.740714972218,
+        "endMs": 12840.740714972218
+      },
+      {
+        "id": "victory",
+        "startMs": 12840.740714972218,
+        "endMs": 13912.740714972218
+      },
+      {
+        "id": "tame",
+        "startMs": 13912.740714972218,
+        "endMs": 15024.740714972218
+      },
+      {
+        "id": "feed",
+        "startMs": 15024.740714972218,
+        "endMs": 16076.740714972218
+      },
+      {
+        "id": "melee:kick",
+        "startMs": 16076.740714972218,
+        "endMs": 17055.407381638885
+      }
+    ],
+    "durationMs": 18055.407381638885
+  },
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-painted-c75/c56-13-magpie/fallback-1/fit/record.json",
+      "sha256": "53da1f6d56154cb2c4b1d8d574859c0f7c0f9d94c352985b7c83165cadce9ddc",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-painted-c75/c56-13-magpie/fallback-1/fit/binding.json",
+      "sha256": "24b36b5f23bb144f04c51c71d86385268a20c89882b162e0b05461a79f6ce2f4",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-painted-c75/c56-13-magpie/fallback-1/fit/parts/manifest.json",
+      "sha256": "a6ea528505318507f879cf6e44cfed7bf046dcc4827f2e2eb461c5014794c9f2",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-painted-c75/c56-13-magpie/fallback-1/fit/parts/atlas/c56-13-magpie.png",
+      "sha256": "581bbc0727f3cf7e1fb4478dd12a33968977d1dcffdd516f92f32b44b33172ae",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-painted-c75/c56-13-magpie/fallback-1/fit/parts/keyed.png",
+      "sha256": "0ab933abc109f584b4316c6082ff7c17cfb14d53337c0f5c0974697898d945d4",
+      "unchanged": true
+    }
+  ]
+}

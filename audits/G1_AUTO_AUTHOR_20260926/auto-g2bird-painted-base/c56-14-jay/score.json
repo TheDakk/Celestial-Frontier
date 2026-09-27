@@ -1,0 +1,9 @@
+{
+ "id": "c56-14-jay",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: quadruped matches clearly better (0.0127 < 0.0196)"
+ ],
+ "semanticPresence": null
+}
