@@ -1,0 +1,13 @@
+{
+  "id": "23-dromedary-camel",
+  "name": "Dromedary Camel",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f8ea35fd-d7dd-449f-a732-d3ebd3c76a1f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1e2f12ddda621ed39e604e7e0a2b483b2b13b63758e21c0535485ab2ce2b7e60",
+  "bytes": 1290974,
+  "promptSha256": "45a17ba48b2504fdba8b2e655951aff40cced6138572aca51b9dc1c2cbdd3e03",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

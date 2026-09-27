@@ -1,0 +1,13 @@
+{
+  "id": "01-giraffe",
+  "name": "Giraffe",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-46792fec-3eed-4520-8013-b687f40b874d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "38a092949acbaeffbe3d8ef9b27bccd27c6d78752c1f7f1c42e2b6674e32c045",
+  "bytes": 1263067,
+  "promptSha256": "b8013e9eaafc0fd0491eef07a834e1fd4a579eb448e03abd14753a6551c6a813",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

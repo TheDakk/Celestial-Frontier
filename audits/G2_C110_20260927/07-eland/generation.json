@@ -1,0 +1,13 @@
+{
+  "id": "07-eland",
+  "name": "Eland",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-102ddeb7-2a36-4633-beab-5382103ec0bd.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "bc076e29118a929c7eecf9dabb204b2308a90a6d4f2fd5ebd28e041620eae249",
+  "bytes": 1244166,
+  "promptSha256": "5d2b417539079f430410f937da1088dcb36bc901d713c814d53883425d9685fe",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

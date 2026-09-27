@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Takin",
+  "masterSha256": "7cb4740345f2638f6b02932c31d2db58bb6223b8752707a58754a1810b2904af",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

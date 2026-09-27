@@ -1,0 +1,13 @@
+{
+  "id": "21-sheep",
+  "name": "Sheep",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-bb11e88e-fd37-483a-90e2-6b6c9f7d967d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ed8b311eebf5ea0002a6bdd5795b33df5b80443e602d070d5182d60a8af4f168",
+  "bytes": 1339761,
+  "promptSha256": "0749c2b69ac419ae227871a3116370afaa0e7f3d0c1f0fed16ea012113d96bbc",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

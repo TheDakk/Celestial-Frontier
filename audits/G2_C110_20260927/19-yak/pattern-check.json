@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Yak",
+  "masterSha256": "b933dcaa28590e37814c806db941389bcad3a336d1c0306794332f59ed44d831",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

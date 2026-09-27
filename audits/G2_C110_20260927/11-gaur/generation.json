@@ -1,0 +1,13 @@
+{
+  "id": "11-gaur",
+  "name": "Gaur",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-8120af59-3c79-450d-bea2-2da94ef1d932.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ec248704921628f29e65b12a9afc5d319a8484de470f65547c50b2f630cffae0",
+  "bytes": 1333340,
+  "promptSha256": "fa995b894f44cc1357e2c6c155dfc06cad1ebc0276e0821c202bab4ed7a3ae00",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

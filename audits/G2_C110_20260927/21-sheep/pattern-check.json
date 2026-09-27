@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Sheep",
+  "masterSha256": "ed8b311eebf5ea0002a6bdd5795b33df5b80443e602d070d5182d60a8af4f168",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
