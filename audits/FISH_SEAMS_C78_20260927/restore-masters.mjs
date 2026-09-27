@@ -1,0 +1,2 @@
+import fs from 'node:fs';import{createHash}from'node:crypto';import path from'node:path';
+const sha=b=>createHash('sha256').update(b).digest('hex');for(const r of JSON.parse(fs.readFileSync(new URL('./inputs.json',import.meta.url)))){const b=fs.readFileSync(r.canonicalMaster);if(sha(b)!==r.masterSha256)throw Error('Master identity');if(fs.existsSync(r.recordSource)){if(sha(fs.readFileSync(r.recordSource))!==r.masterSha256)throw Error('Existing master identity');}else{fs.mkdirSync(path.dirname(r.recordSource),{recursive:true});fs.writeFileSync(r.recordSource,b,{flag:'wx'});}}
