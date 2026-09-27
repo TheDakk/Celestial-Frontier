@@ -1,0 +1,106 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "15-secretary-bird",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "f1434e644599b47054260ce6669c036cfbaae683db6d6e220749ef934c6fcddd",
+ "subjectSourceSha256": "48f099667456fdb8d6c2ea2b9b1fffa1b9c6fc38d55e8097358bc6078f51a47b",
+ "identity": {
+  "name": "Secretary Bird",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Secretary Bird\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"1670692569\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "seed": 1670692569,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "01-robin",
+  "authoringSha256": "bd3dc5584d70786e5b2d3fa3b9a38bb3f2b587bbf0f69caa8357221299cc8e93",
+  "masterSha256": "e23c895629f36cd69be0861a16c0bf27516f85bb1ad385f00016ea2bf7d8a080"
+ },
+ "habitat": {
+  "profileId": "ground-foraging-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "2458c82bbd8f37b007dbba5ae84cc60975cf0f4ecad7d901ee633e684483d7c2",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group ground-foraging-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1753,
+     "class": "top",
+     "attach": {
+      "x": 272.6,
+      "y": 151.4,
+      "relX": 0.92,
+      "relY": 0.12
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1984,
+     "class": "rear",
+     "attach": {
+      "x": 178.5,
+      "y": 191.5,
+      "relX": 0.01,
+      "relY": 0.71
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0954,
+     "class": "limb-down",
+     "attach": {
+      "x": 218.4,
+      "y": 211.6,
+      "relX": 0.4,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0977,
+     "class": "limb-down",
+     "attach": {
+      "x": 243,
+      "y": 212,
+      "relX": 0.63,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "01-robin",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

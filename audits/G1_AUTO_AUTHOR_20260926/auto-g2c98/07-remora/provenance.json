@@ -1,0 +1,106 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "07-remora",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "3b920be4355f8c30a89756b78591ad71a010f2b05079ff9599387e97698a512a",
+ "subjectSourceSha256": "1b583f406e15d03e1987f8f1803b363af962ea2a3207672b320966d7e454c5d7",
+ "identity": {
+  "name": "Remora",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Remora\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"3502680816\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "seed": 3502680816,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "salmon",
+  "authoringSha256": "b973fe0595d98ed9c27e3c272d03163fbbf777f810e6a92c93f2962a61a7f390",
+  "masterSha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0147,
+     "class": "top",
+     "attach": {
+      "x": 209,
+      "y": 176,
+      "relX": 0.14,
+      "relY": -0.02
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.34,
+     "class": "rear",
+     "attach": {
+      "x": 187,
+      "y": 211.5,
+      "relX": -0.01,
+      "relY": 0.62
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.051,
+     "class": "front",
+     "attach": {
+      "x": 343,
+      "y": 209.5,
+      "relX": 1.01,
+      "relY": 0.58
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0285,
+     "class": "limb-down",
+     "attach": {
+      "x": 272,
+      "y": 234,
+      "relX": 0.55,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "salmon",
+   "byClass": {
+    "top": 1,
+    "rear": 2,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "id": "23-honeybee",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)",
+  "missing-anatomy: part head (head) covers 28% paint (reference 98%)"
+ ],
+ "semanticPresence": null
+}

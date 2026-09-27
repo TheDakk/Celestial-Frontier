@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 141,
+ "total": 154,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -288,6 +288,13 @@
    "nativeDir": "audits/BOBCAT_LAYOUT_C96_20260927/native-02",
    "report": "DIAGNOSTIC_PASS",
    "note": "new layout painting; speed fixed; ear-tip flecks and chest sliver (Codex visual holds)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Gerbil",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/20-gerbil",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
   },
   {
    "family": "Snakes (serpent strip author)",
@@ -612,6 +619,27 @@
    "note": "clean"
   },
   {
+   "family": "Birds",
+   "name": "Desert Owl",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/12-desert-owl",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Harpy Eagle",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/13-harpy-eagle",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Skua",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/18-skua",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -859,9 +887,9 @@
   {
    "family": "Fish",
    "name": "Gar",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/08-gar",
+   "nativeDir": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "small crack near tail (unwelded)"
+   "note": "whole after Codex fixed fish recipe; tiny fleck (Codex)"
   },
   {
    "family": "Fish",
@@ -880,9 +908,9 @@
   {
    "family": "Fish",
    "name": "Killifish",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/12-killifish",
+   "nativeDir": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "body crack (unwelded)"
+   "note": "whole after Codex fixed fish recipe"
   },
   {
    "family": "Fish",
@@ -901,9 +929,9 @@
   {
    "family": "Fish",
    "name": "Parrotfish",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/02-parrotfish",
+   "nativeDir": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "faint line near pectoral (unwelded)"
+   "note": "whole after Codex fixed fish recipe"
   },
   {
    "family": "Fish",
@@ -922,16 +950,16 @@
   {
    "family": "Fish",
    "name": "Rabbitfish",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/02-rabbitfish",
+   "nativeDir": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "body cracks (unwelded)"
+   "note": "whole after Codex fixed fish recipe; angular back (Codex)"
   },
   {
    "family": "Fish",
    "name": "Sea Bass",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/03-sea-bass",
+   "nativeDir": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "body cracks (unwelded)"
+   "note": "whole after Codex fixed fish recipe"
   },
   {
    "family": "Fish",
@@ -953,6 +981,69 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/06-coelacanth",
    "report": "DIAGNOSTIC_PASS",
    "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Cold-Water Fish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/01-cold-water-fish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "body cracks (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Blind Fish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/02-blind-fish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Small Fish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/03-small-fish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Sunfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/04-sunfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "body crack (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Tang",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/05-tang",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Reef Fish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/06-reef-fish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Icefish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/08-icefish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable (translucent)"
+  },
+  {
+   "family": "Fish",
+   "name": "Mudminnow",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/09-mudminnow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Snailfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/10-snailfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "FRAGMENTED: not acceptable"
   },
   {
    "family": "Insects",

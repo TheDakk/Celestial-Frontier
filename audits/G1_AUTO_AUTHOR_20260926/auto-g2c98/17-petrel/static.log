@@ -1,0 +1,15 @@
+{"id":"idle","status":"PASS","samples":121,"drift":0.06541962376496857,"gap":0.00008221445254884312,"exactRest":true,"firstRefusal":null}
+{"id":"alert","status":"PASS","samples":121,"drift":0.00019816829662504633,"gap":0.00006324833949415372,"exactRest":true,"firstRefusal":null}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.02617170907415238,"gap":0.00008221445262923185,"exactRest":true,"firstRefusal":null}
+{"id":"approach:flight","status":"PASS","samples":121,"drift":0,"gap":0.00008221445254884312,"exactRest":true,"firstRefusal":null}
+{"id":"melee:peck","status":"PASS","samples":121,"drift":0.02171650859320816,"gap":0.00008530522122527205,"exactRest":true,"firstRefusal":null}
+{"id":"melee:claw","status":"PASS","samples":121,"drift":0.046941483128542266,"gap":0.00008221445254884312,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.09776187296902626,"gap":0.00008221445254884312,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"PASS","samples":121,"drift":0.20055342164200538,"gap":0.00008530522170760446,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"PASS","samples":121,"drift":0.054546115476342555,"gap":0.0000669563559967507,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0.021751955790311542,"gap":0.00008221445246845438,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0.02165005588468857,"gap":0.00006743969886952097,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.10329943049494678,"gap":0.00008221445238806566,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.0362869937421433,"gap":0.00008221445246845438,"exactRest":true,"firstRefusal":null}
+{"id":"melee:kick","status":"PASS","samples":121,"drift":0,"gap":0.00008221445262923185,"exactRest":true,"firstRefusal":null}
+{"status":"PASS_STATIC","rows":14,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}
