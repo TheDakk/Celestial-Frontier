@@ -1,0 +1,125 @@
+{
+  "id": "14-weaverbird-standing-v2",
+  "name": "Weaverbird",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "14aa54a2c23d8f1187744858a95ba451085a7931b24413c7b2c2db5e1adf86d8",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 14691,
+    "coreRadius": 24,
+    "bodyBox": {
+      "x0": 163,
+      "y0": 123,
+      "x1": 276,
+      "y1": 249
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0937,
+        "pixels": 1376,
+        "box": {
+          "x0": 229,
+          "y0": 104,
+          "x1": 308,
+          "y1": 153
+        },
+        "attach": {
+          "x": 262.3,
+          "y": 128.2,
+          "relX": 0.88,
+          "relY": 0.04
+        },
+        "dir": {
+          "x": 0.73,
+          "y": -0.68
+        },
+        "class": "top",
+        "length": 52
+      },
+      {
+        "k": 1,
+        "frac": 0.0962,
+        "pixels": 1413,
+        "box": {
+          "x0": 106,
+          "y0": 200,
+          "x1": 163,
+          "y1": 273
+        },
+        "attach": {
+          "x": 162,
+          "y": 224.5,
+          "relX": -0.01,
+          "relY": 0.81
+        },
+        "dir": {
+          "x": -0.76,
+          "y": 0.64
+        },
+        "class": "limb-down",
+        "length": 74.1
+      },
+      {
+        "k": 2,
+        "frac": 0.0919,
+        "pixels": 1350,
+        "box": {
+          "x0": 173,
+          "y0": 250,
+          "x1": 270,
+          "y1": 311
+        },
+        "attach": {
+          "x": 198.5,
+          "y": 250,
+          "relX": 0.31,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.41,
+          "y": 0.91
+        },
+        "class": "limb-down",
+        "length": 94
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 173,
+        "x1": 229,
+        "cx": 203.5
+      },
+      {
+        "x0": 222,
+        "x1": 227,
+        "cx": 224.5
+      },
+      {
+        "x0": 243,
+        "x1": 264,
+        "cx": 254
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

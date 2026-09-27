@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cockatoo",
+  "masterSha256": "88404ba74cf14bdd6d1c6eba3f277f94611eaf9966cb2e589087129f7fe1e6ea",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

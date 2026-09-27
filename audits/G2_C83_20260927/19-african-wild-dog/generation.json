@@ -1,0 +1,13 @@
+{
+  "id": "19-african-wild-dog",
+  "name": "African Wild Dog",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-425ac84b-0ae5-4856-8fd9-e21c95332aa2.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6c065b50401371701d1c882d948e4adce38400917a614a009085a91a94439f24",
+  "bytes": 1169679,
+  "promptSha256": "b9d576124c07c8cea2c26ba8046b66fbfc3c549be42b7b24e14c3996f8b579a6",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

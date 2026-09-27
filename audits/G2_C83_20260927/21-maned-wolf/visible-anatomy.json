@@ -1,0 +1,153 @@
+{
+  "id": "21-maned-wolf",
+  "name": "Maned Wolf",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "ad48fb7d33b66127c7bd96a4374c609072bc1222f6e2d54e089283ac9c5e5688",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 15894,
+    "coreRadius": 18,
+    "bodyBox": {
+      "x0": 142,
+      "y0": 141,
+      "x1": 285,
+      "y1": 218
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1122,
+        "pixels": 1784,
+        "box": {
+          "x0": 250,
+          "y0": 110,
+          "x1": 322,
+          "y1": 176
+        },
+        "attach": {
+          "x": 278.3,
+          "y": 149.7,
+          "relX": 0.95,
+          "relY": 0.11
+        },
+        "dir": {
+          "x": 0.88,
+          "y": -0.47
+        },
+        "class": "front",
+        "length": 59
+      },
+      {
+        "k": 1,
+        "frac": 0.1513,
+        "pixels": 2405,
+        "box": {
+          "x0": 104,
+          "y0": 177,
+          "x1": 169,
+          "y1": 299
+        },
+        "attach": {
+          "x": 147.2,
+          "y": 205.6,
+          "relX": 0.04,
+          "relY": 0.84
+        },
+        "dir": {
+          "x": -0.55,
+          "y": 0.84
+        },
+        "class": "limb-down",
+        "length": 102.9
+      },
+      {
+        "k": 2,
+        "frac": 0.1468,
+        "pixels": 2334,
+        "box": {
+          "x0": 211,
+          "y0": 211,
+          "x1": 303,
+          "y1": 302
+        },
+        "attach": {
+          "x": 243.5,
+          "y": 211,
+          "relX": 0.71,
+          "relY": 0.91
+        },
+        "dir": {
+          "x": 0.08,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 108.7
+      },
+      {
+        "k": 3,
+        "frac": 0.0611,
+        "pixels": 971,
+        "box": {
+          "x0": 164,
+          "y0": 219,
+          "x1": 197,
+          "y1": 297
+        },
+        "attach": {
+          "x": 181.5,
+          "y": 219,
+          "relX": 0.28,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.09,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 79.9
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 110,
+        "x1": 125,
+        "cx": 116.9
+      },
+      {
+        "x0": 179,
+        "x1": 197,
+        "cx": 188.3
+      },
+      {
+        "x0": 212,
+        "x1": 228,
+        "cx": 218.7
+      },
+      {
+        "x0": 281,
+        "x1": 303,
+        "cx": 291.7
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

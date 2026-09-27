@@ -1,0 +1,13 @@
+{
+  "id": "20-spotted-hyena",
+  "name": "Spotted Hyena",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-70238939-baa0-4235-b388-7db356de1fb2.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "de358b8aaf9cf7fb88fc767744eb0e86a3ff6f77f619beb356f541c937c9c838",
+  "bytes": 1291893,
+  "promptSha256": "e11fa32228095457c442a994209b2ffe00afbaaed6c57676cca4aa571fce713e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

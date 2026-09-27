@@ -1,0 +1,13 @@
+{
+  "id": "24-aardvark",
+  "name": "Aardvark",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-2c68d6c7-143f-4062-984f-25818eb25bf2.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0e3dddd3c82c550e7c68081f3287c0d2b58bae3aab23ec581b443a9bb0ca2050",
+  "bytes": 1302396,
+  "promptSha256": "f1642bc40c934fa5c85f64b8c882c0179727eb024c40c53fd400736b9c0d707f",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

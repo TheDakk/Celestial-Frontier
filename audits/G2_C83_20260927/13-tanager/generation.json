@@ -1,0 +1,13 @@
+{
+  "id": "13-tanager",
+  "name": "Tanager",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-c580da60-1827-4b96-98c1-17f2692bd34c.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b29c75e172a38cc05447f686c3c674d3b0b61e80c4e3135307624c723938f00d",
+  "bytes": 1099317,
+  "promptSha256": "4798034357a3feb97c9fbec3445436265e0724e431ae103e9dc9bd4fc53038a8",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

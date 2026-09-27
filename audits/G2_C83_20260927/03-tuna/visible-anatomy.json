@@ -1,0 +1,186 @@
+{
+  "id": "03-tuna",
+  "name": "Tuna",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "5f6815380b2578b6e3b49be2ef0756f1740e8c04997ccda0bcc5a24b0798ccd6",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 22068,
+    "coreRadius": 28,
+    "bodyBox": {
+      "x0": 169,
+      "y0": 161,
+      "x1": 348,
+      "y1": 253
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.033,
+        "pixels": 729,
+        "box": {
+          "x0": 234,
+          "y0": 134,
+          "x1": 289,
+          "y1": 160
+        },
+        "attach": {
+          "x": 261.5,
+          "y": 160,
+          "relX": 0.52,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.43,
+          "y": -0.9
+        },
+        "class": "top",
+        "length": 37.8
+      },
+      {
+        "k": 1,
+        "frac": 0.0165,
+        "pixels": 364,
+        "box": {
+          "x0": 180,
+          "y0": 142,
+          "x1": 216,
+          "y1": 165
+        },
+        "attach": {
+          "x": 202,
+          "y": 165,
+          "relX": 0.18,
+          "relY": 0.04
+        },
+        "dir": {
+          "x": -0.53,
+          "y": -0.85
+        },
+        "class": "top",
+        "length": 31.8
+      },
+      {
+        "k": 2,
+        "frac": 0.1919,
+        "pixels": 4235,
+        "box": {
+          "x0": 37,
+          "y0": 155,
+          "x1": 168,
+          "y1": 262
+        },
+        "attach": {
+          "x": 168,
+          "y": 207.5,
+          "relX": -0.01,
+          "relY": 0.51
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.01
+        },
+        "class": "rear",
+        "length": 141.9
+      },
+      {
+        "k": 3,
+        "frac": 0.0569,
+        "pixels": 1255,
+        "box": {
+          "x0": 349,
+          "y0": 185,
+          "x1": 384,
+          "y1": 239
+        },
+        "attach": {
+          "x": 349,
+          "y": 212,
+          "relX": 1.01,
+          "relY": 0.55
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.07
+        },
+        "class": "front",
+        "length": 44.2
+      },
+      {
+        "k": 4,
+        "frac": 0.0127,
+        "pixels": 281,
+        "box": {
+          "x0": 155,
+          "y0": 245,
+          "x1": 191,
+          "y1": 264
+        },
+        "attach": {
+          "x": 180.5,
+          "y": 245,
+          "relX": 0.06,
+          "relY": 0.91
+        },
+        "dir": {
+          "x": -0.7,
+          "y": 0.71
+        },
+        "class": "limb-down",
+        "length": 31.8
+      },
+      {
+        "k": 5,
+        "frac": 0.0171,
+        "pixels": 378,
+        "box": {
+          "x0": 264,
+          "y0": 254,
+          "x1": 292,
+          "y1": 279
+        },
+        "attach": {
+          "x": 283,
+          "y": 254,
+          "relX": 0.64,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.62,
+          "y": 0.79
+        },
+        "class": "limb-down",
+        "length": 31.4
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 264,
+        "x1": 278,
+        "cx": 269.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

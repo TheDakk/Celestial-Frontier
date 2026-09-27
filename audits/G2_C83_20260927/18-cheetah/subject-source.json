@@ -1,0 +1,82 @@
+{
+  "name": "Cheetah",
+  "family": "quadruped",
+  "species": {
+    "name": "Cheetah",
+    "aspect": 2,
+    "headFrac": 0.2,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "black tear stripes running from eye to mouth",
+      "solid round spots (not rosettes)",
+      "small head on a deep narrow chest with a long thin tail"
+    ],
+    "note": "Body is greyhound-like: tall, whippet-thin waist, long legs; head is unusually small for a big cat."
+  },
+  "genome": {
+    "seed": 1475217747,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 7,
+    "body": 1,
+    "loco": 17,
+    "trait": 24,
+    "size": 2,
+    "diet": 5,
+    "head": 9,
+    "limbs": 4,
+    "skin": 6,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 0,
+    "habitat": 10,
+    "detail": 3,
+    "accent": 4,
+    "temper": 1,
+    "sense": 1,
+    "repro": 2,
+    "life": 2,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cheetah"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cheetah\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1475217747\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "index": 194,
+  "profile": {
+    "id": "felid",
+    "names": [
+      "Jaguar",
+      "Leopard",
+      "Tiger",
+      "Clouded Leopard",
+      "Ocelot",
+      "Lion",
+      "Cougar",
+      "Snow Leopard",
+      "Bobcat",
+      "Lynx",
+      "Caracal",
+      "Fishing Cat",
+      "Cheetah",
+      "Serval",
+      "Sand Cat",
+      "Wildcat",
+      "Cat"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

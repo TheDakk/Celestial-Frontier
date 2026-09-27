@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Sand Cat",
+  "masterSha256": "55919c68b82bad8812f7dea59c8d2a8e0e2ba2c9e1a0507aa16e2c47a08ae254",
+  "required": [
+    "banded tail with a black tip"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "banded tail with a black tip",
+      "status": "PRESENT",
+      "observed": "Small sandy cat with broad furry feet, large ears, dark leg bands and ringed dark-tipped tail. Four offset feet and both ear tips visible; head turned toward viewer rather than strict side profile, far ear base partly hidden. Coat is strongly tabby-like and ears high-set, identity concern. Tail continuous and clear of limbs; no admission."
+    }
+  ]
+}

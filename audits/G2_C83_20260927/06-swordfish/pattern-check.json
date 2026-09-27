@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Swordfish",
+  "masterSha256": "25cfd6dd1374dffef67cbc81718a4a61f071de2b2fce951f77f275fa6c6a4ecc",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

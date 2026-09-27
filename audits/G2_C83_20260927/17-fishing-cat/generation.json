@@ -1,0 +1,13 @@
+{
+  "id": "17-fishing-cat",
+  "name": "Fishing Cat",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ec507f61-3e0e-4d75-9ae3-7702601849a4.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d33174c28f5d8d82cdd70a450e450cfddce5ae79a28cbaea8e8fb52041edd8d9",
+  "bytes": 1328945,
+  "promptSha256": "8b7aa8683190d80da8c218fdfc5c6549bfca82eca22767b16623de8a896eda84",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
