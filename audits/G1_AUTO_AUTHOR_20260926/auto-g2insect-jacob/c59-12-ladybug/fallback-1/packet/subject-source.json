@@ -1,0 +1,91 @@
+{
+  "name": "Ladybug",
+  "family": "insect",
+  "species": {
+    "name": "Ladybug",
+    "aspect": 1.6,
+    "headFrac": 0.15,
+    "eyes": "small",
+    "posture": "crawling",
+    "mustRead": [
+      "strongly domed hemispherical shell",
+      "spotted red wing cases split down the middle",
+      "tiny black head tucked under a shield"
+    ],
+    "note": "Almost always drawn from above; in true side profile it is a low dome and the spots barely read, so the silhouette must carry the arc of the shell."
+  },
+  "genome": {
+    "seed": 3812275416,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 13,
+    "body": 8,
+    "loco": 16,
+    "trait": 11,
+    "size": 1,
+    "diet": 3,
+    "head": 5,
+    "limbs": 4,
+    "skin": 4,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 3,
+    "behavior": 11,
+    "habitat": 16,
+    "detail": 9,
+    "accent": 4,
+    "temper": 4,
+    "sense": 8,
+    "repro": 0,
+    "life": 4,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Ladybug"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Ladybug\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3812275416\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "index": 257,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

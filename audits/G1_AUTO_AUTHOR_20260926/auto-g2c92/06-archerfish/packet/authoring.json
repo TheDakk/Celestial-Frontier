@@ -1,0 +1,493 @@
+{
+  "id": "06-archerfish",
+  "family": "fish",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "landmarksPx": {
+    "root": [
+      891.8,
+      596
+    ],
+    "head": [
+      987.4,
+      566.7
+    ],
+    "jaw": [
+      946.8,
+      660
+    ],
+    "spine0": [
+      843.8,
+      571.4
+    ],
+    "spine1": [
+      752,
+      565.3
+    ],
+    "spine2": [
+      641,
+      572.6
+    ],
+    "spine3": [
+      528.7,
+      583.3
+    ],
+    "spine4": [
+      411,
+      590.5
+    ],
+    "spine5": [
+      346.3,
+      596.2
+    ],
+    "caudal": [
+      274.3,
+      604.5
+    ],
+    "dorsal": [
+      618.9,
+      459
+    ],
+    "pectoralNear": [
+      826.5,
+      639.2
+    ],
+    "pectoralFar": [
+      859.8,
+      676.9
+    ]
+  },
+  "groundLineY": 0.6914579174903878,
+  "materials": {
+    "surface": "scales"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near",
+      "polygonPx": [
+        [
+          679.4,
+          575.2
+        ],
+        [
+          726.1,
+          572.3
+        ],
+        [
+          801.7,
+          594.7
+        ],
+        [
+          853.2,
+          618.7
+        ],
+        [
+          850,
+          663.3
+        ],
+        [
+          788.9,
+          687.3
+        ],
+        [
+          725.8,
+          674.8
+        ],
+        [
+          682.4,
+          617.2
+        ]
+      ]
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far",
+      "polygonPx": [
+        [
+          852.5,
+          652.2
+        ],
+        [
+          874.4,
+          657.2
+        ],
+        [
+          867.5,
+          697.9
+        ],
+        [
+          854.5,
+          736.6
+        ],
+        [
+          833.7,
+          746.5
+        ],
+        [
+          826.8,
+          705.7
+        ],
+        [
+          831.1,
+          672.3
+        ]
+      ]
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "polygonPx": [
+        [
+          907.1,
+          653
+        ],
+        [
+          969.4,
+          634
+        ],
+        [
+          1002.5,
+          622.7
+        ],
+        [
+          963.6,
+          671.7
+        ],
+        [
+          890.8,
+          712.6
+        ],
+        [
+          887.3,
+          683.8
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          943.7,
+          503.7
+        ],
+        [
+          1026.6,
+          496.9
+        ],
+        [
+          1101.1,
+          487.3
+        ],
+        [
+          982.7,
+          645.9
+        ],
+        [
+          945.9,
+          669.3
+        ],
+        [
+          883.4,
+          692.9
+        ],
+        [
+          889.8,
+          637
+        ]
+      ]
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "layer": "near",
+      "polygonPx": [
+        [
+          347.2,
+          416
+        ],
+        [
+          829.5,
+          416
+        ],
+        [
+          858.7,
+          450.6
+        ],
+        [
+          660.6,
+          467.4
+        ],
+        [
+          526.2,
+          486.2
+        ],
+        [
+          405.4,
+          541.9
+        ],
+        [
+          378,
+          527.3
+        ]
+      ]
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "layer": "near",
+      "polygonPx": [
+        [
+          134,
+          462.6
+        ],
+        [
+          222.2,
+          466.7
+        ],
+        [
+          346.1,
+          540.7
+        ],
+        [
+          333.6,
+          659.5
+        ],
+        [
+          223.1,
+          744.4
+        ],
+        [
+          163.1,
+          745.9
+        ]
+      ]
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          661.6,
+          560.7
+        ],
+        [
+          866,
+          561.5
+        ],
+        [
+          891.4,
+          450.2
+        ],
+        [
+          966.5,
+          445.6
+        ],
+        [
+          863.6,
+          729.5
+        ],
+        [
+          833.6,
+          730.3
+        ],
+        [
+          835.4,
+          694.1
+        ],
+        [
+          681.3,
+          704.2
+        ]
+      ]
+    },
+    {
+      "id": "body-0",
+      "joint": "spine0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          795.9,
+          454
+        ],
+        [
+          897.4,
+          450.4
+        ],
+        [
+          852.2,
+          725.3
+        ],
+        [
+          834.1,
+          730.8
+        ],
+        [
+          789.2,
+          802.2
+        ],
+        [
+          729.6,
+          845.7
+        ],
+        [
+          699.7,
+          734.6
+        ],
+        [
+          780.3,
+          714.6
+        ]
+      ]
+    },
+    {
+      "id": "body-1",
+      "joint": "spine1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          672.7,
+          458.6
+        ],
+        [
+          797.3,
+          453.9
+        ],
+        [
+          780.6,
+          750.4
+        ],
+        [
+          702.6,
+          766.7
+        ]
+      ]
+    },
+    {
+      "id": "body-2",
+      "joint": "spine2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          562.1,
+          452.9
+        ],
+        [
+          673.7,
+          458.7
+        ],
+        [
+          703.2,
+          766.5
+        ],
+        [
+          653.8,
+          774.5
+        ]
+      ]
+    },
+    {
+      "id": "body-3",
+      "joint": "spine3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          459.5,
+          464.1
+        ],
+        [
+          562.8,
+          452.9
+        ],
+        [
+          654.3,
+          774.4
+        ],
+        [
+          594.8,
+          781.2
+        ],
+        [
+          515.7,
+          826.3
+        ],
+        [
+          443.4,
+          827.5
+        ],
+        [
+          363,
+          653.1
+        ],
+        [
+          430.5,
+          642.4
+        ],
+        [
+          512.9,
+          676.9
+        ]
+      ]
+    },
+    {
+      "id": "body-4",
+      "joint": "spine4",
+      "layer": "near",
+      "polygonPx": [
+        [
+          389.7,
+          472.6
+        ],
+        [
+          460.3,
+          463.9
+        ],
+        [
+          559.9,
+          783
+        ],
+        [
+          469.7,
+          793.2
+        ]
+      ]
+    },
+    {
+      "id": "body-5",
+      "joint": "spine5",
+      "layer": "near",
+      "polygonPx": [
+        [
+          321.6,
+          478.3
+        ],
+        [
+          390.3,
+          472.6
+        ],
+        [
+          470.6,
+          793.3
+        ],
+        [
+          347.2,
+          771.3
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from bass. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic"
+  }
+}

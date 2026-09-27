@@ -1,0 +1,9 @@
+{
+ "id": "11-bittern",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-thigh (legFarKnee) covers 0% paint (reference 72%)"
+ ],
+ "semanticPresence": null
+}

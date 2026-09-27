@@ -1,15 +1,15 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 116,
- "pct": 18.4,
+ "covered": 125,
+ "pct": 19.8,
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 31,
-   "pct": 15.1,
+   "covered": 34,
+   "pct": 16.6,
    "names": [
     "Leopard",
     "Tiger",
@@ -39,7 +39,10 @@
     "Mink",
     "Marten",
     "Fisher",
+    "Mouse",
     "Marmot",
+    "Ground Squirrel",
+    "Tree Shrew",
     "Cattle",
     "Donkey"
    ]
@@ -47,8 +50,8 @@
   {
    "family": "fish",
    "species": 132,
-   "covered": 42,
-   "pct": 31.8,
+   "covered": 45,
+   "pct": 34.1,
    "names": [
     "Trout",
     "Char",
@@ -84,25 +87,31 @@
     "Damselfish",
     "Butterflyfish",
     "Surgeonfish",
+    "Parrotfish",
     "Wrasse",
+    "Boxfish",
     "Haddock",
     "Pollock",
     "Sailfish",
     "Mahi-Mahi",
     "Sardine",
     "Anchovy",
-    "Viperfish"
+    "Viperfish",
+    "Archerfish"
    ]
   },
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 21,
-   "pct": 20.6,
+   "covered": 24,
+   "pct": 23.5,
    "names": [
     "Kestrel",
     "Goose",
+    "Swan",
     "Eider Duck",
+    "Puffin",
+    "Cormorant",
     "Coot",
     "Heron",
     "Ibis",

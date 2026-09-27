@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 120,
+ "total": 129,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -251,6 +251,27 @@
    "family": "Quadrupeds",
    "name": "Meerkat",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/21-meerkat-v2",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Mouse",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/15-mouse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Tree Shrew",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/17-tree-shrew",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Ground Squirrel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/18-ground-squirrel",
    "report": "DIAGNOSTIC_PASS",
    "note": "clean"
   },
@@ -517,6 +538,27 @@
    "family": "Birds",
    "name": "Eider Duck",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/16-eider-duck",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Puffin",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/07-puffin",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Swan",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/09-swan",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Cormorant",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/10-cormorant",
    "report": "DIAGNOSTIC_PASS",
    "note": "clean"
   },
@@ -806,6 +848,27 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/14-viperfish",
    "report": "DIAGNOSTIC_PASS",
    "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Parrotfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/02-parrotfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "faint line near pectoral (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Boxfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/04-boxfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Archerfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/06-archerfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable"
   },
   {
    "family": "Insects",

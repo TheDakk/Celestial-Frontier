@@ -1,0 +1,78 @@
+{
+  "name": "Swan",
+  "family": "biped-bird",
+  "species": {
+    "name": "Swan",
+    "aspect": 1.4,
+    "headFrac": 0.12,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "very long S-curved neck",
+      "large white body floating high on the water",
+      "broad flat bill with a coloured base"
+    ]
+  },
+  "genome": {
+    "seed": 350917351,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 5,
+    "body": 0,
+    "loco": 3,
+    "trait": 4,
+    "size": 1,
+    "diet": 0,
+    "head": 9,
+    "limbs": 0,
+    "skin": 3,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 3,
+    "behavior": 10,
+    "habitat": 6,
+    "detail": 6,
+    "accent": 2,
+    "temper": 1,
+    "sense": 0,
+    "repro": 3,
+    "life": 5,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Swan"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Swan\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"350917351\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"4\"]]]]",
+  "index": 300,
+  "profile": {
+    "id": "swimming-bird",
+    "names": [
+      "Goose",
+      "Duck",
+      "Swan",
+      "Eider Duck",
+      "Auk",
+      "Puffin",
+      "Guillemot",
+      "Loon",
+      "Grebe",
+      "Cormorant",
+      "Coot",
+      "Moorhen"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": ""
+  }
+}
