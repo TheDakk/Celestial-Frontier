@@ -1,0 +1,137 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "24-beaver",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "06fa7ee76984e64d4ee1bbb9c16572331844118baef553c9a548d378d551d14e",
+ "subjectSourceSha256": "adaff50bc8cbab40e430a4bc7ee0bee0323855615b6f405fe2f9530a36235e2c",
+ "identity": {
+  "name": "Beaver",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Beaver\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2594475211\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 2594475211,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "cougar",
+  "authoringSha256": "421e0390baa8cc50c90902c54167a9b29e1b8da02192b4fbb358a335e1f66a54",
+  "masterSha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635"
+ },
+ "habitat": {
+  "profileId": "aquatic-pawed-mammal",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "9b8e1bd74f93b745a58339250e98399de256e5ed0328aba786c97644ec2490d7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group aquatic-pawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0096,
+     "class": "top",
+     "attach": {
+      "x": 216.5,
+      "y": 139,
+      "relX": 0.41,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0746,
+     "class": "front",
+     "attach": {
+      "x": 315.7,
+      "y": 169.3,
+      "relX": 0.97,
+      "relY": 0.29
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1181,
+     "class": "limb-down",
+     "attach": {
+      "x": 143,
+      "y": 207.5,
+      "relX": -0.01,
+      "relY": 0.67
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0388,
+     "class": "limb-down",
+     "attach": {
+      "x": 293.8,
+      "y": 240.3,
+      "relX": 0.85,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0298,
+     "class": "limb-down",
+     "attach": {
+      "x": 157,
+      "y": 242,
+      "relX": 0.07,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0292,
+     "class": "limb-down",
+     "attach": {
+      "x": 260,
+      "y": 241,
+      "relX": 0.66,
+      "relY": 1
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0433,
+     "class": "limb-down",
+     "attach": {
+      "x": 196,
+      "y": 242,
+      "relX": 0.29,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "cougar",
+   "byClass": {
+    "top": 2,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

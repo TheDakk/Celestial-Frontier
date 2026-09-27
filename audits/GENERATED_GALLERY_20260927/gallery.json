@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 154,
+ "total": 162,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -295,6 +295,13 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/20-gerbil",
    "report": "DIAGNOSTIC_PASS",
    "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Possum",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/22-possum",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (one faint chest scratch at full size)"
   },
   {
    "family": "Snakes (serpent strip author)",
@@ -638,6 +645,20 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/18-skua",
    "report": "DIAGNOSTIC_PASS",
    "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Hummingbird",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/13-hummingbird",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: far-wing fragment floats above the back in turn3 idle; walks on feet (Codex hold)"
+  },
+  {
+   "family": "Birds",
+   "name": "Snow Petrel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/20-snow-petrel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: small feather fragment above the back and a background-coloured patch on the wing in turn3 idle"
   },
   {
    "family": "Fish",
@@ -1044,6 +1065,41 @@
    "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/10-snailfish/native",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: improved but splits head/trunk in late idle"
+  },
+  {
+   "family": "Fish",
+   "name": "Salmon",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/01-salmon/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the fish-seams batch (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Cave Fish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/03-cave-fish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the fish-seams batch (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Lanternfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/07-lanternfish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the fish-seams batch (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Barreleye",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/10-barreleye/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the fish-seams batch (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Ocean Sunfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/12-ocean-sunfish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the fish-seams batch (unrepaired fit split at seams)"
   },
   {
    "family": "Insects",
