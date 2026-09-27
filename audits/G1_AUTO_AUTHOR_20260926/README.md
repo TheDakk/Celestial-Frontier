@@ -138,6 +138,11 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - `score-batch.mjs` now picks the winning candidate's fit. The six are re-run on the correct fits in `native-fallback-fix/`.
 - Lesson: when a runner can admit a fallback, every downstream step must read the admitted candidate's path from `score.json`, never a fixed path.
 
+**Termite abdomen peel: author-ownership diagnosis (C68):**
+- Ant-referenced transfers are refused at intake, because the Ant declares `wings` absent and the author never inherits an absence.
+- The Termite therefore passes via its Beetle-ref fallback, whose merged elytra (→ `thorax`) cover the wingless abdomen. The thorax owns that paint, so it peels.
+- Fix proposed (C68): a reviewed species-level absence table on the Earth profiles. The author inherits a reference's absence only when the target species independently declares the same absence.
+
 **One command per G2 batch (session 5):** `node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir> <tag>` (repo root, OUT of the sandbox because native owns a browser). It runs:
 1. The pattern gate → `pilots/<tag>-eligible.json`.
 2. `run-auto` with the standard flags (`--topk=1 --chains --counter --fallback=2 --serpent-strips --merge-joint-labels`).
