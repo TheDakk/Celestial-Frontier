@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Skua",
+  "masterSha256": "569ff41118ef546d0c246ce98c8cba1c2ec18a8685e6cbe1d137e28a33778193",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

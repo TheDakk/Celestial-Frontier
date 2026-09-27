@@ -1,0 +1,13 @@
+{
+  "id": "03-small-fish",
+  "name": "Small Fish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1f8a25d3-5718-41ed-a342-9755489618d6.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b7671360fa60007a8ef75d69555376fc153d7dd190b461c6bd8f6e6eb8819d17",
+  "bytes": 1152560,
+  "promptSha256": "59c033b5c196071f4a02680cf17080d2f14169c78a199ff2c4c729b10e8e9e97",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

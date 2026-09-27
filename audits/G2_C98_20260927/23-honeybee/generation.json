@@ -1,0 +1,13 @@
+{
+  "id": "23-honeybee",
+  "name": "Honeybee",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-c95ebf3b-4798-4ac4-9e50-c132917f061a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "de92fc91f89ea0be991c4ca75a2519f11d38810ca2348e928fb19b39ba0d8f06",
+  "bytes": 1455853,
+  "promptSha256": "4bdd0a4583f04d163f4015bb21dbab6e5a9c6752529a907bff5c54ec79e1f9ab",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

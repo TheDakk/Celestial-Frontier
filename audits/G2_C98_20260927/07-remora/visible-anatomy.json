@@ -1,0 +1,145 @@
+{
+  "id": "07-remora",
+  "name": "Remora",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "3b920be4355f8c30a89756b78591ad71a010f2b05079ff9599387e97698a512a",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 11886,
+    "coreRadius": 15,
+    "bodyBox": {
+      "x0": 188,
+      "y0": 177,
+      "x1": 342,
+      "y1": 233
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0147,
+        "pixels": 175,
+        "box": {
+          "x0": 195,
+          "y0": 168,
+          "x1": 223,
+          "y1": 176
+        },
+        "attach": {
+          "x": 209,
+          "y": 176,
+          "relX": 0.14,
+          "relY": -0.02
+        },
+        "dir": {
+          "x": -0.75,
+          "y": -0.66
+        },
+        "class": "top",
+        "length": 16.1
+      },
+      {
+        "k": 1,
+        "frac": 0.34,
+        "pixels": 4041,
+        "box": {
+          "x0": 52,
+          "y0": 173,
+          "x1": 187,
+          "y1": 247
+        },
+        "attach": {
+          "x": 187,
+          "y": 211.5,
+          "relX": -0.01,
+          "relY": 0.62
+        },
+        "dir": {
+          "x": -1,
+          "y": 0
+        },
+        "class": "rear",
+        "length": 140.4
+      },
+      {
+        "k": 2,
+        "frac": 0.051,
+        "pixels": 606,
+        "box": {
+          "x0": 343,
+          "y0": 195,
+          "x1": 372,
+          "y1": 224
+        },
+        "attach": {
+          "x": 343,
+          "y": 209.5,
+          "relX": 1.01,
+          "relY": 0.58
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.06
+        },
+        "class": "front",
+        "length": 32.4
+      },
+      {
+        "k": 3,
+        "frac": 0.0285,
+        "pixels": 339,
+        "box": {
+          "x0": 245,
+          "y0": 234,
+          "x1": 287,
+          "y1": 247
+        },
+        "attach": {
+          "x": 272,
+          "y": 234,
+          "relX": 0.55,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": -0.84,
+          "y": 0.55
+        },
+        "class": "limb-down",
+        "length": 30
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 57,
+        "x1": 71,
+        "cx": 62.4
+      },
+      {
+        "x0": 245,
+        "x1": 272,
+        "cx": 256.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

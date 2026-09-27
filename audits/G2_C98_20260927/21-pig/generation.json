@@ -1,0 +1,13 @@
+{
+  "id": "21-pig",
+  "name": "Pig",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-a9c0712e-5159-4bde-9398-a3530760ccf5.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "8b00496988f2f8a45a67343471c4e2e139457b1a8ae84f367eae335a8a0bd4e1",
+  "bytes": 1392587,
+  "promptSha256": "139ca56d494514d325488aeae1f713ae80bfd37b7955207f67fbdedc45a6f3d4",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

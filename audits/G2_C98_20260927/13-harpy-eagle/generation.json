@@ -1,0 +1,13 @@
+{
+  "id": "13-harpy-eagle",
+  "name": "Harpy Eagle",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-0676b3e8-b175-41d1-8f04-fc07ecff4d6b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "46b2452efe1cba94077689bc740ab9e9155b85893e7316ada20e052573acccb9",
+  "bytes": 1216464,
+  "promptSha256": "90d5b4b940a5355414b516122419bb2f056cf68e1caf04eda4875132cea88c0c",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

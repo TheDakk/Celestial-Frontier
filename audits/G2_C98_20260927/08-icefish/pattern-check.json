@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Icefish",
+  "masterSha256": "2462810fa8bbac3ef12b25e13284553deded198bf181af72d491dd6273173afa",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Secretary Bird",
+  "masterSha256": "f1434e644599b47054260ce6669c036cfbaae683db6d6e220749ef934c6fcddd",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

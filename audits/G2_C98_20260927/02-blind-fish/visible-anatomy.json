@@ -1,0 +1,163 @@
+{
+  "id": "02-blind-fish",
+  "name": "Blind Fish",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "4c069841eace21a8698bfe84bac1103d2c425017302445017911f2c752f752df",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 18962,
+    "coreRadius": 22,
+    "bodyBox": {
+      "x0": 168,
+      "y0": 167,
+      "x1": 338,
+      "y1": 246
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0586,
+        "pixels": 1111,
+        "box": {
+          "x0": 187,
+          "y0": 132,
+          "x1": 251,
+          "y1": 175
+        },
+        "attach": {
+          "x": 226.4,
+          "y": 166.9,
+          "relX": 0.34,
+          "relY": 0
+        },
+        "dir": {
+          "x": -0.71,
+          "y": -0.7
+        },
+        "class": "top",
+        "length": 52.6
+      },
+      {
+        "k": 1,
+        "frac": 0.2528,
+        "pixels": 4793,
+        "box": {
+          "x0": 56,
+          "y0": 161,
+          "x1": 201,
+          "y1": 262
+        },
+        "attach": {
+          "x": 174.2,
+          "y": 221.3,
+          "relX": 0.04,
+          "relY": 0.69
+        },
+        "dir": {
+          "x": -0.98,
+          "y": -0.21
+        },
+        "class": "rear",
+        "length": 132.7
+      },
+      {
+        "k": 2,
+        "frac": 0.038,
+        "pixels": 720,
+        "box": {
+          "x0": 339,
+          "y0": 193,
+          "x1": 363,
+          "y1": 235
+        },
+        "attach": {
+          "x": 339,
+          "y": 214,
+          "relX": 1.01,
+          "relY": 0.59
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.07
+        },
+        "class": "front",
+        "length": 31.9
+      },
+      {
+        "k": 3,
+        "frac": 0.0231,
+        "pixels": 438,
+        "box": {
+          "x0": 213,
+          "y0": 247,
+          "x1": 248,
+          "y1": 270
+        },
+        "attach": {
+          "x": 241.5,
+          "y": 247,
+          "relX": 0.43,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.81,
+          "y": 0.58
+        },
+        "class": "limb-down",
+        "length": 36.6
+      },
+      {
+        "k": 4,
+        "frac": 0.0075,
+        "pixels": 142,
+        "box": {
+          "x0": 273,
+          "y0": 247,
+          "x1": 295,
+          "y1": 258
+        },
+        "attach": {
+          "x": 287,
+          "y": 247,
+          "relX": 0.7,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.73,
+          "y": 0.68
+        },
+        "class": "limb-down",
+        "length": 17.8
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 213,
+        "x1": 233,
+        "cx": 221.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

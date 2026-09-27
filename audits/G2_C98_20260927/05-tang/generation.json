@@ -1,0 +1,13 @@
+{
+  "id": "05-tang",
+  "name": "Tang",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-8c60da2c-3538-4711-8a28-60ff1448d695.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "aff4f03976bebcf11604845f82b82c7f83d69f626f34857207567dae16f83e72",
+  "bytes": 1487167,
+  "promptSha256": "41316e12c54f26d89430fdf6e07c1644d5e6e4541b6323837eb6c6fbefe67a8c",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

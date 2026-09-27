@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Gerbil",
+  "masterSha256": "7df561d470fcec77c2b30d44c08c3e7eefec5296cc82ada7d93cef05cba3bd16",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
