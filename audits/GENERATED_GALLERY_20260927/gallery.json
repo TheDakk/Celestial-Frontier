@@ -607,9 +607,9 @@
   {
    "family": "Fish",
    "name": "Mackerel",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/01-mackerel",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "acceptable; unwelded"
+   "note": "Codex fixed fish recipe; diagonal chest slit in late pose (Codex)"
   },
   {
    "family": "Fish",
@@ -628,9 +628,9 @@
   {
    "family": "Fish",
    "name": "Sardine",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/04-sardine",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "acceptable; unwelded"
+   "note": "Codex fixed fish recipe; whole; fine seams (Codex)"
   },
   {
    "family": "Fish",
@@ -642,44 +642,44 @@
   {
    "family": "Fish",
    "name": "Mullet",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/06-mullet",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "acceptable; unwelded"
+   "note": "Codex fixed fish recipe; small belly edge (Codex)"
   },
   {
    "family": "Fish",
    "name": "Tarpon",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/07-tarpon",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "acceptable; unwelded"
+   "note": "Codex fixed fish recipe; belly slit in late pose (Codex)"
   },
   {
    "family": "Fish",
    "name": "Grouper",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/01-grouper",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "gill hole (unwelded)"
+   "note": "Codex fixed fish recipe; gill hole gone"
   },
   {
    "family": "Fish",
    "name": "Barracuda",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/02-barracuda",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "small crack (unwelded)"
+   "note": "Codex fixed fish recipe; whole; fine seams (Codex)"
   },
   {
    "family": "Fish",
    "name": "Sailfish",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/05-sailfish",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "body cracks (unwelded)"
+   "note": "Codex fixed fish recipe; chest crease (Codex)"
   },
   {
    "family": "Fish",
    "name": "Mahi-Mahi",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/07-mahi-mahi",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "vertical cracks (unwelded)"
+   "note": "Codex fixed fish recipe; whole; cracks closed"
   },
   {
    "family": "Fish",
