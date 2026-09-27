@@ -51,7 +51,7 @@ export interface PaintedCardOwnershipV1 {
   readonly byKind: Readonly<Record<CardKind, Readonly<{ entries: number; encodedBytes: number; decodedPixels: number; dataUrlBytes: number }>>>;
   /** `bytes` = masterLabelBytes + maskBytes: every decoded buffer the resident archetypes retain, masks included (C8 resume). */
   readonly residentArchetypes: Readonly<{ count: number; bytes: number; masterLabelBytes: number; maskBytes: number; masks: number; names: readonly string[] }>;
-  readonly totals: Readonly<{ renders: number; capEvictions: number; releasedUnowned: number }>;
+  readonly totals: Readonly<{ renders: number; capEvictions: number; releasedUnowned: number; dedupeHits: number }>;
 }
 /** Painted archetypes kept decoded at once (each: its ≤512² master + label map, ~2 MiB). */
 export const ARCHETYPE_RESIDENT_DEFAULT = 2;
@@ -62,7 +62,7 @@ export class PaintedCardSource {
   /** Retained decoded marking masks per resident archetype (pattern → alpha bytes); dropped with the archetype. */
   readonly #maskBytes = new Map<string, Map<string, number>>();
   readonly #cache: Record<CardKind, Map<string, PaintedCardAsset>> = { thumb: new Map(), portrait: new Map() }; readonly #pending = new Map<string, Promise<PaintedCardAsset>>();
-  #renders = 0; #evicted = 0; #released = 0; readonly #leases = new Map<string, number>(); #tail: Promise<unknown> = Promise.resolve();
+  #renders = 0; #evicted = 0; #released = 0; #dedupeHits = 0; readonly #leases = new Map<string, number>(); #tail: Promise<unknown> = Promise.resolve();
   /** One render per host task: each waits for the previous one and a yield, so the page can paint between cards. */
   #slot<T>(render: () => T | Promise<T>): Promise<T> { const run = this.#tail.then(() => (this.#o.yieldToHost ?? macrotask)()).then(render); this.#tail = run.then(() => undefined, () => undefined); return run; }
   readonly #names: ReadonlySet<string>;
@@ -136,7 +136,7 @@ export class PaintedCardSource {
     return Object.freeze({ schema: 'cf-v2-painted-card-ownership/v1' as const, leases, keys: Object.freeze({ leasedThumbs: leased('thumb'), leasedPortraits: leased('portrait'), cachedThumbs: keys('thumb'), cachedPortraits: keys('portrait'), pendingThumbs: pending('thumb'), pendingPortraits: pending('portrait') }),
       cacheEntries: this.#cache.thumb.size + this.#cache.portrait.size, encodedBytes, decodedPixels, dataUrlBytes, byKind: Object.freeze(byKind),
       residentArchetypes: Object.freeze({ count: r.count, bytes: r.bytes, masterLabelBytes: r.masterLabelBytes, maskBytes: r.maskBytes, masks: r.masks, names: Object.freeze([...this.#archetypes.keys()]) }),
-      totals: Object.freeze({ renders: this.#renders, capEvictions: this.#evicted, releasedUnowned: this.#released }) });
+      totals: Object.freeze({ renders: this.#renders, capEvictions: this.#evicted, releasedUnowned: this.#released, dedupeHits: this.#dedupeHits }) });
   }
   /** Render (or serve from cache) the individual's card of `kind` for this genome; null when no archetype matches. */
   card(genome: Readonly<Record<string, unknown>>, kind: CardKind): Promise<PaintedCardAsset> | null {
@@ -145,8 +145,8 @@ export class PaintedCardSource {
     return hook(genome, a, kind).catch(() => null).then((f) => this.#card(genome, kind, a, f));
   }
   #card(genome: Readonly<Record<string, unknown>>, kind: CardKind, a: PaintedCardArchetype, finished: FinishedCardMasterV1 | null): Promise<PaintedCardAsset> {
-    const key = speciesVisualKey(genome as Record<string, unknown>), cacheKey = kind + ':' + key + (finished ? '~' + finished.sha256 : ''); const hit = this.#cache[kind].get(key); if (hit && hit.finishedSha256 === (finished?.sha256 ?? undefined)) return Promise.resolve(hit);
-    const pending = this.#pending.get(cacheKey); if (pending) return pending;
+    const key = speciesVisualKey(genome as Record<string, unknown>), cacheKey = kind + ':' + key + (finished ? '~' + finished.sha256 : ''); const hit = this.#cache[kind].get(key); if (hit && hit.finishedSha256 === (finished?.sha256 ?? undefined)) { this.#dedupeHits++; return Promise.resolve(hit); }
+    const pending = this.#pending.get(cacheKey); if (pending) { this.#dedupeHits++; return pending; }
     const p = (async () => {
       let drawnBy = a, fallback: PaintedCardAsset['libraryFallback'];
       const arch = await this.#archetype(a).catch(async (error: unknown) => {

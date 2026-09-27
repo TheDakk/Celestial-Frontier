@@ -5,7 +5,7 @@ import zlib from 'node:zlib';
 import vm from 'node:vm';
 import { pathToFileURL } from 'node:url';
 import { materialize } from './compendiummem-v2-materialize.mjs';
-import { paintedFindings, paintedSettlementFindings, compendiumResources } from './compendiummem-v2-painted.mjs';
+import { paintedFindings, paintedSettlementFindings, compendiumResources, keyboardEntryPlan } from './compendiummem-v2-painted.mjs';
 const dir = fs.mkdtempSync('/private/tmp/cf-i5-painted-controls-');
 process.env.CF_COMPENDIUM_V2_SOURCE = new URL('../../..', import.meta.url).pathname;
 materialize(dir);
@@ -63,4 +63,29 @@ test('full classifier accepts a mixed-owner ready carrier and rejects wrong-owne
  assert.equal(contract.classifyCompendiumThumbSettlement(carrier,expected).status,'ready');
  carrier.paintedArt.keys.cachedThumbs=['forged'];
  assert.notEqual(contract.classifyCompendiumThumbSettlement(carrier,expected).status,'ready');
+});
+test('native entry follows observed controls without a four-Tab assumption or focus injection',()=>{
+ const tokens=['id:close',...Array.from({length:10},(_,i)=>'chip:'+i),'row:first','row:second'];
+ const o={tokens,tabIndices:tokens.map(()=>0),active:'id:close'};
+ assert.equal(keyboardEntryPlan(o,'first').length,11);
+ for(const m of [{...o,active:'missing'},{...o,tokens:[...tokens,'chip:0']},{...o,tabIndices:tokens.map(()=>1)},{...o,tokens:tokens.map(()=>null)}])assert.throws(()=>keyboardEntryPlan(m,'first'));
+ assert.deepEqual(keyboardEntryPlan({...o,active:'row:first'},'first'),[]);
+ assert.throws(()=>keyboardEntryPlan({...o,active:'row:second'},'first'));
+});
+test('mixed-owner error control follows the first actual broker row and rejects missing recovery',()=>{
+ const p=JSON.parse(fs.readFileSync(new URL('../../../audits/I5_REPAIR_20260927/epoch/calibration-1-report.json',import.meta.url)));
+ const w=structuredClone(p.profiles.phone.producerErrorWitness);
+ // Synthetic sibling fields on retained broker observations; these do not alter
+ // or promote the stopped raw report. The retained rows prove error index 2.
+ for(const phase of ['preArm','publication','recovery'])for(const o of [...w[phase].falsyObservations,w[phase].accepted].filter(Boolean)) {
+  const owned=painted(); const rowKeys=o.rows?.slice(0,2).map(r=>r.visualKey)??[];
+  if(!rowKeys.length){o.paintedArt=null;continue;}
+  owned.keys.leasedThumbs=rowKeys;owned.keys.cachedThumbs=rowKeys;owned.leases=2;owned.cacheEntries=2;owned.encodedBytes=6;owned.decodedPixels=2*132**2;owned.dataUrlBytes=52;owned.byKind.thumb=kind(2,132);o.paintedArt=owned;
+ }
+ assert.equal(w.publication.accepted.rows.find(r=>r.thumbState==='error').index,2);
+ assert.equal(contract.producerErrorContained(w,'phone'),true);
+ assert.equal(contract.producerErrorRecoverable(w,'phone'),true);
+ for(const mutate of [m=>{m.publication.accepted.rows[2].thumbState='ready';},m=>{m.publication.accepted.paintedArt.keys.cachedThumbs=['forged','other'];},m=>{m.recovery.accepted.rows[2].cached=false;},m=>{m.publication.accepted.art.totals.jobErrors=0;}]) {
+  const mutant=structuredClone(w);mutate(mutant);assert.equal(contract.producerErrorRecoverable(mutant,'phone'),false);
+ }
 });

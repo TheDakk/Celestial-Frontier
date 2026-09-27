@@ -13,3 +13,15 @@ The active static profile still checks the historical v1 producer. Rewriting its
 - The helper content hash is embedded in the generated contract and the entire instrument is source-hashed. A helper change therefore changes measurement authority.
 
 This uninterrupted session reuses C59's toolchain startup receipt. Initial disk216GiB. No live measurement has run yet. Controls and final epoch outcome follow; no I5 PASS is claimed by this preparation.
+
+## New epoch result: stopped, not certified
+
+Fresh signed source/instrument `b3a34e15` ran once. Build and Edge preflight passed. `i5-v2-b3a34e15d401-calibration-1` stopped INSTRUMENT-FAIL at phone native keyboard entry after ~12.8 seconds of the command. The exact source was clean at both ends; v1 unchanged. Collector exit2, named verifier exit1 confirms the terminal refusal. No second/third calibration or certification ran, and no budget/profile was promoted. Separate broker/painted thumbnail settlement passed on the initial/resized rows; this is not a completed memory measurement or the later middle-scroll proof. See epoch-summary.json and the raw report.
+
+The keyboard collector assumes at most four Tabs; the shipped Compendium now has five kingdom chips, four rarity chips and a shelf chip. A source-matched synthetic Edge control reproduces the four-Tab miss and verifies all eleven observed native steps from Close to row1. The successor derives the path from visible enabled DOM controls and checks each native landing exactly, refusing absent/duplicate/positive-tabindex/oversized paths; it never calls focus() or skips straight to the row.
+
+Raw witness replay also found that the worker-injected error now belongs to row2 (the first broker row), because rows0–1 use painted cards. V2 now retains painted sibling evidence on those witnesses, separately validates the ready painted rows, and applies broker job/cache/lease accounting to the actual broker rows. The same broker error must appear once and recover on the same key/index; forged owners, missing errors and missing recovery refuse. Actual painted cache/pending dedupe counters supplement the broker's counter for the two sentinel rows. No error or ownership gate is dropped. These are versioned v2 helper changes; v1 and all numeric limits stay fixed.
+
+The at-run helper is preserved separately because the first materializer used an external import; the successor embeds its helper inside the hashed output directory so subsequent source edits cannot change its replay. The stopped report and manifest are not modified.
+
+Current controls:63instrument checks pass, including the mixed-owner error/recovery mutations; the real Edge synthetic keyboard control passes. The first new control failure (recovery still assumed all rows were broker-cached) and its fix are retained in flow-controls-01/02.log. Full quiet-head battery and final signed handoff follow. A fresh epoch on this changed instrument is still needed; the stopped epoch is never resumed.
