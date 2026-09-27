@@ -1,0 +1,13 @@
+{
+  "name": "Starling",
+  "masterSha256": "2c2b4f7aa32f3708c5ad80a3984bb025314926092917e6e24e245bfb6eb1bbcb",
+  "status": "PRESENT",
+  "method": "Codex visual inspection of exact generated originals and sheet; pattern only, not G1, anatomy or Dakk approval",
+  "features": [
+    {
+      "requirement": "glossy iridescent black plumage flecked with pale spots",
+      "status": "PRESENT",
+      "observed": "Many pale feather-tip flecks on dark iridescent breast, wing and back plumage."
+    }
+  ]
+}

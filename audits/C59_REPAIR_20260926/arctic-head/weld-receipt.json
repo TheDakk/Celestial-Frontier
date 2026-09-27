@@ -1,0 +1,118 @@
+{
+  "sourceFit": "audits/TAIL_LABELS_C56_20260926/03-arctic-fox/fit",
+  "sourcePreSplitSha256": "615d9e25408121387ad82c4a53f5d9585623d6f040d1fd5a7cbfebfaffe876c9",
+  "sourceAtlasSha256": "bb6aa04c55130c3b2ff88f212da545682ab6de3b3d208747311a5f4222fa43e0",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "earNearTip",
+      "earNearRoot",
+      "earFarTip",
+      "earFarRoot",
+      "hindNearPaw",
+      "hindNearAnkle",
+      "hindNearKnee",
+      "hindNearRoot",
+      "hindFarPaw",
+      "hindFarAnkle",
+      "hindFarKnee",
+      "hindFarRoot",
+      "foreNearPaw",
+      "foreNearAnkle",
+      "foreNearKnee",
+      "foreNearRoot",
+      "foreFarPaw",
+      "foreFarAnkle",
+      "foreFarKnee",
+      "foreFarRoot",
+      "jaw",
+      "head",
+      "neck",
+      "tail3",
+      "tail2",
+      "tail1",
+      "tail0",
+      "chest",
+      "pelvis",
+      "spine"
+    ],
+    "contactEndpoints": [
+      "hindFarAnkle",
+      "foreFarAnkle",
+      "hindNearAnkle",
+      "foreNearAnkle"
+    ],
+    "paintBoundaryPairs": [
+      [
+        "head",
+        "spine"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 37,
+        "distancePx": 2.5961509971494254,
+        "supports": [
+          846
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 46,
+        "distancePx": 7.280109889280457,
+        "supports": [
+          1396
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 56,
+        "distancePx": 4.924428900898129,
+        "supports": [
+          335
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 66,
+        "distancePx": 5.780138406647358,
+        "supports": [
+          1124
+        ]
+      }
+    ],
+    "sourceBindingHash": "933cad14f72c4910bd11848095d978736d5a69d54dc566154a499cc80c48c81d",
+    "sourceVertices": 2624,
+    "vertices": 3194,
+    "sharedSupports": 836,
+    "pins": 581,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 43,
+    "excludedOverlaps": 26,
+    "observedExcludedBoundaries": 26,
+    "weldedExcludedBoundaries": 1,
+    "independentExcludedBoundaries": 25,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "head",
+        "spine"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "recordUnchanged": true,
+  "labelsUnchanged": true,
+  "atlasUnchanged": true,
+  "limitsUnchanged": true
+}

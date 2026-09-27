@@ -1,0 +1,13 @@
+✔ 08-cod admits rig identity and rejects wrong tail before placement (43.166291ms)
+✔ 07-perch admits rig identity and rejects wrong tail before placement (40.078875ms)
+✔ 09-carp admits rig identity and rejects wrong tail before placement (39.488459ms)
+✔ 03-arctic-fox admits rig identity and rejects wrong tail before placement (39.701916ms)
+✔ actual compiler rejects wrong Cod tail without creating a candidate (191.217042ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 468.611166

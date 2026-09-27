@@ -1,0 +1,1 @@
+g2c54-09-ocelot-side {"schema":"cf.foreleg-side-partition/v1","method":"nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership","changedPixels":12614,"transfers":{"foreNearRoot→foreFarRoot":5571,"foreNearKnee→foreFarRoot":5743,"foreNearAnkle→foreFarRoot":348,"foreNearAnkle→foreFarKnee":952},"otherOwnersChanged":0}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Starling",
+  "masterSha256": "2c2b4f7aa32f3708c5ad80a3984bb025314926092917e6e24e245bfb6eb1bbcb",
+  "required": [
+    "glossy iridescent black plumage flecked with pale spots"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "glossy iridescent black plumage flecked with pale spots",
+      "status": "PRESENT",
+      "observed": "Many pale feather-tip flecks on dark iridescent breast, wing and back plumage."
+    }
+  ]
+}

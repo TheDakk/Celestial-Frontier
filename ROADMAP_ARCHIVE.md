@@ -1,5 +1,31 @@
 # Superseded Claude handoff — 2026-09-26 (session 3, end), replaced by the session-4 handoff
 
+## Current Codex sprint handoff — 2026-09-26, C56/C57 verification
+
+### Branch, goal and authority
+- `/Users/dakk/Projects/celestial-frontier-openai-mac`, branch `openai/mac`. Signed no-ff23bae15b integrates requestedf50abbf7. Claude session3 handoff above preserved byte-identically. Signed native/placement checkpoint046914af. Signed delivery checkpoint126d8765; final evidence commit follows. Resolve this lane locally.
+- Dakk's goal remains every Earth creature's own generated painting, full movement in battle biomes, ONE visual pass at the end. D24 generated-family scoring and D26finisher are live. D25shopping off. C55–C58 read in absolute read-only mailbox; newer signed Claude541b7d42 not merged in this batch.
+- Signed only; own normal push after required local battery with I5 the only accepted red and fresh budget/public/workflow check. No PR/label/hosted/develop/main/release/deploy. ≥40GiB free; last217GiB,3permanentworktrees/no stashes.
+
+### Completed and ready for Claude
+- **Tail seam decision implemented:** exact raster ownership via existing painter-label contract. Existing split already welds anatomical body5/caudal; no sibling exception/limit change. Cod4550/Perch14/Carp109/ArcticFox7554gap pixels all retained, no sourceRGBA/landmark/recipe/other-owner changes. Five controls, all4static/actions/presentation and native0/0pass. Evidence TAIL_LABELS_C56_20260926. Claude C58 confirms route and owns held-out/mutation checks before author adoption. Perch/Carp are small-gap regressions, not proof of a genuinely gapped held-out fish.
+- **Phone originals:** canonicalCougar/Wolf/Gull actual worker proof on signed046914af:3inferences/1model/6transfers/0phone model; zero original alpha and sub250RGBchanges; conservation/admission/cache/deliveryPASS. Published exactPNG/receipts locally before manifest regeneration;619files and actual bundled consumer PASS3keys/7fetches. Prior8keys preserved (5currentcrab+3historical). No deploy/flag/physicalphone claim. PHONE_ORIGINALS_C56_20260926 owns receipts/keys.
+- **G2throughput:**32new1254originals in G2_THROUGHPUT_C56_20260926/pilot.json (8quad/8bird/8serpent/8insect). Byte-exact tool originals/receipts/observations/sheet, no hand authoring. Compiled BEFORE pattern fix. Four pattern REFUSALS: CloudedLeopard,WaterSnake,MountainViper,Ladybug. LeafcutterAnt also holds an unwanted leaf; limbs/layout require automatic scoring.
+- **C57/D27 reversible prompt fix:** remove contradictory plain-coat override, put canonical pattern requirements first. Seven further1254originals (6cat species,2Jaguarattempts) in G2_PATTERN_C57_20260926/pilot.json. Five pattern-onlyPASS; bothJaguarcentralrosettespotsUNRESOLVED/REFUSE. Pattern observation requires exact-source explicit visual feature evidence, never expected prompt/variance as proof. Four adversarial controlsPASS. No G1/library admission from generation.
+
+### Repairs still open — do not turn numerical green into visual acceptance
+- Other Cod/fish body seams remain; Carp80root/caudal fringeedges. ArcticFox tail/body tears persist in crouch despite tail2/3 join repair. Named nativefilms/stills retained. No registry replacement.
+- RedFox exact near-foreleg diagnosis: additiveidle+trot at54.3667ms,idle0.46875,zero travel,pass0 needs8.53%compression beyond unchanged8%. Priorfarlegprojection did not address it. Claude motion owner has source-hashed diagnostic for geometry-derived amplitude work; no fake bend/limit relaxation.
+- Marmothead/Cattlehump automatic gap candidates bothstatic/nativePASS but VISUALLY REJECTED (upper-body tears, largeCattlebackgap). SeparateMarmotboth-sidesscript actually exercises reportedcrouch. QUAD_CONTACT_C56_20260926.
+- C57elbowflap: Tiger/Leopard/Ocelot fore-near-root polygon distal corners108–116px lateral to boneaxis, repeated transferred chestpaint. Repair ownership from sourceanatomy; not complete. Sameaudit binds exactpolygons.
+- Prior6fitqueue stillopen. C57newGoose/Quailnativefailures,SnowLeopardcompression,Termiteintake refusal remain Claude findings to preserve. I5, S4/missions/Outposts, C51phonekeyefficiency remain in their existing queues; generatedart stayspriority.
+
+### Verification / next steps
+- Rootvalidate and focused controls PASS. Full battery on quiet signed126d8765:5647pass,2expectedfail,2skip; I5 producer-authority mismatch is the ONLY failure. All7remainingownersPASS. final-battery/results.json retains the copied runner's hardcoded dirtySource:true; this was not a measurement (tracked tree clean before/after). See final-battery/REVIEW.md. Fresh public/UNFROZEN check and remote workflows byte-identical; no push trigger. No sealed gates or baselines changed.
+- Current references LOCAL_AI_GENERATION,CREATURE_ANIMATION and codebase reference updated. Nativeprepared49.7MB scratch inventoried byhash and pruned; retained originals/proofs unchanged. Keep newest2previewpackages.
+- Codex: remainingtail/quad/elbowrepairs after signed own-branch handoff. Claude: consume signedlane directly; score32C56 and7patterncandidates using theirpilot shapes, honoring patternrefusals; integrate exactlabelsonlyafter independentheld-out/mutations; continueG1/native. Dakk need not relay or open another app; finalvisualpass remains at end.
+
+
 ## CLAUDE SESSION HANDOFF — 2026-09-26 (session 3, end) · GENERATED ART IS THE GOAL
 Self-contained for a fresh Claude session. Codex's block follows below. Older Claude handoffs are verbatim in `ROADMAP_ARCHIVE.md`.
 

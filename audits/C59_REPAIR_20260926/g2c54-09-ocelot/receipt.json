@@ -1,0 +1,384 @@
+{
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/09-ocelot/fit",
+  "sourceRecordSha256": "2a254835cc750cee8db2ae5921bd2c8fe2d7ffd7a0d55620a53417c4a279e620",
+  "sourceLabelsSha256": "385d9368dbe3a73e7c036eb53fa5d6c4c45308024d77bc2fc44cd846ade7f176",
+  "newLabelsSha256": "4ef90059e910bdd26d90504f726357df160816d329842bd67d287a2355df9696",
+  "newDecodedLabelsSha256": "a3903bc8918f7cbc82c8f4334a4b5c1f95a8d8bb2f0a7c483ef1a5edee53cf7a",
+  "sourceMasterSha256": "321e8cbbec2ac1932437efcf96be004a443d81e2b8a048b3f7ae8db870316b2b",
+  "helperSha256": "464485e39d59e04ffa090f7260eb6f8fab8e8e0f9a782719eee0aa9a03f347b3",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "schema": "cf.foreleg-chain-partition/v1",
+    "method": "nearest existing foreleg-chain segment below both shoulders; only existing foreleg owners",
+    "changedPixels": 49487,
+    "transfers": {
+      "foreNearRoot→foreFarRoot": 5571,
+      "foreNearKnee→foreNearRoot": 8307,
+      "foreNearKnee→foreFarRoot": 5743,
+      "foreFarKnee→foreFarRoot": 7951,
+      "foreNearRoot→foreNearKnee": 47,
+      "foreNearAnkle→foreFarRoot": 348,
+      "foreNearAnkle→foreFarKnee": 952,
+      "foreFarAnkle→foreFarKnee": 10046,
+      "foreNearAnkle→foreNearKnee": 6423,
+      "foreFarPaw→foreFarAnkle": 3086,
+      "foreFarPaw→foreFarKnee": 595,
+      "foreNearPaw→foreNearAnkle": 418
+    },
+    "otherOwnersChanged": 0
+  },
+  "intake": {
+    "id": "g2c54-09-ocelot",
+    "parts": 31,
+    "atlasSize": {
+      "width": 2039,
+      "height": 1319
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 38,
+        "distancePx": 9.10823802938864,
+        "supports": [
+          941
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 25,
+        "distancePx": 5.14003891035836,
+        "supports": [
+          1258
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 107,
+        "distancePx": 9.121951545584968,
+        "supports": [
+          97
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 13,
+        "distancePx": 6.324555320336763,
+        "supports": [
+          504
+        ]
+      }
+    ],
+    "sourceBindingHash": "9a06d1dbc3b40708872fc788fea8207a45baea959f4240c9e27789c13afc2daa",
+    "sourceVertices": 2585,
+    "vertices": 3048,
+    "sharedSupports": 772,
+    "pins": 772,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 41,
+    "excludedOverlaps": 30,
+    "observedExcludedBoundaries": 30,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 30,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "joins": [
+    {
+      "name": "chest--fore-far-root",
+      "sourceEdges": 57
+    },
+    {
+      "name": "chest--fore-near-knee",
+      "sourceEdges": 70
+    },
+    {
+      "name": "chest--fore-near-root",
+      "sourceEdges": 506
+    },
+    {
+      "name": "chest--neck",
+      "sourceEdges": 126
+    },
+    {
+      "name": "ear-far-root--ear-far-tip",
+      "sourceEdges": 66
+    },
+    {
+      "name": "ear-near-root--ear-near-tip",
+      "sourceEdges": 102
+    },
+    {
+      "name": "fore-far-ankle--fore-far-paw",
+      "sourceEdges": 77
+    },
+    {
+      "name": "fore-far-knee--fore-far-ankle",
+      "sourceEdges": 123
+    },
+    {
+      "name": "fore-far-root--fore-far-knee",
+      "sourceEdges": 242
+    },
+    {
+      "name": "fore-near-ankle--fore-near-paw",
+      "sourceEdges": 114
+    },
+    {
+      "name": "fore-near-knee--fore-near-ankle",
+      "sourceEdges": 90
+    },
+    {
+      "name": "fore-near-root--fore-near-knee",
+      "sourceEdges": 184
+    },
+    {
+      "name": "head--ear-far-root",
+      "sourceEdges": 85
+    },
+    {
+      "name": "head--ear-near-root",
+      "sourceEdges": 85
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 263
+    },
+    {
+      "name": "hind-far-ankle--hind-far-paw",
+      "sourceEdges": 31
+    },
+    {
+      "name": "hind-far-knee--hind-far-ankle",
+      "sourceEdges": 115
+    },
+    {
+      "name": "hind-far-root--hind-far-knee",
+      "sourceEdges": 198
+    },
+    {
+      "name": "hind-near-ankle--hind-near-paw",
+      "sourceEdges": 84
+    },
+    {
+      "name": "hind-near-knee--hind-near-ankle",
+      "sourceEdges": 169
+    },
+    {
+      "name": "hind-near-root--hind-near-knee",
+      "sourceEdges": 264
+    },
+    {
+      "name": "neck--fore-far-root",
+      "sourceEdges": 145
+    },
+    {
+      "name": "neck--fore-near-root",
+      "sourceEdges": 91
+    },
+    {
+      "name": "neck--head",
+      "sourceEdges": 180
+    },
+    {
+      "name": "pelvis--hind-far-root",
+      "sourceEdges": 21
+    },
+    {
+      "name": "pelvis--hind-near-knee",
+      "sourceEdges": 37
+    },
+    {
+      "name": "pelvis--hind-near-root",
+      "sourceEdges": 344
+    },
+    {
+      "name": "pelvis--spine",
+      "sourceEdges": 148
+    },
+    {
+      "name": "pelvis--tail0",
+      "sourceEdges": 48
+    },
+    {
+      "name": "spine--chest",
+      "sourceEdges": 380
+    },
+    {
+      "name": "spine--fore-near-knee",
+      "sourceEdges": 104
+    },
+    {
+      "name": "spine--hind-far-knee",
+      "sourceEdges": 20
+    },
+    {
+      "name": "spine--hind-far-root",
+      "sourceEdges": 8
+    },
+    {
+      "name": "spine--hind-near-knee",
+      "sourceEdges": 18
+    },
+    {
+      "name": "spine--hind-near-root",
+      "sourceEdges": 193
+    },
+    {
+      "name": "tail0--hind-far-root",
+      "sourceEdges": 180
+    },
+    {
+      "name": "tail0--tail1",
+      "sourceEdges": 152
+    },
+    {
+      "name": "tail1--hind-far-knee",
+      "sourceEdges": 184
+    },
+    {
+      "name": "tail1--hind-far-root",
+      "sourceEdges": 14
+    },
+    {
+      "name": "tail1--tail2",
+      "sourceEdges": 135
+    },
+    {
+      "name": "tail2--tail3",
+      "sourceEdges": 39
+    }
+  ],
+  "excluded": [
+    {
+      "name": "ear-far-root|ear-near-root",
+      "sourceEdges": 37
+    },
+    {
+      "name": "ear-far-root|ear-near-tip",
+      "sourceEdges": 20
+    },
+    {
+      "name": "ear-far-tip|head",
+      "sourceEdges": 11
+    },
+    {
+      "name": "ear-far-tip|spine",
+      "sourceEdges": 45
+    },
+    {
+      "name": "ear-near-root|neck",
+      "sourceEdges": 81
+    },
+    {
+      "name": "ear-near-root|spine",
+      "sourceEdges": 1
+    },
+    {
+      "name": "ear-near-tip|head",
+      "sourceEdges": 9
+    },
+    {
+      "name": "ear-near-tip|neck",
+      "sourceEdges": 1
+    },
+    {
+      "name": "ear-near-tip|spine",
+      "sourceEdges": 35
+    },
+    {
+      "name": "fore-far-ankle|spine",
+      "sourceEdges": 27
+    },
+    {
+      "name": "fore-far-paw|spine",
+      "sourceEdges": 2
+    },
+    {
+      "name": "fore-far-root|fore-near-knee",
+      "sourceEdges": 53
+    },
+    {
+      "name": "fore-far-root|fore-near-root",
+      "sourceEdges": 445
+    },
+    {
+      "name": "head|spine",
+      "sourceEdges": 91
+    },
+    {
+      "name": "hind-far-ankle|hind-near-ankle",
+      "sourceEdges": 46
+    },
+    {
+      "name": "hind-far-ankle|spine",
+      "sourceEdges": 67
+    },
+    {
+      "name": "hind-far-ankle|tail1",
+      "sourceEdges": 31
+    },
+    {
+      "name": "hind-far-knee|hind-near-ankle",
+      "sourceEdges": 69
+    },
+    {
+      "name": "hind-far-knee|hind-near-knee",
+      "sourceEdges": 90
+    },
+    {
+      "name": "hind-far-paw|spine",
+      "sourceEdges": 84
+    },
+    {
+      "name": "hind-far-root|hind-near-knee",
+      "sourceEdges": 30
+    },
+    {
+      "name": "hind-far-root|hind-near-root",
+      "sourceEdges": 217
+    },
+    {
+      "name": "hind-near-ankle|spine",
+      "sourceEdges": 27
+    },
+    {
+      "name": "hind-near-paw|spine",
+      "sourceEdges": 71
+    },
+    {
+      "name": "neck|spine",
+      "sourceEdges": 71
+    },
+    {
+      "name": "root|spine",
+      "sourceEdges": 74
+    },
+    {
+      "name": "spine|tail0",
+      "sourceEdges": 56
+    },
+    {
+      "name": "spine|tail1",
+      "sourceEdges": 19
+    },
+    {
+      "name": "spine|tail2",
+      "sourceEdges": 75
+    },
+    {
+      "name": "spine|tail3",
+      "sourceEdges": 67
+    }
+  ]
+}

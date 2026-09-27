@@ -1,0 +1,13 @@
+{
+  "name": "Raccoon",
+  "masterSha256": "5f74c15f28ac1d4342eb149985cfc1dc5934a3971514c875743482b439306310",
+  "status": "PRESENT",
+  "method": "Codex visual inspection of exact generated originals and sheet; pattern only, not G1, anatomy or Dakk approval",
+  "features": [
+    {
+      "requirement": "ringed banded tail",
+      "status": "PRESENT",
+      "observed": "Black eye mask and clearly alternating dark/light rings along the visible complete tail."
+    }
+  ]
+}

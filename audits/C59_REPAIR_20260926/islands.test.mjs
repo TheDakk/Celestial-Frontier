@@ -1,0 +1,5 @@
+import{test}from'node:test';import assert from'node:assert/strict';import{separateUpperForelegs as fill}from'./fill-remainder-islands.mjs';
+const setup=()=>({width:8,height:4,parts:[{id:'spine'},{id:'head'}],labels:Uint8Array.from([1,1,1,1,0,0,0,0, 1,1,1,1,0,2,1,1, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0])});
+test('isolated remainder follows observed boundary while torso and other owners remain exact',()=>{const f=setup(),old=f.labels.slice(),r=fill(f);assert.deepEqual(f.labels,old);assert.equal(r.receipt.changedPixels,2);assert.equal(r.labels[14],2);assert.equal(r.labels[15],2);for(let i=0;i<12;i++)assert.equal(r.labels[i],old[i]);});
+test('transparent gap cannot seed an island',()=>{const f=setup();f.labels[13]=0;const r=fill(f);assert.equal(r.receipt.changedPixels,0);assert.deepEqual(r.labels,f.labels);});
+test('repeated placement is stable and missing remainder refuses',()=>{const f=setup(),r=fill(f);assert.deepEqual(fill({...f,labels:r.labels}).labels,r.labels);assert.throws(()=>fill({...f,parts:[{id:'body'},{id:'head'}]}),/Unique spine/);});
