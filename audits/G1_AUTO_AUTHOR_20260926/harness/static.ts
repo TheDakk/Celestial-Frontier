@@ -11,6 +11,7 @@ import {createRequire} from 'node:module';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {compileBodyCard,buildTimeline,createGsapPlayer,actionsFor} from '../../../port/v2/apps/game/src/motion/index.ts';
+import {withPaintedContactSupports} from '../../../port/v2/apps/game/src/motion/painted-supports.ts';
 import {createCreatureRigPerformance} from '../../../port/v2/apps/game/src/creature-rig-performance.ts';
 import {createFamilyContactSolver,observedContactSupports,contactPaintDriftPx} from '../../../port/v2/apps/game/src/creature-rig-contact.ts';
 import {blendCreaturePoses,closedLoopPose} from '../../../port/v2/apps/game/src/motion-pose-blend.ts';
@@ -58,7 +59,7 @@ try {
   assertRestCoverage(keyed.data,w,h,sourceParts);
   report.sourcePixelRest={status:'PASS',changedVisibleRgbaChannels:0,scope:'Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering'};
   stage='fixture';
-  const skin=binding.paintSkin,card=compileBodyCard(record,record.genome);
+  const skin=binding.paintSkin,card=withPaintedContactSupports(compileBodyCard(record,record.genome),record,binding);
   const program=createSkeletonPoseProgram(familyContractForRecord(record),record.landmarks);
   const compiled=createCompiledSkinField(skin,w,h),scratch=createArapScratch(skin.vertices,skin.triangles,w,h,skin.solver);
   const target=new Float32Array(skin.vertices.length*2),field=target.slice(),positions:any={};

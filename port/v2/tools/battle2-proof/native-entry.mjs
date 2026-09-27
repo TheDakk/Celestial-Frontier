@@ -21,6 +21,7 @@ import { PARTICLE_DISC_SIZE, particleDiscRgba } from 'cf-proof/effects/particle-
 import { createPixiEffectHost } from 'cf-proof/effects/pixi-adapter.ts';
 import { EffectThemeLibrary, isProceduralImage } from 'cf-proof/effects/theme-library.ts';
 import { compileBodyCard } from 'cf-proof/motion/body-card.ts';
+import { withPaintedContactSupports } from 'cf-proof/motion/painted-supports.ts';
 import { primeRecorder } from '../quadruped-proof/capture-contract.mjs';
 
 const FRAME = { width: 1024, height: 576 };
@@ -36,7 +37,8 @@ try {
   const loadSide = async (side) => {
     const record = await json(side + '-record.json'), binding = await json(side + '-binding.json'), keyed = await image(side + '-keyed.png'), master = await bytes(side + '-master.png'), atlas = await bytes(side + '-atlas.png');
     const alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = keyed.rgba[i * 4 + 3];
-    const card = compileBodyCard(record, record.genome);
+    const baseCard = compileBodyCard(record, record.genome);
+    const card = script.supports === 'observed' ? withPaintedContactSupports(baseCard, record, binding) : baseCard;
     // morph system: script.morph[side] is a genome (color/accent/head/tail/seed) → this individual on the archetype
     // the painted marking (M3/M4) when the archetype ships one for this genome's pattern (runner copies `<side>-markings.json` + masks)
     let markingMask = null; try { const name = markingNameV1(morphParamsV1(script.morph?.[side] ?? null, record.recipeHash, archetypeGenomeV1(record))); if (name) { const mj = await json(side + '-markings.json'); if (mj?.patterns?.[name]?.file) { const png = await decodePng(await bytes(side + '-marking-' + name + '.png')); markingMask = maskAlphaOf(png.rgba, png.width, png.height); } } } catch { markingMask = null; }
