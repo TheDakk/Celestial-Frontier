@@ -1,0 +1,22 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "body not continuous: 1.7 % of the length has no paint"
+ ],
+ "author": "serpent-strips/v1",
+ "target": {
+  "snoutRatio": 0.13,
+  "mainShare": 0.9998,
+  "dominantShare": 1,
+  "gapFrac": 0.0169,
+  "elongation": 17.67,
+  "headEnd": 24.4,
+  "tailEnd": 7.4,
+  "tailTip": 4.2,
+  "median": 57,
+  "xmin": 122,
+  "xmax": 1128,
+  "ext": 1007,
+  "paint": 48408
+ }
+}

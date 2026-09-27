@@ -1,0 +1,138 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "07-flying-squirrel",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "03bcfd34b45e87fcebb7c7691cad965f55fd5c205788033f8358e545722adbce",
+ "subjectSourceSha256": "8a2ffcc1b67415988cd7119a45205fb0d1d730ea9c5fd27f1d6fee3716aeb31b",
+ "identity": {
+  "name": "Flying Squirrel",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Flying Squirrel\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1154608045\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "seed": 1154608045,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "05-cat-v2",
+  "authoringSha256": "5907b3ead198f8fda54dec8f6e223121b0eeccea8b0c0833363a8368c8ec50c6",
+  "masterSha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4"
+ },
+ "habitat": {
+  "profileId": "gliding-mammal",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "87b0723a441c755849945dab1ede745a0aad795466830b199daa6d080ca45bc3",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group gliding-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1305,
+     "class": "front",
+     "attach": {
+      "x": 286.3,
+      "y": 176.7,
+      "relX": 0.96,
+      "relY": 0.25
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0053,
+     "class": "top",
+     "attach": {
+      "x": 215,
+      "y": 158,
+      "relX": 0.4,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1631,
+     "class": "rear",
+     "attach": {
+      "x": 162,
+      "y": 199.5,
+      "relX": -0.01,
+      "relY": 0.57
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0267,
+     "class": "limb-down",
+     "attach": {
+      "x": 164,
+      "y": 226,
+      "relX": 0.01,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0387,
+     "class": "limb-down",
+     "attach": {
+      "x": 265.9,
+      "y": 230.9,
+      "relX": 0.8,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.038,
+     "class": "limb-down",
+     "attach": {
+      "x": 188,
+      "y": 230,
+      "relX": 0.19,
+      "relY": 1
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0156,
+     "class": "limb-down",
+     "attach": {
+      "x": 239.5,
+      "y": 231,
+      "relX": 0.59,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "top": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "05-cat-v2",
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

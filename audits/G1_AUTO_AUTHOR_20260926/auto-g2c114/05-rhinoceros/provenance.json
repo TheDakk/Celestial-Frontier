@@ -1,0 +1,138 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "05-rhinoceros",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "b9933f594dc663709b14441816fb72164cf6951d7601288ac15cf259af991f21",
+ "subjectSourceSha256": "3140c24a61a8f2226cbef996c9ea63e71f5fc543e8d4b4e225a97b25741bc8d9",
+ "identity": {
+  "name": "Rhinoceros",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Rhinoceros\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3207183063\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "seed": 3207183063,
+  "checks": [
+   "materials-unknown: no species-group material for profile rhino; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": {
+  "subject": "cattle",
+  "authoringSha256": "d9c23635c440d69a21b69a8644bb559d83db17b559150cd40dcfa997054f2563",
+  "masterSha256": "0510920919b791b9186d0d1dafeed17625074ee2a6c586d9ddcb703f2005f590"
+ },
+ "habitat": {
+  "profileId": "rhino",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "8eece35ba6e976f35af07b5208931f524aebc793408dee6e9dd6ca7f2385cf4e",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group rhino (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0105,
+     "class": "top",
+     "attach": {
+      "x": 238.5,
+      "y": 142,
+      "relX": 0.67,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0144,
+     "class": "top",
+     "attach": {
+      "x": 300.8,
+      "y": 157.7,
+      "relX": 0.97,
+      "relY": 0.17
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0934,
+     "class": "front",
+     "attach": {
+      "x": 304.6,
+      "y": 196.1,
+      "relX": 0.99,
+      "relY": 0.6
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0716,
+     "class": "limb-down",
+     "attach": {
+      "x": 106.2,
+      "y": 206.8,
+      "relX": 0.03,
+      "relY": 0.72
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0838,
+     "class": "limb-down",
+     "attach": {
+      "x": 240.5,
+      "y": 231.5,
+      "relX": 0.68,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0417,
+     "class": "limb-down",
+     "attach": {
+      "x": 148.5,
+      "y": 229,
+      "relX": 0.23,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0052,
+     "class": "limb-down",
+     "attach": {
+      "x": 189.5,
+      "y": 232,
+      "relX": 0.43,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "cattle",
+   "byClass": {
+    "top": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

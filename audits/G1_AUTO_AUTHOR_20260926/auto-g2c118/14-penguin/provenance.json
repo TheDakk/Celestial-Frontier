@@ -1,0 +1,117 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "14-penguin",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "2fc51a662b8d574b17793877a580365764c2bcedc353ca43530a21ac64eb41df",
+ "subjectSourceSha256": "003c9bddd60d62fa81b95970b4608f9fd1cdf77716abf411a7a0bea993510eed",
+ "identity": {
+  "name": "Penguin",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Penguin\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2103110547\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"4\"]]]]",
+  "seed": 2103110547,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "01-robin",
+  "authoringSha256": "bd3dc5584d70786e5b2d3fa3b9a38bb3f2b587bbf0f69caa8357221299cc8e93",
+  "masterSha256": "e23c895629f36cd69be0861a16c0bf27516f85bb1ad385f00016ea2bf7d8a080"
+ },
+ "habitat": {
+  "profileId": "penguin",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "078353463cc2283a326e89fc93a43421fcbfc5541187cafcfb3094d780de5445",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group penguin (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1202,
+     "class": "top",
+     "attach": {
+      "x": 229.5,
+      "y": 144,
+      "relX": 0.7,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0061,
+     "class": "other",
+     "attach": {
+      "x": 256,
+      "y": 178.5,
+      "relX": 1.01,
+      "relY": 0.25
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0478,
+     "class": "limb-down",
+     "attach": {
+      "x": 170.1,
+      "y": 262.9,
+      "relX": -0.01,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0403,
+     "class": "limb-down",
+     "attach": {
+      "x": 196.5,
+      "y": 281,
+      "relX": 0.3,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0354,
+     "class": "limb-down",
+     "attach": {
+      "x": 223,
+      "y": 281,
+      "relX": 0.62,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "other": 1,
+    "limb-down": 3
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "01-robin",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

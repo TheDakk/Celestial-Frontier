@@ -1,0 +1,141 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C118_20260927",
+ "tag": "g2c118",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-wombat",
+  "02-tasmanian-devil",
+  "08-sugar-glider",
+  "11-koala",
+  "20-flounder",
+  "21-halibut",
+  "24-hummingbird"
+ ],
+ "refused": [
+  {
+   "id": "03-quoll",
+   "reason": "unexplained-anatomy: 13.5% of the paint lies away from the body and in no part (reference 5.6%)"
+  },
+  {
+   "id": "05-water-vole",
+   "reason": "missing-anatomy: part hind-near-paw (hindNearPaw) covers 15% paint (reference 43%)"
+  },
+  {
+   "id": "06-marsh-rodent",
+   "reason": "unexplained-anatomy: 7.2% of the paint lies away from the body and in no part (reference 1.7%)"
+  },
+  {
+   "id": "07-flying-squirrel",
+   "reason": "unexplained-anatomy: 9.6% of the paint lies away from the body and in no part (reference 5.6%)"
+  },
+  {
+   "id": "10-echidna",
+   "reason": "materials-unknown: no species-group material for profile toothless-clawed-mammal; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "12-platypus",
+   "reason": "materials-unknown: no species-group material for profile platypus; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "13-snake",
+   "reason": "body not continuous: 1.7 % of the length has no paint"
+  },
+  {
+   "id": "14-penguin",
+   "reason": "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "15-water-beetle",
+   "reason": "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 0% paint (reference 31%)"
+  },
+  {
+   "id": "16-diving-beetle",
+   "reason": "missing-anatomy: part antenna-far (antennaFar) covers 8% paint (reference 25%)"
+  },
+  {
+   "id": "17-dragonfly",
+   "reason": "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 10% paint (reference 36%)"
+  },
+  {
+   "id": "18-damselfly",
+   "reason": "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)"
+  },
+  {
+   "id": "19-mayfly",
+   "reason": "facing: the mirrored painting matches insect better (0.0445 < 0.0546)"
+  },
+  {
+   "id": "23-rhinoceros",
+   "reason": "materials-unknown: no species-group material for profile rhino; the motion kit refuses an unclassified surface"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "04-sea-otter",
+   "static": "RED"
+  },
+  {
+   "id": "09-colugo",
+   "static": "RED"
+  },
+  {
+   "id": "22-loon",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "01-wombat",
+   "name": "Wombat",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "02-tasmanian-devil",
+   "name": "Tasmanian Devil",
+   "family": "quadruped",
+   "exit": 1,
+   "status": "FAIL"
+  },
+  {
+   "id": "08-sugar-glider",
+   "name": "Sugar Glider",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "11-koala",
+   "name": "Koala",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "20-flounder",
+   "name": "Flounder",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "21-halibut",
+   "name": "Halibut",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "24-hummingbird",
+   "name": "Hummingbird",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

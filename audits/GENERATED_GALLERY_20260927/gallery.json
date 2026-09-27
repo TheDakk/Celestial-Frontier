@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 183,
+ "total": 195,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -344,6 +344,55 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/24-wild-ass",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: an ear-tip fragment floats above the lowered head and a thin line under the belly in late idle; island repair refused at the cap (8.1%)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Polar Bear",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c114-07-polar-bear/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair; one faint dark line at the neck in late idle remains (for Dakk's pass)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Horse",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114/13-horse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: a fragment floats above the back in late idle; island repair refused at the 5% cap (7.5%)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Sun Bear",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c114-14-sun-bear/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Arctic Hare",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c114-18-arctic-hare/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired: black ear-tip fragments floated above the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wombat",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c118-01-wombat/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Sugar Glider",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118/08-sugar-glider",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Koala",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c118-11-koala/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)"
   },
   {
    "family": "Snakes (serpent strip author)",
@@ -729,6 +778,13 @@
    "nativeDir": "audits/BIRD_ISLANDS_20260927/20-seabird/native",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle after the remainder-island repair (the floating neck/back sliver is gone)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hummingbird",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118/24-hummingbird",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: crown island floats above the lowered head (same as the C101 Hummingbird); repair refused at the cap (14.8%)"
   },
   {
    "family": "Fish",
@@ -1247,6 +1303,34 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107-fishseams/01-juvenile-shark/native",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle on the fish-seams fit (unrepaired fit showed seam lines)"
+  },
+  {
+   "family": "Fish",
+   "name": "Blobfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/19-blobfish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole on the fish-seams fit (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Monkfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c114-fishseams/21-monkfish/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole on the fish-seams fit (unrepaired fit split at seams)"
+  },
+  {
+   "family": "Fish",
+   "name": "Flounder",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118/20-flounder",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: body gap line remains in reaction and late idle even on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Halibut",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c118-fishseams/21-halibut/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole on the fish-seams fit (this C118 painting; the C106 Halibut stays held)"
   },
   {
    "family": "Insects",

@@ -1,0 +1,79 @@
+{
+  "name": "Loon",
+  "family": "biped-bird",
+  "species": {
+    "name": "Loon",
+    "aspect": 3,
+    "headFrac": 0.2,
+    "eyes": "prominent",
+    "posture": "swimming",
+    "mustRead": [
+      "straight dagger bill held level",
+      "checkerboard black-and-white back",
+      "long body riding low in the water"
+    ],
+    "note": "Legs are set at the extreme rear - it cannot stand upright like a duck and should not be drawn walking."
+  },
+  "genome": {
+    "seed": 3559030355,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 7,
+    "body": 11,
+    "loco": 14,
+    "trait": 23,
+    "size": 4,
+    "diet": 3,
+    "head": 2,
+    "limbs": 0,
+    "skin": 5,
+    "tail": 0,
+    "pattern": 0,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 12,
+    "detail": 0,
+    "accent": 2,
+    "temper": 0,
+    "sense": 2,
+    "repro": 6,
+    "life": 2,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Loon"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Loon\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3559030355\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"23\"]]]]",
+  "index": 368,
+  "profile": {
+    "id": "swimming-bird",
+    "names": [
+      "Goose",
+      "Duck",
+      "Swan",
+      "Eider Duck",
+      "Auk",
+      "Puffin",
+      "Guillemot",
+      "Loon",
+      "Grebe",
+      "Cormorant",
+      "Coot",
+      "Moorhen"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": ""
+  }
+}

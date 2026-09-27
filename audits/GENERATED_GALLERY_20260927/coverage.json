@@ -1,13 +1,13 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 166,
- "pct": 26.3,
+ "covered": 175,
+ "pct": 27.7,
  "heldNotCounted": [
   "Basking Shark",
   "Flounder",
   "Great White Shark",
-  "Halibut",
+  "Horse",
   "Hummingbird",
   "Mako Shark",
   "Rhea",
@@ -23,8 +23,8 @@
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 42,
-   "pct": 20.5,
+   "covered": 47,
+   "pct": 22.9,
    "names": [
     "Leopard",
     "Tiger",
@@ -49,6 +49,8 @@
     "Dingo",
     "Spectacled Bear",
     "Panda",
+    "Polar Bear",
+    "Sun Bear",
     "Mongoose",
     "Meerkat",
     "Red Panda",
@@ -64,6 +66,9 @@
     "Gopher",
     "Gerbil",
     "Tree Shrew",
+    "Wombat",
+    "Sugar Glider",
+    "Koala",
     "Mountain Goat",
     "Cattle",
     "Bongo",
@@ -73,8 +78,8 @@
   {
    "family": "fish",
    "species": 132,
-   "covered": 69,
-   "pct": 52.3,
+   "covered": 72,
+   "pct": 54.5,
    "names": [
     "Salmon",
     "Trout",
@@ -115,6 +120,7 @@
     "Reef Fish",
     "Cod",
     "Mackerel",
+    "Halibut",
     "Clownfish",
     "Damselfish",
     "Butterflyfish",
@@ -134,6 +140,8 @@
     "Lanternfish",
     "Viperfish",
     "Barreleye",
+    "Blobfish",
+    "Monkfish",
     "Coelacanth",
     "Ocean Sunfish",
     "Archerfish",
@@ -228,10 +236,11 @@
   {
    "family": "hopper",
    "species": 18,
-   "covered": 1,
-   "pct": 5.6,
+   "covered": 2,
+   "pct": 11.1,
    "names": [
-    "Hare"
+    "Hare",
+    "Arctic Hare"
    ]
   },
   {

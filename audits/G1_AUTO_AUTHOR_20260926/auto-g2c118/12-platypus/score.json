@@ -1,0 +1,11 @@
+{
+ "id": "12-platypus",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "materials-unknown: no species-group material for profile platypus; the motion kit refuses an unclassified surface",
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "unexplained-anatomy: 19.2% of the paint lies away from the body and in no part (reference 11.4%)"
+ ],
+ "semanticPresence": null
+}
