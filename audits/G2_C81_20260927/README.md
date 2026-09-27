@@ -16,3 +16,5 @@ Specific unresolved faults:
 observe.mjs records raw geometric appendage observations and a contact sheet; it does not overwrite requestedVisibleLegs or invent semantic presence. Source paintings are retained even when layout or identity is doubtful, for honest scoring and later directed repair.
 
 Next: consume Claude's observed-support gallery results, resolve remaining fish/body and wing/tail ownership, Donkey/Bobcat capture costs, insect/quad faults, and keep broad G2 batches flowing. C80's Grayling/Carp/Paddlefish were independently reviewed/adopted into the gallery by Claude. I5 remains stopped, its one epoch authority consumed; no retry, hosted run or limit change. Full local battery and disk receipt accompany own-branch delivery.
+
+C81 final verification: signed e1d801427 quiet develop profile: 5,668 pass, I5 authority sole failure, 2 expected failures, 2 skipped. All seven remaining owners and root validate pass. 204 GiB free. PUBLIC/UNFROZEN and five exact reviewed workflows rechecked; no hosted trigger. All24 exact originals are ready for automatic observed-support scoring; layout/identity refusals remain explicit. No I5 retry.
