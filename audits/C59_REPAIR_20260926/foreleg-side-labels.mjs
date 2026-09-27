@@ -13,6 +13,7 @@ export function separateUpperForelegs({labels,width,height,parts,landmarks}) {
  const roots=[bones[0],bones[4]];need(roots.every(b=>b.l2>1),'upper limb geometry');
  const distance=(x,y,b)=>{const t=b.l2?Math.max(0,Math.min(1,((x-b.x)*b.dx+(y-b.y)*b.dy)/b.l2)):0;return (x-b.x-t*b.dx)**2+(y-b.y-t*b.dy)**2;};
  const owners=new Set(bones.map(b=>b.owner)),out=Uint8Array.from(labels),transfers={};
+ const forelegPixels=labels.reduce((n,label)=>n+Number(owners.has(label)),0);
  for(let i=0;i<labels.length;i++){
   if(!owners.has(labels[i]))continue;const x=i%width+.5,y=Math.floor(i/width)+.5;
   if(roots.some(b=>(x-b.x)*b.dx+(y-b.y)*b.dy<0))continue;
@@ -20,5 +21,7 @@ export function separateUpperForelegs({labels,width,height,parts,landmarks}) {
   for(const b of bones){const q=distance(x,y,b);if(q+1e-8<d){best=b;d=q;}}
   if(best.owner!==labels[i]&&best.joint.includes('Near')!==from.joint.includes('Near')){out[i]=best.owner;const k=from.joint+'→'+best.joint;transfers[k]=(transfers[k]??0)+1;}
  }
- return {labels:out,receipt:{schema:'cf.foreleg-side-partition/v1',method:'nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership',changedPixels:Object.values(transfers).reduce((a,b)=>a+b,0),transfers,otherOwnersChanged:0}};
+ const changedPixels=Object.values(transfers).reduce((a,b)=>a+b,0),maxMovedShare=0.25;
+ need(changedPixels*4<=forelegPixels,`moved share ${changedPixels}/${forelegPixels} exceeds 25% of foreleg paint`);
+ return {labels:out,receipt:{schema:'cf.foreleg-side-partition/v1',method:'nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership',changedPixels,forelegPixels,movedShare:forelegPixels?changedPixels/forelegPixels:0,maxMovedShare,transfers,otherOwnersChanged:0}};
 }

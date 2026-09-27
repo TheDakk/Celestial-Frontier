@@ -36,9 +36,14 @@ for (const id of IDS) {
   for (let i = 0; i < S.v.length; i++) { if (m.out[i] !== F.v[i]) diffCodex++; if (S.v[i] !== F.v[i]) { codexMoved++; const a = m.sideOf.get(S.v[i]), b = m.sideOf.get(F.v[i]); if (!a || !b) nonForeleg++; else if (a === b) sameSide++; if (!S.v[i] !== !F.v[i]) unownedFlip++; } }
   const again = separateUpperForelegs({ labels: F.v, width: w, height: h, parts: decl.parts, landmarks: lm }).receipt.changedPixels;
   const swapped = Object.fromEntries(Object.entries(lm).map(([k, v]) => [k.includes('Near') ? k.replace('Near', 'Far') : k.includes('Far') ? k.replace('Far', 'Near') : k, v]));
-  const mutant = separateUpperForelegs({ labels: S.v, width: w, height: h, parts: decl.parts, landmarks: swapped }).receipt.changedPixels;
+  /* Preserve the independent pre-guard movement measurement; the current helper must refuse it. */
+  const mutant = mine(S.v, w, h, decl.parts, swapped).moved;
+  let swappedChainRefused = false;
+  try { separateUpperForelegs({ labels: S.v, width: w, height: h, parts: decl.parts, landmarks: swapped }); }
+  catch (error) { if (!/exceeds 25%/.test(error.message)) throw error; swappedChainRefused = true; }
+  if (!swappedChainRefused) throw Error(id + ': swapped chain was not refused');
   let foreleg = 0; for (let i = 0; i < S.v.length; i++) if (m.sideOf.get(S.v[i])) foreleg++;
   res.subjects[id] = { codexMoved, mineMoved: m.moved, pixelsDifferingFromCodex: diffCodex, conservation: { nonForelegOwnersChanged: nonForeleg, sameSideTransfers: sameSide, ownershipGainedOrLost: unownedFlip },
-    idempotentSecondPass: again, forelegPixels: foreleg, movedShareOfForeleg: +(codexMoved / foreleg).toFixed(4), swappedChainMutantMoved: mutant, swappedShareOfForeleg: +(mutant / foreleg).toFixed(4) };
+    idempotentSecondPass: again, forelegPixels: foreleg, movedShareOfForeleg: +(codexMoved / foreleg).toFixed(4), swappedChainRefused, swappedChainMutantMoved: mutant, swappedShareOfForeleg: +(mutant / foreleg).toFixed(4) };
 }
 console.log(JSON.stringify(res, null, 1));
