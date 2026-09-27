@@ -1,0 +1,11 @@
+{
+  "id": "04-raccoon",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d5a10937-9180-4c42-bcab-e39328078a07.png",
+  "tool": "image_gen.imagegen",
+  "masterSha256": "5f74c15f28ac1d4342eb149985cfc1dc5934a3971514c875743482b439306310",
+  "bytes": 1219173,
+  "promptSha256": "564089951c85f376c140ecf163036a303bd781d04ee1b1245909a2d9775ef79e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

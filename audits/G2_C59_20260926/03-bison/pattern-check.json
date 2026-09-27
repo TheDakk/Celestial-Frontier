@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bison",
+  "masterSha256": "afb8e5a6afad83c96d6c9226239e9ff3c9ef1692d76ddbeba0939475fa8c31d5",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,51 @@
+[
+  {
+    "id": "01-elk",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "02-moose",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "03-bison",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "04-raccoon",
+    "status": "PASS"
+  },
+  {
+    "id": "05-badger",
+    "status": "PASS"
+  },
+  {
+    "id": "06-wolverine",
+    "status": "PASS"
+  },
+  {
+    "id": "07-starling",
+    "status": "PASS"
+  },
+  {
+    "id": "08-vulture",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "09-kingfisher",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "id": "10-water-snake",
+    "status": "PASS"
+  },
+  {
+    "id": "11-mountain-viper",
+    "status": "REFUSE",
+    "reason": "Pattern unresolved"
+  },
+  {
+    "id": "12-ladybug",
+    "status": "PASS"
+  }
+]

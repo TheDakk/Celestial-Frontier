@@ -1,0 +1,376 @@
+{
+  "schema": "cf.c59-bobcat-diagnosis/v1",
+  "rows": [
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/native-g2c56/c56-04-bobcat/report.json",
+      "sha256": "61bfd6b3fde116cb4b80c26a85c1702801748c4881e655831a20b1f71fc9686f",
+      "error": "Error: Battle capture: missing live frames\n    at need (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/capture-timeline.mjs:6:36)\n    at requireBattleCaptureTimeline (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/capture-timeline.mjs:23:2)\n    at file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs:84:32",
+      "plannedDurationMs": 15532.666666666666,
+      "frames": 850,
+      "requiredFrames": 887,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "phases": {
+        "turn0:ready": {
+          "frames": 37,
+          "cpuP95Ms": 7,
+          "cpuMaxMs": 7.299999952316284
+        },
+        "turn0:command": {
+          "frames": 18,
+          "cpuP95Ms": 6.100000023841858,
+          "cpuMaxMs": 6.100000023841858
+        },
+        "turn0:approach": {
+          "frames": 55,
+          "cpuP95Ms": 7.700000047683716,
+          "cpuMaxMs": 8.5
+        },
+        "turn0:action": {
+          "frames": 15,
+          "cpuP95Ms": 15,
+          "cpuMaxMs": 15
+        },
+        "turn0:hitstop": {
+          "frames": 4,
+          "cpuP95Ms": 8.5,
+          "cpuMaxMs": 8.5
+        },
+        "turn0:impact": {
+          "frames": 47,
+          "cpuP95Ms": 7.699999928474426,
+          "cpuMaxMs": 8.700000047683716
+        },
+        "turn0:return": {
+          "frames": 23,
+          "cpuP95Ms": 7.100000023841858,
+          "cpuMaxMs": 8.300000071525574
+        },
+        "turn0:idle": {
+          "frames": 36,
+          "cpuP95Ms": 6.799999952316284,
+          "cpuMaxMs": 7.200000047683716
+        },
+        "turn1:ready": {
+          "frames": 36,
+          "cpuP95Ms": 6.899999976158142,
+          "cpuMaxMs": 15.699999928474426
+        },
+        "turn1:command": {
+          "frames": 18,
+          "cpuP95Ms": 6.800000071525574,
+          "cpuMaxMs": 6.800000071525574
+        },
+        "turn1:approach": {
+          "frames": 55,
+          "cpuP95Ms": 7.5,
+          "cpuMaxMs": 9.100000023841858
+        },
+        "turn1:action": {
+          "frames": 15,
+          "cpuP95Ms": 13.700000047683716,
+          "cpuMaxMs": 13.700000047683716
+        },
+        "turn1:hitstop": {
+          "frames": 4,
+          "cpuP95Ms": 8.600000023841858,
+          "cpuMaxMs": 8.600000023841858
+        },
+        "turn1:impact": {
+          "frames": 47,
+          "cpuP95Ms": 7.700000047683716,
+          "cpuMaxMs": 7.899999976158142
+        },
+        "turn1:return": {
+          "frames": 23,
+          "cpuP95Ms": 7.200000047683716,
+          "cpuMaxMs": 7.700000047683716
+        },
+        "turn1:idle": {
+          "frames": 36,
+          "cpuP95Ms": 6.700000047683716,
+          "cpuMaxMs": 6.900000095367432
+        },
+        "turn2:ready": {
+          "frames": 36,
+          "cpuP95Ms": 7,
+          "cpuMaxMs": 14.799999952316284
+        },
+        "turn2:command": {
+          "frames": 18,
+          "cpuP95Ms": 6.700000047683716,
+          "cpuMaxMs": 6.700000047683716
+        },
+        "turn2:approach": {
+          "frames": 56,
+          "cpuP95Ms": 7.5,
+          "cpuMaxMs": 8.299999952316284
+        },
+        "turn2:action": {
+          "frames": 13,
+          "cpuP95Ms": 14.399999976158142,
+          "cpuMaxMs": 14.399999976158142
+        },
+        "turn2:impact": {
+          "frames": 48,
+          "cpuP95Ms": 7.700000047683716,
+          "cpuMaxMs": 9.100000023841858
+        },
+        "turn2:return": {
+          "frames": 22,
+          "cpuP95Ms": 7.099999904632568,
+          "cpuMaxMs": 7.399999976158142
+        },
+        "turn2:idle": {
+          "frames": 36,
+          "cpuP95Ms": 6.399999976158142,
+          "cpuMaxMs": 6.5
+        },
+        "turn3:ready": {
+          "frames": 36,
+          "cpuP95Ms": 6.399999976158142,
+          "cpuMaxMs": 14.099999904632568
+        },
+        "turn3:command": {
+          "frames": 18,
+          "cpuP95Ms": 6.5,
+          "cpuMaxMs": 6.5
+        },
+        "turn3:approach": {
+          "frames": 56,
+          "cpuP95Ms": 7.199999928474426,
+          "cpuMaxMs": 7.799999952316284
+        },
+        "turn3:action": {
+          "frames": 14,
+          "cpuP95Ms": 15.900000095367432,
+          "cpuMaxMs": 15.900000095367432
+        },
+        "turn3:hitstop": {
+          "frames": 4,
+          "cpuP95Ms": 8.600000023841858,
+          "cpuMaxMs": 8.600000023841858
+        },
+        "turn3:impact": {
+          "frames": 18,
+          "cpuP95Ms": 196,
+          "cpuMaxMs": 196
+        },
+        "turn3:return": {
+          "frames": 2,
+          "cpuP95Ms": 193.59999990463257,
+          "cpuMaxMs": 193.59999990463257
+        },
+        "turn3:idle": {
+          "frames": 4,
+          "cpuP95Ms": 219.79999995231628,
+          "cpuMaxMs": 219.79999995231628
+        }
+      },
+      "encoded": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1024,
+            "height": 576,
+            "nb_read_frames": "851"
+          }
+        ],
+        "format": {
+          "duration": "15.064408"
+        }
+      }
+    },
+    {
+      "path": "audits/C59_REPAIR_20260926/bobcat-profile/report.json",
+      "sha256": "8df1b96ad3796dd64712715c4dc177115e0277b7b52d2c579f3df1495a7c1505",
+      "error": "Error: Battle capture: missing live frames\n    at need (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/capture-timeline.mjs:6:36)\n    at requireBattleCaptureTimeline (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/capture-timeline.mjs:23:2)\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:84:32",
+      "plannedDurationMs": 15532.666666666666,
+      "frames": 850,
+      "requiredFrames": 887,
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "phases": {
+        "turn0:ready": {
+          "frames": 37,
+          "cpuP95Ms": 8.799999952316284,
+          "cpuMaxMs": 8.900000095367432
+        },
+        "turn0:command": {
+          "frames": 17,
+          "cpuP95Ms": 8.200000047683716,
+          "cpuMaxMs": 8.200000047683716
+        },
+        "turn0:approach": {
+          "frames": 56,
+          "cpuP95Ms": 9.300000071525574,
+          "cpuMaxMs": 10.899999976158142
+        },
+        "turn0:action": {
+          "frames": 15,
+          "cpuP95Ms": 17.300000071525574,
+          "cpuMaxMs": 17.300000071525574
+        },
+        "turn0:hitstop": {
+          "frames": 4,
+          "cpuP95Ms": 12.799999952316284,
+          "cpuMaxMs": 12.799999952316284
+        },
+        "turn0:impact": {
+          "frames": 47,
+          "cpuP95Ms": 10.299999952316284,
+          "cpuMaxMs": 10.600000023841858
+        },
+        "turn0:return": {
+          "frames": 23,
+          "cpuP95Ms": 8.799999952316284,
+          "cpuMaxMs": 8.800000071525574
+        },
+        "turn0:idle": {
+          "frames": 36,
+          "cpuP95Ms": 8.199999928474426,
+          "cpuMaxMs": 8.399999976158142
+        },
+        "turn1:ready": {
+          "frames": 36,
+          "cpuP95Ms": 8.199999928474426,
+          "cpuMaxMs": 17.199999928474426
+        },
+        "turn1:command": {
+          "frames": 18,
+          "cpuP95Ms": 7.900000095367432,
+          "cpuMaxMs": 7.900000095367432
+        },
+        "turn1:approach": {
+          "frames": 55,
+          "cpuP95Ms": 9,
+          "cpuMaxMs": 11
+        },
+        "turn1:action": {
+          "frames": 15,
+          "cpuP95Ms": 15.899999976158142,
+          "cpuMaxMs": 15.899999976158142
+        },
+        "turn1:hitstop": {
+          "frames": 4,
+          "cpuP95Ms": 9.600000023841858,
+          "cpuMaxMs": 9.600000023841858
+        },
+        "turn1:impact": {
+          "frames": 47,
+          "cpuP95Ms": 8.899999976158142,
+          "cpuMaxMs": 9.199999928474426
+        },
+        "turn1:return": {
+          "frames": 23,
+          "cpuP95Ms": 8.5,
+          "cpuMaxMs": 8.799999952316284
+        },
+        "turn1:idle": {
+          "frames": 36,
+          "cpuP95Ms": 8.200000047683716,
+          "cpuMaxMs": 8.5
+        },
+        "turn2:ready": {
+          "frames": 36,
+          "cpuP95Ms": 10.799999952316284,
+          "cpuMaxMs": 16.699999928474426
+        },
+        "turn2:command": {
+          "frames": 18,
+          "cpuP95Ms": 8.400000095367432,
+          "cpuMaxMs": 8.400000095367432
+        },
+        "turn2:approach": {
+          "frames": 56,
+          "cpuP95Ms": 8.699999928474426,
+          "cpuMaxMs": 10.5
+        },
+        "turn2:action": {
+          "frames": 13,
+          "cpuP95Ms": 15.699999928474426,
+          "cpuMaxMs": 15.699999928474426
+        },
+        "turn2:impact": {
+          "frames": 48,
+          "cpuP95Ms": 8.700000047683716,
+          "cpuMaxMs": 10.599999904632568
+        },
+        "turn2:return": {
+          "frames": 22,
+          "cpuP95Ms": 8.299999952316284,
+          "cpuMaxMs": 8.599999904632568
+        },
+        "turn2:idle": {
+          "frames": 36,
+          "cpuP95Ms": 7.600000023841858,
+          "cpuMaxMs": 7.899999976158142
+        },
+        "turn3:ready": {
+          "frames": 36,
+          "cpuP95Ms": 8.399999976158142,
+          "cpuMaxMs": 17
+        },
+        "turn3:command": {
+          "frames": 18,
+          "cpuP95Ms": 7.5,
+          "cpuMaxMs": 7.5
+        },
+        "turn3:approach": {
+          "frames": 56,
+          "cpuP95Ms": 9,
+          "cpuMaxMs": 9.199999928474426
+        },
+        "turn3:action": {
+          "frames": 14,
+          "cpuP95Ms": 17.799999952316284,
+          "cpuMaxMs": 17.799999952316284
+        },
+        "turn3:hitstop": {
+          "frames": 4,
+          "cpuP95Ms": 9.399999976158142,
+          "cpuMaxMs": 9.399999976158142
+        },
+        "turn3:impact": {
+          "frames": 18,
+          "cpuP95Ms": 198.20000004768372,
+          "cpuMaxMs": 198.20000004768372
+        },
+        "turn3:return": {
+          "frames": 2,
+          "cpuP95Ms": 205.60000002384186,
+          "cpuMaxMs": 205.60000002384186
+        },
+        "turn3:idle": {
+          "frames": 4,
+          "cpuP95Ms": 228.70000004768372,
+          "cpuMaxMs": 228.70000004768372
+        }
+      },
+      "encoded": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1024,
+            "height": 576,
+            "nb_read_frames": "852"
+          }
+        ],
+        "format": {
+          "duration": "15.128614"
+        }
+      }
+    }
+  ],
+  "profile": "bobcat-profile/cpu-breakdown.json",
+  "conclusion": "Real live-frame shortfall reproduced at 4x CPU, not a count/instrument false alarm. Last lethal reaction, return and idle trigger expensive ARAP/orientation deformation. Zero rig refusals means the expensive solver succeeded, not that frames arrived on time. Aggregate p95 hides the short late stall. No threshold, capture-time or solver-limit change; no acceptance.",
+  "next": "Inspect the faint-pose shape field and source ownership; the captured profile attributes the cost to ARAP and orientation WASM. Keep Bobcat native RED until a changed source passes the same full timeline."
+}

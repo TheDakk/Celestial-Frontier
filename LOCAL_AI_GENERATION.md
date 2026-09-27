@@ -214,3 +214,7 @@ D26 is now DECIDED yes. The finisher alone admits alpha≥250 interior, with the
 ### C56/C57 generated-art continuation — matches tooling as of 2026-09-26
 
 The canonical G2 prompt now preserves species-identifying natural patterns and names mustRead features first; the previous plain-coat override contradicted those features. `pattern-observation.mjs` requires a source-hashed explicit visual observation for each pattern requirement and refuses flat, unknown, missing or stale reviews; it is not a pixel-variance classifier. Seven new patterned-cat originals in G2_PATTERN_C57_20260926 retain untouched bytes (six species, two Jaguar attempts). Five pass pattern review; both Jaguar central-rosette-spot reviews remain unresolved. Anatomy/G1/native/quality acceptance remains separate. The C56 32-species batch was requested before this prompt repair; retain its original receipts and refuse any missing required patterns rather than relabelling its prompts.
+
+### C59 generated continuation — matches tooling as of 2026-09-27
+
+G2_C59_20260926 retains twelve untouched1254 originals (six quadrupeds,three birds,two serpents,one insect), compiled prompts and byte-exact generator receipts. Six required-pattern reviews pass, five have no canonical pattern requirement, and MountainViper is refused because its dorsal zigzag is unresolved. WaterSnake bands and Ladybug spots now read clearly. Pattern results never replace G1 anatomy/native admission; overlapping limb roots and serpent layout still require automatic scoring.

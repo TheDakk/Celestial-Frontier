@@ -1,0 +1,42 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Tiger",
+      "dn": "Tiger",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Tiger",
+      "dn": "Tiger",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "an": "Tiger",
+      "dn": "Tiger",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Tiger",
+      "dn": "Tiger",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ]
+}

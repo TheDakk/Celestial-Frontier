@@ -1,0 +1,1 @@
+g2c56-08-fisher-side {"schema":"cf.foreleg-side-partition/v1","method":"nearest existing opposite foreleg-chain segment below both shoulders; preserve same-side longitudinal ownership","changedPixels":9234,"transfers":{"foreNearRoot→foreFarRoot":3281,"foreNearKnee→foreFarRoot":4830,"foreNearAnkle→foreFarKnee":1067,"foreNearAnkle→foreFarRoot":56},"otherOwnersChanged":0}
