@@ -1,0 +1,19 @@
+{
+  "sourceRestoredExactly": true,
+  "results": [
+    {
+      "mutation": "removed-master-check",
+      "exitCode": 1,
+      "sourceSha256": "11e52bfae8ed53bfdc41a125bd69a8b3a7a13fb2d50a11ec62e75765c6330a6d",
+      "mutantSha256": "602dbde560cdb0fc93d72b68dad3bae9b9b8051722b98c9e5ad3af7690f3e2cb",
+      "actualOwnerMutated": true
+    },
+    {
+      "mutation": "removed-canonical-absence-check",
+      "exitCode": 1,
+      "sourceSha256": "11e52bfae8ed53bfdc41a125bd69a8b3a7a13fb2d50a11ec62e75765c6330a6d",
+      "mutantSha256": "7d3fba41c4af61f3f489d46f8b591850641a5efe102d506cd3593c458ca335b3",
+      "actualOwnerMutated": true
+    }
+  ]
+}

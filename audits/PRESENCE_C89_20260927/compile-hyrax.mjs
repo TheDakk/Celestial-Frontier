@@ -1,0 +1,27 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {admitReviewedPresence} from '../../port/v2/tools/painted-creature/reviewed-presence.mjs';
+import {familyContract} from '../../port/v2/tools/creature-animation/family-contracts.mjs';
+import {resolveAnatomyInventory} from '../../port/v2/tools/creature-animation/anatomy-inventory.mjs';
+const base=import.meta.dirname, source='audits/G2_C87_20260927/24-hyrax';
+const oldPacket='audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/24-hyrax/packet';
+const sha=b=>createHash('sha256').update(b).digest('hex');
+const masterBytes=fs.readFileSync(source+'/master.png'),subjectBytes=fs.readFileSync(source+'/subject-source.json'),promptBytes=fs.readFileSync(source+'/prompt.txt');
+const review=JSON.parse(fs.readFileSync(base+'/hyrax-review.json'));
+const presence=admitReviewedPresence({masterBytes,subjectBytes,promptBytes,review});
+const originalBytes=fs.readFileSync(oldPacket+'/authoring.json'),original=JSON.parse(originalBytes);
+if(!fs.readFileSync(oldPacket+'/master.png').equals(masterBytes)||!fs.readFileSync(oldPacket+'/subject-source.json').equals(subjectBytes))throw Error('Exact automatic source packet required');
+const inventory=resolveAnatomyInventory(familyContract(original.family),presence),allowed=new Set(inventory.joints);
+const removedJoints=Object.keys(original.landmarksPx).filter(j=>!allowed.has(j));
+if(JSON.stringify(removedJoints.slice().sort())!==JSON.stringify(['tail0','tail1','tail2','tail3']))throw Error('Only reviewed optional tail may be removed');
+const removedParts=original.parts.filter(p=>!allowed.has(p.joint));
+if(removedParts.length!==4||removedParts.some(p=>!removedJoints.includes(p.joint)))throw Error('Exact optional tail parts required');
+if(removedParts.some(p=>p.id===original.remainderPart))throw Error('Cannot remove remainder');
+const author={...original,id:'hyrax-reviewed-absence-01',landmarksPx:Object.fromEntries(Object.entries(original.landmarksPx).filter(([j])=>allowed.has(j))),parts:original.parts.filter(p=>allowed.has(p.joint))};
+// The polygons and coordinates of every retained body/limb/ear part are byte-equivalent objects.
+for(const part of author.parts)if(JSON.stringify(part)!==JSON.stringify(original.parts.find(p=>p.id===part.id)))throw Error('Retained polygon changed');
+const packet=path.join(base,'hyrax-packet');if(fs.existsSync(packet))throw Error('Fresh candidate only');fs.mkdirSync(packet);
+for(const[n,v]of Object.entries({'master.png':masterBytes,'subject-source.json':subjectBytes,'authoring.json':JSON.stringify(author,null,2)+'\n','presence.json':JSON.stringify(presence,null,2)+'\n'}))fs.writeFileSync(path.join(packet,n),v,{flag:'wx'});
+fs.writeFileSync(base+'/author-adapter.json',JSON.stringify({sourcePacket:oldPacket,sourceAuthoringSha256:sha(originalBytes),newAuthoringSha256:sha(fs.readFileSync(packet+'/authoring.json')),masterSha256:sha(masterBytes),removedJoints,removedParts:removedParts.map(p=>p.id),retainedPolygonsChanged:0,retainedLandmarksChanged:0,newHandLandmarks:false,newHandPolygons:false,reviewedPresenceOnly:true},null,2)+'\n',{flag:'wx'});
+console.log(packet);
