@@ -17,41 +17,49 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## CLAUDE SESSION HANDOFF — 2026-09-27 (session 5, overnight) · GENERATED ART IS THE GOAL
+## CLAUDE SESSION HANDOFF — 2026-09-27 (session 5, end) · GENERATED ART IS THE GOAL · PAUSED FOR I5
 Self-contained for a fresh Claude session. Codex's block follows below. Older Claude handoffs are verbatim in `ROADMAP_ARCHIVE.md` (session 4's is at its top).
 
-**Dakk's goal (2026-09-26, verbatim):** "Can we get to the generated art? That's the main goal, so that we have the complete Earth creatures having full movement animations and all the procedurally generated animations in their various different battleground biomes." Dakk does ONE full visual pass at the end, so don't stop for per-creature approvals. **Dakk (2026-09-27): run through the night without stopping; nothing waits on him except real gates.**
+**Dakk's goal (2026-09-26, verbatim):** "Can we get to the generated art? That's the main goal, so that we have the complete Earth creatures having full movement animations and all the procedurally generated animations in their various different battleground biomes." Dakk does ONE full visual pass at the end; don't stop for per-creature approvals.
+**Latest (Codex C125, 2026-09-27):** Dakk paused new art/gameplay: record everything, then finish I5. Claude honours it. **C121 (24 originals, `audits/G2_C121_20260927`) is delivered but NOT scored**; score it first when art resumes.
 
 **Where things stand**
-- **Branch:** `anthropic/mac` is pushed through the commit adding this block; every commit is signed G (`git-ssh-sign-cf`). Codex is merged through `b3a34e15` (the I5 instrumentation checkpoint; Codex is running the guarded 3+1 epoch that re-seals the budget).
-- **Gate:** from `port/v2`, `node tools/check-profile.mjs --profile=develop` gives 5,647 pass; the only red is I5 (Compendium producer authority: built index/worker/painter hashes versus the sealed budget; Codex's re-seal is pending). Run it on a QUIET tree, plus by hand: `npm run typecheck`, `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
-- **Dev site:** serves `e71d1496`; no player-visible change since.
+- **Branch:** `anthropic/mac` is pushed through the commit adding this block; every commit is signed G. Codex is merged through `bc86c863` (IndexedDB callback owners; I5 3+1 epoch next under a native/perf reservation).
+- **Gate:** from `port/v2`, `node tools/check-profile.mjs --profile=develop` last gave 5,689 pass on `a2edeb18` (Codex reports 5,692 on its later heads). The only red is I5 `current-producer-authorities` (Codex's re-seal). Also run: `npm run typecheck`, `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
+- **Codex reservations:** when Codex posts "native/performance reservation active", run NO native, NO gate and NO heavy CPU until its terminal notice. Host load may starve its foreground timer (C119).
+  - If you must stop your own native run, a killed run leaves `$TMPDIR/celestial-frontier-workspace-edca5601ad4f1c5ce26e.lock.json`. Remove it only if its pid is dead AND its `repoRoot` is this checkout.
 - **develop** is still `c1791e21`; PR #43 is open; no hosted attempt.
-- **Decisions:** D24/D26 DECIDED; D25 open (shopping stays off); D27 open (its pattern-first default is implemented).
-- **Progress** (`audits/GENERATED_GALLERY_20260927/coverage.json`, regenerate with `coverage.mjs` after each batch): **150 of 631 Earth species (23.8 %)** have a generated creature passing native with zero hand edits: quadruped 37/205, fish 59/132, biped-bird 32/102, insect 5/41, serpent 16/22, hopper 1/18; every other family 0. None is visually accepted or admitted. Master gallery: `gallery.jpg`. Batches score with ONE command: `score-batch.mjs <batch> <tag>` (observed supports).
+- **Decisions:** D25 open (shopping stays off; the C110 data point is recorded there); D27 open; **D28 new** (remainder-island cap: keep 5% or raise it to 10% for reviewed subjects; the default keeps 5%).
+- **Progress:** `audits/GENERATED_GALLERY_20260927/coverage.json` counts **ACCEPTED only** (Claude's full-size review; held entries are listed as `heldNotCounted`). **175 of 631 Earth species (27.7 %)** are accepted and 13 are held. Master gallery: `gallery.jpg`; registry: `gallery-registry.json`, whose notes say HELD or why accepted.
 
-**Session 5 (overnight 2026-09-27), all in `audits/G1_AUTO_AUTHOR_20260926/README.md` unless noted**
-- **Serpent strip author:** `port/v2/tools/anatomy-verify/serpent-author.mjs`, runner `--serpent-strips` (USE IT for every serpent batch). **Snakes 0 → 9** static + native, clean at full size. Battery `serpent/battery.mjs`: 59/60 mutants, 9/9 wrong family.
-- **Guarded tail labels:** `tail-labels-fit.mjs`, runner `--tail-labels`, off by default. Held-out Herring/Trout pass; welded versions deform in the reaction (not accepted).
-- **Codex's foreleg repair checked** (`audits/C59_REPAIR_CHECK_20260927`): exact on all 7; guard proposed at 25 %.
-- **C59 scored:** Raccoon, Vulture, Water Snake pass. Bobcat is a real slowdown. The Raven split is wing/tail overlap.
-- **legMatch lever rejected** (battery positives 18 → 14; G2 quads unchanged).
+**Session 5 results (details in the mailbox rows C101–C121 and the audit READMEs)**
+- **`score-batch.mjs <batch> <tag> [--fish-seams]`** runs the whole pipeline in one command.
+  - `--fish-seams` runs Codex's guarded fish repair. Fish are accepted on the seams fit only after a side-by-side full-size look.
+  - Water-only media (the eels) get the aquatic arena.
+- **Remainder islands** (`audits/BIRD_ISLANDS_20260927`, `audits/QUAD_ISLANDS_20260927`): in the head-down late idle, body-owned slivers float beside the head.
+  - `remainder-islands-fit.mjs` reassigns them on the exact raster: 5% cap, tested, 3 mutants. Apply it per subject only after the full-size look shows a float; islands are nearly universal and usually harmless.
+  - 8/8 in-cap repairs fixed the defect.
+- **Soundscape admission (C105) is DONE** (`f77e158c`). `AudioRuntime.mayPlay` / `DecorativeVoicePort.mayPlay`; no PCM while not admitted. Codex measured soundscape PCM at 0.
+- **C110 ungulates: 0/24** (short tails, ear tips, thin fore-ankles against the current references). Shopping admits only 2, so the fix is hoofed REFERENCE packets, which have been asked of Codex (C115).
 
-**Next, in order (Claude)**
-1. Read Codex's mailbox (`/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md`, read-only) and merge any newer signed `openai/mac` (`--no-ff`; `git grep -n "^<<<<<<<\|^>>>>>>>"` BEFORE committing; keep this block).
-2. **Score every new G2 batch with ONE command:** `node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir> <fresh-tag>` (out of the sandbox). It covers the pattern gate, the author with the standard flags, native on the passes, sheets, `summary.json` and the gallery registry.
-   - Then LOOK at `native-<tag>/fullsize-reaction.png` at full size, edit each new registry note from `unreviewed` to what you see, run `node audits/GENERATED_GALLERY_20260927/gallery.mjs`, record the results in the G1 README, and send Dakk the sheet.
-3. **Insects (0 so far):** diagnose the refusals (family floor, antenna/leg coverage, wrong family, facing) the way the snakes were diagnosed, and consider an insect-specific transfer if the references' construction allows it.
-4. Admission only after Dakk's end-of-pass approval (`CARD_ARCHETYPES` → build pipeline/pins, through their owners).
+**Next, in order (Claude), once art resumes**
+1. Read Codex's mailbox (`/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md`, read-only) and merge any newer signed `openai/mac` (`--no-ff`; keep this block).
+2. Score C121, then each new batch: `node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir> <fresh-tag> --fish-seams` (out of the sandbox, never during a Codex reservation).
+   - Look at the reaction AND `turn3-hit-idle-90` at full size.
+   - Fish: compare the unrepaired fit with the seams fit. Land animals and birds with a float: `remainder-islands-fit.mjs` → static → native → look.
+   - Write every registry note (accepted reason or HELD), then run `gallery.mjs` and `coverage.mjs > coverage.json`, add a mailbox row, commit and push.
+3. When Codex delivers ungulate references: add them to `pilots/reference-pool-extras.json`. The mutant battery (`run-mutants.mjs --counter --extra-refs=…`) must stay identical, then re-score C110.
+4. Admission only after Dakk's end-of-pass approval.
 
 **Traps (obey them)**
-- **Disk-space law:** ≥ 40 GiB free; newest 2 preview packages only.
-- **Inline `//` comments swallow dense one-line JS:** use `/* */`.
-- **zsh does not word-split `$var` or `${@:-a b}`:** use arrays (`fish=(a b)`) or `${pr%%:*}` pairs. It bit twice.
-- **`Buffer.slice()` is a VIEW:** copy with `Uint8Array.from` before mutating (it corrupted a check once).
-- The G1 runner caches fits: use a fresh `--tag`.
-- A green number is not visual acceptance: look at full-size reaction stills, not only approach.
-- Browser-owning commands need out-of-sandbox execution. Codex's sealed inventories are never rebound by Claude.
+- Disk ≥ 40 GiB free.
+- Inline `//` comments swallow dense one-line JS; use `/* */`.
+- zsh does not word-split: use arrays or `${pr%%:*}`.
+- `Buffer.slice()` is a view.
+- The static runner needs its fit and output under `audits/`.
+- A green number is not visual acceptance.
+- Browser-owning commands run out of the sandbox.
+- Codex's sealed inventories are never rebound by Claude.
 
 ## Current Codex sprint handoff — 2026-09-27, I5 repair + art together
 
