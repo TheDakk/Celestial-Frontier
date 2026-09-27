@@ -14,7 +14,8 @@ describe('painted card source — the individual on the card', () => {
     expect(s.ownership().keys.pendingThumbs).toEqual([key]); expect(s.ownership().keys.leasedThumbs).toEqual([key]);
     await p; const o = s.ownership();
     expect(o.schema).toBe('cf-v2-painted-card-ownership/v1'); expect(o.leases).toBe(1); expect(o.keys.cachedThumbs).toEqual([key]); expect(o.keys.pendingThumbs).toEqual([]);
-    expect(o.cacheEntries).toBe(1); expect(o.decodedPixels).toBe(132 * 132); expect(o.encodedBytes).toBeGreaterThan(0); expect(o.residentArchetypes.names).toEqual(['Crab']);
+    expect(o.cacheEntries).toBe(1); expect(o.decodedPixels).toBe(132 * 132); expect(o.encodedBytes).toBeGreaterThan(0); expect(o.residentArchetypes).toMatchObject({ names: [], count: 0, bytes: 0 });
+    const renders = s.renders; expect(await s.card(g, 'thumb')).toBe(await p); expect(s.renders).toBe(renders);
     expect(s.releaseUnowned()).toBe(0); expect(s.ownership().keys.cachedThumbs).toEqual([key]); // leased → kept
     closeThumb(); closeThumb(); // idempotent
     expect(s.ownership().leases).toBe(0); expect(s.releaseUnowned()).toBe(1); expect(s.ownership().keys.cachedThumbs).toEqual([]); expect(s.ownership().totals.releasedUnowned).toBe(1);

@@ -1,0 +1,6 @@
+{
+  "scope": "Focused diagnostic, not certification",
+  "report": "heap-after-art.json",
+  "rawHeapSnapshot": "/private/tmp/cf-i5-heap-after-art/retained.heapsnapshot",
+  "rawHeapSha256": "989bd723f7596248fe304fed1967667fc5ae4a19e352d4fd3a4d189643907c19"
+}

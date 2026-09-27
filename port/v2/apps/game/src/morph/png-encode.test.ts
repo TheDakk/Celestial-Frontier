@@ -12,3 +12,10 @@ describe('exact PNG encode', () => {
     await expect(encodePng(rgba, 3, 3)).rejects.toThrow(/size/);
   });
 });
+
+it('base64 preserves every byte across chunk boundaries and padding lengths', () => {
+  for (const size of [0,1,2,3,16383,16384,16385,131071]) {
+    const bytes=Uint8Array.from({length:size},(_,i)=>(i*137+19)&255);
+    expect(base64(bytes)).toBe(Buffer.from(bytes).toString('base64'));
+  }
+});

@@ -18,6 +18,10 @@ export async function encodePng(rgba: Uint8Array, width: number, height: number)
   const parts = [SIG, chunk('IHDR', ihdr), chunk('IDAT', await deflate(raw)), chunk('IEND', new Uint8Array(0))];
   let n = 0; for (const p of parts) n += p.length; const out = new Uint8Array(n); let o = 0; for (const p of parts) { out.set(p, o); o += p.length; } return out;
 }
-const B64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-export function base64(bytes: Uint8Array): string { let s = ''; for (let i = 0; i < bytes.length; i += 3) { const a = bytes[i]!, b = bytes[i + 1], c = bytes[i + 2]; const n = (a << 16) | ((b ?? 0) << 8) | (c ?? 0); s += B64[n >>> 18]! + B64[(n >>> 12) & 63]! + (b === undefined ? '=' : B64[(n >>> 6) & 63]!) + (c === undefined ? '=' : B64[n & 63]!); } return s; }
+/** A flat native base64 string avoids retaining a cons-string node per quartet. */
+export function base64(bytes: Uint8Array): string {
+  const chunks: string[] = [];
+  for (let i = 0; i < bytes.length; i += 16384) chunks.push(String.fromCharCode(...bytes.subarray(i, i + 16384)));
+  return btoa(chunks.join(''));
+}
 export const pngDataUrl = (png: Uint8Array): string => 'data:image/png;base64,' + base64(png);

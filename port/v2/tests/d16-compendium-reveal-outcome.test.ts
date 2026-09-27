@@ -147,3 +147,15 @@ describe('D16 — the Compendium reveal queue (v1 #39)', () => {
     q.dispose(); d.window.close();
   });
 });
+
+it('idle reveal queue owns no input listeners; pending pulses cannot revive a disposed queue', async () => {
+  const {d,doc}=dom();const add=vi.spyOn(doc,'addEventListener'),remove=vi.spyOn(doc,'removeEventListener');
+  let blocked=true;const q=new CompendiumRevealQueueV1({document:doc,blocked:()=>blocked});
+  const pulses=()=>add.mock.calls.filter(c=>c[0]==='click'||c[0]==='keydown');expect(pulses()).toHaveLength(0);
+  const e={logicalId:'queued',name:'Queued',kind:'Fauna',hybrid:false,genome:null};q.enqueue(e);expect(pulses()).toHaveLength(2);
+  doc.body.click();blocked=false;await settle();expect(q.state().showing).toBe('queued');
+  expect(remove.mock.calls.filter(c=>c[0]==='click'||c[0]==='keydown')).toHaveLength(2);
+  doc.querySelector<HTMLElement>('[data-rev="continue"]')!.click();expect(q.state().showing).toBeNull();
+  blocked=true;q.enqueue(e);doc.body.click();q.dispose();blocked=false;await settle();q.enqueue(e);
+  expect(q.state()).toEqual({showing:null,queued:[]});expect(doc.getElementById('reveal')).toBeNull();d.window.close();
+});

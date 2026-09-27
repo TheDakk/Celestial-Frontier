@@ -8,6 +8,7 @@ import {
   type SpeciesArtProducerSink,
   type Thumb132,
   type ThumbLease,
+  type ExternalThumbResources,
 } from '../src/speciesbroker.js';
 
 interface ProducerRecord {
@@ -19,6 +20,7 @@ interface ProducerRecord {
 function harness(
   deviceClass: 'phone' | 'desktop' = 'desktop',
   disposeAsset?: (asset: SpeciesArtAsset) => void,
+  externalThumbResources?: () => ExternalThumbResources,
 ) {
   let currentDeviceClass = deviceClass;
   const tasks: Array<() => void> = [];
@@ -35,7 +37,7 @@ function harness(
       };
       return port;
     },
-    disposeAsset,
+    disposeAsset, externalThumbResources,
   });
   const runTask = (): void => {
     const task = tasks.shift();
@@ -746,4 +748,23 @@ describe('SpeciesArtBroker producer ownership', () => {
     first.release();
     second.release();
   });
+});
+
+it('reserves the sibling cache inside the same phone cap and protects a leased image during shrink', () => {
+  let external = { entries: 8, decodedPixels: 8 * 132 ** 2, decodedBytes: 8 * 132 ** 2 * 4, encodedBytes: 800 };
+  const run = (reserve: boolean) => {
+    const h = harness('phone', undefined, reserve ? () => external : undefined);
+    h.broker.activate();let pinned: ThumbLease | undefined;
+    for (let i=0;i<110;i++) {
+      const lease=h.broker.leaseThumb(genome(50000+i));h.runTask();const producer=h.producers.at(-1)!;succeed(producer,producer.requests.at(-1)!);
+      expect(lease.current?.width).toBe(132);if(i===0)pinned=lease;else lease.release();
+    }
+    return {...h,pinned:pinned!};
+  };
+  const h=run(true), d=h.broker.diagnostics();expect(d.limits.thumbCacheEntries).toBe(96);
+  expect(d.live.thumbCacheEntries+external.entries).toBe(96);const pinned=h.pinned.current;
+  external={entries:16,decodedPixels:16*132**2,decodedBytes:16*132**2*4,encodedBytes:1600};
+  h.broker.refreshDeviceClass();expect(h.broker.diagnostics().live.thumbCacheEntries+external.entries).toBe(96);expect(h.pinned.current).toBe(pinned);
+  const mutant=run(false);expect(mutant.broker.diagnostics().live.thumbCacheEntries+external.entries).toBeGreaterThan(96);
+  h.pinned.release();h.broker.dispose();mutant.pinned.release();mutant.broker.dispose();
 });

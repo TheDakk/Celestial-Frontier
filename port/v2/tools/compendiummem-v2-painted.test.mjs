@@ -111,3 +111,23 @@ test('retained overflow stays pending inside the unchanged carrier bound; identi
  // Reject a digest collision rather than silently collapsing distinct owners.
  assert.throws(()=>compactSettlementOwnership(original.lastObservation,()=> '0'.repeat(64)),/collision/);
 });
+
+test('error publication cannot accept a still-rendering painted sibling',()=>{
+ const r=JSON.parse(fs.readFileSync(new URL('../../../audits/I5_BACK_REPAIR_20260927/compact-epoch/calibration-1-report.json',import.meta.url)));
+ const o=structuredClone(r.profiles.phone.phases.producerErrorWitness.publication.accepted);
+ assert.equal(o.ready,true);assert.ok(o.paintedArt.keys.pendingThumbs.length>0);
+ assert.equal(contract.validProducerErrorWorkObservation(o),false);
+ o.ready=false;assert.equal(contract.validProducerErrorWorkObservation(o),true);
+ const recovered=r.profiles.phone.phases.producerErrorWitness.recovery.accepted;
+ assert.equal(contract.validProducerErrorWorkObservation(recovered),true);
+});
+
+test('stopped foreground deadline retains the last raw pending observation and still cleans up',async()=>{
+ const id={targetId:'target',sessionId:'session',documentToken:'document'}, calls=[];
+ const phase=(observed,sequence)=>({observed,sequence,visibilityState:observed?'visible':null,hidden:observed?false:null,focused:observed?true:null});
+ const observation={schema:'cf-v2-compendium-foreground-service-observation/v1',...id,visibilityState:'visible',hidden:false,focused:true,service:{token:'token',visibilityChanges:0,focusLosses:0,arm:phase(true,0),raf:phase(false,null),laterTask:phase(false,null)}};
+ await assert.rejects(()=>collector.ownCandidateForeground({attachment:id,activationTargetId:id.targetId,serviceToken:'token',label:'diagnostic',sendStage:async()=>{},evaluate:async()=>{},
+ waitValue:async(_s,_l,_e,o)=>{o.onObservation(observation,{phaseDeadlineMs:30000,target:{completedAtMs:1}});assert.equal(o.acceptValue(),false);throw Error('original deadline');},
+ sendCleanup:async(method)=>{calls.push(method);return {result:{value:{cleanupPresent:false,servicePresent:false}}};}}),error=>error.message==='original deadline; last foreground observation: '+JSON.stringify(observation));
+ assert.deepEqual(calls,['Runtime.evaluate','Emulation.setFocusEmulationEnabled']);
+});

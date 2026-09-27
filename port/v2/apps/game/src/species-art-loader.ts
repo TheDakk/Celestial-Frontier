@@ -492,6 +492,7 @@ export class SpeciesArtLoader {
   paintedCardCounts(): Readonly<{ thumbs: number; portraits: number }> { return Object.freeze({ thumbs: this.paintedThumbs0, portraits: this.paintedPortraits0 }); }
   private readonly workerFactory: SpeciesArtWorkerFactory;
   private readonly releaseDeviceClassChange: () => void;
+  private readonly releasePaintedResources: () => void;
   private disposed = false;
   private state0: SpeciesArtLazyState = 'idle';
   private importStarts0 = 0;
@@ -652,12 +653,18 @@ export class SpeciesArtLoader {
       };
     this.broker = new SpeciesArtBroker({
       createProducer,
+      externalThumbResources: () => {
+        const p = this.paintedCards?.ownership(), t = p?.byKind.thumb;
+        return { entries: t?.entries ?? 0, decodedPixels: t?.decodedPixels ?? 0,
+          decodedBytes: (t?.decodedPixels ?? 0) * 4 + (p?.residentArchetypes.bytes ?? 0), encodedBytes: t?.dataUrlBytes ?? 0 };
+      },
       disposeAsset: (asset) => {
         if (asset.url.startsWith('blob:')) revokeThumbObjectUrl(asset.url);
       },
       getDeviceClass: options.getDeviceClass ?? defaultDeviceClass,
       scheduleTask: options.scheduleTask ?? defaultScheduleTask,
     });
+    this.releasePaintedResources = this.paintedCards?.subscribeResources(() => this.broker.refreshDeviceClass()) ?? (() => {});
     const subscribeDeviceClassChange = options.subscribeDeviceClassChange
       ?? (options.getDeviceClass ? null : defaultSubscribeDeviceClassChange);
     try {
@@ -755,6 +762,7 @@ export class SpeciesArtLoader {
     if (this.disposed) return;
     this.disposed = true;
     this.releaseDeviceClassChange();
+    this.releasePaintedResources();
     this.broker.dispose(reason);
   }
 }
