@@ -1,0 +1,144 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C76_20260927",
+ "tag": "g2c76",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-pike",
+  "02-bass",
+  "03-char",
+  "04-sturgeon",
+  "05-paddlefish",
+  "08-goldfish",
+  "13-spoonbill",
+  "14-kestrel"
+ ],
+ "refused": [
+  {
+   "id": "06-arowana",
+   "reason": "extra-anatomy (unassigned): a front appendage of 7.0% paint that no reference appendage lands on"
+  },
+  {
+   "id": "07-arapaima",
+   "reason": "unexplained-anatomy: 8.5% of the paint lies away from the body and in no part (reference 4.0%)"
+  },
+  {
+   "id": "09-swift",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 7.0% paint that no reference appendage lands on"
+  },
+  {
+   "id": "10-swallow",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 10% paint (reference 50%)"
+  },
+  {
+   "id": "11-falcon",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "12-crane",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 0% paint (reference 50%)"
+  },
+  {
+   "id": "15-guineafowl",
+   "reason": "missing-anatomy: part near-foot (legNearFoot) covers 14% paint (reference 51%)"
+  },
+  {
+   "id": "16-pheasant",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 14% paint (reference 50%)"
+  },
+  {
+   "id": "17-capybara",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 33%)"
+  },
+  {
+   "id": "18-agouti",
+   "reason": "unexplained-anatomy: 13.8% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "19-alpaca",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 38%)"
+  },
+  {
+   "id": "20-llama",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+  },
+  {
+   "id": "21-musk-ox",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 33%)"
+  },
+  {
+   "id": "22-pangolin",
+   "reason": "materials-unknown: no species-group material for profile toothless-clawed-mammal; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "23-peccary",
+   "reason": "unexplained-anatomy: 14.1% of the paint lies away from the body and in no part (reference 5.7%)"
+  },
+  {
+   "id": "24-okapi",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 53%)"
+  }
+ ],
+ "staticRed": [],
+ "native": [
+  {
+   "id": "01-pike",
+   "name": "Pike",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "02-bass",
+   "name": "Bass",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "03-char",
+   "name": "Char",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "04-sturgeon",
+   "name": "Sturgeon",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "05-paddlefish",
+   "name": "Paddlefish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "08-goldfish",
+   "name": "Goldfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "13-spoonbill",
+   "name": "Spoonbill",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "14-kestrel",
+   "name": "Kestrel",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

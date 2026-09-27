@@ -1,0 +1,142 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "08-goldfish",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "e0ef0d72729a713d503e8047452943ab13270cd2589b55c7b34a4da451e57ab0",
+ "subjectSourceSha256": "a25db92b1b78e5b39629ab024138d6a32cef6ece3a6d453ed1c13b2989164ffe",
+ "identity": {
+  "name": "Goldfish",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Goldfish\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1751217276\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "seed": 1751217276,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "bass",
+  "authoringSha256": "8da048f4c2be9106a763434c279ed370366c538801f6cc342c878492d18798fb",
+  "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0248,
+     "class": "top",
+     "attach": {
+      "x": 242.5,
+      "y": 136,
+      "relX": 0.39,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.4168,
+     "class": "rear",
+     "attach": {
+      "x": 202,
+      "y": 200.5,
+      "relX": -0.01,
+      "relY": 0.57
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0197,
+     "class": "rear",
+     "attach": {
+      "x": 202,
+      "y": 163.5,
+      "relX": -0.01,
+      "relY": 0.24
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0379,
+     "class": "front",
+     "attach": {
+      "x": 306,
+      "y": 214,
+      "relX": 1.01,
+      "relY": 0.69
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0353,
+     "class": "limb-down",
+     "attach": {
+      "x": 206,
+      "y": 234.5,
+      "relX": 0.03,
+      "relY": 0.87
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0729,
+     "class": "limb-down",
+     "attach": {
+      "x": 259.5,
+      "y": 250,
+      "relX": 0.55,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 2,
+    "front": 1,
+    "limb-down": 2
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "bass",
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "rear": 2,
+    "front": 1,
+    "limb-down": 2
+   },
+   "groundContacts": 1,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

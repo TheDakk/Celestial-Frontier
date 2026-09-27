@@ -1,0 +1,9 @@
+{
+ "id": "15-guineafowl",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part near-foot (legNearFoot) covers 14% paint (reference 51%)"
+ ],
+ "semanticPresence": null
+}

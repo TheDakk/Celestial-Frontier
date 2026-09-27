@@ -1,0 +1,9 @@
+{
+ "id": "23-peccary",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "unexplained-anatomy: 14.1% of the paint lies away from the body and in no part (reference 5.7%)"
+ ],
+ "semanticPresence": null
+}

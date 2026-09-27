@@ -1,0 +1,67 @@
+{
+  "name": "Pheasant",
+  "family": "biped-bird",
+  "species": {
+    "name": "Pheasant",
+    "aspect": 2.4,
+    "headFrac": 0.17,
+    "eyes": "normal",
+    "posture": "biped",
+    "mustRead": [
+      "extremely long pointed barred tail",
+      "red bare facial wattle around the eye",
+      "iridescent green-black head with a white neck ring"
+    ],
+    "note": "generic representative: a common/ring-necked pheasant male; the tail alone is longer than the body"
+  },
+  "genome": {
+    "seed": 3277245205,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 2,
+    "body": 6,
+    "loco": 3,
+    "trait": 13,
+    "size": 4,
+    "diet": 4,
+    "head": 4,
+    "limbs": 5,
+    "skin": 3,
+    "tail": 2,
+    "pattern": 3,
+    "eyes": 2,
+    "behavior": 3,
+    "habitat": 11,
+    "detail": 3,
+    "accent": 8,
+    "temper": 1,
+    "sense": 3,
+    "repro": 7,
+    "life": 5,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Pheasant"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Pheasant\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3277245205\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"13\"]]]]",
+  "index": 98,
+  "profile": {
+    "id": "pheasant",
+    "names": [
+      "Pheasant"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "claw"
+    ],
+    "notes": "Foot rake on the observed foot, not an inferred raptor talon."
+  }
+}

@@ -1,0 +1,116 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "12-crane",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "979b8b9914f2cdd02149903b3ffce1d7ef55d862e670a8cfc2a5c2264d705b9e",
+ "subjectSourceSha256": "5d9d6e75c42ef3933b8e0e77b2fc712a609cc998963e083e43f229d481f8b883",
+ "identity": {
+  "name": "Crane",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Crane\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3451888561\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"24\"]]]]",
+  "seed": 3451888561,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "gull",
+  "authoringSha256": "9d5ce3cc7a41cf6a139848982114319c2374828a04e313c38619d8dce938aa73",
+  "masterSha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9"
+ },
+ "habitat": {
+  "profileId": "wading-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "6d8efc434397d850b8454feeae51f8b874edc579c5d7ef1b95bbdff2553a7074",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group wading-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1595,
+     "class": "top",
+     "attach": {
+      "x": 253.3,
+      "y": 178.7,
+      "relX": 0.95,
+      "relY": 0.13
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1434,
+     "class": "limb-down",
+     "attach": {
+      "x": 132.6,
+      "y": 228.9,
+      "relX": 0.03,
+      "relY": 0.88
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0523,
+     "class": "limb-down",
+     "attach": {
+      "x": 232.5,
+      "y": 233,
+      "relX": 0.79,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0516,
+     "class": "limb-down",
+     "attach": {
+      "x": 201.5,
+      "y": 234,
+      "relX": 0.56,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0114,
+     "class": "limb-down",
+     "attach": {
+      "x": 162.5,
+      "y": 238,
+      "relX": 0.26,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 4
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "gull",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
