@@ -1,0 +1,13 @@
+{
+  "id": "08-booby",
+  "name": "Booby",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d4035de5-aa4a-44bf-91d3-f851e4e2c291.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2024f4bbd9c63c924d07edcbd2436570bdc706f97c7c3fe0889a92b1491564e2",
+  "bytes": 1248695,
+  "promptSha256": "aa5216c27b22019d1c4661a5d7a22f5cd44acf9ff7d5054513019bdc78cab53c",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

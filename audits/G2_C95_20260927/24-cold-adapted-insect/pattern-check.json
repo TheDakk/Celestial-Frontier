@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cold-Adapted Insect",
+  "masterSha256": "82ffc711884e3d509cacac22d3249640400d6e6d9260a4214ed3afafb85e0c07",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

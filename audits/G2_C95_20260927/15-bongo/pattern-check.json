@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bongo",
+  "masterSha256": "438c51be55328e8e8e6a0c49182643bb9b99d8338357898285a98627974c4538",
+  "required": [
+    "chestnut-red coat with ten or more vertical white stripes"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "chestnut-red coat with ten or more vertical white stripes",
+      "status": "PRESENT",
+      "observed": "Full 1254 original reviewed: rich chestnut body carries numerous clear narrow white vertical flank stripes, white face markings and paired spiral horns; four separate feet, two ears and a complete black-tufted tail are visible. The head turns slightly toward camera and the foreleg roots overlap high at the chest; author/rig eligibility is not established."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "01-cardinalfish",
+  "name": "Cardinalfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-a5007d38-8f7c-4622-971a-ead9bae80652.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c97cc81400c7942af7e9c63c7c54da8cc1f7ff55c69184deda9bbfa580273254",
+  "bytes": 1462300,
+  "promptSha256": "2d8d2fff52c2af0674a854401c9d15794f10223732b5f6879a88ee9be7040f5c",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Butterfly",
+  "masterSha256": "255d95fef85bed773495055720729a8538358a39c019c6683f46575eaa8c37c8",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

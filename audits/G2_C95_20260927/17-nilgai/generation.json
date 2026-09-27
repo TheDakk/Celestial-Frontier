@@ -1,0 +1,13 @@
+{
+  "id": "17-nilgai",
+  "name": "Nilgai",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-18aebe21-5782-42dc-a0e1-461230c10aef.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "712f3f8fc2b2822575d78e0e193654a820708cafc27bf8713e795db5e907f906",
+  "bytes": 1224524,
+  "promptSha256": "c21a545a4bf513f66ff264ede76a3795f02c2231e572b86d8000eed24e8c3ca0",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
