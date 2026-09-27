@@ -1,0 +1,58 @@
+[
+  {
+    "fit": "trout-fin-02",
+    "native": "trout-native-02",
+    "static": "PASS_STATIC",
+    "nativeStatus": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "frames": 707,
+    "cpuP95MsAt4x": 4.100000023841858,
+    "visual": "Body outline smoother; dorsal remains attached in reviewed hit reaction; independent full-film review pending.",
+    "libraryAdmission": false
+  },
+  {
+    "fit": "herring-fin-02",
+    "native": "herring-native-02",
+    "static": "PASS_STATIC",
+    "nativeStatus": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "frames": 707,
+    "cpuP95MsAt4x": 3.899999976158142,
+    "visual": "Body outline smoother; attached dorsal in reviewed hit reaction; independent full-film review pending.",
+    "libraryAdmission": false
+  },
+  {
+    "fit": "cod-axial-01",
+    "native": "cod-native-01",
+    "static": "PASS_STATIC",
+    "nativeStatus": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "frames": 707,
+    "cpuP95MsAt4x": 4.100000023841858,
+    "visual": "Previous isolated belly sliver no longer evident in reviewed reaction; independent full-film review pending.",
+    "libraryAdmission": false
+  },
+  {
+    "fit": "arctic-nape-01",
+    "native": "arctic-native-01",
+    "static": "PASS_STATIC",
+    "nativeStatus": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "frames": 933,
+    "cpuP95MsAt4x": 7.799999952316284,
+    "visual": "Point reduced but a squared nape cut remains; NOT adopted as a visual repair.",
+    "libraryAdmission": false
+  }
+]

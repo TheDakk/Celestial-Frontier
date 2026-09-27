@@ -1,0 +1,1681 @@
+[
+  {
+    "id": "g2c54-05-tiger",
+    "recordHash": "5d8cc455c3b5e4a253b3006348c1d89bc0ecc7dc01b68abc0897004df9daca8c",
+    "bindingHash": "fcd12266c58a3522d25b78d6360d538930935084509780336d5ff51c73bfcb48",
+    "atlasSha256": "75848dcc2892a6146123f8cf7255ce5c30c7bf5b07da2be779b554140300ba42",
+    "alpha": {
+      "opaque": 178,
+      "nearOpaque": 374972,
+      "translucent": 75486
+    },
+    "guard": {
+      "schema": "cf.opaque-seam-sampling-guard/v1",
+      "sourceAtlasSha256": "75848dcc2892a6146123f8cf7255ce5c30c7bf5b07da2be779b554140300ba42",
+      "bindingHash": "fcd12266c58a3522d25b78d6360d538930935084509780336d5ff51c73bfcb48",
+      "guardTexels": 0,
+      "opaqueEdges": 0,
+      "joins": [
+        {
+          "name": "chest--fore-far-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 0
+        },
+        {
+          "name": "chest--fore-near-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.6653345369377348e-16
+        },
+        {
+          "name": "chest--fore-near-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 6.022959908591474e-15
+        },
+        {
+          "name": "chest--neck",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 6.689093723366568e-15
+        },
+        {
+          "name": "ear-far-root--ear-far-tip",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.6653345369377348e-16
+        },
+        {
+          "name": "ear-near-root--ear-near-tip",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 5.9396931817445875e-15
+        },
+        {
+          "name": "fore-far-ankle--fore-far-paw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 8.049116928532385e-15
+        },
+        {
+          "name": "fore-far-knee--fore-far-ankle",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1324274851176597e-14
+        },
+        {
+          "name": "fore-far-root--fore-far-knee",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 6.050715484207103e-15
+        },
+        {
+          "name": "fore-near-ankle--fore-near-paw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 7.993605777301127e-15
+        },
+        {
+          "name": "fore-near-knee--fore-near-ankle",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 6.13398221105399e-15
+        },
+        {
+          "name": "fore-near-root--fore-near-knee",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 3.608224830031759e-15
+        },
+        {
+          "name": "head--ear-far-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 8.881784197001252e-16
+        },
+        {
+          "name": "head--ear-near-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 7.771561172376096e-15
+        },
+        {
+          "name": "head--jaw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.9379276789143205e-14
+        },
+        {
+          "name": "hind-far-ankle--hind-far-paw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.5673907444456745e-15
+        },
+        {
+          "name": "hind-far-knee--hind-far-ankle",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.5126788710517758e-15
+        },
+        {
+          "name": "hind-far-root--hind-far-knee",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1435297153639112e-14
+        },
+        {
+          "name": "hind-near-ankle--hind-near-paw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.176836406102666e-14
+        },
+        {
+          "name": "hind-near-knee--hind-near-ankle",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "hind-near-root--hind-near-knee",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 3.83026943495679e-15
+        },
+        {
+          "name": "neck--fore-far-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 3.8441472227646045e-15
+        },
+        {
+          "name": "neck--fore-near-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 3.3306690738754696e-16
+        },
+        {
+          "name": "neck--head",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 3.1086244689504383e-15
+        },
+        {
+          "name": "pelvis--hind-far-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 0
+        },
+        {
+          "name": "pelvis--hind-far-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "pelvis--hind-near-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "pelvis--hind-near-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 5.684341886080802e-15
+        },
+        {
+          "name": "pelvis--spine",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1379786002407855e-14
+        },
+        {
+          "name": "pelvis--tail0",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "spine--chest",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.886579864025407e-15
+        },
+        {
+          "name": "spine--fore-near-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "spine--hind-far-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.942091015256665e-15
+        },
+        {
+          "name": "spine--hind-near-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.0436096431476471e-14
+        },
+        {
+          "name": "spine--hind-near-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.226796442210798e-14
+        },
+        {
+          "name": "tail0--hind-far-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 4.107825191113079e-15
+        },
+        {
+          "name": "tail0--hind-far-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 8.604228440844963e-15
+        },
+        {
+          "name": "tail0--tail1",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.4432899320127035e-15
+        },
+        {
+          "name": "tail1--hind-far-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "tail1--tail2",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1379786002407855e-14
+        },
+        {
+          "name": "tail2--tail3",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 7.771561172376096e-15
+        }
+      ],
+      "policy": "Decode-time copies of exact opaque adjacent-owner RGBA in a one-texel ring at independently enumerated shared-field skin joins; original bytes, geometry, silhouettes, nonopaque pixels and distinct-limb/depth boundaries remain unchanged."
+    },
+    "joins": [
+      {
+        "name": "chest--fore-far-root",
+        "edges": 95,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "chest--fore-near-knee",
+        "edges": 56,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "chest--fore-near-root",
+        "edges": 506,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "chest--neck",
+        "edges": 82,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "ear-far-root--ear-far-tip",
+        "edges": 71,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "ear-near-root--ear-near-tip",
+        "edges": 83,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-far-ankle--fore-far-paw",
+        "edges": 134,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-far-knee--fore-far-ankle",
+        "edges": 183,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-far-root--fore-far-knee",
+        "edges": 339,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-near-ankle--fore-near-paw",
+        "edges": 138,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-near-knee--fore-near-ankle",
+        "edges": 113,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-near-root--fore-near-knee",
+        "edges": 204,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "head--ear-far-root",
+        "edges": 86,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "head--ear-near-root",
+        "edges": 73,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "head--jaw",
+        "edges": 275,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-far-ankle--hind-far-paw",
+        "edges": 65,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-far-knee--hind-far-ankle",
+        "edges": 192,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-far-root--hind-far-knee",
+        "edges": 202,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-near-ankle--hind-near-paw",
+        "edges": 83,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-near-knee--hind-near-ankle",
+        "edges": 175,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-near-root--hind-near-knee",
+        "edges": 305,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "neck--fore-far-root",
+        "edges": 167,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "neck--fore-near-root",
+        "edges": 161,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "neck--head",
+        "edges": 200,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--hind-far-knee",
+        "edges": 26,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--hind-far-root",
+        "edges": 9,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--hind-near-knee",
+        "edges": 21,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--hind-near-root",
+        "edges": 271,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--spine",
+        "edges": 62,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--tail0",
+        "edges": 47,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--chest",
+        "edges": 381,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--fore-near-knee",
+        "edges": 3,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--hind-far-knee",
+        "edges": 2,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--hind-near-knee",
+        "edges": 43,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--hind-near-root",
+        "edges": 282,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail0--hind-far-knee",
+        "edges": 7,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail0--hind-far-root",
+        "edges": 206,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail0--tail1",
+        "edges": 174,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail1--hind-far-knee",
+        "edges": 175,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail1--tail2",
+        "edges": 185,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail2--tail3",
+        "edges": 106,
+        "guardedOpaqueEdges": 0
+      }
+    ],
+    "excluded": [
+      {
+        "name": "ear-far-root|ear-near-root"
+      },
+      {
+        "name": "ear-far-root|ear-near-tip"
+      },
+      {
+        "name": "ear-far-root|spine"
+      },
+      {
+        "name": "ear-far-tip|spine"
+      },
+      {
+        "name": "ear-near-root|neck"
+      },
+      {
+        "name": "ear-near-root|spine"
+      },
+      {
+        "name": "ear-near-tip|spine"
+      },
+      {
+        "name": "fore-far-ankle|spine"
+      },
+      {
+        "name": "fore-far-knee|fore-near-knee"
+      },
+      {
+        "name": "fore-far-paw|spine"
+      },
+      {
+        "name": "fore-far-root|fore-near-knee"
+      },
+      {
+        "name": "fore-far-root|fore-near-root"
+      },
+      {
+        "name": "fore-near-paw|spine"
+      },
+      {
+        "name": "head|spine"
+      },
+      {
+        "name": "hind-far-ankle|hind-near-ankle"
+      },
+      {
+        "name": "hind-far-ankle|spine"
+      },
+      {
+        "name": "hind-far-ankle|tail1"
+      },
+      {
+        "name": "hind-far-knee|hind-near-ankle"
+      },
+      {
+        "name": "hind-far-knee|hind-near-knee"
+      },
+      {
+        "name": "hind-far-paw|spine"
+      },
+      {
+        "name": "hind-far-root|hind-near-knee"
+      },
+      {
+        "name": "hind-far-root|hind-near-root"
+      },
+      {
+        "name": "hind-near-ankle|pelvis"
+      },
+      {
+        "name": "hind-near-ankle|spine"
+      },
+      {
+        "name": "hind-near-paw|spine"
+      },
+      {
+        "name": "neck|spine"
+      },
+      {
+        "name": "root|spine"
+      },
+      {
+        "name": "spine|tail0"
+      },
+      {
+        "name": "spine|tail1"
+      },
+      {
+        "name": "spine|tail2"
+      }
+    ]
+  },
+  {
+    "id": "g2c54-09-ocelot",
+    "recordHash": "da6a7c72a8b8536834237fb34cfbc1f02dbf11f5f2e1777f9e1ffde524715d7e",
+    "bindingHash": "a54e0f6b169cb16c06eaf4256f0089fbce07cd1df5c413f1ffd5496403203337",
+    "atlasSha256": "2729ffd90995e7c7b5a16ff2b079d0284cfeba9558f3f383183f917e5b00e40b",
+    "alpha": {
+      "opaque": 233,
+      "nearOpaque": 345325,
+      "translucent": 79629
+    },
+    "guard": {
+      "schema": "cf.opaque-seam-sampling-guard/v1",
+      "sourceAtlasSha256": "2729ffd90995e7c7b5a16ff2b079d0284cfeba9558f3f383183f917e5b00e40b",
+      "bindingHash": "a54e0f6b169cb16c06eaf4256f0089fbce07cd1df5c413f1ffd5496403203337",
+      "guardTexels": 0,
+      "opaqueEdges": 0,
+      "joins": [
+        {
+          "name": "chest--fore-far-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 9.992007221626409e-15
+        },
+        {
+          "name": "chest--fore-near-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.6653345369377348e-16
+        },
+        {
+          "name": "chest--fore-near-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.0769163338864018e-14
+        },
+        {
+          "name": "chest--neck",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 5.689893001203927e-15
+        },
+        {
+          "name": "ear-far-root--ear-far-tip",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 4.246603069191224e-15
+        },
+        {
+          "name": "ear-near-root--ear-near-tip",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.887379141862766e-15
+        },
+        {
+          "name": "fore-far-ankle--fore-far-paw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 8.271161533457416e-15
+        },
+        {
+          "name": "fore-far-knee--fore-far-ankle",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.199040866595169e-14
+        },
+        {
+          "name": "fore-far-root--fore-far-knee",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.0388051692399165e-14
+        },
+        {
+          "name": "fore-near-ankle--fore-near-paw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1546319456101628e-14
+        },
+        {
+          "name": "fore-near-knee--fore-near-ankle",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 5.773159728050814e-15
+        },
+        {
+          "name": "fore-near-root--fore-near-knee",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.2989609388114332e-14
+        },
+        {
+          "name": "head--ear-far-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 4.052314039881821e-15
+        },
+        {
+          "name": "head--ear-near-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.4988010832439613e-15
+        },
+        {
+          "name": "head--jaw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.2212453270876722e-14
+        },
+        {
+          "name": "hind-far-ankle--hind-far-paw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "hind-far-knee--hind-far-ankle",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 6.328271240363392e-15
+        },
+        {
+          "name": "hind-far-root--hind-far-knee",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.7755575615628914e-15
+        },
+        {
+          "name": "hind-near-ankle--hind-near-paw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.5951463200613034e-15
+        },
+        {
+          "name": "hind-near-knee--hind-near-ankle",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.3877787807814457e-16
+        },
+        {
+          "name": "hind-near-root--hind-near-knee",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 4.6629367034256575e-15
+        },
+        {
+          "name": "neck--fore-far-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1879386363489175e-14
+        },
+        {
+          "name": "neck--fore-near-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 3.552713678800501e-15
+        },
+        {
+          "name": "neck--head",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 6.5503158452884236e-15
+        },
+        {
+          "name": "pelvis--hind-far-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 5.551115123125783e-16
+        },
+        {
+          "name": "pelvis--hind-near-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 9.603429163007604e-15
+        },
+        {
+          "name": "pelvis--hind-near-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 8.781279796877258e-15
+        },
+        {
+          "name": "pelvis--spine",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 7.605027718682322e-15
+        },
+        {
+          "name": "pelvis--tail0",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 9.506284648352903e-16
+        },
+        {
+          "name": "spine--chest",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "spine--fore-near-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "spine--hind-far-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "spine--hind-far-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 3.5709282752982574e-15
+        },
+        {
+          "name": "spine--hind-near-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.3877787807814457e-16
+        },
+        {
+          "name": "spine--hind-near-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "tail0--hind-far-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 5.037636974236648e-15
+        },
+        {
+          "name": "tail0--tail1",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 5.676015213396113e-15
+        },
+        {
+          "name": "tail1--hind-far-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.0436096431476471e-14
+        },
+        {
+          "name": "tail1--hind-far-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "tail1--tail2",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 6.0645932720149176e-15
+        },
+        {
+          "name": "tail2--tail3",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 5.995204332975845e-15
+        }
+      ],
+      "policy": "Decode-time copies of exact opaque adjacent-owner RGBA in a one-texel ring at independently enumerated shared-field skin joins; original bytes, geometry, silhouettes, nonopaque pixels and distinct-limb/depth boundaries remain unchanged."
+    },
+    "joins": [
+      {
+        "name": "chest--fore-far-root",
+        "edges": 57,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "chest--fore-near-knee",
+        "edges": 55,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "chest--fore-near-root",
+        "edges": 521,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "chest--neck",
+        "edges": 126,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "ear-far-root--ear-far-tip",
+        "edges": 66,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "ear-near-root--ear-near-tip",
+        "edges": 102,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-far-ankle--fore-far-paw",
+        "edges": 94,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-far-knee--fore-far-ankle",
+        "edges": 253,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-far-root--fore-far-knee",
+        "edges": 397,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-near-ankle--fore-near-paw",
+        "edges": 109,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-near-knee--fore-near-ankle",
+        "edges": 120,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-near-root--fore-near-knee",
+        "edges": 210,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "head--ear-far-root",
+        "edges": 85,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "head--ear-near-root",
+        "edges": 85,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "head--jaw",
+        "edges": 263,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-far-ankle--hind-far-paw",
+        "edges": 31,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-far-knee--hind-far-ankle",
+        "edges": 115,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-far-root--hind-far-knee",
+        "edges": 198,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-near-ankle--hind-near-paw",
+        "edges": 84,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-near-knee--hind-near-ankle",
+        "edges": 169,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-near-root--hind-near-knee",
+        "edges": 264,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "neck--fore-far-root",
+        "edges": 145,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "neck--fore-near-root",
+        "edges": 91,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "neck--head",
+        "edges": 180,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--hind-far-root",
+        "edges": 21,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--hind-near-knee",
+        "edges": 37,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--hind-near-root",
+        "edges": 344,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--spine",
+        "edges": 148,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--tail0",
+        "edges": 48,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--chest",
+        "edges": 380,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--fore-near-knee",
+        "edges": 98,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--hind-far-knee",
+        "edges": 20,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--hind-far-root",
+        "edges": 8,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--hind-near-knee",
+        "edges": 18,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--hind-near-root",
+        "edges": 193,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail0--hind-far-root",
+        "edges": 180,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail0--tail1",
+        "edges": 152,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail1--hind-far-knee",
+        "edges": 184,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail1--hind-far-root",
+        "edges": 14,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail1--tail2",
+        "edges": 135,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail2--tail3",
+        "edges": 39,
+        "guardedOpaqueEdges": 0
+      }
+    ],
+    "excluded": [
+      {
+        "name": "ear-far-root|ear-near-root"
+      },
+      {
+        "name": "ear-far-root|ear-near-tip"
+      },
+      {
+        "name": "ear-far-tip|head"
+      },
+      {
+        "name": "ear-far-tip|spine"
+      },
+      {
+        "name": "ear-near-root|neck"
+      },
+      {
+        "name": "ear-near-root|spine"
+      },
+      {
+        "name": "ear-near-tip|head"
+      },
+      {
+        "name": "ear-near-tip|neck"
+      },
+      {
+        "name": "ear-near-tip|spine"
+      },
+      {
+        "name": "fore-far-ankle|spine"
+      },
+      {
+        "name": "fore-far-paw|spine"
+      },
+      {
+        "name": "fore-far-root|fore-near-knee"
+      },
+      {
+        "name": "fore-far-root|fore-near-root"
+      },
+      {
+        "name": "fore-near-ankle|spine"
+      },
+      {
+        "name": "head|spine"
+      },
+      {
+        "name": "hind-far-ankle|hind-near-ankle"
+      },
+      {
+        "name": "hind-far-ankle|spine"
+      },
+      {
+        "name": "hind-far-ankle|tail1"
+      },
+      {
+        "name": "hind-far-knee|hind-near-ankle"
+      },
+      {
+        "name": "hind-far-knee|hind-near-knee"
+      },
+      {
+        "name": "hind-far-paw|spine"
+      },
+      {
+        "name": "hind-far-root|hind-near-knee"
+      },
+      {
+        "name": "hind-far-root|hind-near-root"
+      },
+      {
+        "name": "hind-near-ankle|spine"
+      },
+      {
+        "name": "hind-near-paw|spine"
+      },
+      {
+        "name": "neck|spine"
+      },
+      {
+        "name": "root|spine"
+      },
+      {
+        "name": "spine|tail0"
+      },
+      {
+        "name": "spine|tail1"
+      },
+      {
+        "name": "spine|tail2"
+      },
+      {
+        "name": "spine|tail3"
+      }
+    ]
+  },
+  {
+    "id": "g2c56-08-fisher",
+    "recordHash": "af24321f3c93fde4b5e61e8df2bf6961cf7fb37ebac7b082cd62e7da508fbe42",
+    "bindingHash": "218c8b927625bc377799462d5e2f4ae629637cea7555ef86c2cd2646c0e387a7",
+    "atlasSha256": "5df315904ed63b0d0656532adca09cbcfe76760c063c2599ac0884a287d6495f",
+    "alpha": {
+      "opaque": 129,
+      "nearOpaque": 301111,
+      "translucent": 84810
+    },
+    "guard": {
+      "schema": "cf.opaque-seam-sampling-guard/v1",
+      "sourceAtlasSha256": "5df315904ed63b0d0656532adca09cbcfe76760c063c2599ac0884a287d6495f",
+      "bindingHash": "218c8b927625bc377799462d5e2f4ae629637cea7555ef86c2cd2646c0e387a7",
+      "guardTexels": 0,
+      "opaqueEdges": 0,
+      "joins": [
+        {
+          "name": "chest--fore-far-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 8.770761894538737e-15
+        },
+        {
+          "name": "chest--fore-near-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "chest--fore-near-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 4.218847493575595e-15
+        },
+        {
+          "name": "chest--neck",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "ear-far-root--ear-far-tip",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.3647750424515834e-14
+        },
+        {
+          "name": "ear-near-root--ear-near-tip",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 8.326672684688674e-15
+        },
+        {
+          "name": "fore-far-ankle--fore-far-paw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.459943277382081e-14
+        },
+        {
+          "name": "fore-far-knee--fore-far-ankle",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 5.995204332975845e-15
+        },
+        {
+          "name": "fore-far-root--fore-far-knee",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "fore-near-ankle--fore-near-paw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 9.43689570931383e-15
+        },
+        {
+          "name": "fore-near-knee--fore-near-ankle",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.6645352591003757e-15
+        },
+        {
+          "name": "fore-near-root--fore-near-knee",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.199040866595169e-14
+        },
+        {
+          "name": "head--ear-far-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.7755575615628914e-16
+        },
+        {
+          "name": "head--ear-near-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 5.773159728050814e-15
+        },
+        {
+          "name": "head--jaw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 6.772360450213455e-15
+        },
+        {
+          "name": "hind-far-ankle--hind-far-paw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.3766765505351941e-14
+        },
+        {
+          "name": "hind-far-knee--hind-far-ankle",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1962653090336062e-14
+        },
+        {
+          "name": "hind-far-root--hind-far-knee",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.0505485370515544e-14
+        },
+        {
+          "name": "hind-near-ankle--hind-near-paw",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 5.10702591327572e-15
+        },
+        {
+          "name": "hind-near-knee--hind-near-ankle",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.3314683517128287e-15
+        },
+        {
+          "name": "hind-near-root--hind-near-knee",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.8171909249863347e-15
+        },
+        {
+          "name": "neck--fore-far-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 8.881784197001252e-16
+        },
+        {
+          "name": "neck--fore-near-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 0
+        },
+        {
+          "name": "neck--head",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.6653345369377348e-16
+        },
+        {
+          "name": "pelvis--hind-far-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.220446049250313e-16
+        },
+        {
+          "name": "pelvis--hind-near-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1213252548714081e-14
+        },
+        {
+          "name": "pelvis--hind-near-root",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 3.497202527569243e-15
+        },
+        {
+          "name": "pelvis--spine",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.5265566588595902e-16
+        },
+        {
+          "name": "pelvis--tail0",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 5.662137425588298e-15
+        },
+        {
+          "name": "spine--chest",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1879386363489175e-14
+        },
+        {
+          "name": "spine--fore-near-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "spine--hind-far-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "spine--hind-near-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 0
+        },
+        {
+          "name": "tail0--hind-far-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.6653345369377348e-16
+        },
+        {
+          "name": "tail0--tail1",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.4988010832439613e-15
+        },
+        {
+          "name": "tail1--hind-far-knee",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 3.191891195797325e-16
+        },
+        {
+          "name": "tail1--hind-far-root",
+          "rule": "proximal body-skin attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 1.1102230246251565e-16
+        },
+        {
+          "name": "tail1--tail2",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 6.5503158452884236e-15
+        },
+        {
+          "name": "tail2--tail3",
+          "rule": "nearest anatomical attachment",
+          "opaqueEdges": 0,
+          "maxBasisDifference": 2.4424906541753444e-15
+        }
+      ],
+      "policy": "Decode-time copies of exact opaque adjacent-owner RGBA in a one-texel ring at independently enumerated shared-field skin joins; original bytes, geometry, silhouettes, nonopaque pixels and distinct-limb/depth boundaries remain unchanged."
+    },
+    "joins": [
+      {
+        "name": "chest--fore-far-root",
+        "edges": 32,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "chest--fore-near-knee",
+        "edges": 39,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "chest--fore-near-root",
+        "edges": 398,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "chest--neck",
+        "edges": 118,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "ear-far-root--ear-far-tip",
+        "edges": 62,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "ear-near-root--ear-near-tip",
+        "edges": 124,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-far-ankle--fore-far-paw",
+        "edges": 101,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-far-knee--fore-far-ankle",
+        "edges": 201,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-far-root--fore-far-knee",
+        "edges": 281,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-near-ankle--fore-near-paw",
+        "edges": 47,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-near-knee--fore-near-ankle",
+        "edges": 109,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "fore-near-root--fore-near-knee",
+        "edges": 182,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "head--ear-far-root",
+        "edges": 87,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "head--ear-near-root",
+        "edges": 77,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "head--jaw",
+        "edges": 290,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-far-ankle--hind-far-paw",
+        "edges": 100,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-far-knee--hind-far-ankle",
+        "edges": 132,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-far-root--hind-far-knee",
+        "edges": 164,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-near-ankle--hind-near-paw",
+        "edges": 90,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-near-knee--hind-near-ankle",
+        "edges": 116,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "hind-near-root--hind-near-knee",
+        "edges": 237,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "neck--fore-far-root",
+        "edges": 136,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "neck--fore-near-root",
+        "edges": 126,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "neck--head",
+        "edges": 209,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--hind-far-root",
+        "edges": 34,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--hind-near-knee",
+        "edges": 28,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--hind-near-root",
+        "edges": 293,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--spine",
+        "edges": 105,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "pelvis--tail0",
+        "edges": 55,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--chest",
+        "edges": 376,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--fore-near-knee",
+        "edges": 60,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--hind-far-knee",
+        "edges": 23,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "spine--hind-near-root",
+        "edges": 240,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail0--hind-far-root",
+        "edges": 169,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail0--tail1",
+        "edges": 225,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail1--hind-far-knee",
+        "edges": 73,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail1--hind-far-root",
+        "edges": 21,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail1--tail2",
+        "edges": 250,
+        "guardedOpaqueEdges": 0
+      },
+      {
+        "name": "tail2--tail3",
+        "edges": 232,
+        "guardedOpaqueEdges": 0
+      }
+    ],
+    "excluded": [
+      {
+        "name": "ear-far-root|ear-near-root"
+      },
+      {
+        "name": "ear-far-root|ear-near-tip"
+      },
+      {
+        "name": "ear-far-root|spine"
+      },
+      {
+        "name": "ear-far-tip|spine"
+      },
+      {
+        "name": "ear-near-root|neck"
+      },
+      {
+        "name": "ear-near-root|spine"
+      },
+      {
+        "name": "ear-near-tip|spine"
+      },
+      {
+        "name": "fore-far-ankle|spine"
+      },
+      {
+        "name": "fore-far-paw|spine"
+      },
+      {
+        "name": "fore-far-root|fore-near-knee"
+      },
+      {
+        "name": "fore-far-root|fore-near-root"
+      },
+      {
+        "name": "fore-near-ankle|spine"
+      },
+      {
+        "name": "fore-near-paw|spine"
+      },
+      {
+        "name": "head|spine"
+      },
+      {
+        "name": "hind-far-ankle|hind-near-ankle"
+      },
+      {
+        "name": "hind-far-ankle|spine"
+      },
+      {
+        "name": "hind-far-ankle|tail1"
+      },
+      {
+        "name": "hind-far-knee|hind-near-ankle"
+      },
+      {
+        "name": "hind-far-knee|hind-near-knee"
+      },
+      {
+        "name": "hind-far-paw|hind-near-ankle"
+      },
+      {
+        "name": "hind-far-paw|spine"
+      },
+      {
+        "name": "hind-far-root|hind-near-ankle"
+      },
+      {
+        "name": "hind-far-root|hind-near-knee"
+      },
+      {
+        "name": "hind-far-root|hind-near-root"
+      },
+      {
+        "name": "hind-near-ankle|spine"
+      },
+      {
+        "name": "hind-near-paw|spine"
+      },
+      {
+        "name": "neck|spine"
+      },
+      {
+        "name": "root|spine"
+      },
+      {
+        "name": "spine|tail1"
+      },
+      {
+        "name": "spine|tail2"
+      }
+    ]
+  }
+]

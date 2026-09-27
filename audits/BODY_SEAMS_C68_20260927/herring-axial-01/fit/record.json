@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Herring\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3143885446\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"5\"]]]]",
+    "seed": 3143885446,
+    "ownerId": "authored:archetype-sprint/10-herring",
+    "earthName": "Herring"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 3143885446,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 17,
+    "body": 11,
+    "loco": 8,
+    "trait": 5,
+    "size": 0,
+    "diet": 3,
+    "head": 3,
+    "limbs": 3,
+    "skin": 8,
+    "tail": 5,
+    "pattern": 0,
+    "eyes": 1,
+    "behavior": 9,
+    "habitat": 2,
+    "detail": 0,
+    "accent": 13,
+    "temper": 5,
+    "sense": 3,
+    "repro": 0,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Herring"
+  },
+  "geometry": {
+    "cutoutAssetHash": "a0ce035f462ab4bad53bcf68dee03720850fad4dca3e1682ccb57379e343e9b0",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8057089147695481,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.7799840510366827,
+      0.5323763955342903
+    ],
+    "head": [
+      0.9144338118022329,
+      0.5056618819776715
+    ],
+    "jaw": [
+      0.9543859649122807,
+      0.5250398724082934
+    ],
+    "spine0": [
+      0.7422647527910685,
+      0.5181818181818182
+    ],
+    "spine1": [
+      0.6307017543859649,
+      0.5098086124401914
+    ],
+    "spine2": [
+      0.5559011164274322,
+      0.49800637958532695
+    ],
+    "spine3": [
+      0.44513556618819783,
+      0.49338118022328553
+    ],
+    "spine4": [
+      0.29856459330143537,
+      0.4972089314194577
+    ],
+    "spine5": [
+      0.20311004784688994,
+      0.48939393939393944
+    ],
+    "caudal": [
+      0.10342902711323763,
+      0.4925837320574163
+    ],
+    "dorsal": [
+      0.5302232854864434,
+      0.3772727272727273
+    ],
+    "pectoralNear": [
+      0.6817384370015949,
+      0.6042264752791069
+    ],
+    "pectoralFar": [
+      0.7460127591706539,
+      0.6000797448165869
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2tail-labels-v1/10-herring/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from salmon. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "1721fc9061b28f3b5eabccba84bbfd243b9809be51a7a3f5e97eaf77665deab9",
+    "subjectSourceSha256": "ca2ce49668f9d72cd24aed41ac82158284e86372a19b3b3e54960c83bfd3850d",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.1370780923578982,
+      "jaw": 0.04440361529490558,
+      "spine0": 0.04030175537562731,
+      "spine1": 0.11187677680166142,
+      "spine2": 0.07572600702112793,
+      "spine3": 0.1108620746194973,
+      "spine4": 0.146620945884931,
+      "spine5": 0.09577392311215403,
+      "caudal": 0.09973204435756237,
+      "dorsal": 0.1663180193770817,
+      "pectoralFar": 0.0757482156561299,
+      "pectoralNear": 0.1217153837296993
+    },
+    "measures": {
+      "body": 0.5399227146810458,
+      "bone-min": 0.04030175537562731,
+      "bone-max": 0.1663180193770817,
+      "caudal/body": 0.18471540767918632,
+      "head/body": 0.2538846553971632
+    }
+  },
+  "recipeHash": "d8116b491fcea6401ab23962e8bed3fe3be71a8f65b84a5f7df44c7cffe1c455"
+}
