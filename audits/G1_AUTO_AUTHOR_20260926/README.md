@@ -118,6 +118,13 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**Rejected lever: `legMatch` (session 5)** (`auto-author.mjs` option, runner/battery flag `--leg-match=N`, off by default):
+- **The idea:** eight quadrupeds are refused for "an unassigned limb-down appendage" (Hyena, Jaguar, Serval, Caracal, Lynx, Badger, Wolverine, the Ocelot re-paint). The evidence shows the painting's four separate legs against a reference whose near/far legs overlap (e.g. Wild Horse for Serval and Hyena). legMatch picks, among the 3 cheapest references, the first whose MEASURED limb-down count equals the painting's. It chooses before any verdict and never retries after a refusal.
+- **Measured:**
+  - Battery (`mutants/summary-legmatch3.json` vs the exact baseline reproduction `summary-v10-repro.json`): positives 18 → **14/34**, erased 31 → 32/34, flip/wrong family/duplicated unchanged.
+  - All 50 G2 quadrupeds (`auto-g2quad-legmatch3/`): 25 → **25**, with no single subject changed.
+- **Verdict:** it costs corpus positives and gains nothing on generated paintings. **Kept off.** The limb-down refusals need a reference pool with legs apart (or a far-leg re-seat), not a different pick from the current pool.
+
 **G2 C59 batch (Codex `4b08de11`: 12 paintings, 1 pattern-REFUSE skipped; scored with v10 + `--serpent-strips`)** (`auto-g2c59-v10s/`, `native-g2c59/`):
 - **3/11 ADMIT + PASS_STATIC, and 3/3 native DIAGNOSTIC_PASS:** Raccoon, **Vulture** (the second bird through), and **Water Snake** (the first held-out snake for the strip author).
 - **Refused:**
