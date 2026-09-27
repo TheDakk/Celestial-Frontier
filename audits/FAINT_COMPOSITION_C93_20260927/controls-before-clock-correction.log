@@ -1,0 +1,63 @@
+✖ all bounded candidates remain RED across the complete stage interval (3.804375ms)
+✔ a passing recorded instant cannot substitute for the failed interval (2.370208ms)
+✔ omitting any failing time refuses even with every other row retained (1.577292ms)
+✖ unchanged time coverage distinguishes clear samples from an injected fold (1.704166ms)
+✔ native-seed standalone faint also fails nearby while exact recorded time passes (2.744209ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 108.3485
+
+✖ failing tests:
+
+test at audits/FAINT_COMPOSITION_C93_20260927/check-probe.test.mjs:3:1
+✖ all bounded candidates remain RED across the complete stage interval (3.804375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 222.50000000000023
+  - 222.5
+         ^
+  
+      at classifyProbe (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/FAINT_COMPOSITION_C93_20260927/check-probe.mjs:9:71)
+      at TestContext.<anonymous> (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/FAINT_COMPOSITION_C93_20260927/check-probe.test.mjs:3:154)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 222.50000000000023,
+    expected: 222.5,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at audits/FAINT_COMPOSITION_C93_20260927/check-probe.test.mjs:6:1
+✖ unchanged time coverage distinguishes clear samples from an injected fold (1.704166ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 222.50000000000023
+  - 222.5
+         ^
+  
+      at classifyProbe (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/FAINT_COMPOSITION_C93_20260927/check-probe.mjs:9:71)
+      at TestContext.<anonymous> (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/FAINT_COMPOSITION_C93_20260927/check-probe.test.mjs:6:164)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 222.50000000000023,
+    expected: 222.5,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
