@@ -357,16 +357,16 @@
  {
   "family": "fish",
   "name": "Sculpin",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/03-sculpin",
-  "note": "body fragments visibly: NOT acceptable",
+  "nativeDir": "audits/FISH_SEAMS_C78_20260927/native-sculpin-final",
+  "note": "now whole after Codex keyed-label pectoral welds (was fragmented)",
   "batch": "audits/G2_C72_20260927",
   "tag": "g2c72c"
  },
  {
   "family": "fish",
   "name": "Walleye",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/04-walleye",
-  "note": "vertical body crack (unwelded)",
+  "nativeDir": "audits/FISH_SEAMS_C78_20260927/native-walleye-final",
+  "note": "clean after Codex tail+axis repair",
   "batch": "audits/G2_C72_20260927",
   "tag": "g2c72c"
  },
@@ -381,8 +381,8 @@
  {
   "family": "fish",
   "name": "Pacu",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/06-pacu",
-  "note": "body seam cracks (unwelded)",
+  "nativeDir": "audits/FISH_SEAMS_C78_20260927/native-pacu-final",
+  "note": "fine seam near the pectoral remains; tail+axis repaired",
   "batch": "audits/G2_C72_20260927",
   "tag": "g2c72c"
  },
@@ -513,5 +513,13 @@
   "note": "clean",
   "batch": "audits/G2_C76_20260927",
   "tag": "g2c76"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Heron",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2bird-poolv2/fam-02-heron",
+  "note": "left fighter far wing hangs away (wing split)",
+  "batch": "bird pool v2",
+  "tag": "g2bird-poolv2"
  }
 ]

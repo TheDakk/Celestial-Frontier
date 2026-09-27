@@ -15,7 +15,7 @@ const TW = 560, TH = 210, COLS = 3, comp = [], manifest = []; let y = 80;
 const esc = (s) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;');
 for (const [family, entries] of FAMILIES) {
   comp.push({ input: Buffer.from(`<svg width="1720" height="40"><text x="10" y="30" font-size="26" font-family="Arial" font-weight="bold" fill="#eddfbb">${esc(family)} — ${entries.length}</text></svg>`), left: 0, top: y }); y += 44;
-  for (let k = 0; k < entries.length; k++) { const e = entries[k], f = path.join(e.dir, 'turn1-hit-reaction-50.png'), x = 10 + (k % COLS) * (TW + 10), ty = y + Math.floor(k / COLS) * (TH + 44);
+  for (let k = 0; k < entries.length; k++) { const e = entries[k], f = ['turn1-hit-reaction-50.png', 'turn0-hit-reaction-50.png'].map((n) => path.join(e.dir, n)).find((q) => fs.existsSync(q)) ?? path.join(e.dir, 'turn1-hit-reaction-50.png'), x = 10 + (k % COLS) * (TW + 10), ty = y + Math.floor(k / COLS) * (TH + 44);
     if (!fs.existsSync(f)) throw Error('missing still: ' + f);
     comp.push({ input: await sharp(f).extract(e.crop).resize(TW, TH, { fit: 'fill' }).png().toBuffer(), left: x, top: ty + 38 });
     comp.push({ input: Buffer.from(`<svg width="${TW}" height="38"><text x="2" y="17" font-size="17" font-family="Arial" fill="white">${esc(e.name)}</text><text x="2" y="34" font-size="14" font-family="Arial" fill="#9fb3bf">${esc(e.note)}</text></svg>`), left: x, top: ty });
