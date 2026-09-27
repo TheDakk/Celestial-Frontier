@@ -1,0 +1,3 @@
+# I5 changed-product listener proof — 2026-09-27
+
+Target signed a80f05d7b1b6e85cdb7a507598aaee50407499cc, with explicit MessagePort and worker callback cleanup. Exact unchanged-source required battery5685PASS/I5solefailure plus7owners PASS. Prior cd4 calibration1 failed77/78 at desktop100listeners>96; stopped forever. Focused diagnostic did not reproduce the transient, but the two lifetime defects are now covered by30positive tests and3actual mutants; byte output unchanged. Fresh3cal+1cert local epoch, no automatic retry, first-red stop. All78outcomes/40ceilings/deadlines/history unchanged. C110art generation continues remotely.
