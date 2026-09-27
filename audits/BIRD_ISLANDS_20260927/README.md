@@ -35,3 +35,7 @@ Three mutants each fail one test: shortest border, no cap, 4-connectivity.
 - Remainder islands are nearly universal: 146 of 162 fits have one of at least 100 px, and 100 have one over 5% of the remainder. The median largest island is 6.8%.
 - Many accepted creatures carry them and look whole at full size. So an island is not a defect in itself; the visible bird case is a sliver at a joint that moves (the head/neck dip).
 - **The repair therefore stays per-subject and opt-in**, applied only after native and a full-size review. It must never become a batch default, and the 5% cap would refuse most fits anyway.
+
+**Native + full-size review (2026-09-27, after Codex's epoch released the lock).** Both fits are DIAGNOSTIC_PASS (`native.json`).
+- **Seabird:** whole in the reaction and in the late idle; the floating sliver is gone. **Accepted**, and the gallery now uses this fit.
+- **Snow Petrel:** the floating sliver is gone. It remains **held** for a separate defect: a wing seam gap shows background in the late idle, and a grey line crosses the near wing in the reaction.

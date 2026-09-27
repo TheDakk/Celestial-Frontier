@@ -1,0 +1,22 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong family: length/thickness 7.96 < 8"
+ ],
+ "author": "serpent-strips/v1",
+ "target": {
+  "snoutRatio": 0.513,
+  "mainShare": 1,
+  "dominantShare": 0.986,
+  "gapFrac": 0,
+  "elongation": 7.96,
+  "headEnd": 54.2,
+  "tailEnd": 33.2,
+  "tailTip": 23.3,
+  "median": 142,
+  "xmin": 61,
+  "xmax": 1190,
+  "ext": 1130,
+  "paint": 140233
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "03-electric-eel",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "5000405f795b63fc567e51fda5f7a608e54cd868b2ee56a4a326677f958c4aa7",
+ "subjectSourceSha256": "234665175b9b482df2c1aa16a931f080a748a43cebd520a5ab27757debfb02b2",
+ "identity": {
+  "name": "Electric Eel",
+  "family": "serpent",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Electric Eel\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2343305612\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "seed": 2343305612,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "python",
+  "authoringSha256": "3a6a75b2524550a4d80a2fabba037ba7f1d4ae2ec3502b42ed11f7c66d8fc5c9",
+  "masterSha256": "d0a777d5186a6787461d795b41b34b8ce4569af1efd10b14f98524fc92ef8cae"
+ },
+ "habitat": {
+  "profileId": "eel",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d108e81464489f0db6b6053fe0baa8f671cff71d21fe2f84c97f03ee71d0ed0c",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group eel (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": "unmeasured",
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity",
+  "geometric": {
+   "snoutRatio": 0.521,
+   "mainShare": 1,
+   "dominantShare": 1,
+   "gapFrac": 0,
+   "elongation": 11.11,
+   "headEnd": 60.7,
+   "tailEnd": 34.7,
+   "tailTip": 21.1,
+   "median": 99,
+   "xmin": 77,
+   "xmax": 1176,
+   "ext": 1100,
+   "paint": 108051
+  },
+  "semantic": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

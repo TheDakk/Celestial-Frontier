@@ -1366,8 +1366,8 @@
  {
   "family": "biped-bird",
   "name": "Snow Petrel",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/20-snow-petrel",
-  "note": "HELD: small feather fragment above the back and a background-coloured patch on the wing in turn3 idle",
+  "nativeDir": "audits/BIRD_ISLANDS_20260927/20-snow-petrel/native",
+  "note": "HELD: floating sliver fixed by the island repair, but a wing seam gap shows background (late idle) and a grey line crosses the near wing (reaction)",
   "batch": "audits/G2_C101_20260927",
   "tag": "g2c101"
  },
@@ -1470,8 +1470,8 @@
  {
   "family": "biped-bird",
   "name": "Seabird",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/20-seabird",
-  "note": "HELD: small feather fragment floats above the back in late idle (same bird pattern as Snow Petrel)",
+  "nativeDir": "audits/BIRD_ISLANDS_20260927/20-seabird/native",
+  "note": "whole in reaction and late idle after the remainder-island repair (the floating neck/back sliver is gone)",
   "batch": "audits/G2_C106_20260927",
   "tag": "g2c106"
  },

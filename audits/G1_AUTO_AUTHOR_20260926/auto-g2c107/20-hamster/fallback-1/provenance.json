@@ -1,0 +1,153 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "20-hamster",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "e2c98f103a9bbbbcd73e6ff22bb0233865519a1b5bb5032f9699d4954ba06ba3",
+ "subjectSourceSha256": "8335263158c3375df0ff8d27857923eb4c113cafc7455f062b53030a997ff84a",
+ "identity": {
+  "name": "Hamster",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Hamster\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"3843622841\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 3843622841,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "marmot",
+  "authoringSha256": "f87f8f92c1e0918313063d7e9a77c4e9b48e536ca1d5510373520c15e126dc81",
+  "masterSha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.03,
+     "class": "top",
+     "attach": {
+      "x": 265.5,
+      "y": 151,
+      "relX": 0.81,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0087,
+     "class": "top",
+     "attach": {
+      "x": 180.5,
+      "y": 157,
+      "relX": 0.36,
+      "relY": 0.05
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0308,
+     "class": "front",
+     "attach": {
+      "x": 302,
+      "y": 189.5,
+      "relX": 1.01,
+      "relY": 0.4
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0324,
+     "class": "limb-down",
+     "attach": {
+      "x": 117.2,
+      "y": 231.3,
+      "relX": 0.02,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.024,
+     "class": "limb-down",
+     "attach": {
+      "x": 262.6,
+      "y": 245.6,
+      "relX": 0.8,
+      "relY": 1
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0289,
+     "class": "limb-down",
+     "attach": {
+      "x": 161,
+      "y": 247,
+      "relX": 0.26,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0237,
+     "class": "limb-down",
+     "attach": {
+      "x": 224,
+      "y": 247,
+      "relX": 0.59,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "marmot",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 4
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "foreFar+foreNear"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

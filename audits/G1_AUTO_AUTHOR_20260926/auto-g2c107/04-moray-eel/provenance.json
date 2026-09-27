@@ -1,0 +1,34 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "04-moray-eel",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "51dfd619e94766dcf2c450cff4d4e4b8620dfc3365c2e0c6fecc3f38bcada411",
+ "subjectSourceSha256": "01f8a5bbf148a15f259c4a7e6e4bdf6f9c32c04f73142ff42d5b50b91b33c15c",
+ "identity": {
+  "name": "Moray Eel",
+  "family": "serpent",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Moray Eel\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"679273159\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "seed": 679273159,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": null,
+ "habitat": {
+  "profileId": "eel",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d108e81464489f0db6b6053fe0baa8f671cff71d21fe2f84c97f03ee71d0ed0c",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "smooth skin",
+  "source": "species group eel (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": "unmeasured",
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

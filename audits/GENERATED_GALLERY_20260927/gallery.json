@@ -663,9 +663,9 @@
   {
    "family": "Birds",
    "name": "Snow Petrel",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/20-snow-petrel",
+   "nativeDir": "audits/BIRD_ISLANDS_20260927/20-snow-petrel/native",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: small feather fragment above the back and a background-coloured patch on the wing in turn3 idle"
+   "note": "HELD: floating sliver fixed by the island repair, but a wing seam gap shows background (late idle) and a grey line crosses the near wing (reaction)"
   },
   {
    "family": "Birds",
@@ -677,9 +677,9 @@
   {
    "family": "Birds",
    "name": "Seabird",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/20-seabird",
+   "nativeDir": "audits/BIRD_ISLANDS_20260927/20-seabird/native",
    "report": "DIAGNOSTIC_PASS",
-   "note": "HELD: small feather fragment floats above the back in late idle (same bird pattern as Snow Petrel)"
+   "note": "whole in reaction and late idle after the remainder-island repair (the floating neck/back sliver is gone)"
   },
   {
    "family": "Fish",
