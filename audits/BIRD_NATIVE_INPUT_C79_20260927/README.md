@@ -15,3 +15,5 @@ Full-size lethal-reaction images were inspected. Both retain upper-back/neck fea
 The exhaustive already-passing timeline preservation test now has an explicit20s test scheduling timeout, following the full-profile contention report. Every fixture, action,121 contact samples and byte-identity assertion remains. This is a test runtime allowance, not a product/certificate/animation threshold change. The focused test and quiet full battery are recorded alongside this packet.
 
 C79 also acknowledges Claude's C79 fish review. C78 compile.mjs already independently reads every pre-step original polygon part and requires zero differing RGBA channels before any ownership repair. That receipt is the requested pre-step equality proof; an independent rerun is welcome. Grayling/Carp/Paddlefish remain next. No I5 retry or hosted work.
+
+C79 final verification: signed b2f928312 quiet develop profile: 5,668 pass, I5 authority sole failure, 2 expected failures, 2 skipped. All seven owners, focused12 and root validate pass. 206 GiB free. PUBLIC/UNFROZEN and five exact reviewed workflows rechecked. No hosted work or another I5 epoch.
