@@ -576,5 +576,95 @@
   "note": "passes with observed supports; tail curl, neck shards (Codex)",
   "batch": "C79 observed supports",
   "tag": "c79"
+ },
+ {
+  "family": "fish",
+  "name": "Mackerel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/01-mackerel",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Haddock",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/02-haddock",
+  "note": "vertical body cracks (unwelded)",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Pollock",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/03-pollock",
+  "note": "vertical body cracks (unwelded)",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Sardine",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/04-sardine",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Anchovy",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/05-anchovy",
+  "note": "small body crack (unwelded)",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Mullet",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/06-mullet",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Tarpon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/07-tarpon",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Curlew",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/09-curlew",
+  "note": "clean",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Coot",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/14-coot",
+  "note": "clean",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Rail",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/16-rail",
+  "note": "clean",
+  "batch": "audits/G2_C81_20260927",
+  "tag": "g2c81",
+  "supports": "observed"
  }
 ]

@@ -1,0 +1,153 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C81_20260927",
+ "tag": "g2c81",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-mackerel",
+  "02-haddock",
+  "03-pollock",
+  "04-sardine",
+  "05-anchovy",
+  "06-mullet",
+  "07-tarpon",
+  "09-curlew",
+  "14-coot",
+  "16-rail"
+ ],
+ "refused": [
+  {
+   "id": "08-snapper",
+   "reason": "extra-anatomy (unassigned): a front appendage of 6.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "10-snipe",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 0% paint (reference 72%)"
+  },
+  {
+   "id": "12-godwit",
+   "reason": "missing-anatomy: part far-thigh (legFarKnee) covers 20% paint (reference 72%)"
+  },
+  {
+   "id": "13-avocet",
+   "reason": "missing-anatomy: part near-thigh (legNearKnee) covers 0% paint (reference 67%)"
+  },
+  {
+   "id": "15-moorhen",
+   "reason": "missing-anatomy: part near-thigh (legNearKnee) covers 13% paint (reference 59%)"
+  },
+  {
+   "id": "17-bee",
+   "reason": "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 88%)"
+  },
+  {
+   "id": "18-wasp",
+   "reason": "extra-anatomy (unassigned): a front appendage of 9.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "19-dragonfly",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 10.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "20-damselfly",
+   "reason": "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)"
+  },
+  {
+   "id": "21-caddisfly",
+   "reason": "missing-anatomy: part antenna-far (antennaFar) covers 1% paint (reference 32%)"
+  },
+  {
+   "id": "22-mayfly",
+   "reason": "missing-anatomy: part antenna-far (antennaFar) covers 0% paint (reference 29%)"
+  },
+  {
+   "id": "23-stonefly",
+   "reason": "facing: the mirrored painting matches insect better (0.0384 < 0.3082)"
+  },
+  {
+   "id": "24-giant-water-bug",
+   "reason": "missing-anatomy: part antenna-near (antennaNear) covers 12% paint (reference 35%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "11-plover",
+   "static": "INTAKE_REFUSED"
+  }
+ ],
+ "native": [
+  {
+   "id": "01-mackerel",
+   "name": "Mackerel",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "02-haddock",
+   "name": "Haddock",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "03-pollock",
+   "name": "Pollock",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "04-sardine",
+   "name": "Sardine",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "05-anchovy",
+   "name": "Anchovy",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "06-mullet",
+   "name": "Mullet",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "07-tarpon",
+   "name": "Tarpon",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "09-curlew",
+   "name": "Curlew",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "14-coot",
+   "name": "Coot",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "16-rail",
+   "name": "Rail",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

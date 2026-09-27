@@ -118,6 +118,11 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**G2 C81 batch (Codex `e1d80142`: 8 marine fish, 8 standing birds, 8 insects; `score-batch`, observed supports)** (`auto-g2c81/`, `native-g2c81/`):
+- **10/24 native PASS:** Mackerel, Haddock, Pollock, Sardine, Anchovy, Mullet, Tarpon; **Curlew, Coot, Rail**.
+- **Full-size:** the three birds are clean. The fish are unwelded (cracks on Haddock, Pollock and Anchovy; Mackerel, Sardine, Mullet and Tarpon acceptable).
+- Refused: Snapper (extra appendage); Snipe/Godwit/Avocet/Moorhen (thigh coverage). **Insects 0/8** (leg/antenna/mandible coverage, extra appendages, Stonefly facing). The Plover is refused at intake.
+
 **Instrument correction (Codex C79): native proofs must use `supports: 'observed'`.**
 - My native scripts omitted it, so the native entry tested REST contact supports while static (and the game, for observed-support fits) tests the painted ones.
 - The Magpie/Dove "lethal-faint FAIL" was this mismatch: with only `supports: 'observed'` added, both pass native (775/780 frames, 0/0). Codex reproduced the original 51 refusals exactly on the old script.
