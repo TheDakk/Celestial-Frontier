@@ -1,0 +1,89 @@
+{
+  "schema": "cf.serpent-independent-review/v1",
+  "thinControls": [
+    {
+      "thickness": 1,
+      "profileAccepted": true,
+      "profileReasons": [],
+      "nonfiniteMeasures": [
+        "dominantShare",
+        "elongation",
+        "headEnd",
+        "tailEnd",
+        "tailTip",
+        "median"
+      ],
+      "measures": {
+        "snoutRatio": 0,
+        "mainShare": 1,
+        "dominantShare": null,
+        "gapFrac": 0,
+        "elongation": null,
+        "headEnd": null,
+        "tailEnd": null,
+        "tailTip": null,
+        "xmin": 100,
+        "xmax": -1,
+        "ext": -100,
+        "paint": 80
+      },
+      "authorVerdict": "REFUSE",
+      "authorReasons": [
+        "missing-anatomy: part jaw owns 0.00 % of the paint (reference 0.92 %)",
+        "missing-anatomy: part body-segment-0 owns 0.00 % of the paint (reference 7.28 %)",
+        "missing-anatomy: part body-segment-1 owns 0.00 % of the paint (reference 9.98 %)",
+        "missing-anatomy: part body-segment-2 owns 0.00 % of the paint (reference 10.48 %)",
+        "missing-anatomy: part body-segment-3 owns 0.00 % of the paint (reference 10.15 %)",
+        "missing-anatomy: part body-segment-4 owns 0.00 % of the paint (reference 12.08 %)",
+        "missing-anatomy: part body-segment-5 owns 0.00 % of the paint (reference 11.09 %)",
+        "missing-anatomy: part body-segment-6 owns 0.00 % of the paint (reference 11.32 %)",
+        "missing-anatomy: part body-segment-7 owns 0.00 % of the paint (reference 8.77 %)",
+        "missing-anatomy: part body-segment-8 owns 0.00 % of the paint (reference 5.74 %)",
+        "missing-anatomy: part body-segment-9 owns 0.00 % of the paint (reference 2.76 %)",
+        "missing-anatomy: part neck-root owns 0.00 % of the paint (reference 5.09 %)"
+      ]
+    },
+    {
+      "thickness": 2,
+      "profileAccepted": true,
+      "profileReasons": [],
+      "nonfiniteMeasures": [
+        "dominantShare",
+        "elongation",
+        "headEnd",
+        "tailEnd",
+        "tailTip",
+        "median"
+      ],
+      "measures": {
+        "snoutRatio": 0,
+        "mainShare": 1,
+        "dominantShare": null,
+        "gapFrac": 0,
+        "elongation": null,
+        "headEnd": null,
+        "tailEnd": null,
+        "tailTip": null,
+        "xmin": 100,
+        "xmax": -1,
+        "ext": -100,
+        "paint": 160
+      },
+      "authorVerdict": "REFUSE",
+      "authorReasons": [
+        "missing-anatomy: part jaw owns 0.00 % of the paint (reference 0.92 %)",
+        "missing-anatomy: part body-segment-0 owns 0.00 % of the paint (reference 7.28 %)",
+        "missing-anatomy: part body-segment-1 owns 0.00 % of the paint (reference 9.98 %)",
+        "missing-anatomy: part body-segment-2 owns 0.00 % of the paint (reference 10.48 %)",
+        "missing-anatomy: part body-segment-3 owns 0.00 % of the paint (reference 10.15 %)",
+        "missing-anatomy: part body-segment-4 owns 0.00 % of the paint (reference 12.08 %)",
+        "missing-anatomy: part body-segment-5 owns 0.00 % of the paint (reference 11.09 %)",
+        "missing-anatomy: part body-segment-6 owns 0.00 % of the paint (reference 11.32 %)",
+        "missing-anatomy: part body-segment-7 owns 0.00 % of the paint (reference 8.77 %)",
+        "missing-anatomy: part body-segment-8 owns 0.00 % of the paint (reference 5.74 %)",
+        "missing-anatomy: part body-segment-9 owns 0.00 % of the paint (reference 2.76 %)",
+        "missing-anatomy: part neck-root owns 0.00 % of the paint (reference 5.09 %)"
+      ]
+    }
+  ]
+}
