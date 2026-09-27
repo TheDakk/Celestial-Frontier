@@ -1,0 +1,18 @@
+✔ declared hidden pair keeps complete skeleton, flags inferred joints and excludes exactly two contact chains (2.51275ms)
+✔ missing pair is never inferred by admission, declared or undeclared; absent cannot replace hidden (0.777417ms)
+✔ actual eight-visible painter admits unchanged; same paint assigned to declared hidden joints refuses in both intake routes (128.678209ms)
+✔ keyed labels reproduce every original Sculpin part without changing any pixel or label (126.747ms)
+✔ a changed keyed colour refuses even though original PNG and record still match (5.130208ms)
+✔ keyed declaration, original identity, missing pixels and background ownership fail closed (173.212917ms)
+✔ file builder keys the unchanged opaque master and verifies the exact label file (1101.852292ms)
+✔ authored mask ownership reconstructs visible pixels; drops, duplicates and changed colours fail (310.870166ms)
+✔ corruption, wrong master, wrong record and unknown joint refuse before output (134.515333ms)
+✔ painter labels reconstruct actual alpha and refuse dropped, unknown or rehashed foreign owners (405.944042ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1805.495292

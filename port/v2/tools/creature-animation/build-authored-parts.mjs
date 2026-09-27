@@ -1,6 +1,7 @@
 import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';import {pathToFileURL} from 'node:url';
 import {hashBytes,hashJSON} from './quadruped-template.mjs';import {cutAuthoredParts,cutPainterParts} from './part-masks.mjs';import {packRigAtlas} from './rig-atlas.mjs';
 import {intakeAuthoredPixels} from './authored-intake.mjs';
+import {cutKeyedParts} from './keyed-part-labels.mjs';
 const require=createRequire(import.meta.url),sharp=createRequire(require.resolve('free-tex-packer-core'))('sharp');
 /** `textureFile` (R9): an optional finished texture whose alpha must equal the
  * master's byte for byte; its RGB replaces the master's for every cut part
@@ -9,7 +10,8 @@ export async function buildAuthoredParts({id,recordFile,masterFile,declarationFi
  if(fs.existsSync(output))throw Error('Authored parts output must be new');
  const record=JSON.parse(fs.readFileSync(recordFile)),master=fs.readFileSync(masterFile),declaration=JSON.parse(fs.readFileSync(declarationFile));
  const {data:masterData,info}=await sharp(master).ensureAlpha().raw().toBuffer({resolveWithObject:true});
- const painter=declaration.schema==='cf.painter-part-intake/v1';
+ const painter=declaration.schema==='cf.painter-part-intake/v1',keyedLabels=declaration.schema==='cf.keyed-part-intake/v1';
+ if(keyedLabels&&masterData.some((v,i)=>i%4===3&&v!==255))throw Error('Keyed labels require an opaque original; native alpha uses painter intake');
  let data=masterData,texture=null;
  if(textureFile){
   if(!painter)throw Error('Texture substitution needs a painter declaration');
@@ -21,14 +23,14 @@ export async function buildAuthoredParts({id,recordFile,masterFile,declarationFi
  }
  const keyed=painter?{rgba:new Uint8ClampedArray(data),alpha:Uint8Array.from({length:info.width*info.height},(_,i)=>data[i*4+3]),receipt:{mode:texture?'native painter alpha; finished texture RGB; no keyer':'native painter alpha; no keyer'}}:intakeAuthoredPixels(new Uint8ClampedArray(data),info.width,info.height);
  let result;
- if(painter){
+ if(painter||keyedLabels){
   if(declaration.labelsFile!=='labels.png')throw Error('Painter labels must be adjacent labels.png');
   const labelBytes=fs.readFileSync(path.join(path.dirname(declarationFile),declaration.labelsFile));
   if(await hashBytes(labelBytes)!==declaration.labelsSha256)throw Error('Painter label hash mismatch');
   const decoded=await sharp(labelBytes).ensureAlpha().raw().toBuffer({resolveWithObject:true});
   if(decoded.info.width!==info.width||decoded.info.height!==info.height)throw Error('Painter label dimensions');
   const labels=Uint8Array.from({length:info.width*info.height},(_,i)=>decoded.data[i*4]);
-  result=await cutPainterParts(record,master,keyed.rgba,labels,declaration);
+  result=await (keyedLabels?cutKeyedParts:cutPainterParts)(record,master,keyed.rgba,labels,declaration);
  }else result=await cutAuthoredParts(record,master,keyed.rgba,declaration);
  fs.mkdirSync(output,{recursive:true});fs.mkdirSync(path.join(output,'parts'));
  const write=(n,b)=>fs.writeFileSync(path.join(output,n),b,{flag:'wx'}),json=(n,b)=>write(n,JSON.stringify(b,null,2)+'\n');

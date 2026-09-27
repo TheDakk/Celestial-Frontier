@@ -1,0 +1,12 @@
+✔ keyed labels reproduce every original Sculpin part without changing any pixel or label (119.801ms)
+✔ a changed keyed colour refuses even though original PNG and record still match (4.969125ms)
+✔ keyed declaration, original identity, missing pixels and background ownership fail closed (166.827917ms)
+✔ file builder keys the unchanged opaque master and verifies the exact label file (1075.572209ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1743.605667

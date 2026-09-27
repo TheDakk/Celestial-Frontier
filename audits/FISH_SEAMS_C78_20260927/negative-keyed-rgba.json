@@ -1,0 +1,7 @@
+{
+  "mutation": "Remove exact keyed RGBA hash guard",
+  "expectedFailures": 1,
+  "exitCode": 1,
+  "restoredExact": true,
+  "restoredSha256": "292f13ad42573a3b8d00c01f024f5c7fa4e72077d19871b44ca396bb203ed16f"
+}

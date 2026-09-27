@@ -1,0 +1,17 @@
+[
+  {
+    "name": "sculpin",
+    "candidate": "sculpin-pectoral-03",
+    "exitCode": 0
+  },
+  {
+    "name": "walleye",
+    "candidate": "walleye-tail-axial-01",
+    "exitCode": 0
+  },
+  {
+    "name": "pacu",
+    "candidate": "pacu-tail-axial-01",
+    "exitCode": 0
+  }
+]
