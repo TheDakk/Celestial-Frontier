@@ -1,0 +1,7 @@
+import fs from'node:fs';import assert from'node:assert/strict';import test from'node:test';import{classifyProbe}from'./check-probe.mjs';
+const read=n=>JSON.parse(fs.readFileSync(new URL(n+'.json',import.meta.url)));
+test('all bounded candidates remain RED across the complete stage interval',()=>{for(const n of ['baseline','early-idle-fade','chain-only'])assert.equal(classifyProbe(read(n)),'RED');});
+test('a passing recorded instant cannot substitute for the failed interval',()=>{const r=read('early-idle-fade'),at='stage '+r.at;assert.equal(r.rows.find(x=>x.label===at).error,null);r.rows=r.rows.filter(x=>x.label===at);assert.throws(()=>classifyProbe(r),/Incomplete/);});
+test('omitting any failing time refuses even with every other row retained',()=>{const r=read('baseline'),i=r.rows.findIndex(x=>x.error);r.rows.splice(i,1);assert.throws(()=>classifyProbe(r),/Incomplete/);});
+test('unchanged time coverage distinguishes clear samples from an injected fold',()=>{const r=read('baseline');for(const row of r.rows)row.error=null;assert.equal(classifyProbe(r),'PASS_SAMPLED_DIAGNOSTIC_ONLY');r.rows.find(x=>x.label==='stage '+r.at).error='ARAP skin: unresolved folded triangles: 2';assert.equal(classifyProbe(r),'RED');});
+test('native-seed standalone faint also fails nearby while exact recorded time passes',()=>{const r=read('standalone-grid'),rows=r.rows.filter(x=>x.label.startsWith('standalone '));assert.equal(rows.find(x=>x.label==='standalone '+r.at).error,null);assert.equal(rows.filter(x=>x.error).length,7);});
