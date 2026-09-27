@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Sturgeon",
+  "masterSha256": "27659622bdfc4ac4bab8fd5d577a911a46878f91bb14f42df9ba0213310934fb",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

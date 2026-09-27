@@ -1,0 +1,13 @@
+{
+  "id": "03-char",
+  "name": "Char",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-06d3f9f7-6855-4032-9469-46d666cca82a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f4da50fc81c70faddd0d1fa7e4074564b6caddd1c80e06cdb660bf85cb4afc87",
+  "bytes": 1406763,
+  "promptSha256": "a10c848eb1e4394f13aff01b22eac350c962cd8eb30986f8cc4376efa3cdde33",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

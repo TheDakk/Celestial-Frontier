@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Okapi",
+  "masterSha256": "20060058c0e89809749b376fc6405e972a724c0d3835b9be9a2ee73812b55679",
+  "required": [
+    "horizontal white stripes on the hindquarters and upper legs"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "horizontal white stripes on the hindquarters and upper legs",
+      "status": "PRESENT",
+      "observed": "Horizontal white stripes on hindquarters and upper legs clearly visible, pale lower legs, short horns and full tufted tail. Four feet separate; near/far roots overlap. Standing rather than stride."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Arowana",
+  "masterSha256": "9572aa74902130df48701d1d278658d9058aa839925205bb1811c2bed96c8713",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

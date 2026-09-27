@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Capybara",
+  "masterSha256": "3ecaf74f123afb77e76efbc3652caacdf560f2f82ea3262b571ca803ef28d9a1",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

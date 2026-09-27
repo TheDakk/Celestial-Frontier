@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bass",
+  "masterSha256": "5624fe6743f1f98c655b81e9bf2e33b1a731e233f6d8f83630731073a247942a",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

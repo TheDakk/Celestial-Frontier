@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Pangolin",
+  "masterSha256": "57fc0c857296e91e92245184347ee687233cb83de01341262ebdd982edce81d7",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
