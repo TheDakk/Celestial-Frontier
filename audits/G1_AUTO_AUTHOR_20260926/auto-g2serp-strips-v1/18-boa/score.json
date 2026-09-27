@@ -1,0 +1,10 @@
+{
+ "id": "18-boa",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the right (head) end is not thicker than the left (tail) end (64.8 vs 66.2)",
+  "tail not tapered: tip 77px vs median 113px (truncated tail?)"
+ ],
+ "semanticPresence": null
+}

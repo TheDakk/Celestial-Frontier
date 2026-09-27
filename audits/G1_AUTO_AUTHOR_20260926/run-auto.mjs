@@ -9,6 +9,7 @@ import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {summarizeStaticOutcome} from '../../port/v2/tools/anatomy-verify/static-outcome.mjs';
 import {autoAuthor, autoAuthorShop, prepareSubject, mirrorSubject, referenceStats, skeletonStats} from '../../port/v2/tools/anatomy-verify/auto-author.mjs';
+import {serpentAuthor} from '../../port/v2/tools/anatomy-verify/serpent-author.mjs';
 const HERE = import.meta.dirname, ROOT = path.resolve(HERE, '../..');
 const require = createRequire(path.join(ROOT, 'port/v2/package.json'));
 const sharp = createRequire(require.resolve('free-tex-packer-core'))('sharp');
@@ -24,7 +25,7 @@ const shopArg = args.find((x) => x.startsWith('--shop=')), shopN = shopArg ? Num
 const fallbackArg = args.find((x) => x.startsWith('--fallback=')), fallbackN = fallbackArg ? Number(fallbackArg.slice(11)) : 0;
 const { familyContract, familyContactChains } = await import(path.join(ROOT, 'port/v2/tools/creature-animation/family-contracts.mjs'));
 const topkArg = args.find((x) => x.startsWith('--topk=')), topK = topkArg ? Number(topkArg.slice(7)) : 3;
-const useChains = args.includes('--chains');
+const useChains = args.includes('--chains'); const useSerpentStrips = args.includes('--serpent-strips'), useTailLabels = args.includes('--tail-labels');
 const useSkeleton = args.includes('--skeleton'), graphOf = (family) => familyContract(family).graph;
 const terminalsOf = (family) => { try { return new Set(familyContactChains(familyContract(family)).map((c) => c.terminal).filter(Boolean)); } catch { return new Set(); } };
 const OUT = path.join(HERE, 'auto' + (tag ? '-' + tag : ''));
@@ -69,6 +70,9 @@ if (targetsArg) for (const t of JSON.parse(fs.readFileSync(path.join(ROOT, targe
 // merges two contact chains (overlapped near/far limbs); otherwise it is UNRESOLVED and the packet is not play-admissible.
 function semanticPresence(res, family) {
   if (res.verdict !== 'ADMIT') return { attestation: 'none (refused)' };
+  if (res.evidence?.author === 'serpent-strips/v1') return { lists: 'absent/hidden/folded empty: intake-format necessity', geometric: res.evidence.target,
+    semantic: 'UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed',
+    attestation: 'geometric only: NOT an all-visible attestation', playAdmission: 'blocked until semantic presence is resolved and native + Dakk visual review pass' };
   const inv = res.evidence?.inventory; if (!inv) return { attestation: 'none', semantic: 'UNRESOLVED: no inventory' };
   const jointOf = new Map((res.authoring?.parts ?? []).map((p) => [p.id, p.joint]));
   let chains = []; try { chains = familyContactChains(familyContract(family)); } catch {}
@@ -113,7 +117,10 @@ function runCandidate(s, rank, dir) {
   let canonicalKey = null; try { canonicalKey = speciesVisualKey({ ...s.subject.genome }); } catch (e) { idReasons.push('identity: genome yields no visualKey (' + String(e).slice(0, 80) + ')'); }
   if (canonicalKey !== null && canonicalKey !== s.subject.visualKey) idReasons.push('identity: subject-source visualKey is not the genome\'s own visualKey');
   const material = profile ? materialForProfile(profile.id) : null; if (!material) idReasons.push(`materials-unknown: no species-group material for profile ${profile?.id ?? '(none)'}; the motion kit refuses an unclassified surface`);
-  const res0 = (rank === 0 && shopN > 0 ? autoAuthorShop : autoAuthor)({ grow: args.includes('--grow'), shop: shopN, target: s.prepared, mirrored, family: s.family, id: s.id, refs, refRank: rank, materials: { surface: material ?? 'unclassified' }, habitat: habitatFor(s.subject.name), topK, nudgeFrac, nudgeThinFrac, nudgeSkipChains, counter: useCounter ? {} : null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(s.family) } : null, skeleton: useSkeleton ? { graph: graphOf(s.family) } : null, chains: useChains ? (() => { try { return familyContactChains(familyContract(s.family)); } catch { return null; } })() : null });
+  /* --serpent-strips (labelled, off by default): serpents use the strip author (vertical cuts on the measured centreline) instead of
+   * the contour warp; same identity checks, provenance, intake and gates. References: the other serpent corpus packets, leave-one-species-out. */
+  const serpentRefs = () => refs.map((r) => subjects.find((o) => o.id === r.subjectId)).filter((o) => o && o.family === 'serpent').map((o) => ({ id: o.id, name: o.subject.name, authoring: o.authoring, rgba: o.img.rgba, w: o.img.w, h: o.img.h }));
+  const res0 = useSerpentStrips && s.family === 'serpent' ? serpentAuthor({ rgba: s.img.rgba, w: s.img.w, h: s.img.h, id: s.id, refs: serpentRefs(), materials: { surface: material ?? 'unclassified' }, habitat: habitatFor(s.subject.name) }) : (rank === 0 && shopN > 0 ? autoAuthorShop : autoAuthor)({ grow: args.includes('--grow'), shop: shopN, target: s.prepared, mirrored, family: s.family, id: s.id, refs, refRank: rank, materials: { surface: material ?? 'unclassified' }, habitat: habitatFor(s.subject.name), topK, nudgeFrac, nudgeThinFrac, nudgeSkipChains, counter: useCounter ? {} : null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(s.family) } : null, skeleton: useSkeleton ? { graph: graphOf(s.family) } : null, chains: useChains ? (() => { try { return familyContactChains(familyContract(s.family)); } catch { return null; } })() : null });
   const res = idReasons.length ? { ...res0, verdict: 'REFUSE', reasons: [...idReasons, ...res0.reasons] } : res0;
   fs.writeFileSync(path.join(dir, 'evidence.json'), JSON.stringify({ verdict: res.verdict, reasons: res.reasons, ...res.evidence }, null, 1) + '\n');
   // outer provenance envelope (Codex G1 review): intake stays unchanged and still writes manualAuthoring=true and
@@ -141,9 +148,17 @@ function runCandidate(s, rank, dir) {
     if ((res.verdict === 'ADMIT' || args.includes('--diagnostic-static')) && !skipStatic) { if (res.verdict !== 'ADMIT') row.diagnosticOnly = 'static run on a REFUSED author (diagnostic; never an admission)';
       const fit = path.join(dir, 'fit');
       if (!fs.existsSync(fit)) { const r = spawnSync(process.execPath, ['port/v2/tools/creature-animation/intake-authored.mjs', packet, fit], { cwd: ROOT, encoding: 'utf8', timeout: 900000 }); fs.writeFileSync(path.join(dir, 'intake.log'), (r.stdout || '') + (r.stderr || '')); }
+      /* --tail-labels (labelled, off by default): the checked exact-label tail placement (Codex TAIL_LABELS_C56 + Claude's rig-derived
+       * identity guard) rebuilds the fit with the remainder gap between tail and stalk owned by the stalk; static then runs on that fit.
+       * Skipped (and recorded) when the rig has no tail pair or the placement refuses. */
+      let staticFit = fit;
+      if (useTailLabels && fs.existsSync(path.join(fit, 'binding.json'))) { const tl = path.join(dir, 'tail-labels');
+        if (!fs.existsSync(path.join(tl, 'fit', 'binding.json'))) { fs.rmSync(tl, { recursive: true, force: true }); const r = spawnSync(process.execPath, [path.join(HERE, 'tail-labels-fit.mjs'), s.id, fit, tl], { cwd: ROOT, encoding: 'utf8', timeout: 900000 }); fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(path.join(dir, 'tail-labels.log'), (r.stdout || '') + (r.stderr || '')); }
+        if (fs.existsSync(path.join(tl, 'fit', 'binding.json'))) { staticFit = path.join(tl, 'fit'); try { row.tailLabels = JSON.parse(fs.readFileSync(path.join(tl, 'receipt.json'), 'utf8')).gap.changedPixels; } catch { row.tailLabels = 'receipt missing'; } }
+        else row.tailLabels = 'skipped: ' + ((fs.readFileSync(path.join(dir, 'tail-labels.log'), 'utf8').match(/Error: [^\n]{0,160}/) ?? ['unknown'])[0]); }
       if (fs.existsSync(path.join(fit, 'binding.json'))) {
         const report = path.join(dir, 'static.json');
-        if (!fs.existsSync(report)) { const r = spawnSync(process.execPath, [path.join(HERE, 'harness/static-runner.mjs'), fit, report], { cwd: ROOT, encoding: 'utf8', timeout: 1800000 }); fs.writeFileSync(path.join(dir, 'static.log'), (r.stdout || '') + (r.stderr || '')); }
+        if (!fs.existsSync(report)) { const r = spawnSync(process.execPath, [path.join(HERE, 'harness/static-runner.mjs'), staticFit, report], { cwd: ROOT, encoding: 'utf8', timeout: 1800000 }); fs.writeFileSync(path.join(dir, 'static.log'), (r.stdout || '') + (r.stderr || '')); }
         let st = null; try { st = JSON.parse(fs.readFileSync(report, 'utf8')); } catch {}
         Object.assign(row, summarizeStaticOutcome(st));
         if (!st) { const log = fs.readFileSync(path.join(dir, 'static.log'), 'utf8'); row.staticError = (log.match(/"error":"([^"]{0,200})/) ?? [])[1] ?? log.slice(-200); }

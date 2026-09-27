@@ -1,0 +1,35 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "18-boa",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "2f24a176cb547e5a9731d918a1eeed07b8f4c750fbaaef462ea67d26efe83cae",
+ "subjectSourceSha256": "eb2933a7ea09193da7d655ac52d2d9791461d5424aa67641606edf87af0a1a26",
+ "identity": {
+  "name": "Boa",
+  "family": "serpent",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Boa\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1307258279\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 1307258279,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": null,
+ "habitat": {
+  "profileId": "constricting-snake",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "822b53a9fc0d34e5fb2dd4ed717c6fe630b088666eb284698b4ef3108ff122fa",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group constricting-snake (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": "unmeasured",
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

@@ -1,0 +1,37 @@
+[
+ {
+  "id": "06-trout",
+  "name": "Trout",
+  "family": "fish",
+  "packet": "audits/G2_FAMILY_PILOT_20260926/06-trout"
+ },
+ {
+  "id": "07-perch",
+  "name": "Perch",
+  "family": "fish",
+  "packet": "audits/G2_FAMILY_PILOT_20260926/07-perch"
+ },
+ {
+  "id": "08-cod",
+  "name": "Cod",
+  "family": "fish",
+  "packet": "audits/G2_FAMILY_PILOT_20260926/08-cod"
+ },
+ {
+  "id": "09-carp",
+  "name": "Carp",
+  "family": "fish",
+  "packet": "audits/G2_FAMILY_PILOT_20260926/09-carp"
+ },
+ {
+  "id": "10-herring",
+  "name": "Herring",
+  "family": "fish",
+  "packet": "audits/G2_FAMILY_PILOT_20260926/10-herring"
+ },
+ {
+  "id": "03-arctic-fox",
+  "name": "Arctic Fox",
+  "packet": "audits/G2_QUADRUPED_PILOT_20260926/03-arctic-fox"
+ }
+]

@@ -1,0 +1,82 @@
+{
+  "name": "Racer",
+  "family": "serpent",
+  "species": {
+    "name": "Racer",
+    "aspect": 5,
+    "headFrac": 0.06,
+    "eyes": "prominent",
+    "posture": "crawling",
+    "mustRead": [
+      "very slender whip-thin body in a fast S-curve",
+      "smooth glossy uniform scales",
+      "large eye on a narrow rounded head"
+    ],
+    "note": "Name read as the North American racer snake (Coluber), a slim fast-moving colubrid, not a lizard or a 'racerunner'."
+  },
+  "genome": {
+    "seed": 2758977646,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 0,
+    "body": 4,
+    "loco": 17,
+    "trait": 15,
+    "size": 1,
+    "diet": 1,
+    "head": 1,
+    "limbs": 0,
+    "skin": 2,
+    "tail": 3,
+    "pattern": 6,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 12,
+    "detail": 5,
+    "accent": 2,
+    "temper": 5,
+    "sense": 0,
+    "repro": 0,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Racer"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Racer\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"2758977646\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "index": 237,
+  "profile": {
+    "id": "snake",
+    "names": [
+      "Cobra",
+      "Viper",
+      "Tree Snake",
+      "Rat Snake",
+      "Garter Snake",
+      "Cottonmouth",
+      "Water Snake",
+      "Mamba",
+      "Rattlesnake",
+      "Racer",
+      "Mountain Viper",
+      "Whip Snake",
+      "Grass Snake",
+      "King Snake",
+      "Cave Snake",
+      "Snake",
+      "Vine Snake"
+    ],
+    "candidateTemplates": [
+      "serpent"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "strike"
+    ],
+    "notes": ""
+  }
+}
