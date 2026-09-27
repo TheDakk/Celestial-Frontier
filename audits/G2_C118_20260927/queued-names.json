@@ -1,0 +1,29 @@
+{
+  "names": [
+    "Wombat",
+    "Tasmanian Devil",
+    "Quoll",
+    "Sea Otter",
+    "Water Vole",
+    "Marsh Rodent",
+    "Flying Squirrel",
+    "Sugar Glider",
+    "Colugo",
+    "Echidna",
+    "Koala",
+    "Platypus",
+    "Snake",
+    "Penguin",
+    "Water Beetle",
+    "Diving Beetle",
+    "Dragonfly",
+    "Damselfly",
+    "Mayfly",
+    "Flounder",
+    "Halibut",
+    "Loon",
+    "Rhinoceros",
+    "Hummingbird"
+  ],
+  "intent": "Remaining supported mammals and targeted anatomy replacements; original holds preserved."
+}

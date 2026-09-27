@@ -1,0 +1,11 @@
+file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/browsercdp.mjs:865
+  const terminalError = (message) => new Error(`${label}: ${message}`);
+                                     ^
+
+Error: PNG native stream ownership: Page.enable command timeout must be a positive integer no greater than 15000
+    at terminalError (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/browsercdp.mjs:865:38)
+    at Object.send (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/browsercdp.mjs:1106:31)
+    at send (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_PNG_STREAM_20260927/native.mjs:14:229)
+    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_PNG_STREAM_20260927/native.mjs:15:9
+
+Node.js v26.10.0

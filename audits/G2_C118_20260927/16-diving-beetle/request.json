@@ -1,0 +1,26 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Diving Beetle",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "207a1d5a9724a4f268f9a15aaf36045fe102cf017c80d8a3d820f41d6d2f7564",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "2ad238126ef6a84c58fcc7f7e3cdaa6fb8a15db3",
+  "basePromptSha256": "3a283548401d0b02e4a08717bafb1ce54df3fc913ab9082aeac1e1a1c2b52116",
+  "layoutCompilerSha256": "5362f81299e2b74f9dbae2f404db82a7d86f1e88c73b651f26d56090f603603c",
+  "layoutClarification": "Species identity features FIRST: smooth domed oval shell with a pale yellow rim; hair-fringed oar-like hind legs; silver air bubble held under the wing cases. One Earth Diving Beetle. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: strict side profile, head RIGHT. All SIX thoracic legs visible in three near/far pairs, each pair offset so the shafts and tarsi are readable from their real attachments. Preserve the full natural abdomen at LEFT. Natural adult wing resting position overrides a generic folded-wing request: dragonfly wings held out flat, damselfly wings closed over back, mayfly wings upright. No invented vertebrate tail, extra legs or hidden-paint declaration.\n\n",
+  "priorPromptSha256": "06099575708a9bfb3d7e99a6fdb01ab74f226eebf1f71d93b8b16de80394a84d",
+  "targetedAnatomyClarification": "All SIX legs must be separately visible and countable, three near and three far thoracic attachments; both middle legs clear. Hind legs flattened and fringed swimming paddles. No air bubble, props or detached objects."
+}

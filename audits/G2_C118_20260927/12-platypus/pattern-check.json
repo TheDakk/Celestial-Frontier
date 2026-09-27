@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Platypus",
+  "masterSha256": "133a504266934c3bf8cbb4dc9f85bc0502f3e6e72b6fd36e35493589181901d9",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

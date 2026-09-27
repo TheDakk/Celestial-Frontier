@@ -1,0 +1,12 @@
+[
+  {
+    "name": "publish-before-close",
+    "exitCode": 1,
+    "rejected": true
+  },
+  {
+    "name": "retain-native-locks",
+    "exitCode": 1,
+    "rejected": true
+  }
+]

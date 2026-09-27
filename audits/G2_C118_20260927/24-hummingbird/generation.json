@@ -1,0 +1,13 @@
+{
+  "id": "24-hummingbird",
+  "name": "Hummingbird",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-295dbd0a-44b3-4355-a85f-5965d7a94b7e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6753771f152fc12283425a4c350c5f2d3419da7f3266102d8e403cbffe4f8f3d",
+  "bytes": 1230291,
+  "promptSha256": "9e6ba8b506d731728db3ba5c818fb8c6d15b0eb533aa0342a1aa4e0120bc90c7",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

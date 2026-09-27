@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Damselfly",
+  "masterSha256": "b3aafd90c4810bbe0da7763d0440291c9f49face5b33749fd45124f1ae5a2172",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

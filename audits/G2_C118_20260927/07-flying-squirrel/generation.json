@@ -1,0 +1,13 @@
+{
+  "id": "07-flying-squirrel",
+  "name": "Flying Squirrel",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-da4628ca-f7de-4173-9cfa-4440be8d8f8e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "03bcfd34b45e87fcebb7c7691cad965f55fd5c205788033f8358e545722adbce",
+  "bytes": 1159436,
+  "promptSha256": "fcf592fe7e2e6ab7b18be0388ea3d79eedf2d191d5c4074be2f277efc4d9ef03",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

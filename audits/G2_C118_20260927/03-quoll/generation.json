@@ -1,0 +1,13 @@
+{
+  "id": "03-quoll",
+  "name": "Quoll",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-5ef9ce34-39b8-4ad6-97ac-d3cf7e614192.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0ed521877220642a79149c8114d6f4693335200c07384e1413077a4c2a1864d1",
+  "bytes": 1207100,
+  "promptSha256": "186d5b98256727d8af5f335744a6c5f48b9f98514cbf12ffbc1f2a5c4b0d1764",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

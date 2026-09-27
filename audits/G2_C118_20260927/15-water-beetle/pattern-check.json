@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Water Beetle",
+  "masterSha256": "3cc08d855b26531830b11862f8c3629618191f3d06ed385b4a6588babc4ad10f",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

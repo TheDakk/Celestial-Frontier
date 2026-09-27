@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Koala",
+  "masterSha256": "182386634ee74d82efa54024f01fd3d13187407392d8d71976ee0c31222752ba",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

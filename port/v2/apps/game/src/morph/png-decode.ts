@@ -1,3 +1,4 @@
+import { completePngStream } from './png-stream.js';
 // Exact PNG decode to STRAIGHT-alpha RGBA in plain JS (morph step 4): the paint-skin loader forbids round-tripping a
 // translucent atlas through canvas ImageData (premultiplied alpha corrupts translucent texels), so a per-individual
 // remap needs the atlas pixels exactly as encoded. 8-bit RGBA / RGB / grey / grey+alpha, non-interlaced; anything
@@ -8,10 +9,9 @@ const crc32 = (b: Uint8Array, from: number, to: number): number => { let c = 0xf
 const u32 = (b: Uint8Array, i: number): number => ((b[i]! << 24) | (b[i + 1]! << 16) | (b[i + 2]! << 8) | b[i + 3]!) >>> 0;
 export interface DecodedPng { readonly width: number; readonly height: number; readonly rgba: Uint8Array; readonly colorType: number; }
 async function inflate(zlib: Uint8Array): Promise<Uint8Array> {
-  const ds = new DecompressionStream('deflate'); const w = ds.writable.getWriter(); void w.write(new Uint8Array(zlib) as unknown as BufferSource).then(() => w.close());
-  const chunks: Uint8Array[] = []; const r = ds.readable.getReader(); for (;;) { const { done, value } = await r.read(); if (done) break; chunks.push(value); }
-  let n = 0; for (const c of chunks) n += c.length; const out = new Uint8Array(n); let o = 0; for (const c of chunks) { out.set(c, o); o += c.length; } return out;
+  return completePngStream(new DecompressionStream('deflate'), zlib);
 }
+
 export async function decodePng(bytes: Uint8Array): Promise<DecodedPng> {
   if (bytes.length < 8 || SIG.some((v, i) => bytes[i] !== v)) throw new TypeError('png: not a PNG signature');
   let p = 8, width = 0, height = 0, depth = 0, colorType = 0, interlace = 0, seenIHDR = false, seenIEND = false; const idat: Uint8Array[] = [];

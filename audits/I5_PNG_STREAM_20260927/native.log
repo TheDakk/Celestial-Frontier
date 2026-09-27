@@ -1,0 +1,6 @@
+old 1 {"usedSize":497760,"totalSize":1048576,"embedderHeapUsedSize":307096,"backingStorageSize":9084}
+old 16 {"usedSize":544400,"totalSize":1310720,"embedderHeapUsedSize":309264,"backingStorageSize":9084}
+old 32 {"usedSize":544400,"totalSize":1310720,"embedderHeapUsedSize":309040,"backingStorageSize":9084}
+new 1 {"usedSize":495732,"totalSize":1048576,"embedderHeapUsedSize":306824,"backingStorageSize":9322}
+new 16 {"usedSize":545416,"totalSize":1310720,"embedderHeapUsedSize":308992,"backingStorageSize":9322}
+new 32 {"usedSize":546588,"totalSize":1310720,"embedderHeapUsedSize":308784,"backingStorageSize":9322}

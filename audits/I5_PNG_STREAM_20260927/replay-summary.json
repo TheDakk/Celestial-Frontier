@@ -1,0 +1,20 @@
+[
+  {
+    "name": "01",
+    "rawSha256": "f7c72d76e974e008b5dcbf11ad03c0827196aac887ebe175dc548fab77601dd5",
+    "finding": "DIAGNOSTIC_COMPLETE: final foreground serviced; no calibration/certification",
+    "peakBacking": 3742172
+  },
+  {
+    "name": "02",
+    "rawSha256": "210415f52c04338a1d2467b9f7adecdc4afa9b193d25e3dd8027ccecac4f9373",
+    "finding": "DIAGNOSTIC_COMPLETE: final foreground serviced; no calibration/certification",
+    "peakBacking": 3745933
+  },
+  {
+    "name": "03",
+    "rawSha256": "90624f1f3bb562c74f57c038a57d7a33a08b6f9f10a3fe23f52bfd18bcd67866",
+    "finding": "DIAGNOSTIC_COMPLETE: final foreground serviced; no calibration/certification",
+    "peakBacking": 3757240
+  }
+]

@@ -1,0 +1,130 @@
+{
+  "id": "18-damselfly",
+  "name": "Damselfly",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "b3aafd90c4810bbe0da7763d0440291c9f49face5b33749fd45124f1ae5a2172",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 7952,
+    "coreRadius": 11,
+    "bodyBox": {
+      "x0": 138,
+      "y0": 159,
+      "x1": 251,
+      "y1": 212
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0205,
+        "pixels": 163,
+        "box": {
+          "x0": 130,
+          "y0": 157,
+          "x1": 158,
+          "y1": 180
+        },
+        "attach": {
+          "x": 142.3,
+          "y": 163.8,
+          "relX": 0.04,
+          "relY": 0.09
+        },
+        "dir": {
+          "x": -0.91,
+          "y": 0.41
+        },
+        "class": "rear",
+        "length": 22.6
+      },
+      {
+        "k": 1,
+        "frac": 0.3551,
+        "pixels": 2824,
+        "box": {
+          "x0": 243,
+          "y0": 184,
+          "x1": 354,
+          "y1": 265
+        },
+        "attach": {
+          "x": 250.6,
+          "y": 198.6,
+          "relX": 1,
+          "relY": 0.75
+        },
+        "dir": {
+          "x": 0.95,
+          "y": 0.32
+        },
+        "class": "front",
+        "length": 122.9
+      },
+      {
+        "k": 2,
+        "frac": 0.1136,
+        "pixels": 903,
+        "box": {
+          "x0": 55,
+          "y0": 204,
+          "x1": 181,
+          "y1": 213
+        },
+        "attach": {
+          "x": 181,
+          "y": 208,
+          "relX": 0.38,
+          "relY": 0.92
+        },
+        "dir": {
+          "x": -1,
+          "y": 0
+        },
+        "class": "rear",
+        "length": 126.1
+      }
+    ],
+    "byClass": {
+      "rear": 2,
+      "front": 1
+    },
+    "ground": [
+      {
+        "x0": 243,
+        "x1": 251,
+        "cx": 246.5
+      },
+      {
+        "x0": 265,
+        "x1": 275,
+        "cx": 270.5
+      },
+      {
+        "x0": 301,
+        "x1": 308,
+        "cx": 304.3
+      },
+      {
+        "x0": 314,
+        "x1": 321,
+        "cx": 317.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

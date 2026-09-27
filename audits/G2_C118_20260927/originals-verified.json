@@ -1,0 +1,194 @@
+[
+  {
+    "id": "01-wombat",
+    "masterSha256": "e366ca1a8d786dff93cda48e151d24eecbf2eba6c1b4c1f5bd752a0a39f3cfe8",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "02-tasmanian-devil",
+    "masterSha256": "562041acaf1c4df471239b7921bbd007de68ef868ddbc09106bb236c9736f967",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "03-quoll",
+    "masterSha256": "0ed521877220642a79149c8114d6f4693335200c07384e1413077a4c2a1864d1",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "04-sea-otter",
+    "masterSha256": "18d6a156cad0bf7d2edaac85a11b3e3f885620909ecf9587650d9bc34b30709c",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "05-water-vole",
+    "masterSha256": "09341f8fd19de21f0c914e6498f15cc3fe74a86344790389547e360abc10bf6b",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "06-marsh-rodent",
+    "masterSha256": "c1e0c233125e8040851842e6ef31578d49cdab7626c62db5f58c3257e06f51da",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "07-flying-squirrel",
+    "masterSha256": "03bcfd34b45e87fcebb7c7691cad965f55fd5c205788033f8358e545722adbce",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "08-sugar-glider",
+    "masterSha256": "40217da629c208d251d99e877e499cf2bf994b2792c4c4bce81e61c5fbdf7787",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "09-colugo",
+    "masterSha256": "cd232ff2dd692404978b1811842d9916ae01b808170683e912d4dd6ed95b7618",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "10-echidna",
+    "masterSha256": "19149a2e4f819a335e90fde151afd21391e59f4734be6b2927f32132f35c4e8b",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "11-koala",
+    "masterSha256": "182386634ee74d82efa54024f01fd3d13187407392d8d71976ee0c31222752ba",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "12-platypus",
+    "masterSha256": "133a504266934c3bf8cbb4dc9f85bc0502f3e6e72b6fd36e35493589181901d9",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "13-snake",
+    "masterSha256": "1af237e7293e897fe4c75e4a112983f2501a5de25b4f24873f943e2c8ace0cab",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "14-penguin",
+    "masterSha256": "2fc51a662b8d574b17793877a580365764c2bcedc353ca43530a21ac64eb41df",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "15-water-beetle",
+    "masterSha256": "3cc08d855b26531830b11862f8c3629618191f3d06ed385b4a6588babc4ad10f",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "16-diving-beetle",
+    "masterSha256": "458a80fef8753275eefed3ed219eba98fcebb303573711321400458614d1abbf",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "17-dragonfly",
+    "masterSha256": "0bda5f6083b82d066a68acf817a92a1b0e248130822115402de52d9937df22c4",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "18-damselfly",
+    "masterSha256": "b3aafd90c4810bbe0da7763d0440291c9f49face5b33749fd45124f1ae5a2172",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "19-mayfly",
+    "masterSha256": "3806594e9dc3afe8d9f92d2fb768a5bca58c0f8fc45fb0d1aa3a711f86afbffa",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "20-flounder",
+    "masterSha256": "1ae71754933f9827768e86b7295604581fadf34eaee6b0dc8979e2a8b754c439",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "21-halibut",
+    "masterSha256": "a21de570cd8791c9d24833b257d79f32993bdb1066f1b6c90f2a488a7374daae",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "22-loon",
+    "masterSha256": "f5e6fe941887a7039ac0f3f80d7e3d5703c45549633d6c1741d08ce0b90258a7",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "23-rhinoceros",
+    "masterSha256": "de6a210ad60c393e9c84e701fb7daafa281349431a9c8f2795ed53783f67417e",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "24-hummingbird",
+    "masterSha256": "6753771f152fc12283425a4c350c5f2d3419da7f3266102d8e403cbffe4f8f3d",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  }
+]

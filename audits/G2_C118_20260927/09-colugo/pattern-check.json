@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Colugo",
+  "masterSha256": "cd232ff2dd692404978b1811842d9916ae01b808170683e912d4dd6ed95b7618",
+  "required": [
+    "mottled lichen-like camouflage fur"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "mottled lichen-like camouflage fur",
+      "status": "PRESENT",
+      "observed": "Full original: mottled lichen-like fur, large eyes, two ears, membrane around limbs and tail. HOLD cat-like stance and finger/claw count; continuous webbed body requires dedicated observed ownership, no ordinary quadruped gliding admission."
+    }
+  ]
+}

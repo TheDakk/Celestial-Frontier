@@ -1,0 +1,13 @@
+{
+  "id": "08-sugar-glider",
+  "name": "Sugar Glider",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-6515cab4-28b7-4fff-9b75-0073d1df6508.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "40217da629c208d251d99e877e499cf2bf994b2792c4c4bce81e61c5fbdf7787",
+  "bytes": 1209308,
+  "promptSha256": "46c2e5837369036cca36402aa380b12734b32d5b871a702a943b42841202d4e5",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
