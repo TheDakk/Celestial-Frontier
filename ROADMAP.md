@@ -32,6 +32,24 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
 - **Decisions:** D25 open (shopping stays off; the C110 data point is recorded there); D27 open; **D28 new** (remainder-island cap: keep 5% or raise it to 10% for reviewed subjects; the default keeps 5%).
 - **Progress:** `audits/GENERATED_GALLERY_20260927/coverage.json` counts **ACCEPTED only** (Claude's full-size review; held entries are listed as `heldNotCounted`). **175 of 631 Earth species (27.7 %)** are accepted and 13 are held. Master gallery: `gallery.jpg`; registry: `gallery-registry.json`, whose notes say HELD or why accepted.
 
+**HOSTED READINESS — PR #43 (`anthropic/mac` → `develop`), 2026-09-27 end of day**
+- **Commit `66e19826` fixed a hosted red nobody could see locally.** Both Glass phone canaries, which the bounded agent lane always runs, were PRODUCT-RED on `SHIPYARD_STATE_TRUTH`. The shared Engineering contract still pinned 70 Shipyard controls, while the product renders 85 (70 + 15 Fabricator ×5, D16 `e1882e49`) and has `diag.trainingPractice` (Forge Training). The develop profile never runs browser canaries.
+  - The fix changes the contract, Glass and Slice.
+  - A new product-bound test renders the real panel and must equal the contract list exactly; the stale 70 fails it.
+- **Rehearsed locally on this exact source, everything the AGENT lane runs, all green.** The PR touches 65,631 paths, so `battery-scope` marks every scope changed.
+  - Browser-free checks: `actions-budget-policy --selftest`; the legacy gates `preflight:selftest`, `validate`, `smoke`, `trainingcheckpoint`, `rarity-sanity`, `deadcode`; the develop profile (5,726 PASS); `overridecontrol`.
+  - Browser checks: `browsercdp --selftest`; Glass small-phone and large-phone PASS, 0 findings; `browserpath`, `compendiummem-browser-preflight` and `compendiummem:selftest`; root `uilayout --selftest`, `uilayout` and `--verify-run`.
+  - Plus typecheck, `--noUnusedLocals`, artaudit, overridecheck and speccheck.
+- **Not rehearsable here, so residual risk:**
+  - The hosted Glass `--verify-targeted-run` requires canonical Chrome; this Mac has only Edge. The runs it verifies pass.
+  - Large-phone Glass had 1 load-time instrument flake (Settings audio settlement) in 5 local runs. The hosted lane has no retry.
+  - The FULL chain (Compendium certification, Slice, the 12-viewport Glass matrix, Recovery) was not rehearsed. `slicesmoke` changed in `66e19826`.
+- **PR #43 still carries the stale `actions-full-chain-approved` label from 2026-09-21.** The workflow fires only on a *labeled* event, and no push since then has started a run.
+  - A hosted attempt is Dakk's word: remove the label, then apply ONE label.
+  - **Recommended: `actions-budget-approved` (the bounded agent lane)**, rehearsed above.
+  - The full chain is heavier and not rehearsed.
+  - Per the budget file: one attempt, no retry.
+
 **Session 5 results (details in the mailbox rows C101–C121 and the audit READMEs)**
 - **`score-batch.mjs <batch> <tag> [--fish-seams]`** runs the whole pipeline in one command.
   - `--fish-seams` runs Codex's guarded fish repair. Fish are accepted on the seams fit only after a side-by-side full-size look.
