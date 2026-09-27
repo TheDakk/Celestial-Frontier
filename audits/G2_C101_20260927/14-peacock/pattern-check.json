@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Peacock",
+  "masterSha256": "3f4a596359c932f513965960a1225547d35e30cdb48296b845db0892c633c1b6",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

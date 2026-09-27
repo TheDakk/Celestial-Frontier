@@ -1,0 +1,139 @@
+{
+  "id": "11-deep-sea-fish",
+  "name": "Deep-Sea Fish",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "e87984c082a9066018f0fd7d1bee0a7180922f815806be3f46e907ebe7b9fc90",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 21128,
+    "coreRadius": 23,
+    "bodyBox": {
+      "x0": 180,
+      "y0": 163,
+      "x1": 348,
+      "y1": 247
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0362,
+        "pixels": 764,
+        "box": {
+          "x0": 188,
+          "y0": 141,
+          "x1": 239,
+          "y1": 175
+        },
+        "attach": {
+          "x": 212.2,
+          "y": 165.2,
+          "relX": 0.19,
+          "relY": 0.03
+        },
+        "dir": {
+          "x": 0.03,
+          "y": -1
+        },
+        "class": "top",
+        "length": 36.1
+      },
+      {
+        "k": 1,
+        "frac": 0.275,
+        "pixels": 5810,
+        "box": {
+          "x0": 32,
+          "y0": 156,
+          "x1": 194,
+          "y1": 254
+        },
+        "attach": {
+          "x": 180.9,
+          "y": 211.6,
+          "relX": 0.01,
+          "relY": 0.58
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.09
+        },
+        "class": "rear",
+        "length": 159
+      },
+      {
+        "k": 2,
+        "frac": 0.0372,
+        "pixels": 786,
+        "box": {
+          "x0": 349,
+          "y0": 173,
+          "x1": 386,
+          "y1": 216
+        },
+        "attach": {
+          "x": 349,
+          "y": 194,
+          "relX": 1.01,
+          "relY": 0.37
+        },
+        "dir": {
+          "x": 0.99,
+          "y": -0.1
+        },
+        "class": "front",
+        "length": 43
+      },
+      {
+        "k": 3,
+        "frac": 0.0525,
+        "pixels": 1110,
+        "box": {
+          "x0": 300,
+          "y0": 224,
+          "x1": 387,
+          "y1": 264
+        },
+        "attach": {
+          "x": 329.8,
+          "y": 244.3,
+          "relX": 0.89,
+          "relY": 0.97
+        },
+        "dir": {
+          "x": 1,
+          "y": 0
+        },
+        "class": "front",
+        "length": 60.7
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 2
+    },
+    "ground": [
+      {
+        "x0": 335,
+        "x1": 347,
+        "cx": 340.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

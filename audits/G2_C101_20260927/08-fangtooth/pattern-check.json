@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Fangtooth",
+  "masterSha256": "71a79e65976bc70c3bdbc632ca6c13cb52ba15161d5ad83f24fc7a18fd5453c2",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

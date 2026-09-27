@@ -1,0 +1,13 @@
+{
+  "id": "06-anglerfish",
+  "name": "Anglerfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-fa8895d6-97d0-40ef-9c56-d51a93852b19.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a61136e113f0704315f344452a559b1464180569e32ee4b4340a6c32a650dc9e",
+  "bytes": 1466539,
+  "promptSha256": "a6914b7310b1b85c25132f2dfac31a23cefa6dd55323ffaa1af8a2a750e39190",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Albatross",
+  "masterSha256": "79354ed6451bad4dd341807bcfd716fb7614167ec1fa4e4b2675f764a32efee0",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

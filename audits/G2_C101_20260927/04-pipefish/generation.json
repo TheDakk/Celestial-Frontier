@@ -1,0 +1,13 @@
+{
+  "id": "04-pipefish",
+  "name": "Pipefish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d18e4cb0-e1d1-4e64-8500-012b4cdda82f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f4999c189e177676a7bc8ff7e5a1dbeac7ca5599e5e7a380a2e67959a66c7061",
+  "bytes": 1001654,
+  "promptSha256": "f71f0c9365b6c71c3b74d2e452e335861342eabd60cde506ef33a95af0b55c9d",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

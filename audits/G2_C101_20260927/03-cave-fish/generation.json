@@ -1,0 +1,13 @@
+{
+  "id": "03-cave-fish",
+  "name": "Cave Fish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d4a1ef2f-0a0c-494d-bbe4-568a280e6668.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f96d663a6de769f88183e2b0d862ac3f63a7f67291bb39f5e15b95236464516d",
+  "bytes": 1159732,
+  "promptSha256": "e059fbb7f635199560e35a38bd6fd46c78d868941e23422bc9c0899d81248fd6",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

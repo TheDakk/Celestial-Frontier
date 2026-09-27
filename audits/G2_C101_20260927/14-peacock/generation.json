@@ -1,0 +1,13 @@
+{
+  "id": "14-peacock",
+  "name": "Peacock",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-8be4d896-bc6d-41a2-b65c-18df55387701.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3f4a596359c932f513965960a1225547d35e30cdb48296b845db0892c633c1b6",
+  "bytes": 1228151,
+  "promptSha256": "7a2e2929c2ff29ccd2e4ed82c9c2535bc6f1e3bd78142abbf88cfdf63305cbc9",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

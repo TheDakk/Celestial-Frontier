@@ -1,0 +1,13 @@
+{
+  "id": "11-deep-sea-fish",
+  "name": "Deep-Sea Fish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-c21b2009-b0c9-4f83-91ab-3c2f81ab3b34.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e87984c082a9066018f0fd7d1bee0a7180922f815806be3f46e907ebe7b9fc90",
+  "bytes": 1281943,
+  "promptSha256": "e0e8e1cf779ec6ccaa17764f718fec2f92ffa353a41d035aba58977d7121b82c",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

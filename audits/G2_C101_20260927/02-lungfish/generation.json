@@ -1,0 +1,13 @@
+{
+  "id": "02-lungfish",
+  "name": "Lungfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ffe7727d-585d-478f-8910-382706229a6a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e31eefe95f67a2b4d68b6082b8ca262983fdb083431b72e3f1327915293baa1c",
+  "bytes": 1149899,
+  "promptSha256": "eefd41d98e8144bcb5bdd8541d09b50a64be60c6d37f14c08b8327e19b31a5ae",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

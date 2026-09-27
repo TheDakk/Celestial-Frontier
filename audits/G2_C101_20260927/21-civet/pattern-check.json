@@ -1,0 +1,23 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Civet",
+  "masterSha256": "d2fc02e7ab66ecf07144a2a03e7a7517cfd63b606ed9fc920f09e726e886fcb5",
+  "required": [
+    "masked face with dark bands through the eyes",
+    "long ringed or banded tail"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "masked face with dark bands through the eyes",
+      "status": "PRESENT",
+      "observed": "Full1254 original reviewed: dark facial mask, pointed snout, spotted/banded coat, full strongly ringed tail, both ears and four separated feet. Required masked face and ringed tail present. Body reads somewhat genet-like rather than an Asian palm civet; generic representative proportions and upper limb chains require review."
+    },
+    {
+      "requirement": "long ringed or banded tail",
+      "status": "PRESENT",
+      "observed": "Full1254 original reviewed: dark facial mask, pointed snout, spotted/banded coat, full strongly ringed tail, both ears and four separated feet. Required masked face and ringed tail present. Body reads somewhat genet-like rather than an Asian palm civet; generic representative proportions and upper limb chains require review."
+    }
+  ]
+}

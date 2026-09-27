@@ -1,0 +1,13 @@
+{
+  "id": "24-beaver",
+  "name": "Beaver",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-0ba8d471-ccd5-4083-9f6d-798b03480dd1.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "06fa7ee76984e64d4ee1bbb9c16572331844118baef553c9a548d378d551d14e",
+  "bytes": 1350961,
+  "promptSha256": "7a9cc79c4b58bd3e536616b4659c1f516604136e5ad94f3fcf0cc4702ca43e4f",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

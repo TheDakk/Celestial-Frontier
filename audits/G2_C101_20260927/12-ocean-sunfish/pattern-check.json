@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Ocean Sunfish",
+  "masterSha256": "5b0f7a7fb26bb4d74098d2566676a65c8c6f0b03f2b137fa960c3b39afd68470",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

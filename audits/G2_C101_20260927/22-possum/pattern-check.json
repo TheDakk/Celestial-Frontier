@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Possum",
+  "masterSha256": "7a08e8d6fa150cfdba721907cfd0a50cb97e9aa042e032cebb2b6ca6e4d7284e",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
