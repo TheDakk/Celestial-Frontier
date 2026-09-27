@@ -224,3 +224,7 @@ G2_C59_20260926 retains twelve untouched1254 originals (six quadrupeds,three bir
 Matches code as of 2026-09-27: the separate painted ownership report now includes `dataUrlBytes` in both total and per-kind counters. These count the actual retained ASCII PNG data URL (prefix and base64), while `encodedBytes` continues to mean binary PNG bytes. I5 v2 independently includes painted leases/cache/pending keys and resident master/label/mask bytes; it does not merge them into the broker diagnostics. The fresh certificate remains pending in audits/I5_REPAIR_20260927.
 
 I5 follow-up,2026-09-27: painted ownership also exposes actual cache/pending `totals.dedupeHits`. The v2 worker-error witness checks the first actual broker row and preserves separately owned painted rows. The fresh epoch stopped at the old four-Tab keyboard-entry assumption; the successor observes the actual control path and has a native synthetic proof. No current memory certificate or profile rebinding is claimed.
+
+### C74 generated continuation — matches tooling as of 2026-09-27
+
+G2_C72_20260927 retains 24 untouched 1254 originals (8 fish, 8 birds, 4 insects, 4 serpents), exact prompts and receipts. Four explicit pattern checks pass; twenty are NOT_REQUIRED. Source-bound visual notes preserve framing, insect-leg, tail-curl and identity concerns. G1/native scoring and visual acceptance remain separate.

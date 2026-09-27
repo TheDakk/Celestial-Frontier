@@ -1,0 +1,11 @@
+{
+  "id": "03-sculpin",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-eb0d9ce5-75f7-4e43-afe9-2ffe0e1d9831.png",
+  "tool": "image_gen.imagegen",
+  "masterSha256": "2cc3bf01dcfb7de2242ed45e70a04a1c52f51247749d6f88407f4132c39ab600",
+  "bytes": 1542652,
+  "promptSha256": "e18970b0ec9bb44ecb14d59e341e94aed6cc1e127b8c4c1a0b571bc0c3ba1675",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

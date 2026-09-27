@@ -1,0 +1,92 @@
+{
+  "id": "23-whip-snake",
+  "name": "Whip Snake",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "fd877e625a1b76e3397d384d5a16be8368a9d0c3b1f49496609dbc134425a6ea",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 6064,
+    "coreRadius": 5,
+    "bodyBox": {
+      "x0": 106,
+      "y0": 182,
+      "x1": 350,
+      "y1": 234
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1694,
+        "pixels": 1027,
+        "box": {
+          "x0": 342,
+          "y0": 177,
+          "x1": 413,
+          "y1": 203
+        },
+        "attach": {
+          "x": 348.8,
+          "y": 195.8,
+          "relX": 0.99,
+          "relY": 0.26
+        },
+        "dir": {
+          "x": 0.96,
+          "y": -0.27
+        },
+        "class": "front",
+        "length": 66.9
+      },
+      {
+        "k": 1,
+        "frac": 0.097,
+        "pixels": 588,
+        "box": {
+          "x0": 8,
+          "y0": 189,
+          "x1": 106,
+          "y1": 226
+        },
+        "attach": {
+          "x": 105.1,
+          "y": 220.6,
+          "relX": 0,
+          "relY": 0.74
+        },
+        "dir": {
+          "x": -0.94,
+          "y": -0.35
+        },
+        "class": "rear",
+        "length": 102.1
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 271,
+        "x1": 316,
+        "cx": 293.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

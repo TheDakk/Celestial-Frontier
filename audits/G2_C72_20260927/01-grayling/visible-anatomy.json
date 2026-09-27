@@ -1,0 +1,168 @@
+{
+  "id": "01-grayling",
+  "name": "Grayling",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "09ba182690b8c5d3207ea28c1ada45b57482813b939d292ee1b7d88f73a68905",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 36140,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 9,
+      "y0": 114,
+      "x1": 410,
+      "y1": 274
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0071,
+        "pixels": 255,
+        "box": {
+          "x0": 207,
+          "y0": 107,
+          "x1": 266,
+          "y1": 113
+        },
+        "attach": {
+          "x": 236.5,
+          "y": 113,
+          "relX": 0.57,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.64,
+          "y": -0.77
+        },
+        "class": "top",
+        "length": 30.1
+      },
+      {
+        "k": 1,
+        "frac": 0.0487,
+        "pixels": 1759,
+        "box": {
+          "x0": 148,
+          "y0": 119,
+          "x1": 195,
+          "y1": 180
+        },
+        "attach": {
+          "x": 195,
+          "y": 149.5,
+          "relX": 0.46,
+          "relY": 0.22
+        },
+        "dir": {
+          "x": -0.97,
+          "y": 0.23
+        },
+        "class": "rear",
+        "length": 56
+      },
+      {
+        "k": 2,
+        "frac": 0.2402,
+        "pixels": 8681,
+        "box": {
+          "x0": 32,
+          "y0": 169,
+          "x1": 170,
+          "y1": 276
+        },
+        "attach": {
+          "x": 86.5,
+          "y": 217.8,
+          "relX": 0.19,
+          "relY": 0.65
+        },
+        "dir": {
+          "x": 0.96,
+          "y": 0.28
+        },
+        "class": "rear",
+        "length": 101.8
+      },
+      {
+        "k": 3,
+        "frac": 0.0488,
+        "pixels": 1762,
+        "box": {
+          "x0": 354,
+          "y0": 187,
+          "x1": 387,
+          "y1": 250
+        },
+        "attach": {
+          "x": 366.3,
+          "y": 220,
+          "relX": 0.89,
+          "relY": 0.66
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.1
+        },
+        "class": "front",
+        "length": 38.9
+      },
+      {
+        "k": 4,
+        "frac": 0.0388,
+        "pixels": 1403,
+        "box": {
+          "x0": 187,
+          "y0": 254,
+          "x1": 237,
+          "y1": 293
+        },
+        "attach": {
+          "x": 219.1,
+          "y": 255.9,
+          "relX": 0.52,
+          "relY": 0.89
+        },
+        "dir": {
+          "x": -0.55,
+          "y": 0.83
+        },
+        "class": "limb-down",
+        "length": 49
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 2,
+      "front": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 187,
+        "x1": 212,
+        "cx": 196.8
+      },
+      {
+        "x0": 216,
+        "x1": 226,
+        "cx": 220.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

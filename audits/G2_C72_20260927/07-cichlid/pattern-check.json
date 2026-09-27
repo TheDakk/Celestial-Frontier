@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cichlid",
+  "masterSha256": "ec492a9ac3de8ec668c5a7b09e47b6023d35c3d1e8e25cb7a4a53e17ffcf6b58",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

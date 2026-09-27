@@ -1,0 +1,167 @@
+{
+  "id": "07-cichlid",
+  "name": "Cichlid",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "ec492a9ac3de8ec668c5a7b09e47b6023d35c3d1e8e25cb7a4a53e17ffcf6b58",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 58588,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 9,
+      "y0": 96,
+      "x1": 410,
+      "y1": 282
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0378,
+        "pixels": 2217,
+        "box": {
+          "x0": 74,
+          "y0": 117,
+          "x1": 135,
+          "y1": 173
+        },
+        "attach": {
+          "x": 131.2,
+          "y": 143.2,
+          "relX": 0.3,
+          "relY": 0.25
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.01
+        },
+        "class": "rear",
+        "length": 64.5
+      },
+      {
+        "k": 1,
+        "frac": 0.1382,
+        "pixels": 8098,
+        "box": {
+          "x0": 32,
+          "y0": 143,
+          "x1": 131,
+          "y1": 272
+        },
+        "attach": {
+          "x": 62.5,
+          "y": 206.3,
+          "relX": 0.13,
+          "relY": 0.59
+        },
+        "dir": {
+          "x": 1,
+          "y": -0.03
+        },
+        "class": "rear",
+        "length": 94.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0041,
+        "pixels": 241,
+        "box": {
+          "x0": 384,
+          "y0": 183,
+          "x1": 387,
+          "y1": 245
+        },
+        "attach": {
+          "x": 385.4,
+          "y": 214.5,
+          "relX": 0.94,
+          "relY": 0.64
+        },
+        "dir": {
+          "x": 0.3,
+          "y": -0.95
+        },
+        "class": "other",
+        "length": 31.5
+      },
+      {
+        "k": 3,
+        "frac": 0.0437,
+        "pixels": 2559,
+        "box": {
+          "x0": 75,
+          "y0": 235,
+          "x1": 198,
+          "y1": 296
+        },
+        "attach": {
+          "x": 152.4,
+          "y": 272.6,
+          "relX": 0.36,
+          "relY": 0.95
+        },
+        "dir": {
+          "x": -0.99,
+          "y": -0.11
+        },
+        "class": "rear",
+        "length": 86.1
+      },
+      {
+        "k": 4,
+        "frac": 0.0411,
+        "pixels": 2406,
+        "box": {
+          "x0": 211,
+          "y0": 277,
+          "x1": 303,
+          "y1": 329
+        },
+        "attach": {
+          "x": 278,
+          "y": 277,
+          "relX": 0.67,
+          "relY": 0.97
+        },
+        "dir": {
+          "x": -0.65,
+          "y": 0.76
+        },
+        "class": "limb-down",
+        "length": 84.8
+      }
+    ],
+    "byClass": {
+      "rear": 3,
+      "other": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 211,
+        "x1": 253,
+        "cx": 231.5
+      },
+      {
+        "x0": 254,
+        "x1": 273,
+        "cx": 263.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}
