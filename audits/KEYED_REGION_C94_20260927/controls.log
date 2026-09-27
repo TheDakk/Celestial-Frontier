@@ -1,0 +1,19 @@
+✔ same-joint region masks share one named owner and retain priority mapping (0.697708ms)
+✔ a changed joint is never merged just because its name or layer matches (0.092541ms)
+✔ one-region-per-joint packets remain byte-identical and keep the remainder identity (0.374833ms)
+✔ duplicate identities and unknown remainder refuse (0.178584ms)
+✔ a remainder region sharing another joint remains the merged remainder owner (0.059042ms)
+✔ opaque same-joint intake preserves every priority owner and exact keyed pixel (1731.410542ms)
+✔ native-alpha Ant retains exact historical labels and part-owner inventory (1384.496917ms)
+✔ keyed labels reproduce every original Sculpin part without changing any pixel or label (120.822125ms)
+✔ a changed keyed colour refuses even though original PNG and record still match (4.89975ms)
+✔ keyed declaration, original identity, missing pixels and background ownership fail closed (175.72525ms)
+✔ file builder keys the unchanged opaque master and verifies the exact label file (1236.93125ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3267.277916

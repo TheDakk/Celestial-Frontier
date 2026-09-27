@@ -79,14 +79,13 @@ try {
   });
   write('record.json',record);
   // True-alpha masters use the current P1 label writer, preserving delivered RGBA.
-  // Merged opaque regions use exact keyed labels; unmerged opaque packets retain polygon intake.
+  // Opaque magenta masters retain the established authored-mask keyer branch.
   const hasTransparent=data.some((value,index)=>index%4===3&&value===0);
   let declarationBody;
-  if(hasTransparent||owners.merged){
+  if(hasTransparent){
     stage='authored-labels';
     const checked=intakeAuthoredPixels(new Uint8ClampedArray(data),info.width,info.height);
-    if(hasTransparent)need(data.every((value,index)=>value===checked.rgba[index]),'delivered RGBA must remain unchanged');
-    else need(data.every((value,index)=>index%4!==3||value===255),'keyed merged regions require an opaque original');
+    need(data.every((value,index)=>value===checked.rgba[index]),'delivered RGBA must remain unchanged');
     const inside=(x,y,polygon)=>{let yes=false;for(let i=0,j=polygon.length-1;i<polygon.length;j=i++){
       const a=polygon[i],b=polygon[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])yes=!yes;
     }return yes;};
@@ -94,14 +93,14 @@ try {
     const labels=Buffer.alloc(info.width*info.height*4),counts=owners.ownerParts.map(()=>0);
     for(let y=0;y<info.height;y++)for(let x=0;x<info.width;x++){
       const i=y*info.width+x;let label=0;
-      if(checked.rgba[i*4+3]){let owner=parts.findIndex(part=>inside((x+.5)/info.width,(y+.5)/info.height,part.polygon));if(owner<0)owner=fallback;label=owners.ownerIndex[owner]+1;counts[owners.ownerIndex[owner]]++;}
+      if(data[i*4+3]){let owner=parts.findIndex(part=>inside((x+.5)/info.width,(y+.5)/info.height,part.polygon));if(owner<0)owner=fallback;label=owners.ownerIndex[owner]+1;counts[owners.ownerIndex[owner]]++;}
       labels.set([label,label,label,255],i*4);
     }
     const labelsPng=await sharp(labels,{raw:{width:info.width,height:info.height,channels:4}}).png().toBuffer();
     fs.writeFileSync(path.join(out,'labels.png'),labelsPng,{flag:'wx'});
-    declarationBody={schema:hasTransparent?'cf.painter-part-intake/v1':'cf.keyed-part-intake/v1',recordRecipeHash:record.recipeHash,cutoutSha256:record.geometry.cutoutAssetHash,...hasTransparent?{}:{keyedRgbaSha256:sha(checked.rgba)},labelsFile:'labels.png',labelsSha256:sha(labelsPng),parts:owners.ownerParts};
-    write('label-authoring-receipt.json',{regionOwnerMap:owners.regionOwnerMap,schema:'cf.sprint-authored-labels/v1',owner:'explicit new-master priority polygons; not source painter labels',counts,sourceLabelsReused:false,sourceLandmarksReused:false,rgbaChangedChannels:0,...hasTransparent?{}:{rgbaConservationBasis:'exact established keyed output',keyedRgbaSha256:sha(checked.rgba)},intake:checked.receipt,remainderPart:author.remainderPart});
-    provenance.maskMode=hasTransparent?'authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1':'same-joint authored polygons rasterized onto exact keyed positive alpha; cf.keyed-part-intake/v1';
+    declarationBody={schema:'cf.painter-part-intake/v1',recordRecipeHash:record.recipeHash,cutoutSha256:record.geometry.cutoutAssetHash,labelsFile:'labels.png',labelsSha256:sha(labelsPng),parts:owners.ownerParts};
+    write('label-authoring-receipt.json',{regionOwnerMap:owners.regionOwnerMap,schema:'cf.sprint-authored-labels/v1',owner:'explicit new-master priority polygons; not source painter labels',counts,sourceLabelsReused:false,sourceLandmarksReused:false,rgbaChangedChannels:0,intake:checked.receipt,remainderPart:author.remainderPart});
+    provenance.maskMode='authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1';
   }else{
     need(!owners.merged,'same-joint region merge requires a true-alpha master');
     declarationBody={schema:'cf.authored-part-masks/v1',recordRecipeHash:record.recipeHash,cutoutSha256:record.geometry.cutoutAssetHash,remainderPart:author.remainderPart,parts};
