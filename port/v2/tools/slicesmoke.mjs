@@ -103,6 +103,7 @@ import {
 import { findCandidateSpeciesArtBuildGraph } from './speciesart-build.mjs';
 import {
   ENGINEERING_ACTION_CONTROL_COUNT,
+  ENGINEERING_ACTION_KEYS,
   ENGINEERING_RECIPE_GROUPS,
   ENGINEERING_RECIPE_IDS,
   ENGINEERING_REMNANT_ROUTE_LEGACY_TARGET,
@@ -1352,6 +1353,7 @@ const READ_ARC3_ENGINEERING_UI_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,s
         text:text(output)},costs:costs(row),action:actionModel(row)}}),
   actions=[...panel?.querySelectorAll('button[data-engineering-action]')??[]].map((button)=>({
     operation:button.getAttribute('data-engineering-action'),id:button.getAttribute('data-action-id'),
+    ...(button.hasAttribute('data-action-repeat')?{repeat:Number(button.getAttribute('data-action-repeat'))}:{}),
     modelEnabled:button.getAttribute('data-model-enabled'),disabled:button.disabled,
     ariaDisabled:button.getAttribute('aria-disabled')})),pending=panel?.querySelector('[data-engineering-pending]');
   return {schema:'cf-v2-slice-engineering-ui-evidence/v1',panelOpen:state?.panelOpen??null,
@@ -6554,11 +6556,11 @@ try {
     recipeIds=groups.flatMap((group)=>group.recipes.map((row)=>row.id)),expectedRecipeIds=${JSON.stringify(ENGINEERING_RECIPE_IDS)},
     sections=[...panel.querySelectorAll('details[data-engineering-section]')],summaries=sections.map((row)=>row.querySelector(':scope > summary')).filter(Boolean),
     actions=[...panel.querySelectorAll('button[data-engineering-action]')],
-    actionKeys=actions.map((button)=>button.getAttribute('data-engineering-action')+':'+(button.getAttribute('data-action-id')||'')),
-    expectedActionKeys=['mine:','skim:',...expectedResearch.map((id)=>'research:'+id),...expectedRecipeIds.map((id)=>'fabricate:'+id)],
+    actionKeys=actions.map((button)=>button.getAttribute('data-engineering-action')+':'+(button.getAttribute('data-action-id')||'')+(button.hasAttribute('data-action-repeat')?':x'+button.getAttribute('data-action-repeat'):'')),
+    expectedActionKeys=${JSON.stringify(ENGINEERING_ACTION_KEYS)},
     ps=panel?getComputedStyle(panel):null,os=opener?getComputedStyle(opener):null,pr=panel?.getBoundingClientRect(),br=body?.getBoundingClientRect(),
     cr=close?.getBoundingClientRect(),hit=cr?document.elementFromPoint((cr.left+cr.right)/2,(cr.top+cr.bottom)/2):null,
-    diagKeys=diag?Object.keys(diag).sort():[],expectedDiagKeys=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
+    diagKeys=diag?Object.keys(diag).sort():[],expectedDiagKeys=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status','trainingPractice'].sort(),
     engKeys=eng?Object.keys(eng).sort():[],expectedEngKeys=['actionControlCount','activeCount','activePreviewCount','delegatedListenerCount','faultCount','lastRequest','pendingWork','previewStateKey','retainedDomCount','retainedPreviewCount','schema'].sort(),
     stateKey=typeof ship?.stateKey==='string'&&ship.stateKey?ship.stateKey:null,
     canonicalIds=JSON.stringify(hardpointKeys)===JSON.stringify(canonicalHardpointIds)
@@ -6724,7 +6726,7 @@ try {
       opener=document.getElementById('railshipyard'),diag=S?.api?.shipyardDiagnostics?.(),eng=diag?.engineering,
       body=panel?.querySelector('[data-engineering-panel-body]'),style=panel?getComputedStyle(panel):null,
       previews=panel?.querySelectorAll('[data-cf-shipyard-preview="v1"]').length??-1,
-      keys=diag?Object.keys(diag).sort():[],expected=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort();
+      keys=diag?Object.keys(diag).sort():[],expected=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status','trainingPractice'].sort();
       return {ok:S?.api?.state?.().panelOpen===null&&style?.display==='none'&&previews===0
         &&diag?.schema==='cf-v2-shipyard-diagnostics/v1'&&diag?.status==='closed'&&diag?.stateKey===null
         &&diag?.activePreviewCount===0&&diag?.retainedPreviewCount===0&&diag?.pendingPreviewWork===0

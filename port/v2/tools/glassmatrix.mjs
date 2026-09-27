@@ -51,6 +51,7 @@ import {
 } from './glassmatrix-evidence-contract.mjs';
 import {
   ENGINEERING_ACTION_CONTROL_COUNT,
+  ENGINEERING_ACTION_KEYS,
   ENGINEERING_GLASS_RECIPE_ORACLE,
   ENGINEERING_GLASS_RESEARCH_ORACLE,
   ENGINEERING_RECIPE_GROUPS,
@@ -5797,6 +5798,7 @@ function missingShipyardPanelExpressionOutcome() {
       ['${JSON.stringify(ENGINEERING_RECIPE_IDS)}', JSON.stringify(ENGINEERING_RECIPE_IDS)],
       ['${JSON.stringify(ENGINEERING_GLASS_RECIPE_ORACLE)}', JSON.stringify(ENGINEERING_GLASS_RECIPE_ORACLE)],
       ['${ENGINEERING_ACTION_CONTROL_COUNT}', String(ENGINEERING_ACTION_CONTROL_COUNT)],
+      ['${JSON.stringify(ENGINEERING_ACTION_KEYS)}', JSON.stringify(ENGINEERING_ACTION_KEYS)],
     ];
     for (const [needle, replacement] of substitutions) expression = expression.replaceAll(needle, replacement);
     if (expression.includes('${')) {
@@ -12163,13 +12165,13 @@ async function main() {
             sectionIds=sections.map((node)=>node.getAttribute('data-engineering-section')),
             summaries=sections.map((node)=>node.querySelector(':scope > summary')).filter(Boolean),
             actions=panel?[...panel.querySelectorAll('button[data-engineering-action]')]:[],
-            actionKeys=actions.map((button)=>button.getAttribute('data-engineering-action')+':'+(button.getAttribute('data-action-id')||'')),
-            expectedActionKeys=['mine:','skim:',...expectedResearch.map((id)=>'research:'+id),...expectedRecipeIds.map((id)=>'fabricate:'+id)],
+            actionKeys=actions.map((button)=>button.getAttribute('data-engineering-action')+':'+(button.getAttribute('data-action-id')||'')+(button.hasAttribute('data-action-repeat')?':x'+button.getAttribute('data-action-repeat'):'')),
+            expectedActionKeys=${JSON.stringify(ENGINEERING_ACTION_KEYS)},
             actionRects=actions.map((button)=>button.getBoundingClientRect()),summaryRects=summaries.map((summary)=>summary.getBoundingClientRect()),
             panelStyle=panel?getComputedStyle(panel):null,openerStyle=opener?getComputedStyle(opener):null,
             pr=panel?.getBoundingClientRect(),br=body?.getBoundingClientRect(),cr=close?.getBoundingClientRect(),
             hit=cr?document.elementFromPoint((cr.left+cr.right)/2,(cr.top+cr.bottom)/2):null,
-            diagKeys=diag?Object.keys(diag).sort():[],expectedDiagKeys=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
+            diagKeys=diag?Object.keys(diag).sort():[],expectedDiagKeys=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status','trainingPractice'].sort(),
             engKeys=eng?Object.keys(eng).sort():[],expectedEngKeys=['actionControlCount','activeCount','activePreviewCount','delegatedListenerCount','faultCount','lastRequest','pendingWork','previewStateKey','retainedDomCount','retainedPreviewCount','schema'].sort(),
             stateKey=typeof ship?.stateKey==='string'&&ship.stateKey?ship.stateKey:null,
             canonicalIds=JSON.stringify(hardpointKeys)===JSON.stringify(canonicalHardpointIds)
@@ -13590,7 +13592,7 @@ async function main() {
             diag=S?.api?.shipyardDiagnostics?.(),eng=diag?.engineering,body=panel?.querySelector('[data-engineering-panel-body]'),
             panelStyle=panel?getComputedStyle(panel):null,
             preservedStyle=preserved?getComputedStyle(preserved):null,diagKeys=diag?Object.keys(diag).sort():[],
-            expectedDiagKeys=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
+            expectedDiagKeys=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status','trainingPractice'].sort(),
             engKeys=eng?Object.keys(eng).sort():[],expectedEngKeys=['actionControlCount','activeCount','activePreviewCount','delegatedListenerCount','faultCount','lastRequest','pendingWork','previewStateKey','retainedDomCount','retainedPreviewCount','schema'].sort(),
             previews=panel?.querySelectorAll('[data-cf-shipyard-preview="v1"]').length??-1;
             return {ok:S?.api?.state?.().panelOpen===null&&panelStyle?.display==='none'&&previews===0
