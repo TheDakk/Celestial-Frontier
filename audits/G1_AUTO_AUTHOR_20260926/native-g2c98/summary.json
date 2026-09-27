@@ -1,0 +1,169 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C98_20260927",
+ "tag": "g2c98",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-cold-water-fish",
+  "02-blind-fish",
+  "03-small-fish",
+  "04-sunfish",
+  "05-tang",
+  "06-reef-fish",
+  "08-icefish",
+  "09-mudminnow",
+  "10-snailfish",
+  "12-desert-owl",
+  "13-harpy-eagle",
+  "17-petrel",
+  "18-skua",
+  "20-gerbil"
+ ],
+ "refused": [
+  {
+   "id": "07-remora",
+   "reason": "unexplained-anatomy: 8.2% of the paint lies away from the body and in no part (reference 3.9%)"
+  },
+  {
+   "id": "14-screamer",
+   "reason": "missing-anatomy: part beak (beak) covers 6% paint (reference 52%)"
+  },
+  {
+   "id": "15-secretary-bird",
+   "reason": "unexplained-anatomy: 7.8% of the paint lies away from the body and in no part (reference 2.3%)"
+  },
+  {
+   "id": "16-tern",
+   "reason": "missing-anatomy: part near-shin (legNearAnkle) covers 15% paint (reference 49%)"
+  },
+  {
+   "id": "19-shrew",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%)"
+  },
+  {
+   "id": "22-warthog",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 13% paint (reference 45%)"
+  },
+  {
+   "id": "23-honeybee",
+   "reason": "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)"
+  },
+  {
+   "id": "24-bumblebee",
+   "reason": "missing-anatomy: part mandible (mandible) covers 6% paint (reference 32%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "11-osprey",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "21-pig",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "01-cold-water-fish",
+   "name": "Cold-Water Fish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "02-blind-fish",
+   "name": "Blind Fish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "03-small-fish",
+   "name": "Small Fish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "04-sunfish",
+   "name": "Sunfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "05-tang",
+   "name": "Tang",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "06-reef-fish",
+   "name": "Reef Fish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "08-icefish",
+   "name": "Icefish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "09-mudminnow",
+   "name": "Mudminnow",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "10-snailfish",
+   "name": "Snailfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "12-desert-owl",
+   "name": "Desert Owl",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "13-harpy-eagle",
+   "name": "Harpy Eagle",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "17-petrel",
+   "name": "Petrel",
+   "family": "biped-bird",
+   "exit": 1,
+   "status": "FAIL"
+  },
+  {
+   "id": "18-skua",
+   "name": "Skua",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "20-gerbil",
+   "name": "Gerbil",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

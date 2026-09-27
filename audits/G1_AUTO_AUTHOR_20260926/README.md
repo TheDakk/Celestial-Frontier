@@ -118,6 +118,12 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**G2 C98 batch (Codex `b75a7e15`: 10 fish, 8 birds, 4 quads, 2 bees)** (`native-g2c98/`): **13/24 native PASS**.
+- Fish: Cold-water Fish, Blind Fish, Small Fish, Sunfish, Tang, Reef Fish, Icefish, Mudminnow, Snailfish.
+- Birds: Desert Owl, Harpy Eagle, Skua. Quadrupeds: Gerbil.
+- The Petrel fails native. Osprey refused at intake; Pig static RED. Shrew and Warthog refused on tail coverage; the bees on mandible coverage.
+- **Full-size:** the birds and Gerbil are clean. **The Snailfish fragments (not acceptable).** Cold-water Fish and Sunfish have unwelded cracks.
+
 **G2 C95 batch (Codex `47d573c9`: 6 each fish/birds/quads/insects)** (`native-g2c95/`): **11/24 native PASS**: Rabbitfish, Sea Bass, Bonefish, Tigerfish, Coelacanth; **Gannet, Booby, Bustard, Seriema, Chicken; Bongo**.
 - The birds and Bongo are clean at full size; Rabbitfish and Sea Bass have unwelded cracks.
 - Hoofed quads refused on short tails / a hidden far ear (Pronghorn, Duiker, Serow, Springbok); Nilgai refused at intake.

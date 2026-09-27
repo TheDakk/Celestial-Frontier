@@ -1197,5 +1197,122 @@
   "batch": "C96 Bobcat layout",
   "tag": "c96-bobcat",
   "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Cold-Water Fish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/01-cold-water-fish",
+  "note": "body cracks (unwelded)",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Blind Fish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/02-blind-fish",
+  "note": "acceptable",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Small Fish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/03-small-fish",
+  "note": "acceptable",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Sunfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/04-sunfish",
+  "note": "body crack (unwelded)",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Tang",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/05-tang",
+  "note": "acceptable",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Reef Fish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/06-reef-fish",
+  "note": "acceptable",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Icefish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/08-icefish",
+  "note": "acceptable (translucent)",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Mudminnow",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/09-mudminnow",
+  "note": "acceptable",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Snailfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/10-snailfish",
+  "note": "FRAGMENTED: not acceptable",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Desert Owl",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/12-desert-owl",
+  "note": "clean",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Harpy Eagle",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/13-harpy-eagle",
+  "note": "clean",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Skua",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/18-skua",
+  "note": "clean",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Gerbil",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/20-gerbil",
+  "note": "clean",
+  "batch": "audits/G2_C98_20260927",
+  "tag": "g2c98",
+  "supports": "observed"
  }
 ]

@@ -1,0 +1,70 @@
+{
+  "name": "Pig",
+  "family": "quadruped",
+  "species": {
+    "name": "Pig",
+    "aspect": 1.8,
+    "headFrac": 0.3,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "flat round snout disc",
+      "deep barrel body on very short legs",
+      "curly corkscrew tail"
+    ]
+  },
+  "genome": {
+    "seed": 80438105,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 17,
+    "body": 14,
+    "loco": 8,
+    "trait": 16,
+    "size": 2,
+    "diet": 2,
+    "head": 3,
+    "limbs": 3,
+    "skin": 1,
+    "tail": 5,
+    "pattern": 0,
+    "eyes": 0,
+    "behavior": 4,
+    "habitat": 1,
+    "detail": 0,
+    "accent": 4,
+    "temper": 6,
+    "sense": 7,
+    "repro": 4,
+    "life": 0,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Pig"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Pig\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"80438105\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "index": 546,
+  "profile": {
+    "id": "suid",
+    "names": [
+      "Wild Boar",
+      "Peccary",
+      "Warthog",
+      "Wild Pig",
+      "Pig"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "gore",
+      "headbutt"
+    ],
+    "notes": "Tusks must be observed before a gore motion is admitted."
+  }
+}
