@@ -666,5 +666,77 @@
   "batch": "audits/G2_C81_20260927",
   "tag": "g2c81",
   "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Grouper",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/01-grouper",
+  "note": "gill hole (unwelded)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Barracuda",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/02-barracuda",
+  "note": "small crack (unwelded)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Sailfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/05-sailfish",
+  "note": "body cracks (unwelded)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Mahi-Mahi",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/07-mahi-mahi",
+  "note": "vertical cracks (unwelded)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Tanager",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/13-tanager",
+  "note": "clean",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cheetah",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/18-cheetah",
+  "note": "clean (both ears / offset feet / clear tail layout)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Maned Wolf",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/21-maned-wolf",
+  "note": "clean (C83 layout)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Sand Cat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/22-sand-cat",
+  "note": "clean (C83 layout)",
+  "batch": "audits/G2_C83_20260927",
+  "tag": "g2c83",
+  "supports": "observed"
  }
 ]

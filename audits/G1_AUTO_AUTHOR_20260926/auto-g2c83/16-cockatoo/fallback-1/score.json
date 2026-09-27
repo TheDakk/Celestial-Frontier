@@ -1,0 +1,10 @@
+{
+ "id": "16-cockatoo",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part far-wing-flight (wingFarTip) covers 23% paint (reference 73%)",
+  "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 2.3%)"
+ ],
+ "semanticPresence": null
+}

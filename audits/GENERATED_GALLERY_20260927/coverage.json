@@ -1,15 +1,15 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 78,
- "pct": 12.4,
+ "covered": 86,
+ "pct": 13.6,
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 23,
-   "pct": 11.2,
+   "covered": 26,
+   "pct": 12.7,
    "names": [
     "Leopard",
     "Tiger",
@@ -20,9 +20,12 @@
     "Snow Leopard",
     "Lynx",
     "Caracal",
+    "Cheetah",
+    "Sand Cat",
     "Jackal",
     "Coyote",
     "Arctic Fox",
+    "Maned Wolf",
     "Fennec Fox",
     "Dingo",
     "Mongoose",
@@ -39,8 +42,8 @@
   {
    "family": "fish",
    "species": 132,
-   "covered": 26,
-   "pct": 19.7,
+   "covered": 30,
+   "pct": 22.7,
    "names": [
     "Trout",
     "Char",
@@ -62,10 +65,14 @@
     "Goldfish",
     "Mullet",
     "Tarpon",
+    "Grouper",
+    "Barracuda",
     "Cod",
     "Mackerel",
     "Haddock",
     "Pollock",
+    "Sailfish",
+    "Mahi-Mahi",
     "Sardine",
     "Anchovy"
    ]
@@ -73,8 +80,8 @@
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 16,
-   "pct": 15.7,
+   "covered": 17,
+   "pct": 16.7,
    "names": [
     "Kestrel",
     "Goose",
@@ -87,6 +94,7 @@
     "Oystercatcher",
     "Quail",
     "Vulture",
+    "Tanager",
     "Raven",
     "Robin",
     "Magpie",

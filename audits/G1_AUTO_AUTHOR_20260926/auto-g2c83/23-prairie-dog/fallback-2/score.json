@@ -1,0 +1,10 @@
+{
+ "id": "23-prairie-dog",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-near-paw (hindNearPaw) covers 8% paint (reference 43%)",
+  "missing-anatomy: part fore-near-paw (foreNearPaw) covers 5% paint (reference 48%)"
+ ],
+ "semanticPresence": null
+}

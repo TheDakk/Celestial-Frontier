@@ -1,0 +1,114 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "23-prairie-dog",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "e94848c7539a542a41b3b896051d88e2b62893faa5f062ebf40821fefee3f459",
+ "subjectSourceSha256": "9b29a10cb86195bba36cdf0360427942d087026e5057f19d0d003d6d27800fee",
+ "identity": {
+  "name": "Prairie Dog",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Prairie Dog\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"575078991\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "seed": 575078991,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "marmot",
+  "authoringSha256": "f87f8f92c1e0918313063d7e9a77c4e9b48e536ca1d5510373520c15e126dc81",
+  "masterSha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1207,
+     "class": "top",
+     "attach": {
+      "x": 283.4,
+      "y": 169.6,
+      "relX": 0.94,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0885,
+     "class": "limb-down",
+     "attach": {
+      "x": 128.4,
+      "y": 230.1,
+      "relX": 0.04,
+      "relY": 0.81
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0361,
+     "class": "limb-down",
+     "attach": {
+      "x": 277.7,
+      "y": 246.2,
+      "relX": 0.91,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0449,
+     "class": "limb-down",
+     "attach": {
+      "x": 176,
+      "y": 244,
+      "relX": 0.32,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0389,
+     "class": "limb-down",
+     "attach": {
+      "x": 247,
+      "y": 248,
+      "relX": 0.73,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "marmot",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

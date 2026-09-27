@@ -1,0 +1,10 @@
+{
+ "id": "19-african-wild-dog",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}

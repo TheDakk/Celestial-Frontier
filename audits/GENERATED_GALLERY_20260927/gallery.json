@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 82,
+ "total": 90,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -190,6 +190,27 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/lynx",
    "report": "DIAGNOSTIC_PASS",
    "note": "clean in reaction; Codex saw fragments in other frames"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Cheetah",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/18-cheetah",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (both ears / offset feet / clear tail layout)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Maned Wolf",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/21-maned-wolf",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (C83 layout)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Sand Cat",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/22-sand-cat",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (C83 layout)"
   },
   {
    "family": "Snakes (serpent strip author)",
@@ -395,6 +416,13 @@
    "note": "clean"
   },
   {
+   "family": "Birds",
+   "name": "Tanager",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/13-tanager",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -568,6 +596,34 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/07-tarpon",
    "report": "DIAGNOSTIC_PASS",
    "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Grouper",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/01-grouper",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "gill hole (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Barracuda",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/02-barracuda",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small crack (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Sailfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/05-sailfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "body cracks (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Mahi-Mahi",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/07-mahi-mahi",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "vertical cracks (unwelded)"
   },
   {
    "family": "Insects",
