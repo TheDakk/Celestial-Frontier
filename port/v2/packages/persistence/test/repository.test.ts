@@ -5,6 +5,11 @@ import {
   type StorageBackend, type StorageOperation, type StoredPayloadStatus,
 } from '@cf/persistence';
 
+
+const fakeEvents = {
+  addEventListener(this: unknown, kind: string, listener: (event: unknown) => void) { (this as Record<string, unknown>)[`on${kind}`] = () => listener({target:this,type:kind}); },
+  removeEventListener(this: unknown, kind: string) { (this as Record<string, unknown>)[`on${kind}`]=null; },
+};
 const classifyFixturePayload = (raw: string): StoredPayloadStatus => {
   if (raw.startsWith('supported:')) return 'supported';
   if (raw.startsWith('future:')) return 'future-version';
@@ -294,7 +299,7 @@ describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', ()
           objectStore: () => ({ get: () => ({ result: 'recovered' }) }),
         };
         queueMicrotask(() => tx.oncomplete?.());
-        return tx;
+        return Object.assign(tx, fakeEvents);
       },
     };
     globalThis.indexedDB = {
@@ -309,7 +314,7 @@ describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', ()
           onblocked: null as null | (() => void),
         };
         queueMicrotask(() => { if (attempts === 1) req.onerror?.(); else req.onsuccess?.(); });
-        return req;
+        return Object.assign(req, fakeEvents);
       },
     } as unknown as IDBFactory;
     try {
@@ -344,7 +349,7 @@ describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', ()
           objectStore: () => ({ get: () => ({ result: value }) }),
         };
         queueMicrotask(() => tx.oncomplete?.());
-        return tx;
+        return Object.assign(tx, fakeEvents);
       },
     } as unknown as IDBDatabase);
     const orphan = transactionDb('orphan', () => { orphanCloses++; });
@@ -364,7 +369,7 @@ describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', ()
           firstRequest = req as typeof firstRequest;
           queueMicrotask(() => req.onblocked?.());
         } else queueMicrotask(() => req.onsuccess?.());
-        return req;
+        return Object.assign(req, fakeEvents);
       },
     } as unknown as IDBFactory;
     try {

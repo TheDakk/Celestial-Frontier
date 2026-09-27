@@ -1,0 +1,175 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts (10 tests | 9 failed) 8ms
+     × releases read transaction and open callbacks after success 4ms
+     × releases read transaction and open callbacks after error 1ms
+     × releases read transaction and open callbacks after abort 0ms
+     × releases compare/write callbacks after success with the same outcome 0ms
+     × releases compare/write callbacks after stale with the same outcome 0ms
+     × releases compare/write callbacks after request-error with the same outcome 0ms
+     × releases compare/write callbacks after error with the same outcome 0ms
+     × releases compare/write callbacks after abort with the same outcome 0ms
+   × independent concurrent reads reuse native dispatchers without sharing their promise state 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases read transaction and open callbacks after success
+AssertionError: promise rejected "AssertionError: expected false to be true… { …(4) }" instead of resolving
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:37:48
+     35|     const previous=globalThis.indexedDB,f=fixture(mode);globalThis.ind…
+     36|     try{const pending=createIndexedDBBackend('ownership').get('meta','…
+     37|       if(mode==='success')await expect(pending).resolves.toBe('expecte…
+       |                                                ^
+     38|       expectReleased(f);
+     39|     }finally{globalThis.indexedDB=previous;}
+
+Caused by: AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ Object.addEventListener packages/persistence/test/idb-listener-ownership.test.ts:16:108
+ ❯ ownIdbCallbacks packages/persistence/src/idb-callbacks.ts:25:72
+ ❯ packages/persistence/src/repository.ts:234:21
+ ❯ done packages/persistence/src/repository.ts:233:55
+ ❯ Object.get packages/persistence/src/repository.ts:245:13
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:37:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases read transaction and open callbacks after error
+AssertionError: expected [Function] to throw error including 'write failure' but got 'expected false to be true // Object.i…'
+
+Expected: "write failure"
+Received: "expected false to be true // Object.is equality"
+
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:37:101
+     35|     const previous=globalThis.indexedDB,f=fixture(mode);globalThis.ind…
+     36|     try{const pending=createIndexedDBBackend('ownership').get('meta','…
+     37|       if(mode==='success')await expect(pending).resolves.toBe('expecte…
+       |                                                                                                     ^
+     38|       expectReleased(f);
+     39|     }finally{globalThis.indexedDB=previous;}
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases read transaction and open callbacks after abort
+AssertionError: expected [Function] to throw error including 'aborted' but got 'expected false to be true // Object.i…'
+
+Expected: "aborted"
+Received: "expected false to be true // Object.is equality"
+
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:37:101
+     35|     const previous=globalThis.indexedDB,f=fixture(mode);globalThis.ind…
+     36|     try{const pending=createIndexedDBBackend('ownership').get('meta','…
+     37|       if(mode==='success')await expect(pending).resolves.toBe('expecte…
+       |                                                                                                     ^
+     38|       expectReleased(f);
+     39|     }finally{globalThis.indexedDB=previous;}
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases compare/write callbacks after success with the same outcome
+AssertionError: promise rejected "AssertionError: expected false to be true… { …(4) }" instead of resolving
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:44:49
+
+
+Caused by: AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ Object.addEventListener packages/persistence/test/idb-listener-ownership.test.ts:16:108
+ ❯ ownIdbCallbacks packages/persistence/src/idb-callbacks.ts:25:72
+ ❯ packages/persistence/src/repository.ts:290:36
+ ❯ Object.compareAndApply packages/persistence/src/repository.ts:267:14
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:44:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases compare/write callbacks after stale with the same outcome
+AssertionError: promise rejected "AssertionError: expected false to be true… { …(4) }" instead of resolving
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:45:52
+
+
+Caused by: AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ Object.addEventListener packages/persistence/test/idb-listener-ownership.test.ts:16:108
+ ❯ ownIdbCallbacks packages/persistence/src/idb-callbacks.ts:25:72
+ ❯ packages/persistence/src/repository.ts:290:36
+ ❯ Object.compareAndApply packages/persistence/src/repository.ts:267:14
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:45:31
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases compare/write callbacks after request-error with the same outcome
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases compare/write callbacks after abort with the same outcome
+AssertionError: expected [Function] to throw error including 'aborted' but got 'expected false to be true // Object.i…'
+
+Expected: "aborted"
+Received: "expected false to be true // Object.is equality"
+
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:46:33
+     44|       if(mode==='success'){await expect(pending).resolves.toBe(true);e…
+     45|       else if(mode==='stale'){await expect(pending).resolves.toBe(fals…
+     46|       else await expect(pending).rejects.toThrow(mode==='error'?'write…
+       |                                 ^
+     47|       expectReleased(f);
+     48|     }finally{globalThis.indexedDB=previous;}
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases compare/write callbacks after error with the same outcome
+AssertionError: expected [Function] to throw error including 'write failure' but got 'expected false to be true // Object.i…'
+
+Expected: "write failure"
+Received: "expected false to be true // Object.is equality"
+
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:46:33
+     44|       if(mode==='success'){await expect(pending).resolves.toBe(true);e…
+     45|       else if(mode==='stale'){await expect(pending).resolves.toBe(fals…
+     46|       else await expect(pending).rejects.toThrow(mode==='error'?'write…
+       |                                 ^
+     47|       expectReleased(f);
+     48|     }finally{globalThis.indexedDB=previous;}
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > independent concurrent reads reuse native dispatchers without sharing their promise state
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ Object.addEventListener packages/persistence/test/idb-listener-ownership.test.ts:16:108
+
+ ❯ ownIdbCallbacks packages/persistence/src/idb-callbacks.ts:25:72
+ ❯ packages/persistence/src/repository.ts:234:21
+ ❯ done packages/persistence/src/repository.ts:233:55
+ ❯ Object.get packages/persistence/src/repository.ts:245:13
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:54:66
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  9 failed | 1 passed (10)
+   Start at  16:14:03
+   Duration  141ms (transform 17ms, setup 0ms, import 22ms, tests 8ms, environment 0ms)
+

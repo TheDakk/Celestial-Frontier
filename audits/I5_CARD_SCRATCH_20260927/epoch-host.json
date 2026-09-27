@@ -1,0 +1,11 @@
+{
+  "at": "2026-09-27T19:46:07.264Z",
+  "load": [
+    2.71533203125,
+    4.92822265625,
+    6.21630859375
+  ],
+  "freeBytes": 762675200,
+  "cpus": 12,
+  "scope": "Host context only; no change to limits or outcome classification"
+}

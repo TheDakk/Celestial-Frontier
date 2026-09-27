@@ -1,0 +1,38 @@
+[
+  {
+    name: 'old',
+    listeners: 50,
+    outcomes: [
+      'real read',
+      'atomic compare commit',
+      'committed bytes',
+      'stale compare refused',
+      'stale write did not mutate',
+      'native abort rejected',
+      'abort left prior data',
+      'delete committed',
+      'clear committed',
+      'terminal callback ownership'
+    ],
+    beforeGc: { documents: 2, nodes: 11, jsEventListeners: 52 },
+    afterGc: { documents: 1, nodes: 7, jsEventListeners: 52 }
+  },
+  {
+    name: 'new',
+    listeners: 0,
+    outcomes: [
+      'real read',
+      'atomic compare commit',
+      'committed bytes',
+      'stale compare refused',
+      'stale write did not mutate',
+      'native abort rejected',
+      'abort left prior data',
+      'delete committed',
+      'clear committed',
+      'terminal callback ownership'
+    ],
+    beforeGc: { documents: 2, nodes: 11, jsEventListeners: 14 },
+    afterGc: { documents: 1, nodes: 7, jsEventListeners: 6 }
+  }
+]
