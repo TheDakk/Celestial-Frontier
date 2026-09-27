@@ -849,3 +849,7 @@ C68 keeps source images and rig records unchanged while moving root-remainder fi
 ### Bird faint motion — matches code2026-09-27
 
 The proposed biped-bird faint extension is REJECTED: Hawk/Dove improved, but the full arena owner found56Goose ARAP refusals. Production keeps the prior quadruped/insect author unchanged. Endpoint-only authoring cannot prove actual painted support or skin safety; coordinated source-bound painted-support input remains open. Diagnostic evidence:audits/BIRD_MOTION_C69_20260927.
+
+### Exact repeated skin fields — matches code2026-09-27
+
+The admitted runtime keeps one private exact Float32 target/solved-field pair per rig. Changed inputs run the unchanged full solver; all downstream guards still run. Two bounded buffers add at most640,000bytes under the existing40,000vertex limit. Donkey/Lynx pass fullnative4× capture after reuse;Bobcat remains868/887frames. Visual fragments remain. Controls/evidence:audits/LATE_REACTION_C70_20260927.

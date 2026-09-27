@@ -1,0 +1,122 @@
+[
+  {
+    "name": "bobcat",
+    "samples": [
+      {
+        "fraction": 0,
+        "cpuMs": 1.3329169999999948,
+        "bad": 0,
+        "visits": 0,
+        "error": null
+      },
+      {
+        "fraction": 0.25,
+        "cpuMs": 21.842124999999996,
+        "bad": 138,
+        "visits": 133895,
+        "error": null
+      },
+      {
+        "fraction": 0.5,
+        "cpuMs": 54.62129199999998,
+        "bad": 187,
+        "visits": 363322,
+        "error": null
+      },
+      {
+        "fraction": 0.75,
+        "cpuMs": 56.125208000000015,
+        "bad": 183,
+        "visits": 360163,
+        "error": null
+      },
+      {
+        "fraction": 1,
+        "cpuMs": 53.04037500000001,
+        "bad": 183,
+        "visits": 354130,
+        "error": null
+      }
+    ]
+  },
+  {
+    "name": "donkey",
+    "samples": [
+      {
+        "fraction": 0,
+        "cpuMs": 0.10087500000003047,
+        "bad": 0,
+        "visits": 0,
+        "error": null
+      },
+      {
+        "fraction": 0.25,
+        "cpuMs": 11.805207999999993,
+        "bad": 200,
+        "visits": 87181,
+        "error": null
+      },
+      {
+        "fraction": 0.5,
+        "cpuMs": 18.609542000000033,
+        "bad": 245,
+        "visits": 145583,
+        "error": null
+      },
+      {
+        "fraction": 0.75,
+        "cpuMs": 17.70833399999998,
+        "bad": 245,
+        "visits": 145724,
+        "error": null
+      },
+      {
+        "fraction": 1,
+        "cpuMs": 17.88045900000003,
+        "bad": 239,
+        "visits": 145822,
+        "error": null
+      }
+    ]
+  },
+  {
+    "name": "lynx",
+    "samples": [
+      {
+        "fraction": 0,
+        "cpuMs": 0.10545799999999872,
+        "bad": 0,
+        "visits": 0,
+        "error": null
+      },
+      {
+        "fraction": 0.25,
+        "cpuMs": 6.276999999999987,
+        "bad": 133,
+        "visits": 15979,
+        "error": null
+      },
+      {
+        "fraction": 0.5,
+        "cpuMs": 9.095541999999966,
+        "bad": 148,
+        "visits": 35659,
+        "error": null
+      },
+      {
+        "fraction": 0.75,
+        "cpuMs": 10.127415999999982,
+        "bad": 148,
+        "visits": 37275,
+        "error": null
+      },
+      {
+        "fraction": 1,
+        "cpuMs": 10.035083000000043,
+        "bad": 148,
+        "visits": 37275,
+        "error": null
+      }
+    ]
+  }
+]

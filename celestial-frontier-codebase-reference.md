@@ -7319,3 +7319,5 @@ C67 insect faint retargeting: root/thorax only, original angular reserve and run
 C68 body-seam research status2026-09-27: observed axial remainder placement plus explicit dorsal boundaries improves three fish candidates under unchanged static/native limits; no default/library admission. Arctic Fox nape cut and nonopaque chest sampling remain open. Runtime sampling eligibility/alpha conservation unchanged; D26 is finisher-only. See audits/BODY_SEAMS_C68_20260927.
 
 Bird motion status (matches code2026-09-27):the proposed faint extension is rejected after56Goose arena fold refusals. Production author bytes are restored; no limits or checks changed. Painted-support input and ownership repairs remain open. See CREATURE_ANIMATION.md and audits/BIRD_MOTION_C69_20260927.
+
+Skin runtime (matches code2026-09-27):creature-rig uses exact-field-cache.mjs for one previous successful Float32target/solution only. Changes invalidate before full ARAP;refusals never cache. Original contact/shape/publication guards remain. Maxadditional640,000bytes/rig,actual56–65KiB for measured cases. Donkey/Lynx nativePASS;Bobcat stillRED. See CREATURE_ANIMATION.md.

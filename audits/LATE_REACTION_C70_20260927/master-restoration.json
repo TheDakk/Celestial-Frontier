@@ -1,0 +1,17 @@
+[
+  {
+    "source": "audits/G2_THROUGHPUT_C56_20260926/04-bobcat/master.png",
+    "target": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/04-bobcat/packet/master.png",
+    "sha256": "3dcb12fc477dc4798e058fec0211b5d652cec3fcbd1645255f78a78f9aba0fad"
+  },
+  {
+    "source": "audits/G2_QUADRUPED_PILOT_20260926/15-donkey/master.png",
+    "target": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/15-donkey/fallback-1/packet/master.png",
+    "sha256": "8bb69939a28d17298009055f58049dc51543ca6bd6ebc2aff9fd1d410dc4bbe8"
+  },
+  {
+    "source": "audits/G2_QUADRUPED_PILOT_20260926/06-lynx/master.png",
+    "target": "audits/G1_AUTO_AUTHOR_20260926/auto-g2quad-handrefs/q20-06-lynx/packet/master.png",
+    "sha256": "17a2640ae3cf7e98cacf844925cfed0dca4508d396e48c638a2545b651eeeffa"
+  }
+]

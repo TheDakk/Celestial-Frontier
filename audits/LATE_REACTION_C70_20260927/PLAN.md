@@ -1,0 +1,5 @@
+# Late lethal reaction performance repair
+
+Investigate repeated identical deformed target fields after faint settles. Candidate: one private cache per admitted rig of an exact Float32 target field and its exact solved field; no tolerance, quantization, frame skip, weaker guard, changed solver iteration budget or changed motion. A changed input invalidates before solving; failures never populate the entry. All downstream part orientation and painted-contact checks still run. Only the most recent identical target may reuse its successful result. No cache shared between rigs or geometries.
+
+Required controls: byte-identical output to original full solver across hit/miss/change/rest/failure/recovery, signed-zero and one-ULP differences force solve, solver execution count proves a true avoided solve (negative control without cache), retained buffers bounded; source and contact admission remain in place. Native unchanged capture thresholds for Bobcat, then Donkey/Lynx held-out. This document records an experiment, not a completed fix.

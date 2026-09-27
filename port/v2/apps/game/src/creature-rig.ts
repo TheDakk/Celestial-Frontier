@@ -8,6 +8,7 @@ import {BufferImageSource,Container, Matrix, Rectangle, Sprite, Texture, Mesh, M
 import {applyPaintPart,paintPartAreas,assertPaintPartShape,validatePaintSkin} from '../../../tools/creature-animation/paint-skin.mjs';
 import {validateSeamBridges,createSeamGeometry,writeSeamPose} from '../../../tools/creature-animation/seam-bridge.mjs';
 import {createArapScratch,solveArapSkin} from '../../../tools/creature-animation/arap-skin.mjs';
+import {createExactFieldCache} from '../../../tools/creature-animation/exact-field-cache.mjs';
 import {createCompiledSkinField,applyCompiledSkinField} from '../../../tools/creature-animation/compiled-skin-field.mjs';
 import {createOpaqueSeamSamplingGuard} from '../../../tools/creature-animation/seam-sampling-guard.mjs';
 import {hashBytes, hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
@@ -173,6 +174,7 @@ async function createAdmittedCreatureRig(record:CreatureRigRecordV1,binding:Crea
   const skin=binding.paintSkin,field=skin?new Float32Array(skin.vertices.length*2):null;
   const shape=skin?.solver?createArapScratch(skin.vertices,skin.triangles!,w,h,skin.solver):null;
   const target=shape&&field?field.slice():null;
+  const solveField=shape&&field?createExactFieldCache(field.length,(input:Float32Array,output:Float32Array)=>{solveArapSkin(shape,input,output);}):null;
   const compiledField=skin?createCompiledSkinField(skin,w,h):null;
   const rigidParents=skin?compileRigidParentFrames(skin,binding.parts,template,w,h):[];
   const decoded=options.atlasPixels&&skin?await decodeMorphedAtlas(atlasBytes.slice(),record,binding,options.atlasPixels):decodeAtlas===decodeAtlasPng&&skin?await decodeGuardedAtlasPng(atlasBytes.slice(),record,binding):{texture:await decodeAtlas(atlasBytes.slice()),samplingGuard:undefined};
@@ -211,7 +213,7 @@ async function createAdmittedCreatureRig(record:CreatureRigRecordV1,binding:Crea
   const publishPose=(pose:CreaturePoseV1,contacts?:readonly CreaturePaintContact[])=>{
       requireValue(!disposed,'disposed');
       const matrices=skeleton.evaluate(pose);
-      if(skin&&field&&compiledField){applyCompiledSkinField(compiledField,matrices,target??field);if(shape&&target)solveArapSkin(shape,target,field);for(const entry of skins)applyPaintPart(entry.part,field,entry.pending);if(rigidParents.length)applyRigidParentFrames(rigidParents,matrices,Object.fromEntries(skins.map(e=>[e.part.id,e.pending])));for(const entry of skins)assertPaintPartShape(entry.part,skin,entry.pending,w,h,entry.areas);}
+      if(skin&&field&&compiledField){applyCompiledSkinField(compiledField,matrices,target??field);if(solveField&&target)solveField(target,field);for(const entry of skins)applyPaintPart(entry.part,field,entry.pending);if(rigidParents.length)applyRigidParentFrames(rigidParents,matrices,Object.fromEntries(skins.map(e=>[e.part.id,e.pending])));for(const entry of skins)assertPaintPartShape(entry.part,skin,entry.pending,w,h,entry.areas);}
       let contactMax=0;
       if(contacts){
         requireValue(record.geometry.contactPads,'undeclared terminal pad guard');supports??=observedContactSupports(record,binding);

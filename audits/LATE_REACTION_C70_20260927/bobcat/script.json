@@ -1,0 +1,42 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Bobcat",
+      "dn": "Bobcat",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Bobcat",
+      "dn": "Bobcat",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "an": "Bobcat",
+      "dn": "Bobcat",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Bobcat",
+      "dn": "Bobcat",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ]
+}
