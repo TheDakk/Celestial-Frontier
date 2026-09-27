@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Salmon",
+    "masterSha256": "889beac81608069e3fb46ef8afe9ae1be2547eb23842cc6c619150ba484cb704",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Lungfish",
+    "masterSha256": "e31eefe95f67a2b4d68b6082b8ca262983fdb083431b72e3f1327915293baa1c",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Cave Fish",
+    "masterSha256": "f96d663a6de769f88183e2b0d862ac3f63a7f67291bb39f5e15b95236464516d",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Pipefish",
+    "masterSha256": "f4999c189e177676a7bc8ff7e5a1dbeac7ca5599e5e7a380a2e67959a66c7061",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Flying Fish",
+    "masterSha256": "0b22870a68cba6f8834aecb97bf846c6959d730c209dbd237ee434cc2e8850b2",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Anglerfish",
+    "masterSha256": "a61136e113f0704315f344452a559b1464180569e32ee4b4340a6c32a650dc9e",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Lanternfish",
+    "masterSha256": "334e72ae3c94814620061bfa4a2b344e0ebb2a6bce29fb18f4ce6420a8cf02e6",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Fangtooth",
+    "masterSha256": "71a79e65976bc70c3bdbc632ca6c13cb52ba15161d5ad83f24fc7a18fd5453c2",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Dragonfish",
+    "masterSha256": "382fe380a56d8df32cd503eaa6f484104b086ab59311da726b93e4ddc0d2a068",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Barreleye",
+    "masterSha256": "1754c18ecc4870ce8d443698d0f1c4d9b158084045a4553fcd9e721fc38edbf0",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Deep-Sea Fish",
+    "masterSha256": "e87984c082a9066018f0fd7d1bee0a7180922f815806be3f46e907ebe7b9fc90",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Ocean Sunfish",
+    "masterSha256": "5b0f7a7fb26bb4d74098d2566676a65c8c6f0b03f2b137fa960c3b39afd68470",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Hummingbird",
+    "masterSha256": "7946df0ecfca75776246a01d854b2a2cbcf7009ddc5b1e8b93d7ec747988d39f",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Peacock",
+    "masterSha256": "3f4a596359c932f513965960a1225547d35e30cdb48296b845db0892c633c1b6",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Ostrich",
+    "masterSha256": "9611d51057bf6bc72e50251eaea1570ea850cdd6d278d3c6fc81e6edddae291b",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Flamingo",
+    "masterSha256": "27eb3be5bbbcc3908a9b8c93f49081f83f0fa3e2f8a65b0a60007a1d8394120c",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Pelican",
+    "masterSha256": "13279973188739799448507097a081b09476d1f0a4a0ce55f3a1fa2dfd21637d",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Albatross",
+    "masterSha256": "79354ed6451bad4dd341807bcfd716fb7614167ec1fa4e4b2675f764a32efee0",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Condor",
+    "masterSha256": "190f92862d186b2794e42be43801d7b012ed197251f803af11d8564c5b558e20",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Snow Petrel",
+    "masterSha256": "4e2ac41fd0f0a1428d075c50c2697ba78f4b5aeeb218d80bdc258d1b6969910e",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Civet",
+    "masterSha256": "d2fc02e7ab66ecf07144a2a03e7a7517cfd63b606ed9fc920f09e726e886fcb5",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Possum",
+    "masterSha256": "7a08e8d6fa150cfdba721907cfd0a50cb97e9aa042e032cebb2b6ca6e4d7284e",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Mole",
+    "masterSha256": "e972040ca0fece66d3815e0b73ce2828e97403ccf497fd55d0c97bb028616680",
+    "exactGeneratedOriginal": true
+  },
+  {
+    "name": "Beaver",
+    "masterSha256": "06fa7ee76984e64d4ee1bbb9c16572331844118baef553c9a548d378d551d14e",
+    "exactGeneratedOriginal": true
+  }
+]

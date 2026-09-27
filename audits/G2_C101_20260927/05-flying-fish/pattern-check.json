@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Flying Fish",
+  "masterSha256": "0b22870a68cba6f8834aecb97bf846c6959d730c209dbd237ee434cc2e8850b2",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

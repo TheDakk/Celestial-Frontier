@@ -1,0 +1,13 @@
+{
+  "id": "07-lanternfish",
+  "name": "Lanternfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-02d1754d-80b2-4940-9361-5e429c0d11eb.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "334e72ae3c94814620061bfa4a2b344e0ebb2a6bce29fb18f4ce6420a8cf02e6",
+  "bytes": 1267852,
+  "promptSha256": "268a0609fdeee2724e6d81cd245c786ab95f2ef35b2267c7248b1e6f0957c21f",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Anglerfish",
+  "masterSha256": "a61136e113f0704315f344452a559b1464180569e32ee4b4340a6c32a650dc9e",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

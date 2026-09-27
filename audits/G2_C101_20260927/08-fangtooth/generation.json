@@ -1,0 +1,13 @@
+{
+  "id": "08-fangtooth",
+  "name": "Fangtooth",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-3897a96f-2b48-4fa2-9a01-481be3a101bf.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "71a79e65976bc70c3bdbc632ca6c13cb52ba15161d5ad83f24fc7a18fd5453c2",
+  "bytes": 1361122,
+  "promptSha256": "a8a8b5ee1f5d852f1f76aa8080c158b54ed21113589c69fa9e6f51011d6c42b1",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

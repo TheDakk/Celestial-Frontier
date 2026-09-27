@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Snow Petrel",
+  "masterSha256": "4e2ac41fd0f0a1428d075c50c2697ba78f4b5aeeb218d80bdc258d1b6969910e",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

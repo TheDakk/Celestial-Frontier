@@ -1,0 +1,13 @@
+{
+  "id": "22-possum",
+  "name": "Possum",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-31b877d5-7ca4-4345-8f76-765a52108728.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7a08e8d6fa150cfdba721907cfd0a50cb97e9aa042e032cebb2b6ca6e4d7284e",
+  "bytes": 1244151,
+  "promptSha256": "cb603fdb50543355d1176bd802deeb59b52efe028a0439f2cfe434309debeaf4",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

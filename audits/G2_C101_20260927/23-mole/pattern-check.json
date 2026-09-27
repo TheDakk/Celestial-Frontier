@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mole",
+  "masterSha256": "e972040ca0fece66d3815e0b73ce2828e97403ccf497fd55d0c97bb028616680",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
