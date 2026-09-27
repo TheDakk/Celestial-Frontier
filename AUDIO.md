@@ -72,6 +72,13 @@
   - The sparse rule: a calm piece plays once, then 120–300 s of only ambience. The gap comes from a presentation seed, never gameplay RNG or the wall clock.
   - Battle and major-battle loop only in battle (`combatScene`), then the outcome's sting plays.
   - Buffers live in a byte LRU of at most 24 MiB decoded. A port refusal (not running, muted) retries every 4 s.
+  - **Admission (C105, matches code as of 2026-09-27).** Nothing is synthesized for playback that would be refused.
+    - `DecorativeVoicePort.mayPlay()` applies the owner's gates (live, visible, answerable, master Sound on) and then `AudioRuntime.mayPlay()`, which is exactly `playVoice`'s running gate. The probe never activates or resumes a context.
+    - The soundscape asks before queueing a render, before every render slice, and after a refused start.
+    - While the answer is no: queued renders are cancelled, every decoded buffer is released (`residentBytes` 0, `pendingRenders` 0), and the cheap probe retries every 4 s.
+    - Admission restarts the bed and the score within one retry. A hidden tab also releases every buffer; live voices hold their own AudioBuffer copies.
+    - While admitted, rendering, caching, mix and playback are unchanged.
+    - Tests: `tests/soundkit-soundscape.test.ts` (never admitted, lost mid-render, hidden). The control is a probe-less port, which still retains more than 6 MB, the C105 heap finding. `tests/tame-greeting-audio.test.ts` and `packages/audio/test/runtime.test.ts` check that `mayPlay` agrees with `playVoice` in every state. Mutants that ignore the probe, skip the mid-render cancel, keep PCM while hidden, drop the runtime gate, or make the runtime probe context-only each fail.
 - **Wiring** (`main.ts`, loaded lazily as its own chunk).
   - The surface vista request sets the world's bed (`request.biomeKey`); the vista teardown clears it.
   - The visibility and pageshow handlers hide and restart.

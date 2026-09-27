@@ -258,6 +258,9 @@ export interface TameGreetingAudioOwner {
 }
 export interface DecorativeVoicePort {
   playVoice(request: AudioVoiceRequest): AudioVoiceStartResult;
+  /** True exactly when `playVoice` could start a decorative voice now (the same owner gates, then the runtime's running gate). A
+   * producer asks before rendering, so no PCM is synthesized or retained for playback that would be refused (C105). */
+  mayPlay(): boolean;
   /** D15 Stage 3: stop a voice THIS port started (a looping bed or music the soundscape owns); any other id is refused (false). */
   stopVoice(voiceId: string): boolean;
 }
@@ -1404,6 +1407,8 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
   decorativeVoicePort(): DecorativeVoicePort {
     const mine = new Set<string>();
     return Object.freeze({
+      mayPlay: (): boolean => !this.#disposed && !this.#hidden && this.#answerable
+        && enabledMasterPolicy(safePolicy(this.#readPolicy)) && this.#runtime.mayPlay(),
       playVoice: (request: AudioVoiceRequest): AudioVoiceStartResult => {
         if (this.#disposed || this.#hidden || !this.#answerable) return Object.freeze({ kind: 'rejected', reason: 'not-running' });
         if (!enabledMasterPolicy(safePolicy(this.#readPolicy))) return Object.freeze({ kind: 'rejected', reason: 'muted' });

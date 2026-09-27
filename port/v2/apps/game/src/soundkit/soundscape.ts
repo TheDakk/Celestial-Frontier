@@ -5,7 +5,11 @@
    admission, categories, ducking and budgets rule every request. Kit lifecycle: the bed never outlives its reason (setAmbience(null)
    stops it at once), a hidden tab stops everything, and visibility RESTARTS the bed and the loop. Renders are JOBS run in ≤ `sliceMs`
    slices on injected timers (never a long frame); buffers live in a byte-bounded LRU (≤ 24 MiB decoded). The gap before the next calm
-   piece comes from a PRESENTATION stream seeded by the caller — never gameplay RNG, never the wall clock. */
+   piece comes from a PRESENTATION stream seeded by the caller — never gameplay RNG, never the wall clock.
+   ADMISSION (C105, 2026-09-27): nothing is synthesized for playback the owner would refuse. Before a render is queued, before every
+   render slice and after a refused start, the port's `mayPlay()` probe is asked; while it says no (audio not yet activated, muted,
+   hidden, not answerable) queued renders are cancelled, every decoded buffer is released, and a cheap probe retries every RETRY_MS,
+   restarting the bed and the score once audio is admitted. While admitted, rendering, caching and playback are unchanged. */
 import { mulberry32 } from '@cf/domain-rand';
 import type { AudioContextLike, AudioGainNodeLike, AudioNodeLike, AudioVoiceGraph, AudioVoiceRequest, AudioVoiceReservation, AudioVoiceStartResult } from '@cf/audio';
 import type { BiomeProfileKeyV1 } from '@cf/domain-biome-profile';
@@ -17,7 +21,11 @@ import { MUSIC_RATE, musicJobV1, musicPieceV1, type MusicStateV1 } from './music
 export const DECODED_CEILING_BYTES = 24 * 1024 * 1024;
 export const CALM_GAP_MS = Object.freeze({ min: 120_000, max: 300_000 });
 export const RETRY_MS = 4_000;
-export interface SoundscapePortV1 { playVoice(request: AudioVoiceRequest): AudioVoiceStartResult; stopVoice?(voiceId: string): boolean }
+export interface SoundscapePortV1 {
+  playVoice(request: AudioVoiceRequest): AudioVoiceStartResult; stopVoice?(voiceId: string): boolean;
+  /** Admission probe: false while playback would be refused. Absent = always admitted (the start result still rules). */
+  mayPlay?(): boolean;
+}
 export interface SoundscapeOptionsV1 {
   readonly port: SoundscapePortV1;
   /** Injected timer: run `fn` after `ms`; returns a cancel. */
@@ -33,7 +41,9 @@ export type StingV1 = 'victory' | 'discovery' | 'defeat' | 'triumph';
 export interface AmbienceTargetV1 { readonly biome: BiomeProfileKeyV1; readonly timeOfDay?: 'day' | 'twilight' | 'night' }
 export interface SoundscapeStatusV1 {
   readonly hidden: boolean; readonly ambienceKey: string | null; readonly ambienceVoices: readonly string[]; readonly musicState: MusicStateV1 | 'none';
-  readonly musicPiece: string | null; readonly musicVoice: string | null; readonly nextPieceInMs: number | null; readonly residentBytes: number; readonly log: readonly string[];
+  readonly musicPiece: string | null; readonly musicVoice: string | null; readonly nextPieceInMs: number | null; readonly residentBytes: number;
+  /** Renders queued or running (0 whenever audio is not admitted). */
+  readonly pendingRenders: number; readonly log: readonly string[];
 }
 export interface SoundscapeV1 {
   setAmbience(target: AmbienceTargetV1 | null): void;
@@ -79,10 +89,14 @@ export function createSoundscapeV1(o: SoundscapeOptionsV1): SoundscapeV1 {
     for (const [k, v] of cache) { if (resident <= DECODED_CEILING_BYTES) break; if (pinned.has(k) || k === key) continue; cache.delete(k); resident -= bytesOf(v); note(`evicted ${k}`); }
   };
   let hidden = false, disposed = false;
+  const admitted = (): boolean => !hidden && !disposed && (o.port.mayPlay?.() ?? true);
+  /** Release every decoded buffer: nothing may be retained for playback that is not admitted (live voices hold their own copies). */
+  const releasePcm = (why: string): void => { if (cache.size === 0) return; cache.clear(); resident = 0; note(`released decoded audio: ${why}`); };
   // ---- the job runner: one job at a time, sliced ----
   const queue: { key: string; job: Generator<void, Buf | null>; done: (b: Buf | null) => void }[] = []; let running = false, cancelRun: (() => void) | null = null;
   const pump = (): void => {
     cancelRun = null; if (disposed) return; const head = queue[0]; if (!head) { running = false; return; }
+    if (!admitted()) { dropRenders('not admitted'); return; }
     const until = o.nowMs() + slice;
     for (;;) { const s = head.job.next(); if (s.done) { queue.shift(); head.done(s.value); break; } if (o.nowMs() >= until) break; }
     cancelRun = o.schedule(pump, 0);
@@ -93,6 +107,14 @@ export function createSoundscapeV1(o: SoundscapeOptionsV1): SoundscapeV1 {
     queue.push({ key, job: job(), done: (b) => { if (b) remember(key, b, pinnedKeys()); done(b); } });
     if (!running) { running = true; cancelRun = o.schedule(pump, 0); }
   };
+  /** Cancel every queued render (their results are never delivered), release the PCM, and retry what was waiting once admitted. */
+  const dropRenders = (why: string): void => {
+    cancelRun?.(); cancelRun = null; running = false; const dropped = queue.length; queue.length = 0; releasePcm(why);
+    if (dropped) note(`cancelled ${dropped} render(s): ${why}`);
+    if (hidden || disposed) return;
+    if (ambTarget && ambVoices.length === 0) scheduleAmbienceRetry();
+    if (musicPiece && !musicVoice) { musicPiece = null; clearMusicTimer(); musicTimer = o.schedule(() => { musicTimer = null; resumeMusic(); }, RETRY_MS); }
+  };
   // ---- ambience ----
   let ambTarget: AmbienceTargetV1 | null = null, ambKey: string | null = null, ambVoices: string[] = [], ambRetry: (() => void) | null = null;
   const pinnedKeys = (): ReadonlySet<string> => new Set([...(ambKey ? [`bed:${ambTarget?.biome}`] : []), ...(ambTarget ? [`weather:${ambiencePlanV1(ambTarget.biome).weather}`] : []), ...(musicPiece ? [`music:${musicPiece}`] : [])]);
@@ -101,9 +123,10 @@ export function createSoundscapeV1(o: SoundscapeOptionsV1): SoundscapeV1 {
     if (!ambTarget || hidden || disposed) return;
     const plan = ambiencePlanV1(ambTarget.biome, ambTarget.timeOfDay ?? 'day'), key = `${plan.biome}:${ambTarget.timeOfDay ?? 'day'}`; ambKey = key;
     if (plan.family === 'silence') { note(`ambience ${plan.biome}: airless — silence`); return; }
+    if (!admitted()) { note(`ambience ${plan.biome}: deferred (audio not admitted)`); releasePcm('ambience deferred'); scheduleAmbienceRetry(); return; }
     const play = (cueId: string, b: Buf | null): void => { if (!b || hidden || disposed || ambKey !== key) return;
       const r = o.port.playVoice(soundscapeVoiceRequestV1(cueId, b, true, plan.timeOfDayDb, o.phone === true));
-      if (r.kind === 'started') { ambVoices.push(r.voiceId); note(`${cueId} started`); } else { note(`${cueId} ${r.kind}:${'reason' in r ? r.reason : ''}`); scheduleAmbienceRetry(); } };
+      if (r.kind === 'started') { ambVoices.push(r.voiceId); note(`${cueId} started`); } else { note(`${cueId} ${r.kind}:${'reason' in r ? r.reason : ''}`); if (!admitted()) releasePcm('start refused'); scheduleAmbienceRetry(); } };
     render(`bed:${plan.biome}`, () => (function* () { const b: StereoBufferV1 | null = yield* bedJobV1(plan); return b ? ({ kind: 'stereo', b } as Buf) : null; })(), (b) => play(`ambience:bed:${plan.family}`, b));
     if (plan.weather && o.phone !== true) { const w = plan.weather;
       render(`weather:${w}`, () => (function* () { const b = yield* weatherJobV1(w, plan.seed); return { kind: 'stereo', b } as Buf; })(), (b) => play(`ambience:weather:${w}`, b)); }
@@ -114,11 +137,12 @@ export function createSoundscapeV1(o: SoundscapeOptionsV1): SoundscapeV1 {
   const clearMusicTimer = (): void => { musicTimer?.(); musicTimer = null; nextAt = null; };
   const stopMusic = (): void => { if (musicVoice) o.port.stopVoice?.(musicVoice); musicVoice = null; musicPiece = null; };
   const playPiece = (id: string, loop: boolean, then: (() => void) | null): void => {
+    if (!admitted()) { note(`music ${id} deferred (audio not admitted)`); musicPiece = null; releasePcm('music deferred'); clearMusicTimer(); musicTimer = o.schedule(() => { musicTimer = null; resumeMusic(); }, RETRY_MS); return; }
     musicPiece = id;
     render(`music:${id}`, () => (function* () { const s = yield* musicJobV1(musicPieceV1(id)); return { kind: 'mono', samples: s, rate: MUSIC_RATE } as Buf; })(), (b) => {
       if (!b || hidden || disposed || musicPiece !== id) return;
       const r = o.port.playVoice(soundscapeVoiceRequestV1(MUSIC_CUE[id.startsWith('sting') ? id : musicPieceV1(id).state === 'calm' ? 'calm' : id] ?? 'music:title', b, loop, 0, o.phone === true));
-      if (r.kind !== 'started') { note(`music ${id} ${r.kind}:${'reason' in r ? r.reason : ''}`); musicPiece = null; clearMusicTimer(); musicTimer = o.schedule(() => { musicTimer = null; resumeMusic(); }, RETRY_MS); return; }
+      if (r.kind !== 'started') { note(`music ${id} ${r.kind}:${'reason' in r ? r.reason : ''}`); musicPiece = null; if (!admitted()) releasePcm('start refused'); clearMusicTimer(); musicTimer = o.schedule(() => { musicTimer = null; resumeMusic(); }, RETRY_MS); return; }
       musicVoice = r.voiceId; note(`music ${id} started${loop ? ' (loop)' : ''}`);
       if (!loop && then) { const ms = Math.ceil(((b.kind === 'mono' ? b.samples.length / b.rate : b.b.seconds)) * 1000); clearMusicTimer(); musicTimer = o.schedule(() => { musicTimer = null; musicVoice = null; musicPiece = null; then(); }, ms); }
     });
@@ -157,10 +181,10 @@ export function createSoundscapeV1(o: SoundscapeOptionsV1): SoundscapeV1 {
     },
     setHidden(h) {
       if (h === hidden) return; hidden = h;
-      if (h) { combatTimer?.(); combatTimer = null; stopAmbience(); clearMusicTimer(); stopMusic(); note('hidden: all continuous sound stopped'); return; }
+      if (h) { combatTimer?.(); combatTimer = null; stopAmbience(); clearMusicTimer(); stopMusic(); dropRenders('hidden'); note('hidden: all continuous sound stopped'); return; }
       note('visible: restart'); const t = ambTarget; ambKey = null; if (t) { ambTarget = t; startAmbience(); } resumeMusic();
     },
-    status: () => Object.freeze({ hidden, ambienceKey: ambKey, ambienceVoices: Object.freeze([...ambVoices]), musicState, musicPiece, musicVoice, nextPieceInMs: nextAt === null ? null : Math.max(0, nextAt - o.nowMs()), residentBytes: resident, log: Object.freeze([...log]) }),
+    status: () => Object.freeze({ hidden, ambienceKey: ambKey, ambienceVoices: Object.freeze([...ambVoices]), musicState, musicPiece, musicVoice, nextPieceInMs: nextAt === null ? null : Math.max(0, nextAt - o.nowMs()), residentBytes: resident, pendingRenders: queue.length, log: Object.freeze([...log]) }),
     dispose() { if (disposed) return; combatTimer?.(); stopAmbience(); clearMusicTimer(); stopMusic(); cancelRun?.(); queue.length = 0; cache.clear(); resident = 0; disposed = true; },
   };
   return api;

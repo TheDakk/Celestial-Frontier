@@ -3157,6 +3157,22 @@ describe('Arc 7 injected audio runtime', () => {
   });
 });
 
+describe('mayPlay admission probe (C105, 2026-09-27)', () => {
+  it('agrees with playVoice in every runtime state: cold, running, context suspended underneath, running again, muted, hidden, disposed', async () => {
+    const context = new FakeContext(), runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    let n = 0; const agree = (label: string, want: boolean) => { const may = runtime.mayPlay(), r = runtime.playVoice(request(new FakeSource(`probe-${n++}`), { concurrencyGroup: `probe-${n}`, maxConcurrent: 24 }));
+      expect(may, label).toBe(want); expect(r.kind === 'started', `${label}: playVoice agrees`).toBe(want); };
+    agree('cold (never activated)', false);
+    await runtime.activate(); agree('running', true);
+    context.forceState('suspended'); agree('context suspended underneath (no resume by the probe)', false);
+    expect(context.state, 'the probe never resumes the context').toBe('suspended');
+    context.forceState('running'); agree('running again', true);
+    await runtime.setMuted(true); agree('muted', false); await runtime.setMuted(false); await runtime.activate();
+    await runtime.setHidden(true); agree('hidden', false);
+    await runtime.dispose(); agree('disposed', false);
+  });
+});
+
 describe('audio accessibility modes at the master (mono, reduced intensity; 2026-09-25)', () => {
   const limiterValues = (limiter: FakeLimiter) => ({
     threshold: limiter.threshold.value, knee: limiter.knee.value, ratio: limiter.ratio.value,

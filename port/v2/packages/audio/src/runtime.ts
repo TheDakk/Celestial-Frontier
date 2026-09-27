@@ -268,6 +268,9 @@ export interface AudioRuntime {
   setCategoryGain(category: AudioCategory, gain: number): void;
   setHidden(hidden: boolean): Promise<void>;
   playVoice(request: AudioVoiceRequest): AudioVoiceStartResult;
+  /** True exactly when `playVoice` would pass its running gate right now (not disposed, not muted, context running, not hidden). A
+   * cheap probe, so a producer can skip rendering buffers that would be refused; it never activates or resumes anything. */
+  mayPlay(): boolean;
   stopVoice(voiceId: string): boolean;
   /** Entry-bounded metadata/profile cache. This is not a decoded-byte budget. */
   putCached<T>(key: string, value: T, release?: (value: T) => void): boolean;
@@ -1110,6 +1113,12 @@ class InjectedAudioRuntime implements AudioRuntime {
     if (!this.isDisposed() && lifecycle === this.lifecycleGeneration && this.hidden) {
       this.state = 'suspended';
     }
+  }
+
+  mayPlay(): boolean {
+    if (this.isDisposed() || this.muted) return false;
+    this.syncContextState();
+    return this.state === 'running' && !!this.context && !!this.graph && !this.hidden;
   }
 
   playVoice(request: AudioVoiceRequest): AudioVoiceStartResult {
