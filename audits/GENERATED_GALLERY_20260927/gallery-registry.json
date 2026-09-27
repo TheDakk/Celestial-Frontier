@@ -321,5 +321,21 @@
   "note": "spotted; clean",
   "batch": "hand-reference pool / fallback fix",
   "tag": "2026-09-27"
+ },
+ {
+  "family": "quadruped",
+  "name": "Donkey",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-perf-recheck/15-donkey",
+  "note": "clean (dark shoulder stripe is anatomy); after the skin-field cache",
+  "batch": "perf recheck",
+  "tag": "2026-09-27"
+ },
+ {
+  "family": "quadruped",
+  "name": "Lynx",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-perf-recheck/q20-06-lynx",
+  "note": "clean in reaction; Codex saw fragments in other frames",
+  "batch": "perf recheck",
+  "tag": "2026-09-27"
  }
 ]
