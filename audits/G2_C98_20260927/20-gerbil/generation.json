@@ -1,0 +1,13 @@
+{
+  "id": "20-gerbil",
+  "name": "Gerbil",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d2ac50c2-2035-493f-8013-b11381b59104.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7df561d470fcec77c2b30d44c08c3e7eefec5296cc82ada7d93cef05cba3bd16",
+  "bytes": 1172434,
+  "promptSha256": "952f3461e859b378906daee79ec859f07d5d149967bfea9944e6730b966752b3",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

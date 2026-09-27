@@ -1,0 +1,13 @@
+{
+  "id": "01-cold-water-fish",
+  "name": "Cold-Water Fish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-80238829-237a-4304-8be2-d93b03aa1f3a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f390eeec34399bd928515352b1aad708a693518643bbccc20178ffeded074997",
+  "bytes": 1280273,
+  "promptSha256": "9eff8051e83aa993287b6ee44e37a5d6af8dc3379b1b2bba3fdc6353395ead92",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,13 @@
+{
+  "id": "09-mudminnow",
+  "name": "Mudminnow",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-b8e9397a-5824-4d0c-bc5e-61ccc2dd6ebf.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e0ffc431f458a57ae600e7e26785da1be110160b2ed32ea477d08c8d457055f3",
+  "bytes": 1186587,
+  "promptSha256": "6ac86225395ae249d9cb1ccb8a192f7117c9faf8656af71007ba1cae93c6f439",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Bumblebee",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "689670daade5e2350d4292cfaf6d04b9ffd8b1f882ed22e0e64edaba39a29536",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "389503f1d6fa08133cf2e75e8c0c5fb78f008c37",
+  "basePromptSha256": "0f3015ba6f847d11b925315a0a8ed71ab56d7d893eea1146d1238000cbc5b823",
+  "layoutCompilerSha256": "1350535b51a7dfa003892da59b6bd088c4d390b17d2cc7cbf4c697e4f6039580",
+  "layoutClarification": "Species identity features FIRST: fat rounded fully furry body; broad bands of black and yellow fuzz; wings small relative to the bulky body. One Earth Bumblebee. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: strict side profile, head RIGHT. All SIX thoracic legs visible in three near/far pairs, each pair offset so the shafts and tarsi are readable from their real attachments. Preserve the full natural abdomen at LEFT. Natural adult wing resting position overrides a generic folded-wing request: dragonfly wings held out flat, damselfly wings closed over back, mayfly wings upright. No invented vertebrate tail, extra legs or hidden-paint declaration.\n\n"
+}

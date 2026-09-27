@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mudminnow",
+  "masterSha256": "e0ffc431f458a57ae600e7e26785da1be110160b2ed32ea477d08c8d457055f3",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

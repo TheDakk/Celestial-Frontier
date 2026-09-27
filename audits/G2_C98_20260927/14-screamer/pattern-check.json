@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Screamer",
+  "masterSha256": "17fed7ce9924b40343db91c341bd786977dbf70cd53bae698d2abe04da671cde",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

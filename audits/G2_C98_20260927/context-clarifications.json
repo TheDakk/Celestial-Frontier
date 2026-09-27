@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Cold-Water Fish",
+    "beforePromptSha256": "9f21b1983b37fe1d5d7ee9a57e770654a75a8c7bae7e5ff7446478e6beba047b",
+    "afterPromptSha256": "9eff8051e83aa993287b6ee44e37a5d6af8dc3379b1b2bba3fdc6353395ead92",
+    "context": "Representative adult cod-like coldwater bony fish, consistent with the canonical chin barbel and blunt snout. Preserve species-correct cod fin layout, with soft fins; do not combine a char body and invented barbel. Head right, horizontal, entire tail visible.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Requested prior-to-generation pose/context only, no measured presence or admission"
+  },
+  {
+    "name": "Osprey",
+    "beforePromptSha256": "ea022b9e15bce2061a0866a2a10f801dd9ba06b835afd9dd46e4a26aa29ae4e7",
+    "afterPromptSha256": "eba0ac77c1825e817cd145710fc8106b0cdb1f6826cce6cdd8e5695efba39844",
+    "context": "Adult Osprey STANDING at rest, both feet visible, naturally folded wings. Canonical M-shaped wing geometry describes the deployed wing, not the resting silhouette; do not spread or amputate the wings to force an M in this standing reference. Retain the eye mask, hooked bill and real large talons.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Requested prior-to-generation pose/context only, no measured presence or admission"
+  },
+  {
+    "name": "Tern",
+    "beforePromptSha256": "571cf58675d14e4e8625cf623c3f10342a3485dbe85d4186cc01fbeffcd31134",
+    "afterPromptSha256": "7d15a0c4719b9cbd81e5d1ed9dd4ab62baf9a33383ff69fc560261a7181796b2",
+    "context": "Adult tern STANDING at rest with naturally folded long pointed wings above the full forked tail streamers. Flight morphology describes its folded anatomy, not an airborne pose. Never shorten natural wings or tail to fake separation.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Requested prior-to-generation pose/context only, no measured presence or admission"
+  },
+  {
+    "name": "Petrel",
+    "beforePromptSha256": "bef85b169130f21503939630d97805038ac317723b24ce0d7187351f6a52ce1e",
+    "afterPromptSha256": "303bff858ee4f2505a0e931e64dc3855790a166c0e733115f969f427f0487e36",
+    "context": "Adult petrel STANDING at rest on both real webbed feet, wings naturally folded. Preserve tubular nostrils on the upper bill and the natural feather/tail lengths; canonical swept-back wings describe flight capability, not a flight pose here.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Requested prior-to-generation pose/context only, no measured presence or admission"
+  },
+  {
+    "name": "Skua",
+    "beforePromptSha256": "6bd3b78da07dc7fae94132790a4af88369743d94bc87cc589f45717b6b6ab800",
+    "afterPromptSha256": "7ca468c1ab2c195ed279853e2a910c0c079f80618b6bc567804af201ab7ff2fd",
+    "context": "Adult skua STANDING at rest with folded wings and visible complete tail. Retain natural white primary feather patches where they are visible in the fold; do not display an invented white stripe on the body or spread the wings to fake a flight marking.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Requested prior-to-generation pose/context only, no measured presence or admission"
+  },
+  {
+    "name": "Honeybee",
+    "beforePromptSha256": "f87d13b8050ab9785c2cf19b48505074e2a468a44f82b6a389cbc49123784da6",
+    "afterPromptSha256": "4bdd0a4583f04d163f4015bb21dbab6e5a9c6752529a907bff5c54ec79e1f9ab",
+    "context": "Adult FEMALE WORKER honeybee resting on six clearly separate thoracic legs, not flying. Preserve both elbowed antennae, amber-black abdominal bands and the actual hind-leg pollen baskets; four clear veined wings in two pairs, naturally at rest with slightly offset readable edges. Do not turn pollen baskets into extra legs or replace small hindwings with large duplicate forewings.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Requested prior-to-generation pose/context only, no measured presence or admission"
+  },
+  {
+    "name": "Bumblebee",
+    "beforePromptSha256": "689670daade5e2350d4292cfaf6d04b9ffd8b1f882ed22e0e64edaba39a29536",
+    "afterPromptSha256": "b022b604accb75f6b2fb56d1f6c0b02452406bed5df38af917830a884107f743",
+    "context": "Adult female worker bumblebee at rest, six separate legs with readable shafts and feet, two elbowed antennae and two natural pairs of small clear wings over the bulky furry body. Black/yellow fuzzy bands first; no flight pose or oversized wasp wings.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Requested prior-to-generation pose/context only, no measured presence or admission"
+  }
+]

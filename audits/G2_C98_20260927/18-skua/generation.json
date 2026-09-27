@@ -1,0 +1,13 @@
+{
+  "id": "18-skua",
+  "name": "Skua",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-b60a903c-3b3e-4b22-8287-c30388d37196.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "569ff41118ef546d0c246ce98c8cba1c2ec18a8685e6cbe1d137e28a33778193",
+  "bytes": 1275139,
+  "promptSha256": "7ca468c1ab2c195ed279853e2a910c0c079f80618b6bc567804af201ab7ff2fd",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,13 @@
+{
+  "id": "07-remora",
+  "name": "Remora",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-38d3d4b8-be10-4e81-a6c2-d530805761bc.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3b920be4355f8c30a89756b78591ad71a010f2b05079ff9599387e97698a512a",
+  "bytes": 1106274,
+  "promptSha256": "1ca7bb9347a29f5e3fc727d5dcb705e21b912ab68716b17ae77f8af44559e191",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

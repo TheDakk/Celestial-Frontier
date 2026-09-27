@@ -1,0 +1,13 @@
+{
+  "id": "19-shrew",
+  "name": "Shrew",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-509475bb-1b12-4a20-9624-8be19a8d430a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "61834feb7a501d2783e96c639fe48c1d018577de21b425c89e0ae66cc85446be",
+  "bytes": 1178020,
+  "promptSha256": "11ac81d697e15920358b5b2577cbfbeb4fd2f78d7423b969f3104710882863ab",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

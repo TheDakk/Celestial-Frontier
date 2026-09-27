@@ -1,0 +1,13 @@
+{
+  "id": "08-icefish",
+  "name": "Icefish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-79b0a5d5-b403-4b04-958c-ab06cec305cc.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2462810fa8bbac3ef12b25e13284553deded198bf181af72d491dd6273173afa",
+  "bytes": 1238322,
+  "promptSha256": "e123eafc843a0e979d28098c87d848ac54b35f41b5e33835918face8856e8482",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
