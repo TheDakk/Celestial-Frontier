@@ -1,0 +1,13 @@
+{
+  "id": "16-vole",
+  "name": "Vole",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-6bc16052-9fa0-454d-9453-52d124cb8318.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "11ae9de78d6e1cefba5f441abc450270b8f38523467f8c43720d6224960aa886",
+  "bytes": 1349273,
+  "promptSha256": "e9f8ba50e5b61b667efba94a6abddcf1fdd0b3b6eb8a73964aeea1b4c4e3692a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,13 @@
+{
+  "id": "11-bittern",
+  "name": "Bittern",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-58da93c0-4b97-4ee2-b1a5-cf28941fd4b8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2cf9f5ec5a2c99a1c33af1a7c4695087193e1845e9df439d59a848475f86a8ee",
+  "bytes": 1201813,
+  "promptSha256": "2ef3e3aa253dd03fb1d863816e5326204e989cb15bf79029c68c9dc6230c7db0",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

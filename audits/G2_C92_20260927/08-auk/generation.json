@@ -1,0 +1,13 @@
+{
+  "id": "08-auk",
+  "name": "Auk",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-7d19c4fd-6853-43cc-89fa-5a80ac1462b4.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4da038685b2ab47e7c5c42648935747dfdd86281c6c12c91140fcac807150ba3",
+  "bytes": 1182427,
+  "promptSha256": "e8271cf73ef9c7a3da5d76e053925487d4b400a08bdac37c4e4b387198d431a0",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

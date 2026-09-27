@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Boxfish",
+  "masterSha256": "27162f2b3e6c38720acdffe842c41f4d6161c4376909d45ee44062f5714a2100",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Triggerfish",
+  "masterSha256": "f551eae31ae56d54e7588b2348287a927994e89e78151f32ecd0f1ff983eebc4",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

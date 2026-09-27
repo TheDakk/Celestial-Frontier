@@ -1,0 +1,91 @@
+{
+  "name": "Orchid Bee",
+  "family": "insect",
+  "species": {
+    "name": "Orchid Bee",
+    "aspect": 1.9,
+    "headFrac": 0.25,
+    "eyes": "normal",
+    "posture": "flying",
+    "mustRead": [
+      "brilliant metallic green, blue or gold body",
+      "extremely long tongue trailing back beneath the body",
+      "swollen polished hind tibia on males"
+    ],
+    "note": "shiny and jewel-like rather than fuzzy - it should not read as a striped honeybee"
+  },
+  "genome": {
+    "seed": 1111544913,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 8,
+    "body": 4,
+    "loco": 8,
+    "trait": 3,
+    "size": 4,
+    "diet": 4,
+    "head": 3,
+    "limbs": 3,
+    "skin": 6,
+    "tail": 5,
+    "pattern": 7,
+    "eyes": 2,
+    "behavior": 9,
+    "habitat": 5,
+    "detail": 7,
+    "accent": 13,
+    "temper": 3,
+    "sense": 6,
+    "repro": 5,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Orchid Bee"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Orchid Bee\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1111544913\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"3\"]]]]",
+  "index": 91,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

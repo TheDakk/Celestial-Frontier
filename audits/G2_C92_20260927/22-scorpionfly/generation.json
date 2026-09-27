@@ -1,0 +1,13 @@
+{
+  "id": "22-scorpionfly",
+  "name": "Scorpionfly",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-406e0c9e-6ca5-47fb-a819-d4521090f4a8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0274e0580dad342a521dc0f5cfbdcf7f0bed9161ce06855370b29d736b6daaa3",
+  "bytes": 1190532,
+  "promptSha256": "50cd11abbb11fbe537e268cadf511ea768c2135a0d18767c7d4b4c823d4a2d10",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

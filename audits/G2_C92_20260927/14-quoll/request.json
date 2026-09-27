@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Quoll",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "186d5b98256727d8af5f335744a6c5f48b9f98514cbf12ffbc1f2a5c4b0d1764",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "small-clawed-mammal",
+  "authoringCreated": false,
+  "sourceHead": "968770093a661993ab4ef04b9f234a26002cdc76",
+  "basePromptSha256": "2459da274117348415afca9514b4c5041e8f992e5aec5f5c027652dece98572d",
+  "layoutCompilerSha256": "20078d5ecddab064447a5dd99ba457dc349fce7d692bc4125b585ac1bb17b4c9",
+  "layoutClarification": "Species identity features FIRST: white spots scattered over the back and the tail; pointed pink snout; long bushy tail on a low slinking body. One Earth Quoll. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: quiet planted walking STRIDE, all FOUR legs clearly APART from their body attachments down to each foot, with visible background gaps. Offset near and far forelegs and near and far hindlegs naturally. Keep the real species tail visibly attached and continuous; preserve a naturally short tail. No rearing, seated pose, crossed legs or duplicate limb. Choose a natural side-view head pose exposing BOTH ears as separate complete silhouettes, including BOTH ear tips; offset the far ear visibly above or beside the near ear. The true tail must sit clear of the body and legs from its visible root to its tip. Do not invent an ear, lengthen a short tail, or add a tail to a naturally tailless animal.\n\n"
+}

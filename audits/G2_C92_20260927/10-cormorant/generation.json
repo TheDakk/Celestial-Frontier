@@ -1,0 +1,13 @@
+{
+  "id": "10-cormorant",
+  "name": "Cormorant",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-bde5ee22-dd7f-4e0e-8ada-501694f13b09.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6f696f246d44710bf9e523595be6f8f2c14b50f70c322b43de88c8e8cf635c5d",
+  "bytes": 1222669,
+  "promptSha256": "8d1bdbac7955e79f8b4648e4dc1aa41e81cc900cc6696c26698f730492f587cc",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

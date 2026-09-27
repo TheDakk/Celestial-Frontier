@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Swan",
+  "masterSha256": "210df821885046e3b0d94743e6f725a189686a7bce8757f9588fa15df720f675",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

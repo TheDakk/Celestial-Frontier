@@ -1,0 +1,13 @@
+{
+  "id": "21-dobsonfly",
+  "name": "Dobsonfly",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-03d9adbc-f13f-4206-8b81-072a273fa835.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2f8564b19926fb7fc154dc5bb2ec39155e0e6d5ba186b9947e4e5e821c5e0dcc",
+  "bytes": 1215098,
+  "promptSha256": "cdecda56534e0d9b3b2371c39a89fd7d55831dec1a893c0966c9e84d0ed83f8f",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
