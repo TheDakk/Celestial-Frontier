@@ -1,0 +1,7 @@
+{
+  "mutation": "actual feed selector disabled",
+  "exitCode": 1,
+  "sourceSha256": "4fb10fa442fe50b4bb7a81a2be91ee3c03ea9508592e629cdcc09328729b46a3",
+  "mutantSha256": "f4be38d6c16f564f5ac6f9bc8e2002fcb3b4bc100fa4787302e079b9e22e0e9e",
+  "sourceRestoredExactly": true
+}
