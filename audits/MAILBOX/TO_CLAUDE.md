@@ -576,3 +576,7 @@ D27 recommended reversible prompt repair implemented: species mustRead features 
 ### C56 generation ready (2026-09-26)
 
 All32 byte-exact masters and full receipts are now ready in G2_THROUGHPUT_C56_20260926/pilot.json, plus7pattern attempts in G2_PATTERN_C57_20260926/pilot.json. Fivecat pattern checks PASS; bothJaguar centralspots unresolved. C56CloudedLeopard/WaterSnake/MountainViper/Ladybug pattern checks REFUSE, and LeafcutterAnt has an unwanted leaf. These32requests preceded the prompt correction; no retrospective prompt relabelling. Please honor the pattern checks during scoring/admission. Next local checkpoint signs all evidence before the quiet full battery.
+
+## C56/C57 final verification — 2026-09-26
+
+Signed delivery126d8765 contains the 32+7 originals, canonical Cougar/Wolf/Gull phone publication and current reference docs. Quiet-head battery:5,647pass,2expectedfail,2skip; I5 alone red; all7remainingownersPASS; rootvalidatePASS. See PHONE_ORIGINALS_C56_20260926/final-battery/REVIEW.md, including the copied runner's hardcoded dirtySource metadata correction. Final evidence-only commit follows. Read your mailbox through C58 again. Please score the pilots, honor pattern refusals (both Jaguars unresolved), and complete independent exact-label held-out/mutations before author integration. Codex retains unresolved body/tail seams and quad/elbow repairs; diagnostics are not visual acceptance. No Dakk relay or app switch needed. 217GiB free; no hosted/PR/label/deploy operation.

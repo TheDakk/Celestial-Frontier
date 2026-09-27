@@ -63,9 +63,9 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
 ## Current Codex sprint handoff — 2026-09-26, C56/C57 verification
 
 ### Branch, goal and authority
-- `/Users/dakk/Projects/celestial-frontier-openai-mac`, branch `openai/mac`. Signed no-ff23bae15b integrates requestedf50abbf7. Claude session3 handoff above preserved byte-identically. Signed native/placement checkpoint046914af. Final batch commit follows; resolve this lane locally.
+- `/Users/dakk/Projects/celestial-frontier-openai-mac`, branch `openai/mac`. Signed no-ff23bae15b integrates requestedf50abbf7. Claude session3 handoff above preserved byte-identically. Signed native/placement checkpoint046914af. Signed delivery checkpoint126d8765; final evidence commit follows. Resolve this lane locally.
 - Dakk's goal remains every Earth creature's own generated painting, full movement in battle biomes, ONE visual pass at the end. D24 generated-family scoring and D26finisher are live. D25shopping off. C55–C58 read in absolute read-only mailbox; newer signed Claude541b7d42 not merged in this batch.
-- Signed only; own normal push after required local battery with I5 the only accepted red and fresh budget/public/workflow check. No PR/label/hosted/develop/main/release/deploy. ≥40GiB free; last218GiB,3permanentworktrees/no stashes.
+- Signed only; own normal push after required local battery with I5 the only accepted red and fresh budget/public/workflow check. No PR/label/hosted/develop/main/release/deploy. ≥40GiB free; last217GiB,3permanentworktrees/no stashes.
 
 ### Completed and ready for Claude
 - **Tail seam decision implemented:** exact raster ownership via existing painter-label contract. Existing split already welds anatomical body5/caudal; no sibling exception/limit change. Cod4550/Perch14/Carp109/ArcticFox7554gap pixels all retained, no sourceRGBA/landmark/recipe/other-owner changes. Five controls, all4static/actions/presentation and native0/0pass. Evidence TAIL_LABELS_C56_20260926. Claude C58 confirms route and owns held-out/mutation checks before author adoption. Perch/Carp are small-gap regressions, not proof of a genuinely gapped held-out fish.
@@ -81,6 +81,6 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
 - Prior6fitqueue stillopen. C57newGoose/Quailnativefailures,SnowLeopardcompression,Termiteintake refusal remain Claude findings to preserve. I5, S4/missions/Outposts, C51phonekeyefficiency remain in their existing queues; generatedart stayspriority.
 
 ### Verification / next steps
-- Rootvalidate and focused controls pass; full current-head develop owner plus7remainingowners is the next running checkpoint. Record exactresults before push. No sealed gates or baselines changed.
+- Rootvalidate and focused controls PASS. Full battery on quiet signed126d8765:5647pass,2expectedfail,2skip; I5 producer-authority mismatch is the ONLY failure. All7remainingownersPASS. final-battery/results.json retains the copied runner's hardcoded dirtySource:true; this was not a measurement (tracked tree clean before/after). See final-battery/REVIEW.md. Fresh public/UNFROZEN check and remote workflows byte-identical; no push trigger. No sealed gates or baselines changed.
 - Current references LOCAL_AI_GENERATION,CREATURE_ANIMATION and codebase reference updated. Nativeprepared49.7MB scratch inventoried byhash and pruned; retained originals/proofs unchanged. Keep newest2previewpackages.
-- Codex: finish finalbattery/report/push, then remainingtail/quad/elbowrepairs. Claude: consume signedlane directly; score32C56 and7patterncandidates using theirpilot shapes, honoring patternrefusals; integrate exactlabelsonlyafter independentheld-out/mutations; continueG1/native. Dakk need not relay or open another app; finalvisualpass remains at end.
+- Codex: remainingtail/quad/elbowrepairs after signed own-branch handoff. Claude: consume signedlane directly; score32C56 and7patterncandidates using theirpilot shapes, honoring patternrefusals; integrate exactlabelsonlyafter independentheld-out/mutations; continueG1/native. Dakk need not relay or open another app; finalvisualpass remains at end.
