@@ -1,0 +1,157 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C95_20260927",
+ "tag": "g2c95",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "02-rabbitfish",
+  "03-sea-bass",
+  "04-bonefish",
+  "05-tigerfish",
+  "06-coelacanth",
+  "07-gannet",
+  "08-booby",
+  "09-bustard",
+  "10-seriema",
+  "11-chicken",
+  "15-bongo"
+ ],
+ "refused": [
+  {
+   "id": "01-cardinalfish",
+   "reason": "extra-anatomy (unassigned): a top appendage of 6.9% paint that no reference appendage lands on"
+  },
+  {
+   "id": "12-rooster",
+   "reason": "unexplained-anatomy: 9.3% of the paint lies away from the body and in no part (reference 1.2%)"
+  },
+  {
+   "id": "13-pronghorn",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 6%)"
+  },
+  {
+   "id": "14-springbok",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+  },
+  {
+   "id": "16-duiker",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 6%)"
+  },
+  {
+   "id": "18-serow",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 6%)"
+  },
+  {
+   "id": "19-butterfly",
+   "reason": "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 13% paint (reference 40%)"
+  },
+  {
+   "id": "20-mosquito",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on"
+  },
+  {
+   "id": "21-black-fly",
+   "reason": "missing-anatomy: part mandible (mandible) covers 4% paint (reference 32%)"
+  },
+  {
+   "id": "22-fly",
+   "reason": "missing-anatomy: part mandible (mandible) covers 10% paint (reference 32%)"
+  },
+  {
+   "id": "23-springtail",
+   "reason": "materials-unknown: no species-group material for profile springtail; the motion kit refuses an unclassified surface"
+  },
+  {
+   "id": "24-cold-adapted-insect",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 7.4% paint that no reference appendage lands on"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "17-nilgai",
+   "static": "INTAKE_REFUSED"
+  }
+ ],
+ "native": [
+  {
+   "id": "02-rabbitfish",
+   "name": "Rabbitfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "03-sea-bass",
+   "name": "Sea Bass",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "04-bonefish",
+   "name": "Bonefish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "05-tigerfish",
+   "name": "Tigerfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "06-coelacanth",
+   "name": "Coelacanth",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "07-gannet",
+   "name": "Gannet",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "08-booby",
+   "name": "Booby",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "09-bustard",
+   "name": "Bustard",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "10-seriema",
+   "name": "Seriema",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "11-chicken",
+   "name": "Chicken",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "15-bongo",
+   "name": "Bongo",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

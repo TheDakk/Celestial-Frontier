@@ -1,0 +1,9 @@
+{
+ "id": "01-cardinalfish",
+ "family": "fish",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 6.9% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}
