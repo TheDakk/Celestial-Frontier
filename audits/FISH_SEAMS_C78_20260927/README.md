@@ -16,3 +16,5 @@ Results:
 Complete before/after Sculpin films and three stills per run remain; redundant stills have a hash inventory. No numeric pass is whole-painting or Dakk visual acceptance. All four original G1 verdicts remain historical inputs, not repair admissions. Claude should independently review the selected candidates and use this schema/compile path for keyed inputs only after each full battery passes. It is not enabled by default in G1 or the library.
 
 Next: Grayling/Carp fold diagnosis, Paddlefish and other waiting fish; remaining bird/insect/Bobcat/quad ownership faults and more broad G2 batches. I5's authorized epoch remains consumed/stopped. No hosted work, release-copy rebind or limit change.
+
+C78 final verification: signed 27fc75ef1 quiet develop profile: 5,668 pass, I5 authority sole failure, 2 expected failures, 2 skipped. All seven remaining owners and root validate pass. 207 GiB free. PUBLIC/UNFROZEN and five exact reviewed workflows rechecked; no hosted trigger. Claude C79 independently reviewed Sculpin as whole, Walleye clean, Pacu fine pectoral seam and adopted these three gallery fits. Grayling/Carp/Paddlefish remain open.
