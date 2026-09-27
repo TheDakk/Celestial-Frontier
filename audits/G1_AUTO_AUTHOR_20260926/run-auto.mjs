@@ -10,6 +10,8 @@ import {createHash} from 'node:crypto';
 import {summarizeStaticOutcome} from '../../port/v2/tools/anatomy-verify/static-outcome.mjs';
 import {autoAuthor, autoAuthorShop, prepareSubject, mirrorSubject, referenceStats, skeletonStats} from '../../port/v2/tools/anatomy-verify/auto-author.mjs';
 import {serpentAuthor} from '../../port/v2/tools/anatomy-verify/serpent-author.mjs';
+import {admitReviewedPresence} from '../../port/v2/tools/painted-creature/reviewed-presence.mjs';
+import {resolveAnatomyInventory} from '../../port/v2/tools/creature-animation/anatomy-inventory.mjs';
 const HERE = import.meta.dirname, ROOT = path.resolve(HERE, '../..');
 const require = createRequire(path.join(ROOT, 'port/v2/package.json'));
 const sharp = createRequire(require.resolve('free-tex-packer-core'))('sharp');
@@ -25,7 +27,11 @@ const shopArg = args.find((x) => x.startsWith('--shop=')), shopN = shopArg ? Num
 const fallbackArg = args.find((x) => x.startsWith('--fallback=')), fallbackN = fallbackArg ? Number(fallbackArg.slice(11)) : 0;
 const { familyContract, familyContactChains } = await import(path.join(ROOT, 'port/v2/tools/creature-animation/family-contracts.mjs'));
 const topkArg = args.find((x) => x.startsWith('--topk=')), topK = topkArg ? Number(topkArg.slice(7)) : 3;
-const useChains = args.includes('--chains'); const useSerpentStrips = args.includes('--serpent-strips'), useTailLabels = args.includes('--tail-labels'), useMergeJoint = args.includes('--merge-joint-labels'); const legMatchArg = args.find((x) => x.startsWith('--leg-match=')), legMatch = legMatchArg ? Number(legMatchArg.slice(12)) : 0;
+const useChains = args.includes('--chains'); /* --reviewed-presence=<json [{id, review}]> (labelled): a Codex reviewed-presence declaration (cf.reviewed-optional-absence/v1, bound to the
+ * exact master/subject/prompt hashes) admitted by admitReviewedPresence; AFTER the author's verdict, only the joints the admitted
+ * inventory excludes are dropped (as Codex's C89 Hyrax adapter). Never infers absence; a failed admission leaves the packet unchanged. */
+const reviewedArg = args.find((x) => x.startsWith('--reviewed-presence=')), reviewedById = new Map(reviewedArg ? JSON.parse(fs.readFileSync(path.join(ROOT, reviewedArg.slice(20)), 'utf8')).map((e) => [e.id, JSON.parse(fs.readFileSync(path.join(ROOT, e.review), 'utf8'))]) : []);
+const useSerpentStrips = args.includes('--serpent-strips'), useTailLabels = args.includes('--tail-labels'), useMergeJoint = args.includes('--merge-joint-labels'); const legMatchArg = args.find((x) => x.startsWith('--leg-match=')), legMatch = legMatchArg ? Number(legMatchArg.slice(12)) : 0;
 const useSkeleton = args.includes('--skeleton'), graphOf = (family) => familyContract(family).graph;
 const terminalsOf = (family) => { try { return new Set(familyContactChains(familyContract(family)).map((c) => c.terminal).filter(Boolean)); } catch { return new Set(); } };
 const OUT = path.join(HERE, 'auto' + (tag ? '-' + tag : ''));
@@ -148,8 +154,16 @@ function runCandidate(s, rank, dir) {
     const packet = path.join(dir, 'packet'); fs.mkdirSync(packet, { recursive: true });
     fs.copyFileSync(path.join(s.dir, 'master.png'), path.join(packet, 'master.png'));
     fs.copyFileSync(path.join(s.dir, 'subject-source.json'), path.join(packet, 'subject-source.json')); // species metadata, not anatomy
-    fs.writeFileSync(path.join(packet, 'authoring.json'), JSON.stringify(res.authoring, null, 2) + '\n');
-    fs.writeFileSync(path.join(packet, 'presence.json'), JSON.stringify(res.presence, null, 2) + '\n');
+    let authoringOut = res.authoring, presenceOut = res.presence;
+    if (res.verdict === 'ADMIT' && reviewedById.has(s.id)) { const review = reviewedById.get(s.id), rd = s.dir;
+      try { const admitted = admitReviewedPresence({ masterBytes: fs.readFileSync(path.join(rd, 'master.png')), subjectBytes: fs.readFileSync(path.join(rd, 'subject-source.json')), promptBytes: fs.readFileSync(path.join(rd, 'prompt.txt')), review });
+        const allowed = new Set(resolveAnatomyInventory(familyContract(res.authoring.family), admitted).joints);
+        const removed = res.authoring.parts.filter((p) => !allowed.has(p.joint)); if (removed.some((p) => p.id === res.authoring.remainderPart)) throw Error('cannot remove the remainder');
+        authoringOut = { ...res.authoring, landmarksPx: Object.fromEntries(Object.entries(res.authoring.landmarksPx).filter(([j]) => allowed.has(j))), parts: res.authoring.parts.filter((p) => allowed.has(p.joint)) };
+        presenceOut = admitted; row.reviewedPresence = { absent: admitted.absent, removedParts: removed.map((p) => p.id) };
+      } catch (e) { row.reviewedPresence = { refused: String(e.message).slice(0, 160) }; } }
+    fs.writeFileSync(path.join(packet, 'authoring.json'), JSON.stringify(authoringOut, null, 2) + '\n');
+    fs.writeFileSync(path.join(packet, 'presence.json'), JSON.stringify(presenceOut, null, 2) + '\n');
     if ((res.verdict === 'ADMIT' || args.includes('--diagnostic-static')) && !skipStatic) { if (res.verdict !== 'ADMIT') row.diagnosticOnly = 'static run on a REFUSED author (diagnostic; never an admission)';
       const fit = path.join(dir, 'fit');
       if (!fs.existsSync(fit)) { const r = spawnSync(process.execPath, ['port/v2/tools/creature-animation/intake-authored.mjs', packet, fit], { cwd: ROOT, encoding: 'utf8', timeout: 900000 }); fs.writeFileSync(path.join(dir, 'intake.log'), (r.stdout || '') + (r.stderr || '')); }

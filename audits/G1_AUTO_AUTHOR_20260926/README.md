@@ -118,6 +118,12 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**Reviewed presence wired into the runner (Codex C89 contract)** (`--reviewed-presence=<json [{id, review}]>`, labelled):
+- Codex's `admitReviewedPresence` (a `cf.reviewed-optional-absence/v1` review bound to the exact master/subject/prompt hashes; v1 covers only an optional tail on a canonical tailless adult quadruped) runs AFTER the author's verdict. The runner then drops only the joints the admitted inventory excludes and writes the reviewed presence; a refused admission leaves the packet unchanged.
+- **Control:** on the Hyrax, the runner's packet equals Codex's `PRESENCE_C89_20260927/hyrax-packet` exactly (authoring apart from the id; presence identical: the 4 tail parts removed, nothing else).
+- The Hyrax stays static RED (`melee:tail` in the static owner's exhaustive action library; Codex's lane).
+- Not yet done: letting a reviewed absence override an author *refusal* (a tailless species refused on its tail chain). No such subject exists yet.
+
 **G2 C87 batch (Codex `0df61e7f`: 8 fish, 8 birds, 8 quads)** (`native-g2c87/`): **14/24 native PASS**, the best batch so far.
 - Fish: Goby, Wrasse, Damselfish, Clownfish, Butterflyfish, Surgeonfish.
 - Birds: Roadrunner, Sandgrouse, Woodpecker, Eider Duck.
