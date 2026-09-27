@@ -14,6 +14,7 @@ export type CurrentProducerAuthorities = Readonly<{
     budgetMismatches: readonly string[];
   }>;
   compendium: Readonly<{
+    certificate: {ok: boolean; errors: readonly string[]; epoch: string|null; source: string|null};
     measurement: CompendiumMeasurementAuthority;
     producer: CompendiumProducerAuthority;
     measurementBudgetMatches: boolean;

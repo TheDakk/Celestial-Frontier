@@ -66,11 +66,7 @@ const validator = `export function validateBudgetRecord(record, fixtureRowsSha25
 
 `;
 
-export function materialize(directory) {
-  fs.mkdirSync(directory, { recursive: true });
-  // A runtime-only link resolves the exact signed dependency tree. Generated
-  // bytes are location-independent; the epoch binds every target byte.
-  fs.symlinkSync(path.resolve(here, '..'), path.join(directory, 'shared'), 'dir');
+export function materializedSources() {
   const collectorOriginal = fs.readFileSync(path.join(here, 'compendiummem.mjs'), 'utf8');
   const contractOriginal = fs.readFileSync(path.join(here, 'compendiummem-contract.mjs'), 'utf8');
   let contract = contractOriginal;
@@ -113,9 +109,16 @@ export function materialize(directory) {
   ({ collector, contract } = flowPatch({ collector, contract }));
   contract += '\n// painted-owner-helper-sha256: ' + sha256(fs.readFileSync(path.join(here, 'compendiummem-v2-painted.mjs'))) + '\n';
   const outputs = { 'collector.mjs': collector, 'contract.mjs': contract, 'painted.mjs': fs.readFileSync(path.join(here, 'compendiummem-v2-painted.mjs'), 'utf8') };
-  for (const [name, bytes] of Object.entries(outputs)) fs.writeFileSync(path.join(directory, name), bytes);
   const manifest = { originals: { collector: sha256(collectorOriginal), contract: sha256(contractOriginal) },
     generated: Object.fromEntries(Object.entries(outputs).map(([name, bytes]) => [name, sha256(bytes)])) };
+  return { outputs, manifest };
+}
+
+export function materialize(directory) {
+  const { outputs, manifest } = materializedSources();
+  fs.mkdirSync(directory, { recursive: true });
+  fs.symlinkSync(path.resolve(here, '..'), path.join(directory, 'shared'), 'dir');
+  for (const [name, bytes] of Object.entries(outputs)) fs.writeFileSync(path.join(directory, name), bytes);
   fs.writeFileSync(path.join(directory, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
   return manifest;
 }
