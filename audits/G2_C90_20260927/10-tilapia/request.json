@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Tilapia",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "213d6010bd4849314a02ab3284429d2fc0294cf7be5bf1304e9293ea308fceed",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "60246f8e5ef5b58a6bc26155abc5c92a50475d82a2f62a3046ebdd23a0f6ba8b",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "fish",
+  "authoringCreated": false,
+  "sourceHead": "d0cfe4bb29a5b555109c0215ccf7967bef00adb7",
+  "basePromptSha256": "d73ea6b50871e6d672615b3149fb3fcfcce558358490d6bd145f2a2bff5e79c0",
+  "layoutCompilerSha256": "8836e6e9fc676c367b271cf329dab2257d1cc6fe7baf790b8324bbaf9a1146c3",
+  "layoutClarification": "Species identity features FIRST: deep laterally flattened disc of a body; long spiny dorsal fin along the whole back; blunt steep forehead. One Earth Tilapia. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: horizontal fish, head RIGHT and complete caudal tail LEFT; species-correct fin count, finlets, barbels and tail shape. Natural fin rays and fin roots must stay distinct; no detached pieces. Keep the tail stalk continuous.\n\n"
+}

@@ -1,0 +1,105 @@
+[
+  {
+    "name": "Cobra",
+    "before": "9ab0294fb21ae1bccf889443176694cc172cd3ddeed9fbb157f3f86528cfaa53",
+    "after": "0dcbba1652a28e2491b22c3227af46ee829c5bf70630bfacdc6f48066cffd888",
+    "subjectUnchanged": true,
+    "changes": [
+      [
+        "front third of the body reared vertically",
+        "front third of the body extended in the requested low open side profile",
+        2
+      ],
+      [
+        "coiled base with a fixed lidless stare",
+        "uncoiled continuous body with a fixed lidless stare",
+        2
+      ],
+      [
+        "the reared cobra is taller than it is wide",
+        "this cobra is in a low open side profile, retaining the flared rib-supported hood behind its head",
+        1
+      ]
+    ]
+  },
+  {
+    "name": "Viper",
+    "before": "e43a124b3c231e9952b223c11c7a2846cfef205a8acce6bad1d46aa4b9421da9",
+    "after": "54aef6e481eb20ccaf520c2630c0a03f799823bd8cae2b0de5d55a353b53d722",
+    "subjectUnchanged": true,
+    "changes": [
+      [
+        "the coil sits low and flat",
+        "the uncoiled body follows the requested low open side profile",
+        1
+      ]
+    ]
+  },
+  {
+    "name": "Rattlesnake",
+    "before": "bf3eb03764f92f4aac6365a439694323d6e8f5e3a731cb553975e6a08463e96e",
+    "after": "ce0f80b5ad3ad26172ca124591489b8192e3f8d740b18037c3f32482662076c9",
+    "subjectUnchanged": true,
+    "changes": [
+      [
+        "thick body coiled with the neck reared in an S",
+        "thick body extended in one low open S-curve with the head level",
+        2
+      ]
+    ]
+  },
+  {
+    "name": "Cave Snake",
+    "before": "5ee46f6358de8e6d379ecd6e52cde1465327efbad1452328d3a2e56fd1d29461",
+    "after": "a0a3acebfae6efe8f1d91a60c68ebe7d3b653acdcad959007ee258306136f3e0",
+    "subjectUnchanged": true,
+    "changes": [
+      [
+        "limbless coiled rope body",
+        "limbless continuous body in one low open shallow S-curve",
+        2
+      ]
+    ]
+  },
+  {
+    "name": "Squirrel",
+    "before": "2f52f33738eff637dc155b94908fcfd55c4677343098948ffe272752e1a5d5d7",
+    "after": "41c22a505e70f4c75f4e4291db022e1288ab53b9912b9c5fd6381b9fb0df4dae",
+    "subjectUnchanged": true,
+    "changes": [
+      [
+        "bushy plumed tail arched up over the back",
+        "bushy plumed tail arched up behind the rump and clear of the back",
+        2
+      ],
+      [
+        "sitting on the haunches holding food in the forepaws",
+        "all four legs planted in a quiet walking stride with complete toes visible and no food",
+        2
+      ],
+      [
+        "the arched tail makes it read taller than long",
+        "the tail remains naturally plumed and arched, held clear of the walking body",
+        1
+      ]
+    ]
+  },
+  {
+    "name": "Meerkat",
+    "before": "0e1718fd90ce3a85c4ab687292ea3fa74e17a415466f2c5b37273874148d4ecb",
+    "after": "9ff57e5c106898d56b2979f64b6a8474a7b53656bcdbbc189c53de173123d307",
+    "subjectUnchanged": true,
+    "changes": [
+      [
+        "standing bolt upright, propped on the hind legs and tail",
+        "all four legs planted in a quiet walking stride, with the complete tail clear of the legs",
+        2
+      ],
+      [
+        "much taller than wide when sentinel-standing",
+        "shown in an isolated quadrupedal walking stance rather than its habitual sentinel stance",
+        1
+      ]
+    ]
+  }
+]

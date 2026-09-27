@@ -1,0 +1,8 @@
+{
+  "status": "COMPILER_REFUSED_BEFORE_GENERATION",
+  "name": "Meerkat",
+  "reason": "Canonical posture upright rejected despite sole profile route quadruped",
+  "originalLog": "audits/G2_C90_20260927/compile.log",
+  "replacementPacket": "audits/G2_C90_20260927/21-meerkat-v2",
+  "originalImages": 0
+}

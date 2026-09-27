@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Piranha",
+  "masterSha256": "7fe8d38727d1dd7adf742a4313c37cc14bfb1e70fc27ad0754d94cbf9e595dc7",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

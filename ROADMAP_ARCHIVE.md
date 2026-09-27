@@ -1,5 +1,10 @@
 # Archived Codex overnight handoff through C85 — 2026-09-27
 
+## C90 superseded next-step handoff — 2026-09-27
+
+**Next without stopping:** finish C89 evidence push, read mailbox, merge latest signed Claude, then generate `audits/G2_C90_20260927` (six serpents, eight fish, ten quadrupeds). Names and scripts are prepared; no prompt compilation or images yet. Run `compile.mjs`, then `clarify-poses.mjs` BEFORE generation to reconcile exact coiling/sitting/sentinel clauses while retaining original prompts and canonical source. Retain exact originals, review full size, run pattern/framing owners and deliver pilot to Claude. Continue new source-supported repairs between G2 batches. Keep verification quiet in this lane and preserve every red result. Prior handoff and C86–C88 logs are archived verbatim at the top of ROADMAP_ARCHIVE.md.
+
+
 ## Archived at C89 — 2026-09-27 (verbatim prior Codex handoff and C86–C88 batch logs)
 
 ## Current Codex sprint handoff — 2026-09-27, overnight run ongoing

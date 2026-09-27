@@ -1,0 +1,12 @@
+✔ actual compiled prompt preserves canonical identity note: Angelfish (185.884791ms)
+✔ actual compiled prompt preserves canonical identity note: Roadrunner (160.34825ms)
+✔ actual upright Meerkat uses its sole canonical quadruped anatomy route (155.159208ms)
+✔ upright posture cannot invent a missing or ambiguous quadruped route (0.237958ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 752.422833

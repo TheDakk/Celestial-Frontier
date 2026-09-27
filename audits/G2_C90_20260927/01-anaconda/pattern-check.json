@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Anaconda",
+  "masterSha256": "595659a83fa7373ac9c9329221556dd5438da69bc31865b2637c4523bf727f9b",
+  "required": [
+    "dark oval blotches over olive-green skin"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "dark oval blotches over olive-green skin",
+      "status": "PRESENT",
+      "observed": "Heavy muscular olive body with dark oval blotches, high-set eyes and nostrils, uninterrupted low open S-curve, head right and complete tapered tail left. No coils or crossings; head is near the body band. The specimen spans nearly the full width rather than the requested half-canvas size, leaving narrow side margins."
+    }
+  ]
+}

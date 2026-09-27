@@ -1,0 +1,13 @@
+{
+  "id": "10-tilapia",
+  "name": "Tilapia",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-797b9f64-2aea-4b22-99fa-b01edb27faa8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5c691b57b9377be299c10e3577e5df8b85a105a5ed8875e1e847a33ba192b555",
+  "bytes": 1426544,
+  "promptSha256": "213d6010bd4849314a02ab3284429d2fc0294cf7be5bf1304e9293ea308fceed",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,168 @@
+{
+  "id": "10-tilapia",
+  "name": "Tilapia",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "5c691b57b9377be299c10e3577e5df8b85a105a5ed8875e1e847a33ba192b555",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 27967,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 155,
+      "y0": 131,
+      "x1": 322,
+      "y1": 256
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0079,
+        "pixels": 221,
+        "box": {
+          "x0": 203,
+          "y0": 123,
+          "x1": 259,
+          "y1": 130
+        },
+        "attach": {
+          "x": 231,
+          "y": 130,
+          "relX": 0.46,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": 0.2,
+          "y": -0.98
+        },
+        "class": "top",
+        "length": 28.9
+      },
+      {
+        "k": 1,
+        "frac": 0.0309,
+        "pixels": 864,
+        "box": {
+          "x0": 127,
+          "y0": 145,
+          "x1": 157,
+          "y1": 186
+        },
+        "attach": {
+          "x": 157,
+          "y": 165.5,
+          "relX": 0.01,
+          "relY": 0.28
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.03
+        },
+        "class": "rear",
+        "length": 36.3
+      },
+      {
+        "k": 2,
+        "frac": 0.2041,
+        "pixels": 5709,
+        "box": {
+          "x0": 73,
+          "y0": 168,
+          "x1": 201,
+          "y1": 267
+        },
+        "attach": {
+          "x": 164,
+          "y": 235.7,
+          "relX": 0.05,
+          "relY": 0.84
+        },
+        "dir": {
+          "x": -0.93,
+          "y": -0.37
+        },
+        "class": "rear",
+        "length": 113.4
+      },
+      {
+        "k": 3,
+        "frac": 0.0362,
+        "pixels": 1012,
+        "box": {
+          "x0": 323,
+          "y0": 179,
+          "x1": 349,
+          "y1": 242
+        },
+        "attach": {
+          "x": 323,
+          "y": 210.5,
+          "relX": 1.01,
+          "relY": 0.64
+        },
+        "dir": {
+          "x": 0.9,
+          "y": 0.44
+        },
+        "class": "front",
+        "length": 40.8
+      },
+      {
+        "k": 4,
+        "frac": 0.0318,
+        "pixels": 890,
+        "box": {
+          "x0": 214,
+          "y0": 257,
+          "x1": 276,
+          "y1": 291
+        },
+        "attach": {
+          "x": 245,
+          "y": 257,
+          "relX": 0.54,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.2,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 46
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 2,
+      "front": 1,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 224,
+        "x1": 242,
+        "cx": 232.2
+      },
+      {
+        "x0": 250,
+        "x1": 257,
+        "cx": 252.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -11,7 +11,8 @@ const sha=x=>createHash('sha256').update(x).digest('hex');
 /** Use canonical profile candidates, never guess a family from a name or raw procedural limbs. */
 export function libraryFamily(profile,species){
  const candidates=profile?.candidateTemplates??[];
- if(species.posture==='quadruped'&&candidates.includes('quadruped'))return 'quadruped';
+ // A habitual upright pose (Meerkat) does not change a sole canonical quadruped route.
+ if(candidates.includes('quadruped')&&(species.posture==='quadruped'||candidates.length===1))return 'quadruped';
  if(candidates.includes('biped-bird'))return 'biped-bird';
  if(candidates.includes('serpent'))return 'serpent';
  if(candidates.includes('insect'))return 'insect';

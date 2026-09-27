@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Gar",
+  "masterSha256": "ac6b8b40de8153a37c8929262f5f8a1236842e92c2c7e775dd1eb883c95e6fcb",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

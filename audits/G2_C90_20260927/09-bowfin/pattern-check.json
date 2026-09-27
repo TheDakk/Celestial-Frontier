@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bowfin",
+  "masterSha256": "6f388e17a14ab175d83e8cdf14e63ef47b10f8fde079d04862d5810a8bd3ac24",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

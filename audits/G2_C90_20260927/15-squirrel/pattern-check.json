@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Squirrel",
+  "masterSha256": "bf91adf03c0ce7a2c427e36790352b040a060741e92ca61a1932e1ecfe7174ea",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

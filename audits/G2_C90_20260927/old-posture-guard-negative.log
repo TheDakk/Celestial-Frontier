@@ -1,0 +1,23 @@
+✔ actual compiled prompt preserves canonical identity note: Angelfish (167.375709ms)
+✔ actual compiled prompt preserves canonical identity note: Roadrunner (157.070042ms)
+✖ actual upright Meerkat uses its sole canonical quadruped anatomy route (148.961542ms)
+✔ upright posture cannot invent a missing or ambiguous quadruped route (0.439667ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 616.7835
+
+✖ failing tests:
+
+test at port/v2/tools/painted-creature/compile-library-master.test.mjs:10:1
+✖ actual upright Meerkat uses its sole canonical quadruped anatomy route (148.961542ms)
+  Error: Unsupported controlled library family
+      at libraryFamily (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/compile-library-master.mjs:20:8)
+      at compileLibraryMaster (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/compile-library-master.mjs:48:16)
+      at async TestContext.<anonymous> (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/compile-library-master.test.mjs:12:44)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

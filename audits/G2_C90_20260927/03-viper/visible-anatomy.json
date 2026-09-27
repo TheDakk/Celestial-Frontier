@@ -1,0 +1,92 @@
+{
+  "id": "03-viper",
+  "name": "Viper",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "c14f0c29d61c077f933eaa60e64860f4441240c4896c41cab3222b042ab791cb",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 8815,
+    "coreRadius": 10,
+    "bodyBox": {
+      "x0": 138,
+      "y0": 192,
+      "x1": 373,
+      "y1": 245
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0166,
+        "pixels": 146,
+        "box": {
+          "x0": 374,
+          "y0": 197,
+          "x1": 383,
+          "y1": 215
+        },
+        "attach": {
+          "x": 374,
+          "y": 206,
+          "relX": 1,
+          "relY": 0.26
+        },
+        "dir": {
+          "x": 0.97,
+          "y": -0.25
+        },
+        "class": "front",
+        "length": 12.7
+      },
+      {
+        "k": 1,
+        "frac": 0.1575,
+        "pixels": 1388,
+        "box": {
+          "x0": 35,
+          "y0": 202,
+          "x1": 156,
+          "y1": 234
+        },
+        "attach": {
+          "x": 141.8,
+          "y": 216.8,
+          "relX": 0.02,
+          "relY": 0.47
+        },
+        "dir": {
+          "x": -0.99,
+          "y": 0.14
+        },
+        "class": "rear",
+        "length": 108.1
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 217,
+        "x1": 271,
+        "cx": 243.7
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}
