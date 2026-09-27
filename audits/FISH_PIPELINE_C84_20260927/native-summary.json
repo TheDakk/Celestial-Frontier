@@ -1,0 +1,123 @@
+[
+  {
+    "id": "02-minnow",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3.399999976158142,
+    "reportSha256": "c48a3a1192fa7ffdbdfe251a3c4f3f84f5dce2d5e6b4b544bb3ac8e4400060e3"
+  },
+  {
+    "id": "05-whitefish",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3.700000047683716,
+    "reportSha256": "a5d94bf90ed91b6824d00a5ea57e48f8b1c0ed22600c10f1a6d0942b83952dc0"
+  },
+  {
+    "id": "07-cichlid",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 5.199999928474426,
+    "reportSha256": "0c1b45968850e95364f9f76f50348fa3e955681f8ab0cdcc36bdc1a2c6025220"
+  },
+  {
+    "id": "08-tetra",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 4.5,
+    "reportSha256": "818c10296b3feaea82e23505ef2c4ca287afffe6afb74a46b77ec8d400459601"
+  },
+  {
+    "id": "01-pike",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3.600000023841858,
+    "reportSha256": "f2a1a6c9344cb157f0f1804a01feb68b0aa8b27fec7bdcfcb47de65287c96d5b"
+  },
+  {
+    "id": "03-char",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3.600000023841858,
+    "reportSha256": "fa6f68a035595daddc0597e77cafb2d04477bd84843a476b66f37dafd1515514"
+  },
+  {
+    "id": "04-sturgeon",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3,
+    "reportSha256": "79986d5a5d2b8a6c663be6bf7e1d3870062644d895faf8fb605dd04263e5cc0b"
+  },
+  {
+    "id": "08-goldfish",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3.700000047683716,
+    "reportSha256": "432f8e0ef56adb4cf0a2d6005b1d8485bcd261f38c1ddff5fde1389f3244f151"
+  },
+  {
+    "id": "02-haddock",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3,
+    "reportSha256": "290fcfb577d4730d504e210e9818d37794f7335cc8095def336eca01c1d00ec1"
+  },
+  {
+    "id": "03-pollock",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 3.0999999046325684,
+    "reportSha256": "81d7454f9934e55468aa2a18f6e5287bd4ceddd218bbffb79dc4d5ac2150b138"
+  },
+  {
+    "id": "05-anchovy",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 707,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "cpuP95Ms": 2.899999976158142,
+    "reportSha256": "966a12c7ea39ec7d23726824e45a051af0e1c1c96a3c435910f87d19d640deab"
+  }
+]

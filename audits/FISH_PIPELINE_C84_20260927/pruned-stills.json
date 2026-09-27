@@ -1,0 +1,827 @@
+[
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "338bd6e2d212eb884c3d12de7880235c758a06e51d8e67fabdc3810cf039f5ec",
+    "bytes": 1244954
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn0-hit-return-end.png",
+    "sha256": "32a74ed1e7a7cf33113314f9987ce93fb4adfc805ec712e41a41a86e038a16a9",
+    "bytes": 1197399
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn3-hit-approach-50.png",
+    "sha256": "c7cfacaa92047d76d50dbe06ebf7c5aec2300d7cd77320d4b5ab729466d39fb4",
+    "bytes": 1198351
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn0-hit-approach-50.png",
+    "sha256": "c7cfacaa92047d76d50dbe06ebf7c5aec2300d7cd77320d4b5ab729466d39fb4",
+    "bytes": 1198351
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn1-hit-approach-50.png",
+    "sha256": "c502853d9def7e274f9f458809c0b6f0d055a18d9933771fd8f244eeb767876c",
+    "bytes": 1199780
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn3-hit-return-end.png",
+    "sha256": "827d6f96028ef59a51d551a4f5dc1ff6f4a13a12c3666b63b6b42411ee586045",
+    "bytes": 1204720
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn0-hit-reaction-50.png",
+    "sha256": "79ebb8ffbbb45634093a42f74d6954a4ab285fec65aa405b5cbd4042192abc6c",
+    "bytes": 1242490
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn2-dodge-return-end.png",
+    "sha256": "32a74ed1e7a7cf33113314f9987ce93fb4adfc805ec712e41a41a86e038a16a9",
+    "bytes": 1197399
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn1-hit-impact.png",
+    "sha256": "a765b6a97350e909424b60367d1399593eab6d48a117eec08e29fbb5c1af194e",
+    "bytes": 1200954
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn0-hit-impact.png",
+    "sha256": "a7cbd93a3085aac0725a29ff2f12bc8c70034d27103439a76ff9fb7ff9759902",
+    "bytes": 708056
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn1-hit-return-end.png",
+    "sha256": "4b09c5b212db584d7affa24ee060222d3b1263a4f836d6fce6c0ee691ac0b82a",
+    "bytes": 1197373
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn2-dodge-impact.png",
+    "sha256": "ec563a7bb4209368811cedddbc9c1650233881046577d70faaf5c7314ac0f341",
+    "bytes": 1237507
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn2-dodge-approach-50.png",
+    "sha256": "c7cfacaa92047d76d50dbe06ebf7c5aec2300d7cd77320d4b5ab729466d39fb4",
+    "bytes": 1198351
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn3-hit-impact.png",
+    "sha256": "5d9756035be7e020fc09fb2a361bf1713ef12dd02cebabdf4a301e3b4aba6bda",
+    "bytes": 1199688
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-minnow-native-01/turn3-hit-idle-90.png",
+    "sha256": "5d86804f9e6b977a24c31770aa47e521b4916d338f9b9a375589e8cd7ca7d28b",
+    "bytes": 1204874
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "2bd34edca601c8837073eb93f22cd502dcc8c09feb8d261e9d38f7599d395707",
+    "bytes": 1233557
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn0-hit-return-end.png",
+    "sha256": "faad20dbb3ab0bd19a226c7803311fe40d69c0d6526d42e1bcac3702065d2ab8",
+    "bytes": 1194926
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn3-hit-approach-50.png",
+    "sha256": "99c5bbca7c9314530c19230649c60b8c2d94804db8fc69c51e9068c0c5ad240d",
+    "bytes": 1195861
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn0-hit-approach-50.png",
+    "sha256": "99c5bbca7c9314530c19230649c60b8c2d94804db8fc69c51e9068c0c5ad240d",
+    "bytes": 1195861
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn1-hit-approach-50.png",
+    "sha256": "dc14a3d10e89bc5fa5c99c1b94f0a89ee24fbeb7367fee7a7a4a9b451237e52f",
+    "bytes": 1197568
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn3-hit-return-end.png",
+    "sha256": "1089545717ab34359616468b5edf72ce55b2bb83cad025a7d9bdb4ff21335f36",
+    "bytes": 1201056
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn0-hit-reaction-50.png",
+    "sha256": "d3f0f66cd434ec9b3702bcc555696c1b1b33f7695378f80f2f902a7f6779f6cd",
+    "bytes": 1230995
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn2-dodge-return-end.png",
+    "sha256": "faad20dbb3ab0bd19a226c7803311fe40d69c0d6526d42e1bcac3702065d2ab8",
+    "bytes": 1194926
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn1-hit-impact.png",
+    "sha256": "831d056eea62d7b5d83edc9bbd851d0a76a623b1a198c2d1efd61593c0dbb2bc",
+    "bytes": 1198612
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn0-hit-impact.png",
+    "sha256": "f79753a5a8432337ac74fdf5e7594defbe970ca9be769f131ce41acf20c3cc63",
+    "bytes": 698247
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn1-hit-return-end.png",
+    "sha256": "ad2d509dcbf05f979fc0aaffa62038620fb3df4c4ae0e4978553e953e8d9fd98",
+    "bytes": 1195051
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn2-dodge-impact.png",
+    "sha256": "58a0a0cea52c5ae75446a1b1d3b1ea9965f3a6e5e5b38d6cdb2ddf06b56ca7cc",
+    "bytes": 1226581
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn2-dodge-approach-50.png",
+    "sha256": "99c5bbca7c9314530c19230649c60b8c2d94804db8fc69c51e9068c0c5ad240d",
+    "bytes": 1195861
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn3-hit-impact.png",
+    "sha256": "0112971245d85528e34034c9f04dfbe4cc506ae0c3c2e6433bc100318c0794be",
+    "bytes": 1197193
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-native-01/turn3-hit-idle-90.png",
+    "sha256": "d7bb10c4303ceee257bd9b24efefe1ebb5ba298d3e37b4da9d4de99a3a022729",
+    "bytes": 1201031
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "ca5588353e1af49aa7f8068e97cc3f69ae65980aa7d34ae4e1fd002010e22a91",
+    "bytes": 1206041
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn0-hit-return-end.png",
+    "sha256": "2194f589c489af51a7e88f30b2c9e0b54d5028964deff756ba7ffc21f01e7bc2",
+    "bytes": 1193436
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn3-hit-approach-50.png",
+    "sha256": "49a054938ef98b4f73e23b6781bbaa62887b64d063f3b6b9047410734160507b",
+    "bytes": 1193046
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn0-hit-approach-50.png",
+    "sha256": "49a054938ef98b4f73e23b6781bbaa62887b64d063f3b6b9047410734160507b",
+    "bytes": 1193046
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn1-hit-approach-50.png",
+    "sha256": "e99866011dc3b7f70f544e4079d5efd9c111f223624a24be43b865644f73d1d5",
+    "bytes": 1194021
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn3-hit-return-end.png",
+    "sha256": "5684b6983b29986a3e64a8a7789565e8a6a31019cd8bfb0e7cd6d5b1c369d597",
+    "bytes": 1194502
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn0-hit-reaction-50.png",
+    "sha256": "342d0eb3fe3ab4c79388593d0ed3221029576dc54990e682bf825aa4c8022a1c",
+    "bytes": 1203227
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn2-dodge-return-end.png",
+    "sha256": "2194f589c489af51a7e88f30b2c9e0b54d5028964deff756ba7ffc21f01e7bc2",
+    "bytes": 1193436
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn1-hit-impact.png",
+    "sha256": "3a1a2cb7ab6d67b2d0e8b4c2577d04d05c65fb938cf41e0d8f7627511195007c",
+    "bytes": 1195758
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn0-hit-impact.png",
+    "sha256": "bd8f2790d00bd2aa01f88ae0aecfea9dfec6e92a648d5bf72d6b498d9f39f96e",
+    "bytes": 678141
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn1-hit-return-end.png",
+    "sha256": "0fb62e490cdb0c61c4e355f3e0455133d5adb253732fb26c96bca705c9110ddc",
+    "bytes": 1193386
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn2-dodge-impact.png",
+    "sha256": "4e008ddff620f2fe8c09b202e8a555d71657f8baa54eacfb299423cddb8ebaf0",
+    "bytes": 1201642
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn2-dodge-approach-50.png",
+    "sha256": "49a054938ef98b4f73e23b6781bbaa62887b64d063f3b6b9047410734160507b",
+    "bytes": 1193046
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn3-hit-impact.png",
+    "sha256": "6ac802e84c1f3aab303a1889383c4b4f06fb5f8e2382cbbded6a1ee5b45bfb7f",
+    "bytes": 1195050
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-native-01/turn3-hit-idle-90.png",
+    "sha256": "930e00dd0754bc24c968c61712ba17cb6f0d7cd3c22c473cbf9ed604e8f2bf37",
+    "bytes": 1194278
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "f3408a2b185069d9a9b61adf40c07a652f4c6b216840e0d2392ed797062bee6f",
+    "bytes": 1195663
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn0-hit-return-end.png",
+    "sha256": "6b178b61ed810f50f755725bff60f573cd8f2dbfa8abb6943bf36decf38468a9",
+    "bytes": 1177632
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn3-hit-approach-50.png",
+    "sha256": "cc45ec14b7b8761808cb0e3761df2204c6d270339437184c567fb7962de305aa",
+    "bytes": 1178701
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn0-hit-approach-50.png",
+    "sha256": "cc45ec14b7b8761808cb0e3761df2204c6d270339437184c567fb7962de305aa",
+    "bytes": 1178701
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn1-hit-approach-50.png",
+    "sha256": "5718521e093dd2821685438c3f915353c16a045de7e77983d704eb2224c931e3",
+    "bytes": 1179826
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn3-hit-return-end.png",
+    "sha256": "8a97ec213b112a8d3ac48125c6a982617b4ec37ce82b3a17dab04c1471bc65c0",
+    "bytes": 1180681
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn0-hit-reaction-50.png",
+    "sha256": "689042bee01d6694be6fa82ea77b4d3d698dd4b45faed3037c99ec60b3381535",
+    "bytes": 1192854
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn2-dodge-return-end.png",
+    "sha256": "6b178b61ed810f50f755725bff60f573cd8f2dbfa8abb6943bf36decf38468a9",
+    "bytes": 1177632
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn1-hit-impact.png",
+    "sha256": "b951f65f9b2f0507cc86f5484b4d19e42753f3f8886bf862420b94693509b85c",
+    "bytes": 1180431
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn0-hit-impact.png",
+    "sha256": "c4c8e8173fe5ce1ff7df07f4d57eeff340ad84cb7531d518ff9e7bc581f2cbea",
+    "bytes": 668610
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn1-hit-return-end.png",
+    "sha256": "302d26c878313459e6ecdded4487137e7d3e917c7d7800c68c5a87f9f3429041",
+    "bytes": 1177951
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn2-dodge-impact.png",
+    "sha256": "3dd9907e83a20f0b4bc685ed952c57b36fce71e3b2c3341f888b8a5d5d004a4c",
+    "bytes": 1189689
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn2-dodge-approach-50.png",
+    "sha256": "cc45ec14b7b8761808cb0e3761df2204c6d270339437184c567fb7962de305aa",
+    "bytes": 1178701
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn3-hit-impact.png",
+    "sha256": "bb79c3d2f4b9f29ec781626d32df7908778e3075bada37b82b3d8bb1a6b7e76f",
+    "bytes": 1179143
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-tetra-native-01/turn3-hit-idle-90.png",
+    "sha256": "dc98c08fa805a7c9c5f75272b5677fbc630ffd61a9aadee5add82207ef7c5122",
+    "bytes": 1180846
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "9ddfd0ea26cd67329232c3cba0a3d93f9c4cbd705d0b3796f7e6233b1052d62f",
+    "bytes": 1230206
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn0-hit-return-end.png",
+    "sha256": "d54d8e6315261b9b7617ac5b84363051bb1e874c2da813903341939181e4db35",
+    "bytes": 1192774
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn3-hit-approach-50.png",
+    "sha256": "0d3f3471dada11c8182657efb2aed7ab81e3c5b0ce13497c3ae33b275fda6adf",
+    "bytes": 1193440
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn0-hit-approach-50.png",
+    "sha256": "0d3f3471dada11c8182657efb2aed7ab81e3c5b0ce13497c3ae33b275fda6adf",
+    "bytes": 1193440
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn1-hit-approach-50.png",
+    "sha256": "a60142e646b6b35eaababc24157cbd34973a62f111d4234d198936232f12c786",
+    "bytes": 1195693
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn3-hit-return-end.png",
+    "sha256": "3bb2d78bd39f742fa69db9e7d3131f8b3a47eb24f59558c68549fa7a35189b03",
+    "bytes": 1200582
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn0-hit-reaction-50.png",
+    "sha256": "78e20b057c91aa2ce7a01ec31370d27a603bc2808af5dffc93e53edae6eef3d4",
+    "bytes": 1229732
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn2-dodge-return-end.png",
+    "sha256": "d54d8e6315261b9b7617ac5b84363051bb1e874c2da813903341939181e4db35",
+    "bytes": 1192774
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn1-hit-impact.png",
+    "sha256": "77f553aab4820f7b7e543ddb109693a6ad21c1b1175d038532817925c5d9280a",
+    "bytes": 1196358
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn0-hit-impact.png",
+    "sha256": "bae2aac2e9d1317dffd6c4cf570535cdee01ab718c77d940364a780c916f23a1",
+    "bytes": 695376
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn1-hit-return-end.png",
+    "sha256": "aba333a26b15b4f7cd2e5051918c99463cfffbcfc173fc75a4baf629879abd0d",
+    "bytes": 1192658
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn2-dodge-impact.png",
+    "sha256": "070334835d4dfcb6b29c54279f6de099cd352254fe38a62bbb07ddb982bbff8d",
+    "bytes": 1222650
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn2-dodge-approach-50.png",
+    "sha256": "0d3f3471dada11c8182657efb2aed7ab81e3c5b0ce13497c3ae33b275fda6adf",
+    "bytes": 1193440
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn3-hit-impact.png",
+    "sha256": "cb46c584c11a8f98c5c53f487dfdf024e83a8a4c1c14c1ad2c774b5ecc4cd2eb",
+    "bytes": 1195292
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/01-pike-native-01/turn3-hit-idle-90.png",
+    "sha256": "b8a32fcd0451077ece0f3150493d09079e4da467a5b8904c9ce3f33d0ffcfaf0",
+    "bytes": 1200552
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "573b3127ea9900c0f54a267be0436e8855edfb574b713802b3fbd7ea934c810c",
+    "bytes": 1221012
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn0-hit-return-end.png",
+    "sha256": "df6de2afe72f7a7c08f6e3f24ff768a7129f7611f677115ce421d03a42cd6271",
+    "bytes": 1195561
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn3-hit-approach-50.png",
+    "sha256": "95927bfa3432c55bc3a69eec6207063ed281f000c32d89f550171afb56b9c2cc",
+    "bytes": 1195878
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn0-hit-approach-50.png",
+    "sha256": "95927bfa3432c55bc3a69eec6207063ed281f000c32d89f550171afb56b9c2cc",
+    "bytes": 1195878
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn1-hit-approach-50.png",
+    "sha256": "b12311c95acdfb41ed418c7b558047df1c9324bf62be8c97c485eda246f10287",
+    "bytes": 1197514
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn3-hit-return-end.png",
+    "sha256": "7e0dcfe66281fc234029ba55c314454476a12c023cc5a9c2857d78712ed4dd59",
+    "bytes": 1202100
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn0-hit-reaction-50.png",
+    "sha256": "f7afad7b22ecf21ca5c9d22c6ab425621d83626e28bfaadd5fbc2e0a916e9857",
+    "bytes": 1219889
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn2-dodge-return-end.png",
+    "sha256": "df6de2afe72f7a7c08f6e3f24ff768a7129f7611f677115ce421d03a42cd6271",
+    "bytes": 1195561
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn1-hit-impact.png",
+    "sha256": "208cbd63589ff18fa9a77a8ac1cd1985046ff67bffd30b4821892e24ee5c340e",
+    "bytes": 1199407
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn0-hit-impact.png",
+    "sha256": "eecf9b228dd87352216abd9da634c346ebf57794d8d1b71bd6570c68e581efe0",
+    "bytes": 689314
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn1-hit-return-end.png",
+    "sha256": "df3a7708b33dff468a31403cd7e1fb7646a9f9243da8d19e01d2e421b3fff976",
+    "bytes": 1195835
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn2-dodge-impact.png",
+    "sha256": "90c46089f2e4fa3b83794e15b1898facf3ad87c2e8a5c43b63c921e39e5a6bac",
+    "bytes": 1216232
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn2-dodge-approach-50.png",
+    "sha256": "95927bfa3432c55bc3a69eec6207063ed281f000c32d89f550171afb56b9c2cc",
+    "bytes": 1195878
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn3-hit-impact.png",
+    "sha256": "1686391a7eccb6d49a72d34cd43f29d311783c26c89b016b7224346213250089",
+    "bytes": 1198689
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-char-native-01/turn3-hit-idle-90.png",
+    "sha256": "98c62b8f9a2ce6e59ea29f786ba5e094356be885eb4ac86415c3fc169ada1b59",
+    "bytes": 1202628
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "77b61b3448b27017dc2dc8f369662d1633337667f31ea85683c77339570f6e22",
+    "bytes": 1228100
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn0-hit-return-end.png",
+    "sha256": "3898143bc5025152944937a44d191c33b5bdbf69b0a792768a86713b5031cbaf",
+    "bytes": 1176005
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn3-hit-approach-50.png",
+    "sha256": "06d81ce636df6db1acac5a4ebf4613e8abd55ef1d1af259d0da61d1185e78456",
+    "bytes": 1176496
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn0-hit-approach-50.png",
+    "sha256": "06d81ce636df6db1acac5a4ebf4613e8abd55ef1d1af259d0da61d1185e78456",
+    "bytes": 1176496
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn1-hit-approach-50.png",
+    "sha256": "6e4d776c4b46d6973dd3962ed30df537137c9dac21c6c2faa0a1b90ef327422a",
+    "bytes": 1178093
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn3-hit-return-end.png",
+    "sha256": "0324306cecfcde30f5eec2c9bed7cdaa690e1e86a02035225d73619951dad75c",
+    "bytes": 1182446
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn0-hit-reaction-50.png",
+    "sha256": "57968b81bda7417b32524ad71c59d3b2e1a221a4e8cc7883a14454d0c8910a2e",
+    "bytes": 1226539
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn2-dodge-return-end.png",
+    "sha256": "3898143bc5025152944937a44d191c33b5bdbf69b0a792768a86713b5031cbaf",
+    "bytes": 1176005
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn1-hit-impact.png",
+    "sha256": "b040b47fb0d039172cc029cd6e8b83499ae19793ae240ae76d5beac31492c448",
+    "bytes": 1178210
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn0-hit-impact.png",
+    "sha256": "89d068acd10a27d76761a10a98844b70a7cd48c819f6188bc1312cc14b670fc9",
+    "bytes": 688219
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn1-hit-return-end.png",
+    "sha256": "f01294c601e347e3130fabf5fd4cc4e874a373da7832007fd5beabd7c7e2be7c",
+    "bytes": 1176049
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn2-dodge-impact.png",
+    "sha256": "582d7d0eb3d9344fdff28d3b3e4e289a9399aa85e5e31f5ade94e99008fc5ac6",
+    "bytes": 1215375
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn2-dodge-approach-50.png",
+    "sha256": "06d81ce636df6db1acac5a4ebf4613e8abd55ef1d1af259d0da61d1185e78456",
+    "bytes": 1176496
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn3-hit-impact.png",
+    "sha256": "e35b4073b1aac81a65ddcd2de1cd268069cbe736b5462bf9d7a109ff09ada8dd",
+    "bytes": 1177267
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-native-01/turn3-hit-idle-90.png",
+    "sha256": "6a33052ac3e8c69856e0f4327a6106d8f5427f79d2eb7913f709334d5741a62d",
+    "bytes": 1182352
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "25af5e032c77fabc7e24abc5ec4ef1f11cfcfca8cee5c8b505d795e8ae826cfa",
+    "bytes": 1194075
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn0-hit-return-end.png",
+    "sha256": "6212fe6e2eb555402909501db0b5a0579fd4a0afb99e0b35d0a8c01b1d51021e",
+    "bytes": 1178397
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn3-hit-approach-50.png",
+    "sha256": "977907ac9e46d184320481f035a5d60c859a8c45200415cb5471a9e4cec9c3f5",
+    "bytes": 1179868
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn0-hit-approach-50.png",
+    "sha256": "977907ac9e46d184320481f035a5d60c859a8c45200415cb5471a9e4cec9c3f5",
+    "bytes": 1179868
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn1-hit-approach-50.png",
+    "sha256": "7d23a1355e906491690fcf0586d84ec226a255944207255c0037d67e94b60f2e",
+    "bytes": 1180657
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn3-hit-return-end.png",
+    "sha256": "bb315012e73593bb561cdd8ea08a72f5fa38322fc04f0a2251203c2ed293c540",
+    "bytes": 1178627
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn0-hit-reaction-50.png",
+    "sha256": "70fb63f708214ace7b9e16e9cd03c7b888f385640fa43097e3cb9d9582367bf3",
+    "bytes": 1191827
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn2-dodge-return-end.png",
+    "sha256": "6212fe6e2eb555402909501db0b5a0579fd4a0afb99e0b35d0a8c01b1d51021e",
+    "bytes": 1178397
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn1-hit-impact.png",
+    "sha256": "1f3b0772cd50ce39deae2517c22a1db8098421485ab47602d4bbd8aad5fab12b",
+    "bytes": 1181722
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn0-hit-impact.png",
+    "sha256": "68f24650caabbcbebf4b330d16f67d2e4bcd26671cf847e010b8b37d76f7aa48",
+    "bytes": 668420
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn1-hit-return-end.png",
+    "sha256": "c1092eaaf5b580898132ec38ade6127bf94da4c2afb9f1dc1e2184d8de6ac592",
+    "bytes": 1178640
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn2-dodge-impact.png",
+    "sha256": "656c5ded4a835758e4cf2a0fd8708ca5e3b1fd6c18e8cb6e6e37bfcb88632aad",
+    "bytes": 1189242
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn2-dodge-approach-50.png",
+    "sha256": "977907ac9e46d184320481f035a5d60c859a8c45200415cb5471a9e4cec9c3f5",
+    "bytes": 1179868
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn3-hit-impact.png",
+    "sha256": "e70472c087bd5d2961d9c1f6d28cb69ab44196d457a7ef9bfe867ca2a15d914a",
+    "bytes": 1181049
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-native-01/turn3-hit-idle-90.png",
+    "sha256": "df739fb06d472a71399c6e8be130e6e5fa52763c7bdd17776732416dc67e93f0",
+    "bytes": 1178985
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "99ce3587dd20398b7f590c73cb7a2ffe1513a37c21aaf5cb26b98059bff8b384",
+    "bytes": 1195231
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn0-hit-return-end.png",
+    "sha256": "36bd98b0f943bb31a8da0d19caf164b7fc025072ca43096a0510c44f0c4ccf45",
+    "bytes": 1177465
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn3-hit-approach-50.png",
+    "sha256": "e39c3d6f6c8539e43dbe7a73d501240472e2467b9bcda2a18c32e71a5bab6387",
+    "bytes": 1178477
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn0-hit-approach-50.png",
+    "sha256": "e39c3d6f6c8539e43dbe7a73d501240472e2467b9bcda2a18c32e71a5bab6387",
+    "bytes": 1178477
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn1-hit-approach-50.png",
+    "sha256": "8ba9d436c13c143b7382369f87bf18f4d757c23208bfe741e24a0ad8ac5f9e16",
+    "bytes": 1179631
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn3-hit-return-end.png",
+    "sha256": "a70ec203cc81cfbc83038ec5afa4e2fa4b93688598706a60a94c5629abda97aa",
+    "bytes": 1181962
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn0-hit-reaction-50.png",
+    "sha256": "b4c839e346adcc4a90fa3d6b7fd836a5946247342b030a199f5572c354a2ee41",
+    "bytes": 1194445
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn2-dodge-return-end.png",
+    "sha256": "36bd98b0f943bb31a8da0d19caf164b7fc025072ca43096a0510c44f0c4ccf45",
+    "bytes": 1177465
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn1-hit-impact.png",
+    "sha256": "85df8d91304b44bce0ea1cadbf259f85e5c46a66e62de87f196c3aa72b18cbc1",
+    "bytes": 1180624
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn0-hit-impact.png",
+    "sha256": "4dba1c00333af9902db9bacc83062862730012eb3101b7324ea99a4d2da41845",
+    "bytes": 665168
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn1-hit-return-end.png",
+    "sha256": "00d00b6edf19f26dff911061b97fb0d1c15aa05bb58439f9b624c1c5301c4c21",
+    "bytes": 1177494
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn2-dodge-impact.png",
+    "sha256": "c813e03ef0eb28185aaf4df545e9763d0a812f149b2832f89cc2db468822ce7e",
+    "bytes": 1192908
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn2-dodge-approach-50.png",
+    "sha256": "e39c3d6f6c8539e43dbe7a73d501240472e2467b9bcda2a18c32e71a5bab6387",
+    "bytes": 1178477
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn3-hit-impact.png",
+    "sha256": "b58b469234dc16f6745a7c3a867da2c0abe5c6660b795a4c6a009e62246c2d09",
+    "bytes": 1179642
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/02-haddock-native-01/turn3-hit-idle-90.png",
+    "sha256": "b2dfb34f40914c2bd16d15ce829b8c14d65b76ead0ef567a0b5fc632aa7f61f7",
+    "bytes": 1182169
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "9e2328d74e0bc326ac75c85d14ce427e1ea57c4710d2798b3f9ba35280c05b88",
+    "bytes": 1212834
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn0-hit-return-end.png",
+    "sha256": "525d4acdead2c9d03d37bfefbd5968c8eeb1ebb7b2dc6326aacf11b7481dfcc2",
+    "bytes": 1189032
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn3-hit-approach-50.png",
+    "sha256": "6063cf4fe5e27c541394254a69385731b1038fd3aa201738e64de7e76ad780d2",
+    "bytes": 1189503
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn0-hit-approach-50.png",
+    "sha256": "6063cf4fe5e27c541394254a69385731b1038fd3aa201738e64de7e76ad780d2",
+    "bytes": 1189503
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn1-hit-approach-50.png",
+    "sha256": "339864634b68c4a063c8c730606873c3483909c10ccc83b6553dae910c0aeeb3",
+    "bytes": 1190993
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn3-hit-return-end.png",
+    "sha256": "c34a50b87ac1d09565a38e1808e6c1b294a8f5899ed5a6a5db9cd50673e83a92",
+    "bytes": 1195771
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn0-hit-reaction-50.png",
+    "sha256": "7c3a6d7851e44303d8a1947962e4f260492d920e765046c34bd4bee6c400eac5",
+    "bytes": 1211812
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn2-dodge-return-end.png",
+    "sha256": "525d4acdead2c9d03d37bfefbd5968c8eeb1ebb7b2dc6326aacf11b7481dfcc2",
+    "bytes": 1189032
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn1-hit-impact.png",
+    "sha256": "882ba7206ed8a4c08b22a27323146c4dc4bf98376f79eb3cf04731cbae79eb04",
+    "bytes": 1192727
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn0-hit-impact.png",
+    "sha256": "3ce50a245a6ec485ca718d0ef4ef7950ab732f44a4a3f1dc2774c769aa7ec77b",
+    "bytes": 681258
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn1-hit-return-end.png",
+    "sha256": "bc571e09e9329d4d6ca6ff3c0faa58d8218f3c58d48f56e36d3c5f9b92f297e6",
+    "bytes": 1189114
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn2-dodge-impact.png",
+    "sha256": "cb85e26bd03a62495e8fb9ac382857cf82a571bdb5372258306dd7385f60fed9",
+    "bytes": 1209805
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn2-dodge-approach-50.png",
+    "sha256": "6063cf4fe5e27c541394254a69385731b1038fd3aa201738e64de7e76ad780d2",
+    "bytes": 1189503
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn3-hit-impact.png",
+    "sha256": "ac6fe451663afe71afb7e12152c20ec786860d5b3bbff2212f08d6b6e4141874",
+    "bytes": 1192001
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/03-pollock-native-01/turn3-hit-idle-90.png",
+    "sha256": "ab185b469a8e5d97899e89a509d6bfcfd15bf0f18968b7b406a414c6df243f93",
+    "bytes": 1195909
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn2-dodge-reaction-50.png",
+    "sha256": "c819e6ce7e81e7d01667f7b32802838183ac25ae3799d9cac693ff527e0e3011",
+    "bytes": 1224192
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn0-hit-return-end.png",
+    "sha256": "284a61ef6a9959189eb62a9922d9d87b581c9d5d34debce7bb34cf1594297916",
+    "bytes": 1189755
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn3-hit-approach-50.png",
+    "sha256": "1044e988bf8ca6036a41f486168b74271b4f0b893dd04ac01b50af2caf6b5ad1",
+    "bytes": 1190363
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn0-hit-approach-50.png",
+    "sha256": "1044e988bf8ca6036a41f486168b74271b4f0b893dd04ac01b50af2caf6b5ad1",
+    "bytes": 1190363
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn1-hit-approach-50.png",
+    "sha256": "bea904e260610200010e7d3ded6d814caf0469250f765f98b6d07788a12779dc",
+    "bytes": 1192450
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn3-hit-return-end.png",
+    "sha256": "6cecb831b2697e4e77a254ee38b456c30657dcc8054789b9593098023f102879",
+    "bytes": 1199358
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn0-hit-reaction-50.png",
+    "sha256": "9ccee35af6d300f8babe8c8f091f956d365e41746b07acd04a0f030f823033e3",
+    "bytes": 1224578
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn2-dodge-return-end.png",
+    "sha256": "284a61ef6a9959189eb62a9922d9d87b581c9d5d34debce7bb34cf1594297916",
+    "bytes": 1189755
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn1-hit-impact.png",
+    "sha256": "b3ee2e0b430ef1fe2053a76a40c38966c8dff1170c20a97bf724b262920d35b9",
+    "bytes": 1193486
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn0-hit-impact.png",
+    "sha256": "75ab85be8c1030b20e338474f9ae814a61154625be66f9bfa3b32b6e5a1cd4d4",
+    "bytes": 689574
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn1-hit-return-end.png",
+    "sha256": "927946fea54239215537be72f498f3189455bf9daa50b227a3fbed3424180584",
+    "bytes": 1189793
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn2-dodge-impact.png",
+    "sha256": "a97e638f0da06432e83a29f8902a8d329b865d70aec00c975d558a874d4a8df6",
+    "bytes": 1218418
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn2-dodge-approach-50.png",
+    "sha256": "1044e988bf8ca6036a41f486168b74271b4f0b893dd04ac01b50af2caf6b5ad1",
+    "bytes": 1190363
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn3-hit-impact.png",
+    "sha256": "da79565368a206083d99c5c1701d97388fdb633defdf28a049328e93dd38b76e",
+    "bytes": 1192980
+  },
+  {
+    "path": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-native-01/turn3-hit-idle-90.png",
+    "sha256": "a8a136d72ef2aa98f08585709c6cc8a5a6e57cb6a86b13d138a12ac45885c100",
+    "bytes": 1199785
+  }
+]

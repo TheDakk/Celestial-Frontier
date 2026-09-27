@@ -1,0 +1,118 @@
+[
+  {
+    "id": "02-minnow",
+    "sourceFit": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow",
+    "candidate": "audits/FISH_PIPELINE_C84_20260927/02-minnow-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "05-whitefish",
+    "sourceFit": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish",
+    "candidate": "audits/FISH_PIPELINE_C84_20260927/05-whitefish-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "07-cichlid",
+    "sourceFit": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid",
+    "candidate": "audits/FISH_PIPELINE_C84_20260927/07-cichlid-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "08-tetra",
+    "sourceFit": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra",
+    "candidate": "audits/FISH_PIPELINE_C84_20260927/08-tetra-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "01-pike",
+    "sourceFit": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike",
+    "candidate": "audits/FISH_PIPELINE_C84_20260927/01-pike-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "02-bass",
+    "sourceFit": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass",
+    "candidate": "audits/FISH_PIPELINE_C84_20260927/02-bass-fixed-01/fit",
+    "buildExitCode": 1
+  },
+  {
+    "id": "03-char",
+    "sourceFit": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char",
+    "candidate": "audits/FISH_PIPELINE_C84_20260927/03-char-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "04-sturgeon",
+    "sourceFit": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon",
+    "candidate": "audits/FISH_PIPELINE_C84_20260927/04-sturgeon-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "08-goldfish",
+    "sourceFit": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish",
+    "candidate": "audits/FISH_PIPELINE_C84_20260927/08-goldfish-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "02-haddock",
+    "sourceFit": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock",
+    "candidate": "audits/FISH_PIPELINE_C84_20260927/02-haddock-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "03-pollock",
+    "sourceFit": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock",
+    "candidate": "audits/FISH_PIPELINE_C84_20260927/03-pollock-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  },
+  {
+    "id": "05-anchovy",
+    "sourceFit": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy",
+    "candidate": "audits/FISH_PIPELINE_C84_20260927/05-anchovy-fixed-01/fit",
+    "buildExitCode": 0,
+    "staticExitCode": 0,
+    "static": "PASS_STATIC",
+    "refusedActions": [],
+    "presentation": "PASS"
+  }
+]
