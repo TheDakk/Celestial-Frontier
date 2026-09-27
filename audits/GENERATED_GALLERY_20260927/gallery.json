@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 45,
+ "total": 47,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -176,6 +176,20 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c57-04-ocelot",
    "report": "DIAGNOSTIC_PASS",
    "note": "spotted; clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Donkey",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-perf-recheck/15-donkey",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean (dark shoulder stripe is anatomy); after the skin-field cache"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Lynx",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-perf-recheck/q20-06-lynx",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean in reaction; Codex saw fragments in other frames"
   },
   {
    "family": "Snakes (serpent strip author)",

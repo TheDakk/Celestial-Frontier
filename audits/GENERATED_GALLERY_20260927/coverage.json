@@ -1,15 +1,15 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 42,
- "pct": 6.7,
+ "covered": 44,
+ "pct": 7,
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 21,
-   "pct": 10.2,
+   "covered": 23,
+   "pct": 11.2,
    "names": [
     "Leopard",
     "Tiger",
@@ -18,6 +18,7 @@
     "Lion",
     "Cougar",
     "Snow Leopard",
+    "Lynx",
     "Caracal",
     "Jackal",
     "Coyote",
@@ -31,7 +32,8 @@
     "Marten",
     "Fisher",
     "Marmot",
-    "Cattle"
+    "Cattle",
+    "Donkey"
    ]
   },
   {
