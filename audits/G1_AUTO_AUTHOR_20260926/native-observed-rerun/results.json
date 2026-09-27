@@ -1,0 +1,396 @@
+{
+ "schema": "cf.observed-rerun/v1",
+ "supports": "observed",
+ "results": [
+  {
+   "name": "Coyote",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/01-coyote/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/01-coyote",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/coyote",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Arctic Fox",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/03-arctic-fox/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/03-arctic-fox",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/arctic-fox",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 934,
+   "refusals": 0
+  },
+  {
+   "name": "Fennec Fox",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/04-fennec-fox/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/04-fennec-fox",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/fennec-fox",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Dingo",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/01-dingo/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c54/01-dingo",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/dingo",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Jackal",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/02-jackal/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c54/02-jackal",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/jackal",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Coyote (C56)",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/03-coyote/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c56/c56-03-coyote",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/coyote-c56-",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Caracal",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/05-caracal/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/05-caracal",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/caracal",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 914,
+   "refusals": 0
+  },
+  {
+   "name": "Cougar",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/07-cougar/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/07-cougar",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/cougar",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Lion",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/04-lion/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c54/04-lion",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/lion",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Tiger (elbow repaired)",
+   "family": "quadruped",
+   "fit": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side/fit",
+   "previousNativeDir": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/tiger-elbow-repaired-",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Leopard (elbow repaired)",
+   "family": "quadruped",
+   "fit": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side/fit",
+   "previousNativeDir": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/leopard-elbow-repaired-",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Ocelot (elbow repaired)",
+   "family": "quadruped",
+   "fit": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side/fit",
+   "previousNativeDir": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/ocelot-elbow-repaired-",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Snow Leopard (elbow repaired)",
+   "family": "quadruped",
+   "fit": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side/fit",
+   "previousNativeDir": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/snow-leopard-elbow-repaired-",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Clouded Leopard (elbow repaired)",
+   "family": "quadruped",
+   "fit": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side/fit",
+   "previousNativeDir": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/clouded-leopard-elbow-repaired-",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Raccoon",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/10-raccoon/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/10-raccoon",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/raccoon",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Raccoon (C59)",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c59-v10s/04-raccoon/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c59/04-raccoon",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/raccoon-c59-",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Marmot",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/11-marmot/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/11-marmot",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/marmot",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Cattle",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/13-cattle/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/13-cattle",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/cattle",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Weasel",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/12-weasel/fallback-1/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/12-weasel",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/weasel",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Mink (elbow repaired)",
+   "family": "quadruped",
+   "fit": "audits/C59_REPAIR_20260926/g2c56-06-mink-side/fit",
+   "previousNativeDir": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/mink-elbow-repaired-",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Marten",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/07-marten/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c56/c56-07-marten",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/marten",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Fisher (elbow repaired)",
+   "family": "quadruped",
+   "fit": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side/fit",
+   "previousNativeDir": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/fisher-elbow-repaired-",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Raven",
+   "family": "biped-bird",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c56-v10/10-raven/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c56/c56-10-raven",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/raven",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 758,
+   "refusals": 0
+  },
+  {
+   "name": "Vulture",
+   "family": "biped-bird",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c59-v10s/08-vulture/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c59/08-vulture",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/vulture",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 778,
+   "refusals": 0
+  },
+  {
+   "name": "Goose",
+   "family": "biped-bird",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/14-goose/fallback-2/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/14-goose",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/goose",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 780,
+   "refusals": 0
+  },
+  {
+   "name": "Quail",
+   "family": "biped-bird",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/15-quail/fallback-1/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/15-quail",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/quail",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 780,
+   "refusals": 0
+  },
+  {
+   "name": "Robin",
+   "family": "biped-bird",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-11-robin/fallback-2/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/c56-11-robin",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/robin",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 780,
+   "refusals": 0
+  },
+  {
+   "name": "Starling",
+   "family": "biped-bird",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-07-starling/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c59-07-starling",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/starling",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 780,
+   "refusals": 0
+  },
+  {
+   "name": "Beetle",
+   "family": "insect",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2insect-handrefs/c54-23-beetle/fallback-1/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/c54-23-beetle",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/beetle",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 789,
+   "refusals": 0
+  },
+  {
+   "name": "Mongoose",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2quad-handrefs/q20-08-mongoose/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/q20-08-mongoose",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/mongoose",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 934,
+   "refusals": 0
+  },
+  {
+   "name": "Caracal (C56)",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2quad-handrefs/c56-02-caracal/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c56-02-caracal",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/caracal-c56-",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 934,
+   "refusals": 0
+  },
+  {
+   "name": "Ocelot (pattern re-paint)",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2quad-handrefs/c57-04-ocelot/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c57-04-ocelot",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/ocelot-pattern-re-paint-",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 933,
+   "refusals": 0
+  },
+  {
+   "name": "Donkey",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/15-donkey/fallback-1/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-perf-recheck/15-donkey",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/donkey",
+   "status": "FAIL",
+   "frames": 886,
+   "refusals": 0
+  },
+  {
+   "name": "Lynx",
+   "family": "quadruped",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2quad-handrefs/q20-06-lynx/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-perf-recheck/q20-06-lynx",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/lynx",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 900,
+   "refusals": 0
+  },
+  {
+   "name": "Ibis",
+   "family": "biped-bird",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/13-ibis/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/13-ibis",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/ibis",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 770,
+   "refusals": 0
+  },
+  {
+   "name": "Oystercatcher",
+   "family": "biped-bird",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c72c/16-oystercatcher/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/16-oystercatcher",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/oystercatcher",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 776,
+   "refusals": 0
+  },
+  {
+   "name": "Spoonbill",
+   "family": "biped-bird",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/13-spoonbill/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/13-spoonbill",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/spoonbill",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 780,
+   "refusals": 0
+  },
+  {
+   "name": "Kestrel",
+   "family": "biped-bird",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/14-kestrel/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/14-kestrel",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/kestrel",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 780,
+   "refusals": 0
+  },
+  {
+   "name": "Heron",
+   "family": "biped-bird",
+   "fit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-faint-c77-withbirds/fam-02-heron/fit",
+   "previousNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2bird-poolv2/fam-02-heron",
+   "observedNativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/heron",
+   "status": "DIAGNOSTIC_PASS",
+   "frames": 780,
+   "refusals": 0
+  }
+ ]
+}

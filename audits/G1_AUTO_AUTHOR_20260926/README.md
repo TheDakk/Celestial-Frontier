@@ -122,7 +122,11 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - My native scripts omitted it, so the native entry tested REST contact supports while static (and the game, for observed-support fits) tests the painted ones.
 - The Magpie/Dove "lethal-faint FAIL" was this mismatch: with only `supports: 'observed'` added, both pass native (775/780 frames, 0/0). Codex reproduced the original 51 refusals exactly on the old script.
 - `score-batch.mjs` now sets it for every family.
-- **Open consistency item:** every EARLIER native pass in the gallery ran with rest supports. They remain valid runs of that input, but admission proofs should be re-run with observed supports (≈70 runs; queued).
+- **Consistency item DONE** (`audits/GENERATED_GALLERY_20260927/observed-rerun.mjs` → `native-observed-rerun/results.json`):
+  - All 39 legged gallery creatures (quadrupeds, birds, the Beetle) were re-run with `supports: 'observed'`. Each fit was resolved from the run script / score record that produced it, taking the winning fallback candidate where there is one.
+  - **38/39 PASS, and the gallery now points at these proofs.**
+  - The Donkey is borderline: 886/887 frames with 0 refusals (a one-frame performance shortfall, the Bobcat class), so it stays on its earlier run with a note.
+  - Fish and snakes have no ground-contact chains, so the supports mode does not change their proof.
 
 **Bird references ADOPTED after Codex's painted-support faint author (C77, `1fa7bd3f`)** (`auto-g2bird-faint-c77-*`):
 - All 20 G2 birds: 5/20 with the current pool, **8/20 with Codex's 4 bird references**.
