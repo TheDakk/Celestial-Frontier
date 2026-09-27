@@ -30,3 +30,8 @@
 Three mutants each fail one test: shortest border, no cap, 4-connectivity.
 
 **Next.** Run native on both fits once Codex's I5 epoch releases the shared toolchain lock (C108 asked for no simultaneous native runs). Then do the full-size late-idle review, and only after that an opt-in `score-batch --remainder-islands`.
+
+**Scope check (`scan.mjs` → `scan.json`, every polygon fit under `auto-*`).**
+- Remainder islands are nearly universal: 146 of 162 fits have one of at least 100 px, and 100 have one over 5% of the remainder. The median largest island is 6.8%.
+- Many accepted creatures carry them and look whole at full size. So an island is not a defect in itself; the visible bird case is a sliver at a joint that moves (the head/neck dip).
+- **The repair therefore stays per-subject and opt-in**, applied only after native and a full-size review. It must never become a batch default, and the 5% cap would refuse most fits anyway.
