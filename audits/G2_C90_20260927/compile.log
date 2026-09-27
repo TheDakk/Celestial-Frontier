@@ -1,0 +1,30 @@
+01-anaconda serpent
+02-cobra serpent
+03-viper serpent
+04-rattlesnake serpent
+05-sand-boa serpent
+06-cave-snake serpent
+07-catfish fish
+08-gar fish
+09-bowfin fish
+10-tilapia fish
+11-piranha fish
+12-killifish fish
+13-arctic-cod fish
+14-viperfish fish
+15-squirrel quadruped
+16-chipmunk quadruped
+17-rabbit quadruped
+18-hare quadruped
+19-pika quadruped
+20-hedgehog quadruped
+file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/compile-library-master.mjs:19
+ throw Error('Unsupported controlled library family');
+       ^
+
+Error: Unsupported controlled library family
+    at libraryFamily (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/compile-library-master.mjs:19:8)
+    at compileLibraryMaster (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/compile-library-master.mjs:47:16)
+    at async file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_C90_20260927/compile.mjs:11:103
+
+Node.js v26.10.0

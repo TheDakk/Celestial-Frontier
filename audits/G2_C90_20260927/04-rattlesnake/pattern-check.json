@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Rattlesnake",
+  "masterSha256": "6b78756fdef1dcde5c8faeaec47e0844a887bcbcd2de3ec5db0048da457fbc4b",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

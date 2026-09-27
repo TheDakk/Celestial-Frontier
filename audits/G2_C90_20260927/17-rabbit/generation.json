@@ -1,0 +1,13 @@
+{
+  "id": "17-rabbit",
+  "name": "Rabbit",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-d919ce5f-5495-47d9-b966-e7619faa99d7.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "8bcee4a5c170ecf6624ca15b37922652469d8e2a0860f9edf2d40ceda9aea839",
+  "bytes": 1291318,
+  "promptSha256": "e578aead6ae6a86bca598ac9f4bc6e83899a3af9b8476c559bfcf46bcc4477ed",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

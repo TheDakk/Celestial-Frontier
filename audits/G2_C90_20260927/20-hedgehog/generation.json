@@ -1,0 +1,13 @@
+{
+  "id": "20-hedgehog",
+  "name": "Hedgehog",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-44c2da70-47f6-4d13-bc4d-3f821e0df0a4.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e7a272cc39429cec3fc9d134d14f4861aef567ecbf8d0563198bd5ded02b54dd",
+  "bytes": 1322579,
+  "promptSha256": "3585b813b7f4308a0730ce484d122c648d4f477cc8bd4a36aa53a2f89e64749e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

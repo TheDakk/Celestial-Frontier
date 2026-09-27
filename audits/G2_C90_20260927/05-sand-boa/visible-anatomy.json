@@ -1,0 +1,92 @@
+{
+  "id": "05-sand-boa",
+  "name": "Sand Boa",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "1437c55ae87d4df96e1fd6fc47f5a554ccba50d369a737ca778b71b94e5c20fa",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 14164,
+    "coreRadius": 14,
+    "bodyBox": {
+      "x0": 80,
+      "y0": 174,
+      "x1": 364,
+      "y1": 249
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0258,
+        "pixels": 366,
+        "box": {
+          "x0": 365,
+          "y0": 192,
+          "x1": 383,
+          "y1": 219
+        },
+        "attach": {
+          "x": 365,
+          "y": 205.5,
+          "relX": 1,
+          "relY": 0.42
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.07
+        },
+        "class": "front",
+        "length": 22.5
+      },
+      {
+        "k": 1,
+        "frac": 0.0767,
+        "pixels": 1086,
+        "box": {
+          "x0": 40,
+          "y0": 198,
+          "x1": 105,
+          "y1": 236
+        },
+        "attach": {
+          "x": 85.4,
+          "y": 218.6,
+          "relX": 0.02,
+          "relY": 0.59
+        },
+        "dir": {
+          "x": -0.98,
+          "y": 0.21
+        },
+        "class": "rear",
+        "length": 49.8
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 197,
+        "x1": 281,
+        "cx": 237.3
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

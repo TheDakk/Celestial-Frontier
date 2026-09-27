@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "River Otter",
+  "masterSha256": "78bed438cf5d4c99c93ff311bb945bbd86ce8f5d90b310ee1a4898edeebf2540",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

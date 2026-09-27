@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cobra",
+  "masterSha256": "5d4d26f55746d606c0a584db44226c0a1fab05e4c0592ee1895418712c7cd99f",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

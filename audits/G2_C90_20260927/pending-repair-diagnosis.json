@@ -1,0 +1,26 @@
+{
+  "sourceReport": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/native-g2c87/10-snowy-owl/report.json",
+  "status": "FAIL",
+  "refusals": {
+    "left": 0,
+    "right": 1
+  },
+  "refusalLog": [
+    {
+      "side": "right",
+      "turn": 3,
+      "ms": 11966.2,
+      "phase": "impact",
+      "context": {
+        "actionId": "faint",
+        "elapsedMs": 425.533333333334,
+        "durationMs": 712,
+        "weight": 1,
+        "planted": true,
+        "travel": "stage"
+      },
+      "error": "ARAP skin: unresolved folded triangles: 2"
+    }
+  ],
+  "diagnosis": "Real ARAP refusal, not missing capture frames: two folded triangles at lethal faint 425.533333333334 ms. Static sampled grid misses this exact point; needs changed-candidate repair and exact-time control, not limit relaxation."
+}

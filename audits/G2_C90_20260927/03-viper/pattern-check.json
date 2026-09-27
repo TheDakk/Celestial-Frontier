@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Viper",
+  "masterSha256": "c14f0c29d61c077f933eaa60e64860f4441240c4896c41cab3222b042ab791cb",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

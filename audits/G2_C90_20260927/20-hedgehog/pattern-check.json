@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Hedgehog",
+  "masterSha256": "e7a272cc39429cec3fc9d134d14f4861aef567ecbf8d0563198bd5ded02b54dd",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

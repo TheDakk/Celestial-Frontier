@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Arctic Cod",
+  "masterSha256": "6bc34a88ddb69b3f50c377ead0d88b851738fecb4272ba6af7e8ee9c61855fdd",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

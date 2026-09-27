@@ -1,0 +1,13 @@
+{
+  "id": "09-bowfin",
+  "name": "Bowfin",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-5ef114f4-f3ab-43db-91b0-a0bec183f0cd.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "6f388e17a14ab175d83e8cdf14e63ef47b10f8fde079d04862d5810a8bd3ac24",
+  "bytes": 1369290,
+  "promptSha256": "a525f6005a049642cc15fc6daf6dd6d7f56590ca402303709a5017f0c1137918",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

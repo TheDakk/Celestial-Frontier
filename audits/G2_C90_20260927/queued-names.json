@@ -1,0 +1,34 @@
+{
+  "names": [
+    "Anaconda",
+    "Cobra",
+    "Viper",
+    "Rattlesnake",
+    "Sand Boa",
+    "Cave Snake",
+    "Catfish",
+    "Gar",
+    "Bowfin",
+    "Tilapia",
+    "Piranha",
+    "Killifish",
+    "Arctic Cod",
+    "Viperfish",
+    "Squirrel",
+    "Chipmunk",
+    "Rabbit",
+    "Hare",
+    "Pika",
+    "Hedgehog",
+    "Meerkat",
+    "Kinkajou",
+    "Sloth Bear",
+    "River Otter"
+  ],
+  "plannedFamilies": {
+    "serpent": 6,
+    "fish": 8,
+    "quadruped": 10
+  },
+  "status": "24_EXACT_ORIGINALS_RETAINED_FOR_AUTOMATIC_SCORING"
+}
