@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "03-pollock-fixed-01",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "70c8e278a79ac479b5e5cd8564716d88bf4e61987a6039b76869e2fafa00a6e6",
+    "pngSha256": "5d6ab980b0459d4a676697a51bc1d35debfb5b7187f361ed45bb0f707b9042c8"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "3c483f3ef6173f125ed778121de94543418e3f28d6d1052746e90ac1c2f02dc1"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "ab3b6b07695c25eb4f4953181c6d691d2b5ce9988d9c596be5a212d5bb542cd6"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "eab599edddb1fa5f4cbc9f0a6c274d071d107cd393081d8e2292b323f0676d6a"
+    },
+    {
+      "name": "far-pectoral.png",
+      "sha256": "6ba2f82aa076a487ceca383f856b0969ff55b28bd8dcf7d60432db070d94ed4c"
+    },
+    {
+      "name": "head.png",
+      "sha256": "e4e3812be7a00a1fb75182b48fd014e55d44fa81e24085d267b3960b10caa0cd"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "da21628b280ec0b92e171f58ca6f082bebd63426997fb470e9ad72427cf63497"
+    },
+    {
+      "name": "near-pectoral.png",
+      "sha256": "8dae5136cb94a7d89f45a1c513e15bea5a72c90dfc138d40d2b1616cd336e16e"
+    },
+    {
+      "name": "spine0.png",
+      "sha256": "f103e143ad4a50d6ae23a17a79b950edc87a056d6ac518d1eaa8ad3c6d339ceb"
+    },
+    {
+      "name": "spine1.png",
+      "sha256": "3179fe219c3ac20697d5a422637200a4b39aa5c38a4f9f6d87e24d68f8bf1bea"
+    },
+    {
+      "name": "spine2.png",
+      "sha256": "28764cd3eb0c5edee374eb17df015615aad7ee36393cc810d79f67f927764eec"
+    },
+    {
+      "name": "spine3.png",
+      "sha256": "2ccbf029f6ad255ff6f31e571ab48604341da9c08f3d52e6aa7166c65af17fbc"
+    },
+    {
+      "name": "spine4.png",
+      "sha256": "f27e4f2f380f051314b283e8e2b02cee021cbed4f7c214ead65f438119737e36"
+    },
+    {
+      "name": "spine5.png",
+      "sha256": "ea600532cd6f442f190ab3fcb2a0a1c94535246d6c547bbc2246e25222688f0e"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

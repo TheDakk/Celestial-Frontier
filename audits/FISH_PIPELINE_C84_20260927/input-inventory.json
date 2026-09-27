@@ -1,0 +1,1622 @@
+[
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/record.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/record.json",
+    "sha256": "c785aba85f906c69657026e78de9ac4f58c7deeb0805920d4b4f34a1d0ac4c36"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/binding.json",
+    "sha256": "f4d8f79ed5502dbfdb2bb9a5f9a86e41fefbb4c06c3f2ec649c8e2f356090b02"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/pre-split-binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/pre-split-binding.json",
+    "sha256": "6abeedea965bab2709cab30b64f374900beb99c9900427488dacc12d25d3e7b8"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/intake-provenance.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/intake-provenance.json",
+    "sha256": "55bd9a79069de11dcc197bb781755728d8f3cc93a11431b5640c60df7bfb4c15"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/declaration.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/declaration.json",
+    "sha256": "ab7676ba1518040564ced0b5d3dca133633dc638ad6e18395273053a75a90393"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/receipt.json",
+    "sha256": "07f77bc794110f27f2c836b2b1f8560100e6cdebf086a3765b7adadabe3957d1"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/binding.json",
+    "sha256": "2d2d60603e6536dfc4b40f57ab161e02b5b91f7225f09dff6d5b1ab834579069"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/keyed.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/keyed.png",
+    "sha256": "0bbf17f5fb68350d5e9bf09d640714f16cba594c594f474845d7d2f88b162b4b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/ownership.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/ownership.png",
+    "sha256": "cf3f8811afca42dcffad702574f77a64821ba0c31e008d1d4812327aa42b49e7"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/manifest.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/manifest.json",
+    "sha256": "9e56996492b8f4615b5cf070068f155e3675ef64f5dc498eca0d5550150dfab6"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/receipt.json",
+    "sha256": "1b38b94667c30808cd3c90fa148b637a058a4c12f8e9d51c6d3f3e4f2bca975c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/rear-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/rear-body.png",
+    "sha256": "512fdf0fd8f46beb915b407ee8c122d4e7bcc9ba9cf0918aadca917b9ac30a48"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/jaw.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/jaw.png",
+    "sha256": "281dfd5cbe51291704b651d794f8d7ee3210ab5f85e93a91ba9907e5726fe482"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/caudal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/caudal.png",
+    "sha256": "ddbc7184678d62aee2bc539217e33a2e9de83a2b6555f9eef86d86fc6718b16b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/mid-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/mid-body.png",
+    "sha256": "aadcc87e4cd547d65016c581cb2306434ab8d22c258025acf19329a6ac9470bb"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/body.png",
+    "sha256": "d830f000f7b6cbc90115c7dba49627bad54cc114747492a5e11fa5892e7709ad"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/front-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/front-body.png",
+    "sha256": "cf2b7c1dd6c9a8956f4bef87af7005d065d4763427cda03770ee93eb96932372"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/near-pectoral.png",
+    "sha256": "0df91a8038dde91f63a5ea98ede115891ba4c816cedf995e6e4041517f2c70b6"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/head.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/head.png",
+    "sha256": "696eb81dea35d28fd9f99de531a8ae0e4c42e123b28c77c38a357b4f0b972647"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/tail-peduncle.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/tail-peduncle.png",
+    "sha256": "dcf71e2578a65339359a8c7e13590785b8b65f4b7d3a56ccaeed95cc3b54e2aa"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/root.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/root.png",
+    "sha256": "29de86538c349a6906c48868a8799545b45b275f8bda9e8d88b6af363de51b02"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/dorsal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/dorsal.png",
+    "sha256": "f3ace9b842dbeb3bb2268e1095bfe37f345513b183ab0c64cda6455fd41af238"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/far-pectoral.png",
+    "sha256": "6e6e1e9749edbd803f4a99e20992e131cdaf71d8f3fac2e80fdaf84e97353406"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/parts/pelvic-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/parts/pelvic-body.png",
+    "sha256": "f767dfd82d8ea91f7400314224d6b83a6259f5c1f936a5a826c8e3d838a65293"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/atlas/02-minnow.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/atlas/02-minnow.png",
+    "sha256": "63becc965c0fe7d86d3cf1f15309fe48335d04559f5c61c05be9494b2f39434f"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/atlas/02-minnow.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/atlas/02-minnow.json",
+    "sha256": "228aa8392373dd310e75afb91b77b23e2cac3d35279ba45d5be780407d6b186e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/02-minnow/fit/parts/atlas/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-minnow/parts/atlas/receipt.json",
+    "sha256": "7624bf7e6d4eb0cac23976365e4f81ab094f20da44b1759db93aee15857615cc"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/record.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/record.json",
+    "sha256": "acd7994c1a033e5d8fa1c1d67fdab48a996c9a49b15011b1a52ebd5eb3d30aac"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/binding.json",
+    "sha256": "b848c16b49e55062123a88070fd7315b3070945e4b9a95642e4c6699a094658a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/pre-split-binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/pre-split-binding.json",
+    "sha256": "b7570b56f3e1f574d7d717fa97db6deb2d9e6fad0150a6a72b0ab58f0e1d29ac"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/intake-provenance.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/intake-provenance.json",
+    "sha256": "4d941c56d20bcb68435b865c9ad11bc7be28f101c0531c33d08c929a681e12cb"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/declaration.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/declaration.json",
+    "sha256": "0811e6d7e0d47277876d465eb050d958f3e512919a2adbf8571246264f26621e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/receipt.json",
+    "sha256": "01f03d370b1d5c94cfaf068d5bef7749ed51fb8b11f4e6da7a94d061048b4c2e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/binding.json",
+    "sha256": "bc0174a6982bd0eb664d0cc828df6322652f7e9ac10a82fa46eded310e50162d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/keyed.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/keyed.png",
+    "sha256": "6dcc55ca62b1db1fd63367aa01260b45fdb455179a3330bff2b7731ecfa734c2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/ownership.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/ownership.png",
+    "sha256": "04bb4a0c4a1fc4012fa1e7e0db39613c213d4dfe881df9f30a643e4159e82e75"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/manifest.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/manifest.json",
+    "sha256": "015e73cf2215f6dd4212d8d1f308c0812d495c705f16993436d30e472ac6f65c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/receipt.json",
+    "sha256": "4f74e809b74d422211fb5db9b08e8d8774e2b3ef3716f8c8f1ab5aaa62bfcc33"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/rear-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/rear-body.png",
+    "sha256": "d2fedb1fc87738272947eed9bf3153a256c7b7fe66be413ca76265c62f3cd39d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/jaw.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/jaw.png",
+    "sha256": "3533020d68fe8cb21c01f166b41c526e98498ae390e92f3e7deb895a2a419a47"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/caudal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/caudal.png",
+    "sha256": "e0c42ac905413c9da9807f1e0a21815482585c18477cca252b913a84516dbdce"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/mid-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/mid-body.png",
+    "sha256": "5d16d7dffc62ba7b0e381c54ca4295ac40deb22556a41cf7b4cc833a0862a9c5"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/body.png",
+    "sha256": "b37073c53a8e460b264e13653ff1c4a9c7d832e49732c6045c96f273f482dc96"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/front-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/front-body.png",
+    "sha256": "f093670d1c0846645ea9269b303e8a5ebebb3e61d0e79da568f026686ccf93c7"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/near-pectoral.png",
+    "sha256": "eea91d745f6f50a1d8017ec26affc4f8662260e87b737b8709f07998667b3ea4"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/head.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/head.png",
+    "sha256": "bb10158430d49fe6d7d7f78c8ae4084115c9cbac16247bc44f05733447495728"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/tail-peduncle.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/tail-peduncle.png",
+    "sha256": "8864d10783dbd3c4ca28964fda5c4258f3511d20aaee7896ea6d566d1ee6fe61"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/root.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/root.png",
+    "sha256": "945a13a0ba3c511b8065f50866359ed8e6de77498d765519c74153b8af7b547b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/dorsal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/dorsal.png",
+    "sha256": "8355087d15dad4b4f144cc878ee3d4c7bf6444cfa1e0356c77e50ad5610863a5"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/far-pectoral.png",
+    "sha256": "09c077e682a7ad67a859d817c05bf7f73e9baa4b8c66cb08bc109f648b2aca35"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/parts/pelvic-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/parts/pelvic-body.png",
+    "sha256": "356acde22ee2c1bfee2c43cff949ff156e803b8cc2fb688ef8cd1d92dddbbc59"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/atlas/05-whitefish.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/atlas/05-whitefish.json",
+    "sha256": "0cbb5a08396552eeca9352c77c1e43b227775dde74d0137a9819299746575fd7"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/atlas/05-whitefish.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/atlas/05-whitefish.png",
+    "sha256": "080aa67a63ad1f98cf408ad5eca63cd2199781d2bfe72419c98b1c8de269cfa2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/05-whitefish/fit/parts/atlas/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-whitefish/parts/atlas/receipt.json",
+    "sha256": "458ddd219c6a34d0dbb2d90b338a21ff87d2bb8c50aa378df7dab4fa12a684be"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/record.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/record.json",
+    "sha256": "01fb87cc28f31381a9bc12c481da8966dca1f95870381f14f86a1f10c4e360d7"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/binding.json",
+    "sha256": "23f6b3eeb92c565ad8b6ee1d8a5f14de6424803dadc91876c3302eb341db3471"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/pre-split-binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/pre-split-binding.json",
+    "sha256": "69b01f41fbe4b4a44399c03da09d5046fe27345d46df1a445455221776db063e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/intake-provenance.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/intake-provenance.json",
+    "sha256": "0456ac8439def091ed1ad17d85be2c83360735b6a8e2feb68964aeb256acf0a2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/declaration.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/declaration.json",
+    "sha256": "927e5de483ffa8ac76b70bf7da5fd3cb3c8a6e9a54119e269dbecd178728530f"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/receipt.json",
+    "sha256": "25c379e2534e5c1e2afaf682bc96e68cba7b2a48ba482f4f1ebe10ad9105132f"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/binding.json",
+    "sha256": "773d972818da323a79faca33205111f7f5c756e5a07279ff3545b0d5e96003d6"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/keyed.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/keyed.png",
+    "sha256": "aee47d5791343bbdd439cc5b776f86e97f795527784ab5c5bc6b4e2693c59bb7"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/ownership.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/ownership.png",
+    "sha256": "11e82bfa18384088e9e3ebe1171472dfc99e8030991601305aee7063eec4d034"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/manifest.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/manifest.json",
+    "sha256": "673c198da66941e400b30c0920adb29aa9295a1e1aa1f846c4d98d645cac22b4"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/receipt.json",
+    "sha256": "6649ac4dfd04049a430f7ac1458cebe7da7a12cd5951d6a2e5eef214baea1f4e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/jaw.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/jaw.png",
+    "sha256": "e89b4cbdb2bdf2d243ea455bcd922b621c7c1b4d4bac65f27b0a2bfbed891b58"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/caudal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/caudal.png",
+    "sha256": "6ec3a5c30c78dfddaeee351f98eb69617f4618e237b0e429adb4fad5fa0c1856"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/body-2.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/body-2.png",
+    "sha256": "127349a1824f898db64a199b99b054d4d103347cbcc1e4cbf4684ac564447f46"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/body-3.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/body-3.png",
+    "sha256": "1b1b7b966d4bce22384402c86f6ac5bfea2d6b145c0e092207636770655f87f0"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/body.png",
+    "sha256": "7cf56f33662a383151b2be7c362cf805b8a7bf64b347412d1c6607c96adbed3c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/body-1.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/body-1.png",
+    "sha256": "6c0e35a0af3b3c203cadc044b87e2e6a5e0babc125a4bdefb677c2020611399c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/body-0.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/body-0.png",
+    "sha256": "4f3df66e72af442e9d85bb52a3e246494c7cf52074bdcf1eaa9e9cf90b5a5777"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/body-4.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/body-4.png",
+    "sha256": "576cbfc3912587525d01f37e92101bbf85028d0e015216218c75d3262e698075"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/body-5.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/body-5.png",
+    "sha256": "13ef2026e10693c066a3933ae4ebbf1ed76a6be15ca8550269fe49ab18b57537"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/near-pectoral.png",
+    "sha256": "cc9c11630209f54866eb26b1e42c09fd50f1128d6cee644b702f14eaf9450df6"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/head.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/head.png",
+    "sha256": "ee4d6972ef7bbed5bdb8c1bdd48f5e0482d23896c55d1f225ab71e4b9db50297"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/dorsal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/dorsal.png",
+    "sha256": "42c952984726c7b37c46828648d09c1868f3a0c5b57a68230bc221d5ff09b38c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/parts/far-pectoral.png",
+    "sha256": "53347ceee22de1468543efe181a1510d9709e2fea05f98394c6c01c3e9e0e0eb"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/atlas/07-cichlid.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/atlas/07-cichlid.json",
+    "sha256": "4a275b2b6ff61d5c60fa95fd5fecd49f7673585d7b6bdab790c4c634577a7479"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/atlas/07-cichlid.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/atlas/07-cichlid.png",
+    "sha256": "b389e8afc48147df10bd9de3493de31c3cd43455ce9268b1e06f9ecea8b6bede"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/07-cichlid/fallback-1/fit/parts/atlas/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/07-cichlid/parts/atlas/receipt.json",
+    "sha256": "73b51380d01957279f7b0f3783194d2e8c8bcd22c2bd6882a58b9f98aa9abffe"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/record.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/record.json",
+    "sha256": "05efbc427b1894dceeb733571467c909929b51303a004324f718145419c6c078"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/binding.json",
+    "sha256": "658412d9fee078352286ee3600f5ae17a7d443f8a1eb04377673fbd70160ede5"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/pre-split-binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/pre-split-binding.json",
+    "sha256": "f2dfb27eae6e4c66603b7cc89eb81258f4db24cda5bcc29c8bde3ec408f0a3a3"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/intake-provenance.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/intake-provenance.json",
+    "sha256": "bdf0d2bf2d807edaa990b0cd51ab570debf912f4712ab77fb0efbf339b3d907a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/declaration.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/declaration.json",
+    "sha256": "0406641eabb13e622b23e830aa1dc1319c494bfacc8d579edb4b521d0b0641e4"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/receipt.json",
+    "sha256": "22c28adb135b3414fc67b721fc6d1f18f68e3f056da5f6a01a418db54a6e730b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/binding.json",
+    "sha256": "216b2675028923be1905ad7f052bb8f5e6bde1b42b8d54af36dd1b14eb7158d0"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/keyed.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/keyed.png",
+    "sha256": "1dde786efc00f81fce10b2dad6ceb42085ba6936355cb80475f4c77213c1577b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/ownership.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/ownership.png",
+    "sha256": "ab621c0a7fcff6fd6535746efbc62c0cf5e41afe4b9167a3464e268bf1cb28c8"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/manifest.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/manifest.json",
+    "sha256": "dbfadcd95b872dc94ccd826d57955a227b7b556b5a2d0c921129927949549439"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/receipt.json",
+    "sha256": "d599936b243ad264df1bf6cbff87bb28f90669994506b73702ac6ff28cdb22c2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/rear-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/rear-body.png",
+    "sha256": "a06506c687a09021090d20b217f2110c6fcb376b75197f46c8eb58503cff4441"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/jaw.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/jaw.png",
+    "sha256": "c2446be5649ede1d4ba138cdf093152060d3724757043308fb260045b1b71f61"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/caudal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/caudal.png",
+    "sha256": "09b637adf1df4eaa7a935fc278f2b313d9a63da14134b4acb6ef97a74590a233"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/mid-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/mid-body.png",
+    "sha256": "49f1e71f6722434cd0f63e2373a3ddec7b46510ede73df0b2e4fb5e3ceb38fd2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/body.png",
+    "sha256": "b303251517ab9f9019a49dfe80c39767cd1ba09acc082123321d8be37affe1a9"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/front-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/front-body.png",
+    "sha256": "4fc895593ab9b18018859466cbf800cabf756aabc13473df49b1c57c80fc5d78"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/near-pectoral.png",
+    "sha256": "13cd53481cdc6f74c030e30afeb6d7d6719fa710549fcf1fc86ec35729dc0c0f"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/head.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/head.png",
+    "sha256": "e9abfe607bacf608d4fa96664f355b3e6a38919d524ce10b17aeda5ea7a3258d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/tail-peduncle.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/tail-peduncle.png",
+    "sha256": "07c0cd9f04adb1571ac11ea9698af828bcafb7bf565c37a24490d5fb1dad3740"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/root.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/root.png",
+    "sha256": "2ef10a835c2d5130754db89335760fc80d6ff07a1718f212622d81a340ed2e86"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/dorsal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/dorsal.png",
+    "sha256": "94535349480296a5d69f86322a25e6065f52fef4f8ee7d4b11d3fa8e04bcdfe1"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/far-pectoral.png",
+    "sha256": "d4060af34329621622d5b8d7f151f97ace0a44d53c3702c4a765e75c17a7f9df"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/parts/pelvic-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/parts/pelvic-body.png",
+    "sha256": "ca26f0938a0090dae7ce573bd1ab82639ae9436f7c326a9a243b8eb544761d89"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/atlas/08-tetra.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/atlas/08-tetra.png",
+    "sha256": "44afd82a57f85b026c00c6001beeac362bf2340e16b376494ed9bea80c9ed00a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/atlas/08-tetra.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/atlas/08-tetra.json",
+    "sha256": "2d8193cb92d9387b81657306b24df7fbf011c53e756cc524667ed8fcfe6588fc"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c72/08-tetra/fit/parts/atlas/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-tetra/parts/atlas/receipt.json",
+    "sha256": "0200b9da764f2c52410c19e3d8ebead73c5691a278c7dc27e840b358271c1ba4"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/record.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/record.json",
+    "sha256": "20344d5a50d9306d7f72cd056bf26a86ebd29f2607c3f3bbb35c10b9451161cd"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/binding.json",
+    "sha256": "d37a479e6e830f7d5b59e8aee3fe3c6f9d81874f2097a71c36e74b6e55d4bd72"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/pre-split-binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/pre-split-binding.json",
+    "sha256": "6ed429a0492a6477f09e34d9d5451473160a926265c67703ab5a3a173472b7c7"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/intake-provenance.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/intake-provenance.json",
+    "sha256": "c523bad975dcefa1c01cfabd5fe233042c1a31f831eeee5de9123dea3093bc96"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/declaration.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/declaration.json",
+    "sha256": "169566fc7a90d02afcd82b158c11110dd26ad0d02d61c0713aa7fd428f5134ef"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/receipt.json",
+    "sha256": "2fff61b6355cc94dbf6ac79f1c41c0292f41c75f023e4aa18c678c067a24fa48"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/binding.json",
+    "sha256": "3fe7b75faa4e68c7f846f454bae795ba4ba636a46199ee7bf2ebdf327fca4b1f"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/keyed.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/keyed.png",
+    "sha256": "50f214d0b64749bb7d9d9af735866df46a3d51c4dd5a9c6285b9e783655bfb18"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/ownership.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/ownership.png",
+    "sha256": "2f7ffb048beca2dcad53442d51909a597d1992066bdae09eba6b97652f4b82f4"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/manifest.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/manifest.json",
+    "sha256": "271adda776bde6b668256003bac56f70b146a960482deffd800fa4467af71310"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/receipt.json",
+    "sha256": "eb73af6cdf44e8485d7a5f70cad6948a8fbbcb0b49aa0a41239352c8b164687d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/jaw.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/jaw.png",
+    "sha256": "797abdfc90b18f614ba65d50f83380ca41d9f39e1f1be77c91bb4892c0181c4d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/caudal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/caudal.png",
+    "sha256": "245aee287b8498650680e51315731deab2ee01ef44bed9074522e9bd697e28a9"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/body.png",
+    "sha256": "c103ff5e82d686aa1e063a0b30707ec8b6ba88d08b6b8c65cc26d1d9296e0bff"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/near-pectoral.png",
+    "sha256": "c574008fa1c7ba6765999aafa071110e4063467789e2434d17c6831593195e5a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/head.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/head.png",
+    "sha256": "02b48ac785bbeb5c7df683a07509ccd632865d840267e9865b9a966fd5d03b1a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/spine2.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/spine2.png",
+    "sha256": "3c9e4358b05f8057d7764f27c16813d65438b4724b55817703f20e1273d221d3"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/spine3.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/spine3.png",
+    "sha256": "c433f8d5710970c3182705dc1d9303b4ea3c73f608b844fd21857cb16a3e1011"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/dorsal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/dorsal.png",
+    "sha256": "1da8c16cab5c9f9230b86017f26413ce41daf2696fe720df6bb5f98524cd18c9"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/spine1.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/spine1.png",
+    "sha256": "9ebf5ce2c2f992916d33407ace0f7840c01bdd7db8d7f21853ab106544938b73"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/far-pectoral.png",
+    "sha256": "47ff0034a0cb007574e2730a13e17e9642ab02b329b810f720efd77e9576b3d2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/spine0.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/spine0.png",
+    "sha256": "7a6aaefc1e9ec3062a8b2771df89cf1850fb39a0d13d5b1b43fb5e3c9a3606f1"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/spine4.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/spine4.png",
+    "sha256": "000393de0963288c9faa0ac1dece23523761fe092375972e3510d500592953b2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/parts/spine5.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/parts/spine5.png",
+    "sha256": "5bc1dfc1f61df8fb0e01768e6dcd5c4a3844c009b91a9b52a5b6baeed4a23f7b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/atlas/01-pike.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/atlas/01-pike.json",
+    "sha256": "288fbd2491df0a668d9e26c1c08ba15688a798ed93e1380aea7ff9955a12e27c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/atlas/01-pike.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/atlas/01-pike.png",
+    "sha256": "3bd75dfa5ad27bf7732d53e1edf3d38a8010374c2c7497004e2f755c52ea76cf"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/01-pike/fit/parts/atlas/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/01-pike/parts/atlas/receipt.json",
+    "sha256": "47fe068406355d73f334459817c87f18ee785e145316ab6774b1e1fe75711e8b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/record.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/record.json",
+    "sha256": "725a89059513903fbecd9ec8952c4c0b87ca83a2da23a25f7c1585834601df09"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/binding.json",
+    "sha256": "ad19775d4c4524e62a8c4e7512a71d965b5f50c3b6dea99fbecf3fdfe0a008df"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/pre-split-binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/pre-split-binding.json",
+    "sha256": "31c8d221abefaed70cf49570de059fff0218d5a81cce3c4cc12abcc3a737a078"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/intake-provenance.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/intake-provenance.json",
+    "sha256": "af0dad1d298e26f164e577e820550ca1435454f57d155bdd145278003090c3b2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/declaration.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/declaration.json",
+    "sha256": "5cf87e4e7a070fe1041f49d018d76255fb78f713df097dd14cda4a5a72e57a27"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/receipt.json",
+    "sha256": "e2b2094ccb41433eb397a3f531096a012e1cb250bc26c9755c9736b739af206f"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/binding.json",
+    "sha256": "3746e20147f5313b19ae40dbaf954e6b361895ba943b4a229aec2d48d7d5d938"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/keyed.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/keyed.png",
+    "sha256": "c3e7965d1080c64722251f69895d0ba4ec7b62ca51b29cd7bf1418c0cc51d571"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/ownership.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/ownership.png",
+    "sha256": "34e97e92c24f8cbb6319f4f34e44e894c269198da46e5ac4e9bff68f92c53ff0"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/manifest.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/manifest.json",
+    "sha256": "25cc03283ee5ba4945e8db71354dfff66925f6e46d31c1e93e34b0a634076268"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/receipt.json",
+    "sha256": "f8a762da0a4b5c6b036a9fc01b691a952d556433a08bd46fc1aa8f395c981158"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/jaw.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/jaw.png",
+    "sha256": "b3603e71ca9347582f9796d53676b0f1b785b88f9b60e6f0ead77a5eddaab991"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/caudal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/caudal.png",
+    "sha256": "1554ddf93e694f813d0851510d5211468b9a61b11d4ec8fd18150dac7391dab0"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/body-2.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/body-2.png",
+    "sha256": "24c555daf1eae22335b5094df7e7306282d56876db46cee4b08da69c09fd2089"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/body-3.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/body-3.png",
+    "sha256": "3c78af986d7d141ea294608138d8582f9804bf0394a87ac8557e36654ff49f49"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/body.png",
+    "sha256": "7bd1161421a6ce9dcb46152febd66424909f484fff0b40dcd1f2bd9fa078ddaa"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/body-1.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/body-1.png",
+    "sha256": "1f52b5da1f3587002f9cf2112cfc0c7cf5e91f6fdad6827606c0c0797dd84141"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/body-0.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/body-0.png",
+    "sha256": "2a8454fbc28f19bbc835be2d87c229f269684e3616d8c7066b151aa2bc9079fd"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/body-4.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/body-4.png",
+    "sha256": "86d0e393d4b2c628cc27f0393f5a456c4a4f43e4af0d35b905453d4e2f9173e3"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/body-5.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/body-5.png",
+    "sha256": "cc03dc56e5c015ac536fda614b264539c83f2472967637b9ac23e6c479d5583b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/near-pectoral.png",
+    "sha256": "81a953153bf1f4fd7d26e41919b1bec86c66951adb4dd26c5860e60b18d9c08c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/head.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/head.png",
+    "sha256": "e06b51fb08274e8ca318b8353898bf53db5f7902db2e3c40e982af6a42a112a5"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/dorsal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/dorsal.png",
+    "sha256": "d090a2df58b174ddaf7920e6613da7c1c1b8a7a3b64e28e5cf553ef7ab5519f8"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/parts/far-pectoral.png",
+    "sha256": "74fcb9fec602f0b585a5fc1a7ce2d2e2973d52ff81fa4a61f0ec7ca935eef146"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/atlas/02-bass.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/atlas/02-bass.png",
+    "sha256": "5e92ba58f2d92823edccc92b230163452a7e697a0a0c8abe238d6ac992ee0bfa"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/atlas/02-bass.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/atlas/02-bass.json",
+    "sha256": "11482b5c6d2e08097b41cfb176d1556fd1c1d6f82eb8b11eafa0527b21126e79"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/02-bass/fit/parts/atlas/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-bass/parts/atlas/receipt.json",
+    "sha256": "c5d2adb91dc4e7343c89e66490e2bad72f78172faccc7aedc21dde01a71aa728"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/record.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/record.json",
+    "sha256": "b84955bd6e98f09a5c8d02ac691622154447edfcac0d8b163bd9bdef5c5dd94b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/binding.json",
+    "sha256": "c5dbac2bf9079827e0eaf957dc35114ea06ddc1396c903d76d193884b338ddcd"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/pre-split-binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/pre-split-binding.json",
+    "sha256": "9bfcc20e771572de5a84661b08bb8b61bb684feb5e717cb823024682fe7115e7"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/intake-provenance.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/intake-provenance.json",
+    "sha256": "a4910d7c5d12c5875efc6db041f86f9810f1e4a08215613779443054db14a267"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/declaration.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/declaration.json",
+    "sha256": "1b8b88ee96e8b6127460f173780f4f78eb15af65ab19363e2bde31866fb79cee"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/receipt.json",
+    "sha256": "f4ce2efd96edf16648ff1fce08eb4342b43e205aac61b73d5dae0c33a5b28170"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/binding.json",
+    "sha256": "e16a3760058c3adc0be10562d9f6cedc4f7aa6a1dd9804f32223f7b8e36216fd"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/keyed.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/keyed.png",
+    "sha256": "25d7aaf3fbc33cfe0f2056eb81f05f45e9e04cf7caf167be07d9d394fa9d8a08"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/ownership.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/ownership.png",
+    "sha256": "acf323643d778220efcb5008e70dbe633072cc09cdf16f2875b86c2dcf9fc1cf"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/manifest.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/manifest.json",
+    "sha256": "0f1c4c494487fb753e8a29d18910461332f98c3dc4c81332dc373f8146e33623"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/receipt.json",
+    "sha256": "ca4585496ffbb61b068eaf4b11890e611efdde8ec32c95488d95f1937d8edf0e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/jaw.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/jaw.png",
+    "sha256": "13712fbfb8d420633e14b821f07901dfcd77bb5a4b3fa34ef1db949993678167"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/caudal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/caudal.png",
+    "sha256": "4f6d1e2d3715f7d6eef4dc1bb4abbebf0364ab69fdcf96094352242507a8da52"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/body.png",
+    "sha256": "c7dd3fa2a49aaec072c215e3300bfa43f7fd545a778370698ef5920d4434b11c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/near-pectoral.png",
+    "sha256": "eaeb6f3a90dbe0adc1cc3b7a291c17ac5c94ec90ac0dad9aa6437c93e7658d61"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/head.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/head.png",
+    "sha256": "6bb17479d53915e68d730740b8b56da1aeb5065c8919c5f334cd9d8baafbfcd3"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/spine2.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/spine2.png",
+    "sha256": "a2e11388b5536159c71ff4b42923940193cd1263bf58c3c59de1427dd5d96558"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/spine3.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/spine3.png",
+    "sha256": "4bee703995fe61186f128696d46beb89c02019e3edef37cc83fb2c18e6ea5097"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/dorsal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/dorsal.png",
+    "sha256": "a6a400c5b29a47a8b0ffa238dd2f4396d1a4c59a637ff790ffc02c91774e1de1"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/spine1.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/spine1.png",
+    "sha256": "1126072a4ef9f663f3b6f6935d4d0945ac72f69a014c90308a2345e6dbce6c54"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/far-pectoral.png",
+    "sha256": "1b2ea57e43dcdbeec880499f74478108fbb582c87e334b85735130d216a5501b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/spine0.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/spine0.png",
+    "sha256": "26568766049f7aa3b197c902b0828d5869457d78cc2fa1417d91d67ee684b662"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/spine4.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/spine4.png",
+    "sha256": "f5846ffa53e8a052e0749e8065a76b066e19fd5da58ecbb48aac0845163b7971"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/parts/spine5.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/parts/spine5.png",
+    "sha256": "f682813e45a6112c48d8889f4eb2b00b1a93d4f759e13b1ceb93f1a5df5ea1f0"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/atlas/03-char.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/atlas/03-char.png",
+    "sha256": "1737061aaa0cbe9f3b7f4c19f1e8b1fd79de921e50aa47ce733e045c264c5c3f"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/atlas/03-char.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/atlas/03-char.json",
+    "sha256": "40e8db4d91a8727ad7813f98c7e8eb09554d4b1d3fa9803a4e384811e60a3055"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/03-char/fit/parts/atlas/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-char/parts/atlas/receipt.json",
+    "sha256": "ae11708be8ed21d03e3cbb88cec16d6cac9d9f7ddf3257359c31e55bf4a1a5a1"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/record.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/record.json",
+    "sha256": "8ee661fb5325b3a96d723ea3227f60f1c7d581ec6ae98c90900969939d1934ca"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/binding.json",
+    "sha256": "8ba80178eea45cf598cf85dd271abdcd62f38beb7370ee8991aa1692ac2d02ee"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/pre-split-binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/pre-split-binding.json",
+    "sha256": "e0b45b32364f4100a9144ebc1f788f3a74214f0cbcda2e87cbf6bcfa6cc4f60b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/intake-provenance.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/intake-provenance.json",
+    "sha256": "6bfc87cf9b20768793282e0ce82f5ebbf1b083073c292edf975438d8b46ac89c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/declaration.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/declaration.json",
+    "sha256": "5b151b9a7380119e07f3890e2413f426d90cb17c41ddfc51b943e8da0ecf4be0"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/receipt.json",
+    "sha256": "6d3a1e3cc5f3215764c912ee04368c23da4b4c29c70b159a927f65149129006b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/binding.json",
+    "sha256": "9af039ba3bea07d5c334fb4c8b384db9583ebf774ca9dcafb304b07c44200e87"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/keyed.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/keyed.png",
+    "sha256": "13997a257b1b733da3d534032d3a10054336c0dbc2aabe41ef13e08afb58eec2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/ownership.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/ownership.png",
+    "sha256": "ab96267f63d107a4a1c61551fb7b296b9e6c6ac36b7de623d28d33a1fa5fde85"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/manifest.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/manifest.json",
+    "sha256": "183a3e10b28843eec25d8e0c995434831594e1ae9f4986752045cfd8c8d40339"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/receipt.json",
+    "sha256": "9d3c8e6c0d0754ed30240df8496feff6c04fd4f0ffb458491008d95e7462d14f"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/rear-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/rear-body.png",
+    "sha256": "b79d88a7b710c53266849a838a5a42d07b32123a2599302bb452df4ab51a7891"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/jaw.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/jaw.png",
+    "sha256": "18e6169cd576861e3dc5c22eafca100927d8ce1fcd0ae165ef96204bba621387"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/caudal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/caudal.png",
+    "sha256": "e5291d9ad9f06cc7f530056b00fe25d7affef3ad95f644d9cc2f61e787b0deb2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/mid-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/mid-body.png",
+    "sha256": "4eabacf5e0d2814d02536089105778931b4ce13763216a47d41a6fcd78eed858"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/body.png",
+    "sha256": "00c5d9c699980499156bf390a5aa21dc55bddade50300cdd1262931cbe1b58b8"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/front-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/front-body.png",
+    "sha256": "845c7d8a7738360f50f1d82da481da14d088daf1729fe3b1e86f69447030b83b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/near-pectoral.png",
+    "sha256": "21b86c1541732264598f9b39be9ca9ed7b6c60699c84c3c699ea78a91c438445"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/head.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/head.png",
+    "sha256": "b0c99b17bb53fc5a222767883a27857f38138d9904c3a4449efe1e1a2fd3ae39"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/tail-peduncle.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/tail-peduncle.png",
+    "sha256": "227089acb67aa6f8f5a33b375aff6c1a6455998f0aa4a0ef0f310b7c58cdb85d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/root.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/root.png",
+    "sha256": "45b11724002dbce372d9e50ff557b57c000f54374e8ccfb528b51724c73502f9"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/dorsal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/dorsal.png",
+    "sha256": "0b7c7ff528f0d7bdc534af91dadfc72853450c1bac841b082a3b2fe5502381cd"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/far-pectoral.png",
+    "sha256": "d19cdf4cc55a188ce72798cb0ce15724deab996de878ccefb54ee5469de6c523"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/parts/pelvic-body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/parts/pelvic-body.png",
+    "sha256": "20a77552c18b411a7ae53b4783ff21669d0fde73bf9b75d732f5b404ddcb9cdb"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/atlas/04-sturgeon.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/atlas/04-sturgeon.png",
+    "sha256": "d35c933817ddc4857ee73897a3969fa76aebe518a8240712fe809faba5ab8efe"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/atlas/04-sturgeon.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/atlas/04-sturgeon.json",
+    "sha256": "ba7c562471fa7827ec47a7e9266bad5de2a9d05b8cc201abed277cc127916585"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/04-sturgeon/fit/parts/atlas/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/04-sturgeon/parts/atlas/receipt.json",
+    "sha256": "fb2c57d0656d1c19e26ec0e11a7d0baa039749094cbe5b6860f9d5d9093b9efa"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/record.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/record.json",
+    "sha256": "90738ac0184ad299643a8c421428511813e5e2da8c611bb12d37fda422a3da3c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/binding.json",
+    "sha256": "2992b0789ad875801ceffac9cd23a2dbcc8ed1743e1b55cc6817af332f43ea2b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/pre-split-binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/pre-split-binding.json",
+    "sha256": "6d4fbce3ff35080b8359cec5976a76aac90b203e2e1afd44f3452211b420bb58"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/intake-provenance.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/intake-provenance.json",
+    "sha256": "535972b3dc82b466b8fc521442e7a36dfed849ff340491ff61b207a333421492"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/declaration.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/declaration.json",
+    "sha256": "632d531de1a8354a88c3dd0ea6246892b24bbc10a0fa678d26dff55772a16f2a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/receipt.json",
+    "sha256": "c41791972d02b16c709e43809a97a27864f1cf327a2b56e7d202ec683547bb5b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/binding.json",
+    "sha256": "49671c98371f44332e83e74e3f1c05a927bdf0559ceee51ab92cbca22eb3780f"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/keyed.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/keyed.png",
+    "sha256": "ac57597eb5121cd73bacc59bfc572cd8c8ab8d005a7f59de3adafe45b84c9441"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/ownership.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/ownership.png",
+    "sha256": "7c5e5ce60fa26eecc826b8f27e43e612758650c3bb7fcbd11a1366743063f175"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/manifest.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/manifest.json",
+    "sha256": "394c510ad49f0c0b2d5c37aa57ef75d60d4d3a34a9f1094f6edc98778d93a607"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/receipt.json",
+    "sha256": "5f3a04e7d41788b5ea2897bbe8eec31c4711782118d2a7fee5ac51d7d2e83b53"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/jaw.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/jaw.png",
+    "sha256": "8965ba938acf7620f9ceca591878ded2a5178e2600cfe3150ed5426c3768b9ee"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/caudal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/caudal.png",
+    "sha256": "85cd472a48c65549134bef440180ba992478dfb3105561fd212bcbf0de7efacf"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/body-2.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/body-2.png",
+    "sha256": "dd00e2e6a9f8942ad4cd21a1ff4ff8d669d979a56326874000502404a4612278"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/body-3.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/body-3.png",
+    "sha256": "0305970482172070918697aba1b4f0cbb7b5cbda03981c0d09bbee8855efa158"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/body.png",
+    "sha256": "532dde3e9ba1a46d70592f9463e89d77ead3b233b5c5d03d1c7cd96a7f4de528"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/body-1.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/body-1.png",
+    "sha256": "1cd0dcbceab2fdc2afccf197ebf0e8b541ef446b8b35ca6cfc0de83dfa84b0d0"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/body-0.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/body-0.png",
+    "sha256": "dd25dd1abd45443e6e5a4e7c65385fbdb9a467a748ae42b38a4b2aebdd920db4"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/body-4.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/body-4.png",
+    "sha256": "64cba5c56545d782ad79da7b8d8b028847e4010606a27853cfd4346c1bd8d1c6"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/body-5.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/body-5.png",
+    "sha256": "30406ae8fc852450ca3bb3ee878de54498fa090f14679d6e6e1281b4213f5919"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/near-pectoral.png",
+    "sha256": "9481293362ac93e3fae6bfcca39723addcc5f781ea4d5d9ce0f558be72247ee7"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/head.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/head.png",
+    "sha256": "105896b926f0a0db49ad2e00295f4539aac2dbbe551b06ec1ac75197d68490f1"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/dorsal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/dorsal.png",
+    "sha256": "2b7a6d15fcf133767ea466a599e082416de44b4ede0fada2453cc2ca60c24ea3"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/parts/far-pectoral.png",
+    "sha256": "795a26ebb2998b4b9660f6a6639e85b36d4e4dcb63054b164491071fe9b2056e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/atlas/08-goldfish.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/atlas/08-goldfish.png",
+    "sha256": "81467c6f6118cbcfea89c22d9d9e82352406741ea163dd7747eb06463ec4ad2e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/atlas/08-goldfish.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/atlas/08-goldfish.json",
+    "sha256": "df19e6458687d104b733d2255779110e87230fab31f2de3a212770248035f9ed"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/08-goldfish/fit/parts/atlas/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/08-goldfish/parts/atlas/receipt.json",
+    "sha256": "653787df7639bf09369cf26e7ad898ae5913543910a35ffc1af0715508251c80"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/record.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/record.json",
+    "sha256": "8582ed3be0e4e524713b6f12944efb8ef3fc1da39f6c2d74176cf6045da4ab0a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/binding.json",
+    "sha256": "de600c3dfb0c4c6f0e892bd2a508b6ceb02bb1a323f9c8363201e8665cc6960c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/pre-split-binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/pre-split-binding.json",
+    "sha256": "be0fb81cf580df501c3bd411cb4b7427d22923f17b20604c57ba16b25349fc05"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/intake-provenance.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/intake-provenance.json",
+    "sha256": "074a8149ef1c3fe575ef5f2bad718914540a0952de2790eb153d0ef7d5b8613d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/declaration.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/declaration.json",
+    "sha256": "00b35f6d203f2ae89f4914b5ae008d7f325fe7e732fbe94cd665078f3c0a7f7d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/receipt.json",
+    "sha256": "f29ff1b68eed32dee274c508868c3f3e71300e74ee9f50e372c41912f8d923cc"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/binding.json",
+    "sha256": "59ca68aa3526988fd047f0a9288202cd3f06fa3ab802be4ef04fee91328cb1fc"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/keyed.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/keyed.png",
+    "sha256": "4ab3fe7d48a388e7f81408792c4335ea1637cd3861800b500557c9e094b6d4e4"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/ownership.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/ownership.png",
+    "sha256": "c31c575887283d690e62d026a387f1260ca5dda5e80623e52bc4cf97dc6f7377"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/manifest.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/manifest.json",
+    "sha256": "e49df3d4f607eb2246bdf46338be12a72127d8ee24f80b3b6d8d6d3a7e209b38"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/receipt.json",
+    "sha256": "12defe6eff5913cbb38a52bcec03d2bd5d87b018ba6e900ab4bf193eb184bc21"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/jaw.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/jaw.png",
+    "sha256": "fce5b233228f23b9d066181e5c99018a9620a20e82ad3acd774f8737a0af55ab"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/caudal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/caudal.png",
+    "sha256": "58278633bc4d9155fd1d39ecd9e200cab84fa424ace8a6f04eb4bf1453383acb"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/body.png",
+    "sha256": "e1d4ecc170256686011e5ef808af3d7a194cdcc6fe53fe9173946a2e41732ddf"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/near-pectoral.png",
+    "sha256": "05b1a176ce92a44d44574ed03b42058775689c5000cdb038931a1e96c7b069c3"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/head.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/head.png",
+    "sha256": "15d42e86b2999b4eaed27e727472c8b1a14c7495af6614af6b21e3120947b22e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/spine2.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/spine2.png",
+    "sha256": "0ba67e2ce451b19e0f023ce842efafa1c4482814a233b2d61e9848b6582b3fb7"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/spine3.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/spine3.png",
+    "sha256": "5ee5d6ab7aa7dd1ed7d7683e91651d1eb91460c0dd4710bedc49c6f25f782379"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/dorsal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/dorsal.png",
+    "sha256": "3ad74412f205f14158a118da711e9306cfa2130e4d62ae7f6eb47b682f560b4e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/spine1.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/spine1.png",
+    "sha256": "3689308ed32f258a5c8f8349c5356e32b3154155e2440c863ab9a9524f29424f"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/far-pectoral.png",
+    "sha256": "4d3096d5480c95a645ba593e6536f48c8d05efb67d553af65ac8540d4fda13f4"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/spine0.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/spine0.png",
+    "sha256": "207d04bcd734a0950e1f65977de46d1537ea2da9e497435d5bde6170e756d671"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/spine4.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/spine4.png",
+    "sha256": "c39143f6bc4a40bdc83dc405d3da16954f1a0be281be5c172dd8adf998cd13f3"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/parts/spine5.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/parts/spine5.png",
+    "sha256": "d5bd6bd033400847a599241b2ceda076cad5c465bb861a440f85f3bf68c7cf93"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/atlas/02-haddock.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/atlas/02-haddock.png",
+    "sha256": "b4fed5f29d1d2e84f3f4905fd18b42b16615156a617810e4ee834f8cfe291e51"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/atlas/02-haddock.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/atlas/02-haddock.json",
+    "sha256": "22ce8a6feec05d7b36f6358933a8c671cb7fb1a29f845d5c290af5ee05298aad"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/02-haddock/fit/parts/atlas/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/02-haddock/parts/atlas/receipt.json",
+    "sha256": "02db7dd8b5473fc1872a6d17cb8961f79601239afc1c975f425534962e632a4e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/record.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/record.json",
+    "sha256": "29bbda6a807c798d7a33a8cd4f44cc95a3602358147028361916e9cc30294e62"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/binding.json",
+    "sha256": "ab2fca284913d6295c78b3cf5f1158c3653aaa35f2c593b5a9f72827bbd6a33b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/pre-split-binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/pre-split-binding.json",
+    "sha256": "a8984df0f767c2336e0630f838db6c4c631958a1749fb0c6cc37d415a800186e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/intake-provenance.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/intake-provenance.json",
+    "sha256": "44b101a00efe5e0acdce5a6b96aa369de03a94d671ab51706e75758bc4d5a0c0"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/declaration.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/declaration.json",
+    "sha256": "5e0cb15b3b24ebad47d47550e83805dc9d11ae44954ba4d8c90caebe1f8763c5"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/receipt.json",
+    "sha256": "6752f5e5cccff9d49ce62fd2551885adb95e489a07ddf961b9a9009e68a9399a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/binding.json",
+    "sha256": "3346f7ff266ed87458e8e134866bd895452b601237d5f52702f7ff1af2ac59c4"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/keyed.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/keyed.png",
+    "sha256": "febe7cd96f3d6f4a6d5f091dbc85ae6c7ab2155b888edf3fd8da29a73ea9e1fa"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/ownership.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/ownership.png",
+    "sha256": "864fd558d74ad101a4e2a3455902f871130f924e7c131aacafbc98afadc113fa"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/manifest.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/manifest.json",
+    "sha256": "d0c41d680dbcf99dbcd870916ff14738c3416877dd5ab09373ca79f70fe89090"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/receipt.json",
+    "sha256": "6488272456239698273d08fa8b0909b773065223635f277a3c6c4d45584a56fd"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/jaw.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/jaw.png",
+    "sha256": "da21628b280ec0b92e171f58ca6f082bebd63426997fb470e9ad72427cf63497"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/caudal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/caudal.png",
+    "sha256": "ab3b6b07695c25eb4f4953181c6d691d2b5ce9988d9c596be5a212d5bb542cd6"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/body.png",
+    "sha256": "ef52f4e89bc65bfa6a9a65ec1e4440e06ff7633e8b024581f48524e16f912e3e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/near-pectoral.png",
+    "sha256": "8dae5136cb94a7d89f45a1c513e15bea5a72c90dfc138d40d2b1616cd336e16e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/head.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/head.png",
+    "sha256": "e4e3812be7a00a1fb75182b48fd014e55d44fa81e24085d267b3960b10caa0cd"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/spine2.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/spine2.png",
+    "sha256": "416f1cd4384ec990b8b84684dc03709321ef587ff40f5185501444d9d9fc9de1"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/spine3.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/spine3.png",
+    "sha256": "bc2267542357703162ba8027fa1a4a6e9f47d665985b686fa00fb04fa0531d09"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/dorsal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/dorsal.png",
+    "sha256": "eab599edddb1fa5f4cbc9f0a6c274d071d107cd393081d8e2292b323f0676d6a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/spine1.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/spine1.png",
+    "sha256": "5055800564dd0494a7d24d4662ab5fcedb06a5bc105ec7bcdc28a57c3d183148"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/far-pectoral.png",
+    "sha256": "6ba2f82aa076a487ceca383f856b0969ff55b28bd8dcf7d60432db070d94ed4c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/spine0.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/spine0.png",
+    "sha256": "a4f2498d1135fb96945734ffe021cc9c570908f5a0bfe224209e3560eff33223"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/spine4.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/spine4.png",
+    "sha256": "81bfb3fa7512488a73e6c66c47ab2ee36fba02851415d38f564294025d918c48"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/parts/spine5.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/parts/spine5.png",
+    "sha256": "f2a65cb8dc5611bc81ce6807944f126c2b39cb3194b114e994764c799de9930a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/atlas/03-pollock.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/atlas/03-pollock.json",
+    "sha256": "10f5b907595d8336bdd76c758c42b84c4bcb19792a46563e5ec6b7ed67f7493d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/atlas/03-pollock.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/atlas/03-pollock.png",
+    "sha256": "c12351c5d09ed2e72ae4556267eaec2cbcf374e65eab6ae58150d556c1423c6e"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/03-pollock/fit/parts/atlas/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/03-pollock/parts/atlas/receipt.json",
+    "sha256": "fd24331b1fc66b24f6d6125cbdd6b9e44ce6b4aa9d3f81ba4a119da5b17417fb"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/record.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/record.json",
+    "sha256": "f7d85fdf704bf139cb2bab2d95df0641e05b4c2b93baee627913d1d9d0b24238"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/binding.json",
+    "sha256": "4b0375f4dbaad89268ca26f01f38b8edaf57c6211c1c6b3a5741c31d6dfa6c05"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/pre-split-binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/pre-split-binding.json",
+    "sha256": "edf8fab5ef2940618723478986f5fc5e41a9d376aebd3d99295f66d5543a88ec"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/intake-provenance.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/intake-provenance.json",
+    "sha256": "359c803da214c4090ab594aeb9d5f067257bd5f2d127b059e91f9d7b5a4ea800"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/declaration.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/declaration.json",
+    "sha256": "ee9fcc20265dde125636fba53f00849a14f02f6468acc2a8cb995f6027aa4f06"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/receipt.json",
+    "sha256": "4f67ef0d53c600c5db77bb26b75085353dc4ad2f27864abf19ac804211d3802a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/binding.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/binding.json",
+    "sha256": "34414b95fc6ad6933034ec194ff62a88de3f17d2cfa4da7a313597a68293fac2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/keyed.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/keyed.png",
+    "sha256": "f5c6bf6f106ac78c07782178040f435c7338cbb8507f0f39ee847bdc8f4f3a33"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/ownership.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/ownership.png",
+    "sha256": "718181d86b07120858e8c591f5dbdb9e4d896f2826fa45cd73d640b09db6ba8f"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/manifest.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/manifest.json",
+    "sha256": "7a355fe1fb91dd2e50460ca356d6dbd99698dd18f4e7c78ad86e80b01cb99aa2"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/receipt.json",
+    "sha256": "f5025cade0df1fa1e770e507aea9a66b6990943e0e9259facebdb27d5375cfe7"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/jaw.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/jaw.png",
+    "sha256": "7aa9b1bf49235a964715a6c48af9a7f15714f6681e9a1aabbd755abd87e05dad"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/caudal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/caudal.png",
+    "sha256": "eb442020302dac7340474c3d0ad6c69fd4710916db7ac19d8631d2b915e4ed19"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/body.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/body.png",
+    "sha256": "c48cdd52ebdf1c5345238776f87500a40dfabd1a7aea685f11c776d032c07ddf"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/near-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/near-pectoral.png",
+    "sha256": "2b263eae4964d6c897bc1365770c6aed31cf9f8f920ec4d5139dc029d7eb7bc0"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/head.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/head.png",
+    "sha256": "1c75590857db20c4d24d72c0838592030b65623d8f4cc42cab6159137c3e4a02"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/spine2.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/spine2.png",
+    "sha256": "d363825f0ebbc4c1132328f7103e6740bbd00ba7f3d78caaf4fbcf12ad3aef55"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/spine3.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/spine3.png",
+    "sha256": "09251b0f0be132b659dd95d437176392fb5590566b8ee3d8e7c5f9b105d78d9a"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/dorsal.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/dorsal.png",
+    "sha256": "341a6f918b4600498617bac163da7fdc88b1a73c01e1c6e3a8d93e2a03e6564b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/spine1.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/spine1.png",
+    "sha256": "c8c953fb9e315d01bcb354b5b006b5889264675dad207da6588397dcaa94338d"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/far-pectoral.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/far-pectoral.png",
+    "sha256": "fc1879919cf645f3033706a2132c31cd2c4b238a9aeced720ffede02217a11ab"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/spine0.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/spine0.png",
+    "sha256": "2095f9db895cd58d7b285be14d12add33e0316236b0b3ed2355f9d34424f371c"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/spine4.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/spine4.png",
+    "sha256": "0c431ac6417482cdfdc310e65cc5b447422ba8b3c550becaad09d706605977f0"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/parts/spine5.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/parts/spine5.png",
+    "sha256": "c0e841752fa669c00f7478d28d61325972f45ce8ec0e16b460c40f007f241561"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/atlas/05-anchovy.png",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/atlas/05-anchovy.png",
+    "sha256": "957b996522682ee5e334b16d1dc7db8496f09d7a5263b837ddfbaa2479cb436b"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/atlas/05-anchovy.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/atlas/05-anchovy.json",
+    "sha256": "88d069f98fbc0cd90a8d9372ad66c9cfaa89834e29750fd17752c687573baeac"
+  },
+  {
+    "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/05-anchovy/fit/parts/atlas/receipt.json",
+    "copy": "audits/FISH_PIPELINE_C84_20260927/inputs/05-anchovy/parts/atlas/receipt.json",
+    "sha256": "926ba9dffcc643ea28a16358fdc64562f2ba6a95a5fae31f2b180e1fc8a393e8"
+  }
+]

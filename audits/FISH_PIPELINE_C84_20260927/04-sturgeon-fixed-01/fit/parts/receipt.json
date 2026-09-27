@@ -1,0 +1,191 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "source-bound exact labels on authored keyer output; not painter draw stages",
+  "recordRecipeHash": "6f11d863432a6051d36387296163fe0e7b510ec846afdae30650154aac70d56a",
+  "declarationHash": "201d240747e12458ae94daa13b1f269c6fab9052ec15991a08aa87bd81b648d0",
+  "paintedPixels": 145727,
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 788,
+        "y": 635,
+        "width": 128,
+        "height": 118
+      },
+      "pixels": 7987
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 845,
+        "y": 656,
+        "width": 84,
+        "height": 117
+      },
+      "pixels": 2865
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 328,
+        "y": 514,
+        "width": 82,
+        "height": 68
+      },
+      "pixels": 2822
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 997,
+        "y": 610,
+        "width": 190,
+        "height": 62
+      },
+      "pixels": 7665
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 848,
+        "y": 526,
+        "width": 343,
+        "height": 168
+      },
+      "pixels": 20550
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 51,
+        "y": 447,
+        "width": 195,
+        "height": 248
+      },
+      "pixels": 19224
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 846,
+        "y": 581,
+        "width": 20,
+        "height": 14
+      },
+      "pixels": 160
+    },
+    {
+      "id": "tail-peduncle",
+      "joint": "spine5",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 246,
+        "y": 568,
+        "width": 121,
+        "height": 132
+      },
+      "pixels": 8459
+    },
+    {
+      "id": "rear-body",
+      "joint": "spine4",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 348,
+        "y": 558,
+        "width": 75,
+        "height": 129
+      },
+      "pixels": 5745
+    },
+    {
+      "id": "pelvic-body",
+      "joint": "spine3",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 406,
+        "y": 555,
+        "width": 112,
+        "height": 189
+      },
+      "pixels": 10702
+    },
+    {
+      "id": "mid-body",
+      "joint": "spine2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 452,
+        "y": 536,
+        "width": 154,
+        "height": 202
+      },
+      "pixels": 11767
+    },
+    {
+      "id": "front-body",
+      "joint": "spine1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 545,
+        "y": 522,
+        "width": 236,
+        "height": 174
+      },
+      "pixels": 32935
+    },
+    {
+      "id": "body",
+      "joint": "spine0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 776,
+        "y": 521,
+        "width": 428,
+        "height": 259
+      },
+      "pixels": 14846
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyedRgbaSha256": "878b8e1601b3c19800cc6e3139c0c77d8f9f47d3e4ae3257fb0b441244bca850",
+  "keyer": {
+    "erodedPixels": 4387,
+    "despilledPixels": 42,
+    "unresolvedEdgePixels": 6
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "27659622bdfc4ac4bab8fd5d577a911a46878f91bb14f42df9ba0213310934fb",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}
