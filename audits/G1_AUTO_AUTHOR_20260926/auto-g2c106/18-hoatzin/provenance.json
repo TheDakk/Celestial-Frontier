@@ -1,0 +1,119 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "18-hoatzin",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "9159c9493e848f0faf22dba3a9eef36003fe12a84bafd5d5a7bf4c9d78a5dd49",
+ "subjectSourceSha256": "6d5c04034631a40eee926d69340bc1f680e88a54b41fa30af47c8f00f518bd0a",
+ "identity": {
+  "name": "Hoatzin",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Hoatzin\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"1977763006\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 1977763006,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "02-pigeon",
+  "authoringSha256": "100c06573fd9c77f9b62d4723609fd1f0dd110d1b7c16cd7df3daaae174099f1",
+  "masterSha256": "64746615ffdc4c8648153537fc25e2b5e03671dceb9f9880186a71e4ae3151db"
+ },
+ "habitat": {
+  "profileId": "bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "080136b779f700a6c6860d1d4eb9593834bb0258212903c6b3656f9a8aca3675",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1379,
+     "class": "top",
+     "attach": {
+      "x": 287.6,
+      "y": 184.4,
+      "relX": 0.96,
+      "relY": 0.17
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0048,
+     "class": "top",
+     "attach": {
+      "x": 243,
+      "y": 170,
+      "relX": 0.58,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.3105,
+     "class": "rear",
+     "attach": {
+      "x": 175.5,
+      "y": 220,
+      "relX": 0,
+      "relY": 0.63
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0787,
+     "class": "limb-down",
+     "attach": {
+      "x": 223.1,
+      "y": 249.8,
+      "relX": 0.41,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "02-pigeon",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "groundContacts": 3,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

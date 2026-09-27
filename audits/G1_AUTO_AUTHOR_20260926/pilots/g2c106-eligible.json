@@ -1,0 +1,170 @@
+[
+ {
+  "id": "01-shark",
+  "name": "Shark",
+  "family": "fish",
+  "packet": "audits/G2_C106_20260927/01-shark",
+  "master": "audits/G2_C106_20260927/01-shark/master.png"
+ },
+ {
+  "id": "02-great-white-shark",
+  "name": "Great White Shark",
+  "family": "fish",
+  "packet": "audits/G2_C106_20260927/02-great-white-shark",
+  "master": "audits/G2_C106_20260927/02-great-white-shark/master.png"
+ },
+ {
+  "id": "03-tiger-shark",
+  "name": "Tiger Shark",
+  "family": "fish",
+  "packet": "audits/G2_C106_20260927/03-tiger-shark",
+  "master": "audits/G2_C106_20260927/03-tiger-shark/master.png"
+ },
+ {
+  "id": "04-mako-shark",
+  "name": "Mako Shark",
+  "family": "fish",
+  "packet": "audits/G2_C106_20260927/04-mako-shark",
+  "master": "audits/G2_C106_20260927/04-mako-shark/master.png"
+ },
+ {
+  "id": "05-whale-shark",
+  "name": "Whale Shark",
+  "family": "fish",
+  "packet": "audits/G2_C106_20260927/05-whale-shark",
+  "master": "audits/G2_C106_20260927/05-whale-shark/master.png"
+ },
+ {
+  "id": "06-basking-shark",
+  "name": "Basking Shark",
+  "family": "fish",
+  "packet": "audits/G2_C106_20260927/06-basking-shark",
+  "master": "audits/G2_C106_20260927/06-basking-shark/master.png"
+ },
+ {
+  "id": "07-reef-shark",
+  "name": "Reef Shark",
+  "family": "fish",
+  "packet": "audits/G2_C106_20260927/07-reef-shark",
+  "master": "audits/G2_C106_20260927/07-reef-shark/master.png"
+ },
+ {
+  "id": "08-hammerhead-shark",
+  "name": "Hammerhead Shark",
+  "family": "fish",
+  "packet": "audits/G2_C106_20260927/08-hammerhead-shark",
+  "master": "audits/G2_C106_20260927/08-hammerhead-shark/master.png"
+ },
+ {
+  "id": "09-flounder",
+  "name": "Flounder",
+  "family": "fish",
+  "packet": "audits/G2_C106_20260927/09-flounder",
+  "master": "audits/G2_C106_20260927/09-flounder/master.png"
+ },
+ {
+  "id": "10-halibut",
+  "name": "Halibut",
+  "family": "fish",
+  "packet": "audits/G2_C106_20260927/10-halibut",
+  "master": "audits/G2_C106_20260927/10-halibut/master.png"
+ },
+ {
+  "id": "11-knifefish",
+  "name": "Knifefish",
+  "family": "fish",
+  "packet": "audits/G2_C106_20260927/11-knifefish",
+  "master": "audits/G2_C106_20260927/11-knifefish/master.png"
+ },
+ {
+  "id": "12-flying-gurnard",
+  "name": "Flying Gurnard",
+  "family": "fish",
+  "packet": "audits/G2_C106_20260927/12-flying-gurnard",
+  "master": "audits/G2_C106_20260927/12-flying-gurnard/master.png"
+ },
+ {
+  "id": "13-rhea",
+  "name": "Rhea",
+  "family": "biped-bird",
+  "packet": "audits/G2_C106_20260927/13-rhea",
+  "master": "audits/G2_C106_20260927/13-rhea/master.png"
+ },
+ {
+  "id": "14-emu",
+  "name": "Emu",
+  "family": "biped-bird",
+  "packet": "audits/G2_C106_20260927/14-emu",
+  "master": "audits/G2_C106_20260927/14-emu/master.png"
+ },
+ {
+  "id": "15-cassowary",
+  "name": "Cassowary",
+  "family": "biped-bird",
+  "packet": "audits/G2_C106_20260927/15-cassowary",
+  "master": "audits/G2_C106_20260927/15-cassowary/master.png"
+ },
+ {
+  "id": "16-kiwi",
+  "name": "Kiwi",
+  "family": "biped-bird",
+  "packet": "audits/G2_C106_20260927/16-kiwi",
+  "master": "audits/G2_C106_20260927/16-kiwi/master.png"
+ },
+ {
+  "id": "17-kakapo",
+  "name": "Kakapo",
+  "family": "biped-bird",
+  "packet": "audits/G2_C106_20260927/17-kakapo",
+  "master": "audits/G2_C106_20260927/17-kakapo/master.png"
+ },
+ {
+  "id": "18-hoatzin",
+  "name": "Hoatzin",
+  "family": "biped-bird",
+  "packet": "audits/G2_C106_20260927/18-hoatzin",
+  "master": "audits/G2_C106_20260927/18-hoatzin/master.png"
+ },
+ {
+  "id": "19-quetzal",
+  "name": "Quetzal",
+  "family": "biped-bird",
+  "packet": "audits/G2_C106_20260927/19-quetzal",
+  "master": "audits/G2_C106_20260927/19-quetzal/master.png"
+ },
+ {
+  "id": "20-seabird",
+  "name": "Seabird",
+  "family": "biped-bird",
+  "packet": "audits/G2_C106_20260927/20-seabird",
+  "master": "audits/G2_C106_20260927/20-seabird/master.png"
+ },
+ {
+  "id": "21-wolf",
+  "name": "Wolf",
+  "family": "quadruped",
+  "packet": "audits/G2_C106_20260927/21-wolf",
+  "master": "audits/G2_C106_20260927/21-wolf/master.png"
+ },
+ {
+  "id": "22-fox",
+  "name": "Fox",
+  "family": "quadruped",
+  "packet": "audits/G2_C106_20260927/22-fox",
+  "master": "audits/G2_C106_20260927/22-fox/master.png"
+ },
+ {
+  "id": "23-porcupine",
+  "name": "Porcupine",
+  "family": "quadruped",
+  "packet": "audits/G2_C106_20260927/23-porcupine",
+  "master": "audits/G2_C106_20260927/23-porcupine/master.png"
+ },
+ {
+  "id": "24-lemming",
+  "name": "Lemming",
+  "family": "quadruped",
+  "packet": "audits/G2_C106_20260927/24-lemming",
+  "master": "audits/G2_C106_20260927/24-lemming/master.png"
+ }
+]

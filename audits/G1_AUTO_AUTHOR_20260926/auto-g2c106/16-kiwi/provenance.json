@@ -1,0 +1,117 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "16-kiwi",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "452e75b43bd207c29b93c9e66a429648772a12f41ae1c6c0b7a6b17ba6b4edb4",
+ "subjectSourceSha256": "f08ad02e218f27677d28aecdca66552c052acb55cdcc022bf1ad28f7baa0dc47",
+ "identity": {
+  "name": "Kiwi",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Kiwi\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"15\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"2436946984\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "seed": 2436946984,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "sandpiper",
+  "authoringSha256": "89c6757c60836802b2bdff47b05e24d544512015299e12bebce246950ab8c52e",
+  "masterSha256": "c315307102aed608563c8caa0ed7af9a15e24f807570ac2c03a92ee496cd4358"
+ },
+ "habitat": {
+  "profileId": "flightless-bird",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "9a9dae6dafc2d4b5217d89b53c3993c5240843dec0d9b109f2b3c8cd1bf4ef4d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group flightless-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0129,
+     "class": "top",
+     "attach": {
+      "x": 183,
+      "y": 135,
+      "relX": 0.58,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1778,
+     "class": "front",
+     "attach": {
+      "x": 238,
+      "y": 190,
+      "relX": 1.01,
+      "relY": 0.51
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0214,
+     "class": "rear",
+     "attach": {
+      "x": 107,
+      "y": 203.5,
+      "relX": -0.01,
+      "relY": 0.64
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0468,
+     "class": "limb-down",
+     "attach": {
+      "x": 141.5,
+      "y": 243,
+      "relX": 0.26,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0565,
+     "class": "limb-down",
+     "attach": {
+      "x": 181,
+      "y": 243,
+      "relX": 0.57,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "sandpiper",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

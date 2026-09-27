@@ -1,0 +1,247 @@
+{
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c106/06-basking-shark/fit",
+  "sourceRecordSha256": "2b0519fea60df80f55cdce47b8e9948e0e6c2d1a68c710a50369e1240a015c5e",
+  "sourceLabelsSha256": "0de44d4fda0936e682bfba7ba9e54b9140a9bcf13f1dd949ede1006207bcaf96",
+  "newLabelsSha256": "c0c9690a231a3d36e984f71617809a3a45d68d55176579f6934f7fccbe080104",
+  "newDecodedLabelsSha256": "8f5e4643efea17d67242c2c4dd9fab96adb9980c2ce0607bc7798288d0073998",
+  "sourceMasterSha256": "fc00b2f50fa2a8b129002b1ef284187fbbbd94ba916d817e3801a5137c435ce1",
+  "helperSha256": "a73140ee3f90e5a26b4f23acb6dcd7b0b973020105b2b5fc83340113609315ad",
+  "firstAxisHelperSha256": "fabef6f0d2d583abdbddd3d29792369aa61ffc0c739196992d0a8b8094e52d11",
+  "tailIdentity": {
+    "tail": "caudal",
+    "stalk": "tail-peduncle",
+    "tailOwner": 6,
+    "stalkOwner": 8,
+    "sharedEdges": 70
+  },
+  "tailIdentityHelperSha256": "27b63227ed5f3fdb8079f74b54ccefc0335432f8b1c12bf483a07eec3ef0b529",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "mode": "tail-axial",
+    "moved": 14474,
+    "phases": [
+      {
+        "phase": "tail",
+        "schema": "cf.remainder-gap-labels/v1",
+        "tail": 6,
+        "stalk": 8,
+        "remainder": 13,
+        "maxDistance": 187,
+        "components": [
+          127,
+          89,
+          10,
+          1
+        ],
+        "changedPixels": 2351,
+        "requestedRetained": 2351,
+        "otherOwnersChanged": 0,
+        "unowned": 0,
+        "sourceRgbaChanges": 0,
+        "contourProjection": false
+      },
+      {
+        "phase": "axial",
+        "moved": 12123,
+        "counts": {
+          "9": 1,
+          "10": 369,
+          "11": 1035,
+          "12": 10718
+        },
+        "separateRootOwner": 7,
+        "originalRgbaChanged": false,
+        "nonRemainderChanges": 0,
+        "axis": [
+          [
+            0.6851674641148325,
+            0.4868421052631579
+          ],
+          [
+            0.6045454545454546,
+            0.486682615629984
+          ],
+          [
+            0.5203349282296651,
+            0.4913875598086125
+          ],
+          [
+            0.46730462519936206,
+            0.4933014354066986
+          ],
+          [
+            0.36762360446570974,
+            0.486682615629984
+          ],
+          [
+            0.2637958532695375,
+            0.4772727272727273
+          ],
+          [
+            0.1776714513556619,
+            0.47623604465709735
+          ]
+        ],
+        "scope": "First-spine placement diagnostic; original root and all foreign ownership protected"
+      }
+    ],
+    "originalPartsDifferentChannels": 0,
+    "keyedRgbaSha256": "5a645705463486adbd08df5d67f68850337a31dfc17facd78956220db3163a02",
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false
+  },
+  "intake": {
+    "id": "06-basking-shark",
+    "parts": 13,
+    "atlasSize": {
+      "width": 2047,
+      "height": 662
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "3b24746969b07c20d5a2a5b324a199842d6d181d9e1be65cf3fa09a75fa170a9",
+    "sourceVertices": 1251,
+    "vertices": 1422,
+    "sharedSupports": 392,
+    "pins": 256,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 9,
+    "excludedOverlaps": 13,
+    "observedExcludedBoundaries": 13,
+    "weldedExcludedBoundaries": 7,
+    "independentExcludedBoundaries": 6,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "dorsal"
+      ],
+      [
+        "body",
+        "far-pectoral"
+      ],
+      [
+        "body",
+        "near-pectoral"
+      ],
+      [
+        "dorsal",
+        "mid-body"
+      ],
+      [
+        "far-pectoral",
+        "front-body"
+      ],
+      [
+        "front-body",
+        "near-pectoral"
+      ],
+      [
+        "mid-body",
+        "near-pectoral"
+      ]
+    ],
+    "sourceCoordinateChanges": 0,
+    "fixedCandidateRecipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar",
+    "sourceOwnerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+    "virtualOwnerSha256": "27fc9159b1b1e0924ad96a71ece5ec848df6a7746d55c79df644ecc06a090cb9"
+  },
+  "joins": [
+    {
+      "name": "body--front-body",
+      "sourceEdges": 142
+    },
+    {
+      "name": "front-body--dorsal",
+      "sourceEdges": 216
+    },
+    {
+      "name": "front-body--mid-body",
+      "sourceEdges": 250
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 333
+    },
+    {
+      "name": "mid-body--pelvic-body",
+      "sourceEdges": 246
+    },
+    {
+      "name": "pelvic-body--rear-body",
+      "sourceEdges": 59
+    },
+    {
+      "name": "rear-body--tail-peduncle",
+      "sourceEdges": 115
+    },
+    {
+      "name": "root--body",
+      "sourceEdges": 74
+    },
+    {
+      "name": "tail-peduncle--caudal",
+      "sourceEdges": 377
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body|caudal",
+      "sourceEdges": 37
+    },
+    {
+      "name": "body|dorsal",
+      "sourceEdges": 70
+    },
+    {
+      "name": "body|far-pectoral",
+      "sourceEdges": 190
+    },
+    {
+      "name": "body|head",
+      "sourceEdges": 400
+    },
+    {
+      "name": "body|jaw",
+      "sourceEdges": 173
+    },
+    {
+      "name": "body|near-pectoral",
+      "sourceEdges": 172
+    },
+    {
+      "name": "body|tail-peduncle",
+      "sourceEdges": 19
+    },
+    {
+      "name": "dorsal|mid-body",
+      "sourceEdges": 8
+    },
+    {
+      "name": "far-pectoral|front-body",
+      "sourceEdges": 7
+    },
+    {
+      "name": "far-pectoral|near-pectoral",
+      "sourceEdges": 137
+    },
+    {
+      "name": "front-body|near-pectoral",
+      "sourceEdges": 350
+    },
+    {
+      "name": "mid-body|near-pectoral",
+      "sourceEdges": 87
+    },
+    {
+      "name": "pelvic-body|tail-peduncle",
+      "sourceEdges": 57
+    }
+  ]
+}

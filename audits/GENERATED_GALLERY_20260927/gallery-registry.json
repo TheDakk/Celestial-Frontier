@@ -1378,5 +1378,109 @@
   "note": "whole in reaction and late idle (one faint chest scratch at full size)",
   "batch": "audits/G2_C101_20260927",
   "tag": "g2c101"
+ },
+ {
+  "family": "fish",
+  "name": "Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/01-shark/native",
+  "note": "whole in reaction and late idle on the fish-seams repaired fit (unrepaired fit showed seam lines)",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Great White Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/02-great-white-shark/native",
+  "note": "HELD: framing REFUSE by Codex (98 vs 101); motion itself whole on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Tiger Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/03-tiger-shark/native",
+  "note": "HELD: framing REFUSE by Codex (64/63 vs 101); motion itself whole on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Mako Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/04-mako-shark/native",
+  "note": "HELD: extra finlets in the painting (Codex hold); motion whole on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Whale Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/05-whale-shark/native",
+  "note": "HELD: framing REFUSE by Codex (76/77 vs 101); motion itself whole on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Basking Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/06-basking-shark/native",
+  "note": "HELD: framing REFUSE by Codex (89/96 vs 101); motion itself whole on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Reef Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/07-reef-shark/native",
+  "note": "whole in reaction and late idle on the fish-seams repaired fit (unrepaired fit showed seam lines)",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Hammerhead Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/08-hammerhead-shark/native",
+  "note": "whole in reaction and late idle on the fish-seams repaired fit (unrepaired fit showed seam lines)",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Flounder",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/09-flounder/native",
+  "note": "HELD: body gaps remain in reaction and late idle even on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Halibut",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/10-halibut/native",
+  "note": "HELD: lower-body gap in late idle even on the seams fit",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Rhea",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/13-rhea",
+  "note": "HELD: background-coloured patch on the wing in late idle",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Seabird",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/20-seabird",
+  "note": "HELD: small feather fragment floats above the back in late idle (same bird pattern as Snow Petrel)",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
+ },
+ {
+  "family": "quadruped",
+  "name": "Fox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106/22-fox",
+  "note": "whole in reaction and late idle (one tiny speck above the back in late idle, visible only at full size)",
+  "batch": "audits/G2_C106_20260927",
+  "tag": "g2c106"
  }
 ]

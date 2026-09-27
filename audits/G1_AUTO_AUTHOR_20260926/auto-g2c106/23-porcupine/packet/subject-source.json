@@ -1,0 +1,103 @@
+{
+  "name": "Porcupine",
+  "family": "quadruped",
+  "species": {
+    "name": "Porcupine",
+    "aspect": 1.6,
+    "headFrac": 0.25,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "long banded quills laid back over the rump",
+      "blunt rounded rodent snout",
+      "stocky body carried low with a short quilled tail"
+    ],
+    "note": "generic representative: an Old World crested porcupine. Quills are longest over the hips, not evenly spiky like a hedgehog"
+  },
+  "genome": {
+    "seed": 1542469529,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 8,
+    "body": 14,
+    "loco": 0,
+    "trait": 19,
+    "size": 1,
+    "diet": 0,
+    "head": 6,
+    "limbs": 4,
+    "skin": 7,
+    "tail": 5,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 1,
+    "habitat": 2,
+    "detail": 2,
+    "accent": 12,
+    "temper": 2,
+    "sense": 9,
+    "repro": 1,
+    "life": 0,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Porcupine"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Porcupine\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1542469529\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 54,
+  "profile": {
+    "id": "small-clawed-mammal",
+    "names": [
+      "Kinkajou",
+      "Coati",
+      "Civet",
+      "Mongoose",
+      "Meerkat",
+      "Red Panda",
+      "Raccoon",
+      "Badger",
+      "Weasel",
+      "Stoat",
+      "Mink",
+      "Marten",
+      "Fisher",
+      "Wolverine",
+      "Possum",
+      "Porcupine",
+      "Squirrel",
+      "Chipmunk",
+      "Mouse",
+      "Vole",
+      "Mole",
+      "Shrew",
+      "Hedgehog",
+      "Lemming",
+      "Marmot",
+      "Prairie Dog",
+      "Ground Squirrel",
+      "Gopher",
+      "Hamster",
+      "Gerbil",
+      "Hyrax",
+      "Agouti",
+      "Guinea Pig",
+      "Rat",
+      "Tree Shrew",
+      "Wombat",
+      "Tasmanian Devil",
+      "Quoll"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

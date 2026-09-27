@@ -1,15 +1,29 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 158,
- "pct": 25,
+ "covered": 159,
+ "pct": 25.2,
+ "heldNotCounted": [
+  "Basking Shark",
+  "Flounder",
+  "Great White Shark",
+  "Halibut",
+  "Hummingbird",
+  "Mako Shark",
+  "Rhea",
+  "Seabird",
+  "Snailfish",
+  "Snow Petrel",
+  "Tiger Shark",
+  "Whale Shark"
+ ],
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 38,
-   "pct": 18.5,
+   "covered": 39,
+   "pct": 19,
    "names": [
     "Leopard",
     "Tiger",
@@ -26,6 +40,7 @@
     "Wildcat",
     "Jackal",
     "Coyote",
+    "Fox",
     "Arctic Fox",
     "Maned Wolf",
     "Pampas Fox",
@@ -54,8 +69,8 @@
   {
    "family": "fish",
    "species": 132,
-   "covered": 64,
-   "pct": 48.5,
+   "covered": 66,
+   "pct": 50,
    "names": [
     "Salmon",
     "Trout",
@@ -115,19 +130,21 @@
     "Lanternfish",
     "Viperfish",
     "Barreleye",
-    "Snailfish",
     "Coelacanth",
     "Ocean Sunfish",
     "Archerfish",
     "Icefish",
-    "Mudminnow"
+    "Mudminnow",
+    "Shark",
+    "Reef Shark",
+    "Hammerhead Shark"
    ]
   },
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 34,
-   "pct": 33.3,
+   "covered": 32,
+   "pct": 31.4,
    "names": [
     "Kestrel",
     "Desert Owl",
@@ -150,7 +167,6 @@
     "Roadrunner",
     "Chicken",
     "Seriema",
-    "Hummingbird",
     "Vulture",
     "Tanager",
     "Woodpecker",
@@ -161,7 +177,6 @@
     "Skua",
     "Gannet",
     "Booby",
-    "Snow Petrel",
     "Starling"
    ]
   },

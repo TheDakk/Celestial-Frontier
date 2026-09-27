@@ -1,0 +1,70 @@
+{
+  "name": "Cassowary",
+  "family": "biped-bird",
+  "species": {
+    "name": "Cassowary",
+    "aspect": 0.95,
+    "headFrac": 0.15,
+    "eyes": "normal",
+    "posture": "biped",
+    "mustRead": [
+      "tall bony helmet casque on the head",
+      "vivid blue neck with red hanging wattles",
+      "glossy black hair-like plumage over a bulky body"
+    ]
+  },
+  "genome": {
+    "seed": 283285776,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 3,
+    "body": 5,
+    "loco": 2,
+    "trait": 6,
+    "size": 0,
+    "diet": 4,
+    "head": 5,
+    "limbs": 5,
+    "skin": 0,
+    "tail": 6,
+    "pattern": 3,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 17,
+    "detail": 2,
+    "accent": 1,
+    "temper": 0,
+    "sense": 5,
+    "repro": 1,
+    "life": 4,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cassowary"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cassowary\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"283285776\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "index": 586,
+  "profile": {
+    "id": "flightless-bird",
+    "names": [
+      "Ostrich",
+      "Rhea",
+      "Emu",
+      "Cassowary",
+      "Kiwi",
+      "Kakapo"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "kick",
+      "peck"
+    ],
+    "notes": "No aerial attack. Wings do not imply flight."
+  }
+}
