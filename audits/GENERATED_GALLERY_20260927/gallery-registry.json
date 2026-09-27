@@ -1314,5 +1314,69 @@
   "batch": "audits/G2_C98_20260927",
   "tag": "g2c98",
   "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Salmon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/01-salmon/native",
+  "note": "whole after the fish-seams batch (unrepaired fit split at seams)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "fish",
+  "name": "Cave Fish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/03-cave-fish/native",
+  "note": "whole after the fish-seams batch (unrepaired fit split at seams)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "fish",
+  "name": "Lanternfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/07-lanternfish/native",
+  "note": "whole after the fish-seams batch (unrepaired fit split at seams)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "fish",
+  "name": "Barreleye",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/10-barreleye/native",
+  "note": "whole after the fish-seams batch (unrepaired fit split at seams)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "fish",
+  "name": "Ocean Sunfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101-fishseams/12-ocean-sunfish/native",
+  "note": "whole after the fish-seams batch (unrepaired fit split at seams)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hummingbird",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/13-hummingbird",
+  "note": "HELD: far-wing fragment floats above the back in turn3 idle; walks on feet (Codex hold)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snow Petrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/20-snow-petrel",
+  "note": "HELD: small feather fragment above the back and a background-coloured patch on the wing in turn3 idle",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
+ },
+ {
+  "family": "quadruped",
+  "name": "Possum",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c101/22-possum",
+  "note": "whole in reaction and late idle (one faint chest scratch at full size)",
+  "batch": "audits/G2_C101_20260927",
+  "tag": "g2c101"
  }
 ]

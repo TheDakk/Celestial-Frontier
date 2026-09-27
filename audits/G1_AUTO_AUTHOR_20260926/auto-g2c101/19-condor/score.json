@@ -1,0 +1,10 @@
+{
+ "id": "19-condor",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "missing-anatomy: part far-shin (legFarAnkle) covers 0% paint (reference 75%)"
+ ],
+ "semanticPresence": null
+}

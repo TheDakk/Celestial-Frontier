@@ -1,0 +1,145 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C101_20260927",
+ "tag": "g2c101",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-salmon",
+  "03-cave-fish",
+  "07-lanternfish",
+  "10-barreleye",
+  "12-ocean-sunfish",
+  "13-hummingbird",
+  "20-snow-petrel",
+  "22-possum"
+ ],
+ "refused": [
+  {
+   "id": "02-lungfish",
+   "reason": "missing-anatomy (family floor): the largest rear appendage is 3.8% of the paint; every same-family reference shows at least 10.0%"
+  },
+  {
+   "id": "04-pipefish",
+   "reason": "unexplained-anatomy: 13.6% of the paint lies away from the body and in no part (reference 4.6%)"
+  },
+  {
+   "id": "05-flying-fish",
+   "reason": "unexplained-anatomy: 11.4% of the paint lies away from the body and in no part (reference 6.9%)"
+  },
+  {
+   "id": "06-anglerfish",
+   "reason": "unexplained-anatomy: 19.2% of the paint lies away from the body and in no part (reference 4.6%)"
+  },
+  {
+   "id": "08-fangtooth",
+   "reason": "extra-anatomy (unassigned): a front appendage of 8.4% paint that no reference appendage lands on"
+  },
+  {
+   "id": "09-dragonfish",
+   "reason": "missing-anatomy: part jaw (jaw) covers 10% paint (reference 93%)"
+  },
+  {
+   "id": "11-deep-sea-fish",
+   "reason": "missing-anatomy: part far-pectoral (pectoralFar) covers 17% paint (reference 82%)"
+  },
+  {
+   "id": "14-peacock",
+   "reason": "missing-anatomy: part near-foot (legNearFoot) covers 1% paint (reference 35%)"
+  },
+  {
+   "id": "15-ostrich",
+   "reason": "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "16-flamingo",
+   "reason": "missing-anatomy: part near-shin (legNearAnkle) covers 29% paint (reference 84%)"
+  },
+  {
+   "id": "17-pelican",
+   "reason": "unexplained-anatomy: 9.0% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "19-condor",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "21-civet",
+   "reason": "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 5.6%)"
+  },
+  {
+   "id": "23-mole",
+   "reason": "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 0% paint (reference 90%)"
+  },
+  {
+   "id": "24-beaver",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 14% paint (reference 52%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "18-albatross",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "01-salmon",
+   "name": "Salmon",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "03-cave-fish",
+   "name": "Cave Fish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "07-lanternfish",
+   "name": "Lanternfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "10-barreleye",
+   "name": "Barreleye",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "12-ocean-sunfish",
+   "name": "Ocean Sunfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "13-hummingbird",
+   "name": "Hummingbird",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "20-snow-petrel",
+   "name": "Snow Petrel",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "22-possum",
+   "name": "Possum",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}
