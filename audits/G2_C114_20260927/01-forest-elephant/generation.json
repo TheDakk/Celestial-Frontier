@@ -1,0 +1,13 @@
+{
+  "id": "01-forest-elephant",
+  "name": "Forest Elephant",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-b4c65342-9915-4752-88a7-6ddfd567aa33.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1d68aa6a1fb850531e227cd356a8cd14da33c0bf815c4cd5a6eedd3b8277d754",
+  "bytes": 1460633,
+  "promptSha256": "cd76611e9f64d7ec7384fc187c7aa2d9cc681f8e576e2f3e0d4063aae1e174ca",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

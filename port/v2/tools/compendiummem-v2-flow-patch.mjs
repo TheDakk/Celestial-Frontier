@@ -2,6 +2,13 @@
 export function flowPatch({collector,contract}) {
  const once=(s,a,b)=>{if(s.split(a).length!==2)throw new Error('v2 flow edit drift: '+a.slice(0,90));return s.replace(a,b)};
  contract=once(contract,'paintedFindings, paintedSettlementFindings, compendiumResources','paintedFindings, paintedSettlementFindings, compendiumResources, paintedErrorRows');
+ // CDP nativeVirtualKeyCode is platform-specific. Windows A=65 is macOS
+ // keypad decimal; forwarding it creates a native reinjection storm in Edge.
+ // Keep key/code/Windows code/modifiers/edit commands and both event phases.
+ contract=once(contract,'    nativeVirtualKeyCode: keyCode, modifiers };',`    nativeVirtualKeyCode: process.platform === 'darwin'
+      ? ({ KeyA: 0, Enter: 36, Tab: 48, Backspace: 51 }[code]
+        ?? (() => { throw new TypeError('Unmapped macOS native key: ' + code); })())
+      : keyCode, modifiers };`);
  collector=`import { keyboardEntryExpression, keyboardEntryPlan } from './painted.mjs';\n`+collector;
  // Both initial traversal and post-Back focus pinning enter through the same
  // observed native control inventory. Keep the sealed outcome assertions.

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tripod Fish",
+  "masterSha256": "6b502378a8da6ee920473a640c4c934ad89e7496ecc42d487a255d5a9cb41cb1",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "15-grizzly-bear",
+  "name": "Grizzly Bear",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-dffe24b3-fb12-4154-94ff-2831be4f5e5d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "de82656051c6600c1c233b81a6b8f91566d4fd6db79bdf4441e53a234ab2b63d",
+  "bytes": 1381584,
+  "promptSha256": "9501a7a409e34bceb0dc844a7e3d9340c7c8d3c0354cf3d68c84b98d9295ae01",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

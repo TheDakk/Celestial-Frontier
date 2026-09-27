@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Arctic Hare",
+  "masterSha256": "074af4e37e901b434bde2fb1316432e51716359d310ac38ce8e4607384c80191",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

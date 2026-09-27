@@ -1,0 +1,9 @@
+# I5 native macOS key-code repair — 2026-09-27
+
+The foreground-order candidate was insufficient: the c7bdfc9e3 epoch stopped at calibration 1 on desktop foreground service. That stopped raw epoch remains in `../I5_FOREGROUND_20260927/epoch`; no later calibration or certification ran.
+
+A native key observer found 92,438 trusted `NumpadDecimal` keydowns on the lazy-control page (timestamp 0, repeat false), starving its later timer. The scheduler trace retains the flood. The instrument incorrectly used Windows key codes as macOS native codes: Windows A=65 is macOS keypad decimal. V2 now emits macOS A=0, Return=36, Tab=48, Backspace=51. Semantic key/code, Windows code, modifiers, edit commands, down/up sequence, filter outcomes, all 78 outcomes, 40 ceilings and 5000ms foreground deadline remain unchanged. V1 bytes are untouched. Unknown macOS keys refuse instead of guessing.
+
+Non-certifying full-flow diagnostics with the corrected codes complete the exact final foreground arm/rAF/later-task receipt on both desktop and phone. Each lazy-control page received zero stray keydowns. The bad-code control timed out with the flood; restoring A=65 in the actual generated dispatch is rejected by the new code-matrix control. All 69 v2 controls and root validation/50-probe determinism pass. These timing-instrumented diagnostics are not calibration or certification; a fresh clean signed 3+1 proof remains required.
+
+Compressed raw diagnostics and scheduler trace preserve their SHA256 in `diagnostic-summary.json`. Diagnostic sources are in `../I5_FOREGROUND_20260927/diagnostic/`. Chromium's platform conversion distinguishes these native values: https://chromium.googlesource.com/chromium/src/+/master/ui/events/keycodes/keyboard_code_conversion_mac.mm . This source supports the mapping; the native before/after evidence supports the observed failure diagnosis.

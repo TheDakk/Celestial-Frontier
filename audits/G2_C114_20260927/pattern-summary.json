@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Forest Elephant",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Elephant",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Asian Elephant",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "African Elephant",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Rhinoceros",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Hippopotamus",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Polar Bear",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Bear",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Wild Pig",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Rat",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Cow",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Bull",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Horse",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sun Bear",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Grizzly Bear",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Gerenuk",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Tahr",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Arctic Hare",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Blobfish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Tripod Fish",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Monkfish",
+    "status": "PASS"
+  },
+  {
+    "name": "Loon",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Water Beetle",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Diving Beetle",
+    "status": "NOT_REQUIRED"
+  }
+]

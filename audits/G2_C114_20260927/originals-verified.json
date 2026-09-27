@@ -1,0 +1,194 @@
+[
+  {
+    "id": "01-forest-elephant",
+    "masterSha256": "1d68aa6a1fb850531e227cd356a8cd14da33c0bf815c4cd5a6eedd3b8277d754",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "02-elephant",
+    "masterSha256": "b3ecb68e096c5ad004935ebb316f46bfe5bab5fbb83f2cdb94a072452cdccc1a",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "03-asian-elephant",
+    "masterSha256": "74309ea2c80c39df43590e5eaee0d11199596f133d122fbfc7e726cac96581d6",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "04-african-elephant",
+    "masterSha256": "608f005600fb90d1fee484ee03ec83c74a980c59fa953baa98c546abe1438a5b",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "05-rhinoceros",
+    "masterSha256": "b9933f594dc663709b14441816fb72164cf6951d7601288ac15cf259af991f21",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "06-hippopotamus",
+    "masterSha256": "c23517d94c86583ebec9659d19c129f0e5d2c544e4aa4372811e4961681df420",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "07-polar-bear",
+    "masterSha256": "05a1687e634188dc45cfa407455b513dd335f7c17611c03063cc010fe3f6b3d5",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "08-bear",
+    "masterSha256": "6842c504dfbd3f2e14a5725d4a1f4450a1356a2648c0736b115f60bf54d660b0",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "09-wild-pig",
+    "masterSha256": "5d8cf6c0dc0f8c7831db2a5f915226ef001c756dd9423c614186806157d12f48",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "10-rat",
+    "masterSha256": "db1e02c8d04d0656dadb9ac7ede9f3026e5b6421b097c766deafba1bd6fb3fc5",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "11-cow",
+    "masterSha256": "6dec68473a30935385b10fdf874d56004c33962ffbf1c8f7f680a8052f0618f4",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "12-bull",
+    "masterSha256": "e650f2e62a038a75fd91495b3baa3fd59b41a616fd64d1e3b8434ee5a0792896",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "13-horse",
+    "masterSha256": "1f28692f8699ecdc7a87010bdccde8223629d9715fe15f53f9f6d1f6db719a41",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "14-sun-bear",
+    "masterSha256": "8684ba3d39fb047961aaf44d7f11abe7ae7410f28ca32daf3d224a86d90deadc",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "15-grizzly-bear",
+    "masterSha256": "de82656051c6600c1c233b81a6b8f91566d4fd6db79bdf4441e53a234ab2b63d",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "16-gerenuk",
+    "masterSha256": "a04b3c1e37a0b5072e24da11e0a47a952a39422bf3e47b249ab5e5d50178270e",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "17-tahr",
+    "masterSha256": "54ce9418dd0c2d5885fa0ac038cec489f4ee0ab82f4c51a70894addf45940f18",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "18-arctic-hare",
+    "masterSha256": "074af4e37e901b434bde2fb1316432e51716359d310ac38ce8e4607384c80191",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "19-blobfish",
+    "masterSha256": "234cefa2764b977c96e11f16dcf58101012ba991031f66cb600f8d7d7cf4f0cd",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "20-tripod-fish",
+    "masterSha256": "6b502378a8da6ee920473a640c4c934ad89e7496ecc42d487a255d5a9cb41cb1",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "21-monkfish",
+    "masterSha256": "29301339103a396b6860d8fb681bf851934a9278b9653385b441cc1cfbb5ba15",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "22-loon",
+    "masterSha256": "fd9a04775fc0d54221ec5815491611d796d2ae976cce77abd4883fbe47d04e7d",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "23-water-beetle",
+    "masterSha256": "2878f81146a315c801bc7a1a6202a077541ce7e8fd5e1317da52ce0ffb615c58",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  },
+  {
+    "id": "24-diving-beetle",
+    "masterSha256": "e47c77fb5dfde708bae0e10918941a81d56b617d443019c3dd0b844f8232160d",
+    "sourceByteIdentical": true,
+    "exactPrompt": true,
+    "approvedStyleReference": true,
+    "outputModified": false
+  }
+]

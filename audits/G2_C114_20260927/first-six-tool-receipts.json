@@ -1,0 +1,38 @@
+[
+  {
+    "id": "01-forest-elephant",
+    "imageId": "exec-b4c65342-9915-4752-88a7-6ddfd567aa33",
+    "exactPromptMatch": true,
+    "promptSha256": "cd76611e9f64d7ec7384fc187c7aa2d9cc681f8e576e2f3e0d4063aae1e174ca"
+  },
+  {
+    "id": "02-elephant",
+    "imageId": "exec-92e3e895-1587-4301-a5ad-598ef922175a",
+    "exactPromptMatch": true,
+    "promptSha256": "691f9e14de80825ceaaa51f6fa12ec6e1adeef781c581e224ae3476ff7448f7a"
+  },
+  {
+    "id": "03-asian-elephant",
+    "imageId": "exec-07cfadf7-b314-4b32-a09c-5a950cdde5f2",
+    "exactPromptMatch": true,
+    "promptSha256": "e377c9e4474b1a8813b6323e763ef44d68971a2ad343325647e033e2bc0ed118"
+  },
+  {
+    "id": "04-african-elephant",
+    "imageId": "exec-3f74b730-4976-461f-8077-b963e8f8722f",
+    "exactPromptMatch": true,
+    "promptSha256": "77ba55d64253325a19c48d86d202f94627ff2b758c98df3498872971654d399e"
+  },
+  {
+    "id": "05-rhinoceros",
+    "imageId": "exec-dcbc6e61-e53b-4edf-ba05-904bb143817b",
+    "exactPromptMatch": true,
+    "promptSha256": "72a26bf761e9b7f0d92e4a59ec0d8ff3c16ea306d23e3502f1496112163d7ea8"
+  },
+  {
+    "id": "06-hippopotamus",
+    "imageId": "exec-a4f4758f-6393-4f3d-b282-d40308aca687",
+    "exactPromptMatch": true,
+    "promptSha256": "7240622edc07612be68cf157bb4c65ecae9bab430552927a4a1bd4584e5cd27e"
+  }
+]

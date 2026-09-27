@@ -1,0 +1,13 @@
+{
+  "id": "12-bull",
+  "name": "Bull",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-90efdbfe-4a85-4341-963b-f38ba90c88d1.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e650f2e62a038a75fd91495b3baa3fd59b41a616fd64d1e3b8434ee5a0792896",
+  "bytes": 1373202,
+  "promptSha256": "05889baacd7eb14b178a1dae1db1f672b5e172bf806d4de2727cb63e37e3daa7",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
