@@ -1,0 +1,13 @@
+{
+  "id": "23-stonefly",
+  "name": "Stonefly",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-079935bb-39c8-4aeb-afb3-dd49c13546e9.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7ded4b8e0dc39b4d96bc6c6400db4de3fd83302a9a6632f7a995c8f96f796ba9",
+  "bytes": 1100009,
+  "promptSha256": "1c2bc36666d82e0dad2645c0323182bdab4169e426537088408fde14def5066f",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,68 @@
+{
+  "id": "20-damselfly",
+  "name": "Damselfly",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "08f6125e2093f3df188bc7608d9e05ef997ce0820d64991568acb040338e8f9e",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 7365,
+    "coreRadius": 9,
+    "bodyBox": {
+      "x0": 173,
+      "y0": 171,
+      "x1": 220,
+      "y1": 202
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.8129,
+        "pixels": 5987,
+        "box": {
+          "x0": 70,
+          "y0": 158,
+          "x1": 339,
+          "y1": 265
+        },
+        "attach": {
+          "x": 193,
+          "y": 189.8,
+          "relX": 0.43,
+          "relY": 0.61
+        },
+        "dir": {
+          "x": 0.91,
+          "y": 0.41
+        },
+        "class": "rear",
+        "length": 164.2
+      }
+    ],
+    "byClass": {
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 242,
+        "x1": 246,
+        "cx": 243.6
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

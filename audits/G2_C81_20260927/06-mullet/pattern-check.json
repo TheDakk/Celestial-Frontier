@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mullet",
+  "masterSha256": "c92434e699b7d49b94ee1a1e8a281ca8cb3d5ffdee7147fb79d6d4fb74043aa0",
+  "required": [
+    "silvery torpedo body with faint stripes"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "silvery torpedo body with faint stripes",
+      "status": "PRESENT",
+      "observed": "Faint longitudinal dark stripes follow the silvery scale rows; blunt head, small mouth and two separated dorsal fins are visible. Complete forked tail, horizontal profile and clear surrounding margin. Far paired fins are not fully distinguished."
+    }
+  ]
+}

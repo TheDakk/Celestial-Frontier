@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Mackerel",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Haddock",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Pollock",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sardine",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Anchovy",
+    "status": "PASS"
+  },
+  {
+    "name": "Mullet",
+    "status": "PASS"
+  },
+  {
+    "name": "Tarpon",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Snapper",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Curlew",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Snipe",
+    "status": "PASS"
+  },
+  {
+    "name": "Plover",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Godwit",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Avocet",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Coot",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Moorhen",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Rail",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Bee",
+    "status": "PASS"
+  },
+  {
+    "name": "Wasp",
+    "status": "PASS"
+  },
+  {
+    "name": "Dragonfly",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Damselfly",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Caddisfly",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Mayfly",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Stonefly",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Giant Water Bug",
+    "status": "NOT_REQUIRED"
+  }
+]
