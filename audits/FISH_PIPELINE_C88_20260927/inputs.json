@@ -1,0 +1,90 @@
+[
+  {
+    "id": "01-mackerel",
+    "tag": "g2c81",
+    "fit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/01-mackerel/fit",
+    "schema": "cf.authored-part-masks/v1",
+    "remainder": "body",
+    "remainderJoint": "spine0",
+    "masterSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/01-mackerel/packet/master.png",
+    "masterSha256": "f4cfc6e1ee5a177417e1e007b92e5befcbb502a30564b5d01c724cc7af4bc6c5",
+    "localFit": "audits/FISH_PIPELINE_C88_20260927/inputs/01-mackerel"
+  },
+  {
+    "id": "04-sardine",
+    "tag": "g2c81",
+    "fit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/04-sardine/fit",
+    "schema": "cf.authored-part-masks/v1",
+    "remainder": "body",
+    "remainderJoint": "spine0",
+    "masterSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/04-sardine/packet/master.png",
+    "masterSha256": "03458b7f3fa484345c94357b289127ea26349a1bce99c907dfa67a3d9d5333fc",
+    "localFit": "audits/FISH_PIPELINE_C88_20260927/inputs/04-sardine"
+  },
+  {
+    "id": "06-mullet",
+    "tag": "g2c81",
+    "fit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/06-mullet/fit",
+    "schema": "cf.authored-part-masks/v1",
+    "remainder": "body",
+    "remainderJoint": "spine0",
+    "masterSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/06-mullet/packet/master.png",
+    "masterSha256": "c92434e699b7d49b94ee1a1e8a281ca8cb3d5ffdee7147fb79d6d4fb74043aa0",
+    "localFit": "audits/FISH_PIPELINE_C88_20260927/inputs/06-mullet"
+  },
+  {
+    "id": "07-tarpon",
+    "tag": "g2c81",
+    "fit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/07-tarpon/fallback-1/fit",
+    "schema": "cf.authored-part-masks/v1",
+    "remainder": "body",
+    "remainderJoint": "spine0",
+    "masterSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/07-tarpon/fallback-1/packet/master.png",
+    "masterSha256": "4cbce40d5e35b24168fdcc2b96f35ff21b3cc74c80c1cea39b84f73dd5962b40",
+    "localFit": "audits/FISH_PIPELINE_C88_20260927/inputs/07-tarpon"
+  },
+  {
+    "id": "01-grouper",
+    "tag": "g2c83",
+    "fit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/01-grouper/fit",
+    "schema": "cf.authored-part-masks/v1",
+    "remainder": "body",
+    "remainderJoint": "root",
+    "masterSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/01-grouper/packet/master.png",
+    "masterSha256": "f451a42377174338d5bb6a8246e9338c4e882a243fd98f705ddc8b824a00568c",
+    "localFit": "audits/FISH_PIPELINE_C88_20260927/inputs/01-grouper"
+  },
+  {
+    "id": "02-barracuda",
+    "tag": "g2c83",
+    "fit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/02-barracuda/fit",
+    "schema": "cf.authored-part-masks/v1",
+    "remainder": "body",
+    "remainderJoint": "root",
+    "masterSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/02-barracuda/packet/master.png",
+    "masterSha256": "03aaf1eaf0a89cd5ddc1eadcf125e17f15090b5a5cfc2b2fa3d4388e4abf3d3e",
+    "localFit": "audits/FISH_PIPELINE_C88_20260927/inputs/02-barracuda"
+  },
+  {
+    "id": "05-sailfish",
+    "tag": "g2c83",
+    "fit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/05-sailfish/fit",
+    "schema": "cf.authored-part-masks/v1",
+    "remainder": "body",
+    "remainderJoint": "root",
+    "masterSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/05-sailfish/packet/master.png",
+    "masterSha256": "a7fb5ac2b596a7c6ae9ce83da134e4bb02eb6e44a44eae93c00bb0f124fba7bd",
+    "localFit": "audits/FISH_PIPELINE_C88_20260927/inputs/05-sailfish"
+  },
+  {
+    "id": "07-mahi-mahi",
+    "tag": "g2c83",
+    "fit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/07-mahi-mahi/fit",
+    "schema": "cf.authored-part-masks/v1",
+    "remainder": "body",
+    "remainderJoint": "root",
+    "masterSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/07-mahi-mahi/packet/master.png",
+    "masterSha256": "d4582b15b20e2a84c19c6c5bbb23e7923e77119b7a468843523ddef69dcad25a",
+    "localFit": "audits/FISH_PIPELINE_C88_20260927/inputs/07-mahi-mahi"
+  }
+]

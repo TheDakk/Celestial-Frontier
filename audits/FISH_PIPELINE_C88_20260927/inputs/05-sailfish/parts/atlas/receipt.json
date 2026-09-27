@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "05-sailfish",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "255632721d31ad08fba0722bc27a4ceaee29c65f4362f1248b8fc41a35922e55",
+    "pngSha256": "38ebb9ce7dc76178dd24a8e0bf5d9e39dfeaf94000debcf8ea27db73e9f2d6a6"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "aee08c51482f3c7eb77dc046b883364564f51c31d1ebc07ae36bc760f559768d"
+    },
+    {
+      "name": "caudal.png",
+      "sha256": "1cded7b4f1d21e19079b9fd3f76a3fe8abe5701d80514a4b18dc1b753e93e827"
+    },
+    {
+      "name": "dorsal.png",
+      "sha256": "12781a4868578883bb1559001e47e68b0e9d86e22772720bd86c3a789d65870e"
+    },
+    {
+      "name": "far-pectoral.png",
+      "sha256": "d7b6b0fdc4c949c896c4299fcc7bf9a8cc2fec1a54d338122c12fbf3f2407bc8"
+    },
+    {
+      "name": "head.png",
+      "sha256": "2ddcc5b1b989d235f96efdc6019fab5c4ffd7341824831f03da2f1efd49415c9"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "8caacc1091738252694f0b3a6804e92e1a05c9e1af3fd07ae960790eeaac341f"
+    },
+    {
+      "name": "near-pectoral.png",
+      "sha256": "552f8ede341ae3789009e0cfd19fc1f009f4e33a6f90e99e677f9861596a7f80"
+    },
+    {
+      "name": "spine0.png",
+      "sha256": "c0c07f00fd5185f15a590fe4a192d7f275d5c458ab2fabc732cd73dbf251776b"
+    },
+    {
+      "name": "spine1.png",
+      "sha256": "63869a8ccf2b97dd67e8166c214095a57d975dafb4401be282d34b9171be1d4b"
+    },
+    {
+      "name": "spine2.png",
+      "sha256": "31c1b2c1c810451d62eed3f528f0a74789b957a0c28ba236bcd882d6cb4ae1c9"
+    },
+    {
+      "name": "spine3.png",
+      "sha256": "6f241cae2fa79b8d6aada8a62a4db6944af22e1122758593079244d4ae226026"
+    },
+    {
+      "name": "spine4.png",
+      "sha256": "9fd1213e4d03ff7a7004fbc35852d01a551b11da75fe87c4b1ff69bdb376d004"
+    },
+    {
+      "name": "spine5.png",
+      "sha256": "d9d6dab6aafe00ffa79f7427eb25ba2658d63de775f44112630967e53be73b01"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}
