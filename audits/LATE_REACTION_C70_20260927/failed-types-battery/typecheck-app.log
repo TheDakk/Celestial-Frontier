@@ -1,0 +1,9 @@
+apps/game/src/creature-rig.test.ts(178,15): error TS2352: Conversion of type '{ schema: 'cf.creature-parts/v1'; recordRecipeHash: string; atlasSha256: string; sourceJoinTopology?: { readonly remainderPartId: string; }; seamBridges?: { readonly schema: 'cf.seam-bridges/v1'; readonly groups: ReadonlyArray<CreatureSeamGroupV1>; }; parts: { ...; }[]; paintSkin: { ...; }; atlasSize: { ...; }; bind...' to type 'CreaturePartsBindingV1' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  The types of 'paintSkin.vertices' are incompatible between these types.
+    Type '{ x: number; y: number; weights: (string | number)[][]; }[]' is not comparable to type '{ x: number; y: number; weights: [string, number][]; }[]'.
+      Type '{ x: number; y: number; weights: (string | number)[][]; }' is not comparable to type '{ x: number; y: number; weights: [string, number][]; }'.
+        Types of property 'weights' are incompatible.
+          Type '(string | number)[][]' is not comparable to type '[string, number][]'.
+            Type '(string | number)[]' is not comparable to type '[string, number]'.
+              Target requires 2 element(s) but source may have fewer.
+apps/game/src/creature-rig.ts(11,37): error TS7016: Could not find a declaration file for module '../../../tools/creature-animation/exact-field-cache.mjs'. '/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/exact-field-cache.mjs' implicitly has an 'any' type.
