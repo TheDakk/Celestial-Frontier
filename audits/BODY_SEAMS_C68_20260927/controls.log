@@ -1,0 +1,11 @@
+✔ moves visible axial remainder while preserving original input, all other owners and transparent pixels (3.210916ms)
+✔ wrong root identity, reversed or nonfinite axis and duplicate axial owners refuse (0.340833ms)
+✔ the same operation has no additional placement on its completed labels (1.525167ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 97.398208

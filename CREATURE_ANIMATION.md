@@ -841,3 +841,7 @@ Dakk-authorized new hand-reference candidates:four folded-wing birds,two separat
 ### Insect faint authoring — matches code 2026-09-27
 
 The existing continuous faint envelope now derives chains from the family contract for both quadrupeds and insects. Insects scale root/thorax excursion only; all timing, other tracks,129-sample probe,90% angular reserve and runtime limits remain unchanged. Four failing insect packets retain all six painted contacts under the new curve; old-author negative controls still refuse. Beetle faint conservatively retargets too; its other actions remain exact. Full static/contact/presentation and native outcomes, the still-red Cicada non-faint actions, and Termite wing/body ownership fault are recorded in audits/INSECT_CONTACT_C67_20260927. No visual/reference/library admission follows from numerical PASS.
+
+### Body seam diagnostic candidates — tooling status2026-09-27
+
+C68 keeps source images and rig records unchanged while moving root-remainder fish pixels onto the observed axis, then joining only observed fin boundaries. Trout/Herring/Cod candidates pass full static/native and improve reviewed silhouettes; they require independent held-out/film review before author/library adoption. Arctic Fox nape candidate remains visually unresolved. Tiger/Ocelot/Fisher hairlines coincide with zero eligible opaque seam guards on mostlyalpha250–254art; D26 remains finisher-only and the sampling policy is unchanged. Evidence:audits/BODY_SEAMS_C68_20260927.

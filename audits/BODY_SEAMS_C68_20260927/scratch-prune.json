@@ -1,0 +1,436 @@
+{
+  "reason": "Final candidate films and named full-size visual comparison stills retained; superseded films and redundant stills hash-inventoried",
+  "bytes": 117566207,
+  "files": [
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn2-dodge-reaction-50.png",
+      "bytes": 1214567,
+      "sha256": "5f5c59d30e206b2055e8729c52edfa38b63d5da532e2459b538707c1c045e592"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn0-hit-return-end.png",
+      "bytes": 1191746,
+      "sha256": "88ec461e0c36b783930dbddaf57c1f306c71c614ee9e65c6f7ab70e8207f16a7"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn3-hit-approach-50.png",
+      "bytes": 1192803,
+      "sha256": "b20e718768d14a6a5b76c7a08bcd98c4a6764e19ed965e14cee3817a357ab86c"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn1-hit-approach-50.png",
+      "bytes": 1194423,
+      "sha256": "f287b0655d3aee562f2fc71826f1dd0de48a529530fcd303f51d8f7c5b9076ee"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/battle-full.webm",
+      "bytes": 7533975,
+      "sha256": "93a37dfd6fdbb676603fe4eb36b72b02f778b060eaaa98e5832b6a6560df274c"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn3-hit-return-end.png",
+      "bytes": 1200272,
+      "sha256": "e6b71e9e5ecb9529353b81ec951ddb5762e8196be85400e2eb1df6a4777cd5ce"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn0-hit-reaction-50.png",
+      "bytes": 1213638,
+      "sha256": "004b2f5ed1eb6ff316f406e0a692555b79c8f1b1b2a1ff5e876a03968862a6ac"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn2-dodge-return-end.png",
+      "bytes": 1191746,
+      "sha256": "88ec461e0c36b783930dbddaf57c1f306c71c614ee9e65c6f7ab70e8207f16a7"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn1-hit-impact.png",
+      "bytes": 1195945,
+      "sha256": "03523698273558490e1b8a5d55c5adb7c6e0eaf9d2c0cd4142a8ffc28e54029a"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn0-hit-impact.png",
+      "bytes": 683641,
+      "sha256": "b6c5911a85080a6f78be1cb8b4babad8fd50760bdf10c374b18a62ee891bc363"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn1-hit-return-end.png",
+      "bytes": 1191903,
+      "sha256": "dd5f004fa74fcc01d51491dc5a526d5461a6668ee1f244c350413bdaa30922a3"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn2-dodge-impact.png",
+      "bytes": 1211909,
+      "sha256": "d07e3e6d9a8686a9219a130a28fade81c948382271de5a6eb02b8cd40722386e"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn2-dodge-approach-50.png",
+      "bytes": 1192803,
+      "sha256": "b20e718768d14a6a5b76c7a08bcd98c4a6764e19ed965e14cee3817a357ab86c"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn3-hit-impact.png",
+      "bytes": 1195008,
+      "sha256": "e59dc93a3d6c9270727411af77a458304ffd4f6661bfdd1e872581a7dc5db3ea"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-01/turn3-hit-idle-90.png",
+      "bytes": 1200697,
+      "sha256": "6a15097895c78a12b32e5302b602747b36ba5019084e301a79625324a6788779"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn2-dodge-reaction-50.png",
+      "bytes": 1227891,
+      "sha256": "44e8aeea4432260362925d8b5e98ce5fd69f4f05960e26a6b0cf4536abcb73c6"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn0-hit-return-end.png",
+      "bytes": 1206218,
+      "sha256": "169666bd53ddb1a335707b926f6c5971b982b5e5049a966e7935b5d91c077abc"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn3-hit-approach-50.png",
+      "bytes": 1206781,
+      "sha256": "c2f3cb34960c02dff05052d61d6381e3656ae59d8b6326bf159090e8688d748d"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn1-hit-approach-50.png",
+      "bytes": 1208579,
+      "sha256": "1180877eee2842d45e5b7e7031a77724e0b60d0333de399ecddf7b7c99e2ce1c"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn3-hit-return-end.png",
+      "bytes": 1214776,
+      "sha256": "1662be69e1fc33f0246b35617954725b22ec7a3c7b01bc1d1f6e7f52cf999d0a"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn0-hit-reaction-50.png",
+      "bytes": 1228966,
+      "sha256": "2aef6a86b255e45a06c945a5deac30f47496f9ac573738adc8e98267fc13ff80"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn2-dodge-return-end.png",
+      "bytes": 1206218,
+      "sha256": "169666bd53ddb1a335707b926f6c5971b982b5e5049a966e7935b5d91c077abc"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn1-hit-impact.png",
+      "bytes": 1211069,
+      "sha256": "b72d99b72ea1dbdc5d44c4d1932a26f26d9895f329e5f87d0aa6f0756a6d7aac"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn0-hit-impact.png",
+      "bytes": 695855,
+      "sha256": "7ccf4288f22c6ac816fd05f3b01bb08053b244fc44ff1b527e097691633546f5"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn1-hit-return-end.png",
+      "bytes": 1206243,
+      "sha256": "f5d50e75b4240bc65406263b78f292e946a5f9ba269baef6d3e62239be56a648"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn2-dodge-impact.png",
+      "bytes": 1226682,
+      "sha256": "f89d7fb92aedf1558ba836d526dbd596bfa1e693b1888ce27251942912810dd7"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn2-dodge-approach-50.png",
+      "bytes": 1206781,
+      "sha256": "c2f3cb34960c02dff05052d61d6381e3656ae59d8b6326bf159090e8688d748d"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn3-hit-impact.png",
+      "bytes": 1209786,
+      "sha256": "833353ab62b0705819e3bd55fe7136985be99bc07abf99a115557e515ed1a76e"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-02/turn3-hit-idle-90.png",
+      "bytes": 1215142,
+      "sha256": "d28034d267d12e62df040f0144cbb468833a632166827f5195f811d4330937c6"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn2-dodge-reaction-50.png",
+      "bytes": 1197558,
+      "sha256": "52dd631971aa1326ff959a5ea0ebc37491a1a01d904d5608a611a82fbc1f2ec5"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn0-hit-return-end.png",
+      "bytes": 1182928,
+      "sha256": "b63c342de7234328259f1674205b4b76c42c38638e67c4a2ebcc6dd0b5d85401"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn3-hit-approach-50.png",
+      "bytes": 1181476,
+      "sha256": "04d13f7e0eb0d74650da67ab77d15fb0eb7045bfed6c35acad84dfbe8ff081b6"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn1-hit-approach-50.png",
+      "bytes": 1183187,
+      "sha256": "7ea8fc592b6096c95510eacdd68286f8ad63262ea142c13c187354c7932d6cb3"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn3-hit-return-end.png",
+      "bytes": 1187701,
+      "sha256": "b32e9e4144ee3f6364785ad6f4533031a10893fcdca82f9713639ea4d20db1b6"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn0-hit-reaction-50.png",
+      "bytes": 1197654,
+      "sha256": "3ed84b765bf5c0b677e8db940c111a5945d0d5be5a25ad9d9ad1501ccfcfba6c"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn2-dodge-return-end.png",
+      "bytes": 1182928,
+      "sha256": "b63c342de7234328259f1674205b4b76c42c38638e67c4a2ebcc6dd0b5d85401"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn1-hit-impact.png",
+      "bytes": 1183695,
+      "sha256": "2d1a5b49edede5b0f9469d486fbb78240a55314e88bab35aeefff8123d80fde5"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn0-hit-impact.png",
+      "bytes": 668066,
+      "sha256": "59e4ff7e0ac444a45bd812a0acb4bb92f1e2cc7e609a52c15c5df3732103e1e5"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn1-hit-return-end.png",
+      "bytes": 1182661,
+      "sha256": "08cdc29cd56659e1ef86b2cd3f44ce6ae4674ee9b83d81e349917ccb33de539b"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn2-dodge-impact.png",
+      "bytes": 1193188,
+      "sha256": "149412738986b1fbf495fa23e94b9293d02745f2d4cc292b9120d21f81b43ef8"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn2-dodge-approach-50.png",
+      "bytes": 1181476,
+      "sha256": "04d13f7e0eb0d74650da67ab77d15fb0eb7045bfed6c35acad84dfbe8ff081b6"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn3-hit-impact.png",
+      "bytes": 1182730,
+      "sha256": "3fbe2c831223502ba5641198fa736ad8717c382c053b42f8b92e02df626c9698"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/cod-native-01/turn3-hit-idle-90.png",
+      "bytes": 1187370,
+      "sha256": "af71bbcad527295380d9dbf81fd36875f2bb2a81c93221142e502078b9fa60d4"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn2-dodge-reaction-50.png",
+      "bytes": 1214742,
+      "sha256": "2a9dc4ad358ea8b442bcd564fe8868d17d229ca18ae2435bdbba11ee4065902b"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn0-hit-return-end.png",
+      "bytes": 1191887,
+      "sha256": "c81c8f8d440fe65c25c1f664f4e589bd9799b44a15c1d5ed1c06cc2aa8196bcb"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn3-hit-approach-50.png",
+      "bytes": 1192949,
+      "sha256": "aa40f7ce0713ba091590c6309d6f39cd33d052d0a3842c96db85cb734a83cb7f"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn1-hit-approach-50.png",
+      "bytes": 1194630,
+      "sha256": "14a88db4d3c0bf069cd03dd1e16260780db6aff25620232186b6edb6323005bf"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn3-hit-return-end.png",
+      "bytes": 1200003,
+      "sha256": "28a65379d8e3f49addf83136f8bd843598c276a982499c19387769d1a738794e"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn0-hit-reaction-50.png",
+      "bytes": 1213692,
+      "sha256": "172cd80ab327d1a3a4b3cf598bfed862115d92abbe979da1bf9acff5af489318"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn2-dodge-return-end.png",
+      "bytes": 1191887,
+      "sha256": "c81c8f8d440fe65c25c1f664f4e589bd9799b44a15c1d5ed1c06cc2aa8196bcb"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn1-hit-impact.png",
+      "bytes": 1196083,
+      "sha256": "dfeaf348b2e2329ec8f9da0079ac5720cd6bd206d3f70e18ee03879fa012eb08"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn0-hit-impact.png",
+      "bytes": 683834,
+      "sha256": "7e31aceda6c186c704f7dd47c32aa3624a161a9be74617eaed86f8aab3742d86"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn1-hit-return-end.png",
+      "bytes": 1192007,
+      "sha256": "0f1e72ed9fab36a27426ff69f82797d108e6315559db111ce5058c85414b7727"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn2-dodge-impact.png",
+      "bytes": 1211960,
+      "sha256": "d20e1ccf5701c0d0f2e515894e874f5dc97d52455216d5cef8e6de1735669cf7"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn2-dodge-approach-50.png",
+      "bytes": 1192949,
+      "sha256": "aa40f7ce0713ba091590c6309d6f39cd33d052d0a3842c96db85cb734a83cb7f"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn3-hit-impact.png",
+      "bytes": 1195220,
+      "sha256": "84e69a1b6d5e5fe410c04100ec8cc87303f67fb91fd6831fd1827e0574d36943"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/herring-native-02/turn3-hit-idle-90.png",
+      "bytes": 1200499,
+      "sha256": "c86e88b4787af19af7b3f29c1ea72092a5d471701498b4f4b9909159462c7594"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn2-dodge-reaction-50.png",
+      "bytes": 1541736,
+      "sha256": "817ab98ab6ab41f717cabfdae7f1f0eb96646f4907b12c704bfd7be537000694"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn0-hit-return-end.png",
+      "bytes": 1531193,
+      "sha256": "173b7fe7a63bfb6bfeaead58974106e613013e199a61d23314d5968c209a162f"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn3-hit-approach-50.png",
+      "bytes": 1531408,
+      "sha256": "d867e6c1deba77d2760808e97019697bfe61afa1835807e0442cdf3a44dd8f18"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn1-hit-approach-50.png",
+      "bytes": 1530744,
+      "sha256": "c24476a02c92a1a6091b5f6e095c152f8624a847735e8f41a7ce9d28426af960"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn3-hit-return-end.png",
+      "bytes": 1525182,
+      "sha256": "3b978af07ae937afafb6c78040a072470a1bc931f00bff7f5b5b06c33e743117"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn0-hit-reaction-50.png",
+      "bytes": 1531049,
+      "sha256": "26eb1fed771d5b0394b7fe7969987cb572f199ca4aa53b71b69b609d708ffdb8"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn2-dodge-return-end.png",
+      "bytes": 1531121,
+      "sha256": "5a5809dea4112142915cbd3b77575e389b009e8c1a5870431c8cccd7c2a37aa5"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn1-hit-impact.png",
+      "bytes": 1535950,
+      "sha256": "926013b7dbe6a98894718051a5a8dc8114426df1789b94936b3c48a97e62a817"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn0-hit-impact.png",
+      "bytes": 976510,
+      "sha256": "0b11f968cf1480fd17a8c3208bee4ad9e5edd947beb8d5d1e4757289b3b20df6"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn1-hit-return-end.png",
+      "bytes": 1531457,
+      "sha256": "346f818529a0155e3161572532307abfb1cddaa8ec9c318d6a2e8b7df1beb1d3"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn2-dodge-impact.png",
+      "bytes": 1541904,
+      "sha256": "a2b512c77ae605bac7962c1a90a15d1c2e561711b73164aa46cea60c627f0b8a"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn2-dodge-approach-50.png",
+      "bytes": 1530854,
+      "sha256": "59fa502a984ac514a4d33d60e4007011857181a8a6926f6e08b2ef0b51125763"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn3-hit-impact.png",
+      "bytes": 1533590,
+      "sha256": "0dc0f6806d010630586c94d89060a22e074dd8bbb6fc14f353abf6af8225daac"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/arctic-native-01/turn3-hit-idle-90.png",
+      "bytes": 1524908,
+      "sha256": "b94188cbc1892e05f9e5deb2e513f34d8d961531343f36cb8237a89f0cd102b9"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn2-dodge-reaction-50.png",
+      "bytes": 1227773,
+      "sha256": "bacc3709766f4120a555ace195427fc10b9ee5d361489a6d4c1d5469c7caeed4"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn0-hit-return-end.png",
+      "bytes": 1206350,
+      "sha256": "ca76b9179148c4378666498de40d8b882b00d86bb16748bc7b6516567e6950aa"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn3-hit-approach-50.png",
+      "bytes": 1206559,
+      "sha256": "326e7b1f0ddb91fd8babcc7c8ca3e6c54c3a538542cbd856332a8c8e4fa967c4"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn1-hit-approach-50.png",
+      "bytes": 1208215,
+      "sha256": "2c3eb0c6d6de5cbc0be70cfceb297691a820825f1dfd302d6117f9f343ff4fe5"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/battle-full.webm",
+      "bytes": 7557689,
+      "sha256": "a66b8c9420757aa6036717a14c7644c16c14b05ce219a932db7fc9edc850f4fb"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn3-hit-return-end.png",
+      "bytes": 1214876,
+      "sha256": "82e659bb786bad8187a5146ca086188972e8bfc7e17662c42486a9994a3ec317"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn0-hit-reaction-50.png",
+      "bytes": 1228707,
+      "sha256": "fa8c83dfdd17be7ca1b32013939107fa07f8ffd6a1545f43aeb3e1d1579ba22c"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn2-dodge-return-end.png",
+      "bytes": 1206350,
+      "sha256": "ca76b9179148c4378666498de40d8b882b00d86bb16748bc7b6516567e6950aa"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn1-hit-impact.png",
+      "bytes": 1210868,
+      "sha256": "a2ea05ccace1d0dcd7318d6de7af3dcdd7bfdf80eaad4ed7b3ad1116b34136c3"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn0-hit-impact.png",
+      "bytes": 695947,
+      "sha256": "290c6a7cd10d62e6fbc25c4ff6972c7425579b7369d31a09fa287dcd34abb865"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn1-hit-return-end.png",
+      "bytes": 1206366,
+      "sha256": "e66a6bc226086af3378887855f368eca9994bce2b409fcf27b3211205df7401f"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn2-dodge-impact.png",
+      "bytes": 1226647,
+      "sha256": "f6b6306ac2171aca2fb4612f21330dd92a6abeac7548589538aafdcc0609ae4b"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn2-dodge-approach-50.png",
+      "bytes": 1206559,
+      "sha256": "326e7b1f0ddb91fd8babcc7c8ca3e6c54c3a538542cbd856332a8c8e4fa967c4"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn3-hit-impact.png",
+      "bytes": 1209607,
+      "sha256": "fcbac18770a167ed34a46c2381beb1c31589cc03bb3c3a18691c56fdc62930c8"
+    },
+    {
+      "path": "audits/BODY_SEAMS_C68_20260927/trout-native-01/turn3-hit-idle-90.png",
+      "bytes": 1215065,
+      "sha256": "37b8a8a80aeba86d37df3e1f53aa6978312a77bdd5a79b819c0b1ebcc2c4b6a6"
+    }
+  ]
+}
