@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Diving Beetle",
+  "masterSha256": "e47c77fb5dfde708bae0e10918941a81d56b617d443019c3dd0b844f8232160d",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

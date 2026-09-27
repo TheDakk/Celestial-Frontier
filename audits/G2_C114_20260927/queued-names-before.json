@@ -1,0 +1,29 @@
+{
+  "names": [
+    "Forest Elephant",
+    "Elephant",
+    "Asian Elephant",
+    "African Elephant",
+    "Rhinoceros",
+    "Hippopotamus",
+    "Polar Bear",
+    "Bear",
+    "Wild Pig",
+    "Rat",
+    "Cow",
+    "Bull",
+    "Horse",
+    "Sun Bear",
+    "Grizzly Bear",
+    "Gerenuk",
+    "Tahr",
+    "Arctic Hare",
+    "Blobfish",
+    "Tripod Fish",
+    "Monkfish",
+    "Mudskipper",
+    "Water Beetle",
+    "Diving Beetle"
+  ],
+  "intent": "Broad remaining canonical roster, exact patterns and natural anatomy; no inferred absence."
+}

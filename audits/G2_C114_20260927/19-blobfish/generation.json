@@ -1,0 +1,13 @@
+{
+  "id": "19-blobfish",
+  "name": "Blobfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-a2963e44-99e4-472f-9fd7-5fdfa13f19c3.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "234cefa2764b977c96e11f16dcf58101012ba991031f66cb600f8d7d7cf4f0cd",
+  "bytes": 1159468,
+  "promptSha256": "21413589bbf3e7828632dbf86170d55e02a66a483be131ac0a05c344f97a8817",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

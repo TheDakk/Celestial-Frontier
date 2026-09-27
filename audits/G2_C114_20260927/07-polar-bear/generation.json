@@ -1,0 +1,13 @@
+{
+  "id": "07-polar-bear",
+  "name": "Polar Bear",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e0cf6898-0035-4ca3-a9c6-3cd997be71cd.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "05a1687e634188dc45cfa407455b513dd335f7c17611c03063cc010fe3f6b3d5",
+  "bytes": 1317516,
+  "promptSha256": "f7ffff9b04421915d2a29f4c8bb9fc6c2e903cf6be8c1d3c633ae74b708d1ea9",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

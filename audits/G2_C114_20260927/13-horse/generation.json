@@ -1,0 +1,13 @@
+{
+  "id": "13-horse",
+  "name": "Horse",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f3e3193a-396a-4898-b586-ff536b31d681.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "1f28692f8699ecdc7a87010bdccde8223629d9715fe15f53f9f6d1f6db719a41",
+  "bytes": 1281991,
+  "promptSha256": "8e3d4e4bb10a4cfcd7ae753ec993701bd3a88a67a452e2134be1caac3b523af1",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

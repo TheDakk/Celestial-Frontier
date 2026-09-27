@@ -148,3 +148,22 @@ test('v2 foreground owns the real page before emulation and preserves exact rece
   const bad=structuredClone(green);mutate(bad);await assert.rejects(()=>run(bad));
  }
 });
+
+
+test('native keyboard codes match the host while retaining semantic events and edit commands',()=>{
+ for(const platform of ['darwin','win32','linux']) {
+  const dispatch=vm.runInNewContext('('+contract.candidateNativeKeyDispatches.toString()+')',
+   {process:{platform},integer:Number.isInteger});
+  for(const [key,code,windows,mac] of [['a','KeyA',65,0],['Enter','Enter',13,36],['Tab','Tab',9,48],['Backspace','Backspace',8,51]]) {
+   const commands=key==='a'?['selectAll']:[],events=dispatch(key,code,8,commands);
+   assert.equal(events.length,2);
+   for(const [i,event] of events.entries()) {
+    assert.equal(event.type,i===0?'rawKeyDown':'keyUp');assert.equal(event.key,key);assert.equal(event.code,code);
+    assert.equal(event.windowsVirtualKeyCode,windows);assert.equal(event.nativeVirtualKeyCode,platform==='darwin'?mac:windows);
+    assert.equal(event.modifiers,8);assert.ok(Object.isFrozen(event));
+    assert.equal(JSON.stringify(event.commands),i===0&&commands.length?JSON.stringify(commands):undefined);
+   }
+  }
+  if(platform==='darwin')assert.throws(()=>dispatch('z','KeyZ'),/Unmapped macOS native key/);
+ }
+});

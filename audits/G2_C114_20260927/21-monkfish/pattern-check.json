@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Monkfish",
+  "masterSha256": "29301339103a396b6860d8fb681bf851934a9278b9653385b441cc1cfbb5ba15",
+  "required": [
+    "huge upturned mouth ringed with inward-slanting teeth"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "huge upturned mouth ringed with inward-slanting teeth",
+      "status": "PRESENT",
+      "observed": "Full original: enormous open fang-lined jaw, head lure, fringes, broad fins and triangular dorsal spines. HOLD exaggerated angler-like esca/fangs and unclear dorsal-fin inventory; anatomical identity requires repair."
+    }
+  ]
+}
