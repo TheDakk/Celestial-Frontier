@@ -1,0 +1,9 @@
+{
+ "id": "13-giant-otter",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 13% paint (reference 38%)"
+ ],
+ "semanticPresence": null
+}

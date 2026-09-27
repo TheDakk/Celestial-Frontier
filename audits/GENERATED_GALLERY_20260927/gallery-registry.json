@@ -1008,5 +1008,86 @@
   "batch": "audits/G2_C90_20260927",
   "tag": "g2c90",
   "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Parrotfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/02-parrotfish",
+  "note": "faint line near pectoral (unwelded)",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Boxfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/04-boxfish",
+  "note": "acceptable",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Archerfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/06-archerfish",
+  "note": "acceptable",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Puffin",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/07-puffin",
+  "note": "clean",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Swan",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/09-swan",
+  "note": "clean",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Cormorant",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/10-cormorant",
+  "note": "clean",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Mouse",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/15-mouse",
+  "note": "clean",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Tree Shrew",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/17-tree-shrew",
+  "note": "clean",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Ground Squirrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c92/18-ground-squirrel",
+  "note": "clean",
+  "batch": "audits/G2_C92_20260927",
+  "tag": "g2c92",
+  "supports": "observed"
  }
 ]

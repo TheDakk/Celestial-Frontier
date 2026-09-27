@@ -56,9 +56,16 @@ export function outerContour(mask, w, h) {
   const at = (x, y) => (x >= 0 && y >= 0 && x < W && y < H ? c[y * W + x] : 0);
   const dirs = [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]];
   const pts = []; let x = start % W, y = (start / W) | 0, d = 7; const sx = x, sy = y;
-  for (let guard = 0; guard < W * H * 4; guard++) { pts.push([x, y]); let found = false;
-    for (let k = 0; k < 8; k++) { const nd = (d + 6 + k) % 8, X = x + dirs[nd][0], Y = y + dirs[nd][1]; if (at(X, Y)) { x = X; y = Y; d = nd; found = true; break; } }
-    if (!found || (x === sx && y === sy && pts.length > 2)) break; }
+  /* Jacob's stopping criterion (Claude 2026-09-27): stop only when back at the start AND about to repeat the first move. The old rule
+   * (first return to the start pixel) stopped immediately when the topmost pixel was a 1-px antenna tip, so the trace ran up and back
+   * the antenna and never went round the body (zero signed area: Aphid, Dobsonfly, Stonefly were false "facing" refusals). */
+  let p1 = null;
+  for (let guard = 0; guard < W * H * 4; guard++) { pts.push([x, y]); let nx = -1, ny = -1, nd = -1;
+    for (let k = 0; k < 8; k++) { const dd = (d + 6 + k) % 8, X = x + dirs[dd][0], Y = y + dirs[dd][1]; if (at(X, Y)) { nx = X; ny = Y; nd = dd; break; } }
+    if (nd < 0) break;
+    if (pts.length === 1) p1 = [nx, ny];
+    else if (x === sx && y === sy && nx === p1[0] && ny === p1[1]) { pts.pop(); break; }
+    x = nx; y = ny; d = nd; }
   const full = pts.map(([px, py]) => [(px + 0.5) * s, (py + 0.5) * s]);
   const len = [0]; for (let i = 1; i <= full.length; i++) { const a = full[i - 1], b = full[i % full.length]; len.push(len[i - 1] + Math.hypot(b[0] - a[0], b[1] - a[1])); }
   const total = len[full.length], out = [];

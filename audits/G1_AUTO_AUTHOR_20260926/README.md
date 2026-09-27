@@ -118,6 +118,15 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**G2 C92 batch (Codex `833ee934`: 6 fish, 6 birds, 6 quads, 6 insects)** (`native-g2c92/`): **9/24 native PASS**: Parrotfish, Boxfish, Archerfish; **Puffin, Swan, Cormorant; Mouse, Tree Shrew, Ground Squirrel** (birds and quads clean at full size). Insects 0/6.
+
+**Contour bug found and fixed: false "facing" refusals on thin-antenna insects.**
+- Aphid, Dobsonfly and the C81 Stonefly all face right, yet were refused as "facing" with unmirrored costs of 0.30–0.40 against EVERY reference, against about 0.03 mirrored.
+- **Cause:** `outerContour` stopped at the first return to its start pixel. When the topmost pixel was a 1-px antenna tip, the trace ran up and back the antenna and never went round the body (signed area 0; the mirrored image started elsewhere).
+- **Fix:** Jacob's stopping criterion (stop only when back at the start AND about to repeat the first move). The unmirrored contours now have real, symmetric areas (Aphid 120,645 vs mirror 120,728).
+- **Battery identical at row level** (`summary-jacob-contour.json`: 18/34 · 34 · 34 · 31/34 · 26/27, 0 row verdict diffs).
+- **Result on 35 insects:** 5 static passes as before. The three are now refused honestly: Aphid refused at intake, Dobsonfly/Stonefly on leg coverage.
+
 **G2 C90 batch (Codex `e026f946`: 6 serpents, 8 fish, 10 quads)** (`native-g2c90/`): **12/24 native PASS**: Anaconda, Viper, Sand Boa, Cave Snake; Gar, Tilapia, Piranha, Killifish, Arctic Cod, Viperfish; **Hare, Meerkat**.
 - The serpent guards refused two correctly: the Cobra is rearing (not x-monotone) and the Rattlesnake's tail is untapered.
 - Quads refused: Squirrel (facing), Chipmunk (extra appendage), Rabbit and Sloth Bear (tail coverage), Pika (far ear), Hedgehog and Kinkajou (unexplained paint); River Otter static RED.

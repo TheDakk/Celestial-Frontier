@@ -1,0 +1,2249 @@
+[
+ {
+  "id": "c54-21-cockroach",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "c54-22-locust",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 29% paint (reference 88%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c54-23-beetle",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": [],
+  "fallbackFrom": "INTAKE_REFUSED",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "c54-24-termite",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": [],
+  "fallbackFrom": "INTAKE_REFUSED",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "c56-25-dung-beetle",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "c56-26-cicada",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "RED",
+  "staticFails": [
+   "cast",
+   "hit",
+   "faint",
+   "tame",
+   "presentation"
+  ],
+  "staticRefusals": [
+   {
+    "id": "cast",
+    "samples": 66,
+    "firstRefusal": {
+     "sampleIndex": 66,
+     "sampleNumber": 67,
+     "ms": 335.5,
+     "error": "Error: Contact: cast@335.5 exceeds scale compression bound\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:12193:57)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27144:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27245:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:17337:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27245:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27362:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+     "contact": null,
+     "pose": {
+      "root": {
+       "rotation": 0,
+       "dx": 0.024937,
+       "dy": 0.04369521124329673
+      },
+      "thorax": {
+       "rotation": -0.076497,
+       "dx": 0,
+       "dy": 0
+      },
+      "head": {
+       "rotation": 0.058379,
+       "dx": 0,
+       "dy": 0
+      },
+      "mandible": {
+       "rotation": -0.147055,
+       "dx": 0,
+       "dy": 0
+      },
+      "abdomen": {
+       "rotation": 0.070256,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarKnee": {
+       "rotation": -0.322694,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontNearKnee": {
+       "rotation": -0.322694,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontNearFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidFarKnee": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidFarFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidNearKnee": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidNearFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legHindFarKnee": {
+       "rotation": 0.08792889421923598
+      },
+      "legHindFarFoot": {
+       "rotation": 0.07749155395267503
+      },
+      "legHindNearKnee": {
+       "rotation": -0.007205371463477925
+      },
+      "legHindNearFoot": {
+       "rotation": 0.22653558209679583
+      },
+      "antennaFar": {
+       "rotation": -0.152993,
+       "dx": 0,
+       "dy": 0
+      },
+      "antennaNear": {
+       "rotation": -0.152993,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingFar": {
+       "rotation": -0.203118,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingNear": {
+       "rotation": 0.203118,
+       "dx": 0,
+       "dy": 0
+      }
+     },
+     "arapStats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 55.38527763842213,
+      "rmsTargetErrorPx": 2.2253920105601392,
+      "maximumProjectionPx": 35.726057414711065,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.11999999999999161,
+      "orientationPasses": 64
+     }
+    }
+   },
+   {
+    "id": "hit",
+    "samples": 12,
+    "firstRefusal": {
+     "sampleIndex": 12,
+     "sampleNumber": 13,
+     "ms": 45,
+     "error": "Error: Contact: hit@45 exceeds scale compression bound\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:12193:57)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27144:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27245:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:17337:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27245:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27362:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+     "contact": null,
+     "pose": {
+      "root": {
+       "rotation": 0,
+       "dx": -0.03,
+       "dy": 0.007313
+      },
+      "thorax": {
+       "rotation": 0.063814,
+       "dx": 0,
+       "dy": 0
+      },
+      "head": {
+       "rotation": -0.191441,
+       "dx": 0,
+       "dy": 0
+      },
+      "mandible": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "abdomen": {
+       "rotation": -0.127627,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarKnee": {
+       "rotation": 0.04180709704901103
+      },
+      "legFrontFarFoot": {
+       "rotation": -0.35821906607625215
+      },
+      "legFrontNearKnee": {
+       "rotation": 0.17163863101173354
+      },
+      "legFrontNearFoot": {
+       "rotation": -0.22564863030955817
+      },
+      "legMidFarKnee": {
+       "rotation": 0.058690398190007376
+      },
+      "legMidFarFoot": {
+       "rotation": -0.10122566484239215
+      },
+      "legMidNearKnee": {
+       "rotation": 0.025740029874364027
+      },
+      "legMidNearFoot": {
+       "rotation": -0.1578990822666455
+      },
+      "legHindFarKnee": {
+       "rotation": -0.0052244653820633855
+      },
+      "legHindFarFoot": {
+       "rotation": -0.3243447784611884
+      },
+      "legHindNearKnee": {
+       "rotation": -0.04265473124463365
+      },
+      "legHindNearFoot": {
+       "rotation": 0.08598419136524395
+      },
+      "antennaFar": {
+       "rotation": 0.26589,
+       "dx": 0,
+       "dy": 0
+      },
+      "antennaNear": {
+       "rotation": 0.26589,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingFar": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingNear": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      }
+     },
+     "arapStats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 9.645325606856767,
+      "rmsTargetErrorPx": 1.1004984991354985,
+      "maximumProjectionPx": 0,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.13029876742095106,
+      "orientationPasses": 1
+     }
+    }
+   },
+   {
+    "id": "faint",
+    "samples": 71,
+    "firstRefusal": {
+     "sampleIndex": 71,
+     "sampleNumber": 72,
+     "ms": 307.6666666666667,
+     "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 14\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:26621:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27098:5)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:17343:9)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27245:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27362:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+     "contact": {
+      "pose": {
+       "root": {
+        "rotation": 0.043121,
+        "dx": -0.004118,
+        "dy": 0.048113
+       },
+       "thorax": {
+        "rotation": 0.031207,
+        "dx": 0,
+        "dy": 0
+       },
+       "head": {
+        "rotation": 0.117497,
+        "dx": 0,
+        "dy": 0
+       },
+       "mandible": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "abdomen": {
+        "rotation": 0.156663,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontFarKnee": {
+        "rotation": 0.27948169853716104
+       },
+       "legFrontFarFoot": {
+        "rotation": -0.8121972216074236
+       },
+       "legFrontNearKnee": {
+        "rotation": 0.19396124857407046
+       },
+       "legFrontNearFoot": {
+        "rotation": -0.32603544330604767
+       },
+       "legMidFarKnee": {
+        "rotation": 0.1398336206485741
+       },
+       "legMidFarFoot": {
+        "rotation": -0.3710694626416322
+       },
+       "legMidNearKnee": {
+        "rotation": 0.07102545005532415
+       },
+       "legMidNearFoot": {
+        "rotation": -0.15069993305698978
+       },
+       "legHindFarKnee": {
+        "rotation": 0.02222406807573614
+       },
+       "legHindFarFoot": {
+        "rotation": -0.20026369653294385
+       },
+       "legHindNearKnee": {
+        "rotation": 0.036789091204391736
+       },
+       "legHindNearFoot": {
+        "rotation": -0.1124647703306576
+       },
+       "antennaFar": {
+        "rotation": 0.234994,
+        "dx": 0,
+        "dy": 0
+       },
+       "antennaNear": {
+        "rotation": 0.234994,
+        "dx": 0,
+        "dy": 0
+       },
+       "wingFar": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "wingNear": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       }
+      },
+      "contacts": [
+       {
+        "joint": "legFrontFarFoot",
+        "target": {
+         "x": 0.8756778309409887,
+         "y": 0.6635566188197767
+        },
+        "endpointTarget": {
+         "x": 0.8765811850599505,
+         "y": 0.6664715605432928
+        },
+        "paintedTarget": {
+         "x": 0.8823763955342903,
+         "y": 0.6630781499202552
+        },
+        "stance": true
+       },
+       {
+        "joint": "legFrontNearFoot",
+        "target": {
+         "x": 0.7639553429027113,
+         "y": 0.6885964912280702
+        },
+        "endpointTarget": {
+         "x": 0.764071732072382,
+         "y": 0.6886391921482425
+        },
+        "paintedTarget": {
+         "x": 0.7647527910685805,
+         "y": 0.6866028708133971
+        },
+        "stance": true
+       },
+       {
+        "joint": "legMidFarFoot",
+        "target": {
+         "x": 0.5881180223285486,
+         "y": 0.6941786283891547
+        },
+        "endpointTarget": {
+         "x": 0.5880837346231583,
+         "y": 0.6937424827395299
+        },
+        "paintedTarget": {
+         "x": 0.5853269537480064,
+         "y": 0.6941786283891547
+        },
+        "stance": true
+       },
+       {
+        "joint": "legMidNearFoot",
+        "target": {
+         "x": 0.4069377990430622,
+         "y": 0.6830940988835725
+        },
+        "endpointTarget": {
+         "x": 0.40691902463967744,
+         "y": 0.6830886064277086
+        },
+        "paintedTarget": {
+         "x": 0.4059011164274322,
+         "y": 0.6866028708133971
+        },
+        "stance": true
+       },
+       {
+        "joint": "legHindFarFoot",
+        "target": {
+         "x": 0.3117224880382775,
+         "y": 0.6031100478468899
+        },
+        "endpointTarget": {
+         "x": 0.3111692120241914,
+         "y": 0.6031470808607582
+        },
+        "paintedTarget": {
+         "x": 0.3118022328548644,
+         "y": 0.6084529505582137
+        },
+        "stance": true
+       },
+       {
+        "joint": "legHindNearFoot",
+        "target": {
+         "x": 0.1901913875598086,
+         "y": 0.5769537480063796
+        },
+        "endpointTarget": {
+         "x": 0.1901908469490329,
+         "y": 0.5769489122007031
+        },
+        "paintedTarget": {
+         "x": 0.18660287081339713,
+         "y": 0.5773524720893142
+        },
+        "stance": true
+       }
+      ],
+      "maxError": 3.1401849173675503e-16,
+      "compression": 0,
+      "maxPaintTargetErrorPx": 0.0007276621956077727
+     },
+     "pose": {
+      "root": {
+       "rotation": 0.043121,
+       "dx": -0.004118,
+       "dy": 0.048113
+      },
+      "thorax": {
+       "rotation": 0.031207,
+       "dx": 0,
+       "dy": 0
+      },
+      "head": {
+       "rotation": 0.117497,
+       "dx": 0,
+       "dy": 0
+      },
+      "mandible": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "abdomen": {
+       "rotation": 0.156663,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarKnee": {
+       "rotation": 0.27948169853716104
+      },
+      "legFrontFarFoot": {
+       "rotation": -0.8121972216074236
+      },
+      "legFrontNearKnee": {
+       "rotation": 0.19396124857407046
+      },
+      "legFrontNearFoot": {
+       "rotation": -0.32603544330604767
+      },
+      "legMidFarKnee": {
+       "rotation": 0.1398336206485741
+      },
+      "legMidFarFoot": {
+       "rotation": -0.3710694626416322
+      },
+      "legMidNearKnee": {
+       "rotation": 0.07102545005532415
+      },
+      "legMidNearFoot": {
+       "rotation": -0.15069993305698978
+      },
+      "legHindFarKnee": {
+       "rotation": 0.02222406807573614
+      },
+      "legHindFarFoot": {
+       "rotation": -0.20026369653294385
+      },
+      "legHindNearKnee": {
+       "rotation": 0.036789091204391736
+      },
+      "legHindNearFoot": {
+       "rotation": -0.1124647703306576
+      },
+      "antennaFar": {
+       "rotation": 0.234994,
+       "dx": 0,
+       "dy": 0
+      },
+      "antennaNear": {
+       "rotation": 0.234994,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingFar": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingNear": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      }
+     },
+     "arapStats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 81.9325831702449,
+      "rmsTargetErrorPx": 4.251560357776866,
+      "maximumProjectionPx": 78.35105737294049,
+      "flippedTriangles": 14,
+      "minimumAreaRatio": -0.010202550661609392,
+      "orientationPasses": 128
+     }
+    }
+   },
+   {
+    "id": "tame",
+    "samples": 20,
+    "firstRefusal": {
+     "sampleIndex": 20,
+     "sampleNumber": 21,
+     "ms": 106.66666666666667,
+     "error": "Error: Contact: tame@106.66666666666667 exceeds scale compression bound\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:12193:57)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27144:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27245:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:17337:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27245:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27362:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+     "contact": null,
+     "pose": {
+      "root": {
+       "rotation": 0,
+       "dx": 0.04676877712031559,
+       "dy": 0.07060072062026693
+      },
+      "thorax": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "head": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "mandible": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "abdomen": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarKnee": {
+       "rotation": 0.4730531653968877
+      },
+      "legFrontFarFoot": {
+       "rotation": -0.8393426385563507
+      },
+      "legFrontNearKnee": {
+       "rotation": 0.20080056661705692
+      },
+      "legFrontNearFoot": {
+       "rotation": -0.4844314960581406
+      },
+      "legMidFarKnee": {
+       "rotation": 0.24840396111620458
+      },
+      "legMidFarFoot": {
+       "rotation": -0.7170029478378127
+      },
+      "legMidNearKnee": {
+       "rotation": 0.07794483590599866
+      },
+      "legMidNearFoot": {
+       "rotation": 0.030479493016888792
+      },
+      "legHindFarKnee": {
+       "rotation": -0.0037014765045371156
+      },
+      "legHindFarFoot": {
+       "rotation": 0.6055647031204967
+      },
+      "legHindNearKnee": {
+       "rotation": 0.35075274498677644
+      },
+      "legHindNearFoot": {
+       "rotation": -0.6279310760700205
+      },
+      "antennaFar": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "antennaNear": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingFar": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingNear": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      }
+     },
+     "arapStats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 18.398614721883305,
+      "rmsTargetErrorPx": 1.0630349428663812,
+      "maximumProjectionPx": 3.953774115214513,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.11999999999999957,
+      "orientationPasses": 16
+     }
+    }
+   },
+   {
+    "id": "presentation",
+    "samples": 437,
+    "firstRefusal": {
+     "sampleIndex": 437,
+     "sampleNumber": 438,
+     "ms": 7283.333333333333,
+     "error": "Error: Contact: cast@345.8272941286359 exceeds scale compression bound\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:12193:57)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27144:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27321:44\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:17337:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27321:23\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-JDhESZ/run.mjs:27362:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+     "contact": null,
+     "pose": {
+      "root": {
+       "rotation": 0,
+       "dx": 0.023443,
+       "dy": 0.03591991324277462
+      },
+      "thorax": {
+       "rotation": -0.079756,
+       "dx": 0,
+       "dy": 0
+      },
+      "head": {
+       "rotation": 0.045994,
+       "dx": 0,
+       "dy": 0
+      },
+      "mandible": {
+       "rotation": -0.142166,
+       "dx": 0,
+       "dy": 0
+      },
+      "abdomen": {
+       "rotation": 0.080685,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarKnee": {
+       "rotation": -0.34388,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontNearKnee": {
+       "rotation": -0.34388,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontNearFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidFarKnee": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidFarFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidNearKnee": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidNearFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legHindFarKnee": {
+       "rotation": 0.08028017625353219
+      },
+      "legHindFarFoot": {
+       "rotation": 0.09235465671241805
+      },
+      "legHindNearKnee": {
+       "rotation": -0.011439538972024682
+      },
+      "legHindNearFoot": {
+       "rotation": 0.22652842717595734
+      },
+      "antennaFar": {
+       "rotation": -0.159512,
+       "dx": 0,
+       "dy": 0
+      },
+      "antennaNear": {
+       "rotation": -0.159512,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingFar": {
+       "rotation": -0.234081,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingNear": {
+       "rotation": 0.234081,
+       "dx": 0,
+       "dy": 0
+      }
+     },
+     "arapStats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 65.39217183763675,
+      "rmsTargetErrorPx": 2.4999957908585695,
+      "maximumProjectionPx": 43.372510328260894,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.11999999999987325,
+      "orientationPasses": 64
+     },
+     "action": "cast"
+    }
+   }
+  ],
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part mandible (mandible) covers 12% paint (reference 56%)",
+     "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 3% paint (reference 32%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "c56-28-leafcutter-ant",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part wing-near (wingNear) covers 27% paint (reference 82%)",
+   "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 16% paint (reference 46%)",
+   "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 1.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c56-29-cave-cricket",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part mandible (mandible) covers 1% paint (reference 60%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c56-30-firefly",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "c56-31-carrion-beetle",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 5% paint (reference 31%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c56-32-stick-insect",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 6% paint (reference 26%)",
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 12% paint (reference 78%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 12% paint (reference 35%)",
+   "missing-anatomy: part mandible (mandible) covers 15% paint (reference 63%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c59-12-ladybug",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "RED",
+  "staticFails": [
+   "cast",
+   "hit",
+   "victory",
+   "tame",
+   "presentation"
+  ],
+  "staticRefusals": [
+   {
+    "id": "cast",
+    "samples": 37,
+    "firstRefusal": {
+     "sampleIndex": 37,
+     "sampleNumber": 38,
+     "ms": 188.08333333333334,
+     "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 11\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:26621:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27098:5)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:17343:9)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27245:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27362:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+     "contact": {
+      "pose": {
+       "root": {
+        "rotation": 0,
+        "dx": -0.02,
+        "dy": -0.040045
+       },
+       "thorax": {
+        "rotation": -0.174533,
+        "dx": 0,
+        "dy": 0
+       },
+       "head": {
+        "rotation": -0.262383,
+        "dx": 0,
+        "dy": 0
+       },
+       "mandible": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "abdomen": {
+        "rotation": 0.349455,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontFarKnee": {
+        "rotation": -0.873638,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontFarFoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontNearKnee": {
+        "rotation": -0.873638,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontNearFoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "legMidFarKnee": {
+        "rotation": -0.431465,
+        "dx": 0,
+        "dy": 0
+       },
+       "legMidFarFoot": {
+        "rotation": 0.172586,
+        "dx": 0,
+        "dy": 0
+       },
+       "legMidNearKnee": {
+        "rotation": -0.431465,
+        "dx": 0,
+        "dy": 0
+       },
+       "legMidNearFoot": {
+        "rotation": 0.172586,
+        "dx": 0,
+        "dy": 0
+       },
+       "legHindFarKnee": {
+        "rotation": 0.07218997329775528
+       },
+       "legHindFarFoot": {
+        "rotation": 0.14187925891010786
+       },
+       "legHindNearKnee": {
+        "rotation": 0.12329315782261548
+       },
+       "legHindNearFoot": {
+        "rotation": -0.030071101405046083
+       },
+       "antennaFar": {
+        "rotation": -0.003894,
+        "dx": 0,
+        "dy": 0
+       },
+       "antennaNear": {
+        "rotation": -0.003894,
+        "dx": 0,
+        "dy": 0
+       },
+       "wingFar": {
+        "rotation": -1.048171,
+        "dx": 0,
+        "dy": 0
+       },
+       "wingNear": {
+        "rotation": 1.048171,
+        "dx": 0,
+        "dy": 0
+       }
+      },
+      "contacts": [
+       {
+        "joint": "legHindFarFoot",
+        "target": {
+         "x": 0.21228070175438596,
+         "y": 0.7074162679425837
+        },
+        "endpointTarget": {
+         "x": 0.21237018038800037,
+         "y": 0.7075190165887341
+        },
+        "paintedTarget": {
+         "x": 0.20972886762360446,
+         "y": 0.7097288676236044
+        },
+        "stance": true
+       },
+       {
+        "joint": "legHindNearFoot",
+        "target": {
+         "x": 0.05661881977671451,
+         "y": 0.6971291866028708
+        },
+        "endpointTarget": {
+         "x": 0.05685056367480108,
+         "y": 0.6969251290826453
+        },
+        "paintedTarget": {
+         "x": 0.05422647527910686,
+         "y": 0.6941786283891547
+        },
+        "stance": true
+       }
+      ],
+      "maxError": 3.2487068343022356e-16,
+      "compression": 0,
+      "maxPaintTargetErrorPx": 0.0001272515839096667
+     },
+     "pose": {
+      "root": {
+       "rotation": 0,
+       "dx": -0.02,
+       "dy": -0.040045
+      },
+      "thorax": {
+       "rotation": -0.174533,
+       "dx": 0,
+       "dy": 0
+      },
+      "head": {
+       "rotation": -0.262383,
+       "dx": 0,
+       "dy": 0
+      },
+      "mandible": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "abdomen": {
+       "rotation": 0.349455,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarKnee": {
+       "rotation": -0.873638,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontNearKnee": {
+       "rotation": -0.873638,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontNearFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidFarKnee": {
+       "rotation": -0.431465,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidFarFoot": {
+       "rotation": 0.172586,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidNearKnee": {
+       "rotation": -0.431465,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidNearFoot": {
+       "rotation": 0.172586,
+       "dx": 0,
+       "dy": 0
+      },
+      "legHindFarKnee": {
+       "rotation": 0.07218997329775528
+      },
+      "legHindFarFoot": {
+       "rotation": 0.14187925891010786
+      },
+      "legHindNearKnee": {
+       "rotation": 0.12329315782261548
+      },
+      "legHindNearFoot": {
+       "rotation": -0.030071101405046083
+      },
+      "antennaFar": {
+       "rotation": -0.003894,
+       "dx": 0,
+       "dy": 0
+      },
+      "antennaNear": {
+       "rotation": -0.003894,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingFar": {
+       "rotation": -1.048171,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingNear": {
+       "rotation": 1.048171,
+       "dx": 0,
+       "dy": 0
+      }
+     },
+     "arapStats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 287.2925395115406,
+      "rmsTargetErrorPx": 9.205570945298886,
+      "maximumProjectionPx": 217.37466656189815,
+      "flippedTriangles": 11,
+      "minimumAreaRatio": -0.05996447066403136,
+      "orientationPasses": 128
+     }
+    }
+   },
+   {
+    "id": "hit",
+    "samples": 86,
+    "firstRefusal": {
+     "sampleIndex": 86,
+     "sampleNumber": 87,
+     "ms": 322.5,
+     "error": "Error: Contact: hit@322.5 exceeds scale compression bound\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:12193:57)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27144:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27245:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:17337:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27245:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27362:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+     "contact": null,
+     "pose": {
+      "root": {
+       "rotation": 0,
+       "dx": -0.10208357409215858,
+       "dy": 0.0778187890671731
+      },
+      "thorax": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "head": {
+       "rotation": -0.01494,
+       "dx": 0,
+       "dy": 0
+      },
+      "mandible": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "abdomen": {
+       "rotation": -0.00996,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarKnee": {
+       "rotation": -0.4161262172746808
+      },
+      "legFrontFarFoot": {
+       "rotation": 1.011057174366107
+      },
+      "legFrontNearKnee": {
+       "rotation": 0.37113085398673773
+      },
+      "legFrontNearFoot": {
+       "rotation": -0.6082547420472668
+      },
+      "legMidFarKnee": {
+       "rotation": 0.2797502498163782
+      },
+      "legMidFarFoot": {
+       "rotation": -0.7261516310318741
+      },
+      "legMidNearKnee": {
+       "rotation": 0.14094079904515794
+      },
+      "legMidNearFoot": {
+       "rotation": -0.04002798711239344
+      },
+      "legHindFarKnee": {
+       "rotation": 0.051454386373847236
+      },
+      "legHindFarFoot": {
+       "rotation": 0.15312998868122163
+      },
+      "legHindNearKnee": {
+       "rotation": 0.32788619180631806
+      },
+      "legHindNearFoot": {
+       "rotation": -0.4751304136984349
+      },
+      "antennaFar": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "antennaNear": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingFar": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingNear": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      }
+     },
+     "arapStats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 10.05459171699106,
+      "rmsTargetErrorPx": 0.594399421650413,
+      "maximumProjectionPx": 1.1033939940676936,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.11999999999999632,
+      "orientationPasses": 64
+     }
+    }
+   },
+   {
+    "id": "victory",
+    "samples": 22,
+    "firstRefusal": {
+     "sampleIndex": 22,
+     "sampleNumber": 23,
+     "ms": 110,
+     "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 11\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:26621:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27098:5)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:17343:9)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27245:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27362:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+     "contact": {
+      "pose": {
+       "root": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": -0.005123857798101067
+       },
+       "thorax": {
+        "rotation": -0.161948,
+        "dx": 0,
+        "dy": 0
+       },
+       "head": {
+        "rotation": -0.269913,
+        "dx": 0,
+        "dy": 0
+       },
+       "mandible": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "abdomen": {
+        "rotation": 0.337391,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontFarKnee": {
+        "rotation": -0.74226,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontFarFoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontNearKnee": {
+        "rotation": -0.74226,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontNearFoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "legMidFarKnee": {
+        "rotation": -0.404869,
+        "dx": 0,
+        "dy": 0
+       },
+       "legMidFarFoot": {
+        "rotation": 0.134956,
+        "dx": 0,
+        "dy": 0
+       },
+       "legMidNearKnee": {
+        "rotation": -0.404869,
+        "dx": 0,
+        "dy": 0
+       },
+       "legMidNearFoot": {
+        "rotation": 0.134956,
+        "dx": 0,
+        "dy": 0
+       },
+       "legHindFarKnee": {
+        "rotation": 0.09175462275600957
+       },
+       "legHindFarFoot": {
+        "rotation": 0.1788862393188806
+       },
+       "legHindNearKnee": {
+        "rotation": 0.13102989819931635
+       },
+       "legHindNearFoot": {
+        "rotation": -0.007757091232539093
+       },
+       "antennaFar": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "antennaNear": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "wingFar": {
+        "rotation": -1.012172,
+        "dx": 0,
+        "dy": 0
+       },
+       "wingNear": {
+        "rotation": 1.012172,
+        "dx": 0,
+        "dy": 0
+       }
+      },
+      "contacts": [
+       {
+        "joint": "legHindFarFoot",
+        "target": {
+         "x": 0.21228070175438596,
+         "y": 0.7074162679425837
+        },
+        "endpointTarget": {
+         "x": 0.21251763143359728,
+         "y": 0.7077082807960337
+        },
+        "paintedTarget": {
+         "x": 0.20972886762360446,
+         "y": 0.7097288676236044
+        },
+        "stance": true
+       },
+       {
+        "joint": "legHindNearFoot",
+        "target": {
+         "x": 0.05661881977671451,
+         "y": 0.6971291866028708
+        },
+        "endpointTarget": {
+         "x": 0.05673111554218042,
+         "y": 0.6970344790715876
+        },
+        "paintedTarget": {
+         "x": 0.05422647527910686,
+         "y": 0.6941786283891547
+        },
+        "stance": true
+       }
+      ],
+      "maxError": 1.1102230246251565e-16,
+      "compression": 0.017399982805100245,
+      "maxPaintTargetErrorPx": 0.0023934277102774975
+     },
+     "pose": {
+      "root": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": -0.005123857798101067
+      },
+      "thorax": {
+       "rotation": -0.161948,
+       "dx": 0,
+       "dy": 0
+      },
+      "head": {
+       "rotation": -0.269913,
+       "dx": 0,
+       "dy": 0
+      },
+      "mandible": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "abdomen": {
+       "rotation": 0.337391,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarKnee": {
+       "rotation": -0.74226,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontNearKnee": {
+       "rotation": -0.74226,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontNearFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidFarKnee": {
+       "rotation": -0.404869,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidFarFoot": {
+       "rotation": 0.134956,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidNearKnee": {
+       "rotation": -0.404869,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidNearFoot": {
+       "rotation": 0.134956,
+       "dx": 0,
+       "dy": 0
+      },
+      "legHindFarKnee": {
+       "rotation": 0.09175462275600957
+      },
+      "legHindFarFoot": {
+       "rotation": 0.1788862393188806
+      },
+      "legHindNearKnee": {
+       "rotation": 0.13102989819931635
+      },
+      "legHindNearFoot": {
+       "rotation": -0.007757091232539093
+      },
+      "antennaFar": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "antennaNear": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingFar": {
+       "rotation": -1.012172,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingNear": {
+       "rotation": 1.012172,
+       "dx": 0,
+       "dy": 0
+      }
+     },
+     "arapStats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 275.09329294271873,
+      "rmsTargetErrorPx": 8.963628293253567,
+      "maximumProjectionPx": 207.90378700547927,
+      "flippedTriangles": 11,
+      "minimumAreaRatio": -0.044654135533091985,
+      "orientationPasses": 128
+     }
+    }
+   },
+   {
+    "id": "tame",
+    "samples": 16,
+    "firstRefusal": {
+     "sampleIndex": 16,
+     "sampleNumber": 17,
+     "ms": 85.33333333333333,
+     "error": "Error: Contact: tame@85.33333333333333 exceeds scale compression bound\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:12193:57)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27144:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27245:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:17337:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27245:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27362:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+     "contact": null,
+     "pose": {
+      "root": {
+       "rotation": 0,
+       "dx": 0.036922869822485216,
+       "dy": 0.07529424470455805
+      },
+      "thorax": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "head": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "mandible": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "abdomen": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarKnee": {
+       "rotation": -0.40701011320475905
+      },
+      "legFrontFarFoot": {
+       "rotation": 0.9887588234147258
+      },
+      "legFrontNearKnee": {
+       "rotation": 0.32738501783882645
+      },
+      "legFrontNearFoot": {
+       "rotation": -0.5675845920374064
+      },
+      "legMidFarKnee": {
+       "rotation": 0.26452012103507005
+      },
+      "legMidFarFoot": {
+       "rotation": -0.7007432524423187
+      },
+      "legMidNearKnee": {
+       "rotation": 0.13641076668978538
+      },
+      "legMidNearFoot": {
+       "rotation": -0.038560032092221266
+      },
+      "legHindFarKnee": {
+       "rotation": 0.04901877208407157
+      },
+      "legHindFarFoot": {
+       "rotation": 0.15363425793987773
+      },
+      "legHindNearKnee": {
+       "rotation": 0.3087406102771324
+      },
+      "legHindNearFoot": {
+       "rotation": -0.4549876385295135
+      },
+      "antennaFar": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "antennaNear": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingFar": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingNear": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      }
+     },
+     "arapStats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 9.633777587927572,
+      "rmsTargetErrorPx": 0.5654885186482501,
+      "maximumProjectionPx": 0.5390154805207563,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.12000350605579604,
+      "orientationPasses": 2
+     }
+    }
+   },
+   {
+    "id": "presentation",
+    "samples": 419,
+    "firstRefusal": {
+     "sampleIndex": 419,
+     "sampleNumber": 420,
+     "ms": 6983.333333333333,
+     "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 17\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:26621:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27098:5)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:17343:9)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27321:23\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7LUIPZ/run.mjs:27362:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+     "contact": {
+      "pose": {
+       "root": {
+        "rotation": 0,
+        "dx": -0.02,
+        "dy": -0.040126
+       },
+       "thorax": {
+        "rotation": -0.174533,
+        "dx": 0,
+        "dy": 0
+       },
+       "head": {
+        "rotation": -0.263452,
+        "dx": 0,
+        "dy": 0
+       },
+       "mandible": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "abdomen": {
+        "rotation": 0.350168,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontFarKnee": {
+        "rotation": -0.87542,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontFarFoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontNearKnee": {
+        "rotation": -0.87542,
+        "dx": 0,
+        "dy": 0
+       },
+       "legFrontNearFoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+       },
+       "legMidFarKnee": {
+        "rotation": -0.422557,
+        "dx": 0,
+        "dy": 0
+       },
+       "legMidFarFoot": {
+        "rotation": 0.169023,
+        "dx": 0,
+        "dy": 0
+       },
+       "legMidNearKnee": {
+        "rotation": -0.422557,
+        "dx": 0,
+        "dy": 0
+       },
+       "legMidNearFoot": {
+        "rotation": 0.169023,
+        "dx": 0,
+        "dy": 0
+       },
+       "legHindFarKnee": {
+        "rotation": 0.07161463242999061
+       },
+       "legHindFarFoot": {
+        "rotation": 0.1451721438727498
+       },
+       "legHindNearKnee": {
+        "rotation": 0.12318307213915662
+       },
+       "legHindNearFoot": {
+        "rotation": -0.029948804006460165
+       },
+       "antennaFar": {
+        "rotation": -0.01102,
+        "dx": 0,
+        "dy": 0
+       },
+       "antennaNear": {
+        "rotation": -0.01102,
+        "dx": 0,
+        "dy": 0
+       },
+       "wingFar": {
+        "rotation": -1.049953,
+        "dx": 0,
+        "dy": 0
+       },
+       "wingNear": {
+        "rotation": 1.049953,
+        "dx": 0,
+        "dy": 0
+       }
+      },
+      "contacts": [
+       {
+        "joint": "legHindFarFoot",
+        "target": {
+         "x": 0.21228070175438596,
+         "y": 0.7074162679425837
+        },
+        "endpointTarget": {
+         "x": 0.21237618651064502,
+         "y": 0.7075262152620193
+        },
+        "paintedTarget": {
+         "x": 0.20972886762360446,
+         "y": 0.7097288676236044
+        },
+        "stance": true
+       },
+       {
+        "joint": "legHindNearFoot",
+        "target": {
+         "x": 0.05661881977671451,
+         "y": 0.6971291866028708
+        },
+        "endpointTarget": {
+         "x": 0.05685053013490007,
+         "y": 0.6969251611272719
+        },
+        "paintedTarget": {
+         "x": 0.05422647527910686,
+         "y": 0.6941786283891547
+        },
+        "stance": true
+       }
+      ],
+      "maxError": 2.3714374201337736e-16,
+      "compression": 0,
+      "maxPaintTargetErrorPx": 0.00014786844143395187
+     },
+     "pose": {
+      "root": {
+       "rotation": 0,
+       "dx": -0.02,
+       "dy": -0.040126
+      },
+      "thorax": {
+       "rotation": -0.174533,
+       "dx": 0,
+       "dy": 0
+      },
+      "head": {
+       "rotation": -0.263452,
+       "dx": 0,
+       "dy": 0
+      },
+      "mandible": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "abdomen": {
+       "rotation": 0.350168,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarKnee": {
+       "rotation": -0.87542,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontFarFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontNearKnee": {
+       "rotation": -0.87542,
+       "dx": 0,
+       "dy": 0
+      },
+      "legFrontNearFoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidFarKnee": {
+       "rotation": -0.422557,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidFarFoot": {
+       "rotation": 0.169023,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidNearKnee": {
+       "rotation": -0.422557,
+       "dx": 0,
+       "dy": 0
+      },
+      "legMidNearFoot": {
+       "rotation": 0.169023,
+       "dx": 0,
+       "dy": 0
+      },
+      "legHindFarKnee": {
+       "rotation": 0.07161463242999061
+      },
+      "legHindFarFoot": {
+       "rotation": 0.1451721438727498
+      },
+      "legHindNearKnee": {
+       "rotation": 0.12318307213915662
+      },
+      "legHindNearFoot": {
+       "rotation": -0.029948804006460165
+      },
+      "antennaFar": {
+       "rotation": -0.01102,
+       "dx": 0,
+       "dy": 0
+      },
+      "antennaNear": {
+       "rotation": -0.01102,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingFar": {
+       "rotation": -1.049953,
+       "dx": 0,
+       "dy": 0
+      },
+      "wingNear": {
+       "rotation": 1.049953,
+       "dx": 0,
+       "dy": 0
+      }
+     },
+     "arapStats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 287.777853115913,
+      "rmsTargetErrorPx": 9.329878562148071,
+      "maximumProjectionPx": 217.75245834396844,
+      "flippedTriangles": 17,
+      "minimumAreaRatio": -0.052327764462159816,
+      "orientationPasses": 128
+     },
+     "action": "cast"
+    }
+   }
+  ],
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED",
+    "reasons": []
+   },
+   {
+    "rank": 2,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part leg-front-near (legFrontNearKnee) covers 26% paint (reference 88%)",
+     "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 1.6%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "fam-16-ant",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "facing: the mirrored painting matches insect better (0.0277 < 0.0341)",
+   "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 14% paint (reference 42%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "fam-17-beetle",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 6.1% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "fam-18-cricket",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part antenna-near (antennaNear) covers 2% paint (reference 27%)",
+   "missing-anatomy: part wing-far (wingFar) covers 0% paint (reference 73%)",
+   "unexplained-anatomy: 16.6% of the paint lies away from the body and in no part (reference 1.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "fam-19-grasshopper",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 30% paint (reference 88%)",
+   "missing-anatomy: part mandible (mandible) covers 5% paint (reference 32%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "fam-20-mantis",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 5% paint (reference 49%)",
+   "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 16% paint (reference 51%)",
+   "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 6% paint (reference 96%)",
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 82%)",
+   "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 10% paint (reference 60%)",
+   "unexplained-anatomy: 14.9% of the paint lies away from the body and in no part (reference 0.3%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c72-17-water-strider",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 6.2% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a limb-down appendage of 10.4% paint that no reference appendage lands on",
+   "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 13% paint (reference 44%)",
+   "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 5% paint (reference 36%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 12% paint (reference 35%)",
+   "missing-anatomy: part mandible (mandible) covers 17% paint (reference 63%)",
+   "unexplained-anatomy: 8.6% of the paint lies away from the body and in no part (reference 0.1%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c72-18-cockroach",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 16% paint (reference 60%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c72-19-carrion-beetle",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Skeleton pose: exact landmark inventory\n    at need (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonP",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 4% paint (reference 31%)",
+     "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 27% paint (reference 81%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "c72-20-stick-insect",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 16% paint (reference 49%)",
+   "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 12% paint (reference 39%)",
+   "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 17% paint (reference 51%)",
+   "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 15% paint (reference 47%)",
+   "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 14% paint (reference 46%)",
+   "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 18% paint (reference 68%)",
+   "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 14% paint (reference 96%)",
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 82%)",
+   "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 0% paint (reference 60%)",
+   "missing-anatomy: part mandible (mandible) covers 11% paint (reference 60%)",
+   "missing-anatomy: part abdomen (abdomen) covers 10% paint (reference 76%)",
+   "unexplained-anatomy: 20.2% of the paint lies away from the body and in no part (reference 0.3%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c81-17-bee",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 88%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c81-18-wasp",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a front appendage of 9.2% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c81-19-dragonfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 10.6% paint that no reference appendage lands on",
+   "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 6% paint (reference 25%)",
+   "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 12% paint (reference 37%)",
+   "missing-anatomy: part elytron-near (thorax) covers 27% paint (reference 98%)",
+   "missing-anatomy: part elytron-far (thorax) covers 22% paint (reference 79%)",
+   "missing-anatomy: part membrane-near (wingNear) covers 23% paint (reference 89%)",
+   "missing-anatomy: part membrane-far (wingFar) covers 27% paint (reference 86%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c81-20-damselfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part mandible (mandible) covers 0% paint (reference 56%)",
+   "missing-anatomy: part leg-front-far-foot (legFrontFarFoot) covers 8% paint (reference 29%)",
+   "missing-anatomy: part leg-front-near-foot (legFrontNearFoot) covers 7% paint (reference 25%)",
+   "missing-anatomy: part leg-mid-far-foot (legMidFarFoot) covers 6% paint (reference 31%)",
+   "missing-anatomy: part leg-mid-near-foot (legMidNearFoot) covers 13% paint (reference 40%)",
+   "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 0% paint (reference 32%)",
+   "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 14% paint (reference 44%)",
+   "missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 19% paint (reference 56%)",
+   "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 13% paint (reference 52%)",
+   "missing-anatomy: part leg-mid-far-knee (legMidFarKnee) covers 23% paint (reference 69%)",
+   "missing-anatomy: part leg-mid-near-knee (legMidNearKnee) covers 0% paint (reference 62%)",
+   "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 9% paint (reference 67%)",
+   "missing-anatomy: part leg-hind-near-knee (legHindNearKnee) covers 12% paint (reference 75%)",
+   "missing-anatomy: part head (head) covers 29% paint (reference 88%)",
+   "unexplained-anatomy: 10.2% of the paint lies away from the body and in no part (reference 1.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c81-21-caddisfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part antenna-far (antennaFar) covers 1% paint (reference 32%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 8% paint (reference 35%)",
+   "missing-anatomy: part mandible (mandible) covers 13% paint (reference 63%)",
+   "missing-anatomy: part head (head) covers 21% paint (reference 72%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c81-22-mayfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part antenna-far (antennaFar) covers 0% paint (reference 29%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 0% paint (reference 26%)",
+   "missing-anatomy: part mandible (mandible) covers 8% paint (reference 56%)",
+   "missing-anatomy: part wing-near (wingNear) covers 5% paint (reference 79%)",
+   "unexplained-anatomy: 18.2% of the paint lies away from the body and in no part (reference 1.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c81-23-stonefly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 5% paint (reference 40%)",
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 20% paint (reference 88%)",
+   "missing-anatomy: part antenna-far (antennaFar) covers 4% paint (reference 25%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 2% paint (reference 31%)",
+   "missing-anatomy: part mandible (mandible) covers 1% paint (reference 32%)",
+   "missing-anatomy: part head (head) covers 12% paint (reference 98%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c81-24-giant-water-bug",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part antenna-near (antennaNear) covers 12% paint (reference 35%)",
+   "missing-anatomy: part mandible (mandible) covers 2% paint (reference 63%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c92-19-moth",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Sprint authored intake: same-joint region merge requires a true-alpha master\n    at need (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/intake-au",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part mandible (mandible) covers 1% paint (reference 56%)",
+     "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 0% paint (reference 67%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "c92-20-aphid",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Sprint authored intake: same-joint region merge requires a true-alpha master\n    at need (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/intake-au",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part mandible (mandible) covers 15% paint (reference 60%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "c92-21-dobsonfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 6% paint (reference 25%)",
+   "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 8% paint (reference 62%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 8% paint (reference 31%)",
+   "missing-anatomy: part mandible (mandible) covers 5% paint (reference 32%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c92-22-scorpionfly",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 15% paint (reference 49%)",
+   "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 13% paint (reference 47%)",
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 17% paint (reference 82%)",
+   "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 18% paint (reference 60%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 8% paint (reference 18%)",
+   "missing-anatomy: part mandible (mandible) covers 5% paint (reference 60%)",
+   "unexplained-anatomy: 9.2% of the paint lies away from the body and in no part (reference 0.3%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "c92-23-thrips",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Sprint authored intake: same-joint region merge requires a true-alpha master\n    at need (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/intake-au",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part antenna-far (antennaFar) covers 0% paint (reference 29%)",
+     "missing-anatomy: part antenna-near (antennaNear) covers 0% paint (reference 26%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "c92-24-orchid-bee",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 6.7% paint that no reference appendage lands on",
+   "missing-anatomy: part mandible (mandible) covers 8% paint (reference 63%)"
+  ],
+  "semanticPresence": null
+ }
+]

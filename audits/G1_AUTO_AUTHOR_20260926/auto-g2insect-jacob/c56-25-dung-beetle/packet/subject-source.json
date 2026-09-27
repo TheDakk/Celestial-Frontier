@@ -1,0 +1,91 @@
+{
+  "name": "Dung Beetle",
+  "family": "insect",
+  "species": {
+    "name": "Dung Beetle",
+    "aspect": 1.6,
+    "headFrac": 0.25,
+    "eyes": "small",
+    "posture": "crawling",
+    "mustRead": [
+      "glossy armoured domed black body",
+      "flat spade-shaped head used as a rake",
+      "toothed rake-like digging forelegs"
+    ],
+    "note": "many species carry a horn on the head or thorax; the wing cases are smooth and hard, not textured"
+  },
+  "genome": {
+    "seed": 4238789731,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 10,
+    "body": 8,
+    "loco": 2,
+    "trait": 11,
+    "size": 0,
+    "diet": 3,
+    "head": 8,
+    "limbs": 1,
+    "skin": 3,
+    "tail": 2,
+    "pattern": 2,
+    "eyes": 3,
+    "behavior": 7,
+    "habitat": 11,
+    "detail": 4,
+    "accent": 5,
+    "temper": 4,
+    "sense": 0,
+    "repro": 4,
+    "life": 5,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Dung Beetle"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Dung Beetle\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"4238789731\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "index": 80,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

@@ -1,0 +1,164 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "15-mouse",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "2504f6befded8d27d70d9bd52752e22d74ef0d4ac8229a101f49e9c73e1bc02a",
+ "subjectSourceSha256": "caf2a27ae1e9c9d1292361aca5be897eb0c0b4885bce58bc0711528fbdb494c3",
+ "identity": {
+  "name": "Mouse",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mouse\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"852731239\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "seed": 852731239,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "river-otter",
+  "authoringSha256": "5e06238781c3af8441ea25ab65c66790c5f306562d41a38635bede6a86297f45",
+  "masterSha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0147,
+     "class": "top",
+     "attach": {
+      "x": 288.5,
+      "y": 147,
+      "relX": 0.77,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0042,
+     "class": "front",
+     "attach": {
+      "x": 270,
+      "y": 160.5,
+      "relX": 0.64,
+      "relY": 0.15
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0054,
+     "class": "top",
+     "attach": {
+      "x": 221.5,
+      "y": 167,
+      "relX": 0.33,
+      "relY": 0.22
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0383,
+     "class": "front",
+     "attach": {
+      "x": 325,
+      "y": 192.5,
+      "relX": 1.01,
+      "relY": 0.52
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0668,
+     "class": "rear",
+     "attach": {
+      "x": 171,
+      "y": 202,
+      "relX": -0.01,
+      "relY": 0.63
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0319,
+     "class": "limb-down",
+     "attach": {
+      "x": 176.5,
+      "y": 225,
+      "relX": 0.03,
+      "relY": 0.9
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0385,
+     "class": "limb-down",
+     "attach": {
+      "x": 206,
+      "y": 228,
+      "relX": 0.22,
+      "relY": 0.93
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.0543,
+     "class": "limb-down",
+     "attach": {
+      "x": 270.5,
+      "y": 235,
+      "relX": 0.65,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "front": 2,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "river-otter",
+   "byClass": {
+    "front": 2,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 2,
+    "front": 2,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}
