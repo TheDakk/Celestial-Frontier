@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tropicbird",
+  "masterSha256": "51a5888d0f8cd09a5c75a6ff4848c5a40dcd2fa2de0992cfc9b761b8fbdc22a5",
+  "required": [
+    "black wedge stripe through the eye"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "black wedge stripe through the eye",
+      "status": "PRESENT",
+      "observed": "Full original: white plumage, black eye slash, red bill, two long white tail streamers complete and separate from folded wings. HOLD unusually long standing legs and uncertain webbing; all delicate tips need mask review."
+    }
+  ]
+}

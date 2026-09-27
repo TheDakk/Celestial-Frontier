@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Eel",
+  "masterSha256": "e91d3ccbdf9c4d828715391a4a8cd061c9694c4cf881dfa48e489fa6ad49b44b",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

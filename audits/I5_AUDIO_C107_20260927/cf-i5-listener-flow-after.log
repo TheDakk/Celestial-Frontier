@@ -1,0 +1,17 @@
+snapshot 1 { documents: 1, nodes: 478, jsEventListeners: 94 }
+snapshot 2 { documents: 2, nodes: 469, jsEventListeners: 89 }
+snapshot 3 { documents: 1, nodes: 565, jsEventListeners: 92 }
+snapshot 4 { documents: 1, nodes: 537, jsEventListeners: 92 }
+snapshot 5 { documents: 1, nodes: 621, jsEventListeners: 92 }
+snapshot 6 { documents: 1, nodes: 565, jsEventListeners: 92 }
+snapshot 7 { documents: 1, nodes: 607, jsEventListeners: 92 }
+snapshot 8 { documents: 1, nodes: 565, jsEventListeners: 92 }
+snapshot 9 { documents: 1, nodes: 513, jsEventListeners: 92 }
+snapshot 10 { documents: 1, nodes: 653, jsEventListeners: 90 }
+snapshot 11 { documents: 1, nodes: 518, jsEventListeners: 90 }
+snapshot 12 { documents: 1, nodes: 598, jsEventListeners: 93 }
+snapshot 13 { documents: 1, nodes: 622, jsEventListeners: 92 }
+snapshot 14 { documents: 1, nodes: 491, jsEventListeners: 89 }
+snapshot 15 { documents: 1, nodes: 491, jsEventListeners: 89 }
+snapshot 16 { documents: 1, nodes: 491, jsEventListeners: 89 }
+DIAGNOSTIC_STOP: warm precondition captured; no calibration or certification

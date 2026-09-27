@@ -1,0 +1,13 @@
+{
+  "id": "11-mountain-tapir",
+  "name": "Mountain Tapir",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e8c450cd-b4ca-4c27-b302-c65318dd35ea.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "cc47d3d9f4d7f625e1cad1dbe04972b5ffd0526b7a4c1143bce70bd29772b703",
+  "bytes": 1388786,
+  "promptSha256": "cf5cf6159baa92801275c12d3f678eea1c3a4f24e318f6f2128e7adf1435e736",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Oarfish",
+  "masterSha256": "4296848c4e3bc36f518019046c6a720712bf1c28cd931a1ac44b76f88fd8acfa",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -158,6 +158,8 @@ export interface SpeciesArtWorkerLike {
   terminate(): void;
   addEventListener(type: 'message', listener: (event: MessageEvent<unknown>) => void): void;
   addEventListener(type: 'error' | 'messageerror', listener: (event: Event) => void): void;
+  removeEventListener(type: 'message', listener: (event: MessageEvent<unknown>) => void): void;
+  removeEventListener(type: 'error' | 'messageerror', listener: (event: Event) => void): void;
 }
 
 export type SpeciesArtWorkerFactory = () => SpeciesArtWorkerLike;
@@ -316,6 +318,8 @@ function createWorkerProducer(
     if (disposed) return;
     const error = workerError(value);
     disposed = true;
+    pending = null;
+    detachListeners();
     try { worker.terminate(); } catch { /* ownership is already revoked */ }
     onFatal(error, trustedWorkerError);
     sink.fatal(error);
@@ -341,7 +345,7 @@ function createWorkerProducer(
     }));
   };
 
-  worker.addEventListener('message', (event) => {
+  const onMessage = (event: MessageEvent<unknown>): void => {
     if (disposed || !validSpeciesArtWorkerResponse(event.data)
       || !speciesArtWorkerIdentityMatches(event.data, identity)) {
       onProtocolError();
@@ -453,9 +457,16 @@ function createWorkerProducer(
     });
     onResult(response);
     sink.result(result);
-  });
-  worker.addEventListener('error', (event) => terminateFatal(event));
-  worker.addEventListener('messageerror', (event) => terminateFatal(event));
+  };
+  const onError = (event: Event): void => terminateFatal(event);
+  const detachListeners = (): void => {
+    worker.removeEventListener('message', onMessage);
+    worker.removeEventListener('error', onError);
+    worker.removeEventListener('messageerror', onError);
+  };
+  worker.addEventListener('message', onMessage);
+  worker.addEventListener('error', onError);
+  worker.addEventListener('messageerror', onError);
   worker.postMessage(Object.freeze({
     schema: SPECIES_ART_WORKER_REQUEST_SCHEMA,
     type: 'init' as const,
@@ -477,6 +488,7 @@ function createWorkerProducer(
       if (disposed) return;
       disposed = true;
       pending = null;
+      detachListeners();
       worker.terminate();
     },
   });

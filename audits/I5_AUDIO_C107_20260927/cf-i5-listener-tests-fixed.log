@@ -1,0 +1,64 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/species-art-worker.test.ts (21 tests | 3 failed) 17ms
+     × detaches every worker callback on ordinary disposal, suspension and fatal termination 4ms
+     × fails a mismatched worker result once and never retries the job 1ms
+     × revokes a suspended worker and accepts only the requeued job from the resumed identity 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/species-art-worker.test.ts > species art worker protocol > detaches every worker callback on ordinary disposal, suspension and fatal termination
+TypeError: loader.suspend is not a function
+ ❯ tests/species-art-worker.test.ts:80:47
+     78|       expect([...worker.listeners.values()].flat()).toHaveLength(3);
+     79|       if (terminal === 'dispose') loader.dispose('lifetime control');
+     80|       else if (terminal === 'suspend') loader.suspend('lifetime contro…
+       |                                               ^
+     81|       else worker.emitEvent('error');
+     82|       expect(worker.terminated).toBe(1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/species-art-worker.test.ts > species art worker protocol > fails a mismatched worker result once and never retries the job
+TypeError: Cannot read properties of undefined (reading 'set')
+ ❯ FakeWorker.removeEventListener tests/species-art-worker.test.ts:781:24
+    779|       terminate(): void { this.terminated++; }
+    780|       removeEventListener(type: 'message' | 'error' | 'messageerror', …
+    781|         this.listeners.set(type, (this.listeners.get(type) ?? []).filt…
+       |                        ^
+    782|       }
+    783|       addEventListener(type: 'message' | 'error' | 'messageerror', lis…
+ ❯ detachListeners apps/game/src/species-art-loader.ts:463:12
+ ❯ terminateFatal apps/game/src/species-art-loader.ts:322:5
+ ❯ FakeWorker.onMessage [as message] apps/game/src/species-art-loader.ts:429:7
+ ❯ FakeWorker.emit tests/species-art-worker.test.ts:786:40
+ ❯ tests/species-art-worker.test.ts:805:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/species-art-worker.test.ts > species art worker protocol > revokes a suspended worker and accepts only the requeued job from the resumed identity
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/species-art-worker.test.ts:1199:30
+    1197|     const staleRequest = first.sent[1] as SpeciesArtWorkerRenderReques…
+    1198|     loader.suspendForBfcache();
+    1199|     expect(first.terminated).toBe(1);
+       |                              ^
+    1200|     expect(loader.artDiagnostics()?.live).toMatchObject({ activeJobs: …
+    1201|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  3 failed | 27 passed (30)
+   Start at  13:54:01
+   Duration  4.65s (transform 376ms, setup 0ms, import 602ms, tests 4.14s, environment 0ms)
+

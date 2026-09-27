@@ -1,0 +1,1 @@
+Lamprey was refused before prompt generation: canonical jawless-fish profile has no controlled library contract. No image or authoring was generated. Replaced by Juvenile Shark in this batch; no family/guard change.

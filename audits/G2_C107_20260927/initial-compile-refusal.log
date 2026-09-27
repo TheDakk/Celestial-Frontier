@@ -1,0 +1,10 @@
+file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/compile-library-master.mjs:20
+ throw Error('Unsupported controlled library family');
+       ^
+
+Error: Unsupported controlled library family
+    at libraryFamily (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/compile-library-master.mjs:20:8)
+    at compileLibraryMaster (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/painted-creature/compile-library-master.mjs:48:16)
+    at async file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_C107_20260927/compile.mjs:13:10
+
+Node.js v26.10.0

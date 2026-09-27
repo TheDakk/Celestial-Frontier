@@ -3513,3 +3513,5 @@ Exact copy authority and controls: audits/G_PIPELINE_CODEX_20260926/measured-cop
 ### Recovered Field Training and portrait presentation — matches code as of 2026-09-26
 
 Field Training has16 cards: six navigation lessons, one isolated Forge practice and the existing orientation cards. The native Engineering button completes practice, then the board returns to read-only. Training board and lesson bounds reserve separate space, with the lesson top republished on resize. Selected Compendium details own one image and ticker. Reduced motion is static; hidden, replaced and closed surfaces stop/release the owner. This is gentle whole-image presentation, not articulated rig animation.
+
+I5 lifetime update (matches code2026-09-27): painted-card host yields clear their callback and close both MessagePorts when serviced; species workers remove message/error/messageerror listeners before termination on disposal, suspension and fatal failure. Existing scheduling, paint bytes, limits and historical certificates remain unchanged.
