@@ -118,6 +118,12 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**Bird wing/tail division (Codex C82 asked for a source-supported guard): two measured guards, both rejected** (16 admitted birds, including the faulty Raven and Vulture):
+1. **Transferred tail polygon covered by wing-tip polygons:** Raven 15.8 %, Vulture 17.7 %, clean birds 0–24 % (Goose 19.7, Kestrel 22.0). No threshold separates them.
+2. **Wing-tip landmarks on the paint-only counter's rear (tail) appendage:** Raven 2/2, Vulture 0/2, but clean Kestrel and Magpie are 2/2 as well.
+
+In a folded-wing bird the wing tips genuinely lie over the tail, so paint geometry alone cannot verify the division. **Paths (C83):** paint birds with the wing tips visibly short of the tail, or a per-painting reviewed wing/tail boundary declaration in Codex's presence contract. No author change.
+
 **G2 C81 batch (Codex `e1d80142`: 8 marine fish, 8 standing birds, 8 insects; `score-batch`, observed supports)** (`auto-g2c81/`, `native-g2c81/`):
 - **10/24 native PASS:** Mackerel, Haddock, Pollock, Sardine, Anchovy, Mullet, Tarpon; **Curlew, Coot, Rail**.
 - **Full-size:** the three birds are clean. The fish are unwelded (cracks on Haddock, Pollock and Anchovy; Mackerel, Sardine, Mullet and Tarpon acceptable).
