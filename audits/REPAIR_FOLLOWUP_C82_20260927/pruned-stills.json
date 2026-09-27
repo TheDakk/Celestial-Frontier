@@ -1,0 +1,152 @@
+[
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn2-dodge-reaction-50.png",
+    "bytes": 1551630,
+    "sha256": "42d42d2cd7f90cb09b31ffc47e1d20915ad5efb9f2db609632c4933a82db0763"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn0-hit-return-end.png",
+    "bytes": 1545051,
+    "sha256": "11e61560b805dbe8804c33dd22b5dd15a276afba22551097cc68a522226f8c7d"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn3-hit-approach-50.png",
+    "bytes": 1547040,
+    "sha256": "579a592104124472069f19ffd9ce6c1b327b2bd392c2cf8e527d43a8e22bc4d7"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn1-hit-approach-50.png",
+    "bytes": 1545111,
+    "sha256": "88e196d7579b889b0a4acee5dcf6db173ca2e1ca5c3a194e01910752aedb46bb"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn3-hit-return-end.png",
+    "bytes": 1540034,
+    "sha256": "11f9390585e15e5eb069864e2850887b5c02c8261b9a2356c7bca4f546179c82"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn0-hit-reaction-50.png",
+    "bytes": 1545756,
+    "sha256": "c8e33bda7abf7bc3cf6e991ff777cfe3f34fc51ed251238921f17810347668f0"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn2-dodge-return-end.png",
+    "bytes": 1545458,
+    "sha256": "a4449b42628b95d430ab05dcfc63e47113a9858da402067630549ec7df6984dc"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn1-hit-impact.png",
+    "bytes": 979715,
+    "sha256": "fa64231d8883ea13478603d4889268f886c968f9314ef17739a624180c7977b5"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn0-hit-impact.png",
+    "bytes": 979387,
+    "sha256": "5207fbd999848e823fccd53e17f9100c809183ef0ac3568e4ff1afe5e9a19d23"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn1-hit-return-end.png",
+    "bytes": 1545145,
+    "sha256": "0e3b15ccddf797102dd5660df0d7dafb693cf2aaa688fbcdbf751d9871d5a9b5"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn2-dodge-impact.png",
+    "bytes": 1552467,
+    "sha256": "e66181153262802d453e78253819fc608b5addd026758f8d28997de83785c90d"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn2-dodge-approach-50.png",
+    "bytes": 1545281,
+    "sha256": "fedf29f2d0168accce23f1c9cab86ddd45911c8fb6d7a51465da891c57bfaac5"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn3-hit-impact.png",
+    "bytes": 987936,
+    "sha256": "b210afe0db317704141dd01689962b6f843e4358d31a13d214381b103f92c065"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn3-hit-idle-90.png",
+    "bytes": 1538775,
+    "sha256": "94c35835d9c73ba86a3190a81f1ed814ac9c0d5ddad2d645213b7c492f8d590d"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/bobcat-native-01/turn3-hit-idle-50.png",
+    "bytes": 1554080,
+    "sha256": "d1a896c63e5826e18a5bbd73a29f626ca510e442dfb0bc1aa326d10c314bd412"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn2-dodge-reaction-50.png",
+    "bytes": 1549522,
+    "sha256": "15db726e53cb7dc6dda0ff77418fee06456086e8e6dd5fdd1b8c4272dba012ea"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn0-hit-return-end.png",
+    "bytes": 1544292,
+    "sha256": "77a6763e47399d40f27bce809f24caa23c4b14f5a798946a462fb6ff06fe8362"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn3-hit-approach-50.png",
+    "bytes": 1544345,
+    "sha256": "a86f23ca6a170f35e9fa3faddf1b555fe9d9bf0f9d8fa3a7168c18199be2bbac"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn1-hit-approach-50.png",
+    "bytes": 1544540,
+    "sha256": "5b75f4cdace22337c614ab25d5da1b924f81056bfed58cb27ffe9bc5a28b61b9"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn3-hit-return-end.png",
+    "bytes": 1539710,
+    "sha256": "52533b938a671eef919f175b2c4603b74c481af039c97686347124d4d5f11730"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn0-hit-reaction-50.png",
+    "bytes": 1544667,
+    "sha256": "5b1bb4e1087ac31418d53201c6cf3ccba934e9f59941a4b690404d8c4b06adeb"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn2-dodge-return-end.png",
+    "bytes": 1544472,
+    "sha256": "52098bd6865c14cf64ab3ef4ff2397e6ae8301504be6e530b5e7252b4b3cdc49"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn1-hit-impact.png",
+    "bytes": 976821,
+    "sha256": "f13234d3bc04d4798762f9a5ce0e22a12da081b8333990eb69d6adcd0af07bd0"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn0-hit-impact.png",
+    "bytes": 977092,
+    "sha256": "f800c34a1ed97f2339c8b30c6f0e4a87f2e9ed66eec5397351b426034baef820"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn1-hit-return-end.png",
+    "bytes": 1544173,
+    "sha256": "8c09c827afeef462cfc1587f35dc645ac8bd02034df857efc2687a39f7b6fd2b"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn2-dodge-impact.png",
+    "bytes": 1549389,
+    "sha256": "83acbf878f3faa48a43227cdde4d612c368ec7fd3e74e3e57bb9ec9eb5e6c3c6"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn2-dodge-approach-50.png",
+    "bytes": 1544472,
+    "sha256": "54551e92eb1144531b9370e5106fcf517dc844adc5bd5e99c327c65f0c6fffaf"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn3-hit-impact.png",
+    "bytes": 1545813,
+    "sha256": "bfcfa19097dca4eeac3cb76ff541de174ad0b8ffad912b35ba40c55de20444f4"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn3-hit-idle-90.png",
+    "bytes": 1538716,
+    "sha256": "f3f963ea85a5722e02f0179a79d9b6a3391415073843624794f3ae45b44f9615"
+  },
+  {
+    "file": "audits/REPAIR_FOLLOWUP_C82_20260927/donkey-native-01/turn3-hit-idle-50.png",
+    "bytes": 1548148,
+    "sha256": "6f2e6558d4474e6e62e067137658befb87bb468073322619d400b6412a59adc7"
+  }
+]

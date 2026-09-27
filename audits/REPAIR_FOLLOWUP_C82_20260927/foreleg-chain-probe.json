@@ -1,0 +1,22 @@
+{
+  "schema": "cf.foreleg-chain-candidate/v1",
+  "method": "nearest existing foreleg-chain segment below both shoulders; diagnostic longitudinal candidate",
+  "changedPixels": 36830,
+  "forelegPixels": 152261,
+  "movedShare": 0.24188728564767079,
+  "maxMovedShare": 0.25,
+  "transfers": {
+    "foreNearRoot→foreFarRoot": 616,
+    "foreFarKnee→foreFarRoot": 13169,
+    "foreNearKnee→foreNearRoot": 7738,
+    "foreNearKnee→foreFarRoot": 122,
+    "foreFarKnee→foreNearKnee": 62,
+    "foreFarAnkle→foreFarKnee": 5024,
+    "foreNearAnkle→foreNearKnee": 1030,
+    "foreFarKnee→foreFarAnkle": 32,
+    "foreNearKnee→foreNearAnkle": 218,
+    "foreNearPaw→foreNearAnkle": 3438,
+    "foreFarPaw→foreFarAnkle": 5381
+  },
+  "otherOwnersChanged": 0
+}

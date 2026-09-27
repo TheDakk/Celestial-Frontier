@@ -1,0 +1,10 @@
+import fs from'node:fs';import{createRequire}from'node:module';import{createHash}from'node:crypto';
+const root=process.cwd(),a=root+'/audits/REPAIR_FOLLOWUP_C82_20260927',req=createRequire(root+'/port/v2/package.json'),sharp=createRequire(req.resolve('free-tex-packer-core'))('sharp'),rows=[];
+for(const name of ['raven','vulture']){
+ const dir=a+'/bird-inputs/'+name,r=JSON.parse(fs.readFileSync(dir+'/record.json')),d=JSON.parse(fs.readFileSync(dir+'/declaration.json')),master=fs.readFileSync(root+'/'+({raven:'audits/G2_THROUGHPUT_C56_20260926/10-raven/master.png',vulture:'audits/G2_C59_20260926/08-vulture/master.png'}[name]));if(createHash('sha256').update(master).digest('hex')!==r.geometry.cutoutAssetHash)throw Error('master hash');
+ const {data,info}=await sharp(dir+'/labels.png').ensureAlpha().raw().toBuffer({resolveWithObject:true}),colors={'wingNearRoot':[250,160,20],'wingNearTip':[250,30,40],'wingFarRoot':[150,40,240],'wingFarTip':[220,50,250],'tailFan':[20,200,230]},overlay=Buffer.alloc(data.length),counts={};
+ for(let i=0;i<data.length;i+=4){const p=d.parts[data[i]-1],c=p&&colors[p.joint];if(c){overlay.set([...c,130],i);counts[p.joint]=(counts[p.joint]??0)+1;}}
+ const svg='<svg width="'+info.width+'" height="'+info.height+'">'+Object.keys(colors).map(j=>{const[x,y]=r.landmarks[j].map((v,k)=>v*(k?info.height:info.width));return '<circle cx="'+x+'" cy="'+y+'" r="8" fill="white" stroke="black"/><text x="'+(x+12)+'" y="'+y+'" font-size="22" fill="white" stroke="black" stroke-width=".5">'+j+'</text>'}).join('')+'</svg>';
+ await sharp(master).flatten({background:'#24242a'}).composite([{input:overlay,raw:{width:info.width,height:info.height,channels:4}},{input:Buffer.from(svg)}]).png().toFile(a+'/'+name+'-ownership.png');rows.push({name,sourceMasterSha256:r.geometry.cutoutAssetHash,counts,landmarks:Object.fromEntries(Object.keys(colors).map(j=>[j,r.landmarks[j]])),scope:'Diagnostic mask overlay only; source painting, labels and landmarks unchanged'});
+}
+fs.writeFileSync(a+'/bird-observation.json',JSON.stringify(rows,null,2)+'\n',{flag:'wx'});

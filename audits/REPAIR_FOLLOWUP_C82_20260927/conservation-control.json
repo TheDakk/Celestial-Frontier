@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "mutant": "One actual spine pixel reassigned to foreNearKnee",
+  "exitCode": 1,
+  "expectedError": "Protected source changed"
+}
