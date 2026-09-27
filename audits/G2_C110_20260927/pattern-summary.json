@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Giraffe",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Zebra",
+    "status": "PASS"
+  },
+  {
+    "name": "Kudu",
+    "status": "PASS"
+  },
+  {
+    "name": "Impala",
+    "status": "PASS"
+  },
+  {
+    "name": "Buffalo",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Wildebeest",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Eland",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Gazelle",
+    "status": "PASS"
+  },
+  {
+    "name": "Hartebeest",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Oryx",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Gaur",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Banteng",
+    "status": "PASS"
+  },
+  {
+    "name": "Water Buffalo",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Deer",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Antelope",
+    "status": "PASS"
+  },
+  {
+    "name": "Reindeer",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Caribou",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Saiga",
+    "status": "PASS"
+  },
+  {
+    "name": "Yak",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Takin",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Sheep",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Wild Sheep",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Dromedary Camel",
+    "status": "NOT_REQUIRED"
+  },
+  {
+    "name": "Bactrian Camel",
+    "status": "NOT_REQUIRED"
+  }
+]

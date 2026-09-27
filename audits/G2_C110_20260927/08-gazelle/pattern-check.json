@@ -1,0 +1,23 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Gazelle",
+  "masterSha256": "19c25a965e04664c0e0d44ed03abff07b7a2a7a524efafc714dc1c5ffb2392e9",
+  "required": [
+    "slender ringed lyre-curved horns",
+    "dark band along the flank between tan and white"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "slender ringed lyre-curved horns",
+      "status": "PRESENT",
+      "observed": "Full original: tan upper body, broad dark flank band above white belly, facial eye stripe, slender ringed lyre horns, both ears, complete short tufted tail and four fine separate legs. No acceptance beyond visible layout."
+    },
+    {
+      "requirement": "dark band along the flank between tan and white",
+      "status": "PRESENT",
+      "observed": "Full original: tan upper body, broad dark flank band above white belly, facial eye stripe, slender ringed lyre horns, both ears, complete short tufted tail and four fine separate legs. No acceptance beyond visible layout."
+    }
+  ]
+}

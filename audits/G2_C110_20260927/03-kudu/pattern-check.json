@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Kudu",
+  "masterSha256": "c63de9105ce6324e847b7fb9904b7728de93a0fe46f1a6f58fc9f9f9d8de97e1",
+  "required": [
+    "6-10 thin white vertical stripes on the flank"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "6-10 thin white vertical stripes on the flank",
+      "status": "PRESENT",
+      "observed": "Full original: paired tall corkscrew horns, large dish-like ears, multiple thin white vertical flank stripes and facial chevron, dewlap/beard, complete tufted tail and four separate hooves. Horn ownership and chest fringe need scoring."
+    }
+  ]
+}

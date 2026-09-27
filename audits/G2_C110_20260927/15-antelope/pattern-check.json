@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Antelope",
+  "masterSha256": "efefec473940bc4e1f173712daf147aea81a323894a006c9d7530d9baf2687e6",
+  "required": [
+    "unbranched ringed horns swept back or lyre-shaped"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "unbranched ringed horns swept back or lyre-shaped",
+      "status": "PRESENT",
+      "observed": "Full original: tan upper body and white belly, dark eye stripe, paired ringed lyre horns, both ears, natural short flicked tail and four slender legs. Generic canonical antelope identity remains subject to scoring."
+    }
+  ]
+}

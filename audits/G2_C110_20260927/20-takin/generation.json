@@ -1,0 +1,13 @@
+{
+  "id": "20-takin",
+  "name": "Takin",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-6dcdb9af-a1e9-401d-a8b1-6148f8ae24eb.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7cb4740345f2638f6b02932c31d2db58bb6223b8752707a58754a1810b2904af",
+  "bytes": 1329820,
+  "promptSha256": "8a78f4ca12c31d9563595a1e67ac0485b3d3e9f6446e979c953b90c3af907ea3",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

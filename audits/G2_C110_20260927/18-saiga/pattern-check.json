@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Saiga",
+  "masterSha256": "89b52d28422daf3838aae7863ab20ff0d96be80b4aabce90ec65c2d9e2e855f7",
+  "required": [
+    "translucent ringed horns rising straight up"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "translucent ringed horns rising straight up",
+      "status": "PRESENT",
+      "observed": "Full original: ringed amber horns, both ears, pale tan body, four separate feet and short tuft tail. HOLD pendulous nose is overelongated and trunk-like rather than a natural bulbous saiga muzzle."
+    }
+  ]
+}

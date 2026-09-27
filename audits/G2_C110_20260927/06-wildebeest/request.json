@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Wildebeest",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "d51cbdd329b0524802b419cdcfd9af30ff2e7c648c75b7f3e73a8fc748f432e7",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "hoofed-horned",
+  "authoringCreated": false,
+  "sourceHead": "4afc70ed2750ec4db7f0105ac87e1c16aa8cc561",
+  "basePromptSha256": "81155b5b84dd4f3c9fc6b023bef872baf7b8b8e266ac6e5fa8b5e319a264c393",
+  "layoutCompilerSha256": "fe664008793d4b069ddddc5e4090216a3f14a7e3a9ead6441cbce0647acb3341",
+  "layoutClarification": "Species identity features FIRST: heavy boxy cow-like head with sideways-curving horns; shaggy chin beard and neck mane; high shoulders sloping to a slight rump. One Earth Wildebeest. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: quiet planted walking STRIDE, all FOUR legs clearly APART from their body attachments down to each foot, with visible background gaps. Offset near and far forelegs and near and far hindlegs naturally. Keep the real species tail visibly attached and continuous; preserve a naturally short tail. No rearing, seated pose, crossed legs or duplicate limb. Choose a natural side-view head pose exposing BOTH ears as separate complete silhouettes, including BOTH ear tips; offset the far ear visibly above or beside the near ear. The true tail must sit clear of the body and legs from its visible root to its tip. Do not invent an ear, lengthen a short tail, or add a tail to a naturally tailless animal.\n\n"
+}

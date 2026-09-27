@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Dromedary Camel",
+  "masterSha256": "1e2f12ddda621ed39e604e7e0a2b483b2b13b63758e21c0535485ab2ce2b7e60",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
