@@ -1,0 +1,10 @@
+[
+  {
+    "mutant": "omit-capture",
+    "exitCode": 1
+  },
+  {
+    "mutant": "retain-state",
+    "exitCode": 1
+  }
+]

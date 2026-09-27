@@ -9,3 +9,5 @@ Native old/new use immutable old source `6bd5b337d1865910b1a5a18d7f82bf3fa06e6fe
 120 pre-repair pixel hashes cover six real fixtures, five genomes, two sizes and diagonal enabled/disabled. All match after repair; caller-input hashes match. Eleven focused tests pass. Actual omit-release and detach-caller-input mutants fail. Root validation passes all 50 deterministic probes. The separate PNG-owner battery on exact6bd was 5689PASS/I5solefailure and seven owners PASS; the scratch repair requires its own clean signed battery and fresh changed-product3+1 proof. No I5 closure yet.
 
 Exact signed f8588b039 battery complete:5692PASS/I5solefailure, all seven owners PASS; before/after source and log hashes verified. Fresh local3+1 epoch will use this product head in the clean managed i5-back-proof checkout; every ceiling/deadline/history byte stays fixed, first red stops permanently.
+
+Final f858 epoch outcome: calibration1+2 PASS/rawverify; calibration3 STOPPED on desktop listeners100>96. All77other outcomes PASS, including memory in all3runs. No certification or retry. IDB ownership follow-up is audits/I5_IDB_OWNERS_20260927.

@@ -1,0 +1,106 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts (9 tests | 9 failed) 7ms
+     × releases read transaction and open callbacks after success 4ms
+     × releases read transaction and open callbacks after error 1ms
+     × releases read transaction and open callbacks after abort 0ms
+     × releases compare/write callbacks after success with the same outcome 0ms
+     × releases compare/write callbacks after stale with the same outcome 0ms
+     × releases compare/write callbacks after request-error with the same outcome 0ms
+     × releases compare/write callbacks after error with the same outcome 0ms
+     × releases compare/write callbacks after abort with the same outcome 0ms
+   × independent concurrent reads reuse native dispatchers without sharing their promise state 0ms
+
+ Test Files  1 failed (1)
+      Tests  9 failed (9)
+   Start at  16:04:05
+   Duration  137ms (transform 16ms, setup 0ms, import 21ms, tests 7ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases read transaction and open callbacks after success
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases read transaction and open callbacks after error
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases read transaction and open callbacks after abort
+AssertionError: expected [ [Function complete], …(2) ] to deeply equal [ null, null, null ]
+
+- Expected
++ Received
+
+  [
+-   null,
+-   null,
+-   null,
++   [Function complete],
++   [Function error],
++   [Function abort],
+  ]
+
+ ❯ expectReleased packages/persistence/test/idb-listener-ownership.test.ts:23:80
+     21| const expectReleased=(f:ReturnType<typeof fixture>)=>{
+     22|   expect(f.transactions.length).toBeGreaterThan(0);
+     23|   for(const tx of f.transactions)expect([tx.oncomplete,tx.onerror,tx.o…
+       |                                                                                ^
+     24|   for(const req of f.requests)expect([req.onsuccess,req.onerror,req.on…
+     25| };
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:31:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases compare/write callbacks after success with the same outcome
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases compare/write callbacks after stale with the same outcome
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases compare/write callbacks after request-error with the same outcome
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases compare/write callbacks after error with the same outcome
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > IndexedDB native callback ownership > releases compare/write callbacks after abort with the same outcome
+AssertionError: expected [ [Function complete], …(2) ] to deeply equal [ null, null, null ]
+
+- Expected
++ Received
+
+  [
+-   null,
+-   null,
+-   null,
++   [Function complete],
++   [Function error],
++   [Function abort],
+  ]
+
+ ❯ expectReleased packages/persistence/test/idb-listener-ownership.test.ts:23:80
+     21| const expectReleased=(f:ReturnType<typeof fixture>)=>{
+     22|   expect(f.transactions.length).toBeGreaterThan(0);
+     23|   for(const tx of f.transactions)expect([tx.oncomplete,tx.onerror,tx.o…
+       |                                                                                ^
+     24|   for(const req of f.requests)expect([req.onsuccess,req.onerror,req.on…
+     25| };
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:40:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > independent concurrent reads reuse native dispatchers without sharing their promise state
+AssertionError: expected [ [Function complete], …(2) ] to deeply equal [ null, null, null ]
+
+- Expected
++ Received
+
+  [
+-   null,
+-   null,
+-   null,
++   [Function complete],
++   [Function error],
++   [Function abort],
+  ]
+
+ ❯ expectReleased packages/persistence/test/idb-listener-ownership.test.ts:23:80
+     21| const expectReleased=(f:ReturnType<typeof fixture>)=>{
+     22|   expect(f.transactions.length).toBeGreaterThan(0);
+     23|   for(const tx of f.transactions)expect([tx.oncomplete,tx.onerror,tx.o…
+       |                                                                                ^
+     24|   for(const req of f.requests)expect([req.onsuccess,req.onerror,req.on…
+     25| };
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:48:178
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+

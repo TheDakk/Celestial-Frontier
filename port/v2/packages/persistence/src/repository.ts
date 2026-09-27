@@ -1,3 +1,4 @@
+import { ownIdbCallbacks } from './idb-callbacks.js';
 /* Storage repository — Phase 2 deliverable 2 ("IndexedDB repository and
    transaction recovery"). The seam is StorageBackend: the repository logic
    (generations, recovery, reset law) is backend-agnostic and fully tested
@@ -205,20 +206,21 @@ export function createIndexedDBBackend(dbName = 'cf-v2', version = 2): StorageBa
       const pending = new Promise<IDBDatabase>((resolve, reject) => {
       const req = indexedDB.open(dbName, version);
       let abandoned = false;
-      req.onupgradeneeded = () => { const db = req.result; for (const s of STORES) if (!db.objectStoreNames.contains(s)) db.createObjectStore(s); };
-      req.onsuccess = () => {
-        const db = req.result;
-        /* `blocked` is not terminal for the native request: after the old
-           tab closes, this same request may still succeed. If our bounded
-           attempt already rejected and a retry owns `dbp`, close that late
-           orphan immediately or it can accumulate and block upgrades/reset. */
-        if (abandoned) { db.close(); return; }
-        db.onclose = () => { if (dbp === pending) dbp = null; };
-        db.onversionchange = () => { db.close(); if (dbp === pending) dbp = null; };
-        resolve(db);
-      };
-      req.onerror = () => { abandoned = true; reject(req.error as Error); };
-      req.onblocked = () => { abandoned = true; reject(new Error(`IndexedDB open blocked: ${dbName}`)); };
+      // `blocked` is not a terminal native request. Keep the late success/error
+      // dispatchers until it resolves, so an abandoned database is still closed.
+      const releaseRequest = ownIdbCallbacks(req, {
+        upgradeneeded: () => { const db = req.result; for (const s of STORES) if (!db.objectStoreNames.contains(s)) db.createObjectStore(s); },
+        success: () => {
+          releaseRequest();
+          const db = req.result;
+          if (abandoned) { db.close(); return; }
+          db.onclose = () => { if (dbp === pending) dbp = null; };
+          db.onversionchange = () => { db.close(); if (dbp === pending) dbp = null; };
+          resolve(db);
+        },
+        error: () => { abandoned = true; releaseRequest(); reject(req.error as Error); },
+        blocked: () => { abandoned = true; reject(new Error(`IndexedDB open blocked: ${dbName}`)); },
+      });
       });
       dbp = pending;
       /* A rejected open is a transient attempt, not a permanent repository
@@ -229,9 +231,11 @@ export function createIndexedDBBackend(dbName = 'cf-v2', version = 2): StorageBa
     return dbp;
   };
   const done = (tx: IDBTransaction): Promise<void> => new Promise((resolve, reject) => {
-    tx.oncomplete = () => resolve();
-    tx.onerror = () => reject(tx.error as Error);
-    tx.onabort = () => reject(tx.error ?? new Error('transaction aborted'));
+    const release = ownIdbCallbacks(tx, {
+      complete: () => { release(); resolve(); },
+      error: () => { release(); reject(tx.error as Error); },
+      abort: () => { release(); reject(tx.error ?? new Error('transaction aborted')); },
+    });
   });
   return {
     async get(store, key) {
@@ -265,19 +269,29 @@ export function createIndexedDBBackend(dbName = 'cf-v2', version = 2): StorageBa
         let remaining = checks.length;
         let stale = false;
         let completed = false;
+        const requests: Array<() => void> = [];
+        const release = (): void => {
+          releaseTransaction();
+          for (const releaseRequest of requests) releaseRequest();
+          requests.length = 0;
+        };
         const finish = (value: boolean): void => {
           if (completed) return;
           completed = true;
+          release();
           resolve(value);
         };
         const rejectFailure = (): void => {
           if (completed) return;
           completed = true;
+          release();
           reject(tx.error ?? new Error('transaction aborted'));
         };
-        tx.oncomplete = () => finish(!stale);
-        tx.onerror = () => stale ? finish(false) : rejectFailure();
-        tx.onabort = () => stale ? finish(false) : rejectFailure();
+        const releaseTransaction = ownIdbCallbacks(tx, {
+          complete: () => finish(!stale),
+          error: () => stale ? finish(false) : rejectFailure(),
+          abort: () => stale ? finish(false) : rejectFailure(),
+        });
         const write = (): void => {
           for (const store of clearStores) tx.objectStore(store).clear();
           for (const op of ops) {
@@ -291,17 +305,21 @@ export function createIndexedDBBackend(dbName = 'cf-v2', version = 2): StorageBa
         }
         for (const check of checks) {
           const req = tx.objectStore(check.store).get(check.key);
-          req.onerror = () => { try { tx.abort(); } catch { /* tx will report the request failure */ } };
-          req.onsuccess = () => {
-            const actual = req.result === undefined ? undefined : String(req.result);
-            if (actual !== check.value) {
-              stale = true;
-              try { tx.abort(); } catch { finish(false); }
-              return;
-            }
-            remaining--;
-            if (remaining === 0) write();
-          };
+          const releaseRequest = ownIdbCallbacks(req, {
+            error: () => { releaseRequest(); try { tx.abort(); } catch { /* tx will report the request failure */ } },
+            success: () => {
+              releaseRequest();
+              const actual = req.result === undefined ? undefined : String(req.result);
+              if (actual !== check.value) {
+                stale = true;
+                try { tx.abort(); } catch { finish(false); }
+                return;
+              }
+              remaining--;
+              if (remaining === 0) write();
+            },
+          });
+          requests.push(releaseRequest);
         }
       });
     },

@@ -1,0 +1,137 @@
+{
+  "epoch": "i5-v2-f8588b039275",
+  "head": "f8588b039275633adfdbb2d79e5e8b73ef9e65d6",
+  "source": "/Users/dakk/.codex/worktrees/i5-back-proof/celestial-frontier-openai-mac",
+  "instrument": {
+    "commit": "605a6e28ccd3c730ffd9631b36202285e914bc14",
+    "sha256": "829ff5fd6824ded2c92e4d7cf2a5cd2bcaa3c13b92b80e87fa6afd117019656a"
+  },
+  "v1Sha256": "c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc",
+  "automaticRetries": 0,
+  "steps": [
+    {
+      "phase": "calibration-1",
+      "exitCode": 0,
+      "runId": "i5-v2-f8588b039275-calibration-1",
+      "verificationExitCode": 0
+    },
+    {
+      "phase": "calibration-2",
+      "exitCode": 0,
+      "runId": "i5-v2-f8588b039275-calibration-2",
+      "verificationExitCode": 0
+    },
+    {
+      "phase": "calibration-3",
+      "exitCode": 1,
+      "runId": "i5-v2-f8588b039275-calibration-3",
+      "verificationExitCode": 1
+    }
+  ],
+  "commands": [
+    {
+      "name": "prepare-build",
+      "executable": "npx",
+      "args": [
+        "vite",
+        "build",
+        "--mode",
+        "evidence"
+      ],
+      "startedAt": "2026-09-27T19:46:08.588Z",
+      "durationMs": 3356.0952500000003,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "edge-preflight",
+      "executable": "node",
+      "args": [
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/compendiummem-browser-preflight.mjs"
+      ],
+      "startedAt": "2026-09-27T19:46:13.357Z",
+      "durationMs": 1523.0072920000002,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-1",
+      "executable": "node",
+      "args": [
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_CARD_SCRATCH_20260927/epoch/instrument/collector.mjs",
+        "--calibrate"
+      ],
+      "startedAt": "2026-09-27T19:46:15.409Z",
+      "durationMs": 63512.818999999996,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-1-verify",
+      "executable": "node",
+      "args": [
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_CARD_SCRATCH_20260927/epoch/instrument/collector.mjs",
+        "--verify-run=i5-v2-f8588b039275-calibration-1"
+      ],
+      "startedAt": "2026-09-27T19:47:19.531Z",
+      "durationMs": 1532.6211250000051,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-2",
+      "executable": "node",
+      "args": [
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_CARD_SCRATCH_20260927/epoch/instrument/collector.mjs",
+        "--calibrate"
+      ],
+      "startedAt": "2026-09-27T19:47:21.594Z",
+      "durationMs": 62855.06625,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-2-verify",
+      "executable": "node",
+      "args": [
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_CARD_SCRATCH_20260927/epoch/instrument/collector.mjs",
+        "--verify-run=i5-v2-f8588b039275-calibration-2"
+      ],
+      "startedAt": "2026-09-27T19:48:25.004Z",
+      "durationMs": 1510.0228750000242,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-3",
+      "executable": "node",
+      "args": [
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_CARD_SCRATCH_20260927/epoch/instrument/collector.mjs",
+        "--calibrate"
+      ],
+      "startedAt": "2026-09-27T19:48:27.055Z",
+      "durationMs": 62084.37941600001,
+      "exitCode": 1,
+      "error": null
+    },
+    {
+      "name": "calibration-3-verify",
+      "executable": "node",
+      "args": [
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_CARD_SCRATCH_20260927/epoch/instrument/collector.mjs",
+        "--verify-run=i5-v2-f8588b039275-calibration-3"
+      ],
+      "startedAt": "2026-09-27T19:49:29.682Z",
+      "durationMs": 1482.496708999999,
+      "exitCode": 1,
+      "error": null
+    }
+  ],
+  "status": "stopped",
+  "finding": "calibration-3 refused; epoch stops without retry",
+  "finalSource": {
+    "head": "f8588b039275633adfdbb2d79e5e8b73ef9e65d6",
+    "status": ""
+  },
+  "v1Unchanged": true
+}

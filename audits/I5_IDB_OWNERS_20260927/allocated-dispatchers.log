@@ -1,0 +1,29 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts (9 tests | 1 failed) 6ms
+   × independent concurrent reads reuse native dispatchers without sharing their promise state 2ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 passed (9)
+   Start at  16:04:06
+   Duration  130ms (transform 15ms, setup 0ms, import 20ms, tests 6ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/persistence/test/idb-listener-ownership.test.ts > independent concurrent reads reuse native dispatchers without sharing their promise state
+AssertionError: expected [Function] to be [Function] // Object.is equality
+
+Compared values have no visual difference.
+
+ ❯ packages/persistence/test/idb-listener-ownership.test.ts:48:148
+     46|  const prior=globalThis.indexedDB,f=fixture('success');globalThis.inde…
+     47|  try{const backend=createIndexedDBBackend('shared-owner');expect(await…
+     48|  expect(f.registrations).toHaveLength(2);for(let i=0;i<3;i++){expect(f…
+       |                                                                                                                                                    ^
+     49|  }finally{globalThis.indexedDB=prior;}
+     50| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

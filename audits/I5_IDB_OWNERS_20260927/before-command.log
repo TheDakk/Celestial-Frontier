@@ -1,0 +1,1 @@
+usage: node tools/compendiummem.mjs [--calibrate|--calibrate-baseline=/absolute/clean/3844701-worktree|--selftest|--verify-run=<run-id>]

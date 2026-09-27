@@ -1,3 +1,4 @@
+import { RasterScratch } from './raster-scratch.js';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -42,4 +43,10 @@ it('renders identical bytes when transfer is unavailable', () => {
  const original=Object.getOwnPropertyDescriptor(proto,'transfer')!;
  try { Object.defineProperty(proto,'transfer',{...original,value:undefined});expect(sha(renderCardIndividualV1(input))).toBe(expected); }
  finally { Object.defineProperty(proto,'transfer',original); }
+});
+
+it('refuses partial/shared buffer ownership while releasing full owned stores and keeping published ones',()=>{
+ const scratch=new RasterScratch(),caller=new Uint8Array(16),kept=new Uint8Array(8),owned=new Uint8Array(12);
+ expect(()=>scratch.own(caller.subarray(1))).toThrow('whole owned');expect(()=>scratch.own(new Uint8Array(new SharedArrayBuffer(8)))).toThrow('whole owned');
+ scratch.own(owned);scratch.own(kept);scratch.release(kept);expect(owned.byteLength).toBe(0);expect(kept.byteLength).toBe(8);expect(caller.byteLength).toBe(16);scratch.release();expect(kept.byteLength).toBe(8);
 });
