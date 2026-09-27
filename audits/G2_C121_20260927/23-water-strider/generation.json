@@ -1,0 +1,13 @@
+{
+  "id": "23-water-strider",
+  "name": "Water Strider",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-6309a557-0397-4510-af5a-3c3f273d7bda.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "eac2202fe82b1bb51a0bb4047e661777d8b048a1b9e56db71245d004c55d5476",
+  "bytes": 1051039,
+  "promptSha256": "015b8dcb42bc665b30d7da6f836a986d818b31ebfa0da22612563ee2d1a29a4e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

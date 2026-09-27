@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Ptarmigan",
+  "masterSha256": "6720df96f5b78cc893a610dd22a538e2d7debd6c22801add40ba07c4b4dcaa69",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

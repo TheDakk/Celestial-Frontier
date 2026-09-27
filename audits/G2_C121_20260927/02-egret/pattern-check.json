@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Egret",
+  "masterSha256": "7eff1a96c9b49c707c8169a95277e8395e0e57380d6e46c4b879c96fbb4d763b",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

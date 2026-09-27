@@ -1,0 +1,16 @@
+{
+  "scope": "Native renderer backing-store diagnosis, not calibration/certification",
+  "oldHead": "6bd5b337d1865910b1a5a18d7f82bf3fa06e6fee",
+  "oldSha256": "f3ba551d8ec5897ae06c2a1b5b762b696623b887f4437e06c2781d09b4bad5e1",
+  "newSha256": "fbc3336123b424043100c593d2d3b345cf26892ccb672247aa8006d6260d9db4",
+  "scratchSha256": "c1ee572fb0b337b6c6970ec57c4330ea3871a41f2aeae9a4de1ac5bb25cfd25b",
+  "rows": [],
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/154.0.4258.37",
+    "revision": "@f6ddc7bb8d2ad05a6979ebc09b83893c2d128a62",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "js_version": "15.4.11.5",
+    "protocol_version": "1.3"
+  }
+}

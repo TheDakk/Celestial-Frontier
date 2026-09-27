@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Sandpiper",
+  "masterSha256": "f5bc7652f37005f7c511a3999dd6f11864ef5cc1f17eb5342f17b18f0aa4ecee",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "04-lark",
+  "name": "Lark",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-bd0a20e9-5d31-4dba-b4cb-1f141213f43a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2e8ce284735f42df7100d38b6c6bb781180653cb8011f26eca25a8bae7fd84cf",
+  "bytes": 1168568,
+  "promptSha256": "37e033f33474ffa14586b0aab17bee3a099d897dd12de26aa55fc36bd095252e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

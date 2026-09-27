@@ -1,0 +1,13 @@
+{
+  "id": "12-sandpiper",
+  "name": "Sandpiper",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ae22e5c1-9b76-4942-9d54-cfa32a478c53.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f5bc7652f37005f7c511a3999dd6f11864ef5cc1f17eb5342f17b18f0aa4ecee",
+  "bytes": 1149575,
+  "promptSha256": "fa0e0aed32cebe704212997a644743c697757f6c478070317a87db8f843035a1",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

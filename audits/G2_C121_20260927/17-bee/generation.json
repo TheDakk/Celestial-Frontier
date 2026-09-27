@@ -1,0 +1,13 @@
+{
+  "id": "17-bee",
+  "name": "Bee",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-6e1d09a3-b030-4790-975b-6ff136086aca.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e8b7ede7f23f2ed13972449dca5ba0467b1829054b10028ac34007a034373517",
+  "bytes": 1237678,
+  "promptSha256": "c33a56bc37f7df49c698f6f8cae0a1665a37742da96a822d23f8d009e2a64c8e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

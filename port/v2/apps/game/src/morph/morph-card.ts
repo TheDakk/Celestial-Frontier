@@ -3,6 +3,7 @@
 // palette exact (the same remap the stage applies), proportion by label-region scaling about the sub-tree root's pivot
 // (the transform the rig applies to a rigid part; the skin mesh is smoother, unnoticeable at card size). Output: a square
 // RGBA raster of `size` px, alpha-weighted box downscale of the alpha-box crop. Deterministic per (archetype, genome).
+import { RasterScratch } from './raster-scratch.js';
 import type { BodyCard } from '../motion/body-card.js';
 import type { MorphParamsV1 } from './morph-params.js';
 import { accentPlanOfCard, emissiveRoleV1, paletteRoleOfPart, remapAtlasPaletteV1, type PaletteFrame, type PaletteRole } from './morph-palette.js';
@@ -43,18 +44,22 @@ export function cardProportionV1(receipt: Pick<CardReceiptV1, 'landmarks' | 'fix
 }
 /** Steps 1–2 in master space (palette, then proportion): the individual at the card master's own size. */
 export function cardCompositeV1(input: Omit<CardRenderInput, 'size'>): Uint8Array {
+  const scratch = new RasterScratch(); let output: Uint8Array | undefined;
+  try { return output = compositeCard(input, scratch); } finally { scratch.release(output); }
+}
+function compositeCard(input: Omit<CardRenderInput, 'size'>, scratch: RasterScratch): Uint8Array {
   const { master: m, receipt, card, params, markingMask } = input; const W = m.width, H = m.height;
   if (m.master.length !== W * H * 4 || m.labels.length !== W * H * 4) throw new TypeError('card: master/labels size');
   const roleOfLabel = cardRolesV1(receipt, card);
   // 1. palette: remap the whole master once per role, composite by each pixel's label role (label 0 = fringe/shadow: kept)
   let px = m.master;
-  if (!params.identity) { const whole: PaletteFrame[] = [{ x: 0, y: 0, width: W, height: H, role: 'base' }]; const out = new Uint8Array(m.master);
+  if (!params.identity) { const whole: PaletteFrame[] = [{ x: 0, y: 0, width: W, height: H, role: 'base' }]; const out = scratch.own(new Uint8Array(m.master));
     const select = (role: 'base' | 'accent') => (pixel: number) => roleOfLabel.get(m.labels[pixel * 4]!) === role;
-    for (const role of ['base', 'accent'] as const) { const full = remapAtlasPaletteV1(m.master, W, H, [{ ...whole[0]!, role }], params, select); for (let i = 0; i < W * H; i++) if (roleOfLabel.get(m.labels[i * 4]!) === role) { out[i * 4] = full[i * 4]!; out[i * 4 + 1] = full[i * 4 + 1]!; out[i * 4 + 2] = full[i * 4 + 2]!; } }
+    for (const role of ['base', 'accent'] as const) { const full = scratch.own(remapAtlasPaletteV1(m.master, W, H, [{ ...whole[0]!, role }], params, select)); for (let i = 0; i < W * H; i++) if (roleOfLabel.get(m.labels[i * 4]!) === role) { out[i * 4] = full[i * 4]!; out[i * 4 + 1] = full[i * 4 + 1]!; out[i * 4 + 2] = full[i * 4 + 2]!; } }
     px = out; }
   // 1b. the painted marking (M3/M4), before proportion so it scales with a grown head/tail
-  if (markingMask) { const out = px === m.master ? new Uint8Array(m.master) : px; applyMarkingV1(out, W, H, markingMask, params.accent, emissiveV1(params)); px = out; }
-  else if (emissiveV1(params)) { const out = px === m.master ? new Uint8Array(m.master) : px, glow = emissiveRoleV1(roleOfLabel.values()); applyEmissiveAccentV1(out, W, H, (i) => roleOfLabel.get(m.labels[i * 4]!) === glow); px = out; }
+  if (markingMask) { const out = px === m.master ? scratch.own(new Uint8Array(m.master)) : px; applyMarkingV1(out, W, H, markingMask, params.accent, emissiveV1(params)); px = out; }
+  else if (emissiveV1(params)) { const out = px === m.master ? scratch.own(new Uint8Array(m.master)) : px, glow = emissiveRoleV1(roleOfLabel.values()); applyEmissiveAccentV1(out, W, H, (i) => roleOfLabel.get(m.labels[i * 4]!) === glow); px = out; }
   // 2. proportion — exactly the stage's transform (2026-09-24, found by the adversarial review: the card drew a nested scaled sub-tree
   //    such as the ears inside a scaled head TWICE and never composed their scales, and pivoted the Centipede's head at the root landmark
   //    while the stage pivots it at Codex's fixed socket). The skeleton program composes M(joint) = M(parent) ∘ S(joint about its pivot),
@@ -66,7 +71,7 @@ export function cardCompositeV1(input: Omit<CardRenderInput, 'size'>): Uint8Arra
     const layerOfLabel = new Map(receipt.labels.map((l) => [l.label, l.layer] as const));
     const chainOf = prop.chainOf;
     const ownerOfLabel = new Map<number, (typeof trees)[number] | null>(receipt.labels.map((l) => [l.label, prop.innermost(l.joint)] as const));
-    const out = new Uint8Array(W * H * 4);
+    const out = scratch.own(new Uint8Array(W * H * 4));
     const blend = (o: number, q: number) => { const a = px[q + 3]!; if (!a) return; const k = a / 255; out[o] = Math.round(px[q]! * k + out[o]! * (1 - k)); out[o + 1] = Math.round(px[q + 1]! * k + out[o + 1]! * (1 - k)); out[o + 2] = Math.round(px[q + 2]! * k + out[o + 2]! * (1 - k)); out[o + 3] = Math.max(a, out[o + 3]!); };
     const blendBase = (layer: 'far' | 'near') => { for (let i = 0; i < W * H; i++) { const l = m.labels[i * 4]!; if (ownerOfLabel.get(l) || (layerOfLabel.get(l) ?? 'far') !== layer) continue; blend(i * 4, i * 4); } };
     const layerOfTree = (t: { joints: ReadonlySet<string> }): 'far' | 'near' => { let near = 0, far = 0; for (const l of receipt.labels) if (t.joints.has(l.joint)) { if (l.layer === 'near') near++; else far++; } return near > far ? 'near' : 'far'; };
@@ -126,10 +131,19 @@ function padMask(m: AlphaMask, W: number, H: number, p: number): AlphaMask {
   return { alpha: out, width: W2, height: H + 2 * p };
 }
 export function renderCardIndividualV1(raw: CardRenderInput): Uint8Array {
+  const scratch = new RasterScratch();
+  try { return renderCard(raw, scratch); } finally { scratch.release(); }
+}
+function renderCard(raw: CardRenderInput, scratch: RasterScratch): Uint8Array {
   const input = padForProportionV1(raw);
+  if (input !== raw) {
+    scratch.own(input.master.master); scratch.own(input.master.labels);
+    if (input.markingMask && input.markingMask !== raw.markingMask) scratch.own(input.markingMask.alpha);
+  }
   const { size } = input; if (!(size > 0 && Number.isInteger(size))) throw new TypeError('card: size');
   const head = input.receipt.landmarks['head'] ?? null;
-  const composite = cardCompositeV1(input), turned = input.diagonal === false ? Object.freeze({ px: composite, width: input.master.width, height: input.master.height, rotated: false }) : diagonalLongBodyV1(composite, input.master.width, input.master.height, head ? head[0] * input.master.width : null);
+  const composite = compositeCard(input, scratch), turned = input.diagonal === false ? Object.freeze({ px: composite, width: input.master.width, height: input.master.height, rotated: false }) : diagonalLongBodyV1(composite, input.master.width, input.master.height, head ? head[0] * input.master.width : null);
+  if (turned.px !== composite) scratch.own(turned.px);
   const px = turned.px, W = turned.width, H = turned.height;
   // 3. crop to the alpha box (square, centred) with a margin, alpha-weighted box downscale to size×size
   const { x0: bx0, y0: by0, x1: bx1, y1: by1 } = alphaBoxV1(px, W, H);

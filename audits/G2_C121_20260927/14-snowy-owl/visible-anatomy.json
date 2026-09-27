@@ -1,0 +1,149 @@
+{
+  "id": "14-snowy-owl",
+  "name": "Snowy Owl",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 21777,
+    "coreRadius": 30,
+    "bodyBox": {
+      "x0": 152,
+      "y0": 142,
+      "x1": 295,
+      "y1": 263
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1069,
+        "pixels": 2328,
+        "box": {
+          "x0": 236,
+          "y0": 109,
+          "x1": 312,
+          "y1": 197
+        },
+        "attach": {
+          "x": 280.4,
+          "y": 154.6,
+          "relX": 0.9,
+          "relY": 0.1
+        },
+        "dir": {
+          "x": 0.03,
+          "y": -1
+        },
+        "class": "top",
+        "length": 63.6
+      },
+      {
+        "k": 1,
+        "frac": 0.1124,
+        "pixels": 2447,
+        "box": {
+          "x0": 94,
+          "y0": 202,
+          "x1": 165,
+          "y1": 276
+        },
+        "attach": {
+          "x": 152.4,
+          "y": 237.1,
+          "relX": 0,
+          "relY": 0.79
+        },
+        "dir": {
+          "x": -0.94,
+          "y": 0.35
+        },
+        "class": "rear",
+        "length": 70.2
+      },
+      {
+        "k": 2,
+        "frac": 0.0683,
+        "pixels": 1488,
+        "box": {
+          "x0": 172,
+          "y0": 264,
+          "x1": 238,
+          "y1": 305
+        },
+        "attach": {
+          "x": 201.5,
+          "y": 264,
+          "relX": 0.35,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.21,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 54.9
+      },
+      {
+        "k": 3,
+        "frac": 0.0544,
+        "pixels": 1184,
+        "box": {
+          "x0": 235,
+          "y0": 264,
+          "x1": 298,
+          "y1": 300
+        },
+        "attach": {
+          "x": 249.5,
+          "y": 264,
+          "relX": 0.68,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.54,
+          "y": 0.84
+        },
+        "class": "limb-down",
+        "length": 60.4
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 181,
+        "x1": 238,
+        "cx": 211
+      },
+      {
+        "x0": 245,
+        "x1": 291,
+        "cx": 268.9
+      },
+      {
+        "x0": 295,
+        "x1": 298,
+        "cx": 296.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

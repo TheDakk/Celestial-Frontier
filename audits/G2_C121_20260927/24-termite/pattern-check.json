@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Termite",
+  "masterSha256": "9dd3255e863880d5579067d32c9baa123f213b9f9e0d18e22c3934de7e117e32",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

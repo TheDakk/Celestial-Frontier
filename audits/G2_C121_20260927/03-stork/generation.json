@@ -1,0 +1,13 @@
+{
+  "id": "03-stork",
+  "name": "Stork",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-74144588-a21d-42d2-adbd-ef99dfaf3a34.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "ec3a22b439b261cb55cab3cdaebcbe498864a397bb003c06cc785ecf242cb325",
+  "bytes": 1103989,
+  "promptSha256": "cbbff174af16f1d40751423432774cb858a611930c471240acf8bdeba5e957d1",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
