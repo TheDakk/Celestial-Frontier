@@ -1,0 +1,103 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "02-blenny",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "00c536117708ad6eba37883d562d72b59728babe96c3ca9466e084ac1b5788de",
+ "subjectSourceSha256": "7754a4f49897941b97bd65e13f963b4b34c8592668379c11244f4b8b6ec44766",
+ "identity": {
+  "name": "Blenny",
+  "family": "fish",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Blenny\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3689297165\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"1\"]]]]",
+  "seed": 3689297165,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "tang",
+  "authoringSha256": "7ca39db0dde7740e946443b2d9749c47cdb7de746cb3be6abf7d810fca21f7e4",
+  "masterSha256": "e6970b7e7d2320aca6022ae2b74117f10f7d38e66fc5b81568b0061ce65f8ffe"
+ },
+ "habitat": {
+  "profileId": "fish",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "d2ccfa1f11f16e8ff8d41edcc9b12196663a8495490696b1a80ecd71276f6e15",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group fish (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0489,
+     "class": "top",
+     "attach": {
+      "x": 361.8,
+      "y": 192.7,
+      "relX": 1,
+      "relY": 0.41
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1235,
+     "class": "rear",
+     "attach": {
+      "x": 100,
+      "y": 209,
+      "relX": 0,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0197,
+     "class": "limb-down",
+     "attach": {
+      "x": 298.5,
+      "y": 244,
+      "relX": 0.75,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0061,
+     "class": "limb-down",
+     "attach": {
+      "x": 179,
+      "y": 249,
+      "relX": 0.3,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "tang",
+   "byClass": {
+    "rear": 2,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

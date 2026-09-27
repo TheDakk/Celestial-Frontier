@@ -1,0 +1,103 @@
+{
+  "name": "Red Panda",
+  "family": "quadruped",
+  "species": {
+    "name": "Red Panda",
+    "aspect": 1.9,
+    "headFrac": 0.25,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "long bushy tail with pale rings",
+      "white face mask with rust tear-stripes below the eyes",
+      "rusty-red coat with jet-black legs and belly"
+    ],
+    "note": "raccoon-sized, not bear-sized, and unrelated to the giant panda"
+  },
+  "genome": {
+    "seed": 155729568,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 14,
+    "body": 2,
+    "loco": 5,
+    "trait": 2,
+    "size": 1,
+    "diet": 4,
+    "head": 8,
+    "limbs": 5,
+    "skin": 2,
+    "tail": 4,
+    "pattern": 0,
+    "eyes": 5,
+    "behavior": 2,
+    "habitat": 10,
+    "detail": 1,
+    "accent": 16,
+    "temper": 3,
+    "sense": 0,
+    "repro": 5,
+    "life": 4,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Red Panda"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Red Panda\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"155729568\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"2\"]]]]",
+  "index": 94,
+  "profile": {
+    "id": "small-clawed-mammal",
+    "names": [
+      "Kinkajou",
+      "Coati",
+      "Civet",
+      "Mongoose",
+      "Meerkat",
+      "Red Panda",
+      "Raccoon",
+      "Badger",
+      "Weasel",
+      "Stoat",
+      "Mink",
+      "Marten",
+      "Fisher",
+      "Wolverine",
+      "Possum",
+      "Porcupine",
+      "Squirrel",
+      "Chipmunk",
+      "Mouse",
+      "Vole",
+      "Mole",
+      "Shrew",
+      "Hedgehog",
+      "Lemming",
+      "Marmot",
+      "Prairie Dog",
+      "Ground Squirrel",
+      "Gopher",
+      "Hamster",
+      "Gerbil",
+      "Hyrax",
+      "Agouti",
+      "Guinea Pig",
+      "Rat",
+      "Tree Shrew",
+      "Wombat",
+      "Tasmanian Devil",
+      "Quoll"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

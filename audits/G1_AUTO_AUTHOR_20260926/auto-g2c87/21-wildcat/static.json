@@ -1,0 +1,379 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "PASS_STATIC",
+  "sourceHead": "9361c5ef6073d67ebc3a1140201408c1f701b716",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.14085194335636902,
+      "maxGapPx": 0.00008705059681642213,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.11400945056042554,
+      "maxGapPx": 0.00007960873987427819,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:walk",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.22438499162192288,
+      "maxGapPx": 0.0000760824036873617,
+      "maxEndpointError": 3.1401849173675503e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:trot",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.11837087494421872,
+      "maxGapPx": 0.00008705059681642213,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:gallop",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.13022410911401805,
+      "maxGapPx": 0.00007876006368292974,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:hop",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007876006376331848,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:bite",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.1347007938770885,
+      "maxGapPx": 0.00007640015200506983,
+      "maxEndpointError": 2.2887833992611187e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:claw",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.1347007938770885,
+      "maxGapPx": 0.00007402320232576307,
+      "maxEndpointError": 2.2887833992611187e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:gore",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.1347007938770885,
+      "maxGapPx": 0.00007478247683046155,
+      "maxEndpointError": 2.2887833992611187e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:tail",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.1347007938770885,
+      "maxGapPx": 0.0000787600638437072,
+      "maxEndpointError": 2.9893669801409088e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:headbutt",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.1347007938770885,
+      "maxGapPx": 0.00007478247683046155,
+      "maxEndpointError": 2.2887833992611187e-16,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.17988094843145144,
+      "maxGapPx": 0.00007492339596510734,
+      "maxEndpointError": 3.376611507232129e-16,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.2130995791286978,
+      "maxGapPx": 0.0000731759895836748,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.000079343920573933,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.13285658817113669,
+      "maxGapPx": 0.0000735385934156832,
+      "maxEndpointError": 4.965068306494546e-16,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.13821224043968094,
+      "maxGapPx": 0.00007331409352476211,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.24342448506090572,
+      "maxGapPx": 0.0000791527025147731,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.2334652608824972,
+      "maxGapPx": 0.00007077042628950645,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:kick",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00007158676661173285,
+      "maxEndpointError": 0,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "f2307441b097aefc9eedaa64cfe521eaf13f08955610bc3c738487be9832cf7a",
+  "bindingHash": "a225c13b598b375fab718b6bc69f3d177bbb80198eec668a44959854ed80507a",
+  "family": "quadruped",
+  "contacts": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "realm": "land",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:walk",
+    "approach:trot",
+    "approach:gallop",
+    "approach:hop",
+    "melee:bite",
+    "melee:claw",
+    "melee:gore",
+    "melee:tail",
+    "melee:headbutt",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed",
+    "melee:kick"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 1673,
+    "attemptedSamples": 1673,
+    "status": "PASS",
+    "maxPaintDriftPx": 0.24082247648061333,
+    "maxGapPx": 0.00009340336883749298,
+    "maxEndpointError": 4.0029660424867215e-16,
+    "exactRest": true
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 3986.214683689177
+      },
+      {
+        "id": "alert",
+        "startMs": 3986.214683689177,
+        "endMs": 4998.214683689177
+      },
+      {
+        "id": "approach:walk",
+        "startMs": 4998.214683689177,
+        "endMs": 6210.214683689177
+      },
+      {
+        "id": "approach:trot",
+        "startMs": 6210.214683689177,
+        "endMs": 7422.214683689177
+      },
+      {
+        "id": "approach:gallop",
+        "startMs": 7422.214683689177,
+        "endMs": 8634.214683689177
+      },
+      {
+        "id": "approach:hop",
+        "startMs": 8634.214683689177,
+        "endMs": 9846.214683689177
+      },
+      {
+        "id": "melee:bite",
+        "startMs": 9846.214683689177,
+        "endMs": 11144.881350355843
+      },
+      {
+        "id": "melee:claw",
+        "startMs": 11144.881350355843,
+        "endMs": 12443.54801702251
+      },
+      {
+        "id": "melee:gore",
+        "startMs": 12443.54801702251,
+        "endMs": 13742.214683689175
+      },
+      {
+        "id": "melee:tail",
+        "startMs": 13742.214683689175,
+        "endMs": 15040.881350355841
+      },
+      {
+        "id": "melee:headbutt",
+        "startMs": 15040.881350355841,
+        "endMs": 16339.548017022507
+      },
+      {
+        "id": "cast",
+        "startMs": 16339.548017022507,
+        "endMs": 17741.548017022506
+      },
+      {
+        "id": "hit",
+        "startMs": 17741.548017022506,
+        "endMs": 18983.548017022506
+      },
+      {
+        "id": "dodge",
+        "startMs": 18983.548017022506,
+        "endMs": 20055.548017022506
+      },
+      {
+        "id": "faint",
+        "startMs": 20055.548017022506,
+        "endMs": 21367.548017022506
+      },
+      {
+        "id": "victory",
+        "startMs": 21367.548017022506,
+        "endMs": 22759.548017022506
+      },
+      {
+        "id": "tame",
+        "startMs": 22759.548017022506,
+        "endMs": 24191.548017022506
+      },
+      {
+        "id": "feed",
+        "startMs": 24191.548017022506,
+        "endMs": 25563.548017022506
+      },
+      {
+        "id": "melee:kick",
+        "startMs": 25563.548017022506,
+        "endMs": 26862.214683689173
+      }
+    ],
+    "durationMs": 27862.214683689173
+  },
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/21-wildcat/fit/record.json",
+      "sha256": "8336702bb369478e59df0901afeaeb7514a83ffea7d42a049fa30eb5061332b9",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/21-wildcat/fit/binding.json",
+      "sha256": "96eed470bfe1b0f36063282420ab625364f12646b685a8a0dcd19f431282883c",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/21-wildcat/fit/parts/manifest.json",
+      "sha256": "a99f3b58a70255e8c1d8ab9f5a194a8761b2560b8bb883a09785eebd2e92f00b",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/21-wildcat/fit/parts/atlas/21-wildcat.png",
+      "sha256": "fccade33707251b3f1046f61bd6a6e979be7282dca36b54df3a3a68a0cb33f24",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/21-wildcat/fit/parts/keyed.png",
+      "sha256": "cfcd5258a1090396866222c9cfc3b6e60c805639e87fe9adbfc633f14dc9c222",
+      "unchanged": true
+    }
+  ]
+}

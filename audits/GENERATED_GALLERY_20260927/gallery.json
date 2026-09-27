@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 94,
+ "total": 108,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -213,6 +213,34 @@
    "note": "clean (C83 layout)"
   },
   {
+   "family": "Quadrupeds",
+   "name": "Red Panda",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/18-red-panda",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Pampas Fox",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/19-pampas-fox",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wildcat",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/21-wildcat",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Spectacled Bear",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/23-spectacled-bear",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Snakes (serpent strip author)",
    "name": "Python",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-python",
@@ -423,6 +451,34 @@
    "note": "clean"
   },
   {
+   "family": "Birds",
+   "name": "Roadrunner",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/11-roadrunner",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Sandgrouse",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/12-sandgrouse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Woodpecker",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/14-woodpecker",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Eider Duck",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/16-eider-duck",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -551,9 +607,9 @@
   {
    "family": "Fish",
    "name": "Mackerel",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/01-mackerel",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "acceptable; unwelded"
+   "note": "Codex fixed fish recipe; diagonal chest slit in late pose (Codex)"
   },
   {
    "family": "Fish",
@@ -572,9 +628,9 @@
   {
    "family": "Fish",
    "name": "Sardine",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/04-sardine",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "acceptable; unwelded"
+   "note": "Codex fixed fish recipe; whole; fine seams (Codex)"
   },
   {
    "family": "Fish",
@@ -586,44 +642,86 @@
   {
    "family": "Fish",
    "name": "Mullet",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/06-mullet",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "acceptable; unwelded"
+   "note": "Codex fixed fish recipe; small belly edge (Codex)"
   },
   {
    "family": "Fish",
    "name": "Tarpon",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/07-tarpon",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "acceptable; unwelded"
+   "note": "Codex fixed fish recipe; belly slit in late pose (Codex)"
   },
   {
    "family": "Fish",
    "name": "Grouper",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/01-grouper",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01",
    "report": "DIAGNOSTIC_PASS",
-   "note": "gill hole (unwelded)"
+   "note": "Codex fixed fish recipe; gill hole gone"
   },
   {
    "family": "Fish",
    "name": "Barracuda",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/02-barracuda",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "Codex fixed fish recipe; whole; fine seams (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Sailfish",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "Codex fixed fish recipe; chest crease (Codex)"
+  },
+  {
+   "family": "Fish",
+   "name": "Mahi-Mahi",
+   "nativeDir": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "Codex fixed fish recipe; whole; cracks closed"
+  },
+  {
+   "family": "Fish",
+   "name": "Goby",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/01-goby",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Fish",
+   "name": "Wrasse",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/03-wrasse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Fish",
+   "name": "Damselfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/04-damselfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small crack line (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Clownfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/05-clownfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small line (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Butterflyfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/06-butterflyfish",
    "report": "DIAGNOSTIC_PASS",
    "note": "small crack (unwelded)"
   },
   {
    "family": "Fish",
-   "name": "Sailfish",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/05-sailfish",
+   "name": "Surgeonfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/07-surgeonfish",
    "report": "DIAGNOSTIC_PASS",
-   "note": "body cracks (unwelded)"
-  },
-  {
-   "family": "Fish",
-   "name": "Mahi-Mahi",
-   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/07-mahi-mahi",
-   "report": "DIAGNOSTIC_PASS",
-   "note": "vertical cracks (unwelded)"
+   "note": "clean"
   },
   {
    "family": "Insects",

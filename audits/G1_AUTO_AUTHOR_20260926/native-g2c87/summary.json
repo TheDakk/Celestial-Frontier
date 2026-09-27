@@ -1,0 +1,173 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C87_20260927",
+ "tag": "g2c87",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-goby",
+  "03-wrasse",
+  "04-damselfish",
+  "05-clownfish",
+  "06-butterflyfish",
+  "07-surgeonfish",
+  "10-snowy-owl",
+  "11-roadrunner",
+  "12-sandgrouse",
+  "14-woodpecker",
+  "16-eider-duck",
+  "18-red-panda",
+  "19-pampas-fox",
+  "21-wildcat",
+  "23-spectacled-bear"
+ ],
+ "refused": [
+  {
+   "id": "02-blenny",
+   "reason": "unexplained-anatomy: 11.9% of the paint lies away from the body and in no part (reference 3.5%)"
+  },
+  {
+   "id": "25-angelfish-marine",
+   "reason": "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 4.6%)"
+  },
+  {
+   "id": "09-owl",
+   "reason": "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 2.2%)"
+  },
+  {
+   "id": "13-turkey",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 2% paint (reference 75%)"
+  },
+  {
+   "id": "15-guillemot",
+   "reason": "unexplained-anatomy: 7.7% of the paint lies away from the body and in no part (reference 2.4%)"
+  },
+  {
+   "id": "17-coati",
+   "reason": "facing: the mirrored painting matches quadruped better (0.0204 < 0.0353)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "20-striped-hyena",
+   "static": "RED"
+  },
+  {
+   "id": "22-black-bear",
+   "static": "RED"
+  },
+  {
+   "id": "24-hyrax",
+   "static": "RED"
+  }
+ ],
+ "native": [
+  {
+   "id": "01-goby",
+   "name": "Goby",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "03-wrasse",
+   "name": "Wrasse",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "04-damselfish",
+   "name": "Damselfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "05-clownfish",
+   "name": "Clownfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "06-butterflyfish",
+   "name": "Butterflyfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "07-surgeonfish",
+   "name": "Surgeonfish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "10-snowy-owl",
+   "name": "Snowy Owl",
+   "family": "biped-bird",
+   "exit": 1,
+   "status": "FAIL"
+  },
+  {
+   "id": "11-roadrunner",
+   "name": "Roadrunner",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "12-sandgrouse",
+   "name": "Sandgrouse",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "14-woodpecker",
+   "name": "Woodpecker",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "16-eider-duck",
+   "name": "Eider Duck",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "18-red-panda",
+   "name": "Red Panda",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "19-pampas-fox",
+   "name": "Pampas Fox",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "21-wildcat",
+   "name": "Wildcat",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "23-spectacled-bear",
+   "name": "Spectacled Bear",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

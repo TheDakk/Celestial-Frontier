@@ -1,0 +1,119 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "12-sandgrouse",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "8ef26e194950c91f692a1afab80239dc878a983fb95c9cd0f1896e5dbcb1ac99",
+ "subjectSourceSha256": "3cfb05735aba88f9e65f9faecad46c35d4e2b7c4a4c46a758544a96d765b2e8c",
+ "identity": {
+  "name": "Sandgrouse",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sandgrouse\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"2819982114\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "seed": 2819982114,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "02-pigeon",
+  "authoringSha256": "100c06573fd9c77f9b62d4723609fd1f0dd110d1b7c16cd7df3daaae174099f1",
+  "masterSha256": "64746615ffdc4c8648153537fc25e2b5e03671dceb9f9880186a71e4ae3151db"
+ },
+ "habitat": {
+  "profileId": "ground-foraging-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "2458c82bbd8f37b007dbba5ae84cc60975cf0f4ecad7d901ee633e684483d7c2",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group ground-foraging-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.115,
+     "class": "top",
+     "attach": {
+      "x": 281.2,
+      "y": 178.3,
+      "relX": 0.92,
+      "relY": 0.13
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1362,
+     "class": "rear",
+     "attach": {
+      "x": 176,
+      "y": 216.5,
+      "relX": -0.01,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0307,
+     "class": "limb-down",
+     "attach": {
+      "x": 201,
+      "y": 251,
+      "relX": 0.21,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0353,
+     "class": "limb-down",
+     "attach": {
+      "x": 240.5,
+      "y": 251,
+      "relX": 0.56,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "02-pigeon",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

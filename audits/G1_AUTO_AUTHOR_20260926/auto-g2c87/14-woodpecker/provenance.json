@@ -1,0 +1,111 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "14-woodpecker",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "08cf942e09969e6aefdb0874f6d6fbe31ff5e448ee17e8f8967a744072c31eb4",
+ "subjectSourceSha256": "ad01830a85b56572617da174142e178e5c74172b0babe7213c570f9947643787",
+ "identity": {
+  "name": "Woodpecker",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Woodpecker\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"4090168211\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "seed": 4090168211,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "gull",
+  "authoringSha256": "9d5ce3cc7a41cf6a139848982114319c2374828a04e313c38619d8dce938aa73",
+  "masterSha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9"
+ },
+ "habitat": {
+  "profileId": "bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "080136b779f700a6c6860d1d4eb9593834bb0258212903c6b3656f9a8aca3675",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2048,
+     "class": "top",
+     "attach": {
+      "x": 247.5,
+      "y": 162,
+      "relX": 0.77,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.007,
+     "class": "front",
+     "attach": {
+      "x": 269,
+      "y": 186,
+      "relX": 1.01,
+      "relY": 0.25
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.2385,
+     "class": "limb-down",
+     "attach": {
+      "x": 192.8,
+      "y": 246.9,
+      "relX": 0.16,
+      "relY": 0.92
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "ground": 7
+  },
+  "reference": {
+   "subject": "gull",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "groundContacts": 7,
+   "detachedIslands": 0
+  },
+  "semantic": "UNRESOLVED",
+  "unassigned": [],
+  "mergedChains": [
+   "legFar+legNear"
+  ],
+  "attestation": "geometric only: NOT an all-visible attestation",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

@@ -1,0 +1,141 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "18-red-panda",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "3a60fe3e897e6b7516a6dbc36b5b14d39f0ca23e107c002a355f71639247cef1",
+ "subjectSourceSha256": "a039f93c2d7c3dfbe334ec79591e19ad40408186983d328d8403fd3fa8924d37",
+ "identity": {
+  "name": "Red Panda",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Red Panda\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"155729568\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"2\"]]]]",
+  "seed": 155729568,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "05-cat-v2",
+  "authoringSha256": "5907b3ead198f8fda54dec8f6e223121b0eeccea8b0c0833363a8368c8ec50c6",
+  "masterSha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0195,
+     "class": "top",
+     "attach": {
+      "x": 300.5,
+      "y": 156,
+      "relX": 0.85,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0082,
+     "class": "other",
+     "attach": {
+      "x": 324,
+      "y": 182.5,
+      "relX": 1.01,
+      "relY": 0.34
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.2408,
+     "class": "rear",
+     "attach": {
+      "x": 174.3,
+      "y": 210.2,
+      "relX": 0.04,
+      "relY": 0.72
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0506,
+     "class": "limb-down",
+     "attach": {
+      "x": 214.5,
+      "y": 223,
+      "relX": 0.3,
+      "relY": 0.89
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0379,
+     "class": "limb-down",
+     "attach": {
+      "x": 252.5,
+      "y": 231,
+      "relX": 0.55,
+      "relY": 1
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0515,
+     "class": "limb-down",
+     "attach": {
+      "x": 280.5,
+      "y": 231.5,
+      "relX": 0.73,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "other": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "05-cat-v2",
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "other": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}
