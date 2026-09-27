@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 61,
+ "total": 69,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -339,6 +339,20 @@
    "note": "clean"
   },
   {
+   "family": "Birds",
+   "name": "Spoonbill",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/13-spoonbill",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "thin crack across the wing"
+  },
+  {
+   "family": "Birds",
+   "name": "Kestrel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/14-kestrel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -421,6 +435,48 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/08-tetra",
    "report": "DIAGNOSTIC_PASS",
    "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Pike",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/01-pike",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "body cracks (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Bass",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/02-bass",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "body cracks (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Char",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/03-char",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "nearly clean; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Sturgeon",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/04-sturgeon",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "gill seam line (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Paddlefish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/05-paddlefish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "hit fighter fragments: NOT acceptable"
+  },
+  {
+   "family": "Fish",
+   "name": "Goldfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/08-goldfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small body crack; unwelded"
   },
   {
    "family": "Insects",

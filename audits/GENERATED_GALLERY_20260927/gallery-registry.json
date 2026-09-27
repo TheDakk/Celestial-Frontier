@@ -449,5 +449,69 @@
   "note": "clean",
   "batch": "audits/G2_C72_20260927",
   "tag": "g2c72c"
+ },
+ {
+  "family": "fish",
+  "name": "Pike",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/01-pike",
+  "note": "body cracks (unwelded)",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "fish",
+  "name": "Bass",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/02-bass",
+  "note": "body cracks (unwelded)",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "fish",
+  "name": "Char",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/03-char",
+  "note": "nearly clean; unwelded",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "fish",
+  "name": "Sturgeon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/04-sturgeon",
+  "note": "gill seam line (unwelded)",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "fish",
+  "name": "Paddlefish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/05-paddlefish",
+  "note": "hit fighter fragments: NOT acceptable",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "fish",
+  "name": "Goldfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/08-goldfish",
+  "note": "small body crack; unwelded",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Spoonbill",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/13-spoonbill",
+  "note": "thin crack across the wing",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Kestrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/14-kestrel",
+  "note": "clean",
+  "batch": "audits/G2_C76_20260927",
+  "tag": "g2c76"
  }
 ]
