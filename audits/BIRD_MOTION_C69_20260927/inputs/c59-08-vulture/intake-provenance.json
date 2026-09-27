@@ -1,0 +1,85 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "55f2e45280ee1e510175aedc785787d8b87dd0c0",
+  "helperSha256": "a77ac9896f3414c540cf5fbd9e55418f6dcd58d7658ec3bfa42983c4a8c6437d",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/packet/master.png",
+      "sha256": "973ea9f3ea1254fd5f3107c34fb76cf738940fead74af9e9ff2c48d936267e30"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/packet/authoring.json",
+      "sha256": "ed535a743acaa69fc60ca737b3939287cf399b39895f6cc85e73785010eeed6d"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/packet/subject-source.json",
+      "sha256": "d2c93a4fa28ec6c2ceaf9c417bffb975c979dba50b460452228c88ce7cc15562"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "6211fb38a78dbae3ed08ca8b8869ddbf4bd5711086714bb2641e5235faa5fc1f",
+  "bindingHash": "9b717576f744afe94fc4f8a96e9d61bcd8998ebb6255abe55c155f320862bdf8",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingFarRoot",
+    "wingFarTip",
+    "wingNearRoot",
+    "wingNearTip",
+    "tailFan",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/packet/master.png",
+      "sha256": "973ea9f3ea1254fd5f3107c34fb76cf738940fead74af9e9ff2c48d936267e30",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/packet/authoring.json",
+      "sha256": "ed535a743acaa69fc60ca737b3939287cf399b39895f6cc85e73785010eeed6d",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/packet/subject-source.json",
+      "sha256": "d2c93a4fa28ec6c2ceaf9c417bffb975c979dba50b460452228c88ce7cc15562",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/packet/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

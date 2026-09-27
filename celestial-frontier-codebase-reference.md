@@ -7317,3 +7317,5 @@ The true-alpha authored intake now uses authored-region-owners.mjs for one sourc
 C67 insect faint retargeting: root/thorax only, original angular reserve and runtime guards; full packet and native outcomes in audits/INSECT_CONTACT_C67_20260927. Cicada non-faint compression and Termite wing/body paint ownership remain open. Numerical passes do not grant visual admission.
 
 C68 body-seam research status2026-09-27: observed axial remainder placement plus explicit dorsal boundaries improves three fish candidates under unchanged static/native limits; no default/library admission. Arctic Fox nape cut and nonopaque chest sampling remain open. Runtime sampling eligibility/alpha conservation unchanged; D26 is finisher-only. See audits/BODY_SEAMS_C68_20260927.
+
+Bird motion update (matches code2026-09-27):biped-bird joins the existing constant-gain faint author; all author reserve/search and runtime limits remain fixed. Hawk fullstatic/nativePASS, Dove faintPASS; painted-foot endpoint gap and visual ownership remain open. See CREATURE_ANIMATION.md and audits/BIRD_MOTION_C69_20260927.

@@ -22,7 +22,7 @@ export interface StanceEnvelope {
  readonly torsoGain:number; readonly angleReserve:number; readonly samples:number;
 }
 export function faintStanceEnvelope(card:BodyCard,tl:MotionTimeline,sample:(ms:number)=>MotionPose):StanceEnvelope|null {
- if(!['quadruped','insect'].includes(card.template.id)||tl.actionId!=='faint'||(card.realm!=='land'&&card.realm!=='amphibious'))return null;
+ if(!['quadruped','insect','biped-bird'].includes(card.template.id)||tl.actionId!=='faint'||(card.realm!=='land'&&card.realm!=='amphibious'))return null;
  const base=familyContract(card.template.id),parents=new Map(base.graph),contactChains=familyContactChains(base);
  // Hidden ears/tails do not remove a planted leg. A different leg graph keeps
  // its existing motion and must pass its own unchanged runtime guards.

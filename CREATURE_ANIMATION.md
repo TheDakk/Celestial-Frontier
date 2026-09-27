@@ -845,3 +845,7 @@ The existing continuous faint envelope now derives chains from the family contra
 ### Body seam diagnostic candidates — tooling status2026-09-27
 
 C68 keeps source images and rig records unchanged while moving root-remainder fish pixels onto the observed axis, then joining only observed fin boundaries. Trout/Herring/Cod candidates pass full static/native and improve reviewed silhouettes; they require independent held-out/film review before author/library adoption. Arctic Fox nape candidate remains visually unresolved. Tiger/Ocelot/Fisher hairlines coincide with zero eligible opaque seam guards on mostlyalpha250–254art; D26 remains finisher-only and the sampling policy is unchanged. Evidence:audits/BODY_SEAMS_C68_20260927.
+
+### Bird faint motion — matches code2026-09-27
+
+The unchanged geometry-derived faint author now supports biped-bird contact chains as well as quadrupeds/insects. Hawk and Dove faint pass actual painted supports; Hawk fullstatic/nativePASS retains a visible neck fragment. Pigeon/Vulture and hit/tame remain blocked by endpoint-only author probes versus actual painted offsets. No support/limit or library admission changes. Evidence:audits/BIRD_MOTION_C69_20260927.
