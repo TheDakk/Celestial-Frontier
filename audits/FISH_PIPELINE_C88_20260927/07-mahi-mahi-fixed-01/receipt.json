@@ -1,0 +1,264 @@
+{
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/FISH_PIPELINE_C88_20260927/inputs/07-mahi-mahi",
+  "sourceRecordSha256": "eb6a908bb2be007362b8c46c42c3f05499e5ccf3eed1b3b4015cc28b334693ae",
+  "sourceLabelsSha256": "6a1d139a549179764e2e4c8b4f3db7bf10713cb6f5796b52db6b73fba5ffdacb",
+  "newLabelsSha256": "fbeb522c7ac296efdee1df2b85689528f9aa81613884ea5a34865403eb5c790e",
+  "newDecodedLabelsSha256": "0ab008102eb2daced859b7a4fa493cb64481d4b2506952e1ff380467ac0fa86f",
+  "sourceMasterSha256": "d4582b15b20e2a84c19c6c5bbb23e7923e77119b7a468843523ddef69dcad25a",
+  "helperSha256": "a73140ee3f90e5a26b4f23acb6dcd7b0b973020105b2b5fc83340113609315ad",
+  "firstAxisHelperSha256": "fabef6f0d2d583abdbddd3d29792369aa61ffc0c739196992d0a8b8094e52d11",
+  "tailIdentity": {
+    "tail": "caudal",
+    "stalk": "body-5",
+    "tailOwner": 6,
+    "stalkOwner": 13,
+    "sharedEdges": 75
+  },
+  "tailIdentityHelperSha256": "27b63227ed5f3fdb8079f74b54ccefc0335432f8b1c12bf483a07eec3ef0b529",
+  "placementOnly": true,
+  "verdictChanged": false,
+  "recipeUnchanged": true,
+  "gap": {
+    "mode": "tail-axial",
+    "moved": 10701,
+    "phases": [
+      {
+        "phase": "tail",
+        "changedPixels": 0,
+        "reason": "No connected remainder-to-tail gap",
+        "components": []
+      },
+      {
+        "phase": "axial",
+        "moved": 10701,
+        "protectedOwners": 1559997,
+        "counts": {
+          "8": 5101,
+          "9": 689,
+          "10": 1139,
+          "11": 407,
+          "12": 3129,
+          "13": 236
+        },
+        "anchor": [
+          981,
+          611
+        ],
+        "rootAnchorRadiusPx": 8,
+        "originalRgbaChanged": false,
+        "nonRemainderChanges": 0,
+        "axis": [
+          [
+            0.7918660287081339,
+            0.4897129186602871
+          ],
+          [
+            0.7384370015948963,
+            0.48229665071770333
+          ],
+          [
+            0.6579744816586922,
+            0.47854864433811806
+          ],
+          [
+            0.569377990430622,
+            0.4763157894736842
+          ],
+          [
+            0.4778309409888358,
+            0.47878787878787876
+          ],
+          [
+            0.3815789473684211,
+            0.4846092503987241
+          ],
+          [
+            0.28046251993620414,
+            0.4901913875598086
+          ]
+        ],
+        "scope": "Diagnostic placement, not anatomy or visual admission"
+      }
+    ],
+    "originalPartsDifferentChannels": 0,
+    "keyedRgbaSha256": "2273f49b62ff861c133d9bbffc4a6ff82f90013a8feacb51b8be06a328442e0e",
+    "nonRemainderChanges": 0,
+    "originalRgbaChanged": false
+  },
+  "intake": {
+    "id": "07-mahi-mahi-fixed-01",
+    "parts": 13,
+    "atlasSize": {
+      "width": 989,
+      "height": 795
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "623318ddb8c3f4438ef073f7c354e2494b1ffc9073474a10bcc1f7ca5a7f5692",
+    "sourceVertices": 1152,
+    "vertices": 1230,
+    "sharedSupports": 390,
+    "pins": 265,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 10,
+    "excludedOverlaps": 15,
+    "observedExcludedBoundaries": 15,
+    "weldedExcludedBoundaries": 10,
+    "independentExcludedBoundaries": 5,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body-0",
+        "dorsal"
+      ],
+      [
+        "body-0",
+        "far-pectoral"
+      ],
+      [
+        "body-0",
+        "near-pectoral"
+      ],
+      [
+        "body-1",
+        "near-pectoral"
+      ],
+      [
+        "body-2",
+        "dorsal"
+      ],
+      [
+        "body-2",
+        "near-pectoral"
+      ],
+      [
+        "body-3",
+        "dorsal"
+      ],
+      [
+        "body-4",
+        "dorsal"
+      ],
+      [
+        "body-5",
+        "dorsal"
+      ],
+      [
+        "body",
+        "dorsal"
+      ]
+    ],
+    "sourceCoordinateChanges": 0,
+    "fixedCandidateRecipe": "tail-gap + axial remainder + observed body/pectoral/dorsal boundaries + far-pectoral five-ring collar",
+    "sourceOwnerSha256": "5086e5e4f491e9ad62fccd375503bb7eb9cd85d36e2cddd54a71ce847f021b95",
+    "virtualOwnerSha256": "565282bd692f541478bbeefb0e6656eda820de54e90a4ff78fe0f4e2c3daabfe"
+  },
+  "joins": [
+    {
+      "name": "body--body-0",
+      "sourceEdges": 105
+    },
+    {
+      "name": "body--head",
+      "sourceEdges": 161
+    },
+    {
+      "name": "body-0--body-1",
+      "sourceEdges": 240
+    },
+    {
+      "name": "body-1--body-2",
+      "sourceEdges": 143
+    },
+    {
+      "name": "body-1--dorsal",
+      "sourceEdges": 141
+    },
+    {
+      "name": "body-2--body-3",
+      "sourceEdges": 237
+    },
+    {
+      "name": "body-3--body-4",
+      "sourceEdges": 205
+    },
+    {
+      "name": "body-4--body-5",
+      "sourceEdges": 142
+    },
+    {
+      "name": "body-5--caudal",
+      "sourceEdges": 75
+    },
+    {
+      "name": "head--jaw",
+      "sourceEdges": 160
+    }
+  ],
+  "excluded": [
+    {
+      "name": "body-0|dorsal",
+      "sourceEdges": 128
+    },
+    {
+      "name": "body-0|far-pectoral",
+      "sourceEdges": 167
+    },
+    {
+      "name": "body-0|head",
+      "sourceEdges": 152
+    },
+    {
+      "name": "body-0|near-pectoral",
+      "sourceEdges": 239
+    },
+    {
+      "name": "body-1|near-pectoral",
+      "sourceEdges": 227
+    },
+    {
+      "name": "body-2|dorsal",
+      "sourceEdges": 107
+    },
+    {
+      "name": "body-2|near-pectoral",
+      "sourceEdges": 166
+    },
+    {
+      "name": "body-3|dorsal",
+      "sourceEdges": 109
+    },
+    {
+      "name": "body-4|dorsal",
+      "sourceEdges": 157
+    },
+    {
+      "name": "body-5|dorsal",
+      "sourceEdges": 100
+    },
+    {
+      "name": "body|dorsal",
+      "sourceEdges": 21
+    },
+    {
+      "name": "caudal|dorsal",
+      "sourceEdges": 62
+    },
+    {
+      "name": "dorsal|head",
+      "sourceEdges": 10
+    },
+    {
+      "name": "far-pectoral|head",
+      "sourceEdges": 19
+    },
+    {
+      "name": "far-pectoral|near-pectoral",
+      "sourceEdges": 112
+    }
+  ]
+}

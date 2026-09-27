@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Mackerel",
+    "fit": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-fixed-01/fit",
+    "method": "Full-size 1024x576 native frame inspection by Codex",
+    "frames": [
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn1-hit-reaction-50.png",
+        "sha256": "e6c510640750633f11227323a46a8586905249cb8bf4c565d1fd44f0e07a8b7a"
+      },
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/01-mackerel-native-01/turn3-hit-idle-90.png",
+        "sha256": "62915df529271410b465ce6a1085b2c338b2e3f90042de9c1dd295b6213648c5"
+      }
+    ],
+    "observation": "Full-size reaction and late idle: body/back and tail remain connected, but a dark diagonal chest/pectoral slit is visible, especially on the reacting left fish. This remains a visual fault despite the numeric pass.",
+    "status": "DIAGNOSTIC_NOT_VISUALLY_ADMITTED",
+    "scope": "Two named poses per full retained film; not exhaustive visual acceptance"
+  },
+  {
+    "name": "Sardine",
+    "fit": "audits/FISH_PIPELINE_C88_20260927/04-sardine-fixed-01/fit",
+    "method": "Full-size 1024x576 native frame inspection by Codex",
+    "frames": [
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn1-hit-reaction-50.png",
+        "sha256": "0b979edd9800ad90afbd1a7c7de6760b844723ccfee46f26dd7e1bc592ee7cff"
+      },
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/04-sardine-native-01/turn3-hit-idle-90.png",
+        "sha256": "e01c2c19456c78337d36839ddbd164dbd1a56e2667ed7f124236ae98e444bea5"
+      }
+    ],
+    "observation": "Full-size reaction and late idle: continuous back, belly and tail, with attached fins. No large hole is apparent in these two reviewed poses; head/gill creases and a slightly upturned mouth remain visible. Not a whole-film or visual admission.",
+    "status": "DIAGNOSTIC_NOT_VISUALLY_ADMITTED",
+    "scope": "Two named poses per full retained film; not exhaustive visual acceptance"
+  },
+  {
+    "name": "Mullet",
+    "fit": "audits/FISH_PIPELINE_C88_20260927/06-mullet-fixed-01/fit",
+    "method": "Full-size 1024x576 native frame inspection by Codex",
+    "frames": [
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn1-hit-reaction-50.png",
+        "sha256": "0d0f0e2403d33516370a1157f15095571ea19836f78caaca4bf30940f1410855"
+      },
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/06-mullet-native-01/turn3-hit-idle-90.png",
+        "sha256": "f4fcba632fd85403ffa283d3bc40789cb612e798e8fc5f595ff73ab7c415d79b"
+      }
+    ],
+    "observation": "Full-size reaction and late idle: connected trunk/tail and attached dorsal fins. A small angular belly edge near the pelvic-fin root appears in the reaction; no large opening apparent. Fin-root ownership still needs review.",
+    "status": "DIAGNOSTIC_NOT_VISUALLY_ADMITTED",
+    "scope": "Two named poses per full retained film; not exhaustive visual acceptance"
+  },
+  {
+    "name": "Tarpon",
+    "fit": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-fixed-01/fit",
+    "method": "Full-size 1024x576 native frame inspection by Codex",
+    "frames": [
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn1-hit-reaction-50.png",
+        "sha256": "33d4080c22b82aa344d1df039b12b053b2eeb43bf10904486575d7d31c6b86ab"
+      },
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/07-tarpon-native-01/turn3-hit-idle-90.png",
+        "sha256": "c77704b7f146c1647261f5dd84027854b56d49976d00d266d12f07f9f3dffd4c"
+      }
+    ],
+    "observation": "Full-size reaction: visible vertical belly/body slit near mid-trunk and a thin pale line under the head; late tilted fish retains a block-like belly edge. Tail/back are connected, but the slit prevents visual acceptance.",
+    "status": "DIAGNOSTIC_NOT_VISUALLY_ADMITTED",
+    "scope": "Two named poses per full retained film; not exhaustive visual acceptance"
+  },
+  {
+    "name": "Grouper",
+    "fit": "audits/FISH_PIPELINE_C88_20260927/01-grouper-fixed-01/fit",
+    "method": "Full-size 1024x576 native frame inspection by Codex",
+    "frames": [
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn1-hit-reaction-50.png",
+        "sha256": "cb29d44798bf749e2c226247655228d6c7c2bebfcc886c4e1b961aa534f9f7d7"
+      },
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/01-grouper-native-01/turn3-hit-idle-90.png",
+        "sha256": "4a33ab5d543c0e1f36daa3b076c0ca300940d1c351603b5c15542bb7afc03bd9"
+      }
+    ],
+    "observation": "Full-size reaction and late idle: the large gill opening seen in the prior unwelded fit is not apparent; trunk, dorsal fins and full tail stay connected. Small pale fin-edge specks remain near the lower fins. Mouth is naturally open in the painting. No final visual admission.",
+    "status": "DIAGNOSTIC_NOT_VISUALLY_ADMITTED",
+    "scope": "Two named poses per full retained film; not exhaustive visual acceptance"
+  },
+  {
+    "name": "Barracuda",
+    "fit": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-fixed-01/fit",
+    "method": "Full-size 1024x576 native frame inspection by Codex",
+    "frames": [
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn1-hit-reaction-50.png",
+        "sha256": "a7670e8e03a79a02c34276f1d046f35bbc479edd2c2db6a75e00d95174d20488"
+      },
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/02-barracuda-native-01/turn3-hit-idle-90.png",
+        "sha256": "624cb50b4d2a1e6d895e93d90332b30fa5a6790305fc5af7d31dd66c591dadbc"
+      }
+    ],
+    "observation": "Full-size reaction and late idle: continuous slender body, back and full forked tail; no large body opening apparent. Jaw/teeth are strongly angular and the late-pose lower jaw protrudes; identity/face quality remains a review point.",
+    "status": "DIAGNOSTIC_NOT_VISUALLY_ADMITTED",
+    "scope": "Two named poses per full retained film; not exhaustive visual acceptance"
+  },
+  {
+    "name": "Sailfish",
+    "fit": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-fixed-01/fit",
+    "method": "Full-size 1024x576 native frame inspection by Codex",
+    "frames": [
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn1-hit-reaction-50.png",
+        "sha256": "d3d26e06742142ea07ec2fdac50322d224c0eac1d4ea719827f2c162bbd730f1"
+      },
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/05-sailfish-native-01/turn3-hit-idle-90.png",
+        "sha256": "62fcd1052467f66ce3a4adc3c7320cf2a78a494f10da8db7b3b494b2008da413"
+      }
+    ],
+    "observation": "Full-size reaction and late idle: sail dorsal and full tail stay attached, continuous back. A dark angular chest/pectoral crease and narrow lower fin tips remain; fin-root division needs review. No broad missing body section apparent in these poses.",
+    "status": "DIAGNOSTIC_NOT_VISUALLY_ADMITTED",
+    "scope": "Two named poses per full retained film; not exhaustive visual acceptance"
+  },
+  {
+    "name": "Mahi-Mahi",
+    "fit": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-fixed-01/fit",
+    "method": "Full-size 1024x576 native frame inspection by Codex",
+    "frames": [
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn1-hit-reaction-50.png",
+        "sha256": "645e48307b151ba8b4c2542b23466d34ea584694b48f1f394b9482ff298bc7db"
+      },
+      {
+        "file": "audits/FISH_PIPELINE_C88_20260927/07-mahi-mahi-native-01/turn3-hit-idle-90.png",
+        "sha256": "9171f81d6140883c58f90be89d08d6273175b2e5ddd02c40422968b5714b067e"
+      }
+    ],
+    "observation": "Full-size reaction and late idle: continuous tall forehead, back, belly and forked tail; the long dorsal stays attached in reviewed poses. Strong outlined gill seam remains but no large hole is apparent. Original painting identity and final visual quality remain for review.",
+    "status": "DIAGNOSTIC_NOT_VISUALLY_ADMITTED",
+    "scope": "Two named poses per full retained film; not exhaustive visual acceptance"
+  }
+]
