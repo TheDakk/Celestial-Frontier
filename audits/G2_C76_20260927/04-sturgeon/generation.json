@@ -1,0 +1,13 @@
+{
+  "id": "04-sturgeon",
+  "name": "Sturgeon",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-152cad31-9716-4c10-8435-72605b6b40a1.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "27659622bdfc4ac4bab8fd5d577a911a46878f91bb14f42df9ba0213310934fb",
+  "bytes": 1223310,
+  "promptSha256": "db3e705aeb142298123f55d00961d75785985bb930d1324d829b06ddf60a671e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

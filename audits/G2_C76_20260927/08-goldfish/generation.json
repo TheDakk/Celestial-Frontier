@@ -1,0 +1,13 @@
+{
+  "id": "08-goldfish",
+  "name": "Goldfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1ada3a5f-f993-4309-9128-b5037ff80511.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "e0ef0d72729a713d503e8047452943ab13270cd2589b55c7b34a4da451e57ab0",
+  "bytes": 1323928,
+  "promptSha256": "93b1ec9a060a832016c67618943898ad6a7e46fdd648a4c859fc472a1b416e2a",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

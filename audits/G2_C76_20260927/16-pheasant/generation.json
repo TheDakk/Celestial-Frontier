@@ -1,0 +1,13 @@
+{
+  "id": "16-pheasant",
+  "name": "Pheasant",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-cabf6c2c-56db-4539-9e3b-d2642e6b3c5d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4defe0a1b7caefe29b166747c57605307cfce2a7a442ae0afe880283bba75e32",
+  "bytes": 1144469,
+  "promptSha256": "e56cf9e86c1f3f7231a2c4a741cac3f83cf1229a7b020cb39c05f8c88abbc578",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

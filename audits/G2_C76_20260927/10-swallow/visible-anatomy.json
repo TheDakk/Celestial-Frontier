@@ -1,0 +1,144 @@
+{
+  "id": "10-swallow",
+  "name": "Swallow",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "d1820c49417bd2e94fe01bc47f0a99d986253d2e2a8cd8b45df7cba447a72db5",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 9869,
+    "coreRadius": 17,
+    "bodyBox": {
+      "x0": 205,
+      "y0": 154,
+      "x1": 317,
+      "y1": 236
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0797,
+        "pixels": 787,
+        "box": {
+          "x0": 284,
+          "y0": 138,
+          "x1": 341,
+          "y1": 185
+        },
+        "attach": {
+          "x": 309.1,
+          "y": 160.9,
+          "relX": 0.93,
+          "relY": 0.08
+        },
+        "dir": {
+          "x": 0.32,
+          "y": -0.95
+        },
+        "class": "top",
+        "length": 40
+      },
+      {
+        "k": 1,
+        "frac": 0.1967,
+        "pixels": 1941,
+        "box": {
+          "x0": 63,
+          "y0": 190,
+          "x1": 204,
+          "y1": 251
+        },
+        "attach": {
+          "x": 204,
+          "y": 208.5,
+          "relX": -0.01,
+          "relY": 0.66
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.05
+        },
+        "class": "rear",
+        "length": 147.3
+      },
+      {
+        "k": 2,
+        "frac": 0.0261,
+        "pixels": 258,
+        "box": {
+          "x0": 208,
+          "y0": 235,
+          "x1": 246,
+          "y1": 268
+        },
+        "attach": {
+          "x": 231.7,
+          "y": 236.8,
+          "relX": 0.24,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.19,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 39.2
+      },
+      {
+        "k": 3,
+        "frac": 0.0299,
+        "pixels": 295,
+        "box": {
+          "x0": 256,
+          "y0": 237,
+          "x1": 302,
+          "y1": 269
+        },
+        "attach": {
+          "x": 263.5,
+          "y": 237,
+          "relX": 0.52,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.56,
+          "y": 0.83
+        },
+        "class": "limb-down",
+        "length": 50.1
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 208,
+        "x1": 246,
+        "cx": 229.2
+      },
+      {
+        "x0": 264,
+        "x1": 302,
+        "cx": 284.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

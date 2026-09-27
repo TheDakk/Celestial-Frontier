@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Arapaima",
+  "masterSha256": "953c7efea470b7ed5aa29a2656376726642be56df0e82162cd22e66c20787974",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

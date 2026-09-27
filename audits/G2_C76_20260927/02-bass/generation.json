@@ -1,0 +1,13 @@
+{
+  "id": "02-bass",
+  "name": "Bass",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f8e699f3-2e09-42e8-a08f-70eccc028ae8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5624fe6743f1f98c655b81e9bf2e33b1a731e233f6d8f83630731073a247942a",
+  "bytes": 1573446,
+  "promptSha256": "12024c4c6d98961f6d5dad1c67fc1ada30eb3e1007b22e9795df568bb435d9ef",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

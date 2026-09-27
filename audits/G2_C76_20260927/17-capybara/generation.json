@@ -1,0 +1,13 @@
+{
+  "id": "17-capybara",
+  "name": "Capybara",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-a4ad7d88-97f4-4e2f-b395-2bf15c7a2490.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3ecaf74f123afb77e76efbc3652caacdf560f2f82ea3262b571ca803ef28d9a1",
+  "bytes": 1362695,
+  "promptSha256": "dd2f57a80a0f1001a07b8bd9a33c8d69512a8420e83f144b8d4fe923723ba960",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

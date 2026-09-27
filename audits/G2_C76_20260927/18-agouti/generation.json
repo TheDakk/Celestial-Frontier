@@ -1,0 +1,13 @@
+{
+  "id": "18-agouti",
+  "name": "Agouti",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-197fbbe7-6245-41bf-a5cd-80a8364956be.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3a59d159f7e56fc58f6905ea2cfd2811a3986809f41f91cd77b53d15618faddc",
+  "bytes": 1222279,
+  "promptSha256": "cc3b14634dd20e7239806da84ce99ece57bc05a591e830b93fec20c2806edc61",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,130 @@
+{
+  "id": "24-okapi",
+  "name": "Okapi",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "20060058c0e89809749b376fc6405e972a724c0d3835b9be9a2ee73812b55679",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 17257,
+    "coreRadius": 21,
+    "bodyBox": {
+      "x0": 135,
+      "y0": 150,
+      "x1": 267,
+      "y1": 224
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1755,
+        "pixels": 3028,
+        "box": {
+          "x0": 227,
+          "y0": 104,
+          "x1": 336,
+          "y1": 190
+        },
+        "attach": {
+          "x": 257.6,
+          "y": 159.4,
+          "relX": 0.93,
+          "relY": 0.13
+        },
+        "dir": {
+          "x": 0.91,
+          "y": -0.42
+        },
+        "class": "front",
+        "length": 96
+      },
+      {
+        "k": 1,
+        "frac": 0.1937,
+        "pixels": 3342,
+        "box": {
+          "x0": 103,
+          "y0": 175,
+          "x1": 182,
+          "y1": 315
+        },
+        "attach": {
+          "x": 143.1,
+          "y": 205.9,
+          "relX": 0.06,
+          "relY": 0.75
+        },
+        "dir": {
+          "x": -0.09,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 116.3
+      },
+      {
+        "k": 2,
+        "frac": 0.1224,
+        "pixels": 2113,
+        "box": {
+          "x0": 211,
+          "y0": 221,
+          "x1": 276,
+          "y1": 315
+        },
+        "attach": {
+          "x": 239.8,
+          "y": 224.8,
+          "relX": 0.79,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.02,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 97.2
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 110,
+        "x1": 126,
+        "cx": 117.8
+      },
+      {
+        "x0": 163,
+        "x1": 182,
+        "cx": 173
+      },
+      {
+        "x0": 212,
+        "x1": 228,
+        "cx": 219.7
+      },
+      {
+        "x0": 258,
+        "x1": 276,
+        "cx": 266.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}
