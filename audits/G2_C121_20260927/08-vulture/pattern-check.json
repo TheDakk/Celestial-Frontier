@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Vulture",
+  "masterSha256": "fe23842892a09f05140db1c51461da63bb317775f57b05fbc5d66862d91f0b18",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Cockroach",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "46d6665cd526bcc00f9bfb8263763d4ece37e51ae459b1201e31f2817dda0ec4",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "mandibulate-insect",
+  "authoringCreated": false,
+  "sourceHead": "6bd5b337d1865910b1a5a18d7f82bf3fa06e6fee",
+  "basePromptSha256": "b8008d8fad7bc6f0ffcfae5f79412f1e5a01af1808ac1ffab747dc5470c66bb1",
+  "layoutCompilerSha256": "fd9da3e6774546031e16e913d03ead973a4272ab9807469f84e2aab98cbec640",
+  "layoutClarification": "Species identity features FIRST: flat glossy oval wing-covers; shield-shaped pronotum hiding the head; long backswept threadlike antennae. One Earth Cockroach. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: strict side profile, head RIGHT. All SIX thoracic legs visible in three near/far pairs, each pair offset so the shafts and tarsi are readable from their real attachments. Preserve the full natural abdomen at LEFT. Natural adult wing resting position overrides a generic folded-wing request: dragonfly wings held out flat, damselfly wings closed over back, mayfly wings upright. No invented vertebrate tail, extra legs or hidden-paint declaration.\n\n"
+}

@@ -1,0 +1,190 @@
+{
+  "id": "23-water-strider",
+  "name": "Water Strider",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "eac2202fe82b1bb51a0bb4047e661777d8b048a1b9e56db71245d004c55d5476",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 4473,
+    "coreRadius": 8,
+    "bodyBox": {
+      "x0": 174,
+      "y0": 174,
+      "x1": 272,
+      "y1": 200
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1337,
+        "pixels": 598,
+        "box": {
+          "x0": 273,
+          "y0": 158,
+          "x1": 360,
+          "y1": 230
+        },
+        "attach": {
+          "x": 273,
+          "y": 184.5,
+          "relX": 1.01,
+          "relY": 0.4
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.16
+        },
+        "class": "front",
+        "length": 98.2
+      },
+      {
+        "k": 1,
+        "frac": 0.0698,
+        "pixels": 312,
+        "box": {
+          "x0": 143,
+          "y0": 179,
+          "x1": 173,
+          "y1": 194
+        },
+        "attach": {
+          "x": 173,
+          "y": 186.5,
+          "relX": -0.01,
+          "relY": 0.48
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.08
+        },
+        "class": "rear",
+        "length": 30.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0653,
+        "pixels": 292,
+        "box": {
+          "x0": 267,
+          "y0": 195,
+          "x1": 350,
+          "y1": 252
+        },
+        "attach": {
+          "x": 269.5,
+          "y": 195,
+          "relX": 0.97,
+          "relY": 0.81
+        },
+        "dir": {
+          "x": 0.82,
+          "y": 0.57
+        },
+        "class": "limb-down",
+        "length": 98.6
+      },
+      {
+        "k": 3,
+        "frac": 0.061,
+        "pixels": 273,
+        "box": {
+          "x0": 57,
+          "y0": 196,
+          "x1": 178,
+          "y1": 241
+        },
+        "attach": {
+          "x": 175.1,
+          "y": 196.9,
+          "relX": 0.01,
+          "relY": 0.88
+        },
+        "dir": {
+          "x": -0.94,
+          "y": 0.34
+        },
+        "class": "rear",
+        "length": 126.1
+      },
+      {
+        "k": 4,
+        "frac": 0.087,
+        "pixels": 389,
+        "box": {
+          "x0": 107,
+          "y0": 200,
+          "x1": 222,
+          "y1": 272
+        },
+        "attach": {
+          "x": 219.1,
+          "y": 200.9,
+          "relX": 0.46,
+          "relY": 1.03
+        },
+        "dir": {
+          "x": -0.83,
+          "y": 0.56
+        },
+        "class": "limb-down",
+        "length": 132.8
+      },
+      {
+        "k": 5,
+        "frac": 0.057,
+        "pixels": 255,
+        "box": {
+          "x0": 234,
+          "y0": 201,
+          "x1": 285,
+          "y1": 274
+        },
+        "attach": {
+          "x": 241,
+          "y": 201,
+          "relX": 0.68,
+          "relY": 1.04
+        },
+        "dir": {
+          "x": 0.25,
+          "y": 0.97
+        },
+        "class": "limb-down",
+        "length": 85.2
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 2,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 107,
+        "x1": 130,
+        "cx": 118.9
+      },
+      {
+        "x0": 263,
+        "x1": 285,
+        "cx": 272.8
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

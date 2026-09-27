@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Sparrow",
+  "masterSha256": "53c42838c7c2a227521fc19b3ae61af6da4c1ea51d3458f2cfbed0859b6017ee",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

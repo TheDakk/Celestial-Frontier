@@ -1,0 +1,13 @@
+{
+  "id": "24-termite",
+  "name": "Termite",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-82cddb7b-3d6d-4e86-9488-687ff2580be9.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "9dd3255e863880d5579067d32c9baa123f213b9f9e0d18e22c3934de7e117e32",
+  "bytes": 1116004,
+  "promptSha256": "11b1c588565dd1a670ba1a73efbcac3c63c3690d37371185b25679d05caf8d87",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Hawk",
+  "masterSha256": "5bdc4105b8d355ded54d56fe9478ae2598d4f72ec5e70346272a719f84c60851",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

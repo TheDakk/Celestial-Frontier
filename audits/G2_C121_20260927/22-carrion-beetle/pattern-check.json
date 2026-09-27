@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Carrion Beetle",
+  "masterSha256": "6b98fa6d2d68b901dac83b916928c93469669e2dbbd1473b5389a125325a1440",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

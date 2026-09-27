@@ -1,0 +1,12 @@
+[
+  {
+    "mutant": "omit-release",
+    "exitCode": 1,
+    "rejected": true
+  },
+  {
+    "mutant": "detach-caller-input",
+    "exitCode": 1,
+    "rejected": true
+  }
+]

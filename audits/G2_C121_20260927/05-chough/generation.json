@@ -1,0 +1,13 @@
+{
+  "id": "05-chough",
+  "name": "Chough",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-f2873e64-fba1-42ce-ad6a-035b13fa46ec.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4a5203a7997e094a6855e57bbb93e438ba747cc2d0d5d8c4092b6448069c8f31",
+  "bytes": 1184383,
+  "promptSha256": "671112c5b46b12e952fed0d20682ea03084656bd8804339e6e7260881883ccd3",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

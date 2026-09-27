@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bee",
+  "masterSha256": "e8b7ede7f23f2ed13972449dca5ba0467b1829054b10028ac34007a034373517",
+  "required": [
+    "furry thorax with banded amber-and-black abdomen"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "furry thorax with banded amber-and-black abdomen",
+      "status": "PRESENT",
+      "observed": "Furry golden thorax and amber-black abdominal bands are visible. Two antennae, overlapping natural wing pairs. Only five leg endpoints clearly readable; sixth unresolved, keep anatomy hold."
+    }
+  ]
+}
