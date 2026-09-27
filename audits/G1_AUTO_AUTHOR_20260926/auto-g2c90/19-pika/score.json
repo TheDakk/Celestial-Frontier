@@ -1,0 +1,9 @@
+{
+ "id": "19-pika",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 33%)"
+ ],
+ "semanticPresence": null
+}

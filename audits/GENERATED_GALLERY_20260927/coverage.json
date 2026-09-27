@@ -1,15 +1,15 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 104,
- "pct": 16.5,
+ "covered": 116,
+ "pct": 18.4,
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 30,
-   "pct": 14.6,
+   "covered": 31,
+   "pct": 15.1,
    "names": [
     "Leopard",
     "Tiger",
@@ -32,6 +32,7 @@
     "Dingo",
     "Spectacled Bear",
     "Mongoose",
+    "Meerkat",
     "Red Panda",
     "Raccoon",
     "Weasel",
@@ -46,14 +47,19 @@
   {
    "family": "fish",
    "species": 132,
-   "covered": 36,
-   "pct": 27.3,
+   "covered": 42,
+   "pct": 31.8,
    "names": [
     "Trout",
     "Char",
     "Pike",
+    "Gar",
     "Bass",
     "Carp",
+    "Tilapia",
+    "Piranha",
+    "Killifish",
+    "Arctic Cod",
     "Herring",
     "Grayling",
     "Minnow",
@@ -84,7 +90,8 @@
     "Sailfish",
     "Mahi-Mahi",
     "Sardine",
-    "Anchovy"
+    "Anchovy",
+    "Viperfish"
    ]
   },
   {
@@ -132,10 +139,13 @@
   {
    "family": "serpent",
    "species": 22,
-   "covered": 12,
-   "pct": 54.5,
+   "covered": 16,
+   "pct": 72.7,
    "names": [
+    "Anaconda",
     "Python",
+    "Sand Boa",
+    "Viper",
     "Tree Snake",
     "Rat Snake",
     "Garter Snake",
@@ -146,15 +156,18 @@
     "Whip Snake",
     "Grass Snake",
     "King Snake",
+    "Cave Snake",
     "Vine Snake"
    ]
   },
   {
    "family": "hopper",
    "species": 18,
-   "covered": 0,
-   "pct": 0,
-   "names": []
+   "covered": 1,
+   "pct": 5.6,
+   "names": [
+    "Hare"
+   ]
   },
   {
    "family": "primate",

@@ -900,5 +900,113 @@
   "batch": "audits/G2_C87_20260927",
   "tag": "g2c87",
   "supports": "observed"
+ },
+ {
+  "family": "serpent",
+  "name": "Anaconda",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/01-anaconda",
+  "note": "clean",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "serpent",
+  "name": "Viper",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/03-viper",
+  "note": "clean",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "serpent",
+  "name": "Sand Boa",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/05-sand-boa",
+  "note": "clean",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "serpent",
+  "name": "Cave Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/06-cave-snake",
+  "note": "clean",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Gar",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/08-gar",
+  "note": "small crack near tail (unwelded)",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Tilapia",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/10-tilapia",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Piranha",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/11-piranha",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Killifish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/12-killifish",
+  "note": "body crack (unwelded)",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Arctic Cod",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/13-arctic-cod",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Viperfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/14-viperfish",
+  "note": "acceptable; unwelded",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Hare",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/18-hare",
+  "note": "clean",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Meerkat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/21-meerkat-v2",
+  "note": "clean",
+  "batch": "audits/G2_C90_20260927",
+  "tag": "g2c90",
+  "supports": "observed"
  }
 ]

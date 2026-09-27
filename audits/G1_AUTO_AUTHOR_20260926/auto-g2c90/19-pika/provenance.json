@@ -1,0 +1,115 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "19-pika",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "20c5336c1331e04c7f436090971e8146ac6f73cf757d87c8449916c7bc2c1227",
+ "subjectSourceSha256": "e50f2524d13e918b7086b8b172f723c037c400039767966d0b5333613b755f35",
+ "identity": {
+  "name": "Pika",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Pika\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"711612427\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "seed": 711612427,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "brown-bear",
+  "authoringSha256": "80f67d9f8f8bb8449330be0aea9e1aa5d3f9893059415b884f76579f9b8ed1c0",
+  "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf"
+ },
+ "habitat": {
+  "profileId": "rabbit-hopper",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "92aa085ad17fc58e06928c07a62a0875f94aeb36d26fa48207c0174e01ae9637",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group rabbit-hopper (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1469,
+     "class": "top",
+     "attach": {
+      "x": 277.3,
+      "y": 175.3,
+      "relX": 0.92,
+      "relY": 0.17
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0102,
+     "class": "top",
+     "attach": {
+      "x": 184.5,
+      "y": 156,
+      "relX": 0.41,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0141,
+     "class": "rear",
+     "attach": {
+      "x": 109,
+      "y": 222.5,
+      "relX": -0.01,
+      "relY": 0.62
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.052,
+     "class": "limb-down",
+     "attach": {
+      "x": 133.1,
+      "y": 260.4,
+      "relX": 0.13,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0468,
+     "class": "limb-down",
+     "attach": {
+      "x": 245.8,
+      "y": 262.8,
+      "relX": 0.75,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "brown-bear",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

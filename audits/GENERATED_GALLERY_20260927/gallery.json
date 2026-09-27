@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 108,
+ "total": 120,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -241,6 +241,20 @@
    "note": "clean"
   },
   {
+   "family": "Quadrupeds",
+   "name": "Hare",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/18-hare",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Meerkat",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/21-meerkat-v2",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Snakes (serpent strip author)",
    "name": "Python",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-python",
@@ -328,6 +342,34 @@
    "family": "Snakes (serpent strip author)",
    "name": "Vine Snake",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/24-vine-snake",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Anaconda",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/01-anaconda",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Viper",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/03-viper",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Sand Boa",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/05-sand-boa",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Cave Snake",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/06-cave-snake",
    "report": "DIAGNOSTIC_PASS",
    "note": "clean"
   },
@@ -722,6 +764,48 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/07-surgeonfish",
    "report": "DIAGNOSTIC_PASS",
    "note": "clean"
+  },
+  {
+   "family": "Fish",
+   "name": "Gar",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/08-gar",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small crack near tail (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Tilapia",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/10-tilapia",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Piranha",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/11-piranha",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Killifish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/12-killifish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "body crack (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Arctic Cod",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/13-arctic-cod",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Viperfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/14-viperfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
   },
   {
    "family": "Insects",
