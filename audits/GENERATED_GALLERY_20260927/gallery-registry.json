@@ -240,8 +240,8 @@
  {
   "family": "fish",
   "name": "Carp",
-  "nativeDir": "audits/TAIL_STALK_BRIDGE_20260926/native-09-carp-welded",
-  "note": "clean tail",
+  "nativeDir": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral",
+  "note": "whole and clean after Codex fin repair",
   "crop": "water"
  },
  {
@@ -341,8 +341,8 @@
  {
   "family": "fish",
   "name": "Grayling",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/01-grayling",
-  "note": "vertical body crack (unwelded; needs tail labels + seam repair)",
+  "nativeDir": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral",
+  "note": "whole after Codex far-fin collar + near-fin welds",
   "batch": "audits/G2_C72_20260927",
   "tag": "g2c72c"
  },
@@ -485,8 +485,8 @@
  {
   "family": "fish",
   "name": "Paddlefish",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/05-paddlefish",
-  "note": "hit fighter fragments: NOT acceptable",
+  "nativeDir": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis",
+  "note": "body whole after Codex axial repair; small rostrum fleck",
   "batch": "audits/G2_C76_20260927",
   "tag": "g2c76"
  },
