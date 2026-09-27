@@ -25,6 +25,8 @@ export function serpentProfile(rgba, w, h, o = SERPENT_DEFAULTS) {
     const big = runs.filter(([a, b]) => b - a + 1 >= o.minRun); if (!big.length) continue;
     const best = big.reduce((a, b) => (b[1] - b[0] > a[1] - a[0] ? b : a)), n = big.reduce((s, [a, b]) => s + b - a + 1, 0);
     cy[x] = (best[0] + best[1]) / 2; th[x] = best[1] - best[0] + 1; dom += th[x]; colPaint += n; xmin = Math.min(xmin, x); xmax = Math.max(xmax, x); }
+  /* Codex C64: a body with no measurable column (every run shorter than minRun) must refuse explicitly, not flow on as NaN */
+  if (xmax < xmin) return { ok: false, reasons: ['no measurable body: no column holds a paint run of at least ' + o.minRun + ' px'], measures: { mainShare: +mainShare.toFixed(4), paint: total } };
   const ext = xmax - xmin + 1; let gaps = 0;
   /* a hair-thin tail tip fading under the alpha threshold is anatomy, not a break: gaps count only beyond the outer tail-tip span */
   for (let x = xmin + Math.round(ext * o.tailTipFrac); x <= xmax; x++) if (!(th[x] > 0)) gaps++;
@@ -41,6 +43,7 @@ export function serpentProfile(rgba, w, h, o = SERPENT_DEFAULTS) {
   const m = { snoutRatio, mainShare: +mainShare.toFixed(4), dominantShare: +(dom / colPaint).toFixed(4), gapFrac: +(gaps / ext).toFixed(4), elongation: +(ext / median).toFixed(2),
     headEnd: +mean(xmax - e + 1, xmax).toFixed(1), tailEnd: +mean(xmin, xmin + e - 1).toFixed(1), tailTip: +mean(xmin, xmin + tip - 1).toFixed(1), median, xmin, xmax, ext, paint: total };
   const reasons = [];
+  for (const [k, v] of Object.entries(m)) if (typeof v === 'number' && !Number.isFinite(v)) reasons.push(`non-finite measure: ${k}`);
   if (mainShare < o.mainShare) reasons.push(`detached paint: the largest piece holds ${(mainShare * 100).toFixed(1)} % (need ${o.mainShare * 100} %)`);
   if (m.dominantShare < o.dominantShare) reasons.push(`not x-monotone: the dominant column run holds ${(m.dominantShare * 100).toFixed(1)} % (coil or overlap; vertical strips cannot separate it)`);
   if (m.gapFrac > o.maxGapFrac) reasons.push(`body not continuous: ${(m.gapFrac * 100).toFixed(1)} % of the length has no paint`);
