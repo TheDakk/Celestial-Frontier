@@ -2,156 +2,178 @@
  {
   "family": "quadruped",
   "name": "Coyote",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/01-coyote",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/coyote",
   "note": "clean",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Arctic Fox",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/03-arctic-fox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/arctic-fox",
   "note": "tail blotches; shoulder shards when rearing (Codex)",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Fennec Fox",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/04-fennec-fox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/fennec-fox",
   "note": "clean",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Dingo",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c54/01-dingo",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/dingo",
   "note": "clean",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Jackal",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c54/02-jackal",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/jackal",
   "note": "clean",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Coyote (C56)",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c56/c56-03-coyote",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/coyote-c56-",
   "note": "clean",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Caracal",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/05-caracal",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/caracal",
   "note": "clean",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Cougar",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/07-cougar",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/cougar",
   "note": "clean",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Lion",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c54/04-lion",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/lion",
   "note": "clean",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Tiger (elbow repaired)",
-  "nativeDir": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/tiger-elbow-repaired-",
   "note": "no stripes painted (D27); hairline chest seam",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Leopard (elbow repaired)",
-  "nativeDir": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/leopard-elbow-repaired-",
   "note": "no spots painted (D27)",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Ocelot (elbow repaired)",
-  "nativeDir": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/ocelot-elbow-repaired-",
   "note": "no spots painted (D27); chest notch",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Snow Leopard (elbow repaired)",
-  "nativeDir": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/snow-leopard-elbow-repaired-",
   "note": "pattern re-paint",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Clouded Leopard (elbow repaired)",
-  "nativeDir": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/clouded-leopard-elbow-repaired-",
   "note": "pattern re-paint",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Raccoon",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/10-raccoon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/raccoon",
   "note": "clean",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Raccoon (C59)",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c59/04-raccoon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/raccoon-c59-",
   "note": "clean",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Marmot",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/11-marmot",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/marmot",
   "note": "head crumples in crouch (Codex)",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Cattle",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/13-cattle",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/cattle",
   "note": "back humps when rearing (Codex)",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Weasel",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/12-weasel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/weasel",
   "note": "clean (re-run on the correct fallback fit)",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Mink (elbow repaired)",
-  "nativeDir": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/mink-elbow-repaired-",
   "note": "",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Marten",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c56/c56-07-marten",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/marten",
   "note": "clean",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Fisher (elbow repaired)",
-  "nativeDir": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/fisher-elbow-repaired-",
   "note": "thin pale chest strand",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "serpent",
@@ -219,16 +241,18 @@
  {
   "family": "biped-bird",
   "name": "Raven",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c56/c56-10-raven",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/raven",
   "note": "tail splits in hit reaction (wing/tail overlap)",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "biped-bird",
   "name": "Vulture",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c59/08-vulture",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/vulture",
   "note": "feather shard above wing in reaction",
-  "crop": "land"
+  "crop": "land",
+  "supports": "observed"
  },
  {
   "family": "fish",
@@ -240,8 +264,8 @@
  {
   "family": "fish",
   "name": "Carp",
-  "nativeDir": "audits/TAIL_STALK_BRIDGE_20260926/native-09-carp-welded",
-  "note": "clean tail",
+  "nativeDir": "audits/FISH_FOLD_C80_20260927/native-carp-pectoral",
+  "note": "whole and clean after Codex fin repair",
   "crop": "water"
  },
  {
@@ -261,88 +285,98 @@
  {
   "family": "biped-bird",
   "name": "Goose",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/14-goose",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/goose",
   "note": "clean",
   "batch": "hand-reference pool / fallback fix",
-  "tag": "2026-09-27"
+  "tag": "2026-09-27",
+  "supports": "observed"
  },
  {
   "family": "biped-bird",
   "name": "Quail",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/15-quail",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/quail",
   "note": "clean",
   "batch": "hand-reference pool / fallback fix",
-  "tag": "2026-09-27"
+  "tag": "2026-09-27",
+  "supports": "observed"
  },
  {
   "family": "biped-bird",
   "name": "Robin",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/c56-11-robin",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/robin",
   "note": "clean",
   "batch": "hand-reference pool / fallback fix",
-  "tag": "2026-09-27"
+  "tag": "2026-09-27",
+  "supports": "observed"
  },
  {
   "family": "biped-bird",
   "name": "Starling",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c59-07-starling",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/starling",
   "note": "clean",
   "batch": "hand-reference pool / fallback fix",
-  "tag": "2026-09-27"
+  "tag": "2026-09-27",
+  "supports": "observed"
  },
  {
   "family": "insect",
   "name": "Beetle",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/c54-23-beetle",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/beetle",
   "note": "first insect; legs slightly smeared",
   "batch": "hand-reference pool / fallback fix",
-  "tag": "2026-09-27"
+  "tag": "2026-09-27",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Mongoose",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/q20-08-mongoose",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/mongoose",
   "note": "clean",
   "batch": "hand-reference pool / fallback fix",
-  "tag": "2026-09-27"
+  "tag": "2026-09-27",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Caracal (C56)",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c56-02-caracal",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/caracal-c56-",
   "note": "clean",
   "batch": "hand-reference pool / fallback fix",
-  "tag": "2026-09-27"
+  "tag": "2026-09-27",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Ocelot (pattern re-paint)",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c57-04-ocelot",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/ocelot-pattern-re-paint-",
   "note": "spotted; clean",
   "batch": "hand-reference pool / fallback fix",
-  "tag": "2026-09-27"
+  "tag": "2026-09-27",
+  "supports": "observed"
  },
  {
   "family": "quadruped",
   "name": "Donkey",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-perf-recheck/15-donkey",
-  "note": "clean (dark shoulder stripe is anatomy); after the skin-field cache",
+  "note": "clean (dark shoulder stripe is anatomy); after the skin-field cache; observed-support rerun: 886/887 frames, 0 refusals (borderline performance)",
   "batch": "perf recheck",
-  "tag": "2026-09-27"
+  "tag": "2026-09-27",
+  "supports": "rest (observed borderline)"
  },
  {
   "family": "quadruped",
   "name": "Lynx",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-perf-recheck/q20-06-lynx",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/lynx",
   "note": "clean in reaction; Codex saw fragments in other frames",
   "batch": "perf recheck",
-  "tag": "2026-09-27"
+  "tag": "2026-09-27",
+  "supports": "observed"
  },
  {
   "family": "fish",
   "name": "Grayling",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/01-grayling",
-  "note": "vertical body crack (unwelded; needs tail labels + seam repair)",
+  "nativeDir": "audits/FISH_FOLD_C80_20260927/native-grayling-pectoral",
+  "note": "whole after Codex far-fin collar + near-fin welds",
   "batch": "audits/G2_C72_20260927",
   "tag": "g2c72c"
  },
@@ -405,18 +439,20 @@
  {
   "family": "biped-bird",
   "name": "Ibis",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/13-ibis",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/ibis",
   "note": "clean",
   "batch": "audits/G2_C72_20260927",
-  "tag": "g2c72c"
+  "tag": "g2c72c",
+  "supports": "observed"
  },
  {
   "family": "biped-bird",
   "name": "Oystercatcher",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c72c/16-oystercatcher",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/oystercatcher",
   "note": "clean",
   "batch": "audits/G2_C72_20260927",
-  "tag": "g2c72c"
+  "tag": "g2c72c",
+  "supports": "observed"
  },
  {
   "family": "serpent",
@@ -485,8 +521,8 @@
  {
   "family": "fish",
   "name": "Paddlefish",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/05-paddlefish",
-  "note": "hit fighter fragments: NOT acceptable",
+  "nativeDir": "audits/FISH_FOLD_C80_20260927/native-paddlefish-first-axis",
+  "note": "body whole after Codex axial repair; small rostrum fleck",
   "batch": "audits/G2_C76_20260927",
   "tag": "g2c76"
  },
@@ -501,26 +537,29 @@
  {
   "family": "biped-bird",
   "name": "Spoonbill",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/13-spoonbill",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/spoonbill",
   "note": "thin crack across the wing",
   "batch": "audits/G2_C76_20260927",
-  "tag": "g2c76"
+  "tag": "g2c76",
+  "supports": "observed"
  },
  {
   "family": "biped-bird",
   "name": "Kestrel",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/14-kestrel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/kestrel",
   "note": "clean",
   "batch": "audits/G2_C76_20260927",
-  "tag": "g2c76"
+  "tag": "g2c76",
+  "supports": "observed"
  },
  {
   "family": "biped-bird",
   "name": "Heron",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2bird-poolv2/fam-02-heron",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/heron",
   "note": "left fighter far wing hangs away (wing split)",
   "batch": "bird pool v2",
-  "tag": "g2bird-poolv2"
+  "tag": "g2bird-poolv2",
+  "supports": "observed"
  },
  {
   "family": "biped-bird",
