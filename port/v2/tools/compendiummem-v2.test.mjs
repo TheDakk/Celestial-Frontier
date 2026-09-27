@@ -112,6 +112,8 @@ test('native action order and outcome evaluation retain the sealed v1 contract',
   // leases only to the lifecycle receipt expressions, never to browser actions.
   const calls = text => [...slice(text).matchAll(/await (click|key|search|scrollToIndex|openCompendium|closeCompendium|waitListReady|waitPlanetsideReady)\([^;]+;/g)].map(m=>m[0]);
   assert.deepEqual(calls(generated), calls(original));
+  assert.equal((slice(generated).match(/keyboardEntryPlan\(entryInventory, targets\.(first|pinned)\)/g) ?? []).length, 2);
+  assert.ok(!slice(generated).includes('tabs < 4'));
   assert.ok(slice(generated).includes('d.paintedArt?.leases'));
   assert.ok(!slice(original).includes('d.paintedArt?.leases'));
   const old = fs.readFileSync(new URL('./compendiummem-contract.mjs', import.meta.url), 'utf8');

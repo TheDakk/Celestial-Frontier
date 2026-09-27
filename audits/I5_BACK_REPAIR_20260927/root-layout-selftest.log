@@ -1,0 +1,14 @@
+
+> celestial-frontier@1.8.9 layout:selftest
+> node tools/uilayout.js --selftest
+
+UI LAYOUT LAUNCHER SELFTEST: PASS
+  one workspace lock and one root-layout CDP call own the complete one-attempt lifecycle
+  exact 45s startup / 15s socket / 30s command / 5s shutdown bounds retained
+  stale PASS replaced by current immutable instrument-fail report and matching pointer
+  macOS Seatbelt refusal retained before spawn
+  mismatched run id rejected; owned browser profile cleaned
+  current-id truncated PASS report rejected
+  exact 10/787 certifying inventory required; targeted and count-consistent partial PASS rejected
+  immutable run-ID reuse, stale pointer, dirty/mixed/wrong source, and retry-policy drift rejected
+  post-launch instrument failure retains browser provenance

@@ -945,6 +945,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
     Object.freeze({
       category: 'Bug Fixes',
       bullets: Object.freeze([
+        '📖 RETURN TO YOUR COMPENDIUM PLACE: The pinned crafting recipe chip stays behind open panels, so Back on a phone returns to the creature list instead of opening Shipyard.',
         "🍃 A RESTING PARENT CAN EAT AGAIN: Breeding Recovery stops blocking Feed when its active-play timer ends. Companions still busy with Rest or another assignment remain unavailable.",
         '⌨ KEEP YOUR PLACE AS THE BOARDS REFRESH: Records, Star Atlas, and Charters preserve the current keyboard control without scrolling to it; an action that disappears or becomes unavailable returns focus to Close. A finished Favorite save no longer takes focus back after you move elsewhere. Queued saves also recheck current save, Training, import, and replacement permissions before preparing a write. Compendium keyboard selection keeps its focus ring inside each creature row in both the standard and pilot presentation.',
         '📱 PRIME KEEPS YOUR PROGRESS: Prime Codex retains its Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill, with its full label on larger screens and the existing touch and keyboard protections.',

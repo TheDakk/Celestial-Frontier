@@ -466,7 +466,8 @@
       border: 1px solid #405477; border-radius: 10px; background: rgba(22,34,57,.9); color: #dcecff; cursor: pointer;
       font: 700 12px var(--ui); opacity: .72; }
     #shipyardpanel button.engineering-pin.on { opacity: 1; border-color: #e0b85a; background: rgba(90,70,22,.5); }
-    #pinchip { position: fixed; z-index: 40; left: max(8px, env(safe-area-inset-left)); top: calc(var(--topbar-h, 56px) + 8px);
+    /* Pinned crafting chrome must stay below the active panel (z22+), including its Back button. */
+    #pinchip { position: fixed; z-index: 21; left: max(8px, env(safe-area-inset-left)); top: calc(var(--topbar-h, 56px) + 8px);
       max-width: min(360px, calc(100vw - 16px)); min-height: 44px; box-sizing: border-box; display: flex; align-items: center;
       gap: 6px; padding: 6px 10px; border: 1px solid #405477; border-radius: 10px; background: rgba(8,14,27,.88);
       color: #dcecff; font: 600 12px var(--ui); cursor: pointer; text-align: left; }
