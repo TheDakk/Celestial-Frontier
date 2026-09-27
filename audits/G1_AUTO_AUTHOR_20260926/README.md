@@ -118,6 +118,11 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**Measured, not recommended: G2 creatures as extra references (D28 experiment)** (`--extra-refs=<json>`, labelled DIAGNOSTIC in the runner and battery; `pilots/extra-refs-quad-clean.json`: 11 clean, native-passing G2 quadrupeds, leave-one-species-out):
+- All 50 G2 quadrupeds: 25 → **24**, with churn: Serval, Ocelot re-paint, Lynx and Wild Horse gained; Leopard, Snow Leopard, both Raccoons and the Weasel's static lost. Several losses come from the G2 Cougar out-ranking the hand Cougar.
+- Battery (`mutants/summary-extra-quad.json`): positives 18/34 unchanged, but erased 31 → **30**, duplicated 26 → **25**.
+- **Verdict:** bootstrapping references from automatic packets weakens the refusal battery and gains nothing net. **Not recommended.** More HAND-authored references in the missing poses (legs apart; folded-wing birds) remain the lever.
+
 **Birds: the reference pool is the blocker (session 5 diagnosis, no code change)**
 - **Four of the seven hand bird references have their wings RAISED** (Goose, Heron, Sparrow, Sandpiper). The generated G2 birds all stand with wings folded.
 - **Result:** 17 of 20 G2 birds were authored from the ONE standing, folded-wing reference, the Gull. Every bird admission is a Gull (or Grouse) transfer: Goose, Quail, Raven pass; Hawk, Crow, Dove, Magpie are static RED.

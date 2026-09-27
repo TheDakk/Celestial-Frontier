@@ -1,0 +1,82 @@
+{
+  "name": "Serval",
+  "family": "quadruped",
+  "species": {
+    "name": "Serval",
+    "aspect": 1.8,
+    "headFrac": 0.2,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "extraordinarily long legs for its body",
+      "very large upright oval ears on a small head",
+      "short tail and boldly spotted and barred coat"
+    ],
+    "note": "Legs are the longest of any cat relative to size; the body looks small slung between them."
+  },
+  "genome": {
+    "seed": 2340052459,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 15,
+    "body": 9,
+    "loco": 3,
+    "trait": 12,
+    "size": 5,
+    "diet": 4,
+    "head": 3,
+    "limbs": 4,
+    "skin": 1,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 5,
+    "behavior": 8,
+    "habitat": 2,
+    "detail": 3,
+    "accent": 13,
+    "temper": 3,
+    "sense": 1,
+    "repro": 6,
+    "life": 1,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Serval"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Serval\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2340052459\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "index": 204,
+  "profile": {
+    "id": "felid",
+    "names": [
+      "Jaguar",
+      "Leopard",
+      "Tiger",
+      "Clouded Leopard",
+      "Ocelot",
+      "Lion",
+      "Cougar",
+      "Snow Leopard",
+      "Bobcat",
+      "Lynx",
+      "Caracal",
+      "Fishing Cat",
+      "Cheetah",
+      "Serval",
+      "Sand Cat",
+      "Wildcat",
+      "Cat"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "claw",
+      "bite"
+    ],
+    "notes": ""
+  }
+}

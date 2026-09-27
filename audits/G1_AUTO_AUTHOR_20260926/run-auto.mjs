@@ -87,6 +87,11 @@ function semanticPresence(res, family) {
     attestation: resolved ? 'geometric + semantic inventory resolved (still not play admission: native and visual review remain)' : 'geometric only: NOT an all-visible attestation',
     playAdmission: 'blocked until semantic presence is resolved and native + Dakk visual review pass' };
 }
+/* --extra-refs=<json [{id,family,packet}]> (labelled DIAGNOSTIC, D28): extra reference packets (e.g. native-passing G2 creatures);
+ * references only, never targets; leave-one-species-out applies to them too. */
+const extraRefsArg = args.find((x) => x.startsWith('--extra-refs=')), extras = [];
+if (extraRefsArg) for (const e of JSON.parse(fs.readFileSync(path.join(ROOT, extraRefsArg.slice(13)), 'utf8'))) { const dir = path.join(ROOT, e.packet), img = await rgbaOf(path.join(dir, 'master.png')), prepared = prepareSubject(img.rgba, img.w, img.h), authoring = JSON.parse(fs.readFileSync(path.join(dir, 'authoring.json'), 'utf8'));
+  extras.push({ ...e, dir, img, prepared, authoring, subject: JSON.parse(fs.readFileSync(path.join(dir, 'subject-source.json'), 'utf8')), stats: referenceStats(prepared, authoring), skeleton: null }); }
 const refOf = (s) => ({ ...s.prepared, family: s.family, subjectId: s.id, authoring: s.authoring, partPaint: s.stats.partPaint, unclaimedFrac: s.stats.unclaimedFrac, skeleton: s.skeleton });
 
 const inside = (x, y, poly) => { let yes = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], b = poly[j]; if ((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) yes = !yes; } return yes; };
@@ -104,7 +109,7 @@ const rows = [];
 // one automatic candidate: author from the reference of rank `rank`, then (if admitted) Codex's unchanged intake and the static gate
 function runCandidate(s, rank, dir) {
   fs.mkdirSync(dir, { recursive: true });
-  const refs = subjects.filter((o) => o.id !== s.id && o.subject.name !== s.subject.name).map(refOf); // leave-one-subject-out, and leave-one-species-out
+  const refs = [...subjects, ...extras].filter((o) => o.id !== s.id && o.subject.name !== s.subject.name).map(refOf); // leave-one-subject-out, and leave-one-species-out
   const mirrored = mirrorSubject(s.img.rgba, s.img.w, s.img.h);
   // identity (Codex G1 review): subject-source.json is species/genome identity, never anatomy; its name, family, genome and
   // visualKey must agree with the corpus row and the pinned Earth profile, or the subject refuses before any authoring
@@ -126,7 +131,7 @@ function runCandidate(s, rank, dir) {
   // outer provenance envelope (Codex G1 review): intake stays unchanged and still writes manualAuthoring=true and
   // sourceLandmarksReused=false; this envelope records that the packet is an AUTOMATIC TRANSFER and those inner fields are not an
   // automatic-origin attestation
-  const sha = (f) => createHash('sha256').update(fs.readFileSync(f)).digest('hex'), ref = subjects.find((o) => o.id === res.evidence?.bestReference);
+  const sha = (f) => createHash('sha256').update(fs.readFileSync(f)).digest('hex'), ref = [...subjects, ...extras].find((o) => o.id === res.evidence?.bestReference);
   fs.writeFileSync(path.join(dir, 'provenance.json'), JSON.stringify({ schema: 'cf.g1-auto-provenance/v1', subject: s.id, verdict: res.verdict,
     origin: 'automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation',
     intakeLegacyFields: 'intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.',

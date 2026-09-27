@@ -1,0 +1,137 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c57-06-clouded-leopard",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "770f57e8c5ce6d76998ff5bc46e80b918ba2ad722b2e496575aa4d5d636d29d1",
+ "subjectSourceSha256": "78cc54ea42592caaec86025f76167eabcb00c9ff78bef0dc258d96255465635a",
+ "identity": {
+  "name": "Clouded Leopard",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Clouded Leopard\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"725465033\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "seed": 725465033,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "g2q-cougar",
+  "authoringSha256": "3501e5fe0b255c584a0441ee4220f3c48c067eb819954abc69639903469bb01f",
+  "masterSha256": "3d7ddbd36eebaaa2bdf1e8329da9514f0ce46b8892175fa45fc8cae99cf1acff"
+ },
+ "habitat": {
+  "profileId": "felid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "74c48486113be3ee431e8a73d1f96d202de2a5c22bc39d2661f21510abbb4a65",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group felid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0795,
+     "class": "top",
+     "attach": {
+      "x": 360.2,
+      "y": 154.5,
+      "relX": 0.87,
+      "relY": 0.16
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1374,
+     "class": "limb-down",
+     "attach": {
+      "x": 89.2,
+      "y": 213.6,
+      "relX": 0.2,
+      "relY": 0.57
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0491,
+     "class": "limb-down",
+     "attach": {
+      "x": 150.5,
+      "y": 228,
+      "relX": 0.35,
+      "relY": 0.67
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0766,
+     "class": "limb-down",
+     "attach": {
+      "x": 332.3,
+      "y": 238.8,
+      "relX": 0.8,
+      "relY": 0.75
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0395,
+     "class": "limb-down",
+     "attach": {
+      "x": 277.4,
+      "y": 235.6,
+      "relX": 0.67,
+      "relY": 0.72
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0489,
+     "class": "limb-down",
+     "attach": {
+      "x": 190.5,
+      "y": 234,
+      "relX": 0.45,
+      "relY": 0.71
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "g2q-cougar",
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

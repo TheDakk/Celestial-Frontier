@@ -1,0 +1,148 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c56-07-marten",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "b189641e56694cb76d9cc23c5fea23959a0d3216abe94c1be1893f209b31966f",
+ "subjectSourceSha256": "fc029630517efda1ecdef1d013160d3962bd8f4ec87106c4aaa77e5d29a357d1",
+ "identity": {
+  "name": "Marten",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Marten\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1254551602\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "seed": 1254551602,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "g2q-cougar",
+  "authoringSha256": "3501e5fe0b255c584a0441ee4220f3c48c067eb819954abc69639903469bb01f",
+  "masterSha256": "3d7ddbd36eebaaa2bdf1e8329da9514f0ce46b8892175fa45fc8cae99cf1acff"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0977,
+     "class": "top",
+     "attach": {
+      "x": 361.3,
+      "y": 150.4,
+      "relX": 0.87,
+      "relY": 0.21
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0046,
+     "class": "top",
+     "attach": {
+      "x": 222,
+      "y": 142,
+      "relX": 0.53,
+      "relY": 0.16
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.2017,
+     "class": "limb-down",
+     "attach": {
+      "x": 85.9,
+      "y": 227.7,
+      "relX": 0.19,
+      "relY": 0.6
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0474,
+     "class": "limb-down",
+     "attach": {
+      "x": 164.2,
+      "y": 243.8,
+      "relX": 0.39,
+      "relY": 0.68
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0407,
+     "class": "limb-down",
+     "attach": {
+      "x": 351.4,
+      "y": 258.4,
+      "relX": 0.85,
+      "relY": 0.76
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0482,
+     "class": "limb-down",
+     "attach": {
+      "x": 299,
+      "y": 245,
+      "relX": 0.72,
+      "relY": 0.69
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0395,
+     "class": "limb-down",
+     "attach": {
+      "x": 214,
+      "y": 248,
+      "relX": 0.51,
+      "relY": 0.7
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "g2q-cougar",
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 2,
+    "limb-down": 5
+   },
+   "groundContacts": 4,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}
