@@ -842,6 +842,10 @@ RedFox's near foreleg requires8.53%compression in the zero-travel layered sample
 
 Dakk-authorized new hand-reference candidates:four folded-wing birds,two separated-leg quadrupeds,two insects. All8staticPASS;4nativePASS but visible fragments remain; Pigeon media coverage and Hawk/Ant/Cricket faint limits remain red. These are explicitly manual packets on new paintings, not automatically bootstrapped references or default-pool/library admissions. Dog framing is repaired but its far-ear interpretation remains unresolved, so no hidden packet data is invented. Independent G1 positive/mutation/held-out checks precede any pool addition.
 
+### Automatic material classification — matches tooling 2026-09-27
+
+G1's exact pinned `springtail` profile now maps to the existing `chitin` motion vocabulary, matching its cuticular structure. This classifies integument, not painted texture, life-stage presence, wing absence, or finisher permission. Every other pinned profile and unknown-profile refusal is unchanged. C97's real removed-mapping control reproduces the original material refusal. Springtail's best reference still fails intake; fallback static PASS retains UNRESOLVED merged front-leg ownership and the original antenna/furcula visual holds. No native or admission follows. Evidence and primary material source: `audits/SPRINGTAIL_MATERIAL_C97_20260927`.
+
 ### Insect faint authoring — matches code 2026-09-27
 
 The existing continuous faint envelope now derives chains from the family contract for both quadrupeds and insects. Insects scale root/thorax excursion only; all timing, other tracks,129-sample probe,90% angular reserve and runtime limits remain unchanged. Four failing insect packets retain all six painted contacts under the new curve; old-author negative controls still refuse. Beetle faint conservatively retargets too; its other actions remain exact. Full static/contact/presentation and native outcomes, the still-red Cicada non-faint actions, and Termite wing/body ownership fault are recorded in audits/INSECT_CONTACT_C67_20260927. No visual/reference/library admission follows from numerical PASS.
@@ -856,7 +860,7 @@ The proposed biped-bird faint extension is REJECTED: Hawk/Dove improved, but the
 
 ### Exact repeated skin fields — matches code2026-09-27
 
-The admitted runtime keeps one private exact Float32 target/solved-field pair per rig. Changed inputs run the unchanged full solver; all downstream guards still run. Two bounded buffers add at most640,000bytes under the existing40,000vertex limit. Donkey/Lynx pass fullnative4× capture after reuse;Bobcat remains868/887frames. Visual fragments remain. Controls/evidence:audits/LATE_REACTION_C70_20260927.
+The admitted runtime keeps one private exact Float32 target/solved-field pair per rig. Changed inputs run the unchanged full solver; all downstream guards still run. Two bounded buffers add at most640,000bytes under the existing40,000vertex limit. Donkey/Lynx pass fullnative4× capture after reuse;the original Bobcat remains868/887frames. C96 separately regenerates Bobcat with clearer leg layout: unchanged automatic author,19static actions/1702presentation samples and native4×933frames/0refusals pass; lethal-interval p9512.6ms vs historical191.2ms. Ear-tip flecks and a foreleg/chest sliver remain, so this is a performance candidate selected for review with holds, not visual/library admission or a solver change. Controls/evidence:audits/LATE_REACTION_C70_20260927 and audits/BOBCAT_LAYOUT_C96_20260927.
 
 Upper-body diagnostic (2026-09-27): audits/QUAD_UPPER_C73_20260927 retains Marmot/Cattle chest/neck ownership candidates, both static/native green but visibly incomplete; no default author or library adoption. Red Fox refuses identically with rest and observed supports.
 

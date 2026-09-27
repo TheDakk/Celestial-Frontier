@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const dir=process.argv[2];
+if(!dir)throw Error('Explicit actual runner output required');
+const p=JSON.parse(fs.readFileSync(dir+'/provenance.json'));
+const score=JSON.parse(fs.readFileSync(dir+'/score.json'));
+assert.equal(p.identity.name,'Springtail');
+assert.equal(p.habitat.profileId,'springtail');
+assert.equal(p.materials.surface,'chitin');
+assert.equal(score.reasons.some(r=>r.startsWith('materials-unknown:')),false);
+assert.equal(p.materials.meaning,"the species group's integument; not an observation of the painting, not a finisher permission");
+console.log('Actual Springtail runner material outcome PASS; no anatomy/admission claim');

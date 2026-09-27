@@ -44,7 +44,7 @@ const SPECIES_MATERIAL = Object.freeze({
   fur: ['felid', 'canid', 'hyena', 'bear', 'small-clawed-mammal', 'aquatic-pawed-mammal', 'gliding-mammal', 'aardvark', 'rabbit-hopper', 'marsupial-hopper', 'koala', 'primate', 'hoofed-horned', 'hoofed-unhorned', 'tapir', 'suid', 'bat'],
   scales: ['constricting-snake', 'snake', 'lizard', 'special-lizard', 'marine-iguana', 'crocodilian', 'fish', 'predatory-shark', 'filter-shark', 'tube-snouted-fish'],
   feathers: ['raptor', 'flightless-bird', 'penguin', 'swimming-bird', 'wading-bird', 'ground-foraging-bird', 'bird', 'pheasant'],
-  chitin: ['mandibulate-insect', 'soft-mouth-insect', 'aquatic-insect', 'spider', 'scorpion', 'other-arachnid', 'centipede', 'millipede', 'springtail'],
+  chitin: ['mandibulate-insect', 'soft-mouth-insect', 'aquatic-insect', 'spider', 'scorpion', 'other-arachnid', 'centipede', 'millipede'],
   'smooth skin': ['frog', 'salamander', 'caecilian', 'eel', 'jawless-fish', 'cephalopod', 'mudskipper'],
   warty: ['echinoderm'], translucent: ['cnidarian', 'comb-jelly'],
 });

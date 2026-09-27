@@ -1,0 +1,10 @@
+{
+  "source": "audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs",
+  "beforeSha256": "99204071e8e7dd310b8c1bfe70e7d0c379c2f9b5ec40686ec667805a89000529",
+  "afterSha256": "6c1ef8e2f30666ecc9aa6416ab03e35097742944a234d36d4ebd56ce261e5bc1",
+  "onlyChange": {
+    "before": "  chitin: ['mandibulate-insect', 'soft-mouth-insect', 'aquatic-insect', 'spider', 'scorpion', 'other-arachnid', 'centipede', 'millipede'],",
+    "after": "  chitin: ['mandibulate-insect', 'soft-mouth-insect', 'aquatic-insect', 'spider', 'scorpion', 'other-arachnid', 'centipede', 'millipede', 'springtail'],"
+  },
+  "scope": "Exact springtail profile material vocabulary only; no anatomy, absence, palette, motion, guard or finisher permission"
+}
