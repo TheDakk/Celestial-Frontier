@@ -1,0 +1,117 @@
+{
+  "sourceReadOnly": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/05-paddlefish/fit",
+  "fit": "audits/FISH_FOLD_C80_20260927/inputs/paddlefish",
+  "canonicalMaster": "audits/G2_C76_20260927/05-paddlefish/master.png",
+  "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/05-paddlefish/packet/master.png",
+  "masterSha256": "d523000757f946be13ce5e2d38cb77f2046bc576ff4b304081c4f48e69773b33",
+  "files": [
+    {
+      "path": "binding.json",
+      "sha256": "66dc2bb3369d546a4f852bce4c47806a5edb1343996eafea9a352b3e3973e969"
+    },
+    {
+      "path": "declaration.json",
+      "sha256": "5f2ec6a81ed80fa0c81a54f77985ca33eae706da3324a5b0bc08aed12425be19"
+    },
+    {
+      "path": "intake-provenance.json",
+      "sha256": "bc747587e2b934335777913753c895aa363cabbcfc95ede29d9b1a64841be736"
+    },
+    {
+      "path": "parts/atlas/05-paddlefish.json",
+      "sha256": "1c80fb695c40f81d704b79511a0a9d7b838fed168a967953a56aa000e77b1fe0"
+    },
+    {
+      "path": "parts/atlas/05-paddlefish.png",
+      "sha256": "36f38c031b21f510e8a9d8f3beab041b5484bcfbccf8810bbe874f51d60da346"
+    },
+    {
+      "path": "parts/atlas/receipt.json",
+      "sha256": "c036d1531ceb0dbc704b471bd6b626c5506a89daaf6889e478bdecae8046fab1"
+    },
+    {
+      "path": "parts/binding.json",
+      "sha256": "397805238ebc46e1fce030c5505bcb0dbbf5a0ed8564960946eee348c306c8b2"
+    },
+    {
+      "path": "parts/keyed.png",
+      "sha256": "fc58b5d0b3c4dcdc311d251b210a7f5d6e96740e6e213ee99c3f35168af8424e"
+    },
+    {
+      "path": "parts/manifest.json",
+      "sha256": "ecbb965a5ac07cf9c04f434854961c87817644ba7a1b12f70d0160962908eccb"
+    },
+    {
+      "path": "parts/ownership.png",
+      "sha256": "73be5bb02193560a52a9015a158d5f076155a54be5fd1e0b3fb21637edfe7570"
+    },
+    {
+      "path": "parts/parts/body.png",
+      "sha256": "89c89e68c33e0963a42c2ffb2e39e0ba6534f579f6de8b0370c3165417759d7c"
+    },
+    {
+      "path": "parts/parts/caudal.png",
+      "sha256": "e6ff66dc3b1e85db47c01ebda6b6d61e5f51133e03b7181b7cc317bc7006d5ca"
+    },
+    {
+      "path": "parts/parts/dorsal.png",
+      "sha256": "22a99a76ab0562b733c8b0ec31a6fcd91925dd81d6a0f6960af9aea535a1f115"
+    },
+    {
+      "path": "parts/parts/far-pectoral.png",
+      "sha256": "1e869d027efdf21321a68ac180b89574bcdc41b64063d9587209ca302be14098"
+    },
+    {
+      "path": "parts/parts/front-body.png",
+      "sha256": "9af18aac53a87578f392cc54af104ec285c2a092410748044110cfa66ee01f8f"
+    },
+    {
+      "path": "parts/parts/head.png",
+      "sha256": "86e7b556007e9612f32aeeaa3ee05decfb7f72bcaf244a6581b9ca48af608baa"
+    },
+    {
+      "path": "parts/parts/jaw.png",
+      "sha256": "874dbc94b5337f510220468bc3e5ce97252deec7cb2b704dfd7e327410ed0679"
+    },
+    {
+      "path": "parts/parts/mid-body.png",
+      "sha256": "a7e850d3d1b4d164e0e263b5815b310351cdafb7c526108e32e7a404536dcff5"
+    },
+    {
+      "path": "parts/parts/near-pectoral.png",
+      "sha256": "5be99e6be13cd72b1f813bd0ddca9a7eb7c762f8b2069752d4a2bd9c985a728d"
+    },
+    {
+      "path": "parts/parts/pelvic-body.png",
+      "sha256": "35d1f5af11304b66888db1c2d3d4c71835bfabcfa2fb833aaa490de8d9cbbec0"
+    },
+    {
+      "path": "parts/parts/rear-body.png",
+      "sha256": "3c404181c74616f24f418b2ad4da395515ffd55bc4a4add4a8c04551aea998c7"
+    },
+    {
+      "path": "parts/parts/root.png",
+      "sha256": "89aaff7e4af2d15b3f218486bfa0b666aa74742c78a7054a9237e270e990c532"
+    },
+    {
+      "path": "parts/parts/tail-peduncle.png",
+      "sha256": "9ffa0beb0ef7859b3120d604d44f47a18eabf8047becc2622da85813fd108a04"
+    },
+    {
+      "path": "parts/receipt.json",
+      "sha256": "63c360d8af815cc32572e36d4ae9f5f61de273e3ee09a7f2d1fcbbf8ac13bf99"
+    },
+    {
+      "path": "pre-split-binding.json",
+      "sha256": "da1790274f3b8d736ba9b5bbdc09eb471661ff108b4c8d643b922f03e0cd1dd7"
+    },
+    {
+      "path": "receipt.json",
+      "sha256": "8c249df77a1a60b0d498a3dcb7276f4e59eb6c7ba7875d8e03e644551400112c"
+    },
+    {
+      "path": "record.json",
+      "sha256": "eefcd1236915abe1d56c653ce18cbaf774c174ab27ced42ce9c43267376c518f"
+    }
+  ]
+}
