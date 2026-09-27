@@ -1,0 +1,13 @@
+{
+  "name": "Jaguar",
+  "masterSha256": "0cce5787654722925ae8c27f348db306dffc5dd353a973fb0c87d742c6b9943f",
+  "status": "UNRESOLVED",
+  "method": "Codex visual inspection of exact generated original; pattern only, not anatomy/G1/Dakk approval",
+  "features": [
+    {
+      "requirement": "rosettes with spots inside them",
+      "status": "UNRESOLVED",
+      "observed": "Large dark rosettes are visible, but distinct central black spots inside the rosettes are not reliably visible; unresolved species-specific pattern."
+    }
+  ]
+}

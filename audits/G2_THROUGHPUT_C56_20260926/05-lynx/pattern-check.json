@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Lynx",
+  "masterSha256": "be8892cdc7aeb4d40aaa971ef72306fe4dc57690a8bcda6b34217cd56a0f1755",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,97 @@
+{
+  "id": "23-whip-snake",
+  "name": "Whip Snake",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "8c6a075ec05f23204f5b4e30b0fe4d6f37b39e4108369a5b8cc26e017ab26021",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 4318,
+    "coreRadius": 5,
+    "bodyBox": {
+      "x0": 174,
+      "y0": 192,
+      "x1": 333,
+      "y1": 228
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2165,
+        "pixels": 935,
+        "box": {
+          "x0": 329,
+          "y0": 192,
+          "x1": 407,
+          "y1": 226
+        },
+        "attach": {
+          "x": 333.1,
+          "y": 219.4,
+          "relX": 1,
+          "relY": 0.76
+        },
+        "dir": {
+          "x": 0.93,
+          "y": -0.36
+        },
+        "class": "front",
+        "length": 78.9
+      },
+      {
+        "k": 1,
+        "frac": 0.2031,
+        "pixels": 877,
+        "box": {
+          "x0": 13,
+          "y0": 196,
+          "x1": 182,
+          "y1": 227
+        },
+        "attach": {
+          "x": 175.3,
+          "y": 222.3,
+          "relX": 0.01,
+          "relY": 0.84
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.1
+        },
+        "class": "rear",
+        "length": 164.4
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 154,
+        "x1": 170,
+        "cx": 162
+      },
+      {
+        "x0": 299,
+        "x1": 333,
+        "cx": 316.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

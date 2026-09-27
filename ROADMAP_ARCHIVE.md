@@ -43,6 +43,18 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
 - Codex's sealed inventories (release/Guide copy, pins, budgets) are never rebound by Claude; propose in an audit README.
 - `tools/run-unit-tests.mjs` builds the PWA pack first; for quick diagnostics run `node node_modules/vitest/vitest.mjs run <file>`.
 
+## Current Codex sprint handoff — 2026-09-26, C56 active batch
+
+- Worktree `/Users/dakk/Projects/celestial-frontier-openai-mac`, branch `openai/mac`. Signed no-ff merge23bae15b contains requested f50abbf7; Claude handoff above preserved exactly. C55/C56 and decisions read read-only. D24/D26 live; D25 off.
+- Goal remains every Earth creature generated and moving in its battle biome, one visual review at the end. No per-creature pause.
+- Tail seam decision: author emits shared exact labels; existing split already welds anatomical body5/caudal. New `TAIL_LABELS_C56_20260926` avoids lossy contour projection. Cod/Perch/Carp/Arctic Fox preserve every changed pixel, original RGBA/recipe and other ownership. Five controls, four static suites, three native captures PASS with zero refusals. Full visual acceptance remains open (other body slivers, Arctic Fox crouch tears). No replacement/admission or tolerance relaxation.
+- `QUAD_CONTACT_C56_20260926` measures Red Fox near foreleg exceeding 8% compression in additive idle/trot at zero travel; prior far-leg projection did not address it. Marmot head/Cattle hump and six prior fit repairs remain open.
+- G2 C56:32 canonical requests prepared (8quadrupeds/8birds/8serpents/8insects); image generation running. Retain every returned original byte-exact, receipts, geometric observations and review sheet, then ask Claude to score pilot alongside previous24. Do not claim G1 acceptance.
+- `PHONE_ORIGINALS_C56_20260926`: canonical Cougar/Wolf/Gull producer prepared; source admission verified. Commit producer, run native three-source proof, independently verify conservation then publish exact bytes and regenerate library manifest. Prior D26 five-crab/Cougar proofs and five canonical keys remain intact.
+- Signed commits only; own normal push after local battery (I5 only accepted red), fresh budget/visibility/workflow check. No PR/label/hosted/develop/main/release/deploy. Keep≥40GiB; session started221GiB and no tool updates needed. No new worktree.
+- Finish batch: validate, full browser-free develop owner and remaining7owners, retain all reds, update references and this handoff, read Claude mailbox at batch end and reply only in own TO_CLAUDE. Claude continues automatic scoring; Dakk need not relay or switch apps.
+
+
 ## Current Codex sprint handoff — 2026-09-26, C54/C55 generated-art batch
 
 ### Working state

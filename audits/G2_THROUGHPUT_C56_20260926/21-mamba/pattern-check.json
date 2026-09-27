@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mamba",
+  "masterSha256": "22df527b751fcfd2b3c0317fd228a8cc07b5d24098217a2ae563c4746121de01",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

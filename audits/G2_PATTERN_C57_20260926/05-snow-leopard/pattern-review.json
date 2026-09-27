@@ -1,0 +1,13 @@
+{
+  "name": "Snow Leopard",
+  "masterSha256": "d9c2b2c7be4f664dc204e3810c60f285243a816491baabeedca4b8d203e02fe6",
+  "status": "PRESENT",
+  "method": "Codex visual inspection of exact generated original; pattern only, not anatomy/G1/Dakk approval",
+  "features": [
+    {
+      "requirement": "pale smoky coat with large open rosettes",
+      "status": "PRESENT",
+      "observed": "Large open dark rosettes are visible across a pale smoky coat."
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "id": "30-firefly",
+  "name": "Firefly",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "7d5ba7bdec880167cafec18247916f38f17740d479b5c865d6186ee671eb7503",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 29698,
+    "coreRadius": 26,
+    "bodyBox": {
+      "x0": 23,
+      "y0": 114,
+      "x1": 414,
+      "y1": 264
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0929,
+        "pixels": 2759,
+        "box": {
+          "x0": 308,
+          "y0": 79,
+          "x1": 393,
+          "y1": 232
+        },
+        "attach": {
+          "x": 314.2,
+          "y": 176.9,
+          "relX": 0.74,
+          "relY": 0.42
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.03
+        },
+        "class": "front",
+        "length": 125.7
+      },
+      {
+        "k": 1,
+        "frac": 0.016,
+        "pixels": 474,
+        "box": {
+          "x0": 26,
+          "y0": 211,
+          "x1": 38,
+          "y1": 262
+        },
+        "attach": {
+          "x": 35.5,
+          "y": 238.6,
+          "relX": 0.03,
+          "relY": 0.83
+        },
+        "dir": {
+          "x": -0.96,
+          "y": 0.26
+        },
+        "class": "rear",
+        "length": 29.2
+      },
+      {
+        "k": 2,
+        "frac": 0.0598,
+        "pixels": 1777,
+        "box": {
+          "x0": 275,
+          "y0": 212,
+          "x1": 357,
+          "y1": 307
+        },
+        "attach": {
+          "x": 287.5,
+          "y": 212,
+          "relX": 0.68,
+          "relY": 0.65
+        },
+        "dir": {
+          "x": 0.54,
+          "y": 0.84
+        },
+        "class": "limb-down",
+        "length": 117.7
+      },
+      {
+        "k": 3,
+        "frac": 0.0426,
+        "pixels": 1264,
+        "box": {
+          "x0": 242,
+          "y0": 233,
+          "x1": 298,
+          "y1": 330
+        },
+        "attach": {
+          "x": 249.5,
+          "y": 233,
+          "relX": 0.58,
+          "relY": 0.79
+        },
+        "dir": {
+          "x": 0.29,
+          "y": 0.96
+        },
+        "class": "limb-down",
+        "length": 108.4
+      },
+      {
+        "k": 4,
+        "frac": 0.014,
+        "pixels": 415,
+        "box": {
+          "x0": 179,
+          "y0": 248,
+          "x1": 205,
+          "y1": 302
+        },
+        "attach": {
+          "x": 193.5,
+          "y": 248,
+          "relX": 0.44,
+          "relY": 0.89
+        },
+        "dir": {
+          "x": -0.19,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 55.9
+      },
+      {
+        "k": 5,
+        "frac": 0.0247,
+        "pixels": 734,
+        "box": {
+          "x0": 90,
+          "y0": 252,
+          "x1": 151,
+          "y1": 322
+        },
+        "attach": {
+          "x": 146.5,
+          "y": 252.1,
+          "relX": 0.32,
+          "relY": 0.92
+        },
+        "dir": {
+          "x": -0.52,
+          "y": 0.86
+        },
+        "class": "limb-down",
+        "length": 89.9
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "ground": [
+      {
+        "x0": 90,
+        "x1": 96,
+        "cx": 92.6
+      },
+      {
+        "x0": 100,
+        "x1": 106,
+        "cx": 102.6
+      },
+      {
+        "x0": 274,
+        "x1": 298,
+        "cx": 286.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

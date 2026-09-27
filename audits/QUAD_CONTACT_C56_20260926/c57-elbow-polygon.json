@@ -1,0 +1,101 @@
+[
+  {
+    "id": "05-tiger",
+    "sourceAuthor": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/05-tiger/packet/authoring.json",
+    "sourceSha256": "1b4d2b98b20f10debf4c014611ae4d3aad1f45b8e79bbc36916451047a5908e4",
+    "root": [
+      877.7,
+      504
+    ],
+    "knee": [
+      823,
+      649.8
+    ],
+    "boneLengthPx": 155.72324810380752,
+    "distalCorners": [
+      {
+        "point": [
+          926.2,
+          680.9
+        ],
+        "alongBone": 0.9541990776804523,
+        "lateralPx": 107.54803925510022
+      },
+      {
+        "point": [
+          758.2,
+          675.3
+        ],
+        "alongBone": 1.2994862210836988,
+        "lateralPx": 51.71347308805004
+      }
+    ],
+    "conclusion": "Transferred upper foreleg owner extends laterally beyond the observed elbow; inspect source ownership before motion. No runtime or source edit."
+  },
+  {
+    "id": "06-leopard",
+    "sourceAuthor": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/06-leopard/packet/authoring.json",
+    "sourceSha256": "a1582e2da36a7f53afc18997e853c9b0f3248e7c295560b7b8ddbd9887590e0f",
+    "root": [
+      890.7,
+      515
+    ],
+    "knee": [
+      850,
+      631.4
+    ],
+    "boneLengthPx": 123.3103807471212,
+    "distalCorners": [
+      {
+        "point": [
+          959.7,
+          645.3
+        ],
+        "alongBone": 0.8127756824033481,
+        "lateralPx": 108.1402061951813
+      },
+      {
+        "point": [
+          801.7,
+          633.3
+        ],
+        "alongBone": 1.1438280353425907,
+        "lateralPx": 44.96612504482469
+      }
+    ],
+    "conclusion": "Transferred upper foreleg owner extends laterally beyond the observed elbow; inspect source ownership before motion. No runtime or source edit."
+  },
+  {
+    "id": "09-ocelot",
+    "sourceAuthor": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c54-v10/09-ocelot/packet/authoring.json",
+    "sourceSha256": "ca1ee6acdd0214e7a070458b518a94379819f72b5d28cd05f7d842008f9b5ac8",
+    "root": [
+      856.6,
+      518.5
+    ],
+    "knee": [
+      779,
+      662.1
+    ],
+    "boneLengthPx": 163.22597832453022,
+    "distalCorners": [
+      {
+        "point": [
+          900.9,
+          680.3
+        ],
+        "alongBone": 0.7430472564362796,
+        "lateralPx": 115.89552223352828
+      },
+      {
+        "point": [
+          724.6,
+          655.5
+        ],
+        "alongBone": 1.122873340259553,
+        "lateralPx": 50.99678424625524
+      }
+    ],
+    "conclusion": "Transferred upper foreleg owner extends laterally beyond the observed elbow; inspect source ownership before motion. No runtime or source edit."
+  }
+]

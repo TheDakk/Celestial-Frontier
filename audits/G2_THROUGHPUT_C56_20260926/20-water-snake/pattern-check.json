@@ -1,0 +1,11 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Water Snake",
+  "masterSha256": "fdb73d44012d4ac5f3964dc8587033e7f74d1097fa7964644a1f8f6c4718599c",
+  "required": [
+    "keeled banded body"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "REFUSE",
+  "reason": "Flat coat on patterned species"
+}

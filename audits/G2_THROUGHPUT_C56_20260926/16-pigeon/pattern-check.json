@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Pigeon",
+  "masterSha256": "394919fedaefc60bd98ad8e15d35ca89b0a241cc02345b225d0b1defb38cd505",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

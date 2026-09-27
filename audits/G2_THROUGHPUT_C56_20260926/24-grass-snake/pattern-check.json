@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Grass Snake",
+  "masterSha256": "0f04dba1184d01da6cd0ade3769ec946309d3cc5b3e2f7365294367e1dc726d4",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

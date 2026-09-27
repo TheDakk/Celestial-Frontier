@@ -1,0 +1,175 @@
+{
+  "id": "31-carrion-beetle",
+  "name": "Carrion Beetle",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "a44186bca2f1136177d8f4959e6da34f7b6c03a6a03caa4287b209bb94c4b0c9",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 38296,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 16,
+      "y0": 116,
+      "x1": 409,
+      "y1": 252
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1096,
+        "pixels": 4196,
+        "box": {
+          "x0": 294,
+          "y0": 116,
+          "x1": 387,
+          "y1": 241
+        },
+        "attach": {
+          "x": 329.9,
+          "y": 167.9,
+          "relX": 0.8,
+          "relY": 0.38
+        },
+        "dir": {
+          "x": 0.46,
+          "y": 0.89
+        },
+        "class": "limb-down",
+        "length": 92.8
+      },
+      {
+        "k": 1,
+        "frac": 0.0866,
+        "pixels": 3318,
+        "box": {
+          "x0": 32,
+          "y0": 185,
+          "x1": 122,
+          "y1": 316
+        },
+        "attach": {
+          "x": 67.9,
+          "y": 231.8,
+          "relX": 0.13,
+          "relY": 0.85
+        },
+        "dir": {
+          "x": -0.17,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 100
+      },
+      {
+        "k": 2,
+        "frac": 0.0912,
+        "pixels": 3494,
+        "box": {
+          "x0": 247,
+          "y0": 209,
+          "x1": 370,
+          "y1": 320
+        },
+        "attach": {
+          "x": 268,
+          "y": 209.2,
+          "relX": 0.64,
+          "relY": 0.68
+        },
+        "dir": {
+          "x": 0.62,
+          "y": 0.78
+        },
+        "class": "limb-down",
+        "length": 150.6
+      },
+      {
+        "k": 3,
+        "frac": 0.0525,
+        "pixels": 2011,
+        "box": {
+          "x0": 189,
+          "y0": 218,
+          "x1": 247,
+          "y1": 324
+        },
+        "attach": {
+          "x": 227,
+          "y": 235.8,
+          "relX": 0.54,
+          "relY": 0.88
+        },
+        "dir": {
+          "x": -0.18,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 96
+      },
+      {
+        "k": 4,
+        "frac": 0.0201,
+        "pixels": 769,
+        "box": {
+          "x0": 126,
+          "y0": 249,
+          "x1": 171,
+          "y1": 299
+        },
+        "attach": {
+          "x": 148.5,
+          "y": 249,
+          "relX": 0.34,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": -0.13,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 54.8
+      }
+    ],
+    "byClass": {
+      "limb-down": 5
+    },
+    "ground": [
+      {
+        "x0": 34,
+        "x1": 40,
+        "cx": 36.5
+      },
+      {
+        "x0": 218,
+        "x1": 247,
+        "cx": 235.2
+      },
+      {
+        "x0": 334,
+        "x1": 345,
+        "cx": 339.4
+      },
+      {
+        "x0": 349,
+        "x1": 355,
+        "cx": 353.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

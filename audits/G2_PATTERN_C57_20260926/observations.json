@@ -1,0 +1,106 @@
+[
+  {
+    "id": "01-tiger",
+    "name": "Tiger",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "2748a131c4206e2feeca1b28a636749c3f093dbde243414b2ee7b8b28bf06e09",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 5,
+    "detached": []
+  },
+  {
+    "id": "02-leopard",
+    "name": "Leopard",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "3115da5298558660d693dbbb1b8551c0a84cb13f3b2b4257361eaa3114fd9030",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "03-jaguar",
+    "name": "Jaguar",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "0cce5787654722925ae8c27f348db306dffc5dd353a973fb0c87d742c6b9943f",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "04-ocelot",
+    "name": "Ocelot",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "7aaf3067055671ccf360874604a89a29d4a02f2f9d1acb789c054fe45fe859ad",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "05-snow-leopard",
+    "name": "Snow Leopard",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "d9c2b2c7be4f664dc204e3810c60f285243a816491baabeedca4b8d203e02fe6",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "06-clouded-leopard",
+    "name": "Clouded Leopard",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "770f57e8c5ce6d76998ff5bc46e80b918ba2ad722b2e496575aa4d5d636d29d1",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "07-jaguar-pattern-first",
+    "name": "Jaguar",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "811681c61a34735bd49008b1e3bd64eceda4842808135814766695dbb40d7753",
+    "keyed": false,
+    "byClass": {
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  }
+]

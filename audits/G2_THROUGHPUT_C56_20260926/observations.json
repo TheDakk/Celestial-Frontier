@@ -1,0 +1,502 @@
+[
+  {
+    "id": "01-clouded-leopard",
+    "name": "Clouded Leopard",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "497e2fcf22bb4a4713a3cbfb9cc03850371807b857b5df0dbe6093bd400166ca",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "02-caracal",
+    "name": "Caracal",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "3be2272dccc1c3ba905d58b84cd8f3a4056a5779633a5d6fb099ac193108ff9d",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "03-coyote",
+    "name": "Coyote",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "b2f891a521f987ac5c3f093a8994f0df87c4a6b663cd5c3826cdfa05cafe3be0",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "04-bobcat",
+    "name": "Bobcat",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "3dcb12fc477dc4798e058fec0211b5d652cec3fcbd1645255f78a78f9aba0fad",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "05-lynx",
+    "name": "Lynx",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "be8892cdc7aeb4d40aaa971ef72306fe4dc57690a8bcda6b34217cd56a0f1755",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "06-mink",
+    "name": "Mink",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "ca16447ae172ad9100642840cb51378a8f75a76b737f8dc3cff844773b181e10",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "07-marten",
+    "name": "Marten",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "b189641e56694cb76d9cc23c5fea23959a0d3216abe94c1be1893f209b31966f",
+    "keyed": false,
+    "byClass": {
+      "top": 2,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "08-fisher",
+    "name": "Fisher",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "f0bec6779fc690b255571421823bfdfaa40e12514c3a925c1c1da4e18493139d",
+    "keyed": false,
+    "byClass": {
+      "top": 2,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "09-crow",
+    "name": "Crow",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "430ecb4294ad7c28c0013d4fa0e79837c92d61133810492f1279172b17602af3",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "10-raven",
+    "name": "Raven",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "d27628f43b32ca2ba8374f9178feafa7af2fff367b3f8cf35fbed956b3fb59b7",
+    "keyed": false,
+    "byClass": {
+      "top": 2,
+      "other": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "11-robin",
+    "name": "Robin",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "5d076e3e2e95ddfcc2fe2046d57f3ab8f1dfeb2d2a1a95f8a0bea65c7840f2ec",
+    "keyed": false,
+    "byClass": {
+      "top": 2,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "12-cardinal",
+    "name": "Cardinal",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "e5dea12d476e4ecb27601ee08d13f4cbf78e3037cd25395a71ad148deced507d",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "13-magpie",
+    "name": "Magpie",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "c548d79ad9dd3591b5a82f2395cef5b8ddb6a12ef371b7a7a4628c6bf5e06571",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "14-jay",
+    "name": "Jay",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "05f71e270d668f422ad370510de16d43965f3ca23be7f2cacaa2fa6274789bd5",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "15-dove",
+    "name": "Dove",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "8588a60567e7c84e600ac32613b1c7a6a2bd11edc46d7b115fd71a14e2bd70a0",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "16-pigeon",
+    "name": "Pigeon",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "394919fedaefc60bd98ad8e15d35ca89b0a241cc02345b225d0b1defb38cd505",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "17-tree-snake",
+    "name": "Tree Snake",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "6967211e0f829fd76aadb6ce556d3b081df2ada7a318a0c0eb002e294b312434",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "18-rat-snake",
+    "name": "Rat Snake",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "1e4811f1863d1a2cd27dd8f34e4e154223b99a0edb5aa322a5958773b96e118c",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "19-cottonmouth",
+    "name": "Cottonmouth",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "7aeecbf0c3b2f7de4a7a5b652cb5c5e2074b4be0607af4387ac6764992c99b72",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "limb-down": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "20-water-snake",
+    "name": "Water Snake",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "fdb73d44012d4ac5f3964dc8587033e7f74d1097fa7964644a1f8f6c4718599c",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "21-mamba",
+    "name": "Mamba",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "22df527b751fcfd2b3c0317fd228a8cc07b5d24098217a2ae563c4746121de01",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "22-mountain-viper",
+    "name": "Mountain Viper",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "375aae4dda1155d91a6bbf98c2f258868fe8b4a95d69bfcbcf6d627a494a2287",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "23-whip-snake",
+    "name": "Whip Snake",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "8c6a075ec05f23204f5b4e30b0fe4d6f37b39e4108369a5b8cc26e017ab26021",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "24-grass-snake",
+    "name": "Grass Snake",
+    "family": "serpent",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "0f04dba1184d01da6cd0ade3769ec946309d3cc5b3e2f7365294367e1dc726d4",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "25-dung-beetle",
+    "name": "Dung Beetle",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "54f4b68a9f63947917ab9f1bbc2ad705852544f60ba17a842cdc5515dd8caeb0",
+    "keyed": false,
+    "byClass": {
+      "limb-down": 5,
+      "rear": 1,
+      "other": 1
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "26-cicada",
+    "name": "Cicada",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "6c97bd893432d211c78e8537ea4bd45691333e43ca265140790ef7a6842d69ff",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "27-ladybug",
+    "name": "Ladybug",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "27cc44dbc8dd56425fee788b6bbd21d230a339914d2c245c28f6e88aa7c32961",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "limb-down": 3,
+      "rear": 1
+    },
+    "groundContacts": 1,
+    "detached": []
+  },
+  {
+    "id": "28-leafcutter-ant",
+    "name": "Leafcutter Ant",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "4591407f344c95e0a97f418066220fea7bda1718de7de6b9fd62e0c904061bf6",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "front": 3
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "29-cave-cricket",
+    "name": "Cave Cricket",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "ea2369cf78cb188ab0b5db152d20a553cbe4d1c9cb07cf6d1d2daacb3912b636",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "top": 2,
+      "limb-down": 2
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "30-firefly",
+    "name": "Firefly",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "7d5ba7bdec880167cafec18247916f38f17740d479b5c865d6186ee671eb7503",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "31-carrion-beetle",
+    "name": "Carrion Beetle",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "a44186bca2f1136177d8f4959e6da34f7b6c03a6a03caa4287b209bb94c4b0c9",
+    "keyed": false,
+    "byClass": {
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "32-stick-insect",
+    "name": "Stick Insect",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "6b085b294d505c11371077e8b0af45cfd7f3b98ec4d10bafa70bc773d3ef2411",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "top": 1,
+      "rear": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 3,
+    "detached": []
+  }
+]

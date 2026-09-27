@@ -1,0 +1,13 @@
+{
+  "name": "Clouded Leopard",
+  "masterSha256": "497e2fcf22bb4a4713a3cbfb9cc03850371807b857b5df0dbe6093bd400166ca",
+  "status": "ABSENT",
+  "method": "Codex inspection of exact original; requested pattern not visible",
+  "features": [
+    {
+      "requirement": "large cloud-shaped dark-edged blotches",
+      "status": "ABSENT",
+      "observed": "Cloud blotches, body bands/zigzag, or red-shell spots absent from the corresponding original; surface texture alone is not pattern proof."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "30-firefly",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-dd8a13b8-5b86-4f6b-a186-56ca112697ec.png",
+  "tool": "image_gen.imagegen",
+  "masterSha256": "7d5ba7bdec880167cafec18247916f38f17740d479b5c865d6186ee671eb7503",
+  "bytes": 870551,
+  "promptSha256": "1ede7fa1f90eded51ab1268e68d34bd02601f7277dc97bcc93705c11bdbbbb2e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

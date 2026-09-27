@@ -6,6 +6,7 @@ import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import {rolldown} from 'rolldown';
 import {familyContract} from '../creature-animation/family-contracts.mjs';
+import {patternRequirements} from './pattern-observation.mjs';
 const sha=x=>createHash('sha256').update(x).digest('hex');
 /** Use canonical profile candidates, never guess a family from a name or raw procedural limbs. */
 export function libraryFamily(profile,species){
@@ -18,7 +19,7 @@ export function libraryFamily(profile,species){
  throw Error('Unsupported controlled library family');
 }
 export function controlledLibraryLayout(family){
- const common='Strict side profile facing RIGHT, head right and posterior left. One whole anatomically accurate adult; no duplicate subject. Plain natural midtone pigment without stripes, spots, bands, masks or patches; preserve species structural anatomy, scales, feather edges and material. Keep the whole silhouette, every natural tail or abdomen tip, bill, antenna and toe inside the frame with at least 8 percent clear margin on EVERY side. The TRUE SPECIES TAIL must be painted continuously from attachment through its natural taper or feather fan to its visible tip, separately readable from limbs and body; do not truncate, hide, lengthen a short tail or invent a tail on a tailless species. No floor, cast shadow, scenery, text or props.';
+ const common='Strict side profile facing RIGHT, head right and posterior left. One whole anatomically accurate adult; no duplicate subject. Preserve species-identifying natural coat patterns, colours, scales, feather edges and material. Never replace required stripes, rosettes, spots, bands or patches with a plain coat. Keep the whole silhouette, every natural tail or abdomen tip, bill, antenna and toe inside the frame with at least 8 percent clear margin on EVERY side. The TRUE SPECIES TAIL must be painted continuously from attachment through its natural taper or feather fan to its visible tip, separately readable from limbs and body; do not truncate, hide, lengthen a short tail or invent a tail on a tailless species. No floor, cast shadow, scenery, text or props.';
  const rows={
   quadruped:{legs:4,accuracy:'four separately visible legs and feet; one tail of its real species length',pose:'Quiet planted walking stride, paused with all feet on one level. Exactly FOUR separately visible legs, two fore and two hind; near and far legs visibly APART from their body attachments through their feet, separated by clear background gaps rather than only offset toes. Keep all four limbs naturally connected; no overlapping, crossed, raised, merged or invented legs. Preserve real ears, horns if present, nose and eyes.'},
   'biped-bird':{legs:2,accuracy:'two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones',pose:'Quiet planted walking stride in strict side profile. Near and far legs visibly APART from the feathered body through both ankles and all natural toes, with a clear background gap along the leg shafts; both feet rest on the same ground level with TWO separately visible ground contacts and every toe kept inside the frame. Do not merge the upper legs and merely separate the toes. Both wings rest naturally folded; show the far wing edge separately only where anatomically visible, never invent an extra wing. Keep the folded wing clear enough of the tail base that its continuous root contour and feather fan are readable; never disconnect the tail or invent a gap through connected anatomy. Feather tail extends naturally left of the body with its complete tip separated from feet; species with a short tail keep a short but clearly visible tail. No spread display, flying or raised foot.'},
@@ -47,11 +48,12 @@ export async function compileLibraryMaster(name,outArg){
   familyContract(family); // a known template is a request vocabulary, never observed anatomy
   const request=controlledLibraryLayout(family);
   const layout=request.layout;
+  const patternFeatures=patternRequirements(species[0]),identityFeatures=[...patternFeatures,...species[0].mustRead.filter(f=>!patternFeatures.includes(f))];
   let prompt=template.prompt;
   const section=(start,end,value)=>{if(prompt.split(start).length!==2||prompt.split(end).length!==2)throw Error('Nonunique prompt section');prompt=prompt.slice(0,prompt.indexOf(start)+start.length)+value+prompt.slice(prompt.indexOf(end));};
   const fauna=prompt.split('\n').filter(x=>x.startsWith('  Fauna adaptation:'));if(fauna.length!==1)throw Error('Fauna card boundary');
   prompt=prompt.replace(fauna[0],`  Fauna adaptation: Earth ${name}; real named anatomy and natural materials take priority over raw procedural genes. Isolated library master, not an Earth landing resident claim.`);
-  section('SUBJECT\n','\n\nACCURACY\n',`One Earth ${name}. Species identity features: ${species[0].mustRead.join('; ')}. The controlled plain-coat rule below overrides pigment markings only, never structure.\nGenomic identity (Earth anatomy takes priority): ${JSON.stringify(identity.genome)}\n${layout}`);
+  section('SUBJECT\n','\n\nACCURACY\n',`Species identity features FIRST: ${identityFeatures.join('; ')}. One Earth ${name}. These identifying pigment patterns and structures override conflicting generic colour or procedural-genome suggestions.\nGenomic identity (Earth anatomy takes priority): ${JSON.stringify(identity.genome)}\n${layout}`);
   section('ACCURACY\n','\n\nLAYOUT\n',`One anatomically accurate ${name}, one head; ${request.accuracy}; no duplicate subject. Required counts are requests, not measured evidence. No added anatomy, equipment or fantasy growth.`);
   section('LAYOUT\n','\n\nTECHNICAL OUTPUT\n',layout);
   const size='Create a square 1024 x 1024 PNG.';if(prompt.split(size).length!==2)throw Error('Technical size boundary');prompt=prompt.replace(size,'Create a square 1254 x 1254 PNG.');

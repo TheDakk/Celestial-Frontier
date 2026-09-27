@@ -1,0 +1,135 @@
+{
+  "reason": "Native prepared bytes and bundles are reproducible; originals and proof receipts retained",
+  "files": [
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/cougar-masterPng.png",
+      "bytes": 897005,
+      "sha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/wolf-master.rgba",
+      "bytes": 6290064,
+      "sha256": "358e85b4e2280866bdb2f9b36c180d01d872cd764877e11b9c3492ef0d58af08"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/cougar-binding.json",
+      "bytes": 3136866,
+      "sha256": "b2b60503766ba28f8c9efd7d0585d4416a23e0fbeee4f5e5cb41e97dc02c6065"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/wolf-atlasPng.png",
+      "bytes": 627949,
+      "sha256": "3888b35dc716d271e44f68213506de897ecdc0285e09084e0f27a08983c0c870"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/cougar-master.rgba",
+      "bytes": 6290064,
+      "sha256": "5888501559cb968b808f690031a8c9c4b8eb7bdda81be1a5afe782f1277d2050"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/cougar-alphaPng.png",
+      "bytes": 75784,
+      "sha256": "71f01b2c27e5a934bae1c16c4e289d583a7cc073dfaa157d0d80b5099b750a7b"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/gull-master.rgba",
+      "bytes": 6290064,
+      "sha256": "4dbf1660f6f80dcc8a33f4c1d04c51fabc7d371787a81c7a73b09af71065004a"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/client.mjs",
+      "bytes": 247933,
+      "sha256": "500ac69c27c21803ad5c6a38009bafc769662cd4ecde3b233d519b789dd10cc7"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/cougar-labelsPng.png",
+      "bytes": 51807,
+      "sha256": "56cb5cb87b39d1146db824e39add6426bb0083c5775775dc25d072b8521dc5c2"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/gull-atlasPng.png",
+      "bytes": 529896,
+      "sha256": "95775e5b9dc0614d3033480742553debb9fe93b9a32aac1b88efbea15d6e670d"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/wolf-binding.json",
+      "bytes": 2323492,
+      "sha256": "b5da6af9459e3a04408fa36ddd29ab77c1f06742998660a018dfb378930a577b"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/gull-masterPng.png",
+      "bytes": 504637,
+      "sha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/gull-labels.rgba",
+      "bytes": 6290064,
+      "sha256": "b85287c3fe34c833527c29e5e13c56ff8d9518590c8ffe693abbed5304eaeb5b"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/cougar-atlasPng.png",
+      "bytes": 937642,
+      "sha256": "cb2be21a26aa37efc196c9cc576f353ea8b9f2ab5da94d18654c5783a1b8b420"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/inputs.json",
+      "bytes": 6688,
+      "sha256": "7c6b43f22f54b888a3d7c0f1cc7efcb3e79759302a9b44a63735ed9f5cdfd54d"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/gull-recordBytes.json",
+      "bytes": 6329,
+      "sha256": "7f7a1d10d7a58f722b48ee3e6ab033c71ce84eb8d46320aca62a07cfb9530c48"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/gull-alphaPng.png",
+      "bytes": 60675,
+      "sha256": "9dd1acfffe7f8ae213d60b73dd8d3d2a29da2f6e0e0cbbff9bb09fcdf85ed2b2"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/wolf-labelsPng.png",
+      "bytes": 47963,
+      "sha256": "abe41912a83f5277e05b4bbe5aaa5cab051823586b77b1a453dda58b7ca0d7d3"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/gull-binding.json",
+      "bytes": 1749793,
+      "sha256": "d65339b62e84e807e2a4512a67837d9ae8b4b7e68cb3f65033e924e138a2a13b"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/wolf-labels.rgba",
+      "bytes": 6290064,
+      "sha256": "a6f1bd3f65a85133db22fc45510a507d81910b54c17654a51866a7ab280a520c"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/wolf-masterPng.png",
+      "bytes": 609200,
+      "sha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/cougar-labels.rgba",
+      "bytes": 6290064,
+      "sha256": "58698a230e47153b209abe2c0187f9136a9911bbd3e2286f9a9e4ea86fa5a994"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/gull-labelsPng.png",
+      "bytes": 44807,
+      "sha256": "030ed5cc891734fc383746e73a0d82fb79a3aa083f75ddeefd07d8ed70208df9"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/wolf-alphaPng.png",
+      "bytes": 66576,
+      "sha256": "b961a6ee812090c1d5be353ea8d0d3ed0bb0835666c99098c058d8f6cd30a387"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/cougar-recordBytes.json",
+      "bytes": 7556,
+      "sha256": "77595449583b8877f9f0ef1ea10f1de8ed5369c77bc8e3c251797d31326b4fcd"
+    },
+    {
+      "path": "audits/PHONE_ORIGINALS_C56_20260926/native-01/prepared/wolf-recordBytes.json",
+      "bytes": 7502,
+      "sha256": "8ccee0dc9fb68d1e2e5c69e5efb66499af8af811998c822a9652db33d345cc7d"
+    }
+  ]
+}

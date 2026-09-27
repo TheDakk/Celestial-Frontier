@@ -1,0 +1,13 @@
+{
+  "name": "Leopard",
+  "masterSha256": "3115da5298558660d693dbbb1b8551c0a84cb13f3b2b4257361eaa3114fd9030",
+  "status": "PRESENT",
+  "method": "Codex visual inspection of exact generated original; pattern only, not anatomy/G1/Dakk approval",
+  "features": [
+    {
+      "requirement": "hollow ring rosettes with empty centres",
+      "status": "PRESENT",
+      "observed": "Numerous dark hollow ring rosettes with light centres cover the gold flank; head and limbs carry smaller solid spots."
+    }
+  ]
+}

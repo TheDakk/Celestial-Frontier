@@ -1,0 +1,18 @@
+{
+  "name": "Ocelot",
+  "masterSha256": "7aaf3067055671ccf360874604a89a29d4a02f2f9d1acb789c054fe45fe859ad",
+  "status": "PRESENT",
+  "method": "Codex visual inspection of exact generated original; pattern only, not anatomy/G1/Dakk approval",
+  "features": [
+    {
+      "requirement": "chain-like rosettes running in streaks along the flank",
+      "status": "PRESENT",
+      "observed": "Elongated dark rosettes form chains along the flank and two dark cheek lines are visible."
+    },
+    {
+      "requirement": "two black stripes on each cheek",
+      "status": "PRESENT",
+      "observed": "Elongated dark rosettes form chains along the flank and two dark cheek lines are visible."
+    }
+  ]
+}

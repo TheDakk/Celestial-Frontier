@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tree Snake",
+  "masterSha256": "6967211e0f829fd76aadb6ce556d3b081df2ada7a318a0c0eb002e294b312434",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
