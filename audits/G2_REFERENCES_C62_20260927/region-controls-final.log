@@ -1,0 +1,13 @@
+✔ same-joint region masks share one named owner and retain priority mapping (0.597833ms)
+✔ a changed joint is never merged just because its name or layer matches (0.078916ms)
+✔ one-region-per-joint packets remain byte-identical and keep the remainder identity (0.345958ms)
+✔ duplicate identities and unknown remainder refuse (0.200792ms)
+✔ a remainder region sharing another joint remains the merged remainder owner (0.059125ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 86.961417

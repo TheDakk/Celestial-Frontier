@@ -1,0 +1,201 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Hawk\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"1996548726\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"0\"]]]]",
+    "seed": 1996548726,
+    "ownerId": "authored:archetype-sprint/reference-hawk",
+    "earthName": "Hawk"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1996548726,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 1,
+    "body": 13,
+    "loco": 7,
+    "trait": 0,
+    "size": 4,
+    "diet": 1,
+    "head": 9,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 5,
+    "pattern": 1,
+    "eyes": 1,
+    "behavior": 1,
+    "habitat": 16,
+    "detail": 4,
+    "accent": 5,
+    "temper": 7,
+    "sense": 7,
+    "repro": 4,
+    "life": 0,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Hawk"
+  },
+  "geometry": {
+    "cutoutAssetHash": "a3cc39bbb343cd4f6ed8eec6af71759ce283d0ea0eec26c6cdb24d91d5fe73d3",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8054226475279107,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5813397129186603,
+      0.42822966507177035
+    ],
+    "pelvis": [
+      0.5207336523125997,
+      0.5151515151515151
+    ],
+    "spine": [
+      0.6578947368421053,
+      0.4266347687400319
+    ],
+    "chest": [
+      0.7974481658692185,
+      0.35964912280701755
+    ],
+    "neck0": [
+      0.8229665071770335,
+      0.29505582137161085
+    ],
+    "neck1": [
+      0.854066985645933,
+      0.259170653907496
+    ],
+    "head": [
+      0.8931419457735247,
+      0.21212121212121213
+    ],
+    "beak": [
+      0.94896331738437,
+      0.23843700159489634
+    ],
+    "legNearKnee": [
+      0.46730462519936206,
+      0.6499202551834131
+    ],
+    "legNearAnkle": [
+      0.4529505582137161,
+      0.7312599681020734
+    ],
+    "legNearFoot": [
+      0.48484848484848486,
+      0.7599681020733652
+    ],
+    "legFarKnee": [
+      0.6562998405103668,
+      0.6547049441786283
+    ],
+    "legFarAnkle": [
+      0.7567783094098883,
+      0.74481658692185
+    ],
+    "legFarFoot": [
+      0.7974481658692185,
+      0.7599681020733652
+    ],
+    "wingNearRoot": [
+      0.7025518341307815,
+      0.3508771929824561
+    ],
+    "wingNearTip": [
+      0.34768740031897927,
+      0.4728867623604466
+    ],
+    "wingFarRoot": [
+      0.6236044657097288,
+      0.29505582137161085
+    ],
+    "wingFarTip": [
+      0.4824561403508772,
+      0.3524720893141946
+    ],
+    "tailFan": [
+      0.1762360446570973,
+      0.594896331738437
+    ]
+  },
+  "materials": {
+    "surface": "brown barred flight feathers, pale streaked chest, rufous tail, yellow cere and scaled talons"
+  },
+  "source": "audits/G2_REFERENCES_C62_20260927/04-hawk-v2/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Standing folded-wing reference; no unfolded flight surface inferred."
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Manually observed exact new master, no transferred reference coordinates or automatic packet. Named limb paint regions follow the visible separate legs. Tail is separate from leg/wing owners.",
+    "visualAcceptance": "Dakk pending; no family-wide acceptance",
+    "sourceFacing": "right",
+    "wingPose": "Folded wings above tail; narrower upper feather band is far folded-wing ownership.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "6bdd4d4d054279748dd57fdbe2078c4a7d9e680e8b6aa73218c0b6715b22ea65",
+    "subjectSourceSha256": "87c4c9113ec33cb9421c04800eb08dc511fd67c3f1cea70599270491e99b4568",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.10596462902058928,
+      "spine": 0.16324330768697687,
+      "chest": 0.15479740409415363,
+      "neck0": 0.06945128028645295,
+      "neck1": 0.047486682395404815,
+      "head": 0.061159647492229685,
+      "beak": 0.06171342077813673,
+      "legFarKnee": 0.19455937637569137,
+      "legFarAnkle": 0.13496677691296527,
+      "legFarFoot": 0.04340052575498497,
+      "legNearKnee": 0.144973356959313,
+      "legNearAnkle": 0.08259653828532088,
+      "legNearFoot": 0.042914271282531745,
+      "wingFarRoot": 0.18545599660153314,
+      "wingFarTip": 0.15237938697889164,
+      "wingNearRoot": 0.09530089469810094,
+      "wingNearTip": 0.3752533829352823,
+      "tailFan": 0.3536068967834851
+    },
+    "measures": {
+      "body": 0.31741442317219654,
+      "bone-min": 0.042914271282531745,
+      "bone-max": 0.3752533829352823,
+      "leg/torso:legFar": 1.1748888891584168,
+      "leg/torso:legNear": 0.8521483170927889,
+      "wing/torso": 1.0643353260514878
+    }
+  },
+  "recipeHash": "bbc54d5b0d92473ea851902c1cba2ca38ba5a48808b2576689ae41f14062f719"
+}

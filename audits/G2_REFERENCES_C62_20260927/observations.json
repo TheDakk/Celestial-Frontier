@@ -1,0 +1,147 @@
+[
+  {
+    "id": "01-robin",
+    "name": "Robin",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "e23c895629f36cd69be0861a16c0bf27516f85bb1ad385f00016ea2bf7d8a080",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "02-pigeon",
+    "name": "Pigeon",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "64746615ffdc4c8648153537fc25e2b5e03671dceb9f9880186a71e4ae3151db",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "03-duck",
+    "name": "Duck",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "b1311edf9b88da5e6854e2c7fac562eaaa89ce2e674a47616fc8adc2d089af97",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "04-hawk",
+    "name": "Hawk",
+    "family": "biped-bird",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "a3cc39bbb343cd4f6ed8eec6af71759ce283d0ea0eec26c6cdb24d91d5fe73d3",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 3,
+    "detached": []
+  },
+  {
+    "id": "05-cat",
+    "name": "Cat",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "06-dog",
+    "name": "Dog",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "d7dd14c398a7e35a786fab91f7c593d8efdd7b0442f3198c26b4757f0addfa25",
+    "keyed": false,
+    "byClass": {
+      "other": 1,
+      "top": 1,
+      "limb-down": 3
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "07-weasel",
+    "name": "Weasel",
+    "family": "quadruped",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "43006af17548682e07146521da9d676d75643dcb0012334230f0549f2ab5560b",
+    "keyed": false,
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "limb-down": 4
+    },
+    "groundContacts": 4,
+    "detached": []
+  },
+  {
+    "id": "08-ant",
+    "name": "Ant",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "c08ceac5e56a3ee468c08e38487f28f3a9d25a5d08d0eb266491c02fb319b754",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "top": 1,
+      "limb-down": 2
+    },
+    "groundContacts": 2,
+    "detached": []
+  },
+  {
+    "id": "09-cricket",
+    "name": "Cricket",
+    "family": "insect",
+    "width": 1254,
+    "height": 1254,
+    "masterSha256": "69d905966cfb597f0c09d44f0f857cce30e28201ed1d7358621e289ded468ca4",
+    "keyed": false,
+    "byClass": {
+      "front": 1,
+      "rear": 3,
+      "limb-down": 5
+    },
+    "groundContacts": 4,
+    "detached": []
+  }
+]

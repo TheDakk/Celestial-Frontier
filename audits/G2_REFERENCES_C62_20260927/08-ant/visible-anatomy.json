@@ -1,0 +1,144 @@
+{
+  "id": "08-ant",
+  "name": "Ant",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "c08ceac5e56a3ee468c08e38487f28f3a9d25a5d08d0eb266491c02fb319b754",
+  "keyed": false,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 13304,
+    "coreRadius": 15,
+    "bodyBox": {
+      "x0": 81,
+      "y0": 168,
+      "x1": 162,
+      "y1": 229
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.623,
+        "pixels": 8289,
+        "box": {
+          "x0": 155,
+          "y0": 139,
+          "x1": 373,
+          "y1": 278
+        },
+        "attach": {
+          "x": 162.3,
+          "y": 190.4,
+          "relX": 1,
+          "relY": 0.37
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.04
+        },
+        "class": "front",
+        "length": 228.2
+      },
+      {
+        "k": 1,
+        "frac": 0.0044,
+        "pixels": 59,
+        "box": {
+          "x0": 124,
+          "y0": 165,
+          "x1": 148,
+          "y1": 167
+        },
+        "attach": {
+          "x": 136,
+          "y": 167,
+          "relX": 0.68,
+          "relY": -0.02
+        },
+        "dir": {
+          "x": -0.3,
+          "y": -0.95
+        },
+        "class": "top",
+        "length": 12.2
+      },
+      {
+        "k": 2,
+        "frac": 0.0395,
+        "pixels": 525,
+        "box": {
+          "x0": 53,
+          "y0": 201,
+          "x1": 107,
+          "y1": 268
+        },
+        "attach": {
+          "x": 86.6,
+          "y": 222.4,
+          "relX": 0.07,
+          "relY": 0.89
+        },
+        "dir": {
+          "x": -0.32,
+          "y": 0.95
+        },
+        "class": "limb-down",
+        "length": 56.7
+      },
+      {
+        "k": 3,
+        "frac": 0.0277,
+        "pixels": 368,
+        "box": {
+          "x0": 87,
+          "y0": 226,
+          "x1": 133,
+          "y1": 279
+        },
+        "attach": {
+          "x": 128.5,
+          "y": 226,
+          "relX": 0.59,
+          "relY": 0.95
+        },
+        "dir": {
+          "x": -0.5,
+          "y": 0.87
+        },
+        "class": "limb-down",
+        "length": 67.3
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "top": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 87,
+        "x1": 106,
+        "cx": 95.7
+      },
+      {
+        "x0": 233,
+        "x1": 246,
+        "cx": 240.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. Counts never substitute for the independent manual reference authoring or expected anatomy."
+}
