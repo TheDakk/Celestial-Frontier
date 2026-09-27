@@ -1,0 +1,318 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "c888618bd711b9e1bc35d1e4c8aadf4ab7e53d3d1f885bc2d57314e7e0d8ddd9",
+  "atlasSha256": "beaac8c0e859269a00e5ff2262041a06197c231f50e495f9def592cab1f2b964",
+  "atlasSize": {
+    "width": 1491,
+    "height": 2038
+  },
+  "parts": [
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 761,
+        "y": 1473,
+        "width": 235,
+        "height": 141
+      },
+      "cutout": {
+        "x": 341,
+        "y": 934,
+        "width": 235,
+        "height": 141
+      }
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 470,
+        "y": 1935,
+        "width": 282,
+        "height": 82
+      },
+      "cutout": {
+        "x": 745,
+        "y": 1011,
+        "width": 282,
+        "height": 82
+      }
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearAnkle",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1236,
+        "y": 1935,
+        "width": 250,
+        "height": 54
+      },
+      "cutout": {
+        "x": 405,
+        "y": 901,
+        "width": 250,
+        "height": 54
+      }
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarAnkle",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 244,
+        "y": 1935,
+        "width": 131,
+        "height": 97
+      },
+      "cutout": {
+        "x": 720,
+        "y": 915,
+        "width": 131,
+        "height": 97
+      }
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 946,
+        "y": 1935,
+        "width": 280,
+        "height": 70
+      },
+      "cutout": {
+        "x": 425,
+        "y": 838,
+        "width": 280,
+        "height": 70
+      }
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 385,
+        "y": 1935,
+        "width": 75,
+        "height": 93
+      },
+      "cutout": {
+        "x": 692,
+        "y": 851,
+        "width": 75,
+        "height": 93
+      }
+    },
+    {
+      "id": "beak",
+      "joint": "beak",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 762,
+        "y": 1935,
+        "width": 174,
+        "height": 80
+      },
+      "cutout": {
+        "x": 1040,
+        "y": 212,
+        "width": 174,
+        "height": 80
+      }
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 784,
+        "y": 1260,
+        "width": 246,
+        "height": 136
+      },
+      "cutout": {
+        "x": 870,
+        "y": 202,
+        "width": 246,
+        "height": 136
+      }
+    },
+    {
+      "id": "neck-upper",
+      "joint": "neck1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 289,
+        "y": 1518,
+        "width": 221,
+        "height": 120
+      },
+      "cutout": {
+        "x": 909,
+        "y": 257,
+        "width": 221,
+        "height": 120
+      }
+    },
+    {
+      "id": "neck-lower",
+      "joint": "neck0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 571,
+        "y": 1260,
+        "width": 203,
+        "height": 203
+      },
+      "cutout": {
+        "x": 935,
+        "y": 329,
+        "width": 203,
+        "height": 203
+      }
+    },
+    {
+      "id": "far-wing-root",
+      "joint": "wingFarRoot",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1935,
+        "width": 229,
+        "height": 98
+      },
+      "cutout": {
+        "x": 711,
+        "y": 354,
+        "width": 229,
+        "height": 98
+      }
+    },
+    {
+      "id": "far-wing-flight",
+      "joint": "wingFarTip",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 520,
+        "y": 1518,
+        "width": 231,
+        "height": 111
+      },
+      "cutout": {
+        "x": 508,
+        "y": 364,
+        "width": 231,
+        "height": 111
+      }
+    },
+    {
+      "id": "near-wing-root",
+      "joint": "wingNearRoot",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 289,
+        "y": 1260,
+        "width": 272,
+        "height": 248
+      },
+      "cutout": {
+        "x": 684,
+        "y": 380,
+        "width": 272,
+        "height": 248
+      }
+    },
+    {
+      "id": "near-wing-flight",
+      "joint": "wingNearTip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1653,
+        "width": 469,
+        "height": 272
+      },
+      "cutout": {
+        "x": 288,
+        "y": 417,
+        "width": 469,
+        "height": 272
+      }
+    },
+    {
+      "id": "tail",
+      "joint": "tailFan",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 484,
+        "y": 1648,
+        "width": 384,
+        "height": 227
+      },
+      "cutout": {
+        "x": 69,
+        "y": 589,
+        "width": 384,
+        "height": 227
+      }
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1260,
+        "width": 274,
+        "height": 383
+      },
+      "cutout": {
+        "x": 789,
+        "y": 477,
+        "width": 274,
+        "height": 383
+      }
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 1136,
+        "height": 1245
+      },
+      "cutout": {
+        "x": 96,
+        "y": 9,
+        "width": 1136,
+        "height": 1245
+      }
+    }
+  ],
+  "bindingHash": "fe5b7b4cc9dfb20f8fec11f2cc86cd56b08b123dc1c0d789824ca01fe33b8607"
+}

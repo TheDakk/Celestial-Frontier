@@ -9,6 +9,7 @@ import { compileBodyCard, type BodyCard, type MotionGenomeFields, type ResolvedA
 import type { PixelBox } from './fixture-rig.js';
 import { createPartsRig, type PartsRig } from './parts-rig.js';
 import { repoRelativeSource } from '../../../../tools/creature-animation/record-source.mjs';
+import { withPaintedContactSupports } from '../motion/painted-supports.js';
 
 const require = createRequire(import.meta.url);
 const { PNG } = createRequire(require.resolve('free-tex-packer-core'))('pngjs') as { PNG: { sync: { read(bytes: Buffer): { width: number; height: number; data: Uint8Array } } } };
@@ -39,6 +40,7 @@ export async function loadFitDir(dirIn: string, contact?: 'family' | 'quadruped-
   const master = new Uint8Array(readFileSync(new URL(repoRelativeSource(record.source), REPO_ROOT))), atlas = new Uint8Array(readFileSync(new URL(dir + 'parts/atlas/' + manifest.creatureId + '.png', REPO_ROOT)));
   const decoder = (): Promise<Texture> => Promise.resolve(new Texture({ source: new TextureSource({ width: binding.atlasSize.width, height: binding.atlasSize.height }) }));
   const paintRig = await loadCreatureRigV1(record, binding, master, alpha, atlas, decoder, jointScale ? { jointScale } : {});
-  const card = compileBodyCard(record, record.genome);
+  const baseCard = compileBodyCard(record, record.genome);
+  const card = contactSupports === 'observed' ? withPaintedContactSupports(baseCard, record, binding) : baseCard;
   return { rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBoxOf(keyed.data, keyed.width, keyed.height), binding, ...(contact ? { contact } : {}), ...(contactSupports ? { contactSupports } : {}), ...(jointScale ? { jointScale } : {}) }), record, binding, card };
 }

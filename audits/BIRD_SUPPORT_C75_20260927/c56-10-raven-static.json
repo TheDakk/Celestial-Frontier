@@ -1,0 +1,37 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "REFUSED",
+  "sourceHead": "cabca3e397aa677bb83401a27c5a53ab6821dc91",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [],
+  "exactRest": false,
+  "sourcePixelRest": null,
+  "cpuP95Ms": null,
+  "recordRecipeHash": "bec21944b95e5d1c9897752227b593ee969b33a57aec052b4b7d2e8429acdd45",
+  "bindingHash": "b776286a6d91e5c01a4fbe1171dc5bd8b107548d028d4825650417bcc1d4f9cf",
+  "family": "biped-bird",
+  "refusal": {
+    "stage": "input",
+    "error": "Error: ENOENT: no such file or directory, open '/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BIRD_MOTION_C69_20260927/inputs/c56-10-raven/parts/manifest.json'\n    at Object.openSync (node:fs:778:18)\n    at Object.readFileSync (node:fs:624:35)\n    at read (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-12G7PC/run.mjs:26899:16)\n    at readJSON (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-12G7PC/run.mjs:26903:37)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-12G7PC/run.mjs:26932:20\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-12G7PC/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-12G7PC/run.mjs:27231:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+    "contact": null,
+    "pose": null
+  },
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BIRD_MOTION_C69_20260927/inputs/c56-10-raven/record.json",
+      "sha256": "25b019470c95a9ac9076515f8061258c49a6a4e9d90e75f93aa5182066cb486f",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BIRD_MOTION_C69_20260927/inputs/c56-10-raven/binding.json",
+      "sha256": "1099c2f19d7b79725e5ffd04bbada4bc6a29d2ed0030527faf9d6210d65b43bd",
+      "unchanged": true
+    }
+  ]
+}

@@ -18,7 +18,7 @@ export function groundedBirdAction(card:BodyCard,action:MotionAction,base:Motion
  const definition=familyContract('biped-bird');if(definition.contactStance?.travel?.[action.id])return finish(action,null);
  const record:CreatureRigRecordV1={template:card.template,recipeHash:card.recipeHash,geometry:card.contactGeometry,landmarks:card.landmarks,...card.anatomy?{anatomy:card.anatomy}:{}};
  let solver:ReturnType<typeof createFamilyContactSolver>;
- try{solver=createFamilyContactSolver(record);}catch{return finish(action,null);}
+ try{solver=createFamilyContactSolver(record,card.paintedContactSupports?.supports??{});}catch{return finish(action,null);}
  const fits=(tl:MotionTimeline)=>{
   for(let i=0;i<=128;i++){const ms=tl.durationMs*i/128,p=sample(tl,ms),pose:Record<string,CreaturePoseV1[string]>={};
    for(const[j,rotation]of Object.entries(p.joints))pose[j]={rotation};pose.root={rotation:p.root.rotation,dx:p.root.dx,dy:p.root.dy};
