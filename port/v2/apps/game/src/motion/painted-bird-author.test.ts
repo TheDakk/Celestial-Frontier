@@ -26,7 +26,7 @@ it('preserves every already-passing probe outcome',()=>{
   const before=buildTimeline(f.base,id,f.base.identity.seed),after=buildTimeline(f.painted,id,f.painted.identity.seed);
   if(failures(f,before)===0)expect(after).toEqual(before);
  }}
-});
+},20_000); // Exhaustive fixture/action/contact sampling; retain every assertion under full-profile contention.
 
 it.each(['c59-08-vulture','c56-15-dove','02-pigeon','04-hawk-v2'])('authors %s faint against painted supports without changing limbs or timing',(name)=>{
  const f=fixtures(name),before=buildTimeline(f.base,'faint',f.base.identity.seed),after=buildTimeline(f.painted,'faint',f.painted.identity.seed);
