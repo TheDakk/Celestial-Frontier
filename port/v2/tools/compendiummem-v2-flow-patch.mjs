@@ -31,6 +31,9 @@ export function flowPatch({collector,contract}) {
     if (primary instanceof Error && lastForegroundObservation !== null) {
       primary.message += '; last foreground observation: ' + JSON.stringify(lastForegroundObservation);
     }`);
+ // Activate the real page before focus emulation masks its focus state.
+ // Same commands, exact service receipt and 5000ms deadline; v1 stays sealed.
+ fg=once(fg,"    await sendStage(`${label} foreground focus emulation`,\n      'Emulation.setFocusEmulationEnabled', { enabled: true }, attachment.sessionId);\n    await sendStage(`${label} foreground bring-to-front`,\n      'Page.bringToFront', {}, attachment.sessionId);","    await sendStage(`${label} foreground bring-to-front`,\n      'Page.bringToFront', {}, attachment.sessionId);\n    await sendStage(`${label} foreground focus emulation`,\n      'Emulation.setFocusEmulationEnabled', { enabled: true }, attachment.sessionId);");
  collector=collector.slice(0,fgStart)+fg+collector.slice(fgEnd);
  // Publication must settle BOTH owners before accepting the error witness.
  const workStart=collector.indexOf('export function candidateProducerErrorWorkExpression('),workEnd=collector.indexOf('export function validCandidateProducerErrorExpression(',workStart);

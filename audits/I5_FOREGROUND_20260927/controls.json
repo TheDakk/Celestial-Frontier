@@ -1,0 +1,12 @@
+{
+  "tests": 68,
+  "passed": 68,
+  "mutants": [
+    {
+      "mutant": "old foreground command order",
+      "exitCode": 1,
+      "rejected": true
+    }
+  ],
+  "restoredSha256": "d557e47ba7e23eeb48d3825537b2fca3d0a35ab7e471ca6d7d9cd3a0bf34498d"
+}

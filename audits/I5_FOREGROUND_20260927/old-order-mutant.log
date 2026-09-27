@@ -1,0 +1,44 @@
+✔ mixed broker/painted rows admit only against their actual independent inventories (2.2145ms)
+✔ resource sums preserve broker evidence and include data URLs, masks and archetypes (0.228875ms)
+✔ actual browser expression retains a painted row without laundering its broker indices (2.395792ms)
+✔ the retained calibration miss is refused; only matched painted ownership repairs that miss (1.194042ms)
+✔ full classifier accepts a mixed-owner ready carrier and rejects wrong-owner forgery (18.933208ms)
+✔ native entry follows observed controls without a four-Tab assumption or focus injection (0.189542ms)
+✔ mixed-owner error control follows the first actual broker row and rejects missing recovery (3.855042ms)
+✔ retained overflow stays pending inside the unchanged carrier bound; identity forgeries refuse (19.300875ms)
+✔ error publication cannot accept a still-rendering painted sibling (13.280292ms)
+✔ stopped foreground deadline retains the last raw pending observation and still cleans up (0.676333ms)
+✖ v2 foreground owns the real page before emulation and preserves exact receipt refusals (0.792208ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 181.306333
+
+✖ failing tests:
+
+test at port/v2/tools/compendiummem-v2-painted.test.mjs:136:1
+✖ v2 foreground owns the real page before emulation and preserves exact receipt refusals (0.792208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'Target.activateTarget',
+  +   'Emulation.setFocusEmulationEnabled',
+      'Page.bringToFront',
+  -   'Emulation.setFocusEmulationEnabled'
+    ]
+  
+      at TestContext.<anonymous> (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/compendiummem-v2-painted.test.mjs:145:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'Target.activateTarget', 'Emulation.setFocusEmulationEnabled', 'Page.bringToFront' ],
+    expected: [ 'Target.activateTarget', 'Page.bringToFront', 'Emulation.setFocusEmulationEnabled' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
