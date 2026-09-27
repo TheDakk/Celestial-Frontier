@@ -1,0 +1,227 @@
+[
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn2-dodge-reaction-50.png",
+    "bytes": 1551649,
+    "sha256": "8028aced4e79c33515b0672c6aa4065386b5e9390059f185e9510a0189e54cfc"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn0-hit-return-end.png",
+    "bytes": 1544993,
+    "sha256": "89e82a9d057afb2c049c84778d42b39caa4a3044a99d88ac459c522853eb65e4"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn3-hit-approach-50.png",
+    "bytes": 1547155,
+    "sha256": "d42cfaa063e41874d8221422a24550220958773a0c82e06aa7ba7ac30f01e8e6"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn1-hit-approach-50.png",
+    "bytes": 1545472,
+    "sha256": "c28f23698b3d88ce90fba0972b8d695fbde772ea17086c63b1e3faeff742ea40"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn3-hit-return-end.png",
+    "bytes": 1540186,
+    "sha256": "6b9eee32671cfbccb55719541192f3fe6eb42192dfc973691f363ae76001edad"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn1-hit-reaction-50.png",
+    "bytes": 1546860,
+    "sha256": "93a802a08b4696f9a153fe1f8bae34229195e79d4781d2b7a0d1528b5c691f3e"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn0-hit-reaction-50.png",
+    "bytes": 1545715,
+    "sha256": "dfee39f87d5739b971f6977134b6e646edc45538eede0e43148a46365404ead9"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn2-dodge-return-end.png",
+    "bytes": 1545507,
+    "sha256": "5380851d000c1b0262b25c33860f3a29e9544ffedc691b9044e31ee01b8a3a60"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn1-hit-impact.png",
+    "bytes": 979414,
+    "sha256": "d44563c4e372e8e9368d1170a8bca4fe543e5e48cdfd3c788f650071cbfca28c"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn0-hit-impact.png",
+    "bytes": 979291,
+    "sha256": "9808d818a0eda87e07c47e009dbfcfcf1be83a0aae1fb5c1a0439b6b04787f50"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn1-hit-return-end.png",
+    "bytes": 1545018,
+    "sha256": "9edc2caa12507abf3352bb1ad2aad00f23746be133c246b6e5ff86f304db770d"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn2-dodge-impact.png",
+    "bytes": 1552447,
+    "sha256": "5f418b21ad90103d8d3b9a11f95839e40a8fa903d2e193dce70c48b56e4d893b"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn2-dodge-approach-50.png",
+    "bytes": 1545362,
+    "sha256": "b295d4c0466a6696a361bb770bfadb6d98a081f8de725a53f6ba89b02b9c5c2a"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn3-hit-impact.png",
+    "bytes": 987969,
+    "sha256": "689d7de5cd4ab86d68657513f0b89abae8639b3e38a0f5ad118dd8abb9685bf1"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/turn3-hit-idle-90.png",
+    "bytes": 1538920,
+    "sha256": "723981459b0c868f810beaa574d478dc1c86139b3b628ce1d440d35b9a99256d"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn2-dodge-reaction-50.png",
+    "bytes": 1549484,
+    "sha256": "894b6eb035ecd2febc241777401f156cf9f95fa3ef08d02cb13732e8f99807e0"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn0-hit-return-end.png",
+    "bytes": 1544170,
+    "sha256": "6207825e45b7ffeadf124b13cd26a04794b42497e659f53e2d9d26caf9443dc7"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn3-hit-approach-50.png",
+    "bytes": 1544309,
+    "sha256": "91be7d3ff402d2983947b82bf2d47325dd912256298919b341a6dcfb1273b872"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn1-hit-approach-50.png",
+    "bytes": 1544458,
+    "sha256": "0a4ff380316ce150a2b529dfa78c010cbbf1c1e1c51ba517371fe85f5db558ed"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn3-hit-return-end.png",
+    "bytes": 1539601,
+    "sha256": "83e1e1fd38c8ee5ff0e0a5edfb99a8125eb813ad50cd8766b9e0583c8f8ae451"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn1-hit-reaction-50.png",
+    "bytes": 1545278,
+    "sha256": "4376b4d83a7697eed9b0fba69be694117f1841467eee9b8241399e1e832b3115"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn0-hit-reaction-50.png",
+    "bytes": 1544561,
+    "sha256": "b91a5a15ae5c462e4cdf8520e937fab659a7e53cccd2d1d48d2205edc52efd9a"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn2-dodge-return-end.png",
+    "bytes": 1544458,
+    "sha256": "92494e36067b287bc46bc86788ca98aad31bbb83c9471bdde1675e3dea49fd68"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn1-hit-impact.png",
+    "bytes": 976689,
+    "sha256": "277ed71e97054297b21597cda967ec024f68b7a5653090d0805afb33486bd248"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn0-hit-impact.png",
+    "bytes": 977101,
+    "sha256": "07fdf99325b399b112f8b3f3be684db4df878f99cdc026ebe83e1bad8cc13839"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn1-hit-return-end.png",
+    "bytes": 1544192,
+    "sha256": "a679f33bb7311db58c49e725508953dcc383fecd71745278b751ae48e8d71635"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn2-dodge-impact.png",
+    "bytes": 1549169,
+    "sha256": "9a29d03796d9dbd0ab395956975b2de2aa594d72ddfc2c98584f3cacf2f35560"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn2-dodge-approach-50.png",
+    "bytes": 1544479,
+    "sha256": "c98800885de1f0bac71e790ca85dd1dbe2b3bd584dcf40eefdd7bb4eda3a2145"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn3-hit-impact.png",
+    "bytes": 1545632,
+    "sha256": "b552735643dca3b1ece6521dd0871b3eb42a3c0f741b0a33c25a19dbd4108131"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/donkey/native-01/turn3-hit-idle-90.png",
+    "bytes": 1538615,
+    "sha256": "2d01850abcdefcb8524e46d9112ec911a498542ac493eef4c5267b756be02006"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn2-dodge-reaction-50.png",
+    "bytes": 1549095,
+    "sha256": "8a0ffc9b8bcd9d8ec4178fa45da8dfd0a6a65079af92a26a21f9a8f6994a13d7"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn0-hit-return-end.png",
+    "bytes": 1543431,
+    "sha256": "483334e4b95363b43ff710c19641a501c35fe6b3e8b22159d1c252a8ef1b22ac"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn3-hit-approach-50.png",
+    "bytes": 1543536,
+    "sha256": "96f0124e4d787f7873afc1039b2d6a0f0fbd34e870a5fb82a817f16f6cf74a11"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn1-hit-approach-50.png",
+    "bytes": 1543136,
+    "sha256": "aa8e1f83051cd1114b46fc6418a306a7efa819e34c8b66298e08a1d39af26dcd"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn3-hit-return-end.png",
+    "bytes": 1539311,
+    "sha256": "ba8026bc46265d55f22fc2e65b32e3e75d102501a1b43fbde0a24097170f75f9"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn1-hit-reaction-50.png",
+    "bytes": 1544450,
+    "sha256": "1ef68becc5cb78ce4c501d50ae01dafb5773ac196a6e423696c2c0b4f0c368d4"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn0-hit-reaction-50.png",
+    "bytes": 1543907,
+    "sha256": "edadad419e0b3fa55c2368b2de8b6e5509d0a48d8a161360aea72deaa161ab7a"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn2-dodge-return-end.png",
+    "bytes": 1543434,
+    "sha256": "d0b18a69c0490a2d12f32468e5dfd728990867e214cc0ca121a646edb4044bdd"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn1-hit-impact.png",
+    "bytes": 976624,
+    "sha256": "6352983e4a35b80e60289d692af05d1fa92c54673352e1759dad31cffa6a42cc"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn0-hit-impact.png",
+    "bytes": 977282,
+    "sha256": "6727c8896edc6ab08efac692a2fa5580fdf43c83df05553114c6208b6f2c9031"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn1-hit-return-end.png",
+    "bytes": 1543344,
+    "sha256": "3d27fcabb09cdfafd64ed334265ee3392411fe56a35688f4e8ad6dcb1d776841"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn2-dodge-impact.png",
+    "bytes": 1547522,
+    "sha256": "f29cc13f67e4becc6562edf638a4111430995e050c38388b070d3880f90af056"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn2-dodge-approach-50.png",
+    "bytes": 1542696,
+    "sha256": "62a7d0734764676c8fbf69cd4f1188fe21a4b247218bd96d7ce0d711219b55ac"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn3-hit-impact.png",
+    "bytes": 983447,
+    "sha256": "9ba36d65765b1a92f05e13f644fcd3ab792fad65aa71073b57747d9834170e5f"
+  },
+  {
+    "path": "audits/LATE_REACTION_C70_20260927/lynx/native-01/turn3-hit-idle-90.png",
+    "bytes": 1538685,
+    "sha256": "a6f1fa158be7a00b64bdbe2e9e1842330282778b17a422fc12350fcfe191a6d0"
+  }
+]

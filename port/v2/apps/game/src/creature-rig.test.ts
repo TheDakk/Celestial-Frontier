@@ -168,3 +168,25 @@ it('refuses a resealed invalid continuous solver before allocating an atlas text
  await expect(loadCreatureRigV1(record,{...body,bindingHash:await hashJSON(body)},master,alpha,atlasBytes,decode)).rejects.toThrow('triangle indices');
  expect(decode).not.toHaveBeenCalled();
 });
+
+
+it('reuses only exact solved fields while keeping live geometry admission and refusal atomic',async()=>{
+ const original=await binding(),part={...original.parts[0]!,frame:{x:0,y:0,width:20,height:20}};
+ const skin={schema:'cf.paint-skin/v1',vertices:[{x:100,y:200,weights:[['head',1]]},{x:120,y:200,weights:[['tail1',1]]},{x:100,y:220,weights:[['tail1',1]]}],
+  parts:[{id:part.id,vertices:[0,1,2].map(i=>({triangle:[0,1,2],barycentric:[i===0?1:0,i===1?1:0,i===2?1:0]})),indices:[0,1,2]}],triangles:[0,1,2],solver:{iterations:4,globalIterations:4,targetWeight:.35,pins:[]}};
+ const {bindingHash,...body}={...original,parts:[part],paintSkin:skin,atlasSize:{width:20,height:20}};
+ const packet={...body,bindingHash:await hashJSON(body)} as CreaturePartsBindingV1;
+ const make=()=>loadCreatureRigV1(record,packet,master,alpha,atlasBytes,()=>Promise.resolve(new Texture({source:new TextureSource({width:20,height:20})})));
+ const a=await make(),b=await make(),geometry=(r:CreatureRigV1)=>Array.from((r.parts[0]!.display.children[0] as import('pixi.js').Mesh).geometry.getBuffer('aPosition').data),pose={head:{rotation:.01}};
+ try{
+  a.applyPose(pose);const first=readCreatureRigRuntimeDiagnostics(a)!.normalPasses;expect(first).toBeGreaterThan(0);const published=geometry(a);
+  a.applyPose(structuredClone(pose));expect(readCreatureRigRuntimeDiagnostics(a)!.normalPasses).toBe(first);expect(geometry(a)).toEqual(published);
+  b.applyPose(pose);expect(readCreatureRigRuntimeDiagnostics(b)!.normalPasses).toBe(first);expect(geometry(b)).toEqual(published);
+  // The two uncached owners both execute the complete original solve.
+  expect(readCreatureRigRuntimeDiagnostics(a)!.normalPasses+readCreatureRigRuntimeDiagnostics(b)!.normalPasses).toBe(first*2);
+  expect(()=>a.applyPose({head:{rotation:NaN}})).toThrow('nonfinite');expect(geometry(a)).toEqual(published);
+  expect(()=>a.applyPose({root:{rotation:0,dx:1e40}})).toThrow('coordinate bound');expect(geometry(a)).toEqual(published);
+  a.applyPose({head:{rotation:.011}});expect(readCreatureRigRuntimeDiagnostics(a)!.normalPasses).toBeGreaterThan(first);b.applyPose({head:{rotation:.011}});expect(geometry(a)).toEqual(geometry(b));
+  a.applyPose({});b.applyPose({});expect(geometry(a)).toEqual(geometry(b));
+ }finally{a.dispose();b.dispose();}
+});
