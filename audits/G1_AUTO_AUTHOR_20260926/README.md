@@ -2,7 +2,7 @@
 
 Program: `audits/GENERATION_PIPELINE_20260926/PROGRAM.md` (Dakk D22/D23). Owner: Claude.
 
-**Latest (session 4, 2026-09-26):** C54 gave 9 static / 7 native; C56+C57 gave 8 static / 7 native, including the Raven, the first bird (sections below). The exact-label tail contract passed Claude's independent checks with a rig-derived identity guard (`audits/TAIL_LABELS_CHECK_20260926`). D24 scores G1 per family on generated paintings.
+**Latest (session 5, 2026-09-27):** the serpent strip author takes snakes from 0 to 9 (static + native); C59 adds Raccoon, Vulture and Water Snake; the tail-label step passes the held-out Herring. **Running total: 34 generated creatures pass native**, none visually accepted yet. Previously, session 4: C54 gave 9 static / 7 native; C56+C57 gave 8 static / 7 native, including the Raven, the first bird (sections below). The exact-label tail contract passed Claude's independent checks with a rig-derived identity guard (`audits/TAIL_LABELS_CHECK_20260926`). D24 scores G1 per family on generated paintings.
 
 **Status (end of session 2, 2026-09-26): the corpus gate (≥ 30/40 admitted with zero hand edits) is NOT met.**
 - Adopted author **v5:**
@@ -117,6 +117,53 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **Fish packets REJECTED by Dakk** (tail stalk crunchy/pinched). The tail joint is the top rig priority (C54).
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
+
+**G2 C59 batch (Codex `4b08de11`: 12 paintings, 1 pattern-REFUSE skipped; scored with v10 + `--serpent-strips`)** (`auto-g2c59-v10s/`, `native-g2c59/`):
+- **3/11 ADMIT + PASS_STATIC, and 3/3 native DIAGNOSTIC_PASS:** Raccoon, **Vulture** (the second bird through), and **Water Snake** (the first held-out snake for the strip author).
+- **Refused:**
+  - Elk (far ear root 19 %), Moose (short tail), Bison (unexplained paint);
+  - Badger, Wolverine (limb-down appendage);
+  - Starling (facing), Kingfisher (unexplained paint);
+  - Ladybug (the insect rear floor).
+- **Full-size** (`fullsize-reaction.jpg`): Water Snake and Raccoon look clean. **The Vulture shows a thin pointed feather shard above the left bird's wing** in the reaction (a wing tear).
+
+**Correction:** the C56 Bobcat's native FAIL is a REAL late-motion slowdown, not the capture instrument, per Codex's `C59_REPAIR_20260926/bobcat-diagnosis.json`: 850/887 frames, with lethal reaction/idle ARAP about 200 ms per frame.
+
+**Serpent strip author (session 5, 2026-09-27): snakes 0 → 9** (`port/v2/tools/anatomy-verify/serpent-author.mjs`; runner flag `--serpent-strips`, labelled; `serpent/`, `auto-g2serp-strips-v1/`, `native-serpents/`):
+
+- **Why the general author failed every snake:** it warps the reference's part polygons with a contour spline. From THICK, straight references onto THIN S-curve paintings, that leaves most polygons over background, so every segment reads as "missing anatomy" and the leftover body reads as "extra appendages".
+- **How the hand serpent packets are built:** each body segment is a full-height vertical strip; landmarks sit on the observed centreline; head and jaw are small polygons. This works because a side-profile snake is x-monotone. All 10 generated snakes are: 98.6–100 % of each column's paint lies in one run.
+- **What the strip author does:**
+  1. Measures the target's own centreline and thickness per column.
+  2. Picks the serpent reference with the closest thickness ratio.
+  3. Transfers the reference's cuts, landmarks and head/jaw polygons by fraction of body length, and by offset (in local thicknesses) from the centreline.
+- **Refusals:**
+  - detached paint (the main piece holds < 97 %);
+  - not x-monotone (coils or overlap);
+  - body not continuous (> 1 % of the length without paint, not counting a hair-thin tail tip);
+  - not elongated (length/thickness < 8: the wrong-family guard);
+  - facing (the right-hand head end must be ≥ 1.15× the tail end);
+  - untapered tail (a truncated tail);
+  - **blunt head end:** snout ratio > 0.72. Calibrated on 11 positives (0.27–0.59) against their erased-head mutants (0.85–1.12);
+  - reference-relative ownership: each part must own ≥ 25 % of the share the same part owns in the reference. Tiny marker parts such as the Racer's `root-patch` stay tiny; this is the v10 marker lesson.
+- **Battery** (`serpent/battery.mjs`, fixed before the scored run; `battery.json`):
+  - Positives: 10/12 admitted. Boa is refused because its tail curls back under the body (correct). Whip Snake is refused because its hair-thin tail segment owns 1.4 % against the reference's 6 %.
+  - Mutants: flip 12/12, erased head 12/12, mid-body cut 12/12, duplicated body 12/12; erased tail 11/12 (a 30 %-shorter Whip Snake still reads as a slender snake). **Total 59/60.**
+  - Wrong family: 9/9 refused (quadrupeds, birds, insects).
+  - **Caveat:** the snout threshold was calibrated on the same snakes, so the next G2 snake batch is its true held-out test. The C59 Water Snake (below) is the first held-out snake, and it passed.
+- **Scored run:**
+  - C54 + C56 snakes: **8/10 ADMIT + PASS_STATIC, and 8/8 native DIAGNOSTIC_PASS** (0/0 refusals): Python, Racer, Garter, Tree, Rat, Cottonmouth, Mamba, Grass Snake.
+  - C59 Water Snake (held out): ADMIT + PASS_STATIC.
+- **Claude's full-size look** (`native-serpents/fullsize-reaction.jpg`, `tail-zoom.jpg`): continuous scaled bodies, clean tapering tails, intact heads, and the Cottonmouth strikes mouth-open. **No seams or tears visible: the cleanest family so far.**
+- `semanticPresence` for serpents stays UNRESOLVED (head presence is measured by the snout guard, but not independently confirmed). Play admission waits for Dakk's review.
+
+**Guarded exact-label tail step in the runner** (`tail-labels-fit.mjs`, runner flag `--tail-labels`, labelled; `auto-g2tail-labels-v1/`):
+- The step is Codex's compile path plus the rig-derived identity guard.
+- It reproduces Codex's Cod and Arctic Fox labels and bindings byte-for-byte, and refuses a wrong tail name before writing anything.
+- **Regression + held-out:** all six fits PASS_STATIC. Cod 4,550 / Perch 14 / Carp 109 / Arctic Fox 7,554 px filled, as before.
+- **Herring (4,450 px) and Trout (725 px) are NEW:** the polygon route had to refuse both. Both are native DIAGNOSTIC_PASS.
+- **Herring is the genuinely gapped held-out fish Codex asked for:** Salmon-referenced, and never in Codex's set.
+- Full-size (`TAIL_LABELS_CHECK_20260926/fish-labels-zoom.jpg`): all three tails are full, but unwelded body seams remain (vertical cracks; the Cod's hole behind the fin). The greedy selective weld is being run on the labelled Herring and Trout (`weld-g2fam-fish/greedy-labels.sh`). Codex's `cod-gill-two` / `perch-gill-two` already close the Cod and Perch holes.
 
 **G2 C56 + C57 batches (Codex `126d8765`: 32 new paintings + 7 pattern re-paints), scored with v10 (session 4, continued)** (`auto-g2c56-v10/`, `auto-g2c57-v10/`, `native-g2c56/`):
 - **Pattern gate honoured before scoring** (`pilots/*-pattern-eligible.json`). Six paintings were skipped because Codex's `pattern-check.json` REFUSES them: both Jaguars, the C56 Clouded Leopard, Water Snake, Mountain Viper and Ladybug. 33 were scored.

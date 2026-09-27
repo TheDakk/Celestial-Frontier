@@ -3,7 +3,7 @@
 # Claude 2026-09-27: the labels fill the tail stalk; the welds close the remaining axial body seams. Same base pair as greedy.sh.
 cd /Users/dakk/Projects/celestial-frontier-anthropic-mac; W=audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish; L=audits/G1_AUTO_AUTHOR_20260926/auto-g2tail-labels-v1
 typeset -A BASE; BASE=(06-trout '[["body","spine1"]]' 07-perch '[["body","body-1"]]' 08-cod '[["body","body-1"]]' 09-carp '[["body","body-1"]]' 10-herring '[["body","spine1"]]')
-for f in ${@:-10-herring 06-trout 08-cod 07-perch 09-carp}; do
+fish=(${@}); (( ${#fish} )) || fish=(10-herring 06-trout 08-cod 07-perch 09-carp); for f in $fish; do
   export FIT_SRC=$L/$f/tail-labels/fit
   cand=$(node $W/adjjson.mjs $f)
   kept=${BASE[$f]}; i=0
