@@ -1,0 +1,6 @@
+{
+  "note": "Original generated contract imported the signed external helper. This exact at-run copy preserves its bytes; later materializations embed their own helper beside the contract. Historical generated files and manifest are unchanged.",
+  "sourceCommit": "b3a34e15d4019023410d2cab97308e0f289b8ba4",
+  "path": "epoch/painted-helper-at-run.mjs",
+  "sha256": "8d4fdb87cd2ba822a22b54d3275dec0a843f21cba09309e29546c3b875a612dc"
+}

@@ -31,6 +31,9 @@ describe('painted card source — the individual on the card', () => {
     expect(o.dataUrlBytes).toBeGreaterThan(o.encodedBytes);
     expect(o.byKind.thumb.dataUrlBytes).toBe(Buffer.byteLength(thumb!.url, 'utf8'));
     expect(o.byKind.portrait.dataUrlBytes).toBe(Buffer.byteLength(portrait!.url, 'utf8'));
+    const hits = o.totals.dedupeHits;
+    expect(await s.card(civet(0), 'thumb')).toBe(thumb);
+    expect(s.ownership().totals.dedupeHits).toBe(hits + 1);
     const base = s.residentArchetypes(); expect(base.bytes).toBe(base.masterLabelBytes + base.maskBytes);
     // render patterns until one uses a painted mask (the Civet ships marking masks); each retained mask is counted exactly
     for (let pattern = 1; pattern < 12 && s.residentArchetypes().masks === 0; pattern++) await s.card(civet(pattern), 'thumb');

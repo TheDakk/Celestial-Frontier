@@ -7307,3 +7307,5 @@ C59 audit-only foreleg-side placement corrects opposite-leg paint ownership acro
 ### I5 painted ownership repair — matches code as of 2026-09-27
 
 PaintedCardSource ownership adds exact `dataUrlBytes` totals/per kind alongside its binary PNG byte counters. V2-only instrument ownership checks retain separate raw painted/broker inventories and include both owners plus resident master/label/mask bytes in memory reductions. The historical v1 authority failure stays visible until a fresh guarded v2 epoch passes and the active profile is explicitly promoted. See audits/I5_REPAIR_20260927/README.md.
+
+I5 follow-up,2026-09-27: painted ownership also exposes actual cache/pending `totals.dedupeHits`. The v2 worker-error witness checks the first actual broker row and preserves separately owned painted rows. The fresh epoch stopped at the old four-Tab keyboard-entry assumption; the successor observes the actual control path and has a native synthetic proof. No current memory certificate or profile rebinding is claimed.

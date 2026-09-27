@@ -20,6 +20,7 @@ const prior = JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL('../../../audit
 function addSyntheticOwnership(value) {
   if (!value || typeof value !== 'object') return;
   if (value.diagnostics) value.diagnostics.paintedArt = null;
+  if (value.art && (value.rows || Object.hasOwn(value,'planetsideReadyCount'))) value.paintedArt = null;
   if (value.images && value.broker && value.schema?.includes('thumb-settlement')) {
     value.paintedArt = null;
     value.ownerKeys = { brokerLeased: Array.from({length:value.broker.leasedKeyCount},(_,i)=>'leased-'+i), brokerCached: Array.from({length:value.broker.cachedKeyCount},(_,i)=>'cached-'+i) };

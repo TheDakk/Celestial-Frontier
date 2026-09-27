@@ -59,29 +59,3 @@ export function compendiumResources(snapshot) {
       portraitCacheEntries: a.live.portraitCacheEntries + b.portrait.entries,
       portraitEncodedBytes: a.live.portraitEncodedBytes + b.portrait.dataUrlBytes } };
 }
-/* Worker-error injection belongs to broker-owned rows. Painted rows must remain
-   ready and independently owned; they never satisfy a broker job/error count. */
-export function paintedErrorRows(o) {
-  if (paintedFindings(o?.paintedArt).length) return null;
-  const p=o.paintedArt;
-  const rows=o.rows ?? [], matched=[];
-  for(const row of rows) if(p?.keys.leasedThumbs.includes(row.visualKey)) {
-    if(!p.keys.cachedThumbs.includes(row.visualKey) || row.cached || row.thumbState!=='ready' || !row.complete || row.naturalWidth!==132 || row.naturalHeight!==132) return null;
-    matched.push(row);
-  }
-  if(p && (p.keys.pendingThumbs.length || p.keys.pendingPortraits.length)) return null;
-  return matched;
-}
-export function keyboardEntryExpression() {
-  return `(()=>{const panel=document.getElementById('codexpanel');if(!panel)return null;
-    const nodes=[...panel.querySelectorAll('button,input,select,textarea,a[href],[tabindex]')].filter(e=>e.tabIndex>=0&&!e.disabled&&!e.closest('[inert]')&&e.getClientRects().length&&getComputedStyle(e).visibility==='visible');
-    const token=e=>{if(e.dataset.cid)return 'row:'+e.dataset.cid;if(e.id)return 'id:'+e.id;for(const a of ['data-pnx','data-ck','data-cr','data-cshelves'])if(e.hasAttribute(a))return a+':'+e.getAttribute(a);return null};
-    return {tokens:nodes.map(token),tabIndices:nodes.map(e=>e.tabIndex),active:token(document.activeElement)}})()`;
-}
-export function keyboardEntryPlan(observed, firstId) {
-  const tokens=observed?.tokens, indices=observed?.tabIndices;
-  if(!Array.isArray(tokens)||!Array.isArray(indices)||tokens.length!==indices.length||tokens.length>128||tokens.some(x=>typeof x!=='string'||!x)||new Set(tokens).size!==tokens.length||indices.some(x=>x!==0))throw new Error('keyboard entry inventory ambiguous');
-  const from=tokens.indexOf(observed.active),to=tokens.indexOf('row:'+firstId);
-  if(from<0||to<from||to-from>32)throw new Error('keyboard entry origin/target unreachable');
-  return tokens.slice(from+1,to+1);
-}
