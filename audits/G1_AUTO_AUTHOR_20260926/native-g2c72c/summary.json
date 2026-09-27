@@ -1,0 +1,169 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C72_20260927",
+ "tag": "g2c72c",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-grayling",
+  "02-minnow",
+  "03-sculpin",
+  "04-walleye",
+  "05-whitefish",
+  "06-pacu",
+  "07-cichlid",
+  "08-tetra",
+  "13-ibis",
+  "16-oystercatcher",
+  "21-king-snake",
+  "22-grass-snake",
+  "23-whip-snake",
+  "24-vine-snake"
+ ],
+ "refused": [
+  {
+   "id": "09-finch",
+   "reason": "missing-anatomy: part near-shin (legNearAnkle) covers 25% paint (reference 74%)"
+  },
+  {
+   "id": "10-lark",
+   "reason": "facing: the mirrored painting matches biped-bird better (0.0163 < 0.0248)"
+  },
+  {
+   "id": "11-chough",
+   "reason": "facing: the mirrored painting matches biped-bird better (0.0169 < 0.0206)"
+  },
+  {
+   "id": "12-egret",
+   "reason": "missing-anatomy: part near-foot (legNearFoot) covers 9% paint (reference 48%)"
+  },
+  {
+   "id": "14-stork",
+   "reason": "missing-anatomy: part far-shin (legFarAnkle) covers 1% paint (reference 50%)"
+  },
+  {
+   "id": "15-ptarmigan",
+   "reason": "wrong-family: quadruped matches clearly better (0.0084 < 0.0175)"
+  },
+  {
+   "id": "17-water-strider",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 6.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "18-cockroach",
+   "reason": "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 16% paint (reference 60%)"
+  },
+  {
+   "id": "20-stick-insect",
+   "reason": "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 16% paint (reference 49%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "19-carrion-beetle",
+   "static": "INTAKE_REFUSED"
+  }
+ ],
+ "native": [
+  {
+   "id": "01-grayling",
+   "name": "Grayling",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "02-minnow",
+   "name": "Minnow",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "03-sculpin",
+   "name": "Sculpin",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "04-walleye",
+   "name": "Walleye",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "05-whitefish",
+   "name": "Whitefish",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "06-pacu",
+   "name": "Pacu",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "07-cichlid",
+   "name": "Cichlid",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "08-tetra",
+   "name": "Tetra",
+   "family": "fish",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "13-ibis",
+   "name": "Ibis",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "16-oystercatcher",
+   "name": "Oystercatcher",
+   "family": "biped-bird",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "21-king-snake",
+   "name": "King Snake",
+   "family": "serpent",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "22-grass-snake",
+   "name": "Grass Snake",
+   "family": "serpent",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "23-whip-snake",
+   "name": "Whip Snake",
+   "family": "serpent",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "24-vine-snake",
+   "name": "Vine Snake",
+   "family": "serpent",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

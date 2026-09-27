@@ -1,0 +1,1 @@
+{"status":"FAIL","error":"Error: Error: habitat: Selected home arena cannot support both organisms; no habitat or biome substitution · left Walleye: aquatic (water) · right Walleye: aquatic (water)\n    at http://127.0.0.1:52101/bundle.js:38478:39\n    at file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs:51:148"}

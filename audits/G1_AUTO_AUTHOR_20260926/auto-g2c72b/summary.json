@@ -1,0 +1,357 @@
+[
+ {
+  "id": "01-grayling",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "02-minnow",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "03-sculpin",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "04-walleye",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "05-whitefish",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "06-pacu",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "07-cichlid",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": [],
+  "fallbackFrom": "RED",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "08-tetra",
+  "family": "fish",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "09-finch",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part near-shin (legNearAnkle) covers 25% paint (reference 74%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "10-lark",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "facing: the mirrored painting matches biped-bird better (0.0163 < 0.0248)",
+   "wrong-family: quadruped matches clearly better (0.0131 < 0.0248)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "11-chough",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "facing: the mirrored painting matches biped-bird better (0.0169 < 0.0206)",
+   "wrong-family: quadruped matches clearly better (0.0143 < 0.0206)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "12-egret",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part near-foot (legNearFoot) covers 9% paint (reference 48%)",
+   "missing-anatomy: part far-foot (legFarFoot) covers 20% paint (reference 58%)",
+   "missing-anatomy: part far-shin (legFarAnkle) covers 16% paint (reference 50%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "13-ibis",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "14-stork",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part far-shin (legFarAnkle) covers 1% paint (reference 50%)",
+   "missing-anatomy: part tail (tailFan) covers 15% paint (reference 61%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "15-ptarmigan",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "wrong-family: quadruped matches clearly better (0.0084 < 0.0175)",
+   "extra-anatomy (unassigned): a limb-down appendage of 6.8% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "16-oystercatcher",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "17-water-strider",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 6.2% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a limb-down appendage of 10.4% paint that no reference appendage lands on",
+   "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 13% paint (reference 44%)",
+   "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 5% paint (reference 36%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 12% paint (reference 35%)",
+   "missing-anatomy: part mandible (mandible) covers 17% paint (reference 63%)",
+   "unexplained-anatomy: 8.6% of the paint lies away from the body and in no part (reference 0.1%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "18-cockroach",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 16% paint (reference 60%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "19-carrion-beetle",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Skeleton pose: exact landmark inventory\n    at need (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/skeleton-pose.mjs:7:47)\n    at createSkeletonP",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 4% paint (reference 31%)",
+     "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 27% paint (reference 81%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "20-stick-insect",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part hind-far-lower (legHindFarFoot) covers 16% paint (reference 49%)",
+   "missing-anatomy: part mid-near-lower (legMidNearFoot) covers 12% paint (reference 39%)",
+   "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 17% paint (reference 51%)",
+   "missing-anatomy: part front-near-lower (legFrontNearFoot) covers 15% paint (reference 47%)",
+   "missing-anatomy: part front-far-lower (legFrontFarFoot) covers 14% paint (reference 46%)",
+   "missing-anatomy: part mid-near-upper (legMidNearKnee) covers 18% paint (reference 68%)",
+   "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 14% paint (reference 96%)",
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 82%)",
+   "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 0% paint (reference 60%)",
+   "missing-anatomy: part mandible (mandible) covers 11% paint (reference 60%)",
+   "missing-anatomy: part abdomen (abdomen) covers 10% paint (reference 76%)",
+   "unexplained-anatomy: 20.2% of the paint lies away from the body and in no part (reference 0.3%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "21-king-snake",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Part masks: polygon\n    at requireValue (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at cutAuthoredParts (file:///User",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED",
+    "reasons": []
+   },
+   {
+    "rank": 2,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "22-grass-snake",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Part masks: polygon\n    at requireValue (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at cutAuthoredParts (file:///User",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED",
+    "reasons": []
+   },
+   {
+    "rank": 2,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "23-whip-snake",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Part masks: polygon\n    at requireValue (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at cutAuthoredParts (file:///User",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED",
+    "reasons": []
+   },
+   {
+    "rank": 2,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "24-vine-snake",
+  "family": "serpent",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED (serpent): one continuous x-monotone limbless body, a thicker head end and a tapered tail are measured; head presence is not independently confirmed",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Part masks: polygon\n    at requireValue (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at cutAuthoredParts (file:///User",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED",
+    "reasons": []
+   },
+   {
+    "rank": 2,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED",
+    "reasons": []
+   }
+  ]
+ }
+]
