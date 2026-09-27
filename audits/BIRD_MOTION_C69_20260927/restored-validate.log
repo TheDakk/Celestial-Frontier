@@ -9,3 +9,9 @@ PASS  class->rig binding  — 631 fauna classified, 196 sentinels OK
 PASS  color atlas  — pure, deterministic; 32 body/star combos, all hex valid
 PASS  biome profiles  — 43 live biomes, all covered; sigs + families valid
 probe build written: /Users/dakk/Projects/celestial-frontier-openai-mac/tools/probe-build.html ( 309 hooked names )
+boot errors: 0
+rendered: 1010  render fails: 0
+PASS  render audit  — 1010 Earth species rendered clean (incl. new rigs)
+boot errors: 0
+probe entries: 50  probe ERRs: 0
+FINGERPRINT MATCH (50 probes identical to v1.0 baseline)
