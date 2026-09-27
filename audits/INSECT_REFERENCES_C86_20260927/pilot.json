@@ -1,0 +1,44 @@
+[
+  {
+    "id": "01-bee",
+    "name": "Bee",
+    "family": "insect",
+    "packet": "audits/INSECT_REFERENCES_C86_20260927/01-bee",
+    "master": "audits/INSECT_REFERENCES_C86_20260927/01-bee/master.png"
+  },
+  {
+    "id": "02-dragonfly",
+    "name": "Dragonfly",
+    "family": "insect",
+    "packet": "audits/INSECT_REFERENCES_C86_20260927/02-dragonfly",
+    "master": "audits/INSECT_REFERENCES_C86_20260927/02-dragonfly/master.png"
+  },
+  {
+    "id": "03-giant-water-bug",
+    "name": "Giant Water Bug",
+    "family": "insect",
+    "packet": "audits/INSECT_REFERENCES_C86_20260927/03-giant-water-bug",
+    "master": "audits/INSECT_REFERENCES_C86_20260927/03-giant-water-bug/master.png"
+  },
+  {
+    "id": "04-bee-six-legs",
+    "name": "Bee",
+    "family": "insect",
+    "packet": "audits/INSECT_REFERENCES_C86_20260927/04-bee-six-legs",
+    "master": "audits/INSECT_REFERENCES_C86_20260927/04-bee-six-legs/master.png"
+  },
+  {
+    "id": "05-dragonfly-six-legs",
+    "name": "Dragonfly",
+    "family": "insect",
+    "packet": "audits/INSECT_REFERENCES_C86_20260927/05-dragonfly-six-legs",
+    "master": "audits/INSECT_REFERENCES_C86_20260927/05-dragonfly-six-legs/master.png"
+  },
+  {
+    "id": "06-wasp",
+    "name": "Wasp",
+    "family": "insect",
+    "packet": "audits/INSECT_REFERENCES_C86_20260927/06-wasp",
+    "master": "audits/INSECT_REFERENCES_C86_20260927/06-wasp/master.png"
+  }
+]

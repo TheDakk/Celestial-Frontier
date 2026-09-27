@@ -1,0 +1,11 @@
+[
+  {
+    "id": "c86-wasp-v2",
+    "name": "Wasp",
+    "packet": "audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2",
+    "fit": "audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/fit-02",
+    "origin": "Manual observations on new exact generated original; no automatic labels reused",
+    "role": "Diagnostic candidate only; independent mutation/held-out battery and full-size review required",
+    "open": "cast/hit/tame contact refusals; no native after red static"
+  }
+]

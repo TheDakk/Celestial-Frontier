@@ -1,0 +1,187 @@
+{
+  "id": "05-dragonfly-six-legs",
+  "name": "Dragonfly",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "8fbfb8117ae9b6b28125bb9ec212a067276c44a0d38fb10968964fc75bc0b87a",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 13809,
+    "coreRadius": 12,
+    "bodyBox": {
+      "x0": 262,
+      "y0": 200,
+      "x1": 322,
+      "y1": 239
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.6987,
+        "pixels": 9648,
+        "box": {
+          "x0": 52,
+          "y0": 104,
+          "x1": 304,
+          "y1": 290
+        },
+        "attach": {
+          "x": 274.7,
+          "y": 209.8,
+          "relX": 0.21,
+          "relY": 0.25
+        },
+        "dir": {
+          "x": -0.96,
+          "y": -0.28
+        },
+        "class": "rear",
+        "length": 246.6
+      },
+      {
+        "k": 1,
+        "frac": 0.0573,
+        "pixels": 791,
+        "box": {
+          "x0": 323,
+          "y0": 203,
+          "x1": 349,
+          "y1": 240
+        },
+        "attach": {
+          "x": 323,
+          "y": 221.5,
+          "relX": 1.02,
+          "relY": 0.55
+        },
+        "dir": {
+          "x": 1,
+          "y": 0
+        },
+        "class": "front",
+        "length": 31.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0151,
+        "pixels": 209,
+        "box": {
+          "x0": 314,
+          "y0": 237,
+          "x1": 364,
+          "y1": 289
+        },
+        "attach": {
+          "x": 317.5,
+          "y": 237,
+          "relX": 0.93,
+          "relY": 0.95
+        },
+        "dir": {
+          "x": 0.57,
+          "y": 0.82
+        },
+        "class": "limb-down",
+        "length": 69.8
+      },
+      {
+        "k": 3,
+        "frac": 0.0185,
+        "pixels": 256,
+        "box": {
+          "x0": 230,
+          "y0": 239,
+          "x1": 284,
+          "y1": 294
+        },
+        "attach": {
+          "x": 281,
+          "y": 239,
+          "relX": 0.32,
+          "relY": 1
+        },
+        "dir": {
+          "x": -0.76,
+          "y": 0.65
+        },
+        "class": "limb-down",
+        "length": 75
+      },
+      {
+        "k": 4,
+        "frac": 0.0438,
+        "pixels": 605,
+        "box": {
+          "x0": 271,
+          "y0": 240,
+          "x1": 335,
+          "y1": 293
+        },
+        "attach": {
+          "x": 300,
+          "y": 240,
+          "relX": 0.63,
+          "relY": 1.03
+        },
+        "dir": {
+          "x": -0.15,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 63.5
+      }
+    ],
+    "byClass": {
+      "rear": 1,
+      "front": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 188,
+        "x1": 203,
+        "cx": 194.8
+      },
+      {
+        "x0": 230,
+        "x1": 245,
+        "cx": 237.9
+      },
+      {
+        "x0": 275,
+        "x1": 286,
+        "cx": 279
+      },
+      {
+        "x0": 300,
+        "x1": 312,
+        "cx": 306
+      },
+      {
+        "x0": 322,
+        "x1": 335,
+        "cx": 327.9
+      },
+      {
+        "x0": 350,
+        "x1": 364,
+        "cx": 357.9
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}
