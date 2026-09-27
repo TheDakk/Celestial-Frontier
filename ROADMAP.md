@@ -25,7 +25,7 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
 
 **Where things stand**
 - **Branch:** `anthropic/mac` is pushed through the commit adding this block; every commit is signed G. Codex is merged through `bc86c863` (IndexedDB callback owners; I5 3+1 epoch next under a native/perf reservation).
-- **Gate:** from `port/v2`, `node tools/check-profile.mjs --profile=develop` last gave 5,689 pass on `a2edeb18` (Codex reports 5,692 on its later heads). The only red is I5 `current-producer-authorities` (Codex's re-seal). Also run: `npm run typecheck`, `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
+- **Gate: FULLY GREEN (2026-09-27, `8cbc0f5d`).** From `port/v2`, `node tools/check-profile.mjs --profile=develop` shows PASS: 5,725 pass, 0 red. I5 is closed by Codex's verified v2 certificate (a local 3 calibrations + 1 certification pass; `tests/compendium-active-certificate.test.ts` refuses missing, changed or drifted evidence). Also green: `npm run typecheck`, `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
 - **Codex reservations:** when Codex posts "native/performance reservation active", run NO native, NO gate and NO heavy CPU until its terminal notice. Host load may starve its foreground timer (C119).
   - If you must stop your own native run, a killed run leaves `$TMPDIR/celestial-frontier-workspace-edca5601ad4f1c5ce26e.lock.json`. Remove it only if its pid is dead AND its `repoRoot` is this checkout.
 - **develop** is still `c1791e21`; PR #43 is open; no hosted attempt.
