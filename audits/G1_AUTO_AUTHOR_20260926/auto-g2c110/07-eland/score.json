@@ -1,0 +1,10 @@
+{
+ "id": "07-eland",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 19% paint (reference 62%)",
+  "missing-anatomy: part tail1 (tail1) covers 13% paint (reference 45%)"
+ ],
+ "semanticPresence": null
+}

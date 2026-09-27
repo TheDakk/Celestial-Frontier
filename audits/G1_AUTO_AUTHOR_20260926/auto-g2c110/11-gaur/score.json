@@ -1,0 +1,10 @@
+{
+ "id": "11-gaur",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 19% paint (reference 70%)",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 57%)"
+ ],
+ "semanticPresence": null
+}

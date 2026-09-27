@@ -23,8 +23,10 @@ fs.writeFileSync(path.join(N, '.gitignore'), '*.webm\n*/*.png\n!*/turn1-hit-reac
 const nameOf = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p.packet, 'subject-source.json'), 'utf8')).name;
 const passes = rows.filter((r) => r.verdict === 'ADMIT' && r.static === 'PASS_STATIC'), natives = [];
 if (!flags.includes('--no-native')) for (const r of passes) { const p = eligible.find((e) => e.id === r.id), name = nameOf(p);
-  /* fish need an aquatic WORLD block (key lake, liquid water, surfaceWater), not just lake themes: the native-g2fam-fish script carries it */
-  const base = JSON.parse(fs.readFileSync(path.join(ROOT, r.family === 'fish' ? 'audits/G1_AUTO_AUTHOR_20260926/native-g2fam-fish/07-perch-script.json' : path.join('audits/ART_BATTLE_FOCUS_20260925', r.family === 'biped-bird' ? '15-goose' : '05-cougar', 'battle-script.json')), 'utf8'));
+  /* fish need an aquatic WORLD block (key lake, liquid water, surfaceWater), not just lake themes: the native-g2fam-fish script carries it.
+   * So does any water-only subject of another family (the eels are serpents: C107's eels failed the land arena's habitat check). */
+  const media = JSON.parse(fs.readFileSync(path.join(ROOT, p.packet, 'subject-source.json'), 'utf8')).profile?.media ?? [], aquatic = r.family === 'fish' || (media.includes('water') && !media.includes('ground'));
+  const base = JSON.parse(fs.readFileSync(path.join(ROOT, aquatic ? 'audits/G1_AUTO_AUTHOR_20260926/native-g2fam-fish/07-perch-script.json' : path.join('audits/ART_BATTLE_FOCUS_20260925', r.family === 'biped-bird' ? '15-goose' : '05-cougar', 'battle-script.json')), 'utf8'));
   for (const row of base.rows) { if ('an' in row) row.an = name; if ('dn' in row) row.dn = name; }
   /* native must test the same painted contact supports as static and the game (Codex C79: without this, native used rest supports) */
   base.supports = 'observed';

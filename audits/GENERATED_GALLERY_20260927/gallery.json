@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 175,
+ "total": 183,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -311,6 +311,41 @@
    "note": "whole in reaction and late idle (one tiny speck above the back in late idle, visible only at full size)"
   },
   {
+   "family": "Quadrupeds",
+   "name": "Panda",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/12-panda/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired: white slivers floated beside the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Mountain Goat",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/14-mountain-goat/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Gopher",
+   "nativeDir": "audits/QUAD_ISLANDS_20260927/19-gopher/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired: an ear outline floated above the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wild Pony",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/23-wild-pony",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: a small fragment floats above the lowered head in late idle; island repair refused at the 5% cap (5.1%)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wild Ass",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/24-wild-ass",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: an ear-tip fragment floats above the lowered head and a thin line under the belly in late idle; island repair refused at the cap (8.1%)"
+  },
+  {
    "family": "Snakes (serpent strip author)",
    "name": "Python",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-python",
@@ -428,6 +463,20 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c90/06-cave-snake",
    "report": "DIAGNOSTIC_PASS",
    "note": "clean"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Eel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/02-eel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (aquatic arena; rests on the seabed, lower body near the frame edge)"
+  },
+  {
+   "family": "Snakes (serpent strip author)",
+   "name": "Electric Eel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/03-electric-eel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (aquatic arena; rests on the seabed, lower body near the frame edge)"
   },
   {
    "family": "Birds",
@@ -1191,6 +1240,13 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c106-fishseams/10-halibut/native",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: lower-body gap in late idle even on the seams fit"
+  },
+  {
+   "family": "Fish",
+   "name": "Juvenile Shark",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107-fishseams/01-juvenile-shark/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the fish-seams fit (unrepaired fit showed seam lines)"
   },
   {
    "family": "Insects",

@@ -1,0 +1,170 @@
+[
+ {
+  "id": "01-giraffe",
+  "name": "Giraffe",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/01-giraffe",
+  "master": "audits/G2_C110_20260927/01-giraffe/master.png"
+ },
+ {
+  "id": "02-zebra",
+  "name": "Zebra",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/02-zebra",
+  "master": "audits/G2_C110_20260927/02-zebra/master.png"
+ },
+ {
+  "id": "03-kudu",
+  "name": "Kudu",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/03-kudu",
+  "master": "audits/G2_C110_20260927/03-kudu/master.png"
+ },
+ {
+  "id": "04-impala",
+  "name": "Impala",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/04-impala",
+  "master": "audits/G2_C110_20260927/04-impala/master.png"
+ },
+ {
+  "id": "05-buffalo",
+  "name": "Buffalo",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/05-buffalo",
+  "master": "audits/G2_C110_20260927/05-buffalo/master.png"
+ },
+ {
+  "id": "06-wildebeest",
+  "name": "Wildebeest",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/06-wildebeest",
+  "master": "audits/G2_C110_20260927/06-wildebeest/master.png"
+ },
+ {
+  "id": "07-eland",
+  "name": "Eland",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/07-eland",
+  "master": "audits/G2_C110_20260927/07-eland/master.png"
+ },
+ {
+  "id": "08-gazelle",
+  "name": "Gazelle",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/08-gazelle",
+  "master": "audits/G2_C110_20260927/08-gazelle/master.png"
+ },
+ {
+  "id": "09-hartebeest",
+  "name": "Hartebeest",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/09-hartebeest",
+  "master": "audits/G2_C110_20260927/09-hartebeest/master.png"
+ },
+ {
+  "id": "10-oryx",
+  "name": "Oryx",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/10-oryx",
+  "master": "audits/G2_C110_20260927/10-oryx/master.png"
+ },
+ {
+  "id": "11-gaur",
+  "name": "Gaur",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/11-gaur",
+  "master": "audits/G2_C110_20260927/11-gaur/master.png"
+ },
+ {
+  "id": "12-banteng",
+  "name": "Banteng",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/12-banteng",
+  "master": "audits/G2_C110_20260927/12-banteng/master.png"
+ },
+ {
+  "id": "13-water-buffalo",
+  "name": "Water Buffalo",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/13-water-buffalo",
+  "master": "audits/G2_C110_20260927/13-water-buffalo/master.png"
+ },
+ {
+  "id": "14-deer",
+  "name": "Deer",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/14-deer",
+  "master": "audits/G2_C110_20260927/14-deer/master.png"
+ },
+ {
+  "id": "15-antelope",
+  "name": "Antelope",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/15-antelope",
+  "master": "audits/G2_C110_20260927/15-antelope/master.png"
+ },
+ {
+  "id": "16-reindeer",
+  "name": "Reindeer",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/16-reindeer",
+  "master": "audits/G2_C110_20260927/16-reindeer/master.png"
+ },
+ {
+  "id": "17-caribou",
+  "name": "Caribou",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/17-caribou",
+  "master": "audits/G2_C110_20260927/17-caribou/master.png"
+ },
+ {
+  "id": "18-saiga",
+  "name": "Saiga",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/18-saiga",
+  "master": "audits/G2_C110_20260927/18-saiga/master.png"
+ },
+ {
+  "id": "19-yak",
+  "name": "Yak",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/19-yak",
+  "master": "audits/G2_C110_20260927/19-yak/master.png"
+ },
+ {
+  "id": "20-takin",
+  "name": "Takin",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/20-takin",
+  "master": "audits/G2_C110_20260927/20-takin/master.png"
+ },
+ {
+  "id": "21-sheep",
+  "name": "Sheep",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/21-sheep",
+  "master": "audits/G2_C110_20260927/21-sheep/master.png"
+ },
+ {
+  "id": "22-wild-sheep",
+  "name": "Wild Sheep",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/22-wild-sheep",
+  "master": "audits/G2_C110_20260927/22-wild-sheep/master.png"
+ },
+ {
+  "id": "23-dromedary-camel",
+  "name": "Dromedary Camel",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/23-dromedary-camel",
+  "master": "audits/G2_C110_20260927/23-dromedary-camel/master.png"
+ },
+ {
+  "id": "24-bactrian-camel",
+  "name": "Bactrian Camel",
+  "family": "quadruped",
+  "packet": "audits/G2_C110_20260927/24-bactrian-camel",
+  "master": "audits/G2_C110_20260927/24-bactrian-camel/master.png"
+ }
+]

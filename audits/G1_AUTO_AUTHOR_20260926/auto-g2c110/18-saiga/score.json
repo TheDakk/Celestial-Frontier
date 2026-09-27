@@ -1,0 +1,25 @@
+{
+ "id": "18-saiga",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "static": "INTAKE_REFUSED",
+ "intakeError": "Error: Part masks: empty authored part: tail0\n    at requireValue (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at file:///Use",
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "rank": 1,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 8% paint (reference 70%)",
+    "missing-anatomy: part fore-far-paw (foreFarPaw) covers 7% paint (reference 57%)"
+   ]
+  }
+ ]
+}
