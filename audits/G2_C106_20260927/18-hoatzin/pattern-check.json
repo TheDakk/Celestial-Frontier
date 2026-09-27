@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Hoatzin",
+  "masterSha256": "9159c9493e848f0faf22dba3a9eef36003fe12a84bafd5d5a7bf4c9d78a5dd49",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

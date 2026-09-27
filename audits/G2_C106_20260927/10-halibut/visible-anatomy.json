@@ -1,0 +1,163 @@
+{
+  "id": "10-halibut",
+  "name": "Halibut",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "b37ea349e5a4e1449f1abcd01ae3c383be430122f489ad3d61a6a76e25e625e0",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 36056,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 124,
+      "y0": 126,
+      "x1": 346,
+      "y1": 288
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.009,
+        "pixels": 325,
+        "box": {
+          "x0": 201,
+          "y0": 117,
+          "x1": 259,
+          "y1": 125
+        },
+        "attach": {
+          "x": 230,
+          "y": 125,
+          "relX": 0.48,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.27,
+          "y": -0.96
+        },
+        "class": "top",
+        "length": 30.1
+      },
+      {
+        "k": 1,
+        "frac": 0.133,
+        "pixels": 4797,
+        "box": {
+          "x0": 34,
+          "y0": 165,
+          "x1": 123,
+          "y1": 249
+        },
+        "attach": {
+          "x": 123,
+          "y": 207.5,
+          "relX": 0,
+          "relY": 0.5
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.01
+        },
+        "class": "rear",
+        "length": 98.6
+      },
+      {
+        "k": 2,
+        "frac": 0.0444,
+        "pixels": 1601,
+        "box": {
+          "x0": 347,
+          "y0": 178,
+          "x1": 386,
+          "y1": 241
+        },
+        "attach": {
+          "x": 347,
+          "y": 209.5,
+          "relX": 1,
+          "relY": 0.52
+        },
+        "dir": {
+          "x": 1,
+          "y": 0.06
+        },
+        "class": "front",
+        "length": 50.1
+      },
+      {
+        "k": 3,
+        "frac": 0.0064,
+        "pixels": 231,
+        "box": {
+          "x0": 305,
+          "y0": 260,
+          "x1": 321,
+          "y1": 280
+        },
+        "attach": {
+          "x": 315.5,
+          "y": 260,
+          "relX": 0.86,
+          "relY": 0.83
+        },
+        "dir": {
+          "x": -0.38,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 22.6
+      },
+      {
+        "k": 4,
+        "frac": 0.0085,
+        "pixels": 307,
+        "box": {
+          "x0": 199,
+          "y0": 289,
+          "x1": 259,
+          "y1": 296
+        },
+        "attach": {
+          "x": 229,
+          "y": 289,
+          "relX": 0.47,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.48,
+          "y": 0.88
+        },
+        "class": "limb-down",
+        "length": 30.8
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 190,
+        "x1": 268,
+        "cx": 228.2
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

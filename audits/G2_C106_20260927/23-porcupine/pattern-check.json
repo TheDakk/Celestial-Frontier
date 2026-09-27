@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Porcupine",
+  "masterSha256": "cc5bf5a5ee20999f92675ce9da8867a5971246bc82b6f0f83dd6fdd5f1889aa4",
+  "required": [
+    "long banded quills laid back over the rump"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "long banded quills laid back over the rump",
+      "status": "PRESENT",
+      "observed": "Full original: long cream/dark BANDED quills over rump, blunt rodent head, two ears and four visible feet. HOLD short quilled tail is not separately clear from long rump quills; some quills stand high rather than laid back. Pattern visible but semantic tail admission unresolved."
+    }
+  ]
+}

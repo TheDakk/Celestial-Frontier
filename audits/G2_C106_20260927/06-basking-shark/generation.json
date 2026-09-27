@@ -1,0 +1,13 @@
+{
+  "id": "06-basking-shark",
+  "name": "Basking Shark",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-6a5f969f-530e-4e84-96ee-8bac3037a88a.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "fc00b2f50fa2a8b129002b1ef284187fbbbd94ba916d817e3801a5137c435ce1",
+  "bytes": 1338152,
+  "promptSha256": "e9bc0a345ef8db5fa9bd9f3aed588cc6e148d98fa241fd8d762f4274e18591cb",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

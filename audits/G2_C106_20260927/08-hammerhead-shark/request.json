@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Hammerhead Shark",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "c7078d2b5d435eb10fd98f2874d5e35132b2c9d6e21650ba9e8ada1f82f645f2",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "predatory-shark",
+  "authoringCreated": false,
+  "sourceHead": "87557292e471579fc6c8b9e1099d36def4d2402d",
+  "basePromptSha256": "af4757b98c52143ddbde00d95f8a6d72b1dc60ffe90c07dfaeb332d88c84249c",
+  "layoutCompilerSha256": "2d8c64b03d9532e31f9b033f73f5ee7cfb77d6deef016c75e6b61c92631d214e",
+  "layoutClarification": "Species identity features FIRST: flattened T-shaped hammer head with eyes at the outer tips; very tall sickle first dorsal fin; slender grey body. One Earth Hammerhead Shark. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: horizontal fish, head RIGHT and complete caudal tail LEFT; species-correct fin count, finlets, barbels and tail shape. Natural fin rays and fin roots must stay distinct; no detached pieces. Keep the tail stalk continuous.\n\n"
+}

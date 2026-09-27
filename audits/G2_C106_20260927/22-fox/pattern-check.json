@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Fox",
+  "masterSha256": "2f371e15b590ee50cd7e31d32ba604ecf098ccf225ba904aef14f329320b7d81",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

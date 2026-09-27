@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Quetzal",
+  "masterSha256": "f631bce566c12a1c917a05a08ad41cec769693a881b3c2fae3de7c09c558e1c4",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

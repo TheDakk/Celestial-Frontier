@@ -1,0 +1,13 @@
+{
+  "id": "23-porcupine",
+  "name": "Porcupine",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e9570ca0-8547-4daa-a0e8-04ca1d7c58ca.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "cc5bf5a5ee20999f92675ce9da8867a5971246bc82b6f0f83dd6fdd5f1889aa4",
+  "bytes": 1459401,
+  "promptSha256": "6dec7ecea6c1603f97e5c32eda563a881aa28e7ab3a96f570a58982a46e4fc34",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

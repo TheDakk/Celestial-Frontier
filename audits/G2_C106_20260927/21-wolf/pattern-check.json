@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Wolf",
+  "masterSha256": "20fd90b4593b3a02d499483c177ebc029b7696ddd602fd5e2c32167a56adea50",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

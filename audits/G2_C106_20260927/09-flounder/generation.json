@@ -1,0 +1,13 @@
+{
+  "id": "09-flounder",
+  "name": "Flounder",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-69419578-06d9-4508-a471-8e4e2f2f3042.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "117599652edff0cc1a9bc00d9728a20e28d2bae62b013a5322430ce0888b7d61",
+  "bytes": 1416037,
+  "promptSha256": "e4bbdb5011426b619b78573bfb403908c3e5b70e7d754b470b7566ac9660d0f0",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

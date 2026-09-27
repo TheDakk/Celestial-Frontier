@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Great White Shark",
+  "masterSha256": "a88ed058aebc70fc143a1fb70884cb87537a28f75a5a757433b4924528b664fb",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "05-whale-shark",
+  "name": "Whale Shark",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-b5bfc674-5371-4ef8-aa1c-6ad6246bb4d5.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "98dd87e3792819b89eede904750255caf338f38b3cfeb997482bd69c3b608338",
+  "bytes": 1258830,
+  "promptSha256": "7dedf2b0b86dad5e52efdb387ee761d0f7f00a83cf31afed74fad55fd1133259",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

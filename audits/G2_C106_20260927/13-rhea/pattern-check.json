@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Rhea",
+  "masterSha256": "4586524601e4e7084752c32e786a5cc42c1025c24fb8228b6cb9009b1eb0216c",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

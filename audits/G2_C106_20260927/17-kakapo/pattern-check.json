@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Kakapo",
+  "masterSha256": "986fa51bbadcec81a68085c5e0b5b986d7588052606f8d950e1acf9e580ffe1e",
+  "required": [
+    "moss-green plumage mottled with black and yellow"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "moss-green plumage mottled with black and yellow",
+      "status": "PRESENT",
+      "observed": "Full original: moss-green black/yellow mottled plumage, owl-like face disc and hooked pale bill, squat body, separated two legs/feet, naturally folded wing above short tail. Tail/body feather ownership still needs scoring; no admission."
+    }
+  ]
+}

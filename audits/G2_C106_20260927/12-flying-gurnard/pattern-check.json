@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Flying Gurnard",
+  "masterSha256": "33ec2f4f75d52b0c8a137433e79daaa19fdddf883cbbb1971b77349e16a1af54",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
