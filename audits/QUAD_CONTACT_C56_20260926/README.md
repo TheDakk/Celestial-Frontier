@@ -1,0 +1,3 @@
+# C56 quadruped contact diagnosis
+
+Read-only bundler instrumentation reproduces the original Red Fox refusal at 54.3666667ms, idle fraction 0.46875, zero stage displacement. The near foreleg requires normalized vertical compression 0.0255477535; its unchanged 8% body-length limit is 0.0239522166. This is pass zero, not iterative support drift. The farther hind chain is not the limiting chain. Exact pose, chains and diagnostic source hashes are retained. No runtime, limit, landmark or G1 verdict changed. Prior nearest-owner projection therefore addressed the wrong limiting chain. Marmot crouch-head and Cattle rearing-hump remain open; no visual repair is claimed here.
