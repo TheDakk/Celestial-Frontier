@@ -1201,8 +1201,8 @@
  {
   "family": "fish",
   "name": "Cold-Water Fish",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/01-cold-water-fish",
-  "note": "body cracks (unwelded)",
+  "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/01-cold-water-fish/native",
+  "note": "whole after Codex fish batch seam repair",
   "batch": "audits/G2_C98_20260927",
   "tag": "g2c98",
   "supports": "observed"
@@ -1228,8 +1228,8 @@
  {
   "family": "fish",
   "name": "Sunfish",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/04-sunfish",
-  "note": "body crack (unwelded)",
+  "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/04-sunfish/native",
+  "note": "whole after Codex fish batch seam repair",
   "batch": "audits/G2_C98_20260927",
   "tag": "g2c98",
   "supports": "observed"
@@ -1273,8 +1273,8 @@
  {
   "family": "fish",
   "name": "Snailfish",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c98/10-snailfish",
-  "note": "FRAGMENTED: not acceptable",
+  "nativeDir": "audits/FISH_BATCH_C100_20260927/proof-01/10-snailfish/native",
+  "note": "HELD: improved but splits head/trunk in late idle",
   "batch": "audits/G2_C98_20260927",
   "tag": "g2c98",
   "supports": "observed"
