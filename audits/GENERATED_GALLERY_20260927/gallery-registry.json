@@ -1,0 +1,268 @@
+[
+ {
+  "family": "quadruped",
+  "name": "Coyote",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/01-coyote",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Arctic Fox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/03-arctic-fox",
+  "note": "tail blotches; shoulder shards when rearing (Codex)",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Fennec Fox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/04-fennec-fox",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Dingo",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c54/01-dingo",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Jackal",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c54/02-jackal",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Coyote (C56)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c56/c56-03-coyote",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Caracal",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/05-caracal",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cougar",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/07-cougar",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Lion",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c54/04-lion",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Tiger (elbow repaired)",
+  "nativeDir": "audits/C59_REPAIR_20260926/g2c54-05-tiger-side-native",
+  "note": "no stripes painted (D27); hairline chest seam",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Leopard (elbow repaired)",
+  "nativeDir": "audits/C59_REPAIR_20260926/g2c54-06-leopard-side-native",
+  "note": "no spots painted (D27)",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Ocelot (elbow repaired)",
+  "nativeDir": "audits/C59_REPAIR_20260926/g2c54-09-ocelot-side-native",
+  "note": "no spots painted (D27); chest notch",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Snow Leopard (elbow repaired)",
+  "nativeDir": "audits/C59_REPAIR_20260926/g2c57-05-snow-leopard-side-native",
+  "note": "pattern re-paint",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Clouded Leopard (elbow repaired)",
+  "nativeDir": "audits/C59_REPAIR_20260926/g2c57-06-clouded-leopard-side-native",
+  "note": "pattern re-paint",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Raccoon",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/10-raccoon",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Raccoon (C59)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c59/04-raccoon",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Marmot",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/11-marmot",
+  "note": "head crumples in crouch (Codex)",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Cattle",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/13-cattle",
+  "note": "back humps when rearing (Codex)",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Donkey",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/15-donkey",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Weasel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c54/12-weasel",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Mink (elbow repaired)",
+  "nativeDir": "audits/C59_REPAIR_20260926/g2c56-06-mink-side-native",
+  "note": "",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Marten",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c56/c56-07-marten",
+  "note": "clean",
+  "crop": "land"
+ },
+ {
+  "family": "quadruped",
+  "name": "Fisher (elbow repaired)",
+  "nativeDir": "audits/C59_REPAIR_20260926/g2c56-08-fisher-side-native",
+  "note": "thin pale chest strand",
+  "crop": "land"
+ },
+ {
+  "family": "serpent",
+  "name": "Python",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-python",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Racer",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/19-racer",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Garter Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/20-garter-snake",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Tree Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-tree-snake",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Rat Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/18-rat-snake",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Cottonmouth",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/19-cottonmouth",
+  "note": "clean; strikes mouth-open",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Mamba",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/21-mamba",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Grass Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/24-grass-snake",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "serpent",
+  "name": "Water Snake",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c59/10-water-snake",
+  "note": "clean",
+  "crop": "snake"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Raven",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c56/c56-10-raven",
+  "note": "tail splits in hit reaction (wing/tail overlap)",
+  "crop": "land"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Vulture",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c59/08-vulture",
+  "note": "feather shard above wing in reaction",
+  "crop": "land"
+ },
+ {
+  "family": "fish",
+  "name": "Cod + Perch (gill welds)",
+  "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
+  "note": "tails full; Cod belly sliver",
+  "crop": "water"
+ },
+ {
+  "family": "fish",
+  "name": "Carp",
+  "nativeDir": "audits/TAIL_STALK_BRIDGE_20260926/native-09-carp-welded",
+  "note": "clean tail",
+  "crop": "water"
+ },
+ {
+  "family": "fish",
+  "name": "Herring",
+  "nativeDir": "audits/TAIL_LABELS_CHECK_20260926/native-10-herring-welded",
+  "note": "lumpy back in reaction",
+  "crop": "water"
+ },
+ {
+  "family": "fish",
+  "name": "Trout",
+  "nativeDir": "audits/TAIL_LABELS_CHECK_20260926/native-06-trout-welded",
+  "note": "lumpy back; dorsal floats in reaction",
+  "crop": "water"
+ }
+]

@@ -39,11 +39,8 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
 
 **Next, in order (Claude)**
 1. Read Codex's mailbox (`/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md`, read-only) and merge any newer signed `openai/mac` (`--no-ff`; `git grep -n "^<<<<<<<\|^>>>>>>>"` BEFORE committing; keep this block).
-2. **Score every new G2 batch:**
-   - Honour `pattern-check.json` (build a `pilots/*-pattern-eligible.json`).
-   - Run `node audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs --tag=<fresh> --topk=1 --chains --counter --fallback=2 --serpent-strips --targets=<pilot>`.
-   - Run native on every pass. Pattern: `native-g2c59/run.sh`, sequential, out of the sandbox. Land scripts from `05-cougar`, birds from `15-goose`, fish from `native-g2fam-fish/*-script.json`.
-   - Build `sheet.mjs` + `crops.mjs`; LOOK at full size; record the results; send Dakk the sheet.
+2. **Score every new G2 batch with ONE command:** `node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir> <fresh-tag>` (out of the sandbox). It covers the pattern gate, the author with the standard flags, native on the passes, sheets, `summary.json` and the gallery registry.
+   - Then LOOK at `native-<tag>/fullsize-reaction.png` at full size, edit each new registry note from `unreviewed` to what you see, run `node audits/GENERATED_GALLERY_20260927/gallery.mjs`, record the results in the G1 README, and send Dakk the sheet.
 3. **Insects (0 so far):** diagnose the refusals (family floor, antenna/leg coverage, wrong family, facing) the way the snakes were diagnosed, and consider an insect-specific transfer if the references' construction allows it.
 4. Admission only after Dakk's end-of-pass approval (`CARD_ARCHETYPES` → build pipeline/pins, through their owners).
 

@@ -118,6 +118,15 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**One command per G2 batch (session 5):** `node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir> <tag>` (repo root, OUT of the sandbox because native owns a browser). It runs:
+1. The pattern gate → `pilots/<tag>-eligible.json`.
+2. `run-auto` with the standard flags (`--topk=1 --chains --counter --fallback=2 --serpent-strips --merge-joint-labels`).
+3. Native on every ADMIT + PASS_STATIC, sequentially (the Goose script for birds, the Cougar script otherwise; the stage picks the arena from the habitat). It uses the merge-joint / tail-labels fit when one was built.
+4. The review sheet + full-size reaction crops, `native-<tag>/summary.json`, and appends each native PASS to `audits/GENERATED_GALLERY_20260927/gallery-registry.json` (note `unreviewed` until Claude looks).
+5. `gallery.mjs` then redraws the master gallery from the registry.
+
+Control: re-running C59 through it must reproduce the manual C59 result (below).
+
 **Measured, not recommended: G2 creatures as extra references (D28 experiment)** (`--extra-refs=<json>`, labelled DIAGNOSTIC in the runner and battery; `pilots/extra-refs-quad-clean.json`: 11 clean, native-passing G2 quadrupeds, leave-one-species-out):
 - All 50 G2 quadrupeds: 25 → **24**, with churn: Serval, Ocelot re-paint, Lynx and Wild Horse gained; Leopard, Snow Leopard, both Raccoons and the Weasel's static lost. Several losses come from the G2 Cougar out-ranking the hand Cougar.
 - Battery (`mutants/summary-extra-quad.json`): positives 18/34 unchanged, but erased 31 → **30**, duplicated 26 → **25**.
