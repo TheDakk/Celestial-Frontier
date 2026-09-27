@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Leopard",
+  "masterSha256": "3115da5298558660d693dbbb1b8551c0a84cb13f3b2b4257361eaa3114fd9030",
+  "required": [
+    "hollow ring rosettes with empty centres"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "hollow ring rosettes with empty centres",
+      "status": "PRESENT",
+      "observed": "Numerous dark hollow ring rosettes with light centres cover the gold flank; head and limbs carry smaller solid spots."
+    }
+  ]
+}

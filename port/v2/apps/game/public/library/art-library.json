@@ -2987,6 +2987,16 @@
    "sha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43"
   },
   {
+   "path": "library/creature-finish/3dbaa4f0cd9e268193a613c00e4091bd57d73a076fcc82f189adc5eca82aa77a/original.png",
+   "bytes": 775236,
+   "sha256": "48a88be42af08041cc49a57d6ce06f8800e2bb4ff1e237bc2c15a44591353f49"
+  },
+  {
+   "path": "library/creature-finish/3dbaa4f0cd9e268193a613c00e4091bd57d73a076fcc82f189adc5eca82aa77a/receipt.json",
+   "bytes": 13558,
+   "sha256": "901441c0ed810aed176c7a02bf0df25e924cc96752fce81f5278113da429b71f"
+  },
+  {
    "path": "library/creature-finish/5feeca2ac2a52a67f7bb0299bae9966f3320a8acb9bdb33af0899451369eeb9d/original.png",
    "bytes": 42268,
    "sha256": "54302a12f1033e64cc5825f67743d9c080c9dc6776c1d3cd70bcce7b3ed82bc6"
@@ -3007,6 +3017,16 @@
    "sha256": "bf3df6b15d8ce074bef8446d8960306a9893c8b30c8174c9028c3a839b5847c4"
   },
   {
+   "path": "library/creature-finish/93b6bac2f050bd1a7ef94d00f80c8d7bc9e90303c82a4450ed2b77bc6c286121/original.png",
+   "bytes": 620954,
+   "sha256": "3dc67852481db05866d89b0a825cecbd0211368e09e9b0455297c0aeca481bd7"
+  },
+  {
+   "path": "library/creature-finish/93b6bac2f050bd1a7ef94d00f80c8d7bc9e90303c82a4450ed2b77bc6c286121/receipt.json",
+   "bytes": 8757,
+   "sha256": "2f4084dedc294bc8df2fdc324332e8afbc159958fbc7476fbd912b8e74c212c5"
+  },
+  {
    "path": "library/creature-finish/99e072c05a6a4f10fe8f221d253fc28102afa8dcb958876805096f37dc251426/original.png",
    "bytes": 42750,
    "sha256": "749027a0bf3bdec34e631ec87fbc5470d055dcd2be811b9db67221c6038f3673"
@@ -3025,6 +3045,16 @@
    "path": "library/creature-finish/9d29bc0fe48eb61901948bf72f2a871f507f579352ff15f2f85ae734abfd41ec/receipt.json",
    "bytes": 10527,
    "sha256": "f8ad399d19a72d9a2b980a4078de0b5caa7a194f7105a203a2b10b79479464ba"
+  },
+  {
+   "path": "library/creature-finish/a710569abe2a682ea6b58d1d99fbacd89a8cc47c5b5bb890db8fea696511982c/original.png",
+   "bytes": 1171398,
+   "sha256": "889219f4bcbc597f33ccbe27bc4e7b7cf476167f48b7b3e97f4926553a8b70a7"
+  },
+  {
+   "path": "library/creature-finish/a710569abe2a682ea6b58d1d99fbacd89a8cc47c5b5bb890db8fea696511982c/receipt.json",
+   "bytes": 13644,
+   "sha256": "0c096a5c11cac27c1b5f144bf56f19b329046b839db376c0bed8ca3c0c2a1ddc"
   },
   {
    "path": "library/creature-finish/d1ff554bde7f512052e1b1d6b68b8039b445df91ea536c7ad01ab71e43e73ac1/original.png",

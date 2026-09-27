@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Crow",
+  "masterSha256": "430ecb4294ad7c28c0013d4fa0e79837c92d61133810492f1279172b17602af3",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

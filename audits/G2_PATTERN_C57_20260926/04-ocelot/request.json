@@ -1,0 +1,21 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Ocelot",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "a9abe66c6c6a4773020ce6be79d04b736554c10daa756a3798ba2600edbb4d66",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "4d6e60727b327255672258afbb7b1d282f800ad51ead47d6de548405456e67f2",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 4,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "four separately visible legs and feet; one tail of its real species length",
+  "profileId": "felid",
+  "authoringCreated": false,
+  "sourceHead": "046914af948710dda3ea9ca008205726d2452f1a"
+}

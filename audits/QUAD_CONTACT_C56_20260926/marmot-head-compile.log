@@ -1,0 +1,15 @@
+node:fs:778
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/11-marmot/packet/master.png'
+    at Object.openSync (node:fs:778:18)
+    at Object.readFileSync (node:fs:624:35)
+    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/TAIL_LABELS_C56_20260926/compile.mjs:11:58 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/11-marmot/packet/master.png'
+}
+
+Node.js v26.10.0

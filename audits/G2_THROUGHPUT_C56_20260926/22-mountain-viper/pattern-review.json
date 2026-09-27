@@ -1,0 +1,13 @@
+{
+  "name": "Mountain Viper",
+  "masterSha256": "375aae4dda1155d91a6bbf98c2f258868fe8b4a95d69bfcbcf6d627a494a2287",
+  "status": "ABSENT",
+  "method": "Codex inspection of exact original; requested pattern not visible",
+  "features": [
+    {
+      "requirement": "thick stocky body with a zigzag dorsal band",
+      "status": "ABSENT",
+      "observed": "Cloud blotches, body bands/zigzag, or red-shell spots absent from the corresponding original; surface texture alone is not pattern proof."
+    }
+  ]
+}

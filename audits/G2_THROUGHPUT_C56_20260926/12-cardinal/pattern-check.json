@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cardinal",
+  "masterSha256": "e5dea12d476e4ecb27601ee08d13f4cbf78e3037cd25395a71ad148deced507d",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

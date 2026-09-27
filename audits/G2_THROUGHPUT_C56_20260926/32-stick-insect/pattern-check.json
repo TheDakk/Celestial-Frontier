@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Stick Insect",
+  "masterSha256": "6b085b294d505c11371077e8b0af45cfd7f3b98ec4d10bafa70bc773d3ef2411",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

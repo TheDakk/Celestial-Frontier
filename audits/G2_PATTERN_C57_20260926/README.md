@@ -1,0 +1,7 @@
+# C57/D27 patterned cats — 2026-09-26
+
+The canonical compiler contradicted its species mustRead features by explicitly overriding markings with a plain-coat rule. Future requests now name the identity features FIRST and preserve natural patterns. Prior prompts/outputs remain untouched. Seven new1254 originals (six species; a second Jaguar with pattern requirements ordered first) are byte-identical to image_gen output, retaining requests, receipts, geometric observations and review sheet. No hand authoring or library admission.
+
+The new pattern-observation tool requires a source-hashed explicit visual observation of each required pattern feature. Flat, absent, unknown, stale-source and missing-feature reviews REFUSE; it does not mistake colour variance, prompt wording or expected counts for observation. Four adversarial controls PASS; the initial six compiled prompt contradiction checks PASS; the current compiler orders pattern requirements before structural features. This semantic review supplements geometric G2 observations; it is not automatic visual recognition or G1 admission.
+
+Five pattern-only PASS: Tiger/Leopard/Ocelot/Snow Leopard/Clouded Leopard. Both Jaguar attempts REFUSE: rosettes visible, but their diagnostic central black spots remain unresolved. Anatomical layout and G1 still need Claude's independent scoring; some limb roots remain merged and tail proportions need review. Dakk's final visual pass remains pending.

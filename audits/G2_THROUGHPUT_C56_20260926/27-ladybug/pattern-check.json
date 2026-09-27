@@ -1,0 +1,11 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Ladybug",
+  "masterSha256": "27cc44dbc8dd56425fee788b6bbd21d230a339914d2c245c28f6e88aa7c32961",
+  "required": [
+    "spotted red wing cases split down the middle"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "REFUSE",
+  "reason": "Flat coat on patterned species"
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Whip Snake",
+  "masterSha256": "8c6a075ec05f23204f5b4e30b0fe4d6f37b39e4108369a5b8cc26e017ab26021",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

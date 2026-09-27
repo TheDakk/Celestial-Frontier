@@ -1,0 +1,51 @@
+[
+  {
+    "id": "01-tiger",
+    "name": "Tiger",
+    "family": "quadruped",
+    "packet": "audits/G2_PATTERN_C57_20260926/01-tiger",
+    "master": "audits/G2_PATTERN_C57_20260926/01-tiger/master.png"
+  },
+  {
+    "id": "02-leopard",
+    "name": "Leopard",
+    "family": "quadruped",
+    "packet": "audits/G2_PATTERN_C57_20260926/02-leopard",
+    "master": "audits/G2_PATTERN_C57_20260926/02-leopard/master.png"
+  },
+  {
+    "id": "03-jaguar",
+    "name": "Jaguar",
+    "family": "quadruped",
+    "packet": "audits/G2_PATTERN_C57_20260926/03-jaguar",
+    "master": "audits/G2_PATTERN_C57_20260926/03-jaguar/master.png"
+  },
+  {
+    "id": "04-ocelot",
+    "name": "Ocelot",
+    "family": "quadruped",
+    "packet": "audits/G2_PATTERN_C57_20260926/04-ocelot",
+    "master": "audits/G2_PATTERN_C57_20260926/04-ocelot/master.png"
+  },
+  {
+    "id": "05-snow-leopard",
+    "name": "Snow Leopard",
+    "family": "quadruped",
+    "packet": "audits/G2_PATTERN_C57_20260926/05-snow-leopard",
+    "master": "audits/G2_PATTERN_C57_20260926/05-snow-leopard/master.png"
+  },
+  {
+    "id": "06-clouded-leopard",
+    "name": "Clouded Leopard",
+    "family": "quadruped",
+    "packet": "audits/G2_PATTERN_C57_20260926/06-clouded-leopard",
+    "master": "audits/G2_PATTERN_C57_20260926/06-clouded-leopard/master.png"
+  },
+  {
+    "id": "07-jaguar-pattern-first",
+    "name": "Jaguar",
+    "family": "quadruped",
+    "packet": "audits/G2_PATTERN_C57_20260926/07-jaguar-pattern-first",
+    "master": "audits/G2_PATTERN_C57_20260926/07-jaguar-pattern-first/master.png"
+  }
+]

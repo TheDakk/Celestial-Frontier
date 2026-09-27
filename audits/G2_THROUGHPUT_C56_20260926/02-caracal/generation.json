@@ -1,0 +1,11 @@
+{
+  "id": "02-caracal",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1e58a99d-a5fd-41b3-bfcf-aa61f14d7095.png",
+  "tool": "image_gen.imagegen",
+  "masterSha256": "3be2272dccc1c3ba905d58b84cd8f3a4056a5779633a5d6fb099ac193108ff9d",
+  "bytes": 1254692,
+  "promptSha256": "c9306f07afac75f634c0270199c25589b68686892ab09122d88a722571b28261",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

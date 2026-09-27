@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Magpie",
+  "masterSha256": "c548d79ad9dd3591b5a82f2395cef5b8ddb6a12ef371b7a7a4628c6bf5e06571",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
