@@ -6,7 +6,8 @@ import { createSourceJoinProbe } from '../../../port/v2/tools/quadruped-proof/so
 import { familyContactChains, familyContractForRecord } from '../../../port/v2/tools/creature-animation/family-contracts.mjs';
 const [id, variant, pairsJson] = process.argv.slice(2), pairs = JSON.parse(pairsJson);
 const d = import.meta.dirname, root = path.resolve(d, '../../..'), req = createRequire(root + '/port/v2/package.json'), sharp = createRequire(req.resolve('free-tex-packer-core'))('sharp');
-const old = path.join(root, 'audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10', id, 'fit'), dir = path.join(d, 'pairs', id + '-' + variant), out = path.join(dir, 'fit');
+// FIT_SRC (optional): the fit directory to weld (default: the v10 automatic fit of this fish)
+const old = process.env.FIT_SRC ? path.resolve(root, process.env.FIT_SRC) : path.join(root, 'audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10', id, 'fit'), dir = path.join(d, 'pairs', id + '-' + variant), out = path.join(dir, 'fit');
 fs.rmSync(dir, { recursive: true, force: true });
 const read = (n) => JSON.parse(fs.readFileSync(path.join(old, n))), record = read('record.json'), binding = read('pre-split-binding.json'), manifest = read('parts/manifest.json');
 const atlas = await sharp(path.join(old, 'parts/atlas', manifest.creatureId + '.png')).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
