@@ -1188,5 +1188,14 @@
   "batch": "audits/G2_C95_20260927",
   "tag": "g2c95",
   "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Bobcat",
+  "nativeDir": "audits/BOBCAT_LAYOUT_C96_20260927/native-02",
+  "note": "new layout painting; speed fixed; ear-tip flecks and chest sliver (Codex visual holds)",
+  "batch": "C96 Bobcat layout",
+  "tag": "c96-bobcat",
+  "supports": "observed"
  }
 ]

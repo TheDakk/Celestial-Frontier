@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 140,
+ "total": 141,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -281,6 +281,13 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/15-bongo",
    "report": "DIAGNOSTIC_PASS",
    "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Bobcat",
+   "nativeDir": "audits/BOBCAT_LAYOUT_C96_20260927/native-02",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "new layout painting; speed fixed; ear-tip flecks and chest sliver (Codex visual holds)"
   },
   {
    "family": "Snakes (serpent strip author)",
