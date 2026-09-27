@@ -1,0 +1,9 @@
+{
+ "id": "c59-01-elk",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-root (earFarRoot) covers 19% paint (reference 68%)"
+ ],
+ "semanticPresence": null
+}

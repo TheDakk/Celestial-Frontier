@@ -118,6 +118,26 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**Codex's hand-authored reference candidates evaluated (C66 → C67, session 5)** (`audits/G2_REFERENCES_C62_20260927`: Robin, Pigeon, Duck, Hawk, Cat, Weasel, Ant, Cricket; hand observations on NEW originals; `--extra-refs`, leave-one-species-out):
+- **Battery with them: unchanged** (18/34 · 34/34 · 34/34 · 31/34 · 26/27; `mutants/summary-handrefs-c66.json`). Hand references cost no safety, unlike the rejected automatic bootstrapping (D28).
+
+| Family | Before → with hand refs | Gained (static) | Lost | Why lost |
+|---|---|---|---|---|
+| Quadrupeds (50) | 25 → **27** | Caracal, Lynx, Ocelot re-paint, Snow Leopard (C54), Mongoose | Leopard (C54), both Raccoons | the slim Cat/Weasel is chosen for bulky fur → "unexplained paint" 11–19 % |
+| Birds (20) | 4 → **2** | Robin, Starling | Goose, Quail, Raven, Vulture | static RED: the contact scale-compression bound in hit/tame (+ Quail folds), the same weakness as Codex's own new bird references |
+| Insects (17) | 0 → **1** | Beetle (via Ant) | — | — |
+
+- **Adopted into the default pool:** Cat, Weasel, Ant, Cricket (`pilots/reference-pool-extras.json`; `score-batch.mjs` passes it). Net gains, battery unchanged.
+- **Held back:** the four birds, until Codex repairs their contact compression; then re-measure.
+- A bulky-mammal reference (raccoon/badger) would recover the two Raccoons.
+- **Native on the newly passing creatures** (`native-handrefs/`): Snow Leopard, Caracal, Ocelot, **Starling (a bird)** and Mongoose PASS. Lynx FAIL: 0 refusals, 874/887 frames (the Bobcat slowdown class). Robin FAIL: 9 refusals, 300 ms spikes. The Beetle's first run used the wrong fit (see below).
+
+**Instrument bug found and fixed: fallback winners were battle-tested on the WRONG fit.**
+- When `--fallback` admits rank k, the passing fit is in `<id>/fallback-k/fit`. Every native script (the session-3 quad runner, `native-g2c54/run.sh`, tonight's `native-handrefs/run.sh`, and `score-batch.mjs`) used `<id>/fit`, the rank-0 fit that had FAILED static.
+- Affected: Donkey (session 3), Weasel/Goose/Quail (C54), Robin and Beetle (hand refs). Their native results measured a static-RED packet.
+- `score-batch.mjs` now picks the winning candidate's fit. The six are re-run on the correct fits in `native-fallback-fix/`.
+- Lesson: when a runner can admit a fallback, every downstream step must read the admitted candidate's path from `score.json`, never a fixed path.
+
 **One command per G2 batch (session 5):** `node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir> <tag>` (repo root, OUT of the sandbox because native owns a browser). It runs:
 1. The pattern gate → `pilots/<tag>-eligible.json`.
 2. `run-auto` with the standard flags (`--topk=1 --chains --counter --fallback=2 --serpent-strips --merge-joint-labels`).

@@ -1,0 +1,124 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c54-06-leopard",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "07d0cec15b091e4d6743e4312c2babc6c6782f37bcd7d41c51444c74a7ea782b",
+ "subjectSourceSha256": "36f577ae7dd89c361ef4496e2e80fc19e9842b5b7cf1625f624c812281dd0b0e",
+ "identity": {
+  "name": "Leopard",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Leopard\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"15\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"404517011\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]",
+  "seed": 404517011,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "05-cat-v2",
+  "authoringSha256": "5907b3ead198f8fda54dec8f6e223121b0eeccea8b0c0833363a8368c8ec50c6",
+  "masterSha256": "c88749c4464f85acc6444bdc24b0e2054d73d81df06130e235f197040049d3c4"
+ },
+ "habitat": {
+  "profileId": "felid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "74c48486113be3ee431e8a73d1f96d202de2a5c22bc39d2661f21510abbb4a65",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group felid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0668,
+     "class": "front",
+     "attach": {
+      "x": 366,
+      "y": 144,
+      "relX": 0.89,
+      "relY": 0.17
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1165,
+     "class": "limb-down",
+     "attach": {
+      "x": 75.8,
+      "y": 208.8,
+      "relX": 0.16,
+      "relY": 0.61
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0522,
+     "class": "limb-down",
+     "attach": {
+      "x": 140.2,
+      "y": 220.8,
+      "relX": 0.32,
+      "relY": 0.69
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0523,
+     "class": "limb-down",
+     "attach": {
+      "x": 284.5,
+      "y": 219,
+      "relX": 0.69,
+      "relY": 0.68
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0672,
+     "class": "limb-down",
+     "attach": {
+      "x": 325.5,
+      "y": 219,
+      "relX": 0.79,
+      "relY": 0.68
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0552,
+     "class": "limb-down",
+     "attach": {
+      "x": 183.5,
+      "y": 224,
+      "relX": 0.43,
+      "relY": 0.71
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "05-cat-v2",
+   "byClass": {
+    "top": 1,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

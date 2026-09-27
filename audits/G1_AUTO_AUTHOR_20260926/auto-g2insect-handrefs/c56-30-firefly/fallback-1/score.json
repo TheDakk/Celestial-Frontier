@@ -1,0 +1,16 @@
+{
+ "id": "c56-30-firefly",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part antenna-far (antennaFar) covers 0% paint (reference 29%)",
+  "missing-anatomy: part antenna-near (antennaNear) covers 0% paint (reference 26%)",
+  "missing-anatomy: part leg-hind-near-foot (legHindNearFoot) covers 4% paint (reference 44%)",
+  "missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 8% paint (reference 56%)",
+  "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 0% paint (reference 67%)",
+  "missing-anatomy: part leg-hind-near-knee (legHindNearKnee) covers 0% paint (reference 75%)",
+  "missing-anatomy: part root (root) covers 11% paint (reference 100%)",
+  "unexplained-anatomy: 14.3% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,15 @@
+{
+ "id": "c56-26-cicada",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mandible (mandible) covers 12% paint (reference 56%)",
+  "missing-anatomy: part leg-hind-far-foot (legHindFarFoot) covers 3% paint (reference 32%)",
+  "missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 15% paint (reference 56%)",
+  "missing-anatomy: part leg-front-near-knee (legFrontNearKnee) covers 5% paint (reference 52%)",
+  "missing-anatomy: part leg-mid-far-knee (legMidFarKnee) covers 15% paint (reference 69%)",
+  "missing-anatomy: part leg-hind-far-knee (legHindFarKnee) covers 23% paint (reference 67%)",
+  "unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,10 @@
+{
+ "id": "fam-01-hawk",
+ "family": "biped-bird",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part near-shin (legNearAnkle) covers 20% paint (reference 65%)",
+  "missing-anatomy: part near-thigh (legNearKnee) covers 8% paint (reference 84%)"
+ ],
+ "semanticPresence": null
+}

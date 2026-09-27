@@ -127,16 +127,9 @@
  },
  {
   "family": "quadruped",
-  "name": "Donkey",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2-quad/15-donkey",
-  "note": "clean",
-  "crop": "land"
- },
- {
-  "family": "quadruped",
   "name": "Weasel",
-  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c54/12-weasel",
-  "note": "clean",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/12-weasel",
+  "note": "clean (re-run on the correct fallback fit)",
   "crop": "land"
  },
  {
@@ -264,5 +257,69 @@
   "nativeDir": "audits/TAIL_LABELS_CHECK_20260926/native-06-trout-welded",
   "note": "lumpy back; dorsal floats in reaction",
   "crop": "water"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Goose",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/14-goose",
+  "note": "clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Quail",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/15-quail",
+  "note": "clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Robin",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/c56-11-robin",
+  "note": "clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Starling",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c59-07-starling",
+  "note": "clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27"
+ },
+ {
+  "family": "insect",
+  "name": "Beetle",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-fallback-fix/c54-23-beetle",
+  "note": "first insect; legs slightly smeared",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27"
+ },
+ {
+  "family": "quadruped",
+  "name": "Mongoose",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/q20-08-mongoose",
+  "note": "clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27"
+ },
+ {
+  "family": "quadruped",
+  "name": "Caracal (C56)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c56-02-caracal",
+  "note": "clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27"
+ },
+ {
+  "family": "quadruped",
+  "name": "Ocelot (pattern re-paint)",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-handrefs/c57-04-ocelot",
+  "note": "spotted; clean",
+  "batch": "hand-reference pool / fallback fix",
+  "tag": "2026-09-27"
  }
 ]
