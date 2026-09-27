@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "King Snake",
+  "masterSha256": "6483270ce0a403d56516682e16a8de2f0f209ec59414f3cc4f25bf9c769179f4",
+  "required": [
+    "bold repeating bands or rings of colour around the body"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "bold repeating bands or rings of colour around the body",
+      "status": "PRESENT",
+      "observed": "Repeated red/cream/black bands visibly wrap the full glossy body. Narrow head, uninterrupted shallow side-on bends and tapered left tip visible; narrow frame margins."
+    }
+  ]
+}

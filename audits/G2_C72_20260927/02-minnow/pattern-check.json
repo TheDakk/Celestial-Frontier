@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Minnow",
+  "masterSha256": "64ffa5e67b247924e54c0c04dd079ffe30c5c779fda6014e6eafc9e79b0fb2ba",
+  "required": [
+    "dark lateral stripe"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "dark lateral stripe",
+      "status": "PRESENT",
+      "observed": "Dark lateral stripe on slim silver body; single mid-back soft dorsal and forked tail visible. Narrow frame margins."
+    }
+  ]
+}

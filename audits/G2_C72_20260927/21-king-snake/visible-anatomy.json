@@ -1,0 +1,97 @@
+{
+  "id": "21-king-snake",
+  "name": "King Snake",
+  "family": "serpent",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "6483270ce0a403d56516682e16a8de2f0f209ec59414f3cc4f25bf9c769179f4",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 10418,
+    "coreRadius": 9,
+    "bodyBox": {
+      "x0": 5,
+      "y0": 182,
+      "x1": 355,
+      "y1": 240
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1186,
+        "pixels": 1236,
+        "box": {
+          "x0": 339,
+          "y0": 176,
+          "x1": 410,
+          "y1": 206
+        },
+        "attach": {
+          "x": 351.8,
+          "y": 192.8,
+          "relX": 0.99,
+          "relY": 0.19
+        },
+        "dir": {
+          "x": 0.98,
+          "y": -0.18
+        },
+        "class": "front",
+        "length": 60.6
+      },
+      {
+        "k": 1,
+        "frac": 0.144,
+        "pixels": 1500,
+        "box": {
+          "x0": 9,
+          "y0": 195,
+          "x1": 122,
+          "y1": 230
+        },
+        "attach": {
+          "x": 101.5,
+          "y": 217.2,
+          "relX": 0.28,
+          "relY": 0.61
+        },
+        "dir": {
+          "x": -0.96,
+          "y": -0.27
+        },
+        "class": "rear",
+        "length": 95.2
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1
+    },
+    "ground": [
+      {
+        "x0": 115,
+        "x1": 161,
+        "cx": 138
+      },
+      {
+        "x0": 268,
+        "x1": 304,
+        "cx": 286
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

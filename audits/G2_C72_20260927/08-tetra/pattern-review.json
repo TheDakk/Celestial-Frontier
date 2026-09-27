@@ -1,0 +1,13 @@
+{
+  "name": "Tetra",
+  "masterSha256": "e37cca43ef8138bb0546c394a49eb7907d0d75658df157ec829b8d8b14aa9b78",
+  "status": "PRESENT",
+  "method": "Codex visual inspection of exact generated originals and sheet; pattern only, not G1, anatomy or Dakk approval",
+  "features": [
+    {
+      "requirement": "bright lateral stripe from eye to tail",
+      "status": "PRESENT",
+      "observed": "Bright blue stripe visibly spans eye to tail; tiny adipose present. Narrow frame margins."
+    }
+  ]
+}

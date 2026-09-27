@@ -1,0 +1,11 @@
+{
+  "id": "02-minnow",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-393a4a96-14cd-4335-9d7c-d113d4707dfd.png",
+  "tool": "image_gen.imagegen",
+  "masterSha256": "64ffa5e67b247924e54c0c04dd079ffe30c5c779fda6014e6eafc9e79b0fb2ba",
+  "bytes": 1358796,
+  "promptSha256": "930ab7e1e75d516571e3f3303c661ecc72da0f0eeb2627da1eb1e30c3c0c1e20",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

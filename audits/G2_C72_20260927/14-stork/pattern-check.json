@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Stork",
+  "masterSha256": "ff2415d6facc43b581d0adb1d11cdb696cddabec0f816555122709036d0f2589",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
