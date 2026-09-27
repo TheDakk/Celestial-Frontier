@@ -1,0 +1,13 @@
+{
+  "id": "17-kakapo",
+  "name": "Kakapo",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ca8d2cf6-9dfd-448b-aea3-855a8a3f3cba.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "986fa51bbadcec81a68085c5e0b5b986d7588052606f8d950e1acf9e580ffe1e",
+  "bytes": 1353939,
+  "promptSha256": "283d346bfe1568df6764e17dc53578cd15c958fdf53def7b5a87f9117c022873",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mako Shark",
+  "masterSha256": "d1b58864dbeb90f2dbd3b764eda126bdfe9bc0f3fb822a991b513c2452785c57",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

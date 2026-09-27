@@ -1,0 +1,13 @@
+{
+  "id": "14-emu",
+  "name": "Emu",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-732e8084-2aa4-4973-bdff-81ab66e89974.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "27d2310aee6e0d2e7129ff7958b2221f22fc222884fff8b012383b3a5495724e",
+  "bytes": 1276892,
+  "promptSha256": "54116aed1a4a957b954220e58ec399e5cb2468545202cd1afcd07c0205c97ad3",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

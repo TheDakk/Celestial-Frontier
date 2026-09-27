@@ -1,0 +1,13 @@
+{
+  "id": "16-kiwi",
+  "name": "Kiwi",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-a0448412-e04a-4557-bd76-c3e9b6adb797.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "452e75b43bd207c29b93c9e66a429648772a12f41ae1c6c0b7a6b17ba6b4edb4",
+  "bytes": 1291918,
+  "promptSha256": "6945a4be60eb51dbebd7245a6510baf7f9b9e13cbe2ac383f386b2fc48fe7151",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

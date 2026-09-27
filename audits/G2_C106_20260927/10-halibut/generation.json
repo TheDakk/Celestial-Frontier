@@ -1,0 +1,13 @@
+{
+  "id": "10-halibut",
+  "name": "Halibut",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-8ba0b352-a3ec-4c70-8914-bf71b0bfddc5.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b37ea349e5a4e1449f1abcd01ae3c383be430122f489ad3d61a6a76e25e625e0",
+  "bytes": 1542121,
+  "promptSha256": "f6fc555a59af6de0333d7a9a1ab383039c9e59153cf8b055c89610313892f0a1",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

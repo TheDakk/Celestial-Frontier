@@ -1,0 +1,13 @@
+{
+  "id": "07-reef-shark",
+  "name": "Reef Shark",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-23cdaa53-89a9-4b4a-a4ba-c3f164bd45b6.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "badb70cfb18a3b14197d905d3259febcfb835d2c5adc20a6ab146490a2fc5e97",
+  "bytes": 1082980,
+  "promptSha256": "9dfc27125bd9ca744ea5d65a142e2849c34696de9d2ecd10001ce80f61132974",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

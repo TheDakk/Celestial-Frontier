@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Kiwi",
+  "masterSha256": "452e75b43bd207c29b93c9e66a429648772a12f41ae1c6c0b7a6b17ba6b4edb4",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

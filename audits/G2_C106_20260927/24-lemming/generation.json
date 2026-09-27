@@ -1,0 +1,13 @@
+{
+  "id": "24-lemming",
+  "name": "Lemming",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-010aad9a-4f5f-450b-beb4-24b4a37edcc4.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "0010645e88524412d9e308adde258d81727571a0ebd6ce4095a1d0283f7e77b2",
+  "bytes": 1235504,
+  "promptSha256": "a53d3accf92db2aead992053822f02438681f553c0e33ff67daebbacfed6732e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

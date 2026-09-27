@@ -1,0 +1,9 @@
+file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_BACK_REPAIR_20260927/heap-diagnostic.mjs:15
+ const wait=async(expression,label)=>{for(let i=0;i<150;i++){const v=await ev(expression);if(v)return v;await new Promise(r=>setTimeout(r,100));}throw Error('Timeout '+label)};
+                                                                                                                                                       ^
+
+Error: Timeout boot
+    at wait (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_BACK_REPAIR_20260927/heap-diagnostic.mjs:15:152)
+    at async file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_BACK_REPAIR_20260927/heap-diagnostic.mjs:20:47
+
+Node.js v26.10.0

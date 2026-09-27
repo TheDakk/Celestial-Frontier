@@ -1,0 +1,162 @@
+{
+  "id": "12-flying-gurnard",
+  "name": "Flying Gurnard",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "33ec2f4f75d52b0c8a137433e79daaa19fdddf883cbbb1971b77349e16a1af54",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 31427,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 177,
+      "y0": 172,
+      "x1": 294,
+      "y1": 291
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.2916,
+        "pixels": 9163,
+        "box": {
+          "x0": 239,
+          "y0": 112,
+          "x1": 380,
+          "y1": 276
+        },
+        "attach": {
+          "x": 291.6,
+          "y": 194.4,
+          "relX": 0.98,
+          "relY": 0.19
+        },
+        "dir": {
+          "x": 0.72,
+          "y": -0.69
+        },
+        "class": "top",
+        "length": 120.8
+      },
+      {
+        "k": 1,
+        "frac": 0.0386,
+        "pixels": 1214,
+        "box": {
+          "x0": 190,
+          "y0": 129,
+          "x1": 247,
+          "y1": 171
+        },
+        "attach": {
+          "x": 219,
+          "y": 171,
+          "relX": 0.36,
+          "relY": -0.01
+        },
+        "dir": {
+          "x": -0.12,
+          "y": -0.99
+        },
+        "class": "top",
+        "length": 51
+      },
+      {
+        "k": 2,
+        "frac": 0.2124,
+        "pixels": 6674,
+        "box": {
+          "x0": 40,
+          "y0": 153,
+          "x1": 186,
+          "y1": 235
+        },
+        "attach": {
+          "x": 177.1,
+          "y": 188.1,
+          "relX": 0,
+          "relY": 0.14
+        },
+        "dir": {
+          "x": -1,
+          "y": 0.09
+        },
+        "class": "rear",
+        "length": 144.9
+      },
+      {
+        "k": 3,
+        "frac": 0.0163,
+        "pixels": 513,
+        "box": {
+          "x0": 163,
+          "y0": 213,
+          "x1": 176,
+          "y1": 274
+        },
+        "attach": {
+          "x": 176,
+          "y": 243.5,
+          "relX": -0.01,
+          "relY": 0.6
+        },
+        "dir": {
+          "x": -0.98,
+          "y": -0.19
+        },
+        "class": "rear",
+        "length": 33.2
+      },
+      {
+        "k": 4,
+        "frac": 0.0192,
+        "pixels": 604,
+        "box": {
+          "x0": 201,
+          "y0": 292,
+          "x1": 264,
+          "y1": 306
+        },
+        "attach": {
+          "x": 232.5,
+          "y": 292,
+          "relX": 0.47,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.34,
+          "y": 0.94
+        },
+        "class": "limb-down",
+        "length": 34.5
+      }
+    ],
+    "byClass": {
+      "top": 2,
+      "rear": 2,
+      "limb-down": 1
+    },
+    "ground": [
+      {
+        "x0": 203,
+        "x1": 263,
+        "cx": 234.8
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

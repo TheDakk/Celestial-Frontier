@@ -1,0 +1,13 @@
+{
+  "id": "02-great-white-shark",
+  "name": "Great White Shark",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-dfefae44-1eed-4ecf-bec7-c7fd1bed6afd.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "a88ed058aebc70fc143a1fb70884cb87537a28f75a5a757433b4924528b664fb",
+  "bytes": 1257597,
+  "promptSha256": "90a4ed5f48d36afc916a5455b93f970f5399d191e4bb2e7e082b2283e144b37b",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
