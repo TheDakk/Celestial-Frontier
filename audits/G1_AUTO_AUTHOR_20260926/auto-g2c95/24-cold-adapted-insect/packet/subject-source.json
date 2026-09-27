@@ -1,0 +1,76 @@
+{
+  "name": "Cold-Adapted Insect",
+  "family": "insect",
+  "species": {
+    "name": "Cold-Adapted Insect",
+    "aspect": 2,
+    "headFrac": 0.2,
+    "eyes": "normal",
+    "posture": "crawling",
+    "mustRead": [
+      "stout dark heat-absorbing body",
+      "dense insulating hair over thorax",
+      "reduced or absent wings"
+    ],
+    "note": "Generic - interpreted as a representative polar/alpine insect (snow fly or Antarctic midge type): small, dark, hairy and flightless."
+  },
+  "genome": {
+    "seed": 1547230462,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 6,
+    "body": 6,
+    "loco": 5,
+    "trait": 21,
+    "size": 1,
+    "diet": 1,
+    "head": 3,
+    "limbs": 1,
+    "skin": 8,
+    "tail": 2,
+    "pattern": 0,
+    "eyes": 4,
+    "behavior": 0,
+    "habitat": 5,
+    "detail": 5,
+    "accent": 4,
+    "temper": 1,
+    "sense": 6,
+    "repro": 5,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cold-Adapted Insect"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cold-Adapted Insect\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1547230462\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"21\"]]]]",
+  "index": 559,
+  "profile": {
+    "id": "soft-mouth-insect",
+    "names": [
+      "Butterfly",
+      "Cicada",
+      "Mosquito",
+      "Black Fly",
+      "Moth",
+      "Aphid",
+      "Fly",
+      "Cold-Adapted Insect",
+      "Mayfly",
+      "Scorpionfly",
+      "Thrips"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "air",
+      "ground"
+    ],
+    "intendedMoves": [
+      "body"
+    ],
+    "notes": "Proboscis/stylet/body/effect motion; no chewing mandible or scorpion sting inferred."
+  }
+}

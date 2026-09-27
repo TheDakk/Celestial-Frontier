@@ -1,0 +1,9 @@
+{
+ "id": "16-duiker",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 6%)"
+ ],
+ "semanticPresence": null
+}

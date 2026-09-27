@@ -1089,5 +1089,113 @@
   "batch": "audits/G2_C92_20260927",
   "tag": "g2c92",
   "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Rabbitfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/02-rabbitfish",
+  "note": "body cracks (unwelded)",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Sea Bass",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/03-sea-bass",
+  "note": "body cracks (unwelded)",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Bonefish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/04-bonefish",
+  "note": "acceptable",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Tigerfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/05-tigerfish",
+  "note": "acceptable",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Coelacanth",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/06-coelacanth",
+  "note": "acceptable",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Gannet",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/07-gannet",
+  "note": "clean; faint wing line",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Booby",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/08-booby",
+  "note": "clean",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Bustard",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/09-bustard",
+  "note": "clean",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Seriema",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/10-seriema",
+  "note": "clean",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Chicken",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/11-chicken",
+  "note": "clean",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Bongo",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c95/15-bongo",
+  "note": "clean",
+  "batch": "audits/G2_C95_20260927",
+  "tag": "g2c95",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Bobcat",
+  "nativeDir": "audits/BOBCAT_LAYOUT_C96_20260927/native-02",
+  "note": "new layout painting; speed fixed; ear-tip flecks and chest sliver (Codex visual holds)",
+  "batch": "C96 Bobcat layout",
+  "tag": "c96-bobcat",
+  "supports": "observed"
  }
 ]

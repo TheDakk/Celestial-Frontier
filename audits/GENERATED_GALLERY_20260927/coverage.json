@@ -1,15 +1,15 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 125,
- "pct": 19.8,
+ "covered": 137,
+ "pct": 21.7,
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 34,
-   "pct": 16.6,
+   "covered": 36,
+   "pct": 17.6,
    "names": [
     "Leopard",
     "Tiger",
@@ -18,6 +18,7 @@
     "Lion",
     "Cougar",
     "Snow Leopard",
+    "Bobcat",
     "Lynx",
     "Caracal",
     "Cheetah",
@@ -44,14 +45,15 @@
     "Ground Squirrel",
     "Tree Shrew",
     "Cattle",
+    "Bongo",
     "Donkey"
    ]
   },
   {
    "family": "fish",
    "species": 132,
-   "covered": 45,
-   "pct": 34.1,
+   "covered": 50,
+   "pct": 37.9,
    "names": [
     "Trout",
     "Char",
@@ -75,11 +77,13 @@
     "Tetra",
     "Walleye",
     "Whitefish",
+    "Tigerfish",
     "Goldfish",
     "Mullet",
     "Tarpon",
     "Goby",
     "Grouper",
+    "Bonefish",
     "Barracuda",
     "Cod",
     "Mackerel",
@@ -90,6 +94,8 @@
     "Parrotfish",
     "Wrasse",
     "Boxfish",
+    "Rabbitfish",
+    "Sea Bass",
     "Haddock",
     "Pollock",
     "Sailfish",
@@ -97,14 +103,15 @@
     "Sardine",
     "Anchovy",
     "Viperfish",
+    "Coelacanth",
     "Archerfish"
    ]
   },
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 24,
-   "pct": 23.5,
+   "covered": 29,
+   "pct": 28.4,
    "names": [
     "Kestrel",
     "Goose",
@@ -119,9 +126,12 @@
     "Curlew",
     "Rail",
     "Oystercatcher",
+    "Bustard",
     "Sandgrouse",
     "Quail",
     "Roadrunner",
+    "Chicken",
+    "Seriema",
     "Vulture",
     "Tanager",
     "Woodpecker",
@@ -129,6 +139,8 @@
     "Robin",
     "Magpie",
     "Dove",
+    "Gannet",
+    "Booby",
     "Starling"
    ]
   },

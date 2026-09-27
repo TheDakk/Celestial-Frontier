@@ -118,6 +118,11 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**G2 C95 batch (Codex `47d573c9`: 6 each fish/birds/quads/insects)** (`native-g2c95/`): **11/24 native PASS**: Rabbitfish, Sea Bass, Bonefish, Tigerfish, Coelacanth; **Gannet, Booby, Bustard, Seriema, Chicken; Bongo**.
+- The birds and Bongo are clean at full size; Rabbitfish and Sea Bass have unwelded cracks.
+- Hoofed quads refused on short tails / a hidden far ear (Pronghorn, Duiker, Serow, Springbok); Nilgai refused at intake.
+- Insects 0/6 (mandible/leg coverage, extra appendages). Springtail is `materials-unknown`.
+
 **G2 C92 batch (Codex `833ee934`: 6 fish, 6 birds, 6 quads, 6 insects)** (`native-g2c92/`): **9/24 native PASS**: Parrotfish, Boxfish, Archerfish; **Puffin, Swan, Cormorant; Mouse, Tree Shrew, Ground Squirrel** (birds and quads clean at full size). Insects 0/6.
 
 **Contour bug found and fixed: false "facing" refusals on thin-antenna insects.**
