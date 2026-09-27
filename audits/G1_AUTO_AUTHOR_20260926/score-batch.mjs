@@ -26,6 +26,8 @@ if (!flags.includes('--no-native')) for (const r of passes) { const p = eligible
   /* fish need an aquatic WORLD block (key lake, liquid water, surfaceWater), not just lake themes: the native-g2fam-fish script carries it */
   const base = JSON.parse(fs.readFileSync(path.join(ROOT, r.family === 'fish' ? 'audits/G1_AUTO_AUTHOR_20260926/native-g2fam-fish/07-perch-script.json' : path.join('audits/ART_BATTLE_FOCUS_20260925', r.family === 'biped-bird' ? '15-goose' : '05-cougar', 'battle-script.json')), 'utf8'));
   for (const row of base.rows) { if ('an' in row) row.an = name; if ('dn' in row) row.dn = name; }
+  /* native must test the same painted contact supports as static and the game (Codex C79: without this, native used rest supports) */
+  base.supports = 'observed';
   const script = path.join(N, `${r.id}-script.json`); fs.writeFileSync(script, JSON.stringify(base, null, 1) + '\n');
   /* the passing packet may be a labelled fallback candidate: native must use THAT candidate's fit (bug found on the hand-ref Beetle) */
   const win = r.fallbackFrom ? (r.candidates ?? []).find((c) => c.static === 'PASS_STATIC') : null;
