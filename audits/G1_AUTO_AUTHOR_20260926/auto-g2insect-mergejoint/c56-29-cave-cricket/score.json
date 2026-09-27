@@ -1,0 +1,15 @@
+{
+ "id": "c56-29-cave-cricket",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part antenna-far (antennaFar) covers 7% paint (reference 29%)",
+  "missing-anatomy: part wing-far (wingFar) covers 3% paint (reference 73%)",
+  "missing-anatomy: part leg-mid-near (legMidNearKnee) covers 28% paint (reference 98%)",
+  "missing-anatomy: part leg-hind-near (legHindNearKnee) covers 30% paint (reference 100%)",
+  "missing-anatomy: part mandible (mandible) covers 6% paint (reference 55%)",
+  "missing-anatomy: part head (head) covers 9% paint (reference 99%)",
+  "unexplained-anatomy: 11.2% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "semanticPresence": null
+}

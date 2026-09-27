@@ -2,7 +2,7 @@
 
 Program: `audits/GENERATION_PIPELINE_20260926/PROGRAM.md` (Dakk D22/D23). Owner: Claude.
 
-**Latest (session 4, 2026-09-26):** C54 gave 9 static / 7 native; C56+C57 gave 8 static / 7 native, including the Raven, the first bird (sections below). The exact-label tail contract passed Claude's independent checks with a rig-derived identity guard (`audits/TAIL_LABELS_CHECK_20260926`). D24 scores G1 per family on generated paintings.
+**Latest (session 5, 2026-09-27):** the serpent strip author takes snakes from 0 to 9 (static + native); C59 adds Raccoon, Vulture and Water Snake; the tail-label step passes the held-out Herring. **Running total: 34 generated creatures pass native**, none visually accepted yet. Previously, session 4: C54 gave 9 static / 7 native; C56+C57 gave 8 static / 7 native, including the Raven, the first bird (sections below). The exact-label tail contract passed Claude's independent checks with a rig-derived identity guard (`audits/TAIL_LABELS_CHECK_20260926`). D24 scores G1 per family on generated paintings.
 
 **Status (end of session 2, 2026-09-26): the corpus gate (≥ 30/40 admitted with zero hand edits) is NOT met.**
 - Adopted author **v5:**
@@ -117,6 +117,85 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **Fish packets REJECTED by Dakk** (tail stalk crunchy/pinched). The tail joint is the top rig priority (C54).
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
+
+**Measured, not recommended: G2 creatures as extra references (D28 experiment)** (`--extra-refs=<json>`, labelled DIAGNOSTIC in the runner and battery; `pilots/extra-refs-quad-clean.json`: 11 clean, native-passing G2 quadrupeds, leave-one-species-out):
+- All 50 G2 quadrupeds: 25 → **24**, with churn: Serval, Ocelot re-paint, Lynx and Wild Horse gained; Leopard, Snow Leopard, both Raccoons and the Weasel's static lost. Several losses come from the G2 Cougar out-ranking the hand Cougar.
+- Battery (`mutants/summary-extra-quad.json`): positives 18/34 unchanged, but erased 31 → **30**, duplicated 26 → **25**.
+- **Verdict:** bootstrapping references from automatic packets weakens the refusal battery and gains nothing net. **Not recommended.** More HAND-authored references in the missing poses (legs apart; folded-wing birds) remain the lever.
+
+**Birds: the reference pool is the blocker (session 5 diagnosis, no code change)**
+- **Four of the seven hand bird references have their wings RAISED** (Goose, Heron, Sparrow, Sandpiper). The generated G2 birds all stand with wings folded.
+- **Result:** 17 of 20 G2 birds were authored from the ONE standing, folded-wing reference, the Gull. Every bird admission is a Gull (or Grouse) transfer: Goose, Quail, Raven pass; Hawk, Crow, Dove, Magpie are static RED.
+- The false "facing" (Starling, Robin) and "wrong family" (Cardinal, Jay) refusals happen because songbird silhouettes resemble no reference. All six refused songbirds visibly face right, with legs apart.
+- **Tried and reverted:** a head-top facing corroboration. On the raised-wing references the highest paint is a wingtip, so a flipped Goose would pass (4/7 references break it).
+- **Lever:** 3–4 hand-authored standing, folded-wing bird references (a passerine, a pigeon/dove, a duck, a standing raptor), or admitted G2 birds once independently accepted. Asked in C62.
+
+**Insects: the intake blocker found and fixed (session 5)** (`merge-joint-labels-fit.mjs`, runner `--merge-joint-labels`, labelled; `merge-joint/`, `auto-g2insect-mergejoint/`):
+- **Cause:** the corpus Beetle packet authors three regions on ONE joint (`elytron-near`, `elytron-far`, `thorax`). The shipped beetle's intake merged them (`fit-04/label-authoring-receipt.json` regionOwnerMap → `thorax`), but `intake-authored.mjs` does not. So the hand Beetle packet itself, and every insect transferred from it, is refused at the source-join probe ("unique known source owners"). Termite and Cicada were ADMITTED by the author and then died there.
+- **Fix:** merge on the label raster (a traced polygon union was tried first and took ~50 px of other owners, so it was rejected), then compile through the unchanged painter-label path. Conservation: only group pixels change owner, to the kept `thorax`.
+- **Control:** the hand Beetle packet, after the merge, **matches the shipped `fit-04` owner map on all 1,572,516 pixels** with the same part set.
+- **Result on all 17 G2 insects:** Termite and Cicada now compile and reach static, but both are **static RED on motion limits** (Codex's lane, limits unchanged):
+  - Termite: only the `legFrontFarFoot` joint limit in faint (−77°).
+  - Cicada: the contact scale-compression bound in cast/hit/tame/feed, plus the same faint foot limit.
+- The other 15 are author refusals: thin legs and antennae against 3 dissimilar references (Beetle, Honeybee, Dragonfly), and the rear-appendage family floor. **Levers:** more insect references with legs apart, or an insect-specific transfer. Insects stay at 0 native.
+
+**Rejected lever: `legMatch` (session 5)** (`auto-author.mjs` option, runner/battery flag `--leg-match=N`, off by default):
+- **The idea:** eight quadrupeds are refused for "an unassigned limb-down appendage" (Hyena, Jaguar, Serval, Caracal, Lynx, Badger, Wolverine, the Ocelot re-paint). The evidence shows the painting's four separate legs against a reference whose near/far legs overlap (e.g. Wild Horse for Serval and Hyena). legMatch picks, among the 3 cheapest references, the first whose MEASURED limb-down count equals the painting's. It chooses before any verdict and never retries after a refusal.
+- **Measured:**
+  - Battery (`mutants/summary-legmatch3.json` vs the exact baseline reproduction `summary-v10-repro.json`): positives 18 → **14/34**, erased 31 → 32/34, flip/wrong family/duplicated unchanged.
+  - All 50 G2 quadrupeds (`auto-g2quad-legmatch3/`): 25 → **25**, with no single subject changed.
+- **Verdict:** it costs corpus positives and gains nothing on generated paintings. **Kept off.** The limb-down refusals need a reference pool with legs apart (or a far-leg re-seat), not a different pick from the current pool.
+
+**G2 C59 batch (Codex `4b08de11`: 12 paintings, 1 pattern-REFUSE skipped; scored with v10 + `--serpent-strips`)** (`auto-g2c59-v10s/`, `native-g2c59/`):
+- **3/11 ADMIT + PASS_STATIC, and 3/3 native DIAGNOSTIC_PASS:** Raccoon, **Vulture** (the second bird through), and **Water Snake** (the first held-out snake for the strip author).
+- **Refused:**
+  - Elk (far ear root 19 %), Moose (short tail), Bison (unexplained paint);
+  - Badger, Wolverine (limb-down appendage);
+  - Starling (facing), Kingfisher (unexplained paint);
+  - Ladybug (the insect rear floor).
+- **Full-size** (`fullsize-reaction.jpg`): Water Snake and Raccoon look clean. **The Vulture shows a thin pointed feather shard above the left bird's wing** in the reaction (a wing tear).
+
+**Correction:** the C56 Bobcat's native FAIL is a REAL late-motion slowdown, not the capture instrument, per Codex's `C59_REPAIR_20260926/bobcat-diagnosis.json`: 850/887 frames, with lethal reaction/idle ARAP about 200 ms per frame.
+
+**Serpent strip author (session 5, 2026-09-27): snakes 0 → 9** (`port/v2/tools/anatomy-verify/serpent-author.mjs`; runner flag `--serpent-strips`, labelled; `serpent/`, `auto-g2serp-strips-v1/`, `native-serpents/`):
+
+- **Why the general author failed every snake:** it warps the reference's part polygons with a contour spline. From THICK, straight references onto THIN S-curve paintings, that leaves most polygons over background, so every segment reads as "missing anatomy" and the leftover body reads as "extra appendages".
+- **How the hand serpent packets are built:** each body segment is a full-height vertical strip; landmarks sit on the observed centreline; head and jaw are small polygons. This works because a side-profile snake is x-monotone. All 10 generated snakes are: 98.6–100 % of each column's paint lies in one run.
+- **What the strip author does:**
+  1. Measures the target's own centreline and thickness per column.
+  2. Picks the serpent reference with the closest thickness ratio.
+  3. Transfers the reference's cuts, landmarks and head/jaw polygons by fraction of body length, and by offset (in local thicknesses) from the centreline.
+- **Refusals:**
+  - detached paint (the main piece holds < 97 %);
+  - not x-monotone (coils or overlap);
+  - body not continuous (> 1 % of the length without paint, not counting a hair-thin tail tip);
+  - not elongated (length/thickness < 8: the wrong-family guard);
+  - facing (the right-hand head end must be ≥ 1.15× the tail end);
+  - untapered tail (a truncated tail);
+  - **blunt head end:** snout ratio > 0.72. Calibrated on 11 positives (0.27–0.59) against their erased-head mutants (0.85–1.12);
+  - reference-relative ownership: each part must own ≥ 25 % of the share the same part owns in the reference. Tiny marker parts such as the Racer's `root-patch` stay tiny; this is the v10 marker lesson.
+- **Battery** (`serpent/battery.mjs`, fixed before the scored run; `battery.json`):
+  - Positives: 10/12 admitted. Boa is refused because its tail curls back under the body (correct). Whip Snake is refused because its hair-thin tail segment owns 1.4 % against the reference's 6 %.
+  - Mutants: flip 12/12, erased head 12/12, mid-body cut 12/12, duplicated body 12/12; erased tail 11/12 (a 30 %-shorter Whip Snake still reads as a slender snake). **Total 59/60.**
+  - Wrong family: 9/9 refused (quadrupeds, birds, insects).
+  - **Caveat:** the snout threshold was calibrated on the same snakes, so the next G2 snake batch is its true held-out test. The C59 Water Snake (below) is the first held-out snake, and it passed.
+- **Scored run:**
+  - C54 + C56 snakes: **8/10 ADMIT + PASS_STATIC, and 8/8 native DIAGNOSTIC_PASS** (0/0 refusals): Python, Racer, Garter, Tree, Rat, Cottonmouth, Mamba, Grass Snake.
+  - C59 Water Snake (held out): ADMIT + PASS_STATIC.
+- **Claude's full-size look** (`native-serpents/fullsize-reaction.jpg`, `tail-zoom.jpg`): continuous scaled bodies, clean tapering tails, intact heads, and the Cottonmouth strikes mouth-open. **No seams or tears visible: the cleanest family so far.**
+- `semanticPresence` for serpents stays UNRESOLVED (head presence is measured by the snout guard, but not independently confirmed). Play admission waits for Dakk's review.
+
+**Guarded exact-label tail step in the runner** (`tail-labels-fit.mjs`, runner flag `--tail-labels`, labelled; `auto-g2tail-labels-v1/`):
+- The step is Codex's compile path plus the rig-derived identity guard.
+- It reproduces Codex's Cod and Arctic Fox labels and bindings byte-for-byte, and refuses a wrong tail name before writing anything.
+- **Regression + held-out:** all six fits PASS_STATIC. Cod 4,550 / Perch 14 / Carp 109 / Arctic Fox 7,554 px filled, as before.
+- **Herring (4,450 px) and Trout (725 px) are NEW:** the polygon route had to refuse both. Both are native DIAGNOSTIC_PASS.
+- **Herring is the genuinely gapped held-out fish Codex asked for:** Salmon-referenced, and never in Codex's set.
+- Full-size (`TAIL_LABELS_CHECK_20260926/fish-labels-zoom.jpg`): all three tails are full, but unwelded body seams remain (vertical cracks; the Cod's hole behind the fin). - **Greedy selective weld on the labelled fits** (`weld-g2fam-fish/greedy-labels.sh`, the unchanged C48 recipe):
+  - Final pairs: Herring `body↔spine1–4`; Trout `body↔spine1–4 + head↔spine0`. Both PASS_STATIC and native DIAGNOSTIC_PASS.
+  - Full-size (`TAIL_LABELS_CHECK_20260926/fish-welded-zoom.jpg`): **the approach frames are clean** (the cracks close, tails full). **But in the hit reaction the welded backs go lumpy, and the Trout's dorsal fin floats off its back.** This is the same weld-induced silhouette deformation as the earlier Salmon-referenced Herring/Trout welds.
+  - Not acceptable. The body-seam repair for the Salmon-referenced fish stays with Codex.
+  - Codex's `cod-gill-two` / `perch-gill-two` (two observed gill welds on the tail labels) close the Cod and Perch holes.
 
 **G2 C56 + C57 batches (Codex `126d8765`: 32 new paintings + 7 pattern re-paints), scored with v10 (session 4, continued)** (`auto-g2c56-v10/`, `auto-g2c57-v10/`, `native-g2c56/`):
 - **Pattern gate honoured before scoring** (`pilots/*-pattern-eligible.json`). Six paintings were skipped because Codex's `pattern-check.json` REFUSES them: both Jaguars, the C56 Clouded Leopard, Water Snake, Mountain Viper and Ladybug. 33 were scored.

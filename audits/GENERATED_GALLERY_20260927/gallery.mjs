@@ -1,0 +1,32 @@
+/** Master gallery for Dakk's single end-of-pass visual review (Claude 2026-09-27): every GENERATED creature (G2 painting → automatic
+ * G1 author → intake → static → native, zero hand edits) whose best current version passes the native battle harness, one tile each
+ * from its hit-reaction still (the hardest pose), grouped by family, with the known faults. Thumbnails only; every tile's full-size
+ * stills and film stay in its native directory (listed in gallery.json). Usage (repo root): node audits/GENERATED_GALLERY_20260927/gallery.mjs */
+import fs from 'node:fs'; import path from 'node:path'; import { createRequire } from 'node:module';
+const req = createRequire(path.resolve('port/v2/package.json')), sharp = createRequire(req.resolve('free-tex-packer-core'))('sharp');
+const G = 'audits/G1_AUTO_AUTHOR_20260926', C = 'audits/C59_REPAIR_20260926', HERE = 'audits/GENERATED_GALLERY_20260927';
+const land = { left: 90, top: 200, width: 844, height: 290 }, water = { left: 150, top: 300, width: 724, height: 220 }, snake = { left: 0, top: 370, width: 1024, height: 200 };
+const E = (name, dir, note, crop = land) => ({ name, dir, note, crop });
+const FAMILIES = [
+  ['Quadrupeds — dogs', [E('Coyote', `${G}/native-g2-quad/01-coyote`, 'clean'), E('Arctic Fox', `${G}/native-g2-quad/03-arctic-fox`, 'tail blotches; shoulder shards when rearing (Codex)'), E('Fennec Fox', `${G}/native-g2-quad/04-fennec-fox`, 'clean'), E('Dingo', `${G}/native-g2c54/01-dingo`, 'clean'), E('Jackal', `${G}/native-g2c54/02-jackal`, 'clean'), E('Coyote (C56)', `${G}/native-g2c56/c56-03-coyote`, 'clean')]],
+  ['Quadrupeds — cats', [E('Caracal', `${G}/native-g2-quad/05-caracal`, 'clean'), E('Cougar', `${G}/native-g2-quad/07-cougar`, 'clean'), E('Lion', `${G}/native-g2c54/04-lion`, 'clean'), E('Tiger (elbow repaired)', `${C}/g2c54-05-tiger-side-native`, 'no stripes painted (D27); hairline chest seam'), E('Leopard (elbow repaired)', `${C}/g2c54-06-leopard-side-native`, 'no spots painted (D27)'), E('Ocelot (elbow repaired)', `${C}/g2c54-09-ocelot-side-native`, 'no spots painted (D27); chest notch'), E('Snow Leopard (elbow repaired)', `${C}/g2c57-05-snow-leopard-side-native`, 'pattern re-paint'), E('Clouded Leopard (elbow repaired)', `${C}/g2c57-06-clouded-leopard-side-native`, 'pattern re-paint')]],
+  ['Quadrupeds — others', [E('Raccoon', `${G}/native-g2-quad/10-raccoon`, 'clean'), E('Raccoon (C59)', `${G}/native-g2c59/04-raccoon`, 'clean'), E('Marmot', `${G}/native-g2-quad/11-marmot`, 'head crumples in crouch (Codex)'), E('Cattle', `${G}/native-g2-quad/13-cattle`, 'back humps when rearing (Codex)'), E('Donkey', `${G}/native-g2-quad/15-donkey`, 'clean'), E('Weasel', `${G}/native-g2c54/12-weasel`, 'clean'), E('Mink (elbow repaired)', `${C}/g2c56-06-mink-side-native`, ''), E('Marten', `${G}/native-g2c56/c56-07-marten`, 'clean'), E('Fisher (elbow repaired)', `${C}/g2c56-08-fisher-side-native`, 'thin pale chest strand')]],
+  ['Snakes (serpent strip author)', [E('Python', `${G}/native-serpents/17-python`, 'clean', snake), E('Racer', `${G}/native-serpents/19-racer`, 'clean', snake), E('Garter Snake', `${G}/native-serpents/20-garter-snake`, 'clean', snake), E('Tree Snake', `${G}/native-serpents/17-tree-snake`, 'clean', snake), E('Rat Snake', `${G}/native-serpents/18-rat-snake`, 'clean', snake), E('Cottonmouth', `${G}/native-serpents/19-cottonmouth`, 'clean; strikes mouth-open', snake), E('Mamba', `${G}/native-serpents/21-mamba`, 'clean', snake), E('Grass Snake', `${G}/native-serpents/24-grass-snake`, 'clean', snake), E('Water Snake', `${G}/native-g2c59/10-water-snake`, 'clean', snake)]],
+  ['Birds', [E('Raven', `${G}/native-g2c56/c56-10-raven`, 'tail splits in hit reaction (wing/tail overlap)'), E('Vulture', `${G}/native-g2c59/08-vulture`, 'feather shard above wing in reaction')]],
+  ['Fish (tail labels + selective welds)', [E('Cod + Perch (gill welds)', `${C}/fish-gill-two-native`, 'tails full; Cod belly sliver', water), E('Carp', 'audits/TAIL_STALK_BRIDGE_20260926/native-09-carp-welded', 'clean tail', water), E('Herring', 'audits/TAIL_LABELS_CHECK_20260926/native-10-herring-welded', 'lumpy back in reaction', water), E('Trout', 'audits/TAIL_LABELS_CHECK_20260926/native-06-trout-welded', 'lumpy back; dorsal floats in reaction', water)]],
+];
+const TW = 560, TH = 210, COLS = 3, comp = [], manifest = []; let y = 80;
+const esc = (s) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;');
+for (const [family, entries] of FAMILIES) {
+  comp.push({ input: Buffer.from(`<svg width="1720" height="40"><text x="10" y="30" font-size="26" font-family="Arial" font-weight="bold" fill="#eddfbb">${esc(family)} — ${entries.length}</text></svg>`), left: 0, top: y }); y += 44;
+  for (let k = 0; k < entries.length; k++) { const e = entries[k], f = path.join(e.dir, 'turn1-hit-reaction-50.png'), x = 10 + (k % COLS) * (TW + 10), ty = y + Math.floor(k / COLS) * (TH + 44);
+    if (!fs.existsSync(f)) throw Error('missing still: ' + f);
+    comp.push({ input: await sharp(f).extract(e.crop).resize(TW, TH, { fit: 'fill' }).png().toBuffer(), left: x, top: ty + 38 });
+    comp.push({ input: Buffer.from(`<svg width="${TW}" height="38"><text x="2" y="17" font-size="17" font-family="Arial" fill="white">${esc(e.name)}</text><text x="2" y="34" font-size="14" font-family="Arial" fill="#9fb3bf">${esc(e.note)}</text></svg>`), left: x, top: ty });
+    manifest.push({ family, name: e.name, nativeDir: e.dir, report: JSON.parse(fs.readFileSync(path.join(e.dir, 'report.json'))).status, note: e.note }); }
+  y += Math.ceil(entries.length / COLS) * (TH + 44) + 10; }
+const total = manifest.length, H = y + 10;
+const bg = Buffer.from(`<svg width="1720" height="${H}"><rect width="100%" height="100%" fill="#0d151a"/><text x="10" y="40" font-size="30" font-family="Arial" fill="white">Generated Earth creatures in battle — ${total} passing the native harness (zero hand edits)</text><text x="10" y="68" font-size="17" font-family="Arial" fill="#9fb3bf">Hit-reaction still (hardest pose). Not yet visually accepted or admitted; notes list known faults. 2026-09-27.</text></svg>`);
+await sharp(bg).composite(comp).jpeg({ quality: 84 }).toFile(path.join(HERE, 'gallery.jpg'));
+fs.writeFileSync(path.join(HERE, 'gallery.json'), JSON.stringify({ schema: 'cf.generated-gallery/v1', total, entries: manifest }, null, 1) + '\n');
+console.log(total, manifest.filter((m) => m.report !== 'DIAGNOSTIC_PASS').map((m) => m.name));

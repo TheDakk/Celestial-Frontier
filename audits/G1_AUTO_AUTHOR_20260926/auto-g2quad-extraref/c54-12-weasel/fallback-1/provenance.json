@@ -1,0 +1,125 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c54-12-weasel",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "9bfda3da56f43941f0fe9fd9115fb788c3d07603b068789898c27127184b0ef2",
+ "subjectSourceSha256": "b1144cb8d3370bb965b9551c332419651ab70c8b8fc81d9d975196b28cfeb983",
+ "identity": {
+  "name": "Weasel",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Weasel\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1697550491\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "seed": 1697550491,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "g2c56-marten",
+  "authoringSha256": "b2656de1169632ddc8bee48c5c21c96b32586332f78057ed84c16fda2dd9eb9e",
+  "masterSha256": "b189641e56694cb76d9cc23c5fea23959a0d3216abe94c1be1893f209b31966f"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1315,
+     "class": "top",
+     "attach": {
+      "x": 352.3,
+      "y": 180.4,
+      "relX": 0.86,
+      "relY": 0.17
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1254,
+     "class": "rear",
+     "attach": {
+      "x": 105.4,
+      "y": 232.9,
+      "relX": 0.23,
+      "relY": 0.64
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.041,
+     "class": "limb-down",
+     "attach": {
+      "x": 146.8,
+      "y": 249.7,
+      "relX": 0.33,
+      "relY": 0.79
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0324,
+     "class": "limb-down",
+     "attach": {
+      "x": 188.5,
+      "y": 250,
+      "relX": 0.44,
+      "relY": 0.79
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0246,
+     "class": "limb-down",
+     "attach": {
+      "x": 280,
+      "y": 253,
+      "relX": 0.67,
+      "relY": 0.82
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0376,
+     "class": "limb-down",
+     "attach": {
+      "x": 312,
+      "y": 253,
+      "relX": 0.76,
+      "relY": 0.82
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "g2c56-marten",
+   "byClass": {
+    "top": 2,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

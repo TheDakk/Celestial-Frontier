@@ -1,0 +1,3 @@
+*.webm
+native-*/*.png
+!native-*/turn1-hit-reaction-50.png

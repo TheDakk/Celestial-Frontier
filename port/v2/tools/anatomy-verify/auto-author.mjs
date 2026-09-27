@@ -296,14 +296,22 @@ export function autoAuthorShop(opts) {
 
 /** Author one target from same-family references (and, for the verdict, the other families' references and the mirrored target).
  * `refs`: [{family, subjectId, rgba?, prepared, authoring, h}] ; returns {verdict, reasons, authoring, presence, evidence}. */
-export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0, counter = null, nudgeThinFrac = null, nudgeSkipChains = false, requireCount = true, refRank = 0, separation = false, grow = false }) {
+export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0, counter = null, nudgeThinFrac = null, nudgeSkipChains = false, requireCount = true, refRank = 0, separation = false, grow = false, legMatch = 0 }) {
   const same = refs.filter((r) => r.family === family), other = refs.filter((r) => r.family !== family);
   if (!same.length) return { verdict: 'REFUSE', reasons: ['no-reference: no other hand-authored subject of family ' + family], authoring: null };
   const trAll = same.map((r) => transferReference(target, r)).sort((a, b) => a.cost - b.cost), reasons = [];
   // `refRank` > 0: author from the k-th best reference instead (a labelled fallback candidate); facing and family are judged on the
   // painting's best match either way
   if (refRank >= trAll.length) return { verdict: 'REFUSE', reasons: [`no-reference: no reference of rank ${refRank} (${trAll.length} same-family)`], authoring: null };
-  const tr = [trAll[refRank], ...trAll.filter((_, k) => k !== refRank)], best = tr[0], judge = trAll[0];
+  /* legMatch (labelled, off by default; Claude 2026-09-27): among the `legMatch` cheapest references, author from the first whose
+   * MEASURED visible limb-down count (paint-only counter) equals the painting's. Chosen before any verdict and never retried after a
+   * refusal (unlike reference shopping, D25). Without a count match the ranking is unchanged. */
+  let pick = refRank, legPick = null;
+  if (legMatch > 0 && refRank === 0 && counter) { const want = countOf(target).byClass?.['limb-down'] ?? 0;
+    const k = trAll.slice(0, legMatch).findIndex((t) => (countOf(t.ref).byClass?.['limb-down'] ?? 0) === want);
+    legPick = { want, candidates: trAll.slice(0, legMatch).map((t) => ({ ref: t.ref.subjectId, limbDown: countOf(t.ref).byClass?.['limb-down'] ?? 0 })), chosen: k };
+    if (k > 0) pick = k; }
+  const tr = [trAll[pick], ...trAll.filter((_, k) => k !== pick)], best = tr[0], judge = trAll[0];
   // facing / family checks on the contour cost alone
   const mirrorBest = Math.min(...same.map((r) => cyclicDtw(r.desc, mirrored.desc).cost));
   if (mirrorBest < judge.cost * 0.85) reasons.push(`facing: the mirrored painting matches ${family} better (${mirrorBest.toFixed(4)} < ${judge.cost.toFixed(4)})`);
@@ -372,7 +380,7 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
   const authoring = { id, family, ...(habitat ? { habitat } : {}), landmarksPx, groundLineY: Math.min(0.999, Math.max(0.05, best.groundLineY)), materials, remainderPart: best.ref.authoring.remainderPart, parts,
     coverage: { declarations: `G1 automatic authoring (automatic transfer, not observed): landmarks transferred from ${top.length === 1 ? 'the single best registered reference' : `the median of ${top.length} registered references`}; parts from ${best.ref.subjectId}. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.`, sourceFacing: 'right', visualAcceptance: 'none — automatic' } };
   return { verdict: reasons.length ? 'REFUSE' : 'ADMIT', reasons, authoring, presence: { schema: 'cf.anatomy-presence/v2', absent: [], hidden: [], folded: [] },
-    evidence: { schema: AUTO_AUTHOR_SCHEMA, remainderMarker: !!remainderMarker, grown, chains: chainLog, nudged, clamped, untangled, separation: separationEvidence, inventory, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, refRank, costs: trAll.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
+    evidence: { schema: AUTO_AUTHOR_SCHEMA, legMatch: legPick, remainderMarker: !!remainderMarker, grown, chains: chainLog, nudged, clamped, untangled, separation: separationEvidence, inventory, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, refRank, costs: trAll.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
 }
 
 /** Skeleton mode: parts grown from the TARGET's own paint by nearest bone of the placed skeleton, traced to polygons; the verdict is

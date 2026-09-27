@@ -1,0 +1,106 @@
+{
+  "schema": "cf.g1-merge-joint-labels/v1",
+  "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/merge-joint/beetle-intake",
+  "sourceLabelsSha256": "48809d010114ebccfa0de425313096fa761fecb9b422531b1a18713343ba07a8",
+  "newLabelsSha256": "7d4cf4c87e82923811e45895d2a811efa6376491e70551dd960887f5ebac7dc3",
+  "sourceMasterSha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb",
+  "merged": [
+    {
+      "joint": "thorax",
+      "keep": "thorax",
+      "from": [
+        "elytron-near",
+        "elytron-far",
+        "thorax"
+      ]
+    }
+  ],
+  "movedPixels": 97744,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "shipped beetle regionOwnerMap: same-joint regions → the joint-named owner",
+  "intake": {
+    "id": "beetle-control",
+    "parts": 21,
+    "atlasSize": {
+      "width": 2045,
+      "height": 1486
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFrontFarFoot",
+        "part": "front-far-lower",
+        "vertex": 86,
+        "distancePx": 4.924428900898064,
+        "supports": [
+          1026
+        ]
+      },
+      {
+        "joint": "legFrontNearFoot",
+        "part": "front-near-lower",
+        "vertex": 163,
+        "distancePx": 3.605551275463898,
+        "supports": [
+          581
+        ]
+      },
+      {
+        "joint": "legMidFarFoot",
+        "part": "mid-far-lower",
+        "vertex": 85,
+        "distancePx": 2.4999999999999596,
+        "supports": [
+          921
+        ]
+      },
+      {
+        "joint": "legMidNearFoot",
+        "part": "mid-near-lower",
+        "vertex": 117,
+        "distancePx": 5.8309518948453105,
+        "supports": [
+          365
+        ]
+      },
+      {
+        "joint": "legHindFarFoot",
+        "part": "hind-far-lower",
+        "vertex": 47,
+        "distancePx": 8.062257748298553,
+        "supports": [
+          804
+        ]
+      },
+      {
+        "joint": "legHindNearFoot",
+        "part": "hind-near-lower",
+        "vertex": 46,
+        "distancePx": 4.4721359549996125,
+        "supports": [
+          44
+        ]
+      }
+    ],
+    "sourceBindingHash": "375ba96cb027faa1f8f780e1d0fe6f3bedcc980f61d4a12359bcf0634860fdb4",
+    "sourceVertices": 3333,
+    "vertices": 4087,
+    "sharedSupports": 305,
+    "pins": 3241,
+    "independentSurfaceParts": 21,
+    "sourceJoins": 14,
+    "excludedOverlaps": 31,
+    "observedExcludedBoundaries": 31,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 31,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

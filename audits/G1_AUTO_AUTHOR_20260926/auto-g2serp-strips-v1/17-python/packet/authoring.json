@@ -1,0 +1,380 @@
+{
+  "id": "17-python",
+  "family": "serpent",
+  "landmarksPx": {
+    "root": [
+      1041.6,
+      571.2
+    ],
+    "head": [
+      1097.5,
+      553.8
+    ],
+    "jaw": [
+      1110,
+      584.4
+    ],
+    "seg0": [
+      995,
+      603.2
+    ],
+    "seg1": [
+      934.4,
+      646
+    ],
+    "seg2": [
+      841.2,
+      629
+    ],
+    "seg3": [
+      732.5,
+      599.9
+    ],
+    "seg4": [
+      631.5,
+      584.9
+    ],
+    "seg5": [
+      529,
+      655.8
+    ],
+    "seg6": [
+      424.9,
+      625.2
+    ],
+    "seg7": [
+      308.4,
+      581.4
+    ],
+    "seg8": [
+      190.4,
+      639.8
+    ],
+    "seg9": [
+      120.5,
+      665.4
+    ]
+  },
+  "groundLineY": 0.576,
+  "materials": {
+    "surface": "scales"
+  },
+  "habitat": {
+    "realm": "amphibious",
+    "source": "G1 automatic: Earth fauna profile constricting-snake media ground+water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "remainderPart": "segment-0",
+  "parts": [
+    {
+      "id": "root-patch",
+      "joint": "root",
+      "polygonPx": [
+        [
+          1035.4,
+          560
+        ],
+        [
+          1047.8,
+          561.3
+        ],
+        [
+          1047.8,
+          582.4
+        ],
+        [
+          1035.4,
+          581.9
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "polygonPx": [
+        [
+          1054,
+          570
+        ],
+        [
+          1117.7,
+          573.1
+        ],
+        [
+          1260.6,
+          347.9
+        ],
+        [
+          1260.6,
+          850.1
+        ],
+        [
+          1054,
+          676.1
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "polygonPx": [
+        [
+          1035.4,
+          329.9
+        ],
+        [
+          1307.2,
+          0
+        ],
+        [
+          1307.2,
+          778.3
+        ],
+        [
+          1047.8,
+          635.3
+        ],
+        [
+          1021.4,
+          592.6
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-0",
+      "joint": "seg0",
+      "polygonPx": [
+        [
+          974.8,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          974.8,
+          1254
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-1",
+      "joint": "seg1",
+      "polygonPx": [
+        [
+          887.8,
+          0
+        ],
+        [
+          974.8,
+          0
+        ],
+        [
+          974.8,
+          1254
+        ],
+        [
+          887.8,
+          1254
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-2",
+      "joint": "seg2",
+      "polygonPx": [
+        [
+          786.9,
+          0
+        ],
+        [
+          887.8,
+          0
+        ],
+        [
+          887.8,
+          1254
+        ],
+        [
+          786.9,
+          1254
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-3",
+      "joint": "seg3",
+      "polygonPx": [
+        [
+          685.9,
+          0
+        ],
+        [
+          786.9,
+          0
+        ],
+        [
+          786.9,
+          1254
+        ],
+        [
+          685.9,
+          1254
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-4",
+      "joint": "seg4",
+      "polygonPx": [
+        [
+          578.7,
+          0
+        ],
+        [
+          685.9,
+          0
+        ],
+        [
+          685.9,
+          1254
+        ],
+        [
+          578.7,
+          1254
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-5",
+      "joint": "seg5",
+      "polygonPx": [
+        [
+          471.5,
+          0
+        ],
+        [
+          578.7,
+          0
+        ],
+        [
+          578.7,
+          1254
+        ],
+        [
+          471.5,
+          1254
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-6",
+      "joint": "seg6",
+      "polygonPx": [
+        [
+          367.5,
+          0
+        ],
+        [
+          471.5,
+          0
+        ],
+        [
+          471.5,
+          1254
+        ],
+        [
+          367.5,
+          1254
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-7",
+      "joint": "seg7",
+      "polygonPx": [
+        [
+          251,
+          0
+        ],
+        [
+          367.5,
+          0
+        ],
+        [
+          367.5,
+          1254
+        ],
+        [
+          251,
+          1254
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-8",
+      "joint": "seg8",
+      "polygonPx": [
+        [
+          150,
+          0
+        ],
+        [
+          251,
+          0
+        ],
+        [
+          251,
+          1254
+        ],
+        [
+          150,
+          1254
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-9",
+      "joint": "seg9",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          150,
+          0
+        ],
+        [
+          150,
+          1254
+        ],
+        [
+          0,
+          1254
+        ]
+      ],
+      "layer": "near"
+    }
+  ],
+  "coverage": {
+    "declarations": "Automatic serpent strip transfer from racer: vertical segment cuts, head/jaw polygons and centreline landmarks placed by fraction of the measured body length and by local-thickness offset from the measured centreline. No hidden, absent or folded contract groups (a continuous x-monotone limbless body is measured).",
+    "visualAcceptance": "pending (automatic; no visual review)"
+  }
+}

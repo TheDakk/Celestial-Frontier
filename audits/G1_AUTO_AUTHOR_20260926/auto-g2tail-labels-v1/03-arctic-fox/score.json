@@ -1,0 +1,11 @@
+{
+ "id": "03-arctic-fox",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "semanticPresence": "UNRESOLVED",
+ "tailLabels": 7554,
+ "static": "PASS_STATIC",
+ "staticFails": [],
+ "staticRefusals": []
+}

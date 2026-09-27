@@ -17,58 +17,44 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## CLAUDE SESSION HANDOFF — 2026-09-26 (session 4, end) · GENERATED ART IS THE GOAL
-Self-contained for a fresh Claude session. Codex's block follows below. Older Claude handoffs are verbatim in `ROADMAP_ARCHIVE.md` (session 3's is at its top).
+## CLAUDE SESSION HANDOFF — 2026-09-27 (session 5, overnight) · GENERATED ART IS THE GOAL
+Self-contained for a fresh Claude session. Codex's block follows below. Older Claude handoffs are verbatim in `ROADMAP_ARCHIVE.md` (session 4's is at its top).
 
-**Dakk's goal (2026-09-26, verbatim):** "Can we get to the generated art? That's the main goal, so that we have the complete Earth creatures having full movement animations and all the procedurally generated animations in their various different battleground biomes." Dakk does ONE full visual pass at the end, so don't stop for per-creature approvals; keep the pipeline flowing and keep the review sheets current.
+**Dakk's goal (2026-09-26, verbatim):** "Can we get to the generated art? That's the main goal, so that we have the complete Earth creatures having full movement animations and all the procedurally generated animations in their various different battleground biomes." Dakk does ONE full visual pass at the end, so don't stop for per-creature approvals. **Dakk (2026-09-27): run through the night without stopping; nothing waits on him except real gates.**
 
 **Where things stand**
-- **Branch:** `anthropic/mac` is pushed through the commit adding this block; every commit is signed G (`git-ssh-sign-cf`); `origin` is HTTPS via `gh`. Codex is merged through `7441ee1e` (merge `d8f71eca`: 32 C56 + 7 C57 pattern paintings, Cougar/Wolf/Gull phone originals, `pattern-observation.mjs`, elbow-flap diagnosis).
-- **Gate:** from `port/v2`, `node tools/check-profile.mjs --profile=develop`; the ONLY red is I5. Run it on a QUIET tree. Also run by hand: `npm run typecheck`, `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`. Claude changed audits/docs only. Codex's merged `port/v2` change adds finished phone originals behind `?finish=1`; see "Dev site" below.
-- **Dev site:** https://dev-celestialfrontier.github.io, republished by Claude from the signed commit carrying this block (it adds Codex's Cougar/Wolf/Gull finished originals behind `?finish=1`). Republish with `node tools/deploy-dev.mjs` (from `port/v2`, out of the sandbox, clean signed head).
-- **develop** is still `c1791e21`; PR #43 is open; no hosted attempt (I5 red).
-- **Decisions** (`audits/MAILBOX/DECISIONS.md`): D24 and D26 are DECIDED. D25 is open (reference shopping stays off). **D27 is open** (patterned cats): its recommended default is implemented; the Snow Leopard and Clouded Leopard re-paints pass, while the Tiger/Ocelot/Leopard re-paints and both Jaguars do not.
+- **Branch:** `anthropic/mac` is pushed through the commit adding this block; every commit is signed G (`git-ssh-sign-cf`). Codex is merged through `b3a34e15` (the I5 instrumentation checkpoint; Codex is running the guarded 3+1 epoch that re-seals the budget).
+- **Gate:** from `port/v2`, `node tools/check-profile.mjs --profile=develop` gives 5,647 pass; the only red is I5 (Compendium producer authority: built index/worker/painter hashes versus the sealed budget; Codex's re-seal is pending). Run it on a QUIET tree, plus by hand: `npm run typecheck`, `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
+- **Dev site:** serves `e71d1496`; no player-visible change since.
+- **develop** is still `c1791e21`; PR #43 is open; no hosted attempt.
+- **Decisions:** D24/D26 DECIDED; D25 open (shopping stays off); D27 open (its pattern-first default is implemented).
+- **Progress:** about **36 generated creatures pass native** with zero hand edits: quadrupeds, 9 snakes, 2 birds (Raven, Vulture), plus fish that have tail/seam work pending. None is visually accepted or admitted. The roster is 631 Earth species.
 
-**This session (session 4)**
-- **C54 batch scored** (`audits/G1_AUTO_AUTHOR_20260926/README.md`, "G2 C54 batch"): 9/24 ADMIT + PASS_STATIC. Quadrupeds 7/12 (Dingo, Jackal, Lion, Tiger, Leopard, Ocelot, Weasel); birds 2/4 (Goose and Quail, the first birds through static); serpents 0/4; insects 0/4.
-- **Native** (`native-g2c54/`): 7/7 quadrupeds DIAGNOSTIC_PASS 0/0. Goose and Quail FAIL native (peck refusals; ARAP folds and the faint foot limit).
-- **Looked at full size:** the tails are all full.
-  - Fit fault: on Tiger, Leopard and Ocelot, a chest-fur flap hangs below the near elbow in stride (`chest-zoom.jpg`), and the Leopard has a shoulder seam.
-  - Painting fault: the five patterned cats have no pattern (D27).
-  - The review sheet and the full-size sheets were sent to Dakk.
-- **Fish tail** (`audits/TAIL_STALK_BRIDGE_20260926/README.md`):
-  - A component-preserving bridge on top of Codex's C55 observed fill. The Cod is byte-identical to Codex's cover-04; the negative controls hold both ways.
-  - Perch and Carp now pass ownership, static and native, and with their selective welds the gill hole is gone.
-  - NOT adopted: neither is a genuinely gapped tail, and Trout, Herring and Arctic Fox still refuse (the outer contour encloses later-listed owners).
-
-- **C56 + C57 scored** (the pattern gate was honoured: 6 skipped): 8/33 static, **7/8 native**. Snow Leopard, Clouded Leopard, Coyote, Mink, Marten, Fisher, and **the Raven, the first bird through the whole chain**. Bobcat: an instrument-class capture FAIL with 0 refusals.
-  - Full-size faults: an elbow flap on every Cougar-referenced fit (Codex's repair; it now blocks 7 creatures), and the Raven's tail splits in the hit reaction.
-  - Sheets were sent to Dakk. The running total is **23 generated creatures passing native**; none is visually accepted.
-- **Exact-label tail contract checked independently** (`audits/TAIL_LABELS_CHECK_20260926`): a byte-exact reproduction, and 3 of 4 mutation classes are safe.
-  - A wrong tail NAME silently moves paint. The guard `tail-identity.mjs` derives the pair from the rig joints (positive 4/4, negative 4/4).
-  - The contract is accepted with the guard.
+**Session 5 (overnight 2026-09-27), all in `audits/G1_AUTO_AUTHOR_20260926/README.md` unless noted**
+- **Serpent strip author:** `port/v2/tools/anatomy-verify/serpent-author.mjs`, runner `--serpent-strips` (USE IT for every serpent batch). **Snakes 0 → 9** static + native, clean at full size. Battery `serpent/battery.mjs`: 59/60 mutants, 9/9 wrong family.
+- **Guarded tail labels:** `tail-labels-fit.mjs`, runner `--tail-labels`, off by default. Held-out Herring/Trout pass; welded versions deform in the reaction (not accepted).
+- **Codex's foreleg repair checked** (`audits/C59_REPAIR_CHECK_20260927`): exact on all 7; guard proposed at 25 %.
+- **C59 scored:** Raccoon, Vulture, Water Snake pass. Bobcat is a real slowdown. The Raven split is wing/tail overlap.
+- **legMatch lever rejected** (battery positives 18 → 14; G2 quads unchanged).
 
 **Next, in order (Claude)**
-1. Read Codex's mailbox (`/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md`, read-only) for its C57 replies. Merge any newer signed `openai/mac` (`--no-ff`; after resolving, run `git grep -n "^<<<<<<<\|^>>>>>>>"` BEFORE committing; keep this block).
-2. **Score each new G2 batch the same way:**
-   - `node audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs --tag=<fresh> --topk=1 --chains --counter --fallback=2 --targets=<batch>/pilot.json`.
-   - Then run native on every ADMIT + PASS_STATIC. Pattern: `audits/G1_AUTO_AUTHOR_20260926/native-g2c54/run.sh` (sequential, out of the sandbox). Land scripts come from `05-cougar`, birds from `15-goose`, fish from `native-g2fam-fish/*-script.json`, each with the names swapped.
-   - Build the sheet with `native-g2c54/sheet.mjs` and the full-size crops with `crops.mjs`, then LOOK at tails, legs, heads and elbows. Record the results in the G1 README and send Dakk the sheet.
-3. **Tail:** integrate the checked exact-label placement into the G1 runner (after intake, before static), with `assertTailPair` binding tail and stalk from the rig. Keep it OFF by default until Codex's body seams close. Re-run Cod, Perch, Carp and Arctic Fox plus the mutation battery.
-   - The Raven's hit-reaction tail split is a new bird tail case: check whether it is the same stalk-gap class (tail vs body ownership) before handing it over.
-4. **Birds:** Goose and Quail pass static but fail native. Diagnose peck/faint on the Gull-referenced fits (Codex owns the bird motion repairs; check C44/C57 replies first).
-5. **Admission:** only after Dakk's end-of-pass approval, add creatures as LIBRARY archetypes (`tools/morph/build-card-masters.mjs` `CARD_ARCHETYPES`, then the build-shipped pipeline and pins, through their owners).
-6. Parked until the generated pipeline flows: audio Stage 4, the mission-return voice, the Kindred picker, Codex's S4/missions/Outposts numbers.
+1. Read Codex's mailbox (`/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md`, read-only) and merge any newer signed `openai/mac` (`--no-ff`; `git grep -n "^<<<<<<<\|^>>>>>>>"` BEFORE committing; keep this block).
+2. **Score every new G2 batch:**
+   - Honour `pattern-check.json` (build a `pilots/*-pattern-eligible.json`).
+   - Run `node audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs --tag=<fresh> --topk=1 --chains --counter --fallback=2 --serpent-strips --targets=<pilot>`.
+   - Run native on every pass. Pattern: `native-g2c59/run.sh`, sequential, out of the sandbox. Land scripts from `05-cougar`, birds from `15-goose`, fish from `native-g2fam-fish/*-script.json`.
+   - Build `sheet.mjs` + `crops.mjs`; LOOK at full size; record the results; send Dakk the sheet.
+3. **Insects (0 so far):** diagnose the refusals (family floor, antenna/leg coverage, wrong family, facing) the way the snakes were diagnosed, and consider an insect-specific transfer if the references' construction allows it.
+4. Admission only after Dakk's end-of-pass approval (`CARD_ARCHETYPES` → build pipeline/pins, through their owners).
 
 **Traps (obey them)**
-- **Disk-space law:** `df -h /System/Volumes/Data` at batch start and end; ≥ 40 GiB free; newest 2 preview packages only; no large stashes; remove merged agent worktrees with `--force --force`.
-- **Inline `//` comments inside one-line JS statements swallow the rest of the line.** Use `/* */`.
-- **zsh does not word-split `$var`:** `for f in "a b"; set -- $f` silently passes "a b" as one argument (it bit this session). Use `${pr%%:*}` pairs.
-- The G1 runner caches fits (it skips intake when `fit/` exists): use a fresh `--tag`.
-- **A green number is not visual acceptance.** The elbow flap passed every gate, and the native impact still is washed out by the hit flash (sheets use approach, return-end and reaction).
-- Browser-owning commands (native runner, smokes, deploy) need out-of-sandbox execution.
-- Codex's sealed inventories (release/Guide copy, pins, budgets) are never rebound by Claude; propose changes in an audit README.
-- `tools/run-unit-tests.mjs` builds the PWA pack first; for quick diagnostics run `node node_modules/vitest/vitest.mjs run <file>`.
+- **Disk-space law:** ≥ 40 GiB free; newest 2 preview packages only.
+- **Inline `//` comments swallow dense one-line JS:** use `/* */`.
+- **zsh does not word-split `$var` or `${@:-a b}`:** use arrays (`fish=(a b)`) or `${pr%%:*}` pairs. It bit twice.
+- **`Buffer.slice()` is a VIEW:** copy with `Uint8Array.from` before mutating (it corrupted a check once).
+- The G1 runner caches fits: use a fresh `--tag`.
+- A green number is not visual acceptance: look at full-size reaction stills, not only approach.
+- Browser-owning commands need out-of-sandbox execution. Codex's sealed inventories are never rebound by Claude.
 
 ## Current Codex sprint handoff — 2026-09-27, C59 repair checkpoint
 

@@ -1,0 +1,9 @@
+{
+ "id": "c59-12-ladybug",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (family floor): the largest rear appendage is 0.9% of the paint; every same-family reference shows at least 3.8%"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,9 @@
+{
+ "id": "c59-05-badger",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-near-paw (foreNearPaw) covers 2% paint (reference 48%)"
+ ],
+ "semanticPresence": null
+}

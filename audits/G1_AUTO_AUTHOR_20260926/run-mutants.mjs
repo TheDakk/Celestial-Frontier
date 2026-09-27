@@ -21,6 +21,11 @@ const subjects = [];
 for (const s of corpus) { const dir = path.join(ROOT, s.packet), { data, info } = await sharp(path.join(dir, 'master.png')).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   const rgba = new Uint8ClampedArray(data), prepared = prepareSubject(rgba, info.width, info.height), authoring = JSON.parse(fs.readFileSync(path.join(dir, 'authoring.json'), 'utf8'));
   subjects.push({ ...s, rgba, w: info.width, h: info.height, prepared, authoring, stats: referenceStats(prepared, authoring) }); }
+const extraRefsArg = args.find((x) => x.startsWith('--extra-refs=')), extras = [], nameOf = (dir) => { try { return JSON.parse(fs.readFileSync(path.join(dir, 'subject-source.json'), 'utf8')).name; } catch { return null; } };
+for (const s of subjects) s.name = nameOf(path.join(ROOT, s.packet));
+if (extraRefsArg) for (const e of JSON.parse(fs.readFileSync(path.join(ROOT, extraRefsArg.slice(13)), 'utf8'))) { const dir = path.join(ROOT, e.packet), { data, info } = await sharp(path.join(dir, 'master.png')).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const rgba = new Uint8ClampedArray(data), prepared = prepareSubject(rgba, info.width, info.height), authoring = JSON.parse(fs.readFileSync(path.join(dir, 'authoring.json'), 'utf8'));
+  extras.push({ ...e, name: nameOf(dir), rgba, w: info.width, h: info.height, prepared, authoring, stats: referenceStats(prepared, authoring) }); }
 const refOf = (s) => ({ ...s.prepared, family: s.family, subjectId: s.id, authoring: s.authoring, partPaint: s.stats.partPaint, unclaimedFrac: s.stats.unclaimedFrac });
 const inside = (x, y, poly) => { let yes = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], b = poly[j]; if ((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) yes = !yes; } return yes; };
 /** One limb = the parts of the first contact chain (or, without chains, the largest non-remainder part). */
@@ -38,7 +43,8 @@ function limbMask(s) {
 }
 const ev = (r) => ({ sep: r.evidence?.separation ?? null, chains: r.evidence?.chains ?? null, inv: r.evidence?.inventory ? { assign: r.evidence.inventory.assign, tByClass: r.evidence.inventory.target.byClass, tApp: r.evidence.inventory.target.appendages, ground: r.evidence.inventory.target.ground, det: r.evidence.inventory.target.detached.length, ref: r.evidence.inventory.reference } : null, reasonsAll: r.reasons, v: r.verdict, cost: r.evidence ? +(r.evidence.costs?.[0]?.cost ?? 0).toFixed(4) : null, dT: r.evidence?.detour?.target ?? null, dR: r.evidence?.detour?.ref ?? null, unclaimed: r.evidence?.unclaimedFrac ?? null, why: (r.reasons?.[0] ?? '').slice(0, 60) });
 const useSep = args.includes('--separation');
-const author = (s, target, family, mirrored) => autoAuthorShop({ separation: useSep, shop: shopN, topK: 1, nudgeFrac, nudgeThinFrac, nudgeSkipChains, counter: useCounter ? {} : null, chains: (() => { try { return familyContactChains(familyContract(family)); } catch { return null; } })(), target, mirrored, family, id: s.id, refs: subjects.filter((o) => o.id !== s.id).map(refOf), materials: { surface: 'x' }, habitat: null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(family) } : null });
+const legMatchArg = args.find((x) => x.startsWith('--leg-match=')), legMatch = legMatchArg ? Number(legMatchArg.slice(12)) : 0;
+const author = (s, target, family, mirrored) => autoAuthorShop({ separation: useSep, shop: shopN, legMatch, topK: 1, nudgeFrac, nudgeThinFrac, nudgeSkipChains, counter: useCounter ? {} : null, chains: (() => { try { return familyContactChains(familyContract(family)); } catch { return null; } })(), target, mirrored, family, id: s.id, refs: [...subjects.filter((o) => o.id !== s.id), ...extras.filter((e) => e.name !== s.name)].map(refOf), materials: { surface: 'x' }, habitat: null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(family) } : null });
 const rows = [];
 for (const s of subjects) {
   if (only.length && !only.includes(s.id)) continue;

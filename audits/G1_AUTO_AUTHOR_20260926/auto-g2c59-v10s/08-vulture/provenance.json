@@ -1,0 +1,131 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "08-vulture",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "973ea9f3ea1254fd5f3107c34fb76cf738940fead74af9e9ff2c48d936267e30",
+ "subjectSourceSha256": "d2c93a4fa28ec6c2ceaf9c417bffb975c979dba50b460452228c88ce7cc15562",
+ "identity": {
+  "name": "Vulture",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Vulture\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1235245760\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"9\"]]]]",
+  "seed": 1235245760,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "grouse",
+  "authoringSha256": "fc029a119afb90f432c4e7366fdbd8957651e741d46d8a95c100a1ee12ef7a64",
+  "masterSha256": "712072ae73b0cc55cbffc990bdc202a11871cc1b264ab98d9a13927bbda146c8"
+ },
+ "habitat": {
+  "profileId": "bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "080136b779f700a6c6860d1d4eb9593834bb0258212903c6b3656f9a8aca3675",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0676,
+     "class": "top",
+     "attach": {
+      "x": 347.3,
+      "y": 137.8,
+      "relX": 0.85,
+      "relY": 0.22
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0091,
+     "class": "top",
+     "attach": {
+      "x": 290.5,
+      "y": 105,
+      "relX": 0.71,
+      "relY": 0.06
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.075,
+     "class": "rear",
+     "attach": {
+      "x": 66.9,
+      "y": 255.7,
+      "relX": 0.13,
+      "relY": 0.8
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.073,
+     "class": "limb-down",
+     "attach": {
+      "x": 255.6,
+      "y": 266.6,
+      "relX": 0.62,
+      "relY": 0.86
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0484,
+     "class": "limb-down",
+     "attach": {
+      "x": 191,
+      "y": 268,
+      "relX": 0.45,
+      "relY": 0.86
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "grouse",
+   "byClass": {
+    "top": 3,
+    "other": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}
