@@ -1,0 +1,218 @@
+{
+ "schema": "cf.generated-coverage/v1",
+ "roster": 631,
+ "covered": 37,
+ "pct": 5.9,
+ "unmatchedRegistryNames": [],
+ "families": [
+  {
+   "family": "quadruped",
+   "species": 205,
+   "covered": 21,
+   "pct": 10.2,
+   "names": [
+    "Leopard",
+    "Tiger",
+    "Clouded Leopard",
+    "Ocelot",
+    "Lion",
+    "Cougar",
+    "Snow Leopard",
+    "Caracal",
+    "Jackal",
+    "Coyote",
+    "Arctic Fox",
+    "Fennec Fox",
+    "Dingo",
+    "Raccoon",
+    "Weasel",
+    "Mink",
+    "Marten",
+    "Fisher",
+    "Marmot",
+    "Cattle",
+    "Donkey"
+   ]
+  },
+  {
+   "family": "fish",
+   "species": 132,
+   "covered": 5,
+   "pct": 3.8,
+   "names": [
+    "Trout",
+    "Carp",
+    "Herring",
+    "Perch",
+    "Cod"
+   ]
+  },
+  {
+   "family": "biped-bird",
+   "species": 102,
+   "covered": 2,
+   "pct": 2,
+   "names": [
+    "Vulture",
+    "Raven"
+   ]
+  },
+  {
+   "family": "insect",
+   "species": 41,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "serpent",
+   "species": 22,
+   "covered": 9,
+   "pct": 40.9,
+   "names": [
+    "Python",
+    "Tree Snake",
+    "Rat Snake",
+    "Garter Snake",
+    "Cottonmouth",
+    "Water Snake",
+    "Mamba",
+    "Racer",
+    "Grass Snake"
+   ]
+  },
+  {
+   "family": "hopper",
+   "species": 18,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "primate",
+   "species": 17,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "crustacean-small",
+   "species": 14,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "radial",
+   "species": 12,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "gastropod",
+   "species": 12,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "annelid",
+   "species": 9,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "arachnid",
+   "species": 9,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "cephalopod",
+   "species": 8,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "bivalve",
+   "species": 6,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "brachyuran",
+   "species": 6,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "flyer-membrane",
+   "species": 4,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "crustacean-clawed",
+   "species": 3,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "myriapod",
+   "species": 3,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "sessile-filter",
+   "species": 2,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "colonial-filter",
+   "species": 2,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "barnacle",
+   "species": 1,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "xiphosuran",
+   "species": 1,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "larva",
+   "species": 1,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  },
+  {
+   "family": "lobopod",
+   "species": 1,
+   "covered": 0,
+   "pct": 0,
+   "names": []
+  }
+ ]
+}
