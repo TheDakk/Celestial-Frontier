@@ -1,0 +1,3 @@
+# Exact-source verification
+
+C89 final verification: signed 7aaa156e5 unchanged-source develop profile: 5,675 pass, I5 sole failure, 2 expected failures and 2 skipped. All seven remaining owners, root validation and 12 presence controls pass. Source/HEAD and every log hash verified. 200 GiB free; PUBLIC/UNFROZEN/five workflows rechecked. Hyrax candidate remains static RED, no native/admission; actual old/new game weapon intent is bite/claw, while the exhaustive diagnostic retains its tail clip. No limits or action rows changed. Own-branch delivery then latest signed merge and G2_C90 generation follow.
