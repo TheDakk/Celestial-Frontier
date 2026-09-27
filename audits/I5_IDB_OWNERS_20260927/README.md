@@ -13,3 +13,5 @@ Unit controls cover independent concurrent operations and release-state idempote
 Native counter lifetime is consistent with Chromium's [JSBasedEventListener constructor/destructor](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/bindings/core/v8/js_based_event_listener.cc). Request parent propagation is implemented by [IDBRequest dispatch](https://chromium.googlesource.com/chromium/src/+/4405e7bfdf8a298e51490d4b2781458ca907b26b/third_party/blink/renderer/modules/indexeddb/idb_request.cc). Native storage outcomes above, rather than mock propagation alone, are the acceptance evidence.
 
 See SESSION_HANDOFF.md for the paused art/gameplay queue and full continuation instructions. No thresholds, measurement inventory, deadlines, history or v1 evidence changed.
+
+Exact signed d20c271 battery:5703PASS/I5solefailure+seven ownersPASS; unchanged before/after source and log hashes verified. Fresh3+1 on this signed repaired product follows.
