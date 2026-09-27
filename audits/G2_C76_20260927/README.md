@@ -9,3 +9,5 @@ Framing: 18/24 meet the unchanged requested 8% clear margin. Pike, Bass, Char, S
 `observe.mjs` creates diagnostic anatomy observations and a derived review sheet only. `review.mjs` verifies exact prompt/master receipt hashes and binds the visible pattern observations to each original. Geometry never substitutes for semantic counts. Root validation passes; quiet committed-head battery follows before own-branch delivery.
 
 Next: publish the painted-support faint repair only after full static/native/regression controls; then Sculpin and the other C72 fish seams, Raven/Quail ownership/folds, remaining insect/Bobcat/quad faults, and further broad G2 batches. I5's one authorized epoch is consumed and stopped; no retry or re-seal is authorized. No app switch or Dakk relay needed.
+
+Final verification: signed aeb3f10f3 quiet develop profile: 5,664 pass, I5 authority sole failure, 2 expected failures, 2 skipped. All seven remaining owners and root validate pass. 208 GiB free. PUBLIC/UNFROZEN and five exact reviewed workflows rechecked; normal own-branch push triggers no hosted run.
