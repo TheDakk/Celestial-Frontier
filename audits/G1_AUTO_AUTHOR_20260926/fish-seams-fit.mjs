@@ -1,0 +1,36 @@
+import fs from'node:fs';import path from'node:path';import{createRequire}from'node:module';import{createHash}from'node:crypto';
+import{placeAxialRemainder}from'../BODY_SEAMS_C68_20260927/axial-remainder.mjs';
+import{placeFirstAxisRemainder}from'../FISH_FOLD_C80_20260927/first-axis-remainder.mjs';
+import{assertTailPair}from'../TAIL_LABELS_CHECK_20260926/tail-identity.mjs';
+import{hashJSON}from'../../port/v2/tools/creature-animation/quadruped-template.mjs';
+import{buildAuthoredParts}from'../../port/v2/tools/creature-animation/build-authored-parts.mjs';
+import{buildPaintSkin}from'../../port/v2/tools/creature-animation/build-paint-skin.mjs';
+import{splitFishSurfaces as splitObservedSurfaces}from'../FISH_PIPELINE_C88_20260927/fish-split.mjs';
+import{createSourceJoinProbe}from'../../port/v2/tools/quadruped-proof/source-join-continuity.mjs';
+import{familyContactChains,familyContractForRecord}from'../../port/v2/tools/creature-animation/family-contracts.mjs';
+import{fillRemainderGap}from'../TAIL_LABELS_C56_20260926/gap-labels.mjs';
+import{deriveTailPair}from'../TAIL_LABELS_CHECK_20260926/tail-identity.mjs';
+import{cutAuthoredParts}from'../../port/v2/tools/creature-animation/part-masks.mjs';
+import{intakeAuthoredPixels}from'../../port/v2/tools/creature-animation/authored-intake.mjs';
+const [id,srcArg,outArg]=process.argv.slice(2);if(!id||!srcArg||!outArg)throw Error('usage: fish-seams-fit.mjs <id> <source-fit> <fresh-output>');
+const mode='tail-axial',root=process.cwd(),src=path.resolve(srcArg),out=path.resolve(outArg),req=createRequire(root+'/port/v2/package.json'),sharp=createRequire(req.resolve('free-tex-packer-core'))('sharp'),sha=b=>createHash('sha256').update(b).digest('hex');
+if(fs.existsSync(out))throw Error('Fresh output required');if(!['baseline','tail','axial','tail-axial'].includes(mode))throw Error('Explicit repair mode');
+const read=n=>JSON.parse(fs.readFileSync(path.join(src,n))),record=read('record.json'),originalDeclaration=read('declaration.json');if(originalDeclaration.schema!=='cf.authored-part-masks/v1')throw Error('Original polygon packet required');
+const masterFile=path.join(root,record.source),master=fs.readFileSync(masterFile);if(sha(master)!==record.geometry.cutoutAssetHash)throw Error('Original master hash');
+const {data,info}=await sharp(master).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+const keyed=intakeAuthoredPixels(new Uint8ClampedArray(data),info.width,info.height),rgba=keyed.rgba,rgbaBefore=sha(rgba);
+const prior=await cutAuthoredParts(record,master,rgba,originalDeclaration),labels=prior.labels,labelBytes=Buffer.from(labels),parts=originalDeclaration.parts.map(({id,joint,layer})=>({id,joint,layer})),remainder=originalDeclaration.remainderPart;
+// Independent original-part readback proves this raster is exactly the source's existing priority ownership.
+let different=0;for(const part of prior.parts){const raw=await sharp(path.join(src,'parts/parts',part.id+'.png')).ensureAlpha().raw().toBuffer();if(raw.length!==part.rgba.length)throw Error('Original part dimensions');for(let i=0;i<raw.length;i++)if(raw[i]!==part.rgba[i])different++;}if(different)throw Error('Original part pixels differ: '+different);
+const declaration={schema:'cf.keyed-part-intake/v1',recordRecipeHash:record.recipeHash,cutoutSha256:record.geometry.cutoutAssetHash,keyedRgbaSha256:rgbaBefore,labelsFile:'labels.png',parts};
+const owner=id=>{const i=parts.findIndex(p=>p.id===id);if(i<0)throw Error('Unknown owner '+id);return i+1;},pair=deriveTailPair(parts,labels,info.width),tailIdentity=assertTailPair(parts,labels,info.width,pair.tail,pair.stalk);
+let nextLabels=Uint8Array.from(labels),phases=[];
+if(mode.includes('tail')){const r=fillRemainderGap({rgba,labels:nextLabels,width:info.width,height:info.height,remainder:owner(remainder),tail:owner(pair.tail),stalk:owner(pair.stalk)});nextLabels=r.labels;phases.push({phase:'tail',...r.receipt});}
+if(mode.includes('axial')){const place=parts[owner(remainder)-1].joint==='spine0'?placeFirstAxisRemainder:placeAxialRemainder;const r=place({rgba,labels:nextLabels,width:info.width,height:info.height,record,parts,remainder:owner(remainder)});nextLabels=r.labels;phases.push({phase:'axial',...r.receipt});}
+let moved=0;for(let i=0;i<labels.length;i++)if(labels[i]!==nextLabels[i]){if(labels[i]!==owner(remainder)||!rgba[i*4+3])throw Error('Protected source ownership changed');moved++;}if(sha(rgba)!==rgbaBefore)throw Error('Original keyed RGBA changed');
+const changed={labels:nextLabels,receipt:{mode,moved,phases,originalPartsDifferentChannels:different,keyedRgbaSha256:rgbaBefore,nonRemainderChanges:0,originalRgbaChanged:false}};
+const pixels=Buffer.alloc(rgba.length);for(let i=0;i<labels.length;i++)pixels.set([changed.labels[i],changed.labels[i],changed.labels[i],255],i*4);const png=await sharp(pixels,{raw:{width:info.width,height:info.height,channels:4}}).png().toBuffer();
+fs.mkdirSync(path.join(out,'fit'),{recursive:true});const fit=path.join(out,'fit'),write=(n,v)=>fs.writeFileSync(path.join(fit,n),JSON.stringify(v,null,2)+'\n',{flag:'wx'});fs.copyFileSync(path.join(src,'record.json'),path.join(fit,'record.json'));fs.writeFileSync(path.join(fit,'labels.png'),png);const{declarationHash,...body}=declaration,next={...body,labelsSha256:sha(png)};write('declaration.json',{...next,declarationHash:await hashJSON(next)});
+const intake=await buildAuthoredParts({id,recordFile:path.join(fit,'record.json'),masterFile,declarationFile:path.join(fit,'declaration.json'),output:path.join(fit,'parts')});const built=await buildPaintSkin(path.join(fit,'parts'),{seamBridges:{groups:[]}},record,{boundaryStep:24,interiorStep:56,includeTopology:true});const{bindingHash,...bb}=built.binding;bb.sourceJoinTopology={remainderPartId:remainder};const binding={...bb,bindingHash:await hashJSON(bb)};write('pre-split-binding.json',binding);
+const a=await sharp(path.join(fit,'parts/atlas',id+'.png')).ensureAlpha().raw().toBuffer({resolveWithObject:true}),probe=createSourceJoinProbe({record,binding,atlas:{rgba:a.data,width:a.info.width,height:a.info.height}}),opts={fixedJoints:['root'],shapeJoints:binding.parts.filter(p=>p.joint!=='root').map(p=>p.joint),contactEndpoints:familyContactChains(familyContractForRecord(record)).map(c=>c.end)},split=await splitObservedSurfaces(binding,record,probe,opts);write('binding.json',split.binding);
+fs.writeFileSync(path.join(out,'receipt.json'),JSON.stringify({sourceFit:src,sourceRecordSha256:sha(fs.readFileSync(path.join(src,'record.json'))),sourceLabelsSha256:sha(labelBytes),newLabelsSha256:sha(png),newDecodedLabelsSha256:sha(changed.labels),sourceMasterSha256:sha(master),helperSha256:sha(fs.readFileSync(new URL('../BODY_SEAMS_C68_20260927/axial-remainder.mjs',import.meta.url))),firstAxisHelperSha256:sha(fs.readFileSync(new URL('../FISH_FOLD_C80_20260927/first-axis-remainder.mjs',import.meta.url))),tailIdentity,tailIdentityHelperSha256:sha(fs.readFileSync(new URL('../TAIL_LABELS_CHECK_20260926/tail-identity.mjs',import.meta.url))),placementOnly:true,verdictChanged:false,recipeUnchanged:true,gap:changed.receipt,intake,split:split.receipt,joins:probe.joins.map(j=>({name:j.name,sourceEdges:j.sourceEdges.length})),excluded:probe.excluded.map(j=>({name:j.name,sourceEdges:j.sourceEdges}))},null,2)+'\n');console.log(id,JSON.stringify(changed.receipt));
