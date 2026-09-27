@@ -3,9 +3,10 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import zlib from 'node:zlib';
 import vm from 'node:vm';
+import { webcrypto } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { materialize } from './compendiummem-v2-materialize.mjs';
-import { paintedFindings, paintedSettlementFindings, compendiumResources, keyboardEntryPlan } from './compendiummem-v2-painted.mjs';
+import { paintedFindings, paintedSettlementFindings, compendiumResources, keyboardEntryPlan, compactSettlementOwnership, ownerKeyDigest } from './compendiummem-v2-painted.mjs';
 const dir = fs.mkdtempSync('/private/tmp/cf-i5-painted-controls-');
 process.env.CF_COMPENDIUM_V2_SOURCE = new URL('../../..', import.meta.url).pathname;
 materialize(dir);
@@ -17,9 +18,9 @@ const painted = () => ({schema:'cf-v2-painted-card-ownership/v1',leases:1,cacheE
  byKind:{thumb:kind(1,132),portrait:kind(0,440)},residentArchetypes:{count:1,bytes:1032,masterLabelBytes:1024,maskBytes:8,masks:1,names:['Crab']},totals:{renders:1,capEvictions:0,releasedUnowned:0}});
 const observation=()=>({paintedArt:painted(),ownerKeys:{brokerLeased:['broker'],brokerCached:['broker']},broker:{leasedKeyCount:1,cachedKeyCount:1},images:[{logicalId:'a',visualKey:'broker',visualKeyLength:6,leasedIndex:0,cachedIndex:0},{logicalId:'b',visualKey:'painted',visualKeyLength:7,leasedIndex:null,cachedIndex:null}]});
 test('mixed broker/painted rows admit only against their actual independent inventories',()=>{
- assert.deepEqual(paintedSettlementFindings(observation()),[]);
+ assert.deepEqual(paintedSettlementFindings(compactSettlementOwnership(observation())),[]);
  for(const mutate of [o=>{o.paintedArt=null},o=>{o.paintedArt.keys.leasedThumbs=[]},o=>{o.paintedArt.keys.cachedThumbs=['different']},o=>{o.images[1].visualKey='forged!'},o=>{o.images[1].leasedIndex=0},o=>{o.paintedArt.keys.leasedThumbs.push('broker')},o=>{o.ownerKeys.brokerLeased=['different']},o=>{o.paintedArt.keys.pendingThumbs=['pending']}]) {
-  const o=observation();mutate(o);assert.ok(paintedSettlementFindings(o).length);
+  const o=observation();mutate(o);assert.ok(paintedSettlementFindings(compactSettlementOwnership(o)).length);
  }
 });
 test('resource sums preserve broker evidence and include data URLs, masks and archetypes',()=>{
@@ -31,12 +32,12 @@ test('resource sums preserve broker evidence and include data URLs, masks and ar
  for(const mutate of [p=>p.residentArchetypes.bytes--,p=>p.dataUrlBytes--,p=>p.byKind.thumb.dataUrlBytes=3,p=>p.decodedPixels--,p=>p.keys.cachedThumbs.push('painted')]) {const m=structuredClone(p);mutate(m);assert.ok(paintedFindings(m).length);}
  assert.ok(paintedFindings(undefined).length);
 });
-test('actual browser expression retains a painted row without laundering its broker indices',()=>{
+test('actual browser expression retains a painted row without laundering its broker indices',async()=>{
  const page={targetId:'target',sessionId:'session',documentToken:'document'};
  const img={dataset:{visualKey:'painted',thumbState:'ready'},closest:()=>({dataset:{cid:'row'}}),getAttribute:()=> 'data:image/png;base64,AAAA',complete:true,naturalWidth:132,naturalHeight:132};
  const d={paintedArt:painted(),documentToken:'document',panel:{mode:'list',filteredCount:1},surfaces:{list:{imageCount:1,logicalIds:['row'],thumbStates:['ready']}},art:{keys:{leased:[],cached:[]},live:{}}};
  const expression=collector.candidateThumbSettlementExpression('list',1,page,'receipt');
- const o=vm.runInNewContext(expression,{window:{__CF_SLICE__:{api:{compendiumDiagnostics:()=>d}}},document:{querySelectorAll:()=>[img],visibilityState:'visible',hidden:false,hasFocus:()=>true}});
+ const o=await vm.runInNewContext(expression,{crypto:webcrypto,TextEncoder,structuredClone,window:{__CF_SLICE__:{api:{compendiumDiagnostics:()=>d}}},document:{querySelectorAll:()=>[img],visibilityState:'visible',hidden:false,hasFocus:()=>true}});
  assert.equal(o.images[0].leasedIndex,null);assert.equal(o.images[0].cachedIndex,null);assert.equal(o.images[0].visualKey,'painted');assert.equal(o.paintedArt.leases,1);assert.deepEqual([...o.ownerKeys.brokerLeased],[]);
  assert.deepEqual(paintedSettlementFindings(o),[]);
 });
@@ -44,7 +45,7 @@ test('the retained calibration miss is refused; only matched painted ownership r
  const report=JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL('../../../audits/I5_V2_EPOCH_20260925/epoch/calibration-1-report.json.gz',import.meta.url))));
  let found; const scan=v=>{if(!v||typeof v!=='object')return;if(v.images?.some?.(i=>i.logicalId==='cmem-0748')&&v.broker)found=v;for(const x of Object.values(v))scan(x)};scan(report);assert.ok(found);
  const o=structuredClone(found);o.paintedArt=null;o.ownerKeys={brokerLeased:[],brokerCached:[]};
- assert.ok(paintedSettlementFindings(o).length);
+ assert.ok(paintedSettlementFindings(compactSettlementOwnership(o)).length);
  // The old evidence lacks full keys. It is kept red, never relabelled as repaired evidence.
  assert.equal(o.images.find(i=>i.logicalId==='cmem-0748').leasedIndex,null);
 });
@@ -56,13 +57,13 @@ test('full classifier accepts a mixed-owner ready carrier and rejects wrong-owne
  carrier.ownerKeys={brokerLeased:Array.from({length:b.leasedKeyCount},(_,i)=>'lease-'+i),brokerCached:Array.from({length:b.cachedKeyCount},(_,i)=>'cache-'+i)};
  carrier.images.forEach((im,i)=>{im.visualKey='image-'+i;im.visualKeyLength=im.visualKey.length;carrier.ownerKeys.brokerLeased[im.leasedIndex]=im.visualKey;carrier.ownerKeys.brokerCached[im.cachedIndex]=im.visualKey});
  const expected=Object.fromEntries(['surface','expectedCount','receiptToken'].map(k=>[k,carrier[k]]));for(const k of ['targetId','sessionId','documentToken'])expected[k]=carrier.page[k];
- assert.equal(contract.classifyCompendiumThumbSettlement(carrier,expected).status,'ready');
+ assert.equal(contract.classifyCompendiumThumbSettlement(compactSettlementOwnership(carrier),expected).status,'ready');
  const im=carrier.images[0],key=im.visualKey;
  carrier.ownerKeys.brokerLeased[im.leasedIndex]='other-lease';carrier.ownerKeys.brokerCached[im.cachedIndex]='other-cache';im.leasedIndex=null;im.cachedIndex=null;
  carrier.paintedArt=painted();carrier.paintedArt.keys.leasedThumbs=[key];carrier.paintedArt.keys.cachedThumbs=[key];
- assert.equal(contract.classifyCompendiumThumbSettlement(carrier,expected).status,'ready');
+ assert.equal(contract.classifyCompendiumThumbSettlement(compactSettlementOwnership(carrier),expected).status,'ready');
  carrier.paintedArt.keys.cachedThumbs=['forged'];
- assert.notEqual(contract.classifyCompendiumThumbSettlement(carrier,expected).status,'ready');
+ assert.notEqual(contract.classifyCompendiumThumbSettlement(compactSettlementOwnership(carrier),expected).status,'ready');
 });
 test('native entry follows observed controls without a four-Tab assumption or focus injection',()=>{
  const tokens=['id:close',...Array.from({length:10},(_,i)=>'chip:'+i),'row:first','row:second'];
@@ -88,4 +89,25 @@ test('mixed-owner error control follows the first actual broker row and rejects 
  for(const mutate of [m=>{m.publication.accepted.rows[2].thumbState='ready';},m=>{m.publication.accepted.paintedArt.keys.cachedThumbs=['forged','other'];},m=>{m.recovery.accepted.rows[2].cached=false;},m=>{m.publication.accepted.art.totals.jobErrors=0;}]) {
   const mutant=structuredClone(w);mutate(mutant);assert.equal(contract.producerErrorRecoverable(mutant,'phone'),false);
  }
+});
+
+test('retained overflow stays pending inside the unchanged carrier bound; identity forgeries refuse',()=>{
+ const report=JSON.parse(fs.readFileSync(new URL('../../../audits/I5_BACK_REPAIR_20260927/epoch/calibration-1-report.json',import.meta.url)));
+ const original=report.profiles.phone.activeThumbnailSettlement, before=JSON.stringify(original);
+ assert.ok(Buffer.byteLength(JSON.stringify(original.lastObservation))>131072);
+ const active=structuredClone(original);active.lastObservation=compactSettlementOwnership(original.lastObservation);
+ const o=active.lastObservation, expected=active.expected;
+ active.lastDecision=contract.classifyCompendiumThumbSettlement(o,expected);
+ o.ready=active.lastDecision.status==='ready';o.reasons=[...active.lastDecision.reasons];
+ const options={profile:'phone',pageAuthority:report.profiles.phone.pageAuthorities.main,browserProduct:report.browser.product,planIndex:contract.THUMB_SETTLEMENT_RECEIPT_PLAN.findIndex(p=>p.label===active.label)};
+ assert.equal(contract.validCompendiumActiveThumbSettlement(original,options),false);
+ assert.equal(active.lastDecision.status,'pending'); // still has a real unfinished job
+ assert.equal(contract.validCompendiumActiveThumbSettlement(active,options),true);
+ assert.ok(Buffer.byteLength(JSON.stringify(o))<32768);
+ assert.equal(JSON.stringify(original),before);
+ for(const mutate of [v=>{delete v.ownerKeys.encoding},v=>{v.ownerKeys.brokerCached[0]='invalid'},v=>{v.images[0].visualKey+='forged'},v=>{v.ownerKeys.brokerLeased.push(ownerKeyDigest(v.images[0].visualKey));v.broker.leasedKeyCount++},v=>{v.paintedArt.keys.cachedThumbs=[]}]){
+  const m=structuredClone(o);mutate(m);assert.ok(paintedSettlementFindings(m).length);
+ }
+ // Reject a digest collision rather than silently collapsing distinct owners.
+ assert.throws(()=>compactSettlementOwnership(original.lastObservation,()=> '0'.repeat(64)),/collision/);
 });

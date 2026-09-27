@@ -1,21 +1,3 @@
-import { createHash } from 'node:crypto';
-export const ownerKeyDigest = key => createHash('sha256').update(key).digest('hex');
-/* The collector hashes inventories from a frozen snapshot. Images retain their
-   exact raw keys; the contract independently hashes each before comparing.
-   No producer diagnostic is mutated and no resource count is reduced. */
-export function compactSettlementOwnership(raw, digest = ownerKeyDigest) {
-  const o = structuredClone(raw), seen = new Map();
-  const encode = values => values === null ? null : values.map(key => {
-    if (typeof key !== 'string' || !key || key.length > 32768) throw Error('invalid owner key');
-    const hash = digest(key);
-    if (!/^[a-f0-9]{64}$/.test(hash) || (seen.has(hash) && seen.get(hash) !== key)) throw Error('owner identity digest invalid/collision');
-    seen.set(hash, key); return hash;
-  });
-  o.ownerKeys = { encoding: 'sha256-v1', brokerLeased: encode(o.ownerKeys.brokerLeased), brokerCached: encode(o.ownerKeys.brokerCached) };
-  if (o.paintedArt) for (const name of Object.keys(o.paintedArt.keys)) o.paintedArt.keys[name] = encode(o.paintedArt.keys[name]);
-  return o;
-}
-
 /* V2-only ownership reduction. Raw broker and painted diagnostics stay separate.
    Never mutate a captured carrier or assign a painted key to the broker. */
 const count = n => Number.isSafeInteger(n) && n >= 0;
@@ -41,20 +23,17 @@ export function paintedFindings(p) {
 }
 export function paintedSettlementFindings(observation) {
   const p = observation.paintedArt, errors = paintedFindings(p), inventory = observation.ownerKeys;
-  const digestKeys = values => keys(values) && values.every(k => /^[a-f0-9]{64}$/.test(k));
-  if (inventory?.encoding !== 'sha256-v1' || !digestKeys(inventory.brokerLeased) || !digestKeys(inventory.brokerCached)) errors.push('broker digest inventories missing/invalid');
-  if (p && Object.values(p.keys ?? {}).some(values => !digestKeys(values))) errors.push('painted digest inventories invalid');
+  if (!inventory || !keys(inventory.brokerLeased) || !keys(inventory.brokerCached)) errors.push('broker raw inventories missing');
   if (errors.length) return errors;
   if (inventory.brokerLeased.length !== observation.broker.leasedKeyCount || inventory.brokerCached.length !== observation.broker.cachedKeyCount) errors.push('broker raw inventory count');
   for (const image of observation.images) {
     const key = image.visualKey;
     if (typeof key !== 'string' || !key || key.length !== image.visualKeyLength) { errors.push('image visual key mismatch'); continue; }
-    const digest = ownerKeyDigest(key);
-    const bl = inventory.brokerLeased.indexOf(digest), bc = inventory.brokerCached.indexOf(digest);
+    const bl = inventory.brokerLeased.indexOf(key), bc = inventory.brokerCached.indexOf(key);
     if ((bl < 0 ? null : bl) !== image.leasedIndex || (bc < 0 ? null : bc) !== image.cachedIndex) errors.push('broker image index mismatch');
     const broker = bl >= 0 && bc >= 0;
-    const painted = p !== null && p.keys.leasedThumbs.includes(digest) && p.keys.cachedThumbs.includes(digest);
-    if (broker === painted || (!broker && (bl >= 0 || bc >= 0)) || (broker && p?.keys.leasedThumbs.includes(digest))) errors.push('image requires exactly one complete owner: ' + image.logicalId);
+    const painted = p !== null && p.keys.leasedThumbs.includes(key) && p.keys.cachedThumbs.includes(key);
+    if (broker === painted || (!broker && (bl >= 0 || bc >= 0)) || (broker && p?.keys.leasedThumbs.includes(key))) errors.push('image requires exactly one complete owner: ' + image.logicalId);
   }
   if (p && p.keys.pendingThumbs.length + p.keys.pendingPortraits.length) errors.push('painted work pending');
   return errors;

@@ -6,6 +6,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { pathToFileURL } from 'node:url';
 import { materialize } from './compendiummem-v2-materialize.mjs';
+import { compactSettlementOwnership } from './compendiummem-v2-painted.mjs';
 import { v1, policy, growthGuard, guardedCeilings, growthFindings } from './compendiummem-v2-guard.mjs';
 import { claimPhase, phases, samplesFromReports } from './compendiummem-v2.mjs';
 import { CEILING_FIELDS, SAMPLE_METRIC_FIELDS, compendiumMeasurementAuthority } from './compendiummem-contract.mjs';
@@ -29,6 +30,7 @@ function addSyntheticOwnership(value) {
       if(image.leasedIndex!==null)value.ownerKeys.brokerLeased[image.leasedIndex]=image.visualKey;
       if(image.cachedIndex!==null)value.ownerKeys.brokerCached[image.cachedIndex]=image.visualKey;
     });
+    Object.assign(value, compactSettlementOwnership(value));
   }
   for (const child of Object.values(value)) addSyntheticOwnership(child);
 }
@@ -134,5 +136,17 @@ test('a running or failed phase can neither retry nor continue', () => {
     assert.throws(() => claimPhase(ledger, 'calibration-1'), /retry forbidden/);
     assert.throws(() => claimPhase(ledger, 'calibration-2'), /retry forbidden/);
   }
+});
+test('materialized authority bytes are portable while dependency links bind the real signed tree', () => {
+  const second = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-v2-portable-'));
+  try {
+    materialize(second);
+    for (const name of ['collector.mjs','contract.mjs','painted.mjs','manifest.json']) {
+      assert.deepEqual(fs.readFileSync(path.join(second,name)),fs.readFileSync(path.join(directory,name)));
+    }
+    assert.equal(fs.realpathSync(path.join(second,'shared')), path.resolve(import.meta.dirname,'..'));
+    assert.ok(!fs.readFileSync(path.join(second,'collector.mjs'),'utf8').includes(import.meta.dirname));
+    assert.ok(!fs.readFileSync(path.join(second,'contract.mjs'),'utf8').includes(import.meta.dirname));
+  } finally { fs.rmSync(second,{recursive:true}); }
 });
 test.after(() => fs.rmSync(directory, { recursive: true }));

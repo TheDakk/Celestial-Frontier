@@ -1,0 +1,6 @@
+{
+  "mutation": "Return raw owner inventories instead of digesting browser snapshot",
+  "exitCode": 1,
+  "sourceRestored": true,
+  "restoredSha256": "b6a78c10f83e5681e6c5c8e620b16623d19d7d04f23a9847c50d32e30b2950f9"
+}
