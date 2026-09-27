@@ -1,0 +1,20 @@
+✔ exact reviewed Hyrax removes only the optional tail inventory (3.252541ms)
+✔ refuses different master (0.943083ms)
+✔ refuses different subject (0.594667ms)
+✔ refuses different request (0.588375ms)
+✔ refuses species mismatch (0.876709ms)
+✔ refuses missing life stage (0.875ms)
+✔ refuses different pose (0.856583ms)
+✔ refuses unreviewed (0.859042ms)
+✔ refuses invented evidence (1.141792ms)
+✔ refuses mandatory leg absence (1.1ms)
+✔ refuses duplicate declaration (0.8895ms)
+✔ refuses reference-only absence on a tailed species (1.450917ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 142.290375
