@@ -1,0 +1,82 @@
+[
+  {
+    "name": "bobcat-side-01",
+    "samples": [
+      {
+        "fraction": 0,
+        "cpuMs": 1.2018330000000077,
+        "bad": 0,
+        "visits": 0,
+        "error": null
+      },
+      {
+        "fraction": 0.25,
+        "cpuMs": 20.814875,
+        "bad": 138,
+        "visits": 134285,
+        "error": null
+      },
+      {
+        "fraction": 0.5,
+        "cpuMs": 57.302875,
+        "bad": 186,
+        "visits": 359898,
+        "error": null
+      },
+      {
+        "fraction": 0.75,
+        "cpuMs": 61.28937500000001,
+        "bad": 182,
+        "visits": 378397,
+        "error": null
+      },
+      {
+        "fraction": 1,
+        "cpuMs": 61.33962500000001,
+        "bad": 182,
+        "visits": 382402,
+        "error": null
+      }
+    ]
+  },
+  {
+    "name": "donkey-side-01",
+    "samples": [
+      {
+        "fraction": 0,
+        "cpuMs": 0.09770800000001145,
+        "bad": 0,
+        "visits": 0,
+        "error": null
+      },
+      {
+        "fraction": 0.25,
+        "cpuMs": 11.507791999999995,
+        "bad": 252,
+        "visits": 88200,
+        "error": null
+      },
+      {
+        "fraction": 0.5,
+        "cpuMs": 18.815624999999955,
+        "bad": 308,
+        "visits": 146283,
+        "error": null
+      },
+      {
+        "fraction": 0.75,
+        "cpuMs": 17.304332999999986,
+        "bad": 308,
+        "visits": 146416,
+        "error": null
+      },
+      {
+        "fraction": 1,
+        "cpuMs": 17.915999999999997,
+        "bad": 302,
+        "visits": 146514,
+        "error": null
+      }
+    ]
+  }
+]
