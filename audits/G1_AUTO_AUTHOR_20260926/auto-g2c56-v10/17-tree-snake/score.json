@@ -1,0 +1,19 @@
+{
+ "id": "17-tree-snake",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 15.3% paint that no reference appendage lands on",
+  "missing-anatomy: part body-segment-0 (seg0) covers 7% paint (reference 12%)",
+  "missing-anatomy: part body-segment-2 (seg2) covers 7% paint (reference 9%)",
+  "missing-anatomy: part body-segment-3 (seg3) covers 6% paint (reference 9%)",
+  "missing-anatomy: part body-segment-4 (seg4) covers 6% paint (reference 10%)",
+  "missing-anatomy: part body-segment-5 (seg5) covers 6% paint (reference 10%)",
+  "missing-anatomy: part body-segment-6 (seg6) covers 7% paint (reference 10%)",
+  "missing-anatomy: part body-segment-7 (seg7) covers 2% paint (reference 7%)",
+  "missing-anatomy: part body-segment-8 (seg8) covers 1% paint (reference 5%)",
+  "missing-anatomy: part body-segment-9 (seg9) covers 1% paint (reference 2%)",
+  "unexplained-anatomy: 16.8% of the paint lies away from the body and in no part (reference 5.1%)"
+ ],
+ "semanticPresence": null
+}

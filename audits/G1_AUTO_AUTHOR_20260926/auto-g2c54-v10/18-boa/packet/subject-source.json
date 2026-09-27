@@ -1,0 +1,70 @@
+{
+  "name": "Boa",
+  "family": "serpent",
+  "species": {
+    "name": "Boa",
+    "aspect": 7,
+    "headFrac": 0.05,
+    "eyes": "small",
+    "posture": "coiled",
+    "mustRead": [
+      "saddle-shaped dorsal blotches that redden toward the tail",
+      "heavy arrow-shaped head with a dark eye stripe",
+      "thick body tapering to a short tail"
+    ],
+    "note": "generic representative: a boa constrictor"
+  },
+  "genome": {
+    "seed": 1307258279,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 12,
+    "body": 6,
+    "loco": 15,
+    "trait": 12,
+    "size": 2,
+    "diet": 0,
+    "head": 7,
+    "limbs": 5,
+    "skin": 0,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 0,
+    "behavior": 11,
+    "habitat": 18,
+    "detail": 4,
+    "accent": 3,
+    "temper": 1,
+    "sense": 6,
+    "repro": 1,
+    "life": 3,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Boa"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Boa\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1307258279\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "index": 33,
+  "profile": {
+    "id": "constricting-snake",
+    "names": [
+      "Anaconda",
+      "Boa",
+      "Python",
+      "Sand Boa"
+    ],
+    "candidateTemplates": [
+      "serpent"
+    ],
+    "media": [
+      "ground",
+      "water"
+    ],
+    "intendedMoves": [
+      "strike",
+      "constrict"
+    ],
+    "notes": ""
+  }
+}

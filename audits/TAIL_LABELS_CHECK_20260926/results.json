@@ -1,0 +1,232 @@
+{
+ "schema": "cf.claude-tail-label-check/v1",
+ "subjects": {
+  "08-cod": {
+   "reproducesCommittedLabels": {
+    "ok": true,
+    "changed": 4550,
+    "pixelsDifferingFromCommitted": 0
+   },
+   "movedPixelsByPolygonOwner": {
+    "(none)": 4550
+   },
+   "movedAllRemainderOrUnownedInPolygons": true,
+   "identityGuard": {
+    "derived": {
+     "tail": "caudal",
+     "stalk": "body-5",
+     "tailOwner": 6,
+     "stalkOwner": 13,
+     "sharedEdges": 0
+    },
+    "requestedPair": {
+     "ok": true,
+     "tail": "caudal",
+     "stalk": "body-5",
+     "tailOwner": 6,
+     "stalkOwner": 13,
+     "sharedEdges": 0
+    },
+    "wrongTailMutation": {
+     "ok": false,
+     "error": "Tail identity: requested dorsal/body-5, rig says caudal/body-5"
+    }
+   },
+   "mutations": {
+    "wrongTailIdentity": {
+     "tail": "dorsal",
+     "ok": true,
+     "changed": 970
+    },
+    "erasedTail": {
+     "ok": false,
+     "changed": 0,
+     "error": "Gap labels: owner has no paint"
+    },
+    "farStalk": {
+     "stalk": "body-0",
+     "ok": false,
+     "changed": 0,
+     "error": "Gap labels: gap exceeds quarter-width locality"
+    },
+    "transparentCut": {
+     "column": 202,
+     "ok": true,
+     "changed": 0,
+     "note": "a tail still touching the body elsewhere may legitimately fill there"
+    }
+   }
+  },
+  "07-perch": {
+   "reproducesCommittedLabels": {
+    "ok": true,
+    "changed": 14,
+    "pixelsDifferingFromCommitted": 0
+   },
+   "movedPixelsByPolygonOwner": {
+    "(none)": 14
+   },
+   "movedAllRemainderOrUnownedInPolygons": true,
+   "identityGuard": {
+    "derived": {
+     "tail": "caudal",
+     "stalk": "body-5",
+     "tailOwner": 6,
+     "stalkOwner": 13,
+     "sharedEdges": 144
+    },
+    "requestedPair": {
+     "ok": true,
+     "tail": "caudal",
+     "stalk": "body-5",
+     "tailOwner": 6,
+     "stalkOwner": 13,
+     "sharedEdges": 144
+    },
+    "wrongTailMutation": {
+     "ok": false,
+     "error": "Tail identity: requested dorsal/body-5, rig says caudal/body-5"
+    }
+   },
+   "mutations": {
+    "wrongTailIdentity": {
+     "tail": "dorsal",
+     "ok": false,
+     "changed": 0,
+     "error": "Gap labels: gap exceeds quarter-width locality"
+    },
+    "erasedTail": {
+     "ok": false,
+     "changed": 0,
+     "error": "Gap labels: owner has no paint"
+    },
+    "farStalk": {
+     "stalk": "body-0",
+     "ok": false,
+     "changed": 0,
+     "error": "Gap labels: gap exceeds quarter-width locality"
+    },
+    "transparentCut": {
+     "column": 250,
+     "ok": true,
+     "changed": 14,
+     "note": "a tail still touching the body elsewhere may legitimately fill there"
+    }
+   }
+  },
+  "09-carp": {
+   "reproducesCommittedLabels": {
+    "ok": true,
+    "changed": 109,
+    "pixelsDifferingFromCommitted": 0
+   },
+   "movedPixelsByPolygonOwner": {
+    "(none)": 109
+   },
+   "movedAllRemainderOrUnownedInPolygons": true,
+   "identityGuard": {
+    "derived": {
+     "tail": "caudal",
+     "stalk": "body-5",
+     "tailOwner": 6,
+     "stalkOwner": 13,
+     "sharedEdges": 159
+    },
+    "requestedPair": {
+     "ok": true,
+     "tail": "caudal",
+     "stalk": "body-5",
+     "tailOwner": 6,
+     "stalkOwner": 13,
+     "sharedEdges": 159
+    },
+    "wrongTailMutation": {
+     "ok": false,
+     "error": "Tail identity: requested dorsal/body-5, rig says caudal/body-5"
+    }
+   },
+   "mutations": {
+    "wrongTailIdentity": {
+     "tail": "dorsal",
+     "ok": false,
+     "changed": 0,
+     "error": "Gap labels: gap exceeds quarter-width locality"
+    },
+    "erasedTail": {
+     "ok": false,
+     "changed": 0,
+     "error": "Gap labels: owner has no paint"
+    },
+    "farStalk": {
+     "stalk": "body-0",
+     "ok": false,
+     "changed": 0,
+     "error": "Gap labels: gap exceeds quarter-width locality"
+    },
+    "transparentCut": {
+     "column": 263,
+     "ok": true,
+     "changed": 115,
+     "note": "a tail still touching the body elsewhere may legitimately fill there"
+    }
+   }
+  },
+  "03-arctic-fox": {
+   "reproducesCommittedLabels": {
+    "ok": true,
+    "changed": 7554,
+    "pixelsDifferingFromCommitted": 0
+   },
+   "movedPixelsByPolygonOwner": {
+    "(none)": 7554
+   },
+   "movedAllRemainderOrUnownedInPolygons": true,
+   "identityGuard": {
+    "derived": {
+     "tail": "tail3",
+     "stalk": "tail2",
+     "tailOwner": 25,
+     "stalkOwner": 26,
+     "sharedEdges": 235
+    },
+    "requestedPair": {
+     "ok": true,
+     "tail": "tail3",
+     "stalk": "tail2",
+     "tailOwner": 25,
+     "stalkOwner": 26,
+     "sharedEdges": 235
+    },
+    "wrongTailMutation": {
+     "ok": false,
+     "error": "Tail identity: requested head/tail2, rig says tail3/tail2"
+    }
+   },
+   "mutations": {
+    "wrongTailIdentity": {
+     "tail": "head",
+     "ok": false,
+     "changed": 0,
+     "error": "Gap labels: gap exceeds quarter-width locality"
+    },
+    "erasedTail": {
+     "ok": false,
+     "changed": 0,
+     "error": "Gap labels: owner has no paint"
+    },
+    "farStalk": {
+     "stalk": "neck",
+     "ok": false,
+     "changed": 0,
+     "error": "Gap labels: gap exceeds quarter-width locality"
+    },
+    "transparentCut": {
+     "column": 198,
+     "ok": true,
+     "changed": 4970,
+     "note": "a tail still touching the body elsewhere may legitimately fill there"
+    }
+   }
+  }
+ }
+}

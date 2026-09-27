@@ -1,0 +1,10 @@
+{
+ "id": "19-cottonmouth",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 12.2% paint that no reference appendage lands on",
+  "missing-anatomy: part segment-9 (seg9) covers 8% paint (reference 4%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,12 @@
+{
+ "id": "21-mamba",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 19.2% paint that no reference appendage lands on",
+  "missing-anatomy: part jaw (jaw) covers 8% paint (reference 34%)",
+  "missing-anatomy: part segment-8 (seg8) covers 7% paint (reference 19%)",
+  "missing-anatomy: part segment-9 (seg9) covers 6% paint (reference 4%)"
+ ],
+ "semanticPresence": null
+}

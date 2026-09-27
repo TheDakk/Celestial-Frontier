@@ -1,0 +1,124 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "01-tiger",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "2748a131c4206e2feeca1b28a636749c3f093dbde243414b2ee7b8b28bf06e09",
+ "subjectSourceSha256": "7378bbf62cfc932c71ca96301b8a17a772f8361d011aeb398d823f4059c69918",
+ "identity": {
+  "name": "Tiger",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tiger\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"4\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2150023242\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "seed": 2150023242,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "cougar",
+  "authoringSha256": "421e0390baa8cc50c90902c54167a9b29e1b8da02192b4fbb358a335e1f66a54",
+  "masterSha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635"
+ },
+ "habitat": {
+  "profileId": "felid",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "74c48486113be3ee431e8a73d1f96d202de2a5c22bc39d2661f21510abbb4a65",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group felid (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0365,
+     "class": "front",
+     "attach": {
+      "x": 365.6,
+      "y": 134.6,
+      "relX": 0.89,
+      "relY": 0.12
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.05,
+     "class": "limb-down",
+     "attach": {
+      "x": 77.8,
+      "y": 201.7,
+      "relX": 0.17,
+      "relY": 0.47
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0656,
+     "class": "limb-down",
+     "attach": {
+      "x": 118.5,
+      "y": 221,
+      "relX": 0.27,
+      "relY": 0.57
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0942,
+     "class": "limb-down",
+     "attach": {
+      "x": 328.8,
+      "y": 249,
+      "relX": 0.8,
+      "relY": 0.72
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0586,
+     "class": "limb-down",
+     "attach": {
+      "x": 177,
+      "y": 227,
+      "relX": 0.42,
+      "relY": 0.6
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0397,
+     "class": "limb-down",
+     "attach": {
+      "x": 259.5,
+      "y": 241,
+      "relX": 0.62,
+      "relY": 0.68
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "limb-down": 5
+   },
+   "ground": 5
+  },
+  "reference": {
+   "subject": "cougar",
+   "byClass": {
+    "top": 2,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

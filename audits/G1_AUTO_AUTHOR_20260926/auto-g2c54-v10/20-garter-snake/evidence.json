@@ -1,0 +1,214 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a front appendage of 16.0% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a rear appendage of 13.3% paint that no reference appendage lands on",
+  "missing-anatomy: part head (head) covers 7% paint (reference 4%)",
+  "missing-anatomy: part body-segment-7 (seg7) covers 5% paint (reference 7%)",
+  "missing-anatomy: part body-segment-8 (seg8) covers 3% paint (reference 5%)",
+  "missing-anatomy: part body-segment-9 (seg9) covers 2% paint (reference 2%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "remainderMarker": false,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [
+  {
+   "id": "head",
+   "vertices": 1
+  },
+  {
+   "id": "body-segment-8",
+   "vertices": 1
+  },
+  {
+   "id": "body-segment-9",
+   "vertices": 2
+  }
+ ],
+ "untangled": [
+  {
+   "id": "body-segment-9",
+   "repairs": 1
+  }
+ ],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "extra-anatomy (unassigned): a front appendage of 16.0% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a rear appendage of 13.3% paint that no reference appendage lands on"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "head"
+    ],
+    "names": [
+     "head"
+    ],
+    "refFrac": 0.0922,
+    "target": 0,
+    "overlap": 0.077
+   },
+   {
+    "owners": [
+     "body-segment-9",
+     "body-segment-8"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.1004,
+    "target": 1,
+    "overlap": 0.02
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1604,
+     "class": "front",
+     "attach": {
+      "x": 343.3,
+      "y": 206.3,
+      "relX": 0.99,
+      "relY": 0.27
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1329,
+     "class": "rear",
+     "attach": {
+      "x": 113.4,
+      "y": 215.1,
+      "relX": 0.01,
+      "relY": 0.45
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "python",
+   "byClass": {
+    "top": 1,
+    "rear": 1
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0208,
+  "ref": 0.0375
+ },
+ "bestReference": "python",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "python",
+   "cost": 0.00835
+  },
+  {
+   "ref": "eel",
+   "cost": 0.02785
+  },
+  {
+   "ref": "racer",
+   "cost": 0.02885
+  }
+ ],
+ "mirrorBest": 0.02109,
+ "otherFamilyBest": {
+  "family": "radial",
+  "cost": 0.02359
+ },
+ "coverage": [
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.32367149758454106,
+   "area": 3463.515000000001
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.07370212765957447,
+   "area": 94087.80499999988
+  },
+  {
+   "id": "body-segment-0",
+   "joint": "seg0",
+   "paint": 0.08428093645484949,
+   "area": 47864.320000000065
+  },
+  {
+   "id": "body-segment-1",
+   "joint": "seg1",
+   "paint": 0.08304371684653375,
+   "area": 87445.76000000004
+  },
+  {
+   "id": "body-segment-2",
+   "joint": "seg2",
+   "paint": 0.09090909090909091,
+   "area": 87636.87000000005
+  },
+  {
+   "id": "body-segment-3",
+   "joint": "seg3",
+   "paint": 0.11509878557186877,
+   "area": 88147.17000000001
+  },
+  {
+   "id": "body-segment-4",
+   "joint": "seg4",
+   "paint": 0.09842590917314999,
+   "area": 88560.96000000005
+  },
+  {
+   "id": "body-segment-5",
+   "joint": "seg5",
+   "paint": 0.0976092036670861,
+   "area": 88916.34999999993
+  },
+  {
+   "id": "body-segment-6",
+   "joint": "seg6",
+   "paint": 0.08203195117573146,
+   "area": 89231.92000000001
+  },
+  {
+   "id": "body-segment-7",
+   "joint": "seg7",
+   "paint": 0.05498847546921304,
+   "area": 97345.49999999999
+  },
+  {
+   "id": "body-segment-8",
+   "joint": "seg8",
+   "paint": 0.02523098791755508,
+   "area": 44997.21000000001
+  },
+  {
+   "id": "body-segment-9",
+   "joint": "seg9",
+   "paint": 0.01589825119236884,
+   "area": 40271.14499999999
+  },
+  {
+   "id": "neck-root",
+   "joint": "root",
+   "paint": 0.10006648936170212,
+   "area": 48154.220000000045
+  }
+ ],
+ "unclaimedFrac": 0.0761
+}

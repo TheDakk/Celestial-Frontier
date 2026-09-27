@@ -1,0 +1,210 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 12.2% paint that no reference appendage lands on",
+  "missing-anatomy: part segment-9 (seg9) covers 8% paint (reference 4%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "remainderMarker": false,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [
+  {
+   "id": "segment-9",
+   "vertices": 2
+  }
+ ],
+ "untangled": [],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 12.2% paint that no reference appendage lands on"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "segment-9",
+     "segment-8"
+    ],
+    "names": [
+     "other"
+    ],
+    "refFrac": 0.0836,
+    "target": 2,
+    "overlap": 0.097
+   },
+   {
+    "owners": [
+     "head",
+     "jaw"
+    ],
+    "names": [
+     "head"
+    ],
+    "refFrac": 0.0359,
+    "target": 1,
+    "overlap": 0.05
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0249,
+     "class": "front",
+     "attach": {
+      "x": 390.1,
+      "y": 173.9,
+      "relX": 0.95,
+      "relY": 0.07
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0135,
+     "class": "limb-down",
+     "attach": {
+      "x": 387.3,
+      "y": 208.8,
+      "relX": 0.95,
+      "relY": 0.48
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1216,
+     "class": "rear",
+     "attach": {
+      "x": 105.6,
+      "y": 229.2,
+      "relX": 0.24,
+      "relY": 0.72
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "limb-down": 1,
+    "rear": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "eel",
+   "byClass": {
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.05,
+  "ref": 0.0458
+ },
+ "bestReference": "eel",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "eel",
+   "cost": 0.0141
+  },
+  {
+   "ref": "python",
+   "cost": 0.0143
+  },
+  {
+   "ref": "racer",
+   "cost": 0.0272
+  }
+ ],
+ "mirrorBest": 0.02466,
+ "otherFamilyBest": {
+  "family": "biped-bird",
+  "cost": 0.0241
+ },
+ "coverage": [
+  {
+   "id": "root",
+   "joint": "root",
+   "paint": 1,
+   "area": 473.5900000000006
+  },
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.27592425608656446,
+   "area": 17757.350000000013
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.7882262996941896,
+   "area": 20948.159999999993
+  },
+  {
+   "id": "segment-0",
+   "joint": "seg0",
+   "paint": 0.17342799188640973,
+   "area": 63152.80499999998
+  },
+  {
+   "id": "segment-1",
+   "joint": "seg1",
+   "paint": 0.2682993946064942,
+   "area": 58173.35500000002
+  },
+  {
+   "id": "segment-2",
+   "joint": "seg2",
+   "paint": 0.23515876668200644,
+   "area": 69771.57500000001
+  },
+  {
+   "id": "segment-3",
+   "joint": "seg3",
+   "paint": 0.28022284122562674,
+   "area": 57451.93999999997
+  },
+  {
+   "id": "segment-4",
+   "joint": "seg4",
+   "paint": 0.26030624263839813,
+   "area": 40793.67999999998
+  },
+  {
+   "id": "segment-5",
+   "joint": "seg5",
+   "paint": 0.25980582524271845,
+   "area": 41231.47500000001
+  },
+  {
+   "id": "segment-6",
+   "joint": "seg6",
+   "paint": 0.2704802259887006,
+   "area": 45321.295
+  },
+  {
+   "id": "segment-7",
+   "joint": "seg7",
+   "paint": 0.14779186707477043,
+   "area": 36706.15000000003
+  },
+  {
+   "id": "segment-8",
+   "joint": "seg8",
+   "paint": 0.12008928571428572,
+   "area": 35868.115000000005
+  },
+  {
+   "id": "segment-9",
+   "joint": "seg9",
+   "paint": 0.07979517815233625,
+   "area": 74310.83
+  }
+ ],
+ "unclaimedFrac": 0.095
+}

@@ -1,0 +1,231 @@
+[
+ {
+  "id": "01-tiger",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 6% paint (reference 52%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "02-leopard",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "RED",
+  "staticFails": [
+   "presentation"
+  ],
+  "staticRefusals": [
+   {
+    "id": "presentation",
+    "samples": 444,
+    "firstRefusal": {
+     "sampleIndex": 444,
+     "sampleNumber": 445,
+     "ms": 7400,
+     "error": "Error: Contact: approach:trot@514.3401754125953 exceeds scale compression bound\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-YwZQSC/run.mjs:12193:57)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-YwZQSC/run.mjs:26991:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-YwZQSC/run.mjs:27168:44\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-YwZQSC/run.mjs:17185:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-YwZQSC/run.mjs:27168:23\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-YwZQSC/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-YwZQSC/run.mjs:27209:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+     "contact": null,
+     "pose": {
+      "root": {
+       "rotation": 0,
+       "dx": 0.015635823480677297,
+       "dy": 0.05110674082185279
+      },
+      "pelvis": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "spine": {
+       "rotation": -0.044086,
+       "dx": 0,
+       "dy": 0
+      },
+      "chest": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "neck": {
+       "rotation": -0.058782,
+       "dx": 0,
+       "dy": 0
+      },
+      "head": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "jaw": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "hindFarRoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "hindFarKnee": {
+       "rotation": 0.38208,
+       "dx": 0,
+       "dy": 0
+      },
+      "hindFarAnkle": {
+       "rotation": 0.176345,
+       "dx": 0,
+       "dy": 0
+      },
+      "hindFarPaw": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "foreFarRoot": {
+       "rotation": 0
+      },
+      "foreFarKnee": {
+       "rotation": -0.04720782661559202
+      },
+      "foreFarAnkle": {
+       "rotation": 0.15559236170669244
+      },
+      "foreFarPaw": {
+       "rotation": -0.0642985350911004
+      },
+      "hindNearRoot": {
+       "rotation": 0
+      },
+      "hindNearKnee": {
+       "rotation": -0.24980206805716162
+      },
+      "hindNearAnkle": {
+       "rotation": 0.45475728821596223
+      },
+      "hindNearPaw": {
+       "rotation": -0.2049552201588007
+      },
+      "foreNearRoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "foreNearKnee": {
+       "rotation": 0.38208,
+       "dx": 0,
+       "dy": 0
+      },
+      "foreNearAnkle": {
+       "rotation": -0.176345,
+       "dx": 0,
+       "dy": 0
+      },
+      "foreNearPaw": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "tail0": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "tail1": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "tail2": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "tail3": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "earFarRoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "earFarTip": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "earNearRoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "earNearTip": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      }
+     },
+     "arapStats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 23.728808655520346,
+      "rmsTargetErrorPx": 1.302272742839125,
+      "maximumProjectionPx": 17.835068335142502,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.11999999962325557,
+      "orientationPasses": 64
+     },
+     "action": "approach:trot"
+    }
+   }
+  ],
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "extra-anatomy (unassigned): a limb-down appendage of 7.3% paint that no reference appendage lands on",
+     "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 3.4%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "04-ocelot",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 7.0% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "05-snow-leopard",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "06-clouded-leopard",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ }
+]

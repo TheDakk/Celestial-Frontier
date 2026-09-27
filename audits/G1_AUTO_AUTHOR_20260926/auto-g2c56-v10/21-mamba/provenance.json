@@ -1,0 +1,82 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "21-mamba",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "22df527b751fcfd2b3c0317fd228a8cc07b5d24098217a2ae563c4746121de01",
+ "subjectSourceSha256": "1734f3998cb17492a8bf28f268d03bb46110d0c6817e87ad4048af106170db5d",
+ "identity": {
+  "name": "Mamba",
+  "family": "serpent",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Mamba\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1187186450\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 1187186450,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "eel",
+  "authoringSha256": "8067e8640d264788f033232c8abc5cd65e68721c480b7e6e429c2c06636ac3df",
+  "masterSha256": "77890d5b4b55daf076bfc6ca2da0b03fce16930feaca08223bc2d0822e2571cb"
+ },
+ "habitat": {
+  "profileId": "snake",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "79391ed84f3bf3de9b249a50f96cba52b142c09f2362a1dc4a604e85036973b0",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group snake (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2246,
+     "class": "front",
+     "attach": {
+      "x": 326.3,
+      "y": 224.3,
+      "relX": 0.99,
+      "relY": 0.5
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1924,
+     "class": "rear",
+     "attach": {
+      "x": 139.8,
+      "y": 215.8,
+      "relX": 0.01,
+      "relY": 0.36
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "eel",
+   "byClass": {
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
