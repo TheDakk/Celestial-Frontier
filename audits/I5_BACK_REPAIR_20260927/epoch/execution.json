@@ -1,0 +1,77 @@
+{
+  "epoch": "i5-v2-ca46f497b0e0",
+  "head": "ca46f497b0e09b5f0ef56e6f3e3ab88c2ccb0a24",
+  "source": "/Users/dakk/.codex/worktrees/i5-back-proof/celestial-frontier-openai-mac",
+  "instrument": {
+    "commit": "ca46f497b0e09b5f0ef56e6f3e3ab88c2ccb0a24",
+    "sha256": "fecdae416750c36698e8e80b7cf4206704e14ea3564fd6b6b22ece63e70157be"
+  },
+  "v1Sha256": "c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc",
+  "automaticRetries": 0,
+  "steps": [
+    {
+      "phase": "calibration-1",
+      "exitCode": 2,
+      "runId": "i5-v2-ca46f497b0e0-calibration-1",
+      "verificationExitCode": 2
+    }
+  ],
+  "commands": [
+    {
+      "name": "prepare-build",
+      "executable": "npx",
+      "args": [
+        "vite",
+        "build",
+        "--mode",
+        "evidence"
+      ],
+      "startedAt": "2026-09-27T16:43:02.733Z",
+      "durationMs": 3739.229375,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "edge-preflight",
+      "executable": "node",
+      "args": [
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/compendiummem-browser-preflight.mjs"
+      ],
+      "startedAt": "2026-09-27T16:43:08.071Z",
+      "durationMs": 3335.914540999999,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-1",
+      "executable": "node",
+      "args": [
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_BACK_REPAIR_20260927/epoch/instrument/collector.mjs",
+        "--calibrate"
+      ],
+      "startedAt": "2026-09-27T16:43:11.914Z",
+      "durationMs": 31341.7805,
+      "exitCode": 2,
+      "error": null
+    },
+    {
+      "name": "calibration-1-verify",
+      "executable": "node",
+      "args": [
+        "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/I5_BACK_REPAIR_20260927/epoch/instrument/collector.mjs",
+        "--verify-run=i5-v2-ca46f497b0e0-calibration-1"
+      ],
+      "startedAt": "2026-09-27T16:43:43.899Z",
+      "durationMs": 1421.5782090000066,
+      "exitCode": 2,
+      "error": null
+    }
+  ],
+  "status": "stopped",
+  "finding": "calibration-1 refused; epoch stops without retry",
+  "finalSource": {
+    "head": "ca46f497b0e09b5f0ef56e6f3e3ab88c2ccb0a24",
+    "status": ""
+  },
+  "v1Unchanged": true
+}

@@ -3,7 +3,7 @@
    Native action order, the 78 outcome predicates and all ceilings are preserved. */
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import { sha256 } from './compendiummem-contract.mjs';
 import { ownershipPatch } from './compendiummem-v2-ownership-patch.mjs';
 import { flowPatch } from './compendiummem-v2-flow-patch.mjs';
@@ -68,10 +68,13 @@ const validator = `export function validateBudgetRecord(record, fixtureRowsSha25
 
 export function materialize(directory) {
   fs.mkdirSync(directory, { recursive: true });
+  // A runtime-only link resolves the exact signed dependency tree. Generated
+  // bytes are location-independent; the epoch binds every target byte.
+  fs.symlinkSync(path.resolve(here, '..'), path.join(directory, 'shared'), 'dir');
   const collectorOriginal = fs.readFileSync(path.join(here, 'compendiummem.mjs'), 'utf8');
   const contractOriginal = fs.readFileSync(path.join(here, 'compendiummem-contract.mjs'), 'utf8');
   let contract = contractOriginal;
-  contract = once(contract, "import crypto from 'node:crypto';", `import crypto from 'node:crypto';\nimport { v1 as historicalV1, growthGuard as authorizedGrowthGuard, guardedCeilings, growthFindings } from ${JSON.stringify(pathToFileURL(path.join(here, 'compendiummem-v2-guard.mjs')).href)};`);
+  contract = once(contract, "import crypto from 'node:crypto';", `import crypto from 'node:crypto';\nimport { v1 as historicalV1, growthGuard as authorizedGrowthGuard, guardedCeilings, growthFindings } from ${JSON.stringify('./shared/tools/compendiummem-v2-guard.mjs')};`);
   contract = once(contract, "export const REPORT_SCHEMA = 'cf-v2-compendium-memory-report/v1';", "export const REPORT_SCHEMA = 'cf-v2-compendium-memory-report/v2';");
   contract = once(contract, "export const BUDGET_SCHEMA = 'cf-v2-compendium-memory-budget/v1';", "export const BUDGET_SCHEMA = 'cf-v2-compendium-memory-budget/v2';");
   contract = section(contract, 'export function compendiumCalibrationEvaluatorBudget(', 'function validateCalibrationSample(', `export function compendiumCalibrationEvaluatorBudget(producerAuthority) {
@@ -96,10 +99,10 @@ export function materialize(directory) {
   collector = section(collector, '  if (process.argv.length === 3 && process.argv[2] === SELFTEST_FLAG)', '  const verifyArg = process.argv.slice(2)', '');
   // All shared dependencies resolve to the signed instrument, never the target's tooling.
   collector = collector.replace(/(['"])\.\/([^'"\n]+\.mjs)\1/g, (_match, _quote, name) => JSON.stringify(name === 'compendiummem-contract.mjs'
-    ? './contract.mjs' : pathToFileURL(path.join(here, name)).href));
+    ? './contract.mjs' : './shared/tools/' + name));
   collector = once(collector, "const v2Root = path.resolve(here, '..');", "const v2Root = path.join(fs.realpathSync(process.env.CF_COMPENDIUM_V2_SOURCE), 'port', 'v2');");
   collector = once(collector, "const budgetPath = path.join(v2Root, 'budgets', 'compendium-memory-v1.json');", "const budgetPath = path.join(outputDir, 'compendium-memory-v2.json');");
-  collector = once(collector, "const budgetSchemaPath = path.join(v2Root, 'budgets', 'compendium-memory-v1.schema.json');", `const budgetSchemaPath = ${JSON.stringify(path.join(here, '..', 'budgets', 'compendium-memory-v2-policy.json'))};`);
+  collector = once(collector, "const budgetSchemaPath = path.join(v2Root, 'budgets', 'compendium-memory-v1.schema.json');", "const budgetSchemaPath = fileURLToPath(new URL('./shared/budgets/compendium-memory-v2-policy.json', import.meta.url));");
   collector = once(collector, "path: 'budgets/compendium-memory-v1.json'", "path: 'apps/game/smoke/compendium-memory-v2.json'");
   collector = once(collector, "schema: 'cf-v2-compendium-memory-calibration-sample/v1'", "schema: 'cf-v2-compendium-memory-calibration-sample/v2'");
   collector = once(collector, 'allowCalibration: false, verifyArtifact: verifyReviewArtifact,', 'allowCalibration: budget.status === \'calibration-required\', verifyArtifact: verifyReviewArtifact,');

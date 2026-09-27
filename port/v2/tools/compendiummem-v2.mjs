@@ -85,6 +85,7 @@ export async function runEpoch({ source, head, out }) {
   const invariant = () => {
     assert(git(source, ['rev-parse', 'HEAD']) === head && git(source, ['status', '--porcelain=v1', '--untracked-files=all']) === '', 'product source changed');
     assert(instrumentIdentity().sha256 === instrument.sha256, 'instrument changed during epoch');
+    assert(fs.realpathSync(path.join(generated, 'shared')) === path.resolve(here, '..'), 'instrument dependency link changed');
     assert(sha256(fs.readFileSync(path.join(source, 'port/v2/budgets/compendium-memory-v1.json'))) === policy.v1Sha256, 'target v1 history differs');
     for (const [file, digest] of Object.entries(manifest.generated)) assert(sha256(fs.readFileSync(path.join(generated, file))) === digest, 'generated instrument changed');
   };
