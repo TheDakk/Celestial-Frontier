@@ -848,4 +848,4 @@ C68 keeps source images and rig records unchanged while moving root-remainder fi
 
 ### Bird faint motion — matches code2026-09-27
 
-The unchanged geometry-derived faint author now supports biped-bird contact chains as well as quadrupeds/insects. Hawk and Dove faint pass actual painted supports; Hawk fullstatic/nativePASS retains a visible neck fragment. Pigeon/Vulture and hit/tame remain blocked by endpoint-only author probes versus actual painted offsets. No support/limit or library admission changes. Evidence:audits/BIRD_MOTION_C69_20260927.
+The proposed biped-bird faint extension is REJECTED: Hawk/Dove improved, but the full arena owner found56Goose ARAP refusals. Production keeps the prior quadruped/insect author unchanged. Endpoint-only authoring cannot prove actual painted support or skin safety; coordinated source-bound painted-support input remains open. Diagnostic evidence:audits/BIRD_MOTION_C69_20260927.

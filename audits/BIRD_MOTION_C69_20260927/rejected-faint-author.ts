@@ -22,7 +22,7 @@ export interface StanceEnvelope {
  readonly torsoGain:number; readonly angleReserve:number; readonly samples:number;
 }
 export function faintStanceEnvelope(card:BodyCard,tl:MotionTimeline,sample:(ms:number)=>MotionPose):StanceEnvelope|null {
- if(!['quadruped','insect'].includes(card.template.id)||tl.actionId!=='faint'||(card.realm!=='land'&&card.realm!=='amphibious'))return null;
+ if(!['quadruped','insect','biped-bird'].includes(card.template.id)||tl.actionId!=='faint'||(card.realm!=='land'&&card.realm!=='amphibious'))return null;
  const base=familyContract(card.template.id),parents=new Map(base.graph),contactChains=familyContactChains(base);
  // Hidden ears/tails do not remove a planted leg. A different leg graph keeps
  // its existing motion and must pass its own unchanged runtime guards.
@@ -39,7 +39,7 @@ export function faintStanceEnvelope(card:BodyCard,tl:MotionTimeline,sample:(ms:n
  if(observed.some(c=>Math.abs(c.cross)<1e-12))return null;
  const chains=observed.map(c=>({...c,chain:createTwoBoneChain({root:c.root,joint:c.joint,end:c.endPoint,bend:c.cross<0?-1:1})}));
  const poses=Array.from({length:SAMPLES+1},(_,i)=>sample(tl.durationMs*i/SAMPLES));
- const fits=(gain:number):boolean=>{
+ const fits=(gain:number,reserve=ANGLE_RESERVE):boolean=>{
   for(const p of poses){
    const pose:Record<string,{rotation:number;dx?:number;dy?:number}>={};
    for(const j of TORSO)if(card.landmarks[j])pose[j]={rotation:(p.joints[j]??0)*gain};
@@ -51,13 +51,16 @@ export function faintStanceEnvelope(card:BodyCard,tl:MotionTimeline,sample:(ms:n
     const solved=c.chain.solve(root,c.endPoint),upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c.joint)),lower=wrapped(angle(solved.joint,solved.end)-angle(c.joint,c.endPoint));
     const rotations:[string,number][]=[[c.knee,wrapped(upper-Math.atan2(parent[1],parent[0]))],[c.end,wrapped(lower-upper)]];
     if(c.terminal)rotations.push([c.terminal,wrapped(-lower)]);
-    for(const[j,value]of rotations){const bound=limits[j]!,degrees=value*180/Math.PI;if(degrees<bound.min*ANGLE_RESERVE||degrees>bound.max*ANGLE_RESERVE)return false;}
+    for(const[j,value]of rotations){const bound=limits[j]!,degrees=value*180/Math.PI;if(degrees<bound.min*reserve||degrees>bound.max*reserve)return false;}
    }
   }
   return true;
  };
  // Preserve accepted motion bit-for-bit when the complete original excursion
  // fits. Do not clamp individual frames or move any declared support point.
+ // Birds with an already valid endpoint excursion keep that established curve.
+ // A smaller authoring reserve alone must not retarget an accepted skin pose.
+ if(card.template.id==='biped-bird'&&fits(1,1))return null;
  if(fits(1))return null;
  if(!fits(0))throw Error('Motion envelope: rest geometry has no planted faint envelope');
  let low=0,high=1;

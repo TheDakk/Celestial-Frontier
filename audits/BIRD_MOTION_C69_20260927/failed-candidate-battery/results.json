@@ -1,0 +1,18 @@
+{
+  "head": "4c230c64f2a0b6585872ee2aaaccb76569db8b90",
+  "headAfter": "4c230c64f2a0b6585872ee2aaaccb76569db8b90",
+  "trackedChangesBefore": [],
+  "trackedChangesAfter": [],
+  "results": [
+    {
+      "name": "develop-profile",
+      "command": [
+        "node",
+        "tools/check-profile.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 1,
+      "logSha256": "cc92c861d98709de40ec5834de1ff06ed2254509897156893a62b2d0faeca8aa"
+    }
+  ]
+}
