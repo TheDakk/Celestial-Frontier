@@ -1,0 +1,598 @@
+[
+  {
+    "id": "hit",
+    "rows": [
+      {
+        "gain": 1,
+        "drop": 0,
+        "result": {
+          "ok": false,
+          "ms": 45,
+          "error": "Error: Contact: hit@45 exceeds scale compression bound",
+          "maxCompression": 0.03718004925521373
+        }
+      },
+      {
+        "gain": 1,
+        "drop": 0.01,
+        "result": {
+          "ok": false,
+          "ms": 45,
+          "error": "Error: Contact: hit@45 exceeds scale compression bound",
+          "maxCompression": 0.033604227486784266
+        }
+      },
+      {
+        "gain": 1,
+        "drop": 0.02,
+        "result": {
+          "ok": false,
+          "ms": 45.703125,
+          "error": "Error: Contact: hit@45.703125 exceeds scale compression bound",
+          "maxCompression": 0.042029244253764586
+        }
+      },
+      {
+        "gain": 1,
+        "drop": 0.04,
+        "result": {
+          "ok": false,
+          "ms": 45.703125,
+          "error": "Error: Contact: hit@45.703125 exceeds scale compression bound",
+          "maxCompression": 0.034793156133865855
+        }
+      },
+      {
+        "gain": 1,
+        "drop": 0.08,
+        "result": {
+          "ok": false,
+          "ms": 46.40625,
+          "error": "Error: Contact: hit@46.40625 exceeds scale compression bound",
+          "maxCompression": 0.03299234075334517
+        }
+      },
+      {
+        "gain": 1,
+        "drop": 0.12,
+        "result": {
+          "ok": false,
+          "ms": 46.40625,
+          "error": "Error: Contact: joint limit legFrontFarFoot hit@46.40625: -77.42711568736021",
+          "maxCompression": 0.018353092445489216
+        }
+      },
+      {
+        "gain": 0.75,
+        "drop": 0,
+        "result": {
+          "ok": false,
+          "ms": 45.703125,
+          "error": "Error: Contact: hit@45.703125 exceeds scale compression bound",
+          "maxCompression": 0.04401894802052958
+        }
+      },
+      {
+        "gain": 0.75,
+        "drop": 0.01,
+        "result": {
+          "ok": false,
+          "ms": 45.703125,
+          "error": "Error: Contact: hit@45.703125 exceeds scale compression bound",
+          "maxCompression": 0.040400903960580214
+        }
+      },
+      {
+        "gain": 0.75,
+        "drop": 0.02,
+        "result": {
+          "ok": false,
+          "ms": 45.703125,
+          "error": "Error: Contact: hit@45.703125 exceeds scale compression bound",
+          "maxCompression": 0.036782859900630904
+        }
+      },
+      {
+        "gain": 0.75,
+        "drop": 0.04,
+        "result": {
+          "ok": false,
+          "ms": 46.40625,
+          "error": "Error: Contact: hit@46.40625 exceeds scale compression bound",
+          "maxCompression": 0.040939543940628764
+        }
+      },
+      {
+        "gain": 0.75,
+        "drop": 0.08,
+        "result": {
+          "ok": false,
+          "ms": 47.109375,
+          "error": "Error: Contact: hit@47.109375 exceeds scale compression bound",
+          "maxCompression": 0.03821018724510128
+        }
+      },
+      {
+        "gain": 0.75,
+        "drop": 0.12,
+        "result": {
+          "ok": false,
+          "ms": 47.109375,
+          "error": "Error: Contact: joint limit legFrontFarFoot hit@47.109375: -77.14058410903549",
+          "maxCompression": 0.023405683967208046
+        }
+      },
+      {
+        "gain": 0.5,
+        "drop": 0,
+        "result": {
+          "ok": false,
+          "ms": 45.703125,
+          "error": "Error: Contact: hit@45.703125 exceeds scale compression bound",
+          "maxCompression": 0.03931183690880524
+        }
+      },
+      {
+        "gain": 0.5,
+        "drop": 0.01,
+        "result": {
+          "ok": false,
+          "ms": 45.703125,
+          "error": "Error: Contact: hit@45.703125 exceeds scale compression bound",
+          "maxCompression": 0.035693792848855876
+        }
+      },
+      {
+        "gain": 0.5,
+        "drop": 0.02,
+        "result": {
+          "ok": false,
+          "ms": 46.40625,
+          "error": "Error: Contact: hit@46.40625 exceeds scale compression bound",
+          "maxCompression": 0.042484907942338224
+        }
+      },
+      {
+        "gain": 0.5,
+        "drop": 0.04,
+        "result": {
+          "ok": false,
+          "ms": 46.40625,
+          "error": "Error: Contact: hit@46.40625 exceeds scale compression bound",
+          "maxCompression": 0.03516528378841027
+        }
+      },
+      {
+        "gain": 0.5,
+        "drop": 0.08,
+        "result": {
+          "ok": false,
+          "ms": 47.8125,
+          "error": "Error: Contact: hit@47.8125 exceeds scale compression bound",
+          "maxCompression": 0.04188036516482213
+        }
+      },
+      {
+        "gain": 0.5,
+        "drop": 0.12,
+        "result": {
+          "ok": false,
+          "ms": 47.8125,
+          "error": "Error: Contact: joint limit legFrontFarFoot hit@47.8125: -75.75599767862062",
+          "maxCompression": 0.026912424014912784
+        }
+      },
+      {
+        "gain": 0.25,
+        "drop": 0,
+        "result": {
+          "ok": false,
+          "ms": 45.703125,
+          "error": "Error: Contact: hit@45.703125 exceeds scale compression bound",
+          "maxCompression": 0.03500866243402784
+        }
+      },
+      {
+        "gain": 0.25,
+        "drop": 0.01,
+        "result": {
+          "ok": false,
+          "ms": 46.40625,
+          "error": "Error: Contact: hit@46.40625 exceeds scale compression bound",
+          "maxCompression": 0.04100930487465193
+        }
+      },
+      {
+        "gain": 0.25,
+        "drop": 0.02,
+        "result": {
+          "ok": false,
+          "ms": 46.40625,
+          "error": "Error: Contact: hit@46.40625 exceeds scale compression bound",
+          "maxCompression": 0.0373494927976879
+        }
+      },
+      {
+        "gain": 0.25,
+        "drop": 0.04,
+        "result": {
+          "ok": false,
+          "ms": 47.109375,
+          "error": "Error: Contact: hit@47.109375 exceeds scale compression bound",
+          "maxCompression": 0.039640735834229335
+        }
+      },
+      {
+        "gain": 0.25,
+        "drop": 0.08,
+        "result": {
+          "ok": false,
+          "ms": 48.515625,
+          "error": "Error: Contact: hit@48.515625 exceeds scale compression bound",
+          "maxCompression": 0.044008747749503696
+        }
+      },
+      {
+        "gain": 0.25,
+        "drop": 0.12,
+        "result": {
+          "ok": false,
+          "ms": 49.21875,
+          "error": "Error: Contact: hit@49.21875 exceeds scale compression bound",
+          "maxCompression": 0.03840964965106969
+        }
+      },
+      {
+        "gain": 0,
+        "drop": 0,
+        "result": {
+          "ok": false,
+          "ms": 46.40625,
+          "error": "Error: Contact: hit@46.40625 exceeds scale compression bound",
+          "maxCompression": 0.040005474707685895
+        }
+      },
+      {
+        "gain": 0,
+        "drop": 0.01,
+        "result": {
+          "ok": false,
+          "ms": 46.40625,
+          "error": "Error: Contact: hit@46.40625 exceeds scale compression bound",
+          "maxCompression": 0.03634566263072192
+        }
+      },
+      {
+        "gain": 0,
+        "drop": 0.02,
+        "result": {
+          "ok": false,
+          "ms": 47.109375,
+          "error": "Error: Contact: hit@47.109375 exceeds scale compression bound",
+          "maxCompression": 0.041579951362878786
+        }
+      },
+      {
+        "gain": 0,
+        "drop": 0.04,
+        "result": {
+          "ok": false,
+          "ms": 47.8125,
+          "error": "Error: Contact: hit@47.8125 exceeds scale compression bound",
+          "maxCompression": 0.042929078381236774
+        }
+      },
+      {
+        "gain": 0,
+        "drop": 0.08,
+        "result": {
+          "ok": false,
+          "ms": 48.515625,
+          "error": "Error: Contact: hit@48.515625 exceeds scale compression bound",
+          "maxCompression": 0.03642722621966338
+        }
+      },
+      {
+        "gain": 0,
+        "drop": 0.12,
+        "result": {
+          "ok": false,
+          "ms": 49.921875,
+          "error": "Error: Contact: hit@49.921875 exceeds scale compression bound",
+          "maxCompression": 0.03720332386568459
+        }
+      }
+    ]
+  },
+  {
+    "id": "tame",
+    "rows": [
+      {
+        "gain": 1,
+        "drop": 0,
+        "result": {
+          "ok": false,
+          "ms": 104,
+          "error": "Error: Contact: tame@104 exceeds scale compression bound",
+          "maxCompression": 0.04404846169670279
+        }
+      },
+      {
+        "gain": 1,
+        "drop": 0.01,
+        "result": {
+          "ok": false,
+          "ms": 108,
+          "error": "Error: Contact: tame@108 exceeds scale compression bound",
+          "maxCompression": 0.043819584074287155
+        }
+      },
+      {
+        "gain": 1,
+        "drop": 0.02,
+        "result": {
+          "ok": false,
+          "ms": 112,
+          "error": "Error: Contact: tame@112 exceeds scale compression bound",
+          "maxCompression": 0.04419400061243528
+        }
+      },
+      {
+        "gain": 1,
+        "drop": 0.04,
+        "result": {
+          "ok": false,
+          "ms": 120,
+          "error": "Error: Contact: tame@120 exceeds scale compression bound",
+          "maxCompression": 0.04399788406193972
+        }
+      },
+      {
+        "gain": 1,
+        "drop": 0.08,
+        "result": {
+          "ok": true,
+          "maxCompression": 0.04413983305290464
+        }
+      },
+      {
+        "gain": 1,
+        "drop": 0.12,
+        "result": {
+          "ok": false,
+          "ms": 363,
+          "error": "Error: Contact: joint limit legFrontFarFoot tame@363: -75.04592021703493",
+          "maxCompression": 0.03225070074868941
+        }
+      },
+      {
+        "gain": 0.75,
+        "drop": 0,
+        "result": {
+          "ok": false,
+          "ms": 105,
+          "error": "Error: Contact: tame@105 exceeds scale compression bound",
+          "maxCompression": 0.04437638545996858
+        }
+      },
+      {
+        "gain": 0.75,
+        "drop": 0.01,
+        "result": {
+          "ok": false,
+          "ms": 109,
+          "error": "Error: Contact: tame@109 exceeds scale compression bound",
+          "maxCompression": 0.0440388556202036
+        }
+      },
+      {
+        "gain": 0.75,
+        "drop": 0.02,
+        "result": {
+          "ok": false,
+          "ms": 113,
+          "error": "Error: Contact: tame@113 exceeds scale compression bound",
+          "maxCompression": 0.044134365314103086
+        }
+      },
+      {
+        "gain": 0.75,
+        "drop": 0.04,
+        "result": {
+          "ok": false,
+          "ms": 121,
+          "error": "Error: Contact: tame@121 exceeds scale compression bound",
+          "maxCompression": 0.04426215794701377
+        }
+      },
+      {
+        "gain": 0.75,
+        "drop": 0.08,
+        "result": {
+          "ok": true,
+          "maxCompression": 0.0444228860689827
+        }
+      },
+      {
+        "gain": 0.75,
+        "drop": 0.12,
+        "result": {
+          "ok": false,
+          "ms": 424,
+          "error": "Error: Contact: joint limit legFrontFarFoot tame@424: -75.00592666782457",
+          "maxCompression": 0.03143419597939223
+        }
+      },
+      {
+        "gain": 0.5,
+        "drop": 0,
+        "result": {
+          "ok": false,
+          "ms": 106,
+          "error": "Error: Contact: tame@106 exceeds scale compression bound",
+          "maxCompression": 0.04408711771112417
+        }
+      },
+      {
+        "gain": 0.5,
+        "drop": 0.01,
+        "result": {
+          "ok": false,
+          "ms": 110,
+          "error": "Error: Contact: tame@110 exceeds scale compression bound",
+          "maxCompression": 0.04428909956589511
+        }
+      },
+      {
+        "gain": 0.5,
+        "drop": 0.02,
+        "result": {
+          "ok": false,
+          "ms": 114,
+          "error": "Error: Contact: tame@114 exceeds scale compression bound",
+          "maxCompression": 0.044334976611003996
+        }
+      },
+      {
+        "gain": 0.5,
+        "drop": 0.04,
+        "result": {
+          "ok": false,
+          "ms": 122,
+          "error": "Error: Contact: tame@122 exceeds scale compression bound",
+          "maxCompression": 0.04430228990890306
+        }
+      },
+      {
+        "gain": 0.5,
+        "drop": 0.08,
+        "result": {
+          "ok": true,
+          "maxCompression": 0.043619752872835094
+        }
+      },
+      {
+        "gain": 0.5,
+        "drop": 0.12,
+        "result": {
+          "ok": true,
+          "maxCompression": 0.030617691210095055
+        }
+      },
+      {
+        "gain": 0.25,
+        "drop": 0,
+        "result": {
+          "ok": false,
+          "ms": 107,
+          "error": "Error: Contact: tame@107 exceeds scale compression bound",
+          "maxCompression": 0.044318619230210576
+        }
+      },
+      {
+        "gain": 0.25,
+        "drop": 0.01,
+        "result": {
+          "ok": false,
+          "ms": 111,
+          "error": "Error: Contact: tame@111 exceeds scale compression bound",
+          "maxCompression": 0.04446792655028797
+        }
+      },
+      {
+        "gain": 0.25,
+        "drop": 0.02,
+        "result": {
+          "ok": false,
+          "ms": 114,
+          "error": "Error: Contact: tame@114 exceeds scale compression bound",
+          "maxCompression": 0.04406790866398691
+        }
+      },
+      {
+        "gain": 0.25,
+        "drop": 0.04,
+        "result": {
+          "ok": false,
+          "ms": 122,
+          "error": "Error: Contact: tame@122 exceeds scale compression bound",
+          "maxCompression": 0.04378961946761434
+        }
+      },
+      {
+        "gain": 0.25,
+        "drop": 0.08,
+        "result": {
+          "ok": true,
+          "maxCompression": 0.04390503581420807
+        }
+      },
+      {
+        "gain": 0.25,
+        "drop": 0.12,
+        "result": {
+          "ok": true,
+          "maxCompression": 0.029801186440797878
+        }
+      },
+      {
+        "gain": 0,
+        "drop": 0,
+        "result": {
+          "ok": false,
+          "ms": 107,
+          "error": "Error: Contact: tame@107 exceeds scale compression bound",
+          "maxCompression": 0.044350699414212935
+        }
+      },
+      {
+        "gain": 0,
+        "drop": 0.01,
+        "result": {
+          "ok": false,
+          "ms": 111,
+          "error": "Error: Contact: tame@111 exceeds scale compression bound",
+          "maxCompression": 0.043902831683819254
+        }
+      },
+      {
+        "gain": 0,
+        "drop": 0.02,
+        "result": {
+          "ok": false,
+          "ms": 115,
+          "error": "Error: Contact: tame@115 exceeds scale compression bound",
+          "maxCompression": 0.04434726269182204
+        }
+      },
+      {
+        "gain": 0,
+        "drop": 0.04,
+        "result": {
+          "ok": false,
+          "ms": 123,
+          "error": "Error: Contact: tame@123 exceeds scale compression bound",
+          "maxCompression": 0.04404929231140664
+        }
+      },
+      {
+        "gain": 0,
+        "drop": 0.08,
+        "result": {
+          "ok": true,
+          "maxCompression": 0.04419766731173497
+        }
+      },
+      {
+        "gain": 0,
+        "drop": 0.12,
+        "result": {
+          "ok": false,
+          "ms": 190,
+          "error": "Error: Contact: joint limit legFrontFarFoot tame@190: -75.02927305538678",
+          "maxCompression": 0.0289846816715007
+        }
+      }
+    ]
+  }
+]
