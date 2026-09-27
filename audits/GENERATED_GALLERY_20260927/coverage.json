@@ -1,8 +1,8 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 160,
- "pct": 25.4,
+ "covered": 166,
+ "pct": 26.3,
  "heldNotCounted": [
   "Basking Shark",
   "Flounder",
@@ -14,15 +14,17 @@
   "Snailfish",
   "Snow Petrel",
   "Tiger Shark",
-  "Whale Shark"
+  "Whale Shark",
+  "Wild Ass",
+  "Wild Pony"
  ],
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 39,
-   "pct": 19,
+   "covered": 42,
+   "pct": 20.5,
    "names": [
     "Leopard",
     "Tiger",
@@ -46,6 +48,7 @@
     "Fennec Fox",
     "Dingo",
     "Spectacled Bear",
+    "Panda",
     "Mongoose",
     "Meerkat",
     "Red Panda",
@@ -58,8 +61,10 @@
     "Mouse",
     "Marmot",
     "Ground Squirrel",
+    "Gopher",
     "Gerbil",
     "Tree Shrew",
+    "Mountain Goat",
     "Cattle",
     "Bongo",
     "Donkey"
@@ -68,8 +73,8 @@
   {
    "family": "fish",
    "species": 132,
-   "covered": 66,
-   "pct": 50,
+   "covered": 69,
+   "pct": 52.3,
    "names": [
     "Salmon",
     "Trout",
@@ -134,6 +139,9 @@
     "Archerfish",
     "Icefish",
     "Mudminnow",
+    "Eel",
+    "Electric Eel",
+    "Juvenile Shark",
     "Shark",
     "Reef Shark",
     "Hammerhead Shark"

@@ -1482,5 +1482,69 @@
   "note": "whole in reaction and late idle (one tiny speck above the back in late idle, visible only at full size)",
   "batch": "audits/G2_C106_20260927",
   "tag": "g2c106"
+ },
+ {
+  "family": "fish",
+  "name": "Juvenile Shark",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107-fishseams/01-juvenile-shark/native",
+  "note": "whole in reaction and late idle on the fish-seams fit (unrepaired fit showed seam lines)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "quadruped",
+  "name": "Panda",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/12-panda/native",
+  "note": "whole after the remainder-island repair (unrepaired: white slivers floated beside the lowered head)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "quadruped",
+  "name": "Mountain Goat",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/14-mountain-goat/native",
+  "note": "whole after the remainder-island repair",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "quadruped",
+  "name": "Gopher",
+  "nativeDir": "audits/QUAD_ISLANDS_20260927/19-gopher/native",
+  "note": "whole after the remainder-island repair (unrepaired: an ear outline floated above the lowered head)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Pony",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/23-wild-pony",
+  "note": "HELD: a small fragment floats above the lowered head in late idle; island repair refused at the 5% cap (5.1%)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Ass",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/24-wild-ass",
+  "note": "HELD: an ear-tip fragment floats above the lowered head and a thin line under the belly in late idle; island repair refused at the cap (8.1%)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "serpent",
+  "name": "Eel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/02-eel",
+  "note": "whole in reaction and late idle (aquatic arena; rests on the seabed, lower body near the frame edge)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
+ },
+ {
+  "family": "serpent",
+  "name": "Electric Eel",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c107/03-electric-eel",
+  "note": "whole in reaction and late idle (aquatic arena; rests on the seabed, lower body near the frame edge)",
+  "batch": "audits/G2_C107_20260927",
+  "tag": "g2c107"
  }
 ]

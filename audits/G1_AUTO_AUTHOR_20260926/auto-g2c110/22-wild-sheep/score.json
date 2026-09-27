@@ -1,0 +1,9 @@
+{
+ "id": "22-wild-sheep",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 28% paint (reference 90%)"
+ ],
+ "semanticPresence": null
+}

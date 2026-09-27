@@ -5,6 +5,12 @@
   "A": "wild",
   "B": "stone"
  },
+ "world": {
+  "key": "lake",
+  "liquid": "water",
+  "surfaceWater": true,
+  "cardHash": "lake-1"
+ },
  "rows": [
   {
    "side": "A",

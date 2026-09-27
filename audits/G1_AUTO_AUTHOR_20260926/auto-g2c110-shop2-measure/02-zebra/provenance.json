@@ -1,0 +1,136 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "02-zebra",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "194639a6088f341d1762f377a481bed3e08d9a8767facda025f34d6e15cd08e8",
+ "subjectSourceSha256": "c8699f2a5bfb035c8242616126a2b6e0998bb85ad7f94427f24d6aa0f3ed867f",
+ "identity": {
+  "name": "Zebra",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Zebra\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"12\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"2034041660\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "seed": 2034041660,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wild-horse",
+  "authoringSha256": "3fe23c7c93b2c88c5bdc0e04213468c64b26517662d8865102e802f58c9a4301",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+ },
+ "habitat": {
+  "profileId": "hoofed-unhorned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "59125cd7203f98e5ecd7f73a3daf063827ef7247f1d140cc45f471cb12326034",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-unhorned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2215,
+     "class": "top",
+     "attach": {
+      "x": 265.8,
+      "y": 164.8,
+      "relX": 0.94,
+      "relY": 0.14
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0054,
+     "class": "top",
+     "attach": {
+      "x": 164,
+      "y": 154,
+      "relX": 0.25,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.042,
+     "class": "limb-down",
+     "attach": {
+      "x": 126,
+      "y": 186.5,
+      "relX": -0.01,
+      "relY": 0.46
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0588,
+     "class": "limb-down",
+     "attach": {
+      "x": 140,
+      "y": 220,
+      "relX": 0.09,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0559,
+     "class": "limb-down",
+     "attach": {
+      "x": 164.5,
+      "y": 220,
+      "relX": 0.26,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.1007,
+     "class": "limb-down",
+     "attach": {
+      "x": 246.5,
+      "y": 224,
+      "relX": 0.81,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.004,
+     "class": "limb-down",
+     "attach": {
+      "x": 204,
+      "y": 224,
+      "relX": 0.52,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

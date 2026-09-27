@@ -1,0 +1,113 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "04-impala",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "20e117e8ad04cea37d45fa2c7ca88aef8bd985b054a7c934e6358a37da4761bb",
+ "subjectSourceSha256": "2a183d583872fcc6ffc5a22cd0afe2def061e1326fe61b6a92ec203edae1043f",
+ "identity": {
+  "name": "Impala",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Impala\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"487201821\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"5\"]]]]",
+  "seed": 487201821,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "cattle",
+  "authoringSha256": "d9c23635c440d69a21b69a8644bb559d83db17b559150cd40dcfa997054f2563",
+  "masterSha256": "0510920919b791b9186d0d1dafeed17625074ee2a6c586d9ddcb703f2005f590"
+ },
+ "habitat": {
+  "profileId": "hoofed-horned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "62c0dded1645b5a41c293433ed1a8a238fad1365ee1feeac841dcad7a483d8fe",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-horned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2228,
+     "class": "top",
+     "attach": {
+      "x": 271.9,
+      "y": 189.6,
+      "relX": 1,
+      "relY": 0.29
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0193,
+     "class": "limb-down",
+     "attach": {
+      "x": 134,
+      "y": 197.5,
+      "relX": -0.01,
+      "relY": 0.43
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0643,
+     "class": "limb-down",
+     "attach": {
+      "x": 141.8,
+      "y": 230.2,
+      "relX": 0.05,
+      "relY": 1
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1035,
+     "class": "limb-down",
+     "attach": {
+      "x": 239,
+      "y": 229,
+      "relX": 0.76,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0652,
+     "class": "limb-down",
+     "attach": {
+      "x": 165,
+      "y": 231,
+      "relX": 0.22,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "cattle",
+   "byClass": {
+    "top": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

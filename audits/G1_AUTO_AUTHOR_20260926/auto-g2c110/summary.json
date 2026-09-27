@@ -1,0 +1,248 @@
+[
+ {
+  "id": "01-giraffe",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "02-zebra",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "03-kudu",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-near-tip (earNearTip) covers 18% paint (reference 62%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "04-impala",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 6.5% paint that no reference appendage lands on",
+   "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 7% paint (reference 70%)",
+   "missing-anatomy: part fore-far-paw (foreFarPaw) covers 5% paint (reference 57%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "05-buffalo",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 10% paint (reference 38%)",
+   "unexplained-anatomy: 7.7% of the paint lies away from the body and in no part (reference 1.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "06-wildebeest",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 14% paint (reference 70%)",
+   "missing-anatomy: part fore-far-paw (foreFarPaw) covers 9% paint (reference 57%)",
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 23%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "07-eland",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-near-tip (earNearTip) covers 19% paint (reference 62%)",
+   "missing-anatomy: part tail1 (tail1) covers 13% paint (reference 45%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "08-gazelle",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 3% paint (reference 35%)",
+   "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "09-hartebeest",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 35%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "10-oryx",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-near-tip (earNearTip) covers 6% paint (reference 62%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "11-gaur",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 19% paint (reference 70%)",
+   "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 57%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "12-banteng",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 19% paint (reference 70%)",
+   "missing-anatomy: part fore-far-paw (foreFarPaw) covers 4% paint (reference 57%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "13-water-buffalo",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 16.0% of the paint lies away from the body and in no part (reference 5.7%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "14-deer",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "15-antelope",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 6.2% paint that no reference appendage lands on",
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 4% paint (reference 35%)",
+   "missing-anatomy: part tail3 (tail3) covers 2% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "16-reindeer",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-root (earFarRoot) covers 21% paint (reference 68%)",
+   "missing-anatomy: part tail3 (tail3) covers 0% paint (reference 6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "17-caribou",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-near-tip (earNearTip) covers 20% paint (reference 62%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "18-saiga",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Part masks: empty authored part: tail0\n    at requireValue (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at file:///Use",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 8% paint (reference 70%)",
+     "missing-anatomy: part fore-far-paw (foreFarPaw) covers 7% paint (reference 57%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "19-yak",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part fore-near-ankle (foreNearAnkle) covers 23% paint (reference 70%)",
+   "missing-anatomy: part fore-far-paw (foreFarPaw) covers 15% paint (reference 57%)",
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 23%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "20-takin",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part fore-far-paw (foreFarPaw) covers 19% paint (reference 57%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "21-sheep",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 38%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "22-wild-sheep",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part fore-far-ankle (foreFarAnkle) covers 28% paint (reference 90%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "23-dromedary-camel",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 38%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "24-bactrian-camel",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part tail3 (tail3) covers 9% paint (reference 38%)"
+  ],
+  "semanticPresence": null
+ }
+]

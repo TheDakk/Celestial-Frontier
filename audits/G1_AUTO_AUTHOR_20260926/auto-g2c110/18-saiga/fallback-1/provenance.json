@@ -1,0 +1,113 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "18-saiga",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "89b52d28422daf3838aae7863ab20ff0d96be80b4aabce90ec65c2d9e2e855f7",
+ "subjectSourceSha256": "603ad2df7148c994024dcd2664cfbce91bd1a0b2e475ce11dbe67503bd5eb25e",
+ "identity": {
+  "name": "Saiga",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Saiga\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"35627238\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"16\"]]]]",
+  "seed": 35627238,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "cattle",
+  "authoringSha256": "d9c23635c440d69a21b69a8644bb559d83db17b559150cd40dcfa997054f2563",
+  "masterSha256": "0510920919b791b9186d0d1dafeed17625074ee2a6c586d9ddcb703f2005f590"
+ },
+ "habitat": {
+  "profileId": "hoofed-horned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "62c0dded1645b5a41c293433ed1a8a238fad1365ee1feeac841dcad7a483d8fe",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-horned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.2182,
+     "class": "front",
+     "attach": {
+      "x": 272.9,
+      "y": 180.1,
+      "relX": 0.98,
+      "relY": 0.26
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0218,
+     "class": "limb-down",
+     "attach": {
+      "x": 120,
+      "y": 190.5,
+      "relX": -0.01,
+      "relY": 0.42
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0572,
+     "class": "limb-down",
+     "attach": {
+      "x": 128,
+      "y": 227,
+      "relX": 0.04,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0598,
+     "class": "limb-down",
+     "attach": {
+      "x": 153.5,
+      "y": 228,
+      "relX": 0.21,
+      "relY": 1
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.1007,
+     "class": "limb-down",
+     "attach": {
+      "x": 230,
+      "y": 229,
+      "relX": 0.7,
+      "relY": 1.02
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "cattle",
+   "byClass": {
+    "top": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
