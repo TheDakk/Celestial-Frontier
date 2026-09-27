@@ -1,8 +1,8 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 65,
- "pct": 10.3,
+ "covered": 66,
+ "pct": 10.5,
  "unmatchedRegistryNames": [],
  "families": [
   {
@@ -66,11 +66,12 @@
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 10,
-   "pct": 9.8,
+   "covered": 11,
+   "pct": 10.8,
    "names": [
     "Kestrel",
     "Goose",
+    "Heron",
     "Ibis",
     "Spoonbill",
     "Oystercatcher",

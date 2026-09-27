@@ -1,0 +1,36 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G1_AUTO_AUTHOR_20260926/pilots/birds-poolv2",
+ "tag": "g2bird-poolv2",
+ "pilot": 3,
+ "patternSkipped": [
+  {
+   "id": "fam-02-heron",
+   "pattern": "MISSING"
+  }
+ ],
+ "scored": 2,
+ "admitPassStatic": [
+  "c56-13-magpie",
+  "c56-15-dove"
+ ],
+ "refused": [],
+ "staticRed": [],
+ "native": [
+  {
+   "id": "c56-13-magpie",
+   "name": "Magpie",
+   "family": "biped-bird",
+   "exit": 1,
+   "status": "FAIL"
+  },
+  {
+   "id": "c56-15-dove",
+   "name": "Dove",
+   "family": "biped-bird",
+   "exit": 1,
+   "status": "FAIL"
+  }
+ ],
+ "runnerExit": 0
+}

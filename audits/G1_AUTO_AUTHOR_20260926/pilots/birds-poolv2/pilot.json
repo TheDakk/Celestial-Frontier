@@ -1,0 +1,22 @@
+[
+ {
+  "id": "c56-13-magpie",
+  "name": "Magpie",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/13-magpie",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/13-magpie/master.png"
+ },
+ {
+  "id": "c56-15-dove",
+  "name": "Dove",
+  "family": "biped-bird",
+  "packet": "audits/G2_THROUGHPUT_C56_20260926/15-dove",
+  "master": "audits/G2_THROUGHPUT_C56_20260926/15-dove/master.png"
+ },
+ {
+  "id": "fam-02-heron",
+  "name": "Heron",
+  "family": "biped-bird",
+  "packet": "audits/G2_FAMILY_PILOT_20260926/02-heron"
+ }
+]

@@ -513,5 +513,13 @@
   "note": "clean",
   "batch": "audits/G2_C76_20260927",
   "tag": "g2c76"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Heron",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2bird-poolv2/fam-02-heron",
+  "note": "left fighter far wing hangs away (wing split)",
+  "batch": "bird pool v2",
+  "tag": "g2bird-poolv2"
  }
 ]

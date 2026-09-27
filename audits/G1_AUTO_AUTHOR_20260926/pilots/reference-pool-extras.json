@@ -18,5 +18,25 @@
   "id": "09-cricket",
   "family": "insect",
   "packet": "audits/G2_REFERENCES_C62_20260927/09-cricket"
+ },
+ {
+  "id": "01-robin",
+  "family": "biped-bird",
+  "packet": "audits/G2_REFERENCES_C62_20260927/01-robin"
+ },
+ {
+  "id": "02-pigeon",
+  "family": "biped-bird",
+  "packet": "audits/G2_REFERENCES_C62_20260927/02-pigeon"
+ },
+ {
+  "id": "03-duck-v2",
+  "family": "biped-bird",
+  "packet": "audits/G2_REFERENCES_C62_20260927/03-duck-v2"
+ },
+ {
+  "id": "04-hawk-v2",
+  "family": "biped-bird",
+  "packet": "audits/G2_REFERENCES_C62_20260927/04-hawk-v2"
  }
 ]

@@ -118,6 +118,13 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**Bird references ADOPTED after Codex's painted-support faint author (C77, `1fa7bd3f`)** (`auto-g2bird-faint-c77-*`):
+- All 20 G2 birds: 5/20 with the current pool, **8/20 with Codex's 4 bird references**.
+- Gained: Robin, Starling, Magpie, Dove, Heron. Lost: Raven (open victory folds) and the G2 Hawk.
+- The verdict battery with all 8 hand references was already measured unchanged (`summary-handrefs-c66`).
+- **`pilots/reference-pool-extras.json` now includes Robin, Pigeon, Duck and Hawk**, used by `score-batch`.
+- **Native** (`native-g2bird-poolv2/`): Heron PASS (the left fighter's far wing hangs away: a wing split). **Magpie and Dove FAIL** in the lethal faint (Magpie `legNearKnee` −70°, Dove `legNearAnkle` 85°; static passes).
+
 **G2 C76 batch (Codex `aeb3f10f`: 8 fish, 8 birds, 8 quadrupeds; scored with `score-batch.mjs`, all 24 incl. the 6 framing-REFUSE, since framing is Dakk's margin request, not an anatomy gate)** (`auto-g2c76/`, `native-g2c76/`):
 - **8/24 native PASS:** Pike, Bass, Char, Sturgeon, Paddlefish, Goldfish; Spoonbill, Kestrel.
 - **Quadrupeds 0/8:** the far ear tip or tail is not visible (Capybara, Llama, Musk Ox, Okapi, Alpaca), unexplained paint (Agouti, Peccary). Pangolin: `materials-unknown` (profile group `toothless-clawed-mammal` mixes furred anteaters and scaled pangolins; left refused, not guessed).

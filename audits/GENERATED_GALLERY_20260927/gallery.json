@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 69,
+ "total": 70,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -351,6 +351,13 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/14-kestrel",
    "report": "DIAGNOSTIC_PASS",
    "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Heron",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2bird-poolv2/fam-02-heron",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "left fighter far wing hangs away (wing split)"
   },
   {
    "family": "Fish",
