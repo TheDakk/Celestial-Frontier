@@ -774,5 +774,131 @@
   "batch": "insect pool re-score (Codex C85 insect motion)",
   "tag": "insect-pool",
   "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Goby",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/01-goby",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Wrasse",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/03-wrasse",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Damselfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/04-damselfish",
+  "note": "small crack line (unwelded)",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Clownfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/05-clownfish",
+  "note": "small line (unwelded)",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Butterflyfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/06-butterflyfish",
+  "note": "small crack (unwelded)",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "fish",
+  "name": "Surgeonfish",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/07-surgeonfish",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Roadrunner",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/11-roadrunner",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Sandgrouse",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/12-sandgrouse",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Woodpecker",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/14-woodpecker",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Eider Duck",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/16-eider-duck",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Red Panda",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/18-red-panda",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Pampas Fox",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/19-pampas-fox",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wildcat",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/21-wildcat",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
+ },
+ {
+  "family": "quadruped",
+  "name": "Spectacled Bear",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/23-spectacled-bear",
+  "note": "clean",
+  "batch": "audits/G2_C87_20260927",
+  "tag": "g2c87",
+  "supports": "observed"
  }
 ]

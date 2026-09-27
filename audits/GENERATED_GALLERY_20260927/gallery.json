@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 94,
+ "total": 108,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -213,6 +213,34 @@
    "note": "clean (C83 layout)"
   },
   {
+   "family": "Quadrupeds",
+   "name": "Red Panda",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/18-red-panda",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Pampas Fox",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/19-pampas-fox",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wildcat",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/21-wildcat",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Spectacled Bear",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/23-spectacled-bear",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Snakes (serpent strip author)",
    "name": "Python",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-python",
@@ -423,6 +451,34 @@
    "note": "clean"
   },
   {
+   "family": "Birds",
+   "name": "Roadrunner",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/11-roadrunner",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Sandgrouse",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/12-sandgrouse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Woodpecker",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/14-woodpecker",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Eider Duck",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/16-eider-duck",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -624,6 +680,48 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c83/07-mahi-mahi",
    "report": "DIAGNOSTIC_PASS",
    "note": "vertical cracks (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Goby",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/01-goby",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Fish",
+   "name": "Wrasse",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/03-wrasse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Fish",
+   "name": "Damselfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/04-damselfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small crack line (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Clownfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/05-clownfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small line (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Butterflyfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/06-butterflyfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small crack (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Surgeonfish",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c87/07-surgeonfish",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
   },
   {
    "family": "Insects",

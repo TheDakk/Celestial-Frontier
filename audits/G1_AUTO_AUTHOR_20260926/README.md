@@ -118,6 +118,13 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**G2 C87 batch (Codex `0df61e7f`: 8 fish, 8 birds, 8 quads)** (`native-g2c87/`): **14/24 native PASS**, the best batch so far.
+- Fish: Goby, Wrasse, Damselfish, Clownfish, Butterflyfish, Surgeonfish.
+- Birds: Roadrunner, Sandgrouse, Woodpecker, Eider Duck.
+- Quadrupeds: **Red Panda, Pampas Fox, Wildcat, Spectacled Bear**.
+- Snowy Owl passes static but fails native. Static RED: Striped Hyena, Black Bear, Hyrax. Refused: Blenny, marine Angelfish, Owl, Guillemot (unexplained paint), Turkey (shin coverage), Coati (facing).
+- **Full-size:** all 4 quads and all 4 birds are clean. The reef fish are mostly clean; small crack lines on Damselfish, Clownfish and Butterflyfish.
+
 **Insects unblocked (session 5, after Codex's C85 insect motion author + native same-joint intake):** all 29 G2 insects re-scored with the current pool (`auto-g2insect-pool/`): **5/29 static** (Cockroach, Beetle, Termite, Dung Beetle, Firefly), up from 1. Native, observed supports (`native-insect-pool/`): **Cockroach, Termite, Dung Beetle and Firefly PASS** (775–789 frames, 0/0). Full-size: Cockroach, Dung Beetle and Firefly (glowing abdomen) clean; the Termite has a thin abdomen line.
 **Codex's hand Wasp reference (C86) evaluated:** battery unchanged (18/34 · 34 · 34 · 31/34 · 26/27), but insects 5 → **4**/29 (the Beetle's winning fit goes intake-refused; the Ant becomes RED). **Net negative → not adopted.**
 

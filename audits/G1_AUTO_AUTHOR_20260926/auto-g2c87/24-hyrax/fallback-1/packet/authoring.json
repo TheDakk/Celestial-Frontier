@@ -1,0 +1,967 @@
+{
+  "id": "24-hyrax",
+  "family": "quadruped",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile small-clawed-mammal media ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "landmarksPx": {
+    "root": [
+      617.5,
+      569.5
+    ],
+    "pelvis": [
+      431.5,
+      577.5
+    ],
+    "spine": [
+      615.5,
+      557.3
+    ],
+    "chest": [
+      736.4,
+      558.5
+    ],
+    "neck": [
+      826.7,
+      523.7
+    ],
+    "head": [
+      871.9,
+      449.6
+    ],
+    "jaw": [
+      955.1,
+      532.8
+    ],
+    "hindNearRoot": [
+      407.8,
+      607.8
+    ],
+    "hindNearKnee": [
+      370.7,
+      689.3
+    ],
+    "hindNearAnkle": [
+      311.9,
+      797.9
+    ],
+    "hindNearPaw": [
+      334.4,
+      819.4
+    ],
+    "hindFarRoot": [
+      467.7,
+      636.4
+    ],
+    "hindFarKnee": [
+      446,
+      725
+    ],
+    "hindFarAnkle": [
+      488.6,
+      820
+    ],
+    "hindFarPaw": [
+      515.2,
+      828.1
+    ],
+    "foreNearRoot": [
+      736.5,
+      598.1
+    ],
+    "foreNearKnee": [
+      767,
+      747
+    ],
+    "foreNearAnkle": [
+      827,
+      821
+    ],
+    "foreNearPaw": [
+      859,
+      831.2
+    ],
+    "foreFarRoot": [
+      690.3,
+      613
+    ],
+    "foreFarKnee": [
+      657,
+      741
+    ],
+    "foreFarAnkle": [
+      654,
+      806
+    ],
+    "foreFarPaw": [
+      683.9,
+      815.1
+    ],
+    "tail0": [
+      401.8,
+      488.4
+    ],
+    "tail1": [
+      352.8,
+      525.8
+    ],
+    "tail2": [
+      315.9,
+      612.1
+    ],
+    "tail3": [
+      307.5,
+      637.1
+    ],
+    "earNearRoot": [
+      819.2,
+      435.4
+    ],
+    "earNearTip": [
+      795.1,
+      465.8
+    ],
+    "earFarRoot": [
+      898.3,
+      412.9
+    ],
+    "earFarTip": [
+      898.5,
+      405.5
+    ]
+  },
+  "groundLineY": 0.6626500487229344,
+  "materials": {
+    "surface": "fur"
+  },
+  "remainderPart": "spine",
+  "parts": [
+    {
+      "id": "tail3",
+      "joint": "tail3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          286.4,
+          624.8
+        ],
+        [
+          347.2,
+          666.3
+        ],
+        [
+          298.1,
+          785.3
+        ],
+        [
+          269.3,
+          681.4
+        ]
+      ]
+    },
+    {
+      "id": "tail2",
+      "joint": "tail2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          271.7,
+          552.3
+        ],
+        [
+          340,
+          584.9
+        ],
+        [
+          351.1,
+          669.4
+        ],
+        [
+          286.5,
+          625
+        ]
+      ]
+    },
+    {
+      "id": "tail1",
+      "joint": "tail1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          333.5,
+          480.9
+        ],
+        [
+          368.7,
+          485.6
+        ],
+        [
+          386,
+          507.5
+        ],
+        [
+          338.4,
+          584.7
+        ],
+        [
+          285.8,
+          560.2
+        ]
+      ]
+    },
+    {
+      "id": "tail0",
+      "joint": "tail0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          352.2,
+          480.6
+        ],
+        [
+          375.6,
+          470.1
+        ],
+        [
+          427.7,
+          455.7
+        ],
+        [
+          428.9,
+          480
+        ],
+        [
+          386.1,
+          502.8
+        ],
+        [
+          363.7,
+          519.8
+        ],
+        [
+          348.1,
+          508.7
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-ankle",
+      "joint": "hindNearAnkle",
+      "layer": "near",
+      "polygonPx": [
+        [
+          297.7,
+          704.1
+        ],
+        [
+          325.6,
+          783.7
+        ],
+        [
+          335.8,
+          823.2
+        ],
+        [
+          296.7,
+          808.5
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "layer": "near",
+      "polygonPx": [
+        [
+          325.1,
+          802.5
+        ],
+        [
+          366.8,
+          799.6
+        ],
+        [
+          388.8,
+          833.9
+        ],
+        [
+          341.8,
+          830.5
+        ]
+      ]
+    },
+    {
+      "id": "hind-far-ankle",
+      "joint": "hindFarAnkle",
+      "layer": "far",
+      "polygonPx": [
+        [
+          407.7,
+          773
+        ],
+        [
+          486.5,
+          801.9
+        ],
+        [
+          511.1,
+          833.1
+        ],
+        [
+          444.1,
+          836.6
+        ]
+      ]
+    },
+    {
+      "id": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "layer": "far",
+      "polygonPx": [
+        [
+          494.4,
+          816.1
+        ],
+        [
+          528.1,
+          811.7
+        ],
+        [
+          537.7,
+          829.8
+        ],
+        [
+          514.6,
+          838.5
+        ]
+      ]
+    },
+    {
+      "id": "fore-near-ankle",
+      "joint": "foreNearAnkle",
+      "layer": "near",
+      "polygonPx": [
+        [
+          727.1,
+          787.8
+        ],
+        [
+          825.7,
+          804
+        ],
+        [
+          850.8,
+          836.5
+        ],
+        [
+          729.6,
+          828.1
+        ]
+      ]
+    },
+    {
+      "id": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "layer": "near",
+      "polygonPx": [
+        [
+          833.9,
+          819
+        ],
+        [
+          867.6,
+          804.3
+        ],
+        [
+          882,
+          832.3
+        ],
+        [
+          850.2,
+          840.9
+        ]
+      ]
+    },
+    {
+      "id": "fore-far-ankle",
+      "joint": "foreFarAnkle",
+      "layer": "far",
+      "polygonPx": [
+        [
+          610.4,
+          782.3
+        ],
+        [
+          665.7,
+          765.8
+        ],
+        [
+          673.3,
+          818.1
+        ],
+        [
+          636.2,
+          827.3
+        ]
+      ]
+    },
+    {
+      "id": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "layer": "far",
+      "polygonPx": [
+        [
+          666.1,
+          789.8
+        ],
+        [
+          790.9,
+          813.5
+        ],
+        [
+          791.6,
+          835.3
+        ],
+        [
+          688,
+          827.1
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-knee",
+      "joint": "hindNearKnee",
+      "layer": "near",
+      "polygonPx": [
+        [
+          344.4,
+          659.6
+        ],
+        [
+          422.9,
+          679.8
+        ],
+        [
+          444.8,
+          712
+        ],
+        [
+          351.3,
+          796.9
+        ],
+        [
+          292,
+          780.6
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-root",
+      "joint": "hindNearRoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          366.3,
+          527.6
+        ],
+        [
+          453.7,
+          543.7
+        ],
+        [
+          494.2,
+          636.2
+        ],
+        [
+          466.9,
+          692.9
+        ],
+        [
+          424.9,
+          716.9
+        ],
+        [
+          332.5,
+          674
+        ]
+      ]
+    },
+    {
+      "id": "fore-near-knee",
+      "joint": "foreNearKnee",
+      "layer": "near",
+      "polygonPx": [
+        [
+          679.4,
+          722.2
+        ],
+        [
+          788.3,
+          695.5
+        ],
+        [
+          839.5,
+          801
+        ],
+        [
+          859,
+          817.4
+        ],
+        [
+          693.5,
+          809.5
+        ]
+      ]
+    },
+    {
+      "id": "fore-near-root",
+      "joint": "foreNearRoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          689.4,
+          531
+        ],
+        [
+          758.7,
+          516.6
+        ],
+        [
+          820.7,
+          606.3
+        ],
+        [
+          798.8,
+          680
+        ],
+        [
+          804.9,
+          732.6
+        ],
+        [
+          675.6,
+          742.4
+        ],
+        [
+          651.4,
+          686
+        ]
+      ]
+    },
+    {
+      "id": "hind-far-knee",
+      "joint": "hindFarKnee",
+      "layer": "far",
+      "polygonPx": [
+        [
+          433.7,
+          700.1
+        ],
+        [
+          494.9,
+          711.8
+        ],
+        [
+          485.3,
+          775.5
+        ],
+        [
+          512,
+          814.5
+        ],
+        [
+          438.6,
+          824.7
+        ]
+      ]
+    },
+    {
+      "id": "hind-far-root",
+      "joint": "hindFarRoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          420.6,
+          597.5
+        ],
+        [
+          514.2,
+          598.7
+        ],
+        [
+          530.8,
+          660.3
+        ],
+        [
+          506.8,
+          712.3
+        ],
+        [
+          489,
+          737.4
+        ],
+        [
+          412.8,
+          734.6
+        ]
+      ]
+    },
+    {
+      "id": "fore-far-knee",
+      "joint": "foreFarKnee",
+      "layer": "far",
+      "polygonPx": [
+        [
+          612.5,
+          741.2
+        ],
+        [
+          696.4,
+          726.1
+        ],
+        [
+          708.4,
+          805.1
+        ],
+        [
+          614,
+          808.1
+        ]
+      ]
+    },
+    {
+      "id": "fore-far-root",
+      "joint": "foreFarRoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          652.6,
+          634.1
+        ],
+        [
+          723.9,
+          616.9
+        ],
+        [
+          727.8,
+          701.2
+        ],
+        [
+          692,
+          735.2
+        ],
+        [
+          604.5,
+          770.7
+        ]
+      ]
+    },
+    {
+      "id": "ear-near-tip",
+      "joint": "earNearTip",
+      "layer": "near",
+      "polygonPx": [
+        [
+          762.6,
+          451.1
+        ],
+        [
+          790.9,
+          439.7
+        ],
+        [
+          819.4,
+          467.1
+        ],
+        [
+          812.3,
+          486.3
+        ],
+        [
+          771.8,
+          472.1
+        ]
+      ]
+    },
+    {
+      "id": "ear-near-root",
+      "joint": "earNearRoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          787,
+          438.5
+        ],
+        [
+          836.5,
+          412.2
+        ],
+        [
+          845.9,
+          447.2
+        ],
+        [
+          821,
+          477.8
+        ],
+        [
+          800.8,
+          464.7
+        ]
+      ]
+    },
+    {
+      "id": "ear-far-tip",
+      "joint": "earFarTip",
+      "layer": "far",
+      "polygonPx": [
+        [
+          886.2,
+          393.7
+        ],
+        [
+          904.3,
+          389.8
+        ],
+        [
+          924.8,
+          408.5
+        ],
+        [
+          906,
+          413.9
+        ]
+      ]
+    },
+    {
+      "id": "ear-far-root",
+      "joint": "earFarRoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          873.7,
+          402.6
+        ],
+        [
+          892,
+          398.3
+        ],
+        [
+          915.9,
+          424.1
+        ],
+        [
+          896.7,
+          430.3
+        ]
+      ]
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "polygonPx": [
+        [
+          881.6,
+          514.4
+        ],
+        [
+          941.9,
+          519.9
+        ],
+        [
+          1018.4,
+          490.8
+        ],
+        [
+          1050.1,
+          535.8
+        ],
+        [
+          945.1,
+          582.4
+        ],
+        [
+          903.7,
+          556.6
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          782.2,
+          382.7
+        ],
+        [
+          882.8,
+          350
+        ],
+        [
+          977.9,
+          441.3
+        ],
+        [
+          1016.4,
+          479.1
+        ],
+        [
+          1044.1,
+          523.3
+        ],
+        [
+          915.3,
+          555.5
+        ],
+        [
+          846.8,
+          503.4
+        ],
+        [
+          795.7,
+          461.5
+        ]
+      ]
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near",
+      "polygonPx": [
+        [
+          728.3,
+          436.9
+        ],
+        [
+          802.8,
+          410.4
+        ],
+        [
+          873.4,
+          490.6
+        ],
+        [
+          915.6,
+          543.8
+        ],
+        [
+          927.9,
+          587.2
+        ],
+        [
+          823.5,
+          650.6
+        ],
+        [
+          788.7,
+          650.6
+        ],
+        [
+          766.5,
+          552.3
+        ]
+      ]
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          607.9,
+          552.3
+        ],
+        [
+          629.7,
+          552.9
+        ],
+        [
+          626.3,
+          587.3
+        ],
+        [
+          605.6,
+          587.4
+        ]
+      ]
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near",
+      "polygonPx": [
+        [
+          671.8,
+          407.1
+        ],
+        [
+          747.6,
+          434
+        ],
+        [
+          848.2,
+          692.3
+        ],
+        [
+          639.8,
+          744.5
+        ]
+      ]
+    },
+    {
+      "id": "pelvis",
+      "joint": "pelvis",
+      "layer": "near",
+      "polygonPx": [
+        [
+          368.5,
+          461.6
+        ],
+        [
+          505.3,
+          412.5
+        ],
+        [
+          533.7,
+          710.9
+        ],
+        [
+          340.8,
+          643.1
+        ]
+      ]
+    },
+    {
+      "id": "spine",
+      "joint": "spine",
+      "layer": "near",
+      "polygonPx": [
+        [
+          504,
+          413.5
+        ],
+        [
+          681.4,
+          428.5
+        ],
+        [
+          638.6,
+          750.7
+        ],
+        [
+          538,
+          741.3
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from cattle. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic"
+  }
+}

@@ -1,0 +1,14 @@
+{
+ "id": "22-black-bear",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 7.8% paint that no reference appendage lands on",
+  "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 8% paint (reference 70%)",
+  "missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 45%)",
+  "missing-anatomy: part fore-far-paw (foreFarPaw) covers 17% paint (reference 57%)",
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 6% paint (reference 23%)",
+  "unexplained-anatomy: 9.1% of the paint lies away from the body and in no part (reference 4.7%)"
+ ],
+ "semanticPresence": null
+}

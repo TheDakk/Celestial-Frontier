@@ -1,0 +1,127 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "13-turkey",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "58423cc009b8f6309ddac46ff18547b49319df2cb00ec7e86c22cac2070e890d",
+ "subjectSourceSha256": "6e2b53b6a0a2636c50fb9fdc43f1316fc1807bb8a981247f8b88e836276d396f",
+ "identity": {
+  "name": "Turkey",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Turkey\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"16\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"226656350\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "seed": 226656350,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "04-hawk-v2",
+  "authoringSha256": "6bdd4d4d054279748dd57fdbe2078c4a7d9e680e8b6aa73218c0b6715b22ea65",
+  "masterSha256": "a3cc39bbb343cd4f6ed8eec6af71759ce283d0ea0eec26c6cdb24d91d5fe73d3"
+ },
+ "habitat": {
+  "profileId": "ground-foraging-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "2458c82bbd8f37b007dbba5ae84cc60975cf0f4ecad7d901ee633e684483d7c2",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group ground-foraging-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0882,
+     "class": "top",
+     "attach": {
+      "x": 292.1,
+      "y": 165.9,
+      "relX": 0.96,
+      "relY": 0.1
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0056,
+     "class": "top",
+     "attach": {
+      "x": 232.5,
+      "y": 156,
+      "relX": 0.53,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1441,
+     "class": "rear",
+     "attach": {
+      "x": 158,
+      "y": 208,
+      "relX": -0.01,
+      "relY": 0.59
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0324,
+     "class": "limb-down",
+     "attach": {
+      "x": 296.9,
+      "y": 216.9,
+      "relX": 0.99,
+      "relY": 0.69
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0464,
+     "class": "limb-down",
+     "attach": {
+      "x": 200,
+      "y": 245,
+      "relX": 0.3,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0485,
+     "class": "limb-down",
+     "attach": {
+      "x": 230.5,
+      "y": 245,
+      "relX": 0.51,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "04-hawk-v2",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
