@@ -118,6 +118,12 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**Bird references re-measured after Codex's painted-support bird author (C75, `337e7cf8`)** (`auto-g2bird-painted-base/`, `auto-g2bird-painted-c75/`; all 20 G2 birds):
+- Current pool (no bird references): **4/20** (Goose, Quail, Raven, Vulture).
+- With Codex's 4 bird references: **4/20** (Goose, Quail, Robin, Starling).
+- The painted supports **fixed the Goose and Quail losses** the bird references used to cause. Raven and Vulture still go static RED with them (Codex's open Raven victory folds and Vulture faint limits).
+- **Net neutral → bird references stay held.** Re-measure after those two repairs. The gallery already holds all six birds from their best passing runs.
+
 **G2 C72 batch (Codex `b8741e6f`: 8 fish, 8 birds, 4 insects, 4 snakes), scored with `score-batch.mjs` (session 5)** (`auto-g2c72c/`, `native-g2c72c/`):
 - **Three instrument problems found on the first two runs and fixed; none was a creature fault:**
   1. **Fish need an aquatic WORLD block in the battle script**, not just lake themes. The stage refused "home arena cannot support both organisms". `score-batch` now bases fish on the `native-g2fam-fish` script.
