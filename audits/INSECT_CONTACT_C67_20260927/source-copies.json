@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/merge-joint/24-termite/fit/record.json",
+    "copy": "audits/INSECT_CONTACT_C67_20260927/inputs/24-termite/record.json",
+    "sha256": "3b3f92b5656f25766db34248d6c6033eb18c8ae02e24121013a60c7a8ca4b357"
+  },
+  {
+    "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/merge-joint/24-termite/fit/binding.json",
+    "copy": "audits/INSECT_CONTACT_C67_20260927/inputs/24-termite/binding.json",
+    "sha256": "5267b5442d3036bf887b469e44ca9c32d77140ed54d5101f58bf2176b611bf62"
+  },
+  {
+    "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/merge-joint/26-cicada/fit/record.json",
+    "copy": "audits/INSECT_CONTACT_C67_20260927/inputs/26-cicada/record.json",
+    "sha256": "e6ebfd895c8e22e5285cd9079d40d5aaa4067e8fc752f36882287d2f92430b90"
+  },
+  {
+    "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/merge-joint/26-cicada/fit/binding.json",
+    "copy": "audits/INSECT_CONTACT_C67_20260927/inputs/26-cicada/binding.json",
+    "sha256": "2bb7f72fd1457a2d1811eba7fb183526bf003ece17e0abd87b40071096520230"
+  }
+]

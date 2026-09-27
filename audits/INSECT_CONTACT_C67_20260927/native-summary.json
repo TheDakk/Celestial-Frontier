@@ -1,0 +1,46 @@
+[
+  {
+    "name": "native-beetle",
+    "status": "DIAGNOSTIC_PASS",
+    "capture": {
+      "frames": 789,
+      "cpuP95Ms": 3.799999952316284,
+      "frameDeltaP95Ms": 16.700000000000728
+    },
+    "refusals": null,
+    "visualAcceptance": false
+  },
+  {
+    "name": "native-cricket",
+    "status": "DIAGNOSTIC_PASS",
+    "capture": {
+      "frames": 789,
+      "cpuP95Ms": 4.299999952316284,
+      "frameDeltaP95Ms": 16.700000000000728
+    },
+    "refusals": null,
+    "visualAcceptance": false
+  },
+  {
+    "name": "native-ant",
+    "status": "DIAGNOSTIC_PASS",
+    "capture": {
+      "frames": 789,
+      "cpuP95Ms": 4,
+      "frameDeltaP95Ms": 16.700000000000728
+    },
+    "refusals": null,
+    "visualAcceptance": false
+  },
+  {
+    "name": "native-termite",
+    "status": "DIAGNOSTIC_PASS",
+    "capture": {
+      "frames": 789,
+      "cpuP95Ms": 5.599999904632568,
+      "frameDeltaP95Ms": 16.700000000000728
+    },
+    "refusals": null,
+    "visualAcceptance": false
+  }
+]

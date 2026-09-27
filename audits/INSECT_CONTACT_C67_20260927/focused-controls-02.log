@@ -1,0 +1,127 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/motion/stance-envelope-insect.test.ts (5 tests | 1 failed) 311ms
+   × retains the accepted Beetle faint and unrelated insect actions byte-for-byte 25ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/motion/stance-envelope-insect.test.ts > retains the accepted Beetle faint and unrelated insect actions byte-for-byte
+AssertionError: expected { kind: 'motion-timeline', …(19) } to deeply equal { kind: 'motion-timeline', …(20) }
+
+- Expected
++ Received
+
+@@ -6,11 +6,11 @@
+      "squash": 0,
+      "stretch": 0,
+    },
+    "durationMs": 520,
+    "family": "faint",
+-   "hash": "ce985857",
++   "hash": "f848fdf2",
+    "hitstopMs": 0,
+    "kind": "motion-timeline",
+    "limitsRad": {
+      "abdomen": {
+        "max": 0.8726646259971648,
+@@ -130,11 +130,11 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 520,
+          "t": 1,
+-         "value": -0.017001953125,
++         "value": -0.02,
+        },
+      ],
+      "dy": [
+        {
+          "ease": "ease-out",
+@@ -144,17 +144,17 @@
+        },
+        {
+          "ease": "ease-in",
+          "ms": 234,
+          "t": 0.45,
+-         "value": 0.051005859375,
++         "value": 0.06,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 520,
+          "t": 1,
+-         "value": 0.136015625,
++         "value": 0.16,
+        },
+      ],
+    },
+    "secondary": [
+      {
+@@ -305,16 +305,10 @@
+        "stretch": 0,
+        "wobbleMs": 0,
+      },
+    ],
+    "seed": 881335556,
+-   "stanceEnvelope": {
+-     "angleReserve": 0.9,
+-     "samples": 129,
+-     "schema": "cf.motion.stance-envelope/v1",
+-     "torsoGain": 0.85009765625,
+-   },
+    "tracks": {
+      "abdomen": [
+        {
+          "ease": "ease-out",
+          "ms": 0,
+@@ -669,11 +663,11 @@
+        },
+        {
+          "ease": "ease-out",
+          "ms": 520,
+          "t": 1,
+-         "value": 0.17804403678059344,
++         "value": 0.20943951023931956,
+        },
+      ],
+      "thorax": [
+        {
+          "ease": "ease-out",
+@@ -683,17 +677,17 @@
+        },
+        {
+          "ease": "ease-in",
+          "ms": 234,
+          "t": 0.45,
+-         "value": 0.04451100919514836,
++         "value": 0.05235987755982989,
+        },
+        {
+          "ease": "ease-out",
+          "ms": 520,
+          "t": 1,
+-         "value": 0.07418501532524725,
++         "value": 0.08726646259971647,
+        },
+      ],
+      "wingFar": [
+        {
+          "ease": "ease-out",
+
+ ❯ apps/game/src/motion/stance-envelope-insect.test.ts:40:103
+     38|  for(const action of['faint','feed','cast','hit','tame','approach:craw…
+     39|   const c=compileBodyCard(r,r.genome),actual=buildTimeline(c,action,c.…
+     40|   try{const other=compileBodyCard(r,r.genome);expect(buildTimeline(oth…
+       |                                                                                                       ^
+     41|  }
+     42| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 11 passed (12)
+   Start at  01:53:47
+   Duration  605ms (transform 240ms, setup 0ms, import 315ms, tests 637ms, environment 0ms)
+
