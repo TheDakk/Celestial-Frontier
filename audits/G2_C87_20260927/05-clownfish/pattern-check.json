@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Clownfish",
+  "masterSha256": "f0c243583fa619afab456422e121283c46dede7275d315519e6e771d3095f5ce",
+  "required": [
+    "three white bands edged in black on orange"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "three white bands edged in black on orange",
+      "status": "PRESENT",
+      "observed": "Three distinct white bands edged in black on orange: head, mid-body and tail stalk. Rounded fins and blunt snout read clearly; tail complete. Dorsal is deeply notched into two lobes and paired lower fins overlap; far pectoral unresolved. No detached paint seen."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Wrasse",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "09a5658e530cf9bc8f6e314b2490a0df9fea0f7a0bcfff207c80aadbeedc07dc",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "fish",
+  "authoringCreated": false,
+  "sourceHead": "36fe9633c9efbe6d915a63a751cfe9aa2ee5429a",
+  "basePromptSha256": "290b4b33dc3a3e7935336ee38310e4df2ade8b6da9b3f4aec689e125f3731a0d",
+  "layoutCompilerSha256": "81a982bac26e9844354b448d5d8a8d8bc89122768db072c3fbcb0e668505640d",
+  "layoutClarification": "Species identity features FIRST: protruding buck teeth on a pointed snout; cigar-shaped body; large fan pectoral fins doing the swimming. One Earth Wrasse. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: horizontal fish, head RIGHT and complete caudal tail LEFT; species-correct fin count, finlets, barbels and tail shape. Natural fin rays and fin roots must stay distinct; no detached pieces. Keep the tail stalk continuous.\n\n"
+}

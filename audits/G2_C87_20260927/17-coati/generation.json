@@ -1,0 +1,13 @@
+{
+  "id": "17-coati",
+  "name": "Coati",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-8638a59c-4afc-4443-b88a-0fce5c333833.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "7dc0efc0af808bba6a89c9470e50b70a59c182eb37980bb43fc4e355a12c8ee9",
+  "bytes": 1211025,
+  "promptSha256": "51cd852092b75812960730287eff1bda07fbf54a78e65c86fb15742a01c377c0",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

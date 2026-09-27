@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Woodpecker",
+  "masterSha256": "08cf942e09969e6aefdb0874f6d6fbe31ff5e448ee17e8f8967a744072c31eb4",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

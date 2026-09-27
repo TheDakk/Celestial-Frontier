@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Damselfish",
+  "masterSha256": "b31301ff4e81aaa1e39e6b8030d9e2e7e22982074527088eb3cc6daa4daf99ca",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

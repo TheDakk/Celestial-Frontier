@@ -1,0 +1,13 @@
+{
+  "id": "04-damselfish",
+  "name": "Damselfish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-fcd53675-1140-4ea6-a4ad-769b7c8b448f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b31301ff4e81aaa1e39e6b8030d9e2e7e22982074527088eb3cc6daa4daf99ca",
+  "bytes": 1493525,
+  "promptSha256": "edefea61afd10e6316b01bfc10672e742916722a85f6173230be46713d297c1b",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

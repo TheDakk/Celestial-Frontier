@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Snowy Owl",
+  "masterSha256": "c406be06b90a517547653ae28bdec013b51aa5c4d0e2169cb4f6445236608b1a",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

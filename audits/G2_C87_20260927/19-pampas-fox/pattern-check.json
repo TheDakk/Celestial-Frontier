@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Pampas Fox",
+  "masterSha256": "3e9e73f497771936c853068d5fd3072ad35efcdf8d06c55c503eee184c27b523",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
