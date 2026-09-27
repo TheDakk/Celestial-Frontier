@@ -28,7 +28,7 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
 - **Dev site:** serves `e71d1496`; no player-visible change since.
 - **develop** is still `c1791e21`; PR #43 is open; no hosted attempt.
 - **Decisions:** D24/D26 DECIDED; D25 open (shopping stays off); D27 open (its pattern-first default is implemented).
-- **Progress:** about **36 generated creatures pass native** with zero hand edits: quadrupeds, 9 snakes, 2 birds (Raven, Vulture), plus fish that have tail/seam work pending. None is visually accepted or admitted. The roster is 631 Earth species.
+- **Progress** (`audits/GENERATED_GALLERY_20260927/coverage.json`, regenerate with `coverage.mjs` after each batch): **37 of 631 Earth species (5.9 %)** have a generated creature passing native with zero hand edits: quadrupeds 21/205, snakes 9/22, fish 5/132, birds 2/102, insects 0/41, every other family 0. None is visually accepted or admitted. Master gallery: `gallery.jpg`.
 
 **Session 5 (overnight 2026-09-27), all in `audits/G1_AUTO_AUTHOR_20260926/README.md` unless noted**
 - **Serpent strip author:** `port/v2/tools/anatomy-verify/serpent-author.mjs`, runner `--serpent-strips` (USE IT for every serpent batch). **Snakes 0 → 9** static + native, clean at full size. Battery `serpent/battery.mjs`: 59/60 mutants, 9/9 wrong family.
@@ -39,11 +39,8 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
 
 **Next, in order (Claude)**
 1. Read Codex's mailbox (`/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md`, read-only) and merge any newer signed `openai/mac` (`--no-ff`; `git grep -n "^<<<<<<<\|^>>>>>>>"` BEFORE committing; keep this block).
-2. **Score every new G2 batch:**
-   - Honour `pattern-check.json` (build a `pilots/*-pattern-eligible.json`).
-   - Run `node audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs --tag=<fresh> --topk=1 --chains --counter --fallback=2 --serpent-strips --targets=<pilot>`.
-   - Run native on every pass. Pattern: `native-g2c59/run.sh`, sequential, out of the sandbox. Land scripts from `05-cougar`, birds from `15-goose`, fish from `native-g2fam-fish/*-script.json`.
-   - Build `sheet.mjs` + `crops.mjs`; LOOK at full size; record the results; send Dakk the sheet.
+2. **Score every new G2 batch with ONE command:** `node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir> <fresh-tag>` (out of the sandbox). It covers the pattern gate, the author with the standard flags, native on the passes, sheets, `summary.json` and the gallery registry.
+   - Then LOOK at `native-<tag>/fullsize-reaction.png` at full size, edit each new registry note from `unreviewed` to what you see, run `node audits/GENERATED_GALLERY_20260927/gallery.mjs`, record the results in the G1 README, and send Dakk the sheet.
 3. **Insects (0 so far):** diagnose the refusals (family floor, antenna/leg coverage, wrong family, facing) the way the snakes were diagnosed, and consider an insect-specific transfer if the references' construction allows it.
 4. Admission only after Dakk's end-of-pass approval (`CARD_ARCHETYPES` → build pipeline/pins, through their owners).
 
