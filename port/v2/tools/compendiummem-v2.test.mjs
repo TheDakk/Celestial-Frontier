@@ -16,13 +16,29 @@ materialize(directory);
 const contract = await import(pathToFileURL(path.join(directory, 'contract.mjs')).href);
 const fixture = buildCompendiumFixture();
 const prior = JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL('../../../audits/ARCHETYPE_REPAIRS_20260922/01-i5/certificate/report.json.gz', import.meta.url))));
+// Add explicit synthetic no-painted owners to historical test-only carriers.
+function addSyntheticOwnership(value) {
+  if (!value || typeof value !== 'object') return;
+  if (value.diagnostics) value.diagnostics.paintedArt = null;
+  if (value.images && value.broker && value.schema?.includes('thumb-settlement')) {
+    value.paintedArt = null;
+    value.ownerKeys = { brokerLeased: Array.from({length:value.broker.leasedKeyCount},(_,i)=>'leased-'+i), brokerCached: Array.from({length:value.broker.cachedKeyCount},(_,i)=>'cached-'+i) };
+    value.images.forEach((image,i)=>{
+      image.visualKey = 'synthetic-'+i; image.visualKeyLength=image.visualKey.length;
+      if(image.leasedIndex!==null)value.ownerKeys.brokerLeased[image.leasedIndex]=image.visualKey;
+      if(image.cachedIndex!==null)value.ownerKeys.brokerCached[image.cachedIndex]=image.visualKey;
+    });
+  }
+  for (const child of Object.values(value)) addSyntheticOwnership(child);
+}
+addSyntheticOwnership(prior);
 // Synthetic control carriers derived from retained raw observations. These are
 // test-only objects, never written as calibration samples or certifying evidence.
 const reports = [1, 2, 3].map(i => ({ ...prior, runId: 'synthetic-epoch-control-' + i,
   endedAt: `2026-09-25T00:00:0${i}Z` }));
 function budget(active = false) {
   const measurementAuthority = compendiumMeasurementAuthority(prior.inputs);
-  const samples = active ? samplesFromReports(reports) : { phone: [], desktop: [] };
+  const samples = active ? samplesFromReports(reports, contract) : { phone: [], desktop: [] };
   for (const values of Object.values(samples)) for (const sample of values) sample.measurementAuthoritySha256 = measurementAuthority.sha256;
   return { schema: contract.BUDGET_SCHEMA, status: active ? 'active' : 'calibration-required',
     fixture: v1.fixture, requirements: v1.requirements, browserAuthority: v1.browserAuthority,
@@ -87,11 +103,16 @@ test('the native outcome evaluator itself reports growth as failure during calib
   const outcomes = contract.evaluateProfile(red, evaluation, fixture);
   assert.ok(outcomes.some(outcome => outcome.status === 'fail' && /heap/i.test(outcome.diagnosis)));
 });
-test('native collection and outcome evaluation retain the sealed v1 code', () => {
+test('native action order and outcome evaluation retain the sealed v1 contract', () => {
   const original = fs.readFileSync(new URL('./compendiummem.mjs', import.meta.url), 'utf8');
   const generated = fs.readFileSync(path.join(directory, 'collector.mjs'), 'utf8');
   const slice = text => text.slice(text.indexOf('async function collectProfile('), text.indexOf('function findBrokenBaselineSpeciesChunk('));
-  assert.equal(slice(generated), slice(original));
+  // All native action/wait labels and their order are preserved. V2 adds painted
+  // leases only to the lifecycle receipt expressions, never to browser actions.
+  const calls = text => [...slice(text).matchAll(/await (click|key|search|scrollToIndex|openCompendium|closeCompendium|waitListReady|waitPlanetsideReady)\([^;]+;/g)].map(m=>m[0]);
+  assert.deepEqual(calls(generated), calls(original));
+  assert.ok(slice(generated).includes('d.paintedArt?.leases'));
+  assert.ok(!slice(original).includes('d.paintedArt?.leases'));
   const old = fs.readFileSync(new URL('./compendiummem-contract.mjs', import.meta.url), 'utf8');
   const next = fs.readFileSync(path.join(directory, 'contract.mjs'), 'utf8');
   const evaluation = text => text.slice(text.indexOf('export function evaluateProfile('), text.indexOf('function validateReportBudgetAuthority('));

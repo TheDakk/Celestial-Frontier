@@ -218,3 +218,7 @@ The canonical G2 prompt now preserves species-identifying natural patterns and n
 ### C59 generated continuation — matches tooling as of 2026-09-27
 
 G2_C59_20260926 retains twelve untouched1254 originals (six quadrupeds,three birds,two serpents,one insect), compiled prompts and byte-exact generator receipts. Six required-pattern reviews pass, five have no canonical pattern requirement, and MountainViper is refused because its dorsal zigzag is unresolved. WaterSnake bands and Ladybug spots now read clearly. Pattern results never replace G1 anatomy/native admission; overlapping limb roots and serpent layout still require automatic scoring.
+
+## Painted-card memory observation — 2026-09-27
+
+Matches code as of 2026-09-27: the separate painted ownership report now includes `dataUrlBytes` in both total and per-kind counters. These count the actual retained ASCII PNG data URL (prefix and base64), while `encodedBytes` continues to mean binary PNG bytes. I5 v2 independently includes painted leases/cache/pending keys and resident master/label/mask bytes; it does not merge them into the broker diagnostics. The fresh certificate remains pending in audits/I5_REPAIR_20260927.

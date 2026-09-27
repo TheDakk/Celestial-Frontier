@@ -1,10 +1,11 @@
 /* Produce a separately hashed v2 instrument without editing v1's sealed files.
-   Exact, counted edits affect epoch authority only. The native collector and
-   all 78 behavioral outcomes remain byte-identical to the v1 implementation. */
+   Counted edits extend painted ownership/resource observation in v2 only.
+   Native action order, the 78 outcome predicates and all ceilings are preserved. */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { sha256 } from './compendiummem-contract.mjs';
+import { ownershipPatch } from './compendiummem-v2-ownership-patch.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 function once(source, before, after) {
@@ -104,6 +105,8 @@ export function materialize(directory) {
   collector = once(collector, "return report.status === 'pass' ? 0 : 1;", "return ['pass', 'calibration'].includes(report.status) ? 0 : 1;");
   collector = once(collector, 'three independent runs/profile plus the paired 3844701 baseline are required', 'three fresh independent runs/profile under the immutable v1 growth guard are required');
   collector += '\nexport { exactInputs, sourceIdentity, candidateProducerAuthorityFromDist };\n';
+  ({ collector, contract } = ownershipPatch({ collector, contract, helperUrl: pathToFileURL(path.join(here, 'compendiummem-v2-painted.mjs')).href }));
+  contract += '\n// painted-owner-helper-sha256: ' + sha256(fs.readFileSync(path.join(here, 'compendiummem-v2-painted.mjs'))) + '\n';
   const outputs = { 'collector.mjs': collector, 'contract.mjs': contract };
   for (const [name, bytes] of Object.entries(outputs)) fs.writeFileSync(path.join(directory, name), bytes);
   const manifest = { originals: { collector: sha256(collectorOriginal), contract: sha256(contractOriginal) },

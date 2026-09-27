@@ -22,11 +22,15 @@ describe('painted card source — the individual on the card', () => {
   it('ACCOUNTING (C8 resume, 2026-09-25): encoded bytes and pixels per card kind; resident bytes = master+labels + every retained marking mask, and an evicted archetype takes its masks with it', async () => {
     const now = () => Promise.resolve(), s = new PaintedCardSource({ assets, registry: REGISTRY, yieldToHost: now, archetypeEntries: 1 });
     const civet = (pattern: number) => ({ _earthName: 'Civet', kingdom: 'fauna', seed: 21, color: 7, accent: 2, size: 2, head: 1, tail: 1, pattern });
-    await s.card(civet(0), 'thumb'); await s.card(civet(0), 'portrait');
+    const thumb = await s.card(civet(0), 'thumb'); const portrait = await s.card(civet(0), 'portrait');
     const o = s.ownership();
     expect(o.byKind.thumb).toMatchObject({ entries: 1, decodedPixels: CARD_SIZES.thumb ** 2 });
     expect(o.byKind.portrait).toMatchObject({ entries: 1, decodedPixels: CARD_SIZES.portrait ** 2 });
     expect(o.byKind.thumb.encodedBytes + o.byKind.portrait.encodedBytes).toBe(o.encodedBytes);
+    expect(o.byKind.thumb.dataUrlBytes + o.byKind.portrait.dataUrlBytes).toBe(o.dataUrlBytes);
+    expect(o.dataUrlBytes).toBeGreaterThan(o.encodedBytes);
+    expect(o.byKind.thumb.dataUrlBytes).toBe(Buffer.byteLength(thumb!.url, 'utf8'));
+    expect(o.byKind.portrait.dataUrlBytes).toBe(Buffer.byteLength(portrait!.url, 'utf8'));
     const base = s.residentArchetypes(); expect(base.bytes).toBe(base.masterLabelBytes + base.maskBytes);
     // render patterns until one uses a painted mask (the Civet ships marking masks); each retained mask is counted exactly
     for (let pattern = 1; pattern < 12 && s.residentArchetypes().masks === 0; pattern++) await s.card(civet(pattern), 'thumb');
