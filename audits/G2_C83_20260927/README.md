@@ -25,3 +25,5 @@ compile-weaver-correction.mjs creates14-weaverbird-standing-v2, replacing exactl
 observe/framing/review owners are unchanged from C81; existing C76 framing controls still apply. Rootvalidate and the required quiet local battery accompany signed own-branch delivery.204GiBfree. I5 remains open after its one stopped epoch; no retry, hosted work or altered limits.
 
 Next: Claude scores the selected24 with observed supports; Codex continues the fish seam automation request, insect references/contact, bird/quad ownership and performance faults, then further24species batches. Dakk's final visual pass remains the admission boundary.
+
+C83 final verification: signed b16ee2fa3 quiet develop profile5,668PASS/I5soleRED/2expectedfail/2skip;all7remainingowners and rootvalidatePASS. Source/HEAD unchanged,exactloghashesverified.204GiBfree;PUBLIC/UNFROZEN/five reviewed workflows rechecked.24pilot subjects,25exactoriginals including refusedWeaverbird. No anatomical/library admission,I5retry or hosted work. Next fixedfishrepair recipe across12waitingfits,each with unchangedstatic/native/fullsizereview.
