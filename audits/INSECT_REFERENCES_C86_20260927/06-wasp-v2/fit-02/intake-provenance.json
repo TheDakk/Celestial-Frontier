@@ -1,0 +1,93 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "73cbbcdb11dd4d4586eb25c614279010d839dfbf",
+  "helperSha256": "a77ac9896f3414c540cf5fbd9e55418f6dcd58d7658ec3bfa42983c4a8c6437d",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/master.png",
+      "sha256": "12e63984cf520e264a89d3f03c5de338f239c13bd5bc4a2bf947aebf7ea55259"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/authoring.json",
+      "sha256": "180e178f410da38d16162d9adf63619ca76b9d35a28ed5a1cb5167be7abe2fe2"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/subject-source.json",
+      "sha256": "40f442869665e989355028a7a3baaa8cd3c7699ace4b11eb6be3daaadf400335"
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "14e9ad8d19f219b0ba272db0ab465fea9491dbb36032769779c071cf753f5d7f",
+  "bindingHash": "c3c12398481df22fde0dbbcbeae8b6becb12f06850f3213b1efcf3d0eefe8e74",
+  "contactEndpoints": [
+    "legFrontFarFoot",
+    "legFrontNearFoot",
+    "legMidFarFoot",
+    "legMidNearFoot",
+    "legHindFarFoot",
+    "legHindNearFoot"
+  ],
+  "shapeJoints": [
+    "legHindNearFoot",
+    "legHindFarFoot",
+    "legMidNearFoot",
+    "legMidFarFoot",
+    "legFrontNearFoot",
+    "legFrontFarFoot",
+    "legHindNearKnee",
+    "legHindFarKnee",
+    "legMidNearKnee",
+    "legMidFarKnee",
+    "legFrontNearKnee",
+    "legFrontFarKnee",
+    "antennaFar",
+    "antennaNear",
+    "mandible",
+    "head",
+    "wingNear",
+    "wingFar",
+    "abdomen",
+    "thorax"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/master.png",
+      "sha256": "12e63984cf520e264a89d3f03c5de338f239c13bd5bc4a2bf947aebf7ea55259",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/authoring.json",
+      "sha256": "180e178f410da38d16162d9adf63619ca76b9d35a28ed5a1cb5167be7abe2fe2",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/subject-source.json",
+      "sha256": "40f442869665e989355028a7a3baaa8cd3c7699ace4b11eb6be3daaadf400335",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

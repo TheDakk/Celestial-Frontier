@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bee",
+  "masterSha256": "28fcf047ca7758b1bbfb57c38d771eb1f967d39dc80a714b29637aacca8fbe08",
+  "required": [
+    "furry thorax with banded amber-and-black abdomen"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "furry thorax with banded amber-and-black abdomen",
+      "status": "PRESENT",
+      "observed": "Amber and black abdominal bands and furry golden thorax, pollen basket on rear near leg. Only five separately readable leg endpoints; REFUSED as hand reference. Two broad overlapping wing silhouettes do not independently resolve all four wings. No hidden leg invented."
+    }
+  ]
+}

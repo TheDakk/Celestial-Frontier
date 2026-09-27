@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Giant Water Bug",
+  "family": "insect",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "2ffdfce6b85bd08437b8eaf3ed1e9ae1ce38c3821589d8b3cd981ce172796d9c",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 6,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "exactly six legs attached to the thorax, two antennae, natural head/thorax/abdomen and only species-correct wings",
+  "profileId": "aquatic-insect",
+  "authoringCreated": false,
+  "sourceHead": "73cbbcdb11dd4d4586eb25c614279010d839dfbf",
+  "basePromptSha256": "0218bed86899428525a332ffcba0fc4aa8cda9cd6b8bcfe88a866cd210d09ab8",
+  "layoutCompilerSha256": "c5b53ce1f1f01d8a17fc4960e7c8963529f352218709374f84f73e531aac3150",
+  "layoutClarification": "Species identity features FIRST: flat oval brown leaf-shaped body; raptorial hooked grasping front legs; short piercing beak tucked under the head. One Earth Giant Water Bug. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nHAND-REFERENCE LAYOUT: strict side profile, head RIGHT. Exactly SIX naturally attached legs, three near and three far, deliberately offset front-to-back so EVERY limb can be traced continuously from its thorax attachment through a bent knee to its separate tarsus. Open magenta gaps between the leg shafts, not just the tips. No crossed, fused, duplicated, severed or extremely faint legs. Strong enough readable paint on slender antennae and tarsi, without thickening them into false anatomy. Two antennae, distinct from the legs. Entire real abdomen at LEFT. Wings preserve species-specific resting posture: Bee wings lie back with distinct tips, Dragonfly wings extend naturally at rest (not folded over the abdomen), Giant Water Bug keeps flat folded forewings. For Dragonfly, natural splayed resting wings override the generic no-spread request; retain a horizontal side-profile body. Each wing remains attached to its real thoracic root. Species-specific appendages must stay individually readable. No stand, support, prop or scenery. Do not invent a vertebrate tail or expose hidden anatomy by duplicating it.\n\n"
+}

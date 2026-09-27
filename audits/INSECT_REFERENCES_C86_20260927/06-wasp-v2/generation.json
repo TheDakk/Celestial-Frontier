@@ -1,0 +1,13 @@
+{
+  "id": "06-wasp",
+  "name": "Wasp",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-b25e385e-ab2b-480c-be60-c7c828fd8928.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "12e63984cf520e264a89d3f03c5de338f239c13bd5bc4a2bf947aebf7ea55259",
+  "bytes": 1220831,
+  "promptSha256": "9d0ea63dc7b43fdd9866eed9b219951b7c9e7412e985775eae624a4e18d46f1e",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,205 @@
+{
+  "id": "02-dragonfly",
+  "name": "Dragonfly",
+  "family": "insect",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "cb1fb7df3a38020c03596f91b1a0edb539ab98d19c7c3dc6b1e1f022c6199dcb",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 12033,
+    "coreRadius": 11,
+    "bodyBox": {
+      "x0": 259,
+      "y0": 198,
+      "x1": 313,
+      "y1": 235
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.7025,
+        "pixels": 8453,
+        "box": {
+          "x0": 70,
+          "y0": 106,
+          "x1": 296,
+          "y1": 235
+        },
+        "attach": {
+          "x": 270.2,
+          "y": 207.2,
+          "relX": 0.21,
+          "relY": 0.25
+        },
+        "dir": {
+          "x": -0.96,
+          "y": -0.28
+        },
+        "class": "rear",
+        "length": 224.3
+      },
+      {
+        "k": 1,
+        "frac": 0.0546,
+        "pixels": 657,
+        "box": {
+          "x0": 312,
+          "y0": 201,
+          "x1": 337,
+          "y1": 236
+        },
+        "attach": {
+          "x": 313.9,
+          "y": 217.1,
+          "relX": 1.02,
+          "relY": 0.52
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.11
+        },
+        "class": "front",
+        "length": 29.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0143,
+        "pixels": 172,
+        "box": {
+          "x0": 306,
+          "y0": 233,
+          "x1": 343,
+          "y1": 282
+        },
+        "attach": {
+          "x": 309,
+          "y": 233,
+          "relX": 0.93,
+          "relY": 0.95
+        },
+        "dir": {
+          "x": 0.4,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 59.6
+      },
+      {
+        "k": 3,
+        "frac": 0.0205,
+        "pixels": 247,
+        "box": {
+          "x0": 212,
+          "y0": 235,
+          "x1": 279,
+          "y1": 281
+        },
+        "attach": {
+          "x": 276.1,
+          "y": 235.9,
+          "relX": 0.32,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": -0.89,
+          "y": 0.45
+        },
+        "class": "rear",
+        "length": 78.4
+      },
+      {
+        "k": 4,
+        "frac": 0.0162,
+        "pixels": 195,
+        "box": {
+          "x0": 242,
+          "y0": 236,
+          "x1": 287,
+          "y1": 285
+        },
+        "attach": {
+          "x": 284.5,
+          "y": 236,
+          "relX": 0.47,
+          "relY": 1.03
+        },
+        "dir": {
+          "x": -0.69,
+          "y": 0.72
+        },
+        "class": "limb-down",
+        "length": 64.9
+      },
+      {
+        "k": 5,
+        "frac": 0.029,
+        "pixels": 349,
+        "box": {
+          "x0": 277,
+          "y0": 236,
+          "x1": 319,
+          "y1": 287
+        },
+        "attach": {
+          "x": 296,
+          "y": 236,
+          "relX": 0.69,
+          "relY": 1.03
+        },
+        "dir": {
+          "x": -0.15,
+          "y": 0.99
+        },
+        "class": "limb-down",
+        "length": 55.9
+      }
+    ],
+    "byClass": {
+      "rear": 2,
+      "front": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 212,
+        "x1": 225,
+        "cx": 218.2
+      },
+      {
+        "x0": 242,
+        "x1": 256,
+        "cx": 250
+      },
+      {
+        "x0": 284,
+        "x1": 292,
+        "cx": 287.9
+      },
+      {
+        "x0": 306,
+        "x1": 319,
+        "cx": 312
+      },
+      {
+        "x0": 332,
+        "x1": 343,
+        "cx": 337.7
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

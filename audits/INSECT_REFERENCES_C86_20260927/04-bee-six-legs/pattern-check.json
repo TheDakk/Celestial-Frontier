@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Bee",
+  "masterSha256": "86ebce3660f1464fdb532daf723c998fd70d035aa105790eefed2336cd832396",
+  "required": [
+    "furry thorax with banded amber-and-black abdomen"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "furry thorax with banded amber-and-black abdomen",
+      "status": "PRESENT",
+      "observed": "New exact generated edit retains amber/black bands, thorax fuzz and pollen basket. Six endpoints now visible, but added far hind leg appears to emerge at the abdomen rather than a clearly traceable thorax connection. REFUSED reference attachment; no copied labels or invented hidden joint."
+    }
+  ]
+}

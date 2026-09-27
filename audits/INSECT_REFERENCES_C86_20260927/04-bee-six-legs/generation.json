@@ -1,0 +1,13 @@
+{
+  "id": "04-bee-six-legs",
+  "name": "Bee",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-0c21f977-a81d-4af4-bd20-891c51a88d55.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "86ebce3660f1464fdb532daf723c998fd70d035aa105790eefed2336cd832396",
+  "bytes": 1365091,
+  "promptSha256": "577f98d415f4943212210ee4c67e3df0e2dd16d57b404aa46ea038971e380b32",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
