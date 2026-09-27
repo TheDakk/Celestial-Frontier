@@ -43,6 +43,42 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
 - Codex's sealed inventories (release/Guide copy, pins, budgets) are never rebound by Claude; propose in an audit README.
 - `tools/run-unit-tests.mjs` builds the PWA pack first; for quick diagnostics run `node node_modules/vitest/vitest.mjs run <file>`.
 
+## Current Codex sprint handoff — 2026-09-26, C54/C55 generated-art batch
+
+### Working state
+
+- `/Users/dakk/Projects/celestial-frontier-openai-mac`, `openai/mac`. Signed no-ff merge98607995 integrates requestedfe344e2b; all12 incoming commits verified G. Claude block above retained byte-identical. Signed implementation/native checkpoint22176bd7; final evidence/library/art commit carries this handoff (resolve openai/mac).
+- C53–C55 and DECISIONS D24/D26 read by absolute read-only path; own TO_CLAUDE has measured replies. Newer Claude0ed5c122 read, not merged. Shared Git store needs no Dakk relay or push wait.
+- Main goal: every Earth creature has its own generated painting, full movement and battleground-biome presentation. Dakk will do one full visual pass at the end. D24 measures generated G2 paintings per family;40-corpus remains regression. D26 approved. No gates weakened.
+- Own normal branch push only under current UNFROZEN/public/no-push-trigger policy; no PR/label/hosted/develop/main/release/deploy/version bump. I5 remains the only accepted required-battery red.
+
+### Completed
+
+- **D26:** finisher alpha≥250 eligibility only, unchanged4px erosion/original alpha/conservation. Both compiler and worker settings bind interiorAlphaMin250; old outputs retain old identities. Alpha249 never-edited/250positive/radius/alpha/settings controls pass.
+- **Five-crab native proof:** signed22176bd7,5inferences/1model/10detached buffers/0phone model construction. Independently zero sub250 RGB changes and alpha changes on all5; conservation/cache/delivery/admission pass. Old5proof retained and explicitly superseded for current policy.
+- **Native1254 Cougar:**1264 padded work canvas, original1254output, corrupt transfer refused before model.271,622RGB pixels change;1,237,597sub250 pixels and all alpha bytes unchanged. Finished original `audits/D26_FINISH_20260926/cougar-01/cougar-finished.png` retained for Dakk. It uses the audit Cougar identity, not an invented canonical phone key. Flag stays opt-in.
+- **Phone originals:**5new canonical crab PNG/receipt pairs in local library; producer hashes checked before publication,613-file manifest regenerated, actual pinned consumer PASS all5 with11fetches.3old keys preserved. No deployment/physical-phone claim.
+- **G2 throughput:**24new original1254paintings (12quadrupeds,4birds,4serpents,4insects), exact canonicalC47prompts/identities/tool receipts/hashes, geometric observations and one full review sheet in `G2_THROUGHPUT_C54_20260926`. `pilot.json` ready for Claude's automatic rescore. Original app files and repo masters are byte-identical; no hand authoring/admission.
+- **Instrument honesty:** native runner now exits1 when capture reports refusals; real folded Cod control confirms it. Old exit0/FAILreports stay FAIL.
+
+### Tail and fit work — still open
+
+- **Cod candidate:** C55 gap fill left only1observed body-5--caudal edge, plus102root/caudal edges. This is already a normal nearest join, not a missing sibling bridge. `fill-gap-observed.mjs` uses all positive alpha, observed main-boundary distance58px and a1px contour collar:4,550/4,550requested pixels retained,0other-owner changes,96shared edges. Exactrest/staticPASS and native0/0,707frames,4ms at4×. Original pixels/landmarks/limits unchanged. Durable fit/film/stills: TAIL_STALK_C54_20260926/08-cod/cover-04 and native-cover-04.
+- **Not a complete fish repair:** other body seams remain; restoring prior5welds makes staticRED. Perch/Carp lose requested pixels when contours fragment; ArcticFox steals other-owner pixels. Final helper refuses all3 before packet write. Wider axial-weight designs static-passCod/Perch but fail additive victory; Carp/ArcticFox also fail. No shared author/split/rig/pin adoption. Claude has exact boundary findings; next: preserve fragmented ownership coverage and prove a genuinely gapped held-out tail with unchanged seam/fold/mutation gates.
+- **RedFox/Marmot/Cattle:** automatic projection of mismatched contact-chain landmarks passes static on all3 but RedFox retains identical zero-displacement composite compression refusal. Marmot crouch-head/Cattle rearing-hump remain visual faults, not solved by static leg checks. Measure actual reported head/neck/body surfaces and layered compression next; keep8% bound. Audit G2_QUAD_FAULTS_C54_20260926.
+- Prior six-fit queue remains: Eagle/Sandpiper tail candidates retain previous evidence; Grouse/Sparrow/Mongoose/Tapir not fixed. No unchanged retry or silent replacement. C51 pinned-only phone identity is optional efficiency backlog, not required for delivered originals.
+
+### Verification and hygiene
+
+- Full browser-free develop owner:5,647PASS; I5current-producer-authorities alone FAIL;2expected failures/2skips. All7remaining owners PASS (root/app/worker types,artaudit,overridecheck,speccheck,overridecontrol). RootvalidatePASS:1,010renders,0booterrors,50-probe golden fingerprint. Focused adapter/app/engine/route/settings controls pass. Full logs D26_FINISH_20260926/final-battery and final-validate.log.
+- Official startup check complete, no eligible tool update. More than220GiB free;366,590,854bytes of own ignored fit/prepared/rejected-film/still scratch pruned with per-file hash inventory. Three permanent worktrees, no stashes, no temporary checkout created. Keep newest2preview packages; current inventory checked at batch end.
+- Copy remains120bullets/41Guide/5briefings; no copy or baseline remeasure requested. Claude handoff may contain older D24/D26 wording because Dakk explicitly required verbatim preservation; this Codex block and signed decision rows give current state.
+
+### Paired next steps
+
+Codex owns the remaining tail/general-fit repair and finished-original admission; resume from measured candidates, keep the generated-art program active. Claude can merge signed openai/mac directly, consume D26/new delivery keys and re-score all24 via the retained pilot under D24. Reply only through each lane's own mailbox. Dakk need not open another app or relay notes; no per-species approval pause. Full visual review remains at the end, before enabling the finisher by default.
+
+
 # Superseded Claude handoff — 2026-09-26 (session 2), replaced by the session-3 handoff
 
 ## CLAUDE SESSION HANDOFF — 2026-09-26 (session 2) · THE GENERATED CREATURE PIPELINE IS THE PRIORITY

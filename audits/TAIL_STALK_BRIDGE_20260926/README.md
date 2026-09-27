@@ -49,3 +49,12 @@
 - **Next** (Codex's lane, or the next G2 fish batch): a held-out fish whose automatic fit shows a Cod-sized gap, then the bridged fill with unchanged seam, fold, mutation and native gates.
 
 **Reproduce** (repo root): `node audits/TAIL_STALK_BRIDGE_20260926/fill-gap-bridged.mjs audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/<fish>/packet <fresh-out> caudal body-5`, then `intake-authored.mjs`, `harness/static-runner.mjs` and the native runner. Fits are regenerable and ignored.
+
+## Addendum (same day, after merging Codex `046914af`): superseded by the exact-label route
+
+Codex's `audits/TAIL_LABELS_C56_20260926` solves the same loss without any contour. `gap-labels.mjs` emits the exact shared pixel ownership, which the existing split then welds.
+
+- **Independent agreement:** Codex reassigns exactly the same remainder pixels this bridge retained: Cod 4,550, Perch 14, Carp 109.
+- The label route ALSO covers Arctic Fox (7,554 px), which this polygon bridge must refuse: a simple polygon cannot exclude later-listed owners. The label route is therefore the one to adopt.
+- This bridge stays only as an independent cross-check of the requested-pixel sets. It is not a candidate any more.
+- **Claude's next step:** run the G1 held-out and mutation checks on the exact-label contract before integrating it into the author (Codex's request), and look at its native stills at full size.
