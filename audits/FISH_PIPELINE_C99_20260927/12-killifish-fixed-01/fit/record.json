@@ -1,0 +1,169 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Killifish\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"681299548\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"2\"]]]]",
+    "seed": 681299548,
+    "ownerId": "authored:archetype-sprint/12-killifish",
+    "earthName": "Killifish"
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 681299548,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 12,
+    "body": 0,
+    "loco": 6,
+    "trait": 2,
+    "size": 0,
+    "diet": 5,
+    "head": 0,
+    "limbs": 0,
+    "skin": 5,
+    "tail": 5,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 1,
+    "habitat": 1,
+    "detail": 4,
+    "accent": 3,
+    "temper": 5,
+    "sense": 8,
+    "repro": 3,
+    "life": 0,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Killifish"
+  },
+  "geometry": {
+    "cutoutAssetHash": "008a5a10678f9c8b1e63dca44695e5b42dea804149c6dcb2878b9f3a205c8aab",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.614132733618748,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6799043062200957,
+      0.4739234449760765
+    ],
+    "head": [
+      0.75,
+      0.46634768740031896
+    ],
+    "jaw": [
+      0.7136363636363636,
+      0.5106858054226475
+    ],
+    "spine0": [
+      0.6371610845295056,
+      0.46267942583732063
+    ],
+    "spine1": [
+      0.5703349282296651,
+      0.4641945773524721
+    ],
+    "spine2": [
+      0.5060606060606061,
+      0.4725677830940989
+    ],
+    "spine3": [
+      0.46339712918660286,
+      0.47647527910685805
+    ],
+    "spine4": [
+      0.4165869218500797,
+      0.480622009569378
+    ],
+    "spine5": [
+      0.34226475279106855,
+      0.4853269537480064
+    ],
+    "caudal": [
+      0.2624401913875598,
+      0.4803827751196172
+    ],
+    "dorsal": [
+      0.5064593301435407,
+      0.42846889952153105
+    ],
+    "pectoralNear": [
+      0.6378787878787878,
+      0.49114832535885167
+    ],
+    "pectoralFar": [
+      0.6681818181818182,
+      0.513317384370016
+    ]
+  },
+  "materials": {
+    "surface": "scales"
+  },
+  "source": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/12-killifish/packet/master.png",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "G1 automatic: Earth fauna profile fish media water (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from bass. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "984ba3f4c866cc77334fbd3234ec43b98eff4443f913ef16df95ef588a6f12b7",
+    "subjectSourceSha256": "4d6695bd1aaacbeaaecc7548aa9d39e968c7cf2b509d9af0355767cacfd0da32",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.07050388917877344,
+      "jaw": 0.0573426783412557,
+      "spine0": 0.044197409051703926,
+      "spine1": 0.06684333063159385,
+      "spine2": 0.0648174287108306,
+      "spine3": 0.042842044583193475,
+      "spine4": 0.04699351960022866,
+      "spine5": 0.07447094274520934,
+      "caudal": 0.07997753125454647,
+      "dorsal": 0.07318754051982,
+      "pectoralFar": 0.0411010849830139,
+      "pectoralNear": 0.04541850609670594
+    },
+    "measures": {
+      "body": 0.2957646986934911,
+      "bone-min": 0.0411010849830139,
+      "bone-max": 0.07997753125454647,
+      "caudal/body": 0.2704093206790353,
+      "head/body": 0.23837831049552846
+    }
+  },
+  "recipeHash": "738b374b91677cf6a8d2cdb7482c0eefc964c53aca2d8952c224f84cedd97778"
+}
