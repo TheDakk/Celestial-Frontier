@@ -1,0 +1,285 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "PASS_STATIC",
+  "sourceHead": "dc98fb336f265754bfb4e82dfa2e91bbe99e7790",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00007437784801187647,
+      "maxGapPx": 0.00005854803347934769,
+      "maxEndpointError": 6.684427777288335e-16,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0008459732231068953,
+      "maxGapPx": 0.00005295243169753515,
+      "maxEndpointError": 7.108895957933346e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:crawl",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00015738419559809945,
+      "maxGapPx": 0.00005924458658882053,
+      "maxEndpointError": 8.005932084973443e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:flight",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00005675434345690641,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "melee:mandible",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0021143203510170495,
+      "maxGapPx": 0.00008208882212157377,
+      "maxEndpointError": 7.108895957933346e-16,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.000514922420654937,
+      "maxGapPx": 0.0000621168979172205,
+      "maxEndpointError": 6.004449063730082e-16,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00031967097756865675,
+      "maxGapPx": 0.00006549209080793846,
+      "maxEndpointError": 6.684427777288335e-16,
+      "exactRest": true
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0,
+      "maxGapPx": 0.00006830436149509418,
+      "maxEndpointError": 0,
+      "exactRest": true
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00023532178451292858,
+      "maxGapPx": 0.00005691769795553234,
+      "maxEndpointError": 5.551115123125783e-16,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0004092367345005285,
+      "maxGapPx": 0.00005951860165755584,
+      "maxEndpointError": 7.216449660063518e-16,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0003303484378533437,
+      "maxGapPx": 0.00006163238033260529,
+      "maxEndpointError": 8.005932084973443e-16,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00007437784801187647,
+      "maxGapPx": 0.00006245381461051612,
+      "maxEndpointError": 7.468261590855958e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:body",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0002079095108434246,
+      "maxGapPx": 0.00006484813564633142,
+      "maxEndpointError": 6.684427777288335e-16,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "0e7c00c51da7c26f3bb22b94232d5edaab422ba14f4bcddb02d9fe7618dd43dc",
+  "bindingHash": "9c47aa3f9c934581f57ce866b7d121f960e306ea058c8b43cfb18cc0f6acf311",
+  "family": "insect",
+  "contacts": [
+    "legFrontFarFoot",
+    "legFrontNearFoot",
+    "legMidFarFoot",
+    "legMidNearFoot",
+    "legHindFarFoot",
+    "legHindNearFoot"
+  ],
+  "realm": "land",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:crawl",
+    "approach:flight",
+    "melee:mandible",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed",
+    "melee:body"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 878,
+    "attemptedSamples": 878,
+    "status": "PASS",
+    "maxPaintDriftPx": 0.0021143203510170495,
+    "maxGapPx": 0.000071370924514967,
+    "maxEndpointError": 7.468261590855958e-16,
+    "exactRest": true
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 4348.016961589456
+      },
+      {
+        "id": "alert",
+        "startMs": 4348.016961589456,
+        "endMs": 4948.016961589456
+      },
+      {
+        "id": "approach:crawl",
+        "startMs": 4948.016961589456,
+        "endMs": 5648.016961589456
+      },
+      {
+        "id": "approach:flight",
+        "startMs": 5648.016961589456,
+        "endMs": 6348.016961589456
+      },
+      {
+        "id": "melee:mandible",
+        "startMs": 6348.016961589456,
+        "endMs": 7134.683628256123
+      },
+      {
+        "id": "cast",
+        "startMs": 7134.683628256123,
+        "endMs": 8024.683628256123
+      },
+      {
+        "id": "hit",
+        "startMs": 8024.683628256123,
+        "endMs": 8754.683628256123
+      },
+      {
+        "id": "dodge",
+        "startMs": 8754.683628256123,
+        "endMs": 9354.683628256123
+      },
+      {
+        "id": "faint",
+        "startMs": 9354.683628256123,
+        "endMs": 10154.683628256123
+      },
+      {
+        "id": "victory",
+        "startMs": 10154.683628256123,
+        "endMs": 11034.683628256123
+      },
+      {
+        "id": "tame",
+        "startMs": 11034.683628256123,
+        "endMs": 11954.683628256123
+      },
+      {
+        "id": "feed",
+        "startMs": 11954.683628256123,
+        "endMs": 12814.683628256123
+      },
+      {
+        "id": "melee:body",
+        "startMs": 12814.683628256123,
+        "endMs": 13601.35029492279
+      }
+    ],
+    "durationMs": 14601.35029492279
+  },
+  "inputs": [
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2insect-pool/c56-30-firefly/fit/record.json",
+      "sha256": "ba62b0bb1e1eb816210cf6845a9553b49b1b197df98da3b4fdc63fd7724dbf48",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2insect-pool/c56-30-firefly/fit/binding.json",
+      "sha256": "ed9db08897937c5da29e04acfba1caea22c77c8b8ed22990574e440aad9190f3",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2insect-pool/c56-30-firefly/fit/parts/manifest.json",
+      "sha256": "99a346644778ef7901c71b5f0d6c235f4cb5f8c8a009cbfd064782d5b4563bac",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2insect-pool/c56-30-firefly/fit/parts/atlas/c56-30-firefly.png",
+      "sha256": "0471c5651b658ff7a9868e6402700f37f37531cd889ce3d7d362805f3ff21614",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2insect-pool/c56-30-firefly/fit/parts/keyed.png",
+      "sha256": "179710d2bde73a17d0419745eea2a731933cf86fc780dbd6722cc302ea72ae24",
+      "unchanged": true
+    }
+  ]
+}

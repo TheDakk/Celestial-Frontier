@@ -1,0 +1,9 @@
+{
+ "id": "fam-16-ant",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 14% paint (reference 42%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,90 @@
+{
+  "name": "Cockroach",
+  "family": "insect",
+  "species": {
+    "name": "Cockroach",
+    "aspect": 2.5,
+    "headFrac": 0.14,
+    "eyes": "normal",
+    "posture": "crawling",
+    "mustRead": [
+      "flat glossy oval wing-covers",
+      "shield-shaped pronotum hiding the head",
+      "long backswept threadlike antennae"
+    ]
+  },
+  "genome": {
+    "seed": 919226396,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 14,
+    "body": 12,
+    "loco": 7,
+    "trait": 22,
+    "size": 1,
+    "diet": 5,
+    "head": 4,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 1,
+    "pattern": 3,
+    "eyes": 1,
+    "behavior": 10,
+    "habitat": 2,
+    "detail": 6,
+    "accent": 4,
+    "temper": 2,
+    "sense": 1,
+    "repro": 2,
+    "life": 0,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cockroach"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cockroach\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"919226396\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "index": 534,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

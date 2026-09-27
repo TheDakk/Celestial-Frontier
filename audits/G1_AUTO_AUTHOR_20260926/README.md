@@ -118,6 +118,9 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**Insects unblocked (session 5, after Codex's C85 insect motion author + native same-joint intake):** all 29 G2 insects re-scored with the current pool (`auto-g2insect-pool/`): **5/29 static** (Cockroach, Beetle, Termite, Dung Beetle, Firefly), up from 1. Native, observed supports (`native-insect-pool/`): **Cockroach, Termite, Dung Beetle and Firefly PASS** (775–789 frames, 0/0). Full-size: Cockroach, Dung Beetle and Firefly (glowing abdomen) clean; the Termite has a thin abdomen line.
+**Codex's hand Wasp reference (C86) evaluated:** battery unchanged (18/34 · 34 · 34 · 31/34 · 26/27), but insects 5 → **4**/29 (the Beetle's winning fit goes intake-refused; the Ant becomes RED). **Net negative → not adopted.**
+
 **G2 C83 batch (Codex `b16ee2fa`: the painting-side levers applied — quadrupeds with both ear tips, four offset feet and clear tails; birds with short folded wing tips)** (`native-g2c83/`):
 - **8/24 native PASS:** Grouper, Barracuda, Sailfish, Mahi-mahi; Tanager; **Cheetah, Maned Wolf, Sand Cat**.
 - **The layout lever works for quadrupeds:** 3/8, against 0/8 in C76, and no far-ear/tail refusals remain. The remaining quad refusals are unexplained paint (Fishing Cat, Aardvark) and an extra limb (Wild Dog, Spotted Hyena); Prairie Dog is static RED.

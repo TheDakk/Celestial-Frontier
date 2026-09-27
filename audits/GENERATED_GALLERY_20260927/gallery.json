@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 90,
+ "total": 94,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -631,6 +631,34 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-observed-rerun/beetle",
    "report": "DIAGNOSTIC_PASS",
    "note": "first insect; legs slightly smeared"
+  },
+  {
+   "family": "Insects",
+   "name": "Cockroach",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c54-21-cockroach",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Insects",
+   "name": "Termite",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c54-24-termite",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "thin abdomen line (right); abdomen-peel history — check other frames"
+  },
+  {
+   "family": "Insects",
+   "name": "Dung Beetle",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c56-25-dung-beetle",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Insects",
+   "name": "Firefly",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c56-30-firefly",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean; glowing abdomen"
   }
  ]
 }

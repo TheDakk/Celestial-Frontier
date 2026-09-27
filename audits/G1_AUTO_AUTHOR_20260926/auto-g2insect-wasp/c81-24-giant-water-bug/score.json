@@ -1,0 +1,10 @@
+{
+ "id": "c81-24-giant-water-bug",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mandible (mandible) covers 8% paint (reference 71%)",
+  "unexplained-anatomy: 15.9% of the paint lies away from the body and in no part (reference 8.6%)"
+ ],
+ "semanticPresence": null
+}

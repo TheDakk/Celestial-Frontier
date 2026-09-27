@@ -738,5 +738,41 @@
   "batch": "audits/G2_C83_20260927",
   "tag": "g2c83",
   "supports": "observed"
+ },
+ {
+  "family": "insect",
+  "name": "Cockroach",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c54-21-cockroach",
+  "note": "clean",
+  "batch": "insect pool re-score (Codex C85 insect motion)",
+  "tag": "insect-pool",
+  "supports": "observed"
+ },
+ {
+  "family": "insect",
+  "name": "Termite",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c54-24-termite",
+  "note": "thin abdomen line (right); abdomen-peel history \u2014 check other frames",
+  "batch": "insect pool re-score (Codex C85 insect motion)",
+  "tag": "insect-pool",
+  "supports": "observed"
+ },
+ {
+  "family": "insect",
+  "name": "Dung Beetle",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c56-25-dung-beetle",
+  "note": "clean",
+  "batch": "insect pool re-score (Codex C85 insect motion)",
+  "tag": "insect-pool",
+  "supports": "observed"
+ },
+ {
+  "family": "insect",
+  "name": "Firefly",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-insect-pool/c56-30-firefly",
+  "note": "clean; glowing abdomen",
+  "batch": "insect pool re-score (Codex C85 insect motion)",
+  "tag": "insect-pool",
+  "supports": "observed"
  }
 ]

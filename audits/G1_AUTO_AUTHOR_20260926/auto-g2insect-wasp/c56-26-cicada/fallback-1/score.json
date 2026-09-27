@@ -1,0 +1,11 @@
+{
+ "id": "c56-26-cicada",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part hind-near-lower (legHindNearFoot) covers 0% paint (reference 33%)",
+  "missing-anatomy: part mandible (mandible) covers 17% paint (reference 71%)",
+  "unexplained-anatomy: 18.9% of the paint lies away from the body and in no part (reference 8.6%)"
+ ],
+ "semanticPresence": null
+}

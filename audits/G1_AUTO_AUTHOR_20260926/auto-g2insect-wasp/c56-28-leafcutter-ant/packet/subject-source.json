@@ -1,0 +1,91 @@
+{
+  "name": "Leafcutter Ant",
+  "family": "insect",
+  "species": {
+    "name": "Leafcutter Ant",
+    "aspect": 1.8,
+    "headFrac": 0.25,
+    "eyes": "normal",
+    "posture": "crawling",
+    "mustRead": [
+      "three-part body with a pinched narrow waist",
+      "elbowed antennae",
+      "spined thorax carrying a leaf fragment overhead"
+    ],
+    "note": "the thorax bears distinct backward-pointing spines; the head is oversized with big cutting jaws"
+  },
+  "genome": {
+    "seed": 634825937,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 10,
+    "body": 5,
+    "loco": 17,
+    "trait": 8,
+    "size": 1,
+    "diet": 0,
+    "head": 7,
+    "limbs": 3,
+    "skin": 2,
+    "tail": 0,
+    "pattern": 1,
+    "eyes": 5,
+    "behavior": 0,
+    "habitat": 8,
+    "detail": 6,
+    "accent": 3,
+    "temper": 2,
+    "sense": 3,
+    "repro": 0,
+    "life": 3,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Leafcutter Ant"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Leafcutter Ant\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"8\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"634825937\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "index": 39,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

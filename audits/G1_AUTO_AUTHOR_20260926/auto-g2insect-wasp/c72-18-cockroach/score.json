@@ -1,0 +1,9 @@
+{
+ "id": "c72-18-cockroach",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part front-far-upper (legFrontFarKnee) covers 16% paint (reference 60%)"
+ ],
+ "semanticPresence": null
+}
