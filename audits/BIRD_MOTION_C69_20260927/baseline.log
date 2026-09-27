@@ -1,0 +1,11 @@
+{"name":"c54-14-goose","rows":[{"id":"hit","ms":224.7,"message":"Error: Contact: hit@224.7 exceeds scale compression bound","cause":null},{"id":"tame","ms":208,"message":"Error: Contact: tame@208 exceeds scale compression bound","cause":null}]}
+{"name":"c54-15-quail","rows":[{"id":"tame","ms":138.66666666666666,"message":"Error: Contact: tame@138.66666666666666 exceeds scale compression bound","cause":null}]}
+{"name":"c56-10-raven","rows":[{"id":"hit","ms":197.95,"message":"Error: Contact: hit@197.95 exceeds scale compression bound","cause":null}]}
+{"name":"c59-08-vulture","rows":[{"id":"hit","ms":181.9,"message":"Error: Contact: hit@181.9 exceeds scale compression bound","cause":null},{"id":"faint","ms":314.46666666666664,"message":"Error: Contact: joint limit legNearFoot faint@314.46666666666664: 45.27130025317366","cause":null}]}
+{"name":"c56-09-crow","rows":[]}
+{"name":"c56-13-magpie","rows":[]}
+{"name":"c56-15-dove","rows":[{"id":"melee:claw","ms":244.53333333333333,"message":"Error: Contact: melee:claw@244.53333333333333 exceeds scale compression bound","cause":null},{"id":"faint","ms":450.93333333333334,"message":"Error: Contact: joint limit legNearAnkle faint@450.93333333333334: 85.09472671818861","cause":null}]}
+{"name":"01-robin","rows":[]}
+{"name":"02-pigeon","rows":[{"id":"faint","ms":476,"message":"Error: Contact: joint limit legNearFoot faint@476: 45.03438224217809","cause":null},{"id":"tame","ms":200,"message":"Error: Contact: joint limit legFarFoot tame@200: -45.01128763347358","cause":null}]}
+{"name":"03-duck-v2","rows":[]}
+{"name":"04-hawk-v2","rows":[{"id":"faint","ms":357,"message":"Error: Contact: joint limit legNearFoot faint@357: 45.000722867978745","cause":null}]}

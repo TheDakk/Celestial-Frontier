@@ -1,0 +1,77 @@
+[
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn2-dodge-reaction-50.png",
+    "bytes": 1562115,
+    "sha256": "275d096038f15b4c339518bcf5bcfb99c18b09ff7aa107a12b58e5f4507fdfb8"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn0-hit-return-end.png",
+    "bytes": 1558758,
+    "sha256": "faf9bd4b825fccfcb6c93d40954af5cc1c6a3cb9d45f4c857a8e505d33e3e661"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn3-hit-approach-50.png",
+    "bytes": 1558796,
+    "sha256": "70f503ea44dba471ebfcccf5b5d6bf250dd4c1985c365e503f5a9fac404377b5"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn1-hit-approach-50.png",
+    "bytes": 1558534,
+    "sha256": "7213971e7d67984af38f8ff2cb890ace8f60486ebd67a866191c515d515f5724"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn3-hit-return-end.png",
+    "bytes": 1553766,
+    "sha256": "3b4bf12f4b83a5642d8eeaeab821cf72eccbbc636e9c371b9cdaa9399c8bb4fc"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn1-hit-reaction-50.png",
+    "bytes": 1560366,
+    "sha256": "7692292c251e88efd4725bc52b5f5ae1914f04f1acc211fb4d053391c03b3ca8"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn0-hit-reaction-50.png",
+    "bytes": 1558331,
+    "sha256": "2c28468661862c35ebcbf8c739ba58d47f5a079d43b3469482a6eedc9598ebb4"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn2-dodge-return-end.png",
+    "bytes": 1558758,
+    "sha256": "faf9bd4b825fccfcb6c93d40954af5cc1c6a3cb9d45f4c857a8e505d33e3e661"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn1-hit-impact.png",
+    "bytes": 1569020,
+    "sha256": "b902f94383f0b0eb7b1c04031062b40ae8d57ed59ccd0706fba695ec30defd6b"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn0-hit-impact.png",
+    "bytes": 1004053,
+    "sha256": "04b2126b1730accb6d7269b248c8fa33284fe1b88ecfcad2928c9e4fb8fc0224"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn1-hit-return-end.png",
+    "bytes": 1558982,
+    "sha256": "b3da2912d0b750c9dcef0f15b268b4ab0df22efe208c6792e4e9fe662432bc3c"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn2-dodge-impact.png",
+    "bytes": 1565547,
+    "sha256": "7a1c84aef98d75f8d22ad7a8caed6255d776411cd5776b0d2f54f28d90067be9"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn2-dodge-approach-50.png",
+    "bytes": 1558796,
+    "sha256": "70f503ea44dba471ebfcccf5b5d6bf250dd4c1985c365e503f5a9fac404377b5"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn3-hit-impact.png",
+    "bytes": 1564880,
+    "sha256": "be14dee5c011748fc0fe7fbf0c4c2b6c3bb7cc51eb60b81cedb1e3b92dcc7c32"
+  },
+  {
+    "path": "audits/BIRD_MOTION_C69_20260927/native-hawk/turn3-hit-idle-90.png",
+    "bytes": 1557127,
+    "sha256": "5fe685ce4d302b3ea4c90de83d28eb4efb02f1f2c255517468df1cde0eb0ba4b"
+  }
+]
