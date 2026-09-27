@@ -848,7 +848,7 @@ C68 keeps source images and rig records unchanged while moving root-remainder fi
 
 ### Bird faint motion — matches code2026-09-27
 
-The proposed biped-bird faint extension is REJECTED: Hawk/Dove improved, but the full arena owner found56Goose ARAP refusals. Production keeps the prior quadruped/insect author unchanged. Endpoint-only authoring cannot prove actual painted support or skin safety; C71 source-bound painted-support input is consumed by the grounded non-faint bird author as described below. Diagnostic evidence:audits/BIRD_MOTION_C69_20260927.
+The proposed biped-bird faint extension is REJECTED: Hawk/Dove improved, but the full arena owner found56Goose ARAP refusals. Production keeps the prior quadruped/insect author unchanged. Endpoint-only authoring cannot prove actual painted support or skin safety; C71 source-bound painted-support input is consumed by the grounded bird author as described below; the later C77 faint curve uses this actual input, not the rejected endpoint-only envelope. Diagnostic evidence:audits/BIRD_MOTION_C69_20260927.
 
 ### Exact repeated skin fields — matches code2026-09-27
 
@@ -858,4 +858,4 @@ Upper-body diagnostic (2026-09-27): audits/QUAD_UPPER_C73_20260927 retains Marmo
 
 ### Painted-support grounded birds — matches code 2026-09-27
 
-The canonical bird author probes BodyCard.paintedContactSupports when present, retaining its existing complete candidate curves and all contact limits. The static owners, observed-mode native owners and shared arena fixture attach the same source-bound data as the stage. Seven previously refused actions pass; all already-passing sampled actions remain byte-identical. Goose full static/native passes; other faint/fold/ownership faults remain. Evidence and old-author negative controls: audits/BIRD_SUPPORT_C75_20260927.
+The canonical bird author probes BodyCard.paintedContactSupports when present. The static owners, observed-mode native owners and shared arena fixture attach the same source-bound data as the stage. C75 fixes seven non-faint actions. C77 additionally authors faint only for cards with these observed supports and only when the original whole curve refuses: one root/pelvis/spine/chest rotation plus root-translation gain, 129 probe samples, 12 bisection steps and 10% reserve. Limbs/head/wings/tail, timing, easing and all runtime limits remain unchanged; passing curves and unobserved faint cards keep their exact old timelines. Pigeon/Vulture/Dove/Hawk pass native contact/publication with zero refusals, but neck/feather/tail ownership fragments remain visually open. Quail faint folds and Raven victory folds remain. Evidence and actual disabled-author negatives: audits/BIRD_SUPPORT_C75_20260927 and audits/BIRD_FAINT_C77_20260927.

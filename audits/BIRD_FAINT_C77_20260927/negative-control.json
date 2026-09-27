@@ -1,0 +1,7 @@
+{
+  "mutation": "Remove faint from canonical grounded-bird selector",
+  "expected": "Four actual contact-repair tests fail",
+  "exitCode": 1,
+  "restoredSha256": "7dfec38b2f458f0031a4c9126d2ea4cb721172455e4ebccddcf6d75fa56c3148",
+  "restoredExact": true
+}

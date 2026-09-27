@@ -1,0 +1,16 @@
+[
+  {
+    "name": "c59-08-vulture",
+    "canonicalMaster": "audits/G2_C59_20260926/08-vulture/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/packet/master.png",
+    "masterSha256": "973ea9f3ea1254fd5f3107c34fb76cf738940fead74af9e9ff2c48d936267e30",
+    "otherLaneSourceReadOnly": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c59-08-vulture/packet/master.png"
+  },
+  {
+    "name": "c56-15-dove",
+    "canonicalMaster": "audits/G2_THROUGHPUT_C56_20260926/15-dove/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-15-dove/packet/master.png",
+    "masterSha256": "8588a60567e7c84e600ac32613b1c7a6a2bd11edc46d7b115fd71a14e2bd70a0",
+    "otherLaneSourceReadOnly": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2bird-handrefs/c56-15-dove/packet/master.png"
+  }
+]
