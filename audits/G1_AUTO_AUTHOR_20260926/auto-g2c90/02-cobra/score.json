@@ -1,0 +1,9 @@
+{
+ "id": "02-cobra",
+ "family": "serpent",
+ "verdict": "REFUSE",
+ "reasons": [
+  "not x-monotone: the dominant column run holds 94.4 % (coil or overlap; vertical strips cannot separate it)"
+ ],
+ "semanticPresence": null
+}

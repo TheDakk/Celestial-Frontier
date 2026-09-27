@@ -1,0 +1,103 @@
+{
+  "name": "Kinkajou",
+  "family": "quadruped",
+  "species": {
+    "name": "Kinkajou",
+    "aspect": 1.6,
+    "headFrac": 0.25,
+    "eyes": "prominent",
+    "posture": "quadruped",
+    "mustRead": [
+      "long prehensile tail thick at the base",
+      "round teddy-bear face with huge dark eyes",
+      "golden-brown woolly fur"
+    ],
+    "note": "a raccoon relative, not a monkey; it is the only carnivoran in the Americas with a truly prehensile tail"
+  },
+  "genome": {
+    "seed": 1890992104,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 15,
+    "body": 2,
+    "loco": 2,
+    "trait": 14,
+    "size": 0,
+    "diet": 3,
+    "head": 4,
+    "limbs": 4,
+    "skin": 7,
+    "tail": 4,
+    "pattern": 2,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 6,
+    "detail": 7,
+    "accent": 8,
+    "temper": 3,
+    "sense": 3,
+    "repro": 3,
+    "life": 4,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Kinkajou"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Kinkajou\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"1890992104\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 19,
+  "profile": {
+    "id": "small-clawed-mammal",
+    "names": [
+      "Kinkajou",
+      "Coati",
+      "Civet",
+      "Mongoose",
+      "Meerkat",
+      "Red Panda",
+      "Raccoon",
+      "Badger",
+      "Weasel",
+      "Stoat",
+      "Mink",
+      "Marten",
+      "Fisher",
+      "Wolverine",
+      "Possum",
+      "Porcupine",
+      "Squirrel",
+      "Chipmunk",
+      "Mouse",
+      "Vole",
+      "Mole",
+      "Shrew",
+      "Hedgehog",
+      "Lemming",
+      "Marmot",
+      "Prairie Dog",
+      "Ground Squirrel",
+      "Gopher",
+      "Hamster",
+      "Gerbil",
+      "Hyrax",
+      "Agouti",
+      "Guinea Pig",
+      "Rat",
+      "Tree Shrew",
+      "Wombat",
+      "Tasmanian Devil",
+      "Quoll"
+    ],
+    "candidateTemplates": [
+      "quadruped"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "bite",
+      "claw"
+    ],
+    "notes": ""
+  }
+}

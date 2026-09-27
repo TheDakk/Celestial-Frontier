@@ -1,0 +1,11 @@
+{
+ "id": "15-squirrel",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "facing: the mirrored painting matches quadruped better (0.0202 < 0.0270)",
+  "missing-anatomy: part tail3 (tail3) covers 7% paint (reference 61%)",
+  "unexplained-anatomy: 15.1% of the paint lies away from the body and in no part (reference 5.6%)"
+ ],
+ "semanticPresence": null
+}

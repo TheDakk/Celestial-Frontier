@@ -1,0 +1,9 @@
+{
+ "id": "17-rabbit",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 1% paint (reference 38%)"
+ ],
+ "semanticPresence": null
+}

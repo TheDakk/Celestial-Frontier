@@ -1,0 +1,9 @@
+{
+ "id": "16-chipmunk",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a other appendage of 15.1% paint that no reference appendage lands on"
+ ],
+ "semanticPresence": null
+}
