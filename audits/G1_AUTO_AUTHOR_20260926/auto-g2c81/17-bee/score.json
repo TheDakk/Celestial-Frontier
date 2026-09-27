@@ -1,0 +1,9 @@
+{
+ "id": "17-bee",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 0% paint (reference 88%)"
+ ],
+ "semanticPresence": null
+}

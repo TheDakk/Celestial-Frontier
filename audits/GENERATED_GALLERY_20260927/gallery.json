@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 72,
+ "total": 82,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -374,6 +374,27 @@
    "note": "passes with observed supports; tail curl, neck shards (Codex)"
   },
   {
+   "family": "Birds",
+   "name": "Curlew",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/09-curlew",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Coot",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/14-coot",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
+   "family": "Birds",
+   "name": "Rail",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/16-rail",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "clean"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -498,6 +519,55 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c76/08-goldfish",
    "report": "DIAGNOSTIC_PASS",
    "note": "small body crack; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Mackerel",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/01-mackerel",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Haddock",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/02-haddock",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "vertical body cracks (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Pollock",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/03-pollock",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "vertical body cracks (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Sardine",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/04-sardine",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Anchovy",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/05-anchovy",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "small body crack (unwelded)"
+  },
+  {
+   "family": "Fish",
+   "name": "Mullet",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/06-mullet",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
+  },
+  {
+   "family": "Fish",
+   "name": "Tarpon",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c81/07-tarpon",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "acceptable; unwelded"
   },
   {
    "family": "Insects",
