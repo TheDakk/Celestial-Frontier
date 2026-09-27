@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 /Users/dakk/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/morph/png-stream.test.ts (4 tests | 1 failed | 3 skipped) 3ms
+     × does not publish bytes at readable EOF while native writer close remains pending 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/morph/png-stream.test.ts > PNG native stream ownership > does not publish bytes at readable EOF while native writer close remains pending
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ apps/game/src/morph/png-stream.test.ts:17:21
+     15|   const f=fixture(),input=Uint8Array.of(7,9);let published=false;const…
+     16|   await f.closing.promise;for(let i=0;i<8;i++)await Promise.resolve();
+     17|   expect(published).toBe(false);expect(f.writer.releaseLock).not.toHav…
+       |                     ^
+     18|   f.closed.resolve();expect(await pending).toEqual(f.chunk);expect(inp…
+     19|   expect(f.writer.releaseLock).toHaveBeenCalledTimes(1);expect(f.reade…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 skipped (4)
+   Start at  15:06:36
+   Duration  130ms (transform 16ms, setup 0ms, import 21ms, tests 3ms, environment 0ms)
+

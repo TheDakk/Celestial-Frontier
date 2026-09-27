@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Halibut",
+  "masterSha256": "a21de570cd8791c9d24833b257d79f32993bdb1066f1b6c90f2a488a7374daae",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

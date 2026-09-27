@@ -1,0 +1,11 @@
+{
+  "originals": {
+    "collector": "3ce7ed13c57f7feabc2653b9f7ce5eb323bc3305a19646f2cd93af5032d2dc5e",
+    "contract": "1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692"
+  },
+  "generated": {
+    "collector.mjs": "859119f3f43a1f09538734563667da99d7e56df5994486bbc8f679ede28e63e1",
+    "contract.mjs": "1ff537505dc674d776432d93deba2b78a085ed629434eea4a0b25074c8ef7871",
+    "painted.mjs": "5d006a6cd4cb8f898b9b76f01938cfa36e50936fcfd0827509616d4e0514410f"
+  }
+}

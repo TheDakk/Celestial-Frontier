@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Echidna",
+  "masterSha256": "19149a2e4f819a335e90fde151afd21391e59f4734be6b2927f32132f35c4e8b",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

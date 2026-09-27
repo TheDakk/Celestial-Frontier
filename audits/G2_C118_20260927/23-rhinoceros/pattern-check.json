@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Rhinoceros",
+  "masterSha256": "de6a210ad60c393e9c84e701fb7daafa281349431a9c8f2795ed53783f67417e",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

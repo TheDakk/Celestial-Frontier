@@ -1,0 +1,24 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Penguin",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "bd65002d68d8e3b48b8a676ffd09e261ec5e43bf32ce2776146cd8ca21d33d27",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "penguin",
+  "authoringCreated": false,
+  "sourceHead": "2ad238126ef6a84c58fcc7f7e3cdaa6fb8a15db3",
+  "basePromptSha256": "87ff67c218b550a7fd62425c1eaa41ec05ddd8448bc3870e0de30251b2697705",
+  "layoutCompilerSha256": "5362f81299e2b74f9dbae2f404db82a7d86f1e88c73b651f26d56090f603603c",
+  "layoutClarification": "Species identity features FIRST: fully upright standing posture on short rear-set feet; stiff flipper wings held flat at the sides; black back and white belly countershading. One Earth Penguin. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n"
+}

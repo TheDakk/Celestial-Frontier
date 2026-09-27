@@ -1,0 +1,13 @@
+{
+  "id": "15-water-beetle",
+  "name": "Water Beetle",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e202c552-471c-4989-9f4f-63fe74841915.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3cc08d855b26531830b11862f8c3629618191f3d06ed385b4a6588babc4ad10f",
+  "bytes": 1316048,
+  "promptSha256": "ed072e4a56ee4b042e7e4dc467754e9543280da2e95d819ab5136cfae3dd81a3",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

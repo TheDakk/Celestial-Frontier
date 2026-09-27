@@ -1,0 +1,26 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Halibut",
+  "family": "fish",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "636c042272f64d4c8969f951d11fc3f4c9624dfe9a2da4cc18e080b12799fbb8",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 0,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "zero legs; species-correct dorsal, anal, paired pectoral and pelvic fins where biologically present, and one complete caudal tail",
+  "profileId": "fish",
+  "authoringCreated": false,
+  "sourceHead": "2ad238126ef6a84c58fcc7f7e3cdaa6fb8a15db3",
+  "basePromptSha256": "5b4ecadc5938f25d171bbc8258df8d96d478cebde3f736414e4c630478fb5a91",
+  "layoutCompilerSha256": "5362f81299e2b74f9dbae2f404db82a7d86f1e88c73b651f26d56090f603603c",
+  "layoutClarification": "Species identity features FIRST: both eyes on the same upper side of the head; continuous fin fringe running right around the body; diamond-elongate flatfish outline. One Earth Halibut. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: horizontal fish, head RIGHT and complete caudal tail LEFT; species-correct fin count, finlets, barbels and tail shape. Natural fin rays and fin roots must stay distinct; no detached pieces. Keep the tail stalk continuous.\n\n",
+  "priorPromptSha256": "010d62fa7c1f23fabcc26f76c8e5d3c598001bb65943ebfdf59c0119f4421a0a",
+  "targetedAnatomyClarification": "Anatomically flat fish: show the naturally pigmented EYED upper side with both eyes migrated onto it, a flattened diamond body and continuous low dorsal/anal fin edges. Do not create an ordinary tall-bodied upright fish or detached fins."
+}

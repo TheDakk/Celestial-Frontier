@@ -1,0 +1,13 @@
+{
+  "id": "12-platypus",
+  "name": "Platypus",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-7df86429-e0c7-475a-9d25-043d418f5f08.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "133a504266934c3bf8cbb4dc9f85bc0502f3e6e72b6fd36e35493589181901d9",
+  "bytes": 1286017,
+  "promptSha256": "ec74a341432102712b758513499e145de4a02cd8bf36f17e8f07b0fa76d70d35",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

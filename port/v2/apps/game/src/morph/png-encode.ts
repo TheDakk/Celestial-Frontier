@@ -1,3 +1,4 @@
+import { completePngStream } from './png-stream.js';
 // Exact PNG encode of straight-alpha RGBA (8-bit, colour type 6, filter 0, one IDAT) over the platform's
 // `CompressionStream('deflate')` — the card raster's bytes are then identical on every device that runs the same
 // deflate; the decoded pixels are identical everywhere by construction (the parity law), which is what the tests seal.
@@ -7,10 +8,9 @@ const crc32 = (b: Uint8Array): number => { let c = 0xffffffff; for (let i = 0; i
 const be32 = (v: number): Uint8Array => new Uint8Array([(v >>> 24) & 255, (v >>> 16) & 255, (v >>> 8) & 255, v & 255]);
 const chunk = (type: string, data: Uint8Array): Uint8Array => { const t = new Uint8Array(4 + data.length); for (let i = 0; i < 4; i++) t[i] = type.charCodeAt(i); t.set(data, 4); const out = new Uint8Array(12 + data.length); out.set(be32(data.length), 0); out.set(t, 4); out.set(be32(crc32(t)), 8 + data.length); return out; };
 async function deflate(raw: Uint8Array): Promise<Uint8Array> {
-  const cs = new CompressionStream('deflate'); const w = cs.writable.getWriter(); void w.write(new Uint8Array(raw) as unknown as BufferSource).then(() => w.close());
-  const chunks: Uint8Array[] = []; const r = cs.readable.getReader(); for (;;) { const { done, value } = await r.read(); if (done) break; chunks.push(value); }
-  let n = 0; for (const c of chunks) n += c.length; const out = new Uint8Array(n); let o = 0; for (const c of chunks) { out.set(c, o); o += c.length; } return out;
+  return completePngStream(new CompressionStream('deflate'), raw);
 }
+
 export async function encodePng(rgba: Uint8Array, width: number, height: number): Promise<Uint8Array> {
   if (rgba.length !== width * height * 4 || !(width > 0 && height > 0)) throw new TypeError('png encode: size');
   const raw = new Uint8Array((width * 4 + 1) * height); for (let y = 0; y < height; y++) { raw[y * (width * 4 + 1)] = 0; raw.set(rgba.subarray(y * width * 4, (y + 1) * width * 4), y * (width * 4 + 1) + 1); }
