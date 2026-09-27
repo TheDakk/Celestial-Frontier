@@ -1,0 +1,82 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "17-python",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "1ee03834909e67ffbd734e77ebe93c7ee66d7139a69821952dab639cade319a6",
+ "subjectSourceSha256": "e1ebc24ef78ce0ba4cf54b3b57b71d09a789114febdca9d83c448a1a6131e35a",
+ "identity": {
+  "name": "Python",
+  "family": "serpent",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Python\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"1896382194\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"6\"]]]]",
+  "seed": 1896382194,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "eel",
+  "authoringSha256": "8067e8640d264788f033232c8abc5cd65e68721c480b7e6e429c2c06636ac3df",
+  "masterSha256": "77890d5b4b55daf076bfc6ca2da0b03fce16930feaca08223bc2d0822e2571cb"
+ },
+ "habitat": {
+  "profileId": "constricting-snake",
+  "media": [
+   "ground",
+   "water"
+  ],
+  "profileSha256": "822b53a9fc0d34e5fb2dd4ed717c6fe630b088666eb284698b4ef3108ff122fa",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group constricting-snake (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1575,
+     "class": "front",
+     "attach": {
+      "x": 345.6,
+      "y": 206.1,
+      "relX": 0.84,
+      "relY": 0.39
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0867,
+     "class": "rear",
+     "attach": {
+      "x": 81.9,
+      "y": 209.3,
+      "relX": 0.19,
+      "relY": 0.44
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "eel",
+   "byClass": {
+    "rear": 1,
+    "front": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

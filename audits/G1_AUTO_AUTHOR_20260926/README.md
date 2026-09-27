@@ -2,6 +2,8 @@
 
 Program: `audits/GENERATION_PIPELINE_20260926/PROGRAM.md` (Dakk D22/D23). Owner: Claude.
 
+**Latest (session 4, 2026-09-26):** the 24 C54 paintings give 9 ADMIT + PASS_STATIC and 7 native PASS, all 7 quadrupeds (section "G2 C54 batch" below). D24 scores G1 per family on generated paintings.
+
 **Status (end of session 2, 2026-09-26): the corpus gate (≥ 30/40 admitted with zero hand edits) is NOT met.**
 - Adopted author **v5:**
   - **12/40** on the leave-one-subject-out corpus;
@@ -115,6 +117,23 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **Fish packets REJECTED by Dakk** (tail stalk crunchy/pinched). The tail joint is the top rig priority (C54).
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
+
+**G2 C54 batch (Codex `2447b472`: 24 new paintings), scored with the adopted v10 author (session 4, 2026-09-26)** (`auto-g2c54-v10/`; leave-one-species-out; zero hand edits; the command is in the ROADMAP handoff):
+
+| Family | ADMIT + PASS_STATIC | Native (CPU ×4) | Refusals |
+|---|---:|---|---|
+| Quadrupeds (12) | **7:** Dingo, Jackal (Wolf ref.); Lion, Tiger, Leopard, Ocelot (Cougar ref.); Weasel (River Otter ref.) | **7/7 DIAGNOSTIC_PASS**, 0/0 refusals (land script, `native-g2c54/`) | Snow Leopard ADMIT but static RED (presentation: `approach:trot` exceeds the contact scale-compression bound, the Red Fox class). Hyena, Jaguar, Serval: an unassigned limb-down appendage of 6–7 %. Stoat: the far ear tip covers 9 % |
+| Birds (4) | **2:** Goose, Quail (Gull ref.; semantic presence RESOLVED). The first birds ever to pass static | **0/2.** Goose FAIL (3 peck refusals + missing live frames); Quail FAIL (ARAP folds 19, faint foot joint limit 48°) | Duck: 6.6 % unexplained paint. Partridge: wrong family, and the tail fan covers 18 % |
+| Serpents (4) | 0 | — | an unassigned front/rear "appendage" of 9–27 % (the C47 layout drift is unchanged: thin S-curves). Python is also refused on facing |
+| Insects (4) | 0 (Termite ADMIT, but intake refused: `Source join continuity: unique known source owners`) | — | Cockroach: the rear family floor and antenna coverage. Locust: the knee covers 29 %. Beetle: facing and wrong family |
+
+- **Total: 9/24 ADMIT + PASS_STATIC, and 7/24 native PASS.** The pattern holds: controlled-layout quadrupeds flow, while serpents and insects are still refused on layout.
+- **Claude's visual check at full size** (`native-g2c54/review-sheet.jpg`, `fullsize-approach.jpg`, `fullsize-reaction.jpg`, `chest-zoom.jpg`):
+  - Every tail is full: no blotches, knots or pinches. Legs are whole and heads stay intact.
+  - Dingo, Jackal, Lion and Weasel look clean.
+  - **A fault the gates miss, on the Cougar-referenced cats (Tiger, Leopard, Ocelot):** in stride, a pointed flap of chest fur hangs below the near elbow. The upper-foreleg cut carries chest paint with it. The Leopard also shows a thin seam on the shoulder. Handed to Codex (fit side, C57).
+  - **A painting fault:** Tiger, Leopard, Ocelot, Jaguar and Snow Leopard were generated WITHOUT their coat patterns (no stripes, no rosettes, no spots). They read as recoloured cougars. G2 prompt fix: C57 and D27.
+- **The fish tail**, with Codex's C55 correction plus a component-preserving bridge: see `audits/TAIL_STALK_BRIDGE_20260926/README.md`. Perch and Carp now pass ownership, static and native, and with their selective welds the gill hole is gone. But neither fish is a genuinely gapped tail, so the rule is not adopted.
 
 **v9–v11 (session 3, continued): four levers tried; one bug fixed, no count change.**
 

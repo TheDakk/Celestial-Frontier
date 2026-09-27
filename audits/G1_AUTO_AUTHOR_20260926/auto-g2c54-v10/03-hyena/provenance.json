@@ -1,0 +1,125 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "03-hyena",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "8d7b92bbf3276ba5e40c5719f61c52dba8615ae83fe7a0f66f58eeb7bd25802d",
+ "subjectSourceSha256": "a93ce512888dbac85c60019d29cf4baacac107ff3306ca8c1200c9e65b9699e3",
+ "identity": {
+  "name": "Hyena",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Hyena\"]],[\"accent\",[\"number\",\"7\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"16\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1428647718\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 1428647718,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "wild-horse",
+  "authoringSha256": "3fe23c7c93b2c88c5bdc0e04213468c64b26517662d8865102e802f58c9a4301",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407"
+ },
+ "habitat": {
+  "profileId": "hyena",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "299f180c44f726a5cda8de4055ba1fd1021f4c72e164d2871806b8dd715b73af",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hyena (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0132,
+     "class": "front",
+     "attach": {
+      "x": 379.4,
+      "y": 134.7,
+      "relX": 0.92,
+      "relY": 0.3
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0483,
+     "class": "limb-down",
+     "attach": {
+      "x": 52,
+      "y": 227.3,
+      "relX": 0.1,
+      "relY": 0.7
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0717,
+     "class": "limb-down",
+     "attach": {
+      "x": 284.4,
+      "y": 226.9,
+      "relX": 0.68,
+      "relY": 0.7
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0697,
+     "class": "limb-down",
+     "attach": {
+      "x": 231.5,
+      "y": 227,
+      "relX": 0.55,
+      "relY": 0.7
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0523,
+     "class": "limb-down",
+     "attach": {
+      "x": 99.3,
+      "y": 252.2,
+      "relX": 0.22,
+      "relY": 0.81
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0474,
+     "class": "limb-down",
+     "attach": {
+      "x": 150.5,
+      "y": 256,
+      "relX": 0.35,
+      "relY": 0.83
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "wild-horse",
+   "byClass": {
+    "top": 2,
+    "front": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

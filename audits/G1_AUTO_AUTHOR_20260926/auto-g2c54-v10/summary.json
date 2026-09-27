@@ -1,0 +1,499 @@
+[
+ {
+  "id": "01-dingo",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "02-jackal",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "03-hyena",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 7.2% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "04-lion",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "05-tiger",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "06-leopard",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "07-jaguar",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "08-snow-leopard",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "RED",
+  "staticFails": [
+   "presentation"
+  ],
+  "staticRefusals": [
+   {
+    "id": "presentation",
+    "samples": 423,
+    "firstRefusal": {
+     "sampleIndex": 423,
+     "sampleNumber": 424,
+     "ms": 7050,
+     "error": "Error: Contact: approach:trot@528.511430978775 exceeds scale compression bound\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7y2RBJ/run.mjs:12193:57)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7y2RBJ/run.mjs:26991:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7y2RBJ/run.mjs:27168:44\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7y2RBJ/run.mjs:17185:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7y2RBJ/run.mjs:27168:23\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7y2RBJ/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-g1-static-7y2RBJ/run.mjs:27209:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5)",
+     "contact": null,
+     "pose": {
+      "root": {
+       "rotation": 0,
+       "dx": 0.015399717990438641,
+       "dy": 0.05692573002708186
+      },
+      "pelvis": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "spine": {
+       "rotation": -0.050358,
+       "dx": 0,
+       "dy": 0
+      },
+      "chest": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "neck": {
+       "rotation": -0.067144,
+       "dx": 0,
+       "dy": 0
+      },
+      "head": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "jaw": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "hindFarRoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "hindFarKnee": {
+       "rotation": 0.436436,
+       "dx": 0,
+       "dy": 0
+      },
+      "hindFarAnkle": {
+       "rotation": 0.201432,
+       "dx": 0,
+       "dy": 0
+      },
+      "hindFarPaw": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "foreFarRoot": {
+       "rotation": 0
+      },
+      "foreFarKnee": {
+       "rotation": -0.07699697128098205
+      },
+      "foreFarAnkle": {
+       "rotation": 0.22273241570743818
+      },
+      "foreFarPaw": {
+       "rotation": -0.09537744442645615
+      },
+      "hindNearRoot": {
+       "rotation": 0
+      },
+      "hindNearKnee": {
+       "rotation": -0.2707045201757824
+      },
+      "hindNearAnkle": {
+       "rotation": 0.45264319652008406
+      },
+      "hindNearPaw": {
+       "rotation": -0.18193867634430166
+      },
+      "foreNearRoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "foreNearKnee": {
+       "rotation": 0.436436,
+       "dx": 0,
+       "dy": 0
+      },
+      "foreNearAnkle": {
+       "rotation": -0.201432,
+       "dx": 0,
+       "dy": 0
+      },
+      "foreNearPaw": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "tail0": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "tail1": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "tail2": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "tail3": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "earFarRoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "earFarTip": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "earNearRoot": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      },
+      "earNearTip": {
+       "rotation": 0,
+       "dx": 0,
+       "dy": 0
+      }
+     },
+     "arapStats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 26.101936095977177,
+      "rmsTargetErrorPx": 1.6669262100549433,
+      "maximumProjectionPx": 13.855693773071337,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.11998842114390715,
+      "orientationPasses": 64
+     },
+     "action": "approach:trot"
+    }
+   }
+  ],
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "RED",
+    "reasons": []
+   },
+   {
+    "rank": 2,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "unexplained-anatomy: 8.1% of the paint lies away from the body and in no part (reference 3.4%)"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "09-ocelot",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "10-serval",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a limb-down appendage of 6.3% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a limb-down appendage of 6.0% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "11-stoat",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part ear-far-tip (earFarTip) covers 9% paint (reference 52%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "12-weasel",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": [],
+  "fallbackFrom": "RED",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "13-duck",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 6.6% of the paint lies away from the body and in no part (reference 1.2%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "14-goose",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": [],
+  "fallbackFrom": "RED",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "RED",
+    "reasons": []
+   },
+   {
+    "rank": 2,
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "15-quail",
+  "family": "biped-bird",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": [],
+  "fallbackFrom": "RED",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "RED"
+   },
+   {
+    "rank": 1,
+    "verdict": "ADMIT",
+    "static": "PASS_STATIC",
+    "reasons": []
+   }
+  ]
+ },
+ {
+  "id": "16-partridge",
+  "family": "biped-bird",
+  "verdict": "REFUSE",
+  "reasons": [
+   "wrong-family: quadruped matches clearly better (0.0115 < 0.0168)",
+   "missing-anatomy: part tail (tailFan) covers 18% paint (reference 61%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "17-python",
+  "family": "serpent",
+  "verdict": "REFUSE",
+  "reasons": [
+   "facing: the mirrored painting matches serpent better (0.0138 < 0.0171)",
+   "extra-anatomy (unassigned): a rear appendage of 8.7% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "18-boa",
+  "family": "serpent",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 10.1% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "19-racer",
+  "family": "serpent",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a front appendage of 21.3% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a rear appendage of 27.0% paint that no reference appendage lands on",
+   "missing-anatomy: part head (head) covers 7% paint (reference 4%)",
+   "missing-anatomy: part body-segment-1 (seg1) covers 8% paint (reference 9%)",
+   "missing-anatomy: part body-segment-6 (seg6) covers 7% paint (reference 10%)",
+   "missing-anatomy: part body-segment-7 (seg7) covers 6% paint (reference 7%)",
+   "missing-anatomy: part body-segment-8 (seg8) covers 3% paint (reference 5%)",
+   "missing-anatomy: part body-segment-9 (seg9) covers 2% paint (reference 2%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "20-garter-snake",
+  "family": "serpent",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a front appendage of 16.0% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a rear appendage of 13.3% paint that no reference appendage lands on",
+   "missing-anatomy: part head (head) covers 7% paint (reference 4%)",
+   "missing-anatomy: part body-segment-7 (seg7) covers 5% paint (reference 7%)",
+   "missing-anatomy: part body-segment-8 (seg8) covers 3% paint (reference 5%)",
+   "missing-anatomy: part body-segment-9 (seg9) covers 2% paint (reference 2%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "21-cockroach",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (family floor): the largest rear appendage is 1.2% of the paint; every same-family reference shows at least 3.8%",
+   "missing-anatomy: part antenna-far (antennaFar) covers 7% paint (reference 25%)",
+   "missing-anatomy: part antenna-near (antennaNear) covers 6% paint (reference 31%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "22-locust",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy: part front-near-upper (legFrontNearKnee) covers 29% paint (reference 88%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "23-beetle",
+  "family": "insect",
+  "verdict": "REFUSE",
+  "reasons": [
+   "facing: the mirrored painting matches insect better (0.0362 < 0.0462)",
+   "wrong-family: quadruped matches clearly better (0.0221 < 0.0462)",
+   "extra-anatomy (unassigned): a limb-down appendage of 7.1% paint that no reference appendage lands on",
+   "missing-anatomy: part leg-front-far-knee (legFrontFarKnee) covers 14% paint (reference 56%)",
+   "unexplained-anatomy: 10.9% of the paint lies away from the body and in no part (reference 1.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "24-termite",
+  "family": "insect",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "INTAKE_REFUSED",
+  "intakeError": "Error: Source join continuity: unique known source owners\n    at need (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:7:40)\n    a",
+  "candidates": [
+   {
+    "rank": 0,
+    "verdict": "ADMIT",
+    "static": "INTAKE_REFUSED"
+   },
+   {
+    "rank": 1,
+    "verdict": "REFUSE",
+    "static": null,
+    "reasons": [
+     "missing-anatomy: part antenna-far (antennaFar) covers 6% paint (reference 29%)",
+     "unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 1.6%)"
+    ]
+   }
+  ]
+ }
+]

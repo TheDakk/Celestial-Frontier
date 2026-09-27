@@ -1,0 +1,20 @@
+{"id":"idle","status":"RED","samples":59,"drift":0.04106750366902586,"gap":0.00006737353360152049,"exactRest":true,"firstRefusal":{"ms":1483.5985464354355,"sampleNumber":60,"error":"Error: Contact: idle@1483.5985464354355 exceeds scale compression bound"}}
+{"id":"alert","status":"PASS","samples":121,"drift":0.020416241279815516,"gap":0.00005909049777110322,"exactRest":true,"firstRefusal":null}
+{"id":"approach:walk","status":"PASS","samples":121,"drift":0.04154597709740867,"gap":0.00005909049787895602,"exactRest":true,"firstRefusal":null}
+{"id":"approach:trot","status":"PASS","samples":121,"drift":0.05100759391214772,"gap":0.00006658614284158039,"exactRest":true,"firstRefusal":null}
+{"id":"approach:gallop","status":"RED","samples":38,"drift":0.007601314978869616,"gap":0.0000673735336645826,"exactRest":true,"firstRefusal":{"ms":295.1333333333333,"sampleNumber":39,"error":"Error: Contact: joint limit foreNearAnkle approach:gallop@295.1333333333333: -105.3698809013819"}}
+{"id":"approach:hop","status":"PASS","samples":121,"drift":0,"gap":0.00006073704462265248,"exactRest":true,"firstRefusal":null}
+{"id":"melee:bite","status":"PASS","samples":121,"drift":0.007539620617881251,"gap":0.00005909049787895602,"exactRest":true,"firstRefusal":null}
+{"id":"melee:claw","status":"PASS","samples":121,"drift":0.007539620617881251,"gap":0.00006446666384689319,"exactRest":true,"firstRefusal":null}
+{"id":"melee:gore","status":"PASS","samples":121,"drift":0.007539620617881251,"gap":0.00005651696404140939,"exactRest":true,"firstRefusal":null}
+{"id":"melee:tail","status":"PASS","samples":121,"drift":0.007537576001385797,"gap":0.00005785472828057505,"exactRest":true,"firstRefusal":null}
+{"id":"melee:headbutt","status":"PASS","samples":121,"drift":0.007539620617881251,"gap":0.00006737353347539628,"exactRest":true,"firstRefusal":null}
+{"id":"cast","status":"PASS","samples":121,"drift":0.02153339583380249,"gap":0.00006993415830631695,"exactRest":true,"firstRefusal":null}
+{"id":"hit","status":"PASS","samples":121,"drift":0.08726496110928215,"gap":0.00006737353344386522,"exactRest":true,"firstRefusal":null}
+{"id":"dodge","status":"PASS","samples":121,"drift":0,"gap":0.00005968454035369053,"exactRest":true,"firstRefusal":null}
+{"id":"faint","status":"PASS","samples":121,"drift":0.01105419324178885,"gap":0.00006026579772177956,"exactRest":true,"firstRefusal":null}
+{"id":"victory","status":"PASS","samples":121,"drift":0.008121323695250182,"gap":0.00006290384435552978,"exactRest":true,"firstRefusal":null}
+{"id":"tame","status":"PASS","samples":121,"drift":0.06308302614818338,"gap":0.00008536968037241615,"exactRest":true,"firstRefusal":null}
+{"id":"feed","status":"PASS","samples":121,"drift":0.05089529317345437,"gap":0.00006737353344386522,"exactRest":true,"firstRefusal":null}
+{"id":"melee:kick","status":"PASS","samples":121,"drift":0,"gap":0.00006737353347539628,"exactRest":true,"firstRefusal":null}
+{"status":"RED","rows":19,"exactRest":true,"sourcePixelRest":{"status":"PASS","changedVisibleRgbaChannels":0,"scope":"Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"}}
