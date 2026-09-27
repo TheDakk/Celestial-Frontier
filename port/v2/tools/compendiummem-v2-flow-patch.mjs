@@ -3,16 +3,24 @@ export function flowPatch({collector,contract}) {
  const once=(s,a,b)=>{if(s.split(a).length!==2)throw new Error('v2 flow edit drift: '+a.slice(0,90));return s.replace(a,b)};
  contract=once(contract,'paintedFindings, paintedSettlementFindings, compendiumResources','paintedFindings, paintedSettlementFindings, compendiumResources, paintedErrorRows');
  collector=`import { keyboardEntryExpression, keyboardEntryPlan } from './painted.mjs';\n`+collector;
- const from=collector.indexOf('    for (let tabs = 0; tabs < 4; tabs++) {'),to=collector.indexOf('    assert(await evaluate(sessionId,',from);
- if(from<0||to<from)throw new Error('native entry boundary absent');
- collector=collector.slice(0,from)+`    const entryInventory = await evaluate(sessionId, keyboardEntryExpression(), 'keyboard entry inventory');
-    const entryPlan = keyboardEntryPlan(entryInventory, targets.first);
-    for (const expected of entryPlan) {
-      await key(sessionId, 'Tab', 'Tab');
-      const observed = await evaluate(sessionId, keyboardEntryExpression(), 'keyboard entry step');
-      assert(observed?.active === expected, profile + ': native Tab diverged from observed entry inventory');
+ // Both initial traversal and post-Back focus pinning enter through the same
+ // observed native control inventory. Keep the sealed outcome assertions.
+ const entryMarker='    for (let tabs = 0; tabs < 4; tabs++) {';
+ if(collector.split(entryMarker).length!==3)throw new Error('two native entry boundaries required');
+ for(const target of ['first','pinned']) {
+  const from=collector.indexOf(entryMarker),to=collector.indexOf('    assert(await evaluate(sessionId,',from);
+  if(from<0||to<from||!collector.slice(from,to).includes('active === targets.'+target))throw new Error('native entry boundary drift: '+target);
+  collector=collector.slice(0,from)+`    {
+      const entryInventory = await evaluate(sessionId, keyboardEntryExpression(), 'keyboard entry inventory');
+      const entryPlan = keyboardEntryPlan(entryInventory, targets.${target});
+      for (const expected of entryPlan) {
+        await key(sessionId, 'Tab', 'Tab');
+        const observed = await evaluate(sessionId, keyboardEntryExpression(), 'keyboard entry step');
+        assert(observed?.active === expected, profile + ': native Tab diverged from observed entry inventory');
+      }
     }
 `+collector.slice(to);
+ }
  // Raw sibling evidence appears on pre-arm, publication and recovery carriers.
  collector=once(collector,'return `art:{cacheLimit:a.limits.cacheEntries,','return `paintedArt:d.paintedArt,art:{cacheLimit:a.limits.cacheEntries,');
  contract=once(contract,"'planetsideDistinctVisualKeys', 'cachedKeys', 'art',","'planetsideDistinctVisualKeys', 'cachedKeys', 'art', 'paintedArt',");

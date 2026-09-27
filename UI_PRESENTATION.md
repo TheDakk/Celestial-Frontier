@@ -1,5 +1,7 @@
 # Celestial Frontier — UI / Presentation System
 
+**V2 panel stacking, matches code 2026-09-27:** the pinned recipe chip uses z21, below every active panel (z22+). It remains a native, visible Shipyard action wherever unobscured. This prevents the phone Compendium Back center from hitting the chip; native click, focus return and old-z40 negative control: `audits/I5_BACK_REPAIR_20260927`.
+
 Each section dates itself (most with a `matches code as of` marker; a section without one is not a verified
 description). Refreshed in place September 24, 2026: the painted Compendium card and matchup picker section only; the
 rest of this doc was not re-verified in that refresh.
