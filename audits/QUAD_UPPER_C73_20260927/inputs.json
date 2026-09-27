@@ -1,0 +1,23 @@
+[
+  {
+    "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/11-marmot/fit",
+    "copy": "audits/QUAD_UPPER_C73_20260927/11-marmot/source-fit",
+    "canonicalMaster": "audits/G2_QUADRUPED_PILOT_20260926/11-marmot/master.png",
+    "targetMaster": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/11-marmot/packet/master.png",
+    "sha256": "9921ec0d37bc5a3b6faef946500c38563ec513454e2281436c097a25235b13dc"
+  },
+  {
+    "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/13-cattle/fit",
+    "copy": "audits/QUAD_UPPER_C73_20260927/13-cattle/source-fit",
+    "canonicalMaster": "audits/G2_QUADRUPED_PILOT_20260926/13-cattle/master.png",
+    "targetMaster": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/13-cattle/packet/master.png",
+    "sha256": "b69bb1d3c6918217337a2b541aee923df279d5b8b3996ae5f5f68848ccbf31bb"
+  },
+  {
+    "sourceFit": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/02-red-fox/fit",
+    "copy": "audits/QUAD_UPPER_C73_20260927/02-red-fox/source-fit",
+    "canonicalMaster": "audits/G2_QUADRUPED_PILOT_20260926/02-red-fox/master.png",
+    "targetMaster": "audits/G1_AUTO_AUTHOR_20260926/auto-g2-v10/02-red-fox/packet/master.png",
+    "sha256": "f45478fccdfb399188fe3eb17dece1cbb50eb90f3519dc436697dc6788636ec4"
+  }
+]
