@@ -118,6 +118,13 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
+**Birds: the reference pool is the blocker (session 5 diagnosis, no code change)**
+- **Four of the seven hand bird references have their wings RAISED** (Goose, Heron, Sparrow, Sandpiper). The generated G2 birds all stand with wings folded.
+- **Result:** 17 of 20 G2 birds were authored from the ONE standing, folded-wing reference, the Gull. Every bird admission is a Gull (or Grouse) transfer: Goose, Quail, Raven pass; Hawk, Crow, Dove, Magpie are static RED.
+- The false "facing" (Starling, Robin) and "wrong family" (Cardinal, Jay) refusals happen because songbird silhouettes resemble no reference. All six refused songbirds visibly face right, with legs apart.
+- **Tried and reverted:** a head-top facing corroboration. On the raised-wing references the highest paint is a wingtip, so a flipped Goose would pass (4/7 references break it).
+- **Lever:** 3–4 hand-authored standing, folded-wing bird references (a passerine, a pigeon/dove, a duck, a standing raptor), or admitted G2 birds once independently accepted. Asked in C62.
+
 **Insects: the intake blocker found and fixed (session 5)** (`merge-joint-labels-fit.mjs`, runner `--merge-joint-labels`, labelled; `merge-joint/`, `auto-g2insect-mergejoint/`):
 - **Cause:** the corpus Beetle packet authors three regions on ONE joint (`elytron-near`, `elytron-far`, `thorax`). The shipped beetle's intake merged them (`fit-04/label-authoring-receipt.json` regionOwnerMap → `thorax`), but `intake-authored.mjs` does not. So the hand Beetle packet itself, and every insect transferred from it, is refused at the source-join probe ("unique known source owners"). Termite and Cicada were ADMITTED by the author and then died there.
 - **Fix:** merge on the label raster (a traced polygon union was tried first and took ~50 px of other owners, so it was rejected), then compile through the unchanged painter-label path. Conservation: only group pixels change owner, to the kept `thorax`.
