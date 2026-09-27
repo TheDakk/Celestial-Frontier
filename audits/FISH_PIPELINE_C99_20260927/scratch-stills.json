@@ -1,0 +1,385 @@
+{
+  "retainedNamedStills": [
+    "turn1-hit-reaction-50.png",
+    "turn3-hit-idle-90.png",
+    "turn3-hit-reaction-50.png"
+  ],
+  "note": "Only redundant new untracked PNGs moved to scratch; full films and named evidence stills retained. Report inventory describes the original capture.",
+  "moved": [
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn2-dodge-reaction-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn2-dodge-reaction-50.png",
+      "sha256": "ccf6838564f7bad48296fbe14bfbe3471114e8a383170c7507f4e5206e03f18e"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn0-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn0-hit-return-end.png",
+      "sha256": "f610e8e1cd76c0c16341c5df839cf30684a3259358c4d61ff119e5a0e88983c6"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn3-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn3-hit-approach-50.png",
+      "sha256": "1b58e3f3ecbe8be04648685f7c857070d5118deefe44118a9bf6b8587ae9a991"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn0-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn0-hit-approach-50.png",
+      "sha256": "1b58e3f3ecbe8be04648685f7c857070d5118deefe44118a9bf6b8587ae9a991"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn1-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn1-hit-approach-50.png",
+      "sha256": "da96d6d57f4318594d54942384b6225c4773c41bdde63f4489cfbe2cb7acc4cc"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn3-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn3-hit-return-end.png",
+      "sha256": "f6c505ac1acc540d098af28ecac5de7c73171d0da230bdb82de3fd776e94b5b2"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn0-hit-reaction-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn0-hit-reaction-50.png",
+      "sha256": "9f8d1ab2b47b58e5e783419717cf74140f10ee6aa9ac09757b670df798f66579"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn2-dodge-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn2-dodge-return-end.png",
+      "sha256": "f610e8e1cd76c0c16341c5df839cf30684a3259358c4d61ff119e5a0e88983c6"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn1-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn1-hit-impact.png",
+      "sha256": "455907f084dfde2152a333d892b30fd31ad775e2f2fca1346bd52a03204ed812"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn0-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn0-hit-impact.png",
+      "sha256": "d7b14c1f2370f7165685cf9a9bae3f00b93b46c454d24f8fcd25a788343c4db5"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn1-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn1-hit-return-end.png",
+      "sha256": "fd2414b61f0f84abbddd7d5fedae03ec186fded7495f06115f72fae4fc41fbb7"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn2-dodge-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn2-dodge-impact.png",
+      "sha256": "70c913ced09d1ae09e278ca10c9ecce21d039f5be14cd1078d485d4dcacfa7f3"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn2-dodge-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn2-dodge-approach-50.png",
+      "sha256": "1b58e3f3ecbe8be04648685f7c857070d5118deefe44118a9bf6b8587ae9a991"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn3-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn3-hit-impact.png",
+      "sha256": "edda6d93454a7289cf7a735b249a684ebd288cf5c1b14f5f01957f6016a18d21"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/08-gar-native-01/turn3-hit-idle-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/08-gar-native-01/turn3-hit-idle-50.png",
+      "sha256": "7acf7fe5db0e5cdea4312ca3de3b841748821b8e28c9aa7cb2562c11973cd258"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn2-dodge-reaction-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn2-dodge-reaction-50.png",
+      "sha256": "9630936850ec287092a4f9b2a99cc30e4e10171e6569efdb9e948ae6175e1e2c"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn0-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn0-hit-return-end.png",
+      "sha256": "3a081467a2215b27fa3f24f1f1d8844b83736b8b3cf56d9c14a0bec19302b0a9"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn3-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn3-hit-approach-50.png",
+      "sha256": "0a5e9c24cf9b756b9399918edf97b9446188d7d0f60e594f964b820e83fc4de3"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn0-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn0-hit-approach-50.png",
+      "sha256": "0a5e9c24cf9b756b9399918edf97b9446188d7d0f60e594f964b820e83fc4de3"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn1-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn1-hit-approach-50.png",
+      "sha256": "0c2eb535a2b2c1cf27f6ff15903bd932da2aa5e35d21935c9b9d52d14d7a3224"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn3-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn3-hit-return-end.png",
+      "sha256": "596321998b183789a0ca2ef727cc3968723a4bc1e735086de92ca04de485ec5c"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn0-hit-reaction-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn0-hit-reaction-50.png",
+      "sha256": "c96e1e62625f5b25261dd9a10754b5853767c1ead79673f3269262fdedda00c5"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn2-dodge-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn2-dodge-return-end.png",
+      "sha256": "3a081467a2215b27fa3f24f1f1d8844b83736b8b3cf56d9c14a0bec19302b0a9"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn1-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn1-hit-impact.png",
+      "sha256": "b8865bf7de497b3ba9aad83e1661f5ad62fe26588d6ddac1df1ff16394c163f3"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn0-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn0-hit-impact.png",
+      "sha256": "d72c4a31a6955be7adc5b19a06a7d03b540c1c5c6168dbf8d929adc46ec62123"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn1-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn1-hit-return-end.png",
+      "sha256": "ce0f719353714c6876b9090e7c673d701c4e274b79d06dd982b65913521145ed"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn2-dodge-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn2-dodge-impact.png",
+      "sha256": "4da2ea96ed08aee6cdc924606d719a7071afd6e61465f873e90f118182d4c352"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn2-dodge-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn2-dodge-approach-50.png",
+      "sha256": "0a5e9c24cf9b756b9399918edf97b9446188d7d0f60e594f964b820e83fc4de3"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn3-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn3-hit-impact.png",
+      "sha256": "a375c828de82e32a0913372aca564dca0637ee4e314f17f9697abdce252eff0b"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/12-killifish-native-01/turn3-hit-idle-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/12-killifish-native-01/turn3-hit-idle-50.png",
+      "sha256": "6f1905cc681e50e26e1aa458181b9715c548a4b7634267373c446602dfff6b07"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn2-dodge-reaction-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn2-dodge-reaction-50.png",
+      "sha256": "77dac24c5d26a53b795d3ad3df1110b5a20b79ec21ccce97c935195db4cc423c"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn0-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn0-hit-return-end.png",
+      "sha256": "710c73093e2a6c8b13382550ee20ab80386a646e9f45284d84b4ff52a9a0d7af"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn3-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn3-hit-approach-50.png",
+      "sha256": "ce6c47cef151950361838090cd0fb663aac02122b2717e0b4e03ae24969d41c9"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn0-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn0-hit-approach-50.png",
+      "sha256": "ce6c47cef151950361838090cd0fb663aac02122b2717e0b4e03ae24969d41c9"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn1-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn1-hit-approach-50.png",
+      "sha256": "c0da6a7281ed185fe858186598b461553173a92ea0fcdd8d68826f19396d90ec"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn3-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn3-hit-return-end.png",
+      "sha256": "bd4f51ce8fc9ba2e9005af382f49d91b03657bb74625e5cfdaabe2ea7a9911dd"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn0-hit-reaction-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn0-hit-reaction-50.png",
+      "sha256": "1b1b84c500d3a409a921d330f7298df17d93afe1207ef3b0e179a7fbc5c05373"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn2-dodge-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn2-dodge-return-end.png",
+      "sha256": "710c73093e2a6c8b13382550ee20ab80386a646e9f45284d84b4ff52a9a0d7af"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn1-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn1-hit-impact.png",
+      "sha256": "6e7a5881464987acade867e411109ff8f461b4ab9d5d2566d85affeeb601b25b"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn0-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn0-hit-impact.png",
+      "sha256": "a2931e1b012dd71abfe1cb8af7546e04ee3ef6291f82535f5ed9e5d0a2c95917"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn1-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn1-hit-return-end.png",
+      "sha256": "61332133981778f6598203e5fdf92b09bad731bbe8fecc8d4249d99d93978dd1"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn2-dodge-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn2-dodge-impact.png",
+      "sha256": "0cf8209018bfc276f07c2c69221ca2da39ef28abf11f93f12d3da562824319a3"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn2-dodge-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn2-dodge-approach-50.png",
+      "sha256": "ce6c47cef151950361838090cd0fb663aac02122b2717e0b4e03ae24969d41c9"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn3-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn3-hit-impact.png",
+      "sha256": "d7024f41803b2699508773930c00fede1bcab095582e5a98f91d107ca8d463e5"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-parrotfish-native-01/turn3-hit-idle-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-parrotfish-native-01/turn3-hit-idle-50.png",
+      "sha256": "c84016c8bfa3c1d7ffe48853cbefae0164b0f996f476c639db99c9cfbcefa94e"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn2-dodge-reaction-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn2-dodge-reaction-50.png",
+      "sha256": "a94918780ff0b8c595a368ca6b3d0378440a58b42e74ea24b2caf3d459b970bb"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn0-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn0-hit-return-end.png",
+      "sha256": "2c96896d8e297c7fd01602711d8775695477b3dd5456e7c0754218f4a5c9a933"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn3-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn3-hit-approach-50.png",
+      "sha256": "0bf6a534ed2b47f1edf61bd526979de7391981896af3851412298176509dec94"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn0-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn0-hit-approach-50.png",
+      "sha256": "0bf6a534ed2b47f1edf61bd526979de7391981896af3851412298176509dec94"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn1-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn1-hit-approach-50.png",
+      "sha256": "507169a43b1c6ebb6bcf0d3abfa2837cbc1268217e7a2e7631c466f511114c56"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn3-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn3-hit-return-end.png",
+      "sha256": "c62e176d0ee08300d7fd284ebffebc4f4ff339f712dd844695bb66f090484cbd"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn0-hit-reaction-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn0-hit-reaction-50.png",
+      "sha256": "39efdc5ad65a409825ba15a91ed3692d10b56931e5262b747234808e3ff4231f"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn2-dodge-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn2-dodge-return-end.png",
+      "sha256": "2c96896d8e297c7fd01602711d8775695477b3dd5456e7c0754218f4a5c9a933"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn1-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn1-hit-impact.png",
+      "sha256": "d6320aa823d24622f744ac3e2a177437c60dc22e17c036d94c1a815086e228e0"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn0-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn0-hit-impact.png",
+      "sha256": "c6fd50116d286617553243650ac6f378b7e8152a61e5f9d09b502929255f4cfa"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn1-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn1-hit-return-end.png",
+      "sha256": "c709081b1e573b56c541440924d4a64914c7f42bd9de676d0f6dde11df8d2f98"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn2-dodge-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn2-dodge-impact.png",
+      "sha256": "d2a14dfa81310908ecce9ba75b1d4fcb3d436959dd43e813f7a3463b994d7da5"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn2-dodge-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn2-dodge-approach-50.png",
+      "sha256": "0bf6a534ed2b47f1edf61bd526979de7391981896af3851412298176509dec94"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn3-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn3-hit-impact.png",
+      "sha256": "57cc725bf91932ff3944c818fc607bdf59670cdc72875a4eea37267a957fbf81"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/02-rabbitfish-native-01/turn3-hit-idle-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/02-rabbitfish-native-01/turn3-hit-idle-50.png",
+      "sha256": "8de73d04aed13c0d9efef88218cbc796e6f8a52735a974b45ef66b53fa9ba62e"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn2-dodge-reaction-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn2-dodge-reaction-50.png",
+      "sha256": "e56cba7924f540c17edaad5bea3232168f5b416d69ef76b0f2fb61cd3628ca9a"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn0-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn0-hit-return-end.png",
+      "sha256": "a510619cd56409305dcf466c67d54af5ae0a41409575997b2acf9bf355c19232"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn3-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn3-hit-approach-50.png",
+      "sha256": "5acd57c25aeccfce2d0c02f59f74f8e17735d9a1ea7f174c390ea3512fc95781"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn0-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn0-hit-approach-50.png",
+      "sha256": "5acd57c25aeccfce2d0c02f59f74f8e17735d9a1ea7f174c390ea3512fc95781"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn1-hit-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn1-hit-approach-50.png",
+      "sha256": "100a2ec37d149b879c76b5abfe6974ba8a9afb27d95913382ccadc77fe29a859"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn3-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn3-hit-return-end.png",
+      "sha256": "33d762cc96aacbf776a239943287792cbc20add1b6920c2b68a80ae3d8032467"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn0-hit-reaction-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn0-hit-reaction-50.png",
+      "sha256": "d6669bf092f57d7ffd6badffbd46d771d785facd14ddc0d2e99d128d4c7336c3"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn2-dodge-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn2-dodge-return-end.png",
+      "sha256": "a510619cd56409305dcf466c67d54af5ae0a41409575997b2acf9bf355c19232"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn1-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn1-hit-impact.png",
+      "sha256": "8c823f7798cdcf92475ea8e1360b27747707b25ce6d73ffb49a4a89b7a5c47fe"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn0-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn0-hit-impact.png",
+      "sha256": "d0082dfe544051d1c271d74f0fedcea7d0f334371a128b86faa3ef620e6eb835"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn1-hit-return-end.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn1-hit-return-end.png",
+      "sha256": "35c31a12a42a36af38572ddc3b8d2c5d9411ded5942a814cc3deb3a8269973be"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn2-dodge-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn2-dodge-impact.png",
+      "sha256": "da7b89ef73addfdca1ebbfe24b6f5ef8083170e0518036f746ef481296d467a6"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn2-dodge-approach-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn2-dodge-approach-50.png",
+      "sha256": "5acd57c25aeccfce2d0c02f59f74f8e17735d9a1ea7f174c390ea3512fc95781"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn3-hit-impact.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn3-hit-impact.png",
+      "sha256": "72b6ccc21a561a9bf23888040c1423e06f834aca8a2571d85884bd017dc1e797"
+    },
+    {
+      "original": "audits/FISH_PIPELINE_C99_20260927/03-sea-bass-native-01/turn3-hit-idle-50.png",
+      "scratch": "/private/tmp/cf-c99-native-stills/03-sea-bass-native-01/turn3-hit-idle-50.png",
+      "sha256": "2f44f82d49ecd35289f9cdbb38b15fb22593503fc68e1b7ce550f5a03075e538"
+    }
+  ]
+}

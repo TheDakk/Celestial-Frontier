@@ -1,0 +1,70 @@
+{
+  "creatureId": "08-gar",
+  "parts": [
+    {
+      "name": "near-pectoral.png",
+      "path": "parts/near-pectoral.png",
+      "sha256": "5512c8bd2fe2ec106549c58767424b471ece474f067eaa83e6010d0b5174a3af"
+    },
+    {
+      "name": "far-pectoral.png",
+      "path": "parts/far-pectoral.png",
+      "sha256": "30afc150f1485cbc853a84a39d11aecb43bc198352536441115e7569011cd655"
+    },
+    {
+      "name": "dorsal.png",
+      "path": "parts/dorsal.png",
+      "sha256": "bd96765842e372ba1548d24a9166104650eedc26794db09490ed294b158609ab"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "631a8a115049f41b4f5c0cf2b486f5c37a368eccc8bcc1953cd797a5028df540"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "01dd06334c043ecb6d1c01601939d7421c1035706217096c1989dbe1ec6d1a0a"
+    },
+    {
+      "name": "caudal.png",
+      "path": "parts/caudal.png",
+      "sha256": "46a3a759d4f74016db69b1053e67bfe8d89c0c6aa30a94bb450451925031acf7"
+    },
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "dc5db5fc8ab50f45e51153fc879c19b0b91c84df0da2221f7618db4a003e41b0"
+    },
+    {
+      "name": "tail-peduncle.png",
+      "path": "parts/tail-peduncle.png",
+      "sha256": "22b3b13b7f63d93959b245bb5b68752c958a03678f9e9cefbb5d25ca0b74421d"
+    },
+    {
+      "name": "rear-body.png",
+      "path": "parts/rear-body.png",
+      "sha256": "bed0f7c60ee1910be716aca4c567285566e4f2b184d9cdcb00adc5778c3b58c1"
+    },
+    {
+      "name": "pelvic-body.png",
+      "path": "parts/pelvic-body.png",
+      "sha256": "3dc1e04744d320ed4b54472577121c97160937d5f9f49a1beaf8428b54a45c22"
+    },
+    {
+      "name": "mid-body.png",
+      "path": "parts/mid-body.png",
+      "sha256": "97b7387757357024251d896086a3698b1ec265704b1f390d473457aa89382b54"
+    },
+    {
+      "name": "front-body.png",
+      "path": "parts/front-body.png",
+      "sha256": "d9d45b3c72de8e1816545138572672ed561bec496df1e9f5e661f77a1fe9538d"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "ee05947d47d3434742eb3fd3300912928dca789a78da0a895daf94815afbe4d9"
+    }
+  ]
+}

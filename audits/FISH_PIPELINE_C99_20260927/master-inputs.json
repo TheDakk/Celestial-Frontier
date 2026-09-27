@@ -1,0 +1,27 @@
+[
+  {
+    "canonicalMaster": "audits/G2_C90_20260927/08-gar/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/08-gar/packet/master.png",
+    "masterSha256": "ac6b8b40de8153a37c8929262f5f8a1236842e92c2c7e775dd1eb883c95e6fcb"
+  },
+  {
+    "canonicalMaster": "audits/G2_C90_20260927/12-killifish/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/12-killifish/packet/master.png",
+    "masterSha256": "008a5a10678f9c8b1e63dca44695e5b42dea804149c6dcb2878b9f3a205c8aab"
+  },
+  {
+    "canonicalMaster": "audits/G2_C92_20260927/02-parrotfish/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c92/02-parrotfish/packet/master.png",
+    "masterSha256": "232545118c6e65c40dbe77057c9dfb5527de4484edceff7bb8efbac073038264"
+  },
+  {
+    "canonicalMaster": "audits/G2_C95_20260927/02-rabbitfish/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/02-rabbitfish/packet/master.png",
+    "masterSha256": "2603bd0296f72f50119280e3b62214e716af6e77e73628839bde92f2d51c09db"
+  },
+  {
+    "canonicalMaster": "audits/G2_C95_20260927/03-sea-bass/master.png",
+    "recordSource": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/03-sea-bass/packet/master.png",
+    "masterSha256": "c96b9b2ce864dfd8e33a0497817d94fb5c17c4ca5535ca01421e5bc7359fd8fb"
+  }
+]
