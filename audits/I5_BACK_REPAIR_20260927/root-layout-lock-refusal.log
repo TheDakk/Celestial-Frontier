@@ -1,0 +1,5 @@
+Error: Error: workspace gate "root UI layout build and browser gate" cannot overlap "overridecheck.control source mutations" (pid 97443)
+    at acquireWorkspaceLock (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:85:15)
+    at acquireRootLayoutWorkspaceLock (/Users/dakk/Projects/celestial-frontier-openai-mac/tools/uilayout.js:307:10)
+    at main (/Users/dakk/Projects/celestial-frontier-openai-mac/tools/uilayout.js:531:28)
+    at main (/Users/dakk/Projects/celestial-frontier-openai-mac/tools/uilayout.js:1043:22)
