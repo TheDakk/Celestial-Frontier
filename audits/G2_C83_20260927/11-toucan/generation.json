@@ -1,0 +1,13 @@
+{
+  "id": "11-toucan",
+  "name": "Toucan",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-062ed2d6-5786-4bde-b7df-210821ac4e92.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "b00f5cb770e58fa836ec83caab0c7a50e28faf51817f840fbe7769d5e2ed036b",
+  "bytes": 1234508,
+  "promptSha256": "8419c9ca0e2d18e98f2589024b36652a31fc0a693de1777e4ad8563e35fd2779",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

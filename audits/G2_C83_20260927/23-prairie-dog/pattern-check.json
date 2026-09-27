@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Prairie Dog",
+  "masterSha256": "e94848c7539a542a41b3b896051d88e2b62893faa5f062ebf40821fefee3f459",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Parrot",
+  "masterSha256": "4a90e245f73422380ffbdb1863487d9882a7e86f291429d966d06996423384b0",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

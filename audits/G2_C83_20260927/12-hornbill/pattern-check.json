@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Hornbill",
+  "masterSha256": "0cd149f82b95dd913e46f85281661532ceb5372197d14d22aed8f72f6427987b",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

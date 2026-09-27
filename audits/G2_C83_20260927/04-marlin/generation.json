@@ -1,0 +1,13 @@
+{
+  "id": "04-marlin",
+  "name": "Marlin",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-8ffc701f-9d76-4650-893c-d1bba0d39574.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "3290fbb15c51b2074574930e4de96e52f3814fd6b52c5d53a1d2911dbdcaa522",
+  "bytes": 1157335,
+  "promptSha256": "07dd4cd61df64c3c4df637eced3023684d4692d73599a991557c0d20bc89d5f8",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

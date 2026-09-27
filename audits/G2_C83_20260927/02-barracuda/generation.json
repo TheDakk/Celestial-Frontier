@@ -1,0 +1,13 @@
+{
+  "id": "02-barracuda",
+  "name": "Barracuda",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-6f5d1411-4f9f-4089-9bcc-0ca14093372f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "03aaf1eaf0a89cd5ddc1eadcf125e17f15090b5a5cfc2b2fa3d4388e4abf3d3e",
+  "bytes": 1220508,
+  "promptSha256": "f83ffa603e280fea94edc457f613b283a304b1b0b04e69fe8a509abbbdff3a85",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tuna",
+  "masterSha256": "5f6815380b2578b6e3b49be2ef0756f1740e8c04997ccda0bcc5a24b0798ccd6",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

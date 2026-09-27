@@ -1,0 +1,144 @@
+{
+  "id": "15-kookaburra",
+  "name": "Kookaburra",
+  "family": "biped-bird",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "f4f59616914083d41907154c5bb1e2bec35400b82c646a27270022c8587dc7e9",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 16308,
+    "coreRadius": 25,
+    "bodyBox": {
+      "x0": 157,
+      "y0": 129,
+      "x1": 275,
+      "y1": 260
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0985,
+        "pixels": 1606,
+        "box": {
+          "x0": 222,
+          "y0": 120,
+          "x1": 333,
+          "y1": 178
+        },
+        "attach": {
+          "x": 263.3,
+          "y": 140.8,
+          "relX": 0.9,
+          "relY": 0.09
+        },
+        "dir": {
+          "x": 0.88,
+          "y": 0.47
+        },
+        "class": "front",
+        "length": 79.1
+      },
+      {
+        "k": 1,
+        "frac": 0.1092,
+        "pixels": 1781,
+        "box": {
+          "x0": 87,
+          "y0": 209,
+          "x1": 156,
+          "y1": 267
+        },
+        "attach": {
+          "x": 156,
+          "y": 233,
+          "relX": -0.01,
+          "relY": 0.79
+        },
+        "dir": {
+          "x": -0.91,
+          "y": 0.42
+        },
+        "class": "rear",
+        "length": 76.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0309,
+        "pixels": 504,
+        "box": {
+          "x0": 220,
+          "y0": 260,
+          "x1": 271,
+          "y1": 289
+        },
+        "attach": {
+          "x": 226.5,
+          "y": 260,
+          "relX": 0.59,
+          "relY": 1
+        },
+        "dir": {
+          "x": 0.61,
+          "y": 0.79
+        },
+        "class": "limb-down",
+        "length": 53.1
+      },
+      {
+        "k": 3,
+        "frac": 0.0332,
+        "pixels": 541,
+        "box": {
+          "x0": 166,
+          "y0": 261,
+          "x1": 213,
+          "y1": 294
+        },
+        "attach": {
+          "x": 189.5,
+          "y": 261,
+          "relX": 0.28,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.09,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 40.5
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 166,
+        "x1": 210,
+        "cx": 190
+      },
+      {
+        "x0": 221,
+        "x1": 271,
+        "cx": 247.7
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tanager",
+  "masterSha256": "b29c75e172a38cc05447f686c3c674d3b0b61e80c4e3135307624c723938f00d",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

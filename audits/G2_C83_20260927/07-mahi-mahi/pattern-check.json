@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mahi-Mahi",
+  "masterSha256": "d4582b15b20e2a84c19c6c5bbb23e7923e77119b7a468843523ddef69dcad25a",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "African Wild Dog",
+  "masterSha256": "6c065b50401371701d1c882d948e4adce38400917a614a009085a91a94439f24",
+  "required": [
+    "irregular patchwork blotches of black, tan and white"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "irregular patchwork blotches of black, tan and white",
+      "status": "PRESENT",
+      "observed": "Irregular tan/black/white patchwork coat, large rounded upright ears and white tail tip visible. Four offset feet with lower legs separated; far foreleg attachment overlaps chest. Both ear tips clear but far ear narrower/pointed, head slightly turned. Continuous tail clear of legs. No hidden-anatomy declaration."
+    }
+  ]
+}
