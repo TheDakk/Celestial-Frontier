@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Pronghorn",
+  "masterSha256": "0cb05436326b123d20b6c52d6d480673549d612dc661ffaa10be902c5756cf28",
+  "required": [
+    "white throat bands and white rump patch"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "white throat bands and white rump patch",
+      "status": "PRESENT",
+      "observed": "Tan/white body with white throat bands and broad white rump patch, dark face marks, pronged horns and two exposed ears. Four long legs and hoof tips are separated; short tail lies along the white rump and is less distinctly outlined than requested. Horn tips curve rearward in this view despite canonical forward-hooked wording, and conspicuous dewclaw-like black ankle knobs need anatomy review. Slight head turn; clear margins."
+    }
+  ]
+}

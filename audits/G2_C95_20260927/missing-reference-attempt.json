@@ -1,0 +1,9 @@
+{
+  "ids": [
+    "23-springtail",
+    "24-cold-adapted-insect"
+  ],
+  "status": "REQUEST_REFUSED_BEFORE_GENERATION",
+  "reason": "Mistyped reference path did not exist; no image generated or receipt retained.",
+  "correctReference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+}

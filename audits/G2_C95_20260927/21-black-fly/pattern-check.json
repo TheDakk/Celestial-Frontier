@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Black Fly",
+  "masterSha256": "a6a3ef68751f4a698473842fa540ae72393b92d85c3bcb20b4153344981fe2e4",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tigerfish",
+  "masterSha256": "e4cefd2bad08477e1c2ea9c20e687323b3e8efa9d372ebaa459243a08c63a1e3",
+  "required": [
+    "horizontal dark stripes along silver flanks"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "horizontal dark stripes along silver flanks",
+      "status": "PRESENT",
+      "observed": "Silver flanks carry distinct horizontal dark stripes; deeply forked red-tinged tail and reddish fins, with large visible interlocking dagger fangs at the nearly closed mouth. Complete caudal stalk and adipose fin visible. Fangs are strongly exaggerated and lower forward fin placement needs anatomy review; narrow left margin."
+    }
+  ]
+}

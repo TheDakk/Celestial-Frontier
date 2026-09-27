@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Booby",
+    "beforePromptSha256": "f1aeb11717f68f7ef39b349427f6feddea13803575c5dc4fb9cd14972e491b18",
+    "afterPromptSha256": "aa5216c27b22019d1c4661a5d7a22f5cd44acf9ff7d5054513019bdc78cab53c",
+    "context": "Representative adult blue-footed booby: vivid BLUE webbed feet, long straight dagger bill, natural folded wings. Preserve real webbing visibly between toes.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Prior-to-generation requested context only; no measured presence or admission"
+  },
+  {
+    "name": "Chicken",
+    "beforePromptSha256": "b26ac36855f0bccacd3f302a16e1743e76b87a276c2d636df5933c8a9837b873",
+    "afterPromptSha256": "e08ae8b84f4e3096acbf95ca396af906db374c45ef506aa6ab578c1f52388ded",
+    "context": "Representative ADULT FEMALE domestic chicken (hen), consistent with the small comb/wattles and short upswept tail. No rooster sickle plumes.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Prior-to-generation requested context only; no measured presence or admission"
+  },
+  {
+    "name": "Rooster",
+    "beforePromptSha256": "30eef95f1ce46d638d59385fe039026707fb618721fcc9975f0b99874755edcf",
+    "afterPromptSha256": "7bf74870c3b136b68950668008899da61365f9e249e471f9f2ecbfbb3a1319e3",
+    "context": "ADULT MALE domestic chicken, with the canonical tall red comb, wattles, hackle cape and arching sickle tail plumes.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Prior-to-generation requested context only; no measured presence or admission"
+  },
+  {
+    "name": "Nilgai",
+    "beforePromptSha256": "18fac41ea6b614e5f2395e29da8df1392f309a06e9f61c391bd03ad9d18bcf6d",
+    "afterPromptSha256": "c21a545a4bf513f66ff264ede76a3795f02c2231e572b86d8000eed24e8c3ca0",
+    "context": "ADULT MALE nilgai bull, matching the canonical slate blue-grey coat, short horns and throat beard tuft.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Prior-to-generation requested context only; no measured presence or admission"
+  },
+  {
+    "name": "Butterfly",
+    "beforePromptSha256": "9196d62c0960d04dc203968f3cfc516f48ab64a1d74aaa6f0cf036b5e8952927",
+    "afterPromptSha256": "aed2df4d7e75d7bea9cf032ac841c83d972effdfad80772fb95ca2459df36050",
+    "context": "Representative adult pierid butterfly, with SIX fully developed thoracic legs; clubbed antennae and coiled proboscis. Rest naturally with paired fore/hind wings held together upright above the abdomen, enough offset to read their boundaries. Do not borrow a moth's feathery antennae or reduce forelegs.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Prior-to-generation requested context only; no measured presence or admission"
+  },
+  {
+    "name": "Mosquito",
+    "beforePromptSha256": "8ce2fbea8042242a41be82415dcace9fc3888b5a22b50737beaaf9f129878021",
+    "afterPromptSha256": "55414b2a8927c81f0b9aafa667353c5d4853e9a0e2d1a882019a2cc98482b5b7",
+    "context": "Resting adult female mosquito, head right, body at its natural inclined resting angle; preserve six very long legs and the long straight proboscis. Long hindlegs may be naturally lifted while other feet support it; separate all six shafts/tips. Only one pair of wings. Not in flight.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Prior-to-generation requested context only; no measured presence or admission"
+  },
+  {
+    "name": "Fly",
+    "beforePromptSha256": "7350596bb28799c5378f49cdd0eae660ede0882e562beb1e2d153f7359ba2556",
+    "afterPromptSha256": "988b194db4d6e6108238d189ce986a40618d5d60d17dbae6461ac6840dd23270",
+    "context": "Representative adult housefly: large red compound eyes, grey longitudinal thorax stripes, ONE PAIR of clear wings and separate small knobbed halteres. Six distinct thoracic legs.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Prior-to-generation requested context only; no measured presence or admission"
+  },
+  {
+    "name": "Springtail",
+    "beforePromptSha256": "4c411c9bf7819c525ac07f61f5e8761fb3f7f1b24554cde91f6706eaf5857a41",
+    "afterPromptSha256": "748dfea4ad9ae5228c9b1380448ecd2c07353f4cf40f0e2833371b5db3922c1d",
+    "context": "Wingless adult springtail as canonical: no wings or wing covers. Six thoracic legs, six abdominal segments and the forked furcula folded visibly under the abdomen. The furcula is not a vertebrate tail, seventh leg or scorpion sting.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Prior-to-generation requested context only; no measured presence or admission"
+  },
+  {
+    "name": "Cold-Adapted Insect",
+    "beforePromptSha256": "219c438c95ea455649a72bbe7ef49177bf2f3049e442a4693a85993121e9ee4a",
+    "afterPromptSha256": "d98d8db811337f343a216c0183225642b1d7be9439c22ebac5607131c1c3b505",
+    "context": "Representative adult wingless Antarctic-midge-type polar insect as specified by the canonical note: dark stout body, hairy thorax, SIX thoracic legs, no wings or wing covers. No extra appendages or hidden-wing declaration.",
+    "canonicalSubjectUnchanged": true,
+    "scope": "Prior-to-generation requested context only; no measured presence or admission"
+  }
+]

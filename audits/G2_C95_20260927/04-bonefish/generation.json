@@ -1,0 +1,13 @@
+{
+  "id": "04-bonefish",
+  "name": "Bonefish",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-a4b3a1de-d277-440b-9fae-e95474fe1528.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f571f397e142383133e044ef65bfa6498d715fd82339b8643a265f5726677f17",
+  "bytes": 1186781,
+  "promptSha256": "85214473fc1eb79bb5bc2d3b9fafb6ab98c7b39f7b0da6fe545390aa88f0df1d",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

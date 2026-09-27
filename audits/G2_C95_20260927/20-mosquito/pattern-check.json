@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mosquito",
+  "masterSha256": "753825fbf221eea21eb77a4dd51e9b79e9a99a6140c570c6ffb4fd9dbfec6d93",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

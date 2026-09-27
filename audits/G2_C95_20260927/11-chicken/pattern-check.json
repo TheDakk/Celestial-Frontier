@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Chicken",
+  "masterSha256": "49392525bd98a806cd38c6c3053549b0654af40bd44ef16d8f49eb3759c1e4a2",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

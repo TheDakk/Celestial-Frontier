@@ -1,0 +1,13 @@
+{
+  "id": "07-gannet",
+  "name": "Gannet",
+  "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-5a76aa46-0df3-4b51-b023-c4f757648525.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "478cf8fec158c3901e6850cea8d7660342f6ec472786fbc7d9a36790327caa97",
+  "bytes": 1168438,
+  "promptSha256": "01e700efe90c45964b8747214e33433e0123e3db6e8719fc8d0a55dbbe896435",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

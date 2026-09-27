@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Cardinalfish",
+  "masterSha256": "c97cc81400c7942af7e9c63c7c54da8cc1f7ff55c69184deda9bbfa580273254",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}
