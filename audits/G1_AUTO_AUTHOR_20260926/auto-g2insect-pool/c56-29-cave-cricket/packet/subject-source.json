@@ -1,0 +1,91 @@
+{
+  "name": "Cave Cricket",
+  "family": "insect",
+  "species": {
+    "name": "Cave Cricket",
+    "aspect": 1.4,
+    "headFrac": 0.2,
+    "eyes": "small",
+    "posture": "crawling",
+    "mustRead": [
+      "strongly humped arched back",
+      "whip antennae far longer than the body",
+      "hugely long folded hind legs"
+    ],
+    "note": "Wingless - do not give it the folded wing-covers of a field cricket."
+  },
+  "genome": {
+    "seed": 2389848213,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 17,
+    "body": 9,
+    "loco": 6,
+    "trait": 11,
+    "size": 0,
+    "diet": 1,
+    "head": 6,
+    "limbs": 0,
+    "skin": 7,
+    "tail": 6,
+    "pattern": 3,
+    "eyes": 0,
+    "behavior": 10,
+    "habitat": 9,
+    "detail": 1,
+    "accent": 8,
+    "temper": 5,
+    "sense": 9,
+    "repro": 3,
+    "life": 1,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cave Cricket"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cave Cricket\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"2389848213\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "index": 531,
+  "profile": {
+    "id": "mandibulate-insect",
+    "names": [
+      "Leafcutter Ant",
+      "Termite",
+      "Mantis",
+      "Locust",
+      "Dung Beetle",
+      "Beetle",
+      "Grasshopper",
+      "Cricket",
+      "Ant",
+      "Honeybee",
+      "Bumblebee",
+      "Ladybug",
+      "Bee",
+      "Orchid Bee",
+      "Water Beetle",
+      "Caddisfly",
+      "Stonefly",
+      "Dragonfly",
+      "Damselfly",
+      "Diving Beetle",
+      "Cave Cricket",
+      "Cockroach",
+      "Wasp",
+      "Carrion Beetle",
+      "Stick Insect",
+      "Firefly",
+      "Dobsonfly"
+    ],
+    "candidateTemplates": [
+      "insect"
+    ],
+    "media": [
+      "ground"
+    ],
+    "intendedMoves": [
+      "mandible"
+    ],
+    "notes": "Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."
+  }
+}

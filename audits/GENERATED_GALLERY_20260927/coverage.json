@@ -1,8 +1,8 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 86,
- "pct": 13.6,
+ "covered": 90,
+ "pct": 14.3,
  "unmatchedRegistryNames": [],
  "families": [
   {
@@ -105,10 +105,14 @@
   {
    "family": "insect",
    "species": 41,
-   "covered": 1,
-   "pct": 2.4,
+   "covered": 5,
+   "pct": 12.2,
    "names": [
-    "Beetle"
+    "Termite",
+    "Dung Beetle",
+    "Beetle",
+    "Cockroach",
+    "Firefly"
    ]
   },
   {

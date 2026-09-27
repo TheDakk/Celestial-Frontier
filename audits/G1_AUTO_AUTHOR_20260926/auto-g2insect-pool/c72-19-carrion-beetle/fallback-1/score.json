@@ -1,0 +1,11 @@
+{
+ "id": "c72-19-carrion-beetle",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part mid-far-lower (legMidFarFoot) covers 4% paint (reference 31%)",
+  "missing-anatomy: part mid-far-upper (legMidFarKnee) covers 27% paint (reference 81%)",
+  "missing-anatomy: part hind-far-upper (legHindFarKnee) covers 20% paint (reference 62%)"
+ ],
+ "semanticPresence": null
+}

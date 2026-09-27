@@ -1,0 +1,115 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "c56-29-cave-cricket",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "ea2369cf78cb188ab0b5db152d20a553cbe4d1c9cb07cf6d1d2daacb3912b636",
+ "subjectSourceSha256": "7b507f7d2f695ee8cee6f2bb11c21361bcd223ee72c60921afe3331d78037993",
+ "identity": {
+  "name": "Cave Cricket",
+  "family": "insect",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cave Cricket\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"3\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"2389848213\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"11\"]]]]",
+  "seed": 2389848213,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "09-cricket",
+  "authoringSha256": "0d8253f2b7318ebc8af5d97eff6f41c65262f5dca14d7c05f14c10469f6b483c",
+  "masterSha256": "69d905966cfb597f0c09d44f0f857cce30e28201ed1d7358621e289ded468ca4"
+ },
+ "habitat": {
+  "profileId": "mandibulate-insect",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "f14555d246abbf4d1ce67dda63834ec805d8075cfd627c188a7a3e118c74fda7",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group mandibulate-insect (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1844,
+     "class": "front",
+     "attach": {
+      "x": 265.1,
+      "y": 234.9,
+      "relX": 0.63,
+      "relY": 0.49
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2553,
+     "class": "top",
+     "attach": {
+      "x": 110.6,
+      "y": 233.1,
+      "relX": 0.25,
+      "relY": 0.48
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0185,
+     "class": "top",
+     "attach": {
+      "x": 225,
+      "y": 173,
+      "relX": 0.53,
+      "relY": 0.16
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0117,
+     "class": "limb-down",
+     "attach": {
+      "x": 192.5,
+      "y": 272,
+      "relX": 0.45,
+      "relY": 0.68
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0234,
+     "class": "limb-down",
+     "attach": {
+      "x": 168,
+      "y": 276,
+      "relX": 0.39,
+      "relY": 0.7
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "top": 2,
+    "limb-down": 2
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "09-cricket",
+   "byClass": {
+    "front": 1,
+    "rear": 3,
+    "limb-down": 5
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
