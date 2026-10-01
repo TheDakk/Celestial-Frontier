@@ -44,15 +44,15 @@
   },
   "producerAuthority": {
     "schema": "cf-v2-compendium-producer-authority/v2",
-    "sha256": "20a40ff38b90bede6fd9b70897baf880f175525d986dad78e9a11b781dce10e3",
+    "sha256": "32dd5b21a9c12f5679d9a06c56977d108774745a83f6f15f07c63f59bc8705f6",
     "inputs": {
       "index": {
         "relativePath": "index.html",
-        "sha256": "e4645f970606e141fcee520570ee6e85f1100ccbc2b7e7b9c268b60e0a47d926"
+        "sha256": "0e6dce5fbdfa4601b04924edf0c326a2f47633aeaffda12a5938f8ce5a5e1f6c"
       },
       "owner": {
-        "relativePath": "assets/tame-greeting-audio-CUZu3YLc.js",
-        "sha256": "964a95fde741d7a10bf6aa9aa91105cd23d65c756dc84222a361015d05a58526"
+        "relativePath": "assets/tame-greeting-audio-5S071Eio.js",
+        "sha256": "6067b55bf7fa6d47017b959f219dbc1ef5357643e2150e91c15cd2010f9ac6b4"
       },
       "worker": {
         "relativePath": "assets/species-art.worker-SHcKR5tI.js",
@@ -64,7 +64,7 @@
       },
       "serviceWorker": {
         "relativePath": "service-worker.js",
-        "sha256": "4ac50e9563c25e9ea75f76b1fe13400de29f7cf27f60683ba5bdb683cad526b4"
+        "sha256": "ba4486cfc428b82cde53ea599104475807af512b52bebd91644d3f685f1e658b"
       }
     }
   },

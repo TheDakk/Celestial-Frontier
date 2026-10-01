@@ -198,7 +198,7 @@ dist/assets/Geometry-BhLxjYlb.js                                                
 dist/assets/src-MLGIqYi0.js                                                                117.34 kB │ gzip:    31.34 kB │ map:   450.90 kB
 dist/assets/body-card-CkixHyQO.js                                                          121.24 kB │ gzip:    33.22 kB │ map:   393.31 kB
 dist/assets/src-DKsQ9n2x.js                                                                130.71 kB │ gzip:    50.13 kB │ map:   430.48 kB
-dist/assets/tame-greeting-audio-CUZu3YLc.js                                                135.55 kB │ gzip:    37.51 kB │ map:   498.27 kB
+dist/assets/tame-greeting-audio-5S071Eio.js                                                135.55 kB │ gzip:    37.51 kB │ map:   498.27 kB
 dist/assets/guide-content-B1Fu4Fq4.js                                                      140.92 kB │ gzip:    48.06 kB │ map:   159.45 kB
 dist/assets/release-content-DTOYyWG3.js                                                    159.26 kB │ gzip:    61.40 kB │ map:   180.72 kB
 dist/assets/battle2-wiring-D6I6SvLX.js                                                     178.56 kB │ gzip:    58.48 kB │ map:   653.16 kB
@@ -242,15 +242,15 @@ dist/assets/main-DUmp6ro5.js                                                    
     },
     "producer": {
       "schema": "cf-v2-compendium-producer-authority/v2",
-      "sha256": "20a40ff38b90bede6fd9b70897baf880f175525d986dad78e9a11b781dce10e3",
+      "sha256": "32dd5b21a9c12f5679d9a06c56977d108774745a83f6f15f07c63f59bc8705f6",
       "inputs": {
         "index": {
           "relativePath": "index.html",
-          "sha256": "e4645f970606e141fcee520570ee6e85f1100ccbc2b7e7b9c268b60e0a47d926"
+          "sha256": "0e6dce5fbdfa4601b04924edf0c326a2f47633aeaffda12a5938f8ce5a5e1f6c"
         },
         "owner": {
-          "relativePath": "assets/tame-greeting-audio-CUZu3YLc.js",
-          "sha256": "964a95fde741d7a10bf6aa9aa91105cd23d65c756dc84222a361015d05a58526"
+          "relativePath": "assets/tame-greeting-audio-5S071Eio.js",
+          "sha256": "6067b55bf7fa6d47017b959f219dbc1ef5357643e2150e91c15cd2010f9ac6b4"
         },
         "worker": {
           "relativePath": "assets/species-art.worker-SHcKR5tI.js",
@@ -262,7 +262,7 @@ dist/assets/main-DUmp6ro5.js                                                    
         },
         "serviceWorker": {
           "relativePath": "service-worker.js",
-          "sha256": "4ac50e9563c25e9ea75f76b1fe13400de29f7cf27f60683ba5bdb683cad526b4"
+          "sha256": "ba4486cfc428b82cde53ea599104475807af512b52bebd91644d3f685f1e658b"
         }
       }
     },
