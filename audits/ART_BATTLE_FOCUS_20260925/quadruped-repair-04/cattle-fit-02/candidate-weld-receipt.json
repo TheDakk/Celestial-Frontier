@@ -1,8 +1,8 @@
 {
   "schema": "cf.flat-master-weld/v1",
   "sourceFit": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/fit-04",
-  "sourceRecordSha256": "4ffa56659c98bc1cfc39edb170e6035369fd624f64c7f5b6d76b7cd78fe66df1",
-  "sourceBindingSha256": "81dbe587a077ce0c6719d11470b904f6321222a7c67dcac7047b07ab2480d044",
+  "sourceRecordSha256": "9548e61c58c663bc6ce1fbae61a812d5180f419ee9a4e1fad7745a7740e74ea6",
+  "sourceBindingSha256": "cdb691387cc6b2e46f9dc7c64744a87c61699dcdbef15de5d757f182b38c4b90",
   "sourceAtlasSha256": "cf382d7b5880e0a5ee85c369b94f7fd3bfd17e4bf80250ff6c14033ec4783d71",
   "helperSha256": "722d032b2befa4d6a214723aca94a5b9cbb633190036f5067a21b00d87a8584c",
   "author": {
@@ -247,7 +247,7 @@
         ]
       }
     ],
-    "sourceBindingHash": "e5bb875603969f66973320ee581b1f2b2656e5724a2bc0d8644d8cf63eb7c851",
+    "sourceBindingHash": "de6dfcb178e84c4e38ac8ffcf4b5cce0cd7a9db41430456162ca7d15e13869b2",
     "sourceVertices": 2866,
     "vertices": 3074,
     "sharedSupports": 840,
@@ -339,6 +339,6 @@
     ],
     "sourceCoordinateChanges": 0
   },
-  "bindingHash": "3271762031e3aa825630d82a1e50cd1c3c20847c2664fbb137d85cc38d3ebe1d",
+  "bindingHash": "4d9e7ccc9e2e6f594fb4b97d606897869da5e3b4f094e0bcfb62619fff10132c",
   "scope": "New unadmitted fit, explicit source paint continuity; source pixels and solver unchanged. Inherited receipts remain historical; this receipt owns the new split."
 }

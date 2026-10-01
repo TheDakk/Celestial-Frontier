@@ -50,11 +50,11 @@ separate receipt and later visual review; no outcome is inferred from this conve
 
 ## Exact reviewed record hashes
 
-- `receipt.json`: 130,873 bytes; SHA-256 `b4753bda286473197ec792823f5cfe9a32ad69bcee390174a401a56ba029fae6`.
-- `run.json`: 861 bytes; SHA-256 `99af5d2f5c38670f884896a1816920636c04a4e198abaacecd0d6d09c91a6f06`.
-- `stdout.json`: 93,313 bytes; SHA-256 `7052d1d1f866913b3cf45e572881f1633a0c2985d771a968968e5b456c22ac92`.
-- `start.json`: 1,176 bytes; SHA-256 `c69d26f49d100c3a6a0a67e1ee01de42f7f55411add272313811a551e821ca7b`.
-- `derivative-manifest.json`: 131,950 bytes; SHA-256 `851c5fe7d638764aed5551f23d62caba6d79874dc25b1ec458fe46962994e5cf`.
+- `receipt.json`: 130,873 bytes; SHA-256 `48d1744e6d4e30fb1ad1aa132f39c293f7feac3cb5640bfe0796413d939df29a`.
+- `run.json`: 861 bytes; SHA-256 `4480a7b50db9e944fbd5ef64d53710c61764d847b03d3da5c7464d75381deb7e`.
+- `stdout.json`: 93,313 bytes; SHA-256 `8deaf54ce933ad2bd4dcf805b5cffbebe4b8215a749055ef237b05a1be38731d`.
+- `start.json`: 1,176 bytes; SHA-256 `3874e0ae717fb2fc575b7711e47b4d822bfcc8792a0157ee74fb0f1dfca4d061`.
+- `derivative-manifest.json`: 131,950 bytes; SHA-256 `f7ae6ea3197ef3915394882fe0ac071fc431ec75aa1a19d180396474061fe391`.
 - `stderr.log`: 0 bytes; SHA-256 `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
 
 Reviewed source/pin SHA-256 values (paths relative to `tools/local-image-generation/`):

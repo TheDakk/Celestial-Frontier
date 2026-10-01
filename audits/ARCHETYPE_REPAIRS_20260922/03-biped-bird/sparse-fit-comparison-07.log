@@ -2,8 +2,8 @@
   "output": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/sparse-fit-comparison-07.json",
   "semanticsParity": "EXACT",
   "candidate": {
-    "recordRecipeHash": "3db5e9f3d60812aba05e9d95018bad9a76776c70393d87fd84107f72deaf2898",
-    "bindingHash": "1e178d6ee389af20805f1e5a4ad50fafce7a5056e9b5d6700219171ee152280e",
+    "recordRecipeHash": "35e925a867aed71ac8238eb364aed7314748d5c43d09c2e3a39a6d4ec787cc0c",
+    "bindingHash": "b6249f66c363e74beefb4b38c52fd43320b65d64b9dc4f83d324be46ff4ee2ce",
     "vertices": 3626,
     "triangles": 6187,
     "pins": 1998

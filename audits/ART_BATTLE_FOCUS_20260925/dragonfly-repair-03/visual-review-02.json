@@ -9,7 +9,7 @@
   ],
   "rigFinding": "Six legs/four wings, inward-facing flight, no observed mesh hole or creature clipping. Zero rig refusals.",
   "stageFinding": "Damage number9 is partially outside the top of turn0-hit-reaction-50.png; Claude stage-overlay repair/picker required before complete-stage acceptance.",
-  "reportSha256": "c3a744be0a91d2144914bbd9aa8246d19c9d05cd6fe0c0ed86ca37309638df09",
+  "reportSha256": "43efa697059a0fdf12188828ceb8d2fb925974b85b5beb1b15907e3a8bd96fde",
   "capture": {
     "frames": 602,
     "durationMs": 10016.3,

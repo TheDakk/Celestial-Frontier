@@ -5,10 +5,10 @@
   "certification": false,
   "archive": {
     "file": "u4-collector.tar.gz",
-    "bytes": 18020,
-    "sha256": "ddf40b478df467c95cb9ac430cf0440711922353a1eed32a64780b5dc45e9293",
+    "bytes": 18021,
+    "sha256": "e317e947a9d7befdfe0ba2140a054a6d52537b1a50a2ee53660659a39f4c884d",
     "rawBytes": 61440,
-    "rawSha256": "8239d0246b1230ba145b1b7369e1d070ef4b932a31ff7a0f7ca754b204f904ca"
+    "rawSha256": "bf83cddb291499fbd610ed32638aab033dbc371c6b2f1baa7630132d57c84611"
   },
   "files": [
     {

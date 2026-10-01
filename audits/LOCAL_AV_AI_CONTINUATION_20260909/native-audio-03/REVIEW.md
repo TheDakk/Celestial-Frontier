@@ -9,9 +9,9 @@ Only this review was written; frozen harness/product sources and earlier evidenc
 
 | Receipt | Bytes | SHA256 |
 | --- | ---: | --- |
-| [Native review](native/review.json) | 71,314 | `3b4b2a4ce36068017ce6e196c804310002d29ebac05c506b7ff67d08b5eac4d8` |
-| [Build manifest](build/manifest.json) | 12,499 | `e72174ea8d3d4b2d74488e264a89363fd125a2476484434a1a34510427432fd4` |
-| [Chain receipt](chain.json) | 2,852 | `5d646397753f576d6eeb4b180d278e32ae141935964eb86519181ffee351b982` |
+| [Native review](native/review.json) | 71,314 | `b8f480781c5e1a3b684ec15877351fcdc5043aede89e83f998acbf2867fb9f53` |
+| [Build manifest](build/manifest.json) | 12,499 | `97041d973f592bff29360e2ae3a5b795e3abf7e8245646147ebbca7dc45fab6d` |
+| [Chain receipt](chain.json) | 2,852 | `f11a604df68da1518fe01577da4f3ee6ab9643ad9dd23d485479c94c9e73593b` |
 
 The current [prepared primary-source manifest](../../../../port/v2/tools/audio-native-mix/source-manifest.json)
 is SHA256 `ea48d5783759ce891a8bd717515b20a22af9e6303a700a1aff0c966b371b046a`.
@@ -28,7 +28,7 @@ and its manifest. No virtual modules or build warnings are recorded.
 | Built file | Bytes | SHA256 |
 | --- | ---: | --- |
 | [bundle.js](build/bundle.js) | 267,561 | `a83b695598fcf127e79d6b3a6604e6fd1eea1dc1c851673d15ddef2bb28b79a2` |
-| [bundle.js.map](build/bundle.js.map) | 662,447 | `c751302eec93b0bfe3ee11669a5953ff5e93bfeb0de55d77ebf4c0c7603cdb48` |
+| [bundle.js.map](build/bundle.js.map) | 662,447 | `3af4578bb5ba99bbd3979e898e35b5a7bdb856bf9cf07146825b597127a2e169` |
 | [index.html](build/index.html) | 796 | `00d8223784b19b973b4daf1fdf029e82b8ab2b52895baa92e6bba1e8fafa7df2` |
 
 The chain records six PASS stages: three syntax checks, strict harness TypeScript, isolated

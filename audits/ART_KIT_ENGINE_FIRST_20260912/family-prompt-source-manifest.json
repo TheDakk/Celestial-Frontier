@@ -58,7 +58,7 @@
     },
     {
       "path": "port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
-      "sha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1",
+      "sha256": "55536ab115280dc95e3867988d11f033f069f4532b2cb4a0a80b44374229febd",
       "bytes": 54698
     },
     {
@@ -83,12 +83,12 @@
     },
     {
       "path": "port/v2/packages/domain/descriptors/src/apphooks.ts",
-      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a",
+      "sha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285",
       "bytes": 6433
     },
     {
       "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
-      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff",
+      "sha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b",
       "bytes": 13811
     },
     {
@@ -98,7 +98,7 @@
     },
     {
       "path": "port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
-      "sha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432",
+      "sha256": "c97498ffa4476eb17abad4981da64f8634b22735dc62073a12fe12324bee9a60",
       "bytes": 31511
     },
     {
@@ -113,7 +113,7 @@
     },
     {
       "path": "port/v2/packages/domain/ecology/src/ecology.verbatim.js",
-      "sha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c",
+      "sha256": "61d9b3cc8c9c640e6553b5cce1ae2e04c74973b1b9d4dc208afef0c386b58d85",
       "bytes": 11513
     },
     {
@@ -133,7 +133,7 @@
     },
     {
       "path": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
-      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12",
+      "sha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2",
       "bytes": 4570
     },
     {
@@ -168,7 +168,7 @@
     },
     {
       "path": "port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
-      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5",
+      "sha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543",
       "bytes": 9441
     },
     {
@@ -203,7 +203,7 @@
     },
     {
       "path": "port/v2/packages/domain/strays/src/strays.verbatim.js",
-      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03",
+      "sha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c",
       "bytes": 22644
     },
     {
@@ -310,62 +310,62 @@
   "files": [
     {
       "path": "civet-prompt.txt",
-      "sha256": "725a3f23e3aa5fe2cd962cafc4adb9b51c4de8131e0977ae127dec246991d2de",
+      "sha256": "eb431666f217d29efa7e97a58f528a504e79fc47fef2570d5fcd93848f304997",
       "bytes": 7020
     },
     {
       "path": "persimmon-prompt.txt",
-      "sha256": "d1ae45545bc089770789841e60da1fd2869b2df774bc9e2d5a1ea67675ab304f",
+      "sha256": "6219a4bf7e978542f9827205199f98434209aff7e36468906ab7ec003525ac88",
       "bytes": 6662
     },
     {
       "path": "platypus-prompt.txt",
-      "sha256": "6fd4bd2a3052c5be17fa519ef8a127d4704f10cc5f50ca16d00e5c51b884b7a1",
+      "sha256": "4e1caaa9bd654f00d32f1d65fb944fa2beebd6cd79b40dcca4efde8d9d721255",
       "bytes": 6991
     },
     {
       "path": "frog-prompt.txt",
-      "sha256": "7afd9cf0ef8bc27003204436162623e061936f6b9a466db0736961fed023a27f",
+      "sha256": "fac5f799700820fcef4997aa7361d90cf0f56f51986642fe46313c63248ed4a6",
       "bytes": 6910
     },
     {
       "path": "devils-club-prompt.txt",
-      "sha256": "ee68e694cd061c652af912289bd5c8fc0747f32ea8d36999eadf442ff429836b",
+      "sha256": "57999298702d7dd8da1494eb3edc782f5433f8493480c3673bca7883ee2edf51",
       "bytes": 6670
     },
     {
       "path": "cranberry-prompt.txt",
-      "sha256": "d3c9fdc6a515dbc1d4881c86ab9572944ba2c2a292450444b077760ddc8062cc",
+      "sha256": "aa1d89280e2eb1562a5dc1e3a8d8a51abd7690e41cd395791bd7fcb4ab1a81a3",
       "bytes": 6652
     },
     {
       "path": "earth-temperate-prompt.txt",
-      "sha256": "330d2b8dd758982dec9f39f99e2fe4e99f3be74adf2e45e309c03d757c1b46a4",
+      "sha256": "4433271e252d7dae6a33f2e823986719546c3de491d67f231b2924508743400e",
       "bytes": 6217
     },
     {
       "path": "family-mammal-quadruped-prompt.txt",
-      "sha256": "aef988bc6d2c8ed5ffaa4b1025d0f173fba52afadf65a2d9b118f16101216b21",
+      "sha256": "d97cbcd267e66e176e931737ab3a401638fffaaf2b19c3674a1fbe5dfc25b868",
       "bytes": 7286
     },
     {
       "path": "family-bird-prompt.txt",
-      "sha256": "2b2fa3e930dcf326f9cfb44e4afa8ea088d24f7e7ea5c18c4dc61ecf83763712",
+      "sha256": "d8d7a59f0bed32f40a0cb68dc49a60da63dcdb53d9c1c0195293432eba801bac",
       "bytes": 7413
     },
     {
       "path": "family-fish-prompt.txt",
-      "sha256": "6f12fb2b10496d180022e0d26d3460598e11df74f7414d117ef719c6c30c99c8",
+      "sha256": "503bb1426247ca62a820e41d2f163bb44a144a5a335de193d3ac365178527181",
       "bytes": 7525
     },
     {
       "path": "family-insect-prompt.txt",
-      "sha256": "db8a12dcdb7aa848a5b46f90d99394f2448cc31c74c8964ef2c9475bb7e7850d",
+      "sha256": "3fa00e67cd5dc2ef84de133e4d74891303d0aeaea762a5f8f14613a241d1f72a",
       "bytes": 7396
     },
     {
       "path": "family-reptile-prompt.txt",
-      "sha256": "bf9efa25639763d4e80d3bb59d7fa1ccdc1c2fdf7d93b8702df579eac9776d82",
+      "sha256": "abd30b87a19244c16aa75ed3115065d31b2a770adb105bdb4262e6ddf0daa4bf",
       "bytes": 7290
     },
     {
@@ -375,7 +375,7 @@
     },
     {
       "path": "compiled-inputs.json",
-      "sha256": "ebf7647e56e637b782a2a711fd2eb7182968e733fb8583f47f57d72a9a94d7de",
+      "sha256": "adc839f2944356a7f222ae4650a8215fc9a53f0ec9217cb55a84913719f1474e",
       "bytes": 145857
     }
   ]

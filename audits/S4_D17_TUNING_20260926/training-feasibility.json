@@ -2,7 +2,7 @@
   "scope": "training-only, isolated hooks; not a game certificate",
   "samples": 128,
   "seedBase": 30000000,
-  "engineSha256": "1a761183467d7b9cf3e4303ed008ae3e0eafcc2dca58db1ad2fe66e98ce016ee",
+  "engineSha256": "bcf17efefebb44715f4504666ee2130f5b413a056cc6f013525ee1a57b7491c2",
   "baseline": [
     9,
     14,

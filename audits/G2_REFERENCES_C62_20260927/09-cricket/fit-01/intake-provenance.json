@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/09-cricket/authoring.json",
-      "sha256": "0d8253f2b7318ebc8af5d97eff6f41c65262f5dca14d7c05f14c10469f6b483c"
+      "sha256": "dd3ecced51db3d376540f1967668f3c5ed1887671e3b3be489de62b91299bee1"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/09-cricket/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "13a5fe57341a16a171cda2d3d587163988064d0b640c4fcd935b0063cd2ae5c4",
-  "bindingHash": "8c9d5bda73baf064b297dc901f12280e0886d6e93607ea09e52f45fe4165ec2f",
+  "recordRecipeHash": "bf099d50e3c97bdd525dd1e23f9d81c7a43bdf654c34f8fb7a1d7aa1e14bff99",
+  "bindingHash": "7483ac8f51ed5b4a9337a8dfd9483b60169769ac1c79985358988c0372b992f0",
   "contactEndpoints": [
     "legFrontFarFoot",
     "legFrontNearFoot",
@@ -75,7 +75,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/09-cricket/authoring.json",
-      "sha256": "0d8253f2b7318ebc8af5d97eff6f41c65262f5dca14d7c05f14c10469f6b483c",
+      "sha256": "dd3ecced51db3d376540f1967668f3c5ed1887671e3b3be489de62b91299bee1",
       "unchanged": true
     },
     {

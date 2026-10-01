@@ -36,8 +36,8 @@ function renderedPoint(support:WeightedContactSupport,matrices?:Readonly<Record<
 }
 
 it('selects each declared pad inside its actual pinned, terminal-rigid rendered triangle',()=>{
- expect(record.recipeHash).toBe('5357c3e397fbd0d70587424b527de754e7d7fc15988324ba93d85e5e3d692b97');
- expect(binding.bindingHash).toBe('7e3ac04a6e9ddbb3087ebe6df37bfb98e5e47241c4f08a89044341b3a0a85fa2');
+ expect(record.recipeHash).toBe('8b43869c0bcd6e2a2fe48d810a7d6c7f846d4de4df6bcca20d1addbee7351d1a');
+ expect(binding.bindingHash).toBe('a3eb06c4197b276521e908921c9a1c7935ac109b8f903c68abdf7ae63a1fa869');
  expect(Object.keys(supports).sort()).toEqual(chains.map(c=>c.end).sort());expect(chains).toHaveLength(4);
  const pins=new Set<number>(binding.paintSkin.solver.pins);
  for(const chain of chains){const support=supports[chain.end]!,surface=support.surface;assert(surface&&'triangle'in surface);

@@ -1,8 +1,8 @@
 {
   "schema": "cf.flat-master-weld/v1",
   "sourceFit": "fit-01",
-  "sourceRecordSha256": "baac98479c4c01f4bece97e4643278332d69d3defa74aac7cc61f3cb8588dec5",
-  "sourceBindingSha256": "a66001d835f6862a63d87a5d3bac3631ca80102234cdd9843e33f11482215319",
+  "sourceRecordSha256": "2329e9bd4b4dc7dd11cf9f9312788e65454baf7b9d1c596fc45550de44cc6d38",
+  "sourceBindingSha256": "df42d9ca58c190127c13a349dd1b80f8b23d40ca1b00589f10669db5b1bdc998",
   "sourceAtlasSha256": "9476f5fbc49e5ad30c771dcc40cc17fb306eb12d200f90cfa6fc95a404cbad13",
   "helperSha256": "8744ca454d57cb0f965813a7bd12832b53300d2470eeca5e6d0993f296d3bfb2",
   "options": {
@@ -69,7 +69,7 @@
         ]
       }
     ],
-    "sourceBindingHash": "559a07190219567ed23117b247d6d388b0938b35d3be829667a87fa165eef3fa",
+    "sourceBindingHash": "0bcdfe690c16e219fa89c3d8ef6cc77c8094103bced69e014b0414d603928030",
     "sourceVertices": 2383,
     "vertices": 2803,
     "sharedSupports": 606,
@@ -97,6 +97,6 @@
     ],
     "sourceCoordinateChanges": 0
   },
-  "bindingHash": "441dd0d18b6112cc27e93272e20d5ab1187e378639288aa385a6b020043433d7",
+  "bindingHash": "bd44d8678d0032521d3cbc58f04c30e7d07fa4f425129d23a7558a09fb8bbf26",
   "scope": "Only this new unadmitted Sparrow candidate: tiny root/torso interior and both proximal wing/torso feather junctions. Independent wings/legs remain separate. No source paint, solver, contract or limits change. Prior intake receipts describe inherited fit-01 inputs; this receipt owns the new split."
 }

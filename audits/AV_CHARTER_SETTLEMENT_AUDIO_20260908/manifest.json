@@ -201,7 +201,7 @@
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/BATCH_INTENT.md",
       "bytes": 1573,
-      "sha256": "e14f5393fb3836aa63bc9a0f926837c55771e3bc9d51ee4393e9706e5cd6752c"
+      "sha256": "eef75b05b73033a8e63cc57f23ff0792475340fc77129d3d8c4587055403b4bb"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/ORDINAL_CORRECTION.md",
@@ -226,7 +226,7 @@
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/audio-focused.log",
       "bytes": 247,
-      "sha256": "498438b3a3a1e2e508580d591b45cca703f9cb70b228a421ae804ae188fc9132"
+      "sha256": "5ec863071631bab90f47e119cababd0383ccc9bb6ab07219242495f796867c40"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/completion-controls-first-error.json",
@@ -236,7 +236,7 @@
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/completion-observer-controls.json",
       "bytes": 943,
-      "sha256": "de368ba99e45408fb2c2030bd08d7a22e257651e6901c5ad8d24d2fdb35c6528"
+      "sha256": "bea58c4fe04ddf272f19ec3c56458301ada5259b5093be4de8f3f3aa2b65f180"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/completion-observer-controls.mjs",
@@ -246,12 +246,12 @@
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/develop-profile-corrected.log",
       "bytes": 6988,
-      "sha256": "7b2e0282ec1df97724cb7b35e8b6a86e7808840291352d3c21eec5fe5a618348"
+      "sha256": "0120258148bec7f60b835e8d9d450b9c87a85b922e3ae225882306676ce9aa1e"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/develop-profile.log",
       "bytes": 16751,
-      "sha256": "6278d6e8b5254e9bbf618f28d5543a8d357987c46a9706f0c7b6c23745fdb520"
+      "sha256": "211928bb0f9b01695cc4b59d7b1a27d0a77177b04285c304c5539e8d46b2d15c"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/draft-authority.json",
@@ -291,12 +291,12 @@
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/initial-release-oracles/manifest.json",
       "bytes": 602,
-      "sha256": "19a9268a6800a6af676fe7ea614961002ad0fdbf4961910611efd9534fafe3c8"
+      "sha256": "a4c0738c11370e26eaa3edd6b4fcc0e5001edf17adfd5ac0575a6e0147d59de8"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/initial-release-oracles/slicesmoke.mjs.txt",
       "bytes": 1889328,
-      "sha256": "aa3878509864534ceeb85180978cad34ace1cda73d7a79ac5869233df2b5d0a8"
+      "sha256": "4ee3a2cc3a925acbc24cf74223eed12fad3fd8a73dbbc73eed36d605eb967e15"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/main-focused.json",
@@ -306,7 +306,7 @@
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/main-focused.log",
       "bytes": 244,
-      "sha256": "bfcdbc15c2f5d7f95e475fdbd06e5042f63dc5d3e0f2d5d638f3555df82a0386"
+      "sha256": "be091f79843663dd3a8bc36de87b2ccbdf6f9dd4174628f92d5c5e863295157d"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-first/charter-available-phone.png",
@@ -321,7 +321,7 @@
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-first/review.json",
       "bytes": 76642,
-      "sha256": "63fb088e26db15ae19d67547880ef7916e5a508a5ed09951061f07589c4346ef"
+      "sha256": "135ca03d89969022cbc1b05a4ff57e2efdd2bb617e0b1371058439b07919d358"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-first/runner.mjs",
@@ -341,7 +341,7 @@
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-ordinal-corrected/review.json",
       "bytes": 88383,
-      "sha256": "cf8434225a3691dc8ca0233d0446297228bd201fe969d72e76e56e41f5019415"
+      "sha256": "90e97d0649a2600e099c46781af2c21a04fbdfef305724c9186f875573aee79d"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-ordinal-corrected/runner.mjs",
@@ -361,7 +361,7 @@
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-retirement-corrected/review.json",
       "bytes": 77252,
-      "sha256": "bbdbbc9889bd537e6f0283e3a0ead6e97a5a3360a8a7855a3a60b3f5261d0cfd"
+      "sha256": "39e6b388c72d9d203dfbaf65456f3afc2c55a8b508d14cf60ed32e8bd43f7061"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-retirement-corrected/runner.mjs",
@@ -386,7 +386,7 @@
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/preparation.json",
       "bytes": 1130,
-      "sha256": "8fc7df609bcdd87c77fc7c96ba22bfab69c52db0eb597ea0493976e336872980"
+      "sha256": "160aa4b41f09b18c24497e50f1fe79adb9cd862a81e50c39712ff47a998081fc"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/prepare-corrected.py",
@@ -431,7 +431,7 @@
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/root-validation.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/seal-manifest.py",

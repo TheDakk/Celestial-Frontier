@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/05-cougar/authoring.json",
-      "sha256": "27925372323a9e787f6bf1ff3435b7df63107d57ae051d08477c1dc392b58040"
+      "sha256": "4f36868c7812fca585e2eb05e166da6deb9c73a0e5c00d20576694a30e36986c"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/05-cougar/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "38546875df4907e42d6ed0580f48f5b7a9dd4b8c328468ce1d54de049d2c0d92",
-  "bindingHash": "ccf8b2dd5478d1b6832a4963ac224aeb26ae3b1cdc9d5795db08ba66bbbb5af9",
+  "recordRecipeHash": "dd663783b53b214672ac0dfdb2eb8d45cda3ce0da64114e9f2d2d102769240e9",
+  "bindingHash": "d1c19fca2aff2534bf1da951b3252db9ddbe226229761dfe0c9494141ad2cc96",
   "contactEndpoints": [
     "hindFarAnkle",
     "foreFarAnkle",
@@ -83,7 +83,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/05-cougar/authoring.json",
-      "sha256": "27925372323a9e787f6bf1ff3435b7df63107d57ae051d08477c1dc392b58040",
+      "sha256": "4f36868c7812fca585e2eb05e166da6deb9c73a0e5c00d20576694a30e36986c",
       "unchanged": true
     },
     {

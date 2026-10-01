@@ -27,12 +27,12 @@
     {
       "path": "port/v2/packages/art/src/faunaoverrides2.ts",
       "bytes": 235945,
-      "sha256": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02"
+      "sha256": "68de7bff03102ea51aadf4d207517ed07e5750876ef8a6262d58b3855f90e57b"
     },
     {
       "path": "port/v2/packages/art/src/faunaoverrides3.ts",
       "bytes": 153673,
-      "sha256": "f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec"
+      "sha256": "2e0084576e32e709d99befd7434079f786a3f8bd36dc6829376c12211b7979ce"
     },
     {
       "path": "port/v2/packages/art/src/invertoverrides.ts",
@@ -42,7 +42,7 @@
     {
       "path": "port/v2/packages/art/src/proceduraloverrides.ts",
       "bytes": 13174,
-      "sha256": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be"
+      "sha256": "edabc7518ed3c61d8de39efb53b018b220e2444254f7aa5f2ed92a473649d857"
     },
     {
       "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
@@ -67,17 +67,17 @@
     {
       "path": "port/v2/packages/domain/descriptors/src/apphooks.ts",
       "bytes": 6433,
-      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+      "sha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285"
     },
     {
       "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
       "bytes": 13811,
-      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff"
+      "sha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b"
     },
     {
       "path": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
       "bytes": 4570,
-      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12"
+      "sha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2"
     },
     {
       "path": "port/v2/packages/domain/genetics/src/index.ts",
@@ -106,7 +106,7 @@
     }
   ],
   "recipeSha256": "aab9af8cf6b0d310bf9d53414e3c895321e47b2787f423f4981b533c8225d771",
-  "phenotypeSha256": "757478b4b85981601e3b2c0077828893bf7fe184813710f039866e1b9bd37476",
+  "phenotypeSha256": "83ed85bf606942f571bbdadefd7188c77bcb2d255db88ca9334b884b892b28ef",
   "blend": "wolf-canid.blend",
   "blendSha256": "a5e635a7587e1e8b8be7a3bd3636f56375ba84654989e696cf251b4a1c188e8a",
   "blender": "5.2.1 LTS",

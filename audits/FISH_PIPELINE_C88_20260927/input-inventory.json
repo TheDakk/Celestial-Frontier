@@ -14,7 +14,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/01-mackerel/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C88_20260927/inputs/01-mackerel/intake-provenance.json",
-    "sha256": "7c14b9b96d9b186446a7386ca3ebe15629c89a24e3f9b80e60c481a4fe9e46a1",
+    "sha256": "8976d08112f7765b00ee9cb180310aae0377141dd6cf1cae77de69ef5e091124",
     "bytes": 3161
   },
   {
@@ -176,7 +176,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/04-sardine/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C88_20260927/inputs/04-sardine/intake-provenance.json",
-    "sha256": "4b7156c29ec4417fbd72a84e7268387787958d459e7f0c85e400f3993758171c",
+    "sha256": "d50c9a0a1d93d3ce531cc3ca552bf2572ed968174303abe932dcd47be9105f53",
     "bytes": 3153
   },
   {
@@ -338,7 +338,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/06-mullet/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C88_20260927/inputs/06-mullet/intake-provenance.json",
-    "sha256": "2acb4a2966f023f43e7fc883e9b5290d76cb30a0903191b2c985d3f8077faa04",
+    "sha256": "f5026d6b9ebaa0c3fc5048c2db5de4271aa276c0fdb55c24a3c8d95bf587653f",
     "bytes": 3145
   },
   {
@@ -500,7 +500,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/07-tarpon/fallback-1/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C88_20260927/inputs/07-tarpon/intake-provenance.json",
-    "sha256": "f6e112292a292930c502ba8be3ad595f03388831570bcfd3886a4722a793d36f",
+    "sha256": "0faced23071715242dbcbfbc13002fe17773a2f9c2f631656be1f624b39ad17e",
     "bytes": 3233
   },
   {
@@ -662,7 +662,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/01-grouper/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C88_20260927/inputs/01-grouper/intake-provenance.json",
-    "sha256": "41e4b150a2c7f25e3ce3da6f57fa4bda8d98ff949c01ea6d82cdcc9eb5ee217e",
+    "sha256": "f5de236fe41502977ceae21a86635137d9f06c8c0361aa0d17c2e57606987f8d",
     "bytes": 3153
   },
   {
@@ -824,7 +824,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/02-barracuda/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C88_20260927/inputs/02-barracuda/intake-provenance.json",
-    "sha256": "76c90a3fd301532a1829f19bded02d27309233e2ed7fcf94633d01211432a0e4",
+    "sha256": "64c91913df73c8512f5ab03b0d6b3c0f36300efdc9a39a4b7b12aa3830c492b3",
     "bytes": 3169
   },
   {
@@ -986,7 +986,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/05-sailfish/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C88_20260927/inputs/05-sailfish/intake-provenance.json",
-    "sha256": "ed291414b77c80a653280268e54a181cbb0b9c53c27090e5082357629961b4ab",
+    "sha256": "a4dd757a1dabe65c6127bba476b892c02041fcd4d7d642c053b3810e64a63c67",
     "bytes": 3161
   },
   {
@@ -1148,7 +1148,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/07-mahi-mahi/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C88_20260927/inputs/07-mahi-mahi/intake-provenance.json",
-    "sha256": "a932af36a535088c07ef34913931bb8d7e49c4d919912f5db2b13641ebda324e",
+    "sha256": "7eb66baa98db9d6f9fd59625285f8ff2da8d1007738212a5cd453143ba626a39",
     "bytes": 3169
   },
   {

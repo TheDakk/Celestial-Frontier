@@ -1,8 +1,8 @@
 {
   "schema": "cf.manual-arm-skin/v1",
-  "sourceBindingSha256": "cd4676f63e69b8cc348c9f3b649b37361d5659fc8bc7f79a9dea6cfbf87eb658",
-  "sourceRecordSha256": "7731a1b9050637d4552062b925e00a02ebf74bdce875097429d399629a193046",
-  "authoringSha256": "0e07ab71a32223646ed685477a13fce6da9c58339f8c114ae46d4565706bfeb6",
+  "sourceBindingSha256": "f820063d96191162f3beafb07dcce94d7b569a16be438ccc333f9b100509e124",
+  "sourceRecordSha256": "7cfb0d0a6db56d4a653eff786002c537c58969123948bfd3c16a9e6e9c21746a",
+  "authoringSha256": "357adcc08bf853e4e02a49ac53d71ea13ff954589826799c591a6267e77d9cdc",
   "helperSha256": "d3a0fef3bab9d2ac1a53fb3a6efef0076f4fa198a65c1aaff97c47924484b658",
   "textureParts": 31,
   "skeletonJoints": 39,
@@ -947,6 +947,6 @@
   "sourceUvChanges": 0,
   "topologyChanges": 0,
   "solverParametersChanged": false,
-  "bindingHash": "3c9e62f00cb608a4aff83d2fbe2650b2ae298c2ce0cf17d5628d38de83bf56a7",
+  "bindingHash": "8ec2ca9d6295b6c204a550504d46dfb382be46e6d4196bb06576a4dc0827d020",
   "scope": "Manual continuous three-bone weighting for each of twelve declared visible arms. Arm identity comes from explicit source-part names, not inferred image anatomy. Forty-pixel body collar is authored skin blending, not an acceptance tolerance. Existing limits/solver counts unchanged; copied intake receipts describe inputs."
 }

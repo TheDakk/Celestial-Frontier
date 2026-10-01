@@ -1,7 +1,7 @@
 {
   "sourceHead": "2283e5388793a31b7fbc0d68897492adb6beadd1",
   "scope": "One bounded explicit manual rig-fit hypothesis, no automated coordinate search or contract/gate edit",
-  "oldAuthoringSha256": "2db59e9bd0718ce1ad24e89f0643e2f34a98d876ffbe1dad072fcb164ee0cdd2",
+  "oldAuthoringSha256": "e79a69e58b74c8218f5f99e475ec20399510377fb649e562229e017673f32083",
   "landmarkChanges": {
     "legNearKnee": {
       "from": [

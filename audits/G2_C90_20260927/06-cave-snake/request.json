@@ -3,8 +3,8 @@
   "name": "Cave Snake",
   "family": "serpent",
   "tool": "image_gen.imagegen",
-  "promptSha256": "a0a3acebfae6efe8f1d91a60c68ebe7d3b653acdcad959007ee258306136f3e0",
-  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "promptSha256": "8a548bebd9a5576a0b39cae3e5e012743e508d75ecda25c302be61e12d4a3b03",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
   "compilerSha256": "60246f8e5ef5b58a6bc26155abc5c92a50475d82a2f62a3046ebdd23a0f6ba8b",
   "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
   "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
@@ -21,7 +21,7 @@
   "basePromptSha256": "18f1763242018cc705f67ecba952e6f99e7c89c7c656e99847825102f93a9fc9",
   "layoutCompilerSha256": "8836e6e9fc676c367b271cf329dab2257d1cc6fe7baf790b8324bbaf9a1146c3",
   "layoutClarification": "Species identity features FIRST: limbless coiled rope body; pale washed-out unpigmented scales; blunt wedge head with heat-sensing pits. One Earth Cave Snake. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: side-on, head RIGHT and true tapering tail LEFT. One low shallow horizontal S-curve whose centreline advances monotonically from tail to head in x. No coils, knots, crossing, U-turn, raised head or hooked terminal tail. Preserve natural trunk thickness, scale patterns, head shape and true tail; expose a rattlesnake rattle only when this species has one. The continuous body stays within the same low ground band.\n\n",
-  "prePosePromptSha256": "5ee46f6358de8e6d379ecd6e52cde1465327efbad1452328d3a2e56fd1d29461",
+  "prePosePromptSha256": "a3194f14158d500bb64df681b4b07efdb94009d909a80a3c2712f3c4c4c5566d",
   "poseClarifications": [
     [
       "limbless coiled rope body",

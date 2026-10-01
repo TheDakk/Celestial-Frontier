@@ -25,7 +25,7 @@
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/kinematics-tests.json",
       "bytes": 3405,
-      "sha256": "9da2cd859984002322118cb3988e5902640bb91e8d40fa8298d22564cb186c22"
+      "sha256": "3bfb77cc3d4ca6969f1edb12ccff914a2c1b76f793eb674621c6446fa04ee43d"
     },
     {
       "path": "port/v2/tsconfig.json",
@@ -75,7 +75,7 @@
     {
       "path": "tools/baseline.json",
       "bytes": 82916,
-      "sha256": "6f9a42a29c7a3276a72417267254b59be4ebf9999dfa5656073988c1fbf8081c"
+      "sha256": "678fa4a971ee70b94b890a9e11f290980e5a6de18f6f540596892e79bbf5bb5a"
     },
     {
       "path": "tools/with-toolchain-lock.mjs",
@@ -90,7 +90,7 @@
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/static-corrected-runner.mjs",
       "bytes": 8650,
-      "sha256": "c1b131f1e85c527be77c3da5b088add78170fd7ea2d62cd76215dd935464f1d6"
+      "sha256": "3f9c4bd2b5d42b5ba0d1cd9f8eacc306bff9d4b3ca61b4efc1e75d00d92221d3"
     }
   ],
   "steps": [
@@ -130,7 +130,7 @@
       "log": {
         "path": "audits/CIVET_PAINTED_PARTS_20260908/static-corrected-validate.log",
         "bytes": 1093,
-        "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+        "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
       }
     }
   ],
@@ -170,7 +170,7 @@
   "priorFocusedTestReceipt": {
     "path": "audits/CIVET_PAINTED_PARTS_20260908/kinematics-tests.json",
     "bytes": 3405,
-    "sha256": "9da2cd859984002322118cb3988e5902640bb91e8d40fa8298d22564cb186c22",
+    "sha256": "3bfb77cc3d4ca6969f1edb12ccff914a2c1b76f793eb674621c6446fa04ee43d",
     "receiptKind": "transcribed-from-existing-tool-output",
     "testsPassed": 15,
     "rerun": false,

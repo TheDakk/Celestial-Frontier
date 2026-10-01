@@ -1258,8 +1258,8 @@ Signed successor `862a75b316142348636abea442dab15e87393642` passed named Layout
 `.107` / CDP `1.3`. It stopped the chain at 40/42: only phone/desktop `heap-dom-budget` failed.
 Phone maxima were 11,580,536 V8 / 17,758,550 aggregate heap bytes / 898 nodes / 90 listeners;
 desktop maxima were 11,635,116 / 17,687,678 / 895 / 89. The preserved carrier's raw/gzip
-SHA-256 are `3197ca65a1011bf386067d73515a0bcefd17ab91752a2d9d36af5e5dd055dfd7` /
-`dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`.
+SHA-256 are `538fb107cde1617b386a6bcf0c0f381e48728291e5e62bb78ddfa5566b68644f` /
+`bbb8b941b05fe17ff00462172c284ba6c843a6976c8ecac44cede957c652ff74`.
 The repaired evaluator replays it as the paired broken baseline and reports each exact breached
 field, observed value and ceiling.
 
@@ -1732,8 +1732,8 @@ SHA-256 `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501` to th
 strict `<1000 ms` product answerability contract. Local no-retry run
 `20260823-pr33-cross-host-sla-certification` passed 42/42 under Edge `151.0.4129.101`, complete
 lifecycle and cleanup, followed by exact named verification; report raw/gzip SHA-256 are
-`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
-`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
+`db93ce37d24e3a32256d232a2595c75a8c8ab101ba6edb553204e34571142c03` /
+`a9249401f99d371a1ec256c0332d834f1d75c300befba2779bc6aeacbd02a6b7`. Product, collector, and
 verdict-contract bytes were unchanged. The current SceneMemory ruler instead binds Microsoft Edge
 family, CDP `1.3`, a sealed capability/profile contract and complete per-run provenance; compatible
 point-version updates do not rebaseline or move its unchanged numeric ceilings. The guarded battery

@@ -2,7 +2,7 @@
   {
     "candidate": "original-c70",
     "report": "audits/LATE_REACTION_C70_20260927/bobcat/native-01/report.json",
-    "reportSha256": "ca3123d0dd73554e32925a7a825ac025c7b6b979f683953ca7c0d27c96c92336",
+    "reportSha256": "52d306b92610cecb8ece04e6c9316c7a6aaabb39509bb3df0b80a2716110b3df",
     "nativeStatus": "FAIL",
     "cpuThrottle": 4,
     "frames": 868,
@@ -16,7 +16,7 @@
   {
     "candidate": "replacement-c96",
     "report": "audits/BOBCAT_LAYOUT_C96_20260927/native-02/report.json",
-    "reportSha256": "269582e0a273aceff4251f620cbba3e85579ed24a8dc8a1e6bc8feddd5a5f5b5",
+    "reportSha256": "6de230d7fe2b1c1057e5fb46b7f6ced5883e9539e65819a0cfa198b5ffe120de",
     "nativeStatus": "DIAGNOSTIC_PASS",
     "cpuThrottle": 4,
     "frames": 933,

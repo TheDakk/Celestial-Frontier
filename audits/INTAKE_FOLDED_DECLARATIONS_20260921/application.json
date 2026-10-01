@@ -11,14 +11,14 @@
         "leg0Far"
       ],
       "filesSha256": {
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/binding.json": "8e4b836fdcc0f0f813e0ec2c5879a45284afe803351c62d2bc1b80b40e8d795c",
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/declaration.json": "425f6964fbbe5c4dbbd4c540018609a6954a54e93330dc38faf0182961a6bcb8",
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/binding.json": "179bf808ed1f1393a2adc8c2f203b1a211e3bff8e34274e1ac21057600e05720",
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/declaration.json": "8e20d1b683763d7f3e8d2629abc4c5111d4efcf0194278a497056ff0e77098e0",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/labels.png": "65bd98611c013cf3d77fadf4c1307cd9093e4fdd77482bd8d3c0244724452d80",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/mask-receipt.json": "33645fa525b439e8266f4e2a47e34977fea774ee50c099b613d6e7337544b8fe",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/atlas/p1-crab.json": "3de521307f5040967c4ee71dedbbf677dfb681ebb5d164611a23f3155ebfedf1",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/atlas/p1-crab.png": "532d0e9c4f3234d2240baeafed982ded851d52b4f1dd54e230878a4dbf573af2",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/atlas/receipt.json": "bc29669d35e5999b37d50156c989415be8c6447bd8906fa522e0dc1ab51650be",
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/binding.json": "64ea2b9b2152330fd2bc041a06b2a6c4c1ff3027b09404cdf15383f033d3e7d0",
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/binding.json": "868f2722bea54d7e134f3cf485af9d2ccf43880f15ecb437927223b32200f8e5",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/keyed.png": "6384a4d65af928ebee0518e6751d36ae71ccf58ee44925e2e369c560809db585",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/manifest.json": "be1fd0aab3c176b6af92571442027c93d1dc9004866028d50aa539a37973b80c",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/ownership.png": "9f3324b42048775738352d073725ea9ae690d3d2bc3645319e356c826e544f66",
@@ -45,10 +45,10 @@
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg2near-upper.png": "c3b22ecfb924f513551774fd46188284093ca504722e69f856fe89935aaa6925",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg3far-lower.png": "2b2672e69f89d83f465f30068a5dbfbba045456c2bed17e62dbd8215eb4e72c3",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg3far-upper.png": "3b40580907b644b43ab841ea77dadf75de3e1f6e3a5d1025ce2d2403f00fa3c5",
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/receipt.json": "d354682148af1363ecb089eae698370da15fbdce1b8ea89f790320eefa74bd55",
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/receipt.json": "aa3c3c2f59f34aed13bb10bac17efb4845ad75cf16928cbca74a8d398f0f5369",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/presence.json": "74079125ddbd944323bdd95af0be0d4b915f0176611818e4ea00c23f9a0e1a7c",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/receipt.json": "4ff7198d26d55bf7c6e662065327912211841f0e71edd5d3402a5930be8400fc",
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/record.json": "aee718e12b7c6061ea5ff7fd14a11960e1779229316b9451b42a21c1d885408a"
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/record.json": "9eff248fbd7a5f04e8f98d6de80f4b42b25a76dca5be4cfa063eb433515fdff5"
       }
     },
     {
@@ -58,14 +58,14 @@
         "leg0Far"
       ],
       "filesSha256": {
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/binding.json": "d8a42eedf197d19d49d5cc817b282fa9fbda683306342f6518f882be6bd5d41f",
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/declaration.json": "db07fceb17a4467280244eb99e729779ca78bc42563f93c7a11001fa0cda49d5",
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/binding.json": "3e18ca3800bda5fe003d0dfb949f0b862aadd01bfbb5caf41d51eb7ffe06d5e1",
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/declaration.json": "7650d62e22b6fa5399dddcd0e807e70af7df9018d94ab286bfd733a94e661437",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/labels.png": "f15e845954f7b0f4bf3e651858762bf2b855af7815d4517abed3296672b581c7",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/mask-receipt.json": "06a6a972abea04c4503ede5afbf406df218eae771be554601352770eb925e59c",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/atlas/p1-mud-crab.json": "1cc219eb436e55c8466ad5f65ea5037af1d4c0cb69fbfa3dd6ff6e1d29a4d6a9",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/atlas/p1-mud-crab.png": "8ecca4d62f699b9da19304360c786f0fa40344603bdb57d4cf5f49ebe98859bf",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/atlas/receipt.json": "41d7604fc319de5584c19a60e2a6fcb0da8a35698f226d0092b2504fb941b432",
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/binding.json": "e84df354175b6586b60063c8711a67050cf9d10f72e1ab9155b16545d459a193",
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/binding.json": "9d394fad6db55af8b8cd3c63617349d4016a4689e8b08307f261e8e5d7d1f012",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/keyed.png": "81d3fa3bfc4154802c8286cad6b44ba949713c581d402a41e003d0093230d6a7",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/manifest.json": "a4c9a0242c01d4135416beace00f009d8e22740096caecc8ea51b034e9d137bf",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/ownership.png": "c7366c58621cd78f32c71cf03b0696f49a399ea3c3ea8c3d4e05dce082d7bb86",
@@ -92,10 +92,10 @@
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg2near-upper.png": "115f36bc870f98478bb3a610b87ec177f25a6889f4a85f13a26dbad5ebfdfbfe",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg3near-lower.png": "785be03d8328a32ad010cf73131e091a33e11d338dcb0d0a60102eaae0b89825",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg3near-upper.png": "3b124e83e466ba71283a3d13902fca070e33f22046f6e83ae24b8e39456ecf52",
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/receipt.json": "81392e7770d52d72eb3d7e245e57bc0fae55a8e2fcf4ac6aa504f09cbccedf73",
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/receipt.json": "edfbfe20b70b1963fde3610ebe51563cd716ff1e469ef99752014f4ffc6c54dc",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/presence.json": "0d8172a0175d0f4db7fe70a4e84dd2d8f27f4da09a0409ac8ccc445b634564c1",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/receipt.json": "87135a26f9c372c803b0dc95864cdbee3c9059fe4329a608340b9ec3997629cf",
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/record.json": "255b2dfcde8f4bf0a7d4478fcb848ae973353717f3e6e3c3b42f52e5c6a6c0cc"
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/record.json": "e1dfdd65793576df2edd9d3c8439f0ba0c02858fa1f536be3eddfc25d74fac6c"
       }
     },
     {
@@ -105,15 +105,15 @@
         "leg0Near"
       ],
       "filesSha256": {
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/binding.json": "fd8df02613e5e6850192baa804f35435c0dc5d1a10cf50758c60c3e089f59533",
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/declaration.json": "90cfe304dcdfd663241ae72f71dbeafa0712a36decc192bffc7c19785af0b461",
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/binding.json": "9e998dc6253c20ae5fbfeefe145bcd32b19e909b299ac7601b74a3929da651a9",
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/declaration.json": "ba82b33bd1480675896b3078ed8006d32a3c6a66e8034a1279f275534f00206a",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/labels.png": "7e56d7f4671909fccb9546dcf8b9eb11782b4d86913fa699c1b1638189ef2b0c",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/mask-landmarks.png": "98ea5b8ea8c9e7f7ee07448489ae10aae96de6c1c33411b5f36ca80fba7c7586",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/mask-receipt.json": "e54beac529f6bae535b7f305813fcd787c05a5e79dfc9350b7a56425d54d1f59",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/atlas/p1-vent-crab.json": "4252cab7d0a97ef7981a5b5391def7271a6a266b4e5faf85f5202a2bdd3ec81e",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/atlas/p1-vent-crab.png": "ee8dd5bb7699ad2497b076626b25cca8becc837483e6f040fb372747a5492cda",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/atlas/receipt.json": "6a3066c146865b1fb32a304913feed148da7a200f86fdfbec974998bfde38b8f",
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/binding.json": "9e44cd8d6611b7db31592b2067fa8fd7369b23d2719041637a5fc948281b36f6",
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/binding.json": "6c3450e3273c6ab9dbe6b10fa00144d9aa79a630b71b7fad670233f41cd47d44",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/keyed.png": "eccdbf32fffb6444fec1f9f810442700a38370d180e31aa129857ff647dc6536",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/manifest.json": "32fcfe39fa65ac1ebd1bd1ef758adbe8a1969287c8d2362768f230673e69a339",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/ownership.png": "71eb30b8773e3070d1a40c845e1d8cff0b8a641f90f0685b1bb90a73e8e0dd01",
@@ -142,10 +142,10 @@
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg3far-upper.png": "ad7b5514ffbc4132131684ec026d001739bb45b0e2d16091b934e4a8fa7dd480",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg3near-lower.png": "c43a32828023378178dab852a520ad7a055fdeec8a21b711f058adadd6314b1e",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg3near-upper.png": "12b4d06cf510d5edc1f8465c1f73f65e2a5c06d9322da154809c4df4abf8983c",
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/receipt.json": "80ff53223880796c21bf74948b7933eb9ed150fcb6e6258ea6350afab3945f3d",
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/receipt.json": "bb35f39f9ea74208cca2e1f99a1ddafc9f61abfb31944e5c00167eddf2670ec4",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/presence.json": "c4cbd45b197d171b6d91babf6ba8b5652a2d8ca3fae01d56df174663decfc329",
         "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/receipt.json": "612b6d780f7227298425616dba5bf6a187cdaf597a885b803d523af1eb5da406",
-        "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/record.json": "510e1252a5c2765580e5aa634451d15515e826061cb0cba08397ccb0c7971f2f"
+        "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/record.json": "7dbfedb16cd134495358226352f13f99ed72f43bd4c0420206b6b978a4205deb"
       }
     }
   ],

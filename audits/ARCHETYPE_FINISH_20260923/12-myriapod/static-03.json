@@ -2778,8 +2778,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "d686c0ef596e2c010c5f4b3cd629bb34c3e07f0cba6d526f9482418993aa7ef2",
-  "bindingHash": "2429ce6b8578b2f1f26bc64bf1be6a97d8803841961e8c72550ee89e203f72db",
+  "recordRecipeHash": "bed54546ba3f02df384ea4c65c0b4b29fafb6e040e5b17b18336e1764c71d827",
+  "bindingHash": "060dc37941b81267a9f6848a731aa6ce2d76278d458b8d062d57afa674bf1e7c",
   "family": "myriapod",
   "contacts": [
     "leg0FarFoot",
@@ -3785,12 +3785,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-06/record.json",
-      "sha256": "07674cb93baf4ad78c47fee2a40b26e98f490c2ed91ac3d9fa085bf0b3c7f802",
+      "sha256": "fc7dac2cf13039ef059456197a7240536f1f9a4dda0641c74b3e2991e4104f19",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-06/binding.json",
-      "sha256": "cc602110e4769585b9b05c13eece79b3161aff0e445a1a01fbc43809c6a484bd",
+      "sha256": "cbc800939667671769829be4fd2fcc0c0c34a303b4be2a64fd60b65e1bf3c94a",
       "unchanged": true
     },
     {

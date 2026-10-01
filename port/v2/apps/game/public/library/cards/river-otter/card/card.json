@@ -1,7 +1,7 @@
 {
  "schema": "cf.card-master/v1",
  "earthName": "River Otter",
- "recordRecipeHash": "319995acc2303f38f7ea5ea1ae7ebedd09c525234ab97ee2e7510f90e791bb73",
+ "recordRecipeHash": "e8e59458dcdce12b6048a2576dc19e9eed5bfb5211351a19ed60083e8c9c9255",
  "source": {
   "master": "audits/ART_BATTLE_FOCUS_20260925/13-river-otter/master.png",
   "masterSha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e",

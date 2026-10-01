@@ -1,7 +1,7 @@
 {
   "version": "4.3",
   "approvedFrom": "e89cb621",
-  "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
   "frozenStyleUnchanged": true,
   "fauna4EUnchanged": true,
   "onlyChangesBeyondApprovedDiff": "two proposed header labels removed; exact requested version-history clause appended",

@@ -20,7 +20,7 @@ Final six-mask-sheet.png and review-sheet.png visually inspected. Review include
 
 native-observed-01: retained proposed layered-reach/faint-idle-settle bundle, exact Edge153.0.4234.48 at4×CPU, explicit adult aerial habitat. **Not unmodified HEAD or integrated-source certification.** Four turns:703live/707encoded,11949.4ms,0/0rigrefusals. Stage CPU p95 `5.800000071525574ms`, maximum `37.10000002384186ms`;25frames over16.667ms, all approach/return;13intervals≥25ms, maximum50ms. No raised allowance or continuous60fps claim. Per-frame chronology in native-summary/report. Other-lane activity0/19samples, not globalhostidle proof. No isolated desktop3.5ms/iPhone acceptance inferred.
 
-Film SHA256 `dfcc20b5701485746f79510ac5e4146d2a65d9ae07fc1e15199956cec87efc74`; report `796d80fccfab99365a5b124df4e526d99dce638a1d8d4434e996a78c96ccb930`. Codex owns follow-up phase-transition profiling and optimization under unchanged gates, alongside C12. No unchanged rerun consumed.
+Film SHA256 `dfcc20b5701485746f79510ac5e4146d2a65d9ae07fc1e15199956cec87efc74`; report `be91eb3fc42f4a931958474289d37748615a47c5aeaddaf5b548f9a58e83f284`. Codex owns follow-up phase-transition profiling and optimization under unchanged gates, alongside C12. No unchanged rerun consumed.
 
 ## Checks and paired next steps
 

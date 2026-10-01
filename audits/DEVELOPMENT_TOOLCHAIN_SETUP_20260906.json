@@ -30,9 +30,9 @@
   },
   "rawEvidence": {
     "archive": "DEVELOPMENT_TOOLCHAIN_SETUP_20260906.evidence.json.gz",
-    "bytes": 6172,
-    "sha256": "54b1d36bca137d925ac5c185bd93af3615e62fd520f38bb3320fe624879932c3",
-    "uncompressedSha256": "c9c7d6a8a166ea712eae795819be89f57d05dd25f6ce9eae1fb3130aa9d4483a",
+    "bytes": 6173,
+    "sha256": "eaed6d68339b502b8439500e5b353f12a3feca47246ca661f64d3f3fa95a5314",
+    "uncompressedSha256": "36fc11bff577247d05671bfbddc52fb0f03f78d12c098b8a0018e58c676706fa",
     "encoding": "gzip of JSON whose files values preserve each original UTF-8 document verbatim",
     "files": [
       {
@@ -841,8 +841,8 @@
     "renderFailures": 0,
     "deterministicProbes": 50,
     "fingerprint": "MATCH v1.0 baseline",
-    "logSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+    "logSha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927",
     "gzipFile": "audits/DEVELOPMENT_TOOLCHAIN_ROOT_VALIDATE_20260906.log.gz",
-    "gzipSha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736"
+    "gzipSha256": "2e3bf4fa737966203f1153ac2ff4cc91499d8fc34616bbe99a3434ed7291043e"
   }
 }

@@ -1,8 +1,8 @@
 {
   "schema": "cf.flat-master-weld/v1",
   "sourceFit": "fit-01",
-  "sourceRecordSha256": "27beffd980683e5a505cb6211729a43eab0b1936dc617f3b78b9b14a19ac1c6e",
-  "sourceBindingSha256": "08a369dce6e20171282265fbbc3a9f79197566ec5e291d3db874406a7b390946",
+  "sourceRecordSha256": "218691c9454d8210f3272a6fd4ca666cca650fe5bb0a1f7546d9a2a2064044fa",
+  "sourceBindingSha256": "b244dd3bf4ba27354cf44dbc9e15ae0308dadee91d39c11e1a1b3de05795b51b",
   "sourceAtlasSha256": "a5d61152a9fe1ace7a07d3f834a5c16b0e060921e9d36b93746f530d9254671f",
   "helperSha256": "2b7b8f3308ac3aec2859c90e41babd69ece025544c10331c01f7ec991977963f",
   "options": {
@@ -94,7 +94,7 @@
         ]
       }
     ],
-    "sourceBindingHash": "d391350384bd5ec980655eef6bebae91b63ad93240ca310b19f63f0177608990",
+    "sourceBindingHash": "b7f8563b0207f6e97f75f300377f14d1d0b0353bf4806b609dafd4cf7c59a5de",
     "sourceVertices": 1096,
     "vertices": 1384,
     "sharedSupports": 449,
@@ -114,6 +114,6 @@
     ],
     "sourceCoordinateChanges": 0
   },
-  "bindingHash": "ffde09ce3f8a847ba5e904e3ef85c92983957272d369c62a4122e39a2845ca30",
+  "bindingHash": "dc34516707f135ffe7039a748095c26cfb2af97f63d7c5e4a110f57dee7c7a61",
   "scope": "Only this unadmitted River Otter candidate. Explicit authored continuity joins only the observed interior root/spine patch boundary; other excluded surfaces stay independent. No solver/gate/limit change; no hidden pixels invented. Prior intake receipts describe inherited fit-01 inputs, this receipt owns the new split."
 }

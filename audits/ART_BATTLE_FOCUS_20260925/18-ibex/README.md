@@ -6,7 +6,7 @@
 
 - Source HEAD: `ce1563afd1e2d02e8e759c043b2e029c35ea7de5` (native report carries full source inventory); runtime unchanged from e861a403.
 - Final master SHA-256: `97dde355ce484eaa944a58ecb67674fb08fa2d36299904d4e1b0d539b27c988a`. Built-in image_gen, correction02; original generation01 rejected for hidden far ear and insufficient horn margin, original master/prompt/receipt retained.
-- Recipe: `aa0d68bc6eb3850b7fbd629877a24df5b516bc65654d2a92c6184721a38e3577`; binding identity: `db564805532ebf0b351ae321d9bf03721fde409d7c9e79ae2bc081348a4db603`; binding file SHA-256: `a923e722a2aee41b13becac868f48f782f537ca0c2c9b64a2b3ceb73fd270399`.
+- Recipe: `4f9131360086d036e678f8caf8e9efc3ed808055e7b18cfa599afd230583d823`; binding identity: `2b4e5daf37869949b9702a5faaf92fdd2dd9114eea8e8e6b9b22e90c4445015e`; binding file SHA-256: `e8d716ebe191fd517cd1ba2f9cb5a8c5c0d41fc9743fa841f6a171cc376b3668`.
 - Family genome and required contract list compiled from the retained P1 prompt in subject-source.json/request.json; original and correction prompt bytes retained. Two visible ears, four legs/hooves, short upright tail explicitly declared; horns follow skull and beard follows jaw, no invented movable joints. Manual preview coordinates are mapped to source coordinates by authoring-receipt.py, never by resizing the image.
 - fit-01 owns intake/record/masks/observed split; fit-02 adds only the declared interior root/spine paint continuity weld. Each has its own receipts. No source labels or landmarks reused. No other attempts/refusals.
 

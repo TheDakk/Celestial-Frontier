@@ -10,9 +10,9 @@ All six masks PASS conservation: nonempty, alpha no greater than keyed alpha, ze
 
 Hashes:
 - master `abad16f380bf27e2a17123882dd1ba027e196f10a180f299dbb470663e2b031a`
-- recipe `67995957626fe39620ab4600fef284c497b07998c5011c6d5a0a4920df823670`
-- binding `e347dca4508c73c3b606cce17b153558a19001519da01e0b14a83e5459ba9dfc`
-- markings `49d904630c7e9a4be00b8fa691a7241bd01c77128635ed9d6a5f0ad5ac8fb0c7`
+- recipe `47da64d4c4a34d4dcf0e62994ab56b1c75f247e4505ad9514a1d9ceb50d8711a`
+- binding `78a8eb0ae15b14a7fa805ab5bbbcccad764c303435b3a1b76a4da513203722f0`
+- markings `31523fb7c07550e60ac358b45620df124c5b625af14e64144480f63fb8f8598e`
 - film `c408c1762e64807c5111c5d2cbb2fd806169d0e163aee553e931020d470a988d`
 
 Evidence: static-01.json; native-phone4x-01/report.json and battle-10s.webm; review-sheet.png; six-mask-sheet.png; root-validate.log PASS. One review-sheet command initially used misspelled nonexistent audits/ARTETYPE_SPRINT_20260922/review-sheet.mjs (MODULE_NOT_FOUND, no outputs); corrected to this packet's actual script. No certificate, picker admission or coverage gain. Accepted bindings/S2/source limits untouched.

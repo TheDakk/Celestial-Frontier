@@ -5,7 +5,7 @@
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C22_LAYERED_REACH_20260925/candidate-02-layered-reach.ts",
-    "sha256": "83b8c103b1b7617df405100289092b5ecb610a100bcfb463871465dfe1d232a7"
+    "sha256": "36d8160d4a4c3b11601bf29a758c203f5e6b88cac42145ad3c695827e389c25b"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timeline.ts",
@@ -37,7 +37,7 @@
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
-    "sha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+    "sha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/secondary.ts",

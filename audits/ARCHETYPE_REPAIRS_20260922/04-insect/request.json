@@ -9,9 +9,9 @@
   },
   "previousPrompt": {
     "path": "audits/ARCHETYPE_SPRINT_20260922/04-insect/prompt.txt",
-    "sha256": "6271b8cfa456f261d09a809b1974bf1efa92e82a423e7da362af5e95f0b570ae"
+    "sha256": "070cfd3966ca36551820786f4b9e6bce6b43393ce2784e91b4e11a5b5b2f0996"
   },
-  "promptSha256": "e4d9c972979a81a0b2ec2a68668a3945c44bf28113c997a4fb8f11e03ffde1a7",
+  "promptSha256": "df8949265c6b248a6476dc77eb6a948a374cf276656d759d603cc2834f1a2041",
   "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
   "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
   "requestedSize": [

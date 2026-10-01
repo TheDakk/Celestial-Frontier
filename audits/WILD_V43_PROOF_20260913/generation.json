@@ -10,7 +10,7 @@
       "master": "wild-launch.png",
       "sha256": "5a46a29eb41a701b428531720251c2fa688777618e824e4297c453edf537a642",
       "prompt": "wild-launch.prompt.txt",
-      "promptSha256": "0e8e09a2f32ed5f7c1b0278c03c2c6ee6aac9c5b53ad9038ce9be9dffb8aef93"
+      "promptSha256": "859027e66afc85feab1b1b7b26a8b0056977a755e9a1314312c5c3b679d5e616"
     },
     {
       "phase": "travel",
@@ -18,7 +18,7 @@
       "master": "wild-travel.png",
       "sha256": "bd62c402b5bdc4929a29943952b29e5736e27f7f3ec325214bc0f5a68fb29679",
       "prompt": "wild-travel.prompt.txt",
-      "promptSha256": "bc3686e7daba3b5e051f7ffc268a06dd737e4783dd29d3f8d8a6ec3af9301bbc"
+      "promptSha256": "4d8a16ccfb491acde4ab15d3595d97f3cee91d5b8352f6c258fe218217b39844"
     },
     {
       "phase": "impact",
@@ -26,7 +26,7 @@
       "master": "wild-impact.png",
       "sha256": "978296588ae7ad5694380c92ab7499f34a4a9ec27c654b064b82b7c0a924fc79",
       "prompt": "wild-impact.prompt.txt",
-      "promptSha256": "ef3ac73a9748668f7c7b399ea3873f2f0365f6d78bb845190b71420e6168c04e"
+      "promptSha256": "52952a962134de47f9c8a5dd582f2e328a557c12798d64c9e3d80580ad56f6d9"
     }
   ]
 }

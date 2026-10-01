@@ -4,7 +4,7 @@
 
 ## Scope, source and current state
 
-Reviewed read-only: [Claude's response](/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_REVIEW_RESPONSE.md). It was not copied into this lane. Review SHA-256: ea007af751ee3788a19e4e33de23c4df0d4c59da3e7a7179bfa4a32c1ccbacbc.
+Reviewed read-only: [Claude's response](/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_REVIEW_RESPONSE.md). It was not copied into this lane. Review SHA-256: 0b5e4cb032640f2104b1d69e2b9376d451105b8dc72668a08c3778f6aaf69b65.
 
 Claude reviewed `0426ef4db5dc55205925725b9579ca61d960cd42` plus the September 17 working implementation. That implementation and review packet are now signed in `0b8857511c133fef36299505c9e6927e4e2d47f4`; the signed documentation successor is current HEAD `a184f73cc6c93d442fe22d77085e675d3cdb5f1c`. The successor changes only review/handoff documentation and the signing receipt, not implementation. Both signatures were verified in the preceding turn. No signing was repeated for this plan.
 

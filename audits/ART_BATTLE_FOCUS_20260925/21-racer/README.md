@@ -8,7 +8,7 @@ The retained P1 prompt is compiled with the species genome and serpent family in
 
 Master SHA256 `650d3a5d2fe3fe0b5fc986448a3a7818f89975642af68b51d27dac1366bc958e`. Explicit manually authored presence: all required serpent parts visible, no absent/hidden/folded list entries.13 new paint owners and joints, without Python label/joint reuse. Land habitat. `fit-01` records IC-3 intake/masks/observed split; `fit-02` additionally retains the two observed head/segment0 and jaw/segment0 paint junctions. All other continuous segment seams already pass. Old intake receipts are inherited-input history; `flat-master-weld-receipt.json` owns the new split.
 
-Final recipe `e9dcb7f05109bf5d758eb6d7053792ea93ffc677f05978c2764fd3df5dda9335`; binding `65b8f1b06fe78167a85cb9c0687104698b0cbebc28ad8aed3535464b75fd0b91`. `static-02.json` checks all12 actions×121 and945presentation samples against unchanged published-geometry/contact/join guards; source-pixel reconstruction changes zero RGBA channels. No runtime, family, solver, limit, threshold, accepted binding or S2 edits.
+Final recipe `ab3049f66313ddd6c6655213317d485a43fa6c9487915ceb474dd2930ce5c7a1`; binding `72bbb4b67abd60c4ba9620e9503487d2616bb448be36bbbaa3dbbd3149ff3ce3`. `static-02.json` checks all12 actions×121 and945presentation samples against unchanged published-geometry/contact/join guards; source-pixel reconstruction changes zero RGBA channels. No runtime, family, solver, limit, threshold, accepted binding or S2 edits.
 
 ## Own six masks
 

@@ -5291,8 +5291,8 @@
     "name": "Ant",
     "dir": "audits/G2_REFERENCES_C62_20260927/08-ant/fit-01",
     "scope": "Actual GSAP/contact 121 samples per action; no ARAP, blended stage, film or visual acceptance",
-    "recordHash": "c0f7983b43faa774c7d7663bdc4a12e467fa35a52ff03613f03abce548fac3ef",
-    "bindingHash": "e08c497b9010d70b824cf1561322b0608e24a8381a7995a29ef6a9d7f2428bac",
+    "recordHash": "e37e42021cebd25a996a89570e4525956a70bc9ef68db7eeba3bc50428f055a7",
+    "bindingHash": "a5855947cc50bb26cfdccab82e045b34c885c034c283838bbb5e5094fa89fec9",
     "scaleLength": 0.36740125503461174,
     "compressionBound": 0.02939210040276894,
     "chains": [
@@ -6923,8 +6923,8 @@
     "name": "Cricket",
     "dir": "audits/G2_REFERENCES_C62_20260927/09-cricket/fit-01",
     "scope": "Actual GSAP/contact 121 samples per action; no ARAP, blended stage, film or visual acceptance",
-    "recordHash": "5f174d569714f0cc5b9bf09a374525d2a918312c33272af39683c664097d77a0",
-    "bindingHash": "368a23c5b46aaea4aededbf76d10b765920748492bfe5a62c362392e8024ee7b",
+    "recordHash": "ba3d843321441b7bcbf8099ee9f884fa1251e4e795c67111af7e300f1acc6f41",
+    "bindingHash": "167f9072bde1dbdf8e3155017e9f4f4ac9230d1e2024c5c59ab16e41d05767e4",
     "scaleLength": 0.28935942666238074,
     "compressionBound": 0.02314875413299046,
     "chains": [
@@ -8651,8 +8651,8 @@
     "name": "Beetle",
     "dir": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04",
     "scope": "Actual GSAP/contact 121 samples per action; no ARAP, blended stage, film or visual acceptance",
-    "recordHash": "4e935e3ab068c2ed17e5d993bb542cc4f7551e549772b0d3cce772df610d50b9",
-    "bindingHash": "d23162df16d6c89d1f1b16d19acf52984ff73dc5e1bddf31e6430bb955464c8e",
+    "recordHash": "079e15a8ca95a34e491db38377875b5078d7bd5350eaa23b872b7372674b13fe",
+    "bindingHash": "43f1c495f0a2edf73024f499c02e45ef22405dcddbb4a45468c51ebfc16948f2",
     "scaleLength": 0.34919944688969706,
     "compressionBound": 0.027935955751175766,
     "chains": [

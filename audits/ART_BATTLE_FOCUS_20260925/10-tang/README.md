@@ -11,9 +11,9 @@ Six marking masks generated independently, zero pixels outside keyed alpha and n
 Root validate PASS. Exact prompt bytes/tool receipts and all file hashes retained. No accepted binding or S2 changed.
 
 - master.png: `e6970b7e7d2320aca6022ae2b74117f10f7d38e66fc5b81568b0061ce65f8ffe`
-- fit-06/record.json: `330ffbca96f9a8bc6a379af0e5aa32cab5a314e2085a3d431c29cbeb75d13edb`
-- fit-06/binding.json: `7311cf78431989d81d950d8d4689f1e10e059c321b980dbb1e2cd9632fa9b582`
-- markings.json: `30fe4f21dbbf300223721c201c6f133b57e441019854b986b46f6265f0012ca7`
+- fit-06/record.json: `7d9cfdf1d7029a1a48c9238d9c0fe5ef8212f986c0a692a5227b3e0fd62c5e78`
+- fit-06/binding.json: `d0dfd3f511dd0f35bc217b13e6b8b5c95692af04dba2d6ddb312cab388ed5272`
+- markings.json: `20deab95c5b7f8d283d8d19b5fc3cbb29cbc2263000dcba6c49630e4ba64d8f9`
 - native-phone4x-01/battle-10s.webm: `8ec6e93617f0dfadea56cfe56a1644251e7265e2348a68da37731439e0102193`
 
 Paired next steps: Claude consumes fit06 and film01, wires card/stand-in/arena, runs picker smoke then republishes under existing authority. Codex completes the ten-item sheet and repairs outstanding anatomy/motion, beginning with the generated families. Dakk reviews the sheet and iPhone result; no relay needed. I5 and economy stay parked.

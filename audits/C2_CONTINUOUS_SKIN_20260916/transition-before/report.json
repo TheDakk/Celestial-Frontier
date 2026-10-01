@@ -1767,7 +1767,7 @@
   "sources": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json",
-      "sha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2"
+      "sha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",

@@ -3,13 +3,13 @@
   "logs": [
     {
       "file": "UI_U1_TOP_LEFT_PREP_app-chrome_20260906.log.gz",
-      "sha256": "0dafc7d60a3f20bcd807215689d5f831d2967f38c53d7d4c373dd1397e4825ad",
-      "sourceSha256": "a8ef095da9aee9f6c1b4d9ffefd1bfe05770b2e262332613aeb34125f0dab5fd"
+      "sha256": "ab89dc238246d793796aefc85c0e6463d32b1e5f7ef1636c0e8d2dcea9c8b1a7",
+      "sourceSha256": "6f9c8d827f227323d567efa53c24d08245b5cf22054db2e90418d23a1b8cedeb"
     },
     {
       "file": "UI_U1_TOP_LEFT_PREP_instruments_20260906.log.gz",
-      "sha256": "bf95d1fef56cbccd614648254c95e9fb337de324d59e5f109065b6a55ed7aa6d",
-      "sourceSha256": "d2679f7f110a4d715f65ae3a55041a9ccb72594c7fa48e7cc76514fc7e2942ee"
+      "sha256": "9ecdc5c79269a8de3eb66bdc769064535c246bce07f15fb7fcac6c45d1361095",
+      "sourceSha256": "9720c110077c16c9235bf55b55fcbf7e30089cf9cac9fbbfcf36ac3e7d44e624"
     }
   ],
   "appChrome": "typecheck and 2 suites / 11 tests pass",

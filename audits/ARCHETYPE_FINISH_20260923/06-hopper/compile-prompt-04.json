@@ -1,8 +1,8 @@
 {
   "sourcePrompt": "candidate-03/prompt.txt",
-  "sourceSha256": "fbe06bb30e90911c2a44aa46e5a5696ad9be3eb62e52109ee43f3ceb70d52d82",
+  "sourceSha256": "e2f2c15b1b218d96c179843e78d34670b038b34b4c5fa83ad7b04597347caf93",
   "targetPrompt": "prompt.txt",
-  "targetSha256": "5f5b4e09f63b19ceb730dc866d79a0c7e2f6782dfebf19f5cf666480fc432659",
+  "targetSha256": "7f4cb73fdb17b2c2fd617d7e9b4c7821709b7db0a720cb7b19762c8a52a971d7",
   "replacedPoseOccurrences": 2,
   "replacedAdaptationOccurrences": 2,
   "styleParagraphChanged": false,

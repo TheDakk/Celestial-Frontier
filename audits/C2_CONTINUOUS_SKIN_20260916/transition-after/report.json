@@ -182,7 +182,7 @@
   "sources": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json",
-      "sha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2"
+      "sha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/compiled-skin-field.mjs",
@@ -290,7 +290,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/current-producer-poses-v2/civet-poses.json",
-      "sha256": "e18bc762dbf5d2360509eedd2ee1ad20b9d3d0c1bbb44b1039447a8b5f542709"
+      "sha256": "1db99ebddc6ff995863a36895f4f8511efd4a0114eaf8b9e74f1716795b5865f"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
@@ -302,7 +302,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/current-producer-poses-v2/fox-poses.json",
-      "sha256": "3a82cd0c33e313bbe9fa5080b024f91c012c0b881f459cd7982522af6b1d991f"
+      "sha256": "56baea9fe9c577ef4130ec60f13400e9fe407335ead980f339816fd6d33636fd"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_BOUNDED_REPAIR_20260913/candidate-01/fox.landmarks.json",
@@ -314,7 +314,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/current-producer-poses-v2/procedural-poses.json",
-      "sha256": "b9f979c9e0711525fd92a6513a42014003bde2f751760c03f34916f3940101d0"
+      "sha256": "9f4e73a86681a1bf2ece55a5d498efba0fa5f7b8060088d91de053e031857c17"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_PARTS_ATLAS_20260913/native-painter-parts-03/record.json",
@@ -327,7 +327,7 @@
   ],
   "probe": {
     "sourceFile": "probe.mjs",
-    "sourceSha256": "6f90b61e3205d572352ca396a517af5880ac49804a011e5c8d47f43072b5ee6c",
+    "sourceSha256": "0f359e29e06338039fe9c73f977fd0ee9ae2f6d6a2d74136b78349fd6fdbe21b",
     "bundleFile": "bundle.mjs",
     "bundleSha256": "0a16c28c7ac29fdf3d05daf8c047d6eb66cbc42f2a9de75bb1f174bde7798694",
     "epsilonMs": [

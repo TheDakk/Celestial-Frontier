@@ -158,8 +158,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "daa68241ea47298267bdec89e076321856f4c6550309e1f8c30188fd68113312",
-  "bindingHash": "d1c07cda512d5a89664ca910524b6cdb7ce1ae8e3dd5d8d75333961c151ce2d9",
+  "recordRecipeHash": "a508c9fa386cfa919af66bcc120b1377953c985a3d4dac15268162b24a5037d4",
+  "bindingHash": "da8b0284fd2ff1939ae443ad25976d4a9524243f7ae5603ef442757162fb3096",
   "family": "biped-bird",
   "contacts": [
     "legFarAnkle",
@@ -270,12 +270,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/audits/G1_AUTO_AUTHOR_20260926/control/grouse/fit/record.json",
-      "sha256": "c24c2baeb4bcfb3bad41379f18b1c24a2515b03c66695785f15788226882ac18",
+      "sha256": "0630a2c6d662c82502f8110d761e9f59ad56b51619637a5ebefaef85b628a359",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/audits/G1_AUTO_AUTHOR_20260926/control/grouse/fit/binding.json",
-      "sha256": "9b79a1e2413c7cc5b59cfbacc0f5348a6ea91182b72e03cba258a5644d65fa78",
+      "sha256": "c6fdfd613cf7c255b7315724c307e08d9de12d4baea242c182ffb3b0fd73c9ac",
       "unchanged": true
     },
     {

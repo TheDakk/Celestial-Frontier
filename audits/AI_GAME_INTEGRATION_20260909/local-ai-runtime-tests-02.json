@@ -31,7 +31,7 @@
   "exitCode": 0,
   "signal": null,
   "spawnError": null,
-  "stdoutSha256": "d9565a24bd524644add7f678edb35ae7c62428dcc0e2387f61b5d7b7e20304a6",
+  "stdoutSha256": "ea77e0e689f7bcd8de7811e85729f920ac13c66588dd0177df5cbff97b20c3da",
   "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "summary": "Test Files  1 passed (1)\n      Tests  1 passed | 19 skipped (20)",
   "workspaceReleased": true,

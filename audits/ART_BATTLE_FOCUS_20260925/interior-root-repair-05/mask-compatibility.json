@@ -4,10 +4,10 @@
     {
       "name": "impala",
       "oldManifest": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/fit-01/markings.json",
-      "oldManifestSha256": "ba245f6d0734bd1a3347e04642dcc3a52150fce508ffc860a1d9b2586de63397",
-      "oldRecordRecipeHash": "67995957626fe39620ab4600fef284c497b07998c5011c6d5a0a4920df823670",
-      "newRecordRecipeHash": "58c3ed14e316b21d18ab2e2bac292277bf2caeef26a7d32af9c783ce8e5899d2",
-      "newManifestSha256": "fbe54831a7ca19a1bf81d974fbb75538a194022b0e0b944f84989c0b602dfc9a",
+      "oldManifestSha256": "f8a83266890bab5f7be324ecbefbd5ecf51330fe702a53d91963c7cfed6da6cb",
+      "oldRecordRecipeHash": "47da64d4c4a34d4dcf0e62994ab56b1c75f247e4505ad9514a1d9ceb50d8711a",
+      "newRecordRecipeHash": "da292a98ee37f5967a21986f519461d5ea504c015ef705a6b56330891a85998b",
+      "newManifestSha256": "26e3cee44cbbca5d3f311c00ec7ed8d9ce50f7ed9e74a80e128cd45fab67a5c8",
       "keyedSha256": "88c8a47092017a832447f9abbc57ad4033923eca70cf07a83b34b382bdd2790d",
       "patterns": [
         {
@@ -58,10 +58,10 @@
     {
       "name": "cattle",
       "oldManifest": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/fit-04/markings.json",
-      "oldManifestSha256": "f41e24e1d26d2a863358bf4a12ae7e6d8ce4a57e563e43d2d63bfc99817ea833",
-      "oldRecordRecipeHash": "33a0a48414c4d96613c64bb85791d32ea2404ffaba939cb96238290447369f5a",
-      "newRecordRecipeHash": "a4ec6183d6394e5181d3aa121afc51e2bf7ecfd88c25d629899f0917d31f2bbc",
-      "newManifestSha256": "8baa42c7baacee70b5c9d92ba4152a2296f1f138b8d5d1dbe5b1e87681464fae",
+      "oldManifestSha256": "c7137a5a9eb4d5bd22de0fd47f241d088f962ab12e54426c26df625c710f2de9",
+      "oldRecordRecipeHash": "5ac0cf8e4fe17023fcd37ad2d94aeb72265201e1f9c1bc86fa64a65e5262b995",
+      "newRecordRecipeHash": "3e57c01bc9f22dd8248f4ffb11d69f1fc70a8e74dacd3737df9e8cd88c97ae44",
+      "newManifestSha256": "d7454842614f525559f0e7189ceaff1ff9ba3a6eda3f9f5c5c7fd1b7b9e28b54",
       "keyedSha256": "977890154b04f46803bd70b99d70f8e2c79ac0f74211bb52b0ab5f2d794b2a5b",
       "patterns": [
         {

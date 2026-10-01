@@ -4,19 +4,19 @@
       {
         "matchesSelectedCandidate": true,
         "recordedPath": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json",
-        "recordedSha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2"
+        "recordedSha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a"
       },
       {
         "matchesSelectedCandidate": true,
         "recordedPath": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json",
-        "recordedSha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2"
+        "recordedSha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a"
       }
     ],
     "files": [
       {
         "bytes": 50155,
         "path": "repo/ART_KIT.md",
-        "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+        "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
         "source": "repository"
       },
       {
@@ -46,13 +46,13 @@
       {
         "bytes": 11435,
         "path": "repo/SOUND_KIT.md",
-        "sha256": "f74514cb967ea474b994a0c69ca0437cd7b35b6bc595523b54dc625fdeb0f5b0",
+        "sha256": "9786cc0d28b6d752345fa30a79f7c881f48dddd289b2dc5e0bade08053ab2bc3",
         "source": "repository"
       },
       {
         "bytes": 17365,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/README.md",
-        "sha256": "e6d7015b9b43c0bd69efc3e024c21df473b735ff186e8c26e6585f14aa97bb69",
+        "sha256": "99e2ffc00a66609bbe8c8d71faaa8716c0a883c804cfca83ab2e980002e1aaa9",
         "source": "repository"
       },
       {
@@ -64,7 +64,7 @@
       {
         "bytes": 14753,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/REVIEW_PROMPT.md",
-        "sha256": "2333e398fa05a8fc3c2bd8b5d2b6bd77c8f0b09fd33ced9ae407ecdeb54226cc",
+        "sha256": "1d817300f1e27ef396458ea32904799185e7e91c55752d29805eb002129a05d5",
         "source": "repository"
       },
       {
@@ -82,13 +82,13 @@
       {
         "bytes": 8032,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/civet.receipt.json",
-        "sha256": "f8cbf33b63172edc5b5f350828b95914c1b2ab1b837855ba68e79fc1332e788b",
+        "sha256": "3841bf204791b649716702a47f0ea38a0d93493b57344aa1bf56c25874191295",
         "source": "repository"
       },
       {
         "bytes": 1042893,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/current-pose-v2-quality.json",
-        "sha256": "c8b1db15be4dc11f7c16b048eba3d9f95516d33d46805851de9a1bb36c37787c",
+        "sha256": "5449e10b1bd08eec276a9416c24af452385b011b5f0971814c9073e62eb36a1f",
         "source": "repository"
       },
       {
@@ -100,13 +100,13 @@
       {
         "bytes": 7426,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/fox.receipt.json",
-        "sha256": "29265db0f77a617cc12067fc378e1f7938ece569cb5bac930def3756a0bedfb7",
+        "sha256": "7ac8625714ea48700c894d3a7b4e533f9eb16e287717ecfbef91afac1384647f",
         "source": "repository"
       },
       {
         "bytes": 9517,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json",
-        "sha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2",
+        "sha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a",
         "source": "repository"
       },
       {
@@ -118,7 +118,7 @@
       {
         "bytes": 5246,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/procedural.receipt.json",
-        "sha256": "4bda65944af10e0356edeb33b2456648e13597ed5a73d8d30c9224969bd8db71",
+        "sha256": "6ef5127a291bfaeb1d40a01513581fd0e615207f1f05919148cc64ce8f372c8e",
         "source": "repository"
       },
       {
@@ -136,13 +136,13 @@
       {
         "bytes": 1093,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/checks/kernel05-root-validation.txt",
-        "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+        "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927",
         "source": "repository"
       },
       {
         "bytes": 244,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/checks/kernel05-runtime-vitest.txt",
-        "sha256": "671011407e2f309f7a3350ebf6236d7fb6a0d3e143481df73fc99e10f3b9d984",
+        "sha256": "edae3b458827a823c6ede6a2f594e008998017c17bd5628aa40ec4ad8ff93838",
         "source": "repository"
       },
       {
@@ -154,7 +154,7 @@
       {
         "bytes": 8854,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/cpu-kernel-05/report-final.json",
-        "sha256": "fa688e58010a55a245b315770370956bec188df90d6ffa1d336a697c306234bc",
+        "sha256": "36cf13fd5194e7fa0adf757e65eac0bed99bfda2067e3ebf8aa329fa83ebc8a3",
         "source": "repository"
       },
       {
@@ -166,7 +166,7 @@
       {
         "bytes": 4966,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/motion-06/VISUAL_INSPECTION.md",
-        "sha256": "f5d4f33a5afafbd82234985253a2bf3fbd8dd051d3e1471a5c30d09094524f38",
+        "sha256": "f08e44b7dac172bd5dbb14c797c3934109983c96a399371d94f1291eef3cde77",
         "source": "repository"
       },
       {
@@ -190,7 +190,7 @@
       {
         "bytes": 694878,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/motion-06/report.json",
-        "sha256": "7a17b2e2c06bed701919e43a9d4df36c8a562a26f639b6bd414c437a479a082b",
+        "sha256": "e5a0f4c84f28658604d2147aba10554d91ac8ad42e2ee5d1fd1a2f265c180e1d",
         "source": "repository"
       },
       {
@@ -202,7 +202,7 @@
       {
         "bytes": 10147,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/motion-06/visual-inspection/manifest.json",
-        "sha256": "82a1f54a452d25b7c1ec4652db6cb4a60355dd1fd136cef89faa17e477b54eb6",
+        "sha256": "2bdbafa4c8c7e65f0e8a420143a01cabf2dc014a2a2afc2d8abebd95259a3a53",
         "source": "repository"
       },
       {
@@ -214,13 +214,13 @@
       {
         "bytes": 4743883,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/native-12/report.json",
-        "sha256": "22f551069e897261d4c84a10ff50e79bdeaa03fe2bae04c89be34fa34896ad41",
+        "sha256": "7f307b358aef4e97dc354a3da9aa015998e2c27facf44332c7a3a03dca86d5bd",
         "source": "repository"
       },
       {
         "bytes": 20420,
         "path": "repo/audits/C2_CONTINUOUS_SKIN_20260916/review-pack-builder.py",
-        "sha256": "07c8e0aef9af0b0729e3660197a6569b6c427971f7cc7bba6b8df1c796e2bd6d",
+        "sha256": "40c2bfc450a6cba09fc555ac23432bec0f1ab77d1f9fd861bee931cc77821977",
         "source": "repository"
       },
       {
@@ -2450,7 +2450,7 @@
         "path": "audits/C2_CONTINUOUS_SKIN_20260916/native-12/report.json",
         "runHead": "b79fd32e347eccc0be1c9621aabe46bd53100de0",
         "sameHeadAsPackaging": true,
-        "sha256": "22f551069e897261d4c84a10ff50e79bdeaa03fe2bae04c89be34fa34896ad41",
+        "sha256": "7f307b358aef4e97dc354a3da9aa015998e2c27facf44332c7a3a03dca86d5bd",
         "sources": [
           {
             "currentMatch": true,
@@ -6752,7 +6752,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
-            "recordedSha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1"
+            "recordedSha256": "55536ab115280dc95e3867988d11f033f069f4532b2cb4a0a80b44374229febd"
           },
           {
             "currentMatch": null,
@@ -7334,13 +7334,13 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/descriptors/src/apphooks.ts",
-            "recordedSha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+            "recordedSha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285"
           },
           {
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
-            "recordedSha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432"
+            "recordedSha256": "c97498ffa4476eb17abad4981da64f8634b22735dc62073a12fe12324bee9a60"
           },
           {
             "currentMatch": null,
@@ -7388,7 +7388,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/strays/src/strays.verbatim.js",
-            "recordedSha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+            "recordedSha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c"
           },
           {
             "currentMatch": true,
@@ -7466,7 +7466,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/genetics/src/genetics.verbatim.js",
-            "recordedSha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12"
+            "recordedSha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2"
           },
           {
             "currentMatch": null,
@@ -7484,7 +7484,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/ecology/src/ecology.verbatim.js",
-            "recordedSha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c"
+            "recordedSha256": "61d9b3cc8c9c640e6553b5cce1ae2e04c74973b1b9d4dc208afef0c386b58d85"
           },
           {
             "currentMatch": null,
@@ -7508,7 +7508,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
-            "recordedSha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff"
+            "recordedSha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b"
           },
           {
             "currentMatch": null,
@@ -7526,7 +7526,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
-            "recordedSha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5"
+            "recordedSha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543"
           },
           {
             "currentMatch": true,
@@ -7536,9 +7536,9 @@
           },
           {
             "currentMatch": true,
-            "currentSha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2",
+            "currentSha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a",
             "path": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json",
-            "recordedSha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2"
+            "recordedSha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a"
           },
           {
             "currentMatch": true,
@@ -7560,9 +7560,9 @@
           },
           {
             "currentMatch": true,
-            "currentSha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4",
+            "currentSha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596",
             "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
-            "recordedSha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4"
+            "recordedSha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596"
           },
           {
             "currentMatch": true,
@@ -8336,7 +8336,7 @@
         "path": "audits/C2_CONTINUOUS_SKIN_20260916/motion-06/report.json",
         "runHead": "b79fd32e347eccc0be1c9621aabe46bd53100de0",
         "sameHeadAsPackaging": true,
-        "sha256": "7a17b2e2c06bed701919e43a9d4df36c8a562a26f639b6bd414c437a479a082b",
+        "sha256": "e5a0f4c84f28658604d2147aba10554d91ac8ad42e2ee5d1fd1a2f265c180e1d",
         "sources": [
           {
             "currentMatch": true,
@@ -12530,7 +12530,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
-            "recordedSha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1"
+            "recordedSha256": "55536ab115280dc95e3867988d11f033f069f4532b2cb4a0a80b44374229febd"
           },
           {
             "currentMatch": null,
@@ -13268,7 +13268,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/descriptors/src/apphooks.ts",
-            "recordedSha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+            "recordedSha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285"
           },
           {
             "currentMatch": null,
@@ -13286,7 +13286,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
-            "recordedSha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432"
+            "recordedSha256": "c97498ffa4476eb17abad4981da64f8634b22735dc62073a12fe12324bee9a60"
           },
           {
             "currentMatch": null,
@@ -13316,7 +13316,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/strays/src/strays.verbatim.js",
-            "recordedSha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+            "recordedSha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c"
           },
           {
             "currentMatch": null,
@@ -13346,7 +13346,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/ecology/src/ecology.verbatim.js",
-            "recordedSha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c"
+            "recordedSha256": "61d9b3cc8c9c640e6553b5cce1ae2e04c74973b1b9d4dc208afef0c386b58d85"
           },
           {
             "currentMatch": null,
@@ -13382,7 +13382,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/genetics/src/genetics.verbatim.js",
-            "recordedSha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12"
+            "recordedSha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2"
           },
           {
             "currentMatch": null,
@@ -13394,7 +13394,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
-            "recordedSha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff"
+            "recordedSha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b"
           },
           {
             "currentMatch": null,
@@ -13412,7 +13412,7 @@
             "currentMatch": null,
             "note": "outside root or unavailable; not copied",
             "recordedPath": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
-            "recordedSha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5"
+            "recordedSha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543"
           },
           {
             "currentMatch": true,
@@ -13422,9 +13422,9 @@
           },
           {
             "currentMatch": true,
-            "currentSha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2",
+            "currentSha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a",
             "path": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json",
-            "recordedSha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2"
+            "recordedSha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a"
           },
           {
             "currentMatch": true,
@@ -13446,9 +13446,9 @@
           },
           {
             "currentMatch": true,
-            "currentSha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4",
+            "currentSha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596",
             "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
-            "recordedSha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4"
+            "recordedSha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596"
           },
           {
             "currentMatch": true,
@@ -13600,7 +13600,7 @@
     ],
     "schema": "cf.c2-review-package/v1",
     "selectedCandidate": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json",
-    "selectedCandidateSha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2",
+    "selectedCandidateSha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a",
     "strictZipLimitBytes": 30000000,
     "testReports": [
       "audits/C2_CONTINUOUS_SKIN_20260916/checks/kernel05-node.txt",

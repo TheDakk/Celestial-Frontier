@@ -16,19 +16,19 @@
   "files": [
     {
       "path": "checks/aim-initial.log",
-      "sha256": "1a6000f841e6ddb4a2b38e15fb4eddd2058391577287c99b817388d5b5e0e2c2"
+      "sha256": "7d03545823bb55479bb22526fad2f66cc5e8ca7f6ab89ef62a65063af0bfa5ab"
     },
     {
       "path": "checks/aim-limit-negative.log",
-      "sha256": "bedc148b8276e4a4c6bb4f6df5ceb372e9d4214b14c149c5c670ffdfd6a52822"
+      "sha256": "86ab8eaf36448bfd6b84745ae19a7c01b3c8cfe7f7321846a5c4e9f68163e2f5"
     },
     {
       "path": "checks/bed-byte-budget-failure.log",
-      "sha256": "ff29458c54e9da18f37d59f7534c267f7b97785b582deedefa350b57e858782f"
+      "sha256": "c49c43f2d0bf7e7b26b21f369cddcbc027f4347fe52c7e3ee1e87e95dac32785"
     },
     {
       "path": "checks/bed-probe-epipe-failure.log",
-      "sha256": "1eb3b89b51384cd028fe8843d57dc0e917b66f3104ffa3c7b91fba9b0fba622d"
+      "sha256": "860c496a79944be341501753ddfafa9c84acc91ef900926cbcb094335a98d96b"
     },
     {
       "path": "checks/codec-final-focused.log",
@@ -36,7 +36,7 @@
     },
     {
       "path": "checks/tests.log",
-      "sha256": "b849b08847ce267347a5d370bc1e29d81e01d32664d95e19e265d50f582d9d3a"
+      "sha256": "9b5d30449995fca36f92fec0b96e80b2028683dee3f89a69e26886fcca19bfce"
     },
     {
       "path": "checks/typecheck.log",
@@ -44,11 +44,11 @@
     },
     {
       "path": "checks/validate.log",
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "checks/validate-final.log",
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     }
   ],
   "actualProducer": "actual-producer-04/report.json; PASS, changed-head and missing-root controls reject",

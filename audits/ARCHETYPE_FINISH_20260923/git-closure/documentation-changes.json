@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/README.md",
-      "beforeSha256": "afbaac0df8a4d11172d18eec29651104444da74df86723cb55cfc96bbbcb1b10",
-      "sha256": "ddb68cc6949c7696784aa032773dd758c031f73653a20ca8d1e650d2802fb7d4"
+      "beforeSha256": "41a9492fe02f57f4e08a55229782b500e3d509b994dce5b6febf2fb1da3ad88b",
+      "sha256": "27dde3ccbcfbdf01f0f2ece1e1ddc7684d2e9a70d99a68ad7bf83853dcab23d4"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/LEDGER.md",
@@ -14,17 +14,17 @@
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/final-sprint-review-index.md",
-      "beforeSha256": "4475dd75033d8df01489ca96df9614602c65ec3f7f47e924a8bb23f5a27d6589",
-      "sha256": "4606e5fe2bd2dbd45aa7fa1630bcbee9a2ccaea76227d84ff6e8703a7fa90b6f"
+      "beforeSha256": "c9c483689db3ba37185ad4273cccb343e2a092f2f4a349aeb63b65b42e18ff1b",
+      "sha256": "bae1efcfb0d5fc89f775d4c4e50b7e2071cc99ddf27850fb384cde8e4ef40590"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/final-sprint-index.json",
-      "beforeSha256": "76a160b1e452ce35f5bc9d221321124729519cdee6d42eb00b6c45e90a5e812f",
-      "sha256": "615db87f71bce9a18c4c03e679b45a82c49b029835e119fd1a1682821f08f346"
+      "beforeSha256": "eb7085650bfe6f581b3e337b6e5e5766a0da75171e5808c3046b69bba7f1008f",
+      "sha256": "d7236a72e534820e409e77781b74afec452f9dcc77f7f3ced656c7ea50eb88e5"
     },
     {
       "path": "ROADMAP.md",
-      "beforeSha256": "ee789b026b6d1e35593e2d8a54300cb74cf72e906a5e71d5fdf0266c4211ade2",
+      "beforeSha256": "e80b34e9b652995feb8bc56555a3e3e18a290d6c13b41ef137a5d384da489e01",
       "sha256": "464b708a2e8f972e8a9b70d8bb5e7025b7cf3b80fea7b5528b76dcbd8dd519c8"
     }
   ],

@@ -70,7 +70,7 @@ Completed third-star code/evidence remains in
 Current producer16c4a7b9f07089dae7e8dc9aae1b6b6fb5378891e54a2ba29aadf15ea4746f60;
 draft83 digest8379d041dda1466c843b242e0ab29cf6b38e28f56035df5801d428579bd99ebd.
 First crowded-map click selected a neighboring seed and remains red; no Survey-entry claim.
-Its manifest0a3534b6c70f84c93878ce366b955a4432409714d0cf886ff824298b459fc687 and
+Its manifestd2748aa311dcafef4a20e978940ddc208da067c52ee7bc1901cad6a99028f19e and
 82-file ignored trinary-evidence-dist-20260908 remain unchanged. Full former handoff is archived.
 
 New staged recovery: port/v2/apps/game/smoke/charm-study-staged-20260908.json and adjacent gzip

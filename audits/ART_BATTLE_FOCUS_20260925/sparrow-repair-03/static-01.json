@@ -259,8 +259,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "2d5c2c9c57d689a2859006fe73857905ffe3bac54ff101c3cafc4278bf806d28",
-  "bindingHash": "317086c80e7c140a6068c23b04c4164e221ecbca880d320409a1b7fc691474e9",
+  "recordRecipeHash": "2c00c523bede76b8641bbfdf0001538c6b73ed466a90598da5b2d10d2b1d5604",
+  "bindingHash": "939dc03ad415e42f6a9289d188881ea1267104d6317a464f7eb2fb5345d54035",
   "family": "biped-bird",
   "contacts": [
     "legFarAnkle",
@@ -371,12 +371,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/record.json",
-      "sha256": "baac98479c4c01f4bece97e4643278332d69d3defa74aac7cc61f3cb8588dec5",
+      "sha256": "2329e9bd4b4dc7dd11cf9f9312788e65454baf7b9d1c596fc45550de44cc6d38",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/binding.json",
-      "sha256": "521dcf94b3c9bbdc733e6b2c3f9be73a9884aa7b3751faae124a6fc506bf04cb",
+      "sha256": "423b8ffcbc23e0eb705d9188871e1a91f1fcb151fedcc06fc9beb0a6ac73b236",
       "unchanged": true
     },
     {

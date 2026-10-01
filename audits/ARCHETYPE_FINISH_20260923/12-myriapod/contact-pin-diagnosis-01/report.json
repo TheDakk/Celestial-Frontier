@@ -2,15 +2,15 @@
   "schema": "cf.contact-pin-refusal-diagnosis/v1",
   "status": "DIAGNOSED",
   "sourceWriterSha256": "b747e26e58700dba92de54a33ad22b7acfeb6a01772c19cacb6aab0ee1af63a4",
-  "instrumentedSha256": "9eac52dc781de6e96480572629b8893b67b765cdfb636e59178f4743e02869cb",
+  "instrumentedSha256": "3fad9c227e7756f270357e195d46c8d649d8211e81fe548668590a350ff59534",
   "transformation": {
     "anchor": " for(const {joint,supports}of contactPins)for(const i of supports){need(!locked.has(i)||locked.get(i)===joint,'contact conflicts with fixed owner');locked.set(i,joint);}",
     "replacement": " const metadata=Array(vertices.length);\n for(const [,members]of groups){const i=remap.get(members[0]);metadata[i]={splitVertex:i,originalVertex:keys[members[0]].old,source:[vertices[i].x,vertices[i].y],parts:[...new Set(members.map(m=>keys[m].part))],ownerJoints:[...new Set(members.map(m=>rawOwners[m]))]};}\n const contacts=contactPins.map(pin=>{const p=parts.find(p=>p.id===pin.part),v=p.vertices[pin.vertex],xy=[0,0];for(let k=0;k<3;k++){xy[0]+=vertices[v.triangle[k]].x*v.barycentric[k];xy[1]+=vertices[v.triangle[k]].y*v.barycentric[k];}return{...pin,landmark:record.landmarks[pin.joint].map((v,i)=>v*(i?record.geometry.height:record.geometry.width)),selectedSource:xy,interpolation:v,supportDetails:pin.supports.map(i=>({...metadata[i],initialLock:locked.get(i)??null}))};});\n const conflicts=[];\n for(const pin of contacts)for(const i of pin.supports){const owner=locked.get(i);if(owner!==undefined&&owner!==pin.joint)conflicts.push({joint:pin.joint,part:pin.part,lockedOwner:owner,support:metadata[i]});else locked.set(i,pin.joint);}\n return {diagnosticOnly:true,contacts,conflicts,firstRefusal:conflicts[0]??null,sourceVertices:source.length,splitVertices:vertices.length,observedJoinCount:probe.joins.length};",
     "relativeImports": "two imports made absolute without semantic change"
   },
   "scope": "Existing pre-split binding only. Return observations before the exact failed contact-lock gate; no diffusion, final binding, real intake, static test or native film.",
-  "recordRecipeHash": "aa63f96775e41ce1ad165a78d8709514f75dd9b585c683f57c9f3f01981e9ab5",
-  "bindingHash": "60dbccdf7e23700ff549fb2605fec017d3798524788b678d77a6a74fc3454249",
+  "recordRecipeHash": "62405ae40a2c78769e9384e70b0a510a601f266c9924d39ee1b96893674cfb97",
+  "bindingHash": "9c8de0216cd203c22c323b193aa0930f711624c7a1d0803b7a9c586b82024bc9",
   "contactCount": 28,
   "diagnosticOnly": true,
   "contacts": [
@@ -31100,13 +31100,13 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-01/pre-split-binding.json",
-      "sha256": "29c28933c3947dce63b4206c99dfac7ae3bed77428254d0bfa458dde93299ab7",
-      "afterSha256": "29c28933c3947dce63b4206c99dfac7ae3bed77428254d0bfa458dde93299ab7"
+      "sha256": "0d86c61c68c7739f903380c408e0d5b7377c0ed5d1b8e46735d850a2dee1ae51",
+      "afterSha256": "0d86c61c68c7739f903380c408e0d5b7377c0ed5d1b8e46735d850a2dee1ae51"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-01/record.json",
-      "sha256": "27eecca7bfa60f5b4912b67a59b8fc049d153168ed7aa448fd825e680309a8ca",
-      "afterSha256": "27eecca7bfa60f5b4912b67a59b8fc049d153168ed7aa448fd825e680309a8ca"
+      "sha256": "dfb38e9aaa6fa545de3ac29bfe9e4748185f651d1f02feb782fa3fae93df0201",
+      "afterSha256": "dfb38e9aaa6fa545de3ac29bfe9e4748185f651d1f02feb782fa3fae93df0201"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-03/authoring.json",

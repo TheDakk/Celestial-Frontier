@@ -1,6 +1,6 @@
 {
   "schema": "cf.authored-part-masks/v1",
-  "recordRecipeHash": "2d50a9f3646700efa020aab8e5db81c9d254b065831d484e4eaf4c1a1b93712a",
+  "recordRecipeHash": "54ca1c3e4628ddebf18dc4be7c1e290a2f32440d6d811137757cd55c24ebec83",
   "cutoutSha256": "125ebf56496358792bacf040197a809278bd1e948f1a91442533f2482165dd73",
   "remainderPart": "torso",
   "parts": [
@@ -346,5 +346,5 @@
       ]
     }
   ],
-  "declarationHash": "db156e2b5c3c0e40a4ef7f09fd1b32b2e1720f482f24cafdd0cc5cfd945f8d5f"
+  "declarationHash": "d7db66404d2a968cfedd1c2dbc5003d16dc14496287e2e937c56816cee1ef6e2"
 }

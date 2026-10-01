@@ -1,6 +1,6 @@
 {
   "schema": "cf.creature-parts/v1",
-  "recordRecipeHash": "efc3b3c0146a20003b0e35dc1d450cd78e39eaa156b0ab10e6f433f3de8b1fd8",
+  "recordRecipeHash": "1b8470a1c8f4df1f0b25bc928fddd5a6b905bfbe573da4bcf5a09111dc40f151",
   "atlasSha256": "3888b35dc716d271e44f68213506de897ecdc0285e09084e0f27a08983c0c870",
   "atlasSize": {
     "width": 992,
@@ -566,5 +566,5 @@
       }
     }
   ],
-  "bindingHash": "c774f17a56a87474615a751f6a70901c6ee7b7482e95d617f173d58229ffc470"
+  "bindingHash": "b0e3400b3c3a5f93f402593071188356fff4ad300276d726efdc375711bad0e2"
 }

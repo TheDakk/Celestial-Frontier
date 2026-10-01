@@ -263,16 +263,16 @@ source positions for hosted/code viewers.
 | Source | Bytes | SHA-256 |
 |---|---:|---|
 | [port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js](../../port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js#L193) | 20728 | `f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d` |
-| [port/v2/packages/domain/genetics/src/genetics.verbatim.js](../../port/v2/packages/domain/genetics/src/genetics.verbatim.js#L25) | 4570 | `4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12` |
+| [port/v2/packages/domain/genetics/src/genetics.verbatim.js](../../port/v2/packages/domain/genetics/src/genetics.verbatim.js#L25) | 4570 | `4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2` |
 | [port/v2/packages/domain/genetics/src/index.ts](../../port/v2/packages/domain/genetics/src/index.ts#L69) | 3281 | `eee2058546ab009b6b33376bad1005d6a597bd2b336506851d9be562d8cbef61` |
 | [port/v2/packages/domain/biome-profile/src/index.ts](../../port/v2/packages/domain/biome-profile/src/index.ts#L20) | 14498 | `cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874` |
 | [port/v2/packages/art/src/speciesidentity.ts](../../port/v2/packages/art/src/speciesidentity.ts#L40) | 3190 | `f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0` |
 | [port/v2/packages/art/src/speciespainter.ts](../../port/v2/packages/art/src/speciespainter.ts#L23) | 1878 | `de8834067acd5c046069af10e9cf91b0a4a2e95d3f6370c0b65da089126c2e1f` |
 | [port/v2/packages/art/src/speciesoverrides.ts](../../port/v2/packages/art/src/speciesoverrides.ts#L1496) | 126067 | `9c212624234a64d78a75a362e48625bec16a36f4831fd29ba86f09f236f9441b` |
-| [port/v2/packages/art/src/proceduraloverrides.ts](../../port/v2/packages/art/src/proceduraloverrides.ts#L88) | 13174 | `155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be` |
+| [port/v2/packages/art/src/proceduraloverrides.ts](../../port/v2/packages/art/src/proceduraloverrides.ts#L88) | 13174 | `edabc7518ed3c61d8de39efb53b018b220e2444254f7aa5f2ed92a473649d857` |
 | [port/v2/packages/art/src/quadrupedoverrides.ts](../../port/v2/packages/art/src/quadrupedoverrides.ts#L2804) | 358210 | `baa8df44c485c0febaf1c8d05579d846a4c3b2114454c7e42d1c4177a4703e55` |
-| [port/v2/packages/art/src/alientraits.ts](../../port/v2/packages/art/src/alientraits.ts#L24) | 9106 | `9c54b1abb2e94854750d7c62c282dbccce4ae37cb21f6961e52edbdd114ca3f7` |
-| [port/v2/packages/art/src/faunaoverrides3.ts](../../port/v2/packages/art/src/faunaoverrides3.ts#L71) | 153673 | `f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec` |
+| [port/v2/packages/art/src/alientraits.ts](../../port/v2/packages/art/src/alientraits.ts#L24) | 9106 | `f3472aabb2eecdace06bd08be4c01afe7aeee7bbadb46db05ebb472de9c6cd4f` |
+| [port/v2/packages/art/src/faunaoverrides3.ts](../../port/v2/packages/art/src/faunaoverrides3.ts#L71) | 153673 | `2e0084576e32e709d99befd7434079f786a3f8bd36dc6829376c12211b7979ce` |
 | [port/v2/packages/art/src/invertoverrides.ts](../../port/v2/packages/art/src/invertoverrides.ts#L116) | 231622 | `c0a76508b48d6f97793f37d9962e6140242ef9229a168ef6f538508d4ecaf746` |
 | [port/v2/packages/art/src/faunaoverrides.ts](../../port/v2/packages/art/src/faunaoverrides.ts#L1301) | 253580 | `9e109fea1bda4d312eb733f8aa56aacba67ab0ceb79a6a8d9228bec6bc118694` |
 | [port/v2/packages/art/src/birdoverrides.ts](../../port/v2/packages/art/src/birdoverrides.ts#L122) | 9167 | `48ffa589f2273f0f29fd85df1f05fd070477ade70f1cdeb7698f5321e5702dc7` |

@@ -12,11 +12,11 @@
   },
   "paintSkin": {
     "schema": "cf.paint-skin-intake/v1",
-    "sourceBindingHash": "8127d345e4b8023aa34daae2014ba21ccdca3680cd54fc3f8bc38c6f55f035f2",
-    "recordRecipeHash": "39c215dcd308b64ad3a10267c0fc9f1087c1e0bdb02cf56d159495fec4b4bd2b",
+    "sourceBindingHash": "ab47e3c52ab19ae8dfb22a9441e576f3b6ccd3b653b0e2efa09050d19608206b",
+    "recordRecipeHash": "5f4535d1145c37d9a3c20b4bb87f719bd7a9fa462f130c2658d1ebd94980ead8",
     "packedPixels": {
       "schema": "cf.parts-byte-verification/v1",
-      "bindingHash": "8127d345e4b8023aa34daae2014ba21ccdca3680cd54fc3f8bc38c6f55f035f2",
+      "bindingHash": "ab47e3c52ab19ae8dfb22a9441e576f3b6ccd3b653b0e2efa09050d19608206b",
       "atlasSha256": "fec9e0c26ab84e500b9b2ab4fab4c9466e2e32db9f6eb716bbacdb51950a9f85",
       "parts": 13,
       "comparedChannels": 9244660,
@@ -36,7 +36,7 @@
   "surfaces": {
     "schema": "cf.observed-surface-split/v1",
     "contactPins": [],
-    "sourceBindingHash": "72c62629e4485a600db02202e9c94de1b718f99ae539bd326c8e2a32a5da92d0",
+    "sourceBindingHash": "f4c3e54392725ac62047e71763be39b9d523ebd6ffb9d21de8f275c1335d2a8b",
     "sourceVertices": 2655,
     "vertices": 3007,
     "sharedSupports": 566,
@@ -50,8 +50,8 @@
     "preservePaintBoundaries": false,
     "sourceCoordinateChanges": 0
   },
-  "recordRecipeHash": "39c215dcd308b64ad3a10267c0fc9f1087c1e0bdb02cf56d159495fec4b4bd2b",
-  "bindingHash": "cd1dcdd88e3281231d67814add940c9693dc896ab6c8641dfc6b6ac7d5257206",
+  "recordRecipeHash": "5f4535d1145c37d9a3c20b4bb87f719bd7a9fa462f130c2658d1ebd94980ead8",
+  "bindingHash": "0b1464876b4b27206f7b9517bdd833086c48fb2ff6541f3ef3e8df1d4481d21c",
   "masterSha256": "e6970b7e7d2320aca6022ae2b74117f10f7d38e66fc5b81568b0061ce65f8ffe",
   "manualAuthoring": true,
   "nativeAcceptance": false

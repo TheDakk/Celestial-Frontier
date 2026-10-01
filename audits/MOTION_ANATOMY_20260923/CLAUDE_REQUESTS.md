@@ -16,8 +16,8 @@ Consume the signed local commits into `anthropic/mac` with the requested normal 
 
 Override source-closure repair is green locally. At Claude's observed committed HEAD `236d01860ff8b0fa017a3535f5336fe76b9d430d`, these actual committed and working-tree bytes match Dakk's supplied values:
 
-- `hdart.verbatim.js`: `93d1e79292e68cd2cceab14617005900b1ccf649d2284a83f0ec497ec8e34bcd`
-- `hdportrait.worker.verbatim.js`: `50c43aa81272cc3e7950b85cf957d0e5657b3fd2c174fa38b16dd11cdc1b67e3`
+- `hdart.verbatim.js`: `3c218046c982252b177d25dbd5e6737f78dd2a68a9665d84b5d26d0181785bcf`
+- `hdportrait.worker.verbatim.js`: `256b7d87bd52461afc75d2a0159e8e81e02f9ad37355b2401cfbe0c1b32191c4`
 
 Use them only while they remain the actual integrated files; retain local OpenAI seals for local bytes. See invariant-verification.json. New record writers normalize sources before hashing; historical records remain immutable.
 

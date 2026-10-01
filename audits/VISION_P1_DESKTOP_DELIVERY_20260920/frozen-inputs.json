@@ -31,11 +31,11 @@
     },
     {
       "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/binding.json",
-      "sha256": "021c0850f5c1735411313a5b3c9167b87bf65a25f7d712a123e0e2534bd8553d"
+      "sha256": "c4228f2e9083c7212367986af79b173ee13ca933a45f49e6921c83cc8792fe4a"
     },
     {
       "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/declaration.json",
-      "sha256": "3dd64efa1be1132019c2f4f09ad0b3c55a93c8910e32c6a2baa67ac870325fa5"
+      "sha256": "4682746f80f6330a1501659bf1d20d8cedaca0665ffb7d9a714a1bebc6d0ce88"
     },
     {
       "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/labels.png",
@@ -59,7 +59,7 @@
     },
     {
       "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/binding.json",
-      "sha256": "9f30dfca531e1a069beeeec286381573ef5d7640f1be685244b9434f7740afb9"
+      "sha256": "b52a7014f5185ce7c65ce1d528c4557c528fd37de3ee0f3a5b8d580a97cbc7bf"
     },
     {
       "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/keyed.png",
@@ -159,7 +159,7 @@
     },
     {
       "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/receipt.json",
-      "sha256": "b186c6da94bc41aafc79f7bba492c9c1ceaa219ad3985a1f0c5b1b1e9d0e102d"
+      "sha256": "096496f454bf447e05441468b03f93d6ee57ca730179a3f7a64fd36505c4dba3"
     },
     {
       "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/receipt.json",
@@ -167,7 +167,7 @@
     },
     {
       "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/record.json",
-      "sha256": "12c19c9543b0ce8924cffcc11092854743b07840496615207e1e72f62ad2639d"
+      "sha256": "42e9fb23e0b1edd5c722115c46c97d5bafc330870fcd656dba27c04777af65c1"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/crab/generation-01/crab-master.png",
@@ -179,11 +179,11 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/binding.json",
-      "sha256": "fd8df02613e5e6850192baa804f35435c0dc5d1a10cf50758c60c3e089f59533"
+      "sha256": "9e998dc6253c20ae5fbfeefe145bcd32b19e909b299ac7601b74a3929da651a9"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/declaration.json",
-      "sha256": "90cfe304dcdfd663241ae72f71dbeafa0712a36decc192bffc7c19785af0b461"
+      "sha256": "ba82b33bd1480675896b3078ed8006d32a3c6a66e8034a1279f275534f00206a"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/labels.png",
@@ -211,7 +211,7 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/binding.json",
-      "sha256": "9e44cd8d6611b7db31592b2067fa8fd7369b23d2719041637a5fc948281b36f6"
+      "sha256": "6c3450e3273c6ab9dbe6b10fa00144d9aa79a630b71b7fad670233f41cd47d44"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/keyed.png",
@@ -327,7 +327,7 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/receipt.json",
-      "sha256": "80ff53223880796c21bf74948b7933eb9ed150fcb6e6258ea6350afab3945f3d"
+      "sha256": "bb35f39f9ea74208cca2e1f99a1ddafc9f61abfb31944e5c00167eddf2670ec4"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/receipt.json",
@@ -335,15 +335,15 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/record.json",
-      "sha256": "510e1252a5c2765580e5aa634451d15515e826061cb0cba08397ccb0c7971f2f"
+      "sha256": "7dbfedb16cd134495358226352f13f99ed72f43bd4c0420206b6b978a4205deb"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/binding.json",
-      "sha256": "8e4b836fdcc0f0f813e0ec2c5879a45284afe803351c62d2bc1b80b40e8d795c"
+      "sha256": "179bf808ed1f1393a2adc8c2f203b1a211e3bff8e34274e1ac21057600e05720"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/declaration.json",
-      "sha256": "425f6964fbbe5c4dbbd4c540018609a6954a54e93330dc38faf0182961a6bcb8"
+      "sha256": "8e20d1b683763d7f3e8d2629abc4c5111d4efcf0194278a497056ff0e77098e0"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/labels.png",
@@ -367,7 +367,7 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/binding.json",
-      "sha256": "64ea2b9b2152330fd2bc041a06b2a6c4c1ff3027b09404cdf15383f033d3e7d0"
+      "sha256": "868f2722bea54d7e134f3cf485af9d2ccf43880f15ecb437927223b32200f8e5"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/keyed.png",
@@ -475,7 +475,7 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/receipt.json",
-      "sha256": "d354682148af1363ecb089eae698370da15fbdce1b8ea89f790320eefa74bd55"
+      "sha256": "aa3c3c2f59f34aed13bb10bac17efb4845ad75cf16928cbca74a8d398f0f5369"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/receipt.json",
@@ -483,15 +483,15 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/record.json",
-      "sha256": "aee718e12b7c6061ea5ff7fd14a11960e1779229316b9451b42a21c1d885408a"
+      "sha256": "9eff248fbd7a5f04e8f98d6de80f4b42b25a76dca5be4cfa063eb433515fdff5"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/binding.json",
-      "sha256": "41183a57a1463837fb00e4b0871e5a33189f3a47e35ffc31cc07cff542b00823"
+      "sha256": "b0ad33c21d711084241c04e9234b0385528181a57898987cdbb51c52a5816688"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/declaration.json",
-      "sha256": "769dc32c2fea67326af1afe69d614853bf0adca02606a3f77a1fb52861a2b0d6"
+      "sha256": "8bf75bf63d73ee6039b7869c36456dc2b637c5c5bf3e38b1d150575dd2dd32cc"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/labels.png",
@@ -519,7 +519,7 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/binding.json",
-      "sha256": "46a3242f7db73ab3a781b4ffaeeddc9aafc648b3b8958d668f2639c35c0d9d7e"
+      "sha256": "1cee5e79b63267f391d75f1960cc3d2e07e138426740e074a3c6d6175ef71c58"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/keyed.png",
@@ -627,7 +627,7 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/receipt.json",
-      "sha256": "6eb91e3da6e34c75362a4982cfb4c9f4f9be07a6ebb10744a5f9a7befdd81817"
+      "sha256": "40d08cab86b06e638313ba7b7940c3f8cedcc676654c8bd35ab3dde98a0ec23b"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/receipt.json",
@@ -635,15 +635,15 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/record.json",
-      "sha256": "5b9fb12924e0fb43cc1955b8f3f367e7e0ac1c6175d05ac64dd9f3c1e9dd5ffe"
+      "sha256": "0e520d9c5adffc5c5b3a1ded3cf78dd86fb8ed2ea04dcc9eeb89c7cc29bea038"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/binding.json",
-      "sha256": "d8a42eedf197d19d49d5cc817b282fa9fbda683306342f6518f882be6bd5d41f"
+      "sha256": "3e18ca3800bda5fe003d0dfb949f0b862aadd01bfbb5caf41d51eb7ffe06d5e1"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/declaration.json",
-      "sha256": "db07fceb17a4467280244eb99e729779ca78bc42563f93c7a11001fa0cda49d5"
+      "sha256": "7650d62e22b6fa5399dddcd0e807e70af7df9018d94ab286bfd733a94e661437"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/labels.png",
@@ -667,7 +667,7 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/binding.json",
-      "sha256": "e84df354175b6586b60063c8711a67050cf9d10f72e1ab9155b16545d459a193"
+      "sha256": "9d394fad6db55af8b8cd3c63617349d4016a4689e8b08307f261e8e5d7d1f012"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/keyed.png",
@@ -775,7 +775,7 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/receipt.json",
-      "sha256": "81392e7770d52d72eb3d7e245e57bc0fae55a8e2fcf4ac6aa504f09cbccedf73"
+      "sha256": "edfbfe20b70b1963fde3610ebe51563cd716ff1e469ef99752014f4ffc6c54dc"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/receipt.json",
@@ -783,7 +783,7 @@
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/record.json",
-      "sha256": "255b2dfcde8f4bf0a7d4478fcb848ae973353717f3e6e3c3b42f52e5c6a6c0cc"
+      "sha256": "e1dfdd65793576df2edd9d3c8439f0ba0c02858fa1f536be3eddfc25d74fac6c"
     },
     {
       "path": "audits/VISION_P1_FOUR_CRABS_20260920/mud-crab/generation-01/mud-crab-master.png",

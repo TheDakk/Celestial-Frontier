@@ -71,7 +71,7 @@ corrections preserve acceptance intent. Native03 is desktop emulation, not a phy
 No full-profile, Compendium/Slice/Glass or production certificate chain was rerun.
 
 The pack's first actual build and separate supplied-SHA verification pass. Inventory SHA:
-`e2442474afd168c2a7a9f1fb798591583b3ead962ef9135a0980c0f9d739ae21`.
+`6f6e8afcecc7b6955260961fe5988ec708086f79d73194ad5d339f675273ed39`.
 Its disposable output is `/private/tmp/cf-runtime-pack-20260909-build-01`; rebuild from the pinned
 source tool if absent. The deployable binaries themselves are not added to this repository.
 

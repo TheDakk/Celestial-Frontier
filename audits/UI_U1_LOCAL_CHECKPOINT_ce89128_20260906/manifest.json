@@ -259,9 +259,9 @@
       "path": "verification.json",
       "compression": "none",
       "bytes": 2975,
-      "sha256": "f1b425d8f2cb8c2d15ad912675756da5df70fc5c037e9bee1226a19a906bf19e",
+      "sha256": "da44dd51373646fbf7536b25a521df79effd061b9af38e1f2bd86dc1c74812fb",
       "payloadBytes": 2975,
-      "payloadSha256": "f1b425d8f2cb8c2d15ad912675756da5df70fc5c037e9bee1226a19a906bf19e"
+      "payloadSha256": "da44dd51373646fbf7536b25a521df79effd061b9af38e1f2bd86dc1c74812fb"
     }
   ]
 }

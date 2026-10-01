@@ -4654,17 +4654,17 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-09/binding.json",
-      "sha256": "e091119e5a72e915b19f37ce78aa0e29adb92fb2cb127601bacfefd3745a9e88",
+      "sha256": "5f10b08dd8b0db6c27e4ccc45abdadfa0fc7e746bba0dbeccff9b48cc6e5a678",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-09/pre-split-binding.json",
-      "sha256": "402413c5c871f23a4d8897b72e1fd1af82a170e684580e56e8e90faf91804c90",
+      "sha256": "9a474c8a328cb9862026573dc6bca0e5d5ba8fa35b9e474a15d9b501b151c844",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-09/source-join-probe.json",
-      "sha256": "d3971dc702cfdd12e12eaa19e860a85d1c7a95597050e8b6d403ed42bca47a0a",
+      "sha256": "a6a51ab3ae7a3130b7837a611747a5a36040054e2b33b232738cf4f8e4d73a72",
       "unchanged": true
     },
     {

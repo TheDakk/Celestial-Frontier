@@ -78,7 +78,7 @@ No runtime/debugger errors or trace overflow were recorded. No navigation recurr
 the original08cd97d blocker stays OPEN and unattributed.
 
 Manifest: audits/UI_U1_COMPACT_CONTROLS_c57aaae_20260906/manifest.json
-SHA256 2fdd35a7609d65d98acdca61b341a5d63dbe395c505617704edc377c5437e964.
+SHA256 ac11217c0e28f83544796fdf5939d5c125645dd82ab7b60d8bef959d4f32aaa2.
 All18 carriers, original decompressed hashes, PNG hashes and retained generated bundle hashes
 verified. Includes exact logs/report, trace, two phone PNGs, generated main JS/map, normal index/
 service-worker and source-map-resolved stacks. The fresh checkout remains clean. This is partial

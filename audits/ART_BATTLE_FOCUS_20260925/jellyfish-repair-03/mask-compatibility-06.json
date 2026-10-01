@@ -4,8 +4,8 @@
   "rows": [
     {
       "path": "record.json",
-      "fit05Sha256": "7731a1b9050637d4552062b925e00a02ebf74bdce875097429d399629a193046",
-      "fit06Sha256": "7731a1b9050637d4552062b925e00a02ebf74bdce875097429d399629a193046"
+      "fit05Sha256": "7cfb0d0a6db56d4a653eff786002c537c58969123948bfd3c16a9e6e9c21746a",
+      "fit06Sha256": "7cfb0d0a6db56d4a653eff786002c537c58969123948bfd3c16a9e6e9c21746a"
     },
     {
       "path": "parts/keyed.png",

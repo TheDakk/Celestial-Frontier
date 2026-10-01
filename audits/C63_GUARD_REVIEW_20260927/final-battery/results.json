@@ -12,7 +12,7 @@
         "--profile=develop"
       ],
       "exitCode": 1,
-      "logSha256": "cbfca285c4218ef7a8c31efeaead6178878cb7827dffa80ed232e7c463dbb54f"
+      "logSha256": "1a246cf08a1673fc1f4f4d07f212037fa6a48a7b5e20ffb4989c50f81f63c9a7"
     },
     {
       "name": "typecheck-root",

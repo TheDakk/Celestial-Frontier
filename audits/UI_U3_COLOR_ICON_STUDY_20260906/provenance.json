@@ -36,7 +36,7 @@
   "files": {
     "README.md": {
       "bytes": 1711,
-      "sha256": "e6a20e93ab383765f3fdc1ea1625117b4c4e31e9262b24f48e24a27f1afcc01d"
+      "sha256": "523b8d2c28b6758261adffaea29e2461e09ee45b760dad2a575933f8eaf60fcd"
     },
     "atlas.svg": {
       "bytes": 851,
@@ -44,7 +44,7 @@
     },
     "browser-export-receipt.json": {
       "bytes": 1849,
-      "sha256": "f1fdd86b267f006531704ab0c4a92ff89d65a8db663e660e7f64bfe5d3a590db"
+      "sha256": "405fbc9a87a4247796722b9e8a855629b0bb63a883cc85f2ad90e0f059aa2181"
     },
     "color-study.png": {
       "bytes": 130901,
@@ -60,7 +60,7 @@
     },
     "render-browser.mjs": {
       "bytes": 4971,
-      "sha256": "fde40dde30cd05cbad23eef6654ab0e6f7ecb099b632a2d93cf710bbfe474b19"
+      "sha256": "f5aab6876566762dcff426373149f6f178bdd8714a50a4bbccfe52b74f1ff4cb"
     },
     "shipyard.svg": {
       "bytes": 837,

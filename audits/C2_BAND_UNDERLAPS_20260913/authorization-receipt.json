@@ -9,7 +9,7 @@
   },
   {
     "path": "audits/C2_BOUNDED_REPAIR_20260913/CLAUDE_REVIEW_RESPONSE.md",
-    "sha256": "80e9b4784d5cdb6058ee7b0d54109e92bd0eeaa6a6efa47e6b8dce8a85fff4a5"
+    "sha256": "5d3fcbc9679a76e30f96dce1c0b43abbafb8e4e068c326ce3f3bce38782383fd"
   },
   {
     "path": "audits/C2_BOUNDED_REPAIR_20260913/underlap-demo-01/report.json",
@@ -33,7 +33,7 @@
   },
   {
     "path": "audits/LONG_SESSION_20260913/LOG-B.md",
-    "sha256": "50b7a520192795f26b4c8a885c3aa1f4f71c2f9fd5361443e767ce5cad4185ef"
+    "sha256": "2255f466292773110a0994051fd31ac9a2c156df30970f750179e8bf8ad3749d"
   },
   {
     "path": "audits/LONG_SESSION_20260913/LOG.md",

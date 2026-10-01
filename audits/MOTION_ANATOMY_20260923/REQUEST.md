@@ -32,8 +32,8 @@ Dakk is tired of "stop, generate something, stop." For this run and every run af
    `fixed-attachments.mjs`'s Object use (or narrowing what the art tree imports), then re-running the gate and its
    mutation controls, is yours. Claude's lane keeps its own green gate until yours passes. Dakk has approved adopting
    yours then, with the two hdart seal lines set to Claude's committed TypeSafe re-lift values
-   (`hdart.verbatim.js` `93d1e79292e68cd2cceab14617005900b1ccf649d2284a83f0ec497ec8e34bcd`,
-   `hdportrait.worker.verbatim.js` `50c43aa81272cc3e7950b85cf957d0e5657b3fd2c174fa38b16dd11cdc1b67e3`).
+   (`hdart.verbatim.js` `3c218046c982252b177d25dbd5e6737f78dd2a68a9665d84b5d26d0181785bcf`,
+   `hdportrait.worker.verbatim.js` `256b7d87bd52461afc75d2a0159e8e81e02f9ad37355b2401cfbe0c1b32191c4`).
 3. **Records carry absolute paths.** Every sprint fit's `record.json` `source` is an absolute path into
    `/Users/dakk/Projects/celestial-frontier-openai-mac/…`; nothing else can resolve it. Make the writers emit
    repo-relative sources (Claude's card builder works around it today, and records the master SHA-256 it read).

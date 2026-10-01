@@ -2,7 +2,7 @@
   "sourceInventory": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis02/diagnose.ts",
-      "sha256": "ed29bab04b9840c7adb8b7159132d96f2253cd70ba892c5c1b41be34356de7d8",
+      "sha256": "2601a28f8037b85182882e2188f04ae1f40a9a8b8fbcbee56ad522f93c39db07",
       "unchanged": true,
       "comparedWithStatic01": false
     },
@@ -352,7 +352,7 @@
   "staticInventory": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/static-terminal-01.ts",
-      "sha256": "6d9cd1252194fe675d662eedb6616979a16eac72024e569ce6da3deac9c4a482",
+      "sha256": "71e926852a54f3d09eb5e41afc51d3c9a53003f4536dd6223e78c2866e3901b6",
       "unchanged": true
     },
     {

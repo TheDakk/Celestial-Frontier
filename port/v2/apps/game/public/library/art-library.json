@@ -4,7 +4,7 @@
   {
    "path": "library/battle2/MANIFEST.json",
    "bytes": 60230,
-   "sha256": "571fdc7ce8b8d1490ec3925825c667114128e665b87f8ca3af0cde322088d30d"
+   "sha256": "3cf13a7b32b83ea45aa64638ab36c5ff61e53ef25b1119709e2e8758837204e3"
   },
   {
    "path": "library/battle2/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/binding.json.gz",
@@ -198,8 +198,8 @@
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/fit-05/binding.json.gz",
-   "bytes": 208278,
-   "sha256": "901eefe6f166766e9b94b26470757c82a798c19754e1f6aead9058eb54679d0b"
+   "bytes": 208282,
+   "sha256": "db2be39b21bcabcdbed80e61bc87221e152566f094c49de72a43acd4e4cc3153"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/fit-05/parts/alpha.png",
@@ -219,12 +219,12 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/fit-05/record.json",
    "bytes": 5761,
-   "sha256": "8af4a5f98a2b3ed947f010ec48869056401de1043602f637355b939f4cc5ce85"
+   "sha256": "a57fc205842b2f1d5bb1f265124b4081ae7df5f831ec630e8edd9acfbc3431e3"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/markings.json",
    "bytes": 24327,
-   "sha256": "85ac554cc48cb4015453a4c89df2d7ac48300e50ab547347467ee86d4d2d2f41"
+   "sha256": "6fde0ce9fff9ddbfbec0f500227683612019ae5831486fd1268bfacb755f304c"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/markings/banded.png",
@@ -258,8 +258,8 @@
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/binding.json.gz",
-   "bytes": 288539,
-   "sha256": "d130e49ee363d628228d11fec7946b62cd8befb27e2b9b8877b54a506beecf5a"
+   "bytes": 288531,
+   "sha256": "a229fefa808d1a38e84849c561f694933c370f0f8657f79ebd5c3fab4a895032"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/parts/alpha.png",
@@ -279,12 +279,12 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/record.json",
    "bytes": 5303,
-   "sha256": "330ffbca96f9a8bc6a379af0e5aa32cab5a314e2085a3d431c29cbeb75d13edb"
+   "sha256": "7d9cfdf1d7029a1a48c9238d9c0fe5ef8212f986c0a692a5227b3e0fd62c5e78"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/markings.json",
    "bytes": 24464,
-   "sha256": "30fe4f21dbbf300223721c201c6f133b57e441019854b986b46f6265f0012ca7"
+   "sha256": "20deab95c5b7f8d283d8d19b5fc3cbb29cbc2263000dcba6c49630e4ba64d8f9"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/markings/banded.png",
@@ -318,8 +318,8 @@
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03/binding.json.gz",
-   "bytes": 231813,
-   "sha256": "1a3ad8979dcb5545ce698b944808905ad94957f0cf930888e1f2d90e7573c216"
+   "bytes": 231810,
+   "sha256": "cb19d714b4320c238a6c9e33aa4c44ba1f8fc857b97ce6458d9705e2ffd88996"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03/parts/alpha.png",
@@ -339,12 +339,12 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03/record.json",
    "bytes": 7502,
-   "sha256": "8ccee0dc9fb68d1e2e5c69e5efb66499af8af811998c822a9652db33d345cc7d"
+   "sha256": "0e103601830999fe1c7d3857b7c0a1d9e0fc3c0261df9e060e2fa70bf75078c0"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/11-wolf/mask-set-02/markings.json",
    "bytes": 26038,
-   "sha256": "cc7d88248165ea634528836248999f97f890f9af167a3ff7ea8bb31df75c941e"
+   "sha256": "a7f471ab6424f9b17eda8ff8f6a8946e35c59505a645bd666cbcef7dcac8653d"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/11-wolf/mask-set-02/markings/banded.png",
@@ -378,8 +378,8 @@
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/binding.json.gz",
-   "bytes": 155697,
-   "sha256": "0f1dd4f9553f0fb0e601c8cbce9218250dce03d5a995172cfa0aa15554818bc3"
+   "bytes": 155694,
+   "sha256": "d4286df4b3b6e1729a6c118297fdebba7371b93e24fa2f8cfc3816be6d80e695"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/parts/alpha.png",
@@ -399,12 +399,12 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/record.json",
    "bytes": 6329,
-   "sha256": "7f7a1d10d7a58f722b48ee3e6ab033c71ce84eb8d46320aca62a07cfb9530c48"
+   "sha256": "6528dfafcc24d3f388beadcf17779e14e33a813cb49b41a32fb4ecb60500a500"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/markings.json",
    "bytes": 25913,
-   "sha256": "317c2d299fa5f5f4cf4af61d62eb531c9b839e5ae709dfbea48e19d6b987b462"
+   "sha256": "d3806ce5e01ec7907fe18993166eee8c53dd1c184ef7d493c91de3fd70752219"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/markings/banded.png",
@@ -438,8 +438,8 @@
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02/binding.json.gz",
-   "bytes": 180113,
-   "sha256": "729e02825fc9edfadc54bb981747cc62c5c9dce3c716834e6cf09775139980d4"
+   "bytes": 180114,
+   "sha256": "570d4012aebe2208f2ca917f53f9647cc2c6d41b04f8e7d856a095e1c0cecb95"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02/parts/alpha.png",
@@ -459,12 +459,12 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02/record.json",
    "bytes": 7671,
-   "sha256": "27beffd980683e5a505cb6211729a43eab0b1936dc617f3b78b9b14a19ac1c6e"
+   "sha256": "218691c9454d8210f3272a6fd4ca666cca650fe5bb0a1f7546d9a2a2064044fa"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/markings.json",
    "bytes": 25539,
-   "sha256": "cb442ffefbcb8604d6768a37375852daad6cabc22690276f247f2192c6a847e2"
+   "sha256": "e8b9dafa03ee644cd46130ecd7909f39c964f3f1ec605ca0ce2f42d26f274baa"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/markings/banded.png",
@@ -499,7 +499,7 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/15-goose/markings.json",
    "bytes": 27046,
-   "sha256": "8c2ed5a05b926c8bb2c487d43b598dae2a6ae40019b3f68f790fcc8b91c50e5e"
+   "sha256": "6784f1b30bf6d00e8d580aca07699763ce326ec9c0508b82b62beac3c49d37e9"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/15-goose/markings/banded.png",
@@ -533,8 +533,8 @@
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/16-heron/fit-01/binding.json.gz",
-   "bytes": 148672,
-   "sha256": "59e9129c9533cee4983be622a70b1270105f2ef5ee6ffa9fd8c1e8996a3541c9"
+   "bytes": 148676,
+   "sha256": "396a624cc782bee76e4c50173c290ee829a915558ebfbee1b4d3b221c0403a54"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/16-heron/fit-01/parts/alpha.png",
@@ -554,12 +554,12 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/16-heron/fit-01/record.json",
    "bytes": 6079,
-   "sha256": "e9f853f08eb829ec9dda6beb8e4edc3dd723970d6ff1a90be68b51f4efb55805"
+   "sha256": "31db6db9534fc653bdac9e8495d7ad3eae00a1fdd432410afa9e5b7681eab742"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/16-heron/markings.json",
    "bytes": 25638,
-   "sha256": "3cca5691741ef9e7903ad0951d4918f9a034d142bf9ccc5c63502f41f3e995fd"
+   "sha256": "544a091688ae9dda647731111edeeb0330b488722ff343f5d4c1cda47c185a57"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/16-heron/markings/banded.png",
@@ -593,8 +593,8 @@
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/18-ibex/fit-02/binding.json.gz",
-   "bytes": 239665,
-   "sha256": "6bf1155d8a06dc788e40904a03a2727fae1daa22ac1a3935f80d9756e7b1e1d2"
+   "bytes": 239667,
+   "sha256": "3083dbbdef93c2ba0c7b12d7bef28c87d252bb45b9fec3fcc941cc294d724ba9"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/18-ibex/fit-02/parts/alpha.png",
@@ -614,12 +614,12 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/18-ibex/fit-02/record.json",
    "bytes": 7535,
-   "sha256": "7a5f4168230a467c170d5f5b750c4be394109b0539a7236da89f1645d5cf6a5f"
+   "sha256": "caea76fb96ebfaa34dcf3f1ebe5fd0a10285367cc845ce3efd063ad2c1885f48"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/18-ibex/markings.json",
    "bytes": 26839,
-   "sha256": "530cd992b87ba2143b14719026150e329dca872d6bdbc86986c2417c17944fd1"
+   "sha256": "fafcea3440606759a11443ea4d0a704abacf4089ee08d6e872156c0e10af5dda"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/18-ibex/markings/banded.png",
@@ -653,8 +653,8 @@
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/binding.json.gz",
-   "bytes": 141935,
-   "sha256": "ee01631c2fc6ec5edc250350918d623041b2a16f1b5fefb58db60d69e28c256a"
+   "bytes": 141939,
+   "sha256": "76bc79eec070206079370e263c784a14ae36a4bc9fbcf256c068c69b3de96a4b"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/parts/alpha.png",
@@ -674,12 +674,12 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/record.json",
    "bytes": 5396,
-   "sha256": "d9e9713da6d79da3db95f2c73959c982454cb8bea87fc53e7e78cf5087ab6570"
+   "sha256": "d0806fc179a1e404e742cd0852686d5c0fd591c5b21836487aa5efa502215c3e"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/mask-set-02/markings.json",
    "bytes": 25832,
-   "sha256": "21854cea942d7ceee1ebd76b74efb0321be782b3cae35013d74900f1717f7c9c"
+   "sha256": "4fcd81826807a10bd08789897e3b7fb9b7261f56db052e80e77dbb2379d3a135"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/mask-set-02/markings/banded.png",
@@ -713,8 +713,8 @@
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/20-pike/fit-02/binding.json.gz",
-   "bytes": 126959,
-   "sha256": "2491a51c95a35cf0ca191c997cdfb5a9a071f47d9e291062ad1ec0b4522e2ff3"
+   "bytes": 126948,
+   "sha256": "8f666d5c07452b55454d2eea6aedacbdaf0126584cf533db5b03b6d7e1b4ed3d"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/20-pike/fit-02/parts/alpha.png",
@@ -734,12 +734,12 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/20-pike/fit-02/record.json",
    "bytes": 5314,
-   "sha256": "907079113cc888853f6dfeff9d85dd8c797802a1380fc132eee5fc3ca50ea47c"
+   "sha256": "b46c815e3ca66ca18f44f6732ab608d647b106c521eddc47feb133587b646692"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/20-pike/markings.json",
    "bytes": 25676,
-   "sha256": "695bf7c3691ebb24e113bce3110457f2b79a034fba4adbdab747e0736479bded"
+   "sha256": "de2140e63a1ae20fc09fda7ddf7e405e6934354fa4fd59f51a71f7c10335b1ed"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/20-pike/markings/banded.png",
@@ -773,8 +773,8 @@
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/binding.json.gz",
-   "bytes": 52919,
-   "sha256": "b6d57a1780c9692bfe5220e7903f73e9214d918c5e0bc5969b789142179afd9b"
+   "bytes": 52915,
+   "sha256": "68fa8616f007c3a9a989d6f788c34e4290c07fc4ffaa1194b887f4e267c2e075"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/alpha.png",
@@ -794,12 +794,12 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/record.json",
    "bytes": 5097,
-   "sha256": "031738b8c7c663c691de8bba5d904440fa8d3cf0aa84fa423b8edb0fd14bb807"
+   "sha256": "0029d9dfc80ad72bb8d701273550e448f58c1349a9a920a927d50db4d86baff0"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/21-racer/markings.json",
    "bytes": 28224,
-   "sha256": "0c00a8c3091d8a2a1890e95c835a0398a3fb63666f989612fd0a713946ccf22d"
+   "sha256": "a393180eb9e793c450bbeb76f50d6ef367c2efdc7c8a3b86f7dcb43e0e53a3fa"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/21-racer/markings/banded.png",
@@ -859,7 +859,7 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/26-salamander/markings.json",
    "bytes": 26744,
-   "sha256": "fd18d188c1ec58d1916511a79ba188eeae9244fd4e8e1f6809f2ecaef5d13ed1"
+   "sha256": "c2b5fd3c7f69157ea0f1c4b2829dbd2a8ab413bd7274f2598b7ef97cf7f65b25"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/26-salamander/markings/banded.png",
@@ -919,7 +919,7 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/27-eel/mask-set-03/markings.json",
    "bytes": 25921,
-   "sha256": "3945a80f0b675d6169352482d26cb643268f2bdd93681982ad055864e4ca3d5e"
+   "sha256": "c936585ffb9324cac8ca1c1ab36baee1227570da80da82bbc29c123357a36d42"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/27-eel/mask-set-03/markings/banded.png",
@@ -979,7 +979,7 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/29-rat/markings.json",
    "bytes": 26529,
-   "sha256": "b24e73a9ffb1b6694a5ab4532446d3746e80f344aac4a82d13f6dc4a4dd7598e"
+   "sha256": "e554c3bbd9ff80cf580f74b76be854e1676b7e83936ae58590d534703d277b1f"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/29-rat/markings/banded.png",
@@ -1013,8 +1013,8 @@
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/binding.json.gz",
-   "bytes": 167190,
-   "sha256": "47455bb5058b0f72fde6089e8d11161bf03633bae70a129a4b385170593af5c2"
+   "bytes": 167191,
+   "sha256": "f2f6ab78ae33869462a98d2084c7c5453b93d72432a30bb1b487b1ba141a6c8b"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/alpha.png",
@@ -1034,12 +1034,12 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/record.json",
    "bytes": 6169,
-   "sha256": "01b649a3999f9ce27d7dc05050711db5a5e8006eafc1b22a1065c67f1700b5a0"
+   "sha256": "325ddaf7cfb2ab98152b46f8a0683e95529c7cf0658359169072f48b06d9546b"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03/binding.json.gz",
-   "bytes": 308139,
-   "sha256": "20dde7eeb67d54b95cf7f341b8caedc065e9c1fd9fff678fc3133859fd5d21a8"
+   "bytes": 308137,
+   "sha256": "f0c05cc31b7db016aa302778d2d0e830d8133bf33633b29faf7c48998c6ccba7"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03/parts/alpha.png",
@@ -1059,12 +1059,12 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03/record.json",
    "bytes": 7556,
-   "sha256": "77595449583b8877f9f0ef1ea10f1de8ed5369c77bc8e3c251797d31326b4fcd"
+   "sha256": "5fdf686ce31045d6ea114735dbe89a1c59458dbb255461cc426375eae8e2235b"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/markings.json",
    "bytes": 25475,
-   "sha256": "ee681c62de148063c0611151c362d88e9beeb36d7869c81b27d705fc6df7d13c"
+   "sha256": "bf5b7672fcc929926a914b56ecfa4ae96518ee2af9f43a43fcc21cbc56b3e2cf"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/markings/banded.png",
@@ -1124,7 +1124,7 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/markings.json",
    "bytes": 27591,
-   "sha256": "c0c7c05cd0fcfd24bbbbd317f680712d41f5764ee8d2b37551f7eff8426e8a7e"
+   "sha256": "9a75744130c4c0dc73d63ecccfb63a9fddc129738dedd05faceb1399f5dcb70d"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/markings/banded.png",
@@ -1158,13 +1158,13 @@
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/binding.json.gz",
-   "bytes": 284826,
-   "sha256": "bb6d496e8ce137710da8f46639b7d0a4eff96d8f22b664a902a4cff741b0a3b1"
+   "bytes": 284817,
+   "sha256": "a6bd9266844779584b56e72e8aacdaba5f851eadfe968f496d48e7c93a5943c4"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/markings.json",
    "bytes": 25364,
-   "sha256": "fbe54831a7ca19a1bf81d974fbb75538a194022b0e0b944f84989c0b602dfc9a"
+   "sha256": "26e3cee44cbbca5d3f311c00ec7ed8d9ce50f7ed9e74a80e128cd45fab67a5c8"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/alpha.png",
@@ -1184,17 +1184,17 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/record.json",
    "bytes": 7582,
-   "sha256": "e41b53418ccd6ac0875c98a0abd166df27afbe06e1f258ef05bad42b3c089000"
+   "sha256": "66392e80063d0c436f9b7cd9727e0b53717ed1a6c95816450db1dba62467874f"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/binding.json.gz",
-   "bytes": 150836,
-   "sha256": "c12f2e4a53bd4fc47a7931aae170a2447c7ea1beb0851c6c2d107b3e682b9dec"
+   "bytes": 150839,
+   "sha256": "c4cb137d103a7191ad73c47568c4df061061643285f20165888ecaf767aafc98"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/markings.json",
    "bytes": 25263,
-   "sha256": "1c5774046a71ad129bd13d20d939f08ca4d09d76ddf6f5392c7d5ea63786169b"
+   "sha256": "66acb088b2ee84ef0478b58d5f5b4aee113c7ad608fe74f6c16cca4954119a49"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/alpha.png",
@@ -1214,17 +1214,17 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/record.json",
    "bytes": 7745,
-   "sha256": "b05f90d7f729c163b9f10dfde31626ef4bc79f5ab4403371a21284027c79e5a9"
+   "sha256": "b8957d3c3b16efb0c6e8cb3c1396f30d19b6dac071cd16aa7946303c4e634883"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/binding.json.gz",
    "bytes": 321269,
-   "sha256": "9ce2c2ec864229c8339568cfbf641eeba45040809a0e784d83e69a3cdd379bd7"
+   "sha256": "560c0b93a301971236a9b15eb7a85508ed94b4c9b5a4b8b648068ebb6b4222c5"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/markings.json",
    "bytes": 24955,
-   "sha256": "2e252eb1d950f71f601152802b518574fd523045edc72a1a57cb261ed5073087"
+   "sha256": "ef0496891f63a84c10c0827a48f0f16374430b4ea14880fdc3e6eb49f6d2c6ce"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/alpha.png",
@@ -1244,7 +1244,7 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/record.json",
    "bytes": 7422,
-   "sha256": "30849c158873308156df12bfd6ddf21ef734df679367da6ec9ef277f04462e00"
+   "sha256": "e7efa7c4aefb613410336d34ee1a227d83716b6bfc2089a8bfd60f6491892216"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/fit-02/binding.json.gz",
@@ -1274,7 +1274,7 @@
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/markings.json",
    "bytes": 29236,
-   "sha256": "73bf706dd0bbc92da2eaf24ad9e5f393d6acdad423c911044a0c6de6981b9d62"
+   "sha256": "17b75131f9a0104d970e36d771a5dd2b2291df404e56e61eeb179bf916098e31"
   },
   {
    "path": "library/battle2/audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/markings/banded.png",
@@ -1309,12 +1309,12 @@
   {
    "path": "library/cards/bass/SOURCE.json",
    "bytes": 334,
-   "sha256": "826c19216c9958bbcc3f2ff8e3eaab0a0c3ab77adbf3b1562937fc17120b9715"
+   "sha256": "218e9023ebd3d5662c0a614129a819f8fe3a1bf63613af46a65c92cb86bef5d4"
   },
   {
    "path": "library/cards/bass/card/card.json",
    "bytes": 2884,
-   "sha256": "bd58178dfc8b5334a754c5271f9dfb053071e65c34c530df8ed5f5be61b3b479"
+   "sha256": "db8daca1a9cbd9a80922e56168b5072ebad1a892011ec81fe86aa78633514875"
   },
   {
    "path": "library/cards/bass/card/labels-512.png",
@@ -1329,7 +1329,7 @@
   {
    "path": "library/cards/bass/markings.json",
    "bytes": 24327,
-   "sha256": "85ac554cc48cb4015453a4c89df2d7ac48300e50ab547347467ee86d4d2d2f41"
+   "sha256": "6fde0ce9fff9ddbfbec0f500227683612019ae5831486fd1268bfacb755f304c"
   },
   {
    "path": "library/cards/bass/markings/banded.png",
@@ -1364,7 +1364,7 @@
   {
    "path": "library/cards/bass/record.json",
    "bytes": 5761,
-   "sha256": "8af4a5f98a2b3ed947f010ec48869056401de1043602f637355b939f4cc5ce85"
+   "sha256": "a57fc205842b2f1d5bb1f265124b4081ae7df5f831ec630e8edd9acfbc3431e3"
   },
   {
    "path": "library/cards/coconut-crab/SOURCE.json",
@@ -1394,12 +1394,12 @@
   {
    "path": "library/cards/cougar/SOURCE.json",
    "bytes": 354,
-   "sha256": "55769df13701dcb041594e58c74963872af86f5987f83f0ff3ba7110de1a5d8f"
+   "sha256": "f56a39cabe83697f129bc809eeec29a925f1be928d1bcd6058533cb35c2a3ee6"
   },
   {
    "path": "library/cards/cougar/card/card.json",
    "bytes": 5860,
-   "sha256": "d27951d0073aa77f472f96955d1a2a05849d28a96ccb7e9ffd60dac94bc5f1d5"
+   "sha256": "2d2aebeedf7b460e6ca16111dd61ca6beabb14443d909b8f9afc7e8ca51d2d2d"
   },
   {
    "path": "library/cards/cougar/card/labels-512.png",
@@ -1414,7 +1414,7 @@
   {
    "path": "library/cards/cougar/markings.json",
    "bytes": 25475,
-   "sha256": "ee681c62de148063c0611151c362d88e9beeb36d7869c81b27d705fc6df7d13c"
+   "sha256": "bf5b7672fcc929926a914b56ecfa4ae96518ee2af9f43a43fcc21cbc56b3e2cf"
   },
   {
    "path": "library/cards/cougar/markings/banded.png",
@@ -1449,7 +1449,7 @@
   {
    "path": "library/cards/cougar/record.json",
    "bytes": 7556,
-   "sha256": "77595449583b8877f9f0ef1ea10f1de8ed5369c77bc8e3c251797d31326b4fcd"
+   "sha256": "5fdf686ce31045d6ea114735dbe89a1c59458dbb255461cc426375eae8e2235b"
   },
   {
    "path": "library/cards/dragonfly/SOURCE.json",
@@ -1474,7 +1474,7 @@
   {
    "path": "library/cards/dragonfly/markings.json",
    "bytes": 27591,
-   "sha256": "c0c7c05cd0fcfd24bbbbd317f680712d41f5764ee8d2b37551f7eff8426e8a7e"
+   "sha256": "9a75744130c4c0dc73d63ecccfb63a9fddc129738dedd05faceb1399f5dcb70d"
   },
   {
    "path": "library/cards/dragonfly/markings/banded.png",
@@ -1534,7 +1534,7 @@
   {
    "path": "library/cards/eel/markings.json",
    "bytes": 25921,
-   "sha256": "3945a80f0b675d6169352482d26cb643268f2bdd93681982ad055864e4ca3d5e"
+   "sha256": "c936585ffb9324cac8ca1c1ab36baee1227570da80da82bbc29c123357a36d42"
   },
   {
    "path": "library/cards/eel/markings/banded.png",
@@ -1599,12 +1599,12 @@
   {
    "path": "library/cards/goose/SOURCE.json",
    "bytes": 349,
-   "sha256": "c2456b9eab4bf8bd6117b8f620905db3f27897b5042caf504d69c0f43bcd6606"
+   "sha256": "67b81e664f303a2fce8bc33f8b435ccbee312baa18c85f4a48e2dca8ab7222a0"
   },
   {
    "path": "library/cards/goose/card/card.json",
    "bytes": 3697,
-   "sha256": "6fd4410c4e87f10312a953e4e13010f22cc7338c6e89318c84628ad52219b161"
+   "sha256": "fcf835361890a2d54eabdf05b76ef483e7c886673efa2cea5a04f281c3da36de"
   },
   {
    "path": "library/cards/goose/card/labels-512.png",
@@ -1619,7 +1619,7 @@
   {
    "path": "library/cards/goose/markings.json",
    "bytes": 27046,
-   "sha256": "8c2ed5a05b926c8bb2c487d43b598dae2a6ae40019b3f68f790fcc8b91c50e5e"
+   "sha256": "6784f1b30bf6d00e8d580aca07699763ce326ec9c0508b82b62beac3c49d37e9"
   },
   {
    "path": "library/cards/goose/markings/banded.png",
@@ -1654,17 +1654,17 @@
   {
    "path": "library/cards/goose/record.json",
    "bytes": 6169,
-   "sha256": "01b649a3999f9ce27d7dc05050711db5a5e8006eafc1b22a1065c67f1700b5a0"
+   "sha256": "325ddaf7cfb2ab98152b46f8a0683e95529c7cf0658359169072f48b06d9546b"
   },
   {
    "path": "library/cards/gull/SOURCE.json",
    "bytes": 334,
-   "sha256": "ce366d0f3805f8e8b139e75dfc36e485e6fd6967b07767e294bc0581fb9d9ea0"
+   "sha256": "f67fb6f35425e1703ce25eeb98c9099e977134b04f504aa0051c10c678c468c8"
   },
   {
    "path": "library/cards/gull/card/card.json",
    "bytes": 3724,
-   "sha256": "5096d8a65a4437de016793e1a0ff6e359753d30a407e3fea511455131f759578"
+   "sha256": "e29704183e4b7b56428e38a2f1a9d760f097bd951e8bf44789afeecfefeb306e"
   },
   {
    "path": "library/cards/gull/card/labels-512.png",
@@ -1679,7 +1679,7 @@
   {
    "path": "library/cards/gull/markings.json",
    "bytes": 25913,
-   "sha256": "317c2d299fa5f5f4cf4af61d62eb531c9b839e5ae709dfbea48e19d6b987b462"
+   "sha256": "d3806ce5e01ec7907fe18993166eee8c53dd1c184ef7d493c91de3fd70752219"
   },
   {
    "path": "library/cards/gull/markings/banded.png",
@@ -1714,17 +1714,17 @@
   {
    "path": "library/cards/gull/record.json",
    "bytes": 6329,
-   "sha256": "7f7a1d10d7a58f722b48ee3e6ab033c71ce84eb8d46320aca62a07cfb9530c48"
+   "sha256": "6528dfafcc24d3f388beadcf17779e14e33a813cb49b41a32fb4ecb60500a500"
   },
   {
    "path": "library/cards/heron/SOURCE.json",
    "bytes": 337,
-   "sha256": "ee8ce3e24e377f3a266b1b0b78a482e7dbb3712354122621b1e71d30e2dec1c8"
+   "sha256": "c9c421a20191320d95069a2739002fc30cd62a81f144641aa944032665bc25c0"
   },
   {
    "path": "library/cards/heron/card/card.json",
    "bytes": 3729,
-   "sha256": "27e941d15dc18b70711cb12f347ebd28c8622d47791e5c5f3f963bc5c22b66f3"
+   "sha256": "067a911cafff952bb3070db3e23c7485c44cfb210ecc9bf4b134175543e1560e"
   },
   {
    "path": "library/cards/heron/card/labels-512.png",
@@ -1739,7 +1739,7 @@
   {
    "path": "library/cards/heron/markings.json",
    "bytes": 25638,
-   "sha256": "3cca5691741ef9e7903ad0951d4918f9a034d142bf9ccc5c63502f41f3e995fd"
+   "sha256": "544a091688ae9dda647731111edeeb0330b488722ff343f5d4c1cda47c185a57"
   },
   {
    "path": "library/cards/heron/markings/banded.png",
@@ -1774,17 +1774,17 @@
   {
    "path": "library/cards/heron/record.json",
    "bytes": 6079,
-   "sha256": "e9f853f08eb829ec9dda6beb8e4edc3dd723970d6ff1a90be68b51f4efb55805"
+   "sha256": "31db6db9534fc653bdac9e8495d7ad3eae00a1fdd432410afa9e5b7681eab742"
   },
   {
    "path": "library/cards/ibex/SOURCE.json",
    "bytes": 334,
-   "sha256": "3a0c8d3782094e60aba75c7aef9c8d96ed4227bca3775d7d6fa7c598bc685a71"
+   "sha256": "cab6a2279c43dad1ffd1ea38037332545ed27d1948e8b3591986048e5a6cfca7"
   },
   {
    "path": "library/cards/ibex/card/card.json",
    "bytes": 5813,
-   "sha256": "4c1222044baf0bceb205b093a546522a0bc776522b22ce36110aea9f9e6166b0"
+   "sha256": "f4e4327acd73f0b1baa1ee3ff23b6d56fbe95e10b77f0ba97f9af42bb6a753ec"
   },
   {
    "path": "library/cards/ibex/card/labels-512.png",
@@ -1799,7 +1799,7 @@
   {
    "path": "library/cards/ibex/markings.json",
    "bytes": 26839,
-   "sha256": "530cd992b87ba2143b14719026150e329dca872d6bdbc86986c2417c17944fd1"
+   "sha256": "fafcea3440606759a11443ea4d0a704abacf4089ee08d6e872156c0e10af5dda"
   },
   {
    "path": "library/cards/ibex/markings/banded.png",
@@ -1834,17 +1834,17 @@
   {
    "path": "library/cards/ibex/record.json",
    "bytes": 7535,
-   "sha256": "7a5f4168230a467c170d5f5b750c4be394109b0539a7236da89f1645d5cf6a5f"
+   "sha256": "caea76fb96ebfaa34dcf3f1ebe5fd0a10285367cc845ce3efd063ad2c1885f48"
   },
   {
    "path": "library/cards/impala/SOURCE.json",
    "bytes": 298,
-   "sha256": "b7a0a2b8c84c3a8dc73e168307422762907c7965ade0130c444fa7a55d73c38e"
+   "sha256": "a328951b533394e7c526108d1e628c0f5ae86e485d9581147289ebb525530ca5"
   },
   {
    "path": "library/cards/impala/card/card.json",
    "bytes": 5889,
-   "sha256": "77a86a315b100238e2647600b637ce0a8a3ef27f858a048466c4f8f31208355c"
+   "sha256": "dc9787928746898a73f4804caba440c6de5d2375ed2cfe9c09a69810ed5bc000"
   },
   {
    "path": "library/cards/impala/card/labels-512.png",
@@ -1859,7 +1859,7 @@
   {
    "path": "library/cards/impala/markings.json",
    "bytes": 25451,
-   "sha256": "f4d90d468103be39aa87059ebed9b56a71e0908cc63dfa37adb48cfe1a0daf55"
+   "sha256": "e0a6ddf980c5ef9e85c9bfe708705027e80b3040ee8b2a7a508dc3494ea05822"
   },
   {
    "path": "library/cards/impala/markings/banded.png",
@@ -1894,17 +1894,17 @@
   {
    "path": "library/cards/impala/record.json",
    "bytes": 7582,
-   "sha256": "e41b53418ccd6ac0875c98a0abd166df27afbe06e1f258ef05bad42b3c089000"
+   "sha256": "66392e80063d0c436f9b7cd9727e0b53717ed1a6c95816450db1dba62467874f"
   },
   {
    "path": "library/cards/marmot/SOURCE.json",
    "bytes": 294,
-   "sha256": "8b37a7183a00a28c31f12fef9196aea367d88d8c358cac10ed9efd036a99624c"
+   "sha256": "43d7fba1dcf1057ddc938e9e17272547b437277d5113cae36a25a37714288f32"
   },
   {
    "path": "library/cards/marmot/card/card.json",
    "bytes": 5849,
-   "sha256": "75b5b1edf1daf841478e6bd6a73a60f920c95a1723ee1bfd482eeb267b95ead9"
+   "sha256": "8ac5aec99f9b76285a405989ac4095e4fe582105729012a12932ff65ca9735b7"
   },
   {
    "path": "library/cards/marmot/card/labels-512.png",
@@ -1919,7 +1919,7 @@
   {
    "path": "library/cards/marmot/markings.json",
    "bytes": 25038,
-   "sha256": "d728509073fa216fa282368b1ba1db9b763a998c89fa384999076b5895955014"
+   "sha256": "0f3b66e47ad3580c332b83f70c1a2b31116559af6c2e9b6d4389944a47802ea8"
   },
   {
    "path": "library/cards/marmot/markings/banded.png",
@@ -1954,7 +1954,7 @@
   {
    "path": "library/cards/marmot/record.json",
    "bytes": 7422,
-   "sha256": "30849c158873308156df12bfd6ddf21ef734df679367da6ec9ef277f04462e00"
+   "sha256": "e7efa7c4aefb613410336d34ee1a227d83716b6bfc2089a8bfd60f6491892216"
   },
   {
    "path": "library/cards/mud-crab/SOURCE.json",
@@ -1984,12 +1984,12 @@
   {
    "path": "library/cards/pike/SOURCE.json",
    "bytes": 334,
-   "sha256": "19541838f91edcabe1513a52cc8a5a9b26d98202b4ffbc1b5fe632a0cab24db9"
+   "sha256": "de8ed65f4f4e612b72c882b5513ad6cd1e747aff002814022a835aee98e90a53"
   },
   {
    "path": "library/cards/pike/card/card.json",
    "bytes": 2905,
-   "sha256": "b29de4057c133699bdbe9d876fd729e757c8bfbe4da2ca15679f3ef1cd0a98f2"
+   "sha256": "1eef3e9bd8ba631f15b79cc442a33e9190551c9f50b1171ff2e83524ee79e16c"
   },
   {
    "path": "library/cards/pike/card/labels-512.png",
@@ -2004,7 +2004,7 @@
   {
    "path": "library/cards/pike/markings.json",
    "bytes": 25676,
-   "sha256": "695bf7c3691ebb24e113bce3110457f2b79a034fba4adbdab747e0736479bded"
+   "sha256": "de2140e63a1ae20fc09fda7ddf7e405e6934354fa4fd59f51a71f7c10335b1ed"
   },
   {
    "path": "library/cards/pike/markings/banded.png",
@@ -2039,17 +2039,17 @@
   {
    "path": "library/cards/pike/record.json",
    "bytes": 5314,
-   "sha256": "907079113cc888853f6dfeff9d85dd8c797802a1380fc132eee5fc3ca50ea47c"
+   "sha256": "b46c815e3ca66ca18f44f6732ab608d647b106c521eddc47feb133587b646692"
   },
   {
    "path": "library/cards/racer/SOURCE.json",
    "bytes": 337,
-   "sha256": "31952660de6bc7850b94a67fd934e144bdb8fa5552b45ea3a072286238d8d08f"
+   "sha256": "899b3452aeb5333c324e83243bcf04983a5eb6ef590190965e67e6dd4a5bb2f6"
   },
   {
    "path": "library/cards/racer/card/card.json",
    "bytes": 2819,
-   "sha256": "ec921298e6250ab7e69f1908bc0e4e9371182084092ad7cc347a95215059e9a8"
+   "sha256": "8d447b5abcf33fbd40a5bc99b42115ccb72f7cc1c9690cbba2cbc7dd1abe6242"
   },
   {
    "path": "library/cards/racer/card/labels-512.png",
@@ -2064,7 +2064,7 @@
   {
    "path": "library/cards/racer/markings.json",
    "bytes": 28224,
-   "sha256": "0c00a8c3091d8a2a1890e95c835a0398a3fb63666f989612fd0a713946ccf22d"
+   "sha256": "a393180eb9e793c450bbeb76f50d6ef367c2efdc7c8a3b86f7dcb43e0e53a3fa"
   },
   {
    "path": "library/cards/racer/markings/banded.png",
@@ -2099,7 +2099,7 @@
   {
    "path": "library/cards/racer/record.json",
    "bytes": 5097,
-   "sha256": "031738b8c7c663c691de8bba5d904440fa8d3cf0aa84fa423b8edb0fd14bb807"
+   "sha256": "0029d9dfc80ad72bb8d701273550e448f58c1349a9a920a927d50db4d86baff0"
   },
   {
    "path": "library/cards/rat/SOURCE.json",
@@ -2124,7 +2124,7 @@
   {
    "path": "library/cards/rat/markings.json",
    "bytes": 26529,
-   "sha256": "b24e73a9ffb1b6694a5ab4532446d3746e80f344aac4a82d13f6dc4a4dd7598e"
+   "sha256": "e554c3bbd9ff80cf580f74b76be854e1676b7e83936ae58590d534703d277b1f"
   },
   {
    "path": "library/cards/rat/markings/banded.png",
@@ -2164,12 +2164,12 @@
   {
    "path": "library/cards/reef-shark/SOURCE.json",
    "bytes": 364,
-   "sha256": "4154572fb5175ade888964d0ad99f2d1cd254b7286fe0db43926c969ff78eafd"
+   "sha256": "dcf2a8e0462d5532d2ad2048843cee5a57b58136a49b01727c8cf78c473bb4fe"
   },
   {
    "path": "library/cards/reef-shark/card/card.json",
    "bytes": 2901,
-   "sha256": "03251a57a6d63c9f92f792b797bee1673e358333800fcc36d80d02c889efc82a"
+   "sha256": "dbbbd91def6c91c0fc82dce0d5b074c38205141d403a9f280632b2511c47a80b"
   },
   {
    "path": "library/cards/reef-shark/card/labels-512.png",
@@ -2184,7 +2184,7 @@
   {
    "path": "library/cards/reef-shark/markings.json",
    "bytes": 25832,
-   "sha256": "21854cea942d7ceee1ebd76b74efb0321be782b3cae35013d74900f1717f7c9c"
+   "sha256": "4fcd81826807a10bd08789897e3b7fb9b7261f56db052e80e77dbb2379d3a135"
   },
   {
    "path": "library/cards/reef-shark/markings/banded.png",
@@ -2219,17 +2219,17 @@
   {
    "path": "library/cards/reef-shark/record.json",
    "bytes": 5396,
-   "sha256": "d9e9713da6d79da3db95f2c73959c982454cb8bea87fc53e7e78cf5087ab6570"
+   "sha256": "d0806fc179a1e404e742cd0852686d5c0fd591c5b21836487aa5efa502215c3e"
   },
   {
    "path": "library/cards/river-otter/SOURCE.json",
    "bytes": 355,
-   "sha256": "8624d46545192345c39878d4d5364a479e9d227d27b41d77b20d42ac3b259bd7"
+   "sha256": "015886e1a54fa43eaa5358b71fc758a83996e73141415ece657b3e44740ab64d"
   },
   {
    "path": "library/cards/river-otter/card/card.json",
    "bytes": 5862,
-   "sha256": "4c52eaf778a5887338a4e9e78aa769cb74747e15c1c1ba5b88ce2a2a6a03d998"
+   "sha256": "bdb7b29a870a16b0c2a3feab8509a7aca15c31377757f90eb896e43751770d27"
   },
   {
    "path": "library/cards/river-otter/card/labels-512.png",
@@ -2244,7 +2244,7 @@
   {
    "path": "library/cards/river-otter/markings.json",
    "bytes": 25539,
-   "sha256": "cb442ffefbcb8604d6768a37375852daad6cabc22690276f247f2192c6a847e2"
+   "sha256": "e8b9dafa03ee644cd46130ecd7909f39c964f3f1ec605ca0ce2f42d26f274baa"
   },
   {
    "path": "library/cards/river-otter/markings/banded.png",
@@ -2279,7 +2279,7 @@
   {
    "path": "library/cards/river-otter/record.json",
    "bytes": 7671,
-   "sha256": "27beffd980683e5a505cb6211729a43eab0b1936dc617f3b78b9b14a19ac1c6e"
+   "sha256": "218691c9454d8210f3272a6fd4ca666cca650fe5bb0a1f7546d9a2a2064044fa"
   },
   {
    "path": "library/cards/salamander/SOURCE.json",
@@ -2304,7 +2304,7 @@
   {
    "path": "library/cards/salamander/markings.json",
    "bytes": 26744,
-   "sha256": "fd18d188c1ec58d1916511a79ba188eeae9244fd4e8e1f6809f2ecaef5d13ed1"
+   "sha256": "c2b5fd3c7f69157ea0f1c4b2829dbd2a8ab413bd7274f2598b7ef97cf7f65b25"
   },
   {
    "path": "library/cards/salamander/markings/banded.png",
@@ -2364,7 +2364,7 @@
   {
    "path": "library/cards/sturgeon/markings.json",
    "bytes": 29236,
-   "sha256": "73bf706dd0bbc92da2eaf24ad9e5f393d6acdad423c911044a0c6de6981b9d62"
+   "sha256": "17b75131f9a0104d970e36d771a5dd2b2291df404e56e61eeb179bf916098e31"
   },
   {
    "path": "library/cards/sturgeon/markings/banded.png",
@@ -2404,12 +2404,12 @@
   {
    "path": "library/cards/tang/SOURCE.json",
    "bytes": 334,
-   "sha256": "070bcd3ce12600f0d6ec619de0606eef7aaa2df446baef6e1c75da6aa1277784"
+   "sha256": "138badf9037f18497c795dc987fc2c1e00193ecd11fb152aa0d0418f972de3f1"
   },
   {
    "path": "library/cards/tang/card/card.json",
    "bytes": 2882,
-   "sha256": "5ec8f60bca12c192b6240e80c2d3ca694c0914a409a94a12d2fda467a1de139f"
+   "sha256": "3d2a571841b6919bdc8ec5ae721844c0c9fa41ad46f6eee4c969095d89d3c2f5"
   },
   {
    "path": "library/cards/tang/card/labels-512.png",
@@ -2424,7 +2424,7 @@
   {
    "path": "library/cards/tang/markings.json",
    "bytes": 24464,
-   "sha256": "30fe4f21dbbf300223721c201c6f133b57e441019854b986b46f6265f0012ca7"
+   "sha256": "20deab95c5b7f8d283d8d19b5fc3cbb29cbc2263000dcba6c49630e4ba64d8f9"
   },
   {
    "path": "library/cards/tang/markings/banded.png",
@@ -2459,7 +2459,7 @@
   {
    "path": "library/cards/tang/record.json",
    "bytes": 5303,
-   "sha256": "330ffbca96f9a8bc6a379af0e5aa32cab5a314e2085a3d431c29cbeb75d13edb"
+   "sha256": "7d9cfdf1d7029a1a48c9238d9c0fe5ef8212f986c0a692a5227b3e0fd62c5e78"
   },
   {
    "path": "library/cards/vent-crab/SOURCE.json",
@@ -2489,12 +2489,12 @@
   {
    "path": "library/cards/wall-lizard/SOURCE.json",
    "bytes": 299,
-   "sha256": "2b4c8ba1c45dc9cc771f94e0c3898da467d1fb794631c8c1c3a7a8ac726037f0"
+   "sha256": "9413ce556d1870cbfe4762b01ccc4ba33af4b02dd5de5ee069a5df419f165a9e"
   },
   {
    "path": "library/cards/wall-lizard/card/card.json",
    "bytes": 5227,
-   "sha256": "a9b268a3b85ac53431e3b4f972eaead86988e5003ce7b3638500b7d4c9cbfa0c"
+   "sha256": "8f965dc7e86be6e6ad3b1bed48cb170fb2ee96f876f6b0ecc6e8a83ec6bacdc4"
   },
   {
    "path": "library/cards/wall-lizard/card/labels-512.png",
@@ -2509,7 +2509,7 @@
   {
    "path": "library/cards/wall-lizard/markings.json",
    "bytes": 25316,
-   "sha256": "d33080391187a487368186759009832852a87aa240da13ebcb272be9ffb8b745"
+   "sha256": "64a7c0eaf6a639b82c7ea75770611a49e05b72589178a6e4351ad46ff38f5574"
   },
   {
    "path": "library/cards/wall-lizard/markings/banded.png",
@@ -2544,17 +2544,17 @@
   {
    "path": "library/cards/wall-lizard/record.json",
    "bytes": 7745,
-   "sha256": "b05f90d7f729c163b9f10dfde31626ef4bc79f5ab4403371a21284027c79e5a9"
+   "sha256": "b8957d3c3b16efb0c6e8cb3c1396f30d19b6dac071cd16aa7946303c4e634883"
   },
   {
    "path": "library/cards/wolf/SOURCE.json",
    "bytes": 346,
-   "sha256": "e95fc25e4a155137c42eda0cbdde33f2025cf7fe8efeb63793947b82476cf501"
+   "sha256": "e8ba08b545628fbc8ab5e0d5b9b4bb7c8004753ecc40a26e54556951ae0e9e3d"
   },
   {
    "path": "library/cards/wolf/card/card.json",
    "bytes": 5850,
-   "sha256": "919504d8d59d9530c1dce902b47327fe95262a913d186dc6628b4e60b836b829"
+   "sha256": "976fea4b68642be8ae886b2c59eb5f4584f7991228c942ed0733adece4ba4e04"
   },
   {
    "path": "library/cards/wolf/card/labels-512.png",
@@ -2569,7 +2569,7 @@
   {
    "path": "library/cards/wolf/markings.json",
    "bytes": 26038,
-   "sha256": "cc7d88248165ea634528836248999f97f890f9af167a3ff7ea8bb31df75c941e"
+   "sha256": "a7f471ab6424f9b17eda8ff8f6a8946e35c59505a645bd666cbcef7dcac8653d"
   },
   {
    "path": "library/cards/wolf/markings/banded.png",
@@ -2604,7 +2604,7 @@
   {
    "path": "library/cards/wolf/record.json",
    "bytes": 7502,
-   "sha256": "8ccee0dc9fb68d1e2e5c69e5efb66499af8af811998c822a9652db33d345cc7d"
+   "sha256": "0e103601830999fe1c7d3857b7c0a1d9e0fc3c0261df9e060e2fa70bf75078c0"
   },
   {
    "path": "library/creature-finish-source/bass/labels.png",
@@ -2994,7 +2994,7 @@
   {
    "path": "library/creature-finish/3dbaa4f0cd9e268193a613c00e4091bd57d73a076fcc82f189adc5eca82aa77a/receipt.json",
    "bytes": 13558,
-   "sha256": "901441c0ed810aed176c7a02bf0df25e924cc96752fce81f5278113da429b71f"
+   "sha256": "5972443d8dad664cf9154315cd29da6750c7738776532f3934c1fbfd2beaf198"
   },
   {
    "path": "library/creature-finish/5feeca2ac2a52a67f7bb0299bae9966f3320a8acb9bdb33af0899451369eeb9d/original.png",
@@ -3024,7 +3024,7 @@
   {
    "path": "library/creature-finish/93b6bac2f050bd1a7ef94d00f80c8d7bc9e90303c82a4450ed2b77bc6c286121/receipt.json",
    "bytes": 8757,
-   "sha256": "2f4084dedc294bc8df2fdc324332e8afbc159958fbc7476fbd912b8e74c212c5"
+   "sha256": "6fc8e58962b327998ecda1da59641979a71d5160fbaf01485854304f0ada2b2a"
   },
   {
    "path": "library/creature-finish/99e072c05a6a4f10fe8f221d253fc28102afa8dcb958876805096f37dc251426/original.png",
@@ -3054,7 +3054,7 @@
   {
    "path": "library/creature-finish/a710569abe2a682ea6b58d1d99fbacd89a8cc47c5b5bb890db8fea696511982c/receipt.json",
    "bytes": 13644,
-   "sha256": "0c096a5c11cac27c1b5f144bf56f19b329046b839db376c0bed8ca3c0c2a1ddc"
+   "sha256": "049776649bfb6f5277abd29a480f1ce5f4eb23c3969b93cacd6a4221d065bd86"
   },
   {
    "path": "library/creature-finish/d1ff554bde7f512052e1b1d6b68b8039b445df91ea536c7ad01ab71e43e73ac1/original.png",

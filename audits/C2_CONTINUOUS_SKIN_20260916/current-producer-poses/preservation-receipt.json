@@ -5,27 +5,27 @@
     {
       "path": "civet-poses.json",
       "bytes": 2022503,
-      "sha256": "08ace6f1db2f7c75a409494a76db7ce6bfd483da1458b4c6ff31e9eb38c48339"
+      "sha256": "7f099dfac651bf60eb4ec2a1289463ea0966d32e217c5156fc57bad5a003033a"
     },
     {
       "path": "fox-poses.json",
       "bytes": 2021989,
-      "sha256": "d40de96dd21855a0f393f858e9df36b8b0e0b4f2bf4669882264221134d6b64a"
+      "sha256": "7f0462204c815fbae8ea3d106cb6b61fe9fae13a6f67f16ddab6d4e70a8c5641"
     },
     {
       "path": "native-named-pose-comparison.json",
       "bytes": 658,
-      "sha256": "c1bc3c279675e5bbd7019a04788630966c95c2f396c84df1d458898045afbc92"
+      "sha256": "02047fe328dda6ca27eb599b4c26850634de20b4c00838a03cf3ce0f26a2a932"
     },
     {
       "path": "procedural-poses.json",
       "bytes": 2005253,
-      "sha256": "5f3131217ef8b4fe71ff7ed1264f3f60ffc2ce7f2634e0331d0d36c58f91916b"
+      "sha256": "8ae8f9c9ee9c485fefa6c9bc3a7e405c3826c0cf5ab306e6052e5a2ddce3a3ca"
     },
     {
       "path": "report.json",
       "bytes": 11558,
-      "sha256": "c26a00e96a19a812648d4e4ca38d8617bec9f6e27e1f5803ce4170a36564eeb4"
+      "sha256": "ed05f4835b7eeb51941d2c3ddd97b83a8e7f6063058494a140fa07d61dea0202"
     }
   ]
 }

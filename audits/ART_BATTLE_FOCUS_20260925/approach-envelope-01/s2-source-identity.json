@@ -82,8 +82,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/s2-final/run.mjs",
-      "priorSha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe",
-      "currentSha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe",
+      "priorSha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b",
+      "currentSha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b",
       "identical": true
     },
     {
@@ -94,8 +94,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2-controls.sources.json",
-      "priorSha256": "9b2eac9abd29f600121d3ba508a9b86eeb09db22d484f5f71cbf7f639d30fdbe",
-      "currentSha256": "9b2eac9abd29f600121d3ba508a9b86eeb09db22d484f5f71cbf7f639d30fdbe",
+      "priorSha256": "d2867b9d9ad11ed3d89f8d963493f95c01d0f4e76e2a68bee428b15b99dffd45",
+      "currentSha256": "d2867b9d9ad11ed3d89f8d963493f95c01d0f4e76e2a68bee428b15b99dffd45",
       "identical": true
     },
     {
@@ -166,8 +166,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2/static.json",
-      "priorSha256": "d460b6a6b3bfc8fd23f4ea2f392281fb96cddb4229f24893e34abc54c80b2a00",
-      "currentSha256": "d460b6a6b3bfc8fd23f4ea2f392281fb96cddb4229f24893e34abc54c80b2a00",
+      "priorSha256": "f04e9e36d10634099ecc66aacdd94fbc1c883579dc89023f983ce0850f7f0dba",
+      "currentSha256": "f04e9e36d10634099ecc66aacdd94fbc1c883579dc89023f983ce0850f7f0dba",
       "identical": true
     },
     {
@@ -232,8 +232,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
-      "priorSha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433",
-      "currentSha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433",
+      "priorSha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9",
+      "currentSha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9",
       "identical": true
     },
     {

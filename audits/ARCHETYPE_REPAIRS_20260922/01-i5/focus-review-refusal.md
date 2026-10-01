@@ -1,6 +1,6 @@
 # Native focus diagnostic: retained first refusal
 
-Run `20260922-i5-native-focus-01` remains **FAIL**, retained without overwriting or retrying its evidence in `focus-01/`. Its report SHA-256 is `6097875bebe9bab74afbbb8a62be3199e1685884ce725eeb40e30a9ce34099f6`.
+Run `20260922-i5-native-focus-01` remains **FAIL**, retained without overwriting or retrying its evidence in `focus-01/`. Its report SHA-256 is `55746ef9d8551fb889dd171be461171fa495aa7af9fe75e792891cedc4fc756c`.
 
 The first phone/default row passed the product focus checks. Restoring the historical sheet rule reproduced the expected 2px outline and +2px offset, and removing that fault restored the required 3px outline and −4px offset. The diagnostic then refused `restoration changed boxShadow`: its baseline was sampled during the real focus transition (`0.790476px` / `1.97619px` inset shadow spreads), while the restored observation had reached the final `2px` / `5px` spreads. Two animation frames were insufficient evidence that a transition had finished. This is a diagnostic settlement error; this run establishes neither all-four-row acceptance nor a Compendium certificate.
 

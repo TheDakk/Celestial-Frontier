@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/authoring.json",
-      "sha256": "0e07ab71a32223646ed685477a13fce6da9c58339f8c114ae46d4565706bfeb6"
+      "sha256": "357adcc08bf853e4e02a49ac53d71ea13ff954589826799c591a6267e77d9cdc"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "050cddedc732597f195ebed17582e37e1c7e9eaea348bbaaa0375e1554c806e7",
-  "bindingHash": "f4c790bae595ab04b63a039250c2777e5791e413e263238471d0837a573bdf24",
+  "recordRecipeHash": "e3bfacd7803d93e28dffd7d83ef709c5efb285b5758ef7f050dc8ca54821f177",
+  "bindingHash": "ceb4c9de32929b6d25463c1ae9c40db2fdfa179d7d5fbaa27db528874b41ca0d",
   "contactEndpoints": [],
   "shapeJoints": [
     "arm8Seg0",
@@ -78,7 +78,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/authoring.json",
-      "sha256": "0e07ab71a32223646ed685477a13fce6da9c58339f8c114ae46d4565706bfeb6",
+      "sha256": "357adcc08bf853e4e02a49ac53d71ea13ff954589826799c591a6267e77d9cdc",
       "unchanged": true
     },
     {

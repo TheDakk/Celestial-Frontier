@@ -6998,7 +6998,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/ANATOMY_STATUS.md",
       "bytes": 3848,
-      "sha256": "0b0dd1e8bfdcecba3f43b0d422928ff0b1086c3524a6d1f795c971e142780f0c"
+      "sha256": "aa6da1eee585a2b71ddc06a227781f8c086c8420a63be1a9f1490f207cb6800e"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/README.md",
@@ -7178,7 +7178,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-01/report.json",
       "bytes": 215692,
-      "sha256": "7f5e648cee3680f4fc85878cbf61306c0cd379b4d147532a91cd252598e163e8"
+      "sha256": "1657d5a3ad7c376b3b151ef7ab76db157be0999d979d21f8029e64b5adeeb60f"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-01/tame-25.png",
@@ -7383,7 +7383,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-02/report.json",
       "bytes": 215898,
-      "sha256": "a087b38465c011a043d99c8a7e3ead13a90c5bf2e50a214633cf2252274f8ef9"
+      "sha256": "237e5529386fbb1e04477ccb057f6476ba5cc62b3a479d96957e17f96516aff0"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-02/tame-25.png",
@@ -7418,7 +7418,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/coverage-final.json",
       "bytes": 137738,
-      "sha256": "947a6afe1c8590d53140be004c464073b753d6c57a2d84b527a9b4dce4f9d166"
+      "sha256": "f39b0b0bf5919149ebdf48a825691e1c6643171879527f441123a3a053bc7728"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/coverage-final.log",
@@ -9398,22 +9398,22 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-01.log",
       "bytes": 334,
-      "sha256": "fae625c682267615760a970764babb11747d46068906d5c07c66a94d2bbd45ba"
+      "sha256": "ba07ddde279adb670724ad54735a945d3ffc48227bc460729b22b89d2203b92b"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-01/report.json",
       "bytes": 8087,
-      "sha256": "92769bba27e2fbf2faea4ce8ecc80b03270140a2b0ecf4fc91b7d515240294b9"
+      "sha256": "a3551abe4528b56169ca178d6f2ff392e3f7f535c54c00b4814168d37c1a9e1a"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-02.log",
       "bytes": 348,
-      "sha256": "d99b3e402c6f83ebbb828e315088d72668d49d20ed43ab0ee9003e9bbfa4bb40"
+      "sha256": "57e96411754e409d1fc3b0cb88a124d13026ef6fcce219a3a143419f168c4c5a"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-02/report.json",
       "bytes": 8101,
-      "sha256": "d9972cecea7ca670305c466d3904c2d6509aab588c165f9ff00767c66e6228c8"
+      "sha256": "7e01ab72019d32b858f9a2c314e6cc28d907a79132e0acc9df918217147ea313"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-03.log",
@@ -9523,7 +9523,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-03/report.json",
       "bytes": 13563,
-      "sha256": "122c8374ee7aaf96548932a6cc7fd604fdfce67a63d9af911a12b65ef24e2291"
+      "sha256": "4c7fc1d8252166d11fce0f0175abe56c7beb8d275b6d833c3e5802ae4537a0ea"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-03/vent-crab-declaration.json",
@@ -9658,7 +9658,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-04/report.json",
       "bytes": 13563,
-      "sha256": "dae64883e1e6a881075fb09d3c71b4f467b67cb510b3aeaf5a34895496ef80cf"
+      "sha256": "cefae965842a7e0285ccd7ad355c4c281c8e183717cb9bd1c7e9c0d4fb5f437f"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-04/vent-crab-declaration.json",
@@ -9793,7 +9793,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/report.json",
       "bytes": 14193,
-      "sha256": "910f0e02e2457315ae3f9bfd8253448b5f0c896a7fa439b1f986982565bccc18"
+      "sha256": "45e7b126acfdea51b28a9700e19ce99c8e5a4c5fcf622d6955cfbfa20e052521"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/vent-crab-declaration.json",
@@ -9993,7 +9993,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-01/report.json",
       "bytes": 215709,
-      "sha256": "beef943f8554946a7ca6b06bcafa15ee535026260abcb937d4dee2de1965937e"
+      "sha256": "b4713a32e0e36e0b7bf4a32473f4acab3cb075333f2e83f00b2a2bd401b33805"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-01/tame-25.png",
@@ -10198,7 +10198,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-02/report.json",
       "bytes": 215913,
-      "sha256": "3d145ebe736a6d8db5bfcade7b4f78179f42e2fc61c2773b0636e8f124c56f48"
+      "sha256": "164a206aef617b2242c1d0b9d4732dfcd15a66f4b8ab09d82b3a9b63595ca806"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-02/tame-25.png",
@@ -10233,12 +10233,12 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-01.log",
       "bytes": 839,
-      "sha256": "258dcb94275b4bd4f8c8b465d68bd48ffb46b3a5fded8d11ec464c999ba05026"
+      "sha256": "3a68fc8da0b772641812004255ae70928d795f363ec3b2b2cfd4474ef9325e93"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-02.log",
       "bytes": 1009,
-      "sha256": "9ef7b948db26abd835bc409ce25e94c79483df289dc16c11fa865d738c07931b"
+      "sha256": "135a7a03c5ae31786ad498b5e6ead26c515a9b9b25f091402e4ef8fa9fe850ad"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-02/declaration.json",
@@ -10883,7 +10883,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-01/report.json",
       "bytes": 200215,
-      "sha256": "892e41125e717941c241687c113a95b6c96c58e141d2fd838e3b9100b5abe5c7"
+      "sha256": "68d55012b63d9604937f95bffa580957d081324ac4210af419bb8671507630d1"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-01/sway-25.png",
@@ -10983,7 +10983,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-02/report.json",
       "bytes": 200214,
-      "sha256": "69aca8e53465793e187c019e8ee1d0901bf09d76908bca2e47a39f3af9288718"
+      "sha256": "f1a2937b9b4fd9b2374be1a3a4a5593a03318eb3d980674bcffd0de39dc24705"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-02/sway-25.png",
@@ -11083,7 +11083,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-03/report.json",
       "bytes": 200236,
-      "sha256": "1dee6694bbfb233a571e665f87f779bf342a6e4315fc7128dee3bf454530a72c"
+      "sha256": "6e387b455a75920146fccd8e3fbe4ca50fb61b982dcdd28358f7d076bde4cf1d"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-03/sway-25.png",
@@ -11103,7 +11103,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/devils-club-01.log",
       "bytes": 1009,
-      "sha256": "9ef7b948db26abd835bc409ce25e94c79483df289dc16c11fa865d738c07931b"
+      "sha256": "135a7a03c5ae31786ad498b5e6ead26c515a9b9b25f091402e4ef8fa9fe850ad"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/devils-club-01/declaration.json",
@@ -11638,7 +11638,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/devils-club-native-01/report.json",
       "bytes": 202016,
-      "sha256": "42c2c6fad72deaed1392b061397f0bbe944fdebcadc8c3221c7535f0e42a5e41"
+      "sha256": "baac7f9930fe9440965528064f78940b48f52db3d241ae88b85db527436d3857"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/devils-club-native-01/sway-25.png",
@@ -11658,17 +11658,17 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/fauna-regression-tests.log",
       "bytes": 252,
-      "sha256": "c5ec59882239496a6baabcd910be08bc9ae90fb94dfa3010e5c400df5572f1d0"
+      "sha256": "2bb9ec91f33ec190c0723091ce79f52940b7e9d21347156fe541e45d52192470"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/fauna-tests-01.log",
       "bytes": 245,
-      "sha256": "b3181a972602505ec645adca739badd82ecd0a3054d09c5cd9c14b4a6bacdf7a"
+      "sha256": "7a1276127a4587231fa8cb36cbacaa7169e841b96e1e0c0a46108a12e838aab9"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/fauna-tests-02.log",
       "bytes": 245,
-      "sha256": "fdccc076f6f77bf772117f506c44b62f9fe30f913a1faae20d2b4e93e7514a80"
+      "sha256": "34e4da7dbda70449e91340f4e2254fbdbb8a1bfb5f3917e9e22c959566eefad3"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/fauna-typecheck-01.log",
@@ -11723,12 +11723,12 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/flora-tests-01.log",
       "bytes": 12467,
-      "sha256": "dcfb1e7e36e6ab2ef1961d366b272f936cdc86a59aa4f55ebf85e54d3725e453"
+      "sha256": "5ae22338e51187aef227df1a303124d87314f694b527bbaa55609cbf8fdb5bbe"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/flora-tests-02.log",
       "bytes": 245,
-      "sha256": "b18038302e858429924cd40ddd2d0c1e55f56cf34a6f295c9367c16980a00fe0"
+      "sha256": "80fd79c5ab0cfd36e7dbbe07f0d64c1009c6c7842183cfb0d0c655352cdd166b"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-02.log",
@@ -11903,7 +11903,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-02/report.json",
       "bytes": 214357,
-      "sha256": "cecb9c62d4d8dcb5216bcc5d0e37a5e8e62e8b2159e924b249bfeafa19506b75"
+      "sha256": "3b0cb9f98e6b22184eeb34aa8ddd9d21b54953ff392f6a2f3a770791ff1eda36"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-02/tame-25.png",
@@ -11943,12 +11943,12 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/motion-tests-02.log",
       "bytes": 245,
-      "sha256": "64e115337ef32a2043fc1dc3d0249986e54f1b71982f0937c26055485d98072b"
+      "sha256": "3a0d15cdbfda07f0fa448f03a814587f75d19a08560c48f7ba76115823cd0cb2"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/motion-tests.log",
       "bytes": 245,
-      "sha256": "5eac2fb81ea2973a41b92a1ae20a83e494eda60e87cc7cf646b9cc05692d08d4"
+      "sha256": "07ef2c12fa71b7e0f144128715d87a5626b118adfc5699f93a4f0d0f7deb176d"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/mud-crab-native-02.log",
@@ -12123,7 +12123,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/mud-crab-native-02/report.json",
       "bytes": 214188,
-      "sha256": "241a3e372dd98eb90852ce7f84411e7cda335de320725be4bad5ba5c90586968"
+      "sha256": "1648c5aa5c0bfc9d33cb113d0f26e141df9027a6951ad0908161a993f6c17037"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/mud-crab-native-02/tame-25.png",
@@ -12183,7 +12183,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/native-census-01/report.json",
       "bytes": 994230,
-      "sha256": "138493f4bf263a23029375b3297f977b24d2abdc02dc621764bddd62f7343660"
+      "sha256": "bde8f8baa4201939807bfb9056a9ed221847b058a38ebc692b0dc84687e8f0db"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/native-census-01/vent-crab.png",
@@ -12653,12 +12653,12 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/persimmon-native-01.log",
       "bytes": 426,
-      "sha256": "a8680446fce66541ded2b6cb45d8c3f3cbc6b5c1b9496837f99d7908cbae38e0"
+      "sha256": "3c352149ef45c78a49ae44059446cca01332e27511e42ded572c5d3c3edba997"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/persimmon-native-01/report.json",
       "bytes": 181116,
-      "sha256": "1b6686cd09a70e83f6c513c8c53cea54f17db910f39946451cd5a750515e8de0"
+      "sha256": "272ad534d1f1d1229339e2975c7ee2d41b753fbcd9b8ebbcdf95c2b0c8669023"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/persimmon-native-02.log",
@@ -12743,7 +12743,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/persimmon-native-02/report.json",
       "bytes": 202066,
-      "sha256": "9992ee0c3b8581363f07f1a3f23b2c88125ab14f45bccb9aba96868bc844e5fd"
+      "sha256": "3c349d64f90db22cbda1787994e55e2eb908a7e0a529fda1b4d6b29598a86b4c"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/persimmon-native-02/sway-25.png",
@@ -12843,7 +12843,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/persimmon-native-03/report.json",
       "bytes": 202015,
-      "sha256": "e531ec42a03a547c5bd2550a396b5e95014583892127e668f084f02a5c27f5de"
+      "sha256": "dc7ee7a51d072612a046334d1ab5bbd0fa48efe48b026431634c734856e8a87f"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/persimmon-native-03/sway-25.png",
@@ -12863,22 +12863,22 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/pincer-tests-01.log",
       "bytes": 242,
-      "sha256": "285e574e578ba15c15e8e119a1c7f00f591b342433a3a7d76b2f064afbadae1e"
+      "sha256": "5b32a8eb81e58e5383f60cf924141cfface5204b326b7b0b47c33c86ae86e1b3"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/root-validation-final-02.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/root-validation-final.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/root-validation.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/signing-blocker.json",
@@ -12903,7 +12903,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/toolchain-check.json",
       "bytes": 6907,
-      "sha256": "de178f275b5629378b99235d2ab4ad81b61795689dc26a65517eb44a8a8fc6b7"
+      "sha256": "bdfa7282e9d47d59dddc148bec70d8a1c969bd7780c1c953da1422db5a301813"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/toolchain-install.log",
@@ -12918,7 +12918,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/toolchain-verify.json",
       "bytes": 10037,
-      "sha256": "15890c65d93da911b1c1466ed616efe904ce92b25ac2be50ae109f4153403d0f"
+      "sha256": "714a60a08a485449e49bd68c2fab6e93e29d6385f89a2803d6eab22307f11cae"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/typecheck-01.log",
@@ -13108,7 +13108,7 @@
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/vent-crab-native-02/report.json",
       "bytes": 214683,
-      "sha256": "c11763204103270a09ddb0d767f0e680f3249931a2cfe0eb190b1772cb6f8dc7"
+      "sha256": "d573dbc44da9918649ad6d442983abd662615bd004d302dadd338a8daf38c3cb"
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/vent-crab-native-02/tame-25.png",
@@ -13208,7 +13208,7 @@
     {
       "path": "port/v2/packages/art/src/invertoverrides.ts",
       "bytes": 239774,
-      "sha256": "9e66ca538e009a04a9bff07ac5b13f952be397341147f25fbdfce595d10079f5"
+      "sha256": "98e8ca123cf85650972e93d6452c77fbeca52f23868189237f3230c0b839e010"
     },
     {
       "path": "port/v2/packages/art/src/painter-part-capture.ts",

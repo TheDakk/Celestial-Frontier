@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-04-fit/authoring.json",
-      "sha256": "4860cd36c43bb774dbab8b686cecce2a00062707190f152bc0ea30741c4eee9e"
+      "sha256": "478fa93e5ed189385100c44e78808f103ce96659f942dbaa9612c5c4d04db5ef"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-04-fit/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "03d4c37156905f30b436b06134280f2c9a7db3e1e3f918e2c0a058daf10e2add",
-  "bindingHash": "18808ae70a3b9859cf1107bdf85be0d15155d442cbb649cd41aad5d5f2c58665",
+  "recordRecipeHash": "f27f378692e346728c970161b0f7d2f5b44b70400844a6556434191839123549",
+  "bindingHash": "988b87e008b7e94f61317c569885e83b0b7952dcd7e23dfd145610c7177c8608",
   "contactEndpoints": [
     "legFrontFarFoot",
     "legFrontNearFoot",
@@ -75,7 +75,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-04-fit/authoring.json",
-      "sha256": "4860cd36c43bb774dbab8b686cecce2a00062707190f152bc0ea30741c4eee9e",
+      "sha256": "478fa93e5ed189385100c44e78808f103ce96659f942dbaa9612c5c4d04db5ef",
       "unchanged": true
     },
     {

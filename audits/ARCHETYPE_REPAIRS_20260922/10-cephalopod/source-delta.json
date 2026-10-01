@@ -5,7 +5,7 @@
   "originalHead": "5a58994496f0ec0ac05ccc786d57094d98173942",
   "originalStaticReport": {
     "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/static.json",
-    "sha256": "1af0bdbbd27311a9d661be631e968ecdc82c93c34b302d08cbb7a8ef51ac5955",
+    "sha256": "33274fb9c44d91a3bcebc732196d3b96356eeac4bbe0071eff2b86b8d268392f",
     "status": "PASS_STATIC",
     "actionRows": 13,
     "presentationStatus": "PASS",
@@ -13,7 +13,7 @@
   },
   "originalSourceReceipt": {
     "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/static.json.sources.json",
-    "sha256": "55b9106768f833874b7f9f7a49125ed8530e67a3d6997923547340f4d05d8db5"
+    "sha256": "051e6e0c982654aa00c52a399e87b449b6e90681ef9da16595c26dbddeeee860"
   },
   "counts": {
     "originalSources": 50,
@@ -26,8 +26,8 @@
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/static.ts",
       "repoPath": "audits/ARCHETYPE_SPRINT_20260922/static.ts",
-      "originalSha256": "d7486c9a7078116c370afdbb8b6d4ae01c6bd5288b8607e99bcf2765e1fa244b",
-      "currentSha256": "d7486c9a7078116c370afdbb8b6d4ae01c6bd5288b8607e99bcf2765e1fa244b",
+      "originalSha256": "7808af46f1687117be08d56a1a10b0fb115306fa48d605934fc2677af5072cb3",
+      "currentSha256": "7808af46f1687117be08d56a1a10b0fb115306fa48d605934fc2677af5072cb3",
       "status": "UNCHANGED"
     },
     {
@@ -416,14 +416,14 @@
   "originalFitInputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/record.json",
-      "originalSha256": "3cf39ce852b5eac82c7cee2c653312dad7866f41bb0b143bff20da5130f8f8d6",
-      "currentSha256": "3cf39ce852b5eac82c7cee2c653312dad7866f41bb0b143bff20da5130f8f8d6",
+      "originalSha256": "80a6715012488932fd43bb8dc6a60f036b2b54d04fa04e5a95b580a8c6224e2b",
+      "currentSha256": "80a6715012488932fd43bb8dc6a60f036b2b54d04fa04e5a95b580a8c6224e2b",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/binding.json",
-      "originalSha256": "a78a1f2c81cf33274d3b9ef82d1faa793b2f4d0a4191b9643c77e94ed0e5cb0a",
-      "currentSha256": "a78a1f2c81cf33274d3b9ef82d1faa793b2f4d0a4191b9643c77e94ed0e5cb0a",
+      "originalSha256": "b42ad8d857f402461cacb57195b5ce05220164f8aeb2576b8483e09cdb65f311",
+      "currentSha256": "b42ad8d857f402461cacb57195b5ce05220164f8aeb2576b8483e09cdb65f311",
       "unchanged": true
     },
     {

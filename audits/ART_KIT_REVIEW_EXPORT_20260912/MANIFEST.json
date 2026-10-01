@@ -23,7 +23,7 @@
     {
       "path": "PROMPTS.md",
       "bytes": 133595,
-      "sha256": "b098bf4038f0b917a16bfc234d9efe439b9c8e0a71e2cbb3ba948dabbcbe3155"
+      "sha256": "fdd1c6ab04cd4289ebd8dfc130a8a4eb631ff94c8215722bd955d3d6d9cba13a"
     },
     {
       "path": "README.md",
@@ -33,13 +33,13 @@
     {
       "path": "REVIEW_PROMPT.md",
       "bytes": 8584,
-      "sha256": "6b94a3554fce01d20d5c4deb7a73a33374f4cf25537de50bdcfcd872c44ca0d6",
+      "sha256": "426cb16b613b71322280933c80915e387c9c591984b36c9955642236040df338",
       "source": "audits/ART_KIT_REVIEW_EXPORT_20260912/REVIEW_PROMPT.md"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/README.md",
       "bytes": 5554,
-      "sha256": "ecff30c6f03d21f3d907dfe942968bcd28bccae3ff26078d908ac3f5cd49e37d",
+      "sha256": "65356aa01c453e81f7d31c75c20102dea29e0ec27c2d6687f6e7bba1e10afc87",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/README.md"
     },
     {
@@ -51,13 +51,13 @@
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/capture-intake.json",
       "bytes": 8008,
-      "sha256": "dd56e0b945bb93ab734dc266b55a67cee58ea7bb47dd5903cea75189f47831b5",
+      "sha256": "8d0bd9a1fd304f46e98ce65e96d84a0682d67345d375bf1bea2fe61d40c3db1f",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/capture-intake.json"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/compiled-inputs.json",
       "bytes": 97622,
-      "sha256": "a40fc38329386f4aaeb6014f0e389c199769e753a5c8f0705dc4840aa1ab7218",
+      "sha256": "c1d262845059e13d55fc8597307891c6046788bc1a5a1c18b9f944c8473d2b9e",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/compiled-inputs.json"
     },
     {
@@ -75,7 +75,7 @@
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/family-compiled-inputs.json",
       "bytes": 145857,
-      "sha256": "ebf7647e56e637b782a2a711fd2eb7182968e733fb8583f47f57d72a9a94d7de",
+      "sha256": "adc839f2944356a7f222ae4650a8215fc9a53f0ec9217cb55a84913719f1474e",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/family-compiled-inputs.json"
     },
     {
@@ -159,79 +159,79 @@
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/civet-prompt.txt",
       "bytes": 7020,
-      "sha256": "725a3f23e3aa5fe2cd962cafc4adb9b51c4de8131e0977ae127dec246991d2de",
+      "sha256": "eb431666f217d29efa7e97a58f528a504e79fc47fef2570d5fcd93848f304997",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/civet-prompt.txt"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/cranberry-prompt.txt",
       "bytes": 6652,
-      "sha256": "d3c9fdc6a515dbc1d4881c86ab9572944ba2c2a292450444b077760ddc8062cc",
+      "sha256": "aa1d89280e2eb1562a5dc1e3a8d8a51abd7690e41cd395791bd7fcb4ab1a81a3",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/cranberry-prompt.txt"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/devils-club-prompt.txt",
       "bytes": 6670,
-      "sha256": "ee68e694cd061c652af912289bd5c8fc0747f32ea8d36999eadf442ff429836b",
+      "sha256": "57999298702d7dd8da1494eb3edc782f5433f8493480c3673bca7883ee2edf51",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/devils-club-prompt.txt"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/earth-temperate-prompt.txt",
       "bytes": 6217,
-      "sha256": "330d2b8dd758982dec9f39f99e2fe4e99f3be74adf2e45e309c03d757c1b46a4",
+      "sha256": "4433271e252d7dae6a33f2e823986719546c3de491d67f231b2924508743400e",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/earth-temperate-prompt.txt"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-bird-prompt.txt",
       "bytes": 7413,
-      "sha256": "2b2fa3e930dcf326f9cfb44e4afa8ea088d24f7e7ea5c18c4dc61ecf83763712",
+      "sha256": "d8d7a59f0bed32f40a0cb68dc49a60da63dcdb53d9c1c0195293432eba801bac",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-bird-prompt.txt"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-fish-prompt.txt",
       "bytes": 7525,
-      "sha256": "6f12fb2b10496d180022e0d26d3460598e11df74f7414d117ef719c6c30c99c8",
+      "sha256": "503bb1426247ca62a820e41d2f163bb44a144a5a335de193d3ac365178527181",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-fish-prompt.txt"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-insect-prompt.txt",
       "bytes": 7396,
-      "sha256": "db8a12dcdb7aa848a5b46f90d99394f2448cc31c74c8964ef2c9475bb7e7850d",
+      "sha256": "3fa00e67cd5dc2ef84de133e4d74891303d0aeaea762a5f8f14613a241d1f72a",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-insect-prompt.txt"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-mammal-quadruped-prompt.txt",
       "bytes": 7286,
-      "sha256": "aef988bc6d2c8ed5ffaa4b1025d0f173fba52afadf65a2d9b118f16101216b21",
+      "sha256": "d97cbcd267e66e176e931737ab3a401638fffaaf2b19c3674a1fbe5dfc25b868",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-mammal-quadruped-prompt.txt"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-reptile-prompt.txt",
       "bytes": 7290,
-      "sha256": "bf9efa25639763d4e80d3bb59d7fa1ccdc1c2fdf7d93b8702df579eac9776d82",
+      "sha256": "abd30b87a19244c16aa75ed3115065d31b2a770adb105bdb4262e6ddf0daa4bf",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-reptile-prompt.txt"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/frog-prompt.txt",
       "bytes": 6910,
-      "sha256": "7afd9cf0ef8bc27003204436162623e061936f6b9a466db0736961fed023a27f",
+      "sha256": "fac5f799700820fcef4997aa7361d90cf0f56f51986642fe46313c63248ed4a6",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/frog-prompt.txt"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/persimmon-prompt.txt",
       "bytes": 6662,
-      "sha256": "d1ae45545bc089770789841e60da1fd2869b2df774bc9e2d5a1ea67675ab304f",
+      "sha256": "6219a4bf7e978542f9827205199f98434209aff7e36468906ab7ec003525ac88",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/persimmon-prompt.txt"
     },
     {
       "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/platypus-prompt.txt",
       "bytes": 6991,
-      "sha256": "6fd4bd2a3052c5be17fa519ef8a127d4704f10cc5f50ca16d00e5c51b884b7a1",
+      "sha256": "4e1caaa9bd654f00d32f1d65fb944fa2beebd6cd79b40dcca4efde8d9d721255",
       "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/platypus-prompt.txt"
     },
     {
       "path": "audits/ART_KIT_ENGINE_PROOF_20260912/README.md",
       "bytes": 7588,
-      "sha256": "d74151eb52252e436c055d24779f0eb0fd35780f530d82da7ce2858341349f15",
+      "sha256": "1639fccdc656cf4713f08cad517d2757ac15830f9f8a957bca39b2fc3ed2f303",
       "source": "audits/ART_KIT_ENGINE_PROOF_20260912/README.md"
     },
     {
@@ -375,7 +375,7 @@
     {
       "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/result.json",
       "bytes": 173663,
-      "sha256": "c771916e9be71fae44e8f96452ed1cb9e75b4f5d3ee7eace4e78ad856da9ef5f",
+      "sha256": "fb83783fa49143c2eda22ee66ddbe2eb1eb98fa190421eab4f846c4ace1f9b31",
       "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/result.json"
     },
     {
@@ -399,13 +399,13 @@
     {
       "path": "audits/ART_KIT_ENGINE_PROOF_20260912/prepared-manifest.json",
       "bytes": 5849,
-      "sha256": "ae8979dd602492279200b1fa2624ab807a729145be5d761b32913a3dcd41cad5",
+      "sha256": "734e1498ae4888e244f5a6a3745fc99938b336ff15d9ac0901b6a5e2dc9f7549",
       "source": "audits/ART_KIT_ENGINE_PROOF_20260912/prepared-manifest.json"
     },
     {
       "path": "audits/ART_KIT_ENGINE_PROOF_20260912/recipe.json",
       "bytes": 86303,
-      "sha256": "497dbf701285e6fdb90b8522b712b07a26e054b4c4b72b79807dc2547d13dac9",
+      "sha256": "a43c0d79718c4d4672c2f82da6455f66e64a8435c569b5005cf39280b7ea4066",
       "source": "audits/ART_KIT_ENGINE_PROOF_20260912/recipe.json"
     },
     {
@@ -477,13 +477,13 @@
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/README.md",
       "bytes": 6402,
-      "sha256": "671b990ef33e19efade4173acb0cf1fb28e6a3a6d820072d714d9241d293f0c0",
+      "sha256": "645a2d11bbb3b9f240953a9ee1c66a46ea6d0ceebe6719c95458365602564989",
       "source": "audits/MIDGAME_ART_DIRECTION_20260908/README.md"
     },
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/intake.json",
       "bytes": 1609,
-      "sha256": "a6f1eed37e7014a8bb6be6d9e7374a2c19c69d9df11afad50080152a6dcf3679",
+      "sha256": "669f646b2c6ee525e8d54558ef2c70efa570f525adf0b5914bdd7f5d6a94ce3a",
       "source": "audits/MIDGAME_ART_DIRECTION_20260908/intake.json"
     },
     {
@@ -494,7 +494,7 @@
     {
       "path": "prompts/runtime/01-civet.txt",
       "bytes": 7020,
-      "sha256": "725a3f23e3aa5fe2cd962cafc4adb9b51c4de8131e0977ae127dec246991d2de"
+      "sha256": "eb431666f217d29efa7e97a58f528a504e79fc47fef2570d5fcd93848f304997"
     },
     {
       "path": "prompts/runtime/02-persimmon-chat-wrapped.txt",
@@ -504,7 +504,7 @@
     {
       "path": "prompts/runtime/02-persimmon.txt",
       "bytes": 6662,
-      "sha256": "d1ae45545bc089770789841e60da1fd2869b2df774bc9e2d5a1ea67675ab304f"
+      "sha256": "6219a4bf7e978542f9827205199f98434209aff7e36468906ab7ec003525ac88"
     },
     {
       "path": "prompts/runtime/03-platypus-chat-wrapped.txt",
@@ -514,7 +514,7 @@
     {
       "path": "prompts/runtime/03-platypus.txt",
       "bytes": 6991,
-      "sha256": "6fd4bd2a3052c5be17fa519ef8a127d4704f10cc5f50ca16d00e5c51b884b7a1"
+      "sha256": "4e1caaa9bd654f00d32f1d65fb944fa2beebd6cd79b40dcca4efde8d9d721255"
     },
     {
       "path": "prompts/runtime/04-frog-chat-wrapped.txt",
@@ -524,7 +524,7 @@
     {
       "path": "prompts/runtime/04-frog.txt",
       "bytes": 6910,
-      "sha256": "7afd9cf0ef8bc27003204436162623e061936f6b9a466db0736961fed023a27f"
+      "sha256": "fac5f799700820fcef4997aa7361d90cf0f56f51986642fe46313c63248ed4a6"
     },
     {
       "path": "prompts/runtime/05-devils-club-chat-wrapped.txt",
@@ -534,7 +534,7 @@
     {
       "path": "prompts/runtime/05-devils-club.txt",
       "bytes": 6670,
-      "sha256": "ee68e694cd061c652af912289bd5c8fc0747f32ea8d36999eadf442ff429836b"
+      "sha256": "57999298702d7dd8da1494eb3edc782f5433f8493480c3673bca7883ee2edf51"
     },
     {
       "path": "prompts/runtime/06-cranberry-chat-wrapped.txt",
@@ -544,7 +544,7 @@
     {
       "path": "prompts/runtime/06-cranberry.txt",
       "bytes": 6652,
-      "sha256": "d3c9fdc6a515dbc1d4881c86ab9572944ba2c2a292450444b077760ddc8062cc"
+      "sha256": "aa1d89280e2eb1562a5dc1e3a8d8a51abd7690e41cd395791bd7fcb4ab1a81a3"
     },
     {
       "path": "prompts/runtime/07-finisher-chat-wrapped.txt",

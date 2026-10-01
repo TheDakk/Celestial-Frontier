@@ -3,8 +3,8 @@
   "name": "Eider Duck",
   "family": "biped-bird",
   "tool": "image_gen.imagegen",
-  "promptSha256": "40dab71e953a30b5d0e4d06d011a72930303a3e4a5f53c50c9331e7297d63686",
-  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "promptSha256": "ed9b589a98765685e331037e7b4059191c72bce97cfe11143a675e3373722ba0",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
   "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
   "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
   "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
@@ -23,7 +23,7 @@
   "layoutClarification": "Species identity features FIRST: long wedge-shaped bill running in a straight line into the forehead; bulky heavy-bodied duck sitting low in the water; black-and-white blocks with a pale green nape. One Earth Eider Duck. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n",
   "poseClarification": {
     "sourceSubjectSha256": "1d145bd6df7633690a0853996ec2292bee4aa152918f5e63e7caf94fb257b439",
-    "previousPromptSha256": "046593b99d54aab4d9c8c17eb02fa9b0b5731438f23df56691ac22e85ed14f60",
+    "previousPromptSha256": "fbaaea18b23619452bf4ea31e9b9bedda9d96c6a32f32afadc88dafef04d1eed",
     "edits": [
       [
         "bulky heavy-bodied duck sitting low in the water",

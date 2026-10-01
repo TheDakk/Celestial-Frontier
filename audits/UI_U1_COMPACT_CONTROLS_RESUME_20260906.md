@@ -20,7 +20,7 @@ The tool does not say whether its font/two-frame boundary or subsequent geometry
 expired. All4 debugger pauses resumed; mapped stacks are same-Cosmos resize redraws. No lasting
 hang or product cause established. Two phone images only; tablet/desktop/comparisons/Slice/both
 phoneGlass NOT RUN. Exact evidence manifest UI_U1_COMPACT_CONTROLS_c57aaae_20260906/manifest.json
-SHA256 2fdd35a7609d65d98acdca61b341a5d63dbe395c505617704edc377c5437e964;18 carriers verified.
+SHA256 ac11217c0e28f83544796fdf5939d5c125645dd82ab7b60d8bef959d4f32aaa2;18 carriers verified.
 
 Stop at the red. Next bounded correction, if authorized, is exact restoration-evaluation
 identification and settlement evidence. No automatic retry, longer deadline, arbitrary delay,

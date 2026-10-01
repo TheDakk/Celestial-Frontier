@@ -42,13 +42,13 @@
       "log": {
         "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2-chain.log",
         "bytes": 566,
-        "sha256": "4f72db20df865718185700c019986e0e262c8da185d6a0d30936b12e50cececa"
+        "sha256": "04c8be01683db5afdad4c207078c38e41e322279018a7ba6d469c95e87007b53"
       }
     }
   ],
   "cleanupErrors": [],
   "locksReleased": true,
-  "staticReceiptSha256": "ef3f2f2912dd391ae76fd7cf682a3dbef02817aa084247a1a2e74cfa2033c757",
+  "staticReceiptSha256": "d7dbb1c2f8a7f3b7de80e6a3473a69a2610f9f854c382b811f540618962b2e8f",
   "failure": "AssertionError [ERR_ASSERTION]: native-v2-chain stopped; retained log\n    at step (file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/integration-build-native-runner.mjs:20:2)\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/integration-build-native-runner.mjs:29:2",
   "endedAt": "2026-09-09T02:29:25.535Z"
 }

@@ -541,8 +541,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "680e013221829e01699fb4e9f165446270f3bff9e022e871d96d6112206dc0d7",
-  "bindingHash": "32b8335545957634121b59ad588789155dabf160eddfc931caf5f3197361701b",
+  "recordRecipeHash": "6a7cbcbab6ebe589ee6be792d628777157a0094dc66c33f3ff08a1a2843270e4",
+  "bindingHash": "a95a5c6f9bd5e20761125ce7ed8e0f2d5fa69ea13541c8c1f59665e1c94e82d3",
   "family": "quadruped",
   "contacts": [
     "hindFarAnkle",
@@ -685,12 +685,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-02/record.json",
-      "sha256": "77595449583b8877f9f0ef1ea10f1de8ed5369c77bc8e3c251797d31326b4fcd",
+      "sha256": "5fdf686ce31045d6ea114735dbe89a1c59458dbb255461cc426375eae8e2235b",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-02/binding.json",
-      "sha256": "df06ba95478214f08ba6b7b99e655e8e457fb80d1d4bca2d15a253968e079810",
+      "sha256": "98a7fd87c0b49dc0c7441a4a1eb140fb6cb407402ee42eddeccb2228e86e1547",
       "unchanged": true
     },
     {

@@ -2,7 +2,7 @@
   "schema": "cf.same-subject-mask-provenance/v1",
   "scope": "Same Sturgeon subject, new facing master. Reuse its own six original imagegen raw outputs/prompts, then run fresh conservation against the new master/recipe. No old conservation numbers or source authorities rebound.",
   "sourceManifest": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/markings.json",
-  "sourceManifestSha256": "1171d2fc4ed6eecaf02062fa02e7c625d7355f91686862254e62860f1b942c0b",
+  "sourceManifestSha256": "e4b745ccd0f6686aa60333a7e4fe8a9d6c3bfbb778cd2974405fbc8b81405f93",
   "sourceGenerationReceipts": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/generation-receipts.json",
   "sourceRefusals": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/mask-refusals.json",
   "inputs": [
@@ -56,7 +56,7 @@
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/prompts/striped-rejected-01.txt",
-      "sha256": "465e408b279c40d17d1eb29b36f380eeb09bfe6ee5bc089a2cdc44603e3cb270"
+      "sha256": "2132373af95022cf2e4f957e2d4ace65e0e85e3b7a772f7d174fbc0f05540ec5"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/prompts/striped.txt",

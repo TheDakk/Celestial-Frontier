@@ -7,7 +7,7 @@
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/BATCH_INTENT.md",
       "bytes": 2486,
-      "sha256": "faafa6106b6d233608e99c82d5833624528bab23a0f479a47f474ecd43a89182"
+      "sha256": "de1b196ef83eb051516508ad603974e2700b7660877f88b45802cee4b2d8ed37"
     },
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/GENERATION_INPUTS.json",
@@ -27,7 +27,7 @@
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/README.md",
       "bytes": 7741,
-      "sha256": "4eff3e260dec55c5687b1c0a04b478b3fe8e0e6974b643c48d8bdf5877bb4868"
+      "sha256": "da4bcdc88ed87615d07dab029abc6d440d798c34cc40509d6fe3b297eb426e79"
     },
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/SIGNING_AND_SLEEP.json",
@@ -37,7 +37,7 @@
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/SOURCE_TAXONOMY.md",
       "bytes": 19106,
-      "sha256": "7b4eb65f7ddd7655d86811ced25cf7806b0c5b7c4672c51b267430c30c5c7909"
+      "sha256": "20d63d56c6eff0f58283e322d5396091733503066e1370f96c6fb94c9b90aff8"
     },
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/alpha-first/atlas-alpha.png",
@@ -77,7 +77,7 @@
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/alpha-first/receipt.json",
       "bytes": 5670,
-      "sha256": "ca493c4cc8d4fb1fd1703005374fa21623d9ef80584994a1e322150750cb076d"
+      "sha256": "3d6b280b0bf5f52239688171e8c345e9c783bc4d39eb0ce8a47dceced3021c6a"
     },
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/atlas-corrected-original.png",
@@ -92,22 +92,22 @@
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/extract-alpha.mjs",
       "bytes": 2226,
-      "sha256": "4658b193eeeb47fecf7218e11ef812e9e05dee0aec592d082a7bce8616aa491d"
+      "sha256": "a2bbc28ee2befa9ac1f7b7775cf2d8c3857284366d6b9df75c54e534df004e10"
     },
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/kinematics-tests.json",
       "bytes": 3405,
-      "sha256": "9da2cd859984002322118cb3988e5902640bb91e8d40fa8298d22564cb186c22"
+      "sha256": "3bfb77cc3d4ca6969f1edb12ccff914a2c1b76f793eb674621c6446fa04ee43d"
     },
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/static-corrected-results.json",
       "bytes": 7105,
-      "sha256": "0c1b4050ce02ce238bf4d2cfe1dacdf40a637a5c39149f44dee3c97752d807da"
+      "sha256": "aa8bcd36362ea47d8c798284f748accc2aa9254d4b87cf240a28de1e1980beea"
     },
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/static-corrected-runner.mjs",
       "bytes": 8650,
-      "sha256": "c1b131f1e85c527be77c3da5b088add78170fd7ea2d62cd76215dd935464f1d6"
+      "sha256": "3f9c4bd2b5d42b5ba0d1cd9f8eacc306bff9d4b3ca61b4efc1e75d00d92221d3"
     },
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/static-corrected-typecheck.log",
@@ -117,17 +117,17 @@
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/static-corrected-validate.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/static-results.json",
       "bytes": 1380,
-      "sha256": "61723ab51dd4932186b29821239716b732256201e0f2c8602d25264359514e4f"
+      "sha256": "74e3c398a459af0f5298364eb25e347af5395c4461375cf682bec6dc4608e058"
     },
     {
       "path": "audits/CIVET_PAINTED_PARTS_20260908/static-runner.mjs",
       "bytes": 7849,
-      "sha256": "7862e45126aeefeb178ec5e4655535e0a871bb9d4237b22af5a4ee366f77bbfc"
+      "sha256": "a362a7f66879200e0a6b5163bfdeb4968cf3358d04e5eae2903d6d2672123b99"
     }
   ]
 }

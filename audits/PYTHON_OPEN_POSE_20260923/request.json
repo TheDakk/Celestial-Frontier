@@ -5,8 +5,8 @@
   "scope": "One corrected re-prompt after old coiled master motion rejection",
   "authority": "Dakk: continue after explicit open-pose repaint proposal",
   "template": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/prompt.txt",
-  "templateSha256": "fbd1986dcd19df48220339d9fd28b326b813c8d17eec4342f80d0aba7027b997",
-  "promptSha256": "e844bf4a0ee7caf3585a7d17e5e75f95df0136c236f3a1b96c85999f683902ef",
+  "templateSha256": "ad321940119802242c786d2a64491c3d30d7575204589d2bcc3886f10d67bf3e",
+  "promptSha256": "1ac7942ba79a42ba95ad78929b0ce0f3b4ba523bf29f61f05e6968d734603830",
   "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
   "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
   "requestedSize": [

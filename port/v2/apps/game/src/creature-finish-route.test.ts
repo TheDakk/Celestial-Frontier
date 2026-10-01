@@ -13,9 +13,10 @@ import { decodePng } from './morph/png-decode.js';
 import { CARD_ARCHETYPES } from './morph/card-archetypes.js';
 import { PaintedCardSource, type FinishedCardMasterV1, type PaintedCardAssets } from './morph/painted-card-source.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
+import { repoRelativeSource } from '../../../tools/creature-animation/record-source.mjs';
 
 const REPO = new URL('../../../../../', import.meta.url);
-const read = (p: string) => new Uint8Array(readFileSync(new URL(p, REPO)));
+const read = (p: string) => new Uint8Array(readFileSync(new URL(repoRelativeSource(p), REPO)));
 const hash = (b: Uint8Array) => new LocalModelSha256V1().update(b).digestHex();
 const fitDir = (name: string) => 'audits/' + BATTLE2_PARTS_FITS.find((f) => f.earthName === name)!.dir.replace(/^\.\.\//, '');
 const cardDir = (name: string) => CARD_ARCHETYPES.find((a) => a.earthName === name)!.dir;

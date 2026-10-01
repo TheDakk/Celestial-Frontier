@@ -517375,7 +517375,7 @@
         "ownerId": "authored:P1-coconut-crab/generation-01",
         "earthName": "Coconut Crab"
       },
-      "recipeHash": "499b3d3e3bc9c34be83603ad31b6ac8527c732580307230610f1d69f1bab1dcc",
+      "recipeHash": "0f92051ebc70e34f6018868f3b247defb9913c00632a3d9fd14d149106ab1b59",
       "template": {
         "id": "brachyuran",
         "version": 1,
@@ -713067,11 +713067,11 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/record.json",
-      "sha256": "12c19c9543b0ce8924cffcc11092854743b07840496615207e1e72f62ad2639d"
+      "sha256": "42e9fb23e0b1edd5c722115c46c97d5bafc330870fcd656dba27c04777af65c1"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/binding.json",
-      "sha256": "021c0850f5c1735411313a5b3c9167b87bf65a25f7d712a123e0e2534bd8553d"
+      "sha256": "c4228f2e9083c7212367986af79b173ee13ca933a45f49e6921c83cc8792fe4a"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/keyed.png",

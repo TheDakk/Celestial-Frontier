@@ -138,8 +138,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "e9dcb7f05109bf5d758eb6d7053792ea93ffc677f05978c2764fd3df5dda9335",
-  "bindingHash": "a2b09bd629d3db5344971a3731f8c56a4950fb83eee9938f21b4afa42cab5359",
+  "recordRecipeHash": "ab3049f66313ddd6c6655213317d485a43fa6c9487915ceb474dd2930ce5c7a1",
+  "bindingHash": "16543657b99bfe274d84c4c3f4c4ca30e55c5f2acc0b53e6612c18d8483b9869",
   "family": "serpent",
   "contacts": [],
   "realm": "land",
@@ -235,12 +235,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/record.json",
-      "sha256": "031738b8c7c663c691de8bba5d904440fa8d3cf0aa84fa423b8edb0fd14bb807",
+      "sha256": "0029d9dfc80ad72bb8d701273550e448f58c1349a9a920a927d50db4d86baff0",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/binding.json",
-      "sha256": "070c72edd657bed7cbcc0707f28a1be316fa478b696ac2073f3720eeee1ebde8",
+      "sha256": "37d058502d9d5011b2e220d3aaaea5bba8c49d8e51224a44f189a707c0028d5c",
       "unchanged": true
     },
     {

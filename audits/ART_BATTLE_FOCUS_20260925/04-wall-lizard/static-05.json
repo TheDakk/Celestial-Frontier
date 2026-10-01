@@ -708,8 +708,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "80fa02bbba92d51f320e4b56e36521e228bedf3388a9c7fed32b2de20afd5b4e",
-  "bindingHash": "7e7bb35711ffc40fc6d9d822a857bee963273784d1cb623b47acd6ea2f288597",
+  "recordRecipeHash": "ad0d4b051d40996c5e4a3204d3fb4a0088f779995bebbf864d0aa0f46e3265d7",
+  "bindingHash": "8b498d4f144fb0324a516f0eddea7e839159890ff6ac5ddaff65a8ea637f7dd5",
   "family": "quadruped",
   "contacts": [
     "hindFarAnkle",
@@ -990,12 +990,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/fit-05/record.json",
-      "sha256": "ce46a3bce5956cf6ef7aaa39c0d4c57a41dfa3a37fb9c7e57ae14f33847147cc",
+      "sha256": "b36eca5018a0c0ce717a670694d5a8b6987160670cd5984945ebb9454e367786",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/fit-05/binding.json",
-      "sha256": "0fb7c3286ef64cdbad948d859ff657e30bc9dc460195239a1980a0309775d116",
+      "sha256": "b874706dd8b78e64008652c4781d805c2110302d3f0134242d689863d08d2a7c",
       "unchanged": true
     },
     {

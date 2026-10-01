@@ -14,86 +14,86 @@
   "sources": [
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/04-insect/contact-diagnosis-01.json",
-      "sha256": "8607b8de2b9aacfb6578ea02f9ae9078bb0468b1b64a7628b03e5defa6d63488",
-      "afterSha256": "8607b8de2b9aacfb6578ea02f9ae9078bb0468b1b64a7628b03e5defa6d63488",
+      "sha256": "e374587ed0d9cfaa36335cc121e93fc2eb88f34cbe6a5492f0b95dbef3446c38",
+      "afterSha256": "e374587ed0d9cfaa36335cc121e93fc2eb88f34cbe6a5492f0b95dbef3446c38",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/binding.json",
-      "sha256": "d23162df16d6c89d1f1b16d19acf52984ff73dc5e1bddf31e6430bb955464c8e",
-      "afterSha256": "d23162df16d6c89d1f1b16d19acf52984ff73dc5e1bddf31e6430bb955464c8e",
+      "sha256": "43f1c495f0a2edf73024f499c02e45ef22405dcddbb4a45468c51ebfc16948f2",
+      "afterSha256": "43f1c495f0a2edf73024f499c02e45ef22405dcddbb4a45468c51ebfc16948f2",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/record.json",
-      "sha256": "4e935e3ab068c2ed17e5d993bb542cc4f7551e549772b0d3cce772df610d50b9",
-      "afterSha256": "4e935e3ab068c2ed17e5d993bb542cc4f7551e549772b0d3cce772df610d50b9",
+      "sha256": "079e15a8ca95a34e491db38377875b5078d7bd5350eaa23b872b7372674b13fe",
+      "afterSha256": "079e15a8ca95a34e491db38377875b5078d7bd5350eaa23b872b7372674b13fe",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-04/binding.json",
-      "sha256": "e3d008b1c15beb7dc83d36bffc034e622050bc5941e27f3f26169220d40cbaa4",
-      "afterSha256": "e3d008b1c15beb7dc83d36bffc034e622050bc5941e27f3f26169220d40cbaa4",
+      "sha256": "14d2f4cffd84dd1b2ff6e2d0355533a44a8caecb9857798ac31f24fbed137710",
+      "afterSha256": "14d2f4cffd84dd1b2ff6e2d0355533a44a8caecb9857798ac31f24fbed137710",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-04/record.json",
-      "sha256": "8d666399db029b6a73dcdc1f23714a0f5a5861d3c98e1e3179b2734f99fe4294",
-      "afterSha256": "8d666399db029b6a73dcdc1f23714a0f5a5861d3c98e1e3179b2734f99fe4294",
+      "sha256": "33b4aad2abb1d0713cfe18b862b55fd912716e88a8d86272a4d769a2e07bc638",
+      "afterSha256": "33b4aad2abb1d0713cfe18b862b55fd912716e88a8d86272a4d769a2e07bc638",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-06/binding.json",
-      "sha256": "cc602110e4769585b9b05c13eece79b3161aff0e445a1a01fbc43809c6a484bd",
-      "afterSha256": "cc602110e4769585b9b05c13eece79b3161aff0e445a1a01fbc43809c6a484bd",
+      "sha256": "cbc800939667671769829be4fd2fcc0c0c34a303b4be2a64fd60b65e1bf3c94a",
+      "afterSha256": "cbc800939667671769829be4fd2fcc0c0c34a303b4be2a64fd60b65e1bf3c94a",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-06/record.json",
-      "sha256": "07674cb93baf4ad78c47fee2a40b26e98f490c2ed91ac3d9fa085bf0b3c7f802",
-      "afterSha256": "07674cb93baf4ad78c47fee2a40b26e98f490c2ed91ac3d9fa085bf0b3c7f802",
+      "sha256": "fc7dac2cf13039ef059456197a7240536f1f9a4dda0641c74b3e2991e4104f19",
+      "afterSha256": "fc7dac2cf13039ef059456197a7240536f1f9a4dda0641c74b3e2991e4104f19",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-07/binding.json",
-      "sha256": "49e196962e0d20badda353509ac10a7c05283112e3ec269aeb29c73abb4cf648",
-      "afterSha256": "49e196962e0d20badda353509ac10a7c05283112e3ec269aeb29c73abb4cf648",
+      "sha256": "54ffd4bd1a176dd15a732191caab475ad3bff923420433d120be75392fc3dfe3",
+      "afterSha256": "54ffd4bd1a176dd15a732191caab475ad3bff923420433d120be75392fc3dfe3",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-07/record.json",
-      "sha256": "eef94239c71e9941230af757226839e80040e065ccd4612422f83b30d098f732",
-      "afterSha256": "eef94239c71e9941230af757226839e80040e065ccd4612422f83b30d098f732",
+      "sha256": "e4e2af3b2db5fcc417beb92a0ea65942cca426440cf2b60c27aab9f53355f814",
+      "afterSha256": "e4e2af3b2db5fcc417beb92a0ea65942cca426440cf2b60c27aab9f53355f814",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-contact-diagnosis01.json",
-      "sha256": "1d484a2cb73eed34335ac6f4361a04ab4075fba393eb57afbb7891c404ef6ff8",
-      "afterSha256": "1d484a2cb73eed34335ac6f4361a04ab4075fba393eb57afbb7891c404ef6ff8",
+      "sha256": "60bbcd91bfbed9f430e3834ef92247a379801b349ce3377ee2375bc0f3938f45",
+      "afterSha256": "60bbcd91bfbed9f430e3834ef92247a379801b349ce3377ee2375bc0f3938f45",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-contact-diagnosis02.json",
-      "sha256": "edca860960cf6720503334156a272d89611756a84c165d8b74224ef10e9a8e75",
-      "afterSha256": "edca860960cf6720503334156a272d89611756a84c165d8b74224ef10e9a8e75",
+      "sha256": "0d2a0b1c1e21c3a55895837b329c379b15d6ce8e312af7c0ea4af2f98efcc1f0",
+      "afterSha256": "0d2a0b1c1e21c3a55895837b329c379b15d6ce8e312af7c0ea4af2f98efcc1f0",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-contact-diagnosis02.ts",
-      "sha256": "865a39e9f47eea4d6baed67457df867c14771e989319d65111faec4b75fe9cbc",
-      "afterSha256": "865a39e9f47eea4d6baed67457df867c14771e989319d65111faec4b75fe9cbc",
+      "sha256": "2dcb0324e4286c523eb743b8887a073ad0d45fe8c53b85bc0c6e423e2b06cc7d",
+      "afterSha256": "2dcb0324e4286c523eb743b8887a073ad0d45fe8c53b85bc0c6e423e2b06cc7d",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-contact-diagnosis03.json",
-      "sha256": "f511cad8764240f89d627d9eb5efecd029e53b044214d16ebb0d7a3608b03177",
-      "afterSha256": "f511cad8764240f89d627d9eb5efecd029e53b044214d16ebb0d7a3608b03177",
+      "sha256": "b441bba48a29af497dc1cc411e7254de7452b3172c8722d4e0d96c943c00a1e9",
+      "afterSha256": "b441bba48a29af497dc1cc411e7254de7452b3172c8722d4e0d96c943c00a1e9",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis03/report.json",
-      "sha256": "6ed6a7d8af5d79016ce3d69ffbc2c63bcd3110d3c723576038af7e9c24cface5",
-      "afterSha256": "6ed6a7d8af5d79016ce3d69ffbc2c63bcd3110d3c723576038af7e9c24cface5",
+      "sha256": "07cb55d4a4ae1227d037d4c7476ee281a4f40e46397230b8435cae44462400ab",
+      "afterSha256": "07cb55d4a4ae1227d037d4c7476ee281a4f40e46397230b8435cae44462400ab",
       "unchanged": true
     },
     {

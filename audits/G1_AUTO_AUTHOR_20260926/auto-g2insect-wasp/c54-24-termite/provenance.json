@@ -15,7 +15,7 @@
  },
  "reference": {
   "subject": "c86-wasp-v2",
-  "authoringSha256": "180e178f410da38d16162d9adf63619ca76b9d35a28ed5a1cb5167be7abe2fe2",
+  "authoringSha256": "d343dc4fa665a939a14c7d926b71dbf4439c7ca548f92f529ff3eb74a90149a1",
   "masterSha256": "12e63984cf520e264a89d3f03c5de338f239c13bd5bc4a2bf947aebf7ea55259"
  },
  "habitat": {

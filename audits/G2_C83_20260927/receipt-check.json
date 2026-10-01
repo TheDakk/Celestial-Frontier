@@ -2,175 +2,175 @@
   {
     "id": "01-grouper",
     "masterSha256": "f451a42377174338d5bb6a8246e9338c4e882a243fd98f705ddc8b824a00568c",
-    "promptSha256": "f782f0a0d1a60c0c380fcaadefdf47d4e580560ae757efd995e4fce96023b502",
+    "promptSha256": "25c35a7b492547941949c9cab9e16f526d95a1953e98f9a72d82483eb3ff3a21",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-c24f1626-6c7e-4b31-9826-479177896b14.png"
   },
   {
     "id": "02-barracuda",
     "masterSha256": "03aaf1eaf0a89cd5ddc1eadcf125e17f15090b5a5cfc2b2fa3d4388e4abf3d3e",
-    "promptSha256": "f83ffa603e280fea94edc457f613b283a304b1b0b04e69fe8a509abbbdff3a85",
+    "promptSha256": "355c8d612ce613878f33cbae07d51e8b9e44832968b2bc91efb550b4e6982790",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-6f5d1411-4f9f-4089-9bcc-0ca14093372f.png"
   },
   {
     "id": "03-tuna",
     "masterSha256": "5f6815380b2578b6e3b49be2ef0756f1740e8c04997ccda0bcc5a24b0798ccd6",
-    "promptSha256": "05b736da5061faae2f30002d9d192c58643801f66061857f642d55d48bb0ff02",
+    "promptSha256": "ae8af831aba153427f640d6f39773e6e9dad439e555040853273e58e12fb8d1d",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-b750ded9-583b-4409-8247-1ec21e2d305b.png"
   },
   {
     "id": "04-marlin",
     "masterSha256": "3290fbb15c51b2074574930e4de96e52f3814fd6b52c5d53a1d2911dbdcaa522",
-    "promptSha256": "07dd4cd61df64c3c4df637eced3023684d4692d73599a991557c0d20bc89d5f8",
+    "promptSha256": "8795d90f8497e3171af7b3529c3d218328feeaad7a07f84a33cae7d6a432d21b",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-8ffc701f-9d76-4650-893c-d1bba0d39574.png"
   },
   {
     "id": "05-sailfish",
     "masterSha256": "a7fb5ac2b596a7c6ae9ce83da134e4bb02eb6e44a44eae93c00bb0f124fba7bd",
-    "promptSha256": "edf4ebf3c16d18607d1ba41dac52a5a8caf0cb7161b93eb1e29511252268bdce",
+    "promptSha256": "fa6f01a142ef3a0c19d8a8b8c971b4de3c6749cf982b5c8e3c9a71bc063bd022",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e12d8050-6624-457e-8a60-d1b4d523ea04.png"
   },
   {
     "id": "06-swordfish",
     "masterSha256": "25cfd6dd1374dffef67cbc81718a4a61f071de2b2fce951f77f275fa6c6a4ecc",
-    "promptSha256": "4e8aaf52f21ab385fb77b9289a0af361c5348208c984c6a0d1b04fe275b8807c",
+    "promptSha256": "59da2ab739ef1cc247d25fdf652cf7e9f0acf152d7630286073d0e6361e0666b",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-94f2238c-bc92-44f5-b4b8-a39b7e9ed97b.png"
   },
   {
     "id": "07-mahi-mahi",
     "masterSha256": "d4582b15b20e2a84c19c6c5bbb23e7923e77119b7a468843523ddef69dcad25a",
-    "promptSha256": "60cffa772d1a9205e6d0cb802c520278933edd86e5c0ce9ec66a08aa3b70315d",
+    "promptSha256": "34e16046e997bb8eff9b5e5d1f12b68eb40cc6b06d3f0cde068e4066ac4e132e",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1a6e0046-1362-40be-961f-261afc272c1d.png"
   },
   {
     "id": "08-wahoo",
     "masterSha256": "0c8295ddfa46c33598557f91f67494b8808314126e0ece37e4c8bbefb9c98baf",
-    "promptSha256": "cd370a21876f2e071461296e1e2d71ddb643228071b1d3e771b7736a3b6ab8db",
+    "promptSha256": "1336ccfc2b1e7956dcdf09e8b82a0f26bd71caf85247fb74452f856151461915",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-0a6a0517-40d4-4ab3-9cbc-1e5cea6d4255.png"
   },
   {
     "id": "09-macaw",
     "masterSha256": "426bfc3f6a96e3917735492f8da1b04338d4535fb9c3ba6da9c86b069735ac51",
-    "promptSha256": "98f823351dcbe2c65ddafb8f5357a77834cf39ed1530633ef4818b6b8a34f56c",
+    "promptSha256": "1b7f56acabf4b8e71aacf0ce939730ef51b20c1cc89fb62985ecfafccb9d4485",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e4919838-edbd-4043-8330-3e458702039f.png"
   },
   {
     "id": "10-parrot",
     "masterSha256": "4a90e245f73422380ffbdb1863487d9882a7e86f291429d966d06996423384b0",
-    "promptSha256": "6122e63eb8381e1a4e99e4b1b18ca42c5e6b256bea31887805c8ea562fce6a86",
+    "promptSha256": "ef2f152f9369b6de60f281f95793b1aacf361d49f584116121a0c98c9b52e67d",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-57c77d26-eb7c-4583-95ed-4de4317e1f4f.png"
   },
   {
     "id": "11-toucan",
     "masterSha256": "b00f5cb770e58fa836ec83caab0c7a50e28faf51817f840fbe7769d5e2ed036b",
-    "promptSha256": "8419c9ca0e2d18e98f2589024b36652a31fc0a693de1777e4ad8563e35fd2779",
+    "promptSha256": "d963b0debd8ef10fdf11e722ce1362d32ff2710bf6a0a6d41fa282d3f4ed819a",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-062ed2d6-5786-4bde-b7df-210821ac4e92.png"
   },
   {
     "id": "12-hornbill",
     "masterSha256": "0cd149f82b95dd913e46f85281661532ceb5372197d14d22aed8f72f6427987b",
-    "promptSha256": "56b93dfe93ea8fb973bff95b4814eac081701e54b01b8b6d125f97a64206ae53",
+    "promptSha256": "23fb3fc410bf2862dfd9e4335a7d089744c6bd30e7f42c81ce8c491ac27e0faf",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-2503ad94-1254-4613-83d4-6f7fc9ad0c06.png"
   },
   {
     "id": "13-tanager",
     "masterSha256": "b29c75e172a38cc05447f686c3c674d3b0b61e80c4e3135307624c723938f00d",
-    "promptSha256": "4798034357a3feb97c9fbec3445436265e0724e431ae103e9dc9bd4fc53038a8",
+    "promptSha256": "23aba67e63b7a69d802693ea48ae38194c82b6b831d45915b443ef00be157c81",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-c580da60-1827-4b96-98c1-17f2692bd34c.png"
   },
   {
     "id": "14-weaverbird",
     "masterSha256": "7fdc5dfb231fc5f58818f161d3951f28068077eec3bd228a9ba3a439a1883776",
-    "promptSha256": "ce5ff8d75ef9e79e38ca8bc6089d8d96069a993e5ccf8593152bbcc080209b68",
+    "promptSha256": "23eb8e870b09727bea8600b66dadd5761076833e573193e814d38727c12d59c0",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-1433ecad-b736-42bf-8b1d-ba701659b341.png"
   },
   {
     "id": "14-weaverbird-standing-v2",
     "masterSha256": "14aa54a2c23d8f1187744858a95ba451085a7931b24413c7b2c2db5e1adf86d8",
-    "promptSha256": "e12cac883aa8f330ee190d5884443f75be644a88a0a9801ed616e206412604fb",
+    "promptSha256": "3178e8df1f5d1c713258b7a5f19f181e86b07769837eddd6762a4712b2abdbc0",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-84a7d10a-963a-444f-a1e6-9d6e2d4b9e91.png"
   },
   {
     "id": "15-kookaburra",
     "masterSha256": "f4f59616914083d41907154c5bb1e2bec35400b82c646a27270022c8587dc7e9",
-    "promptSha256": "08f2619e47291527fa75a36e1d33a097c84a35ecab241e5382a64605fbc6777b",
+    "promptSha256": "43fa81e5de87d5fdd7ea4a8538539359a3c1fcc6219c3d6e5e8900a67b6bbb40",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-e819136d-b181-4e9a-b536-31f8d8c4622b.png"
   },
   {
     "id": "16-cockatoo",
     "masterSha256": "88404ba74cf14bdd6d1c6eba3f277f94611eaf9966cb2e589087129f7fe1e6ea",
-    "promptSha256": "ef3a4620a5e01cc613fe437f9899c99c4d875155f0f9766773deb55bbec74ee7",
+    "promptSha256": "56dce8a332bb978a3f61b510594966cf4d272c244c4b33c47ffe99eea6dca0f9",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-59ecf9ab-341e-4a67-bb11-0c06619bc9c6.png"
   },
   {
     "id": "17-fishing-cat",
     "masterSha256": "d33174c28f5d8d82cdd70a450e450cfddce5ae79a28cbaea8e8fb52041edd8d9",
-    "promptSha256": "8b7aa8683190d80da8c218fdfc5c6549bfca82eca22767b16623de8a896eda84",
+    "promptSha256": "abf34ba878e3046ed0e3d8febf8f205eb2084f4de7e32642d864b500f8674bdc",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-ec507f61-3e0e-4d75-9ae3-7702601849a4.png"
   },
   {
     "id": "18-cheetah",
     "masterSha256": "e5757ca92d94b12ab1f51969264a2fd522bab82abac6ae73383149ec699cc7e8",
-    "promptSha256": "2a081c7fb4cbcbfc039e005492242c58edd5110734248fee9c816dc7184dc3a1",
+    "promptSha256": "69d9cd3e3fa6cd9b22cf2f724f68473d34a5b9285afc3a70edceb6f6decce465",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-c5942631-8e63-46b4-91be-fce62c696e42.png"
   },
   {
     "id": "19-african-wild-dog",
     "masterSha256": "6c065b50401371701d1c882d948e4adce38400917a614a009085a91a94439f24",
-    "promptSha256": "b9d576124c07c8cea2c26ba8046b66fbfc3c549be42b7b24e14c3996f8b579a6",
+    "promptSha256": "814bc7e53be45fc9f970f1f206f813667586b0b3ae2d8abfe135c8ea00971c57",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-425ac84b-0ae5-4856-8fd9-e21c95332aa2.png"
   },
   {
     "id": "20-spotted-hyena",
     "masterSha256": "de358b8aaf9cf7fb88fc767744eb0e86a3ff6f77f619beb356f541c937c9c838",
-    "promptSha256": "e11fa32228095457c442a994209b2ffe00afbaaed6c57676cca4aa571fce713e",
+    "promptSha256": "d937cdd276d9bd0bf7bdb1d0eef710a98cf74e51d14d2f19c57617e730010d36",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-70238939-baa0-4235-b388-7db356de1fb2.png"
   },
   {
     "id": "21-maned-wolf",
     "masterSha256": "ad48fb7d33b66127c7bd96a4374c609072bc1222f6e2d54e089283ac9c5e5688",
-    "promptSha256": "671b4193290c878a0ac075347c88d4bcb0d8cc2961a09f85e8c60c625a6d7f68",
+    "promptSha256": "ca67b7983ba96aa1056f5f0b45041afe8b4a84c214244bab650bb0886c00ef15",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-2b721085-73ef-49a4-9d13-2886ef73d89f.png"
   },
   {
     "id": "22-sand-cat",
     "masterSha256": "55919c68b82bad8812f7dea59c8d2a8e0e2ba2c9e1a0507aa16e2c47a08ae254",
-    "promptSha256": "6bb4be98b4de303277d546d91784df0d48704992799ef005697523abef67b29c",
+    "promptSha256": "7b1976baa839621c249e7e4b13bf58d8f812a3989409d564db7d0141cfe3635a",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-70916557-da84-4d36-bbf0-cd478769f69d.png"
   },
   {
     "id": "23-prairie-dog",
     "masterSha256": "e94848c7539a542a41b3b896051d88e2b62893faa5f062ebf40821fefee3f459",
-    "promptSha256": "76d48ccc4954f60e37886adb1bfe4e6124d61129b208256014ee6b73c771e88e",
+    "promptSha256": "dee5a3887be1c09f5e30cf6c9d9148cd2fcd5c542e48b38b7ba6b0f6c9698399",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-b6f33564-d718-4469-b8cd-96d86e33401d.png"
   },
   {
     "id": "24-aardvark",
     "masterSha256": "0e3dddd3c82c550e7c68081f3287c0d2b58bae3aab23ec581b443a9bb0ca2050",
-    "promptSha256": "f1642bc40c934fa5c85f64b8c882c0179727eb024c40c53fd400736b9c0d707f",
+    "promptSha256": "5ee5e9053dbfdae1fcf7e07ee22eed0bedfa20174c17742634e660550ba3a95b",
     "exactOriginal": true,
     "sourcePath": "/Users/dakk/.codex/generated_images/01a0dbce-8522-71c3-9ef7-fe1fe99c0c58/exec-2c68d6c7-143f-4062-984f-25818eb25bf2.png"
   }

@@ -15,7 +15,7 @@
  },
  "reference": {
   "subject": "goose",
-  "authoringSha256": "6ccbeeab12e74a3a24bd29b59b5b1e3a995219c1757613677ffaa66573ca02cf",
+  "authoringSha256": "138b62a40ba3f84d5b073e53205de5f0bc8d8fdc7e330b0f5887d06323865c38",
   "masterSha256": "0f3575a5fe537ced0a819a5bb181a1115914c3eef824bcad3440bf541e16cfd1"
  },
  "habitat": {

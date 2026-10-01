@@ -17,8 +17,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "e914a432297fd5ea7a993bd5661f1699524e5268bf8339e6909414b8dbc7eea2",
-  "bindingHash": "83e4921ffe0971761e9d3fe3f256779e0cf007d35420b1e311dfff076dad45ce",
+  "recordRecipeHash": "06e29a1c3652901b90f25e1c6d0d3962e9185e6e9c59ff3fb1b9e9a34670298a",
+  "bindingHash": "56ce6841db09b8e889a1322980e7939a386aab00bec2964641cfd2883d04818c",
   "family": "fish",
   "refusal": {
     "stage": "fixture",
@@ -29,12 +29,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-04/record.json",
-      "sha256": "c271be3b7ca269d201a19862c1a83a563cb5b35bf6fa340bf2e1e9ef90081dad",
+      "sha256": "4756715ccadbff32040b7bd58db545086d31bb13f353aa23b3f08d9296967a2d",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-04/binding.json",
-      "sha256": "bc63a00d2e365b5f6c81208382eaf9da20c071267dcf0aed003f90402399e714",
+      "sha256": "01c7f3c34e19f3f97eae0f2bfe67134693a8fbb2218ec5b1d0c35c56f805e426",
       "unchanged": true
     },
     {

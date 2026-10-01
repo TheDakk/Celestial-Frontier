@@ -2,41 +2,41 @@
   {
     "id": "09-owl",
     "note": "the 'ear tufts' are feathers, not ears; the wings fold flat against the body and the tail barely projects",
-    "promptSha256": "c3a7c04d0c78a395122227f478cf32e7ca52a82eff29fcbe89aa2120b79e9cdf"
+    "promptSha256": "984e70fdb97787d9bc4f196722c97afca9cc3beb4d7b5c0ef7cefeabd0dc7d26"
   },
   {
     "id": "10-snowy-owl",
     "note": "Taller than wide when perched upright; the body is a rounded column, not a horizontal hawk shape.",
-    "promptSha256": "254640347b789f0a1151b5b9b6e7a674c70dcb589194413553d7f3e84f5bfcb6"
+    "promptSha256": "190bd2bbdbe7bf4d495df62a7e21a374080137d94de41f50bcefe3216d16f25a"
   },
   {
     "id": "14-woodpecker",
     "note": "normally drawn clinging vertically, so it reads much taller than wide; the head is often crested or red-capped",
-    "promptSha256": "b616ae3bb9a0e04f4b7a2d04e1d6125983844963f6dea53b66094527bfa3cebe"
+    "promptSha256": "56953b3b8538d27919acec52068355e99279716a88163b8866f9c3220aadac5a"
   },
   {
     "id": "16-eider-duck",
     "note": "The unbroken sloping wedge from bill tip to crown is the key read; a normal duck's stepped forehead is wrong.",
-    "promptSha256": "ec101899217228188f1b7a039d917fc06e8acacfa47b0ad7e30d0c35eb1053a5"
+    "promptSha256": "a576f233e30418a1103532c5a45658bbbd66d03eb771c03f3296fb6a40405372"
   },
   {
     "id": "18-red-panda",
     "note": "raccoon-sized, not bear-sized, and unrelated to the giant panda",
-    "promptSha256": "27a1dbe5812e353e8fe459fcfbf718ec691fc11ef7575d4b73901f1b2a75aadf"
+    "promptSha256": "ea3d463b473252374301e2e3be339bc2a1812eff960375a3a4ab92ebe6bbfcd8"
   },
   {
     "id": "20-striped-hyena",
     "note": "Front legs are noticeably longer than the hind legs; the sloping topline is the defining read.",
-    "promptSha256": "056aaa7bb1461d4174b0210c904bd27f056d6e002421ed34a9078f5fc37c7d1e"
+    "promptSha256": "a37814061bdda6f9bae2ea58404468c82973ec8826dbb523603c53be8c4a49b5"
   },
   {
     "id": "22-black-bear",
     "note": "no shoulder hump - the highest point is the hindquarters, the opposite of a brown bear",
-    "promptSha256": "caadb9e4f111fc0bc8664f8b0c018a51740225bba046aed51a69003289db1243"
+    "promptSha256": "8c461db5d8a89dbbb6bdaa2971afe4f4c9e91c44c56f8a6fce0e9e02d03da295"
   },
   {
     "id": "23-spectacled-bear",
     "note": "the 'spectacle' markings vary and may extend down the chest; some individuals have almost none",
-    "promptSha256": "07433ba6a6eb3c18306605f9cc125c5c6f7bacde1d0c81e7b048c4d83bd9e9ef"
+    "promptSha256": "dce5379b5c461b07682247649459e0dc13fd4547bf07b448b02d171b96fdd7f7"
   }
 ]

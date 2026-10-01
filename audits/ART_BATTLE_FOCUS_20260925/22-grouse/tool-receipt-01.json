@@ -4,7 +4,7 @@
   "retained": "master.png",
   "masterSha256": "712072ae73b0cc55cbffc990bdc202a11871cc1b264ab98d9a13927bbda146c8",
   "promptFile": "sent-prompt-01.txt",
-  "promptSha256": "8649c680c0e64b25010f6fe1129cf6a266c511194beb4ac07556d973fa41319e",
+  "promptSha256": "0770360eb69e49c06a51028772fb0fbb21dc2e4447ad4207a7b1e4a390c33b7b",
   "model": "not exposed",
   "seed": null,
   "decision": "selected for intake; full source retained, no master manipulation"

@@ -50,6 +50,6 @@
       "difference": "one file-writer-added trailing LF; not sent to tool"
     }
   ],
-  "originalManifestSha256": "a6b1039819b0c281f1e447effad0ed6e03e6f57dbd7ef9e77a5db6739dc32514",
-  "currentManifestSha256": "0c00a8c3091d8a2a1890e95c835a0398a3fb63666f989612fd0a713946ccf22d"
+  "originalManifestSha256": "8735ec1d84b7cf3c823c02246dcb5b967fafe96044b456e3e2d5356073fc4eb0",
+  "currentManifestSha256": "a393180eb9e793c450bbeb76f50d6ef367c2efdc7c8a3b86f7dcb43e0e53a3fa"
 }

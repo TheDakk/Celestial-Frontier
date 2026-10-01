@@ -780,8 +780,8 @@ Real-device v2 save persistence (Gate C, re-scoped 2026-09-05: no legacy import)
 > strict `<1000 ms` product answerability contract. Local no-retry run
 > `20260823-pr33-cross-host-sla-certification` passed 42/42 under Edge `151.0.4129.101`, complete
 > lifecycle/cleanup and exact named verification; report raw/gzip SHA-256 are
-> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
-> `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
+> `db93ce37d24e3a32256d232a2595c75a8c8ab101ba6edb553204e34571142c03` /
+> `a9249401f99d371a1ec256c0332d834f1d75c300befba2779bc6aeacbd02a6b7`. Product, collector, and
 > verdict-contract bytes are unchanged. That historical guarded battery installed exact Edge
 > `.101`; the current ruler instead binds Microsoft Edge-family identity, CDP protocol/capabilities
 > and complete per-run version/path/UA provenance. Compatible Edge updates do not trigger
@@ -1021,8 +1021,8 @@ Real-device v2 save persistence (Gate C, re-scoped 2026-09-05: no legacy import)
 > `.107` / CDP `1.3` before stopping the chain at 40/42. Only phone/desktop `heap-dom-budget`
 > failed: phone maxima were 11,580,536 V8 / 17,758,550 aggregate heap bytes / 898 nodes / 90
 > listeners; desktop maxima were 11,635,116 / 17,687,678 / 895 / 89. Exact raw/gzip carrier
-> hashes are `3197ca65a1011bf386067d73515a0bcefd17ab91752a2d9d36af5e5dd055dfd7` /
-> `dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`. Signed evidence source
+> hashes are `538fb107cde1617b386a6bcf0c0f381e48728291e5e62bb78ddfa5566b68644f` /
+> `bbb8b941b05fe17ff00462172c284ba6c843a6976c8ecac44cede957c652ff74`. Signed evidence source
 > `7362a0e…` subsequently passed source-bound standalone and serial SceneMemory 42/42 plus
 > Compendium 78/78 before its preserved Slice harness red stopped the chain. The associated Layout
 > carrier is 787/787 and verifier-green but lacks standalone source binding, as that historical
@@ -1534,7 +1534,7 @@ catalog wrapper. This is a provenance failure, not a WorldGen behavior, type, ge
 coverage or browser finding; the head must not be retried and the sentinel must not be re-pinned.
 
 The bounded repair restores `packages/domain/descriptors/src/apphooks.ts` exactly to audited
-SHA-256 `c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a`
+SHA-256 `e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285`
 and pre-batch blob `ba95d19349f3ae911f41a2903080c03816489767`. Corrected dependency truth
 remains in WorldGen-owned facade/declaration/tests and current references. On the restored bytes,
 `overridecheck` passes 1,014/1,014 routes with zero dead and 1,010/1,010 Earth coverage; every
@@ -2109,8 +2109,8 @@ scene-memory-v2 budget SHA-256
 `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501` to the fixed strict
 `<1000 ms` product SLA. Local no-retry run `20260823-pr33-cross-host-sla-certification` passed
 42/42 under Edge `151.0.4129.101`, complete lifecycle/cleanup and exact named verification. Report
-raw/gzip SHA-256 are `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
-`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
+raw/gzip SHA-256 are `db93ce37d24e3a32256d232a2595c75a8c8ab101ba6edb553204e34571142c03` /
+`a9249401f99d371a1ec256c0332d834f1d75c300befba2779bc6aeacbd02a6b7`. Product, collector, and
 verdict-contract bytes were unchanged. The current SceneMemory ruler binds Microsoft Edge family,
 CDP `1.3`, its sealed capability/profile contract and complete per-run provenance; compatible
 point-version updates do not rebaseline or move unchanged numeric ceilings. The ordinary battery

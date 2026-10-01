@@ -60,13 +60,13 @@
     },
     {
       "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/controller.cjs.gz",
-      "bytes": 2040,
-      "sha256": "007e1b01529fcc5b1dfe9f84dbae8ec6b3339bccd057457487c261941adb6584"
+      "bytes": 2041,
+      "sha256": "ad167d0d7c6cd7453729f3963c9c213f07a5f322d8a5b7693ca34fc5f7f26623"
     },
     {
       "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/execution.json.gz",
-      "bytes": 1180,
-      "sha256": "54ed0ef6e8787e25541808f9b541cfbcf422fa18d84d7eab8bcadd7bbfa164c5"
+      "bytes": 1181,
+      "sha256": "65534716de06028a4babd9f7b06c3c67cb36d6e0970ce7783a5575dfcdb0dc74"
     },
     {
       "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/glassmatrix-local-u2-3a61352-20260906-small-phone.json.gz",
@@ -76,7 +76,7 @@
     {
       "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/manifest.json",
       "bytes": 3074,
-      "sha256": "f80a95e2ed8d6ba9d822d31a77349633a9c8a538ace9b05726db43d288f42e94"
+      "sha256": "9ec8a89a0e9bf5695d241926a78791957483eca94d1a6b01b19be9ed1304a9ed"
     },
     {
       "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/root-install.log.gz",
@@ -105,8 +105,8 @@
     },
     {
       "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/PAUSED.md.gz",
-      "bytes": 443,
-      "sha256": "9e49f20a390b3d9d6d4d4feb6ae3e696cb7318b769d15aa27ec06309670634d9"
+      "bytes": 445,
+      "sha256": "76d9f1f2a4d60942fd3a8deb4ca499faf8acf04ac66c2f09a843fb7d39d5e85a"
     },
     {
       "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/cf-u2-3a61352-charters-receipt-20260906.json.gz",
@@ -121,12 +121,12 @@
     {
       "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/cf-u2-run-post-close-20260906.cjs.gz",
       "bytes": 2041,
-      "sha256": "97542f36d4ac109fbe9930ac90f16d5ce713bc6bc1fb114f092c89d2ed1257d8"
+      "sha256": "f81ec27069eafb5309a449f8de22a35c2f4966b9df564f6ebed56716f0d340a5"
     },
     {
       "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/cf-u2-top-clearance-edit-20260906.py.gz",
-      "bytes": 3108,
-      "sha256": "3cf8a97a71143f772c5df7aaf302706e2cb07ebf4b85ec25bc289f25819ce73e"
+      "bytes": 3109,
+      "sha256": "abfbbcd1515c143be15550b2266a93250bdb56d75d773461ce05d24ee84ab6e8"
     },
     {
       "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/glassmatrix.mjs.gz",
@@ -141,7 +141,7 @@
     {
       "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/manifest.json",
       "bytes": 2376,
-      "sha256": "df74dddc988ab39bc526d022eb3d430dd0dcdccd6774b94c6250c5fdbe88eab5"
+      "sha256": "7df331c9983100bebf7e34001224f0e17e4673e73f78daa981b6fb902103e5a4"
     },
     {
       "file": "RECORDS/PROCESS_LAWS.md",
@@ -171,7 +171,7 @@
     {
       "file": "REVIEW.md",
       "bytes": 2850,
-      "sha256": "7c4b96ca70f78ed4a6df7a9235c3a7cda289b6c031b726cc55b1d7eba3158e2a"
+      "sha256": "337338971cad7b2f466053be02e764f3012655d7f266e61fc62bd15655ac6882"
     }
   ]
 }

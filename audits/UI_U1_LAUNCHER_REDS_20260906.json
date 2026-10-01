@@ -18,11 +18,11 @@
       "preparationCarriers": [
         {
           "file": "UI_U1_LAUNCHER_PREP_cf-u1-launcher-release-oracle-prep.log.gz",
-          "sha256": "198a7516c5a9c9f450ba42d75582fddc0beb9711e840c798436d1a7d29f29f61"
+          "sha256": "33d5891e692abc89c8ce640494d0d6c4becd4c11e89706a80ca2e4b93eab4a3c"
         },
         {
           "file": "UI_U1_LAUNCHER_PREP_cf-u1-glass-release-copy-focused-20260906.log.gz",
-          "sha256": "4d8f1461ad29ddf9c73965849178b1b133996afb7e79b2f7205cf9c99f38e3a4"
+          "sha256": "2faf03c21854e779b3223f10cd1105c2541c30abaf4203d29c955f13170e1c95"
         }
       ],
       "laterStages": "Not run after red."
@@ -49,7 +49,7 @@
       "preparationCarriers": [
         {
           "file": "UI_U1_LAUNCHER_PREP_cf-u1-empty-sky-root-canvas-prep.log.gz",
-          "sha256": "b8e022ca2daef5d4c094dc515d2f277e5b4a65ee1eb50998327da043fbbed4e8"
+          "sha256": "ca5d1ebb3f66b2d099296668131d719a8951c38100c7d348134c063b78256f0d"
         }
       ]
     },

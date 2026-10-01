@@ -1,7 +1,7 @@
 {
  "schema": "cf.card-master/v1",
  "earthName": "Ibex",
- "recordRecipeHash": "aa0d68bc6eb3850b7fbd629877a24df5b516bc65654d2a92c6184721a38e3577",
+ "recordRecipeHash": "4f9131360086d036e678f8caf8e9efc3ed808055e7b18cfa599afd230583d823",
  "source": {
   "master": "audits/ART_BATTLE_FOCUS_20260925/18-ibex/master.png",
   "masterSha256": "97dde355ce484eaa944a58ecb67674fb08fa2d36299904d4e1b0d539b27c988a",

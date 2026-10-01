@@ -172,7 +172,7 @@
     "nativeAcceptance": false
   },
   "provenance": {
-    "authoringSha256": "42bc2e1e88c2b267ca4208e9a99d62793962205e11a0f35a24d1e5c98c98a97c",
+    "authoringSha256": "ab56e0de5dd87bef943da67e12b1ada8cc5925eda6981336059887fb36bbbed3",
     "subjectSourceSha256": "b60c3c4508b9572e0508c29315c0cfb45c661f47133b7da17a65d1e91a4954d0",
     "presenceSha256": "8c9cd234ecc9032420ec0d08f03ff60fe7777c361d20a919926df2577fa186c4",
     "sourceLabelsReused": false,
@@ -216,5 +216,5 @@
       "leg/torso:foreNear": 0.8784624379909517
     }
   },
-  "recipeHash": "a5110a56f4ed6757bb0c9f9c3fd194fd5ec4c8b82d5787d14c018c9d7d23ba27"
+  "recipeHash": "8dd42cd8f3cd794ee129fc0f2e5154bb855bf1571e7b3b9e43053665d531c0b4"
 }

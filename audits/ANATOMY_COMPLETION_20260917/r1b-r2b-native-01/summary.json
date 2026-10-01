@@ -246,7 +246,7 @@
         }
       },
       "error": null,
-      "reportSha256": "2cc333683158cb7b06201f4e51b01e499d98b9cd4cddfd1c5a9a43c8eb2d80b6"
+      "reportSha256": "7f0ea322be0e3c1d1b67a9996f8aa600578aa9a523d4ba9c905480c3b70883e6"
     },
     {
       "subject": "coconut-crab",
@@ -430,7 +430,7 @@
         }
       },
       "error": null,
-      "reportSha256": "c8ab6f20ecd2c29e10e6671283f26dd4d4200a3e5c4c2f3a0a4d93241706c169"
+      "reportSha256": "36ae8f57250bf452ae10976922aacef7aa35d11d14535f14333f29440b90a44e"
     },
     {
       "subject": "freshwater-crab",
@@ -614,7 +614,7 @@
         }
       },
       "error": null,
-      "reportSha256": "30f1c87042212ef13bfabb1a170903d37a2646f64f06d49bf38821915c0f568f"
+      "reportSha256": "225568d54b1d463d1edeb404aa2573765f8bcbae86efc5a9b42307849db7c47d"
     },
     {
       "subject": "mud-crab",
@@ -791,7 +791,7 @@
       },
       "capture": {},
       "error": "Error: Actual family gates failed\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
-      "reportSha256": "cd18c85368655b20fac3618eeff4eae2656b22dfc1b8d9e86fa371c10c8ef506"
+      "reportSha256": "b844e5fb92c6bcf2db9afa037238ff6b0c7ecbf7fca9273a9fcf4c986156945c"
     },
     {
       "subject": "vent-crab",
@@ -972,7 +972,7 @@
       },
       "capture": {},
       "error": "Error: Actual family gates failed\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
-      "reportSha256": "c8a8e9ad538702e6e5996e8e5dfdbcd4470927f8a6a0be63a28c6f2b25bc96d8"
+      "reportSha256": "74b81f6e04f0573fc259c48f1de0060fc80579990a58de04a139213ad167c40f"
     },
     {
       "subject": "persimmon",
@@ -1072,7 +1072,7 @@
       },
       "capture": {},
       "error": "Error: Actual family gates failed\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
-      "reportSha256": "b90982da78155b2c56c4165221e0c0dcce2f95f48a310db34f83ab755d984691"
+      "reportSha256": "ee11fd2186379b5d235e6c947123b2a3acba6aa0c2c9a11a464a41131f0ef187"
     },
     {
       "subject": "cranberry",
@@ -1159,7 +1159,7 @@
       },
       "capture": {},
       "error": "Error: Actual family gates failed\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
-      "reportSha256": "f936d93de7d210c7feb09fd4e181c977076d8bdb349a893bf8f5b3d9c60e4f9b"
+      "reportSha256": "6a71bee38096800e40d9b37b4340c9d486bb6765a7315b257e5cabd9a697fd34"
     },
     {
       "subject": "devils-club",
@@ -1249,7 +1249,7 @@
       },
       "capture": {},
       "error": "Error: Actual family gates failed\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
-      "reportSha256": "137406fa6e30ff35116a944a0bb47f91a91a0d44034b6947f2affcb5d86a77b2"
+      "reportSha256": "5f1114970aed12b1d91eaa9faa3c1cc1332f8fa6535c9224ca2e68c7e8a40d5f"
     },
     {
       "subject": "civet",
@@ -1547,7 +1547,7 @@
       },
       "capture": {},
       "error": "Error: Actual family gates failed\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
-      "reportSha256": "490a3326c86464930100f66715511c8b07658b334b95f8524bc6a37a5d971c30"
+      "reportSha256": "b2b5b3b2eda4bd249b473bc2fa3bfe7d3a0aa77878d3dee2e6de646e3367e7f8"
     }
   ]
 }

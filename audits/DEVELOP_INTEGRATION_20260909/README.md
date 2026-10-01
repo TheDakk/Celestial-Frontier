@@ -49,7 +49,7 @@ Vite PID30716 (elapsed9 days) was left untouched; the rehearsal built only its i
 Result:344 files/4,104 tests PASS;4 files/5 tests FAIL;1 skipped. The profile stopped at npm test;
 TypeScript/art/override/spec and browser stages were not reached. Start/end HEAD and tracked
 cleanliness matched. Preserve `first-start.json`, `first-result.json` and `first-rehearsal.log`.
-Raw log SHA256:e052d24200bc36c60e24f7bdd2bb567e16c2daab80b9cb62a95f4ace4f022db8.
+Raw log SHA256:5a0d53416ef2cc561446ab280f6a1bf434228b05e14e1035c8c4ccf31ec18139.
 
 - AppChrome wiring: two tests reject `raw-main-dom`. Earth layout reads dock directly and
   other AppChrome elements through a dynamic ID lookup; the second failure is baseline

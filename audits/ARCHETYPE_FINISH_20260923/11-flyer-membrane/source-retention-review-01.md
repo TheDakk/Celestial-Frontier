@@ -2,7 +2,7 @@
 
 **PASS_SOURCE_RETENTION_AND_S2_EQUIVALENCE** for paint run `20260923-fruit-bat-paint-03` on signed predecessor `aaef06aff92852cd4caf711769ea80339a423605`. This review hashes retained files only; it executes no image processing, tests, static/native battery or film. It makes no art or fit acceptance claim.
 
-The exact prompt retains the kit prefix, Fruit Bat species requirements, complete genome and all 21 family joints in order. Request, prompt, composition guide and sole Discovery Atlas style reference hashes agree. The master is byte-identical to the original built-in tool output: `ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7`. Prompt: `f1713b7201837b939222a965582363fdec3f1bd25fec555599547cf35743fe88`. The guide remains explicitly authored composition, never observed landmark evidence.
+The exact prompt retains the kit prefix, Fruit Bat species requirements, complete genome and all 21 family joints in order. Request, prompt, composition guide and sole Discovery Atlas style reference hashes agree. The master is byte-identical to the original built-in tool output: `ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7`. Prompt: `a25ee3f9914a4a3ed434d3f68d1cf45a2b1cdbd841235238a07d8b1cc8b98d13`. The guide remains explicitly authored composition, never observed landmark evidence.
 
 Both earlier Fruit Bat masters, prompts and refusal packets remain intact: 53 original-sprint manifest entries and 17 repair entries match their retained hashes, including both original image tool outputs. The original four static failures and native habitat refusal remain historical; the second painting’s clipping/forearm findings remain a manual art refusal.
 

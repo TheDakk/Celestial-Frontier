@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/25-wild-horse/authoring.json",
-      "sha256": "3fe23c7c93b2c88c5bdc0e04213468c64b26517662d8865102e802f58c9a4301"
+      "sha256": "738d991892404fbab5da926013e6864a2a9ee687d91d59a50cd40c003bcd260b"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/25-wild-horse/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "opaque source; established authored-mask key/despill",
-  "recordRecipeHash": "a87a3ed8146e1176b9c6dbfefd9e5e0a0f6321c8b69d4a2f9e993488cc799600",
-  "bindingHash": "b7bed043307ca8c541a9535029d242a429c8420298a4c0b04b1495ddb6f90e62",
+  "recordRecipeHash": "3a95437d7329a4c47645cea1ba162b795d15bfcdee94fbaf971c0814d0edd33b",
+  "bindingHash": "006949d5a231b265e6a0ad8003683850562a2dbe5574f86953c2f498b57cb6c4",
   "contactEndpoints": [
     "hindFarAnkle",
     "foreFarAnkle",
@@ -83,7 +83,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/25-wild-horse/authoring.json",
-      "sha256": "3fe23c7c93b2c88c5bdc0e04213468c64b26517662d8865102e802f58c9a4301",
+      "sha256": "738d991892404fbab5da926013e6864a2a9ee687d91d59a50cd40c003bcd260b",
       "unchanged": true
     },
     {

@@ -5,8 +5,8 @@
   "species": "Eagle",
   "predecessorCommit": "9c50c190f215fab034fe7023ac0d92e72cf01497",
   "currentFit": "fit-08",
-  "recordRecipeHash": "4e806fc94a2cd6fef82e53e4482531d4795453c68a3e23eea931102ccca07422",
-  "bindingHash": "85cfa087a72df27c32f70ce4e7c7f13b65e8b23c5af7e3eed3fa9fcaf20bea6b",
+  "recordRecipeHash": "23dbe75d79ff30e79b8604189bcd5e900ab87515aca52acf1e35e64cd304458f",
+  "bindingHash": "9b8e003e3010e00babdec0af998a2e3d936baf0c855a8d3fd4ba47e89afa957f",
   "masterSha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a",
   "static": {
     "status": "PASS_STATIC",

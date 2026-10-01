@@ -17,7 +17,7 @@
   },
   "retainedConservation": {
     "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/conservation.json",
-    "sha256": "318ca5c9290c8c9924008133b18d413f8bca21fcc45da42291585fe62347805c",
+    "sha256": "505df9cd7eb379858e8c992eaac98e03bdb2db8fcd642a570c28124c2705316f",
     "createdAt": "2026-09-22T12:53:18.126Z",
     "status": "PASS",
     "remeasured": false
@@ -31,7 +31,7 @@
       "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/parts/keyed.png",
       "sha256": "8010343d7137839570b2852ce5480e1f0104a645de52392a9132a47ce6b01574"
     },
-    "recordRecipeHash": "4bbfb883782353bd86e0e9751b3bf48ff79c0c47ea545d054876ad584e694bd9",
+    "recordRecipeHash": "7edbcdb118b4a47b18dfd328fe43c56bfff5113cc848814b433742819459108d",
     "salmonRepairRunId": "20260922-salmon-native-02",
     "salmonRepairSource": "4cf88823fc74152528a63b57a732cb4c1ef7e5dc",
     "masterMatchesRepair": true,
@@ -67,16 +67,16 @@
   "manifests": [
     {
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/manifest.json",
-      "sha256": "eb8762d416a4b29472f6c1febad18e35c887bd04a69e4ecb429d4a76d0efe5b9"
+      "sha256": "c9c13ad8d16d85e8ace14f2d6c7df7029227c5ebeaba9d59b6779aaf75536b75"
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/manifest.json",
-      "sha256": "412f5f1732636fe988c720fc63519975ee6d132c8b793aea4f3cece57471d14d"
+      "sha256": "bfbfbde16edd3c75a855962e7d18f2f55d43e996095785a48fb54bfb8d5ac181"
     }
   ],
   "markingsManifest": {
     "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings.json",
-    "sha256": "938705f7cba6e854600510f3495e5cdcb415f0b92125db6eeb2a7de7e22fa924"
+    "sha256": "f3fb07377b85e1724bc08e4656cd9469fc518e48f1b0781e3a771006b34709f8"
   },
   "sheet": {
     "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/six-mask-sheet.png",
@@ -86,8 +86,8 @@
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/README.md",
-      "expectedSha256": "3e33896e751b5245937d17d088a231db0d46584da5ee206befd5aa1e6f1b9626",
-      "sha256": "3e33896e751b5245937d17d088a231db0d46584da5ee206befd5aa1e6f1b9626",
+      "expectedSha256": "075441045a2b6cfbe901b811ff0417b810ceb7e8284d3f3c77cfe834ecdd9ce0",
+      "sha256": "075441045a2b6cfbe901b811ff0417b810ceb7e8284d3f3c77cfe834ecdd9ce0",
       "bytes": 3359,
       "match": true
     },
@@ -150,8 +150,8 @@
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/conservation.json",
-      "expectedSha256": "318ca5c9290c8c9924008133b18d413f8bca21fcc45da42291585fe62347805c",
-      "sha256": "318ca5c9290c8c9924008133b18d413f8bca21fcc45da42291585fe62347805c",
+      "expectedSha256": "505df9cd7eb379858e8c992eaac98e03bdb2db8fcd642a570c28124c2705316f",
+      "sha256": "505df9cd7eb379858e8c992eaac98e03bdb2db8fcd642a570c28124c2705316f",
       "bytes": 6052,
       "match": true
     },
@@ -182,8 +182,8 @@
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/generation-receipts.json",
-      "expectedSha256": "4780fd42ea0173dffe042ccb7f8d45475bbd1ac7957784d794ba95f8a1f7b142",
-      "sha256": "4780fd42ea0173dffe042ccb7f8d45475bbd1ac7957784d794ba95f8a1f7b142",
+      "expectedSha256": "cf42cb9ec8761403e8d61294f5e15799eb5e16f1b686dab9a38f1e073d5e215c",
+      "sha256": "cf42cb9ec8761403e8d61294f5e15799eb5e16f1b686dab9a38f1e073d5e215c",
       "bytes": 15094,
       "match": true
     },
@@ -238,96 +238,96 @@
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings.json",
-      "expectedSha256": "938705f7cba6e854600510f3495e5cdcb415f0b92125db6eeb2a7de7e22fa924",
-      "sha256": "938705f7cba6e854600510f3495e5cdcb415f0b92125db6eeb2a7de7e22fa924",
+      "expectedSha256": "f3fb07377b85e1724bc08e4656cd9469fc518e48f1b0781e3a771006b34709f8",
+      "sha256": "f3fb07377b85e1724bc08e4656cd9469fc518e48f1b0781e3a771006b34709f8",
       "bytes": 140725,
       "match": true
     },
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/banded.txt",
-      "expectedSha256": "9505aa87ac0505ca05926a4bd8f9b355f2e1960ae42ffde21ae2e208a372aa37",
-      "sha256": "9505aa87ac0505ca05926a4bd8f9b355f2e1960ae42ffde21ae2e208a372aa37",
+      "expectedSha256": "e6a6dc267d7e9efa5cb0244c19d6907a7296aceaa9f554382e1b06d30ada32ac",
+      "sha256": "e6a6dc267d7e9efa5cb0244c19d6907a7296aceaa9f554382e1b06d30ada32ac",
       "bytes": 8793,
       "match": true
     },
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/eye-spotted-rejected-01.txt",
-      "expectedSha256": "1d2e73d018cc331d8c6d9b4df0a6f97bf8ec04488b9eaa885591d7c7a7604737",
-      "sha256": "1d2e73d018cc331d8c6d9b4df0a6f97bf8ec04488b9eaa885591d7c7a7604737",
+      "expectedSha256": "71dd175dccc29587e1244a420f468e55635c11b447873c0cdc5ac3cfabeb8020",
+      "sha256": "71dd175dccc29587e1244a420f468e55635c11b447873c0cdc5ac3cfabeb8020",
       "bytes": 8805,
       "match": true
     },
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/eye-spotted.txt",
-      "expectedSha256": "f863866d9a645fec2614e66ba8143e8ee7b8628fa10ea5ade04efa01c93277d8",
-      "sha256": "f863866d9a645fec2614e66ba8143e8ee7b8628fa10ea5ade04efa01c93277d8",
+      "expectedSha256": "17b2a1d3a6a17d2c3ecb1fd45dcf7a9ceecd39a6883f78f71e37c78f621a97d7",
+      "sha256": "17b2a1d3a6a17d2c3ecb1fd45dcf7a9ceecd39a6883f78f71e37c78f621a97d7",
       "bytes": 8887,
       "match": true
     },
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/marbled-rejected-01.txt",
-      "expectedSha256": "3d64921abbe43494f6fd982ab281cb79c8364d4cb052bcba3c72d65238affc97",
-      "sha256": "3d64921abbe43494f6fd982ab281cb79c8364d4cb052bcba3c72d65238affc97",
+      "expectedSha256": "ad987faaa4de844bf0e45bffe455ac3817e3ce65d2f94c35e1171e1d884897fe",
+      "sha256": "ad987faaa4de844bf0e45bffe455ac3817e3ce65d2f94c35e1171e1d884897fe",
       "bytes": 8724,
       "match": true
     },
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/marbled.txt",
-      "expectedSha256": "f650f342fcc8862a36c83b2536086ceed329ac2b49c118a6a2e400c27bbf41c5",
-      "sha256": "f650f342fcc8862a36c83b2536086ceed329ac2b49c118a6a2e400c27bbf41c5",
+      "expectedSha256": "90a97e9fa0fee8c80252b0b0d8c2b5169eb86ffda04bff2e112d93a509526876",
+      "sha256": "90a97e9fa0fee8c80252b0b0d8c2b5169eb86ffda04bff2e112d93a509526876",
       "bytes": 8862,
       "match": true
     },
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/mottled-rejected-01.txt",
-      "expectedSha256": "35278fcb116b96e3f0b48fa36b7e236e67c942052d9e8514954772f520811d34",
-      "sha256": "35278fcb116b96e3f0b48fa36b7e236e67c942052d9e8514954772f520811d34",
+      "expectedSha256": "77adc4bf688bb43e6c797455db9e22aab409e5030d869e2dbe2e20cf9a5be70f",
+      "sha256": "77adc4bf688bb43e6c797455db9e22aab409e5030d869e2dbe2e20cf9a5be70f",
       "bytes": 8734,
       "match": true
     },
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/mottled.txt",
-      "expectedSha256": "8a0018e1246c7fd769aa7abeb1467fa9e852b2ab82ec2aae968cb1dcdcee3735",
-      "sha256": "8a0018e1246c7fd769aa7abeb1467fa9e852b2ab82ec2aae968cb1dcdcee3735",
+      "expectedSha256": "c9558df232232093f4910314167c819bc38c56d31e9f52c253fb05b8ad227219",
+      "sha256": "c9558df232232093f4910314167c819bc38c56d31e9f52c253fb05b8ad227219",
       "bytes": 8841,
       "match": true
     },
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/spotted-rejected-01.txt",
-      "expectedSha256": "32b64897a8e7827a30d4807aa21ff021711ef5a3f9588318d6da4f23fe8a794f",
-      "sha256": "32b64897a8e7827a30d4807aa21ff021711ef5a3f9588318d6da4f23fe8a794f",
+      "expectedSha256": "c1a147d48758af17578ce5bdaeeaf0a7bf9da04f3ab57f86587faed7d757ac3e",
+      "sha256": "c1a147d48758af17578ce5bdaeeaf0a7bf9da04f3ab57f86587faed7d757ac3e",
       "bytes": 8747,
       "match": true
     },
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/spotted.txt",
-      "expectedSha256": "2931cf774719a66c4bcde79d16849424d738ac561efae2b125fb0608df56126f",
-      "sha256": "2931cf774719a66c4bcde79d16849424d738ac561efae2b125fb0608df56126f",
+      "expectedSha256": "7b6002d3df0dcf4bf89908b5930133dd711564b62b87abbbd41dd146201069f5",
+      "sha256": "7b6002d3df0dcf4bf89908b5930133dd711564b62b87abbbd41dd146201069f5",
       "bytes": 8819,
       "match": true
     },
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/striped-rejected-01.txt",
-      "expectedSha256": "293112e16f595cad1aa5f04dfbed70772a80023589852d607786de42b385b812",
-      "sha256": "293112e16f595cad1aa5f04dfbed70772a80023589852d607786de42b385b812",
+      "expectedSha256": "d038bfc7297b5d6264acb0d3e2ef3a3cb5bf9c6216e8d600034b554610840de7",
+      "sha256": "d038bfc7297b5d6264acb0d3e2ef3a3cb5bf9c6216e8d600034b554610840de7",
       "bytes": 8787,
       "match": true
     },
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/striped.txt",
-      "expectedSha256": "9753be07d69c91b9466d1a0c8b12ce0d174d66de827800b68cc6b092fce6f5dc",
-      "sha256": "9753be07d69c91b9466d1a0c8b12ce0d174d66de827800b68cc6b092fce6f5dc",
+      "expectedSha256": "c24d92d513f8d721d9ede563876ac359f3f7e11ebade2c96f627039be78c8f81",
+      "sha256": "c24d92d513f8d721d9ede563876ac359f3f7e11ebade2c96f627039be78c8f81",
       "bytes": 8877,
       "match": true
     },
@@ -422,8 +422,8 @@
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/request.json",
-      "expectedSha256": "69fc0930be41ff3142e67508e2c427b7404587ac839148983921bb1b71399c29",
-      "sha256": "69fc0930be41ff3142e67508e2c427b7404587ac839148983921bb1b71399c29",
+      "expectedSha256": "86701b021599811899597facd31c38bacc05623dbac58f0514887e96e6479ceb",
+      "sha256": "86701b021599811899597facd31c38bacc05623dbac58f0514887e96e6479ceb",
       "bytes": 631,
       "match": true
     },
@@ -438,8 +438,8 @@
     {
       "owner": "original mask packet manifest",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/signing-refusals.json",
-      "expectedSha256": "6a774c6ec7eb711e6524b568bac88b8e1398c453b7fbaedc41ffc57779278182",
-      "sha256": "6a774c6ec7eb711e6524b568bac88b8e1398c453b7fbaedc41ffc57779278182",
+      "expectedSha256": "15c2333a44e1fd8444d514562a647c50f973a6262587481100f440d8ea4a5378",
+      "sha256": "15c2333a44e1fd8444d514562a647c50f973a6262587481100f440d8ea4a5378",
       "bytes": 37446,
       "match": true
     },
@@ -454,8 +454,8 @@
     {
       "owner": "Salmon repair packet manifest",
       "path": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/README.md",
-      "expectedSha256": "8d76f4007b92fd9ff2134df5c326ef11a9e76c2135d51c146e56fd3667367daf",
-      "sha256": "8d76f4007b92fd9ff2134df5c326ef11a9e76c2135d51c146e56fd3667367daf",
+      "expectedSha256": "28e7e997ae53a3ca51fd96a520fd65c70d73d2d88acac369807a991f4801f3ac",
+      "sha256": "28e7e997ae53a3ca51fd96a520fd65c70d73d2d88acac369807a991f4801f3ac",
       "bytes": 3499,
       "match": true
     },
@@ -486,8 +486,8 @@
     {
       "owner": "Salmon repair packet manifest",
       "path": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/native-02/report.json",
-      "expectedSha256": "924f62b46ff2c89c8971d5e0202b4bb9c22974dd9f4f0fe66423ef9fb5d4ed87",
-      "sha256": "924f62b46ff2c89c8971d5e0202b4bb9c22974dd9f4f0fe66423ef9fb5d4ed87",
+      "expectedSha256": "8a04612c0c22e450629224218da3891d05b21c859a775553044cd145c5b79c02",
+      "sha256": "8a04612c0c22e450629224218da3891d05b21c859a775553044cd145c5b79c02",
       "bytes": 2251453,
       "match": true
     },
@@ -622,8 +622,8 @@
     {
       "owner": "Salmon repair packet manifest",
       "path": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/retained-inputs.json",
-      "expectedSha256": "f143f9ec2785df1f41803e21948e5367e66926bae9d0d781ce502259bb785f79",
-      "sha256": "f143f9ec2785df1f41803e21948e5367e66926bae9d0d781ce502259bb785f79",
+      "expectedSha256": "382fa1cb7fa2440ddc8144413f481b2e5e47f0eb56197e582af4c2855f59b8af",
+      "sha256": "382fa1cb7fa2440ddc8144413f481b2e5e47f0eb56197e582af4c2855f59b8af",
       "bytes": 2428,
       "match": true
     },
@@ -654,16 +654,16 @@
     {
       "owner": "Salmon repair packet manifest",
       "path": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/source-import.json",
-      "expectedSha256": "c2e8f43a667d5a2abd3bfeae38696784a4cd1a212563a5c3deff550730db1c04",
-      "sha256": "c2e8f43a667d5a2abd3bfeae38696784a4cd1a212563a5c3deff550730db1c04",
+      "expectedSha256": "0bea136f02ade0c6a148432cde7cedf3829e9a61c1bcab0f86778d5b9db8b68f",
+      "sha256": "0bea136f02ade0c6a148432cde7cedf3829e9a61c1bcab0f86778d5b9db8b68f",
       "bytes": 2559,
       "match": true
     },
     {
       "owner": "Salmon repair packet manifest",
       "path": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/stage-adapter-receipt.json",
-      "expectedSha256": "2ff9205532adf12045b4eb05a537ff38889f4be1242d2f513819ac7091933d67",
-      "sha256": "2ff9205532adf12045b4eb05a537ff38889f4be1242d2f513819ac7091933d67",
+      "expectedSha256": "803b15094a8e58463dee60d8faa9c3e82a67931475f45f4c903f21fc3cfaff8c",
+      "sha256": "803b15094a8e58463dee60d8faa9c3e82a67931475f45f4c903f21fc3cfaff8c",
       "bytes": 2178,
       "match": true
     },
@@ -686,16 +686,16 @@
     {
       "owner": "Salmon repair packet manifest",
       "path": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/static.json",
-      "expectedSha256": "9e4e77994c11e0d43d5e970e11ad915840eece55bbdaffc444e8c20a114321c8",
-      "sha256": "9e4e77994c11e0d43d5e970e11ad915840eece55bbdaffc444e8c20a114321c8",
+      "expectedSha256": "36171ea3e74263246adac923e8a2f632c9622e1ac3b88545c2f0ec0df013882b",
+      "sha256": "36171ea3e74263246adac923e8a2f632c9622e1ac3b88545c2f0ec0df013882b",
       "bytes": 7320,
       "match": true
     },
     {
       "owner": "Salmon repair packet manifest",
       "path": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/static.json.sources.json",
-      "expectedSha256": "a9d9b9d8a1862b46f25f3431dad53a97dc0a27f7bc83fcd0e4286ed2de82c09d",
-      "sha256": "a9d9b9d8a1862b46f25f3431dad53a97dc0a27f7bc83fcd0e4286ed2de82c09d",
+      "expectedSha256": "f20f69b4e3499411e1f0eefd8893a479a5579ae1d3968d983f69caafc066ef21",
+      "sha256": "f20f69b4e3499411e1f0eefd8893a479a5579ae1d3968d983f69caafc066ef21",
       "bytes": 11387,
       "match": true
     },
@@ -718,16 +718,16 @@
     {
       "owner": "retained conservation input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/record.json",
-      "expectedSha256": "0d55904876d7638af2b8a43eea96e48328de0950e241cf1c32509c62ab1b6696",
-      "sha256": "0d55904876d7638af2b8a43eea96e48328de0950e241cf1c32509c62ab1b6696",
+      "expectedSha256": "b90b6765830d2be70660f6c39eb27b7993102ad69cc0c0d46cc7bf730530591a",
+      "sha256": "b90b6765830d2be70660f6c39eb27b7993102ad69cc0c0d46cc7bf730530591a",
       "bytes": 5010,
       "match": true
     },
     {
       "owner": "retained conservation input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/binding.json",
-      "expectedSha256": "4d9eb64b3af20f1a78cae84b7a77ca5f2b2b27d7361e5b6620fca65f44ed3734",
-      "sha256": "4d9eb64b3af20f1a78cae84b7a77ca5f2b2b27d7361e5b6620fca65f44ed3734",
+      "expectedSha256": "ff59bbd9a70ec16b26b7ba288c03f69f1900c50ccb87b358a0c19a5523a4d036",
+      "sha256": "ff59bbd9a70ec16b26b7ba288c03f69f1900c50ccb87b358a0c19a5523a4d036",
       "bytes": 2044039,
       "match": true
     },
@@ -758,8 +758,8 @@
     {
       "owner": "retained conservation input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/prompt.txt",
-      "expectedSha256": "51e488e389257f20c270d2222b4362d3558108a336cafab942d2439ee89aa38c",
-      "sha256": "51e488e389257f20c270d2222b4362d3558108a336cafab942d2439ee89aa38c",
+      "expectedSha256": "94289d0f0b276e7a73e7499f72be7d0ebf0bb29b378ffe8b699b17ad280d9557",
+      "sha256": "94289d0f0b276e7a73e7499f72be7d0ebf0bb29b378ffe8b699b17ad280d9557",
       "bytes": 7676,
       "match": true
     },
@@ -774,8 +774,8 @@
     {
       "owner": "retained conservation input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/striped.txt",
-      "expectedSha256": "9753be07d69c91b9466d1a0c8b12ce0d174d66de827800b68cc6b092fce6f5dc",
-      "sha256": "9753be07d69c91b9466d1a0c8b12ce0d174d66de827800b68cc6b092fce6f5dc",
+      "expectedSha256": "c24d92d513f8d721d9ede563876ac359f3f7e11ebade2c96f627039be78c8f81",
+      "sha256": "c24d92d513f8d721d9ede563876ac359f3f7e11ebade2c96f627039be78c8f81",
       "bytes": 8877,
       "match": true
     },
@@ -790,8 +790,8 @@
     {
       "owner": "retained conservation input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/spotted.txt",
-      "expectedSha256": "2931cf774719a66c4bcde79d16849424d738ac561efae2b125fb0608df56126f",
-      "sha256": "2931cf774719a66c4bcde79d16849424d738ac561efae2b125fb0608df56126f",
+      "expectedSha256": "7b6002d3df0dcf4bf89908b5930133dd711564b62b87abbbd41dd146201069f5",
+      "sha256": "7b6002d3df0dcf4bf89908b5930133dd711564b62b87abbbd41dd146201069f5",
       "bytes": 8819,
       "match": true
     },
@@ -806,8 +806,8 @@
     {
       "owner": "retained conservation input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/banded.txt",
-      "expectedSha256": "9505aa87ac0505ca05926a4bd8f9b355f2e1960ae42ffde21ae2e208a372aa37",
-      "sha256": "9505aa87ac0505ca05926a4bd8f9b355f2e1960ae42ffde21ae2e208a372aa37",
+      "expectedSha256": "e6a6dc267d7e9efa5cb0244c19d6907a7296aceaa9f554382e1b06d30ada32ac",
+      "sha256": "e6a6dc267d7e9efa5cb0244c19d6907a7296aceaa9f554382e1b06d30ada32ac",
       "bytes": 8793,
       "match": true
     },
@@ -822,8 +822,8 @@
     {
       "owner": "retained conservation input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/mottled.txt",
-      "expectedSha256": "8a0018e1246c7fd769aa7abeb1467fa9e852b2ab82ec2aae968cb1dcdcee3735",
-      "sha256": "8a0018e1246c7fd769aa7abeb1467fa9e852b2ab82ec2aae968cb1dcdcee3735",
+      "expectedSha256": "c9558df232232093f4910314167c819bc38c56d31e9f52c253fb05b8ad227219",
+      "sha256": "c9558df232232093f4910314167c819bc38c56d31e9f52c253fb05b8ad227219",
       "bytes": 8841,
       "match": true
     },
@@ -838,8 +838,8 @@
     {
       "owner": "retained conservation input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/marbled.txt",
-      "expectedSha256": "f650f342fcc8862a36c83b2536086ceed329ac2b49c118a6a2e400c27bbf41c5",
-      "sha256": "f650f342fcc8862a36c83b2536086ceed329ac2b49c118a6a2e400c27bbf41c5",
+      "expectedSha256": "90a97e9fa0fee8c80252b0b0d8c2b5169eb86ffda04bff2e112d93a509526876",
+      "sha256": "90a97e9fa0fee8c80252b0b0d8c2b5169eb86ffda04bff2e112d93a509526876",
       "bytes": 8862,
       "match": true
     },
@@ -854,24 +854,24 @@
     {
       "owner": "retained conservation input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/eye-spotted.txt",
-      "expectedSha256": "f863866d9a645fec2614e66ba8143e8ee7b8628fa10ea5ade04efa01c93277d8",
-      "sha256": "f863866d9a645fec2614e66ba8143e8ee7b8628fa10ea5ade04efa01c93277d8",
+      "expectedSha256": "17b2a1d3a6a17d2c3ecb1fd45dcf7a9ceecd39a6883f78f71e37c78f621a97d7",
+      "sha256": "17b2a1d3a6a17d2c3ecb1fd45dcf7a9ceecd39a6883f78f71e37c78f621a97d7",
       "bytes": 8887,
       "match": true
     },
     {
       "owner": "Salmon retained input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/prompt.txt",
-      "expectedSha256": "51e488e389257f20c270d2222b4362d3558108a336cafab942d2439ee89aa38c",
-      "sha256": "51e488e389257f20c270d2222b4362d3558108a336cafab942d2439ee89aa38c",
+      "expectedSha256": "94289d0f0b276e7a73e7499f72be7d0ebf0bb29b378ffe8b699b17ad280d9557",
+      "sha256": "94289d0f0b276e7a73e7499f72be7d0ebf0bb29b378ffe8b699b17ad280d9557",
       "bytes": 7676,
       "match": true
     },
     {
       "owner": "Salmon retained input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/generation-receipt.json",
-      "expectedSha256": "ea790ba9fde0d34360f18dc5d8d933526357a658995ad5bae6191cb4592efc38",
-      "sha256": "ea790ba9fde0d34360f18dc5d8d933526357a658995ad5bae6191cb4592efc38",
+      "expectedSha256": "fb96e72e8f8fd456d2365ad679b40db0fa77cabce58dcf6e7b8e2d136828524b",
+      "sha256": "fb96e72e8f8fd456d2365ad679b40db0fa77cabce58dcf6e7b8e2d136828524b",
       "bytes": 832,
       "match": true
     },
@@ -894,8 +894,8 @@
     {
       "owner": "Salmon retained input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/declaration.txt",
-      "expectedSha256": "95dd8106e1e23d18873d0da52e0adf61ab594b857108d417602c0d812d2737a6",
-      "sha256": "95dd8106e1e23d18873d0da52e0adf61ab594b857108d417602c0d812d2737a6",
+      "expectedSha256": "885f83556383b56c4b76a18ff34f4b6985bd4144257b8aa5d8eb0df7c3d1baf3",
+      "sha256": "885f83556383b56c4b76a18ff34f4b6985bd4144257b8aa5d8eb0df7c3d1baf3",
       "bytes": 385,
       "match": true
     },
@@ -910,24 +910,24 @@
     {
       "owner": "Salmon retained input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/authoring.json",
-      "expectedSha256": "b973fe0595d98ed9c27e3c272d03163fbbf777f810e6a92c93f2962a61a7f390",
-      "sha256": "b973fe0595d98ed9c27e3c272d03163fbbf777f810e6a92c93f2962a61a7f390",
+      "expectedSha256": "1876ba55fd1234d96e2059a653d8bf0ef16823667d98be9028c75c3b41c50065",
+      "sha256": "1876ba55fd1234d96e2059a653d8bf0ef16823667d98be9028c75c3b41c50065",
       "bytes": 5430,
       "match": true
     },
     {
       "owner": "Salmon retained input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/record.json",
-      "expectedSha256": "0d55904876d7638af2b8a43eea96e48328de0950e241cf1c32509c62ab1b6696",
-      "sha256": "0d55904876d7638af2b8a43eea96e48328de0950e241cf1c32509c62ab1b6696",
+      "expectedSha256": "b90b6765830d2be70660f6c39eb27b7993102ad69cc0c0d46cc7bf730530591a",
+      "sha256": "b90b6765830d2be70660f6c39eb27b7993102ad69cc0c0d46cc7bf730530591a",
       "bytes": 5010,
       "match": true
     },
     {
       "owner": "Salmon retained input",
       "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/binding.json",
-      "expectedSha256": "4d9eb64b3af20f1a78cae84b7a77ca5f2b2b27d7361e5b6620fca65f44ed3734",
-      "sha256": "4d9eb64b3af20f1a78cae84b7a77ca5f2b2b27d7361e5b6620fca65f44ed3734",
+      "expectedSha256": "ff59bbd9a70ec16b26b7ba288c03f69f1900c50ccb87b358a0c19a5523a4d036",
+      "sha256": "ff59bbd9a70ec16b26b7ba288c03f69f1900c50ccb87b358a0c19a5523a4d036",
       "bytes": 2044039,
       "match": true
     },
@@ -966,8 +966,8 @@
     {
       "owner": "prompt striped",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/striped.txt",
-      "expectedSha256": "9753be07d69c91b9466d1a0c8b12ce0d174d66de827800b68cc6b092fce6f5dc",
-      "sha256": "9753be07d69c91b9466d1a0c8b12ce0d174d66de827800b68cc6b092fce6f5dc",
+      "expectedSha256": "c24d92d513f8d721d9ede563876ac359f3f7e11ebade2c96f627039be78c8f81",
+      "sha256": "c24d92d513f8d721d9ede563876ac359f3f7e11ebade2c96f627039be78c8f81",
       "bytes": 8877,
       "match": true
     },
@@ -990,8 +990,8 @@
     {
       "owner": "prompt spotted",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/spotted.txt",
-      "expectedSha256": "2931cf774719a66c4bcde79d16849424d738ac561efae2b125fb0608df56126f",
-      "sha256": "2931cf774719a66c4bcde79d16849424d738ac561efae2b125fb0608df56126f",
+      "expectedSha256": "7b6002d3df0dcf4bf89908b5930133dd711564b62b87abbbd41dd146201069f5",
+      "sha256": "7b6002d3df0dcf4bf89908b5930133dd711564b62b87abbbd41dd146201069f5",
       "bytes": 8819,
       "match": true
     },
@@ -1014,8 +1014,8 @@
     {
       "owner": "prompt banded",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/banded.txt",
-      "expectedSha256": "9505aa87ac0505ca05926a4bd8f9b355f2e1960ae42ffde21ae2e208a372aa37",
-      "sha256": "9505aa87ac0505ca05926a4bd8f9b355f2e1960ae42ffde21ae2e208a372aa37",
+      "expectedSha256": "e6a6dc267d7e9efa5cb0244c19d6907a7296aceaa9f554382e1b06d30ada32ac",
+      "sha256": "e6a6dc267d7e9efa5cb0244c19d6907a7296aceaa9f554382e1b06d30ada32ac",
       "bytes": 8793,
       "match": true
     },
@@ -1038,8 +1038,8 @@
     {
       "owner": "prompt mottled",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/mottled.txt",
-      "expectedSha256": "8a0018e1246c7fd769aa7abeb1467fa9e852b2ab82ec2aae968cb1dcdcee3735",
-      "sha256": "8a0018e1246c7fd769aa7abeb1467fa9e852b2ab82ec2aae968cb1dcdcee3735",
+      "expectedSha256": "c9558df232232093f4910314167c819bc38c56d31e9f52c253fb05b8ad227219",
+      "sha256": "c9558df232232093f4910314167c819bc38c56d31e9f52c253fb05b8ad227219",
       "bytes": 8841,
       "match": true
     },
@@ -1062,8 +1062,8 @@
     {
       "owner": "prompt marbled",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/marbled.txt",
-      "expectedSha256": "f650f342fcc8862a36c83b2536086ceed329ac2b49c118a6a2e400c27bbf41c5",
-      "sha256": "f650f342fcc8862a36c83b2536086ceed329ac2b49c118a6a2e400c27bbf41c5",
+      "expectedSha256": "90a97e9fa0fee8c80252b0b0d8c2b5169eb86ffda04bff2e112d93a509526876",
+      "sha256": "90a97e9fa0fee8c80252b0b0d8c2b5169eb86ffda04bff2e112d93a509526876",
       "bytes": 8862,
       "match": true
     },
@@ -1086,16 +1086,16 @@
     {
       "owner": "prompt eye-spotted",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/eye-spotted.txt",
-      "expectedSha256": "f863866d9a645fec2614e66ba8143e8ee7b8628fa10ea5ade04efa01c93277d8",
-      "sha256": "f863866d9a645fec2614e66ba8143e8ee7b8628fa10ea5ade04efa01c93277d8",
+      "expectedSha256": "17b2a1d3a6a17d2c3ecb1fd45dcf7a9ceecd39a6883f78f71e37c78f621a97d7",
+      "sha256": "17b2a1d3a6a17d2c3ecb1fd45dcf7a9ceecd39a6883f78f71e37c78f621a97d7",
       "bytes": 8887,
       "match": true
     },
     {
       "owner": "tool prompt striped/1",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/striped-rejected-01.txt",
-      "expectedSha256": "293112e16f595cad1aa5f04dfbed70772a80023589852d607786de42b385b812",
-      "sha256": "293112e16f595cad1aa5f04dfbed70772a80023589852d607786de42b385b812",
+      "expectedSha256": "d038bfc7297b5d6264acb0d3e2ef3a3cb5bf9c6216e8d600034b554610840de7",
+      "sha256": "d038bfc7297b5d6264acb0d3e2ef3a3cb5bf9c6216e8d600034b554610840de7",
       "bytes": 8787,
       "match": true
     },
@@ -1110,8 +1110,8 @@
     {
       "owner": "tool prompt spotted/1",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/spotted-rejected-01.txt",
-      "expectedSha256": "32b64897a8e7827a30d4807aa21ff021711ef5a3f9588318d6da4f23fe8a794f",
-      "sha256": "32b64897a8e7827a30d4807aa21ff021711ef5a3f9588318d6da4f23fe8a794f",
+      "expectedSha256": "c1a147d48758af17578ce5bdaeeaf0a7bf9da04f3ab57f86587faed7d757ac3e",
+      "sha256": "c1a147d48758af17578ce5bdaeeaf0a7bf9da04f3ab57f86587faed7d757ac3e",
       "bytes": 8747,
       "match": true
     },
@@ -1126,8 +1126,8 @@
     {
       "owner": "tool prompt banded/1",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/banded.txt",
-      "expectedSha256": "9505aa87ac0505ca05926a4bd8f9b355f2e1960ae42ffde21ae2e208a372aa37",
-      "sha256": "9505aa87ac0505ca05926a4bd8f9b355f2e1960ae42ffde21ae2e208a372aa37",
+      "expectedSha256": "e6a6dc267d7e9efa5cb0244c19d6907a7296aceaa9f554382e1b06d30ada32ac",
+      "sha256": "e6a6dc267d7e9efa5cb0244c19d6907a7296aceaa9f554382e1b06d30ada32ac",
       "bytes": 8793,
       "match": true
     },
@@ -1142,8 +1142,8 @@
     {
       "owner": "tool prompt mottled/1",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/mottled-rejected-01.txt",
-      "expectedSha256": "35278fcb116b96e3f0b48fa36b7e236e67c942052d9e8514954772f520811d34",
-      "sha256": "35278fcb116b96e3f0b48fa36b7e236e67c942052d9e8514954772f520811d34",
+      "expectedSha256": "77adc4bf688bb43e6c797455db9e22aab409e5030d869e2dbe2e20cf9a5be70f",
+      "sha256": "77adc4bf688bb43e6c797455db9e22aab409e5030d869e2dbe2e20cf9a5be70f",
       "bytes": 8734,
       "match": true
     },
@@ -1158,8 +1158,8 @@
     {
       "owner": "tool prompt marbled/1",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/marbled-rejected-01.txt",
-      "expectedSha256": "3d64921abbe43494f6fd982ab281cb79c8364d4cb052bcba3c72d65238affc97",
-      "sha256": "3d64921abbe43494f6fd982ab281cb79c8364d4cb052bcba3c72d65238affc97",
+      "expectedSha256": "ad987faaa4de844bf0e45bffe455ac3817e3ce65d2f94c35e1171e1d884897fe",
+      "sha256": "ad987faaa4de844bf0e45bffe455ac3817e3ce65d2f94c35e1171e1d884897fe",
       "bytes": 8724,
       "match": true
     },
@@ -1174,8 +1174,8 @@
     {
       "owner": "tool prompt eye-spotted/1",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/eye-spotted-rejected-01.txt",
-      "expectedSha256": "1d2e73d018cc331d8c6d9b4df0a6f97bf8ec04488b9eaa885591d7c7a7604737",
-      "sha256": "1d2e73d018cc331d8c6d9b4df0a6f97bf8ec04488b9eaa885591d7c7a7604737",
+      "expectedSha256": "71dd175dccc29587e1244a420f468e55635c11b447873c0cdc5ac3cfabeb8020",
+      "sha256": "71dd175dccc29587e1244a420f468e55635c11b447873c0cdc5ac3cfabeb8020",
       "bytes": 8805,
       "match": true
     },
@@ -1190,8 +1190,8 @@
     {
       "owner": "tool prompt striped/2",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/striped.txt",
-      "expectedSha256": "9753be07d69c91b9466d1a0c8b12ce0d174d66de827800b68cc6b092fce6f5dc",
-      "sha256": "9753be07d69c91b9466d1a0c8b12ce0d174d66de827800b68cc6b092fce6f5dc",
+      "expectedSha256": "c24d92d513f8d721d9ede563876ac359f3f7e11ebade2c96f627039be78c8f81",
+      "sha256": "c24d92d513f8d721d9ede563876ac359f3f7e11ebade2c96f627039be78c8f81",
       "bytes": 8877,
       "match": true
     },
@@ -1206,8 +1206,8 @@
     {
       "owner": "tool prompt spotted/2",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/spotted.txt",
-      "expectedSha256": "2931cf774719a66c4bcde79d16849424d738ac561efae2b125fb0608df56126f",
-      "sha256": "2931cf774719a66c4bcde79d16849424d738ac561efae2b125fb0608df56126f",
+      "expectedSha256": "7b6002d3df0dcf4bf89908b5930133dd711564b62b87abbbd41dd146201069f5",
+      "sha256": "7b6002d3df0dcf4bf89908b5930133dd711564b62b87abbbd41dd146201069f5",
       "bytes": 8819,
       "match": true
     },
@@ -1222,8 +1222,8 @@
     {
       "owner": "tool prompt mottled/2",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/mottled.txt",
-      "expectedSha256": "8a0018e1246c7fd769aa7abeb1467fa9e852b2ab82ec2aae968cb1dcdcee3735",
-      "sha256": "8a0018e1246c7fd769aa7abeb1467fa9e852b2ab82ec2aae968cb1dcdcee3735",
+      "expectedSha256": "c9558df232232093f4910314167c819bc38c56d31e9f52c253fb05b8ad227219",
+      "sha256": "c9558df232232093f4910314167c819bc38c56d31e9f52c253fb05b8ad227219",
       "bytes": 8841,
       "match": true
     },
@@ -1238,8 +1238,8 @@
     {
       "owner": "tool prompt marbled/2",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/marbled.txt",
-      "expectedSha256": "f650f342fcc8862a36c83b2536086ceed329ac2b49c118a6a2e400c27bbf41c5",
-      "sha256": "f650f342fcc8862a36c83b2536086ceed329ac2b49c118a6a2e400c27bbf41c5",
+      "expectedSha256": "90a97e9fa0fee8c80252b0b0d8c2b5169eb86ffda04bff2e112d93a509526876",
+      "sha256": "90a97e9fa0fee8c80252b0b0d8c2b5169eb86ffda04bff2e112d93a509526876",
       "bytes": 8862,
       "match": true
     },
@@ -1254,8 +1254,8 @@
     {
       "owner": "tool prompt eye-spotted/2",
       "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/eye-spotted.txt",
-      "expectedSha256": "f863866d9a645fec2614e66ba8143e8ee7b8628fa10ea5ade04efa01c93277d8",
-      "sha256": "f863866d9a645fec2614e66ba8143e8ee7b8628fa10ea5ade04efa01c93277d8",
+      "expectedSha256": "17b2a1d3a6a17d2c3ecb1fd45dcf7a9ceecd39a6883f78f71e37c78f621a97d7",
+      "sha256": "17b2a1d3a6a17d2c3ecb1fd45dcf7a9ceecd39a6883f78f71e37c78f621a97d7",
       "bytes": 8887,
       "match": true
     },
@@ -1270,8 +1270,8 @@
     {
       "owner": "compiled prompt",
       "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/prompt.txt",
-      "expectedSha256": "51e488e389257f20c270d2222b4362d3558108a336cafab942d2439ee89aa38c",
-      "sha256": "51e488e389257f20c270d2222b4362d3558108a336cafab942d2439ee89aa38c",
+      "expectedSha256": "94289d0f0b276e7a73e7499f72be7d0ebf0bb29b378ffe8b699b17ad280d9557",
+      "sha256": "94289d0f0b276e7a73e7499f72be7d0ebf0bb29b378ffe8b699b17ad280d9557",
       "bytes": 7676,
       "match": true
     },

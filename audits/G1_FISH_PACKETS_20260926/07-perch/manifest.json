@@ -106,7 +106,7 @@
    {
     "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/greedy.sh",
     "bytes": 1435,
-    "sha256": "303d9d1a73515e4e171fb5b2d5db2d1552c6fcc8936a91119a6f38973ff82b11"
+    "sha256": "946a6bf3d326bca81243170aa00767a3e566ca9d8f40b31492a82a05bd3a767d"
    },
    {
     "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/adjjson.mjs",
@@ -135,22 +135,22 @@
    {
     "path": "audits/G2_FAMILY_PILOT_20260926/07-perch/generation.json",
     "bytes": 539,
-    "sha256": "56c06b19900c2aabdb98291dddf1ac5828fbf6979d7fc6cb420e765c1494821c"
+    "sha256": "fc88ad85087ff1466decf6a6479ee776de2c1b5b74f765042d59cb27ebf9119b"
    },
    {
     "path": "audits/G2_FAMILY_PILOT_20260926/07-perch/request.json",
     "bytes": 910,
-    "sha256": "1f36455665cd376e6255e903a81d6c67024ab52c25d43877d8f21b598e460978"
+    "sha256": "e1e796d0806cf710b52222e5a448f835f6cb5a616a7e78f5647d287d5d8325dd"
    },
    {
     "path": "audits/G2_FAMILY_PILOT_20260926/07-perch/prompt.txt",
     "bytes": 8792,
-    "sha256": "04d89220fcd7766be61ee63f689b86e1594a60149e55c9bd10fbe8a090bf9624"
+    "sha256": "ea281a0b65c5750e271457ae411227908f5aa698481b0a38d16c3bc7389c8827"
    },
    {
     "path": "audits/G2_FAMILY_PILOT_20260926/07-perch/compiler-inputs.json",
     "bytes": 15811,
-    "sha256": "cb64fcfaedec21da6cc67e0ac79ab832ee66c7a4fdf3f4967e07a94c277a0705"
+    "sha256": "a7176e2a1e57e3b56fe1c55aa8f85b0b77ebc6dca12dc86c6c3b26893b10208a"
    },
    {
     "path": "audits/G2_FAMILY_PILOT_20260926/07-perch/visible-anatomy.json",
@@ -183,7 +183,7 @@
   "automaticTransferProvenance": {
    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/07-perch/provenance.json",
    "bytes": 4489,
-   "sha256": "cb2f9c0b004e341e982378f664347d9160345d7960aa4c496c6f36b74383f343"
+   "sha256": "6a37d9da8afb8683c52acde7c7a4272e14069dcff735b11da733b4c1ae9720d3"
   },
   "legacyFlagCorrections": "intake writes manualAuthoring=true / sourceLandmarksReused=false unconditionally; provenance.json records that these are NOT an automatic-origin attestation"
  },
@@ -195,12 +195,12 @@
   "selectedBoundaryAudit": {
    "path": "audits/C49_FISH_REVIEW_20260926/07-perch-selected.json",
    "bytes": 29260,
-   "sha256": "db8182bdcdcb33346d74f7c23bacce081de31e4786be7a4d3a1a838d044f4881"
+   "sha256": "cea4aeb75104b9e8936ee32c14e86722adf5871fe1a7c7c61ef62d94c986c352"
   },
   "unweldedNegativeControl": {
    "path": "audits/C49_FISH_REVIEW_20260926/07-perch-unwelded-selected.json",
    "bytes": 34655,
-   "sha256": "d83f209a915e7a8addd8b56d8dcb599f1165b6bf7ff1aa761cfcef4cf1a5f1c4"
+   "sha256": "f8034625942db6ee4551cf96a594e61b512ef912d150c8c39472ba1afb02f66a"
   },
   "nativeRecordedHead": {
    "file": "native/report.json",
@@ -214,7 +214,7 @@
   "codexReview": {
    "path": "audits/C49_FISH_REVIEW_20260926/README.md",
    "bytes": 9668,
-   "sha256": "1857c7f3634f2fb36d0513cead28e855acc7f4e782df86f332cf59485b45c050"
+   "sha256": "035427698da955582f4b269aa9414b5a5e5383df8f00867532a27d6029792ff3"
   },
   "filmAndStillInventory": [
    {
@@ -225,7 +225,7 @@
    {
     "relativePath": "native/report.json",
     "bytes": 355218,
-    "sha256": "6ec9f0eac8d782db9ae1bf9569e428f4e81a97951956df929608820afa2f06c0"
+    "sha256": "e5df7e84d2d48d725d14b3993b5f3cc39e6dfd3411a60f5a3609c3c19de25776"
    },
    {
     "relativePath": "native/turn0-hit-approach-50.png",
@@ -336,7 +336,7 @@
   {
    "relativePath": "fit/intake-provenance.json",
    "bytes": 3115,
-   "sha256": "1993a57fc56ca5126c35d8abe5e4832c66de667ab84ae5103e763ba95711faa8",
+   "sha256": "59adaed36e7557dd1b267f173d72f03eb830b42d33ef316dfa78a65fbf664bf9",
    "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/fit/intake-provenance.json"
   },
   {
@@ -504,7 +504,7 @@
   {
    "relativePath": "native/report.json",
    "bytes": 355218,
-   "sha256": "6ec9f0eac8d782db9ae1bf9569e428f4e81a97951956df929608820afa2f06c0",
+   "sha256": "e5df7e84d2d48d725d14b3993b5f3cc39e6dfd3411a60f5a3609c3c19de25776",
    "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/native/report.json"
   },
   {
@@ -618,7 +618,7 @@
   {
    "relativePath": "evidence/static.json",
    "bytes": 7463,
-   "sha256": "fbf9cd7f0951da71cfcedcfd500b07989ceff08760fdcc50f77f7372c4d29d99",
+   "sha256": "83a18b7c32b2d661e8265e9991b3c2193301aebe22edf18fb1db934f350a388c",
    "durableLocation": "audits/G1_FISH_PACKETS_20260926/07-perch/evidence/static.json"
   },
   {

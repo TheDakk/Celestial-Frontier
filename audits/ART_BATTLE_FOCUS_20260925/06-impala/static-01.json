@@ -349,8 +349,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "67995957626fe39620ab4600fef284c497b07998c5011c6d5a0a4920df823670",
-  "bindingHash": "e347dca4508c73c3b606cce17b153558a19001519da01e0b14a83e5459ba9dfc",
+  "recordRecipeHash": "47da64d4c4a34d4dcf0e62994ab56b1c75f247e4505ad9514a1d9ceb50d8711a",
+  "bindingHash": "78a8eb0ae15b14a7fa805ab5bbbcccad764c303435b3a1b76a4da513203722f0",
   "family": "quadruped",
   "contacts": [
     "hindFarAnkle",
@@ -635,12 +635,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/fit-01/record.json",
-      "sha256": "fe6acc9301979d0e9abf811eb1ace740530a748243031da872de565138ec3da7",
+      "sha256": "4e1f28278c3702a907b924a73318b779f8008331f8f8780116789677f7af0885",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/fit-01/binding.json",
-      "sha256": "59545ef50b4161b7679fea88235546b8d35bcf57a556b6bd8ebc60e79c79463c",
+      "sha256": "c8fbf5dfe3ae67d5f9397c2e872ed779f371ead0eb7766be576d987b802f53b4",
       "unchanged": true
     },
     {

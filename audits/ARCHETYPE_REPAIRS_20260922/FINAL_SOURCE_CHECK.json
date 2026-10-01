@@ -2345,7 +2345,7 @@
       {
         "path": ".github/workflows/branch-flow-guard.yml",
         "bytes": 2673,
-        "sha256": "dbbb65cbd8f93140befb4e4d71701961498fdec3a0e2ac17e9af5aae7de8ad40",
+        "sha256": "72770b57a4d4439c239813b7dcd279e63aba813c5cac97989b4fbdd5d65e73b6",
         "matchesAuditedEndCommit": true,
         "matchesEagleCommit": true,
         "onBlock": "on:\n  workflow_dispatch:\n    inputs:\n      actions_budget_authorization:\n        description: Select the run token only after Dakk authorizes this one hosted workflow\n        required: true\n        default: DO_NOT_RUN\n        type: choice\n        options:\n          - DO_NOT_RUN\n          - RUN_ONE_AUTHORIZED_WORKFLOW\n      base_branch:\n        description: Destination branch to validate\n        required: true\n        default: develop\n        type: choice\n        options:\n          - develop\n          - main\n      head_branch:\n        description: Source branch to validate\n        required: true\n        type: string\n      head_repository:\n        description: Source repository owner/name\n        required: true\n        default: TheDakk/Celestial-Frontier\n        type: string",
@@ -2359,7 +2359,7 @@
       {
         "path": ".github/workflows/dev-preview-package.yml",
         "bytes": 4045,
-        "sha256": "1ba3d58179f85f424b735346373431f625b351b87b21380101663a0f11181a86",
+        "sha256": "2b392ea1acf65a8b08e7a5eb368fa9f9cd456cc4869bdf7de958b77d416550f1",
         "matchesAuditedEndCommit": true,
         "matchesEagleCommit": true,
         "onBlock": "on:\n  workflow_dispatch:\n    inputs:\n      actions_budget_authorization:\n        description: Select the run token only after Dakk authorizes this one hosted workflow\n        required: true\n        default: DO_NOT_RUN\n        type: choice\n        options:\n          - DO_NOT_RUN\n          - RUN_ONE_AUTHORIZED_WORKFLOW\n      preview_origin:\n        description: Separate HTTPS origin that will host the extracted artifact\n        required: true\n        default: https://dev-celestialfrontier.github.io\n        type: string\n      acknowledge_public_artifact:\n        description: I understand a published preview exposes this development build to its testers\n        required: true\n        default: false\n        type: boolean",
@@ -2387,7 +2387,7 @@
       {
         "path": ".github/workflows/sync-agent-branches.yml",
         "bytes": 2755,
-        "sha256": "252c890888d9c2aaa417524e52a4c8d417d538dc7d368f4070232c77dd78b681",
+        "sha256": "98139432d61c4644983976b201cb15b06975487cb378ff8ad46fa05f91541278",
         "matchesAuditedEndCommit": true,
         "matchesEagleCommit": true,
         "onBlock": "on:\n  workflow_dispatch:\n    inputs:\n      actions_budget_authorization:\n        description: Select the run token only after Dakk authorizes this one hosted workflow\n        required: true\n        default: DO_NOT_RUN\n        type: choice\n        options:\n          - DO_NOT_RUN\n          - RUN_ONE_AUTHORIZED_WORKFLOW",

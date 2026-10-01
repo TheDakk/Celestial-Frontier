@@ -2,14 +2,14 @@
   "schema": "cf-av-priority-handoff/v1",
   "baseSource": "ea74425c1c3737d8081d7c4de8e454912812ffd7",
   "savedU2State": "Verified preparation, staged, NOT committed; native attempt NOT RUN because 1Password signing failed",
-  "directionSha256": "0e39510c83b927fc44daf1aae638aead80a924936e882307bcdb5346c67ad79c",
+  "directionSha256": "54fca745e489596e86c2da1359d4fbc79b17ee3b8266b8f9f6b65e16ee0c0c16",
   "files": [
     {
       "file": "verified-u2-staged.patch.gz",
-      "bytes": 37816,
-      "sha256": "06c71a786a17495ba76bfde9462e228f2848e3a109b3dc277c674e54201d164b",
+      "bytes": 37815,
+      "sha256": "00cea793d967fef5d6fedf1179ff9766ba1ed1f59e9765cea9b427897896b63f",
       "rawBytes": 135344,
-      "rawSha256": "ecfe21e2f07778b31f35d09c74eb39c50b7b7de8416de2fc2795ee142263ce4d"
+      "rawSha256": "c96dbfd3622ffe56b5ea78384c96cdbec8fb16c35de18481595fccf847c42743"
     }
   ],
   "patchUse": "Preservation only. Contains the complete owned staged U2/startup/documentation delta from baseSource before this priority update; never apply over current work blindly.",

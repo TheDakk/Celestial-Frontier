@@ -1,8 +1,8 @@
 {
   "schema": "cf.sparse-native-pose-diagnosis/v1",
   "scope": "Node diagnostic only; no film, full battery or native CPU certification. Real BattleStage/createPartsRig/performance/contact owners; source-equivalent compiled-field/ARAP/rigid-parent/shape validation and Float32 publication; display stubs only.",
-  "recordRecipeHash": "302a526d5d0fdd6cf5093ed3d680b3001b914cde5668552c5613d736da41e8d8",
-  "bindingHash": "7c37a44b196c36464680238d17c65a0ffe40c2b3bdc7c86659f355ea145f6f67",
+  "recordRecipeHash": "8fada1673acf5633abd043b6d98e59389d197d8663a02f8a2f5ef8fa5f65130a",
+  "bindingHash": "1ba4157632bb0b8527e5cef68e78da01701d93464e039446175362d0c675a900",
   "planParity": "EXACT",
   "plans": [
     {
@@ -107416,7 +107416,7 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-02/report.json",
-      "sha256": "69e0b51b7db2269c5b0d785e72cbca55722333867c4917df27ec9b28c5f75d82",
+      "sha256": "639a1fe1f17054ec36340f1ab8cb87f588d04ba7e7d6e916b7fffbda3e405e2a",
       "unchanged": true
     },
     {
@@ -107431,12 +107431,12 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-05/record.json",
-      "sha256": "82f3fc0eccf7ebc2d359dce42152bbcd61e9319d8c302b42def8a83b83799bf1",
+      "sha256": "87323e32a3958123ef62be96e6c1ff1624509c7e0a07796b472a5b85206c673d",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-05/binding.json",
-      "sha256": "f37cae2fc40e342ac7814533642470638e4d6dbb40cc8c5d0b74827b59944b82",
+      "sha256": "34f9742d8245d5abb40044dd7e5e4bcf5a40122758e476e38dd0a68a7abe337f",
       "unchanged": true
     },
     {
@@ -107456,7 +107456,7 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
-      "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4",
+      "sha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596",
       "unchanged": true
     },
     {

@@ -7,7 +7,7 @@
       "archivePath": "audits/LONG_SESSION_20260913/WORK_ORDER.md",
       "retainedPath": "audits/LONG_SESSION_20260913/WORK_ORDER.md",
       "bytes": 6361,
-      "sha256": "48adedb57539b242e7f76b003b14a9021b0bcd422699afb2d601224b46825151"
+      "sha256": "76f47150ead762eec9a937fcf12997a69e6799ddea17bd1e55307616eb3fe6c6"
     },
     {
       "archivePath": "audits/LONG_SESSION_20260913/CONTRACTS.md",
@@ -19,19 +19,19 @@
       "archivePath": "audits/LONG_SESSION_20260913/LOG.md",
       "retainedPath": "audits/LONG_SESSION_20260913/LOG-CLAUDE-PACKET.md",
       "bytes": 924,
-      "sha256": "c67ae8c28ec7abc018ef1451279e929d48c7a0174b2aa71be22c152bfa190c07"
+      "sha256": "e0138e44e7e136881ffbe9729b5f33b5d49d5d49cc1e6c21b6b5e3b60f2dcca0"
     },
     {
       "archivePath": "audits/LONG_SESSION_20260913/LOG-A4.md",
       "retainedPath": "audits/LONG_SESSION_20260913/LOG-A4.md",
       "bytes": 7243,
-      "sha256": "a2d3ee1e8bbf0f4abcba1d352945fa63483f233d9128a74332cc57d6fceef66c"
+      "sha256": "c916518f5e0da75615254f8eff232443262de4c50869901cd30b8870c1839437"
     },
     {
       "archivePath": "audits/LONG_SESSION_20260913/LOG-A5.md",
       "retainedPath": "audits/LONG_SESSION_20260913/LOG-A5.md",
       "bytes": 6059,
-      "sha256": "13b6cc7e26cb0cf529518160bcddea08edf37596f21502da0e5f13a49c3b40bc"
+      "sha256": "a62d25818db9988c241b8499bbc5f597e9eccc71b3213005e19a5ce385a1584a"
     }
   ]
 }

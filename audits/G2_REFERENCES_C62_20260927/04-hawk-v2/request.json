@@ -3,8 +3,8 @@
   "name": "Hawk",
   "family": "biped-bird",
   "tool": "image_gen.imagegen",
-  "promptSha256": "736590d62b9d1f19423933a82f4e0f79c3ff2e1aa1f0232dce0c6f7fc3958c3f",
-  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "promptSha256": "a08a6fd812bacc59efcb08adaf3d804ff474e2036a0df9caed2aabc92d07c7a2",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
   "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
   "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
   "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
@@ -18,7 +18,7 @@
   "profileId": "raptor",
   "authoringCreated": false,
   "sourceHead": "093f566d833ecf044db9b8a1c15f87d3541f801f",
-  "canonicalPromptSha256": "5b4d1ef29bdf9fee54e7a1aa6e1c433a47acd52f57b1a7ec26d7a80d50145334",
+  "canonicalPromptSha256": "90ba1f752ee122e38a8a73fd54a3ebbec08eba6f5fb8109d0842d525f3e93f2b",
   "purpose": "Dakk-authorized new hand-authored reference, C62 overnight queue item2",
   "layoutSupplement": "REFERENCE POSE PRIORITY: both wings folded ABOVE the complete tail, with wing tips ending on the body above its tail base. The tail feathers remain independently readable from root to tip, below the wing outline. Two leg shafts separated by clear background all the way to the feathered body."
 }

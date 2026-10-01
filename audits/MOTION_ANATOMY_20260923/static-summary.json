@@ -1,56 +1,56 @@
 [
   {
     "path": "audits/MOTION_ANATOMY_20260923/python-wave-static-02.json",
-    "sha256": "d6c207bb9e3ddf7dba013365bde200bb048a82681dc206039a1dd1f13adb021f",
+    "sha256": "c2007821f5987aa9a119cbb63f2c152075fef137b130ee14df42a2e3038a097b",
     "status": "PASS_STATIC",
     "exactRest": true,
     "changedVisibleRgbaChannels": 0
   },
   {
     "path": "audits/MOTION_ANATOMY_20260923/salmon-wave-static-02.json",
-    "sha256": "bc50e3ea33f17c2351b1bd1e4a88b23d2b7e8e5d2648b50ac1bf4a9556e8c8fb",
+    "sha256": "08865a04d0b864ef17961c667fd26f49aba832c25c53b90116288a9758655d8d",
     "status": "PASS_STATIC",
     "exactRest": true,
     "changedVisibleRgbaChannels": 0
   },
   {
     "path": "audits/MOTION_ANATOMY_20260923/eagle-gait-static-01.json",
-    "sha256": "4b67ae9cefc161f94d0d5cfb9d7ebdfe975d0632b7a79a8580f70568d3569a88",
+    "sha256": "ad09b59d786a87d9c1e603ca313dc2a1b2cb3997414c3cbb2ea06ac19b8b1918",
     "status": "PASS_STATIC",
     "exactRest": true,
     "changedVisibleRgbaChannels": 0
   },
   {
     "path": "audits/MOTION_ANATOMY_20260923/beetle-gait-static-01.json",
-    "sha256": "853c65455a0691359b142f3792e123180ae3445f94ecfed1a21664cc8001a9ab",
+    "sha256": "d80645e4889172c3b8d3b138618f59edc74ae2b7b508502740124d4957e0d517",
     "status": "PASS_STATIC",
     "exactRest": true,
     "changedVisibleRgbaChannels": 0
   },
   {
     "path": "audits/MOTION_ANATOMY_20260923/chimpanzee-gait-static-01.json",
-    "sha256": "eef0628d1df4c067e197107e3c0ca348eceac8d320de12f9252a246b420db45d",
+    "sha256": "a6e84145de6c4a2a914a3d803af45bc3ca09a701a629cd861d1258a8a9471a27",
     "status": "PASS_STATIC",
     "exactRest": true,
     "changedVisibleRgbaChannels": 0
   },
   {
     "path": "audits/MOTION_ANATOMY_20260923/tarantula-gait-static-01.json",
-    "sha256": "83a77cfbb8be1fc46bdecd9aa208590269a79ea7dd9817399a8b3aaa4f7590cd",
+    "sha256": "8d02997eebdb545d3b8fc4889d8056384e103e8c0f9f66291455819dbc28a4bf",
     "status": "PASS_STATIC",
     "exactRest": true,
     "changedVisibleRgbaChannels": 0
   },
   {
     "path": "audits/MOTION_ANATOMY_20260923/fruit-bat-gait-static-01.json",
-    "sha256": "4f0ea74d7c895a2e2dd7feaccc1ee325214099a21d76abe3425d6bdd06e00fc9",
+    "sha256": "cd81b58cc828fd6dc82dce513c9f5cbc29633b240b88b7b1b3d35885bfd05086",
     "status": "PASS_STATIC",
     "exactRest": true,
     "changedVisibleRgbaChannels": 0
   },
   {
     "path": "audits/MOTION_ANATOMY_20260923/centipede-gait-static-01.json",
-    "sha256": "34280ce42d5b741a20503fe84070ea696748ece58c998543a11dd588e5f7188f",
+    "sha256": "423f040f2a0f399733e992fdb1f83e1c7e724f5b61fd29d9a689f2101781490a",
     "status": "PASS_STATIC",
     "exactRest": true,
     "changedVisibleRgbaChannels": 0

@@ -148,8 +148,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "4bbfb883782353bd86e0e9751b3bf48ff79c0c47ea545d054876ad584e694bd9",
-  "bindingHash": "411b35f8b60c90dde4b1085d6c2ff6b1004ebad120a965210c8018dc3176901f",
+  "recordRecipeHash": "7edbcdb118b4a47b18dfd328fe43c56bfff5113cc848814b433742819459108d",
+  "bindingHash": "cf2656713b32423021410e0e3a9f2d071cf14cb0f241db0e157923241d67d00a",
   "family": "fish",
   "contacts": [],
   "realm": "aquatic",
@@ -251,12 +251,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/record.json",
-      "sha256": "0d55904876d7638af2b8a43eea96e48328de0950e241cf1c32509c62ab1b6696",
+      "sha256": "b90b6765830d2be70660f6c39eb27b7993102ad69cc0c0d46cc7bf730530591a",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/binding.json",
-      "sha256": "4d9eb64b3af20f1a78cae84b7a77ca5f2b2b27d7361e5b6620fca65f44ed3734",
+      "sha256": "ff59bbd9a70ec16b26b7ba288c03f69f1900c50ccb87b358a0c19a5523a4d036",
       "unchanged": true
     },
     {

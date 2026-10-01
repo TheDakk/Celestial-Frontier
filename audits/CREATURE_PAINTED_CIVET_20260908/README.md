@@ -77,7 +77,7 @@ Native document-hidden is a synthetic event control, explicitly separate from ac
 or physical phone qualification. Phone control inputs are trusted CDP mouse events under mobile
 emulation, not physical touch/Safari/PWA. Final native source/asset bytes were unchanged throughout;
 8 source inputs and the dist inventory are retained. Native report SHA:
-`cd84e42ea90c7f05a0754d4efa5595dea8e8fc20500bafd5ff4b1d87a9db97d9`.
+`4ec3ba652b4cf8e5e0af964b2e09a5c4a8230660f9e346c57ab39f4cff3e522f`.
 
 All first failures remain immutable: two opaque generator outputs, two matte edge failures,
 first native paw-pixel red, the independent analysis's raw-GPU/encoded-PNG comparison red,

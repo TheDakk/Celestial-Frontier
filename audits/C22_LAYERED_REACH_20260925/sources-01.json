@@ -5,11 +5,11 @@
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C22_LAYERED_REACH_20260925/baseline-layered-reach.ts",
-    "sha256": "5f86501e3bece589f10d7e891c740a98f88aa32043391a95371385334b2e3306"
+    "sha256": "f2a93471070ea491efb5c14b4d62250022f28b802536f8d1befae083f973d1f5"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C22_LAYERED_REACH_20260925/candidate-layered-reach.ts",
-    "sha256": "5c6ecd291e12eedcc342ce596594b451cd39dfdf4a799b11c91ede3f3f1d475a"
+    "sha256": "b43b9943272bbd87b64477e12356a1a30b5e93f966e4cef01176b02c894b5cba"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
@@ -45,7 +45,7 @@
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
-    "sha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+    "sha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/grounded-quadruped.ts",

@@ -1267,8 +1267,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "887857dd7213d86fe5278ab6dd4ef3ebbf5a06a86f12a9f241b56c4e14eb26a0",
-  "bindingHash": "e3ddc0b37d13e12a8527dcdf18c3464abc2e00aade24765cbaf266729ecb9e7b",
+  "recordRecipeHash": "359ea5009240cea77a5b7c8a464917914cfbf52d52beebf98becd8fa78f7e7d6",
+  "bindingHash": "e5a312ee4500c06724c1e3440a48977180854c1610dd36c8fafecfa1875af0a7",
   "family": "biped-bird",
   "contacts": [
     "legFarAnkle",
@@ -1277,8 +1277,8 @@
   "realm": "land",
   "declaredPaintBoundaries": {
     "schema": "cf.authored-paint-boundary-continuity/v1",
-    "recordRecipeHash": "887857dd7213d86fe5278ab6dd4ef3ebbf5a06a86f12a9f241b56c4e14eb26a0",
-    "bindingHash": "e3ddc0b37d13e12a8527dcdf18c3464abc2e00aade24765cbaf266729ecb9e7b",
+    "recordRecipeHash": "359ea5009240cea77a5b7c8a464917914cfbf52d52beebf98becd8fa78f7e7d6",
+    "bindingHash": "e5a312ee4500c06724c1e3440a48977180854c1610dd36c8fafecfa1875af0a7",
     "pairs": [
       [
         "body",
@@ -1618,12 +1618,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/record.json",
-      "sha256": "01b649a3999f9ce27d7dc05050711db5a5e8006eafc1b22a1065c67f1700b5a0",
+      "sha256": "325ddaf7cfb2ab98152b46f8a0683e95529c7cf0658359169072f48b06d9546b",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/binding.json",
-      "sha256": "a2c2a31b2f92c60cd41b41e750f723f2c5f3c93a4cbfb4575bf84addb28d33c3",
+      "sha256": "1036413194587927b50423cf88bb4de8b78ef19cd5abd2692fd306e926063493",
       "unchanged": true
     },
     {
@@ -1643,7 +1643,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/paint-boundary-continuity.json",
-      "sha256": "3c6f4f40e5f89c102e60886769017c128aa00c2c25a923f42a71754840f3df74",
+      "sha256": "221135d4289ed426ab2b365aef9e91a5c1c440e79558ef9db1819a64ca4af74b",
       "unchanged": true
     }
   ]

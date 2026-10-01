@@ -1,7 +1,7 @@
 {
   "directory": "/private/tmp/cf-runtime-pack-20260909-build-01",
-  "manifestSha256": "e2442474afd168c2a7a9f1fb798591583b3ead962ef9135a0980c0f9d739ae21",
-  "sourcePinsSha256": "e8e46745d13041b01b80fbffc8e16d489f9a0962914957b0783b35a559a90514",
+  "manifestSha256": "6f6e8afcecc7b6955260961fe5988ec708086f79d73194ad5d339f675273ed39",
+  "sourcePinsSha256": "d5fbd41c24d43a0f72732e45e15a260b8ed57e73ca74fc9cbffea4c533b60d76",
   "config": {
     "schema": "cf.local-ai-runtime-pack.v1",
     "workerUrl": "/__local_ai/stage-worker.mjs",

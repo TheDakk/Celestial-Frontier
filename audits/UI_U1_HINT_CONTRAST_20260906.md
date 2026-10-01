@@ -17,7 +17,7 @@ Small-phone `local-u1-1609cf3-20260906-small-phone` then stopped with one produc
 instrument failures; large-phone did not run. The report remains RED. All eight stage logs,
 execution receipt, Slice report/log/ten PNGs, immutable Glass report and labelled diagnostic
 pointer are retained in `UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json` (23 carriers),
-SHA-256 `1ad81a5a4d7e94d362d095c6f73d7624aef309cf6a0fb248cc61a854d0a8265b`.
+SHA-256 `735f1aa8ae937c7d802efa8ddbe6843243e2bef3a438ed2bba23e0ab44cc2251`.
 The test artifact's full Git status was empty and the owned workspace's ambient `.DS_Store`
 was preserved. This does not relabel the earlier dirty-diagnostic ce89128 run.
 
@@ -99,7 +99,7 @@ Clean signed bb9ebe461a716de04806430693c9dba4694059ec passed the develop profile
 PRODUCT RED with one SURFACE_NOT_VISIBLE for #dockcharts/dockcharts-on and zero instrument
 failures. Large-phone and Slice did not run. Nine carriers are retained in
 UI_U1_LOCAL_CHECKPOINT_bb9ebe4_20260906/manifest.json, SHA-256
-`a20c9ab899ed2296f5b2f796b71dd0e277bb20627d1cf89c651d10b7f3540b33`.
+`08efdcfb7b8945e07a23fce58c72f8e618a7eb7b6f367771d3afc2740fe8de58`.
 
 That shortcut is intentionally hidden by the accepted U1 layout; compact players use Settings
 → Star charts. The correction retargets existing on/off contrast and activation checks to the
@@ -124,7 +124,7 @@ did not run on this source. The outline and responsive-dock controls passed in t
 
 Nine exact carriers, including all six execution-stage logs, are retained in
 `UI_U1_LOCAL_CHECKPOINT_b457a7a_20260906/manifest.json`, SHA-256
-`e59a612c1bf505e94a4dfad541584e71c2f21a7ac7f01bbc4da71de0afd90013`. The immutable Glass report
+`f6828201fc7fbb8e646621e86d798f2b02eb3ee2d9c65b37636149f9beb03c2a`. The immutable Glass report
 passed generic terminal/Edge authority verification as a RED report. The source stayed clean,
 committed and unchanged; the owned workspace's ambient file stayed byte-identical. No retry,
 large-phone run, Slice run, hosted action or U2 implementation followed the failure.

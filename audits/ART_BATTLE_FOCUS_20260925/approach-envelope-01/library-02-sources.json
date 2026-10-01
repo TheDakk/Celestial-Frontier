@@ -1,7 +1,7 @@
 [
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/approach-envelope-01/library-study-02.ts",
-    "sha256": "c5b8c535842ea479434c2553fe899371ff017573a245121d27ff5995d166a0be"
+    "sha256": "cab1adbe245cc97c3575f76fef8bec12d0b92263b2b671be7ede0c9acc2ec40f"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
@@ -25,7 +25,7 @@
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
-    "sha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+    "sha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/stance-envelope.ts",

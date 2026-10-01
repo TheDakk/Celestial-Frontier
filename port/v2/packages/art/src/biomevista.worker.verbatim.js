@@ -1,5 +1,5 @@
 /* AUTO-LIFTED _hdVistaEco atmosphere overlay from main.js (v1.8.9).
-   exact source sha256 d45d7b0ba3bf481bb0e4565d8cdeb9c4899dc5d2927e54f8a8d4ff414acc2df7. ⚠ DO NOT EDIT.
+   exact source sha256 4286da4a01c7da05282b0da133d78228706100601ac71655659898df339d74e7. ⚠ DO NOT EDIT.
    Regenerate: node tools/lift-hdart.mjs
    BIOME_PROFILES and mulberry32 are explicit injected inputs. This is not the
    full hdVista compositor and owns no allocation, lifecycle, effects policy,
@@ -52,5 +52,5 @@ function applyPreservedBiomeVistaEcologyV1(g, W, H, hz, opts, seed, BIOME_PROFIL
   }
   g.restore();
 }
-const PRESERVED_BIOME_VISTA_ECOLOGY_SOURCE_SHA256 = 'd45d7b0ba3bf481bb0e4565d8cdeb9c4899dc5d2927e54f8a8d4ff414acc2df7';
+const PRESERVED_BIOME_VISTA_ECOLOGY_SOURCE_SHA256 = '4286da4a01c7da05282b0da133d78228706100601ac71655659898df339d74e7';
 export { applyPreservedBiomeVistaEcologyV1, PRESERVED_BIOME_VISTA_ECOLOGY_SOURCE_SHA256 };

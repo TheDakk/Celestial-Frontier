@@ -2,7 +2,7 @@
   "runId": "20260923-tarantula-paint-07",
   "mode": "image_gen built-in edit",
   "promptFile": "prompt.txt",
-  "promptSha256": "146a05c4c9b8a1af4f1b7a5f2cef877917d9ce54313799843170c807f6507fac",
+  "promptSha256": "a9f08424efee247ca5d4808d030c422e3fe8ef5267fc9ecedb93a9b2b8237eb5",
   "references": [
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-07/master.png",

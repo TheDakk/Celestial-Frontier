@@ -154,7 +154,7 @@
     "nativeAcceptance": false
   },
   "provenance": {
-    "authoringSha256": "815047e8b3c655e51fcefeccfdc6117ec647ec4a6f35acd2dab35ad243ff119e",
+    "authoringSha256": "a7ddba32f738fd770b714fe493d0837d9d8a5073b34c14b23c5d7d5f65b2c4c5",
     "subjectSourceSha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67",
     "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
     "sourceLabelsReused": false,
@@ -193,5 +193,5 @@
       "wing/torso": 2.597790102395608
     }
   },
-  "recipeHash": "cc0621e850e4818ab73ce3e177b6175517ed40dab7ff7a5f0ee34b2c7cb8b808"
+  "recipeHash": "d4fe71172b9a01d5e71e36de0048491578d8ace0b7383b0475c989ad62d78a2a"
 }

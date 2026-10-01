@@ -1,8 +1,8 @@
 {
   "schema": "cf.flat-master-weld/v1",
   "sourceFit": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/25-wild-horse/fit-03",
-  "sourceRecordSha256": "bc71542fc8d1f4440cd1999b63395e0c21025e5d48b16e6281e5c33fc10581f3",
-  "sourceBindingSha256": "a257b31754c8486a5913b94cede7150848fc2586204559551c613ed6f73781de",
+  "sourceRecordSha256": "b0bd958dc7a8b8a8f6bb057075fc007e5901087b1c8b896db11a128c1fecb6a7",
+  "sourceBindingSha256": "30b0d841eb866a5a908baae683f2c596275a777d10048865783dd30b44b6eef7",
   "sourceAtlasSha256": "62cdf6363079235cec96722d3094a2c9075c2131a704ac01254f161142b4f25f",
   "helperSha256": "959dc01a6f721f15a1b1ca20dda4f52a1cf7f4380e77ce320ad9e96147d4edaa",
   "author": {
@@ -111,7 +111,7 @@
         ]
       }
     ],
-    "sourceBindingHash": "044c5f7534b44c09f9cb82b7e8443c8eea296731ab3b7ecce30589fccd8920bf",
+    "sourceBindingHash": "2faac2f6fbe9376c0d328dbac6c538cc287804f1142beeb4d9280ae4308da5a5",
     "sourceVertices": 1693,
     "vertices": 1947,
     "sharedSupports": 570,
@@ -135,6 +135,6 @@
     ],
     "sourceCoordinateChanges": 0
   },
-  "bindingHash": "733ca2e2c0db21d9c750bf7103c47062baec01a35841491a15aa0527f5e5055d",
+  "bindingHash": "e5ec652ac3791d30e39a8bf729c75ea36910a190db49bd3380a3cb34bd9eb600",
   "scope": "New unadmitted fit, explicit source paint continuity; source pixels and solver unchanged. Inherited receipts remain historical; this receipt owns the new split."
 }

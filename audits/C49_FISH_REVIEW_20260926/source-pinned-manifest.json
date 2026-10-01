@@ -14,7 +14,7 @@
       "id": "06-trout",
       "reference": {
         "subject": "salmon",
-        "authoringSha256": "b973fe0595d98ed9c27e3c272d03163fbbf777f810e6a92c93f2962a61a7f390",
+        "authoringSha256": "1876ba55fd1234d96e2059a653d8bf0ef16823667d98be9028c75c3b41c50065",
         "masterSha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4"
       },
       "identity": {
@@ -435,19 +435,19 @@
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/static.json",
-          "sha256": "e26a954928c87926424eb4012d3b382f32d1b67b7d7c8a0562010ba7b95e9abb",
+          "sha256": "7ab952c6f95cc936122e7d51acdb62b24b9da034eae2116fff53279941df6b5d",
           "bytes": 7459,
           "tracked": true
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/static.json.sources.json",
-          "sha256": "a76795829c766640cdd1fb99b9e4cfe13c8db2dc2dd144f03deb842670f60297",
+          "sha256": "855942aca88a6d5926a65cdcf291985b59de3b1558c45cb1c130a80e425a246e",
           "bytes": 15799,
           "tracked": true
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/06-trout-final/native/report.json",
-          "sha256": "5e535031c5865265c4f811b5351d4ef693151692d9e9a8d047899638337e5565",
+          "sha256": "cb584a39df2dddb7aef0da7d0436fd8ab894a5088d8453cccb0600b9612704f9",
           "bytes": 356480,
           "tracked": true
         }
@@ -462,7 +462,7 @@
       "id": "07-perch",
       "reference": {
         "subject": "bass",
-        "authoringSha256": "8da048f4c2be9106a763434c279ed370366c538801f6cc342c878492d18798fb",
+        "authoringSha256": "dd60d0253965cb37a46ac5434693058f8bac78d815fba2505ea0ffe7c7f0721f",
         "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
       },
       "identity": {
@@ -510,7 +510,7 @@
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/fit/intake-provenance.json",
-          "sha256": "1993a57fc56ca5126c35d8abe5e4832c66de667ab84ae5103e763ba95711faa8",
+          "sha256": "59adaed36e7557dd1b267f173d72f03eb830b42d33ef316dfa78a65fbf664bf9",
           "bytes": 3115,
           "tracked": false
         },
@@ -883,19 +883,19 @@
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/static.json",
-          "sha256": "fbf9cd7f0951da71cfcedcfd500b07989ceff08760fdcc50f77f7372c4d29d99",
+          "sha256": "83a18b7c32b2d661e8265e9991b3c2193301aebe22edf18fb1db934f350a388c",
           "bytes": 7463,
           "tracked": true
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/static.json.sources.json",
-          "sha256": "e9b10c82816130ac9b60cede32bf793ff0dcdfaf528dd38b7196008dcf3cf737",
+          "sha256": "0909a11bd31f8872b3bb4afba28ca40779f582c17644df293f317026e6339c75",
           "bytes": 15799,
           "tracked": true
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/07-perch-final/native/report.json",
-          "sha256": "6ec9f0eac8d782db9ae1bf9569e428f4e81a97951956df929608820afa2f06c0",
+          "sha256": "e5df7e84d2d48d725d14b3993b5f3cc39e6dfd3411a60f5a3609c3c19de25776",
           "bytes": 355218,
           "tracked": true
         }
@@ -910,7 +910,7 @@
       "id": "08-cod",
       "reference": {
         "subject": "bass",
-        "authoringSha256": "8da048f4c2be9106a763434c279ed370366c538801f6cc342c878492d18798fb",
+        "authoringSha256": "dd60d0253965cb37a46ac5434693058f8bac78d815fba2505ea0ffe7c7f0721f",
         "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
       },
       "identity": {
@@ -966,7 +966,7 @@
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/fit/intake-provenance.json",
-          "sha256": "c8b13512675d0015351fc0db44362e30f5c855f865c10d5ee42f8dd250acad57",
+          "sha256": "49c956c573c89603502c75c64b758bea428af3fcf835fb8f5f6082ca216ff859",
           "bytes": 3099,
           "tracked": false
         },
@@ -1339,19 +1339,19 @@
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/static.json",
-          "sha256": "0fdf1decc333bce2af900522b4ab1f3710aad35f550cd71b897b49c507500e24",
+          "sha256": "5c15051d025785095c057c6d73b0a2155458a6b5d2331ca80ac2775639829395",
           "bytes": 7449,
           "tracked": true
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/static.json.sources.json",
-          "sha256": "1873c37eebcc47854fbaf7f4fcea5a85a7523c28dbf83ae1756946397fe90a1e",
+          "sha256": "4cec8048dc796cbec2178d89f3d1a0630d436397b82ebea9045a315f497e72fa",
           "bytes": 15799,
           "tracked": true
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/08-cod-final/native/report.json",
-          "sha256": "4823c7defddf3c31174553efa868711d6a44b852dd4d899151f078df309e6a95",
+          "sha256": "5a8019864bd922d26972da8198455f0e99443773f9d8c502fa808f83db4b5fd6",
           "bytes": 355219,
           "tracked": true
         }
@@ -1366,7 +1366,7 @@
       "id": "09-carp",
       "reference": {
         "subject": "bass",
-        "authoringSha256": "8da048f4c2be9106a763434c279ed370366c538801f6cc342c878492d18798fb",
+        "authoringSha256": "dd60d0253965cb37a46ac5434693058f8bac78d815fba2505ea0ffe7c7f0721f",
         "masterSha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
       },
       "identity": {
@@ -1410,7 +1410,7 @@
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/fit/intake-provenance.json",
-          "sha256": "6c487418dc5f92e0dc6d7b620649ad2785399aa978ff67a17275e8855e68507f",
+          "sha256": "c35a6a4c129c3e29a179b43d451723d21cd66415e4fba04c876cf86a189f0ff7",
           "bytes": 3107,
           "tracked": false
         },
@@ -1783,19 +1783,19 @@
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/static.json",
-          "sha256": "ba984ebbbde88fb179a1f7f8868c2d681aa75abe9f6ed49876e7b7823991f3f3",
+          "sha256": "ba06ff700b32931f9e91976344996ef9d3dd95b633e2e6b3b0347c9f6895da57",
           "bytes": 7453,
           "tracked": true
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/static.json.sources.json",
-          "sha256": "fc83a5fa693a3a36ad4d4c1ba5cbbcf116c04d9182b65cbaff20cd71875700c5",
+          "sha256": "12b5eaf1c242ffd08f9e6af46115d35b82b3acd301e090dbeb9ed6c97402f0e4",
           "bytes": 15799,
           "tracked": true
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/09-carp-final/native/report.json",
-          "sha256": "6a940841a72725774541288fb4e311952828c837269b53330777d83b73873f80",
+          "sha256": "c492d66888ecf53317160415df2d5fc09a923e6ed41b9a943587c31e6318fb10",
           "bytes": 355671,
           "tracked": true
         }
@@ -1810,7 +1810,7 @@
       "id": "10-herring",
       "reference": {
         "subject": "salmon",
-        "authoringSha256": "b973fe0595d98ed9c27e3c272d03163fbbf777f810e6a92c93f2962a61a7f390",
+        "authoringSha256": "1876ba55fd1234d96e2059a653d8bf0ef16823667d98be9028c75c3b41c50065",
         "masterSha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4"
       },
       "identity": {
@@ -2239,19 +2239,19 @@
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/static.json",
-          "sha256": "5b877c2e6fb5f12f8a7068fe0815d2fdf263d53cf5ae564403c9a517dc3577d6",
+          "sha256": "0b7a5b1305f8d5be8c79c77aae5b9abbbefc9ba484631a73de7d6dbdda9d8548",
           "bytes": 7470,
           "tracked": true
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/static.json.sources.json",
-          "sha256": "1a5d37f45308b677a3ba57be2da50729b4c45296bee989d4f0e68028dc745498",
+          "sha256": "1b56c99a26c7487c29f4f5f66111c9afdd4cf2b64a28240e7043abca09eb9ab5",
           "bytes": 15799,
           "tracked": true
         },
         {
           "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/pairs/10-herring-final/native/report.json",
-          "sha256": "259a6e9dedf526207d15d328a66e966013e57d608374440ee3f4651d36cec111",
+          "sha256": "ddcbd91b444fcbbac8799498d5b09d692d85db45dc26cb4df1dce5020cd68be9",
           "bytes": 356882,
           "tracked": true
         }

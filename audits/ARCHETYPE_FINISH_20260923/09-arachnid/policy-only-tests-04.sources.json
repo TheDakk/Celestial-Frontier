@@ -49,26 +49,26 @@
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-01/record.json",
-      "sha256": "c8cf3533ad9976aaaf4eee202daf86ff6cd23aef9899ec17fd46e4829a69d748",
-      "afterSha256": "c8cf3533ad9976aaaf4eee202daf86ff6cd23aef9899ec17fd46e4829a69d748",
+      "sha256": "2dc91c2b94cd7586b2355839d1b6b3da1db33ac7ddd49b4b15b9107c2be587fb",
+      "afterSha256": "2dc91c2b94cd7586b2355839d1b6b3da1db33ac7ddd49b4b15b9107c2be587fb",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/record.json",
-      "sha256": "4e935e3ab068c2ed17e5d993bb542cc4f7551e549772b0d3cce772df610d50b9",
-      "afterSha256": "4e935e3ab068c2ed17e5d993bb542cc4f7551e549772b0d3cce772df610d50b9",
+      "sha256": "079e15a8ca95a34e491db38377875b5078d7bd5350eaa23b872b7372674b13fe",
+      "afterSha256": "079e15a8ca95a34e491db38377875b5078d7bd5350eaa23b872b7372674b13fe",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/binding.json",
-      "sha256": "d23162df16d6c89d1f1b16d19acf52984ff73dc5e1bddf31e6430bb955464c8e",
-      "afterSha256": "d23162df16d6c89d1f1b16d19acf52984ff73dc5e1bddf31e6430bb955464c8e",
+      "sha256": "43f1c495f0a2edf73024f499c02e45ef22405dcddbb4a45468c51ebfc16948f2",
+      "afterSha256": "43f1c495f0a2edf73024f499c02e45ef22405dcddbb4a45468c51ebfc16948f2",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/04-insect/contact-diagnosis-01.json",
-      "sha256": "8607b8de2b9aacfb6578ea02f9ae9078bb0468b1b64a7628b03e5defa6d63488",
-      "afterSha256": "8607b8de2b9aacfb6578ea02f9ae9078bb0468b1b64a7628b03e5defa6d63488",
+      "sha256": "e374587ed0d9cfaa36335cc121e93fc2eb88f34cbe6a5492f0b95dbef3446c38",
+      "afterSha256": "e374587ed0d9cfaa36335cc121e93fc2eb88f34cbe6a5492f0b95dbef3446c38",
       "unchanged": true
     }
   ]

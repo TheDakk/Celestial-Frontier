@@ -17,8 +17,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "1b5743369fb9dc066c7f668ed12768f70b53932ad640f003def690b2ed3ac113",
-  "bindingHash": "2c7d9884ecc1590f967967e2157538387046c08cf8b903aa9899b145f65439b1",
+  "recordRecipeHash": "d85c631d31bc6eabbe4a96612ea168d478e0a65004a345214962ae3b8b89abcd",
+  "bindingHash": "009dff04ba10d3a3bdae06d835e86984e344196d1e2a9f170a59e9aa34731c6b",
   "family": "quadruped",
   "refusal": {
     "stage": "fixture",
@@ -29,12 +29,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/fit-02/record.json",
-      "sha256": "dde0f3a42c81a862350c56709ab051d8a5d98b0651651ba8d7e58ad31eb13925",
+      "sha256": "2ef1e6aa3969ac775a25335e501b127d803b2d0c31c4dc8252224415c856d36e",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/fit-02/binding.json",
-      "sha256": "ecdf82b70cd5d9c6bc2760dd7c8a04fe46c3743fce1cbb76698838660f22d698",
+      "sha256": "c5dd78c6a1b75d1a0e445123e46ad6f1caf45a34a65a10076f7dbb11d17cd255",
       "unchanged": true
     },
     {

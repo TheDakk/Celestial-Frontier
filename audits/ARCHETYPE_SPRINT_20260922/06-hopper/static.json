@@ -17,8 +17,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "b9629c93950666f62d8f0b124cd10224e08051e254523449371f4c02d311456f",
-  "bindingHash": "37b827ced85df7ba5372f9dc9b650cd6a1858fbe1d8ad60210faf0253f20247c",
+  "recordRecipeHash": "f007814dbaba0c2e53bdb30ae25abeac7f0051a0b83d8ca6d763ed77e053e37f",
+  "bindingHash": "4a4563c87183a1a7c98c56ef80ef2efe1fdd2338cbf3af624d92b7d6593833ff",
   "family": "hopper",
   "refusal": {
     "stage": "fixture",
@@ -29,12 +29,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/06-hopper/fit-01/record.json",
-      "sha256": "356f61bbee6ea1524f7226f39d7ace284f2bfd1fc8ca61329eb35c80986bc1ea",
+      "sha256": "ddabf057c33cf6d98b7bca948c13589355a55fa469beb4202fca3b088e732714",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/06-hopper/fit-01/binding.json",
-      "sha256": "fa4847a814ecf7b960f89c61af45311af726f2227a4c1e8f4c925839ea614ad5",
+      "sha256": "1d482c1ad8697a88864cb1b111a2b242b4084b379efbbd6cd5620322a0fa261f",
       "unchanged": true
     },
     {

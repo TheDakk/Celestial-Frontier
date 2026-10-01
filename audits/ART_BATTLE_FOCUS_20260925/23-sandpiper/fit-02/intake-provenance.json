@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/authoring.json",
-      "sha256": "89c6757c60836802b2bdff47b05e24d544512015299e12bebce246950ab8c52e"
+      "sha256": "022b14ee022276040dc34a579498116592d9544aca14522ce3c518c7b6a41fec"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "f384bcb635704d3d83b888c6ce9f7f862f90948cf1aad1648da90aa7d2bfc443",
-  "bindingHash": "f757600cd41e53dc99637bccf2ee2225b70fdc822a568e3d12dfff00f75e06f9",
+  "recordRecipeHash": "23da99972e43b67130dbdc518ac90a534a542b1d5bee5fef28857e37b36725a9",
+  "bindingHash": "eace2b0eddcabfd402cd9804631069121d7d5a01f7dcff737f730e0520fc63d8",
   "contactEndpoints": [
     "legFarAnkle",
     "legNearAnkle"
@@ -68,7 +68,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/authoring.json",
-      "sha256": "89c6757c60836802b2bdff47b05e24d544512015299e12bebce246950ab8c52e",
+      "sha256": "022b14ee022276040dc34a579498116592d9544aca14522ce3c518c7b6a41fec",
       "unchanged": true
     },
     {

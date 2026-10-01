@@ -27,7 +27,7 @@ the surrounding hair; pedipalps and head/eye structures remain body-owned.
 ## Authored joint refinement
 
 Candidate-07 authoring SHA-256:
-`665a6e47fac5b3522a99f5406386f23f90a1584385d86f16aa80c73d237c0a83`.
+`c2d235469e342071b8b5745da12d7bd09b9f96c8b20bdf36820fa7b97036106c`.
 
 - Near4 changed from `[350,788]`, low on the descending shaft near its fur edge,
   to `[350,745]`, a plausible center of the more proximal direction change.

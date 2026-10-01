@@ -7,9 +7,9 @@
   "fit": "fit-05",
   "paintRunId": "20260923-tree-frog-paint-06",
   "masterSha256": "aa1ad50d8ac1e354d0f0ba5beeb211a22519461ac36802ca621022f2418c65eb",
-  "promptSha256": "b37000d75f1c8668e78d07ed685bc8270ca91a504fb22102ed232e8603902632",
-  "recordRecipeHash": "5357c3e397fbd0d70587424b527de754e7d7fc15988324ba93d85e5e3d692b97",
-  "bindingHash": "7e3ac04a6e9ddbb3087ebe6df37bfb98e5e47241c4f08a89044341b3a0a85fa2",
+  "promptSha256": "eeafaca6f70c278f9fe2a40447a58915e5e16b8508bbd7f8fa0528e928fb3bb3",
+  "recordRecipeHash": "8b43869c0bcd6e2a2fe48d810a7d6c7f846d4de4df6bcca20d1addbee7351d1a",
+  "bindingHash": "a3eb06c4197b276521e908921c9a1c7935ac109b8f903c68abdf7ae63a1fa869",
   "mesh": {
     "parts": 17,
     "vertices": 1117,

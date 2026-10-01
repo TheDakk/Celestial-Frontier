@@ -2,7 +2,7 @@
   "sourceInventory": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/later-arap/diagnose.ts",
-      "sha256": "f9d8d1bb7f89819ebccca6e8d5caf7626c31399d593dd7a76a18ec056d6fa495",
+      "sha256": "6efbeb6803d06af8cf34630816dedbaddfd7a66d25cc2fee13a51eb2b7df2f03",
       "unchanged": true,
       "comparedWithStatic01": false
     },
@@ -352,7 +352,7 @@
   "staticInventory": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/static-terminal-01.ts",
-      "sha256": "6d9cd1252194fe675d662eedb6616979a16eac72024e569ce6da3deac9c4a482",
+      "sha256": "71e926852a54f3d09eb5e41afc51d3c9a53003f4536dd6223e78c2866e3901b6",
       "unchanged": true
     },
     {

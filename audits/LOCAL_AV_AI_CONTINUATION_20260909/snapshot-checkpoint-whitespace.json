@@ -6,7 +6,7 @@
       "path": "audits/LOCAL_AV_AI_CONTINUATION_20260909/snapshot-controls-01/focused.log",
       "line": 9,
       "reason": "new blank line at EOF",
-      "sha256": "758d056d825bfb703dd15746a45eb82660dbe267f8f9b7fc7d8efd4a8fc68fa9"
+      "sha256": "354d1271c9dc0d124252dcc1ed1f227e0509f8003527b70e39e2e4fe884f47ca"
     },
     {
       "path": "audits/LOCAL_AV_AI_CONTINUATION_20260909/snapshot-controls-01/typecheck.log",

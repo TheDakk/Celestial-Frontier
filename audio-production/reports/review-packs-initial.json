@@ -51,7 +51,7 @@
         {
           "path": "audio-production/recipes/production-v1.json",
           "bytes": 815304,
-          "sha256": "cf5652ea25d4e5ea9390556caa433874aaed741dd96a951471c88e4d87584371"
+          "sha256": "bf05d3888cf8a4421c66070bb841b29c4ccfec771ae309803aea75133e8fba5a"
         },
         {
           "path": "audio-production/reports/ability-chem.json",
@@ -146,7 +146,7 @@
         {
           "path": "audio-production/reports/loops.json",
           "bytes": 84580,
-          "sha256": "740889cc607b89b373f32ea1940aab11451f0fe605fdae3c1c98f9dd0d508291"
+          "sha256": "4c437de2b3ce0b7b4cc5b85b2dc2b3a7041b4464ca7ba8b38f2a4c0521bd160f"
         },
         {
           "path": "audio-production/reports/movement.json",

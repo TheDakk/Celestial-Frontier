@@ -8,7 +8,7 @@
       "right": 0
     },
     "cpuP95Ms": 3.399999976158142,
-    "reportSha256": "c48a3a1192fa7ffdbdfe251a3c4f3f84f5dce2d5e6b4b544bb3ac8e4400060e3"
+    "reportSha256": "6d7820bb41dd5a5af0864da69d9cfb81d5f77616d0e989a8e54aa01779943826"
   },
   {
     "id": "05-whitefish",
@@ -19,7 +19,7 @@
       "right": 0
     },
     "cpuP95Ms": 3.700000047683716,
-    "reportSha256": "a5d94bf90ed91b6824d00a5ea57e48f8b1c0ed22600c10f1a6d0942b83952dc0"
+    "reportSha256": "d57a1c374086ebd87c49fd08df9524df2bfd595baa42ccc19b5c84fc41d1bbc3"
   },
   {
     "id": "07-cichlid",
@@ -30,7 +30,7 @@
       "right": 0
     },
     "cpuP95Ms": 5.199999928474426,
-    "reportSha256": "0c1b45968850e95364f9f76f50348fa3e955681f8ab0cdcc36bdc1a2c6025220"
+    "reportSha256": "fbb335b7a19398e59f4a8144ca37c84a3789c8bf16a6e62f0c53b5b33213caa6"
   },
   {
     "id": "08-tetra",
@@ -41,7 +41,7 @@
       "right": 0
     },
     "cpuP95Ms": 4.5,
-    "reportSha256": "818c10296b3feaea82e23505ef2c4ca287afffe6afb74a46b77ec8d400459601"
+    "reportSha256": "5572de116dba0930ec1aaaee2e8eb4682062f1a30fa120baaa01e6ba3f069d2a"
   },
   {
     "id": "01-pike",
@@ -52,7 +52,7 @@
       "right": 0
     },
     "cpuP95Ms": 3.600000023841858,
-    "reportSha256": "f2a1a6c9344cb157f0f1804a01feb68b0aa8b27fec7bdcfcb47de65287c96d5b"
+    "reportSha256": "3a3f3ee37ed9346f854c8e0d0610a51b5ce16d7adef30da550b5745233ae2398"
   },
   {
     "id": "03-char",
@@ -63,7 +63,7 @@
       "right": 0
     },
     "cpuP95Ms": 3.600000023841858,
-    "reportSha256": "fa6f68a035595daddc0597e77cafb2d04477bd84843a476b66f37dafd1515514"
+    "reportSha256": "261d7b5d93ac52dac55d358ef0911ae41214ecccf5adf2442565e8f4b6428317"
   },
   {
     "id": "04-sturgeon",
@@ -74,7 +74,7 @@
       "right": 0
     },
     "cpuP95Ms": 3,
-    "reportSha256": "79986d5a5d2b8a6c663be6bf7e1d3870062644d895faf8fb605dd04263e5cc0b"
+    "reportSha256": "11f690e202c9c3b0c59e8af1fb3fcfaa55f275a9aac32842042a85737e789d77"
   },
   {
     "id": "08-goldfish",
@@ -85,7 +85,7 @@
       "right": 0
     },
     "cpuP95Ms": 3.700000047683716,
-    "reportSha256": "432f8e0ef56adb4cf0a2d6005b1d8485bcd261f38c1ddff5fde1389f3244f151"
+    "reportSha256": "f416ff2174eb4cf0a215876a2e56b3bcc4a01eb8706891cf781099def7a4764a"
   },
   {
     "id": "02-haddock",
@@ -96,7 +96,7 @@
       "right": 0
     },
     "cpuP95Ms": 3,
-    "reportSha256": "290fcfb577d4730d504e210e9818d37794f7335cc8095def336eca01c1d00ec1"
+    "reportSha256": "d6935f4c9d4812dc6b98a6c4de59388ec3e95f91ec86f28b14b7a2ec5b931723"
   },
   {
     "id": "03-pollock",
@@ -107,7 +107,7 @@
       "right": 0
     },
     "cpuP95Ms": 3.0999999046325684,
-    "reportSha256": "81d7454f9934e55468aa2a18f6e5287bd4ceddd218bbffb79dc4d5ac2150b138"
+    "reportSha256": "780fbdef7ec7b2d307f9a0df2eb7fd796ccfb4e65b6444b870127f37dce05244"
   },
   {
     "id": "05-anchovy",
@@ -118,6 +118,6 @@
       "right": 0
     },
     "cpuP95Ms": 2.899999976158142,
-    "reportSha256": "966a12c7ea39ec7d23726824e45a051af0e1c1c96a3c435910f87d19d640deab"
+    "reportSha256": "caebe739a0aacc003a71a47ea5a15309daba62a345b62310822510fe87bf8f16"
   }
 ]

@@ -183,7 +183,7 @@
     {
       "path": "port/v2/packages/domain/strays/src/strays.verbatim.js",
       "bytes": 22644,
-      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+      "sha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c"
     },
     {
       "path": "port/v2/packages/domain/biome-profile/src/index.ts",
@@ -283,12 +283,12 @@
     {
       "path": "tools/baseline.json",
       "bytes": 82916,
-      "sha256": "6f9a42a29c7a3276a72417267254b59be4ebf9999dfa5656073988c1fbf8081c"
+      "sha256": "678fa4a971ee70b94b890a9e11f290980e5a6de18f6f540596892e79bbf5bb5a"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-runner.mjs",
       "bytes": 5124,
-      "sha256": "17775a03ce81cbf4c28be87a80f83e73ae80576b5e5aa08c751ab171fcc18a53"
+      "sha256": "867e3aa4042ec6eb32d16f6fcedfa6476cd3d310b583e01dd76d99a8c7ca5254"
     }
   ],
   "steps": [
@@ -360,7 +360,7 @@
       "log": {
         "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-focused.log",
         "bytes": 249,
-        "sha256": "dad2a1841bf6b3d2e5849f35de6cfb8687f322ddad8121d293d761a67469c2b0"
+        "sha256": "df03300fe171a54302f014584e69a6d070e965ccbf5ec58e46137d5d0198a71a"
       }
     },
     {

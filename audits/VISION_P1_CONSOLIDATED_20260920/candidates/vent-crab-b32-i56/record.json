@@ -220,7 +220,7 @@
     "nativeAcceptance": false
   },
   "provenance": {
-    "observationSha256": "75478e6347aa1047eee29b1394abac58311851f8350509986e1f8dab67ccba7b",
+    "observationSha256": "bff2b590cea193dd5ff1ea6c544da13cb93f3674530133da3381b299667a462c",
     "sourceLabelsReused": false,
     "sourceLandmarksReused": false,
     "rgbaChanges": 0,
@@ -280,5 +280,5 @@
       "bone-max": 0.29027551392665546
     }
   },
-  "recipeHash": "4d8f5b040fb8d1bf0cb1ac1e1150420bb7ecf45a65f2ac2b4aa63ccac6fdf8ba"
+  "recipeHash": "acd38edf1a979e053ef9201b8f1e45e9322c9288f5a1502fd9b9ef5e32bd16dc"
 }

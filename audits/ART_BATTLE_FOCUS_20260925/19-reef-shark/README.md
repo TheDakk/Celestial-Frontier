@@ -4,7 +4,7 @@
 
 ## Authorities and attempts
 
-Source HEAD `e7dfd9be93a3d985d253abcc4e065b5c0987f9d0`; runtime unchanged from e861a403. Built-in image_gen master correction02 SHA `c3d4a67f11764fb5fe7a9f98d2fa44b85fc63cd40b17b8d9ae934557fa6ebb46`. Recipe `82cd8b102478032bfe5a80d25761a696b7029acf5c600fdd4fb27221664a6b38`; binding identity `46c5e400b344521aef85893da10822c3747fec560d538a2ba254d51e474f14d8`; binding file SHA `893c951f5129c5c02c5604a69259375746d33b2fbba631398a134e34ede774ad`. Exact P1 kit/genome/part list, original and correction prompts, tool receipts and all failures retained. Thirteen manually authored fish parts; both pectorals/pelvics visible, second dorsal and anal follow source axial regions; no invented joints or inferred missing anatomy.
+Source HEAD `e7dfd9be93a3d985d253abcc4e065b5c0987f9d0`; runtime unchanged from e861a403. Built-in image_gen master correction02 SHA `c3d4a67f11764fb5fe7a9f98d2fa44b85fc63cd40b17b8d9ae934557fa6ebb46`. Recipe `ffdf1a047c756cfbbdc18b4ee77c373ab9c2bbe3e66a4bf84e17772c7c36f345`; binding identity `3782e627ca7966977e88b6dbe4749456ab0cb03aafd954fa15b3642e6521a255`; binding file SHA `f2c36daa87e4fec41c4047058edd177697432bffc65136cd47a2690f0592e000`. Exact P1 kit/genome/part list, original and correction prompts, tool receipts and all failures retained. Thirteen manually authored fish parts; both pectorals/pelvics visible, second dorsal and anal follow source axial regions; no invented joints or inferred missing anatomy.
 
 1. Generation01 rejected for insufficient snout/tail margins; corrected02 is the complete1254-alpha candidate. No resizing source pixels.
 2. fit01/02 intake/weld succeeded but static01 refused0rows: habitat declaration used invalid `water` instead of `aquatic`.

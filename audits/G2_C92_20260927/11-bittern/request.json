@@ -3,8 +3,8 @@
   "name": "Bittern",
   "family": "biped-bird",
   "tool": "image_gen.imagegen",
-  "promptSha256": "2ef3e3aa253dd03fb1d863816e5326204e989cb15bf79029c68c9dc6230c7db0",
-  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "promptSha256": "ea0084e9c51afa43663650ee633b5826e186fcc8a5e784834a39931cd759cef6",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
   "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
   "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
   "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
@@ -21,7 +21,7 @@
   "basePromptSha256": "16d1aa4a9202acf0c56dea08753ae774d064cd6c43cab91dae7f438e8fd5a24b",
   "layoutCompilerSha256": "20078d5ecddab064447a5dd99ba457dc349fce7d692bc4125b585ac1bb17b4c9",
   "layoutClarification": "Species identity features FIRST: dagger bill pointed straight up in the reed-mimic freeze pose; brown-and-buff streaked camouflage; thick hunched retractable neck. One Earth Bittern. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n",
-  "prePosePromptSha256": "759b098510cd16ba9e49e87658e399c48852cdc38e520b79b1bad3faf35f016b",
+  "prePosePromptSha256": "910187593f8e137e9926c414758534a473e09c90bfe6a75d1671bcc2a27aa169",
   "poseClarifications": [
     [
       "dagger bill pointed straight up in the reed-mimic freeze pose",

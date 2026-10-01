@@ -1,7 +1,7 @@
 {
   "schema": "cf-earth-cohesion-final-review/v1",
   "status": "PASS",
-  "nativeReportSha256": "2707b001df593cbc7d163d556457d95a54bf8d544de5e189b037da179941bbb7",
+  "nativeReportSha256": "a4e1384cf671b59aadd38806eb14129d32adbe92b2e68d8b13a829fc8b0a2e95",
   "sourceChecks": [
     "audits/CREATURE_SCENE_COHESION_20260908/study.html",
     "audits/CREATURE_SCENE_COHESION_20260908/study-harness.ts",

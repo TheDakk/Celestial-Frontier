@@ -542,8 +542,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "8952129f96a3ff22e92b4f409843ce24e55fd3cdf4d3431f2d26a5d8e80dbbba",
-  "bindingHash": "aff5f77d4822ec0b8f1eddf2a9835792b1f4dc3709137ebd0552ede5c7efeb41",
+  "recordRecipeHash": "898e10826a15a1f6cba9f9bf540bb6231f56a8d977ffd07705d2ea30898b8c6f",
+  "bindingHash": "0762caeef3d7c94c3b142357b9281cd20f993046ce6d0e593609ecd950eda657",
   "family": "hopper",
   "contacts": [
     "hindFarAnkle",
@@ -746,12 +746,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-01/record.json",
-      "sha256": "c8cf3533ad9976aaaf4eee202daf86ff6cd23aef9899ec17fd46e4829a69d748",
+      "sha256": "2dc91c2b94cd7586b2355839d1b6b3da1db33ac7ddd49b4b15b9107c2be587fb",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-01/binding.json",
-      "sha256": "a5bbb761210a3b5f5bde5fbcdfd9dfe74999fd3ac13907fbc6c8097bc09c8e87",
+      "sha256": "e349cb7d7ea8d80070b98ff767ff91dcdd78448727c5907855ee21cdd44b5522",
       "unchanged": true
     },
     {

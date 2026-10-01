@@ -148,8 +148,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "050cddedc732597f195ebed17582e37e1c7e9eaea348bbaaa0375e1554c806e7",
-  "bindingHash": "f4c790bae595ab04b63a039250c2777e5791e413e263238471d0837a573bdf24",
+  "recordRecipeHash": "e3bfacd7803d93e28dffd7d83ef709c5efb285b5758ef7f050dc8ca54821f177",
+  "bindingHash": "ceb4c9de32929b6d25463c1ae9c40db2fdfa179d7d5fbaa27db528874b41ca0d",
   "family": "radial",
   "contacts": [],
   "realm": "aquatic",
@@ -251,12 +251,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/audits/G1_AUTO_AUTHOR_20260926/control/jellyfish/fit/record.json",
-      "sha256": "7731a1b9050637d4552062b925e00a02ebf74bdce875097429d399629a193046",
+      "sha256": "7cfb0d0a6db56d4a653eff786002c537c58969123948bfd3c16a9e6e9c21746a",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/audits/G1_AUTO_AUTHOR_20260926/control/jellyfish/fit/binding.json",
-      "sha256": "cd4676f63e69b8cc348c9f3b649b37361d5659fc8bc7f79a9dea6cfbf87eb658",
+      "sha256": "f820063d96191162f3beafb07dcce94d7b569a16be438ccc333f9b100509e124",
       "unchanged": true
     },
     {

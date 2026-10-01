@@ -18,12 +18,12 @@ Paired next steps: Claude consumes fit03 and the flight-routing source repair, f
 
 ## Selected hashes
 
-- prompt.txt: `0d80f9be74412f090be58e69d342ed1ef653d80541b5e04cd55cc76d316746ce`
+- prompt.txt: `53c84d2f5e902535b8739d0e2e56ad6588709b1b6cc729697f1333dac45bcf7e`
 - master.png: `8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a`
 - fit-03/record.json: `4a38dfd1dcf05b66a06e774e54b1ffa1fc5e66c08adfdfc0273a4e785b34fa7f`
 - fit-03/binding.json: `cf7dee0366903619597d9bdba350ba1d9539f7e07c955cabeb445b12a7bc8d7b`
 - habitat-declaration.json: `841845e60c65a1a12b0ae1357027b2b31346849065db1156b5dfdf8d951f91a4`
-- markings.json: `c0c7c05cd0fcfd24bbbbd317f680712d41f5764ee8d2b37551f7eff8426e8a7e`
+- markings.json: `9a75744130c4c0dc73d63ecccfb63a9fddc129738dedd05faceb1399f5dcb70d`
 - review-sheet.png: `c3b088aae9f90df0369aed794202721b8ec50c3d7bfd4480d525c87513e58eab`
-- native-phone4x-02/report.json: `c3a744be0a91d2144914bbd9aa8246d19c9d05cd6fe0c0ed86ca37309638df09`
+- native-phone4x-02/report.json: `43efa697059a0fdf12188828ceb8d2fb925974b85b5beb1b15907e3a8bd96fde`
 - native-phone4x-02/battle-10s.webm: `f011b3236db180d275b83d92b13a0c25c8d8302767b7543de098d266cefae81e`

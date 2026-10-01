@@ -9,37 +9,37 @@
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/ARCHITECTURE_RECOMMENDATION.md",
       "bytes": 16124,
-      "sha256": "c44b32afe96f25e2c57d8a0d851ebe379f13e1fb5b70854a237fc8fcc445eff7"
+      "sha256": "afcfe5245f928e58b42588e20e53dd0205aa44db9d8d127e2eb93684ce32cd9d"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/ARTFLOW.md",
       "bytes": 8099,
-      "sha256": "a1926d201a5ddef4a3386f86c70556830066c8bb5e1927866dd240498abfe1a2"
+      "sha256": "6bac4a357649c99132b2b1eba1ce2288f2c229fa859f7a93ae4c742006da8929"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/BATCH_INTENT.md",
       "bytes": 2682,
-      "sha256": "0ce6b7f76a51b2586e94ca061d84de1c2c0aca54263c380011fc8d13415241f7"
+      "sha256": "692b2cbb0965adf229acd649ae75258fb7d696d6864ff81b05cf58455b366880"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/README.md",
       "bytes": 8853,
-      "sha256": "70ac4219db39220d4681f191efa494d89e700768539919fc84989a2e0a8cd2cf"
+      "sha256": "f43b1d6e15fa27b907148fa605a2638ea2df1e3a0d171a49bc1ddfb24d78c847"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/audit_motion.py",
       "bytes": 5019,
-      "sha256": "5f051e03a0cd4850b30364cc82c72f94e1cca58cc5bc2f35c34f1b80264e8ae6"
+      "sha256": "6fc03cc19f6c6d7a0cbd5fc3903f6464d49f9bb6f7be4ae587958d7d09c16b6b"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/motion-execution.json",
       "bytes": 468,
-      "sha256": "130cd2ae9f1a56e24ad0743b9f4c9eb35d5208316b656df98e6a022e72974cc5"
+      "sha256": "734874139690888010600f5df42fa855c7bf6c7d27259b024c2183cca467ed75"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/motion.log",
       "bytes": 4027,
-      "sha256": "990cd726a6068f6561b6a13fc5f6f1879d3c5639f03fdaad4a9c99106faa844e"
+      "sha256": "8a5854b7229ef0cef579cde457d6c04af5830b7a64c11fdbf83bad1e31fcb046"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/package_samples.py",
@@ -54,7 +54,7 @@
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/private-source-preservation.json",
       "bytes": 18327,
-      "sha256": "2f2692f76d29aeeffc8332ef4bcadf55287fda840983be8c7cb2fd3d61fbb0c2"
+      "sha256": "7b001faba1b4b21dd760212fcd4d81a54a205dd44547f0249364a83253648e76"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/reference-research.json",
@@ -64,32 +64,32 @@
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/render-first-execution.json",
       "bytes": 822,
-      "sha256": "0191dbc17a28de07c9de1d90a34a7bc35804780dc9e667416ff3effdcf854f94"
+      "sha256": "a42257334f3f3669f5f20d209f23acc9322b05e18f478b2e88af22b5b6834715"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/render-first.log",
       "bytes": 1850,
-      "sha256": "5c108d6b718a40d0f7e0bc938a45b1903635fcac8abac5cf996cf42a1453e315"
+      "sha256": "6aaccd43195c937681f869c53625a223d7d5a95e9bca3895e3b2373d71040e64"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/render-study.json",
       "bytes": 4651,
-      "sha256": "33aa97acc027126b9e151250ecafd0fac28b1df0fae67b3fdf879ab3f551ca02"
+      "sha256": "c8c11d2a7c3d8432ce39e477a1202efff6d3ebe6446bd82ec9ec53252aa955c4"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/review.html",
       "bytes": 5646,
-      "sha256": "4b0be1fc47a63b56947827bdc7587e05b1a144fe03fc80650caadccafcd08b79"
+      "sha256": "0594abf486212e63df6a06350e789767f22ff24f5b4905eb3ae88c47b2fdb20a"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/root-validation.json",
       "bytes": 363,
-      "sha256": "d1121a39deb918b608d0b890c11b44acba0d23d947abe6a03484acbf2d71a4ce"
+      "sha256": "cd7b421337502f8f26614ef5ee6ed29578b223c055a5b70591d87b5837dc91b6"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/root-validation.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/sample-package-first-failure.json",
@@ -99,7 +99,7 @@
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/sample-package.json",
       "bytes": 13560,
-      "sha256": "cf4380059774fab81febac50ceb229b40826b563933c593dc46c190c9441c52a"
+      "sha256": "605b9a36f9f3cca1bbb90457178dff415686de5ddc5ebad3bdf4e4b399470b31"
     },
     {
       "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/natural-001-132.webp",

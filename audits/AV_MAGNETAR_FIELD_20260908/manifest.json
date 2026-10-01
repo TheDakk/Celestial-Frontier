@@ -138,7 +138,7 @@
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/cf-mag-preparation-20260908.py",
       "bytes": 1103,
-      "sha256": "35dc4c5075f1ab702babf147df61a20e7c10e781c377008b1009b561faffcd72"
+      "sha256": "dd73433ef6cf1d6c00c167bf1e3a9ca8983dfef8b46c882326b2d6b55c81f470"
     },
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/cf-mag-producer-20260908.json",
@@ -148,7 +148,7 @@
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/cf-mag-producer-20260908.mjs",
       "bytes": 636,
-      "sha256": "753c6f2d3dea81348481f3fa8661c513fa56c23b88320b26d61a9bacaa9a9506"
+      "sha256": "a1c51bbf08d5c6ecf3af78e8edd50329d21da9d1482edc9b6292e0a53f09a716"
     },
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/cf-mag-refresh-producer-20260908.mjs",
@@ -168,7 +168,7 @@
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/develop-profile-app-owner.log",
       "bytes": 6664,
-      "sha256": "e1f6186176dbbdffa59608f87f61eaa0c34dcd8b3a0e3fdd41c96cdd35efa8dc"
+      "sha256": "fb03fb71c10eaad57e3cd2ac52515719d69010fa0d3a380fb34b26e817af4109"
     },
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/develop-profile-corrected.json",
@@ -178,12 +178,12 @@
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/develop-profile-corrected.log",
       "bytes": 36809,
-      "sha256": "035c576857c5efdb11676fb1426445685383382b733e1aa8becd3077021b7b87"
+      "sha256": "0a52dd2f9d066a596402e23e4375d28d9cbed62f73fa39fcdddadd0cf0c0ed08"
     },
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/develop-profile.log",
       "bytes": 788,
-      "sha256": "ade4c043d14521d26f2db1f298a6619da18847c6d510c02b9eb513a0609de0ee"
+      "sha256": "6d63d00e99c87020885d64c8d93a2f672498d9f7be78fced3e24a0d24b676974"
     },
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/draft-pin.log",
@@ -208,7 +208,7 @@
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/native-first/review.json",
       "bytes": 18382,
-      "sha256": "622246fbfbbc3a0ed0f8b0254086a6976f7bba5f26e4abb8dcbe2347b963b074"
+      "sha256": "1548b055bc07ab4205e6c17156de06caa02b351226d6cd2b321426df2bba61de"
     },
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/native-first/runner.mjs",
@@ -233,12 +233,12 @@
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/native-owned-array/review.json",
       "bytes": 103898,
-      "sha256": "4f49122b1a5e2033aaf5650c8b67857e5e4dfac6169a6c2b89d1b30a94299e10"
+      "sha256": "bbbd837d9388e35745bdc523c0700af118b577c67555c8ab1be23b300f45249b"
     },
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/native-owned-array/visual-inspection.json",
       "bytes": 679,
-      "sha256": "ee8ab8fcc4da475f74cb0b800b5bef0e331bd3e5845410142749021766f0aac0"
+      "sha256": "71c1531926a06097815d242d886d138ffa9d5d2a8dfd2f0c8fa7ab49c38680ef"
     },
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/native-runner.mjs",
@@ -268,7 +268,7 @@
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/root-validation.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/AV_MAGNETAR_FIELD_20260908/seal-manifest.py",

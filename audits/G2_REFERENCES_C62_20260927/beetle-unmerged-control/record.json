@@ -164,7 +164,7 @@
     "maskCorrection2": "Independent fit02 review identified armored abdomen wedge wrongly included in lower membrane and root-owned elytron/upper-membrane fringes. Parent tightened lower membrane diagonal and expanded cover/upper-membrane contours into background. Generation4 source bytes unchanged."
   },
   "provenance": {
-    "authoringSha256": "4860cd36c43bb774dbab8b686cecce2a00062707190f152bc0ea30741c4eee9e",
+    "authoringSha256": "478fa93e5ed189385100c44e78808f103ce96659f942dbaa9612c5c4d04db5ef",
     "subjectSourceSha256": "3fe4fafdce0c1fd38584b099be810651b457136eeabaee1aee6117538e765694",
     "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
     "sourceLabelsReused": false,
@@ -208,5 +208,5 @@
       "leg/body:legHindNear": 1.6498823019950024
     }
   },
-  "recipeHash": "03d4c37156905f30b436b06134280f2c9a7db3e1e3f918e2c0a058daf10e2add"
+  "recipeHash": "f27f378692e346728c970161b0f7d2f5b44b70400844a6556434191839123549"
 }

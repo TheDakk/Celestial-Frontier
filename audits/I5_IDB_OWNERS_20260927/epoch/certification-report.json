@@ -37,8 +37,8 @@
     "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
     "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
     "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
-    "budget": "c40716ced834bb495acc1bac00ad5bba355e40405965251bcc1e72e3c4efdec1",
-    "budgetSchema": "d0a4c693bf03cd23cadbdc0d336329bc42cf06484d4314a9621e2c5462c47b6f",
+    "budget": "b6d375c01c2b12fd1b8956d247517afb93624b3f286f5336ec38603bf655e873",
+    "budgetSchema": "c57ed2f9b1f20e3333c9a5869c337576dcf6f634c7bd3dbc8b0564eda7710e21",
     "outcomeContract": "1ff537505dc674d776432d93deba2b78a085ed629434eea4a0b25074c8ef7871",
     "collector": "859119f3f43a1f09538734563667da99d7e56df5994486bbc8f679ede28e63e1",
     "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
@@ -62,7 +62,7 @@
   "budget": {
     "status": "active",
     "path": "apps/game/smoke/compendium-memory-v2.json",
-    "sha256": "c40716ced834bb495acc1bac00ad5bba355e40405965251bcc1e72e3c4efdec1",
+    "sha256": "b6d375c01c2b12fd1b8956d247517afb93624b3f286f5336ec38603bf655e873",
     "browserAuthority": {
       "schema": "cf-v2-compendium-browser-authority/v2",
       "scope": "arc1a-compendium-memory-only",

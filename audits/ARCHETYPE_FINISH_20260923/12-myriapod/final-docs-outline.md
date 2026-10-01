@@ -5,7 +5,7 @@ Read-only packet review of the retained candidate06 master/change review, fit04 
 ## Current facts that must replace stale preparation text
 
 - Candidate06 is the unchanged paint03 master, SHA-256 e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e. Its authoring SHA-256 is45418670b670334729710d1fb0340530e38f9ab319646159b4b6e7fe02efa34a. fit04/intake-provenance.json binds both inputs and reports FIT_COMPILED.
-- fit04 recordRecipeHash f46bb54cfcc04210d904cf1943318684b2b794d7a952d98583b9587c210c9800 and bindingHash3161a78a4686fccf9945697bb1c4a7c7530393400c7eabaa5551bfb1214a6fbd identify this attempted fit only. A subsequent changed fit must receive its own final references.
+- fit04 recordRecipeHash 89c17e50c417db5c58f5252486f102a84b35e014d0a12c66d74c0536d2670b8e and bindingHash7e68d0e7b1cd29b98b4c69ca030791a6f441d7dcb380c255cde87facf8e8b418 identify this attempted fit only. A subsequent changed fit must receive its own final references.
 - static-01.json is RED, with exactRest true and independent sourcePixelRest PASS/zero changed visible RGBA channels. Hit first refuses at22.5ms and dodge at25.666666666666668ms, both leg3Far reach. Tame first refuses at48ms with2 folded triangles; feed at58ms with leg5FarFoot painted drift0.25360331204294534. Presentation first refuses at8033.333333333333ms during hit. These are measured historical findings, not acceptance. Retain the report and source receipt intact.
 - The current item README incorrectly says no static run has executed and candidate06 is still being authored. Its next live update should record fit04 and static01 while preserving the previous text in HISTORY.md. Do not erase the first three intake refusals or intermediate diagnosis evidence.
 

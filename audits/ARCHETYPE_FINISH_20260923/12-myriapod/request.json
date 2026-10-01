@@ -4,7 +4,7 @@
   "tool": "built-in image_gen",
   "intent": "new painting with anatomy/count guide and sole style reference",
   "promptFile": "prompt.txt",
-  "promptSha256": "b4c754b74501ae150328f77ea732889ec3c2d54cd47a3a0819f830941a54067c",
+  "promptSha256": "cd8eab6f00e9ca8eb8333c984543a962e8a6c204b15913dc2ea6be0ce97c9f4a",
   "references": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/pose-guide.png",

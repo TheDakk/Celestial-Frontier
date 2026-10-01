@@ -124,13 +124,13 @@
     },
     {
       "file": "UI_U1_LAUNCHER_PREP_cf-u1-unified-launcher-slice-prep.log.gz",
-      "sha256": "a8bbb1c6d298603fd959591012e0e9ad7f1a06e29420045a96a56607a1f67848",
-      "originalSha256": "aeee7d3efea99ca4b6295b1ff85f5f5932f0d168f68a24312b55c49295ad9670"
+      "sha256": "ed11f5ce926759cf8ef5a83936726928d88e6a955489a024e1aa55e90adbaca5",
+      "originalSha256": "7c7d327e8c9bf6a6c18fc86989f366f03115ab328b57af0e373070b61d0b4b99"
     },
     {
       "file": "UI_U1_LAUNCHER_PREP_cf-uniform-u1-glass-focused-20260906.log.gz",
-      "sha256": "7681c5d1704157d22515bb4017fa208f594038cb6edce05ac53409c98a1c3026",
-      "originalSha256": "aa521fcadac1b7e7675e1854b9ceb30f8c944ba724e13d746e43a23334adb163"
+      "sha256": "5e60630b2f37bba2cb419039251fdbf5de99b5ea2793cecc5f49b20d438abc3e",
+      "originalSha256": "9ca1aa46f3546b0f6b4911eafc0fd8c49e0b9db612b237ce0250917dc119f9ad"
     }
   ]
 }

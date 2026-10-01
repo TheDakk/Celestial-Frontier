@@ -26,7 +26,7 @@
     {
       "path": "port/v2/packages/art/src/proceduraloverrides.ts",
       "bytes": 13174,
-      "sha256": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be"
+      "sha256": "edabc7518ed3c61d8de39efb53b018b220e2444254f7aa5f2ed92a473649d857"
     },
     {
       "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",

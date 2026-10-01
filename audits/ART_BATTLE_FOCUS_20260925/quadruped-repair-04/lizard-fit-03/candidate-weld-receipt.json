@@ -1,8 +1,8 @@
 {
   "schema": "cf.flat-master-weld/v1",
   "sourceFit": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02",
-  "sourceRecordSha256": "b05f90d7f729c163b9f10dfde31626ef4bc79f5ab4403371a21284027c79e5a9",
-  "sourceBindingSha256": "96e4ffeec78a652dffb758de4a4c1e83f68661ccf55872bace7a0dfd1f21209e",
+  "sourceRecordSha256": "b8957d3c3b16efb0c6e8cb3c1396f30d19b6dac071cd16aa7946303c4e634883",
+  "sourceBindingSha256": "369b1a9f8478cab67e0ebb9f48012e9fa8a3ad3192a372fdb5ca6650a273df8f",
   "sourceAtlasSha256": "d524998b70a7ff5cb485f2b073e4a8adbb627935461d641764db0178e0406c1c",
   "helperSha256": "722d032b2befa4d6a214723aca94a5b9cbb633190036f5067a21b00d87a8584c",
   "author": {
@@ -99,7 +99,7 @@
         ]
       }
     ],
-    "sourceBindingHash": "898a21f98c8ad8924cbb5a37236c6b613b210d52c79283c3c768cc3c7cf49973",
+    "sourceBindingHash": "106dfd01c97799d3765d2476fd8d6e87a5224dbcb794befe9fc84623e417fcfb",
     "sourceVertices": 1039,
     "vertices": 1237,
     "sharedSupports": 328,
@@ -119,6 +119,6 @@
     ],
     "sourceCoordinateChanges": 0
   },
-  "bindingHash": "38858722b3a5c270a1a6c8fe5f1864b7e9409bb975b9cb90fc5f0e4b2ef5e005",
+  "bindingHash": "0abd67fedc482805206475f80b9f4fd1fa9283e361f88da4c0488f5ac30d36e1",
   "scope": "New unadmitted fit, explicit source paint continuity; source pixels and solver unchanged. Inherited receipts remain historical; this receipt owns the new split."
 }

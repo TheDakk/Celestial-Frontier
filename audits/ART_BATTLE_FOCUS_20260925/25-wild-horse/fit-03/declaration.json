@@ -1,6 +1,6 @@
 {
   "schema": "cf.authored-part-masks/v1",
-  "recordRecipeHash": "a87a3ed8146e1176b9c6dbfefd9e5e0a0f6321c8b69d4a2f9e993488cc799600",
+  "recordRecipeHash": "3a95437d7329a4c47645cea1ba162b795d15bfcdee94fbaf971c0814d0edd33b",
   "cutoutSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407",
   "remainderPart": "spine",
   "parts": [
@@ -1082,5 +1082,5 @@
       ]
     }
   ],
-  "declarationHash": "0189062ae30bbc64489d3483cc4d6a30f245db80b16d6dc95ce65dd82fe15060"
+  "declarationHash": "eaa950b8c35b21f97e1a268ea93dac9e89a8155ccfd46f0ce5907b8c99980f58"
 }

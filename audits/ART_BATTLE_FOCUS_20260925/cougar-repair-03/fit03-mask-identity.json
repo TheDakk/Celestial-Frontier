@@ -2,8 +2,8 @@
   "scope": "The same six masks bind the identical record recipe, master, keyed alpha and atlas. conservation.json retains its measured fit01 binding input; no old sample rebind. Only paint-surface embedding changed.",
   "files": {
     "record.json": {
-      "priorSha256": "77595449583b8877f9f0ef1ea10f1de8ed5369c77bc8e3c251797d31326b4fcd",
-      "currentSha256": "77595449583b8877f9f0ef1ea10f1de8ed5369c77bc8e3c251797d31326b4fcd",
+      "priorSha256": "5fdf686ce31045d6ea114735dbe89a1c59458dbb255461cc426375eae8e2235b",
+      "currentSha256": "5fdf686ce31045d6ea114735dbe89a1c59458dbb255461cc426375eae8e2235b",
       "identical": true
     },
     "parts/keyed.png": {

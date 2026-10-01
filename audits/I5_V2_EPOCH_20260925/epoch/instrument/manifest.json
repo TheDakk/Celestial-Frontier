@@ -4,7 +4,7 @@
     "contract": "1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692"
   },
   "generated": {
-    "collector.mjs": "fd0e3b85f42fffd43c68b21bf61ecf913d872acf914c0cea4ae2718081e1b915",
-    "contract.mjs": "66602b49b641d049f383e9a7926c20a94fa568c0a81fbb58a408f0cfb41e2648"
+    "collector.mjs": "16fc4e5b1a9e4ed83bf85a95377f6210f15025a8e43ef0dee735b73350459a22",
+    "contract.mjs": "c10aaa7c3fdf58c0a2e8bdf2a04e8715536edf93f8e3d8b9672187ff7a6ca44c"
   }
 }

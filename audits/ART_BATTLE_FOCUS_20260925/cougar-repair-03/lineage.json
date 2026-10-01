@@ -2,7 +2,7 @@
   "schema": "cf.c15-cougar-repair-lineage/v1",
   "retainedSource": "audits/ART_BATTLE_FOCUS_20260925/05-cougar",
   "masterSha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635",
-  "priorAuthoringSha256": "4db8e62bd3b900435ef5ba5160ce39a7e39a91fa6ae35194d7090ca92c14069d",
+  "priorAuthoringSha256": "1aa22e5c59428991740de820930a741863d7826113544cdf165da0233fa16899",
   "landmarksReused": true,
   "landmarksChanged": false,
   "presenceReusedExplicitDeclaration": true,

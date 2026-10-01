@@ -5,12 +5,12 @@
   "workflows": [
     {
       "path": ".github/workflows/branch-flow-guard.yml",
-      "sha256": "dbbb65cbd8f93140befb4e4d71701961498fdec3a0e2ac17e9af5aae7de8ad40",
+      "sha256": "72770b57a4d4439c239813b7dcd279e63aba813c5cac97989b4fbdd5d65e73b6",
       "sameAsLocal": true
     },
     {
       "path": ".github/workflows/dev-preview-package.yml",
-      "sha256": "1ba3d58179f85f424b735346373431f625b351b87b21380101663a0f11181a86",
+      "sha256": "2b392ea1acf65a8b08e7a5eb368fa9f9cd456cc4869bdf7de958b77d416550f1",
       "sameAsLocal": true
     },
     {
@@ -20,7 +20,7 @@
     },
     {
       "path": ".github/workflows/sync-agent-branches.yml",
-      "sha256": "252c890888d9c2aaa417524e52a4c8d417d538dc7d368f4070232c77dd78b681",
+      "sha256": "98139432d61c4644983976b201cb15b06975487cb378ff8ad46fa05f91541278",
       "sameAsLocal": true
     },
     {

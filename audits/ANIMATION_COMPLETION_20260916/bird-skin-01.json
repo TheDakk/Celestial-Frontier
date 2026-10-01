@@ -173,11 +173,11 @@
     },
     {
       "path": "audits/HABITAT_BATTLE_20260916/airbird-05/record.json",
-      "sha256": "501542a64dcaa16b6372b0e521c3de399ab2cfee1b184b77dc2be4adb89029c7"
+      "sha256": "7c146b3a62b3089e766758af1db646c3ed16f9e2459d5627982229930a0fc7c9"
     },
     {
       "path": "audits/HABITAT_BATTLE_20260916/airbird-05/binding.json",
-      "sha256": "3ffb21c44f0104e693f469eeb7b2064f7990a754f7f1a0229a6f9f34d19eb71b"
+      "sha256": "cecca6a3fb73c056783bff286962c2f153d067c967dff8db452e80b53d86cf01"
     },
     {
       "path": "port/v2/tools/creature-animation/arap-skin.mjs",

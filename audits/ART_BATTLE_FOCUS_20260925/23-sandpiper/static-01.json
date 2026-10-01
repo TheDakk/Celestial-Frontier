@@ -259,8 +259,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "f384bcb635704d3d83b888c6ce9f7f862f90948cf1aad1648da90aa7d2bfc443",
-  "bindingHash": "f757600cd41e53dc99637bccf2ee2225b70fdc822a568e3d12dfff00f75e06f9",
+  "recordRecipeHash": "23da99972e43b67130dbdc518ac90a534a542b1d5bee5fef28857e37b36725a9",
+  "bindingHash": "eace2b0eddcabfd402cd9804631069121d7d5a01f7dcff737f730e0520fc63d8",
   "family": "biped-bird",
   "contacts": [
     "legFarAnkle",
@@ -473,12 +473,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/fit-01/record.json",
-      "sha256": "f8ee83b913a497ce829f7cd92853772cea0565963c55896703dccf88812fb880",
+      "sha256": "16dfa172cba5d252f5d467b86cc5991ec54eb995b6dbe2a5840cb43d50008647",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/fit-01/binding.json",
-      "sha256": "99a8fb8b3fa81335a5ca1966f2b52b229c1cb640ac801f13e024f2ff5c7dfc7d",
+      "sha256": "985220a7f0b8073257cccc78709cb5735ef644b447ba1b320bca0379c6c4c258",
       "unchanged": true
     },
     {

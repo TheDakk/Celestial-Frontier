@@ -11,9 +11,9 @@ Six independent marking masks conserve keyed alpha with zero outside pixels, non
 Evidence: static-05.json, native-phone4x-03/report.json and battle-10s.webm, review-sheet.png, six-mask-sheet.png. root-validate.log PASS. Root manifest includes nested manifests. No accepted bindings or S2 changes.
 
 - master.png: `8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8`
-- fit-05/record.json: `8af4a5f98a2b3ed947f010ec48869056401de1043602f637355b939f4cc5ce85`
-- fit-05/binding.json: `53e14948949de8737876db980fe450ea5462e41b077b6f2b867358a9af52fe7d`
-- markings.json: `85ac554cc48cb4015453a4c89df2d7ac48300e50ab547347467ee86d4d2d2f41`
+- fit-05/record.json: `a57fc205842b2f1d5bb1f265124b4081ae7df5f831ec630e8edd9acfbc3431e3`
+- fit-05/binding.json: `19ebb545859ff56ef0039f87d3a13db8dce4c6ac56f6ac3f4994d3aae15af663`
+- markings.json: `6fde0ce9fff9ddbfbec0f500227683612019ae5831486fd1268bfacb755f304c`
 - native-phone4x-03/battle-10s.webm: `0e7dfd51b96d2c7d99dce2997c970abc3ac1231b04094872117f8efc1afb74e7`
 
 Paired next steps: Claude consumes only fit-05 with its weld receipt and film-03, wires cards/stand-ins/arena, runs picker smoke, then republishes under existing authority. Codex continues Cattle/Tang and repairs the earlier motion/anatomy queue. Dakk reviews the ten-item sheet and iPhone build; no relay needed. C8 and economy remain parked.

@@ -1368,8 +1368,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "d4d0f9974c19f3ed15bce209e68dd35614f221f445e04a8a3225691195da5f3f",
-  "bindingHash": "3ecf98b68c0454eb8303d1e409130a1fb9fb779a8dcc813ad04cd6156d783d29",
+  "recordRecipeHash": "290d37a939c03a3fb2df45ce17458efbb67ca9c2364a762f02273ede71542506",
+  "bindingHash": "f2f003dd78830d58fa699245d8dfc2cb47e7a7c25a6698e45dc295ac4f789019",
   "family": "biped-bird",
   "contacts": [
     "legFarAnkle",
@@ -1694,12 +1694,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-02/record.json",
-      "sha256": "7f7a1d10d7a58f722b48ee3e6ab033c71ce84eb8d46320aca62a07cfb9530c48",
+      "sha256": "6528dfafcc24d3f388beadcf17779e14e33a813cb49b41a32fb4ecb60500a500",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-02/binding.json",
-      "sha256": "bdeb0ee70fd1103464ff3c522b3425148aeb5fafc950160c4526b83f6a920c35",
+      "sha256": "c09311d1034fd0ee347b823862807f513c56ac08a71f46e4561383e4589c01d6",
       "unchanged": true
     },
     {

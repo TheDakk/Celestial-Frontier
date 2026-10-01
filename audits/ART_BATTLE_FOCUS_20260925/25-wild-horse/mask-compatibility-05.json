@@ -4,10 +4,10 @@
     {
       "name": "wild-horse",
       "oldManifest": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/25-wild-horse/markings.json",
-      "oldManifestSha256": "be8b7d96f38964ef42985f5f5ee5a3cba302cc4284596cef0133a005d05804f0",
-      "oldRecordRecipeHash": "ab1c9e75d68b7ac89113ea921ea4e10dcd6366d2a2e70bf2d1d1508bbc89927b",
-      "newRecordRecipeHash": "a87a3ed8146e1176b9c6dbfefd9e5e0a0f6321c8b69d4a2f9e993488cc799600",
-      "newManifestSha256": "e2981fa5c0e89453a4eae957c0047c5c90f3d0fbcd08970aa0502a0c9f4a8872",
+      "oldManifestSha256": "38d65ae0a65ed18dba8df32663476ae3a7d67d5b1a4730c5a6fbd0dcdbcfb10e",
+      "oldRecordRecipeHash": "6c0a5b1365e22b7dd1c4d60cacdef1d1e9ad41195497149f8a4e5189a95351f0",
+      "newRecordRecipeHash": "3a95437d7329a4c47645cea1ba162b795d15bfcdee94fbaf971c0814d0edd33b",
+      "newManifestSha256": "969e97c3e73ea94a1224529e6572dc32b0ac26f5e1fc433829f44c1d59b15dd6",
       "keyedSha256": "6ac498feaedb099262e8e6946f97eff33ecc91a3dd2b918b6988730d74c652f3",
       "patterns": [
         {

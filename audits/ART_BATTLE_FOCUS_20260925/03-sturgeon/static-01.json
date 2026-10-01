@@ -148,8 +148,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "a4a4808d50893eadd4b38691b74ba40490c318506f4787d6adf3b003a0c55f79",
-  "bindingHash": "5abaaf2a118d1068d8cfc1ac02af175d1c0b0725347f5b4243b8a3df8d3b6382",
+  "recordRecipeHash": "71f6fb7abe998cf48e2684325e0687bf2c3c6d67db0caf506fa0b03cf51a891e",
+  "bindingHash": "12619d9e274145651c6c3077f4c4c553f2796f5777a354d60bbf1771d21bd836",
   "family": "fish",
   "contacts": [],
   "realm": "aquatic",
@@ -251,12 +251,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/fit-01/record.json",
-      "sha256": "6e4d35e56ac57153f749b75eb10617a9513533d24b65c78bf05e2c33b4741731",
+      "sha256": "ce132303fc5f610063629b135c56d29a68135058a8ad2d19124dbb86f20cb4e5",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/fit-01/binding.json",
-      "sha256": "3d85f78b57b143ac619bd9fdaf05f60ad0c2919b16dd3378b9dc6b9210d04808",
+      "sha256": "eae5b615778a87bd7c4481cf39dfd6d378c853645346d4b86d233f17534dc474",
       "unchanged": true
     },
     {

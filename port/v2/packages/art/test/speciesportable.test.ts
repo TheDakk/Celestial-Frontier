@@ -137,7 +137,7 @@ describe.sequential('portable species portrait graph', () => {
     const legacy = readFileSync(path.join(artRoot, 'src', 'hdart.verbatim.js'));
     const legacyDeclaration = readFileSync(path.join(artRoot, 'src', 'hdart.verbatim.d.ts'));
     expect(createHash('sha256').update(legacy).digest('hex'))
-      .toBe('93d1e79292e68cd2cceab14617005900b1ccf649d2284a83f0ec497ec8e34bcd' /* re-sealed 2026-09-21 (Dakk): re-lifted after a3bd835d's hdart source change */ + '');
+      .toBe('3c218046c982252b177d25dbd5e6737f78dd2a68a9665d84b5d26d0181785bcf' /* re-sealed 2026-09-21 (Dakk): re-lifted after a3bd835d's hdart source change */ + '');
     expect(createHash('sha256').update(legacyDeclaration).digest('hex'))
       .toBe('e9dc30cba0b4988d516bf69cb620ac5906408cd25ac264cf31fce37eab9874c7');
 

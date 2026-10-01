@@ -10,7 +10,7 @@ Selected1254-square plain master SHA256 `3abc568beb996e694c78736854a216222dc5cfa
 
 Manually authored presence: all required fish parts visible; absent/hidden/folded lists empty.13 new paint owners and13 observed joints. Pelvic pair and anal follow their containing body segment, while both pectorals have distinct joints. Explicit aquatic habitat. `fit-01` retains IC-3 record/masks/observed split/binding receipts. `fit-02` uses the existing flat-master boundary-preservation option, retaining seven observed excluded boundaries in addition to12 ancestral joins. No source-coordinate changes, hidden paint invention, solver/gate/limit or accepted-binding changes. The receipt identifies inherited old intake evidence separately from the new split.
 
-Recipe `023c9266a43cb6b07a0410afb20fcaf12ad74b80ff114b388e79537f249a224e`; binding semantic hash `6ef91e54b455d597b66f248f84c98d14383846d789dc7eaa303d83194097f4b7`; binding file SHA256 `8085508a199142d29313cb56730c9aea14815f4fcb4bd9bd3adc008aaffb2abc`. `static-01.json` passes13 actions×121,949 continuous presentation samples and exact source-pixel rest.
+Recipe `dc46365d8387115405292befd6987c62f2ad9217843e74733fbf8a77888c91e1`; binding semantic hash `95f6e5aecd41d644562e47472d52fec61e025fecd659a620c77ad5f593a364df`; binding file SHA256 `09122421654ef86d6af34247ee7d01d43204eb35192ef3058f7d1982ef01454b`. `static-01.json` passes13 actions×121,949 continuous presentation samples and exact source-pixel rest.
 
 ## Masks and film
 

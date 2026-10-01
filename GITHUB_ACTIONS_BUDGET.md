@@ -1171,8 +1171,8 @@ ceiling with a fixed strict `< 1,000 ms` product SLA. At that historical checkpo
 first and its first-owner Edge install used `--reinstall`. Fresh one-attempt local run
 `20260823-pr33-cross-host-sla-certification` passed 42/42 and its named verifier at `7d8dc380…`;
 report raw/gzip SHA-256 are
-`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
-`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. The old
+`db93ce37d24e3a32256d232a2595c75a8c8ab101ba6edb553204e34571142c03` /
+`a9249401f99d371a1ec256c0332d834f1d75c300befba2779bc6aeacbd02a6b7`. The old
 `3b71d14c…`/`59530da…` certificate remains historical. Nothing from this repair has been pushed, and
 no new hosted attempt is authorized.
 

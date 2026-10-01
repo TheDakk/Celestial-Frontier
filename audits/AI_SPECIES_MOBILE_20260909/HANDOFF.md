@@ -75,7 +75,7 @@ enumerated. Browser/server/target/locks closed. No unchanged inference rerun was
 Runtime artifact: /private/tmp/cf-runtime-pack-20260909-species-01,
 37,451,014 bytes, manifest SHA256 ddc09e2128a6fbfea11b3c6b0596359eb97fd7f18198fed38c74b3736502476b.
 Current combined artifact: /private/tmp/cf-mobile-pack-20260909-species-03,
-56,529,354 bytes/97 files, manifest SHA256 5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c,
+56,529,354 bytes/97 files, manifest SHA256 bfd3fba993741a787ddb472336488427e43f64b2a6020eb804917683759c6da0,
 build ID 42d79c05f4b5269766d35e82c03f7b828f70062dc2bdca54ee98ca5f643465b4.
 All 426 measured build inputs stayed unchanged during build/verify. Build03 incorporates the
 optional worker-import ownership fix and its development note; package02 remains preserved for

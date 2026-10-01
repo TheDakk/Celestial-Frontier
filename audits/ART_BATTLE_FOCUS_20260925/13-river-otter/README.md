@@ -9,9 +9,9 @@ The retained kit prompt compiles the exact River Otter genome and quadruped part
 `authoring.json` manually declares 31 parts/landmarks, all four limbs and both ears visible, no absent/hidden/folded chains, standing-land pose of an amphibious species. No swimming surfaces are inferred. `fit-01` retains the record, labels, IC-3, parts and observed binding writers. `fit-02` joins only the explicitly authored interior root/spine paint boundary; its 12×12 root ownership patch is continuous torso paint. No contract, solver, threshold, accepted binding or S2 sentinel changed.
 
 Master SHA-256: `12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e`.
-Record recipe: `319995acc2303f38f7ea5ea1ae7ebedd09c525234ab97ee2e7510f90e791bb73`.
-Final binding identity: `ffde09ce3f8a847ba5e904e3ef85c92983957272d369c62a4122e39a2845ca30`.
-Final binding file SHA-256: `5dd755f791e843b52eefc702cf779ec2bb7b0ac1025a695c458aae11fd0dedbf`.
+Record recipe: `e8e59458dcdce12b6048a2576dc19e9eed5bfb5211351a19ed60083e8c9c9255`.
+Final binding identity: `dc34516707f135ffe7039a748095c26cfb2af97f63d7c5e4a110f57dee7c7a61`.
+Final binding file SHA-256: `0396cb91968d0eb25414cf5c0e132b088c4f3765dd076c69d9abf63905632340`.
 
 ## Measured evidence
 

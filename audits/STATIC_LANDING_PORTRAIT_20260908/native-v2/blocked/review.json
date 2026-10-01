@@ -46,7 +46,7 @@
     "port/v2/apps/game/src/ui-sheet-style.ts": "73f0f6adc6e3d58f333996ec279e3b53b580ef512e6297d29445779f381d72cc",
     "port/v2/apps/game/index.html": "db71621fb31f059014402200cd4577f43d6d171d906482ab9d2068601fbb4f1f",
     "port/v2/packages/domain/strays/src/index.ts": "fa905124c4d182f361b868cf0319fdb9279bd8d13cfb1f85c991d00f83d225ec",
-    "port/v2/packages/domain/strays/src/strays.verbatim.js": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03",
+    "port/v2/packages/domain/strays/src/strays.verbatim.js": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c",
     "port/v2/packages/domain/biome-profile/src/index.ts": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
   },
   "served": {

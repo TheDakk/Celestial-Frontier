@@ -175,7 +175,7 @@ no browser ran. A correction is being prepared separately; neither original rece
 
 `native-audio-03` completes syntax→strict harness TypeScript→isolated build→native waveform chain
 PASS. The65-source build and18 raw PCM planes are bound to the retained manifest. Native report
-SHA256`3b4b2a4ce36068017ce6e196c804310002d29ebac05c506b7ff67d08b5eac4d8` records six400ms48kHz
+SHA256`b8f480781c5e1a3b684ec15877351fcdc5043aede89e83f998acbf2867fb9f53` records six400ms48kHz
 renders: two positive scenarios, neutral-intent/immediate-step/early-restore negative controls,
 then restored positive. One independent waveform acceptor accepts the positives and rejects all
 three faults. It observes25ms duck/90ms recovery, overlap, interrupted recovery, latest saved

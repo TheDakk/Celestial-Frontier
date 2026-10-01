@@ -22,7 +22,7 @@
       "cwd": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2",
       "exitCode": 0,
       "log": "repaired-focused.log",
-      "logSha256": "d35769123658931aa0a1afd60c4c6f817f103d174a99fa60adb6402357192547"
+      "logSha256": "f80bbbd0fff29f996ea7ca1faf0a9b1e8e76642e3fe8df6562258f5c57f733f0"
     },
     {
       "label": "root-ts",
@@ -80,7 +80,7 @@
       "cwd": "/Users/dakk/Projects/celestial-frontier-openai-mac",
       "exitCode": 0,
       "log": "repaired-validate.log",
-      "logSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "logSha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     }
   ],
   "sourceFiles": {

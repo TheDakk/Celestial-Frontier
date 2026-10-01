@@ -20,19 +20,19 @@
   "files": [
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/weld-stencil.mjs",
-      "sha256": "f7c6d4d13d818454017f48dcc9f57c5b8a2c9fc385f984ee51ac6b168e34e9bb"
+      "sha256": "b2ddb29a0db0484b230440ceca0a2e82b99eefaa4eabb7a6c6c265926a56fbf8"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/weld-stencil.json",
-      "sha256": "222ee20ffc2e1121936fbe9bd2473a7482e4cf5e7c375e937d6c2d722b8304e1"
+      "sha256": "bd8a0588f1d5ad315957de1be964357dfa727586eeb2619482a9db3e9cc5fbdc"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/weld-stencil-fit10.mjs",
-      "sha256": "17bb4658c513f39d24d44d1435f7fedada8dcdbd5bff6dd92a620e1d72c7b43c"
+      "sha256": "2f0de13b3f923f7882ace5fbd62377a264524ffcc7a26eca9c659fadde4fe53b"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/weld-stencil-fit10.json",
-      "sha256": "8c17fb9235adb1b84095722e88159e52bbbba82073b969d303e787fac4fc86e2"
+      "sha256": "ada27ce27ca39ac546a42f6b68ef947f885368430442c00370c4d92a2a938515"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis06/weld-stencil-findings.md",

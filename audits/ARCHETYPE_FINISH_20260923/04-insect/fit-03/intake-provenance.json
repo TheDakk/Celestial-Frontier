@@ -2,7 +2,7 @@
   "schema": "cf.sprint-authored-intake/v1",
   "status": "FIT_COMPILED",
   "sourceHead": "6768b9879a8a11086bfa8669792acf555fc10140",
-  "helperSha256": "bd77c48afa2ff452af67c3486e7e1c723f435dff4dea60d493ef5375d18f1ad2",
+  "helperSha256": "15671ff4ef1df7a3a6edcd0d260e9ea029488fb2e635ec127f662de37cde092d",
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-03-fit/master.png",
@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-03-fit/authoring.json",
-      "sha256": "81cb624dceeaae3d071ecdc93437e1259c1b479ff22c8aa7abc38187c6b918d7"
+      "sha256": "f00febaa62b22ddb2dc42dbbcb3c584cef4461815df5d512809e7a4cda4c6dfa"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-03-fit/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "d551547c2d2959f21fa2be9e6e96ba7e28768dafd7f5dc42825e1c8abd8a6091",
-  "bindingHash": "182b24b42e82ad39c182896a4de09f00ea70ac10c682adc6047fc76b1b7a0c68",
+  "recordRecipeHash": "240cd0e9897992935740226162154b0440599ffb874529fa77ae1693a5f8fd0b",
+  "bindingHash": "8a8d2a6e5fc3badc24c0035df704f3893745f202c3db20b4e06a2b1c4bd842e9",
   "contactEndpoints": [
     "legFrontFarFoot",
     "legFrontNearFoot",
@@ -75,7 +75,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-03-fit/authoring.json",
-      "sha256": "81cb624dceeaae3d071ecdc93437e1259c1b479ff22c8aa7abc38187c6b918d7",
+      "sha256": "f00febaa62b22ddb2dc42dbbcb3c584cef4461815df5d512809e7a4cda4c6dfa",
       "unchanged": true
     },
     {

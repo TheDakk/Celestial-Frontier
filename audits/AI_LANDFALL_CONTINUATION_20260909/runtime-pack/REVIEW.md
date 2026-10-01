@@ -16,7 +16,7 @@ The actual local output was then built once and independently verified by the CL
 
 The pack retains the installed Tokenizers Apache-2.0 license, existing exact ONNX MIT license/banner and provenance, existing model-context notices, plus two official source texts retrieved in this bounded batch:
 
-- [ONNX Runtime ThirdPartyNotices at 2e2543fbe9fae542f921d47a72d21d5a4ef0b710](https://raw.githubusercontent.com/microsoft/onnxruntime/2e2543fbe9fae542f921d47a72d21d5a4ef0b710/ThirdPartyNotices.txt), SHA `53d3fa5821ac016ac24dd35775c996efec86e2ae0841e9a3a5e146c0ae916845`.
+- [ONNX Runtime ThirdPartyNotices at 2e2543fbe9fae542f921d47a72d21d5a4ef0b710](https://raw.githubusercontent.com/microsoft/onnxruntime/2e2543fbe9fae542f921d47a72d21d5a4ef0b710/ThirdPartyNotices.txt), SHA `7510947ed371c3f33e99ad509b0a312c3a6283ab76380dd1744c5504585b8b85`.
 - [Diffusers license at 040c7cde626504d14caf63b13b8b25b6a9f62120](https://raw.githubusercontent.com/huggingface/diffusers/040c7cde626504d14caf63b13b8b25b6a9f62120/LICENSE), SHA `f9e2070c247517b1ddf65f7b11b393484a18da91a958fd18a97bd0f241c3125c`.
 
 `license-source/provenance.json` retains retrieval evidence, including the pinned Diffusers root NOTICE's HTTP 404; no NOTICE was invented. The project pipeline preserves that revision's source-contract attribution. The source notice aggregation resolves the missing notice text, but does not prove the npm WASM binary's exact component/build correspondence. The pack therefore retains `distributionQualified: false` pending that correspondence and integration review. Model-context licenses do not make this pack a model distribution.

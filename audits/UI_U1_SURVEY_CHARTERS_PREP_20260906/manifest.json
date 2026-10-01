@@ -12,10 +12,10 @@
   "files": [
     {
       "path": "validate.log.gz",
-      "bytes": 708,
-      "sha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736",
+      "bytes": 709,
+      "sha256": "2e3bf4fa737966203f1153ac2ff4cc91499d8fc34616bbe99a3434ed7291043e",
       "rawBytes": 1093,
-      "rawSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "rawSha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "typecheck.log.gz",
@@ -27,16 +27,16 @@
     {
       "path": "vitest.log.gz",
       "bytes": 3457,
-      "sha256": "efeb521e5184bcc754a2faa60bbe75ec153a2f7555b531fd5d4258dec3361dcd",
+      "sha256": "5da82a8ba4c3406324ad3534996a79ed43f3ed7940a760ef72bf03ce207b19df",
       "rawBytes": 10391,
-      "rawSha256": "ccb236b4e2e9387854dc40db2209489bb740b6d31777b68d024c16230dcfc948"
+      "rawSha256": "f57316fcad3d86c048bad44195f24197ff459df72449eb2d11d30bb530c8ffe9"
     },
     {
       "path": "guards.log.gz",
-      "bytes": 262,
-      "sha256": "ffb4fee9b6b25b169287c965012bb8ac62b8f20399b734fbf5445881736aeb53",
+      "bytes": 263,
+      "sha256": "79b82003d12ffa8816247de9518a4fb928afb17f8723981677259cc5cb72e348",
       "rawBytes": 351,
-      "rawSha256": "051ff09c4ae879724b94390a0edc00416580632d65e71198bcdec2bdd6c1791c"
+      "rawSha256": "a5c7d2c968fd5c70c51ab90094113eff266c71d584d26af9b9795a881c5bb9db"
     },
     {
       "path": "trace.log.gz",

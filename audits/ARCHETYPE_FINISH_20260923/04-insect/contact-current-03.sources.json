@@ -3,14 +3,14 @@
   "sources": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/contact-current-03.mjs",
-      "sha256": "60bf3e7bf6185ba8588d7779d8cd98545cfa48c2a95b15ae6b72fcd7c781a8d8",
+      "sha256": "602d1beb929f3dfc6455505900bf48a7767403c7281b0a68993ebaf277a0459b",
       "unchanged": true,
       "comparedWithStatic01": false,
       "exactStaticBytes": null
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/contact-current-03.ts",
-      "sha256": "cee9cc3b09e36f5d1827d9f6aff04c2f24005465d6c5ad59b691c379880d325f",
+      "sha256": "85c94654d16868e0ea5d3a4f34a77554437924d80bf1bffc3f35ea9f1ed4bb2a",
       "unchanged": true,
       "comparedWithStatic01": false,
       "exactStaticBytes": null

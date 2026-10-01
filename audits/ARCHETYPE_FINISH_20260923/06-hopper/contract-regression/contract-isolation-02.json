@@ -150,7 +150,7 @@
   },
   "priorS2": {
     "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/contact-regression/s2-execution.json",
-    "sha256": "d3e0a57b41c3edd13c4a0a2a0eef3ec62cb7d5bd009e20d7128326f868053626",
+    "sha256": "183a8c92d17c31b28151acfd7692a3e437606cacc9f474f181010eb7889fd357",
     "status": "PASS_STATIC_IDENTICAL",
     "identitySha256": "7364c70a865ccfd9d229dce53f1cf6378bc306da5cad306f52eba1bc9ef7dbf2",
     "sampleCount": 13286,
@@ -237,8 +237,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/contact-regression/run-s2.mjs",
-      "priorSha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe",
-      "currentSha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe",
+      "priorSha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b",
+      "currentSha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b",
       "expectedHopperOnlyChange": false
     },
     {
@@ -249,8 +249,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2-controls.sources.json",
-      "priorSha256": "9b2eac9abd29f600121d3ba508a9b86eeb09db22d484f5f71cbf7f639d30fdbe",
-      "currentSha256": "9b2eac9abd29f600121d3ba508a9b86eeb09db22d484f5f71cbf7f639d30fdbe",
+      "priorSha256": "d2867b9d9ad11ed3d89f8d963493f95c01d0f4e76e2a68bee428b15b99dffd45",
+      "currentSha256": "d2867b9d9ad11ed3d89f8d963493f95c01d0f4e76e2a68bee428b15b99dffd45",
       "expectedHopperOnlyChange": false
     },
     {
@@ -321,8 +321,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2/static.json",
-      "priorSha256": "d460b6a6b3bfc8fd23f4ea2f392281fb96cddb4229f24893e34abc54c80b2a00",
-      "currentSha256": "d460b6a6b3bfc8fd23f4ea2f392281fb96cddb4229f24893e34abc54c80b2a00",
+      "priorSha256": "f04e9e36d10634099ecc66aacdd94fbc1c883579dc89023f983ce0850f7f0dba",
+      "currentSha256": "f04e9e36d10634099ecc66aacdd94fbc1c883579dc89023f983ce0850f7f0dba",
       "expectedHopperOnlyChange": false
     },
     {
@@ -820,13 +820,13 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/contact-regression/run-s2.mjs",
-      "sha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe",
-      "afterSha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe"
+      "sha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b",
+      "afterSha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/contact-regression/s2-execution.json",
-      "sha256": "d3e0a57b41c3edd13c4a0a2a0eef3ec62cb7d5bd009e20d7128326f868053626",
-      "afterSha256": "d3e0a57b41c3edd13c4a0a2a0eef3ec62cb7d5bd009e20d7128326f868053626"
+      "sha256": "183a8c92d17c31b28151acfd7692a3e437606cacc9f474f181010eb7889fd357",
+      "afterSha256": "183a8c92d17c31b28151acfd7692a3e437606cacc9f474f181010eb7889fd357"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/contract-regression/contract-entry.mjs",
@@ -835,8 +835,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/contract-regression/run-contract-isolation-02.mjs",
-      "sha256": "2e499511e2eed9dfcd995e19dc62841eca427b8bb5220c9ef026dcb7beb936eb",
-      "afterSha256": "2e499511e2eed9dfcd995e19dc62841eca427b8bb5220c9ef026dcb7beb936eb"
+      "sha256": "94ec3dcf1e496426b505f5e89f95676a06338bbe6767ccfaee3b2bbabf0339e2",
+      "afterSha256": "94ec3dcf1e496426b505f5e89f95676a06338bbe6767ccfaee3b2bbabf0339e2"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BEAR_CONTACT_DIAGNOSTICS_20260922/source-join-s2.mjs",
@@ -845,8 +845,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2-controls.sources.json",
-      "sha256": "9b2eac9abd29f600121d3ba508a9b86eeb09db22d484f5f71cbf7f639d30fdbe",
-      "afterSha256": "9b2eac9abd29f600121d3ba508a9b86eeb09db22d484f5f71cbf7f639d30fdbe"
+      "sha256": "d2867b9d9ad11ed3d89f8d963493f95c01d0f4e76e2a68bee428b15b99dffd45",
+      "afterSha256": "d2867b9d9ad11ed3d89f8d963493f95c01d0f4e76e2a68bee428b15b99dffd45"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2-controls.ts",
@@ -905,8 +905,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2/static.json",
-      "sha256": "d460b6a6b3bfc8fd23f4ea2f392281fb96cddb4229f24893e34abc54c80b2a00",
-      "afterSha256": "d460b6a6b3bfc8fd23f4ea2f392281fb96cddb4229f24893e34abc54c80b2a00"
+      "sha256": "f04e9e36d10634099ecc66aacdd94fbc1c883579dc89023f983ce0850f7f0dba",
+      "afterSha256": "f04e9e36d10634099ecc66aacdd94fbc1c883579dc89023f983ce0850f7f0dba"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2/vent-crab-static.json",

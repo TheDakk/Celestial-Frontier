@@ -1,44 +1,44 @@
 [
   {
     "name": "Hummingbird",
-    "beforeSha256": "ec2700152942e36b1b2c7808884b09f6ad819008332fb9be9415e3c3a3d56155",
-    "afterSha256": "3d41b55a6f8407bcb70a42240589a5942d10db1a155def74f2c9cc53a3b31e6b",
+    "beforeSha256": "90834662bc4c2fe65ea31d7ac815ae7bfd687216a343fffad2da850969fceb09",
+    "afterSha256": "752ff0c626441a3653e3601da276f8eb66a1ba5bfcef662ab6817d44275cb600",
     "clarification": "POSE CONTEXT: one resting hummingbird with wings naturally folded, not hovering. The canonical narrow blade-like flight wings are folded here; do not depict motion blur. Tiny feet visible in a relaxed resting pose, no branch or prop. Preserve needle bill and iridescent throat. No invented long walking legs."
   },
   {
     "name": "Peacock",
-    "beforeSha256": "4c8ed1f468bd489991dba2ac875cebd316f7fb90a965ebe99121eb5bb74d2530",
-    "afterSha256": "7a2e2929c2ff29ccd2e4ed82c9c2535bc6f1e3bd78142abbf88cfdf63305cbc9",
+    "beforeSha256": "6d9059d52425d7bf2a8a3bd8c79e6580e39ab076de7ead567b3682e50b1ad915",
+    "afterSha256": "dd825e100d93f8ec78ab6c7f7717f4660e0e9b0c9bb1f6098bbfc24ca56b3ab5",
     "clarification": "POSE CONTEXT: male peacock with its long eyespotted train folded and trailing fully to the LEFT, never fanned. Scale the entire bird down so the complete naturally long train fits with clear margins; do not shorten the train. Tail coverts and true tail are not duplicate wings."
   },
   {
     "name": "Pelican",
-    "beforeSha256": "d62b693dc5689b033ff8d3fdd5c5e789eef67d0a8e5ff365d3c795908293abfa",
-    "afterSha256": "5a8bf6079b5118c1a955d0a50cd55b4f70ee919119cff48afaf5b0cf541ad515",
+    "beforeSha256": "8fbc8133d63d2dc7af97fe3309df6e51d82359022f9cf411fa32532f4b016761",
+    "afterSha256": "d39deffb2854bccf7818ce987467da1c4db85adcb83d3d14e0759e8da3fb5098",
     "clarification": "POSE CONTEXT: resting on land with both short webbed feet visible, wings folded and enormous pouched bill intact. Swimming profile is canonical natural behavior; this isolated authoring pose is grounded, no water or scenery."
   },
   {
     "name": "Albatross",
-    "beforeSha256": "dc9c0d0ef1e4a1187534f972dc6d8239467347465e76f28dc1ed7e15fea11648",
-    "afterSha256": "053164e75a234daf85442122e1ecfb45efcb9ead1b317e51c221be52e78fedac",
+    "beforeSha256": "92b5aa8647ed90f046da515e8d41e1a0eded8130aa0f652e4ce2d7e45bc86245",
+    "afterSha256": "ea9ccd52d8cb2d883f966d8b9ec351f453e864c38c421124b59d137306448596",
     "clarification": "POSE CONTEXT: resting albatross on land with its naturally very long narrow wings fully folded, no flight pose. Preserve natural folded primary lengths and short true tail; no truncation to fake separation. Both webbed feet visible."
   },
   {
     "name": "Condor",
-    "beforeSha256": "7a6b77524802d621c06872602adb6d13832d5c98f7e9b6266a5ac6e7952690e7",
-    "afterSha256": "6bcba73d4ac637917b2874da323e4ec683e368bc0645cc244b56c784e0c48740",
+    "beforeSha256": "a2621524e3825b26c2a61317000e779de90049148986be1db5fe0950a48aa3b8",
+    "afterSha256": "162cef242ba8d7de74a792d9eb77178c60be97fdb2466cb4a6151dbc1022c771",
     "clarification": "POSE CONTEXT: standing resting condor with its huge broad wings naturally folded. The canonical splayed primaries describe flight anatomy, not a request to spread wings in this pose. Preserve bare wrinkled head and white neck ruff, two visible feet."
   },
   {
     "name": "Snow Petrel",
-    "beforeSha256": "3443384be406ffe90998613b4f9bce88527baf6651f262daedfbbc5a41158536",
-    "afterSha256": "5a102dc4931562b766dc30504e8a0d54d0994782cb8804eb667d594c1cafd466",
+    "beforeSha256": "7b72a4792debac59beae4379267f05d9b7f5001ae467b488900ec3c80963dd7f",
+    "afterSha256": "7821cde28be5de75ceaec2587d8f68099b5855ae2fa0e674c4714ba7f5acc5c8",
     "clarification": "POSE CONTEXT: resting snow petrel on land with pointed seabird wings naturally folded; canonical flight posture describes natural behavior, not this reference pose. Keep pure white plumage, black tube-nosed bill, visible true tail and both feet."
   },
   {
     "name": "Mole",
-    "beforeSha256": "400556156a401688a3edae1446d78870410c6f126b89b2bccd8f73541195130c",
-    "afterSha256": "3f11664f056d3797e5fc7575ede3658654e3fdc8c3453be2f1b21eff81b9aa95",
+    "beforeSha256": "d3935193be7d10cb8b73f985907ae21f71d587d8b6d5e94f5563c6298cab45a1",
+    "afterSha256": "c1cb7cd78d3c85605ae6d77d85c74183e630d81576d7372c3403c83d4b1cdda6",
     "clarification": "ANATOMY OVERRIDE: this is a true mole, with NO external ear pinnae and no visible eyes, as the canonical profile states. Do not invent two visible ears from the generic quadruped layout. Four limbs still visible, forepaws broad and outward turned, natural short tail visible. This prompt is not a measured absence declaration."
   }
 ]

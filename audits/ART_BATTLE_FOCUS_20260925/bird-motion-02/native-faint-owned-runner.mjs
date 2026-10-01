@@ -23,7 +23,7 @@ if (fs.existsSync(out)) throw Error('New output directory required'); fs.mkdirSy
 const sha = (b) => createHash('sha256').update(b).digest('hex');
 const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-battle2-proof-')), sources = new Map(), remember = (p) => sources.set(p, { path: p, sha256: sha(fs.readFileSync(p)) });
 const report = { status: 'RUNNING', diagnostic: true, source: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo, encoding: 'utf8' }).trim(), scope: 'PROPOSED BUNDLE ONLY, not HEAD certification. E1.5 battle2 native proof: two real paint-skin fits on the real stage over the accepted Earth-temperate plates; diagnostic study, not visual acceptance.' };
-report.faintTravelProposal = {"scope": "ADDITIONAL proposal: target faint retains canonical horizontal pose; stage has no run-up displacement for a fainted target. Height probe uses same protocol. No solver/limit changes.", "choreographySha256": "d3f5df1ff3791c993734372ac469a013aeaad6929d583af542423a5ecccc74be", "partsRigSha256": "7a64c3b7e410f75adf6fdfb0cd51e18f9e863d43d812c69e23f7dc413b4506bf"};
+report.faintTravelProposal = {"scope": "ADDITIONAL proposal: target faint retains canonical horizontal pose; stage has no run-up displacement for a fainted target. Height probe uses same protocol. No solver/limit changes.", "choreographySha256": "585e5a50854895652de952e8ff55ae730604e4a58f71451e0648158508254e85", "partsRigSha256": "7a64c3b7e410f75adf6fdfb0cd51e18f9e863d43d812c69e23f7dc413b4506bf"};
 const save = () => fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify(report, null, 2) + '\n');
 let release, server, browser;
 try {

@@ -6,7 +6,7 @@
     "schema": "cf.creature-finish-engine/v1",
     "key": "f0c9b18f3bd5489924ef0e6f5cec5a19a25f31041c70953dcc6e0742c478d7af",
     "identity": {
-      "recordRecipeHash": "680e013221829e01699fb4e9f165446270f3bff9e022e871d96d6112206dc0d7",
+      "recordRecipeHash": "6a7cbcbab6ebe589ee6be792d628777157a0094dc66c33f3ff08a1a2843270e4",
       "cutoutAssetHash": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635",
       "modelHash": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef",
       "settingsHash": "c8c7210519c5b1bc860065a5e0cb46219adb1621fabc47b2c721f58664cdc79b"
@@ -18,7 +18,7 @@
     "height": 1254,
     "cutoutAssetHash": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635",
     "labelsHash": "58698a230e47153b209abe2c0187f9136a9911bbd3e2286f9a9e4ea86fa5a994",
-    "bindingHash": "b2b60503766ba28f8c9efd7d0585d4416a23e0fbeee4f5e5cb41e97dc02c6065",
+    "bindingHash": "143262b0ac4f68efc1388828c68a74b784b711868828220e572ed23c1d3f55d0",
     "outputHash": "889219f4bcbc597f33ccbe27bc4e7b7cf476167f48b7b3e97f4926553a8b70a7",
     "conservation": {
       "status": "PASS",

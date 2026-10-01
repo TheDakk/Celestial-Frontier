@@ -1,8 +1,8 @@
 {
   "schema": "cf.arena-intake-report/v1",
-  "recipeSha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4",
+  "recipeSha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596",
   "seed": 593405465,
-  "systemCardSourceSha256": "330d2b8dd758982dec9f39f99e2fe4e99f3be74adf2e45e309c03d757c1b46a4",
+  "systemCardSourceSha256": "4433271e252d7dae6a33f2e823986719546c3de491d67f231b2924508743400e",
   "groundLineNormalized": 0.78,
   "layers": [
     {

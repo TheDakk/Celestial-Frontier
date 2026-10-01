@@ -282,7 +282,7 @@
     {
       "path": "port/v2/apps/game/src/audit.ts",
       "bytes": 46961,
-      "sha256": "e68bb1302232d1b88a9874d480cd297cc772d5050e2bdb6a1cf56108f0f8fffd"
+      "sha256": "5cc244a22aaa83a34c508aa8401fbc79b8087e09ceeb2348dbe7e2ab1ed00022"
     },
     {
       "path": "port/v2/apps/game/src/binder-sets.ts",
@@ -987,7 +987,7 @@
     {
       "path": "port/v2/packages/art/src/alientraits.ts",
       "bytes": 9106,
-      "sha256": "9c54b1abb2e94854750d7c62c282dbccce4ae37cb21f6961e52edbdd114ca3f7"
+      "sha256": "f3472aabb2eecdace06bd08be4c01afe7aeee7bbadb46db05ebb472de9c6cd4f"
     },
     {
       "path": "port/v2/packages/art/src/artextras.verbatim.d.ts",
@@ -997,7 +997,7 @@
     {
       "path": "port/v2/packages/art/src/artextras.verbatim.js",
       "bytes": 49078,
-      "sha256": "dadfd860bc21b4472efb80f91399ddb89b704bc2b0396fe848aa8628b21cc2c7"
+      "sha256": "abe01a1a2d4e3c62469c30d47a16f73da3dfaa17387b9db3ad6cb05ae68ba66e"
     },
     {
       "path": "port/v2/packages/art/src/biome-vista-ecology.ts",
@@ -1022,7 +1022,7 @@
     {
       "path": "port/v2/packages/art/src/biomevista-full.worker.verbatim.js",
       "bytes": 104738,
-      "sha256": "357fbd788931bbd14533c18743ac7cc95969b586fe7b32467170e541ee0fbae9"
+      "sha256": "2bcc0c7dd21f2be6a004ded9720d82d38d2b943f9d8d3b0c5a9df352d034d256"
     },
     {
       "path": "port/v2/packages/art/src/biomevista.worker.verbatim.d.ts",
@@ -1032,7 +1032,7 @@
     {
       "path": "port/v2/packages/art/src/biomevista.worker.verbatim.js",
       "bytes": 3629,
-      "sha256": "f1a1b9928d3cb1bdba2caf09d8313810ff52a1ce3dd217e9f61e64ec9e001f43"
+      "sha256": "4e6122ff3b041ad1d13f8a4aa87fc25b42cf5ece67914aa74d76ab61e4a04ee3"
     },
     {
       "path": "port/v2/packages/art/src/birdoverrides.ts",
@@ -1062,12 +1062,12 @@
     {
       "path": "port/v2/packages/art/src/faunaoverrides2.ts",
       "bytes": 235945,
-      "sha256": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02"
+      "sha256": "68de7bff03102ea51aadf4d207517ed07e5750876ef8a6262d58b3855f90e57b"
     },
     {
       "path": "port/v2/packages/art/src/faunaoverrides3.ts",
       "bytes": 153673,
-      "sha256": "f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec"
+      "sha256": "2e0084576e32e709d99befd7434079f786a3f8bd36dc6829376c12211b7979ce"
     },
     {
       "path": "port/v2/packages/art/src/faunaoverrides4.ts",
@@ -1082,12 +1082,12 @@
     {
       "path": "port/v2/packages/art/src/floraoverrides.ts",
       "bytes": 25880,
-      "sha256": "6323d1c46e998568bf57cbbfc9355557e22b9b70de227f68bfda932231b2ed6c"
+      "sha256": "e1e795e792e274f11303905d0490f8c297546c3c083f680443e89a2940e5f7a4"
     },
     {
       "path": "port/v2/packages/art/src/floraoverrides2.ts",
       "bytes": 408410,
-      "sha256": "42800cea6e658b6323a87d6a0c75683980afc10faf1ea188d1b6649b9750d73d"
+      "sha256": "01dac6b8cfe9f32b65b478333c66cc0e0ac4026dabc01abfa4fefcee5aeb5112"
     },
     {
       "path": "port/v2/packages/art/src/floraoverrides3.ts",
@@ -1157,7 +1157,7 @@
     {
       "path": "port/v2/packages/art/src/proceduraloverrides.ts",
       "bytes": 13174,
-      "sha256": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be"
+      "sha256": "edabc7518ed3c61d8de39efb53b018b220e2444254f7aa5f2ed92a473649d857"
     },
     {
       "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
@@ -1167,7 +1167,7 @@
     {
       "path": "port/v2/packages/art/src/skin.ts",
       "bytes": 44421,
-      "sha256": "d62f443ebf548fddece065d33f32d123a2a02200bc01dac26d17a9d3c66dc8aa"
+      "sha256": "403ea21de7c4030ca9a0dafe302274130babdfc7b651e1e569e1ca24f36b9110"
     },
     {
       "path": "port/v2/packages/art/src/speciesart.ts",
@@ -1222,12 +1222,12 @@
     {
       "path": "port/v2/packages/art/src/thumbart.verbatim.js",
       "bytes": 30058,
-      "sha256": "85b54edf7f32a174da90f6f68ea474dcebe8d31997dad683c6f5b88cb5587544"
+      "sha256": "6bf02b5c8622f51b3bcc84f06baab510b7df474af245446c8f6a14d3cb99b8dc"
     },
     {
       "path": "port/v2/packages/art/src/torso.ts",
       "bytes": 17420,
-      "sha256": "7270db2c642b9dde13ff9e4a31c79305ef8d45a011d190bd971a005232d70758"
+      "sha256": "fc359c9ca72c1224df9dda43c5323b68c18d7c541f6b4b58c5462d80cfd78b0c"
     },
     {
       "path": "port/v2/packages/art/src/visual-treatment.ts",
@@ -1482,7 +1482,7 @@
     {
       "path": "port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
       "bytes": 54698,
-      "sha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1"
+      "sha256": "55536ab115280dc95e3867988d11f033f069f4532b2cb4a0a80b44374229febd"
     },
     {
       "path": "port/v2/packages/domain/combatcore/src/creature-level-progress.ts",
@@ -1512,7 +1512,7 @@
     {
       "path": "port/v2/packages/domain/descriptors/src/apphooks.ts",
       "bytes": 6433,
-      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+      "sha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285"
     },
     {
       "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.d.ts",
@@ -1522,7 +1522,7 @@
     {
       "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
       "bytes": 13811,
-      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff"
+      "sha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b"
     },
     {
       "path": "port/v2/packages/domain/descriptors/src/describe-pick.ts",
@@ -1537,7 +1537,7 @@
     {
       "path": "port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
       "bytes": 31511,
-      "sha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432"
+      "sha256": "c97498ffa4476eb17abad4981da64f8634b22735dc62073a12fe12324bee9a60"
     },
     {
       "path": "port/v2/packages/domain/descriptors/src/index.ts",
@@ -1562,7 +1562,7 @@
     {
       "path": "port/v2/packages/domain/ecology/src/ecology.verbatim.js",
       "bytes": 11513,
-      "sha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c"
+      "sha256": "61d9b3cc8c9c640e6553b5cce1ae2e04c74973b1b9d4dc208afef0c386b58d85"
     },
     {
       "path": "port/v2/packages/domain/ecology/src/explicit-epoch.ts",
@@ -1597,7 +1597,7 @@
     {
       "path": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
       "bytes": 4570,
-      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12"
+      "sha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2"
     },
     {
       "path": "port/v2/packages/domain/genetics/src/index.ts",
@@ -1762,7 +1762,7 @@
     {
       "path": "port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
       "bytes": 9441,
-      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5"
+      "sha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543"
     },
     {
       "path": "port/v2/packages/domain/progression/package.json",
@@ -1872,7 +1872,7 @@
     {
       "path": "port/v2/packages/domain/strays/src/strays.verbatim.js",
       "bytes": 22644,
-      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+      "sha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c"
     },
     {
       "path": "port/v2/packages/domain/surveyphrases/package.json",
@@ -2135,7 +2135,7 @@
       "sha256": "a25e2b6f894a3c4c111949fa0a2c7dcfede13c25fb47082c13d423709425ad08"
     }
   ],
-  "manifestSha256": "5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c",
+  "manifestSha256": "bfd3fba993741a787ddb472336488427e43f64b2a6020eb804917683759c6da0",
   "buildExitCode": 0,
   "verifyExitCode": 0,
   "sourcesAfter": [
@@ -2417,7 +2417,7 @@
     {
       "path": "port/v2/apps/game/src/audit.ts",
       "bytes": 46961,
-      "sha256": "e68bb1302232d1b88a9874d480cd297cc772d5050e2bdb6a1cf56108f0f8fffd"
+      "sha256": "5cc244a22aaa83a34c508aa8401fbc79b8087e09ceeb2348dbe7e2ab1ed00022"
     },
     {
       "path": "port/v2/apps/game/src/binder-sets.ts",
@@ -3122,7 +3122,7 @@
     {
       "path": "port/v2/packages/art/src/alientraits.ts",
       "bytes": 9106,
-      "sha256": "9c54b1abb2e94854750d7c62c282dbccce4ae37cb21f6961e52edbdd114ca3f7"
+      "sha256": "f3472aabb2eecdace06bd08be4c01afe7aeee7bbadb46db05ebb472de9c6cd4f"
     },
     {
       "path": "port/v2/packages/art/src/artextras.verbatim.d.ts",
@@ -3132,7 +3132,7 @@
     {
       "path": "port/v2/packages/art/src/artextras.verbatim.js",
       "bytes": 49078,
-      "sha256": "dadfd860bc21b4472efb80f91399ddb89b704bc2b0396fe848aa8628b21cc2c7"
+      "sha256": "abe01a1a2d4e3c62469c30d47a16f73da3dfaa17387b9db3ad6cb05ae68ba66e"
     },
     {
       "path": "port/v2/packages/art/src/biome-vista-ecology.ts",
@@ -3157,7 +3157,7 @@
     {
       "path": "port/v2/packages/art/src/biomevista-full.worker.verbatim.js",
       "bytes": 104738,
-      "sha256": "357fbd788931bbd14533c18743ac7cc95969b586fe7b32467170e541ee0fbae9"
+      "sha256": "2bcc0c7dd21f2be6a004ded9720d82d38d2b943f9d8d3b0c5a9df352d034d256"
     },
     {
       "path": "port/v2/packages/art/src/biomevista.worker.verbatim.d.ts",
@@ -3167,7 +3167,7 @@
     {
       "path": "port/v2/packages/art/src/biomevista.worker.verbatim.js",
       "bytes": 3629,
-      "sha256": "f1a1b9928d3cb1bdba2caf09d8313810ff52a1ce3dd217e9f61e64ec9e001f43"
+      "sha256": "4e6122ff3b041ad1d13f8a4aa87fc25b42cf5ece67914aa74d76ab61e4a04ee3"
     },
     {
       "path": "port/v2/packages/art/src/birdoverrides.ts",
@@ -3197,12 +3197,12 @@
     {
       "path": "port/v2/packages/art/src/faunaoverrides2.ts",
       "bytes": 235945,
-      "sha256": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02"
+      "sha256": "68de7bff03102ea51aadf4d207517ed07e5750876ef8a6262d58b3855f90e57b"
     },
     {
       "path": "port/v2/packages/art/src/faunaoverrides3.ts",
       "bytes": 153673,
-      "sha256": "f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec"
+      "sha256": "2e0084576e32e709d99befd7434079f786a3f8bd36dc6829376c12211b7979ce"
     },
     {
       "path": "port/v2/packages/art/src/faunaoverrides4.ts",
@@ -3217,12 +3217,12 @@
     {
       "path": "port/v2/packages/art/src/floraoverrides.ts",
       "bytes": 25880,
-      "sha256": "6323d1c46e998568bf57cbbfc9355557e22b9b70de227f68bfda932231b2ed6c"
+      "sha256": "e1e795e792e274f11303905d0490f8c297546c3c083f680443e89a2940e5f7a4"
     },
     {
       "path": "port/v2/packages/art/src/floraoverrides2.ts",
       "bytes": 408410,
-      "sha256": "42800cea6e658b6323a87d6a0c75683980afc10faf1ea188d1b6649b9750d73d"
+      "sha256": "01dac6b8cfe9f32b65b478333c66cc0e0ac4026dabc01abfa4fefcee5aeb5112"
     },
     {
       "path": "port/v2/packages/art/src/floraoverrides3.ts",
@@ -3292,7 +3292,7 @@
     {
       "path": "port/v2/packages/art/src/proceduraloverrides.ts",
       "bytes": 13174,
-      "sha256": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be"
+      "sha256": "edabc7518ed3c61d8de39efb53b018b220e2444254f7aa5f2ed92a473649d857"
     },
     {
       "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
@@ -3302,7 +3302,7 @@
     {
       "path": "port/v2/packages/art/src/skin.ts",
       "bytes": 44421,
-      "sha256": "d62f443ebf548fddece065d33f32d123a2a02200bc01dac26d17a9d3c66dc8aa"
+      "sha256": "403ea21de7c4030ca9a0dafe302274130babdfc7b651e1e569e1ca24f36b9110"
     },
     {
       "path": "port/v2/packages/art/src/speciesart.ts",
@@ -3357,12 +3357,12 @@
     {
       "path": "port/v2/packages/art/src/thumbart.verbatim.js",
       "bytes": 30058,
-      "sha256": "85b54edf7f32a174da90f6f68ea474dcebe8d31997dad683c6f5b88cb5587544"
+      "sha256": "6bf02b5c8622f51b3bcc84f06baab510b7df474af245446c8f6a14d3cb99b8dc"
     },
     {
       "path": "port/v2/packages/art/src/torso.ts",
       "bytes": 17420,
-      "sha256": "7270db2c642b9dde13ff9e4a31c79305ef8d45a011d190bd971a005232d70758"
+      "sha256": "fc359c9ca72c1224df9dda43c5323b68c18d7c541f6b4b58c5462d80cfd78b0c"
     },
     {
       "path": "port/v2/packages/art/src/visual-treatment.ts",
@@ -3617,7 +3617,7 @@
     {
       "path": "port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
       "bytes": 54698,
-      "sha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1"
+      "sha256": "55536ab115280dc95e3867988d11f033f069f4532b2cb4a0a80b44374229febd"
     },
     {
       "path": "port/v2/packages/domain/combatcore/src/creature-level-progress.ts",
@@ -3647,7 +3647,7 @@
     {
       "path": "port/v2/packages/domain/descriptors/src/apphooks.ts",
       "bytes": 6433,
-      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+      "sha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285"
     },
     {
       "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.d.ts",
@@ -3657,7 +3657,7 @@
     {
       "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
       "bytes": 13811,
-      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff"
+      "sha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b"
     },
     {
       "path": "port/v2/packages/domain/descriptors/src/describe-pick.ts",
@@ -3672,7 +3672,7 @@
     {
       "path": "port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
       "bytes": 31511,
-      "sha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432"
+      "sha256": "c97498ffa4476eb17abad4981da64f8634b22735dc62073a12fe12324bee9a60"
     },
     {
       "path": "port/v2/packages/domain/descriptors/src/index.ts",
@@ -3697,7 +3697,7 @@
     {
       "path": "port/v2/packages/domain/ecology/src/ecology.verbatim.js",
       "bytes": 11513,
-      "sha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c"
+      "sha256": "61d9b3cc8c9c640e6553b5cce1ae2e04c74973b1b9d4dc208afef0c386b58d85"
     },
     {
       "path": "port/v2/packages/domain/ecology/src/explicit-epoch.ts",
@@ -3732,7 +3732,7 @@
     {
       "path": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
       "bytes": 4570,
-      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12"
+      "sha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2"
     },
     {
       "path": "port/v2/packages/domain/genetics/src/index.ts",
@@ -3897,7 +3897,7 @@
     {
       "path": "port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
       "bytes": 9441,
-      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5"
+      "sha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543"
     },
     {
       "path": "port/v2/packages/domain/progression/package.json",
@@ -4007,7 +4007,7 @@
     {
       "path": "port/v2/packages/domain/strays/src/strays.verbatim.js",
       "bytes": 22644,
-      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+      "sha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c"
     },
     {
       "path": "port/v2/packages/domain/surveyphrases/package.json",

@@ -4,7 +4,7 @@
   "runId": "20260923-beetle-paint-04",
   "authorization": "../AUTHORITY.md",
   "sourceHead": "6768b9879a8a11086bfa8669792acf555fc10140",
-  "promptSha256": "c340028415fb0d48d063d03d9504f0cb125b6339d48b491f6cb02f5a0e737706",
+  "promptSha256": "e129cd256b984971a00cf80816121bbb720e76a9bb06408de3f1a6c101453722",
   "references": [
     {
       "role": "approved atlas style only",

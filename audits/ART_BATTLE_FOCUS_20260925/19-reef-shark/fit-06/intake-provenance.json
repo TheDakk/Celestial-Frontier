@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/authoring.json",
-      "sha256": "45795045085a6654192209b027cb86acefd2fa96864919d9f4b450a7b29a9d32"
+      "sha256": "695c3b98022fcb2ae7f7292bfb2ac15aad6b4d6f7b35c6b95bb3b474acb81798"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "82cd8b102478032bfe5a80d25761a696b7029acf5c600fdd4fb27221664a6b38",
-  "bindingHash": "4316a6a8c4f004ed2ee720434e5847fb97031685388cf78ba46b69d9e3e8c192",
+  "recordRecipeHash": "ffdf1a047c756cfbbdc18b4ee77c373ab9c2bbe3e66a4bf84e17772c7c36f345",
+  "bindingHash": "88a9a1c4aec5752fadbe050d394da57b35270cacb81e07cd52d5da4efe120aff",
   "contactEndpoints": [],
   "shapeJoints": [
     "pectoralNear",
@@ -60,7 +60,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/authoring.json",
-      "sha256": "45795045085a6654192209b027cb86acefd2fa96864919d9f4b450a7b29a9d32",
+      "sha256": "695c3b98022fcb2ae7f7292bfb2ac15aad6b4d6f7b35c6b95bb3b474acb81798",
       "unchanged": true
     },
     {

@@ -8,7 +8,7 @@
   "compilerSha256": "fa1efc962f74008ddff9b960989237f6017bbc12a981f21a391114377bc7dae5",
   "template": {
     "path": "audits/VISION_P1_FOUR_CRABS_20260920/crab/generation-01/sent-prompt.txt",
-    "sha256": "6781207628876dd378eb01b00c5df6ae89763b4d138d9526357c11f99341138c"
+    "sha256": "b00876e7222ed17a2832e8bbe841c799139d5272c33ed906fade55248b411864"
   },
   "catalogue": {
     "path": "port/v2/reference/fauna.json",
@@ -16,9 +16,9 @@
   },
   "kit": {
     "path": "ART_KIT.md",
-    "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c"
+    "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f"
   },
-  "sentPromptSha256": "d873809f129bae3681fc06bc0cd9454e4316c36c5eaa5d4c17a03c12d1540a03",
+  "sentPromptSha256": "6ffc04f50874c9e7c3708257671debb5d3fceecd66d9eba4c605bd929f100f9d",
   "tool": "image_gen.imagegen",
   "model": "not exposed by built-in tool",
   "seed": null,

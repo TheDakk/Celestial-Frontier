@@ -37,10 +37,10 @@
     "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
     "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
     "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
-    "budget": "2a05039287ef343be2c043108212620d42226766aa7604b873c72954572858ee",
-    "budgetSchema": "d0a4c693bf03cd23cadbdc0d336329bc42cf06484d4314a9621e2c5462c47b6f",
-    "outcomeContract": "894ed41ffba0a30ecf1b6fc4e24fefbb28948896112cb4a27396b3cc0d058e06",
-    "collector": "4ccd494158c43a40061d85c7ff7c2aaa08859585d86980d4a62e8bb73f47e1f0",
+    "budget": "4f65601c4c71b80af4219771f220f02763b7249d875eac86a6aca5aed13a6734",
+    "budgetSchema": "c57ed2f9b1f20e3333c9a5869c337576dcf6f634c7bd3dbc8b0564eda7710e21",
+    "outcomeContract": "4dcc6ed40e574be450ae3749a024938b106a278476a78b72b7f6fd46d0af894c",
+    "collector": "001e49c29246089eadf4d285e11a28ab514ef0c996c89832c3787f9bbfb8e45e",
     "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
     "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
     "workspaceLock": "ceb20c120f1c2a889124f5e90050cf0df44768cd9c5a61cb1558ca5373371ae8",
@@ -62,7 +62,7 @@
   "budget": {
     "status": "calibration-required",
     "path": "apps/game/smoke/compendium-memory-v2.json",
-    "sha256": "2a05039287ef343be2c043108212620d42226766aa7604b873c72954572858ee",
+    "sha256": "4f65601c4c71b80af4219771f220f02763b7249d875eac86a6aca5aed13a6734",
     "browserAuthority": {
       "schema": "cf-v2-compendium-browser-authority/v2",
       "scope": "arc1a-compendium-memory-only",

@@ -12,11 +12,11 @@
   },
   "paintSkin": {
     "schema": "cf.paint-skin-intake/v1",
-    "sourceBindingHash": "2b850c7d896a0a3edcda28494f7e8e9fb8d6a84a5dfea81c782ec0e74082c490",
-    "recordRecipeHash": "a2d4471fe511a1a6eea2987e8c63d63021b3c682b260dade9c16eb5167f78153",
+    "sourceBindingHash": "e771917a3699d5fac3f3634d28365ef10711d526880c814a3b73ec77d0c7ba78",
+    "recordRecipeHash": "d43c5000ac4b244221129547aecb379dc4993df3af0173d33128fd2f12e59bec",
     "packedPixels": {
       "schema": "cf.parts-byte-verification/v1",
-      "bindingHash": "2b850c7d896a0a3edcda28494f7e8e9fb8d6a84a5dfea81c782ec0e74082c490",
+      "bindingHash": "e771917a3699d5fac3f3634d28365ef10711d526880c814a3b73ec77d0c7ba78",
       "atlasSha256": "9d374fe5e4397d6a90346601556909d1e1d85d2792a6ea3fec3a4a35e0ef6768",
       "parts": 31,
       "comparedChannels": 8535240,
@@ -73,7 +73,7 @@
         ]
       }
     ],
-    "sourceBindingHash": "1b510f43d2fccff66ec315543e7ca2e1e37aa6828f665bd314ed69c026875a71",
+    "sourceBindingHash": "3a1f5089b0a4dad1e0e84a86a2f210c9ea35f1d4fe30e1ade467cc8dd648b5fa",
     "sourceVertices": 2591,
     "vertices": 3069,
     "sharedSupports": 881,
@@ -87,8 +87,8 @@
     "preservePaintBoundaries": false,
     "sourceCoordinateChanges": 0
   },
-  "recordRecipeHash": "a2d4471fe511a1a6eea2987e8c63d63021b3c682b260dade9c16eb5167f78153",
-  "bindingHash": "db34f6de657aec0e382662efad07ec4a46797e56a0a4130da48455b815e8c0cf",
+  "recordRecipeHash": "d43c5000ac4b244221129547aecb379dc4993df3af0173d33128fd2f12e59bec",
+  "bindingHash": "cc132c36231bc98610bd7e285bf27c9d133bee14322f34a5514fddd333c6ac0a",
   "masterSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf",
   "manualAuthoring": true,
   "nativeAcceptance": false

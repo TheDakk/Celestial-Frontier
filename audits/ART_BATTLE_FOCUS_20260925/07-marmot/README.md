@@ -10,9 +10,9 @@ Six independently generated masks pass keyed-alpha conservation: zero outside pi
 
 Hashes:
 - master `39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22`
-- recipe `919d9395c967cd07cd4965dc1bb753916c08a161153504dbb9e41de9e2363307`
-- binding `f8073862867421c1d5d472b81b39190623cfc26b7d4b515cf36a7c5ad2ea878a`
-- markings `28642232745088477b20a619850e531283b118192ec34095cc503173aca8e475`
+- recipe `307f1dc705252e51d43b0495577de680b7cdc939f4217eb59992b5fcc17a00f8`
+- binding `0cd6513f8f3334d36f189c512f888d6909b90256f9df0b78fe832c45841284b5`
+- markings `430df6e61b84874d8a4f43ba5d6d9f8f584f49f2e58316e7022691cf11f87dea`
 - film `6f3dcc9a83f64590147c171eba175974f3a772606d95724e9d34b12590f8a810`
 
 Evidence: static-01.json, native-phone4x-01/report.json and battle-10s.webm; review-sheet.png (master/labels/fit/film), six-mask-sheet.png; root-validate.log PASS. Nested manifests included in root manifest. Accepted bindings, S2 and runtime source untouched; no coverage gain or picker PASS claimed.

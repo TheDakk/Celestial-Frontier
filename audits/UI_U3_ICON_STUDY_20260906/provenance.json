@@ -97,7 +97,7 @@
     },
     "browser-export-rejection.json": {
       "bytes": 1391,
-      "sha256": "760a59dce02e6d5ae90cb0611dacafc174e5da502b28f14a85f232b54b685fa6"
+      "sha256": "5df0387a4842226a53e6a6c8e847425c0aadebdfad933ddc0c5228eedc17f292"
     },
     "compendium.svg": {
       "bytes": 388,
@@ -121,11 +121,11 @@
     },
     "index.html": {
       "bytes": 17243,
-      "sha256": "3cfd060ca06e1fc51c47cb949aa3533dc1ded44cde361365a2f84639cea88ccf"
+      "sha256": "88f57e00fe8712f6dead724cdeb11fe72028bb2d2dd0d9f0169948eedea6bc0d"
     },
     "make-study.py": {
       "bytes": 12757,
-      "sha256": "9d8aa7aa785c715bfd73bb2d4212db8bb299c5b4d98cb147d4a64af156fa9c85"
+      "sha256": "4caceba7228a410816e7c3ed51ead4fcb533e6511bddb903759edef71159b22b"
     },
     "notifications.svg": {
       "bytes": 360,
@@ -157,7 +157,7 @@
     },
     "study.svg": {
       "bytes": 18927,
-      "sha256": "2d262ad56ad6a65f5bb4fe065a34bbb4ed41ba032f169af63985011501163718"
+      "sha256": "674bcae53234e6fde06bfc06c944072e9be41356d95baf5ddbed927fa7b7fdc3"
     },
     "survey.svg": {
       "bytes": 336,

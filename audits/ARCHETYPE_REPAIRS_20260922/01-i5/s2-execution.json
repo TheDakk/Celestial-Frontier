@@ -101,7 +101,7 @@
   "node": "v26.9.0",
   "owner": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2-controls.ts",
   "ownerSha256": "f84b7a6df8d0bf50679fda4f1ccbcc20a10b459079762ccfda4a63c5de6c9e81",
-  "orchestratorSha256": "8498334c2583948b838a67037d44adf69573867c2bcabce832d8d869ac5199f9",
+  "orchestratorSha256": "0937b67ef22bc748d96ef040562f27b195ff613f200812d441dca5520eba12e6",
   "baseline": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2",
   "retainedInputs": [
     {

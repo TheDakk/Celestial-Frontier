@@ -4,7 +4,7 @@
     {
       "file": "CREATURE_ANIMATION.md",
       "beforeSha256": "64b7392caf055dd5aa281feed9ce41ea7f25fb263351b10d057f696157da6600",
-      "afterSha256": "c1f1bd3aedbc3ba3a0bbc3f2f1b6c536039fca667225f0b4d0e396751466cbf3",
+      "afterSha256": "7ee1e78c6d5e6d5d0a8c5b3055a1eeef364a488c42fbfe85f547f32370f843ad",
       "inverseRestoresBeforeBytes": true,
       "edits": [
         {
@@ -27,7 +27,7 @@
     {
       "file": "celestial-frontier-codebase-reference.md",
       "beforeSha256": "1c8a487f75e0fdd775c66d2126b24bbdd9e2979e06a725eefbf96a8022957212",
-      "afterSha256": "ef824ce8d3cef73cb43e9bd19d884fa953876a32be8126fc4aab98ea8bb38530",
+      "afterSha256": "013bb92bb2dce049ed39a3a28a7178688753952c24f751a749c819e1491378c4",
       "inverseRestoresBeforeBytes": true,
       "edits": [
         {

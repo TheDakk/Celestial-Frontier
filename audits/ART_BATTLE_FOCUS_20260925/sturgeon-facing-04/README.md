@@ -16,11 +16,11 @@ Paired next steps: Claude fixes the documented ready/return overlap, wires fit02
 
 ## Selected hashes
 
-- prompt.txt: `30998a76ab0c2ca35af706237a3d93959adaff8d1dccff74b36a72b8c909e4e3`
+- prompt.txt: `a7032895d4eb8417112bf055dd78f1c59c492e3940921c5d8a7996bca23d658c`
 - master.png: `cd1a2cd6aecb629019d576abe64b50f549f95a4efa2cb8c58744aa5b0a9601f2`
 - fit-02/record.json: `aaafbf96bc0dd7e6a8f5708b69dbcddac0a519a4d5f085e3e1973e86968e7a6c`
 - fit-02/binding.json: `6e5299858d7b36fba5ef215a49bc6489b9968570d27f63b32767fa60870d0c07`
-- markings.json: `73bf706dd0bbc92da2eaf24ad9e5f393d6acdad423c911044a0c6de6981b9d62`
+- markings.json: `17b75131f9a0104d970e36d771a5dd2b2291df404e56e61eeb179bf916098e31`
 - review-sheet.png: `14ea4f6660a05f2136c4e36f13daec6b563c37c9b54f9af11ab6a1a12927be0a`
-- native-phone4x-01/report.json: `f2790b3adbcdfe30806a62e4fdfa3f5ed3a291b6ee43d00c4f839d70b22eb946`
+- native-phone4x-01/report.json: `83ab7d78076c0b8121c29bcba96a0cc22c12809b6934d044109eca542119f810`
 - native-phone4x-01/battle-10s.webm: `12c2c55951773c2616688fd8a15b5fbea2e41dcd4051463d6254849608cc3ed9`

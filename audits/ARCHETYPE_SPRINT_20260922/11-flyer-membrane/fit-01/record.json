@@ -174,7 +174,7 @@
     "nativeAcceptance": false
   },
   "provenance": {
-    "authoringSha256": "eacc969b4e3e8ccb2c07a9f6459c46182d11fce8e6ac5e604f1b572a8db20c45",
+    "authoringSha256": "7480c3de2197ba97c32b8269de87f0a9f897bae2d87ecc026bfe47bb35fb7ea7",
     "subjectSourceSha256": "11b0449e8b28659334e36aba28200712f679e0c4d7ca886b188c16cd58baa9e3",
     "presenceSha256": "d986f997305b8791db32ac13a99a9368060f4df703b93b8cae4f9a6583b299ee",
     "sourceLabelsReused": false,
@@ -216,5 +216,5 @@
       "leg/torso:legNear": 0.7187347225742609
     }
   },
-  "recipeHash": "0d334e3ba561bd5c3e3c43d39d36ba21772ea6846ba85c41c0e03657848ae0b6"
+  "recipeHash": "d9d666a18b6a465085d1d6be96c87ec3424ef634452a025fb8ca9095bb7352cb"
 }

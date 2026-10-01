@@ -7,12 +7,12 @@
     {
       "path": "README.md",
       "bytes": 6583,
-      "sha256": "9501edaf27734f05fc64d14a93a3ba435f6ee0c3049e2b12c4d9afbd50807986"
+      "sha256": "c886cf06d962c13e0d4fa60a28a0a759b49483219df20b84cfcdb052441e6cab"
     },
     {
       "path": "candidate-01/binding.json",
       "bytes": 2592418,
-      "sha256": "2e7a9b14e0ff1a6199949288cd1973a12a47680be5bf167611ab8c4b9196ae66"
+      "sha256": "1b137f8a172113703e277a06b60643789450a1c37a9481b112c33dc793c5d0db"
     },
     {
       "path": "candidate-01/parts/atlas/python.json",
@@ -32,7 +32,7 @@
     {
       "path": "candidate-01/parts/binding.json",
       "bytes": 4546,
-      "sha256": "07bfd55d9be2f77795cc408bd1da90294b76b56958664d1b556b425fee67cd9e"
+      "sha256": "a18daa985277b8723d0c526bf6dc1dc643bb21d767eefcb40411b0f55d093420"
     },
     {
       "path": "candidate-01/parts/keyed.png",
@@ -117,32 +117,32 @@
     {
       "path": "candidate-01/parts/receipt.json",
       "bytes": 3712,
-      "sha256": "c066e553ae488b74a47d1a88206f54ce2346c0fcbca9304ac657300dbc27fba8"
+      "sha256": "95545abd83269568db1feec93df02b639e3eaa6418cfe3be504a33c2fbcd5a7b"
     },
     {
       "path": "candidate-01/receipt.json",
       "bytes": 1233,
-      "sha256": "4ca61bf249fe2ecb17b711e315bdfdc600fdcf61109680158d76a35e089e8a30"
+      "sha256": "cd45601178a15368354a31c2a395d8f4f24dad58cdde7a7ec807809ef7f739cf"
     },
     {
       "path": "candidate-01/record.json",
       "bytes": 5538,
-      "sha256": "920fb85b070e3c9d3df937ac881aa724349fd9d5fcf8e19cd9caac058fe8038b"
+      "sha256": "88b003baba41de4bea71bba8fdfd81d4309b483258719ffd758ceb7244dfb77f"
     },
     {
       "path": "candidate-join-diagnosis.json",
       "bytes": 64777,
-      "sha256": "47d4c7ae9b3dc461a240c75188e4f7d14f801472449713bf121a0ce43b8fbcde"
+      "sha256": "95b84eaa9f33c217521256d88eeae01deba558dc8c2118ea41150fd3700ae284"
     },
     {
       "path": "candidate-static-01.json",
       "bytes": 47257,
-      "sha256": "4f4e96089bf77552699cfb3f4962fa642ec0b56c1b5172e60198528b5dc1f22b"
+      "sha256": "ebe3ffa5a67f8c0e90db837558209287a80030c1fa2211e0de013c682723056f"
     },
     {
       "path": "candidate-static-01.json.sources.json",
       "bytes": 14230,
-      "sha256": "0d88ec00fb95b9eee81dcb2926e00e33aa8ac94654bc760ec2aee3e6770dd94a"
+      "sha256": "19e27246f566746e12a66912abd9dac0d686818a74bb1d97d73062a25b335a05"
     },
     {
       "path": "diagnostic-summary.json",
@@ -172,12 +172,12 @@
     {
       "path": "intent.json",
       "bytes": 597,
-      "sha256": "0119eee4253cc68447bad14c5cb0527e4860845a4d179cad83c121f8ea6c8a29"
+      "sha256": "e0970fd3bb97b034c3d542e8e272e85707ce1175971c5883d7eab9b08021d17b"
     },
     {
       "path": "join-diagnosis.json",
       "bytes": 65094,
-      "sha256": "b54d18324203d558c349af0e8ce9a12e7e5c8be904cf0d9c01ff0d747182ada9"
+      "sha256": "50238936bb73573ba6db5c3da26df315ede73676dec5f3ddc07c6eea7be14050"
     },
     {
       "path": "make-candidate.mjs",
@@ -192,7 +192,7 @@
     {
       "path": "native-01/report.json",
       "bytes": 2347815,
-      "sha256": "193c56ce4e928e7ccba5ee609cc806972ccc499629e92c1517e52310dd8cf09e"
+      "sha256": "18b33176c88d5698b1cff3bec66fd77e68cf9f6f3455611a7da28f7ae3a8148d"
     },
     {
       "path": "native-01/script.json",
@@ -277,22 +277,22 @@
     {
       "path": "review.html",
       "bytes": 1815,
-      "sha256": "ee8049623514599a6bff15822575c68e7ad35bb76aa662ab1f71ef249f5452f3"
+      "sha256": "1308f3611a2c198951bd554120a18c40a05463ba4af239aa6adb7197caa89c8e"
     },
     {
       "path": "signing-refusal.json",
       "bytes": 522,
-      "sha256": "eac811cca39c18ff2c1946b12ba55aa97590baea9d6bdaafec69bc5c9215d31f"
+      "sha256": "738f798fbda6ad1b1356e82a063dfc4d2ade1bb511afd8b4ecfd95e85d0b6f7f"
     },
     {
       "path": "source-comparison.json",
       "bytes": 3938,
-      "sha256": "43ff4de3978e4352be2ec923c85677a531490a9fe97602f351761b27dde1b9c9"
+      "sha256": "a53a6eee173bfb5ad4e9aa8252d6c7625ba78b5d8e8a0f22111452f366f19cf9"
     },
     {
       "path": "verification.json",
       "bytes": 165327,
-      "sha256": "399388555f6c86396dec45bded6ac508cb40be33c4e716010d073c2d897a543c"
+      "sha256": "287ec5edde762d6aebe746b0ac979f3ce5d703c1bf83e4609445b8b615a87536"
     }
   ],
   "documents": [

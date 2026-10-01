@@ -25,19 +25,19 @@ CPU scope: Each per-rig upper bound charges the entire shared sampleTurn time pl
 
 Generation run: `20260923-centipede-paint-03`. Candidate copies retain the same painting and generation receipt; they are not additional generation calls. Parent-authored presence: 14 walking pairs and 1 ultimate pair(s); absent=`[]`, hidden=`[]`, folded=`[]`.
 
-Record recipe: `39962065dde06970c0b494e3e2b959d363202fef2d9804658abc1a6bfacb7b16`. Binding authority: `c67037345e169e813839fc96b66b0f1c05758cb0c9124a8326c2e42fa15a10aa`.
+Record recipe: `6c574f9f0ecfee789ed0259c13293fe5fddeed1ed17dd992c478b24c65e4470a`. Binding authority: `cc2ac0042e7e0a0592a6c6220e6102537b35b6632204c9e8e74ca50eb058537e`.
 
 | Input | SHA-256 |
 |---|---|
 | [master.png](candidate-13/master.png) | `e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e` |
 | [authoring.json](candidate-13/authoring.json) | `c35625a9055561a7ba5e07c699466716916717321595b93ccda9ddd8a9aaf97d` |
-| [prompt.txt](candidate-13/prompt.txt) | `006bf5fce063cad08371df26b4e44975049cd480dd305e248eec1f7b64c83019` |
-| [request.json](candidate-13/request.json) | `eee818a3eedb39e1213426c05e8ea8ea9dda1576f22c12dfbab5ba6e93c5b9de` |
-| [generation-receipt.json](candidate-13/generation-receipt.json) | `a95cf62f9b8fd9770549804a6f4e2e6ec0a337b522546a2785d1f383c2fd801f` |
+| [prompt.txt](candidate-13/prompt.txt) | `e2a3c20aa01761a105f895586902105643612338d9257bddf98298251ac42323` |
+| [request.json](candidate-13/request.json) | `38c211721f20f43e020234f2f799d3292f7ab77247e9a35d31fa22b10d1da000` |
+| [generation-receipt.json](candidate-13/generation-receipt.json) | `6778a1f3ca5cdf32b4732f32a78c971acc76a49f331f127df9f3d74004d82b0a` |
 | [subject-source.json](candidate-13/subject-source.json) | `7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67` |
 | [presence.json](candidate-13/presence.json) | `cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c` |
-| [Measured record.json](fit-11/record.json) | `19f7988daaa9054bed677f00abf2adb88b5b69dd91e5776e0462a9009e260d54` |
-| [Measured binding.json](fit-11/binding.json) | `4ebf5d0067f2062b1fd1ec4128a2b6f0f837d4f950aa6ac39ffd4bbf019ff56c` |
+| [Measured record.json](fit-11/record.json) | `806038e18364b1049486ad0d381e22686edf53f785aa92bc3646730a9ce6d2b2` |
+| [Measured binding.json](fit-11/binding.json) | `376f63769db24aae3e20c92b47c25d45d2dca9b409cff52069922467d44ada76` |
 
 [IC-3/authoring provenance](fit-11/intake-provenance.json) · [Intake/masks/observed-split/regional receipt](fit-11/receipt.json) · [Manual presence explanation](candidate-03/presence-author.md) · [Independent count/source review](candidate-03/visual-review.md).
 

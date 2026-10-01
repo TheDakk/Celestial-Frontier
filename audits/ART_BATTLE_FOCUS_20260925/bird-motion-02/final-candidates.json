@@ -2,8 +2,8 @@
   {
     "name": "gull",
     "fit": "../12-gull/fit-03",
-    "recordRecipeHash": "d4d0f9974c19f3ed15bce209e68dd35614f221f445e04a8a3225691195da5f3f",
-    "bindingHash": "7a5cc081e76e7ff2cdb72f8f03bb5777456fe9c1fe82189608bc5fb638c85f99",
+    "recordRecipeHash": "290d37a939c03a3fb2df45ce17458efbb67ca9c2364a762f02273ede71542506",
+    "bindingHash": "e776db5f9be64c2047680c0fbfa8af08a12de417b8b8999d8cf3a18c1b08cf42",
     "report": "gull-static-01.json",
     "status": "PASS_STATIC",
     "rowsPassed": 14,
@@ -15,8 +15,8 @@
   {
     "name": "goose",
     "fit": "goose-fit-04",
-    "recordRecipeHash": "887857dd7213d86fe5278ab6dd4ef3ebbf5a06a86f12a9f241b56c4e14eb26a0",
-    "bindingHash": "2c7a3db72a6ed19ea067c90ba5156cdf00fdd675a618bdb02201f1634318f005",
+    "recordRecipeHash": "359ea5009240cea77a5b7c8a464917914cfbf52d52beebf98becd8fa78f7e7d6",
+    "bindingHash": "bd0725f86d7b066587cc04cc781fee3cfd6192d57e98ecf9465ae8c8ec0ad22c",
     "report": "goose-static-04.json",
     "status": "PASS_STATIC",
     "rowsPassed": 14,
@@ -28,8 +28,8 @@
   {
     "name": "heron",
     "fit": "../16-heron/fit-01",
-    "recordRecipeHash": "cf60db301065dbb0147b3ba91650fbaa7b0447cf8fac40250a2b758d2cdb5982",
-    "bindingHash": "73d241f5ee53ffe4a533d9bc7511240f93193fe12731f754010d590ec10739bb",
+    "recordRecipeHash": "4aa67b5363e72612b2df7b85acd915b058c454d594b3fb812880e8086a5fd307",
+    "bindingHash": "79fffcf5b957e683f732e44d7cc32c9159b94c25f32bbb96497be4d91b9144b2",
     "report": "heron-static-01.json",
     "status": "PASS_STATIC",
     "rowsPassed": 14,
@@ -41,8 +41,8 @@
   {
     "name": "sparrow",
     "fit": "../17-sparrow/fit-01",
-    "recordRecipeHash": "f92a0fe45ea5517a2246f72081ad5a4f793c84a6a901e4e55b55876acd9c0b8b",
-    "bindingHash": "2091ed328c8208fb2dae04d8b06b2e06585b2cb95fa1f425ee05b2b7ea7f1fdb",
+    "recordRecipeHash": "a18a48201c1848332f0c0e9f3e82dba9e0f1b84e48fc9fb556dde2dfab66678d",
+    "bindingHash": "59bda4f29a89e83068eee53211e65a5ee03c051aa337c86f499064d5b25ee273",
     "report": "sparrow-static-01.json",
     "status": "RED",
     "rowsPassed": 12,

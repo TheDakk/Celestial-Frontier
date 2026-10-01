@@ -9,9 +9,9 @@
     "static": [
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/static.ts",
-        "sha256": "d7486c9a7078116c370afdbb8b6d4ae01c6bd5288b8607e99bcf2765e1fa244b",
+        "sha256": "7808af46f1687117be08d56a1a10b0fb115306fa48d605934fc2677af5072cb3",
         "unchanged": true,
-        "currentSha256": "d7486c9a7078116c370afdbb8b6d4ae01c6bd5288b8607e99bcf2765e1fa244b",
+        "currentSha256": "7808af46f1687117be08d56a1a10b0fb115306fa48d605934fc2677af5072cb3",
         "currentUnchanged": true
       },
       {
@@ -394,16 +394,16 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/record.json",
-        "sha256": "9ab4e752cd10d0a6c174c749a9e3c93ec8d9e950c02a1b6210ea812a06d87311",
+        "sha256": "e7d5e6ef485a5c341f75132199ee39aa35914571e7dcfb8eeadffd3b468005ad",
         "unchanged": true,
-        "currentSha256": "9ab4e752cd10d0a6c174c749a9e3c93ec8d9e950c02a1b6210ea812a06d87311",
+        "currentSha256": "e7d5e6ef485a5c341f75132199ee39aa35914571e7dcfb8eeadffd3b468005ad",
         "currentUnchanged": true
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/binding.json",
-        "sha256": "978a7f26cdeedfa58792fe1a976d3db6db27d2f4e6f35689b48a9d65386a3015",
+        "sha256": "47db6334446e930e64c5b2cd1ed56d40a2476efa54c3fb2eec07f5a076dd868a",
         "unchanged": true,
-        "currentSha256": "978a7f26cdeedfa58792fe1a976d3db6db27d2f4e6f35689b48a9d65386a3015",
+        "currentSha256": "47db6334446e930e64c5b2cd1ed56d40a2476efa54c3fb2eec07f5a076dd868a",
         "currentUnchanged": true
       },
       {
@@ -443,8 +443,8 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_KIT_ENGINE_FIRST_20260912/family-compiled-inputs.json",
-        "sha256": "ebf7647e56e637b782a2a711fd2eb7182968e733fb8583f47f57d72a9a94d7de",
-        "currentSha256": "ebf7647e56e637b782a2a711fd2eb7182968e733fb8583f47f57d72a9a94d7de",
+        "sha256": "adc839f2944356a7f222ae4650a8215fc9a53f0ec9217cb55a84913719f1474e",
+        "currentSha256": "adc839f2944356a7f222ae4650a8215fc9a53f0ec9217cb55a84913719f1474e",
         "currentUnchanged": true
       },
       {
@@ -563,8 +563,8 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/sequencer.ts",
-        "sha256": "0b168bd71cb30507326580d02f9584c6901c8f8f0a66ec6fe2c7357b306598a8",
-        "currentSha256": "0b168bd71cb30507326580d02f9584c6901c8f8f0a66ec6fe2c7357b306598a8",
+        "sha256": "839c7023d9d0d274b9617ad4f4299eef6b58edf499f495c542ea795619523685",
+        "currentSha256": "839c7023d9d0d274b9617ad4f4299eef6b58edf499f495c542ea795619523685",
         "currentUnchanged": true
       },
       {
@@ -5213,8 +5213,8 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.ts",
-        "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a",
-        "currentSha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a",
+        "sha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285",
+        "currentSha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285",
         "currentUnchanged": true
       },
       {
@@ -5225,8 +5225,8 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
-        "sha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432",
-        "currentSha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432",
+        "sha256": "c97498ffa4476eb17abad4981da64f8634b22735dc62073a12fe12324bee9a60",
+        "currentSha256": "c97498ffa4476eb17abad4981da64f8634b22735dc62073a12fe12324bee9a60",
         "currentUnchanged": true
       },
       {
@@ -5243,8 +5243,8 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
-        "sha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1",
-        "currentSha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1",
+        "sha256": "55536ab115280dc95e3867988d11f033f069f4532b2cb4a0a80b44374229febd",
+        "currentSha256": "55536ab115280dc95e3867988d11f033f069f4532b2cb4a0a80b44374229febd",
         "currentUnchanged": true
       },
       {
@@ -5261,8 +5261,8 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
-        "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff",
-        "currentSha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff",
+        "sha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b",
+        "currentSha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b",
         "currentUnchanged": true
       },
       {
@@ -5291,8 +5291,8 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
-        "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5",
-        "currentSha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5",
+        "sha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543",
+        "currentSha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543",
         "currentUnchanged": true
       },
       {
@@ -5363,8 +5363,8 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/strays/src/strays.verbatim.js",
-        "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03",
-        "currentSha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03",
+        "sha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c",
+        "currentSha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c",
         "currentUnchanged": true
       },
       {
@@ -5375,14 +5375,14 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/ecology.verbatim.js",
-        "sha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c",
-        "currentSha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c",
+        "sha256": "61d9b3cc8c9c640e6553b5cce1ae2e04c74973b1b9d4dc208afef0c386b58d85",
+        "currentSha256": "61d9b3cc8c9c640e6553b5cce1ae2e04c74973b1b9d4dc208afef0c386b58d85",
         "currentUnchanged": true
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genetics/src/genetics.verbatim.js",
-        "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12",
-        "currentSha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12",
+        "sha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2",
+        "currentSha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2",
         "currentUnchanged": true
       },
       {
@@ -5399,14 +5399,14 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/record.json",
-        "sha256": "9ab4e752cd10d0a6c174c749a9e3c93ec8d9e950c02a1b6210ea812a06d87311",
-        "currentSha256": "9ab4e752cd10d0a6c174c749a9e3c93ec8d9e950c02a1b6210ea812a06d87311",
+        "sha256": "e7d5e6ef485a5c341f75132199ee39aa35914571e7dcfb8eeadffd3b468005ad",
+        "currentSha256": "e7d5e6ef485a5c341f75132199ee39aa35914571e7dcfb8eeadffd3b468005ad",
         "currentUnchanged": true
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/binding.json",
-        "sha256": "978a7f26cdeedfa58792fe1a976d3db6db27d2f4e6f35689b48a9d65386a3015",
-        "currentSha256": "978a7f26cdeedfa58792fe1a976d3db6db27d2f4e6f35689b48a9d65386a3015",
+        "sha256": "47db6334446e930e64c5b2cd1ed56d40a2476efa54c3fb2eec07f5a076dd868a",
+        "currentSha256": "47db6334446e930e64c5b2cd1ed56d40a2476efa54c3fb2eec07f5a076dd868a",
         "currentUnchanged": true
       },
       {
@@ -5429,8 +5429,8 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
-        "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4",
-        "currentSha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4",
+        "sha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596",
+        "currentSha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596",
         "currentUnchanged": true
       },
       {
@@ -5485,20 +5485,20 @@
     "originalFit": [
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/binding.json",
-        "sha256": "a78a1f2c81cf33274d3b9ef82d1faa793b2f4d0a4191b9643c77e94ed0e5cb0a",
-        "currentSha256": "a78a1f2c81cf33274d3b9ef82d1faa793b2f4d0a4191b9643c77e94ed0e5cb0a",
+        "sha256": "b42ad8d857f402461cacb57195b5ce05220164f8aeb2576b8483e09cdb65f311",
+        "currentSha256": "b42ad8d857f402461cacb57195b5ce05220164f8aeb2576b8483e09cdb65f311",
         "currentUnchanged": true
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/declaration.json",
-        "sha256": "c90fe146c75b33b0a7ee47c88e27c85b617f26d7dd55bc387bfab9724641706a",
-        "currentSha256": "c90fe146c75b33b0a7ee47c88e27c85b617f26d7dd55bc387bfab9724641706a",
+        "sha256": "5a9c581d77a127e30a69afa4bab4b5bf24f192f122eed2705186416315f45bd5",
+        "currentSha256": "5a9c581d77a127e30a69afa4bab4b5bf24f192f122eed2705186416315f45bd5",
         "currentUnchanged": true
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/intake-provenance.json",
-        "sha256": "e047da0eec4077c794ce4403e5e8e66d75b3ee555e77722b078298169a13f865",
-        "currentSha256": "e047da0eec4077c794ce4403e5e8e66d75b3ee555e77722b078298169a13f865",
+        "sha256": "640314b6fbcec4543f4ee9aaabeabe8b1b1d21ba77041d68894920b8c8b40f44",
+        "currentSha256": "640314b6fbcec4543f4ee9aaabeabe8b1b1d21ba77041d68894920b8c8b40f44",
         "currentUnchanged": true
       },
       {
@@ -5533,8 +5533,8 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/parts/binding.json",
-        "sha256": "b53b5df0778c75d7f98383f03091c4283e7e759edcd31ae5b107959a18403ccc",
-        "currentSha256": "b53b5df0778c75d7f98383f03091c4283e7e759edcd31ae5b107959a18403ccc",
+        "sha256": "4100d8155dbecf98f9ba9eaa8149f4cd5d8e8f5bac4c885be4fab98c629c7917",
+        "currentSha256": "4100d8155dbecf98f9ba9eaa8149f4cd5d8e8f5bac4c885be4fab98c629c7917",
         "currentUnchanged": true
       },
       {
@@ -5737,26 +5737,26 @@
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/parts/receipt.json",
-        "sha256": "9ffe93744cc593104d76ee6055b79cdb12a8740b8d43e43aa0ecb4b7bfd559bd",
-        "currentSha256": "9ffe93744cc593104d76ee6055b79cdb12a8740b8d43e43aa0ecb4b7bfd559bd",
+        "sha256": "eb3500f51c18f83b7fe3c3dc8265d097264bda1cf4aed35cd1b659ac7c6e2691",
+        "currentSha256": "eb3500f51c18f83b7fe3c3dc8265d097264bda1cf4aed35cd1b659ac7c6e2691",
         "currentUnchanged": true
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/pre-split-binding.json",
-        "sha256": "e494730e79134b80f7a0a31610f7cfca4485952192b2b7a9e6d1c779fbddee26",
-        "currentSha256": "e494730e79134b80f7a0a31610f7cfca4485952192b2b7a9e6d1c779fbddee26",
+        "sha256": "a3b870b1f19759366ba665fb4112264d9fb5a6fcef5da7e35027741f4d4137eb",
+        "currentSha256": "a3b870b1f19759366ba665fb4112264d9fb5a6fcef5da7e35027741f4d4137eb",
         "currentUnchanged": true
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/receipt.json",
-        "sha256": "42a44dcc34e3ee40641771f7cd80830cbb4a7565787a909022fbf67a0403e810",
-        "currentSha256": "42a44dcc34e3ee40641771f7cd80830cbb4a7565787a909022fbf67a0403e810",
+        "sha256": "94a584dfa3bdb1ec92a5e6ababe25175813cca73d590693b23f78f6443a030e8",
+        "currentSha256": "94a584dfa3bdb1ec92a5e6ababe25175813cca73d590693b23f78f6443a030e8",
         "currentUnchanged": true
       },
       {
         "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/record.json",
-        "sha256": "3cf39ce852b5eac82c7cee2c653312dad7866f41bb0b143bff20da5130f8f8d6",
-        "currentSha256": "3cf39ce852b5eac82c7cee2c653312dad7866f41bb0b143bff20da5130f8f8d6",
+        "sha256": "80a6715012488932fd43bb8dc6a60f036b2b54d04fa04e5a95b580a8c6224e2b",
+        "currentSha256": "80a6715012488932fd43bb8dc6a60f036b2b54d04fa04e5a95b580a8c6224e2b",
         "currentUnchanged": true
       }
     ]

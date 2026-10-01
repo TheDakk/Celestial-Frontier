@@ -2,7 +2,7 @@
   "schema": "cf.image-request/v1",
   "runId": "20260923-centipede-paint-03",
   "tool": "built-in image_gen",
-  "promptSha256": "006bf5fce063cad08371df26b4e44975049cd480dd305e248eec1f7b64c83019",
+  "promptSha256": "e2a3c20aa01761a105f895586902105643612338d9257bddf98298251ac42323",
   "references": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/master.png",

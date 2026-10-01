@@ -3,14 +3,14 @@
   "sources": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/tame-contact-03.mjs",
-      "sha256": "f484d4cb7c451b1539dcea6009a552ffb4d563cc0a5e31d5fb722d7c6fed0e0b",
+      "sha256": "cf24704ecadf64af5040b4f1fb9b47f9b0d8c38fc998c751c86432c80a058892",
       "unchanged": true,
       "comparedWithStatic02": false,
       "exactStatic02Bytes": null
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/tame-contact-03.ts",
-      "sha256": "b0cccc465891196874ca8032a9f223d3628ab8e496ef8101589ef5280283a998",
+      "sha256": "9fa80cf73b6f348180ddabfcb2953aaedfd12912f4d8663f85aecdfd3ff615b3",
       "unchanged": true,
       "comparedWithStatic02": false,
       "exactStatic02Bytes": null

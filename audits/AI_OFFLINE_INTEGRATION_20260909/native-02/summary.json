@@ -1,6 +1,6 @@
 {
   "schema": "cf.offline-landfall-result-summary.v1",
-  "sourceResultSha256": "690edcd99b5ea7af1d03e9604f2219734ddff6f6cf9cda75b4d19d5ca9594d39",
+  "sourceResultSha256": "8123142f23dc6575a68dee3c3d21a47cfe694c1cf0dfbd8ccbbb90d426b1bd0b",
   "status": "FAIL",
   "startedAt": "2026-09-09T19:34:02.094Z",
   "finishedAt": "2026-09-09T19:49:54.618Z",

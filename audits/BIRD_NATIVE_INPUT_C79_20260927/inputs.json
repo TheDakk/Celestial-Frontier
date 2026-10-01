@@ -17,7 +17,7 @@
       },
       {
         "path": "intake-provenance.json",
-        "sha256": "f5ab42c54b53147a83cb28616f08d28b5846c6cf144e489959903ed84a7080d1"
+        "sha256": "0eb814dade78a70e8ffc490b03f2dcb69b3303352577d8774ba4cb7815b337ed"
       },
       {
         "path": "label-authoring-receipt.json",
@@ -159,7 +159,7 @@
       },
       {
         "path": "intake-provenance.json",
-        "sha256": "6ec83ee0ac3d7e05a098478d9356c9ecdce16f27aae5559ae71a801396c8c6d5"
+        "sha256": "906cb3d883de1adab2ef4b52882d39b52c2de73af77f448f349b9831ed64393f"
       },
       {
         "path": "label-authoring-receipt.json",

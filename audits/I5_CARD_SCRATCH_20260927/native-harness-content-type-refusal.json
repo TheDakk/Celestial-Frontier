@@ -2,7 +2,7 @@
   "scope": "Native renderer backing-store diagnosis, not calibration/certification",
   "oldHead": "6bd5b337d1865910b1a5a18d7f82bf3fa06e6fee",
   "oldSha256": "f3ba551d8ec5897ae06c2a1b5b762b696623b887f4437e06c2781d09b4bad5e1",
-  "newSha256": "fbc3336123b424043100c593d2d3b345cf26892ccb672247aa8006d6260d9db4",
+  "newSha256": "70de420bf0876e527aaaad42fa40ccecd8a707c8a8c9d9749b1d7940dea9d6e9",
   "scratchSha256": "c1ee572fb0b337b6c6970ec57c4330ea3871a41f2aeae9a4de1ac5bb25cfd25b",
   "rows": [],
   "browser": {

@@ -9,7 +9,7 @@ This is the same paint03 master with manually corrected source ownership. No new
 | Exact source copy | SHA-256 |
 | --- | --- |
 | master.png | ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7 |
-| prompt.txt | f1713b7201837b939222a965582363fdec3f1bd25fec555599547cf35743fe88 |
+| prompt.txt | a25ee3f9914a4a3ed434d3f68d1cf45a2b1cdbd841235238a07d8b1cc8b98d13 |
 | subject-source.json | 11b0449e8b28659334e36aba28200712f679e0c4d7ca886b188c16cd58baa9e3 |
 | presence.json | 90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db |
 

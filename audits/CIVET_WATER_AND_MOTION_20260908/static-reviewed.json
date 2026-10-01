@@ -5,7 +5,7 @@
   "sources": {
     "study-harness.ts": "7ebf49d7f7d293dfb79673e8d938dfa751ec1d1daf6ee4279bdb60da0aa7c425",
     "study-runner.mjs": "101c6e08de2094c9b9f040d90cb9ed758815ad0b6a060d68ea35f7b8dde85a52",
-    "water-owner.ts": "4e49ead69f9be01a39304ce3a4b9ac8db6949242089227a8e5fe0d819fd88700",
+    "water-owner.ts": "a0767ce00c6b99fda76d4832c957ea3260f9a7e3839d19454651f214c2066114",
     "study.html": "33e4a16af57109d0ee6269fe8fe5c90f1409bd240a0458a827bf48e4f335d317",
     "study.tsconfig.json": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4",
     "serve-study.mjs": "15e74dcccd47e74380cd9722b7458413ac9fb0957524ba16fb651e41d0872e08",

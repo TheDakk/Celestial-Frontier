@@ -2,6 +2,6 @@
   "tool": "image_gen.imagegen",
   "reference": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/master.png",
   "referenceSha256": "d7f7ad90c7813efb3bf9f700d81dbb5acbc8a50d14b504cfc51d9bc85b8f0f14",
-  "promptSha256": "30998a76ab0c2ca35af706237a3d93959adaff8d1dccff74b36a72b8c909e4e3",
+  "promptSha256": "a7032895d4eb8417112bf055dd78f1c59c492e3940921c5d8a7996bca23d658c",
   "purpose": "Right-facing candidate; original accepted-source-coordinate proof preserved in03-sturgeon, no existing binding changed."
 }

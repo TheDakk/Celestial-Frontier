@@ -9,12 +9,12 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/BATCH_INTENT.md",
       "bytes": 2252,
-      "sha256": "7c02c8727d1b7a77e9ff6b1fe962f93cc38927556df5bcb5e04b163390d28ca0"
+      "sha256": "56598e72b8978f85d66258a2daf9adc0295f8de308ba9ed70a09ee89240c699a"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/README.md",
       "bytes": 7087,
-      "sha256": "88da085e562e3e4ec7065aebd5ac88d54f0e8e547be06063dde6c5e2a8904641"
+      "sha256": "bbf53091694ba1934cadbae5ed8f86b03bc912d6bcdbfa7062d74d9812de0bea"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/VERIFICATION_CORRECTIONS.md",
@@ -64,7 +64,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/continued-verification.json",
       "bytes": 995,
-      "sha256": "a0ec3f9ac59f3a63737965e5e3ba1d82569c0b26356735b86f24617e2917a38b"
+      "sha256": "fb74f88d54a4f323cecbcd85204215fe6f26d5d3467d1d1633d4888fc347036e"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/develop-profile.json",
@@ -74,7 +74,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/develop-profile.log",
       "bytes": 16249,
-      "sha256": "5fcbeb1b80d80911690f168ec6327a2edab266af9a754f921c3c881638d6c4d8"
+      "sha256": "4512ac111a5c0f41d6727be13595af52563c7543ed5d04b4b9ccc2175b7819bf"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/draft-authority-corrected.json",
@@ -99,12 +99,12 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/evidence-dist-mesh-pipe.json",
       "bytes": 15871,
-      "sha256": "a5437fe3a861a981890147013892a19cf0e668a9410ab938c92893027dee146d"
+      "sha256": "d6abb133b49bcf9716a85ce88ecf999425e6a9a389bd955c1a6966d232b152f7"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/evidence-dist.json",
       "bytes": 15871,
-      "sha256": "3f1d6506b4a3eb2d6e0486503fec07f806a73f7f0ebac383d2197d1072bd8782"
+      "sha256": "62479fc68f723c00c09f058d59b06def591a34ecf84f7ad5aa3a3451c82d9195"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/final-browser-free-execution.json",
@@ -119,7 +119,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/final-browser-free.json",
       "bytes": 2235,
-      "sha256": "89d4f43870066a3f7cde36493b833dcf1a8ba06b612bff8665d769a37a9c4813"
+      "sha256": "5d681921c8f51eadc0921c85491e81e0448536ba6288647c2f51e0464741656b"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/final-checks.mjs",
@@ -129,12 +129,12 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/final-focused.log",
       "bytes": 6259,
-      "sha256": "84f4347872de4998212900ed963be29f8cf62e9c1e15c116a583e170107722ea"
+      "sha256": "f3b2914d5ecbb99a3a511f5d69d66c5cdb3f98f62059b1e78eeeb689400f189e"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/focused-binding-repair.log",
       "bytes": 6265,
-      "sha256": "6bebbf8d7de58ad08a491d7e3a6c92d9c5c4eeef1f6c4c1cbd273b86d3b9a5c4"
+      "sha256": "3d6e7993c0ac1bae4a5c46cbf835effc2eec2b89f257710a8a868adf0d7e122e"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-checks.mjs",
@@ -154,12 +154,12 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-focused.log",
       "bytes": 6138,
-      "sha256": "abad8a690d26a2124627f456ecb4bb14c66a498a0865eb361353f7595da72673"
+      "sha256": "90e73240b93d9cf39ffa6334e01a684e4e3eb33a66f97774b981013cab1d1536"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-root.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-types.log",
@@ -169,7 +169,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-verification.json",
       "bytes": 1331,
-      "sha256": "a93fc32ab9f68ff10f4579c0bedd32dec4f8f5e27a3575233f6dcc3516de2b03"
+      "sha256": "fb15a654764e7f5f654a38dbf9dad65694117fca282c65092cb5dfca73de505a"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-corrected/failure.png",
@@ -179,7 +179,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-corrected/review.json",
       "bytes": 28769,
-      "sha256": "185f07b7f7492aaf72c422327948ff6900caa52e6947e15b8206e397b7bff97b"
+      "sha256": "a80431c8a425b886f47e5bee555b2c64f4906e0cc7d178bce9cac7d1138f907e"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-corrected/runner.mjs",
@@ -189,12 +189,12 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-corrected-execution.json",
       "bytes": 550,
-      "sha256": "9167f321f9a0ef3c7aac07866be041c5522b3e97eef8176170565b50a0d8a73e"
+      "sha256": "427221317c20ba5c7bb97467ab1b5483c70d83edeb44a67f0d06542f8be8c592"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-corrected-execution.log",
       "bytes": 771,
-      "sha256": "698ad7ee96fe5d4c43f2c256b382d8a5c375aef455b507253f97006330593124"
+      "sha256": "77717620bcda9809035b6b6abd74ca6c5a0b3d9dc7ab5cb26a624d1b9333ee2b"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop/earth-desktop-initial.png",
@@ -214,7 +214,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop/review.json",
       "bytes": 64147,
-      "sha256": "0352889d2b301b6b8927ae4294b8b5c41300bf162969a0b8f278709b8d735c76"
+      "sha256": "1812f80bbd88ac1b0cada0cf0ce204f05cc50f8d46504258bb03fcfbf3b63d45"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop/runner.mjs",
@@ -224,12 +224,12 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop-execution.json",
       "bytes": 556,
-      "sha256": "ab81bd8d6fdf228130422fa4c1eca4a70b58c80cb579611334748e24be1a94a6"
+      "sha256": "c5a275ec0cd3131f47f741ce6cb4d7d37024bacbfa288056d11c65f7142c9754"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop-execution.log",
       "bytes": 133,
-      "sha256": "b4f164cb6fe58e55d608d053ad873b31568ccbc8b94a3c5ac846c31421fdec40"
+      "sha256": "13bd11b4c426fc9ac1e3afa8aeaf02ba601eaf62f9b4b27ec790bd6f17ea9db4"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop-runner.mjs",
@@ -244,7 +244,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-first/review.json",
       "bytes": 20959,
-      "sha256": "fa1204d919f7552457e1ef958f260d5a9a8bea84ffd166f5fc28b6d555279c9a"
+      "sha256": "0eb8a69ca13fe2768f498926749d5beaa2e0f5981bb0597763508b430a1413ec"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-first/runner.mjs",
@@ -254,12 +254,12 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-first-execution.json",
       "bytes": 537,
-      "sha256": "7e540543cb18af90d508f5b90f6f92901bff606a11017dffe05e02074b6437d0"
+      "sha256": "1395ac894ce12e2a382e285ea0e735efa42db0f5d6372a5999539749b07d840f"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-first-execution.log",
       "bytes": 627,
-      "sha256": "07c554bfeb7d2f285bfd9f404870ac0066d3a63816d32a7374280530235b7df6"
+      "sha256": "2b24b7d6ea03cf92330b0db78249d77db2ee37bfbbe03e89dccaa3aae3bf2829"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe/earth-phone-initial.png",
@@ -284,7 +284,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe/review.json",
       "bytes": 64840,
-      "sha256": "5e69d9556282e95f5f4006ad3e528322de3348b49238631fdb5b42254ec2697a"
+      "sha256": "e6098dfcca63fb13dba2b312c46073b5d2684eb614689e65022c5031da469b0e"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe/runner.mjs",
@@ -294,12 +294,12 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe-execution.json",
       "bytes": 552,
-      "sha256": "754a097509a3faebbe59e848533eb2b15cf46719467052acc85a0a6b3798cb49"
+      "sha256": "a743944813da1b2575cb2a71f2304591f09a2e456e567fcc99468eaa65920ed0"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe-execution.log",
       "bytes": 509,
-      "sha256": "33601381bc6cb98d38d41581dd0322e642b50b427aa2d6f0bc80bc8cde0dc3e7"
+      "sha256": "958222b3b88cf2e4256b9803fbc891b3dd7cac33ddbbe80a452663fc05b5cab2"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware/earth-phone-effects-off.png",
@@ -334,7 +334,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware/review.json",
       "bytes": 80181,
-      "sha256": "aa42cd2e726c2eeeb913138ff406f73922ea1b43cb56a977b9c6af8a47747092"
+      "sha256": "89fbd79f04c8c02ed5d732fae959b7d81d0a40262ec7ca7bd62d5430699c17d9"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware/runner.mjs",
@@ -344,12 +344,12 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware-execution.json",
       "bytes": 550,
-      "sha256": "5c2a5624078baa2674b456b5404a1127f3fae744e18269ae0597c709a65dac24"
+      "sha256": "842f5aa9cbba299e092df943b25d0a76bd6ff9c7df2540ee6feb0fed31bccb07"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware-execution.log",
       "bytes": 637,
-      "sha256": "b4108ddeec94072088f8b67aea5ddebd2e11d90b730cb522456fd21984dcde52"
+      "sha256": "cdaeac4914b4b748c4dc3e4b7d99ebca17252d9b7f3550eb304eae888a4a23a3"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-runner.mjs",
@@ -369,7 +369,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/preview-browser-check.json",
       "bytes": 424,
-      "sha256": "583a83410b1f16b091c2ee9c0846d44764bcac1f0fc3c7e5ec2d7993e34d4c7a"
+      "sha256": "e8af6c5f77b99b4cf9050eb40ce618afb0332b703893c3459057335f6425e657"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/preview-browser-check.log",
@@ -379,17 +379,17 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/preview-package.json",
       "bytes": 498,
-      "sha256": "bdf88e91b115143e7c896c2f57e9eeb28d41dff46d7dca41ecec8de7bc02c92d"
+      "sha256": "da13ff453d4f1d42835e4df55f9d7546d1c62a2bab120967c22dae091a3c9970"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/preview-package.log",
       "bytes": 6068,
-      "sha256": "85b3c83845f08fcc6a545c923269b8f4f2d187c4433c4874e123d217ac291284"
+      "sha256": "9d71161100e9fa1342569564d3445e6ad38c5aa696133899075058ab6b69ca6a"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/preview-server.json",
       "bytes": 535,
-      "sha256": "1a0b408bf6c4930f4b3d8ad4e2b8dd91b48e763d362da599d1bd1b35b351587e"
+      "sha256": "f65dc681e04af9dd412e12b2643c07f9665352c4f23730174feaefd8442e409d"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-build.json",
@@ -494,7 +494,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/root-validation.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/run-step.py",
@@ -544,7 +544,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/view-type-correction.log",
       "bytes": 321,
-      "sha256": "34f401a6db31454f3d72d89ac2a58b3b8a1e6b73c782abc24a3ed72a1da713f0"
+      "sha256": "98a8f30de70b40b9ae1e0b2dec94d6346062411e35a40b02e32321ff7a54d94a"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_TURN_20260908/visual-inspection.json",

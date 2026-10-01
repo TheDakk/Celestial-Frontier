@@ -1,8 +1,8 @@
 {
   "schema": "cf.failed-pose-fold-diagnosis/v1",
   "scope": "Exactly seven original Starfish first-fold poses, replayed once each through current source with exact retained refusal/statistics parity; private rejected ARAP scratch only, no battery, native film or published fit/acceptance claim",
-  "recordRecipeHash": "1768acb6b0da7467eadb5a11b60228543147583b7ee0a83dd02bf3dbda8da88d",
-  "bindingHash": "e3c551fca0181cd500ca15ccebca90f6e6438d0946ddfe022bea0ad40ccc3c46",
+  "recordRecipeHash": "2b18db92fa55b9c454affdf85a9dcaa440cd64ad448bfa379a78812766304e2f",
+  "bindingHash": "cb0bed0645b5cd6d371c5c346fbeb589328ed12810b8350dc853802bc44eefe5",
   "findings": [
     {
       "row": "approach:pulse",
@@ -68974,17 +68974,17 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/08-radial/fit-01/record.json",
-      "sha256": "22dcc0e062a65659ae9ce29c8812dbcf3b120f7d940093633dca608ae79d48a1",
+      "sha256": "247b4ebc614de5db709ec50da06eea8c4039d40c018817dac184da5a1f58fa06",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/08-radial/fit-01/binding.json",
-      "sha256": "6552bd496185298e4e84952eb281e1d738bf1e4700188ac3019c6b717dde588c",
+      "sha256": "c9036fa07b6e93e3e31b2d214f388af3cd285579d8bf01960151181897bc5023",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/08-radial/static.json",
-      "sha256": "76929b8c53ef76cfe91e7d70b5c8825962acfd05811ec9db418010e8a3cc972d",
+      "sha256": "181442f35a90c4ec6d5c03ae8823d9cf4d20db713e8e69b8ef3b72cf6e635830",
       "unchanged": true
     }
   ]

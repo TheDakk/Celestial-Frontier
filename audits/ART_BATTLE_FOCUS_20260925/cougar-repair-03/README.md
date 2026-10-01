@@ -10,11 +10,11 @@ Claude's absolute lane was read only. No push, merge, hosted attempt, I5 epoch o
 Use **fit-03**, **static-root-weld-07**, **native-phone4x-02**, **review-sheet-final.png**.
 Do not use rejected fit-02 or the old ten-item sheet as current acceptance.
 
-- Record recipe: `680e013221829e01699fb4e9f165446270f3bff9e022e871d96d6112206dc0d7`.
-- Binding identity: `40cd719178b31f04941ef1d4a06edac76e142000b732b0e358a4e8a670d6754b`.
+- Record recipe: `6a7cbcbab6ebe589ee6be792d628777157a0094dc66c33f3ff08a1a2843270e4`.
+- Binding identity: `cec4c45d5235309fae457aaac4891c19d83d637d90a7b4a50c85996e1953fcfa`.
 - Exact retained master SHA-256: `cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635`.
-- Final record-file SHA-256: `77595449583b8877f9f0ef1ea10f1de8ed5369c77bc8e3c251797d31326b4fcd`.
-- Final binding-file SHA-256: `b2b60503766ba28f8c9efd7d0585d4416a23e0fbeee4f5e5cb41e97dc02c6065`.
+- Final record-file SHA-256: `5fdf686ce31045d6ea114735dbe89a1c59458dbb255461cc426375eae8e2235b`.
+- Final binding-file SHA-256: `143262b0ac4f68efc1388828c68a74b784b711868828220e572ed23c1d3f55d0`.
 - Static: 19/19 actions ×121 samples; 1675 continuous presentation samples.
   Exact published rest and independent atlas/source reconstruction PASS (0 changed visible channels).
   The root/spine continuous-paint seam is an additional independently measured join.

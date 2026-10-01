@@ -118,7 +118,7 @@
     {
       "path": "audits/AV_PROTOSTAR_DISK_20260908/develop-profile.log",
       "bytes": 6998,
-      "sha256": "0232588eef6a1e6693cc56ee2c59804326b2f416360ddb65d842acd5507abee5"
+      "sha256": "240caefc5e136dcf10e1fecff9cba7a3ff700f23fcff6575cc3d15c589049a74"
     },
     {
       "path": "audits/AV_PROTOSTAR_DISK_20260908/draft-authority.json",
@@ -158,12 +158,12 @@
     {
       "path": "audits/AV_PROTOSTAR_DISK_20260908/native-first/review.json",
       "bytes": 111017,
-      "sha256": "a7d79e609fb801fff8ff2fc2a11f5829895d395d8d5e806b4093b64953a11e68"
+      "sha256": "7e8c46160cbf787fbf31c947663e4b708996d23a40108ce42c4e1580af3cfcbf"
     },
     {
       "path": "audits/AV_PROTOSTAR_DISK_20260908/native-first/visual-inspection.json",
       "bytes": 763,
-      "sha256": "6e87e5eeea7bbd5cb9461c8589c302a7e49d9295102e9db1037a33a0f0633905"
+      "sha256": "bfe0833a5ae4d53423663a53ac5f94bb5103c6cd92487dde04e0db6c420ea39d"
     },
     {
       "path": "audits/AV_PROTOSTAR_DISK_20260908/native-runner.mjs",
@@ -173,7 +173,7 @@
     {
       "path": "audits/AV_PROTOSTAR_DISK_20260908/preparation.json",
       "bytes": 1255,
-      "sha256": "65271806f027e2cbb878c1cf7db8d20b6c14c0941fa90925e4ec908327304b9e"
+      "sha256": "77a30cca56c92f64e111b0926755cb8a6f7895642e2cf4ab60226921a80d401b"
     },
     {
       "path": "audits/AV_PROTOSTAR_DISK_20260908/prepare.py",
@@ -203,7 +203,7 @@
     {
       "path": "audits/AV_PROTOSTAR_DISK_20260908/producer.mjs",
       "bytes": 641,
-      "sha256": "b2ab14b87a15b9b8bf34164b2145eca6b79ce154e942c99d07cf9620b20a6b56"
+      "sha256": "6965e360a21c137b588869506a3aecf1292009c97343ea71983eeb00b09cf2a9"
     },
     {
       "path": "audits/AV_PROTOSTAR_DISK_20260908/refresh-producer.mjs",
@@ -213,7 +213,7 @@
     {
       "path": "audits/AV_PROTOSTAR_DISK_20260908/root-validation.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/AV_PROTOSTAR_DISK_20260908/seal-manifest.py",

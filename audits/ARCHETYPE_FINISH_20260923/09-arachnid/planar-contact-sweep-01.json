@@ -1,8 +1,8 @@
 {
   "schema": "cf.planar-contact-row-diagnosis/v1",
   "scope": "121 actual canonical victory samples and one exact presentation first refusal, current unchanged contact solver with invertible observational hooks. No ARAP, published mesh, full static or native film. Per-chain max(0,distance-minus-rigid-maximum) is a necessary translation-norm lower bound, not a sufficient multi-chain solution.",
-  "recordRecipeHash": "3ba58d18d37ebbeff9a2f2bb214431f60edfa646ed521b8ac808c68348e3b77c",
-  "bindingHash": "525a165cb9ce7ddf0b9490fe35e75add9341a517de3deca60be8e985eddef3e6",
+  "recordRecipeHash": "617dc343e17c87f7e57547425fef5ac779fe5b64f7b64f6bfa6dfd2cf519d10c",
+  "bindingHash": "24a575373673db2762be903c1e4c0e604a0d479feed08290c23c8bd44c9cb85d",
   "summary": {
     "sampleCount": 122,
     "passed": 74,
@@ -63552,17 +63552,17 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/static-03.json",
-      "sha256": "7962a6bcd39dc78b277b12ca8553377a70d5e42ae5bf92e0e9bbcaa2d3631be0",
+      "sha256": "c5c8637d2886aa41d1244365a81b551774f00e4a817d5697c900009d0599d720",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/record.json",
-      "sha256": "24ccad753e5f42192b7822c6c9449446cc388ce7a11439ce95a37bd514de19b8",
+      "sha256": "4be8fa062f046371af7f2725e2e80c4d20d539d1650708d5c90295401ca1585d",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/binding.json",
-      "sha256": "e35bd83c98d22bb72fee5ea78d5ba0046227855dd90d0151a04e507f05fec12d",
+      "sha256": "3bef6d4aabf795de26319dc27be3086627e28490ef73c8c75c53d9f30cd7457d",
       "unchanged": true
     }
   ]

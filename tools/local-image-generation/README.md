@@ -113,7 +113,7 @@ node tools/with-toolchain-lock.mjs --label mobile-ai-verify -- node tools/local-
 
 Current package03 is `/private/tmp/cf-mobile-pack-20260909-species-03`,97files totaling
 56,529,354bytes (53.91MiB), with external manifest SHA
-`5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c` and PWA build ID
+`bfd3fba993741a787ddb472336488427e43f64b2a6020eb804917683759c6da0` and PWA build ID
 `42d79c05f4b5269766d35e82c03f7b828f70062dc2bdca54ee98ca5f643465b4`.
 Build03 and independent verification passed with426 measured source hashes unchanged. This rebuild
 contains the optional worker-import ownership correction and its required development release text.
@@ -177,7 +177,7 @@ large ORT allocations. The 600-second stage timeout and 15-minute observation bo
 speed promises. Default mode remains free of inference.
 
 ```sh
-node tools/with-toolchain-lock.mjs --label offline-landfall -- node tools/local-image-generation/run-mobile-model-delivery.mjs --pack=/private/tmp/cf-mobile-pack-20260909-species-03 --sha256=5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c --output=audits/NEW_OFFLINE_INTEGRATION --landfall
+node tools/with-toolchain-lock.mjs --label offline-landfall -- node tools/local-image-generation/run-mobile-model-delivery.mjs --pack=/private/tmp/cf-mobile-pack-20260909-species-03 --sha256=bfd3fba993741a787ddb472336488427e43f64b2a6020eb804917683759c6da0 --output=audits/NEW_OFFLINE_INTEGRATION --landfall
 ```
 
 This command requires the same source freeze, shared locks and outside-Seatbelt native execution

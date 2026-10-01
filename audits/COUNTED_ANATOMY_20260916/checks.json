@@ -19,7 +19,7 @@
   "evidence": [
     {
       "path": "tests-final.log",
-      "sha256": "3b8de74610180b934326b251ba496330d6e3dda873a4c5d975780c3780559a5a"
+      "sha256": "135d0b45cd0ea747af7f035c596b644b472ae36205d30ed04d32209d261a2bc6"
     },
     {
       "path": "rig-tests.log",
@@ -27,7 +27,7 @@
     },
     {
       "path": "validate.log",
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "count-matrix-final.json",

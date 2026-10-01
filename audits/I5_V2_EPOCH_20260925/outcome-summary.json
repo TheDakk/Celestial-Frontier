@@ -35,7 +35,7 @@
   "budget": {
     "status": "calibration-required",
     "path": "apps/game/smoke/compendium-memory-v2.json",
-    "sha256": "206a60450f35cc900a04d1381d2231b8711382ee3ac9f920f9ff5a4a3125bf6a",
+    "sha256": "0dea84213ab0bd213b0fe7e886aed9a74baad155d51d7974c3963178a8fbb6d7",
     "browserAuthority": {
       "schema": "cf-v2-compendium-browser-authority/v2",
       "scope": "arc1a-compendium-memory-only",
@@ -101,14 +101,14 @@
   },
   "measurementAuthority": {
     "schema": "cf-v2-compendium-measurement-authority/v1",
-    "sha256": "de50d47c26fbc084415bef528cd5a06f487b7829e14d149c824f2d2e73fb1767",
+    "sha256": "4864eeed5ab454c1ec910f2b26e5c928f72de36283f4abcfd644ce1995ebc54d",
     "inputs": {
       "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
       "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
       "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
-      "budgetSchema": "d0a4c693bf03cd23cadbdc0d336329bc42cf06484d4314a9621e2c5462c47b6f",
-      "outcomeContract": "66602b49b641d049f383e9a7926c20a94fa568c0a81fbb58a408f0cfb41e2648",
-      "collector": "fd0e3b85f42fffd43c68b21bf61ecf913d872acf914c0cea4ae2718081e1b915",
+      "budgetSchema": "c57ed2f9b1f20e3333c9a5869c337576dcf6f634c7bd3dbc8b0564eda7710e21",
+      "outcomeContract": "c10aaa7c3fdf58c0a2e8bdf2a04e8715536edf93f8e3d8b9672187ff7a6ca44c",
+      "collector": "16fc4e5b1a9e4ed83bf85a95377f6210f15025a8e43ef0dee735b73350459a22",
       "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
       "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
       "workspaceLock": "ceb20c120f1c2a889124f5e90050cf0df44768cd9c5a61cb1558ca5373371ae8",
@@ -122,7 +122,7 @@
   },
   "instrument": {
     "commit": "cfd6e7fb7428460a42691ab03ea8d7c2ae17a955",
-    "sha256": "085ec0461168160a422adabb8d829350f4b0e686ea58a91ea1b69280a78ae489"
+    "sha256": "1b95a43d8bbd1878d84d7f304596cba7cc6fa382e6eb858ec4f00e75555f15cc"
   },
   "calibrationAttempts": 1,
   "successfulCalibrationSamples": 0,

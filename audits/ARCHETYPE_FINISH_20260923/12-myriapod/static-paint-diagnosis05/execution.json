@@ -49,27 +49,27 @@
   "hashes": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/report.json",
-      "sha256": "5c10f1ad48372e3f3723bba1bfb4f4ed17c874b1e6caf58437f3b54870b7f784"
+      "sha256": "112a3343d4d94f1e7457ad79b520363fb697f3e1460417aaa838624079740f5f"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/sources.json",
-      "sha256": "f97fbdabd29eca7e05becc30528eaaf3dc40cfa61150635b765b3cd03abf2c79"
+      "sha256": "d093e9031464051e9604df232faca3d2a8e48e1589ec716bd7924d64e1695074"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/later-arap/report.json",
-      "sha256": "677b74a38989967b447258e10263ae1180bc6d23adeb2ade29c0587587ad71dd"
+      "sha256": "3ea5bcbe6d7e9538cd7913e0e5513801863813b3a7e7853e6baaba839b77f9c3"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/later-arap/sources.json",
-      "sha256": "14b96b33ed0f23923c42dd0b40ec171cdc45c8a5356c8780eccf37a54b7424d7"
+      "sha256": "31d7db73fe52fa8077cf354065b233ff3be2000290eab4ed38c1fa1e4f95945d"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/proximal-influences.mjs",
-      "sha256": "f236b5ee1ce32bcf1e9a578ae64916aacf7416605aad3e3bc210b685a6222620"
+      "sha256": "9e6caee06d2b704056c584d20e15664caf0e3079c8ade8d3e9f3e9cdbddeeff9"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/proximal-influences.json",
-      "sha256": "b99e8438530b11eaffccfc820aaadd8acc76672ace902d72892d337fc6818dff"
+      "sha256": "82d06ce76bfff63c332b1053d313104693ad5663be3f9b4738d575c49d74c47c"
     }
   ]
 }

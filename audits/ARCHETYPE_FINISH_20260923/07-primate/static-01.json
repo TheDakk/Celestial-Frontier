@@ -485,8 +485,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "49fcaa4a87a2c1210f5c4fa550ede4da2312a9f3d5ebea62d963db86ee20c3d9",
-  "bindingHash": "7af573437412e3a82de82f412fb0320506a7e06b66b93afc19fc6411cf87ec43",
+  "recordRecipeHash": "749bacc5f55c6253c0557d39d9321a065b25997f6ed5c5a69346c43cbeb3315b",
+  "bindingHash": "71e04bf0da10e389f478c0e9fb78e83ee433369554ca52dc244fb632971dc76a",
   "family": "primate",
   "contacts": [
     "legFarFoot",
@@ -697,12 +697,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/record.json",
-      "sha256": "abf95cdab1496a87993d605ffbc82a39a9968fd7cf5f3e38f7d74fadfbc4835b",
+      "sha256": "7b9e02fd2a933da15ed9ee2f0a5fb968acb19952f961ba3ed2d9ebc8a1fa2f05",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/binding.json",
-      "sha256": "d087fd708b49fa5bcebeacf0f246d5b98b954265db1b68171fea8714d4aa1102",
+      "sha256": "c4c833c1ead26e62440b0d91bc34a7041286078eb832ffef8da73b6dd0e2d858",
       "unchanged": true
     },
     {

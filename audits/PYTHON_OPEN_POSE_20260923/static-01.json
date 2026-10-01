@@ -138,8 +138,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "7263c539c82ea8ac23412f26e35918b11200f5f2b298934b5582d38d1c073f61",
-  "bindingHash": "ff3027d3481efbb17b79c94230a6809ada43ded4378e4153011de78b584fcf4e",
+  "recordRecipeHash": "9759c7515e58b2d611031e1cdcdb71859fa5c765be1c0f027e4ee38a9b953b46",
+  "bindingHash": "83837268a326fb5a3df59d5d4e618cafdfb1e6247552cbde0d4978196a2f7595",
   "family": "serpent",
   "contacts": [],
   "realm": "amphibious",
@@ -235,12 +235,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/fit-01/record.json",
-      "sha256": "337500cdba4aea7214732dd374b7daf2fb290515164714f7590efe7795c7df24",
+      "sha256": "74398c3146c78d3f6ae45e95f1259314f07440ebd5ecf82d46757089360fbc43",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/fit-01/binding.json",
-      "sha256": "adf6e3ca06e24906df17826bf5ae8274785a5c3199de19636a8872ccfcea4f88",
+      "sha256": "b1497f981ca2e2deeef7194339a6405cfef346be2e2789a5185df44fb70a7c98",
       "unchanged": true
     },
     {

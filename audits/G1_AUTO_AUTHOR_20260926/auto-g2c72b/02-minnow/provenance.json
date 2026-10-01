@@ -15,7 +15,7 @@
  },
  "reference": {
   "subject": "herring",
-  "authoringSha256": "bd0fae133183dce53893214f9b2ef857d9adaa067e9994ff3488bba0aa6cf453",
+  "authoringSha256": "e7a891c74ac404df0b654bb80179474ff4aa8346739ba30cddb8b58f203931cc",
   "masterSha256": "3abc568beb996e694c78736854a216222dc5cfae47d39494a4f6ba7e84b5494f"
  },
  "habitat": {

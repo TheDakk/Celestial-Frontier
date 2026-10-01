@@ -2,168 +2,168 @@
   {
     "id": "01-triggerfish",
     "masterSha256": "f551eae31ae56d54e7588b2348287a927994e89e78151f32ecd0f1ff983eebc4",
-    "promptSha256": "71d52dd518fb0aa3bbb43ffa22cf255e21a93645087fb5abc73e3eadb810cfa0",
+    "promptSha256": "305194ad00dda534359c51ef0e5f3c148178ee806bd071ef349a1584e6051c83",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "02-parrotfish",
     "masterSha256": "232545118c6e65c40dbe77057c9dfb5527de4484edceff7bb8efbac073038264",
-    "promptSha256": "87cac322795008a7f2747cbc2cd886a528cfbc96996a4a936d81fc97e50f3eb3",
+    "promptSha256": "a3df12b351b3bcd66c7986ead5c0bb267b644041e77d60c9d06be0f1a2923ae1",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "03-pufferfish",
     "masterSha256": "71ae9d9cddceeceb262668ecf05088931d26e89bf1d73adba0ddb9c98e452549",
-    "promptSha256": "afd4cb7dfa00d72e401f31c904a24314cd0e6c838b8d550d5473cf3a7024fd79",
+    "promptSha256": "d1f7ccab24e41414ed0313c806a9646e0dc3860431c83c6b1abf0066759a4e68",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "04-boxfish",
     "masterSha256": "27162f2b3e6c38720acdffe842c41f4d6161c4376909d45ee44062f5714a2100",
-    "promptSha256": "bde3d0e76d7c5bf7b8f3bf12e316e7b4cc400f7ef3de6486bd6ced1f31ac96be",
+    "promptSha256": "b50c9f56a9880c5e3501eb6440ceb7ffe55dc1d93ed574a3058cce0f587c898d",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "05-lionfish",
     "masterSha256": "8ff03e0ae6aed08200b3c799df52a89abde8fc8462947d24c1ca79ef2a4bb3e6",
-    "promptSha256": "3ccdd58a263cef6039aa8d2f09f9bb9040d7220d72a0b3e5aa76cb321a27a325",
+    "promptSha256": "1bd0a0c346ac151cdeab9f0e3e272c5e68c048e730ca1cb55416d6c67fa1dfc2",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "06-archerfish",
     "masterSha256": "6f214ad690eda4025d134fd5a3399461d3c5ed95f24ec756e6cfd7d0d4c33ba2",
-    "promptSha256": "c7090fd26e1203ba50bc174ad9a3105144a8fd103c7a248232c7217a2aed686d",
+    "promptSha256": "4654aed34153dd99a2ffd66739a9cabf111cd3d5af8c099acafc8b993a0cc477",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "07-puffin",
     "masterSha256": "028e2a24a31c2774b3b60f217bc6903e2551940bbf1206b17f6d49cd728c4787",
-    "promptSha256": "601b8f527db505b96824b25493e2dd86fef470f09c933ee7f1af7368d9d69227",
+    "promptSha256": "ee229a68019be8c2f16e0a870f78f30fe77b18b9ffeb375713052e06ede80b9c",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "08-auk",
     "masterSha256": "4da038685b2ab47e7c5c42648935747dfdd86281c6c12c91140fcac807150ba3",
-    "promptSha256": "e8271cf73ef9c7a3da5d76e053925487d4b400a08bdac37c4e4b387198d431a0",
+    "promptSha256": "94540cc5ed1b3034c2e82b9c5da96b250d3d3a30baa4ab2dbafc3f67277f6e03",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "09-swan",
     "masterSha256": "210df821885046e3b0d94743e6f725a189686a7bce8757f9588fa15df720f675",
-    "promptSha256": "8ff5fe23874c1ea1dcffea5d2344ade50040f82fcaf8642988b7613cc55f0a49",
+    "promptSha256": "4749d78c73d9ec36332663981b2eafaa2f954e03d4fa6beb875281f09ef30b23",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "10-cormorant",
     "masterSha256": "6f696f246d44710bf9e523595be6f8f2c14b50f70c322b43de88c8e8cf635c5d",
-    "promptSha256": "8d1bdbac7955e79f8b4648e4dc1aa41e81cc900cc6696c26698f730492f587cc",
+    "promptSha256": "81f6689f29dad8aebafb6e1ebf98a637dae13ff3fc6d9e3dc79b7e57cbd47333",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "11-bittern",
     "masterSha256": "2cf9f5ec5a2c99a1c33af1a7c4695087193e1845e9df439d59a848475f86a8ee",
-    "promptSha256": "2ef3e3aa253dd03fb1d863816e5326204e989cb15bf79029c68c9dc6230c7db0",
+    "promptSha256": "ea0084e9c51afa43663650ee633b5826e186fcc8a5e784834a39931cd759cef6",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "12-grebe",
     "masterSha256": "797e24e24e593ee0c068b6d5263bcf1c1a9a1ef47b81bb7430ec6989cc304e24",
-    "promptSha256": "fb5b6caf796e4ca319e2b3d1b9d33353eba478d305f421711350f09fefe9e6fd",
+    "promptSha256": "618ca269c44e90fe9b54e1ea3ec32de203cd0c4d8e071ff6d11378e8f732ff89",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "13-giant-otter",
     "masterSha256": "86c53b71e0772ca0628abe7393ee10913b6f24282e231e4c1180c04ecca1cd80",
-    "promptSha256": "6eb878f4c83ba44c7023190c84e61a15ea87c1b5e56afd37c45a8c4a9b8fce4e",
+    "promptSha256": "f20358a650a0ebb0661dcf60d8523510f0be0735d0be007a2beb7a249156972f",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "14-quoll",
     "masterSha256": "4db4dd4d600286769dcc2c583af77d6ffc2b25345e7bd3087154cdf05db89127",
-    "promptSha256": "186d5b98256727d8af5f335744a6c5f48b9f98514cbf12ffbc1f2a5c4b0d1764",
+    "promptSha256": "5093923c0893fa18fe702a165312c7c53235c67b50d4baeef60127420df82ff9",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "15-mouse",
     "masterSha256": "2504f6befded8d27d70d9bd52752e22d74ef0d4ac8229a101f49e9c73e1bc02a",
-    "promptSha256": "ed847526237eb0381691b01c6233b1ca34c4661bf80bb015578e3a4ef199fb4a",
+    "promptSha256": "704d745c28da317db227d5c71533af1323399bead02b5866ad1941b5770e299c",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "16-vole",
     "masterSha256": "11ae9de78d6e1cefba5f441abc450270b8f38523467f8c43720d6224960aa886",
-    "promptSha256": "e9f8ba50e5b61b667efba94a6abddcf1fdd0b3b6eb8a73964aeea1b4c4e3692a",
+    "promptSha256": "3c5f2d98fdbfa8a747f92fd1ef12c086f2d6a41cb42f674d726be363cdfd9841",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "17-tree-shrew",
     "masterSha256": "0189309d203331afebc59f9abc45c419b3d63b9ff95e0a5cdd63df5cba8d2fd6",
-    "promptSha256": "7264539826f1f9297983c251d3454829e64effb2741cc7afff3cfefd00680ce6",
+    "promptSha256": "8f355d1e472cf7d76a3a0070137a00da9433c5d8f91d3490028de85d619578d1",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "18-ground-squirrel",
     "masterSha256": "bfb57f36fc9350ad9c2873cd33679fffca40e7fc161ec45697165d6d5354d1c4",
-    "promptSha256": "7ad8d0e0d7f455ea043159a6bf5c809ea29df866243be515d47a7a8307231951",
+    "promptSha256": "4638de5d29766e1796dfe8ef11da8742b57f7e34ce1eb867174c0d5ce3f2a303",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "19-moth",
     "masterSha256": "cab5adf003dc1f840c70bb8f1ea756e7a3269a3f6cbad77cfcb97991b7d7d3ef",
-    "promptSha256": "373af24606fdd2187773c3170251031b693bd04694581dff44820792e19e565b",
+    "promptSha256": "4965c6f3018ccd67ea6facd24dd52524ebe00d18de3c633fc5e59632309f97f1",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "20-aphid",
     "masterSha256": "270b9474cd56de89e54f163423ce716262bf3b4f2c4fa35fe7445fae532f26a5",
-    "promptSha256": "2130d02d2f1eda03ceb860ecd09c0576bea643d8fd8fb68791b3c7796522db20",
+    "promptSha256": "6b43be9a6f088faaf3b8e7376ed6f50991da09e702e28da3f3047afdb6e564d4",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "21-dobsonfly",
     "masterSha256": "2f8564b19926fb7fc154dc5bb2ec39155e0e6d5ba186b9947e4e5e821c5e0dcc",
-    "promptSha256": "cdecda56534e0d9b3b2371c39a89fd7d55831dec1a893c0966c9e84d0ed83f8f",
+    "promptSha256": "d9ecce6edce998d6a15e2bf9b7e7d49a99eb4775a6b9120c63cf3e200713ddcb",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "22-scorpionfly",
     "masterSha256": "0274e0580dad342a521dc0f5cfbdcf7f0bed9161ce06855370b29d736b6daaa3",
-    "promptSha256": "50cd11abbb11fbe537e268cadf511ea768c2135a0d18767c7d4b4c823d4a2d10",
+    "promptSha256": "d094f3c6d77988eaf07bc135b2e79d4fa044c3ce6c3fc373bcab92e8183adfcf",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "23-thrips",
     "masterSha256": "3fdce81885bfe97b9be5468bbe05e08a7f04cc9dbe07c9083176e1dc62162e28",
-    "promptSha256": "12f66e6c68945e237f3f641128b3cbe80f7fcd3e4bd6dbf05972d4547e904055",
+    "promptSha256": "da9ddd1760dce3757cf0429acf30e7a6123d68dbfd1da4efee1991c896c48335",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "24-orchid-bee",
     "masterSha256": "8e344c38a060f07fce9fe5954dadf205bef82efc9d6fb05df4a420b5f135e843",
-    "promptSha256": "641cda08db2d9e21fc140eb965dad5e7add3c3bd2542812b7ee66703224834e6",
+    "promptSha256": "c68c4eec00c32c60efbbdaf9f4b9d07ee3cd571fb258aadb862eb6e2575856fc",
     "originalRetainedExactly": true,
     "outputModified": false
   }

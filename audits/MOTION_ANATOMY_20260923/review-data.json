@@ -24,7 +24,7 @@
         "FAIL": 3
       },
       "findings": "The bend travels tailward. Following the head through world space, S-neck recruitment and constrict contact are still blocked by missing stage history and the current head/body topology. Root-relative strike excursion is only 0.0174 body axes; root surge is not neck extension.",
-      "recordSha256": "6f6e63380f15841030dd15177acf15cfcb2f052a9eeb52d186418adb26d6bd77",
+      "recordSha256": "b04d72179340a44ba1cc6b63f241e25dd8ebed8d464be2d3c0e47b77f751f61a",
       "cpuP95Ms": {
         "left": 0.40000009536743164,
         "right": 0.3999999761581421
@@ -34,8 +34,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "8206a44ade070e05761d3ee7bcb91e5c41bfd5a475b9aa1c0a8e1f485013d796",
-        "after": "c385f938f06427de753228f10cbf695323901c3ed34ea716da259a20899d78a6"
+        "before": "c18833f2c414ff35454caa683518e1347805353a4f1a5b128f24b3e7061b2c17",
+        "after": "0ce4f3ef039ede344408aec05998bd94de3f7b5cf2f7a0065021eaec6132c531"
       }
     },
     {
@@ -61,7 +61,7 @@
         "UNMEASURED": 13
       },
       "findings": "The tailward wave and growing amplitude pass. Wavelength is an index-based chain estimate, not an arc-length or swimming-speed measurement. World-path following has no stage history.",
-      "recordSha256": "0d55904876d7638af2b8a43eea96e48328de0950e241cf1c32509c62ab1b6696",
+      "recordSha256": "b90b6765830d2be70660f6c39eb27b7993102ad69cc0c0d46cc7bf730530591a",
       "cpuP95Ms": {
         "left": 1.0999999046325684,
         "right": 1.100000023841858
@@ -71,8 +71,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "0b2ac27aec1680f631086af62cac0f61583edfedc6ae9f05bb659fcc415dd330",
-        "after": "94c990abf976bdb8b04f79766ab1e76835e4d1a1c3a9ff82744d5cd4e5e14a4c"
+        "before": "ea17d2eb0f6c361f8961b6890e7a8a3a012379dd92a5f21c4720fe02d15ab5bc",
+        "after": "34fc9dec62e169957734f08a3c1827e3be5051ebff7aba1ca214a5611772fe6f"
       }
     },
     {
@@ -98,7 +98,7 @@
         "UNMEASURED": 14
       },
       "findings": "The ground-only walking projection reaches 65% stance. The compiled aerial realm bypasses foot contacts, so the actual-context walk remains unqualified. The native film exercises flight and attacks, not grounded walking.",
-      "recordSha256": "5327906d70d258adef8e40514643df9aa17516c98c11e328c2f2a3e9216683bb",
+      "recordSha256": "1502a450682422a646fc779378d8b2e81e45a8ada6afaec0e418b2b1ae49e2dc",
       "cpuP95Ms": {
         "left": 0.7000000476837158,
         "right": 0.9000000953674316
@@ -108,8 +108,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "9511473c71bdb015ff12a332e455da5b66c88af6c01831fc2f05cb8eb2070890",
-        "after": "ff1e8b3f7f785b6e458804dc22675d3dd004146cbedb322dc1d083ecbae08e6f"
+        "before": "4d6c7e206ab9fd7c4d567657684392af4baa0f4dda26ed9dc782ad75c401f440",
+        "after": "27eb644b8d4050d2daa202b0ae8ea7c9e8eebce2447521f3c32027f41a72cd10"
       }
     },
     {
@@ -134,7 +134,7 @@
         "UNMEASURED": 13
       },
       "findings": "Tripod timing and lift pass. Film review still owns whether every attack reads naturally.",
-      "recordSha256": "4e935e3ab068c2ed17e5d993bb542cc4f7551e549772b0d3cce772df610d50b9",
+      "recordSha256": "079e15a8ca95a34e491db38377875b5078d7bd5350eaa23b872b7372674b13fe",
       "cpuP95Ms": {
         "left": 0.6000000238418579,
         "right": 0.9000000953674316
@@ -144,8 +144,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "10a7b6c214e06228eebb825426d8c200f616b2872ac1195981c28b8460cc6e38",
-        "after": "bc90c93b0da158e027c8aaffa776005f0179a0386dd2c659ce054127ab9c065b"
+        "before": "4b77da4c9d2ed9634619b53793428afd0c2b9294546bc29fa1d307989e8cfb40",
+        "after": "b66e99c32d66805ce75b3c7fa983073f8191bb4a37f340c3c8b340b8fd20df6b"
       }
     },
     {
@@ -171,7 +171,7 @@
         "FAIL": 1
       },
       "findings": "Existing observed toe-pad support admits the film. Hop head translation exceeds the prospective universal stabilization target; airborne body rise is not automatically a biological defect. No frog motion change was made.",
-      "recordSha256": "ee6e5a17d974560efd023d80c3035536ae553ced395f86e851d108ca5a7f23b8",
+      "recordSha256": "29a4cc9525e3a702f336d834fee69de2d305802833285810a4df97d41db699eb",
       "cpuP95Ms": {
         "left": 0.5999999046325684,
         "right": 0.6000000238418579
@@ -181,8 +181,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "a654f7958d1aecbd783e086c176f387abfc09c59eafade4838a8511a9469d2de",
-        "after": "ea3925b85ec938e46916d219f5523918e3bda7f02748eb5a3abb168629e3a254"
+        "before": "61f42d6693e253b295b420e6e7fa0314f965afeab81be7f568916aa2095544e3",
+        "after": "56a160825b722b704dd7d776a9bb3ebeb4daf0a2158de047697074218a7c0f0a"
       }
     },
     {
@@ -208,7 +208,7 @@
         "FAIL": 4
       },
       "findings": "Hindfeet reach 65% stance. Knuckle contacts and climb anchors are absent; a hindfoot result is not a complete knuckle-walk or climbing result.",
-      "recordSha256": "333cacf0dac7834c820887404a7ba3f03593206110e51b639c7a33a89e49e7a2",
+      "recordSha256": "4f332bb5f5082dbf4434003443b8d66e355bbdba1ef134fe805326712ff12d7a",
       "cpuP95Ms": {
         "left": 0.6999999284744263,
         "right": 0.8999999761581421
@@ -218,8 +218,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "e58dff2ba9768a0cec2650bf374a5b199e61abb0bf847606ef0de0e60ff02912",
-        "after": "a595352a1fc8f6dbcb8aa304df53004e31b54662965ddf33a56ae28b462ef054"
+        "before": "c722ebbb73dda220e92a0b4fecefa954b20484636586c99bc8a5cc26d921770c",
+        "after": "28b27d502080ded33af6c460276a37687f3b0e9eff0b22c0bad38a81af04ddfc"
       }
     },
     {
@@ -245,7 +245,7 @@
         "UNMEASURED": 10
       },
       "findings": "No tube-foot joints or contact observations exist. Arm pulse and sting labels cannot establish tube-foot propulsion. No locomotion fix claimed.",
-      "recordSha256": "50f548ed56044ae8ff66941ff762ad547da48a87ea984fc3f89c6484cae9ec06",
+      "recordSha256": "6a2d7c4df4b93f28f8ed2a5a1c0679716876695e99eb934996502ae7ffd8142e",
       "cpuP95Ms": {
         "left": 2.799999952316284,
         "right": 1.399999976158142
@@ -255,8 +255,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "fd6e73aa88e8d94958a3c3ce0733a51e5f4be5edf1cfa0502c654d3f8b07670b",
-        "after": "49b2a953f96c7d518e9b0f9f3826328ef54edb8b576cd76626a9065601774fde"
+        "before": "55096ce065e20bcccef8fed4f443386c1f6a0ec92a437bae5756c1be73d5c0d6",
+        "after": "ebade33d0f2807fe12ae95dce390b83ee871a7b91c8c8f44f0cd71c6dbcb0336"
       }
     },
     {
@@ -282,7 +282,7 @@
         "FAIL": 1
       },
       "findings": "Alternating tetrapod timing and lift pass. The offered sting verb has no stinger on this accepted animal; it remains an explicit anatomy refusal.",
-      "recordSha256": "12b5ac9ce9d1f3986628253ecabdb97f7e4a772562703eebf9f543d56e6ed64a",
+      "recordSha256": "fa291eb7023476f4c831c70dc0e21c94b9188b2bdd7d091982b369ec433f4d81",
       "cpuP95Ms": {
         "left": 0.7999999523162842,
         "right": 1.2999999523162842
@@ -292,8 +292,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "c88c71d56cd73fe224a0b02a990a82bc5dd53493c8f3ac19cff95b8667af82c3",
-        "after": "460ee73bdf01484ee3e102f88bc455da47ee5da624100d170ba1e6c7244ad843"
+        "before": "71c261d7d06085ea0af2f4adf8aca90c9042f3e555229458e89cb28fd4dd21d4",
+        "after": "5e0dd182c4cea16ebadc156a735f8171abce467fa1cb7590706bd3c94ee1ed43"
       }
     },
     {
@@ -319,7 +319,7 @@
         "UNMEASURED": 13
       },
       "findings": "The rig lacks sucker contact observations. Arm animation does not certify a coordinated sucker crawl or jet propulsion. No locomotion fix claimed.",
-      "recordSha256": "9ab4e752cd10d0a6c174c749a9e3c93ec8d9e950c02a1b6210ea812a06d87311",
+      "recordSha256": "e7d5e6ef485a5c341f75132199ee39aa35914571e7dcfb8eeadffd3b468005ad",
       "cpuP95Ms": {
         "left": 1.100000023841858,
         "right": 0.8999999761581421
@@ -329,8 +329,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "75eec485cae40f3e29220f27f7c8f8987c12cc72c9fd0d506b088eba4f8b4654",
-        "after": "425d76a5417084165fa123b3f7415126e9f799678c6385e0b1c4f4309499e71a"
+        "before": "505ec416371f47a7b43386eebe2f4b19c59b1cd5eb2b583abdf0d1062917a2b0",
+        "after": "7f0c5528ce2dc9da3d0c69407cd2324d022609aded4bdd3984214ecf98c50f8e"
       }
     },
     {
@@ -356,7 +356,7 @@
         "UNMEASURED": 13
       },
       "findings": "The ground-only hindfoot projection reaches 65% stance. Wing-wrist supports are absent, and the compiled aerial realm bypasses walking contacts. Full crawling remains unqualified.",
-      "recordSha256": "474df06b02888a7e086ddb0a867c6f2357c64a40431e4df7defb2e6da057f27f",
+      "recordSha256": "50458070cd5817bcdda37fbcafdd78ca131ffaaaa0f15e391ee92cc98e52b142",
       "cpuP95Ms": {
         "left": 0.5,
         "right": 0.5
@@ -366,8 +366,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "849bffc8c02e460ed44e50818e3054933e92d4458584a15af89714c96601e4b3",
-        "after": "06265bc01dc1e5195913b75c07fed800a4ae47f13a4468bf7dbf98a7f6a18e7b"
+        "before": "c3ed39db2beff1bb062bec8830e28fc8c66750449a7a4919f302076ab3cf2cbc",
+        "after": "229120f423790806ebb9d113b44fa0b5f0e9e64e0f6a1b40b4185da50ee7260a"
       }
     },
     {
@@ -393,7 +393,7 @@
         "FAIL": 2
       },
       "findings": "All fourteen leg pairs use a 0.20-cycle adjacent-pair offset and approximately 65% stance. The accepted trunk is rigid: no axial body-wave claim is possible without a new represented chain.",
-      "recordSha256": "19f7988daaa9054bed677f00abf2adb88b5b69dd91e5776e0462a9009e260d54",
+      "recordSha256": "806038e18364b1049486ad0d381e22686edf53f785aa92bc3646730a9ce6d2b2",
       "cpuP95Ms": {
         "left": 3.299999952316284,
         "right": 1.899999976158142
@@ -403,8 +403,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "5c0b6ebe7991f75dec6373cc8593610f16314e3690b426a57a379fccca65bfdf",
-        "after": "cbfd96fcd1db096ce30993af815cc98a2aa4c886df6d880c5708089aa7ae6f37"
+        "before": "6dd8715c8c7233c025e967675b3d5d8c0a565bbbe60e985611e1080f5f4261f9",
+        "after": "595ab5ca5ea4ac0866770b4a67906c9061c76731790c2129039b0f0502cc6ec7"
       }
     },
     {
@@ -440,8 +440,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "6e834ee6362afce833b77acef42823e7cba50520ac9759aa10f6645143278866",
-        "after": "22dd69a9b109278bf417e483853972f0e60e2849b0b7cc5dd9bce4089b250005"
+        "before": "591fb072d43811e73058fd3e65b8a64d44d2832261f3c9a8c44625c671d3ad7c",
+        "after": "ee56597855eb8d64fba410e9d4c0119fe90e03aff93868538815c24c90e92cde"
       }
     },
     {
@@ -471,8 +471,8 @@
       "cpuP95Ms": null,
       "refusalsAtEnd": null,
       "reportsSha256": {
-        "before": "f2dbf3cabc9890dd8adfc43a5c59dff0c9388aabe70944dae821de69085420b4",
-        "after": "f2dbf3cabc9890dd8adfc43a5c59dff0c9388aabe70944dae821de69085420b4"
+        "before": "cce5fd788862676c64acbf78205d34d7ecac238980c7131cf1456700ef6d20cc",
+        "after": "cce5fd788862676c64acbf78205d34d7ecac238980c7131cf1456700ef6d20cc"
       }
     },
     {
@@ -508,8 +508,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "a79a90c718d0d147722d2c6cce2e3337e33e5ef66d9582ced6779164d6787a8d",
-        "after": "a79a90c718d0d147722d2c6cce2e3337e33e5ef66d9582ced6779164d6787a8d"
+        "before": "700b76c4a500af8729e9e1f1a700d557de13ff58c54d74379320c651bc9ef25b",
+        "after": "700b76c4a500af8729e9e1f1a700d557de13ff58c54d74379320c651bc9ef25b"
       }
     },
     {
@@ -545,8 +545,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "2fdeb81035f4bc1f34aa3c0fd2f280d79a16c47ea3debf6b60907beb053eb127",
-        "after": "2fdeb81035f4bc1f34aa3c0fd2f280d79a16c47ea3debf6b60907beb053eb127"
+        "before": "8d78e025112e9538d9ef00abfe571f2637d2438ee86aca05ed41e365800267ff",
+        "after": "8d78e025112e9538d9ef00abfe571f2637d2438ee86aca05ed41e365800267ff"
       }
     },
     {
@@ -582,8 +582,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "9a3d3a0d98dfdc2fa73007a80e699b0490fc933479ac646ee697dbcb39003b08",
-        "after": "9a3d3a0d98dfdc2fa73007a80e699b0490fc933479ac646ee697dbcb39003b08"
+        "before": "628ec9378b99d6d38eda46c93d7bb5dcf31418f1a841988d40cbaebd14ff9e33",
+        "after": "628ec9378b99d6d38eda46c93d7bb5dcf31418f1a841988d40cbaebd14ff9e33"
       }
     },
     {
@@ -619,8 +619,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "cc8556faff6efb2c7729910c427a5cb82e8780928abc584f701312ea0f1f9f6b",
-        "after": "cc8556faff6efb2c7729910c427a5cb82e8780928abc584f701312ea0f1f9f6b"
+        "before": "0168fa37e60169be1b462b70f0de04c996aa8a01bf85480582fb74d73d2e0373",
+        "after": "0168fa37e60169be1b462b70f0de04c996aa8a01bf85480582fb74d73d2e0373"
       }
     },
     {
@@ -656,8 +656,8 @@
         "right": 0
       },
       "reportsSha256": {
-        "before": "2281555a3f1bfd0800d6857fe804e5f450d86331ce2b31f77a4c12d439ac03de",
-        "after": "2281555a3f1bfd0800d6857fe804e5f450d86331ce2b31f77a4c12d439ac03de"
+        "before": "c5512800df5474115887735822dc4545606b67b41745b6089f7f9367521df6cd",
+        "after": "c5512800df5474115887735822dc4545606b67b41745b6089f7f9367521df6cd"
       }
     }
   ],
@@ -666,49 +666,49 @@
       "report": "before-films/bear/report.json",
       "runId": "20260924-motion-before-films-bear",
       "error": "Error: Error: Guardian sizing is outside this archetype-only study\n    at loadSide (http://127.0.0.1:55303/bundle.js:33586:30)\n    at async http://127.0.0.1:55303/bundle.js:33606:9\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
-      "sha256": "f2dbf3cabc9890dd8adfc43a5c59dff0c9388aabe70944dae821de69085420b4"
+      "sha256": "cce5fd788862676c64acbf78205d34d7ecac238980c7131cf1456700ef6d20cc"
     },
     {
       "report": "before-films/centipede/report.json",
       "runId": "20260924-motion-before-films-centipede",
       "error": "Error: Error: Painted publication at 4966.666666666668ms, turn 1: {\"left\":{\"refusals\":1,\"lastRefusal\":\"ARAP skin: unresolved folded triangles: 1\"},\"right\":{\"refusals\":0,\"lastRefusal\":null}}; Error: Painted envelope: refused pose cannot count as a published sample\n    at stageAt (http://127.0.0.1:55267/bundle.js:33817:10)\n    at http://127.0.0.1:55267/bundle.js:33848:3\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
-      "sha256": "8f0edb7bbf15756c1fa180c52eebac63c082dbcca5c18de5a7c146376598b06b"
+      "sha256": "9fe7aa443414833939ab755808b45591aca505b2efb8ecd06b0d2700d1be1bcf"
     },
     {
       "report": "before-films/civet/report.json",
       "runId": "20260924-motion-before-films-civet",
       "error": "Error: Error: Ten-second film cannot cover 11023ms script\n    at http://127.0.0.1:55284/bundle.js:33949:27\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
-      "sha256": "6e834ee6362afce833b77acef42823e7cba50520ac9759aa10f6645143278866"
+      "sha256": "591fb072d43811e73058fd3e65b8a64d44d2832261f3c9a8c44625c671d3ad7c"
     },
     {
       "report": "before-films/fruit-bat/report.json",
       "runId": "20260924-motion-before-films-fruit-bat",
       "error": "Error: Error: Ten-second film cannot cover 10096ms script\n    at http://127.0.0.1:55251/bundle.js:33949:27\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
-      "sha256": "75ab125cd367eec2a2ab77a84d541cf5a8c2e6c2860267f358ef2364b7f4dddc"
+      "sha256": "67fd76f3bb5c26a83cbbe8ffa75814309d8ae67ac9b4f3fe8e6090b9cf8af2a0"
     },
     {
       "report": "before-films/octopus/report.json",
       "runId": "20260924-motion-before-films-octopus",
       "error": "Error: Error: Ten-second film cannot cover 10576ms script\n    at http://127.0.0.1:55212/bundle.js:33949:27\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
-      "sha256": "e8cac9bd15c851091d1069c35e9d741cc7e2357c9e71b87fb8d6ccfa75f1f72a"
+      "sha256": "67e86c013f147ad66f4b714e164e42c0f4c9d9fae70ff64bcc3f61eca1c73f94"
     },
     {
       "report": "before-films/starfish/report.json",
       "runId": "20260924-motion-before-films-starfish",
       "error": "Error: Error: Ten-second film cannot cover 10288ms script\n    at http://127.0.0.1:55173/bundle.js:33949:27\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
-      "sha256": "237fc43983630728d988ba8176da663c64b926b60507492c85e8c116bda443f6"
+      "sha256": "39a99955c75eb6dd8c0660ebe47c45eacd570333d5d3ea64c7017b228690053f"
     },
     {
       "report": "before-films/tree-frog/report.json",
       "runId": "20260924-motion-before-films-tree-frog",
       "error": "Error: Error: Contact pad: observed painted supports required\n    at createFamilyContactSolver (http://127.0.0.1:55137/bundle.js:17579:68)\n    at createPartsRig (http://127.0.0.1:55137/bundle.js:18988:44)\n    at loadSide (http://127.0.0.1:55137/bundle.js:33593:9)\n    at async http://127.0.0.1:55137/bundle.js:33606:9\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
-      "sha256": "ae2ca971bb6d8f2b27bb615185117b49e959df1197fc431e609568108c566fd2"
+      "sha256": "b259e11baecb1a6cda61a130451e0fa0bfd3b2b43536e5cd71a456b1185b5f79"
     },
     {
       "report": "after-wave-films/python/report.json",
       "runId": "20260924-motion-after-wave-films-python",
       "error": "Error: Error: Ten-second film cannot cover 10540ms script\n    at http://127.0.0.1:55688/bundle.js:33997:27\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
-      "sha256": "3528bbbc7f338c54d75690ea7e5123cf411c788fdbf3b3a1b444cd941edfef15"
+      "sha256": "c1f41aeae592b3a8fbc068b85bbef564effe090ba76c762d2b51ef308a03758e"
     }
   ]
 }

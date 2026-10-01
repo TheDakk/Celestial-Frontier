@@ -187,7 +187,7 @@
   {
     "path": "port/v2/apps/game/src/audit.ts",
     "bytes": 46961,
-    "sha256": "e68bb1302232d1b88a9874d480cd297cc772d5050e2bdb6a1cf56108f0f8fffd"
+    "sha256": "5cc244a22aaa83a34c508aa8401fbc79b8087e09ceeb2348dbe7e2ab1ed00022"
   },
   {
     "path": "port/v2/apps/game/src/binder-sets.ts",
@@ -922,7 +922,7 @@
   {
     "path": "port/v2/packages/art/src/alientraits.ts",
     "bytes": 9106,
-    "sha256": "9c54b1abb2e94854750d7c62c282dbccce4ae37cb21f6961e52edbdd114ca3f7"
+    "sha256": "f3472aabb2eecdace06bd08be4c01afe7aeee7bbadb46db05ebb472de9c6cd4f"
   },
   {
     "path": "port/v2/packages/art/src/artextras.verbatim.d.ts",
@@ -982,12 +982,12 @@
   {
     "path": "port/v2/packages/art/src/faunaoverrides2.ts",
     "bytes": 235945,
-    "sha256": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02"
+    "sha256": "68de7bff03102ea51aadf4d207517ed07e5750876ef8a6262d58b3855f90e57b"
   },
   {
     "path": "port/v2/packages/art/src/faunaoverrides3.ts",
     "bytes": 153673,
-    "sha256": "f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec"
+    "sha256": "2e0084576e32e709d99befd7434079f786a3f8bd36dc6829376c12211b7979ce"
   },
   {
     "path": "port/v2/packages/art/src/faunaoverrides4.ts",
@@ -1002,12 +1002,12 @@
   {
     "path": "port/v2/packages/art/src/floraoverrides.ts",
     "bytes": 25880,
-    "sha256": "6323d1c46e998568bf57cbbfc9355557e22b9b70de227f68bfda932231b2ed6c"
+    "sha256": "e1e795e792e274f11303905d0490f8c297546c3c083f680443e89a2940e5f7a4"
   },
   {
     "path": "port/v2/packages/art/src/floraoverrides2.ts",
     "bytes": 408410,
-    "sha256": "42800cea6e658b6323a87d6a0c75683980afc10faf1ea188d1b6649b9750d73d"
+    "sha256": "01dac6b8cfe9f32b65b478333c66cc0e0ac4026dabc01abfa4fefcee5aeb5112"
   },
   {
     "path": "port/v2/packages/art/src/floraoverrides3.ts",
@@ -1062,7 +1062,7 @@
   {
     "path": "port/v2/packages/art/src/proceduraloverrides.ts",
     "bytes": 13174,
-    "sha256": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be"
+    "sha256": "edabc7518ed3c61d8de39efb53b018b220e2444254f7aa5f2ed92a473649d857"
   },
   {
     "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
@@ -1072,7 +1072,7 @@
   {
     "path": "port/v2/packages/art/src/skin.ts",
     "bytes": 44421,
-    "sha256": "d62f443ebf548fddece065d33f32d123a2a02200bc01dac26d17a9d3c66dc8aa"
+    "sha256": "403ea21de7c4030ca9a0dafe302274130babdfc7b651e1e569e1ca24f36b9110"
   },
   {
     "path": "port/v2/packages/art/src/speciesart.ts",
@@ -1127,7 +1127,7 @@
   {
     "path": "port/v2/packages/art/src/torso.ts",
     "bytes": 17420,
-    "sha256": "7270db2c642b9dde13ff9e4a31c79305ef8d45a011d190bd971a005232d70758"
+    "sha256": "fc359c9ca72c1224df9dda43c5323b68c18d7c541f6b4b58c5462d80cfd78b0c"
   },
   {
     "path": "port/v2/packages/art/src/visual-treatment.ts",
@@ -1592,7 +1592,7 @@
   {
     "path": "port/v2/packages/domain/descriptors/src/apphooks.ts",
     "bytes": 6433,
-    "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+    "sha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285"
   },
   {
     "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.d.ts",
@@ -1617,7 +1617,7 @@
   {
     "path": "port/v2/packages/domain/descriptors/test/parity.test.ts",
     "bytes": 20544,
-    "sha256": "7504f97528c5412769dab89efdb0dea1da5633469ccc66e586befd734c5b438a"
+    "sha256": "8a457676c265ce84162284a6bc364cafcc23532c57da46967edc12b19c72797b"
   },
   {
     "path": "port/v2/packages/domain/ecology/package.json",
@@ -2577,7 +2577,7 @@
   {
     "path": "port/v2/reference/dakk-audit-recheck.json",
     "bytes": 77164,
-    "sha256": "9f922603f6b6265b50c4bb3b873ac7b0a545614ccf0aa408993dc3026ff9eb06"
+    "sha256": "6af7ca08eb56b87dc17300596f533746f3f024480486bd6f2d4bca012ba8d7ed"
   },
   {
     "path": "port/v2/reference/dakk-onebyone/engine_data/audit_manifest.json",
@@ -3352,7 +3352,7 @@
   {
     "path": "port/v2/tests/landfall-fidelity.test.ts",
     "bytes": 33522,
-    "sha256": "4f3244aed93ef1518ef687a2abf06074842e24274fca1292823e95dbad5fe309"
+    "sha256": "3eedf054a4bdc2dac2827f042280b5de4121b509a6e131aef5a3fba16a4224aa"
   },
   {
     "path": "port/v2/tests/landfall-viewer.test.ts",
@@ -3562,7 +3562,7 @@
   {
     "path": "port/v2/tests/pr35-d611-arc4-ledger-evidence-replay.test.ts",
     "bytes": 19194,
-    "sha256": "ef262ee381947dc5f4d7d866b49ae1a42c027df3838176b83c6439275faee1cd"
+    "sha256": "6830826d3a8bdf2704a25cfaa2521abf7fc1f48f24e5be203888450bebdc2ae3"
   },
   {
     "path": "port/v2/tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts",
@@ -3647,7 +3647,7 @@
   {
     "path": "port/v2/tests/scenemem-budget.test.ts",
     "bytes": 97318,
-    "sha256": "9d9c7656d8c450911b33cf8e1bd0ee9ff6e6b134463409e7b1d169cb74c87159"
+    "sha256": "a206b98412d8886c9db90b0d6ebcdc35ab36d19b3cb2e2a5469782fc495f8292"
   },
   {
     "path": "port/v2/tests/scenemem-contract.test.ts",
@@ -3972,12 +3972,12 @@
   {
     "path": "port/v2/tools/artclass.mjs",
     "bytes": 7927,
-    "sha256": "b9b5d374f2c1d329896e3a269a28ca9a23f4d9deb42a17e98bb7f66daaea2471"
+    "sha256": "8a2b6e9ffbce82d9cc0a19abe6d6b130908a09328c471aad054d7b06dd626662"
   },
   {
     "path": "port/v2/tools/artlock.mjs",
     "bytes": 36953,
-    "sha256": "86cf852c9098f24dc67d88a1721527b95967e54467ccf1aaecda24f307e969b7"
+    "sha256": "788316ec3ec8292858f44502131f3723dcf11a819cb377882ce379936137c8ca"
   },
   {
     "path": "port/v2/tools/audio-native-mix/build.mjs",
@@ -4027,7 +4027,7 @@
   {
     "path": "port/v2/tools/auditjoin.mjs",
     "bytes": 4640,
-    "sha256": "2525565faf129bf0ae75685ed1aac7a685fc28b5bce492cbf7824f46726c9dbe"
+    "sha256": "7cc3e4e818c9b486baa50c071a6431bab5dcb9477130f62fd0bf033e92d31f2a"
   },
   {
     "path": "port/v2/tools/battery-scope.mjs",
@@ -4102,7 +4102,7 @@
   {
     "path": "port/v2/tools/currentreviewpackage.mjs",
     "bytes": 219394,
-    "sha256": "d36148f4bc0cb9c68fd2f8d45d327f81b34fc2d9a9d1d0597e3105a271db8e7c"
+    "sha256": "d229222fb2ef48a6c91b7c7b87d17f449f10e0c96ac77f33ed42939956167913"
   },
   {
     "path": "port/v2/tools/devpreview-readiness.mjs",
@@ -4127,7 +4127,7 @@
   {
     "path": "port/v2/tools/familycards.mjs",
     "bytes": 7907,
-    "sha256": "8ed077be0896e60bcf5dd28a724eb6dd06ae5d1de52c31fa5260bbda0d4fcd38"
+    "sha256": "818300cb534aeff36a2c93c41d5181ec3ddea585031438a311cc879d09443eb4"
   },
   {
     "path": "port/v2/tools/fixtures/arc2-live-outcomes-v1.json",
@@ -4147,7 +4147,7 @@
   {
     "path": "port/v2/tools/fullresetlayout.mjs",
     "bytes": 100936,
-    "sha256": "5c9bf8f7b51a836cea3f85708306ddfb91a0cd5a7c78ce114271c79e0b42ad8c"
+    "sha256": "93b8e535bd595fc85486ba38b037e1acdedc3ec7667eacab48f8a522aae531a1"
   },
   {
     "path": "port/v2/tools/fullresetreview.mjs",
@@ -4222,7 +4222,7 @@
   {
     "path": "port/v2/tools/gp7package.mjs",
     "bytes": 9355,
-    "sha256": "5da1e03fc0fc230225dd978f102444ef92e4ab6794e2b7fcb776a0365bee437c"
+    "sha256": "34b601e4d603bd454d7e829eeff15d51b3eb9c06718610b9725f497315e1f947"
   },
   {
     "path": "port/v2/tools/huegap.mjs",
@@ -4237,7 +4237,7 @@
   {
     "path": "port/v2/tools/hybridmatrix.mjs",
     "bytes": 115025,
-    "sha256": "1840f0110c0da6abeebc99920cd11a943ba2513a39eeefc749b70d9e85ac26df"
+    "sha256": "c66eb76e273b4af3e1ff6d3785b918ffe120d2e0f1ea96e5b765647fd92e1d51"
   },
   {
     "path": "port/v2/tools/hybridreviewcontract.mjs",
@@ -4262,7 +4262,7 @@
   {
     "path": "port/v2/tools/lift-apphooks.mjs",
     "bytes": 4757,
-    "sha256": "37cb0de2f0097d4368408651256a31d628c503491f8bf07968a41827b398071b"
+    "sha256": "1ad59ba6d1c3ca8b1653fb1d1acece53d78538b1b5ad8de8e9bcb1f164e4ed29"
   },
   {
     "path": "port/v2/tools/lift-art-extras.mjs",
@@ -4272,7 +4272,7 @@
   {
     "path": "port/v2/tools/lift-audio.mjs",
     "bytes": 2993,
-    "sha256": "e7c557ebbaa35aa5e51683508f2dc65c2b160742964bf5e8f1cfd38a943b863d"
+    "sha256": "474c1f3a06727351794459413c1dca84642828812a6c29a8faec8060579fea4e"
   },
   {
     "path": "port/v2/tools/lift-hdart.mjs",
@@ -4292,7 +4292,7 @@
   {
     "path": "port/v2/tools/mammalfamilies.mjs",
     "bytes": 2348,
-    "sha256": "e6fd748299ef026fd73d8dc909ced181c796d7866f25dbb73751a04d452dffe2"
+    "sha256": "cf44ada35e85a669071b4e0fa4a338d7b970214e95ea778ec49792800678ea34"
   },
   {
     "path": "port/v2/tools/overridecheck.control.mjs",
@@ -4342,12 +4342,12 @@
   {
     "path": "port/v2/tools/proportioncheck.mjs",
     "bytes": 9736,
-    "sha256": "7afcc115b435351bbfb86cacfb3a58372acb560b9e3dc3e14a36ce85048b03ff"
+    "sha256": "c464c651c4e91e9eea69e2395fcb701bc5dba1573cd095ddbb2489f45dd43cf2"
   },
   {
     "path": "port/v2/tools/recheckcards.mjs",
     "bytes": 3070,
-    "sha256": "f671a441d2fb12ed16652e71a9574bd431db825c56eb6401aff853dc5a20990e"
+    "sha256": "72f848babacc53e4d67a70ae735c0a49a28e5ca5f4ec9161d4f6ac195407c970"
   },
   {
     "path": "port/v2/tools/referencecheck.mjs",
@@ -4362,7 +4362,7 @@
   {
     "path": "port/v2/tools/rejudgecards.mjs",
     "bytes": 9452,
-    "sha256": "a73510d5fd6d52e3e37a4130157150fab020c71aff814fdbe6c9211298fadd42"
+    "sha256": "1709d814572cda662639114652dd7b6a89ff578e284ab6387810ec5d01388a45"
   },
   {
     "path": "port/v2/tools/rejudgecontrol.mjs",
@@ -4392,7 +4392,7 @@
   {
     "path": "port/v2/tools/sliceperf.mjs",
     "bytes": 6386,
-    "sha256": "8a001cd38709b6445b0e06c6a6ed61710151c150f025a97f41a85d97f629ca2b"
+    "sha256": "50923d3fb7c255b619c39ee699e0925c2ad939f626cdf959b3d93bbd6fd88b59"
   },
   {
     "path": "port/v2/tools/slicesmoke-contract.mjs",
@@ -4432,7 +4432,7 @@
   {
     "path": "port/v2/tools/speciesexport.mjs",
     "bytes": 5822,
-    "sha256": "c83901a6d449a35eb4454d4975d44a0c5bd0b321e2602b7b318b16fdbdbc301e"
+    "sha256": "2b1bb14fa8fd3d001e11c4e14993d042e4f77e74692b01fd1c1af519db1c85a0"
   },
   {
     "path": "port/v2/tools/speciesstrip.mjs",

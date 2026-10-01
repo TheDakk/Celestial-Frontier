@@ -450,7 +450,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/effects/sequencer.ts",
-      "sha256": "0b168bd71cb30507326580d02f9584c6901c8f8f0a66ec6fe2c7357b306598a8"
+      "sha256": "839c7023d9d0d274b9617ad4f4299eef6b58edf499f495c542ea795619523685"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/battle2/cue-plan.ts",
@@ -3490,7 +3490,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
-      "sha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432"
+      "sha256": "c97498ffa4476eb17abad4981da64f8634b22735dc62073a12fe12324bee9a60"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/descriptors/src/describe-pick.ts",
@@ -3498,7 +3498,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/descriptors/src/apphooks.ts",
-      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+      "sha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/genome/src/genome.verbatim.js",
@@ -3522,7 +3522,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
-      "sha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1"
+      "sha256": "55536ab115280dc95e3867988d11f033f069f4532b2cb4a0a80b44374229febd"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/combatcore/src/guardian-prime.ts",
@@ -3530,7 +3530,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
-      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff"
+      "sha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/planetgen/src/index.ts",
@@ -3542,7 +3542,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
-      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5"
+      "sha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/naming/src/index.ts",
@@ -3590,7 +3590,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/strays/src/strays.verbatim.js",
-      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+      "sha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/ecology/src/explicit-epoch.ts",
@@ -3602,7 +3602,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/ecology/src/ecology.verbatim.js",
-      "sha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c"
+      "sha256": "61d9b3cc8c9c640e6553b5cce1ae2e04c74973b1b9d4dc208afef0c386b58d85"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/worldidentity/src/authority.ts",
@@ -3614,11 +3614,11 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/genetics/src/genetics.verbatim.js",
-      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12"
+      "sha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/markings.json",
-      "sha256": "e5adaf5705f1cecd383450bd07b1e53684255b731354f5dcd3a249e1b499024a"
+      "sha256": "1d8e1962df844b76f8b53e28bf9221b8837efbc898ae48f01ebb4e75c9c38a5d"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/markings/striped.png",
@@ -3666,7 +3666,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
-      "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4"
+      "sha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/wild-anchors.json",

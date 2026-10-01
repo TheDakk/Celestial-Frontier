@@ -3,8 +3,8 @@
   "status": "EXACT_FIVE_REFUSALS_REPRODUCED",
   "scope": "Five retained failures reproduced once with real GSAP/performance/contact and observational hooks only. Two additional single-pose hit/tame comparisons change only an in-memory contract travel declaration; no solver/limit/gate/source edit. No ARAP, full static, film or CPU certificate.",
   "staticPoseCaveat": "firstRefusal.pose may be last successfully published pose; attemptedPose here is captured before contact.resolve.",
-  "recordRecipeHash": "8952129f96a3ff22e92b4f409843ce24e55fd3cdf4d3431f2d26a5d8e80dbbba",
-  "bindingHash": "aff5f77d4822ec0b8f1eddf2a9835792b1f4dc3709137ebd0552ede5c7efeb41",
+  "recordRecipeHash": "898e10826a15a1f6cba9f9bf540bb6231f56a8d977ffd07705d2ea30898b8c6f",
+  "bindingHash": "0762caeef3d7c94c3b142357b9281cd20f993046ce6d0e593609ecd950eda657",
   "card": {
     "kind": "body-card",
     "amplitudeProfile": {
@@ -52,7 +52,7 @@
       "ownerId": "authored:archetype-sprint/tree-frog",
       "earthName": "Tree Frog"
     },
-    "recipeHash": "8952129f96a3ff22e92b4f409843ce24e55fd3cdf4d3431f2d26a5d8e80dbbba",
+    "recipeHash": "898e10826a15a1f6cba9f9bf540bb6231f56a8d977ffd07705d2ea30898b8c6f",
     "template": {
       "id": "hopper",
       "version": 1,
@@ -10540,22 +10540,22 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/static-01.json",
-      "sha256": "04456ad0230bc075008414dceae3defd283c311d5acbecf9586b69cd8238f851",
+      "sha256": "0c9839fa21888069243eef5103c6bc831e876005e6b3f82b7dfd163a1369fdfc",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-01/record.json",
-      "sha256": "c8cf3533ad9976aaaf4eee202daf86ff6cd23aef9899ec17fd46e4829a69d748",
+      "sha256": "2dc91c2b94cd7586b2355839d1b6b3da1db33ac7ddd49b4b15b9107c2be587fb",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-01/binding.json",
-      "sha256": "a5bbb761210a3b5f5bde5fbcdfd9dfe74999fd3ac13907fbc6c8097bc09c8e87",
+      "sha256": "e349cb7d7ea8d80070b98ff767ff91dcdd78448727c5907855ee21cdd44b5522",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/authoring.json",
-      "sha256": "28dce7b85274accb2f61e948a531bf0f94fe2ff97b499a0d6c0cf781b3ed76ef",
+      "sha256": "4be7ff897b7f05f0df99bbca7e16e31e14f837ac65b5908214a4f9c20a469ba8",
       "unchanged": true
     },
     {

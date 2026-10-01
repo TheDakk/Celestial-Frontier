@@ -6,9 +6,9 @@
       "id": "cougar",
       "key": "a710569abe2a682ea6b58d1d99fbacd89a8cc47c5b5bb890db8fea696511982c",
       "sha256": "889219f4bcbc597f33ccbe27bc4e7b7cf476167f48b7b3e97f4926553a8b70a7",
-      "receiptSha256": "0c096a5c11cac27c1b5f144bf56f19b329046b839db376c0bed8ca3c0c2a1ddc",
+      "receiptSha256": "049776649bfb6f5277abd29a480f1ce5f4eb23c3969b93cacd6a4221d065bd86",
       "identity": {
-        "recordRecipeHash": "680e013221829e01699fb4e9f165446270f3bff9e022e871d96d6112206dc0d7",
+        "recordRecipeHash": "6a7cbcbab6ebe589ee6be792d628777157a0094dc66c33f3ff08a1a2843270e4",
         "cutoutAssetHash": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635",
         "modelHash": "640a9635fe4137f415f6179185b3a9c7c12e52bac1588e78e026b15f1226cb2b",
         "settingsHash": "2eea14e5b8b6631ff677aa21958b90e37648941c18e6979780d4f3d7eabae48b"
@@ -53,9 +53,9 @@
       "id": "wolf",
       "key": "3dbaa4f0cd9e268193a613c00e4091bd57d73a076fcc82f189adc5eca82aa77a",
       "sha256": "48a88be42af08041cc49a57d6ce06f8800e2bb4ff1e237bc2c15a44591353f49",
-      "receiptSha256": "901441c0ed810aed176c7a02bf0df25e924cc96752fce81f5278113da429b71f",
+      "receiptSha256": "5972443d8dad664cf9154315cd29da6750c7738776532f3934c1fbfd2beaf198",
       "identity": {
-        "recordRecipeHash": "9d9d3fbcd8bdfcb5ed37a534b3afd44303ca0b1229a53593362d9b5292a2e316",
+        "recordRecipeHash": "13c67872a056f6d47de77cd4cdd78a12eab9004dacb7ecf686aa4ddbcb76eef8",
         "cutoutAssetHash": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43",
         "modelHash": "640a9635fe4137f415f6179185b3a9c7c12e52bac1588e78e026b15f1226cb2b",
         "settingsHash": "9e79557e22991ac6c94272d934a1e147b61386821eb8b493418812f245067f39"
@@ -100,9 +100,9 @@
       "id": "gull",
       "key": "93b6bac2f050bd1a7ef94d00f80c8d7bc9e90303c82a4450ed2b77bc6c286121",
       "sha256": "3dc67852481db05866d89b0a825cecbd0211368e09e9b0455297c0aeca481bd7",
-      "receiptSha256": "2f4084dedc294bc8df2fdc324332e8afbc159958fbc7476fbd912b8e74c212c5",
+      "receiptSha256": "6fc8e58962b327998ecda1da59641979a71d5160fbaf01485854304f0ada2b2a",
       "identity": {
-        "recordRecipeHash": "d4d0f9974c19f3ed15bce209e68dd35614f221f445e04a8a3225691195da5f3f",
+        "recordRecipeHash": "290d37a939c03a3fb2df45ce17458efbb67ca9c2364a762f02273ede71542506",
         "cutoutAssetHash": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9",
         "modelHash": "640a9635fe4137f415f6179185b3a9c7c12e52bac1588e78e026b15f1226cb2b",
         "settingsHash": "90b4264ac19abbbbef6eea2e761d55f753a8ddf1c3e9ed35240e110e648debe9"

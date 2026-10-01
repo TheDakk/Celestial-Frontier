@@ -32,15 +32,15 @@
   "hashes": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/diagnose.ts",
-      "sha256": "aef725b5e96978c64682b5ca581a3c24f8abd7d4339c03bac1383ff42dc31635"
+      "sha256": "01b19aee6ec5875a2d208cf9cce097480f336ff7fbc1626b64bf433fb19666ad"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/run.mjs",
-      "sha256": "da7a0dea4ac35710d09fd5d2144a7b6f949889c586a8791186a22d915a280902"
+      "sha256": "8478677df8db67e65bb7ee897c4b7c13d3b12c5d0617cd0ef24af903ba8e03a9"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/report.json",
-      "sha256": "23eaead6897c4b3f7e15e2768b749f4ed1aae73341d02b44f73d298a5d93447c"
+      "sha256": "b954e89ee21a80be5dc5b661735f7d171dfb3727834cff505fa6d604f7ad2b42"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/conditioning.mjs",
@@ -48,15 +48,15 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/conditioning.json",
-      "sha256": "b0f57a8029c3f1d256cb304de570f5e87dfd0a7c3342f0208db7ee027f52bf72"
+      "sha256": "88a90a8048d5e718588c11cb8a31e0ffd0188cc896976601ba8810465b5cb27a"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/root-edge-inspection.mjs",
-      "sha256": "e458ceedeacc4abf63ceecd5d40678998e3cd7b47458e939833b14e7327d475f"
+      "sha256": "b56014ced16e40c87c99a8497218fbd203859b6a1643f890e9ea5d8181c2451d"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/root-edge-inspection.json",
-      "sha256": "77a9c0c6dfb3287d99059b82a5af8b309f49c82c84761d936c173c90d316d203"
+      "sha256": "c89e918ec5b61b1819495b2829324cff79b3d43fa3f59cf87bf0238b5e70e24b"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/refinement-coverage.json",

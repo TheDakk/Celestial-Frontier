@@ -23,12 +23,12 @@
   },
   "measurementAuthority": {
     "schema": "cf-v2-compendium-measurement-authority/v1",
-    "sha256": "cb408d788e1ac9fe6fa0db9777eea3a19725adaf7a9bb0d6fa83947652aaec1c",
+    "sha256": "95b6176681068f16ed73a25415fce3a4e2681fdeb5eb086224a2d990f4829765",
     "inputs": {
       "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
       "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
       "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
-      "budgetSchema": "d0a4c693bf03cd23cadbdc0d336329bc42cf06484d4314a9621e2c5462c47b6f",
+      "budgetSchema": "c57ed2f9b1f20e3333c9a5869c337576dcf6f634c7bd3dbc8b0564eda7710e21",
       "outcomeContract": "33ce53d82af3a5aebd09a4bc641155b19c50d5c0859da3bbbe41d20b0c7c4737",
       "collector": "977119eaad0c3180ad7658b84d5b0815b5afce51f54d8cb262928b66b408b136",
       "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
@@ -77,11 +77,11 @@
   },
   "instrument": {
     "commit": "87557292e471579fc6c8b9e1099d36def4d2402d",
-    "sha256": "a77a293513a89648bf6b1c927532b548e012f3e8f2c2460eecab7db0798b7838"
+    "sha256": "5f296d8c8fc90e30beecf42cb4e2d0a2f423140d131419231d1257973ac3fba7"
   },
   "epoch": "i5-v2-87557292e471",
   "growthGuard": {
-    "v1Sha256": "c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc",
+    "v1Sha256": "340a67c1e6d6f4f7e120c7f13e1e06a674757ddcd2a023c100e4f7f65493fbd9",
     "allowance": {
       "phone": {
         "mountedRowsMax": 0,

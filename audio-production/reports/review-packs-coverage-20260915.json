@@ -51,17 +51,17 @@
         {
           "path": "audio-production/recipes/production-v1.json",
           "bytes": 815304,
-          "sha256": "cf5652ea25d4e5ea9390556caa433874aaed741dd96a951471c88e4d87584371"
+          "sha256": "bf05d3888cf8a4421c66070bb841b29c4ccfec771ae309803aea75133e8fba5a"
         },
         {
           "path": "audio-production/recipes/production-v2.json",
           "bytes": 413075,
-          "sha256": "ec60e8f55c137813fccc3de29d959a4f44cdcda1372c4781f77be634865c5414"
+          "sha256": "fbf1896efc8b80e012383b46bc85f1bbfe85a00f663888c58786a27d7549a41a"
         },
         {
           "path": "audio-production/recipes/production-v3.json",
           "bytes": 102863,
-          "sha256": "c46b367848dc3607fddb2eef5c2abdcd6b736f8ec46ce3874bb62415e8c085a8"
+          "sha256": "27f83c270b09c6083302dbb4fdc66631e93156e012c940b44c8cfdcdc82362a3"
         },
         {
           "path": "audio-production/reports/ability-chem.json",
@@ -231,22 +231,22 @@
         {
           "path": "audio-production/reports/functional-coverage-final.json",
           "bytes": 1190495,
-          "sha256": "73f3dfbf060ae058c439460924e9cf0af1ea5d96ee6a3847733e6e2eed0dbc01"
+          "sha256": "7e574be565376b64858584e4a92d95d2807429cd1276c4e8f65ef9e03b052d97"
         },
         {
           "path": "audio-production/reports/functional-coverage-first.json",
           "bytes": 1159261,
-          "sha256": "a021d5a5c7976120ddca8ca016befbc61a2935fea1b712ada75f3b52d14e3f20"
+          "sha256": "0b6c953ab483bdc08b318b449558fc226afcd9019d358c866543ca3b8f2f5e8c"
         },
         {
           "path": "audio-production/reports/functional-coverage-v2.json",
           "bytes": 1159261,
-          "sha256": "4b90c477a47164a508af3aa9896eeb7881a5168f95dfb12057924640a3eedc54"
+          "sha256": "45efdd8123c4eb22df59346d4fcf5d0dc25e49e81bc06013c4bda6d018321ee2"
         },
         {
           "path": "audio-production/reports/functional-coverage-v3.json",
           "bytes": 1177645,
-          "sha256": "d073fa7ade8f97eab82323cb0c68c439e3c205425c4c315b90c3c4529962ee37"
+          "sha256": "dcd2d36209b69ff29544203cdee0e1eaf0c4ae69d4d4361743ca777c4a1018c0"
         },
         {
           "path": "audio-production/reports/identity-comparison.json",
@@ -261,7 +261,7 @@
         {
           "path": "audio-production/reports/loops.json",
           "bytes": 84580,
-          "sha256": "740889cc607b89b373f32ea1940aab11451f0fe605fdae3c1c98f9dd0d508291"
+          "sha256": "4c437de2b3ce0b7b4cc5b85b2dc2b3a7041b4464ca7ba8b38f2a4c0521bd160f"
         },
         {
           "path": "audio-production/reports/movement.json",
@@ -286,12 +286,12 @@
         {
           "path": "audio-production/reports/review-packs-initial.json",
           "bytes": 187708,
-          "sha256": "33e473e563d3c0f0c2fbd7c3d62e63170fa0b68dfe119d954884d7b52182d6d7"
+          "sha256": "d8aaf6d4d32dbf95f00bd80d0a2da524e4153c57777f87d741b29d9dc1ee3938"
         },
         {
           "path": "audio-production/reports/review-packs.json",
           "bytes": 196106,
-          "sha256": "f4f86a7a5555096e618b3f9a5148eebc41b330fcca85a4f583829863d23559e7"
+          "sha256": "3313f83e8aaf96de3860e7f02d95f12ffb6a92795a48f815fb23a9cce82d4a07"
         },
         {
           "path": "audio-production/reports/source-decode.json",
@@ -311,7 +311,7 @@
         {
           "path": "audits/AUDIO_GAME_COVERAGE_20260915/FINISH_LINE_PLAN.md",
           "bytes": 2981,
-          "sha256": "b73902e3653e9078ea2740ffad6117ee06c8609554682addb1ce72cbea089033"
+          "sha256": "2d3b6c93ab4ae9ff58cf6fa5bcafd09db32ca41f6cf8c08438a60d0f65b1ae12"
         },
         {
           "path": "audits/AUDIO_GAME_COVERAGE_20260915/README.md",
@@ -321,22 +321,22 @@
         {
           "path": "audits/AUDIO_GAME_COVERAGE_20260915/checks/anatomy-controls.log",
           "bytes": 239,
-          "sha256": "a2ac98e5958066828a487046d96f96763c07de5f8d990dd622ced4be00dc5c75"
+          "sha256": "e6cf429cde82417aaefeec56a62cd3cf729dcff23910489e36a44e3936720b17"
         },
         {
           "path": "audits/AUDIO_GAME_COVERAGE_20260915/checks/full-tests-final.log",
           "bytes": 16650,
-          "sha256": "5db54ef2bc166760e92dd456c8f2f84a49cb4ef78697615cc61c7d61655f7cfc"
+          "sha256": "57c3073daffc27c211de5928e8a34f58c080dfcb5a900e221a6f3582086040dc"
         },
         {
           "path": "audits/AUDIO_GAME_COVERAGE_20260915/checks/full-tests-first.log",
           "bytes": 25563,
-          "sha256": "ff164cd40502aeaaf09e38febfd1cb65dc59da49ba1cdc0d4c3c7eef22127523"
+          "sha256": "6f0a953fe7a3517c9f8846e49f5b60c441f2de7c5793d0c2ac088d8ffc12a9f7"
         },
         {
           "path": "audits/AUDIO_GAME_COVERAGE_20260915/checks/plan-initial.log",
           "bytes": 1249,
-          "sha256": "be51fdf5e891759962f66d8bfeb091e1088e5ffac113a57ecdb18756ebd5d5f5"
+          "sha256": "8d0bcfeabccc5b73bf89ffccbcbbb7b175719a612d3f24040b21de951a3e662e"
         },
         {
           "path": "audits/AUDIO_GAME_COVERAGE_20260915/checks/python-controls.log",
@@ -376,7 +376,7 @@
         {
           "path": "audits/AUDIO_GAME_COVERAGE_20260915/checks/validate.log",
           "bytes": 1093,
-          "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+          "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
         },
         {
           "path": "audits/AUDIO_GAME_COVERAGE_20260915/native-01/desktop.png",
@@ -461,17 +461,17 @@
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/final-focused.log",
           "bytes": 245,
-          "sha256": "3adfed12c4d18be400300bf0fa24fa3b4cf96c0d6d0110ee104c3c23098ee8e0"
+          "sha256": "df08d5141621963198e7a6c2cd20983b00e19adda91fbcf7d0124718d0336aaf"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/full-tests-final.log",
           "bytes": 16649,
-          "sha256": "c273b4de74de4be8edb6391618c9fa19909a3a9edac90369e62bc27534560004"
+          "sha256": "67967c700b3a44e46c4c48f08970ab0c3581909ab0c9e2ca6a95fb7f38ac02fb"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/full-tests-first.log",
           "bytes": 19181,
-          "sha256": "0b56a98d351c21c122908d187e05c95e73e1f36107953cc002d33928b5276261"
+          "sha256": "7138e5e1fcc6f822f62338ae28e677ec4b4869b1986bd1e847145ea9ee4ff5f2"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/intake-tests.log",
@@ -486,7 +486,7 @@
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/pwa-audition-focused.log",
           "bytes": 237,
-          "sha256": "46262499e9756ad7a92699813de18f9b386d19ec160952fb007849b753355e1c"
+          "sha256": "01e48aa72c80ab9050ab3895a00738502425ebd7db5e5b75e8c55994449df746"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/python-final.log",
@@ -496,17 +496,17 @@
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/root-validate-audio.log",
           "bytes": 1093,
-          "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+          "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/root-validate-final.log",
           "bytes": 1093,
-          "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+          "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/root-validate.log",
           "bytes": 1093,
-          "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+          "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/typecheck-final.log",
@@ -641,7 +641,7 @@
         {
           "path": "port/v2/tools/asset-intake/art-batch.mjs",
           "bytes": 2144,
-          "sha256": "80d7228d88aa896dab26d7b168d931eb7ecae3c0cc8eadf276a7613fd4c95a80"
+          "sha256": "ca9d5922791af7cf7ba33d3c77808a8d80979de943bb0fa1beff32efa65f9593"
         },
         {
           "path": "port/v2/tools/asset-intake/art-batch.test.mjs",
@@ -671,7 +671,7 @@
         {
           "path": "port/v2/tools/asset-intake/contracts.mjs",
           "bytes": 5935,
-          "sha256": "528c469f36034bee5c39455b11bccac2215c4ea5ef4b30681106deb332403d86"
+          "sha256": "5df334b87cdba7bee3a3fdba11e5a9a1a13179e0a2a77115be793b9375cc3bb2"
         },
         {
           "path": "port/v2/tools/asset-intake/contracts.test.mjs",

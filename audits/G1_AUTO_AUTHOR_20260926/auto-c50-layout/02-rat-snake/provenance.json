@@ -15,7 +15,7 @@
  },
  "reference": {
   "subject": "python",
-  "authoringSha256": "3a6a75b2524550a4d80a2fabba037ba7f1d4ae2ec3502b42ed11f7c66d8fc5c9",
+  "authoringSha256": "c165cb4c967989483b39f6fdae76fa6287bcf51db8f0d083493db58a9468954a",
   "masterSha256": "d0a777d5186a6787461d795b41b34b8ce4569af1efd10b14f98524fc92ef8cae"
  },
  "habitat": {

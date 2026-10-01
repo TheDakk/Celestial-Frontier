@@ -3,8 +3,8 @@
   "status": "EXACT_TWO_REFUSALS_REPRODUCED",
   "scope": "First and largest already-retained fit07 dodge contact refusals; extent selection is ten-source-pose arithmetic only, real GSAP/performance/contact, exact invertible observational inserts. No ARAP, published paint, full static, browser, film, CPU certificate, altered policy or optimized coordinates.",
   "staticPoseCaveat": "Actual attemptedPose captured before contact.resolve is byte-structure equal to the retained targetScan rawPose; first failure is not the earlier static ARAP stop.",
-  "recordRecipeHash": "87434dc5b868915b31575e47ba8deab0006eb16a100c6e496512a54019607791",
-  "bindingHash": "541cc0657e235e5a3d7586a877200312ab3f6aeb9380b08442b8d64e03a97ab0",
+  "recordRecipeHash": "561ea6b97205bd33a05e9da7d03c279570058edbf8f5172fc302ef678ab24180",
+  "bindingHash": "645b7d9f7b94f7e21e0a9f01c6323dfb604af58f0fba50f2c6a38b3f76fecd56",
   "bodyLength": 0.3429175472477672,
   "scaleLength": 0.3429175472477672,
   "compressionBoundPx": 34.401488339896005,
@@ -9852,22 +9852,22 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-04.json",
-      "sha256": "55d0c1168a34f1462060a094bfa1427d22d9407d88569d988d9e9c5a2a191102",
+      "sha256": "c7c13b0f58e003d4019cbf9fcd9856037bfa688f4c18ff0a09afc95e5a0c8b72",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-07/record.json",
-      "sha256": "eef94239c71e9941230af757226839e80040e065ccd4612422f83b30d098f732",
+      "sha256": "e4e2af3b2db5fcc417beb92a0ea65942cca426440cf2b60c27aab9f53355f814",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-07/binding.json",
-      "sha256": "49e196962e0d20badda353509ac10a7c05283112e3ec269aeb29c73abb4cf648",
+      "sha256": "54ffd4bd1a176dd15a732191caab475ad3bff923420433d120be75392fc3dfe3",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/report.json",
-      "sha256": "23eaead6897c4b3f7e15e2768b749f4ed1aae73341d02b44f73d298a5d93447c",
+      "sha256": "b954e89ee21a80be5dc5b661735f7d171dfb3727834cff505fa6d604f7ad2b42",
       "unchanged": true
     }
   ]

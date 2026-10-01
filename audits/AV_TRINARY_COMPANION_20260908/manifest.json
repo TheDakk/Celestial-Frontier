@@ -144,7 +144,7 @@
     {
       "path": "AAA_COVERAGE_LEDGER.md",
       "bytes": 5763,
-      "sha256": "939e3c28406fa22a327fa9a766a6669e73ad0e7bc20a66f96ff114f6d50abad3"
+      "sha256": "e22c776bacade41d504ed1d5ce6e7b5809540b3f2aa860d69baaa055acc4176d"
     },
     {
       "path": "WORLD_GENERATION.md",
@@ -161,7 +161,7 @@
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/BATCH_INTENT.md",
       "bytes": 1660,
-      "sha256": "847a51caa4c7d0004e2b1c87ace8602551b437f85bfd7d67783b711ed81bd0bf"
+      "sha256": "9bb93d45e8b7c89a8154d511021cb79bade7df84c2304c8cc00fe0198b586af0"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/EXACT_ENTRY_CORRECTION.md",
@@ -171,7 +171,7 @@
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/README.md",
       "bytes": 7421,
-      "sha256": "753a23fc27f62dc0ade86ab172bc5a886cb9da6fa2a74801ab9393ab6a53c56e"
+      "sha256": "54c2d19e62c78c09a71dd4b01e4d70aea68dfb9d846b02dbeb2316d828d3d0c1"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/derive-fixtures.mjs",
@@ -181,7 +181,7 @@
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/develop-profile.log",
       "bytes": 6664,
-      "sha256": "fdfcf0d31abe275f27a06738dba5cb1ad1e40333928fea4cda1009d9782f2f12"
+      "sha256": "9b21b151416a80d91242a3384007ccf84132860a09affd7d7da2e9037c6651b3"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/draft-authority.json",
@@ -201,7 +201,7 @@
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/evidence-dist.json",
       "bytes": 14296,
-      "sha256": "3a1c2fb6a5e6d1023a9d8af4517355a671b390306a9e691a8e33b12a92100209"
+      "sha256": "1ca7026af83881b6f323180338add57aa9cfd976ea7c06b8c068706bffdf69cd"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/fixture-derivation.json",
@@ -221,12 +221,12 @@
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/increment.diff",
       "bytes": 171979,
-      "sha256": "5aa58b75b81f972e1e35152040093b2ea84623968747cd10efb3cfcc8ecbf629"
+      "sha256": "0bd3abadafa0a5595b97c2282ba453067533441134fd6dd97adf275c00f147d2"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/native-exact-address/review.json",
       "bytes": 245926,
-      "sha256": "d2b981c1b8726dbd33e2436e13edbffd60db12bc20b1d6032dccbc79a97cc70a"
+      "sha256": "ec906d5e4d7a5adca6a2535bed635d10adfa78426a5f86b7c024655d9ae35291"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/native-exact-address/runner.mjs",
@@ -251,12 +251,12 @@
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/native-exact-address-execution.json",
       "bytes": 401,
-      "sha256": "e338a758276ae060d2a2bb84944a01de4576ea4d282296e0b612bb1ed626ab88"
+      "sha256": "8a15f6542b864425574844204626a7af8e23f16d6fe1e9e9bf0b96699d5470c7"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/native-exact-address-execution.log",
       "bytes": 138,
-      "sha256": "8c1f3f694b28141b7dde567872a1750f5b194734201485af6a572fd880c3f6f4"
+      "sha256": "af6d637e336e85ee98caa1048209911a7d27f889e02d0370592a004bfc0c696a"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/native-first/failure.png",
@@ -266,7 +266,7 @@
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/native-first/review.json",
       "bytes": 24470,
-      "sha256": "044b4a221fcdb4ae6a4e97b34bca2bdae962048a8db5688b998df1be197c9cb6"
+      "sha256": "7fb733151dd09ad4d0f046d1b6345e5ecc4f5c509993d52a22d289e43825cd12"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/native-first/runner.mjs",
@@ -276,12 +276,12 @@
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/native-first-execution.json",
       "bytes": 394,
-      "sha256": "5a5382740f970d344ca550f1cc0a65dc2483f30240f486480a5a2c14247ce898"
+      "sha256": "cbeab9344c1a70ec7f6582398642474b4a877d53e863043821705849c15c2369"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/native-first-execution.log",
       "bytes": 482,
-      "sha256": "fb91e53f17ab7c47f151ffc8cc1d6002cea111e0d6ed2723784ff2b7fc3fd2f7"
+      "sha256": "f24af1fdcce4e3f987abde55d71f3836301a63172c5d959bf63481b4075675f4"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/native-runner.mjs",
@@ -291,7 +291,7 @@
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/preparation.json",
       "bytes": 1266,
-      "sha256": "14d83fab8fca359b718f196bf6b9ffd123510287e62bd67ac59c5b96da7be827"
+      "sha256": "a8712b27c6e06119385ecbee91fc60ff546996980478b5a4fd40b9bbb2e05d44"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/prepare.py",
@@ -331,7 +331,7 @@
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/root-validation.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/AV_TRINARY_COMPANION_20260908/run-step.py",

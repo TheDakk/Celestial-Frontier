@@ -6,7 +6,7 @@
   "runId": "20260922-centipede-capacity-02",
   "sourceHead": "330e060b7629fc7851c7964e1e64838e1966beb7",
   "masterSha256": "fb30b035194749af6fbb66325dceb9da69a8f4b6ace53aa94ccde5aa209da2f2",
-  "promptSha256": "3887f599797cea0ade50c98fa28d64608bee16b2d67ef2c4f088468e1a340323",
+  "promptSha256": "e7da495a66239fbfde79fb698aa39f87721111aee2b215de34b7a89ff7792101",
   "generation": 1,
   "correctiveRepaintUsed": false,
   "observedNearWalkingLegsAtLeast": 15,

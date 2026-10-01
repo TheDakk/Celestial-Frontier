@@ -2433,17 +2433,17 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-10/pre-regional-binding.json",
-      "sha256": "e56da9910df922f3ab296496ea3cec3fdf2231ff7d8db2c7353806fc4b387fd3",
+      "sha256": "c247650be6651f2c5e7175cee425da369c8e6af87f6dcee31cb595f502f6f9b1",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-10/pre-split-binding.json",
-      "sha256": "2cddb52b3e29ac5d21b3e171b705e430229ab66df097a8afb4671e484deb90f1",
+      "sha256": "119ac82168d3265b95a57d0ecd3e4dad262e1825ead5b39c1057917e65fc7298",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-10/record.json",
-      "sha256": "1cb93a8fc0d032a766982bdc3781c37997ee973d0ff4cacdac4db7de0ad076cf",
+      "sha256": "a9f76d5af6911f822003374bcc15caa1a6e3eb9c51f7a848efe00849f2e29efd",
       "unchanged": true
     },
     {

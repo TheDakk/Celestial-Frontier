@@ -163,7 +163,7 @@
     "maskCorrection": "Fit02 preliminary labels exposed unclaimed distal fragments assigned body. Parent widened eight manual leg/antenna regions in transparent space and prioritized near uppers ahead of far lowers. All source pixels/alpha retained; record geometry/landmarks unchanged."
   },
   "provenance": {
-    "authoringSha256": "81cb624dceeaae3d071ecdc93437e1259c1b479ff22c8aa7abc38187c6b918d7",
+    "authoringSha256": "f00febaa62b22ddb2dc42dbbcb3c584cef4461815df5d512809e7a4cda4c6dfa",
     "subjectSourceSha256": "3fe4fafdce0c1fd38584b099be810651b457136eeabaee1aee6117538e765694",
     "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
     "sourceLabelsReused": false,
@@ -207,5 +207,5 @@
       "leg/body:legHindNear": 1.6498823019950024
     }
   },
-  "recipeHash": "d551547c2d2959f21fa2be9e6e96ba7e28768dafd7f5dc42825e1c8abd8a6091"
+  "recipeHash": "240cd0e9897992935740226162154b0440599ffb874529fa77ae1693a5f8fd0b"
 }

@@ -1,7 +1,7 @@
 {
  "schema": "cf.card-master/v1",
  "earthName": "Centipede",
- "recordRecipeHash": "39962065dde06970c0b494e3e2b959d363202fef2d9804658abc1a6bfacb7b16",
+ "recordRecipeHash": "6c574f9f0ecfee789ed0259c13293fe5fddeed1ed17dd992c478b24c65e4470a",
  "source": {
   "master": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-13/master.png",
   "masterSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",

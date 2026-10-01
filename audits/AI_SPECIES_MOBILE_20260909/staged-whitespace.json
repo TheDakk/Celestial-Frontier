@@ -10,7 +10,7 @@
     },
     {
       "path": "audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-01/build.stdout.log",
-      "sha256": "3e92a203572b127be4720ed0214b039e7eec84ac4777ce1d337798b8fd749da7",
+      "sha256": "63f300a287de5577cac50f4c2274b657cc951860b151d364d97d43994d29152c",
       "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
     },
     {
@@ -25,7 +25,7 @@
     },
     {
       "path": "audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-02/build.stdout.log",
-      "sha256": "1eed4009ad8d08d425811cea102c281265fd44b990d14fbc246beb673ae9d3fa",
+      "sha256": "9570709a8539cf1892837ee484bac9caa6afa5bfc483d4e51e643950bf280a2f",
       "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
     },
     {
@@ -45,7 +45,7 @@
     },
     {
       "path": "audits/AI_SPECIES_MOBILE_20260909/mobile-runner-controls-02/0-stdout.log",
-      "sha256": "1814c47cfc9f062bc8028b82f58f47a8ba32301b3bcda6066a7ecf7058f1e54e",
+      "sha256": "02c4dce255c2d7a2bbab947b2dec490b675c57e4397e11f92adb61c9e99c057b",
       "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
     },
     {
@@ -80,12 +80,12 @@
     },
     {
       "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-01/stdout.log",
-      "sha256": "31b676fb5257392e98b4f162d3773eb6ee0a1f616e2f32cba431a0ea96e4996b",
+      "sha256": "3c44466331590c0bbea7daeac58d6f88386051b822d095671bcfc103c49d15ca",
       "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
     },
     {
       "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-02/0-stdout.log",
-      "sha256": "1ec8dd5cfb3b286fb507b7430f6dc65644c024557d453f0539293611756b907a",
+      "sha256": "722dc0bdbba8d4239baf0eb6357a3650721d31a5422632d2d091cf3e479ec4f7",
       "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
     },
     {
@@ -95,17 +95,17 @@
     },
     {
       "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-03/stdout.log",
-      "sha256": "28a203373d18a986661ee4dc5afc41633b469b8eb7b222d783a3a4fc3f9af9f5",
+      "sha256": "ef7d38eff1d1cc6610fc34c30e1b6224a55ff4bd77c2057ffab98ccbf778667d",
       "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
     },
     {
       "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-04/0-stdout.log",
-      "sha256": "27fdef4282ea158dfcb60e456e4025d8e55d7e00592a5ee3ad69e40611d72bfb",
+      "sha256": "cd05d913d13d0527088b908ef08da882479a655172c40ca5ce9bb7ba64d21b33",
       "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
     },
     {
       "path": "audits/AI_SPECIES_MOBILE_20260909/species-adapter/controls-05/0-stdout.log",
-      "sha256": "0d55c5712a58470cbdea1a3659d5d5915102852b99ff6708d261888c1d6e12a4",
+      "sha256": "7b2b55f6f8239cd7b0dfa72d1db98d5332d02761130b4f5e1e9cfc6a7da81de8",
       "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
     },
     {
@@ -115,7 +115,7 @@
     },
     {
       "path": "audits/AI_SPECIES_MOBILE_20260909/validation-01/owners.stdout.log",
-      "sha256": "02a839b150e1a4a3c21b35e1cefe1eb7f1fdc52dbbcd7774e5edaa03e7e0a6b3",
+      "sha256": "e6bc566c191f92c1b593db2f99cb50c4f1ec5dd634608e82e2249eb637b2da6a",
       "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
     },
     {
@@ -125,7 +125,7 @@
     },
     {
       "path": "audits/AI_SPECIES_MOBILE_20260909/worker-import-controls-01/pwa.log",
-      "sha256": "746555d85be232f9a8ba1a3ff79a08815f8d79a43f548f7e11ada62c3ab15900",
+      "sha256": "1263a6fd169ff7957cc1593f27fe0b0c63f641d00df2359f6eb41f63d081d736",
       "reason": "Immutable original tool log, exact prompt, copied license, or this diagnostic output; retained byte-for-byte."
     },
     {

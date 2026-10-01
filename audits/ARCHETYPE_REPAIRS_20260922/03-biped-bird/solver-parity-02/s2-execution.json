@@ -535,7 +535,7 @@
   "node": "v26.9.0",
   "owner": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2-controls.ts",
   "ownerSha256": "f84b7a6df8d0bf50679fda4f1ccbcc20a10b459079762ccfda4a63c5de6c9e81",
-  "orchestratorSha256": "b2aa6b05acd88703b68fc228870a857e4a3144e3bff01f967b5fa9f5de2fd2a2",
+  "orchestratorSha256": "fae01ea2fdc9cbdabb9dffd14e8deb41bf2797061e8136373450ea0f9c455b86",
   "baseline": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2",
   "retainedInputs": [
     {
@@ -697,8 +697,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/solver-parity-02/run-s2.mjs",
-      "sha256": "b2aa6b05acd88703b68fc228870a857e4a3144e3bff01f967b5fa9f5de2fd2a2",
-      "afterSha256": "b2aa6b05acd88703b68fc228870a857e4a3144e3bff01f967b5fa9f5de2fd2a2"
+      "sha256": "fae01ea2fdc9cbdabb9dffd14e8deb41bf2797061e8136373450ea0f9c455b86",
+      "afterSha256": "fae01ea2fdc9cbdabb9dffd14e8deb41bf2797061e8136373450ea0f9c455b86"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BEAR_CONTACT_DIAGNOSTICS_20260922/source-join-s2.mjs",

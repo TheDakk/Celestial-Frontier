@@ -4,7 +4,7 @@
   "tool": "image_gen.imagegen",
   "masterSha256": "1d993405872dd331fd11c08e652043273bc0d1b41cb0f7b1644a3b10fcc5a4c9",
   "bytes": 1140186,
-  "promptSha256": "afbf7dc81a8e073fa99ed80837cf426565aff527d676404bac47a70a1c82b152",
+  "promptSha256": "a9a0eeafa98bac15c47d8bbbc8ba61ff13ab45fdb4cab15923adedbc8e6e7771",
   "outputModified": false,
   "handAuthoring": false,
   "sourceOriginalRetained": true

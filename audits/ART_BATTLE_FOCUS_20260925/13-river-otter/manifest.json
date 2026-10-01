@@ -4,12 +4,12 @@
     {
       "path": "README.md",
       "bytes": 4251,
-      "sha256": "572027024eb05c5fb76091313677e8b33d161bda2f26f3692afab9971e379c92"
+      "sha256": "b6957b6fed799177034f6f5b6c457677af8496020cc85681d1a4dca7ee56c9c8"
     },
     {
       "path": "authoring.json",
       "bytes": 14441,
-      "sha256": "5e06238781c3af8441ea25ab65c66790c5f306562d41a38635bede6a86297f45"
+      "sha256": "880928005d6cb859a1d4e5b569dffc2a6405c5ec3734f88836e7939efa6f5ce7"
     },
     {
       "path": "battle-script.json",
@@ -49,7 +49,7 @@
     {
       "path": "conservation.json",
       "bytes": 5973,
-      "sha256": "ef140b6bb5c760ec3474bf1b60e1a1d83130656e84e8a9d31d1d5bff5e5caab7"
+      "sha256": "6192424c6ad52e6bcf26703eb217fe4965591b1469b75dc30d18770c5da88e7b"
     },
     {
       "path": "conservation.log",
@@ -64,17 +64,17 @@
     {
       "path": "fit-01/binding.json",
       "bytes": 1867742,
-      "sha256": "cc572f73e97f085e296eb5d5d660f3d19021729f81bdd8e3f8629b9ba38b6f47"
+      "sha256": "7a2b2f0d1e306732482b0d220f5b5fb6f9753bf1176db1b41eabb6446b94bcf5"
     },
     {
       "path": "fit-01/declaration.json",
       "bytes": 3192,
-      "sha256": "c04e494820e9ea681b0f91c2ad5317847f22733ce069f1afaa7986eebc94c09b"
+      "sha256": "5ecaca3b1203c9285389ed52a0b6eae064651b979165000fa988fa24a95d6d20"
     },
     {
       "path": "fit-01/intake-provenance.json",
       "bytes": 3400,
-      "sha256": "6e18abc2e241ba0a622edb1a3c1f5a19eda4d7d67ab237fe957312ec29abca32"
+      "sha256": "1da2cf31d731ba355b9c70e06a0d5209096b8fefa301be9e527611d77c13ba5e"
     },
     {
       "path": "fit-01/label-authoring-receipt.json",
@@ -104,7 +104,7 @@
     {
       "path": "fit-01/parts/binding.json",
       "bytes": 10345,
-      "sha256": "d52b2bf9517759608d4d37f4840b197c01e55ea782dca75a7cbb42087f0ce225"
+      "sha256": "9eaba32a1549f659292ee5da8f9e105938ab956967df37b3ec2561f87cf441be"
     },
     {
       "path": "fit-01/parts/keyed.png",
@@ -279,42 +279,42 @@
     {
       "path": "fit-01/parts/receipt.json",
       "bytes": 7987,
-      "sha256": "654f3c89b8e1012bda029f822b6c93c1b99f7c8a28c0d8d1b440068b0d74c1da"
+      "sha256": "d85b90c24ca40657b19af6b5faf5522c5de3c5230af04a9ad903c28b999d3067"
     },
     {
       "path": "fit-01/pre-split-binding.json",
       "bytes": 1115839,
-      "sha256": "08a369dce6e20171282265fbbc3a9f79197566ec5e291d3db874406a7b390946"
+      "sha256": "b244dd3bf4ba27354cf44dbc9e15ae0308dadee91d39c11e1a1b3de05795b51b"
     },
     {
       "path": "fit-01/receipt.json",
       "bytes": 2828,
-      "sha256": "d18e3da88b5cb3ac054d237982e0ad7a9490daa3f690cdf32330f9507baa0300"
+      "sha256": "53c3d0fdf4479ed4a22d0fc4679cf3a6972b2672333293fbb5aa1d40a5075d65"
     },
     {
       "path": "fit-01/record.json",
       "bytes": 7671,
-      "sha256": "27beffd980683e5a505cb6211729a43eab0b1936dc617f3b78b9b14a19ac1c6e"
+      "sha256": "218691c9454d8210f3272a6fd4ca666cca650fe5bb0a1f7546d9a2a2064044fa"
     },
     {
       "path": "fit-02/binding.json",
       "bytes": 1864635,
-      "sha256": "5dd755f791e843b52eefc702cf779ec2bb7b0ac1025a695c458aae11fd0dedbf"
+      "sha256": "0396cb91968d0eb25414cf5c0e132b088c4f3765dd076c69d9abf63905632340"
     },
     {
       "path": "fit-02/declaration.json",
       "bytes": 3192,
-      "sha256": "c04e494820e9ea681b0f91c2ad5317847f22733ce069f1afaa7986eebc94c09b"
+      "sha256": "5ecaca3b1203c9285389ed52a0b6eae064651b979165000fa988fa24a95d6d20"
     },
     {
       "path": "fit-02/flat-master-weld-receipt.json",
       "bytes": 3121,
-      "sha256": "96e95e0403e139d4224a5fcf19923a01a2e268fa66909ef7179b1b1b61ab3f85"
+      "sha256": "6e33e53f4f8e7ca5cac3415369c0c93403b1d6d1ff118046993354d482f362f9"
     },
     {
       "path": "fit-02/intake-provenance.json",
       "bytes": 3400,
-      "sha256": "6e18abc2e241ba0a622edb1a3c1f5a19eda4d7d67ab237fe957312ec29abca32"
+      "sha256": "1da2cf31d731ba355b9c70e06a0d5209096b8fefa301be9e527611d77c13ba5e"
     },
     {
       "path": "fit-02/label-authoring-receipt.json",
@@ -329,7 +329,7 @@
     {
       "path": "fit-02/paint-boundary-continuity.json",
       "bytes": 507,
-      "sha256": "d2da8ce40f12d826b888c4fc0daf50c490fb09b9d596d538271372a7acdd32bb"
+      "sha256": "ff0f99f2adae29a95fba911b65eb97c25ab92cd90d72f9e77863a2a1b5016009"
     },
     {
       "path": "fit-02/parts/atlas/receipt.json",
@@ -349,7 +349,7 @@
     {
       "path": "fit-02/parts/binding.json",
       "bytes": 10345,
-      "sha256": "d52b2bf9517759608d4d37f4840b197c01e55ea782dca75a7cbb42087f0ce225"
+      "sha256": "9eaba32a1549f659292ee5da8f9e105938ab956967df37b3ec2561f87cf441be"
     },
     {
       "path": "fit-02/parts/keyed.png",
@@ -524,32 +524,32 @@
     {
       "path": "fit-02/parts/receipt.json",
       "bytes": 7987,
-      "sha256": "654f3c89b8e1012bda029f822b6c93c1b99f7c8a28c0d8d1b440068b0d74c1da"
+      "sha256": "d85b90c24ca40657b19af6b5faf5522c5de3c5230af04a9ad903c28b999d3067"
     },
     {
       "path": "fit-02/pre-split-binding.json",
       "bytes": 1115839,
-      "sha256": "08a369dce6e20171282265fbbc3a9f79197566ec5e291d3db874406a7b390946"
+      "sha256": "b244dd3bf4ba27354cf44dbc9e15ae0308dadee91d39c11e1a1b3de05795b51b"
     },
     {
       "path": "fit-02/receipt.json",
       "bytes": 2828,
-      "sha256": "d18e3da88b5cb3ac054d237982e0ad7a9490daa3f690cdf32330f9507baa0300"
+      "sha256": "53c3d0fdf4479ed4a22d0fc4679cf3a6972b2672333293fbb5aa1d40a5075d65"
     },
     {
       "path": "fit-02/record.json",
       "bytes": 7671,
-      "sha256": "27beffd980683e5a505cb6211729a43eab0b1936dc617f3b78b9b14a19ac1c6e"
+      "sha256": "218691c9454d8210f3272a6fd4ca666cca650fe5bb0a1f7546d9a2a2064044fa"
     },
     {
       "path": "generation-receipts.json",
       "bytes": 1516,
-      "sha256": "ce99aeaae46f4fdb4e70cce42938c1c3bbb35feab161f4d47ad02f2354d83bac"
+      "sha256": "405a18097424f250e0de601a521ac592f0c960e781c5ed44608c49e5c6636931"
     },
     {
       "path": "intake-01.log",
       "bytes": 318,
-      "sha256": "2e98669fd60a2004f7cecd15ade68ddd1addccf01d8a245fb3a73f15d828543b"
+      "sha256": "02835b9e733ce2dd8e8c16d27f7fb172a5a2ff7610ad50a0c02ee2643ec419e8"
     },
     {
       "path": "layout.txt",
@@ -589,12 +589,12 @@
     {
       "path": "markings.json",
       "bytes": 25539,
-      "sha256": "cb442ffefbcb8604d6768a37375852daad6cabc22690276f247f2192c6a847e2"
+      "sha256": "e8b9dafa03ee644cd46130ecd7909f39c964f3f1ec605ca0ce2f42d26f274baa"
     },
     {
       "path": "mask-generation-receipts.json",
       "bytes": 2598,
-      "sha256": "4a597b53407027e5c01f7b913677c21c2a0d18505d1cdcd15a410d1d3dac0ce1"
+      "sha256": "d7cc37c331415e17898e4313a44d0fb37076e6d768505b4fd06b22a54b87c2e9"
     },
     {
       "path": "master-generation-01.png",
@@ -624,7 +624,7 @@
     {
       "path": "native-phone4x-01/report.json",
       "bytes": 386634,
-      "sha256": "94f31f7c2482db8ca29708179c864411ea7b32394502f0bf82a26896d7008d72"
+      "sha256": "fe2d24c4953a54703e4a1a1c2fbcc332dee43f2f15616005dea5c5e804f16901"
     },
     {
       "path": "native-phone4x-01/turn0-hit-approach-50.png",
@@ -744,7 +744,7 @@
     {
       "path": "prompt.txt",
       "bytes": 8976,
-      "sha256": "780c678b835f55fb9d1dbdf384028001f40fc6a7a93ab6c0fc6629a1691fdccf"
+      "sha256": "ab58678d37a4745d009aa8f9ba0c2c793234ee65098b7aa3d87e1c392a9a6be3"
     },
     {
       "path": "prompts/banded.txt",
@@ -809,12 +809,12 @@
     {
       "path": "request.json",
       "bytes": 641,
-      "sha256": "955289b1fb3893a4ff533cc909deff51aba4609606aba2ae593f4b964f595208"
+      "sha256": "89aedfca716210ad674997fb0703361f929664582c3e71b4d234d6702cf887b0"
     },
     {
       "path": "review-sheet.mjs",
       "bytes": 3665,
-      "sha256": "ff1784fc0688fb59ac1bffb5dfb15fc0c2b129da67c271da58fabb02a90c1f01"
+      "sha256": "1229479da204ad01ad9eaa268ba74bf1c8804872f323e24748ebf1990b5d2e0f"
     },
     {
       "path": "review-sheet.png",
@@ -824,7 +824,7 @@
     {
       "path": "root-validate.log",
       "bytes": 1093,
-      "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+      "sha256": "341cc9b2f71d7693aedb63e8b680d7ac4143039634c37ff0de0ac5bf359d9f9e"
     },
     {
       "path": "six-mask-sheet.png",
@@ -834,12 +834,12 @@
     {
       "path": "static-01.json",
       "bytes": 11255,
-      "sha256": "4395f042e91dceb3a0a1dd20576bfb665e55db6e6d048751c120747cc68b0e62"
+      "sha256": "e207be215469a4155e5c0d05ebb7439f3cab923869e542274dabec9f4443e820"
     },
     {
       "path": "static-01.json.sources.json",
       "bytes": 14934,
-      "sha256": "35935c1965bc32ba88346f9acbd87c487a51c4a813ebdda8278fb14a235c9c7b"
+      "sha256": "e5a64f0e515977f4356c82551320a32d257caaa1d39eb7d437c11fecb84bb41b"
     },
     {
       "path": "static-01.log",
@@ -854,7 +854,7 @@
     {
       "path": "weld-02.log",
       "bytes": 1016,
-      "sha256": "080b8899e9aa1858aaa9c7b96450ddb9d923cacf6872f37ee4e3119605595d1b"
+      "sha256": "c348a71fc8fd375e5cac2358314720e112ffe380ba1e53545352b82a3828fdfb"
     },
     {
       "path": "weld-root-patch.mjs",

@@ -18,7 +18,7 @@
     "phone": {
       "status": "PASS",
       "report": "native-phone-settled/review.json",
-      "reportSha256": "22a490ce74a5262a5300c189723d17b15f2a037b286e9bb6494dfe3133f07e09",
+      "reportSha256": "d99437e7d50046214ea4b2b712979ca8ca97edb8bd077c2fd098282c087489a8",
       "viewport": [
         390,
         844,
@@ -43,7 +43,7 @@
     "desktop": {
       "status": "PASS",
       "report": "native-desktop-settled/review.json",
-      "reportSha256": "a03b88edd453443c4a4129a88479047178a6d4e29b33aa3c90e91a61dab706be",
+      "reportSha256": "e54b2b2f99027306a233a33afe0f61bc957fa9172ee5a24b1777b0d92209edbc",
       "viewport": [
         1440,
         1000,
@@ -68,7 +68,7 @@
     "blocked": {
       "status": "PASS",
       "report": "native-blocked-settled/review.json",
-      "reportSha256": "1fe0fd8109664f74bc0280e3782c992c7cbd8dcb7ea368e8dd4b8872bac3a7e5",
+      "reportSha256": "82faba9c63fc0a9494b922a979526fdde79bba5b3d4d61f68d8f28281db13a5f",
       "viewport": [
         390,
         844,
@@ -93,7 +93,7 @@
     "default": {
       "status": "PASS",
       "report": "native-default-settled/review.json",
-      "reportSha256": "a69e8f9caf9da4176220c8988a2d80ece88bff4c824041e5c27a92b5707200db",
+      "reportSha256": "dc541e3f851ace53740d9a3e1155cae395716a91f213f6bc5cd0941a3bd64ba4",
       "viewport": [
         390,
         844,

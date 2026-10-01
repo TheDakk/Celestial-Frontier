@@ -35,17 +35,17 @@
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/HANDOFF_PRE_PAUSE.md",
       "bytes": 7739,
-      "sha256": "8326e553e1ab00567d7decfe6c6b2bd7d8077ba3fad82dbe35c44e45a408312e"
+      "sha256": "fe75002d4f34d81adda5c5919547948301c823a5942aa4cc0a83bf9e3457a67c"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md",
       "bytes": 15750,
-      "sha256": "93d40e106878470230cc837511306849b3a7f42b57215e4006d92e755d33f840"
+      "sha256": "5669800f2db0ca2558008689f7b50936d11b217fad15714409931abd21d23a9c"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/README.md",
       "bytes": 622,
-      "sha256": "b03ce281a2e9f33db50984f93e4907c585481791b15e8e6b4ed0af207ebc8101"
+      "sha256": "eb1164ff994128cfc0c6577eb679d6695732ff8118e487d843e71ba216e7262e"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/README_PRE_PAUSE.md",
@@ -55,7 +55,7 @@
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/combined-controls-01/focused.log",
       "bytes": 245,
-      "sha256": "18d376047c4c2895fbbcc594c9ed67c7fff6845dda2e54452eef9b52bae1d85b"
+      "sha256": "892d10e71c2d79a2d9ac359f86260d3469e4bdc93751c352a755a77e5b064003"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/combined-controls-01/result.json",
@@ -65,17 +65,17 @@
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/combined-controls-01/source-before.json",
       "bytes": 193694,
-      "sha256": "aed91ca24efc5c38deb7a6ef8e1e0fbb6ae1d3a24c7217b727510f8af201f4f9"
+      "sha256": "2b80924b5a8d60b5ada1cdcfd7fc3540158f486632343b6dc1aa0cd2ab378747"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/combined-controls-01/worker-pack-lifecycle.log",
       "bytes": 17828,
-      "sha256": "8faacf25d3f56984d7be1078baa7cc9bef0f196a9cd34aa20255c00bc7af5f02"
+      "sha256": "8328600b004b5957be9d24dc9a37385dca08b53e1105698a75c8961e47584623"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/combined-controls-02/focused.log",
       "bytes": 245,
-      "sha256": "eab07caf884706a044eac7811704e0c90df3fd453ec4a185370724048601f5d7"
+      "sha256": "af8ff95f3fd5cb6760dcc4a531ec14bcccca4a39bacd57ab6e4484715cf16c22"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/combined-controls-02/result.json",
@@ -90,7 +90,7 @@
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/combined-controls-02/source-before.json",
       "bytes": 193695,
-      "sha256": "9d1eb523cef1e5aa53eec112fe8d6161f06d08c8c3b65ca554fca8fde392be55"
+      "sha256": "586f4aa81e12769482e48b3c7c9422ef3a0e45f3b4a2bdf6b5050e8e62751f2c"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/combined-controls-02/typecheck-game.log",
@@ -110,7 +110,7 @@
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/combined-controls-02/validate.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/first-step-controls-01/node-check.log",
@@ -160,12 +160,12 @@
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/first-step-native-01/result.json",
       "bytes": 149944,
-      "sha256": "d7583d22e64c20c8140885b3ec813059767ee9a4840e0b57502f216f4dd5ed82"
+      "sha256": "a22021a95577507cc2ead03f6cf8962cb47ce6f7904df6cbe8f423e2d0ca945c"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/first-step-native-01/source-before.json",
       "bytes": 7939,
-      "sha256": "70a1ddee6c2d30a5feb53a2a4000c1e7dd93c856548df8a734994ccc76c30bb6"
+      "sha256": "815851713a51cdd89396ddcd25c7c1319bb106694fa65e8167a1c45d17f814fe"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/first-step-native-01/start.json",
@@ -180,7 +180,7 @@
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/integrated-checks-runner.mjs",
       "bytes": 3131,
-      "sha256": "884f332b32e86c827168eff8215dd894d0abaf9023a8eb94e05eef01d02bd5b8"
+      "sha256": "7e00647c69c3b2b29e85811bc481d363cdc8befdc05752d11c68040c92b52a07"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/runtime-pin-change.json",
@@ -195,7 +195,7 @@
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/startup.json",
       "bytes": 1000,
-      "sha256": "473b92a5bc51c17aa7d735a811f9b51a6cfe5f99a8090e3314cda2ea484713f1"
+      "sha256": "0d463feb1668130dc3e4e67f5e3f824e24b444b35df3bbb4fc9a8e64a665baff"
     },
     {
       "path": "audits/AI_PORTABLE_CLOSURE_20260909/variant-plan-controls-01/focused.log",
@@ -330,7 +330,7 @@
     {
       "path": "tools/local-image-generation/runtime-pack-source-pins.json",
       "bytes": 10100,
-      "sha256": "fff06fb55a5f474b8027f9da839e96f9a400fbfefad07cb75053e16177961fc0"
+      "sha256": "596c8ef8107f23d76c85f6ca944fb30d3e5ea82d25bcdb9f8e93049d92a891ad"
     },
     {
       "path": "tools/local-image-generation/runtime-pack.mjs",

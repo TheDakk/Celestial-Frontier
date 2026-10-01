@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/08-bass/authoring.json",
-      "sha256": "67d8e7401a304a3f2fac91d94933a7a06ab8ef72998f4f5825c441a031415354"
+      "sha256": "c90341b8abe4f38619193eddbed76333d1c9dbb00601504c9a0d96b3ffe4a6f3"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/08-bass/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "bbd57a83f7e192e9a2b33b3191a7e281f5443f730138e7a465f503b642b1e640",
-  "bindingHash": "fc55142464c45db4a43d23885075bd98acafcf95e22ff423f498fcd6c0437747",
+  "recordRecipeHash": "7b5ba5d4957bf1d31e44be217ab69030020ec56930795087199bd58adc1f0a38",
+  "bindingHash": "7fae357a15bb6216016eb63ce16ebf50f142d5e24b111bbde510d14fbc816a7e",
   "contactEndpoints": [],
   "shapeJoints": [
     "pectoralNear",
@@ -60,7 +60,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/08-bass/authoring.json",
-      "sha256": "67d8e7401a304a3f2fac91d94933a7a06ab8ef72998f4f5825c441a031415354",
+      "sha256": "c90341b8abe4f38619193eddbed76333d1c9dbb00601504c9a0d96b3ffe4a6f3",
       "unchanged": true
     },
     {

@@ -9,7 +9,7 @@
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/baseline-layered-reach.ts",
-    "sha256": "5f86501e3bece589f10d7e891c740a98f88aa32043391a95371385334b2e3306"
+    "sha256": "f2a93471070ea491efb5c14b4d62250022f28b802536f8d1befae083f973d1f5"
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/comparison-02.log",
@@ -21,11 +21,11 @@
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/sources-01.json",
-    "sha256": "594149908afa344cc7f90a98ff1c77560e678e98115f01804419de5e15e6606c"
+    "sha256": "de50dc845dc28ecf509e5bb1e636de3ff3806f0848ea652f90a9826f2a470694"
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/candidate-02-layered-reach.ts",
-    "sha256": "83b8c103b1b7617df405100289092b5ecb610a100bcfb463871465dfe1d232a7"
+    "sha256": "36d8160d4a4c3b11601bf29a758c203f5e6b88cac42145ad3c695827e389c25b"
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/comparison-01.log",
@@ -37,19 +37,19 @@
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/targeted-01.log",
-    "sha256": "8e24915f7c44f2ae1835914c80cb246961514491c5a76b9a5a0f4709b44cfc55"
+    "sha256": "0c84dda88410e84acbfdc9a7ee2c46729867f1edb88a16a2f17fa883d61d41ba"
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/targeted-02.log",
-    "sha256": "fee2dc60d89965b2c98dc903d6a11a0339f0676e589a2f8625284f393c6c93d9"
+    "sha256": "117cde454355d69798e41527d7e01a63c88693aa2bb6d7aaf8d3ab9e2bea5657"
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/root-validate.log",
-    "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+    "sha256": "341cc9b2f71d7693aedb63e8b680d7ac4143039634c37ff0de0ac5bf359d9f9e"
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/README.md",
-    "sha256": "424698ca4ee9a52b0294e9642361b80fd0521ce9aedfce6f26100b83811a289c"
+    "sha256": "144c3d386ace499bf0b84b4fe7514a09d7693124d5ba4be7fd7897a86082b0de"
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/run-02.mjs",
@@ -57,11 +57,11 @@
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/candidate-layered-reach.ts",
-    "sha256": "5c6ecd291e12eedcc342ce596594b451cd39dfdf4a799b11c91ede3f3f1d475a"
+    "sha256": "b43b9943272bbd87b64477e12356a1a30b5e93f966e4cef01176b02c894b5cba"
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/sources-02.json",
-    "sha256": "e32f43ccaf2aef51857c21b1ff2892a648db1a2af8c92be3514cf9dfa141ffeb"
+    "sha256": "c50c749bf794d6678c5584a99ba7bcfc65184447db3d4960b542b2c072c35dd7"
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/app-types.log",
@@ -69,7 +69,7 @@
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/s2-dependency-identity.json",
-    "sha256": "7893ec26bcd584b26f0387f2c098a08c08f47ff674365a76671106f867e9a216"
+    "sha256": "8cda6a7befc81a8a6dde9685dca5fbd2bc6b6eb0339036f78033adc3cebdf1f1"
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/mutation-results.json",
@@ -81,7 +81,7 @@
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/develop-profile.log",
-    "sha256": "f62fd85cfb383bcf488197c23ceaf73b74af879db14c175c3b4d1c3eb17726d4"
+    "sha256": "42c63a3e1967df2caf331b7c77b23369c20a080f7691b67e31a56e4dc0d4e4ce"
   },
   {
     "path": "audits/C22_LAYERED_REACH_20260925/mutation-controls.mjs",

@@ -148,8 +148,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "f9fed9bd0621995b61e8560dbb8797b4c285cfb6a2637a98b8ef8f42d2df7f9f",
-  "bindingHash": "5dfe2e058e9b92643865ab9af2cddab468317d170da1b6104f27371664735fad",
+  "recordRecipeHash": "4037fc76c52ee9abeda2721b60e887902cb29cd2a29b09778df54ba5d006703b",
+  "bindingHash": "3274ebacae477a4e9758f2772eb351e8ff66225e1f6bcb8bd9cf424709e5db32",
   "family": "cephalopod",
   "contacts": [],
   "realm": "aquatic",
@@ -251,12 +251,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/record.json",
-      "sha256": "3cf39ce852b5eac82c7cee2c653312dad7866f41bb0b143bff20da5130f8f8d6",
+      "sha256": "80a6715012488932fd43bb8dc6a60f036b2b54d04fa04e5a95b580a8c6224e2b",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/binding.json",
-      "sha256": "a78a1f2c81cf33274d3b9ef82d1faa793b2f4d0a4191b9643c77e94ed0e5cb0a",
+      "sha256": "b42ad8d857f402461cacb57195b5ce05220164f8aeb2576b8483e09cdb65f311",
       "unchanged": true
     },
     {

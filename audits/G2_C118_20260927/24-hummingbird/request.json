@@ -3,8 +3,8 @@
   "name": "Hummingbird",
   "family": "biped-bird",
   "tool": "image_gen.imagegen",
-  "promptSha256": "9e6ba8b506d731728db3ba5c818fb8c6d15b0eb533aa0342a1aa4e0120bc90c7",
-  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "promptSha256": "ec1a3d6acd3744836b195dbc3e0d2fde836191dd5c49d76a9d93d72f2b756d9b",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
   "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
   "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
   "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
@@ -21,6 +21,6 @@
   "basePromptSha256": "d6f4188ebf8a75ab5d1d59d0c35c587af79ee84a38f926e99181ccea8d316d3d",
   "layoutCompilerSha256": "5362f81299e2b74f9dbae2f404db82a7d86f1e88c73b651f26d56090f603603c",
   "layoutClarification": "Species identity features FIRST: needle-thin bill at least as long as the head; narrow blade-like wings blurred in a hover; iridescent throat gorget. One Earth Hummingbird. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n",
-  "priorPromptSha256": "ec2700152942e36b1b2c7808884b09f6ad819008332fb9be9415e3c3a3d56155",
+  "priorPromptSha256": "90834662bc4c2fe65ea31d7ac815ae7bfd687216a343fffad2da850969fceb09",
   "targetedAnatomyClarification": "Natural very SHORT hummingbird legs and tiny feet in a relaxed planted stance, not walking like a ground bird. Long narrow folded wings, coherent feather neck/back silhouette; no isolated crown feather scrap."
 }

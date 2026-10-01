@@ -5,7 +5,7 @@
     "output": "master-generation-01.png",
     "sha256": "b30eb2c8541c3d6dc08c3042f62be163293cf7e7a0d7ca7e5778031420f5f03a",
     "prompt": "prompt.txt",
-    "promptSha256": "42daaee4e08ba3bf90bf9821a0d67b229bd933274d38fae97b5846ea41d7e17b",
+    "promptSha256": "0bc699a2234be7201a03b952bdfa9335c320be9e3c5a65d874c344e30759065a",
     "finding": "Far pectoral not visible; retained rejected master"
   },
   {
@@ -14,7 +14,7 @@
     "output": "master.png",
     "sha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8",
     "prompt": "prompt-correction-02.txt",
-    "promptSha256": "1b49657be61ef74a8fcf6f1c0c4105c80133d8643464dc2dcbf08d732bd133f0",
+    "promptSha256": "faace401d09c7caa0c16cb11fc84b5275eecf5f0a087034ee1a4392aa3d4c364",
     "finding": "Far pectoral visible below gill, two pelvic fins retained, right-facing; Dakk pending"
   }
 ]

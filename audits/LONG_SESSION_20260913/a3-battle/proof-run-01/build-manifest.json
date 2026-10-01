@@ -3678,7 +3678,7 @@
     {
       "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
       "bytes": 3449,
-      "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4"
+      "sha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596"
     },
     {
       "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/wild-anchors.json",
@@ -3750,7 +3750,7 @@
     {
       "path": "arena-recipe.json",
       "bytes": 3449,
-      "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4"
+      "sha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596"
     },
     {
       "path": "bundle.js",

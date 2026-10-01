@@ -87,7 +87,7 @@ the still-live hero sibling is then actually painted. Final disposal destroys bo
 all six vertex/UV/index buffers, two textures, two sources, two bitmaps and actor roots; repeated
 cleanup is inert. Runtime errors 0, cleanup errors 0, browser closed.
 
-Report SHA `1d230a9cbded6b5ae256c1dff14672f23869e35af8ccc7331924363efc0cc917` binds ten source
+Report SHA `ce01bd86bbf50665fce5d56af4cf74e5d9b1cdb8b3735a21f2dc58788585dacc` binds ten source
 inputs and fifteen dist files / 1,724,943 bytes. Dist inventory SHA
 `a485c8f4fe04876205d229db6d02e41ccf0bd24706418d43dc5a92be22e02e50`.
 `evidence-verification.json` records the final read-only hash/media audit; `final-results.json`

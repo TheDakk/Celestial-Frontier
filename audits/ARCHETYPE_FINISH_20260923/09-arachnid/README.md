@@ -5,9 +5,9 @@ Local technical acceptance passes on corrected paint07, candidate08 and fit03. T
 | Authority | SHA-256 |
 |---|---|
 | Master | 55d8a5d00e4eabd761fc64cc42d82da1d3837b0448651d8c78820b9cfe9fb19b |
-| Exact prompt | 146a05c4c9b8a1af4f1b7a5f2cef877917d9ce54313799843170c807f6507fac |
-| Record recipe | 4165e4c57c508d442b8cf09991bd9925a34620bf5c3895d7a73d9962ec9a6a4c |
-| Binding | cfe54f47406488cec5c9883648132ace3aced5a0bfa011c2131b7363bf0f18d8 |
+| Exact prompt | a9f08424efee247ca5d4808d030c422e3fe8ef5267fc9ecedb93a9b2b8237eb5 |
+| Record recipe | 40db5c00b42d4080569036445dbd2ba629dd725f26a41e18cdbacae5f705b98b |
+| Binding | 773e17afc1c0be65f2469deb3b33c244a414ca9606d66dd465c0bee5b2e79460 |
 
 The selected 1254×1254 RGBA master, exact compiled kit/genome/part-list prompt, request and built-in image_gen receipt are in candidate-08. The request hashes its edit target and sole approved Discovery Atlas style reference. The original tool output remains retained. Eight distinct walking tips were independently reviewed. Parent manually declares sting absent, hidden/folded empty; partial proximal far4 overlap and the distinction between short pedipalps, fangs and walking legs are explicit. Twenty parts and twenty-one joints preserve the contract graph.
 

@@ -1,7 +1,7 @@
 [
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-controls.ts",
-    "sha256": "401b91f6ef29094f5dd39c7e8398f3ad30b657fd0354b5cedbc66b51327a19bc"
+    "sha256": "50a72c0aba39085a6a10bcc631cb4f6b1db1ab64f4de904d37b82b8379176e27"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
@@ -13,7 +13,7 @@
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/choreography.ts",
-    "sha256": "0e2857f94e6943c5fe61349f5aeeab1b18743a1ef2b7f3461be2555c862ed2e3"
+    "sha256": "6bdfc95b87e26ac7dc7bae448edafff75130ab14a680dc44746e04770239eb95"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/amplitude-profile.ts",
@@ -73,7 +73,7 @@
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/arena.ts",
-    "sha256": "f61d1130f3c1791499e12a5a7ef6000c92fbbce5c697ec4508da9082dc3e3fee"
+    "sha256": "0914065c5a23965a10d089ade2e2d8bd1162612669325e6f8a95bff48ea78798"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timeline.ts",
@@ -89,7 +89,7 @@
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/sequencer.ts",
-    "sha256": "0b168bd71cb30507326580d02f9584c6901c8f8f0a66ec6fe2c7357b306598a8"
+    "sha256": "839c7023d9d0d274b9617ad4f4299eef6b58edf499f495c542ea795619523685"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/painted-contact-selector.mjs",
@@ -165,7 +165,7 @@
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
-    "sha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+    "sha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/stance-envelope.ts",

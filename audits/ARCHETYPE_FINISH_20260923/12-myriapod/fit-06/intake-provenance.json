@@ -2,7 +2,7 @@
   "schema": "cf.sprint-authored-intake/v1",
   "status": "FIT_COMPILED",
   "sourceHead": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
-  "helperSha256": "31d8554a0d5550faf20707297cb4696cbed00ae1dc15e502b7017a284d2b42cf",
+  "helperSha256": "db1e75c98fbbceab8111080cd84c5b90f6184993aedffd66bfd9b2207bee7cfe",
   "regionalHelperSha256": "25a65459ce82a31c810bb2500778dcd975c67981b66e3f58b83c0fe72179501e",
   "inputs": [
     {
@@ -96,8 +96,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "d686c0ef596e2c010c5f4b3cd629bb34c3e07f0cba6d526f9482418993aa7ef2",
-  "bindingHash": "2429ce6b8578b2f1f26bc64bf1be6a97d8803841961e8c72550ee89e203f72db",
+  "recordRecipeHash": "bed54546ba3f02df384ea4c65c0b4b29fafb6e040e5b17b18336e1764c71d827",
+  "bindingHash": "060dc37941b81267a9f6848a731aa6ce2d76278d458b8d062d57afa674bf1e7c",
   "contactEndpoints": [
     "leg0FarFoot",
     "leg0NearFoot",

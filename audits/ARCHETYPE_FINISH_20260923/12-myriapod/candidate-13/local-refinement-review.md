@@ -15,7 +15,7 @@ Mesh counts intentionally change:5058→5334 field vertices and8836→9353 field
 
 Both intake receipts identify the same executed intake and regional helper hashes. Base sampling remains40/80, fixed owners remain `['root']`, ordinary shape joints remain `[]`, regional diffusion remains32 iterations, and solver settings remain iterations4/globalIterations4/targetWeight0.35. The regional receipt's zero coordinate/topology/UV/ownership/profile changes describe its own pre-regional→final step, not equality between the two differently sampled fits.
 
-Fit11 record authority: `39962065dde06970c0b494e3e2b959d363202fef2d9804658abc1a6bfacb7b16`; binding authority: `c67037345e169e813839fc96b66b0f1c05758cb0c9124a8326c2e42fa15a10aa`.
+Fit11 record authority: `6c574f9f0ecfee789ed0259c13293fe5fddeed1ed17dd992c478b24c65e4470a`; binding authority: `cc2ac0042e7e0a0592a6c6220e6102537b35b6632204c9e8e74ca50eb058537e`.
 
 Selected file SHA-256 values:
 
@@ -25,9 +25,9 @@ Selected file SHA-256 values:
 | candidate13 master.png | e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e |
 | candidate13 presence.json | cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c |
 | fit11 labels.png | 637ea64a967c55876c31acb7c0aa2096e4a863cf73a9ae9cca8d76057313b477 |
-| fit11 pre-regional-binding.json | 1b0113a3cfc5195c41471b067b26b9eb537c9043da588cb3dad278a1ecda1162 |
-| fit11 binding.json | 4ebf5d0067f2062b1fd1ec4128a2b6f0f837d4f950aa6ac39ffd4bbf019ff56c |
-| fit11 regional-authoring-receipt.json | d4697d8d352b82a8c641ac6455f8d6fdde0e51ca0eae75108afc02f7fff0f253 |
+| fit11 pre-regional-binding.json | 8905f01b6297b5e4d98a819ebc2dba11f77539316c5b3e2576bd95b5f151ac5a |
+| fit11 binding.json | 376f63769db24aae3e20c92b47c25d45d2dca9b409cff52069922467d44ada76 |
+| fit11 regional-authoring-receipt.json | 2647ccfd273983acc63825f3e72384e8bd24a512a3736218549a60bff8fb97ee |
 | packet regional-influences.mjs | 25a65459ce82a31c810bb2500778dcd975c67981b66e3f58b83c0fe72179501e |
 | shared split-observed-surfaces.mjs | 4d0280d20b8a1b3032595d89e28ace3c56f2c2c570458e12efc6a79423daa084 |
 | shared build-paint-skin.mjs | 55509deba10b18a005d4ae34e296a509036ab09fdad9ae623f3c640227429951 |

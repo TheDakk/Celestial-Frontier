@@ -2,7 +2,7 @@
   "schema": "cf.sprint-authored-intake/v1",
   "status": "FIT_COMPILED",
   "sourceHead": "1dfeec2a88ac6e7be01b525e12421c3b1b181a7c",
-  "helperSha256": "00f96495f28219a5201edaeeace8dc482bc263fc9ce0bc5d2290bd6b11f54f23",
+  "helperSha256": "205340e4f941de770d434db524b10d13ada82ccd823e231ee7d5a9a8caf8f8b6",
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-05/master.png",
@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-05/authoring.json",
-      "sha256": "550bd5657d3b0d1e7adb9ed5061f7d2220c654d585a536cecd4437732c0b0005"
+      "sha256": "70cbea9195ccad4454688533e86c171b8de83db0e44ebb7b9c1a4aff6dbc6f80"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-05/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "8499e6b0c1acbeceb970910cedd46202fce2498a3d672d8d8b2c77221d97d628",
-  "bindingHash": "0235383a8bbb78c214ee8fef0640f301d9de6880d21db9bd8a07ff5769e0e73c",
+  "recordRecipeHash": "b94286ff248b86599f1b0540894ac98a0ef1d794513c4fd7eb0b6b94bcb612eb",
+  "bindingHash": "8a281ea638c0e55a125ab275480f5e8a22dc4192fedf853828862f29c8e535e8",
   "contactEndpoints": [
     "hindFarAnkle",
     "foreFarAnkle",
@@ -69,7 +69,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-05/authoring.json",
-      "sha256": "550bd5657d3b0d1e7adb9ed5061f7d2220c654d585a536cecd4437732c0b0005",
+      "sha256": "70cbea9195ccad4454688533e86c171b8de83db0e44ebb7b9c1a4aff6dbc6f80",
       "unchanged": true
     },
     {

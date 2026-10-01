@@ -72,6 +72,6 @@ No browser or test job was run when preparing this correction; its native
 result is pending. Any later attempt must use a fresh output directory.
 
 - Failed runner SHA-256: `e7567722f50724992376eb744dd187b46fbb811b3fbb0fa8a88830a9fee90889`.
-- Failed report SHA-256: `d14b15597a842a55275d86a59cd8645f61d0d1388cda1d44a472d77179c4217d`.
+- Failed report SHA-256: `379d056cfbfcd609f1de43566b4be3a020d4d63397b69719764097cae09538dc`.
 - New policy runner SHA-256: `81f8044d5b62304746049aea1f03d7919cdd6eeccc673e5a8267d08a9c504a7b`.
 - New policy runner binds **46** explicit source carriers.

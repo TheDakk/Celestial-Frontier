@@ -158,8 +158,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "887857dd7213d86fe5278ab6dd4ef3ebbf5a06a86f12a9f241b56c4e14eb26a0",
-  "bindingHash": "1c17dc4a28087fc13d7e7d358cb0ba5d12c8229f5a049a5b9b083058fcac226e",
+  "recordRecipeHash": "359ea5009240cea77a5b7c8a464917914cfbf52d52beebf98becd8fa78f7e7d6",
+  "bindingHash": "25ca1d86326824785f7d12eea59dacc51e0eada9876621da0de42dcb9d8fdd66",
   "family": "biped-bird",
   "contacts": [
     "legFarAnkle",
@@ -495,12 +495,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/15-goose/fit-02/record.json",
-      "sha256": "01b649a3999f9ce27d7dc05050711db5a5e8006eafc1b22a1065c67f1700b5a0",
+      "sha256": "325ddaf7cfb2ab98152b46f8a0683e95529c7cf0658359169072f48b06d9546b",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/15-goose/fit-02/binding.json",
-      "sha256": "0b7bccca07fcafa8d6eb5d766659e85f49a528b7a0f117a728b59437064637b6",
+      "sha256": "1f804a7a80ae6b7518dc5e13fbc9beed2c0c861fdd9c845615416ad9eee650e8",
       "unchanged": true
     },
     {

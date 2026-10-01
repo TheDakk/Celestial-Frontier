@@ -3,7 +3,7 @@
   "rows": [
     {
       "path": "audits/G1_AUTO_AUTHOR_20260926/native-g2c56/c56-04-bobcat/report.json",
-      "sha256": "61bfd6b3fde116cb4b80c26a85c1702801748c4881e655831a20b1f71fc9686f",
+      "sha256": "11d60bafac4ad1e52e7e1b66d17bf4f0c35b2d5d01c267f3151f6bea95d9d2e8",
       "error": "Error: Battle capture: missing live frames\n    at need (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/capture-timeline.mjs:6:36)\n    at requireBattleCaptureTimeline (file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/capture-timeline.mjs:23:2)\n    at file:///Users/dakk/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs:84:32",
       "plannedDurationMs": 15532.666666666666,
       "frames": 850,
@@ -187,7 +187,7 @@
     },
     {
       "path": "audits/C59_REPAIR_20260926/bobcat-profile/report.json",
-      "sha256": "8df1b96ad3796dd64712715c4dc177115e0277b7b52d2c579f3df1495a7c1505",
+      "sha256": "9b6987e832d0fb79e2f1b48cb589ffaeefcfbd8558fabf4f9df7e306c703f0ac",
       "error": "Error: Battle capture: missing live frames\n    at need (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/capture-timeline.mjs:6:36)\n    at requireBattleCaptureTimeline (file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/capture-timeline.mjs:23:2)\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:84:32",
       "plannedDurationMs": 15532.666666666666,
       "frames": 850,

@@ -6,7 +6,7 @@
     {
       "path": "build-evidence.mjs",
       "bytes": 12732,
-      "sha256": "d8039641600a4a4bf27ffb0f3be48df43777e33ad3d86ee9b77c4981a21b83cd"
+      "sha256": "0484f6f055cfd0499e6e5167a7fd5af501be2094f477f30412aadd243cf7fb32"
     },
     {
       "path": "comparison-sheet.png",
@@ -36,17 +36,17 @@
     {
       "path": "generation-01/request.json",
       "bytes": 1405,
-      "sha256": "0d5d04200b6fd190d17038319a4d9c7dcda868cb29a0f0837dc36cc3ce5d96e3"
+      "sha256": "4ae83d79640e756dccaadee48973dd822d1fda1bf43b21487fa8d0491f8bfc55"
     },
     {
       "path": "generation-01/result.json",
       "bytes": 691,
-      "sha256": "bad0d6f0dd88035b9642ef0a9d3ab7a15992f8a962c5ffd9ef8d541df32cdd1e"
+      "sha256": "c0478806664650792d66ec32e3638162edc2f137c427717df460f36e5be83f98"
     },
     {
       "path": "generation-01/sent-prompt.txt",
       "bytes": 8049,
-      "sha256": "c35fbf4093e44d7ca0d0267a627c365823d1059daf41f21b7bf3068ff2628eb4"
+      "sha256": "eaaa5758c4134fd82c3bda23b60a0a36680af834ac8e23c792eb60a402a4a494"
     },
     {
       "path": "intake-01/admission-control.json",
@@ -116,7 +116,7 @@
     {
       "path": "intake-01/validate.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "intake-01/visible-part-receipt.json",
@@ -246,7 +246,7 @@
     {
       "path": "README.md",
       "bytes": 7170,
-      "sha256": "12eb5bf5eec2d0af36097f5bea0a453aaf92bbb76012d010f7ffe2d4f96a2f9f"
+      "sha256": "acc651699b84dcd8bff9ab2e70d12de1a1ae14786dd684eee97f62bc3f5a07a4"
     },
     {
       "path": "sheet-receipt.json",

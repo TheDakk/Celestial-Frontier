@@ -1,7 +1,7 @@
 {
   "schema": "cf.authored-paint-boundary-continuity/v1",
-  "recordRecipeHash": "daa68241ea47298267bdec89e076321856f4c6550309e1f8c30188fd68113312",
-  "bindingHash": "c1318cdb58637ad7aabb545a80d3c7219e14de14d32bac0b1b098f8dcb933c22",
+  "recordRecipeHash": "a508c9fa386cfa919af66bcc120b1377953c985a3d4dac15268162b24a5037d4",
+  "bindingHash": "46e7bfd6f39bcabba957e27f5f4dc0cc068849a3dfcbb3e457cd6e68c5444eb7",
   "pairs": [
     [
       "root-patch",

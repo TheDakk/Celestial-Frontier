@@ -1,7 +1,7 @@
 {
   "schema": "cf.continuous-skin-trajectory-diagnosis/v1",
   "scope": "Largest consecutive120Hz field-vertex steps compared with raw current-pose targets; no visual or timing acceptance",
-  "poseExportSha256": "c26a00e96a19a812648d4e4ca38d8617bec9f6e27e1f5803ce4170a36564eeb4",
+  "poseExportSha256": "ed05f4835b7eeb51941d2c3ddd97b83a8e7f6063058494a140fa07d61dea0202",
   "rows": [
     {
       "id": "civet",

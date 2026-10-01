@@ -6435,51 +6435,51 @@
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/record.json",
-      "sha256": "5327906d70d258adef8e40514643df9aa17516c98c11e328c2f2a3e9216683bb"
+      "sha256": "1502a450682422a646fc779378d8b2e81e45a8ada6afaec0e418b2b1ae49e2dc"
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/binding.json",
-      "sha256": "2ca72744f94ad11896b15dcdc0261e177dd4016cea5e19d384bb98e0b8fba74f"
+      "sha256": "fa7d2e1661090f54298ceb8e2b6ee7a34dfd16d61fc47aa03ba64d3d2f9b74a0"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/record.json",
-      "sha256": "4e935e3ab068c2ed17e5d993bb542cc4f7551e549772b0d3cce772df610d50b9"
+      "sha256": "079e15a8ca95a34e491db38377875b5078d7bd5350eaa23b872b7372674b13fe"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/binding.json",
-      "sha256": "d23162df16d6c89d1f1b16d19acf52984ff73dc5e1bddf31e6430bb955464c8e"
+      "sha256": "43f1c495f0a2edf73024f499c02e45ef22405dcddbb4a45468c51ebfc16948f2"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/record.json",
-      "sha256": "333cacf0dac7834c820887404a7ba3f03593206110e51b639c7a33a89e49e7a2"
+      "sha256": "4f332bb5f5082dbf4434003443b8d66e355bbdba1ef134fe805326712ff12d7a"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/binding.json",
-      "sha256": "2d40f5cb65fad7ae0e020794ca38f333aff4a308faecebb93bbede039b8d0451"
+      "sha256": "9b05fd21d4426cb54472ef94388fdc0d8bb4e22e3a5ed3c81d792ba0a9a70876"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/record.json",
-      "sha256": "12b5ac9ce9d1f3986628253ecabdb97f7e4a772562703eebf9f543d56e6ed64a"
+      "sha256": "fa291eb7023476f4c831c70dc0e21c94b9188b2bdd7d091982b369ec433f4d81"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/binding.json",
-      "sha256": "1340a8f5f1b7b52e2e75fd6c0c756edcf196544c0183038826275b9ffd320f22"
+      "sha256": "e1636b71eb674a33a152e98540e36e7bc7a6a3e9a2b84524fab86b3d6f9b6694"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/record.json",
-      "sha256": "474df06b02888a7e086ddb0a867c6f2357c64a40431e4df7defb2e6da057f27f"
+      "sha256": "50458070cd5817bcdda37fbcafdd78ca131ffaaaa0f15e391ee92cc98e52b142"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/binding.json",
-      "sha256": "ffc7fc4056e51b9d36edc228063adbab50a6c79c369ccd4fc671016368504240"
+      "sha256": "6dc9b7b6c1798e9de7e89cae43d2cdec98061cfcd0cd83d3f1428addc3fca254"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/record.json",
-      "sha256": "19f7988daaa9054bed677f00abf2adb88b5b69dd91e5776e0462a9009e260d54"
+      "sha256": "806038e18364b1049486ad0d381e22686edf53f785aa92bc3646730a9ce6d2b2"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/binding.json",
-      "sha256": "4ebf5d0067f2062b1fd1ec4128a2b6f0f837d4f950aa6ac39ffd4bbf019ff56c"
+      "sha256": "376f63769db24aae3e20c92b47c25d45d2dca9b409cff52069922467d44ada76"
     }
   ]
 }

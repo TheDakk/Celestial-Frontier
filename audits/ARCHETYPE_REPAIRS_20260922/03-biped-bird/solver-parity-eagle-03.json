@@ -1315,52 +1315,52 @@
   "inputs": [
     {
       "path": "sparse-fit-comparison-08.json",
-      "sha256": "7793bcdab98224fb6609d854bd71c77001384aa2d78e9205e3e69eea9d56dae2",
+      "sha256": "f01c7888adef0d1e2be04a31c82684dd4069c30669cb7ab999de3b756de3e790",
       "unchanged": true
     },
     {
       "path": "cpu-diagnosis-02.json",
-      "sha256": "f8a8910736643a49aa83b33e114665f421221efd98dd058cd1a9b2817ea6d9d3",
+      "sha256": "37dea369663204567fb443596521a1798ddf83e74ffb33a25f29c9fb3309bdf3",
       "unchanged": true
     },
     {
       "path": "static-02.json",
-      "sha256": "f3d79fb8917d6a51148aadcb54e5e56642577d44ede3d35f19c5476c02f07dfb",
+      "sha256": "552a90350c22eb9e0dae159e825058977ee73a19d575223ce21837d3a132d4d0",
       "unchanged": true
     },
     {
       "path": "static-03.json",
-      "sha256": "843b32d160e3c57182b15b959b2faed3670c939d2b176e4f87e2acd784ee8910",
+      "sha256": "40a633c2a6d92335afd6bf283148db54d204418c2ac7c9c278bac5c579fb9270",
       "unchanged": true
     },
     {
       "path": "fit-08/record.json",
-      "sha256": "8ba1ca327f6c7f3aa0b54ee4b7bfed6de62168b4fec7d722eeca3806ac4eef91",
+      "sha256": "fe01ccbdaa8193c613ae4743b41126815136e4531b2ee73a6d945d4f965adf13",
       "unchanged": true
     },
     {
       "path": "fit-08/binding.json",
-      "sha256": "50011172805af4288eefa1cbcc225d4bad107d4f0c2f4718de6e2046e7ecf7b2",
+      "sha256": "7aedb9e04573aea4afc937f02bdd9802b01869c365bdf225c92d870ca3a08441",
       "unchanged": true
     },
     {
       "path": "fit-02/record.json",
-      "sha256": "2a7c3dda3abb4fc6d77ec55ace22aa898f8a9819da7e833105be49b54064aae1",
+      "sha256": "eab527d6036d7f7a9e75cf653388de6b3389d875fc1d27201048c596ae08ff96",
       "unchanged": true
     },
     {
       "path": "fit-02/binding.json",
-      "sha256": "dd3d0748a2e29d07b9a7add8b238c370047fc2124cfc5997a150018141b03034",
+      "sha256": "cd63e5ae47240cdeed065f12e6f08e90d54e1824954968c8d05082bee2064c80",
       "unchanged": true
     },
     {
       "path": "fit-03/record.json",
-      "sha256": "5d4bbc544154dbcfb640a5831165cad69934ac39f249d58eec7fb82587e3eb22",
+      "sha256": "8d04cd921ec98931b20da89b4d3d35f3c308c9db0148eb486a1f5c03f3cf7d7e",
       "unchanged": true
     },
     {
       "path": "fit-03/binding.json",
-      "sha256": "5fa27e3f320b07bfc559890da46bb5a69a3fa9be4161c96dc66065213f5da0b8",
+      "sha256": "4b649620feaf7f23f5de1fc4691d31fb91384534ac7d35949847ba0e881f42d0",
       "unchanged": true
     }
   ],

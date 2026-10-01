@@ -2,7 +2,7 @@
   "schema": "cf.sprint-authored-intake/v1",
   "status": "FIT_COMPILED",
   "sourceHead": "4ff2fad720e1d5734ce95a77c8a401cd8884e24e",
-  "helperSha256": "ae9cafe006642a2aea96206581abb3c4df2bb94ad9b2ae4259092979ceb992ae",
+  "helperSha256": "140f5e1a6ae74943f8fce1961137cac6d47de5088765333edbcd9815553ed8d6",
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/master.png",
@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/authoring.json",
-      "sha256": "c761f0e6ba839842da64658080ef0d8743d70a0e3602849a78882bd1cc0b0387"
+      "sha256": "1893fec220e6800998556637a506ee13e2bde98c50805608247ebcac61056ae4"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "7263c539c82ea8ac23412f26e35918b11200f5f2b298934b5582d38d1c073f61",
-  "bindingHash": "ff3027d3481efbb17b79c94230a6809ada43ded4378e4153011de78b584fcf4e",
+  "recordRecipeHash": "9759c7515e58b2d611031e1cdcdb71859fa5c765be1c0f027e4ee38a9b953b46",
+  "bindingHash": "83837268a326fb5a3df59d5d4e618cafdfb1e6247552cbde0d4978196a2f7595",
   "contactEndpoints": [],
   "shapeJoints": [
     "jaw",
@@ -60,7 +60,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/authoring.json",
-      "sha256": "c761f0e6ba839842da64658080ef0d8743d70a0e3602849a78882bd1cc0b0387",
+      "sha256": "1893fec220e6800998556637a506ee13e2bde98c50805608247ebcac61056ae4",
       "unchanged": true
     },
     {

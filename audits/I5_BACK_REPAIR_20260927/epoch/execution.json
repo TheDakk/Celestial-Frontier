@@ -4,9 +4,9 @@
   "source": "/Users/dakk/.codex/worktrees/i5-back-proof/celestial-frontier-openai-mac",
   "instrument": {
     "commit": "ca46f497b0e09b5f0ef56e6f3e3ab88c2ccb0a24",
-    "sha256": "fecdae416750c36698e8e80b7cf4206704e14ea3564fd6b6b22ece63e70157be"
+    "sha256": "dda59e9fb00616694b2fa5a9d4acd1331eeb7329fb0b5d2026ce0177fd5a1470"
   },
-  "v1Sha256": "c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc",
+  "v1Sha256": "340a67c1e6d6f4f7e120c7f13e1e06a674757ddcd2a023c100e4f7f65493fbd9",
   "automaticRetries": 0,
   "steps": [
     {

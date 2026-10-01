@@ -21,11 +21,11 @@ Paired next steps: Claude merges the signed repair, wires this fit plus declarat
 ## Selected hashes
 
 - master.png: `5c878a70e83b232ef7aa1d716f6deab99626a8292e2a9714d87d945b1187e2ee`
-- prompt-correction-04.txt: `19ab686aaaadc91cc4b2c19c944455d48c8a9af98fbe13c802028a4bfc88fadc`
-- fit-06/record.json: `7731a1b9050637d4552062b925e00a02ebf74bdce875097429d399629a193046`
-- fit-06/binding.json: `58a8cf5327da5d3992d69b56dfd045f7cdcca38e14c86ea59570b5387a779c53`
-- weapon-declaration.json: `0a8c29b926576ff1ccfada6c249963f245154cfb9928979f4ea0ab9f546f26d8`
-- markings.json: `45655c87902db65565641faf37a8c2e2d1020a2e3adb79bb818a1cbf77e5ed8e`
+- prompt-correction-04.txt: `553468d19a595db13783002be382050e35de440d79133afb3ba2e18167cbb8c5`
+- fit-06/record.json: `7cfb0d0a6db56d4a653eff786002c537c58969123948bfd3c16a9e6e9c21746a`
+- fit-06/binding.json: `7f8af5d588864538fc68f3ed5ecb7077dadcd1d5260182acde94074b81a39238`
+- weapon-declaration.json: `4815b3d4fc709f832e563f1aea70fbe2364a6e2cc38374eef0f57dbaf7b828fa`
+- markings.json: `598d30b694c46185ac15ff5382268609cb9097a2247cbf9cfd2de4fa4722088d`
 - review-sheet.png: `437d012d4e31f4afa3d02dace1f20128b0e0548b559864dba1d1ada82f66e561`
-- native-phone4x-04/report.json: `4fe23d4e4e782a120f4f12616509e6e84e5eb671f10f695eb93906858b932a0f`
+- native-phone4x-04/report.json: `682830d84cc63242d663bb6489707ced7e2824f4fe64aa22d78b934568013e4b`
 - native-phone4x-04/battle-10s.webm: `fc8322f622c6ec15a952c39b466d1f22045dd93001de2ad69d955a497cc825ff`

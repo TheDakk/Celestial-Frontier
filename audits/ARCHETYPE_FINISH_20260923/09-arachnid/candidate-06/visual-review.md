@@ -8,7 +8,7 @@ executed. Parent owns presence and subsequent qualification.
 ## Authorities
 
 - Actual source `candidate-06/master.png`: SHA-256 `a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5`.
-- New `candidate-06/authoring.json`: creation SHA-256 `66580e52033f75b0b2ad072ff9d7e1ebd3e77c9d15b1adad6bae1e7826ba750a`.
+- New `candidate-06/authoring.json`: creation SHA-256 `fb8f9ca5242aef32130bafcc5927e37b04f91c77f53141f9e5af6a7be24c5949`.
 - Parent declaration `candidate-06/presence.json`: SHA-256 `2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165`.
 
 The retained pose guide was not read to obtain coordinates. Every coordinate

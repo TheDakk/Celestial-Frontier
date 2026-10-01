@@ -5,8 +5,8 @@
   "name": "Starfish",
   "predecessorCommit": "4f82025c490d39b80b78bfab81ac53232a780a74",
   "currentFit": "fit-02",
-  "recordRecipeHash": "7b02d178f4c3ff04c7801e70613a66f3f82a238647dcd4fe73ba593e37470dca",
-  "bindingHash": "365bab8ce809290217ded4a06f11685bedd88046e630e78ee381d0ec55298ae9",
+  "recordRecipeHash": "2083de71c8d079fa6e07ad31ef36c32484ed705e3940c623f91a50ca860b1ba1",
+  "bindingHash": "0b2317154b00f12c80f0734af843e08a6b28129ae3185697328fc39d1b9557df",
   "masterSha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687",
   "presenceSha256": "301237f98346c6f5301d071ed5e4eb0990f026f41a334b7e3149d3c3410fa563",
   "static": {

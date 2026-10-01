@@ -116,23 +116,23 @@
     },
     "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v3-remaining-chain.mjs": {
       "bytes": 9146,
-      "sha256": "167dd174b627c595fdaaef6c264dc51239bf8719eafb486606f900f2d31c157f"
+      "sha256": "dad869b005971bf339d508d55e54d0dbe83f23d961b3285e34e4f2af505eb560"
     },
     "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/chain-report.json": {
       "bytes": 26025,
-      "sha256": "45c9b4ec08a2d321da3dd9f50396920ae9923bde25d31fd3db57cf5dfc121ab0"
+      "sha256": "7cad845855b7563d281237f8deacb272f94504348b3ffa787a29003033289d88"
     },
     "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/desktop/review.json": {
       "bytes": 716082,
-      "sha256": "6df31a5df3e90f98573ac922861309cc28dc0ce44494e196cbab8add9699743f"
+      "sha256": "e33057cad8a25d909df06394b9164b7f57e79cb66ffdcb4e0322865ecb662867"
     },
     "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/phone/review.json": {
       "bytes": 709513,
-      "sha256": "0fdd8a09afa9e17e9a0882bb1d2ad35bd7e2fedcafe7f21094c21aac2546e92b"
+      "sha256": "87cf020551769db6b138b2ac2f57b8bbef517c9422339aa4418e50ffc7255e62"
     },
     "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/blocked/review.json": {
       "bytes": 333805,
-      "sha256": "4cc8494c28fc845f690be411fdb1bc50727551c7df0b28a9ad11e7f5710a8b36"
+      "sha256": "114d25d5d2363be41f8d1d77f81d8c3659c36b840b3691714c23a45835427919"
     },
     "port/v2/apps/game/src/painted-vista-load.test.ts": {
       "bytes": 15141,
@@ -172,7 +172,7 @@
     },
     "port/v2/packages/domain/strays/src/strays.verbatim.js": {
       "bytes": 22644,
-      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+      "sha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c"
     },
     "port/v2/packages/domain/biome-profile/src/index.ts": {
       "bytes": 14498,
@@ -585,7 +585,7 @@
       "log": {
         "path": "blocked.log",
         "bytes": 148,
-        "sha256": "0290b5baa6c37ee5734844a0accdb530e0c096ec30e63c0604efe05ba534ebff"
+        "sha256": "e83d53d9b1ce9a94bc862ff6674e837472f568930a20077f24a6e56fce863349"
       },
       "endedAt": "2026-09-09T02:37:16.167Z",
       "exitCode": 0,
@@ -594,7 +594,7 @@
       "review": {
         "path": "blocked/review.json",
         "bytes": 513922,
-        "sha256": "5ce7981ac14c34d3bdce6591e15f62da388874e7a7f54371912495fba27e49c6"
+        "sha256": "0614b0da2020d1421df799dcdf534ed7085759077e1c1c661c8c1f3f4624c133"
       }
     },
     {
@@ -612,7 +612,7 @@
       "log": {
         "path": "default.log",
         "bytes": 148,
-        "sha256": "464863aec9566de94f31b4b501dff094e9ad9d6deccb2a037e650ba14cfaad68"
+        "sha256": "462854d407e660a18159f1ec5c4edb08a8a73bb422beafffa19059716ed8d790"
       },
       "endedAt": "2026-09-09T02:37:22.627Z",
       "exitCode": 0,
@@ -621,7 +621,7 @@
       "review": {
         "path": "default/review.json",
         "bytes": 503269,
-        "sha256": "c08ab75517ec2e002153eb2db2eb03a8d1aed1553bc16a6c2e1c0726bbf4fa9d"
+        "sha256": "37a5d67f53163a05bca07a521a625723d29c6224e218aa534ee1b86ab2fc4589"
       }
     }
   ],
@@ -633,19 +633,19 @@
     "records": {
       "chain": {
         "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/chain-report.json",
-        "sha256": "45c9b4ec08a2d321da3dd9f50396920ae9923bde25d31fd3db57cf5dfc121ab0"
+        "sha256": "7cad845855b7563d281237f8deacb272f94504348b3ffa787a29003033289d88"
       },
       "desktop": {
         "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/desktop/review.json",
-        "sha256": "6df31a5df3e90f98573ac922861309cc28dc0ce44494e196cbab8add9699743f"
+        "sha256": "e33057cad8a25d909df06394b9164b7f57e79cb66ffdcb4e0322865ecb662867"
       },
       "phone": {
         "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/phone/review.json",
-        "sha256": "0fdd8a09afa9e17e9a0882bb1d2ad35bd7e2fedcafe7f21094c21aac2546e92b"
+        "sha256": "87cf020551769db6b138b2ac2f57b8bbef517c9422339aa4418e50ffc7255e62"
       },
       "blockedFailure": {
         "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/blocked/review.json",
-        "sha256": "4cc8494c28fc845f690be411fdb1bc50727551c7df0b28a9ad11e7f5710a8b36"
+        "sha256": "114d25d5d2363be41f8d1d77f81d8c3659c36b840b3691714c23a45835427919"
       }
     },
     "retainedScreenshots": [

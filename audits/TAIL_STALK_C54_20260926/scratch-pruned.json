@@ -17,7 +17,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/09-carp/axial-05/fit/intake-provenance.json",
-          "sha256": "6c487418dc5f92e0dc6d7b620649ad2785399aa978ff67a17275e8855e68507f",
+          "sha256": "c35a6a4c129c3e29a179b43d451723d21cd66415e4fba04c876cf86a189f0ff7",
           "bytes": 3107
         },
         {
@@ -168,7 +168,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/09-carp/axial-04/fit/intake-provenance.json",
-          "sha256": "6c487418dc5f92e0dc6d7b620649ad2785399aa978ff67a17275e8855e68507f",
+          "sha256": "c35a6a4c129c3e29a179b43d451723d21cd66415e4fba04c876cf86a189f0ff7",
           "bytes": 3107
         },
         {
@@ -470,7 +470,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/09-carp/axial-06/fit/intake-provenance.json",
-          "sha256": "6c487418dc5f92e0dc6d7b620649ad2785399aa978ff67a17275e8855e68507f",
+          "sha256": "c35a6a4c129c3e29a179b43d451723d21cd66415e4fba04c876cf86a189f0ff7",
           "bytes": 3107
         },
         {
@@ -621,7 +621,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/09-carp/axial-07/fit/intake-provenance.json",
-          "sha256": "6c487418dc5f92e0dc6d7b620649ad2785399aa978ff67a17275e8855e68507f",
+          "sha256": "c35a6a4c129c3e29a179b43d451723d21cd66415e4fba04c876cf86a189f0ff7",
           "bytes": 3107
         },
         {
@@ -772,7 +772,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/07-perch/axial-05/fit/intake-provenance.json",
-          "sha256": "1993a57fc56ca5126c35d8abe5e4832c66de667ab84ae5103e763ba95711faa8",
+          "sha256": "59adaed36e7557dd1b267f173d72f03eb830b42d33ef316dfa78a65fbf664bf9",
           "bytes": 3115
         },
         {
@@ -923,7 +923,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/07-perch/axial-04/fit/intake-provenance.json",
-          "sha256": "1993a57fc56ca5126c35d8abe5e4832c66de667ab84ae5103e763ba95711faa8",
+          "sha256": "59adaed36e7557dd1b267f173d72f03eb830b42d33ef316dfa78a65fbf664bf9",
           "bytes": 3115
         },
         {
@@ -1225,7 +1225,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/07-perch/axial-07/fit/intake-provenance.json",
-          "sha256": "1993a57fc56ca5126c35d8abe5e4832c66de667ab84ae5103e763ba95711faa8",
+          "sha256": "59adaed36e7557dd1b267f173d72f03eb830b42d33ef316dfa78a65fbf664bf9",
           "bytes": 3115
         },
         {
@@ -2099,7 +2099,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/08-cod/axial-05/fit/intake-provenance.json",
-          "sha256": "c8b13512675d0015351fc0db44362e30f5c855f865c10d5ee42f8dd250acad57",
+          "sha256": "49c956c573c89603502c75c64b758bea428af3fcf835fb8f5f6082ca216ff859",
           "bytes": 3099
         },
         {
@@ -2250,7 +2250,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/08-cod/axial-02/fit/intake-provenance.json",
-          "sha256": "c8b13512675d0015351fc0db44362e30f5c855f865c10d5ee42f8dd250acad57",
+          "sha256": "49c956c573c89603502c75c64b758bea428af3fcf835fb8f5f6082ca216ff859",
           "bytes": 3099
         },
         {
@@ -2401,7 +2401,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/08-cod/axial-03/fit/intake-provenance.json",
-          "sha256": "c8b13512675d0015351fc0db44362e30f5c855f865c10d5ee42f8dd250acad57",
+          "sha256": "49c956c573c89603502c75c64b758bea428af3fcf835fb8f5f6082ca216ff859",
           "bytes": 3099
         },
         {
@@ -2552,7 +2552,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/08-cod/axial-04/fit/intake-provenance.json",
-          "sha256": "c8b13512675d0015351fc0db44362e30f5c855f865c10d5ee42f8dd250acad57",
+          "sha256": "49c956c573c89603502c75c64b758bea428af3fcf835fb8f5f6082ca216ff859",
           "bytes": 3099
         },
         {
@@ -2854,7 +2854,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/08-cod/axial-01/fit/intake-provenance.json",
-          "sha256": "c8b13512675d0015351fc0db44362e30f5c855f865c10d5ee42f8dd250acad57",
+          "sha256": "49c956c573c89603502c75c64b758bea428af3fcf835fb8f5f6082ca216ff859",
           "bytes": 3099
         },
         {
@@ -3005,7 +3005,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/08-cod/axial-07/fit/intake-provenance.json",
-          "sha256": "c8b13512675d0015351fc0db44362e30f5c855f865c10d5ee42f8dd250acad57",
+          "sha256": "49c956c573c89603502c75c64b758bea428af3fcf835fb8f5f6082ca216ff859",
           "bytes": 3099
         },
         {
@@ -3307,7 +3307,7 @@
         },
         {
           "path": "audits/TAIL_STALK_C54_20260926/08-cod/cover-04-weld/fit/intake-provenance.json",
-          "sha256": "dc8d57ba7366ac8be1cb4b315ca384fe8bf963a4b3431ce741fa4f51b10e36bd",
+          "sha256": "15919783f17352537fbc0de6149e44af1d24e2388164e29144c4a951567724d0",
           "bytes": 3027
         },
         {
@@ -4436,7 +4436,7 @@
         },
         {
           "path": "audits/D26_FINISH_20260926/cougar-01/prepared/cougar-binding.json",
-          "sha256": "b2b60503766ba28f8c9efd7d0585d4416a23e0fbeee4f5e5cb41e97dc02c6065",
+          "sha256": "143262b0ac4f68efc1388828c68a74b784b711868828220e572ed23c1d3f55d0",
           "bytes": 3136866
         },
         {

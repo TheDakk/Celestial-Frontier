@@ -1,6 +1,6 @@
 {
   "schema": "cf.painter-part-intake/v1",
-  "recordRecipeHash": "023c9266a43cb6b07a0410afb20fcaf12ad74b80ff114b388e79537f249a224e",
+  "recordRecipeHash": "dc46365d8387115405292befd6987c62f2ad9217843e74733fbf8a77888c91e1",
   "cutoutSha256": "3abc568beb996e694c78736854a216222dc5cfae47d39494a4f6ba7e84b5494f",
   "labelsFile": "labels.png",
   "labelsSha256": "72cc6e27e08a35e043d1c64d31d3e509f2b60478b853efaf46f8bb92a0e4980b",
@@ -71,5 +71,5 @@
       "layer": "near"
     }
   ],
-  "declarationHash": "1795d0b76e23bd1ad84dccdf7d44dc661b1482890b9ea606d6522b3836e271e6"
+  "declarationHash": "386dee996cba78967d84263fe272b4b5bf51487431fae24b15d2ec853c372ca1"
 }

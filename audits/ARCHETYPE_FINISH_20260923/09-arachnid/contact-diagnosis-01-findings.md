@@ -2,7 +2,7 @@
 
 Executed `node audits/ARCHETYPE_FINISH_20260923/09-arachnid/contact-diagnosis-01.mjs` once. This diagnostic reconstructs only the four first refused samples from static01 through the same canonical GSAP, performance, contact and presentation owners. All four outer error strings match exactly. The source receives four invertible observational insertions in a temporary bundle; no math, policy, pose, gate, threshold or input is changed. No ARAP solve, painted publication, native replay or full static battery runs here.
 
-All 46 bundled source hashes stayed unchanged; the 45 shared with static01 match its bytes exactly. The record, binding and static report are unchanged. `contact-diagnosis-01.sources.json` retains the exact trace insertions and hashes. Record `4ccacb0f6629c177bb87ad3da912fbcee0b0e50fea2ca4bb0f26ea446839b49a`; binding `4f2f2fb7c58326d55cc95393e9296c4839059219cdbec7480f267be91ba927ca`.
+All 46 bundled source hashes stayed unchanged; the 45 shared with static01 match its bytes exactly. The record, binding and static report are unchanged. `contact-diagnosis-01.sources.json` retains the exact trace insertions and hashes. Record `4fd9ce445f39d10d8c4f46685561bee92798b20a9f770cd6849e11b4c085b6fa`; binding `2666b32a46e7cda9ac3f79ab93b459f4d15d4eab4259e10746dee8b2c61265ce`.
 
 The unchanged accommodation cap is **23.31090731824911 source pixels**. Both the initial endpoint solve and the independent rigid painted-support fallback exceed it:
 

@@ -227,7 +227,7 @@
     "nativeAcceptance": false
   },
   "provenance": {
-    "observationSha256": "fd3d76f60ac53fa6e4a5eded9e9173eb9925acc3f62e1edfe666020d4d9aa13e",
+    "observationSha256": "f8780404bd079962b6b754f0de23a4e5091723d90d5863d7e0c3491070db3b0a",
     "sourceLabelsReused": false,
     "sourceLandmarksReused": false,
     "rgbaChanges": 0,
@@ -292,5 +292,5 @@
       "leg3FarFoot"
     ]
   },
-  "recipeHash": "77b7657dc82f8439c2d802f52d06f32166829087f6124e2219fc4e3745d36476"
+  "recipeHash": "2145982da92a2641516a7cd0c3cc1387a3275e740ace0a619c9d6d6bdee208ec"
 }

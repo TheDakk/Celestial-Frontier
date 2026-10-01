@@ -716,12 +716,12 @@
   "sources": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-contact-diagnosis02.json",
-      "sha256": "edca860960cf6720503334156a272d89611756a84c165d8b74224ef10e9a8e75",
+      "sha256": "0d2a0b1c1e21c3a55895837b329c379b15d6ce8e312af7c0ea4af2f98efcc1f0",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-06/record.json",
-      "sha256": "07674cb93baf4ad78c47fee2a40b26e98f490c2ed91ac3d9fa085bf0b3c7f802",
+      "sha256": "fc7dac2cf13039ef059456197a7240536f1f9a4dda0641c74b3e2991e4104f19",
       "unchanged": true
     },
     {

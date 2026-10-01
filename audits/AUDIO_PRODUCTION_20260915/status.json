@@ -17,27 +17,27 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "c782fc2687b786b519cb51c28be875ec6c68d0fc4b65296147e0694bb945cfc1",
+      "sha256": "6b29034f5e6933ac2efd414a20447a0a6c8e33215a22cfaca223354d2d4872ef",
       "bytes": 6454
     },
     {
       "path": "checks/root-validate.log",
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927",
       "bytes": 1093
     },
     {
       "path": "game-inventory-v2.json",
-      "sha256": "f57378cea0ba9e70f05461ac4c3347f914cbc6ec7db19c350c970029a3024bdd",
+      "sha256": "3604b9e7662d2a396171e968ee2411d5a9ea3e75bf630efd9314f196f7f9f30e",
       "bytes": 314130
     },
     {
       "path": "game-inventory.json",
-      "sha256": "5baab70727b9a5c5ef5eff44907b8decc663eb996d592b39e80130079d01ef3f",
+      "sha256": "16ab3cf8fa17e9ea68a288924c757904d9b485cef61a725887d5b5e3a5514d91",
       "bytes": 287957
     },
     {
       "path": "reaper-qualification/host-qualification.rpp",
-      "sha256": "04d7fd203319458096584f06d7f7cd10e46cbf3f16eae46337277c4c4d29f214",
+      "sha256": "bfcd32f910ed00c0a8937d2bb0851a3da825198026ac6e39c57ce36a52d4ceed",
       "bytes": 77829
     },
     {
@@ -62,7 +62,7 @@
     },
     {
       "path": "reaper-qualification-02/host-qualification.rpp",
-      "sha256": "68faac49b6dc606dd33b5c58cd455a7ae51ada2bf9b5ac5dbd549d91d9118061",
+      "sha256": "784fd227546560a7e4787cebef502f31d168ac64607e8ed35eb06cd3866e4c3c",
       "bytes": 77832
     },
     {
@@ -82,7 +82,7 @@
     },
     {
       "path": "reaper-qualification-02/replay/host-qualification.rpp",
-      "sha256": "089294c81136bbb27b909cd8318054e2c8e13c7bbe1925c22c9b70a600525453",
+      "sha256": "2d2152dc145283fc4035d3bcf613b28afe915b852703f6c587238193f0990fb1",
       "bytes": 77839
     },
     {
@@ -92,7 +92,7 @@
     },
     {
       "path": "reaper-qualification-02/source-hashes-before-replay.json",
-      "sha256": "2ef90700dbce978067d67e9ee3e8debba75c5389e346c47421e8096bdef31417",
+      "sha256": "f7dc5602ebeec8a9f16cd830409273628fff32a579987fe71cc08d25a2806667",
       "bytes": 195
     },
     {
@@ -107,7 +107,7 @@
     },
     {
       "path": "reaper-qualification-03/host-qualification.rpp",
-      "sha256": "2205df3e96af889bdc5380b5a36b9f33749f096607af242cfb1ecd7fdedccbe7",
+      "sha256": "c5ea5b4f35619a24e5372a68f341a55bc9778d02625033594369fa85ab253685",
       "bytes": 77832
     },
     {
@@ -132,7 +132,7 @@
     },
     {
       "path": "reaper-qualification-03/qualification.json",
-      "sha256": "8f053ffcb22c77ed92b6fb7c0fdbf8fbfb19ee49533cf244e8eb94ecfb416e65",
+      "sha256": "399e3066e7f8fad7a1bf8c78407ec070e5268d0a35ae1be90b437d4c3d080c6e",
       "bytes": 3271
     },
     {
@@ -142,7 +142,7 @@
     },
     {
       "path": "reaper-qualification-03/replay/host-qualification.rpp",
-      "sha256": "0fb4848783420a76c1fe2c67a34a1e548ecc573ca28d1456c5c18d5ee9d2b66d",
+      "sha256": "682e0d824f70808badd5ab8c4383c301611f30b87bd42cbbba485007b82f1ebc",
       "bytes": 77839
     },
     {
