@@ -1,0 +1,255 @@
+{
+ "schema": "cf.identity-reseal-followup/v1",
+ "pairs": [
+  {
+   "old": "cf9cc5455f6c400a28a59be649da600dbc0842e4094e16d08cf0faa75d4f3756",
+   "new": "7cee2b6ad29809eb073d07a1041e97144b4172118ce5bd1cfbf24a0d86416467",
+   "file": "audits/I5_CARD_SCRATCH_20260927/battery/develop-profile.log"
+  },
+  {
+   "old": "a91edf31d7414b6b23a9caaaea320e12378601a5f851fb9104b57aceaa098a95",
+   "new": "d4b8c41113e002cf849f0a4e535f44ad2c67f12164c1c29ee4c87f055e4c5325",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-1-report.json"
+  },
+  {
+   "old": "06cac515852ba5a208ec3212846f0bae39da04cf99f043b51fbc626afa602ae3",
+   "new": "6d49d0804b963c26a9d725bea86956058c3d2db5b7e5ed99911801301d4f41a7",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-1.log"
+  },
+  {
+   "old": "a239ab0d6a56bac78161b1b6bb9e64030a43bb8f968b69e5bd6f36ed10c672eb",
+   "new": "ee233e142d3ce795eefb630d5eed276efb0e5e82127254c9abef1bd49c7208af",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-2-report.json"
+  },
+  {
+   "old": "1e9fd2392e2167410cee0b981ba5daea500f9840a4df6c9b44cb0fcedd490c09",
+   "new": "7170cc552d549abca566954d1d288d544a539f39c500ca66c5466697807e6e9f",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-2.log"
+  },
+  {
+   "old": "8e8bceb909a895a4467893c0e69ad41f9f3ed3161bd6aa16f8ad6c7973809ccf",
+   "new": "36b89fff44048dd8f96f75f70d45ba351610a188686f7992e7143e7a09d6c7ec",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-3-report.json"
+  },
+  {
+   "old": "db81270b0cbcbd30db7ac2aa09385e3cf8f444276ede2c57c9540ff99d1ad2df",
+   "new": "e86d6df9f160a5b1f1a77ac941bcdbd7fdcfd0cda8997dc765529239f7951ad4",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-3.log"
+  },
+  {
+   "old": "6c4614908afede1c1272c4973e4f80314caa5bed7ee226edeb9ce986fde424b3",
+   "new": "a90b8ec6992e712de39f4c374235d949a6e626b8cf1da992c499e1764baf9191",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-budget.json"
+  },
+  {
+   "old": "b6f6d2bd24276eed731c69eb33d498a14d3c887a9cb7e233fa757b2d322d2d9e",
+   "new": "a884b6412e92194e314a48381f2f109f0d2bd32b1b6ec50095873d14eb2699a3",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/prepare-build.log"
+  },
+  {
+   "old": "519679ed28b9ca580b69899b4f9ebab8edfc235bb9b29f262cbe5c14885f2147",
+   "new": "94c620590146e581c607f2c42310cdcfda89db68dbb3525f515d738f99dd32d5",
+   "file": "audits/I5_IDB_OWNERS_20260927/activation-authority.log"
+  },
+  {
+   "old": "4dd08b9ae650dffc6c280f3ae8a54d57436e188029449778e704897b8aca961b",
+   "new": "74d25dadb6fd19783dc7d411867fbbbd11f7340b55f4eb22ea7f405eb86c85af",
+   "file": "audits/I5_IDB_OWNERS_20260927/battery/develop-profile.log"
+  },
+  {
+   "old": "6e5449a2cbd82d53a14417b26542b00ca16b139a88634945661612529a182c47",
+   "new": "de138b61b24da4fe0e682d230d910568d23fdb113f8de48618d12df26c95a52e",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/calibration-1-report.json"
+  },
+  {
+   "old": "b62899bb28c14ea568fb76ec4d69264cb2bbbd28990eabb67a496cac5beb71ef",
+   "new": "39898c4750b8e8aca4ba15f79937d013a59953349390f23dfdd750b20aa27cee",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/calibration-1.log"
+  },
+  {
+   "old": "f1876862fd28bd0c15c95906a2ff6940a540e308806aa952298183d0512e8307",
+   "new": "d4bd5ccb487446359a10f3f04415b99876c4b579b065e428bac5149309d0b505",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/calibration-2-report.json"
+  },
+  {
+   "old": "ee1a7edc4992bf1c67459e52599c742cc275bc1cb2a2b58c315cea17de94e945",
+   "new": "1bd29b029ac6804b02d6a4921ea1aad556372e43d608774201e512b2ec250823",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/calibration-2.log"
+  },
+  {
+   "old": "275b220a6c3e12679a42db5b8e1ed7043391ffc3b513c25c8c9c576fb9a7bc66",
+   "new": "077c41fb7148e99b33308076e15a6b524df25a574ab829cc531ce12f2cf7bc24",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/calibration-3-report.json"
+  },
+  {
+   "old": "27aadb04f85c769d54ec812716403a03dc278ffb8263fe66e299241cd9a60535",
+   "new": "bc00326ec2fe51fad7e811d3a83a00c1a63cca492522d28f1f4a7a163df9b42e",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/calibration-3.log"
+  },
+  {
+   "old": "f2b9a9e71f7b13bf7a723916e06cde48d40105a66b8bddf73829b1eba4f4ca63",
+   "new": "c9e1adfaf927faf959d479f76f429d35000209e8026929d3eda7f4281de5a380",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/calibration-budget.json"
+  },
+  {
+   "old": "c7994806e7881b38fa602a4d02e879711a1c7f200b905324bf64836f62cf35b1",
+   "new": "8abdad0830361c5ff17beb0e6ae134426635b4a25665a2ed785407cfd4d7ea91",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/certification-report.json"
+  },
+  {
+   "old": "92609246a3d5128c85e635a6aac13b7d17b07f9af4b37b8189191092acdde63c",
+   "new": "7a0ebb3135adc50c20e4a4c6df3ac15e65d81b3dcffb2d3426489eda77c61644",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/certification.log"
+  },
+  {
+   "old": "77024cace5f984621f0ad332983c7794fac3fd57f8b57c504e61bdf46e4605f8",
+   "new": "1996842eb8a9ae26503e11aff723c261429ac8ac9c71d32d90dcac3d67646fc3",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/compendiummem-candidate-sample-i5-v2-d20c27166042-calibration-1.json"
+  },
+  {
+   "old": "409abc8ca90e7885e018e1c8bfbc262f1cdbe7a45db3d39413dca372c1438275",
+   "new": "27cbab0e751bda52be41ef5258771aea9960dacfc7e38234f22b756a0e43876a",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/compendiummem-candidate-sample-i5-v2-d20c27166042-calibration-2.json"
+  },
+  {
+   "old": "981029213c60576a5579d535e974c3182e8e98d5181b13306668e42876660713",
+   "new": "76f5d12a59fb09aa49fada143d6578ce846f2d4f9dad04063c0c77352861e97e",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/compendiummem-candidate-sample-i5-v2-d20c27166042-calibration-3.json"
+  },
+  {
+   "old": "3dc975e403fec9342e95851076827ee20d218cc13aaa21cd9bb316d100b67078",
+   "new": "a3f8abb9d82689148c070275b32b5789697ca36f5f80180337003fa37714c256",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/prepare-build.log"
+  },
+  {
+   "old": "f9906f80a79408b50fc1ce52203a567d7516b43c330fd3b8fdc65fb532bd352a",
+   "new": "a5e2e732a777bafd2cf49556a53776ea4d08a97142d1c3fe5b19a0b7ee15ca86",
+   "file": "audits/I5_IDB_OWNERS_20260927/green-battery/develop-profile.log"
+  },
+  {
+   "old": "b6d375c01c2b12fd1b8956d247517afb93624b3f286f5336ec38603bf655e873",
+   "new": "3456fc8827e49afd791971d913de1dccfe15da830a99745a7c8e43fb67a3f35c",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/compendium-memory-v2.json"
+  },
+  {
+   "old": "a91edf31d7414b6b23a9caaaea320e12378601a5f851fb9104b57aceaa098a95",
+   "new": "c8ad9a9a13c419a632eb3d5a306f9ef87e4ce4266381fb8e641dc74a04a72e90",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-1-report.json"
+  },
+  {
+   "old": "a239ab0d6a56bac78161b1b6bb9e64030a43bb8f968b69e5bd6f36ed10c672eb",
+   "new": "4e6aa9979d6a6547ae33db4200b9dadd3da030d02c195a651d84e892d6e66d91",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-2-report.json"
+  },
+  {
+   "old": "8e8bceb909a895a4467893c0e69ad41f9f3ed3161bd6aa16f8ad6c7973809ccf",
+   "new": "84c467771c6d48085a9f4d416cfb781877d2a8b179dfcfa8a938b815e0cc7565",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-3-report.json"
+  },
+  {
+   "old": "6e5449a2cbd82d53a14417b26542b00ca16b139a88634945661612529a182c47",
+   "new": "b612c6bc2c92941a4f9a4bfc5ea8ff0c955285b69eba1ad9f25330f8278e0be6",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/calibration-1-report.json"
+  },
+  {
+   "old": "f1876862fd28bd0c15c95906a2ff6940a540e308806aa952298183d0512e8307",
+   "new": "39a3d0285a9159bd73681800ba53e277081cfe2e49982499298cb523e2fa64f8",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/calibration-2-report.json"
+  },
+  {
+   "old": "275b220a6c3e12679a42db5b8e1ed7043391ffc3b513c25c8c9c576fb9a7bc66",
+   "new": "d7d2a95f433a621a713d5f42a1e4b2d358b267b4e0a4849b08396b1e286e3f3f",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/calibration-3-report.json"
+  },
+  {
+   "old": "77024cace5f984621f0ad332983c7794fac3fd57f8b57c504e61bdf46e4605f8",
+   "new": "a831ef414f104d9cb382b13b42ec7bc495ba8959a380918dc86b73bb18e0761b",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/compendiummem-candidate-sample-i5-v2-d20c27166042-calibration-1.json"
+  },
+  {
+   "old": "409abc8ca90e7885e018e1c8bfbc262f1cdbe7a45db3d39413dca372c1438275",
+   "new": "3430c60bbcebef96e52f5d41887c4540f00d5e0b45665669ccf708bc86d204ee",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/compendiummem-candidate-sample-i5-v2-d20c27166042-calibration-2.json"
+  },
+  {
+   "old": "981029213c60576a5579d535e974c3182e8e98d5181b13306668e42876660713",
+   "new": "707690e947bb636604736f3490ae3f9c9ef4c01ee742eae759ac0d57c627354f",
+   "file": "audits/I5_IDB_OWNERS_20260927/epoch/compendiummem-candidate-sample-i5-v2-d20c27166042-calibration-3.json"
+  },
+  {
+   "old": "b81b7997596c9d0b619d45b70231624e22198b2fbcf5c2bf50a1c500dae3b5ae",
+   "new": "6683105142151026566b3e6ffe3f63663411f38d14030762f014c5987d30f5ee",
+   "file": "audits/I5_CARD_SCRATCH_20260927/battery/results.json"
+  },
+  {
+   "old": "ae95db17641f53aefa049c954ce942126542cf70179a327065d4421c231f0419",
+   "new": "3666e9d31b8e1ea9bd80145ba97fa114f65f57c36877e3b60f0ea0223500459c",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/compendiummem-candidate-sample-i5-v2-f8588b039275-calibration-1.json"
+  },
+  {
+   "old": "d6d897ad159e86a8f665f03bce75c82a7200e05780cbf294958cb6e15f114ace",
+   "new": "fa2f73547c63e4b1eab0c1cd2db3c45375380e73e5c909c668f07ba209d9ad8f",
+   "file": "audits/I5_CARD_SCRATCH_20260927/epoch/compendiummem-candidate-sample-i5-v2-f8588b039275-calibration-2.json"
+  },
+  {
+   "old": "cad8240c39733f02ef75a5a8a8ed81514a678bd59f19ea45fc160b66476c911a",
+   "new": "1c3d4fa2da4f2a5886d542549a8f198e360f6ce00ed62becc2fcc6f538a82d8a",
+   "file": "audits/I5_IDB_OWNERS_20260927/RESULT.json"
+  },
+  {
+   "old": "d4ea09340aa4d447c5b0f028722a024f290e55ee7214ebd72c65cc572e278701",
+   "new": "5877c52dbab04b10dc8a6d888a870b50efd90523ea9a40faa3fe2c95710b00af",
+   "file": "audits/I5_IDB_OWNERS_20260927/battery/results.json"
+  },
+  {
+   "old": "b104c35916c72c48b9d76767252350d04293ae13c310747e313cd4be75afd6e6",
+   "new": "ed2a26677d4816ae1d8cf343ef40e4eeb11c341ecf3c0378a267c2e32b64f3ae",
+   "file": "audits/I5_IDB_OWNERS_20260927/green-battery/results.json"
+  },
+  {
+   "old": "5d6955ab15e5e37e366fdd92ebada7e174efa158cbc081d79781272458f779f2",
+   "new": "c77ef982bb10af193d7f370ed7b03c49f2318b70d187ace0c8a8e28b30a7d97c",
+   "file": "port/v2/budgets/compendium-memory-active.json"
+  },
+  {
+   "old": "5d6955ab15e5e37e366fdd92ebada7e174efa158cbc081d79781272458f779f2",
+   "new": "aa868da72eae169e0f5773358209806fb92a1c0fe052eb5ce28b411905a0fb72",
+   "file": "port/v2/budgets/compendium-memory-active.json"
+  }
+ ],
+ "edited": [
+  "audits/I5_CARD_SCRATCH_20260927/battery/develop-profile.log",
+  "audits/I5_CARD_SCRATCH_20260927/battery/results.json",
+  "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-1-report.json",
+  "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-1.log",
+  "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-2-report.json",
+  "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-2.log",
+  "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-3-report.json",
+  "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-3.log",
+  "audits/I5_CARD_SCRATCH_20260927/epoch/calibration-budget.json",
+  "audits/I5_CARD_SCRATCH_20260927/epoch/compendiummem-candidate-sample-i5-v2-f8588b039275-calibration-1.json",
+  "audits/I5_CARD_SCRATCH_20260927/epoch/compendiummem-candidate-sample-i5-v2-f8588b039275-calibration-2.json",
+  "audits/I5_CARD_SCRATCH_20260927/epoch/prepare-build.log",
+  "audits/I5_IDB_OWNERS_20260927/RESULT.json",
+  "audits/I5_IDB_OWNERS_20260927/activation-authority.log",
+  "audits/I5_IDB_OWNERS_20260927/battery/develop-profile.log",
+  "audits/I5_IDB_OWNERS_20260927/battery/results.json",
+  "audits/I5_IDB_OWNERS_20260927/epoch/calibration-1-report.json",
+  "audits/I5_IDB_OWNERS_20260927/epoch/calibration-1.log",
+  "audits/I5_IDB_OWNERS_20260927/epoch/calibration-2-report.json",
+  "audits/I5_IDB_OWNERS_20260927/epoch/calibration-2.log",
+  "audits/I5_IDB_OWNERS_20260927/epoch/calibration-3-report.json",
+  "audits/I5_IDB_OWNERS_20260927/epoch/calibration-3.log",
+  "audits/I5_IDB_OWNERS_20260927/epoch/calibration-budget.json",
+  "audits/I5_IDB_OWNERS_20260927/epoch/certification-report.json",
+  "audits/I5_IDB_OWNERS_20260927/epoch/certification.log",
+  "audits/I5_IDB_OWNERS_20260927/epoch/compendium-memory-v2.json",
+  "audits/I5_IDB_OWNERS_20260927/epoch/compendiummem-candidate-sample-i5-v2-d20c27166042-calibration-1.json",
+  "audits/I5_IDB_OWNERS_20260927/epoch/compendiummem-candidate-sample-i5-v2-d20c27166042-calibration-2.json",
+  "audits/I5_IDB_OWNERS_20260927/epoch/compendiummem-candidate-sample-i5-v2-d20c27166042-calibration-3.json",
+  "audits/I5_IDB_OWNERS_20260927/epoch/prepare-build.log",
+  "audits/I5_IDB_OWNERS_20260927/green-battery/develop-profile.log",
+  "audits/I5_IDB_OWNERS_20260927/green-battery/results.json",
+  "port/v2/budgets/compendium-memory-active.json"
+ ]
+}
