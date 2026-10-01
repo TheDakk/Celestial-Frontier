@@ -32,6 +32,21 @@ Self-contained for a fresh Claude session. Codex's block follows below. Older Cl
 - **Decisions:** D25 open (shopping stays off; the C110 data point is recorded there); D27 open; **D28 new** (remainder-island cap: keep 5% or raise it to 10% for reviewed subjects; the default keeps 5%).
 - **Progress:** `audits/GENERATED_GALLERY_20260927/coverage.json` counts **ACCEPTED only** (Claude's full-size review; held entries are listed as `heldNotCounted`). **175 of 631 Earth species (27.7 %)** are accepted and 13 are held. Master gallery: `gallery.jpg`; registry: `gallery-registry.json`, whose notes say HELD or why accepted.
 
+**IDENTITY REWRITE — 2026-09-30/10-01 (owner-approved force push; read before anything else)**
+- All history of this repo and both Pages repos was rewritten to remove the owner's personal identity. The public identity
+  is TheDakk; the owner is referred to as **Dakk**. Never write the owner's real name, e-mail or home-folder name anywhere.
+- **Every commit id changed.** Ids quoted in older docs, mailbox rows and evidence refer to the OLD history and no longer
+  resolve; the old -> new map is in the owner's local backup, not in the repo. The receipt and proof are in
+  `audits/IDENTITY_RESEAL_20260930/`.
+- Rewritten commits are unsigned (unavoidable); new commits are signed as before.
+- A **pre-push identity guard** (`.git/hooks/pre-push` in the shared clone, all worktrees) refuses any push that contains
+  an old pre-rewrite commit or the owner's identity forms. Do not bypass it with `--no-verify`.
+- `develop` and `main` were rewritten without the re-seal (no direct commits): `develop` shows 10 sealed-pin reds until
+  PR #43 merges; `main` turns green at the next release. `main`'s workflow file still triggers `test-battery` on push to
+  `main` with no authorization job (one such run was cancelled 2026-10-01); fix it in the next release.
+- GitHub still serves the old commits through the 42 closed pull-request refs until GitHub Support purges them.
+- The dev preview site holds rewritten build files whose pinned hashes no longer match; redeploy it at Dakk's word.
+
 **HOSTED READINESS — PR #43 (`anthropic/mac` → `develop`), 2026-09-27 end of day**
 - **Commit `66e19826` fixed a hosted red nobody could see locally.** Both Glass phone canaries, which the bounded agent lane always runs, were PRODUCT-RED on `SHIPYARD_STATE_TRUTH`. The shared Engineering contract still pinned 70 Shipyard controls, while the product renders 85 (70 + 15 Fabricator ×5, D16 `e1882e49`) and has `diag.trainingPractice` (Forge Training). The develop profile never runs browser canaries.
   - The fix changes the contract, Glass and Slice.
