@@ -1,7 +1,7 @@
 {
  "schema": "cf.card-master/v1",
  "earthName": "Salmon",
- "recordRecipeHash": "4bbfb883782353bd86e0e9751b3bf48ff79c0c47ea545d054876ad584e694bd9",
+ "recordRecipeHash": "7edbcdb118b4a47b18dfd328fe43c56bfff5113cc848814b433742819459108d",
  "source": {
   "master": "audits/ARCHETYPE_SPRINT_20260922/02-fish/master.png",
   "masterSha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4",

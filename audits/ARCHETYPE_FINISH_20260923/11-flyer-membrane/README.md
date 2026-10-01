@@ -7,8 +7,8 @@ Paint run `20260923-fruit-bat-paint-03`, candidate-02/fit-02, passes all13 stati
 - [Review sheet](review-sheet-native-01.png): whole master, labels, actual source-fit landmarks and film still; parent visually reviewed it.
 - [Native film](native-01/battle-10s.webm):602 measured frames over10016.2ms;606 encoded frames over10.110853s at1024×576. Exact Edge153.0.4234.48, CDP1.3; browser identity and timing scope in native-01/report.json. Per-rig bounds charge shared turn sampling plus each rig's own update; bounds-admission cost is excluded.
 - [Measured result](result.json), [static report](static-02.json), [final source check](final-source-check-01.json).
-- Master SHA256 `ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7`; exact submitted prompt SHA256 `f1713b7201837b939222a965582363fdec3f1bd25fec555599547cf35743fe88`.
-- IC-3 recipe `4526e0b0039a61f300dd8bf388146bf61fec5d43dd90445fdd563e3e7deef756`; binding `c8cee709a3a053664882a45c1d8d18562adcda3fa495117f16c2213763798656`.
+- Master SHA256 `ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7`; exact submitted prompt SHA256 `a25ee3f9914a4a3ed434d3f68d1cf45a2b1cdbd841235238a07d8b1cc8b98d13`.
+- IC-3 recipe `bd4cb0a581b7fae2d754c16a1478dc917817411e0fea37418999355d7d1c0d9a`; binding `9821496a0553e29a45c49edeb51d3c26f74a0a1361f158d7461907e3da472ddf`.
 - Built-in image generation request/receipt and original output path: request.json, generation-receipt.json. The new composition guide and sole Discovery Atlas style reference are retained and hashed. candidate-02 copies the same delivered1254² master and prompt without RGBA edits.
 
 Signed predecessor aaef06aff92852cd4caf711769ea80339a423605 verifies G. No production runtime, contract, solver, numerical limit or protected input changed for Fruit Bat. Source-retention-review-01 and final-source-check-01 establish exact source equivalence for reused S2: six subjects,13286 samples,12 protected inputs. The existing09-arachnid execution remains historical and is explicitly not a new S2 run. Native/static source inventories and the five final fit inputs match their measured bytes.

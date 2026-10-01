@@ -63,20 +63,20 @@
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/record.json",
-      "sha256": "24ccad753e5f42192b7822c6c9449446cc388ce7a11439ce95a37bd514de19b8",
-      "after": "24ccad753e5f42192b7822c6c9449446cc388ce7a11439ce95a37bd514de19b8",
+      "sha256": "4be8fa062f046371af7f2725e2e80c4d20d539d1650708d5c90295401ca1585d",
+      "after": "4be8fa062f046371af7f2725e2e80c4d20d539d1650708d5c90295401ca1585d",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/binding.json",
-      "sha256": "e35bd83c98d22bb72fee5ea78d5ba0046227855dd90d0151a04e507f05fec12d",
-      "after": "e35bd83c98d22bb72fee5ea78d5ba0046227855dd90d0151a04e507f05fec12d",
+      "sha256": "3bef6d4aabf795de26319dc27be3086627e28490ef73c8c75c53d9f30cd7457d",
+      "after": "3bef6d4aabf795de26319dc27be3086627e28490ef73c8c75c53d9f30cd7457d",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/planar-feasibility-03.json",
-      "sha256": "a433d368e5a1329c8d11b47ce4cf529cdc052368cb1b6ad6050021c2097d1583",
-      "after": "a433d368e5a1329c8d11b47ce4cf529cdc052368cb1b6ad6050021c2097d1583",
+      "sha256": "7f64c38e4b93f8b04a7adb306f3f0685d6f7d051a7ab58be51e8eaaed0e42516",
+      "after": "7f64c38e4b93f8b04a7adb306f3f0685d6f7d051a7ab58be51e8eaaed0e42516",
       "unchanged": true
     }
   ]

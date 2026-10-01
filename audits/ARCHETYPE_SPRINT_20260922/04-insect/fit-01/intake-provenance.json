@@ -2,7 +2,7 @@
   "schema": "cf.sprint-authored-intake/v1",
   "status": "REFUSED",
   "sourceHead": "d522797a30550680e9747a3d5e668f0967897e78",
-  "helperSha256": "ae9cafe006642a2aea96206581abb3c4df2bb94ad9b2ae4259092979ceb992ae",
+  "helperSha256": "140f5e1a6ae74943f8fce1961137cac6d47de5088765333edbcd9815553ed8d6",
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/04-insect/master.png",
@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/04-insect/authoring.json",
-      "sha256": "7f142fbb263602ff82645ad8a5250acb275caf0c27a1b91cefb3522a1ca09945"
+      "sha256": "8016d42772bdc91cd3f404a20e39d32c3de7009b0c245321635ea7ec62fe7f77"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/04-insect/subject-source.json",
@@ -42,7 +42,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/04-insect/authoring.json",
-      "sha256": "7f142fbb263602ff82645ad8a5250acb275caf0c27a1b91cefb3522a1ca09945",
+      "sha256": "8016d42772bdc91cd3f404a20e39d32c3de7009b0c245321635ea7ec62fe7f77",
       "unchanged": true
     },
     {

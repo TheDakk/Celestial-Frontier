@@ -41,7 +41,7 @@
   },
   {
     "path": "ART_KIT.md",
-    "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+    "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
     "matchesHEAD": true
   },
   {
@@ -51,7 +51,7 @@
   },
   {
     "path": "SOUND_KIT.md",
-    "sha256": "f74514cb967ea474b994a0c69ca0437cd7b35b6bc595523b54dc625fdeb0f5b0",
+    "sha256": "9786cc0d28b6d752345fa30a79f7c881f48dddd289b2dc5e0bade08053ab2bc3",
     "matchesHEAD": true
   },
   {

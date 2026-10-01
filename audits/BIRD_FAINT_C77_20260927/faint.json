@@ -1116,8 +1116,8 @@
     "name": "01-robin",
     "dir": "audits/G2_REFERENCES_C62_20260927/01-robin/fit-01",
     "scope": "Actual GSAP/contact 121 samples per action; no ARAP, blended stage, film or visual acceptance",
-    "recordHash": "3550ed56a62b9e4d74f854bb19e1a19c0c06679b602a72e3cb32c5c71673e3c4",
-    "bindingHash": "f507e73a7842aa80efb89f535c98e12c223fb9d2912fe6475d6b13aa58754774",
+    "recordHash": "bf91e2d4a064dee489d93a2acb857d806c820eb770125d31801548e028b8287d",
+    "bindingHash": "c1151bec52435297847f3af3ec47029469fb10728ab3c25561468585609a393a",
     "scaleLength": 0.2820329641892184,
     "compressionBound": 0.022562637135137474,
     "chains": [
@@ -1275,8 +1275,8 @@
     "name": "02-pigeon",
     "dir": "audits/G2_REFERENCES_C62_20260927/02-pigeon/fit-01",
     "scope": "Actual GSAP/contact 121 samples per action; no ARAP, blended stage, film or visual acceptance",
-    "recordHash": "8612d1a4244f6258e408501ed215d9ed0364e52516bb175eb7218d4203784ee0",
-    "bindingHash": "4a5c2e34e168fa0c7b85a6606c99e238e84bbaded233d0147f6bdd3bdf5fa498",
+    "recordHash": "e6cbf8ecac13d5065f204a872c18d35aa0ce87b8212fb423f59849bfde726a12",
+    "bindingHash": "4aa19bc56399bf12a1a4408797f190ada31aae547e11ffceaebdc9534b7eb21e",
     "scaleLength": 0.3317853987738857,
     "compressionBound": 0.026542831901910854,
     "chains": [
@@ -1434,8 +1434,8 @@
     "name": "03-duck-v2",
     "dir": "audits/G2_REFERENCES_C62_20260927/03-duck-v2/fit-01",
     "scope": "Actual GSAP/contact 121 samples per action; no ARAP, blended stage, film or visual acceptance",
-    "recordHash": "516e062c1409b51192165566d6a869b867d92ed12aa239f89d44330769077529",
-    "bindingHash": "4fbe2f39287a5a4cb8ad68705073c59feb43e26cc734ec40d6868d68109ef4fc",
+    "recordHash": "2c28810b9e37540bb352982c59c0ac30cfe20a9a6ac652326ca80ab0f47e634c",
+    "bindingHash": "7ad262fdaae3863b04c562a6abe3317c7fb9e49ed3d54cca79e014f3af15fd84",
     "scaleLength": 0.31463650621146305,
     "compressionBound": 0.025170920496917045,
     "chains": [
@@ -1593,8 +1593,8 @@
     "name": "04-hawk-v2",
     "dir": "audits/G2_REFERENCES_C62_20260927/04-hawk-v2/fit-01",
     "scope": "Actual GSAP/contact 121 samples per action; no ARAP, blended stage, film or visual acceptance",
-    "recordHash": "396a01820ca2eaee79995f4a1bc1d227b787cba08418875da89136f9714027c9",
-    "bindingHash": "112367ccb83f2a341da2927a8cf1312c2e59abc85828c65b960e3b3981c55628",
+    "recordHash": "202d9591d93a0f6023086d69c662d9efd9cd37a291a796e4c1f8b1210c700f79",
+    "bindingHash": "d590424837ada85cdbb9a4b3bcc13824da056d3721e42a51dc22bb5ad034751a",
     "scaleLength": 0.31741442317219654,
     "compressionBound": 0.025393153853775722,
     "chains": [

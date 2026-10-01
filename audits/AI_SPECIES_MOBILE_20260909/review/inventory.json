@@ -4,7 +4,7 @@
     {
       "path": "README.md",
       "bytes": 7666,
-      "sha256": "561bf655f3075a7fc01d7897c77be6cff50a7bb01ef7af4881046b2cd47831a3"
+      "sha256": "5e30d3a432826eecfc9a5f19c99fbc6f754d48bf79b9efee77d7372e6a6c8aba"
     },
     {
       "path": "existing-reference-inventory.json",
@@ -14,7 +14,7 @@
     {
       "path": "native-source-correspondence.json",
       "bytes": 1934,
-      "sha256": "163d1555fe77b26b4b5b2fddf7b422e316ae5ac0b9389c4e712be3fe99e67e0b"
+      "sha256": "04d70e8c16aa1e37dfab5dabefc93c94d2daa87495d7360f1d6817f293ab34d4"
     },
     {
       "path": "npm-onnxruntime-web-1.29.0.json",
@@ -34,7 +34,7 @@
     {
       "path": "source-retrieval-01.json",
       "bytes": 1307,
-      "sha256": "d10b1b14411aa247fed9495b6c7eb08639a8683b75f78b0381e2f14895c57d2c"
+      "sha256": "0dbf616fd1cf51065ea80a48c0a2665fdc7dbbcf1b2d99f73499ef4a66affb87"
     },
     {
       "path": "source-retrieval-02.json",

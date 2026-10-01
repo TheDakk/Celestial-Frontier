@@ -35,7 +35,7 @@ existing source-map-js1.2.1 with CDP zero-based line+1/column unchanged. Raw sta
 resolved JSON and exact generated JS/map hashes are retained; no package was added.
 
 Manifest `UI_U1_NAVIGATION_95c9a1f_20260906/manifest.json`, SHA256
-`728f9779812dafa96918f0e3a957e89efd0f54286414e7186387fafcf328a28d`.
+`17a5a717ffc58e8ce832b9a871221ce70a5c1c702911860b9bf16cbab645c9ba`.
 All23 retained compressed/original carrier hashes verified. Current nine-image normal review
 is in that directory; unlike9c869c3, it is evidence from the current tested diagnostic source.
 It remains visual review material, not acceptance. Independent code review found no remaining

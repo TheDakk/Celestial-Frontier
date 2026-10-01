@@ -4,10 +4,10 @@
     {
       "name": "goose",
       "oldManifest": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/15-goose/markings.json",
-      "oldManifestSha256": "8c2ed5a05b926c8bb2c487d43b598dae2a6ae40019b3f68f790fcc8b91c50e5e",
-      "oldRecordRecipeHash": "887857dd7213d86fe5278ab6dd4ef3ebbf5a06a86f12a9f241b56c4e14eb26a0",
-      "newRecordRecipeHash": "887857dd7213d86fe5278ab6dd4ef3ebbf5a06a86f12a9f241b56c4e14eb26a0",
-      "newManifestSha256": "ee3f890ae11697cbf60382b5846b2c0fb98a95f97050d0f6b1e25f5d092d1498",
+      "oldManifestSha256": "6784f1b30bf6d00e8d580aca07699763ce326ec9c0508b82b62beac3c49d37e9",
+      "oldRecordRecipeHash": "359ea5009240cea77a5b7c8a464917914cfbf52d52beebf98becd8fa78f7e7d6",
+      "newRecordRecipeHash": "359ea5009240cea77a5b7c8a464917914cfbf52d52beebf98becd8fa78f7e7d6",
+      "newManifestSha256": "b4cccedf2b9ceebbe3eb86f4d8ad19c2b9065cd57da78bfd3d15f70c0913fa33",
       "keyedSha256": "486a2bab390c2615e3a42e49a6c0688f40e9b94c9dc440d67fe49ff74996985f",
       "patterns": [
         {

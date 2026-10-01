@@ -26,7 +26,7 @@
       "width": 1536,
       "height": 1024,
       "prompt": "biome-comparison-prompt.txt",
-      "promptSha256": "2c324173c6a980b5216977d62eb8e39796d8d7d041139f8bab3862bfdb75f745",
+      "promptSha256": "03658d60ca94c8f944a9b8173068f0b805e4f21dc1ebb411baa49e8e9848fce8",
       "referenceSha256": "7bd83d0b8d3fe9a2072b24f1d3017bc5a3da38db04fd0cee4938f2385712550d",
       "attempts": 1,
       "model": "unreported",

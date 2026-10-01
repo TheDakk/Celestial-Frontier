@@ -39,7 +39,7 @@ const catalogFail = (node, message) => {
   process.exit(2);
 };
 if (createHash('sha256').update(src(CATALOG_WRAPPER_LABEL)).digest('hex')
-    !== 'c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a') {
+    !== 'e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285') {
   catalogFail(null, 'live apphooks.ts catalog wrapper changed from its audited authority contract');
 }
 let catalogProgram;
@@ -658,16 +658,16 @@ function auditRouteTableReferences(program, label, source) {
    what decides relevance. */
 const ART_SOURCE_ROOT = path.join(root, 'packages/art/src');
 const KNOWN_VERBATIM_JS_HASHES = new Map([
-  ['artextras.verbatim.js', 'dadfd860bc21b4472efb80f91399ddb89b704bc2b0396fe848aa8628b21cc2c7'],
+  ['artextras.verbatim.js', 'abe01a1a2d4e3c62469c30d47a16f73da3dfaa17387b9db3ad6cb05ae68ba66e'],
   ['galaxyart.verbatim.js', '789a9f4e326896f6e8f9f142a6128ac8ec48a5388e2304afd4114a981ff14d27'],
-  ['hdart.verbatim.js', '93d1e79292e68cd2cceab14617005900b1ccf649d2284a83f0ec497ec8e34bcd'],
-  ['hdportrait.worker.verbatim.js', '50c43aa81272cc3e7950b85cf957d0e5657b3fd2c174fa38b16dd11cdc1b67e3'],
-  ['thumbart.verbatim.js', '85b54edf7f32a174da90f6f68ea474dcebe8d31997dad683c6f5b88cb5587544'],
+  ['hdart.verbatim.js', '3c218046c982252b177d25dbd5e6737f78dd2a68a9665d84b5d26d0181785bcf'],
+  ['hdportrait.worker.verbatim.js', '256b7d87bd52461afc75d2a0159e8e81e02f9ad37355b2401cfbe0c1b32191c4'],
+  ['thumbart.verbatim.js', '6bf02b5c8622f51b3bcc84f06baab510b7df474af245446c8f6a14d3cb99b8dc'],
   /* Generator/source-slice contracts and forbidden-owner negative controls
      live in the paired biome-vista tests; these whole-file hashes make the
      recursive executable-source discovery fail closed before those audits. */
-  ['biomevista.worker.verbatim.js', 'f1a1b9928d3cb1bdba2caf09d8313810ff52a1ce3dd217e9f61e64ec9e001f43'],
-  ['biomevista-full.worker.verbatim.js', '357fbd788931bbd14533c18743ac7cc95969b586fe7b32467170e541ee0fbae9'],
+  ['biomevista.worker.verbatim.js', '4e6122ff3b041ad1d13f8a4aa87fc25b42cf5ece67914aa74d76ab61e4a04ee3'],
+  ['biomevista-full.worker.verbatim.js', '2bcc0c7dd21f2be6a004ded9720d82d38d2b943f9d8d3b0c5a9df352d034d256'],
 ]);
 const KNOWN_VERBATIM_JS = new Set(KNOWN_VERBATIM_JS_HASHES.keys());
 const HD_PORTRAIT_KINDS = Object.freeze(['Fauna', 'Flora', 'Fungi', 'Microbe']);

@@ -58,8 +58,8 @@
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-01/record.json",
-      "sha256": "c8cf3533ad9976aaaf4eee202daf86ff6cd23aef9899ec17fd46e4829a69d748",
-      "afterSha256": "c8cf3533ad9976aaaf4eee202daf86ff6cd23aef9899ec17fd46e4829a69d748",
+      "sha256": "2dc91c2b94cd7586b2355839d1b6b3da1db33ac7ddd49b4b15b9107c2be587fb",
+      "afterSha256": "2dc91c2b94cd7586b2355839d1b6b3da1db33ac7ddd49b4b15b9107c2be587fb",
       "unchanged": true
     }
   ]

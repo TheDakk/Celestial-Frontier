@@ -1,7 +1,7 @@
 {
  "schema": "cf.card-master/v1",
  "earthName": "Tarantula",
- "recordRecipeHash": "4165e4c57c508d442b8cf09991bd9925a34620bf5c3895d7a73d9962ec9a6a4c",
+ "recordRecipeHash": "40db5c00b42d4080569036445dbd2ba629dd725f26a41e18cdbacae5f705b98b",
  "source": {
   "master": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-08/master.png",
   "masterSha256": "55d8a5d00e4eabd761fc64cc42d82da1d3837b0448651d8c78820b9cfe9fb19b",

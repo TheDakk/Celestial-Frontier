@@ -13,7 +13,7 @@ This is retained for Track T, not a changed-prompt retry. No template, kit or ga
 ## Generation provenance
 
 - [Exact sent prompt](generation-01/sent-prompt.txt), SHA256
-  `c35fbf4093e44d7ca0d0267a627c365823d1059daf41f21b7bf3068ff2628eb4`.
+  `eaaa5758c4134fd82c3bda23b60a0a36680af834ac8e23c792eb60a402a4a494`.
 - [Original delivered PNG](generation-01/coconut-crab-master.png), SHA256
   `7954331dc3ce80bf3b4e2e3759bd0b5c576d659ff5fcb4d01b8efc536bba8890`.
 - [Prepared request](generation-01/request.json) and [completed result](generation-01/result.json).

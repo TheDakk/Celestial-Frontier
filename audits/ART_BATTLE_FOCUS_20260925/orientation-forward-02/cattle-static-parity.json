@@ -208,8 +208,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "33a0a48414c4d96613c64bb85791d32ea2404ffaba939cb96238290447369f5a",
-  "bindingHash": "3271762031e3aa825630d82a1e50cd1c3c20847c2664fbb137d85cc38d3ebe1d",
+  "recordRecipeHash": "5ac0cf8e4fe17023fcd37ad2d94aeb72265201e1f9c1bc86fa64a65e5262b995",
+  "bindingHash": "4d9e7ccc9e2e6f594fb4b97d606897869da5e3b4f094e0bcfb62619fff10132c",
   "family": "quadruped",
   "contacts": [
     "hindFarAnkle",
@@ -220,8 +220,8 @@
   "realm": "land",
   "declaredPaintBoundaries": {
     "schema": "cf.authored-paint-boundary-continuity/v1",
-    "recordRecipeHash": "33a0a48414c4d96613c64bb85791d32ea2404ffaba939cb96238290447369f5a",
-    "bindingHash": "3271762031e3aa825630d82a1e50cd1c3c20847c2664fbb137d85cc38d3ebe1d",
+    "recordRecipeHash": "5ac0cf8e4fe17023fcd37ad2d94aeb72265201e1f9c1bc86fa64a65e5262b995",
+    "bindingHash": "4d9e7ccc9e2e6f594fb4b97d606897869da5e3b4f094e0bcfb62619fff10132c",
     "pairs": [
       [
         "ear-far-tip",
@@ -437,12 +437,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/record.json",
-      "sha256": "4ffa56659c98bc1cfc39edb170e6035369fd624f64c7f5b6d76b7cd78fe66df1",
+      "sha256": "9548e61c58c663bc6ce1fbae61a812d5180f419ee9a4e1fad7745a7740e74ea6",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/binding.json",
-      "sha256": "bbaaf3ec4ff0ab973b8eeec88cd1cbdab3a840d9ffbbfeb09f0d1c5b42db252e",
+      "sha256": "5afaa8f3b6dabe30edf40914d9de11a545f5572adfa6538b2218233f9c89a915",
       "unchanged": true
     },
     {
@@ -462,7 +462,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/paint-boundary-continuity.json",
-      "sha256": "973b7403b0c6101ed81ad2a149e6a61bfe1019caab98f8e5c8d1b87ac908c14a",
+      "sha256": "2d9778c0d3bc23bc2c4cee5e18ae29ec4b0b89106a3844f35a97a3ee0490d73b",
       "unchanged": true
     }
   ]

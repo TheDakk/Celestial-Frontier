@@ -8,7 +8,7 @@ The original master/presence bytes are retained in `authoring-01`. The new18-par
 
 The original alert tail fold is gone. The remaining claw compression was reproduced with stage-owned melee travel in `contact-study-02.json`. `grounded-bird.ts` now chooses a level grounded claw only when the original fails the unchanged REST support probe: original limb/wing/neck and horizontal travel curves, timing, phases and duration are retained; root roll and vertical dip are neutral. Passing Gull/Goose/Heron/Eagle claws remain byte-identical. The direct editor/override constructor remains unchanged, and actual observed-support contact/skin gates still decide admission. No per-frame suppression or gate loosening. The existing per-card cache now holds at most four applicable action IDs.
 
-Exact candidate recipe `2d5c2c9c57d689a2859006fe73857905ffe3bac54ff101c3cafc4278bf806d28`; binding `441dd0d18b6112cc27e93272e20d5ab1187e378639288aa385a6b020043433d7`. Six own mask bytes and original exact prompts are referenced by `fit-02/markings.json`, freshly checked against the unchanged keyed painting (`mask-compatibility.json`): zero outside/over-alpha pixels. Historical samples and original generation provenance remain untouched.
+Exact candidate recipe `2c00c523bede76b8641bbfdf0001538c6b73ed466a90598da5b2d10d2b1d5604`; binding `bd44d8678d0032521d3cbc58f04c30e7d07fa4f425129d23a7558a09fb8bbf26`. Six own mask bytes and original exact prompts are referenced by `fit-02/markings.json`, freshly checked against the unchanged keyed painting (`mask-compatibility.json`): zero outside/over-alpha pixels. Historical samples and original generation provenance remain untouched.
 
 ## Native run: native-observed-01
 

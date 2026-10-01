@@ -2,7 +2,7 @@
   {
     "candidate": "impala",
     "sourceAuthoring": "audits/ART_BATTLE_FOCUS_20260925/06-impala/authoring.json",
-    "sourceAuthoringSha256": "3195de14123c30376ee066466497f5c1aed73ec486f636ee78b008296356eb0d",
+    "sourceAuthoringSha256": "99eaf9a452af90f5e66808ed0ab85036731587c02d704197fd9d85442791ac47",
     "before": [
       [
         541,
@@ -45,7 +45,7 @@
   {
     "candidate": "cattle",
     "sourceAuthoring": "audits/ART_BATTLE_FOCUS_20260925/09-cattle/authoring.json",
-    "sourceAuthoringSha256": "d9c23635c440d69a21b69a8644bb559d83db17b559150cd40dcfa997054f2563",
+    "sourceAuthoringSha256": "abac731e391157abd3f083369138b424cceb231456268bd1d6cf85997263adad",
     "before": [
       [
         550,

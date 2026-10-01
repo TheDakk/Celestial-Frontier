@@ -158,8 +158,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "887857dd7213d86fe5278ab6dd4ef3ebbf5a06a86f12a9f241b56c4e14eb26a0",
-  "bindingHash": "2c7a3db72a6ed19ea067c90ba5156cdf00fdd675a618bdb02201f1634318f005",
+  "recordRecipeHash": "359ea5009240cea77a5b7c8a464917914cfbf52d52beebf98becd8fa78f7e7d6",
+  "bindingHash": "bd0725f86d7b066587cc04cc781fee3cfd6192d57e98ecf9465ae8c8ec0ad22c",
   "family": "biped-bird",
   "contacts": [
     "legFarAnkle",
@@ -168,8 +168,8 @@
   "realm": "land",
   "declaredPaintBoundaries": {
     "schema": "cf.authored-paint-boundary-continuity/v1",
-    "recordRecipeHash": "887857dd7213d86fe5278ab6dd4ef3ebbf5a06a86f12a9f241b56c4e14eb26a0",
-    "bindingHash": "2c7a3db72a6ed19ea067c90ba5156cdf00fdd675a618bdb02201f1634318f005",
+    "recordRecipeHash": "359ea5009240cea77a5b7c8a464917914cfbf52d52beebf98becd8fa78f7e7d6",
+    "bindingHash": "bd0725f86d7b066587cc04cc781fee3cfd6192d57e98ecf9465ae8c8ec0ad22c",
     "pairs": [
       [
         "far-wing-shoulder",
@@ -287,12 +287,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/record.json",
-      "sha256": "01b649a3999f9ce27d7dc05050711db5a5e8006eafc1b22a1065c67f1700b5a0",
+      "sha256": "325ddaf7cfb2ab98152b46f8a0683e95529c7cf0658359169072f48b06d9546b",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/binding.json",
-      "sha256": "83b81ab6050ed80e9cbd978b60af9446689b9cd713cf653772fcfd421d33c620",
+      "sha256": "0055d4e685d6007d46d9ab165feaacc885360358d92caf939e6596b218aa319a",
       "unchanged": true
     },
     {
@@ -312,7 +312,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/paint-boundary-continuity.json",
-      "sha256": "779b08231ebf6870f73aa285a6f4e4d83e2faa535321e85a82de6580a4d5df3d",
+      "sha256": "90568e26a5a104d35b2de4a2ea15a9f1dbd8e9dfbac05687592b6341e1a608d1",
       "unchanged": true
     }
   ]

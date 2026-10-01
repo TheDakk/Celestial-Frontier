@@ -11,7 +11,7 @@ The authorized attempt stopped after building, before launching the candidate br
 | Unchanged budget producer | `bd8edd1b570d4bc4e1933a87a9e0552e75208d18ca43c40d2ffcd6712ebc1a5b` |
 | Observed integrated build producer | `f8f1aab67cde6826301320f404faba93757f8f22bb19048fbe3e8d97f5d259e9` |
 | Measurement authority derived from report inputs | `6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2` |
-| Unchanged budget file | `c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc` |
+| Unchanged budget file | `340a67c1e6d6f4f7e120c7f13e1e06a674757ddcd2a023c100e4f7f65493fbd9` |
 
 Edge preflight passed on exact `/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge`, product Edg/153.0.4234.48, CDP 1.3; full revision/UA/JS provenance is in edge-preflight.log. The certificate exited 2 after a reported 4,032 ms; zero outcomes were measured and all 78 are blocked. Exact-run verification exited 2 for the same producer mismatch. No product memory verdict, films, review sheets, candidate browser provenance or screenshots exist for this refusal. The preflight's browser proof is not candidate measurement evidence. No PR43 green claim follows.
 

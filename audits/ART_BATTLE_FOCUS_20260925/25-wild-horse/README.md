@@ -10,7 +10,7 @@ Presence is explicitly authored: all required parts visible; absent/hidden/folde
 
 Fit04 uses the tiny root/spine paint join; native01 passed numbers but exposed a sharp neck/body boundary during faint. Fit05 additionally joins the observed neck/spine paint boundary. Its receipt records zero source-coordinate changes. Ears/legs/tail keep independent surfaces. The second film shows continuous neck/body paint; head stays separated from its opponent at return. It is a diagnostic proposed stage using the retained layered-reach/faint-idle-settle changes, **not unmodified HEAD or integrated-source certification**.
 
-Recipe `a87a3ed8146e1176b9c6dbfefd9e5e0a0f6321c8b69d4a2f9e993488cc799600`; binding semantic hash `733ca2e2c0db21d9c750bf7103c47062baec01a35841491a15aa0527f5e5055d`; binding file SHA256 `6ad01389d82a5c3359626b3d950f5d8756b54c8bd89c6c59656fd3c230ac2fc2`. static-05.json passes19 actions×121,1,680 continuous presentation samples, exact rest and unchanged reconstructed visible RGBA.
+Recipe `3a95437d7329a4c47645cea1ba162b795d15bfcdee94fbaf971c0814d0edd33b`; binding semantic hash `e5ec652ac3791d30e39a8bf729c75ea36910a190db49bd3380a3cb34bd9eb600`; binding file SHA256 `f0ae340e2da3354e90af189c0aae8e5c43e650c8ee7e0d7d32f5d2e186435929`. static-05.json passes19 actions×121,1,680 continuous presentation samples, exact rest and unchanged reconstructed visible RGBA.
 
 ## Six masks and native film
 

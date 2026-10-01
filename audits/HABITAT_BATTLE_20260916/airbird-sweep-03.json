@@ -15,7 +15,7 @@
       "ownerId": "authored:turnaround-candidate-02",
       "earthName": "Pheasant"
     },
-    "recipeHash": "2d50a9f3646700efa020aab8e5db81c9d254b065831d484e4eaf4c1a1b93712a",
+    "recipeHash": "54ca1c3e4628ddebf18dc4be7c1e290a2f32440d6d811137757cd55c24ebec83",
     "template": {
       "id": "biped-bird",
       "version": 1,
@@ -516,7 +516,7 @@
   "guard": {
     "schema": "cf.opaque-seam-sampling-guard/v1",
     "sourceAtlasSha256": "51b1f8abe34602e8ff6910712a97f0d6f6162fe949828a11b948f66de4c02672",
-    "bindingHash": "e1aa55e7243d7573bbf57a9bcc3d30d67c22410ef77c7c374517b45e0fa89924",
+    "bindingHash": "af8800e3c8b2c7c2b1336a0472539f31cc94360242b2909ed7bdda8d1f9f36a0",
     "guardTexels": 2848,
     "opaqueEdges": 1419,
     "joins": [

@@ -148,8 +148,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "82cd8b102478032bfe5a80d25761a696b7029acf5c600fdd4fb27221664a6b38",
-  "bindingHash": "4316a6a8c4f004ed2ee720434e5847fb97031685388cf78ba46b69d9e3e8c192",
+  "recordRecipeHash": "ffdf1a047c756cfbbdc18b4ee77c373ab9c2bbe3e66a4bf84e17772c7c36f345",
+  "bindingHash": "88a9a1c4aec5752fadbe050d394da57b35270cacb81e07cd52d5da4efe120aff",
   "family": "fish",
   "contacts": [],
   "realm": "aquatic",
@@ -251,12 +251,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/audits/G1_AUTO_AUTHOR_20260926/control/reef-shark/fit/record.json",
-      "sha256": "d9e9713da6d79da3db95f2c73959c982454cb8bea87fc53e7e78cf5087ab6570",
+      "sha256": "d0806fc179a1e404e742cd0852686d5c0fd591c5b21836487aa5efa502215c3e",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/audits/G1_AUTO_AUTHOR_20260926/control/reef-shark/fit/binding.json",
-      "sha256": "7e9600d17d4634e6cacdd2368dfb8cc2401dcd336c26b7a926c652b367b811e4",
+      "sha256": "d747d6530ed099712f0f06e8c5ccd890f226c7d26ee7ba87d87e7372f8fa721f",
       "unchanged": true
     },
     {

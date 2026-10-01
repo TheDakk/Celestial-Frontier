@@ -3,7 +3,7 @@
     {
       "path": "README.md",
       "bytes": 1856,
-      "sha256": "375d5d2a3981077bbfb7afe5bceb47279369966d9b4b2d1e1bd693d150ed915d"
+      "sha256": "a403f13ae1f28a3aeb67795af215518d6eadeadc150a7e2f95e8b478d2dcc7cf"
     },
     {
       "path": "admission-attempt.mjs",
@@ -13,12 +13,12 @@
     {
       "path": "admission.log",
       "bytes": 982,
-      "sha256": "8c901fe165de379ac031a52a4d1c5771a54968a3f988e24746605c1d881e7982"
+      "sha256": "e4136b558c23d4db87c4f9b7231dc50b8cee9837160ccfa75cf16feed3a9be61"
     },
     {
       "path": "capability-receipt.json",
       "bytes": 911,
-      "sha256": "f7fe59656cd92d1cfc0f5eeab59dc1321a0e468730fdc24f54a9164eb6f18356"
+      "sha256": "18c46808aff960375d0d81296a1de4d4e19dea3563a58ccddb9273a1deb46454"
     },
     {
       "path": "capability-request.json",
@@ -33,17 +33,17 @@
     {
       "path": "execution.json",
       "bytes": 1300,
-      "sha256": "07561e97891286aae02299b30c0551ac34f2194b9a5264d168361749de39d904"
+      "sha256": "159c35357a13fe2064871fa6336e1a11b9626d7cf144dd04bcb5afa4b08d6f0b"
     },
     {
       "path": "fit-01/refusal.json",
       "bytes": 1145,
-      "sha256": "8ddbba66fef15826b598077f86a20594f3a93d8946efc0091e6f72f8e5740e44"
+      "sha256": "bb8781a9d642aaebe239d2137dde6edb478a7f187ea162109b99b0cd630c2fbf"
     },
     {
       "path": "generation-receipt.json",
       "bytes": 832,
-      "sha256": "e1b6017dc17d572be0cbe32fbada78563bb44fb11e173c3b57099ee0c4eb9546"
+      "sha256": "27c4a300ea1e0b8f0aa1cf5dfda764c5e7fe3d34b7a7d7a342eee1e5b905b586"
     },
     {
       "path": "master.png",
@@ -63,17 +63,17 @@
     {
       "path": "prompt.txt",
       "bytes": 8858,
-      "sha256": "3887f599797cea0ade50c98fa28d64608bee16b2d67ef2c4f088468e1a340323"
+      "sha256": "e7da495a66239fbfde79fb698aa39f87721111aee2b215de34b7a89ff7792101"
     },
     {
       "path": "request.json",
       "bytes": 641,
-      "sha256": "8c70a246f2ec5971b6fa4506f1e3ed568113833505f4dba959a2abfdd65622fa"
+      "sha256": "55fe2703f647538efabaad6de85b8b91600fd0c2f9208854fba4a88c96f333f9"
     },
     {
       "path": "result.json",
       "bytes": 1399,
-      "sha256": "b1acd3a4315da25fa0dd5888171b8a9baadbbc1e9f105d27692912ce684f64b2"
+      "sha256": "f36c394580eff8a03a3172dfc1d35c34662f71ab307bba82202e2ef70e0d4c92"
     },
     {
       "path": "review-sheet.png",

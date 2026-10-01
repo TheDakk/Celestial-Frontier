@@ -1816,8 +1816,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "f92a0fe45ea5517a2246f72081ad5a4f793c84a6a901e4e55b55876acd9c0b8b",
-  "bindingHash": "c376d7a6ce063c2e77c3d3e1f1cc329807ed93ee5efe2717a1d970be94b75599",
+  "recordRecipeHash": "a18a48201c1848332f0c0e9f3e82dba9e0f1b84e48fc9fb556dde2dfab66678d",
+  "bindingHash": "63ff1d804849d48c4fa61f29d49bd2615795eb75ee2c65e28c7a88283a574cbc",
   "family": "biped-bird",
   "contacts": [
     "legFarAnkle",
@@ -1826,8 +1826,8 @@
   "realm": "land",
   "declaredPaintBoundaries": {
     "schema": "cf.authored-paint-boundary-continuity/v1",
-    "recordRecipeHash": "f92a0fe45ea5517a2246f72081ad5a4f793c84a6a901e4e55b55876acd9c0b8b",
-    "bindingHash": "c376d7a6ce063c2e77c3d3e1f1cc329807ed93ee5efe2717a1d970be94b75599",
+    "recordRecipeHash": "a18a48201c1848332f0c0e9f3e82dba9e0f1b84e48fc9fb556dde2dfab66678d",
+    "bindingHash": "63ff1d804849d48c4fa61f29d49bd2615795eb75ee2c65e28c7a88283a574cbc",
     "pairs": [
       [
         "body",
@@ -2159,12 +2159,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/fit-03/record.json",
-      "sha256": "866e27febae676087239125c2329e8b3854bedd2a334cb38f5512cfccb39de98",
+      "sha256": "bc98510812a8013c90f8f740fe2f0ad135888420cfce8197f8b5160f72878a24",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/fit-03/binding.json",
-      "sha256": "c42271eabbb3b3d65b9a131f7ca4def8a9ca6e9c84c612160fd5fcbe594f4cf0",
+      "sha256": "efc29ed6a2fdbf5631f76534d2080ce55c67389a07f26eb7b9a2e68b7f367d94",
       "unchanged": true
     },
     {
@@ -2184,7 +2184,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/fit-03/paint-boundary-continuity.json",
-      "sha256": "fd4c839b54cc3b3f993c7744ff52022aa9daffe1c689cb342387a29f9b65f2d7",
+      "sha256": "be292399bffc4127457425600e390aaf8c286e0c19af0e720bc14faa6137c521",
       "unchanged": true
     }
   ]

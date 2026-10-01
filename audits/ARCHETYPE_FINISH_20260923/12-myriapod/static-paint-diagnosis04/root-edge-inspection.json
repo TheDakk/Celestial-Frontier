@@ -1106,12 +1106,12 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-07/binding.json",
-      "sha256": "49e196962e0d20badda353509ac10a7c05283112e3ec269aeb29c73abb4cf648",
+      "sha256": "54ffd4bd1a176dd15a732191caab475ad3bff923420433d120be75392fc3dfe3",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-07/source-join-probe.json",
-      "sha256": "27ab6faf9db9fb13df74b0ab7eec9a96cf67c435dbf3ce35dcc1376fa27b0ef9",
+      "sha256": "99b0fa49b4645b1e86a6bfb43c88e7dd012f4a7b63ec63beca3e0b7d25082cb3",
       "unchanged": true
     },
     {
@@ -1131,7 +1131,7 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/report.json",
-      "sha256": "23eaead6897c4b3f7e15e2768b749f4ed1aae73341d02b44f73d298a5d93447c",
+      "sha256": "b954e89ee21a80be5dc5b661735f7d171dfb3727834cff505fa6d604f7ad2b42",
       "unchanged": true
     }
   ]

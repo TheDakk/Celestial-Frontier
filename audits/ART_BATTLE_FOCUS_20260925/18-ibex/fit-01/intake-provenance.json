@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/18-ibex/authoring.json",
-      "sha256": "94d3617b234cced337d09b2433d20d2ba27403b3c99f50c4e4f4e8831ebca010"
+      "sha256": "f1103f2ca90a0c2e9f51c6ebc3fc2eede7ac273a168ea2ad4445e9779788a7a1"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/18-ibex/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "aa0d68bc6eb3850b7fbd629877a24df5b516bc65654d2a92c6184721a38e3577",
-  "bindingHash": "db77c030cb8e53175f7dbece05b31f0f9c7f54f0fe706a1d667ea4b977e70b7d",
+  "recordRecipeHash": "4f9131360086d036e678f8caf8e9efc3ed808055e7b18cfa599afd230583d823",
+  "bindingHash": "a1f943e57452e19779ad0b6c0774590be10a60dffd28e849c010d9625787586a",
   "contactEndpoints": [
     "hindFarAnkle",
     "foreFarAnkle",
@@ -83,7 +83,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/18-ibex/authoring.json",
-      "sha256": "94d3617b234cced337d09b2433d20d2ba27403b3c99f50c4e4f4e8831ebca010",
+      "sha256": "f1103f2ca90a0c2e9f51c6ebc3fc2eede7ac273a168ea2ad4445e9779788a7a1",
       "unchanged": true
     },
     {

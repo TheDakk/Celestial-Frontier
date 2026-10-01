@@ -1,4 +1,4 @@
-Externally bound source package: /private/tmp/cf-mobile-pack-20260909-species-01 SHA 4ed80ae51e216306a548d55e1f980735c08ff25bec6b563e2887cc9e992b7e53
+Externally bound source package: /private/tmp/cf-mobile-pack-20260909-species-01 SHA 674b5535e5b941e7aa676ea76dbb54498350478e6bb53006f07379adc19b4236
 Control-only package copy retained: /private/tmp/cf-mobile-package-controls-SCUhG2/package
 ✔ complete app plus six-reference runtime passes exact manifest, PWA table and both static payload limits (195.361ms)
 ✔ same-length runtime change fails, restoring exact bytes passes (108.901292ms)

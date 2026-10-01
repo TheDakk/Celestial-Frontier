@@ -11,17 +11,17 @@
       "prompt": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/prompt.txt",
         "bytes": 9639,
-        "sha256": "03cb34a0758642be61946662f09fa2c248f84ce4aa5fd5620e6828b25c4c7b50"
+        "sha256": "f7571eb2d2f9908a5cc2ddec329cc3a5f9e51c23949035a1d0bf13ff31629aef"
       },
       "request": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/request.json",
         "bytes": 764,
-        "sha256": "ab1112856cafbcf5b91cfccccdb8f649f80044900e8cf1d4c26a2adf952a0bcb"
+        "sha256": "0b7d4326927442dbc11adefdc3411e6caf62afb2fc7aa78aa47d4a4841201461"
       },
       "generationReceipt": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/generation-receipt.json",
         "bytes": 461,
-        "sha256": "c024e62c08b3ee294ac6998941ba40a11b8c6b4d0e82205bcca394fb5e189612"
+        "sha256": "c30d14714feda57cd804237d01e3bb67225358c3752e141889a205df8d8ad80a"
       },
       "master": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/master.png",
@@ -68,17 +68,17 @@
       "prompt": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-04/prompt.txt",
         "bytes": 7563,
-        "sha256": "75864b37f2bad857c14cc4c87ec11c1a4df267c536c17fd838e6ed810b2081d9"
+        "sha256": "55b9e90a4fa2b09004f68d0fa08ee23093b938aa9022371722740f542079f040"
       },
       "request": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-04/request.json",
         "bytes": 650,
-        "sha256": "3050cc3266e3c3e80b889c8eb7e5b8d4c47ecee99d27091499ca7a49bc03ff82"
+        "sha256": "06f9f941a3430cdc82740a4c8cfb891a626fffce14c03299b817df24fd0b3d9e"
       },
       "generationReceipt": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-04/generation-receipt.json",
         "bytes": 423,
-        "sha256": "4e7059d7c3ff5a1e14803c4b5575ee2e1e674c7a181181dd90015f7b521a6216"
+        "sha256": "d980be1cf662f885b76d777fb4905aa41769a9ef958955c4d9cda4becb8c9ef3"
       },
       "master": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-04/master.png",
@@ -124,17 +124,17 @@
       "prompt": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-05/prompt.txt",
         "bytes": 8659,
-        "sha256": "88d86ef22735a74227394ee07f1cad1ee7c111e7931a5c1b60318c7b965f8223"
+        "sha256": "fd941096c6cf3cae3e51f8be8799a2ec30a9b9e0e62153cca358e46bd6128fd2"
       },
       "request": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-05/request.json",
         "bytes": 591,
-        "sha256": "d7ee408b580d37474a4ee8ebcd32fb03d88bf8dc45c9fbfabd8c00a29b5aa339"
+        "sha256": "1e2d81dafdec6dad2efc1766cd526264b9b4eff24f030e4028f755c0f346783d"
       },
       "generationReceipt": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-05/generation-receipt.json",
         "bytes": 556,
-        "sha256": "5d353ef3dbf2318f9f3b470eca7a1f71fbf791bc05306b799f98f034aa7fef9a"
+        "sha256": "7e7c92abc24bd1a0e67635752b8d04034da51c78d8f385931916a8da9ddb12b6"
       },
       "master": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-05/master.png",
@@ -180,17 +180,17 @@
       "prompt": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/prompt.txt",
         "bytes": 6949,
-        "sha256": "a4384986155894185aee574dbcfe6d6b1bd53895cf9d0e9aabeee069616dff4f"
+        "sha256": "c807ab8e96330353803bb2db8dc89399a87ea040f7a94f3dc0cf45a3c4ba6d30"
       },
       "request": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/request.json",
         "bytes": 666,
-        "sha256": "7887ec449b34b3a7216815fe59a2f472254d3957a4b05837477c60f5e66e0fdb"
+        "sha256": "d6e3c8a7310b0abd00d98eb5bbd0e24d2ccd031276faf75e43f8cab8c8ab0e63"
       },
       "generationReceipt": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/generation-receipt.json",
         "bytes": 559,
-        "sha256": "3719a351914f05bd9bb08323021af801648e6c9e6da986198932ede8814d88f1"
+        "sha256": "5665afcc9563875c6234d54c280709e4e64154738c9dc79cca2e8656b0fdaee0"
       },
       "master": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/master.png",
@@ -279,7 +279,7 @@
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-05/generation-receipt.json",
       "bytes": 556,
-      "sha256": "5d353ef3dbf2318f9f3b470eca7a1f71fbf791bc05306b799f98f034aa7fef9a"
+      "sha256": "7e7c92abc24bd1a0e67635752b8d04034da51c78d8f385931916a8da9ddb12b6"
     },
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/paint-ledger.json",
@@ -318,12 +318,12 @@
     "authoringBefore": {
       "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/authoring.json",
       "bytes": 18016,
-      "sha256": "66580e52033f75b0b2ad072ff9d7e1ebd3e77c9d15b1adad6bae1e7826ba750a"
+      "sha256": "fb8f9ca5242aef32130bafcc5927e37b04f91c77f53141f9e5af6a7be24c5949"
     },
     "authoringAfter": {
       "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-07/authoring.json",
       "bytes": 18804,
-      "sha256": "665a6e47fac5b3522a99f5406386f23f90a1584385d86f16aa80c73d237c0a83"
+      "sha256": "c2d235469e342071b8b5745da12d7bd09b9f96c8b20bdf36820fa7b97036106c"
     },
     "observedChanges": [
       "leg3NearKnee [623,792] to [665,724]",
@@ -340,12 +340,12 @@
       "provenance": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-01/intake-provenance.json",
         "bytes": 3411,
-        "sha256": "049f22fc04fcc3ed54f9882a37ac625daea4309a5e323006ef41095cf6d68afa"
+        "sha256": "1f474e50f15dd32136dde9e1274cc5d95d8afc571f8540bf4fb6425f0718bfc8"
       },
       "retainedMatchingHelper": {
         "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/intake-01.mjs",
         "bytes": 12912,
-        "sha256": "00f96495f28219a5201edaeeace8dc482bc263fc9ce0bc5d2290bd6b11f54f23"
+        "sha256": "205340e4f941de770d434db524b10d13ada82ccd823e231ee7d5a9a8caf8f8b6"
       },
       "inputs": [
         {
@@ -356,8 +356,8 @@
         },
         {
           "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/authoring.json",
-          "expectedSha256": "66580e52033f75b0b2ad072ff9d7e1ebd3e77c9d15b1adad6bae1e7826ba750a",
-          "actualSha256": "66580e52033f75b0b2ad072ff9d7e1ebd3e77c9d15b1adad6bae1e7826ba750a",
+          "expectedSha256": "fb8f9ca5242aef32130bafcc5927e37b04f91c77f53141f9e5af6a7be24c5949",
+          "actualSha256": "fb8f9ca5242aef32130bafcc5927e37b04f91c77f53141f9e5af6a7be24c5949",
           "matches": true
         },
         {
@@ -376,20 +376,20 @@
       "record": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-01/record.json",
         "bytes": 7676,
-        "sha256": "ffd3b883b28c31f3fc5e34f6d149c708c2a577b7a0de5d5a94afb8cebea75e23"
+        "sha256": "310f1166aa3f47e8c01bf75ca5cf165e9bdb60647629d4c6076c3263341340a9"
       },
       "binding": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-01/binding.json",
         "bytes": 1558886,
-        "sha256": "129f0c168e95d6470226ac431d1badbb55cb38ae64c9c956f131d499bff85081"
+        "sha256": "90180a137e9600c8a4b1978f54f3f40249a80d4c5fc1cfb209252eae0f62ae55"
       },
       "declaration": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-01/declaration.json",
         "bytes": 2330,
-        "sha256": "d518443c0a55725075c522fae167519d5aff628edb2fdac25a8ce47ef0a808e0"
+        "sha256": "92121718a4c9ffa402f2dc9027c973155d5d22a029469566fab4e39abaf3a245"
       },
-      "recordRecipeHash": "4ccacb0f6629c177bb87ad3da912fbcee0b0e50fea2ca4bb0f26ea446839b49a",
-      "bindingHash": "4f2f2fb7c58326d55cc95393e9296c4839059219cdbec7480f267be91ba927ca",
+      "recordRecipeHash": "4fd9ce445f39d10d8c4f46685561bee92798b20a9f770cd6849e11b4c085b6fa",
+      "bindingHash": "2666b32a46e7cda9ac3f79ab93b459f4d15d4eab4259e10746dee8b2c61265ce",
       "checks": {
         "helperPinMatches": true,
         "recipeMatches": true,
@@ -405,12 +405,12 @@
       "provenance": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/intake-provenance.json",
         "bytes": 3411,
-        "sha256": "ce5c0dc162c66baf0dd2fe292d6d854c6fb60d7a026bcbdec1c5e596e6c08e0c"
+        "sha256": "16dc4a5f4d94526ce24785b8ad807935b72f7cd5f436aa4c83da764f2106a560"
       },
       "retainedMatchingHelper": {
         "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/intake-01.mjs",
         "bytes": 12912,
-        "sha256": "00f96495f28219a5201edaeeace8dc482bc263fc9ce0bc5d2290bd6b11f54f23"
+        "sha256": "205340e4f941de770d434db524b10d13ada82ccd823e231ee7d5a9a8caf8f8b6"
       },
       "inputs": [
         {
@@ -421,8 +421,8 @@
         },
         {
           "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-07/authoring.json",
-          "expectedSha256": "665a6e47fac5b3522a99f5406386f23f90a1584385d86f16aa80c73d237c0a83",
-          "actualSha256": "665a6e47fac5b3522a99f5406386f23f90a1584385d86f16aa80c73d237c0a83",
+          "expectedSha256": "c2d235469e342071b8b5745da12d7bd09b9f96c8b20bdf36820fa7b97036106c",
+          "actualSha256": "c2d235469e342071b8b5745da12d7bd09b9f96c8b20bdf36820fa7b97036106c",
           "matches": true
         },
         {
@@ -441,20 +441,20 @@
       "record": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/record.json",
         "bytes": 8256,
-        "sha256": "24ccad753e5f42192b7822c6c9449446cc388ce7a11439ce95a37bd514de19b8"
+        "sha256": "4be8fa062f046371af7f2725e2e80c4d20d539d1650708d5c90295401ca1585d"
       },
       "binding": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/binding.json",
         "bytes": 1562281,
-        "sha256": "e35bd83c98d22bb72fee5ea78d5ba0046227855dd90d0151a04e507f05fec12d"
+        "sha256": "3bef6d4aabf795de26319dc27be3086627e28490ef73c8c75c53d9f30cd7457d"
       },
       "declaration": {
         "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/declaration.json",
         "bytes": 2330,
-        "sha256": "c7d49eb188450f9ac345b82deaa06d237ff41b3366fb082d45a2105441618622"
+        "sha256": "be3b86e9c510e62d8b0b1e134d14c67e9428e976efdb3049af5ad126dbeeb9e2"
       },
-      "recordRecipeHash": "3ba58d18d37ebbeff9a2f2bb214431f60edfa646ed521b8ac808c68348e3b77c",
-      "bindingHash": "525a165cb9ce7ddf0b9490fe35e75add9341a517de3deca60be8e985eddef3e6",
+      "recordRecipeHash": "617dc343e17c87f7e57547425fef5ac779fe5b64f7b64f6bfa6dfd2cf519d10c",
+      "bindingHash": "24a575373673db2762be903c1e4c0e604a0d479feed08290c23c8bd44c9cb85d",
       "checks": {
         "helperPinMatches": true,
         "recipeMatches": true,

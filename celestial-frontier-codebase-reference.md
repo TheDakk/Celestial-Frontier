@@ -3118,8 +3118,8 @@ No Phase 2/release. This reference was reconciled against code on 2026-09-05 loc
 > answerability, resource ownership, registry, same-document and cleanup outcomes were green.
 > The exact carrier is
 > `audits/ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz`; raw/gzip SHA-256 are
-> `3197ca65a1011bf386067d73515a0bcefd17ab91752a2d9d36af5e5dd055dfd7` /
-> `dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`. It remains the paired
+> `538fb107cde1617b386a6bcf0c0f381e48728291e5e62bb78ddfa5566b68644f` /
+> `bbb8b941b05fe17ff00462172c284ba6c843a6976c8ecac44cede957c652ff74`. It remains the paired
 > broken baseline, not a green result or calibration sample.
 >
 > Static ownership separated the avoidable closed shell from fixed product growth. Production
@@ -3654,8 +3654,8 @@ No Phase 2/release. This reference was reconciled against code on 2026-09-05 loc
 > Its one-attempt/no-retry local run `20260823-pr33-cross-host-sla-certification` passed exact 42/42,
 > complete lifecycle/cleanup, empty findings/fatals, and its named verifier under the same exact Edge
 > `.101`. Raw report SHA-256 is
-> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960`; deterministic gzip SHA-256
-> is `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`.
+> `db93ce37d24e3a32256d232a2595c75a8c8ab101ba6edb553204e34571142c03`; deterministic gzip SHA-256
+> is `a9249401f99d371a1ec256c0332d834f1d75c300befba2779bc6aeacbd02a6b7`.
 > Hosted run `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. The
 > repair changes only measurement and fail-fast workflow order; product behavior is unchanged.
 > This documentation descendant does not retroactively make its HEAD the certified source. Hosted

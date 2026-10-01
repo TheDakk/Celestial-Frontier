@@ -2,7 +2,7 @@
   "tool": "image_gen.imagegen",
   "generation": 2,
   "sourceHead": "4207748479e1ddeccb2f2f9f24c45e219f73956f",
-  "promptSha256": "045756be416b58af138bd5959ec6cc225897b932ee7bc0d262468396846ab98c",
+  "promptSha256": "d75d4af40ceb2a59e0769370c0cd980f0339d9c6981a3cb6277798586b7c6ab5",
   "editTarget": {
     "path": "audits/ARCHETYPE_SPRINT_20260922/06-hopper/master.png",
     "sha256": "f2dc168f7208fc41101c658b3fa007e7fe4a8f07c898790a15e0c5a0398462d0"
@@ -13,7 +13,7 @@
   },
   "originalPrompt": {
     "path": "audits/ARCHETYPE_SPRINT_20260922/06-hopper/prompt.txt",
-    "sha256": "58a48cc4c4933cc7ac1922f09aae78be0a42d42128ccf2cd578c69392af8eed2"
+    "sha256": "81d3f913cde307f8eff65c904fdc8dceb477151031cf3f0f4d352859d884c35e"
   },
   "requestedSize": [
     1254,

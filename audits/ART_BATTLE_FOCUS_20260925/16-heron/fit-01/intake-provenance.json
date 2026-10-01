@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/authoring.json",
-      "sha256": "c35735a7c145d14e334211c06dc937b8b07f9116f9aff9be2d8b98586d07330d"
+      "sha256": "da7131c2fbc816ada7a4e0d409b553ddd1f0d8d3b3a17e60375eaf48a1fb3f3d"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "cf60db301065dbb0147b3ba91650fbaa7b0447cf8fac40250a2b758d2cdb5982",
-  "bindingHash": "73d241f5ee53ffe4a533d9bc7511240f93193fe12731f754010d590ec10739bb",
+  "recordRecipeHash": "4aa67b5363e72612b2df7b85acd915b058c454d594b3fb812880e8086a5fd307",
+  "bindingHash": "79fffcf5b957e683f732e44d7cc32c9159b94c25f32bbb96497be4d91b9144b2",
   "contactEndpoints": [
     "legFarAnkle",
     "legNearAnkle"
@@ -67,7 +67,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/authoring.json",
-      "sha256": "c35735a7c145d14e334211c06dc937b8b07f9116f9aff9be2d8b98586d07330d",
+      "sha256": "da7131c2fbc816ada7a4e0d409b553ddd1f0d8d3b3a17e60375eaf48a1fb3f3d",
       "unchanged": true
     },
     {

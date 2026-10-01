@@ -4,6 +4,7 @@ import {observedContactSupports} from './creature-rig-contact.js';
 import {loadCreatureRigV1,readCreatureRigContactSupport,readCreatureRigContactEvidence} from './creature-rig.js';
 import {familyContractForRecord} from '../../../tools/creature-animation/family-contracts.mjs';
 import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
+import { repoRelativeSource } from '../../../tools/creature-animation/record-source.mjs';
 
 const root=path.resolve(import.meta.dirname,'../../../../..');
 const fit='audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/';
@@ -26,7 +27,7 @@ it('the admitted adhesive pad reads the actual published triangle, detects chang
  });
  const keyed=PNG.sync.read(fs.readFileSync(path.join(root,fit+'parts/keyed.png')));
  const alpha=Uint8Array.from({length:keyed.width*keyed.height},(_,i)=>keyed.data[i*4+3]);
- const rig=await loadCreatureRigV1(record,binding,fs.readFileSync(path.resolve(root,record.source)),alpha,
+ const rig=await loadCreatureRigV1(record,binding,fs.readFileSync(path.join(root,repoRelativeSource(record.source))),alpha,
   fs.readFileSync(path.join(root,fit+'parts/atlas/'+manifest.creatureId+'.png')),
   async()=>new Texture({source:new TextureSource(binding.atlasSize)}));
  const size=[record.geometry.width,record.geometry.height] as const;

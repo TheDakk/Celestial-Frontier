@@ -14,7 +14,7 @@
     {
       "path": "00-toolchain/check.json",
       "bytes": 6892,
-      "sha256": "e29693c0ecc66ee16947b5a37fdf9a077141479941110893370ed0844ea8aee1"
+      "sha256": "b78f5ba6a8cedc8df201ba144b04efde84391225a3e3ae2b6a09fbcc14669320"
     },
     {
       "path": "00-toolchain/install.log",
@@ -24,17 +24,17 @@
     {
       "path": "00-toolchain/receipt.json",
       "bytes": 829,
-      "sha256": "1061c1912751c3a610fbdd35efa3fb0e8b21d42866063cfb047c281bf3e8657a"
+      "sha256": "1dbaa4bb8a214f10f31800cb88babe1c5beb25d34a7214dfbbc90d5b0ce428cb"
     },
     {
       "path": "00-toolchain/validate.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "00-toolchain/verify.json",
       "bytes": 10033,
-      "sha256": "5a1d3c979562d254989c6ee15cb6392c6c70ebb4d8d64a885567438677d275ec"
+      "sha256": "cbd6413f779f699172b42c7b5415a094e0f2e79516209734bcff92c7ba07b9ff"
     },
     {
       "path": "PREPARED_COMMIT.txt",
@@ -64,7 +64,7 @@
     {
       "path": "R1c/civet.sources.json",
       "bytes": 9224,
-      "sha256": "f40143e11ba8dafb377498ef08d81e0cfc8846a1c6e1fb51b20c65e2ce244181"
+      "sha256": "378f316840a559cbd6e84612557bcf4186803c577a91d89efcd4329ffd31ff04"
     },
     {
       "path": "R1c/civet.ts",
@@ -424,7 +424,7 @@
     {
       "path": "R1c/cpu-01/report.json",
       "bytes": 3006702,
-      "sha256": "018fc21e2a3da2934c1243b3737882b10fa46ee54bf6cc9f4986aa5a46cd23a9"
+      "sha256": "610838d6f7a221b7f78cc0ae9042306698006f2977d3591951f44c3f29fc240e"
     },
     {
       "path": "R1c/cpu-01.log",
@@ -439,7 +439,7 @@
     {
       "path": "R1c/diagnostic-selftest.sources.json",
       "bytes": 6200,
-      "sha256": "6dc7b4a7b4a73090fd51f73106ef5d67ee1fbeffd1ec7ece37e96fd096e88d05"
+      "sha256": "b167f4f9445560a0c59be981833ed3330c83ec7aa4249fe744f4f0daeacf178f"
     },
     {
       "path": "R1c/diagnostic-selftest.ts",
@@ -459,12 +459,12 @@
     {
       "path": "R1c/validate.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "R2c/PACKET_AT_STOP.md",
       "bytes": 8018,
-      "sha256": "1c53712ba9e34bedf78d1c76dbd12a9851318bf96f1b82ba643bf522714826cb"
+      "sha256": "761362bdaa65d10abd92d32f9f0b8afe945e884f13163225a92e566b72e728e0"
     },
     {
       "path": "R2c/README.md",
@@ -489,7 +489,7 @@
     {
       "path": "R2c/controls-02.sources.json",
       "bytes": 3767,
-      "sha256": "ae2732c20313972d1cad643f82b75adbb6573b1a979bc7f6fee6929619386ebf"
+      "sha256": "c5252a8f3804b9a195c2eed898d0a8c6ad26dc7001c3f97ef4c2d59a6fb1cdab"
     },
     {
       "path": "R2c/controls-instrument-01.ts",
@@ -504,7 +504,7 @@
     {
       "path": "R2c/controls.sources.json",
       "bytes": 3767,
-      "sha256": "3e8a47174ce9f54dae1728fd59cabcc08906d329053da344ddcfcafa72b2e52c"
+      "sha256": "c87ee1e07983e2989979be01d5eaa0f90e6f65801bd74e67c618ed0749999ec1"
     },
     {
       "path": "R2c/controls.ts",
@@ -554,7 +554,7 @@
     {
       "path": "R2c/static.json",
       "bytes": 29538,
-      "sha256": "ef0ab891af22f6d63ff41fd7081fdc480387abfbc10e9744615dda9b47447a56"
+      "sha256": "233b73d54feded03036910ff920df6228be2c610452ac146df7560714567a1f5"
     },
     {
       "path": "R2c/static.log",
@@ -564,7 +564,7 @@
     {
       "path": "R2c/static.sources.json",
       "bytes": 9231,
-      "sha256": "5dc401eeae857ebaab15aa907d3d9441dade65e68d18383a4a4881c45b1b901e"
+      "sha256": "0770923a60e0500c9b7de460dfe1f3345c23f0a6e2ede94d53f4800fe669301a"
     },
     {
       "path": "R2c/static.ts",
@@ -579,7 +579,7 @@
     {
       "path": "R2c/validate.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "R2c/vent-crab-static.json",
@@ -614,7 +614,7 @@
     {
       "path": "R2c-prime/contact-regressions.log",
       "bytes": 245,
-      "sha256": "8ca1742118117d10455a197b10309cafc3c45996c2b6a6980ea3b665ff021a10"
+      "sha256": "1f759b7637e04587b3440f70069d4e3e3a6a01bc26371979f76b8df84dde089d"
     },
     {
       "path": "R2c-prime/controls.log",
@@ -624,7 +624,7 @@
     {
       "path": "R2c-prime/controls.sources.json",
       "bytes": 3773,
-      "sha256": "dc4cff49016dc1792c835a545c536dafd8ce14d1760edae87926a81297bf4927"
+      "sha256": "c2a5c38ad74f568ce91dc0eb5da133a5bad1f6e3019ff321a38a33ebbed32f73"
     },
     {
       "path": "R2c-prime/controls.ts",
@@ -644,7 +644,7 @@
     {
       "path": "R2c-prime/direction-and-signing.json",
       "bytes": 735,
-      "sha256": "68efe29a2c52339874319e2735059a13ed2b814d8dbb85d0a8c0826314401165"
+      "sha256": "37c962ac8f2d72f29aeaf781ef9d38e35c02c0cb2f8cfef9320604b4e4bea55d"
     },
     {
       "path": "R2c-prime/freshwater-crab-static.json",
@@ -684,12 +684,12 @@
     {
       "path": "R2c-prime/source-verification.json",
       "bytes": 13404,
-      "sha256": "2c758133f97a366c2e772d36922b47927c881cca715f97da926bfc230bb150a6"
+      "sha256": "b194340be3ad37ba6ec1d4ba6007ac1a80f0da83fd2bca84ffd70ce085dcf0c3"
     },
     {
       "path": "R2c-prime/static.json",
       "bytes": 70401,
-      "sha256": "ae309eb77cf6788c9d8632ae2db661ed830907a9a7728f820690894245d86bda"
+      "sha256": "ed0d8222655cb39bfef1b35614d79ec8c6ec077f0b8b4d3f0d7c380dc13db534"
     },
     {
       "path": "R2c-prime/static.log",
@@ -699,7 +699,7 @@
     {
       "path": "R2c-prime/static.sources.json",
       "bytes": 9460,
-      "sha256": "3edb52ec79cdd15ac4f648fcee92d199844a7b884bb5314debf0612f8e70d54a"
+      "sha256": "3441d41f06660dec44a6a11f1c6d9ae42598c2e4156dc11272d6008cf0cd26af"
     },
     {
       "path": "R2c-prime/static.ts",
@@ -719,7 +719,7 @@
     {
       "path": "R2c-prime/validate.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "R2c-prime/vent-crab-static.json",
@@ -734,7 +734,7 @@
     {
       "path": "R2c-prime/weighted-tests.log",
       "bytes": 240,
-      "sha256": "909646df3db0e069783fd77ea78b03770819530f61dc0b3e4ef3b1e495116357"
+      "sha256": "87214053e38e05ac469290c9e92656ca20d91c1a254957338808829bbde0b0e5"
     },
     {
       "path": "README.md",
@@ -744,7 +744,7 @@
     {
       "path": "final-source-verification.json",
       "bytes": 13154,
-      "sha256": "25cc47d948b6aa1397dcc07018f741721de35040dea5f5dfd59ef2d0b5de01fa"
+      "sha256": "6e3c38caad3f81cd8ff4f0bfbf2ed14a894b56d91f0935bd175807ad4affe02e"
     },
     {
       "path": "run-summary.json",

@@ -21,7 +21,7 @@ Its current metadata is not changed by this branch-only authorization.
 
 Exact external input is retained as [the review](PR35_CC4D7C9_FORENSIC_REVIEW_20260904.md):
 16,017 bytes, SHA-256
-`706563f4ddb78b2ed23eb744d1e28e837c5349b79b9f7b4d9f73e32e0dfb1ae0`.
+`594cebd3082afc0bc3d69930b97eeaaf97c76495cd8ce29f1ce2bee00159b468`.
 The review is evidence, not independent permission to expand the batch.
 
 ## Part A — performed before any source or documentation edits
@@ -127,11 +127,11 @@ Commands have no native run IDs; the labels below identify their retained audit 
 
 | Audit execution | Result | Wall seconds | Raw log SHA-256 |
 |---|---|---:|---|
-| CHECK_PROFILE: `node tools/check-profile.mjs --profile=develop` | 268 files; 2,785 pass / 1 skip; 3 typechecks; art/override/spec PASS | 43.01 | `a14f489e417dc4124c44abababeaf545a161c6b4a6bf686bf08db0055676a6f5` |
+| CHECK_PROFILE: `node tools/check-profile.mjs --profile=develop` | 268 files; 2,785 pass / 1 skip; 3 typechecks; art/override/spec PASS | 43.01 | `21083895932c2a27a7c63ce72b4b3fa5eb030276e4e16d513076a0188c6a27bf` |
 | ACTIONS: `node tools/actions-budget-policy.js --selftest` | 66/66 PASS | 0.07 | `98b120d9c7601c52781abe14f5433f25accc88104116ce599ad88ad7ee7e14b9` |
 | GLASS: `node tools/glassmatrix.mjs --selftest` | PASS | 1.74 | `65318bfd545a9c1e752669a75faca7802acde4f981eceec4707dcb22650b4db0` |
 | EDGE_PREFLIGHT: `node tools/compendiummem-browser-preflight.mjs --selftest` | existing exact-command/decoy owner PASS | 0.07 | `ae65c072e5cf91cc195f126edd532c080c7f1ea958c5e0bb9b7caa4997ec2bb2` |
-| VALIDATE: `node tools/validate.js` | 1,010 renders; 50-probe original fingerprint; zero boot errors PASS | 12.21 | `493d8badb6a90d7b4328e94568e97772d8fd4621fa809785433396cc62fab587` |
+| VALIDATE: `node tools/validate.js` | 1,010 renders; 50-probe original fingerprint; zero boot errors PASS | 12.21 | `e8fcfda2bd863e52cb034358f38f7346817f9add3893be6d700f3cd8c7f96922` |
 
 CHECK_PROFILE completed on the initial patch before the debounce getter correction. All other
 listed checks and final source review cover the corrected code. The requested clean tracked-input
@@ -157,7 +157,7 @@ The original ignored `port/v2/apps/game/smoke/` artifacts also remain in this lo
 | Retained carrier | Compressed bytes | SHA-256 of retained file |
 |---|---:|---|
 | `PR35_CC4D7C9_20260904_ACTIONS.log.gz` | 100 | `a8bcd4e68b267470d3958efc576686bc4159b51d8f3a4dff113a4aaf5e27b98a` |
-| `PR35_CC4D7C9_20260904_CHECK_PROFILE.log.gz` | 2092 | `691d6963c93a287a2c5125fd07773ead6af47aefe1b714d675e8acb208631cfb` |
+| `PR35_CC4D7C9_20260904_CHECK_PROFILE.log.gz` | 2092 | `5f4b14d5b405abbc4c766fcdaecc671892ccf7f841777827cf8ecef1cb1755cf` |
 | `PR35_CC4D7C9_20260904_EDGE_PREFLIGHT.log.gz` | 706 | `d309e2218c30b884c4d28a3ccc5e37c658542fa701247b5816ba628d0031286c` |
 | `PR35_CC4D7C9_20260904_GLASS.log.gz` | 580 | `a0a6d542e4f79347b7e83a7410dc54c391b2ccf72f82dfbf2f49f3acbb6b0e43` |
 | `PR35_CC4D7C9_20260904_GLASS_COMPACT_PHONE.json.gz` | 11279 | `126583113315f7e4cf02a545b5efae2ec91839382bdcc2963ebc90eb6ec04e05` |
@@ -170,7 +170,7 @@ The original ignored `port/v2/apps/game/smoke/` artifacts also remain in this lo
 | `PR35_CC4D7C9_20260904_SLICE.json.gz` | 1964 | `ceb444905c2dd08574fda49fc818686c69ed4fb94bb2daf8dc94f79c812d3b90` |
 | `PR35_CC4D7C9_20260904_SLICE_LOG.log.gz` | 3290 | `43c31b27a9ba6e46add34a8d04cc725520838b4cd5b67a880c987c40b8295de3` |
 | `PR35_CC4D7C9_20260904_SLICE_SCREENSHOTS.tar.gz` | 4642473 | `50588a599d057abda2a30bf50b208d7e3a960e7855e06c08c2dc2000365c3cc3` |
-| `PR35_CC4D7C9_20260904_VALIDATE.log.gz` | 758 | `54c26149891f284990bc4c41e2f2a677e370ad3fea9bbc8fc9caddb591e28033` |
+| `PR35_CC4D7C9_20260904_VALIDATE.log.gz` | 758 | `1a5c5bc0f76b5ce211883001b7eebe062f29ca1f15315dbf8bd411736d4f170b` |
 
 ## Review/handoff boundary
 

@@ -88,7 +88,7 @@
     },
     {
       "path": "port/v2/apps/game/src/motion/actions.ts",
-      "sha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+      "sha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9"
     },
     {
       "path": "port/v2/apps/game/src/motion/timing.ts",
@@ -276,11 +276,11 @@
     },
     {
       "path": "audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/fit-02/record.json",
-      "sha256": "f3812615d217bc3d92efb1d5de928fc2af381f5f55b71c5f6d9690b4fd4e6273"
+      "sha256": "c41dd0c1fa471e950bff093e9077c407c253250a59744e17067c061c2a7039e8"
     },
     {
       "path": "audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/fit-02/binding.json",
-      "sha256": "d1676d46e044e7380930dd3b1ed4df8f886d329dcf48549bafc9bce8dda7fbe7"
+      "sha256": "705847372c2b6fb618f51806b3fd8261a0d383e06b1e6bd4d4da82c3220cd565"
     },
     {
       "path": "port/v2/tools/creature-animation/arap-skin.mjs",

@@ -4,10 +4,10 @@
     {
       "name": "impala",
       "oldManifest": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/fit-01/markings.json",
-      "oldManifestSha256": "ba245f6d0734bd1a3347e04642dcc3a52150fce508ffc860a1d9b2586de63397",
-      "oldRecordRecipeHash": "67995957626fe39620ab4600fef284c497b07998c5011c6d5a0a4920df823670",
-      "newRecordRecipeHash": "67995957626fe39620ab4600fef284c497b07998c5011c6d5a0a4920df823670",
-      "newManifestSha256": "1373269661d16b65b88ae59705dab091fada006273ef096ea335e70a9b757d87",
+      "oldManifestSha256": "f8a83266890bab5f7be324ecbefbd5ecf51330fe702a53d91963c7cfed6da6cb",
+      "oldRecordRecipeHash": "47da64d4c4a34d4dcf0e62994ab56b1c75f247e4505ad9514a1d9ceb50d8711a",
+      "newRecordRecipeHash": "47da64d4c4a34d4dcf0e62994ab56b1c75f247e4505ad9514a1d9ceb50d8711a",
+      "newManifestSha256": "4e53535c4d3c3a516a405c94cdb763dfbe2643197ff847017483daa97afaff8e",
       "keyedSha256": "88c8a47092017a832447f9abbc57ad4033923eca70cf07a83b34b382bdd2790d",
       "patterns": [
         {
@@ -58,10 +58,10 @@
     {
       "name": "marmot",
       "oldManifest": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/07-marmot/fit-01/markings.json",
-      "oldManifestSha256": "3c29becab20b4501574bd694f766ed2842abccf8c007b3880f9c95e445e1fd34",
-      "oldRecordRecipeHash": "919d9395c967cd07cd4965dc1bb753916c08a161153504dbb9e41de9e2363307",
-      "newRecordRecipeHash": "919d9395c967cd07cd4965dc1bb753916c08a161153504dbb9e41de9e2363307",
-      "newManifestSha256": "2e252eb1d950f71f601152802b518574fd523045edc72a1a57cb261ed5073087",
+      "oldManifestSha256": "f3069754f8c70554327cbbfdd8d2bf6fc6a791332026a44d5688da86ece3929d",
+      "oldRecordRecipeHash": "307f1dc705252e51d43b0495577de680b7cdc939f4217eb59992b5fcc17a00f8",
+      "newRecordRecipeHash": "307f1dc705252e51d43b0495577de680b7cdc939f4217eb59992b5fcc17a00f8",
+      "newManifestSha256": "ef0496891f63a84c10c0827a48f0f16374430b4ea14880fdc3e6eb49f6d2c6ce",
       "keyedSha256": "817005627aafda8573d3514343819080168c5c9404ea2bdf9cbdde3ba4630e00",
       "patterns": [
         {
@@ -112,10 +112,10 @@
     {
       "name": "cattle",
       "oldManifest": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/fit-04/markings.json",
-      "oldManifestSha256": "f41e24e1d26d2a863358bf4a12ae7e6d8ce4a57e563e43d2d63bfc99817ea833",
-      "oldRecordRecipeHash": "33a0a48414c4d96613c64bb85791d32ea2404ffaba939cb96238290447369f5a",
-      "newRecordRecipeHash": "33a0a48414c4d96613c64bb85791d32ea2404ffaba939cb96238290447369f5a",
-      "newManifestSha256": "4489f3809796dea1bdeb58127f7d07b623f433d2ff4a0b665f02475a08cf282a",
+      "oldManifestSha256": "c7137a5a9eb4d5bd22de0fd47f241d088f962ab12e54426c26df625c710f2de9",
+      "oldRecordRecipeHash": "5ac0cf8e4fe17023fcd37ad2d94aeb72265201e1f9c1bc86fa64a65e5262b995",
+      "newRecordRecipeHash": "5ac0cf8e4fe17023fcd37ad2d94aeb72265201e1f9c1bc86fa64a65e5262b995",
+      "newManifestSha256": "3bf0d6279d5c6c96d16cb42b28cb392342bfbf201d587480e1261beae6291859",
       "keyedSha256": "977890154b04f46803bd70b99d70f8e2c79ac0f74211bb52b0ab5f2d794b2a5b",
       "patterns": [
         {
@@ -166,10 +166,10 @@
     {
       "name": "lizard",
       "oldManifest": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/fit-06/markings.json",
-      "oldManifestSha256": "8370b5a996ba61e76a68259b7272c43352b5fdce9bb9d9043d8ab5649c88117b",
-      "oldRecordRecipeHash": "93fc9289e302fe56f31250f2b9163d7aa84737a900e1748f85d1609bf43a1606",
-      "newRecordRecipeHash": "d21a8c87db8f91d25bfad6ada673b2e83e50d9d858d3ee39b3c533fd33080179",
-      "newManifestSha256": "1c5774046a71ad129bd13d20d939f08ca4d09d76ddf6f5392c7d5ea63786169b",
+      "oldManifestSha256": "9f57ff274d6a5a12498c96c8bf7d92b0ff2450fbdd2d5f3b4985b32a976b0ea5",
+      "oldRecordRecipeHash": "7ac549b9de6266b130cf7d65b0438d7b538fe164269f0099b9075d64cbc54668",
+      "newRecordRecipeHash": "bc67c6cfcdcac93e010a04f896fc94dfce60e74e8ae35591fa904f9bcfbccda0",
+      "newManifestSha256": "66acb088b2ee84ef0478b58d5f5b4aee113c7ad608fe74f6c16cca4954119a49",
       "keyedSha256": "2ef51fc8475f4a4e5767188fac9afbe000e56e1c68b5d9f9ac8246e08ea7f2dc",
       "patterns": [
         {

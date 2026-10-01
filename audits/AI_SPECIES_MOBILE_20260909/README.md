@@ -28,7 +28,7 @@ The model's 6.69 GB / 6.23 GiB is an experimental optional install, separate fro
 Current runtime manifest SHA256:
 `ddc09e2128a6fbfea11b3c6b0596359eb97fd7f18198fed38c74b3736502476b`.
 Current combined package03 manifest SHA256:
-`5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c`.
+`bfd3fba993741a787ddb472336488427e43f64b2a6020eb804917683759c6da0`.
 Disposable packages live in `/private/tmp/cf-runtime-pack-20260909-species-01` and
 `/private/tmp/cf-mobile-pack-20260909-species-03`. No weights or third-party runtime binaries
 are committed. Same-size retained static pair: 113,058,708 bytes / 107.82 MiB, excluding browser

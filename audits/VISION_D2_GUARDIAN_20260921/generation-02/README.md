@@ -8,6 +8,6 @@ Dakk authorized exactly one retry with identical prompt bytes to address the 153
 
 The requested 1536 bear is still unavailable from this authorized retry. Claude may inspect/compiler-test the retained output, but must not label it a 1536 G3 acceptance or use a resampled file as an original. G6 still waits for a fitted compiler record. Guardian5ms desktop-only and60px-at1536 gates remain unchanged. Codex holds; Dakk has no new decision requested by this packet.
 
-Prompt SHA256: `feb0070c0e645be54932c1f48abc8a6c236c0099df639a07ae1a45b64aafd02d`.
+Prompt SHA256: `08b8df9d43e6ec9463d5d61fa71d80be7a0e54a222c1007b2fd51a9fbc6438fd`.
 
 Master SHA256: `4e7b7e9626ef17af3ff82b3e0f496c3257d2c5afd49fd0d7fca8d55aa9ce52de`.

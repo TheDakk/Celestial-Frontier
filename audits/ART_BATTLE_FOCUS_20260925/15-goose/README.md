@@ -8,7 +8,7 @@ The compiled retained kit prompt binds Goose genome and biped-bird part inventor
 
 17 own-master parts/19 landmarks, two spread visible wings, both feet and tail explicitly present; absent/hidden/folded lists empty. Land standing habitat; no inferred underside or airborne acceptance. `fit-01` retains IC-3, labels, parts, observed split and binding. Static01 first-refusal diagnosis showed every folded triangle at shin edges y940–959, where narrow manual polygons missed orange edge paint and assigned it to body/root. The initial commentary guessed wings; `fold-diagnosis-01.json` corrected that hypothesis. `authoring-rejected-01.json` is immutable; corrected shin coverage produces `fit-02`. Joints, master pixels and gates unchanged.
 
-Final recipe `887857dd7213d86fe5278ab6dd4ef3ebbf5a06a86f12a9f241b56c4e14eb26a0`; binding identity `1c17dc4a28087fc13d7e7d358cb0ba5d12c8229f5a049a5b9b083058fcac226e`; binding file SHA256 `0b7bccca07fcafa8d6eb5d766659e85f49a528b7a0f117a728b59437064637b6`.
+Final recipe `359ea5009240cea77a5b7c8a464917914cfbf52d52beebf98becd8fa78f7e7d6`; binding identity `25ca1d86326824785f7d12eea59dacc51e0eada9876621da0de42dcb9d8fdd66`; binding file SHA256 `1f804a7a80ae6b7518dc5e13fbc9beed2c0c861fdd9c845615416ad9eee650e8`.
 
 ## Measured results
 

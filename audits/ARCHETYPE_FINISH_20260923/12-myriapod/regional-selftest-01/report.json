@@ -72,9 +72,9 @@
   "sources": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/intake-01.mjs",
-      "sha256": "f45342dae1d412e3e219d7e34f0c013c730867b96c157edd381a61a7b14ef216",
+      "sha256": "66cc5dcf89ecf1f8a7c4bc88c2cb3e7f853d3782a0f892fcc2a78cbc98f3f821",
       "retained": "sources/audits/ARCHETYPE_FINISH_20260923/12-myriapod/intake-01.mjs",
-      "afterSha256": "f45342dae1d412e3e219d7e34f0c013c730867b96c157edd381a61a7b14ef216"
+      "afterSha256": "66cc5dcf89ecf1f8a7c4bc88c2cb3e7f853d3782a0f892fcc2a78cbc98f3f821"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-authoring-schema.md",
@@ -90,9 +90,9 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-selftest-01.mjs",
-      "sha256": "e25cbf4c6c429cf738186e3442bd76360a9fd794cf1c43ff88915e51dbae0eee",
+      "sha256": "dba0994cebaaa4ffa68e5e287c95636e2bc1ee856b47ace3e6878186cdc6af18",
       "retained": "sources/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-selftest-01.mjs",
-      "afterSha256": "e25cbf4c6c429cf738186e3442bd76360a9fd794cf1c43ff88915e51dbae0eee"
+      "afterSha256": "dba0994cebaaa4ffa68e5e287c95636e2bc1ee856b47ace3e6878186cdc6af18"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anatomy-inventory.mjs",

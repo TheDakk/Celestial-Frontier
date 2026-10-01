@@ -2,8 +2,8 @@
   "schema": "cf.regional-pin-diagnosis/v1",
   "status": "DIAGNOSED",
   "scope": "Inspect exact existing region polygons and field membership on retained fit02. No region search, diffusion, pin release, binding output, real intake or runtime/gate edit.",
-  "bindingHash": "78da824b887ddcf85c504229fda0f30b5c009dd2da0108a0de43c8857393d3a3",
-  "recordRecipeHash": "693cd0c1cf2160326cf3681fcf3c3dc66ebae2bc528ccdd567f900f46bb3831b",
+  "bindingHash": "473529849237f41ed37114ed0deae7bd95777a220872ed846fba257d2db39d8e",
+  "recordRecipeHash": "1ee3ad94853a4e8df4f64daf8654231130f6f182839f86e4ef5e740b391ef214",
   "fieldVertices": 916,
   "inheritedPins": 458,
   "regions": [
@@ -33600,8 +33600,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-01.mjs",
-      "sha256": "2b32245f0b31fcdf3f6f57e4d8dedea379387f408890c062afe56ef872edeb8d",
-      "afterSha256": "2b32245f0b31fcdf3f6f57e4d8dedea379387f408890c062afe56ef872edeb8d"
+      "sha256": "726fa40d4c588788c22ea6be4f5cf7c0fb834bc8de9b6a8355594f565c4319a5",
+      "afterSha256": "726fa40d4c588788c22ea6be4f5cf7c0fb834bc8de9b6a8355594f565c4319a5"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-04/authoring.json",
@@ -33610,18 +33610,18 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-02/pre-regional-binding.json",
-      "sha256": "89461eb9d8c49e5a3535511c463d10318eb56be19e3f9ca4a29d1ac400de9855",
-      "afterSha256": "89461eb9d8c49e5a3535511c463d10318eb56be19e3f9ca4a29d1ac400de9855"
+      "sha256": "0de3b95b7bc403554662304a1fc104b50890bf5cfc523cc76c8cc3681c5d4f45",
+      "afterSha256": "0de3b95b7bc403554662304a1fc104b50890bf5cfc523cc76c8cc3681c5d4f45"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-02/record.json",
-      "sha256": "1e47ac1be06f3efb5c0d904f48d3ee62bea5f187da6b019e34c81968dcf294d7",
-      "afterSha256": "1e47ac1be06f3efb5c0d904f48d3ee62bea5f187da6b019e34c81968dcf294d7"
+      "sha256": "a47e7530991e8d7d3dafd11f85c8d32288d933a615950337bf7144c91bf0c8e7",
+      "afterSha256": "a47e7530991e8d7d3dafd11f85c8d32288d933a615950337bf7144c91bf0c8e7"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-02/observed-split-receipt.json",
-      "sha256": "c8d0df4aa1108338f8cc7001aa9a6df28f5a19c9476aa60b3c4502e9d39c9774",
-      "afterSha256": "c8d0df4aa1108338f8cc7001aa9a6df28f5a19c9476aa60b3c4502e9d39c9774"
+      "sha256": "6b1679b4021255c2c6fc6620582d68b936533d7aa350babc7733060555242664",
+      "afterSha256": "6b1679b4021255c2c6fc6620582d68b936533d7aa350babc7733060555242664"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-04/master.png",

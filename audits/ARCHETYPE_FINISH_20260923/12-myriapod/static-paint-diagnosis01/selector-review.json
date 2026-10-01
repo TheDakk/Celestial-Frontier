@@ -5,7 +5,7 @@
   "runtimeExtractionExactInverseRecoversSnapshot": true,
   "beforeRuntimeSha256": "f9f80f04bc2bb34f5541e944ecaf1d5f0fcbbff938c29f818bf006ce139e2e02",
   "currentRuntimeSha256": "320a106834b3bba32e727b95ad13abdf13ff7f74723d40841a464d2b62a040be",
-  "independentStaticObserverUnchangedSha256": "6d9cd1252194fe675d662eedb6616979a16eac72024e569ce6da3deac9c4a482",
+  "independentStaticObserverUnchangedSha256": "71e926852a54f3d09eb5e41afc51d3c9a53003f4536dd6223e78c2866e3901b6",
   "findings": [
     "Normalized per-corner sums, distance operation order, strict comparison, returned support properties and all per-field rest/weight mapping preserve prior runtime semantics for valid sources.",
     "Writer changes only selector source and reported selected distance. Existing support barycentric >1e-10 inclusion, pin/conflict logic and all solver options/gates are unchanged.",

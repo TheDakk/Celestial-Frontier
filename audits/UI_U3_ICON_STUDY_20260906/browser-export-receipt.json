@@ -2,7 +2,7 @@
   "schema": "cf-u3-icon-study-browser-export/v1",
   "status": "PASS",
   "scope": "Standalone review HTML only; original SVG comparison; no game/product/browser profile",
-  "htmlSha256": "3cfd060ca06e1fc51c47cb949aa3533dc1ded44cde361365a2f84639cea88ccf",
+  "htmlSha256": "88f57e00fe8712f6dead724cdeb11fe72028bb2d2dd0d9f0169948eedea6bc0d",
   "startedAt": "2026-09-06T22:20:24.907Z",
   "errors": [],
   "fallback": "Inkscape is unusable this session after a failed version check; no further Inkscape launch attempted.",

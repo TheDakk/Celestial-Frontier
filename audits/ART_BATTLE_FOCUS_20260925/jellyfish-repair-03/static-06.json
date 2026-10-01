@@ -561,8 +561,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "050cddedc732597f195ebed17582e37e1c7e9eaea348bbaaa0375e1554c806e7",
-  "bindingHash": "7f30622d139a1a85e0b70fc8bb3c0afe535e405d98dc3f69157cf1d562b12280",
+  "recordRecipeHash": "e3bfacd7803d93e28dffd7d83ef709c5efb285b5758ef7f050dc8ca54821f177",
+  "bindingHash": "7b7459ff12249a67a030536fffd68432d9098583837f633cb85c61748e4f1447",
   "family": "radial",
   "contacts": [],
   "realm": "aquatic",
@@ -664,12 +664,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/record.json",
-      "sha256": "7731a1b9050637d4552062b925e00a02ebf74bdce875097429d399629a193046",
+      "sha256": "7cfb0d0a6db56d4a653eff786002c537c58969123948bfd3c16a9e6e9c21746a",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/binding.json",
-      "sha256": "58a8cf5327da5d3992d69b56dfd045f7cdcca38e14c86ea59570b5387a779c53",
+      "sha256": "7f8af5d588864538fc68f3ed5ecb7077dadcd1d5260182acde94074b81a39238",
       "unchanged": true
     },
     {

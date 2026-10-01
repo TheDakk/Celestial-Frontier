@@ -148,8 +148,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "023c9266a43cb6b07a0410afb20fcaf12ad74b80ff114b388e79537f249a224e",
-  "bindingHash": "6ef91e54b455d597b66f248f84c98d14383846d789dc7eaa303d83194097f4b7",
+  "recordRecipeHash": "dc46365d8387115405292befd6987c62f2ad9217843e74733fbf8a77888c91e1",
+  "bindingHash": "95f6e5aecd41d644562e47472d52fec61e025fecd659a620c77ad5f593a364df",
   "family": "fish",
   "contacts": [],
   "realm": "aquatic",
@@ -251,12 +251,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/24-herring/fit-02/record.json",
-      "sha256": "3d0f59cf58a22877d36f9681c038274a0c2449a9aff175ae3599e789affc241a",
+      "sha256": "eba662e9658a82998afe60e8a554892fd8d991a497438683fecf9b6944ddf79a",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/24-herring/fit-02/binding.json",
-      "sha256": "8085508a199142d29313cb56730c9aea14815f4fcb4bd9bd3adc008aaffb2abc",
+      "sha256": "09122421654ef86d6af34247ee7d01d43204eb35192ef3058f7d1982ef01454b",
       "unchanged": true
     },
     {

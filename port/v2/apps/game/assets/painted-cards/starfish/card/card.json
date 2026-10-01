@@ -1,7 +1,7 @@
 {
  "schema": "cf.card-master/v1",
  "earthName": "Starfish",
- "recordRecipeHash": "7b02d178f4c3ff04c7801e70613a66f3f82a238647dcd4fe73ba593e37470dca",
+ "recordRecipeHash": "2083de71c8d079fa6e07ad31ef36c32484ed705e3940c623f91a50ca860b1ba1",
  "source": {
   "master": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/master.png",
   "masterSha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687",

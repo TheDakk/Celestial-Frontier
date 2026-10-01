@@ -389,7 +389,7 @@
   "inputs": [
     {
       "path": "audits/C_LANE_REPAIRS_20260914/cut-seams.json",
-      "sha256": "eefe756100372e5c8da03ac6f9263148736478fe59b423c06d9ad0f67af47749"
+      "sha256": "bff6f347f08d62ecb37fdab55ce109781f503142d3fadf937dfd604b9ea9a75d"
     },
     {
       "path": "port/v2/apps/game/src/creature-rig-contact.ts",
@@ -421,7 +421,7 @@
     },
     {
       "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/report.json",
-      "sha256": "13ed381efdc5d0c4c0593a0dde2e3d65ce1666741c8f44aece6551a377f42f1c"
+      "sha256": "1b1a895718e563a869ea2b2bd8d34604ba1b9597139324a8f519cfde39060f36"
     },
     {
       "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/disc-only-rest.png",
@@ -465,7 +465,7 @@
     },
     {
       "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/report.json",
-      "sha256": "13ed381efdc5d0c4c0593a0dde2e3d65ce1666741c8f44aece6551a377f42f1c"
+      "sha256": "1b1a895718e563a869ea2b2bd8d34604ba1b9597139324a8f519cfde39060f36"
     },
     {
       "path": "port/v2/apps/game/src/creature-rig.ts",

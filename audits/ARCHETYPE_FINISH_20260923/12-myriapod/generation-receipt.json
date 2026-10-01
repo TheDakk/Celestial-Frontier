@@ -6,8 +6,8 @@
   "toolOutputSha256": "d3daf82ae3963d701c2bae94304f3c15a97b3d21d0ebf782b5ffc43a09199f2b",
   "retainedMaster": "master.png",
   "masterSha256": "d3daf82ae3963d701c2bae94304f3c15a97b3d21d0ebf782b5ffc43a09199f2b",
-  "promptSha256": "b4c754b74501ae150328f77ea732889ec3c2d54cd47a3a0819f830941a54067c",
-  "requestSha256": "669d9d712d0251f627343bb81e3a92f862db5ece62cc782490b83362ec10e2e3",
+  "promptSha256": "cd8eab6f00e9ca8eb8333c984543a962e8a6c204b15913dc2ea6be0ce97c9f4a",
+  "requestSha256": "aa9d38b929830ec478b0fa73ec0e305b7a50422e9e91c0a38e4621ec3886ba48",
   "rgbaEdited": false,
   "visualAcceptance": "pending independent actual count"
 }

@@ -1,56 +1,56 @@
 [
   {
     "name": "Flounder",
-    "beforeSha256": "c3b09e00da971f157b51c3b8bc15bfe51ad42a1d10e8b2c2ec8bb5c9e0c4a398",
-    "afterSha256": "e4bbdb5011426b619b78573bfb403908c3e5b70e7d754b470b7566ac9660d0f0",
+    "beforeSha256": "8e3f84b29c6cc017148a30d48fa14646f9f8e96df42a449efa59476c0d89cb06",
+    "afterSha256": "804484683f20898cfe66e704163eadbda643e4920f64aa8869706291c179c6bc",
     "clarification": "ANATOMY/POSE CONTEXT: Show the EYED upper side of this natural flatfish in a readable side-on horizontal composition, head right. BOTH eyes belong on this same upper side; asymmetric mouth and complete dorsal/anal fin skirt. Do not add one eye to each side or a deep symmetric ordinary fish body. This prompt is not a measured absence declaration."
   },
   {
     "name": "Halibut",
-    "beforeSha256": "010d62fa7c1f23fabcc26f76c8e5d3c598001bb65943ebfdf59c0119f4421a0a",
-    "afterSha256": "f6fc555a59af6de0333d7a9a1ab383039c9e59153cf8b055c89610313892f0a1",
+    "beforeSha256": "4ad67d956d790cca90419f23834631e525bd9f5f51088e754d0a76126b91f79f",
+    "afterSha256": "99aca9e5ffdb62020091c1c8fcc0bd77c5ea3a46bc924da0c3b7846fb6f344e3",
     "clarification": "ANATOMY/POSE CONTEXT: Show the EYED upper side of this natural flatfish in a readable side-on horizontal composition, head right. BOTH eyes belong on this same upper side; asymmetric mouth and complete dorsal/anal fin skirt. Do not add one eye to each side or a deep symmetric ordinary fish body. This prompt is not a measured absence declaration."
   },
   {
     "name": "Knifefish",
-    "beforeSha256": "385e3a422af61305aef8dce9a3e39b495efffd90cca9f30a3d96fd50005d043e",
-    "afterSha256": "b09ead0e36597eb37f9dd8fd24ba84ee6ece407f6350fbaef4c135150d88df1c",
+    "beforeSha256": "23cc44c0d7fbf5857c0d97cb6b7daa5a39b47c1aa8ca15d4fae0c244763aca1b",
+    "afterSha256": "46bd949bbb5904ff42c04c812dc269903a2d215cc2f5fbaef8baae8489547547",
     "clarification": "ANATOMY/POSE CONTEXT: Canonical Knifefish has NO DORSAL FIN. Preserve its continuous long lower anal fin ribbon and species-correct tapering rear, without generic extra dorsal fins. This prompt is not a measured absence declaration."
   },
   {
     "name": "Flying Gurnard",
-    "beforeSha256": "50edf215c8ee60d5fd446fe902cb3e1f6472def7f8ba0094e04645e809b93c9a",
-    "afterSha256": "5f07570431093335e1addd152ea4976fa1d50ed64ab1a879ed47241a03aafd56",
+    "beforeSha256": "836dc1496384c8d7385a15f4d30e1c2dc26a646d825efad25f733c20ad977afa",
+    "afterSha256": "594dc236da2ffc48b2b453edff491800b81954113170eeb496bd281d9085cb71",
     "clarification": "ANATOMY/POSE CONTEXT: Preserve its enormous fan-like pectoral fins with electric-blue markings and the separate small finger-like walking rays. Natural pectoral rays are not invented extra dorsal fins. Full complete fan and tail within empty margins. This prompt is not a measured absence declaration."
   },
   {
     "name": "Rhea",
-    "beforeSha256": "6def8ce100dc82a87b866eacd09c189184ce3574a2f433c645130d93c5cfc712",
-    "afterSha256": "39e0517c3e436ac87deef0ca1b6fc41652fb19f2a56c83fbe115b4a34482a312",
+    "beforeSha256": "18647bce268fd6fb6125605d66497862cbf32a14bfcb5f0fc4401482bb624635",
+    "afterSha256": "a73ef3559a8885f1fdc823ffce5ac956c26df7e993178c916b12d37c552cfc2d",
     "clarification": "ANATOMY/POSE CONTEXT: Canonical Rhea anatomy overrides the generic bird layout: shaggily drooping wings and NO VISIBLE TAIL. Preserve its natural feathered rump; do not invent a protruding tail. This prompt is not a measured absence declaration."
   },
   {
     "name": "Emu",
-    "beforeSha256": "15e10a0634ab89e3a02514385d9fbb75be9d62783b501cd81579d2a6df526142",
-    "afterSha256": "54116aed1a4a957b954220e58ec399e5cb2468545202cd1afcd07c0205c97ad3",
+    "beforeSha256": "2cc0730e3498f9e104ac1d2bffad92ede41b06819c16b0872a3ed13dfa5dadd8",
+    "afterSha256": "1c03aae43a317a5ac3aaa2c5f01a86385d03b592f791e4779179a3d2cd3cef7c",
     "clarification": "ANATOMY/POSE CONTEXT: Canonical Emu anatomy overrides the generic bird layout: NO VISIBLE WINGS. Preserve shaggy natural plumage and hidden vestigial wings; do not invent visible folded flight wings or a projecting feather tail. This prompt is not a measured absence declaration."
   },
   {
     "name": "Kiwi",
-    "beforeSha256": "65cdba12be7ebe03c95b93e0c9f7ffbb548f61767c2366545ec8c2fb95b09bff",
-    "afterSha256": "6945a4be60eb51dbebd7245a6510baf7f9b9e13cbe2ac383f386b2fc48fe7151",
+    "beforeSha256": "3a07e45fb2eabf46d1e731b23271a3728d20044ba37d05668a719c874be778c4",
+    "afterSha256": "0379a19167dfb69434a8634705c1cc03ac7981cfd12da64417920e921439fdbb",
     "clarification": "ANATOMY/POSE CONTEXT: Canonical Kiwi anatomy overrides the generic bird layout: round TAILLESS body, naturally concealed vestigial wings. Do not invent a visible tail or flight wings. Preserve long slender bill and strong two feet. This prompt is not a measured absence declaration."
   },
   {
     "name": "Quetzal",
-    "beforeSha256": "ea00d305122ae935cba6287afc1383a085398e48054505ee07b6d8af41af8f04",
-    "afterSha256": "1b092fc3eac5a492f7c8b7dd605e8cf63b46d26721924889f92ec11202bd34e3",
+    "beforeSha256": "be3ba085eb9c97e46639f540de2364dab542f977db2df99dcc98ae35f9092ebf",
+    "afterSha256": "d21fe21c99008f5a48d022841a5da56e7bde35606092fdf2b62fe2ebe76f5310",
     "clarification": "ANATOMY/POSE CONTEXT: Male quetzal with TWO complete naturally long streaming upper tail-coverts. Scale the entire specimen down to fit both complete plumes with empty margins; never crop or shorten them. Wings naturally folded. This prompt is not a measured absence declaration."
   },
   {
     "name": "Lemming",
-    "beforeSha256": "d0857aad96607a890199ff859fde9c908f252014a97c74be8e32845b5fdc6c83",
-    "afterSha256": "a53d3accf92db2aead992053822f02438681f553c0e33ff67daebbacfed6732e",
+    "beforeSha256": "24cdf8b47275df1d5320cf8adab85088a36fb7065650efce17260dfddb3f865a",
+    "afterSha256": "f7bd1696ad7eaadc770b126f95941cd43b0aed007be37b60a79cc40c2a8b83c5",
     "clarification": "ANATOMY/POSE CONTEXT: Canonical Lemming anatomy overrides generic visibility preferences: ears mostly buried in coat, an almost invisible natural stub tail. Preserve these actual short structures without inventing large ears or an extended long tail. This prompt is not a measured absence declaration."
   }
 ]

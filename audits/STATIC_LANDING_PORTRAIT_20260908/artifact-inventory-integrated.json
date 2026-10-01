@@ -5,7 +5,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/DIRECTION_DECISION.md",
       "bytes": 2917,
-      "sha256": "fd46b6d12d1e7a53a62872b7283bed1ecef19cb1715f23ebccf207480f7692d7"
+      "sha256": "23bba733a3a7e6583183d1cef4e44bdeee8fd8f9cd3551470af5ced1083e92c4"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/INDEPENDENT_REVIEW.md",
@@ -15,32 +15,32 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/INTEGRATION_SOURCE_REVIEW.md",
       "bytes": 8963,
-      "sha256": "b4d4696a973393abe724112fd9b51a879c654b5f285265302fe7a9a5b1130f99"
+      "sha256": "27fcfa9e23bc065a7d06cec738fd83944d953bd654d7f669cecb91319c6a5b81"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md",
       "bytes": 3213,
-      "sha256": "e232688b83db48e3dcad0ff3c34541c30bd16f80b6dc3d2791b0d2eb967ba76b"
+      "sha256": "3d580352dbb1713a0a043d4db6fac6d8c243da172c555a9cdf895936792b1c1f"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/README.md",
       "bytes": 8682,
-      "sha256": "cd322130fe1ca1d1aa94f1b91e40ed6a9487da22801819a14fb7b1b9be073931"
+      "sha256": "6dc37f1c292b79e77758f61d6f0ef5aa12e568e6458bb9de530feb2205d646a4"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/STORAGE_AND_QUALITY.md",
       "bytes": 5989,
-      "sha256": "201ce5bb42413339f12ab750ef3953f102ab163620ab9f9a8bc826cc7bb0349a"
+      "sha256": "c78599585430daa7250ee2e9605d304f7e14d4438c51b9faa0b5c9fc0e345866"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/VISUAL_REVIEW.md",
       "bytes": 1759,
-      "sha256": "92c149338ff4f3746bc07fabe02e3d5ebe0ce85fa2b01e01fadd8e7f93c39986"
+      "sha256": "86f74a8714aa8f2dc909771c69728e5ac08be9b5a70006f69890e04203da7f6b"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/artifact-inventory.json",
       "bytes": 4236,
-      "sha256": "41355931ac77d6ccb6f38e971a42cad151b4f4c5f4fa2b1d013b3b9364addbf9"
+      "sha256": "4df01d2e4125c3ac43c270c34f0c685baa04f7da3bb3ada8ea41ac149915d601"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/civet-landing-original.png",
@@ -70,12 +70,12 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/export-runner.mjs",
       "bytes": 2568,
-      "sha256": "2b26b2faa849bea42bb9ff2f459d62060a3475a79c0db79081d273b0300d46f9"
+      "sha256": "d1754f3d155aaa8e057309a3cd79e32d0ea2e5b179f11ff5a894eb03a5799ff4"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/receipt.json",
       "bytes": 4251,
-      "sha256": "7be3b2bbaf978f0d46ce3f0a64cb35e9fa3026faba36f8bfd755a6ffeeb704ad"
+      "sha256": "250c703004d252bf5d803abd02c35bd68d4eebb78759528784b8c63da4ebcfc3"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/reference.rgb",
@@ -90,32 +90,32 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/generation-result.json",
       "bytes": 717,
-      "sha256": "ccda395d2770eb91bcad9ba9b0340578c7e13717a2c9551d64a6e43c8a4247dc"
+      "sha256": "11ca3bfba653421ffc5f1f8f1afd48ba957d0f28bdfba1ff4bda1de7a2350f5d"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-build-native-results.json",
       "bytes": 2384,
-      "sha256": "e0527f4dfd9e731bd1cc92eca7481f211ade0a4de410f7164df3a8957ab35ef9"
+      "sha256": "caf99b9b89eda62b99da05586e2f80b22e7f24c8cdf238b7d138ac4c1452ed3e"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-build-native-runner.mjs",
       "bytes": 3241,
-      "sha256": "25bd98e4706746cf630766be135afba3b78bbabdfa11b9562972635618d05dc5"
+      "sha256": "2842d3bab9685044ca01b8df3ad33f42b079e873ed16feabfa709413405498c5"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-final-results.json",
       "bytes": 4361,
-      "sha256": "a115797b14cc2411f0f93d665806881c1f7058fb5f14255985225e5b20cd299a"
+      "sha256": "88acdfa2bdd20829c2b91528f0f350ebb84ef89e81d582cf5340c58253b8df9c"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-native-corrected-results.json",
       "bytes": 2798,
-      "sha256": "b5041be83de32e525d14109c8e8626ce3fb33ea418f8052c2a4cf7001d008624"
+      "sha256": "31f4b4df191ac18c7e928cac4eb69873781bd502d0f07a7856efabe0403827da"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-native-corrected-runner.mjs",
       "bytes": 3296,
-      "sha256": "216927a58deb6dc3919b3937e3ee391e825a5752dbfe1535044e48b53be640d6"
+      "sha256": "f81844919cad5b18b0a3e68f17756a8837c47211b068219656131ff85e808fca"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-start.json",
@@ -125,7 +125,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-focused.log",
       "bytes": 242,
-      "sha256": "dd395c14cf81c3d6098b7de7a8bd34e9316316b427d7cab5b727e5227f76c536"
+      "sha256": "34abb71c9441dfa591b32a1bdd3b114723e0bff2c76252be4d4f54ae4c4ab835"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-native-syntax-chain.log",
@@ -140,12 +140,12 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-results.json",
       "bytes": 13708,
-      "sha256": "ef3f2f2912dd391ae76fd7cf682a3dbef02817aa084247a1a2e74cfa2033c757"
+      "sha256": "d7dbb1c2f8a7f3b7de80e6a3473a69a2610f9f854c382b811f540618962b2e8f"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-runner.mjs",
       "bytes": 5452,
-      "sha256": "7c4407ed9aaca9717cdfc5b4ae010e2bf9b042b8e5394d9e5e46a37bedc356f0"
+      "sha256": "251f9008903b6752a9d3d40b320605ca88c854926ace3d5d027895d93c8af6cd"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-typecheck.log",
@@ -155,12 +155,12 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-validate.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-focused.log",
       "bytes": 249,
-      "sha256": "dad2a1841bf6b3d2e5849f35de6cfb8687f322ddad8121d293d761a67469c2b0"
+      "sha256": "df03300fe171a54302f014584e69a6d070e965ccbf5ec58e46137d5d0198a71a"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-native-syntax-chain.log",
@@ -175,12 +175,12 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-results.json",
       "bytes": 14578,
-      "sha256": "c772da01d8ef7942ee40c373037de19148ee3f7cb23c5827dc5568a629ffe4f2"
+      "sha256": "cdcc6602909997e59f4b5e00d3dca164af7c38c30293a5a87da9c1b146768728"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-runner.mjs",
       "bytes": 5124,
-      "sha256": "17775a03ce81cbf4c28be87a80f83e73ae80576b5e5aa08c751ab171fcc18a53"
+      "sha256": "867e3aa4042ec6eb32d16f6fcedfa6476cd3d310b583e01dd76d99a8c7ca5254"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-typecheck.log",
@@ -215,7 +215,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v3-remaining-chain.mjs",
       "bytes": 9146,
-      "sha256": "167dd174b627c595fdaaef6c264dc51239bf8719eafb486606f900f2d31c157f"
+      "sha256": "dad869b005971bf339d508d55e54d0dbe83f23d961b3285e34e4f2af505eb560"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v3-runner.mjs",
@@ -230,7 +230,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/blocked/review.json",
       "bytes": 333805,
-      "sha256": "4cc8494c28fc845f690be411fdb1bc50727551c7df0b28a9ad11e7f5710a8b36"
+      "sha256": "114d25d5d2363be41f8d1d77f81d8c3659c36b840b3691714c23a45835427919"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/blocked/runner.mjs",
@@ -240,12 +240,12 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/blocked.log",
       "bytes": 472,
-      "sha256": "1be4e2ad6b39903d49e96fe50642b9faa16a95e9aa12a3789ace9497992badca"
+      "sha256": "a4cc174bd9022670d9bc9849b17b91ddd3389f1230b6b03192793094db2de373"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/chain-report.json",
       "bytes": 26025,
-      "sha256": "45c9b4ec08a2d321da3dd9f50396920ae9923bde25d31fd3db57cf5dfc121ab0"
+      "sha256": "7cad845855b7563d281237f8deacb272f94504348b3ffa787a29003033289d88"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/chain-runner.mjs",
@@ -260,7 +260,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/desktop/review.json",
       "bytes": 716082,
-      "sha256": "6df31a5df3e90f98573ac922861309cc28dc0ce44494e196cbab8add9699743f"
+      "sha256": "e33057cad8a25d909df06394b9164b7f57e79cb66ffdcb4e0322865ecb662867"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/desktop/runner.mjs",
@@ -270,7 +270,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/desktop.log",
       "bytes": 138,
-      "sha256": "b4a7385906c97607033e8b8a4aeda41f7ea3a8f74b83be5098cf7ee3ba11e806"
+      "sha256": "202e68704a93628df5b3150dcf04e8c0d3fddde2d8dff1e270e51a2dee814005"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/phone/earth-landing-still-phone.png",
@@ -280,7 +280,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/phone/review.json",
       "bytes": 709513,
-      "sha256": "0fdd8a09afa9e17e9a0882bb1d2ad35bd7e2fedcafe7f21094c21aac2546e92b"
+      "sha256": "87cf020551769db6b138b2ac2f57b8bbef517c9422339aa4418e50ffc7255e62"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/phone/runner.mjs",
@@ -290,12 +290,12 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/phone.log",
       "bytes": 136,
-      "sha256": "5ec20400613fd9fcb92a4f46b3833ef62441eb02999486149defd05d4f5256d2"
+      "sha256": "83785412c01b887e250f03eba9565fa18fd60c46d8edec8f4e43e706705e9a58"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2-chain.log",
       "bytes": 566,
-      "sha256": "4f72db20df865718185700c019986e0e262c8da185d6a0d30936b12e50cececa"
+      "sha256": "04c8be01683db5afdad4c207078c38e41e322279018a7ba6d469c95e87007b53"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/blocked/earth-landing-still-blocked.png",
@@ -305,7 +305,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/blocked/review.json",
       "bytes": 513922,
-      "sha256": "5ce7981ac14c34d3bdce6591e15f62da388874e7a7f54371912495fba27e49c6"
+      "sha256": "0614b0da2020d1421df799dcdf534ed7085759077e1c1c661c8c1f3f4624c133"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/blocked/runner.mjs",
@@ -315,17 +315,17 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/blocked.log",
       "bytes": 148,
-      "sha256": "0290b5baa6c37ee5734844a0accdb530e0c096ec30e63c0604efe05ba534ebff"
+      "sha256": "e83d53d9b1ce9a94bc862ff6674e837472f568930a20077f24a6e56fce863349"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/chain-report.json",
       "bytes": 28007,
-      "sha256": "049944d96d580065f3de1e0a58c85d50d55fa79c7f1f832d53ce0f71b08af020"
+      "sha256": "033367474bf98b619a05b13d3168e0e3e1cfa41583904424d45e7390fcf88545"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/chain-runner.mjs",
       "bytes": 9146,
-      "sha256": "167dd174b627c595fdaaef6c264dc51239bf8719eafb486606f900f2d31c157f"
+      "sha256": "dad869b005971bf339d508d55e54d0dbe83f23d961b3285e34e4f2af505eb560"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/default/earth-landing-still-default.png",
@@ -335,7 +335,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/default/review.json",
       "bytes": 503269,
-      "sha256": "c08ab75517ec2e002153eb2db2eb03a8d1aed1553bc16a6c2e1c0726bbf4fa9d"
+      "sha256": "37a5d67f53163a05bca07a521a625723d29c6224e218aa534ee1b86ab2fc4589"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/default/runner.mjs",
@@ -345,12 +345,12 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/default.log",
       "bytes": 148,
-      "sha256": "464863aec9566de94f31b4b501dff094e9ad9d6deccb2a037e650ba14cfaad68"
+      "sha256": "462854d407e660a18159f1ec5c4edb08a8a73bb422beafffa19059716ed8d790"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining-chain.log",
       "bytes": 155,
-      "sha256": "c4e8786dcd03dddf2e7aa582109ff503a3f92cc07d671e26320d1724f9f4b98f"
+      "sha256": "69fa64d501b822ad4b33e7ebda3f0118174594cc03cc308a7273844119b9a626"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/player-storage-build.json",
@@ -370,7 +370,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.json",
       "bytes": 2981,
-      "sha256": "70a8a3a37fcf1cecfd7e34cedd676579c997dc0badfb0a023504c466b9a659f4"
+      "sha256": "c6a5efd857fa840bfffb3585c9f5995b746cda0b83a39a89ed690bce539dbfb7"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.patch",
@@ -380,7 +380,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/main.ts",
       "bytes": 854682,
-      "sha256": "c827f91e803c3ef7c234babd87b4eeedadb4e6ed3308d309a1e9fe4bfbb72970"
+      "sha256": "23178a1ffa9d328bc9f86dca71d3f04a1a168594d9739ebfd90b6ac66a0dae6e"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/painted-earth-landing-recipe.ts",
@@ -410,7 +410,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preserve-candidate-first.py",
       "bytes": 2610,
-      "sha256": "2da6087529a255cfd2bdf85735a766582e7b19c39a0e3757653824041d84b704"
+      "sha256": "e4c40b277512dc599961e48a53fbb9f14689548a7403b53337baa575395ee5c7"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-browser-check.log",
@@ -420,7 +420,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-package-results.json",
       "bytes": 8680,
-      "sha256": "28a9783b93cfeb8dd580044e1ebe03c5e531175c215d01b4edfeb89fb5b99b5b"
+      "sha256": "dbe12f3c8a67d96e6f9035087729d9a801882da0cbf87d632427ab743224d7f9"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-package-runner.mjs",
@@ -430,12 +430,12 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-package.log",
       "bytes": 6330,
-      "sha256": "f240bb247af2678381e1f9148e1c80f47c8090b450720e304396d2fa5e5e1f77"
+      "sha256": "aa878de5913110513b83287ef26cfef75d652d7aaac714a165b521400bce3f7a"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-server.json",
       "bytes": 541,
-      "sha256": "254143440239fec0928bddc03daa6b138676627c05e4fa4a1aee58fd405990d0"
+      "sha256": "9d0254ca8cc74bb8d085c55bbba832211ac95ba15132191ac5e4ad6e5f85d6a2"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/reference-intake.json",

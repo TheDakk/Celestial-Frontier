@@ -2,8 +2,8 @@
   "schema": "cf.planar-contact-first-feasibility/v1",
   "status": "NO_SAMPLED_ADMISSIBLE_CANDIDATE",
   "scope": "One unchanged fit02 victory first refusal, actual canonical GSAP and existing contact refusal, followed by finite planar candidates and actual unchanged two-bone/angle/endpoint/paint admission. No production integration, ARAP, published mesh, static battery or film.",
-  "recordRecipeHash": "3ba58d18d37ebbeff9a2f2bb214431f60edfa646ed521b8ac808c68348e3b77c",
-  "bindingHash": "525a165cb9ce7ddf0b9490fe35e75add9341a517de3deca60be8e985eddef3e6",
+  "recordRecipeHash": "617dc343e17c87f7e57547425fef5ac779fe5b64f7b64f6bfa6dfd2cf519d10c",
+  "bindingHash": "24a575373673db2762be903c1e4c0e604a0d479feed08290c23c8bd44c9cb85d",
   "phase": {
     "actionId": "victory",
     "elapsedMs": 120,
@@ -177,17 +177,17 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/record.json",
-      "sha256": "24ccad753e5f42192b7822c6c9449446cc388ce7a11439ce95a37bd514de19b8",
+      "sha256": "4be8fa062f046371af7f2725e2e80c4d20d539d1650708d5c90295401ca1585d",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/binding.json",
-      "sha256": "e35bd83c98d22bb72fee5ea78d5ba0046227855dd90d0151a04e507f05fec12d",
+      "sha256": "3bef6d4aabf795de26319dc27be3086627e28490ef73c8c75c53d9f30cd7457d",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/static-02.json",
-      "sha256": "191a388fe4a5beedf8607c8cdee5389a6ce6612c93e208f3ee0b4afdfa136072",
+      "sha256": "73fbd67e48aba0fd126e79a3c73546a6ead9b48f05e624b87d0fce56d0db183d",
       "unchanged": true
     }
   ]

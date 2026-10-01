@@ -77,7 +77,7 @@
     "master": "master.png",
     "sha256": "fb30b035194749af6fbb66325dceb9da69a8f4b6ace53aa94ccde5aa209da2f2",
     "prompt": "prompt.txt",
-    "promptSha256": "3887f599797cea0ade50c98fa28d64608bee16b2d67ef2c4f088468e1a340323",
+    "promptSha256": "e7da495a66239fbfde79fb698aa39f87721111aee2b215de34b7a89ff7792101",
     "request": "request.json",
     "requestSourceHead": "9089d3009fc5929a3ed35590c6ad7530f3eb14fa",
     "generationReceipt": "generation-receipt.json",
@@ -103,11 +103,11 @@
   "evidenceHashes": [
     {
       "path": "capacity-analysis.mjs",
-      "sha256": "22d70ff723cae1164bc5e342df0f7da936f0747fe49d149751b6b73022b31cfa"
+      "sha256": "eb0deb9d77b939e6f33a5d967905f02df11784f83992cb7ccb7c3bc9894670a2"
     },
     {
       "path": "capacity-analysis.json",
-      "sha256": "7aaa2ec2349b7c48a0a40c7d072d637cb016a5e2bcb7365a9a8a9222ebe7a8ef"
+      "sha256": "b5c9325a5e1e19de29cb95e60ac45509d1615fb3205ebb1d59214000d11017b4"
     },
     {
       "path": "capacity-analysis.log",

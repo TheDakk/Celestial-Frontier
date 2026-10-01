@@ -4,7 +4,7 @@
   "family": "quadruped",
   "masterSha256": "214a7761aa7d238e2b17e2f80093b2bc0eb3910661a98944ec714c6cc827274d",
   "subjectSha256": "7dc630e24e10a2ff091ccd26d277de6e405bee8bee90b34a65f07dbcffc81709",
-  "promptSha256": "eadc37ef5ae64c1812fe07044b98301e70a7c024c237c79ef365561b90e73fe2",
+  "promptSha256": "122433e79aa869af54777625dbf3047474609de963fcd489380186dbe5e479b2",
   "context": {
     "lifeStage": "adult",
     "caste": "not-applicable",

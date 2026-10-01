@@ -16,7 +16,7 @@
       "command": "npm --prefix port/v2 test -- --reporter=dot",
       "exitCode": 0,
       "log": "audits/CROSS_PACKAGE_PROGRESS_20260914/checks/tests.log.gz",
-      "uncompressedSha256": "faee528174bdb12ebabcd3f5202ae2094e80571b2efc037eeaa02a44656cb6fa"
+      "uncompressedSha256": "9046e3f1e63ff2797150ed5a0323d216dc8b1c04cd7e8c27904389626746e843"
     },
     {
       "command": "npm --prefix port/v2 run typecheck",
@@ -28,13 +28,13 @@
       "command": "node tools/validate.js",
       "exitCode": 0,
       "log": "audits/CROSS_PACKAGE_PROGRESS_20260914/checks/validate.log.gz",
-      "uncompressedSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "uncompressedSha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     }
   ],
   "newIntakeSourceHashes": {
     "port/v2/tools/asset-intake/arena-set.mjs": "ea714c18b456ad40a0f4d64aa4552e8b3518a3dbb95f215c0678b479f5ec3e21",
     "port/v2/tools/asset-intake/arena-set.test.mjs": "d2434518d289af85e9fd88600dec983ae3335c90242787f421b1fcb55cbb4465",
-    "port/v2/tools/asset-intake/art-batch.mjs": "80d7228d88aa896dab26d7b168d931eb7ecae3c0cc8eadf276a7613fd4c95a80",
+    "port/v2/tools/asset-intake/art-batch.mjs": "ca9d5922791af7cf7ba33d3c77808a8d80979de943bb0fa1beff32efa65f9593",
     "port/v2/tools/asset-intake/art-batch.test.mjs": "2105de117e47a9349d7868ff8f86b8286f79216883a7af3425b48182c0dcc879",
     "port/v2/tools/asset-intake/audio-export.mjs": "7f78b1b07d30301e672022925629a0f5dcbe182ee2d18d826bd71a50716c04b5",
     "port/v2/tools/asset-intake/audio-export.test.mjs": "cc6c8c48937de9b2924ad71412bd1aea884da201ae91d5de427ad2c2c041ad6a",

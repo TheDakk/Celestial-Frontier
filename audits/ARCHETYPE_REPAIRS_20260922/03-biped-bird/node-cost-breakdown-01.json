@@ -2,8 +2,8 @@
   "schema": "cf.node-single-pose-cost-diagnosis/v1",
   "scope": "Node cold single-pose diagnostic: each of the twelve retained resolved poses executes once, in retained order, using two persistent actual rigs. No warmup loop, repeated pose loop, native film, or CPU certificate. Actual kernel construction retains its existing admission probes. Wrapper clocks contribute small instrumentation overhead. Field hashes and full ARAP stats must equal the saved fit-08 results.",
   "status": "PASS",
-  "recordRecipeHash": "4e806fc94a2cd6fef82e53e4482531d4795453c68a3e23eea931102ccca07422",
-  "bindingHash": "85cfa087a72df27c32f70ce4e7c7f13b65e8b23c5af7e3eed3fa9fcaf20bea6b",
+  "recordRecipeHash": "23dbe75d79ff30e79b8604189bcd5e900ab87515aca52acf1e35e64cd304458f",
+  "bindingHash": "9b8e003e3010e00babdec0af998a2e3d936baf0c855a8d3fd4ba47e89afa957f",
   "setup": [
     {
       "side": "left",
@@ -1332,22 +1332,22 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/cpu-diagnosis-02.json",
-      "sha256": "f8a8910736643a49aa83b33e114665f421221efd98dd058cd1a9b2817ea6d9d3",
+      "sha256": "37dea369663204567fb443596521a1798ddf83e74ffb33a25f29c9fb3309bdf3",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/sparse-fit-comparison-08.json",
-      "sha256": "7793bcdab98224fb6609d854bd71c77001384aa2d78e9205e3e69eea9d56dae2",
+      "sha256": "f01c7888adef0d1e2be04a31c82684dd4069c30669cb7ab999de3b756de3e790",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-08/record.json",
-      "sha256": "8ba1ca327f6c7f3aa0b54ee4b7bfed6de62168b4fec7d722eeca3806ac4eef91",
+      "sha256": "fe01ccbdaa8193c613ae4743b41126815136e4531b2ee73a6d945d4f965adf13",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-08/binding.json",
-      "sha256": "50011172805af4288eefa1cbcc225d4bad107d4f0c2f4718de6e2046e7ecf7b2",
+      "sha256": "7aedb9e04573aea4afc937f02bdd9802b01869c365bdf225c92d870ca3a08441",
       "unchanged": true
     }
   ],

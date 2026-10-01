@@ -11,9 +11,9 @@ Native native-phone4x-01 FAIL: capture held 527 frame samples over 10016.2ms; en
 Six masks conserve keyed alpha with zero outside pixels and a refused outside-pixel mutant; visual composite checked. Plain/iridescent use no mask. No resize/registration, all1254-square. Exact prompt bytes, generation receipts and hashes retained. One orchestration ReferenceError occurred before receipt writing (undefined source variable); the retained generated image was copied once and then its receipt written, no image retry. Root validate PASS. Review-sheet-static is an interim sheet; review-sheet.png includes the native still and is the current sheet.
 
 - master.png: `0510920919b791b9186d0d1dafeed17625074ee2a6c586d9ddcb703f2005f590`
-- fit-04/record.json: `4ffa56659c98bc1cfc39edb170e6035369fd624f64c7f5b6d76b7cd78fe66df1`
-- fit-04/binding.json: `82260220613765b0c6bb9a68ff5b112a90b893f07576e00ba784784888e06db8`
-- markings.json: `eaba4f1e1def803926054b9de2650e04ab60c87a8173563fb92a9dba91662e31`
+- fit-04/record.json: `9548e61c58c663bc6ce1fbae61a812d5180f419ee9a4e1fad7745a7740e74ea6`
+- fit-04/binding.json: `ef0789e43335aac256287a717a3f03817047dcdcc240da1aace46c14d53a2a78`
+- markings.json: `2d9fadaa695133aeeb2f1dfce69c1b7c574175016107253bd92edcac1f5bd7c4`
 - native-phone4x-01/battle-10s.webm: `7fcac5b09e0956a2b299da61dcd73cf367869a61d8a0c271c1274a7e94f87491`
 
 Paired next steps: Codex completes Tang/the first ten-item sheet and then repairs the shared quadruped contact/faint and fit failures. Claude keeps Cattle out of the live picker until those gates pass. Dakk reviews the art sheet; no relay required. C8, C19/C20 and economy parked.

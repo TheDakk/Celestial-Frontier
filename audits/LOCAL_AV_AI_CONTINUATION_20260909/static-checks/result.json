@@ -3,7 +3,7 @@
     {
       "name": "release-contract",
       "exitCode": 0,
-      "logSha256": "5a834fb6929fd7986f092475f2e90c9b64c501de087bacfe66eca415839e2d4c"
+      "logSha256": "3e3a1ab63db1330324e684c15757c98d15a135c5179c537fc0b0dd351ae7057e"
     },
     {
       "name": "typecheck",

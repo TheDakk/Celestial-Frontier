@@ -8,7 +8,7 @@ The retained P1 prompt was compiled with Grouse's genome and the biped-bird part
 
 Presence was manually authored: required parts are visible; absent/hidden/folded lists are empty. Both wings are half spread; this does not supply a separate underside flight painting.18 paint owners and19 observed joints, land habitat. A12×12 interior root patch leaves most torso ownership on the spine. IC-3 record/masks/observed split/binding writers are retained under fit01. Fit02 retains three observed torso/shoulder seams; fit03 additionally retains the root/chest and torso/near-flight source junctions. `boundaries-01.json` and both weld writers retain the actual adjacency evidence. These are named observed seams, not an all-boundary weld.
 
-Final recipe `daa68241ea47298267bdec89e076321856f4c6550309e1f8c30188fd68113312`; binding SHA256 `2d90580791f6372e745499d8e2d79b3ebf297bd6b23296d9456b90b9d217721a`. `static-03.json` passes14 actions×121 samples plus1,033 presentation samples and exact source-pixel rest. No runtime, family, solver, contact limit, threshold, accepted binding or S2 changes.
+Final recipe `a508c9fa386cfa919af66bcc120b1377953c985a3d4dac15268162b24a5037d4`; binding SHA256 `279ccadf0c8f5f40c24491217a920af11414438007ae6aac2145149716b95e06`. `static-03.json` passes14 actions×121 samples plus1,033 presentation samples and exact source-pixel rest. No runtime, family, solver, contact limit, threshold, accepted binding or S2 changes.
 
 ## Six own masks and retained rejections
 

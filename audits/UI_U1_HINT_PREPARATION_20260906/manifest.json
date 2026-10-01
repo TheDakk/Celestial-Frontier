@@ -27,17 +27,17 @@
       "source": "/private/tmp/cf-u1-hint-root-validate-20260906.log",
       "file": "cf-u1-hint-root-validate-20260906.log.gz",
       "rawBytes": 1093,
-      "rawSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
-      "gzipBytes": 708,
-      "gzipSha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736"
+      "rawSha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927",
+      "gzipBytes": 709,
+      "gzipSha256": "2e3bf4fa737966203f1153ac2ff4cc91499d8fc34616bbe99a3434ed7291043e"
     },
     {
       "source": "/private/tmp/cf-u1-glyph-stroke-focused-20260906.log",
       "file": "cf-u1-glyph-stroke-focused-20260906.log.gz",
       "rawBytes": 241,
-      "rawSha256": "bab142e7968c77de93aacf32d2781c237d34088ed5f70a88a67b37b88a0604be",
+      "rawSha256": "5aa8c77de1d5b934fb7ffa55169a04785ed1089812a42c76afa1832694b34308",
       "gzipBytes": 196,
-      "gzipSha256": "1d3256b9587cd50128e1263e8da84394caa627933ac602adbea4128a5db21c9d"
+      "gzipSha256": "f133f08a587d049d1c1a16980157d409e7236ee5573cfbbac96eb386b26e49c9"
     },
     {
       "source": "/private/tmp/cf-u1-glyph-stroke-types-20260906.log",
@@ -51,9 +51,9 @@
       "source": "/private/tmp/cf-u1-hint-release-budget-focused-20260906.log",
       "file": "cf-u1-hint-release-budget-focused-20260906.log.gz",
       "rawBytes": 376,
-      "rawSha256": "b658740c48c28ff7e81d0544620f439600da9115df9c30fe76e7432b7c4a487a",
-      "gzipBytes": 271,
-      "gzipSha256": "2994c736427bc5934f7e00a1e5e4b8fd2fc4bfccbfd528f53da6f917f3d4faa9"
+      "rawSha256": "8c66f2df9fa5284afce15440be694227b1ddf8a565194f3c7071ffdb6a4bd866",
+      "gzipBytes": 272,
+      "gzipSha256": "aae7307973f9b344001ee662167203e8e916dfca14e92ef84def8dc362c05427"
     },
     {
       "source": "/private/tmp/cf-u1-hint-producer-20260906.json",

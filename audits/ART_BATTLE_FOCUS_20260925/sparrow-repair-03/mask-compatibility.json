@@ -4,10 +4,10 @@
     {
       "name": "sparrow",
       "oldManifest": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/17-sparrow/markings.json",
-      "oldManifestSha256": "281bbd262b95b7f36f780408e61c473168f41ab661ccabd4b656ac85fe3d3afb",
-      "oldRecordRecipeHash": "f92a0fe45ea5517a2246f72081ad5a4f793c84a6a901e4e55b55876acd9c0b8b",
-      "newRecordRecipeHash": "2d5c2c9c57d689a2859006fe73857905ffe3bac54ff101c3cafc4278bf806d28",
-      "newManifestSha256": "b989929f94092cd6a929f942bf30db2364245ad875fdbdbcbb455bfd3cfb7bb2",
+      "oldManifestSha256": "94a89d8e8de7fea8d64f0ebcc8ea96581098ed6af8b0eacd6500156a94a2ad7a",
+      "oldRecordRecipeHash": "a18a48201c1848332f0c0e9f3e82dba9e0f1b84e48fc9fb556dde2dfab66678d",
+      "newRecordRecipeHash": "2c00c523bede76b8641bbfdf0001538c6b73ed466a90598da5b2d10d2b1d5604",
+      "newManifestSha256": "ea1327c19e1771fc1aa40f9faf38355572acf3554346882efe6eb4f5907199a0",
       "keyedSha256": "98872f0a246f2c7e28720f25ec3ce2d24f51fca4cb98a103bb391545b70ddd3a",
       "patterns": [
         {

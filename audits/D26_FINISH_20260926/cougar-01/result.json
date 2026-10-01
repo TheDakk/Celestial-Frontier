@@ -20,7 +20,7 @@
     },
     {
       "file": "port/v2/apps/game/src/landfall-conditioning.ts",
-      "sha256": "1ee583d9cb5f52954c32263db8a5d17dfe573af2e0d0f6204e95cd271c92456d"
+      "sha256": "dc2edd2ea38cb98a5747240a178751d7203252c993d411a4124fb4df89661bae"
     },
     {
       "file": "port/v2/apps/game/src/landfall-content-hash.ts",
@@ -64,7 +64,7 @@
     },
     {
       "file": "port/v2/packages/art/src/earth-resident-plan.ts",
-      "sha256": "8929f953dfd77f0b82e3026e2cd17a05e3c35059d0619b91511b7d73a70f8907"
+      "sha256": "421a518c3ac67ad7b4359ce6eb743d7b4099376266a6bcf622fe42b509c305e0"
     },
     {
       "file": "port/v2/apps/game/src/world-roster.ts",
@@ -100,7 +100,7 @@
     },
     {
       "file": "port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
-      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5"
+      "sha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543"
     },
     {
       "file": "port/v2/packages/domain/naming/src/cleanname.verbatim.js",
@@ -144,11 +144,11 @@
     },
     {
       "file": "port/v2/packages/domain/descriptors/src/apphooks.ts",
-      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+      "sha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285"
     },
     {
       "file": "port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
-      "sha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432"
+      "sha256": "c97498ffa4476eb17abad4981da64f8634b22735dc62073a12fe12324bee9a60"
     },
     {
       "file": "port/v2/packages/scene/src/cf1-code.ts",
@@ -184,11 +184,11 @@
     },
     {
       "file": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
-      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12"
+      "sha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2"
     },
     {
       "file": "port/v2/packages/domain/strays/src/strays.verbatim.js",
-      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+      "sha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c"
     },
     {
       "file": "port/v2/packages/scene/src/charter.ts",
@@ -204,7 +204,7 @@
     },
     {
       "file": "port/v2/packages/domain/ecology/src/ecology.verbatim.js",
-      "sha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c"
+      "sha256": "61d9b3cc8c9c640e6553b5cce1ae2e04c74973b1b9d4dc208afef0c386b58d85"
     },
     {
       "file": "port/v2/packages/domain/surveyphrases/src/surveyphrases.verbatim.js",
@@ -212,7 +212,7 @@
     },
     {
       "file": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
-      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff"
+      "sha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b"
     },
     {
       "file": "port/v2/packages/domain/combatcore/src/index.ts",
@@ -232,11 +232,11 @@
     },
     {
       "file": "port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
-      "sha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1"
+      "sha256": "55536ab115280dc95e3867988d11f033f069f4532b2cb4a0a80b44374229febd"
     },
     {
       "file": "port/v2/packages/domain/combatcore/src/combat-settlement.ts",
-      "sha256": "413d4233748cc3b2b2ba79baf69de1afa0148f975ee7a0751f0081c5651cb5d0"
+      "sha256": "26e2d6cefcb03bc1587f7d0d51ee5321a96969804c3a8fad28a3e78593274154"
     },
     {
       "file": "port/v2/packages/domain/combatcore/src/lineage-codec.ts",
@@ -256,11 +256,11 @@
     },
     {
       "file": "port/v2/packages/domain/combatcore/src/encounter.ts",
-      "sha256": "f9c0714f7db68eca952f6c1ff76eee18c6c06ea10844f60e0f96e62358dd9cd2"
+      "sha256": "9c20ca57d0d47d9946fe7b42b041d1d764a0452550ea75f00711a7f0f926afa7"
     },
     {
       "file": "port/v2/packages/domain/combatcore/src/friendly-duel.ts",
-      "sha256": "63cd053d685febcc1f55580372db74bd7a784525508ae12c4a0bb87e25c5c931"
+      "sha256": "afc7e3a8e4877e1858fff8b5e1ac05dc500c061e1978b5d521854bc32cbcaf84"
     },
     {
       "file": "port/v2/packages/domain/worldidentity/src/index.ts",
@@ -463,7 +463,7 @@
         "schema": "cf.creature-finish-engine/v1",
         "key": "f0c9b18f3bd5489924ef0e6f5cec5a19a25f31041c70953dcc6e0742c478d7af",
         "identity": {
-          "recordRecipeHash": "680e013221829e01699fb4e9f165446270f3bff9e022e871d96d6112206dc0d7",
+          "recordRecipeHash": "6a7cbcbab6ebe589ee6be792d628777157a0094dc66c33f3ff08a1a2843270e4",
           "cutoutAssetHash": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635",
           "modelHash": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef",
           "settingsHash": "c8c7210519c5b1bc860065a5e0cb46219adb1621fabc47b2c721f58664cdc79b"
@@ -475,7 +475,7 @@
         "height": 1254,
         "cutoutAssetHash": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635",
         "labelsHash": "58698a230e47153b209abe2c0187f9136a9911bbd3e2286f9a9e4ea86fa5a994",
-        "bindingHash": "b2b60503766ba28f8c9efd7d0585d4416a23e0fbeee4f5e5cb41e97dc02c6065",
+        "bindingHash": "143262b0ac4f68efc1388828c68a74b784b711868828220e572ed23c1d3f55d0",
         "outputHash": "889219f4bcbc597f33ccbe27bc4e7b7cf476167f48b7b3e97f4926553a8b70a7",
         "conservation": {
           "status": "PASS",

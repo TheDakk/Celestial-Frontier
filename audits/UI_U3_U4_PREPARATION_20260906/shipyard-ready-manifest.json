@@ -6,9 +6,9 @@
   "archive": {
     "file": "shipyard-ready.tar.gz",
     "bytes": 62483,
-    "sha256": "156e979b385f4dfefa82bdc92ccabf0c4cff6f2d005aec8c31f09f681993602b",
+    "sha256": "09a73963b6204009e791ee65a56c586e1aeedcd8f9858727d61d23e86b683076",
     "rawBytes": 286720,
-    "rawSha256": "71ec0e5871a74c591b5bce4da745bf99cf863c9d932f876fcccea4de31abf2aa"
+    "rawSha256": "0787a0b759a0187a4918efbfdddb5c21473a19753708b032846143b09acf2a5b"
   },
   "files": [
     {

@@ -6,11 +6,11 @@ Dakk reopened this item under ../AUTHORITY.md. No final acceptance or native fil
 
 Generation3 repeated the hidden far-front leg and is retained rejected in candidate-03. Generation4 exposes six walking legs, two membranes, two elytra and two antennae; parent explicitly declares absent/hidden/folded empty. Independent visual reviews agree the visible distal inventory. Its alpha>127 bounds [39,230,1233,1027] miss the requested8%margin, although no visible tip is clipped. Dakk owns art approval.
 
-Generation4 master SHA256 cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb; prompt c340028415fb0d48d063d03d9504f0cb125b6339d48b491f6cb02f5a0e737706; run20260923-beetle-paint-04. Exact prompt/request/generation receipt are retained. Original prior attempts remain in both older sprint packets.
+Generation4 master SHA256 cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb; prompt e129cd256b984971a00cf80816121bbb720e76a9bb06408de3f1a6c101453722; run20260923-beetle-paint-04. Exact prompt/request/generation receipt are retained. Original prior attempts remain in both older sprint packets.
 
 Fit01 refused unique source owners: both elytra and the thoracic shield had three parts with the same joint. Packet-local intake02 merges those explicit region labels into one thorax owner; this preserves all source pixels and21joints without shared-source or gate changes. Fit02 compiled; visual label review found distal fringes assigned body and a brown abdomen wedge assigned lower membrane. Fit03/04 correct those manual masks; all preceding authorings, fits and review sheets remain retained.
 
-The current fit04 uses existing40/80mesh options,21paint owners, record4b89d2db6c013523c37610a75e04372f9e951f20a1f0faa115e38ebc3dcc81b1 and binding45d4ad100da129001efb631bec9f4b6ecac7cf1274658f43b3fb1623962ce692. Thorax is the observed external shield center851,557, not an invented exact common internal coxa.
+The current fit04 uses existing40/80mesh options,21paint owners, record4b89d2db6c013523c37610a75e04372f9e951f20a1f0faa115e38ebc3dcc81b1 and bindingb6baec47da9321614e2b1a382287f0f05ee1086756dad02ac485fe68826cabde. Thorax is the observed external shield center851,557, not an invented exact common internal coxa.
 
 Measured static01: exact rest PASS; independent source-pixel rest changed visible RGBA channels0. Eight of13action rows pass; five actions and combined presentation refuse. No native film, native refusal count or CPU has been measured.
 

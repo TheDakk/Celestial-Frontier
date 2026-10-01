@@ -19,7 +19,7 @@ This is a three-joint planted-support problem with one remaining degree of freed
 
 ## Fit03 data feasibility
 
-Record recipe `a5110a56f4ed6757bb0c9f9c3fd194fd5ec4c8b82d5787d14c018c9d7d23ba27`; binding `2fba5ff7a18a3153c08225212d47ab0d378494aa633e26b614d95279a1d91453`; master coordinate space 1254 by 1254. Counts below were measured directly from the immutable JSON binding. An eligible rendered vertex has every nonzero barycentric contributor weighted exactly 1 to its Paw and present in the existing solver pin inventory.
+Record recipe `8dd42cd8f3cd794ee129fc0f2e5154bb855bf1571e7b3b9e43053665d531c0b4`; binding `42aac5f584d52c6b57482c7550e11293017fd9e2aa868673bbeb064e4cc5bed0`; master coordinate space 1254 by 1254. Counts below were measured directly from the immutable JSON binding. An eligible rendered vertex has every nonzero barycentric contributor weighted exactly 1 to its Paw and present in the existing solver pin inventory.
 
 | Paw part | Eligible rigid, pinned rendered vertices / total | Nearest eligible rendered vertex to authored Paw landmark |
 | --- | --- | --- |

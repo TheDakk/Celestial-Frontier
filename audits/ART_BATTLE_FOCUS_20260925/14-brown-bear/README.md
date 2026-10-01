@@ -8,7 +8,7 @@
 
 31 parts and landmarks were manually authored; explicit presence has no hidden, absent or folded anatomy. Land habitat is explicit. `fit-01` retains authored labels, parts, IC-3, record and observed binding writer results. `fit-02` adds only the declared interior root/spine boundary weld, preserving exact source RGBA. No family contract, solver, limit, threshold, accepted binding or S2 change.
 
-Recipe `a2d4471fe511a1a6eea2987e8c63d63021b3c682b260dade9c16eb5167f78153`; fit02 binding identity `db34f6de657aec0e382662efad07ec4a46797e56a0a4130da48455b815e8c0cf`; binding file SHA-256 `18cba5268a108915523901f497443b9561f86fa30a053a1268264e518c9b2c94`.
+Recipe `d43c5000ac4b244221129547aecb379dc4993df3af0173d33128fd2f12e59bec`; fit02 binding identity `cc132c36231bc98610bd7e285bf27c9d133bee14322f34a5514fddd333c6ac0a`; binding file SHA-256 `654d1c0bf4a87aaafcca2100001dabf7b1ed1ee7e009779066c10ab273ce69b4`.
 
 ## Measured results and review
 

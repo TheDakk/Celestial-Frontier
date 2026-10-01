@@ -20,15 +20,15 @@
     },
     {
       "retainedSource": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/prompt.txt",
-      "sha256": "4d454642e662b3382b990e5dcc9a2da4e12aa4cc30cc29f4f13bc53cf1e19b47"
+      "sha256": "36a0fd3382091550c1c0983029c408ec9caddfe518d9e079712bd008c0acd7b0"
     },
     {
       "retainedSource": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/generation-receipt.json",
-      "sha256": "69368737d0e1cbfc55b4f831f36b4d964ee94a896e18414b1f3f2a454a360317"
+      "sha256": "e9a6ce35fa114d2ac6b1124c7e7f4e2f0a7d01b0ca0eaaef81f9e78ae857d102"
     },
     {
       "retainedSource": "audits/ARCHETYPE_SPRINT_20260922/07-primate/request.json",
-      "sha256": "8953a045cd8153b08537221f62ef45cb004affe08c7759f47e6aefc9205ecc61"
+      "sha256": "ecfdb40930dffa735ed44e3cc050f656571292c675f6bc2612f19ae6d9c75720"
     }
   ],
   "rejectedCandidate": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03",

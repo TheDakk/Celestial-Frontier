@@ -1,7 +1,7 @@
 {
  "schema": "cf.card-master/v1",
  "earthName": "Tang",
- "recordRecipeHash": "39c215dcd308b64ad3a10267c0fc9f1087c1e0bdb02cf56d159495fec4b4bd2b",
+ "recordRecipeHash": "5f4535d1145c37d9a3c20b4bb87f719bd7a9fa462f130c2658d1ebd94980ead8",
  "source": {
   "master": "audits/ART_BATTLE_FOCUS_20260925/10-tang/master.png",
   "masterSha256": "e6970b7e7d2320aca6022ae2b74117f10f7d38e66fc5b81568b0061ce65f8ffe",

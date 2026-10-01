@@ -10,9 +10,9 @@ Retained authoring failures: fit-01 (camel-case part IDs invalid); fit-02/03 (fo
 
 Hashes:
 - master: `7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff`
-- final recipe: `93fc9289e302fe56f31250f2b9163d7aa84737a900e1748f85d1609bf43a1606`
-- final binding: `8618744544d42ed3da5c1bfbddf51a0389de26481222ba6194f85aeb9b1a3369`
-- primary masks manifest: `c6f353c4c5b5d0850a83a046507c65b80606156578afe84636cc4614e609482f`
+- final recipe: `7ac549b9de6266b130cf7d65b0438d7b538fe164269f0099b9075d64cbc54668`
+- final binding: `2e493bab542253ca9ae33552924f50410e919b177158639a657547d0aa5f48f7`
+- primary masks manifest: `6f739bb9cdf58983b5408c19858d9c9fa918af68e0e255f3b4511d55cec2602a`
 - film: `80e4e5cdf28984877b2c4ba0424c6977f560f4ab6cd88595f789e45dd122837b`
 
 Evidence: static-06.json, native-phone4x-01/report.json and battle-10s.webm; review-sheet.png shows master/labels/fit/native still; six-mask-sheet.png shows the marking variants; markings.json retains exact sent mask prompt bytes/hashes; mask-generation-receipts.json retains tool outputs. No accepted bindings, S2 sentinels, solver, family, gate or numerical allowance was changed.

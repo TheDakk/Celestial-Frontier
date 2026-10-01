@@ -10,7 +10,7 @@
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/prompt.txt",
-      "sha256": "045756be416b58af138bd5959ec6cc225897b932ee7bc0d262468396846ab98c"
+      "sha256": "d75d4af40ceb2a59e0769370c0cd980f0339d9c6981a3cb6277798586b7c6ab5"
     }
   ],
   "findings": [

@@ -1,7 +1,7 @@
 {
   "schema": "cf.g5-source-eligibility/v1",
   "head": "bfe76a6bbfa1303c73976944cc1a9be316836a88",
-  "pinsSha256": "e02980010fd542c3d05399827b534ea80d7d4b5f52e9f1b220fe7edddb639da1",
+  "pinsSha256": "d1ad2d381b0e3120f382c2118739e97541bdfef124fa56cb9ddbe4fc0b6636c3",
   "labelsPinsSha256": "4fa50f00a4161de21d28c3cee529952a89633302148e90a64133edd7c73a8ca4",
   "total": 38,
   "labelsPresent": 34,

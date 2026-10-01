@@ -8,17 +8,17 @@
     {
       "path": "KIT_V4_1_PROPOSALS.md",
       "bytes": 1155,
-      "sha256": "db47c7d5542e69dc04a874942c587e56ad7874f8a10cdb3b84fc31a360de1168"
+      "sha256": "c56be9d5a5a75cab41532b266ebe44c0bbe6627dc39cc5950c72f175316519bc"
     },
     {
       "path": "README.md",
       "bytes": 7690,
-      "sha256": "d1a55b3bbb0eaf6d66cd5dc1421d2917e10b4ed22852f85f62b735a19ae3df2f"
+      "sha256": "f130491e401ab0da85936fe24b2c6a38b4e845fa50d5ce13e1b5fdcfc8d1b966"
     },
     {
       "path": "REVIEW_PROMPT.md",
       "bytes": 1613,
-      "sha256": "99782a0595a42b7f8ddea06f3c6c13dd1fbbe8698300387da05c5c08c5bfa520"
+      "sha256": "40d35afa7080dc9918750188cd07fbe4c4b22f68ae02c87679766565bbd0a302"
     },
     {
       "path": "kit-preserved.json",

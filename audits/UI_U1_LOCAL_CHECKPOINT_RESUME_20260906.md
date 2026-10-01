@@ -39,7 +39,7 @@ Local Edge collectors self-verify their immutable reports; the hosted Chrome-onl
 not be applied to Edge or softened. No new browser installation is needed for local evidence.
 
 Manifest UI_U1_LOCAL_CHECKPOINT_ce89128_20260906/manifest.json SHA256
-6d2645e2342cd32fc1f0a95234ee76ef53ad342d16035a3dba1702c85ed97e13;28carriers/decompressed hashes verified.
+a4bb866bbb3106e431164da044f8040de20be4b11c232b66f29ccda684d218c1;28carriers/decompressed hashes verified.
 It includes all normal review evidence, ten Slice PNGs, exact red report/raw log, static logs and
 source qualification. Prior381ddf5 isolated restoration PASS remains source-bound and complete.
 

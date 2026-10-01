@@ -10,11 +10,11 @@
     },
     {
       "path": "audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/prompt.txt",
-      "sha256": "5c0ec6be679dcd5191624416e49f236e5c4c7d12246302b455151c1cb3807219"
+      "sha256": "183d3801f2842f13b24a16361a137fd41f8f4b0e71b02e70366415c4f4e59bd7"
     },
     {
       "path": "audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/generation-receipt.json",
-      "sha256": "bae64b2bdf4c930c29adfa00aeb9be0b479a554a43d92d265cbbb989034c068d"
+      "sha256": "9e3b4caff43c8b954e4adea2f1b1285be09f0f75c8361cf7915b3d1683132589"
     },
     {
       "path": "audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/presence.json",
@@ -22,11 +22,11 @@
     },
     {
       "path": "audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/declaration.txt",
-      "sha256": "e8622f04142e79bb277b89351cd32ee49b00eaf8afb0b0931163428bf894f434"
+      "sha256": "cac4ae02f5511d01bfd7aa3dfacff64e6d3dafc65fe168f39f76172ad3c9e5d8"
     },
     {
       "path": "audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/authoring.json",
-      "sha256": "815047e8b3c655e51fcefeccfdc6117ec647ec4a6f35acd2dab35ad243ff119e"
+      "sha256": "a7ddba32f738fd770b714fe493d0837d9d8a5073b34c14b23c5d7d5f65b2c4c5"
     }
   ],
   "changes": [

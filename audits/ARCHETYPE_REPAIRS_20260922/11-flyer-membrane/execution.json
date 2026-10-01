@@ -13,7 +13,7 @@
     "master": "master.png",
     "masterSha256": "9364c0aa98efdae80a657ca7fe123e41199edc8acdacbefa067d53bc5764c1fd",
     "prompt": "prompt.txt",
-    "promptSha256": "ac35985bad045112262afcbcbce04fa80f1c6f0ac3eced96df346c82270794ef",
+    "promptSha256": "9046f8bdb5185d9bdc893366d79d3d68fb647b3871eeea82a8e2a290310000cd",
     "metadata": {
       "width": 1254,
       "height": 1254,
@@ -51,7 +51,7 @@
   "historicalOriginal": {
     "packet": "../../ARCHETYPE_SPRINT_20260922/11-flyer-membrane",
     "masterSha256": "eb48d2ea66a1d63099918a4ee865b4255077466d879a0c1fdcf948b19a970c64",
-    "promptSha256": "637cb98614fd99822964a484e23fbf6f22c84e96dcbf15185dbedcf2ac012ba9",
+    "promptSha256": "dbc5d9818f03e5db6685eb72b5fcfaa791eec13bc27e192ad9029b89c09d3a8f",
     "staticReport": "../../ARCHETYPE_SPRINT_20260922/11-flyer-membrane/static.json",
     "staticStatus": "RED",
     "rows": 14,
@@ -92,19 +92,19 @@
   "evidenceHashes": [
     {
       "path": "result.json",
-      "sha256": "3bdee85ec1275ade05d23622a9e5123a0b925ea4379d9babcd248f7d85305ae5"
+      "sha256": "d0aa922e02e98b14f9b1797ed8a656ca70b54e26ffb1d2fc757a3712414a1ad4"
     },
     {
       "path": "request.json",
-      "sha256": "e37bc92a0b8e5a1293ed75aa91c888d7188a9d9804c865d78b0ed07a147c40f3"
+      "sha256": "0ba6c4c5cabd25f290562a488b94904010de2991fddb20a74ba2d27530a5c2af"
     },
     {
       "path": "generation-receipt.json",
-      "sha256": "5d1c12843ae113d693ae90a275c1e7bb712d57951ad0ae7763a26b728bd60d07"
+      "sha256": "c51452da825ac7d4d8a70ee09df234e0e13467965ea29e7f79ade6600ee508e1"
     },
     {
       "path": "visual-review-02.md",
-      "sha256": "c533b3ebd09fb91118b18530e99d5c9f7a3e345c1f59beb3a9d44d2f07c9ce0b"
+      "sha256": "66af80391b1dbc30d1e96276b9814bd9cab9880c23b8fe5d5d9d24c15e9d659c"
     },
     {
       "path": "edge-inspection.json",

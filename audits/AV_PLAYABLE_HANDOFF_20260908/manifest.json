@@ -4,7 +4,7 @@
   "branch": "openai/mac",
   "signing": "failed-1password-no-new-commit",
   "localOnly": true,
-  "priorImplementationManifestSha256": "3310c0a3890bd231df6f5d59ee8b34ea28a4b6f3cf32a89ae5dffc463933a59f",
+  "priorImplementationManifestSha256": "d188da9a0eec588607ea9630719fef74ee056a6fe658dcfa569e106a78232460",
   "priorImplementationHashesVerified": {
     "sourceFiles": 23,
     "carriers": 76
@@ -58,22 +58,22 @@
     {
       "path": "README.md",
       "bytes": 8741,
-      "sha256": "febfa873d15eefcedc7a4969121030e544e9fa3f0f2d25a296c46c012aefa347"
+      "sha256": "8a3a5ba46a85b5c6f1fbf889f6b9e204112993ee994eae5273ed782ada8ddf83"
     },
     {
       "path": "cf-av-local-preview-20260908.log.gz",
-      "bytes": 698,
-      "sha256": "a15b9b0d9b0b496c850ab9768a03c278d5f7c81881c6355872c62c6afbeaf58f"
+      "bytes": 699,
+      "sha256": "3454168bc5d57f0da0eb8c8fd5a96622542a78b0e30a868da26f8cd086e032c5"
     },
     {
       "path": "cf-av-local-preview-package-20260908.log.gz",
-      "bytes": 2509,
-      "sha256": "0a4e053da176d376cc3888d90176c18a4ad5e34e41bb3354ef7fa6f7dfe640de"
+      "bytes": 2508,
+      "sha256": "0e80d57e273423f63246ce7c324b75617c4650691f20ab2975989a7876d651d2"
     },
     {
       "path": "cf-av-preview-readiness-20260908.log.gz",
       "bytes": 644,
-      "sha256": "999cdfcf533f6584b6db586c58b25f89639de7165317ad39ef56d62c4b4c51e4"
+      "sha256": "91c503d76dc5f5a9f1f2033ff034c1cefdd01cd58234d207efb57c489084efa7"
     },
     {
       "path": "preview.json",
@@ -88,7 +88,7 @@
     {
       "path": "server.json",
       "bytes": 532,
-      "sha256": "a1d8be1b58876c2dcdf3b4f850b3707c883bb19eff556968d9de469ec225d1e3"
+      "sha256": "deffb4a1b4a433018df77fe95a25819afdbec6bfe0db5a0bd4feff5a29818ccd"
     },
     {
       "path": "signing-attempt.json",

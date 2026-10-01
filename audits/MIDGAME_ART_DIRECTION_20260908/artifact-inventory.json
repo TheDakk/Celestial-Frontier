@@ -17,7 +17,7 @@
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-result.json",
       "bytes": 444,
-      "sha256": "f78557c22078facd63e58ca2abddeab4acfce43911bdc82b87d6dc7a9cbd982a"
+      "sha256": "09e36d535d249b48e05697343b894f2dad4df343db63c8b428765e4c70ce0b09"
     },
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds-prompt.txt",
@@ -32,7 +32,7 @@
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-result.json",
       "bytes": 444,
-      "sha256": "832cedba58b9b2bdb01cd37847ca4ff3cba7d944f5672df0c82ff796b53b2e40"
+      "sha256": "0ce7718a139be4bd25adef91749aa1b06551a68d05f4d6cf72e46404bab9ba65"
     },
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/03-earth-full-landfall-prompt.txt",
@@ -47,7 +47,7 @@
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/03-result.json",
       "bytes": 575,
-      "sha256": "47919fba7d6990df0769a0ac69d324929d6bcc0437832b23e53c4a1015728d28"
+      "sha256": "9b9b3241decdd5d68d2bf2aaa2623b13f8b98778e44dc601499c6e769530e221"
     },
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/04-alien-full-landfall-prompt.txt",
@@ -62,17 +62,17 @@
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/04-result.json",
       "bytes": 646,
-      "sha256": "f46c56b4d63bd3fd5212a26f726d5cae36d537a91c3d0d6916ceb0e659c1bc30"
+      "sha256": "59fa2d95752787858c8e3fb0aa618e996f47ffa6e523a54cc15253f10ecf37f9"
     },
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/README.md",
       "bytes": 6402,
-      "sha256": "671b990ef33e19efade4173acb0cf1fb28e6a3a6d820072d714d9241d293f0c0"
+      "sha256": "645a2d11bbb3b9f240953a9ee1c66a46ea6d0ceebe6719c95458365602564989"
     },
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/REVIEW.md",
       "bytes": 8053,
-      "sha256": "12df36451a73f9a8fd48a87e785dc16b9590eb769f43a652867272401f35f70d"
+      "sha256": "e1d61d21f738282a210042e2f09b9ea4d4ebbcfeb32ae6963037877bd8d56efd"
     },
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/TIME_AND_SHARING.md",
@@ -92,12 +92,12 @@
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/alien-source/derivation-receipt.json",
       "bytes": 4089,
-      "sha256": "b924258ad7b8281603c8d41af4ed09f3c72f3d9b655f3bd92a298cea99e4c9aa"
+      "sha256": "fb6487148bfadb1996c2d55a8ac5908453fea939ed55d8309851a0e316dcc63c"
     },
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/alien-source/execution.json",
       "bytes": 4776,
-      "sha256": "591e8a672c785a2578ae3e5f2bfb542d33a067cf4ef03c8e3a7c5eff5c0f0199"
+      "sha256": "8646b1d0333ff35a3c96cb94a6a04149b6fb2a3f3790ba62c7ccf10de953de43"
     },
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/alien-source/fact-entry.ts",
@@ -112,7 +112,7 @@
     {
       "path": "audits/MIDGAME_ART_DIRECTION_20260908/intake.json",
       "bytes": 1609,
-      "sha256": "a6f1eed37e7014a8bb6be6d9e7374a2c19c69d9df11afad50080152a6dcf3679"
+      "sha256": "669f646b2c6ee525e8d54558ef2c70efa570f525adf0b5914bdd7f5d6a94ce3a"
     }
   ]
 }

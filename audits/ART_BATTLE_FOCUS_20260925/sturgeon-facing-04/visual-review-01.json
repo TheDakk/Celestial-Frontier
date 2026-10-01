@@ -2,7 +2,7 @@
   "schema": "cf.manual-visual-review/v1",
   "fit": "fit-02",
   "nativeRunId": "native-phone4x-01",
-  "reportSha256": "f2790b3adbcdfe30806a62e4fdfa3f5ed3a291b6ee43d00c4f839d70b22eb946",
+  "reportSha256": "83ab7d78076c0b8121c29bcba96a0cc22c12809b6934d044109eca542119f810",
   "rigFinding": "Right-facing source now faces inward on both stage sides. No observed fin seam hole; zero rig refusals.",
   "stageFinding": "Snouts overlap before strike and after return to rest; do not publish as complete-stage acceptance. See turn0-hit-approach-50.png and turn0-hit-return-end.png.",
   "stageData": {

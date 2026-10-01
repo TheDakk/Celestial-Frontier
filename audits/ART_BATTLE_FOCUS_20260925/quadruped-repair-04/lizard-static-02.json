@@ -450,8 +450,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "d21a8c87db8f91d25bfad6ada673b2e83e50d9d858d3ee39b3c533fd33080179",
-  "bindingHash": "38858722b3a5c270a1a6c8fe5f1864b7e9409bb975b9cb90fc5f0e4b2ef5e005",
+  "recordRecipeHash": "bc67c6cfcdcac93e010a04f896fc94dfce60e74e8ae35591fa904f9bcfbccda0",
+  "bindingHash": "0abd67fedc482805206475f80b9f4fd1fa9283e361f88da4c0488f5ac30d36e1",
   "family": "quadruped",
   "contacts": [
     "hindFarAnkle",
@@ -462,8 +462,8 @@
   "realm": "land",
   "declaredPaintBoundaries": {
     "schema": "cf.authored-paint-boundary-continuity/v1",
-    "recordRecipeHash": "d21a8c87db8f91d25bfad6ada673b2e83e50d9d858d3ee39b3c533fd33080179",
-    "bindingHash": "38858722b3a5c270a1a6c8fe5f1864b7e9409bb975b9cb90fc5f0e4b2ef5e005",
+    "recordRecipeHash": "bc67c6cfcdcac93e010a04f896fc94dfce60e74e8ae35591fa904f9bcfbccda0",
+    "bindingHash": "0abd67fedc482805206475f80b9f4fd1fa9283e361f88da4c0488f5ac30d36e1",
     "pairs": [
       [
         "root",
@@ -729,12 +729,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/record.json",
-      "sha256": "b05f90d7f729c163b9f10dfde31626ef4bc79f5ab4403371a21284027c79e5a9",
+      "sha256": "b8957d3c3b16efb0c6e8cb3c1396f30d19b6dac071cd16aa7946303c4e634883",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/binding.json",
-      "sha256": "aac2d89a80939c348b5f92833ef3674d100ea7eec975f2c44bf093bf5658cfe9",
+      "sha256": "a624d65b17ff50c0163de0fcde416180278e60ae038ea92a9bf6d3a7b77b7794",
       "unchanged": true
     },
     {
@@ -754,7 +754,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/paint-boundary-continuity.json",
-      "sha256": "a65af1bd035e898c49f2e9bc7018f3b099bcade11dc4a57796d904d91a618aff",
+      "sha256": "54e2c5ffffc78e03f444ce062e5d4a3e8a090e0de4b5aebe2893256cb70703a5",
       "unchanged": true
     }
   ]

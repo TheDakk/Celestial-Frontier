@@ -3,8 +3,8 @@
   "rows": [
     {
       "file": "record.json",
-      "fit01Sha256": "7f7a1d10d7a58f722b48ee3e6ab033c71ce84eb8d46320aca62a07cfb9530c48",
-      "fit03Sha256": "7f7a1d10d7a58f722b48ee3e6ab033c71ce84eb8d46320aca62a07cfb9530c48",
+      "fit01Sha256": "6528dfafcc24d3f388beadcf17779e14e33a813cb49b41a32fb4ecb60500a500",
+      "fit03Sha256": "6528dfafcc24d3f388beadcf17779e14e33a813cb49b41a32fb4ecb60500a500",
       "identical": true
     },
     {

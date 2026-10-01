@@ -39,7 +39,7 @@ Sol, a new document restored the durable route, and the renderer continued to
 advance. Network recorded **zero WebSocket creations**, zero model/inference
 requests and zero runtime exceptions/crashes across both documents. Both actual
 served client bodies are retained with the same SHA
-`dc4e9453f1906c7d3548b64e8833431f16ea879f8e0d5bd8dd08a1966fc4e968`.
+`d0911aaf14ab07e0aafaff1b9b06fba81c6e34332bc94f306db9f6d5db5ba1cf`.
 All20 captured source hashes were unchanged. Target, browser, HTTP, Vite,
 workspace and outer foreground locks closed. Two favicon404 log entries remain;
 this is not a zero-browser-error claim. Commands, syntax check and raw logs are

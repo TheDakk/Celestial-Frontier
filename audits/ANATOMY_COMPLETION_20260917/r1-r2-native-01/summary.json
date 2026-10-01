@@ -167,7 +167,7 @@
         }
       },
       "error": null,
-      "reportSha256": "a1997612dd2fda576456d54c4204f6b1d9e16eab0bb97cfe3071bbf5f0593f6b"
+      "reportSha256": "7f7516eec3c20fca6fb9f00a09464e6769d6bee408d50836d56c88463f98a932"
     },
     {
       "subject": "Coconut Crab",
@@ -329,7 +329,7 @@
         }
       },
       "error": null,
-      "reportSha256": "99ff1e38f641bcdadf7f4d4e1e21adde7eaecd4a80f589a866cac20c4d9dc786"
+      "reportSha256": "83f919736c62048c12c3124dc854feb65f2c933f7427b90dfcc8b38c82ac06d6"
     },
     {
       "subject": "Freshwater Crab",
@@ -491,7 +491,7 @@
         }
       },
       "error": null,
-      "reportSha256": "33a613b2d171effb8bee7042282fbe192e974845b7336e580a2ef647603f566c"
+      "reportSha256": "874e744eeb33f2ef716730eba399031667df3a5a52e5c8eb8f7e01cf422e8575"
     },
     {
       "subject": "Mud Crab",
@@ -632,7 +632,7 @@
       },
       "capture": {},
       "error": "Error: Actual family gates failed\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
-      "reportSha256": "ca36042185ff26dedfa9c5ce41aeabd6e83aefcf5a7c1d9148a5d5f025be3d79"
+      "reportSha256": "b813c0e7ea0b53fcf6b1bedcaffff9fa187c18592ee488974ca47d00dfdb71b9"
     },
     {
       "subject": "Vent Crab",
@@ -781,7 +781,7 @@
       },
       "capture": {},
       "error": "Error: Actual family gates failed\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
-      "reportSha256": "cba876d0034154563c76eb9b163e2d82c96f6b316810886a1fc6939be3bc256e"
+      "reportSha256": "5fdde6024806d73dad21b090d3d8c4664b4e8c362475fde06d96099a5e2f05b4"
     },
     {
       "subject": "Persimmon",
@@ -791,7 +791,7 @@
       "gates": {},
       "capture": {},
       "error": "Error: Error: ARAP skin: unresolved folded triangles: 132\n    at need$7 (http://127.0.0.1:55730/bundle.js:6848:17)\n    at solveArapSkin (http://127.0.0.1:55730/bundle.js:7158:2)\n    at Object.applyPose (http://127.0.0.1:55730/bundle.js:11573:26)\n    at Object.update (http://127.0.0.1:55730/bundle.js:11698:8)\n    at applyPresentation (http://127.0.0.1:55730/bundle.js:22977:54)\n    at motionFrames (http://127.0.0.1:55730/bundle.js:22990:4)\n    at next (<anonymous>)\n    at motionBounds (http://127.0.0.1:55730/bundle.js:22780:13)\n    at http://127.0.0.1:55730/bundle.js:22994:24\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:10:132",
-      "reportSha256": "0d72c3e8574dcbe0825b2f6772c721bd766138de640213afc730ed8a94e27fde"
+      "reportSha256": "c458d10751de26d18b830f5e2fbc0a9cde79e625e5178a53b9c316f023fc0b7a"
     },
     {
       "subject": "Cranberry",
@@ -880,7 +880,7 @@
         }
       },
       "error": null,
-      "reportSha256": "6af6909f90586f3f41cc78ddd36206953b86c5e9f741737439b11e4ee40603a4"
+      "reportSha256": "c1e042e2d2fd8a9894af7594b4fd2e3931af9d8ab9ee7a78a5b30bd2830257cf"
     },
     {
       "subject": "Devil's Club",
@@ -948,7 +948,7 @@
       },
       "capture": {},
       "error": "Error: Actual family gates failed\n    at file:///Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
-      "reportSha256": "3164950e6490a64743d8906bb0a3d4fd8925d85adbc30f788948ff8d9e9dae25"
+      "reportSha256": "920fff8c7d02e2cdee2481ed7d71cfe67abc37360b0220d757924de00668337d"
     }
   ]
 }

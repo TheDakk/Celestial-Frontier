@@ -1,15 +1,15 @@
 {
   "scope": "Three synthetic pose diagnostics of unchanged source-owned mesh, not a native pose reproduction, threshold or new admission test. Root rigid motion is the negative control for differential separation.",
-  "recordRecipeHash": "8c3dd500768f444c6d64df3f47b891ab903148becbf543ce8d4fccb5760ee49f",
-  "bindingHash": "75b512191c252994cb04b14cf2a7f60016e465d9a48904e88201ea7eded0dfaf",
+  "recordRecipeHash": "66cd13861cdd82f14a1e445ad855a152b59e293f21d2d4630f563ac9e93f8a19",
+  "bindingHash": "9c2e4b11e8f23a932fff7c7770689ab2b49719ef5b2e9c7c59d89e84f2b03acb",
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/record.json",
-      "sha256": "920fb85b070e3c9d3df937ac881aa724349fd9d5fcf8e19cd9caac058fe8038b"
+      "sha256": "88b003baba41de4bea71bba8fdfd81d4309b483258719ffd758ceb7244dfb77f"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/binding.json",
-      "sha256": "2e7a9b14e0ff1a6199949288cd1973a12a47680be5bf167611ab8c4b9196ae66"
+      "sha256": "1b137f8a172113703e277a06b60643789450a1c37a9481b112c33dc793c5d0db"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/atlas/python.png",

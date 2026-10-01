@@ -3,7 +3,7 @@
   "tool": "image_gen built-in",
   "mode": "fresh painting from authored geometry guide and approved atlas",
   "promptFile": "prompt.txt",
-  "promptSha256": "f1713b7201837b939222a965582363fdec3f1bd25fec555599547cf35743fe88",
+  "promptSha256": "a25ee3f9914a4a3ed434d3f68d1cf45a2b1cdbd841235238a07d8b1cc8b98d13",
   "references": [
     {
       "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/pose-guide.png",

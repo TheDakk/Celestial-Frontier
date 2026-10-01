@@ -3,8 +3,8 @@
   "name": "Ptarmigan",
   "family": "biped-bird",
   "tool": "image_gen.imagegen",
-  "promptSha256": "60e15b68c233cc926e56a01ed0f784d6793a1947d10e9b439a165abfd460dbc4",
-  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "promptSha256": "6ce56e77332134965096798137c3022fd43a67c10797a15a3373fedd74b1acdf",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
   "compilerSha256": "5266fd12d266f40cd471af1daa600eeda7519eacf9a1e7bedbe9e628e9f8a395",
   "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
   "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
@@ -18,7 +18,7 @@
   "profileId": "ground-foraging-bird",
   "authoringCreated": false,
   "sourceHead": "6bd5b337d1865910b1a5a18d7f82bf3fa06e6fee",
-  "basePromptSha256": "235ea5bfd3fa04495558521735d2796a6d1efb6d72a4dfd31c34e14dfbf4317e",
+  "basePromptSha256": "eb8cb9eea27bed6b4ca4bee9c01bf1890b07070173abd66c1ff2d1c38e0acdb5",
   "layoutCompilerSha256": "fd9da3e6774546031e16e913d03ead973a4272ab9807469f84e2aab98cbec640",
   "layoutClarification": "Species identity features FIRST: white winter plumage; densely feathered feet; red comb above the eye. One Earth Ptarmigan. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n"
 }

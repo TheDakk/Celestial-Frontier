@@ -43,7 +43,7 @@
     {
       "file": "check.json",
       "bytes": 5764,
-      "sha256": "b2d3e05a42befa56edf009f789828bc74554ea915ced60ad4e0afec153eace85"
+      "sha256": "d09e988e0d03376ce2388c9067d1c73b340a6eaf1cf41e9925ced3baf6b00a6a"
     },
     {
       "file": "brew-update.log",
@@ -75,7 +75,7 @@
     {
       "file": "verify.json",
       "bytes": 9482,
-      "sha256": "b42331e97c5174df2f81161ec1a5ee0c822ffd9bb3667e756ebe8a04c4c30144"
+      "sha256": "a71389abbb171bf9b4cb949efee4444f2bd6d1c05de894aafe36bd07111fe6cd"
     }
   ]
 }

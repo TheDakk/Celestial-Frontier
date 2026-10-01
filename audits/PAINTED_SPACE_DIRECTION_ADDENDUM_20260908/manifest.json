@@ -2,18 +2,18 @@
   "schema": "cf-art-direction-addendum/v1",
   "recordedAt": "2026-09-08T12:06:50.329481+00:00",
   "status": "RECORDED_SOURCE_INSPECTION_AND_USER_DIRECTION",
-  "parentAuditManifestSha256": "ec114d299ec63ce3ef44ed75451d18557c7f7f74bc533cb79c5d43d9098013bc",
+  "parentAuditManifestSha256": "59691865ececa1c14ec99e6bcdcc411c939932c1dd953876493b0072bdf9ef6f",
   "prior647FileRecoverySha256": "205acf521cfb1b756c92332fa4206d43d15181876d9a82633fa8c7f6920014e0",
   "evidence": [
     {
       "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/ENGINE_AND_SCENE_BRIEF.md",
       "bytes": 7289,
-      "sha256": "151ec327ab8e76800508613eb6f278733459ebf73bfa4114fab720626099a938"
+      "sha256": "b040349ae90ccb1dc0d3c88ee7a835eb5c70a627e821ecad4dae2e2def8a963f"
     },
     {
       "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/README.md",
       "bytes": 7657,
-      "sha256": "9ab98de3ddc46c402c64e5b2ff19619454ba247651cb2fc12648ebbbf56bdab1"
+      "sha256": "728c9aff57b1b05bf821ee86a21d8c825a8361c1a00b7ed30e5bf21233d4775c"
     },
     {
       "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/biome-reference.png",
@@ -23,7 +23,7 @@
     {
       "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/intake.json",
       "bytes": 1780,
-      "sha256": "b1d3e3dcaf5231e18da1b81d91d00bec97b6a2aa952013ce2612458f22e818be"
+      "sha256": "0a1edceec71856df0b39cb1ccd29310e4d62f85cf213227fda366a8024df05ce"
     },
     {
       "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/ui-material-reference.png",
@@ -74,7 +74,7 @@
     },
     {
       "path": "port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
-      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5"
+      "sha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543"
     }
   ],
   "testing": "Docs/reference-intake only; no new runtime change or repeat game battery. Root validation passed in preceding offline batch.",

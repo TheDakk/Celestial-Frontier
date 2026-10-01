@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/04-hawk/authoring.json",
-      "sha256": "6e3d19160fd2300dfd9843db2504d7e406d4caaea813b334bac1edad437a976b"
+      "sha256": "2c1cdffb0efd10b6c3b122b69abdf3ef0ac417eb52041212bbcd8100316ee12d"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/04-hawk/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "3e24af4f2d0c257f9fb171706e058ca0d7ee6649055768f918178b4baf87f295",
-  "bindingHash": "2cea17ed10cddcd7a0eecdb709c77a28b55e1eadc581352fd41d4415b04ba526",
+  "recordRecipeHash": "05e2cd2a5c09758ba3a8e084162d23517a13ba0055832a8684f1e6d11ea644ea",
+  "bindingHash": "fa8adda2e935252074a4e8888a5be6008d2c15423def793b61f32c8c8ae8b12e",
   "contactEndpoints": [
     "legFarAnkle",
     "legNearAnkle"
@@ -67,7 +67,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/04-hawk/authoring.json",
-      "sha256": "6e3d19160fd2300dfd9843db2504d7e406d4caaea813b334bac1edad437a976b",
+      "sha256": "2c1cdffb0efd10b6c3b122b69abdf3ef0ac417eb52041212bbcd8100316ee12d",
       "unchanged": true
     },
     {

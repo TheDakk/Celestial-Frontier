@@ -32,8 +32,8 @@ function sample(id: string, ms: number) {
 const phase = (actionId: string, elapsedMs: number) => ({actionId, elapsedMs, durationMs: timelines[actionId]!.durationMs, realm: card.realm, ...(actionId.startsWith('melee:') ? {travel: 'stage' as const} : {})});
 const keyTimes = (id: string) => [...new Set([0, ...timelines[id]!.root.dx.map(k => k.ms), ...timelines[id]!.root.dy.map(k => k.ms), timelines[id]!.bodyMs, timelines[id]!.durationMs])].sort((a, b) => a - b);
 beforeAll(() => {
-  expect(record.recipeHash).toBe('8952129f96a3ff22e92b4f409843ce24e55fd3cdf4d3431f2d26a5d8e80dbbba');
-  expect(binding.bindingHash).toBe('aff5f77d4822ec0b8f1eddf2a9835792b1f4dc3709137ebd0552ede5c7efeb41');
+  expect(record.recipeHash).toBe('898e10826a15a1f6cba9f9bf540bb6231f56a8d977ffd07705d2ea30898b8c6f');
+  expect(binding.bindingHash).toBe('0762caeef3d7c94c3b142357b9281cd20f993046ce6d0e593609ecd950eda657');
   expect(Object.keys(supports)).toHaveLength(4);
 });
 afterAll(() => {for (const reader of readers.values()) reader.stop();});

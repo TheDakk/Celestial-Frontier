@@ -64,7 +64,7 @@ package is `/private/tmp/cf-mobile-pack-20260909-species-01`,97files totaling56,
 (107.82MiB), leaving155,378,826bytes below256MiB. These are exact encoded payload totals, not
 browser storage-overhead, physical-phone or full-model measurements.
 
-- Mobile manifest SHA: `4ed80ae51e216306a548d55e1f980735c08ff25bec6b563e2887cc9e992b7e53`.
+- Mobile manifest SHA: `674b5535e5b941e7aa676ea76dbb54498350478e6bb53006f07379adc19b4236`.
 - PWA build ID: `9eb570011711a9f939815f07cfd57433cae578669b3695272fa6d8c283e52a47`.
 - Runtime manifest SHA: `ddc09e2128a6fbfea11b3c6b0596359eb97fd7f18198fed38c74b3736502476b`.
 
@@ -100,7 +100,7 @@ an application input. No source/runtime/model dependency changed, and no old out
 Build02 and its separate external-SHA verification bothPASS; all426 measured source hashes stayed
 unchanged during this run. Current totals are97files,56,528,433bytes (53.91MiB), with a same-size
 successor envelope of113,056,866bytes (107.82MiB). External mobile manifest SHA is
-`15cad742de80e6d1488c1d5f2af429c09b913481ebb372a3950df918de6c6485`; PWA build ID is
+`402e994d45f1db6362d4c5486df28148d2e241af3fd5f8f3ee2bd171f77f45af`; PWA build ID is
 `3f7ca9a54a4d7daecd5c59f0f61f586e4c3684fb93241e6d822712b8fd3be39a`.
 The runtime external SHA is unchanged. The8 package/HTTP and8 pure controls above remain explicitly
 bound to unchanged package01 before the release-text edit; no new browser/device result is inferred.
@@ -114,7 +114,7 @@ release text, retaining all 426 measured input hashes unchanged. Package03 is
 `/private/tmp/cf-mobile-pack-20260909-species-03`: 97 files, 56,529,354 bytes / 53.91 MiB; same-size
 retained pair 113,058,708 bytes / 107.82 MiB. Runtime manifest SHA remains unchanged.
 
-- Mobile manifest SHA256: `5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c`.
+- Mobile manifest SHA256: `bfd3fba993741a787ddb472336488427e43f64b2a6020eb804917683759c6da0`.
 - PWA build ID: `42d79c05f4b5269766d35e82c03f7b828f70062dc2bdca54ee98ca5f643465b4`.
 
 [Full-model native01/02](../MOBILE_NATIVE_RUNNER.md) remain aggregate FAIL. Native02 positively

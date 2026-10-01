@@ -35,7 +35,7 @@ reordered, extra, visible, boxed or foreign-owned rows remain red. The first atl
 used an incomplete message prefix and stopped9/10; its log is preserved, then the changed parser
 passed10/10. No product or oracle weakening was involved. Root validate PASS: zero boot/render
 errors and the unchanged50-probe fingerprint. Preparation manifests four exact compressed logs:
-UI_U1_RAIL_CONTROL_PREP_20260906/manifest.json (SHA256 416c941e2c820714256658792d5463afa08434fd651a51ad360b8654b4a6e46e).
+UI_U1_RAIL_CONTROL_PREP_20260906/manifest.json (SHA256 187e1e0927fd35530eead7dfe554e128b2649e34fb137f6a2ec6c2941809c776).
 
 ## Committed-source validation boundary
 
@@ -87,7 +87,7 @@ No Slice or phone browser stage ran. This is a test-helper integration error, no
 The bounded successor adds only ui-rail-copy-check.d.mts with an unknown-input/boolean-and-reasons
 signature. Focused root no-unused TypeScript and root validation pass. The failed source is not
 retried; its execution/source and all stage logs are preserved in
-UI_U1_RAIL_STATIC_7c20246_RED_20260906/manifest.json (SHA256 d3620f4fad21ec53589fee99f07e912c243382e6020f3aafc11d4a679bcc87e2).
+UI_U1_RAIL_STATIC_7c20246_RED_20260906/manifest.json (SHA256 86ce674c7b750b0d5fd18a38593014199e44263d1bfe844f1619832e8f95c503).
 The declaration successor is16 local commits ahead before terminal evidence; no push. Continue
 one clean changed-source static/Slice/phone sequence under Dakk's existing finish authorization.
 

@@ -158,8 +158,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "302a526d5d0fdd6cf5093ed3d680b3001b914cde5668552c5613d736da41e8d8",
-  "bindingHash": "7c37a44b196c36464680238d17c65a0ffe40c2b3bdc7c86659f355ea145f6f67",
+  "recordRecipeHash": "8fada1673acf5633abd043b6d98e59389d197d8663a02f8a2f5ef8fa5f65130a",
+  "bindingHash": "1ba4157632bb0b8527e5cef68e78da01701d93464e039446175362d0c675a900",
   "family": "biped-bird",
   "contacts": [
     "legFarAnkle",
@@ -270,12 +270,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-05/record.json",
-      "sha256": "82f3fc0eccf7ebc2d359dce42152bbcd61e9319d8c302b42def8a83b83799bf1",
+      "sha256": "87323e32a3958123ef62be96e6c1ff1624509c7e0a07796b472a5b85206c673d",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-05/binding.json",
-      "sha256": "f37cae2fc40e342ac7814533642470638e4d6dbb40cc8c5d0b74827b59944b82",
+      "sha256": "34f9742d8245d5abb40044dd7e5e4bcf5a40122758e476e38dd0a68a7abe337f",
       "unchanged": true
     },
     {

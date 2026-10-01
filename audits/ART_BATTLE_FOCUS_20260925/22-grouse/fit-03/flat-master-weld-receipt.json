@@ -1,8 +1,8 @@
 {
   "schema": "cf.flat-master-weld/v1",
   "sourceFit": "fit-01",
-  "sourceRecordSha256": "c24c2baeb4bcfb3bad41379f18b1c24a2515b03c66695785f15788226882ac18",
-  "sourceBindingSha256": "86dc6a9d256c3adaeebf7856732585d00ae1031b282d715db90a938be94d3511",
+  "sourceRecordSha256": "0630a2c6d662c82502f8110d761e9f59ad56b51619637a5ebefaef85b628a359",
+  "sourceBindingSha256": "3f3e101bc96a2493620fc54b825cf7e737b4a1301cadb3948b793772edcc12af",
   "sourceAtlasSha256": "bed07e94bc40f692eabe0caad4fe4f9a0b36674014d8716bc4a04cddfc5095e5",
   "helperSha256": "0a4e3a4310b7ba6b2e7d905f284904827b95a85f20d39cd84e502aff53ea5595",
   "options": {
@@ -77,7 +77,7 @@
         ]
       }
     ],
-    "sourceBindingHash": "d018e87c3483d5dbe0dd8ec574db9d566efdecac721b23b47e78751ba7bffec8",
+    "sourceBindingHash": "d2d92ad068227dc63c0f17845dec26f9a85d3b8c410554596559ea1ba7d8e980",
     "sourceVertices": 2457,
     "vertices": 2795,
     "sharedSupports": 657,
@@ -113,6 +113,6 @@
     ],
     "sourceCoordinateChanges": 0
   },
-  "bindingHash": "927da54457ebfe0f3f1792f7e64f5ad8b03448fe062b33d134b37aac9a5c5ef0",
+  "bindingHash": "121cef83b718ba7fe4c0347566ae0f670f5c8c71c3f300d7fe540b4f84f2160f",
   "scope": "Only this new unadmitted Grouse candidate: tiny root patch to torso/chest, both proximal wing/torso feather junctions, and the near flight-feather/body edge which opened in native01. Independent between-wing/tail/leg edges remain separate. No source paint, solver, contract or limits change. Prior intake receipts describe inherited fit-01 inputs; this receipt owns the new split."
 }

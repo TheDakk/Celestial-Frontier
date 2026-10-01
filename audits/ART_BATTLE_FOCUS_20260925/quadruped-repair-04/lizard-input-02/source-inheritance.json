@@ -14,6 +14,6 @@
       "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
     }
   ],
-  "authoringSourceSha256": "9ac35bc5a7872dff2252c3f821c4d165a615e158c4cb5ad5a517e8ccad20582f",
+  "authoringSourceSha256": "c0fa5bd3aa17e15ec01644442854b780c4e0821039a422cf370ec8b3e969c525",
   "scope": "Candidate ownership repair, no new painting/no transferred or inferred anatomy; old record/binding remain immutable."
 }

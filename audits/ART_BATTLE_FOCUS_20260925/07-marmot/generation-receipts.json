@@ -5,7 +5,7 @@
     "output": "master-generation-01.png",
     "sha256": "741c18b618945023b33b0ce03f5120c6aa27cae74724f3ce708ad2e2cc990e05",
     "prompt": "prompt.txt",
-    "promptSha256": "b17900a50769ff95e2e6df2846fa4acf48a4399b2c876cb4c7ea1976038e6096",
+    "promptSha256": "9bd8c0aa8593bedc10b8256decb5df35ef36e310213f41011ac0fff5494c8d36",
     "finding": "Far ear fully occluded; unsupported by hidden anatomy contract, retained rejected master"
   },
   {
@@ -14,7 +14,7 @@
     "output": "master.png",
     "sha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22",
     "prompt": "prompt-correction-02.txt",
-    "promptSha256": "c0fcd342e87ec73950f987489269909dbd47189f71cd60dec445d97e7dc5f2d7",
+    "promptSha256": "f55bd69dce7e9da1dbccc2aa0db9aee9a5bfaaa6240d0ca05b5b30d909dc4d0d",
     "finding": "Far ear visibly exposed, four visible feet and short tail; candidate, Dakk pending"
   }
 ]

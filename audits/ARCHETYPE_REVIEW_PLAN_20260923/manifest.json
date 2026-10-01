@@ -3,22 +3,22 @@
     {
       "path": "ART_REVIEW.md",
       "bytes": 6791,
-      "sha256": "9f3c4a08635bbd8af1a7d45fcecc0458e4f767cc9c0fd23eaae91bdb269c322b"
+      "sha256": "a0cd0b38b8fa1898ab7fc1171e6a5764ce0426354a5315aea32364aaaaffcde0"
     },
     {
       "path": "INTEGRATION_PLAN.md",
       "bytes": 7554,
-      "sha256": "4be88d80fd5cfffc0215e66ea6748205a9ce9e9b53ba690d16770d70771a7fca"
+      "sha256": "7e7e2323434bd940773789bb26e83dc87d3861abde414831ab464dfa0074dc7e"
     },
     {
       "path": "README.md",
       "bytes": 1514,
-      "sha256": "38be4a8bc0879c9522158679dfacafb93ed384c3c4c9825aed2538d72ce10ce2"
+      "sha256": "0caec8c478444a43900fdaea0e6577a7d3e6336478fe71dc2c3a3b627bbb71a0"
     },
     {
       "path": "changed-paths.txt",
       "bytes": 1583028,
-      "sha256": "2b9d89ef059d923c6a87663ef82a6be70b98547b077d715445c2c3d0b4feba1a"
+      "sha256": "b6fd94ae5b2ba37331fdba064124f57fbf452653a52c51963c1098d65c482810"
     },
     {
       "path": "document-checks.json",
@@ -48,12 +48,12 @@
     {
       "path": "review-inputs.json",
       "bytes": 4410,
-      "sha256": "4d3fca9c90552f3611e301810879e16bf8ca3e5d0ec16a6081afae13d6630eda"
+      "sha256": "663dfbf460a740d41d7bd67e0157b72019f21046090f83474a14dd5f9931bc60"
     },
     {
       "path": "signing-refusal.json",
       "bytes": 840,
-      "sha256": "9073bdd6528e0b4451b8054f2ee2cd17465be93a594147663db838500420ae97"
+      "sha256": "60b8c35cea20ace3679655fbdb1e84cb3d9e1a28ef360b144fcd5de82f0657e7"
     }
   ]
 }

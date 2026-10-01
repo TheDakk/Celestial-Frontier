@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "ec389a48b3defb5446539a84eedfada89d89120058d384479bdcf23d3b7def33"
+      "sha256": "d0bb8a9c987b4da5090179930505b82030a46858ec984a928acf51f5b9d39627"
     },
     {
       "path": "claude-proposal.md",
@@ -10,7 +10,7 @@
     },
     {
       "path": "source-receipt.json",
-      "sha256": "181838565b4a826e2694edee9072b2eb734e5360d335fac6b16064ce3a247609"
+      "sha256": "9532131bfa3ec26d8029b0bde5714a9bfad4a96c93d595e01c5f21ea826453da"
     }
   ]
 }

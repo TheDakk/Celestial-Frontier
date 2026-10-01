@@ -1,8 +1,8 @@
 {
   "schema": "cf.part-mask-intake/v1",
   "owner": "winning painter draw-stage RGBA changes",
-  "recordRecipeHash": "fa92dcff65635213e21d7d0ed48de6794c2a6aad26ad37988e539d47a5109bc5",
-  "declarationHash": "fe0152b39664dabb241f861db2f699849a32a87305cc78940b2b508a5487d9f5",
+  "recordRecipeHash": "36283d246439b734dd411a2e8ec1300034f408c7866db02b65609894897a40a9",
+  "declarationHash": "0566afd0e29c83f75268e5bc70894ed493ed399eda49df69a95ef4b81ceaaec3",
   "paintedPixels": 135760,
   "parts": [
     {

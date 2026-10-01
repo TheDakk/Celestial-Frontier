@@ -14,7 +14,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/08-gar/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C99_20260927/inputs/08-gar/intake-provenance.json",
-    "sha256": "1ae87df0c7f24b6eed9de884dbde9c1b65520bd9169f8aee5ef7915a2268af57",
+    "sha256": "c989dc18db0181576196d1c754c4e19cbdc0798cbf3a0396c9fc380d50da8468",
     "bytes": 3121
   },
   {
@@ -176,7 +176,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c90/12-killifish/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C99_20260927/inputs/12-killifish/intake-provenance.json",
-    "sha256": "916f1577b5dca06310dde9f36b45b3be26874f26d9206e4e1c53924f9c62da78",
+    "sha256": "c8e477b09fb4cb7ab115a165deec806479dcb84d6e8a030db11f5bf57efdad8e",
     "bytes": 3169
   },
   {
@@ -338,7 +338,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c92/02-parrotfish/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C99_20260927/inputs/02-parrotfish/intake-provenance.json",
-    "sha256": "06e92b21878365190cb3dff0f7668c52b0caefeea8b9fa8c8ee271b0461463a3",
+    "sha256": "ec4973c0db779736206400b11f11b3deaa6c5eec4be76ede3252a195c366f21a",
     "bytes": 3177
   },
   {
@@ -500,7 +500,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/02-rabbitfish/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C99_20260927/inputs/02-rabbitfish/intake-provenance.json",
-    "sha256": "63bd39f36996d4f189412ef6ef6a696e8d220d135eead8fca87b9c7908f6359f",
+    "sha256": "47a09c1d2cb13f5f008cea1610c5383b6aeb40e40c1c7af8c549538dd1e69259",
     "bytes": 3177
   },
   {
@@ -662,7 +662,7 @@
   {
     "source": "/Users/dakk/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c95/03-sea-bass/fit/intake-provenance.json",
     "copy": "audits/FISH_PIPELINE_C99_20260927/inputs/03-sea-bass/intake-provenance.json",
-    "sha256": "fbb09f85417409f68a33be22e1d01f8a64339fbb89615be1ffd73b76c639fd6e",
+    "sha256": "b11c9a14fe2a607781594359560e8005a72ef48794f871eb1a4b4e13d4c8fb7e",
     "bytes": 3161
   },
   {

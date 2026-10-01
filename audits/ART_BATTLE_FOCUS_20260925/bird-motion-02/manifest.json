@@ -14,22 +14,22 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/README.md",
       "bytes": 7371,
-      "sha256": "78a60cdbceabdac3c67a8011a06ecbe97262c141e50c97be94dd3b40acaaad4b"
+      "sha256": "ccc438601dbd2f9d4dc361472959c3eb02314339ae4950922bb30f0e5da19af1"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/authoring-tests-02.log",
       "bytes": 243,
-      "sha256": "bc9e137febcbf75be4797305b7fab2e99bb9045222e1d75dcf4562dc037f43ef"
+      "sha256": "f3286a16cee9fd7ac7df2d1b8290205b10f74ac71892f591cecfb876a7773a6c"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/authoring-tests-03.log",
       "bytes": 243,
-      "sha256": "4781156241033c24b5e6fb2a1b9d61e10715abcf6affb60ea52d1854c9450538"
+      "sha256": "a7e65a7ba615a868f5c5bea07ee50eadf224c7ae96aad76e8c49ebef14a48865"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/authoring-tests.log",
       "bytes": 869,
-      "sha256": "25571fc42056b6a85f677d9298f0fc970d889769f0b83125044372b381b52eb6"
+      "sha256": "92ae55167c5435cbf7a2fc11e81eda04793a6a7ac5ef9f1c77542bb36523f787"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/boundary-study.json",
@@ -44,12 +44,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/choreography-faint-owned.txt",
       "bytes": 26859,
-      "sha256": "d3f5df1ff3791c993734372ac469a013aeaad6929d583af542423a5ecccc74be"
+      "sha256": "585e5a50854895652de952e8ff55ae730604e4a58f71451e0648158508254e85"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study-02-sources.json",
       "bytes": 10054,
-      "sha256": "25c54cdf251a69616d2c4a9a7662428248ff88daf7d5bd3f64560a9daf65bbd0"
+      "sha256": "196db9bb3eee49f0d5dfae3504dddea0a2e3b1e19598962f85ad5645c80db2e0"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study-02.json",
@@ -64,12 +64,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study-02.ts",
       "bytes": 3186,
-      "sha256": "af39afcf59cc9de4675043b7bd080c0c94f0385b22eec4f99a5987e1f0a7983e"
+      "sha256": "c2a340d2ea117015967c8ee5d2ce1f97f12450d85b1940ad1bd6a965b4eb0ff6"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study-sources.json",
       "bytes": 10051,
-      "sha256": "a30fd797bf3683945e090a70312935f84508ade60353d13e3adecd0e69106f9a"
+      "sha256": "dd4658eef49ef8bb14478291fe6f7ebc430dcce36de04f7ae253738bc5c4c196"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study.log",
@@ -79,17 +79,17 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study.ts",
       "bytes": 3185,
-      "sha256": "1a4ee7b7964b3298bd59e3c1a1b2faabda66f9c85fc56befd57335e75fe6a2ee"
+      "sha256": "89352dfc177224873b8b2115438d7bafccc8b8263278f7eb7f16a2f4511ba394"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/develop-profile.log",
       "bytes": 66655,
-      "sha256": "dbe6d24d9bd8202059f32582d81b3cc845cbe907ad982f578fd788f54c2c01d8"
+      "sha256": "505ea7d9605f7c090aaa0b3565f903291e7b04ae0bf9a63c7f4080a08e8aea39"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-selection-sources.json",
       "bytes": 10255,
-      "sha256": "35a829eaa5bd02f89072fd35825fb644d6e0a4812270b4344b2c4aa72553311c"
+      "sha256": "dbf3d3a5e68bdfd561206ca4c82bab7c067d1295e982c1a522c17b09afd6e164"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-selection.json",
@@ -104,17 +104,17 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-selection.ts",
       "bytes": 1307,
-      "sha256": "74ee4f219c80e5b8dae65f8cb807b5121238144ca455455e141baa22826239f7"
+      "sha256": "c2764cbe80d9bee9a6949d5064ca276710c986f6f4b7b87e2c77582995e14166"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-controls.log",
       "bytes": 1530,
-      "sha256": "1b147681127d32bb07249dff0a4c6132491ac56a58b6b476f00f145dde8e33e8"
+      "sha256": "755d7332458597cb19a150946814a64a83ab62d0befc05eccd29107325750b69"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-controls.ts",
       "bytes": 2086,
-      "sha256": "401b91f6ef29094f5dd39c7e8398f3ad30b657fd0354b5cedbc66b51327a19bc"
+      "sha256": "50a72c0aba39085a6a10bcc631cb4f6b1db1ab64f4de904d37b82b8379176e27"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-diagnosis-proposal.json",
@@ -124,7 +124,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-diagnosis-sources.json",
       "bytes": 10082,
-      "sha256": "d76655fa79a90c47142f45adf5649020b4e6846cad9cd6a2cd24af69918b5c6a"
+      "sha256": "b667142050fb812ff7dce3531b48edccb680f872a2c0240ea46a76ab77025f0c"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-diagnosis.log",
@@ -134,7 +134,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-diagnosis.ts",
       "bytes": 1985,
-      "sha256": "50ff8e4e600bb904ad7c72552c1509b2052b784e28f5733ad1db11fb5c611931"
+      "sha256": "150535a5edeaae2b700df8db426bfa21134b5e2afb45d939d1a7139c72e907e5"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-original.json",
@@ -144,12 +144,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-sources.json",
       "bytes": 10081,
-      "sha256": "c0c039e5a71e50728181a284540aa765ea6dfecc56108d576096304b2e713d82"
+      "sha256": "c93ee9c19ae57f01584eb3db08553e2050bf425ed0ce328ee3801feae171a02d"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/final-candidates.json",
       "bytes": 1756,
-      "sha256": "1f7b42fcc367b466775fe1a7783bc3a2134ca41a033d695f4a3a75dcb36bd714"
+      "sha256": "7d988a2df71badd7ded3ee19bedc3bd323403c221473aab44aba2661acf63e87"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-boundaries-04.json",
@@ -164,22 +164,22 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/binding.json",
       "bytes": 1970915,
-      "sha256": "a2c2a31b2f92c60cd41b41e750f723f2c5f3c93a4cbfb4575bf84addb28d33c3"
+      "sha256": "1036413194587927b50423cf88bb4de8b78ef19cd5abd2692fd306e926063493"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/candidate-weld-receipt.json",
       "bytes": 3422,
-      "sha256": "ebb7ad13ed0fed3cd5098d549e10b7db7a38d3632b8ff1346b746db55dff3a25"
+      "sha256": "1b29a69b01312e474806828b9956c61449ce2d99ecce97cb8011d8612e4eaae9"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/declaration.json",
       "bytes": 1930,
-      "sha256": "f79685f0ae51dbe2759848b9ea595a7b93f46e1b9f400b07a1d235fe04bc5189"
+      "sha256": "eb04fdebdf5c92d631e878bc7c223e28174fe17df5463f9f6bbab5c967b801aa"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/intake-provenance.json",
       "bytes": 3065,
-      "sha256": "81c942ed593f4ee9732bec48f33b17d33a4c7dffa2906aa4bb2d07f7d6a1dde4"
+      "sha256": "1a9225fc73de6c2c5ab2a6482151afcf516111876db5441cea11cf3615bfd976"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/label-authoring-receipt.json",
@@ -194,12 +194,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/markings.json",
       "bytes": 27339,
-      "sha256": "ee3f890ae11697cbf60382b5846b2c0fb98a95f97050d0f6b1e25f5d092d1498"
+      "sha256": "b4cccedf2b9ceebbe3eb86f4d8ad19c2b9065cd57da78bfd3d15f70c0913fa33"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/paint-boundary-continuity.json",
       "bytes": 839,
-      "sha256": "3c6f4f40e5f89c102e60886769017c128aa00c2c25a923f42a71754840f3df74"
+      "sha256": "221135d4289ed426ab2b365aef9e91a5c1c440e79558ef9db1819a64ca4af74b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/atlas/goose.json",
@@ -219,7 +219,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/binding.json",
       "bytes": 5841,
-      "sha256": "76b3d94af892105669bd8f291b651c9068c132fc64f43fbddd14bde13774c2a3"
+      "sha256": "bd34a57d12c8cdb43437715229e68b7dfabcf824bfa184b1d0ca0ac9afea5097"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/keyed.png",
@@ -319,42 +319,42 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/receipt.json",
       "bytes": 4684,
-      "sha256": "e15d4dd7c30bdb640efb2a59c9d3d308b35e2739222b349adbd59f9d89d97a1b"
+      "sha256": "58bf9281a1a67608ad272e8126f205d4d86546daa48ed10750db146a3cb4f800"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/pre-split-binding.json",
       "bytes": 1459633,
-      "sha256": "3414cd365559e0cfbd38eefc8e4a1946ced9369a928ac9ffd74bf8ae2eae6b4a"
+      "sha256": "e6b29c345d9965ad2717af223340256cddc88be9d3c8d882a26d9f9ab67df9be"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/receipt.json",
       "bytes": 2433,
-      "sha256": "d0f208d2481707332cb6db75c024a08e985d9d02545848dd2f7405699ed6fadd"
+      "sha256": "daf2a07f308eb0a444410b7e8c7d3cdbf5a9d83da5ade0664ff2423b06667145"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/record.json",
       "bytes": 6169,
-      "sha256": "01b649a3999f9ce27d7dc05050711db5a5e8006eafc1b22a1065c67f1700b5a0"
+      "sha256": "325ddaf7cfb2ab98152b46f8a0683e95529c7cf0658359169072f48b06d9546b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/binding.json",
       "bytes": 2003162,
-      "sha256": "83b81ab6050ed80e9cbd978b60af9446689b9cd713cf653772fcfd421d33c620"
+      "sha256": "0055d4e685d6007d46d9ab165feaacc885360358d92caf939e6596b218aa319a"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/candidate-weld-receipt.json",
       "bytes": 2968,
-      "sha256": "63efff49b7be91da430b6fa2f57b0166c1afbd767ab10ff0608ac001d6d69bab"
+      "sha256": "0ca9b088950e5c9d2373d0f596a1b939b124f1d8b0432768c44b0995a4842ed8"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/declaration.json",
       "bytes": 1930,
-      "sha256": "f79685f0ae51dbe2759848b9ea595a7b93f46e1b9f400b07a1d235fe04bc5189"
+      "sha256": "eb04fdebdf5c92d631e878bc7c223e28174fe17df5463f9f6bbab5c967b801aa"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/intake-provenance.json",
       "bytes": 3065,
-      "sha256": "81c942ed593f4ee9732bec48f33b17d33a4c7dffa2906aa4bb2d07f7d6a1dde4"
+      "sha256": "1a9225fc73de6c2c5ab2a6482151afcf516111876db5441cea11cf3615bfd976"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/label-authoring-receipt.json",
@@ -369,12 +369,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/markings.json",
       "bytes": 27339,
-      "sha256": "ee3f890ae11697cbf60382b5846b2c0fb98a95f97050d0f6b1e25f5d092d1498"
+      "sha256": "b4cccedf2b9ceebbe3eb86f4d8ad19c2b9065cd57da78bfd3d15f70c0913fa33"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/paint-boundary-continuity.json",
       "bytes": 647,
-      "sha256": "779b08231ebf6870f73aa285a6f4e4d83e2faa535321e85a82de6580a4d5df3d"
+      "sha256": "90568e26a5a104d35b2de4a2ea15a9f1dbd8e9dfbac05687592b6341e1a608d1"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/atlas/goose.json",
@@ -394,7 +394,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/binding.json",
       "bytes": 5841,
-      "sha256": "76b3d94af892105669bd8f291b651c9068c132fc64f43fbddd14bde13774c2a3"
+      "sha256": "bd34a57d12c8cdb43437715229e68b7dfabcf824bfa184b1d0ca0ac9afea5097"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/keyed.png",
@@ -494,22 +494,22 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/receipt.json",
       "bytes": 4684,
-      "sha256": "e15d4dd7c30bdb640efb2a59c9d3d308b35e2739222b349adbd59f9d89d97a1b"
+      "sha256": "58bf9281a1a67608ad272e8126f205d4d86546daa48ed10750db146a3cb4f800"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/pre-split-binding.json",
       "bytes": 1459633,
-      "sha256": "3414cd365559e0cfbd38eefc8e4a1946ced9369a928ac9ffd74bf8ae2eae6b4a"
+      "sha256": "e6b29c345d9965ad2717af223340256cddc88be9d3c8d882a26d9f9ab67df9be"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/receipt.json",
       "bytes": 2433,
-      "sha256": "d0f208d2481707332cb6db75c024a08e985d9d02545848dd2f7405699ed6fadd"
+      "sha256": "daf2a07f308eb0a444410b7e8c7d3cdbf5a9d83da5ade0664ff2423b06667145"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/record.json",
       "bytes": 6169,
-      "sha256": "01b649a3999f9ce27d7dc05050711db5a5e8006eafc1b22a1065c67f1700b5a0"
+      "sha256": "325ddaf7cfb2ab98152b46f8a0683e95529c7cf0658359169072f48b06d9546b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-mask-conservation-04.mjs",
@@ -529,12 +529,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-original-binding-static-07.json",
       "bytes": 14901,
-      "sha256": "273732ddfbfde331f4fc85b27bba0c829e13d17faa68b0251d7529de90a0b49d"
+      "sha256": "5e80b3c51a92b1fc44b5755bb77fe116bf4b38674b7cc68d15f7a2513cd9a1c8"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-original-binding-static-07.json.sources.json",
       "bytes": 15387,
-      "sha256": "a3eac3c9904386e146433214bf6cd4080ea049347619e9d71c5e4084d8a1f6d2"
+      "sha256": "ca1044f473817023c10c23694f24c8d81a35ac545e9d4cde94814d4cfc5becb3"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-original-binding-static-07.log",
@@ -544,12 +544,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-01.json",
       "bytes": 8273,
-      "sha256": "2ea297e516ed58f8d972b964c4be6bc76d96e39b24bba0679b0ddb1a90275de1"
+      "sha256": "19c3e65938906ce0e4fb7d968913a934965f557a3d3a785c534b8bad8d6f7f65"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-01.json.sources.json",
       "bytes": 15387,
-      "sha256": "5bdc6d447614c2fcd1e73d9b4cf005874e42a00a117bc58227ee7782db196579"
+      "sha256": "ce334ce7f94b38d8fcac36d8fe5460d1dc2523a67b960dfedb4041b09f52723d"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-01.log",
@@ -559,12 +559,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-03.json",
       "bytes": 48498,
-      "sha256": "5b75a92abe500216b1dd2f39d72456fe9f1b5160a42744c882690246fd5c3bde"
+      "sha256": "319c1019e731e44e2f003aa9e4afd54a1127ed0ff8a6a8957ca0f47553d5d073"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-03.json.sources.json",
       "bytes": 15387,
-      "sha256": "32bc43fde9883c74526f31f75d9b56b6d6a7c499c84b32bc2262c2c924547969"
+      "sha256": "bf0db06adb856cda5a41c28cf95393a389a1962b23f5d8b7863169e31b37ac5d"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-03.log",
@@ -574,12 +574,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-04.json",
       "bytes": 9313,
-      "sha256": "6b6b1a7c4a0a82bb5a38ec6d793b01f5ebe508c4b385418e92efef3d8c69ba97"
+      "sha256": "aa2eccefddc83adcb6cdec83c323b273c2640f889e85eaefdd6467a9d2b31f16"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-04.json.sources.json",
       "bytes": 15387,
-      "sha256": "e610684565e0b3f52bfca557bd4056d86e98742124b4d385f3f9224e5f5fb577"
+      "sha256": "c62470d0d59cf5017d8102f9dc24a4e483b2dace2f5b56487d21d54a1a8bc542"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-04.log",
@@ -589,12 +589,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-05.json",
       "bytes": 22774,
-      "sha256": "71a58feff2c39fcee380bcf091a78298d229efc053ca34a1a22d9c15ac51ea92"
+      "sha256": "4a070717089b42495b40899d72f1cb635821b8a60b93b953298f305eeded923a"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-05.json.sources.json",
       "bytes": 15387,
-      "sha256": "9f9790f365ec9e05bd08e19c432cb8344bb3159e7c07818afe99b742b70fb879"
+      "sha256": "47f980747a81f2cb870abf6a644721c67985bf0acfd55a2ad26ac0a71a3e51cb"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-05.log",
@@ -604,12 +604,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-06.json",
       "bytes": 15943,
-      "sha256": "9c6439fad4551149d3a4379903885a7cc88c0a8a400de25d00819dd4dc4d592a"
+      "sha256": "455c68b1b019af554d6834b33bcf3c129bf3dd5082857744fc14c146977fd928"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-06.json.sources.json",
       "bytes": 15387,
-      "sha256": "1a8ad521884aafb76b6566b0b3fb1ef53315b2486498b569c2137a102f4a2877"
+      "sha256": "3d03e2356efc6b55f4c706a6a1e9bca3d77de4143abf693f905871478ae58e26"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-06.log",
@@ -619,12 +619,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-weld-03.log",
       "bytes": 1013,
-      "sha256": "0336cfaab50291aa1a10af4eebf7d6e683e8ad855230e0bf94991c11b9bc4f94"
+      "sha256": "377186de88f8457d46fb922da3426eed19ba157ba89c1d4f8d7cc8da05e4634d"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-weld-04.log",
       "bytes": 954,
-      "sha256": "a231c667811e1136fed0c5a13ab9609bbed2a617d5e620a37f77dd12511633b9"
+      "sha256": "5f09ed73c317022d098d0fd87d4069e07918820ddd16d1c664e2ea8c838b4cd6"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/grounded-bird-before-stage-faint.ts",
@@ -659,12 +659,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/gull-static-01.json",
       "bytes": 9265,
-      "sha256": "ca6d8661bc47467a9345e7cb3d9c4db31eeaed40ff8371240ba5e9c0d890958c"
+      "sha256": "8071056070cbe3a192b39e25ee1d3cc291f16a98f1bb896dc951a0e130aa8b63"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/gull-static-01.json.sources.json",
       "bytes": 15387,
-      "sha256": "ee66b64058d7941e37b439144ced95222f9e48c4a08682ec26b7a8489ad52bca"
+      "sha256": "e08f4194cacd45cea39d1b4bd2eff6b97eff52f9342565f2ca0a586ded2dae26"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/gull-static-01.log",
@@ -679,12 +679,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/heron-static-01.json",
       "bytes": 8293,
-      "sha256": "752967a63d2ca1fb091e08309b1f709017f624829b64c72f126ba85ec2cae853"
+      "sha256": "47c3f0121fbb015d7d38e95707b75197eba93f147e53880f7317aedc3b650cef"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/heron-static-01.json.sources.json",
       "bytes": 15387,
-      "sha256": "89591d7509bcb68bd83fcebed7057d84578075823ff332c8b44d25ca84cc3e1d"
+      "sha256": "408d2ccaab06e802456166ef28f20aea83b4f921888abb4d8095cc7d8d7c6c3e"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/heron-static-01.log",
@@ -704,17 +704,17 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/mask-compatibility-04.json",
       "bytes": 2251,
-      "sha256": "2292c26f43dd266d0079948408c5b6033f09a97d6f44ce655e4d5c65aa7b8bb2"
+      "sha256": "11c833c8305dc9f12f7d6dadc97ec96794c94db3b541313219eab087781468b0"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/mask-compatibility.json",
       "bytes": 2251,
-      "sha256": "2292c26f43dd266d0079948408c5b6033f09a97d6f44ce655e4d5c65aa7b8bb2"
+      "sha256": "11c833c8305dc9f12f7d6dadc97ec96794c94db3b541313219eab087781468b0"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-batch-results.json",
       "bytes": 2610,
-      "sha256": "bd8da0d4395abfce6d69443f9a92ae0b525b3cbedb14930f1f5ca4ac9d348d96"
+      "sha256": "e6d29b214ef48a72ef2495bdc40001a7d61b57ab7f70a8534a3feb5c6f588302"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-batch.mjs",
@@ -724,7 +724,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-faint-owned-runner.mjs",
       "bytes": 15113,
-      "sha256": "c0e610ae456e733517d6b8715d04528fca1de50d86f5c1e80bab4b7a68c5c77c"
+      "sha256": "edd333080747e1ace6cbac72dc8c6b4b0779214b4c993be34e22785c794f1c51"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/battle-full.webm",
@@ -734,7 +734,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/report.json",
       "bytes": 388047,
-      "sha256": "67e2ada6deb8c7cc57e1422c6555719b9072323994bd03a0804d3d21440e15d7"
+      "sha256": "736665de43b511a531ef57de0a7977f7b743f2945f5f71518dfa04abf729f193"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn0-hit-approach-50.png",
@@ -839,7 +839,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/report.json",
       "bytes": 362840,
-      "sha256": "da64916779ba9329ecfdcf139430947a24d733acbc9b87b621f8acdc6030536f"
+      "sha256": "b92f4687b36e311b88f15c4c9cdc7fa3ee0a7fc7d5b4ae92717ba2b0dfbef40d"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn0-hit-approach-50.png",
@@ -944,7 +944,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/report.json",
       "bytes": 362602,
-      "sha256": "905e30676dcb2032ff09e8f77f4ff1915d2a5b6dd55d88f65b0a053e9f90ee55"
+      "sha256": "41fe98b00cc34cfc8260bdd64da891923801829025998f79526f3d561b7d2fd6"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn0-hit-approach-50.png",
@@ -1049,7 +1049,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/report.json",
       "bytes": 359125,
-      "sha256": "143008eb42f4122c786af89e06844f8024a3db6d6997e54311020a421ec5bf7f"
+      "sha256": "fca59a74ed8862a47e49335bfdbc782369465754211cc7a658388b12d464a4af"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn0-hit-approach-50.png",
@@ -1154,7 +1154,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/report.json",
       "bytes": 359926,
-      "sha256": "85750ce17bb4aac6ec7b1897019813f47c40a83fdb6d63dfd3ccd16640304497"
+      "sha256": "47284ba88d16dbe45968129abad70fbc92f8bd871183b95485b5acf591c2ac0d"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn0-hit-approach-50.png",
@@ -1259,7 +1259,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/report.json",
       "bytes": 361791,
-      "sha256": "18cd6c3297fb861c1f28c784170b5725351af5a086ac6de47089e9dcf04e008d"
+      "sha256": "0d56666ab3eafc41fb1a2e1acb90be7f0d14af04040b1a5db2b4ca5218106bd5"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn0-hit-approach-50.png",
@@ -1364,7 +1364,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/report.json",
       "bytes": 362046,
-      "sha256": "44a8875d2440d2a98408d4a374ea9f94e1fbcb43be784e63bf1f773f8afd8931"
+      "sha256": "050e5adc8f642dff9b42883f513f085667829a52e69f4252c6e46350b4715d7b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn0-hit-approach-50.png",
@@ -1469,17 +1469,17 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-observed-results.json",
       "bytes": 2502,
-      "sha256": "2e0511dd33adcc6b4d4f21935394dca075f73b1b7c56cb5a9c296136a722b998"
+      "sha256": "5e19ec861031f7d67c8104e7811e427ae933fdb3cd46bfee5aa3f63d746e6a8b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-summary-01.json",
       "bytes": 2386,
-      "sha256": "998361ca2d2e856075b40e7f720cd953d4ac458f6ab6fd93ff31b9288eba972e"
+      "sha256": "c4cfeb43cf1a5776936e8bd2ac58a5be849cbbe2a8c6afff56db91fe668f928f"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-summary-final.json",
       "bytes": 2505,
-      "sha256": "4b4dcbbfd8101f2ebdeb5d0876b6f6550c9762fad1c60bde1f6ed9d40d7bd982"
+      "sha256": "1f06b7ccbee54070d707df28334c7417f010860f025ccbde6ff2f41db2642dde"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/parts-rig-faint-owned.txt",
@@ -1499,7 +1499,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/restored-source-identity.json",
       "bytes": 31462,
-      "sha256": "9d13d101340f5640551f51e11ae02e0d82ee06b2dfa458d45a8e69e24bcbe7c3"
+      "sha256": "d30200a3b259bd8e105a46ca9b81ed293429a59c9d8111cd53172e8952f0d4b1"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/review-sheet.png",
@@ -1509,7 +1509,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/root-validate.log",
       "bytes": 1093,
-      "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+      "sha256": "341cc9b2f71d7693aedb63e8b680d7ac4143039634c37ff0de0ac5bf359d9f9e"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/run-faint-selection.mjs",
@@ -1539,7 +1539,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/run.mjs",
       "bytes": 8684,
-      "sha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe"
+      "sha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/civet-static.json",
@@ -1599,12 +1599,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/sources.json",
       "bytes": 27422,
-      "sha256": "a3d88f608201bf11d07c0a1b7d6d45d8fb746262f4ef09f9fa969e08131b2399"
+      "sha256": "b6fc04dbc0c53ab0f16b16bea9dbc6034e56c04c0ea0b1be59772db99e00eff1"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/static.json",
       "bytes": 61950,
-      "sha256": "ba1dd73a2e66599f4e2759b05a92241d64f7a37ef47b971e57270947c0a899d1"
+      "sha256": "4c043dda77ec8d27df37a2b65a896059d903afca62c385d2b5d0a7d256a75f51"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/vent-crab-static.json",
@@ -1619,7 +1619,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2-execution.json",
       "bytes": 36012,
-      "sha256": "848cecb64c615e236731d7a2e4e3daafd4488e7abfbbc8a8d3ae586e4dc0b806"
+      "sha256": "8da4384e78f3ce7842bd70e672e21462f8bce254c1c04488298ec085dd5536a7"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2-run.log",
@@ -1629,17 +1629,17 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2.log",
       "bytes": 5398,
-      "sha256": "04fd061f7ff6438967475aeec356659e76f7f7009519afb6177bc73dcda57732"
+      "sha256": "2416a1ec9af54c335703440ee2c854c6c8d37301b7c899e6bd8615e1af0c3c72"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/sparrow-static-01.json",
       "bytes": 18728,
-      "sha256": "21c84c190f58b5053ff4efc387d265cb1d90c9f404ad4b5e944bd40144e310bb"
+      "sha256": "3b160e2439d5c03a7ac65b9fc476122cdcee01b24c9b68260bd5b02029df9350"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/sparrow-static-01.json.sources.json",
       "bytes": 15387,
-      "sha256": "92a47c6cef50c5fb028b3d2f6e2b79f3b7d54971de042c2bc39b4d4f57758929"
+      "sha256": "5b93750508f8f3add1da401fa15ec653d7c4167ead8ae59788c4261c144458f1"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/sparrow-static-01.log",

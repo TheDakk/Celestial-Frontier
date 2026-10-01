@@ -27,7 +27,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/README.md",
       "bytes": 7632,
-      "sha256": "dac63d4e4a7b162d7789fdd5bd6aade478f00445627d7d7c455e7df27332ab2d"
+      "sha256": "891f1a865886918e54d45e32b691dda4fee3cd2e16a2fcbcd262bce924289966"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/bear-script.json",
@@ -37,12 +37,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/bear-static-03.json",
       "bytes": 11229,
-      "sha256": "a3b8b4b7779f418bf03730972fece77b67f68272d5fe7e1770585732f0e619d8"
+      "sha256": "56c423a8ac99e14c5e9e33fc739a1e743a84d00df6f0b86216c458245af716d1"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/bear-static-03.json.sources.json",
       "bytes": 15162,
-      "sha256": "bb80b8f33158b735125d0fb7292fdf49b9106242c85f24682409d3d07c8999aa"
+      "sha256": "5e39d93eb9e79d310fba56df3b6d457dafe2569734c338bb6e4abaff86f51cb1"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/bear-static-03.log",
@@ -62,32 +62,32 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cache-controls.log",
       "bytes": 245,
-      "sha256": "2aac249e0730e0cd64b60cccdff65c8b9eabfb0a13c85e90a52a0ccdc6d1e39a"
+      "sha256": "f1083d61ae4e6561be834df2fc8ae73992317dc5a65e665064dc68aabbbd78a0"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/binding.json",
       "bytes": 3757767,
-      "sha256": "bbaaf3ec4ff0ab973b8eeec88cd1cbdab3a840d9ffbbfeb09f0d1c5b42db252e"
+      "sha256": "5afaa8f3b6dabe30edf40914d9de11a545f5572adfa6538b2218233f9c89a915"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/candidate-weld-receipt.json",
       "bytes": 6518,
-      "sha256": "8d0548bb366353ef57483300b144c3be0cc80c0ff5d41e07f1859949ac5f971b"
+      "sha256": "b3d20fddd46907503c71c35c53d2f007c6cbb2fc970c4084cfd686ef1218bf89"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/declaration.json",
       "bytes": 3192,
-      "sha256": "6df2e83fde499b2e786ffad3772f105135d445a5d368edd2922c124961a31827"
+      "sha256": "0bc1c20f6e71c7e7798d144f2882537ac932e490ccd0e3538a3b2ce1c9c80c60"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/flat-master-weld-receipt.json",
       "bytes": 2926,
-      "sha256": "39386b34d7a78aaa962f21613cae8d7a841fd89f495cc3e963bf2c8b3a57ce5d"
+      "sha256": "8c51161ee9e08c8e8cc4e13f945a042466209daf20aa501cf781d51703f04ead"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/intake-provenance.json",
       "bytes": 3360,
-      "sha256": "8575b014f28b531b454e099d22defbf2fb2425080a6402f2c6520c36f8a0ab55"
+      "sha256": "646320e8a6065412399f40a05ac587233055af26e48bd327441310edfd0ebd6a"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/label-authoring-receipt.json",
@@ -102,12 +102,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/markings-before-path-correction.json",
       "bytes": 24880,
-      "sha256": "f41e24e1d26d2a863358bf4a12ae7e6d8ce4a57e563e43d2d63bfc99817ea833"
+      "sha256": "c7137a5a9eb4d5bd22de0fd47f241d088f962ab12e54426c26df625c710f2de9"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/markings.json",
       "bytes": 25116,
-      "sha256": "4489f3809796dea1bdeb58127f7d07b623f433d2ff4a0b665f02475a08cf282a"
+      "sha256": "3bf0d6279d5c6c96d16cb42b28cb392342bfbf201d587480e1261beae6291859"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/paint-boundary-continuity-before-schema-correction.json",
@@ -117,7 +117,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/paint-boundary-continuity.json",
       "bytes": 1474,
-      "sha256": "973b7403b0c6101ed81ad2a149e6a61bfe1019caab98f8e5c8d1b87ac908c14a"
+      "sha256": "2d9778c0d3bc23bc2c4cee5e18ae29ec4b0b89106a3844f35a97a3ee0490d73b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/atlas/cattle.json",
@@ -137,7 +137,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/binding.json",
       "bytes": 10371,
-      "sha256": "80165880c28b0f96a89d904403a0349652617e3700f5977434e0c196b3a7bfa7"
+      "sha256": "3156885f28ed61aa51bb094bc283d2128f3a651b10a452dc5ef988638a3bc0cf"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/keyed.png",
@@ -307,22 +307,22 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/receipt.json",
       "bytes": 8005,
-      "sha256": "33845b25e0adda76ada2cb5ee18f4baf0c0518a203a8b8bc18979e053224838e"
+      "sha256": "1f24ee94a97cbf767195f13dc931351b83ded7410c1eec8e199daad302172dbd"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/pre-split-binding.json",
       "bytes": 2266807,
-      "sha256": "81dbe587a077ce0c6719d11470b904f6321222a7c67dcac7047b07ab2480d044"
+      "sha256": "cdb691387cc6b2e46f9dc7c64744a87c61699dcdbef15de5d757f182b38c4b90"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/receipt.json",
       "bytes": 2824,
-      "sha256": "880ca0c6e66ae94d9d623bd40e224e7804b37f93a1fd158ae473a5a3596a65f5"
+      "sha256": "ac5eedad0e55a032469adb114cac09e69554c537828bc616c3b803b94f326f39"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/record.json",
       "bytes": 7381,
-      "sha256": "4ffa56659c98bc1cfc39edb170e6035369fd624f64c7f5b6d76b7cd78fe66df1"
+      "sha256": "9548e61c58c663bc6ce1fbae61a812d5180f419ee9a4e1fad7745a7740e74ea6"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-paint-boundaries.json",
@@ -337,12 +337,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-static-01.json",
       "bytes": 10379,
-      "sha256": "756053226ea007f520dc39be9a6b1862a8eabd45156b2ba3f6ec46c9332594f8"
+      "sha256": "13cdf1e005c721fe562ff92a1138d167c95a6bc4bc7d93fc5fc02e31082462c4"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-static-01.json.sources.json",
       "bytes": 14934,
-      "sha256": "2f0316f5914d91d822cbc56e81b82719998d9442c993bd47c8b68a9d591fdcec"
+      "sha256": "c20e1cb9543d91e516e590607af4e10524ca27046cc7780be9634c51a299f3ee"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-static-01.log",
@@ -352,12 +352,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-static-02.json",
       "bytes": 12416,
-      "sha256": "8e15aa3a6c8c14cbbc5404ef0382a2fe57c65aeff129f2bff50186637b5acb33"
+      "sha256": "9162136dbe037733d8d385ba77f9a31f117eeecc2af941118bed74a06458c3cc"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-static-02.json.sources.json",
       "bytes": 14934,
-      "sha256": "51bd5d890a5255c54916c2d9908262bd77ca0d8cf9618698b20687e0c3d8e2de"
+      "sha256": "d501d8b8d38d07fe9cc2d91d4bf80ddd2bfdd6e7af2a359e4bf9c8baa9b66d64"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-static-02.log",
@@ -367,32 +367,32 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-weld-02.log",
       "bytes": 1599,
-      "sha256": "4755a797f544c4037caf329489b47e7437c8193651f525042b304208f3d897e5"
+      "sha256": "2486b6e8d97df61e9ff0409e4aeedce4418cb540be6d2ba9ce1558d91ef0ccc7"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/choreography-before.txt",
       "bytes": 25363,
-      "sha256": "0e2857f94e6943c5fe61349f5aeeab1b18743a1ef2b7f3461be2555c862ed2e3"
+      "sha256": "6bdfc95b87e26ac7dc7bae448edafff75130ab14a680dc44746e04770239eb95"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/choreography-proposal-02.txt",
       "bytes": 26816,
-      "sha256": "1836d635310ace5a3e356890030a1f61983045fe238a0becdbc67ba07dfe6a3c"
+      "sha256": "7d8e3f5c925db0b7a1944023da20d7dcf140ba9391b81200ca01a7efdd9b3024"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/choreography-proposal.txt",
       "bytes": 25868,
-      "sha256": "b5706ffcd4098ce8237436ce35017afee0393c7396de329afd2d9250d193511b"
+      "sha256": "c1c7c3d860bad2be72a42255dac570f266294ca8b889d1cf6e01b8d6fa7d33f3"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/develop-profile-01.log",
       "bytes": 66659,
-      "sha256": "c19c959b09ff1124f0480f3c97ac4eeebc5f2c27888b577cb250d77600311f4b"
+      "sha256": "870a9c86c13e1abacb92ece4936a6c7a2babc2a2fc98c348f89bf26a2351a768"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/develop-profile-cache.log",
       "bytes": 66646,
-      "sha256": "5bfa52a22b96dceabe6b73db7c01c4520b043b46d5fbb41137909f02ab248705"
+      "sha256": "6469d653299750f75baadaa85c702fe9c722fbb05f8e7ff83486866e330a6b43"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/diagnose-lizard-fold.mjs",
@@ -402,22 +402,22 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-composition-controls.ts",
       "bytes": 2429,
-      "sha256": "4adaad2df41060f0435ef6d9c84023709b29b399090f8f855ad8fe03feedf043"
+      "sha256": "4d24de41cdd507a99b1034721f0b7ee52cbb17cc61351e6c519aabafeb092fe6"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-composition-diagnosis.ts",
       "bytes": 2834,
-      "sha256": "ccdd8fd6c57370966b3a068bac243fbc36a8dea56893eebbaa080929c63ed14e"
+      "sha256": "4db525d5c59c36fffdd63fe84959187f552f732746eb19d22c097e9071ade8ce"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-control-02-sources.json",
       "bytes": 9889,
-      "sha256": "a18928ff65a0a5048f29e71e0fcecd2b3f2d2568662627a708c48afe71ab3e66"
+      "sha256": "06f8f47715cd9295db3ade13a8866e9975c830e39f78e9243c595a619604ff26"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-control-sources.json",
       "bytes": 9889,
-      "sha256": "15c0e32ecd18157a55ef1ef23167c82c830f62605506720c58f0668c27c95182"
+      "sha256": "483ebad236a1fd26c198da1739a09934b2fb141dada2ebd997630211c0e419c8"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-controls-02.log",
@@ -427,17 +427,17 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-controls.log",
       "bytes": 1580,
-      "sha256": "ac695e195d314a3001702e13612b984021ce0b0f2d8487213a2b3d827cc97d58"
+      "sha256": "7a33193778ff102138b05490f6d60d4177e40712a845c326fc442201f535a385"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-diagnosis-sources.json",
       "bytes": 9890,
-      "sha256": "f59d676099dd39ec1e2399e40c6ac0ab4ebdb4efe26028d88802ba625284cad1"
+      "sha256": "906decfe76a6bad9bab392be8e26147ccfcf2787a1f159120880b4606f61f384"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-diagnosis.log",
       "bytes": 1406,
-      "sha256": "37016b82b18c146164c4528fb2598260d082b1bfd0db0cd4bf251d2852d3e1f8"
+      "sha256": "e0b18d3f6b7c6f6b4535f9df3acc697ef6b205717d9e1464e22df68f18e85531"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-idle-fade.patch",
@@ -467,37 +467,37 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-transform-provenance-02.json",
       "bytes": 571,
-      "sha256": "b5e37609e4f41b208bc4e582a3c5438d2a2cb79ef34bfab66c61289ba07c4dfe"
+      "sha256": "8737029a25d067c3b8e1f268f54a9bf9ef22028f5f41e5c2996492029f30cf42"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-transform-provenance.json",
       "bytes": 526,
-      "sha256": "323e3296819a785d412bafaea53950d219665b1081c8184f952df0373234ec4e"
+      "sha256": "4db6be2a603298baf1d232762f3cf260a46cb65360e388e41f979e568efeb723"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/final-candidates.json",
       "bytes": 3017,
-      "sha256": "e722178a0ca6ea79204e8e9c81389dd79d81176f6f4abd2f4243d34ade6341fc"
+      "sha256": "af70440d403f6f2db3bd2c81004b698351bd14bff4efaa44eb8746561cbba890"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/binding.json",
       "bytes": 3019377,
-      "sha256": "5ffd9d46b712b33abd839d14e6dbb156658708e29b7a6f6d8ea87c5970156934"
+      "sha256": "fe86b703fecbdefdd27c6e4760a72a8c29ec2bc3c382ee43ed5ebab87c801587"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/candidate-weld-receipt.json",
       "bytes": 3286,
-      "sha256": "e500ceb87914006c4469c36654261bfda14a37c6cf928f3b10ebf7ee0654c093"
+      "sha256": "232275e786c52173d5746a842692a0c75be08739112482aecec3c86b81068520"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/declaration.json",
       "bytes": 3192,
-      "sha256": "d4a419519bf46d2cbcb74acda24925d21ccd7eb502df4f403533ff55e78bf1ae"
+      "sha256": "5a93b1db004182f247e4c9562edb53d58037982854bc14b122d77d445ae0c8c2"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/intake-provenance.json",
       "bytes": 3360,
-      "sha256": "31b958233a94e7dc0ffe581487686fe32424c4e18b69105f3d79419191ccd440"
+      "sha256": "c01a4643f2434ba4bc46ec7377c5bf31a29b656fcb2911d2c0d4e9e927f17b2c"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/label-authoring-receipt.json",
@@ -512,12 +512,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/markings-before-path-correction.json",
       "bytes": 25104,
-      "sha256": "ba245f6d0734bd1a3347e04642dcc3a52150fce508ffc860a1d9b2586de63397"
+      "sha256": "f8a83266890bab5f7be324ecbefbd5ecf51330fe702a53d91963c7cfed6da6cb"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/markings.json",
       "bytes": 25364,
-      "sha256": "1373269661d16b65b88ae59705dab091fada006273ef096ea335e70a9b757d87"
+      "sha256": "4e53535c4d3c3a516a405c94cdb763dfbe2643197ff847017483daa97afaff8e"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/paint-boundary-continuity-before-schema-correction.json",
@@ -527,7 +527,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/paint-boundary-continuity.json",
       "bytes": 457,
-      "sha256": "7a3a4019a4e3d811fcc79e58b857de82b5b851a6044a6996cf42f7d5f1f40e6e"
+      "sha256": "83519f0518f9fd7471b2b0b22567666af2c698b506beb5fc736174cb3695f068"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/atlas/impala.json",
@@ -547,7 +547,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/binding.json",
       "bytes": 10382,
-      "sha256": "92fb079d22cff839f46f7ac40df86bffdde20063e0c8705b02f661bba8e662a4"
+      "sha256": "eef18eeee50876d70aa75e4710e367165eb39985a5a284d389f0db2a2dafa595"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/keyed.png",
@@ -717,22 +717,22 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/receipt.json",
       "bytes": 8003,
-      "sha256": "1634fee92c863e8024e25a950fbb764e3378808290c1e685a9ff512ff790e255"
+      "sha256": "f3e772a667a3fff238de9be4e720e889dbded8da181ac0beae7a44d0d5973cf1"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/pre-split-binding.json",
       "bytes": 1901573,
-      "sha256": "48b13adba9da4fbe0a948e10ded88596422ce9f355b5b4d53f2abb1167fcafe4"
+      "sha256": "2972c793fb056397723bb5d56f5b57380deda0a2a382e1b8f191d2cc4ae5f302"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/receipt.json",
       "bytes": 2826,
-      "sha256": "3524d56645e063be7a6b524b6a67e5787a783f84691a6319bd6b478318cfc747"
+      "sha256": "0ffb39e7f76d86e10309edc6471560beba30611c52b4abdfa0d1270255090bd6"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/record.json",
       "bytes": 7552,
-      "sha256": "fe6acc9301979d0e9abf811eb1ace740530a748243031da872de565138ec3da7"
+      "sha256": "4e1f28278c3702a907b924a73318b779f8008331f8f8780116789677f7af0885"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-paint-boundaries.json",
@@ -747,12 +747,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-static-01.json",
       "bytes": 10415,
-      "sha256": "aafb6391ac32142d2fe3c3e18cf8652d757d9e311ff8d118b2261843549bb5cd"
+      "sha256": "a6d4bb8421d44a0afd59cd8a11ae9f070e0029d36bda56aeb519817534b62ba9"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-static-01.json.sources.json",
       "bytes": 14934,
-      "sha256": "f89705ed5ed141bfc9656f1074dfc2f1c6da5af7982cb2c980a44a1c687e98e3"
+      "sha256": "5c3794992606e1272ba943288259a3df5ac9b4d71839b9718034508f9c5e519b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-static-01.log",
@@ -762,12 +762,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-static-02.json",
       "bytes": 11297,
-      "sha256": "ddab86c8289a1601caeed4cba438b73bec0fa26da3de58a93d8f03948b9f2bc8"
+      "sha256": "471f7c5703aaef107ff50ba922d8d636d4f3b2c15e2fa6b546b7b67e5af9b152"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-static-02.json.sources.json",
       "bytes": 14934,
-      "sha256": "4f1d0102cf42618e7da687fddc33e52e0801d947b31b25a9f43518355fbd616b"
+      "sha256": "35a4a3fa4c4d544cd2826203210c56fb2e3a4bdb4603ee8db6331a236fdf8627"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-static-02.log",
@@ -777,22 +777,22 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-weld-02.log",
       "bytes": 1140,
-      "sha256": "c02cb8a875d7dfa19374b195e897642a13991889e9704a004a7b0f396ba005d0"
+      "sha256": "466fdcb2c93271b6e9ded410e5397a1fe17b18a81f4e425f5d69515c43f67551"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/binding.json",
       "bytes": 1555866,
-      "sha256": "93f042875172285c8a07646ff6881b468da934ed12e9deaae4eb5dfdb474d248"
+      "sha256": "773eef35e8a5553e0cb5a5cc08a361a1ef8247776316ade6a5952e8d30e64f58"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/declaration.json",
       "bytes": 2826,
-      "sha256": "cc89d96f02e26cc13d34371d5d9ddd9dfe6e2d53635acf4ed4c72f7e4a9bb487"
+      "sha256": "e68346aac23319fbecb28599e4fd6f53b078b406b707784ac9b3de4295dc38e4"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/intake-provenance.json",
       "bytes": 3496,
-      "sha256": "242db191851495c51b798476a0e59d7856d7c20da79f16374671c4d7ae23f1c1"
+      "sha256": "2e5b6adea3bfa4546c4cd466a1c1c23fdb9e5c3c56bbc11f4081fe34f60ad157"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/label-authoring-receipt.json",
@@ -822,7 +822,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/binding.json",
       "bytes": 9053,
-      "sha256": "e08ee96d3ea6dfa9d6762c33a7aa9d25480e4c8da249f3ae62db8d0d3daa691f"
+      "sha256": "64a937bf45af51915e2e72cddeb4705fc2a25344ed28873076b24a35c41e5158"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/keyed.png",
@@ -972,42 +972,42 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/receipt.json",
       "bytes": 7033,
-      "sha256": "0ec0da14111245725b23170cd2e549070e25db87b1dfb0f9c1680ccb3d66cabf"
+      "sha256": "37bb6d7efb9ad3e8b86289c7ddfb417a8c1114a96aad1029fbce77d50034d920"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/pre-split-binding.json",
       "bytes": 935535,
-      "sha256": "96e4ffeec78a652dffb758de4a4c1e83f68661ccf55872bace7a0dfd1f21209e"
+      "sha256": "369b1a9f8478cab67e0ebb9f48012e9fa8a3ad3192a372fdb5ca6650a273df8f"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/receipt.json",
       "bytes": 2827,
-      "sha256": "ff379e4491ad3187487522adfde09bbba02f1954258c3ee885182b941b4969d3"
+      "sha256": "a550939a874f109dd01f3c83723ca852c9c6271b2323d19cde867393cafc7237"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/record.json",
       "bytes": 7745,
-      "sha256": "b05f90d7f729c163b9f10dfde31626ef4bc79f5ab4403371a21284027c79e5a9"
+      "sha256": "b8957d3c3b16efb0c6e8cb3c1396f30d19b6dac071cd16aa7946303c4e634883"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/binding.json",
       "bytes": 1557426,
-      "sha256": "aac2d89a80939c348b5f92833ef3674d100ea7eec975f2c44bf093bf5658cfe9"
+      "sha256": "a624d65b17ff50c0163de0fcde416180278e60ae038ea92a9bf6d3a7b77b7794"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/candidate-weld-receipt.json",
       "bytes": 3231,
-      "sha256": "c23db1f2e849ef64eb9d4b64c224975666c422c11ab5c2986c199959ca76db3f"
+      "sha256": "b72bcc613a152a55004ea303a6d8362c9b4da8cfcb31080374943348576e2f40"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/declaration.json",
       "bytes": 2826,
-      "sha256": "cc89d96f02e26cc13d34371d5d9ddd9dfe6e2d53635acf4ed4c72f7e4a9bb487"
+      "sha256": "e68346aac23319fbecb28599e4fd6f53b078b406b707784ac9b3de4295dc38e4"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/intake-provenance.json",
       "bytes": 3496,
-      "sha256": "242db191851495c51b798476a0e59d7856d7c20da79f16374671c4d7ae23f1c1"
+      "sha256": "2e5b6adea3bfa4546c4cd466a1c1c23fdb9e5c3c56bbc11f4081fe34f60ad157"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/label-authoring-receipt.json",
@@ -1022,7 +1022,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/markings.json",
       "bytes": 25263,
-      "sha256": "1c5774046a71ad129bd13d20d939f08ca4d09d76ddf6f5392c7d5ea63786169b"
+      "sha256": "66acb088b2ee84ef0478b58d5f5b4aee113c7ad608fe74f6c16cca4954119a49"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/paint-boundary-continuity-before-schema-correction.json",
@@ -1032,7 +1032,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/paint-boundary-continuity.json",
       "bytes": 468,
-      "sha256": "a65af1bd035e898c49f2e9bc7018f3b099bcade11dc4a57796d904d91a618aff"
+      "sha256": "54e2c5ffffc78e03f444ce062e5d4a3e8a090e0de4b5aebe2893256cb70703a5"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/atlas/receipt.json",
@@ -1052,7 +1052,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/binding.json",
       "bytes": 9053,
-      "sha256": "e08ee96d3ea6dfa9d6762c33a7aa9d25480e4c8da249f3ae62db8d0d3daa691f"
+      "sha256": "64a937bf45af51915e2e72cddeb4705fc2a25344ed28873076b24a35c41e5158"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/keyed.png",
@@ -1202,22 +1202,22 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/receipt.json",
       "bytes": 7033,
-      "sha256": "0ec0da14111245725b23170cd2e549070e25db87b1dfb0f9c1680ccb3d66cabf"
+      "sha256": "37bb6d7efb9ad3e8b86289c7ddfb417a8c1114a96aad1029fbce77d50034d920"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/pre-split-binding.json",
       "bytes": 935535,
-      "sha256": "96e4ffeec78a652dffb758de4a4c1e83f68661ccf55872bace7a0dfd1f21209e"
+      "sha256": "369b1a9f8478cab67e0ebb9f48012e9fa8a3ad3192a372fdb5ca6650a273df8f"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/receipt.json",
       "bytes": 2827,
-      "sha256": "ff379e4491ad3187487522adfde09bbba02f1954258c3ee885182b941b4969d3"
+      "sha256": "a550939a874f109dd01f3c83723ca852c9c6271b2323d19cde867393cafc7237"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/record.json",
       "bytes": 7745,
-      "sha256": "b05f90d7f729c163b9f10dfde31626ef4bc79f5ab4403371a21284027c79e5a9"
+      "sha256": "b8957d3c3b16efb0c6e8cb3c1396f30d19b6dac071cd16aa7946303c4e634883"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fold-diagnosis-01.json",
@@ -1232,7 +1232,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/authoring.json",
       "bytes": 12891,
-      "sha256": "b7712b89ef575ea595b63d801914f88283316a6e146391c57f26bf98ae14afde"
+      "sha256": "f1afa2d0fcd9a04fe75ba9c794f46d8bec1f7765518f3f6d48357d86853ed9ca"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/master.png",
@@ -1247,7 +1247,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/source-inheritance.json",
       "bytes": 703,
-      "sha256": "828d814502bf89ee57b342e617bebfa32994e1f8c3dbbd65ac23bb7002b6dd73"
+      "sha256": "f14dc9aa8d981403419314849023a78b9a98021ca9dc5283fdca49b553662df7"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/subject-source.json",
@@ -1257,7 +1257,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-intake-02.log",
       "bytes": 330,
-      "sha256": "dd903021e3c1745b84b48f0d3b830a8fe575af2f5ac143d35b459bc6a78d3fd6"
+      "sha256": "af8dcc6daab4b2ec55d2f91c5dceb80771aab0337ada52f5bcafad2524061838"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-paint-boundaries.json",
@@ -1272,12 +1272,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-01.json",
       "bytes": 31305,
-      "sha256": "1a4ccb0de29fd9fcc49b9dd292d5b30580e77fd0a843009669cc13cfea00afef"
+      "sha256": "e78bd8da00a394be8c72e5b52247d907bdfb51d358d1a26f51467063351643f8"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-01.json.sources.json",
       "bytes": 14934,
-      "sha256": "afa27540d6c07da4e8ca42337429f4ef803a8018a2ea4c741c565c7645b3070a"
+      "sha256": "8dbf37f78cc655497e7245e3f1f205bd2c25cc6b93e6921f1489c46464f9de4f"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-01.log",
@@ -1287,12 +1287,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-02.json",
       "bytes": 23366,
-      "sha256": "dc666f6f943ccf11821cbda4adba17d9905f1a97c6f3f0c259a3ca4ccca17201"
+      "sha256": "33e4d247fd585425706224473cd3ca3c64316cf4b40af7aed5de86ee255c99b0"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-02.json.sources.json",
       "bytes": 14934,
-      "sha256": "569fb3e402682b792a5634c51ce0cdfe2edb452e632ef014fea493cb0801f8cb"
+      "sha256": "30d18b92120f7da1b964c8edd13e867ee711a975ec39272847629fc5bf3db0de"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-02.log",
@@ -1302,12 +1302,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-03.json",
       "bytes": 11248,
-      "sha256": "02d362d25274148e76fcf02d2f24bbeaf6a83ee028602f4807bb12462d344115"
+      "sha256": "4b7a2b05a912f56cef17df5da97380fb3069f2f6f9e4762c5a3047cc980fc5e9"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-03.json.sources.json",
       "bytes": 15162,
-      "sha256": "acd07db8c534bb1d58d83df9c7000654de4e038ca9699f17c4b05370ba7b0db1"
+      "sha256": "4323fc362f654cfc83e52a789bbb727b2050c06c714cc83b1e6c756b2ace9583"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-03.log",
@@ -1317,37 +1317,37 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-weld-03.log",
       "bytes": 1137,
-      "sha256": "e14e990731f74cf0879229f71c43c558d37f815b495857ab652923bc0f422111"
+      "sha256": "6c52ad3b22848250ba0f71895c935b5fe87a78bb5867d5d926fec6549b49a277"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/mailbox-end.json",
       "bytes": 2367,
-      "sha256": "881f9c9a6cc9f15fe4f5044db25caf70780d59bc2bdae5ac4423a4ac754a4b0a"
+      "sha256": "ef052616e5780ccf5ce5bc3f57f0795c3644622236bc360ccebd61afe24c8741"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/make-review.py",
       "bytes": 2181,
-      "sha256": "fe27f48d4fd35279476df00a00769dffbb858358ef5c35c4441d22d1fbc8d0cf"
+      "sha256": "162c4078f3a7ba5b76b983938338655333ab9dd09aa1b68b40e0b787d97a1cee"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/binding.json",
       "bytes": 3274793,
-      "sha256": "761e4dc8548341c4d9420791745ff4c25084944e9b28b9ea86bacbaeb5e5a7de"
+      "sha256": "098b64ad873e6980637eabfc7e00d4ec3b5a9d4598aa0ce06a7f1d08cae366d5"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/candidate-weld-receipt.json",
       "bytes": 3954,
-      "sha256": "7fe340fc9302f3b2c83b09b5c06f14605a2b302f71b36f7d057f2acf8cf64b8f"
+      "sha256": "27693126d1859f35121a43bb80ee81c5553c11eb974c7dd41068e6746d9eca7f"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/declaration.json",
       "bytes": 3192,
-      "sha256": "5a4ea0d29a4ef1ab91e051ff4832c17e55fad2d7718e36d604ba9cb0aabfef06"
+      "sha256": "311a20221a31c7ee9e4e50dfc0e51655cf24b4c71fc3baeefd1896e49a106daa"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/intake-provenance.json",
       "bytes": 3360,
-      "sha256": "33e6e290d32f2813ba08db03f0146995a6c1765e87c836a9d2c4e35160964439"
+      "sha256": "0718223d576d0c949d1b2071f28a6926afe62ce3f6ec37261a1fb6588f7f3eb3"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/label-authoring-receipt.json",
@@ -1362,12 +1362,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/markings-before-path-correction.json",
       "bytes": 24695,
-      "sha256": "3c29becab20b4501574bd694f766ed2842abccf8c007b3880f9c95e445e1fd34"
+      "sha256": "f3069754f8c70554327cbbfdd8d2bf6fc6a791332026a44d5688da86ece3929d"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/markings.json",
       "bytes": 24955,
-      "sha256": "2e252eb1d950f71f601152802b518574fd523045edc72a1a57cb261ed5073087"
+      "sha256": "ef0496891f63a84c10c0827a48f0f16374430b4ea14880fdc3e6eb49f6d2c6ce"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/paint-boundary-continuity-before-schema-correction.json",
@@ -1377,7 +1377,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/paint-boundary-continuity.json",
       "bytes": 676,
-      "sha256": "4458d0b9d8f8564ab51a9db246c181eff7003eea416077df0de296fb3c752c3b"
+      "sha256": "70420be29af5ae1bc283c7a62f4114de9ff14abc751904aa9391a7126b6f3ecc"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/atlas/marmot.json",
@@ -1397,7 +1397,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/binding.json",
       "bytes": 10367,
-      "sha256": "432f24fef887d71dd64819951160ed41f6b94101a6d070b9c6cae05fe78fa6f5"
+      "sha256": "15c66eaa99148d6b3c12f5cd04a54c8e5b5815140edc0cd2c3ae3e600ef94428"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/keyed.png",
@@ -1567,22 +1567,22 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/receipt.json",
       "bytes": 8005,
-      "sha256": "76a295bf1672c51a9eac242d36945fca150fb17c92beaea3c122e42c12a4e4fd"
+      "sha256": "dff00e7466e680323da89b5ee2ac7061ee34a349676c7f6acfb70fb10f33b9a6"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/pre-split-binding.json",
       "bytes": 1934449,
-      "sha256": "a746204acbc8381fcd5d69d33dc620f517767fa66168b66e4d765a19b4b47d6d"
+      "sha256": "eeb0df9af5fecc812608c612bc3ad3acfbb0a8e4b6d7062d0675be3231f85fdc"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/receipt.json",
       "bytes": 2823,
-      "sha256": "38de1be97879abdfd2e4f630a4a964a11a2717b39e32f78af1642b92b7137201"
+      "sha256": "cdb6fadef72111c47d8c3aecbfacafc82bac088da3f84636bf681d546a2b5da2"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/record.json",
       "bytes": 7422,
-      "sha256": "30849c158873308156df12bfd6ddf21ef734df679367da6ec9ef277f04462e00"
+      "sha256": "e7efa7c4aefb613410336d34ee1a227d83716b6bfc2089a8bfd60f6491892216"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-paint-boundaries.json",
@@ -1597,12 +1597,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-static-01.json",
       "bytes": 10415,
-      "sha256": "102d1aef2336c9792dbfd3beeb50b881611a280a6ffeb87a893f01091ec422ff"
+      "sha256": "6928ece7c9c84c1ad21d136e991107bc8e6e060b726f8f5559abc6a73911885c"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-static-01.json.sources.json",
       "bytes": 14934,
-      "sha256": "15f95aaa41e1e164c619d0dc983d03d9a35322acf0ccd5720a364206ec8bf02e"
+      "sha256": "9a77f7ccd9731a076f909b7ea0201b91100a810b71bbb7cdb182aa1e3fd6cafb"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-static-01.log",
@@ -1612,12 +1612,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-static-02.json",
       "bytes": 11549,
-      "sha256": "ec1d9ca6eaec9cc6926e1d86567c3bea16bc32cfa95c3a7dd594d5ddf7074052"
+      "sha256": "efc206ebde4e062f9236232be4f9db5ee2dce3439132bcb8a9b842605ea15659"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-static-02.json.sources.json",
       "bytes": 14934,
-      "sha256": "21d38dba60765c04f399a0488c0d50a7bd5331a4ee546482e38de0bf731014ab"
+      "sha256": "bd655b5a16853fca5d3f05b146d901c7fd929147a24d7ea0606cc3a27fc2623b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-static-02.log",
@@ -1627,52 +1627,52 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-weld-02.log",
       "bytes": 1220,
-      "sha256": "2857128c4e68a830b68784a1ece8533a4ed31b04f126d28b3c4d6b0e096c0dc6"
+      "sha256": "9932c4234d3c65c604c06c789f86a05dc98e95de9416de38b0fb3286d6b4f853"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/mask-compatibility.json",
       "bytes": 8880,
-      "sha256": "eb056e96ae53c0cb204d6359fa86ddef58198121de1149b97c91f3ee26aff2d0"
+      "sha256": "61f20faaefe4d9a6df8d56ced86f49182ea3a6167c6e70526dcbe2505d42d4fa"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-03-results.json",
       "bytes": 4023,
-      "sha256": "ba2735c4cd7f0668bb96878a8adcffdacaae8e4cd688baa2ce2bd081b4cda1b8"
+      "sha256": "9dd38f55eb2a19e23ac0879f6f87c99f07adad1e05d98e1e666d11eaa7971a84"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-03.mjs",
       "bytes": 1533,
-      "sha256": "839b622a03a06818b6c1bba10c574da043cae1077f5a30f84719e720b32e188c"
+      "sha256": "03f44a40fe3f2a6a7d7615198b96ea05190f86031f61a7bee1f6744567cc9a2b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-04-results.json",
       "bytes": 4478,
-      "sha256": "1d314d2fb6d0a75a6ce9be0ff77ad33a1b3247c696bff28e4fd754dbf1b4f165"
+      "sha256": "73286b84e897a625f1587e572ea4fe2219589c94e9e7225d4491d1e9eeac9098"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-04.mjs",
       "bytes": 1521,
-      "sha256": "943867b7c067215659d678f8a0f3eb071106eeb21a74456322735261692bd074"
+      "sha256": "8477748dd6749a683a843ae935ca5a35cd03acef851241f65ed5c7d99ac458e5"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-05-results.json",
       "bytes": 1790,
-      "sha256": "c8f57f7045c3db35198e4387afd6dddfee0d979c5e785eaca146a73d359d4a79"
+      "sha256": "9acbf3413ab9bcd7c6ff8b29e0e76bd2e43d3b1d4c77d1ee679c3722588319a1"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-05.mjs",
       "bytes": 1395,
-      "sha256": "e4bc460030acf8702ba49f8f7df87cc2b194b6994b7bd384afe44d6dbb476144"
+      "sha256": "61b8d82031ea2cec6a578cc70916155fb4a724e320b603b389b8c35c60a9f0f2"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-results.json",
       "bytes": 2545,
-      "sha256": "ec5ca98f7c2aa5e8162efdbc593e8cbdf754f632b5e2439c3f7000b7ca904dac"
+      "sha256": "7645776ba70f655251af7d5162bf1cbff21594e2fa0f42f8fcfa7137efe25e89"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch.mjs",
       "bytes": 1400,
-      "sha256": "344d9fcc0cbf914319c792c00135a397d451d0b10fd6cd5bdab306035403fb3d"
+      "sha256": "0e8be86a73098d917b8183d3e90480223f7980d36fd4c5b1f447a98ffb98ac25"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/battle-full.webm",
@@ -1682,7 +1682,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/report.json",
       "bytes": 388627,
-      "sha256": "f898331e08a655e999079fdfd5612c1260689438faa56671387bcb5ae91be404"
+      "sha256": "c23fca25d76d135c6b83a72f9bd406646520a11d7afeb369d0c09e46f17d1599"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn0-hit-approach-50.png",
@@ -1787,7 +1787,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/report.json",
       "bytes": 390509,
-      "sha256": "597580b0a844549f2f120c95f39f8b2eba7a507e38febe182bf2822b38e5cb0f"
+      "sha256": "41f5c33e8a1ad747b07afd7d86d594d94577ca82cc4dc1fb241aeb84defc53f9"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn0-hit-approach-50.png",
@@ -1887,7 +1887,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cache-timing-review.json",
       "bytes": 5423,
-      "sha256": "1073077b5a182cd3f671e7781661e42b47c6bb680089ecb1239a33f6f87ca1a2"
+      "sha256": "45bdf2d983c95a75616df26e8f8772750ad0e499fd4b1be5ad90193d9afcf8f5"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/battle-full.webm",
@@ -1897,7 +1897,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/report.json",
       "bytes": 375795,
-      "sha256": "b191f2bdc8e094ba258f0b73f7849cd2a10bb5294176226c204e43cd510349b9"
+      "sha256": "05aa741fc93e231524eb3e2d444bc2c02f0167c5a5ec0372d14685fb5284cc6c"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn0-hit-approach-50.png",
@@ -1992,17 +1992,17 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01.log",
       "bytes": 691,
-      "sha256": "c451fbbf72ea106d6166a86211bb83fe96f2bf1c354cd07290b64e4c664177a1"
+      "sha256": "c8a423fa1c8a76f03759c01ec22baddcf3357b81f6baf1231120549ebfb0e71f"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-03/report.json",
       "bytes": 201152,
-      "sha256": "17b00e13a04141fbfd9bcbb49c86bd84cf0b1a5255f82903e53cd201634abb8a"
+      "sha256": "c7f9c1d993c90462d9ecf5d5929a4bed0718a576912da7fb69c986b3ac519e33"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-03.log",
       "bytes": 606,
-      "sha256": "12e0b7b4d2290937ceb6495b018494b8029c9f0ac73d3eb4418cc1561df582da"
+      "sha256": "1d58179213ad269188235eee52581c2489db690c025fdab1f9072acaaf8d986c"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/battle-full.webm",
@@ -2012,7 +2012,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/report.json",
       "bytes": 386148,
-      "sha256": "c36f4d24c8eb533fa891c85a76ed1fb2df7d900092a238f4139f56980fbbdb28"
+      "sha256": "fc1eb743eba0fa589c330c6ad62ee1b17d49c876b9ac7c38b0e989df874a1459"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn0-hit-approach-50.png",
@@ -2117,7 +2117,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/report.json",
       "bytes": 388514,
-      "sha256": "6a6233a18a0e2b47550f73dc5c49b6f5862cf8f04bd321904aff11e9907d4e26"
+      "sha256": "57b1d615954a70db58ed6adbbd3740707075ba9a596baef02cff84d1381d8364"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn0-hit-approach-50.png",
@@ -2232,7 +2232,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/report.json",
       "bytes": 375665,
-      "sha256": "10852132deda84eb9708547f7ecbdefa5787eb92d92a62bccc5dada1591ee11f"
+      "sha256": "a780eb66ba8b8a3bc40a977738d2b6d6db83c2fb953fba66a952a2bf6ae40aee"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn0-hit-approach-50.png",
@@ -2327,17 +2327,17 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02.log",
       "bytes": 691,
-      "sha256": "a879d4ec9f7f748f881c03407978a3c332296ca688c2abb19a45b0096113b2bd"
+      "sha256": "9ac8d8d11192a9a890671b02355dc1a47fbbde868d1e1650b6a9b3fa10c784c3"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-composed-proposal-02-runner.mjs",
       "bytes": 14728,
-      "sha256": "c07ef05eebb1f0a4e2d39370c8d3e0891e8d8d21c02816b79cfb77a6bd8a5086"
+      "sha256": "017e41ef041866df16f47fe8be95337c67b7e515694b723cfee7e200d5040eb0"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-composed-proposal-runner.mjs",
       "bytes": 14719,
-      "sha256": "5f73e9defd126a30d90e845492c376215d7984260726fc145414bc4a88efad3a"
+      "sha256": "e50d405d941f262c54a876e61176480a5722ecba8840369ad927e377bd842277"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/battle-full.webm",
@@ -2347,7 +2347,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/report.json",
       "bytes": 391437,
-      "sha256": "55c2fc7bea78c0138d05611daf430687c66b00a29721411dd047e001df9f242a"
+      "sha256": "6084947e87b7b399ab2a60fb50345e8963b2e5fd9098514b9f29470bbfbc8131"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn0-hit-approach-50.png",
@@ -2447,12 +2447,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-03/report.json",
       "bytes": 201152,
-      "sha256": "c266f0593efe3a1d79482cc3fcdb06cd8759ebb33722e7b810d49f5545719e62"
+      "sha256": "62c32ac9904e069101bcff7eeee79875f2b75f32a89e9728a2b47374ef7b8c0b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-03.log",
       "bytes": 606,
-      "sha256": "12e0b7b4d2290937ceb6495b018494b8029c9f0ac73d3eb4418cc1561df582da"
+      "sha256": "1d58179213ad269188235eee52581c2489db690c025fdab1f9072acaaf8d986c"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/battle-full.webm",
@@ -2462,7 +2462,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/report.json",
       "bytes": 391680,
-      "sha256": "9b947484a14cf41271e9ec46381bb27b01255d84a214048532caa34824858f0f"
+      "sha256": "c41c70097baecda7b82d1befd4fb9866fc80942d6073510b92692132476f7553"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn0-hit-approach-50.png",
@@ -2567,7 +2567,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/report.json",
       "bytes": 377618,
-      "sha256": "1067a28247ee1ed6abba73db0b4eec28685f00a4ddecd4b201b2e9b64995986b"
+      "sha256": "5a170b8619037bdfce2e1271fcb52f93eecab31dc04273fb1de4735d995ee789"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn0-hit-approach-50.png",
@@ -2672,7 +2672,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/report.json",
       "bytes": 372383,
-      "sha256": "6b096cbecb74c57bf52b588ad72ecf7348a971cc63e4847a3869abafbdd6d243"
+      "sha256": "27bf23e9ef1f78ddac03bc9380a069455ecc8f80142cafc31de4ec9541a39c1c"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn0-hit-approach-50.png",
@@ -2777,7 +2777,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/report.json",
       "bytes": 375362,
-      "sha256": "3dc8b570f30ef98a3d6169fae0ba85bb756a9d587ac7ade579bb56fbd86cc0e8"
+      "sha256": "87da57d8b9fd064e0ae30fce14384d3d0cd902910da57da5963b2f03012d9d8f"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn0-hit-approach-50.png",
@@ -2882,7 +2882,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/report.json",
       "bytes": 390153,
-      "sha256": "78c011d7f8228e3cb7c3866ff84ddf3c2e1bb6c11435676531f526831c57ca7e"
+      "sha256": "c92b2e16c4c7aa1b9c674533eeae14dd8ff3efc19ba9ead299a51a47fdccd9d4"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn0-hit-approach-50.png",
@@ -2982,12 +2982,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-03/report.json",
       "bytes": 201152,
-      "sha256": "016b6a080ec10e131c2e8775b57794cd27284180b5a2a07eab5171928530c153"
+      "sha256": "aa1c67522496c32e8badd191d2b35adbd815c43ff072e8910b5c18f3519f709d"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-03.log",
       "bytes": 606,
-      "sha256": "12e0b7b4d2290937ceb6495b018494b8029c9f0ac73d3eb4418cc1561df582da"
+      "sha256": "1d58179213ad269188235eee52581c2489db690c025fdab1f9072acaaf8d986c"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/battle-full.webm",
@@ -2997,7 +2997,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/report.json",
       "bytes": 392227,
-      "sha256": "51db57ec19cd43a1ac77869a5db12cf44a4a02aeef1a8f08d3cf52d5756d07eb"
+      "sha256": "fe369910c9301261550923ca135bac8f761bd2abfc88609770afe8467bdcee36"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn0-hit-approach-50.png",
@@ -3097,7 +3097,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-timing-review.json",
       "bytes": 9301,
-      "sha256": "6a141248de849db1a1a18dea2db63d9f56695b40e366ad956e5675db43240231"
+      "sha256": "90685ec1f90751e732d12240835ee93f04b97121e653a8674058082ad632d8f1"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/relocate-mask-manifests.mjs",
@@ -3112,7 +3112,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/root-validate.log",
       "bytes": 1093,
-      "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+      "sha256": "341cc9b2f71d7693aedb63e8b680d7ac4143039634c37ff0de0ac5bf359d9f9e"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/run-faint-controls-02.mjs",
@@ -3137,7 +3137,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/run.mjs",
       "bytes": 8684,
-      "sha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe"
+      "sha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/civet-static.json",
@@ -3197,12 +3197,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/sources.json",
       "bytes": 27137,
-      "sha256": "29a8d5b2cbf800363ab29c3da6a1f2a769de6376e59355fe954a0e6df81aae29"
+      "sha256": "c7c6af69d286dd0b462ac5a705c3cc799f2b0701ec3d4333fdedcb2d41035380"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/static.json",
       "bytes": 61950,
-      "sha256": "7cb7375100d14475693ce817adc95d7375fa9685f904f5dec78e4082364997ce"
+      "sha256": "5ef278ea06e460933a75c17d37e508a3c3b993a9470aa9695da835e293158d9f"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/vent-crab-static.json",
@@ -3217,7 +3217,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2-execution.json",
       "bytes": 94153,
-      "sha256": "3f728b32f9b3c88c02902ff1ea119db0903d651c072ccd5d002e693fa056905b"
+      "sha256": "0b4ab10dfeb3249e1fcc9c047658f20452175aea71ecc142c723b496de09df6e"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2-run.log",
@@ -3227,12 +3227,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache.log",
       "bytes": 5402,
-      "sha256": "dcdc9020ff9f782841f3b32140e0f5b09245a7500b228fad13f2659c174c8c6c"
+      "sha256": "564161600acd23bb3878508861ff5f07c2f7a5585a4f9a9c1b4e4492a057bb88"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/run.mjs",
       "bytes": 8684,
-      "sha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe"
+      "sha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/civet-static.json",
@@ -3292,12 +3292,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/sources.json",
       "bytes": 27138,
-      "sha256": "c4a28afebb541fdcecd0bf620cd02d4436a6e8ecfb68202063672adcc9306828"
+      "sha256": "febc4985a8add2daa5bec4523d30ea41d4999627373b31ef48cced069cc136ad"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/static.json",
       "bytes": 61950,
-      "sha256": "7cb7375100d14475693ce817adc95d7375fa9685f904f5dec78e4082364997ce"
+      "sha256": "5ef278ea06e460933a75c17d37e508a3c3b993a9470aa9695da835e293158d9f"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/vent-crab-static.json",
@@ -3312,7 +3312,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2-execution.json",
       "bytes": 72446,
-      "sha256": "f3f7eb9425e55293f8a949e078be45b49f8d3283bd50be71099e10aae1fa84a8"
+      "sha256": "330fc8dfe00745b8fedb9b9702ad701fd700fd327bdc8a32b3515ec234ccfdd2"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2-run.log",
@@ -3322,12 +3322,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2.log",
       "bytes": 5403,
-      "sha256": "dac0ed8d78d4216729a93b67079976df772e58ac344bef95c1442aa78d91798c"
+      "sha256": "1cdac44954121291f9080bad856473e5a400f0fdb462ef50a6211e8cdf9efcb4"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/stationary-study-sources.json",
       "bytes": 8683,
-      "sha256": "3d030ab874dcf5cbac12452c7fd804e49a0d87791558487643803d256f89a4d3"
+      "sha256": "c3c35e0f0862ae380b06d98e3db68b5742f4bcb70832d9a11ab6cb7d7fda84bb"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/stationary-study.json",
@@ -3342,7 +3342,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/stationary-study.ts",
       "bytes": 2360,
-      "sha256": "e69cb3c67ddd178af8c128b07bd49cd53c5d722bcc850fcea63a144f03ed4ed4"
+      "sha256": "9e9f7e2fc3775672096b2ee1e743d37c7e741f7fdb21bd720d0111fc76785673"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/timeline-before-envelope-cache.ts",

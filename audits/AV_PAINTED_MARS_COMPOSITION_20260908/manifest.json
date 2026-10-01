@@ -59,7 +59,7 @@
     {
       "path": "audits/AV_PAINTED_MARS_20260908/manifest.json",
       "bytes": 22234,
-      "sha256": "a8607cdd52094f6042912164f9edf5a018d7fc996b02fbdae0ca47ad75a8ab78"
+      "sha256": "1310f18fa94ae013d514e66ea7a11025c9bad90929dbabe800079eafbbcafb5e"
     },
     {
       "path": "audits/AV_PAINTED_MARS_20260908/native-painted-mars-runner.mjs",
@@ -69,7 +69,7 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/BATCH_INTENT.md",
       "bytes": 2720,
-      "sha256": "9e848968e045cbb6cecf257c99a8e2bed3493bcac08b7ab667ac7311a353a6f0"
+      "sha256": "c30b3910f15ece68710bb33a886672748b72605e407c0df0d416b1800fd383b5"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/FIRST_NATIVE_FAILURE.md",
@@ -104,7 +104,7 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/browser-free.json",
       "bytes": 3082,
-      "sha256": "c08e4991d8ccd6da42cf7e4391543c9cc5be639f621c8e50f129bb2ca848253c"
+      "sha256": "8224a78bd71bf83f4210989196ae5c4f0fcb74acc43aaad6a40c8e73ddb6cf75"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/checkpoint-intent.json",
@@ -139,17 +139,17 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/evidence-dist.json",
       "bytes": 14753,
-      "sha256": "a69cb2e3e23e23f4c6c9e7303a16737c4cb0b34aea86eb5160d3234b7ed4251f"
+      "sha256": "d42b4b12bf4879c7cc695c9ed40a00dda35c3825fa40ed11057d00e633413a4a"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/final-focused.log",
       "bytes": 6632,
-      "sha256": "6a62801058a24fa80f85d1d9afc948393ba8111075d67fb273ce8d5a4e0d153f"
+      "sha256": "5493f15b3291d14a55d8b175922a4f5bbbbe8b04046240ea8d285a0e845c10df"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/final-results.json",
       "bytes": 3600,
-      "sha256": "9cc92eff486b5d5bcb9f2bed8bd81b45089498da1475ae17e314efd3b5e9c3af"
+      "sha256": "a81778de9e9865da36b428e98451a7d5716ce4e11d7159b6b8e442b50587351f"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-blocked/mars-composition-blocked.png",
@@ -159,7 +159,7 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-blocked/review.json",
       "bytes": 253510,
-      "sha256": "d410860784283ea141d36eeb6fbce09a975a4c1c8861cc9f7d58ef433bcb3119"
+      "sha256": "048573f1178d9a9129be4c9d51dbecf2dd32dacc4f42ca7f6156b9ba36ccf523"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-blocked/runner.mjs",
@@ -169,12 +169,12 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-blocked-execution.json",
       "bytes": 493,
-      "sha256": "0d1be926f662e2e94142998852a4126f7654f1bbce8b92505f8d56cbc82940e9"
+      "sha256": "8f33d7863667a41cba9dec13073ce502526c1ae0169bc9bc31bcfae803d1c5b8"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-blocked-execution.log",
       "bytes": 139,
-      "sha256": "93ae721ae3af9fd5b8bf2a70225a45734e4dbbff9dd41030fef1bf5c444bd3ac"
+      "sha256": "bccefb1d5d4484276922377e7808896e7cc1dfbe930f99ecd75776f5f89d52c1"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-composition-receipt-runner.mjs",
@@ -199,7 +199,7 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-default/review.json",
       "bytes": 181047,
-      "sha256": "a039c67aaaa6a2edb5162894711bce02ad079ad02e1aa93518a874ab803413b9"
+      "sha256": "9b83add0956b6e086882a41f1a0012bb444fb66ce0dc9a914de36298367ef4f0"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-default/runner.mjs",
@@ -209,12 +209,12 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-default-execution.json",
       "bytes": 493,
-      "sha256": "653bf004f1b4694727ed3729a42f39925bed5734976633c941afb99e6f42b43b"
+      "sha256": "8757827d92fa2c731d58c63bb679c5a2de4378dc6853580844be66c056304809"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-default-execution.log",
       "bytes": 139,
-      "sha256": "071c436e56afec794dffae103dcf391d93eeca80d07f5e9fb72804d5663d845f"
+      "sha256": "8b34b1cf1efb82f6d31bcc39779fc84e0517abb5203b6dc62298918b49a5b292"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-desktop/mars-composition-desktop.png",
@@ -224,7 +224,7 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-desktop/review.json",
       "bytes": 201288,
-      "sha256": "0706e6ca762a1d11e025b3fc454477aa8abd1ed0b511b095889ea9056b18839a"
+      "sha256": "d8007c06fa96e5ba8a8eb81edf64eb188d6349ddf6be0aa91449a486447964ee"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-desktop/runner.mjs",
@@ -234,12 +234,12 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-desktop-execution.json",
       "bytes": 493,
-      "sha256": "e18f22656cdb482a4d7d01ed748249ed448a84414d1861ee96b712e184a71851"
+      "sha256": "0c2b34ebdc68b545c80d34ccfb3527a737aafc3ff65a4324ddb06cd6548493cf"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-desktop-execution.log",
       "bytes": 139,
-      "sha256": "2c110121855d608318e1fcafed050c4efbd8a60c16e0eddc6dde631c8bca3d66"
+      "sha256": "475d430d41dd2254033ecb0bf9f0c16e79775c26c450aea5e86fe5cba3824706"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone/failure.png",
@@ -249,7 +249,7 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone/review.json",
       "bytes": 23299,
-      "sha256": "88a84610c3df0406e6f77794875eaf7a2a3373c93cdd0313b7f6b878efc8585d"
+      "sha256": "e707553e7c86b0297810939758a9edbda0a812250764f00059f9f973b5e38d4d"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone/runner.mjs",
@@ -259,12 +259,12 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-execution.json",
       "bytes": 481,
-      "sha256": "ba2eba1666e75b6b52f3e579b0b517f88888ce101d5cf5a7a805400a17654d9c"
+      "sha256": "7ba96cb8a247ad72e31b1857f0360cd91d959714078cfa7e7e086bfbb2b37bef"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-execution.log",
       "bytes": 529,
-      "sha256": "444d0c79932c194792679f0ac0c5371a79422f9a8a44db8d8a9177e0c21d4a67"
+      "sha256": "9a6c25d6697e939b215881e4cd6a8b80c350c7db27189561411f7cc968b60ae7"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-outcome/failure.png",
@@ -274,7 +274,7 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-outcome/review.json",
       "bytes": 136973,
-      "sha256": "c2e07834d1f4553f67045c7e9a19930fe56edb9a2ebb4c6c3bfb0d9cef7a6ef9"
+      "sha256": "5ef520bb5b19367b9185472d00b989e05e7f7569e35ce1e60321449a0600004a"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-outcome/runner.mjs",
@@ -284,12 +284,12 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-outcome-execution.json",
       "bytes": 497,
-      "sha256": "197d3fbbf4cf87a8d0d8a8ec609df71c500bf386f6db0b599c6c55976872673f"
+      "sha256": "78cc66102ee262b4f63c4eb0312f19295fa492ac760ff6166316d9a885785550"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-outcome-execution.log",
       "bytes": 916,
-      "sha256": "c919e7bd88343e1daf053733452b5af8ee5789794c8651f85d2f87c5053074d0"
+      "sha256": "938e7b8595f31759f25ce95f44bf3929621c60bd9c10c70aa12e33f36a780f3a"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-receipt/mars-composition-phone.png",
@@ -309,7 +309,7 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-receipt/review.json",
       "bytes": 275528,
-      "sha256": "9e5960f0ef160b5de67be8c017aa026c73ad04aabce6c8a3a22e146cf09da6e5"
+      "sha256": "2b2d811eaeddf544843e4e272a3483318028f4d3b57cf93dc5e9c034007e3b5d"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-receipt/runner.mjs",
@@ -319,12 +319,12 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-receipt-execution.json",
       "bytes": 496,
-      "sha256": "55b1db6bc157fa420a532038d0f360700f28b7733d3d202071c0e9402141a157"
+      "sha256": "8c49cd5ff64f997cd02f988846673ae77dbc28c6512f1031c35c70e2d8bc8210"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-phone-receipt-execution.log",
       "bytes": 145,
-      "sha256": "2fb8096a6b3d97cd7295bb156957261e9cf4057ef68aaf2c4946ec35307a9c1f"
+      "sha256": "3c553a4eb77d81b500055d3bcb108a19b79690d1645be745b0d6fcf980f32d14"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/override-check-final.log",
@@ -334,7 +334,7 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/preview-browser-check.json",
       "bytes": 446,
-      "sha256": "9d38a618a549032b6b45e2d57ff4ceac6af87ca230f4e5296a8e84e339a4cecd"
+      "sha256": "58b6f9c3600ec732571fa1d0953b3da244cb4671aadde7f44ba2ed796cfa6ea5"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/preview-browser-check.log",
@@ -344,17 +344,17 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/preview-package.json",
       "bytes": 512,
-      "sha256": "e067a9873e13b2062c89f49c27e7125f5567cf4a5db43e7da28ddd55b49b8f5b"
+      "sha256": "122a7e5b04e80627f8d8ce56c257ebfc9dbacf15e607f7536c788710362f2a87"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/preview-package.log",
       "bytes": 6147,
-      "sha256": "b85260a259518b1c38ed5597b3012699808615b85c1476b35bdc7aba05511374"
+      "sha256": "f236131de9c647c563a307566695f5e276b22356b13457b30d7faa5dadfc1fe3"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/preview-server.json",
       "bytes": 551,
-      "sha256": "65cc1c50558dd83c4b48a5c7e6cca649c07dba6bebb5b66927b3d37f014884a9"
+      "sha256": "8322d5fdab4fe98a46a31603cc8b331f326f9a76892dbd2ec975a66dfe9b8a32"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/producer-final.log",
@@ -389,7 +389,7 @@
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/root-validation.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/run-step.py",
@@ -414,12 +414,12 @@
     {
       "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/manifest.json",
       "bytes": 3443,
-      "sha256": "9e4bef99076cba345bc9a707a4e3ae8d5bb7194c23a3e19067d74c8f095c0bc1"
+      "sha256": "8c8d786611f2bf1a365dc0398e2e0442ddd04b30ab0b46fb67f51673eb900770"
     },
     {
       "path": "audits/PAINTED_SPACE_PIPELINE_20260908/approval.json",
       "bytes": 1616,
-      "sha256": "672db33517b2ab6872068f2c4d88133f47008f0c6b3360d81da92d3e95d63246"
+      "sha256": "9049d95181c304d1c473517c77e7d3fec4c70075c103bd4f4022beb145483d80"
     },
     {
       "path": "audits/README.md",
@@ -429,7 +429,7 @@
     {
       "path": "audits/TOOLCHAIN_STARTUP_20260907/manifest.json",
       "bytes": 2573,
-      "sha256": "902e191ef3d3b69131ba34d164325074835b56becf1c49950b9d835b69b628db"
+      "sha256": "6e1f7069472830088a54a8aed428a9b2239229a285fd533741e747a4c8b7b0f7"
     },
     {
       "path": "celestial-frontier-codebase-reference.md",
@@ -439,12 +439,12 @@
     {
       "path": "port/AAA_AUDIOVISUAL_CAMPAIGN.md",
       "bytes": 72775,
-      "sha256": "4891f9966cdba25a512e74ac95998a06ea280947c26bf131044fd1b3032b3b66"
+      "sha256": "9085f96f8d3c7338670e4ea6adc49f4435dc39184f3d294eaaf5e6af0950d5c3"
     },
     {
       "path": "port/playtests/20260908_PAINTED_MARS_COMPOSITION_LOCAL_PREVIEW.md",
       "bytes": 1841,
-      "sha256": "6a19eff1b0ed0a7c7bec6d14d478017f8a31697820e65152ae9c47e945240191"
+      "sha256": "e0c9a24eb87798f756572217c3525c77d22d90671d8c6cab91873d0d5e00b61a"
     },
     {
       "path": "port/v2/README.md",

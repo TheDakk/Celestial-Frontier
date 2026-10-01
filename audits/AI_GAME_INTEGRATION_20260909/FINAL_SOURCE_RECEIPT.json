@@ -144,11 +144,11 @@
   "receipts": [
     {
       "path": "native-game-01/result.json",
-      "sha256": "06cc18575b56f17a346a1f984d5f6a20aeefbf60fc5c57bbd944188bbefb1439"
+      "sha256": "d856e696d16b1bfefdb27f0c9f80850fcf354b7279ddc1a45e50c359dfc9fb89"
     },
     {
       "path": "native-game-02/result.json",
-      "sha256": "635a01b56535c686e4a54f9bcac11b9beae8cc413aa03593e2b90e18b9a1fcda"
+      "sha256": "bf5e0b31bb623b3f10c6c938aa9289a5b924cc6658467a3615cc4f75c49563d0"
     },
     {
       "path": "retry-guard-01/result.json",
@@ -160,7 +160,7 @@
     },
     {
       "path": "NATIVE_COMPARISON.json",
-      "sha256": "7bd77ac73c8927bbe98266ac65aa8484e9664606b5e57be7e2aecf5f8d2e780e"
+      "sha256": "c556311d580b787e3db410fe09789d6541b34072a07cd985aabe655fd09c70bb"
     }
   ],
   "finalChangesAfterNative02": [

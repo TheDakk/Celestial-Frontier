@@ -4,7 +4,7 @@
   "runId": "20260923-beetle-paint-03",
   "authorization": "../AUTHORITY.md",
   "sourceHead": "6768b9879a8a11086bfa8669792acf555fc10140",
-  "promptSha256": "4dbe81d402dea17db070725da2103a6d8e950d75a44ee88786b5aee1817e48b9",
+  "promptSha256": "8ab166be62310dd322e104d046eac471600329e361551100e3cad87b7e306339",
   "references": [
     {
       "role": "edit target: retained rejected generation2",

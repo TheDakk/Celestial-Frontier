@@ -1,24 +1,24 @@
 [
   {
     "name": "Dobsonfly",
-    "before": "03000f944649f1419213f620c881a504fbc41dfb27442828daf43af2a96031a5",
-    "after": "cdecda56534e0d9b3b2371c39a89fd7d55831dec1a893c0966c9e84d0ed83f8f",
+    "before": "8dfe17cd934541831f51fd96fded6f70d9fdb9f316326daef7eba1ffddff5dcc",
+    "after": "d9ecce6edce998d6a15e2bf9b7e7d49a99eb4775a6b9120c63cf3e200713ddcb",
     "requestedLifeStage": "adult",
     "requestedSex": "male",
     "basis": "Canonical mustRead explicitly names the male identifying anatomy; no measured presence claim"
   },
   {
     "name": "Scorpionfly",
-    "before": "5c69c641bcdc2a423c88a94a3093347fc77f9841f63b71219be9217a0d1265d8",
-    "after": "50cd11abbb11fbe537e268cadf511ea768c2135a0d18767c7d4b4c823d4a2d10",
+    "before": "108e9ba40d53ce0a44f5aed8a69cc14a371978a6ebb8f1473c79f0ab8d37434c",
+    "after": "d094f3c6d77988eaf07bc135b2e79d4fa044c3ce6c3fc373bcab92e8183adfcf",
     "requestedLifeStage": "adult",
     "requestedSex": "male",
     "basis": "Canonical mustRead explicitly names the male identifying anatomy; no measured presence claim"
   },
   {
     "name": "Orchid Bee",
-    "before": "86b7638e46f9d09d2ded9088b1182fd2fa07ceaf95b5e732520aa9719f8ac94d",
-    "after": "641cda08db2d9e21fc140eb965dad5e7add3c3bd2542812b7ee66703224834e6",
+    "before": "55512e872bbccd94f8fe551f83b35429dae402a28cf7449fc1b985a0fe5ee934",
+    "after": "c68c4eec00c32c60efbbdaf9f4b9d07ee3cd571fb258aadb862eb6e2575856fc",
     "requestedLifeStage": "adult",
     "requestedSex": "male",
     "basis": "Canonical mustRead explicitly names the male identifying anatomy; no measured presence claim"

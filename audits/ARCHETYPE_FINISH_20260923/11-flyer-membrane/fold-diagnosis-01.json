@@ -1,8 +1,8 @@
 {
   "schema": "cf.failed-pose-fold-diagnosis/v1",
   "scope": "Exactly six Fruit Bat canonical first-fold poses, replayed once each through current source with exact retained refusal/statistics parity; private rejected ARAP scratch only, no battery, native film or published fit/acceptance claim",
-  "recordRecipeHash": "584ae12f33cafd725010536c82a974b59c9dee35879c9826d03409206cadd45e",
-  "bindingHash": "598a5ef0bfa6157c4fc2a0132943e720eadbd82d140a76c2eb0e3bd456ec7264",
+  "recordRecipeHash": "0027ced3a340a4562afb3e6439c0a878e686fdae9e5aaecc5b7e8465ad827b98",
+  "bindingHash": "089f8e54f0a810701e9f2f07d3aaa47533bf4034a74a3673703fa9e970e85ebf",
   "findings": [
     {
       "row": "approach:flight",
@@ -3839,17 +3839,17 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-01/record.json",
-      "sha256": "8cf9f71ee75a5911ca3775338581da8b856dd05654b1db31251532407cf5ec19",
+      "sha256": "29bc8351a86ba41dadeb1113a4807b2345b75de80a80d39a176b80924b2e68b2",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-01/binding.json",
-      "sha256": "07a02cf762f2eefa58e10d501fdb33f53a9f06ab2d5d6c7e77bee10b54806f77",
+      "sha256": "7d210d51ad03e613e68ead2fd326486f0edd0504d8d8efd5ea43af5eafd1d42d",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/static-01.json",
-      "sha256": "59104a64bbf90148822dd1a4c9e287af8d0718fb8b4ca98a4a25aec1c044909e",
+      "sha256": "4fb3755a3064dbf4b49b800a255493c2695adc344b3ac4bf2493fc431d5edd9e",
       "unchanged": true
     }
   ]

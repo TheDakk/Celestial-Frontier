@@ -14,7 +14,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/README.md",
       "bytes": 5586,
-      "sha256": "f5220d8111508e6aded157f853b876b0a7e5d74deeb3241a8b9f7a2822a1deb5"
+      "sha256": "74cb5aed9375085f5e4cb9c312becb189d4c811e6402564e4ebe36c06e45c43e"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/attempt-01.md",
@@ -24,7 +24,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01/authoring.json",
       "bytes": 10572,
-      "sha256": "4647d794cf3df4e847e95b2cd68884419c6948174287dc5a3a020418eda49337"
+      "sha256": "9810630bb911cdbeb584619116303e6208784b731e1913994c62ff6e64ee2ba0"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01/master.png",
@@ -44,7 +44,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-tests-01.log",
       "bytes": 243,
-      "sha256": "08d87051db06a040a1dc75df7e90128de5f24aa31197e94deb278967d63ba12d"
+      "sha256": "7ef47cb4ad318d8dc4603d6e04052a529f281a37c69c96c4850d919a7f4ee982"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/boundaries-01.json",
@@ -54,7 +54,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-01-sources.json",
       "bytes": 10259,
-      "sha256": "58077eb1877075e5d5811f275aba98567235a765efc0d5975ce9d6611aac6310"
+      "sha256": "6408367f02da4c16082bf4e66de03275c56f521299e4b52615f910c70af37d69"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-01.json",
@@ -69,12 +69,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-01.ts",
       "bytes": 3178,
-      "sha256": "56234055c74b084c241a9aca70391d4919ecfca07867ff290ebc4cb85c0841de"
+      "sha256": "8014170c657f26b0e59a4fc8dad149bbc1bdbc10b627af37377de0847de403d1"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-02-sources.json",
       "bytes": 10259,
-      "sha256": "930f64dead1604c72387efe4120512734dbc2c3236fd35cc59cd223cdda2fc8d"
+      "sha256": "b3f76680675d58df823d46f8fa8bdf6320dac8046bea1c91b67a436c5c3594dc"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-02.json",
@@ -89,32 +89,32 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/contact-study-02.ts",
       "bytes": 3353,
-      "sha256": "68355b0894f3d2af9692f2dc7e80dda35ca97f4e41057de9bc52708fa4e41482"
+      "sha256": "9662f0b9d4a8376cd7c7959cf884952b722c88f7b1d6988669c4e0d0849d2b2d"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/continuity-rejected-missing-schema.json",
       "bytes": 345,
-      "sha256": "3342ac997f203c3afc5ab4a5d6dcd7ba5454c3d01dc0bf8a6d62d2962f88cdd6"
+      "sha256": "912d7362e5a5bb7040976fc97372afc7e1524df0fd31db59983d5c22f333c55c"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/develop-profile.log",
       "bytes": 67608,
-      "sha256": "71a873d66842b44bc1a623a5d92fd7b41f81d38bf691dabcff2a15aafe73a0bb"
+      "sha256": "ae71fd438335193a791b5c95876c26a66e5c6c268b6b34e25651fb62ba9a4604"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/binding.json",
       "bytes": 2689740,
-      "sha256": "521dcf94b3c9bbdc733e6b2c3f9be73a9884aa7b3751faae124a6fc506bf04cb"
+      "sha256": "423b8ffcbc23e0eb705d9188871e1a91f1fcb151fedcc06fc9beb0a6ac73b236"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/declaration.json",
       "bytes": 2010,
-      "sha256": "034ee04e1c43609cf72c824b8635a2fac98cccf441a01ffa57d2cacebb911f5e"
+      "sha256": "91e7d22e75168e30e848ec4fbb82b9865033a13ddea55bb1327a40aa31671703"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/intake-provenance.json",
       "bytes": 3254,
-      "sha256": "a468eafe21f81864a48af37d04a18cca0b1aee1246cbb0a8db5526ff28be9492"
+      "sha256": "c8f47400bd096e55353fd55f962725d8e608fe5303841656227903d1c9201829"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/label-authoring-receipt.json",
@@ -144,7 +144,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/binding.json",
       "bytes": 6162,
-      "sha256": "7b2f6f92c975a0dab78e1de67cb0bcdd9ab60e1431cb0e518c1ff2882e5304bf"
+      "sha256": "be2f1f4e0be76624b5aa74e90df3b1894a98abf1553f03cae62c9d679ef150cf"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/keyed.png",
@@ -249,42 +249,42 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/parts/receipt.json",
       "bytes": 4916,
-      "sha256": "9c86b118315f8e309eecdc4ac44de59e94aa13737cab0b820e08737b6bf9eef6"
+      "sha256": "8bef6eed1ff4718f8dd381645821b7f94baf15ca77404d15449fd57c3740d36b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/pre-split-binding.json",
       "bytes": 1882882,
-      "sha256": "a66001d835f6862a63d87a5d3bac3631ca80102234cdd9843e33f11482215319"
+      "sha256": "df42d9ca58c190127c13a349dd1b80f8b23d40ca1b00589f10669db5b1bdc998"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/receipt.json",
       "bytes": 2423,
-      "sha256": "f0cbc6e387ec543294eeef802b0f4d334e43f715fbe0e468532f43656db223e1"
+      "sha256": "1fe7d40acf04f89aa80bc816920cc50342531bb8137b3ad9d7cd2137813757de"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-01/record.json",
       "bytes": 6395,
-      "sha256": "baac98479c4c01f4bece97e4643278332d69d3defa74aac7cc61f3cb8588dec5"
+      "sha256": "2329e9bd4b4dc7dd11cf9f9312788e65454baf7b9d1c596fc45550de44cc6d38"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/binding.json",
       "bytes": 2967796,
-      "sha256": "021fda5d9441cfee27f6bdb92f807000dcc9ea45099ad6a8ad4e041576c1b665"
+      "sha256": "db2179898c4106e4e3e1386d86df561de01fda7463cc815c1993edb5a7d8bc00"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/declaration.json",
       "bytes": 2010,
-      "sha256": "034ee04e1c43609cf72c824b8635a2fac98cccf441a01ffa57d2cacebb911f5e"
+      "sha256": "91e7d22e75168e30e848ec4fbb82b9865033a13ddea55bb1327a40aa31671703"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/flat-master-weld-receipt.json",
       "bytes": 2642,
-      "sha256": "3aaec1820b4980a22c6b7da13d796d24d09c2b9c3fd48bccc98bfa503fcc1485"
+      "sha256": "881793aaa8ac3d1309fa13fe9eba5917ed1a784ec29dac3d697392d2d583b791"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/intake-provenance.json",
       "bytes": 3254,
-      "sha256": "a468eafe21f81864a48af37d04a18cca0b1aee1246cbb0a8db5526ff28be9492"
+      "sha256": "c8f47400bd096e55353fd55f962725d8e608fe5303841656227903d1c9201829"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/label-authoring-receipt.json",
@@ -299,12 +299,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/markings.json",
       "bytes": 24787,
-      "sha256": "b989929f94092cd6a929f942bf30db2364245ad875fdbdbcbb455bfd3cfb7bb2"
+      "sha256": "ea1327c19e1771fc1aa40f9faf38355572acf3554346882efe6eb4f5907199a0"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/paint-boundary-continuity.json",
       "bytes": 540,
-      "sha256": "395f5505b0d30cd95e24fcf29d7740830a81e7cff1f594ce587e120ad181d38f"
+      "sha256": "a6c28b7a659563a0f63f6f5e7fce2ca88e88b7d90a0660d164a6dc1155f58a64"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/atlas/receipt.json",
@@ -324,7 +324,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/binding.json",
       "bytes": 6162,
-      "sha256": "7b2f6f92c975a0dab78e1de67cb0bcdd9ab60e1431cb0e518c1ff2882e5304bf"
+      "sha256": "be2f1f4e0be76624b5aa74e90df3b1894a98abf1553f03cae62c9d679ef150cf"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/keyed.png",
@@ -429,22 +429,22 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/receipt.json",
       "bytes": 4916,
-      "sha256": "9c86b118315f8e309eecdc4ac44de59e94aa13737cab0b820e08737b6bf9eef6"
+      "sha256": "8bef6eed1ff4718f8dd381645821b7f94baf15ca77404d15449fd57c3740d36b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/pre-split-binding.json",
       "bytes": 1882882,
-      "sha256": "a66001d835f6862a63d87a5d3bac3631ca80102234cdd9843e33f11482215319"
+      "sha256": "df42d9ca58c190127c13a349dd1b80f8b23d40ca1b00589f10669db5b1bdc998"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/receipt.json",
       "bytes": 2423,
-      "sha256": "f0cbc6e387ec543294eeef802b0f4d334e43f715fbe0e468532f43656db223e1"
+      "sha256": "1fe7d40acf04f89aa80bc816920cc50342531bb8137b3ad9d7cd2137813757de"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/record.json",
       "bytes": 6395,
-      "sha256": "baac98479c4c01f4bece97e4643278332d69d3defa74aac7cc61f3cb8588dec5"
+      "sha256": "2329e9bd4b4dc7dd11cf9f9312788e65454baf7b9d1c596fc45550de44cc6d38"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/host-during-native-01.json",
@@ -459,12 +459,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/intake-01.log",
       "bytes": 321,
-      "sha256": "bcf2b500b2e5b488c3557f099e685eb74ee0bb4428701f233428975f2751ee9d"
+      "sha256": "39b97e0ff1abacbea07ad6a566d0303d19c2140235d16d791925fe87a1e9e470"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/mailbox-end.json",
       "bytes": 13789,
-      "sha256": "39256b26058174bbbfc74b8d4ac5771d486914bfdfb57a59825e76ce57122183"
+      "sha256": "5ae0333a89bac1452aaeb68cefe9d977ced184b97016b0001ada9dc63614c95a"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/make-review.py",
@@ -474,7 +474,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/mask-compatibility.json",
       "bytes": 2256,
-      "sha256": "d860e51a3decabfa34571443dda918aaebeb8e73604d555773ee316514f7bd70"
+      "sha256": "f73a8fd187c23da270fb78f3f39e66fd670e84a85aa6c117403cd9a8b2758732"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/mask-conservation.log",
@@ -494,7 +494,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/report.json",
       "bytes": 360296,
-      "sha256": "aceed7f9e22ac20efe668703a4acd94568b37c6cb6a33e2d3e5a4e807d923ff5"
+      "sha256": "7e4fe1fedee36a34f18e4c160e0a68c0599213b551c4ee6bef9cbeb2364130fd"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-observed-01/turn0-hit-approach-50.png",
@@ -594,7 +594,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-summary.json",
       "bytes": 3608,
-      "sha256": "b866022b60658458c2b84570ba444837db119fec57768e58111897eee2afb4ca"
+      "sha256": "050f6b6f3b0070907cfb73de2ca658dc43512b69ec2219b4b034ab9d18624667"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/native-with-host-receipt.mjs",
@@ -619,7 +619,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/root-validate.log",
       "bytes": 1093,
-      "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+      "sha256": "341cc9b2f71d7693aedb63e8b680d7ac4143039634c37ff0de0ac5bf359d9f9e"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/run-study-01.mjs",
@@ -634,7 +634,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/run.mjs",
       "bytes": 8684,
-      "sha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe"
+      "sha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/civet-static.json",
@@ -694,12 +694,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/sources.json",
       "bytes": 27425,
-      "sha256": "01038f88a376c73e1a053ab74017b99d2a48e1ea8b109711bac21b51cf7885b9"
+      "sha256": "ea7170a7e7e892306efdc53dedbc50e5154207e0e25ca0d640575560f31a11d0"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/static.json",
       "bytes": 61950,
-      "sha256": "01b5e605901f7cb76a9e3c4d3041e8728f1155ef553cc8ca5fc9e2a7a0af6df2"
+      "sha256": "30df8d64b6b62912f3e5f9bf954df5920f3aedbd237c38027384af6daceacea5"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2/vent-crab-static.json",
@@ -714,7 +714,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2-execution.json",
       "bytes": 42956,
-      "sha256": "531e6ada8bd69135c56f02042d1e6005dce6ee030ddbf0eccb8f6d62e9e63677"
+      "sha256": "48975a91033fd68dfff85f4c8ffd7a4a09019199833b7314c85cfff5922414ad"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/s2-run.log",
@@ -724,17 +724,17 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-execution.log",
       "bytes": 5401,
-      "sha256": "1e5dd82f2bf8588b068394c084624efd230d4a7d66fa2fd1591f814ed00134c7"
+      "sha256": "acf2891bbba2529bef825baadecd016fde0a66875175f6469adc2101449edb8f"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-01.json",
       "bytes": 11873,
-      "sha256": "18c2ee80e58c33dd24b8292b1d25aff144f48a8c67d8bf09eff1ec6a14fec75a"
+      "sha256": "a61f70780ad09ed0793e742996422e6533753e6811ce8da789d31c4315632133"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-01.json.sources.json",
       "bytes": 15387,
-      "sha256": "46df582fbac859a3419b7ecca2b520828ca88dd51d5f73e269736b96dcd10e3e"
+      "sha256": "3296923a1cbc61ffb57e5d34520d88aa8c0d447527c9793f9a7b1229c9e9c144"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-01.log",
@@ -744,12 +744,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-02.json",
       "bytes": 8282,
-      "sha256": "4e56ed468379700a1c558b0c2134a074188d1486f618843164c8cc8d79efd629"
+      "sha256": "236fb9c999336340ce1f17aaa936e189d985adaa0d5cc8dcfbf3347e6a00ea28"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-02.json.sources.json",
       "bytes": 15387,
-      "sha256": "39dd28dd8ab4b9d83aa45c038b2acf6fb9e0ac7f57425362dae9ffba66212d59"
+      "sha256": "197c464a3e416e20857f8613742943ac151195d9cc456f9c466f4013aeeeb3f0"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-02.log",
@@ -759,12 +759,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-03.json",
       "bytes": 3414,
-      "sha256": "3a2daad7ad7ed960769045cd6584e53fcd796463320b32e9f6f108e17f3529be"
+      "sha256": "968d3b0460bcee2688d78201825811463e67a011d28416728e425032a40caced"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-03.json.sources.json",
       "bytes": 15387,
-      "sha256": "45a65fd2a9b3498c574f8aa5cc471cbbdad94d2e84e4b692da067442972c6df3"
+      "sha256": "86c3aee48aa348b4a1c7188ee7728656f3ba54abb1a9b5f0e2deb3476c68d08d"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-03.log",
@@ -774,12 +774,12 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-04.json",
       "bytes": 9171,
-      "sha256": "f20449b03a90f6a074cd71b947efb565469bf5c32cba575b3b23ab0e34a11baa"
+      "sha256": "a38d4587deb91075b140dcf708be2bf6f02f593d3c6034a1668af71b0e5c7be7"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-04.json.sources.json",
       "bytes": 15387,
-      "sha256": "e995ee029922bc513388b607b5b0166e17ac8cbb976ed597bd5e274e11a43bf2"
+      "sha256": "0978deb8fd56058b2ac0e1e9489b3661320f7e6eb9459790d74a1ea86bf72885"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/static-04.log",
@@ -794,7 +794,7 @@
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/weld-02.log",
       "bytes": 842,
-      "sha256": "d953a814b65043157bd1184bf112d878cc5864d05499d001c7db39912966f25b"
+      "sha256": "364f265b0b575ace9b4948b9684b8430d0b17207570e1ffbf93af25c4e49f1b8"
     },
     {
       "path": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/weld-02.mjs",

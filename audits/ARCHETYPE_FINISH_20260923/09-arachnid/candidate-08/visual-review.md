@@ -3,7 +3,7 @@
 This review and authoring inspect paint07's actual delivered master. They are a bounded manual source prototype, not an intake, static, native or solver acceptance. Only these two new files were written; the master, declaration, guide, prior authoring and production source remain unchanged. No rig/solver execution or coordinate optimization was performed.
 
 - Master SHA-256: `55d8a5d00e4eabd761fc64cc42d82da1d3837b0448651d8c78820b9cfe9fb19b`.
-- Authoring creation SHA-256: `e2b1b843104349ef23ea7dad5bf43da5296734c821d313f8f32b877b9fc916f0`.
+- Authoring creation SHA-256: `3a18aba744ffee2531e400e8bc735df5a9c447caa23434e20a1a5be61a187705`.
 - Parent-owned presence SHA-256: `2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165`.
 
 ## Visible inventory and all 21 landmarks

@@ -2,21 +2,21 @@
   {
     "id": "01-bee",
     "masterSha256": "28fcf047ca7758b1bbfb57c38d771eb1f967d39dc80a714b29637aacca8fbe08",
-    "promptSha256": "f84adc3329cfc4c3c385ae0b399cdb40c599fe9b21069a3be7f2675100228678",
+    "promptSha256": "8c7fab8db6d1913e3b47a13cfdfbcccc81fa44c70c8640476908fa897eeeef12",
     "originalStillPresent": true,
     "unchangedGeneratedOutput": true
   },
   {
     "id": "02-dragonfly",
     "masterSha256": "cb1fb7df3a38020c03596f91b1a0edb539ab98d19c7c3dc6b1e1f022c6199dcb",
-    "promptSha256": "f3e4831a016b440aa63b4c9a783ee0cb08e7a899cd5d5a2fd15f71406ec828e3",
+    "promptSha256": "cc7880ea022592f609b12c704dc899ccc8565149500ecfe00ac6e157a0ffd587",
     "originalStillPresent": true,
     "unchangedGeneratedOutput": true
   },
   {
     "id": "03-giant-water-bug",
     "masterSha256": "3673b6ef31855c5b5292ed781c3ac3c5b6098375efdade0b27b7c35cf5ef87cb",
-    "promptSha256": "2ffdfce6b85bd08437b8eaf3ed1e9ae1ce38c3821589d8b3cd981ce172796d9c",
+    "promptSha256": "b2da934a566de8c4b8b9ad783d521c1be5508623392866c67634f6a49b0d6042",
     "originalStillPresent": true,
     "unchangedGeneratedOutput": true
   },
@@ -37,7 +37,7 @@
   {
     "id": "06-wasp",
     "masterSha256": "12e63984cf520e264a89d3f03c5de338f239c13bd5bc4a2bf947aebf7ea55259",
-    "promptSha256": "9d0ea63dc7b43fdd9866eed9b219951b7c9e7412e985775eae624a4e18d46f1e",
+    "promptSha256": "77c978ed8e0643e07f64feb91b322b095e632def129ac7a8febe628f82e42ff1",
     "originalStillPresent": true,
     "unchangedGeneratedOutput": true
   }

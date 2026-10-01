@@ -102,7 +102,7 @@ computing gzip size...
 ✓ built in 1.91s
 {
   "directory": "/private/tmp/cf-mobile-pack-20260909-species-01",
-  "manifestSha256": "4ed80ae51e216306a548d55e1f980735c08ff25bec6b563e2887cc9e992b7e53",
+  "manifestSha256": "674b5535e5b941e7aa676ea76dbb54498350478e6bb53006f07379adc19b4236",
   "status": "PASS",
   "buildId": "9eb570011711a9f939815f07cfd57433cae578669b3695272fa6d8c283e52a47",
   "fileCount": 97,

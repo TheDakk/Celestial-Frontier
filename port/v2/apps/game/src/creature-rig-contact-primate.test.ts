@@ -11,8 +11,8 @@ const template=contracts.familyContractForRecord(record),supports=observedContac
 const source=(id:string)=>evidence.results.find((row:any)=>row.id===id);
 
 it('releases both primate feet for the retained authored dodge and presentation poses without changing their keys',()=>{
- expect(record.recipeHash).toBe('49fcaa4a87a2c1210f5c4fa550ede4da2312a9f3d5ebea62d963db86ee20c3d9');
- expect(binding.bindingHash).toBe('7af573437412e3a82de82f412fb0320506a7e06b66b93afc19fc6411cf87ec43');
+ expect(record.recipeHash).toBe('749bacc5f55c6253c0557d39d9321a065b25997f6ed5c5a69346c43cbeb3315b');
+ expect(binding.bindingHash).toBe('71e04bf0da10e389f478c0e9fb78e83ee433369554ca52dc244fb632971dc76a');
  const solver=createFamilyContactSolver(record,supports),before=JSON.stringify({record,binding,evidence});
  expect(solver.chains.map(c=>c.end).sort()).toEqual(['legFarFoot','legNearFoot']);
  for(const id of ['dodge','presentation']){const sample=source(id),input=sample.attemptedPose;

@@ -24,4 +24,4 @@ The suspected fine-mesh coverage gap is **not supported by actual fit07 authorin
 
 No solver, gate, limit, source mask, regional declaration or runtime file was edited by this diagnostic. Triage received source pixels for independent anatomical review; the contact owner received the new49ms reach refusal. Any next change must follow that diagnosis and receive its own actual qualification.
 
-Execution: toole93d43 exit0, exactly2ARAP reproductions and242target-only attempts. 58 loaded-source and62 retained static-source hashes matched at execution. Source authority: record`87434dc5b868915b31575e47ba8deab0006eb16a100c6e496512a54019607791`, binding`541cc0657e235e5a3d7586a877200312ab3f6aeb9380b08442b8d64e03a97ab0`.
+Execution: toole93d43 exit0, exactly2ARAP reproductions and242target-only attempts. 58 loaded-source and62 retained static-source hashes matched at execution. Source authority: record`561ea6b97205bd33a05e9da7d03c279570058edbf8f5172fc302ef678ab24180`, binding`645b7d9f7b94f7e21e0a9f01c6323dfb604af58f0fba50f2c6a38b3f76fecd56`.

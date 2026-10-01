@@ -1,7 +1,7 @@
 {
   "schema": "cf.source-join-continuity/v1",
-  "recordRecipeHash": "f46bb54cfcc04210d904cf1943318684b2b794d7a952d98583b9587c210c9800",
-  "bindingHash": "3161a78a4686fccf9945697bb1c4a7c7530393400c7eabaa5551bfb1214a6fbd",
+  "recordRecipeHash": "89c17e50c417db5c58f5252486f102a84b35e014d0a12c66d74c0536d2670b8e",
+  "bindingHash": "7e68d0e7b1cd29b98b4c69ca030791a6f441d7dcb380c255cde87facf8e8b418",
   "atlasSha256": "9ef36f0b54f89372641f7284d1da4157b52256b752456319c021ab58f2519201",
   "width": 1254,
   "height": 1254,

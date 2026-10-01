@@ -148,8 +148,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "4526e0b0039a61f300dd8bf388146bf61fec5d43dd90445fdd563e3e7deef756",
-  "bindingHash": "c8cee709a3a053664882a45c1d8d18562adcda3fa495117f16c2213763798656",
+  "recordRecipeHash": "bd4cb0a581b7fae2d754c16a1478dc917817411e0fea37418999355d7d1c0d9a",
+  "bindingHash": "9821496a0553e29a45c49edeb51d3c26f74a0a1361f158d7461907e3da472ddf",
   "family": "flyer-membrane",
   "contacts": [
     "legFarFoot",
@@ -254,12 +254,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/record.json",
-      "sha256": "474df06b02888a7e086ddb0a867c6f2357c64a40431e4df7defb2e6da057f27f",
+      "sha256": "50458070cd5817bcdda37fbcafdd78ca131ffaaaa0f15e391ee92cc98e52b142",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/binding.json",
-      "sha256": "ffc7fc4056e51b9d36edc228063adbab50a6c79c369ccd4fc671016368504240",
+      "sha256": "6dc9b7b6c1798e9de7e89cae43d2cdec98061cfcd0cd83d3f1428addc3fca254",
       "unchanged": true
     },
     {

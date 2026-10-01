@@ -2,7 +2,7 @@
   "schema": "cf.sprint-authored-intake/v1",
   "status": "FIT_COMPILED",
   "sourceHead": "9e0549504d2d1a9f33618d5a1f6d941898b6eddf",
-  "helperSha256": "ab083d54eb3c7ab42c04f953bca7b95a713f40921679e898eaa04e92b3948cae",
+  "helperSha256": "c638c6aec75f933ce646760844317d3f0629e6612477dc826d86cacf14b977aa",
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/master.png",
@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/authoring.json",
-      "sha256": "421e0390baa8cc50c90902c54167a9b29e1b8da02192b4fbb358a335e1f66a54"
+      "sha256": "2762791a739706d8116e5af5f1eae9d6c343baf466818d2eb56467d736c7651b"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "680e013221829e01699fb4e9f165446270f3bff9e022e871d96d6112206dc0d7",
-  "bindingHash": "0311fe362ad4ddb87dea306a01b0b98a864b3fd1f8ead00c9964aa989aa50b32",
+  "recordRecipeHash": "6a7cbcbab6ebe589ee6be792d628777157a0094dc66c33f3ff08a1a2843270e4",
+  "bindingHash": "125aa19e7fa6169e30e8f0a009eb106900bca25c03783c6f95022e3815d7ab36",
   "contactEndpoints": [
     "hindFarAnkle",
     "foreFarAnkle",
@@ -83,7 +83,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/authoring.json",
-      "sha256": "421e0390baa8cc50c90902c54167a9b29e1b8da02192b4fbb358a335e1f66a54",
+      "sha256": "2762791a739706d8116e5af5f1eae9d6c343baf466818d2eb56467d736c7651b",
       "unchanged": true
     },
     {

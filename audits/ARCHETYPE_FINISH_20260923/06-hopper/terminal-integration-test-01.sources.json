@@ -10,20 +10,20 @@
   "files": [
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/binding.json",
-      "sha256": "3e1c8a51b676614db4002339c6b6d02901f4bb9e914abff85b8de26a7158d8c4",
-      "afterSha256": "3e1c8a51b676614db4002339c6b6d02901f4bb9e914abff85b8de26a7158d8c4",
+      "sha256": "8d3926656a74f1398cafc1a3c6102dba2337509dc5fb2403a75a14f142660b5d",
+      "afterSha256": "8d3926656a74f1398cafc1a3c6102dba2337509dc5fb2403a75a14f142660b5d",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/intake-provenance.json",
-      "sha256": "6f898f02a28f5e3d2d93e1234e64871b7d8a33911aa88f5e030a1da2bc188dcc",
-      "afterSha256": "6f898f02a28f5e3d2d93e1234e64871b7d8a33911aa88f5e030a1da2bc188dcc",
+      "sha256": "584d679a2fd4a3492e29d1b1a795e4799c6237b6b4c117198513bafb91a94880",
+      "afterSha256": "584d679a2fd4a3492e29d1b1a795e4799c6237b6b4c117198513bafb91a94880",
       "unchanged": true
     },
     {
       "file": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/record.json",
-      "sha256": "ee6e5a17d974560efd023d80c3035536ae553ced395f86e851d108ca5a7f23b8",
-      "afterSha256": "ee6e5a17d974560efd023d80c3035536ae553ced395f86e851d108ca5a7f23b8",
+      "sha256": "29a4cc9525e3a702f336d834fee69de2d305802833285810a4df97d41db699eb",
+      "afterSha256": "29a4cc9525e3a702f336d834fee69de2d305802833285810a4df97d41db699eb",
       "unchanged": true
     },
     {
@@ -40,8 +40,8 @@
     },
     {
       "file": "port/v2/apps/game/src/creature-rig-contact-terminal.test.ts",
-      "sha256": "ddcc9103551c64aaa9f97ca1009fe3cfba52c939088c1e5999ff081fc346a01c",
-      "afterSha256": "ddcc9103551c64aaa9f97ca1009fe3cfba52c939088c1e5999ff081fc346a01c",
+      "sha256": "56307358259f038d65422dfd315f0669a40cfe930e212245e55a0d82a466d6f5",
+      "afterSha256": "56307358259f038d65422dfd315f0669a40cfe930e212245e55a0d82a466d6f5",
       "unchanged": true
     },
     {

@@ -148,15 +148,15 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "fa92dcff65635213e21d7d0ed48de6794c2a6aad26ad37988e539d47a5109bc5",
-  "bindingHash": "0523adcfa9a5982ed7c81a7baef321cc0d294894b2e0a9fbed832c3f30d069c7",
+  "recordRecipeHash": "36283d246439b734dd411a2e8ec1300034f408c7866db02b65609894897a40a9",
+  "bindingHash": "2360d69090e20ee1f6c622bc52935e47ffd35313b0d88a20626f298d455875fa",
   "family": "fish",
   "contacts": [],
   "realm": "aquatic",
   "declaredPaintBoundaries": {
     "schema": "cf.authored-paint-boundary-continuity/v1",
-    "recordRecipeHash": "fa92dcff65635213e21d7d0ed48de6794c2a6aad26ad37988e539d47a5109bc5",
-    "bindingHash": "0523adcfa9a5982ed7c81a7baef321cc0d294894b2e0a9fbed832c3f30d069c7",
+    "recordRecipeHash": "36283d246439b734dd411a2e8ec1300034f408c7866db02b65609894897a40a9",
+    "bindingHash": "2360d69090e20ee1f6c622bc52935e47ffd35313b0d88a20626f298d455875fa",
     "pairs": [
       [
         "body",
@@ -300,12 +300,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/20-pike/fit-02/record.json",
-      "sha256": "907079113cc888853f6dfeff9d85dd8c797802a1380fc132eee5fc3ca50ea47c",
+      "sha256": "b46c815e3ca66ca18f44f6732ab608d647b106c521eddc47feb133587b646692",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/20-pike/fit-02/binding.json",
-      "sha256": "d366a37f47c00cb3e781aa49fe3ae97df26ad289146c4440ea90347bb3d73ecb",
+      "sha256": "ef6b5351f1c3abd80b82583405f0f1c3396117708a383a7f3bbd4207611ff021",
       "unchanged": true
     },
     {
@@ -325,7 +325,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/20-pike/fit-02/paint-boundary-continuity.json",
-      "sha256": "b8be5e5965b9755abfd2087ae65804376c834c0822719fdb9a5c0e5cd5617583",
+      "sha256": "9552b61e9c64040c7579afa61d9dfb3eee11bf09db397d746e5afaec8fc6a3b7",
       "unchanged": true
     }
   ]

@@ -14,22 +14,22 @@
     {
       "path": "audits/LONG_SESSION_20260913/LOG-A3.md",
       "bytes": 9920,
-      "sha256": "707d00fa9415cc18ba12dfb7fb5e8d0d0ceb0b10125d763d9067ddca7f415f42"
+      "sha256": "33b7bb9b389f68ea2f86878160f5f69dd02442f38d63ba6596be3e40c5748008"
     },
     {
       "path": "audits/LONG_SESSION_20260913/LOG-A6-defects.md",
       "bytes": 12330,
-      "sha256": "9b06011a0527ce4dd20b390117d1eda59395afe66e69cdf929b809363e043e3a"
+      "sha256": "8bb298cc527a04476013f2fc1a728ea12b0ec21021c0b9cebeba9413b900ec7a"
     },
     {
       "path": "audits/LONG_SESSION_20260913/LOG-A6-wiring.md",
       "bytes": 11301,
-      "sha256": "31dd8e5ec16c4ad1306c31e625f6a371e789657b73cf9cea9e0701d55eca15c7"
+      "sha256": "3d5356197d8fa2289c87f7c3c9c0eef107df3592c9978d40128a989b1ae78109"
     },
     {
       "path": "audits/LONG_SESSION_20260913/LOG-A7.md",
       "bytes": 7090,
-      "sha256": "65449b3d52230bf1067291e7141168e1e712d2101e7c8f2235dd0a4e1de3eadf"
+      "sha256": "07865ec62bca2b56dfb0d18582dce1afd19f9ee819982a6c8efd8b59cebea2b9"
     },
     {
       "path": "audits/LONG_SESSION_20260913/LOG-A11.md",
@@ -39,7 +39,7 @@
     {
       "path": "audits/WILD_V43_PROOF_20260913/WILD_V43_REVIEW_RESPONSE_20260913.md",
       "bytes": 6007,
-      "sha256": "6fad31b4f433067f529addf952330e8f1bd8b464ec87088fcda4b49fad3dad37"
+      "sha256": "16f10db9f4e4c148237ca3b1fe68c0a36787a47d5f78cec2277d230009fdd595"
     }
   ],
   "previousLog": "LOG-CODEX-PRE-PACK3.md"

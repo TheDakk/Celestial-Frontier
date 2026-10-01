@@ -8,7 +8,7 @@
       "entries": [
         {
           "path": "ART_KIT.md",
-          "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c"
+          "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f"
         },
         {
           "path": "audits/LONG_SESSION_20260913/CONTRACTS.md",
@@ -20,11 +20,11 @@
         },
         {
           "path": "audits/WILD_V43_PROOF_20260913/REVIEW_REQUEST.md",
-          "sha256": "be3b4cf4850f1aebc8ae378f7dc014181926ae051d30dc146fdb76769384e2bd"
+          "sha256": "56bdee87f9f179a043bf954f9451fe8e6cd9925ae034e60303e1a2167cdfa1cf"
         },
         {
           "path": "audits/WILD_V43_PROOF_20260913/generation.json",
-          "sha256": "2cc08cc99318267b728e850d5672e21af2b62776366734954152f7a8cb857bc6"
+          "sha256": "ac7917a703ba9cb69902ce2d0cc2ebc0c83b5d8143f60a9091c15fbbbd98e242"
         },
         {
           "path": "audits/WILD_V43_PROOF_20260913/intake.json",
@@ -44,7 +44,7 @@
         },
         {
           "path": "audits/WILD_V43_PROOF_20260913/kit-adoption.json",
-          "sha256": "9a1f7ff776ebe63e7d23c582d5ce6d0794489b005ea9458f6aa7374c1509cb8a"
+          "sha256": "2d3e56719056f0cc0c427a3b2e39981f293055e639138cdab3cdac2f72f8b9e3"
         },
         {
           "path": "audits/WILD_V43_PROOF_20260913/mid-verification.json",
@@ -76,7 +76,7 @@
         },
         {
           "path": "audits/WILD_V43_PROOF_20260913/wild-impact.prompt.txt",
-          "sha256": "ef3ac73a9748668f7c7b399ea3873f2f0365f6d78bb845190b71420e6168c04e"
+          "sha256": "52952a962134de47f9c8a5dd582f2e328a557c12798d64c9e3d80580ad56f6d9"
         },
         {
           "path": "audits/WILD_V43_PROOF_20260913/wild-launch.png",
@@ -84,7 +84,7 @@
         },
         {
           "path": "audits/WILD_V43_PROOF_20260913/wild-launch.prompt.txt",
-          "sha256": "0e8e09a2f32ed5f7c1b0278c03c2c6ee6aac9c5b53ad9038ce9be9dffb8aef93"
+          "sha256": "859027e66afc85feab1b1b7b26a8b0056977a755e9a1314312c5c3b679d5e616"
         },
         {
           "path": "audits/WILD_V43_PROOF_20260913/wild-masters-review.png",
@@ -100,7 +100,7 @@
         },
         {
           "path": "audits/WILD_V43_PROOF_20260913/wild-travel.prompt.txt",
-          "sha256": "bc3686e7daba3b5e051f7ffc268a06dd737e4783dd29d3f8d8a6ec3af9301bbc"
+          "sha256": "4d8a16ccfb491acde4ab15d3595d97f3cee91d5b8352f6c258fe218217b39844"
         }
       ]
     },
@@ -111,7 +111,7 @@
       "entries": [
         {
           "path": "ART_KIT.md",
-          "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c"
+          "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f"
         },
         {
           "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/wild-sequence-review.png",
@@ -119,7 +119,7 @@
         },
         {
           "path": "audits/ARENA_V1_ACCEPTANCE_20260912/acceptance.json",
-          "sha256": "c10180d4bc4b2876a48f95861d3534a9d7da1083a8c89b6c3a4699683a68cdfa"
+          "sha256": "392e9c8671f5fe3f6e30f3af3ab85ea0d235f4e55a62887d2d98df0c935edf47"
         },
         {
           "path": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png",
@@ -147,7 +147,7 @@
         },
         {
           "path": "audits/WILD_V43_PROOF_20260913/REVIEW_REQUEST.md",
-          "sha256": "be3b4cf4850f1aebc8ae378f7dc014181926ae051d30dc146fdb76769384e2bd"
+          "sha256": "56bdee87f9f179a043bf954f9451fe8e6cd9925ae034e60303e1a2167cdfa1cf"
         }
       ]
     }

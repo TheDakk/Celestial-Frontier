@@ -1,6 +1,6 @@
 {
   "schema": "cf.creature-parts/v1",
-  "recordRecipeHash": "daa68241ea47298267bdec89e076321856f4c6550309e1f8c30188fd68113312",
+  "recordRecipeHash": "a508c9fa386cfa919af66bcc120b1377953c985a3d4dac15268162b24a5037d4",
   "atlasSha256": "bed07e94bc40f692eabe0caad4fe4f9a0b36674014d8716bc4a04cddfc5095e5",
   "atlasSize": {
     "width": 1223,
@@ -177617,5 +177617,5 @@
   "sourceJoinTopology": {
     "remainderPartId": "torso"
   },
-  "bindingHash": "c1318cdb58637ad7aabb545a80d3c7219e14de14d32bac0b1b098f8dcb933c22"
+  "bindingHash": "46e7bfd6f39bcabba957e27f5f4dc0cc068849a3dfcbb3e457cd6e68c5444eb7"
 }

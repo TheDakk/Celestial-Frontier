@@ -1,16 +1,16 @@
 [
   {
     "name": "mutant-flat-stances",
-    "original": "1a761183467d7b9cf3e4303ed008ae3e0eafcc2dca58db1ad2fe66e98ce016ee",
-    "mutant": "40fd08474760905bd3ca74fb410c7f34a47fd537f1282b1bc7b3e996399199b1",
+    "original": "bcf17efefebb44715f4504666ee2130f5b413a056cc6f013525ee1a57b7491c2",
+    "mutant": "522033eb8ab7c60ae99a7b1f5409fd9413e120fd34333a649b7138d21954677b",
     "killed": true,
     "validChanged": 96,
     "mutantChanged": 0
   },
   {
     "name": "mutant-no-phase",
-    "original": "1a761183467d7b9cf3e4303ed008ae3e0eafcc2dca58db1ad2fe66e98ce016ee",
-    "mutant": "a4073e349fa1dbf7e594c34b45f31ad67f0d804d5b8008f9e29b535458a3f05d",
+    "original": "bcf17efefebb44715f4504666ee2130f5b413a056cc6f013525ee1a57b7491c2",
+    "mutant": "e17d68191485953558107cc21b312898c34fc482ed3eab19127679222960014c",
     "killed": true,
     "validPhaseNodes": 2,
     "mutantPhaseNodes": 0

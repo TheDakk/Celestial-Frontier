@@ -100,7 +100,7 @@ was installed and no verifier/provenance rule was changed.
 ## Evidence and retained boundaries
 
 Manifest: `UI_U1_LOCAL_CHECKPOINT_ce89128_20260906/manifest.json`.
-SHA256 `6d2645e2342cd32fc1f0a95234ee76ef53ad342d16035a3dba1702c85ed97e13`.
+SHA256 `a4bb866bbb3106e431164da044f8040de20be4b11c232b66f29ccda684d218c1`.
 All28 carriers and decompressed payload hashes verified: static/build/review/command logs, full
 normal-review journal and independent replay, nine review PNGs, immutable Slice report/raw log,
 ten Slice PNGs and the source/failure receipt. Original ignored run files remain unchanged.
@@ -109,7 +109,7 @@ Its exact commit is emitted at handoff rather than self-embedded into this audit
 
 The records-only completion also passed root validate: zero boot/render errors and all50 baseline
 probes identical. Its separate gzip log is UI_U1_LOCAL_CHECKPOINT_RECORDS_VALIDATE_20260906.log.gz,
-SHA256 e4e8b9c652f3488e877f4b2d8e230ead9cd547181fcb61655fa14c48d7fd6201; this is a documentation-completion check, not a resumed Slice stage.
+SHA256 2e3bf4fa737966203f1153ac2ff4cc91499d8fc34616bbe99a3434ed7291043e; this is a documentation-completion check, not a resumed Slice stage.
 
 Both older causes remain OPEN. Source08cd97d79b67cab4b8d19bfd493293e997dec528 observed native Skip785ms
 → EscapeCosmos1313ms → unsolicited MilkyWay3930ms before Notifications; cause is unattributed.

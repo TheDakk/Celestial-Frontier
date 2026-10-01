@@ -25,6 +25,6 @@ Retain this generation-2 master and its exact prompt/receipt. The one permitted 
 Inputs:
 
 - master.png SHA-256: 9364c0aa98efdae80a657ca7fe123e41199edc8acdacbefa067d53bc5764c1fd
-- prompt.txt SHA-256: ac35985bad045112262afcbcbce04fa80f1c6f0ac3eced96df346c82270794ef
+- prompt.txt SHA-256: 9046f8bdb5185d9bdc893366d79d3d68fb647b3871eeea82a8e2a290310000cd
 
 Reviewer: Codex triage_anatomy, independent of the parent's initial visual report.

@@ -17,7 +17,7 @@
  },
  "reference": {
   "subject": "07-weasel",
-  "authoringSha256": "4d57a8ab5a4ab2fc0736eb60be6e485d199320bd3cc04bea0edf5d5e7dd4b537",
+  "authoringSha256": "7d2448a7a59064154d2b480d9e8606d3080499295d0b1214f0f39c83bb326385",
   "masterSha256": "43006af17548682e07146521da9d676d75643dcb0012334230f0549f2ab5560b"
  },
  "habitat": {

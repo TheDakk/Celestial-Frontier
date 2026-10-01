@@ -1,4 +1,4 @@
-/* AUTO-LIFTED portable vista compositor. exact selected-source sha256 00e5195ec2e83aed84bf4e1116fe1b7ebb8d163a5ae469c16ad2f712211852d3. ⚠ DO NOT EDIT.
+/* AUTO-LIFTED portable vista compositor. exact selected-source sha256 717ff7a84e25be8fb8fe569a200e6e4b6ee315ae579354568eb6d95af23a36f8. ⚠ DO NOT EDIT.
    Regenerate: node tools/lift-hdart.mjs. UI lifecycle, app state and presentation copy excluded. */
 import { createSpeciesCanvas } from './speciescanvas.js';
 import { mulberry32, clamp, TAU } from '@cf/domain-rand';
@@ -1661,5 +1661,5 @@ function renderPreservedGasDeckVistaV1(o){
   if(o.titan) _hdTitan(g, 'deck', o.seed, hz, W, H, night);
   return cv;
 }
-const PRESERVED_FULL_VISTA_SOURCE_SHA256 = '00e5195ec2e83aed84bf4e1116fe1b7ebb8d163a5ae469c16ad2f712211852d3';
+const PRESERVED_FULL_VISTA_SOURCE_SHA256 = '717ff7a84e25be8fb8fe569a200e6e4b6ee315ae579354568eb6d95af23a36f8';
 export { renderPreservedGenericVistaV1, renderPreservedGasDeckVistaV1, renderPreservedAbyssVistaV1, renderPreservedReefVistaV1, PRESERVED_FULL_VISTA_SOURCE_SHA256 };

@@ -9,7 +9,7 @@
     "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/keyed.png": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a",
     "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/atlas/civet.png": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79",
     "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/manifest.json": "df34c15b5f86540a00d3aef900a44338f2b1ed94ac1d61cc0624dfd72833053a",
-    "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/civet-prompt.txt": "725a3f23e3aa5fe2cd962cafc4adb9b51c4de8131e0977ae127dec246991d2de"
+    "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/civet-prompt.txt": "eb431666f217d29efa7e97a58f528a504e79fc47fef2570d5fcd93848f304997"
   },
   "exclusion": {
     "method": "binding atlas frame alpha mapped to source cutout; protected ink overrides allowed ink",

@@ -442,7 +442,7 @@
           "ownerId": "authored:turnaround-candidate-02",
           "earthName": "Pheasant"
         },
-        "recipeHash": "2d50a9f3646700efa020aab8e5db81c9d254b065831d484e4eaf4c1a1b93712a",
+        "recipeHash": "54ca1c3e4628ddebf18dc4be7c1e290a2f32440d6d811137757cd55c24ebec83",
         "template": {
           "id": "biped-bird",
           "version": 1,
@@ -3979,11 +3979,11 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/HABITAT_BATTLE_20260916/airbird-04/record.json",
-      "sha256": "501542a64dcaa16b6372b0e521c3de399ab2cfee1b184b77dc2be4adb89029c7"
+      "sha256": "7c146b3a62b3089e766758af1db646c3ed16f9e2459d5627982229930a0fc7c9"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/HABITAT_BATTLE_20260916/airbird-04/binding.json",
-      "sha256": "a05361bda9c278c0fa289397da2106c175f287aca46be6a3e7dfbfa70f1294f0"
+      "sha256": "48dde48aa99b8b64a32b774a423bcc5c7faf2e4614d5dfc8b774da78d17ed65a"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/HABITAT_BATTLE_20260916/airbird-04/parts/keyed.png",

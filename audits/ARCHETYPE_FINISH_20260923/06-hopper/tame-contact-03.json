@@ -2,8 +2,8 @@
   "schema": "cf.frog-tame-contact-qualification/v1",
   "status": "PASS_CONTACT_ONLY",
   "scope": "121 tame contact samples only on changed fit03, real current canonical GSAP/performance/contact owners. No source substitutions, ARAP, paint publication, other action, presentation, full static, film or CPU acceptance.",
-  "recordRecipeHash": "a5110a56f4ed6757bb0c9f9c3fd194fd5ec4c8b82d5787d14c018c9d7d23ba27",
-  "bindingHash": "2fba5ff7a18a3153c08225212d47ab0d378494aa633e26b614d95279a1d91453",
+  "recordRecipeHash": "8dd42cd8f3cd794ee129fc0f2e5154bb855bf1571e7b3b9e43053665d531c0b4",
+  "bindingHash": "42aac5f584d52c6b57482c7550e11293017fd9e2aa868673bbeb064e4cc5bed0",
   "timelineHash": "4b47e9ec",
   "durationMs": 640,
   "contactPolicy": {
@@ -11285,17 +11285,17 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-03/record.json",
-      "sha256": "1ef55fefb4cbc7c179739e18c99eb00d344368450f6af14709b7c786325474f8",
+      "sha256": "daf5d50081d981fb26f0609bd0f3a4be8b853ae3f5884e9ffdf7fb3b6c4b4e8d",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-03/binding.json",
-      "sha256": "493d24b67e43e1622a6354ee90511f812fa64c6df632ae4d9d912d179ccd6d42",
+      "sha256": "bfc9e3984b4ea79745a53724ffc64d096c7ec3b9cddc8642621018d1f1c3928f",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-03/intake-provenance.json",
-      "sha256": "5289ad2e8000fd4adcadbaee249c4e0a21d21f8ecb4a5f07929761c6720d56e6",
+      "sha256": "a706297e7a3a4ab1e153963d1d8c65c05d04e4b38c5f963f6ef3f1053cbfbcc7",
       "unchanged": true
     },
     {
@@ -11305,7 +11305,7 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-06/authoring.json",
-      "sha256": "42bc2e1e88c2b267ca4208e9a99d62793962205e11a0f35a24d1e5c98c98a97c",
+      "sha256": "ab56e0de5dd87bef943da67e12b1ada8cc5925eda6981336059887fb36bbbed3",
       "unchanged": true
     },
     {

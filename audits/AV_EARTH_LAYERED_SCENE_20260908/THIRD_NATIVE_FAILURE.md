@@ -93,7 +93,7 @@ build or test execution. A fresh source/build and fresh native outputs are
 required for the product successor; its verification is still pending here.
 All earlier runners and reports remain unchanged.
 
-- Desktop visible red report SHA-256: `180ab94e6aed1874320ab1fe59e18450cc9d17783d82b6dcc241f5f50fd122ea`.
-- Desktop diagnostic PASS report SHA-256: `924d0cb8d7d6cf008923f2d8324fc07f763b9770fc1fdfd060eedfe5d1f03413`.
+- Desktop visible red report SHA-256: `fa050bf29267d2a3c3da7270a225002c19f9d5e7937f49bdd037b6cb78346469`.
+- Desktop diagnostic PASS report SHA-256: `a714455f165cf21a366d6a44f5b84e5e0d71d764ec52f439bb8ef80f86b51cd7`.
 - Preserved diagnostic runner SHA-256: `1432423fbb222a76a88638cd221052c53ca058d81fabc7b31c2199b3a1be5482`.
 - New settled runner SHA-256: `76ca9686c913f52568b2fc3b7268085818806c6de8edcb7590abc091e5b770cf`.

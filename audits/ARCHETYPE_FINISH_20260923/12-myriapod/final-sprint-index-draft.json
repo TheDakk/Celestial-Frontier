@@ -162,8 +162,8 @@
           "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
         }
       },
-      "recordRecipeHash": "4bbfb883782353bd86e0e9751b3bf48ff79c0c47ea545d054876ad584e694bd9",
-      "bindingAuthorityHash": "411b35f8b60c90dde4b1085d6c2ff6b1004ebad120a965210c8018dc3176901f",
+      "recordRecipeHash": "7edbcdb118b4a47b18dfd328fe43c56bfff5113cc848814b433742819459108d",
+      "bindingAuthorityHash": "cf2656713b32423021410e0e3a9f2d071cf14cb0f241db0e157923241d67d00a",
       "masterSha256FromRecord": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4",
       "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance."
     },
@@ -256,8 +256,8 @@
           "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
         }
       },
-      "recordRecipeHash": "bb719111f61528fc2c5dad6d8a125cdefac14cd009076cf0b9fff855334d471d",
-      "bindingAuthorityHash": "58149d4ad05b53882345ec5e5a9b0a9a148907cc501558c0c417ee57e7c7f6cc",
+      "recordRecipeHash": "6139b6cd20df799eeda287ad20365cc464803648b451e8dcb7c524f6787e9167",
+      "bindingAuthorityHash": "0691024ed3e9d024ea2011ef8dd68d73d4e2846b0e546482dd7da10a17bb0d7e",
       "masterSha256FromRecord": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a",
       "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance."
     },
@@ -349,8 +349,8 @@
           "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
         }
       },
-      "recordRecipeHash": "4b89d2db6c013523c37610a75e04372f9e951f20a1f0faa115e38ebc3dcc81b1",
-      "bindingAuthorityHash": "45d4ad100da129001efb631bec9f4b6ecac7cf1274658f43b3fb1623962ce692",
+      "recordRecipeHash": "df60796170ec29f898e6b51c71b23acae5dce3bf89a3bb2d93e661dc087a21d8",
+      "bindingAuthorityHash": "b6baec47da9321614e2b1a382287f0f05ee1086756dad02ac485fe68826cabde",
       "masterSha256FromRecord": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb",
       "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance.",
       "historicalSigningWaitResolution": "Immutable item README/result may still say signing pending; the successor receipt above records the successful signed commit."
@@ -439,8 +439,8 @@
           "scope": "Historical whole two-rig battle2 stage; no per-rig metric was emitted. Do not relabel as per-rig certification."
         }
       },
-      "recordRecipeHash": "8c3dd500768f444c6d64df3f47b891ab903148becbf543ce8d4fccb5760ee49f",
-      "bindingAuthorityHash": "745196a275ca26878f97fcd41adc98cdfcdb4b711b4d92982c349a8c9bf521d1",
+      "recordRecipeHash": "66cd13861cdd82f14a1e445ad855a152b59e293f21d2d4630f563ac9e93f8a19",
+      "bindingAuthorityHash": "0dc1dfb4cab8ad5fd642d34b2952d508341a4959535ec8c44f668df3f8c355dd",
       "masterSha256FromRecord": "1c44d54e241b2444ce37950f0b3ce7ebfe9d9f4cd550a77cdaf0c20924849e43",
       "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance.",
       "retentionNote": "Original signed PASS retained without rerun; 12 actions plus one presentation row, not13 action rows. No distinct native runId emitted."
@@ -532,8 +532,8 @@
           "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
         }
       },
-      "recordRecipeHash": "5357c3e397fbd0d70587424b527de754e7d7fc15988324ba93d85e5e3d692b97",
-      "bindingAuthorityHash": "7e3ac04a6e9ddbb3087ebe6df37bfb98e5e47241c4f08a89044341b3a0a85fa2",
+      "recordRecipeHash": "8b43869c0bcd6e2a2fe48d810a7d6c7f846d4de4df6bcca20d1addbee7351d1a",
+      "bindingAuthorityHash": "a3eb06c4197b276521e908921c9a1c7935ac109b8f903c68abdf7ae63a1fa869",
       "masterSha256FromRecord": "aa1ad50d8ac1e354d0f0ba5beeb211a22519461ac36802ca621022f2418c65eb",
       "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance.",
       "historicalSigningWaitResolution": "Immutable item README/result may still say signing pending; the successor receipt above records the successful signed commit."
@@ -626,8 +626,8 @@
           "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
         }
       },
-      "recordRecipeHash": "7b6ee65a8fd5789aa3b62aa0e582c619883fd105a8cd1e7fa8019731d912f532",
-      "bindingAuthorityHash": "65fe2d84fadf6a7459fdcad559f2c120e0b3f40726654253b5fbe14fb15b561a",
+      "recordRecipeHash": "9b9ee55debbae28a7a1346158954c2915449c28f6b4c5e135cbdc7a8128d6a69",
+      "bindingAuthorityHash": "e5e587bdcebdc859f38d30a40fbc9484a5214005525a13cebedf3ab0844e0e06",
       "masterSha256FromRecord": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408",
       "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance.",
       "historicalSigningWaitResolution": "Immutable item README/result may still say signing pending; the successor receipt above records the successful signed commit."
@@ -720,8 +720,8 @@
           "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
         }
       },
-      "recordRecipeHash": "7b02d178f4c3ff04c7801e70613a66f3f82a238647dcd4fe73ba593e37470dca",
-      "bindingAuthorityHash": "365bab8ce809290217ded4a06f11685bedd88046e630e78ee381d0ec55298ae9",
+      "recordRecipeHash": "2083de71c8d079fa6e07ad31ef36c32484ed705e3940c623f91a50ca860b1ba1",
+      "bindingAuthorityHash": "0b2317154b00f12c80f0734af843e08a6b28129ae3185697328fc39d1b9557df",
       "masterSha256FromRecord": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687",
       "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance."
     },
@@ -813,8 +813,8 @@
           "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
         }
       },
-      "recordRecipeHash": "4165e4c57c508d442b8cf09991bd9925a34620bf5c3895d7a73d9962ec9a6a4c",
-      "bindingAuthorityHash": "cfe54f47406488cec5c9883648132ace3aced5a0bfa011c2131b7363bf0f18d8",
+      "recordRecipeHash": "40db5c00b42d4080569036445dbd2ba629dd725f26a41e18cdbacae5f705b98b",
+      "bindingAuthorityHash": "773e17afc1c0be65f2469deb3b33c244a414ca9606d66dd465c0bee5b2e79460",
       "masterSha256FromRecord": "55d8a5d00e4eabd761fc64cc42d82da1d3837b0448651d8c78820b9cfe9fb19b",
       "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance.",
       "historicalSigningWaitResolution": "Immutable item README/result may still say signing pending; the successor receipt above records the successful signed commit."
@@ -907,8 +907,8 @@
           "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
         }
       },
-      "recordRecipeHash": "fa37f83a3595df918d6c56e2fb26644cf26b4f03705ff72451dc676dcb5e9e11",
-      "bindingAuthorityHash": "e094d6c22cd093acc4c9df4afd94c43fbb6d1f968c6abdae0d6783e5c33358cb",
+      "recordRecipeHash": "bdcf8dae4435cc5150843da6a1ec475ebb2b4edf85e3b7a0d68cf4334e0059cb",
+      "bindingAuthorityHash": "f5665b16ad400e1390ba1a0225c5eddedd91575cad942e1c7aaa0159c6d8fa58",
       "masterSha256FromRecord": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e",
       "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance."
     },
@@ -1000,8 +1000,8 @@
           "scope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes."
         }
       },
-      "recordRecipeHash": "4526e0b0039a61f300dd8bf388146bf61fec5d43dd90445fdd563e3e7deef756",
-      "bindingAuthorityHash": "c8cee709a3a053664882a45c1d8d18562adcda3fa495117f16c2213763798656",
+      "recordRecipeHash": "bd4cb0a581b7fae2d754c16a1478dc917817411e0fea37418999355d7d1c0d9a",
+      "bindingAuthorityHash": "9821496a0553e29a45c49edeb51d3c26f74a0a1361f158d7461907e3da472ddf",
       "masterSha256FromRecord": "ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7",
       "artAcceptance": "Dakk review pending; technical PASS does not replace art acceptance.",
       "historicalSigningWaitResolution": "Immutable item README/result may still say signing pending; the successor receipt above records the successful signed commit."
@@ -1037,7 +1037,7 @@
       "master": "audits/ARCHETYPE_SPRINT_20260922/02-fish/master.png",
       "masterSha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4",
       "keyedSha256": "8010343d7137839570b2852ce5480e1f0104a645de52392a9132a47ce6b01574",
-      "recordRecipeHash": "4bbfb883782353bd86e0e9751b3bf48ff79c0c47ea545d054876ad584e694bd9",
+      "recordRecipeHash": "7edbcdb118b4a47b18dfd328fe43c56bfff5113cc848814b433742819459108d",
       "pixelSpace": [
         1254,
         1254
@@ -1053,7 +1053,7 @@
           "file": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings/striped.png",
           "sha256": "e36778f8072f7e8ab69247d1fcb5762b4b6024ea5a9e7354380c283ba5e8610e",
           "prompt": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/striped.txt",
-          "promptSha256": "9753be07d69c91b9466d1a0c8b12ce0d174d66de827800b68cc6b092fce6f5dc",
+          "promptSha256": "c24d92d513f8d721d9ede563876ac359f3f7e11ebade2c96f627039be78c8f81",
           "composite": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/composites/striped.png",
           "outsideAlphaPixels": 0,
           "alphaExceedsKeyedPixels": 0,
@@ -1064,7 +1064,7 @@
           "file": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings/spotted.png",
           "sha256": "907034cc101216b3b02c0aac317cbfa9e5aba556f99c47d5b2c896fcfd871ccc",
           "prompt": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/spotted.txt",
-          "promptSha256": "2931cf774719a66c4bcde79d16849424d738ac561efae2b125fb0608df56126f",
+          "promptSha256": "7b6002d3df0dcf4bf89908b5930133dd711564b62b87abbbd41dd146201069f5",
           "composite": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/composites/spotted.png",
           "outsideAlphaPixels": 0,
           "alphaExceedsKeyedPixels": 0,
@@ -1075,7 +1075,7 @@
           "file": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings/banded.png",
           "sha256": "5bc2e8296c60c0954eff873cdbb78fc671d1008f13b7ccdcca6656958e788600",
           "prompt": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/banded.txt",
-          "promptSha256": "9505aa87ac0505ca05926a4bd8f9b355f2e1960ae42ffde21ae2e208a372aa37",
+          "promptSha256": "e6a6dc267d7e9efa5cb0244c19d6907a7296aceaa9f554382e1b06d30ada32ac",
           "composite": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/composites/banded.png",
           "outsideAlphaPixels": 0,
           "alphaExceedsKeyedPixels": 0,
@@ -1086,7 +1086,7 @@
           "file": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings/mottled.png",
           "sha256": "64f04894485f6030998777ad20a74bd297049f32e1f14542a08e3ae4fc180f7d",
           "prompt": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/mottled.txt",
-          "promptSha256": "8a0018e1246c7fd769aa7abeb1467fa9e852b2ab82ec2aae968cb1dcdcee3735",
+          "promptSha256": "c9558df232232093f4910314167c819bc38c56d31e9f52c253fb05b8ad227219",
           "composite": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/composites/mottled.png",
           "outsideAlphaPixels": 0,
           "alphaExceedsKeyedPixels": 0,
@@ -1097,7 +1097,7 @@
           "file": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings/marbled.png",
           "sha256": "e318bab2e04b050dfaab0f0e5660927c226e48b96e3c020acd5d3928aed656df",
           "prompt": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/marbled.txt",
-          "promptSha256": "f650f342fcc8862a36c83b2536086ceed329ac2b49c118a6a2e400c27bbf41c5",
+          "promptSha256": "90a97e9fa0fee8c80252b0b0d8c2b5169eb86ffda04bff2e112d93a509526876",
           "composite": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/composites/marbled.png",
           "outsideAlphaPixels": 0,
           "alphaExceedsKeyedPixels": 0,
@@ -1108,7 +1108,7 @@
           "file": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/markings/eye-spotted.png",
           "sha256": "0668dd14e0c76b1cb80186120f78ecea2a0659d280d951cb3f5a0f6d23c7d66a",
           "prompt": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/prompts/eye-spotted.txt",
-          "promptSha256": "f863866d9a645fec2614e66ba8143e8ee7b8628fa10ea5ade04efa01c93277d8",
+          "promptSha256": "17b2a1d3a6a17d2c3ecb1fd45dcf7a9ceecd39a6883f78f71e37c78f621a97d7",
           "composite": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/composites/eye-spotted.png",
           "outsideAlphaPixels": 0,
           "alphaExceedsKeyedPixels": 0,

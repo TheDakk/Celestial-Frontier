@@ -7,16 +7,16 @@
   "authoringSha256": "f9340f385333ab4a6f8ca53b277a7fdf3470b53f3a9b37457c1c1d6f42720d93",
   "copied": {
     "master.png": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
-    "prompt.txt": "006bf5fce063cad08371df26b4e44975049cd480dd305e248eec1f7b64c83019",
-    "request.json": "eee818a3eedb39e1213426c05e8ea8ea9dda1576f22c12dfbab5ba6e93c5b9de",
+    "prompt.txt": "e2a3c20aa01761a105f895586902105643612338d9257bddf98298251ac42323",
+    "request.json": "38c211721f20f43e020234f2f799d3292f7ab77247e9a35d31fa22b10d1da000",
     "subject-source.json": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67",
     "presence.json": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c",
-    "generation-receipt.json": "a95cf62f9b8fd9770549804a6f4e2e6ec0a337b522546a2785d1f383c2fd801f"
+    "generation-receipt.json": "6778a1f3ca5cdf32b4732f32a78c971acc76a49f331f127df9f3d74004d82b0a"
   },
   "proposal": {
     "source": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/source-upper-review/proposal.json",
     "copy": "upper-shaft-proposal.json",
-    "sha256": "c520c37a4bdf426268c74c0a6cabd8831ce1f1d03c2fc92b75c76679eeb131a0",
+    "sha256": "595bb48eae5f0e6522915c0dfb4269edf4c649ae068fc18d2fe283947f5777a5",
     "region": {
       "id": "leg3-far-upper-shaft-observed-gold-proposal",
       "partId": "leg3-far",

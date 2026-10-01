@@ -7,7 +7,7 @@
   "compilerSha256": "e3dec52ecc2fad6916f8fa4d33a9304887f655f6597e1b35eacf077bb0018029",
   "template": {
     "path": "audits/VISION_P1_QUADRUPED_20260921/generation-01/prompt.txt",
-    "sha256": "d873809f129bae3681fc06bc0cd9454e4316c36c5eaa5d4c17a03c12d1540a03"
+    "sha256": "6ffc04f50874c9e7c3708257671debb5d3fceecd66d9eba4c605bd929f100f9d"
   },
   "catalogue": {
     "path": "port/v2/reference/fauna.json",
@@ -15,9 +15,9 @@
   },
   "kit": {
     "path": "ART_KIT.md",
-    "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c"
+    "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f"
   },
-  "sentPromptSha256": "feb0070c0e645be54932c1f48abc8a6c236c0099df639a07ae1a45b64aafd02d",
+  "sentPromptSha256": "08b8df9d43e6ec9463d5d61fa71d80be7a0e54a222c1007b2fd51a9fbc6438fd",
   "tool": "image_gen.imagegen",
   "model": "not exposed",
   "seed": null,

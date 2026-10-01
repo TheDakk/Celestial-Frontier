@@ -32,6 +32,6 @@
   "generationCount": 1,
   "seed": null,
   "seedReason": "Not exposed by the built-in tool",
-  "sentPromptSha256": "feb0070c0e645be54932c1f48abc8a6c236c0099df639a07ae1a45b64aafd02d",
+  "sentPromptSha256": "08b8df9d43e6ec9463d5d61fa71d80be7a0e54a222c1007b2fd51a9fbc6438fd",
   "artAcceptance": "Pending Dakk review; not inferred from tool completion"
 }

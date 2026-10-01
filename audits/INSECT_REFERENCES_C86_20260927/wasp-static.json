@@ -461,8 +461,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "14e9ad8d19f219b0ba272db0ab465fea9491dbb36032769779c071cf753f5d7f",
-  "bindingHash": "c3c12398481df22fde0dbbcbeae8b6becb12f06850f3213b1efcf3d0eefe8e74",
+  "recordRecipeHash": "b6718f41e7c58f9bdb77a2a446f3ae12248a8163e90692d49f2e41d723aaad17",
+  "bindingHash": "367d72e53be39671d18512f60878ff110c1b456cc697a01c20e8dabaa6d27330",
   "family": "insect",
   "contacts": [
     "legFrontFarFoot",
@@ -687,12 +687,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/fit-02/record.json",
-      "sha256": "f3812615d217bc3d92efb1d5de928fc2af381f5f55b71c5f6d9690b4fd4e6273",
+      "sha256": "c41dd0c1fa471e950bff093e9077c407c253250a59744e17067c061c2a7039e8",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/INSECT_REFERENCES_C86_20260927/06-wasp-v2/fit-02/binding.json",
-      "sha256": "d1676d46e044e7380930dd3b1ed4df8f886d329dcf48549bafc9bce8dda7fbe7",
+      "sha256": "705847372c2b6fb618f51806b3fd8261a0d383e06b1e6bd4d4da82c3220cd565",
       "unchanged": true
     },
     {

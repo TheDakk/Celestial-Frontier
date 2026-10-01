@@ -102,7 +102,7 @@
    {
     "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/greedy.sh",
     "bytes": 1435,
-    "sha256": "303d9d1a73515e4e171fb5b2d5db2d1552c6fcc8936a91119a6f38973ff82b11"
+    "sha256": "946a6bf3d326bca81243170aa00767a3e566ca9d8f40b31492a82a05bd3a767d"
    },
    {
     "path": "audits/G1_AUTO_AUTHOR_20260926/weld-g2fam-fish/adjjson.mjs",
@@ -131,22 +131,22 @@
    {
     "path": "audits/G2_FAMILY_PILOT_20260926/09-carp/generation.json",
     "bytes": 539,
-    "sha256": "e976e0f5e7558ae7ef7785193fdac813043bd8d00bf4bab06429e2307e43da13"
+    "sha256": "a32f781cdd9a30ff408c03c1c3fe9412dc7651a6be8b7ec417b0710982372a90"
    },
    {
     "path": "audits/G2_FAMILY_PILOT_20260926/09-carp/request.json",
     "bytes": 909,
-    "sha256": "608e9f63e91bfe4d4efae0144e83aeacbd56e57ad509c1d1685b006308357ea1"
+    "sha256": "46d46b7fa9fc493dc1bc1550c8a89db5471b61406fdf60a9b1e4039f37d959e8"
    },
    {
     "path": "audits/G2_FAMILY_PILOT_20260926/09-carp/prompt.txt",
     "bytes": 8787,
-    "sha256": "0a92da6faf86f8cfe1fe9897398a064b65f0bb5f866621bd1d2b578b06b4ab72"
+    "sha256": "22293af4c35f71480ab342b6199ee842d0df2e6918c89ee30c4b880111fff96f"
    },
    {
     "path": "audits/G2_FAMILY_PILOT_20260926/09-carp/compiler-inputs.json",
     "bytes": 15811,
-    "sha256": "cb64fcfaedec21da6cc67e0ac79ab832ee66c7a4fdf3f4967e07a94c277a0705"
+    "sha256": "a7176e2a1e57e3b56fe1c55aa8f85b0b77ebc6dca12dc86c6c3b26893b10208a"
    },
    {
     "path": "audits/G2_FAMILY_PILOT_20260926/09-carp/visible-anatomy.json",
@@ -179,7 +179,7 @@
   "automaticTransferProvenance": {
    "path": "audits/G1_AUTO_AUTHOR_20260926/auto-g2fam-v10/09-carp/provenance.json",
    "bytes": 4486,
-   "sha256": "0480de4249784424e9a74c64e0bf3c02b5e7cfb53ffbb95b0fb27486b6ec1649"
+   "sha256": "41cb62927c80464517be481476a8d3d0f256b77861bbad438248fe6856a23419"
   },
   "legacyFlagCorrections": "intake writes manualAuthoring=true / sourceLandmarksReused=false unconditionally; provenance.json records that these are NOT an automatic-origin attestation"
  },
@@ -191,12 +191,12 @@
   "selectedBoundaryAudit": {
    "path": "audits/C49_FISH_REVIEW_20260926/09-carp-selected.json",
    "bytes": 20841,
-   "sha256": "8fd352f2f8c4b4696620b66f6566831fb95fbbac07692f5fcc603dfd8fc185fb"
+   "sha256": "4012afbc971451e30b21b0a4ea115c4fef64b6fdd824f545b58a4667ca514d8b"
   },
   "unweldedNegativeControl": {
    "path": "audits/C49_FISH_REVIEW_20260926/07-perch-unwelded-selected.json",
    "bytes": 34655,
-   "sha256": "d83f209a915e7a8addd8b56d8dcb599f1165b6bf7ff1aa761cfcef4cf1a5f1c4"
+   "sha256": "f8034625942db6ee4551cf96a594e61b512ef912d150c8c39472ba1afb02f66a"
   },
   "nativeRecordedHead": {
    "file": "native/report.json",
@@ -210,7 +210,7 @@
   "codexReview": {
    "path": "audits/C49_FISH_REVIEW_20260926/README.md",
    "bytes": 9668,
-   "sha256": "1857c7f3634f2fb36d0513cead28e855acc7f4e782df86f332cf59485b45c050"
+   "sha256": "035427698da955582f4b269aa9414b5a5e5383df8f00867532a27d6029792ff3"
   },
   "filmAndStillInventory": [
    {
@@ -221,7 +221,7 @@
    {
     "relativePath": "native/report.json",
     "bytes": 355671,
-    "sha256": "6a940841a72725774541288fb4e311952828c837269b53330777d83b73873f80"
+    "sha256": "c492d66888ecf53317160415df2d5fc09a923e6ed41b9a943587c31e6318fb10"
    },
    {
     "relativePath": "native/turn0-hit-approach-50.png",
@@ -332,7 +332,7 @@
   {
    "relativePath": "fit/intake-provenance.json",
    "bytes": 3107,
-   "sha256": "6c487418dc5f92e0dc6d7b620649ad2785399aa978ff67a17275e8855e68507f",
+   "sha256": "c35a6a4c129c3e29a179b43d451723d21cd66415e4fba04c876cf86a189f0ff7",
    "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/fit/intake-provenance.json"
   },
   {
@@ -500,7 +500,7 @@
   {
    "relativePath": "native/report.json",
    "bytes": 355671,
-   "sha256": "6a940841a72725774541288fb4e311952828c837269b53330777d83b73873f80",
+   "sha256": "c492d66888ecf53317160415df2d5fc09a923e6ed41b9a943587c31e6318fb10",
    "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/native/report.json"
   },
   {
@@ -614,7 +614,7 @@
   {
    "relativePath": "evidence/static.json",
    "bytes": 7453,
-   "sha256": "ba984ebbbde88fb179a1f7f8868c2d681aa75abe9f6ed49876e7b7823991f3f3",
+   "sha256": "ba06ff700b32931f9e91976344996ef9d3dd95b633e2e6b3b0347c9f6895da57",
    "durableLocation": "audits/G1_FISH_PACKETS_20260926/09-carp/evidence/static.json"
   },
   {

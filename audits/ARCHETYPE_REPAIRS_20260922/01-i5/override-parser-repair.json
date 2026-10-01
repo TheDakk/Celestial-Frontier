@@ -47,15 +47,15 @@
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/develop-profile-admission.log",
-      "sha256": "9ec42217407e04de5ec8cae521598b17880fbdb00f17a565a2940eed05620e34"
+      "sha256": "052f1ae3a26ba0f67ba73bef428b593e3105b1e74c3fa7bbb46eaf14b139b86e"
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/override-parser-targeted.log",
-      "sha256": "10bf6b49bd61279b99a0abc9614982cfd74481b082c6807291aa5fb358382c19"
+      "sha256": "90cc5a12c0322dec8101e3a4eabd82f218e7528184e17e7f2c67afe0f840d7a9"
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/override-parser-targeted-repaired.log",
-      "sha256": "57984338415882f1ea8d08cecd964a28b3f33a5a995c85e205208e672ba5213d"
+      "sha256": "8392a6d42ac92206c5ff5ba56e681562404e6508d76de30ce38025a45eb8e1bb"
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/override-parser-targeted-final.log",

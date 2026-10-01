@@ -848,8 +848,8 @@ strict `<1000 ms` product answerability contract. Local no-retry run
 `20260823-pr33-cross-host-sla-certification` passed 42/42 under Edge `151.0.4129.101`, complete
 browser/server/workspace-lock cleanup, zero findings/fatal events and a passing exact named-run
 verifier. Report raw/gzip SHA-256 are
-`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
-`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
+`db93ce37d24e3a32256d232a2595c75a8c8ab101ba6edb553204e34571142c03` /
+`a9249401f99d371a1ec256c0332d834f1d75c300befba2779bc6aeacbd02a6b7`. Product, collector, and
 verdict-contract bytes are unchanged.
 
 The current input-v4 gate uses one browser process for 390×844 phone and 1280×800 desktop profiles, four

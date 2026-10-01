@@ -3,7 +3,7 @@
   "generation": 5,
   "runId": "20260923-tree-frog-paint-05",
   "sourceHead": "1dfeec2a88ac6e7be01b525e12421c3b1b181a7c",
-  "promptSha256": "30031f564ddcaa2b68ece129a3958471e4064d2c50709f34b01dc5b8e6f9f448",
+  "promptSha256": "0830561824b352d1fd55a41cd49f1fcec6b5abbe7de621058de39813ca069d61",
   "editTarget": {
     "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/master.png",
     "sha256": "1bf61af1e833d5741fdf97b93f560bf518580d7f4cfd47488338b7a236233517"

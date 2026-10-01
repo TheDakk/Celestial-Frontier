@@ -30,13 +30,13 @@
   "restoration": {
     "baseline": "c17906b2b12e43a140e3893af93bdaee4d85a679",
     "file": "port/v2/packages/domain/combatcore/src/encounter.ts",
-    "sha256": "f9c0714f7db68eca952f6c1ff76eee18c6c06ea10844f60e0f96e62358dd9cd2",
+    "sha256": "9c20ca57d0d47d9946fe7b42b041d1d764a0452550ea75f00711a7f0f926afa7",
     "byteIdentical": true
   },
   "files": {
     "evaluation13-once/candidate.json": {
       "bytes": 3831,
-      "sha256": "6e245319d402d84708d9d2ffbf6b017abff83b1fa916faeb3945822ab2803cbf"
+      "sha256": "ce24c2e773c6114829e8cc23230759af454057dcbf63576ae176e4f55e3219b7"
     },
     "evaluation13-once/easy-evaluation.json": {
       "bytes": 6219377,
@@ -44,15 +44,15 @@
     },
     "evaluation13-once/engine.mjs": {
       "bytes": 160405,
-      "sha256": "d9bcdf8156779c07eba89d657b3afd1fc9717f58f2008dc23d2b19e9b792bbb0"
+      "sha256": "ee457913c66bd348dbeecaddbc2c855c52d42f141d45e1eb95d392ecf3cbf6ae"
     },
     "evaluation13-once/engine.mjs.map": {
       "bytes": 432160,
-      "sha256": "f5147ad5fe214b3ed03b88018809636e86d3f6db5c23e57dd794f540915bc13e"
+      "sha256": "e7ab06cc85d0b3ed82ec1a959e1f43e0a453f996bbd1eaef2303104336158a0c"
     },
     "evaluation13-once/entry-source.txt": {
       "bytes": 1190,
-      "sha256": "40eaf4bb17bdabd1395fc9eb2a4cc8aa54975c7e1e6a2956de67e3532c7bdb83"
+      "sha256": "f6ceb313abd1d56f7f3a1c169f4142b24db500d297bf0a908f5d8913475eab9e"
     },
     "evaluation13-once/guardian-evaluation.json": {
       "bytes": 9815029,
@@ -76,7 +76,7 @@
     },
     "evaluation13-once.log": {
       "bytes": 1307,
-      "sha256": "f3a9f4a553432c57d674ba090a625300c8414989d1ac71e78923d0c7511acc40"
+      "sha256": "d0d1d6c2d827e319195fac0d60526a262d891fc790a3e93ca1c0c84bbf37fa01"
     }
   },
   "restorationChecks": {

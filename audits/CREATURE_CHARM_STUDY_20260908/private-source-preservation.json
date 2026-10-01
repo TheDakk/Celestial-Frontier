@@ -46,7 +46,7 @@
       "source": "/private/tmp/cf-creature-charm-20260908/first/phenotype.json",
       "path": "/Users/dakk/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/phenotype.json",
       "bytes": 6924,
-      "sha256": "757478b4b85981601e3b2c0077828893bf7fe184813710f039866e1b9bd37476"
+      "sha256": "83ed85bf606942f571bbdadefd7188c77bcb2d255db88ca9334b884b892b28ef"
     },
     {
       "source": "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-001.png",
@@ -88,7 +88,7 @@
       "source": "/private/tmp/cf-creature-charm-20260908/first/study.json",
       "path": "/Users/dakk/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/study.json",
       "bytes": 4651,
-      "sha256": "33aa97acc027126b9e151250ecafd0fac28b1df0fae67b3fdf879ab3f551ca02"
+      "sha256": "c8c11d2a7c3d8432ce39e477a1202efff6d3ebe6446bd82ec9ec53252aa955c4"
     },
     {
       "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/000.png",
@@ -298,13 +298,13 @@
       "source": "/private/tmp/cf-creature-charm-20260908/first/phenotype.json",
       "path": "/Users/dakk/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/natural/input/phenotype.json",
       "bytes": 6924,
-      "sha256": "757478b4b85981601e3b2c0077828893bf7fe184813710f039866e1b9bd37476"
+      "sha256": "83ed85bf606942f571bbdadefd7188c77bcb2d255db88ca9334b884b892b28ef"
     },
     {
       "source": "/private/tmp/cf-creature-charm-20260908/first/phenotype.json",
       "path": "/Users/dakk/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/storybook/input/phenotype.json",
       "bytes": 6924,
-      "sha256": "757478b4b85981601e3b2c0077828893bf7fe184813710f039866e1b9bd37476"
+      "sha256": "83ed85bf606942f571bbdadefd7188c77bcb2d255db88ca9334b884b892b28ef"
     },
     {
       "source": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/blender/creature_charm_study.py",
@@ -316,7 +316,7 @@
       "source": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/audit_motion.py",
       "path": "/Users/dakk/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/sources/audit_motion.py",
       "bytes": 5019,
-      "sha256": "5f051e03a0cd4850b30364cc82c72f94e1cca58cc5bc2f35c34f1b80264e8ae6"
+      "sha256": "6fc03cc19f6c6d7a0cbd5fc3903f6464d49f9bb6f7be4ae587958d7d09c16b6b"
     },
     {
       "source": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/package_samples.py",

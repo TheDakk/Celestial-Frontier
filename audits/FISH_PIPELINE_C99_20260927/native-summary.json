@@ -2,7 +2,7 @@
   {
     "id": "08-gar",
     "status": "DIAGNOSTIC_PASS",
-    "reportSha256": "6e24063dfe5836638a6c246e3b51a0cec121ddb58287d23fe63c71f48342a1e1",
+    "reportSha256": "293ad3d46602712b9bf899bf63a2ff33e123e98f1ce1f1d24c24d76f57f297a4",
     "capture": {
       "frames": 707,
       "cpuP95Ms": 3.100000023841858,
@@ -25,7 +25,7 @@
   {
     "id": "12-killifish",
     "status": "DIAGNOSTIC_PASS",
-    "reportSha256": "15d4449343e63a50eed59a9e49ef45b3442b7fdf2be2a2b5e0fff1c51c514f43",
+    "reportSha256": "42c85ce8677aba3018a15a2344c96af995ab2c185c6e65c8edeee12e8c9a220a",
     "capture": {
       "frames": 707,
       "cpuP95Ms": 3.100000023841858,
@@ -48,7 +48,7 @@
   {
     "id": "02-parrotfish",
     "status": "DIAGNOSTIC_PASS",
-    "reportSha256": "6eb9a824014e5d4a776c4356eb27eb76c0da37a4afa3be60b968a65125d49a20",
+    "reportSha256": "e6572bf4dcaf5d85cc1fb951f74cbd92ba29b9bc2f49df8ec4f5cf3a8c263fee",
     "capture": {
       "frames": 707,
       "cpuP95Ms": 4.299999952316284,
@@ -71,7 +71,7 @@
   {
     "id": "02-rabbitfish",
     "status": "DIAGNOSTIC_PASS",
-    "reportSha256": "b6c747d3b30be07edb132fda968c36d656486f406fde947e27449e4c82464e7d",
+    "reportSha256": "b88d04945144f27dd8776e2bee4b705bbc3c6c953fe6df668e8c3e55e6ab4053",
     "capture": {
       "frames": 707,
       "cpuP95Ms": 3.9000000953674316,
@@ -94,7 +94,7 @@
   {
     "id": "03-sea-bass",
     "status": "DIAGNOSTIC_PASS",
-    "reportSha256": "2686910e4d8b1624a9ebb3170a3838a29129d68fd88adf173cc201dc623b8d85",
+    "reportSha256": "4e0b65fadcd00dab10806bc4ad14092563c52965928e05d05b0f63275b9c71fd",
     "capture": {
       "frames": 707,
       "cpuP95Ms": 3.3000000715255737,

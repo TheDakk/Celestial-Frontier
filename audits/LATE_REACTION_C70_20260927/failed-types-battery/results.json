@@ -12,7 +12,7 @@
         "--profile=develop"
       ],
       "exitCode": 1,
-      "logSha256": "8b43ab559d3f87b4ca0d5c9bb1bad53ad083e2b088e5285a808ded4dde5282b4"
+      "logSha256": "484a645ed8568f2d6c3708cdd28086d5957729c0f2ac06ff2e0ec52181031fd4"
     },
     {
       "name": "typecheck-root",
@@ -35,7 +35,7 @@
         "apps/game/tsconfig.json"
       ],
       "exitCode": 1,
-      "logSha256": "a451a2381a5a5043af36fb899014195c7eb5ddbb65570dc74ccb3f73bd87e430"
+      "logSha256": "2ae2250a89b80330c6f5cdd7173bc7600bcb0cd0a242a65f301be41bac0b93ef"
     },
     {
       "name": "typecheck-worker",

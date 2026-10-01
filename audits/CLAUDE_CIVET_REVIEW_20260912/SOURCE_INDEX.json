@@ -57,7 +57,7 @@
     {
       "path": "audits/ART_KIT_WEATHER_LADDER_20260912/manifest.json",
       "bytes": 6559,
-      "sha256": "15bfe8c137483512c455bdf70481a658fe969b864b57f77f0b8098fc2bff8d24",
+      "sha256": "46d03f82faae894bf0fa316a2e7159eb3334da1508b4cfff40a00961ca23f2e4",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
@@ -75,7 +75,7 @@
     {
       "path": "audits/CIVET_ANIMATION_PROOF_20260912/README.md",
       "bytes": 2985,
-      "sha256": "5a366b3fe65fb87ab0fa4df61ffdd9f548d8254d6b3ac884b1a7f550b9ce283b",
+      "sha256": "bc0b4ff384cbf551df9f7076b42b54673ec9c9a30759ef38e97ec20ec6ee7200",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
@@ -105,7 +105,7 @@
     {
       "path": "audits/CIVET_ANIMATION_PROOF_20260912/phenotype.json",
       "bytes": 6807,
-      "sha256": "89bec13dffc9ba1712994346001370a81af30f46d2612ab6698c1fffe47e32a9",
+      "sha256": "1347d5545e972a4daedaff88145c06a9330a5775c71c4ab95ba654d1cc25ce96",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
@@ -141,7 +141,7 @@
     {
       "path": "audits/CIVET_ANIMATION_PROOF_20260912/turnaround-prompt.txt",
       "bytes": 7769,
-      "sha256": "9392852c4b54f4c59a9c31db80166b29260051f177a9d3d5447ef1845ec91335",
+      "sha256": "0f867ff5b28043b98ac2e58561f40621007f9f3d13ad8365a4374768c9d93cd9",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
@@ -159,7 +159,7 @@
     {
       "path": "audits/IPHONE_EMBEDDED_PROBE_20260912/manual-01/README.md",
       "bytes": 2295,
-      "sha256": "5b309fcc26353335566fe8476014ed0584cdea7749518a4a5e46cf389079f018",
+      "sha256": "047f43efa073484433db6bc74c9656c4fc2f35140e64f764fec0f22bd93e6374",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
@@ -189,7 +189,7 @@
     {
       "path": "audits/RAIN_E_ADOPTION_20260912/README.md",
       "bytes": 2278,
-      "sha256": "496489d4eb1ea6c173c9e4a387c6e563c5ada1ecc5f8f000301cbea9429395cb",
+      "sha256": "ea22dbef92767c09c5a189b9ba6cedd3a4245abba633566d74b0d341a440cf85",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
@@ -201,7 +201,7 @@
     {
       "path": "audits/RAIN_E_ADOPTION_20260912/ordinary-game-01/result.json",
       "bytes": 229343,
-      "sha256": "ebb0a960cf45206195cc8eb505061019f3f0d8c83f4558874b738352b425ec3d",
+      "sha256": "fc7dc2c0b722655ae845367e32c3f8e3e9536d02b0fc776dcf35d586f1274508",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
@@ -261,7 +261,7 @@
     {
       "path": "port/v2/packages/art/src/earth-resident-plan.ts",
       "bytes": 9732,
-      "sha256": "8929f953dfd77f0b82e3026e2cd17a05e3c35059d0619b91511b7d73a70f8907",
+      "sha256": "421a518c3ac67ad7b4359ce6eb743d7b4099376266a6bcf622fe42b509c305e0",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
@@ -273,13 +273,13 @@
     {
       "path": "port/v2/packages/art/src/faunaoverrides2.ts",
       "bytes": 235945,
-      "sha256": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02",
+      "sha256": "68de7bff03102ea51aadf4d207517ed07e5750876ef8a6262d58b3855f90e57b",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
       "path": "port/v2/packages/art/src/faunaoverrides3.ts",
       "bytes": 153673,
-      "sha256": "f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec",
+      "sha256": "2e0084576e32e709d99befd7434079f786a3f8bd36dc6829376c12211b7979ce",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
@@ -297,7 +297,7 @@
     {
       "path": "port/v2/packages/art/src/proceduraloverrides.ts",
       "bytes": 13174,
-      "sha256": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be",
+      "sha256": "edabc7518ed3c61d8de39efb53b018b220e2444254f7aa5f2ed92a473649d857",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
@@ -327,19 +327,19 @@
     {
       "path": "port/v2/packages/domain/descriptors/src/apphooks.ts",
       "bytes": 6433,
-      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a",
+      "sha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
       "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
       "bytes": 13811,
-      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff",
+      "sha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {
       "path": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
       "bytes": 4570,
-      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12",
+      "sha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2",
       "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
     },
     {

@@ -1,7 +1,7 @@
 {
   "scope": "Proposal-only bundle transform; reserved choreography source unchanged. Smoothly fade idle to zero through faint; no contact/skin bypass.",
   "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/choreography.ts",
-  "originalSha256": "0e2857f94e6943c5fe61349f5aeeab1b18743a1ef2b7f3461be2555c862ed2e3",
-  "proposedSha256": "b5706ffcd4098ce8237436ce35017afee0393c7396de329afd2d9250d193511b",
+  "originalSha256": "6bdfc95b87e26ac7dc7bae448edafff75130ab14a680dc44746e04770239eb95",
+  "proposedSha256": "c1c7c3d860bad2be72a42255dac570f266294ca8b889d1cf6e01b8d6fa7d33f3",
   "patchSha256": "1310242d67537883af30196c86b18b2f19b2d5b36c4b04c64cea7cc5892c1c7c"
 }

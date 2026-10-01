@@ -14,7 +14,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/README.md",
       "bytes": 7371,
-      "sha256": "cd21246d34d8cde89a02a41f5d1517c6f4c58a1b2ba6edc3ab70400056e2dd26"
+      "sha256": "1e6aa41364c0ba1ffafe022e2dc7855e8add01d9cb9405123fbc3c5bf5668efb"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/art-audit-final.log",
@@ -49,17 +49,17 @@
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/evidence-build.json",
       "bytes": 15800,
-      "sha256": "4920a8bf622a3b8a02048013651fc9097e9cad3004f81a62d98b04de9ad791b0"
+      "sha256": "0a5be0e460194fb6017bd8f4f20077b5965a0d18ea0587d0582d6500211a2f14"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/final-browser-free.json",
       "bytes": 2823,
-      "sha256": "e319045e8eeb478d14b26eeee8499158e59e5c9b83151018e69e9613b16f2cca"
+      "sha256": "8d9691882f1847109d482262cffe26e07c08d74a8273a1dd98732f1dfe359e70"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/final-focused.log",
       "bytes": 6396,
-      "sha256": "2878ac39c9df21d60d1d0e6f3c7af48bafb2d0199c6f25fe344706f9111556c7"
+      "sha256": "1eae927498c85088c840fa2f92363ba961e3ef3dee6b3649651b4a51dee3b13d"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-desktop/earth-desktop-material.png",
@@ -74,7 +74,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-desktop/review.json",
       "bytes": 49510,
-      "sha256": "0e04bf6c813a320398e65d6732471889de3c17cb40471ac0b532cf78dd943928"
+      "sha256": "0423880f1c69e8dd3fe040637dc5a4788b580013f36bdd22951988925eb0aa28"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-desktop/runner.mjs",
@@ -84,12 +84,12 @@
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-desktop-command.json",
       "bytes": 579,
-      "sha256": "efa46fd3baa157656bf656837d1e79b45effd81a879e9a99374a153107f0fa10"
+      "sha256": "a4a21d52488aed5f31a92508c1775e4a9ffdca1eed8e5be3b0b2e60b3f381838"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-desktop-command.log",
       "bytes": 137,
-      "sha256": "474b614d8ee1e80422e320395caf838c146157dcae5587620be3c9d0291f3123"
+      "sha256": "136b8aa458cb894bafbdb1a8e7e484467dbf644ea3112ec926b60da0816f7663"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-material-runner.mjs",
@@ -124,7 +124,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone/review.json",
       "bytes": 53602,
-      "sha256": "1af04cedd860736114b8958d4d00983951f89ed238de4e9d15e9aa517ae52c1e"
+      "sha256": "be3212cf09617f5044a01f82d756afe113f3cce26dff9dd87d60280c9c913698"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone/runner.mjs",
@@ -134,12 +134,12 @@
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone-command.json",
       "bytes": 573,
-      "sha256": "b869cb92151e0ea239b23034715b9d4ee5dd2500674f299827f03c17db64f824"
+      "sha256": "75bf71fd6279bec6a8509cac398e917afe12c163f8eacd78317d5fd406a12c04"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone-command.log",
       "bytes": 135,
-      "sha256": "02857342c967c0ed466f70a01ee07c0a2dc59380ea286af036cdbf0fef711b8a"
+      "sha256": "3d5cf8cd0b63167962ebdf9e4785a2eed0387bd4da9e5af74cee4712d5d3b003"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/override-check-final.log",
@@ -149,7 +149,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/preview-browser-check.json",
       "bytes": 424,
-      "sha256": "f0d2047c1142ad2bf69e9022fcd3931b94956c20867efea63acb8fe2951d90a7"
+      "sha256": "7d823a931f0d6e58745b45be040e0279aa85af8507ed330e882b50e1b844bb1a"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/preview-browser-check.log",
@@ -159,17 +159,17 @@
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/preview-package.json",
       "bytes": 498,
-      "sha256": "40ab353ca01f7ee446e15ea44514faed92dd8df618ee4b226afb099185a8012e"
+      "sha256": "047dc1f6f05ded3f48a710ac7fc7549f689e13f3948912323968ea37426b4f29"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/preview-package.log",
       "bytes": 6072,
-      "sha256": "a1d441c0538573ca5def7c4947a1ff8224e9b024d689352105369e59663b0fce"
+      "sha256": "1aceab3931719bbbe5b342c34e543ee80b8529822ac1b2231d60a047ec8adc76"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/preview-server.json",
       "bytes": 556,
-      "sha256": "2f465013648eac773408d5f38e8c3631f0ef202b3a1dfe273f267ee1f5f99f85"
+      "sha256": "8b6568e171581b3070577f440363c6630e13679e3301ce7806611cfd0e60f181"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/producer-final.log",
@@ -204,7 +204,7 @@
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/root-validation.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/run-step.py",
@@ -281,7 +281,7 @@
     {
       "path": "port/playtests/20260908_EARTH_MATERIAL_LOCAL_PREVIEW.md",
       "bytes": 1948,
-      "sha256": "c16344888bb856c3a6cca714f26007329fff7ff1b88df60d2e803c74191e307c"
+      "sha256": "6beb819a938817e3050e54724cdad27f21fb4fe0f05587cea1509c54341427d1"
     },
     {
       "path": "port/v2/apps/game/src/main.ts",
@@ -341,17 +341,17 @@
     {
       "path": "audits/PAINTED_SPACE_PIPELINE_20260908/approval.json",
       "bytes": 1616,
-      "sha256": "672db33517b2ab6872068f2c4d88133f47008f0c6b3360d81da92d3e95d63246"
+      "sha256": "9049d95181c304d1c473517c77e7d3fec4c70075c103bd4f4022beb145483d80"
     },
     {
       "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/intake.json",
       "bytes": 1780,
-      "sha256": "b1d3e3dcaf5231e18da1b81d91d00bec97b6a2aa952013ce2612458f22e818be"
+      "sha256": "0a1edceec71856df0b39cb1ccd29310e4d62f85cf213227fda366a8024df05ce"
     },
     {
       "path": "audits/TOOLCHAIN_STARTUP_20260907/manifest.json",
       "bytes": 2573,
-      "sha256": "902e191ef3d3b69131ba34d164325074835b56becf1c49950b9d835b69b628db"
+      "sha256": "6e1f7069472830088a54a8aed428a9b2239229a285fd533741e747a4c8b7b0f7"
     }
   ],
   "verification": "123 focused tests, three TypeScript programs, art/spec/root and two native material/retirement diagnostics PASS; not full certificate",

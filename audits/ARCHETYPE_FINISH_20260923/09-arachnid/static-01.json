@@ -437,8 +437,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "4ccacb0f6629c177bb87ad3da912fbcee0b0e50fea2ca4bb0f26ea446839b49a",
-  "bindingHash": "4f2f2fb7c58326d55cc95393e9296c4839059219cdbec7480f267be91ba927ca",
+  "recordRecipeHash": "4fd9ce445f39d10d8c4f46685561bee92798b20a9f770cd6849e11b4c085b6fa",
+  "bindingHash": "2666b32a46e7cda9ac3f79ab93b459f4d15d4eab4259e10746dee8b2c61265ce",
   "family": "arachnid",
   "contacts": [
     "leg1FarFoot",
@@ -641,12 +641,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-01/record.json",
-      "sha256": "ffd3b883b28c31f3fc5e34f6d149c708c2a577b7a0de5d5a94afb8cebea75e23",
+      "sha256": "310f1166aa3f47e8c01bf75ca5cf165e9bdb60647629d4c6076c3263341340a9",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-01/binding.json",
-      "sha256": "129f0c168e95d6470226ac431d1badbb55cb38ae64c9c956f131d499bff85081",
+      "sha256": "90180a137e9600c8a4b1978f54f3f40249a80d4c5fc1cfb209252eae0f62ae55",
       "unchanged": true
     },
     {

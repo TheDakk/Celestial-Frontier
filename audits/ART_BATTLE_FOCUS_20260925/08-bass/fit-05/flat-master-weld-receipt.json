@@ -1,8 +1,8 @@
 {
   "schema": "cf.flat-master-weld/v1",
   "sourceFit": "fit-04",
-  "sourceRecordSha256": "8af4a5f98a2b3ed947f010ec48869056401de1043602f637355b939f4cc5ce85",
-  "sourceBindingSha256": "703909154dc29102996806407fc17996a857872dd435c0267cd37f592b4dd878",
+  "sourceRecordSha256": "a57fc205842b2f1d5bb1f265124b4081ae7df5f831ec630e8edd9acfbc3431e3",
+  "sourceBindingSha256": "aae38535028406c871d24e72af4182f32a76b21006c09b7777d2ecc7d49a3bbf",
   "sourceAtlasSha256": "ae063590ba4b573f1b1fbf1b5b58a53216d66f1d6f27f7dc73f40c50635739c1",
   "helperSha256": "44a2a0a3a54f5e31d9714fecc1cb92b64f069ae6943bdfdb494b30bc26d6c15b",
   "options": {
@@ -29,7 +29,7 @@
   "receipt": {
     "schema": "cf.observed-surface-split/v1",
     "contactPins": [],
-    "sourceBindingHash": "7c11b14472852b05e100e6521592b5f72129e2f5f7364a8c2da67adcd09799f1",
+    "sourceBindingHash": "871266c69912b2468f69e7dff7c711f70b9d0862b9e4e5718dbd963d1f04da3d",
     "sourceVertices": 2005,
     "vertices": 2056,
     "sharedSupports": 628,
@@ -43,6 +43,6 @@
     "preservePaintBoundaries": true,
     "sourceCoordinateChanges": 0
   },
-  "bindingHash": "7d486c889bcaf632bc533dbd6879873f92152f25ecde959994e69ef53e14480f",
+  "bindingHash": "2fd2535b9bf5ebe55fbaa7e6109afdfafabae84905c776de2ebabef46011489e",
   "scope": "Only this unadmitted Bass candidate. Existing opt-in preserves observed painted boundaries on a flat master. No solver/gate/limit change; no hidden pixels invented. Prior intake receipts describe inherited fit-04 inputs, this receipt owns the new split."
 }

@@ -3,8 +3,8 @@
   "name": "Turkey",
   "family": "biped-bird",
   "tool": "image_gen.imagegen",
-  "promptSha256": "c4046259afc680b3288f49caf424ca3a5c6e05c72e4bb0f644c9b100d3ca4615",
-  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "promptSha256": "aa44ec1a7a0cb26a9a57d11f3e06395812d8829d5fbb39c1051575616b0c323a",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
   "compilerSha256": "6bbb2f13282af3c1d91e3db4ad090802174179b9e359eb725b58cab6aa7bdcfc",
   "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
   "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
@@ -23,7 +23,7 @@
   "layoutClarification": "Species identity features FIRST: bare warty blue-and-red head with dangling wattle; broad fanned tail; bristly beard hanging from the breast. One Earth Turkey. These identifying patterns and structures override conflicting generic colour or procedural-genome suggestions.\nZOOMED-OUT COMPOSITION: paint a SMALL specimen centred in a large empty magenta square. The complete creature spans ONLY HALF the canvas width and at most HALF its height. Keep at least 200 pixels of empty magenta on every side of this 1254-square canvas. Do not enlarge the specimen to fill the image. Preserve all natural anatomy, toes, antennae, bill and true tail. Empty margin is intentional; never crop or shorten anatomy.\nREFERENCE LAYOUT: standing bird with naturally FOLDED wings held ABOVE the visible tail. Keep its entire tail root and true feather tail continuous and distinct. Where natural for this species, fold the wing tips visibly SHORT OF the tail tip and ABOVE the tail feathers so their boundaries can be read separately. Preserve natural feather lengths: never shorten wings or lengthen the tail to fake this. Near and far legs visibly separated all the way from the feathered body to both planted feet, not just separated toes. Preserve species-correct short tails and long bills; no invented extra wing or gap through the body.\n\n",
   "poseClarification": {
     "sourceSubjectSha256": "6e2b53b6a0a2636c50fb9fdc43f1316fc1807bb8a981247f8b88e836276d396f",
-    "previousPromptSha256": "327f954ad24398e9ede0935aae300294fb8ec427f5d5a3d61343ce13b0ef0fcd",
+    "previousPromptSha256": "35be349a1b9fdee6ebdf02dbae644d03237c5cd6ade742148b20823c7eb6410d",
     "edits": [
       [
         "broad fanned tail",

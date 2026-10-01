@@ -48,10 +48,10 @@ persist();
 try{
   report.sources=sourceInventory();report.distInventory=distInventory();persist();
   const predecessorRecords = {
-    chain: {path:'audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/chain-report.json',sha256:'45c9b4ec08a2d321da3dd9f50396920ae9923bde25d31fd3db57cf5dfc121ab0'},
-    desktop: {path:'audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/desktop/review.json',sha256:'6df31a5df3e90f98573ac922861309cc28dc0ce44494e196cbab8add9699743f'},
-    phone: {path:'audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/phone/review.json',sha256:'0fdd8a09afa9e17e9a0882bb1d2ad35bd7e2fedcafe7f21094c21aac2546e92b'},
-    blockedFailure: {path:'audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/blocked/review.json',sha256:'4cc8494c28fc845f690be411fdb1bc50727551c7df0b28a9ad11e7f5710a8b36'},
+    chain: {path:'audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/chain-report.json',sha256:'7cad845855b7563d281237f8deacb272f94504348b3ffa787a29003033289d88'},
+    desktop: {path:'audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/desktop/review.json',sha256:'e33057cad8a25d909df06394b9164b7f57e79cb66ffdcb4e0322865ecb662867'},
+    phone: {path:'audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/phone/review.json',sha256:'87cf020551769db6b138b2ac2f57b8bbef517c9422339aa4418e50ffc7255e62'},
+    blockedFailure: {path:'audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/blocked/review.json',sha256:'114d25d5d2363be41f8d1d77f81d8c3659c36b840b3691714c23a45835427919'},
   };
   const readBound=record=>{const bytes=fs.readFileSync(path.join(repo,record.path));assert.equal(hash(bytes),record.sha256,'Predecessor report changed: '+record.path);return JSON.parse(bytes)};
   const prior=readBound(predecessorRecords.chain);

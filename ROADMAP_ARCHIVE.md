@@ -2346,7 +2346,7 @@ OpenAI/Codex on macOS: /Users/dakk/Projects/celestial-frontier-openai-mac, opena
 
 The prior diagnosis is now signed as4ff2fad720e1d5734ce95a77c8a401cd8884e24e, signature G (e6288e/47fedf). Its old signing-wait statements are historical; recovery receipt is in audits/PYTHON_OPEN_POSE_20260923/diagnosis-signing-recovery.json. Prior reviewfe8f6ca1 was successfully pushed with actual remote equality. No push of4ff2fad7 or this correction is claimed.
 
-**Completed bounded Python correction:** audits/PYTHON_OPEN_POSE_20260923/README.md, result.json and review-sheet.png. One corrected built-in imagegen master, exact kit prompt/genome/reference hashes, manual declaration, candidate02/fit01, all refusals and films retained. Static02 passes12 actions×121 plus968 presentation samples; exact geometry rest and source-pixel rest0. Selected bindinga9524c5a617cf26d01d4697ed0164a07b5dc31ee83e2418a4a4b705195f21c90; recordb287ddc58c565fb9cfaae5f8c474177e38ad9dd07b4bf9ad959dbeb9aecf9b41. Selected topology has12 required joins and zero observation-only cut boundaries.
+**Completed bounded Python correction:** audits/PYTHON_OPEN_POSE_20260923/README.md, result.json and review-sheet.png. One corrected built-in imagegen master, exact kit prompt/genome/reference hashes, manual declaration, candidate02/fit01, all refusals and films retained. Static02 passes12 actions×121 plus968 presentation samples; exact geometry rest and source-pixel rest0. Selected binding29ef831d533b59d4dd1d42cbc85b6df5f935edc8cef1fc5fb498eb7fd798d893; recordb287ddc58c565fb9cfaae5f8c474177e38ad9dd07b4bf9ad959dbeb9aecf9b41. Selected topology has12 required joins and zero observation-only cut boundaries.
 
 Native20260923-python-open-native-03: zero left/right rig refusals,602 live/605 encoded frames,1268 dense containment observations, per-rig p950.5/0.5ms and whole-stage1.100000023841858ms. Both identical snakes use scale145.82590780006032. Reviewed stills and decoded movie samples retain connected paint without the old broad gaps. Dakk retains final art acceptance: requested margins missed, faint alpha specks/fringe preserved, wide-arena scale small and family poses exaggerated. No further intake or repaint is needed for this bounded correction unless Dakk requests art changes.
 
@@ -2467,7 +2467,7 @@ Dakk authorized three independent calibrations plus one certification on exact i
 
 Run i5-v2-b4f191c3538f-calibration-1 is INSTRUMENT-FAIL after39,339ms: phone middle-scroll-list thumb settlement sees ready132×132 rows cmem-0748 and cmem-0752 absent from broker leased/cached key inventories. Exact-run verification validated the terminal refusal. Lifecycle complete,0 completed outcomes/78 blocked,2 partial phone screenshots,0 successful calibration samples. Runs2–3 and certification did not run. No active v2 budget was emitted and no memory/PR43 PASS is claimed.
 
-The new producer authority matched7b7285aa54eb674deb0a32e967cc346faac3197d7b6e2e6bcc2270f902cd0839; v2 measurement authority de50d47c26fbc084415bef528cd5a06f487b7829e14d149c824f2d2e73fb1767. Edge153.0.4234.48/CDP1.3 matched. V1 budget SHA c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc is unchanged; no historical rebinding. Product source stayed clean at begin/end.
+The new producer authority matched7b7285aa54eb674deb0a32e967cc346faac3197d7b6e2e6bcc2270f902cd0839; v2 measurement authority 4864eeed5ab454c1ec910f2b26e5c928f72de36283f4abcfd644ce1995ebc54d. Edge153.0.4234.48/CDP1.3 matched. V1 budget SHA 340a67c1e6d6f4f7e120c7f13e1e06a674757ddcd2a023c100e4f7f65493fbd9 is unchanged; no historical rebinding. Product source stayed clean at begin/end.
 
 Packet: audits/I5_V2_EPOCH_20260925/README.md and DIAGNOSIS.md, full lossless raw report/generated instrument, command logs, images, hashes and monotonic execution ledger. Source inspection identifies paintedThumbLease bypassing the broker while artDiagnostics exposes only broker inventories. That coverage gap is the leading explanation, not a memory measurement. Keep the gate: provide truthful painted ownership/resource counters and negative controls, including release/trim behavior.
 
@@ -2600,7 +2600,7 @@ OpenAI/Codex on macOS: /Users/dakk/Projects/celestial-frontier-openai-mac, opena
 
 The prior diagnosis is now signed as4ff2fad720e1d5734ce95a77c8a401cd8884e24e, signature G (e6288e/47fedf). Its old signing-wait statements are historical; recovery receipt is in audits/PYTHON_OPEN_POSE_20260923/diagnosis-signing-recovery.json. Prior reviewfe8f6ca1 was successfully pushed with actual remote equality. No push of4ff2fad7 or this correction is claimed.
 
-**Completed bounded Python correction:** audits/PYTHON_OPEN_POSE_20260923/README.md, result.json and review-sheet.png. One corrected built-in imagegen master, exact kit prompt/genome/reference hashes, manual declaration, candidate02/fit01, all refusals and films retained. Static02 passes12 actions×121 plus968 presentation samples; exact geometry rest and source-pixel rest0. Selected bindinga9524c5a617cf26d01d4697ed0164a07b5dc31ee83e2418a4a4b705195f21c90; recordb287ddc58c565fb9cfaae5f8c474177e38ad9dd07b4bf9ad959dbeb9aecf9b41. Selected topology has12 required joins and zero observation-only cut boundaries.
+**Completed bounded Python correction:** audits/PYTHON_OPEN_POSE_20260923/README.md, result.json and review-sheet.png. One corrected built-in imagegen master, exact kit prompt/genome/reference hashes, manual declaration, candidate02/fit01, all refusals and films retained. Static02 passes12 actions×121 plus968 presentation samples; exact geometry rest and source-pixel rest0. Selected binding29ef831d533b59d4dd1d42cbc85b6df5f935edc8cef1fc5fb498eb7fd798d893; recordb287ddc58c565fb9cfaae5f8c474177e38ad9dd07b4bf9ad959dbeb9aecf9b41. Selected topology has12 required joins and zero observation-only cut boundaries.
 
 Native20260923-python-open-native-03: zero left/right rig refusals,602 live/605 encoded frames,1268 dense containment observations, per-rig p950.5/0.5ms and whole-stage1.100000023841858ms. Both identical snakes use scale145.82590780006032. Reviewed stills and decoded movie samples retain connected paint without the old broad gaps. Dakk retains final art acceptance: requested margins missed, faint alpha specks/fringe preserved, wide-arena scale small and family poses exaggerated. No further intake or repaint is needed for this bounded correction unless Dakk requests art changes.
 
@@ -2785,7 +2785,7 @@ Tarantula item9 is STOPPED_SECOND_PAINT_FAILURE, signed7a6f45980eeb5c1c400a55be1
 
 Octopus item10 passes locally, signed7525aa0bdc56c5eb8ee4c8576bf3c610918aed8c and signature verified (tool71afcc). Its prior signing refusal remains retained, with unknown cause. Original fit and master remain intact; source-delta records the signed orientation-owner changes since its historical static proof. One current-source static02 qualification passes, but native02 measured right5.100000023841858ms above3.5ms with0refusals. A separate legal40/80 authored mesh, preserving master/presence/landmarks/parts/contact policy, passes static03 all14rows/exact rest0channels. Native20260922-octopus-native-03 records0/0dense/live refusals,602liveframes/10016.3ms,605encodedframes/10.083894s,complete9376ms script; per-rig p95left1/right1.3000000715255737ms,whole2.399999976158142ms. Packet10-cephalopod retains both films, source hashes, original fit, exact prompt and review sheet. No shared solver, gate or protected input change.
 
-Fruit Bat item11 reaches STOPPED_SECOND_PAINT_FAILURE, packet11-flyer-membrane signed330e060b7629fc7851c7964e1e64838e1966beb7 and signature verified (toolfd802b). Run20260922-fruit-bat-repair-02 retains the one corrected painting: both wings now point rearward, but the near-wing distal silhouette is clipped at the left edge and the shallow elbow-to-wrist rest phase was not achieved. Parent and independent visual reviews agree; no gate result is inferred from visual review. Delivered1254²RGBA master9364c0aa98efdae80a657ca7fe123e41199edc8acdacbefa067d53bc5764c1fd and exactpromptac35985bad045112262afcbcbce04fa80f1c6f0ac3eced96df346c82270794ef remain unchanged. Manual presence retains tailabsent/nohidden/nofolded with explicit clipping note; missing anatomy is not invented. No corrected-image intake/static/native/CPU was performed; original four ARAP failures and habitat refusal remain historical. No third paint or protected change.
+Fruit Bat item11 reaches STOPPED_SECOND_PAINT_FAILURE, packet11-flyer-membrane signed330e060b7629fc7851c7964e1e64838e1966beb7 and signature verified (toolfd802b). Run20260922-fruit-bat-repair-02 retains the one corrected painting: both wings now point rearward, but the near-wing distal silhouette is clipped at the left edge and the shallow elbow-to-wrist rest phase was not achieved. Parent and independent visual reviews agree; no gate result is inferred from visual review. Delivered1254²RGBA master9364c0aa98efdae80a657ca7fe123e41199edc8acdacbefa067d53bc5764c1fd and exactprompt9046f8bdb5185d9bdc893366d79d3d68fb647b3871eeea82a8e2a290310000cd remain unchanged. Manual presence retains tailabsent/nohidden/nofolded with explicit clipping note; missing anatomy is not invented. No corrected-image intake/static/native/CPU was performed; original four ARAP failures and habitat refusal remain historical. No third paint or protected change.
 
 Centipede item12 reaches STOPPED_PROTECTED_CONTACT_REPRESENTATION, packet12-myriapod awaiting signature. Run20260922-centipede-capacity-02 retains one fresh capability probe of two proposed graph constructions, not a repeat of the historical unsupported-topology call. Existinggraph29joints/8legs/13core; the conservative15pair capacity scenario produces73joints and exact `Error: Skeleton pose: joint budget` against64. Compact43joint/32proposedpart construction refuses `Error: Contact contract: unsupported leg leg0Far`; current owner requires two-bone planted chains.16source/probehashes unchanged. At least15nearlegs are visible; fullfar/paircountunknown, no admittedpresence invented. Originalmaster/prompt and manualpresenceobservations retained. No new repaint, IC3/static/native/CPU, solver or gate change; correctivepaint remains unused. This is a boundary in the tested current model, not a proof against all possible representations.
 
@@ -2819,7 +2819,7 @@ Tarantula item9 is STOPPED_SECOND_PAINT_FAILURE, signed7a6f45980eeb5c1c400a55be1
 
 Octopus item10 passes locally, signed7525aa0bdc56c5eb8ee4c8576bf3c610918aed8c and signature verified (tool71afcc). Its prior signing refusal remains retained, with unknown cause. Original fit and master remain intact; source-delta records the signed orientation-owner changes since its historical static proof. One current-source static02 qualification passes, but native02 measured right5.100000023841858ms above3.5ms with0refusals. A separate legal40/80 authored mesh, preserving master/presence/landmarks/parts/contact policy, passes static03 all14rows/exact rest0channels. Native20260922-octopus-native-03 records0/0dense/live refusals,602liveframes/10016.3ms,605encodedframes/10.083894s,complete9376ms script; per-rig p95left1/right1.3000000715255737ms,whole2.399999976158142ms. Packet10-cephalopod retains both films, source hashes, original fit, exact prompt and review sheet. No shared solver, gate or protected input change.
 
-Fruit Bat item11 reaches STOPPED_SECOND_PAINT_FAILURE, packet11-flyer-membrane awaiting signature. Run20260922-fruit-bat-repair-02 retains the one corrected painting: both wings now point rearward, but the near-wing distal silhouette is clipped at the left edge and the shallow elbow-to-wrist rest phase was not achieved. Parent and independent visual reviews agree; no gate result is inferred from visual review. Delivered1254²RGBA master9364c0aa98efdae80a657ca7fe123e41199edc8acdacbefa067d53bc5764c1fd and exactpromptac35985bad045112262afcbcbce04fa80f1c6f0ac3eced96df346c82270794ef remain unchanged. Manual presence retains tailabsent/nohidden/nofolded with explicit clipping note; missing anatomy is not invented. No corrected-image intake/static/native/CPU was performed; original four ARAP failures and habitat refusal remain historical. No third paint or protected change.
+Fruit Bat item11 reaches STOPPED_SECOND_PAINT_FAILURE, packet11-flyer-membrane awaiting signature. Run20260922-fruit-bat-repair-02 retains the one corrected painting: both wings now point rearward, but the near-wing distal silhouette is clipped at the left edge and the shallow elbow-to-wrist rest phase was not achieved. Parent and independent visual reviews agree; no gate result is inferred from visual review. Delivered1254²RGBA master9364c0aa98efdae80a657ca7fe123e41199edc8acdacbefa067d53bc5764c1fd and exactprompt9046f8bdb5185d9bdc893366d79d3d68fb647b3871eeea82a8e2a290310000cd remain unchanged. Manual presence retains tailabsent/nohidden/nofolded with explicit clipping note; missing anatomy is not invented. No corrected-image intake/static/native/CPU was performed; original four ARAP failures and habitat refusal remain historical. No third paint or protected change.
 
 Budget UNFROZEN/public last verified; private fallback3000. No new hosted attempt, PR/label/merge/release/deploy or general fetch/sync. Local evidence makes no certification claim about PR43's different integrated source.
 
@@ -5013,7 +5013,7 @@ full reinstall/render or timeout increase. This diagnostic is the next implement
 
 The unchanged package03 remains /private/tmp/cf-mobile-pack-20260909-species-03:
 56,529,354 bytes/53.91 MiB, 97 files, manifest SHA256
-5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c.
+bfd3fba993741a787ddb472336488427e43f64b2a6020eb804917683759c6da0.
 Its runtime is 37,451,014 bytes/35.72 MiB, manifest SHA256
 ddc09e2128a6fbfea11b3c6b0596359eb97fd7f18198fed38c74b3736502476b.
 This batch's fidelity owner is detached and not imported by the app; no package rebuild or
@@ -5315,7 +5315,7 @@ The entire previous handoff is preserved verbatim at the top of ROADMAP_ARCHIVE.
 - `runtime-pack.mjs`: builds/verifies the exact locked ORT WebGPU + actual Asyncify JS/WASM closure,
   Tokenizers, project helpers, reference and available notices as static `/__local_ai/` files.
   First actual pack is **28,393,596 bytes / 27.08 MiB**, 23 payload files plus inventory, no weights.
-  The separate external inventory SHA is `e2442474afd168c2a7a9f1fb798591583b3ead962ef9135a0980c0f9d739ae21`.
+  The separate external inventory SHA is `6f6e8afcecc7b6955260961fe5988ec708086f79d73194ad5d339f675273ed39`.
   Local output `/private/tmp/cf-runtime-pack-20260909-build-01`; rebuild from pinned sources rather
   than depending on temporary survival. Combined app/update/PWA, distribution and phone gates stay open.
 - Static runtime config now uses an installed-only schema. No automatic model fetch or developer
@@ -6234,7 +6234,7 @@ It shows one painted Civet with narrow water contact, 12 local transforms and fi
 44 rig tests, study/three V2 typechecks/root validation and final desktop/phone native PASS remain
 bound to that study. 34 frame observations/18 controls/3 WebM per mode, original first TypeScript and
 native filter-toggle FAIL retained. It is planted image deformation, not finished fluid locomotion.
-Its report SHA is `1d230a9cbded6b5ae256c1dff14672f23869e35af8ccc7331924363efc0cc917`, fifteen-file
+Its report SHA is `ce01bd86bbf50665fce5d56af4cf74e5d9b1cdb8b3735a21f2dc58788585dacc`, fifteen-file
 review inventory SHA `a485c8f4fe04876205d229db6d02e41ccf0bd24706418d43dc5a92be22e02e50`.
 The 185-file gzip recovery/readback/reverse-check pointer is historical; afee1924 contains the work.
 Earlier 58519/58521 reviews are unchanged comparisons. No new native game preview was launched here.
@@ -6254,7 +6254,7 @@ phone/disposal, and original scrollbar geometry was not fully retained. The orig
 The [cohesion packet](audits/CREATURE_SCENE_COHESION_20260908/README.md) retains its rejected busy
 fur generation, damaged nose/tail matte, selected calmer original-RGB/nose-alpha repair, eight
 motion probes/eleven controls per final mode and first zero-alpha legacy-ground-ruler failure.
-Its final report SHA is `2707b001df593cbc7d163d556457d95a54bf8d544de5e189b037da179941bbb7`.
+Its final report SHA is `a4e1384cf671b59aadd38806eb14129d32adbe92b2e68d8b13a829fc8b0a2e95`.
 Both packets and all original first failures remain untouched by this batch; no automatic red
 retry, cloud backup retry or retroactive PASS. Fine alpha and human acceptance remain open.
 Earlier 374-file and combined 734-file staging recoveries/readback/reverse-check receipts remain
@@ -6416,7 +6416,7 @@ snapshots with their own dependency installs and locks.
 
 The first a84f4ea9 rehearsal remains FAIL:344 files/4,104 tests PASS,4 files/5 FAIL,1 skip;
 TypeScript/art/override/spec were not reached. Raw14,150-byte log SHA
-`e052d24200bc36c60e24f7bdd2bb567e16c2daab80b9cb62a95f4ace4f022db8` stays intact.
+`5a0d53416ef2cc561446ab280f6a1bf434228b05e14e1035c8c4ccf31ec18139` stays intact.
 AppChrome now owns detached upper/dock geometry; Main preserves Earth placement, visible Planetside
 precedence and scaling. The synthetic bundle includes the sealed Earth worker. Exact83-bullet
 text SHA is `073174fbd708495367c01a51b488ddb78cb8730de078e0e30d3b720eab8d1158`.
@@ -6509,7 +6509,7 @@ The packet includes exact categories. No workflow or legacy main.js/HTML change 
 
 One clean tracked-only develop rehearsal on a84f4ea9 stopped at344 files/4,104 tests PASS,
 4 files/5 tests FAIL,1 skip. TypeScript/art/override/spec/browser stages were not reached. The
-first raw14,150-byte log stays SHAe052d24200bc36c60e24f7bdd2bb567e16c2daab80b9cb62a95f4ace4f022db8.
+first raw14,150-byte log stays SHA5a0d53416ef2cc561446ab280f6a1bf434228b05e14e1035c8c4ccf31ec18139.
 Repairs: AppChrome now owns detached upper/dock geometry; Main preserves accepted Earth placement,
 visible Planetside precedence and scaling. The build-mode fixture includes its sealed Earth worker.
 The83-bullet authority now binds actual current text SHA
@@ -6761,7 +6761,7 @@ remain exact; five old residents are absent. Creature luma ratio .905494, alpha 
 Water retirement restores pixels, then the live hero sibling is actually rendered. Both mesh
 geometries, six buffers, two textures/sources/bitmaps and all owned roots retire; repeat is inert.
 Runtime/cleanup errors 0; browser closed. Report SHA
-`1d230a9cbded6b5ae256c1dff14672f23869e35af8ccc7331924363efc0cc917` binds ten source inputs.
+`ce01bd86bbf50665fce5d56af4cf74e5d9b1cdb8b3735a21f2dc58788585dacc` binds ten source inputs.
 
 **First failures retained:** `static-first.json` passed 44 rig tests, then stopped at study
 TypeScript MIME/readonly-filter errors. `native-first/report.json` passed desktop motion, then
@@ -6788,7 +6788,7 @@ phone/disposal, and original scrollbar geometry was not fully retained. The orig
 The [cohesion packet](audits/CREATURE_SCENE_COHESION_20260908/README.md) retains its rejected busy
 fur generation, damaged nose/tail matte, selected calmer original-RGB/nose-alpha repair, eight
 motion probes/eleven controls per final mode and first zero-alpha legacy-ground-ruler failure.
-Its final report SHA is `2707b001df593cbc7d163d556457d95a54bf8d544de5e189b037da179941bbb7`.
+Its final report SHA is `a4e1384cf671b59aadd38806eb14129d32adbe92b2e68d8b13a829fc8b0a2e95`.
 Both packets and all original first failures remain untouched by this batch; no automatic red
 retry, cloud backup retry or retroactive PASS. Fine alpha and human acceptance remain open.
 Earlier 374-file and combined 734-file staging recoveries/readback/reverse-check receipts remain
@@ -6955,7 +6955,7 @@ all owned shadow/filter resources retired while borrowed layers/sibling remain l
 base study disposal. Missing/shifted/absent shadows, excessive light and background grade reject.
 The first native FAIL (legacy ground ruler wrongly required zero alpha despite retained
 translucent painter shadows) remains intact; phone/new controls/disposal were not reached there.
-Final report SHA `2707b001df593cbc7d163d556457d95a54bf8d544de5e189b037da179941bbb7`.
+Final report SHA `a4e1384cf671b59aadd38806eb14129d32adbe92b2e68d8b13a829fc8b0a2e95`.
 
 [Latest local comparison](http://127.0.0.1:58521/) is served by PID 7541 / exec 84561 from the
 immutable 17-file / 1,837,000-byte native-ground-ruler/dist. Inventory SHA
@@ -7032,7 +7032,7 @@ native buttons complete finite clips and cancel on Reduced/Effects Off/DOM Hide.
 geometries and actor roots, Earth container and three textures/sources/bitmaps retire; repeat
 cleanup is inert. Zero Runtime/cleanup errors; browser closed. Document-hidden is synthetic,
 phone inputs are CDP mouse events under emulation: no physical touch/background/Safari/PWA claim.
-Native report SHA: `cd84e42ea90c7f05a0754d4efa5595dea8e8fc20500bafd5ff4b1d87a9db97d9`.
+Native report SHA: `4ec3ba652b4cf8e5e0af964b2e09a5c4a8230660f9e346c57ab39f4cff3e522f`.
 
 **All first failures remain:** two opaque image outputs, two matte visual failures, first native
 paw-pixel FAIL (analytic point lock missed an interpolating triangle; tiny ruler had no solid ink
@@ -8211,7 +8211,7 @@ Completed third-star code/evidence remains in
 Current producer16c4a7b9f07089dae7e8dc9aae1b6b6fb5378891e54a2ba29aadf15ea4746f60;
 draft83 digest8379d041dda1466c843b242e0ab29cf6b38e28f56035df5801d428579bd99ebd.
 First crowded-map click selected a neighboring seed and remains red; no Survey-entry claim.
-Its manifest0a3534b6c70f84c93878ce366b955a4432409714d0cf886ff824298b459fc687 and
+Its manifestd2748aa311dcafef4a20e978940ddc208da067c52ee7bc1901cad6a99028f19e and
 82-file ignored trinary-evidence-dist-20260908 remain unchanged. Full former handoff is archived.
 
 Initial647-file recovery remains port/v2/apps/game/smoke/charm-study-staged-20260908.json.
@@ -8260,7 +8260,7 @@ recovered. Its canonical run passed324 files/3494 tests/1skip then stopped stati
 for one unused test binding. The binding is removed with fixture creation retained and now passes
 static checks. **No browser stage ran in that U2 attempt.** Full9-carrier checkpoint:
 [audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json](audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json).
-ManifestSHA8a5b5f64afb656630194bc781a82a37536d54f86b3c8d4c421213ab5560b06e3.
+ManifestSHAdeb78fc5e4119932e77317b325e02daca249bc93900c9d0e9b7b34338b376158.
 Do not run its old product3f1578e-pinned runner against this audiovisual source. Future admission
 must be deliberately scoped to the then-current unchanged committed source and stop first red.
 
@@ -8361,7 +8361,7 @@ Current producer `16c4a7b9f07089dae7e8dc9aae1b6b6fb5378891e54a2ba29aadf15ea4746f
 83-bullet draft digest `8379d041dda1466c843b242e0ab29cf6b38e28f56035df5801d428579bd99ebd`.
 Measurement `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler and ceilings
 unchanged. Audit manifest SHA256
-`0a3534b6c70f84c93878ce366b955a4432409714d0cf886ff824298b459fc687` binds 16 sources, 5 references
+`d2748aa311dcafef4a20e978940ddc208da067c52ee7bc1901cad6a99028f19e` binds 16 sources, 5 references
 and 38 evidence files. All 82 inspected build files are preserved unchanged at ignored
 `port/v2/apps/game/smoke/trinary-evidence-dist-20260908`; do not overwrite or rebind old evidence.
 No current Compendium/Slice/Glass certificate, physical-device/human acceptance or SceneMemory
@@ -8413,7 +8413,7 @@ recovered. Its canonical run passed324 files/3494 tests/1skip then stopped stati
 for one unused test binding. The binding is removed with fixture creation retained and now passes
 static checks. **No browser stage ran in that U2 attempt.** Full9-carrier checkpoint:
 [audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json](audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json).
-ManifestSHA8a5b5f64afb656630194bc781a82a37536d54f86b3c8d4c421213ab5560b06e3.
+ManifestSHAdeb78fc5e4119932e77317b325e02daca249bc93900c9d0e9b7b34338b376158.
 Do not run its old product3f1578e-pinned runner against this audiovisual source. Future admission
 must be deliberately scoped to the then-current unchanged committed source and stop first red.
 
@@ -8518,7 +8518,7 @@ Current producer66663069bae984202dfd0726e21103e1d8b9412516494e216ac4dbb56771768b
 draft83digest45e1ef079ef78b0b7cad62a2e4a80df16f2aa95911a2eef7681b78956f58c129.
 Measurement/ruler/ceilings unchanged. No current native Compendium/Slice/Glass certificate or
 SceneMemory activation. Earlier U2/other observer failures remain preserved below and in audits.
-Audit manifestSHA0aee810fc80bcf5b038cb9940f369c5978eace31bffcac339816d6190167a0b6.
+Audit manifestSHA678dcf7ff9652f8c49c44b0414ecf9fc9834b9dd4f138b196d91c798dae64cf4.
 
 Completed files are staged with the preceding campaign. Exact index recovery:
 `port/v2/apps/game/smoke/charter-header-staged-20260908.json` plus adjacent compressed binary patch.
@@ -8621,7 +8621,7 @@ to the prior successful output; CVDisplayLink warning was nonfatal.
 for vector/export work. No product code changed; the audio candidate above remains next.
 
 PROTO audit manifest SHA256
-`9048c747374e591f0d880101b254a0b8687c3325d096f3ef7c9b6cfcdd4bdeea`.
+`41910e779237138f567f0702e5a8b1d06bde3e411b6f325b43cad54b77780ebc`.
 The finished increment is staged with the preceding work, with exact index recovery in
 `port/v2/apps/game/smoke/protostar-staged-20260908.json` and its adjacent compressed binary
 patch. Preserve every prior snapshot; no commit-signing retry occurred. No command or native
@@ -8657,7 +8657,7 @@ The previous Wolf source/reference manifest describes its original265-file check
 its staged recovery patch preserves those bytes after current source/reference updates.
 
 The current MAG manifest SHA256 is
-`e45d8eaea5e0bbb3c3820f8f6e55c2a6263359c50b19ec11e09e7d5f72a1359a`.
+`93564fe9a0a064e061977839cf36b49472ce9af4c11cfdc1e3ba8eadea900ded`.
 Finished work is staged locally; `port/v2/apps/game/smoke/magnetar-staged-20260908.json`
 and its adjacent compressed binary patch preserve the exact new index. Keep both earlier
 snapshots unchanged. Signing remains blocked; no retry without restored-agent evidence.
@@ -8708,7 +8708,7 @@ recovered. Its canonical run passed324 files/3494 tests/1skip then stopped stati
 for one unused test binding. The binding is removed with fixture creation retained and now passes
 static checks. **No browser stage ran in that U2 attempt.** Full9-carrier checkpoint:
 [audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json](audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json).
-ManifestSHA8a5b5f64afb656630194bc781a82a37536d54f86b3c8d4c421213ab5560b06e3.
+ManifestSHAdeb78fc5e4119932e77317b325e02daca249bc93900c9d0e9b7b34338b376158.
 Do not run its old product3f1578e-pinned runner against this audiovisual source. Future admission
 must be deliberately scoped to the then-current unchanged committed source and stop first red.
 
@@ -9670,7 +9670,7 @@ with one SURFACE_OVERLAP and zero instrument failures. Planetside y210–390 ove
 y367.5–444 by22.5px on320×568@2. Outline and dock controls passed. The later native Charts
 Settings flow, large-phone and Slice were NOT RUN. Do not claim the U1 gate is green.
 Nine carriers: audits/UI_U1_LOCAL_CHECKPOINT_b457a7a_20260906/manifest.json, SHA-256
- e59a612c1bf505e94a4dfad541584e71c2f21a7ac7f01bbc4da71de0afd90013.
+ f6828201fc7fbb8e646621e86d798f2b02eb3ee2d9c65b37636149f9beb03c2a.
 Current audit: audits/UI_U1_HINT_CONTRAST_20260906.md.
 
 NEXT DECISION: audits/UI_U2_PROPOSED_SCOPE_20260906.md is ready for Dakk. It proposes moving to
@@ -9734,7 +9734,7 @@ Clean1609cf3 develop staticPASS312files/3333passed/1skip; SlicePASS370012ms/zero
 exact named verifierPASS. Both rail instrument corrections are proved. Small-phone then RED:
 one TEXT_CONTRAST_LOW for hintpill (modeled1 vs4.5), zero instrument failures; large NOT RUN.
 All23carriers retained in audits/UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json,
-SHA1ad81a5a4d7e94d362d095c6f73d7624aef309cf6a0fb248cc61a854d0a8265b. New audit:
+SHA735f1aa8ae937c7d802efa8ddbe6843243e2bef3a438ed2bba23e0ab44cc2251. New audit:
  audits/UI_U1_HINT_CONTRAST_20260906.md. Historical ce89128 RED and all earlier evidence remain.
 
 Preparation PASS:25 stroke tests,72 release/budget/evidence tests,root TypeScript,evidencebuild
@@ -9832,7 +9832,7 @@ Current audit: audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md.
 Historical ce8912864fabbe5624651e76c06b94f95b734f39 SliceRED remains noncertifying/dirty-diagnostic
 because ambient .DS_Store was included; tracked source and begin/end receipts were unchanged.
 Manifest audits/UI_U1_LOCAL_CHECKPOINT_ce89128_20260906/manifest.json SHA256
-6d2645e2342cd32fc1f0a95234ee76ef53ad342d16035a3dba1702c85ed97e13 retains28carriers and19PNGs.
+a4bb866bbb3106e431164da044f8040de20be4b11c232b66f29ccda684d218c1 retains28carriers and19PNGs.
 Static311files/3322tests/1skip and normal3viewPASS remain that source's completed checks; neither
 phone canary ran there. Isolated381ddf5 restorationPASS stays separate and complete.
 
@@ -9915,7 +9915,7 @@ Do not retry ce89128 or repeat the complete normal review solely because Slice w
 Current audit: audits/UI_U1_LOCAL_CHECKPOINT_20260906.md. Fresh resume:
 audits/UI_U1_LOCAL_CHECKPOINT_RESUME_20260906.md. Manifest
  audits/UI_U1_LOCAL_CHECKPOINT_ce89128_20260906/manifest.json SHA256
-6d2645e2342cd32fc1f0a95234ee76ef53ad342d16035a3dba1702c85ed97e13; all 28 carriers/decompressed hashes
+a4bb866bbb3106e431164da044f8040de20be4b11c232b66f29ccda684d218c1; all 28 carriers/decompressed hashes
 verified, including 9 normal-review and 10 Slice PNGs, exact red report/raw log and source receipt.
 Root records validation also PASS: zero boot/render errors and the unchanged50-probe fingerprint;
 its separate compressed log/hash is indexed in the current audit.
@@ -10392,7 +10392,7 @@ Settings and landscape Settings/collision/Close passed; final restoration verifi
 Two phone PNGs retained; tablet/desktop, comparison sheets, Slice and both phone Glass rows NOT RUN.
 No retry or downstream stage. Current manifest:
 audits/UI_U1_COMPACT_CONTROLS_c57aaae_20260906/manifest.json, SHA256
-2fdd35a7609d65d98acdca61b341a5d63dbe395c505617704edc377c5437e964; all18 carriers/raw hashes verified.
+ac11217c0e28f83544796fdf5939d5c125645dd82ab7b60d8bef959d4f32aaa2; all18 carriers/raw hashes verified.
 The main phone PNG was inspected. Desktop text fit is implemented but not browser-verified.
 Review/Slice geometry and negative controls cover the new arrangement in code. Draft81
 bullets/authority bcad7fd27792ef2160b8451cdb2d366a36c9184bcc579655af3cb41129edebd7.
@@ -10537,7 +10537,7 @@ map to frame-coalesced resize → rerender → same-Cosmos trail redraw, not gal
 No unsolicited transition recurred; its cause is still unproven. Stop after this bounded result.
 Slice/both phone Glass rows NOT RUN; no full U1, certification, device or visual-acceptance claim.
 Manifest audits/UI_U1_NAVIGATION_95c9a1f_20260906/manifest.json SHA256
-728f9779812dafa96918f0e3a957e89efd0f54286414e7186387fafcf328a28d; all23 carriers verified,
+17a5a717ffc58e8ce832b9a871221ce70a5c1c702911860b9bf16cbab645c9ba; all23 carriers verified,
 including generated JS/maps and resolved stacks. Current nine PNGs supersede the older image set
 as current-source review material, without changing human approval.
 
@@ -20927,8 +20927,8 @@ must not invent those decisions merely to call the roadmap complete.
 - **Preserved evidence:**
   `audits/ARC1C_SCENEMEM_PR35_FEED_SUMMARY_HEAP_PLATEAU_RED_20260830_8792E8A.json.gz` is **49,864
   gzip / 788,479 raw bytes**. Gzip/raw SHA-256 is
-  **ddffe7c9c6a3f70be691bbf2aace67dcaf589c9d51bed49815faaeca80e9b2ab** /
-  **26123f30de359a2a89802f8b52a085eca44383b9326135e4f426f0846b34ba13**. The original two-pass
+  **d2c32fe9a552d96233ae57e774e7f45a64699c2b8b2dd98436a171c42cf51210** /
+  **c80107681b764a69508972a6fab104269d6dcd34316199e9f95dd0f13c0aeadd**. The original two-pass
   report remains immutable FAIL; it is never retried or relabelled.
 - **Diagnosis:** desktop scored aggregate range was **525,716 B** against **524,288 B** and maximum
   positive slope was **168,448.8 B/cycle** against **131,072 B/cycle**. Product ownership stayed
@@ -24971,11 +24971,11 @@ findings only after that review.
   Independent red-diagnosis and budget-policy audits agree with that disposition.
 - Immutable current-campaign carriers:
   - Layout `audits/PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260829_001955334.json.gz`: raw/gzip SHA-256
-    `bd2dacb071e4f667a0565b2cd43de06461adcc228bc60b1b37700bbf24f3a813` /
-    `8a922d61d7195db624984f4ca735b82b5076955d7c641295061cc252573cb000`;
+    `bdd142b55b780467a1669ef1d33d59ac32509f3e41b51fe4edf5f6214a6c7c1c` /
+    `db8982af855a365e64419baab09cbd8d603e785e5c22d116434ddc82a8407ed1`;
   - SceneMemory `audits/ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260829_002021315.json.gz`: raw/gzip
-    SHA-256 `1355c8a67e64a4cf058e6dd85aeda006396e37e7b885f97b724f173da440ec2d` /
-    `f9bb59a819c91babe2cc429a41b00ce43cf49582d7d8b0e7db4a13dbcce448c5`;
+    SHA-256 `22fb6f4af0e42c63591086fbd1c1723f3742f6801ae9f79c6f9bc194b6c28390` /
+    `3b1edc73b44c7104cb6282809d208bd096f0f8378f204f7d10f95a3db5175e27`;
   - Compendium `audits/COMPENDIUMMEM_CURRENT_INPUT_FAILURE_20260829_002129399.json.gz`: raw/gzip
     SHA-256 `c5adaca207770251b48b3cadf634d80bd03cb55f589814fd3e93c8c635aba5d8` /
     `25292bcd0ff55a32842c0958d25ae9d299c1ef8470ca6dc7269ccdfd1c092716`.
@@ -25047,10 +25047,10 @@ findings only after that review.
   **163 files / 1,711 passed + 1 skipped**, all three typechecks, `artunused`, diff hygiene and exact
   current producer derivation.
 - Immutable stopped-chain raw/gzip SHA-256 pairs:
-  - Layout `9ad615522348a5b7c3da7e46230a4c03c3cf96501ebd4f119cb94635ced80a85` /
-    `8c6743839683b1917ba52dbf831967d9902de5be535954069caa140296ed6893`;
-  - SceneMemory `dede46d7dfb3d8bc6f57e054ebf2af7e21aa2292aa21c0e42c2663c59ec2b910` /
-    `025328bd245b90b0a9a54a75f77057309318f241ca5b122a8a3d0df012f4f98d`;
+  - Layout `f3f68458e6a5ca60209b1ff0414230a0740830c6eb445e1c8744e37f6f655025` /
+    `07da7fe2bcdd5b384abbd6fde8c7d94822c91c0966c50a82a0b5bd084c3e3793`;
+  - SceneMemory `06c2bf5fd4a2d0a0e6f2fa39d704f37e4eb2a84c343c790f30b8e30099990921` /
+    `3ce4684b13e446d88c2194c0ec61e3a85c1d6ae4b26e33e147f81006424e3506`;
   - Compendium `fa866a078532457531e0525217dde12f6e5a2230124634f7b0cd413f45b8b3db` /
     `0b3e90a0ce26e437823c506a7c1baddcc2f589f05fab94234819030439aa32c4`;
   - Slice report `9d047013a39f522485067f62b11503ddb951f690591b06367b607e9b75a9fef0` /
@@ -25093,10 +25093,10 @@ findings only after that review.
   repair battery is green: focused **65/65**, Slice/Glass report selftests, **163 files / 1,712
   passed + 1 skipped**, all three typechecks, `artunused`, diff hygiene and producer derivation.
 - Immutable stopped-chain raw/gzip SHA-256 pairs:
-  - Layout `01b0e841f175b013d1efbc4e78a9f9266333da23ef60ab9231ad3eccd50a6a17` /
-    `7116c9ea83faf8567019e6124c525782f1e5f29662c23a4d935c06fa263a74d5`;
-  - SceneMemory `006b0db985bc5a7522d37a545e76a9d2bc99206df060f53ec7233a042687c5b1` /
-    `10842e23a7d8702fd8448b6d1ed2a18733064a0ffe9a44e77b4fdc81abdf2e78`;
+  - Layout `e2016032e634ff71736c15277295969c42a6ff348e8f36d4b40bcc48f5abc977` /
+    `3225f13188946b5f8558e21c88218949a98eaee39a3d62a27e517e74dd734d53`;
+  - SceneMemory `60d537fff76a886ffa85cb9951885a6cc5332faa9777f972a2f071f22f8b0b28` /
+    `6748117a2a1458647a22ac5d1a88bc0c4d6066b376f7906836392eb863becfd4`;
   - Compendium `b3147fdeb91f74f56ffb58484fc37927ce140980f11d42a6bc5a0a39dc19101d` /
     `0459bb92d22c962e8f766774af0a0b4a26c9834c4595db2a347d0a8b273b729f`;
   - Slice report `7d51c63a68c2667f3e206514ae33b36a1b95cddbdffd4504c6b139be929d5ec7` /
@@ -27479,8 +27479,8 @@ closed. The current Arc 2 actions now consume the deterministic no-RNG form of t
   `20260823-pr33-cross-host-sla-certification` once without retry under exact Edge
   `151.0.4129.101`: 42/42 passed, lifecycle/cleanup completed, findings/fatals were empty, and the
   exact named verifier passed. Report raw/gzip SHA-256 are
-  `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
-  `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`.
+  `db93ce37d24e3a32256d232a2595c75a8c8ab101ba6edb553204e34571142c03` /
+  `a9249401f99d371a1ec256c0332d834f1d75c300befba2779bc6aeacbd02a6b7`.
 - Retained Linux replay preserves run `32618995487` as exact 40/42 red under its original budget,
   replays only the two answerability outcomes green under the active SLA, and makes all twelve
   999.999 ms targets pass while exact 1,000/1,000.001 ms fail. Target success, later ticker,
@@ -30079,7 +30079,7 @@ merge, or direct site write is part of this batch.
   type, generation, art-routing, coverage or browser finding. Do not retry this head and do not
   re-pin the sentinel.
 - The bounded repair restores `apphooks.ts` byte-for-byte to audited SHA-256
-  `c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a`
+  `e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285`
   and pre-batch Git blob `ba95d19349f3ae911f41a2903080c03816489767`. Precise dependency
   wording remains in the owning WorldGen facade, declaration, tests and refreshed references.
 - With those bytes restored, local `overridecheck` reports 1,014/1,014 routes, zero dead and

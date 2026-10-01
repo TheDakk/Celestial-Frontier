@@ -183,7 +183,7 @@
     {
       "path": "port/v2/packages/domain/strays/src/strays.verbatim.js",
       "bytes": 22644,
-      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+      "sha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c"
     },
     {
       "path": "port/v2/packages/domain/biome-profile/src/index.ts",
@@ -248,12 +248,12 @@
     {
       "path": "tools/baseline.json",
       "bytes": 82916,
-      "sha256": "6f9a42a29c7a3276a72417267254b59be4ebf9999dfa5656073988c1fbf8081c"
+      "sha256": "678fa4a971ee70b94b890a9e11f290980e5a6de18f6f540596892e79bbf5bb5a"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-runner.mjs",
       "bytes": 5452,
-      "sha256": "7c4407ed9aaca9717cdfc5b4ae010e2bf9b042b8e5394d9e5e46a37bedc356f0"
+      "sha256": "251f9008903b6752a9d3d40b320605ca88c854926ace3d5d027895d93c8af6cd"
     }
   ],
   "steps": [
@@ -315,7 +315,7 @@
       "log": {
         "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-focused.log",
         "bytes": 242,
-        "sha256": "dd395c14cf81c3d6098b7de7a8bd34e9316316b427d7cab5b727e5227f76c536"
+        "sha256": "34abb71c9441dfa591b32a1bdd3b114723e0bff2c76252be4d4f54ae4c4ab835"
       }
     },
     {
@@ -356,7 +356,7 @@
       "log": {
         "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-validate.log",
         "bytes": 1093,
-        "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+        "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
       }
     }
   ],
@@ -367,7 +367,7 @@
   "prior": {
     "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-results.json",
     "bytes": 14578,
-    "sha256": "c772da01d8ef7942ee40c373037de19148ee3f7cb23c5827dc5568a629ffe4f2"
+    "sha256": "cdcc6602909997e59f4b5e00d3dca164af7c38c30293a5a87da9c1b146768728"
   },
   "fix": "TS2352 in mutable adversarial deep-clone fixture: explicitly bridge readonly clone through unknown; no runtime behavior or assertion changes. Original146 focused passes retained; rerun only changed5-test file.",
   "legacyBefore": {

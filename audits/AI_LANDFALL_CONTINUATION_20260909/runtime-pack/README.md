@@ -6,8 +6,8 @@ Local authoring and verification only. The first focused controls passed **11/11
 
 The review output is `/private/tmp/cf-runtime-pack-20260909-build-01`. It has 23 inventoried payload files plus `runtime-pack-manifest.json`: **28,393,596 bytes (27.078 MiB)** total. Twenty copied files contribute 28,381,215 bytes; three generated files contribute 4,567 bytes; the inventory contributes 7,814 bytes. There are **no model graphs, weight shards or tokenizer data files**.
 
-External manifest SHA-256: `e2442474afd168c2a7a9f1fb798591583b3ead962ef9135a0980c0f9d739ae21`.
-Source-pin SHA-256: `e8e46745d13041b01b80fbffc8e16d489f9a0962914957b0783b35a559a90514`.
+External manifest SHA-256: `6f6e8afcecc7b6955260961fe5988ec708086f79d73194ad5d339f675273ed39`.
+Source-pin SHA-256: `d5fbd41c24d43a0f72732e45e15a260b8ed57e73ca74fc9cbffea4c533b60d76`.
 
 The standalone runtime leaves 105,824,132 bytes below the unchanged 128 MiB shipped-pack bound. This is **not combined application admission**: the application and this runtime must be inventoried together. The unchanged 256 MiB retained-update constraint still applies to the complete retained builds. Both qualification flags remain false; no cache policy, service worker or automatic update was added.
 

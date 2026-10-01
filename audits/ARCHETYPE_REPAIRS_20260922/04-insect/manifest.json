@@ -23,22 +23,22 @@
     {
       "path": "fit-02/intake-provenance.json",
       "bytes": 3530,
-      "sha256": "2e9a43e7438c116fcb33b6c1d5f42cf67ff6a05f43a65d26541deba7facc61be"
+      "sha256": "6450969ee1f9fd790dd708f2711edd6dc5e10afdb44001cabee2462102a1afc5"
     },
     {
       "path": "fit-02/refusal.json",
       "bytes": 1079,
-      "sha256": "e16f1c34ac0fc62fa964e668c0851e5f58e77471ae46a5ee3f7bee89203e79a9"
+      "sha256": "f02901d35eb9f084c53eb7ec712d082b530c93213c6d4c5c404a091db28ba803"
     },
     {
       "path": "generation-receipt.json",
       "bytes": 801,
-      "sha256": "aa1f88d53a94f56413afa53bda54d5235adde2249cd8a35a9dfc97b8d1e43d5b"
+      "sha256": "3fea5a8556f7fd699120ed166ed33bf3b84d37d981d35d6a999076add3e1615b"
     },
     {
       "path": "intake-02.log",
       "bytes": 1199,
-      "sha256": "f7ed54ee1fdda360ac597c0e079b807e1fe8b5dee3b6d72a4eb9490c7d1ed816"
+      "sha256": "6fdb2cc2fe3b595066aab9e6d7500e67db2596ca2d050c1185f380c590372b78"
     },
     {
       "path": "master.png",
@@ -53,37 +53,37 @@
     {
       "path": "prompt-prefix-receipt.json",
       "bytes": 461,
-      "sha256": "6e047c701594da83450bdf0f84278c6a16596fce64a9497660a902749e06ae21"
+      "sha256": "af6aa54a767470254fd94cffb87b44cb0b6f5aa9f88e316a5d5f4b2835b33712"
     },
     {
       "path": "prompt.txt",
       "bytes": 10237,
-      "sha256": "e4d9c972979a81a0b2ec2a68668a3945c44bf28113c997a4fb8f11e03ffde1a7"
+      "sha256": "df8949265c6b248a6476dc77eb6a948a374cf276656d759d603cc2834f1a2041"
     },
     {
       "path": "README.md",
       "bytes": 2318,
-      "sha256": "eb416ae11e0fd53d2404e138d7f8239d1f05da72abf0dc96babdb73db651a442"
+      "sha256": "e4185f322f4d364b651cfc387feef699a33f97d1be03ff1e9aa0061ba389e560"
     },
     {
       "path": "request.json",
       "bytes": 1260,
-      "sha256": "d6c5aba14946e7bbec01bf98539b6f97667befd35de73096c17899147eb99fe3"
+      "sha256": "cf86e61f0fa680d93c84610c2e2d9645badffa8b7e502433e022797ae64c337f"
     },
     {
       "path": "result.json",
       "bytes": 609,
-      "sha256": "3af545b2829ea65f6d4efd7f285cba83366665af5ce0df707cb249c950f5079e"
+      "sha256": "4e0028d99014783ce900f05fdd6bd4604dd3fb5059f8a474f70362d7821262a4"
     },
     {
       "path": "review-sheet-receipt.json",
       "bytes": 1064,
-      "sha256": "a9ec366b69a5af11f35d30c1749f7b15dec3ae8e575fb147396ad26412d79352"
+      "sha256": "0664d08a77bd37921d65f3e36ba02f96632fc5c4b3aada34c39137961eeedb62"
     },
     {
       "path": "review-sheet.mjs",
       "bytes": 3687,
-      "sha256": "666c6f213a01645feeed8f01c53a4a565ff69741d5760df235519e012852a8a7"
+      "sha256": "04f4df8c54154b4dfda0d33c21c375dbe19c8e15d44f9254ce85ff427db83553"
     },
     {
       "path": "review-sheet.png",

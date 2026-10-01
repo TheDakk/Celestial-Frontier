@@ -10,7 +10,7 @@ candidate was not used.
 - Original master: `audits/ARCHETYPE_REPAIRS_20260922/07-primate/master.png`
   SHA-256 `27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408`.
 - Original authoring: `audits/ARCHETYPE_REPAIRS_20260922/07-primate/authoring.json`
-  SHA-256 `402a13c6964f3abd00b71c2992c92ae12ef88888ac38d5be9d289860f402ebd4`.
+  SHA-256 `6597f62211f563f51bd752264ba0630b24f10129d098ca4de9366ff64e12d606`.
 - New authoring: `audits/ARCHETYPE_FINISH_20260923/07-primate/authoring.json`
   SHA-256 `89bdeced376527615844022b58d03afbcb343c32d5661e2d889d5f7c20e976a8` at creation, before any parent-owned landmark amendment.
 

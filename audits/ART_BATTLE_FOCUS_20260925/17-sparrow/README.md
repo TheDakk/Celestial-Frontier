@@ -4,7 +4,7 @@
 
 `painting-plan-entry.json` retains small round-headed songbird, thin legs, conical bill, short square tail/plain brown. One built-in generation with exact compiled kit/genome/contract prompt and receipt;1254-square alpha master unchanged, SHA256 `29dd709f2aef49d3675a482f2e9b2c0ea6433bb120353686d4529f4379288c91`. Plain warm brown with softly lighter throat form shading; both spread wings and thin perching feet visible. All anatomy in frame though larger than requested central box. Dakk art review pending.
 
-Manually authored17parts/19landmarks and explicit presence: both leg chains, both spread wings, complete tail/bill present, absent/hidden/folded empty. Ground standing habitat, no unseen undersides/airborne support inferred. fit01 retains record/IC-3/labels/parts/observed split/binding. Recipe `f92a0fe45ea5517a2246f72081ad5a4f793c84a6a901e4e55b55876acd9c0b8b`, original binding identity `2091ed328c8208fb2dae04d8b06b2e06585b2cb95fa1f425ee05b2b7ea7f1fdb`, binding file SHA256 `dc31b9d25d687f416443e5e1385f91224bc26bf0da2cb8d48eea1e308e3f0ff6`.
+Manually authored17parts/19landmarks and explicit presence: both leg chains, both spread wings, complete tail/bill present, absent/hidden/folded empty. Ground standing habitat, no unseen undersides/airborne support inferred. fit01 retains record/IC-3/labels/parts/observed split/binding. Recipe `a18a48201c1848332f0c0e9f3e82dba9e0f1b84e48fc9fb556dde2dfab66678d`, original binding identity `59bda4f29a89e83068eee53211e65a5ee03c051aa337c86f499064d5b25ee273`, binding file SHA256 `e6d1e8ae019bf8503d7aa73f7fd528b9c8e3d0ff4f7dc99c6045b64e32c368ca`.
 
 ## Exact failures and changed candidates
 

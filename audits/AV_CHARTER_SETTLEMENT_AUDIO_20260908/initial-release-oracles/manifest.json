@@ -4,7 +4,7 @@
     {
       "source": "port/v2/tools/slicesmoke.mjs",
       "snapshot": "slicesmoke.mjs.txt",
-      "sha256": "aa3878509864534ceeb85180978cad34ace1cda73d7a79ac5869233df2b5d0a8"
+      "sha256": "4ee3a2cc3a925acbc24cf74223eed12fad3fd8a73dbbc73eed36d605eb967e15"
     },
     {
       "source": "port/v2/tests/guide-release.test.ts",

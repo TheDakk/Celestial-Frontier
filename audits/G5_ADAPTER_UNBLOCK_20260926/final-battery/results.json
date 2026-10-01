@@ -17,7 +17,7 @@
         "--profile=develop"
       ],
       "exitCode": 1,
-      "logSha256": "f54776a280f40b071e8a7db316496ca7e7fa3e64946f5be3131ce64283a5e50d",
+      "logSha256": "f71ea80699a2aa01487072255a7b2a53467087e3d66205269a3ccb160c897f6d",
       "phase": "after two test-only repairs"
     },
     {

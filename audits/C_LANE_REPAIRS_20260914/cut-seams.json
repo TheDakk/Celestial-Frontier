@@ -503,7 +503,7 @@
     },
     {
       "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/report.json",
-      "sha256": "13ed381efdc5d0c4c0593a0dde2e3d65ce1666741c8f44aece6551a377f42f1c"
+      "sha256": "1b1a895718e563a869ea2b2bd8d34604ba1b9597139324a8f519cfde39060f36"
     },
     {
       "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/disc-only-rest.png",

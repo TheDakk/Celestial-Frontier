@@ -1,7 +1,7 @@
 [
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/stance-envelope-study.ts",
-    "sha256": "bfd9243605c97979fd39abd55383552e56365035a8675591df9572c161b4edeb"
+    "sha256": "5f99c28940cbf6217763c1344e3aa50eaff0b918bb0d1f15a711c7ceac7bbe3c"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/kinematics.ts",
@@ -33,7 +33,7 @@
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
-    "sha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+    "sha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timing.ts",

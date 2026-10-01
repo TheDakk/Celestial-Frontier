@@ -1,7 +1,7 @@
 {
  "schema": "cf.card-master/v1",
  "earthName": "Beetle",
- "recordRecipeHash": "4b89d2db6c013523c37610a75e04372f9e951f20a1f0faa115e38ebc3dcc81b1",
+ "recordRecipeHash": "df60796170ec29f898e6b51c71b23acae5dce3bf89a3bb2d93e661dc087a21d8",
  "source": {
   "master": "audits/ARCHETYPE_FINISH_20260923/04-insect/candidate-04-fit/master.png",
   "masterSha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb",

@@ -25,7 +25,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/mud-crab-native-04/report.json",
-      "sha256": "cd18c85368655b20fac3618eeff4eae2656b22dfc1b8d9e86fa371c10c8ef506"
+      "sha256": "b844e5fb92c6bcf2db9afa037238ff6b0c7ecbf7fca9273a9fcf4c986156945c"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/record.json",
@@ -37,7 +37,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/vent-crab-native-04/report.json",
-      "sha256": "c8a8e9ad538702e6e5996e8e5dfdbcd4470927f8a6a0be63a28c6f2b25bc96d8"
+      "sha256": "74b81f6e04f0573fc259c48f1de0060fc80579990a58de04a139213ad167c40f"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/persimmon-04/record.json",
@@ -96,7 +96,7 @@
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md",
-      "sha256": "5553693ba1e405fb7ec7abf060ba98719a3a1fbbda785a17cd6a73e6cf4a051c",
+      "sha256": "058d59284464aecd377bf1c85555d35aa9c28db1f26d0f2f3947ac56caf7bfff",
       "bytes": 12389
     },
     {
@@ -186,7 +186,7 @@
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/diagnosis-02.json",
-      "sha256": "3c9c3314b1c181fe6b324e986ef0ac6173f76d48178d82aabb4b1797333fc8a4",
+      "sha256": "e59036a329f04cd4858c1b8da7a6a36cee5ed869f8b86449938583301146e188",
       "bytes": 1049540
     },
     {
@@ -196,7 +196,7 @@
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/diagnosis-instrument-01.json.gz",
-      "sha256": "b606eef6b9c8be17700c0ba5925447c67df0234e29a2b87ec5cabe451cde5883",
+      "sha256": "ddfb5f985715677f532b4c5ff9c3c5136f0c76ab9c932aa91eab9066df400886",
       "bytes": 1150815
     },
     {
@@ -206,12 +206,12 @@
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/diagnostic-source-hashes-02.json",
-      "sha256": "83abde7ec26087d564a87b22161202986c2a09684046cd569cc1084fa7558484",
+      "sha256": "6654ee5bde805505419d6d12f81f77a1425605d454e92566d7c081df734b8d2e",
       "bytes": 8830
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/diagnostic-source-hashes.json",
-      "sha256": "96a42d42c4102ca1ec92f7f06872446e4d12526871512f31c976d5275a6c4da1",
+      "sha256": "cd5b80e84ded0bb7b9f9ac60f9cd4b1d206192b5e12e97c5271cdd27aaac54e5",
       "bytes": 8830
     },
     {
@@ -221,7 +221,7 @@
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/film-extraction.log",
-      "sha256": "80226b27a2d43079c4842c5f085c6acbd21b9e642ed4b690b4aca4ebca76f789",
+      "sha256": "e64e0a7fa938c30e533873795e1f16621c7b0b014adbcc136a6842c3e12dbd87",
       "bytes": 2792
     },
     {
@@ -266,7 +266,7 @@
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/instrument-01-retention.json",
-      "sha256": "d8eef61726924e537e0573a4d7c0ff5bf3bf14892f42461ab069e4c507ae43c2",
+      "sha256": "9a96299375ab78e3e2873ff0a7272c852b022a2cb823ac09a4da51bae05ef0bd",
       "bytes": 337
     },
     {
@@ -286,7 +286,7 @@
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/root-validate.log",
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927",
       "bytes": 1093
     },
     {
@@ -296,7 +296,7 @@
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/toolchain-check.json",
-      "sha256": "4329e0b1625a3703257ddc453a2470f5a9446b644eba1943b7088af748bb31fd",
+      "sha256": "559d04eee568ace08ba3fc16f58a53cb2120c95b7e886ed1594b8465c6b26e79",
       "bytes": 6905
     },
     {
@@ -306,7 +306,7 @@
     },
     {
       "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/toolchain-verify.json",
-      "sha256": "ff954f790b12d75cf1d4e305252c2c59bf59a945f9cd6cd5ef8326e5665e7f38",
+      "sha256": "f59d36b2b8e8f403362e1c44fd526ace866c779496039a5c964b8ffda1737be0",
       "bytes": 10033
     },
     {

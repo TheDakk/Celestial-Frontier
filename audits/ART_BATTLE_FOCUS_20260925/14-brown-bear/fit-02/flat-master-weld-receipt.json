@@ -1,8 +1,8 @@
 {
   "schema": "cf.flat-master-weld/v1",
   "sourceFit": "fit-01",
-  "sourceRecordSha256": "477ff21fa6cbac7deee2d8412f91b7fa6bf15a714a3a18940a8c6ea4895fe95c",
-  "sourceBindingSha256": "804678957bc6931929f8468640ed7bb3c4601adbb58cbd4e5f866f7d1fc74ed9",
+  "sourceRecordSha256": "630ec0fdeed894aded135fc276603afe2dde6b48c0e3f8982fd12a1f3a5497f2",
+  "sourceBindingSha256": "777b093634c9d5cfbc253d66f48815df7dd17defede9240f70a2b6a0cce78240",
   "sourceAtlasSha256": "9d374fe5e4397d6a90346601556909d1e1d85d2792a6ea3fec3a4a35e0ef6768",
   "helperSha256": "3acd9b70a9543c3fe57c95ab34800d9f53211d4f184976215fb1efbd7620baa3",
   "options": {
@@ -94,7 +94,7 @@
         ]
       }
     ],
-    "sourceBindingHash": "1b510f43d2fccff66ec315543e7ca2e1e37aa6828f665bd314ed69c026875a71",
+    "sourceBindingHash": "3a1f5089b0a4dad1e0e84a86a2f210c9ea35f1d4fe30e1ade467cc8dd648b5fa",
     "sourceVertices": 2591,
     "vertices": 3069,
     "sharedSupports": 881,
@@ -114,6 +114,6 @@
     ],
     "sourceCoordinateChanges": 0
   },
-  "bindingHash": "db34f6de657aec0e382662efad07ec4a46797e56a0a4130da48455b815e8c0cf",
+  "bindingHash": "cc132c36231bc98610bd7e285bf27c9d133bee14322f34a5514fddd333c6ac0a",
   "scope": "Only this unadmitted Brown Bear candidate. Explicit authored continuity joins only the observed interior root/spine patch boundary; other excluded surfaces stay independent. No solver/gate/limit change; no hidden pixels invented. Prior intake receipts describe inherited fit-01 inputs, this receipt owns the new split."
 }

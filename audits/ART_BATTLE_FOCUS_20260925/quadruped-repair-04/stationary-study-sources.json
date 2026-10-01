@@ -1,7 +1,7 @@
 [
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/stationary-study.ts",
-    "sha256": "e69cb3c67ddd178af8c128b07bd49cd53c5d722bcc850fcea63a144f03ed4ed4"
+    "sha256": "9e9f7e2fc3775672096b2ee1e743d37c7e741f7fdb21bd720d0111fc76785673"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/stance-envelope.ts",
@@ -45,7 +45,7 @@
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
-    "sha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+    "sha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9"
   },
   {
     "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/fixed-attachments.mjs",

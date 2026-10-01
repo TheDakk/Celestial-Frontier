@@ -7,7 +7,7 @@
       "retained": "generation-01.png",
       "sha256": "d2ed73d1e674ee9cce44f79c30a72510bc3477b1b53b1640b8478c819a25ce8d",
       "promptFile": "sent-prompt-01.txt",
-      "promptSha256": "8a1e74b2e66307a9f2559fc83bf4c0abb4b11cab7b3af1116242f9040652e1ed",
+      "promptSha256": "e1dc14e0dc2de2e98d773afa5b8a4a1eb57e6d9b7fe2c921d297f13d8002341e",
       "seed": null,
       "model": "not exposed",
       "decision": "rejected framing"

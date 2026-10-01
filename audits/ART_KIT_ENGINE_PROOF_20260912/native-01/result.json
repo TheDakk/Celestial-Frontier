@@ -4178,7 +4178,7 @@
       "url": "/recipe.json",
       "file": "audits/ART_KIT_ENGINE_PROOF_20260912/recipe.json",
       "bytes": 86303,
-      "sha256": "497dbf701285e6fdb90b8522b712b07a26e054b4c4b72b79807dc2547d13dac9"
+      "sha256": "a43c0d79718c4d4672c2f82da6455f66e64a8435c569b5005cf39280b7ea4066"
     },
     {
       "url": "/kit-client.mjs",
@@ -6614,7 +6614,7 @@
     ],
     "failure": null
   },
-  "recipeSha256": "497dbf701285e6fdb90b8522b712b07a26e054b4c4b72b79807dc2547d13dac9",
+  "recipeSha256": "a43c0d79718c4d4672c2f82da6455f66e64a8435c569b5005cf39280b7ea4066",
   "browser": {
     "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
     "product": "Edg/153.0.4234.32",
@@ -6697,7 +6697,7 @@
         "elapsedMs": 68264.32499998808,
         "sequence": 1824,
         "tokenCount": 1824,
-        "promptSha256": "725a3f23e3aa5fe2cd962cafc4adb9b51c4de8131e0977ae127dec246991d2de",
+        "promptSha256": "eb431666f217d29efa7e97a58f528a504e79fc47fef2570d5fcd93848f304997",
         "chatPromptSha256": "86affc4f7e8197be04e8679bc619844f59678257d7b1081de6462f04939b48c8",
         "sigmas": [
           0.20000000298023224,
@@ -6712,7 +6712,7 @@
         "elapsedMs": 62968.48000001907,
         "sequence": 1744,
         "tokenCount": 1738,
-        "promptSha256": "d1ae45545bc089770789841e60da1fd2869b2df774bc9e2d5a1ea67675ab304f",
+        "promptSha256": "6219a4bf7e978542f9827205199f98434209aff7e36468906ab7ec003525ac88",
         "chatPromptSha256": "984a2ce0d51c9a2c35e91b1f6f362c2483b4b00e9f941b3586052c074d51ac9f",
         "sigmas": [
           0.20000000298023224,
@@ -6727,7 +6727,7 @@
         "elapsedMs": 62494.04500001669,
         "sequence": 1824,
         "tokenCount": 1812,
-        "promptSha256": "6fd4bd2a3052c5be17fa519ef8a127d4704f10cc5f50ca16d00e5c51b884b7a1",
+        "promptSha256": "4e1caaa9bd654f00d32f1d65fb944fa2beebd6cd79b40dcca4efde8d9d721255",
         "chatPromptSha256": "80c2d2b3598029a6e5480a17f4902dcaa517988f521fd7e05bcd95396fd44e63",
         "sigmas": [
           0.20000000298023224,
@@ -6742,7 +6742,7 @@
         "elapsedMs": 61348.625,
         "sequence": 1792,
         "tokenCount": 1792,
-        "promptSha256": "7afd9cf0ef8bc27003204436162623e061936f6b9a466db0736961fed023a27f",
+        "promptSha256": "fac5f799700820fcef4997aa7361d90cf0f56f51986642fe46313c63248ed4a6",
         "chatPromptSha256": "dfa2f74ab15458d6925300fbc468a1a369158c09439dbe94b696f2d956a95ed4",
         "sigmas": [
           0.20000000298023224,
@@ -6757,7 +6757,7 @@
         "elapsedMs": 59983.3900000155,
         "sequence": 1744,
         "tokenCount": 1737,
-        "promptSha256": "ee68e694cd061c652af912289bd5c8fc0747f32ea8d36999eadf442ff429836b",
+        "promptSha256": "57999298702d7dd8da1494eb3edc782f5433f8493480c3673bca7883ee2edf51",
         "chatPromptSha256": "7030075d917e1fc978bac10b10dbf55f4b2270e0d4968c5b76f5e1e2b224498c",
         "sigmas": [
           0.20000000298023224,
@@ -6772,7 +6772,7 @@
         "elapsedMs": 60017.12000000477,
         "sequence": 1744,
         "tokenCount": 1730,
-        "promptSha256": "d3c9fdc6a515dbc1d4881c86ab9572944ba2c2a292450444b077760ddc8062cc",
+        "promptSha256": "aa1d89280e2eb1562a5dc1e3a8d8a51abd7690e41cd395791bd7fcb4ab1a81a3",
         "chatPromptSha256": "9a59bbe7036b78ab47eb529d14145ad088e4595e93abb27ea35e0c0e8765cf0f",
         "sigmas": [
           0.20000000298023224,

@@ -10,9 +10,9 @@ Six generated marking masks PASS conservation and outside-alpha negative control
 
 Hashes:
 - master: `cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635`
-- recipe: `1d7fb4683a7e06c804b676504a485cbb0722cefa2fd3f612e6deb379227522d4`
-- binding: `67ba8c59b71d0a3e0c2e8f5bcbe01b727d0d24ac523653aa41318379d02853a3`
-- markings manifest: `baa232bba3574467de6f5a24f7183f1d7cf06af15a709ef11e2436f9fb39e48c`
+- recipe: `1a24b3045d50350f7589aa1730d9300283a9cc689936f0e0984d248db74481c9`
+- binding: `e2b6bc15ce07bb7c18e277f5d4f487020f4247d24a2fd5daa607b3520abf688f`
+- markings manifest: `e867a2ab293926a711a7689c6a43d7c7d8e859276cceb1fce679611be59be839`
 - film: `23aeb8a461c34c5cf5b87ab0c07e0b04b4b80e14ab8d6681ab25ed3994d92fdf`
 
 Evidence: static-01/02.json, fit-01/02 provenance, fold-diagnosis*.json, native-phone4x-01/report.json and battle-10s.webm, review-sheet.png, six-mask-sheet.png, root-validate.log (PASS). Every failure retained. Root manifest inventories packet files including nested manifests. Source/accepted bindings/S2 unchanged.

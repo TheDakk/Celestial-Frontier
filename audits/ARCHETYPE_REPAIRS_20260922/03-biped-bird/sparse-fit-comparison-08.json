@@ -3,12 +3,12 @@
   "scope": "Fit-08 only: replay the twelve retained native resolved poses against the unchanged pose/ARAP/publication owners. Fit-05 numbers are historical recorded diagnosis, not rerun. No stage battery, film, or CPU certificate.",
   "semanticsParity": "EXACT",
   "baseline": {
-    "recordRecipeHash": "302a526d5d0fdd6cf5093ed3d680b3001b914cde5668552c5613d736da41e8d8",
-    "bindingHash": "7c37a44b196c36464680238d17c65a0ffe40c2b3bdc7c86659f355ea145f6f67"
+    "recordRecipeHash": "8fada1673acf5633abd043b6d98e59389d197d8663a02f8a2f5ef8fa5f65130a",
+    "bindingHash": "1ba4157632bb0b8527e5cef68e78da01701d93464e039446175362d0c675a900"
   },
   "candidate": {
-    "recordRecipeHash": "4e806fc94a2cd6fef82e53e4482531d4795453c68a3e23eea931102ccca07422",
-    "bindingHash": "85cfa087a72df27c32f70ce4e7c7f13b65e8b23c5af7e3eed3fa9fcaf20bea6b",
+    "recordRecipeHash": "23dbe75d79ff30e79b8604189bcd5e900ab87515aca52acf1e35e64cd304458f",
+    "bindingHash": "9b8e003e3010e00babdec0af998a2e3d936baf0c855a8d3fd4ba47e89afa957f",
     "vertices": 3628,
     "triangles": 6187,
     "pins": 1983
@@ -4014,12 +4014,12 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/cpu-diagnosis-02.json",
-      "sha256": "f8a8910736643a49aa83b33e114665f421221efd98dd058cd1a9b2817ea6d9d3",
+      "sha256": "37dea369663204567fb443596521a1798ddf83e74ffb33a25f29c9fb3309bdf3",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/cpu-diagnosis-02.sources.json",
-      "sha256": "bcc1482f332f43815de8a7099b9ac07ed9e8f153d643519034a006a737934910",
+      "sha256": "c1dba0a44834148c9049223f42485dcdd6892ecd5a8d1be8154f9cc35288c733",
       "unchanged": true
     },
     {
@@ -4254,7 +4254,7 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/sequencer.ts",
-      "sha256": "0b168bd71cb30507326580d02f9584c6901c8f8f0a66ec6fe2c7357b306598a8",
+      "sha256": "839c7023d9d0d274b9617ad4f4299eef6b58edf499f495c542ea795619523685",
       "unchanged": true
     },
     {
@@ -4389,12 +4389,12 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.ts",
-      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a",
+      "sha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
-      "sha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432",
+      "sha256": "c97498ffa4476eb17abad4981da64f8634b22735dc62073a12fe12324bee9a60",
       "unchanged": true
     },
     {
@@ -4404,7 +4404,7 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
-      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff",
+      "sha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b",
       "unchanged": true
     },
     {
@@ -4434,7 +4434,7 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
-      "sha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1",
+      "sha256": "55536ab115280dc95e3867988d11f033f069f4532b2cb4a0a80b44374229febd",
       "unchanged": true
     },
     {
@@ -4449,7 +4449,7 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
-      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5",
+      "sha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543",
       "unchanged": true
     },
     {
@@ -4514,12 +4514,12 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/strays/src/strays.verbatim.js",
-      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03",
+      "sha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/ecology.verbatim.js",
-      "sha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c",
+      "sha256": "61d9b3cc8c9c640e6553b5cce1ae2e04c74973b1b9d4dc208afef0c386b58d85",
       "unchanged": true
     },
     {
@@ -4539,7 +4539,7 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genetics/src/genetics.verbatim.js",
-      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12",
+      "sha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2",
       "unchanged": true
     },
     {
@@ -4549,22 +4549,22 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-05/record.json",
-      "sha256": "82f3fc0eccf7ebc2d359dce42152bbcd61e9319d8c302b42def8a83b83799bf1",
+      "sha256": "87323e32a3958123ef62be96e6c1ff1624509c7e0a07796b472a5b85206c673d",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-05/binding.json",
-      "sha256": "f37cae2fc40e342ac7814533642470638e4d6dbb40cc8c5d0b74827b59944b82",
+      "sha256": "34f9742d8245d5abb40044dd7e5e4bcf5a40122758e476e38dd0a68a7abe337f",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-08/record.json",
-      "sha256": "8ba1ca327f6c7f3aa0b54ee4b7bfed6de62168b4fec7d722eeca3806ac4eef91",
+      "sha256": "fe01ccbdaa8193c613ae4743b41126815136e4531b2ee73a6d945d4f965adf13",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-08/binding.json",
-      "sha256": "50011172805af4288eefa1cbcc225d4bad107d4f0c2f4718de6e2046e7ecf7b2",
+      "sha256": "7aedb9e04573aea4afc937f02bdd9802b01869c365bdf225c92d870ca3a08441",
       "unchanged": true
     }
   ]

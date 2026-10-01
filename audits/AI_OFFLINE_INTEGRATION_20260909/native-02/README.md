@@ -6,10 +6,10 @@ timeout. No completed denoising step, image, Ready, Inspect/View or retained-ori
 reached. This is not an offline inference PASS or phone qualification.
 
 [Raw result](result.json), SHA256
-`690edcd99b5ea7af1d03e9604f2219734ddff6f6cf9cda75b4d19d5ca9594d39`, and the
+`8123142f23dc6575a68dee3c3d21a47cfe694c1cf0dfbd8ccbbb90d426b1bd0b`, and the
 [derived summary](summary.json) preserve the exact boundary. Source hashes bind all 31 measured
 files unchanged. The exact optional package remained 97 files / 56,529,354 bytes with manifest
-`5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c`.
+`bfd3fba993741a787ddb472336488427e43f64b2a6020eb804917683759c6da0`.
 
 Positive subresults within the failed run:
 

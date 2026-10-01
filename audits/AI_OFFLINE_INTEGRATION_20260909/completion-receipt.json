@@ -82,7 +82,7 @@
     },
     {
       "path": "port/v2/tests/landfall-fidelity.test.ts",
-      "sha256": "4f3244aed93ef1518ef687a2abf06074842e24274fca1292823e95dbad5fe309"
+      "sha256": "3eedf054a4bdc2dac2827f042280b5de4121b509a6e131aef5a3fba16a4224aa"
     },
     {
       "path": "port/v2/tools/browsercdp.mjs",
@@ -176,7 +176,7 @@
   },
   "native01Status": "FAIL-live-prefix-observer",
   "native02Status": "FAIL-portable-denoise-stage-timeout",
-  "native02ResultSha256": "690edcd99b5ea7af1d03e9604f2219734ddff6f6cf9cda75b4d19d5ca9594d39",
+  "native02ResultSha256": "8123142f23dc6575a68dee3c3d21a47cfe694c1cf0dfbd8ccbbb90d426b1bd0b",
   "native02SourceIntegrityUnchanged": true,
   "native02CleanupComplete": true,
   "newImageProduced": false,

@@ -208,8 +208,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "319995acc2303f38f7ea5ea1ae7ebedd09c525234ab97ee2e7510f90e791bb73",
-  "bindingHash": "ffde09ce3f8a847ba5e904e3ef85c92983957272d369c62a4122e39a2845ca30",
+  "recordRecipeHash": "e8e59458dcdce12b6048a2576dc19e9eed5bfb5211351a19ed60083e8c9c9255",
+  "bindingHash": "dc34516707f135ffe7039a748095c26cfb2af97f63d7c5e4a110f57dee7c7a61",
   "family": "quadruped",
   "contacts": [
     "hindFarAnkle",
@@ -220,8 +220,8 @@
   "realm": "amphibious",
   "declaredPaintBoundaries": {
     "schema": "cf.authored-paint-boundary-continuity/v1",
-    "recordRecipeHash": "319995acc2303f38f7ea5ea1ae7ebedd09c525234ab97ee2e7510f90e791bb73",
-    "bindingHash": "ffde09ce3f8a847ba5e904e3ef85c92983957272d369c62a4122e39a2845ca30",
+    "recordRecipeHash": "e8e59458dcdce12b6048a2576dc19e9eed5bfb5211351a19ed60083e8c9c9255",
+    "bindingHash": "dc34516707f135ffe7039a748095c26cfb2af97f63d7c5e4a110f57dee7c7a61",
     "pairs": [
       [
         "root",
@@ -365,12 +365,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02/record.json",
-      "sha256": "27beffd980683e5a505cb6211729a43eab0b1936dc617f3b78b9b14a19ac1c6e",
+      "sha256": "218691c9454d8210f3272a6fd4ca666cca650fe5bb0a1f7546d9a2a2064044fa",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02/binding.json",
-      "sha256": "5dd755f791e843b52eefc702cf779ec2bb7b0ac1025a695c458aae11fd0dedbf",
+      "sha256": "0396cb91968d0eb25414cf5c0e132b088c4f3765dd076c69d9abf63905632340",
       "unchanged": true
     },
     {
@@ -390,7 +390,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02/paint-boundary-continuity.json",
-      "sha256": "d2da8ce40f12d826b888c4fc0daf50c490fb09b9d596d538271372a7acdd32bb",
+      "sha256": "ff0f99f2adae29a95fba911b65eb97c25ab92cd90d72f9e77863a2a1b5016009",
       "unchanged": true
     }
   ]

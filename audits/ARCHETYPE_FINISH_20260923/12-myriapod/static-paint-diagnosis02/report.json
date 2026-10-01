@@ -1,8 +1,8 @@
 {
   "schema": "cf.attempted-static-paint-diagnosis/v1",
   "scope": "Exactly hit 22.5 ms, dodge 21 ms and tame 53.333333333333336 ms reconstructed through canonical timeline/GSAP/performance/contact; no report-pose input, row replay, changed fit or acceptance",
-  "recordRecipeHash": "7c8256539e71940fdf51007a965526ec7612b45d8c8f59fa98334229484e8fbb",
-  "bindingHash": "e337ab9eda49ecc0fd0ecf868ec160ddf477f6a167bf7ad5646838d33041f842",
+  "recordRecipeHash": "85f5a4a7fcd8c5065aae328978a6c0326e71254b519779c3f2c7f42a9a051ed5",
+  "bindingHash": "b274137140d631f8b6a47f751057ec92c49a60a8cc6a209d81d0919c6e28bc5c",
   "findings": [
     {
       "action": "hit",
@@ -8277,27 +8277,27 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-05/record.json",
-      "sha256": "55ad4dc587608fc9687d34fe33d23e570806821e35069e242007d4c527b3c448",
+      "sha256": "d045030cae0728833db1ff3d405f639503dc9a02b6877f43140a8dfeac7a1d34",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-05/binding.json",
-      "sha256": "0a44ea07c776d2e10fd8c0b6c2b702625814af0401c4d5ce88ba14bf516d8376",
+      "sha256": "f1b0564e734542fa0bc2e5473b45da7a82f3b6edad5d2e6105a404b08e5fccfa",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-02.json",
-      "sha256": "ba1dbce50b03df486199992fe2999d2f5f33263839efbe3d429a5fd6b8ce39d5",
+      "sha256": "6697a1c2bdcdcf8d241762ddba95f0d0996a8ca86be1716da9aea1cbf0ff35d3",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-05/pre-regional-binding.json",
-      "sha256": "a87268091f26986b5e0050e45cd3b8d25f0407496d790c355dff3b74c3a76dcc",
+      "sha256": "fb28464b3cd80b729449ad6da3ca36c01c96f9fb41e7597f8376a97456935d63",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-05/regional-authoring-receipt.json",
-      "sha256": "c178c7797a968c93fb21e03d42e0eff9cb4b901fc9786387f1c3ce2543703932",
+      "sha256": "c8517022e557f1422e9883478df540a572491d3fc76f06443b34b6894b55dfa3",
       "unchanged": true
     }
   ]

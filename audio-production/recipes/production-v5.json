@@ -1,7 +1,7 @@
 {
   "schema": "cf.audio-production-jobs/v1",
   "version": 5,
-  "inventorySha256": "f57378cea0ba9e70f05461ac4c3347f914cbc6ec7db19c350c970029a3024bdd",
+  "inventorySha256": "3604b9e7662d2a396171e968ee2411d5a9ea3e75bf630efd9314f196f7f9f30e",
   "acquisitionSha256": "a32971986785faa600bc183052e83e2bbe4c3f4d8bd2fbb29f5450f239ccba15",
   "jobs": [
     {

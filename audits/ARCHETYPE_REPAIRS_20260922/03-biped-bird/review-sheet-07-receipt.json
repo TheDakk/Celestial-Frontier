@@ -7,7 +7,7 @@
   "inputs": [
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/review-sheet.mjs",
-      "sha256": "8ef83aee0af577d4b43809ecfd31dec6caf8af9ea408ab65f6336852d9819bf5"
+      "sha256": "1a27e98613e8470fd81dabe401140fc318725e731291f03f7eb2d0f28f5c4417"
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/master.png",
@@ -19,7 +19,7 @@
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/authoring.json",
-      "sha256": "91f942596d436ee57223a320dea006de5494f414c4ddfed35fa19a46222acbd1"
+      "sha256": "8cd06bc60fc0a9a6b2909dc5d4ce03253010878a00cb6334fe70666543102307"
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/labels.png",
@@ -27,7 +27,7 @@
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-07/report.json",
-      "sha256": "bd728ad07712790e600ef20263db570203894f413ed9824af621894768101965"
+      "sha256": "2857e4f5a31f3b350ee0d03639bdf84dd4259d77db5db9c0eba1068b31bd8231"
     },
     {
       "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-07/turn0-hit-approach-50.png",

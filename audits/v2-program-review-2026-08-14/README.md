@@ -5,8 +5,8 @@ the review/direction evidence remains available beyond the upload/session that d
 
 | File | Purpose | SHA-256 |
 | --- | --- | --- |
-| `PR23_PROGRAM_ROADMAP_REVIEW.md` | Claude's R1–R9 review of the complete v2 program roadmap | `a6779fa618f36f9f144baa2491bbeb7c55f1421830df57184d3e692b6a53e3df` |
-| `AUDIO_HD_IDENTITY_ADDENDUM.md` | Approved distant-ecology and companion-expression HD-audio direction | `26e8c8361a02cddabf57bae8ad0ba862a76dc90fb3f229281b09a1caf5d18d86` |
+| `PR23_PROGRAM_ROADMAP_REVIEW.md` | Claude's R1–R9 review of the complete v2 program roadmap | `6f501092b8bf0b3cfce9053cc26725995df180594a7ffcb9cf0ea9dcd26c5258` |
+| `AUDIO_HD_IDENTITY_ADDENDUM.md` | Approved distant-ecology and companion-expression HD-audio direction | `2e5a34a1a0e313b98c03e19f19be7fc86608b7ede818033774be085eaf084f59` |
 
 The integration response is recorded in `port/V2_PROGRAM_ROADMAP.md`, `AUDIO.md`,
 `port/DECISIONS.md`, `port/RUBRICS.md`, `port/v2/DEVIATIONS.md`, and the live `ROADMAP.md` handoff.

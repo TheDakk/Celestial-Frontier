@@ -23,14 +23,14 @@
   },
   "measurementAuthority": {
     "schema": "cf-v2-compendium-measurement-authority/v1",
-    "sha256": "562b87b6d69eb02b12002c1c5564b842a6cabd51b92c0e7e3531cdd3135e9956",
+    "sha256": "85d308f4a0e793e9d97cadbad0d10845a621d403826356646172165166282fae",
     "inputs": {
       "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
       "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
       "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
-      "budgetSchema": "d0a4c693bf03cd23cadbdc0d336329bc42cf06484d4314a9621e2c5462c47b6f",
-      "outcomeContract": "894ed41ffba0a30ecf1b6fc4e24fefbb28948896112cb4a27396b3cc0d058e06",
-      "collector": "4ccd494158c43a40061d85c7ff7c2aaa08859585d86980d4a62e8bb73f47e1f0",
+      "budgetSchema": "c57ed2f9b1f20e3333c9a5869c337576dcf6f634c7bd3dbc8b0564eda7710e21",
+      "outcomeContract": "4dcc6ed40e574be450ae3749a024938b106a278476a78b72b7f6fd46d0af894c",
+      "collector": "001e49c29246089eadf4d285e11a28ab514ef0c996c89832c3787f9bbfb8e45e",
       "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
       "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
       "workspaceLock": "ceb20c120f1c2a889124f5e90050cf0df44768cd9c5a61cb1558ca5373371ae8",
@@ -77,11 +77,11 @@
   },
   "instrument": {
     "commit": "b3a34e15d4019023410d2cab97308e0f289b8ba4",
-    "sha256": "44f3f5097f7118b4ef800cc75f81ef1c0695fa45e1f54172608729d545c0a764"
+    "sha256": "684b3c882fb56b0ab07219321b35c7e1e76fb9368ceb414767ef927b90bf875f"
   },
   "epoch": "i5-v2-b3a34e15d401",
   "growthGuard": {
-    "v1Sha256": "c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc",
+    "v1Sha256": "340a67c1e6d6f4f7e120c7f13e1e06a674757ddcd2a023c100e4f7f65493fbd9",
     "allowance": {
       "phone": {
         "mountedRowsMax": 0,

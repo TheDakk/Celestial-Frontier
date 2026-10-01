@@ -9,17 +9,17 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-results.json",
       "bytes": 13708,
-      "sha256": "ef3f2f2912dd391ae76fd7cf682a3dbef02817aa084247a1a2e74cfa2033c757"
+      "sha256": "d7dbb1c2f8a7f3b7de80e6a3473a69a2610f9f854c382b811f540618962b2e8f"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/chain-report.json",
       "bytes": 28007,
-      "sha256": "049944d96d580065f3de1e0a58c85d50d55fa79c7f1f832d53ce0f71b08af020"
+      "sha256": "033367474bf98b619a05b13d3168e0e3e1cfa41583904424d45e7390fcf88545"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-package-results.json",
       "bytes": 8680,
-      "sha256": "28a9783b93cfeb8dd580044e1ebe03c5e531175c215d01b4edfeb89fb5b99b5b"
+      "sha256": "dbe12f3c8a67d96e6f9035087729d9a801882da0cbf87d632427ab743224d7f9"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/INDEPENDENT_REVIEW.md",
@@ -36,22 +36,22 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.json",
       "bytes": 2981,
-      "sha256": "70a8a3a37fcf1cecfd7e34cedd676579c997dc0badfb0a023504c466b9a659f4"
+      "sha256": "c6a5efd857fa840bfffb3585c9f5995b746cda0b83a39a89ed690bce539dbfb7"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/receipt.json",
       "bytes": 4251,
-      "sha256": "7be3b2bbaf978f0d46ce3f0a64cb35e9fa3026faba36f8bfd755a6ffeeb704ad"
+      "sha256": "250c703004d252bf5d803abd02c35bd68d4eebb78759528784b8c63da4ebcfc3"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-results.json",
       "bytes": 14578,
-      "sha256": "c772da01d8ef7942ee40c373037de19148ee3f7cb23c5827dc5568a629ffe4f2"
+      "sha256": "cdcc6602909997e59f4b5e00d3dca164af7c38c30293a5a87da9c1b146768728"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/chain-report.json",
       "bytes": 26025,
-      "sha256": "45c9b4ec08a2d321da3dd9f50396920ae9923bde25d31fd3db57cf5dfc121ab0"
+      "sha256": "7cad845855b7563d281237f8deacb272f94504348b3ffa787a29003033289d88"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/player-storage-first-parse.json",

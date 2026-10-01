@@ -120,7 +120,7 @@
   "node": "v26.9.0",
   "owner": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2-controls.ts",
   "ownerSha256": "f84b7a6df8d0bf50679fda4f1ccbcc20a10b459079762ccfda4a63c5de6c9e81",
-  "orchestratorSha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe",
+  "orchestratorSha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b",
   "baseline": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2",
   "retainedInputs": [
     {
@@ -266,8 +266,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/s2-checks/run.mjs",
-      "sha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe",
-      "afterSha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe"
+      "sha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b",
+      "afterSha256": "7732e1bee8be379b34fd33399ae240b83c01253cc13e055062fd6347d5db537b"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BEAR_CONTACT_DIAGNOSTICS_20260922/source-join-s2.mjs",
@@ -276,8 +276,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2-controls.sources.json",
-      "sha256": "9b2eac9abd29f600121d3ba508a9b86eeb09db22d484f5f71cbf7f639d30fdbe",
-      "afterSha256": "9b2eac9abd29f600121d3ba508a9b86eeb09db22d484f5f71cbf7f639d30fdbe"
+      "sha256": "d2867b9d9ad11ed3d89f8d963493f95c01d0f4e76e2a68bee428b15b99dffd45",
+      "afterSha256": "d2867b9d9ad11ed3d89f8d963493f95c01d0f4e76e2a68bee428b15b99dffd45"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2-controls.ts",
@@ -336,8 +336,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2/static.json",
-      "sha256": "d460b6a6b3bfc8fd23f4ea2f392281fb96cddb4229f24893e34abc54c80b2a00",
-      "afterSha256": "d460b6a6b3bfc8fd23f4ea2f392281fb96cddb4229f24893e34abc54c80b2a00"
+      "sha256": "f04e9e36d10634099ecc66aacdd94fbc1c883579dc89023f983ce0850f7f0dba",
+      "afterSha256": "f04e9e36d10634099ecc66aacdd94fbc1c883579dc89023f983ce0850f7f0dba"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/BORROWED_ATLAS_20260922/s2/vent-crab-static.json",
@@ -391,8 +391,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
-      "sha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433",
-      "afterSha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+      "sha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9",
+      "afterSha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/additional-actions.ts",

@@ -7,7 +7,7 @@
   "records": [
     {
       "path": "port/v2/apps/game/src/main.ts",
-      "candidateSha256": "c827f91e803c3ef7c234babd87b4eeedadb4e6ed3308d309a1e9fe4bfbb72970",
+      "candidateSha256": "23178a1ffa9d328bc9f86dca71d3f04a1a168594d9739ebfd90b6ac66a0dae6e",
       "baseSha256": "4ddd9d07b172e6ad1f646bcc00ab1d266067b4c0db97d8b5ed79ace4b648ad13",
       "retainedCopy": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/main.ts"
     },

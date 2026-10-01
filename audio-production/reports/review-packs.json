@@ -51,7 +51,7 @@
         {
           "path": "audio-production/recipes/production-v1.json",
           "bytes": 815304,
-          "sha256": "cf5652ea25d4e5ea9390556caa433874aaed741dd96a951471c88e4d87584371"
+          "sha256": "bf05d3888cf8a4421c66070bb841b29c4ccfec771ae309803aea75133e8fba5a"
         },
         {
           "path": "audio-production/reports/ability-chem.json",
@@ -146,7 +146,7 @@
         {
           "path": "audio-production/reports/loops.json",
           "bytes": 84580,
-          "sha256": "740889cc607b89b373f32ea1940aab11451f0fe605fdae3c1c98f9dd0d508291"
+          "sha256": "4c437de2b3ce0b7b4cc5b85b2dc2b3a7041b4464ca7ba8b38f2a4c0521bd160f"
         },
         {
           "path": "audio-production/reports/movement.json",
@@ -171,7 +171,7 @@
         {
           "path": "audio-production/reports/review-packs-initial.json",
           "bytes": 187708,
-          "sha256": "33e473e563d3c0f0c2fbd7c3d62e63170fa0b68dfe119d954884d7b52182d6d7"
+          "sha256": "d8aaf6d4d32dbf95f00bd80d0a2da524e4153c57777f87d741b29d9dc1ee3938"
         },
         {
           "path": "audio-production/reports/source-decode.json",
@@ -191,17 +191,17 @@
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/final-focused.log",
           "bytes": 245,
-          "sha256": "3adfed12c4d18be400300bf0fa24fa3b4cf96c0d6d0110ee104c3c23098ee8e0"
+          "sha256": "df08d5141621963198e7a6c2cd20983b00e19adda91fbcf7d0124718d0336aaf"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/full-tests-final.log",
           "bytes": 16649,
-          "sha256": "c273b4de74de4be8edb6391618c9fa19909a3a9edac90369e62bc27534560004"
+          "sha256": "67967c700b3a44e46c4c48f08970ab0c3581909ab0c9e2ca6a95fb7f38ac02fb"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/full-tests-first.log",
           "bytes": 19181,
-          "sha256": "0b56a98d351c21c122908d187e05c95e73e1f36107953cc002d33928b5276261"
+          "sha256": "7138e5e1fcc6f822f62338ae28e677ec4b4869b1986bd1e847145ea9ee4ff5f2"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/intake-tests.log",
@@ -216,7 +216,7 @@
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/pwa-audition-focused.log",
           "bytes": 237,
-          "sha256": "46262499e9756ad7a92699813de18f9b386d19ec160952fb007849b753355e1c"
+          "sha256": "01e48aa72c80ab9050ab3895a00738502425ebd7db5e5b75e8c55994449df746"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/python-final.log",
@@ -226,17 +226,17 @@
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/root-validate-audio.log",
           "bytes": 1093,
-          "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+          "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/root-validate-final.log",
           "bytes": 1093,
-          "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+          "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/root-validate.log",
           "bytes": 1093,
-          "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+          "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
         },
         {
           "path": "audits/AUDIO_PRODUCTION_20260915/checks/typecheck-final.log",
@@ -341,7 +341,7 @@
         {
           "path": "port/v2/tools/asset-intake/art-batch.mjs",
           "bytes": 2144,
-          "sha256": "80d7228d88aa896dab26d7b168d931eb7ecae3c0cc8eadf276a7613fd4c95a80"
+          "sha256": "ca9d5922791af7cf7ba33d3c77808a8d80979de943bb0fa1beff32efa65f9593"
         },
         {
           "path": "port/v2/tools/asset-intake/art-batch.test.mjs",
@@ -371,7 +371,7 @@
         {
           "path": "port/v2/tools/asset-intake/contracts.mjs",
           "bytes": 5935,
-          "sha256": "528c469f36034bee5c39455b11bccac2215c4ea5ef4b30681106deb332403d86"
+          "sha256": "5df334b87cdba7bee3a3fdba11e5a9a1a13179e0a2a77115be793b9375cc3bb2"
         },
         {
           "path": "port/v2/tools/asset-intake/contracts.test.mjs",

@@ -8110,7 +8110,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/stage.ts",
-      "sha256": "90a0a13e410e20de2bfe715bdf38518600da8e07e76ad6c2485f1e72c9bcd377"
+      "sha256": "fd1322fa40bb4488ab73e9e079069031a08c356980c3af96a86a076f1c33c164"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/morph/png-decode.ts",
@@ -8150,7 +8150,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/arena.ts",
-      "sha256": "f61d1130f3c1791499e12a5a7ef6000c92fbbce5c697ec4508da9082dc3e3fee"
+      "sha256": "0914065c5a23965a10d089ade2e2d8bd1162612669325e6f8a95bff48ea78798"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/morph/morph-individual.ts",
@@ -8238,11 +8238,11 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/sequencer.ts",
-      "sha256": "0b168bd71cb30507326580d02f9584c6901c8f8f0a66ec6fe2c7357b306598a8"
+      "sha256": "839c7023d9d0d274b9617ad4f4299eef6b58edf499f495c542ea795619523685"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/morph/morph-palette.ts",
-      "sha256": "c0ffe9919840374fe8bb57d0e8c0a989ea8b51f361056593b6f0850f87c13b7d"
+      "sha256": "fcfc0b6b3412868780b9b50f4159b9a4bab49dbe36cd72b267abcdf61e6ee6e3"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/morph/morph-skeleton.ts",
@@ -8258,7 +8258,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/choreography.ts",
-      "sha256": "f7e925ef9a03ccc65ecdb64e009973115100ede92d7ab3f251df1bed22a30e47"
+      "sha256": "c4138aede7b6d51c9e85f9c97fe6b1b88fa5a3290cd0eed49258b693a3b22536"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/cue-plan.ts",
@@ -8338,7 +8338,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2-master-pins.generated.ts",
-      "sha256": "e02980010fd542c3d05399827b534ea80d7d4b5f52e9f1b220fe7edddb639da1"
+      "sha256": "d1ad2d381b0e3120f382c2118739e97541bdfef124fa56cb9ddbe4fc0b6636c3"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment-browser/browserExt.mjs",
@@ -10854,7 +10854,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
-      "sha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+      "sha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/grounded-bird.ts",
@@ -10906,7 +10906,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/morph/card-tint.generated.ts",
-      "sha256": "86487d690bd29100ebf06c659bc6c6cad0913c51a604cc6ca9c293fea4a7b888"
+      "sha256": "5cc6c0e2e6146f551569e568f564dec20d7edc74418bff41b436ad423fc92b90"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs",
@@ -10982,7 +10982,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-finish-source-pins.generated.ts",
-      "sha256": "7f72b30b68ef9332d3c1d7021c4da3eb0a0b5c49acc7d9710677ece7c49f28c8"
+      "sha256": "f48fe4ad9f3faf63165f73d5978f04199db9ec226aa9d23b32823c5fb52145ae"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-finish-engine.ts",
@@ -11282,7 +11282,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/art-library.generated.ts",
-      "sha256": "f2a1bb5305df57d0f281e034f9c1e27016e92dcd122f15b3e09400a26e72f2f9"
+      "sha256": "c647bb1e4ebeb7537b2f80b93617d5714756deb03a2eff31cbbc838fcdbc142c"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/landfall-content-hash.ts",
@@ -11290,7 +11290,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/landfall-conditioning.ts",
-      "sha256": "1ee583d9cb5f52954c32263db8a5d17dfe573af2e0d0f6204e95cd271c92456d"
+      "sha256": "dc2edd2ea38cb98a5747240a178751d7203252c993d411a4124fb4df89661bae"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
@@ -11414,7 +11414,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/earth-resident-plan.ts",
-      "sha256": "8929f953dfd77f0b82e3026e2cd17a05e3c35059d0619b91511b7d73a70f8907"
+      "sha256": "421a518c3ac67ad7b4359ce6eb743d7b4099376266a6bcf622fe42b509c305e0"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldgen/src/index.ts",
@@ -11458,19 +11458,19 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/friendly-duel.ts",
-      "sha256": "63cd053d685febcc1f55580372db74bd7a784525508ae12c4a0bb87e25c5c931"
+      "sha256": "afc7e3a8e4877e1858fff8b5e1ac05dc500c061e1978b5d521854bc32cbcaf84"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
-      "sha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432"
+      "sha256": "c97498ffa4476eb17abad4981da64f8634b22735dc62073a12fe12324bee9a60"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
-      "sha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1"
+      "sha256": "55536ab115280dc95e3867988d11f033f069f4532b2cb4a0a80b44374229febd"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.ts",
-      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+      "sha256": "e0acd4a802734eeccb9cea722422aed106c2dbe2591524c1bfc6d099ba38d285"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/lineage-codec.ts",
@@ -11482,7 +11482,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/combat-settlement.ts",
-      "sha256": "413d4233748cc3b2b2ba79baf69de1afa0148f975ee7a0751f0081c5651cb5d0"
+      "sha256": "26e2d6cefcb03bc1587f7d0d51ee5321a96969804c3a8fad28a3e78593274154"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/creature-level-progress.ts",
@@ -11490,7 +11490,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/encounter.ts",
-      "sha256": "f9c0714f7db68eca952f6c1ff76eee18c6c06ea10844f60e0f96e62358dd9cd2"
+      "sha256": "9c20ca57d0d47d9946fe7b42b041d1d764a0452550ea75f00711a7f0f926afa7"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/player-ability.ts",
@@ -11502,7 +11502,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
-      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff"
+      "sha256": "75fe03e06e07c4dfe097b831885939ae360b243d898fcfbd900481de0abefa4b"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/planetgen/src/index.ts",
@@ -11542,7 +11542,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
-      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5"
+      "sha256": "cf1911f65a91995d1041335d0cd8d046d411004fc7e2c951820f6a90419ca543"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/naming/src/cleanname.verbatim.js",
@@ -11554,7 +11554,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genetics/src/genetics.verbatim.js",
-      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12"
+      "sha256": "4b9b42a9987d5a4eb9dc87e8b99cfdc49f70e6c74c47b52ee925054335c109b2"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/surveyphrases/src/surveyphrases.verbatim.js",
@@ -11598,7 +11598,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/strays/src/strays.verbatim.js",
-      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+      "sha256": "407fb9f2a868e3934e88ab36d3fd5c467fed1a92a67331cf520d08b89f03054c"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/address.ts",
@@ -11606,7 +11606,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/ecology.verbatim.js",
-      "sha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c"
+      "sha256": "61d9b3cc8c9c640e6553b5cce1ae2e04c74973b1b9d4dc208afef0c386b58d85"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldidentity/src/mint-internal.ts",
@@ -11634,7 +11634,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
-      "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4"
+      "sha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/wild-anchors.json",

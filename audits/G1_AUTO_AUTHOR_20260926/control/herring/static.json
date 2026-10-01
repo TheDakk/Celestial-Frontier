@@ -148,8 +148,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "023c9266a43cb6b07a0410afb20fcaf12ad74b80ff114b388e79537f249a224e",
-  "bindingHash": "7fbd76536964770d404fd8ff3fd39332b029485ad3b09d5637966ebbbf759caf",
+  "recordRecipeHash": "dc46365d8387115405292befd6987c62f2ad9217843e74733fbf8a77888c91e1",
+  "bindingHash": "8885a086fc1b3994fd36f448d6efcdc15b9c9e9ffe115c1fa7a5466cb6bab369",
   "family": "fish",
   "contacts": [],
   "realm": "aquatic",
@@ -251,12 +251,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/audits/G1_AUTO_AUTHOR_20260926/control/herring/fit/record.json",
-      "sha256": "3d0f59cf58a22877d36f9681c038274a0c2449a9aff175ae3599e789affc241a",
+      "sha256": "eba662e9658a82998afe60e8a554892fd8d991a497438683fecf9b6944ddf79a",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/audits/G1_AUTO_AUTHOR_20260926/control/herring/fit/binding.json",
-      "sha256": "dbda846136063346f3866494ccaedc2106ccb1ff8749fa2c3fa56192c2e1ba23",
+      "sha256": "0cb68bdc336f830d2d3c0a06daaf44ddbc3f66db7b2e39d5f643960e573c0bc9",
       "unchanged": true
     },
     {

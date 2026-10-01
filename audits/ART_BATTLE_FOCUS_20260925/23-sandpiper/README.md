@@ -8,7 +8,7 @@ Retained P1 kit prompt compiled with Sandpiper's genome and biped-bird inventory
 
 Manual presence declaration has no absent/hidden/folded required parts. The exposed far shoulder is explicitly authored; unseen paint is never inferred.18 paint owners,19 new observed joints; land habitat. A tiny interior root patch leaves the main torso on the spine. `fit-01` retains record, masks, observed split and binding writers. `fit-02` retains ten named torso/root/chest, wing/body and head/neck/bill source seams, verified in `boundaries-01.json`. Between-wing and wing/tail sibling edges stay independent; incidental toe/torso flecks are not welded. No source pixels, family contract, solver, gate or limit changed.
 
-Recipe `f384bcb635704d3d83b888c6ce9f7f862f90948cf1aad1648da90aa7d2bfc443`. Binding semantic hash `c92ef8cf8dc7f63e237b7ff9e76067b32e9eb1a36b3c16181e4bfc3f41635937`; binding file SHA256 `afa18ff5a3ac72a025f14e214124aaf8ce069f8f86a6789add5bce9ae041579c`. These are different authorities, explicitly distinguished. `static-02.json`:14 actions×121 plus1,028 continuous presentation samples; exact rest changes zero visible RGBA channels.
+Recipe `23da99972e43b67130dbdc518ac90a534a542b1d5bee5fef28857e37b36725a9`. Binding semantic hash `93f165ba505e7a719866a046230d8b86e8f135487aef725c21d928949f16590a`; binding file SHA256 `bed5452c51d56b3294db91f1f0bd706e85e9b09ec71b539bac9ea0fd5a8400cc`. These are different authorities, explicitly distinguished. `static-02.json`:14 actions×121 plus1,028 continuous presentation samples; exact rest changes zero visible RGBA channels.
 
 ## Tame-motion repair
 

@@ -4,18 +4,18 @@
   "scope": "CPU Float64 solver and actual Float32 part buffers at 1201 current-source resolved poses per creature. Native rest pixels, runtime frame time, browser floating-point parity and whole-motion visual acceptance remain unproven by this report.",
   "candidateManifest": {
     "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json",
-    "sha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2"
+    "sha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a"
   },
   "poseExport": {
     "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/current-producer-poses-v2/report.json",
-    "sha256": "e21d5f2b5795a71ffb7dea8028d018a7adb8ee9f3ec107cd54dc46e47b558151"
+    "sha256": "fca8421f441dbd35f47090f7aabf66d519dc48073af9723cc51b1582a792d37f"
   },
   "rows": [
     {
       "id": "civet",
       "bindingHash": "2d4cb0f8e47937094dae969c4bac92731d054e94519b794b82268bc523464d43",
       "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
-      "poseSha256": "e18bc762dbf5d2360509eedd2ee1ad20b9d3d0c1bbb44b1039447a8b5f542709",
+      "poseSha256": "1db99ebddc6ff995863a36895f4f8511efd4a0114eaf8b9e74f1716795b5865f",
       "status": "PASS",
       "dense": {
         "samples": 1201,
@@ -8559,7 +8559,7 @@
       "id": "fox",
       "bindingHash": "91a499b8b79de0589efa0c4c891e0d70d23742e9cf056118fa0d7799651494cb",
       "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
-      "poseSha256": "3a82cd0c33e313bbe9fa5080b024f91c012c0b881f459cd7982522af6b1d991f",
+      "poseSha256": "56baea9fe9c577ef4130ec60f13400e9fe407335ead980f339816fd6d33636fd",
       "status": "PASS",
       "dense": {
         "samples": 1201,
@@ -17103,7 +17103,7 @@
       "id": "procedural",
       "bindingHash": "42e89209657a335334f8e0e406f66774c2adf570afa9b1b3ec688008a7368795",
       "recordRecipeHash": "2b824f9cad9383d8fcbb3fd5d41ebdec2d5ecbc9128e33a5388bc21d7cb0a859",
-      "poseSha256": "b9f979c9e0711525fd92a6513a42014003bde2f751760c03f34916f3940101d0",
+      "poseSha256": "9f4e73a86681a1bf2ece55a5d498efba0fa5f7b8060088d91de053e031857c17",
       "status": "PASS",
       "dense": {
         "samples": 1201,

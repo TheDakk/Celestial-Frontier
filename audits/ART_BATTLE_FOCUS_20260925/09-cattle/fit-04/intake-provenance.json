@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/authoring.json",
-      "sha256": "d9c23635c440d69a21b69a8644bb559d83db17b559150cd40dcfa997054f2563"
+      "sha256": "abac731e391157abd3f083369138b424cceb231456268bd1d6cf85997263adad"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "33a0a48414c4d96613c64bb85791d32ea2404ffaba939cb96238290447369f5a",
-  "bindingHash": "857d1a62d213235edbf0cf0b14570ec1b2f5a010fcb9d33c9cd29c4b5320dd37",
+  "recordRecipeHash": "5ac0cf8e4fe17023fcd37ad2d94aeb72265201e1f9c1bc86fa64a65e5262b995",
+  "bindingHash": "ec873e15f3c9c905fce561ff215534fea5ee5f52b08120f4104c1469cccacd8b",
   "contactEndpoints": [
     "hindFarAnkle",
     "foreFarAnkle",
@@ -83,7 +83,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/authoring.json",
-      "sha256": "d9c23635c440d69a21b69a8644bb559d83db17b559150cd40dcfa997054f2563",
+      "sha256": "abac731e391157abd3f083369138b424cceb231456268bd1d6cf85997263adad",
       "unchanged": true
     },
     {

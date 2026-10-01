@@ -12,7 +12,7 @@ To restart only this completed package from the owned checkout:
 node audits/CREATURE_SCENE_COHESION_20260908/serve-study.mjs native-ground-ruler 58521
 ```
 
-The server verifies all 17 built files (1,837,000 bytes) and each response. Content inventory SHA is a753263db4ecc4a081a486e9cde36544f3e34c1dc60a3ab9ca78cc854148df9f. Final native report SHA is 2707b001df593cbc7d163d556457d95a54bf8d544de5e189b037da179941bbb7. The report binds nine source inputs, exact image hashes and its built inventory. Do not rebuild over these immutable outputs.
+The server verifies all 17 built files (1,837,000 bytes) and each response. Content inventory SHA is a753263db4ecc4a081a486e9cde36544f3e34c1dc60a3ab9ca78cc854148df9f. Final native report SHA is a4e1384cf671b59aadd38806eb14129d32adbe92b2e68d8b13a829fc8b0a2e95. The report binds nine source inputs, exact image hashes and its built inventory. Do not rebuild over these immutable outputs.
 
 ## Verification and boundary
 

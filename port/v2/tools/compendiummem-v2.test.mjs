@@ -52,7 +52,7 @@ function budget(active = false) {
 const validate = b => contract.validateBudgetRecord(b, fixture.rowsSha256);
 
 test('valid empty epoch and three independent, raw-reducible controls admit; v1 never changes', () => {
-  assert.equal(policy.v1Sha256, 'c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc');
+  assert.equal(policy.v1Sha256, '340a67c1e6d6f4f7e120c7f13e1e06a674757ddcd2a023c100e4f7f65493fbd9');
   assert.deepEqual(validate(budget()), { ok: true, errors: [] });
   assert.deepEqual(validate(budget(true)), { ok: true, errors: [] });
 });

@@ -49,7 +49,7 @@ its screenshots were inspected. Large rows scroll without scaling the phone layo
 
 Final master SHA256 `a5e635a7587e1e8b8be7a3bd3636f56375ba84654989e696cf251b4a1c188e8a`.
 Recipe SHA256 `aab9af8cf6b0d310bf9d53414e3c895321e47b2787f423f4981b533c8225d771`.
-Complete Wolf input SHA256 `757478b4b85981601e3b2c0077828893bf7fe184813710f039866e1b9bd37476`.
+Complete Wolf input SHA256 `83ed85bf606942f571bbdadefd7188c77bcb2d255db88ca9334b884b892b28ef`.
 Actual canonical reference images and all3 extracted visual keys match this exact genome.
 
 The surface is visibly smoother, but still clay-like. Limb junctions remain abrupt; fur/coating,

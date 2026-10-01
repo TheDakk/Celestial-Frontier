@@ -1,5 +1,5 @@
 /* AUTO-LIFTED portrait-only hdart slice from main.js (v1.8.9,
-   lines 5427-8684. body sha256/16 24d0917b49c95a9f;
+   lines 5427-8684. body sha256/16 9e9bb77243bcd4e3;
    pure support sha256/16 0988176f5fcf3ab0. ⚠ DO NOT EDIT.
    Regenerate: node tools/lift-hdart.mjs
    The four exports return painted portable canvases. Allocation is supplied

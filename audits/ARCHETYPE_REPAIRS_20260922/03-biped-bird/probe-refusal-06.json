@@ -3,8 +3,8 @@
   "scope": "One browser-free reproduction of native06 first mass-scaled sizing probe. Exact native recipe fragments, actual Stage/parts/performance/contact/paint owners, display stubs only. Stops on first refused applyPose; no final sizing pass, film, CPU certificate or retry.",
   "status": "REFUSAL_REPRODUCED",
   "nativeRunId": "20260922-eagle-native-06",
-  "recordRecipeHash": "bc8478060affb41682625b407dc9931f2e7652fa3f5223ed5489039e0f3cf0eb",
-  "bindingHash": "82528fc6e5303135243b8fb35a3d22d01621bfbc6dfead4554dc8e6c59df3c16",
+  "recordRecipeHash": "b65f11f40c4ecdaefa9716d24277c8105cb934c8c5c025678134c86e602574c3",
+  "bindingHash": "67d9c9205f5f2fb81e74d0b4123e948244ab412b1f1a83f1f33230b0e9af37e8",
   "recipe": {
     "fragments": {
       "const massScales=": "const massScales=Object.fromEntries(SIDES.map(s=>[s,combatantScale(actors[s].rig.bounds,actors[s].rig.cutout.height,masses[s],FRAME.height).scale]));",
@@ -1951,7 +1951,7 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-06/report.json",
-      "sha256": "6b359257da50b0901016c3dfdcbaefdd9083adc6cdc64a672d236679c2c113b8",
+      "sha256": "a1c94960952ef4398b1735561e5b380e3ad7d5c9b1d5f8dd704aec2142ba771a",
       "unchanged": true
     },
     {
@@ -1966,12 +1966,12 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-11/record.json",
-      "sha256": "2fd7307c923ba76dd076acadc5953adae13e9a7a86f602aa0aca1d6a2fbe25aa",
+      "sha256": "60c7632b5b804bdb2fdf4bbca5f8f32e7ff768166af8a8513bcd2a70a6926f68",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-11/binding.json",
-      "sha256": "3bb0c4c52e4aafb5086355f2a3ad2cbbdc706f6a1ea11bd711a8efbc9c03f01c",
+      "sha256": "0152871c67363a28d608bd7d42960610aea93da106e15433ba5f5bcf9cde7601",
       "unchanged": true
     },
     {
@@ -1986,7 +1986,7 @@
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
-      "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4",
+      "sha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596",
       "unchanged": true
     },
     {

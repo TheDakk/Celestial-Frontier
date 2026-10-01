@@ -948,11 +948,11 @@
   "sourceHashes": {
     "binding": {
       "path": "../../audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-08/binding.json",
-      "sha256": "4aa64efddc0f7e5ada91f721fcb7ac468d73d2f879fe656e459fcd729168dfb5"
+      "sha256": "a3c17d4551102608a9f9ee80d7f12750880970ddd3f335132f5ad30bf7ec772e"
     },
     "before": {
       "path": "../../audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-08/pre-regional-binding.json",
-      "sha256": "4deca7570a8ada8b832481a668cc6fa162144fbfa5d489e614b2f28408da9596"
+      "sha256": "3ef0a21c0db3a1f4941628fc6eb01da89b19b781b00faabbd4be3f4810ec8508"
     },
     "master": {
       "path": "../../audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/master.png",

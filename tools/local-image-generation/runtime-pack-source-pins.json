@@ -5,7 +5,7 @@
       "source": "audits/AI_GAME_INTEGRATION_20260909/platypus-reference-binding.json",
       "target": null,
       "bytes": 2987,
-      "sha256": "adeccf420d3c62694367403da019102dddd748a655a6f66b8d7014c985ddd308"
+      "sha256": "ab87c450d2d2a1334cf05407a416766a28005ea65068b642f9a5e6e491f1814d"
     },
     {
       "source": "audits/AI_GAME_INTEGRATION_20260909/platypus-reference.png",
@@ -23,13 +23,13 @@
       "source": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/license-source/onnxruntime-2e2543f-ThirdPartyNotices.txt",
       "target": "__local_ai/notices/onnxruntime-2e2543f-ThirdPartyNotices.txt",
       "bytes": 336906,
-      "sha256": "53d3fa5821ac016ac24dd35775c996efec86e2ae0841e9a3a5e146c0ae916845"
+      "sha256": "7510947ed371c3f33e99ad509b0a312c3a6283ab76380dd1744c5504585b8b85"
     },
     {
       "source": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/license-source/provenance.json",
       "target": "__local_ai/license-source-provenance.json",
       "bytes": 2977,
-      "sha256": "4391607aa2dbb1b2759d6459e43e7611b2de925a61e5a322b8ee4c92afe8f2a6"
+      "sha256": "836c95e7791b964d060a2b9f3243ef9b520b188b05dad39393ce0ff94756948f"
     },
     {
       "source": "tools/local-image-generation/THIRD_PARTY_NOTICES.md",

@@ -28,11 +28,11 @@ Codex: continue Gull and the ranked batch, retain one ten-item sheet when items1
 ## Principal hashes
 
 - master SHA256 `ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43`
-- record file SHA256 `8ccee0dc9fb68d1e2e5c69e5efb66499af8af811998c822a9652db33d345cc7d`
-- recipe `9d9d3fbcd8bdfcb5ed37a534b3afd44303ca0b1229a53593362d9b5292a2e316`
-- binding file SHA256 `b5da6af9459e3a04408fa36ddd29ab77c1f06742998660a018dfb378930a577b`
-- binding identity `0c3d7ce56cc0ea6b14dda658cc7c2f18dd5ec2363c541c69ceff143a2854fc43`
-- final markings SHA256 `cc7d88248165ea634528836248999f97f890f9af167a3ff7ea8bb31df75c941e`
+- record file SHA256 `0e103601830999fe1c7d3857b7c0a1d9e0fc3c0261df9e060e2fa70bf75078c0`
+- recipe `13c67872a056f6d47de77cd4cdd78a12eab9004dacb7ecf686aa4ddbcb76eef8`
+- binding file SHA256 `7df5d302db951426d54655769944a4b8249a52d7e020dfdb81aa1626c6d350d6`
+- binding identity `e32bcfd9768cd8d38ae0c73ce2572e2361b495ac1578c44d719ee3f5924717a2`
+- final markings SHA256 `a7f471ab6424f9b17eda8ff8f6a8946e35c59505a645bd666cbcef7dcac8653d`
 - full film SHA256 `484aa4985b80ec1be8637ae775ca435fefcb53ec7252d611e4943efb45e999a2`
 - review sheet SHA256 `b10104b97852f053dd73fb641cacd8fe00d7e363191fad07ef884e3382091167`
 

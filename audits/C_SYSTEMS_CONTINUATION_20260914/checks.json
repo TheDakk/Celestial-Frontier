@@ -8,8 +8,8 @@
       "command": "npm --prefix port/v2 test -- --reporter=dot",
       "exitCode": 0,
       "path": "audits/C_SYSTEMS_CONTINUATION_20260914/checks/unit.log.gz",
-      "sha256": "1afa7c9737bb8bd45cf45caecf2bd43f11cfbcd475bfa081eeb681e4d5fec5ae",
-      "uncompressedSha256": "efdd2f171e56bf50c4a657c24f936bf379024809fedaa97dba301664f3e40169"
+      "sha256": "52d32eca352083f6cb386da0fb4fba2155c9b4b6002a4905116255c81e805fb0",
+      "uncompressedSha256": "7f44c45bf2437e74648d33eb874102acddcc062f9be777390591fe3f89950243"
     },
     {
       "name": "typecheck",
@@ -24,8 +24,8 @@
       "command": "node tools/validate.js",
       "exitCode": 0,
       "path": "audits/C_SYSTEMS_CONTINUATION_20260914/checks/root-validate.log.gz",
-      "sha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736",
-      "uncompressedSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "2e3bf4fa737966203f1153ac2ff4cc91499d8fc34616bbe99a3434ed7291043e",
+      "uncompressedSha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "name": "codec-focused",
@@ -63,7 +63,7 @@
   "protected": [
     {
       "path": "ART_KIT.md",
-      "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+      "sha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
       "unchangedFrom": "f36cb38db6d518f3625269c2a6ecd842bb671716"
     },
     {
@@ -73,7 +73,7 @@
     },
     {
       "path": "SOUND_KIT.md",
-      "sha256": "f74514cb967ea474b994a0c69ca0437cd7b35b6bc595523b54dc625fdeb0f5b0",
+      "sha256": "9786cc0d28b6d752345fa30a79f7c881f48dddd289b2dc5e0bade08053ab2bc3",
       "unchangedFrom": "f36cb38db6d518f3625269c2a6ecd842bb671716"
     },
     {

@@ -100,7 +100,7 @@
     },
     {
       "path": "port/v2/apps/game/src/motion/actions.ts",
-      "sha256": "580643728c9da8f7f264056f375acef1bfc6b0cafe5e7736dccee15b9315a433"
+      "sha256": "6e870e9b6e80d9d755895b3c2a9334fb131d19dd701410e47d7b72083e1c6dc9"
     },
     {
       "path": "port/v2/apps/game/src/motion/timeline.ts",
@@ -272,11 +272,11 @@
     },
     {
       "path": "audits/G2_REFERENCES_C62_20260927/09-cricket/fit-01/record.json",
-      "sha256": "5f174d569714f0cc5b9bf09a374525d2a918312c33272af39683c664097d77a0"
+      "sha256": "ba3d843321441b7bcbf8099ee9f884fa1251e4e795c67111af7e300f1acc6f41"
     },
     {
       "path": "audits/G2_REFERENCES_C62_20260927/09-cricket/fit-01/binding.json",
-      "sha256": "368a23c5b46aaea4aededbf76d10b765920748492bfe5a62c362392e8024ee7b"
+      "sha256": "167f9072bde1dbdf8e3155017e9f4f4ac9230d1e2024c5c59ab16e41d05767e4"
     },
     {
       "path": "port/v2/tools/creature-animation/arap-skin.mjs",

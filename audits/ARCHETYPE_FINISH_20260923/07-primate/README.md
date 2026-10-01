@@ -7,9 +7,9 @@ The original two-legged/two-armed painting is retained unchanged. Exact original
 | Authority | SHA-256 |
 |---|---|
 | Master | `27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408` |
-| Exact prompt | `4d454642e662b3382b990e5dcc9a2da4e12aa4cc30cc29f4f13bc53cf1e19b47` |
-| Record recipe | `7b6ee65a8fd5789aa3b62aa0e582c619883fd105a8cd1e7fa8019731d912f532` |
-| Binding | `65fe2d84fadf6a7459fdcad559f2c120e0b3f40726654253b5fbe14fb15b561a` |
+| Exact prompt | `36a0fd3382091550c1c0983029c408ec9caddfe518d9e079712bd008c0acd7b0` |
+| Record recipe | `9b9ee55debbae28a7a1346158954c2915449c28f6b4c5e135cbdc7a8128d6a69` |
+| Binding | `e5e587bdcebdc859f38d30a40fbc9484a5214005525a13cebedf3ab0844e0e06` |
 
 `anatomy-review-01.md` documents the visually supported near-haunch ownership repair. `landmark-amendment-01.json` declares the far hip at320550 as an occluded pelvic estimate, preserving uncertainty. `candidate-02` corrects inherited historical prose before qualification; fit01 remains retained, unmeasured by static/native. Both input copies and intake receipts remain immutable. Presence explicitly declares tail absent, hidden/folded empty; two arms and two hind legs remain. Head-attached ears have no separate contract joint. No presence state was inferred automatically.
 

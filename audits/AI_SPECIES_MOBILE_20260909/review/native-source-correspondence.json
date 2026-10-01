@@ -23,7 +23,7 @@
   "notice": {
     "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/license-source/onnxruntime-2e2543f-ThirdPartyNotices.txt",
     "bytes": 336906,
-    "sha256": "53d3fa5821ac016ac24dd35775c996efec86e2ae0841e9a3a5e146c0ae916845",
+    "sha256": "7510947ed371c3f33e99ad509b0a312c3a6283ab76380dd1744c5504585b8b85",
     "sourceUrl": "https://raw.githubusercontent.com/microsoft/onnxruntime/2e2543fbe9fae542f921d47a72d21d5a4ef0b710/ThirdPartyNotices.txt"
   },
   "registry": {

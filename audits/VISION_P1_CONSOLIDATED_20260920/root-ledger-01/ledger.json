@@ -759,8 +759,8 @@
       "dir": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04",
       "mutant": false,
       "mutations": [],
-      "recordSha256": "12c19c9543b0ce8924cffcc11092854743b07840496615207e1e72f62ad2639d",
-      "bindingSha256": "021c0850f5c1735411313a5b3c9167b87bf65a25f7d712a123e0e2534bd8553d",
+      "recordSha256": "42e9fb23e0b1edd5c722115c46c97d5bafc330870fcd656dba27c04777af65c1",
+      "bindingSha256": "c4228f2e9083c7212367986af79b173ee13ca933a45f49e6921c83cc8792fe4a",
       "width": 1254,
       "height": 1254,
       "stride": 0.0064553827392768975,
@@ -1763,8 +1763,8 @@
           }
         }
       ],
-      "recordSha256": "12c19c9543b0ce8924cffcc11092854743b07840496615207e1e72f62ad2639d",
-      "bindingSha256": "021c0850f5c1735411313a5b3c9167b87bf65a25f7d712a123e0e2534bd8553d",
+      "recordSha256": "42e9fb23e0b1edd5c722115c46c97d5bafc330870fcd656dba27c04777af65c1",
+      "bindingSha256": "c4228f2e9083c7212367986af79b173ee13ca933a45f49e6921c83cc8792fe4a",
       "width": 1254,
       "height": 1254,
       "stride": 0.0064553827392768975,

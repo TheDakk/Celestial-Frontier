@@ -24,7 +24,7 @@
     },
     {
       "path": "port/v2/apps/game/src/creature-finish-app.ts",
-      "sha256": "5f45afb8819f5f45c93be810dd2e218e830804ac95b7bc53b1a33a4f80db2948"
+      "sha256": "ea6205715aeb3f6ddc909472bab2743adbe024b2f77a83f127fdf082c3a0d6f5"
     },
     {
       "path": "port/v2/apps/game/src/creature-finish-engine.ts",
@@ -36,7 +36,7 @@
     },
     {
       "path": "port/v2/apps/game/src/creature-finish-source-pins.generated.ts",
-      "sha256": "7f72b30b68ef9332d3c1d7021c4da3eb0a0b5c49acc7d9710677ece7c49f28c8"
+      "sha256": "f48fe4ad9f3faf63165f73d5978f04199db9ec226aa9d23b32823c5fb52145ae"
     },
     {
       "path": "port/v2/apps/game/src/main.ts",
@@ -52,7 +52,7 @@
     },
     {
       "path": "port/v2/apps/game/src/painted-cards.ts",
-      "sha256": "3a1ad8ca4069dc74904a0f417f29125ee9924892e10e660be6340a7de8b58dad"
+      "sha256": "cb0cad898c34643d89abb509cd77224e5b69cb29e9ac3b58872e2ff2125f31bd"
     },
     {
       "path": "port/v2/tests/creature-finish-engine.test.ts",

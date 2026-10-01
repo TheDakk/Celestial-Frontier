@@ -9,37 +9,37 @@
     {
       "path": "I5-FIRST.md",
       "bytes": 2591,
-      "sha256": "4d2b0617dc09319c748346cd1a907a13bf07f48ca1e3304917f69797d9610245"
+      "sha256": "506d8435cc052dbd57a147a02bbde16f97e9212381bc263385f0891bedbf941d"
     },
     {
       "path": "ITEM5.md",
       "bytes": 3432,
-      "sha256": "8d796f8b364bcfc23fecc5ce2a897a68a23174ff41c22d504e6b349040397196"
+      "sha256": "2b209baf2774486d45dc1e5221b1eaa963458d55104a02fbb82f767614bf1082"
     },
     {
       "path": "ITEM7.md",
       "bytes": 2893,
-      "sha256": "ab3205217a72e7fb96d2fabb546636e16a0a1a0946b84ebd6ebc24cc5d764b8c"
+      "sha256": "c7364d255f591160dde13d12b139d0a00e7ff22b849430715e10a61fc9e24e57"
     },
     {
       "path": "README.md",
       "bytes": 3717,
-      "sha256": "758255275c0ea124453bad923a92431ed37c2c2afaf504f9a7836ffdd7e0120f"
+      "sha256": "2aaed684711d055747b2fd25012f85ddcc7716872c0a23ad689ec023bf755f89"
     },
     {
       "path": "REQUEST.md",
       "bytes": 13261,
-      "sha256": "17c682197d1b7a093a98911e3c6b8142fe16cfe5e2589863e502f3cc08e55256"
+      "sha256": "3b1daffdcadb5505edb7518d6b52332632a3a7c123d7dbb6cb66e5ff97ef4020"
     },
     {
       "path": "centipede-claude-01.json.sources.json",
       "bytes": 219366,
-      "sha256": "b9c802ff2efde118c3e98f97a57ef0e5982bcd06bd0495def061885a9bc60280"
+      "sha256": "9b69e32bb3815e5464ba7afe094c5cac8265bc24fa10483aa6115c8d349601e0"
     },
     {
       "path": "centipede-claude-01.log",
       "bytes": 1091,
-      "sha256": "773f7a0de9c2156a2e9236370397ecd77d20cb910dce59bce3696aa72ea91ee4"
+      "sha256": "77b5e2c862be3bd6bb38c7452ca6137cde6c0f23eb09037fe2bd9044f412b791"
     },
     {
       "path": "centipede-claude-02.json",
@@ -49,7 +49,7 @@
     {
       "path": "centipede-claude-02.json.sources.json",
       "bytes": 219366,
-      "sha256": "986c4c65039d103d01179e1c50383c12f167d9969f161901d73b1da02fb46ec1"
+      "sha256": "8b75ce366747fa9366a334eedbf9f9c3e3c3f61c20c9055c8da30b80756e7733"
     },
     {
       "path": "centipede-claude-02.log",
@@ -94,7 +94,7 @@
     {
       "path": "centipede-known-patch-authority.json",
       "bytes": 389,
-      "sha256": "a88365db4cd7f26473fa3e33193f35688c838d3e30018c1753739a2cd8aa471f"
+      "sha256": "84e62e8675e7281d9bd27a3b9dcb64e5c6c2d3ad0d6f732717085623955cd659"
     },
     {
       "path": "centipede-level-crawl-01.json",
@@ -104,7 +104,7 @@
     {
       "path": "centipede-level-crawl-01.json.sources.json",
       "bytes": 226531,
-      "sha256": "d58abe3731e3ae279af1ea5a6f27a86d8ea979c70d5f5c5d120987eee9366741"
+      "sha256": "f0d2c283ee7fd259188b64097a102629ebddb2d4e5f3d7c1ebbbdf308034b7cb"
     },
     {
       "path": "centipede-level-crawl-01.log",
@@ -119,7 +119,7 @@
     {
       "path": "centipede-local-motion-01.json.sources.json",
       "bytes": 226531,
-      "sha256": "12630e75b250939330a10bade38a4f30b237f0fa07a17e8b7ae0f7eeff6216f4"
+      "sha256": "e803b15826ddd9cf155790149aa433d91ef40e1bdae11b6ea6862aabb75a61ba"
     },
     {
       "path": "centipede-local-motion-01.log",
@@ -134,7 +134,7 @@
     {
       "path": "centipede-observed-01.json.sources.json",
       "bytes": 226531,
-      "sha256": "ff27c55a496730aa5733ab4eca3fb89a1b9a8b2bec7020b9520e0da885055b6d"
+      "sha256": "fa8b51d5ca13f478070de4ed134c81021dd2628c4f51b03f9dfbc48342ba8831"
     },
     {
       "path": "centipede-observed-01.log",
@@ -144,7 +144,7 @@
     {
       "path": "centipede-protected-inputs.json",
       "bytes": 17791,
-      "sha256": "2c846e4a53930a71f48ecfbc009a43850156700550da3b121e92736091994af7"
+      "sha256": "da18fc91f37ef37437cfae0a96126760d9aaeaa01803977225f937c9249f65c0"
     },
     {
       "path": "centipede-remove-known.patch",
@@ -159,17 +159,17 @@
     {
       "path": "centipede-scale.ts",
       "bytes": 8142,
-      "sha256": "ff8ad588ce779da507fa7cdd97dd60d8a89ae775125f10677fc5e5c3d2e916b8"
+      "sha256": "f7d6c0e887bc62b94301bc219497e1ccb24ef4f3143f0ca7235bc57122e1ab47"
     },
     {
       "path": "centipede-tests-01.log",
       "bytes": 242,
-      "sha256": "b7cd470c2b899dbac5921062974658e4c596f2117abd226cbd6970e7acc55854"
+      "sha256": "55dc90c79f5470b9c22b861bcb0d08edc137f96b14ca16e187324ea3cf0e00c7"
     },
     {
       "path": "centipede-validate.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "final-source-hashes.json",
@@ -179,7 +179,7 @@
     {
       "path": "item4/README.md",
       "bytes": 1370,
-      "sha256": "75a09ba4c2db9e06eca8484a69c3d5420ae3fa827f7a3e8b24623de9fcb0e38f"
+      "sha256": "7cc2bd02cc35e1272b140dbca2f26adaf4cb445419d1a4b9ce65a7a34bf57e83"
     },
     {
       "path": "item5/CLAUDE_COMMIT.json",
@@ -189,17 +189,17 @@
     {
       "path": "item5/README.md",
       "bytes": 1471,
-      "sha256": "cd1086bc32a1dd7f233037cf9cc53dbca6f377147394c40f0e226f65c4c6f21b"
+      "sha256": "073a24642f87e6e417eb88862742c70a682b7c382120e9c67bfbe89e16dac18b"
     },
     {
       "path": "item5/SHA256SUMS.json",
       "bytes": 6137,
-      "sha256": "d82ede5444daf03d68801828da3809e2ac529f7894d6676c4096560ef73e17d2"
+      "sha256": "ddf1fd39b1e03973c0f35df7c68c0b43e601a947faa91153ed1786faaf52dad3"
     },
     {
       "path": "item6/README.md",
       "bytes": 1090,
-      "sha256": "0702fa5db0e8daf61e3ef0c545ebbf762cf10d21cb3db72195b58718907930a5"
+      "sha256": "4b35cba6440293d71c66894cbde6756b2905924f2a4761c583e149b03a52441a"
     },
     {
       "path": "item6-unchanged.json",
@@ -209,12 +209,12 @@
     {
       "path": "item7/README.md",
       "bytes": 1173,
-      "sha256": "6aab4915ad0ba79561db8f5656c0f5c3ae7ada9600758113fe64e6ca0a9ebb47"
+      "sha256": "78fce71df7f57a545811da85b1ddab2eda6d1c7ca407c458265fab9a8ad0b425"
     },
     {
       "path": "item7/SHA256SUMS.json",
       "bytes": 2352,
-      "sha256": "8ad551cc2ae3b4c7fa58e3d75a99ebd6d8e3be1b0f5343f4e41ae50feccc59b1"
+      "sha256": "0191568fd27f52ae11b4ff8f6c1fef9bcd1dad805d26fd27064d9819ab303c89"
     },
     {
       "path": "item7-before.json",
@@ -234,12 +234,12 @@
     {
       "path": "item7-tests-01.log",
       "bytes": 2394,
-      "sha256": "c046d50761a431265c366c7f00edb1067110a0243125a78012395e20ba6ee68a"
+      "sha256": "5b2cfbf68ca157e0b3eea7b3cc2787619b332209c3ba0dec375bb84bc9cbc825"
     },
     {
       "path": "item7-tests-02.log",
       "bytes": 245,
-      "sha256": "2ab56958ad0f69e41adc1d2ffb35f8a6234a55a8e824515a33b6296c89f4a1a3"
+      "sha256": "58c63ac39f473670fb704da93afbe8a272e7a45202f5c6a7616d9e43673905cc"
     },
     {
       "path": "item7-typecheck-01.log",
@@ -249,7 +249,7 @@
     {
       "path": "item7-validate.log",
       "bytes": 1093,
-      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      "sha256": "06b73f8cc237283b4f131b3a009371769aae3fadc7b7cb45dfd4b27c16d5d927"
     },
     {
       "path": "pending-commits.json",
@@ -274,17 +274,17 @@
     {
       "path": "pwa-release-test.log",
       "bytes": 245,
-      "sha256": "d929ea7115d2ea396577b850c51764c5ca8c1bf64bd0edc0a3c195d2b2e37ec2"
+      "sha256": "83ca6acc405138670d7feb5f9b6965c81fe3bc1034a5ac147a98a57d888a8370"
     },
     {
       "path": "pwa-tests-01.log",
       "bytes": 19125,
-      "sha256": "3e301e97eed34b2825ef50f031b4b98b93aed6ae8ea74c5e21787e6e8b2cd21a"
+      "sha256": "26eb90476c75f46517e76bcfa6f26582e21de5d0a7aa761c687e4eeb04632d4e"
     },
     {
       "path": "pwa-tests-02.log",
       "bytes": 244,
-      "sha256": "02d8696f8331a37a0af04ede907771e133022774b8cdc45dab0411a41af1a161"
+      "sha256": "fcad7e15f06e652851079d5d54a79168b70712a8aa3aefbad48b0d30a3fbe06c"
     },
     {
       "path": "pwa-typecheck-01.log",
@@ -294,12 +294,12 @@
     {
       "path": "request-source.json",
       "bytes": 673,
-      "sha256": "555c09f52d79a93376d3c64a59b22fc402c3538d68912bea14e5cb71e2067d9d"
+      "sha256": "7733baf83e548f6ef798a8349756cb9363364b0dfea1fcf41a83fae29028b37c"
     },
     {
       "path": "run-centipede-scale.mjs",
       "bytes": 2403,
-      "sha256": "cffde14cb7d435001265ac1cc4066a1a94e5913d158db6bf67773d8215ede2bd"
+      "sha256": "57f3d3c989f0c2441ff80e4d6f6a72451680c1d72685d79e43a4f508e97c4c1a"
     },
     {
       "path": "signing-refusal-01.txt",
@@ -309,7 +309,7 @@
     {
       "path": "signing-refusal-02.txt",
       "bytes": 686,
-      "sha256": "8dbd87f8e7e41fc0b944820d7c621653828525bc8b6763478aeaffdd306fbd8e"
+      "sha256": "690521bfb557b200a4627ded87ae1a873fb035eb242a83a9b5e457fcf3e8d3d9"
     }
   ]
 }

@@ -10,9 +10,9 @@ Six generated marking masks pass conservation: zero pixels outside keyed alpha, 
 
 Hashes:
 - master PNG: `d7f7ad90c7813efb3bf9f700d81dbb5acbc8a50d14b504cfc51d9bc85b8f0f14`
-- record recipe: `a4a4808d50893eadd4b38691b74ba40490c318506f4787d6adf3b003a0c55f79`
-- binding: `5abaaf2a118d1068d8cfc1ac02af175d1c0b0725347f5b4243b8a3df8d3b6382`
-- primary marking manifest: `1171d2fc4ed6eecaf02062fa02e7c625d7355f91686862254e62860f1b942c0b`
+- record recipe: `71f6fb7abe998cf48e2684325e0687bf2c3c6d67db0caf506fa0b03cf51a891e`
+- binding: `12619d9e274145651c6c3077f4c4c553f2796f5777a354d60bbf1771d21bd836`
+- primary marking manifest: `e4b745ccd0f6686aa60333a7e4fe8a9d6c3bfbb778cd2974405fbc8b81405f93`
 - native film: `8b7ceff5d1924f94f73bbfc9904106b0c5f6ccce39e855ee499683cee82dc04b`
 
 Run receipts: intake-01.log / fit-01/intake-provenance.json; static-01.json (13 rows × 121 samples); native-phone4x-01/report.json; conservation.json. Root validate passes. No runtime, family, solver, threshold, accepted binding or S2 change.

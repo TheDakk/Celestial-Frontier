@@ -3,7 +3,7 @@
   "status": "DIAGNOSED",
   "scope": "Unmodified source-join and split graph evaluated up to existing lock assignment, then metadata return before diffusion. Exact all-field coordinates and inherited pin weights match retained fit02. No final binding or new intake.",
   "sourceWriterSha256": "b747e26e58700dba92de54a33ad22b7acfeb6a01772c19cacb6aab0ee1af63a4",
-  "diagnosticSourceSha256": "11f442f81ad3d8e6edba1fc0b99daddef11afd2379611d393c0468e74a2b8fa9",
+  "diagnosticSourceSha256": "5ce02c457bdc76c4cec9e91e44616e79d6f70c6646feedd448e61e2d27926516",
   "transformation": {
     "anchor": " const result=smoothSkinWeights({...skin,vertices,parts,triangles});for(const[i,j]of locked)result.vertices[i].weights=[[j,1]];",
     "replacement": " return [...groups.values()].map(members=>{const index=remap.get(members[0]);return{index,originalVertex:keys[members[0]].old,sourcePx:[vertices[index].x,vertices[index].y],parts:[...new Set(members.map(m=>keys[m].part))],lockedOwner:locked.get(index)??null};});"
@@ -6333,18 +6333,18 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-02/pre-split-binding.json",
-      "sha256": "e1e736c17788920f636c0fc4ac46f306984252db48db1f94849279f3406d74a2",
-      "afterSha256": "e1e736c17788920f636c0fc4ac46f306984252db48db1f94849279f3406d74a2"
+      "sha256": "ccadd6922ba322daca284e352cf892f0981272ebec959b5b1b975340f727a0b0",
+      "afterSha256": "ccadd6922ba322daca284e352cf892f0981272ebec959b5b1b975340f727a0b0"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-02/pre-regional-binding.json",
-      "sha256": "89461eb9d8c49e5a3535511c463d10318eb56be19e3f9ca4a29d1ac400de9855",
-      "afterSha256": "89461eb9d8c49e5a3535511c463d10318eb56be19e3f9ca4a29d1ac400de9855"
+      "sha256": "0de3b95b7bc403554662304a1fc104b50890bf5cfc523cc76c8cc3681c5d4f45",
+      "afterSha256": "0de3b95b7bc403554662304a1fc104b50890bf5cfc523cc76c8cc3681c5d4f45"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-02/record.json",
-      "sha256": "1e47ac1be06f3efb5c0d904f48d3ee62bea5f187da6b019e34c81968dcf294d7",
-      "afterSha256": "1e47ac1be06f3efb5c0d904f48d3ee62bea5f187da6b019e34c81968dcf294d7"
+      "sha256": "a47e7530991e8d7d3dafd11f85c8d32288d933a615950337bf7144c91bf0c8e7",
+      "afterSha256": "a47e7530991e8d7d3dafd11f85c8d32288d933a615950337bf7144c91bf0c8e7"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-04/authoring.json",
@@ -6353,8 +6353,8 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-01/report.json",
-      "sha256": "dccc7986feabf268227e1877b05d9eb637c58bb3dbfdbb6316cf9a64f836e008",
-      "afterSha256": "dccc7986feabf268227e1877b05d9eb637c58bb3dbfdbb6316cf9a64f836e008"
+      "sha256": "d613e171fd43edd1a4027c6e961265d6aa809cc38d0f5787e74bfb6baf0349b6",
+      "afterSha256": "d613e171fd43edd1a4027c6e961265d6aa809cc38d0f5787e74bfb6baf0349b6"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-02/parts/atlas/centipede.png",

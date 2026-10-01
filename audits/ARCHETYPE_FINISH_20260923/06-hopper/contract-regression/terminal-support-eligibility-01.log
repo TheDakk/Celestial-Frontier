@@ -1,9 +1,9 @@
 Eligibility only: observedContactSupports(actual fit-05 record,binding); no pose solve or publication.
-record.json sha256=ee6e5a17d974560efd023d80c3035536ae553ced395f86e851d108ca5a7f23b8
-binding.json sha256=3e1c8a51b676614db4002339c6b6d02901f4bb9e914abff85b8de26a7158d8c4
+record.json sha256=29a4cc9525e3a702f336d834fee69de2d305802833285810a4df97d41db699eb
+binding.json sha256=8d3926656a74f1398cafc1a3c6102dba2337509dc5fb2403a75a14f142660b5d
 {
   "status": "ELIGIBLE",
-  "recipeHash": "5357c3e397fbd0d70587424b527de754e7d7fc15988324ba93d85e5e3d692b97",
+  "recipeHash": "8b43869c0bcd6e2a2fe48d810a7d6c7f846d4de4df6bcca20d1addbee7351d1a",
   "supports": {
     "hindFarAnkle": {
       "rest": [

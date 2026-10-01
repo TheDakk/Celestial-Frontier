@@ -2,168 +2,168 @@
   {
     "id": "01-cardinalfish",
     "masterSha256": "c97cc81400c7942af7e9c63c7c54da8cc1f7ff55c69184deda9bbfa580273254",
-    "promptSha256": "2d8d2fff52c2af0674a854401c9d15794f10223732b5f6879a88ee9be7040f5c",
+    "promptSha256": "b7902311c83f736112e1d0ade99fcb96bb95dc17c12740845b0e1c7580cf90a4",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "02-rabbitfish",
     "masterSha256": "2603bd0296f72f50119280e3b62214e716af6e77e73628839bde92f2d51c09db",
-    "promptSha256": "566158ede48d00d6c19da713e8d0a586595b1272da832c1bca4bfef3bb37b4d3",
+    "promptSha256": "18e0026088286c4786972b09059af38e1b155321756ae991acae2ca25e8cedba",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "03-sea-bass",
     "masterSha256": "c96b9b2ce864dfd8e33a0497817d94fb5c17c4ca5535ca01421e5bc7359fd8fb",
-    "promptSha256": "b7b087f42688732ddb04a058ba7034970fc878f557e55fdf1c893c204eccd641",
+    "promptSha256": "0d6378dc31de2b275996dbc302b9e35cd3ba001f930eeee219b48e936f767543",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "04-bonefish",
     "masterSha256": "f571f397e142383133e044ef65bfa6498d715fd82339b8643a265f5726677f17",
-    "promptSha256": "85214473fc1eb79bb5bc2d3b9fafb6ab98c7b39f7b0da6fe545390aa88f0df1d",
+    "promptSha256": "ffb9a47b6b6feaa252614f9b1457e0fe63547303d0ee0dbfcee1d2b35b3ee5e7",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "05-tigerfish",
     "masterSha256": "e4cefd2bad08477e1c2ea9c20e687323b3e8efa9d372ebaa459243a08c63a1e3",
-    "promptSha256": "c7251482b5aab146aed78bc072480b4bcca457ee2afc02c1d5052abe5a20b410",
+    "promptSha256": "f223de6bd04913c2e93156419bf4dddd6f22f06863bbf7e478a83b9a9875c92c",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "06-coelacanth",
     "masterSha256": "9055b359c9864f9c1db79e72e80278435e0a9acf069443ad895a58691fb3815f",
-    "promptSha256": "8336ee6feb4b8e9597d9b77bdb556e29df6c6cadb2229be126b58848d4311a2e",
+    "promptSha256": "4e2ac5d5984f8127f759d1a0c22d7000a1a3981c7d2dc98b384047580aeb4538",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "07-gannet",
     "masterSha256": "478cf8fec158c3901e6850cea8d7660342f6ec472786fbc7d9a36790327caa97",
-    "promptSha256": "01e700efe90c45964b8747214e33433e0123e3db6e8719fc8d0a55dbbe896435",
+    "promptSha256": "dadda01fa6cb18e0356fbc0f154b006e9b20fecbd1c80f5afa01e71701225153",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "08-booby",
     "masterSha256": "2024f4bbd9c63c924d07edcbd2436570bdc706f97c7c3fe0889a92b1491564e2",
-    "promptSha256": "aa5216c27b22019d1c4661a5d7a22f5cd44acf9ff7d5054513019bdc78cab53c",
+    "promptSha256": "0cc90419b4fe032cb86b6eb5beb9b24c0433ef66649c71bf3752dbab68025d21",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "09-bustard",
     "masterSha256": "4d5eee331fab3ab49740ed692f51a36b0006df5f145b1b7c46cab2e62acca7d4",
-    "promptSha256": "9897136f1d8b04a0dee98bdd608fcd1a8dc3383de4bf596809f51edb38023755",
+    "promptSha256": "e373801756034ecb0a2f90928d01cb8911e8929df70115ffe37b41cc8e094b3d",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "10-seriema",
     "masterSha256": "8aff741f55623cd58941706f7497d65b063aeeda806981da64a0b78db4da43a6",
-    "promptSha256": "182a3ace85e521533c176af333f803d85393b365ea64a0d47b065af02f5dc3ca",
+    "promptSha256": "aad353f16b4db3a6924c0ce3e02144046332bfc6f358eebda1fc7e04883e9d36",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "11-chicken",
     "masterSha256": "49392525bd98a806cd38c6c3053549b0654af40bd44ef16d8f49eb3759c1e4a2",
-    "promptSha256": "e08ae8b84f4e3096acbf95ca396af906db374c45ef506aa6ab578c1f52388ded",
+    "promptSha256": "1a39750250f6916cb29bd5bbdea7d6bffed741a50f869bfcb19134a1d5134bc9",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "12-rooster",
     "masterSha256": "3ccf361adb459c2fa09f2dc8fd7ba9a1732621dd805ab3afe634bfbf0e5aeb2a",
-    "promptSha256": "7bf74870c3b136b68950668008899da61365f9e249e471f9f2ecbfbb3a1319e3",
+    "promptSha256": "5205dee4d25838016aa8a91d650d31ef0c5effc7dca4969b230cf08f883edb30",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "13-pronghorn",
     "masterSha256": "0cb05436326b123d20b6c52d6d480673549d612dc661ffaa10be902c5756cf28",
-    "promptSha256": "7f8911ea52eb466c8bb9e29bf6491efc77f6de9ea67c25b1b0b50fe4f112f436",
+    "promptSha256": "236c69fa39b296223a317c187adc4bea4a0e05cb00e76043ac7b15ce397c4bd3",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "14-springbok",
     "masterSha256": "e6870bf363c0fe0885a5e43acb0ee6e69480ceb42f0766da902e815562278a52",
-    "promptSha256": "4a7202392926a5c9d079f9a7d8d2a103ef947e3a6b4780057073a61f273a4b9f",
+    "promptSha256": "e43150ce785a84f3115c9380cbfa97024c1ffc2a350ff0d59ec39a9d20ada34b",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "15-bongo",
     "masterSha256": "438c51be55328e8e8e6a0c49182643bb9b99d8338357898285a98627974c4538",
-    "promptSha256": "963254c9078a9a0fad88d6bcf3a50ee8e46d306467000f7b5347e0fa1aad6945",
+    "promptSha256": "93890c926ef3cebed5323f4d5f6588413e687ebda124fe769e03feb27881980e",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "16-duiker",
     "masterSha256": "f94c7b56f7eea193747a03dbdde92167af9bb76e62a7fdf6bc14ea7065e7a73d",
-    "promptSha256": "bd01f0207d0ca91f43f3112be97252745a8207fa3630a79b468899428b51d70a",
+    "promptSha256": "a9f4189edda94208dd8bb98078787b37f5a9f5d33e02976d4f4db11cd0cdbaf7",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "17-nilgai",
     "masterSha256": "712f3f8fc2b2822575d78e0e193654a820708cafc27bf8713e795db5e907f906",
-    "promptSha256": "c21a545a4bf513f66ff264ede76a3795f02c2231e572b86d8000eed24e8c3ca0",
+    "promptSha256": "2ce40dd06d0ebfb7ecf98a324cfba8f7d0e0739ffd8910ac38c55e098087870d",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "18-serow",
     "masterSha256": "5cda3fba67f8b75e7727a00700c4a534ac3dc99c0c43976cca8110203887196b",
-    "promptSha256": "82f10ab9cb9316fc5fc378e557072005aa8042cd7a330b6781761deca74e90ea",
+    "promptSha256": "52a97ba002c04a9deef21ecf6fd00e76db2218d6057dfe2627e26b85f08654e6",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "19-butterfly",
     "masterSha256": "255d95fef85bed773495055720729a8538358a39c019c6683f46575eaa8c37c8",
-    "promptSha256": "aed2df4d7e75d7bea9cf032ac841c83d972effdfad80772fb95ca2459df36050",
+    "promptSha256": "88d303a7a40e5d6ecbcd7280b7a50681be81ff1bb26910551c89cdb6269096c0",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "20-mosquito",
     "masterSha256": "753825fbf221eea21eb77a4dd51e9b79e9a99a6140c570c6ffb4fd9dbfec6d93",
-    "promptSha256": "55414b2a8927c81f0b9aafa667353c5d4853e9a0e2d1a882019a2cc98482b5b7",
+    "promptSha256": "d3dd54f34f84d435cd2b89a418825995a53840e72c924879cb55a86f59f6115f",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "21-black-fly",
     "masterSha256": "a6a3ef68751f4a698473842fa540ae72393b92d85c3bcb20b4153344981fe2e4",
-    "promptSha256": "a41d80e3d5d00a40d1fa8a98ec2fdef3f78fd4f0558bd2aff74d91c2ccecd8a3",
+    "promptSha256": "f6274d03255c2296d9a7f6a8c32f285f54a84c429376687a596ade651fe07605",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "22-fly",
     "masterSha256": "d8384747e5b7d49642a0eaa2b98066eeac936e64c08d7c08fd2a8d78fd909a54",
-    "promptSha256": "988b194db4d6e6108238d189ce986a40618d5d60d17dbae6461ac6840dd23270",
+    "promptSha256": "543d0ecec7288adcfe2fa5222b4392645b127d375cad75018a2406e1230997ca",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "23-springtail",
     "masterSha256": "f031a378f111103e3753b2993b69217c8ac9457d059b90dc6014d27699833ffd",
-    "promptSha256": "748dfea4ad9ae5228c9b1380448ecd2c07353f4cf40f0e2833371b5db3922c1d",
+    "promptSha256": "4d8939be10b916c5de2297dd391a717906225802e3a974cb58638e950c656966",
     "originalRetainedExactly": true,
     "outputModified": false
   },
   {
     "id": "24-cold-adapted-insect",
     "masterSha256": "82ffc711884e3d509cacac22d3249640400d6e6d9260a4214ed3afafb85e0c07",
-    "promptSha256": "d98d8db811337f343a216c0183225642b1d7be9439c22ebac5607131c1c3b505",
+    "promptSha256": "b993a503676a9357b5e52f73cf63f36504932cdb3e6bf80c66acf40d54e1825a",
     "originalRetainedExactly": true,
     "outputModified": false
   }

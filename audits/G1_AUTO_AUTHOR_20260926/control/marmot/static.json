@@ -208,8 +208,8 @@
     "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
   },
   "cpuP95Ms": null,
-  "recordRecipeHash": "919d9395c967cd07cd4965dc1bb753916c08a161153504dbb9e41de9e2363307",
-  "bindingHash": "f8073862867421c1d5d472b81b39190623cfc26b7d4b515cf36a7c5ad2ea878a",
+  "recordRecipeHash": "307f1dc705252e51d43b0495577de680b7cdc939f4217eb59992b5fcc17a00f8",
+  "bindingHash": "0cd6513f8f3334d36f189c512f888d6909b90256f9df0b78fe832c45841284b5",
   "family": "quadruped",
   "contacts": [
     "hindFarAnkle",
@@ -510,12 +510,12 @@
   "inputs": [
     {
       "path": "/Users/dakk/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/audits/G1_AUTO_AUTHOR_20260926/control/marmot/fit/record.json",
-      "sha256": "30849c158873308156df12bfd6ddf21ef734df679367da6ec9ef277f04462e00",
+      "sha256": "e7efa7c4aefb613410336d34ee1a227d83716b6bfc2089a8bfd60f6491892216",
       "unchanged": true
     },
     {
       "path": "/Users/dakk/Projects/Celestial-Frontier/.claude/worktrees/agent-a184ac967ee31109b/audits/G1_AUTO_AUTHOR_20260926/control/marmot/fit/binding.json",
-      "sha256": "e964b5067403863abdc6ec2ded706ff57c29e2ecf6a20ad52465af4251cad774",
+      "sha256": "f2e53f5a5cebda6728934e4fb48d30074d1e41614c6f0482093d510242f854b2",
       "unchanged": true
     },
     {

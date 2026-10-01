@@ -9,7 +9,7 @@
   },
   "manifest": {
     "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json",
-    "sha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2"
+    "sha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a"
   },
   "producerSha256": "6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74",
   "planningSha256": "843791922140ea3852628f6867febb21239fe331aba25ff9d448a70cf8a7e3cc",
@@ -17,21 +17,21 @@
     {
       "id": "fox",
       "file": "fox-poses.json",
-      "sha256": "3a82cd0c33e313bbe9fa5080b024f91c012c0b881f459cd7982522af6b1d991f",
+      "sha256": "56baea9fe9c577ef4130ec60f13400e9fe407335ead980f339816fd6d33636fd",
       "denseSamples": 1201,
       "namedSamples": 10
     },
     {
       "id": "civet",
       "file": "civet-poses.json",
-      "sha256": "e18bc762dbf5d2360509eedd2ee1ad20b9d3d0c1bbb44b1039447a8b5f542709",
+      "sha256": "1db99ebddc6ff995863a36895f4f8511efd4a0114eaf8b9e74f1716795b5865f",
       "denseSamples": 1201,
       "namedSamples": 10
     },
     {
       "id": "procedural",
       "file": "procedural-poses.json",
-      "sha256": "b9f979c9e0711525fd92a6513a42014003bde2f751760c03f34916f3940101d0",
+      "sha256": "9f4e73a86681a1bf2ece55a5d498efba0fa5f7b8060088d91de053e031857c17",
       "denseSamples": 1201,
       "namedSamples": 10
     }
@@ -140,7 +140,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
-      "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4"
+      "sha256": "d47283ffe9ad8355a7a2d4f9d3c15c81fef5c4f7df4b4c213bd9bc779db70596"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_KIT_ENGINE_FIRST_20260912/masters/platypus.png",
@@ -160,7 +160,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json",
-      "sha256": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2"
+      "sha256": "69442908b68c0a5c231fbaa16d797733cff40e1613d96d2bf88c05c2aa4e8e4a"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/procedural.binding.json",

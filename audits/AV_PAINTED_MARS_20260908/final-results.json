@@ -28,7 +28,7 @@
     "phone": {
       "status": "PASS",
       "report": "audits/AV_PAINTED_MARS_20260908/native-phone/review.json",
-      "sha256": "662e14462831e04ea4ee615a7bda389a7c8e33b5fcfa0deb3af16906c4a60877",
+      "sha256": "fdf69ff54b99b36cae5ea0ae25a5a95e4c3fb49bda7395d9bc94fa843f54293d",
       "viewport": [
         390,
         844,
@@ -61,7 +61,7 @@
     "desktop": {
       "status": "PASS",
       "report": "audits/AV_PAINTED_MARS_20260908/native-desktop/review.json",
-      "sha256": "eaa1d4ea69361233e94552bbfe620cf40a165c2ef6a9b0745e773b952fafa3d5",
+      "sha256": "886519f1819d1ac8d7d269a584b10d672c6fe02b28b2b216dc2e62f82ff88820",
       "viewport": [
         1440,
         1000,
@@ -82,7 +82,7 @@
     "blocked": {
       "status": "PASS",
       "report": "audits/AV_PAINTED_MARS_20260908/native-blocked/review.json",
-      "sha256": "ef355ac1ee5a76927253bfeb6a7f2bb45926b0d471fee27d718546dfbcdc5ab1",
+      "sha256": "638faa139e760390620bc701c1c4d4166f4523f252b20c9f29140c0f0ee3e097",
       "viewport": [
         390,
         844,
@@ -105,12 +105,12 @@
     "preview-package": {
       "status": "PASS",
       "seconds": 3.149,
-      "sha256": "6e20ffb1eab262e2188c49fb7aa6f4074a74a0587dbda9fa1eca4a97186e8f91"
+      "sha256": "bf787eef30bf4c3ba75fb222dfc6f4550718eb56e406871f458e8994b98f9635"
     },
     "preview-browser-check": {
       "status": "PASS",
       "seconds": 2.523,
-      "sha256": "c8a5ba56f3357e0a72033cd87949cc58532ac7196522199738a37a65109a8982"
+      "sha256": "2307d2dafd033ce1ceca1c0937486e1b02cbc91682c0cb94b8ba606a8f2f5786"
     },
     "server": {
       "createdAt": "2026-09-08T14:40:50.134Z",

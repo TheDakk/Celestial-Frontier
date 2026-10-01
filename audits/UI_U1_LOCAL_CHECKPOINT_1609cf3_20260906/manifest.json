@@ -241,9 +241,9 @@
       "role": "terminal execution receipt; overall fail at small-phone",
       "compression": "gzip",
       "bytes": 968,
-      "sha256": "8acd8bece1bbd3f9684ff45ccf4a8781060f65db934d1848c3ad24dfc8ff9a1f",
+      "sha256": "85fc83031ea37e928beb918c72caf23cc5d01f9146cb93146f5535c348c01732",
       "payloadBytes": 4945,
-      "payloadSha256": "2089a500ecd17e2d560ebc40a66a11117d384754576bbcdbadaec138091fc163"
+      "payloadSha256": "1377ea7122949773db7804e0619830b287c8b6b2ed2107861ef894fc127c1122"
     },
     {
       "path": "execution/signature.log.gz",

@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/05-cat-v2/authoring.json",
-      "sha256": "5907b3ead198f8fda54dec8f6e223121b0eeccea8b0c0833363a8368c8ec50c6"
+      "sha256": "ec9cf490284487f4628222fe7c84c8a82f76645988ca20daf5f21701ed0888da"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/05-cat-v2/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "22710fd5b51722a5ce199d79e2a95ae341512ec6a75022d33513d84c7c5dabef",
-  "bindingHash": "fe4ce34e380fca3330f2c4056702bd445c9e833895515d2539a9b3d51882189b",
+  "recordRecipeHash": "2f760e9e02a62d25fb469c2724ca50b130f6974091433034bf72cad34068ecf5",
+  "bindingHash": "38c488761ce58e10549d19d2feeb7aacc32466f56c54935d60af3fef5bbe1963",
   "contactEndpoints": [
     "hindFarAnkle",
     "foreFarAnkle",
@@ -83,7 +83,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/G2_REFERENCES_C62_20260927/05-cat-v2/authoring.json",
-      "sha256": "5907b3ead198f8fda54dec8f6e223121b0eeccea8b0c0833363a8368c8ec50c6",
+      "sha256": "ec9cf490284487f4628222fe7c84c8a82f76645988ca20daf5f21701ed0888da",
       "unchanged": true
     },
     {

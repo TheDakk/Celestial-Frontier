@@ -1,7 +1,7 @@
 [
   {
     "id": "01-tiger",
-    "promptSha256": "add61890258b95e5e0c9fa48e4216adb90bfce6be56c6b5e807d1698ad2bc38c",
+    "promptSha256": "76d008184596dbd15a6d47c022c76b83b63ce354133643a34ac497da1aa24563",
     "status": "PASS",
     "requirements": [
       "vertical black stripes over orange",
@@ -11,7 +11,7 @@
   },
   {
     "id": "02-leopard",
-    "promptSha256": "e3a954685a4575900643a64b1d2f5033d9df1559359814b319f04dee4770bbe3",
+    "promptSha256": "282b767f37ba95c6e4d8233ccabe8a8e16883a165d7a717d60fc4e6a502f2089",
     "status": "PASS",
     "requirements": [
       "long thick tail nearly as long as the body",
@@ -21,7 +21,7 @@
   },
   {
     "id": "03-jaguar",
-    "promptSha256": "81ad131b666e3593eccf1f5642ca0c6e947a44e667b2c2d8926aa0c3a2cab63b",
+    "promptSha256": "b32581f068052bc48064422467057b0dabcae2285bdeb1ff2bdca520a20564b7",
     "status": "PASS",
     "requirements": [
       "stocky muscular build on short legs",
@@ -31,7 +31,7 @@
   },
   {
     "id": "04-ocelot",
-    "promptSha256": "a9abe66c6c6a4773020ce6be79d04b736554c10daa756a3798ba2600edbb4d66",
+    "promptSha256": "241df3b6432fce6dcfb962eda2fd4fbbb430c97cb771bfd557b12620432262d8",
     "status": "PASS",
     "requirements": [
       "chain-like rosettes running in streaks along the flank",
@@ -41,7 +41,7 @@
   },
   {
     "id": "05-snow-leopard",
-    "promptSha256": "9c6d5077ef3e03816e1cbb3aceb4452153d42b6d3e1632ec37f7e68e98402d84",
+    "promptSha256": "977cbd6effeec7901a637ae2eb0c870a8d4dddb6fc5809cc65e45634c4d091b6",
     "status": "PASS",
     "requirements": [
       "enormously long thick ropy tail",
@@ -51,7 +51,7 @@
   },
   {
     "id": "06-clouded-leopard",
-    "promptSha256": "70d5eb22c0035e0875b7d6a725b2e41bac8fd46d98c186ca8c7acd4484943229",
+    "promptSha256": "cc6bf5338227954e365f0cffe411825d5a1ac8f0d1a132f4e8012b05c9104adb",
     "status": "PASS",
     "requirements": [
       "large cloud-shaped dark-edged blotches",

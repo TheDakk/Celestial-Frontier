@@ -14,7 +14,7 @@
       "accepted": false,
       "reason": "Rejected: connected white fill does not preserve sparse separate markings",
       "promptFile": "prompts/striped-rejected-01.txt",
-      "promptSha256": "293112e16f595cad1aa5f04dfbed70772a80023589852d607786de42b385b812",
+      "promptSha256": "d038bfc7297b5d6264acb0d3e2ef3a3cb5bf9c6216e8d600034b554610840de7",
       "rawSha256": "97236b2fdc964c99d5494c3d24b1c7df6f045bde383fcedc483ccb39b1009155"
     },
     {
@@ -27,7 +27,7 @@
       "accepted": false,
       "reason": "Rejected: connected white fill does not preserve sparse separate markings",
       "promptFile": "prompts/spotted-rejected-01.txt",
-      "promptSha256": "32b64897a8e7827a30d4807aa21ff021711ef5a3f9588318d6da4f23fe8a794f",
+      "promptSha256": "c1a147d48758af17578ce5bdaeeaf0a7bf9da04f3ab57f86587faed7d757ac3e",
       "rawSha256": "371b63b0bfd2a7f47692dca1bef4d0324dbaf46bd86c328a6acc003d0cd89026"
     },
     {
@@ -40,7 +40,7 @@
       "accepted": true,
       "reason": "Separated transverse bars; first usable paint",
       "promptFile": "prompts/banded.txt",
-      "promptSha256": "9505aa87ac0505ca05926a4bd8f9b355f2e1960ae42ffde21ae2e208a372aa37",
+      "promptSha256": "e6a6dc267d7e9efa5cb0244c19d6907a7296aceaa9f554382e1b06d30ada32ac",
       "rawSha256": "3ead80315e7f58b220c0c43945a8c461428c75edbcc93491a26c65b1f01cdf6f"
     },
     {
@@ -53,7 +53,7 @@
       "accepted": false,
       "reason": "Rejected: connected white body fill overwhelms marking pattern",
       "promptFile": "prompts/mottled-rejected-01.txt",
-      "promptSha256": "35278fcb116b96e3f0b48fa36b7e236e67c942052d9e8514954772f520811d34",
+      "promptSha256": "77adc4bf688bb43e6c797455db9e22aab409e5030d869e2dbe2e20cf9a5be70f",
       "rawSha256": "f953b6e1b3684b52f5c911b760e6a8ad3e468d47255bd5ff7e08d1c96200c2d3"
     },
     {
@@ -66,7 +66,7 @@
       "accepted": false,
       "reason": "Rejected: connected white body fill overwhelms marking pattern",
       "promptFile": "prompts/marbled-rejected-01.txt",
-      "promptSha256": "3d64921abbe43494f6fd982ab281cb79c8364d4cb052bcba3c72d65238affc97",
+      "promptSha256": "ad987faaa4de844bf0e45bffe455ac3817e3ce65d2f94c35e1171e1d884897fe",
       "rawSha256": "bd778096b3d25c245821db48e4233d4eba5c6ad5b1de36ec2faf861af5ae75c8"
     },
     {
@@ -79,7 +79,7 @@
       "accepted": false,
       "reason": "Rejected: ring centers are drawn inside filled medallions instead of transparent openings",
       "promptFile": "prompts/eye-spotted-rejected-01.txt",
-      "promptSha256": "1d2e73d018cc331d8c6d9b4df0a6f97bf8ec04488b9eaa885591d7c7a7604737",
+      "promptSha256": "71dd175dccc29587e1244a420f468e55635c11b447873c0cdc5ac3cfabeb8020",
       "rawSha256": "7f6e39d228bbbfb28de025bf16fa721d2c136b0958b22439c5f58fb4ca82286c"
     },
     {
@@ -96,7 +96,7 @@
       "width": 1254,
       "height": 1254,
       "promptFile": "prompts/striped.txt",
-      "promptSha256": "9753be07d69c91b9466d1a0c8b12ce0d174d66de827800b68cc6b092fce6f5dc",
+      "promptSha256": "c24d92d513f8d721d9ede563876ac359f3f7e11ebade2c96f627039be78c8f81",
       "rawSha256": "39dc2b0f50887322553b9bd5670bfe1a7c6a3cd1023738ed506b855de70ca923",
       "finalCompositeReview": {
         "usableCandidate": true,
@@ -119,7 +119,7 @@
       "width": 1254,
       "height": 1254,
       "promptFile": "prompts/spotted.txt",
-      "promptSha256": "2931cf774719a66c4bcde79d16849424d738ac561efae2b125fb0608df56126f",
+      "promptSha256": "7b6002d3df0dcf4bf89908b5930133dd711564b62b87abbbd41dd146201069f5",
       "rawSha256": "3306c43ed5afcc8cc131afab99963e64260394bfdf14e334125821a4a75a8915",
       "finalCompositeReview": {
         "usableCandidate": true,
@@ -141,7 +141,7 @@
       "width": 1254,
       "height": 1254,
       "promptFile": "prompts/mottled.txt",
-      "promptSha256": "8a0018e1246c7fd769aa7abeb1467fa9e852b2ab82ec2aae968cb1dcdcee3735",
+      "promptSha256": "c9558df232232093f4910314167c819bc38c56d31e9f52c253fb05b8ad227219",
       "rawSha256": "65f82661254abd89d98d912785c4fbdd70f1365f988c57e0c9574842b6202fcc",
       "finalCompositeReview": {
         "usableCandidate": true,
@@ -163,7 +163,7 @@
       "width": 1254,
       "height": 1254,
       "promptFile": "prompts/marbled.txt",
-      "promptSha256": "f650f342fcc8862a36c83b2536086ceed329ac2b49c118a6a2e400c27bbf41c5",
+      "promptSha256": "90a97e9fa0fee8c80252b0b0d8c2b5169eb86ffda04bff2e112d93a509526876",
       "rawSha256": "0feea6c0b395c6d992787882e2d973dde23a51bbb0c72b1477ff82a6defeba73",
       "finalCompositeReview": {
         "usableCandidate": true,
@@ -185,7 +185,7 @@
       "width": 1254,
       "height": 1254,
       "promptFile": "prompts/eye-spotted.txt",
-      "promptSha256": "f863866d9a645fec2614e66ba8143e8ee7b8628fa10ea5ade04efa01c93277d8",
+      "promptSha256": "17b2a1d3a6a17d2c3ecb1fd45dcf7a9ceecd39a6883f78f71e37c78f621a97d7",
       "rawSha256": "0405cc452f310e6e4555f8e57d3ebdbe16cdaa8bcdd5700a1bbc6a9078f5ad14",
       "finalCompositeReview": {
         "usableCandidate": true,

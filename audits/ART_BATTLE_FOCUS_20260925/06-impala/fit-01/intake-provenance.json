@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/authoring.json",
-      "sha256": "3195de14123c30376ee066466497f5c1aed73ec486f636ee78b008296356eb0d"
+      "sha256": "99eaf9a452af90f5e66808ed0ab85036731587c02d704197fd9d85442791ac47"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "67995957626fe39620ab4600fef284c497b07998c5011c6d5a0a4920df823670",
-  "bindingHash": "e347dca4508c73c3b606cce17b153558a19001519da01e0b14a83e5459ba9dfc",
+  "recordRecipeHash": "47da64d4c4a34d4dcf0e62994ab56b1c75f247e4505ad9514a1d9ceb50d8711a",
+  "bindingHash": "78a8eb0ae15b14a7fa805ab5bbbcccad764c303435b3a1b76a4da513203722f0",
   "contactEndpoints": [
     "hindFarAnkle",
     "foreFarAnkle",
@@ -83,7 +83,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/authoring.json",
-      "sha256": "3195de14123c30376ee066466497f5c1aed73ec486f636ee78b008296356eb0d",
+      "sha256": "99eaf9a452af90f5e66808ed0ab85036731587c02d704197fd9d85442791ac47",
       "unchanged": true
     },
     {

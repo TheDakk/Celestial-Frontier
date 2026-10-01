@@ -1,8 +1,8 @@
 {
   "schema": "cf.arachnid-contact-qualification/v1",
   "scope": "121 actual canonical victory samples and one exact presentation age133.28397506226975 ms, current unchanged contact solver with invertible observational hooks. No ARAP, published mesh, full static or native film. Per-chain max(0,distance-minus-rigid-maximum) is a necessary translation-norm lower bound, not a sufficient multi-chain solution.",
-  "recordRecipeHash": "4165e4c57c508d442b8cf09991bd9925a34620bf5c3895d7a73d9962ec9a6a4c",
-  "bindingHash": "cfe54f47406488cec5c9883648132ace3aced5a0bfa011c2131b7363bf0f18d8",
+  "recordRecipeHash": "40db5c00b42d4080569036445dbd2ba629dd725f26a41e18cdbacae5f705b98b",
+  "bindingHash": "773e17afc1c0be65f2469deb3b33c244a414ca9606d66dd465c0bee5b2e79460",
   "summary": {
     "status": "CONTACT_PASS",
     "sampleCount": 122,
@@ -68736,12 +68736,12 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/record.json",
-      "sha256": "12b5ac9ce9d1f3986628253ecabdb97f7e4a772562703eebf9f543d56e6ed64a",
+      "sha256": "fa291eb7023476f4c831c70dc0e21c94b9188b2bdd7d091982b369ec433f4d81",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/binding.json",
-      "sha256": "1340a8f5f1b7b52e2e75fd6c0c756edcf196544c0183038826275b9ffd320f22",
+      "sha256": "e1636b71eb674a33a152e98540e36e7bc7a6a3e9a2b84524fab86b3d6f9b6694",
       "unchanged": true
     }
   ]

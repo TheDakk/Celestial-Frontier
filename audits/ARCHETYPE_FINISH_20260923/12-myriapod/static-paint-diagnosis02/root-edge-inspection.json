@@ -1094,12 +1094,12 @@
   "inputs": [
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-05/binding.json",
-      "sha256": "0a44ea07c776d2e10fd8c0b6c2b702625814af0401c4d5ce88ba14bf516d8376",
+      "sha256": "f1b0564e734542fa0bc2e5473b45da7a82f3b6edad5d2e6105a404b08e5fccfa",
       "unchanged": true
     },
     {
       "file": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-05/source-join-probe.json",
-      "sha256": "6b83f0d762a2008f7f13f4537ae76300df3bf7d1f0e1ba8dfc2b1486958b780b",
+      "sha256": "b1ddef5ba4089853d360ffa33bacadea5b04838d0b4048cc7b8c98d74b2f5c47",
       "unchanged": true
     },
     {

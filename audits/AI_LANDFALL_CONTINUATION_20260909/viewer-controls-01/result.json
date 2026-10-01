@@ -25,7 +25,7 @@
     },
     {
       "path": "port/v2/apps/game/src/main.ts",
-      "sha256": "6de7440f4c0b01d5decd2e6ee0ba9ce0d63f78ea5bcaf91e4e430f913894fda5"
+      "sha256": "10817137b6a4d800815f5c35cafe772092a7f3c8d4e2ce0b5ff8130a088cafac"
     },
     {
       "path": "port/v2/tests/landfall-viewer.test.ts",

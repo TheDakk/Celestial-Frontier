@@ -7,7 +7,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/DIRECTION_DECISION.md",
       "bytes": 2917,
-      "sha256": "fd46b6d12d1e7a53a62872b7283bed1ecef19cb1715f23ebccf207480f7692d7"
+      "sha256": "23bba733a3a7e6583183d1cef4e44bdeee8fd8f9cd3551470af5ced1083e92c4"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/README.md",
@@ -22,7 +22,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/generation-result.json",
       "bytes": 717,
-      "sha256": "ccda395d2770eb91bcad9ba9b0340578c7e13717a2c9551d64a6e43c8a4247dc"
+      "sha256": "11ca3bfba653421ffc5f1f8f1afd48ba957d0f28bdfba1ff4bda1de7a2350f5d"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/landing-prompt.txt",
@@ -47,7 +47,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.json",
       "bytes": 2981,
-      "sha256": "70a8a3a37fcf1cecfd7e34cedd676579c997dc0badfb0a023504c466b9a659f4"
+      "sha256": "c6a5efd857fa840bfffb3585c9f5995b746cda0b83a39a89ed690bce539dbfb7"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.patch",
@@ -57,7 +57,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/main.ts",
       "bytes": 854682,
-      "sha256": "c827f91e803c3ef7c234babd87b4eeedadb4e6ed3308d309a1e9fe4bfbb72970"
+      "sha256": "23178a1ffa9d328bc9f86dca71d3f04a1a168594d9739ebfd90b6ac66a0dae6e"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/painted-earth-landing-recipe.ts",
@@ -87,7 +87,7 @@
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preserve-candidate-first.py",
       "bytes": 2610,
-      "sha256": "2da6087529a255cfd2bdf85735a766582e7b19c39a0e3757653824041d84b704"
+      "sha256": "e4c40b277512dc599961e48a53fbb9f14689548a7403b53337baa575395ee5c7"
     },
     {
       "path": "audits/STATIC_LANDING_PORTRAIT_20260908/reference-intake.json",

@@ -68,7 +68,7 @@ The first twelve masters and review sheets remain in ../ART_KIT_ENGINE_FIRST_202
 This directory preserves derived inputs only: source originals remain unchanged.
 `prepared-manifest.json` records original/PNG/raw RGBA hashes and offline ImageMagick
 fitting operations. `recipe.json` is compiled from canonical Earth data, never a hand-typed
-system card. Its SHA-256 is 497dbf701285e6fdb90b8522b712b07a26e054b4c4b72b79807dc2547d13dac9.
+system card. Its SHA-256 is a43c0d79718c4d4672c2f82da6455f66e64a8435c569b5005cf39280b7ea4066.
 `compiler/` retains authoring source provenance; `kit-client.mjs` bundles the app-owned
 warm client alone, not the game or a delivery pack.
 

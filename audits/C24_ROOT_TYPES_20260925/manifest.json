@@ -13,7 +13,7 @@
   },
   {
     "path": "audits/C24_ROOT_TYPES_20260925/root-validate.log",
-    "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+    "sha256": "341cc9b2f71d7693aedb63e8b680d7ac4143039634c37ff0de0ac5bf359d9f9e"
   },
   {
     "path": "audits/C24_ROOT_TYPES_20260925/worker-after-01.log",
@@ -21,7 +21,7 @@
   },
   {
     "path": "audits/C24_ROOT_TYPES_20260925/README.md",
-    "sha256": "5451013e03a45b76726a0544cd9b831dff2110952734d0241eb142321e9334b6"
+    "sha256": "84026641c21b8350f6d750bac0ff5440afb9e97f5b68e33a88a7a55aa24eaa6f"
   },
   {
     "path": "audits/C24_ROOT_TYPES_20260925/root-after-01.log",

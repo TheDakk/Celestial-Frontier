@@ -10,7 +10,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/authoring.json",
-      "sha256": "815047e8b3c655e51fcefeccfdc6117ec647ec4a6f35acd2dab35ad243ff119e"
+      "sha256": "a7ddba32f738fd770b714fe493d0837d9d8a5073b34c14b23c5d7d5f65b2c4c5"
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/subject-source.json",
@@ -35,8 +35,8 @@
   },
   "nativeAcceptance": false,
   "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
-  "recordRecipeHash": "cc0621e850e4818ab73ce3e177b6175517ed40dab7ff7a5f0ee34b2c7cb8b808",
-  "bindingHash": "2177af09a79c1074abc4005a75f70b0c1f56d9c6084d0ea28a4917811b0d4137",
+  "recordRecipeHash": "d4fe71172b9a01d5e71e36de0048491578d8ace0b7383b0475c989ad62d78a2a",
+  "bindingHash": "a206191c4261395a1a4721f70d9d763452a1804a7e69fc57631f3974e1454a29",
   "contactEndpoints": [
     "legFarAnkle",
     "legNearAnkle"
@@ -67,7 +67,7 @@
     },
     {
       "path": "/Users/dakk/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/authoring.json",
-      "sha256": "815047e8b3c655e51fcefeccfdc6117ec647ec4a6f35acd2dab35ad243ff119e",
+      "sha256": "a7ddba32f738fd770b714fe493d0837d9d8a5073b34c14b23c5d7d5f65b2c4c5",
       "unchanged": true
     },
     {
