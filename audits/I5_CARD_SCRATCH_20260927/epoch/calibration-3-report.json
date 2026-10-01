@@ -37,7 +37,7 @@
     "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
     "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
     "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
-    "budget": "6c4614908afede1c1272c4973e4f80314caa5bed7ee226edeb9ce986fde424b3",
+    "budget": "a90b8ec6992e712de39f4c374235d949a6e626b8cf1da992c499e1764baf9191",
     "budgetSchema": "c57ed2f9b1f20e3333c9a5869c337576dcf6f634c7bd3dbc8b0564eda7710e21",
     "outcomeContract": "1ff537505dc674d776432d93deba2b78a085ed629434eea4a0b25074c8ef7871",
     "collector": "859119f3f43a1f09538734563667da99d7e56df5994486bbc8f679ede28e63e1",
@@ -62,7 +62,7 @@
   "budget": {
     "status": "calibration-required",
     "path": "apps/game/smoke/compendium-memory-v2.json",
-    "sha256": "6c4614908afede1c1272c4973e4f80314caa5bed7ee226edeb9ce986fde424b3",
+    "sha256": "a90b8ec6992e712de39f4c374235d949a6e626b8cf1da992c499e1764baf9191",
     "browserAuthority": {
       "schema": "cf-v2-compendium-browser-authority/v2",
       "scope": "arc1a-compendium-memory-only",
@@ -81,8 +81,8 @@
           "sha256": "b6199900f03c0877ef1ea07c961384643c162a13fd940bec3cce2ad3784538ad"
         },
         "owner": {
-          "relativePath": "assets/tame-greeting-audio-CUZu3YLc.js",
-          "sha256": "964a95fde741d7a10bf6aa9aa91105cd23d65c756dc84222a361015d05a58526"
+          "relativePath": "assets/tame-greeting-audio-5S071Eio.js",
+          "sha256": "6067b55bf7fa6d47017b959f219dbc1ef5357643e2150e91c15cd2010f9ac6b4"
         },
         "worker": {
           "relativePath": "assets/species-art.worker-SHcKR5tI.js",
@@ -107,8 +107,8 @@
           "sha256": "b6199900f03c0877ef1ea07c961384643c162a13fd940bec3cce2ad3784538ad"
         },
         "owner": {
-          "relativePath": "assets/tame-greeting-audio-CUZu3YLc.js",
-          "sha256": "964a95fde741d7a10bf6aa9aa91105cd23d65c756dc84222a361015d05a58526"
+          "relativePath": "assets/tame-greeting-audio-5S071Eio.js",
+          "sha256": "6067b55bf7fa6d47017b959f219dbc1ef5357643e2150e91c15cd2010f9ac6b4"
         },
         "worker": {
           "relativePath": "assets/species-art.worker-SHcKR5tI.js",
@@ -277,8 +277,8 @@
         "resource": {
           "indexPath": "index.html",
           "indexSha256": "b6199900f03c0877ef1ea07c961384643c162a13fd940bec3cce2ad3784538ad",
-          "ownerPath": "assets/tame-greeting-audio-CUZu3YLc.js",
-          "ownerSha256": "964a95fde741d7a10bf6aa9aa91105cd23d65c756dc84222a361015d05a58526",
+          "ownerPath": "assets/tame-greeting-audio-5S071Eio.js",
+          "ownerSha256": "6067b55bf7fa6d47017b959f219dbc1ef5357643e2150e91c15cd2010f9ac6b4",
           "path": "assets/species-art.worker-SHcKR5tI.js",
           "sha256": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62",
           "workerPath": "assets/species-art.worker-SHcKR5tI.js",
@@ -298,8 +298,8 @@
               "sha256": "b6199900f03c0877ef1ea07c961384643c162a13fd940bec3cce2ad3784538ad"
             },
             "owner": {
-              "relativePath": "assets/tame-greeting-audio-CUZu3YLc.js",
-              "sha256": "964a95fde741d7a10bf6aa9aa91105cd23d65c756dc84222a361015d05a58526"
+              "relativePath": "assets/tame-greeting-audio-5S071Eio.js",
+              "sha256": "6067b55bf7fa6d47017b959f219dbc1ef5357643e2150e91c15cd2010f9ac6b4"
             },
             "worker": {
               "relativePath": "assets/species-art.worker-SHcKR5tI.js",
@@ -324,8 +324,8 @@
               "sha256": "b6199900f03c0877ef1ea07c961384643c162a13fd940bec3cce2ad3784538ad"
             },
             "owner": {
-              "relativePath": "assets/tame-greeting-audio-CUZu3YLc.js",
-              "sha256": "964a95fde741d7a10bf6aa9aa91105cd23d65c756dc84222a361015d05a58526"
+              "relativePath": "assets/tame-greeting-audio-5S071Eio.js",
+              "sha256": "6067b55bf7fa6d47017b959f219dbc1ef5357643e2150e91c15cd2010f9ac6b4"
             },
             "worker": {
               "relativePath": "assets/species-art.worker-SHcKR5tI.js",
@@ -40526,8 +40526,8 @@
         "resource": {
           "indexPath": "index.html",
           "indexSha256": "b6199900f03c0877ef1ea07c961384643c162a13fd940bec3cce2ad3784538ad",
-          "ownerPath": "assets/tame-greeting-audio-CUZu3YLc.js",
-          "ownerSha256": "964a95fde741d7a10bf6aa9aa91105cd23d65c756dc84222a361015d05a58526",
+          "ownerPath": "assets/tame-greeting-audio-5S071Eio.js",
+          "ownerSha256": "6067b55bf7fa6d47017b959f219dbc1ef5357643e2150e91c15cd2010f9ac6b4",
           "path": "assets/species-art.worker-SHcKR5tI.js",
           "sha256": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62",
           "workerPath": "assets/species-art.worker-SHcKR5tI.js",
@@ -40547,8 +40547,8 @@
               "sha256": "b6199900f03c0877ef1ea07c961384643c162a13fd940bec3cce2ad3784538ad"
             },
             "owner": {
-              "relativePath": "assets/tame-greeting-audio-CUZu3YLc.js",
-              "sha256": "964a95fde741d7a10bf6aa9aa91105cd23d65c756dc84222a361015d05a58526"
+              "relativePath": "assets/tame-greeting-audio-5S071Eio.js",
+              "sha256": "6067b55bf7fa6d47017b959f219dbc1ef5357643e2150e91c15cd2010f9ac6b4"
             },
             "worker": {
               "relativePath": "assets/species-art.worker-SHcKR5tI.js",
@@ -40573,8 +40573,8 @@
               "sha256": "b6199900f03c0877ef1ea07c961384643c162a13fd940bec3cce2ad3784538ad"
             },
             "owner": {
-              "relativePath": "assets/tame-greeting-audio-CUZu3YLc.js",
-              "sha256": "964a95fde741d7a10bf6aa9aa91105cd23d65c756dc84222a361015d05a58526"
+              "relativePath": "assets/tame-greeting-audio-5S071Eio.js",
+              "sha256": "6067b55bf7fa6d47017b959f219dbc1ef5357643e2150e91c15cd2010f9ac6b4"
             },
             "worker": {
               "relativePath": "assets/species-art.worker-SHcKR5tI.js",
@@ -84933,8 +84933,8 @@
       "lazySpeciesResource": {
         "indexPath": "index.html",
         "indexSha256": "b6199900f03c0877ef1ea07c961384643c162a13fd940bec3cce2ad3784538ad",
-        "ownerPath": "assets/tame-greeting-audio-CUZu3YLc.js",
-        "ownerSha256": "964a95fde741d7a10bf6aa9aa91105cd23d65c756dc84222a361015d05a58526",
+        "ownerPath": "assets/tame-greeting-audio-5S071Eio.js",
+        "ownerSha256": "6067b55bf7fa6d47017b959f219dbc1ef5357643e2150e91c15cd2010f9ac6b4",
         "path": "assets/species-art.worker-SHcKR5tI.js",
         "sha256": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62",
         "workerPath": "assets/species-art.worker-SHcKR5tI.js",
@@ -161616,8 +161616,8 @@
       "lazySpeciesResource": {
         "indexPath": "index.html",
         "indexSha256": "b6199900f03c0877ef1ea07c961384643c162a13fd940bec3cce2ad3784538ad",
-        "ownerPath": "assets/tame-greeting-audio-CUZu3YLc.js",
-        "ownerSha256": "964a95fde741d7a10bf6aa9aa91105cd23d65c756dc84222a361015d05a58526",
+        "ownerPath": "assets/tame-greeting-audio-5S071Eio.js",
+        "ownerSha256": "6067b55bf7fa6d47017b959f219dbc1ef5357643e2150e91c15cd2010f9ac6b4",
         "path": "assets/species-art.worker-SHcKR5tI.js",
         "sha256": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62",
         "workerPath": "assets/species-art.worker-SHcKR5tI.js",
