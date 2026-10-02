@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 224,
+ "total": 225,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -505,6 +505,13 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136s/24-newt",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle on Codex's C173 sprawler motion profile (level idle, no head dip)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Mara",
+   "nativeDir": "audits/ISLANDS_C178_20261002/01-mara/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated an ear-tip sliver over the lowered head)"
   },
   {
    "family": "Snakes (serpent strip author)",

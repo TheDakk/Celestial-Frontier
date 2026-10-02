@@ -1,8 +1,8 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 192,
- "pct": 30.4,
+ "covered": 193,
+ "pct": 30.6,
  "heldNotCounted": [
   "Basking Shark",
   "Chough",
@@ -258,11 +258,12 @@
   {
    "family": "hopper",
    "species": 18,
-   "covered": 2,
-   "pct": 11.1,
+   "covered": 3,
+   "pct": 16.7,
    "names": [
     "Hare",
-    "Arctic Hare"
+    "Arctic Hare",
+    "Mara"
    ]
   },
   {

@@ -1,0 +1,116 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C163_FAMILY_ORIGINALS_20261002",
+ "tag": "g2c178",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "01-mara"
+ ],
+ "refused": [
+  {
+   "id": "02-salamander",
+   "reason": "unexplained-anatomy: 7.1% of the paint lies away from the body and in no part (reference 1.9%)"
+  },
+  {
+   "id": "03-wall-lizard",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "04-gorilla",
+   "reason": "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "05-chimpanzee",
+   "reason": "no-reference: no other hand-authored subject of family primate"
+  },
+  {
+   "id": "06-orangutan",
+   "reason": "missing-anatomy (ground): 2 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "07-capuchin",
+   "reason": "extra-anatomy (unassigned): a top appendage of 22.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "08-howler-monkey",
+   "reason": "extra-anatomy (unassigned): a other appendage of 16.4% paint that no reference appendage lands on"
+  },
+  {
+   "id": "09-spider-monkey",
+   "reason": "extra-anatomy (unassigned): a top appendage of 23.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "10-macaque",
+   "reason": "missing-anatomy (ground): 2 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "11-baboon",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 6.8% paint that no reference appendage lands on"
+  },
+  {
+   "id": "12-lemur",
+   "reason": "extra-anatomy (unassigned): a top appendage of 33.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "13-centipede",
+   "reason": "no-reference: no other hand-authored subject of family myriapod"
+  },
+  {
+   "id": "14-giant-centipede",
+   "reason": "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1"
+  },
+  {
+   "id": "15-millipede",
+   "reason": "wrong-family: quadruped matches clearly better (0.0265 < 0.0648)"
+  },
+  {
+   "id": "16-octopus",
+   "reason": "no-reference: no other hand-authored subject of family cephalopod"
+  },
+  {
+   "id": "17-squid",
+   "reason": "facing: the mirrored painting matches cephalopod better (0.0464 < 0.0580)"
+  },
+  {
+   "id": "18-cuttlefish",
+   "reason": "wrong-family: insect matches clearly better (0.0281 < 0.0518)"
+  },
+  {
+   "id": "19-giant-octopus",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 7.6% paint that no reference appendage lands on"
+  },
+  {
+   "id": "20-deep-sea-octopus",
+   "reason": "extra-anatomy (unassigned): a top appendage of 11.5% paint that no reference appendage lands on"
+  },
+  {
+   "id": "21-fruit-bat",
+   "reason": "no-reference: no other hand-authored subject of family flyer-membrane"
+  },
+  {
+   "id": "22-bat",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "23-insect-eating-bat",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "24-vampire-bat",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  }
+ ],
+ "staticRed": [],
+ "native": [
+  {
+   "id": "01-mara",
+   "name": "Mara",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

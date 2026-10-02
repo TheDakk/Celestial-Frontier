@@ -1,0 +1,250 @@
+[
+ {
+  "id": "01-mara",
+  "family": "quadruped",
+  "verdict": "ADMIT",
+  "reasons": [],
+  "semanticPresence": "UNRESOLVED",
+  "static": "PASS_STATIC",
+  "staticFails": [],
+  "staticRefusals": []
+ },
+ {
+  "id": "02-salamander",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "unexplained-anatomy: 7.1% of the paint lies away from the body and in no part (reference 1.9%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "03-wall-lizard",
+  "family": "quadruped",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+   "missing-anatomy: part hind-far-paw (hindFarPaw) covers 15% paint (reference 43%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "04-gorilla",
+  "family": "primate",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 3 ground contact(s); every same-family reference shows at least 4"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "05-chimpanzee",
+  "family": "primate",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family primate"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "06-orangutan",
+  "family": "primate",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 2 ground contact(s); every same-family reference shows at least 4"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "07-capuchin",
+  "family": "primate",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a top appendage of 22.2% paint that no reference appendage lands on",
+   "unexplained-anatomy: 17.5% of the paint lies away from the body and in no part (reference 9.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "08-howler-monkey",
+  "family": "primate",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a other appendage of 16.4% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "09-spider-monkey",
+  "family": "primate",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a top appendage of 23.6% paint that no reference appendage lands on",
+   "unexplained-anatomy: 19.4% of the paint lies away from the body and in no part (reference 9.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "10-macaque",
+  "family": "primate",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 2 ground contact(s); every same-family reference shows at least 4"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "11-baboon",
+  "family": "primate",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 6.8% paint that no reference appendage lands on"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "12-lemur",
+  "family": "primate",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a top appendage of 33.6% paint that no reference appendage lands on",
+   "unexplained-anatomy: 22.8% of the paint lies away from the body and in no part (reference 9.6%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "13-centipede",
+  "family": "myriapod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family myriapod"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "14-giant-centipede",
+  "family": "myriapod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "15-millipede",
+  "family": "myriapod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "wrong-family: quadruped matches clearly better (0.0265 < 0.0648)",
+   "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 1",
+   "unexplained-anatomy: 33.3% of the paint lies away from the body and in no part (reference 10.3%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "16-octopus",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family cephalopod"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "17-squid",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "facing: the mirrored painting matches cephalopod better (0.0464 < 0.0580)",
+   "wrong-family: insect matches clearly better (0.0377 < 0.0580)",
+   "extra-anatomy (unassigned): a rear appendage of 12.8% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a front appendage of 6.9% paint that no reference appendage lands on",
+   "missing-anatomy: part near-eye (eyeNear) covers 32% paint (reference 100%)",
+   "missing-anatomy: part arm2-middle (arm2Seg1) covers 30% paint (reference 92%)",
+   "unexplained-anatomy: 12.2% of the paint lies away from the body and in no part (reference 2.9%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "18-cuttlefish",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "wrong-family: insect matches clearly better (0.0281 < 0.0518)",
+   "missing-anatomy: part arm6-tip (arm6Seg2) covers 19% paint (reference 72%)",
+   "missing-anatomy: part arm6-middle (arm6Seg1) covers 23% paint (reference 93%)",
+   "missing-anatomy: part arm5-tip (arm5Seg2) covers 21% paint (reference 77%)",
+   "unexplained-anatomy: 14.5% of the paint lies away from the body and in no part (reference 2.9%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "19-giant-octopus",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 7.6% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a rear appendage of 31.3% paint that no reference appendage lands on",
+   "missing-anatomy: part arm4-tip (arm4Seg2) covers 12% paint (reference 72%)",
+   "missing-anatomy: part arm7-base (arm7Seg0) covers 23% paint (reference 97%)",
+   "missing-anatomy: part arm1-middle (arm1Seg1) covers 12% paint (reference 95%)",
+   "unexplained-anatomy: 22.0% of the paint lies away from the body and in no part (reference 2.9%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "20-deep-sea-octopus",
+  "family": "cephalopod",
+  "verdict": "REFUSE",
+  "reasons": [
+   "extra-anatomy (unassigned): a top appendage of 11.5% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a rear appendage of 15.6% paint that no reference appendage lands on",
+   "missing-anatomy: part arm2-middle (arm2Seg1) covers 12% paint (reference 92%)",
+   "missing-anatomy: part arm1-middle (arm1Seg1) covers 25% paint (reference 95%)",
+   "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 2.9%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "21-fruit-bat",
+  "family": "flyer-membrane",
+  "verdict": "REFUSE",
+  "reasons": [
+   "no-reference: no other hand-authored subject of family flyer-membrane"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "22-bat",
+  "family": "flyer-membrane",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+   "missing-anatomy: part leg-near-upper (legNearKnee) covers 16% paint (reference 64%)",
+   "unexplained-anatomy: 21.5% of the paint lies away from the body and in no part (reference 8.0%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "23-insect-eating-bat",
+  "family": "flyer-membrane",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+   "missing-anatomy: part leg-near-upper (legNearKnee) covers 18% paint (reference 64%)",
+   "unexplained-anatomy: 21.0% of the paint lies away from the body and in no part (reference 8.0%)"
+  ],
+  "semanticPresence": null
+ },
+ {
+  "id": "24-vampire-bat",
+  "family": "flyer-membrane",
+  "verdict": "REFUSE",
+  "reasons": [
+   "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+   "missing-anatomy: part leg-near-foot (legNearFoot) covers 7% paint (reference 29%)",
+   "unexplained-anatomy: 21.6% of the paint lies away from the body and in no part (reference 8.0%)"
+  ],
+  "semanticPresence": null
+ }
+]

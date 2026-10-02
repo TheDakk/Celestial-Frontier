@@ -1,0 +1,11 @@
+{
+ "id": "24-vampire-bat",
+ "family": "flyer-membrane",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "missing-anatomy: part leg-near-foot (legNearFoot) covers 7% paint (reference 29%)",
+  "unexplained-anatomy: 21.6% of the paint lies away from the body and in no part (reference 8.0%)"
+ ],
+ "semanticPresence": null
+}
