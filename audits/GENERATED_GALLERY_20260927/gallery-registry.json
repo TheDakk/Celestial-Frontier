@@ -1730,5 +1730,29 @@
   "note": "whole in reaction and late idle; six legs, both wing pairs and antennae intact",
   "batch": "audits/G2_C121_20260927",
   "tag": "g2c121"
+ },
+ {
+  "family": "quadruped",
+  "name": "Alligator",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136/03-alligator",
+  "note": "HELD: head-down late idle drives the snout below the ground line with a fragment beneath it; crocodilians need a no-dip idle (motion, Codex)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136"
+ },
+ {
+  "family": "quadruped",
+  "name": "Iguana",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136/15-iguana",
+  "note": "whole in reaction and late idle",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136"
+ },
+ {
+  "family": "quadruped",
+  "name": "Horned Lizard",
+  "nativeDir": "audits/QUAD_ISLANDS_C136_20261002/22-horned-lizard/native",
+  "note": "whole after the remainder-island repair (unrepaired late idle floated an orange fleck over the lowered head)",
+  "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+  "tag": "g2c136"
  }
 ]

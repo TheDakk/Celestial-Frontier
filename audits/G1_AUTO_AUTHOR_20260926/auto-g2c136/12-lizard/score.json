@@ -1,0 +1,10 @@
+{
+ "id": "12-lizard",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)",
+  "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 19% paint (reference 83%)"
+ ],
+ "semanticPresence": null
+}

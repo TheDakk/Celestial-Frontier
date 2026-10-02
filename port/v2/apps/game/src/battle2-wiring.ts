@@ -43,6 +43,7 @@ import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShi
 import { createPartsRig } from './battle2/parts-rig.js';
 import { attackRepertoire, compileAnatomyAttack, type WeaponDeclaration } from './anatomy-attacks.js';
 import type { ArenaWorld } from './battle-habitat.js';
+import { liveBattleArena, liveSettlementEncounter, liveWorldSnapshot } from './battle2-live-worlds.js';
 import { individualFromGenomeV1 } from './morph/morph-individual.js';
 import { morphAtlasCache, morphAtlasKey, type MorphAtlasLease } from './morph/morph-atlas-cache.js';
 import { markingNameV1, maskAlphaOf, type AlphaMask } from './morph/morph-markings.js';
@@ -136,7 +137,7 @@ export interface Battle2Champion { readonly kind: string; readonly name: string;
 export interface Battle2SettlementLike {
   readonly battleId: string;
   readonly champion: Battle2Champion;
-  readonly encounter: { readonly defender: { readonly battleGenome: Readonly<Record<string, unknown>>; readonly kind?: string } };
+  readonly encounter: { readonly defender: { readonly battleGenome: Readonly<Record<string, unknown>>; readonly kind?: string }; /** the encounter's world (CF1 address); absent = no world context */ readonly identity?: { readonly world: unknown } };
   readonly transcript: { readonly log: readonly Readonly<Record<string, unknown>>[]; /** the decisive leg's defender max HP (the guardian phase beat needs it) */ readonly maxB?: number };
   /** §20 Guardian party: the settled plan's party block; the stage plays one relay beat per earlier fighter first. */
   readonly party?: CombatSettlementPlanV1['party'];
@@ -175,8 +176,10 @@ export interface Battle2StudyInput {
   readonly worlds?: Readonly<{ home: ArenaWorld; visitor: ArenaWorld }> | null;
   /** The painted-theme manifest (`cf.painted-theme-manifest/v1`); absent = the shipped `effects/painted-themes.json`. */
   readonly paintedThemes?: unknown;
-  /** A named world built on the study's own ground line (the matchup picker): `lake` = liquid water with a surface. Ignored when `worlds` is given. */
-  readonly worldPreset?: 'lake';
+  /** A named world built on the study's own ground line. `lake` (the matchup picker) = liquid water with a surface. `earth` (a live Earth
+   * fight, battle2-live-worlds.ts) = the accepted temperate world exactly as without context, and the lake world only when a side lives in
+   * water and the dry plates would refuse it. Ignored when `worlds` is given. */
+  readonly worldPreset?: 'lake' | 'earth';
   /** Guardian choreography (opt-in study, `?guardianChoreo=1` — battle2-gate.ts; audits/GUARDIAN_CHOREOGRAPHY_20261001/DESIGN.md): a Guardian or
    * Titan fight plays the boss entrance, the phase-change beat, heavy strikes and the fall/triumph set pieces. Absent/false = today's stage. */
   readonly guardianChoreo?: boolean;
@@ -305,6 +308,16 @@ function placeholderImage(raster: Battle2Raster, width = 132, height = 132): Bat
   return raster(rgba, width, height);
 }
 
+/* ---------- live worlds (main.ts) ---------- */
+/** The `worlds` / `arenaContext` / `worldPreset` inputs for a settled live conquest fight (main.ts spreads this into the study input): the
+ * encounter's own world identity is resolved and projected (`projectWorldOpportunity`), a `fauna` defender fights wild on it, a Guardian
+ * or Titan in its lair (the same world), and Earth keeps the temperate set (battle2-live-worlds.ts). A world that cannot be resolved or
+ * projected keeps today's default: no `worlds`. */
+export function liveArenaInput(settlement: Pick<Battle2SettlementLike, 'battleId' | 'encounter'>): Pick<Battle2StudyInput, 'worlds' | 'arenaContext' | 'worldPreset'> {
+  const live = liveBattleArena(settlement.battleId, liveSettlementEncounter(settlement.encounter.defender.kind ?? 'fauna', liveWorldSnapshot(settlement.encounter.identity?.world)));
+  return Object.freeze({ worlds: live.worlds, arenaContext: live.arenaContext, ...(live.worldPreset ? { worldPreset: live.worldPreset } : {}) });
+}
+
 /* ---------- the study ---------- */
 let current: Battle2StudyHandle | null = null;
 /** The guarded entry: returns null and does no work unless the flag is present. */
@@ -399,7 +412,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const themeRows = input.paintedThemes === undefined ? BATTLE2_ASSETS.paintedThemes : parsePaintedThemeManifest(input.paintedThemes);
     // Home ground (2026-10-01): the fight world's biome picks the painted set; without `worlds` this is the accepted temperate set at its
     // delivery manifest's runtime paths, the ones BATTLE2_ASSETS names (arena-registry.test.ts pins that).
-    const route = selectArena({ kind: input.arenaContext?.kind ?? 'wild', contextId: input.settlement.battleId, seed: input.arenaContext?.seed ?? fnv1a32(input.settlement.battleId), round: input.arenaContext?.round ?? 0, worlds: input.worlds ?? null });
+    const route = selectArena({ kind: input.arenaContext?.kind ?? 'wild', contextId: input.settlement.battleId, seed: input.arenaContext?.seed ?? fnv1a32(input.settlement.battleId), round: input.arenaContext?.round ?? 0, worlds: input.worlds ?? null, ...(input.worldPreset === 'earth' && !input.worlds ? { earth: true } : {}) });
     arenaRoute = route.reason;
     const [recipeRaw, anchorsFetched, far, mid, near] = await Promise.all([assets.json(route.assets.recipe), fetchPaintedThemeAnchors(themeRows, (p) => assets.json(p)), assets.image(route.assets.far), assets.image(route.assets.mid), assets.image(route.assets.near)]);
     const recipe = recipeRaw as { groundLineNormalized: number; seed: number; systemCard: string; battleContext?: { worldKey?: string } };
@@ -503,9 +516,18 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     refusalsOf = () => Object.freeze({ left: left.rig.refusals?.() ?? null, right: right.rig.refusals?.() ?? null });
     // E1 §1.4 + 2026-09-24: ONE placement pipeline (battle2/placement.ts — the film harness and the tests use the same): size, habitat, band
     // fit, drawn scale, each painted box centred on its stand, the wet arena. UNSUPPORTED keeps the Chronicle path with its reason.
-    const placed = placeCombatants({ contextId: input.settlement.battleId, seed: recipe.seed, layout, worlds: route.world ? { home: route.world, visitor: route.world } /* the plates' world, so medium and painting agree */ : (input.worldPreset === 'lake' ? { home: lakeArenaWorld(layout.groundLineY), visitor: lakeArenaWorld(layout.groundLineY) } : null),
-      left: { rig: left.rig, mass: left.mass, record: matchRecord(records, championGenome), genome: championGenome, label: input.chronicle.championName },
-      right: { rig: right.rig, mass: right.mass, record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, label: input.chronicle.defenderName } });
+    // The routed world is the plates' world, so medium and painting agree (a ground fighter stands on the composed stand line whatever
+    // the world's own ground registration; air and water take their fixed bands).
+    const routed = route.world;
+    const lake = { home: lakeArenaWorld(layout.groundLineY), visitor: lakeArenaWorld(layout.groundLineY) };
+    const sides = { left: { rig: left.rig, mass: left.mass, record: matchRecord(records, championGenome), genome: championGenome, label: input.chronicle.championName },
+      right: { rig: right.rig, mass: right.mass, record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, label: input.chronicle.defenderName } };
+    let placed = placeCombatants({ contextId: input.settlement.battleId, seed: recipe.seed, layout, worlds: routed ? { home: routed, visitor: routed } : (input.worldPreset === 'lake' ? lake : null), ...sides });
+    // Earth: the dry temperate plates refuse only a body that lives in water; that fight stages on the lake world (Earth's open water).
+    if (!routed && input.worldPreset === 'earth' && placed.status === 'UNSUPPORTED') {
+      const wet = placeCombatants({ contextId: input.settlement.battleId, seed: recipe.seed, layout, worlds: lake, ...sides });
+      if (wet.status === 'READY') { placed = wet; arenaRoute = `${route.reason}; a side lives in water: the lake world (Earth's open water)`; }
+    }
     const habitat = placed.habitat; arenaLabel = habitat.label;
     if (placed.status === 'UNSUPPORTED') { left.rig.dispose(); right.rig.dispose(); throw new Error(`battle2 habitat: ${placed.habitat.reason}`); }
     const stagedLayout = placed.layout;

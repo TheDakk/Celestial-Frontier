@@ -1,0 +1,12 @@
+{
+ "id": "08-skink",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part root (root) covers 0% paint (reference 100%)",
+  "missing-anatomy: part hind-near-paw (hindNearPaw) covers 0% paint (reference 59%)",
+  "missing-anatomy: part hind-near-ankle (hindNearAnkle) covers 0% paint (reference 83%)",
+  "missing-anatomy: part fore-near-paw (foreNearPaw) covers 20% paint (reference 60%)"
+ ],
+ "semanticPresence": null
+}

@@ -2,6 +2,16 @@
  "schema": "cf.painted-theme-manifest/v1",
  "about": "One row per ability theme with a painted effect sequence (Art Kit 4K). Paths are relative to the arena proof directory audits/ARENA_EFFECTS_V42_PROOF_20260912/ (the battle2 asset root). A theme without a row plays its labelled procedural emitter. Contract and delivery rules: audits/THEME_EFFECTS_ROUTING_20261001/README.md.",
  "rows": [
-  { "theme": "wild", "anchors": "wild-anchors.json", "contract": "v4.2-grandfathered", "required": true }
+  { "theme": "wild", "anchors": "wild-anchors.json", "contract": "v4.2-grandfathered", "required": true },
+  { "theme": "fire", "anchors": "../C132_EFFECTS_20261001/fire/anchors.json", "contract": "v4.3" },
+  { "theme": "frost", "anchors": "../C132_EFFECTS_20261001/frost/anchors.json", "contract": "v4.3" },
+  { "theme": "storm", "anchors": "../C132_EFFECTS_20261001/storm/final/anchors.json", "contract": "v4.3" },
+  { "theme": "tide", "anchors": "../C132_EFFECTS_20261001/tide/anchors.json", "contract": "v4.3" },
+  { "theme": "stone", "anchors": "../C132_EFFECTS_20261001/stone/shards/anchors.json", "contract": "v4.3" },
+  { "theme": "venom", "anchors": "../C132_EFFECTS_20261001/venom/anchors.json", "contract": "v4.3" },
+  { "theme": "void", "anchors": "../C132_EFFECTS_20261001/void/final/anchors.json", "contract": "v4.3" },
+  { "theme": "sand", "anchors": "../C132_EFFECTS_20261001/sand/final/anchors.json", "contract": "v4.3" },
+  { "theme": "chem", "anchors": "../C132_EFFECTS_20261001/chem/anchors.json", "contract": "v4.3" },
+  { "theme": "psionic", "anchors": "../C132_EFFECTS_20261001/psionic/final/anchors.json", "contract": "v4.3" }
  ]
 }

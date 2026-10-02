@@ -168,7 +168,8 @@ shake rule × 1.0000001 (3 red), a stricter phase crossing (1 red), the default 
 
 ## 10. Not done here
 
-- No native or browser film (instructed: no browsers). The first film should use the D2 bear (`audits/VISION_D2_GUARDIAN_20260921/fit-01`)
-  through `tools/battle2-proof/native-runner.mjs` with `?guardianChoreo=1`. The proof entries do not pass the flag yet.
+- No native or browser film (instructed: no browsers). The film harness now takes the option (2026-10-02): `"guardianChoreo": true` in the
+  battle script, with the guardian as the right fit. The exact command for the D2 bear (`audits/VISION_D2_GUARDIAN_20260921/fit-01`) is
+  in `FILM.md`.
 - The matchup picker (`battle2-matchup.ts`) does not pass the flag. Its fights are not settled Guardian encounters.
 - The guardian's own landmark-aware rise (feet appearing last) would need the parts rig's per-joint data. The whole holder rises.

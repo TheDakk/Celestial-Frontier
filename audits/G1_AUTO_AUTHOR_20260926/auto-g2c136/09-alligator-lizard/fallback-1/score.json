@@ -1,0 +1,9 @@
+{
+ "id": "09-alligator-lizard",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+ ],
+ "semanticPresence": null
+}

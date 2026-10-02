@@ -1,0 +1,125 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/G2_C132_QUADRUPEDS_20261001",
+ "tag": "g2c136",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "03-alligator",
+  "15-iguana",
+  "22-horned-lizard"
+ ],
+ "refused": [
+  {
+   "id": "01-caiman",
+   "reason": "unexplained-anatomy: 16.4% of the paint lies away from the body and in no part (reference 11.4%)"
+  },
+  {
+   "id": "05-monitor-lizard",
+   "reason": "missing-anatomy: part jaw (jaw) covers 9% paint (reference 31%)"
+  },
+  {
+   "id": "06-anole",
+   "reason": "missing-anatomy: part hind-far-root (hindFarRoot) covers 0% paint (reference 100%)"
+  },
+  {
+   "id": "08-skink",
+   "reason": "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+  },
+  {
+   "id": "10-mountain-lizard",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 10%)"
+  },
+  {
+   "id": "11-tegu",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  },
+  {
+   "id": "12-lizard",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  },
+  {
+   "id": "13-whiptail",
+   "reason": "missing-anatomy: part fore-far-knee (foreFarKnee) covers 0% paint (reference 75%)"
+  },
+  {
+   "id": "14-agama",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "16-land-iguana",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  },
+  {
+   "id": "17-coastal-lizard",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  },
+  {
+   "id": "18-komodo-dragon",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  },
+  {
+   "id": "19-gila-monster",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 16%)"
+  },
+  {
+   "id": "20-frilled-lizard",
+   "reason": "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+  },
+  {
+   "id": "21-chameleon",
+   "reason": "missing-anatomy: part ear-far-tip (earFarTip) covers 0% paint (reference 36%)"
+  },
+  {
+   "id": "23-marine-iguana",
+   "reason": "missing-anatomy: part root (root) covers 0% paint (reference 100%)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "02-crocodile",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "04-gharial",
+   "static": "RED"
+  },
+  {
+   "id": "07-gecko",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "09-alligator-lizard",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "24-newt",
+   "static": "INTAKE_REFUSED"
+  }
+ ],
+ "native": [
+  {
+   "id": "03-alligator",
+   "name": "Alligator",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "15-iguana",
+   "name": "Iguana",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "22-horned-lizard",
+   "name": "Horned Lizard",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

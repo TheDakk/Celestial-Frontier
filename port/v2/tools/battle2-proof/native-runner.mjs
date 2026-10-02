@@ -4,7 +4,10 @@
  * stills (approach 50 %, impact, reaction 50 %) and a complete-script webm (at least 10 s), and hashes every source it read. Diagnostic study.
  * Usage: node tools/battle2-proof/native-runner.mjs <leftFitDir> <rightFitDir> <outDir> [script.json]
  * A fit dir holds record.json, binding.json, parts/keyed.png, parts/manifest.json, parts/atlas/<id>.png; the painter
- * master is `record.source` (repo-relative). Browser-owning: on macOS run with approved out-of-sandbox execution. */
+ * master is `record.source` (repo-relative). Browser-owning: on macOS run with approved out-of-sandbox execution.
+ * Plates: the registered set's delivery-manifest runtime files (arena-plates.mjs; the accepted temperate set, despilled MID) — what the game draws.
+ * Guardian choreography: `"guardianChoreo": true` (+ optional `"guardian": {kind, maxB, startHpB}`) in script.json plays the game's boss
+ * program with the guardian fit as the RIGHT fit (guardian-script.mjs); set-piece stills are added and the capture check covers every piece. */
 import fs from 'node:fs'; import path from 'node:path'; import os from 'node:os'; import http from 'node:http'; import { execFileSync } from 'node:child_process'; import { createHash } from 'node:crypto';
 import { rolldown } from 'rolldown';
 import { repoRelativeSource } from '../creature-animation/record-source.mjs';
@@ -13,6 +16,8 @@ import { openChromiumCdp } from '../browsercdp.mjs';
 import { acquireWorkspaceLock } from '../workspacelock.mjs';
 import {requireBattleCaptureTimeline,requireBattleCaptureMedia} from './capture-timeline.mjs';
 import { summarizeCpuProfile } from './cpu-profile.mjs';
+import { arenaPlateFiles } from './arena-plates.mjs';
+import { requireGuardianFilmTimeline } from './guardian-script.mjs';
 
 const [leftArg, rightArg, outArg, scriptArg] = process.argv.slice(2);
 if (!leftArg || !rightArg || !outArg) throw Error('usage: native-runner.mjs <leftFitDir> <rightFitDir> <outDir> [script.json]');
@@ -33,8 +38,10 @@ try {
     const reg = CARD_ARCHETYPES.find((a) => path.resolve(repo, a.dir) === path.resolve(dir)), mdir = reg?.markings ? path.resolve(repo, reg.markings) : dir;
     const markings = {}; if (fs.existsSync(path.join(mdir, 'markings.json'))) { markings[name + '-markings.json'] = path.join(mdir, 'markings.json'); const mj = JSON.parse(fs.readFileSync(path.join(mdir, 'markings.json'))); for (const [k, v] of Object.entries(mj.patterns ?? {})) if (v?.file) markings[name + '-marking-' + k + '.png'] = path.join(mdir, v.file); }
     return { ...markings, [name + '-record.json']: path.join(dir, 'record.json'), [name + '-binding.json']: path.join(dir, 'binding.json'), [name + '-keyed.png']: path.join(dir, 'parts/keyed.png'), [name + '-atlas.png']: path.join(dir, 'parts/atlas/' + id + '.png'), [name + '-master.png']: path.resolve(repo, repoRelativeSource(record.source)) }; };
-  const anchors = JSON.parse(fs.readFileSync(path.join(arena, 'wild-anchors.json')));
-  const assets = { ...side(left, 'left'), ...side(right, 'right'), 'arena-recipe.json': path.join(arena, 'arena-recipe.json'), 'wild-anchors.json': path.join(arena, 'wild-anchors.json'), 'arena-far.png': path.join(arena, 'arena-far.png'), 'arena-mid.png': path.join(arena, 'keyed/arena-mid.png'), 'arena-near.png': path.join(arena, 'keyed/arena-near.png') };
+  const anchors = JSON.parse(fs.readFileSync(path.join(arena, 'wild-anchors.json'))), plates = arenaPlateFiles(repo);
+  report.arena = { setId: plates.setId, biome: plates.biome, files: Object.fromEntries(Object.entries(plates.files).map(([n, p]) => [n, path.relative(repo, p)])) };
+  remember(path.join(import.meta.dirname, 'arena-plates.mjs'));
+  const assets = { ...side(left, 'left'), ...side(right, 'right'), ...plates.files, 'wild-anchors.json': path.join(arena, 'wild-anchors.json') };
   for (const p of anchors.phases) if (p.keyedImage && !/^procedural:/.test(p.keyedImage)) assets[path.basename(p.keyedImage)] = path.join(arena, p.keyedImage);
   for (const [n, p] of Object.entries(assets)) { remember(p); fs.copyFileSync(p, path.join(scratch, n)); }
   const leftName = JSON.parse(fs.readFileSync(path.join(left, 'record.json'))).identity.earthName, rightName = JSON.parse(fs.readFileSync(path.join(right, 'record.json'))).identity.earthName;
@@ -51,8 +58,13 @@ try {
   const deadline = performance.now() + 90000; for (;;) { const s = await evaluate('window.cfBattle2Proof?.state'); if (s?.status === 'FAIL') throw Error(s.error); if (s?.status === 'READY') break; if (performance.now() > deadline) throw Error('Readiness timeout'); await new Promise((r) => setTimeout(r, 100)); }
   report.gates = await evaluate('window.cfBattle2Proof.gates()'); save();
   report.stills = [];
+  const stillMarks = [];
   for (const t of report.gates.turns) { const b = t.beats, o = t.offsetMs, marks = [['approach-50', o + (b.commandEnd + b.actionStart) / 2], ['impact', o + b.impactAt], ['reaction-50', o + (b.reactionStart + b.reactionEnd) / 2], ['return-end', o + b.returnEnd], ...(t.turn === report.gates.turns.length - 1 ? [['idle-50', o + (b.returnEnd + b.end) / 2], ['idle-90', o + b.returnEnd + 0.9 * (b.end - b.returnEnd)]] : [])];
-    for (const [name, ms] of marks) { const file = `turn${t.turn}-${t.outcome}-${name}.png`; fs.writeFileSync(path.join(out, file), Buffer.from(await evaluate('window.cfBattle2Proof.still(' + ms + ')'), 'base64')); report.stills.push({ turn: t.turn, name, ms, file }); } }
+    for (const [name, ms] of marks) stillMarks.push({ turn: t.turn, name, ms, file: `turn${t.turn}-${t.outcome}-${name}.png` }); }
+  // guardian set pieces: one still at the middle of each beat, named by its place in the film (piece order, piece, beat)
+  for (const [k, s] of (report.gates.guardian?.segments ?? []).entries()) if (s.kind === 'piece') for (const b of s.beats) stillMarks.push({ piece: s.name, name: b.beat, ms: s.offsetMs + (b.start + b.end) / 2, file: `seg${String(k).padStart(2, '0')}-${s.name}-${b.beat}.png` });
+  stillMarks.sort((a, b) => a.ms - b.ms); // in film order, so a set piece's dissolve never carries into an earlier turn's still
+  for (const m of stillMarks) { fs.writeFileSync(path.join(out, m.file), Buffer.from(await evaluate('window.cfBattle2Proof.still(' + m.ms + ')'), 'base64')); report.stills.push(m); }
   // CF_CPU_THROTTLE=N (optional, phone-tier studies): Chrome slows the page's CPU N× for the capture (CDP Emulation.setCPUThrottlingRate)
   const throttle = Number(process.env.CF_CPU_THROTTLE ?? '1'); if (!(throttle >= 1 && throttle <= 20)) throw Error('CF_CPU_THROTTLE must be 1..20');
   if (throttle > 1) await send('Emulation.setCPUThrottlingRate', { rate: throttle }); report.cpuThrottle = throttle;
@@ -81,7 +93,7 @@ try {
   } fs.writeFileSync(path.join(out, 'battle-full.webm'), Buffer.from(report.capture.video, 'base64')); delete report.capture.video;
   const media = JSON.parse(execFileSync('/opt/homebrew/bin/ffprobe', ['-v', 'error', '-count_frames', '-show_entries', 'format=duration:stream=codec_type,nb_read_frames,width,height', '-of', 'json', path.join(out, 'battle-full.webm')], { encoding: 'utf8' }));
   report.capture.encodedMedia = media; save();
-  report.capture.timelineProof=requireBattleCaptureTimeline(report.gates,report.capture);
+  report.capture.timelineProof=report.gates.guardian?requireGuardianFilmTimeline(report.gates,report.capture):requireBattleCaptureTimeline(report.gates,report.capture);
   report.capture.encodedFrames=requireBattleCaptureMedia(media,report.capture.timelineProof.plannedDurationMs);
   const refusals = report.capture.refusalsAtEnd; report.status = refusals.left === 0 && refusals.right === 0 ? 'DIAGNOSTIC_PASS' : 'FAIL'; if (report.status === 'FAIL') throw Error('rig refusals in play: ' + JSON.stringify(refusals) + ' ' + JSON.stringify(report.capture.lastRefusal));
 } catch (e) { report.status = 'FAIL'; report.error = String(e.stack ?? e); process.exitCode = 1; }

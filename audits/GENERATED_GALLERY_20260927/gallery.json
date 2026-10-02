@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 206,
+ "total": 209,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -393,6 +393,27 @@
    "nativeDir": "audits/QUAD_ISLANDS_20260927/g2c118-11-koala/native",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole after the remainder-island repair (unrepaired late idle floated a speck/fragment by the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Alligator",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136/03-alligator",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: head-down late idle drives the snout below the ground line with a fragment beneath it; crocodilians need a no-dip idle (motion, Codex)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Iguana",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c136/15-iguana",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Horned Lizard",
+   "nativeDir": "audits/QUAD_ISLANDS_C136_20261002/22-horned-lizard/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (unrepaired late idle floated an orange fleck over the lowered head)"
   },
   {
    "family": "Snakes (serpent strip author)",

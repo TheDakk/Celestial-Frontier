@@ -1,9 +1,10 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 179,
- "pct": 28.4,
+ "covered": 181,
+ "pct": 28.7,
  "heldNotCounted": [
+  "Alligator",
   "Basking Shark",
   "Chough",
   "Crow",
@@ -28,8 +29,8 @@
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 47,
-   "pct": 22.9,
+   "covered": 49,
+   "pct": 23.9,
    "names": [
     "Leopard",
     "Tiger",
@@ -77,7 +78,9 @@
     "Mountain Goat",
     "Cattle",
     "Bongo",
-    "Donkey"
+    "Donkey",
+    "Iguana",
+    "Horned Lizard"
    ]
   },
   {

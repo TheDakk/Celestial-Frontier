@@ -13,6 +13,7 @@ import { openChromiumCdp } from '../browsercdp.mjs';
 import { acquireWorkspaceLock } from '../workspacelock.mjs';
 import { requireTenSecondMedia } from '../quadruped-proof/capture-contract.mjs';
 import { inspectEncodedFrames } from '../quadruped-proof/motion-proof-contract.mjs';
+import { arenaPlateFiles } from './arena-plates.mjs';
 
 const [leftArg, rightArg, outArg, scriptArg] = process.argv.slice(2);
 if (!leftArg || !rightArg || !outArg) throw Error('usage: archetype-native-runner.mjs <leftFitDir> <rightFitDir> <outDir> [script.json]');
@@ -35,8 +36,9 @@ try {
   const side = (dir, name) => { remember(path.join(dir, 'parts/manifest.json')); const record = JSON.parse(fs.readFileSync(path.join(dir, 'record.json'))), id = JSON.parse(fs.readFileSync(path.join(dir, 'parts/manifest.json'))).creatureId;
     const markings = {}; if (fs.existsSync(path.join(dir, 'markings.json'))) { markings[name + '-markings.json'] = path.join(dir, 'markings.json'); const mj = JSON.parse(fs.readFileSync(path.join(dir, 'markings.json'))); for (const [k, v] of Object.entries(mj.patterns ?? {})) if (v?.file) markings[name + '-marking-' + k + '.png'] = path.join(dir, v.file); }
     return { ...markings, [name + '-record.json']: path.join(dir, 'record.json'), [name + '-binding.json']: path.join(dir, 'binding.json'), [name + '-keyed.png']: path.join(dir, 'parts/keyed.png'), [name + '-atlas.png']: path.join(dir, 'parts/atlas/' + id + '.png'), [name + '-master.png']: path.resolve(repo, repoRelativeSource(record.source)) }; };
-  const anchors = JSON.parse(fs.readFileSync(path.join(arena, 'wild-anchors.json')));
-  const assets = { ...side(left, 'left'), ...side(right, 'right'), 'arena-recipe.json': path.join(arena, 'arena-recipe.json'), 'wild-anchors.json': path.join(arena, 'wild-anchors.json'), 'arena-far.png': path.join(arena, 'arena-far.png'), 'arena-mid.png': path.join(arena, 'keyed/arena-mid.png'), 'arena-near.png': path.join(arena, 'keyed/arena-near.png') };
+  const anchors = JSON.parse(fs.readFileSync(path.join(arena, 'wild-anchors.json'))), plates = arenaPlateFiles(repo); // the game's runtime plates (delivery manifest)
+  report.arena = { setId: plates.setId, files: Object.fromEntries(Object.entries(plates.files).map(([n, p]) => [n, path.relative(repo, p)])) }; remember(path.join(import.meta.dirname, 'arena-plates.mjs'));
+  const assets = { ...side(left, 'left'), ...side(right, 'right'), ...plates.files, 'wild-anchors.json': path.join(arena, 'wild-anchors.json') };
   for (const p of anchors.phases) if (p.keyedImage && !/^procedural:/.test(p.keyedImage)) assets[path.basename(p.keyedImage)] = path.join(arena, p.keyedImage);
   for (const [n, p] of Object.entries(assets)) { remember(p); fs.copyFileSync(p, path.join(scratch, n)); }
   const leftName = JSON.parse(fs.readFileSync(path.join(left, 'record.json'))).identity.earthName, rightName = JSON.parse(fs.readFileSync(path.join(right, 'record.json'))).identity.earthName;
