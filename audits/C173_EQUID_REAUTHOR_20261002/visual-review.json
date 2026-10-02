@@ -1,0 +1,52 @@
+{
+  "schema": "cf.c173-equid-visual-review/v1",
+  "status": "HELD",
+  "reviewer": "Codex",
+  "fullSize": true,
+  "sourceCanvas": [1254, 1254],
+  "reviewedImages": [
+    "wild-pony/original-held-faint-left.png", "wild-pony/original-held-faint-right.png",
+    "wild-pony/candidate-held-faint-left.png", "wild-pony/candidate-held-faint-right.png",
+    "horse/original-held-faint-left.png", "horse/original-held-faint-right.png",
+    "horse/candidate-held-faint-left.png", "horse/candidate-held-faint-right.png",
+    "wild-ass/original-held-faint-left.png", "wild-ass/original-held-faint-right.png",
+    "wild-ass/candidate-held-faint-left.png", "wild-ass/candidate-held-faint-right.png",
+    "wild-pony/original-initial-idle-right.png", "wild-pony/candidate-initial-idle-right.png",
+    "horse/original-initial-idle-right.png", "horse/candidate-initial-idle-right.png",
+    "wild-ass/original-initial-idle-right.png", "wild-ass/candidate-initial-idle-right.png",
+    "wild-pony/fit01/parts/ownership.png", "horse/fit01/parts/ownership.png", "wild-ass/fit01/parts/ownership.png"
+  ],
+  "rows": [
+    {
+      "id": "wild-pony",
+      "status": "HELD",
+      "improved": ["Both traced ear-fleck pixels follow the contiguous near pinna.", "The large dorsal mane opening closes in both held-faint facings.", "Most conspicuous floating hoof/fur slivers disappear."],
+      "preExistingHolds": ["An under-jaw opening remains conspicuous.", "The front leg folds into an extreme thin horizontal pose below the head.", "The small fixed-root interior opening remains."],
+      "newOrChangedHolds": ["The expanded rump/limb contour changes prior tail ownership; it is not an unchanged-owner correction.", "The candidate's first D28-refused island is 1,857 pixels, 11.5% of its remainder."],
+      "accepted": false
+    },
+    {
+      "id": "horse",
+      "status": "REJECTED_FOR_ADMISSION",
+      "improved": ["The long detached mane strip largely follows the crest.", "Several detached lower-leg strips disappear."],
+      "preExistingHolds": ["Crown/ear-adjacent fragments still float above the head.", "Large tail segments and fringe remain detached.", "Severe leg stretching and non-anatomical folds were already visible in the original."],
+      "newOrChangedHolds": ["The full-contour candidate produces a different conspicuous crossed hind-leg arrangement and a long folded front-leg bridge; visual correctness is not established.", "A visible angular shoulder slit appears in initial idle.", "The candidate's first D28-refused island is 2,072 pixels, 7.7% of its remainder."],
+      "accepted": false
+    },
+    {
+      "id": "wild-ass",
+      "status": "REJECTED_FOR_ADMISSION",
+      "improved": ["Large floating crest fragments disappear.", "The dangling front-limb strip and several lower-leg fragments disappear."],
+      "preExistingHolds": ["The tail tuft retains a separated segment.", "The small fixed-root interior opening remains.", "Strongly bent leg poses remain to be reviewed against source anatomy."],
+      "newOrChangedHolds": ["A visible lower-neck band interrupts the neck surface in held faint.", "A horizontal shoulder slit is introduced in held faint.", "The candidate's first D28-refused island is 1,595 pixels, 8.3% of its remainder."],
+      "accepted": false
+    }
+  ],
+  "comparisonBasis": "Same unchanged current motion/skin source and turn context, original versus candidate ownership and four corrected ear landmarks. Software source-coordinate diagnostic only.",
+  "sourcePaintingsChanged": false,
+  "thresholdsChanged": false,
+  "candidateRetries": 0,
+  "nativeRun": false,
+  "nativeAcceptance": false,
+  "globalReferencePoolAdmission": false
+}

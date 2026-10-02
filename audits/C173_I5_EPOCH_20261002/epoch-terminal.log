@@ -1,0 +1,10 @@
+prepare-build: 0
+edge-preflight: 0
+calibration-1: 0
+calibration-1-verify: 0
+calibration-2: 0
+calibration-2-verify: 0
+calibration-3: 0
+calibration-3-verify: 0
+certification: 0
+certification-verify: 0

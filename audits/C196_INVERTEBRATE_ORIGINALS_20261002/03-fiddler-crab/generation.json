@@ -1,0 +1,14 @@
+{
+  "id": "03-fiddler-crab",
+  "name": "Fiddler Crab",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-13413d1a-6eca-4d5d-a905-e268df40541f.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2609a876da2aac65c156406266917626842f19df3f5936c42ae47ebf11b84274",
+  "bytes": 1375093,
+  "promptSha256": "f7d1e6104cbcecdd83d232141f8cbc350dc1a28307c621c96d2160ab88d4cdea",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,399 @@
+{
+  "schema": "cf.c173-specialized-anatomical-observation/v1",
+  "status": "ANATOMICAL_HOLD",
+  "family": "brachyuran",
+  "source": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/03-fiddler-crab",
+  "masterSha256": "2609a876da2aac65c156406266917626842f19df3f5936c42ae47ebf11b84274",
+  "fullSizeInspected": true,
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "observedSourcePoints": {
+    "observedCarapace": [
+      712,
+      489
+    ],
+    "eyeLeftBase": [
+      669,
+      454
+    ],
+    "eyeLeftTip": [
+      652,
+      323
+    ],
+    "eyeRightBase": [
+      731,
+      464
+    ],
+    "eyeRightTip": [
+      784,
+      340
+    ],
+    "observedMajorPalm": [
+      345,
+      592
+    ],
+    "observedMajorHinge": [
+      433,
+      559
+    ],
+    "observedMajorUpperTip": [
+      681,
+      765
+    ],
+    "observedMajorLowerTip": [
+      659,
+      788
+    ],
+    "observedMinorPalm": [
+      880,
+      630
+    ],
+    "observedMinorUpperTip": [
+      764,
+      726
+    ],
+    "observedMinorLowerTip": [
+      772,
+      740
+    ],
+    "visibleWalkingTipLeft0": [
+      182,
+      631
+    ],
+    "visibleWalkingTipLeft1": [
+      209,
+      775
+    ],
+    "visibleWalkingTipLeft2": [
+      371,
+      866
+    ],
+    "visibleWalkingTipRight0": [
+      1079,
+      715
+    ],
+    "visibleWalkingTipRight1": [
+      1037,
+      883
+    ],
+    "visibleWalkingTipRight2": [
+      850,
+      916
+    ]
+  },
+  "visibleRegions": [
+    {
+      "id": "visible-major-claw",
+      "points": [
+        [
+          282,
+          480
+        ],
+        [
+          341,
+          460
+        ],
+        [
+          420,
+          466
+        ],
+        [
+          459,
+          500
+        ],
+        [
+          466,
+          535
+        ],
+        [
+          522,
+          553
+        ],
+        [
+          583,
+          595
+        ],
+        [
+          639,
+          649
+        ],
+        [
+          674,
+          711
+        ],
+        [
+          689,
+          759
+        ],
+        [
+          681,
+          777
+        ],
+        [
+          654,
+          754
+        ],
+        [
+          608,
+          706
+        ],
+        [
+          561,
+          674
+        ],
+        [
+          515,
+          654
+        ],
+        [
+          478,
+          650
+        ],
+        [
+          478,
+          693
+        ],
+        [
+          510,
+          732
+        ],
+        [
+          566,
+          757
+        ],
+        [
+          620,
+          779
+        ],
+        [
+          664,
+          783
+        ],
+        [
+          665,
+          799
+        ],
+        [
+          630,
+          812
+        ],
+        [
+          560,
+          811
+        ],
+        [
+          485,
+          790
+        ],
+        [
+          408,
+          763
+        ],
+        [
+          337,
+          731
+        ],
+        [
+          280,
+          693
+        ],
+        [
+          251,
+          647
+        ],
+        [
+          236,
+          590
+        ],
+        [
+          247,
+          533
+        ]
+      ]
+    },
+    {
+      "id": "visible-minor-claw",
+      "points": [
+        [
+          813,
+          593
+        ],
+        [
+          868,
+          582
+        ],
+        [
+          902,
+          596
+        ],
+        [
+          922,
+          624
+        ],
+        [
+          921,
+          650
+        ],
+        [
+          902,
+          676
+        ],
+        [
+          875,
+          707
+        ],
+        [
+          839,
+          731
+        ],
+        [
+          802,
+          743
+        ],
+        [
+          771,
+          744
+        ],
+        [
+          758,
+          735
+        ],
+        [
+          789,
+          713
+        ],
+        [
+          810,
+          692
+        ],
+        [
+          826,
+          672
+        ],
+        [
+          806,
+          678
+        ],
+        [
+          782,
+          702
+        ],
+        [
+          762,
+          734
+        ],
+        [
+          750,
+          731
+        ],
+        [
+          756,
+          709
+        ],
+        [
+          771,
+          680
+        ],
+        [
+          800,
+          656
+        ],
+        [
+          827,
+          648
+        ],
+        [
+          835,
+          631
+        ]
+      ]
+    },
+    {
+      "id": "visible-carapace",
+      "points": [
+        [
+          544,
+          443
+        ],
+        [
+          590,
+          412
+        ],
+        [
+          655,
+          402
+        ],
+        [
+          722,
+          409
+        ],
+        [
+          792,
+          429
+        ],
+        [
+          854,
+          455
+        ],
+        [
+          889,
+          480
+        ],
+        [
+          894,
+          523
+        ],
+        [
+          880,
+          562
+        ],
+        [
+          846,
+          588
+        ],
+        [
+          800,
+          600
+        ],
+        [
+          735,
+          597
+        ],
+        [
+          661,
+          581
+        ],
+        [
+          600,
+          556
+        ],
+        [
+          557,
+          517
+        ]
+      ]
+    }
+  ],
+  "unresolved": [
+    "eight complete walking chains",
+    "which obscured walking pair corresponds to the supported hidden leg3 contract",
+    "fully exposed proximal walking attachments behind the major claw"
+  ],
+  "declaredBiologicallyAbsent": [],
+  "reasons": [
+    "Two eye stalks and genuinely unequal open major/minor claws are visible. Only three confident distal walking paths per side are present in the projection.",
+    "The existing hidden-anatomy implementation can infer only the final leg3 pair. This painting does not prove that the unobserved pair is exactly that pair, and the task prohibits inventing unseen anatomy; no inference or hidden declaration is applied.",
+    "The large major claw occludes proximal leg ownership. Distal visible tips are retained as observations, not silently promoted to complete chains.",
+    "No symmetrical claw donor, missing-leg absence, fabricated coordinates or complete fit is produced."
+  ],
+  "completeAuthoring": false,
+  "fitAttempted": false,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "sourceBytesPreserved": true,
+  "regionsAreDiagnosticNotCompiledOwnership": true,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

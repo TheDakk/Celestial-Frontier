@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c173-stage-execution/v1",
+  "stage": "intake",
+  "command": [
+    "node",
+    "audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star",
+    "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/fit01"
+  ],
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "helperUnchanged": true,
+  "exitCode": 1,
+  "signal": null,
+  "log": "audits/C173_SPECIALIZED_REFERENCES_20261002/02-brittle-star/intake-01.log",
+  "logSha256": "8974e52bf648681ae9fad9213f310e388bc19ab5d47da7efe81a5b8dab4074c9",
+  "nativeRuns": 0
+}

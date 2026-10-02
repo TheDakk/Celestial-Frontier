@@ -1,0 +1,165 @@
+{
+  "epoch": "i5-v2-a7dc3342e978",
+  "head": "a7dc3342e9783f7fcb47d73d51e62b08deb910cf",
+  "source": "~/.codex/worktrees/c173-i5/celestial-frontier-openai-mac",
+  "instrument": {
+    "commit": "0486f0f9779604496000c8e913b6fe38e7612471",
+    "sha256": "790a7c85cf00275ca440d958140fda5d37eebd8ca85452eb4cc713e00686597c"
+  },
+  "v1Sha256": "340a67c1e6d6f4f7e120c7f13e1e06a674757ddcd2a023c100e4f7f65493fbd9",
+  "automaticRetries": 0,
+  "steps": [
+    {
+      "phase": "calibration-1",
+      "exitCode": 0,
+      "runId": "i5-v2-a7dc3342e978-calibration-1",
+      "verificationExitCode": 0
+    },
+    {
+      "phase": "calibration-2",
+      "exitCode": 0,
+      "runId": "i5-v2-a7dc3342e978-calibration-2",
+      "verificationExitCode": 0
+    },
+    {
+      "phase": "calibration-3",
+      "exitCode": 0,
+      "runId": "i5-v2-a7dc3342e978-calibration-3",
+      "verificationExitCode": 0
+    },
+    {
+      "phase": "certification",
+      "exitCode": 0,
+      "runId": "i5-v2-a7dc3342e978-certification",
+      "verificationExitCode": 0
+    }
+  ],
+  "commands": [
+    {
+      "name": "prepare-build",
+      "executable": "npx",
+      "args": [
+        "vite",
+        "build",
+        "--mode",
+        "evidence"
+      ],
+      "startedAt": "2026-10-02T18:39:18.438Z",
+      "durationMs": 3698.812667,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "edge-preflight",
+      "executable": "node",
+      "args": [
+        "~/Projects/celestial-frontier-openai-mac/port/v2/tools/compendiummem-browser-preflight.mjs"
+      ],
+      "startedAt": "2026-10-02T18:39:23.599Z",
+      "durationMs": 3315.5970000000007,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-1",
+      "executable": "node",
+      "args": [
+        "~/Projects/celestial-frontier-openai-mac/audits/C173_I5_EPOCH_20261002/epoch/instrument/collector.mjs",
+        "--calibrate"
+      ],
+      "startedAt": "2026-10-02T18:39:27.544Z",
+      "durationMs": 62940.155625,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-1-verify",
+      "executable": "node",
+      "args": [
+        "~/Projects/celestial-frontier-openai-mac/audits/C173_I5_EPOCH_20261002/epoch/instrument/collector.mjs",
+        "--verify-run=i5-v2-a7dc3342e978-calibration-1"
+      ],
+      "startedAt": "2026-10-02T18:40:31.201Z",
+      "durationMs": 1567.2111659999937,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-2",
+      "executable": "node",
+      "args": [
+        "~/Projects/celestial-frontier-openai-mac/audits/C173_I5_EPOCH_20261002/epoch/instrument/collector.mjs",
+        "--calibrate"
+      ],
+      "startedAt": "2026-10-02T18:40:33.433Z",
+      "durationMs": 62468.561667,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-2-verify",
+      "executable": "node",
+      "args": [
+        "~/Projects/celestial-frontier-openai-mac/audits/C173_I5_EPOCH_20261002/epoch/instrument/collector.mjs",
+        "--verify-run=i5-v2-a7dc3342e978-calibration-2"
+      ],
+      "startedAt": "2026-10-02T18:41:36.551Z",
+      "durationMs": 1612.4172919999983,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-3",
+      "executable": "node",
+      "args": [
+        "~/Projects/celestial-frontier-openai-mac/audits/C173_I5_EPOCH_20261002/epoch/instrument/collector.mjs",
+        "--calibrate"
+      ],
+      "startedAt": "2026-10-02T18:41:38.775Z",
+      "durationMs": 62711.794209000014,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-3-verify",
+      "executable": "node",
+      "args": [
+        "~/Projects/celestial-frontier-openai-mac/audits/C173_I5_EPOCH_20261002/epoch/instrument/collector.mjs",
+        "--verify-run=i5-v2-a7dc3342e978-calibration-3"
+      ],
+      "startedAt": "2026-10-02T18:42:42.130Z",
+      "durationMs": 1570.381040999986,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "certification",
+      "executable": "node",
+      "args": [
+        "~/Projects/celestial-frontier-openai-mac/audits/C173_I5_EPOCH_20261002/epoch/instrument/collector.mjs"
+      ],
+      "startedAt": "2026-10-02T18:42:44.363Z",
+      "durationMs": 62813.270959000016,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "certification-verify",
+      "executable": "node",
+      "args": [
+        "~/Projects/celestial-frontier-openai-mac/audits/C173_I5_EPOCH_20261002/epoch/instrument/collector.mjs",
+        "--verify-run=i5-v2-a7dc3342e978-certification"
+      ],
+      "startedAt": "2026-10-02T18:43:47.808Z",
+      "durationMs": 1576.0935410000384,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "status": "certified",
+  "finalSource": {
+    "head": "a7dc3342e9783f7fcb47d73d51e62b08deb910cf",
+    "status": ""
+  },
+  "v1Unchanged": true
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "cf.c173-diagnostic-preview/v1",
+  "masterSha256": "2609a876da2aac65c156406266917626842f19df3f5936c42ae47ebf11b84274",
+  "observationSha256": "72bca97b4e1153be9329fad44aec4357dec421738219b394e8a223f0970201fc",
+  "authoringSha256": null,
+  "previewSha256": "ff3139b81e0c4e6624056de9566910b02ec171b60ddc1ad4ad07ed231e5030f3",
+  "width": 1254,
+  "height": 1254,
+  "originalChanged": false,
+  "diagnosticOverlayOnly": true,
+  "compiledFitAcceptance": false,
+  "qualityAccepted": false
+}

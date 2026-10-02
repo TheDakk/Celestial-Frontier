@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c173-standing-bat-visual-review/v1",
+  "masterSha256": "5130bf9d13facd180b8acf2624b9c070c735e5b1cae3fabfbc20686c9b3b2ea1",
+  "method": "Full native-size source inspection by root and independent reference agent",
+  "resolved": [
+    "Each front support now ends in one thumb claw instead of a false multi-toed forefoot."
+  ],
+  "holds": [
+    "Far shoulder/root and full folded digit-to-membrane topology cannot be independently located.",
+    "Near membrane has visible struts but no unambiguous distal wingtip landmark for the required graph.",
+    "Support heights differ; grounded motion has not been qualified."
+  ],
+  "sourceModified": false,
+  "fitCreated": false,
+  "qualityAccepted": false
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Brittle Star",
+  "masterSha256": "9dac116f20058c3fd4135e6ebfc14d213d419104e8af801c8e65ba3443cc7090",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

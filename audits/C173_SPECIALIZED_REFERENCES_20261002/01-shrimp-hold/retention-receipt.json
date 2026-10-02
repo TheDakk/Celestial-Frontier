@@ -1,0 +1,27 @@
+{
+  "schema": "cf.c173-specialized-anatomical-hold-retention/v1",
+  "writerSha256": "6e5a11480c7af1e178a65be32db7402fd8960f16a69e5b4d5be8bfe350a7587c",
+  "masterSha256": "ee9ac3695e550e84d4a91dc4c1edf722f47c281caf2614aacf5a0752f7274c4e",
+  "observationSha256": "219ffffe1cff4ea678e55dbde9d1bb8a663fc89634a70478500ecdb17db246aa",
+  "sourceEvidence": [
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/source-evidence/generation.json",
+      "sha256": "4a334207dee14d73906106197c12a16b31a0535dd59df741f92abfc63567e2c6"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/source-evidence/request.json",
+      "sha256": "ed74cea41a0fc2b6e59d3f5072cd4da92c5134e782eb403d251dff07ab245e9f"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/source-evidence/prompt.txt",
+      "sha256": "726dba2e2852f7f82a6ea2ac4becedd217fc88088bf08577a69debfe068fbe8c"
+    },
+    {
+      "path": "audits/C173_SPECIALIZED_REFERENCES_20261002/01-shrimp-hold/source-evidence/pattern-check.json",
+      "sha256": "791544b9f82b20bcfdd70ba25ee4a2dc1b4bfca025d2c748f569acb1f2eb5ba5"
+    }
+  ],
+  "sourceBytesChanged": 0,
+  "anatomyInvented": false,
+  "negativeOutcomeRetained": true
+}

@@ -1,0 +1,220 @@
+{
+  "kind": "arachnid",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Spider\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"1305681744\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"4\"]]]]",
+    "seed": 1305681744,
+    "ownerId": "authored:archetype-sprint/c173-specialized-spider-part-ids",
+    "earthName": "Spider"
+  },
+  "template": {
+    "id": "arachnid",
+    "version": 1
+  },
+  "clipSetId": "arachnid-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "sting"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1305681744,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 16,
+    "body": 6,
+    "loco": 7,
+    "trait": 4,
+    "size": 5,
+    "diet": 1,
+    "head": 8,
+    "limbs": 1,
+    "skin": 7,
+    "tail": 6,
+    "pattern": 2,
+    "eyes": 1,
+    "behavior": 0,
+    "habitat": 4,
+    "detail": 9,
+    "accent": 5,
+    "temper": 4,
+    "sense": 5,
+    "repro": 7,
+    "life": 1,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Spider"
+  },
+  "geometry": {
+    "cutoutAssetHash": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.7822966507177034,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5199362041467305,
+      0.45055821371610844
+    ],
+    "cephalothorax": [
+      0.5015948963317385,
+      0.47129186602870815
+    ],
+    "abdomen": [
+      0.5542264752791068,
+      0.35007974481658694
+    ],
+    "cheliceraFar": [
+      0.46730462519936206,
+      0.5303030303030303
+    ],
+    "cheliceraNear": [
+      0.4984051036682616,
+      0.532695374800638
+    ],
+    "leg1FarKnee": [
+      0.4043062200956938,
+      0.518341307814992
+    ],
+    "leg1FarFoot": [
+      0.4194577352472089,
+      0.6116427432216905
+    ],
+    "leg1NearKnee": [
+      0.5566188197767146,
+      0.5478468899521531
+    ],
+    "leg1NearFoot": [
+      0.5303030303030303,
+      0.6403508771929824
+    ],
+    "leg2FarKnee": [
+      0.34768740031897927,
+      0.46810207336523124
+    ],
+    "leg2FarFoot": [
+      0.215311004784689,
+      0.7248803827751196
+    ],
+    "leg2NearKnee": [
+      0.6172248803827751,
+      0.5167464114832536
+    ],
+    "leg2NearFoot": [
+      0.6730462519936204,
+      0.7783094098883573
+    ],
+    "leg3FarKnee": [
+      0.35645933014354064,
+      0.405103668261563
+    ],
+    "leg3FarFoot": [
+      0.1850079744816587,
+      0.5996810207336523
+    ],
+    "leg3NearKnee": [
+      0.6594896331738437,
+      0.45773524720893144
+    ],
+    "leg3NearFoot": [
+      0.7862838915470495,
+      0.6738437001594896
+    ],
+    "leg4FarKnee": [
+      0.39952153110047844,
+      0.32216905901116427
+    ],
+    "leg4FarFoot": [
+      0.30462519936204147,
+      0.4704944178628389
+    ],
+    "leg4NearKnee": [
+      0.7073365231259968,
+      0.4059011164274322
+    ],
+    "leg4NearFoot": [
+      0.8157894736842105,
+      0.5534290271132376
+    ]
+  },
+  "materials": {
+    "surface": "chitin"
+  },
+  "source": "audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider-part-ids/master.png",
+  "coverage": {
+    "scope": "Independent eight-legged Spider source reference candidate",
+    "limitations": [
+      "Eight walking chains are visible. The two short mouth-adjacent pedipalps are retained with the cephalothorax; they are not counted or labelled as extra walking legs.",
+      "Two chelicerae are observed independently. Sting is declared biologically absent for the canonical Spider; no tail or stinger landmark is invented.",
+      "The template supplies a single knee and foot control per leg although several real segment articulations are visible. Each authored region is a coarse deforming section rather than a claim of two biological leg segments.",
+      "Proximal legs overlap at the cephalothorax and the pedicel is partly occluded. No hidden internal attachment is inferred; this coarse template uses the shared cephalothorax driver.",
+      "Front walking legs overlap rear legs in the painted projection. Polygon priority follows those visible crossings; a numerical conservation result alone will not prove moving depth or attachment quality.",
+      "Perspective endpoints have different image heights. groundLineY is the source lower envelope; eight coplanar ground contacts are not claimed.",
+      "Canonical Spider is broad; the strongly patterned hairy original still needs species/style scoring. Full-stage moving paint and native acceptance remain unmeasured."
+    ],
+    "qualityAccepted": false,
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "2c084d51f3e9ab3a599ea234e270d40a784a639531d6355149a466152c4348f3",
+    "subjectSourceSha256": "4428bd374cb554770161600e256f1a5b57016e8e0be517c7f8a39d50e984c7aa",
+    "presenceSha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "cephalothorax": 0.027681905833667912,
+      "abdomen": 0.132145606931275,
+      "cheliceraFar": 0.06825056925288552,
+      "cheliceraNear": 0.06148630470877589,
+      "leg1FarKnee": 0.10806820298386959,
+      "leg1FarFoot": 0.09452368094999758,
+      "leg1NearKnee": 0.09427780141262218,
+      "leg1NearFoot": 0.0961743647292499,
+      "leg2FarKnee": 0.15394054731016601,
+      "leg2FarFoot": 0.28889203913927985,
+      "leg2NearKnee": 0.1242433455526787,
+      "leg2NearFoot": 0.267453225187479,
+      "leg3FarKnee": 0.15951554813381508,
+      "leg3FarFoot": 0.2593374509270591,
+      "leg3NearKnee": 0.1584756442998809,
+      "leg3NearFoot": 0.25055867056059916,
+      "leg4FarKnee": 0.18071132632578912,
+      "leg4FarFoot": 0.17608442820388617,
+      "leg4NearKnee": 0.21588322567852428,
+      "leg4NearFoot": 0.18310250384989638
+    },
+    "measures": {
+      "body": 0.132145606931275,
+      "bone-min": 0.027681905833667912,
+      "bone-max": 0.28889203913927985,
+      "leg/body:leg1Far": 1.5330958677970217,
+      "leg/body:leg1Near": 1.4412296448183903,
+      "leg/body:leg2Far": 3.351095785422136,
+      "leg/body:leg2Near": 2.964128583887525,
+      "leg/body:leg3Far": 3.169632413726074,
+      "leg/body:leg3Near": 3.095330403781085,
+      "leg/body:leg4Far": 2.700019794946601,
+      "leg/body:leg4Near": 3.0192886376913104
+    }
+  },
+  "recipeHash": "8b0e4702daf67312cc9dabce27a68125ac830aaa44a5036951865ef7e1de9e9e"
+}

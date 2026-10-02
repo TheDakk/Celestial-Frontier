@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c173-equid-static-terminal/v1",
+  "rows": [
+    {
+      "id": "wild-pony",
+      "exitCode": 0,
+      "error": null,
+      "log": "audits/C173_EQUID_REAUTHOR_20261002/wild-pony/static.log"
+    },
+    {
+      "id": "horse",
+      "exitCode": 0,
+      "error": null,
+      "log": "audits/C173_EQUID_REAUTHOR_20261002/horse/static.log"
+    },
+    {
+      "id": "wild-ass",
+      "exitCode": 0,
+      "error": null,
+      "log": "audits/C173_EQUID_REAUTHOR_20261002/wild-ass/static.log"
+    }
+  ],
+  "retries": 0,
+  "nativeRun": false
+}

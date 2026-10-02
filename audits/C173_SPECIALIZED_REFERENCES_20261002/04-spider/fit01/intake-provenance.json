@@ -1,0 +1,65 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "REFUSED",
+  "sourceHead": "a7dc3342e9783f7fcb47d73d51e62b08deb910cf",
+  "helperSha256": "0473c07b22dd2641d6e1b8297accc72063bfad8bbfdd23a01bd55e2eaca0f752",
+  "regionOwnerHelperSha256": "4d067dacd5e1e39101a27e1f2c3bd008fbfeee86e1bb49995b67180497346232",
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/master.png",
+      "sha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/authoring.json",
+      "sha256": "2c8dbbec427b2bfa545e609646dc91e298d6944615e30bc7041d04601a6b3bf1"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/subject-source.json",
+      "sha256": "4428bd374cb554770161600e256f1a5b57016e8e0be517c7f8a39d50e984c7aa"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/presence.json",
+      "sha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "unchangedInputs": [
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/master.png",
+      "sha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/authoring.json",
+      "sha256": "2c8dbbec427b2bfa545e609646dc91e298d6944615e30bc7041d04601a6b3bf1",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/subject-source.json",
+      "sha256": "4428bd374cb554770161600e256f1a5b57016e8e0be517c7f8a39d50e984c7aa",
+      "unchanged": true
+    },
+    {
+      "path": "~/Projects/celestial-frontier-openai-mac/audits/C173_SPECIALIZED_REFERENCES_20261002/04-spider/presence.json",
+      "sha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165",
+      "unchanged": true
+    }
+  ],
+  "refusal": {
+    "stage": "authored-parts",
+    "error": "Error: Part masks: duplicate/invalid id\n    at requireValue (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:4:48)\n    at cutAuthoredParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs:24:3)\n    at async buildAuthoredParts (file://~/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/build-authored-parts.mjs:34:15)\n    at async file://~/Projects/celestial-frontier-openai-mac/audits/C163_REFERENCE_REPAIR_20261002/intake-v2.mjs:112:16"
+  }
+}

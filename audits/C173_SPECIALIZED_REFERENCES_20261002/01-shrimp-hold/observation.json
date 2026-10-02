@@ -1,0 +1,351 @@
+{
+  "schema": "cf.c173-specialized-anatomical-observation/v1",
+  "status": "ANATOMICAL_HOLD",
+  "family": "crustacean-small",
+  "source": "audits/C196_INVERTEBRATE_ORIGINALS_20261002/01-shrimp",
+  "masterSha256": "ee9ac3695e550e84d4a91dc4c1edf722f47c281caf2614aacf5a0752f7274c4e",
+  "fullSizeInspected": true,
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "observedSourcePoints": {
+    "observedThorax": [
+      655,
+      546
+    ],
+    "observedHead": [
+      806,
+      526
+    ],
+    "abdomen0": [
+      575,
+      516
+    ],
+    "abdomen1": [
+      516,
+      501
+    ],
+    "abdomen2": [
+      437,
+      523
+    ],
+    "abdomen3": [
+      375,
+      568
+    ],
+    "abdomen4": [
+      328,
+      622
+    ],
+    "abdomen5": [
+      289,
+      674
+    ],
+    "observedTailFan": [
+      244,
+      775
+    ],
+    "eyeNear": [
+      827,
+      482
+    ],
+    "eyeFar": [
+      852,
+      465
+    ],
+    "longAntennaUpperBase": [
+      793,
+      525
+    ],
+    "longAntennaUpperTip": [
+      772,
+      294
+    ],
+    "longAntennaLowerBase": [
+      842,
+      535
+    ],
+    "longAntennaLowerTip": [
+      1107,
+      822
+    ]
+  },
+  "visibleRegions": [
+    {
+      "id": "observed-abdomen",
+      "points": [
+        [
+          624,
+          477
+        ],
+        [
+          559,
+          454
+        ],
+        [
+          506,
+          449
+        ],
+        [
+          457,
+          455
+        ],
+        [
+          401,
+          480
+        ],
+        [
+          350,
+          518
+        ],
+        [
+          313,
+          563
+        ],
+        [
+          286,
+          608
+        ],
+        [
+          262,
+          655
+        ],
+        [
+          262,
+          685
+        ],
+        [
+          289,
+          714
+        ],
+        [
+          326,
+          691
+        ],
+        [
+          355,
+          657
+        ],
+        [
+          381,
+          628
+        ],
+        [
+          414,
+          599
+        ],
+        [
+          454,
+          584
+        ],
+        [
+          504,
+          591
+        ],
+        [
+          552,
+          603
+        ],
+        [
+          583,
+          593
+        ]
+      ]
+    },
+    {
+      "id": "observed-tail-fan",
+      "points": [
+        [
+          255,
+          682
+        ],
+        [
+          286,
+          698
+        ],
+        [
+          312,
+          726
+        ],
+        [
+          336,
+          778
+        ],
+        [
+          347,
+          844
+        ],
+        [
+          337,
+          870
+        ],
+        [
+          295,
+          868
+        ],
+        [
+          252,
+          833
+        ],
+        [
+          218,
+          825
+        ],
+        [
+          181,
+          817
+        ],
+        [
+          151,
+          790
+        ],
+        [
+          161,
+          755
+        ],
+        [
+          197,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "walking-leg-cluster-incomplete",
+      "points": [
+        [
+          563,
+          584
+        ],
+        [
+          675,
+          570
+        ],
+        [
+          799,
+          570
+        ],
+        [
+          850,
+          606
+        ],
+        [
+          895,
+          665
+        ],
+        [
+          896,
+          711
+        ],
+        [
+          869,
+          767
+        ],
+        [
+          784,
+          840
+        ],
+        [
+          703,
+          858
+        ],
+        [
+          624,
+          856
+        ],
+        [
+          564,
+          850
+        ],
+        [
+          487,
+          794
+        ],
+        [
+          548,
+          749
+        ],
+        [
+          580,
+          686
+        ],
+        [
+          557,
+          629
+        ]
+      ]
+    },
+    {
+      "id": "swimmerets-not-walking-legs",
+      "points": [
+        [
+          340,
+          618
+        ],
+        [
+          379,
+          607
+        ],
+        [
+          418,
+          595
+        ],
+        [
+          464,
+          589
+        ],
+        [
+          514,
+          596
+        ],
+        [
+          556,
+          608
+        ],
+        [
+          566,
+          653
+        ],
+        [
+          548,
+          701
+        ],
+        [
+          501,
+          714
+        ],
+        [
+          455,
+          738
+        ],
+        [
+          408,
+          744
+        ],
+        [
+          378,
+          688
+        ]
+      ]
+    }
+  ],
+  "unresolved": [
+    "ten independent thoracic walking-leg root/knee/foot chains",
+    "distinct ownership at overlapping far thoracic appendages"
+  ],
+  "declaredBiologicallyAbsent": [],
+  "reasons": [
+    "The complete abdomen, tail fan, rostrum, eyes and both long antennae are visible. Several far thoracic chains overlap at their roots and shafts; ten complete independent walking paths cannot be authored without guessing.",
+    "Swimmerets, short antennules and fine mouthparts are real painted anatomy, not extra walking legs or disposable noise. The 44-joint coarse template has no independent swimmeret or short-antennule slots.",
+    "No hidden or absent leg declaration is invented. The current crustacean-small hidden-chain contract cannot express the missing observations.",
+    "The supply packet separately refuses the right antenna framing margin; no crop, stretch or source-pixel deletion is applied."
+  ],
+  "completeAuthoring": false,
+  "fitAttempted": false,
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "sourceBytesPreserved": true,
+  "regionsAreDiagnosticNotCompiledOwnership": true,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

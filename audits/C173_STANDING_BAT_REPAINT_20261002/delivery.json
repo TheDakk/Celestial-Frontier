@@ -1,0 +1,42 @@
+{
+  "schema": "cf.c173-source-correction-delivery/v1",
+  "generated": 1,
+  "qualityAccepted": false,
+  "files": [
+    {
+      "path": "audits/C173_STANDING_BAT_REPAINT_20261002/README.md",
+      "sha256": "b03dc31b47a76c7c4a4cfcfbb1423a408d3783d5a8d8ffba9e0bf368f3354165",
+      "bytes": 589
+    },
+    {
+      "path": "audits/C173_STANDING_BAT_REPAINT_20261002/generation.json",
+      "sha256": "5890f231cb8e1b0cfa9e8d40de8df82ddb61693bf01f2fe17f8b156089345bfc",
+      "bytes": 537
+    },
+    {
+      "path": "audits/C173_STANDING_BAT_REPAINT_20261002/master.png",
+      "sha256": "5130bf9d13facd180b8acf2624b9c070c735e5b1cae3fabfbc20686c9b3b2ea1",
+      "bytes": 1392777
+    },
+    {
+      "path": "audits/C173_STANDING_BAT_REPAINT_20261002/prompt.txt",
+      "sha256": "b337c5efc12ef826d87668de872019cdd6e1c85d44dc78f22004466f2adf1c6e",
+      "bytes": 2308
+    },
+    {
+      "path": "audits/C173_STANDING_BAT_REPAINT_20261002/request.json",
+      "sha256": "93c6522075cc0310497427d3cf0580fd9c140468cefda835b23bff233537b240",
+      "bytes": 523
+    },
+    {
+      "path": "audits/C173_STANDING_BAT_REPAINT_20261002/subject-source.json",
+      "sha256": "43f0bb8561212252001302d97050d2777b1647d68b8dc0400dcf2d1c8d970426",
+      "bytes": 2257
+    },
+    {
+      "path": "audits/C173_STANDING_BAT_REPAINT_20261002/visual-review.json",
+      "sha256": "3a0875c37338699857afe3519eebc48b9c7f3bf03d61b3a4b7a17a018d178774",
+      "bytes": 719
+    }
+  ]
+}

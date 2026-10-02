@@ -1,0 +1,724 @@
+{
+  "schema": "cf.c173-equid-conservation/v1",
+  "rows": [
+    {
+      "id": "wild-pony",
+      "status": "HELD",
+      "qualityAccepted": false,
+      "nativeAcceptance": false,
+      "sourceMasterSha256": "affd5f36b4d873ae34f356488577fed9c35ec3cbbafd257ae1d4b2d2e2d7b485",
+      "sourceRgbaChangedChannels": 0,
+      "keyedRgbaChangedChannels": 0,
+      "paintPixelsRemoved": 0,
+      "paintPixelsAdded": 0,
+      "unchangedNonEarLandmarks": true,
+      "unchangedGround": true,
+      "unchangedAnatomicalOwnerInventory": true,
+      "independentReplay": true,
+      "compiledLabelsEqual": true,
+      "transitions": {
+        "spine -> earNearTip": 252,
+        "spine -> earFarTip": 45,
+        "earNearTip -> earFarTip": 634,
+        "neck -> earNearTip": 1391,
+        "neck -> head": 1582,
+        "earNearTip -> head": 130,
+        "spine -> neck": 33,
+        "earNearTip -> earFarRoot": 310,
+        "earNearRoot -> head": 653,
+        "neck -> earNearRoot": 1355,
+        "earFarRoot -> earFarTip": 73,
+        "earNearRoot -> earFarRoot": 541,
+        "head -> earFarRoot": 210,
+        "neck -> chest": 5201,
+        "spine -> chest": 11258,
+        "hindNearRoot -> pelvis": 890,
+        "spine -> head": 110,
+        "pelvis -> hindNearRoot": 492,
+        "jaw -> head": 41,
+        "tail0 -> hindNearRoot": 1447,
+        "head -> jaw": 12,
+        "neck -> spine": 71,
+        "spine -> jaw": 114,
+        "chest -> neck": 3517,
+        "chest -> spine": 152,
+        "foreNearRoot -> neck": 1602,
+        "foreNearRoot -> chest": 811,
+        "foreFarRoot -> spine": 175,
+        "foreFarRoot -> neck": 499,
+        "tail1 -> hindNearRoot": 1386,
+        "foreNearRoot -> foreFarRoot": 457,
+        "chest -> foreNearRoot": 440,
+        "spine -> foreNearRoot": 1379,
+        "hindNearRoot -> hindFarRoot": 644,
+        "pelvis -> hindFarRoot": 158,
+        "spine -> hindFarRoot": 941,
+        "foreFarRoot -> foreNearRoot": 746,
+        "spine -> hindNearRoot": 23,
+        "tail2 -> hindNearRoot": 471,
+        "tail2 -> hindNearKnee": 121,
+        "tail1 -> hindNearKnee": 13,
+        "hindNearRoot -> hindNearKnee": 907,
+        "hindFarRoot -> hindFarKnee": 1202,
+        "foreFarRoot -> foreFarKnee": 787,
+        "hindNearRoot -> hindFarKnee": 34,
+        "spine -> hindFarKnee": 64,
+        "foreNearRoot -> foreNearKnee": 713,
+        "foreFarRoot -> foreNearKnee": 30,
+        "hindNearRoot -> spine": 2,
+        "spine -> hindNearKnee": 216,
+        "hindFarRoot -> spine": 8,
+        "hindNearKnee -> hindNearAnkle": 274,
+        "spine -> hindNearAnkle": 223,
+        "hindFarKnee -> hindFarAnkle": 310,
+        "spine -> hindFarAnkle": 124,
+        "hindFarAnkle -> hindFarKnee": 7,
+        "foreFarKnee -> foreFarAnkle": 33,
+        "foreFarAnkle -> foreFarKnee": 16,
+        "foreNearAnkle -> foreNearKnee": 32,
+        "foreNearKnee -> foreNearAnkle": 156,
+        "spine -> foreFarAnkle": 5,
+        "spine -> foreNearAnkle": 47,
+        "hindFarAnkle -> hindFarPaw": 1412,
+        "spine -> hindFarPaw": 276,
+        "foreFarAnkle -> foreFarPaw": 809,
+        "spine -> hindNearPaw": 164,
+        "hindNearAnkle -> hindNearPaw": 197,
+        "spine -> foreNearPaw": 326,
+        "foreNearAnkle -> foreNearPaw": 1407,
+        "spine -> foreFarPaw": 11
+      },
+      "priorTailOwnerPixelsChanged": 3438,
+      "firstPriorTailOwnerChanges": [
+        [
+          410,
+          528,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          411,
+          528,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          412,
+          528,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          413,
+          528,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          414,
+          528,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          415,
+          528,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          416,
+          528,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          417,
+          528,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          418,
+          528,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          419,
+          528,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          399,
+          529,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          400,
+          529,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          401,
+          529,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          402,
+          529,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          403,
+          529,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          404,
+          529,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          405,
+          529,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          406,
+          529,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          407,
+          529,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          408,
+          529,
+          "tail0",
+          "hindNearRoot"
+        ]
+      ],
+      "sourceAttributedPonyPixels": [
+        {
+          "sourcePixel": [
+            871,
+            353
+          ],
+          "original": "spine",
+          "candidate": "earNearTip"
+        },
+        {
+          "sourcePixel": [
+            882,
+            341
+          ],
+          "original": "spine",
+          "candidate": "earNearTip"
+        }
+      ],
+      "unchangedD28Cap": 0.05,
+      "originalCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 1593 px is 5.1% of the remainder (> 5%): structural, not a sliver",
+        "placementApplied": false
+      },
+      "candidateCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 1857 px is 11.5% of the remainder (> 5%): structural, not a sliver",
+        "placementApplied": false
+      },
+      "controls": [
+        "exact original and candidate compiled-label replay",
+        "deterministic replay",
+        "exact original/keyed RGBA conservation",
+        "unreviewed ownership theft refuses",
+        "paint deletion refuses",
+        "synthetic island over 5% refuses"
+      ],
+      "scope": "Mechanical evidence only. Placement is not applied. Full-size ownership and actual published moving paint still require review."
+    },
+    {
+      "id": "horse",
+      "status": "HELD",
+      "qualityAccepted": false,
+      "nativeAcceptance": false,
+      "sourceMasterSha256": "1f28692f8699ecdc7a87010bdccde8223629d9715fe15f53f9f6d1f6db719a41",
+      "sourceRgbaChangedChannels": 0,
+      "keyedRgbaChangedChannels": 0,
+      "paintPixelsRemoved": 0,
+      "paintPixelsAdded": 0,
+      "unchangedNonEarLandmarks": true,
+      "unchangedGround": true,
+      "unchangedAnatomicalOwnerInventory": true,
+      "independentReplay": true,
+      "compiledLabelsEqual": true,
+      "transitions": {
+        "spine -> earNearTip": 184,
+        "earFarTip -> spine": 40,
+        "earFarRoot -> earNearTip": 72,
+        "earNearRoot -> earNearTip": 187,
+        "earNearTip -> neck": 1054,
+        "earFarRoot -> spine": 170,
+        "spine -> earFarTip": 6,
+        "earFarRoot -> earFarTip": 71,
+        "earNearTip -> earNearRoot": 4,
+        "earFarRoot -> earNearRoot": 90,
+        "earNearRoot -> neck": 1554,
+        "spine -> neck": 2328,
+        "earFarRoot -> head": 45,
+        "earNearRoot -> head": 1057,
+        "earNearRoot -> earFarRoot": 19,
+        "head -> neck": 2779,
+        "head -> earFarRoot": 182,
+        "head -> earNearRoot": 1,
+        "head -> spine": 277,
+        "spine -> chest": 16479,
+        "jaw -> head": 1479,
+        "jaw -> neck": 555,
+        "jaw -> spine": 12,
+        "chest -> neck": 1626,
+        "hindNearRoot -> pelvis": 411,
+        "hindNearRoot -> spine": 323,
+        "hindNearRoot -> tail0": 85,
+        "hindNearRoot -> tail1": 92,
+        "tail1 -> hindNearRoot": 206,
+        "hindFarRoot -> spine": 5789,
+        "hindFarRoot -> hindNearRoot": 2978,
+        "foreFarRoot -> neck": 1135,
+        "foreFarRoot -> chest": 141,
+        "spine -> hindNearRoot": 1460,
+        "chest -> foreFarRoot": 1172,
+        "foreNearRoot -> chest": 1801,
+        "foreNearRoot -> foreFarRoot": 1691,
+        "foreFarRoot -> spine": 39,
+        "spine -> foreFarRoot": 659,
+        "spine -> foreNearRoot": 1168,
+        "hindFarKnee -> hindFarRoot": 61,
+        "hindNearKnee -> hindNearRoot": 231,
+        "spine -> hindFarRoot": 108,
+        "foreFarRoot -> foreFarKnee": 480,
+        "hindFarRoot -> hindFarKnee": 1599,
+        "foreFarKnee -> foreFarRoot": 2,
+        "foreNearKnee -> foreFarRoot": 245,
+        "spine -> hindNearKnee": 999,
+        "spine -> foreFarKnee": 1383,
+        "foreNearRoot -> foreFarKnee": 3,
+        "foreNearKnee -> foreNearRoot": 529,
+        "foreNearRoot -> foreNearKnee": 202,
+        "foreNearKnee -> spine": 556,
+        "spine -> hindFarKnee": 1067,
+        "spine -> foreNearKnee": 4,
+        "foreNearAnkle -> foreNearKnee": 478,
+        "spine -> hindFarAnkle": 799,
+        "hindFarKnee -> hindFarAnkle": 1300,
+        "foreFarKnee -> foreFarAnkle": 581,
+        "spine -> foreFarAnkle": 1634,
+        "hindNearKnee -> hindNearAnkle": 126,
+        "hindNearAnkle -> hindNearKnee": 66,
+        "hindNearAnkle -> spine": 9,
+        "spine -> foreNearAnkle": 28,
+        "spine -> hindNearAnkle": 82,
+        "foreNearPaw -> foreNearAnkle": 725,
+        "spine -> hindFarPaw": 107,
+        "hindFarAnkle -> hindFarPaw": 94,
+        "hindNearPaw -> hindNearAnkle": 164,
+        "foreFarPaw -> foreFarAnkle": 13,
+        "foreFarAnkle -> foreFarPaw": 4,
+        "spine -> foreFarPaw": 97,
+        "spine -> foreNearPaw": 209
+      },
+      "priorTailOwnerPixelsChanged": 206,
+      "firstPriorTailOwnerChanges": [
+        [
+          391,
+          482,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          392,
+          482,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          393,
+          482,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          394,
+          482,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          391,
+          483,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          392,
+          483,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          393,
+          483,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          394,
+          483,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          390,
+          484,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          391,
+          484,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          392,
+          484,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          393,
+          484,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          390,
+          485,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          391,
+          485,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          392,
+          485,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          393,
+          485,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          390,
+          486,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          391,
+          486,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          392,
+          486,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          393,
+          486,
+          "tail1",
+          "hindNearRoot"
+        ]
+      ],
+      "sourceAttributedPonyPixels": [],
+      "unchangedD28Cap": 0.05,
+      "originalCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 3634 px is 7.5% of the remainder (> 5%): structural, not a sliver",
+        "placementApplied": false
+      },
+      "candidateCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2072 px is 7.7% of the remainder (> 5%): structural, not a sliver",
+        "placementApplied": false
+      },
+      "controls": [
+        "exact original and candidate compiled-label replay",
+        "deterministic replay",
+        "exact original/keyed RGBA conservation",
+        "unreviewed ownership theft refuses",
+        "paint deletion refuses",
+        "synthetic island over 5% refuses"
+      ],
+      "scope": "Mechanical evidence only. Placement is not applied. Full-size ownership and actual published moving paint still require review."
+    },
+    {
+      "id": "wild-ass",
+      "status": "HELD",
+      "qualityAccepted": false,
+      "nativeAcceptance": false,
+      "sourceMasterSha256": "d03e96b63e1a5ad90a4032be5f0b09fd00c4c924b8a844493397348c0efd7916",
+      "sourceRgbaChangedChannels": 0,
+      "keyedRgbaChangedChannels": 0,
+      "paintPixelsRemoved": 0,
+      "paintPixelsAdded": 0,
+      "unchangedNonEarLandmarks": true,
+      "unchangedGround": true,
+      "unchangedAnatomicalOwnerInventory": true,
+      "independentReplay": true,
+      "compiledLabelsEqual": true,
+      "transitions": {
+        "spine -> earFarTip": 226,
+        "spine -> earNearTip": 233,
+        "earFarRoot -> earFarTip": 133,
+        "earNearRoot -> earNearTip": 342,
+        "earFarRoot -> spine": 1,
+        "earNearRoot -> earFarRoot": 281,
+        "earNearTip -> earFarRoot": 14,
+        "spine -> earNearRoot": 63,
+        "earFarTip -> earFarRoot": 2,
+        "neck -> earNearRoot": 779,
+        "spine -> neck": 1645,
+        "head -> earNearRoot": 674,
+        "neck -> head": 3017,
+        "head -> earFarRoot": 207,
+        "chest -> neck": 4582,
+        "spine -> chest": 7199,
+        "jaw -> head": 1405,
+        "spine -> hindNearRoot": 885,
+        "tail0 -> hindNearRoot": 622,
+        "tail1 -> hindNearRoot": 1301,
+        "pelvis -> hindNearRoot": 470,
+        "neck -> spine": 1301,
+        "head -> jaw": 153,
+        "hindNearRoot -> pelvis": 182,
+        "chest -> foreFarRoot": 1042,
+        "foreFarRoot -> neck": 584,
+        "spine -> foreFarRoot": 623,
+        "hindNearRoot -> spine": 12,
+        "foreFarRoot -> spine": 293,
+        "hindFarRoot -> spine": 1226,
+        "hindFarRoot -> hindNearRoot": 1261,
+        "spine -> hindFarRoot": 286,
+        "foreNearRoot -> foreFarRoot": 125,
+        "foreNearRoot -> chest": 87,
+        "chest -> foreNearRoot": 557,
+        "spine -> foreNearRoot": 1968,
+        "foreFarRoot -> foreNearRoot": 342,
+        "tail2 -> hindNearRoot": 24,
+        "foreFarRoot -> foreFarKnee": 257,
+        "hindFarRoot -> hindFarKnee": 660,
+        "foreNearKnee -> foreNearRoot": 320,
+        "foreFarKnee -> foreNearRoot": 1,
+        "foreFarKnee -> foreFarRoot": 28,
+        "hindNearRoot -> hindNearKnee": 46,
+        "hindFarKnee -> hindFarRoot": 2,
+        "spine -> foreFarKnee": 928,
+        "hindNearKnee -> hindNearRoot": 86,
+        "spine -> hindFarKnee": 1078,
+        "foreNearRoot -> foreNearKnee": 22,
+        "spine -> hindNearKnee": 384,
+        "spine -> foreNearKnee": 37,
+        "hindNearAnkle -> hindNearKnee": 19,
+        "hindNearKnee -> hindNearAnkle": 119,
+        "hindFarKnee -> hindFarAnkle": 151,
+        "foreNearAnkle -> foreNearKnee": 266,
+        "spine -> hindFarAnkle": 180,
+        "foreFarKnee -> foreFarAnkle": 96,
+        "spine -> foreFarAnkle": 751,
+        "spine -> foreNearAnkle": 96,
+        "spine -> hindNearAnkle": 53,
+        "hindFarPaw -> hindFarAnkle": 146,
+        "hindNearPaw -> hindNearAnkle": 123,
+        "foreNearPaw -> foreNearAnkle": 92,
+        "hindNearAnkle -> hindNearPaw": 2,
+        "foreNearAnkle -> foreNearPaw": 8,
+        "spine -> foreNearPaw": 39,
+        "foreFarAnkle -> foreFarPaw": 31,
+        "foreFarPaw -> foreFarAnkle": 4,
+        "spine -> foreFarPaw": 51,
+        "spine -> hindNearPaw": 18,
+        "spine -> hindFarPaw": 1
+      },
+      "priorTailOwnerPixelsChanged": 1947,
+      "firstPriorTailOwnerChanges": [
+        [
+          428,
+          509,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          429,
+          509,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          430,
+          509,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          431,
+          509,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          432,
+          509,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          433,
+          509,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          434,
+          509,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          435,
+          509,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          436,
+          509,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          437,
+          509,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          438,
+          509,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          439,
+          509,
+          "tail1",
+          "hindNearRoot"
+        ],
+        [
+          440,
+          509,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          441,
+          509,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          442,
+          509,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          443,
+          509,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          444,
+          509,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          445,
+          509,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          427,
+          510,
+          "tail0",
+          "hindNearRoot"
+        ],
+        [
+          428,
+          510,
+          "tail0",
+          "hindNearRoot"
+        ]
+      ],
+      "sourceAttributedPonyPixels": [],
+      "unchangedD28Cap": 0.05,
+      "originalCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 2660 px is 8.1% of the remainder (> 5%): structural, not a sliver",
+        "placementApplied": false
+      },
+      "candidateCap": {
+        "status": "REFUSED",
+        "reason": "remainder island of 1595 px is 8.3% of the remainder (> 5%): structural, not a sliver",
+        "placementApplied": false
+      },
+      "controls": [
+        "exact original and candidate compiled-label replay",
+        "deterministic replay",
+        "exact original/keyed RGBA conservation",
+        "unreviewed ownership theft refuses",
+        "paint deletion refuses",
+        "synthetic island over 5% refuses"
+      ],
+      "scope": "Mechanical evidence only. Placement is not applied. Full-size ownership and actual published moving paint still require review."
+    }
+  ],
+  "qualityAccepted": false,
+  "nativeAcceptance": false
+}

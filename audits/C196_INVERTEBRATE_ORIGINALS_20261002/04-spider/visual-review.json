@@ -1,0 +1,28 @@
+{
+  "name": "Spider",
+  "masterSha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Large patterned abdomen and smaller cephalothorax, jointed hairy legs, two dark front chelicerae and small mouth-adjacent pedipalps. Eight long walking endpoints appear readable, but some proximal roots overlap and the pedicel is partly obscured beneath abdomen. Palps are not extra legs. Front elevated view has natural asymmetric projection; no antennae or stinger visible. Require independent exact limb inventory before presence admission.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 229,
+      "y0": 317,
+      "x1": 1026,
+      "y1": 979
+    },
+    "margins": {
+      "left": 229,
+      "right": 227,
+      "top": 317,
+      "bottom": 274
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}
