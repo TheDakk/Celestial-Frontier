@@ -1,0 +1,4593 @@
+{
+  "schema": "cf.c183-bittern-determinism/v1",
+  "status": "DIAGNOSED",
+  "geometryIdentical": true,
+  "paintSkinIdentical": true,
+  "exactRecordedRefusal": {
+    "side": "left",
+    "turn": 3,
+    "ms": 11216.1,
+    "phase": "approach",
+    "context": {
+      "actionId": "approach:walk",
+      "elapsedMs": 604.1000000000004,
+      "durationMs": 612,
+      "weight": 1,
+      "planted": false,
+      "travel": "stage",
+      "stageDisplacement": 0.220903607536765
+    },
+    "error": "ARAP skin: unresolved folded triangles: 3"
+  },
+  "derivedCadence": {
+    "cycles": 1,
+    "gaitMs": 612,
+    "perCycle": 0.45351562500000003,
+    "walked": 0.08000000000000006,
+    "bodyLength": 0.17639965546942302
+  },
+  "textureAndOrderParity": true,
+  "selectedNativeTimes": {
+    "painter": {
+      "samples": 37,
+      "refused": []
+    },
+    "finished": {
+      "samples": 37,
+      "refused": [
+        1504.1000000000004
+      ]
+    }
+  },
+  "results": [
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 904.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 4.100000000000364,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.0030382582720590934
+      },
+      "status": "PASS",
+      "posedSha256": "992a1c2f872f76b684f33aa95b0b2cfd39bed812d25cb763b8714b39267c0c92"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 904.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 4.200000000000728,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.0031123621323534806
+      },
+      "status": "PASS",
+      "posedSha256": "b277ddbfa2d98849efb42517603e21deb31179279b43a5d1062ba8f385a912de"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 920.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 20.799999999999272,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.015413602941175933
+      },
+      "status": "PASS",
+      "posedSha256": "8bdfa601da4474b0cfd6cf9b97fcc572dd471d2d407656fd76173dd0b231f73a"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 920.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 20.899999999999636,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.015487706801470321
+      },
+      "status": "PASS",
+      "posedSha256": "d4362d1cb4f5d9646a520ae5fbfd19f548ecb719e5370d41898c31bd7e243a49"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 937.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 37.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.02778894761029412
+      },
+      "status": "PASS",
+      "posedSha256": "267c011e2ba87f74c5f4bf9d8dbcb7a640a2a1e446a6e2316f116af53f639702"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 937.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 37.600000000000364,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.027863051470588505
+      },
+      "status": "PASS",
+      "posedSha256": "c720e9f84bf5fadf632d7df75abee3616b1132f09d915eb08c3171defb53db94"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 954.1999999999989,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 54.19999999999891,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.04016429227941096
+      },
+      "status": "PASS",
+      "posedSha256": "c371933bd5c1698980d2e53bcaf0a541c70bdc3541b40644dff9b077eb6c1e48"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 954.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 54.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.04023839613970535
+      },
+      "status": "PASS",
+      "posedSha256": "7f081d261bc426161d34f43d409c87d3a2975a879f7594cf69d3ed63b955b0f5"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 970.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 70.79999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.05246553308823476
+      },
+      "status": "PASS",
+      "posedSha256": "42fce2b01ecf745a1d4ae6c214ecc85142bc95d9b1a03a8bd8dc930bc939f96f"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 970.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 70.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.052539636948529145
+      },
+      "status": "PASS",
+      "posedSha256": "356a6558b33905e0d3cc542d9672f3c0dcaa82bc151f3c1f8588233c44c5e450"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 987.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 87.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.06484087775735294
+      },
+      "status": "PASS",
+      "posedSha256": "b2375197980331828bec3801dadd899676f7a9ac4b7cd42f147363ddbfcf2cd0"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1004.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 104.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07714211856617674
+      },
+      "status": "PASS",
+      "posedSha256": "ac240bad124c13a38100a8d2f577706127e446cc0b558187bd5b761f17299fd9"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1004.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 104.20000000000073,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07721622242647114
+      },
+      "status": "PASS",
+      "posedSha256": "9f1d717be8b8a7138279bd7e149d2dc0e80055f2e1edf550b05033579515dd0e"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1020.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 120.79999999999926,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08951746323529358
+      },
+      "status": "PASS",
+      "posedSha256": "977bd4d32e59a24d6daeca60b2696b525f2c883dfda788fd65d9b7e804d513e5"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1020.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 120.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08959156709558798
+      },
+      "status": "PASS",
+      "posedSha256": "fb383ad20ebe339e5a2b6ebdfcd4c52d1790fed336c52d748436a4e60c47e8a2"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1037.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 137.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.10189280790441177
+      },
+      "status": "PASS",
+      "posedSha256": "e36763993c242f97ee9448bc927eb67d32b51af3f13017790cb0822af6239a0c"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1037.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 137.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.10196691176470615
+      },
+      "status": "PASS",
+      "posedSha256": "7ce0e9fe1b9f5b2e582fe1686dd131c88b8984e81b1036761b77aeafb3c95fbd"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1054.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 154.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.11419404871323557
+      },
+      "status": "PASS",
+      "posedSha256": "6fd6802a77d5a1d2fd121a38e35dcf57ff1359e8e620693eb4c2756677fd7803"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1054.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 154.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.11434225643382301
+      },
+      "status": "PASS",
+      "posedSha256": "2b1816a35e6d9c27e6874e7a31a3a324fcf63832385b1356cb07fa34726eb783"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1070.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 170.79999999999924,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1265693933823524
+      },
+      "status": "PASS",
+      "posedSha256": "bd83f9698e56ad46c587b20cc65106d007e6e65efe45c7a47f8ca4f527d04652"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1070.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 170.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.12664349724264679
+      },
+      "status": "PASS",
+      "posedSha256": "bd106c02378a1d1175f27114da57da80a46abc380210fa1934fae653c6f80864"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1087.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 187.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13894473805147062
+      },
+      "status": "PASS",
+      "posedSha256": "0683450700446809e57a097f678936d95a679dd29b39005627ac56bd76f4c553"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1087.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 187.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13901884191176497
+      },
+      "status": "PASS",
+      "posedSha256": "3cc920e0af3f1b2795afee6e260f8f93f49cf3e774fdbaf02a47a66a5e0fa157"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1104.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 204.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1512459788602944
+      },
+      "status": "PASS",
+      "posedSha256": "180dd49629bb94dcb4e218f3e75a4c0514ad9132b266c8e770044e2ed36692b3"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1104.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 204.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.15139418658088183
+      },
+      "status": "PASS",
+      "posedSha256": "4a41c9a3d582d023cfbc02dfce6085283f6052e35b7574255e28ee116007431f"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1120.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 220.79999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.16362132352941125
+      },
+      "status": "PASS",
+      "posedSha256": "3caaecf822573714d44363e43fbdb4a54388b09b1a9b761f4b3d5068e8260aa7"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1120.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 220.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1636954273897056
+      },
+      "status": "PASS",
+      "posedSha256": "755772b02289a5fb09f61c2b81439a4798029a63cfbae781bb311791729a73a7"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1137.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 237.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.17599666819852944
+      },
+      "status": "PASS",
+      "posedSha256": "94d286891a31d041b3441dc703d9bba93c851700cf74e231f1fd14dbf92f1324"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1154.199999999999,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 254.19999999999888,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18837201286764627
+      },
+      "status": "PASS",
+      "posedSha256": "39cd777b8ebc0dda98f50e2fb069470d1992ed6f3ea14587fd62536cbde41050"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1154.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 254.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18844611672794065
+      },
+      "status": "PASS",
+      "posedSha256": "5615bbcac44f448416e162e480312b43c497e93eceaedae8b7b3901088783f2d"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1170.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 270.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20067325367647007
+      },
+      "status": "PASS",
+      "posedSha256": "36f56b19506dd5305f71c13359795b841d7f2cc5b41ccaa77ac134cad031d78e"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1170.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 270.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20074735753676445
+      },
+      "status": "PASS",
+      "posedSha256": "d24066ae254e3993457f6276b776eb278cf083dc9243edbcd5c2ed7174100e26"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1187.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 287.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.21304859834558826
+      },
+      "status": "PASS",
+      "posedSha256": "afbe80c201fabffcbeeb86e31e543e5e9298b55a505281622489606cf5cd16f7"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1187.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 287.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.21312270220588264
+      },
+      "status": "PASS",
+      "posedSha256": "310cee704d7aa521a93943a48710cac0e392ac927df4e8608b6dd8036411975a"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1204.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 304.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.22534983915441206
+      },
+      "status": "PASS",
+      "posedSha256": "793334dc0e19a1ff5fb885e5115d91db5a0702b48a1b8d22c49958726a10a333"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1204.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 304.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.22542394301470645
+      },
+      "status": "PASS",
+      "posedSha256": "cb85e228833a9b6d9b854d3d04040acec86ebf18daf299b9494cca88906d5883"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1220.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 320.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.01096737132352887
+      },
+      "status": "PASS",
+      "posedSha256": "bc5797ae51bf973ff5e71bc279fc6396cdad561b433b6e3b61b14a65b75fb867"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1220.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 320.8999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.01104147518382324
+      },
+      "status": "PASS",
+      "posedSha256": "985c9afde4ac4960ebcd1b395e3a54393d85ad73a22f727f3a440693bc8183da"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1237.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 337.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.02334271599264708
+      },
+      "status": "PASS",
+      "posedSha256": "8670aaf8afa04219632263301600a8d7d8b37acba6a4eadbc44dca87ca451e7e"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1254.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 354.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.035643956801470866
+      },
+      "status": "PASS",
+      "posedSha256": "e066f6f9fde0f13d7f47405ef6cdd0f8a8a4a190a179e6dca2d76fade3b280c9"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1254.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 354.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.035718060661765236
+      },
+      "status": "PASS",
+      "posedSha256": "852a79771fcbef63aaab0a4c68121e12e33d615a79e550c1eba5d7ac89c259bc"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1270.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 370.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.048093405330882084
+      },
+      "status": "PASS",
+      "posedSha256": "5d0ae81a606f127ddcbe9a574f7cc31381f3ceb271979f8d1462c4aa5ffc8372"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1287.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 387.39999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.060320542279411506
+      },
+      "status": "PASS",
+      "posedSha256": "68529a1532bfa08be617dba1e1c39ad36f7477aac9d10922b93e8781a067551b"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1287.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 387.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.06046875000000029
+      },
+      "status": "PASS",
+      "posedSha256": "7adb0f4065416e8bdd63b13985f7877ef92c25dbbe446d97c11e865d6dffef18"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1304.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 404.1000000000003,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07269588694852966
+      },
+      "status": "PASS",
+      "posedSha256": "3201de20efd4adc4ba334a39ec0cee873f83a3e988a0991c298c0ab651e11158"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1304.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 404.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07276999080882408
+      },
+      "status": "PASS",
+      "posedSha256": "ef156873b040e0462394859c08d096654e84281a104156db41e7c0235f6eedbe"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1320.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 420.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08507123161764651
+      },
+      "status": "PASS",
+      "posedSha256": "5bdfdc01b62056bcf89d41bfbcb89881aaee322aa8892757abae5bb58d3a79a4"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1320.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 420.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08514533547794093
+      },
+      "status": "PASS",
+      "posedSha256": "11e9ab023bdbc1d270fffab33fb3c594f151853f47da490e90517f032e95a20e"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1337.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 437.3999999999997,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09737247242647035
+      },
+      "status": "PASS",
+      "posedSha256": "19f9ec3ed59d96c0938ee15c4853f56444ca89c099c5d900c9369c5386743055"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1337.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 437.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09744657628676472
+      },
+      "status": "PASS",
+      "posedSha256": "168984a140b9998fc1005dc018d7e9427224064040f1428b2e98afba8eef6b35"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1354.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 454.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1097478170955885
+      },
+      "status": "PASS",
+      "posedSha256": "b933853001f3862bb04a83a96be517e7dd0b1acdb2db8a10398cd2b056c9e8c8"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1354.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 454.20000000000067,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.10982192095588288
+      },
+      "status": "PASS",
+      "posedSha256": "e99a12949078dbc339ec5e91096cf234f4d092f1addb7a0b7eee8c154ca93740"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1370.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 470.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.12212316176470536
+      },
+      "status": "PASS",
+      "posedSha256": "e334863503c9e19ceac7405bc8fa7f7b8ab2bcc2189e9ee4aaa75402a6a6e485"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1370.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 470.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.12219726562499973
+      },
+      "status": "PASS",
+      "posedSha256": "046f78387282995e2d7ab893b055dfe16964f88989ac4f95a22ccfee7b0a48f3"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1387.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 487.39999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13442440257352914
+      },
+      "status": "PASS",
+      "posedSha256": "ed7e74576f722a0c39cb92762ee4fbbbf2a58f272e591f38a593e1cfe561ba2b"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1387.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 487.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13457261029411793
+      },
+      "status": "PASS",
+      "posedSha256": "999f7e519b8d56a3ccb1656096399eda1a209c8b501aba996d951c5af108a595"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1404.199999999999,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 504.1999999999989,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.14687385110294035
+      },
+      "status": "PASS",
+      "posedSha256": "e83f0913429e47bb7dbfc62565a1916949555aed54512036e14d07ae1416a4b6"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1404.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 504.2999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1469479549632348
+      },
+      "status": "PASS",
+      "posedSha256": "d415c5ec4650efecee7c1c2c1796d27f836a51306cfd0d2277fc43e7c6840710"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1420.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 520.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1591750919117642
+      },
+      "status": "PASS",
+      "posedSha256": "09a171e2b813ed934488442c171190b735a6683230a231d7f61f382f3e8c2879"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1420.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 520.8999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.15924919577205857
+      },
+      "status": "PASS",
+      "posedSha256": "3869b6e7bfb813f7058471542814099e47be46c6fec0b46745738d9c94d01adb"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1437.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 537.3999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.171476332720588
+      },
+      "status": "PASS",
+      "posedSha256": "3560874a148148ccaf07af3d5a325e0488b5770ffa361856c2715fbf3fd30f14"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1437.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 537.6000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.17162454044117673
+      },
+      "status": "PASS",
+      "posedSha256": "9ad6f310524c8ac435ce84b471d6381c21dc8723a6986be33533cf2a32244bfb"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1454.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 554.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18385167738970615
+      },
+      "status": "PASS",
+      "posedSha256": "42a0f009d6a69a5ea7cc921766b41e9cfb70ccda1673b8fb9e2f728d1ae51a46"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1454.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 554.2999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18399988511029358
+      },
+      "status": "PASS",
+      "posedSha256": "38c32e90fe78ae9718b264c5c71f742eee6ca07441818e3eab5b027d5caa98cf"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1470.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 570.8999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.19630112591911736
+      },
+      "status": "PASS",
+      "posedSha256": "c24ce70cb4405daf819f206df7a608aae678387acfe086dbc9c576da2b859ec0"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1487.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 587.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20860236672794122
+      },
+      "status": "PASS",
+      "posedSha256": "fdcceba02ad291450dfe2c06576f493d22b3f725127f40d4a2cecd17df5e2b58"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1487.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 587.6000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20867647058823557
+      },
+      "status": "PASS",
+      "posedSha256": "f241b3c0d5fc8f445709091c761f15dd202f3e6285aa111f16a1579aac183173"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1504.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.220903607536765
+      },
+      "status": "REFUSE",
+      "code": "ARAP_FOLD",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    },
+    {
+      "name": "painter",
+      "order": "forward",
+      "ms": 1504.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.22097771139705935
+      },
+      "status": "PASS",
+      "posedSha256": "dd92fa6d75523b267da60e442fe3763af52e9f1e1bad15a0c2e9bdaabd094417"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1504.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.22097771139705935
+      },
+      "status": "PASS",
+      "posedSha256": "dd92fa6d75523b267da60e442fe3763af52e9f1e1bad15a0c2e9bdaabd094417"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1504.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.220903607536765
+      },
+      "status": "REFUSE",
+      "code": "ARAP_FOLD",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1487.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 587.6000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20867647058823557
+      },
+      "status": "PASS",
+      "posedSha256": "f241b3c0d5fc8f445709091c761f15dd202f3e6285aa111f16a1579aac183173"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1487.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 587.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20860236672794122
+      },
+      "status": "PASS",
+      "posedSha256": "fdcceba02ad291450dfe2c06576f493d22b3f725127f40d4a2cecd17df5e2b58"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1470.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 570.8999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.19630112591911736
+      },
+      "status": "PASS",
+      "posedSha256": "c24ce70cb4405daf819f206df7a608aae678387acfe086dbc9c576da2b859ec0"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1454.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 554.2999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18399988511029358
+      },
+      "status": "PASS",
+      "posedSha256": "38c32e90fe78ae9718b264c5c71f742eee6ca07441818e3eab5b027d5caa98cf"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1454.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 554.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18385167738970615
+      },
+      "status": "PASS",
+      "posedSha256": "42a0f009d6a69a5ea7cc921766b41e9cfb70ccda1673b8fb9e2f728d1ae51a46"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1437.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 537.6000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.17162454044117673
+      },
+      "status": "PASS",
+      "posedSha256": "9ad6f310524c8ac435ce84b471d6381c21dc8723a6986be33533cf2a32244bfb"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1437.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 537.3999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.171476332720588
+      },
+      "status": "PASS",
+      "posedSha256": "3560874a148148ccaf07af3d5a325e0488b5770ffa361856c2715fbf3fd30f14"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1420.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 520.8999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.15924919577205857
+      },
+      "status": "PASS",
+      "posedSha256": "3869b6e7bfb813f7058471542814099e47be46c6fec0b46745738d9c94d01adb"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1420.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 520.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1591750919117642
+      },
+      "status": "PASS",
+      "posedSha256": "09a171e2b813ed934488442c171190b735a6683230a231d7f61f382f3e8c2879"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1404.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 504.2999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1469479549632348
+      },
+      "status": "PASS",
+      "posedSha256": "d415c5ec4650efecee7c1c2c1796d27f836a51306cfd0d2277fc43e7c6840710"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1404.199999999999,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 504.1999999999989,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.14687385110294035
+      },
+      "status": "PASS",
+      "posedSha256": "e83f0913429e47bb7dbfc62565a1916949555aed54512036e14d07ae1416a4b6"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1387.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 487.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13457261029411793
+      },
+      "status": "PASS",
+      "posedSha256": "999f7e519b8d56a3ccb1656096399eda1a209c8b501aba996d951c5af108a595"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1387.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 487.39999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13442440257352914
+      },
+      "status": "PASS",
+      "posedSha256": "ed7e74576f722a0c39cb92762ee4fbbbf2a58f272e591f38a593e1cfe561ba2b"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1370.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 470.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.12219726562499973
+      },
+      "status": "PASS",
+      "posedSha256": "046f78387282995e2d7ab893b055dfe16964f88989ac4f95a22ccfee7b0a48f3"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1370.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 470.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.12212316176470536
+      },
+      "status": "PASS",
+      "posedSha256": "e334863503c9e19ceac7405bc8fa7f7b8ab2bcc2189e9ee4aaa75402a6a6e485"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1354.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 454.20000000000067,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.10982192095588288
+      },
+      "status": "PASS",
+      "posedSha256": "e99a12949078dbc339ec5e91096cf234f4d092f1addb7a0b7eee8c154ca93740"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1354.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 454.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1097478170955885
+      },
+      "status": "PASS",
+      "posedSha256": "b933853001f3862bb04a83a96be517e7dd0b1acdb2db8a10398cd2b056c9e8c8"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1337.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 437.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09744657628676472
+      },
+      "status": "PASS",
+      "posedSha256": "168984a140b9998fc1005dc018d7e9427224064040f1428b2e98afba8eef6b35"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1337.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 437.3999999999997,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09737247242647035
+      },
+      "status": "PASS",
+      "posedSha256": "19f9ec3ed59d96c0938ee15c4853f56444ca89c099c5d900c9369c5386743055"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1320.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 420.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08514533547794093
+      },
+      "status": "PASS",
+      "posedSha256": "11e9ab023bdbc1d270fffab33fb3c594f151853f47da490e90517f032e95a20e"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1320.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 420.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08507123161764651
+      },
+      "status": "PASS",
+      "posedSha256": "5bdfdc01b62056bcf89d41bfbcb89881aaee322aa8892757abae5bb58d3a79a4"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1304.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 404.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07276999080882408
+      },
+      "status": "PASS",
+      "posedSha256": "ef156873b040e0462394859c08d096654e84281a104156db41e7c0235f6eedbe"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1304.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 404.1000000000003,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07269588694852966
+      },
+      "status": "PASS",
+      "posedSha256": "3201de20efd4adc4ba334a39ec0cee873f83a3e988a0991c298c0ab651e11158"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1287.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 387.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.06046875000000029
+      },
+      "status": "PASS",
+      "posedSha256": "7adb0f4065416e8bdd63b13985f7877ef92c25dbbe446d97c11e865d6dffef18"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1287.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 387.39999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.060320542279411506
+      },
+      "status": "PASS",
+      "posedSha256": "68529a1532bfa08be617dba1e1c39ad36f7477aac9d10922b93e8781a067551b"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1270.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 370.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.048093405330882084
+      },
+      "status": "PASS",
+      "posedSha256": "5d0ae81a606f127ddcbe9a574f7cc31381f3ceb271979f8d1462c4aa5ffc8372"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1254.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 354.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.035718060661765236
+      },
+      "status": "PASS",
+      "posedSha256": "852a79771fcbef63aaab0a4c68121e12e33d615a79e550c1eba5d7ac89c259bc"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1254.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 354.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.035643956801470866
+      },
+      "status": "PASS",
+      "posedSha256": "e066f6f9fde0f13d7f47405ef6cdd0f8a8a4a190a179e6dca2d76fade3b280c9"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1237.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 337.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.02334271599264708
+      },
+      "status": "PASS",
+      "posedSha256": "8670aaf8afa04219632263301600a8d7d8b37acba6a4eadbc44dca87ca451e7e"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1220.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 320.8999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.01104147518382324
+      },
+      "status": "PASS",
+      "posedSha256": "985c9afde4ac4960ebcd1b395e3a54393d85ad73a22f727f3a440693bc8183da"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1220.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 320.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.01096737132352887
+      },
+      "status": "PASS",
+      "posedSha256": "bc5797ae51bf973ff5e71bc279fc6396cdad561b433b6e3b61b14a65b75fb867"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1204.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 304.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.22542394301470645
+      },
+      "status": "PASS",
+      "posedSha256": "cb85e228833a9b6d9b854d3d04040acec86ebf18daf299b9494cca88906d5883"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1204.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 304.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.22534983915441206
+      },
+      "status": "PASS",
+      "posedSha256": "793334dc0e19a1ff5fb885e5115d91db5a0702b48a1b8d22c49958726a10a333"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1187.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 287.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.21312270220588264
+      },
+      "status": "PASS",
+      "posedSha256": "310cee704d7aa521a93943a48710cac0e392ac927df4e8608b6dd8036411975a"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1187.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 287.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.21304859834558826
+      },
+      "status": "PASS",
+      "posedSha256": "afbe80c201fabffcbeeb86e31e543e5e9298b55a505281622489606cf5cd16f7"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1170.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 270.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20074735753676445
+      },
+      "status": "PASS",
+      "posedSha256": "d24066ae254e3993457f6276b776eb278cf083dc9243edbcd5c2ed7174100e26"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1170.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 270.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20067325367647007
+      },
+      "status": "PASS",
+      "posedSha256": "36f56b19506dd5305f71c13359795b841d7f2cc5b41ccaa77ac134cad031d78e"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1154.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 254.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18844611672794065
+      },
+      "status": "PASS",
+      "posedSha256": "5615bbcac44f448416e162e480312b43c497e93eceaedae8b7b3901088783f2d"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1154.199999999999,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 254.19999999999888,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18837201286764627
+      },
+      "status": "PASS",
+      "posedSha256": "39cd777b8ebc0dda98f50e2fb069470d1992ed6f3ea14587fd62536cbde41050"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1137.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 237.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.17599666819852944
+      },
+      "status": "PASS",
+      "posedSha256": "94d286891a31d041b3441dc703d9bba93c851700cf74e231f1fd14dbf92f1324"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1120.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 220.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1636954273897056
+      },
+      "status": "PASS",
+      "posedSha256": "755772b02289a5fb09f61c2b81439a4798029a63cfbae781bb311791729a73a7"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1120.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 220.79999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.16362132352941125
+      },
+      "status": "PASS",
+      "posedSha256": "3caaecf822573714d44363e43fbdb4a54388b09b1a9b761f4b3d5068e8260aa7"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1104.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 204.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.15139418658088183
+      },
+      "status": "PASS",
+      "posedSha256": "4a41c9a3d582d023cfbc02dfce6085283f6052e35b7574255e28ee116007431f"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1104.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 204.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1512459788602944
+      },
+      "status": "PASS",
+      "posedSha256": "180dd49629bb94dcb4e218f3e75a4c0514ad9132b266c8e770044e2ed36692b3"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1087.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 187.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13901884191176497
+      },
+      "status": "PASS",
+      "posedSha256": "3cc920e0af3f1b2795afee6e260f8f93f49cf3e774fdbaf02a47a66a5e0fa157"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1087.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 187.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13894473805147062
+      },
+      "status": "PASS",
+      "posedSha256": "0683450700446809e57a097f678936d95a679dd29b39005627ac56bd76f4c553"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1070.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 170.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.12664349724264679
+      },
+      "status": "PASS",
+      "posedSha256": "bd106c02378a1d1175f27114da57da80a46abc380210fa1934fae653c6f80864"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1070.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 170.79999999999924,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1265693933823524
+      },
+      "status": "PASS",
+      "posedSha256": "bd83f9698e56ad46c587b20cc65106d007e6e65efe45c7a47f8ca4f527d04652"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1054.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 154.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.11434225643382301
+      },
+      "status": "PASS",
+      "posedSha256": "2b1816a35e6d9c27e6874e7a31a3a324fcf63832385b1356cb07fa34726eb783"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1054.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 154.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.11419404871323557
+      },
+      "status": "PASS",
+      "posedSha256": "6fd6802a77d5a1d2fd121a38e35dcf57ff1359e8e620693eb4c2756677fd7803"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1037.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 137.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.10196691176470615
+      },
+      "status": "PASS",
+      "posedSha256": "7ce0e9fe1b9f5b2e582fe1686dd131c88b8984e81b1036761b77aeafb3c95fbd"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1037.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 137.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.10189280790441177
+      },
+      "status": "PASS",
+      "posedSha256": "e36763993c242f97ee9448bc927eb67d32b51af3f13017790cb0822af6239a0c"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1020.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 120.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08959156709558798
+      },
+      "status": "PASS",
+      "posedSha256": "fb383ad20ebe339e5a2b6ebdfcd4c52d1790fed336c52d748436a4e60c47e8a2"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1020.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 120.79999999999926,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08951746323529358
+      },
+      "status": "PASS",
+      "posedSha256": "977bd4d32e59a24d6daeca60b2696b525f2c883dfda788fd65d9b7e804d513e5"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1004.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 104.20000000000073,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07721622242647114
+      },
+      "status": "PASS",
+      "posedSha256": "9f1d717be8b8a7138279bd7e149d2dc0e80055f2e1edf550b05033579515dd0e"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 1004.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 104.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07714211856617674
+      },
+      "status": "PASS",
+      "posedSha256": "ac240bad124c13a38100a8d2f577706127e446cc0b558187bd5b761f17299fd9"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 987.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 87.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.06484087775735294
+      },
+      "status": "PASS",
+      "posedSha256": "b2375197980331828bec3801dadd899676f7a9ac4b7cd42f147363ddbfcf2cd0"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 970.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 70.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.052539636948529145
+      },
+      "status": "PASS",
+      "posedSha256": "356a6558b33905e0d3cc542d9672f3c0dcaa82bc151f3c1f8588233c44c5e450"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 970.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 70.79999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.05246553308823476
+      },
+      "status": "PASS",
+      "posedSha256": "42fce2b01ecf745a1d4ae6c214ecc85142bc95d9b1a03a8bd8dc930bc939f96f"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 954.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 54.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.04023839613970535
+      },
+      "status": "PASS",
+      "posedSha256": "7f081d261bc426161d34f43d409c87d3a2975a879f7594cf69d3ed63b955b0f5"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 954.1999999999989,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 54.19999999999891,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.04016429227941096
+      },
+      "status": "PASS",
+      "posedSha256": "c371933bd5c1698980d2e53bcaf0a541c70bdc3541b40644dff9b077eb6c1e48"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 937.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 37.600000000000364,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.027863051470588505
+      },
+      "status": "PASS",
+      "posedSha256": "c720e9f84bf5fadf632d7df75abee3616b1132f09d915eb08c3171defb53db94"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 937.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 37.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.02778894761029412
+      },
+      "status": "PASS",
+      "posedSha256": "267c011e2ba87f74c5f4bf9d8dbcb7a640a2a1e446a6e2316f116af53f639702"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 920.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 20.899999999999636,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.015487706801470321
+      },
+      "status": "PASS",
+      "posedSha256": "d4362d1cb4f5d9646a520ae5fbfd19f548ecb719e5370d41898c31bd7e243a49"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 920.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 20.799999999999272,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.015413602941175933
+      },
+      "status": "PASS",
+      "posedSha256": "8bdfa601da4474b0cfd6cf9b97fcc572dd471d2d407656fd76173dd0b231f73a"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 904.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 4.200000000000728,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.0031123621323534806
+      },
+      "status": "PASS",
+      "posedSha256": "b277ddbfa2d98849efb42517603e21deb31179279b43a5d1062ba8f385a912de"
+    },
+    {
+      "name": "painter",
+      "order": "reverse",
+      "ms": 904.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 4.100000000000364,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.0030382582720590934
+      },
+      "status": "PASS",
+      "posedSha256": "992a1c2f872f76b684f33aa95b0b2cfd39bed812d25cb763b8714b39267c0c92"
+    },
+    {
+      "name": "painter",
+      "order": "repeat",
+      "ms": 1504.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.220903607536765
+      },
+      "status": "REFUSE",
+      "code": "ARAP_FOLD",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    },
+    {
+      "name": "painter",
+      "order": "repeat",
+      "ms": 1504.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.220903607536765
+      },
+      "status": "REFUSE",
+      "code": "ARAP_FOLD",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    },
+    {
+      "name": "painter",
+      "order": "repeat",
+      "ms": 1504.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.220903607536765
+      },
+      "status": "REFUSE",
+      "code": "ARAP_FOLD",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 904.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 4.100000000000364,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.0030382582720590934
+      },
+      "status": "PASS",
+      "posedSha256": "992a1c2f872f76b684f33aa95b0b2cfd39bed812d25cb763b8714b39267c0c92"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 904.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 4.200000000000728,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.0031123621323534806
+      },
+      "status": "PASS",
+      "posedSha256": "b277ddbfa2d98849efb42517603e21deb31179279b43a5d1062ba8f385a912de"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 920.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 20.799999999999272,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.015413602941175933
+      },
+      "status": "PASS",
+      "posedSha256": "8bdfa601da4474b0cfd6cf9b97fcc572dd471d2d407656fd76173dd0b231f73a"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 920.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 20.899999999999636,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.015487706801470321
+      },
+      "status": "PASS",
+      "posedSha256": "d4362d1cb4f5d9646a520ae5fbfd19f548ecb719e5370d41898c31bd7e243a49"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 937.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 37.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.02778894761029412
+      },
+      "status": "PASS",
+      "posedSha256": "267c011e2ba87f74c5f4bf9d8dbcb7a640a2a1e446a6e2316f116af53f639702"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 937.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 37.600000000000364,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.027863051470588505
+      },
+      "status": "PASS",
+      "posedSha256": "c720e9f84bf5fadf632d7df75abee3616b1132f09d915eb08c3171defb53db94"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 954.1999999999989,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 54.19999999999891,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.04016429227941096
+      },
+      "status": "PASS",
+      "posedSha256": "c371933bd5c1698980d2e53bcaf0a541c70bdc3541b40644dff9b077eb6c1e48"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 954.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 54.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.04023839613970535
+      },
+      "status": "PASS",
+      "posedSha256": "7f081d261bc426161d34f43d409c87d3a2975a879f7594cf69d3ed63b955b0f5"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 970.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 70.79999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.05246553308823476
+      },
+      "status": "PASS",
+      "posedSha256": "42fce2b01ecf745a1d4ae6c214ecc85142bc95d9b1a03a8bd8dc930bc939f96f"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 970.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 70.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.052539636948529145
+      },
+      "status": "PASS",
+      "posedSha256": "356a6558b33905e0d3cc542d9672f3c0dcaa82bc151f3c1f8588233c44c5e450"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 987.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 87.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.06484087775735294
+      },
+      "status": "PASS",
+      "posedSha256": "b2375197980331828bec3801dadd899676f7a9ac4b7cd42f147363ddbfcf2cd0"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1004.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 104.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07714211856617674
+      },
+      "status": "PASS",
+      "posedSha256": "ac240bad124c13a38100a8d2f577706127e446cc0b558187bd5b761f17299fd9"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1004.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 104.20000000000073,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07721622242647114
+      },
+      "status": "PASS",
+      "posedSha256": "9f1d717be8b8a7138279bd7e149d2dc0e80055f2e1edf550b05033579515dd0e"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1020.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 120.79999999999926,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08951746323529358
+      },
+      "status": "PASS",
+      "posedSha256": "977bd4d32e59a24d6daeca60b2696b525f2c883dfda788fd65d9b7e804d513e5"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1020.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 120.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08959156709558798
+      },
+      "status": "PASS",
+      "posedSha256": "fb383ad20ebe339e5a2b6ebdfcd4c52d1790fed336c52d748436a4e60c47e8a2"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1037.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 137.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.10189280790441177
+      },
+      "status": "PASS",
+      "posedSha256": "e36763993c242f97ee9448bc927eb67d32b51af3f13017790cb0822af6239a0c"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1037.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 137.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.10196691176470615
+      },
+      "status": "PASS",
+      "posedSha256": "7ce0e9fe1b9f5b2e582fe1686dd131c88b8984e81b1036761b77aeafb3c95fbd"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1054.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 154.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.11419404871323557
+      },
+      "status": "PASS",
+      "posedSha256": "6fd6802a77d5a1d2fd121a38e35dcf57ff1359e8e620693eb4c2756677fd7803"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1054.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 154.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.11434225643382301
+      },
+      "status": "PASS",
+      "posedSha256": "2b1816a35e6d9c27e6874e7a31a3a324fcf63832385b1356cb07fa34726eb783"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1070.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 170.79999999999924,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1265693933823524
+      },
+      "status": "PASS",
+      "posedSha256": "bd83f9698e56ad46c587b20cc65106d007e6e65efe45c7a47f8ca4f527d04652"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1070.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 170.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.12664349724264679
+      },
+      "status": "PASS",
+      "posedSha256": "bd106c02378a1d1175f27114da57da80a46abc380210fa1934fae653c6f80864"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1087.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 187.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13894473805147062
+      },
+      "status": "PASS",
+      "posedSha256": "0683450700446809e57a097f678936d95a679dd29b39005627ac56bd76f4c553"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1087.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 187.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13901884191176497
+      },
+      "status": "PASS",
+      "posedSha256": "3cc920e0af3f1b2795afee6e260f8f93f49cf3e774fdbaf02a47a66a5e0fa157"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1104.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 204.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1512459788602944
+      },
+      "status": "PASS",
+      "posedSha256": "180dd49629bb94dcb4e218f3e75a4c0514ad9132b266c8e770044e2ed36692b3"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1104.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 204.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.15139418658088183
+      },
+      "status": "PASS",
+      "posedSha256": "4a41c9a3d582d023cfbc02dfce6085283f6052e35b7574255e28ee116007431f"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1120.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 220.79999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.16362132352941125
+      },
+      "status": "PASS",
+      "posedSha256": "3caaecf822573714d44363e43fbdb4a54388b09b1a9b761f4b3d5068e8260aa7"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1120.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 220.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1636954273897056
+      },
+      "status": "PASS",
+      "posedSha256": "755772b02289a5fb09f61c2b81439a4798029a63cfbae781bb311791729a73a7"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1137.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 237.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.17599666819852944
+      },
+      "status": "PASS",
+      "posedSha256": "94d286891a31d041b3441dc703d9bba93c851700cf74e231f1fd14dbf92f1324"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1154.199999999999,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 254.19999999999888,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18837201286764627
+      },
+      "status": "PASS",
+      "posedSha256": "39cd777b8ebc0dda98f50e2fb069470d1992ed6f3ea14587fd62536cbde41050"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1154.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 254.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18844611672794065
+      },
+      "status": "PASS",
+      "posedSha256": "5615bbcac44f448416e162e480312b43c497e93eceaedae8b7b3901088783f2d"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1170.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 270.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20067325367647007
+      },
+      "status": "PASS",
+      "posedSha256": "36f56b19506dd5305f71c13359795b841d7f2cc5b41ccaa77ac134cad031d78e"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1170.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 270.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20074735753676445
+      },
+      "status": "PASS",
+      "posedSha256": "d24066ae254e3993457f6276b776eb278cf083dc9243edbcd5c2ed7174100e26"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1187.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 287.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.21304859834558826
+      },
+      "status": "PASS",
+      "posedSha256": "afbe80c201fabffcbeeb86e31e543e5e9298b55a505281622489606cf5cd16f7"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1187.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 287.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.21312270220588264
+      },
+      "status": "PASS",
+      "posedSha256": "310cee704d7aa521a93943a48710cac0e392ac927df4e8608b6dd8036411975a"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1204.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 304.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.22534983915441206
+      },
+      "status": "PASS",
+      "posedSha256": "793334dc0e19a1ff5fb885e5115d91db5a0702b48a1b8d22c49958726a10a333"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1204.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 304.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.22542394301470645
+      },
+      "status": "PASS",
+      "posedSha256": "cb85e228833a9b6d9b854d3d04040acec86ebf18daf299b9494cca88906d5883"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1220.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 320.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.01096737132352887
+      },
+      "status": "PASS",
+      "posedSha256": "bc5797ae51bf973ff5e71bc279fc6396cdad561b433b6e3b61b14a65b75fb867"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1220.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 320.8999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.01104147518382324
+      },
+      "status": "PASS",
+      "posedSha256": "985c9afde4ac4960ebcd1b395e3a54393d85ad73a22f727f3a440693bc8183da"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1237.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 337.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.02334271599264708
+      },
+      "status": "PASS",
+      "posedSha256": "8670aaf8afa04219632263301600a8d7d8b37acba6a4eadbc44dca87ca451e7e"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1254.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 354.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.035643956801470866
+      },
+      "status": "PASS",
+      "posedSha256": "e066f6f9fde0f13d7f47405ef6cdd0f8a8a4a190a179e6dca2d76fade3b280c9"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1254.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 354.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.035718060661765236
+      },
+      "status": "PASS",
+      "posedSha256": "852a79771fcbef63aaab0a4c68121e12e33d615a79e550c1eba5d7ac89c259bc"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1270.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 370.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.048093405330882084
+      },
+      "status": "PASS",
+      "posedSha256": "5d0ae81a606f127ddcbe9a574f7cc31381f3ceb271979f8d1462c4aa5ffc8372"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1287.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 387.39999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.060320542279411506
+      },
+      "status": "PASS",
+      "posedSha256": "68529a1532bfa08be617dba1e1c39ad36f7477aac9d10922b93e8781a067551b"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1287.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 387.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.06046875000000029
+      },
+      "status": "PASS",
+      "posedSha256": "7adb0f4065416e8bdd63b13985f7877ef92c25dbbe446d97c11e865d6dffef18"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1304.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 404.1000000000003,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07269588694852966
+      },
+      "status": "PASS",
+      "posedSha256": "3201de20efd4adc4ba334a39ec0cee873f83a3e988a0991c298c0ab651e11158"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1304.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 404.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07276999080882408
+      },
+      "status": "PASS",
+      "posedSha256": "ef156873b040e0462394859c08d096654e84281a104156db41e7c0235f6eedbe"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1320.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 420.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08507123161764651
+      },
+      "status": "PASS",
+      "posedSha256": "5bdfdc01b62056bcf89d41bfbcb89881aaee322aa8892757abae5bb58d3a79a4"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1320.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 420.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08514533547794093
+      },
+      "status": "PASS",
+      "posedSha256": "11e9ab023bdbc1d270fffab33fb3c594f151853f47da490e90517f032e95a20e"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1337.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 437.3999999999997,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09737247242647035
+      },
+      "status": "PASS",
+      "posedSha256": "19f9ec3ed59d96c0938ee15c4853f56444ca89c099c5d900c9369c5386743055"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1337.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 437.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09744657628676472
+      },
+      "status": "PASS",
+      "posedSha256": "168984a140b9998fc1005dc018d7e9427224064040f1428b2e98afba8eef6b35"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1354.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 454.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1097478170955885
+      },
+      "status": "PASS",
+      "posedSha256": "b933853001f3862bb04a83a96be517e7dd0b1acdb2db8a10398cd2b056c9e8c8"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1354.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 454.20000000000067,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.10982192095588288
+      },
+      "status": "PASS",
+      "posedSha256": "e99a12949078dbc339ec5e91096cf234f4d092f1addb7a0b7eee8c154ca93740"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1370.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 470.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.12212316176470536
+      },
+      "status": "PASS",
+      "posedSha256": "e334863503c9e19ceac7405bc8fa7f7b8ab2bcc2189e9ee4aaa75402a6a6e485"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1370.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 470.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.12219726562499973
+      },
+      "status": "PASS",
+      "posedSha256": "046f78387282995e2d7ab893b055dfe16964f88989ac4f95a22ccfee7b0a48f3"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1387.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 487.39999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13442440257352914
+      },
+      "status": "PASS",
+      "posedSha256": "ed7e74576f722a0c39cb92762ee4fbbbf2a58f272e591f38a593e1cfe561ba2b"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1387.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 487.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13457261029411793
+      },
+      "status": "PASS",
+      "posedSha256": "999f7e519b8d56a3ccb1656096399eda1a209c8b501aba996d951c5af108a595"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1404.199999999999,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 504.1999999999989,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.14687385110294035
+      },
+      "status": "PASS",
+      "posedSha256": "e83f0913429e47bb7dbfc62565a1916949555aed54512036e14d07ae1416a4b6"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1404.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 504.2999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1469479549632348
+      },
+      "status": "PASS",
+      "posedSha256": "d415c5ec4650efecee7c1c2c1796d27f836a51306cfd0d2277fc43e7c6840710"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1420.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 520.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1591750919117642
+      },
+      "status": "PASS",
+      "posedSha256": "09a171e2b813ed934488442c171190b735a6683230a231d7f61f382f3e8c2879"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1420.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 520.8999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.15924919577205857
+      },
+      "status": "PASS",
+      "posedSha256": "3869b6e7bfb813f7058471542814099e47be46c6fec0b46745738d9c94d01adb"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1437.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 537.3999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.171476332720588
+      },
+      "status": "PASS",
+      "posedSha256": "3560874a148148ccaf07af3d5a325e0488b5770ffa361856c2715fbf3fd30f14"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1437.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 537.6000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.17162454044117673
+      },
+      "status": "PASS",
+      "posedSha256": "9ad6f310524c8ac435ce84b471d6381c21dc8723a6986be33533cf2a32244bfb"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1454.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 554.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18385167738970615
+      },
+      "status": "PASS",
+      "posedSha256": "42a0f009d6a69a5ea7cc921766b41e9cfb70ccda1673b8fb9e2f728d1ae51a46"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1454.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 554.2999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18399988511029358
+      },
+      "status": "PASS",
+      "posedSha256": "38c32e90fe78ae9718b264c5c71f742eee6ca07441818e3eab5b027d5caa98cf"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1470.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 570.8999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.19630112591911736
+      },
+      "status": "PASS",
+      "posedSha256": "c24ce70cb4405daf819f206df7a608aae678387acfe086dbc9c576da2b859ec0"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1487.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 587.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20860236672794122
+      },
+      "status": "PASS",
+      "posedSha256": "fdcceba02ad291450dfe2c06576f493d22b3f725127f40d4a2cecd17df5e2b58"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1487.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 587.6000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20867647058823557
+      },
+      "status": "PASS",
+      "posedSha256": "f241b3c0d5fc8f445709091c761f15dd202f3e6285aa111f16a1579aac183173"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1504.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.220903607536765
+      },
+      "status": "REFUSE",
+      "code": "ARAP_FOLD",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    },
+    {
+      "name": "finished",
+      "order": "forward",
+      "ms": 1504.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.22097771139705935
+      },
+      "status": "PASS",
+      "posedSha256": "dd92fa6d75523b267da60e442fe3763af52e9f1e1bad15a0c2e9bdaabd094417"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1504.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.22097771139705935
+      },
+      "status": "PASS",
+      "posedSha256": "dd92fa6d75523b267da60e442fe3763af52e9f1e1bad15a0c2e9bdaabd094417"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1504.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.220903607536765
+      },
+      "status": "REFUSE",
+      "code": "ARAP_FOLD",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1487.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 587.6000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20867647058823557
+      },
+      "status": "PASS",
+      "posedSha256": "f241b3c0d5fc8f445709091c761f15dd202f3e6285aa111f16a1579aac183173"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1487.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 587.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20860236672794122
+      },
+      "status": "PASS",
+      "posedSha256": "fdcceba02ad291450dfe2c06576f493d22b3f725127f40d4a2cecd17df5e2b58"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1470.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 570.8999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.19630112591911736
+      },
+      "status": "PASS",
+      "posedSha256": "c24ce70cb4405daf819f206df7a608aae678387acfe086dbc9c576da2b859ec0"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1454.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 554.2999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18399988511029358
+      },
+      "status": "PASS",
+      "posedSha256": "38c32e90fe78ae9718b264c5c71f742eee6ca07441818e3eab5b027d5caa98cf"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1454.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 554.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18385167738970615
+      },
+      "status": "PASS",
+      "posedSha256": "42a0f009d6a69a5ea7cc921766b41e9cfb70ccda1673b8fb9e2f728d1ae51a46"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1437.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 537.6000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.17162454044117673
+      },
+      "status": "PASS",
+      "posedSha256": "9ad6f310524c8ac435ce84b471d6381c21dc8723a6986be33533cf2a32244bfb"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1437.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 537.3999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.171476332720588
+      },
+      "status": "PASS",
+      "posedSha256": "3560874a148148ccaf07af3d5a325e0488b5770ffa361856c2715fbf3fd30f14"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1420.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 520.8999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.15924919577205857
+      },
+      "status": "PASS",
+      "posedSha256": "3869b6e7bfb813f7058471542814099e47be46c6fec0b46745738d9c94d01adb"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1420.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 520.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1591750919117642
+      },
+      "status": "PASS",
+      "posedSha256": "09a171e2b813ed934488442c171190b735a6683230a231d7f61f382f3e8c2879"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1404.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 504.2999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1469479549632348
+      },
+      "status": "PASS",
+      "posedSha256": "d415c5ec4650efecee7c1c2c1796d27f836a51306cfd0d2277fc43e7c6840710"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1404.199999999999,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 504.1999999999989,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.14687385110294035
+      },
+      "status": "PASS",
+      "posedSha256": "e83f0913429e47bb7dbfc62565a1916949555aed54512036e14d07ae1416a4b6"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1387.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 487.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13457261029411793
+      },
+      "status": "PASS",
+      "posedSha256": "999f7e519b8d56a3ccb1656096399eda1a209c8b501aba996d951c5af108a595"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1387.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 487.39999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13442440257352914
+      },
+      "status": "PASS",
+      "posedSha256": "ed7e74576f722a0c39cb92762ee4fbbbf2a58f272e591f38a593e1cfe561ba2b"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1370.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 470.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.12219726562499973
+      },
+      "status": "PASS",
+      "posedSha256": "046f78387282995e2d7ab893b055dfe16964f88989ac4f95a22ccfee7b0a48f3"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1370.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 470.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.12212316176470536
+      },
+      "status": "PASS",
+      "posedSha256": "e334863503c9e19ceac7405bc8fa7f7b8ab2bcc2189e9ee4aaa75402a6a6e485"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1354.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 454.20000000000067,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.10982192095588288
+      },
+      "status": "PASS",
+      "posedSha256": "e99a12949078dbc339ec5e91096cf234f4d092f1addb7a0b7eee8c154ca93740"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1354.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 454.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1097478170955885
+      },
+      "status": "PASS",
+      "posedSha256": "b933853001f3862bb04a83a96be517e7dd0b1acdb2db8a10398cd2b056c9e8c8"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1337.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 437.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09744657628676472
+      },
+      "status": "PASS",
+      "posedSha256": "168984a140b9998fc1005dc018d7e9427224064040f1428b2e98afba8eef6b35"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1337.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 437.3999999999997,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.09737247242647035
+      },
+      "status": "PASS",
+      "posedSha256": "19f9ec3ed59d96c0938ee15c4853f56444ca89c099c5d900c9369c5386743055"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1320.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 420.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08514533547794093
+      },
+      "status": "PASS",
+      "posedSha256": "11e9ab023bdbc1d270fffab33fb3c594f151853f47da490e90517f032e95a20e"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1320.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 420.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08507123161764651
+      },
+      "status": "PASS",
+      "posedSha256": "5bdfdc01b62056bcf89d41bfbcb89881aaee322aa8892757abae5bb58d3a79a4"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1304.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 404.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07276999080882408
+      },
+      "status": "PASS",
+      "posedSha256": "ef156873b040e0462394859c08d096654e84281a104156db41e7c0235f6eedbe"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1304.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 404.1000000000003,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07269588694852966
+      },
+      "status": "PASS",
+      "posedSha256": "3201de20efd4adc4ba334a39ec0cee873f83a3e988a0991c298c0ab651e11158"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1287.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 387.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.06046875000000029
+      },
+      "status": "PASS",
+      "posedSha256": "7adb0f4065416e8bdd63b13985f7877ef92c25dbbe446d97c11e865d6dffef18"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1287.3999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 387.39999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.060320542279411506
+      },
+      "status": "PASS",
+      "posedSha256": "68529a1532bfa08be617dba1e1c39ad36f7477aac9d10922b93e8781a067551b"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1270.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 370.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.048093405330882084
+      },
+      "status": "PASS",
+      "posedSha256": "5d0ae81a606f127ddcbe9a574f7cc31381f3ceb271979f8d1462c4aa5ffc8372"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1254.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 354.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.035718060661765236
+      },
+      "status": "PASS",
+      "posedSha256": "852a79771fcbef63aaab0a4c68121e12e33d615a79e550c1eba5d7ac89c259bc"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1254.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 354.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.035643956801470866
+      },
+      "status": "PASS",
+      "posedSha256": "e066f6f9fde0f13d7f47405ef6cdd0f8a8a4a190a179e6dca2d76fade3b280c9"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1237.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 337.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.02334271599264708
+      },
+      "status": "PASS",
+      "posedSha256": "8670aaf8afa04219632263301600a8d7d8b37acba6a4eadbc44dca87ca451e7e"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1220.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 320.8999999999996,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.01104147518382324
+      },
+      "status": "PASS",
+      "posedSha256": "985c9afde4ac4960ebcd1b395e3a54393d85ad73a22f727f3a440693bc8183da"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1220.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 320.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.01096737132352887
+      },
+      "status": "PASS",
+      "posedSha256": "bc5797ae51bf973ff5e71bc279fc6396cdad561b433b6e3b61b14a65b75fb867"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1204.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 304.2000000000007,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.22542394301470645
+      },
+      "status": "PASS",
+      "posedSha256": "cb85e228833a9b6d9b854d3d04040acec86ebf18daf299b9494cca88906d5883"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1204.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 304.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.22534983915441206
+      },
+      "status": "PASS",
+      "posedSha256": "793334dc0e19a1ff5fb885e5115d91db5a0702b48a1b8d22c49958726a10a333"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1187.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 287.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.21312270220588264
+      },
+      "status": "PASS",
+      "posedSha256": "310cee704d7aa521a93943a48710cac0e392ac927df4e8608b6dd8036411975a"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1187.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 287.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.21304859834558826
+      },
+      "status": "PASS",
+      "posedSha256": "afbe80c201fabffcbeeb86e31e543e5e9298b55a505281622489606cf5cd16f7"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1170.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 270.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20074735753676445
+      },
+      "status": "PASS",
+      "posedSha256": "d24066ae254e3993457f6276b776eb278cf083dc9243edbcd5c2ed7174100e26"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1170.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 270.7999999999993,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.20067325367647007
+      },
+      "status": "PASS",
+      "posedSha256": "36f56b19506dd5305f71c13359795b841d7f2cc5b41ccaa77ac134cad031d78e"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1154.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 254.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18844611672794065
+      },
+      "status": "PASS",
+      "posedSha256": "5615bbcac44f448416e162e480312b43c497e93eceaedae8b7b3901088783f2d"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1154.199999999999,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 254.19999999999888,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.18837201286764627
+      },
+      "status": "PASS",
+      "posedSha256": "39cd777b8ebc0dda98f50e2fb069470d1992ed6f3ea14587fd62536cbde41050"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1137.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 237.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.17599666819852944
+      },
+      "status": "PASS",
+      "posedSha256": "94d286891a31d041b3441dc703d9bba93c851700cf74e231f1fd14dbf92f1324"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1120.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 220.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1636954273897056
+      },
+      "status": "PASS",
+      "posedSha256": "755772b02289a5fb09f61c2b81439a4798029a63cfbae781bb311791729a73a7"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1120.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 220.79999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.16362132352941125
+      },
+      "status": "PASS",
+      "posedSha256": "3caaecf822573714d44363e43fbdb4a54388b09b1a9b761f4b3d5068e8260aa7"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1104.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 204.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.15139418658088183
+      },
+      "status": "PASS",
+      "posedSha256": "4a41c9a3d582d023cfbc02dfce6085283f6052e35b7574255e28ee116007431f"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1104.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 204.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1512459788602944
+      },
+      "status": "PASS",
+      "posedSha256": "180dd49629bb94dcb4e218f3e75a4c0514ad9132b266c8e770044e2ed36692b3"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1087.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 187.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13901884191176497
+      },
+      "status": "PASS",
+      "posedSha256": "3cc920e0af3f1b2795afee6e260f8f93f49cf3e774fdbaf02a47a66a5e0fa157"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1087.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 187.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.13894473805147062
+      },
+      "status": "PASS",
+      "posedSha256": "0683450700446809e57a097f678936d95a679dd29b39005627ac56bd76f4c553"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1070.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 170.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.12664349724264679
+      },
+      "status": "PASS",
+      "posedSha256": "bd106c02378a1d1175f27114da57da80a46abc380210fa1934fae653c6f80864"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1070.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 170.79999999999924,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.1265693933823524
+      },
+      "status": "PASS",
+      "posedSha256": "bd83f9698e56ad46c587b20cc65106d007e6e65efe45c7a47f8ca4f527d04652"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1054.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 154.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.11434225643382301
+      },
+      "status": "PASS",
+      "posedSha256": "2b1816a35e6d9c27e6874e7a31a3a324fcf63832385b1356cb07fa34726eb783"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1054.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 154.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.11419404871323557
+      },
+      "status": "PASS",
+      "posedSha256": "6fd6802a77d5a1d2fd121a38e35dcf57ff1359e8e620693eb4c2756677fd7803"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1037.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 137.60000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.10196691176470615
+      },
+      "status": "PASS",
+      "posedSha256": "7ce0e9fe1b9f5b2e582fe1686dd131c88b8984e81b1036761b77aeafb3c95fbd"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1037.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 137.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.10189280790441177
+      },
+      "status": "PASS",
+      "posedSha256": "e36763993c242f97ee9448bc927eb67d32b51af3f13017790cb0822af6239a0c"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1020.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 120.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08959156709558798
+      },
+      "status": "PASS",
+      "posedSha256": "fb383ad20ebe339e5a2b6ebdfcd4c52d1790fed336c52d748436a4e60c47e8a2"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1020.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 120.79999999999926,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.08951746323529358
+      },
+      "status": "PASS",
+      "posedSha256": "977bd4d32e59a24d6daeca60b2696b525f2c883dfda788fd65d9b7e804d513e5"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1004.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 104.20000000000073,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07721622242647114
+      },
+      "status": "PASS",
+      "posedSha256": "9f1d717be8b8a7138279bd7e149d2dc0e80055f2e1edf550b05033579515dd0e"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 1004.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 104.10000000000036,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.07714211856617674
+      },
+      "status": "PASS",
+      "posedSha256": "ac240bad124c13a38100a8d2f577706127e446cc0b558187bd5b761f17299fd9"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 987.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 87.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.06484087775735294
+      },
+      "status": "PASS",
+      "posedSha256": "b2375197980331828bec3801dadd899676f7a9ac4b7cd42f147363ddbfcf2cd0"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 970.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 70.89999999999964,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.052539636948529145
+      },
+      "status": "PASS",
+      "posedSha256": "356a6558b33905e0d3cc542d9672f3c0dcaa82bc151f3c1f8588233c44c5e450"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 970.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 70.79999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.05246553308823476
+      },
+      "status": "PASS",
+      "posedSha256": "42fce2b01ecf745a1d4ae6c214ecc85142bc95d9b1a03a8bd8dc930bc939f96f"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 954.2999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 54.29999999999927,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.04023839613970535
+      },
+      "status": "PASS",
+      "posedSha256": "7f081d261bc426161d34f43d409c87d3a2975a879f7594cf69d3ed63b955b0f5"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 954.1999999999989,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 54.19999999999891,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.04016429227941096
+      },
+      "status": "PASS",
+      "posedSha256": "c371933bd5c1698980d2e53bcaf0a541c70bdc3541b40644dff9b077eb6c1e48"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 937.6000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 37.600000000000364,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.027863051470588505
+      },
+      "status": "PASS",
+      "posedSha256": "c720e9f84bf5fadf632d7df75abee3616b1132f09d915eb08c3171defb53db94"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 937.5,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 37.5,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.02778894761029412
+      },
+      "status": "PASS",
+      "posedSha256": "267c011e2ba87f74c5f4bf9d8dbcb7a640a2a1e446a6e2316f116af53f639702"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 920.8999999999996,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 20.899999999999636,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.015487706801470321
+      },
+      "status": "PASS",
+      "posedSha256": "d4362d1cb4f5d9646a520ae5fbfd19f548ecb719e5370d41898c31bd7e243a49"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 920.7999999999993,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 20.799999999999272,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.015413602941175933
+      },
+      "status": "PASS",
+      "posedSha256": "8bdfa601da4474b0cfd6cf9b97fcc572dd471d2d407656fd76173dd0b231f73a"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 904.2000000000007,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 4.200000000000728,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.0031123621323534806
+      },
+      "status": "PASS",
+      "posedSha256": "b277ddbfa2d98849efb42517603e21deb31179279b43a5d1062ba8f385a912de"
+    },
+    {
+      "name": "finished",
+      "order": "reverse",
+      "ms": 904.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 4.100000000000364,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.0030382582720590934
+      },
+      "status": "PASS",
+      "posedSha256": "992a1c2f872f76b684f33aa95b0b2cfd39bed812d25cb763b8714b39267c0c92"
+    },
+    {
+      "name": "finished",
+      "order": "repeat",
+      "ms": 1504.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.220903607536765
+      },
+      "status": "REFUSE",
+      "code": "ARAP_FOLD",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    },
+    {
+      "name": "finished",
+      "order": "repeat",
+      "ms": 1504.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.220903607536765
+      },
+      "status": "REFUSE",
+      "code": "ARAP_FOLD",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    },
+    {
+      "name": "finished",
+      "order": "repeat",
+      "ms": 1504.1000000000004,
+      "context": {
+        "actionId": "approach:walk",
+        "elapsedMs": 604.1000000000004,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.220903607536765
+      },
+      "status": "REFUSE",
+      "code": "ARAP_FOLD",
+      "error": "ARAP skin: unresolved folded triangles: 3"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/07-bittern/report.json",
+      "sha256": "b202c6d56b83eecb65967aef99d26a029bc7ec3b25ebeedfcb0d848915a2b555"
+    },
+    {
+      "path": "audits/AI_FINISH_C211_20261002/native-01/07-bittern/report.json",
+      "sha256": "2262fbf4e65b2a0aba2e91ee40672d2acadd9fb9b27dd8fc780f4798758b69ff"
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/painter-input/record.json",
+      "sha256": "1d8266aff4cac0d555a8974b651d69d0f0b3a4cdfdb9a643e0b8cbe44ac057d3"
+    },
+    {
+      "path": "audits/C183_BITTERN_FOLD_20261002/painter-input/binding.json",
+      "sha256": "a474aed551b4a23551f27d8c0533d2dbade00ce317d94dfd2d6470351ae13d0f"
+    },
+    {
+      "path": "audits/AI_FINISH_C211_20261002/rebound-01/07-bittern/record.json",
+      "sha256": "1d8266aff4cac0d555a8974b651d69d0f0b3a4cdfdb9a643e0b8cbe44ac057d3"
+    },
+    {
+      "path": "audits/AI_FINISH_C211_20261002/rebound-01/07-bittern/binding.json",
+      "sha256": "502a431bbdb55fd41aee493e378e4d0add544dc4ff94d982c5e20caff5c6fa1a"
+    }
+  ],
+  "scope": "Browser-free exact pose/publication replay; no native retry, no allowance or source change. Passing film may miss a narrow deterministic refusal interval."
+}

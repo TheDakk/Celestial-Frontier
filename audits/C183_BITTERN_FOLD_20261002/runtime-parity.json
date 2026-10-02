@@ -1,0 +1,125 @@
+{
+  "schema": "cf.c183-bittern-runtime-parity/v1",
+  "status": "PASS_DIAGNOSIS",
+  "scope": "Actual loaded CreatureRig using painter and finished atlas RGBA; CPU publication, no browser/native retry.",
+  "textureIndependent": true,
+  "refusalAtomic": true,
+  "rows": [
+    {
+      "name": "painter",
+      "ms": 1504.2000000000007,
+      "status": "PASS",
+      "posedSha256": "dd92fa6d75523b267da60e442fe3763af52e9f1e1bad15a0c2e9bdaabd094417"
+    },
+    {
+      "name": "painter",
+      "ms": 1487.6000000000004,
+      "status": "PASS",
+      "posedSha256": "f241b3c0d5fc8f445709091c761f15dd202f3e6285aa111f16a1579aac183173"
+    },
+    {
+      "name": "painter",
+      "ms": 1504.1000000000004,
+      "status": "REFUSE",
+      "error": "ARAP skin: unresolved folded triangles: 3",
+      "previousPublicationUnchanged": true
+    },
+    {
+      "name": "painter",
+      "ms": 1487.6000000000004,
+      "status": "PASS",
+      "posedSha256": "f241b3c0d5fc8f445709091c761f15dd202f3e6285aa111f16a1579aac183173"
+    },
+    {
+      "name": "painter",
+      "ms": 1504.2000000000007,
+      "status": "PASS",
+      "posedSha256": "dd92fa6d75523b267da60e442fe3763af52e9f1e1bad15a0c2e9bdaabd094417"
+    },
+    {
+      "name": "painter",
+      "ms": 1504.1000000000004,
+      "status": "REFUSE",
+      "error": "ARAP skin: unresolved folded triangles: 3",
+      "previousPublicationUnchanged": true
+    },
+    {
+      "name": "painter",
+      "ms": 1504.1000000000004,
+      "status": "REFUSE",
+      "error": "ARAP skin: unresolved folded triangles: 3",
+      "previousPublicationUnchanged": true
+    },
+    {
+      "name": "finished",
+      "ms": 1504.2000000000007,
+      "status": "PASS",
+      "posedSha256": "dd92fa6d75523b267da60e442fe3763af52e9f1e1bad15a0c2e9bdaabd094417"
+    },
+    {
+      "name": "finished",
+      "ms": 1487.6000000000004,
+      "status": "PASS",
+      "posedSha256": "f241b3c0d5fc8f445709091c761f15dd202f3e6285aa111f16a1579aac183173"
+    },
+    {
+      "name": "finished",
+      "ms": 1504.1000000000004,
+      "status": "REFUSE",
+      "error": "ARAP skin: unresolved folded triangles: 3",
+      "previousPublicationUnchanged": true
+    },
+    {
+      "name": "finished",
+      "ms": 1487.6000000000004,
+      "status": "PASS",
+      "posedSha256": "f241b3c0d5fc8f445709091c761f15dd202f3e6285aa111f16a1579aac183173"
+    },
+    {
+      "name": "finished",
+      "ms": 1504.2000000000007,
+      "status": "PASS",
+      "posedSha256": "dd92fa6d75523b267da60e442fe3763af52e9f1e1bad15a0c2e9bdaabd094417"
+    },
+    {
+      "name": "finished",
+      "ms": 1504.1000000000004,
+      "status": "REFUSE",
+      "error": "ARAP skin: unresolved folded triangles: 3",
+      "previousPublicationUnchanged": true
+    },
+    {
+      "name": "finished",
+      "ms": 1504.1000000000004,
+      "status": "REFUSE",
+      "error": "ARAP skin: unresolved folded triangles: 3",
+      "previousPublicationUnchanged": true
+    }
+  ],
+  "inputs": [
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/07-bittern/fit/parts/keyed.png",
+      "sha256": "c362dca562341be8e6becba1797d33b513a7906792bee4814d8edf32e50cb2d7"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/07-bittern/fit/parts/atlas/07-bittern.png",
+      "sha256": "ad158c55387c717a4f217f97cbfce574ba9a05554a36a26c47d9d42930b3680a"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/07-bittern/packet/master.png",
+      "sha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/AI_FINISH_C211_20261002/rebound-01/07-bittern/parts/keyed.png",
+      "sha256": "f3773f62ca659dbd5bf3b97243693786c7296a9bee0c0272c4d42fa2d0a29695"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/AI_FINISH_C211_20261002/rebound-01/07-bittern/parts/atlas/07-bittern.png",
+      "sha256": "c3815313c9c70ed740c158998a880eb8365662b20d3a339ef974dc381f687b6b"
+    },
+    {
+      "path": "~/Projects/celestial-frontier-anthropic-mac/audits/G1_AUTO_AUTHOR_20260926/auto-g2c211/07-bittern/packet/master.png",
+      "sha256": "21a3fbd390aa3c21e671e95b84d055d639adc2e6410b0432ce082f86e2a83d6c"
+    }
+  ]
+}
