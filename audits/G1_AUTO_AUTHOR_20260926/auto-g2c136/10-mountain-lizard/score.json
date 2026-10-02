@@ -1,0 +1,10 @@
+{
+ "id": "10-mountain-lizard",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail3 (tail3) covers 3% paint (reference 10%)",
+  "missing-anatomy: part tail2 (tail2) covers 8% paint (reference 14%)"
+ ],
+ "semanticPresence": null
+}

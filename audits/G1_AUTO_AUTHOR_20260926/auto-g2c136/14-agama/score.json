@@ -1,0 +1,10 @@
+{
+ "id": "14-agama",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+  "missing-anatomy: part tail3 (tail3) covers 6% paint (reference 10%)"
+ ],
+ "semanticPresence": null
+}

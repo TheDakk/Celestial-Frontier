@@ -1,0 +1,229 @@
+{
+  "schema": "cf.g1-remainder-islands/v1",
+  "sourceFit": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c136/22-horned-lizard/fit",
+  "sourceMasterSha256": "436fa9c4674658a73ae49046439dfcf747c8640f894c24dee43ddf9c0388875e",
+  "keyedRgbaSha256": "df3312c150b36d86029e0ac7db89119220202e5e81dd41cdc7b26399256f3444",
+  "remainder": "spine",
+  "remainderPixels": 11878,
+  "movedPixels": 942,
+  "islands": [
+    {
+      "pixels": 1,
+      "to": "head",
+      "border": {
+        "head": 1
+      }
+    },
+    {
+      "pixels": 22,
+      "to": "ear-far-tip",
+      "border": {
+        "ear-far-tip": 3
+      }
+    },
+    {
+      "pixels": 86,
+      "to": "ear-near-tip",
+      "border": {
+        "ear-near-tip": 19
+      }
+    },
+    {
+      "pixels": 77,
+      "to": "hind-near-root",
+      "border": {
+        "hind-near-root": 22,
+        "tail0": 10
+      }
+    },
+    {
+      "pixels": 162,
+      "to": "fore-far-root",
+      "border": {
+        "fore-far-root": 33,
+        "jaw": 14
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "tail1",
+      "border": {
+        "tail1": 2
+      }
+    },
+    {
+      "pixels": 42,
+      "to": "tail2",
+      "border": {
+        "tail2": 26,
+        "tail1": 26
+      }
+    },
+    {
+      "pixels": 6,
+      "to": "fore-far-knee",
+      "border": {
+        "fore-far-knee": 4,
+        "fore-far-root": 3
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-far-knee",
+      "border": {
+        "fore-far-knee": 2
+      }
+    },
+    {
+      "pixels": 67,
+      "to": "fore-near-root",
+      "border": {
+        "fore-near-knee": 7,
+        "fore-near-root": 20,
+        "fore-far-knee": 16
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-knee",
+      "border": {
+        "fore-near-knee": 2
+      }
+    },
+    {
+      "pixels": 1,
+      "to": "fore-near-knee",
+      "border": {
+        "fore-near-knee": 1,
+        "fore-far-ankle": 1
+      }
+    },
+    {
+      "pixels": 30,
+      "to": "hind-far-ankle",
+      "border": {
+        "hind-far-ankle": 13,
+        "hind-far-paw": 1,
+        "hind-far-knee": 9
+      }
+    },
+    {
+      "pixels": 207,
+      "to": "fore-far-ankle",
+      "border": {
+        "fore-near-ankle": 23,
+        "fore-near-paw": 29,
+        "fore-near-knee": 32,
+        "fore-far-ankle": 50
+      }
+    },
+    {
+      "pixels": 4,
+      "to": "hind-far-ankle",
+      "border": {
+        "hind-far-ankle": 4,
+        "hind-far-paw": 1
+      }
+    },
+    {
+      "pixels": 118,
+      "to": "hind-near-ankle",
+      "border": {
+        "hind-near-ankle": 37,
+        "hind-near-paw": 5
+      }
+    },
+    {
+      "pixels": 2,
+      "to": "hind-near-ankle",
+      "border": {
+        "hind-near-ankle": 3,
+        "hind-near-paw": 3
+      }
+    },
+    {
+      "pixels": 111,
+      "to": "fore-far-ankle",
+      "border": {
+        "fore-near-paw": 10,
+        "fore-far-ankle": 15,
+        "fore-far-paw": 11
+      }
+    },
+    {
+      "pixels": 1,
+      "to": null,
+      "border": {}
+    }
+  ],
+  "ownershipMismatch": 0,
+  "conservationErrors": 0,
+  "sourceRgbaChanges": 0,
+  "placementOnly": true,
+  "verdictChanged": false,
+  "rule": "each 8-connected remainder component other than the largest goes to the neighbour owner with the longest 4-border; > 5% refuses",
+  "intake": {
+    "id": "22-horned-lizard",
+    "parts": 31,
+    "atlasSize": {
+      "width": 833,
+      "height": 306
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "split": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 14,
+        "distancePx": 7.665507158694678,
+        "supports": [
+          221
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 13,
+        "distancePx": 3.1016124838542285,
+        "supports": [
+          282
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 24,
+        "distancePx": 7.03420215802757,
+        "supports": [
+          16
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 6,
+        "distancePx": 3.2756678708318963,
+        "supports": [
+          119
+        ]
+      }
+    ],
+    "sourceBindingHash": "53793cd6f824ac6f75b6ac85e1d4bdd32e07a64e76cd3c35968091b8c3281d49",
+    "sourceVertices": 400,
+    "vertices": 525,
+    "sharedSupports": 224,
+    "pins": 36,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 34,
+    "excludedOverlaps": 16,
+    "observedExcludedBoundaries": 16,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 16,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}
