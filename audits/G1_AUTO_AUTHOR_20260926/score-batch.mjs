@@ -2,6 +2,7 @@
  * review sheet + full-size crops → gallery registry. Replaces the dozen hand steps of sessions 4–5 (and their zsh traps).
  * Usage (repo root; native needs the real browser, so run OUT of the sandbox):
  *   node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir-with-pilot.json> <tag> [--no-native] [--fish-seams]
+ *   optional (2026-10-02): --extra-refs=<pool json> replaces the default reference pool; --reviewed-presence=<json> is passed to run-auto
  * Writes: pilots/<tag>-eligible.json, auto-<tag>/ (runner), native-<tag>/ (scripts, films, stills, sheets, summary.json), and appends
  * every native PASS to gallery-registry.json (entries are data; the gallery notes start as "unreviewed" until Claude looks). */
 import fs from 'node:fs'; import path from 'node:path'; import { spawnSync } from 'node:child_process';
@@ -15,7 +16,7 @@ for (const p of pilot) { let st = 'MISSING'; for (const n of ['pattern-check.jso
   (st === 'PASS' || st === 'NOT_REQUIRED' ? eligible : skipped).push(st === 'PASS' || st === 'NOT_REQUIRED' ? p : { id: p.id, pattern: st }); }
 const pilotOut = path.join(HERE, 'pilots', `${tag}-eligible.json`); fs.writeFileSync(pilotOut, JSON.stringify(eligible, null, 1) + '\n');
 /* 2. author + intake + static (standard flags; the serpent strip and shared-joint merge apply only where they belong) */
-const auth = run(process.execPath, [path.join(HERE, 'run-auto.mjs'), `--tag=${tag}`, '--topk=1', '--chains', '--counter', '--fallback=2', '--serpent-strips', '--merge-joint-labels', '--extra-refs=audits/G1_AUTO_AUTHOR_20260926/pilots/reference-pool-extras.json', `--targets=${rel(pilotOut)}`], { timeout: 6 * 3600e3 });
+const auth = run(process.execPath, [path.join(HERE, 'run-auto.mjs'), `--tag=${tag}`, '--topk=1', '--chains', '--counter', '--fallback=2', '--serpent-strips', '--merge-joint-labels', (flags.find((f) => f.startsWith('--extra-refs=')) ?? '--extra-refs=audits/G1_AUTO_AUTHOR_20260926/pilots/reference-pool-extras.json'), ...flags.filter((f) => f.startsWith('--reviewed-presence=')), `--targets=${rel(pilotOut)}`], { timeout: 6 * 3600e3 });
 const rows = eligible.map((p) => { const f = path.join(HERE, `auto-${tag}`, p.id, 'score.json'); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : { id: p.id, verdict: 'NO_SCORE' }; });
 /* 3. native on every ADMIT + PASS_STATIC, sequentially (one browser at a time) */
 const N = path.join(HERE, `native-${tag}`); fs.mkdirSync(N, { recursive: true });
