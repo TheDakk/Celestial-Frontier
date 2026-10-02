@@ -1,0 +1,16 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "crystalsteppe-v2",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-far.png",
+    "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-mid.png",
+    "audits/C132_ARENAS_20261001/crystalsteppe-v2/arena-near.png"
+  ],
+  "findings": [
+    "All originals and native1672\u00d7941 composition inspected. The repaired FAR removes unsupported celestial bodies, leaving a neutral clouded sky and distant crystals. Both static stands remain clear.",
+    "Dense crystal/grass/rock detail repeats across FAR and MID; small green/mauve edge remnants remain near low terrain silhouettes. NEAR has a discernible horizontal texture boundary.",
+    "The static composition is mechanically admissible, but independent full-size scoring and moving creature readability are untested; quality remains held."
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "saltpan-r2",
+  "biome": "saltpan",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "saltpan"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "saltpan"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "saltpan"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-far.generation.json",
+      "sha256": "0da4bfc2489ba2344e187480c55cc2f8c3a9c59ae401a91da5071062f6542b11"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-mid.generation.json",
+      "sha256": "af4a793aa3a20e65311821c8b5d304dd55eb1ff6188172b8f48480822b48f40f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-near.generation.json",
+      "sha256": "4966489f4d8cb865ff0c67d9737bfe1eb46c847b8c7cab6c00a5ea7c2ee47cc0"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-composed-review.png",
+      "sha256": "5b0f2c320216157cf94b6216e0c86be1c10c233a34be628c9ba23179008aff35"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-plates-review.png",
+      "sha256": "59f9d07476867e24d6059ceb7aecd50dea87ccaab31b5170c8354e3627c3e2ce"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-far.png",
+      "sha256": "96d7803cdb5c0af891c22f0b51b4a594128b0145abbe24410cd677bb5ad6c18d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-mid.png",
+      "sha256": "1b85a197e68630b682d77ad91e7f73bc5a211589087d3c43b615f6a268b05582"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-near.png",
+      "sha256": "b3285c4ede281fd16e1b42ca3e15d1392d5673e4cc3f291dd9c13605e7927152"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/visual-notes.d29.json",
+      "sha256": "ea21060ae07231341c21b8a74b11e183e5c6b43b5e89759d2a300b7f68062221"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-manifest.json",
+      "sha256": "89889cbde731dfdf8f58f528477da91f14fcb9dba066afc80fffae09f71c651f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-recipe.json",
+      "sha256": "d641691da460d366b1e4ea9d87429182f27f86420a2a3bbfcc49343056cc4582"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-far.generation.json",
+      "sha256": "0da4bfc2489ba2344e187480c55cc2f8c3a9c59ae401a91da5071062f6542b11"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan/arena-far.prompt.txt",
+      "sha256": "1f241d7e5b97990148d2cfc34fe5e82629c22face2442cef9b03175af5b9db2a"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-mid.generation.json",
+      "sha256": "af4a793aa3a20e65311821c8b5d304dd55eb1ff6188172b8f48480822b48f40f"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan/arena-mid.prompt.txt",
+      "sha256": "4a9c878866f979aec4633d8b8adf3421c9910e0bd8c9950f8da0c7def4976aef"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/keyed/arena-mid.png",
+      "sha256": "05eae18de70e397c037a53fba87faf6210a01a6fdcf508b552414b0a0ca0df11"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-near.generation.json",
+      "sha256": "4966489f4d8cb865ff0c67d9737bfe1eb46c847b8c7cab6c00a5ea7c2ee47cc0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/arena-near-correction.prompt.txt",
+      "sha256": "d8be8dff423d5389639437e66d7d6007622cdd1d721d80d5cbc851debddd1fc1"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltpan-r2/keyed/arena-near.png",
+      "sha256": "da940dda33cc225e7758bb2096628f72b84704dc15512ecb4a90ce8de6ebc506"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/saltpan-r2/visual-notes.d29.json",
+    "findings": [
+      "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. White salt crust and reflective brine have coherent material, while the flat runway and two stands remain unobstructed.",
+      "MID introduces a second miniature mountain horizon across the already complete FAR lake, producing an obvious pasted horizontal ridge. NEAR adds a bright salt-texture strip at the lower edge with another scale transition. White creatures and effects still need contrast scoring.",
+      "The predecessor saltpan intake refused a 1672 by 940 NEAR against 1672 by 941 FAR/MID. This additive successor reuses FAR/MID original bytes without alteration and supplies a newly generated native 1672 by 941 NEAR. Prior refusal and originals are retained; no crop or upscale."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}

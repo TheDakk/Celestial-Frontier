@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "hotglow",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/hotglow/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/hotglow/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/hotglow/arena-far.png",
+    "audits/C132_ARENAS_20261001/hotglow/arena-mid.png",
+    "audits/C132_ARENAS_20261001/hotglow/arena-near.png"
+  ],
+  "findings": [
+    "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Amber cloud banks and a broad shared band provide the intended hot-glow material without fauna.",
+    "MID has conspicuous purple/magenta tint along the cloud rim and broad cloud faces near both sides. MID and NEAR create hard horizontal cloud shelves with independent scale and illumination, making the composition visibly layered. These remain visual holds despite the mechanical key result.",
+    "Selected FAR removes the invented planet and moon; that predecessor is retained. Intense orange light and cloud support need authoring/runtime review. No physical-medium admission, native proof or quality acceptance is claimed."
+  ]
+}

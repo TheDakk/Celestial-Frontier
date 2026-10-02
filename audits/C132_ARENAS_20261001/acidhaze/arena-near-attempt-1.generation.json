@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-generation-original/v1",
+  "generator": "built-in image_gen",
+  "inputReference": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+  "sourceToolOutput": "~/.codex/generated_images/01a0faa5-eccb-7122-96ef-b1b7ba59f67a/exec-d53882c1-91f7-436b-905a-20de3ddddf67.png",
+  "sourceSha256": "c34b1e105dddd169d406aa0866f357b88d55e22c4f136cccf765b0f1072e1f42",
+  "retainedMaster": "audits/C132_ARENAS_20261001/acidhaze/arena-near-attempt-1.png",
+  "retainedSha256": "c34b1e105dddd169d406aa0866f357b88d55e22c4f136cccf765b0f1072e1f42",
+  "bytes": 1206968,
+  "prompt": {
+    "path": "audits/C132_ARENAS_20261001/acidhaze/arena-near.prompt.txt",
+    "sha256": "f1fa0d67dab37b7bbf2a53570bed1b39744ec06ddab22d7165a4c641cb0d06c7"
+  },
+  "status": "REJECTED_WRONG_ASPECT",
+  "qualityAccepted": false,
+  "originalPixelsModified": false
+}

@@ -1,0 +1,289 @@
+{
+  "schema": "cf.c132-arena-effects-agent-batch/v1",
+  "date": "2026-10-02",
+  "source": "8d69e67bfe7c45a2f8cffc9a5c4ec7f4fafe4af0",
+  "status": "FOUR_MECHANICAL_CANDIDATES_VISUAL_REVIEW_HELD",
+  "newTriplets": 4,
+  "selectedNewOriginals": 12,
+  "retainedUniqueOriginals": 15,
+  "reusedOriginalCopies": 0,
+  "upscaled": false,
+  "originalPixelsModified": false,
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeRun": false,
+  "validation": {
+    "masterAndRuntimeCandidatePasses": 8,
+    "falseAcceptanceRegistrationRefusals": 4,
+    "sourceAndInputHashesChecked": 80,
+    "generationReceiptAndOriginalToolHashesChecked": 15,
+    "selectedNativeCanvas": [
+      1672,
+      941
+    ],
+    "subjectOnlyCorrectionsVerified": 3,
+    "privacyRecordsChecked": 50
+  },
+  "runtimeBytes": 23265410,
+  "packBudgetAdmission": "HELD: additive delivery only; current aggregate arena PNG pack exceeds the unchanged 128MiB cap. No original/registry/budget change.",
+  "diskFreeGiBAtCompletion": 154.5,
+  "rows": [
+    {
+      "id": "emberfield",
+      "biome": "emberfield",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "review": "audits/C132_ARENAS_20261001/emberfield/d29/delivery-review.json",
+      "reviewSha256": "79161f7b9b3bc6dc8f2e36a7d7ced31dfcb1272ccc0c4dc6566edd3f5359e2b0",
+      "manifest": "audits/C132_ARENAS_20261001/emberfield/d29/delivery.pending.json",
+      "manifestSha256": "9a8b95fca3cc5708b1e4e71ddef8e30bb9ba2a0d7d3972eae5052d7f27537697",
+      "notes": "audits/C132_ARENAS_20261001/emberfield/visual-notes.d29.json",
+      "notesSha256": "b305b6883805689f231542d654b1d720bc8fc7b7347698fbec03658f09adf6ab",
+      "masterCandidatePass": true,
+      "runtimeCandidatePass": true,
+      "falseAcceptanceRegistrationRefused": true,
+      "runtimeBytes": 6215959,
+      "findings": [
+        "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Orange ash ground, basalt towers and smoke are present; the flat fighting band remains clear.",
+        "MID repeats a distant geological ridge already in FAR. Its keyed outline cuts sharply across the background, including abrupt contour steps around the left arch and right distant rocks. NEAR introduces a paler horizontal earth band at the lower edge. These are concrete composition holds.",
+        "No visible sun disk or fauna occurs in the selected paintings, but the orange directional light is stronger than the near-neutral system card and needs review. No native motion, physical-medium admission or acceptance is claimed."
+      ]
+    },
+    {
+      "id": "stormeye",
+      "biome": "stormeye",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "review": "audits/C132_ARENAS_20261001/stormeye/d29/delivery-review.json",
+      "reviewSha256": "87e89eca846108571b69dfe25d1e9c82c0cdcf8a0d809dd60fde84add013e51c",
+      "manifest": "audits/C132_ARENAS_20261001/stormeye/d29/delivery.pending.json",
+      "manifestSha256": "2ef73e53ca9be80aa63fb35b993416f361a177df374ba481663051f28c417dca",
+      "notes": "audits/C132_ARENAS_20261001/stormeye/visual-notes.d29.json",
+      "notesSha256": "8fd8ed4c82adb5494d39497a13272047c62b0facdf17dfdacd3580fbcfde3b1b",
+      "masterCandidatePass": true,
+      "runtimeCandidatePass": true,
+      "falseAcceptanceRegistrationRefused": true,
+      "runtimeBytes": 5586716,
+      "findings": [
+        "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. The large storm eye and layered amber clouds are readable; the sampled shared path and both stands are clear of NEAR.",
+        "MID cloud silhouettes form a visibly hard, cut-paper edge over FAR. A second small spiral appears at the right edge, and NEAR forms an obvious separate cloud shelf with a sharp contour across the lower fifth. Their perspective and scale need a composition repair.",
+        "Amber lighting, cloudy ground readability and creature contrast remain visual holds. Authoring a cloud band does not establish valid support, motion or physical-medium behavior. No native or visual acceptance is claimed."
+      ]
+    },
+    {
+      "id": "acidhaze",
+      "biome": "acidhaze",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "review": "audits/C132_ARENAS_20261001/acidhaze/d29/delivery-review.json",
+      "reviewSha256": "ffa862557f511c84e916dc784c11052896eaaf8efaec9c27812227a4e05c9cdb",
+      "manifest": "audits/C132_ARENAS_20261001/acidhaze/d29/delivery.pending.json",
+      "manifestSha256": "df8fc2f02500342dffc22edc4dd19c58b89909d73ff65031fb0f74572f5e4aec",
+      "notes": "audits/C132_ARENAS_20261001/acidhaze/visual-notes.d29.json",
+      "notesSha256": "46f9578a0a01f43e6da6ba8699d1fff84ab792dbaebaa1c6684d0803e98a6e10",
+      "masterCandidatePass": true,
+      "runtimeCandidatePass": true,
+      "falseAcceptanceRegistrationRefused": true,
+      "runtimeBytes": 6135914,
+      "findings": [
+        "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Yellow-gray crust, eroded rock and sulfur haze form a coherent stage with an open central runway.",
+        "MID duplicates side geological contours over FAR and produces a hard keyed horizon. NEAR changes the ground to a darker, more granular texture across the lower edge. The whole image is more saturated yellow than the muted material card; scene contrast and light require independent scoring.",
+        "Selected FAR contains no visible star/disk, and selected NEAR has full-frame native proportions. The visible-star FAR and ultra-wide NEAR predecessors remain retained. No native motion, hazard/medium admission or visual acceptance is claimed."
+      ]
+    },
+    {
+      "id": "hotglow",
+      "biome": "hotglow",
+      "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+      "review": "audits/C132_ARENAS_20261001/hotglow/d29/delivery-review.json",
+      "reviewSha256": "676b2b7ee0b2028c7ac00dd97fe7cf298325fc4119c109c00ba2a2a8b8f37795",
+      "manifest": "audits/C132_ARENAS_20261001/hotglow/d29/delivery.pending.json",
+      "manifestSha256": "00d60c5fec32ed390d0d116984a46a1988602674c9a43183c4ebf8d86e86bc2a",
+      "notes": "audits/C132_ARENAS_20261001/hotglow/visual-notes.d29.json",
+      "notesSha256": "76b4d9f7ef122a43b8cfc449c25078a25891b997f5a79dfad316b5cb05f26752",
+      "masterCandidatePass": true,
+      "runtimeCandidatePass": true,
+      "falseAcceptanceRegistrationRefused": true,
+      "runtimeBytes": 5326821,
+      "findings": [
+        "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Amber cloud banks and a broad shared band provide the intended hot-glow material without fauna.",
+        "MID has conspicuous purple/magenta tint along the cloud rim and broad cloud faces near both sides. MID and NEAR create hard horizontal cloud shelves with independent scale and illumination, making the composition visibly layered. These remain visual holds despite the mechanical key result.",
+        "Selected FAR removes the invented planet and moon; that predecessor is retained. Intense orange light and cloud support need authoring/runtime review. No physical-medium admission, native proof or quality acceptance is claimed."
+      ]
+    }
+  ],
+  "originals": [
+    {
+      "receipt": "audits/C132_ARENAS_20261001/emberfield/arena-far.generation.json",
+      "receiptSha256": "50d64f09bc9cb873dae375e4520315951322a559d85be47b8149f4a074bf469a",
+      "master": "audits/C132_ARENAS_20261001/emberfield/arena-far.png",
+      "masterSha256": "2b7eaa74341d46d895a46ab77942919fd53df3bfc70f9d08c4c592638c41b883",
+      "width": 1672,
+      "height": 941,
+      "status": "REVIEW_PENDING",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/emberfield/arena-mid.generation.json",
+      "receiptSha256": "4886f1e3dff922997fed23405fdc6ac76248e08d2dc2375a2e47c91822a91a82",
+      "master": "audits/C132_ARENAS_20261001/emberfield/arena-mid.png",
+      "masterSha256": "8959dbe8d55122938dd7b4c52bdeda71d289b273bcc8d5ff71b7986f9900698e",
+      "width": 1672,
+      "height": 941,
+      "status": "REVIEW_PENDING",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/emberfield/arena-near.generation.json",
+      "receiptSha256": "361920bab2970f1a3d8710ffec17fbfea91355dbaf2c47c8d98c6b26e68bed9b",
+      "master": "audits/C132_ARENAS_20261001/emberfield/arena-near.png",
+      "masterSha256": "7cd3110ce547adf1e3e632357b849fd4d1a38cdb3642e2acfc6b40e5a5b833de",
+      "width": 1672,
+      "height": 941,
+      "status": "REVIEW_PENDING",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/stormeye/arena-far.generation.json",
+      "receiptSha256": "0b240fffbe0e54290c84810ac35ce35c80a995cd36c2159e454d3276d4cc346c",
+      "master": "audits/C132_ARENAS_20261001/stormeye/arena-far.png",
+      "masterSha256": "78d588d167503fe15b06033f1906bcf8f32fd1b8511eabc33934c1e76be5ae97",
+      "width": 1672,
+      "height": 941,
+      "status": "REVIEW_PENDING",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/stormeye/arena-mid.generation.json",
+      "receiptSha256": "b3bb47fb6222035c5e713c4c54f0142c25b6371c865e7309b39b955999e8434f",
+      "master": "audits/C132_ARENAS_20261001/stormeye/arena-mid.png",
+      "masterSha256": "f11ea578db27058caf54492b28184763cd7dde23ad0a2cda5e576b252a21c247",
+      "width": 1672,
+      "height": 941,
+      "status": "REVIEW_PENDING",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/stormeye/arena-near.generation.json",
+      "receiptSha256": "4b3ec65a6be39208bbb0093a70696c4046b77b71c75ac877a76051e513b65618",
+      "master": "audits/C132_ARENAS_20261001/stormeye/arena-near.png",
+      "masterSha256": "3e9ab533f107cadb7035f8169b69c974499bcbaa2c95bb21e39ea75df947aab3",
+      "width": 1672,
+      "height": 941,
+      "status": "REVIEW_PENDING",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/acidhaze/arena-far-attempt-1.generation.json",
+      "receiptSha256": "bfe667ecdca9e1b8225c49e4a163ff4359b046850e99af282ee45e1e12848ed2",
+      "master": "audits/C132_ARENAS_20261001/acidhaze/arena-far-attempt-1.png",
+      "masterSha256": "6a211349493b0c07410ab95ac701aaf9b0f8bd4e15b5cfb4fb69ee4427230037",
+      "width": 1672,
+      "height": 941,
+      "status": "REJECTED_VISIBLE_STAR",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/acidhaze/arena-far.generation.json",
+      "receiptSha256": "d3657b44e06c9699e00b4ffe6d6e959ec91de116e402e4ddd986e3cce605b0b2",
+      "master": "audits/C132_ARENAS_20261001/acidhaze/arena-far.png",
+      "masterSha256": "516a7fa8367a615660478b442d1d3ee3b7d5c56fa8e3e4ce19c481fd732cc1ea",
+      "width": 1672,
+      "height": 941,
+      "status": "REVIEW_PENDING",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/acidhaze/arena-mid.generation.json",
+      "receiptSha256": "4d4a7f608dbead448240219c99eae35cb89bccd7ce48bfeeade5214ce96a8291",
+      "master": "audits/C132_ARENAS_20261001/acidhaze/arena-mid.png",
+      "masterSha256": "7386934271c2a9d690d411a759329cad065a84d801a88242a1ad45d9a9e5b72b",
+      "width": 1672,
+      "height": 941,
+      "status": "REVIEW_PENDING",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/acidhaze/arena-near-attempt-1.generation.json",
+      "receiptSha256": "b393baf9ed0a7031ba0af347b109c4e8cf068f0a563a4694b0faa16a772bab3e",
+      "master": "audits/C132_ARENAS_20261001/acidhaze/arena-near-attempt-1.png",
+      "masterSha256": "c34b1e105dddd169d406aa0866f357b88d55e22c4f136cccf765b0f1072e1f42",
+      "width": 1983,
+      "height": 793,
+      "status": "REJECTED_WRONG_ASPECT",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/acidhaze/arena-near.generation.json",
+      "receiptSha256": "364675edea0c6bbaec49751f397b81681846000e8cd3b0b1c9fcc931b7918690",
+      "master": "audits/C132_ARENAS_20261001/acidhaze/arena-near.png",
+      "masterSha256": "3bab37471cf95e79143ad9a0c0ce9e2b03a49e04ffc1c332335b4ada6a0e95fa",
+      "width": 1672,
+      "height": 941,
+      "status": "REVIEW_PENDING",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/hotglow/arena-far-attempt-1.generation.json",
+      "receiptSha256": "751a454fcd601f5f85103c315c4ca856f3a9e49efbde9d62303d718c54d6081c",
+      "master": "audits/C132_ARENAS_20261001/hotglow/arena-far-attempt-1.png",
+      "masterSha256": "33d82ca6d1cc3fddc00f67ab50ac343a9bc5e2cb2891571e0019e4bc177cf5e3",
+      "width": 1672,
+      "height": 940,
+      "status": "REJECTED_INVENTED_CELESTIAL_BODIES",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/hotglow/arena-far.generation.json",
+      "receiptSha256": "d1c505e789e8d2691f53e83d6c814f4c78e117cf859fc4bb376526c92ad0439e",
+      "master": "audits/C132_ARENAS_20261001/hotglow/arena-far.png",
+      "masterSha256": "afc7e7f12daf0e6e0f3176963b734bf9a13dff3dd82b033ef107eb6ff9db5540",
+      "width": 1672,
+      "height": 941,
+      "status": "REVIEW_PENDING",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/hotglow/arena-mid.generation.json",
+      "receiptSha256": "f448739bf6a3e4eaea5b1000fb2bd54a72e97538629b5a89845a7d2548fd514c",
+      "master": "audits/C132_ARENAS_20261001/hotglow/arena-mid.png",
+      "masterSha256": "11898aad8825da3ca9b78d01d706601736570493592182a4ce88074fe1ee1243",
+      "width": 1672,
+      "height": 941,
+      "status": "REVIEW_PENDING",
+      "reusedUnmodifiedOriginalFrom": null
+    },
+    {
+      "receipt": "audits/C132_ARENAS_20261001/hotglow/arena-near.generation.json",
+      "receiptSha256": "ab36aaad98f921337dadd8a08c7fbdc22b61391e0345dc58e22dce6d010cfdc0",
+      "master": "audits/C132_ARENAS_20261001/hotglow/arena-near.png",
+      "masterSha256": "38e4211c721682889db238cda25ecc7ff93351609a825f0c01108f840670af96",
+      "width": 1672,
+      "height": 941,
+      "status": "REVIEW_PENDING",
+      "reusedUnmodifiedOriginalFrom": null
+    }
+  ],
+  "promptCorrections": [
+    {
+      "original": "audits/C132_ARENAS_20261001/acidhaze/arena-far.prompt.txt",
+      "originalSha256": "ba67b33741881a3b3e30dc5e466e6d520d2d8bc95503002c0a070b26aa9b2a02",
+      "correction": "audits/C132_ARENAS_20261001/acidhaze/arena-far-correction.prompt.txt",
+      "correctionSha256": "16f85037d06599a2ec3bcb944a25acfd3bd07a56161b299c1a11519d9820a9b6",
+      "scope": "SUBJECT only; frozen reference/style/layout/accuracy/technical/negative paragraphs unchanged"
+    },
+    {
+      "original": "audits/C132_ARENAS_20261001/acidhaze/arena-near.prompt.txt",
+      "originalSha256": "f1fa0d67dab37b7bbf2a53570bed1b39744ec06ddab22d7165a4c641cb0d06c7",
+      "correction": "audits/C132_ARENAS_20261001/acidhaze/arena-near-correction.prompt.txt",
+      "correctionSha256": "127611fc2d9050bc5fb36a5a94909e8e9a98a4667a615fbf40cb013cb09d44b3",
+      "scope": "SUBJECT only; frozen reference/style/layout/accuracy/technical/negative paragraphs unchanged"
+    },
+    {
+      "original": "audits/C132_ARENAS_20261001/hotglow/arena-far.prompt.txt",
+      "originalSha256": "ec2ba09e710610bbeed064caee32c19a6292ff317972ce5600e229db36a6960c",
+      "correction": "audits/C132_ARENAS_20261001/hotglow/arena-far-correction.prompt.txt",
+      "correctionSha256": "670450b5397d273c3742e1d4aa0bba3030c2a3706335b37783623718600f9453",
+      "scope": "SUBJECT only; frozen reference/style/layout/accuracy/technical/negative paragraphs unchanged"
+    }
+  ],
+  "predecessorHolds": [],
+  "remainingAssignedQueue": []
+}

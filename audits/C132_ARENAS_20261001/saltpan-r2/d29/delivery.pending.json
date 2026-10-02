@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "saltpan-r2",
+  "biome": "saltpan",
+  "recipe": "audits/C132_ARENAS_20261001/saltpan-r2/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/saltpan-r2/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/saltpan-r2/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/saltpan-r2/arena-far.png",
+      "runtimeSha256": "96d7803cdb5c0af891c22f0b51b4a594128b0145abbe24410cd677bb5ad6c18d"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/saltpan-r2/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/saltpan-r2/keyed/arena-mid.png",
+      "runtimeSha256": "05eae18de70e397c037a53fba87faf6210a01a6fdcf508b552414b0a0ca0df11"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/saltpan-r2/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/saltpan-r2/keyed/arena-near.png",
+      "runtimeSha256": "da940dda33cc225e7758bb2096628f72b84704dc15512ecb4a90ce8de6ebc506"
+    }
+  }
+}

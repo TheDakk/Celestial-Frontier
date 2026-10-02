@@ -1,0 +1,10 @@
+{
+  "status": "HELD_SUPERSEDED_FIRST_ATTEMPT",
+  "qualityAccepted": false,
+  "allOriginalsPreserved": true,
+  "upscaled": false,
+  "findings": [
+    "FAR invents ringed planet/moons absent from unbound system card"
+  ],
+  "successor": "oxide-v2"
+}

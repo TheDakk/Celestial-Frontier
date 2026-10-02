@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c132-arena-visual-review/v1",
+  "id": "geode",
+  "qualityAccepted": false,
+  "inspectedImages": [
+    "audits/C132_ARENAS_20261001/geode/arena-composed-review.png",
+    "audits/C132_ARENAS_20261001/geode/arena-plates-review.png",
+    "audits/C132_ARENAS_20261001/geode/arena-far.png",
+    "audits/C132_ARENAS_20261001/geode/arena-mid.png",
+    "audits/C132_ARENAS_20261001/geode/arena-near.png"
+  ],
+  "findings": [
+    "Original paintings, native 1672 by 941 composition and four-row plate sheet inspected. Amethyst clusters, cavern depth and broad pale-purple rock runway read coherently, with clear stand locations.",
+    "Fine crystal and rock boundaries contain small cutout notches and pink remnants. NEAR adds a lower shelf and another crack pattern, creating a visible horizontal change in scale. The large bridge-like natural arch and high-contrast crystals may compete with creature silhouettes.",
+    "Ground-line checks pass, but seam/fringe cleanup, independent style scoring and native parallax/creature proof remain outstanding. No acceptance is claimed."
+  ]
+}

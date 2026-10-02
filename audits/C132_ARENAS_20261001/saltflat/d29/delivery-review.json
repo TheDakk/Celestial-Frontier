@@ -1,0 +1,165 @@
+{
+  "schema": "cf.c132-arena-d29-review/v1",
+  "id": "saltflat",
+  "biome": "saltflat",
+  "status": "MECHANICAL_CANDIDATE_PASS_VISUAL_REVIEW_HELD",
+  "qualityAccepted": false,
+  "registered": false,
+  "nativeCanvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "admittedNativeCanvases": [
+    {
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "authority": "D29, DECIDED by Dakk 2026-10-02: native 1672×941 or native 2560×1440, no upscale. Signed anthropic/mac 02a94595c, merged into openai/mac.",
+  "historicalEvidence": "Prior finalization reports and requested kit dimensions remain unchanged. This additive report uses the merged D29 validator.",
+  "masterCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "saltflat"
+  },
+  "runtimeCandidate": {
+    "ok": true,
+    "failures": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "saltflat"
+  },
+  "registration": {
+    "ok": false,
+    "failures": [
+      "acceptance.qualityAccepted: not true (only Dakk-accepted sets are registered)",
+      "acceptance arena-far: qualityAccepted not true",
+      "acceptance arena-mid: qualityAccepted not true",
+      "acceptance arena-near: qualityAccepted not true"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "biome": "saltflat"
+  },
+  "originalMastersModified": false,
+  "upscaled": false,
+  "generationReceipts": [
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-far.generation.json",
+      "sha256": "990bceb97369b4f2a4456c4d3c05643950cb244ab975345597d9107995f23c4b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-mid.generation.json",
+      "sha256": "c321049f77d5af91b92b002e3e89b891e142e7dbcaab145c1c2e6ffdd26a0e7e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-near.generation.json",
+      "sha256": "41ea9ba9c646acf03313c21d400bd40d9bbe7e1e5ebfc27fe8fb4897d904f898"
+    }
+  ],
+  "sourceAndInputBindings": [
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-composed-review.png",
+      "sha256": "a278dc869130471b2b456472bf91d8c7cba5d0c265d7c7c7e8be796e737e40bd"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/visual-notes.d29.json",
+      "sha256": "67e51e827fca2502fa532452792268f02f2b5f60703dc0d6f9ef76842e8bf51d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-manifest.json",
+      "sha256": "04376f819bc920a51f84fd7c01612e5d41a999913f00e06fefda5e46fa45605d"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-recipe.json",
+      "sha256": "b2d25f99eaf94c7bacc2a682ccc8bb6d27440e7b241f5e56049ece06770eebb0"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-far.generation.json",
+      "sha256": "990bceb97369b4f2a4456c4d3c05643950cb244ab975345597d9107995f23c4b"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-far.prompt.txt",
+      "sha256": "d9e74f6b6cfd2dfafe4acf6f0314d5aa17f0741fd2926187f11879d8bb108b81"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-far.png",
+      "sha256": "7f12a38a6797431314b71283eb1814d7cec44057944e8b139af7a3bd03702405"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-mid.generation.json",
+      "sha256": "c321049f77d5af91b92b002e3e89b891e142e7dbcaab145c1c2e6ffdd26a0e7e"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-mid.prompt.txt",
+      "sha256": "afdf9d835b1da0d47e7b43acc2e19c4934424f28bd21421cca257039160ed253"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-mid.png",
+      "sha256": "1285fa0f1631f507728bf1e5c03d9f9a24cdefb554e162de4836e8a669397299"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/keyed/arena-mid.png",
+      "sha256": "83def4a22aa019ea339096891370c485dd81dc3565da9a97f18a96b5f3073a12"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-near.generation.json",
+      "sha256": "41ea9ba9c646acf03313c21d400bd40d9bbe7e1e5ebfc27fe8fb4897d904f898"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-near.prompt.txt",
+      "sha256": "5ce07eb235466a39c8970952320eda87c4586a39ccf6e1e0209256a81e6b5179"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/arena-near.png",
+      "sha256": "aadaa8e8d46e18dacf5e0b2c2866213d0551b298eace2d2a8a5c5a65664dc201"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/saltflat/keyed/arena-near.png",
+      "sha256": "59ffd4aa59c2b01a3032bbe9da9a77114bd5b94813d22c1c5df7fa9d4fd79729"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena-delivery.ts",
+      "sha256": "454e0fb208510c1d0628fb414ce002541be31601a44e3eb3129affb20c6779cf"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "audits/C132_ARENAS_20261001/finalize-one.mjs",
+      "sha256": "7ce113209cc66ae100d0e2ec779e3fe8f18b84ad7150ab2afd25ee0857af2356"
+    }
+  ],
+  "review": {
+    "notes": "audits/C132_ARENAS_20261001/saltflat/visual-notes.d29.json",
+    "findings": [
+      "Native full-size composite inspected at 1672×941. White salt crust and distant dry cliffs read clearly, with a level open fighting path and a quiet low NEAR edge.",
+      "The MID adds a distinct miniature mountain horizon below the FAR horizon. Its scale and sharp edge create a visible doubled landscape band.",
+      "The NEAR produces a separate lower pale strip and dark contour; pink/key-color remnants remain on the lower-right shrub and small cyan/green edge remnants appear near rocks. Detailed crust texture must be checked against moving creature readability.",
+      "No acceptance or game registration is claimed. The composition requires independent full-size, finished-rig, parallax and physical-contact review."
+    ],
+    "scope": "Full-size image inspection only; no native film, player occlusion, acceptance or device qualification."
+  },
+  "remaining": [
+    "Resolve recorded visual holds and obtain independent full-size scoring",
+    "Dakk acceptance",
+    "Claude routing/wiring review and native battle proof"
+  ]
+}
