@@ -1,0 +1,68 @@
+{
+  "schema": "cf.c173-sweep-successor/v1",
+  "authority": "Dakk explicitly requests all 1444 ordered pairs and every over-budget pair; no raised allowances. Continue only complete structurally valid captures with CPU-only RED. Stop instrument, anatomy/refusal, source integrity, transport or disk failure; do not retry.",
+  "nativeRunnerUnchanged": true,
+  "nativeEntryUnchanged": true,
+  "files": [
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/native-entry.mjs",
+      "sha256": "63484adb5f1e398fd4cc95d2ae8171098db9de023e9cae34e9522e656866625e",
+      "predecessor": "audits/C163_ALL_PAIRS_20261002/native-entry.mjs",
+      "predecessorSha256": "63484adb5f1e398fd4cc95d2ae8171098db9de023e9cae34e9522e656866625e"
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/native-runner.mjs",
+      "sha256": "b16ceb7643174ffe10f2721a489a96aaa0da1cffc686bbe1ac1083969f213028",
+      "predecessor": "audits/C163_ALL_PAIRS_20261002/native-runner.mjs",
+      "predecessorSha256": "b16ceb7643174ffe10f2721a489a96aaa0da1cffc686bbe1ac1083969f213028"
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/prepare-entry.ts",
+      "sha256": "8c761ef18f94fb2200fcc6b9f84fdb035fd8d79da97bab27902aa46a4dfe7878",
+      "predecessor": "audits/C163_ALL_PAIRS_20261002/prepare-entry.ts",
+      "predecessorSha256": "8c761ef18f94fb2200fcc6b9f84fdb035fd8d79da97bab27902aa46a4dfe7878"
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/input-contract.mjs",
+      "sha256": "cf511d1fb67f082ad0949f059a7a9d72bdb7fe0c64ce8e65aba20091935b451e",
+      "predecessor": "audits/C163_ALL_PAIRS_20261002/input-contract.mjs",
+      "predecessorSha256": "cf511d1fb67f082ad0949f059a7a9d72bdb7fe0c64ce8e65aba20091935b451e"
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/validate-v2.mjs",
+      "sha256": "aa7124a57393c406fdb64757dbdf3fb8a70985aaaba64e172fbfb042183d6fee",
+      "predecessor": "audits/C163_ALL_PAIRS_20261002/validate-v2.mjs",
+      "predecessorSha256": "aa7124a57393c406fdb64757dbdf3fb8a70985aaaba64e172fbfb042183d6fee"
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/validate.mjs",
+      "sha256": "77164c00473f378d3e770e3cdad21852d0ab60e1889378dfe31b969e962088f6",
+      "predecessor": "audits/C163_ALL_PAIRS_20261002/validate.mjs",
+      "predecessorSha256": "a79ca0b4aee5a206bbfda5a16dca26ad71027597d8703af2ee68ed04f053cb40"
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/prepare-v2.mjs",
+      "sha256": "cc10114295268d986c488b33c7be5d5c861fdb542564deb47c0e13e0416e857d",
+      "predecessor": "audits/C163_ALL_PAIRS_20261002/prepare-v2.mjs",
+      "predecessorSha256": "d6e66819b26c0df7a792deab056e1756d20b8a9ea4a7eb42666106c83c89ffff"
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/run-sweep-v2.mjs",
+      "sha256": "66700e9fd5b6cb176ae662ff94686bb49d61e53bf9dff0a0644ce4bd34499b70",
+      "predecessor": "audits/C163_ALL_PAIRS_20261002/run-sweep-v2.mjs",
+      "predecessorSha256": "c95196746f29eb3bf4837249007ff9c72c0a5fa631c810fffe28f3e8ace10f78"
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/validate.test.mjs",
+      "sha256": "4a49bcb43539591d07e003d20e104e1bd4d115501a48a9da66569a71c5bf6dcc",
+      "predecessor": "audits/C163_ALL_PAIRS_20261002/validate.test.mjs",
+      "predecessorSha256": "2fba41bd15e2403c193867f8e9b1b3f918711086175d60d502b06e33f1f97d12"
+    },
+    {
+      "path": "audits/C173_ALL_PAIRS_20261002/paths-v2.test.mjs",
+      "sha256": "6797f834d3d21857e83eebc27a8274c58b7f9eca935f88fa07b4d6f4db19d7ab",
+      "predecessor": "audits/C163_ALL_PAIRS_20261002/paths-v2.test.mjs",
+      "predecessorSha256": "6797f834d3d21857e83eebc27a8274c58b7f9eca935f88fa07b4d6f4db19d7ab"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c173-source-review/v1",
+  "name": "Basking Shark",
+  "masterSha256": "89632bf56c93071aac6ef503266e51ace5bb0fb9be99440b01f74267ac9fa5f4",
+  "review": "Full native1254-square original inspected by Codex",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 176,
+      "y0": 402,
+      "x1": 1079,
+      "y1": 829
+    },
+    "margins": {
+      "left": 176,
+      "right": 174,
+      "top": 402,
+      "bottom": 424
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "observation": "Full open filter-feeding mouth, gill region, dorsal fins, paired ventral fins and complete tail remain inside the canvas. No visibly clipped appendage. Far pectoral root is partly occluded; anatomical authoring must use only observed surface.",
+  "status": "SOURCE_CANDIDATE_FOR_SCORING",
+  "rigAuthored": false,
+  "motionAccepted": false,
+  "runtimeAdmitted": false
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "cf.c173-source-review/v1",
+  "name": "Mako Shark",
+  "masterSha256": "c3bcbf2ddc10e18e2f25b1f3b1042f865916e23d991969e4ecb0032bedcdb0c8",
+  "review": "Full native1254-square original inspected by Codex",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 319,
+      "y0": 501,
+      "x1": 940,
+      "y1": 751
+    },
+    "margins": {
+      "left": 319,
+      "right": 313,
+      "top": 501,
+      "bottom": 502
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "observation": "Slender blue-backed shark with pointed snout, large dark eye, pointed fins and full crescent tail. New framing edit preserves full appendages. Species-specific fin proportions still need scorer review.",
+  "status": "SOURCE_CANDIDATE_FOR_SCORING",
+  "rigAuthored": false,
+  "motionAccepted": false,
+  "runtimeAdmitted": false
+}

@@ -1,0 +1,66 @@
+{
+  "name": "Whale Shark",
+  "family": "fish",
+  "species": {
+    "name": "Whale Shark",
+    "aspect": 4.5,
+    "headFrac": 0.2,
+    "eyes": "small",
+    "posture": "swimming",
+    "mustRead": [
+      "huge flat mouth spanning the very front of a boxy flattened head",
+      "checkerboard of white spots and lines",
+      "prominent ridges running along the flanks"
+    ],
+    "note": "mouth is terminal at the front of the head, not slung underneath like other sharks; tiny eyes sit at the corners of the head"
+  },
+  "genome": {
+    "seed": 200558640,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 6,
+    "body": 4,
+    "loco": 5,
+    "trait": 21,
+    "size": 0,
+    "diet": 5,
+    "head": 4,
+    "limbs": 0,
+    "skin": 3,
+    "tail": 1,
+    "pattern": 4,
+    "eyes": 4,
+    "behavior": 4,
+    "habitat": 4,
+    "detail": 3,
+    "accent": 4,
+    "temper": 1,
+    "sense": 7,
+    "repro": 3,
+    "life": 2,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Whale Shark"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Whale Shark\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"4\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"200558640\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"21\"]]]]",
+  "index": 482,
+  "profile": {
+    "id": "filter-shark",
+    "names": [
+      "Whale Shark",
+      "Basking Shark"
+    ],
+    "candidateTemplates": [
+      "fish"
+    ],
+    "media": [
+      "water"
+    ],
+    "intendedMoves": [
+      "body"
+    ],
+    "notes": "No predatory bite inferred from shark family."
+  }
+}

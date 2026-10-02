@@ -1,0 +1,28 @@
+{
+  "name": "Giraffe",
+  "masterSha256": "16ec8a19459d429c5b445c85adca9d6d17a920842989540b0c33b95362b6a3e3",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Long neck, reticulated brown patches, two ossicones and two visible ears; four long hoofed legs and complete tufted tail. Head/front body angled slightly toward viewer, making both ears readable. Far foreleg root partly behind chest and near foreleg; contact levels nearly align but require exact scoring. Not a strict planar side profile.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 392,
+      "y0": 215,
+      "x1": 902,
+      "y1": 1019
+    },
+    "margins": {
+      "left": 392,
+      "right": 351,
+      "top": 215,
+      "bottom": 234
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Tamarin",
+  "masterSha256": "68ea5985a80094d046798941237a2f662a1aeb573522d97e4f5df53565977742",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

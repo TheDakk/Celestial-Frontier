@@ -1,0 +1,28 @@
+{
+  "name": "Gila Monster",
+  "masterSha256": "d5b52d51feebbe4c3f4b35311e7abc225f4b8b9703196b4d02c881a3252d263f",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Black and orange beaded scales, broad blunt head and thick short tail are clear. Four clawed feet are visible; near fore/hind chains are distinct, far proximal roots partially occluded and feet at different levels. Tail is unusually swollen/blunt and needs canonical identity judgment. No external ear pinnae.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 168,
+      "y0": 491,
+      "x1": 1088,
+      "y1": 756
+    },
+    "margins": {
+      "left": 168,
+      "right": 165,
+      "top": 491,
+      "bottom": 497
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

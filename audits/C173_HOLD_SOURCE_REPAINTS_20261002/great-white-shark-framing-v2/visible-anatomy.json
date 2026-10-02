@@ -1,0 +1,168 @@
+{
+  "id": "great-white-shark-framing-v2",
+  "name": "Great White Shark",
+  "family": "fish",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "6b1efdd9e85eda1dc65518737e6b17ab52f23be5a95593d63aa8fbaa8c64bf78",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 8837,
+    "coreRadius": 15,
+    "bodyBox": {
+      "x0": 178,
+      "y0": 184,
+      "x1": 298,
+      "y1": 238
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0442,
+        "pixels": 391,
+        "box": {
+          "x0": 208,
+          "y0": 159,
+          "x1": 235,
+          "y1": 183
+        },
+        "attach": {
+          "x": 221.5,
+          "y": 183,
+          "relX": 0.36,
+          "relY": -0.02
+        },
+        "dir": {
+          "x": -0.08,
+          "y": -1
+        },
+        "class": "top",
+        "length": 27.5
+      },
+      {
+        "k": 1,
+        "frac": 0.2418,
+        "pixels": 2137,
+        "box": {
+          "x0": 93,
+          "y0": 171,
+          "x1": 183,
+          "y1": 246
+        },
+        "attach": {
+          "x": 177.6,
+          "y": 214.4,
+          "relX": 0,
+          "relY": 0.56
+        },
+        "dir": {
+          "x": -0.99,
+          "y": -0.12
+        },
+        "class": "rear",
+        "length": 95.1
+      },
+      {
+        "k": 2,
+        "frac": 0.0485,
+        "pixels": 429,
+        "box": {
+          "x0": 299,
+          "y0": 197,
+          "x1": 323,
+          "y1": 225
+        },
+        "attach": {
+          "x": 299,
+          "y": 211,
+          "relX": 1.01,
+          "relY": 0.5
+        },
+        "dir": {
+          "x": 0.99,
+          "y": -0.11
+        },
+        "class": "front",
+        "length": 27.8
+      },
+      {
+        "k": 3,
+        "frac": 0.0329,
+        "pixels": 291,
+        "box": {
+          "x0": 214,
+          "y0": 235,
+          "x1": 244,
+          "y1": 256
+        },
+        "attach": {
+          "x": 232.9,
+          "y": 238.6,
+          "relX": 0.46,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": -0.59,
+          "y": 0.81
+        },
+        "class": "limb-down",
+        "length": 25.7
+      },
+      {
+        "k": 4,
+        "frac": 0.024,
+        "pixels": 212,
+        "box": {
+          "x0": 246,
+          "y0": 239,
+          "x1": 263,
+          "y1": 258
+        },
+        "attach": {
+          "x": 254.5,
+          "y": 239,
+          "relX": 0.64,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": -0.07,
+          "y": 1
+        },
+        "class": "limb-down",
+        "length": 20.8
+      }
+    ],
+    "byClass": {
+      "top": 1,
+      "rear": 1,
+      "front": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 214,
+        "x1": 228,
+        "cx": 219.8
+      },
+      {
+        "x0": 249,
+        "x1": 257,
+        "cx": 252.1
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

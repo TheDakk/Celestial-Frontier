@@ -2,6 +2,89 @@
 
 ## Current Codex sprint handoff — 2026-10-02, C163 ACTIVE
 
+Dakk authorizes large signed C132/C163 batches without per-step approval. Own lane:
+OpenAI/Codex, macOS, `~/Projects/celestial-frontier-openai-mac`, `openai/mac`.
+Claude's handoff above is preserved. Signed lane merges include C165 WebP head
+`72bbe1531`, C168 scoring, and C172/C173 Capuchin scoring and Bat acceptance
+correction, including the new real-fit aerial frame regression. Mailbox read through C173.
+
+**Accepted progress:** the geometry-selected low-slung sprawler profile removes
+hit/cast failures and head/neck late-idle dip. Nine unchanged static fits pass;
+Claude C167 accepts all ten native C136 films, including Alligator's snout hold.
+Eight new reptiles, Mara, Lark, Hummingbird and Bat bring coverage from 184 to **196/631**.
+The live pack still has 45 accepted WebP arena sets across all 43 biome families,
+1672×941, roughly 84 MiB within the unchanged 128 MiB cap. Eleven themes are wired;
+contact-joint anchoring is filmed; guardian choreography remains flag-off.
+
+**Art and references delivered:** C178 contains 24 new original paintings (three
+quadrupeds first, then nine primates, three myriapods, five cephalopods and four
+membrane flyers). C181 supplies source head contours, three independent ungulate
+candidates and salamander/refusal evidence; its exact paint and D28 cap are unchanged.
+C176/C177 contain four stronger effect phases and three WebP arena repaint sets;
+Sand identity, seams/fringes and other visual holds remain explicit. Repaints are
+unregistered, queued by Claude for Dakk's look. All prompts, sources and checks are retained.
+
+**Latest reference delivery:** C190 spread Bat passes static/conservation/D28;
+Claude films 749 frames with no refusal. C173 corrects the C171 hold: the review
+crop hid the aerial subjects; the full frames show both entirely inside the frame.
+Bat is accepted; no aerial runtime fix is needed. The outcome regression includes
+an actual out-of-frame band-centre negative control.
+The folded standing Vampire Bat painting has an anatomical hold, with no invented
+thumb/contact or fit. C192's current `C168_PRIMATE_REFERENCES_20261002/capuchin-contours/fit01`
+passes all 13 actions, presentation, exact conservation and the unchanged 5% check;
+independent review concurs. Claude C172 films 872 frames without refusal, but the
+head-down shoulder spike appears in primates too; visual admission remains held.
+Gorilla is still RED on contact/motion and island coverage. C189 documents why the
+cephalopod views cannot supply a truthful far-eye reference under the current template.
+No global reference pool or runtime was changed by these audit packets.
+
+**Head repair hold:** C191 `C169_NAPE_RECUT_20261002` preserves exact source attribution
+and two rejected recuts. Each passes 61 static clips and 1,984 publication samples,
+but full-size review exposes existing and new gaps at part joins. Neither is a visual
+repair or an admitted reference. The captured defects occur during held faint despite
+the `idle-90` filenames. Original paint, earlier receipts and the 5% cap remain intact.
+Further work needs source join/occlusion coverage or separately measured product work.
+
+**Performance hold:** C179's fixed-rotation candidate stays unpromoted. It preserves
+56 captured target outputs and 18 current-source stills, but its one unprofiled 4× film
+has four frames above 1000/60 ms (maximum 55.1 ms; p95 8.3 ms). No JIT/GC dismissal is proved.
+C188's corrected all-pair instrument covers 1,444 ordered pairs / 38 mirrors and passes
+36 synthetic plus 12 exact path/inventory controls with independent review. Current
+entry point: `C163_ALL_PAIRS_20261002/run-sweep-v2.mjs` and `prepared-v2/manifest.json`.
+Its rejected first preparation is immutable. Native matrix runs remain zero; CPU and
+all-library 60 fps qualification are UNMEASURED. Resolve C12 before spending that sweep.
+
+**Combined I5 and develop gate GREEN:** ONE fresh 3+1 epoch on signed product
+`20e80c9127b18eb4149d500ca3f688ca88bff188` passed all four independent raw verifiers,
+unchanged limits, zero retries. Fresh selector activation `08ddca65f` was independently verified. The final develop
+profile on signed `cfb683092` includes the Bat framing regression: 5,976 tests passed,
+2 expected failures, 3 skipped; all three TypeScript projects and art/override/spec
+owners PASS in 138.409 s. Optional local-AI dependencies
+were renamed aside and restored. Root validation and 81 Actions-policy controls pass.
+Later commits contain audits/references and the Bat framing test; runtime bytes are
+unchanged. Both the initial and final green profiles are retained. The proof replays after
+the temporary managed source checkout was archived. Historical I5 proof was not rebound.
+Evidence: `C163_I5_EPOCH_20261002`. C195 releases the final CPU reservation;
+no native/performance reservation or agent process remains active.
+
+**Operations and next steps:** all commits are signed G; the pre-push guard remains.
+Budget UNFROZEN, repository PUBLIC, normal own-branch push triggers no workflow.
+No PR, label, hosted run, develop/main merge, release or deploy is authorized.
+The prior approximately 101 GB CF cleanup is historical; retiring this temporary I5
+checkout is not added to it. Identity backups remain untouched. Reuse this session's
+startup receipt in `C163_SPRAWLER_MOTION_20261002`; native work requires a posted
+reservation, serialized execution and a terminal release notice. Future develop gates
+still set the optional runtime aside and restore it in a finalizer.
+
+Codex next: C12 timing, shared head-down/source-join repair, remaining refusal/new-family
+references, and further original batches; keep all holds explicit. Claude next: finish
+Bat and review supplied reference candidates; batch any future runtime/arena changes before
+a separately authorized future combined epoch. Current product stays certified. Read the
+opposite mailbox at each batch boundary and reply only in this lane's TO_CLAUDE.
+Dakk need not switch apps or relay the handoff. The detailed delivery rows are C173 onward.
+
+## Current Codex sprint handoff — 2026-10-02, C163 ACTIVE
+
 Dakk authorizes the ordered C163 program, large signed batches without per-step approval.
 Own lane: OpenAI/Codex, macOS, `~/Projects/celestial-frontier-openai-mac`, `openai/mac`.
 Signed anthropic/mac through `fc2d7ac30` merged as `1ced0a1fd` G; Claude's handoff above is retained.

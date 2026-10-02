@@ -1,0 +1,17 @@
+{
+  "schema": "cf.c173-held-source-repaint/v1",
+  "slug": "mako-shark",
+  "tool": "image_gen.imagegen",
+  "purpose": "Source repaint candidate for recorded hold; not runtime admission",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "predecessor": "audits/G2_C106_20260927/04-mako-shark",
+  "predecessorMasterSha256": "d1b58864dbeb90f2dbd3b764eda126bdfe9bc0f3fb822a991b513c2452785c57",
+  "promptSha256": "a0e3be5397e3f192bb1b28be00ea486d2c9b07ede48384825d471720257ff511",
+  "styleReference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "correction": "SOURCE REPAINT CORRECTION (preserve exact canonical species identity and approved painted style): Native square 1254 x 1254 canvas. Entire animal, snout, all natural fins/legs/wings and full unshortened tail inside the central rectangle x=280..974, y=280..974; this is an invisible guide and must never be drawn. Zoom OUT as a whole, do not truncate or fold appendages to satisfy framing. Pure #FF00FF empty canvas outside the creature, no floor or shadows. Strict whole-body side profile facing RIGHT. Preserve natural full-length snout and complete heterocercal tail, all visibly attached fin bases. Every fin tip inside the empty margin. No clipped snout or tail, no invented extra fins or floating fin islands.",
+  "pipeline": "Existing compiled subject prompt retained verbatim with explicit source correction; original compiler receipt copied as historical inputs, not a new current compile"
+}

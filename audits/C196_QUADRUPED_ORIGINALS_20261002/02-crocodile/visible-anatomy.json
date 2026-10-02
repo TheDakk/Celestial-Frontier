@@ -1,0 +1,162 @@
+{
+  "id": "02-crocodile",
+  "name": "Crocodile",
+  "family": "quadruped",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "04fc849ab1b661c93162a602e1bad26fb07919ea36853e0ebdf326bbece9e8d0",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 14395,
+    "coreRadius": 15,
+    "bodyBox": {
+      "x0": 169,
+      "y0": 177,
+      "x1": 323,
+      "y1": 229
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.1057,
+        "pixels": 1521,
+        "box": {
+          "x0": 296,
+          "y0": 178,
+          "x1": 397,
+          "y1": 212
+        },
+        "attach": {
+          "x": 317.1,
+          "y": 189.9,
+          "relX": 0.96,
+          "relY": 0.25
+        },
+        "dir": {
+          "x": 0.99,
+          "y": 0.13
+        },
+        "class": "front",
+        "length": 82.9
+      },
+      {
+        "k": 1,
+        "frac": 0.3357,
+        "pixels": 4832,
+        "box": {
+          "x0": 23,
+          "y0": 179,
+          "x1": 206,
+          "y1": 250
+        },
+        "attach": {
+          "x": 178.9,
+          "y": 214.4,
+          "relX": 0.06,
+          "relY": 0.72
+        },
+        "dir": {
+          "x": -1,
+          "y": -0.08
+        },
+        "class": "rear",
+        "length": 159.9
+      },
+      {
+        "k": 2,
+        "frac": 0.0233,
+        "pixels": 336,
+        "box": {
+          "x0": 289,
+          "y0": 224,
+          "x1": 328,
+          "y1": 246
+        },
+        "attach": {
+          "x": 295.8,
+          "y": 225.8,
+          "relX": 0.82,
+          "relY": 0.94
+        },
+        "dir": {
+          "x": 0.73,
+          "y": 0.68
+        },
+        "class": "limb-down",
+        "length": 38
+      },
+      {
+        "k": 3,
+        "frac": 0.0209,
+        "pixels": 301,
+        "box": {
+          "x0": 211,
+          "y0": 226,
+          "x1": 246,
+          "y1": 244
+        },
+        "attach": {
+          "x": 220.8,
+          "y": 228.7,
+          "relX": 0.34,
+          "relY": 0.99
+        },
+        "dir": {
+          "x": 0.39,
+          "y": 0.92
+        },
+        "class": "limb-down",
+        "length": 29.5
+      },
+      {
+        "k": 4,
+        "frac": 0.0325,
+        "pixels": 468,
+        "box": {
+          "x0": 259,
+          "y0": 230,
+          "x1": 298,
+          "y1": 255
+        },
+        "attach": {
+          "x": 267,
+          "y": 230,
+          "relX": 0.64,
+          "relY": 1.02
+        },
+        "dir": {
+          "x": 0.58,
+          "y": 0.81
+        },
+        "class": "limb-down",
+        "length": 39.8
+      }
+    ],
+    "byClass": {
+      "front": 1,
+      "rear": 1,
+      "limb-down": 3
+    },
+    "ground": [
+      {
+        "x0": 266,
+        "x1": 298,
+        "cx": 282.5
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

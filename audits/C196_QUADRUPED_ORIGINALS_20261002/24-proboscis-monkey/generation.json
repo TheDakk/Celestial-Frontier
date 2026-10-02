@@ -1,0 +1,14 @@
+{
+  "id": "24-proboscis-monkey",
+  "name": "Proboscis Monkey",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-d5754a24-d908-41fd-8a15-108182b61336.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "cdd39cb9749eb0880b3db4f448309cf861b7a57bf7a3c334ad30b12acbaae38b",
+  "bytes": 1335566,
+  "promptSha256": "d1e1485af94617040ef2b8b0d7373c9c8c5fdb5e7d86281341ec20f63e99c3da",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

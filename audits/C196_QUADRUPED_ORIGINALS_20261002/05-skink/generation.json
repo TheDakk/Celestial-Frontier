@@ -1,0 +1,14 @@
+{
+  "id": "05-skink",
+  "name": "Skink",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-a8be5ccf-882f-44b2-a775-1a0489142687.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "aad336737411ed13050aaef3e3f713650d06d5e95941f96113b613bf8bf3603c",
+  "bytes": 1080106,
+  "promptSha256": "78098a6dafdba8347e3d86b23e552a9be341245c5f47b2a2ec2e7e6a677d71f9",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

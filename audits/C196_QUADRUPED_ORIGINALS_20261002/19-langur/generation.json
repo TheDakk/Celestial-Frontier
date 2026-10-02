@@ -1,0 +1,14 @@
+{
+  "id": "19-langur",
+  "name": "Langur",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-39ddd965-a8d3-405c-b5b3-09e08a27dbd8.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "2bb01355edf9b9172dcd479fc048cf78f1b1e292161f67163fd1e96023fcded9",
+  "bytes": 1218568,
+  "promptSha256": "54fd7e97471fa9d87f25c118123fc32c1f04461b68cce6217350dc5a1e9847b3",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Mandrill",
+  "masterSha256": "e2087e3743058a783937edab9dcfaba4c21e1b3e47b8439cbe9e510c38b162ea",
+  "required": [
+    "scarlet nose stripe flanked by ridged blue cheeks"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "scarlet nose stripe flanked by ridged blue cheeks",
+      "status": "PRESENT",
+      "observed": "Red nose stripe, ridged blue cheeks, olive-gold mane, high shoulders and short upright stump tail are readable. Two hands and two feet are visible with close but unequal contact levels. Heavy mane obscures far shoulder; one ear hidden. Face turns toward viewer rather than strict side; preserve actual visible ownership only."
+    }
+  ]
+}

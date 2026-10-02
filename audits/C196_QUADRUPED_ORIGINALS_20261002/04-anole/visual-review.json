@@ -1,0 +1,28 @@
+{
+  "name": "Anole",
+  "masterSha256": "9fe6a683ade808227189855f4761b4374270b5be7a9310e8abbbcbe798047e4b",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Green slender anole with orange-red dewlap, long complete tail, four bent legs and expanded toe tips. Dewlap partly occludes the far shoulder; far hip also overlaps the trunk. Feet differ in height and tail tip is near the left border. Dewlap ownership requires a real source-specific boundary.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 68,
+      "y0": 471,
+      "x1": 1144,
+      "y1": 785
+    },
+    "margins": {
+      "left": 68,
+      "right": 109,
+      "top": 471,
+      "bottom": 468
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

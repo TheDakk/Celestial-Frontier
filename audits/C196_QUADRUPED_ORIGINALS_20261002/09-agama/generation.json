@@ -1,0 +1,14 @@
+{
+  "id": "09-agama",
+  "name": "Agama",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-1e92f4f9-d71d-42f0-9c41-cdd91c56f7ef.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "4bf1e5d2fc7d1931395c7aa2171fcd4d7bb11baaca71dc53ac61b32a9c203e26",
+  "bytes": 1123145,
+  "promptSha256": "ff52967b1dcb7eb9d893e93d40e2d37925c235255b9cb818a5e6d8e793c4ae97",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
