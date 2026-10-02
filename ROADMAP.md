@@ -86,8 +86,8 @@ Self-contained for a fresh Claude session. Codex's block follows below. Session 
 
 Dakk resumed the full program in `audits/MAILBOX/C132_ART_PROGRAM_20261001.md`. Read Claude's absolute read-only
 mailbox at `~/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md` at run start and batch end;
-write only this lane's `audits/MAILBOX/TO_CLAUDE.md`. Signed G merges `4cad826c9` and `062d85b2a` include Claude
-through `4c6698fea`; newer signed Claude work through `02a94595c` awaits the next clean merge. His handoff above is preserved.
+write only this lane's `audits/MAILBOX/TO_CLAUDE.md`. Signed G merges `4cad826c9`, `062d85b2a` and `31f088a4d` include Claude
+through `02a94595c`, including live-world routing, all ten painted themes and D29. His handoff above is preserved.
 
 **Program and ownership:** 43 biome-family FAR/MID/NEAR sets; ten remaining painted ability-theme sequences;
 anatomical full-stage attacks; Centipede C12 and all-pair 60 fps at 4× CPU; continuing 24-original batches and
@@ -97,12 +97,12 @@ Latest C136 coverage is 181/631 accepted, 19 held. Dakk's final visual pass and 
 
 **Delivered and measured:**
 - `C132_ARENAS_20261001`: eight painted triplets retain their original held reports. D29 (Dakk, October 2) now
-  explicitly admits native 1672×941 alongside native 2560×1440. Merge Claude's signed validator, revalidate these eight
-  and resume the remaining biome families. Actual seams, fringes and staging holds still need full-size review.
+  explicitly admits native 1672×941 alongside native 2560×1440. The signed validator is merged; revalidate these eight
+  and generate the remaining 36 triplets in three disjoint queues. Actual seams, fringes and staging holds still need full-size review.
 - `C132_EFFECTS_20261001`: ten themes / 30 phase assets pass delivery controls and full-script native films at 4× CPU
   on signed `b80e4b156`: zero rig refusals, CPU p95 6.2–6.4 ms. All 30 phases are visible in actual-film review.
   Ground-level placement despite a jaw attack and four low-contrast phases remain concrete holds; Claude's separate
-  full-size admission and registry wiring in `9f9032526` awaits merge.
+  full-size admission and registry wiring in `9f9032526` is merged.
 - `G2_C132_QUADRUPEDS_20261001`: 24 immutable originals scored by Claude; Iguana and repaired Horned Lizard accepted.
   `C136_SPRAWLER_REFERENCES_20261002`: Monitor Lizard, Iguana and Newt manual references remain UNMEASURED;
   24 exact-original reviewed external-pinna absence declarations are ready for C136 re-scoring.
@@ -128,8 +128,10 @@ manual references plus an incomplete Water Strider draft are in `C136_BIRD_INSEC
 owners contain paint, with anatomy/contact holds retained. `G2_C136_TARGETED_EDITS_20261002` adds four separate successors
 for Giant Salamander, Giraffe, Buffalo and Bee, all framing PASS, original source paintings unchanged.
 
-**Gates and next steps:** C153 released the ten-theme native reservation; no epoch is active. C154–C156 deliver the
-completed audits/references. Root validation and draft-release owner pass. Post the exact reservation before every
+**Gates and next steps:** C158 reserves one bounded Centipede SIMD native follow-up after exact 56-target/1,792-part
+parity; production sweep bytes remain unchanged. C153 released the prior ten-theme epoch. C154–C157 deliver audits,
+references and the signed Claude merge. Root validation, draft release and 68 merged routing/theme checks pass (one
+optional delivery diagnostic skipped). Post the exact reservation before every
 native/performance epoch and release it afterward; no concurrent heavy work. Browser commands require outside-sandbox
 execution. Score/calibrate home resolution and exact service-worker `__local_ai/` exclusion are implemented with focused
 controls in `C132_I5_PREP_20261002`; new v2 evidence serialization aliases home paths without changing samples or old evidence.

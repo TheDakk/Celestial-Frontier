@@ -1,6 +1,6 @@
 # Arena routing: every creature on its home ground (Claude, 2026-10-01)
 
-Matches code as of 2026-10-01 (branch `anthropic/overnight-arena-routing`). This is Claude's side of C132 program item 1. Codex
+Matches code as of 2026-10-02 (live encounter-world wiring and D29 delivery canvases). This is Claude's side of C132 program item 1. Codex
 paints FAR/MID/NEAR plate sets per biome family. Each accepted set is registered with one line, and battles route to it with no code change.
 
 ## What was built
@@ -26,14 +26,17 @@ paints FAR/MID/NEAR plate sets per biome family. Each accepted set is registered
      until each gets its own.
   3. The accepted Earth temperate set (`'fallback'`). On a world with liquid, the reason also notes that the stage's procedural wet
      arena draws the water for a side in water (unchanged).
-  4. With no world context the result is `'default'`. This is every battle today, because `main.ts` passes no `worlds` yet.
+  4. With no world context the result is `'default'`. Since October 2, `main.ts` passes the encounter's world facts through
+     `battle2-live-worlds.ts`; generated worlds route by their own biome. Canonical Earth retains the accepted temperate preset
+     and the existing lake habitat for swimmers. Unknown or unresolvable world facts retain the explicit fallback.
 - When a biome has several sets, the choice is seeded by the **world** (`key#seed`). A world always shows the same home ground, battle
   after battle.
 - With only the temperate set registered, the 43 biomes resolve to 1 `biome`, 10 `kin` (terran) and 32 `fallback`.
 
 ### Current battles
-Routing, placement, habitat, layout and seeds are byte-identical. With no world context, the same recipe, FAR and NEAR are fetched at
-the same paths. **One intended pixel change:** at Codex's request (mailbox C132), the MID plate is now the delivery manifest's runtime
+Live generated-world battles now supply the encounter's biome and world identity; wild fights use the wild world, guardians use
+its lair, and duels apply seeded host/visitor alternation. Earth and missing-world contexts keep the accepted fallback. With no
+world context, the same recipe, FAR and NEAR are fetched at the same paths. **The original MID change remains:** at Codex's request (mailbox C132), the MID plate is now the delivery manifest's runtime
 MID. That is the approved despilled copy `audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png`: alpha is identical and 190 RGB
 edge pixels change, which the test proves.
 
@@ -48,8 +51,9 @@ To revert the MID change, set `plates.mid.runtime` in the temperate delivery man
 
 Deliver, under `audits/<YOUR_FOLDER>/`:
 
-1. **Three painted masters**, each 2560 × 1440, painted separately (never one image sliced). The accepted temperate v1 at 1672 × 941 is
-   the only exemption, and it is bound to its three master SHA-256 values.
+1. **Three painted masters**, each natively 1672 × 941 or 2560 × 1440, painted separately (never one image sliced or upscaled).
+   D29 (Dakk, October 2; `audits/MAILBOX/DECISIONS.md`) admits the generator's native 1672 × 941 delivery alongside the kit target.
+   Every other size remains refused. The accepted temperate set's exact master hashes stay bound as before.
    - **FAR**: full-bleed opaque scene. Every alpha is 255, and at most 0.5 % of pixels are key magenta.
    - **MID** and **NEAR**: key-painted terrain on flat #FF00FF.
 2. **Keyed runtime copies of MID and NEAR** (alpha 0 in the key field), from intake like `ARENA_EFFECTS_V42_PROOF_20260912/intake.mjs`,
