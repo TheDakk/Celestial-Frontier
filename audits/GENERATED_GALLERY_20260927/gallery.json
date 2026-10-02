@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 243,
+ "total": 247,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -1053,6 +1053,27 @@
    "note": "HELD: a seam line at the near shoulder remains in the late idle"
   },
   {
+   "family": "Birds",
+   "name": "Crow",
+   "nativeDir": "audits/SPIKE_REFILM_20261002/crow",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on the C181 head contours + Codex C201 shared faint fix (spike gone)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hawk",
+   "nativeDir": "audits/SPIKE_REFILM_20261002/hawk",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: spike gone after C201, but a small pink opening shows at the belly between the legs in the late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Snowy Owl",
+   "nativeDir": "audits/SPIKE_REFILM_20261002/snowy-owl",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: spike gone after C201, but a grey seam line shows around the neck/shoulder in the late idle"
+  },
+  {
    "family": "Fish",
    "name": "Cod + Perch (gill welds)",
    "nativeDir": "audits/C59_REPAIR_20260926/fish-gill-two-native",
@@ -1702,6 +1723,13 @@
    "nativeDir": "audits/CAPUCHIN_C192_20261002/capuchin",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: reaction whole and excellent; in the head-down late idle the shoulder/back fur pulls into a pointed spike (nape-spike class)"
+  },
+  {
+   "family": "primate",
+   "name": "Capuchin",
+   "nativeDir": "audits/SPIKE_REFILM_20261002/capuchin",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: spike gone after C201, but a thin dark seam line shows at the neck of one capuchin in the late idle"
   }
  ]
 }

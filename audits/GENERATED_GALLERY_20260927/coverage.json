@@ -1,12 +1,11 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 203,
- "pct": 32.2,
+ "covered": 204,
+ "pct": 32.3,
  "heldNotCounted": [
   "Capuchin",
   "Chough",
-  "Crow",
   "Flounder",
   "Hawk",
   "Horse",
@@ -177,8 +176,8 @@
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 38,
-   "pct": 37.3,
+   "covered": 39,
+   "pct": 38.2,
    "names": [
     "Kestrel",
     "Desert Owl",
@@ -207,6 +206,7 @@
     "Vulture",
     "Tanager",
     "Woodpecker",
+    "Crow",
     "Raven",
     "Robin",
     "Lark",

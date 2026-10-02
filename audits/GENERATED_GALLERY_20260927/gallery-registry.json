@@ -2026,5 +2026,37 @@
   "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)",
   "batch": "audits/C173_HOLD_SOURCE_REPAINTS_20261002/v2",
   "tag": "g2c197"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Crow",
+  "nativeDir": "audits/SPIKE_REFILM_20261002/crow",
+  "note": "whole in reaction and late idle on the C181 head contours + Codex C201 shared faint fix (spike gone)",
+  "batch": "audits/C172_SHARED_HEAD_SPIKE_20261002",
+  "tag": "c201refilm"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hawk",
+  "nativeDir": "audits/SPIKE_REFILM_20261002/hawk",
+  "note": "HELD: spike gone after C201, but a small pink opening shows at the belly between the legs in the late idle",
+  "batch": "audits/C172_SHARED_HEAD_SPIKE_20261002",
+  "tag": "c201refilm"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Snowy Owl",
+  "nativeDir": "audits/SPIKE_REFILM_20261002/snowy-owl",
+  "note": "HELD: spike gone after C201, but a grey seam line shows around the neck/shoulder in the late idle",
+  "batch": "audits/C172_SHARED_HEAD_SPIKE_20261002",
+  "tag": "c201refilm"
+ },
+ {
+  "family": "primate",
+  "name": "Capuchin",
+  "nativeDir": "audits/SPIKE_REFILM_20261002/capuchin",
+  "note": "HELD: spike gone after C201, but a thin dark seam line shows at the neck of one capuchin in the late idle",
+  "batch": "audits/C172_SHARED_HEAD_SPIKE_20261002",
+  "tag": "c201refilm"
  }
 ]
