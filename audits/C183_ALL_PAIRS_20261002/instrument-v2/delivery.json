@@ -1,0 +1,124 @@
+{
+  "schema": "cf.c183-exact-local-instrument-delivery/v1",
+  "status": "PREPARED_UNQUALIFIED",
+  "scope": "Additive audit-only instrument successor; original C173 runner and failed first-pair evidence preserved.",
+  "diagnosis": {
+    "path": "audits/C183_ALL_PAIRS_20261002/anchor-diagnosis.json",
+    "sha256": "8b357ba195bff75c0d99491e1eb6c49e2ce653206e7bd7897ccb15d4a5543245"
+  },
+  "validation": {
+    "helperControls": {
+      "status": "PASS",
+      "checks": 16,
+      "receipt": "audits/C183_ALL_PAIRS_20261002/instrument-v2/controls.json",
+      "scope": "Stage-contract double, recorded arithmetic and source-body controls only"
+    },
+    "syntax": {
+      "status": "PASS",
+      "checks": 10,
+      "receipt": "audits/C183_ALL_PAIRS_20261002/instrument-v2/syntax.json"
+    },
+    "peerReview": {
+      "status": "NO_ACTIONABLE_DEFECT_FOUND",
+      "receipt": "audits/C183_ALL_PAIRS_20261002/instrument-v2/peer-review.json"
+    },
+    "receiptAndPredecessorHashes": "MATCH",
+    "actualLoadedRig": "UNRUN",
+    "bundleAndPreparation": "UNRUN",
+    "native": "UNRUN"
+  },
+  "reservation": "Claude C184 active; no heavy CPU, preparation, loaded-rig execution or native retry performed.",
+  "productChanges": false,
+  "nativeRuns": 0,
+  "coordinateToleranceChanged": false,
+  "validCpuRedContinuation": "UNCHANGED",
+  "qualificationLimits": [
+    "The 16 executed positive/negative controls use a stage-contract double; they do not prove loaded-rig contact geometry.",
+    "The actual loaded-rig control, targeted bundle/preparation and native replay remain UNRUN.",
+    "Ancillary node-side transitive source closure is not exhaustively newly claimed."
+  ],
+  "files": [
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/README.md",
+      "bytes": 4523,
+      "sha256": "00ddfc54470a265ecb2aee748469d1461f0fe263cb5fa8acbab2d172beb97616"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/actual-stage-control.mjs",
+      "bytes": 5801,
+      "sha256": "f7bd291ecf71add9cf50970a07c713031ef4cfc5767acb39f348cec3be6bd9a9"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/controls.json",
+      "bytes": 3280,
+      "sha256": "2aa9a29973e53ea4b6c5819fa897484c2cc4be4e9559e426d206a29b5df1ed1d"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/input-contract.mjs",
+      "bytes": 1208,
+      "sha256": "71f82026bde6d9da47eebe9ccfa0e52e63a8d92a452b91882fceb0ad7834c415"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/local-beat-probe.mjs",
+      "bytes": 3048,
+      "sha256": "b515d406eb62ff4f91af09b552c95107df6c0d565072abbe4645ee8f302f122e"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/native-entry.mjs",
+      "bytes": 22666,
+      "sha256": "82adccd89f1e7fcf1ae0988ef512b1f61d74f4400ebcf47a0e2126fda0be77f6"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/native-runner.mjs",
+      "bytes": 17220,
+      "sha256": "bbc8e10cc67b180cda2cce99636b8518e07f6c6020b85dae417cd85e9eef60ab"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/peer-review.json",
+      "bytes": 1012,
+      "sha256": "8859b764f99f4133ca6ca95a37a2a525389f0ed443bfcd3ed20f7f3c4bb13c7f"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/prepare-entry.ts",
+      "bytes": 663,
+      "sha256": "4fd0bb26f0b7697d7e208802659ba7194072aa72da3301fc5ef19707eb634927"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/prepare-v2.mjs",
+      "bytes": 10012,
+      "sha256": "5e8d326454b3258092f821c037af85a1ce4190097e3354243d11c00cc7a4d487"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/probe-controls.mjs",
+      "bytes": 6369,
+      "sha256": "aaf0e7c7cb978aa7dab75dd238d1314d88511e4795b0bbb3dbd15ebd16ca418b"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/run-sweep-v2.mjs",
+      "bytes": 3467,
+      "sha256": "f9cb3b9bae9d2aa44b95ed40ba4c40d9f6d421ff2db61c070ecf35042cc67077"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/syntax.json",
+      "bytes": 2152,
+      "sha256": "d55077d8a141d5ba5074465a480910d3bdfd2735d56720a3b2a26d3f00b7ea5a"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/transform-receipt.json",
+      "bytes": 3093,
+      "sha256": "1d5c8b786f6564e0fdeabd6896e06c9b014f9a0a67ef045fec5ba6a7ec4e1f08"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/validate-v2.mjs",
+      "bytes": 3178,
+      "sha256": "3c0fa2fbcba576cc084625e66167932d73103385066383a31cdecf217392e31f"
+    },
+    {
+      "path": "audits/C183_ALL_PAIRS_20261002/instrument-v2/validate.mjs",
+      "bytes": 11967,
+      "sha256": "803c4a3a734fd7c1f5858aa14265fcae17cc77fe23eeedf2aea9beb52b6baf0b"
+    }
+  ],
+  "fileCount": 16,
+  "totalBytes": 99659
+}
