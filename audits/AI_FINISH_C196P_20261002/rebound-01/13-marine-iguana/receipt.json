@@ -1,0 +1,96 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "13-marine-iguana",
+    "parts": 27,
+    "atlasSize": {
+      "width": 2047,
+      "height": 387
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "b52b6eb755d0e479fa80c2520ef14dfdbbbe5f5dcbd596c33a3c35f213027917",
+    "recordRecipeHash": "51b1d7adc42d4d5367467932d73c208d0d95beaa902cca2ca11b24cc931a5d82",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "b52b6eb755d0e479fa80c2520ef14dfdbbbe5f5dcbd596c33a3c35f213027917",
+      "atlasSha256": "695d10f2e04b0783b9910b413f2b7a28c19235d54d4207bd1fb225d2122eaa7a",
+      "parts": 27,
+      "comparedChannels": 2222320,
+      "changedChannels": 0
+    },
+    "vertices": 960,
+    "partVertices": 2166,
+    "parts": 27,
+    "leaves": 420,
+    "triangles": 1718,
+    "ownershipEdges": 3834,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 22,
+        "distancePx": 2.952964612046687,
+        "supports": [
+          299
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 47,
+        "distancePx": 4.275511665286441,
+        "supports": [
+          462,
+          395
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 30,
+        "distancePx": 5.099019513592725,
+        "supports": [
+          19
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 1,
+        "distancePx": 6.341135544995078,
+        "supports": [
+          162
+        ]
+      }
+    ],
+    "sourceBindingHash": "cf8e46c6ac8eedda103f03da13b29da8058ec6bb9286e6bce88073d7ce68aef7",
+    "sourceVertices": 960,
+    "vertices": 1222,
+    "sharedSupports": 387,
+    "pins": 217,
+    "independentSurfaceParts": 27,
+    "sourceJoins": 35,
+    "excludedOverlaps": 21,
+    "observedExcludedBoundaries": 21,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 21,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "recordRecipeHash": "51b1d7adc42d4d5367467932d73c208d0d95beaa902cca2ca11b24cc931a5d82",
+  "bindingHash": "db114d926ede236150f82bf6bf4780e0b76d776caecb225f09684c075dbacaed",
+  "masterSha256": "9200fbcb9b42baa95175a0d23e2358332aef0fe19a4e5d5ba7d5fbebcb36116f",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

@@ -1,0 +1,9 @@
+{
+ "id": "02-sponge",
+ "family": "sessile-filter",
+ "verdict": "REFUSE",
+ "reasons": [
+  "no-reference: no other hand-authored subject of family sessile-filter"
+ ],
+ "semanticPresence": null
+}
