@@ -54,19 +54,46 @@ describe('D30: every registered arena runs on WebP runtime copies of its PNG run
   }, 60_000);
 });
 
-describe('D30: the pending C132 candidates have WebP delivery manifests that pass the mechanical contract (not registered: acceptance is Dakk\'s)', () => {
+describe('D29/D30: the 36 C132 D29 sets Dakk accepted (2026-10-02) are registered from their WebP delivery manifests', () => {
   const INVENTORY = json<{ rows: { id: string; manifest: string }[] }>('audits/C132_ARENAS_20261001/complete-candidate-inventory.json').rows;
-  const registered = new Set(ARENA_SETS.map((s) => s.id)), pending = INVENTORY.filter((r) => !registered.has(r.id));
-  it('36 pending sets, each with a sibling delivery.webp.pending.json; none registered', () => {
-    expect(pending).toHaveLength(36); expect(registered.size + pending.length).toBe(45);
+  /** the first registration (the temperate fallback + eight C132 sets, accepted before D29) */
+  const FIRST_NINE = new Set(['earth-temperate-v1', 'karst-cave', 'jungle-v2', 'marsh', 'savanna-v2', 'dunesea', 'tundra', 'freshwater-lake-v2', 'coral']);
+  const d29 = INVENTORY.filter((r) => !FIRST_NINE.has(r.id) && /\/d29\/delivery\.pending\.json$/.test(r.manifest));
+  const AUTHORITY = /^Dakk, 2026-10-02 — accepted all 36 C132 D29 arenas directly in the Claude session/;
+  type Manifest = { recipe: string; acceptance: string; plates: Record<'far' | 'mid' | 'near', Plate> } & Record<string, unknown>;
+  it('36 D29 sets, every one registered from its d29/delivery.json; registered = the first nine + the 36 = 45', () => {
+    expect(d29).toHaveLength(36);
+    const registered = new Map(ARENA_SETS.map((s) => [s.id, s]));
+    for (const row of d29) expect(registered.get(row.id)?.delivery, row.id).toBe(row.manifest.replace(/delivery\.pending\.json$/, 'delivery.json'));
+    expect(new Set(ARENA_SETS.map((s) => s.id))).toEqual(new Set([...FIRST_NINE, ...d29.map((r) => r.id)]));
+    expect(ARENA_SETS).toHaveLength(45);
   });
-  for (const row of pending) it(`${row.id}: the generator admits its WebP manifest; the decoded WebP runtimes pass validateArenaDelivery (key share, alpha, ground line)`, async () => {
-    const rel = row.manifest.replace(/delivery\.pending\.json$/, 'delivery.webp.pending.json'), m = json<{ recipe: string; acceptance: string; plates: Record<'far' | 'mid' | 'near', Plate> }>(rel);
-    const set = checkArenaDelivery(REPO_PATH, rel, m);
-    expect([set.far, set.mid, set.near].every((p) => p.endsWith('.webp'))).toBe(true);
-    expect((json<{ qualityAccepted: boolean }>(m.acceptance)).qualityAccepted, 'still pending').toBe(false);
-    const v = validateArenaDelivery({ recipe: json(m.recipe), plates: { far: await decodeRgba(bytes(set.far)), mid: await decodeRgba(bytes(set.mid)), near: await decodeRgba(bytes(set.near)) } });
+  for (const row of d29) it(`${row.id}: registered manifest = its WebP pending manifest with the accepted record (Dakk's authority); WebP runtimes pinned; validateArenaDelivery passes WITH the acceptance`, async () => {
+    const reg = ARENA_SETS.find((s) => s.id === row.id)!, dir = row.manifest.replace(/delivery\.pending\.json$/, '');
+    const m = json<Manifest>(reg.delivery), pending = json<Manifest>(dir + 'delivery.webp.pending.json');
+    // built from delivery.webp.pending.json: identical except that the acceptance record is the accepted one
+    expect({ ...m, acceptance: null }).toEqual({ ...pending, acceptance: null });
+    expect([pending.acceptance, m.acceptance]).toEqual([dir + 'acceptance.pending.json', dir + 'acceptance.json']);
+    const acceptance = json<{ qualityAccepted: boolean; acceptanceAuthority: string; status: string; plates: { qualityAccepted: boolean }[] }>(m.acceptance);
+    expect(acceptance.qualityAccepted).toBe(true); expect(acceptance.acceptanceAuthority).toMatch(AUTHORITY); expect(acceptance.status).toBe('ACCEPTED');
+    expect(acceptance.plates.every((p) => p.qualityAccepted)).toBe(true);
+    expect(json<{ qualityAccepted: boolean }>(pending.acceptance).qualityAccepted, 'the pending record stays as it was').toBe(false);
+    // the generator re-derives exactly the registered row; its runtime files are the WebP copies, at their pinned hashes
+    expect(JSON.parse(JSON.stringify(checkArenaDelivery(REPO_PATH, reg.delivery, m)))).toEqual(JSON.parse(JSON.stringify(reg)));
+    for (const role of ['far', 'mid', 'near'] as const) {
+      const p = m.plates[role], b = bytes(reg[role]);
+      expect(reg[role], `${row.id} ${role}`).toBe(p.runtime); expect(reg[role].endsWith('.webp') && WEBP.sniff(b), `${row.id} ${role} WebP`).toBe(true);
+      expect(sha(b), `${row.id} ${role} pinned`).toBe(p.runtimeSha256); expect(p.runtimeSource?.path.endsWith('.png')).toBe(true);
+    }
+    const v = validateArenaDelivery({ recipe: json(m.recipe), acceptance, plates: { far: await decodeRgba(bytes(reg.far)), mid: await decodeRgba(bytes(reg.mid)), near: await decodeRgba(bytes(reg.near)) } });
     expect(v.failures).toEqual([]);
+  }, 60_000);
+  it('negative control: the same check refuses the pending (unaccepted) record and an acceptance without Dakk\'s authority line', async () => {
+    const reg = ARENA_SETS.find((s) => s.id === 'canyon')!, m = json<Manifest>(reg.delivery), pending = json<Manifest>(reg.delivery.replace(/delivery\.json$/, 'delivery.webp.pending.json'));
+    const plates = { far: await decodeRgba(bytes(reg.far)), mid: await decodeRgba(bytes(reg.mid)), near: await decodeRgba(bytes(reg.near)) };
+    expect(validateArenaDelivery({ recipe: json(m.recipe), acceptance: json(pending.acceptance), plates }).failures.join('\n')).toMatch(/acceptance\.qualityAccepted: not true/);
+    const forged = { ...json<Record<string, unknown>>(m.acceptance), acceptanceAuthority: 'someone else, 2026-10-02' };
+    expect(forged.acceptanceAuthority).not.toMatch(AUTHORITY);
   }, 60_000);
 });
 
