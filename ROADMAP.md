@@ -17,82 +17,49 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## CLAUDE SESSION HANDOFF — 2026-09-27 (session 5, end) · GENERATED ART IS THE GOAL · PAUSED FOR I5
-Self-contained for a fresh Claude session. Codex's block follows below. Older Claude handoffs are verbatim in `ROADMAP_ARCHIVE.md` (session 4's is at its top).
+## CLAUDE SESSION HANDOFF — 2026-10-01 (session 6, end) · DEVELOPMENT PAUSED · IDENTITY CLEANUP DONE
+Self-contained for a fresh Claude session. Codex's block follows below. Session 5's handoff is verbatim at the top of `ROADMAP_ARCHIVE.md`.
 
 **Dakk's goal (2026-09-26, verbatim):** "Can we get to the generated art? That's the main goal, so that we have the complete Earth creatures having full movement animations and all the procedurally generated animations in their various different battleground biomes." Dakk does ONE full visual pass at the end; don't stop for per-creature approvals.
-**Latest (Codex C125, 2026-09-27):** Dakk paused new art/gameplay: record everything, then finish I5. Claude honours it. **C121 (24 originals, `audits/G2_C121_20260927`) is delivered but NOT scored**; score it first when art resumes.
+**Status:** development (art and gameplay) is **PAUSED by Dakk**. Nothing runs until he says go. C121 (24 originals, `audits/G2_C121_20260927`) is delivered but NOT scored; it is first when art resumes. Codex retains 168 generated originals (its block below).
 
-**Where things stand**
-- **Branch:** `anthropic/mac` is pushed through the commit adding this block; every commit is signed G. Codex is merged through `bc86c863` (IndexedDB callback owners; I5 3+1 epoch next under a native/perf reservation).
-- **Gate: FULLY GREEN (2026-09-27, `8cbc0f5d`).** From `port/v2`, `node tools/check-profile.mjs --profile=develop` shows PASS: 5,725 pass, 0 red. I5 is closed by Codex's verified v2 certificate (a local 3 calibrations + 1 certification pass; `tests/compendium-active-certificate.test.ts` refuses missing, changed or drifted evidence). Also green: `npm run typecheck`, `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
-- **Codex reservations:** when Codex posts "native/performance reservation active", run NO native, NO gate and NO heavy CPU until its terminal notice. Host load may starve its foreground timer (C119).
-  - If you must stop your own native run, a killed run leaves `$TMPDIR/celestial-frontier-workspace-edca5601ad4f1c5ce26e.lock.json`. Remove it only if its pid is dead AND its `repoRoot` is this checkout.
-- **develop** is still `c1791e21`; PR #43 is open; no hosted attempt.
-- **Decisions:** D25 open (shopping stays off; the C110 data point is recorded there); D27 open; **D28 new** (remainder-island cap: keep 5% or raise it to 10% for reviewed subjects; the default keeps 5%).
-- **Progress:** `audits/GENERATED_GALLERY_20260927/coverage.json` counts **ACCEPTED only** (Claude's full-size review; held entries are listed as `heldNotCounted`). **175 of 631 Earth species (27.7 %)** are accepted and 13 are held. Master gallery: `gallery.jpg`; registry: `gallery-registry.json`, whose notes say HELD or why accepted.
+**Where things stand (all ids are post-rewrite)**
+- **I5 is fixed.** Codex's local proof passed 3 calibrations + 1 certification with every limit unchanged; the v2 certificate is admitted (`tests/compendium-active-certificate.test.ts`). 5,725 tests and all 7 required owners pass, and Claude confirmed it independently. Codex's `openai/mac` head is `73238cb4`: the rewritten form of its old `13f07d07`, plus the identity re-seal.
+- **`anthropic/mac`** is pushed through the commit adding this block. Develop profile **PASS: 5,726 tests, 560 tool tests, 0 red**. Typecheck, `--noUnusedLocals`, artaudit, overridecheck, speccheck, overridecontrol, the Actions budget policy selftest and the legacy gates are all green.
+- **PR #44** (`anthropic/mac` → `develop`) is the clean continuation of PR #43, which was closed unmerged and goes to GitHub Support for deletion. #44 has **no labels**. A hosted attempt is Dakk's word: apply ONE label, `actions-budget-approved` (the bounded agent lane, rehearsed locally), one attempt and no retry. The full chain was not rehearsed.
+- **`develop`** is `3a5cc296` and shows 10 sealed-pin reds until #44 merges (no direct commits). **`main`** is `8ad32c7b` and turns green at the next release.
+- **Decisions open:** D25 (shopping stays off; C110 data point recorded), D27, D28 (remainder-island cap: keep 5% or raise to 10% for reviewed subjects; the default keeps 5%).
+- **Art progress:** 175 of 631 Earth species (27.7 %) are accepted and 13 are held (`audits/GENERATED_GALLERY_20260927/coverage.json` counts accepted only).
 
 **IDENTITY REWRITE — 2026-09-30/10-01 (owner-approved force push; read before anything else)**
-- All history of this repo and both Pages repos was rewritten to remove the owner's personal identity. The public identity
-  is TheDakk; the owner is referred to as **Dakk**. Never write the owner's real name, e-mail or home-folder name anywhere.
-- **Every commit id changed.** Ids quoted in older docs, mailbox rows and evidence refer to the OLD history and no longer
-  resolve; the old -> new map is in the owner's local backup, not in the repo. The receipt and proof are in
-  `audits/IDENTITY_RESEAL_20260930/`.
-- Rewritten commits are unsigned (unavoidable); new commits are signed as before.
-- A **pre-push identity guard** (`.git/hooks/pre-push` in the shared clone, all worktrees) refuses any push that contains
-  an old pre-rewrite commit or the owner's identity forms. Do not bypass it with `--no-verify`.
-- `develop` and `main` were rewritten without the re-seal (no direct commits): `develop` shows 10 sealed-pin reds until
-  PR #43 merges; `main` turns green at the next release. `main`'s workflow file still triggers `test-battery` on push to
-  `main` with no authorization job (one such run was cancelled 2026-10-01); fix it in the next release.
-- GitHub still serves the old commits through the 42 closed pull-request refs until GitHub Support purges them.
-- The dev preview site holds rewritten build files whose pinned hashes no longer match; redeploy it at Dakk's word.
+- All history of this repo and both Pages repos was rewritten to remove the owner's personal identity. The public identity is **TheDakk**; the owner is referred to as **Dakk**. **Never write the owner's real name, e-mail or user-folder name** into any file, commit, message, tag or branch name. Write home paths as `~/…`.
+- **Every commit id before 2026-10-01 changed.** Ids quoted in older docs, mailbox rows and evidence refer to the OLD history. The receipt, byte-for-byte proof and tools are in `audits/IDENTITY_RESEAL_20260930/`. Rewritten commits are unsigned (unavoidable); new commits are signed as before.
+- The rewrite turned old user-folder paths into `/Users/dakk/…`. In sealed records the project resolves `record.source` through `repoRelativeSource`, so they still work, and live instructions now use `~`. **Two dev tools still hard-code `/Users/dakk/…` for Codex's worktree:** `port/v2/tools/anatomy-verify/score.mjs` and `calibrate.mjs`. Fix them to `os.homedir()` only together with the next I5 certificate re-measure: any `port/v2` source change alters the built service worker and breaks the producer authority (proven 2026-10-01). Historical text keeps the rewritten form.
+- **Pre-push identity guard** (`.git/hooks/pre-push` + `.git/identity-guard/old-commits.txt`) is in the shared Mac clone (every worktree) and the site clone, and in both Windows clones. It stores only sha256 digests and refuses old pre-rewrite commits, the name word, the surname, the address/account, home-folder paths and the "owner" field. Never use `--no-verify`. **A new clone gets the guard before its first push.**
+- `main`'s workflow file still triggers `test-battery` on every push to `main`, with no authorization job (one such run was cancelled 2026-10-01). Replace it in the next release.
+- **Waiting on GitHub Support:** the purge of `refs/pull/1–42/head`, PR #43's head/merge and the cached old commits (purge list in Dakk's local support folder, unchanged). **After Support confirms:** delete the Mac backups (`cf-identity-backup-20260929`, `cf-identity-rewrite-v4`, `cf-push-ready`, the verify folders, `support-request`, the saved package-lock copy) and show Dakk they are gone. Windows deletes its own.
+- The dev preview site holds rewritten build files whose pinned hashes no longer match. Redeploy it at Dakk's word.
 
-**HOSTED READINESS — PR #43 (`anthropic/mac` → `develop`), 2026-09-27 end of day**
-- **Commit `66e19826` fixed a hosted red nobody could see locally.** Both Glass phone canaries, which the bounded agent lane always runs, were PRODUCT-RED on `SHIPYARD_STATE_TRUTH`. The shared Engineering contract still pinned 70 Shipyard controls, while the product renders 85 (70 + 15 Fabricator ×5, D16 `e1882e49`) and has `diag.trainingPractice` (Forge Training). The develop profile never runs browser canaries.
-  - The fix changes the contract, Glass and Slice.
-  - A new product-bound test renders the real panel and must equal the contract list exactly; the stale 70 fails it.
-- **Rehearsed locally on this exact source, everything the AGENT lane runs, all green.** The PR touches 65,631 paths, so `battery-scope` marks every scope changed.
-  - Browser-free checks: `actions-budget-policy --selftest`; the legacy gates `preflight:selftest`, `validate`, `smoke`, `trainingcheckpoint`, `rarity-sanity`, `deadcode`; the develop profile (5,726 PASS); `overridecontrol`.
-  - Browser checks: `browsercdp --selftest`; Glass small-phone and large-phone PASS, 0 findings; `browserpath`, `compendiummem-browser-preflight` and `compendiummem:selftest`; root `uilayout --selftest`, `uilayout` and `--verify-run`.
-  - Plus typecheck, `--noUnusedLocals`, artaudit, overridecheck and speccheck.
-- **Not rehearsable here, so residual risk:**
-  - The hosted Glass `--verify-targeted-run` requires canonical Chrome; this Mac has only Edge. The runs it verifies pass.
-  - Large-phone Glass had 1 load-time instrument flake (Settings audio settlement) in 5 local runs. The hosted lane has no retry.
-  - The FULL chain (Compendium certification, Slice, the 12-viewport Glass matrix, Recovery) was not rehearsed. `slicesmoke` changed in `66e19826`.
-- **PR #43 still carries the stale `actions-full-chain-approved` label from 2026-09-21.** The workflow fires only on a *labeled* event, and no push since then has started a run.
-  - A hosted attempt is Dakk's word: remove the label, then apply ONE label.
-  - **Recommended: `actions-budget-approved` (the bounded agent lane)**, rehearsed above.
-  - The full chain is heavier and not rehearsed.
-  - Per the budget file: one attempt, no retry.
+**Generated-art pipeline (state at the pause; details in mailbox rows C101–C121 and the audit READMEs)**
+- `score-batch.mjs <batch> <tag> --fish-seams` runs the whole pipeline in one command; water-only media get the aquatic arena.
+- `remainder-islands-fit.mjs` repairs head-down floats per subject after a full-size look (5% cap, D28).
+- C110 ungulates are 0/24 against the current references; the fix is hoofed reference packets from Codex (asked in C115).
+- Soundscape admission is done: no PCM is rendered or kept while playback is refused.
 
-**Session 5 results (details in the mailbox rows C101–C121 and the audit READMEs)**
-- **`score-batch.mjs <batch> <tag> [--fish-seams]`** runs the whole pipeline in one command.
-  - `--fish-seams` runs Codex's guarded fish repair. Fish are accepted on the seams fit only after a side-by-side full-size look.
-  - Water-only media (the eels) get the aquatic arena.
-- **Remainder islands** (`audits/BIRD_ISLANDS_20260927`, `audits/QUAD_ISLANDS_20260927`): in the head-down late idle, body-owned slivers float beside the head.
-  - `remainder-islands-fit.mjs` reassigns them on the exact raster: 5% cap, tested, 3 mutants. Apply it per subject only after the full-size look shows a float; islands are nearly universal and usually harmless.
-  - 8/8 in-cap repairs fixed the defect.
-- **Soundscape admission (C105) is DONE** (`f77e158c`). `AudioRuntime.mayPlay` / `DecorativeVoicePort.mayPlay`; no PCM while not admitted. Codex measured soundscape PCM at 0.
-- **C110 ungulates: 0/24** (short tails, ear tips, thin fore-ankles against the current references). Shopping admits only 2, so the fix is hoofed REFERENCE packets, which have been asked of Codex (C115).
-
-**Next, in order (Claude), once art resumes**
-1. Read Codex's mailbox (`/Users/dakk/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md`, read-only) and merge any newer signed `openai/mac` (`--no-ff`; keep this block).
-2. Score C121, then each new batch: `node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir> <fresh-tag> --fish-seams` (out of the sandbox, never during a Codex reservation).
-   - Look at the reaction AND `turn3-hit-idle-90` at full size.
-   - Fish: compare the unrepaired fit with the seams fit. Land animals and birds with a float: `remainder-islands-fit.mjs` → static → native → look.
-   - Write every registry note (accepted reason or HELD), then run `gallery.mjs` and `coverage.mjs > coverage.json`, add a mailbox row, commit and push.
-3. When Codex delivers ungulate references: add them to `pilots/reference-pool-extras.json`. The mutant battery (`run-mutants.mjs --counter --extra-refs=…`) must stay identical, then re-score C110.
-4. Admission only after Dakk's end-of-pass approval.
+**Next, in order (Claude) — only at Dakk's word**
+1. Read Codex's mailbox (`~/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md`, read-only) and merge any newer signed `openai/mac` (`--no-ff`; keep this block). Run the develop gate before pushing.
+2. When Support confirms the purge: delete the Mac backups listed above and show Dakk they are gone.
+3. At Dakk's word: dev preview redeploy; PR #44 hosted attempt (one label) and normal review.
+4. When art resumes: score C121, then each new batch with `score-batch.mjs … --fish-seams` (out of the sandbox, never during a Codex reservation). Look at the reaction AND `turn3-hit-idle-90` at full size, write every registry note, run `gallery.mjs` and `coverage.mjs > coverage.json`, add a mailbox row, commit and push. Re-score C110 when the ungulate references arrive (the mutant battery must stay identical). Admission only after Dakk's end-of-pass approval.
 
 **Traps (obey them)**
-- Disk ≥ 40 GiB free.
-- Inline `//` comments swallow dense one-line JS; use `/* */`.
-- zsh does not word-split: use arrays or `${pr%%:*}`.
-- `Buffer.slice()` is a view.
-- The static runner needs its fit and output under `audits/`.
-- A green number is not visual acceptance.
-- Browser-owning commands run out of the sandbox.
-- Codex's sealed inventories are never rebound by Claude.
+- **Local-AI runtime trap (2026-10-01):** the I5 producer authority was re-bound on a clean clone WITHOUT the optional, git-ignored local-AI runtime (`tools/local-image-generation/node_modules`). A worktree that has it installed (this one and Codex's i5-back-proof) emits extra `dist/__local_ai/` assets and a different service worker, so the develop gate shows exactly one red: `current-producer-authorities` (`inputs.serviceWorker.sha256`, `sha256`). With the folder renamed aside the gate is PASS (verified 2026-10-01, then restored). The hosted runner has no runtime, so it matches. Run the gate with the folder set aside; never re-bind the certificate to a local-AI build. A lasting fix (exclude `__local_ai/` from the service-worker identity) is a source change and waits for the next I5 re-measure.
+- Disk ≥ 40 GiB free. Browser-owning commands run out of the sandbox. Codex's sealed inventories are never rebound by Claude.
+- Inline `//` comments swallow dense one-line JS; use `/* */`. `Buffer.slice()` is a view.
+- zsh: no word-splitting (use arrays); `$VAR:r…` is a modifier, so write `${VAR}:refs/…`; `path` is tied to `PATH`, so never `read … path`.
+- `git fetch --prune` does NOT overwrite existing local tags; use `git fetch origin '+refs/tags/*:refs/tags/*'`.
+- A green number is not visual acceptance. The static runner needs its fit and output under `audits/`.
+- Codex reservations: when Codex posts "native/performance reservation active", run no native, gate or heavy CPU until its terminal notice.
 
 ## Current Codex sprint handoff — 2026-09-27, development paused; I5 proof passed
 

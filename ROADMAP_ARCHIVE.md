@@ -1,5 +1,85 @@
 # Codex I5 continuation superseded 2026-09-27
 
+## Archived Claude handoff — session 5 (2026-09-27), superseded 2026-10-01
+
+### CLAUDE SESSION HANDOFF — 2026-09-27 (session 5, end) · GENERATED ART IS THE GOAL · PAUSED FOR I5
+Self-contained for a fresh Claude session. Codex's block follows below. Older Claude handoffs are verbatim in `ROADMAP_ARCHIVE.md` (session 4's is at its top).
+
+**Dakk's goal (2026-09-26, verbatim):** "Can we get to the generated art? That's the main goal, so that we have the complete Earth creatures having full movement animations and all the procedurally generated animations in their various different battleground biomes." Dakk does ONE full visual pass at the end; don't stop for per-creature approvals.
+**Latest (Codex C125, 2026-09-27):** Dakk paused new art/gameplay: record everything, then finish I5. Claude honours it. **C121 (24 originals, `audits/G2_C121_20260927`) is delivered but NOT scored**; score it first when art resumes.
+
+**Where things stand**
+- **Branch:** `anthropic/mac` is pushed through the commit adding this block; every commit is signed G. Codex is merged through `bc86c863` (IndexedDB callback owners; I5 3+1 epoch next under a native/perf reservation).
+- **Gate: FULLY GREEN (2026-09-27, `8cbc0f5d`).** From `port/v2`, `node tools/check-profile.mjs --profile=develop` shows PASS: 5,725 pass, 0 red. I5 is closed by Codex's verified v2 certificate (a local 3 calibrations + 1 certification pass; `tests/compendium-active-certificate.test.ts` refuses missing, changed or drifted evidence). Also green: `npm run typecheck`, `npx tsc --noEmit --noUnusedLocals`, `npm run artaudit`, `npm run overridecheck`, `node tools/speccheck.mjs`, `npm run overridecontrol`.
+- **Codex reservations:** when Codex posts "native/performance reservation active", run NO native, NO gate and NO heavy CPU until its terminal notice. Host load may starve its foreground timer (C119).
+  - If you must stop your own native run, a killed run leaves `$TMPDIR/celestial-frontier-workspace-edca5601ad4f1c5ce26e.lock.json`. Remove it only if its pid is dead AND its `repoRoot` is this checkout.
+- **develop** is still `c1791e21`; PR #43 is open; no hosted attempt.
+- **Decisions:** D25 open (shopping stays off; the C110 data point is recorded there); D27 open; **D28 new** (remainder-island cap: keep 5% or raise it to 10% for reviewed subjects; the default keeps 5%).
+- **Progress:** `audits/GENERATED_GALLERY_20260927/coverage.json` counts **ACCEPTED only** (Claude's full-size review; held entries are listed as `heldNotCounted`). **175 of 631 Earth species (27.7 %)** are accepted and 13 are held. Master gallery: `gallery.jpg`; registry: `gallery-registry.json`, whose notes say HELD or why accepted.
+
+**IDENTITY REWRITE — 2026-09-30/10-01 (owner-approved force push; read before anything else)**
+- All history of this repo and both Pages repos was rewritten to remove the owner's personal identity. The public identity
+  is TheDakk; the owner is referred to as **Dakk**. Never write the owner's real name, e-mail or home-folder name anywhere.
+- **Every commit id changed.** Ids quoted in older docs, mailbox rows and evidence refer to the OLD history and no longer
+  resolve; the old -> new map is in the owner's local backup, not in the repo. The receipt and proof are in
+  `audits/IDENTITY_RESEAL_20260930/`.
+- Rewritten commits are unsigned (unavoidable); new commits are signed as before.
+- A **pre-push identity guard** (`.git/hooks/pre-push` in the shared clone, all worktrees) refuses any push that contains
+  an old pre-rewrite commit or the owner's identity forms. Do not bypass it with `--no-verify`.
+- `develop` and `main` were rewritten without the re-seal (no direct commits): `develop` shows 10 sealed-pin reds until
+  PR #43 merges; `main` turns green at the next release. `main`'s workflow file still triggers `test-battery` on push to
+  `main` with no authorization job (one such run was cancelled 2026-10-01); fix it in the next release.
+- GitHub still serves the old commits through the 42 closed pull-request refs until GitHub Support purges them.
+- The dev preview site holds rewritten build files whose pinned hashes no longer match; redeploy it at Dakk's word.
+
+**HOSTED READINESS — PR #43 (`anthropic/mac` → `develop`), 2026-09-27 end of day**
+- **Commit `66e19826` fixed a hosted red nobody could see locally.** Both Glass phone canaries, which the bounded agent lane always runs, were PRODUCT-RED on `SHIPYARD_STATE_TRUTH`. The shared Engineering contract still pinned 70 Shipyard controls, while the product renders 85 (70 + 15 Fabricator ×5, D16 `e1882e49`) and has `diag.trainingPractice` (Forge Training). The develop profile never runs browser canaries.
+  - The fix changes the contract, Glass and Slice.
+  - A new product-bound test renders the real panel and must equal the contract list exactly; the stale 70 fails it.
+- **Rehearsed locally on this exact source, everything the AGENT lane runs, all green.** The PR touches 65,631 paths, so `battery-scope` marks every scope changed.
+  - Browser-free checks: `actions-budget-policy --selftest`; the legacy gates `preflight:selftest`, `validate`, `smoke`, `trainingcheckpoint`, `rarity-sanity`, `deadcode`; the develop profile (5,726 PASS); `overridecontrol`.
+  - Browser checks: `browsercdp --selftest`; Glass small-phone and large-phone PASS, 0 findings; `browserpath`, `compendiummem-browser-preflight` and `compendiummem:selftest`; root `uilayout --selftest`, `uilayout` and `--verify-run`.
+  - Plus typecheck, `--noUnusedLocals`, artaudit, overridecheck and speccheck.
+- **Not rehearsable here, so residual risk:**
+  - The hosted Glass `--verify-targeted-run` requires canonical Chrome; this Mac has only Edge. The runs it verifies pass.
+  - Large-phone Glass had 1 load-time instrument flake (Settings audio settlement) in 5 local runs. The hosted lane has no retry.
+  - The FULL chain (Compendium certification, Slice, the 12-viewport Glass matrix, Recovery) was not rehearsed. `slicesmoke` changed in `66e19826`.
+- **PR #43 still carries the stale `actions-full-chain-approved` label from 2026-09-21.** The workflow fires only on a *labeled* event, and no push since then has started a run.
+  - A hosted attempt is Dakk's word: remove the label, then apply ONE label.
+  - **Recommended: `actions-budget-approved` (the bounded agent lane)**, rehearsed above.
+  - The full chain is heavier and not rehearsed.
+  - Per the budget file: one attempt, no retry.
+
+**Session 5 results (details in the mailbox rows C101–C121 and the audit READMEs)**
+- **`score-batch.mjs <batch> <tag> [--fish-seams]`** runs the whole pipeline in one command.
+  - `--fish-seams` runs Codex's guarded fish repair. Fish are accepted on the seams fit only after a side-by-side full-size look.
+  - Water-only media (the eels) get the aquatic arena.
+- **Remainder islands** (`audits/BIRD_ISLANDS_20260927`, `audits/QUAD_ISLANDS_20260927`): in the head-down late idle, body-owned slivers float beside the head.
+  - `remainder-islands-fit.mjs` reassigns them on the exact raster: 5% cap, tested, 3 mutants. Apply it per subject only after the full-size look shows a float; islands are nearly universal and usually harmless.
+  - 8/8 in-cap repairs fixed the defect.
+- **Soundscape admission (C105) is DONE** (`f77e158c`). `AudioRuntime.mayPlay` / `DecorativeVoicePort.mayPlay`; no PCM while not admitted. Codex measured soundscape PCM at 0.
+- **C110 ungulates: 0/24** (short tails, ear tips, thin fore-ankles against the current references). Shopping admits only 2, so the fix is hoofed REFERENCE packets, which have been asked of Codex (C115).
+
+**Next, in order (Claude), once art resumes**
+1. Read Codex's mailbox (`~/Projects/celestial-frontier-openai-mac/audits/MAILBOX/TO_CLAUDE.md`, read-only) and merge any newer signed `openai/mac` (`--no-ff`; keep this block).
+2. Score C121, then each new batch: `node audits/G1_AUTO_AUTHOR_20260926/score-batch.mjs <batchDir> <fresh-tag> --fish-seams` (out of the sandbox, never during a Codex reservation).
+   - Look at the reaction AND `turn3-hit-idle-90` at full size.
+   - Fish: compare the unrepaired fit with the seams fit. Land animals and birds with a float: `remainder-islands-fit.mjs` → static → native → look.
+   - Write every registry note (accepted reason or HELD), then run `gallery.mjs` and `coverage.mjs > coverage.json`, add a mailbox row, commit and push.
+3. When Codex delivers ungulate references: add them to `pilots/reference-pool-extras.json`. The mutant battery (`run-mutants.mjs --counter --extra-refs=…`) must stay identical, then re-score C110.
+4. Admission only after Dakk's end-of-pass approval.
+
+**Traps (obey them)**
+- Disk ≥ 40 GiB free.
+- Inline `//` comments swallow dense one-line JS; use `/* */`.
+- zsh does not word-split: use arrays or `${pr%%:*}`.
+- `Buffer.slice()` is a view.
+- The static runner needs its fit and output under `audits/`.
+- A green number is not visual acceptance.
+- Browser-owning commands run out of the sandbox.
+- Codex's sealed inventories are never rebound by Claude.
+
+
 ## Archived Windows-build handoff — 2026-09-19 (restored 2026-09-30)
 
 > Restored verbatim (identity-scrubbed) from the two Windows-built commits merged as history on 2026-09-30; the tooling it
