@@ -287,6 +287,32 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     handle.dispose();
   });
 
+  it('a theme registered by ONE painted-themes row plays painted with its own phase images; a refused row plays procedural and names why', async () => {
+    const V43 = new URL('../../../../../audits/WILD_V43_PROOF_20260913/', import.meta.url);
+    const storm = { ...(JSON.parse(readFileSync(new URL('wild-anchors.json', V43), 'utf8')) as Record<string, unknown>), theme: 'storm', sequenceId: 'storm-delivery-test-v1' };
+    const manifest = { schema: 'cf.painted-theme-manifest/v1', rows: [{ theme: 'wild', anchors: 'wild-anchors.json', contract: 'v4.2-grandfathered', required: true }, { theme: 'storm', anchors: '../STORM_TEST/storm-anchors.json', contract: 'v4.3' }] };
+    const settlement = { battleId: 'battle-3', champion: { kind: 'player', name: 'Explorer' }, encounter: { defender: { battleGenome: { _earthName: 'Civet', seed: 9, size: 1, loco: 3 } } }, transcript: { log: [{ side: 'A', an: 'Explorer', dn: 'Civet', dmg: 3, hpA: 10, hpB: 5 }, { side: 'B', an: 'Civet', dn: 'Explorer', dmg: 2, hpA: 8, hpB: 5 }] } };
+    const run = async (stormSize: number) => {
+      const h = harness(), extra: string[] = [];
+      const assets: Battle2AssetSource = { json: async (p) => { if (p === '../STORM_TEST/storm-anchors.json') { extra.push(p); return storm; } return h.assets.json(p); },
+        image: async (p) => { if (p.startsWith('../STORM_TEST/')) { extra.push(p); return image(stormSize, stormSize, null, p); } return h.assets.image(p); } };
+      const input = { ...h.input, assets, paintedThemes: manifest, settlement, chronicle: { championName: 'Explorer', defenderName: 'Civet' } } as Battle2StudyInput;
+      const handle = mountBattle2Study(input); const s = await handle.ready; return { h, handle, s, extra };
+    };
+    const ok = await run(1024);
+    expect(ok.s.phase).toBe('playing'); expect(ok.s.effects).toEqual({ left: 'wild: painted sequence', right: 'storm: painted sequence' });
+    expect(ok.extra).toEqual(['../STORM_TEST/storm-anchors.json', '../STORM_TEST/registered/wild-launch.png', '../STORM_TEST/second-pass/registered/wild-travel.png', '../STORM_TEST/targeted-pass/registered/wild-impact.png']);
+    expect(ok.h.calls).toEqual(expect.arrayContaining(['keyed/wild-launch.png', 'keyed/wild-travel.png', 'keyed/wild-impact.png'])); // Wild still loads its own images
+    // the storm turn (B) now creates its painted phase sprites (the procedural control in the test above creates none)
+    const before = ok.h.counts.sprite; ok.h.setNow(20_000); ok.h.ticker.step(); expect(ok.handle.status().turnIndex).toBe(1); expect(ok.h.counts.sprite).toBe(before + 3);
+    ok.handle.dispose();
+    const refused = await run(1254);
+    expect(refused.s.phase).toBe('playing'); expect(refused.s.effects.left).toBe('wild: painted sequence');
+    expect(refused.s.effects.right).toBe('storm: procedural emitter effect (labelled; no painted sequence for this theme yet) (phase image ../STORM_TEST/registered/wild-launch.png is 1254x1254, its anchors say 1024x1024)');
+    expect(refused.s.skipped).toEqual(expect.arrayContaining([expect.stringMatching(/^storm effect: phase image .* is 1254x1254.*; procedural emitter$/)]));
+    refused.handle.dispose();
+  });
+
   it('reduced motion builds without an effects host; a transcript with no stageable row fails closed with a reason', async () => {
     const h = harness({ reducedMotion: true });
     const handle = mountBattle2Study(h.input); expect((await handle.ready).phase).toBe('playing'); expect(h.counts.particleContainer).toBe(0); handle.dispose();

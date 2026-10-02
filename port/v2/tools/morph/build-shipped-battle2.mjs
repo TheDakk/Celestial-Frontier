@@ -29,8 +29,12 @@ const alphaOnly = new Set();
 const gzipped = new Set();
 // alphaOnlyPng lives in battle2-master-pins.mjs: ONE copy, so the pinned alpha bytes are exactly the served ones (C13)
 const FITS = CARD_ARCHETYPES.map((a) => a.dir), MARKINGS = CARD_ARCHETYPES.map((a) => a.markings ?? a.dir);
-const files = new Set([ARENA + 'arena-recipe.json', ARENA + 'wild-anchors.json', ARENA + 'arena-far.png', ARENA + 'keyed/arena-mid.png', ARENA + 'keyed/arena-near.png', 'audits/CIVET_2D_PROOF_20260912/civet.landmarks.json', 'audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png']);
-const anchors = JSON.parse(fs.readFileSync(path.join(R, ARENA, 'wild-anchors.json'), 'utf8')); for (const p of anchors.phases ?? []) if (p.keyedImage && !/^procedural:/.test(p.keyedImage)) files.add(ARENA + p.keyedImage);
+const files = new Set([ARENA + 'arena-recipe.json', ARENA + 'arena-far.png', ARENA + 'keyed/arena-mid.png', ARENA + 'keyed/arena-near.png', 'audits/CIVET_2D_PROOF_20260912/civet.landmarks.json', 'audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png']);
+// every painted ability-theme sequence registered in the game's manifest (2026-10-01; Wild's row is `wild-anchors.json`, so its files are
+// unchanged): the anchors JSON (relative to the arena directory) and its keyed phase images (relative to that JSON's own directory)
+const themeManifest = JSON.parse(fs.readFileSync(path.join(R, 'port/v2/apps/game/src/effects/painted-themes.json'), 'utf8'));
+for (const row of themeManifest.rows ?? []) { const rel = path.posix.normalize(ARENA + row.anchors); files.add(rel);
+  const anchors = JSON.parse(fs.readFileSync(path.join(R, rel), 'utf8')); for (const p of anchors.phases ?? []) if (p.keyedImage && !/^procedural:/.test(p.keyedImage)) files.add(path.posix.normalize(path.posix.dirname(rel) + '/' + p.keyedImage)); }
 for (const dir of FITS) { const record = JSON.parse(fs.readFileSync(path.join(R, dir, 'record.json'), 'utf8')), manifest = JSON.parse(fs.readFileSync(path.join(R, dir, 'parts/manifest.json'), 'utf8'));
   for (const f of ['record.json', 'parts/manifest.json', 'parts/atlas/' + manifest.creatureId + '.png']) files.add(dir + f);
   gzipped.add(dir + 'binding.json');

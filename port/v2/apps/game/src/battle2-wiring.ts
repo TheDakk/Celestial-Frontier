@@ -7,7 +7,7 @@
  * What it does: builds the structural `BattleStageFactory` from the pixi.js classes main.ts already
  * holds (Container / Sprite / Text / Graphics, plus Particle / ParticleContainer through
  * `createPixiEffectHost`), the world-life factory of CONTRACTS §3, resolves the accepted arena plates
- * and the Wild anchors by their audit paths, builds a `BattleRigV1` per combatant (`createFixtureRig`
+ * and every painted ability-theme sequence (`effects/painted-themes.json`; Wild today) by their audit paths, builds a `BattleRigV1` per combatant (`createFixtureRig`
  * from a landmark record + keyed alpha when the record exists, `createPortraitRig` otherwise), and
  * feeds the settled transcript log through `turnPlanInputFromTranscriptEvent` → `stage.play` →
  * `stage.tick` on the injected ticker with the injected clock (main.ts passes `performance.now`).
@@ -20,8 +20,8 @@
  * replaced was one). Everything pixi/DOM/asset-shaped is injectable so the tests drive the module with fakes.
  *
  * The stage never changes HP or rewards; the Chronicle log stays the accessible owner of the outcome.
- * Batch 2: each combatant stages its own ability theme (Wild painted, the other ten as the labelled
- * procedural emitter in the theme's material colour) and the turn cues ride the beats when an `audio`
+ * Batch 2: each combatant stages its own ability theme (painted when its painted-themes.json row is admitted — Wild
+ * today — else the labelled procedural emitter in the theme's material colour, with the reason) and the turn cues ride the beats when an `audio`
  * runtime port is supplied (main.ts passes the accessible audio owner's `decorativeVoicePort()`, which
  * admits decorative requests only while the owner is live, visible and answerable). E1 (2026-09-19): registered source
  * paint-skin fits (Civet + five crabs) stage as parts rigs through Codex's owner and contact solver; the habitat picks each
@@ -52,8 +52,9 @@ import { paintedArtV2 } from './morph/painted-variants.js';
 import type { CombatChroniclePacerGateV1 } from './combat-chronicle.js';
 import { decodeMorphedAtlas, loadPinnedCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV1, type CreatureRigV1 } from './creature-rig.js';
 import { abilityTheme } from '@cf/domain-combatcore';
-import { parseEffectSequenceAnchors, type EffectSequenceAnchors } from './effects/anchors.js';
 import { EffectThemeLibrary, isEffectTheme, isProceduralImage } from './effects/theme-library.js';
+import { admitPaintedThemeAnchors, fetchPaintedThemeAnchors, loadPaintedThemeTextures, parsePaintedThemeManifest } from './effects/painted-theme-registry.js';
+import PAINTED_THEMES_MANIFEST from './effects/painted-themes.json';
 import { PARTICLE_DISC_SIZE, particleDiscRgba } from './effects/particle-texture.js';
 import { createPixiEffectHost, type EffectParticleLike, type EffectSpriteLike, type EffectTextureLike } from './effects/pixi-adapter.js';
 import { compileBodyCard, MotionCompileError, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from './motion/body-card.js';
@@ -87,6 +88,8 @@ export const BATTLE2_FRAME = Object.freeze({ width: 1024, height: 576 });
  * the painter master is `record.source` (repo-relative). */
 export const BATTLE2_ASSETS = Object.freeze({
   recipe: 'arena-recipe.json', anchors: 'wild-anchors.json',
+  // every painted ability-theme sequence (effects/painted-themes.json; the Wild row is `anchors` above): one manifest row registers a theme
+  paintedThemes: parsePaintedThemeManifest(PAINTED_THEMES_MANIFEST),
   far: 'arena-far.png', mid: 'keyed/arena-mid.png', near: 'keyed/arena-near.png',
   civetRecord: '../CIVET_2D_PROOF_20260912/civet.landmarks.json', civetMaster: '../ART_KIT_ENGINE_FIRST_20260912/masters/civet.png',
   // every painted archetype (GENERATED from the card builder's list — one source for the card, the arena and the shipped assets)
@@ -167,6 +170,8 @@ export interface Battle2StudyInput {
   readonly audio?: TurnAudioRuntime | null;
   /** The battle's home and visitor worlds for habitat arena selection (E1 §1.4). Absent = the accepted Earth-temperate plates, labelled as the default. */
   readonly worlds?: Readonly<{ home: ArenaWorld; visitor: ArenaWorld }> | null;
+  /** The painted-theme manifest (`cf.painted-theme-manifest/v1`); absent = the shipped `effects/painted-themes.json`. */
+  readonly paintedThemes?: unknown;
   /** A named world built on the study's own ground line (the matchup picker): `lake` = liquid water with a surface. Ignored when `worlds` is given. */
   readonly worldPreset?: 'lake';
 }
@@ -359,13 +364,13 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   const build = async (): Promise<Battle2Status> => {
     const assets = input.assets ?? devAssetSource();
     const keyer: Battle2Keyer = input.keyer ?? ((rgba, w, h) => keyAndDespill(rgba, w, h));
-    const [recipeRaw, anchorsRaw, far, mid, near] = await Promise.all([assets.json(BATTLE2_ASSETS.recipe), assets.json(BATTLE2_ASSETS.anchors), assets.image(BATTLE2_ASSETS.far), assets.image(BATTLE2_ASSETS.mid), assets.image(BATTLE2_ASSETS.near)]);
+    const themeRows = input.paintedThemes === undefined ? BATTLE2_ASSETS.paintedThemes : parsePaintedThemeManifest(input.paintedThemes);
+    const [recipeRaw, anchorsFetched, far, mid, near] = await Promise.all([assets.json(BATTLE2_ASSETS.recipe), fetchPaintedThemeAnchors(themeRows, (p) => assets.json(p)), assets.image(BATTLE2_ASSETS.far), assets.image(BATTLE2_ASSETS.mid), assets.image(BATTLE2_ASSETS.near)]);
     const recipe = recipeRaw as { groundLineNormalized: number; seed: number; systemCard: string; battleContext?: { worldKey?: string } };
     if (typeof recipe.groundLineNormalized !== 'number' || typeof recipe.seed !== 'number' || typeof recipe.systemCard !== 'string') throw new Error('battle2 arena recipe lacks groundLineNormalized/seed/systemCard');
-    const parsed = parseEffectSequenceAnchors(anchorsRaw); if (!parsed.ok) throw new Error(`battle2 anchors refused: ${parsed.reason}`);
-    const anchors: EffectSequenceAnchors = parsed.anchors;
-    // One painted sequence (Wild) today; every other theme plays the labelled procedural emitter with its §4K material colour.
-    const themes = new EffectThemeLibrary([anchors]);
+    // Every manifest row's anchors are admitted here (a required row — Wild — fails the study exactly as before; any other row
+    // falls back to its theme's labelled procedural emitter with the reason). The theme library is built once the phase images load.
+    const paintedAnchors = admitPaintedThemeAnchors(themeRows, anchorsFetched);
     // Default records: the Civet landmark record (as before) plus every registered source paint-skin fit's record; a missing
     // fit is skipped with its reason, and one body is never listed twice (the Civet fit carries the same record bytes).
     const loadRecords = async (): Promise<ResolvedAnatomyRecord[]> => {
@@ -481,10 +486,11 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       try { const r = compileAnatomyAttack(card, mediums[side], ordinal, undefined, (side === 'A' ? left : right).declaration); attackLabels[key] = `${r.attack.verb} (${r.attack.contactJoint})`; return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; }
       catch (error) { attackLabels[key] ??= `family delivery clip (no admitted anatomy move: ${error instanceof Error ? error.message : String(error)})`; return null; }
     };
-    const phaseTextures = new Map<string, Promise<EffectTextureLike>>();
-    for (const p of anchors.phases) phaseTextures.set(p.keyedImage, assets.image(p.keyedImage).then(texture));
-    const resolvedPhaseTextures = new Map<string, EffectTextureLike>();
-    for (const [k, v] of phaseTextures) resolvedPhaseTextures.set(k, await v);
+    // Painted phase images of every admitted theme (paths resolved against each anchors JSON's directory; Wild: `keyed/wild-*.png`).
+    // Every theme without an admitted, fully loaded sequence plays the labelled procedural emitter in its §4K material colour.
+    const paintedThemes = await loadPaintedThemeTextures(paintedAnchors, (p) => assets.image(p).then(texture));
+    for (const [t, why] of paintedThemes.fallbackReasons) if (paintedAnchors.rows.some((r) => r.theme === t)) skipped.push(`${t} effect: ${why}; procedural emitter`);
+    const themes = new EffectThemeLibrary(paintedThemes.painted, paintedThemes.fallbackReasons);
     const dot = particleDiscRgba(PARTICLE_DISC_SIZE);
     const worldLife = new WorldLifePixiAdapter({ spec: compileWorldLife(recipe.systemCard, recipe.seed, 'arena', { tier: input.deviceTier === 'low' ? 'phone' : 'desktop' }),
       factory: { container: () => new pixi.Container(), graphics: () => new pixi.Graphics() }, clock: input.clock, width: BATTLE2_FRAME.width, height: BATTLE2_FRAME.height, reducedMotion: input.reducedMotion });
@@ -505,10 +511,12 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass }, ...(placed.presentationScales ? { presentationScales: placed.presentationScales } : {}), ...(placed.water ? { water: placed.water } : {}),
       worldLife, reducedMotion: input.reducedMotion, cues: cueSink ? { sink: cueSink, phone: input.deviceTier === 'low' } : null, effects: input.reducedMotion ? null : { host: createPixiEffectHost({ Sprite: pixi.Sprite, Particle: pixi.Particle, ParticleContainer: pixi.ParticleContainer } as unknown as Parameters<typeof createPixiEffectHost>[0]),
         particleTexture: texture(raster(dot, PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE)), seed: recipe.seed,
-        phaseTextures: (a) => a.phases.map((p) => { if (isProceduralImage(p.keyedImage)) return null; const t = resolvedPhaseTextures.get(p.keyedImage); if (!t) throw new Error(`battle2 phase image ${p.keyedImage} was not loaded`); return t; }),
+        phaseTextures: (a) => { const loaded = paintedThemes.textures.get(a.sequenceId); return a.phases.map((p, i) => { if (isProceduralImage(p.keyedImage)) return null; const t = loaded?.[i]; if (!t) throw new Error(`battle2 phase image ${p.keyedImage} was not loaded`); return t; }); },
         emittersForTheme: (t) => themes.emittersFor(t, input.deviceTier === 'low' ? 'phone' : 'desktop'), tintForTheme: (t) => themes.tintFor(t) } });
     const themeA = genomeTheme(championGenome), themeB = genomeTheme(input.settlement.encounter.defender.battleGenome);
-    effectLabels.left = `${themeA}: ${themes.resolve(themeA).label}`; effectLabels.right = `${themeB}: ${themes.resolve(themeB).label}`;
+    // a theme whose registered row was refused names the refusal; an unregistered theme keeps the plain procedural label
+    const effectLabel = (t: string): string => { const e = themes.resolve(t), refused = e.reason !== null && themeRows.some((r) => r.theme === t); return `${t}: ${e.label}${refused ? ` (${e.reason})` : ''}`; };
+    effectLabels.left = effectLabel(themeA); effectLabels.right = effectLabel(themeB);
     const ctx: TurnOutcomeContext = {
       A: { side: 'A', name: input.chronicle.championName, mass: left.mass, card: left.card, theme: themeA, seed: left.seed },
       B: { side: 'B', name: input.chronicle.defenderName, mass: right.mass, card: right.card, theme: themeB, seed: right.seed },
