@@ -1,0 +1,24 @@
+/** Exact frozen runner-boundary and real prepared input controls; no native launch. */
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
+import{validateManifest,sha}from'./validate-v2.mjs';
+const base='audits/C173_ALL_PAIRS_20261002',repo=path.resolve('.'),file=process.argv[2]??base+'/prepared-v2/manifest.json',m=JSON.parse(fs.readFileSync(file));
+const results=[],test=(name,fn)=>{try{fn();results.push({name,status:'PASS'});}catch(e){results.push({name,status:'FAIL',error:String(e.message).replaceAll(repo,'~/Projects/celestial-frontier-openai-mac')});}};
+const runner=fs.readFileSync(base+'/native-runner.mjs','utf8'),lines=runner.split('\n').filter(line=>line.startsWith('if(pairCase){if(Object.keys(overrides).length)'));
+assert.equal(lines.length,1,'exact frozen runner boundary must be unique');
+const guard=new Function('path','repo','left','right','pairCase','effectPath','arenaAssets','overrides','report',lines[0]+';return report;');
+const check=p=>guard(path,repo,path.resolve(p.fitConfig.left.dir),path.resolve(p.fitConfig.right.dir),p,path.resolve(p.effectAnchors),Object.fromEntries(['recipe','far','mid','near'].map(k=>[k,path.resolve(p.arena[k])])),{},{});
+test('complete successor manifest has exact canonical fit and pair inventories',()=>assert.equal(validateManifest(m).pairs,1444));
+test('historical frozen preparation refuses the successor input contract',()=>assert.throws(()=>validateManifest(JSON.parse(fs.readFileSync('audits/C163_ALL_PAIRS_20261002/prepared/manifest.json'))),/input contract/));
+test('all 1444 actual case configurations pass the exact frozen pre-launch guard',()=>{for(const p of m.pairs)assert.equal(check(p).pairAssetBinding.left,p.fitConfig.left.dir);});
+test('historical trailing slash fails the exact frozen pre-launch guard',()=>{const p=structuredClone(m.pairs[0]);p.fitConfig.left.dir+='/';assert.throws(()=>check(p),/actual fit paths differ/);});
+test('different actual fit cannot pass the exact frozen pre-launch guard',()=>{const p=m.pairs[0];assert.throws(()=>guard(path,repo,path.resolve('audits/other-fit'),path.resolve(p.fitConfig.right.dir),p,path.resolve(p.effectAnchors),Object.fromEntries(['recipe','far','mid','near'].map(k=>[k,path.resolve(p.arena[k])])),{},{}),/actual fit paths differ/);});
+const mutation=(name,edit,re)=>test(name,()=>{const n=structuredClone(m);edit(n);assert.throws(()=>validateManifest(n),re);});
+mutation('null pair input refuses before supervisor dereference',n=>{n.pairs[0].inputs[0]=null;},/null\/noncanonical pair input/);
+mutation('noncanonical double-slash input refuses',n=>{n.pairs[0].inputs[0].path=n.pairs[0].inputs[0].path.replace('audits/','audits//');},/null\/noncanonical pair input/);
+mutation('missing exact fit file refuses',n=>{n.fits[0].inputs.pop();},/incomplete exact fit inventory/);
+mutation('pair missing a required fit file refuses',n=>{const file=n.fits[0].dir+'/binding.json';n.pairs[0].inputs=n.pairs[0].inputs.filter(s=>s.path!==file);},/missing required fit input/);
+mutation('input with changed hash refuses its shared source binding',n=>{n.pairs[0].inputs[0].sha256='0'.repeat(64);},/unbound pair input/);
+mutation('duplicate source inventory refuses',n=>{n.sources.push(n.sources[0]);},/duplicate source input/);
+mutation('Jellyfish declaration cannot lose its exact file path',n=>{delete n.fits.find(f=>f.name==='Jellyfish').declarationPath;},/missing declaration path/);
+const receipt={schema:'cf.c163-path-controls/v1',status:results.every(r=>r.status==='PASS')?'PASS':'FAIL',controls:results.length,passed:results.filter(r=>r.status==='PASS').length,nativeRuns:0,manifestSha256:sha(fs.readFileSync(file)),runnerSha256:sha(Buffer.from(runner)),guardSha256:sha(lines[0]),results};
+fs.writeFileSync(base+'/paths-current-controls.json',JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(receipt));if(receipt.status!=='PASS')process.exitCode=1;

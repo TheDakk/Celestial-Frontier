@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Spider",
+  "masterSha256": "1525b05e8c4fcef74f6db5e51ad2d79f378aa7177c0855500967c1468b6a55c6",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

@@ -1,0 +1,185 @@
+{
+  "id": "03-fiddler-crab",
+  "name": "Fiddler Crab",
+  "family": "brachyuran",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "2609a876da2aac65c156406266917626842f19df3f5936c42ae47ebf11b84274",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 25356,
+    "coreRadius": 22,
+    "bodyBox": {
+      "x0": 87,
+      "y0": 156,
+      "x1": 191,
+      "y1": 243
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.5178,
+        "pixels": 13130,
+        "box": {
+          "x0": 100,
+          "y0": 100,
+          "x1": 362,
+          "y1": 306
+        },
+        "attach": {
+          "x": 159.2,
+          "y": 162.7,
+          "relX": 0.69,
+          "relY": 0.08
+        },
+        "dir": {
+          "x": 0.97,
+          "y": 0.25
+        },
+        "class": "front",
+        "length": 248.4
+      },
+      {
+        "k": 1,
+        "frac": 0.0155,
+        "pixels": 394,
+        "box": {
+          "x0": 60,
+          "y0": 161,
+          "x1": 87,
+          "y1": 211
+        },
+        "attach": {
+          "x": 87,
+          "y": 168.5,
+          "relX": 0,
+          "relY": 0.14
+        },
+        "dir": {
+          "x": -0.74,
+          "y": 0.67
+        },
+        "class": "rear",
+        "length": 50.4
+      },
+      {
+        "k": 2,
+        "frac": 0.0295,
+        "pixels": 748,
+        "box": {
+          "x0": 59,
+          "y0": 180,
+          "x1": 86,
+          "y1": 259
+        },
+        "attach": {
+          "x": 86,
+          "y": 201,
+          "relX": -0.01,
+          "relY": 0.52
+        },
+        "dir": {
+          "x": -0.59,
+          "y": 0.8
+        },
+        "class": "limb-down",
+        "length": 64
+      },
+      {
+        "k": 3,
+        "frac": 0.0429,
+        "pixels": 1088,
+        "box": {
+          "x0": 158,
+          "y0": 200,
+          "x1": 229,
+          "y1": 258
+        },
+        "attach": {
+          "x": 180.3,
+          "y": 213.3,
+          "relX": 0.9,
+          "relY": 0.66
+        },
+        "dir": {
+          "x": 0.89,
+          "y": 0.46
+        },
+        "class": "front",
+        "length": 66.1
+      },
+      {
+        "k": 4,
+        "frac": 0.0638,
+        "pixels": 1617,
+        "box": {
+          "x0": 112,
+          "y0": 225,
+          "x1": 220,
+          "y1": 270
+        },
+        "attach": {
+          "x": 140.5,
+          "y": 241,
+          "relX": 0.51,
+          "relY": 0.98
+        },
+        "dir": {
+          "x": 0.9,
+          "y": 0.43
+        },
+        "class": "front",
+        "length": 84.6
+      },
+      {
+        "k": 5,
+        "frac": 0.0166,
+        "pixels": 422,
+        "box": {
+          "x0": 98,
+          "y0": 238,
+          "x1": 123,
+          "y1": 290
+        },
+        "attach": {
+          "x": 102.7,
+          "y": 242.8,
+          "relX": 0.15,
+          "relY": 1
+        },
+        "dir": {
+          "x": 0.21,
+          "y": 0.98
+        },
+        "class": "limb-down",
+        "length": 51.4
+      }
+    ],
+    "byClass": {
+      "front": 3,
+      "rear": 1,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 285,
+        "x1": 305,
+        "cx": 295.4
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

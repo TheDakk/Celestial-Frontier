@@ -1,0 +1,14 @@
+{
+  "schema": "cf.c173-source-edit-request/v1",
+  "name": "Vampire Bat",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "b337c5efc12ef826d87668de872019cdd6e1c85d44dc78f22004466f2adf1c6e",
+  "target": "audits/C168_MEMBRANE_REFERENCES_20261002/standing-vampire/master.png",
+  "targetSha256": "e3fb8cd445248ab4f31f8b0ca43e558d86c4933dd8f92f90b3cc146853bb44ae",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "context": "canonical terrestrial folded-wing thumb-walking; not anatomy evidence",
+  "oldMasterModified": false
+}
