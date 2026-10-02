@@ -1,0 +1,24 @@
+{
+  "schema": "cf.arena-delivery/v1",
+  "id": "glass-v3",
+  "biome": "glass",
+  "recipe": "audits/C132_ARENAS_20261001/glass-v3/d29/arena-delivery-recipe.json",
+  "acceptance": "audits/C132_ARENAS_20261001/glass-v3/d29/acceptance.pending.json",
+  "plates": {
+    "far": {
+      "master": "audits/C132_ARENAS_20261001/glass-v3/arena-far.png",
+      "runtime": "audits/C132_ARENAS_20261001/glass-v3/arena-far.png",
+      "runtimeSha256": "b6bd686b1b198470fca53f27804640f1b928a868c3dab114805b8f71af388d07"
+    },
+    "mid": {
+      "master": "audits/C132_ARENAS_20261001/glass-v3/arena-mid.png",
+      "runtime": "audits/C132_ARENAS_20261001/glass-v3/keyed/arena-mid.png",
+      "runtimeSha256": "8e081554b22fdfa2944a86532e66835aea7377c9cbd1147d582a8dc5584dc813"
+    },
+    "near": {
+      "master": "audits/C132_ARENAS_20261001/glass-v3/arena-near.png",
+      "runtime": "audits/C132_ARENAS_20261001/glass-v3/keyed/arena-near.png",
+      "runtimeSha256": "e1ae66d0e3748461810e950a6da4fce24f9d8ce73195ebd21b9dab5d456262c8"
+    }
+  }
+}

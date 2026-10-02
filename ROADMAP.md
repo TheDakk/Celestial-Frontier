@@ -99,7 +99,7 @@ Latest C136 coverage is 181/631 accepted, 19 held. Dakk's final visual pass and 
 - `C132_ARENAS_20261001`: D29 admits native 1672×941 alongside native 2560×1440. Twelve new triplets and all eight
   earlier candidates now pass both exact master/runtime checks: 20 sets, 60 selected separate paintings, 402 source/input
   hashes. `d29-delivery-batch-01.json` binds the manifests and concrete visual holds. No set is accepted or registered;
-  all refused predecessors and prior reports remain. `d29-delivery-batch-02.json` adds 16 more triplets, 48 selected paintings and 320 checked input hashes (36 candidates total). `d29-delivery-batch-03.json` adds Carbon, Sulfurdeck, Obsidian and Abyssgreen (40 total). `d29-delivery-batch-04.json` adds Banded, Ammonia and Magma Sea (43 total); Glass remains dimension-refused while one distinct canvas-reference successor is attempted. A nine-layer exact-RGBA encoding study saves 36.53% with lossless WebP but does not establish compliance with the unchanged pack cap.
+  all refused predecessors and prior reports remain. `d29-delivery-batch-02.json` adds 16 more triplets, 48 selected paintings and 320 checked input hashes (36 candidates total). `d29-delivery-batch-03.json` adds Carbon, Sulfurdeck, Obsidian and Abyssgreen (40 total). `d29-delivery-batch-04.json` adds Banded, Ammonia and Magma Sea (43 total). Glass v3 completes the native canvas gap in one separate reference-based generation. `complete-candidate-inventory.json` now binds 44 candidate triplets / 132 paintings across all 43 canonical families, with 88 mechanical PASS, 44 correct acceptance refusals and 879 checked input hashes; zero new visual acceptances or registrations. A nine-layer exact-RGBA encoding study saves 36.53% with lossless WebP but does not establish compliance with the unchanged pack cap.
 - `C132_EFFECTS_20261001`: ten themes / 30 phase assets pass delivery controls and full-script native films at 4× CPU
   on signed `b80e4b156`: zero rig refusals, CPU p95 6.2–6.4 ms. All 30 phases are visible in actual-film review.
   Ground-level placement despite a jaw attack and four low-contrast phases remain concrete holds; Claude's separate
@@ -113,7 +113,7 @@ Latest C136 coverage is 181/631 accepted, 19 held. Dakk's final visual pass and 
 - `C132_C12_REPAIR_20261002`: reproduced the exact 543.7 ms Centipede fold stall, then a bounded correction candidate
   completed the same full native film at 4× CPU on signed `615e755c8`: 789 live frames, zero refusals, CPU p95 9.0 ms.
   Five frames still exceed 16.667 ms (maximum 23.5); all 18 stills equal baseline, including an existing Chimpanzee victory
-  deformation. Source promotion passes 34 leaf controls and the 9-test library owner (38 archetypes, 114 scale cases); strict all-pair performance and visual acceptance are not claimed.
+  deformation. Source promotion passes 34 leaf controls. The corrected 9-test library owner now proves 38 archetypes / 114 scale cases with 342 explicit anatomical attacks and returns, zero refusals, and no swallowed declaration failures (`C132_LIBRARY_SCALE_ATTACK_20261002`); strict all-pair performance and visual acceptance are not claimed.
 - `C132_PHONE_FINISH_20261001`: 639 MB image-model candidate compared against the same five C121 subjects on signed
   `779912d5f`; 5/5 conservation PASS, zero protected-pixel changes, 4.683 s total. All five outputs are visually REJECTED.
   Separate phone probe binds a 728 MB transport payload and precomputed embedding, with no text-encoder/tokenizer routes;
@@ -140,5 +140,5 @@ hooks/pre-push guard retained, no new branches. Startup receipt reused from `C13
 is approximately 101 GB: roughly 57 GB worktrees, 43 GB verification copies, and 1.23 GB measured own scratch recovery.
 This is not an exact summed APFS delta; attributing prior usage to unrelated activity was unsupported. After temporary I5 checkout retirement, approximately
 166 GB / 155 GiB is free; identity backups remain preserved. The temporary checkout removal is not added to the earlier cleanup total. Budget UNFROZEN; normal own-branch push requires green local battery and current
-visibility/workflow checks. No resumed-turn push yet. No PR, label, hosted attempt, develop/main merge, release or deploy.
+visibility/workflow checks. Normal own-branch push through signed `7203ca5af` succeeded with the guard enabled; final audit/test-owner closure remains local. No PR, label, hosted attempt, develop/main merge, release or deploy.
 Codex continues the active repairs and evidence; Claude can consume signed mailbox deliveries directly. No app switch or Dakk relay needed.

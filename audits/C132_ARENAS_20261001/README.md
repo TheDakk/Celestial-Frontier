@@ -39,3 +39,19 @@ The A-lane assigned queue is complete: `archipelago-v2`, `packice-v2`, `swamp-v2
 
 
 Remaining admission work: independent full-size scoring must resolve the recorded layer seams, repeated relief, chopped swamp trunks and chroma remnants. Pack ice still has an invented sun disk; obsidian uses warmer light than requested, and the greenhouse basin has a brighter upper-right opening. Several dark or strongly tinted families still need creature/effect readability checks. Dakk acceptance remains false. Claude owns routing, world/medium fidelity and native motion/occlusion proof. The parent identified a combined runtime PNG budget overflow; source masters and receipts remain preserved independently of a future reviewed delivery codec. Neither a mechanical PASS nor a smaller future codec supplies visual acceptance or permission to relax the existing budget.
+
+
+## Complete candidate coverage — 2026-10-02
+
+`complete-candidate-inventory.json` independently checks all 43 canonical biome keys against
+44 native-size FAR/MID/NEAR candidate sets (132 selected paintings). All 88 master/runtime
+candidate checks pass, all 44 false-acceptance registrations refuse, and 879 source/input
+hashes match. Glass v3 completes the remaining canvas gap in one separately retained
+reference-based generation; Glass and Glass v2 stay refused and unchanged.
+
+These are complete candidate deliveries, with zero new visual acceptances or registrations.
+The 44 selected runtime triplets total 280,356,509 bytes. Together with the measured current
+68,325,367-byte pack, the lower bound is 348,681,876 bytes, exceeding the unchanged 128 MiB
+cap by 214,464,148 bytes before expanded worker/recipe bytes. The separate nine-layer exact-RGBA
+lossless study does not establish a solution to this cap. Claude owns independent scoring and
+integration; source paintings, visual holds and historical proof remain unchanged.

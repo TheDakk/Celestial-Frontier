@@ -253,7 +253,7 @@ every number's source and Dakk's open choices: `audits/GUARDIAN_CHOREOGRAPHY_202
   `audits/C132_EFFECTS_20261001/native-review-01/`; visual/anatomical acceptance of every family remains open.
 
 ### Tests and films
-`library-arena.test.ts` (every archetype fights as attacker and as target with zero refusals; sizing to its place; band
+`library-arena.test.ts` (every archetype fights as attacker and as target with zero refusals; the 114 scale cases require record-bound anatomical attacks, observed forward action and return home without swallowed compile errors; sizing to its place; band
 containment from the real alpha box; wet-arena layering and drawing; centring on both sides; flyer impact and cursor; the
 scale sweep), `battle2-archetypes.test.ts`, `battle2-matchup.test.ts`, `d2-guardian-fill.test.ts`. Films and the picker's
 real-browser smoke runs: `audits/BATTLE2_LIBRARY_20260924/` (`film-all.mjs`, `picker-smoke.mjs`).

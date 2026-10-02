@@ -1,0 +1,18 @@
+{
+  "schema": "cf.c132-library-scale-owner-execution/v1",
+  "command": "node node_modules/vitest/vitest.mjs run apps/game/src/battle2/library-arena.test.ts --reporter=verbose",
+  "workingDirectory": "~/Projects/celestial-frontier-openai-mac/port/v2",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "durationMs": 87959.35241600001,
+  "sourceSha256": "1e74d781f23ba68f747a2d23adddfa4cc59df8dbfa8ad6cd2350a87400f5be68",
+  "sourceUnchanged": true,
+  "protectedInputsUnchanged": true,
+  "log": {
+    "path": "audits/C132_LIBRARY_SCALE_ATTACK_20261002/library-owner.log",
+    "sha256": "4a8232178fe731f9d41fd0a756d0e083782280e296a4dc339be6ce09d0efa642"
+  },
+  "retries": 0,
+  "nativeRun": false
+}

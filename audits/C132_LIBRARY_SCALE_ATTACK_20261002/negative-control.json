@@ -1,0 +1,23 @@
+{
+  "schema": "cf.c132-library-scale-negative-control/v1",
+  "status": "EXPECTED_REFUSAL_PASS",
+  "mutation": "Only the scale-sweep A callback return is changed from its compiled TurnAttack to null; compilation and all owner assertions remain unchanged.",
+  "command": "node node_modules/vitest/vitest.mjs run apps/game/src/battle2/library-arena.test.ts -t \"SCALE SWEEP\" --reporter=verbose",
+  "workingDirectory": "~/Projects/celestial-frontier-openai-mac/port/v2",
+  "exitCode": 1,
+  "signal": null,
+  "expectedFailureObserved": true,
+  "durationMs": 1906.807875,
+  "mutantSha256": "7cf20a5269bd1e6b614bd82b94613514be2ff3900be61e7d6d7ac71b32acb79d",
+  "greenBeforeSha256": "1e74d781f23ba68f747a2d23adddfa4cc59df8dbfa8ad6cd2350a87400f5be68",
+  "greenRestoredSha256": "1e74d781f23ba68f747a2d23adddfa4cc59df8dbfa8ad6cd2350a87400f5be68",
+  "restored": true,
+  "protectedInputsUnchanged": true,
+  "log": {
+    "path": "audits/C132_LIBRARY_SCALE_ATTACK_20261002/negative-control.log",
+    "sha256": "f94bb3595fc469066aebfad409cc02a7ca999d3a5c25741343778a5d16fdad8d"
+  },
+  "attempts": 1,
+  "fullOwnerRerun": false,
+  "nativeRun": false
+}

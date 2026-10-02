@@ -1,0 +1,35 @@
+
+ RUN  v4.1.10 ~/Projects/celestial-frontier-openai-mac/port/v2
+
+ ↓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > every archetype with a card fights: as ATTACKER with its own anatomy attack and as TARGET, zero rig refusals at 30 Hz
+ ↓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > every archetype is SIZED to its place: no body wider than its arena share; a flyer fits the air band; a swimmer is refused on the dry arena and fits the water band on a lake world — whole painted box inside, scaled never clipped
+ ↓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > the WET arena: water behind the swimmer and above the mid plate, the dry foreground hidden, moving with the mid plate, destroyed on dispose — and without it the stage is exactly as before
+ ↓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > every archetype stands INSIDE the frame on BOTH sides: its painted box is centred on its stand, not hung off its foot (the picker filmed a right-hand Python whose tail left the frame) — the uncentred control reproduces that exit
+ × apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > SCALE SWEEP: every archetype attacks through a full bout at 0.85×, 1× and 1.15× its default presentation scale (the stage cadence follows the scale, so a latent skin fold can hide at one size) — refusals reported per archetype and scale 1024ms
+   → Crab ×0.85 turn 0 anatomical attack must not fall back: expected null not to be null
+ ↓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > WET arena DRAWING: a full lake from surfaceY to the floor, three frames wide in the depth bands; a swimmer facing a GROUND fighter gets its own half and the ground fighter keeps its floor (review 2026-09-24: the land fighter stood underwater)
+ ↓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > a FLYER target takes the hit at its body and its cursor stays on screen; a grounded target is exactly as before (review 2026-09-24: the bat's burst landed on the ground, the eagle's cursor at y −26 px)
+ ↓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > a HIGH flyer's damage number stays inside the frame through its whole pop and rise (C15 2026-09-25: the Dragonfly's "9" was clipped above the viewport)
+ ↓ apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > BAND CONTAINMENT from the real alpha box: on a lake world every archetype that swims or flies has its WHOLE painted box inside its band — the box taken from the rig's measured extent, not from the placement formula (review 2026-09-24: the Vent Crab sat 21 px below the water band floor)
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 skipped (9)
+   Start at  02:41:17
+   Duration  1.69s (transform 380ms, setup 0ms, import 563ms, tests 1.02s, environment 0ms)
+
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/battle2/library-arena.test.ts > the painted library in the arena > SCALE SWEEP: every archetype attacks through a full bout at 0.85×, 1× and 1.15× its default presentation scale (the stage cadence follows the scale, so a latent skin fold can hide at one size) — refusals reported per archetype and scale
+AssertionError: Crab ×0.85 turn 0 anatomical attack must not fall back: expected null not to be null
+ ❯ apps/game/src/battle2/library-arena.test.ts:159:98
+    157|         now = 0;
+    158|         const input = turn(ctx('A', a.earthName, mass, card, attackFor…
+    159|         if (ownAttack) expect(input.attack, label + ' anatomical attac…
+       |                                                                                                  ^
+    160|         const plan = stage.play(input), homeX = holder.x;
+    161|         if (ownAttack) { expect(plan.attack, label + ' staged attack')…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
