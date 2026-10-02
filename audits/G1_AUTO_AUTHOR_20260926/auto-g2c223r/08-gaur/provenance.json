@@ -1,0 +1,179 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "08-gaur",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "4471d346e87cee007fa359cab86f0bfb811d952fdd5cd63f51dc6b87ae5bc6e6",
+ "subjectSourceSha256": "f83aa57e0f9c66db556351626c5b5396b1f1403471b54e8b1be81ea1c0bb0230",
+ "identity": {
+  "name": "Gaur",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Gaur\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"5\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3909198914\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"0\"]]]]",
+  "seed": 3909198914,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "cattle",
+  "authoringSha256": "abac731e391157abd3f083369138b424cceb231456268bd1d6cf85997263adad",
+  "masterSha256": "0510920919b791b9186d0d1dafeed17625074ee2a6c586d9ddcb703f2005f590"
+ },
+ "habitat": {
+  "profileId": "hoofed-horned",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "62c0dded1645b5a41c293433ed1a8a238fad1365ee1feeac841dcad7a483d8fe",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group hoofed-horned (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0082,
+     "class": "top",
+     "attach": {
+      "x": 310.5,
+      "y": 106,
+      "relX": 0.74,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0063,
+     "class": "top",
+     "attach": {
+      "x": 384.4,
+      "y": 106.1,
+      "relX": 0.97,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0078,
+     "class": "top",
+     "attach": {
+      "x": 245.5,
+      "y": 94,
+      "relX": 0.54,
+      "relY": 0.04
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0062,
+     "class": "top",
+     "attach": {
+      "x": 353,
+      "y": 106,
+      "relX": 0.87,
+      "relY": 0.11
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0106,
+     "class": "limb-down",
+     "attach": {
+      "x": 379,
+      "y": 157.4,
+      "relX": 0.95,
+      "relY": 0.42
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.026,
+     "class": "limb-down",
+     "attach": {
+      "x": 72,
+      "y": 179.5,
+      "relX": 0,
+      "relY": 0.56
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0481,
+     "class": "limb-down",
+     "attach": {
+      "x": 87.7,
+      "y": 237.8,
+      "relX": 0.05,
+      "relY": 0.91
+     }
+    },
+    {
+     "k": 7,
+     "frac": 0.0048,
+     "class": "limb-down",
+     "attach": {
+      "x": 175,
+      "y": 236,
+      "relX": 0.32,
+      "relY": 0.9
+     }
+    },
+    {
+     "k": 8,
+     "frac": 0.0427,
+     "class": "limb-down",
+     "attach": {
+      "x": 128.5,
+      "y": 239,
+      "relX": 0.17,
+      "relY": 0.92
+     }
+    },
+    {
+     "k": 9,
+     "frac": 0.0371,
+     "class": "limb-down",
+     "attach": {
+      "x": 235,
+      "y": 251.5,
+      "relX": 0.5,
+      "relY": 1
+     }
+    },
+    {
+     "k": 10,
+     "frac": 0.0338,
+     "class": "limb-down",
+     "attach": {
+      "x": 276,
+      "y": 253,
+      "relX": 0.63,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 4,
+    "limb-down": 7
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "cattle",
+   "byClass": {
+    "top": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

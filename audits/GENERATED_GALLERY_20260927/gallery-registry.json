@@ -2071,7 +2071,7 @@
   "family": "biped-bird",
   "name": "Bittern",
   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/07-bittern",
-  "note": "whole in reaction and late idle (C211 source repaint)",
+  "note": "HELD: Codex reproduced a texture-independent walk fold (ARAP folded triangles) on this geometry; the earlier painter-texture native pass did not hit it",
   "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
   "tag": "g2c211"
  },
@@ -2154,5 +2154,117 @@
   "note": "duplicate of the C196 acceptance (pinna re-score run)",
   "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
   "tag": "g2c196p"
+ },
+ {
+  "family": "quadruped",
+  "name": "Eland",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/04-eland",
+  "note": "whole in reaction and late idle (C223 ungulate correction)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223"
+ },
+ {
+  "family": "quadruped",
+  "name": "Hartebeest",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/06-hartebeest",
+  "note": "whole in reaction and late idle (C223 ungulate correction)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223"
+ },
+ {
+  "family": "quadruped",
+  "name": "Reindeer",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/11-reindeer",
+  "note": "whole in reaction and late idle (C223 ungulate correction)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Sheep",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/16-wild-sheep",
+  "note": "whole in reaction and late idle (C223 ungulate correction)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Grouse",
+  "nativeDir": "audits/SUCCESSORS_C221_20261002/grouse",
+  "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)",
+  "batch": "audits/C183_ISLAND_AUTHORING_20261002",
+  "tag": "c221succ"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hornbill",
+  "nativeDir": "audits/SUCCESSORS_C221_20261002/hornbill",
+  "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)",
+  "batch": "audits/C183_ISLAND_AUTHORING_20261002",
+  "tag": "c221succ"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Parrot",
+  "nativeDir": "audits/SUCCESSORS_C221_20261002/parrot",
+  "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)",
+  "batch": "audits/C183_ISLAND_AUTHORING_20261002",
+  "tag": "c221succ"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Weaverbird",
+  "nativeDir": "audits/SUCCESSORS_C221_20261002/weaverbird",
+  "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)",
+  "batch": "audits/C183_ISLAND_AUTHORING_20261002",
+  "tag": "c221succ"
+ },
+ {
+  "family": "fish",
+  "name": "Flounder",
+  "nativeDir": "audits/SUCCESSORS_C221_20261002/flounder",
+  "note": "whole in reaction and late idle on Codex's C222 source-bound join correction (body cracks closed)",
+  "batch": "audits/C183_REMAINING_HOLDS_20261002",
+  "tag": "c221succ"
+ },
+ {
+  "family": "quadruped",
+  "name": "Zebra",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/01-zebra",
+  "note": "HELD: ear-tip flecks float over the lowered head in the late idle; island repair refused at the cap (5.9% > 5%, D28)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223r"
+ },
+ {
+  "family": "quadruped",
+  "name": "Eland",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/04-eland",
+  "note": "duplicate of the C223 acceptance (expanded-pool re-score)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223r"
+ },
+ {
+  "family": "quadruped",
+  "name": "Hartebeest",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/06-hartebeest",
+  "note": "duplicate of the C223 acceptance (expanded-pool re-score)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223r"
+ },
+ {
+  "family": "quadruped",
+  "name": "Reindeer",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/11-reindeer",
+  "note": "duplicate of the C223 acceptance (expanded-pool re-score)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223r"
+ },
+ {
+  "family": "quadruped",
+  "name": "Wild Sheep",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/16-wild-sheep",
+  "note": "duplicate of the C223 acceptance (expanded-pool re-score)",
+  "batch": "audits/C213_CREATURE_SUPPLY_20261002",
+  "tag": "g2c223r"
  }
 ]

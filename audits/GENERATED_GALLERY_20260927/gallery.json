@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 259,
+ "total": 273,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -556,6 +556,69 @@
    "note": "duplicate of the C196 acceptance (pinna re-score run)"
   },
   {
+   "family": "Quadrupeds",
+   "name": "Eland",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/04-eland",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C223 ungulate correction)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Hartebeest",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/06-hartebeest",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C223 ungulate correction)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Reindeer",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/11-reindeer",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C223 ungulate correction)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wild Sheep",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223/16-wild-sheep",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C223 ungulate correction)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Zebra",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/01-zebra",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: ear-tip flecks float over the lowered head in the late idle; island repair refused at the cap (5.9% > 5%, D28)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Eland",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/04-eland",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "duplicate of the C223 acceptance (expanded-pool re-score)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Hartebeest",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/06-hartebeest",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "duplicate of the C223 acceptance (expanded-pool re-score)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Reindeer",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/11-reindeer",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "duplicate of the C223 acceptance (expanded-pool re-score)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Wild Sheep",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c223r/16-wild-sheep",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "duplicate of the C223 acceptance (expanded-pool re-score)"
+  },
+  {
    "family": "Snakes (serpent strip author)",
    "name": "Python",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-serpents/17-python",
@@ -1106,7 +1169,7 @@
    "name": "Bittern",
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/07-bittern",
    "report": "DIAGNOSTIC_PASS",
-   "note": "whole in reaction and late idle (C211 source repaint)"
+   "note": "HELD: Codex reproduced a texture-independent walk fold (ARAP folded triangles) on this geometry; the earlier painter-texture native pass did not hit it"
   },
   {
    "family": "Birds",
@@ -1156,6 +1219,34 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/24-weaverbird",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (10% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Grouse",
+   "nativeDir": "audits/SUCCESSORS_C221_20261002/grouse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hornbill",
+   "nativeDir": "audits/SUCCESSORS_C221_20261002/hornbill",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)"
+  },
+  {
+   "family": "Birds",
+   "name": "Parrot",
+   "nativeDir": "audits/SUCCESSORS_C221_20261002/parrot",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)"
+  },
+  {
+   "family": "Birds",
+   "name": "Weaverbird",
+   "nativeDir": "audits/SUCCESSORS_C221_20261002/weaverbird",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C221 contour successor (the lowered-head island is resolved)"
   },
   {
    "family": "Fish",
@@ -1751,6 +1842,13 @@
    "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c197-fishseams/whale-shark-framing-v2/native",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole in reaction and late idle on the fish-seams fit (C197 framing/source repaint; the earlier hold is cleared)"
+  },
+  {
+   "family": "Fish",
+   "name": "Flounder",
+   "nativeDir": "audits/SUCCESSORS_C221_20261002/flounder",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle on Codex's C222 source-bound join correction (body cracks closed)"
   },
   {
    "family": "Insects",

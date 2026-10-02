@@ -1,0 +1,9 @@
+{
+ "id": "03-monitor-lizard-framing-v2",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part tail-tip-lower-rim (tail3) covers 0% paint (reference 55%)"
+ ],
+ "semanticPresence": null
+}

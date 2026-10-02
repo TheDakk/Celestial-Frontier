@@ -1,0 +1,10 @@
+{
+ "id": "20-leech",
+ "family": "annelid",
+ "verdict": "REFUSE",
+ "reasons": [
+  "materials-unknown: no species-group material for profile annelid-water; the motion kit refuses an unclassified surface",
+  "no-reference: no other hand-authored subject of family annelid"
+ ],
+ "semanticPresence": null
+}

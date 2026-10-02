@@ -1,32 +1,29 @@
 {
  "schema": "cf.generated-coverage/v1",
  "roster": 631,
- "covered": 210,
- "pct": 33.3,
+ "covered": 218,
+ "pct": 34.5,
  "heldNotCounted": [
+  "Bittern",
   "Capuchin",
   "Chough",
-  "Flounder",
-  "Grouse",
   "Hawk",
-  "Hornbill",
   "Horse",
-  "Parrot",
   "Rhea",
   "Snow Petrel",
   "Snowy Owl",
   "Tiger Shark",
-  "Weaverbird",
   "Wild Ass",
-  "Wild Pony"
+  "Wild Pony",
+  "Zebra"
  ],
  "unmatchedRegistryNames": [],
  "families": [
   {
    "family": "quadruped",
    "species": 205,
-   "covered": 63,
-   "pct": 30.7,
+   "covered": 67,
+   "pct": 32.7,
    "names": [
     "Leopard",
     "Tiger",
@@ -72,11 +69,15 @@
     "Sugar Glider",
     "Koala",
     "Banteng",
+    "Reindeer",
     "Mountain Goat",
     "Giraffe",
     "Wildebeest",
+    "Eland",
+    "Hartebeest",
     "Saiga",
     "Cattle",
+    "Wild Sheep",
     "Bongo",
     "Donkey",
     "Alligator",
@@ -96,8 +97,8 @@
   {
    "family": "fish",
    "species": 132,
-   "covered": 77,
-   "pct": 58.3,
+   "covered": 78,
+   "pct": 59.1,
    "names": [
     "Salmon",
     "Trout",
@@ -132,6 +133,7 @@
     "Tarpon",
     "Cave Fish",
     "Goby",
+    "Flounder",
     "Grouper",
     "Bonefish",
     "Barracuda",
@@ -181,8 +183,8 @@
   {
    "family": "biped-bird",
    "species": 102,
-   "covered": 44,
-   "pct": 43.1,
+   "covered": 47,
+   "pct": 46.1,
    "names": [
     "Kestrel",
     "Desert Owl",
@@ -200,10 +202,10 @@
     "Curlew",
     "Sandpiper",
     "Rail",
-    "Bittern",
     "Oystercatcher",
     "Guineafowl",
     "Turkey",
+    "Grouse",
     "Ptarmigan",
     "Bustard",
     "Sandgrouse",
@@ -211,6 +213,8 @@
     "Roadrunner",
     "Chicken",
     "Seriema",
+    "Parrot",
+    "Hornbill",
     "Hummingbird",
     "Vulture",
     "Tanager",
@@ -227,7 +231,8 @@
     "Gannet",
     "Seabird",
     "Booby",
-    "Starling"
+    "Starling",
+    "Weaverbird"
    ]
   },
   {

@@ -1,0 +1,9 @@
+{
+ "id": "07-oryx",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 1% paint (reference 62%)"
+ ],
+ "semanticPresence": null
+}

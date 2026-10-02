@@ -1,0 +1,22 @@
+{
+ "grouse": {
+  "fit": "audits/C183_ISLAND_AUTHORING_20261002/10-grouse/fit01",
+  "status": "DIAGNOSTIC_PASS"
+ },
+ "hornbill": {
+  "fit": "audits/C183_ISLAND_AUTHORING_20261002/20-hornbill/fit01",
+  "status": "DIAGNOSTIC_PASS"
+ },
+ "parrot": {
+  "fit": "audits/C183_ISLAND_AUTHORING_20261002/21-parrot/fit01",
+  "status": "DIAGNOSTIC_PASS"
+ },
+ "weaverbird": {
+  "fit": "audits/C183_ISLAND_AUTHORING_20261002/24-weaverbird/fit01",
+  "status": "DIAGNOSTIC_PASS"
+ },
+ "flounder": {
+  "fit": "audits/C183_REMAINING_HOLDS_20261002/flounder/fit01",
+  "status": "DIAGNOSTIC_PASS"
+ }
+}
