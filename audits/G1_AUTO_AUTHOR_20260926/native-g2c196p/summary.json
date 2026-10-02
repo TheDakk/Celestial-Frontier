@@ -1,0 +1,125 @@
+{
+ "schema": "cf.g1-score-batch/v1",
+ "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
+ "tag": "g2c196p",
+ "pilot": 24,
+ "patternSkipped": [],
+ "scored": 24,
+ "admitPassStatic": [
+  "13-marine-iguana",
+  "14-giraffe",
+  "16-banteng"
+ ],
+ "refused": [
+  {
+   "id": "02-crocodile",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "03-monitor-lizard",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "04-anole",
+   "reason": "unexplained-anatomy: 6.8% of the paint lies away from the body and in no part (reference 2.2%)"
+  },
+  {
+   "id": "05-skink",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "07-lizard",
+   "reason": "missing-anatomy (ground): 0 ground contact(s); every same-family reference shows at least 2"
+  },
+  {
+   "id": "08-whiptail",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 6.4% paint that no reference appendage lands on"
+  },
+  {
+   "id": "10-gila-monster",
+   "reason": "unexplained-anatomy: 16.3% of the paint lies away from the body and in no part (reference 9.7%)"
+  },
+  {
+   "id": "11-frilled-lizard",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 5% paint (reference 10%)"
+  },
+  {
+   "id": "12-chameleon",
+   "reason": "unexplained-anatomy: 16.4% of the paint lies away from the body and in no part (reference 5.6%)"
+  },
+  {
+   "id": "15-buffalo",
+   "reason": "missing-anatomy: part tail3 (tail3) covers 8% paint (reference 38%)"
+  },
+  {
+   "id": "18-tamarin",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "19-langur",
+   "reason": "extra-anatomy (unassigned): a limb-down appendage of 8.1% paint that no reference appendage lands on"
+  },
+  {
+   "id": "20-monkey",
+   "reason": "extra-anatomy (unassigned): a rear appendage of 17.2% paint that no reference appendage lands on"
+  },
+  {
+   "id": "22-marmoset",
+   "reason": "wrong-family: quadruped matches clearly better (0.0088 < 0.0150)"
+  },
+  {
+   "id": "23-aye-aye",
+   "reason": "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 4"
+  },
+  {
+   "id": "24-proboscis-monkey",
+   "reason": "wrong-family: quadruped matches clearly better (0.0099 < 0.0162)"
+  }
+ ],
+ "staticRed": [
+  {
+   "id": "01-caiman",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "06-mountain-lizard",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "09-agama",
+   "static": "INTAKE_REFUSED"
+  },
+  {
+   "id": "17-water-buffalo",
+   "static": "RED"
+  },
+  {
+   "id": "21-mandrill",
+   "static": "INTAKE_REFUSED"
+  }
+ ],
+ "native": [
+  {
+   "id": "13-marine-iguana",
+   "name": "Marine Iguana",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "14-giraffe",
+   "name": "Giraffe",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  },
+  {
+   "id": "16-banteng",
+   "name": "Banteng",
+   "family": "quadruped",
+   "exit": 0,
+   "status": "DIAGNOSTIC_PASS"
+  }
+ ],
+ "runnerExit": 0
+}

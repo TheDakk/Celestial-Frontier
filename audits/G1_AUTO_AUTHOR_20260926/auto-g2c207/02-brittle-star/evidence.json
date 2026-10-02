@@ -1,0 +1,308 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a top appendage of 14.9% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a rear appendage of 15.5% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a front appendage of 18.6% paint that no reference appendage lands on",
+  "extra-anatomy (unassigned): a limb-down appendage of 18.2% paint that no reference appendage lands on",
+  "missing-anatomy: part arm0-base (arm0Seg0) covers 15% paint (reference 63%)",
+  "missing-anatomy: part arm0-middle (arm0Seg1) covers 5% paint (reference 29%)",
+  "missing-anatomy: part arm0-tip (arm0Seg2) covers 4% paint (reference 8%)",
+  "missing-anatomy: part arm4-middle (arm4Seg1) covers 10% paint (reference 30%)",
+  "missing-anatomy: part arm4-tip (arm4Seg2) covers 7% paint (reference 17%)",
+  "missing-anatomy: part arm2-middle (arm2Seg1) covers 18% paint (reference 55%)",
+  "missing-anatomy: part arm2-tip (arm2Seg2) covers 1% paint (reference 29%)",
+  "missing-anatomy: part arm3-base (arm3Seg0) covers 23% paint (reference 79%)",
+  "missing-anatomy: part arm3-middle (arm3Seg1) covers 15% paint (reference 48%)",
+  "missing-anatomy: part arm1-middle (arm1Seg1) covers 5% paint (reference 21%)",
+  "missing-anatomy: part arm1-tip (arm1Seg2) covers 4% paint (reference 16%)",
+  "unexplained-anatomy: 7.3% of the paint lies away from the body and in no part (reference 0.0%)"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": true,
+ "grown": null,
+ "chains": [],
+ "nudged": [],
+ "clamped": [],
+ "untangled": [
+  {
+   "id": "arm0-tip",
+   "repairs": 1
+  }
+ ],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "extra-anatomy (unassigned): a top appendage of 14.9% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a rear appendage of 15.5% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a front appendage of 18.6% paint that no reference appendage lands on",
+   "extra-anatomy (unassigned): a limb-down appendage of 18.2% paint that no reference appendage lands on"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "arm0-tip",
+     "arm0-middle"
+    ],
+    "names": [
+     "tentacle"
+    ],
+    "refFrac": 0.0496,
+    "target": 0,
+    "overlap": 0.053
+   },
+   {
+    "owners": [
+     "arm1-tip",
+     "arm1-middle"
+    ],
+    "names": [
+     "tentacle"
+    ],
+    "refFrac": 0.0934,
+    "target": 1,
+    "overlap": 0.055
+   },
+   {
+    "owners": [
+     "arm4-tip",
+     "arm4-middle"
+    ],
+    "names": [
+     "tentacle"
+    ],
+    "refFrac": 0.0854,
+    "target": 2,
+    "overlap": 0.078
+   },
+   {
+    "owners": [
+     "arm3-middle",
+     "arm3-tip"
+    ],
+    "names": [
+     "tentacle"
+    ],
+    "refFrac": 0.1353,
+    "target": 3,
+    "overlap": 0.154
+   },
+   {
+    "owners": [
+     "arm2-middle",
+     "arm2-tip"
+    ],
+    "names": [
+     "tentacle"
+    ],
+    "refFrac": 0.1362,
+    "target": 4,
+    "overlap": 0.087
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.149,
+     "class": "top",
+     "attach": {
+      "x": 218.4,
+      "y": 188.1,
+      "relX": 0.79,
+      "relY": -0.02
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1548,
+     "class": "rear",
+     "attach": {
+      "x": 192.5,
+      "y": 191,
+      "relX": 0.1,
+      "relY": 0.06
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1859,
+     "class": "front",
+     "attach": {
+      "x": 227,
+      "y": 211,
+      "relX": 1.03,
+      "relY": 0.63
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.1626,
+     "class": "limb-down",
+     "attach": {
+      "x": 188.1,
+      "y": 214.9,
+      "relX": -0.03,
+      "relY": 0.74
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.1819,
+     "class": "limb-down",
+     "attach": {
+      "x": 210,
+      "y": 225,
+      "relX": 0.57,
+      "relY": 1.03
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "starfish",
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "front": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.0375,
+  "ref": 0.0417
+ },
+ "bestReference": "starfish",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "starfish",
+   "cost": 0.02499
+  },
+  {
+   "ref": "jellyfish",
+   "cost": 0.08794
+  }
+ ],
+ "mirrorBest": 0.02688,
+ "otherFamilyBest": {
+  "family": "fish",
+  "cost": 0.03936
+ },
+ "coverage": [
+  {
+   "id": "central-disc-upper",
+   "joint": "bell",
+   "paint": 1,
+   "area": 917.1599999999962
+  },
+  {
+   "id": "arm0-base",
+   "joint": "arm0Seg0",
+   "paint": 0.1469838572642311,
+   "area": 18859.785000000003
+  },
+  {
+   "id": "arm0-middle",
+   "joint": "arm0Seg1",
+   "paint": 0.05300916699880431,
+   "area": 40144.885
+  },
+  {
+   "id": "arm0-tip",
+   "joint": "arm0Seg2",
+   "paint": 0.03910112359550562,
+   "area": 35617.23999999999
+  },
+  {
+   "id": "arm4-base",
+   "joint": "arm4Seg0",
+   "paint": 0.1337847303292085,
+   "area": 68506.44000000003
+  },
+  {
+   "id": "arm4-middle",
+   "joint": "arm4Seg1",
+   "paint": 0.0963707699852869,
+   "area": 65293.0799999999
+  },
+  {
+   "id": "arm4-tip",
+   "joint": "arm4Seg2",
+   "paint": 0.07379679144385026,
+   "area": 44864.97000000003
+  },
+  {
+   "id": "arm2-base",
+   "joint": "arm2Seg0",
+   "paint": 0.27952329360780065,
+   "area": 14618.759999999995
+  },
+  {
+   "id": "arm2-middle",
+   "joint": "arm2Seg1",
+   "paint": 0.18,
+   "area": 27016.529999999984
+  },
+  {
+   "id": "arm2-tip",
+   "joint": "arm2Seg2",
+   "paint": 0.008206330597889801,
+   "area": 40982.984999999986
+  },
+  {
+   "id": "arm3-base",
+   "joint": "arm3Seg0",
+   "paint": 0.23255813953488372,
+   "area": 14462.75999999998
+  },
+  {
+   "id": "arm3-middle",
+   "joint": "arm3Seg1",
+   "paint": 0.15493623051487954,
+   "area": 33928.320000000014
+  },
+  {
+   "id": "arm3-tip",
+   "joint": "arm3Seg2",
+   "paint": 0.10065237651444547,
+   "area": 17067.895
+  },
+  {
+   "id": "arm1-base",
+   "joint": "arm1Seg0",
+   "paint": 0.3318499682136046,
+   "area": 25130.399999999965
+  },
+  {
+   "id": "arm1-middle",
+   "joint": "arm1Seg1",
+   "paint": 0.04750640646560221,
+   "area": 81461.14500000003
+  },
+  {
+   "id": "arm1-tip",
+   "joint": "arm1Seg2",
+   "paint": 0.0421602787456446,
+   "area": 45847.514999999985
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0,
+   "area": 0.5
+  }
+ ],
+ "unclaimedFrac": 0.0731
+}

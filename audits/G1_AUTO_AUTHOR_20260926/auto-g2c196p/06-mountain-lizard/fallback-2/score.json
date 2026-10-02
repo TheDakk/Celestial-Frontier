@@ -1,0 +1,10 @@
+{
+ "id": "06-mountain-lizard",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a limb-down appendage of 7.6% paint that no reference appendage lands on",
+  "missing-anatomy: part tail3 (tail3) covers 21% paint (reference 65%)"
+ ],
+ "semanticPresence": null
+}

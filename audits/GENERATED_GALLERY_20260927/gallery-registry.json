@@ -2058,5 +2058,101 @@
   "note": "HELD: spike gone after C201, but a thin dark seam line shows at the neck of one capuchin in the late idle",
   "batch": "audits/C172_SHARED_HEAD_SPIKE_20261002",
   "tag": "c201refilm"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Moorhen",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/04-moorhen",
+  "note": "whole in reaction and late idle (C211 source repaint)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Bittern",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/07-bittern",
+  "note": "whole in reaction and late idle (C211 source repaint)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Condor",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/08-condor",
+  "note": "whole in reaction and late idle (C211 source repaint)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Turkey",
+  "nativeDir": "audits/ISLANDS_C211_20261002/09-turkey/native",
+  "note": "whole after the remainder-island repair (C211 source repaint)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Grouse",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/10-grouse",
+  "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (11.7% > 5%, D28)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Guineafowl",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/12-guineafowl",
+  "note": "whole in reaction and late idle (C211 source repaint)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Hornbill",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/20-hornbill",
+  "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (35.6% > 5%, D28)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Parrot",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/21-parrot",
+  "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (40.4% > 5%, D28)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "biped-bird",
+  "name": "Weaverbird",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/24-weaverbird",
+  "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (10% > 5%, D28)",
+  "batch": "audits/C206_BIRD_SOURCE_REPAINTS_20261002",
+  "tag": "g2c211"
+ },
+ {
+  "family": "quadruped",
+  "name": "Marine Iguana",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c196p/13-marine-iguana",
+  "note": "whole in reaction and late idle (sprawler profile + Codex C204 pinna review)",
+  "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
+  "tag": "g2c196p"
+ },
+ {
+  "family": "quadruped",
+  "name": "Giraffe",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c196p/14-giraffe",
+  "note": "duplicate of the C196 acceptance (pinna re-score run)",
+  "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
+  "tag": "g2c196p"
+ },
+ {
+  "family": "quadruped",
+  "name": "Banteng",
+  "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c196p/16-banteng",
+  "note": "duplicate of the C196 acceptance (pinna re-score run)",
+  "batch": "audits/C196_QUADRUPED_ORIGINALS_20261002",
+  "tag": "g2c196p"
  }
 ]

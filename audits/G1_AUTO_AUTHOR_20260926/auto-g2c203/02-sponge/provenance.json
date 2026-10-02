@@ -1,0 +1,36 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "02-sponge",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+ "subjectSourceSha256": "0b6dc1abb8bd45945961981cc11128e07e7b183425701a77792fc226445438c7",
+ "identity": {
+  "name": "Sponge",
+  "family": "sessile-filter",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sponge\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"10\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"1852297885\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"12\"]]]]",
+  "seed": 1852297885,
+  "checks": [
+   "materials-unknown: no species-group material for profile sponge; the motion kit refuses an unclassified surface"
+  ]
+ },
+ "reference": null,
+ "habitat": {
+  "profileId": "sponge",
+  "media": [
+   "water"
+  ],
+  "profileSha256": "8aa5239e8a4dde06488c8eeca7adcffe8dcd639f6e6e309097d0a45176be714b",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": null,
+  "source": "species group sponge (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": "unmeasured",
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

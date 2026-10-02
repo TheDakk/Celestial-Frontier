@@ -1,0 +1,9 @@
+{
+ "id": "03-monitor-lizard-framing-v2",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part jaw (jaw) covers 17% paint (reference 59%)"
+ ],
+ "semanticPresence": null
+}

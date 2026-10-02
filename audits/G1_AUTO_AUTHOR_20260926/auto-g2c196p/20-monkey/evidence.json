@@ -1,0 +1,290 @@
+{
+ "verdict": "REFUSE",
+ "reasons": [
+  "extra-anatomy (unassigned): a rear appendage of 17.2% paint that no reference appendage lands on"
+ ],
+ "schema": "cf.g1-auto-author/v1",
+ "legMatch": null,
+ "remainderMarker": true,
+ "grown": null,
+ "chains": [
+  {
+   "chain": "legFar",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0
+   }
+  },
+  {
+   "chain": "legNear",
+   "refined": true,
+   "snap": {
+    "terminal": null,
+    "end": 0.0001
+   }
+  }
+ ],
+ "nudged": [],
+ "clamped": [],
+ "untangled": [],
+ "separation": null,
+ "inventory": {
+  "reasons": [
+   "extra-anatomy (unassigned): a rear appendage of 17.2% paint that no reference appendage lands on"
+  ],
+  "assign": [
+   {
+    "owners": [
+     "head",
+     "jaw"
+    ],
+    "names": [
+     "head"
+    ],
+    "refFrac": 0.0081,
+    "target": 1,
+    "overlap": 0.065
+   },
+   {
+    "owners": [
+     "far-arm-lower-hand"
+    ],
+    "names": [
+     "arm"
+    ],
+    "refFrac": 0.0615,
+    "target": 3,
+    "overlap": 0.749
+   },
+   {
+    "owners": [
+     "near-leg-lower-foot"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.1063,
+    "target": 5,
+    "overlap": 0.645
+   },
+   {
+    "owners": [
+     "far-leg-lower-foot"
+    ],
+    "names": [
+     "leg"
+    ],
+    "refFrac": 0.0771,
+    "target": 4,
+    "overlap": 0.819
+   },
+   {
+    "owners": [
+     "near-arm-lower-hand"
+    ],
+    "names": [
+     "arm"
+    ],
+    "refFrac": 0.0724,
+    "target": 6,
+    "overlap": 0.759
+   }
+  ],
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1717,
+     "class": "rear",
+     "attach": {
+      "x": 161,
+      "y": 196.5,
+      "relX": -0.01,
+      "relY": 0.64
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0081,
+     "class": "top",
+     "attach": {
+      "x": 284,
+      "y": 145,
+      "relX": 0.85,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.004,
+     "class": "top",
+     "attach": {
+      "x": 306,
+      "y": 169,
+      "relX": 1.01,
+      "relY": 0.29
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0817,
+     "class": "limb-down",
+     "attach": {
+      "x": 289.3,
+      "y": 215.3,
+      "relX": 0.89,
+      "relY": 0.88
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.1067,
+     "class": "limb-down",
+     "attach": {
+      "x": 172,
+      "y": 224,
+      "relX": 0.07,
+      "relY": 0.99
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0835,
+     "class": "limb-down",
+     "attach": {
+      "x": 211.7,
+      "y": 225.7,
+      "relX": 0.35,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0956,
+     "class": "limb-down",
+     "attach": {
+      "x": 252.5,
+      "y": 223,
+      "relX": 0.63,
+      "relY": 0.97
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "rear": 1,
+    "top": 2,
+    "limb-down": 4
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "chimpanzee",
+   "byClass": {
+    "top": 1,
+    "other": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "detour": {
+  "target": 0.1042,
+  "ref": 0.0292
+ },
+ "bestReference": "chimpanzee",
+ "refRank": 0,
+ "costs": [
+  {
+   "ref": "chimpanzee",
+   "cost": 0.01973
+  }
+ ],
+ "mirrorBest": 0.03062,
+ "otherFamilyBest": {
+  "family": "quadruped",
+  "cost": 0.01622
+ },
+ "coverage": [
+  {
+   "id": "near-arm-lower-hand",
+   "joint": "armNearHand",
+   "paint": 0.7256,
+   "area": 20002.285000000033
+  },
+  {
+   "id": "far-arm-lower-hand",
+   "joint": "armFarHand",
+   "paint": 0.7880485527544351,
+   "area": 17257.919999999933
+  },
+  {
+   "id": "near-leg-lower-foot",
+   "joint": "legNearFoot",
+   "paint": 0.5988074957410562,
+   "area": 18828.409999999996
+  },
+  {
+   "id": "far-leg-lower-foot",
+   "joint": "legFarFoot",
+   "paint": 0.8437741686001546,
+   "area": 20700.90499999998
+  },
+  {
+   "id": "near-arm-upper",
+   "joint": "armNearElbow",
+   "paint": 0.9593220338983051,
+   "area": 14166.179999999982
+  },
+  {
+   "id": "far-arm-upper",
+   "joint": "armFarElbow",
+   "paint": 0.966321243523316,
+   "area": 6203.2950000000055
+  },
+  {
+   "id": "near-leg-upper",
+   "joint": "legNearKnee",
+   "paint": 0.7302204928664072,
+   "area": 37023.26500000003
+  },
+  {
+   "id": "far-leg-upper",
+   "joint": "legFarKnee",
+   "paint": 0.5452914798206278,
+   "area": 17865.180000000004
+  },
+  {
+   "id": "jaw",
+   "joint": "jaw",
+   "paint": 0.7788461538461539,
+   "area": 1684.7350000000001
+  },
+  {
+   "id": "head",
+   "joint": "head",
+   "paint": 0.8949329359165424,
+   "area": 21519.855000000007
+  },
+  {
+   "id": "neck",
+   "joint": "neck",
+   "paint": 0.9983333333333333,
+   "area": 9530.244999999995
+  },
+  {
+   "id": "chest",
+   "joint": "chest",
+   "paint": 0.9988938053097345,
+   "area": 14480.354999999989
+  },
+  {
+   "id": "body",
+   "joint": "root",
+   "paint": 0,
+   "area": 0.5
+  }
+ ],
+ "unclaimedFrac": 0.1291
+}

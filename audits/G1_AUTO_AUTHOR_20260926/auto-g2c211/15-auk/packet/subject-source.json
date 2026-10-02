@@ -1,0 +1,79 @@
+{
+  "name": "Auk",
+  "family": "biped-bird",
+  "species": {
+    "name": "Auk",
+    "aspect": 1.5,
+    "headFrac": 0.24,
+    "eyes": "small",
+    "posture": "upright",
+    "mustRead": [
+      "upright penguin-like stance with black back and white front",
+      "small stubby wings held tight to the body",
+      "legs set far back at the rear of the body"
+    ],
+    "note": "Generic name read as a representative razorbill-type auk. Stands vertically, so it is taller than long."
+  },
+  "genome": {
+    "seed": 3653282128,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 12,
+    "body": 3,
+    "loco": 10,
+    "trait": 19,
+    "size": 0,
+    "diet": 5,
+    "head": 8,
+    "limbs": 3,
+    "skin": 7,
+    "tail": 4,
+    "pattern": 0,
+    "eyes": 2,
+    "behavior": 9,
+    "habitat": 7,
+    "detail": 2,
+    "accent": 5,
+    "temper": 6,
+    "sense": 1,
+    "repro": 6,
+    "life": 2,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Auk"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Auk\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"10\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3653282128\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 308,
+  "profile": {
+    "id": "swimming-bird",
+    "names": [
+      "Goose",
+      "Duck",
+      "Swan",
+      "Eider Duck",
+      "Auk",
+      "Puffin",
+      "Guillemot",
+      "Loon",
+      "Grebe",
+      "Cormorant",
+      "Coot",
+      "Moorhen"
+    ],
+    "candidateTemplates": [
+      "biped-bird"
+    ],
+    "media": [
+      "air",
+      "water",
+      "ground"
+    ],
+    "intendedMoves": [
+      "peck",
+      "kick"
+    ],
+    "notes": ""
+  }
+}

@@ -1,0 +1,609 @@
+{
+  "id": "09-turkey",
+  "family": "biped-bird",
+  "habitat": {
+    "realm": "land",
+    "source": "G1 automatic: Earth fauna profile ground-foraging-bird media air+ground (capability, not painted pose; adult flight is a separate declaration)"
+  },
+  "landmarksPx": {
+    "root": [
+      767.3,
+      560.3
+    ],
+    "pelvis": [
+      715.3,
+      639.2
+    ],
+    "spine": [
+      848.3,
+      568.4
+    ],
+    "chest": [
+      936.5,
+      497.8
+    ],
+    "neck0": [
+      944,
+      423.4
+    ],
+    "neck1": [
+      952.4,
+      378.6
+    ],
+    "head": [
+      974.5,
+      334.7
+    ],
+    "beak": [
+      1002.8,
+      358.1
+    ],
+    "legNearKnee": [
+      591.3,
+      747.7
+    ],
+    "legNearAnkle": [
+      564,
+      843.7
+    ],
+    "legNearFoot": [
+      584.4,
+      883.7
+    ],
+    "legFarKnee": [
+      755,
+      782.7
+    ],
+    "legFarAnkle": [
+      802.2,
+      879.2
+    ],
+    "legFarFoot": [
+      832.3,
+      894.1
+    ],
+    "wingNearRoot": [
+      868.7,
+      507.1
+    ],
+    "wingNearTip": [
+      509.7,
+      587
+    ],
+    "wingFarRoot": [
+      761.6,
+      443.7
+    ],
+    "wingFarTip": [
+      634.2,
+      482.7
+    ],
+    "tailFan": [
+      354.1,
+      660.8
+    ]
+  },
+  "groundLineY": 0.71674767897076,
+  "materials": {
+    "surface": "feathers"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          527.4,
+          827.4
+        ],
+        [
+          598.2,
+          864.7
+        ],
+        [
+          648.1,
+          890.6
+        ],
+        [
+          627.9,
+          906.1
+        ],
+        [
+          504.9,
+          889.3
+        ]
+      ]
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          748.4,
+          850.8
+        ],
+        [
+          820.7,
+          867.3
+        ],
+        [
+          910.2,
+          882.6
+        ],
+        [
+          920.5,
+          912.4
+        ],
+        [
+          736.6,
+          901.3
+        ]
+      ]
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearAnkle",
+      "layer": "near",
+      "polygonPx": [
+        [
+          561,
+          797.7
+        ],
+        [
+          582.3,
+          803.5
+        ],
+        [
+          586.3,
+          869
+        ],
+        [
+          556.8,
+          866.2
+        ],
+        [
+          555.4,
+          838.7
+        ]
+      ]
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarAnkle",
+      "layer": "far",
+      "polygonPx": [
+        [
+          771.1,
+          802.8
+        ],
+        [
+          789.4,
+          753.4
+        ],
+        [
+          833.2,
+          880.1
+        ],
+        [
+          809.2,
+          897.7
+        ],
+        [
+          785.7,
+          872
+        ]
+      ]
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearKnee",
+      "layer": "near",
+      "polygonPx": [
+        [
+          582,
+          680.3
+        ],
+        [
+          729.4,
+          679.6
+        ],
+        [
+          636.6,
+          744.2
+        ],
+        [
+          580.6,
+          816.7
+        ],
+        [
+          556.5,
+          804.1
+        ],
+        [
+          563.9,
+          754.5
+        ]
+      ]
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarKnee",
+      "layer": "far",
+      "polygonPx": [
+        [
+          771.7,
+          674.7
+        ],
+        [
+          916.4,
+          649.1
+        ],
+        [
+          810.3,
+          728.8
+        ],
+        [
+          780,
+          852.2
+        ],
+        [
+          712.2,
+          813.8
+        ],
+        [
+          729.2,
+          752.4
+        ]
+      ]
+    },
+    {
+      "id": "beak",
+      "joint": "beak",
+      "layer": "near",
+      "polygonPx": [
+        [
+          987.6,
+          337.4
+        ],
+        [
+          1018.2,
+          351.6
+        ],
+        [
+          1020.6,
+          407.8
+        ],
+        [
+          991.3,
+          370
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          894.6,
+          303.1
+        ],
+        [
+          1019,
+          312.1
+        ],
+        [
+          1013.3,
+          362.7
+        ],
+        [
+          976.2,
+          363.6
+        ],
+        [
+          937.5,
+          392.2
+        ],
+        [
+          908.4,
+          371.3
+        ]
+      ]
+    },
+    {
+      "id": "neck-upper",
+      "joint": "neck1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          914.1,
+          371.2
+        ],
+        [
+          977.7,
+          349.1
+        ],
+        [
+          967.8,
+          395.4
+        ],
+        [
+          957.2,
+          428.3
+        ],
+        [
+          924.4,
+          427.9
+        ]
+      ]
+    },
+    {
+      "id": "neck-lower",
+      "joint": "neck0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          919.1,
+          425.7
+        ],
+        [
+          970.2,
+          383.8
+        ],
+        [
+          974.6,
+          483.1
+        ],
+        [
+          939.2,
+          538.3
+        ],
+        [
+          905.6,
+          483
+        ]
+      ]
+    },
+    {
+      "id": "far-wing-root",
+      "joint": "wingFarRoot",
+      "layer": "far",
+      "polygonPx": [
+        [
+          674.9,
+          430.4
+        ],
+        [
+          819.4,
+          430.5
+        ],
+        [
+          923.4,
+          414.7
+        ],
+        [
+          911.1,
+          456.5
+        ],
+        [
+          792,
+          471.3
+        ]
+      ]
+    },
+    {
+      "id": "far-wing-flight",
+      "joint": "wingFarTip",
+      "layer": "far",
+      "polygonPx": [
+        [
+          542.2,
+          484.1
+        ],
+        [
+          626.5,
+          447.2
+        ],
+        [
+          674.9,
+          430.4
+        ],
+        [
+          792,
+          471.3
+        ],
+        [
+          677.1,
+          505.6
+        ],
+        [
+          591.2,
+          519.8
+        ]
+      ]
+    },
+    {
+      "id": "near-wing-root",
+      "joint": "wingNearRoot",
+      "layer": "near",
+      "polygonPx": [
+        [
+          790.1,
+          471
+        ],
+        [
+          911.7,
+          456.3
+        ],
+        [
+          938.7,
+          465.2
+        ],
+        [
+          942.4,
+          539.4
+        ],
+        [
+          911.8,
+          606.1
+        ],
+        [
+          815.2,
+          560.9
+        ]
+      ]
+    },
+    {
+      "id": "near-wing-flight",
+      "joint": "wingNearTip",
+      "layer": "near",
+      "polygonPx": [
+        [
+          327.8,
+          606.4
+        ],
+        [
+          426.8,
+          545.8
+        ],
+        [
+          542.2,
+          484.1
+        ],
+        [
+          591.2,
+          519.8
+        ],
+        [
+          677.1,
+          505.6
+        ],
+        [
+          790.1,
+          471
+        ],
+        [
+          815.2,
+          560.9
+        ],
+        [
+          911.8,
+          606.1
+        ],
+        [
+          863.9,
+          618.5
+        ],
+        [
+          655.7,
+          644.9
+        ],
+        [
+          451,
+          637
+        ],
+        [
+          329.6,
+          618.5
+        ]
+      ]
+    },
+    {
+      "id": "tail",
+      "joint": "tailFan",
+      "layer": "near",
+      "polygonPx": [
+        [
+          224.9,
+          668.6
+        ],
+        [
+          326.1,
+          608.8
+        ],
+        [
+          443.8,
+          618.1
+        ],
+        [
+          607,
+          640.4
+        ],
+        [
+          628.3,
+          683.7
+        ],
+        [
+          458.3,
+          737.1
+        ],
+        [
+          336.1,
+          768.6
+        ],
+        [
+          274.3,
+          784.1
+        ]
+      ]
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near",
+      "polygonPx": [
+        [
+          938.4,
+          495.1
+        ],
+        [
+          979.5,
+          452.1
+        ],
+        [
+          972.1,
+          588.9
+        ],
+        [
+          965.1,
+          662.9
+        ],
+        [
+          938.1,
+          668.6
+        ],
+        [
+          934.3,
+          595.3
+        ]
+      ]
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "declarations": "G1 automatic authoring (automatic transfer, not observed): landmarks transferred from the single best registered reference; parts from 04-hawk-v2. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.",
+    "sourceFacing": "right",
+    "visualAcceptance": "none — automatic"
+  }
+}

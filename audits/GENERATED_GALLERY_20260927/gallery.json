@@ -1,6 +1,6 @@
 {
  "schema": "cf.generated-gallery/v1",
- "total": 247,
+ "total": 259,
  "entries": [
   {
    "family": "Quadrupeds",
@@ -533,6 +533,27 @@
    "nativeDir": "audits/ISLANDS_C196_20261002/16-banteng/native",
    "report": "DIAGNOSTIC_PASS",
    "note": "whole after the remainder-island repair (unrepaired late idle floated flecks over the lowered head)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Marine Iguana",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c196p/13-marine-iguana",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (sprawler profile + Codex C204 pinna review)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Giraffe",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c196p/14-giraffe",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "duplicate of the C196 acceptance (pinna re-score run)"
+  },
+  {
+   "family": "Quadrupeds",
+   "name": "Banteng",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c196p/16-banteng",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "duplicate of the C196 acceptance (pinna re-score run)"
   },
   {
    "family": "Snakes (serpent strip author)",
@@ -1072,6 +1093,69 @@
    "nativeDir": "audits/SPIKE_REFILM_20261002/snowy-owl",
    "report": "DIAGNOSTIC_PASS",
    "note": "HELD: spike gone after C201, but a grey seam line shows around the neck/shoulder in the late idle"
+  },
+  {
+   "family": "Birds",
+   "name": "Moorhen",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/04-moorhen",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C211 source repaint)"
+  },
+  {
+   "family": "Birds",
+   "name": "Bittern",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/07-bittern",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C211 source repaint)"
+  },
+  {
+   "family": "Birds",
+   "name": "Condor",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/08-condor",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C211 source repaint)"
+  },
+  {
+   "family": "Birds",
+   "name": "Turkey",
+   "nativeDir": "audits/ISLANDS_C211_20261002/09-turkey/native",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole after the remainder-island repair (C211 source repaint)"
+  },
+  {
+   "family": "Birds",
+   "name": "Grouse",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/10-grouse",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (11.7% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Guineafowl",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/12-guineafowl",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "whole in reaction and late idle (C211 source repaint)"
+  },
+  {
+   "family": "Birds",
+   "name": "Hornbill",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/20-hornbill",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (35.6% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Parrot",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/21-parrot",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (40.4% > 5%, D28)"
+  },
+  {
+   "family": "Birds",
+   "name": "Weaverbird",
+   "nativeDir": "audits/G1_AUTO_AUTHOR_20260926/native-g2c211/24-weaverbird",
+   "report": "DIAGNOSTIC_PASS",
+   "note": "HELD: floats a fragment over the lowered head in the late idle; island repair refused at the cap (10% > 5%, D28)"
   },
   {
    "family": "Fish",

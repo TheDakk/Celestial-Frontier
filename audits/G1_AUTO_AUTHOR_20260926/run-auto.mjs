@@ -44,13 +44,15 @@ const corpus = JSON.parse(fs.readFileSync(path.join(HERE, 'corpus.json'), 'utf8'
 // motion kit REFUSES an unclassified surface (body-card `unsupported-materials`), so a neutral string can never pass a gate. The
 // material is therefore the SPECIES GROUP's integument, keyed by the pinned Earth fauna profile id (biology of the group, not a
 // reading of the painting and never permission for a finisher to add texture). A group absent here REFUSES; nothing is guessed.
+/* 2026-10-02 (Claude): specialized families mapped to the closed kit categories, following Codex's C202 references (earthworm =
+ * slick, sponge = warty); exoskeleton crustaceans = chitin. Bivalve shells have no category in this vocabulary and stay refused. */
 const SPECIES_MATERIAL = Object.freeze({
   fur: ['felid', 'canid', 'hyena', 'bear', 'small-clawed-mammal', 'aquatic-pawed-mammal', 'gliding-mammal', 'aardvark', 'rabbit-hopper', 'marsupial-hopper', 'koala', 'primate', 'hoofed-horned', 'hoofed-unhorned', 'tapir', 'suid', 'bat'],
   scales: ['constricting-snake', 'snake', 'lizard', 'special-lizard', 'marine-iguana', 'crocodilian', 'fish', 'predatory-shark', 'filter-shark', 'tube-snouted-fish'],
   feathers: ['raptor', 'flightless-bird', 'penguin', 'swimming-bird', 'wading-bird', 'ground-foraging-bird', 'bird', 'pheasant'],
-  chitin: ['mandibulate-insect', 'soft-mouth-insect', 'aquatic-insect', 'spider', 'scorpion', 'other-arachnid', 'centipede', 'millipede', 'springtail'],
-  'smooth skin': ['frog', 'salamander', 'caecilian', 'eel', 'jawless-fish', 'cephalopod', 'mudskipper'],
-  warty: ['echinoderm'], translucent: ['cnidarian', 'comb-jelly'],
+  chitin: ['mandibulate-insect', 'soft-mouth-insect', 'aquatic-insect', 'spider', 'scorpion', 'other-arachnid', 'centipede', 'millipede', 'springtail', 'small-crustacean', 'fiddler-crab'],
+  'smooth skin': ['frog', 'salamander', 'caecilian', 'eel', 'jawless-fish', 'cephalopod', 'mudskipper', 'annelid-land', 'land-gastropod'],
+  warty: ['echinoderm', 'sponge'], translucent: ['cnidarian', 'comb-jelly'],
 });
 const materialForProfile = (profileId) => Object.entries(SPECIES_MATERIAL).find(([, ids]) => ids.includes(profileId))?.[0] ?? null;
 // habitat = biological capability from the pinned Earth fauna profile (id, media and its hash retained in the provenance envelope);
