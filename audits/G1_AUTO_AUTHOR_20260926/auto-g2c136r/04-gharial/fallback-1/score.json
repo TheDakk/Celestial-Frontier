@@ -1,0 +1,9 @@
+{
+ "id": "04-gharial",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part fore-far-root (foreFarRoot) covers 0% paint (reference 87%)"
+ ],
+ "semanticPresence": null
+}

@@ -1,0 +1,126 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "17-coastal-lizard",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "5db624cdd2993284581f6e1c5514152569e30919f9e83b82c85f784d49eaf580",
+ "subjectSourceSha256": "d00ad2a7dd3a2b565e4c3db1779f870a36cb8d7fa806f6186ce138a8c2a9d485",
+ "identity": {
+  "name": "Coastal Lizard",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Coastal Lizard\"]],[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3650784952\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "seed": 3650784952,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "river-otter",
+  "authoringSha256": "880928005d6cb859a1d4e5b569dffc2a6405c5ec3734f88836e7939efa6f5ce7",
+  "masterSha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e"
+ },
+ "habitat": {
+  "profileId": "lizard",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "ecb6b4bd14797109298b4fcb140d2c098a473024f0fb1d323657173751d87b75",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group lizard (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1285,
+     "class": "front",
+     "attach": {
+      "x": 283.3,
+      "y": 197.3,
+      "relX": 0.98,
+      "relY": 0.09
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.198,
+     "class": "rear",
+     "attach": {
+      "x": 208,
+      "y": 211.5,
+      "relX": -0.01,
+      "relY": 0.66
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0397,
+     "class": "limb-down",
+     "attach": {
+      "x": 275.5,
+      "y": 218,
+      "relX": 0.88,
+      "relY": 0.92
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0452,
+     "class": "limb-down",
+     "attach": {
+      "x": 263.5,
+      "y": 219,
+      "relX": 0.72,
+      "relY": 0.96
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0479,
+     "class": "limb-down",
+     "attach": {
+      "x": 213.6,
+      "y": 220.9,
+      "relX": 0.06,
+      "relY": 1.04
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0554,
+     "class": "limb-down",
+     "attach": {
+      "x": 229.5,
+      "y": 220,
+      "relX": 0.27,
+      "relY": 1
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "river-otter",
+   "byClass": {
+    "front": 2,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
