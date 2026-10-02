@@ -1,6 +1,6 @@
 # Arena routing: every creature on its home ground (Claude, 2026-10-01)
 
-Matches code as of 2026-10-02 (live encounter-world wiring and D29 delivery canvases). This is Claude's side of C132 program item 1. Codex
+Matches code as of 2026-10-02 (live encounter-world wiring, D29 delivery canvases, and medium-aware routing with the two water sets registered). This is Claude's side of C132 program item 1. Codex
 paints FAR/MID/NEAR plate sets per biome family. Each accepted set is registered with one line, and battles route to it with no code change.
 
 ## What was built
@@ -29,6 +29,11 @@ paints FAR/MID/NEAR plate sets per biome family. Each accepted set is registered
   4. With no world context the result is `'default'`. Since October 2, `main.ts` passes the encounter's world facts through
      `battle2-live-worlds.ts`; generated worlds route by their own biome. Canonical Earth retains the accepted temperate preset
      and the existing lake habitat for swimmers. Unknown or unresolvable world facts retain the explicit fallback.
+- **Medium (2026-10-02).** Every set has a `medium` ('ground' or 'water'), read from its recipe's `medium` field ('ground' when the
+  recipe has none). The fight's medium comes from the habitat compiler (`habitat-arena.ts` `habitatFightMedium`, the same call
+  `placeCombatants` makes): 'water' only when it places **both** combatants in water. A water set is never a candidate for a ground
+  fight, not even as kin. A water fight tries a water set of its biome, then one of its world type, and only then the ground route
+  above, where the stage's procedural wet arena draws the water (the reason says so). See "Water sets" below.
 - When a biome has several sets, the choice is seeded by the **world** (`key#seed`). A world always shows the same home ground, battle
   after battle.
 - With only the temperate set registered, the 43 biomes resolve to 1 `biome`, 10 `kin` (terran) and 32 `fallback`.
@@ -88,7 +93,8 @@ Deliver, under `audits/<YOUR_FOLDER>/`:
                  "mid":  { "master": "audits/<F>/arena-mid.png",  "runtime": "audits/<F>/keyed/arena-mid.png",  "runtimeSha256": "…" },
                  "near": { "master": "audits/<F>/arena-near.png", "runtime": "audits/<F>/keyed/arena-near.png", "runtimeSha256": "…" } } }
    ```
-   Every path is repo-relative under `audits/`. The `runtime` entries are the files the stage draws (an approved despilled MID goes
+   Every path is repo-relative under `audits/`. A manifest may restate the recipe's `medium` (`"medium": "water"`); the generator
+   refuses it when it disagrees with the recipe. The `runtime` entries are the files the stage draws (an approved despilled MID goes
    here). `runtimeSha256` must equal their bytes.
 
 ### How a manifest row is consumed
@@ -246,6 +252,28 @@ This matches the C132 program's order (water first, then desert, snow, forest, g
 The native film harnesses now take their plates from `arena-sets.generated.json` (`tools/battle2-proof/arena-plates.mjs`). See
 `audits/GUARDIAN_CHOREOGRAPHY_20261001/FILM.md`.
 
+## Water sets (2026-10-02, branch `anthropic/overnight-fx-water`)
+Dakk accepted all eight C132 arenas on 2026-10-02. The two painted from inside the water, `freshwater-lake-v2` (biome temperate) and
+`coral` (biome coral), have recipes with `medium: "water"`. They were held back because biome-only routing would have put land
+fighters underwater. They are now registered:
+- `audits/C132_ARENAS_20261001/{freshwater-lake-v2,coral}/delivery.json`, written from each `delivery.pending.json` with `medium:
+  "water"` and `acceptance` pointing at the existing `acceptance.json`. (The acceptance records' `status` line still says
+  "registration deferred"; they are left byte-unchanged as the acceptance evidence.) Two lines were added to `arena-deliveries.json`.
+- `build-shipped-battle2.mjs` shipped them. The pinned first-use battle2 files grew from 79.7 to 93.3 MiB (builder: 181 files,
+  116.5 MiB public mirror); the PWA build's 128 MiB pack assertion passes.
+
+Routing outcomes (`battle2-live-worlds.test.ts`, `arena-registry.test.ts`, `battle2-wiring.test.ts`):
+- A land fight on a temperate or coral world never draws a water set. A swimmer facing a land fighter is not a water fight: the land
+  fighter keeps its floor and the stage keeps the procedural half lake on the swimmer's side.
+- Two swimmers on a temperate world draw `freshwater-lake-v2`; on a coral world, `coral`. Kin: an ocean world takes `coral`, another
+  terran world takes the lake. Earth (no world) and the picker's lake world take the lake for two swimmers.
+- **No double water.** `BattleStage` takes `plateMedium` (the set's medium). On a water set it draws no procedural `WATER_BANDS` and
+  keeps the near plate, because the plates are the water. The wiring test counts exactly one fewer Graphics node than the same two
+  swimmers on the ground set with the procedural lake.
+- Negative controls: a medium-blind registry (water rows relabelled ground) puts land fighters on the coral plates, and the tests
+  catch it; an unknown medium, a water fallback set and a manifest that disagrees with its recipe are each refused by name.
+
 ## Not done / open
-- A painted ocean set will show water in its plates while the stage still draws its procedural `WATER_BANDS` over a swimmer's side. A
-  per-set "paints its own water" flag is a decision for Dakk and Codex once the first wet set exists. It is not added here.
+- The lake set's painted surface is near the top of the frame, while the habitat compiler's water band starts at y 0.57. Swimmers
+  are inside the painted water either way, but a surface-breaching move would read against the procedural surface value (0.52),
+  not the painted one. A per-set surface line would need Codex's habitat owner.

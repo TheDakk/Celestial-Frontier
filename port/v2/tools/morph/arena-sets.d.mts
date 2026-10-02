@@ -1,4 +1,5 @@
-export interface ArenaSetSourceRow { readonly id: string; readonly biome: string; readonly delivery: string; readonly recipe: string; readonly acceptance: string; readonly far: string; readonly mid: string; readonly near: string; readonly masters: Readonly<{ far: string; mid: string; near: string }>; }
+export interface ArenaSetSourceRow { readonly id: string; readonly biome: string; readonly medium: 'ground' | 'water'; readonly delivery: string; readonly recipe: string; readonly acceptance: string; readonly far: string; readonly mid: string; readonly near: string; readonly masters: Readonly<{ far: string; mid: string; near: string }>; }
+export const ARENA_MEDIA: readonly ['ground', 'water'];
 export const ARENA_DELIVERIES_FILE: string;
 export const ARENA_SETS_GENERATED: string;
 export function readArenaDelivery(R: string, rel: string): ArenaSetSourceRow;

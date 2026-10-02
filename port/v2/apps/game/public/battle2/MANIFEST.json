@@ -649,6 +649,26 @@
    "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b"
   },
   {
+   "path": "audits/C132_ARENAS_20261001/coral/arena-delivery-recipe.json",
+   "bytes": 4246,
+   "sha256": "80c379e5ae6461652e76198566210e162a0094010bbffccaaf9387de9a4c11a0"
+  },
+  {
+   "path": "audits/C132_ARENAS_20261001/coral/arena-far.png",
+   "bytes": 2791460,
+   "sha256": "bcb8067c4cb28916bf8ceb21eac1bfeb1e32d03dfff6c45efff814ef4525710b"
+  },
+  {
+   "path": "audits/C132_ARENAS_20261001/coral/keyed/arena-mid.png",
+   "bytes": 2746067,
+   "sha256": "1c40747146a50da140a511710e659d957644720e11d5fbcda9cdff88ed0802d2"
+  },
+  {
+   "path": "audits/C132_ARENAS_20261001/coral/keyed/arena-near.png",
+   "bytes": 1641982,
+   "sha256": "89cdfbebb5ffc62006f71b815f9613af950c84f6c784effb8e3492fca2b02651"
+  },
+  {
    "path": "audits/C132_ARENAS_20261001/dunesea/arena-delivery-recipe.json",
    "bytes": 4267,
    "sha256": "37072eea11c1847c9c6197c0911f1e88b0727d89af72b0d29ebc9ad378dfa259"
@@ -667,6 +687,26 @@
    "path": "audits/C132_ARENAS_20261001/dunesea/keyed/arena-near.png",
    "bytes": 1481749,
    "sha256": "b1b4e3d34688e9606076232f9ca2df3058367e9dd17299fb8239e1539d9a539d"
+  },
+  {
+   "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-delivery-recipe.json",
+   "bytes": 4364,
+   "sha256": "32673cb908dacc92f8df15a556d6d31a4b056256ca5de911189637695cbffb0d"
+  },
+  {
+   "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/arena-far.png",
+   "bytes": 2874963,
+   "sha256": "376701d5f393810c72a8862f071ba9bb522a9b37e381afdfef2bec1c18a59e38"
+  },
+  {
+   "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-mid.png",
+   "bytes": 2619819,
+   "sha256": "7172142d0763d33a55731aaeea0827461e342ea7b955e5ad5cbaaf66445b2b3a"
+  },
+  {
+   "path": "audits/C132_ARENAS_20261001/freshwater-lake-v2/keyed/arena-near.png",
+   "bytes": 1553932,
+   "sha256": "45b531f6d60b3b6dffc5c7fc4dbe9a938c481ae4f28b25dd32d2f3e6f86afd78"
   },
   {
    "path": "audits/C132_ARENAS_20261001/jungle-v2/arena-delivery-recipe.json",

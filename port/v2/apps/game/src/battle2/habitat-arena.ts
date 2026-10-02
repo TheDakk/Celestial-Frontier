@@ -54,6 +54,21 @@ export function habitatFor(side: HabitatSideInput): PhysicalHabitat {
   return resolvePhysicalHabitat(side.record, side.genome ?? undefined);
 }
 
+/** The fight's medium for the arena route (2026-10-02): the habitat compiler's OWN per-side placement on the fight world — 'water' exactly when it
+ * places BOTH combatants in water (two swimmers in a world with that liquid); any other fight — a ground or air side, a swimmer facing a land
+ * fighter (the half-lake case), or a refusal — is 'ground', so a land fighter is never drawn inside a painted water set. Pure; only the
+ * records/genomes and the world are read (the medium does not depend on painted sizes). `world` null = the labelled dry Earth-temperate default. */
+export function habitatFightMedium(input: Readonly<{ contextId: string; seed: number; world: ArenaWorld | null; groundLineY: number;
+  left: Pick<HabitatSideInput, 'record' | 'genome'>; right: Pick<HabitatSideInput, 'record' | 'genome'> }>): Readonly<{ medium: 'ground' | 'water'; reason: string }> {
+  const world = input.world ?? defaultArenaWorld(input.groundLineY);
+  const left = habitatFor({ ...input.left, label: 'left', painted: { height: 0.1, footBelowCentre: 0 } }), right = habitatFor({ ...input.right, label: 'right', painted: { height: 0.1, footBelowCentre: 0 } });
+  // the same call placeCombatants makes (round 0, 'wild', one world for both): the stage's media and the route's medium cannot disagree
+  const c = compileHabitatBattle({ contextId: input.contextId, seed: input.seed, round: 0, kind: 'wild', home: world, visitor: world, left, right });
+  if (c.status === 'UNSUPPORTED') return Object.freeze({ medium: 'ground', reason: `habitat refused on ${world.key} (${c.reason}): ground route` });
+  const water = c.left.medium === 'water' && c.right.medium === 'water';
+  return Object.freeze({ medium: water ? 'water' : 'ground', reason: `${world.key}: left ${c.left.medium}, right ${c.right.medium}${water ? ' (both in water: a water fight)' : ''}` });
+}
+
 export function selectHabitatArena(input: HabitatArenaInput): HabitatArenaResult {
   if (!(input.groundLineY > 0) || !(input.groundLineY < 1)) throw new TypeError('habitat arena: groundLineY must lie inside the frame');
   const worlds = input.worlds ?? { home: defaultArenaWorld(input.groundLineY), visitor: defaultArenaWorld(input.groundLineY) };
