@@ -104,14 +104,13 @@ Self-contained for a fresh Claude session. Codex's block follows below. Session 
 Dakk authorizes large signed C132/C163 batches without per-step approval. Own lane:
 OpenAI/Codex, macOS, `~/Projects/celestial-frontier-openai-mac`, `openai/mac`.
 Claude's handoff above is preserved. Signed lane merges include C165 WebP head
-`72bbe1531`, C168 scoring, and C171 Bat staging evidence through `683d6d58e`
-(merge `d6237e0e3`). Claude's later `818ba677f` acknowledges our `db3cc11bf` with
-an identical tree; it adds no new product or evidence content. Mailbox read through C171.
+`72bbe1531`, C168 scoring, and C172/C173 Capuchin scoring and Bat acceptance
+correction, including the new real-fit aerial frame regression. Mailbox read through C173.
 
 **Accepted progress:** the geometry-selected low-slung sprawler profile removes
 hit/cast failures and head/neck late-idle dip. Nine unchanged static fits pass;
 Claude C167 accepts all ten native C136 films, including Alligator's snout hold.
-Eight new reptiles, Mara, Lark and Hummingbird bring coverage from 184 to **195/631**.
+Eight new reptiles, Mara, Lark, Hummingbird and Bat bring coverage from 184 to **196/631**.
 The live pack still has 45 accepted WebP arena sets across all 43 biome families,
 1672×941, roughly 84 MiB within the unchanged 128 MiB cap. Eleven themes are wired;
 contact-joint anchoring is filmed; guardian choreography remains flag-off.
@@ -125,12 +124,15 @@ Sand identity, seams/fringes and other visual holds remain explicit. Repaints ar
 unregistered, queued by Claude for Dakk's look. All prompts, sources and checks are retained.
 
 **Latest reference delivery:** C190 spread Bat passes static/conservation/D28;
-Claude C171 films 749 frames with no refusal, but holds it because aerial placement
-puts it above the frame. Claude owns a separate, unmerged staging correction.
+Claude films 749 frames with no refusal. C173 corrects the C171 hold: the review
+crop hid the aerial subjects; the full frames show both entirely inside the frame.
+Bat is accepted; no aerial runtime fix is needed. The outcome regression includes
+an actual out-of-frame band-centre negative control.
 The folded standing Vampire Bat painting has an anatomical hold, with no invented
 thumb/contact or fit. C192's current `C168_PRIMATE_REFERENCES_20261002/capuchin-contours/fit01`
 passes all 13 actions, presentation, exact conservation and the unchanged 5% check;
-independent review concurs. Native/moving-paint and small-fringe holds remain.
+independent review concurs. Claude C172 films 872 frames without refusal, but the
+head-down shoulder spike appears in primates too; visual admission remains held.
 Gorilla is still RED on contact/motion and island coverage. C189 documents why the
 cephalopod views cannot supply a truthful far-eye reference under the current template.
 No global reference pool or runtime was changed by these audit packets.
@@ -157,9 +159,11 @@ unchanged limits, zero retries. Fresh selector activation `08ddca65f` passed the
 develop profile: 5,975 tests, 2 expected failures, 3 skipped; all three TypeScript
 projects and art/override/spec owners PASS in 195.25 s. Optional local-AI dependencies
 were renamed aside and restored. Root validation and 81 Actions-policy controls pass.
-Later commits contain only audits/references. The retained proof still replays after
+Later commits contain audits/references and the Bat framing test; runtime bytes are
+unchanged. A final profile follows for that newly merged test. The proof replays after
 the temporary managed source checkout was archived. Historical I5 proof was not rebound.
-Evidence: `C163_I5_EPOCH_20261002`. No native/performance reservation is active.
+Evidence: `C163_I5_EPOCH_20261002`. C194 reserves CPU isolation for the final
+browser-free profile only; no further I5 or native epoch is started.
 
 **Operations and next steps:** all commits are signed G; the pre-push guard remains.
 Budget UNFROZEN, repository PUBLIC, normal own-branch push triggers no workflow.
@@ -170,9 +174,9 @@ startup receipt in `C163_SPRAWLER_MOTION_20261002`; native work requires a poste
 reservation, serialized execution and a terminal release notice. Future develop gates
 still set the optional runtime aside and restore it in a finalizer.
 
-Codex next: C12 timing, source-join head repair, remaining refusal/new-family references,
-and further original batches; keep all holds explicit. Claude next: score C192 Capuchin,
-review supplied reference candidates, and batch any aerial/arena product changes before
+Codex next: C12 timing, shared head-down/source-join repair, remaining refusal/new-family
+references, and further original batches; keep all holds explicit. Claude next: finish
+Bat and review supplied reference candidates; batch any future runtime/arena changes before
 a separately authorized future combined epoch. Current product stays certified. Read the
 opposite mailbox at each batch boundary and reply only in this lane's TO_CLAUDE.
-Dakk need not switch apps or relay the handoff. The detailed delivery rows are C173–C193.
+Dakk need not switch apps or relay the handoff. The detailed delivery rows are C173 onward.
