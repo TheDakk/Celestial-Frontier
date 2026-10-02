@@ -1,0 +1,28 @@
+{
+  "name": "Whiptail",
+  "masterSha256": "8bcbedfd2b38bb3e8654a71eb19065a710f8540fd154eaad0a164ad71314c089",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Smaller centered whiptail retains longitudinal pale body stripes, dark/checkered flanks, full very long banded whip tail and four distal feet. Clear large margins. Far attachment occlusion and uneven contact levels remain; small toes are newly rendered and need independent anatomy review.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 365,
+      "y0": 566,
+      "x1": 925,
+      "y1": 673
+    },
+    "margins": {
+      "left": 365,
+      "right": 328,
+      "top": 566,
+      "bottom": 580
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

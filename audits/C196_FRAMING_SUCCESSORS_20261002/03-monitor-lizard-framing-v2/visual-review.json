@@ -1,0 +1,28 @@
+{
+  "name": "Monitor Lizard",
+  "masterSha256": "960470726168b75e3ea0041ffa98eb43b3117adb56585a852b7b669488022963",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Centered smaller spotted monitor retains full banded tapering tail, long neck, forked tongue and four clawed feet. Margins now generous. Near legs remain relatively upright, far roots occluded and contact heights uneven. Exact digit/scale shapes were regenerated; framing-only success cannot admit anatomical fidelity or motion.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 250,
+      "y0": 536,
+      "x1": 993,
+      "y1": 722
+    },
+    "margins": {
+      "left": 250,
+      "right": 260,
+      "top": 536,
+      "bottom": 531
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

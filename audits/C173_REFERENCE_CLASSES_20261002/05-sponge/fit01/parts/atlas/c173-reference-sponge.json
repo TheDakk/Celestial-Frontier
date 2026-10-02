@@ -1,0 +1,133 @@
+{
+  "frames": {
+    "aperture.png": {
+      "frame": {
+        "h": 166,
+        "w": 286,
+        "x": 1198,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 166,
+        "w": 286
+      },
+      "spriteSourceSize": {
+        "h": 166,
+        "w": 286,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "base.png": {
+      "frame": {
+        "h": 141,
+        "w": 306,
+        "x": 882,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 141,
+        "w": 306
+      },
+      "spriteSourceSize": {
+        "h": 141,
+        "w": 306,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "body.png": {
+      "frame": {
+        "h": 516,
+        "w": 475,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 516,
+        "w": 475
+      },
+      "spriteSourceSize": {
+        "h": 516,
+        "w": 475,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "crown.png": {
+      "frame": {
+        "h": 244,
+        "w": 382,
+        "x": 490,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 244,
+        "w": 382
+      },
+      "spriteSourceSize": {
+        "h": 244,
+        "w": 382,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "root.png": {
+      "frame": {
+        "h": 11,
+        "w": 10,
+        "x": 882,
+        "y": 156
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 11,
+        "w": 10
+      },
+      "spriteSourceSize": {
+        "h": 11,
+        "w": 10,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "c173-reference-sponge.png",
+    "scale": "1",
+    "size": {
+      "h": 526,
+      "w": 1489
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Anole",
+  "masterSha256": "9824c6e1b1da6dc6253d6d6c4419c247ef09137834ff9a0c2379a1bca72d41e9",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Centered smaller green anole retains full long tail, orange-red dewlap and four bent legs with toe tips. Clear side margins visible. Dewlap still obscures far shoulder and foot levels differ; real far-chain and dewlap ownership remain unresolved. Fine markings/digits were regenerated, not locally resized.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 271,
+      "y0": 528,
+      "x1": 954,
+      "y1": 727
+    },
+    "margins": {
+      "left": 271,
+      "right": 299,
+      "top": 528,
+      "bottom": 526
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

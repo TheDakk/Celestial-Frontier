@@ -1,0 +1,11 @@
+# Four specialized source originals
+
+Earthworm, Sponge, Snail and Mussel: four exact native 1254-square originals, one built-in image-generation call each, retained byte-identically. Their canonical Earth identities and existing family routes are preserved. These are a separate inventory from the completed 24-original quadruped/primate packet.
+
+`compiler.audit.mjs` is an audit-only extension with exact named painting vocabulary for annelid, sessile-filter, gastropod and bivalve. `materialize.mjs` records uniquely checked transforms and full replayable additions in `transform-receipt.json`. Canonical identity construction, ART_KIT export and exact style paragraph, materials, DiscoveryAtlas hash lock, requested dimensions and provenance behavior remain inherited. This extension is not claimed to be an unchanged production pipeline. Production compiler bytes were unchanged; 23 positive/refusal controls pass, including all nine existing layout families unchanged, four exact routes, mixed-route refusal and wrong-species refusal.
+
+All four full-size original images were visually inspected. All pass the existing 8% margin check. Earthworm preserves its continuous noncrossing segmented tube, clitellum and absence of legs/eyes. Sponge has one porous vase, osculum and basal tissue; its detailed surface has a photographic-style hold. Snail shows the shell, foot, both eye tentacles and both short feelers, but its mouth is not unambiguously visible for semantic authoring. Mussel shows two valves, mantle, byssal threads and a protruding foot; the tongue-like foot size/shape, wide opening and hinge placement remain biological-review holds. Do not infer hidden anatomy or declare a hidden real part biologically absent.
+
+`generation.json` binds unchanged generator bytes and exact prompt/style inputs. `visible-anatomy.json` is geometric observation only. Pattern checks do not certify other anatomy. Reference agents may author exact observed tissue, keeping all holds. No fits, native motion, gallery acceptance, runtime registration or global pool admission is claimed here.
+
+Prepared for Dakk; all records use repository-relative or home-relative paths. No production source, Git, mailbox or ROADMAP edits.

@@ -1,0 +1,82 @@
+{
+  "schema": "cf.c173-contour-successor/v1",
+  "predecessor": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman",
+  "predecessorAuthoringSha256": "8afb912be3aa61bf2ad3efe7aeb50a5345c6ab0bd693cf0c9e59bafeaf8fc18b",
+  "masterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+  "sourceMasterUnchanged": true,
+  "diagnosisSha256": "87be41d4d86472894bfa605852fcf9434cffbdcd995202fecfc610b29b6bdc65",
+  "writerSha256": "acb48afc3a1fdb7a86d837648f5f576f6e0c5bd1141c85bdf65c7f05c80a71cd",
+  "addedContours": [
+    {
+      "id": "tail-tip-lower-rim",
+      "joint": "tail3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          165,
+          690
+        ],
+        [
+          226,
+          690
+        ],
+        [
+          227,
+          720
+        ],
+        [
+          162,
+          729
+        ]
+      ]
+    },
+    {
+      "id": "tail-distal-lower-rim",
+      "joint": "tail2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          226,
+          680
+        ],
+        [
+          340,
+          676
+        ],
+        [
+          340,
+          711
+        ],
+        [
+          226,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "tail-middle-lower-rim",
+      "joint": "tail1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          340,
+          667
+        ],
+        [
+          489,
+          651
+        ],
+        [
+          492,
+          681
+        ],
+        [
+          340,
+          711
+        ]
+      ]
+    }
+  ],
+  "limitation": "Other small remainder fringes remain; no automatic island placement and no quality/native acceptance.",
+  "capUnchanged": 0.05
+}

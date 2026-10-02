@@ -1,0 +1,403 @@
+{
+  "schema": "cf.c172-source-inputs/v1",
+  "rows": [
+    {
+      "id": "hawk",
+      "packet": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/candidate",
+      "fit": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/fit02",
+      "inputs": [
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/candidate/master.png",
+          "snapshot": "audits/C169_NAPE_RECUT_20261002/hawk/original/master.png",
+          "sha256": "90d34499232cf72202c322b35b9e2d8df802c330506ae1c7065af11515f588fa"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/candidate/authoring.json",
+          "snapshot": "audits/C169_NAPE_RECUT_20261002/hawk/original/authoring.json",
+          "sha256": "d4c06907faba4ad0041e7a234ecbd563446947aedcda311f228f745077571e05"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/candidate/subject-source.json",
+          "snapshot": "audits/C169_NAPE_RECUT_20261002/hawk/original/subject-source.json",
+          "sha256": "87c4c9113ec33cb9421c04800eb08dc511fd67c3f1cea70599270491e99b4568"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/candidate/presence.json",
+          "snapshot": "audits/C169_NAPE_RECUT_20261002/hawk/original/presence.json",
+          "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/fit02/record.json",
+          "sha256": "be3e0cd8c0d5c31d07e0816a3758223598eb4c5a99601465cac616d7d0900f5e"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/18-hawk/fit02/binding.json",
+          "sha256": "3f32cf4b6961073817851f4c60fde0e4c20cc12abfc539ca3a89c3610abb96ea"
+        }
+      ],
+      "native": {
+        "report": "~/Projects/celestial-frontier-anthropic-mac/audits/HEADS_C181_20261002/hawk/report.json",
+        "reportSha256": "af641f1c5c00289c2934ee83d34e5ef2f8898287a91122c82f127373b7381a98",
+        "still": "~/Projects/celestial-frontier-anthropic-mac/audits/HEADS_C181_20261002/hawk/turn3-hit-idle-90.png",
+        "stillSha256": "f55864e72280799567c11182447ebcf91394f4a978faaa6c797bfec1ed5fc228",
+        "source": "454b7d5c3f1e49c3cc5c25a7c278d9b39fab3933",
+        "frame": {
+          "width": 1024,
+          "height": 576
+        },
+        "stands": {
+          "left": {
+            "x": 0.33325140449438206,
+            "y": 0.78
+          },
+          "right": {
+            "x": 0.6667485955056179,
+            "y": 0.78
+          }
+        },
+        "restFill": {
+          "left": 0.38722155708196027,
+          "right": 0.38722155708196027
+        },
+        "turn": {
+          "turn": 3,
+          "outcome": "hit",
+          "attacker": "left",
+          "attack": {
+            "verb": "peck",
+            "contactMs": 246.66666666666666,
+            "contactJoint": "beak"
+          },
+          "beats": {
+            "readyEnd": 600,
+            "commandEnd": 900,
+            "actionStart": 1512,
+            "impactAt": 1758.6666666666667,
+            "hitstopEnd": 1828.6666666666667,
+            "flashEnd": 1912,
+            "shakeEnd": 1938.6666666666667,
+            "numbersEnd": 2268.666666666667,
+            "reactionStart": 1828.6666666666667,
+            "reactionEnd": 2540.666666666667,
+            "actionEnd": 2280.6666666666665,
+            "returnEnd": 2660.6666666666665,
+            "idleStart": 2660.6666666666665,
+            "end": 3260.6666666666665
+          },
+          "offsetMs": 9712,
+          "runUp": 0.07999999999999997,
+          "effectImpactAt": 246.66666666666666,
+          "contactAtImpact": {
+            "x": 0.5505568528248852,
+            "y": 0.5835740641210122,
+            "targetStandX": 0.6667485955056179,
+            "gapToTargetStand": 0.11619174268073273
+          }
+        },
+        "stillTime": 12912.666666666666
+      },
+      "visibleTipStagePx": [
+        590,
+        276
+      ],
+      "scope": "unchanged C181 source"
+    },
+    {
+      "id": "crow",
+      "packet": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/candidate",
+      "fit": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/fit01",
+      "inputs": [
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/candidate/master.png",
+          "snapshot": "audits/C169_NAPE_RECUT_20261002/crow/original/master.png",
+          "sha256": "4c92bd3b678988c0c0678dd7d6b60df544f99fd7f060b8c1d181dac0afdb5387"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/candidate/authoring.json",
+          "snapshot": "audits/C169_NAPE_RECUT_20261002/crow/original/authoring.json",
+          "sha256": "d3cd9d981c1ce7543c955d842ec07d67c544f5a1d50927c123922e1ca910f74f"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/candidate/subject-source.json",
+          "snapshot": "audits/C169_NAPE_RECUT_20261002/crow/original/subject-source.json",
+          "sha256": "9f56be332d6bf379d0d8e8334a763e5133190058f0b57204dd02dbc2e39b410c"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/candidate/presence.json",
+          "snapshot": "audits/C169_NAPE_RECUT_20261002/crow/original/presence.json",
+          "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/fit01/record.json",
+          "sha256": "487024a740542af8d838fff80fc9dc5ec8fd981a469d46182284a285e7d05050"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/crow/fit01/binding.json",
+          "sha256": "bd7f47b925da681abafc52a9333e9d50f5de0e0261da3f019880fe5ff0515e08"
+        }
+      ],
+      "native": {
+        "report": "~/Projects/celestial-frontier-anthropic-mac/audits/HEADS_C181_20261002/crow/report.json",
+        "reportSha256": "78d1b67d24f3aeb2e44869f41104f5ba8d090a244b2d30e4314020355f94d31a",
+        "still": "~/Projects/celestial-frontier-anthropic-mac/audits/HEADS_C181_20261002/crow/turn3-hit-idle-90.png",
+        "stillSha256": "5ce25c3fa711566d866e26fc43b4c49ad9dfcd7abfb2ddbad53b56fb13d47207",
+        "source": "454b7d5c3f1e49c3cc5c25a7c278d9b39fab3933",
+        "frame": {
+          "width": 1024,
+          "height": 576
+        },
+        "stands": {
+          "left": {
+            "x": 0.31259910147991543,
+            "y": 0.78
+          },
+          "right": {
+            "x": 0.6874008985200846,
+            "y": 0.78
+          }
+        },
+        "restFill": {
+          "left": 0.39070472827506064,
+          "right": 0.39070472827506064
+        },
+        "turn": {
+          "turn": 3,
+          "outcome": "hit",
+          "attacker": "left",
+          "attack": {
+            "verb": "peck",
+            "contactMs": 246.66666666666666,
+            "contactJoint": "beak"
+          },
+          "beats": {
+            "readyEnd": 600,
+            "commandEnd": 900,
+            "actionStart": 1512,
+            "impactAt": 1758.6666666666667,
+            "hitstopEnd": 1828.6666666666667,
+            "flashEnd": 1912,
+            "shakeEnd": 1938.6666666666667,
+            "numbersEnd": 2268.666666666667,
+            "reactionStart": 1828.6666666666667,
+            "reactionEnd": 2540.666666666667,
+            "actionEnd": 2280.6666666666665,
+            "returnEnd": 2660.6666666666665,
+            "idleStart": 2660.6666666666665,
+            "end": 3260.6666666666665
+          },
+          "offsetMs": 9712,
+          "runUp": 0.07999999999999997,
+          "effectImpactAt": 246.66666666666666,
+          "contactAtImpact": {
+            "x": 0.5241065104768934,
+            "y": 0.5836747673226476,
+            "targetStandX": 0.6874008985200846,
+            "gapToTargetStand": 0.16329438804319119
+          }
+        },
+        "stillTime": 12912.666666666666
+      },
+      "visibleTipStagePx": [
+        604,
+        291
+      ],
+      "scope": "unchanged C181 source"
+    },
+    {
+      "id": "snowy-owl",
+      "packet": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/candidate",
+      "fit": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/fit01",
+      "inputs": [
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/candidate/master.png",
+          "snapshot": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original/master.png",
+          "sha256": "8d89351ad5d3a91124366f79267703323c6f01ab1cf21677e49157a58b8b8492"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/candidate/authoring.json",
+          "snapshot": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original/authoring.json",
+          "sha256": "7915d259b21efcaf64821a2ba5a3e12dedc2670cadf71519c476d04c9fd475f0"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/candidate/subject-source.json",
+          "snapshot": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original/subject-source.json",
+          "sha256": "178ba64cf18918438212b2e4597c3d3117873399a68b579c7ef0f3c1e40cbdb8"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/candidate/presence.json",
+          "snapshot": "audits/C169_NAPE_RECUT_20261002/snowy-owl/original/presence.json",
+          "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/fit01/record.json",
+          "sha256": "c4f2567d9927dc5d5a3d0fea84e71bfc8afdbdb685953df2fcf5084cd24b439f"
+        },
+        {
+          "path": "audits/C163_REFERENCE_REPAIR_20261002/other-heads/snowy-owl/fit01/binding.json",
+          "sha256": "d73e88c3b08a22a64ea85fbbfebce037f385ed71aed87743e701f804dbc1b24d"
+        }
+      ],
+      "native": {
+        "report": "~/Projects/celestial-frontier-anthropic-mac/audits/HEADS_C181_20261002/snowy-owl/report.json",
+        "reportSha256": "3a181548cb6169acea40bf141e433aec6aae4491cbe38c093b600234ab441e9b",
+        "still": "~/Projects/celestial-frontier-anthropic-mac/audits/HEADS_C181_20261002/snowy-owl/turn3-hit-idle-90.png",
+        "stillSha256": "567218e43002d5766b77b9323eb192cbf22e1428b8cddc7fe704b459ffcda4c0",
+        "source": "454b7d5c3f1e49c3cc5c25a7c278d9b39fab3933",
+        "frame": {
+          "width": 1024,
+          "height": 576
+        },
+        "stands": {
+          "left": {
+            "x": 0.3480036201022146,
+            "y": 0.78
+          },
+          "right": {
+            "x": 0.6519963798977854,
+            "y": 0.78
+          }
+        },
+        "restFill": {
+          "left": 0.3955919379699574,
+          "right": 0.3955919379699574
+        },
+        "turn": {
+          "turn": 3,
+          "outcome": "hit",
+          "attacker": "left",
+          "attack": {
+            "verb": "peck",
+            "contactMs": 246.66666666666666,
+            "contactJoint": "beak"
+          },
+          "beats": {
+            "readyEnd": 600,
+            "commandEnd": 900,
+            "actionStart": 1512,
+            "impactAt": 1758.6666666666667,
+            "hitstopEnd": 1828.6666666666667,
+            "flashEnd": 1912,
+            "shakeEnd": 1938.6666666666667,
+            "numbersEnd": 2268.666666666667,
+            "reactionStart": 1828.6666666666667,
+            "reactionEnd": 2540.666666666667,
+            "actionEnd": 2280.6666666666665,
+            "returnEnd": 2660.6666666666665,
+            "idleStart": 2660.6666666666665,
+            "end": 3260.6666666666665
+          },
+          "offsetMs": 9712,
+          "runUp": 0.08000000000000002,
+          "effectImpactAt": 246.66666666666666,
+          "contactAtImpact": {
+            "x": 0.5673641143959252,
+            "y": 0.5412614927667297,
+            "targetStandX": 0.6519963798977854,
+            "gapToTargetStand": 0.0846322655018602
+          }
+        },
+        "stillTime": 12912.666666666666
+      },
+      "visibleTipStagePx": [
+        568,
+        283
+      ],
+      "scope": "unchanged C181 source"
+    },
+    {
+      "id": "capuchin",
+      "packet": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours",
+      "fit": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/fit01",
+      "inputs": [
+        {
+          "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/master.png",
+          "sha256": "370b179de2c75817c4b061206b92653cf1fe72fbb8f820faf951224ef842acd3"
+        },
+        {
+          "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/authoring.json",
+          "sha256": "19c091d58e706cec1314cc1dfc1074a26ce28a827005dfa332eb5827cb551d3d"
+        },
+        {
+          "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/subject-source.json",
+          "sha256": "5c082e12641700a1445d06649fb5e651f79f39358596c7ce9d0256d4903ff570"
+        },
+        {
+          "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/presence.json",
+          "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+        },
+        {
+          "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/fit01/record.json",
+          "sha256": "6d3a99c37b81d4478da9181714e895c44131c21afccf15209a3412281a3a9700"
+        },
+        {
+          "path": "audits/C168_PRIMATE_REFERENCES_20261002/capuchin-contours/fit01/binding.json",
+          "sha256": "5c0070b946156e5ee44c6a3f718801ad52131b5b77392b8078110376f7353dc1"
+        }
+      ],
+      "native": {
+        "report": "~/Projects/celestial-frontier-anthropic-mac/audits/CAPUCHIN_C192_20261002/capuchin/report.json",
+        "reportSha256": "94531b7bd88b5986adbfc3fa0966e55d426e61080f7325ea0da78eb6cfec742d",
+        "source": "818ba677fe69b41d88fcf8b814dcab0f4bf59063",
+        "frame": {
+          "width": 1024,
+          "height": 576
+        },
+        "stands": {
+          "left": {
+            "x": 0.3165135782747603,
+            "y": 0.78
+          },
+          "right": {
+            "x": 0.6834864217252395,
+            "y": 0.78
+          }
+        },
+        "restFill": {
+          "left": 0.39261625843095493,
+          "right": 0.39261625843095493
+        },
+        "turn": {
+          "turn": 3,
+          "outcome": "hit",
+          "attacker": "left",
+          "attack": {
+            "verb": "bite",
+            "contactMs": 246.66666666666666,
+            "contactJoint": "jaw"
+          },
+          "beats": {
+            "readyEnd": 600,
+            "commandEnd": 900,
+            "actionStart": 1704,
+            "impactAt": 1950.6666666666667,
+            "hitstopEnd": 2020.6666666666667,
+            "flashEnd": 2104,
+            "shakeEnd": 2130.666666666667,
+            "numbersEnd": 2460.666666666667,
+            "reactionStart": 2020.6666666666667,
+            "reactionEnd": 2924.666666666667,
+            "actionEnd": 2664.6666666666665,
+            "returnEnd": 3044.6666666666665,
+            "idleStart": 3044.6666666666665,
+            "end": 3644.6666666666665
+          },
+          "offsetMs": 10864,
+          "runUp": 0.08000000000000003,
+          "effectImpactAt": 246.66666666666666,
+          "contactAtImpact": {
+            "x": 0.4876221679378824,
+            "y": 0.6777821817292514,
+            "targetStandX": 0.6834864217252395,
+            "gapToTargetStand": 0.19586425378735717
+          }
+        },
+        "stillTime": 14448.666666666666
+      },
+      "visibleTipStagePx": [
+        652,
+        348
+      ],
+      "scope": "unchanged C192 contour fit"
+    }
+  ]
+}

@@ -1,3 +1,62 @@
+# C173 first delivery checkpoint — 2026-10-02
+
+## Current Codex sprint handoff — 2026-10-02, C173 ACTIVE
+
+Dakk authorizes the C132 sprint on OpenAI/Codex, macOS,
+`~/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, with disjoint
+parallel agents and large signed batches. Claude's handoff above stays unchanged.
+Start and latest boundary read Claude's mailbox through C173; no newer signed
+anthropic/mac commits existed at either read. Budget UNFROZEN; signing G and the
+pre-push guard remain mandatory. No PR/label/hosted/develop/main/release/deploy.
+
+Accepted baseline remains 196/631, 45 WebP arenas/43 families at 1672×941 and 11 painted
+themes. The selected historical I5 certifies product 20e80c912; the latest completed
+develop gate has 5,976 passes. Neither certificate nor accepted coverage is extended
+by the new source candidates. Prior complete handoff is moved verbatim to the archive.
+
+**Current product work, not yet ready for native:** C172 shared faint-pose repair
+uses unchanged C181 Hawk/Crow/Snowy Owl and C192 Capuchin fits. The reported
+idle-90 defects are held faint. Birds' distal nape follows accumulated neck
+rotations; Capuchin's shoulder fragment follows root while neighboring chest/neck
+paint descends. Dense review refused two intermediate candidates despite green
+static checks. Minimal source changes/tests/docs remain in progress in
+`C172_SHARED_HEAD_SPIKE_20261002`; do not call them accepted or reuse I5 on them.
+A final changed-product checkpoint precedes a fresh combined epoch and native films.
+
+**C196–C199 delivered:** 24 originals (17 quadruped source repairs + 7 first primates),
+18 framing PASS/6 retained refusals; separate focused framing successors and four
+simple-family originals continue. Nine selected held-source repaints in
+`C173_HOLD_SOURCE_REPAINTS_20261002/pilot-v2.json` all pass the unchanged 8% margin
+rule; 13 attempts retained, no local rescale/crop. Rhea far wing remains occluded.
+`C173_SOUND_REVIEW_20261002` measures all 49 C141 cues: 32 pass/17 quietness refusals,
+seven exact PCM duplicate groups; audition page and real-owner admission plan are
+ready, headphones/phone listening NOT performed and nothing admitted.
+
+**Reference queue:** C173_REFERENCE_CLASSES contains independently authored
+Caiman/Giraffe technical successors with unchanged D28/static PASS; Monkey keeps
+walk/faint/contact and remainder-cap refusals. Original 24 is frozen; references
+and later simple-family sources are separate. No global pool promotion or invented
+anatomy. Equid ear/mane/limb work follows the head-source freeze as audit-only work.
+
+**Performance:** `C173_ALL_PAIRS_20261002` is an additive complete-sweep supervisor
+for Dakk's now-explicit 1,444 ordered-pair run. It records every CPU-only RED while
+retaining the exact 1000/60 ms limit, runner/entry and capture controls; no retries.
+40 synthetic and 12 path/inventory controls pass. Final source preparation/native
+runs remain pending. The earlier C163 first-red preparation and C12 unpromoted
+kernel remain untouched. A native reservation is required before any epoch;
+none is active at this checkpoint. All-pair 60 fps is UNMEASURED.
+
+Reuse this uninterrupted session's startup receipt in C163_SPRAWLER_MOTION_20261002.
+Disk has about 146 GiB free at this boundary; no cleanup/recovery is claimed by this
+batch. Future develop gates rename optional local-AI node_modules aside and restore
+it in a finalizer. Codex completes source tests/docs, freezes product and reserves
+native isolation; Claude reviews delivered source/reference packets after that
+window. Dakk need not relay messages or switch apps. Write only TO_CLAUDE here,
+read the sibling mailbox at every batch end, and preserve old proofs/limits.
+
+C200 adds the missing nine C197 pattern records (two PASS, seven NOT_REQUIRED). Claude C175 owns the native scoring window; Codex defers native/gate/heavy CPU until its terminal notice.
+
+
 ## ARCHIVED 2026-10-02 — Codex C163 in-progress handoff before final signed deliveries
 
 ## Current Codex sprint handoff — 2026-10-02, C163 ACTIVE

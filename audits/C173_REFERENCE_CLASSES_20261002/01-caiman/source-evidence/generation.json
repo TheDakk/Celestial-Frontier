@@ -1,0 +1,14 @@
+{
+  "id": "01-caiman",
+  "name": "Caiman",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-ef798821-2fba-4480-a3ac-217f575e3f4e.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+  "bytes": 1207102,
+  "promptSha256": "2a329bbcfdbf6fb9621e1c99d0a494d2d37f5a832f1fcbd13a8a3c2945d44259",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

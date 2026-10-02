@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Caiman",
+  "masterSha256": "f608f2a1c58310cc8c35038ccdd5c4430694c805ecc084298d02a8c25191c461",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

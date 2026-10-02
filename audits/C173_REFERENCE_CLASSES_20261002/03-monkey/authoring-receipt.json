@@ -1,0 +1,9 @@
+{
+  "schema": "cf.c173-source-authoring/v1",
+  "writerSha256": "36bfff53d76f976934d5f4aed7673c303bb2610d5ef181b7caec1fcf59f6c8b6",
+  "masterSha256": "56c3437b8203380096564c67a8ec109b3a84cb07d4521caa3e870a2165fd6d4d",
+  "authoringSha256": "b3454d08b50f5d4c16ceea4bc33ca3a7ec3d6e2eadd85f9a2dc98831fd59a033",
+  "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+  "sourceBytesUnchanged": true,
+  "nativeRuns": 0
+}

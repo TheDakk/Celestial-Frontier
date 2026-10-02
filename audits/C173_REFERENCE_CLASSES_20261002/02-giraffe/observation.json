@@ -1,0 +1,148 @@
+{
+  "schema": "cf.c173-reference-observation/v1",
+  "source": "audits/C196_QUADRUPED_ORIGINALS_20261002/14-giraffe",
+  "masterSha256": "16ec8a19459d429c5b445c85adca9d6d17a920842989540b0c33b95362b6a3e3",
+  "sourceBytesUnchanged": true,
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "fullSizeInspected": true,
+  "landmarksPx": {
+    "root": [
+      592,
+      679
+    ],
+    "pelvis": [
+      520,
+      686
+    ],
+    "spine": [
+      592,
+      658
+    ],
+    "chest": [
+      686,
+      657
+    ],
+    "neck": [
+      807,
+      316
+    ],
+    "head": [
+      847,
+      281
+    ],
+    "jaw": [
+      878,
+      315
+    ],
+    "hindNearRoot": [
+      538,
+      712
+    ],
+    "hindNearKnee": [
+      520,
+      853
+    ],
+    "hindNearAnkle": [
+      560,
+      979
+    ],
+    "hindNearPaw": [
+      578,
+      1008
+    ],
+    "hindFarRoot": [
+      492,
+      749
+    ],
+    "hindFarKnee": [
+      457,
+      851
+    ],
+    "hindFarAnkle": [
+      423,
+      975
+    ],
+    "hindFarPaw": [
+      434,
+      1008
+    ],
+    "foreNearRoot": [
+      689,
+      706
+    ],
+    "foreNearKnee": [
+      731,
+      864
+    ],
+    "foreNearAnkle": [
+      766,
+      978
+    ],
+    "foreNearPaw": [
+      784,
+      1006
+    ],
+    "foreFarRoot": [
+      667,
+      746
+    ],
+    "foreFarKnee": [
+      657,
+      868
+    ],
+    "foreFarAnkle": [
+      634,
+      972
+    ],
+    "foreFarPaw": [
+      645,
+      1001
+    ],
+    "tail0": [
+      485,
+      675
+    ],
+    "tail1": [
+      456,
+      735
+    ],
+    "tail2": [
+      430,
+      778
+    ],
+    "tail3": [
+      405,
+      851
+    ],
+    "earFarRoot": [
+      859,
+      262
+    ],
+    "earFarTip": [
+      876,
+      240
+    ],
+    "earNearRoot": [
+      811,
+      266
+    ],
+    "earNearTip": [
+      784,
+      240
+    ]
+  },
+  "sourceCoordinatesTransferred": false,
+  "sourceLabelsTransferred": false,
+  "physicalCoplanarGroundClaim": false,
+  "limitations": [
+    "Slight three-quarter head and chest view; far foreleg proximal attachment is occluded, so its root is the visible emergence, not an invented shoulder centre.",
+    "Both actual ears and both ossicones are visible. Ossicones remain head paint; they are not substituted for ears or given invented independent bones.",
+    "Four hooves are distinct at their observed perspective heights; the authoring does not warp them into a common plane.",
+    "Long neck has a coarse shared quadruped neck owner; suitability for large-amplitude choreography and bending needs finished moving-paint/native scoring.",
+    "No native or quality acceptance."
+  ],
+  "qualityAccepted": false
+}

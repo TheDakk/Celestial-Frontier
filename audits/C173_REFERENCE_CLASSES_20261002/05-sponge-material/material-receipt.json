@@ -1,0 +1,21 @@
+{
+  "schema": "cf.c173-material-successor/v1",
+  "predecessor": "audits/C173_REFERENCE_CLASSES_20261002/05-sponge",
+  "predecessorAuthoringSha256": "8bd38c4a40fe416a519e92093becc6e7fb0a373128f47444c6869f89c037bf33",
+  "authoringSha256": "6d8987088117793b19a3de692cf45b6acc74dcee45abc5b2f34b879c8a3b88f3",
+  "masterSha256": "93516cf1c142e9fd71298f3585162ac35417e9123721ea349a765686df2f59a0",
+  "writerSha256": "5dea6e9385e54ea791dbc5249aa72dad23797312fb2abc430189bb43d67bcbc9",
+  "mappingOwner": "port/v2/apps/game/src/motion/secondary.ts",
+  "mappingOwnerSha256": "da51acb7b05b77a561f09d084eb02c6a3bc314f180f0e3be1ccfb4f2855b8de5",
+  "oldSurface": "porous",
+  "newSurface": "warty",
+  "reason": "The visibly irregular porous soft body uses the existing warty rough soft-surface motion category (same finite damping/squash family as slick). This describes the motion category, not biological warts. The original photographic/porous surface and art hold remain unchanged.",
+  "sourceBytesUnchanged": true,
+  "landmarksUnchanged": true,
+  "ownershipPolygonsUnchanged": true,
+  "presenceUnchanged": true,
+  "productionChanged": false,
+  "thresholdsChanged": false,
+  "nativeRuns": 0,
+  "qualityAccepted": false
+}

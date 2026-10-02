@@ -301,3 +301,25 @@ the unchanged originals. Evidence: `audits/C163_SPRAWLER_MOTION_20261002`.
 Current shared battle work separately includes 45 accepted WebP arena sets covering all
 43 biome families and eleven painted effect themes. Historical September implementation
 limitations above are not the current arena/effect inventory.
+
+### Continuous painted upper-body faint — matches code 2026-10-02
+
+`motion/axial-faint.ts` authors canonical faint for land/amphibious bird and primate
+cards carrying exact painted contact supports. It follows the actual head ancestry
+back to the bird torso or primate root. Birds preserve the original small anticipation
+nod, then ease into a coherent held head/neck pose; their torso tracks remain exact to
+avoid changing wing motion. Primates keep the complete upper-body curve coherent; primate
+nonterminal arm joints join that frame because upper-arm paint borders the throat.
+This deliberately reduces independent neck/head and upper-arm curl during faint.
+Root slump, hands, legs, wings, tails, phases, easing, duration and all limits remain;
+the existing grounded author runs afterwards. Other actions, unsupported/unobserved
+cards and explicit editor timelines retain their previous behavior. No painting,
+fit, ownership, binding, skin solver or publication guard changes.
+
+C172 reproduces the original native spikes on unchanged C181 Hawk/Crow/Snowy Owl
+and C192 Capuchin fits. A first axial-only candidate exposed a larger primate
+throat/arm gap and is retained as a negative control. The complete upper-body curve
+removes that regression. Full-size software review still records pre-existing limb
+openings, bird ground flecks and primate hand penetration; static publication does
+not establish native performance or full visual admission. Evidence:
+`audits/C172_SHARED_HEAD_SPIKE_20261002`.

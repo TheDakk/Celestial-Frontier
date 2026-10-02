@@ -1,0 +1,36 @@
+{
+  "schema": "cf.c173-contour-delta/v1",
+  "status": "PASS",
+  "predecessor": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman",
+  "successor": "audits/C173_REFERENCE_CLASSES_20261002/01-caiman-tail-contour",
+  "masterSha256": "c5021273c12fba2b399e21f6985534ab2c1da311ebb0bd70ada922d3eb2bc87b",
+  "sourcePixelsChanged": 0,
+  "landmarksChanged": false,
+  "previousPriorityRegionsChanged": false,
+  "priorAnatomyOwnersChanged": 0,
+  "movedFromRemainder": [
+    {
+      "joint": "tail3",
+      "pixels": 146
+    },
+    {
+      "joint": "tail2",
+      "pixels": 597
+    },
+    {
+      "joint": "tail1",
+      "pixels": 739
+    }
+  ],
+  "controls": [
+    "master byte identity",
+    "landmark identity",
+    "unchanged previous priority polygons",
+    "independent published ownership delta",
+    "exact keyed RGBA identity",
+    "prior anatomy theft rejected",
+    "paint deletion rejected"
+  ],
+  "qualityAccepted": false,
+  "nativeRun": false
+}

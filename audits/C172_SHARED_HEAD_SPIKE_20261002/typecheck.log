@@ -1,0 +1,10 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/motion/axial-faint.test.ts(3,64): error TS7016: Could not find a declaration file for module '../../../../tools/quadruped-proof/source-join-continuity.mjs'. '~/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs' implicitly has an 'any' type.
+apps/game/src/motion/axial-faint.test.ts(10,38): error TS7016: Could not find a declaration file for module '../../../../../../audits/C132_FAINT_GROUND_20261002/paint-publication.mjs'. '~/Projects/celestial-frontier-openai-mac/audits/C132_FAINT_GROUND_20261002/paint-publication.mjs' implicitly has an 'any' type.
+apps/game/src/motion/axial-faint.test.ts(55,106): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ root: { rotation: number; dx: number; dy: number; }; }'.
+  No index signature with a parameter of type 'string' was found on type '{ root: { rotation: number; dx: number; dy: number; }; }'.
+apps/game/src/motion/axial-faint.test.ts(55,122): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ root: { rotation: number; dx: number; dy: number; }; }'.
+  No index signature with a parameter of type 'string' was found on type '{ root: { rotation: number; dx: number; dy: number; }; }'.

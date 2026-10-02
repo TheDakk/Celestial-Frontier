@@ -1,0 +1,29 @@
+{
+  "schema": "cf.reviewed-external-ear-absence/v1",
+  "name": "Marine Iguana",
+  "family": "quadruped",
+  "masterSha256": "9200fbcb9b42baa95175a0d23e2358332aef0fe19a4e5d5ba7d5fbebcb36116f",
+  "subjectSha256": "9aac492c87c68fbcfa4bf4766b39c8296e5d041c5fc5400d4eb6b0313c1ec240",
+  "promptSha256": "71e787c1c2fc314ff60d7da5be135024e139493a858759fa631c9b535b3d7527",
+  "profileId": "marine-iguana",
+  "profileSha256": "39e86c2321c877e6b3b8a2528f852baaefa177493b44e1a5266b908b247fdd3f",
+  "context": {
+    "lifeStage": "adult",
+    "caste": "not-applicable",
+    "pose": "grounded-sprawl-side-right"
+  },
+  "review": {
+    "reviewer": "OpenAI/Codex",
+    "method": "Full-original visual inspection",
+    "observation": "Full original: dark pebbled scales, blunt head, row of dorsal spines, broad flattened tail and four clawed limb endpoints. No projecting external pinnae are painted. Actual tympanic area, neck folds and dorsal spines stay present. Tail tip shape and unequal foot heights remain explicit source-anatomy/contact holds.",
+    "decisions": [
+      {
+        "group": "external-ears",
+        "decision": "ABSENT",
+        "anatomicalMeaning": "external-pinnae-only",
+        "paintingObservation": "No paired projecting mammalian pinnae are depicted. External gills, ear openings and all other actual head/neck paint remain present and are not excluded."
+      }
+    ]
+  },
+  "scope": "exact-master-only-no-visual-admission"
+}

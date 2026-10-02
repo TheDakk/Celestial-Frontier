@@ -1,0 +1,17 @@
+{
+  "id": "08-whiptail-framing-v2",
+  "name": "Whiptail",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-e50ff2c8-5b72-4057-ad17-8b480f5aa566.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "8bcbedfd2b38bb3e8654a71eb19065a710f8540fd154eaad0a164ad71314c089",
+  "bytes": 938607,
+  "promptSha256": "9dd42f04cc56adb863acb7d96e944f551b2d0491ea009b8474f1f2ad7d5ecd65",
+  "intent": "edit",
+  "editTarget": "audits/C196_QUADRUPED_ORIGINALS_20261002/08-whiptail/master.png",
+  "editTargetSha256": "b382a570d15152f738fc8073d59e5ceb5ad879c4db404da56ea356046e427f77",
+  "originalStyleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

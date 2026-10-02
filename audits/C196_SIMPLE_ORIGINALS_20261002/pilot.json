@@ -1,0 +1,34 @@
+[
+  {
+    "id": "01-earthworm",
+    "name": "Earthworm",
+    "family": "annelid",
+    "packet": "audits/C196_SIMPLE_ORIGINALS_20261002/01-earthworm",
+    "master": "audits/C196_SIMPLE_ORIGINALS_20261002/01-earthworm/master.png",
+    "purpose": "NEW_SPECIALIZED_SOURCE"
+  },
+  {
+    "id": "02-sponge",
+    "name": "Sponge",
+    "family": "sessile-filter",
+    "packet": "audits/C196_SIMPLE_ORIGINALS_20261002/02-sponge",
+    "master": "audits/C196_SIMPLE_ORIGINALS_20261002/02-sponge/master.png",
+    "purpose": "NEW_SPECIALIZED_SOURCE"
+  },
+  {
+    "id": "03-snail",
+    "name": "Snail",
+    "family": "gastropod",
+    "packet": "audits/C196_SIMPLE_ORIGINALS_20261002/03-snail",
+    "master": "audits/C196_SIMPLE_ORIGINALS_20261002/03-snail/master.png",
+    "purpose": "NEW_SPECIALIZED_SOURCE"
+  },
+  {
+    "id": "04-mussel",
+    "name": "Mussel",
+    "family": "bivalve",
+    "packet": "audits/C196_SIMPLE_ORIGINALS_20261002/04-mussel",
+    "master": "audits/C196_SIMPLE_ORIGINALS_20261002/04-mussel/master.png",
+    "purpose": "NEW_SPECIALIZED_SOURCE"
+  }
+]

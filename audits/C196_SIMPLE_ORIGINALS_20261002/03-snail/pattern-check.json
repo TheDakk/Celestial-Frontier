@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Snail",
+  "masterSha256": "82ba2be63e03dc60f7171ad516062e08a74c32a600cd8b37b29661b1047e0306",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

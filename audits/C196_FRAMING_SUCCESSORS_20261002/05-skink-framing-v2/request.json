@@ -1,0 +1,41 @@
+{
+  "schema": "cf.g2-framing-edit/v1",
+  "id": "05-skink-framing-v2",
+  "name": "Skink",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "intent": "edit",
+  "promptSha256": "74d41b45f62546cc956ad7491cc73fada352fa7996d8ea92d0877effaebf6297",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "reference": "audits/C196_QUADRUPED_ORIGINALS_20261002/05-skink/master.png",
+  "referenceSha256": "aad336737411ed13050aaef3e3f713650d06d5e95941f96113b613bf8bf3603c",
+  "actualInputRole": "sole edit target; original master",
+  "originalRequest": "audits/C196_QUADRUPED_ORIGINALS_20261002/05-skink/request.json",
+  "originalRequestSha256": "c81233fd8f42c386a5d09978d73d3425a4bf7185f44f5af582afc779a1126e3f",
+  "originalStyleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "priorFraming": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 93,
+      "y0": 516,
+      "x1": 1140,
+      "y1": 733
+    },
+    "margins": {
+      "left": 93,
+      "right": 113,
+      "top": 516,
+      "bottom": 520
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "scope": "One authorized framing-only edit; unchanged prior originals. All existing anatomy and contact holds remain pending independent review."
+}

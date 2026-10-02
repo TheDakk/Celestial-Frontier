@@ -1,0 +1,14 @@
+{
+  "id": "03-snail",
+  "name": "Snail",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-50aa9655-0629-42b8-92e5-678966d59406.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "82ba2be63e03dc60f7171ad516062e08a74c32a600cd8b37b29661b1047e0306",
+  "bytes": 1393126,
+  "promptSha256": "41d59a2b310a4f49cd4ddc47e51555cc874501621a5177e4632af078927e7418",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

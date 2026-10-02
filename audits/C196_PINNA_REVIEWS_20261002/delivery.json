@@ -1,0 +1,39 @@
+{
+  "schema": "cf.c196-pinna-delivery/v1",
+  "reviews": 2,
+  "controls": 8,
+  "sourceModified": false,
+  "qualityAccepted": false,
+  "files": [
+    {
+      "path": "audits/C196_PINNA_REVIEWS_20261002/README.md",
+      "sha256": "73452f86a3845941ec8d5bad0914ca86a103a25a505b6b87ef6ad4b65f5c2911",
+      "bytes": 643
+    },
+    {
+      "path": "audits/C196_PINNA_REVIEWS_20261002/prepare-presence.mjs",
+      "sha256": "df39382c2de1239629930e5a3d61b363f747b7741b074b75803c2242851b34d0",
+      "bytes": 3458
+    },
+    {
+      "path": "audits/C196_PINNA_REVIEWS_20261002/presence/12-chameleon.json",
+      "sha256": "a53e12db897e0e16fd410e744c178432dc9109d5b5a9d679fa808dee1b61f8be",
+      "bytes": 1513
+    },
+    {
+      "path": "audits/C196_PINNA_REVIEWS_20261002/presence/13-marine-iguana.json",
+      "sha256": "21fb29a1c11eb6b9a02e681caf999f858cf1f8bb35f9dfb13617a189ec584d82",
+      "bytes": 1439
+    },
+    {
+      "path": "audits/C196_PINNA_REVIEWS_20261002/presence-controls.json",
+      "sha256": "66682a46b685fd2fb34ef25b00d8aff5fb95d16e90e0aed3832f4f44934f30ee",
+      "bytes": 1265
+    },
+    {
+      "path": "audits/C196_PINNA_REVIEWS_20261002/reviewed-presence.json",
+      "sha256": "a9898c0fee81862b6e541fde92af06165ddaacf15e867ab220c226eae98aaf6e",
+      "bytes": 237
+    }
+  ]
+}

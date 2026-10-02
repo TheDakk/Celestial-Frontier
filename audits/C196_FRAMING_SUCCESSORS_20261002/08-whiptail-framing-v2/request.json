@@ -1,0 +1,41 @@
+{
+  "schema": "cf.g2-framing-edit/v1",
+  "id": "08-whiptail-framing-v2",
+  "name": "Whiptail",
+  "family": "quadruped",
+  "tool": "image_gen.imagegen",
+  "intent": "edit",
+  "promptSha256": "9dd42f04cc56adb863acb7d96e944f551b2d0491ea009b8474f1f2ad7d5ecd65",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "reference": "audits/C196_QUADRUPED_ORIGINALS_20261002/08-whiptail/master.png",
+  "referenceSha256": "b382a570d15152f738fc8073d59e5ceb5ad879c4db404da56ea356046e427f77",
+  "actualInputRole": "sole edit target; original master",
+  "originalRequest": "audits/C196_QUADRUPED_ORIGINALS_20261002/08-whiptail/request.json",
+  "originalRequestSha256": "bf39b5d64a01776e61dcb7ec5f1637dbb58d2f0b6269e4db248505f46f4e96fc",
+  "originalStyleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "priorFraming": {
+    "status": "REFUSE",
+    "bounds": {
+      "x0": 97,
+      "y0": 527,
+      "x1": 1138,
+      "y1": 719
+    },
+    "margins": {
+      "left": 97,
+      "right": 115,
+      "top": 527,
+      "bottom": 534
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  },
+  "scope": "One authorized framing-only edit; unchanged prior originals. All existing anatomy and contact holds remain pending independent review."
+}

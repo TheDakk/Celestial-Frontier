@@ -1,0 +1,105 @@
+{
+  "schema": "cf.c173-contour-successor/v1",
+  "predecessor": "audits/C173_REFERENCE_CLASSES_20261002/02-giraffe",
+  "predecessorAuthoringSha256": "2a6688972dccbf5dcf8623e2021d2c7547041761da55b8d99ac904094eec6cab",
+  "masterSha256": "16ec8a19459d429c5b445c85adca9d6d17a920842989540b0c33b95362b6a3e3",
+  "sourceMasterUnchanged": true,
+  "diagnosisSha256": "1ffa06cef5b44f00859c552da2e3d87824345b0d544a845363ffb537b97b36ed",
+  "writerSha256": "4d8554ade1e266def994c48ef1ef6b7798d9a5e11df961006f948e7b6a806b59",
+  "addedContours": [
+    {
+      "id": "neck-visible-outline",
+      "joint": "neck",
+      "layer": "near",
+      "polygonPx": [
+        [
+          606,
+          570
+        ],
+        [
+          638,
+          525
+        ],
+        [
+          665,
+          504
+        ],
+        [
+          699,
+          463
+        ],
+        [
+          722,
+          422
+        ],
+        [
+          743,
+          364
+        ],
+        [
+          765,
+          319
+        ],
+        [
+          780,
+          291
+        ],
+        [
+          795,
+          278
+        ],
+        [
+          815,
+          274
+        ],
+        [
+          835,
+          293
+        ],
+        [
+          843,
+          323
+        ],
+        [
+          825,
+          371
+        ],
+        [
+          804,
+          454
+        ],
+        [
+          780,
+          521
+        ],
+        [
+          754,
+          583
+        ],
+        [
+          727,
+          640
+        ],
+        [
+          707,
+          635
+        ],
+        [
+          680,
+          619
+        ],
+        [
+          657,
+          602
+        ],
+        [
+          638,
+          591
+        ]
+      ]
+    }
+  ],
+  "capUnchanged": 0.05,
+  "qualityAccepted": false,
+  "nativeRuns": 0
+}

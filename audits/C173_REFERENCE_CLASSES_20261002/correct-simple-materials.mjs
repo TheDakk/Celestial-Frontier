@@ -1,0 +1,10 @@
+import fs from'node:fs';import assert from'node:assert/strict';import{createHash}from'node:crypto';
+const base='audits/C173_REFERENCE_CLASSES_20261002',read=p=>fs.readFileSync(p),sha=p=>createHash('sha256').update(read(p)).digest('hex'),write=(p,v)=>fs.writeFileSync(p,JSON.stringify(v,null,2)+'\n',{flag:'wx'});
+for(const[id,from,to,reason]of[
+ ['04-earthworm','skin','slick','The visible wet annelid cuticle uses the existing slick soft-surface Motion Kit class. The prior literal skin label is unsupported; source anatomy and pose are unchanged.'],
+ ['05-sponge','porous','warty','The visibly irregular porous soft body uses the existing warty rough soft-surface motion category (same finite damping/squash family as slick). This describes the motion category, not biological warts. The original photographic/porous surface and art hold remain unchanged.']
+]){
+ const old=base+'/'+id,next=old+'-material',a=JSON.parse(read(old+'/authoring.json'));assert.equal(a.materials.surface,from);const refusal=JSON.parse(read(old+'/static-01.json'));assert.equal(refusal.status,'REFUSED');assert(refusal.refusal.error.includes('unsupported-materials'));
+ fs.mkdirSync(next);for(const f of['master.png','subject-source.json','presence.json'])fs.copyFileSync(old+'/'+f,next+'/'+f,fs.constants.COPYFILE_EXCL);a.id+='-material';a.materials.surface=to;a.coverage.materialSuccessor=reason;write(next+'/authoring.json',a);
+ write(next+'/material-receipt.json',{schema:'cf.c173-material-successor/v1',predecessor:old,predecessorAuthoringSha256:sha(old+'/authoring.json'),authoringSha256:sha(next+'/authoring.json'),masterSha256:sha(next+'/master.png'),writerSha256:sha(import.meta.filename),mappingOwner:'port/v2/apps/game/src/motion/secondary.ts',mappingOwnerSha256:sha('port/v2/apps/game/src/motion/secondary.ts'),oldSurface:from,newSurface:to,reason,sourceBytesUnchanged:sha(old+'/master.png')===sha(next+'/master.png'),landmarksUnchanged:true,ownershipPolygonsUnchanged:true,presenceUnchanged:true,productionChanged:false,thresholdsChanged:false,nativeRuns:0,qualityAccepted:false});
+}

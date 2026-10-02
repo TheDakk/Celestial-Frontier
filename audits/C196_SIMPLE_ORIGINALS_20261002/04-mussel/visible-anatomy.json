@@ -1,0 +1,153 @@
+{
+  "id": "04-mussel",
+  "name": "Mussel",
+  "family": "bivalve",
+  "width": 1254,
+  "height": 1254,
+  "masterSha256": "aa7219e68a04fe659d7ec8cd1a66213bdbd7e36c826158f7d5477a0f272428cb",
+  "keyed": true,
+  "observed": {
+    "schema": "cf.g1-limb-counter/v1",
+    "W": 420,
+    "H": 420,
+    "scale": 2.9857142857142858,
+    "paint": 26017,
+    "coreRadius": 32,
+    "bodyBox": {
+      "x0": 132,
+      "y0": 126,
+      "x1": 297,
+      "y1": 266
+    },
+    "detached": [],
+    "appendages": [
+      {
+        "k": 0,
+        "frac": 0.0949,
+        "pixels": 2470,
+        "box": {
+          "x0": 224,
+          "y0": 120,
+          "x1": 329,
+          "y1": 189
+        },
+        "attach": {
+          "x": 270,
+          "y": 141.5,
+          "relX": 0.84,
+          "relY": 0.11
+        },
+        "dir": {
+          "x": 0.97,
+          "y": 0.25
+        },
+        "class": "front",
+        "length": 75.7
+      },
+      {
+        "k": 1,
+        "frac": 0.0673,
+        "pixels": 1751,
+        "box": {
+          "x0": 85,
+          "y0": 171,
+          "x1": 146,
+          "y1": 279
+        },
+        "attach": {
+          "x": 131,
+          "y": 202.5,
+          "relX": -0.01,
+          "relY": 0.55
+        },
+        "dir": {
+          "x": -0.73,
+          "y": 0.69
+        },
+        "class": "limb-down",
+        "length": 89.3
+      },
+      {
+        "k": 2,
+        "frac": 0.0673,
+        "pixels": 1750,
+        "box": {
+          "x0": 298,
+          "y0": 196,
+          "x1": 336,
+          "y1": 264
+        },
+        "attach": {
+          "x": 298,
+          "y": 227.5,
+          "relX": 1.01,
+          "relY": 0.72
+        },
+        "dir": {
+          "x": 0.94,
+          "y": 0.34
+        },
+        "class": "front",
+        "length": 52.7
+      },
+      {
+        "k": 3,
+        "frac": 0.0061,
+        "pixels": 158,
+        "box": {
+          "x0": 211,
+          "y0": 267,
+          "x1": 274,
+          "y1": 270
+        },
+        "attach": {
+          "x": 242.5,
+          "y": 267,
+          "relX": 0.67,
+          "relY": 1.01
+        },
+        "dir": {
+          "x": 0.33,
+          "y": 0.94
+        },
+        "class": "limb-down",
+        "length": 31.6
+      }
+    ],
+    "byClass": {
+      "front": 2,
+      "limb-down": 2
+    },
+    "ground": [
+      {
+        "x0": 85,
+        "x1": 96,
+        "cx": 90.9
+      },
+      {
+        "x0": 116,
+        "x1": 119,
+        "cx": 117.4
+      },
+      {
+        "x0": 132,
+        "x1": 138,
+        "cx": 134.7
+      },
+      {
+        "x0": 226,
+        "x1": 261,
+        "cx": 243.7
+      }
+    ],
+    "params": {
+      "longest": 420,
+      "coreRatio": 0.55,
+      "minAppendageFrac": 0.004,
+      "minDetachedFrac": 0.01,
+      "groundBand": 0.06,
+      "minContactFrac": 0.015
+    }
+  },
+  "limitation": "Geometric appendage counts are observations, not semantic anatomy or G1 admission. No hand authoring or expected-count substitution."
+}

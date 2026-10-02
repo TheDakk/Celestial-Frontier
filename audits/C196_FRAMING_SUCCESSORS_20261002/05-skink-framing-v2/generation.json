@@ -1,0 +1,17 @@
+{
+  "id": "05-skink-framing-v2",
+  "name": "Skink",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-8f4571b5-62e1-4479-b6a5-99f1118b877d.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "fca7b544d2ac1edd855d7766a9269a5cf13aebc775d19a177485e4afd770b339",
+  "bytes": 973581,
+  "promptSha256": "74d41b45f62546cc956ad7491cc73fada352fa7996d8ea92d0877effaebf6297",
+  "intent": "edit",
+  "editTarget": "audits/C196_QUADRUPED_ORIGINALS_20261002/05-skink/master.png",
+  "editTargetSha256": "aad336737411ed13050aaef3e3f713650d06d5e95941f96113b613bf8bf3603c",
+  "originalStyleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}
