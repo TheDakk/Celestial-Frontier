@@ -1,0 +1,129 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "12-guineafowl",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "d91a630c7ec76ed5c670a8d4220d8db2c52222cd9895397cb5d1b5aa255d2360",
+ "subjectSourceSha256": "876a70a8a3dba8f5d3e26d9e8fdc87a1b4080a016e286c9226a490b7eca2b331",
+ "identity": {
+  "name": "Guineafowl",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Guineafowl\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2232810324\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"7\"]]]]",
+  "seed": 2232810324,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "03-duck-v2",
+  "authoringSha256": "53c2d3034b1fa503733ae87189e647efdb0121d99ee0685b0e26c2db76241976",
+  "masterSha256": "b1311edf9b88da5e6854e2c7fac562eaaa89ce2e674a47616fc8adc2d089af97"
+ },
+ "habitat": {
+  "profileId": "ground-foraging-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "2458c82bbd8f37b007dbba5ae84cc60975cf0f4ecad7d901ee633e684483d7c2",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group ground-foraging-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.112,
+     "class": "top",
+     "attach": {
+      "x": 263,
+      "y": 195.5,
+      "relX": 1.01,
+      "relY": 0.4
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0153,
+     "class": "top",
+     "attach": {
+      "x": 213,
+      "y": 156,
+      "relX": 0.58,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.1007,
+     "class": "limb-down",
+     "attach": {
+      "x": 143.2,
+      "y": 215.3,
+      "relX": -0.01,
+      "relY": 0.61
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0355,
+     "class": "limb-down",
+     "attach": {
+      "x": 165.9,
+      "y": 253.6,
+      "relX": 0.19,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0516,
+     "class": "limb-down",
+     "attach": {
+      "x": 203.5,
+      "y": 254,
+      "relX": 0.5,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "limb-down": 3
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "03-duck-v2",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "lists": "absent/hidden/folded empty: intake-format necessity; the author makes no absence, hidden or folded claim",
+  "geometric": {
+   "appendagesByClass": {
+    "top": 2,
+    "limb-down": 3
+   },
+   "groundContacts": 2,
+   "detachedIslands": 0
+  },
+  "semantic": "RESOLVED: every reference appendage assigned; no appendage merges two limb chains",
+  "unassigned": [],
+  "mergedChains": [],
+  "attestation": "geometric + semantic inventory resolved (still not play admission: native and visual review remain)",
+  "playAdmission": "blocked until semantic presence is resolved and native + Dakk visual review pass"
+ }
+}

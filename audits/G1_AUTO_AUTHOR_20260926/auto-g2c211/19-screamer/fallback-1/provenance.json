@@ -1,0 +1,106 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "19-screamer",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "9b9da4dd7e2e3a241c4c9f225b00d0358606d387a317066f8f743391bdc52255",
+ "subjectSourceSha256": "1615b6680a05328263c29ad37147058f0cac8639ba953c70ee40f9f028108186",
+ "identity": {
+  "name": "Screamer",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Screamer\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"8\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1646153115\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"20\"]]]]",
+  "seed": 1646153115,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "03-duck-v2",
+  "authoringSha256": "53c2d3034b1fa503733ae87189e647efdb0121d99ee0685b0e26c2db76241976",
+  "masterSha256": "b1311edf9b88da5e6854e2c7fac562eaaa89ce2e674a47616fc8adc2d089af97"
+ },
+ "habitat": {
+  "profileId": "wading-bird",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "6d8efc434397d850b8454feeae51f8b874edc579c5d7ef1b95bbdff2553a7074",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group wading-bird (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.1297,
+     "class": "top",
+     "attach": {
+      "x": 285.7,
+      "y": 173.3,
+      "relX": 0.96,
+      "relY": 0.15
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.1485,
+     "class": "rear",
+     "attach": {
+      "x": 152.8,
+      "y": 219.7,
+      "relX": 0,
+      "relY": 0.69
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0533,
+     "class": "limb-down",
+     "attach": {
+      "x": 199.5,
+      "y": 247,
+      "relX": 0.34,
+      "relY": 1.01
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0588,
+     "class": "limb-down",
+     "attach": {
+      "x": 231.5,
+      "y": 247,
+      "relX": 0.57,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "03-duck-v2",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}

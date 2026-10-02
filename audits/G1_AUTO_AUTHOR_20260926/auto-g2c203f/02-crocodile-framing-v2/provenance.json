@@ -1,0 +1,127 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "02-crocodile-framing-v2",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "0dae1e031d97a14fdc912797eb19846994cfa8edf4bd13208b001c9cfaef5131",
+ "subjectSourceSha256": "63843429a938b2d8e5c207c09a0347d7ee615036be26b0d48e952697b7e693c3",
+ "identity": {
+  "name": "Crocodile",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Crocodile\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"5\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"13\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"2924685975\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"22\"]]]]",
+  "seed": 2924685975,
+  "checks": "PASS: family = corpus family; pinned Earth profile exists; integer genome seed; visualKey = speciesVisualKey(genome)"
+ },
+ "reference": {
+  "subject": "c136-sprawler-24-newt",
+  "authoringSha256": "6186efefde5a9bfbe92ed442a3e5d7c716a97f808acb23b83d7eebb48d0af2a3",
+  "masterSha256": "d572d916a8964f010dad145779b5e38055a43bf1f85448f586a26c59f4fb42dc"
+ },
+ "habitat": {
+  "profileId": "crocodilian",
+  "media": [
+   "water",
+   "ground"
+  ],
+  "profileSha256": "208d726376a7fcac049d70c5300a48147d53cf15b48eb364cbf2a3dae49f4e99",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "scales",
+  "source": "species group crocodilian (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0905,
+     "class": "front",
+     "attach": {
+      "x": 286.3,
+      "y": 196.3,
+      "relX": 0.97,
+      "relY": 0.2
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.2903,
+     "class": "rear",
+     "attach": {
+      "x": 178,
+      "y": 211.5,
+      "relX": 0,
+      "relY": 0.63
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0442,
+     "class": "limb-down",
+     "attach": {
+      "x": 194,
+      "y": 221,
+      "relX": 0.14,
+      "relY": 0.89
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0235,
+     "class": "limb-down",
+     "attach": {
+      "x": 266.9,
+      "y": 222.9,
+      "relX": 0.79,
+      "relY": 0.94
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0221,
+     "class": "limb-down",
+     "attach": {
+      "x": 215.1,
+      "y": 224.9,
+      "relX": 0.33,
+      "relY": 1
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0315,
+     "class": "limb-down",
+     "attach": {
+      "x": 246.5,
+      "y": 226,
+      "relX": 0.61,
+      "relY": 1.03
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 4
+   },
+   "ground": 1
+  },
+  "reference": {
+   "subject": "c136-sprawler-24-newt",
+   "byClass": {
+    "front": 1,
+    "rear": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": {
+  "attestation": "none (refused)"
+ }
+}
