@@ -1,0 +1,8 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Penguin",
+  "masterSha256": "20d61d7b9c235f061c1129eaafcb0eca23e832ec47954ab050c4f3b2247f3ee0",
+  "required": [],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "NOT_REQUIRED"
+}

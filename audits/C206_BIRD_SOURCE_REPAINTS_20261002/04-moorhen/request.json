@@ -1,0 +1,40 @@
+{
+  "schema": "cf.g2-master-request/v1",
+  "name": "Moorhen",
+  "family": "biped-bird",
+  "tool": "image_gen.imagegen",
+  "promptSha256": "457c189c1ca341c04037a4939587e6920ecb0bfc089dfd605533c201629c7d82",
+  "kitSha256": "f97717f3ee0d603f33b5fb84825c566ff5bb405cbfc713dca618c36203a53e2f",
+  "compilerSha256": "9de2f5e786627e7e2aaa3d5494b1b617da981f2781dbcf73fff792658a0b68a3",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "requestedVisibleLegs": 2,
+  "observedVisibleLegs": null,
+  "requestedAnatomy": "two separately readable legs and feet, two natural wings and one complete feather tail; never add limbs to expose hidden ones",
+  "profileId": "swimming-bird",
+  "authoringCreated": false,
+  "sourceHead": "0486f0f9779604496000c8e913b6fe38e7612471",
+  "basePromptSha256": "c059f99252d7d337c909fa352072883f7d5950dd5246c45b3058fd37c6ab1afe",
+  "batchCompilerSha256": "2b5f31c02d1299de513811e149a6435e5263e15a98a18d89a72585718ec7f383",
+  "purpose": "TARGETED_SOURCE_REPAINT",
+  "repairReason": {
+    "previousId": "15-moorhen",
+    "previousMaster": "audits/G2_C81_20260927/15-moorhen/master.png",
+    "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/summary.json",
+    "verdict": "REFUSE",
+    "reasons": [
+      "missing-anatomy: part near-thigh (legNearKnee) covers 13% paint (reference 59%)"
+    ],
+    "static": null,
+    "previousVisual": "Red forehead shield and red yellow-tipped bill, a clear white flank streak, and white undertail flashes are visible. Two separate green leg/foot contacts. Natural short tail is cocked above the folded wing rather than below it; the reference layout may therefore need separate ownership treatment. Generous border.",
+    "correction": "Show both real greenish legs independently emerging from the feathered body and complete long toes. Preserve the natural cocked short tail and white undertail flashes; do not lower or lengthen it to fit a generic bird silhouette."
+  },
+  "layoutOverride": null,
+  "sourceCorrection": "TARGETED SOURCE REPAINT — BIOLOGICAL PRIORITY: Show both real greenish legs independently emerging from the feathered body and complete long toes. Preserve the natural cocked short tail and white undertail flashes; do not lower or lengthen it to fit a generic bird silhouette. Preserve the real species anatomy if a generic pose instruction conflicts. No invented far wing, false leg, disconnected tail, artificial gap through tissue or removal of actual appendages. This request does not establish measured anatomical presence.",
+  "compositionCheck": "COMPOSITION: square native 1254 by 1254 painting. Keep the entire specimen small, inside the central half of the canvas, with generous pure magenta around every bill, toe, plume and tail tip. Preserve real proportions by zooming out, never shortening appendages. No ground, cast shadow, scenery, perch, branch, prop, text, diagram or framing marks.",
+  "admission": "GENERATED_CANDIDATE_ONLY; no semantic presence, rig admission or motion claim"
+}

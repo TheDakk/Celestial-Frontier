@@ -1,0 +1,14 @@
+{
+  "id": "03-avocet",
+  "name": "Avocet",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-8976539d-e715-40f1-a399-6f6f8e78e838.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "20d810533b805611a521692c68c1bf17cd781c43d0bf1df4deb23a3608b267c7",
+  "bytes": 1135081,
+  "promptSha256": "67d8f7fe91b432537d953151e064c30b86ba2026e9afffc5bfd757473bf94ef9",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "15-auk",
+  "name": "Auk",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-527396e6-5e19-4924-bd61-608701cd0e10.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "5d572253fbb6512eabdbbeaaa7bd149cd7b2d140356e6929517a559d4b165af4",
+  "bytes": 1215505,
+  "promptSha256": "d916dcf814d770f50886f9fa570cc05cb2770f13778c7931050da908f598f6f2",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

@@ -1,0 +1,14 @@
+{
+  "id": "24-weaverbird",
+  "name": "Weaverbird",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-583eb290-3d44-4c14-b2fc-9de9d42f8464.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d9bcdbe8ea5f22522efab3a07dc510d1c9ea48dd7c1e2d9eae0281e24af50033",
+  "bytes": 1153215,
+  "promptSha256": "745cc07b6f8ff85d513a25cf876761dd2eb77e6836d28e7902c401d43ba8180a",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

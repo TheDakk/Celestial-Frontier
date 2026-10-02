@@ -1,0 +1,14 @@
+{
+  "id": "14-guillemot",
+  "name": "Guillemot",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-c4250b20-ae1e-4917-9421-fd4178ef6d81.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "c278ce4a029753b1bf168d40026d0c347155c62cdf766c4361c8efb7ad4f9799",
+  "bytes": 1182424,
+  "promptSha256": "60de98249c2f1f0d49372783594c7fcc051ba8fe267ab93bd755a671e93ffa10",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

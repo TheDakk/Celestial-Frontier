@@ -1,0 +1,14 @@
+{
+  "id": "09-turkey",
+  "name": "Turkey",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-4c29aa2c-44fc-471e-a478-d6a1e6c63a2b.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "d072d2c5af840617df583116581bed9ed0fc10c44421276e2df1aec95d983616",
+  "bytes": 1310369,
+  "promptSha256": "f1db3dbeeaaef14bcc3876b6e2865dabe97f7e4ac87d1fdf1999b1fb591e4f86",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

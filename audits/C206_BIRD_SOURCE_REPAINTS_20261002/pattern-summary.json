@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Snipe",
+    "status": "PASS",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Godwit",
+    "status": "NOT_REQUIRED",
+    "framing": "REFUSE"
+  },
+  {
+    "name": "Avocet",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Moorhen",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Egret",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Stork",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Bittern",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Condor",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Turkey",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Grouse",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Peacock",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Guineafowl",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Pheasant",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Guillemot",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Auk",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Grebe",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Penguin",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Pelican",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Screamer",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Hornbill",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Parrot",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Macaw",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Tern",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  },
+  {
+    "name": "Weaverbird",
+    "status": "NOT_REQUIRED",
+    "framing": "PASS_FRAMING_ONLY"
+  }
+]

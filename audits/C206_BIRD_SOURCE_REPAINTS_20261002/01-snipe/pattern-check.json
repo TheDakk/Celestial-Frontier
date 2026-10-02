@@ -1,0 +1,17 @@
+{
+  "schema": "cf.g2-pattern-observation/v1",
+  "name": "Snipe",
+  "masterSha256": "83237c54f8194f7107bbc0f2a522b73a0a2f21eb253b9656fc695cc9b315dfc9",
+  "required": [
+    "bold cream stripes running along the back"
+  ],
+  "source": "explicit visual observation; not prompt or pixel-variance inference",
+  "status": "PASS",
+  "features": [
+    {
+      "requirement": "bold cream stripes running along the back",
+      "status": "PRESENT",
+      "observed": "Full-size original: long straight dagger bill, high rear-set eye, cream crown/back stripes and mottled brown plumage are visible. Two independent leg silhouettes emerge from separate feather margins to complete toes; short barred tail remains beneath the folded wing. Hidden proximal anatomy and far-wing ownership remain unproven; no forced part-presence claim."
+    }
+  ]
+}

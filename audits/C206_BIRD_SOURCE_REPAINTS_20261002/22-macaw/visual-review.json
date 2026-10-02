@@ -1,0 +1,28 @@
+{
+  "name": "Macaw",
+  "masterSha256": "5391e5a4e53043a866392f2af51d3e62b021f52fee60b728d57e90b7fdd952dd",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: blue/gold plumage, large pale hooked bill, bare white facial patch with fine dark feather lines and very long straight trailing tail streamers are visible. Two separately planted foot silhouettes are retained. HOLD: only a front/back toe pair per foot is plainly resolved; the second forward/back digits cannot be independently traced, so the full zygodactyl count is not proven. No added or inferred digits.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 160,
+      "y0": 374,
+      "x1": 1033,
+      "y1": 788
+    },
+    "margins": {
+      "left": 160,
+      "right": 220,
+      "top": 374,
+      "bottom": 465
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}

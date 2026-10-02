@@ -1,0 +1,488 @@
+[
+  {
+    "id": "01-snipe",
+    "name": "Snipe",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/01-snipe/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "10-snipe",
+      "previousMaster": "audits/G2_C81_20260927/10-snipe/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 0% paint (reference 72%)"
+      ],
+      "static": null,
+      "previousVisual": "Long straight dagger bill, high rear-set eye, bold cream stripes along crown/back and dark patterned plumage are visible. Two separate legs and feet; short patterned tail projects below folded wing. Entire bill/toes remain inside clear border; wing/tail ownership not inferred from this view.",
+      "correction": "Expose two actual leg chains from their visible feather margins through both ankles and natural long toes. Keep the extremely long straight bill, high rear-set eye and bold cream back stripes. Do not invent bare proximal anatomy behind feathers."
+    }
+  },
+  {
+    "id": "02-godwit",
+    "name": "Godwit",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/02-godwit/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "12-godwit",
+      "previousMaster": "audits/G2_C81_20260927/12-godwit/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 20% paint (reference 72%)"
+      ],
+      "static": null,
+      "previousVisual": "Long pink-based dark-tipped bill, cinnamon neck/breast with dark transverse chevrons and long dark separated legs are visible. Both feet planted; short barred tail extends under the folded wing. Small centred specimen with broad margin; bill tip is only subtly upswept.",
+      "correction": "Separate the real far leg contour from the near leg from its visible body emergence to its complete foot. Preserve the very long faintly upswept pale-based bill, long dark legs and cinnamon breast with dark chevrons."
+    }
+  },
+  {
+    "id": "03-avocet",
+    "name": "Avocet",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/03-avocet",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/03-avocet/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "13-avocet",
+      "previousMaster": "audits/G2_C81_20260927/13-avocet/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part near-thigh (legNearKnee) covers 0% paint (reference 67%)",
+        "missing-anatomy: part far-thigh (legFarKnee) covers 23% paint (reference 72%)",
+        "missing-anatomy: part tail (tailFan) covers 14% paint (reference 89%)"
+      ],
+      "static": null,
+      "previousVisual": "Thin bill curves upward at the tip, black-and-white pied feather blocks and long blue-grey legs are visible. Two separate ground contacts and generous margins. Short white tail appears beneath the folded wing, but the tail root/far wing remain partly overlapped.",
+      "correction": "Show both real long blue-grey leg shafts from visible body emergence, complete feet and the natural short tail beneath the folded wing. Keep connected tissue; no cutout gap at the tail root. The needle bill curves strongly UP."
+    }
+  },
+  {
+    "id": "04-moorhen",
+    "name": "Moorhen",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/04-moorhen",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/04-moorhen/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "15-moorhen",
+      "previousMaster": "audits/G2_C81_20260927/15-moorhen/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c81/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part near-thigh (legNearKnee) covers 13% paint (reference 59%)"
+      ],
+      "static": null,
+      "previousVisual": "Red forehead shield and red yellow-tipped bill, a clear white flank streak, and white undertail flashes are visible. Two separate green leg/foot contacts. Natural short tail is cocked above the folded wing rather than below it; the reference layout may therefore need separate ownership treatment. Generous border.",
+      "correction": "Show both real greenish legs independently emerging from the feathered body and complete long toes. Preserve the natural cocked short tail and white undertail flashes; do not lower or lengthen it to fit a generic bird silhouette."
+    }
+  },
+  {
+    "id": "05-egret",
+    "name": "Egret",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/05-egret/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "02-egret",
+      "previousMaster": "audits/G2_C121_20260927/02-egret/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 10% paint (reference 72%)"
+      ],
+      "static": null,
+      "previousVisual": "White long-necked wader, black separated legs, long yellow bill. Rear wispy breeding plumes overlap the short true tail: do not relabel every plume as tail.",
+      "correction": "Expose two natural leg contours from the visible feather margin, with separately readable dark ankles and feet. Show the true short tail distinctly from breeding plumes; do not turn those plumes into an invented long tail. Preserve white plumage, S-neck and spear bill."
+    }
+  },
+  {
+    "id": "06-stork",
+    "name": "Stork",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/06-stork/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "03-stork",
+      "previousMaster": "audits/G2_C121_20260927/03-stork/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/summary.json",
+      "verdict": "ADMIT",
+      "reasons": [],
+      "static": "INTAKE_REFUSED",
+      "previousVisual": "White body, black folded flight feathers, red bill and separated red legs. Wing and short tail boundary still needs ownership review.",
+      "correction": "Separate both actual very long red leg chains from the visible body margin to complete feet. Keep the neck naturally extended rather than heron-kinked; show the connected short tail and black folded wing as distinguishable surfaces."
+    }
+  },
+  {
+    "id": "07-bittern",
+    "name": "Bittern",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/07-bittern",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/07-bittern/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "11-bittern",
+      "previousMaster": "audits/G2_C92_20260927/11-bittern/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c92/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part far-thigh (legFarKnee) covers 0% paint (reference 72%)"
+      ],
+      "static": null,
+      "previousVisual": "Buff/brown cryptic streaked body, dark crown, long pointed level bill and compressed neck; folded wing ends above a short complete feather tail. Two separated legs and long toes visible with clear margins. Head-right full silhouette; neck is deliberately neutral rather than canonical upward freeze display.",
+      "correction": "Keep the naturally thick hunched retractable neck and brown-and-buff streaked camouflage. For this quiet source view the dagger bill is level, not the upward reed-freeze display. Separate both real legs from their visible feather margin through the long toes; do not elongate the concealed thighs."
+    }
+  },
+  {
+    "id": "08-condor",
+    "name": "Condor",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/08-condor",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/08-condor/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "19-condor",
+      "previousMaster": "audits/G2_C101_20260927/19-condor/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c101/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2",
+        "missing-anatomy: part far-shin (legFarAnkle) covers 0% paint (reference 75%)"
+      ],
+      "static": null,
+      "previousVisual": "Full1254 original reviewed: bare wrinkled head, hooked bill, white neck ruff, dark folded wings with pale panels, complete tail and two feet. Head has an Andean-male-like comb. Feet nearly touch and wing/tail feathers overlap; giant raptor leg proportions and paint ownership need review.",
+      "correction": "Separate the two real feet and complete visible lower leg chains without changing their natural short proportions. Preserve the bare wrinkled head, white neck ruff, massive folded wings and true complete tail. Keep both contact silhouettes readable and naturally connected."
+    }
+  },
+  {
+    "id": "09-turkey",
+    "name": "Turkey",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/09-turkey",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/09-turkey/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "16-turkey",
+      "previousMaster": "audits/G2_C121_20260927/16-turkey/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "unexplained-anatomy: 9.4% of the paint lies away from the body and in no part (reference 3.0%)"
+      ],
+      "static": null,
+      "previousVisual": "Bare blue/red head, snood, breast beard, barred tail and two legs. Tail is fanned despite resting-layout request; beard ownership and foot pose require scoring.",
+      "correction": "Use a quiet natural non-display pose with the broad barred tail folded, not a raised fan. Preserve the true breast beard as hanging bristles, the bare warty blue/red head, wattle and snood. Two true legs and full toes remain distinct; beard is not an extra limb."
+    }
+  },
+  {
+    "id": "10-grouse",
+    "name": "Grouse",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/10-grouse",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/10-grouse/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "13-grouse",
+      "previousMaster": "audits/G2_C121_20260927/13-grouse/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "unexplained-anatomy: 15.4% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "static": null,
+      "previousVisual": "Mottled barred plumage, feathered feet, complete fanned short tail; two separated legs. Tail is partly displayed despite quiet-rest request; layout hold.",
+      "correction": "Use a quiet non-display pose with the real broad barred tail naturally folded, not a spread fan. Preserve feathered legs and feet, plump body and short rounded bill. Separate the two foot silhouettes without removing real feather fringes."
+    }
+  },
+  {
+    "id": "11-peacock",
+    "name": "Peacock",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/11-peacock/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "15-peacock",
+      "previousMaster": "audits/G2_C121_20260927/15-peacock/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c121/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part far-shin (legFarAnkle) covers 16% paint (reference 84%)",
+        "unexplained-anatomy: 9.8% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "static": null,
+      "previousVisual": "Blue neck, crest and green train with visible eye spots. Long folded train nearly fills width and violates requested margin. True tail beneath train is not proven separately; hold.",
+      "correction": "Keep the male long eyespotted train fully folded and naturally trailing; it consists of upper tail coverts, not the true tail. Show the actual small supporting tail under the train only where naturally visible, never fabricate one or shorten the train. Two real legs and feet are separate. Zoom out to retain every train tip."
+    }
+  },
+  {
+    "id": "12-guineafowl",
+    "name": "Guineafowl",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/12-guineafowl",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/12-guineafowl/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "15-guineafowl",
+      "previousMaster": "audits/G2_C76_20260927/15-guineafowl/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part near-foot (legNearFoot) covers 14% paint (reference 51%)"
+      ],
+      "static": null,
+      "previousVisual": "Dense white spots, bare blue/red head and casque visible. Folded wing above short tail; two separated feet.",
+      "correction": "Retain the tiny bare blue/red head and real helmet casque, thin naked neck and rounded body densely speckled with white dots. Show each complete natural foot and its toes independently; the natural short tail droops downward, not a long plume."
+    }
+  },
+  {
+    "id": "13-pheasant",
+    "name": "Pheasant",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/13-pheasant/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "16-pheasant",
+      "previousMaster": "audits/G2_C76_20260927/16-pheasant/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c76/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part far-shin (legFarAnkle) covers 14% paint (reference 50%)",
+        "unexplained-anatomy: 8.0% of the paint lies away from the body and in no part (reference 1.2%)"
+      ],
+      "static": null,
+      "previousVisual": "Ringed neck, red face, patterned flank and long barred tapered tail visible. Tail root partly obscured by wing feathers; two separate feet.",
+      "correction": "Keep the ring-necked male identity, red facial wattle, green-black head, white neck ring and extremely long barred pointed tail, longer than the body. Make the connected tail root distinguishable from folded wing surfaces and separate the two real ankle/foot contours. Zoom out rather than shortening the tail."
+    }
+  },
+  {
+    "id": "14-guillemot",
+    "name": "Guillemot",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/14-guillemot/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "15-guillemot",
+      "previousMaster": "audits/G2_C87_20260927/15-guillemot/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c87/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "unexplained-anatomy: 7.7% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "static": null,
+      "previousVisual": "Dark brown upperparts and white belly, pointed bill, two separated legs and side-on feet. Folded wing is above the visible short tail and ends before its tip. Feet are painted as close parallel toes with webbing not clearly legible; tail appears relatively long and head/body profile needs identity review.",
+      "correction": "Use the natural upright brown-and-white guillemot stance with slender dagger bill, narrow head and genuinely short feather tail. Show two true webbed feet, clear webbing joining the natural front toes, and rear-set short legs; no long raptor tail."
+    }
+  },
+  {
+    "id": "15-auk",
+    "name": "Auk",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/15-auk",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/15-auk/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "08-auk",
+      "previousMaster": "audits/G2_C92_20260927/08-auk/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c92/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "unexplained-anatomy: 10.7% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "static": null,
+      "previousVisual": "Upright black-backed white-fronted bird with a deep dark bill crossed by pale grooves, compact folded wing and short pointed feather tail. Two complete feet and leg shafts visible, though the foot gap is narrow and webbing weakly indicated. Full head-right silhouette with clear margins.",
+      "correction": "A natural upright razorbill-type auk, taller than long, with short stubby folded wings, genuinely short tail and short rear-set legs. Show both real webbed feet distinctly without elongating the legs. Keep the dark grooved bill and black back/white front."
+    }
+  },
+  {
+    "id": "16-grebe",
+    "name": "Grebe",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/16-grebe/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "12-grebe",
+      "previousMaster": "audits/G2_C92_20260927/12-grebe/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c92/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "unexplained-anatomy: 9.4% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "static": null,
+      "previousVisual": "Crested head with chestnut cheek ruff, fine pointed bill, brown folded wing and white breast/belly. Two complete separated feet but toes appear joined by webbing rather than individually lobed; leg placement/standing stance is more duck-like than a rear-legged diving bird. Tail is a short downy rump without a distinct long feather fan. Retain anatomy/layout caveats; full head-right silhouette with clear margins.",
+      "correction": "BIOLOGICAL POSE PRIORITY: the real legs emerge very far back. Use a natural low resting stance with the body inclined and feet placed as a real grebe supports itself, not a generic marching duck. Paint separate flattened lobes on each toe, NOT a web joining the toes. Keep the puffy rounded rear with no invented visible feather-tail fan. Expose only anatomy truly visible in this natural stance."
+    }
+  },
+  {
+    "id": "17-penguin",
+    "name": "Penguin",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/17-penguin",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/17-penguin/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "14-penguin",
+      "previousMaster": "audits/G2_C118_20260927/14-penguin/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c118/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "unexplained-anatomy: 9.7% of the paint lies away from the body and in no part (reference 2.3%)"
+      ],
+      "static": null,
+      "previousVisual": "Full original: black back, white belly, yellow neck patches, two feet and near flipper. HOLD feet appear unwebbed and rear tail has exaggerated long pointed feather fronds; not cleared by bird motion.",
+      "correction": "Use a fully upright natural penguin stance, two short rear-set webbed feet with real toe webbing, and the natural small stiff short tail. The two real stiff flippers are its wings, held at the sides, not feathered flying wings. Never add long flowing tail fronds or artificially long legs."
+    }
+  },
+  {
+    "id": "18-pelican",
+    "name": "Pelican",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/18-pelican/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "17-pelican",
+      "previousMaster": "audits/G2_C101_20260927/17-pelican/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c101/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "unexplained-anatomy: 9.0% of the paint lies away from the body and in no part (reference 2.4%)"
+      ],
+      "static": null,
+      "previousVisual": "Full1254 original reviewed: large long bill with prominent hanging throat pouch, kinked neck, folded wings, complete short tail and two separated webbed feet. Head crest/pouch size stylized; wing and tail tips overlap closely. No source ownership inferred.",
+      "correction": "Use a heavy-bodied pelican resting naturally on very short legs, with a long neck kinked onto the shoulders. Keep the enormous real bill and its throat pouch anatomically proportioned, no invented dramatic crest. Show both actual webbed feet and a natural short tail whose root remains connected beside the folded wing. No forced long-legged marching pose."
+    }
+  },
+  {
+    "id": "19-screamer",
+    "name": "Screamer",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/19-screamer",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/19-screamer/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "14-screamer",
+      "previousMaster": "audits/G2_C98_20260927/14-screamer/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part beak (beak) covers 6% paint (reference 52%)",
+        "unexplained-anatomy: 6.7% of the paint lies away from the body and in no part (reference 2.3%)"
+      ],
+      "static": null,
+      "previousVisual": "Full1254 original reviewed: two separated feet, folded wings and complete tail, with forehead horn and one visible near-wing spur. Anatomy/identity HOLD: the forehead horn is thick goat-like and the wing spur is an oversized gold horn; head/body read raptor-like rather than the canonical bulky goose/chicken-like horned screamer. Partly webbed feet and the far wing spur are not independently established. Retain exact original as a failed anatomy candidate.",
+      "correction": "A real horned screamer: bulky goose-like body, small chicken-like head and short hooked bill, a thin flexible curved forehead spine, and real small bony wing-bend spurs. No goat horn, no huge golden wing horn, no raptor body. Keep partly webbed natural feet. The far spur appears only if truly visible; do not invent an extra wing to expose it."
+    }
+  },
+  {
+    "id": "20-hornbill",
+    "name": "Hornbill",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/20-hornbill",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/20-hornbill/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "12-hornbill",
+      "previousMaster": "audits/G2_C83_20260927/12-hornbill/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "unexplained-anatomy: 7.5% of the paint lies away from the body and in no part (reference 2.3%)"
+      ],
+      "static": null,
+      "previousVisual": "Large curved yellow bill with raised casque, bare red throat, black-and-white wings and banded long tail. Two separated legs/feet and complete tail beyond folded wings. Casque has an open tube-like cavity, an anatomical concern rather than acceptance of the internal-hollow description. Whole silhouette retained, moderate side margins.",
+      "correction": "The huge downcurved bill has a naturally closed outer casque covering its hollow interior. Do NOT paint an open tube, hole or cutaway in the casque. Preserve the coloured bare throat/eye skin, lashes and long broad tail. Separate both actual feet and distinguish the true connected tail root from folded wing feathers."
+    }
+  },
+  {
+    "id": "21-parrot",
+    "name": "Parrot",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/21-parrot",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/21-parrot/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "10-parrot",
+      "previousMaster": "audits/G2_C83_20260927/10-parrot/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy (ground): 1 ground contact(s); every same-family reference shows at least 2"
+      ],
+      "static": null,
+      "previousVisual": "Compact green bird with orange/yellow facial plumage, heavy hooked bill and a short complete tail extending beyond the folded wing. Two separated feet, but overlapping toes prevent a firm two-forward/two-back digit count; head/body slightly turned rather than strict side profile. Spacious framing. Bare striped face is macaw-like; generic parrot identity requires review.",
+      "correction": "A compact Amazon-type parrot, not a macaw: stocky green body, short square tail, short deeply hooked bill with fleshy cere, and normally feathered face. No large bare striped macaw facial patch. Both real feet show the natural zygodactyl arrangement, two toes forward and two back, with independently readable grounded contacts."
+    }
+  },
+  {
+    "id": "22-macaw",
+    "name": "Macaw",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/22-macaw/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "09-macaw",
+      "previousMaster": "audits/G2_C83_20260927/09-macaw/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part near-thigh (legNearKnee) covers 29% paint (reference 84%)",
+        "unexplained-anatomy: 8.7% of the paint lies away from the body and in no part (reference 4.6%)"
+      ],
+      "static": null,
+      "previousVisual": "Blue-and-gold plumage, bare white striped face patch and massive curved beak visible. Long blue tail extends well beyond folded wing tips, with continuous root and two separated legs/feet. Long tail feathers curl slightly upward and toes overlap; exact digit anatomy and wing-tail ownership not established. More margin, but still exceeds half-width request.",
+      "correction": "Preserve the enormous pale hooked bill, bare white facial patch with fine feather lines and tail streamers naturally far longer than the body. Show the actual zygodactyl feet, two toes forward and two back, independently. Tail feathers remain naturally straight or gently trailing, not an invented curled loop; keep the real tail root connected below the folded wings."
+    }
+  },
+  {
+    "id": "23-tern",
+    "name": "Tern",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/23-tern/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "16-tern",
+      "previousMaster": "audits/G2_C98_20260927/16-tern/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c98/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part near-shin (legNearAnkle) covers 15% paint (reference 49%)"
+      ],
+      "static": null,
+      "previousVisual": "Full-size original reviewed: black cap, pointed red-black bill, grey folded wings and two short separate feet are visible. The long deeply forked tail has hair-thin white streamers and an ambiguous crossing/overlap near its base; webbing is not clearly established. Hold streamer continuity/anatomy for review; no trimming or absence admission.",
+      "correction": "Preserve the natural deeply forked complete feather tail with two distinct unbroken streamers, not crossed hair-thin strings. Show the slim dagger bill, black cap and natural long narrow wings folded against the body. Two short legs and true webbed feet remain distinct; tail roots stay biologically connected."
+    }
+  },
+  {
+    "id": "24-weaverbird",
+    "name": "Weaverbird",
+    "family": "biped-bird",
+    "packet": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/24-weaverbird",
+    "master": "audits/C206_BIRD_SOURCE_REPAINTS_20261002/24-weaverbird/master.png",
+    "purpose": "TARGETED_SOURCE_REPAINT",
+    "repairReason": {
+      "previousId": "14-weaverbird-standing-v2",
+      "previousMaster": "audits/G2_C83_20260927/14-weaverbird-standing-v2/master.png",
+      "previousSummary": "audits/G1_AUTO_AUTHOR_20260926/auto-g2c83/summary.json",
+      "verdict": "REFUSE",
+      "reasons": [
+        "missing-anatomy: part near-thigh (legNearKnee) covers 19% paint (reference 73%)",
+        "missing-anatomy: part far-thigh (legFarKnee) covers 7% paint (reference 80%)"
+      ],
+      "static": null,
+      "previousVisual": "Standing yellow bird with black face mask, thick conical bill, folded brown/yellow-edged wings and complete tail visible beyond wing tips. Both legs and feet separately visible; no nest or other prop. Corrects prior upside-down nest layout through a separately recorded prompt; toe count and hidden-part ownership remain unverified. Spacious framing.",
+      "correction": "A naturally standing male masked weaver for the isolated source, no nest or hanging prop: bright yellow plumage, black facial mask and thick conical bill. Both actual legs visibly emerge separately from their feather margins to the natural ankles and toes. Do not invent exposed proximal segments or elongate its short legs."
+    }
+  }
+]

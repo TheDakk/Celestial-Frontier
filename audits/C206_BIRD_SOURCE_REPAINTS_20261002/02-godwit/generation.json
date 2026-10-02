@@ -1,0 +1,14 @@
+{
+  "id": "02-godwit",
+  "name": "Godwit",
+  "sourcePath": "~/.codex/generated_images/01a0faa5-b11e-7420-814b-6221599d2296/exec-d51fb221-1474-48b3-81d7-bcf45c504a26.png",
+  "tool": "image_gen.imagegen",
+  "transparentBackground": false,
+  "masterSha256": "f905ad6b72c05d38c8dfdaa716a9ced613fc20bdf8d3945707885758a940ce56",
+  "bytes": 1209642,
+  "promptSha256": "6886b2dd1a207800788ca1ca9ad1420f6ce75e3bd450a35a0c303bfa90b38095",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "outputModified": false,
+  "handAuthoring": false,
+  "sourceOriginalRetained": true
+}

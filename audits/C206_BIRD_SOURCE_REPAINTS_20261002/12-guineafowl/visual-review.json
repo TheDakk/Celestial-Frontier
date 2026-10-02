@@ -1,0 +1,28 @@
+{
+  "name": "Guineafowl",
+  "masterSha256": "d91a630c7ec76ed5c670a8d4220d8db2c52222cd9895397cb5d1b5aa255d2360",
+  "method": "Full original visual inspection by Codex",
+  "observation": "Full-size original: round hunched body with dense white dots, tiny bare blue/red head and casque, thin neck, short drooping tail and two separate leg/foot silhouettes are visible. Near and far feet now retain clear toe tips. Toe bases still overlap in profile, and exact toe count/hidden upper-leg ownership remains unmeasured.",
+  "status": "DIAGNOSTIC_NOT_ADMITTED",
+  "scope": "Visible identity/layout only; not G1 anatomy, motion or Dakk acceptance",
+  "framing": {
+    "status": "PASS_FRAMING_ONLY",
+    "bounds": {
+      "x0": 318,
+      "y0": 334,
+      "x1": 927,
+      "y1": 902
+    },
+    "margins": {
+      "left": 318,
+      "right": 326,
+      "top": 334,
+      "bottom": 351
+    },
+    "required": {
+      "x": 101,
+      "y": 101
+    },
+    "scope": "Existing requested 8% clear margin; no identity, anatomy or motion claim"
+  }
+}
